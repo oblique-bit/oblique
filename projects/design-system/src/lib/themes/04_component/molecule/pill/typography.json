@@ -38,16 +38,6 @@
               "$type": "textCase",
               "$value": "none",
               "$description": "No text transformation for pill labels"
-            },
-            "text_align": {
-              "$type": "textAlign",
-              "$value": "{ob.s.static.text_align.center}",
-              "$description": "[NO-FIGMA-SUPPORT] Center alignment for pill text labels - set manually in Figma components."
-            },
-            "text_vertical_trim": {
-              "$type": "string",
-              "$value": "{ob.p.vertical_trim.cap_baseline}",
-              "$description": "[NO-FIGMA-SUPPORT] Vertical trim from cap height to baseline for optimal pill text alignment. Set manually in Figma components using 'Vertical trim' property. CSS implementation: use 'text-box-trim: cap alphabetic' or equivalent."
             }
           }
         }

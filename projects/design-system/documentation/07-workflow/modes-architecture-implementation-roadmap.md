@@ -233,21 +233,22 @@ src/lib/themes/
 
 ### Requirements: Full Modes Architecture Roadmap** *(All structures prepared, selective implementation)*
 
-### **Phase 1: MVP Foundation Modes** *(Primary Implementation Focus)*
-- **Lightness modes** - `light/dark` **Success:** (existing theme lightness switching)
-- **Interaction-emphasis modes** - `low/standard/high` **Success:** (existing component interaction states)  
-- **Component Size modes** - `sm/md/lg` **Process:** (WIP migration - component dimension coordination)
-- **Viewport modes (basic)** - `desktop/mobile` 🆕 (simplified device distinction for MVP)
+### **Phase 1: MVP Foundation Modes** ✅ *(Implementation Status)*
+- **Lightness modes** - `light/dark` ✅ **DONE** (existing theme lightness switching)
+- **Interaction-emphasis modes** - `low/high` ✅ **DONE** (existing component interaction states - 2 modes only!)  
+- **Component Size modes** - `sm/md/lg` ✅ **DONE** (component dimension coordination complete)
+- **Typography-context modes** - `interface/prose` ✅ **DONE** (moved from Phase 3 - early implementation)
+- **Viewport modes (basic)** - `desktop/mobile` ⏳ **PLANNED** (simplified device distinction for MVP)
 
-### **Phase 2: Advanced System Modes** *(Architecture Ready, Implementation Deferred)*
-- **Density modes** - `compact/comfortable/spacious` (layout spacing improvement)
-- **Viewport modes (full coverage)** - All device types + landscape/portrait + touch interaction patterns
-- **Contrast modes** - `standard/high` (A11y color contrast enhancement)
+### **Phase 2: Advanced System Modes** *(Architecture Ready, Implementation Status)*
+- **Density modes** - `compact/comfortable/spacious` 📋 **RESEARCHED** (see density research reports)
+- **Typography-scale modes** - `A–/A/A+` 🆕 **PLANNED** (user font size preferences, separate from typography-context)
+- **Viewport modes (full coverage)** - All device types + landscape/portrait + touch interaction patterns ⏳ **PLANNED**
+- **Contrast modes** - `standard/high` ⏳ **PLANNED** (A11y color contrast enhancement)
 
-### **Phase 3: User Preference & Accessibility Modes**
-- **Motion modes** - `enabled/disabled/reduced` (animation accessibility controls)
-- **Typography modes** - `readable/standard/compact/A+/A/A–/dyslexia-friendly` (font weight, line height, letter spacing for readability + user preference typography scaling + dyslexia support)
-- **Colorblind modes** - `standard/deuteranopia/protanopia/tritanopia/achromatopsia` (colorblind-friendly palettes for common color vision deficiencies)
+### **Phase 3: User Preference & Accessibility Modes** *(Future Implementation)*
+- **Motion modes** - `enabled/disabled/reduced` ⏳ **PLANNED** (animation accessibility controls)
+- **Colorblind modes** - `standard/deuteranopia/protanopia/tritanopia/achromatopsia` ⏳ **PLANNED** (colorblind-friendly palettes)
 - **Motion Preference modes** - User-controlled animation settings with system integration
 - **Contrast Preference modes** - User-controlled contrast with system high-contrast support
 
@@ -262,13 +263,14 @@ lightness × interaction-emphasis × viewport × component-size × density × co
 
 ### **MVP Goal:** Prove modes architecture with essential foundation + targeted testing
 
-### **MVP Modes Selection** *(Phase 1 Essential Implementation)*
-- ### Success: Lightness modes**: `light/dark` (existing theme lightness switching) 
-- ### Success: Interaction-emphasis modes**: `low/standard/high` (existing component interaction states)
-- ### Process: Component Size modes**: `sm/md/lg` (WIP migration - component dimension coordination) 
+### **MVP Modes Selection** *(Updated Implementation Status)*
+- ✅ **Lightness modes**: `light/dark` (existing theme lightness switching) 
+- ✅ **Interaction-emphasis modes**: `low/high` (existing component interaction states - 2 modes!)
+- ✅ **Component Size modes**: `sm/md/lg` (completed component dimension coordination) 
+- ✅ **Typography-context modes**: `interface/prose` (early implementation from Phase 3)
 - **🆕 Viewport modes**: `desktop/mobile` (basic 2-breakpoint system for MVP)
 
-**MVP Architecture**: `lightness × interaction-emphasis × component-size × viewport` (4D system)
+**Current MVP Architecture**: `lightness × interaction-emphasis × component-size × typography-context × viewport` (5D system)
 
 *Note: Density modes moved to Phase 2 - focus on size mode migration completion first*
 
