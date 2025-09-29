@@ -41,6 +41,7 @@
     "03_semantic/effect",
     "03_semantic/elevation",
     "03_semantic/spacing",
+    "03_semantic/layout",
     "04_component/atom/icon_slot/static",
     "04_component/atom/icon_slot/size",
     "04_component/atom/badge",
