@@ -54,7 +54,7 @@
             "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}",
             "$description": "Color of link when hovered with the mouse."
           },
-          "active": {
+          "pressed": {
             "$type": "color",
             "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}",
             "$description": "Color of link during click interaction."
