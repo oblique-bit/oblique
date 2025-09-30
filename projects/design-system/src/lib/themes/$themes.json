@@ -1270,7 +1270,8 @@
       "02_primitive/color": "source",
       "03_semantic/color/s1-lightness/light": "enabled",
       "03_semantic/asset/theme/lightness/light": "enabled",
-      "04_component/molecule/infobox/color": "enabled"
+      "04_component/molecule/infobox/color": "enabled",
+      "01_global/themes-user/lightness/dynamic/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -1778,7 +1779,8 @@
       "02_primitive/color": "source",
       "03_semantic/color/s1-lightness/dark": "enabled",
       "03_semantic/asset/theme/lightness/dark": "enabled",
-      "04_component/molecule/infobox/color": "enabled"
+      "04_component/molecule/infobox/color": "enabled",
+      "01_global/themes-user/lightness/dynamic/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",

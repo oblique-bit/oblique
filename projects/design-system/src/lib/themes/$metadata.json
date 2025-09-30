@@ -5,6 +5,8 @@
     "01_global/multipliers/dimension",
     "01_global/multipliers/typography",
     "01_global/themes-scoped/static",
+    "01_global/themes-user/lightness/dynamic/light",
+    "01_global/themes-user/lightness/dynamic/dark",
     "01_global/themes-user/lightness/static",
     "02_primitive/color",
     "02_primitive/position",
