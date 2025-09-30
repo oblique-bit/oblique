@@ -1,6 +1,6 @@
 {
   "ob": {
-    "s": {
+    "h": {
       "typography": {
         "content": {
           "heading": {
@@ -8,10 +8,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.h1.font_size}",
-                "fontWeight": "{ob.s.typography.styles.h1.font_weight}",
-                "letterSpacing": "{ob.s.typography.styles.h1.letter_spacing}",
-                "lineHeight": "{ob.s.typography.styles.h1.line_height}",
+                "fontSize": "{ob.h.typography.styles.h1.font_size}",
+                "fontWeight": "{ob.h.typography.styles.h1.font_weight}",
+                "letterSpacing": "{ob.h.typography.styles.h1.letter_spacing}",
+                "lineHeight": "{ob.h.typography.styles.h1.line_height}",
                 "paragraphSpacing": "{ob.p.paragraphSpacingRem.1400}"
               },
               "$description": "Dynamic primary page heading that adapts between compact and prose contexts via variable modes."
@@ -20,10 +20,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.h2.font_size}",
-                "fontWeight": "{ob.s.typography.styles.h2.font_weight}",
-                "letterSpacing": "{ob.s.typography.styles.h2.letter_spacing}",
-                "lineHeight": "{ob.s.typography.styles.h2.line_height}",
+                "fontSize": "{ob.h.typography.styles.h2.font_size}",
+                "fontWeight": "{ob.h.typography.styles.h2.font_weight}",
+                "letterSpacing": "{ob.h.typography.styles.h2.letter_spacing}",
+                "lineHeight": "{ob.h.typography.styles.h2.line_height}",
                 "paragraphSpacing": "{ob.p.paragraphSpacingRem.1300}"
               },
               "$description": "Dynamic secondary heading that adapts between compact and prose contexts via variable modes."
@@ -32,10 +32,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.h3.font_size}",
-                "fontWeight": "{ob.s.typography.styles.h3.font_weight}",
-                "letterSpacing": "{ob.s.typography.styles.h3.letter_spacing}",
-                "lineHeight": "{ob.s.typography.styles.h3.line_height}",
+                "fontSize": "{ob.h.typography.styles.h3.font_size}",
+                "fontWeight": "{ob.h.typography.styles.h3.font_weight}",
+                "letterSpacing": "{ob.h.typography.styles.h3.letter_spacing}",
+                "lineHeight": "{ob.h.typography.styles.h3.line_height}",
                 "paragraphSpacing": "{ob.p.paragraphSpacingRem.1100}"
               },
               "$description": "Dynamic tertiary heading that adapts between compact and prose contexts via variable modes."
@@ -44,10 +44,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.h4.font_size}",
-                "fontWeight": "{ob.s.typography.styles.h4.font_weight}",
-                "letterSpacing": "{ob.s.typography.styles.h4.letter_spacing}",
-                "lineHeight": "{ob.s.typography.styles.h4.line_height}",
+                "fontSize": "{ob.h.typography.styles.h4.font_size}",
+                "fontWeight": "{ob.h.typography.styles.h4.font_weight}",
+                "letterSpacing": "{ob.h.typography.styles.h4.letter_spacing}",
+                "lineHeight": "{ob.h.typography.styles.h4.line_height}",
                 "paragraphSpacing": "{ob.p.paragraphSpacingRem.900}"
               },
               "$description": "Dynamic heading level 4 that adapts between compact and prose contexts via variable modes."
@@ -56,10 +56,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.h5.font_size}",
-                "fontWeight": "{ob.s.typography.styles.h5.font_weight}",
-                "letterSpacing": "{ob.s.typography.styles.h5.letter_spacing}",
-                "lineHeight": "{ob.s.typography.styles.h5.line_height}",
+                "fontSize": "{ob.h.typography.styles.h5.font_size}",
+                "fontWeight": "{ob.h.typography.styles.h5.font_weight}",
+                "letterSpacing": "{ob.h.typography.styles.h5.letter_spacing}",
+                "lineHeight": "{ob.h.typography.styles.h5.line_height}",
                 "paragraphSpacing": "{ob.p.paragraphSpacingRem.800}"
               },
               "$description": "Dynamic heading level 5 that adapts between compact and prose contexts via variable modes."
@@ -68,10 +68,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.h6.font_size}",
-                "fontWeight": "{ob.s.typography.styles.h6.font_weight}",
-                "letterSpacing": "{ob.s.typography.styles.h6.letter_spacing}",
-                "lineHeight": "{ob.s.typography.styles.h6.line_height}",
+                "fontSize": "{ob.h.typography.styles.h6.font_size}",
+                "fontWeight": "{ob.h.typography.styles.h6.font_weight}",
+                "letterSpacing": "{ob.h.typography.styles.h6.letter_spacing}",
+                "lineHeight": "{ob.h.typography.styles.h6.line_height}",
                 "paragraphSpacing": "{ob.p.paragraphSpacingRem.700}"
               },
               "$description": "Dynamic heading level 6 that adapts between compact and prose contexts via variable modes."
@@ -82,10 +82,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.body.normal.font_size}",
-                "fontWeight": "{ob.s.typography.styles.body.normal.font_weight}",
-                "lineHeight": "{ob.s.typography.styles.body.normal.line_height}",
-                "letterSpacing": "{ob.s.typography.styles.body.normal.letter_spacing}",
+                "fontSize": "{ob.h.typography.styles.body.normal.font_size}",
+                "fontWeight": "{ob.h.typography.styles.body.normal.font_weight}",
+                "lineHeight": "{ob.h.typography.styles.body.normal.line_height}",
+                "letterSpacing": "{ob.h.typography.styles.body.normal.letter_spacing}",
                 "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}"
               },
               "$description": "Dynamic body text style that adapts between compact and prose contexts via variable modes."
@@ -94,10 +94,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.body.link.font_size}",
-                "fontWeight": "{ob.s.typography.styles.body.link.font_weight}",
-                "lineHeight": "{ob.s.typography.styles.body.link.line_height}",
-                "letterSpacing": "{ob.s.typography.styles.body.link.letter_spacing}",
+                "fontSize": "{ob.h.typography.styles.body.link.font_size}",
+                "fontWeight": "{ob.h.typography.styles.body.link.font_weight}",
+                "lineHeight": "{ob.h.typography.styles.body.link.line_height}",
+                "letterSpacing": "{ob.h.typography.styles.body.link.letter_spacing}",
                 "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}",
                 "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
               },
@@ -107,10 +107,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.body.strong.font_size}",
-                "fontWeight": "{ob.s.typography.styles.body.strong.font_weight}",
-                "lineHeight": "{ob.s.typography.styles.body.strong.line_height}",
-                "letterSpacing": "{ob.s.typography.styles.body.strong.letter_spacing}",
+                "fontSize": "{ob.h.typography.styles.body.strong.font_size}",
+                "fontWeight": "{ob.h.typography.styles.body.strong.font_weight}",
+                "lineHeight": "{ob.h.typography.styles.body.strong.line_height}",
+                "letterSpacing": "{ob.h.typography.styles.body.strong.letter_spacing}",
                 "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}"
               },
               "$description": "Dynamic strong text style that adapts between compact and prose contexts via variable modes. Emphasized text for important information."
@@ -119,10 +119,10 @@
               "$type": "typography",
               "$value": {
                 "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.s.typography.styles.body.lead.font_size}",
-                "fontWeight": "{ob.s.typography.styles.body.lead.font_weight}",
-                "lineHeight": "{ob.s.typography.styles.body.lead.line_height}",
-                "letterSpacing": "{ob.s.typography.styles.body.lead.letter_spacing}",
+                "fontSize": "{ob.h.typography.styles.body.lead.font_size}",
+                "fontWeight": "{ob.h.typography.styles.body.lead.font_weight}",
+                "lineHeight": "{ob.h.typography.styles.body.lead.line_height}",
+                "letterSpacing": "{ob.h.typography.styles.body.lead.letter_spacing}",
                 "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}"
               },
               "$description": "Dynamic lead text style that adapts between compact and prose contexts via variable modes. Introductory paragraph text."
