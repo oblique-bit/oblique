@@ -2352,14 +2352,13 @@
       "03_semantic/z-index": "enabled",
       "03_semantic/typography/single/static": "enabled",
       "03_semantic/typography/grouped/static": "enabled",
-      "03_semantic/typography/style": "enabled",
       "03_semantic/dimension/static": "enabled",
       "03_semantic/effect": "enabled",
       "03_semantic/elevation": "enabled",
       "03_semantic/spacing": "enabled",
-      "03_semantic/layout": "enabled",
       "01_global/multipliers/typography": "source",
-      "01_global/multipliers/dimension": "source"
+      "01_global/multipliers/dimension": "source",
+      "05_html/typography/style": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -2784,9 +2783,7 @@
     "id": "9139ff3b9a8ce4f723fc431b33da5acb9bff22d8",
     "name": "row",
     "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "05_html/button/06_flex-direction/row": "enabled"
-    },
+    "selectedTokenSets": {},
     "$figmaVariableReferences": {
       "ob.h.button.flex_direction.row.gap": "aa3485117e9322f7cfd4c484e1fb53e23aedf2cb"
     },
@@ -2798,9 +2795,7 @@
     "id": "f8a4c2b5e9d6f123456789abcdef0123456789ab",
     "name": "column",
     "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "05_html/button/06_flex-direction/column": "enabled"
-    },
+    "selectedTokenSets": {},
     "$figmaVariableReferences": {
       "ob.h.button.flex_direction.column.gap": "b1c1ed70a32e27be16ceb0c7949392e6c7dcb413"
     },
@@ -3191,7 +3186,7 @@
     "name": "interface",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/typography/context/interface": "enabled"
+      "05_html/typography/context/interface": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.typography.styles.h1.font_size": "c2d7a3ca098218d5a6d60a55cb7e8476c63f076e",
@@ -3244,7 +3239,7 @@
     "name": "prose",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/typography/context/prose": "enabled"
+      "05_html/typography/context/prose": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s.typography.styles.h1.font_size": "c2d7a3ca098218d5a6d60a55cb7e8476c63f076e",
