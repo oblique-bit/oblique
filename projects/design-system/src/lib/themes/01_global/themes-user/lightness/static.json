@@ -14,6 +14,17 @@
             "$description": "Dark theme identifier. Used by components to determine dark mode appearance and color scheme selection."
           }
         }
+      },
+      "component_configuration": {
+        "footer": {
+          "theme": {
+            "lightness": {
+              "$type": "other",
+              "$value": "{ob.g.theme_configuration.lightness.dark}",
+              "$description": "defines exception so the footer remains dark in dark mode"
+            }
+          }
+        }
       }
     }
   }

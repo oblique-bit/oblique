@@ -2,7 +2,7 @@
   "ob": {
     "h": {
       "typography": {
-        "styles": {
+        "context": {
           "h1": {
             "font_size": {
               "$type": "fontSizes",

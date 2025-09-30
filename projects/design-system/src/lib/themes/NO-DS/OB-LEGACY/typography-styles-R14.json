@@ -6,7 +6,7 @@
           "inversity_normal": {
             "text": {
               "$type": "typography",
-              "$value": "{ob.h.typography.content.body.normal}",
+              "$value": "{ob.h.typography.style.body.normal}",
               "$description": "[OB-LEGACY]\nStandard text style for basic alert messages. R13 token."
             }
           }
@@ -14,19 +14,19 @@
         "alert_notification": {
           "title": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.strong}",
+            "$value": "{ob.h.typography.style.body.strong}",
             "$description": "[OB-LEGACY]\nBolder heading text for notification alerts. R13 token."
           },
           "text": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nBody text for notification alert content. R13 token."
           }
         },
         "autocomplete": {
           "label": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nText style for autocomplete component. R13 token."
           }
         },
@@ -73,7 +73,7 @@
         "card": {
           "title": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.strong}",
+            "$value": "{ob.h.typography.style.body.strong}",
             "$description": "[OB-LEGACY]\nBody-sized text with strong weight creates clear card headers that stand out without being as dominant as page headings. R13 token."
           },
           "subtitle": {
@@ -114,31 +114,31 @@
           },
           "text": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nStandard body text ensures dialog content is highly readable, using the same styling as main content for consistency. R13 token."
           }
         },
         "expansion_panel": {
           "title": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.strong}",
+            "$value": "{ob.h.typography.style.body.strong}",
             "$description": "[OB-LEGACY]\nHeading text for collapsible panels. R13 token."
           },
           "desc": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nDescription text for additional context. R13 token."
           },
           "body": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nMain content text for expanded panels, consistent in size with other body content.  R13 token."
           }
         },
         "file_upload": {
           "caption": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nText style for file upload component labels."
           },
           "hint": {
@@ -156,7 +156,7 @@
             },
             "user_input": {
               "$type": "typography",
-              "$value": "{ob.h.typography.content.body.normal}",
+              "$value": "{ob.h.typography.style.body.normal}",
               "$description": "[OB-LEGACY]\nBody-sized text for text-based user input. R13 token."
             },
             "hint": {
@@ -168,7 +168,7 @@
           "radio_checkbox": {
             "label": {
               "$type": "typography",
-              "$value": "{ob.h.typography.content.body.normal}",
+              "$value": "{ob.h.typography.style.body.normal}",
               "$description": "[OB-LEGACY]\nBody text size ensures these critical selection labels are clearly readable, as they contain the actual choices users are selecting. R13 token."
             },
             "hint": {
@@ -181,7 +181,7 @@
         "list_group": {
           "text": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nBody text size ensures primary list content is clearly readable. R13 token."
           },
           "subtext": {
@@ -198,7 +198,7 @@
           },
           "horizontal_nav_cell": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nFor text in the horizontal main navigation. R13 token."
           },
           "submenu_row_label": {
@@ -222,7 +222,7 @@
         "footer": {
           "link": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nText style for clickable links in footer. R13 token."
           },
           "legal": {
@@ -234,7 +234,7 @@
         "nav_tree": {
           "label": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nText style for hierarchical navigation items in the sidebar. R13 token."
           }
         },
@@ -248,7 +248,7 @@
         "popover": {
           "title": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nBody-sized text ensures contextual popup headings are immediately readable when they appear. R13 token."
           },
           "text": {
@@ -267,7 +267,7 @@
         "slide_toggle": {
           "label": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nBody text size ensures these critical selection labels are clearly readable, as they contain the actual choices users are making. R13 token."
           }
         },
@@ -279,19 +279,19 @@
           },
           "step_label": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nText style for the step descriptions in multi-step processes. R13 token."
           }
         },
         "table": {
           "header": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.strong}",
+            "$value": "{ob.h.typography.style.body.strong}",
             "$description": "[OB-LEGACY]\nText style for table column headers. R13 token."
           },
           "cell": {
             "$type": "typography",
-            "$value": "{ob.h.typography.content.body.normal}",
+            "$value": "{ob.h.typography.style.body.normal}",
             "$description": "[OB-LEGACY]\nText style for text-based table cell content. R13 token."
           }
         },
