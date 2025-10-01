@@ -1,0 +1,22 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "module": "es2015",
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "inlineSources": true,
+    "importHelpers": true,
+    "types": ["node"]
+  },
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableResourceInlining": true,
+    "compilationMode": "partial"
+  },
+  "include": ["../../tests/**/*.d.ts"],
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
+}

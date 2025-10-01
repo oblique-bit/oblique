@@ -577,11 +577,20 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "tsConfig": "projects/ob-tour/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
-          }
+            "tsConfig": "tsconfig.spec.json",
+            "max-workers": ["2"]
+          },
+          "configurations": {
+            "default": {
+              "configPath": "jest.config.js"
+            },
+            "ci": {
+              "configPath": "jest.config.ci.js"
+            }
+          },
+          "defaultConfiguration": "default"
         }
       }
     }

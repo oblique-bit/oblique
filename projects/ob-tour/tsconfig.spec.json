@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "types": ["jest", "node"],
+    "target": "ES2016",
+    "resolveJsonModule": true
+  },
+  "include": ["**/*.spec.ts", "../../tests/**/*.d.ts"],
+  "exclude": []
+}
