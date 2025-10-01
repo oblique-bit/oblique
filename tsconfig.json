@@ -16,7 +16,8 @@
     "paths": {
       "@oblique/oblique": ["projects/oblique/src/public_api"],
       "@oblique/*": ["projects/oblique/src/lib/*"],
-      "@oblique/design-system": ["projects/design-system/src/public-api"]
+      "@oblique/design-system": ["projects/design-system/src/public-api"],
+      "@oblique/ob-tour": ["projects/ob-tour/src/public-api"]
     },
     "resolveJsonModule": true,
     "useDefineForClassFields": false

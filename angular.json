@@ -557,6 +557,33 @@
           "defaultConfiguration": "default"
         }
       }
+    },
+    "ob-tour": {
+      "projectType": "library",
+      "root": "projects/ob-tour",
+      "sourceRoot": "projects/ob-tour/src",
+      "prefix": "obt",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ob-tour/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ob-tour/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ob-tour/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
     }
   },
   "schematics": {
