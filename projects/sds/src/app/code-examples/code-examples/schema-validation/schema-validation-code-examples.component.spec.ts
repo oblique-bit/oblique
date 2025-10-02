@@ -7,7 +7,6 @@ import {By} from '@angular/platform-browser';
 import {SchemaValidationExampleReactiveFormPreviewComponent} from './previews/reactive-form/schema-validation-example-reactive-form-preview.component';
 import {SchemaValidationExampleTemplateDrivenFormPreviewComponent} from './previews/template-driven-form/schema-validation-example-template-driven-form-preview.component';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe(SchemaValidationCodeExamplesComponent.name, () => {
 	let component: SchemaValidationCodeExamplesComponent;
@@ -16,7 +15,6 @@ describe(SchemaValidationCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [
-				NoopAnimationsModule,
 				SchemaValidationCodeExamplesComponent,
 				CommonModule,
 				IdPipe,

@@ -7,7 +7,6 @@ import {FileUploadCodeExamplesComponent} from './file-upload-code-examples.compo
 import {ObDropZoneComponent, ObFileUploadComponent, ObMockTranslatePipe, provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {By} from '@angular/platform-browser';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe(FileUploadCodeExamplesComponent.name, () => {
 	let component: FileUploadCodeExamplesComponent;
@@ -15,15 +14,7 @@ describe(FileUploadCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [
-				ObMockTranslatePipe,
-				CodeExampleComponent,
-				CommonModule,
-				FileUploadCodeExamplesComponent,
-				HttpClientTestingModule,
-				IdPipe,
-				NoopAnimationsModule
-			],
+			imports: [ObMockTranslatePipe, CodeExampleComponent, CommonModule, FileUploadCodeExamplesComponent, HttpClientTestingModule, IdPipe],
 			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 
