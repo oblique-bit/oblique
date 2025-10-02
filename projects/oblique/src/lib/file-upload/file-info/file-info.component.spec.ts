@@ -3,7 +3,6 @@ import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/c
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {Subject, of, throwError} from 'rxjs';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
@@ -25,7 +24,7 @@ describe('ObFileInfoComponent', () => {
 			delete: () => of()
 		};
 		await TestBed.configureTestingModule({
-			imports: [MatTableModule, ObFileInfoComponent, NoopAnimationsModule],
+			imports: [MatTableModule, ObFileInfoComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 			providers: [{provide: ObFileUploadService, useValue: mockFileUpload}, provideObliqueTestingConfiguration()]
 		}).compileComponents();

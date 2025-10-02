@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {IconsCodeExamplesComponent} from './icons-code-examples.component';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
 import {IconsExampleIconsGalleryPreviewComponent} from './previews/icons-gallery/icons-example-icons-gallery-preview.component';
 import {IconsExampleFontSizePreviewComponent} from './previews/font-size/icons-example-font-size-preview.component';
@@ -19,7 +18,7 @@ describe(IconsCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [CodeExampleComponent, CommonModule, IconsCodeExamplesComponent, IdPipe, NoopAnimationsModule],
+			imports: [CodeExampleComponent, CommonModule, IconsCodeExamplesComponent, IdPipe],
 			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 

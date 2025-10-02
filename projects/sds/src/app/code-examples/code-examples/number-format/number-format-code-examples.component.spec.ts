@@ -1,5 +1,4 @@
 import {WINDOW} from '@oblique/oblique';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {NumberFormatExampleOtherOptionsPreviewComponent} from './previews/other-options/number-format-example-other-options-preview.component';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
@@ -16,7 +15,7 @@ describe(NumberFormatCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [NumberFormatCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule],
+			imports: [NumberFormatCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 			providers: [{provide: WINDOW, useValue: window}]
 		}).compileComponents();
 

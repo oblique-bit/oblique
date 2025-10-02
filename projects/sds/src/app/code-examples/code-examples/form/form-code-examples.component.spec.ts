@@ -9,7 +9,6 @@ import {MatCheckbox} from '@angular/material/checkbox';
 import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
 import {MatInput} from '@angular/material/input';
 import {MatSelect} from '@angular/material/select';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormExampleSizesPreviewComponent} from './previews/sizes/form-example-sizes-preview.component';
 import {FormExampleStatesPreviewComponent} from './previews/states/form-example-states-preview.component';
 import {FormExampleHorizontalPreviewComponent} from './previews/horizontal/form-example-horizontal-preview.component';
@@ -24,7 +23,7 @@ describe(FormCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [CodeExampleComponent, CommonModule, FormCodeExamplesComponent, IdPipe, NoopAnimationsModule],
+			imports: [CodeExampleComponent, CommonModule, FormCodeExamplesComponent, IdPipe],
 			providers: [provideNativeDateAdapter(), provideObliqueTestingConfiguration()]
 		}).compileComponents();
 

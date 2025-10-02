@@ -1,6 +1,5 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule} from '@ngx-translate/core';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FocusInvalidCodeExamplesComponent} from './focus-invalid-code-examples.component';
@@ -12,7 +11,7 @@ describe(FocusInvalidCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [FocusInvalidCodeExamplesComponent, NoopAnimationsModule, TranslateModule.forRoot()],
+			imports: [FocusInvalidCodeExamplesComponent, TranslateModule.forRoot()],
 			providers: [provideNativeDateAdapter()]
 		}).compileComponents();
 

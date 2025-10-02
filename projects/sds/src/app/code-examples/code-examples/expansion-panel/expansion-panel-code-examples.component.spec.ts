@@ -7,7 +7,6 @@ import {By} from '@angular/platform-browser';
 import {ExpansionPanelExampleBasicPreviewComponent} from './previews/basic/expansion-panel-example-basic-preview.component';
 import {ExpansionPanelExampleTogglePreviewComponent} from './previews/toggle/expansion-panel-example-toggle-preview.component';
 import {ExpansionPanelExampleOtherOptionsPreviewComponent} from './previews/other-options/expansion-panel-example-other-options-preview.component';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe(ExpansionPanelCodeExamplesComponent.name, () => {
 	let component: ExpansionPanelCodeExamplesComponent;
@@ -15,7 +14,7 @@ describe(ExpansionPanelCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ExpansionPanelCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule]
+			imports: [ExpansionPanelCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ExpansionPanelCodeExamplesComponent);

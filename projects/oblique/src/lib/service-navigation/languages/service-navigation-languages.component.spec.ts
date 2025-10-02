@@ -9,7 +9,6 @@ import {firstValueFrom} from 'rxjs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatOptionHarness} from '@angular/material/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectHarness} from '@angular/material/select/testing';
 
 describe('ObServiceNavigationLanguagesComponent', () => {
@@ -21,7 +20,7 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationLanguagesComponent],
-			imports: [ObMockTranslatePipe, MatFormFieldModule, MatSelectModule, NoopAnimationsModule]
+			imports: [ObMockTranslatePipe, MatFormFieldModule, MatSelectModule]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationLanguagesComponent);

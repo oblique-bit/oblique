@@ -2,7 +2,6 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {AutocompleteCodeExamplesComponent} from './autocomplete-code-examples.component';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '@oblique/oblique';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('AutocompleteCodeExamplesComponent', () => {
 	let component: AutocompleteCodeExamplesComponent;
@@ -10,7 +9,7 @@ describe('AutocompleteCodeExamplesComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [AutocompleteCodeExamplesComponent, NoopAnimationsModule],
+			imports: [AutocompleteCodeExamplesComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 

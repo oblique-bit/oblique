@@ -1,4 +1,3 @@
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {StepperExampleOtherOptionsPreviewComponent} from './previews/other-options/stepper-example-other-options-preview.component';
 import {StepperExampleDefaultPreviewComponent} from './previews/default/stepper-example-default-preview.component';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
@@ -14,7 +13,7 @@ describe(StepperCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [StepperCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule]
+			imports: [StepperCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(StepperCodeExamplesComponent);

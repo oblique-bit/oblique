@@ -1,5 +1,4 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {SpinnerCodeExamplesComponent} from './spinner-code-examples.component';
 
 describe('SpinnerCodeExamplesComponent', () => {
@@ -8,7 +7,7 @@ describe('SpinnerCodeExamplesComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [SpinnerCodeExamplesComponent, NoopAnimationsModule]
+			imports: [SpinnerCodeExamplesComponent]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SpinnerCodeExamplesComponent);

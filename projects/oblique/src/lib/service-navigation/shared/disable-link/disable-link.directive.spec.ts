@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObDisableLinkDirective} from './disable-link.directive';
 import {CommonModule} from '@angular/common';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 @Component({
 	standalone: true,
@@ -25,7 +24,7 @@ describe('obDisableLinkDirective', () => {
 	let element: HTMLElement;
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [CommonModule, NoopAnimationsModule, ObDisableLinkDirective, ObTestingComponent]
+			imports: [CommonModule, ObDisableLinkDirective, ObTestingComponent]
 		});
 
 		fixture = TestBed.createComponent(ObTestingComponent);
