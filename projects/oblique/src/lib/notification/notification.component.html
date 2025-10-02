@@ -1,23 +1,24 @@
-<ob-alert
-	*ngFor="let notification of notifications"
-	class="ob-notification"
-	role="alert"
-	[id]="notification.idPrefix + 'container'"
-	[type]="notification.type"
-	[@inOut]="notification.$state"
->
-	<button [id]="notification.idPrefix + 'close_button'" (click)="close(notification)" type="button" class="ob-close">
-		&times;<span class="ob-screen-reader-only">{{ "i18n.oblique.notification.close" | translate }}</span>
-	</button>
-	<span
-		class="ob-occurrence"
-		[matTooltip]="'i18n.oblique.occurrences' | translate: { occurrences: notification.occurrences }"
-		*ngIf="notification.occurrences > 1"
+@for (notification of notifications; track notification) {
+	<ob-alert
+		class="ob-notification"
+		role="alert"
+		[id]="notification.idPrefix + 'container'"
+		[type]="notification.type"
+		[@inOut]="notification.$state"
 	>
-		{{ notification.occurrences }}
-	</span>
-	<div [id]="notification.idPrefix + 'title'" class="ob-notification-title">
-		{{ notification.title | obTranslateParams: notification.titleParams }}
-	</div>
-	<p [id]="notification.idPrefix + 'text'" [innerHTML]="notification.message | obTranslateParams: notification.messageParams"></p>
-</ob-alert>
+		<button [id]="notification.idPrefix + 'close_button'" (click)="close(notification)" type="button" class="ob-close">
+			&times;<span class="ob-screen-reader-only">{{ "i18n.oblique.notification.close" | translate }}</span>
+		</button>
+		<span
+			class="ob-occurrence"
+			[matTooltip]="'i18n.oblique.occurrences' | translate: { occurrences: notification.occurrences }"
+			*ngIf="notification.occurrences > 1"
+		>
+			{{ notification.occurrences }}
+		</span>
+		<div [id]="notification.idPrefix + 'title'" class="ob-notification-title">
+			{{ notification.title | obTranslateParams: notification.titleParams }}
+		</div>
+		<p [id]="notification.idPrefix + 'text'" [innerHTML]="notification.message | obTranslateParams: notification.messageParams"></p>
+	</ob-alert>
+}
