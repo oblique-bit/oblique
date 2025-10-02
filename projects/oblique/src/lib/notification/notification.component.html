@@ -4,7 +4,8 @@
 		role="alert"
 		[id]="notification.idPrefix + 'container'"
 		[type]="notification.type"
-		[@inOut]="notification.$state"
+		[animate.enter]="'ob-notification-' + notification.$state"
+		animate.leave="ob-notification-out"
 	>
 		<button [id]="notification.idPrefix + 'close_button'" (click)="close(notification)" type="button" class="ob-close">
 			&times;<span class="ob-screen-reader-only">{{ "i18n.oblique.notification.close" | translate }}</span>

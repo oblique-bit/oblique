@@ -2,15 +2,13 @@ import {ChangeDetectorRef, Component, HostBinding, Inject, Input, OnDestroy, OnI
 import {WINDOW} from '../utilities';
 import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
-import {animations} from './notification.component.animations';
 import {Subject, takeUntil} from 'rxjs';
 
 @Component({
 	selector: 'ob-notification',
 	exportAs: 'obNotification',
 	templateUrl: './notification.component.html',
-	styleUrls: ['./notification.component.scss'],
-	animations: [animations],
+	styleUrls: ['./notification.component.scss', './notification-animations.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-notification-container'},
 	standalone: false
