@@ -60,16 +60,7 @@
         },
         "none": {
           "$type": "boxShadow",
-          "$value": [
-            {
-              "color": "{ob.s3.color.neutral.no_color}",
-              "type": "dropShadow",
-              "x": "0",
-              "y": "0",
-              "blur": "0",
-              "spread": "0"
-            }
-          ],
+          "$value": "none",
           "$description": "Used to disabled a shadow for example on button state that need no shadow."
         },
         "lg": {
