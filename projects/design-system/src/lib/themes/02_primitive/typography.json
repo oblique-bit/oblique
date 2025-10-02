@@ -4,12 +4,13 @@
       "fontFamily": {
         "sans": {
           "$type": "fontFamilies",
-          "$value": "Noto Sans,Arial,system-ui,-apple-system,BlinkMacSystemFont,sans-serif",
-          "$description": "BIT Corporate Web Font"
+          "$value": "'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+          "$description": "BIT Corporate Web Font with comprehensive system fallbacks for cross-platform consistency"
         },
         "mono": {
           "$type": "fontFamilies",
-          "$value": "Noto Sans Mono, monospace"
+          "$value": "'Noto Sans Mono', ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace",
+          "$description": "Monospace font with modern system fallbacks for code and technical content"
         }
       },
       "font_size_unitless": {
