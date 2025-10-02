@@ -2,11 +2,11 @@
   "ob": {
     "c": {
       "tag": {
-        "font_family": {
-          "$type": "fontFamilies",
-          "$value": "{ob.s.static.font_family.code}"
-        },
         "typography": {
+          "font_family": {
+            "$type": "fontFamilies",
+            "$value": "{ob.s.static.font_family.code}"
+          },
           "font_weight": {
             "$type": "fontWeights",
             "$value": "{ob.s.static.font_weight.medium}"
