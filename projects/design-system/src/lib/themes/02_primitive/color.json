@@ -141,8 +141,8 @@
           },
           "transparent": {
             "$type": "color",
-            "$value": "rgba(0, 0, 0, 0)",
-            "$description": "Fully transparent color (0% opacity). Used for invisible backgrounds, clearing colors in interaction states, and smooth color transitions."
+            "$value": "transparent",
+            "$description": "Fully transparent color. CSS 'transparent' keyword for optimal browser compatibility and semantic clarity."
           }
         },
         "orange": {
