@@ -1,5 +1,4 @@
 import {TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateService} from '@ngx-translate/core';
 import {ObStepperIntlService} from './ob-stepper.service';
 import {provideObliqueTestingConfiguration} from '../utilities';
@@ -14,7 +13,6 @@ describe('ObStepperIntlService', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [NoopAnimationsModule],
 			providers: [ObStepperIntlService, provideObliqueTestingConfiguration()]
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);

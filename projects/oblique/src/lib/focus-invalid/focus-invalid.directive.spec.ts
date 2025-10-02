@@ -3,7 +3,6 @@ import {Component, OnInit, inject} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
@@ -91,8 +90,7 @@ describe(ObFocusInvalidDirective.name, () => {
 				MatInputModule,
 				MatSelectModule,
 				MatCheckboxModule,
-				MatRadioModule,
-				NoopAnimationsModule
+				MatRadioModule
 			]
 		}).compileComponents();
 

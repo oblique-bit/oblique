@@ -1,5 +1,4 @@
 import {TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateService} from '@ngx-translate/core';
 import {ObPaginatorService} from './ob-paginator.service';
 import {provideObliqueTestingConfiguration} from '../utilities';
@@ -14,7 +13,6 @@ describe('ObPaginatorService', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [NoopAnimationsModule],
 			providers: [ObPaginatorService, provideObliqueTestingConfiguration()]
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
