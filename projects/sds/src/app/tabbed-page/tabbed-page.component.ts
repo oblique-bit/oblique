@@ -100,6 +100,7 @@ export class TabbedPageComponent {
 		return {
 			title: cmsData.name,
 			api: baseUrl ? cmsData.api.replace('https://v17.material.angular.io/', baseUrl) : cmsData.api,
+			accessibility: cmsData.accessibility,
 			uiUx: this.buildUiUxData(cmsData),
 			source: getCodeExampleComponent(cmsData.slug),
 			tab: this.getSelectedTab(),
