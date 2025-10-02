@@ -28,6 +28,7 @@
     "@angular/router": "^20.0.0 || ^21.0.0",
     "@ngx-translate/core": ">=16.0.0",
     "@popperjs/core": "^2.0.0",
+    "@oblique/oblique": "^14.0.0",
     "rxjs": "^7.0.0"
   },
   "dependencies": {
