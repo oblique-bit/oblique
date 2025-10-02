@@ -36,6 +36,7 @@ import {ServiceNavigationSampleComponent} from './service-navigation/service-nav
 import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
 import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
+import {ObTourSampleComponent} from './ob-tour/ob-tour-sample.component';
 
 const samplesRoutes: Routes = [
 	{path: 'alert', component: AlertSampleComponent},
@@ -164,6 +165,7 @@ const samplesRoutes: Routes = [
 	{path: 'nested-form', component: NestedFormSampleComponent},
 	{path: 'notification', component: NotificationSampleComponent},
 	{path: 'number-format', component: NumberFormatSampleComponent},
+	{path: 'ob-tour', component: ObTourSampleComponent},
 	{path: 'popover', component: PopoverComponent},
 	{path: 'rxjs-operators', component: RxjsOperatorsComponent},
 	{path: 'schema-validation', component: SchemaValidationSampleComponent},

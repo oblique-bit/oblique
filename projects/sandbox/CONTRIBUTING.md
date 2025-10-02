@@ -30,6 +30,7 @@ All commits related to the Sandbox package must use the **sandbox** package and 
 - **nested-form**
 - **notification**
 - **number-format**
+- **ob-tour**
 - **off-canvas**
 - **paginator**
 - **popover**
