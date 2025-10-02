@@ -1,4 +1,3 @@
-import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 import {AsyncPipe} from '@angular/common';
 import {Component, ElementRef, Input, OnInit, ViewEncapsulation, inject} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
@@ -10,19 +9,8 @@ import {ObSpinnerService} from './spinner.service';
 	selector: 'ob-spinner',
 	exportAs: 'obSpinner',
 	templateUrl: './spinner.component.html',
-	styleUrls: ['./spinner.component.scss'],
+	styleUrls: ['./spinner.component.scss', './spinner-animations.scss'],
 	encapsulation: ViewEncapsulation.None,
-	animations: [
-		trigger('inOut', [
-			state('in', style({opacity: 1, display: 'block'})),
-			transition('out => in', [
-				style({display: 'block'}),
-				animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 0}), style({offset: 1, opacity: 1})]))
-			]),
-			state('out', style({opacity: 0, display: 'none'})),
-			transition('in => out', [animate('250ms ease-in-out', keyframes([style({offset: 0, opacity: 1}), style({offset: 1, opacity: 0})]))])
-		])
-	],
 	host: {class: 'ob-spinner'},
 	imports: [AsyncPipe, MatIconModule]
 })

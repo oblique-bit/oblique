@@ -1,0 +1,11 @@
+.ob-overlay.ob-spinner-fade {
+	opacity: 0;
+	visibility: hidden;
+	transition: 250ms;
+	transition-timing-function: ease-in-out;
+
+	&.ob-spinner-fade-in {
+		opacity: 1;
+		visibility: visible;
+	}
+}
