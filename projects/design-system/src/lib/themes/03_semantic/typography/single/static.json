@@ -39,7 +39,7 @@
             "$type": "fontSizes",
             "$value": "{ob.p.font_size_rem.900}"
           },
-          "_base": {
+          "base": {
             "$type": "fontSizes",
             "$value": "{ob.p.font_size_rem.300}"
           }

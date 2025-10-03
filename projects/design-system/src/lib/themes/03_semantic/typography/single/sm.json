@@ -39,7 +39,7 @@
             "$type": "fontSizes",
             "$value": "{ob.p.font_size_rem.900} * {ob.g.multiplier.typography.sm}rem"
           },
-          "_base": {
+          "base": {
             "$type": "fontSizes",
             "$value": "{ob.p.font_size_rem.300} * {ob.g.multiplier.typography.sm}rem"
           }
