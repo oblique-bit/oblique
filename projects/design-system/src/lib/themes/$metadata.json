@@ -1,5 +1,7 @@
 {
   "tokenSetOrder": [
+    "01_global/themes-user/viewport/desktop",
+    "01_global/themes-user/viewport/mobile",
     "01_global/multipliers/viewport/desktop",
     "01_global/multipliers/viewport/mobile",
     "01_global/multipliers/dimension",
@@ -73,6 +75,8 @@
     "NO-DS/FIGMA-ONLY/colors-static",
     "NO-DS/FIGMA-ONLY/theme/lightness/light",
     "NO-DS/FIGMA-ONLY/theme/lightness/dark",
-    "NO-DS/OB-LEGACY/typography-styles-R14"
+    "NO-DS/OB-LEGACY/typography-styles-R14",
+    "01_global/viewport/breakpoint/max",
+    "01_global/viewport/breakpoint/min"
   ]
 }
