@@ -9,7 +9,7 @@
           },
           "max": {
             "$type": "dimension",
-            "$value": "768px"
+            "$value": "767px"
           }
         }
       }
