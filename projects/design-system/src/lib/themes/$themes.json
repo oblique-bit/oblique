@@ -389,7 +389,8 @@
     "selectedTokenSets": {
       "01_global/multipliers/viewport/desktop": "enabled",
       "04_component/molecule/infobox/responsive/desktop": "enabled",
-      "05_html/button/05_viewport/desktop": "enabled"
+      "05_html/button/05_viewport/desktop": "enabled",
+      "01_global/viewport/breakpoint/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.viewport.multiplier": "ae8f08bd1359bfec5e628e298eb1dadcc7c019e0",
@@ -432,7 +433,8 @@
     "selectedTokenSets": {
       "01_global/multipliers/viewport/mobile": "enabled",
       "04_component/molecule/infobox/responsive/mobile": "enabled",
-      "05_html/button/05_viewport/mobile": "enabled"
+      "05_html/button/05_viewport/mobile": "enabled",
+      "01_global/viewport/breakpoint/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.viewport.multiplier": "ae8f08bd1359bfec5e628e298eb1dadcc7c019e0",

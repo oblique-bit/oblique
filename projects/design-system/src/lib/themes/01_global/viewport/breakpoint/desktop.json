@@ -1,0 +1,18 @@
+{
+  "ob": {
+    "g": {
+      "viewport": {
+        "breakpoint": {
+          "min": {
+            "$type": "dimension",
+            "$value": "768px"
+          },
+          "max": {
+            "$type": "dimension",
+            "$value": "99999px"
+          }
+        }
+      }
+    }
+  }
+}
