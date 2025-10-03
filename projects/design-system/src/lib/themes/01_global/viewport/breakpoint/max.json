@@ -1,0 +1,15 @@
+{
+  "ob": {
+    "g": {
+      "viewport": {
+        "breakpoint": {
+          "max": {
+            "$type": "dimension",
+            "$value": "767px",
+            "$description": "Maximum viewport width for mobile responsive breakpoint. Used in CSS media queries as max-width threshold for mobile layouts (desktop min - 1px)."
+          }
+        }
+      }
+    }
+  }
+}
