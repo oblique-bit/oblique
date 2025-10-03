@@ -392,6 +392,9 @@
       "05_html/button/05_viewport/desktop": "enabled"
     },
     "$figmaVariableReferences": {
+      "ob.g.viewport.multiplier": "ae8f08bd1359bfec5e628e298eb1dadcc7c019e0",
+      "ob.g.viewport.breakpoint.min": "4c3f1caee269ca68c176ee69930791f177c82fcc",
+      "ob.g.viewport.breakpoint.max": "ac233f9706b693846f460faa04f98287f169e497",
       "ob.c.infobox.spacing.padding_top": "fc74dd658188e75e26e84d5d81eba6c62ced8933",
       "ob.c.infobox.spacing.padding_right": "c18aecb6c623ca063ba72cd1cc6fd10ad3f77de5",
       "ob.c.infobox.spacing.padding_bottom": "04e10bec30d0855b65c5e4cbb3c283da5e32988e",
@@ -416,8 +419,7 @@
       "ob.c.infobox.container.spacing.padding_right": "82a70f0042a2ed00b979cdfe9cda7addccfdd80e",
       "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6",
       "ob.h.button.container.spacing.gap": "04ffad7336d9735ced7ba743f658c0a20c76ec0b",
-      "ob.h.button.touch_target.min_size": "e04650bc2461769aeb18867faf7f43e82c412801",
-      "ob.g.multiplier.viewport.desktop": "4291cd6257a125221cef4f38dad657c9ded94a20"
+      "ob.h.button.touch_target.min_size": "e04650bc2461769aeb18867faf7f43e82c412801"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:1",
@@ -433,6 +435,9 @@
       "05_html/button/05_viewport/mobile": "enabled"
     },
     "$figmaVariableReferences": {
+      "ob.g.viewport.multiplier": "ae8f08bd1359bfec5e628e298eb1dadcc7c019e0",
+      "ob.g.viewport.breakpoint.min": "4c3f1caee269ca68c176ee69930791f177c82fcc",
+      "ob.g.viewport.breakpoint.max": "ac233f9706b693846f460faa04f98287f169e497",
       "ob.c.infobox.spacing.padding_top": "fc74dd658188e75e26e84d5d81eba6c62ced8933",
       "ob.c.infobox.spacing.padding_right": "c18aecb6c623ca063ba72cd1cc6fd10ad3f77de5",
       "ob.c.infobox.spacing.padding_bottom": "04e10bec30d0855b65c5e4cbb3c283da5e32988e",
@@ -458,9 +463,8 @@
       "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6",
       "ob.h.button.container.spacing.gap": "04ffad7336d9735ced7ba743f658c0a20c76ec0b",
       "ob.h.button.touch_target.min_size": "e04650bc2461769aeb18867faf7f43e82c412801",
-      "ob.g.multiplier.viewport.mobile": "e7f913b76927f9f35e3ece169b764c78599336b5",
-      "ob.c.infobox.sizing.icon_size": "eb9bab56277ab599e9d433083f079b294a8cbed6",
-      "ob.c.infobox.sizing.close_button_size": "33a4956a3b330f072b1657fd15a7bfa3119ea652"
+      "ob.c.infobox.sizing.icon_size": "5625390dc251317e0172172ca38e9384f4074164",
+      "ob.c.infobox.sizing.close_button_size": "a0b8a40ca4b4aa6372490099aa18ae9021ffdf3f"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -1652,26 +1656,6 @@
       "ob.s.dimension.static.layout.xl.rem": "e56fd1c808d060d24ad77cf747dd04710334f485"
     },
     "group": "semantic"
-  },
-  {
-    "id": "9139ff3b9a8ce4f723fc431b33da5acb9bff22d8",
-    "name": "row",
-    "$figmaStyleReferences": {},
-    "selectedTokenSets": {},
-    "$figmaVariableReferences": {},
-    "$figmaCollectionId": "VariableCollectionId:2115:3769",
-    "$figmaModeId": "2115:5",
-    "group": "button_direction"
-  },
-  {
-    "id": "f8a4c2b5e9d6f123456789abcdef0123456789ab",
-    "name": "column",
-    "$figmaStyleReferences": {},
-    "selectedTokenSets": {},
-    "$figmaVariableReferences": {},
-    "$figmaCollectionId": "VariableCollectionId:2115:3769",
-    "$figmaModeId": "2115:6",
-    "group": "button_direction"
   },
   {
     "id": "comp-size-sm-2025-09-12-multipliers",

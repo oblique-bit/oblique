@@ -4,8 +4,19 @@
       "viewport": {
         "multiplier": {
           "$type": "number",
-          "$value": "1.25",
-          "$description": "Mobile viewport scaling (125%) - Enhanced touch targets and readability for mobile devices"
+          "$value": 1.25,
+          "$description": "Viewport scaling "
+        },
+        "breakpoint": {
+          "min": {
+            "$type": "number",
+            "$value": 0,
+            "$description": "Desktop viewport scaling (100%) - Base reference for desktop/large screen experiences"
+          },
+          "max": {
+            "$type": "number",
+            "$value": 767
+          }
         }
       }
     }
