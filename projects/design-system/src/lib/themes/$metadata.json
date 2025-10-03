@@ -1,7 +1,7 @@
 {
   "tokenSetOrder": [
-    "01_global/viewport/breakpoint/desktop",
-    "01_global/viewport/breakpoint/mobile",
+    "01_global/viewport/desktop",
+    "01_global/viewport/mobile",
     "01_global/multipliers/viewport/desktop",
     "01_global/multipliers/viewport/mobile",
     "01_global/multipliers/dimension",
