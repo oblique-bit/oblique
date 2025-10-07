@@ -331,7 +331,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				tick();
 			}));
 
-			xdescribe('Show all favorite anchor', () => {
+			describe('Show all favorite anchor', () => {
 				let button: TestElement;
 
 				beforeEach(async () => {
@@ -680,6 +680,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			let trigger: TestElement;
 			beforeEach(async () => {
 				component.isLoggedIn = true;
+				component.lastUsedApplications = [
+					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
+					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'}
+				];
 				fixture.detectChanges();
 				trigger = await harness.getTrigger();
 			});
@@ -708,7 +712,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					expect(await harness.getPopoverHarness()).toBeTruthy();
 				});
 
-				xdescribe('Show all services anchor', () => {
+				describe('Show all services anchor', () => {
 					let button: TestElement;
 
 					beforeEach(async () => {
