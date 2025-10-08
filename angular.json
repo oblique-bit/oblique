@@ -95,6 +95,11 @@
             "assets": [
               {
                 "glob": "**/*",
+                "input": "projects/ob-tour/src/assets/",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
                 "input": "projects/sandbox/src/assets",
                 "output": "/assets"
               },
@@ -565,7 +570,10 @@
       "prefix": "obt",
       "architect": {
         "build": {
-          "builder": "@angular/build:ng-packagr",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ob-tour/ng-package.json"
+          },
           "configurations": {
             "production": {
               "tsConfig": "projects/ob-tour/tsconfig.lib.prod.json"
@@ -591,6 +599,16 @@
             }
           },
           "defaultConfiguration": "default"
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": false,
+          "inlineTemplate": false,
+          "prefix": "obt",
+          "style": "scss",
+          "standalone": true,
+          "type": "component"
         }
       }
     }

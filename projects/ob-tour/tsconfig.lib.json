@@ -1,13 +1,16 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "module": "es2015",
-    "strictNullChecks": true,
+    "module": "es2022",
     "moduleResolution": "node",
     "declaration": true,
     "inlineSources": true,
     "importHelpers": true,
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "@oblique/oblique": ["../../dist/oblique"],
+      "@oblique/oblique/*": ["../../dist/oblique/*"]
+    }
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
@@ -18,5 +21,10 @@
     "compilationMode": "partial"
   },
   "include": ["../../tests/**/*.d.ts"],
-  "exclude": ["src/test.ts", "**/*.spec.ts"]
+  "exclude": [
+    "src/test.ts",
+    "**/*.spec.ts",
+    "src/assets",
+    "src/integration-tests"
+  ]
 }

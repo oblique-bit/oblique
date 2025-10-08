@@ -1,0 +1,87 @@
+@use "@angular/cdk" as cdk;
+
+@include cdk.overlay();
+
+@mixin obt-tab-focus-box-shadow($tab-focus-box-shadow-color: #8655f6) {
+	box-shadow: 0 0 0 3px $tab-focus-box-shadow-color;
+	outline: none;
+}
+
+@mixin obt-notification-badge {
+	font-size: 0.8rem;
+	font-weight: bold;
+	position: absolute;
+	top: -0.5rem;
+	min-width: 1rem;
+	border-radius: 50%;
+	margin: auto;
+	padding: 0 0.5rem;
+	text-align: center;
+	z-index: 2;
+}
+
+.obt-screen-reader-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.obt-tutorial-toggle {
+	display: flex;
+	align-items: center;
+}
+
+.obt-tutorial {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	@media (width <= 905px) {
+		width: 20rem;
+
+		.obt-notification-button {
+			margin-left: 0;
+		}
+
+		.mat-mdc-slide-toggle {
+			margin-bottom: 1rem;
+		}
+	}
+
+	.obt-notification {
+		position: relative;
+
+		.obt-notification-button {
+			padding-right: 2.5rem;
+
+			@media (width > 905px) {
+				margin-left: 1rem;
+			}
+
+			&:focus-visible {
+				@include obt-tab-focus-box-shadow();
+				border-radius: 2px;
+			}
+		}
+
+		.obt-badge-new {
+			@include obt-notification-badge();
+			background: #047857ff;
+			color: white;
+			right: -0.5rem;
+		}
+
+		.obt-badge-in-progress {
+			@include obt-notification-badge();
+			background: #2f4356ff;
+			color: white;
+			right: 1rem;
+		}
+	}
+}

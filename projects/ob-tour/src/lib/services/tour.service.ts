@@ -1,17 +1,16 @@
 import {Injectable, signal} from '@angular/core';
-import {ObToursConfig} from './../models/tour-config.model';
+import {ObTourConfig} from './../models/tour-config.model';
+import {Subject} from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ObTourService {
-	private readonly config = signal<ObToursConfig | null>(null);
+	public readonly updateConfig = new Subject<ObTourConfig[]>();
+	private readonly config = signal<ObTourConfig[] | null>(null);
 
-	init(config: ObToursConfig): void {
+	init(config: ObTourConfig[]): void {
 		this.config.set(config);
-	}
-
-	getConfig(): ObToursConfig | null {
-		return this.config();
+		this.updateConfig.next(config);
 	}
 }

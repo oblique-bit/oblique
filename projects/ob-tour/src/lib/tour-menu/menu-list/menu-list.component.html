@@ -1,0 +1,49 @@
+<section [attr.aria-labelledby]="'obt-tour-list-title-' + listType()" class="tour-list">
+	<h3 [id]="'obt-tour-list-title-' + listType()" class="obt-tour-list-title">
+		{{ listTitle() }}
+	</h3>
+
+	@if (listItems()?.length) {
+		<ul class="tour-list-items">
+			@for (tour of listItems(); track $index) {
+				<li class="tour-list-item">
+					<span class="tour-title">
+						{{ tour?.tourTitle ? (tour.tourTitle | translate) : (`i18n.ob-tour.tour-menu.list.element.${listType()}.empty` | translate) }}
+					</span>
+
+					@if (actions()?.length) {
+						<ul class="action-list">
+							@for (action of actions(); track action.name) {
+								<li class="action-list-item">
+									<button
+										mat-button
+										type="button"
+										obButton="secondary"
+										class="action-button"
+										[matTooltip]="
+											`i18n.ob-tour.tour-menu.list.button.tooltip.${action.name}` | translate: { name: tour?.tourTitle | translate }
+										"
+										[attr.aria-label]="
+											`i18n.ob-tour.tour-menu.list.button.aria.${action.name}` | translate: { name: tour?.tourTitle | translate }
+										"
+									>
+										<mat-icon [svgIcon]="action.icon" />
+										<span class="ob-screen-reader-only">
+											{{ `i18n.ob-tour.tour-menu.list.button.aria.${action.name}` | translate: { name: tour?.tourTitle | translate } }}
+										</span>
+									</button>
+								</li>
+							}
+						</ul>
+					}
+				</li>
+			}
+		</ul>
+	} @else {
+		<ul class="tour-list-items">
+			<li class="tour-list-item">
+				{{ `i18n.ob-tour.tour-menu.list.element.${listType()}.empty` | translate }}
+			</li>
+		</ul>
+	}
+</section>

@@ -1,0 +1,50 @@
+@use "@oblique/oblique/src/styles/scss/core/variables" as variables;
+@use "@oblique/oblique/src/styles/scss/core/mixins/shadow" as shadow;
+
+.tour-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	ul {
+		margin-bottom: variables.$ob-spacing-md;
+		padding: 0;
+		list-style: none;
+	}
+
+	.tour-list-item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: variables.$ob-spacing-md;
+		padding: variables.$ob-spacing-sm variables.$ob-spacing-md;
+		border-bottom: 1px solid variables.$ob-secondary-100;
+		background-color: variables.$ob-white;
+		font-family: variables.$ob-font;
+		font-size: variables.$ob-font-size-normal;
+		color: variables.$ob-secondary-700;
+		transition:
+			background-color 0.2s ease-in-out,
+			color 0.2s ease-in-out;
+	}
+
+	.tour-title {
+		flex: 1;
+		font-weight: 600;
+		color: variables.$ob-secondary-700;
+		line-height: variables.$ob-line-height;
+	}
+
+	.action-list {
+		display: flex;
+		align-items: center;
+		gap: variables.$ob-spacing-xs;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		mat-icon {
+			margin: 0;
+		}
+	}
+}

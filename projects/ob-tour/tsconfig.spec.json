@@ -1,9 +1,15 @@
 {
-  "extends": "./tsconfig.lib.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "types": ["jest", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@oblique/oblique": ["../oblique/src/public_api"],
+      "@oblique/*": ["../oblique/src/lib/*"]
+    },
     "target": "ES2016",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": ["**/*.spec.ts", "../../tests/**/*.d.ts"],
   "exclude": []

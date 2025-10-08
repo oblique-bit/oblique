@@ -1,0 +1,72 @@
+@use "sass:selector";
+@use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/mixins/nav" as nav;
+@use "@oblique/oblique/src/styles/scss/core/mixins/shadow" as shadow;
+
+.obt-popover-content {
+	.obt-dialog-title {
+		display: flex;
+		justify-content: space-between;
+	}
+	display: flex;
+	flex-direction: column;
+	min-width: 300px;
+	max-width: 420px;
+	max-height: 60vh;
+	margin: 0;
+	padding: variables.$ob-spacing-lg;
+	border: none;
+	border-radius: variables.$ob-border-radius-base;
+	background-color: variables.$ob-white;
+	color: variables.$ob-default;
+	font-family: variables.$ob-font;
+	font-size: variables.$ob-font-size-normal;
+	line-height: variables.$ob-line-height;
+	overflow-y: auto;
+	z-index: variables.$ob-z-index-overlay;
+	@include shadow.ob-default-panel-box-shadow();
+
+	.obt-close-button {
+		flex-direction: row-reverse;
+
+		.ob-layout-collapsed & {
+			display: none;
+		}
+
+		&.mat-mdc-button > .mat-icon {
+			margin-left: variables.$ob-spacing-xs;
+			margin-right: 0;
+			font-size: variables.$ob-font-size-base;
+			height: variables.$ob-font-size-base;
+			width: variables.$ob-font-size-base;
+		}
+	}
+
+	h2 {
+		font-size: variables.$ob-font-size-big;
+		font-weight: bold;
+		margin-bottom: variables.$ob-spacing-md;
+		color: variables.$ob-default;
+	}
+
+	.obt-menu-list {
+		border-top: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
+		padding-top: variables.$ob-spacing-sm;
+		margin-top: variables.$ob-spacing-md;
+
+		&:first-of-type {
+			border-top: none;
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
+
+	::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: variables.$ob-secondary-300;
+		border-radius: 3px;
+	}
+}

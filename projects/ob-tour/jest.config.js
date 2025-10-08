@@ -8,6 +8,10 @@ module.exports = {
 		name: 'Ob-Tour',
 		color: 'cyan'
 	},
+	moduleNameMapper: {
+		'^@oblique/oblique$': '<rootDir>/projects/oblique/src/public_api.ts',
+		'^@oblique/(.*)$': '<rootDir>/projects/oblique/src/lib/$1'
+	},
 	coverageDirectory: '<rootDir>/coverage/ob-tour',
 	collectCoverageFrom: [
 		'<rootDir>/projects/ob-tour/src/lib/**/*.ts',

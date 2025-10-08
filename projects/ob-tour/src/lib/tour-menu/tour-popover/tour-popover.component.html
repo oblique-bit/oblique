@@ -1,0 +1,24 @@
+<div role="dialog" class="obt-popover-content" aria-labelledby="obt-dialog-title" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+	<header class="obt-dialog-title">
+		<h2 id="obt-dialog-title">{{ "i18n.ob-tour.tour-menu.list.title.dialog" | translate }}</h2>
+		<button
+			type="button"
+			mat-button
+			obButton="tertiary"
+			class="obt-close-button"
+			id="obt-menu-close-button"
+			[matTooltip]="'i18n.ob-tour.tour-menu.list.dialog.close' | obTranslateParams: { action: 'i18n.common.close' }"
+			(click)="onClose()"
+		>
+			{{ "i18n.common.close" | translate }}
+			<mat-icon matIconSuffix svgIcon="xmark" />
+		</button>
+	</header>
+	<obt-menu-list listType="new" [listItems]="newTours()" [listTitle]="'i18n.ob-tour.tour-menu.list.title.new' | translate" />
+	<obt-menu-list
+		listType="inProgress"
+		[listItems]="inProgressTours()"
+		[listTitle]="'i18n.ob-tour.tour-menu.list.title.inProgress' | translate"
+	/>
+	<obt-menu-list listType="done" [listItems]="doneTours()" [listTitle]="'i18n.ob-tour.tour-menu.list.title.done' | translate" />
+</div>

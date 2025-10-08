@@ -12,12 +12,13 @@ export interface ObTourConfig {
 	/** Ordered list of steps that define the tour. The index defines the ordering */
 	steps: ObTourStep[];
 	/** Key for persisting tour stat*/
-	storageKey: string;
+	storageKey?: string;
 	/**
 	 * Defines how and when the tour should be triggered.
 	 * Defaults to [{ type: 'manual' }] if not provided.
 	 */
 	triggers?: ObTourTrigger[];
+	state: ObTourState;
 }
 
 /**
@@ -35,3 +36,8 @@ export type ObTourTrigger =
 	| {type: 'manual'}
 	/** Delayed auto trigger: tour announces automatically after a delay (in minutes). */
 	| {type: 'delayedAuto'; delayInMinutes: number};
+
+export type ObTourAction = 'start' | 'skip' | 'restart' | 'resume';
+export const TOUR_STATES = ['new', 'done', 'inProgress'] as const;
+export type ObTourState = (typeof TOUR_STATES)[number];
+export type ObMenuActionIcon = 'skip_next' | 'redo' | 'chevron_right' | 'delete';

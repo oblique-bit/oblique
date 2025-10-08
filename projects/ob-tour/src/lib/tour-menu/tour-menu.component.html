@@ -1,0 +1,93 @@
+<div class="obt-tutorial">
+	<mat-slide-toggle
+		(change)="onToggleChange($event)"
+		[checked]="showTours()"
+		[matTooltip]="`i18n.ob-tour.tour-menu.toggle.tooltip.${showTours() ? 'off' : 'on'}` | translate"
+		class="obt-tutorial-toggle"
+	>
+		{{ "i18n.ob-tour.tour-menu.toggle.label" | translate }}
+	</mat-slide-toggle>
+
+	@if (showTours()) {
+		<div class="obt-notification" role="group" [attr.aria-label]="'i18n.ob-tour.tour-menu.notification.label' | translate">
+			@if (newTours().length > 0) {
+				<span
+					role="status"
+					class="obt-badge-new"
+					id="obt-badge-new"
+					[matTooltip]="'i18n.ob-tour.tour-menu.button.badge.new' | translate: { amount: newTours().length }"
+				>
+					{{ newTours().length }}
+					<span class="ob-screen-reader-only">
+						{{
+							`i18n.ob-tour.tour-menu.button.badge.screen-reader.new.${newTours().length === 1 ? "one" : "other"}`
+								| translate: { amount: newTours().length }
+						}}
+					</span>
+				</span>
+			}
+			@if (inProgressTours().length > 0) {
+				<span
+					class="obt-badge-in-progress"
+					role="status"
+					id="obt-badge-in-progress"
+					[matTooltip]="'i18n.ob-tour.tour-menu.button.badge.in-progress' | translate: { amount: inProgressTours().length }"
+				>
+					{{ inProgressTours().length }}
+					<span class="ob-screen-reader-only">
+						{{
+							`i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.${inProgressTours().length === 1 ? "one" : "other"}`
+								| translate: { amount: newTours().length }
+						}}
+					</span>
+				</span>
+			}
+
+			<button
+				#overlayOrigin="cdkOverlayOrigin"
+				cdkOverlayOrigin
+				class="obt-notification-button"
+				mat-button
+				obButton="secondary"
+				type="button"
+				[matTooltip]="'i18n.ob-tour.tour-menu.popover.open' | translate"
+				[attr.aria-expanded]="isOpen()"
+				[attr.aria-haspopup]="true"
+				(click)="togglePopover($event)"
+				aria-describedby="obt-notification-button-label"
+			>
+				<span id="obt-notification-button-label">
+					{{ "i18n.ob-tour.tour-menu.list.title.dialog" | translate }}
+					<span class="obt-screen-reader-only">
+						:{{ "i18n.ob-tour.tour-menu.button.badge.new" | translate: { amount: newTours().length } }},
+						{{ "i18n.ob-tour.tour-menu.button.badge.in-progress" | translate: { amount: inProgressTours().length } }}
+					</span>
+				</span>
+
+				<mat-icon svgIcon="book">
+					<span class="obt-screen-reader-only">
+						{{ "i18n.ob-tour.tour-menu.popover.icon.book" | translate }}
+					</span>
+				</mat-icon>
+			</button>
+		</div>
+
+		<ng-template
+			cdkConnectedOverlay
+			[cdkConnectedOverlayOrigin]="overlayOrigin"
+			[cdkConnectedOverlayOpen]="isOpen()"
+			[cdkConnectedOverlayHasBackdrop]="true"
+			[cdkConnectedOverlayPositions]="menuPositions"
+			(backdropClick)="closePopover()"
+			(overlayOutsideClick)="closePopover()"
+		>
+			<obt-tour-popover
+				[doneTours]="doneTours()"
+				[newTours]="newTours()"
+				[inProgressTours]="inProgressTours()"
+				[isOpen]="isOpen()"
+				(closeEmitter)="closePopover()"
+			/>
+		</ng-template>
+	}
+</div>
