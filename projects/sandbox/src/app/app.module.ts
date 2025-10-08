@@ -114,6 +114,18 @@ registerLocaleData(localeDE);
 					{url: '/samples/button', context: 'Some random internal link to demonstrate the feature'}
 				]
 			},
+			translate: {
+				additionalFiles: [
+					{
+						prefix: './assets/i18n/ob-tour-',
+						suffix: '.json'
+					},
+					{
+						prefix: './assets/i18n/',
+						suffix: '.json'
+					}
+				]
+			},
 			hasLanguageInUrl: true
 		})
 	]

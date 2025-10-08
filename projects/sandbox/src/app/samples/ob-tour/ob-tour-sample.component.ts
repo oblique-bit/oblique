@@ -1,44 +1,89 @@
-import {Component, type OnInit, inject} from '@angular/core';
-import {ObTourComponent, ObTourService, type ObToursConfig} from '@oblique/ob-tour';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
-import {MatListModule} from '@angular/material/list';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {Component, inject} from '@angular/core';
+import {ObTourService, type ObToursConfig} from '@oblique/ob-tour';
 
 @Component({
 	selector: 'sb-ob-tour',
-	imports: [ObTourComponent, MatButtonModule, MatFormFieldModule, MatSelectModule, MatListModule, MatSlideToggleModule],
 	templateUrl: './ob-tour-sample.component.html',
-	styleUrl: './ob-tour-sample.component.scss'
+	styleUrl: './ob-tour-sample.component.scss',
+	standalone: false
 })
-export class ObTourSampleComponent implements OnInit {
+export class ObTourSampleComponent {
 	tourConfig: ObToursConfig = {
 		tours: [
 			{
-				tourTitle: 'Hello Test',
-				tourDescription: 'description for testing of the tour config',
+				tourTitle: 'i18n.ob-tour.rainbow.title',
+				tourDescription: 'i18n.ob-tour.rainbow.description',
+				storageKey: 'rainbowTourStorageKey',
+				triggers: [{type: 'manual'}],
+				state: 'new',
 				steps: [
 					{
-						stepTitle: 'first Step of the tour',
-						stepDescription: 'description of the first tour step'
+						stepTitle: 'i18n.ob-tour.rainbow.step1.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step1.description'
 					},
 					{
-						stepTitle: 'second step of the tour',
-						stepDescription: 'description of the second tour step'
+						stepTitle: 'i18n.ob-tour.rainbow.step2.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step2.description'
+					},
+					{
+						stepTitle: 'i18n.ob-tour.rainbow.step3.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step3.description'
 					}
-				],
-				storageKey: 'tourStorageKey',
-				triggers: [{type: 'manual'}]
+				]
+			},
+			{
+				tourTitle: 'i18n.ob-tour.glitter.title',
+				tourDescription: 'i18n.ob-tour.glitter.description',
+				storageKey: 'glitterGuideStorageKey',
+				triggers: [{type: 'manual'}],
+				state: 'new',
+				steps: [
+					{
+						stepTitle: 'i18n.ob-tour.glitter.step1.title',
+						stepDescription: 'i18n.ob-tour.glitter.step1.description'
+					},
+					{
+						stepTitle: 'i18n.ob-tour.glitter.step2.title',
+						stepDescription: 'i18n.ob-tour.glitter.step2.description'
+					}
+				]
+			},
+			{
+				tourTitle: 'i18n.ob-tour.lovewins.title',
+				tourDescription: 'i18n.ob-tour.lovewins.description',
+				storageKey: 'loveWinsTourStorageKey',
+				triggers: [{type: 'manual'}],
+				state: 'new',
+				steps: [
+					{
+						stepTitle: 'i18n.ob-tour.lovewins.step1.title',
+						stepDescription: 'i18n.ob-tour.tour.lovewins.step1.description'
+					},
+					{
+						stepTitle: 'i18n.ob-tour.lovewins.step2.title',
+						stepDescription: 'i18n.ob-tour.lovewins.step2.description'
+					}
+				]
+			},
+			{
+				tourTitle: 'Without translation Key',
+				tourDescription: 'Hallo Velo',
+				storageKey: 'ohneTranslationStorageKey',
+				triggers: [{type: 'manual'}],
+				state: 'new',
+				steps: [
+					{
+						stepTitle: 'Step1 ohne translation',
+						stepDescription: 'Descirption Step 1'
+					},
+					{
+						stepTitle: 'step2.',
+						stepDescription: 'laksjdflökjsdfjaölsdj asfsdfasdf asdf asdf adfa'
+					}
+				]
 			}
 		]
 	};
 
 	tourService = inject(ObTourService);
-	tourConfigString = '';
-
-	ngOnInit(): void {
-		this.tourService.init(this.tourConfig);
-		this.tourConfigString = JSON.stringify(this.tourService.getConfig());
-	}
 }

@@ -1,9 +1,9 @@
-<obt-ob-tour />
+<obt-tour-menu [toursConfig]="tourConfig" />
 <div class="tour-demo-container">
 	<h1>Tour Playground</h1>
 	<pre>
 		<code>
-			{{tourConfigString}}
+			{{this.tourService.updateConfig |async|json}}
 		</code>
 	</pre>
 

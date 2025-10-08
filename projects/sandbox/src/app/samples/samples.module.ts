@@ -85,6 +85,8 @@ import {ServiceNavigationSampleComponent} from './service-navigation/service-nav
 import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
 import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
+import {ObTourSampleComponent} from './ob-tour/ob-tour-sample.component';
+import {TourMenuComponent} from '@oblique/ob-tour';
 
 @NgModule({
 	imports: [
@@ -131,7 +133,8 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		ReactiveFormsModule,
 		RouterModule,
 		SamplesRoutingModule,
-		TranslateModule
+		TranslateModule,
+		TourMenuComponent
 	],
 	declarations: [
 		AlertSampleComponent,
@@ -171,7 +174,8 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		ServiceNavigationSampleComponent,
 		SpinnerSampleComponent,
 		UnknownRouteSampleComponent,
-		UnsavedChangesSampleComponent
+		UnsavedChangesSampleComponent,
+		ObTourSampleComponent
 	],
 	exports: [RouterModule],
 	providers: [SampleDataResolver]

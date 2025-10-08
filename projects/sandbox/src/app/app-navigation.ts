@@ -98,6 +98,7 @@ export const appNavigation: ObINavigationLink[] = [
 			{url: 'nested-form', label: 'Nested froms'},
 			{url: 'notification', label: 'i18n.routes.samples.notification.title'},
 			{url: 'number-format', label: 'i18n.routes.samples.number-format.title'},
+			{url: 'ob-tour', label: 'i18n.routes.samples.ob-tour.title'},
 			{url: 'popover', label: 'Popover'},
 			{url: 'rxjs-operators', label: 'RxJS operators'},
 			{url: 'schema-validation', label: 'i18n.routes.samples.schema-validation.title'},
