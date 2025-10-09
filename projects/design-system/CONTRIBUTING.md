@@ -6,4 +6,5 @@ All commits related to the Design System package must use the **design-system** 
 
 ## <a name="scope"></a> Scope
 
+- **styles**
 - **toolchain**
