@@ -131,13 +131,13 @@ describe('Integration: MenuListComponent inside MenuListTestComponent', () => {
 
 	it('ensures list section has accessible label via aria-labelledby', () => {
 		const host: HTMLElement = fixture.nativeElement;
-		const section = host.querySelector('section.tour-list');
+		const section = host.querySelector('section.obt-tour-list');
 		expect(section?.hasAttribute('aria-labelledby')).toBe(true);
 	});
 
 	it('ensures title id matches aria-labelledby reference', () => {
 		const host: HTMLElement = fixture.nativeElement;
-		const section = host.querySelector('section.tour-list');
+		const section = host.querySelector('section.obt-tour-list');
 		const titleId = section?.getAttribute('aria-labelledby');
 		const title = host.querySelector(`#${titleId}`);
 		expect(title?.textContent?.trim()).toBe('New Tours');

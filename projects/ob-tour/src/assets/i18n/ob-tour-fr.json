@@ -26,5 +26,11 @@
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.new.one": "{{amount}} nouvelle visite disponible",
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.new.other": "{{amount}} nouvelles visites disponibles",
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.one": "{{amount}} visite en cours",
-  "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.other": "{{amount}} visites en cours"
+  "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.other": "{{amount}} visites en cours",
+  "i18n.ob-tour.overlay.dialog.close.with-save-info": "{{closeMessage}} (L’étape actuelle est enregistrée localement afin que tu puisses continuer plus tard)",
+  "i18n.ob-tour.overlay.dialog.close": "Fermer le dialogue de la visite",
+  "i18n.ob-tour.overlay.button.aria.previous": "Étape précédente de la visite",
+  "i18n.ob-tour.overlay.button.label.previous": "Précédent",
+  "i18n.ob-tour.overlay.button.label.next": "Suivant",
+  "i18n.ob-tour.overlay.button.aria.next": "Étape suivante de la visite"
 }

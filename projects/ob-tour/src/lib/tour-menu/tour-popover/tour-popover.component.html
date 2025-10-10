@@ -8,7 +8,7 @@
 			class="obt-close-button"
 			id="obt-menu-close-button"
 			[matTooltip]="'i18n.ob-tour.tour-menu.list.dialog.close' | obTranslateParams: { action: 'i18n.common.close' }"
-			(click)="onClose()"
+			(click)="closeEmitter.emit()"
 		>
 			{{ "i18n.common.close" | translate }}
 			<mat-icon matIconSuffix svgIcon="xmark" />

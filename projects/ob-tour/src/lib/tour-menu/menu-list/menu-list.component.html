@@ -1,37 +1,52 @@
-<section [attr.aria-labelledby]="'obt-tour-list-title-' + listType()" class="tour-list">
+<section [attr.aria-labelledby]="'obt-tour-list-title-' + listType()" class="obt-tour-list">
 	<h3 [id]="'obt-tour-list-title-' + listType()" class="obt-tour-list-title">
 		{{ listTitle() }}
 	</h3>
 
 	@if (listItems()?.length) {
 		<ul class="tour-list-items">
-			@for (tour of listItems(); track $index) {
-				<li class="tour-list-item">
-					<span class="tour-title">
-						{{ tour?.tourTitle ? (tour.tourTitle | translate) : (`i18n.ob-tour.tour-menu.list.element.${listType()}.empty` | translate) }}
-					</span>
+			@for (tour of listItems(); track tour.tourTitle; let tourIndex = $index) {
+				<li class="obt-tour-list-item" [class.expanded]="accordionItem.expanded">
+					<cdk-accordion-item #accordionItem="cdkAccordionItem" class="obt-accordion-item">
+						<button
+							type="button"
+							class="obt-accordion-item-header"
+							(click)="accordionItem.toggle()"
+							tabindex="0"
+							[attr.id]="'obt-accordion-header-' + tourIndex"
+							[attr.aria-expanded]="accordionItem.expanded"
+							[attr.aria-controls]="'obt-accordion-body-' + tourIndex"
+						>
+							<span class="obt-tour-title">
+								{{
+									tour?.tourTitle ? (tour.tourTitle | translate) : (`i18n.ob-tour.tour-menu.list.element.${listType()}.empty` | translate)
+								}}
+							</span>
+							<span class="obt-screen-reader-only"> Click to {{ accordionItem.expanded ? "close" : "open" }} </span>
+						</button>
+						@if (accordionItem.expanded) {
+							<div
+								class="obt-accordion-item-body"
+								role="region"
+								[style.display]="accordionItem.expanded ? '' : 'none'"
+								[attr.id]="'obt-accordion-body-' + tourIndex"
+								[attr.aria-labelledby]="'obt-accordion-header-' + tourIndex"
+							>
+								{{ tour.tourDescription | translate }}
+							</div>
+						}
+					</cdk-accordion-item>
 
 					@if (actions()?.length) {
 						<ul class="action-list">
 							@for (action of actions(); track action.name) {
 								<li class="action-list-item">
-									<button
-										mat-button
-										type="button"
-										obButton="secondary"
-										class="action-button"
-										[matTooltip]="
-											`i18n.ob-tour.tour-menu.list.button.tooltip.${action.name}` | translate: { name: tour?.tourTitle | translate }
-										"
-										[attr.aria-label]="
-											`i18n.ob-tour.tour-menu.list.button.aria.${action.name}` | translate: { name: tour?.tourTitle | translate }
-										"
-									>
-										<mat-icon [svgIcon]="action.icon" />
-										<span class="ob-screen-reader-only">
-											{{ `i18n.ob-tour.tour-menu.list.button.aria.${action.name}` | translate: { name: tour?.tourTitle | translate } }}
-										</span>
-									</button>
+									<obt-action-button
+										[icon]="action.icon"
+										[name]="action.name"
+										[tourTitle]="tour.tourTitle"
+										[id]="'tour-' + tourIndex + '-' + tour.storageKey + '-' + action.name"
+									/>
 								</li>
 							}
 						</ul>
@@ -41,7 +56,7 @@
 		</ul>
 	} @else {
 		<ul class="tour-list-items">
-			<li class="tour-list-item">
+			<li class="obt-tour-list-item">
 				{{ `i18n.ob-tour.tour-menu.list.element.${listType()}.empty` | translate }}
 			</li>
 		</ul>

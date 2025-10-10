@@ -1,58 +1,62 @@
 @use "sass:selector";
-@use "@oblique/oblique/src/styles/scss/core/variables";
-@use "@oblique/oblique/src/styles/scss/core/mixins/nav" as nav;
-@use "@oblique/oblique/src/styles/scss/core/mixins/shadow" as shadow;
+@use "../../styles" as styles;
+@use "@oblique/oblique/src/styles/scss/core/mixins/shadow" as ob;
 
 .obt-popover-content {
-	.obt-dialog-title {
-		display: flex;
-		justify-content: space-between;
-	}
 	display: flex;
 	flex-direction: column;
 	min-width: 300px;
 	max-width: 420px;
 	max-height: 60vh;
 	margin: 0;
-	padding: variables.$ob-spacing-lg;
+	padding: 0 styles.$obt-spacing-lg styles.$obt-spacing-lg;
 	border: none;
-	border-radius: variables.$ob-border-radius-base;
-	background-color: variables.$ob-white;
-	color: variables.$ob-default;
-	font-family: variables.$ob-font;
-	font-size: variables.$ob-font-size-normal;
-	line-height: variables.$ob-line-height;
+	border-radius: styles.$obt-border-radius-base;
+	background-color: styles.$obt-white;
+	color: styles.$obt-default;
+	font-family: styles.$obt-font;
+	font-size: styles.$obt-font-size-normal;
+	line-height: styles.$obt-line-height;
 	overflow-y: auto;
-	z-index: variables.$ob-z-index-overlay;
-	@include shadow.ob-default-panel-box-shadow();
+	z-index: styles.$obt-z-index-overlay;
+	@include ob.ob-default-panel-box-shadow();
+
+	.obt-dialog-title {
+		position: sticky;
+		top: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: styles.$obt-white;
+		padding-top: styles.$obt-spacing-sm;
+		padding-bottom: styles.$obt-spacing-sm;
+		margin-bottom: styles.$obt-spacing-md;
+		z-index: styles.$obt-z-index-overlay + 1;
+	}
+
+	h2 {
+		font-size: styles.$obt-font-size-big;
+		font-weight: bold;
+		color: styles.$obt-default;
+		margin: 0;
+	}
 
 	.obt-close-button {
 		flex-direction: row-reverse;
 
-		.ob-layout-collapsed & {
-			display: none;
-		}
-
 		&.mat-mdc-button > .mat-icon {
-			margin-left: variables.$ob-spacing-xs;
+			margin-left: styles.$obt-spacing-xs;
 			margin-right: 0;
-			font-size: variables.$ob-font-size-base;
-			height: variables.$ob-font-size-base;
-			width: variables.$ob-font-size-base;
+			font-size: styles.$obt-font-size-base;
+			height: styles.$obt-font-size-base;
+			width: styles.$obt-font-size-base;
 		}
-	}
-
-	h2 {
-		font-size: variables.$ob-font-size-big;
-		font-weight: bold;
-		margin-bottom: variables.$ob-spacing-md;
-		color: variables.$ob-default;
 	}
 
 	.obt-menu-list {
-		border-top: variables.$ob-line-width-xs solid variables.$ob-gray-lighter;
-		padding-top: variables.$ob-spacing-sm;
-		margin-top: variables.$ob-spacing-md;
+		border-top: styles.$obt-line-width-xs solid styles.$obt-gray-lighter;
+		padding-top: styles.$obt-spacing-sm;
+		margin-top: styles.$obt-spacing-md;
 
 		&:first-of-type {
 			border-top: none;
@@ -66,7 +70,7 @@
 	}
 
 	::-webkit-scrollbar-thumb {
-		background-color: variables.$ob-secondary-300;
+		background-color: styles.$obt-secondary-300;
 		border-radius: 3px;
 	}
 }

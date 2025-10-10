@@ -5,10 +5,12 @@ import {ObButtonModule} from '@oblique/oblique';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {ActionButtonComponent} from './action-button/action-button.component';
+import {CdkAccordionItem} from '@angular/cdk/accordion';
 
 @Component({
 	selector: 'obt-menu-list',
-	imports: [TranslatePipe, MatButtonModule, MatIconModule, ObButtonModule, MatTooltipModule],
+	imports: [TranslatePipe, MatButtonModule, MatIconModule, ObButtonModule, MatTooltipModule, ActionButtonComponent, CdkAccordionItem],
 	templateUrl: './menu-list.component.html',
 	styleUrl: './menu-list.component.scss'
 })

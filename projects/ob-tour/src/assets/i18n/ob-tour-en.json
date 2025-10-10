@@ -26,5 +26,11 @@
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.new.one": "{{amount}} new tour available",
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.new.other": "{{amount}} new tours available",
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.one": "{{amount}} ongoing tour",
-  "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.other": "{{amount}} ongoing tours"
+  "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.other": "{{amount}} ongoing tours",
+  "i18n.ob-tour.overlay.dialog.button.tooltip.close.with-save-info": "{{closeMessage}} (The current step is saved locally so you can continue later)",
+  "i18n.ob-tour.overlay.dialog.button.tooltip.close": "Close tour dialog",
+  "i18n.ob-tour.overlay.button.aria.previous": "Previous step of the tour",
+  "i18n.ob-tour.overlay.button.label.previous": "Previous",
+  "i18n.ob-tour.overlay.button.label.next": "Next",
+  "i18n.ob-tour.overlay.button.aria.next": "Next step of the tour"
 }

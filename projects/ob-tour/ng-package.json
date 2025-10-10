@@ -2,7 +2,8 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ob-tour",
   "lib": {
-    "entryFile": "src/public-api.ts"
+    "entryFile": "src/public-api.ts",
+    "styleIncludePaths": ["projects/ob-tour/src/lib/styles"]
   },
   "assets": ["src/assets"],
   "allowedNonPeerDependencies": ["@schematics/angular", "ansi-colors"]

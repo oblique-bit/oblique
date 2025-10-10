@@ -69,4 +69,18 @@ export class ObtMenuListHarness extends ComponentHarness {
 			await button.click();
 		}
 	}
+
+	async getPopoverCloseButton(): Promise<MatButtonHarness | null> {
+		const popoverRoot = this.documentRootLocatorFactory();
+		return popoverRoot.locatorForOptional(MatButtonHarness.with({selector: 'obt-tour-popover button[aria-label="close"]'}))();
+	}
+
+	async getPopoverCloseAriaLabel(): Promise<string | null> {
+		const btn = await this.getPopoverCloseButton();
+		if (!btn) {
+			return null;
+		}
+		const host = await btn.host();
+		return host.getAttribute('aria-label');
+	}
 }

@@ -9,55 +9,49 @@
 	</mat-slide-toggle>
 
 	@if (showTours()) {
-		<div class="obt-notification" role="group" [attr.aria-label]="'i18n.ob-tour.tour-menu.notification.label' | translate">
-			@if (newTours().length > 0) {
-				<span
-					role="status"
-					class="obt-badge-new"
-					id="obt-badge-new"
-					[matTooltip]="'i18n.ob-tour.tour-menu.button.badge.new' | translate: { amount: newTours().length }"
-				>
-					{{ newTours().length }}
-					<span class="ob-screen-reader-only">
-						{{
-							`i18n.ob-tour.tour-menu.button.badge.screen-reader.new.${newTours().length === 1 ? "one" : "other"}`
-								| translate: { amount: newTours().length }
-						}}
+		<div
+			class="obt-notification"
+			role="group"
+			[attr.aria-label]="'i18n.ob-tour.tour-menu.notification.label' | translate"
+			[ngClass]="{
+				'obt-badge-left': badgePosition() === 'left',
+				'obt-badge-right': badgePosition() === 'right'
+			}"
+		>
+			@for (state of ["new", "inProgress"]; track state) {
+				@if ((getTours(state)?.length ?? 0) > 0) {
+					<span
+						[ngClass]="{
+							'obt-badge-in-progress': state === 'inProgress',
+							'obt-badge-new': state === 'new'
+						}"
+						[id]="'obt-badge-' + dasherize(state)"
+						[matTooltip]="getTooltipKey(state) | translate: { amount: getTours(state).length }"
+						role="status"
+					>
+						{{ getTours(state).length }}
+						<span class="obt-screen-reader-only">
+							{{ getScreenReaderKey(state) | translate: { amount: getTours(state).length } }}
+						</span>
 					</span>
-				</span>
-			}
-			@if (inProgressTours().length > 0) {
-				<span
-					class="obt-badge-in-progress"
-					role="status"
-					id="obt-badge-in-progress"
-					[matTooltip]="'i18n.ob-tour.tour-menu.button.badge.in-progress' | translate: { amount: inProgressTours().length }"
-				>
-					{{ inProgressTours().length }}
-					<span class="ob-screen-reader-only">
-						{{
-							`i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.${inProgressTours().length === 1 ? "one" : "other"}`
-								| translate: { amount: newTours().length }
-						}}
-					</span>
-				</span>
+				}
 			}
 
 			<button
 				#overlayOrigin="cdkOverlayOrigin"
+				(click)="togglePopover($event)"
+				[attr.aria-expanded]="isOpen()"
+				[attr.aria-haspopup]="true"
+				[matTooltip]="'i18n.ob-tour.tour-menu.popover.open' | translate"
+				aria-describedby="obt-notification-button-label"
 				cdkOverlayOrigin
 				class="obt-notification-button"
 				mat-button
 				obButton="secondary"
 				type="button"
-				[matTooltip]="'i18n.ob-tour.tour-menu.popover.open' | translate"
-				[attr.aria-expanded]="isOpen()"
-				[attr.aria-haspopup]="true"
-				(click)="togglePopover($event)"
-				aria-describedby="obt-notification-button-label"
 			>
 				<span id="obt-notification-button-label">
-					{{ "i18n.ob-tour.tour-menu.list.title.dialog" | translate }}
+					<span>{{ customButtonLabel() || ("i18n.ob-tour.tour-menu.list.title.dialog" | translate) }}</span>
 					<span class="obt-screen-reader-only">
 						:{{ "i18n.ob-tour.tour-menu.button.badge.new" | translate: { amount: newTours().length } }},
 						{{ "i18n.ob-tour.tour-menu.button.badge.in-progress" | translate: { amount: inProgressTours().length } }}
@@ -71,22 +65,21 @@
 				</mat-icon>
 			</button>
 		</div>
-
 		<ng-template
-			cdkConnectedOverlay
-			[cdkConnectedOverlayOrigin]="overlayOrigin"
-			[cdkConnectedOverlayOpen]="isOpen()"
-			[cdkConnectedOverlayHasBackdrop]="true"
-			[cdkConnectedOverlayPositions]="menuPositions"
 			(backdropClick)="closePopover()"
 			(overlayOutsideClick)="closePopover()"
+			[cdkConnectedOverlayHasBackdrop]="true"
+			[cdkConnectedOverlayOpen]="isOpen()"
+			[cdkConnectedOverlayOrigin]="overlayOrigin"
+			[cdkConnectedOverlayPositions]="menuPositions()"
+			cdkConnectedOverlay
 		>
 			<obt-tour-popover
+				(closeEmitter)="closePopover()"
 				[doneTours]="doneTours()"
-				[newTours]="newTours()"
 				[inProgressTours]="inProgressTours()"
 				[isOpen]="isOpen()"
-				(closeEmitter)="closePopover()"
+				[newTours]="newTours()"
 			/>
 		</ng-template>
 	}

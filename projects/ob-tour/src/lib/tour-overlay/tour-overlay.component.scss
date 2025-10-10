@@ -1,0 +1,80 @@
+@use "@oblique/oblique/src/styles/scss/core/variables";
+@use "@oblique/oblique/src/styles/scss/core/mixins/shadow" as shadow;
+@use "@angular/cdk" as cdk;
+
+.obt-tour-overlay {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 320px;
+	max-width: 480px;
+	padding: variables.$ob-spacing-lg;
+	border-radius: variables.$ob-border-radius-base;
+	background-color: variables.$ob-white;
+	color: variables.$ob-default;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 20%);
+	outline: none;
+
+	.tour-arrow {
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-left: 1rem solid transparent;
+		border-right: 1rem solid transparent;
+		border-bottom: 1rem solid variables.$ob-white;
+		top: -0.6rem;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&.arrow-bottom .tour-arrow {
+		top: auto;
+		bottom: -1rem;
+		border-top: 1rem solid variables.$ob-white;
+		border-bottom: none;
+	}
+
+	&.arrow-left .tour-arrow {
+		top: 50%;
+		left: -1rem;
+		transform: translateY(-50%);
+		border: 1rem solid transparent;
+		border-right: 1rem solid variables.$ob-white;
+	}
+
+	&.arrow-right .tour-arrow {
+		top: 50%;
+		right: -1rem;
+		transform: translateY(-50%);
+		border: 1rem solid transparent;
+		border-left: 1rem solid variables.$ob-white;
+	}
+
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: variables.$ob-spacing-md;
+	}
+
+	&__title {
+		font-weight: 600;
+		font-size: 1.2rem;
+		margin: 0;
+	}
+
+	&__content {
+		margin-bottom: variables.$ob-spacing-md;
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: flex-end;
+		gap: variables.$ob-spacing-sm;
+	}
+
+	&__empty {
+		font-style: italic;
+		padding: variables.$ob-spacing-md;
+	}
+}

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, Output, input} from '@angular/core';
+import {Component, EventEmitter, HostListener, Output, effect, inject, input} from '@angular/core';
 import {MenuListComponent} from '../menu-list/menu-list.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -7,6 +7,8 @@ import {TranslatePipe} from '@ngx-translate/core';
 import {A11yModule} from '@angular/cdk/a11y';
 import {MatSuffix} from '@angular/material/form-field';
 import {ObButtonModule, ObTranslateParamsPipe} from '@oblique/oblique';
+
+import {ObtTourService} from '../../services/tour.service';
 import {ObTourConfig} from '../../models/tour-config.model';
 
 @Component({
@@ -30,9 +32,25 @@ export class TourPopoverComponent {
 	readonly newTours = input<ObTourConfig[]>([]);
 	readonly inProgressTours = input<ObTourConfig[]>([]);
 	readonly isOpen = input<boolean>(false);
+
 	@Output() readonly closeEmitter: EventEmitter<void> = new EventEmitter<void>();
 
+	private readonly tourService = inject(ObtTourService);
+
+	constructor() {
+		effect(() => {
+			const currentTour = this.tourService.activeTour();
+			if (currentTour?.tourTitle && this.isOpen()) {
+				this.onClose();
+			}
+		});
+	}
+
 	onClose(): void {
+		const currentTour = this.tourService.activeTour();
+		if (!currentTour) {
+			return;
+		}
 		this.closeEmitter.emit();
 	}
 

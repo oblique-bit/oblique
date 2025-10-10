@@ -27,5 +27,11 @@
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.new.one": "{{amount}} neue Tour verfügbar",
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.new.other": "{{amount}} neue Touren verfügbar",
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.one": "{{amount}} laufende Tour",
-  "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.other": "{{amount}} laufende Touren"
+  "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.other": "{{amount}} laufende Touren",
+  "i18n.ob-tour.overlay.dialog.button.tooltip.close.with-save-info": "{{closeMessage}} (Aktueller Schritt wird lokal gespeichert, sodass du später weiterfahren kannst)",
+  "i18n.ob-tour.overlay.dialog.button.tooltip.close": "Tour-Dialog schliessen",
+  "i18n.ob-tour.overlay.button.aria.previous": "Vorheriger Schritt der Tour",
+  "i18n.ob-tour.overlay.button.label.previous": "Zurück",
+  "i18n.ob-tour.overlay.button.label.next": "Weiter",
+  "i18n.ob-tour.overlay.button.aria.next": "Nächster Schritt der Tour"
 }

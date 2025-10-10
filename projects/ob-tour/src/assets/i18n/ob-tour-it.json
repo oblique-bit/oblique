@@ -26,5 +26,11 @@
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.new.one": "{{amount}} nuova visita disponibile",
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.new.other": "{{amount}} nuove visite disponibili",
   "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.one": "{{amount}} visita in corso",
-  "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.other": "{{amount}} visite in corso"
+  "i18n.ob-tour.tour-menu.button.badge.screen-reader.in-progress.other": "{{amount}} visite in corso",
+  "i18n.ob-tour.overlay.dialog.button.tooltip.close.with-save-info": "{{saveMessage}} (Il passaggio corrente viene salvato localmente per poter continuare in seguito)",
+  "i18n.ob-tour.overlay.dialog.button.tooltip.close": "Chiudere la finestra di dialogo del tour",
+  "i18n.ob-tour.overlay.button.aria.previous": "Passaggio precedente del tour",
+  "i18n.ob-tour.overlay.button.label.previous": "Precedente",
+  "i18n.ob-tour.overlay.button.label.next": "Avanti",
+  "i18n.ob-tour.overlay.button.aria.next": "Passaggio successivo del tour"
 }

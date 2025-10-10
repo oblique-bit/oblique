@@ -1,0 +1,15 @@
+<button
+	[attr.aria-label]="`i18n.ob-tour.tour-menu.list.button.aria.${name()}` | translate: { name: tourTitle() | translate }"
+	[matTooltip]="`i18n.ob-tour.tour-menu.list.button.tooltip.${name()}` | translate: { name: tourTitle() | translate }"
+	(click)="onAction()"
+	class="action-button"
+	mat-button
+	obButton="secondary"
+	type="button"
+	[id]="id()"
+>
+	<mat-icon [svgIcon]="icon()" />
+	<span class="ob-screen-reader-only">
+		{{ `i18n.ob-tour.tour-menu.list.button.aria.${name()}` | translate: { name: tourTitle() | translate } }}
+	</span>
+</button>

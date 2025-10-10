@@ -24,8 +24,27 @@ export interface ObTourConfig {
 /**
  * Wrapper configuration that allows registering multiple tours within an application.
  */
-export interface ObToursConfig {
+export interface ObtToursConfig {
 	tours: ObTourConfig[];
+}
+
+export type ObtBadgePosition = 'left' | 'right';
+
+export enum ObtMenuPositionsY {
+	AUTO = 'auto',
+	ABOVE = 'above',
+	BELOW = 'below'
+}
+
+export enum ObtMenuPositionsX {
+	AUTO = 'auto',
+	START = 'start',
+	END = 'end'
+}
+
+export interface ObtMenuPosition {
+	originX: ObtMenuPositionsX;
+	originY: ObtMenuPositionsY;
 }
 
 /**

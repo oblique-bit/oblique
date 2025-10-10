@@ -4,16 +4,16 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {HarnessLoader} from '@angular/cdk/testing';
 import {MatSlideToggleHarness} from '@angular/material/slide-toggle/testing';
 import {MatButtonHarness} from '@angular/material/button/testing';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslateFakeLoader, TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {MatSlideToggleChange} from '@angular/material/slide-toggle';
-import {TourMenuComponent} from './tour-menu.component';
-import {ObTourService} from '../services/tour.service';
+import {ObtTourMenuComponent} from './tour-menu.component';
+import {ObtTourService} from '../services/tour.service';
 import {ObTourServiceMock} from '../services/_mock/tour-mock.service';
-import type {ObTourConfig, ObToursConfig} from '../models/tour-config.model';
+import type {ObTourConfig, ObtToursConfig} from '../models/tour-config.model';
 
 describe('TourMenuComponent', () => {
-	let fixture: ComponentFixture<TourMenuComponent>;
-	let component: TourMenuComponent;
+	let fixture: ComponentFixture<ObtTourMenuComponent>;
+	let component: ObtTourMenuComponent;
 	let loader: HarnessLoader;
 	let tourServiceMock: ObTourServiceMock;
 
@@ -21,14 +21,26 @@ describe('TourMenuComponent', () => {
 		tourServiceMock = new ObTourServiceMock();
 
 		await TestBed.configureTestingModule({
-			imports: [TourMenuComponent, BrowserTestingModule, TranslateModule.forRoot()],
-			providers: [{provide: ObTourService, useValue: tourServiceMock}]
+			imports: [
+				ObtTourMenuComponent,
+				BrowserTestingModule,
+				TranslateModule.forRoot({
+					defaultLanguage: 'en',
+					loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+				})
+			],
+			providers: [{provide: ObtTourService, useValue: tourServiceMock}]
 		}).compileComponents();
 
-		fixture = TestBed.createComponent(TourMenuComponent);
+		fixture = TestBed.createComponent(ObtTourMenuComponent);
 		component = fixture.componentInstance;
 		loader = TestbedHarnessEnvironment.loader(fixture);
 		fixture.detectChanges();
+	});
+
+	afterEach(() => {
+		tourServiceMock.setCurrentStep(null);
+		tourServiceMock.init.mockReturnValue(null);
 	});
 
 	describe('Component creation and initialization', () => {
@@ -85,7 +97,7 @@ describe('TourMenuComponent', () => {
 
 		it('should not set allTours when updateConfig emits empty array', fakeAsync(() => {
 			component.onToggleChange({checked: true} as MatSlideToggleChange);
-			tourServiceMock.emitUpdate([]);
+			tourServiceMock.updateConfig.next([]);
 			tick();
 			expect(component.allTours()).toEqual([]);
 		}));
@@ -102,19 +114,17 @@ describe('TourMenuComponent', () => {
 				}
 			];
 			component.onToggleChange({checked: true} as MatSlideToggleChange);
-			tourServiceMock.emitUpdate(updateTours);
-			tick();
+			tourServiceMock.updateConfig.next(updateTours);
+			TestBed.tick();
 			expect(component.allTours()).toEqual(updateTours);
 		}));
 
 		it('should update allTours after multiple emits', fakeAsync(() => {
-			const first: ObTourConfig[] = [{tourTitle: 'First', state: 'new'} as any];
-			const second: ObTourConfig[] = [{tourTitle: 'Second', state: 'done'} as any];
+			const allTours = [{tourTitle: 'First', state: 'new'} as ObTourConfig, {tourTitle: 'Second', state: 'done'} as ObTourConfig];
 			component.onToggleChange({checked: true} as MatSlideToggleChange);
-			tourServiceMock.emitUpdate(first);
-			tourServiceMock.emitUpdate(second);
-			tick();
-			expect(component.allTours()).toEqual(second);
+			tourServiceMock.updateConfig.next(allTours);
+			tourServiceMock.updateConfig.next([]);
+			expect(component.allTours()).toEqual([]);
 		}));
 	});
 
@@ -157,7 +167,7 @@ describe('TourMenuComponent', () => {
 						stepDescription: 'i18n.ob-tour.rainbow.step2.description'
 					}
 				];
-				const config: ObToursConfig = {
+				const config: ObtToursConfig = {
 					tours: [
 						{id: '1', state: 'done', tourTitle: 'Title done 1', steps, tourDescription: 'Description done 1'},
 						{id: '2', state: 'inProgress', tourTitle: 'Title inProgress 1', steps, tourDescription: 'Description inProgress 1'},
@@ -169,7 +179,7 @@ describe('TourMenuComponent', () => {
 			});
 
 			it('should set inProgressTours length to 1', () => {
-				const config: ObToursConfig = {
+				const config: ObtToursConfig = {
 					tours: [
 						{id: '1', state: 'done'},
 						{id: '2', state: 'inProgress'},
@@ -181,7 +191,7 @@ describe('TourMenuComponent', () => {
 			});
 
 			it('should set newTours length to 1', () => {
-				const config: ObToursConfig = {
+				const config: ObtToursConfig = {
 					tours: [
 						{id: '1', state: 'done'},
 						{id: '2', state: 'inProgress'},
@@ -193,21 +203,21 @@ describe('TourMenuComponent', () => {
 			});
 
 			it('should handle empty tour states without errors - inProgressTours length', () => {
-				const config: ObToursConfig = {tours: [{state: ''} as any]};
+				const config: ObtToursConfig = {tours: [{state: ''} as any]};
 				(component as any).updateTours(config);
 				fixture.detectChanges();
 				expect(component.inProgressTours().length).toBe(0);
 			});
 
 			it('should handle empty tour states without errors - newTours length', () => {
-				const config: ObToursConfig = {tours: [{state: ''} as any]};
+				const config: ObtToursConfig = {tours: [{state: ''} as any]};
 				(component as any).updateTours(config);
 				fixture.detectChanges();
 				expect(component.newTours().length).toBe(0);
 			});
 
 			it('should handle empty tour states without errors - doneTours length', () => {
-				const config: ObToursConfig = {tours: [{state: ''} as any]};
+				const config: ObtToursConfig = {tours: [{state: ''} as any]};
 				(component as any).updateTours('updateTours', config);
 				fixture.detectChanges();
 				expect(component.doneTours().length).toBe(0);

@@ -1,0 +1,61 @@
+@use "./variables" as vars;
+
+$badge-top: vars.$obt-badge-base-size * 1.5;
+$badge-left: 0.5rem + vars.$obt-badge-base-size;
+
+/* basis-badge */
+@mixin obt-notification-badge {
+	font-size: 1em;
+	font-weight: bold;
+	position: absolute;
+	top: -$badge-top;
+	border-radius: 50%;
+	margin: auto;
+	padding: 0 vars.$obt-badge-base-size;
+	text-align: center;
+	z-index: 2;
+}
+
+@mixin obt-tab-focus-box-shadow($color: vars.$obt-focus-color) {
+	box-shadow: 0 0 0 3px $color;
+	outline: none;
+}
+
+@mixin obt-badges-position {
+	.obt-notification.obt-badge-left {
+		.obt-badge-new {
+			left: 0;
+			right: auto;
+		}
+
+		.obt-badge-in-progress {
+			left: 1rem + $badge-left;
+			right: auto;
+		}
+	}
+
+	.obt-notification.obt-badge-right {
+		.obt-badge-new {
+			right: 0;
+			left: auto;
+		}
+
+		.obt-badge-in-progress {
+			right: 1rem + $badge-left;
+			left: auto;
+		}
+	}
+}
+
+@mixin obt-flex-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+@mixin obt-flex-column {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	width: 100%;
+}

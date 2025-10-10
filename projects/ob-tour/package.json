@@ -8,6 +8,7 @@
     "lint": "ts-node scripts/lint.ts",
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test ob-tour",
+    "test:a11y": "jest --testPathPattern=A11y",
     "test-ci": "cd ../.. && ng run ob-tour:test:ci",
     "prebuild": "ts-node scripts/pre-build.ts",
     "build": "ng build oblique && ng build ob-tour",

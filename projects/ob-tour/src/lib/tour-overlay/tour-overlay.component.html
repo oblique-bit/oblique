@@ -1,0 +1,64 @@
+@if (currentStep(); as step) {
+	<div class="obt-tour-overlay" tabindex="-1" cdkTrapFocus [ngClass]="arrowPosition">
+		<div class="tour-arrow"></div>
+
+		<header class="obt-tour-overlay__header">
+			<h2 id="obt-tour-overlay-title" class="obt-tour-overlay__title">
+				{{ step.stepTitle | translate }}
+			</h2>
+			<button
+				type="button"
+				mat-button
+				obButton="tertiary"
+				class="obt-close-button"
+				id="obt-menu-close-button"
+				[matTooltip]="
+					hasPrev()
+						? ('i18n.ob-tour.overlay.dialog.button.tooltip.close.with-save-info'
+							| obTranslateParams: { closeMessage: 'i18n.ob-tour.overlay.dialog.button.tooltip.close' })
+						: ('i18n.ob-tour.overlay.dialog.button.tooltip.close' | translate)
+				"
+				(click)="onClose()"
+			>
+				{{ "i18n.common.close" | translate }}
+				<mat-icon matIconSuffix svgIcon="xmark" />
+			</button>
+		</header>
+
+		<div class="obt-tour-overlay__content">
+			<p class="obt-tour-overlay__description">
+				{{ step.stepDescription | translate }}
+			</p>
+		</div>
+
+		<footer class="obt-tour-overlay__footer">
+			@if (hasPrev()) {
+				<button
+					obButton="tertiary"
+					mat-button
+					type="button"
+					(click)="onPrev()"
+					[attr.aria-label]="'i18n.ob-tour.overlay.button.aria.previous' | translate"
+				>
+					{{ "i18n.ob-tour.overlay.button.label.previous" | translate }}
+				</button>
+			}
+			@if (hasNext()) {
+				<button
+					obButton="tertiary"
+					mat-button
+					color="primary"
+					type="button"
+					(click)="onNext()"
+					[attr.aria-label]="'i18n.ob-tour.overlay.button.aria.next' | translate"
+				>
+					{{ "i18n.ob-tour.overlay.button.label.next" | translate }}
+				</button>
+			}
+		</footer>
+	</div>
+} @else {
+	<div class="obt-tour-overlay__empty" role="alert">
+		{{ "i18n.ob-tour.overlay.alert.no-step" | translate }}
+	</div>
+}

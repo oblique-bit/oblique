@@ -8,19 +8,19 @@ import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {BrowserTestingModule} from '@angular/platform-browser/testing';
 import {ObTourServiceMock} from '../lib/services/_mock/tour-mock.service';
-import {ObTourService} from '../lib/services/tour.service';
-import type {ObTourConfig, ObToursConfig} from '../lib/models/tour-config.model';
-import {TourMenuComponent} from '../lib/tour-menu/tour-menu.component';
+import {ObtTourService} from '../lib/services/tour.service';
+import type {ObTourConfig, ObtToursConfig} from '../lib/models/tour-config.model';
+import {ObtTourMenuComponent} from '../lib/tour-menu/tour-menu.component';
 import {ObtTourMenuHarness} from './_harness/tour-menu.harness';
 import {MAT_TOOLTIP_DEFAULT_OPTIONS} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'obt-tour-menu-test',
-	imports: [TourMenuComponent],
+	imports: [ObtTourMenuComponent],
 	template: '<obt-tour-menu [toursConfig]="tourConfig" />'
 })
 class TourMenuTestComponent {
-	tourConfig: ObToursConfig = {
+	tourConfig: ObtToursConfig = {
 		tours: [
 			{
 				tourTitle: 'Tour A',
@@ -53,8 +53,8 @@ class TourMenuTestComponent {
 describe('TourMenuComponent (Integration)', () => {
 	let fixture: ComponentFixture<TourMenuTestComponent>;
 	let loader: HarnessLoader;
-	let component: TourMenuComponent;
-	let serviceMock: ObTourServiceMock;
+	let component: ObtTourMenuComponent;
+	let tourService: ObtTourService;
 
 	beforeAll(() => {
 		Object.defineProperty(window, 'getComputedStyle', {
@@ -64,13 +64,11 @@ describe('TourMenuComponent (Integration)', () => {
 		});
 	});
 	beforeEach(async () => {
-		serviceMock = new ObTourServiceMock();
-
 		await TestBed.configureTestingModule({
-			imports: [TourMenuComponent, TourMenuTestComponent, BrowserTestingModule, TranslateModule.forRoot()],
-			providers: [{provide: ObTourService, useValue: serviceMock}]
+			imports: [ObtTourMenuComponent, TourMenuTestComponent, BrowserTestingModule, TranslateModule.forRoot()]
 		}).compileComponents();
-
+		tourService = TestBed.inject(ObtTourService);
+		jest.spyOn(tourService, 'init');
 		fixture = TestBed.createComponent(TourMenuTestComponent);
 		fixture.detectChanges();
 		const debug = fixture.debugElement.children[0];
@@ -85,7 +83,7 @@ describe('TourMenuComponent (Integration)', () => {
 		});
 
 		it('calls ObTourService.init() once during setup', () => {
-			expect(serviceMock.init).toHaveBeenCalledTimes(2);
+			expect(tourService.init).toHaveBeenCalledTimes(2);
 		});
 	});
 
@@ -156,7 +154,7 @@ describe('TourMenuComponent (Integration via Harness)', () => {
 	let fixture: ComponentFixture<TourMenuTestComponent>;
 	let loader: HarnessLoader;
 	let harness: ObtTourMenuHarness;
-	let component: TourMenuComponent;
+	let component: ObtTourMenuComponent;
 	let serviceMock: ObTourServiceMock;
 	let tooltips: MatTooltipHarness[];
 
@@ -164,10 +162,10 @@ describe('TourMenuComponent (Integration via Harness)', () => {
 		serviceMock = new ObTourServiceMock();
 
 		await TestBed.configureTestingModule({
-			imports: [TourMenuComponent, TourMenuTestComponent, BrowserTestingModule, TranslateModule.forRoot()],
+			imports: [ObtTourMenuComponent, TourMenuTestComponent, BrowserTestingModule, TranslateModule.forRoot()],
 			providers: [
 				{
-					provide: ObTourService,
+					provide: ObtTourService,
 					useValue: serviceMock
 				},
 				{
@@ -210,7 +208,7 @@ describe('TourMenuComponent (Integration via Harness)', () => {
 
 			it('menuButton is not visible anymore', async () => {
 				await harness.deactivateToggle();
-				expect(await harness.getMenuButton()).toBe(null);
+				expect(await harness.getNotificationButton()).toBe(null);
 			});
 
 			it('menu button displays a tooltip', async () => {
@@ -236,7 +234,7 @@ describe('TourMenuComponent (Integration via Harness)', () => {
 	describe('Popover via harness', () => {
 		it('opens popover on button click', async () => {
 			await harness.openPopover();
-			expect(await harness.isPopoverOpen()).toBe(true);
+			expect(harness.isPopoverOpen()).toBe(true);
 		});
 
 		it('closes popover via closePopover()', async () => {
@@ -244,7 +242,7 @@ describe('TourMenuComponent (Integration via Harness)', () => {
 			await harness.closePopover();
 			fixture.detectChanges();
 			await fixture.whenStable();
-			expect(await harness.isPopoverOpen()).toBe(false);
+			expect(harness.isPopoverOpen()).toBe(false);
 		});
 	});
 
@@ -252,7 +250,7 @@ describe('TourMenuComponent (Integration via Harness)', () => {
 		it('renders menu button', async () => {
 			await harness.activateToggle();
 			fixture.detectChanges();
-			const buttons = await harness.getMenuButton();
+			const buttons = await harness.getNotificationButton();
 			expect(await buttons.getText()).toBe(
 				'i18n.ob-tour.tour-menu.popover.icon.book  i18n.ob-tour.tour-menu.list.title.dialog  :i18n.ob-tour.tour-menu.button.badge.new, i18n.ob-tour.tour-menu.button.badge.in-progress'
 			);
@@ -458,7 +456,7 @@ describe('TourMenuComponent (Integration via Harness)', () => {
 				expect(hidden).toBeTruthy();
 			});
 
-			it('screenreader label text references both badges', () => {
+			it('screen-reader label text references both badges', () => {
 				const hidden = fixture.nativeElement.querySelector('#obt-notification-button-label .obt-screen-reader-only');
 				expect(hidden.textContent).toContain('tour-menu.button.badge.new');
 				expect(hidden.textContent).toContain('tour-menu.button.badge.in-progress');

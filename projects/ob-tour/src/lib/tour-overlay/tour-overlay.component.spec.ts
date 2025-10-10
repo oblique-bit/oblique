@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 import {TranslateFakeLoader, TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TourOverlayComponent} from './tour-overlay.component';
-import {ObTourService} from '../services/tour.service';
+import {ObtTourService} from '../services/tour.service';
 import {ObTourServiceMock} from '../services/_mock/tour-mock.service';
 import {ObTourStep} from '../models/tour-step.model';
 import {axe} from 'jest-axe';
@@ -22,7 +22,7 @@ describe('TourOverlayComponent', () => {
 					loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
 				})
 			],
-			providers: [{provide: ObTourService, useValue: tourServiceMock}]
+			providers: [{provide: ObtTourService, useValue: tourServiceMock}]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TourOverlayComponent);
@@ -102,6 +102,44 @@ describe('TourOverlayComponent', () => {
 			await fixture.whenStable();
 			const results = await axe(fixture.nativeElement);
 			expect(results).toHaveNoViolations();
+		});
+	});
+
+	describe('Keyboard handling (Escape)', () => {
+		it('should call preventDefault when Escape is pressed', () => {
+			const preventSpy = jest.fn();
+			const event = new KeyboardEvent('keyup', {key: 'Escape'});
+			Object.defineProperty(event, 'preventDefault', {value: preventSpy});
+
+			document.dispatchEvent(event);
+			expect(preventSpy).toHaveBeenCalledTimes(1);
+		});
+
+		it('should call onClose when Escape is pressed', () => {
+			const onCloseSpy = jest.spyOn(component, 'onClose');
+			const event = new KeyboardEvent('keyup', {key: 'Escape'});
+			Object.defineProperty(event, 'preventDefault', {value: jest.fn()});
+
+			document.dispatchEvent(event);
+			expect(onCloseSpy).toHaveBeenCalledTimes(1);
+		});
+
+		it('should not call preventDefault when non-Escape key pressed', () => {
+			const preventSpy = jest.fn();
+			const event = new KeyboardEvent('keyup', {key: 'Enter'});
+			Object.defineProperty(event, 'preventDefault', {value: preventSpy});
+
+			document.dispatchEvent(event);
+			expect(preventSpy).not.toHaveBeenCalled();
+		});
+
+		it('should not call onClose when non-Escape key pressed', () => {
+			const onCloseSpy = jest.spyOn(component, 'onClose');
+			const event = new KeyboardEvent('keyup', {key: 'Enter'});
+			Object.defineProperty(event, 'preventDefault', {value: jest.fn()});
+
+			document.dispatchEvent(event);
+			expect(onCloseSpy).not.toHaveBeenCalled();
 		});
 	});
 });

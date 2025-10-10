@@ -1,0 +1,33 @@
+@use "sass:map";
+@use "@oblique/oblique/src/styles/scss/core/variables" as ob;
+
+$obt-badge-base-size: 0.6rem;
+$obt-badge-color-new: #047857ff;
+$obt-badge-color-in-progress: #2f4356ff;
+$obt-focus-color: ob.$ob-purple-500;
+$obt-default: ob.$ob-default;
+$obt-white: ob.$ob-white;
+$obt-secondary-50: ob.$ob-secondary-50;
+$obt-secondary-100: ob.$ob-secondary-100;
+$obt-secondary-300: ob.$ob-secondary-300;
+$obt-secondary-700: ob.$ob-secondary-700;
+$obt-gray-lighter: ob.$ob-gray-lighter;
+$obt-line-height: ob.$ob-line-height;
+$obt-spacing-lg: ob.$ob-spacing-lg;
+$obt-spacing-md: ob.$ob-spacing-md;
+$obt-spacing-sm: ob.$ob-spacing-sm;
+$obt-spacing-xs: ob.$ob-spacing-xs;
+$obt-line-width-xs: ob.$ob-line-width-xs;
+$obt-z-index-overlay: ob.$ob-z-index-overlay;
+$obt-grid-breakpoints: (
+	xs: map.get(ob.$ob-grid-breakpoints, xs),
+	sm: map.get(ob.$ob-grid-breakpoints, sm),
+	md: map.get(ob.$ob-grid-breakpoints, md),
+	lg: map.get(ob.$ob-grid-breakpoints, lg),
+	xl: map.get(ob.$ob-grid-breakpoints, xl),
+);
+$obt-border-radius-base: ob.$ob-border-radius-base;
+$obt-font-size-big: ob.$ob-font-size-big;
+$obt-font-size-base: ob.$ob-font-size-base;
+$obt-font: ob.$ob-font;
+$obt-font-size-normal: ob.$ob-font-size-normal;
