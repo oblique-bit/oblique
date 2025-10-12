@@ -1,3 +1,7 @@
+import {toHaveNoViolations} from 'jest-axe';
+// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+expect.extend(toHaveNoViolations);
+
 const mock = (): Partial<Storage> => {
 	let storage: Record<string, string> = {};
 	return {

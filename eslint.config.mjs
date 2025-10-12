@@ -611,9 +611,9 @@ export default config(
 			]
 		}
 	},
+	...obTourEslintConfig,
 	...obliqueEslintConfig,
 	...cliEslintConfig,
-	...obTourEslintConfig,
 	...designSystemEslintConfig,
 	...sandboxEslintConfig,
 	...sandboxSsrEslintConfig,
