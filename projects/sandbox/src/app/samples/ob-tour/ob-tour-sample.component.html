@@ -1,14 +1,23 @@
 <obt-tour-menu [toursConfig]="tourConfig" />
 <div class="tour-demo-container">
-	<h1>Tour Playground</h1>
+	<h1 #titleElement>Tour Playground</h1>
 	<pre>
 		<code>
 			{{this.tourService.updateConfig |async|json}}
 		</code>
 	</pre>
+	<obt-tour-menu customButtonLabel="Opens Below" [toursConfig]="tourConfig" [positionY]="positionBelow" />
+	<obt-tour-menu customButtonLabel="Start position Menu" [toursConfig]="tourConfig" [positionX]="positionStart" />
+	<obt-tour-menu customButtonLabel="End position Menu" [toursConfig]="tourConfig" [positionX]="positionEnd" />
+	<obt-tour-menu customButtonLabel="Right side badges" badgePosition="right" [toursConfig]="tourConfig" />
+	<obt-tour-menu customButtonLabel="Left side badges" badgePosition="left" [toursConfig]="tourConfig" />
+	<obt-tour-menu [toursConfig]="tourConfig" [customButtonLabel]="'i18n..ob-tour.your.custom.label' | translate" />
 
+	<div style="width: 20rem">
+		<obt-tour-menu customButtonLabel="Wrapped tour-menu" badgePosition="left" [toursConfig]="tourConfig" />
+	</div>
 	<section class="tour-section">
-		<mat-form-field appearance="outline">
+		<mat-form-field #chooseTour appearance="outline">
 			<mat-label>Tour auswählen</mat-label>
 			<mat-select>
 				<mat-option value="intro">Einführung</mat-option>
@@ -16,19 +25,19 @@
 			</mat-select>
 		</mat-form-field>
 	</section>
-
+	<obt-tour-menu customButtonLabel="Opens Above" [toursConfig]="tourConfig" [positionY]="positionAbove" />
 	<section class="tour-section">
 		<h2>Inhalte</h2>
 		<mat-list>
-			<mat-list-item>Dashboard</mat-list-item>
-			<mat-list-item>Benutzerverwaltung</mat-list-item>
-			<mat-list-item>Statistiken</mat-list-item>
+			<mat-list-item #list1>Dashboard</mat-list-item>
+			<mat-list-item #list2>Benutzerverwaltung</mat-list-item>
+			<mat-list-item #list3>Statistiken</mat-list-item>
 		</mat-list>
 	</section>
-
+	<obt-tour-menu [toursConfig]="tourConfig" />
 	<section class="tour-section settings-toggle">
 		<h2>Einstellungen</h2>
-		<mat-slide-toggle>Tour beim Start aktivieren</mat-slide-toggle>
-		<mat-slide-toggle>Barrierefreiheit optimieren</mat-slide-toggle>
+		<mat-slide-toggle id="tour-start-active">Tour beim Start aktivieren</mat-slide-toggle>
+		<mat-slide-toggle id="improve-ax-active">Barrierefreiheit optimieren</mat-slide-toggle>
 	</section>
 </div>

@@ -1,5 +1,5 @@
-import {Component, inject} from '@angular/core';
-import {ObTourService, type ObToursConfig} from '@oblique/ob-tour';
+import {Component, type ElementRef, inject, viewChild} from '@angular/core';
+import {ObtMenuPositionsX, ObtMenuPositionsY, ObtTourService, type ObtToursConfig} from '@oblique/ob-tour';
 
 @Component({
 	selector: 'sb-ob-tour',
@@ -8,7 +8,13 @@ import {ObTourService, type ObToursConfig} from '@oblique/ob-tour';
 	standalone: false
 })
 export class ObTourSampleComponent {
-	tourConfig: ObToursConfig = {
+	readonly chooseTour = viewChild<ElementRef<HTMLElement>>('chooseTour');
+	readonly list1 = viewChild<ElementRef<HTMLElement>>('list1');
+	readonly list2 = viewChild<ElementRef<HTMLElement>>('list2');
+	readonly list3 = viewChild<ElementRef<HTMLElement>>('list3');
+	readonly titleElement = viewChild<ElementRef<HTMLElement>>('titleElement');
+
+	tourConfig: ObtToursConfig = {
 		tours: [
 			{
 				tourTitle: 'i18n.ob-tour.rainbow.title',
@@ -18,14 +24,62 @@ export class ObTourSampleComponent {
 				state: 'new',
 				steps: [
 					{
+						target: {elementRef: this.chooseTour},
 						stepTitle: 'i18n.ob-tour.rainbow.step1.title',
 						stepDescription: 'i18n.ob-tour.rainbow.step1.description'
 					},
 					{
+						target: {elementRef: this.list1},
 						stepTitle: 'i18n.ob-tour.rainbow.step2.title',
 						stepDescription: 'i18n.ob-tour.rainbow.step2.description'
 					},
 					{
+						target: {elementRef: this.list2},
+						stepTitle: 'i18n.ob-tour.rainbow.step3.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step3.description'
+					},
+					{
+						target: {elementRef: this.titleElement},
+						stepTitle: 'i18n.ob-tour.rainbow.step3.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step3.description'
+					},
+					{
+						target: {elementRef: this.chooseTour},
+						stepTitle: 'i18n.ob-tour.rainbow.step1.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step1.description'
+					},
+					{
+						target: {elementRef: this.list1},
+						stepTitle: 'i18n.ob-tour.rainbow.step2.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step2.description'
+					},
+					{
+						target: {elementRef: this.list2},
+						stepTitle: 'i18n.ob-tour.rainbow.step3.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step3.description'
+					},
+					{
+						target: {elementRef: this.titleElement},
+						stepTitle: 'i18n.ob-tour.rainbow.step3.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step3.description'
+					},
+					{
+						target: {elementRef: this.chooseTour},
+						stepTitle: 'i18n.ob-tour.rainbow.step1.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step1.description'
+					},
+					{
+						target: {elementRef: this.list1},
+						stepTitle: 'i18n.ob-tour.rainbow.step2.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step2.description'
+					},
+					{
+						target: {elementRef: this.list2},
+						stepTitle: 'i18n.ob-tour.rainbow.step3.title',
+						stepDescription: 'i18n.ob-tour.rainbow.step3.description'
+					},
+					{
+						target: {elementRef: this.titleElement},
 						stepTitle: 'i18n.ob-tour.rainbow.step3.title',
 						stepDescription: 'i18n.ob-tour.rainbow.step3.description'
 					}
@@ -36,13 +90,15 @@ export class ObTourSampleComponent {
 				tourDescription: 'i18n.ob-tour.glitter.description',
 				storageKey: 'glitterGuideStorageKey',
 				triggers: [{type: 'manual'}],
-				state: 'new',
+				state: 'inProgress',
 				steps: [
 					{
+						target: {elementRef: this.list3},
 						stepTitle: 'i18n.ob-tour.glitter.step1.title',
 						stepDescription: 'i18n.ob-tour.glitter.step1.description'
 					},
 					{
+						target: {elementSelector: 'improve-ax-active'},
 						stepTitle: 'i18n.ob-tour.glitter.step2.title',
 						stepDescription: 'i18n.ob-tour.glitter.step2.description'
 					}
@@ -56,6 +112,7 @@ export class ObTourSampleComponent {
 				state: 'new',
 				steps: [
 					{
+						target: {elementSelector: 'tour-start-active'},
 						stepTitle: 'i18n.ob-tour.lovewins.step1.title',
 						stepDescription: 'i18n.ob-tour.tour.lovewins.step1.description'
 					},
@@ -73,10 +130,12 @@ export class ObTourSampleComponent {
 				state: 'new',
 				steps: [
 					{
+						target: {elementSelector: 'tour-start-active'},
 						stepTitle: 'Step1 ohne translation',
 						stepDescription: 'Descirption Step 1'
 					},
 					{
+						target: {elementSelector: 'improve-ax-active'},
 						stepTitle: 'step2.',
 						stepDescription: 'laksjdflökjsdfjaölsdj asfsdfasdf asdf asdf adfa'
 					}
@@ -85,5 +144,9 @@ export class ObTourSampleComponent {
 		]
 	};
 
-	tourService = inject(ObTourService);
+	tourService = inject(ObtTourService);
+	positionAbove: ObtMenuPositionsY = ObtMenuPositionsY.ABOVE;
+	positionBelow: ObtMenuPositionsY = ObtMenuPositionsY.BELOW;
+	positionStart: ObtMenuPositionsX = ObtMenuPositionsX.START;
+	positionEnd: ObtMenuPositionsX = ObtMenuPositionsX.END;
 }

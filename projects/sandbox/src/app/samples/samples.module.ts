@@ -86,7 +86,7 @@ import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component'
 import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
 import {ObTourSampleComponent} from './ob-tour/ob-tour-sample.component';
-import {TourMenuComponent} from '@oblique/ob-tour';
+import {ObtTourMenuComponent} from '@oblique/ob-tour';
 
 @NgModule({
 	imports: [
@@ -134,7 +134,7 @@ import {TourMenuComponent} from '@oblique/ob-tour';
 		RouterModule,
 		SamplesRoutingModule,
 		TranslateModule,
-		TourMenuComponent
+		ObtTourMenuComponent
 	],
 	declarations: [
 		AlertSampleComponent,

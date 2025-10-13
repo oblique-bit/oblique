@@ -89,5 +89,6 @@
   "i18n.ob-tour.lovewins.step1.title": "Célébrez-vous",
   "i18n.ob-tour.lovewins.step1.description": "Vous êtes arrivé à la fin. L’inclusion est un voyage permanent.",
   "i18n.ob-tour.lovewins.step2.title": "Partagez la bienveillance",
-  "i18n.ob-tour.lovewins.step2.description": "Encouragez les autres à participer et à créer un environnement accueillant."
+  "i18n.ob-tour.lovewins.step2.description": "Encouragez les autres à participer et à créer un environnement accueillant.",
+  "i18n..ob-tour.your.custom.label": "Ceci est votre libellé de bouton personnalisé"
 }
