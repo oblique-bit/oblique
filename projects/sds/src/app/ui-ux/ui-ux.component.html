@@ -45,12 +45,16 @@
 			@if (uiUx().designFileLatest) {
 				<section class="design-files">
 					<h2>Design Figma Files</h2>
-					<a class="figma" [href]="uiUx().designFileLatest"><span>Community Lib 13</span></a>
+					<a class="figma" [href]="uiUx().designFileLatest"
+						><span>Community Lib {{ currentObliqueVersion }} </span></a
+					>
 					<div class="designer">
 						<div class="title" id="older-libraries">Looking for previous version?</div>
 						<ul class="link-list" aria-labelledby="older-libraries">
 							<li>
-								<a [href]="uiUx().designFilePrevious"><span>Community Lib 12</span></a>
+								<a [href]="uiUx().designFilePrevious"
+									><span>Community Lib {{ lastObliqueVersion }}</span></a
+								>
 							</li>
 						</ul>
 						<div class="title" id="intern">Are you part of BIT?</div>
