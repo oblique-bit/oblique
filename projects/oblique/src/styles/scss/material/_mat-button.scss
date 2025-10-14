@@ -56,6 +56,7 @@
 		&[disabled],
 		&[disabledInteractive] {
 			cursor: not-allowed;
+			pointer-events: auto;
 		}
 
 		&.mat-mdc-button {
