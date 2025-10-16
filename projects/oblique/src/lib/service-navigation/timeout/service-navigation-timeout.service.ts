@@ -1,4 +1,4 @@
-import {Injectable, SecurityContext, inject} from '@angular/core';
+import {Injectable, NgZone, SecurityContext, inject} from '@angular/core';
 import Cookies from 'js-cookie';
 import {ObIsUserLoggedInPipe} from '../shared/is-user-logged-in.pipe';
 import {ObEPamsEnvironment, ObLoginState} from '../service-navigation.model';
@@ -28,6 +28,7 @@ export class ObServiceNavigationTimeoutService {
 	private readonly cookieService = inject(ObServiceNavigationTimeoutCookieService);
 	private readonly returnUrlService = inject(ObServiceNavigationTimeoutReturnUrlService);
 	private readonly domSanitizer = inject(DomSanitizer);
+	private readonly ngZone = inject(NgZone);
 
 	public initialize(environment: ObEPamsEnvironment): void {
 		this.eportalUrl = `https://eportal${environment}.admin.ch`;
@@ -61,22 +62,24 @@ export class ObServiceNavigationTimeoutService {
 	private setCookieDetector(): void {
 		let doesLogoutCookieExist = true;
 		let doesTimeoutCookieExist = true;
-		setInterval(() => {
-			const logoutCheck = Cookies.get(this.redirectorService.logoutCookieName) !== undefined;
-			const logoutCookieAppears = !doesLogoutCookieExist && logoutCheck;
-			const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
-			if (logoutCookieAppears && isUserLoggedIn && this.redirectorService.shouldRedirect()) {
-				this.redirectorService.redirectOrEmit(this.returnUrlService.getRedirectUrl('logout', this.eportalUrl));
-			}
+		this.ngZone.runOutsideAngular(() => {
+			setInterval(() => {
+				const logoutCheck = Cookies.get(this.redirectorService.logoutCookieName) !== undefined;
+				const logoutCookieAppears = !doesLogoutCookieExist && logoutCheck;
+				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
+				if (logoutCookieAppears && isUserLoggedIn && this.redirectorService.shouldRedirect()) {
+					this.redirectorService.redirectOrEmit(this.returnUrlService.getRedirectUrl('logout', this.eportalUrl));
+				}
 
-			doesLogoutCookieExist = logoutCheck;
-			const timeoutCheck = Cookies.get(this.timeoutCookieName) !== undefined;
-			const timeoutCookieAppears = !doesTimeoutCookieExist && timeoutCheck;
-			if (timeoutCookieAppears) {
-				this.redirectorService.redirectOrEmit(this.returnUrlService.getRedirectUrl('timeout', this.eportalUrl));
-			}
-			doesTimeoutCookieExist = timeoutCheck;
-		}, this.secondsFactor);
+				doesLogoutCookieExist = logoutCheck;
+				const timeoutCheck = Cookies.get(this.timeoutCookieName) !== undefined;
+				const timeoutCookieAppears = !doesTimeoutCookieExist && timeoutCheck;
+				if (timeoutCookieAppears) {
+					this.redirectorService.redirectOrEmit(this.returnUrlService.getRedirectUrl('timeout', this.eportalUrl));
+				}
+				doesTimeoutCookieExist = timeoutCheck;
+			}, this.secondsFactor);
+		});
 	}
 
 	/**
@@ -88,19 +91,21 @@ export class ObServiceNavigationTimeoutService {
 		const intervalCheckTime = 5;
 		const seconds1minute = 60;
 
-		setInterval(() => {
-			const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
-			if (!isUserLoggedIn) {
-				return;
-			}
-			const cookieTime = +Cookies.get('pams-last-refresh') * this.secondsFactor;
-			const expirationPamsWithoutMinute = cookieTime - seconds1minute * this.secondsFactor;
-			const cookieWillExpire = Date.now() > expirationPamsWithoutMinute;
+		this.ngZone.runOutsideAngular(() => {
+			setInterval(() => {
+				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
+				if (!isUserLoggedIn) {
+					return;
+				}
+				const cookieTime = +Cookies.get('pams-last-refresh') * this.secondsFactor;
+				const expirationPamsWithoutMinute = cookieTime - seconds1minute * this.secondsFactor;
+				const cookieWillExpire = Date.now() > expirationPamsWithoutMinute;
 
-			if (cookieWillExpire) {
-				this.checkIfUserIsInactive();
-			}
-		}, intervalCheckTime * this.secondsFactor);
+				if (cookieWillExpire) {
+					this.checkIfUserIsInactive();
+				}
+			}, intervalCheckTime * this.secondsFactor);
+		});
 	}
 
 	private checkIfUserIsInactive(): void {
