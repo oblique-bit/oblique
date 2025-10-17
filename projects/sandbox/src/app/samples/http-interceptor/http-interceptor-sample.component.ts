@@ -9,8 +9,8 @@ let requestId = 0;
 
 @Component({
 	selector: 'sb-http-api-interceptor-sample',
-	templateUrl: './http-interceptor-sample.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './http-interceptor-sample.component.html'
 })
 export class HttpInterceptorSampleComponent {
 	static readonly API_URL = 'https://jsonplaceholder.typicode.com';

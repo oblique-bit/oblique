@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'sb-button-sample',
-	templateUrl: './button.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './button.component.html'
 })
 export class ButtonComponent {}

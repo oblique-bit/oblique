@@ -4,9 +4,9 @@ import {ObEColor} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-palette',
+	standalone: false,
 	templateUrl: './palette.component.html',
-	styleUrl: './palette.component.scss',
-	standalone: false
+	styleUrl: './palette.component.scss'
 })
 export class PaletteComponent {
 	colorGroups: Colors[] = [

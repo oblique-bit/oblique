@@ -56,7 +56,6 @@ registerLocaleData(localeDE);
 
 @NgModule({
 	declarations: [AppComponent, HomePageComponent],
-	bootstrap: [AppComponent],
 	imports: [
 		AppRoutingModule,
 		BrowserAnimationsModule,
@@ -116,7 +115,8 @@ registerLocaleData(localeDE);
 			},
 			hasLanguageInUrl: true
 		})
-	]
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule {
 	constructor() {

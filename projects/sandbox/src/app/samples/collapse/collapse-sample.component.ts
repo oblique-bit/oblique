@@ -4,8 +4,8 @@ import type {Duration, IconPosition} from './collapse-sample.model';
 
 @Component({
 	selector: 'sb-collapse-sample',
-	templateUrl: './collapse-sample.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './collapse-sample.component.html'
 })
 export class CollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';

@@ -3,9 +3,9 @@ import {obFocusWithOutline} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-focus-sample',
+	standalone: false,
 	templateUrl: './focus-sample.component.html',
-	styleUrl: './focus-sample.component.scss',
-	standalone: false
+	styleUrl: './focus-sample.component.scss'
 })
 export class FocusSampleComponent implements AfterViewInit {
 	readonly card = viewChild.required('card', {read: ElementRef});

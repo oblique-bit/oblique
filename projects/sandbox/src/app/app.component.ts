@@ -17,9 +17,9 @@ import {appNavigation} from './app-navigation';
 
 @Component({
 	selector: 'sb-root',
+	standalone: false,
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.scss',
-	standalone: false
+	styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnDestroy {
 	version = appVersion;

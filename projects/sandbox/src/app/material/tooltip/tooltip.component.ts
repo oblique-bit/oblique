@@ -3,9 +3,9 @@ import type {MatTooltip, TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'sb-tooltip',
+	standalone: false,
 	templateUrl: './tooltip.component.html',
-	styleUrl: './tooltip.component.scss',
-	standalone: false
+	styleUrl: './tooltip.component.scss'
 })
 export class TooltipComponent {
 	message = 'Tooltip information text';

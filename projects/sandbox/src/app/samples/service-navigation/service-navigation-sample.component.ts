@@ -12,9 +12,9 @@ import {environment} from '../../../environments/environment';
 
 @Component({
 	selector: 'sb-service-navigation',
+	standalone: false,
 	templateUrl: './service-navigation-sample.component.html',
-	styleUrl: './service-navigation-sample.component.scss',
-	standalone: false
+	styleUrl: './service-navigation-sample.component.scss'
 })
 export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	returnUrl: string;

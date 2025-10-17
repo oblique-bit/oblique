@@ -3,8 +3,8 @@ import type {ObNavTreeItemModel} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-nav-page',
-	templateUrl: './nav-page.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './nav-page.component.html'
 })
 export class NavPageComponent {
 	items: ObNavTreeItemModel[] = [

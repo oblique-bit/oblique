@@ -4,8 +4,8 @@ import {ExampleDialogComponent} from './example-dialog/example-dialog.component'
 
 @Component({
 	selector: 'sb-dialog',
-	templateUrl: './dialog.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './dialog.component.html'
 })
 export class DialogComponent {
 	dialog = inject(MatDialog);
