@@ -11,7 +11,7 @@ import {
 } from '@oblique/oblique';
 import {appVersion} from '@oblique/version';
 import {type Observable, Subject} from 'rxjs';
-import {filter, map, startWith, takeUntil} from 'rxjs/operators';
+import {delay, filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
 import {appNavigation} from './app-navigation';
 
@@ -71,7 +71,8 @@ export class AppComponent implements OnDestroy {
 			.pipe(
 				takeUntil(this.unsubscribe),
 				map(value => searchItems.find(item => this.translate.instant(item.label) === value)),
-				filter(item => Boolean(item))
+				filter(item => Boolean(item)),
+				delay(1) // let the current value by processed before resetting it
 			)
 			.subscribe(item => {
 				this.search.reset('');
