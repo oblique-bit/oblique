@@ -14,14 +14,14 @@ import {
  */
 @Component({
 	selector: 'ob-nested-form',
-	exportAs: 'obNestedForm',
+	standalone: true,
 	template: '',
+	exportAs: 'obNestedForm',
 	providers: [
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObMockNestedFormComponent},
 		{provide: NG_VALIDATORS, multi: true, useExisting: ObMockNestedFormComponent}
 	],
-	host: {class: 'ob-nested-form'},
-	standalone: true
+	host: {class: 'ob-nested-form'}
 })
 export class ObMockNestedFormComponent implements ControlValueAccessor, Validator {
 	@Input() nestedForm: UntypedFormGroup;

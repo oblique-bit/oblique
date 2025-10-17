@@ -11,11 +11,11 @@ export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 
 @Component({
 	selector: 'ob-alert',
+	imports: [MatIconModule, TranslateModule],
 	templateUrl: './alert.component.html',
 	styleUrls: ['./alert.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-alert ob-angular'},
-	imports: [MatIconModule, TranslateModule]
+	host: {class: 'ob-alert ob-angular'}
 })
 export class ObAlertComponent implements OnInit {
 	@HostBinding('class.ob-alert-info') info = true;

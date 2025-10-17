@@ -11,7 +11,10 @@ import {ObServiceNavigationPopoverSectionComponent} from './service-navigation-p
 import {WINDOW} from '../../../utilities';
 import {ObIsCurrentUrlPipe} from './is-current-url.pipe';
 
-@Component({template: '', standalone: false})
+@Component({
+	standalone: false,
+	template: ''
+})
 class TestComponent {}
 
 describe(ObServiceNavigationPopoverSectionComponent.name, () => {

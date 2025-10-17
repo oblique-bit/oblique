@@ -29,6 +29,7 @@ describe(ObSchemaValidateDirective.name, () => {
 	};
 
 	@Component({
+		standalone: false,
 		template: `
 			<form [obSchemaValidation]="schema">
 				<input type="text" name="string" ngModel obSchemaValidate />
@@ -36,14 +37,14 @@ describe(ObSchemaValidateDirective.name, () => {
 					<input type="number" name="subproperty" ngModel obSchemaValidate />
 				</div>
 			</form>
-		`,
-		standalone: false
+		`
 	})
 	class TemplateFormTestComponent {
 		schema = schema;
 	}
 
 	@Component({
+		standalone: false,
 		template: `
 			<form [formGroup]="sampleForm">
 				<input type="text" formControlName="string" />
@@ -52,8 +53,7 @@ describe(ObSchemaValidateDirective.name, () => {
 				</div>
 			</form>
 		`,
-		providers: [ObSchemaValidationService],
-		standalone: false
+		providers: [ObSchemaValidationService]
 	})
 	class ModelFormTestComponent implements OnInit {
 		sampleForm: FormGroup;

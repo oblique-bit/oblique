@@ -10,12 +10,12 @@ import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/form
 import {ObSelectableDirective} from '@oblique/oblique';
 
 @Component({
+	standalone: false,
 	template: `<div obSelectableGroup>
 		<div obSelectable [value]="1"></div>
 		<div obSelectable [value]="2"></div>
 		<div obSelectable [value]="3"></div>
-	</div>`,
-	standalone: false
+	</div>`
 })
 class TestComponent {
 	selectableGroup = new FormControl([1]);

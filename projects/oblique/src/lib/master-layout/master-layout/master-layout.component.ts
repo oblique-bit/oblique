@@ -43,7 +43,7 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 
 @Component({
 	selector: 'ob-master-layout',
-	exportAs: 'obMasterLayout',
+	standalone: false,
 	templateUrl: './master-layout.component.html',
 	styleUrls: [
 		'./master-layout.component.scss',
@@ -52,8 +52,8 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 		'./master-layout-accessibility.component.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout', 'ob-version': appVersion},
-	standalone: false
+	exportAs: 'obMasterLayout',
+	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
 export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnChanges {
 	home = this.config.homePageRoute;

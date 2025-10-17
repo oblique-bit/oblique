@@ -5,8 +5,8 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout.com
 import {ObMasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.directive';
 
 @Component({
-	template: '<a obMasterLayoutHeaderToggle> test </a>',
-	standalone: false
+	standalone: false,
+	template: '<a obMasterLayoutHeaderToggle> test </a>'
 })
 class TestComponent {}
 

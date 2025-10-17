@@ -8,14 +8,14 @@ import {ObMockUnsavedChangesService} from './_mocks/mock-unsaved-changes.service
 import {By} from '@angular/platform-browser';
 
 @Component({
-	template: ` <form obUnsavedChanges></form>`,
-	standalone: false
+	standalone: false,
+	template: ` <form obUnsavedChanges></form>`
 })
 class FaultyTestComponent {}
 
 @Component({
-	template: ` <form id="test" [isActive]="true" obUnsavedChanges></form>`,
-	standalone: false
+	standalone: false,
+	template: ` <form id="test" [isActive]="true" obUnsavedChanges></form>`
 })
 class TestComponent {}
 

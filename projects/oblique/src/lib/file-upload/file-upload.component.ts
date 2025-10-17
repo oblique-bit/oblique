@@ -6,10 +6,10 @@ import {NgIf} from '@angular/common';
 
 @Component({
 	selector: 'ob-file-upload',
-	exportAs: 'obFileUpload',
+	imports: [NgIf, ObDropZoneComponent, ObProgressComponent],
 	templateUrl: './file-upload.component.html',
-	host: {class: 'ob-file-upload'},
-	imports: [NgIf, ObDropZoneComponent, ObProgressComponent]
+	exportAs: 'obFileUpload',
+	host: {class: 'ob-file-upload'}
 })
 export class ObFileUploadComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();

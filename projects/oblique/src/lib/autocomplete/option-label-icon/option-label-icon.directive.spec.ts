@@ -10,8 +10,8 @@ import {OptionLabelIconPosition} from './../autocomplete.model';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 
 @Component({
-	template: '',
-	standalone: false
+	standalone: false,
+	template: ''
 })
 class OptionLabelTestComponent {
 	iconName: ObEIcon | '' = '';

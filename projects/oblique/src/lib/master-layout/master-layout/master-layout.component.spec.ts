@@ -15,7 +15,10 @@ import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {appVersion} from '../../version';
 
-@Component({template: '', standalone: false})
+@Component({
+	standalone: false,
+	template: ''
+})
 export class MockComponent {}
 
 describe('ObMasterLayoutComponent', () => {

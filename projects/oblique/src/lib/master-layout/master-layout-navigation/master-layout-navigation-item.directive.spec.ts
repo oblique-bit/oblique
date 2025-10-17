@@ -9,8 +9,8 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 
 @Component({
-	template: '<li role="presentation" obMasterLayoutNavigationItem> test </li>',
-	standalone: false
+	standalone: false,
+	template: '<li role="presentation" obMasterLayoutNavigationItem> test </li>'
 })
 class TestComponent {}
 

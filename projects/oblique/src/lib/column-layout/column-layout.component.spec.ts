@@ -34,8 +34,8 @@ class ObColumnPanelDirective {
 }
 
 @Component({
-	template: `<ob-column-layout [left]="NONE" [right]="NONE" />`,
-	standalone: false
+	standalone: false,
+	template: `<ob-column-layout [left]="NONE" [right]="NONE" />`
 })
 class TestComponent {}
 

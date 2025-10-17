@@ -5,9 +5,9 @@ import {Component} from '@angular/core';
  */
 @Component({
 	selector: 'ob-top-control',
-	exportAs: 'obTopControl',
+	standalone: true,
 	template: '',
-	standalone: true
+	exportAs: 'obTopControl'
 })
 export class ObMockTopControlComponent {
 	public scrollTop(): void {}

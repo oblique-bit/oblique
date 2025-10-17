@@ -16,13 +16,22 @@ import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/ma
 import {ObINavigationLink} from '@oblique/oblique';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 
-@Component({template: '', standalone: false})
+@Component({
+	standalone: false,
+	template: ''
+})
 class DummyFullPathComponent {}
 
-@Component({template: '', standalone: false})
+@Component({
+	standalone: false,
+	template: ''
+})
 class DummyPrefixPathComponent {}
 
-@Component({template: '', standalone: false})
+@Component({
+	standalone: false,
+	template: ''
+})
 class DummyDefaultPathComponent {}
 
 describe(ObMasterLayoutNavigationComponent.name, () => {

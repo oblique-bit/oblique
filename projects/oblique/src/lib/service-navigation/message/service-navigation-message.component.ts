@@ -2,11 +2,11 @@ import {Component, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@an
 
 @Component({
 	selector: 'ob-service-navigation-message',
+	standalone: false,
 	templateUrl: './service-navigation-message.component.html',
 	styleUrls: ['./service-navigation-message.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-service-navigation-message'},
-	standalone: false
+	host: {class: 'ob-service-navigation-message'}
 })
 export class ObServiceNavigationMessageComponent implements OnChanges {
 	@Input() linkHref = '';

@@ -5,8 +5,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {ObButtonDirective} from './button.directive';
 
 @Component({
-	template: '',
-	standalone: false
+	standalone: false,
+	template: ''
 })
 class ButtonDirectiveTestComponent {
 	obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';

@@ -10,7 +10,10 @@ import {ObEScrollMode} from '../master-layout/master-layout.model';
 import {ObLanguageService} from '../language/language.service';
 import {firstValueFrom} from 'rxjs';
 
-@Component({template: '', standalone: false})
+@Component({
+	standalone: false,
+	template: ''
+})
 export class MockComponent {}
 
 describe(ObRouterService.name, () => {

@@ -8,13 +8,13 @@ import {ObSchemaRequiredDirective} from './schema-required.directive';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Component({
+	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
 	template: `<form [obSchemaValidation]="schema" [formGroup]="form">
 		<mat-form-field appearance="outline">
 			<mat-label>label</mat-label>
 			<input matInput obSchemaValidate type="text" formControlName="text" />
 		</mat-form-field>
-	</form>`,
-	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel, ReactiveFormsModule]
+	</form>`
 })
 class TestReactiveComponent {
 	form = inject(FormBuilder).group({text: ''});
@@ -27,13 +27,13 @@ class TestReactiveComponent {
 }
 
 @Component({
+	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel],
 	template: `<form [obSchemaValidation]="schema">
 		<mat-form-field appearance="outline">
 			<mat-label>label</mat-label>
 			<input matInput obSchemaValidate type="text" name="text" [(ngModel)]="text" />
 		</mat-form-field>
-	</form>`,
-	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel]
+	</form>`
 })
 class TestTemplateComponent {
 	text: string;
