@@ -9,6 +9,7 @@ import {ObServiceNavigationApplicationsComponent} from './service-navigation-app
 export class ObServiceNavigationApplicationsHarness extends ContentContainerComponentHarness {
 	static hostSelector = 'ob-service-navigation-applications';
 	static allFavoriteLinkSelector = '#service-navigation-all-favorite-services';
+	static allServicesLinkSelector = '#service-navigation-all-services';
 	private static readonly popoverSelector = '#ob-service-navigation-applications-popover-content';
 
 	public async getTrigger(): Promise<TestElement> {
@@ -41,7 +42,7 @@ export class ObServiceNavigationApplicationsHarness extends ContentContainerComp
 	}
 
 	public getAllServicesLink(): Promise<TestElement> {
-		return this.locatorFor('#service-navigation-all-services')();
+		return this.locatorFor(ObServiceNavigationApplicationsHarness.allServicesLinkSelector)();
 	}
 
 	public getAllFavoriteServicesLink(): Promise<TestElement> {
