@@ -6,10 +6,10 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-nested-form-example-reactive-preview-grandchild',
-	exportAs: 'grandchild',
+	imports: [MatInputModule, MatFormFieldModule, ObErrorMessagesModule, ReactiveFormsModule],
 	templateUrl: './nested-form-example-reactive-preview-grandchild.component.html',
 	styleUrl: '../../nested-form-example-preview.scss',
-	imports: [MatInputModule, MatFormFieldModule, ObErrorMessagesModule, ReactiveFormsModule]
+	exportAs: 'grandchild'
 })
 export class NestedFormExampleReactivePreviewGrandchildComponent {
 	grandchildForm: UntypedFormGroup;

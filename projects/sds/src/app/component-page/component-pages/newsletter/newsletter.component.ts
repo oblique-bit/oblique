@@ -11,8 +11,6 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-newsletter',
-	templateUrl: './newsletter.component.html',
-	styleUrl: './newsletter.component.scss',
 	imports: [
 		MatButtonModule,
 		MatFormFieldModule,
@@ -21,7 +19,9 @@ import {DomSanitizer} from '@angular/platform-browser';
 		ObErrorMessagesModule,
 		ObButtonModule,
 		ObNotificationModule
-	]
+	],
+	templateUrl: './newsletter.component.html',
+	styleUrl: './newsletter.component.scss'
 })
 export class NewsletterComponent implements OnInit {
 	formGroup: FormGroup<{email: FormControl<string>}>;

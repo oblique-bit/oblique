@@ -5,8 +5,8 @@ import {NgOptimizedImage} from '@angular/common';
 
 @Component({
 	selector: 'app-list-group-example-avatar-subheader',
-	templateUrl: './list-group-example-avatar-subheader.component.html',
 	imports: [MatListModule, MatIconModule, NgOptimizedImage],
+	templateUrl: './list-group-example-avatar-subheader.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListGroupExampleAvatarSubheaderComponent {

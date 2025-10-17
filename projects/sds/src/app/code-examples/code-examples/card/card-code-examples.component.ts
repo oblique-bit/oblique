@@ -9,9 +9,9 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
 	selector: 'app-card-code-examples',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'card-examples';

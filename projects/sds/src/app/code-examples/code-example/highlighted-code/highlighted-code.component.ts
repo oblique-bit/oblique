@@ -4,9 +4,9 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 
 @Component({
 	selector: 'app-highlighted-code',
+	imports: [IdPipe],
 	templateUrl: './highlighted-code.component.html',
-	styleUrl: './highlighted-code.component.scss',
-	imports: [IdPipe]
+	styleUrl: './highlighted-code.component.scss'
 })
 export class HighlightedCodeComponent implements AfterViewInit {
 	readonly idPrefix = input('');

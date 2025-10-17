@@ -12,9 +12,9 @@ import {MaterialTableExampleSortablePreviewComponent} from './previews/sortable/
 
 @Component({
 	selector: 'app-code-example-material-table',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MaterialTableCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'material-table-examples';

@@ -4,8 +4,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 
 @Component({
-	imports: [MatButtonModule, MatDialogModule, ObButtonModule],
 	selector: 'sb-example-dialog',
+	imports: [MatButtonModule, MatDialogModule, ObButtonModule],
 	templateUrl: './example-dialog.component.html'
 })
 export class ExampleDialogComponent {}

@@ -7,8 +7,8 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
 	selector: 'app-code-example-alert',
-	templateUrl: '../../code-examples.component.html',
-	imports: [CodeExampleComponent, IdPipe]
+	imports: [CodeExampleComponent, IdPipe],
+	templateUrl: '../../code-examples.component.html'
 })
 export class AlertCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'alert-examples';

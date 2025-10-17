@@ -8,8 +8,8 @@ import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-number-format-example-default-with-reactive-form-preview',
-	templateUrl: './number-format-example-default-with-reactive-form-preview.component.html',
 	imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule, ReactiveFormsModule],
+	templateUrl: './number-format-example-default-with-reactive-form-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss'
 })
 export class NumberFormatExampleDefaultWithReactiveFormPreviewComponent {

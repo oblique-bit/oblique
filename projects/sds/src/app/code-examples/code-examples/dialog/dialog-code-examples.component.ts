@@ -8,9 +8,9 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 
 @Component({
 	selector: 'app-dialog-code-example',
+	imports: [CodeExampleComponent, CommonModule, IdPipe],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CodeExampleComponent, CommonModule, IdPipe]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DialogCodeExamplesComponent extends CodeExamples {
 	readonly previews: CodeExample[] = [

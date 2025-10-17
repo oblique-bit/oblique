@@ -8,9 +8,9 @@ import {ErrorMessagesExampleReactiveFormPreviewComponent} from './previews/react
 
 @Component({
 	selector: 'app-code-example-error-messages',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ErrorMessagesCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'error-messages-examples';

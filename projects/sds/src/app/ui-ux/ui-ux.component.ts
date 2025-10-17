@@ -8,10 +8,10 @@ import {latest} from '../../obliqueVersion';
 
 @Component({
 	selector: 'app-ui-ux',
-	templateUrl: './ui-ux.component.html',
-	styleUrl: './ui-ux.component.scss',
+	imports: [SafeHtmlPipe, RouterLink, RelatedLinkPipe, ObExternalLinkDirective],
 	standalone: true,
-	imports: [SafeHtmlPipe, RouterLink, RelatedLinkPipe, ObExternalLinkDirective]
+	templateUrl: './ui-ux.component.html',
+	styleUrl: './ui-ux.component.scss'
 })
 export class UiUxComponent {
 	readonly currentObliqueVersion = Number(latest.split('.')[0]);

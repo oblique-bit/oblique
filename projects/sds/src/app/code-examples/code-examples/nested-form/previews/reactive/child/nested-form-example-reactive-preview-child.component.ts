@@ -7,9 +7,6 @@ import {NestedFormExampleReactivePreviewGrandchildComponent} from '../grandchild
 
 @Component({
 	selector: 'app-nested-form-example-reactive-preview-child',
-	exportAs: 'child',
-	templateUrl: './nested-form-example-reactive-preview-child.component.html',
-	styleUrl: '../../nested-form-example-preview.scss',
 	imports: [
 		MatInputModule,
 		MatFormFieldModule,
@@ -17,7 +14,10 @@ import {NestedFormExampleReactivePreviewGrandchildComponent} from '../grandchild
 		ObErrorMessagesModule,
 		ObNestedFormModule,
 		ReactiveFormsModule
-	]
+	],
+	templateUrl: './nested-form-example-reactive-preview-child.component.html',
+	styleUrl: '../../nested-form-example-preview.scss',
+	exportAs: 'child'
 })
 export class NestedFormExampleReactivePreviewChildComponent {
 	nestedForm: UntypedFormGroup;

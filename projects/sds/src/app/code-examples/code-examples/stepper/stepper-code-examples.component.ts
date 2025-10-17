@@ -9,9 +9,9 @@ import {StepperExampleErrorPreviewComponent} from '../stepper/previews/error/ste
 
 @Component({
 	selector: 'app-code-example-stepper',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StepperCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'stepper-examples';

@@ -8,9 +8,9 @@ import {GlobalEventsExampleObOutsideFilterPreviewComponent} from '../global-even
 
 @Component({
 	selector: 'app-code-example-global-events',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GlobalEventsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'global-events-examples';

@@ -11,9 +11,9 @@ import {ObButtonModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-feedback',
+	imports: [AsyncPipe, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, ObButtonModule, ReactiveFormsModule],
 	templateUrl: './feedback-form.component.html',
-	styleUrl: './feedback-form.component.scss',
-	imports: [AsyncPipe, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, ObButtonModule, ReactiveFormsModule]
+	styleUrl: './feedback-form.component.scss'
 })
 export class FeedbackFormComponent {
 	readonly formGroup = new FormGroup({});

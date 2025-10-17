@@ -7,9 +7,9 @@ import {LanguageExampleDefaultPreviewComponent} from './previews/default/languag
 
 @Component({
 	selector: 'app-code-example-langugage',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LanguageCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'language-examples';

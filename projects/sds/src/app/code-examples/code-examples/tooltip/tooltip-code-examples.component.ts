@@ -8,9 +8,9 @@ import {TooltipExampleBasicPreviewComponent} from './previews/basic/tooltip-exam
 
 @Component({
 	selector: 'app-code-example-tooltip',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'tooltip-examples';

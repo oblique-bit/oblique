@@ -10,9 +10,9 @@ import {CollapseExampleAnimationDurationPreviewComponent} from './previews/anima
 
 @Component({
 	selector: 'app-code-example-collapse',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CollapseCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'collapse-examples';

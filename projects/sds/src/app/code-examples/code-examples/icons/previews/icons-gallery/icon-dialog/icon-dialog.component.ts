@@ -11,8 +11,6 @@ import type {IconMetadata} from '../icons.model';
 
 @Component({
 	selector: 'app-icon-dialog',
-	templateUrl: './icon-dialog.component.html',
-	styleUrl: './icon-dialog.component.scss',
 	imports: [
 		ObButtonModule,
 		ObNotificationModule,
@@ -24,7 +22,9 @@ import type {IconMetadata} from '../icons.model';
 		MatTooltipModule,
 		MatChipsModule,
 		TranslateModule
-	]
+	],
+	templateUrl: './icon-dialog.component.html',
+	styleUrl: './icon-dialog.component.scss'
 })
 export class IconDialogComponent {
 	selectedIconMetaData = inject<IconMetadata>(MAT_DIALOG_DATA);

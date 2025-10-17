@@ -6,8 +6,8 @@ import {ObButtonModule, ObSelectableModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-clickable-cards',
+	imports: [MatButtonModule, MatCardModule, ObButtonModule, ObSelectableModule, RouterModule],
 	templateUrl: './clickable-cards.component.html',
-	styleUrl: './clickable-cards.component.scss',
-	imports: [MatButtonModule, MatCardModule, ObButtonModule, ObSelectableModule, RouterModule]
+	styleUrl: './clickable-cards.component.scss'
 })
 export class ClickableCardsComponent {}

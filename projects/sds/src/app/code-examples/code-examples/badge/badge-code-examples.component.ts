@@ -8,8 +8,8 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
 	selector: 'app-badge-code-examples',
-	templateUrl: '../../code-examples.component.html',
-	imports: [CommonModule, CodeExampleComponent, IdPipe]
+	imports: [CommonModule, CodeExampleComponent, IdPipe],
+	templateUrl: '../../code-examples.component.html'
 })
 export class BadgeCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'badge-examples';

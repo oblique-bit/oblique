@@ -32,8 +32,6 @@ import type {IconMetadata} from './icons.model';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
-	templateUrl: './icons-example-icons-gallery-preview.component.html',
-	styleUrl: './icons-example-icons-gallery-preview.component.scss',
 	imports: [
 		CommonModule,
 		MatIconModule,
@@ -53,7 +51,9 @@ import type {IconMetadata} from './icons.model';
 		ObInputClearModule,
 		ObAlertModule,
 		MatDivider
-	]
+	],
+	templateUrl: './icons-example-icons-gallery-preview.component.html',
+	styleUrl: './icons-example-icons-gallery-preview.component.scss'
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');

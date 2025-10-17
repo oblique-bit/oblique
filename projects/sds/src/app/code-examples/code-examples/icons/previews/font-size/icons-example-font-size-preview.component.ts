@@ -3,8 +3,8 @@ import {MatIconModule} from '@angular/material/icon';
 
 @Component({
 	selector: 'app-icons-example-font-size-preview',
+	imports: [MatIconModule],
 	templateUrl: './icons-example-font-size-preview.component.html',
-	styleUrl: './icons-example-font-size-preview.component.scss',
-	imports: [MatIconModule]
+	styleUrl: './icons-example-font-size-preview.component.scss'
 })
 export class IconsExampleFontSizePreviewComponent {}

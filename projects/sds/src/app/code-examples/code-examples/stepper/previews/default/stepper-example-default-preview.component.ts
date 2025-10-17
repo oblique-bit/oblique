@@ -10,8 +10,6 @@ import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-stepper-example-default-preview',
-	templateUrl: './stepper-example-default-preview.component.html',
-	styleUrl: './stepper-example-default-preview.component.scss',
 	imports: [
 		MatFormFieldModule,
 		MatButtonModule,
@@ -21,7 +19,9 @@ import {TranslateModule} from '@ngx-translate/core';
 		ObButtonModule,
 		ReactiveFormsModule,
 		TranslateModule
-	]
+	],
+	templateUrl: './stepper-example-default-preview.component.html',
+	styleUrl: './stepper-example-default-preview.component.scss'
 })
 export class StepperExampleDefaultPreviewComponent {
 	firstFormGroup: UntypedFormGroup;

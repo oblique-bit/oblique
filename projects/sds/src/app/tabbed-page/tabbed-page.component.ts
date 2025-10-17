@@ -21,9 +21,9 @@ import {UiUxComponent} from '../ui-ux/ui-ux.component';
 
 @Component({
 	selector: 'app-tabbed-page',
+	imports: [TabsComponent, TabComponent, UiUxComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
 	templateUrl: './tabbed-page.component.html',
 	styleUrl: './tabbed-page.component.scss',
-	imports: [TabsComponent, TabComponent, UiUxComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
 	host: {class: 'content-page'},
 	hostDirectives: [CdkScrollable]
 })

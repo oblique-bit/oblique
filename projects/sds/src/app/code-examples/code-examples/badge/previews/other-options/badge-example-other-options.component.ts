@@ -5,10 +5,10 @@ import {ObButtonModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-badge-example-other-options',
+	imports: [MatBadgeModule, MatButtonModule, ObButtonModule],
 	templateUrl: './badge-example-other-options.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [MatBadgeModule, MatButtonModule, ObButtonModule],
 	host: {class: 'layout-breakpoint-md'}
 })
 export class BadgeExampleOtherOptionsComponent {}

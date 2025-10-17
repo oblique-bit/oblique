@@ -5,8 +5,8 @@ import {ObErrorMessagesModule, ObSchemaValidationModule} from '@oblique/oblique'
 
 @Component({
 	selector: 'app-schema-validation-example-reactive-form-preview',
-	templateUrl: './schema-validation-example-reactive-form-preview.component.html',
-	imports: [MatInputModule, ReactiveFormsModule, ObSchemaValidationModule, ObErrorMessagesModule]
+	imports: [MatInputModule, ReactiveFormsModule, ObSchemaValidationModule, ObErrorMessagesModule],
+	templateUrl: './schema-validation-example-reactive-form-preview.component.html'
 })
 export class SchemaValidationExampleReactiveFormPreviewComponent implements OnInit {
 	schema = {

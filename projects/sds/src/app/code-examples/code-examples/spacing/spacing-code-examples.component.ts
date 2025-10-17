@@ -7,9 +7,9 @@ import {SpacingExampleSpacingPreviewComponent} from './previews/spacing/spacing-
 
 @Component({
 	selector: 'app-code-example-spacing-and-layout',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpacingCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'spacing-examples';

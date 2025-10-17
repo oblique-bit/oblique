@@ -4,8 +4,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
 
 @Component({
-	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
 	selector: 'app-autocomplete-example-default',
+	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
 	templateUrl: './autocomplete-example-default.component.html'
 })
 export class AutocompleteExampleDefaultComponent implements AfterViewInit {

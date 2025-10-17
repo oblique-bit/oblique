@@ -9,9 +9,9 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
 	selector: 'app-slider-code-examples',
+	imports: [CodeExampleComponent, CommonModule, IdPipe],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CodeExampleComponent, CommonModule, IdPipe]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SliderCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'slider-examples';

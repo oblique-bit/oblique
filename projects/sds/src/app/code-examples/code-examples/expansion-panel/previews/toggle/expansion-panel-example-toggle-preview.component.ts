@@ -9,7 +9,7 @@ import {
 
 @Component({
 	selector: 'app-expansion-panel-example-toggle-preview',
-	templateUrl: './expansion-panel-example-toggle-preview.component.html',
-	imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelTitle]
+	imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelTitle],
+	templateUrl: './expansion-panel-example-toggle-preview.component.html'
 })
 export class ExpansionPanelExampleTogglePreviewComponent {}

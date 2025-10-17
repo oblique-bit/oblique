@@ -9,8 +9,8 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 
 @Component({
 	selector: 'app-autocomplete-code-examples',
-	templateUrl: '../../code-examples.component.html',
-	imports: [CommonModule, CodeExampleComponent, IdPipe]
+	imports: [CommonModule, CodeExampleComponent, IdPipe],
+	templateUrl: '../../code-examples.component.html'
 })
 export class AutocompleteCodeExamplesComponent extends CodeExamples {
 	readonly previews: CodeExample[] = [

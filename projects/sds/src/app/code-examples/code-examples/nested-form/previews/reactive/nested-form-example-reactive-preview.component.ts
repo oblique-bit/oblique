@@ -9,8 +9,6 @@ import {MatButtonModule} from '@angular/material/button';
 
 @Component({
 	selector: 'app-nested-form-example-reactive-preview',
-	templateUrl: './nested-form-example-reactive-preview.component.html',
-	styleUrl: '../nested-form-example-preview.scss',
 	imports: [
 		JsonPipe,
 		MatButtonModule,
@@ -22,7 +20,9 @@ import {MatButtonModule} from '@angular/material/button';
 		ObNestedFormModule,
 		ObNotificationModule,
 		ReactiveFormsModule
-	]
+	],
+	templateUrl: './nested-form-example-reactive-preview.component.html',
+	styleUrl: '../nested-form-example-preview.scss'
 })
 export class NestedFormExampleReactivePreviewComponent {
 	readonly channel = 'reactive-channel';

@@ -6,8 +6,8 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'app-number-format-example-other-options-preview',
-	templateUrl: './number-format-example-other-options-preview.component.html',
 	imports: [FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule],
+	templateUrl: './number-format-example-other-options-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss'
 })
 export class NumberFormatExampleOtherOptionsPreviewComponent {

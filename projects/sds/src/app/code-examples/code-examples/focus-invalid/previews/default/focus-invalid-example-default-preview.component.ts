@@ -11,8 +11,6 @@ import {MatButtonModule} from '@angular/material/button';
 
 @Component({
 	selector: 'app-focus-invalid-example-default-preview',
-	templateUrl: './focus-invalid-example-default-preview.component.html',
-	styleUrl: './focus-invalid-example-default-preview.component.scss',
 	imports: [
 		MatButtonModule,
 		MatDatepickerModule,
@@ -26,7 +24,9 @@ import {MatButtonModule} from '@angular/material/button';
 		ObErrorMessagesDirective,
 		ObFocusInvalidDirective,
 		ObMatErrorDirective
-	]
+	],
+	templateUrl: './focus-invalid-example-default-preview.component.html',
+	styleUrl: './focus-invalid-example-default-preview.component.scss'
 })
 export class FocusInvalidExampleDefaultPreviewComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;

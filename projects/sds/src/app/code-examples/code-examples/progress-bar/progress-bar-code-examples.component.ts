@@ -8,9 +8,9 @@ import {ProgressBarExampleModesPreviewComponent} from './previews/modes/progress
 
 @Component({
 	selector: 'app-code-example-progress-bar',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProgressBarCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'progress-bar-examples';
