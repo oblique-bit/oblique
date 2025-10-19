@@ -14,7 +14,16 @@ StyleDictionary.registerTransform(colorTransform);
 StyleDictionary.registerPreprocessor(compositionPreprocessor);
 
 export async function generateCSS(files, libFolder) {
-	const modes = [{exclude: /(?:prose|lg|sm|low|mobile|dark|compact|spacious)\.json/}];
+	const modes = [
+		{exclude: /(?:prose|lg|sm|low|mobile|dark|compact|spacious)\.json/},
+		{exclude: /(?:prose|lg|sm|low|mobile|light|compact|spacious)\.json/, selector: '@media (prefers-color-scheme: dark)'},
+		{exclude: /(?:prose|lg|sm|low|desktop|dark|compact|spacious)\.json/, selector: '@media (width <= 767px)'},
+		{exclude: /(?:prose|md|sm|low|mobile|dark|compact|spacious)\.json/, selector: '.ob-size-lg'},
+		{exclude: /(?:prose|lg|md|low|mobile|dark)|compact|spacious\.json/, selector: '.ob-size-sm'},
+		{exclude: /(?:prose|lg|md|low|mobile|dark)|standard|spacious\.json/, selector: '.ob-density-compact'},
+		{exclude: /(?:prose|lg|md|low|mobile|dark)|compact|standard\.json/, selector: '.ob-density-spacious'},
+		{exclude: /(?:interface|lg|sm|low|mobile|dark|compact|spacious)\.json/, selector: '.ob-typography-context-prose'}
+	];
 
 	for (const config of buildConfigs(modes, files, libFolder)) {
 		await config.buildAllPlatforms();
@@ -42,12 +51,16 @@ function buildConfigs(modes, files, libFolder) {
 						files: [
 							{
 								destination: `${libFolder}/styles/oblique-tokens.css`,
-								format: coreFormat.name
+								format: coreFormat.name,
+								options: {
+									mode: mode.selector
+								}
 							},
 							...components.map(component => ({
 								destination: `${libFolder}/${component}/${component}-tokens.css`,
 								format: componentFormat.name,
 								options: {
+									mode: mode.selector,
 									component
 								}
 							}))
