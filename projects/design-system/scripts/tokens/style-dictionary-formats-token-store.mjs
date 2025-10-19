@@ -15,7 +15,12 @@ export class TokenFormat {
 
 	core({dictionary}) {
 		this.#rootTokens = dictionary;
-		return this.#format(':root', /^--ob-[sh]/);
+		return this.#format(':root', /^--ob-[sh]/, false);
+	}
+
+	component({file}) {
+		const {component} = file.options;
+		return this.#format(':host', new RegExp(`^--ob-c-${component}.*var`), true);
 	}
 
 	#format(selector, include, isComponent) {

@@ -1,12 +1,14 @@
 import {register} from '@tokens-studio/sd-transforms';
 import StyleDictionary from 'style-dictionary';
 import {logVerbosityLevels} from 'style-dictionary/enums';
-import {coreFormat} from './style-dictionary-formats.mjs';
+import {componentFormat, coreFormat} from './style-dictionary-formats.mjs';
 import {colorTransform, kebabTransform} from './style-dictionary-transforms.mjs';
 import {compositionPreprocessor} from './style-dictionary-preprocessors.mjs';
+import {existsSync} from 'node:fs';
 
 register(StyleDictionary, {});
 StyleDictionary.registerFormat(coreFormat);
+StyleDictionary.registerFormat(componentFormat);
 StyleDictionary.registerTransform(kebabTransform);
 StyleDictionary.registerTransform(colorTransform);
 StyleDictionary.registerPreprocessor(compositionPreprocessor);
@@ -20,6 +22,7 @@ export async function generateCSS(files, libFolder) {
 }
 
 function buildConfigs(modes, files, libFolder) {
+	const components = listComponents(files, libFolder);
 	return modes.map(
 		mode =>
 			new StyleDictionary({
@@ -40,7 +43,14 @@ function buildConfigs(modes, files, libFolder) {
 							{
 								destination: `${libFolder}/styles/oblique-tokens.css`,
 								format: coreFormat.name
-							}
+							},
+							...components.map(component => ({
+								destination: `${libFolder}/${component}/${component}-tokens.css`,
+								format: componentFormat.name,
+								options: {
+									component
+								}
+							}))
 						]
 					}
 				},
@@ -49,4 +59,10 @@ function buildConfigs(modes, files, libFolder) {
 				}
 			})
 	);
+}
+
+function listComponents(files, libFolder) {
+	return [
+		...new Set(files.filter(path => path.includes('/04_component/')).map(path => /(?<=component\/(?:atom|molecule)\/)[\w-]+/.exec(path)[0]))
+	].filter(component => existsSync(`${libFolder}/${component}`));
 }
