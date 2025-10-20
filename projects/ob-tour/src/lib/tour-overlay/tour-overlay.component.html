@@ -1,9 +1,10 @@
-@if (currentStep(); as step) {
-	<div class="obt-tour-overlay" tabindex="-1" cdkTrapFocus [ngClass]="arrowPosition">
-		<div class="tour-arrow"></div>
-
-		<header class="obt-tour-overlay__header">
-			<h2 id="obt-tour-overlay-title" class="obt-tour-overlay__title">
+@if (tourService.activeTour() && tourService.activeStep(); as step) {
+	<div class="obt-tour-overlay" tabindex="-1" cdkTrapFocus cdkTrapFocusAutoCapture="true" [ngClass]="currentArrowPosition">
+		@if (currentArrowPosition !== "arrow-none") {
+			<div class="tour-arrow" aria-hidden="true"></div>
+		}
+		<header class="obt-tour-overlay-header">
+			<h2 id="obt-tour-overlay-title" class="obt-tour-overlay-title">
 				{{ step.stepTitle | translate }}
 			</h2>
 			<button
@@ -13,7 +14,7 @@
 				class="obt-close-button"
 				id="obt-menu-close-button"
 				[matTooltip]="
-					hasPrev()
+					tourService.hasNextStep()
 						? ('i18n.ob-tour.overlay.dialog.button.tooltip.close.with-save-info'
 							| obTranslateParams: { closeMessage: 'i18n.ob-tour.overlay.dialog.button.tooltip.close' })
 						: ('i18n.ob-tour.overlay.dialog.button.tooltip.close' | translate)
@@ -24,41 +25,101 @@
 				<mat-icon matIconSuffix svgIcon="xmark" />
 			</button>
 		</header>
-
-		<div class="obt-tour-overlay__content">
-			<p class="obt-tour-overlay__description">
+		<div class="obt-tour-overlay-content">
+			<span class="obt-tour-overlay-progress">
+				<label id="progress-label" for="step-progress" class="obt-screen-reader-only"
+					>{{ "i18n.ob-tour.overlay.dialog.progress.label.progress" | translate }}
+					<span role="status">
+						{{
+							"i18n.ob-tour.overlay.dialog.progress.label"
+								| translate: { currentStepNum: tourService.activeStepIndex() + 1, maxStepNum: tourService.activeTour().steps?.length }
+						}}
+					</span>
+				</label>
+				<mat-progress-bar [value]="percent.toFixed(0)" aria-labelledby="progress-label">
+					<span role="status">
+						{{
+							"i18n.ob-tour.overlay.dialog.progress.label"
+								| translate: { currentStepNum: tourService.activeStepIndex() + 1, maxStepNum: tourService.activeTour().steps?.length }
+						}}
+					</span>
+				</mat-progress-bar>
+				<p>
+					{{
+						"i18n.ob-tour.overlay.dialog.progress.label"
+							| translate: { currentStepNum: tourService.activeStepIndex() + 1, maxStepNum: tourService.activeTour().steps?.length }
+					}}
+				</p>
+			</span>
+			<p class="obt-tour-overlay-description">
 				{{ step.stepDescription | translate }}
 			</p>
 		</div>
 
-		<footer class="obt-tour-overlay__footer">
-			@if (hasPrev()) {
+		<footer class="obt-tour-overlay-footer">
+			@if (tourService.hasPreviousStep()) {
 				<button
 					obButton="tertiary"
 					mat-button
 					type="button"
 					(click)="onPrev()"
+					[matTooltip]="'i18n.ob-tour.overlay.button.aria.previous' | translate"
 					[attr.aria-label]="'i18n.ob-tour.overlay.button.aria.previous' | translate"
 				>
 					{{ "i18n.ob-tour.overlay.button.label.previous" | translate }}
 				</button>
 			}
-			@if (hasNext()) {
-				<button
-					obButton="tertiary"
-					mat-button
-					color="primary"
-					type="button"
-					(click)="onNext()"
-					[attr.aria-label]="'i18n.ob-tour.overlay.button.aria.next' | translate"
-				>
-					{{ "i18n.ob-tour.overlay.button.label.next" | translate }}
-				</button>
-			}
+
+			<button
+				obButton="primary"
+				mat-button
+				color="primary"
+				type="button"
+				(click)="tourService.hasNextStep() ? onNext() : onClose()"
+				[matTooltip]="
+					tourService.hasNextStep()
+						? ('i18n.ob-tour.overlay.button.aria.next' | translate)
+						: ('i18n.ob-tour.overlay.button.aria.finish' | translate)
+				"
+				[attr.aria-label]="
+					(tourService.hasNextStep() ? 'i18n.ob-tour.overlay.button.aria.next' : 'i18n.ob-tour.overlay.button.aria.finish') | translate
+				"
+			>
+				{{
+					tourService.hasNextStep()
+						? ("i18n.ob-tour.overlay.button.label.next" | translate)
+						: ("i18n.ob-tour.overlay.button.label.finish" | translate)
+				}}
+			</button>
 		</footer>
 	</div>
 } @else {
-	<div class="obt-tour-overlay__empty" role="alert">
-		{{ "i18n.ob-tour.overlay.alert.no-step" | translate }}
+	<div class="obt-tour-overlay-empty">
+		<p>
+			{{ "i18n.ob-tour.overlay.alert.no-step" | translate }}
+		</p>
+		<footer>
+			<button
+				obButton="tertiary"
+				mat-button
+				color="primary"
+				type="button"
+				(click)="tourService.hasNextStep() ? onNext() : onClose()"
+				[matTooltip]="
+					tourService.hasNextStep()
+						? ('i18n.ob-tour.overlay.button.aria.next' | translate)
+						: ('i18n.ob-tour.overlay.button.aria.finish' | translate)
+				"
+				[attr.aria-label]="
+					(tourService.hasNextStep() ? 'i18n.ob-tour.overlay.button.aria.next' : 'i18n.ob-tour.overlay.button.aria.finish') | translate
+				"
+			>
+				{{
+					tourService.hasNextStep()
+						? ("i18n.ob-tour.overlay.button.label.next" | translate)
+						: ("i18n.ob-tour.overlay.button.label.finish" | translate)
+				}}
+			</button>
+		</footer>
 	</div>
 }

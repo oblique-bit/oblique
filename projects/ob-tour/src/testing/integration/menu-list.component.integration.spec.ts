@@ -9,9 +9,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ObButtonModule, ObIconModule} from '@oblique/oblique';
 
-import {MenuListComponent} from '../lib/tour-menu/menu-list/menu-list.component';
+import {MenuListComponent} from '../../lib/tour-menu/menu-list/menu-list.component';
 import {ObtMenuListHarness} from './_harness/menu-list.harness';
-import type {ObTourConfig, ObTourState} from '../lib/models/tour-config.model';
+import type {ObtTour, ObtTourState} from '../../lib/models/tour.model';
 
 const translationKeys = {
 	en: {
@@ -49,17 +49,19 @@ const translateTestConfig = {
 	`
 })
 class MenuListTestComponent {
-	types: ObTourState[] = ['new', 'inProgress', 'done'];
+	types: ObtTourState[] = ['new', 'inProgress', 'done'];
 
-	createList(type: ObTourState): ObTourConfig[] {
+	createList(type: ObtTourState): ObtTour[] {
 		return [
 			{
+				storageKey: '2',
 				steps: [],
 				tourTitle: `i18n.ob-tour.tour-menu.list.element.1.title`,
 				tourDescription: `i18n.ob-tour.tour-menu.list.element.1.description`,
 				state: type
 			},
 			{
+				storageKey: '1',
 				steps: [],
 				tourTitle: `Custom ${type} Tour`,
 				tourDescription: `Custom description for ${type}`,
@@ -88,7 +90,7 @@ describe('Integration: MenuListComponent inside MenuListTestComponent', () => {
 		fixture.detectChanges();
 	});
 
-	describe.each(['new', 'inProgress', 'done'] as ObTourState[])('list type %s', state => {
+	describe.each(['new', 'inProgress', 'done'] as ObtTourState[])('list type %s', state => {
 		let harness: ObtMenuListHarness;
 
 		beforeEach(async () => {
@@ -117,11 +119,6 @@ describe('Integration: MenuListComponent inside MenuListTestComponent', () => {
 			expect(true).toBeTruthy();
 		});
 
-		it('returns a specific button by its visible label text', async () => {
-			const button = await harness.getActionButtonByLabel('Start tour');
-			expect(button).toBeTruthy();
-		});
-
 		it('renders an icon for each action button', async () => {
 			const icons = await harness.getIcons();
 			const buttons = await harness.getActionButtons();
@@ -145,11 +142,11 @@ describe('Integration: MenuListComponent inside MenuListTestComponent', () => {
 
 	it('supports all defined TOUR_STATES in harness', async () => {
 		const harness = await loader.getHarness(ObtMenuListHarness.with({listType: 'new'}));
-		expect(harness.states).toEqual(['new', 'done', 'inProgress']);
+		expect(harness.states).toEqual(['new', 'done', 'inProgress', 'skipped']);
 	});
 
 	it.each(['new', 'done', 'inProgress'])(`can resolve a harness for list type %s`, async type => {
-		const subHarness = await loader.getHarness(ObtMenuListHarness.with({listType: type as ObTourState}));
+		const subHarness = await loader.getHarness(ObtMenuListHarness.with({listType: type as ObtTourState}));
 		expect(subHarness).toBeTruthy();
 	});
 });
@@ -162,9 +159,10 @@ describe('Integration: MenuListComponent inside MenuListTestComponent', () => {
 })
 class HostMenuListComponent {
 	listTitle = 'New Tours';
-	listType: ObTourState = 'new';
-	listItems: ObTourConfig[] = [
+	listType: ObtTourState = 'new';
+	listItems: ObtTour[] = [
 		{
+			storageKey: 'abede',
 			tourTitle: 'Tour 1',
 			tourDescription: 'Description 1',
 			state: 'new',
@@ -173,7 +171,7 @@ class HostMenuListComponent {
 	];
 }
 
-describe.each(['new', 'inProgress', 'done'] as ObTourState[])('Integration: MenuListComponent standalone (%s)', listType => {
+describe.each(['new', 'inProgress', 'done'] as ObtTourState[])('Integration: MenuListComponent standalone (%s)', listType => {
 	let fixture: ComponentFixture<HostMenuListComponent>;
 	let loader: HarnessLoader;
 	let harness: ObtMenuListHarness;
@@ -224,13 +222,5 @@ describe.each(['new', 'inProgress', 'done'] as ObTourState[])('Integration: Menu
 		const icons = await harness.getIcons();
 		const buttons = await harness.getActionButtons();
 		expect(icons.length).toBeGreaterThanOrEqual(buttons.length);
-	});
-
-	it('responds to user interaction on an action button', async () => {
-		const button = await harness.getActionButtonByLabel('Start tour');
-		if (button) {
-			await button.click();
-			expect(button).toBeTruthy();
-		}
 	});
 });

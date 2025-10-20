@@ -3,17 +3,14 @@ import {MatSlideToggleHarness} from '@angular/material/slide-toggle/testing';
 import {MatButtonHarness} from '@angular/material/button/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {ObtMenuListHarness} from './menu-list.harness';
+import {TourPopoverHarness} from './popover.harness';
+import {TourOverlayHarness} from './tour-overlay.harness';
 
-export class ObtTourMenuHarness extends ComponentHarness {
-	static hostSelector = 'obt-tour-menu';
+export class ObtTourHarness extends ComponentHarness {
+	static hostSelector = 'obt-tour';
 
 	async getSlideToggleHarness(): Promise<MatSlideToggleHarness> {
 		return this.locatorFor(MatSlideToggleHarness)();
-	}
-
-	async toggleOverviewVisibility(): Promise<void> {
-		const toggle = await this.getSlideToggleHarness();
-		await toggle.toggle();
 	}
 
 	async activateToggle(): Promise<void> {
@@ -63,10 +60,18 @@ export class ObtTourMenuHarness extends ComponentHarness {
 
 	isPopoverOpen(): boolean {
 		const overlays = document.querySelectorAll('.cdk-overlay-pane');
-		return Array.from(overlays).some(overlay => overlay.querySelector('obt-tour-popover') !== null);
+		if (!overlays?.length) {
+			return false;
+		}
+		return Array.from(overlays).some(element => element.querySelector('obt-tour-popover'));
 	}
+
 	async getPopoverElement(): Promise<TestElement | null> {
 		return this.documentRootLocatorFactory().locatorForOptional('.cdk-overlay-container obt-tour-popover')();
+	}
+
+	async getPopoverHarness(): Promise<TourPopoverHarness | null> {
+		return this.documentRootLocatorFactory().locatorForOptional(TourPopoverHarness)();
 	}
 
 	async getPopoverLists(): Promise<ObtMenuListHarness[]> {
@@ -91,10 +96,9 @@ export class ObtTourMenuHarness extends ComponentHarness {
 
 	async pressEscape(): Promise<void> {
 		const escapeEvent = new KeyboardEvent('keyup', {key: 'Escape', bubbles: true});
-		const overlayContainer = document.querySelector('.cdk-overlay-container') ?? document.body;
-		overlayContainer.dispatchEvent(escapeEvent);
+		document.dispatchEvent(escapeEvent);
 		await new Promise(resolve => {
-			setTimeout(resolve);
+			setTimeout(resolve, 100);
 		});
 	}
 
@@ -103,18 +107,28 @@ export class ObtTourMenuHarness extends ComponentHarness {
 		return Promise.all(badges.map(async badge => Number((await badge.text()).trim())));
 	}
 
-	async getPopoverSectionCounts(): Promise<{new: number; inProgress: number; done: number}> {
+	async getPopoverSectionCounts(): Promise<{new: number; inProgress: number; done: number; skipped: number}> {
 		const popoverRoot = this.documentRootLocatorFactory();
-		const counts = {new: 0, inProgress: 0, done: 0};
+		const harnesses = {
+			new: await popoverRoot.locatorForOptional(ObtMenuListHarness.with({listType: 'new'}))(),
+			inProgress: await popoverRoot.locatorForOptional(ObtMenuListHarness.with({listType: 'inProgress'}))(),
+			done: await popoverRoot.locatorForOptional(ObtMenuListHarness.with({listType: 'done'}))(),
+			skipped: await popoverRoot.locatorForOptional(ObtMenuListHarness.with({listType: 'skipped'}))()
+		};
+		const results = {new: 0, inProgress: 0, done: 0, skipped: 0};
+		results.new = (await harnesses.new.getListItemCount()) ?? 0;
+		results.done = (await harnesses.done.getListItemCount()) ?? 0;
+		results.skipped = (await harnesses.skipped.getListItemCount()) ?? 0;
+		results.inProgress = (await harnesses.inProgress.getListItemCount()) ?? 0;
+		return results;
+	}
 
-		for (const state of ['new', 'inProgress', 'done'] as const) {
-			// eslint-disable-next-line no-await-in-loop
-			const harness = await popoverRoot.locatorForOptional(ObtMenuListHarness.with({listType: state}))();
-			if (harness) {
-				// eslint-disable-next-line no-await-in-loop
-				counts[state] = await harness.getListItemCount();
-			}
-		}
-		return counts;
+	async getPopoverListTitles(): Promise<string[]> {
+		const lists = await this.getPopoverLists();
+		return Promise.all(lists.map(list => list.getListTitleText()));
+	}
+
+	async getStepsOverlayHarness(): Promise<TourOverlayHarness> {
+		return this.documentRootLocatorFactory().locatorForOptional(TourOverlayHarness)();
 	}
 }

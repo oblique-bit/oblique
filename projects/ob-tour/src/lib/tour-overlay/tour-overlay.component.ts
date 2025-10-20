@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, EventEmitter, HostListener, Input, Output, computed, inject} from '@angular/core';
+import {Component, HostListener, effect, inject, input, output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSuffix} from '@angular/material/form-field';
@@ -7,10 +7,11 @@ import {MatTooltip} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObButtonDirective, ObTranslateParamsPipe} from '@oblique/oblique';
 import {CdkTrapFocus} from '@angular/cdk/a11y';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import {ObtTourService} from '../services/tour.service';
-import {ObTourStep} from '../models/tour-step.model';
-export type ArrowDirection = 'arrow-top' | 'arrow-bottom' | 'arrow-left' | 'arrow-right' | 'arrow-none';
+import {ObtArrowDirection, ObtTour} from '../models/tour.model';
+
 @Component({
 	selector: 'obt-tour-overlay',
 	standalone: true,
@@ -23,10 +24,11 @@ export type ArrowDirection = 'arrow-top' | 'arrow-bottom' | 'arrow-left' | 'arro
 		ObButtonDirective,
 		MatTooltip,
 		CdkTrapFocus,
-		ObTranslateParamsPipe
+		ObTranslateParamsPipe,
+		MatProgressBarModule
 	],
 	templateUrl: './tour-overlay.component.html',
-	styleUrl: './tour-overlay.component.scss',
+	styleUrls: ['./tour-overlay.component.scss'],
 	host: {
 		role: 'dialog',
 		'aria-modal': 'true',
@@ -34,44 +36,91 @@ export type ArrowDirection = 'arrow-top' | 'arrow-bottom' | 'arrow-left' | 'arro
 	}
 })
 export class TourOverlayComponent {
-	@Input()
-	set arrowPosition(value: ArrowDirection) {
-		this.arrowPositionValue = value;
-		this.cdr.markForCheck();
+	readonly closeEmitter = output();
+	readonly arrowPosition = input<ObtArrowDirection>('arrow-none');
+
+	tourStepsLength = 0;
+	percent = 0;
+	activeStepNumber = 0;
+	hasNextIndex = false;
+	hasPreviousIndex = false;
+	currentTour: ObtTour;
+	currentArrowPosition: ObtArrowDirection = 'arrow-none';
+
+	readonly tourService = inject(ObtTourService);
+
+	constructor() {
+		effect(() => {
+			this.currentTour = this.tourService.activeTour();
+			this.tourStepsLength = this.currentTour?.steps?.length ?? 0;
+			this.hasNextIndex = this.tourService.hasNextStep();
+			this.hasPreviousIndex = this.tourService.hasPreviousStep();
+			this.updateState();
+		});
+		effect(() => {
+			this.currentArrowPosition = this.arrowPosition();
+		});
 	}
-	get arrowPosition(): ArrowDirection {
-		return this.arrowPositionValue;
-	}
-
-	@Output() readonly closeEmitter = new EventEmitter<void>();
-
-	readonly currentStep = computed<ObTourStep | null>(() => this.tourService.currentStep());
-	readonly hasNext = computed(() => this.tourService.hasNextStep());
-	readonly hasPrev = computed(() => this.tourService.hasPreviousStep());
-
-	private readonly tourService = inject(ObtTourService);
-	private arrowPositionValue: ArrowDirection = 'arrow-none';
-
-	constructor(private readonly cdr: ChangeDetectorRef) {}
 
 	onNext(): void {
-		this.closeEmitter.emit();
 		this.tourService.nextStep();
+		this.updateState();
+		this.closeEmitter.emit();
 	}
 
 	onPrev(): void {
-		this.closeEmitter.emit();
 		this.tourService.prevStep();
+		this.updateState();
+		this.closeEmitter.emit();
 	}
 
 	onClose(): void {
+		if (this.tourService.hasNextStep()) {
+			this.tourService.pauseTour();
+		} else {
+			this.onFinish();
+		}
 		this.closeEmitter.emit();
-		this.tourService.finishTour();
 	}
 
 	@HostListener('document:keyup.escape', ['$event'])
 	onEscape(event: KeyboardEvent): void {
 		event.preventDefault();
 		this.onClose();
+	}
+
+	/** Recalculate current step and progress */
+	private updateState(): void {
+		if (!this.currentTour) {
+			this.resetStep();
+			return;
+		}
+		const idx = this.tourService.activeStepIndex() ?? 0;
+		this.activeStepNumber = idx + 1;
+		this.tourStepsLength = this.currentTour.steps.length;
+		this.hasNextIndex = this.tourService.hasNextStep();
+		this.hasPreviousIndex = this.tourService.hasPreviousStep();
+		this.percent = this.calcPercent(this.tourStepsLength, this.activeStepNumber);
+	}
+
+	private resetStep(): void {
+		this.tourStepsLength = 0;
+		this.percent = 0;
+		this.activeStepNumber = 0;
+		this.hasNextIndex = false;
+		this.hasPreviousIndex = false;
+		this.currentArrowPosition = this.arrowPosition();
+	}
+
+	private onFinish(): void {
+		this.tourService.finishTour(this.tourService.activeTourKey());
+		this.updateState();
+	}
+
+	private calcPercent(maxValue: number, currentValue: number): number {
+		if (maxValue === 0) {
+			return 0;
+		}
+		return (100 / maxValue) * currentValue;
 	}
 }

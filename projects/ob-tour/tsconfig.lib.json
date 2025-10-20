@@ -7,6 +7,8 @@
     "inlineSources": true,
     "importHelpers": true,
     "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "paths": {
       "@oblique/oblique": ["../../dist/oblique"],
       "@oblique/oblique/*": ["../../dist/oblique/*"]
@@ -20,11 +22,5 @@
     "enableResourceInlining": true,
     "compilationMode": "partial"
   },
-  "include": ["../../tests/**/*.d.ts"],
-  "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts",
-    "src/assets",
-    "src/integration-tests"
-  ]
+  "exclude": ["src/test.ts", "**/*.spec.ts", "src/assets", "src/testing"]
 }

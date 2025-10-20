@@ -4,25 +4,26 @@
 
 @include cdk.overlay();
 
+$obt-breakpoint-md: map.get(styles.$obt-grid-breakpoints, md);
+$obt-breakpoint-sm: map.get(styles.$obt-grid-breakpoints, sm);
+
 :host {
 	padding: 0;
 }
 
-$md-breakpoint: map.get(styles.$obt-grid-breakpoints, md);
-$sm-breakpoint: map.get(styles.$obt-grid-breakpoints, sm);
-
 .obt-tutorial {
+	margin-top: 1rem;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 1rem;
 	width: 100%;
 
-	@media (width <= $md-breakpoint) {
+	@media (width <= $obt-breakpoint-md) {
 		flex-direction: row;
 		justify-content: flex-start;
 	}
-	@media (width <= $sm-breakpoint) {
+	@media (width <= $obt-breakpoint-sm) {
 		.obt-notification {
 			flex-direction: column;
 			align-items: stretch;
@@ -38,13 +39,13 @@ $sm-breakpoint: map.get(styles.$obt-grid-breakpoints, sm);
 		flex-shrink: 0; /* prevents shirnking of the button */
 
 		.obt-notification-button {
-			@media (width > $md-breakpoint) {
+			@media (width > $obt-breakpoint-md) {
 				margin-left: 0;
 			}
 
 			&:focus-visible {
 				@include styles.obt-tab-focus-box-shadow();
-				border-radius: 2px;
+				border-radius: 3px;
 			}
 		}
 

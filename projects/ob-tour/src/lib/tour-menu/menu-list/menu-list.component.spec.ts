@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {BrowserTestingModule} from '@angular/platform-browser/testing';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 import {MenuListComponent} from './menu-list.component';
 
@@ -30,16 +30,36 @@ describe('MenuListComponent', () => {
 		it('should initialize listItems as null', () => {
 			expect(component.listItems()).toBeNull();
 		});
-
-		it('should initialize actions as empty array', () => {
-			expect(component.actions()).toEqual([]);
-		});
 	});
 
 	describe('setupActions() logic for listType "new"', () => {
 		beforeEach(() => {
 			fixture.componentRef.setInput('listType', 'new');
 			fixture.detectChanges();
+		});
+
+		describe('constructor TranslateService handling', () => {
+			let translateService: TranslateService;
+
+			beforeEach(() => {
+				translateService = (component as any).translate as TranslateService;
+			});
+
+			it('should set currentLang from TranslateService on initialization', () => {
+				const expected = translateService.currentLang;
+				expect((component as any).currentLang).toBe(expected);
+			});
+
+			it('should update currentLang when onTranslationChange emits new language', () => {
+				translateService.onTranslationChange.emit({translations: undefined, lang: 'it'});
+				expect((component as any).currentLang).toBe('it');
+			});
+
+			it('should keep currentLang unchanged if no translation change emitted', () => {
+				const before = (component as any).currentLang;
+				fixture.detectChanges();
+				expect((component as any).currentLang).toBe(before);
+			});
 		});
 
 		it('should have first action name "start"', () => {

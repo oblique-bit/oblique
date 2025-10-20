@@ -3,8 +3,18 @@
   "dest": "../../dist/ob-tour",
   "lib": {
     "entryFile": "src/public-api.ts",
-    "styleIncludePaths": ["projects/ob-tour/src/lib/styles"]
+    "styleIncludePaths": ["src/lib/styles"]
   },
-  "assets": ["src/assets"],
+  "assets": [
+    {
+      "input": "src/assets",
+      "glob": "**/*",
+      "output": "assets"
+    },
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE"
+  ],
   "allowedNonPeerDependencies": ["@schematics/angular", "ansi-colors"]
 }

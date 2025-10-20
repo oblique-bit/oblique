@@ -1,27 +1,54 @@
-import {Component, effect, input, signal} from '@angular/core';
-import {TranslatePipe} from '@ngx-translate/core';
-import {ObMenuActionIcon, ObTourAction, ObTourConfig, ObTourState} from '../../models/tour-config.model';
+import {Component, effect, inject, input, output, signal} from '@angular/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ObButtonModule} from '@oblique/oblique';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ActionButtonComponent} from './action-button/action-button.component';
-import {CdkAccordionItem} from '@angular/cdk/accordion';
+import {ObtActionButton, ObtTour, ObtTourChange, ObtTourState} from '../../models/tour.model';
+import {
+	MatAccordion,
+	MatExpansionPanel,
+	MatExpansionPanelDescription,
+	MatExpansionPanelHeader,
+	MatExpansionPanelTitle
+} from '@angular/material/expansion';
+import {DatePipe} from '@angular/common';
 
 @Component({
 	selector: 'obt-menu-list',
-	imports: [TranslatePipe, MatButtonModule, MatIconModule, ObButtonModule, MatTooltipModule, ActionButtonComponent, CdkAccordionItem],
+	imports: [
+		TranslatePipe,
+		MatButtonModule,
+		MatIconModule,
+		ObButtonModule,
+		MatTooltipModule,
+		ActionButtonComponent,
+		MatAccordion,
+		MatExpansionPanel,
+		MatExpansionPanelHeader,
+		MatExpansionPanelTitle,
+		MatExpansionPanelDescription,
+		DatePipe
+	],
 	templateUrl: './menu-list.component.html',
 	styleUrl: './menu-list.component.scss'
 })
 export class MenuListComponent {
 	listTitle = input<string>('');
-	listItems = input<ObTourConfig[] | null>(null);
-	listType = input<ObTourState | null>(null);
+	listItems = input<ObtTour[] | null>(null);
+	listType = input<ObtTourState>('new');
 
-	readonly actions = signal<{name: ObTourAction; icon: ObMenuActionIcon}[] | null>(null);
+	readonly tourStatusChanged = output<ObtTourChange>();
+	readonly actions = signal<ObtActionButton[] | null>(null);
+	currentLang = 'en';
+	private readonly translate = inject(TranslateService);
 
 	constructor() {
+		this.currentLang = this.translate.currentLang;
+		this.translate.onTranslationChange.subscribe(lang => {
+			this.currentLang = lang.lang;
+		});
 		effect(() => {
 			this.setupActions();
 		});
@@ -47,6 +74,10 @@ export class MenuListComponent {
 					{name: 'skip', icon: 'delete'}
 				]);
 				break;
+			case 'skipped': {
+				this.actions.set([{name: 'start', icon: 'chevron_right'}]);
+				break;
+			}
 			default:
 				this.actions.set([]);
 				break;

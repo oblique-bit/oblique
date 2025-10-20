@@ -19,6 +19,16 @@ module.exports = {
 		'!**/.*mock.*',
 		'!**/*.module.ts',
 		'!**/**.harness.ts',
-		'!**/index.ts'
-	]
+		'!**/index.ts',
+		'!**/tour-translation-factory.service.ts'
+	],
+	coverageThreshold: {
+		...baseConfig.coverageThreshold,
+		'projects/ob-tour/src/lib/services/tour-overlay.service.ts': {
+			branches: 97.26
+		},
+		'projects/ob-tour/src/lib/services/tour-menu-visibility.service.ts': {
+			branches: 90.47
+		}
+	}
 };

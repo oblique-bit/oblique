@@ -1,6 +1,8 @@
-@use "@oblique/oblique/src/styles/scss/core/variables";
-@use "@oblique/oblique/src/styles/scss/core/mixins/shadow" as shadow;
+@use "../styles" as styles;
 @use "@angular/cdk" as cdk;
+
+$obt-arrow-size: 32px;
+$obt-arrow-size-half: calc($obt-arrow-size/2);
 
 .obt-tour-overlay {
 	position: relative;
@@ -8,12 +10,11 @@
 	flex-direction: column;
 	min-width: 320px;
 	max-width: 480px;
-	padding: variables.$ob-spacing-lg;
-	border-radius: variables.$ob-border-radius-base;
-	background-color: variables.$ob-white;
-	color: variables.$ob-default;
+	padding: styles.$obt-spacing-lg;
+	border-radius: styles.$obt-border-radius-base;
+	background-color: styles.$obt-white;
+	color: styles.$obt-default;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 20%);
-	outline: none;
 
 	.tour-arrow {
 		position: absolute;
@@ -21,60 +22,89 @@
 		height: 0;
 		border-left: 1rem solid transparent;
 		border-right: 1rem solid transparent;
-		border-bottom: 1rem solid variables.$ob-white;
-		top: -0.6rem;
-		left: 50%;
+		border-bottom: 1rem solid styles.$obt-white;
 		transform: translateX(-50%);
+		outline: none;
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 1%);
+	}
+
+	&.arrow-top .tour-arrow {
+		top: -1rem;
+		left: 50%;
+		border-left: $obt-arrow-size-half solid transparent;
+		border-right: $obt-arrow-size-half solid transparent;
+		border-bottom: $obt-arrow-size solid styles.$obt-white;
 	}
 
 	&.arrow-bottom .tour-arrow {
-		top: auto;
 		bottom: -1rem;
-		border-top: 1rem solid variables.$ob-white;
-		border-bottom: none;
+		left: 50%;
+		transform: rotate(180deg) translateX(50%);
+		border-left: $obt-arrow-size-half solid transparent;
+		border-right: $obt-arrow-size-half solid transparent;
+		border-bottom: $obt-arrow-size solid styles.$obt-white;
 	}
 
 	&.arrow-left .tour-arrow {
 		top: 50%;
-		left: -1rem;
+		left: -2rem;
 		transform: translateY(-50%);
-		border: 1rem solid transparent;
-		border-right: 1rem solid variables.$ob-white;
+		border-top: $obt-arrow-size-half solid transparent;
+		border-right: $obt-arrow-size solid styles.$obt-white;
+		border-bottom: $obt-arrow-size-half solid transparent;
 	}
 
 	&.arrow-right .tour-arrow {
 		top: 50%;
-		right: -1rem;
+		right: -2rem;
+		width: 0;
+		height: 0;
 		transform: translateY(-50%);
-		border: 1rem solid transparent;
-		border-left: 1rem solid variables.$ob-white;
+		border-top: $obt-arrow-size-half solid transparent;
+		border-left: $obt-arrow-size solid styles.$obt-white;
+		border-bottom: $obt-arrow-size-half solid transparent;
 	}
 
-	&__header {
+	&-header {
 		display: flex;
+		margin-top: styles.$obt-spacing-md;
 		align-items: center;
 		justify-content: space-between;
-		margin-bottom: variables.$ob-spacing-md;
+		margin-bottom: styles.$obt-spacing-md;
 	}
 
-	&__title {
+	&-title {
 		font-weight: 600;
 		font-size: 1.2rem;
 		margin: 0;
 	}
 
-	&__content {
-		margin-bottom: variables.$ob-spacing-md;
+	&-content {
+		margin-bottom: styles.$obt-spacing-md;
 	}
 
-	&__footer {
+	&-footer {
 		display: flex;
 		justify-content: flex-end;
-		gap: variables.$ob-spacing-sm;
+		gap: styles.$obt-spacing-sm;
 	}
 
-	&__empty {
+	&-progress {
+		justify-content: center;
+
+		&-messages {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		mat-progress-bar {
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	&-empty {
 		font-style: italic;
-		padding: variables.$ob-spacing-md;
+		padding: styles.$obt-spacing-md;
 	}
 }

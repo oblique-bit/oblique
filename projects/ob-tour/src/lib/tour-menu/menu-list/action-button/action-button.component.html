@@ -1,15 +1,15 @@
 <button
-	[attr.aria-label]="`i18n.ob-tour.tour-menu.list.button.aria.${name()}` | translate: { name: tourTitle() | translate }"
-	[matTooltip]="`i18n.ob-tour.tour-menu.list.button.tooltip.${name()}` | translate: { name: tourTitle() | translate }"
-	(click)="onAction()"
+	[id]="id()"
+	[attr.aria-label]="`i18n.ob-tour.tour-menu.list.button.aria.${actionName()}` | translate: { name: tourTitle() }"
+	[matTooltip]="`i18n.ob-tour.tour-menu.list.button.tooltip.${actionName()}` | translate: { name: tourTitle() }"
+	(click)="onAction(actionName())"
 	class="action-button"
-	mat-button
+	mat-icon-button
 	obButton="secondary"
 	type="button"
-	[id]="id()"
 >
 	<mat-icon [svgIcon]="icon()" />
 	<span class="ob-screen-reader-only">
-		{{ `i18n.ob-tour.tour-menu.list.button.aria.${name()}` | translate: { name: tourTitle() | translate } }}
+		{{ `i18n.ob-tour.tour-menu.list.button.aria.${actionName()}` | translate: { name: tourTitle() } }}
 	</span>
 </button>

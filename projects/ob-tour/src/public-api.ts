@@ -2,7 +2,16 @@
  * Public API Surface of ob-tour
  */
 
-export * from './lib/tour-menu/tour-menu.component';
-export * from './lib/models/tour-config.model';
-export {ObTourStep} from './lib/models/tour-step.model';
-export {ObtTourService} from './lib/services/tour.service';
+export {
+	ObtTour,
+	ObtBadgePosition,
+	ObtMenuPosition,
+	ObtMenuPositionsY,
+	ObtMenuPositionsX,
+	ObtToursConfig,
+	ObtTourTrigger,
+	ObtTargetElement,
+	ObtTourStep
+} from './lib/models/tour.model';
+export {ObtTourComponent} from './lib/tour-menu/tour.component';
+export {provideTourTranslations, ObtTourTranslationFactoryService} from './lib/services/tour-translation-factory.service';

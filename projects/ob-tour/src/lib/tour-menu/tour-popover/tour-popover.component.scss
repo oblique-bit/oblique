@@ -1,15 +1,14 @@
 @use "sass:selector";
 @use "../../styles" as styles;
+@use "sass:map";
 @use "@oblique/oblique/src/styles/scss/core/mixins/shadow" as ob;
 
 .obt-popover-content {
 	display: flex;
 	flex-direction: column;
 	min-width: 300px;
-	max-width: 420px;
+	max-width: 26rem;
 	max-height: 60vh;
-	margin: 0;
-	padding: 0 styles.$obt-spacing-lg styles.$obt-spacing-lg;
 	border: none;
 	border-radius: styles.$obt-border-radius-base;
 	background-color: styles.$obt-white;
@@ -19,17 +18,25 @@
 	line-height: styles.$obt-line-height;
 	overflow-y: auto;
 	z-index: styles.$obt-z-index-overlay;
+	@media (min-width: map.get(styles.$obt-grid-breakpoints, sm)) {
+		max-width: 30rem;
+	}
+
+	@media (min-width: map.get(styles.$obt-grid-breakpoints, md)) {
+		max-width: 40rem;
+	}
+
 	@include ob.ob-default-panel-box-shadow();
 
 	.obt-dialog-title {
 		position: sticky;
 		top: 0;
 		display: flex;
+		margin-top: styles.$obt-spacing-lg;
 		justify-content: space-between;
 		align-items: center;
 		background-color: styles.$obt-white;
-		padding-top: styles.$obt-spacing-sm;
-		padding-bottom: styles.$obt-spacing-sm;
+		padding: styles.$obt-spacing-sm styles.$obt-spacing-lg;
 		margin-bottom: styles.$obt-spacing-md;
 		z-index: styles.$obt-z-index-overlay + 1;
 	}
@@ -51,6 +58,10 @@
 			height: styles.$obt-font-size-base;
 			width: styles.$obt-font-size-base;
 		}
+	}
+
+	.obt-main {
+		padding: 0 styles.$obt-spacing-lg styles.$obt-spacing-lg;
 	}
 
 	.obt-menu-list {

@@ -29,7 +29,6 @@ export class ObtTourTranslationFactoryService implements TranslateLoader {
 
 	getTranslation(lang: string): Observable<Record<string, unknown>> {
 		const requests = this.sources.map(src => this.http.get<Record<string, unknown>>(`${src.prefix}${lang}${src.suffix ?? '.json'}`));
-
 		return forkJoin(requests).pipe(map(parts => parts.reduce((merged, current) => ({...merged, ...current}), {})));
 	}
 }

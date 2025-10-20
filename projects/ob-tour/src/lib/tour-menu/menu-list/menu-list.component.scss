@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:math";
 @use "../../styles" as styles;
 
 .obt-tour-list {
@@ -6,33 +7,33 @@
 	padding: 0;
 	list-style: none;
 
-	ul {
-		margin-bottom: styles.$obt-spacing-md;
-		padding: 0;
-		list-style: none;
-	}
-
-	.obt-tour-list-item {
+	&-items {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		list-style: none;
+		padding: 0;
+		margin-bottom: styles.$obt-spacing-md;
 		justify-content: space-between;
 		gap: styles.$obt-spacing-md;
-		padding: styles.$obt-spacing-sm 0;
-		border-bottom: 1px solid styles.$obt-secondary-100;
 		background-color: styles.$obt-white;
 		font-family: styles.$obt-font;
 		font-size: styles.$obt-font-size-normal;
 		color: styles.$obt-secondary-700;
-		transition:
-			background-color 0.2s ease-in-out,
-			color 0.2s ease-in-out,
-			flex-direction 0.3s ease;
+	}
 
-		&.expanded {
-			flex-direction: column;
-			align-items: stretch;
-			width: 100%;
+	.obt-tour-list-item {
+		.mat-expansion-panel-header-title {
+			flex-grow: 3;
+
+			&:focus-visible {
+				@include styles.obt-tab-focus-box-shadow();
+				border-radius: 3px;
+			}
 		}
+		display: grid;
+		grid-template-columns: 10fr 1fr;
+		grid-gap: styles.$obt-spacing-xs;
 	}
 
 	.obt-tour-title {
@@ -41,73 +42,32 @@
 		line-height: styles.$obt-line-height;
 	}
 
+	.ellipsis {
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
 	.action-list {
 		display: flex;
-		justify-content: flex-end;
-		align-items: center;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
 		gap: styles.$obt-spacing-xs;
-		margin: 0;
+		margin: 0 0 0 styles.$obt-spacing-xs;
 		padding: 0;
 		list-style: none;
+		flex-shrink: 0;
+
+		.action-list-item {
+			margin-top: 6px; // static value that it looks centred to the accordion header
+			display: flex;
+			align-items: center;
+		}
 
 		mat-icon {
 			margin: 0;
 		}
-	}
-
-	.obt-accordion-item {
-		display: block;
-		width: 100%;
-		border: none;
-
-		&.cdk-accordion-item-expanded .obt-accordion-item-body {
-			display: block;
-			background-color: styles.$obt-secondary-50;
-		}
-
-		& + .obt-accordion-item {
-			border-top: none;
-		}
-
-		&:first-child {
-			border-top-left-radius: 4px;
-			border-top-right-radius: 4px;
-		}
-
-		&:last-child {
-			border-bottom-left-radius: 4px;
-			border-bottom-right-radius: 4px;
-		}
-	}
-
-	$padding: styles.$obt-spacing-sm;
-	$accordion-padding: calc($padding * 0.5);
-
-	.obt-accordion-item-header {
-		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-		width: 100%;
-		background: none;
-		border: none;
-		padding: $accordion-padding;
-		text-align: left;
-		cursor: pointer;
-		transition: background-color 0.2s ease-in-out;
-
-		&:hover {
-			background-color: styles.$obt-secondary-50;
-		}
-
-		&:focus-visible {
-			@include styles.obt-tab-focus-box-shadow ();
-			border-radius: 2px;
-		}
-	}
-
-	.obt-accordion-item-body {
-		padding: styles.$obt-spacing-sm 0 0;
-		width: 100%;
-		box-sizing: border-box;
 	}
 }

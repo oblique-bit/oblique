@@ -4,7 +4,7 @@ export default [
 		ignores: []
 	},
 	{
-		files: ['projects/ob-tour/src/lib/**/*harness.ts', 'projects/ob-tour/src/lib/**/_harness/**/*.ts'],
+		files: ['projects/ob-tour/src/lib/**/*harness.ts', 'projects/ob-tour/src/lib/**/_harness/**/*.harness.ts'],
 		rules: {
 			// rules that are not respected
 			'no-await-in-loop': 'off',
@@ -16,7 +16,10 @@ export default [
 		files: ['projects/ob-tour/src/lib/**/*.spec.ts'],
 		rules: {
 			'@typescript-eslint/init-declarations': 'off',
-			'max-lines-per-function': 'off'
+			'max-lines-per-function': 'off',
+			'no-promise-executor-return': 'off',
+			'@typescript-eslint/await-thenable': 'off',
+			'@typescript-eslint/no-unused-vars': 'off'
 		}
 	},
 	{

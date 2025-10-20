@@ -1,105 +1,128 @@
-import {ComponentRef, ElementRef, Injectable, Injector, effect, inject} from '@angular/core';
+import {ComponentRef, ElementRef, Injectable, Injector, inject} from '@angular/core';
 import {ConnectedPosition, Overlay, OverlayRef} from '@angular/cdk/overlay';
 import {ComponentPortal} from '@angular/cdk/portal';
 import {TourOverlayComponent} from '../tour-overlay/tour-overlay.component';
-import {ObTourStep} from '../models/tour-step.model';
-import {ObtTourService} from './tour.service';
+import {ObtArrowDirection, ObtTourStep} from '../models/tour.model';
+import {FlexibleConnectedPositionStrategy} from '@angular/cdk/overlay';
 
 @Injectable({providedIn: 'root'})
 export class ObtTourOverlayService {
 	private readonly overlay = inject(Overlay);
-	private readonly injector = inject(Injector);
-	private readonly tourService = inject(ObtTourService);
-	private highlightedElement: HTMLElement | null = null;
-	private overlayRef: OverlayRef | null = null;
 
+	private overlayRef: OverlayRef | null = null;
 	private componentRef: ComponentRef<TourOverlayComponent> | null = null;
+	private highlightedElement: HTMLElement | null = null;
+	private originalZIndex = '';
+
+	private originalPosition = '';
+
 	private readonly positionsRelative: ConnectedPosition[] = [
-		{originX: 'center', originY: 'bottom', overlayX: 'center', overlayY: 'top', offsetY: 8},
-		{originX: 'center', originY: 'top', overlayX: 'center', overlayY: 'bottom', offsetY: -8},
-		{originX: 'start', originY: 'center', overlayX: 'end', overlayY: 'center', offsetX: -8},
-		{originX: 'end', originY: 'center', overlayX: 'start', overlayY: 'center', offsetX: 8}
+		{originX: 'start', originY: 'center', overlayX: 'end', overlayY: 'center', offsetX: -16},
+		{originX: 'end', originY: 'center', overlayX: 'start', overlayY: 'center', offsetX: 16},
+		{originX: 'center', originY: 'top', overlayX: 'center', overlayY: 'bottom', offsetY: -16},
+		{originX: 'center', originY: 'bottom', overlayX: 'center', overlayY: 'top', offsetY: 16}
 	];
 
-	constructor() {
-		effect(
-			() => {
-				const currentStep = this.tourService.currentStep();
-				if (currentStep) {
-					void this.open(currentStep);
-				} else {
-					this.close();
-				}
-			},
-			{injector: this.injector}
-		);
-	}
-
-	private async open(tourStep: ObTourStep): Promise<void> {
-		this.close();
-
+	async openOverlayForStep(tourStep: ObtTourStep, componentInjector: Injector): Promise<void> {
 		const target = this.resolveTarget(tourStep);
 
 		if (target) {
 			await this.scrollToTarget(target);
-			this.highlightTarget(target);
-			this.createOverlayRelativeToTarget(target);
-		} else {
-			this.createOverlayCentered();
+			this.highlightTarget(target, tourStep.target?.zIndex?.toString() ?? '10');
+			this.createOverlayRelativeToTarget(target, componentInjector);
+			return;
 		}
+
+		this.createOverlayCentered(componentInjector);
 	}
 
-	private scrollToTarget(element: HTMLElement): Promise<void> {
-		return new Promise(resolve => {
-			if (!element) {
-				resolve();
-				return;
-			}
-
-			element.scrollIntoView({
-				behavior: 'smooth',
-				block: 'center',
-				inline: 'center'
-			});
-
-			setTimeout(() => resolve(), 500);
-		});
+	closeOverlay(): void {
+		this.removeHighlight();
+		this.overlayRef?.dispose();
+		this.overlayRef = null;
+		this.componentRef = null;
 	}
 
-	private resolveTarget(tourStep: ObTourStep): HTMLElement | null {
+	private resolveTarget(tourStep: ObtTourStep): HTMLElement | null {
 		const {elementSelector, elementRef} = tourStep.target ?? {};
-
-		if (typeof elementRef === 'function') {
+		if (typeof elementRef === 'function' && elementRef()) {
 			const possibleValue = elementRef();
-
-			if (possibleValue && '_elementRef' in possibleValue) {
-				// eslint-disable-next-line no-underscore-dangle
-				return (possibleValue as any)._elementRef.nativeElement;
-			}
-
 			if (possibleValue instanceof ElementRef) {
 				return possibleValue.nativeElement;
 			}
 			if ((possibleValue as any) instanceof HTMLElement) {
 				return possibleValue;
 			}
+			if (possibleValue && '_elementRef' in possibleValue) {
+				// eslint-disable-next-line no-underscore-dangle
+				return (possibleValue as any)._elementRef.nativeElement;
+			}
 		}
-
 		if (elementSelector?.trim()) {
 			return document.querySelector<HTMLElement>(`#${elementSelector.trim()}`);
 		}
-
 		return null;
 	}
 
-	private createOverlayRelativeToTarget(target: HTMLElement): void {
-		const positionStrategy = this.overlay
-			.position()
-			.flexibleConnectedTo(target)
-			.withPositions(this.positionsRelative)
-			.withFlexibleDimensions(false)
-			.withPush(false);
+	// eslint-disable-next-line max-lines-per-function,max-statements
+	private async scrollToTarget(element: HTMLElement): Promise<void> {
+		if (!element) {
+			return;
+		}
 
+		await new Promise(resolve => {
+			requestAnimationFrame(resolve);
+		});
+
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const scrollContainer = this.getScrollParent(element);
+		const elementRect = element.getBoundingClientRect();
+		const containerRect = scrollContainer.getBoundingClientRect();
+
+		const isAboveViewport = elementRect.top < containerRect.top;
+		const isBelowViewport = elementRect.bottom > containerRect.bottom;
+
+		if (!isAboveViewport && !isBelowViewport) {
+			return;
+		}
+
+		if (scrollContainer === document.body || scrollContainer === document.documentElement) {
+			const absoluteY = elementRect.top + window.scrollY;
+			const targetY = absoluteY - window.innerHeight / 2 + elementRect.height / 2;
+			window.scrollTo({
+				top: targetY,
+				behavior: prefersReducedMotion ? 'auto' : 'smooth'
+			});
+		} else {
+			const offsetTop = elementRect.top - containerRect.top + scrollContainer.scrollTop;
+			const targetY = offsetTop - scrollContainer.clientHeight / 2 + elementRect.height / 2;
+
+			scrollContainer.scrollTo({
+				top: targetY,
+				behavior: prefersReducedMotion ? 'auto' : 'smooth'
+			});
+		}
+
+		await new Promise(resolve => {
+			setTimeout(resolve, prefersReducedMotion ? 0 : 700);
+		});
+	}
+
+	private getScrollParent(element: HTMLElement): HTMLElement {
+		let parent: HTMLElement | null = element.parentElement;
+		while (parent) {
+			const style = getComputedStyle(parent);
+			const {overflowY} = style;
+			if (overflowY === 'auto' || overflowY === 'scroll') {
+				return parent;
+			}
+			parent = parent.parentElement;
+		}
+		return document.documentElement;
+	}
+
+	private createOverlayRelativeToTarget(target: HTMLElement, componentInjector: Injector): void {
+		const positionStrategy = this.createRelativePositionStrategy(target);
 		this.overlayRef = this.overlay.create({
 			positionStrategy,
 			scrollStrategy: this.overlay.scrollStrategies.reposition(),
@@ -107,91 +130,89 @@ export class ObtTourOverlayService {
 			panelClass: ['obt-tour-overlay-panel']
 		});
 
-		const portal = new ComponentPortal(TourOverlayComponent, null, this.injector);
+		const portal = new ComponentPortal(TourOverlayComponent, null, componentInjector);
 		this.componentRef = this.overlayRef.attach(portal);
 
-		const positionChangeSub = positionStrategy.positionChanges.subscribe(change => {
+		positionStrategy.positionChanges.subscribe(change => {
 			const {overlayX, overlayY} = change.connectionPair;
-			this.updateArrowDirection(overlayX, overlayY);
+			const arrowDirection = this.updateArrowDirection(overlayX, overlayY);
+			this.componentRef.setInput('arrowPosition', arrowDirection);
+			this.componentRef.instance.closeEmitter.subscribe(() => {
+				this.closeOverlay();
+			});
 		});
-
-		this.componentRef.instance.closeEmitter.subscribe(() => {
-			positionChangeSub.unsubscribe();
-			this.close();
-		});
 	}
 
-	private updateArrowDirection(overlayX: 'start' | 'center' | 'end', overlayY: 'top' | 'center' | 'bottom'): void {
-		let arrow: 'arrow-top' | 'arrow-bottom' | 'arrow-left' | 'arrow-right' = 'arrow-top';
-
-		if (overlayY === 'top') {
-			arrow = 'arrow-top';
-		} else if (overlayY === 'bottom') {
-			arrow = 'arrow-bottom';
-		} else if (overlayX === 'start') {
-			arrow = 'arrow-left';
-		} else if (overlayX === 'end') {
-			arrow = 'arrow-right';
-		}
-
-		if (this.componentRef) {
-			this.componentRef.instance.arrowPosition = arrow;
-		}
+	private createRelativePositionStrategy(target: HTMLElement): FlexibleConnectedPositionStrategy {
+		return this.overlay
+			.position()
+			.flexibleConnectedTo(target)
+			.withPositions(this.positionsRelative)
+			.withFlexibleDimensions(true)
+			.withPush(false);
 	}
 
-	private highlightTarget(element: HTMLElement): void {
-		this.removeHighlight();
-
-		element.style.boxShadow = '0 0 0 3px #8655F6FF';
-		element.style.transition = 'box-shadow 0.5s ease, outline 0.3s ease';
-		element.style.position ||= 'relative';
-		element.style.zIndex = '10';
-
-		this.highlightedElement = element;
-	}
-
-	private removeHighlight(): void {
-		if (this.highlightedElement) {
-			const element = this.highlightedElement;
-			element.style.boxShadow = '';
-			element.style.outline = '';
-			element.style.outlineOffset = '';
-			element.style.transition = '';
-			element.style.zIndex = '';
-			this.highlightedElement = null;
-		}
-	}
-
-	private createOverlayCentered(): void {
+	private createOverlayCentered(componentInjector: Injector): void {
 		const positionStrategy = this.overlay.position().global().centerHorizontally().centerVertically();
-
 		this.overlayRef = this.overlay.create({
 			positionStrategy,
 			scrollStrategy: this.overlay.scrollStrategies.reposition(),
 			hasBackdrop: false,
-			disposeOnNavigation: true,
 			panelClass: ['obt-tour-overlay-panel', 'obt-tour-overlay-center']
 		});
 
-		this.attachComponent();
-		if (this.componentRef) {
-			this.componentRef.instance.arrowPosition = 'arrow-none';
-		}
+		const portal = new ComponentPortal(TourOverlayComponent, null, componentInjector);
+		this.componentRef = this.overlayRef.attach(portal);
 	}
 
-	private attachComponent(): void {
-		if (!this.overlayRef) {
+	private updateArrowDirection(overlayX: 'start' | 'center' | 'end', overlayY: 'top' | 'center' | 'bottom'): ObtArrowDirection {
+		const isVertical = overlayX === 'center';
+		const isHorizontal = overlayY === 'center';
+
+		if (isHorizontal && overlayX === 'start') {
+			return 'arrow-left';
+		}
+		if (isHorizontal && overlayX === 'end') {
+			return 'arrow-right';
+		}
+		if (isVertical && overlayY === 'top') {
+			return 'arrow-top';
+		}
+		if (isVertical && overlayY === 'bottom') {
+			return 'arrow-bottom';
+		}
+
+		return 'arrow-none';
+	}
+
+	private highlightTarget(element: HTMLElement | null | undefined, zIndex = '10'): void {
+		if (!element) {
 			return;
 		}
-		const portal = new ComponentPortal(TourOverlayComponent, null, this.injector);
-		this.componentRef = this.overlayRef.attach(portal);
-		this.componentRef.instance.closeEmitter.subscribe(() => this.close());
+
+		this.removeHighlight();
+		this.originalZIndex = element.style.zIndex;
+		this.originalPosition = element.style.position;
+		element.style.boxShadow = '0 0 0 4px #8655F6FF';
+		element.style.transition = 'box-shadow 0.5s ease, outline 0.3s ease';
+
+		if (!element.style.position || element.style.position === 'static') {
+			element.style.position = 'relative';
+		}
+
+		element.style.zIndex = zIndex ?? '10';
+		this.highlightedElement = element;
 	}
 
-	private close(): void {
-		this.removeHighlight();
-		this.overlayRef?.dispose();
-		this.overlayRef = null;
-		this.componentRef = null;
+	private removeHighlight(): void {
+		if (!this.highlightedElement) {
+			return;
+		}
+		const element = this.highlightedElement;
+		element.style.boxShadow = '';
+		element.style.transition = '';
+		element.style.zIndex = this.originalZIndex;
+		element.style.position = this.originalPosition;
+		this.highlightedElement = null;
 	}
 }

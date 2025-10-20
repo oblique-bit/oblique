@@ -32,6 +32,12 @@ $badge-left: 0.5rem + vars.$obt-badge-base-size;
 			left: 1rem + $badge-left;
 			right: auto;
 		}
+
+		&:not(:has(.obt-badge-new)) {
+			.obt-badge-in-progress {
+				left: 0;
+			}
+		}
 	}
 
 	.obt-notification.obt-badge-right {
@@ -43,6 +49,12 @@ $badge-left: 0.5rem + vars.$obt-badge-base-size;
 		.obt-badge-in-progress {
 			right: 1rem + $badge-left;
 			left: auto;
+		}
+
+		&:not(:has(.obt-badge-new)) {
+			.obt-badge-in-progress {
+				right: 0;
+			}
 		}
 	}
 }

@@ -1,34 +1,34 @@
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 import {BrowserTestingModule} from '@angular/platform-browser/testing';
 import {TranslateModule} from '@ngx-translate/core';
 import {TourPopoverComponent} from './tour-popover.component';
-import {ObTourServiceMock} from '../../services/_mock/tour-mock.service';
+import {ObtTourServiceMock, createObtTourServiceMock} from '../../services/_mock/tour-mock.service';
 import {ObtTourService} from '../../services/tour.service';
-import {ObTourConfig} from '../../models/tour-config.model';
+import {ObtTour, ObtToursConfig} from '../../models/tour.model';
 
-describe('TourPopoverComponent (Unit)', () => {
+describe('TourPopoverComponent', () => {
 	let fixture: ComponentFixture<TourPopoverComponent>;
 	let component: TourPopoverComponent;
-	let tourServiceMock: ObTourServiceMock;
+	const tourServiceMock: ObtTourServiceMock = createObtTourServiceMock();
 
 	beforeEach(async () => {
-		tourServiceMock = new ObTourServiceMock();
-
 		await TestBed.configureTestingModule({
 			imports: [TourPopoverComponent, BrowserTestingModule, TranslateModule.forRoot()],
 			providers: [{provide: ObtTourService, useValue: tourServiceMock}]
 		}).compileComponents();
 
-		const mockConfig: ObTourConfig[] = [
-			{
-				tourTitle: 'testTourTitle',
-				tourDescription: 'description',
-				state: 'new',
-				steps: []
-			}
-		];
-
-		tourServiceMock.init(mockConfig);
+		const mockConfig: ObtToursConfig = {
+			tours: [
+				{
+					storageKey: 'tourKey33',
+					tourTitle: 'title',
+					tourDescription: 'Description',
+					state: 'new',
+					steps: []
+				}
+			]
+		};
+		tourServiceMock.update(mockConfig);
 
 		fixture = TestBed.createComponent(TourPopoverComponent);
 		component = fixture.componentInstance;
@@ -39,37 +39,75 @@ describe('TourPopoverComponent (Unit)', () => {
 		jest.clearAllMocks();
 	});
 
-	describe('Effect', () => {
-		it('should call onClose by update if currentTour has value and isOpen = true', fakeAsync(() => {
-			jest.spyOn(component, 'onClose');
-			fixture.componentRef.setInput('isOpen', true);
-			tourServiceMock.setActiveTour({
-				tourTitle: 'title',
-				tourDescription: 'Description',
-				state: 'new',
-				steps: []
-			});
-			fixture.detectChanges();
-			TestBed.tick();
-			expect(component.onClose).toHaveBeenCalledTimes(1);
-		}));
+	describe('clearTours', () => {
+		it('should call tourService.clearLocalStorage()', () => {
+			component.clearTours();
+			expect(tourServiceMock.clearLocalStorage).toHaveBeenCalled();
+		});
+
+		it('should emit cleared event', () => {
+			const clearedSpy = jest.spyOn(component.cleared, 'emit');
+			component.clearTours();
+			expect(clearedSpy).toHaveBeenCalled();
+		});
+
+		it('should emit closed event', () => {
+			const closedSpy = jest.spyOn(component.closed, 'emit');
+			component.clearTours();
+			expect(closedSpy).toHaveBeenCalled();
+		});
 	});
 
 	describe('Output handling', () => {
 		describe('onClose()', () => {
-			it('should emit undefined as payload', fakeAsync(() => {
-				const tour: ObTourConfig = {
-					tourTitle: 'title',
-					tourDescription: 'Description',
-					state: 'new',
-					steps: []
-				};
-				tourServiceMock.updateConfig.next([tour]);
-				fixture.componentRef.setInput('isOpen', true);
-				tourServiceMock.setActiveTour(tour);
-				const emitSpy = jest.spyOn(component.closeEmitter, 'emit');
-				tick();
+			it('should not emit when there is no active tour', () => {
+				jest.spyOn(tourServiceMock, 'activeTour').mockReturnValue(null);
+				const emitSpy = jest.spyOn(component.closed, 'emit');
+				component.onClose();
+				expect(emitSpy).not.toHaveBeenCalled();
+			});
+
+			it('should emit once when an active tour exists', async () => {
+				jest.spyOn(tourServiceMock, 'activeTour').mockReturnValue({storageKey: 'tour-1'} as ObtTour);
+				const emitSpy = jest.spyOn(component.closed, 'emit');
 				fixture.detectChanges();
+				await fixture.whenStable();
+				component.onClose();
+				fixture.detectChanges();
+				await fixture.whenStable();
+				expect(emitSpy).toHaveBeenCalledTimes(1);
+			});
+
+			it('should emit each time onClose() is called', async () => {
+				jest.spyOn(tourServiceMock, 'activeTour').mockReturnValue({storageKey: 'tour-1'} as any);
+				const emitSpy = jest.spyOn(component.closed, 'emit');
+				fixture.detectChanges();
+				await fixture.whenStable();
+				component.onClose();
+				component.onClose();
+				fixture.detectChanges();
+				await fixture.whenStable();
+				expect(emitSpy).toHaveBeenCalledTimes(2);
+			});
+
+			it('should emit undefined as payload', fakeAsync(async () => {
+				const tour: ObtToursConfig = {
+					tours: [
+						{
+							tourTitle: 'title',
+							tourDescription: 'Description',
+							storageKey: 'key1',
+							state: 'new',
+							steps: []
+						}
+					]
+				};
+				tourServiceMock.update([tour]);
+				fixture.componentRef.setInput('isOpen', true);
+				tourServiceMock.activeTourKey.set(tour.tours[0].storageKey);
+				const emitSpy = jest.spyOn(component.closed, 'emit');
+				fixture.detectChanges();
+				await fixture.whenStable();
 
 				component.onClose();
 				expect(emitSpy).toHaveBeenCalledWith();
@@ -77,14 +115,18 @@ describe('TourPopoverComponent (Unit)', () => {
 
 			it('should emit when isOpen is true', () => {
 				fixture.componentRef.setInput('isOpen', true);
-				tourServiceMock.setActiveTour({
-					tourTitle: 'title',
-					tourDescription: 'Description',
-					state: 'new',
-					steps: []
+				tourServiceMock.update({
+					tours: [
+						{
+							tourTitle: 'title',
+							tourDescription: 'Description',
+							state: 'new',
+							steps: []
+						}
+					]
 				});
 				fixture.detectChanges();
-				const emitSpy = jest.spyOn(component.closeEmitter, 'emit');
+				const emitSpy = jest.spyOn(component.closed, 'emit');
 				component.onClose();
 				expect(emitSpy).toHaveBeenCalledTimes(1);
 			});
@@ -95,19 +137,24 @@ describe('TourPopoverComponent (Unit)', () => {
 			['called twice', 2],
 			['called three times', 3]
 		])('multiple invocations (%calls)', (label, calls) => {
-			beforeEach(() => {
+			beforeEach(async () => {
 				fixture.componentRef.setInput('isOpen', true);
-				tourServiceMock.setActiveTour({
-					tourTitle: 'title',
-					tourDescription: 'Description',
-					state: 'new',
-					steps: []
+				tourServiceMock.update({
+					tours: [
+						{
+							tourTitle: 'title',
+							tourDescription: 'Description',
+							state: 'new',
+							steps: []
+						}
+					]
 				});
 				fixture.detectChanges();
+				await fixture.whenStable();
 			});
 
 			it(`should emit ${calls} times`, () => {
-				const emitSpy = jest.spyOn(component.closeEmitter, 'emit');
+				const emitSpy = jest.spyOn(component.closed, 'emit');
 				for (let index = 0; index < calls; index++) {
 					component.onClose();
 				}

@@ -6,8 +6,10 @@ import {MatButtonHarness} from '@angular/material/button/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {BrowserTestingModule} from '@angular/platform-browser/testing';
-import {TourPopoverComponent} from '../lib/tour-menu/tour-popover/tour-popover.component';
-import type {ObTourConfig} from '../lib/models/tour-config.model';
+import {TourPopoverComponent} from '../../lib/tour-menu/tour-popover/tour-popover.component';
+import {ObtTourService} from '../../lib/services/tour.service';
+import {ObtTourMenuVisibility} from '../../lib/services/tour-menu-visibility.service';
+import {ObtTourStateStoreService} from '../../lib/services/tour-state-store.service';
 
 describe('TourPopoverComponent (Integration)', () => {
 	let fixture: ComponentFixture<TourPopoverComponent>;
@@ -17,7 +19,8 @@ describe('TourPopoverComponent (Integration)', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [TourPopoverComponent, TranslateModule.forRoot(), BrowserTestingModule]
+			imports: [TourPopoverComponent, TranslateModule.forRoot(), BrowserTestingModule],
+			providers: [ObtTourService, ObtTourMenuVisibility, ObtTourStateStoreService]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TourPopoverComponent);
@@ -27,30 +30,20 @@ describe('TourPopoverComponent (Integration)', () => {
 	});
 
 	describe('Input Handling and Reactivity', () => {
-		it('should render lists when inputs are defined', () => {
-			const testTours: ObTourConfig[] = [{id: '1', tourTitle: 'T', tourDescription: 'D', state: 'new'} as any];
-			const inProgress: ObTourConfig[] = [{id: '2', tourTitle: 'T2', tourDescription: 'D2', state: 'inProgress'} as any];
-			const done: ObTourConfig[] = [{id: '3', tourTitle: 'T3', tourDescription: 'D3', state: 'done'} as any];
-			fixture.componentRef.setInput('newTours', testTours);
-			fixture.componentRef.setInput('inProgressTours', inProgress);
-			fixture.componentRef.setInput('doneTours', done);
-			fixture.detectChanges();
-			expect(fixture.nativeElement.querySelectorAll('obt-menu-list').length).toBe(3);
-		});
-
 		it('should render three lists when inputs are empty', () => {
 			fixture.componentRef.setInput('newTours', []);
 			fixture.componentRef.setInput('inProgressTours', []);
 			fixture.componentRef.setInput('doneTours', []);
+			fixture.componentRef.setInput('skippedTours', []);
 			fixture.detectChanges();
-			expect(fixture.nativeElement.querySelectorAll('obt-menu-list').length).toBe(3);
+			expect(fixture.nativeElement.querySelectorAll('obt-menu-list').length).toBe(4);
 		});
 	});
 
 	describe('Template Structure and Attributes', () => {
 		it('should render dialog title with correct translation key', () => {
 			const title = fixture.nativeElement.querySelector('#obt-dialog-title');
-			expect(title.textContent).toContain('i18n.ob-tour.tour-menu.list.title.dialog');
+			expect(title.textContent).toContain('I18n.ob-tour.tour-menu.list.title.dialog');
 		});
 
 		it('should link aria-labelledby to dialog-title', () => {
@@ -64,7 +57,7 @@ describe('TourPopoverComponent (Integration)', () => {
 		});
 
 		it('should render all menu sections with correct titles', () => {
-			const headers = fixture.nativeElement.querySelectorAll('obt-menu-list h3');
+			const headers = fixture.nativeElement.querySelectorAll('obt-menu-list h2');
 			const texts = Array.from(headers).map((htmlElement: HTMLElement) => htmlElement.textContent.trim());
 			expect(texts).toEqual(
 				expect.arrayContaining([

@@ -1,14 +1,14 @@
 <div class="obt-tutorial">
 	<mat-slide-toggle
 		(change)="onToggleChange($event)"
-		[checked]="showTours()"
-		[matTooltip]="`i18n.ob-tour.tour-menu.toggle.tooltip.${showTours() ? 'off' : 'on'}` | translate"
+		[checked]="showTourMenu"
+		[matTooltip]="`i18n.ob-tour.tour-menu.toggle.tooltip.${showTourMenu ? 'off' : 'on'}` | translate"
 		class="obt-tutorial-toggle"
 	>
 		{{ "i18n.ob-tour.tour-menu.toggle.label" | translate }}
 	</mat-slide-toggle>
 
-	@if (showTours()) {
+	@if (showTourMenu) {
 		<div
 			class="obt-notification"
 			role="group"
@@ -18,20 +18,20 @@
 				'obt-badge-right': badgePosition() === 'right'
 			}"
 		>
-			@for (state of ["new", "inProgress"]; track state) {
-				@if ((getTours(state)?.length ?? 0) > 0) {
+			@for (state of BADGE_TYPES; track state) {
+				@if (getBadgeCounter(state) > 0 && isOpen() === false) {
 					<span
 						[ngClass]="{
 							'obt-badge-in-progress': state === 'inProgress',
 							'obt-badge-new': state === 'new'
 						}"
-						[id]="'obt-badge-' + dasherize(state)"
-						[matTooltip]="getTooltipKey(state) | translate: { amount: getTours(state).length }"
+						[id]="'obt-badge-' + dasherizeBadgeState(state)"
+						[matTooltip]="getTooltipKey(state) | translate: { amount: getBadgeCounter(state) }"
 						role="status"
 					>
-						{{ getTours(state).length }}
+						{{ getBadgeCounter(state) }}
 						<span class="obt-screen-reader-only">
-							{{ getScreenReaderKey(state) | translate: { amount: getTours(state).length } }}
+							{{ getScreenReaderBadgeKey(state) | translate: { amount: getBadgeCounter(state) } }}
 						</span>
 					</span>
 				}
@@ -42,7 +42,10 @@
 				(click)="togglePopover($event)"
 				[attr.aria-expanded]="isOpen()"
 				[attr.aria-haspopup]="true"
-				[matTooltip]="'i18n.ob-tour.tour-menu.popover.open' | translate"
+				[matTooltip]="
+					'i18n.ob-tour.tour-menu.popover.open'
+						| translate: { buttonLabel: customButtonLabel() || ('i18n.ob-tour.tour-menu.list.title.dialog' | translate) }
+				"
 				aria-describedby="obt-notification-button-label"
 				cdkOverlayOrigin
 				class="obt-notification-button"
@@ -53,8 +56,8 @@
 				<span id="obt-notification-button-label">
 					<span>{{ customButtonLabel() || ("i18n.ob-tour.tour-menu.list.title.dialog" | translate) }}</span>
 					<span class="obt-screen-reader-only">
-						:{{ "i18n.ob-tour.tour-menu.button.badge.new" | translate: { amount: newTours().length } }},
-						{{ "i18n.ob-tour.tour-menu.button.badge.in-progress" | translate: { amount: inProgressTours().length } }}
+						:{{ "i18n.ob-tour.tour-menu.button.badge.new" | translate: { amount: newTours()?.length } }},
+						{{ "i18n.ob-tour.tour-menu.button.badge.in-progress" | translate: { amount: inProgressTours()?.length } }}
 					</span>
 				</span>
 
@@ -75,11 +78,14 @@
 			cdkConnectedOverlay
 		>
 			<obt-tour-popover
-				(closeEmitter)="closePopover()"
 				[doneTours]="doneTours()"
+				[skippedTours]="skippedTours()"
 				[inProgressTours]="inProgressTours()"
 				[isOpen]="isOpen()"
 				[newTours]="newTours()"
+				(closed)="closePopover()"
+				(tourStatusChanged)="tourStatusChanged.emit($event)"
+				(cleared)="clear()"
 			/>
 		</ng-template>
 	}

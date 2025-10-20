@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, Output, effect, inject, input} from '@angular/core';
+import {Component, HostListener, effect, inject, input, output} from '@angular/core';
 import {MenuListComponent} from '../menu-list/menu-list.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -9,7 +9,8 @@ import {MatSuffix} from '@angular/material/form-field';
 import {ObButtonModule, ObTranslateParamsPipe} from '@oblique/oblique';
 
 import {ObtTourService} from '../../services/tour.service';
-import {ObTourConfig} from '../../models/tour-config.model';
+import {ObtTour, ObtTourChange} from '../../models/tour.model';
+import {TitleCasePipe} from '@angular/common';
 
 @Component({
 	selector: 'obt-tour-popover',
@@ -22,36 +23,32 @@ import {ObTourConfig} from '../../models/tour-config.model';
 		TranslatePipe,
 		A11yModule,
 		MatSuffix,
-		ObTranslateParamsPipe
+		ObTranslateParamsPipe,
+		TitleCasePipe
 	],
 	templateUrl: './tour-popover.component.html',
 	styleUrl: './tour-popover.component.scss'
 })
 export class TourPopoverComponent {
-	readonly doneTours = input<ObTourConfig[]>([]);
-	readonly newTours = input<ObTourConfig[]>([]);
-	readonly inProgressTours = input<ObTourConfig[]>([]);
+	readonly doneTours = input<ObtTour[]>([]);
+	readonly skippedTours = input<ObtTour[]>([]);
+	readonly newTours = input<ObtTour[]>([]);
+	readonly inProgressTours = input<ObtTour[]>([]);
 	readonly isOpen = input<boolean>(false);
 
-	@Output() readonly closeEmitter: EventEmitter<void> = new EventEmitter<void>();
+	readonly closed = output();
+	readonly cleared = output();
+	readonly tourStatusChanged = output<ObtTourChange>();
 
 	private readonly tourService = inject(ObtTourService);
 
 	constructor() {
 		effect(() => {
-			const currentTour = this.tourService.activeTour();
-			if (currentTour?.tourTitle && this.isOpen()) {
+			const open = this.isOpen();
+			if (!open) {
 				this.onClose();
 			}
 		});
-	}
-
-	onClose(): void {
-		const currentTour = this.tourService.activeTour();
-		if (!currentTour) {
-			return;
-		}
-		this.closeEmitter.emit();
 	}
 
 	@HostListener('document:keyup.escape', ['$event'])
@@ -60,5 +57,19 @@ export class TourPopoverComponent {
 			event.preventDefault();
 			this.onClose();
 		}
+	}
+
+	onClose(): void {
+		const currentTour = this.tourService.activeTour();
+		if (!currentTour) {
+			return;
+		}
+		this.closed.emit();
+	}
+
+	clearTours(): void {
+		this.tourService.clearLocalStorage();
+		this.cleared.emit();
+		this.closed.emit();
 	}
 }

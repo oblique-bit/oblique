@@ -1,61 +1,75 @@
 <section [attr.aria-labelledby]="'obt-tour-list-title-' + listType()" class="obt-tour-list">
-	<h3 [id]="'obt-tour-list-title-' + listType()" class="obt-tour-list-title">
-		{{ listTitle() }}
-	</h3>
+	<h2 [id]="'obt-tour-list-title-' + listType()" class="obt-tour-list-title">
+		{{ listTitle() | translate }}
+	</h2>
 
 	@if (listItems()?.length) {
-		<ul class="tour-list-items">
+		<div class="obt-tour-list-items">
 			@for (tour of listItems(); track tour.tourTitle; let tourIndex = $index) {
-				<li class="obt-tour-list-item" [class.expanded]="accordionItem.expanded">
-					<cdk-accordion-item #accordionItem="cdkAccordionItem" class="obt-accordion-item">
-						<button
-							type="button"
-							class="obt-accordion-item-header"
-							(click)="accordionItem.toggle()"
-							tabindex="0"
-							[attr.id]="'obt-accordion-header-' + tourIndex"
-							[attr.aria-expanded]="accordionItem.expanded"
-							[attr.aria-controls]="'obt-accordion-body-' + tourIndex"
-						>
-							<span class="obt-tour-title">
-								{{
-									tour?.tourTitle ? (tour.tourTitle | translate) : (`i18n.ob-tour.tour-menu.list.element.${listType()}.empty` | translate)
-								}}
-							</span>
-							<span class="obt-screen-reader-only"> Click to {{ accordionItem.expanded ? "close" : "open" }} </span>
-						</button>
-						@if (accordionItem.expanded) {
-							<div
-								class="obt-accordion-item-body"
-								role="region"
-								[style.display]="accordionItem.expanded ? '' : 'none'"
-								[attr.id]="'obt-accordion-body-' + tourIndex"
-								[attr.aria-labelledby]="'obt-accordion-header-' + tourIndex"
+				<div class="obt-tour-list-item">
+					<mat-accordion class="obt-tour-accordion">
+						<mat-expansion-panel #panel="matExpansionPanel">
+							<mat-expansion-panel-header
+								class="expansion-header"
+								[matTooltip]="
+									panel.expanded
+										? ('i18n.ob-tour.tour-menu.list.element.expansion-panel.description.screen-reader.close'
+											| translate: { name: (tour?.tourTitle | translate) })
+										: ('i18n.ob-tour.tour-menu.list.element.expansion-panel.description.screen-reader.open'
+											| translate: { name: (tour?.tourTitle | translate) })
+								"
 							>
-								{{ tour.tourDescription | translate }}
+								<mat-panel-description class="ellipsis">
+									{{
+										panel.expanded
+											? ("i18n.ob-tour.tour-menu.list.element.expansion-panel.description.close" | translate)
+											: ("i18n.ob-tour.tour-menu.list.element.expansion-panel.description.open" | translate)
+									}}
+								</mat-panel-description>
+
+								<mat-panel-title class="obt-tour-title ellipsis">
+									{{
+										tour?.tourTitle
+											? (tour.tourTitle | translate)
+											: ("i18n.ob-tour.tour-menu.list.element." + listType() + ".empty" | translate)
+									}}
+								</mat-panel-title>
+							</mat-expansion-panel-header>
+
+							<div id="obt-tour-description">
+								<p>
+									{{ "i18n.ob-tour.tour-menu.list.element.date.label" | translate }}
+									{{ tour.lastUpdated | date: "fullDate" : undefined : currentLang }}
+									{{ tour.lastUpdated | date: "shortTime" : undefined : currentLang }}
+								</p>
+								<p>
+									{{ tour.tourDescription | translate }}
+								</p>
 							</div>
-						}
-					</cdk-accordion-item>
+						</mat-expansion-panel>
+					</mat-accordion>
 
 					@if (actions()?.length) {
-						<ul class="action-list">
+						<div class="action-list">
 							@for (action of actions(); track action.name) {
-								<li class="action-list-item">
+								<div class="action-list-item">
 									<obt-action-button
+										[tourTitle]="tour.tourTitle | translate"
 										[icon]="action.icon"
-										[name]="action.name"
-										[tourTitle]="tour.tourTitle"
+										[actionName]="action.name"
+										[activeTourKey]="tour.storageKey"
 										[id]="'tour-' + tourIndex + '-' + tour.storageKey + '-' + action.name"
+										(tourStatusChanged)="tourStatusChanged.emit($event)"
 									/>
-								</li>
+								</div>
 							}
-						</ul>
+						</div>
 					}
-				</li>
+				</div>
 			}
-		</ul>
+		</div>
 	} @else {
-		<ul class="tour-list-items">
+		<ul class="obt-tour-list-items">
 			<li class="obt-tour-list-item">
 				{{ `i18n.ob-tour.tour-menu.list.element.${listType()}.empty` | translate }}
 			</li>

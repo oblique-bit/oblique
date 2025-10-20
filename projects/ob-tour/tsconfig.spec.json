@@ -11,6 +11,5 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "include": ["**/*.spec.ts", "../../tests/**/*.d.ts", "**/*.d.ts"],
-  "exclude": []
+  "include": ["**/*.spec.ts", "./src/testing/**/*.d.ts", "**/*.d.ts"]
 }

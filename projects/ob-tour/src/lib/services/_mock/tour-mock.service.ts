@@ -1,31 +1,53 @@
-import {Subject} from 'rxjs';
-import type {ObTourConfig} from '../../models/tour-config.model';
-import type {ObTourStep} from '../../models/tour-step.model';
 import {signal} from '@angular/core';
+import {ObtTour, ObtTourState} from '../../models/tour.model';
 
-export class ObTourServiceMock {
-	updateConfig = new Subject<ObTourConfig[]>();
+// eslint-disable-next-line max-lines-per-function
+export const createObtTourServiceMock = (): {
+	menuKey: string;
+	update: jest.Mock;
+	startTour: jest.Mock;
+	nextStep: jest.Mock;
+	prevStep: jest.Mock;
+	finishTour: jest.Mock;
+	closeTour: jest.Mock;
+	skipTour: jest.Mock;
+	pauseTour: jest.Mock;
+	restartTour: jest.Mock;
+	resumeIfPossible: jest.Mock;
+	hasNextStep: jest.Mock;
+	hasPreviousStep: jest.Mock;
+	clearLocalStorage: jest.Mock;
+	config: jest.Mock;
+	activeTourKey: ReturnType<typeof signal<string | null>>;
+	activeStepIndex: ReturnType<typeof signal<number | null>>;
+	state: ReturnType<typeof signal<ObtTourState>>;
+	activeTour: ReturnType<typeof signal<ObtTour | null>>;
+	activeStep: ReturnType<typeof signal<any | null>>;
+} => {
+	return {
+		menuKey: 'testKey',
+		update: jest.fn(),
+		startTour: jest.fn(),
+		nextStep: jest.fn(),
+		prevStep: jest.fn(),
+		finishTour: jest.fn(),
+		closeTour: jest.fn(),
+		skipTour: jest.fn(),
+		pauseTour: jest.fn(),
+		restartTour: jest.fn(),
+		resumeIfPossible: jest.fn(),
+		hasNextStep: jest.fn().mockReturnValue(false),
+		hasPreviousStep: jest.fn().mockReturnValue(false),
+		clearLocalStorage: jest.fn(),
+		config: jest.fn().mockReturnValue([] as ObtTour[]),
 
-	activeTour = signal<ObTourConfig | null>(null);
-	currentStep = signal<ObTourStep | null>(null);
+		// Signals
+		activeTourKey: signal<string | null>(null),
+		activeStepIndex: signal<number | null>(null),
+		state: signal<ObtTourState>('new'),
+		activeTour: signal<ObtTour | null>(null),
+		activeStep: signal<any | null>(null)
+	};
+};
 
-	init = jest.fn<unknown, [ObTourConfig[]]>((config: ObTourConfig[]) => {
-		this.updateConfig.next(config);
-	});
-
-	startTour = jest.fn<() => void, [string?]>();
-
-	hasNextStep = jest.fn<boolean, []>();
-	hasPreviousStep = jest.fn<boolean, []>();
-	nextStep = jest.fn<() => void, []>();
-	prevStep = jest.fn<() => void, []>();
-	finishTour = jest.fn<() => void, []>();
-
-	setActiveTour(tour: ObTourConfig | null): void {
-		this.activeTour.update(() => tour);
-	}
-
-	setCurrentStep(step: ObTourStep | null): void {
-		this.currentStep.update(() => step);
-	}
-}
+export type ObtTourServiceMock = ReturnType<typeof createObtTourServiceMock>;

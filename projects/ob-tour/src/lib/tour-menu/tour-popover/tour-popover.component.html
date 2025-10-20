@@ -1,24 +1,53 @@
 <div role="dialog" class="obt-popover-content" aria-labelledby="obt-dialog-title" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
 	<header class="obt-dialog-title">
-		<h2 id="obt-dialog-title">{{ "i18n.ob-tour.tour-menu.list.title.dialog" | translate }}</h2>
+		<h1 id="obt-dialog-title">{{ "i18n.ob-tour.tour-menu.list.title.dialog" | translate | titlecase }}</h1>
 		<button
 			type="button"
 			mat-button
 			obButton="tertiary"
 			class="obt-close-button"
 			id="obt-menu-close-button"
-			[matTooltip]="'i18n.ob-tour.tour-menu.list.dialog.close' | obTranslateParams: { action: 'i18n.common.close' }"
-			(click)="closeEmitter.emit()"
+			[matTooltip]="'i18n.ob-tour.tour-menu.list.dialog.close' | obTranslateParams: { action: 'i18n.common.close' } | titlecase"
+			(click)="closed.emit()"
 		>
 			{{ "i18n.common.close" | translate }}
 			<mat-icon matIconSuffix svgIcon="xmark" />
 		</button>
 	</header>
-	<obt-menu-list listType="new" [listItems]="newTours()" [listTitle]="'i18n.ob-tour.tour-menu.list.title.new' | translate" />
-	<obt-menu-list
-		listType="inProgress"
-		[listItems]="inProgressTours()"
-		[listTitle]="'i18n.ob-tour.tour-menu.list.title.inProgress' | translate"
-	/>
-	<obt-menu-list listType="done" [listItems]="doneTours()" [listTitle]="'i18n.ob-tour.tour-menu.list.title.done' | translate" />
+	<div class="obt-main">
+		<obt-menu-list
+			listType="new"
+			[listItems]="newTours()"
+			[listTitle]="'i18n.ob-tour.tour-menu.list.title.new' | translate"
+			(tourStatusChanged)="tourStatusChanged.emit($event)"
+		/>
+		<obt-menu-list
+			listType="inProgress"
+			[listItems]="inProgressTours()"
+			[listTitle]="'i18n.ob-tour.tour-menu.list.title.inProgress' | translate"
+			(tourStatusChanged)="tourStatusChanged.emit($event)"
+		/>
+		<obt-menu-list
+			listType="done"
+			[listItems]="doneTours()"
+			[listTitle]="'i18n.ob-tour.tour-menu.list.title.done' | translate"
+			(tourStatusChanged)="tourStatusChanged.emit($event)"
+		/>
+		<obt-menu-list
+			listType="skipped"
+			[listItems]="skippedTours()"
+			[listTitle]="'i18n.ob-tour.tour-menu.list.title.skipped' | translate"
+			(tourStatusChanged)="tourStatusChanged.emit($event)"
+		/>
+	</div>
+	<button
+		type="button"
+		mat-button
+		obButton="tertiary"
+		id="obt-menu-clear-button"
+		[matTooltip]="'i18n.ob-tour.tour-menu.list.dialog.aria.clear' | translate"
+		(click)="clearTours()"
+	>
+		{{ "i18n.ob-tour.tour-menu.list.dialog.label.clear" | translate }}
+	</button>
 </div>

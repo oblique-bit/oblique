@@ -1,26 +1,47 @@
-import {Component, inject, input} from '@angular/core';
-import {MatButton} from '@angular/material/button';
+import {Component, effect, input, output} from '@angular/core';
+import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {ObButtonModule} from '@oblique/oblique';
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {ObtTourService} from '../../../services/tour.service';
-import {ObMenuActionIcon, ObTourAction} from '../../../models/tour-config.model';
+import {ObtMenuActionIcon, ObtTourAction} from '../../../models/tour.model';
 
 @Component({
 	selector: 'obt-action-button',
-	imports: [MatButton, MatIcon, MatTooltipModule, ObButtonModule, TranslatePipe],
+	imports: [MatIcon, MatTooltipModule, ObButtonModule, TranslatePipe, MatIconButton],
 	templateUrl: './action-button.component.html'
 })
 export class ActionButtonComponent {
-	readonly id = input<string>('');
-	readonly name = input<ObTourAction>('start');
-	readonly tourTitle = input<string>('');
-	readonly icon = input<ObMenuActionIcon>('chevron_right');
+	readonly actionName = input.required<ObtTourAction>();
+	readonly activeTourKey = input.required<string>();
+	readonly tourTitle = input.required<string>();
+	readonly icon = input.required<ObtMenuActionIcon>();
+	readonly id = input.required<string>();
 
-	private readonly tourService = inject(ObtTourService);
+	readonly tourStatusChanged = output<{obtTourAction: ObtTourAction; obtTourKey: string}>();
+	private currentTourKey = '';
+	constructor() {
+		effect(() => {
+			this.currentTourKey = this.activeTourKey();
+		});
+	}
 
-	onAction(): void {
-		this.tourService.startTour(this.tourTitle());
+	onAction(action: ObtTourAction): void {
+		switch (action) {
+			case 'start':
+				this.tourStatusChanged.emit({obtTourAction: 'start', obtTourKey: this.currentTourKey});
+				break;
+			case 'skip':
+				this.tourStatusChanged.emit({obtTourAction: 'skip', obtTourKey: this.currentTourKey});
+				break;
+			case 'restart':
+				this.tourStatusChanged.emit({obtTourAction: 'restart', obtTourKey: this.currentTourKey});
+				break;
+			case 'resume':
+				this.tourStatusChanged.emit({obtTourAction: 'resume', obtTourKey: this.currentTourKey});
+				break;
+			default:
+				break;
+		}
 	}
 }
