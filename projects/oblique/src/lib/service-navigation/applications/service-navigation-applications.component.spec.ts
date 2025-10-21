@@ -73,6 +73,31 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			expect(component.lastUsedApplications).toEqual([]);
 		});
 
+		describe('when there is no last-used applications', () => {
+			beforeEach(async () => {
+				component.isLoggedIn = true;
+				await harness.openPopover();
+			});
+
+			it('should find first h4 with "i18n.oblique.service-navigation.applications.last-used.header"', () => {
+				const firstH4 = document.querySelectorAll('h4')[0];
+				expect(firstH4.innerHTML).toContain('i18n.oblique.service-navigation.applications.last-used.header');
+			});
+
+			it.each([
+				'i18n.oblique.service-navigation.applications.last-used.empty',
+				'i18n.oblique.service-navigation.applications.last-used.description'
+			])('should display translation key %s', key => {
+				const emptyFavoritesText = document.querySelector('#service-navigation-emtpy-last-used-text');
+				expect(emptyFavoritesText.innerHTML).toContain(key);
+			});
+
+			it('should find favorite button with text "i18n.oblique.service-navigation.applications.last-used.button"', () => {
+				const secondH4 = document.querySelector('#service-navigation-all-services');
+				expect(secondH4.innerHTML).toContain('i18n.oblique.service-navigation.applications.link.label');
+			});
+		});
+
 		describe('with some applications and while loggedIn', () => {
 			beforeEach(fakeAsync(async () => {
 				component.isLoggedIn = true;

@@ -142,6 +142,8 @@
   "i18n.oblique.service-navigation.applications.favorite.header": "Favoris",
   "i18n.oblique.service-navigation.applications.status.inaccessible": "Niveau de connexion insuffisant",
   "i18n.oblique.service-navigation.applications.status.offline": "Offline",
+  "i18n.oblique.service-navigation.applications.last-used.description": "Accès direct aux services favoris.",
+  "i18n.oblique.service-navigation.applications.last-used.empty": "Vous n'avez encore visité aucun service.",
   "i18n.oblique.service-navigation.applications.last-used.header": "Utilisés récemment",
   "i18n.oblique.service-navigation.applications.link.label": "Afficher tous les services",
   "i18n.oblique.service-navigation.authentication.login": "Se connecter",

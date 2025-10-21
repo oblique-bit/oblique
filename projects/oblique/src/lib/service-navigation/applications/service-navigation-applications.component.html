@@ -29,8 +29,8 @@
 <ng-template #popoverContent>
 	<div id="ob-service-navigation-applications-popover-content" cdkTrapFocus cdkTrapFocusAutoCapture="true">
 		<h3 class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</h3>
-		@if (lastUsedApplications?.length > 0) {
-			<ob-service-navigation-popover-section header="i18n.oblique.service-navigation.applications.last-used.header">
+		<ob-service-navigation-popover-section header="i18n.oblique.service-navigation.applications.last-used.header">
+			@if (lastUsedApplications?.length > 0) {
 				<ul class="ob-applications" obContent>
 					@for (application of lastUsedApplications; track application.name) {
 						<li>
@@ -48,18 +48,24 @@
 						</li>
 					}
 				</ul>
-				<a
-					id="service-navigation-all-services"
-					mat-button
-					obButton="secondary"
-					class="ob-all-services"
-					obContent
-					[href]="applicationsUrl"
-					[isExternalLink]="false"
-					>{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}
-				</a>
-			</ob-service-navigation-popover-section>
-		}
+			} @else {
+				<p id="service-navigation-emtpy-last-used-text" obContent>
+					{{ "i18n.oblique.service-navigation.applications.last-used.description" | translate }}
+					<br />
+					{{ "i18n.oblique.service-navigation.applications.last-used.empty" | translate }}
+				</p>
+			}
+			<a
+				id="service-navigation-all-services"
+				mat-button
+				obButton="secondary"
+				class="ob-all-services"
+				obContent
+				[href]="applicationsUrl"
+				[isExternalLink]="false"
+				>{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}
+			</a>
+		</ob-service-navigation-popover-section>
 
 		@if (favoriteApplications?.length > 0) {
 			<ob-service-navigation-popover-section header="i18n.oblique.service-navigation.applications.favorite.header">

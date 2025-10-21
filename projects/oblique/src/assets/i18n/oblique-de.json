@@ -142,6 +142,8 @@
   "i18n.oblique.service-navigation.applications.favorite.header": "Favoriten",
   "i18n.oblique.service-navigation.applications.status.inaccessible": "Unzureichendes Login-Level",
   "i18n.oblique.service-navigation.applications.status.offline": "Offline",
+  "i18n.oblique.service-navigation.applications.last-used.description": "Direkter Zugriff auf favorisierte Services.",
+  "i18n.oblique.service-navigation.applications.last-used.empty": "Sie haben noch keinen Service besucht.",
   "i18n.oblique.service-navigation.applications.last-used.header": "Zuletzt verwendet",
   "i18n.oblique.service-navigation.applications.link.label": "Alle Services anzeigen",
   "i18n.oblique.service-navigation.authentication.login": "Anmelden",
