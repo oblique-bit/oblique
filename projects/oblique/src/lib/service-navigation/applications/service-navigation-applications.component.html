@@ -1,19 +1,18 @@
-<!-- eslint-disable @angular-eslint/template/prefer-ngsrc -->
-<button
-	*ngIf="isLoggedIn; else isLoggedOut"
-	type="button"
-	id="service-navigation-applications-button"
-	class="ob-widget"
-	mat-icon-button
-	obButton="tertiary"
-	[matTooltip]="'i18n.oblique.service-navigation.applications.button.label' | translate"
-	[obPopover]="popoverContent"
-	placement="bottom"
->
-	<mat-icon svgIcon="apps" />
-</button>
-
-<ng-template #isLoggedOut>
+@if (isLoggedIn) {
+	<!-- eslint-disable @angular-eslint/template/prefer-ngsrc -->
+	<button
+		type="button"
+		id="service-navigation-applications-button"
+		class="ob-widget"
+		mat-icon-button
+		obButton="tertiary"
+		[matTooltip]="'i18n.oblique.service-navigation.applications.button.label' | translate"
+		[obPopover]="popoverContent"
+		placement="bottom"
+	>
+		<mat-icon svgIcon="apps" />
+	</button>
+} @else {
 	<a
 		[href]="applicationsUrl"
 		[isExternalLink]="false"
@@ -25,72 +24,74 @@
 	>
 		<mat-icon svgIcon="apps" />
 	</a>
-</ng-template>
+}
 
 <ng-template #popoverContent>
 	<div id="ob-service-navigation-applications-popover-content" cdkTrapFocus cdkTrapFocusAutoCapture="true">
 		<h3 class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</h3>
-		<ob-service-navigation-popover-section
-			*ngIf="lastUsedApplications?.length > 0"
-			header="i18n.oblique.service-navigation.applications.last-used.header"
-		>
-			<ul class="ob-applications" obContent>
-				<li *ngFor="let application of lastUsedApplications">
-					<a
-						class="ob-application"
-						[href]="application.url"
-						[obDisableLink]="application.status !== 'online'"
-						[isExternalLink]="false"
-						[class.ob-offline]="application.status !== 'online'"
-						[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
-					>
-						<img class="ob-application-image" [src]="application.image" alt="" />
-						<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
-					</a>
-				</li>
-			</ul>
-			<a
-				id="service-navigation-all-services"
-				mat-button
-				obButton="secondary"
-				class="ob-all-services"
-				obContent
-				[href]="applicationsUrl"
-				[isExternalLink]="false"
-				>{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}
-			</a>
-		</ob-service-navigation-popover-section>
+		@if (lastUsedApplications?.length > 0) {
+			<ob-service-navigation-popover-section header="i18n.oblique.service-navigation.applications.last-used.header">
+				<ul class="ob-applications" obContent>
+					@for (application of lastUsedApplications; track application.name) {
+						<li>
+							<a
+								class="ob-application"
+								[href]="application.url"
+								[obDisableLink]="application.status !== 'online'"
+								[isExternalLink]="false"
+								[class.ob-offline]="application.status !== 'online'"
+								[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
+							>
+								<img class="ob-application-image" [src]="application.image" alt="" />
+								<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
+							</a>
+						</li>
+					}
+				</ul>
+				<a
+					id="service-navigation-all-services"
+					mat-button
+					obButton="secondary"
+					class="ob-all-services"
+					obContent
+					[href]="applicationsUrl"
+					[isExternalLink]="false"
+					>{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}
+				</a>
+			</ob-service-navigation-popover-section>
+		}
 
-		<ob-service-navigation-popover-section
-			*ngIf="favoriteApplications?.length > 0"
-			header="i18n.oblique.service-navigation.applications.favorite.header"
-		>
-			<ul class="ob-applications" obContent>
-				<li *ngFor="let application of favoriteApplications">
-					<a
-						class="ob-application"
-						[href]="application.url"
-						[obDisableLink]="application.status !== 'online'"
-						[isExternalLink]="false"
-						[class.ob-offline]="application.status !== 'online'"
-						[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
-					>
-						<img class="ob-application-image" [src]="application.image" alt="" />
-						<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
-					</a>
-				</li>
-			</ul>
-			<a
-				id="service-navigation-all-favorite-services"
-				mat-button
-				obButton="secondary"
-				class="ob-all-services"
-				obContent
-				[href]="applicationsUrl + '?favoritesOnly=true'"
-				[isExternalLink]="false"
-			>
-				{{ "i18n.oblique.service-navigation.applications.favorite.button" | translate }}
-			</a>
-		</ob-service-navigation-popover-section>
+		@if (favoriteApplications?.length > 0) {
+			<ob-service-navigation-popover-section header="i18n.oblique.service-navigation.applications.favorite.header">
+				<ul class="ob-applications" obContent>
+					@for (application of favoriteApplications; track application.name) {
+						<li>
+							<a
+								class="ob-application"
+								[href]="application.url"
+								[obDisableLink]="application.status !== 'online'"
+								[isExternalLink]="false"
+								[class.ob-offline]="application.status !== 'online'"
+								[matTooltip]="application | ObServiceNavigationApplicationNameStatus"
+							>
+								<img class="ob-application-image" [src]="application.image" alt="" />
+								<span class="ob-application-title">{{ application | ObServiceNavigationApplicationNameStatus }}</span>
+							</a>
+						</li>
+					}
+				</ul>
+				<a
+					id="service-navigation-all-favorite-services"
+					mat-button
+					obButton="secondary"
+					class="ob-all-services"
+					obContent
+					[href]="applicationsUrl + '?favoritesOnly=true'"
+					[isExternalLink]="false"
+				>
+					{{ "i18n.oblique.service-navigation.applications.favorite.button" | translate }}
+				</a>
+			</ob-service-navigation-popover-section>
+		}
 	</div>
 </ng-template>
