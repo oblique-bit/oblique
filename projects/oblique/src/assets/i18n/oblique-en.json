@@ -139,6 +139,8 @@
   "i18n.stepper.editable.label": "Editable",
   "i18n.oblique.service-navigation.applications.button.label": "My services",
   "i18n.oblique.service-navigation.applications.favorite.button": "Show all favourited services",
+  "i18n.oblique.service-navigation.applications.favorite.description": "Direct access to recently used services.",
+  "i18n.oblique.service-navigation.applications.favorite.empty": "You have not yet favourited any services.",
   "i18n.oblique.service-navigation.applications.favorite.header": "Favourites",
   "i18n.oblique.service-navigation.applications.status.inaccessible": "Insufficient login level",
   "i18n.oblique.service-navigation.applications.status.offline": "Offline",

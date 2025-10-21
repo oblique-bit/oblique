@@ -139,6 +139,8 @@
   "i18n.stepper.editable.label": "Modifiable",
   "i18n.oblique.service-navigation.applications.button.label": "Mes services",
   "i18n.oblique.service-navigation.applications.favorite.button": "Afficher tous les services favoris",
+  "i18n.oblique.service-navigation.applications.favorite.description": "Accès direct aux services récemment utilisés.",
+  "i18n.oblique.service-navigation.applications.favorite.empty": "Vous n'avez encore sélectionné aucun service.",
   "i18n.oblique.service-navigation.applications.favorite.header": "Favoris",
   "i18n.oblique.service-navigation.applications.status.inaccessible": "Niveau de connexion insuffisant",
   "i18n.oblique.service-navigation.applications.status.offline": "Offline",
