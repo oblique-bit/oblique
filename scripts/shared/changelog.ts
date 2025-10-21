@@ -28,7 +28,7 @@ export class Changelog extends StaticScript {
 				'A package and a scope, separated by a forward slash, e.g. "oblique/service-navigation" is expected. See the root CONTRIBUTING.md for valid packages and the CONTRIBUTING.md of the relevant package for valid scopes.'
 			);
 		}
-		const previousTag = Git.getLatestTag();
+		const previousTag = Git.getLatestVersionTag();
 		Changelog.prependRelease(Changelog.getCommits(previousTag, 'HEAD', projectName, additionalPackageWithScope), previousTag, version);
 	}
 
