@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'sb-form',
-	templateUrl: './form.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './form.component.html'
 })
 export class FormComponent {
 	size = '';

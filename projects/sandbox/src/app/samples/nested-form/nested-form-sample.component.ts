@@ -4,9 +4,9 @@ import {ObNotificationService} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-nested-form-sample',
+	standalone: false,
 	templateUrl: './nested-form-sample.component.html',
-	styleUrl: './mandatory.scss',
-	standalone: false
+	styleUrl: './mandatory.scss'
 })
 export class NestedFormSampleComponent {
 	parentForm = inject(UntypedFormBuilder).group({

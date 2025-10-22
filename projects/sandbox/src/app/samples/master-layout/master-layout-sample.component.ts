@@ -6,9 +6,9 @@ import {DynamicNavigationService} from './dynamic-navigation.service';
 
 @Component({
 	selector: 'sb-master-layout-sample',
+	standalone: false,
 	templateUrl: './master-layout-sample.component.html',
-	styleUrl: './master-layout-sample.component.scss',
-	standalone: false
+	styleUrl: './master-layout-sample.component.scss'
 })
 export class MasterLayoutSampleComponent {
 	coverLayout = false;

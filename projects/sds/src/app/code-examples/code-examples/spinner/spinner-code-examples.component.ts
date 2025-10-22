@@ -8,9 +8,9 @@ import {MultipleActivationsPreviewComponent} from './previews/multiple-activatio
 
 @Component({
 	selector: 'app-spinner-code-examples',
+	imports: [CodeExampleComponent, CommonModule, IdPipe],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CodeExampleComponent, CommonModule, IdPipe]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpinnerCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'spinner-examples';

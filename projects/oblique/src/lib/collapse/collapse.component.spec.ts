@@ -5,12 +5,12 @@ import {By} from '@angular/platform-browser';
 import {OBLIQUE_COLLAPSE_ACTIVE, ObCollapseComponent} from './collapse.component';
 
 @Component({
+	standalone: false,
 	template: `
 		<ob-collapse />
 		<ob-collapse id="my-custom-id-for-test" />
 		<ob-collapse />
-	`,
-	standalone: false
+	`
 })
 class TestCollapseComponent {}
 

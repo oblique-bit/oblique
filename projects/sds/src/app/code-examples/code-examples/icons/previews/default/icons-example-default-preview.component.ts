@@ -3,7 +3,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 @Component({
 	selector: 'app-icons-example-default-preview',
-	templateUrl: './icons-example-default-preview.component.html',
-	imports: [MatIconModule]
+	imports: [MatIconModule],
+	templateUrl: './icons-example-default-preview.component.html'
 })
 export class IconsExampleDefaultPreviewComponent {}

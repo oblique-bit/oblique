@@ -13,8 +13,8 @@ export {ObColumnPanelDirective} from './column-panel.directive';
 export {ObColumnToggleDirective} from './column-toggle.directive';
 
 @NgModule({
-	imports: [CdkScrollableModule, CommonModule, MatIconModule, TranslateModule],
 	declarations: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective],
+	imports: [CdkScrollableModule, CommonModule, MatIconModule, TranslateModule],
 	exports: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective]
 })
 export class ObColumnLayoutModule {}

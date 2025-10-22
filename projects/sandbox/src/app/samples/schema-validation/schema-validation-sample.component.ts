@@ -12,9 +12,9 @@ import {of} from 'rxjs';
 
 @Component({
 	selector: 'sb-schema-validation',
+	standalone: false,
 	templateUrl: './schema-validation-sample.component.html',
-	styleUrl: './schema-validation-sample.component.scss',
-	standalone: false
+	styleUrl: './schema-validation-sample.component.scss'
 })
 export class SchemaValidationSampleComponent implements OnInit {
 	text: string;

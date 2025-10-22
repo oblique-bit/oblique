@@ -4,8 +4,8 @@ import {ObDisableLinkDirective} from './disable-link.directive';
 import {CommonModule} from '@angular/common';
 
 @Component({
-	standalone: true,
 	imports: [ObDisableLinkDirective],
+	standalone: true,
 	template: `
 		<a [id]="standardId" [obDisableLink]="disableLink" [href]="randomurl">randomlink</a>
 		<a [id]="defaultId" obDisableLink [href]="randomurl">randomlink</a>

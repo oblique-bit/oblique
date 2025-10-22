@@ -11,8 +11,10 @@ import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navi
 
 @Component({
 	selector: 'ob-service-navigation',
+	standalone: false,
 	templateUrl: './service-navigation.component.html',
 	styleUrls: ['./service-navigation.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 	providers: [
 		ObServiceNavigationService,
 		ObServiceNavigationApplicationsService,
@@ -22,9 +24,7 @@ import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navi
 		ObServiceNavigationTimeoutCookieActivityService,
 		ObServiceNavigationTimeoutReturnUrlService
 	],
-	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-service-navigation'},
-	standalone: false
+	host: {class: 'ob-service-navigation'}
 })
 export class ObServiceNavigationComponent implements OnInit {
 	@Input() profileLinks: ObIServiceNavigationLink[] = [];

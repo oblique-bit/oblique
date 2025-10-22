@@ -23,13 +23,13 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 
 @Component({
 	selector: 'ob-collapse',
-	exportAs: 'obCollapse',
-	encapsulation: ViewEncapsulation.None,
+	imports: [MatIconModule],
 	templateUrl: './collapse.component.html',
 	styleUrls: ['./collapse.component.scss'],
+	encapsulation: ViewEncapsulation.None,
+	exportAs: 'obCollapse',
 	animations: [animations],
-	host: {class: 'ob-collapse'},
-	imports: [MatIconModule]
+	host: {class: 'ob-collapse'}
 })
 export class ObCollapseComponent implements AfterViewInit, OnDestroy {
 	static index = 0;

@@ -35,11 +35,11 @@ import {ObNavigationLink} from './navigation-link.model';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
+	standalone: false,
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation-scrollable.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-navigation'},
-	standalone: false
+	host: {class: 'ob-master-layout-navigation'}
 })
 export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
 	isFullWidth = this.masterLayout.navigation.isFullWidth;

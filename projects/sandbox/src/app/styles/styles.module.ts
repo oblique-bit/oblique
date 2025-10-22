@@ -16,6 +16,18 @@ import {GridComponent} from './grid/grid.component';
 import {ScreenReaderOnlyComponent} from './screen-reader-only/screen-reader-only.component';
 
 @NgModule({
+	declarations: [
+		AlertComponent,
+		BlockElementsComponent,
+		GridComponent,
+		IconSampleComponent,
+		InlineElementComponent,
+		ListsComponent,
+		PaletteComponent,
+		ScreenReaderOnlyComponent,
+		TableComponent,
+		TypographyComponent
+	],
 	imports: [
 		CommonModule,
 		RouterModule.forChild([
@@ -35,18 +47,6 @@ import {ScreenReaderOnlyComponent} from './screen-reader-only/screen-reader-only
 		MatRadioModule,
 		ObColumnLayoutModule,
 		ReactiveFormsModule
-	],
-	declarations: [
-		AlertComponent,
-		BlockElementsComponent,
-		GridComponent,
-		IconSampleComponent,
-		InlineElementComponent,
-		ListsComponent,
-		PaletteComponent,
-		ScreenReaderOnlyComponent,
-		TableComponent,
-		TypographyComponent
 	]
 })
 export class StylesModule {}

@@ -4,7 +4,7 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-nav-tree-example-expand-collapse-preview',
-	templateUrl: './nav-tree-example-expand-collapse-preview.component.html',
-	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule]
+	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
+	templateUrl: './nav-tree-example-expand-collapse-preview.component.html'
 })
 export class NavTreeExampleExpandCollapsePreviewComponent {}

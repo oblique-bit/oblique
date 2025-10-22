@@ -6,31 +6,31 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 import {OBLIQUE_HAS_ROLE_ALERT, ObAlertComponent} from './alert.component';
 
 @Component({
+	standalone: false,
 	template: `
 		<ob-alert>
 			The following text should be shown as hyperlink:
 			<a href="www.google.com">www.google.com</a></ob-alert
 		>
-	`,
-	standalone: false
+	`
 })
 class DefaultTestComponent {}
 
 @Component({
+	standalone: false,
 	template: ` <ob-alert role="alert" type="success">
 		The following text should be shown as hyperlink:
 		<a href="www.google.com">www.google.com</a></ob-alert
-	>`,
-	standalone: false
+	>`
 })
 class AlertRoleTestComponent {}
 
 @Component({
+	standalone: false,
 	template: ` <ob-alert type="success">
 		The following text should be shown as hyperlink:
 		<a href="www.google.com">www.google.com</a></ob-alert
-	>`,
-	standalone: false
+	>`
 })
 class ConfiguredTestComponent {}
 

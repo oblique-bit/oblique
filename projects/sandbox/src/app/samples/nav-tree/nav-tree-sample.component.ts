@@ -6,9 +6,9 @@ import {map} from 'rxjs';
 
 @Component({
 	selector: 'sb-nav-tree-sample',
+	standalone: false,
 	templateUrl: './nav-tree-sample.component.html',
-	styleUrl: './nav-tree-sample.component.scss',
-	standalone: false
+	styleUrl: './nav-tree-sample.component.scss'
 })
 export class NavTreeSampleComponent {
 	public readonly items: Signal<ObNavTreeItemModel[]>;

@@ -4,8 +4,8 @@ import {Component, inject} from '@angular/core';
 
 @Component({
 	selector: 'app-notification-example-default-preview',
-	templateUrl: './notification-example-default-preview.component.html',
-	imports: [ObNotificationModule, ObButtonModule, MatButtonModule]
+	imports: [ObNotificationModule, ObButtonModule, MatButtonModule],
+	templateUrl: './notification-example-default-preview.component.html'
 })
 export class NotificationExampleDefaultPreviewComponent {
 	private readonly obNotificationService = inject(ObNotificationService);

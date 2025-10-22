@@ -9,10 +9,10 @@ import type {PreviewComponent} from '../code-examples.model';
 
 @Component({
 	selector: 'app-code-example',
+	imports: [TabsComponent, TabComponent, CodeExampleDirective, HighlightedCodeComponent, IdPipe],
 	templateUrl: './code-example.component.html',
 	styleUrl: './code-example.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [TabsComponent, TabComponent, CodeExampleDirective, HighlightedCodeComponent, IdPipe]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CodeExampleComponent implements OnInit {
 	readonly codeSnippets = input<SourceCode[]>([]);

@@ -13,9 +13,9 @@ interface IsLinkExternalState {
 
 @Component({
 	selector: 'sb-external-link',
+	standalone: false,
 	templateUrl: './external-link.component.html',
-	styleUrl: './external-link.component.scss',
-	standalone: false
+	styleUrl: './external-link.component.scss'
 })
 export class ExternalLinkComponent {
 	iconPosition: ObEExternalLinkIcon = 'left';

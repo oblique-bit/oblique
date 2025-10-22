@@ -12,9 +12,9 @@ import {DatepickerExampleOtherOptionsPreviewComponent} from './previews/other-op
 
 @Component({
 	selector: 'app-code-example-form',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'form-examples';

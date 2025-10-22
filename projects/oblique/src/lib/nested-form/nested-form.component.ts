@@ -13,14 +13,14 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ob-nested-form',
-	exportAs: 'obNestedForm',
+	standalone: true,
 	templateUrl: './nested-form.component.html',
+	exportAs: 'obNestedForm',
 	providers: [
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObNestedFormComponent},
 		{provide: NG_VALIDATORS, multi: true, useExisting: ObNestedFormComponent}
 	],
-	host: {class: 'ob-nested-form'},
-	standalone: true
+	host: {class: 'ob-nested-form'}
 })
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
 	@Input() nestedForm: UntypedFormGroup;

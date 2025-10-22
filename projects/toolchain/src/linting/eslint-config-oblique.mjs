@@ -305,6 +305,7 @@ export default [
 			 * Reason for disabling: Replaced by @typescript-eslint/no-throw-literal
 			 */
 			'no-throw-literal': 'off',
+			'no-unassigned-vars': 'error',
 			/**
 			 * Rule: no-undef (https://eslint.org/docs/latest/rules/no-undef)
 			 * Reason for disabling: Prevents usage of global functions like 'console', or 'setTimeout'
@@ -602,6 +603,7 @@ export default [
 			'@typescript-eslint/no-unnecessary-type-arguments': 'error',
 			'@typescript-eslint/no-unnecessary-type-assertion': 'error',
 			'@typescript-eslint/no-unnecessary-type-constraint': 'error',
+			'@typescript-eslint/no-unnecessary-type-conversion': 'error',
 			'@typescript-eslint/no-unnecessary-type-parameters': 'error',
 			'@typescript-eslint/no-unsafe-argument': 'error',
 			'@typescript-eslint/no-unsafe-assignment': 'error',
@@ -680,7 +682,6 @@ export default [
 			'@typescript-eslint/strict-boolean-expressions': 'error',
 			'@typescript-eslint/switch-exhaustiveness-check': 'error',
 			'@typescript-eslint/triple-slash-reference': 'error',
-			'@typescript-eslint/typedef': 'error',
 			/**
 			 * Rule: @typescript-eslint/unbound-method (https://typescript-eslint.io/rules/unbound-method)
 			 * Reason for {ignoreStatic: true}: Static methods are not bound to an instance so it is safe to use them unbound
@@ -720,12 +721,15 @@ export default [
 			'@angular-eslint/no-outputs-metadata-property': 'error',
 			'@angular-eslint/no-pipe-impure': 'error',
 			'@angular-eslint/no-queries-metadata-property': 'error',
+			'@angular-eslint/no-uncalled-signals': 'error',
 			'@angular-eslint/pipe-prefix': 'error',
 			/**
 			 * Rule: @angular-eslint/prefer-on-push-component-change-detection (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-on-push-component-change-detection.md)
 			 * Reason for disabling: OnPush is not always the best choice, especially with signals
 			 */
+			'@angular-eslint/prefer-inject': 'off',
 			'@angular-eslint/prefer-on-push-component-change-detection': 'off',
+			'@angular-eslint/prefer-output-emitter-ref': 'error',
 			'@angular-eslint/prefer-output-readonly': 'error',
 			'@angular-eslint/prefer-signals': 'error',
 			'@angular-eslint/prefer-standalone': 'error',
@@ -733,6 +737,7 @@ export default [
 			'@angular-eslint/require-lifecycle-on-prototype': 'error',
 			'@angular-eslint/require-localize-metadata': 'error',
 			'@angular-eslint/runtime-localize': 'error',
+			'@angular-eslint/sort-keys-in-type-decorator': 'error',
 			'@angular-eslint/sort-lifecycle-methods': 'error',
 			'@angular-eslint/use-component-selector': 'error',
 			'@angular-eslint/use-component-view-encapsulation': 'error',

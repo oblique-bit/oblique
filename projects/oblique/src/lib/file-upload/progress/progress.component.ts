@@ -13,11 +13,11 @@ import {ObFileUploadService} from '../file-upload.service';
 
 @Component({
 	selector: 'ob-progress',
+	imports: [NgFor, NgIf, MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslateModule],
 	templateUrl: './progress.component.html',
 	styleUrls: ['./progress.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-progress'},
-	imports: [NgFor, NgIf, MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslateModule]
+	host: {class: 'ob-progress'}
 })
 export class ObProgressComponent implements OnDestroy {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();

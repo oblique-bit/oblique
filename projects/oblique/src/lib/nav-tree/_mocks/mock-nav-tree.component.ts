@@ -7,10 +7,10 @@ import {ObNavTreeItemModel} from '../nav-tree-item.model';
  */
 @Component({
 	selector: 'ob-nav-tree',
-	exportAs: 'obNavTree',
-	host: {class: 'ob-nav-tree'},
+	standalone: true,
 	template: '',
-	standalone: true
+	exportAs: 'obNavTree',
+	host: {class: 'ob-nav-tree'}
 })
 export class ObMockNavTreeComponent {
 	static DEFAULTS = {

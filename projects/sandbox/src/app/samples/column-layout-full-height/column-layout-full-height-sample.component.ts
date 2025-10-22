@@ -3,8 +3,8 @@ import {ObMasterLayoutService} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-column-layout-full-height-sample',
-	templateUrl: './column-layout-full-height-sample.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './column-layout-full-height-sample.component.html'
 })
 export class ColumnLayoutFullHeightSampleComponent implements OnInit, OnDestroy {
 	left = true;

@@ -8,9 +8,9 @@ import {SlideToggleExampleSecondPreviewComponent} from './previews/second/slide-
 
 @Component({
 	selector: 'app-code-example-slide-toggle',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SlideToggleCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'slide-toggle-examples';

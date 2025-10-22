@@ -4,9 +4,9 @@ import {IdPipe} from '../id/id.pipe';
 
 @Component({
 	selector: 'app-tabs',
+	imports: [IdPipe],
 	templateUrl: './tabs.component.html',
-	styleUrl: './tabs.component.scss',
-	imports: [IdPipe]
+	styleUrl: './tabs.component.scss'
 })
 export class TabsComponent implements AfterViewInit {
 	readonly idPrefix = input('');

@@ -7,8 +7,6 @@ import {NestedFormExampleTemplateDrivenPreviewGrandchildComponent} from '../gran
 
 @Component({
 	selector: 'app-nested-form-example-template-driven-preview-child',
-	exportAs: 'child',
-	templateUrl: './nested-form-example-template-driven-preview-child.component.html',
 	imports: [
 		FormsModule,
 		MatInputModule,
@@ -16,7 +14,9 @@ import {NestedFormExampleTemplateDrivenPreviewGrandchildComponent} from '../gran
 		NestedFormExampleTemplateDrivenPreviewGrandchildComponent,
 		ObErrorMessagesModule,
 		ObNestedFormModule
-	]
+	],
+	templateUrl: './nested-form-example-template-driven-preview-child.component.html',
+	exportAs: 'child'
 })
 export class NestedFormExampleTemplateDrivenPreviewChildComponent {
 	readonly ngForm = viewChild(NgForm);

@@ -5,7 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 @Component({
 	selector: 'app-translations-example-stackblitz-link-preview',
-	templateUrl: './translations-example-stackblitz-link-preview.component.html',
-	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule]
+	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
+	templateUrl: './translations-example-stackblitz-link-preview.component.html'
 })
 export class TranslationsExampleStackblitzLinkPreviewComponent {}

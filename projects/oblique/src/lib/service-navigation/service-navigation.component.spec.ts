@@ -19,6 +19,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 @Component({
+	standalone: false,
 	template: `<ob-service-navigation>
 		<ng-template #customWidgetTemplate>
 			<button type="button">first button</button>
@@ -26,8 +27,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 		<ng-template #customWidgetTemplate>
 			<button type="button">second button</button>
 		</ng-template>
-	</ob-service-navigation>`,
-	standalone: false
+	</ob-service-navigation>`
 })
 class CustomControlsTestComponent {}
 

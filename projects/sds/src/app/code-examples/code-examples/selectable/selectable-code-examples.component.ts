@@ -11,9 +11,9 @@ import {SelectableExampleInAFormPreviewComponent} from './previews/in-a-form/sel
 
 @Component({
 	selector: 'app-code-example-selectable',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectableCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'selectable-examples';

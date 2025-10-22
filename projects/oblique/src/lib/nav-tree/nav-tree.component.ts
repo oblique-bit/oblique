@@ -12,10 +12,6 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 
 @Component({
 	selector: 'ob-nav-tree',
-	exportAs: 'obNavTree',
-	templateUrl: './nav-tree.component.html',
-	styleUrls: ['./nav-tree.component.scss'],
-	encapsulation: ViewEncapsulation.None,
 	imports: [
 		NgFor,
 		NgIf,
@@ -28,7 +24,11 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 		MatInputModule,
 		RouterModule,
 		TranslateModule
-	]
+	],
+	templateUrl: './nav-tree.component.html',
+	styleUrls: ['./nav-tree.component.scss'],
+	encapsulation: ViewEncapsulation.None,
+	exportAs: 'obNavTree'
 })
 export class ObNavTreeComponent implements OnDestroy {
 	static DEFAULTS = {

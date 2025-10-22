@@ -4,9 +4,9 @@ import {ObMasterLayoutService} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-screen-reader-only',
+	standalone: false,
 	templateUrl: './screen-reader-only.component.html',
-	styleUrl: './screen-reader-only.component.scss',
-	standalone: false
+	styleUrl: './screen-reader-only.component.scss'
 })
 export class ScreenReaderOnlyComponent implements OnInit {
 	layout: UntypedFormControl;

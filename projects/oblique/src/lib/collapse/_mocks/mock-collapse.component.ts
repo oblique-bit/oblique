@@ -5,9 +5,9 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
  */
 @Component({
 	selector: 'ob-collapse',
-	exportAs: 'obCollapse',
+	standalone: true,
 	template: '',
-	standalone: true
+	exportAs: 'obCollapse'
 })
 export class ObMockCollapseComponent {
 	static index = 0;

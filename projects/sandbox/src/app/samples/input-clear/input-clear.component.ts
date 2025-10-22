@@ -3,8 +3,8 @@ import {type FormControl, type FormGroup, UntypedFormBuilder, type UntypedFormGr
 
 @Component({
 	selector: 'sb-input-clear',
-	templateUrl: './input-clear.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './input-clear.component.html'
 })
 export class InputClearSampleComponent implements OnInit {
 	mandatoryModel: string;

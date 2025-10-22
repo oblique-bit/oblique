@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'sb-design-system',
-	templateUrl: './design-system.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './design-system.component.html'
 })
 export class DesignSystemComponent {}

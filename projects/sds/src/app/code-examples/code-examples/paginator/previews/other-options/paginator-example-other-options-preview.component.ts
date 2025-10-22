@@ -4,9 +4,9 @@ import {JsonPipe} from '@angular/common';
 
 @Component({
 	selector: 'app-paginator-example-other-options-preview',
+	imports: [JsonPipe, MatPaginatorModule],
 	templateUrl: './paginator-example-other-options-preview.component.html',
 	styleUrls: ['../paginator-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	imports: [JsonPipe, MatPaginatorModule],
 	host: {class: 'layout-column'}
 })
 export class PaginatorExampleOtherOptionsPreviewComponent implements AfterViewInit {

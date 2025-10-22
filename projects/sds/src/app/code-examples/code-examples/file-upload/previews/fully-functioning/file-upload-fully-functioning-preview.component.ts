@@ -5,9 +5,9 @@ import {uploadInterceptor} from '../../../../../../main';
 
 @Component({
 	selector: 'app-file-upload-fully-functioning-preview',
+	imports: [ObFileUploadModule],
 	templateUrl: './file-upload-fully-functioning-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss',
-	imports: [ObFileUploadModule]
+	styleUrl: '../../../../code-example-flex-layout.scss'
 })
 export class FileUploadFullyFunctioningPreviewComponent {
 	mockUrls = mockUrls;

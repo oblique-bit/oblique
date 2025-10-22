@@ -3,7 +3,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
 	selector: 'app-tabs-example-stretched-preview',
-	templateUrl: './tabs-example-stretched-preview.component.html',
-	imports: [MatTabsModule]
+	imports: [MatTabsModule],
+	templateUrl: './tabs-example-stretched-preview.component.html'
 })
 export class TabsExampleStretchedPreviewComponent {}

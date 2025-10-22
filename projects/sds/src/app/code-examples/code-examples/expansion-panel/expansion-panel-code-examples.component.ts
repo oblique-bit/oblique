@@ -9,9 +9,9 @@ import {ExpansionPanelExampleOtherOptionsPreviewComponent} from './previews/othe
 
 @Component({
 	selector: 'app-code-example-expansion-panel',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExpansionPanelCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'expansion-panel-examples';

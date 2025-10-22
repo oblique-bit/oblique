@@ -6,8 +6,8 @@ import {AsyncPipe} from '@angular/common';
 
 @Component({
 	selector: 'app-rxjs-operators-example-default-preview',
-	templateUrl: './rxjs-operators-example-default-preview.component.html',
-	imports: [AsyncPipe]
+	imports: [AsyncPipe],
+	templateUrl: './rxjs-operators-example-default-preview.component.html'
 })
 export class RxjsOperatorsExampleDefaultPreviewComponent {
 	readonly interval = timer(0, 1000).pipe(takeUntilDestroyed(), obPauseWhenPageHidden());

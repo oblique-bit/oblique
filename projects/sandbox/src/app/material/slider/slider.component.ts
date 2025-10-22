@@ -3,9 +3,9 @@ import type {ThemePalette} from '@angular/material/core';
 
 @Component({
 	selector: 'sb-slider',
+	standalone: false,
 	templateUrl: './slider.component.html',
-	styleUrl: './slider.component.scss',
-	standalone: false
+	styleUrl: './slider.component.scss'
 })
 export class SliderComponent {
 	value = 20;

@@ -5,18 +5,18 @@ import {FormsModule} from '@angular/forms';
 import {ObNumberFormatDirective} from './number-format.directive';
 
 @Component({
+	standalone: false,
 	template: '<input name="number" [(ngModel)]="number" obNumberFormat/>',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: false
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestDefaultComponent {
 	number: number;
 }
 
 @Component({
+	standalone: false,
 	template: '<input name="number" [(ngModel)]="number" obNumberFormat [persistent]="false" [decimals]="3"/>',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: false
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestNonPersistentComponent {
 	number: number;

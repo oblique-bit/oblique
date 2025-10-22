@@ -13,8 +13,8 @@ import type {PreviewComponent} from '../code-examples.model';
 
 @Component({
 	selector: 'app-preview',
-	template: '',
-	standalone: true
+	standalone: true,
+	template: ''
 })
 class MockPreviewComponent {}
 

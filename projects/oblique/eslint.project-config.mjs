@@ -31,6 +31,7 @@ export default [
 			'@angular-eslint/component-max-inline-declarations': 'off',
 			'@angular-eslint/consistent-component-styles': 'off',
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'off',
+			'@angular-eslint/prefer-output-emitter-ref': 'off',
 			'@angular-eslint/prefer-signals': 'off',
 			'@angular-eslint/prefer-standalone': 'off',
 			'@typescript-eslint/consistent-type-exports': 'off',
@@ -62,6 +63,7 @@ export default [
 			'@typescript-eslint/no-redundant-type-constituents': 'off',
 			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
 			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-unnecessary-type-conversion': 'off',
 			'@typescript-eslint/no-unsafe-argument': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'@typescript-eslint/no-unsafe-call': 'off',

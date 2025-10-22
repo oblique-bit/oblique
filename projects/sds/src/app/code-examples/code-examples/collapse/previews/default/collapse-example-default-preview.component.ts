@@ -3,7 +3,7 @@ import {ObCollapseModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-collapse-example-default-preview',
-	templateUrl: './collapse-example-default-preview.component.html',
-	imports: [ObCollapseModule]
+	imports: [ObCollapseModule],
+	templateUrl: './collapse-example-default-preview.component.html'
 })
 export class CollapseExampleDefaultPreviewComponent {}

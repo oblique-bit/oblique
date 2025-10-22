@@ -7,9 +7,9 @@ import {MasterLayoutExampleStackblitzLinkPreviewComponent} from './previews/stac
 
 @Component({
 	selector: 'app-code-example-master-layout',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MasterLayoutCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'master-layout-examples';

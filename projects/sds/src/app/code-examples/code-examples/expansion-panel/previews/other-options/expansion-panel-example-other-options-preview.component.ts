@@ -9,7 +9,7 @@ import {
 
 @Component({
 	selector: 'app-expansion-panel-example-other-options-preview',
-	templateUrl: './expansion-panel-example-other-options-preview.component.html',
-	imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelTitle]
+	imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelTitle],
+	templateUrl: './expansion-panel-example-other-options-preview.component.html'
 })
 export class ExpansionPanelExampleOtherOptionsPreviewComponent {}

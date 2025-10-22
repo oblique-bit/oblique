@@ -11,9 +11,9 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'app-text-page',
+	imports: [CommonModule, IdPipe],
 	templateUrl: './text-page.component.html',
 	styleUrl: './text-page.component.scss',
-	imports: [CommonModule, IdPipe],
 	host: {class: 'content-page'}
 })
 export class TextPageComponent implements AfterViewChecked {

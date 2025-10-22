@@ -8,9 +8,9 @@ import {ObDatepickerModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-datepicker-example-other-options-preview',
+	imports: [DatePipe, MatFormFieldModule, MatInputModule, ObDatepickerModule, ReactiveFormsModule],
 	templateUrl: './datepicker-example-other-options-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss',
-	imports: [DatePipe, MatFormFieldModule, MatInputModule, ObDatepickerModule, ReactiveFormsModule]
+	styleUrl: '../../../../code-example-flex-layout.scss'
 })
 export class DatepickerExampleOtherOptionsPreviewComponent {
 	readonly august1st1891 = new Date(1891, 7, 1);

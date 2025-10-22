@@ -11,9 +11,9 @@ import {MatTooltip} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'app-table',
+	imports: [AsyncPipe, NgTemplateOutlet, MatTableModule, MatTooltip, MatCheckboxModule, MatIconModule, MatButtonModule, ObButtonModule],
 	templateUrl: './material-table-example-selectable-preview.component.html',
-	styleUrl: './material-table-example-selectable-preview.component.scss',
-	imports: [AsyncPipe, NgTemplateOutlet, MatTableModule, MatTooltip, MatCheckboxModule, MatIconModule, MatButtonModule, ObButtonModule]
+	styleUrl: './material-table-example-selectable-preview.component.scss'
 })
 export class MaterialTableExampleSelectablePreviewComponent {
 	readonly displayedColumns = ['select', 'position', 'name', 'weight', 'symbol', 'actions'];

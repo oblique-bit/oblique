@@ -11,8 +11,8 @@ interface Data {
 
 @Component({
 	selector: 'sb-table-edit',
-	templateUrl: './table-edit.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './table-edit.component.html'
 })
 export class TableEditComponent implements OnInit {
 	editForm: UntypedFormGroup;

@@ -7,11 +7,11 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 
 @Component({
 	selector: 'ob-master-layout-footer',
+	standalone: false,
 	templateUrl: './master-layout-footer.component.html',
 	styleUrls: ['./master-layout-footer.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-footer'},
-	standalone: false
+	host: {class: 'ob-master-layout-footer'}
 })
 export class ObMasterLayoutFooterComponent implements OnDestroy {
 	home = this.config.homePageRoute;

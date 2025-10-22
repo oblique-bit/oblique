@@ -3,8 +3,8 @@ import {ObENotificationPlacement, ObENotificationType, ObNotificationService} fr
 
 @Component({
 	selector: 'sb-notification-sample',
-	templateUrl: './notification-sample.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './notification-sample.component.html'
 })
 export class NotificationSampleComponent {
 	messageWithParams = false;

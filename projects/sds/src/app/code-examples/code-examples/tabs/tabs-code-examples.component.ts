@@ -9,9 +9,9 @@ import {TabsExampleStretchedPreviewComponent} from './previews/stretched/tabs-ex
 
 @Component({
 	selector: 'app-code-example-tabs',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'tabs-examples';

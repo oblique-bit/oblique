@@ -11,7 +11,6 @@ import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-stepper-example-error-preview',
-	templateUrl: './stepper-example-error-preview.component.html',
 	imports: [
 		MatFormFieldModule,
 		MatButtonModule,
@@ -22,6 +21,7 @@ import {TranslateModule} from '@ngx-translate/core';
 		ReactiveFormsModule,
 		TranslateModule
 	],
+	templateUrl: './stepper-example-error-preview.component.html',
 	providers: [
 		{
 			provide: STEPPER_GLOBAL_OPTIONS,

@@ -4,8 +4,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
 
 @Component({
-	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
 	selector: 'app-autocomplete-example-icon-position-start',
+	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
 	templateUrl: './autocomplete-example-icon-position-start.component.html'
 })
 export class AutocompleteExampleIconPositionStartComponent implements AfterViewInit {

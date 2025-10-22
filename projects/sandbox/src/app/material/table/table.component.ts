@@ -10,9 +10,9 @@ import {EditMode, Mode, TableManager} from './table-manager';
 
 @Component({
 	selector: 'sb-table',
+	standalone: false,
 	templateUrl: './table.component.html',
-	styleUrl: './table.component.scss',
-	standalone: false
+	styleUrl: './table.component.scss'
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	readonly sort = viewChild(MatSort);

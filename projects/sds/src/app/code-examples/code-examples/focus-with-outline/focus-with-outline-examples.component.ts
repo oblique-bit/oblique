@@ -7,9 +7,9 @@ import {FocusWithOutlineExampleDefaultPreviewComponent} from './previews/default
 
 @Component({
 	selector: 'app-code-example-focus-with-outline',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FocusWithOutlineExamplesComponent extends CodeExamples {
 	readonly componentId = 'focus-with-outline-examples';

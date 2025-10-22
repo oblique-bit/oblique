@@ -5,11 +5,11 @@ import {ObNavigationLink} from '../navigation-link.model';
 
 @Component({
 	selector: 'ob-master-layout-navigation-sub-menu-item',
+	standalone: false,
 	templateUrl: './master-layout-navigation-sub-menu-item.component.html',
 	styleUrls: ['./master-layout-navigation-sub-menu-item.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-navigation-sub-menu-item'},
-	standalone: false
+	host: {class: 'ob-master-layout-navigation-sub-menu-item'}
 })
 export class ObMasterLayoutNavigationSubMenuItemComponent implements OnChanges {
 	@HostBinding('class.column') @Input() column = false;

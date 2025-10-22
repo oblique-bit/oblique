@@ -7,9 +7,9 @@ import {ShadowExampleShadowPreviewComponent} from './previews/shadow/shadow-exam
 
 @Component({
 	selector: 'app-code-example-shadow',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShadowCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'shadow-examples';

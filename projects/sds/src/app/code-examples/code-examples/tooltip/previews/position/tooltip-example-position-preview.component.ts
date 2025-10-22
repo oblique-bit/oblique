@@ -5,8 +5,8 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-tooltip-example-position-preview',
+	imports: [MatTooltipModule, MatButtonModule, ObButtonModule, ObExternalLinkModule],
 	templateUrl: './tooltip-example-position-preview.component.html',
-	styleUrl: './tooltip-example-position-preview.component.scss',
-	imports: [MatTooltipModule, MatButtonModule, ObButtonModule, ObExternalLinkModule]
+	styleUrl: './tooltip-example-position-preview.component.scss'
 })
 export class TooltipExamplePositionPreviewComponent {}

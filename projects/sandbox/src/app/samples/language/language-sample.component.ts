@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'sb-language-sample',
-	templateUrl: './language-sample.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './language-sample.component.html'
 })
 export class LanguageSampleComponent {
 	today = new Date();

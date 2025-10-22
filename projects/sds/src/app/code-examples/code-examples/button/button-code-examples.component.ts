@@ -8,9 +8,9 @@ import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-button-code-examples',
+	imports: [CodeExampleComponent, IdPipe, CommonModule],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CodeExampleComponent, IdPipe, CommonModule]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'button-examples';

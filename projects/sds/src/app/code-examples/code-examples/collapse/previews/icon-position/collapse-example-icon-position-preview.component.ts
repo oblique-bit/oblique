@@ -3,7 +3,7 @@ import {ObCollapseModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-collapse-example-icon-position-preview',
-	templateUrl: './collapse-example-icon-position-preview.component.html',
-	imports: [ObCollapseModule]
+	imports: [ObCollapseModule],
+	templateUrl: './collapse-example-icon-position-preview.component.html'
 })
 export class CollapseExampleIconPositionPreviewComponent {}

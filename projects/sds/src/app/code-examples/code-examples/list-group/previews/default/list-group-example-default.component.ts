@@ -3,8 +3,8 @@ import {MatListModule} from '@angular/material/list';
 
 @Component({
 	selector: 'app-list-group-example-default',
-	templateUrl: './list-group-example-default.component.html',
 	imports: [MatListModule],
+	templateUrl: './list-group-example-default.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListGroupExampleDefaultComponent {

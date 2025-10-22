@@ -3,9 +3,9 @@ import type {ObIFileDescription, ObIUploadEvent} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-file-upload-sample',
+	standalone: false,
 	templateUrl: './file-upload-sample.component.html',
-	styleUrl: './file-upload-sample.component.scss',
-	standalone: false
+	styleUrl: './file-upload-sample.component.scss'
 })
 export class FileUploadSampleComponent {
 	uploadUrl: string;

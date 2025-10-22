@@ -5,8 +5,8 @@ import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-popover12-example-default-preview',
-	templateUrl: './popover12-example-events-preview.component.html',
 	imports: [CommonModule, ObPopoverModule, ObButtonModule, MatButtonModule],
+	templateUrl: './popover12-example-events-preview.component.html',
 	styleUrl: './popover12-example-events-preview.component.scss'
 })
 export class Popover12ExampleEventsPreviewComponent {

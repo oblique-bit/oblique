@@ -11,9 +11,9 @@ import {NavTreeExampleDisabledPreviewComponent} from './previews/disabled/nav-tr
 
 @Component({
 	selector: 'app-code-example-nav-tree',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavTreeCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'nav-tree-examples';
