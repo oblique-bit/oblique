@@ -235,4 +235,22 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			});
 		});
 	});
+
+	describe('parsing error', () => {
+		it.each([
+			{inputName: 'infoContact', attributeName: 'info-contact'},
+			{inputName: 'customButtons', attributeName: 'custom-buttons'},
+			{inputName: 'profileLinks', attributeName: 'profile-links'},
+			{inputName: 'infoLinks', attributeName: 'info-links'}
+		])('should throw an error for the invalid $attributeName attribute value', ({inputName, attributeName}) => {
+			expect(() => {
+				component.ngOnChanges({
+					...defaultChangesValues(),
+					[inputName]: new SimpleChange(null, 'not-a-valid-json', true)
+				});
+			}).toThrow(
+				`The value for the attribute ${attributeName} is invalid. Check the documentation at https://oblique.bit.admin.ch/guidelines/service-navigation-web-component for the expected format.`
+			);
+		});
+	});
 });

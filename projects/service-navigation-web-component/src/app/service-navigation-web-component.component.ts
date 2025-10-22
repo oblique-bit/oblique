@@ -122,6 +122,23 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		this.environmentParsed = this.parseEnvironment(this.environment());
 	}
 
+	private invalidAttributeValue(attributeName: string): void {
+		throw new Error(
+			`The value for the attribute ${attributeName} is invalid. Check the documentation at https://oblique.bit.admin.ch/guidelines/service-navigation-web-component for the expected format.`
+		);
+	}
+
+	private parseAttributeValue(attributeName: string, attributeValue: string, fallback: string | null): unknown {
+		let result: unknown = null;
+		try {
+			result = JSON.parse(attributeValue || fallback);
+		} catch (err) {
+			this.invalidAttributeValue(attributeName);
+		}
+
+		return result;
+	}
+
 	private parseEnvironment(environmentName: string): ObEPamsEnvironment {
 		const environmentNames = Object.keys(ObEPamsEnvironment);
 		if (!environmentNames.includes(environmentName)) {
@@ -133,27 +150,34 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	}
 
 	private parseContact(infoContact: SimpleChange | undefined): ObIServiceNavigationContact | undefined {
-		return typeof infoContact?.currentValue === 'string' ? JSON.parse(infoContact.currentValue || null) : this.infoContactParsed;
+		return typeof infoContact?.currentValue === 'string'
+			? this.parseAttributeValue('info-contact', infoContact.currentValue, null)
+			: this.infoContactParsed;
 	}
 
 	private parseLinks(rawLinks: SimpleChange | undefined, type: 'info' | 'profile'): ObIServiceNavigationLink[] {
 		if (!rawLinks) {
 			return type === 'info' ? this.infoLinksParsed : this.profileLinksParsed;
 		}
-		const links = this.parseRawLinks(rawLinks.currentValue);
+		const links = this.parseRawLinks(rawLinks.currentValue, type);
 		return links.map((link, index) => ({
 			url: `${type}-link.${index}.url`,
 			label: `${type}-link.${index}.label`
 		}));
 	}
 
-	private parseRawLinks(links: unknown): ObILink[] {
-		const parsedLinks: unknown = typeof links === 'string' ? JSON.parse(links || '[]') : [];
+	private parseRawLinks(links: unknown, type: 'info' | 'profile'): ObILink[] {
+		const parsedLinks: unknown = typeof links === 'string' ? this.parseAttributeValue(`${type}-links`, links, '[]') : [];
 		return Array.isArray(parsedLinks) ? parsedLinks : [];
 	}
 
 	private parseCustomButtons(customButtons: SimpleChange | undefined): ObICustomButton[] {
-		return typeof customButtons?.currentValue === 'string' ? JSON.parse(customButtons.currentValue || '[]') : this.customButtonsParsed;
+		const customButtonsParsed =
+			typeof customButtons?.currentValue === 'string'
+				? this.parseAttributeValue('custom-buttons', customButtons.currentValue, '[]')
+				: this.customButtonsParsed;
+
+		return Array.isArray(customButtonsParsed) ? customButtonsParsed : [];
 	}
 
 	private handleNewLanguage(language: SimpleChange | undefined): void {
