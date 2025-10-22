@@ -5,7 +5,7 @@
         "spacing": {
           "gap": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.element.md.px}",
+            "$value": "{ob.s.dimension.static.element.xl.px}",
             "$description": "Gap between icon and text in the text link."
           }
         },

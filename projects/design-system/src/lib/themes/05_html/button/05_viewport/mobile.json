@@ -6,7 +6,7 @@
           "spacing": {
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.element.md.px}",
+              "$value": "{ob.s.dimension.dynamic.element.xl.px}",
               "$description": "Button gap for mobile viewport - tighter spacing for touch interaction"
             }
           }

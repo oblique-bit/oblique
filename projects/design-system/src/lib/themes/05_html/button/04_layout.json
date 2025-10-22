@@ -11,7 +11,7 @@
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.surface.xs.rem}"
+                "$value": "{ob.s.dimension.dynamic.element.xl.rem}"
               }
             },
             "gap": {
@@ -23,13 +23,13 @@
             "size": {
               "min_height": {
                 "$type": "sizing",
-                "$value": "{ob.s.dimension.dynamic.container.xs.rem}"
+                "$value": "{ob.s.dimension.dynamic.spacing.md.rem}"
               }
             }
           },
           "icon_size": {
             "$type": "sizing",
-            "$value": "{ob.c.icon_slot.size_proportional.standard}",
+            "$value": "{ob.s.dimension.static.spacing.md.rem}",
             "$description": "Standard proportional size of the icon inside the label_icon button subcomponent."
           }
         },
@@ -140,7 +140,7 @@
         "icon": {
           "size": {
             "$type": "sizing",
-            "$value": "{ob.c.icon_slot.size_proportional.standard}"
+            "$value": "{ob.s.dimension.static.spacing.md.rem}"
           }
         }
       }

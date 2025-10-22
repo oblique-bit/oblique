@@ -5,66 +5,66 @@
         "spacing": {
           "padding_top": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.surface.sm.px}",
+            "$value": "{ob.s.dimension.static.spacing.sm.px}",
             "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
           },
           "padding_right": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.surface.sm.px}",
+            "$value": "{ob.s.dimension.static.spacing.sm.px}",
             "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
           },
           "padding_bottom": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.surface.sm.px}",
+            "$value": "{ob.s.dimension.static.spacing.sm.px}",
             "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
           },
           "padding_left": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.surface.sm.px}",
+            "$value": "{ob.s.dimension.static.spacing.sm.px}",
             "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
           },
           "row_gap": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.surface.sm.px}",
+            "$value": "{ob.s.dimension.static.spacing.sm.px}",
             "$description": "Sets a minimum vertical gap between container_top and container-buttons to enhance the readability."
           },
           "container_top": {
             "col_gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.xs.px}",
+              "$value": "{ob.s.dimension.static.spacing.xs.px}",
               "$description": "Gap between the status icon and the text blocks for readibility and horizontal rhytm."
             }
           },
           "text_blocks": {
             "row_gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.element.md.px}",
+              "$value": "{ob.s.dimension.static.element.xl.px}",
               "$description": "Emphasizes the visual hierarchy between the title and the body text."
             }
           },
           "title_bar": {
             "col_gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.sm.px}",
+              "$value": "{ob.s.dimension.static.spacing.sm.px}",
               "$description": "Prevents the title coming to close to the Close button (X)"
             }
           },
           "body": {
             "padding_right": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.container.sm.px}",
+              "$value": "{ob.s.dimension.static.container.xl.px}",
               "$description": "Adding a larger right-padding on larger screens introduces white space that allows the design to \"breathe\"."
             },
             "padding_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.xs.px}",
+              "$value": "{ob.s.dimension.static.spacing.xs.px}",
               "$description": "Adding a larger right-padding on larger screens introduces white space that allows the design to \"breathe\"."
             }
           },
           "parentof-buttons_container": {
             "padding_left": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.container.sm.px}"
+              "$value": "{ob.s.dimension.static.container.xl.px}"
             },
             "padding_bottom": {
               "$type": "spacing",
@@ -85,7 +85,7 @@
           "title": {
             "padding_top": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.detail.sm.px}",
+              "$value": "{ob.s.dimension.static.micro.sm.px}",
               "$description": "Aligns the title with the status icon and the close button on desktop."
             }
           }
@@ -94,7 +94,7 @@
           "title": {
             "min_height": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.static.container.xs.px}",
+              "$value": "{ob.s.dimension.static.spacing.xl.px}",
               "$description": "Minimum height (32px) helps the title container maintain height regardless of close-button presence"
             }
           }
@@ -110,16 +110,16 @@
           "spacing": {
             "row_gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.sm.px}",
+              "$value": "{ob.s.dimension.static.spacing.sm.px}",
               "$description": "Vertical distance / gap between infoboxes."
             },
             "padding_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.sm.px}"
+              "$value": "{ob.s.dimension.static.spacing.sm.px}"
             },
             "padding_top": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.sm.px}"
+              "$value": "{ob.s.dimension.static.spacing.sm.px}"
             },
             "padding_left": {
               "$type": "spacing",

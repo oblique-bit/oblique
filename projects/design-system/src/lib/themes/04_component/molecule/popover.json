@@ -6,22 +6,22 @@
           "padded_container": {
             "padding_top": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.sm.px}",
+              "$value": "{ob.s.dimension.static.spacing.sm.px}",
               "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
             },
             "padding_right": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.sm.px}",
+              "$value": "{ob.s.dimension.static.spacing.sm.px}",
               "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
             },
             "padding_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.sm.px}",
+              "$value": "{ob.s.dimension.static.spacing.sm.px}",
               "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
             },
             "padding_left": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.sm.px}",
+              "$value": "{ob.s.dimension.static.spacing.sm.px}",
               "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
             },
             "row_gap": {
@@ -33,25 +33,25 @@
           "text_bar": {
             "col_gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.xs.px}",
+              "$value": "{ob.s.dimension.static.spacing.xs.px}",
               "$description": "Prevents the title coming to close to the Close button (X)"
             },
             "padding_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.xs.px}"
+              "$value": "{ob.s.dimension.static.spacing.xs.px}"
             }
           },
           "text_variant_container": {
             "padding_top": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.detail.xs.px}",
+              "$value": "{ob.s.dimension.static.micro.xs.px}",
               "$description": "Aligns the title with the status icon and the close button on desktop."
             }
           },
           "buttons_container": {
             "margin_top": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.xs.px}",
+              "$value": "{ob.s.dimension.static.spacing.xs.px}",
               "$description": "Proper proximity from the buttons to text above. We were not able to use gap property in the padded container since it increases the gap between the title and the body as well."
             }
           }
@@ -60,32 +60,32 @@
           "custom_buttons_container": {
             "width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.layout.xl.px}"
+              "$value": "{ob.s.dimension.dynamic.macro.sm.px}"
             }
           },
           "custom_buttons": {
             "min_width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.container.md.px}"
+              "$value": "{ob.s.dimension.dynamic.container.xl.px}"
             }
           },
           "padded_container": {
             "width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.layout.xl.px}",
+              "$value": "{ob.s.dimension.dynamic.macro.sm.px}",
               "$description": "Sets a fixed default width (320px) for popover consistency. Can be overridden for specific requirements."
             }
           },
           "close_button": {
             "width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.surface.sm.px}"
+              "$value": "{ob.s.dimension.dynamic.spacing.sm.px}"
             }
           },
           "text_variant_container": {
             "min_height": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.surface.md.px}"
+              "$value": "{ob.s.dimension.dynamic.spacing.md.px}"
             }
           }
         },

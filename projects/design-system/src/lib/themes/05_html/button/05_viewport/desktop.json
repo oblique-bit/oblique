@@ -6,7 +6,7 @@
           "spacing": {
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.surface.xs.px}",
+              "$value": "{ob.s.dimension.dynamic.spacing.xs.px}",
               "$description": "Button gap for desktop viewport - wider spacing for mouse interaction"
             }
           }
