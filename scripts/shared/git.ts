@@ -54,6 +54,10 @@ export class Git {
 		return getResultFromCommand('git tag --sort v:refname');
 	}
 
+	static getTagsByPattern(pattern: string): string {
+		return getResultFromCommand(`git tag -l "${pattern}"`);
+	}
+
 	static listCommits(format: (keyof typeof Git.format)[], separator: string, commitSeparator: string, from: string, to: string): string {
 		const fullFormat = format.map(item => Git.format[item]).join(separator);
 		return getResultFromCommand(`git log --pretty=format:"${fullFormat}${commitSeparator}" ${from}..${to}`);
