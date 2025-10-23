@@ -1,0 +1,22 @@
+name: RHOS tag cleanup
+on:
+  push:
+    branches: [master]
+jobs:
+  cleanup-tags:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+          fetch-depth: 0
+
+      - name: Delete RHOS tags for SDS remote
+        run: /usr/bin/git tag -l 'sds*' | xargs git push --delete origin
+
+      - name: Delete RHOS tags for Sandbox remote
+        run: /usr/bin/git tag -l 'sandbox*' | xargs git push --delete origin

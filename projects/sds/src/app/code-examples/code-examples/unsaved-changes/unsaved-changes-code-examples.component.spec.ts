@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ObButtonDirective, provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
@@ -13,7 +12,7 @@ describe(UnsavedChangesCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [UnsavedChangesCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule],
+			imports: [UnsavedChangesCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 

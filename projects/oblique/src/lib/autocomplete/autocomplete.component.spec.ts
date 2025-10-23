@@ -13,7 +13,6 @@ import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatInputModule} from '@angular/material/input';
 import {MatInputHarness} from '@angular/material/input/testing';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '../autocomplete/autocomplete.model';
 import {ObOptionLabelIconModule} from '../autocomplete/option-label-icon/option-label-icon.module';
@@ -64,7 +63,6 @@ describe(ObAutocompleteComponent.name, () => {
 				ReactiveFormsModule,
 				ObMockTranslateParamsModule,
 				ObOptionLabelIconModule,
-				NoopAnimationsModule,
 				CommonModule,
 				MatIconTestingModule
 			],

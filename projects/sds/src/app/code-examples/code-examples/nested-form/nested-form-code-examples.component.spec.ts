@@ -12,7 +12,6 @@ import {NestedFormExampleReactivePreviewChildComponent} from './previews/reactiv
 import {NestedFormExampleReactivePreviewGrandchildComponent} from './previews/reactive/grandchild/nested-form-example-reactive-preview-grandchild.component';
 import {NestedFormExampleTemplateDrivenPreviewChildComponent} from './previews/template-driven/child/nested-form-example-template-driven-preview-child.component';
 import {NestedFormExampleTemplateDrivenPreviewGrandchildComponent} from './previews/template-driven/grandchild/nested-form-example-template-driven-preview-grandchild.component';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe(NestedFormCodeExamplesComponent.name, () => {
 	let component: NestedFormCodeExamplesComponent;
@@ -20,7 +19,7 @@ describe(NestedFormCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [CodeExampleComponent, CommonModule, IdPipe, NestedFormCodeExamplesComponent, NoopAnimationsModule],
+			imports: [CodeExampleComponent, CommonModule, IdPipe, NestedFormCodeExamplesComponent],
 			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 

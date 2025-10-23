@@ -324,8 +324,11 @@
 		}
 	}
 
-	&.mat-mdc-form-field-type-mat-select.mat-form-field-disabled .mat-mdc-select-trigger {
-		cursor: not-allowed;
+	&.mat-mdc-form-field-type-mat-select.mat-form-field-disabled {
+		.mat-mdc-floating-label,
+		.mat-mdc-select-trigger {
+			cursor: not-allowed;
+		}
 	}
 
 	.mat-mdc-select-trigger {

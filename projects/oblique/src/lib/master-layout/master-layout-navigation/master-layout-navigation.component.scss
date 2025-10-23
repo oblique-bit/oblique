@@ -431,15 +431,6 @@
 				&.ob-master-layout-navigation-link.cdk-keyboard-focused {
 					outline: none;
 					box-shadow: none;
-
-					.ob-layout-expanded & {
-						padding: variables.$ob-spacing-default - shadow.$tab-focus-width;
-					}
-
-					.ob-layout-collapsed & {
-						padding: (variables.$ob-spacing-sm - shadow.$tab-focus-width)
-							(variables.$ob-spacing-default - shadow.$tab-focus-width);
-					}
 				}
 			}
 
@@ -456,7 +447,8 @@
 		}
 
 		& > li.ob-has-keyboard-focused-child {
-			@include shadow.ob-tab-focus-border();
+			box-shadow: inset 0 0 0 shadow.$tab-focus-width shadow.$tab-focus-color;
+			z-index: variables.$ob-z-index-layout;
 		}
 
 		.ob-sub-nav {

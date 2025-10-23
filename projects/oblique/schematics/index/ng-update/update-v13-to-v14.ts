@@ -408,9 +408,9 @@ export class UpdateV13toV14 implements ObIMigrations {
 
 	private migrateScrollToTop(): Rule {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
-			infoMigration(context, 'Migrate scrollTarget.scrollTo({top: 0}) to scrollTop()');
+			infoMigration(context, 'Migrate scrollTarget.scrollTo({top: 0}) to focusElement("content")');
 			const toApply = (filePath: string): void => {
-				replaceInFile(tree, filePath, /scrollTarget\.scrollTo\(\s*\{\s*top\s*:\s*0\s*\}\s*\)/gmu, 'scrollTop()');
+				replaceInFile(tree, filePath, /scrollTarget\.scrollTo\(\s*\{\s*top\s*:\s*0\s*\}\s*\)/gmu, "focusElement('content')");
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		});

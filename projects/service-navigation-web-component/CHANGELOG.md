@@ -1,3 +1,9 @@
+# [14.0.1](https://github.com/oblique-bit/oblique/compare/14.0.0...14.0.1) (2025-10-23)
+
+## Features
+
+- **web-component:** display meaningful errors for invalid attributes ([02d02502](https://github.com/oblique-bit/oblique/commit/02d02502d0389e208fb2f70103198076a5c2ba86))
+
 # [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0) (2025-09-22)
 
 ## Bug Fixes

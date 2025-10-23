@@ -38,29 +38,6 @@
 			width: 380px;
 		}
 
-		&.fade-left {
-			animation: notification-fade-left variables.$ob-duration-default;
-		}
-
-		&.fade-left-delayed {
-			animation: notification-fade-left variables.$ob-duration-default;
-			animation-delay: variables.$ob-duration-default;
-			animation-fill-mode: backwards;
-		}
-
-		&.fade-out {
-			animation: notification-fade-out variables.$ob-duration-default;
-		}
-
-		&.slide-top {
-			animation: notification-slide-top variables.$ob-duration-default;
-			animation-delay: variables.$ob-duration-default;
-		}
-
-		&.slide-bottom {
-			animation: notification-slide-bottom variables.$ob-duration-default;
-		}
-
 		.ob-close {
 			float: none;
 			position: absolute;
@@ -112,47 +89,5 @@
 
 	.ob-alert-error .ob-occurrence {
 		background-color: variables.$ob-error;
-	}
-
-	@keyframes notification-fade-out {
-		0% {
-			opacity: 1;
-		}
-
-		100% {
-			opacity: 0;
-		}
-	}
-
-	@keyframes notification-fade-left {
-		0% {
-			opacity: 0;
-			transform: translateX(100px);
-		}
-
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@keyframes notification-slide-top {
-		0% {
-			transform: translateY(100%);
-		}
-
-		100% {
-			transform: translateY(0);
-		}
-	}
-
-	@keyframes notification-slide-bottom {
-		0% {
-			transform: translateY(-100%);
-		}
-
-		100% {
-			transform: translateY(0);
-		}
 	}
 }

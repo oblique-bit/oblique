@@ -1,7 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FeedbackFormComponent} from './feedback-form.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import type {Fields} from './feedback-form.model';
@@ -16,8 +15,7 @@ describe(FeedbackFormComponent.name, () => {
 			close: jest.fn()
 		};
 		await TestBed.configureTestingModule({
-			// declarations: [FeedbackFormComponent],
-			imports: [MatDialogModule, NoopAnimationsModule],
+			imports: [MatDialogModule],
 			providers: [{provide: MAT_DIALOG_DATA, useValue: {}}, {provide: MatDialogRef, useValue: dialogRef}, MatDialog]
 		}).compileComponents();
 		fixture = TestBed.createComponent(FeedbackFormComponent);

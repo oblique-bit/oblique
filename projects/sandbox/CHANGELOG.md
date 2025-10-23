@@ -1,3 +1,9 @@
+# [14.0.1](https://github.com/oblique-bit/oblique/compare/14.0.0...14.0.1) (2025-10-23)
+
+## Bug Fixes
+
+- **sandbox:** make sure the search field is properly reset ([63719291](https://github.com/oblique-bit/oblique/commit/63719291749658907635be4f603aa69ac2e26553))
+
 # [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.2...14.0.0) (2025-09-22)
 
 ## Bug Fixes

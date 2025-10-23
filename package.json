@@ -1,7 +1,7 @@
 {
   "title": "Oblique",
   "name": "oblique",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "license": "MIT",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
@@ -27,14 +27,14 @@
     "projects/toolchain"
   ],
   "scripts": {
-    "lint": "ts-node scripts/lint.ts && npm run lint -ws",
-    "format": "ts-node scripts/lint.ts --fix && npm run format -ws",
+    "lint": "ts-node scripts/lint.ts && npm run lint --workspaces",
+    "format": "ts-node scripts/lint.ts --fix && npm run format --workspaces",
     "dependencies-update": "ts-node scripts/dependencies-update.ts",
     "update-angular": "ts-node scripts/update-angular.ts",
     "postinstall": "ts-node scripts/sanitize-package-lock.ts",
     "hook-pre-commit": "npx lint-staged",
     "hook-commit-msg": "ts-node scripts/husky/hook.commit-rules.ts",
-    "hook-post-checkout": "ts-node scripts/husky/install-dependencies.ts",
+    "hook-post-checkout": "ts-node scripts/husky/install-dependencies.ts && ts-node scripts/delete-tags.ts",
     "prepare": "husky",
     "release": "ts-node scripts/release.ts",
     "troubleshoot": "ts-node scripts/troubleshoot.ts"

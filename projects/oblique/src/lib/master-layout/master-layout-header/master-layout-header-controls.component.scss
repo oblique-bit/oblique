@@ -93,10 +93,7 @@
 			transition: padding-bottom variables.$ob-duration-default;
 
 			@at-root #{selector.append(".ob-master-layout:not(.ob-header-expanded)", &)} {
-				height: 0;
-				overflow: hidden; // hides controls in collapsed mode
-				padding-top: 0;
-				padding-bottom: 0;
+				display: none;
 			}
 		}
 	}

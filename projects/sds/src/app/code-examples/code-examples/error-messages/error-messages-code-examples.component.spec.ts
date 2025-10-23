@@ -8,7 +8,6 @@ import {ErrorMessagesExampleReactiveFormPreviewComponent} from './previews/react
 import {ErrorMessagesExampleTemplateDrivenFormPreviewComponent} from './previews/template-driven-form/error-messages-example-template-driven-form-preview.component';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '@oblique/oblique';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe(ErrorMessagesCodeExamplesComponent.name, () => {
 	let component: ErrorMessagesCodeExamplesComponent;
@@ -16,7 +15,7 @@ describe(ErrorMessagesCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ErrorMessagesCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule],
+			imports: [ErrorMessagesCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 

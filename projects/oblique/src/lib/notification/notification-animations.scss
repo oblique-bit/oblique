@@ -1,0 +1,118 @@
+.ob-notification-in {
+	animation: ob-notification-keyframes-in 650ms;
+}
+
+.ob-notification-in-left {
+	animation: ob-notification-keyframes-in-left 650ms;
+}
+
+.ob-notification-in-first {
+	animation: ob-notification-keyframes-in-first 350ms;
+}
+
+.ob-notification-out {
+	animation: ob-notification-keyframes-out 350ms;
+}
+
+@keyframes ob-notification-keyframes-in {
+	0% {
+		offset: 0;
+		opacity: 0;
+		max-height: 0;
+		transform: translateX(15%);
+		overflow: hidden;
+	}
+
+	50% {
+		offset: 0.6;
+		opacity: 0;
+		max-height: 500px;
+		transform: translateX(15%);
+		overflow: hidden;
+	}
+
+	100% {
+		offset: 1;
+		opacity: 1;
+		max-height: none;
+		transform: translateX(0);
+		overflow: hidden;
+	}
+}
+
+@keyframes ob-notification-keyframes-in-left {
+	0% {
+		offset: 0;
+		opacity: 0;
+		max-height: 0;
+		transform: translateX(-15%);
+		overflow: hidden;
+	}
+
+	50% {
+		offset: 0.6;
+		opacity: 0;
+		max-height: 500px;
+		transform: translateX(-15%);
+		overflow: hidden;
+	}
+
+	100% {
+		offset: 1;
+		opacity: 1;
+		max-height: none;
+		transform: translateX(0);
+		overflow: hidden;
+	}
+}
+
+@keyframes ob-notification-keyframes-in-first {
+	from {
+		offset: 0;
+		opacity: 0;
+		transform: translateX(15%);
+	}
+
+	to {
+		offset: 1;
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes ob-notification-keyframes-in-first-left {
+	from {
+		offset: 0;
+		opacity: 0;
+		transform: translateX(-15%);
+	}
+
+	to {
+		offset: 1;
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes ob-notification-keyframes-out {
+	0% {
+		offset: 0;
+		opacity: 1;
+		max-height: 500px;
+		overflow: hidden;
+	}
+
+	50% {
+		offset: 0;
+		opacity: 0.2;
+		max-height: 500px;
+		overflow: hidden;
+	}
+
+	100% {
+		offset: 1;
+		opacity: 0;
+		max-height: 0;
+		overflow: hidden;
+	}
+}

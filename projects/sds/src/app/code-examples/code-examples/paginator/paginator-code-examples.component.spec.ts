@@ -1,6 +1,5 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {PaginatorCodeExamplesComponent} from './paginator-code-examples.component';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {By} from '@angular/platform-browser';
 import {MatPaginator} from '@angular/material/paginator';
@@ -13,7 +12,7 @@ describe(PaginatorCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [PaginatorCodeExamplesComponent, NoopAnimationsModule],
+			imports: [PaginatorCodeExamplesComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
 		}).compileComponents();
 

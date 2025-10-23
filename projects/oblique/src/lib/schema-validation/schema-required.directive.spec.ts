@@ -4,7 +4,6 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {MatInput} from '@angular/material/input';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
-import {provideNoopAnimations} from '@angular/platform-browser/animations';
 import {ObSchemaRequiredDirective} from './schema-required.directive';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
@@ -53,8 +52,7 @@ describe(ObSchemaRequiredDirective.name, () => {
 	describe('Reactive form', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ObSchemaRequiredDirective, TestReactiveComponent],
-				providers: [provideNoopAnimations()]
+				imports: [ObSchemaRequiredDirective, TestReactiveComponent]
 			}).compileComponents();
 
 			fixture = TestBed.createComponent(TestReactiveComponent);
@@ -69,8 +67,7 @@ describe(ObSchemaRequiredDirective.name, () => {
 	describe('Template driven form', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ObSchemaRequiredDirective, TestTemplateComponent],
-				providers: [provideNoopAnimations()]
+				imports: [ObSchemaRequiredDirective, TestTemplateComponent]
 			}).compileComponents();
 
 			fixture = TestBed.createComponent(TestTemplateComponent);

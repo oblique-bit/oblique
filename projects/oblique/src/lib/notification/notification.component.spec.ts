@@ -1,7 +1,6 @@
 import {ComponentFixture, TestBed, fakeAsync, tick, waitForAsync} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
 import {DebugElement} from '@angular/core';
 import {Subject} from 'rxjs';
@@ -30,14 +29,7 @@ describe('NotificationComponent', () => {
 	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			declarations: [ObNotificationComponent],
-			imports: [
-				ObMockAlertComponent,
-				ObMockTranslatePipe,
-				ObTranslateParamsModule,
-				CommonModule,
-				NoopAnimationsModule,
-				RouterTestingModule
-			],
+			imports: [ObMockAlertComponent, ObMockTranslatePipe, ObTranslateParamsModule, CommonModule, RouterTestingModule],
 			providers: [
 				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
 				{provide: ObNotificationService, useClass: ObMockNotificationService},

@@ -1,4 +1,3 @@
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ChipsCodeExamplesComponent} from './chips-code-examples.component';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 
@@ -7,7 +6,7 @@ describe(ChipsCodeExamplesComponent.name, () => {
 	let fixture: ComponentFixture<ChipsCodeExamplesComponent>;
 
 	beforeEach(async () => {
-		await TestBed.configureTestingModule({imports: [NoopAnimationsModule]}).compileComponents();
+		await TestBed.configureTestingModule({}).compileComponents();
 
 		fixture = TestBed.createComponent(ChipsCodeExamplesComponent);
 		component = fixture.componentInstance;

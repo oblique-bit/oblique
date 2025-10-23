@@ -1,7 +1,6 @@
 import {RouterTestingModule} from '@angular/router/testing';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {NavTreeExampleDataFromServicePreviewComponent} from './previews/data-from-service/nav-tree-example-data-from-service-preview.component';
@@ -16,7 +15,7 @@ describe(NavTreeCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [NavTreeCodeExamplesComponent, RouterTestingModule, NoopAnimationsModule],
+			imports: [NavTreeCodeExamplesComponent, RouterTestingModule],
 			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
 

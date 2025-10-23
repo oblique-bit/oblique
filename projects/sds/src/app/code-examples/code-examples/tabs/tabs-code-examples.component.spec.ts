@@ -6,7 +6,6 @@ import {TabsCodeExamplesComponent} from './tabs-code-examples.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {ObIconModule} from '@oblique/oblique';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
 
 describe(TabsCodeExamplesComponent.name, () => {
@@ -15,16 +14,7 @@ describe(TabsCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [
-				TabsCodeExamplesComponent,
-				CommonModule,
-				IdPipe,
-				CodeExampleComponent,
-				MatTabsModule,
-				MatIconModule,
-				ObIconModule,
-				NoopAnimationsModule
-			]
+			imports: [TabsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, MatTabsModule, MatIconModule, ObIconModule]
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TabsCodeExamplesComponent);
