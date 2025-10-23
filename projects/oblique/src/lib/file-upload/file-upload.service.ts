@@ -1,4 +1,4 @@
-import {HttpClient, HttpEvent, HttpEventType, HttpRequest, HttpUserEvent} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpRequest, HttpUserEvent} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, Subject, of} from 'rxjs';
 import {catchError, filter} from 'rxjs/operators';
@@ -47,13 +47,17 @@ export class ObFileUploadService {
 		const request = new HttpRequest('POST', uploadUrl, formData, {reportProgress: true});
 		return this.httpClient.request<HttpEventType.UploadProgress | HttpEventType.Response>(request).pipe(
 			filter(event => this.events.includes(event.type)),
-			catchError(() => {
+			catchError((error: HttpErrorResponse) => {
 				this.notification.error({
 					message: 'i18n.oblique.file-upload.error.failed',
 					messageParams: {failedFiles: files.map(file => file.name).join(', ')},
 					title: 'i18n.oblique.file-upload.error.title'
 				});
-				return of({type: HttpEventType.User, files} as HttpUserEvent<{type: HttpEventType; files: File[]}>);
+				return of({type: HttpEventType.User, files, error} as HttpUserEvent<{
+					type: HttpEventType;
+					files: File[];
+					error: HttpErrorResponse;
+				}>);
 			})
 		);
 	}
