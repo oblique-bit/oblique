@@ -77,9 +77,9 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 
 	setDisabledState(isDisabled: boolean): void {
 		if (isDisabled) {
-			this.autocompleteInputControl.disable({emitEvent: false});
+			this.autocompleteInputControl.disable();
 		} else {
-			this.autocompleteInputControl.enable({emitEvent: false});
+			this.autocompleteInputControl.enable();
 		}
 	}
 
@@ -87,7 +87,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	 * Write a new value to the element.
 	 */
 	writeValue(value: string): void {
-		this.autocompleteInputControl.setValue(value, {emitEvent: false});
+		this.autocompleteInputControl.setValue(value);
 		// when the value is reset, the options should also be reset
 		if (value === null || value === undefined) {
 			this.unsubscribeOptions.next(); // kill the current stream before creating a new one
