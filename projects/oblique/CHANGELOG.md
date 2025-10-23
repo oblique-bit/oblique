@@ -1,3 +1,16 @@
+# [14.0.1](https://github.com/oblique-bit/oblique/compare/14.0.0...14.0.1) (2025-10-23)
+
+## Bug Fixes
+
+- **autocomplete:** let the form control emit events when its value or status changes ([c2a91ac0](https://github.com/oblique-bit/oblique/commit/c2a91ac09058ab370d33ed25c43c347783d86936))
+- **file-upload:** return http error if upload fails ([1d67d59e](https://github.com/oblique-bit/oblique/commit/1d67d59efc8a67375925290b2fe4707aa32ba7de))
+- **icon:** solve broken reference to `ObIconConfig` ([d0ed4a09](https://github.com/oblique-bit/oblique/commit/d0ed4a09f4eacd48a0f7dad1a1a2e3a250617bbd))
+- **master-layout:** prevent flickering in tab navigation ([6dc8cac9](https://github.com/oblique-bit/oblique/commit/6dc8cac9c481c11d685811e795195fbee80b5adc))
+- **master-layout:** make items in collapsed header not tabbable ([2bec9941](https://github.com/oblique-bit/oblique/commit/2bec99415dea584b6ef58d47ec2a33426825ca04))
+- **material:** ensure `cursor: not-allowed` is shown on disabled mat-select labels ([ef315316](https://github.com/oblique-bit/oblique/commit/ef315316680b0eb530ab307b7e296f14374fd637))
+- **material:** ensure that disabled checkboxes have no hover effect ([25b529e5](https://github.com/oblique-bit/oblique/commit/25b529e5f87b0820333fd88c9ae166e135d7be0d))
+- **schematics:** replace "scrollTop" with "focusElement('content')" in master layout files ([e91ef234](https://github.com/oblique-bit/oblique/commit/e91ef2343fcd778ba7d998021e2d5bbb0727d0cb))
+
 # [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0) (2025-09-22)
 
 ## Bug Fixes

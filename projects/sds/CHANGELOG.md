@@ -1,3 +1,9 @@
+# [14.0.1](https://github.com/oblique-bit/oblique/compare/14.0.0...14.0.1) (2025-10-23)
+
+## Bug Fixes
+
+- **tabbed-page:** ensure that the figma version number is dynamic ([df2fa105](https://github.com/oblique-bit/oblique/commit/df2fa105a4640edd956de43416600d7935540e5c))
+
 # [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0) (2025-09-22)
 
 ## Bug Fixes
