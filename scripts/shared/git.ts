@@ -42,8 +42,9 @@ export class Git {
 		return getResultFromCommand('git diff --name-only HEAD@{1} HEAD');
 	}
 
-	static getLatestTag(): string {
-		return getResultFromCommand('git describe --tags --abbrev=0');
+	static getLatestVersionTag(): string {
+		// lists all tags starting with a digit, sorts them by descending creation date and returns the first one
+		return getResultFromCommand('git tag --list "[0-9]*" --sort=-creatordate').split('\n')[0];
 	}
 
 	static getTagDate(tag: string): string {
