@@ -1,5 +1,4 @@
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
 import {Observable, Subject} from 'rxjs';
 import {ObISpinnerEvent} from './spinner.model';
@@ -16,7 +15,7 @@ describe('ObSpinnerComponent', () => {
 		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
 		await TestBed.configureTestingModule({
 			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}],
-			imports: [ObSpinnerComponent, BrowserAnimationsModule]
+			imports: [ObSpinnerComponent]
 		}).compileComponents();
 	});
 
