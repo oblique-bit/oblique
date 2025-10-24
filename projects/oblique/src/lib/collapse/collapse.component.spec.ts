@@ -1,7 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component, DebugElement} from '@angular/core';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
+import {WINDOW} from '../utilities';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {OBLIQUE_COLLAPSE_ACTIVE, ObCollapseComponent} from './collapse.component';
 
 @Component({
@@ -23,9 +24,13 @@ describe(ObCollapseComponent.name, () => {
 	describe('with token set to something truthy', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObCollapseComponent, NoopAnimationsModule],
+				imports: [ObCollapseComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'}]
+				providers: [
+					{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'},
+					{provide: WINDOW, useValue: window},
+					ObGlobalEventsService
+				]
 			}).compileComponents();
 		});
 
@@ -65,9 +70,9 @@ describe(ObCollapseComponent.name, () => {
 	describe('with token set to something falsy', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObCollapseComponent, NoopAnimationsModule],
+				imports: [ObCollapseComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
+				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}, {provide: WINDOW, useValue: window}, ObGlobalEventsService]
 			}).compileComponents();
 		});
 
@@ -94,8 +99,9 @@ describe(ObCollapseComponent.name, () => {
 	describe('without token', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObCollapseComponent, NoopAnimationsModule],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+				imports: [ObCollapseComponent],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
+				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService]
 			}).compileComponents();
 		});
 
@@ -221,8 +227,9 @@ describe(ObCollapseComponent.name, () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [TestCollapseComponent],
-				imports: [ObCollapseComponent, NoopAnimationsModule],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+				imports: [ObCollapseComponent],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
+				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService]
 			}).compileComponents();
 		});
 
@@ -257,6 +264,51 @@ describe(ObCollapseComponent.name, () => {
 				debugElements.filter((item, index) => debugElements.indexOf(item) !== index);
 			const duplicates = toFindDuplicates(allCollapse);
 			expect(duplicates.length).toBe(0);
+		});
+	});
+
+	describe('with actual content', () => {
+		let fixtureTestComponent: ComponentFixture<TestCollapseComponent>;
+		let element: HTMLDivElement;
+
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				declarations: [TestCollapseComponent],
+				imports: [ObCollapseComponent],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
+				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService]
+			})
+				.overrideTemplate(
+					TestCollapseComponent,
+					`<ob-collapse><span obCollapseHeader>Title</span><div obCollapseMain>Content</div></ob-collapse>`
+				)
+				.compileComponents();
+
+			fixtureTestComponent = TestBed.createComponent(TestCollapseComponent);
+			obCollapseComponent = fixtureTestComponent.debugElement.query(By.directive(ObCollapseComponent)).componentInstance;
+			element = fixtureTestComponent.debugElement.query(By.css('[obCollapseMain]')).nativeElement;
+			Object.defineProperty(element, 'scrollHeight', {value: 42, configurable: true}); // necessary because jsdom ignores scrollHeight
+			fixtureTestComponent.detectChanges();
+		});
+
+		it('should set contentHeight to 0 when inactive', () => {
+			obCollapseComponent.active = false;
+			fixtureTestComponent.detectChanges();
+			expect(obCollapseComponent.contentHeight).toBe(0);
+		});
+
+		it('should set contentHeight to 42 when active', () => {
+			obCollapseComponent.active = true;
+			fixtureTestComponent.detectChanges();
+			expect(obCollapseComponent.contentHeight).toBe(42);
+		});
+
+		it('shout recompute the height when the viewport is resized', () => {
+			obCollapseComponent.active = true;
+			fixtureTestComponent.detectChanges();
+			Object.defineProperty(element, 'scrollHeight', {value: 420, configurable: true});
+			window.dispatchEvent(new Event('resize'));
+			expect(obCollapseComponent.contentHeight).toBe(420);
 		});
 	});
 });
