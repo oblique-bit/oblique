@@ -1,7 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CollapseSampleComponent} from './collapse-sample.component';
 import {MatSelectModule} from '@angular/material/select';
 
@@ -11,7 +10,7 @@ describe(CollapseSampleComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ReactiveFormsModule, MatSelectModule, NoopAnimationsModule],
+			imports: [ReactiveFormsModule, MatSelectModule],
 			declarations: [CollapseSampleComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
