@@ -397,8 +397,8 @@
 
 		.ob-layout-expanded & {
 			.ob-toggle-layout-collapsed,
-			.ob-master-layout-navigation-toggle[aria-expanded] .ob-toggle-collapsed,
-			.ob-master-layout-navigation-toggle:not([aria-expanded]) .ob-toggle-expanded {
+			.ob-master-layout-navigation-toggle[aria-expanded="true"] .ob-toggle-collapsed,
+			.ob-master-layout-navigation-toggle:not([aria-expanded="true"]) .ob-toggle-expanded {
 				display: none;
 			}
 
