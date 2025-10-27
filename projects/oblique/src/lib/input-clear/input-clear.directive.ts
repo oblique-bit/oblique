@@ -3,7 +3,7 @@ import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {fromEvent} from 'rxjs';
+import {fromEvent, startWith} from 'rxjs';
 
 @Directive({
 	selector: '[obInputClear]',
@@ -63,20 +63,20 @@ export class ObInputClearDirective implements OnInit {
 
 	private subscribeToInputValueChange(): void {
 		if (this.control instanceof AbstractControl) {
-			this.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
+			this.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value)).subscribe(value => {
 				this.handleParentClass(value);
 			});
 		}
 
 		if (this.control instanceof NgModel) {
-			this.control.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
+			this.control.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value)).subscribe(value => {
 				this.handleParentClass(value);
 			});
 		}
 
 		if (this.control instanceof HTMLInputElement) {
 			fromEvent(this.control, 'keyup')
-				.pipe(takeUntilDestroyed(this.destroyRef))
+				.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value))
 				.subscribe(() => this.handleParentClass(this.control.value));
 		}
 	}
