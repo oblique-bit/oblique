@@ -1,3 +1,10 @@
+# [14.0.2](https://github.com/oblique-bit/oblique/compare/14.0.1...14.0.2) (2025-10-27)
+
+## Bug Fixes
+
+- **input-clear:** show input clear when value is set programmatically ([e267d210](https://github.com/oblique-bit/oblique/commit/e267d21089f69d224ba5c0a641d2b208ebea7aac))
+- **master-layout:** handle navigation collapsed and expanded state ([de1b8e9e](https://github.com/oblique-bit/oblique/commit/de1b8e9e263e9a4b8ed694d72329dc61703d35af))
+
 # [14.0.1](https://github.com/oblique-bit/oblique/compare/14.0.0...14.0.1) (2025-10-23)
 
 ## Bug Fixes
