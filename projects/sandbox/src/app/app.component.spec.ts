@@ -8,13 +8,12 @@ import {TranslateModule} from '@ngx-translate/core';
 
 describe('AppComponent', () => {
 	beforeEach(async () => {
-		TestBed.configureTestingModule({
+		await TestBed.configureTestingModule({
 			declarations: [AppComponent],
 			imports: [RouterTestingModule, TranslateModule],
 			providers: [provideNativeDateAdapter(), provideObliqueTestingConfiguration()],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
-		});
-		await TestBed.compileComponents();
+		}).compileComponents();
 	});
 
 	it('should create the app', () => {
