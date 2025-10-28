@@ -52,10 +52,8 @@ describe(CodeExampleComponent.name, () => {
 		fixture.componentRef.setInput('codeSnippets', inputs?.codeSnippets ?? []);
 		fixture.componentRef.setInput('idPrefix', inputs?.idPrefix ?? '');
 		fixture.componentRef.setInput('preview', inputs?.preview);
-
-		await fixture.whenStable().then(() => {
-			fixture.detectChanges();
-		});
+		await fixture.whenStable();
+		fixture.detectChanges();
 	};
 
 	afterEach(() => {
