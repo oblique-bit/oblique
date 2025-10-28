@@ -108,60 +108,52 @@ describe(ObSchemaValidateDirective.name, () => {
 				}).compileComponents();
 			});
 
-			beforeEach(() => {
+			beforeEach(async () => {
 				fixture = TestBed.createComponent<any>(config.testComponent);
 				fixture.detectChanges();
+				await fixture.whenStable();
+				controls = config.getControls(fixture);
+				subproperties = (controls.object as FormGroup).controls;
+			});
 
-				fixture.whenStable().then(() => {
-					controls = config.getControls(fixture);
-					subproperties = (controls.object as FormGroup).controls;
+			it('should add no errors if input is valid', async () => {
+				await fixture.whenStable();
+				controls.string.setValue('validVal');
+				fixture.detectChanges();
+				expect(controls.string.errors).toBeNull();
+			});
+
+			it('should add error object if input is invalid', async () => {
+				await fixture.whenStable();
+				controls.string.setValue('wayTooLongStringForTheMaxLength10');
+				// ngControls['string'].valueAccessor.writeValue('wayTooLongStringForTheMaxLength10');
+				fixture.detectChanges();
+
+				expect(controls.string.errors).not.toBeNull();
+				expect(controls.string.errors).toEqual({
+					'ajv.maxLength': {
+						limit: 10
+					}
 				});
 			});
 
-			it('should add no errors if input is valid', () => {
-				fixture.whenStable().then(() => {
-					controls.string.setValue('validVal');
-					fixture.detectChanges();
-
-					expect(controls.string.errors).toBeNull();
-				});
+			it('should add no errors if subproperty is valid', async () => {
+				await fixture.whenStable();
+				subproperties.subproperty.setValue(42);
+				fixture.detectChanges();
+				expect(subproperties.subproperty.errors).toBeNull();
 			});
 
-			it('should add error object if input is invalid', () => {
-				fixture.whenStable().then(() => {
-					controls.string.setValue('wayTooLongStringForTheMaxLength10');
-					// ngControls['string'].valueAccessor.writeValue('wayTooLongStringForTheMaxLength10');
-					fixture.detectChanges();
+			it('should add error object if subproperty is invalid', async () => {
+				await fixture.whenStable();
+				subproperties.subproperty.setValue('aStringForANumberField');
+				fixture.detectChanges();
 
-					expect(controls.string.errors).not.toBeNull();
-					expect(controls.string.errors).toEqual({
-						'ajv.maxLength': {
-							limit: 10
-						}
-					});
-				});
-			});
-
-			it('should add no errors if subproperty is valid', () => {
-				fixture.whenStable().then(() => {
-					subproperties.subproperty.setValue(42);
-					fixture.detectChanges();
-
-					expect(subproperties.subproperty.errors).toBeNull();
-				});
-			});
-
-			it('should add error object if subproperty is invalid', () => {
-				fixture.whenStable().then(() => {
-					subproperties.subproperty.setValue('aStringForANumberField');
-					fixture.detectChanges();
-
-					expect(subproperties.subproperty.errors).not.toBeNull();
-					expect(subproperties.subproperty.errors).toEqual({
-						'ajv.type': {
-							type: 'number'
-						}
-					});
+				expect(subproperties.subproperty.errors).not.toBeNull();
+				expect(subproperties.subproperty.errors).toEqual({
+					'ajv.type': {
+						type: 'number'
+					}
 				});
 			});
 		});
