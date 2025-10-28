@@ -132,7 +132,7 @@
           "paragraph": {
             "bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.surface.sm.px}"
+              "$value": "{ob.s.dimension.static.spacing.xl.rem}"
             }
           }
         },
