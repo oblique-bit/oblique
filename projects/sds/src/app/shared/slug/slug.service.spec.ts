@@ -207,10 +207,12 @@ describe(SlugService.name, () => {
 		]
 	};
 	describe.each([10, 11, 12, 13, 14])(`${SlugService.prototype.getNewSlug.name} version %s`, version => {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-		it.each(versionRoutes[version])('should return "$newSlug" with "$route"', async ({route, newSlug}) => {
-			await router.navigate([route]);
-			expect(service.getNewSlug(version)).toBe(newSlug);
-		});
+		it.each(versionRoutes[version] as readonly {route: string; newSlug: string}[])(
+			'should return "$newSlug" with "$route"',
+			async ({route, newSlug}) => {
+				await router.navigate([route]);
+				expect(service.getNewSlug(version)).toBe(newSlug);
+			}
+		);
 	});
 });
