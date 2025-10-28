@@ -352,7 +352,7 @@
         },
         "min-height": {
           "$type": "sizing",
-          "$value": "2*{ob.s.dimension.dynamic.element.xs.rem}+{ob.s.dimension.static.spacing.md.rem}"
+          "$value": "{ob.s.dimension.dynamic.spacing.xl.rem}"
         }
       }
     }
