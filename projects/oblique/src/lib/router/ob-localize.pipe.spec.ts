@@ -17,8 +17,7 @@ describe(ObLocalizePipe.name, () => {
 		{text: 'with', hasLanguageInUrl: true}
 	])('$text hasLanguageInUrl', ({hasLanguageInUrl}) => {
 		beforeEach(async () => {
-			TestBed.overrideProvider(OB_HAS_LANGUAGE_IN_URL, {useValue: hasLanguageInUrl});
-			await TestBed.compileComponents();
+			await TestBed.overrideProvider(OB_HAS_LANGUAGE_IN_URL, {useValue: hasLanguageInUrl}).compileComponents();
 			pipe = TestBed.inject(ObLocalizePipe);
 		});
 
