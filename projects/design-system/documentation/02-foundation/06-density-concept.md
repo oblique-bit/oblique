@@ -1,65 +1,102 @@
 # Density Concept
-**Date:** September 17, 2025  
-**Version:** v1.0 - Extracted from combined density-size concept  
-**Status:** To do
+**Date:** October 29, 2025  
+**Version:** v1.0
+**Status:** UX Stakeholder Presentation and Approval pending
 
 ## Overview
 
 This document outlines the **Density** system for component scaling, ensuring consistent layout breathing room and visual density control across different interface contexts.
 
-## Design goals
+**UX Impact**: Density directly affects how much information users can consume at once and how comfortable the interface feels. Compact density maximizes screen real estate for data-heavy workflows, while generous density provides breathing room for focus-intensive tasks. The right density choice improves both usability and user satisfaction by matching interface density to user context and cognitive load.
 
-### **Harmonious layout integration**
-- Page layouts work together consistently without visual conflicts
-- Density relationships feel natural and intentional
-- Proper visual hierarchy maintained across all density variants
+### **Research Foundation**
+This concept is based on comprehensive [spacing and density research](https://confluence.bit.admin.ch/display/EUI/*Spacing+-+Research+-+Density+in+Design+Systems) conducted specifically for our design system context. The research validates density as an established UX pattern with industry-standard terminology (`compact/comfortable/spacious`), confirming this is not experimental but a proven design system approach.
 
-### **Effortless user experience** 
-- Consistent spacing patterns across different contexts
-- Predictable density behavior reduces cognitive load
-- Context-appropriate spacing for different user types
+### **Why This Document Covers Multiple Modes**
 
-### **Accessible by design**
-- All density variants maintain usability standards
-- Visual breathing room preserved across scales
+We discuss **Density [Mode](../01-introduction/glossary.md#mode-figma-context)** alongside other [modes](../01-introduction/glossary.md#mode-figma-context) because they are **deliberately independent** - [product designers](../07-workflow/consumers/README.md#target-audience) need to understand and control both density (layout spacing) and component-size (individual dimensions) together for complete layout control, while maintaining the flexibility to use any combination (e.g., compact density + large components).
 
-### **Developer experience**
-- Components automatically coordinate without requiring manual spacing matching by developers
-- Clear inheritance patterns reduce implementation complexity
-- Consistent API across density system
+## Scope & Distinction: Density vs Component-Size Modes
 
----
+### **Clear Mode Boundaries**
+To avoid confusion about what impacts component sizing, we establish clear **responsibility patterns** between our two primary scaling systems:
 
-## Density system (to do)
+**Component-Size Mode controls** individual component dimensions and affects primarily **Molecules** (following Atomic Design principles):
+- **Button**, **Pills**, **Tags**, **Inputs** - individual component sizing (sm/md/lg)
+- **Control**: [System consumer](../07-workflow/consumers/README.md#target-audience) can override the default component size based on contextual importance
 
-### **Definition**
-- **Triggers outer spacing** (outside components, mostly atoms and molecules)
-- **Determines visual density** of one page layout
-- **Does not trigger inset spacings** of smaller components like badges, buttons, form fields 
+**Density Mode controls** spacing and layout density, primarily affecting **Data components and Organisms**:
+- **Tables**, **Lists**, **Forms** - container spacing and layout density
+- **Purpose**: Information efficiency and screen real estate optimization  
+- **Control**: System [mode](../01-introduction/glossary.md#mode-figma-context) defined by [product designer](../07-workflow/consumers/README.md#target-audience) to match product needs (compact/comfortable/spacious). Unlike theme [modes](../01-introduction/glossary.md#mode-figma-context) (light/dark), density is not offered as an end-user switch, though products may optionally add this in application settings for specific use cases. In practice, [product designers](../07-workflow/consumers/README.md#target-audience) select the appropriate density **[variable mode](../01-introduction/glossary.md#mode-figma-context)** in Figma's right panel when designing their interfaces.
 
-### **Implementation**
-- **Figma**: Variable collection with variable modes (x, y, z - todo)
-- **Tokens Studio**: Theme group in .json files with themes (x, y, z - todo)
+### **What Density Controls vs What It Doesn't**
+**✅ Density Controls:**
+- **Information efficiency**: Controls how much content fits on screen without compromising usability
+- **Product-level density**: System [mode](../01-introduction/glossary.md#mode-figma-context) set by [product designer](../07-workflow/consumers/README.md#target-audience) to match specific product needs
+- **Container-level control**: Affects layout containers (tables, forms, lists) not individual components
+- **Outer spacing**: Triggers spacing outside components, mostly atoms and molecules
+- **Visual density**: Determines overall page layout density with outer gaps, margins, and layout breathing room
+- **Specific areas**: Section spacing, card gaps, component margins
 
-### **Scope**
-- Page-level visual density control
-- Layout spacing between components
-- Overall interface breathing room
+**❌ Density Does NOT Control:**
+- **Typography density** - this is controlled by typography-context mode (interface/prose)
+- **Internal component padding** or inset spacing within individual components
 
----
+### **Component Reactivity Reference**
+The **Component [Mode](../01-introduction/glossary.md#component-mode) Responsiveness Matrix** below provides the reference for which components react to which [modes](../01-introduction/glossary.md#mode-figma-context). 
 
-## Spacing roles
-
-### **Density system spacing**
-- **Spacing as tool**: Controls outer gaps, margins, and layout breathing room
-- **Affects**: Section spacing, card gaps, component margins
-- **Does not affect**: Internal component padding or inset spacing
+**Note**: This matrix may be refined as components are redesigned and moved to an overarching document. Core principles (molecules → component-size, organisms → density) remain stable.
 
 ---
 
-## Density and size interplay
+## Component Reactivity to Mode Switches
 
-### **Coordinated combinations and design context matching**
+**Status**: Architectural direction - subject to refinement as components are redesigned and tested in component interplay scenarios.
+
+| Component | Density | Component-Size | Typography-Context | Notes |
+|-----------|:-------:|:--------------:|:-----------------:|-------|
+| **Button** | 0 | ✅ | 0 | Individual sizing |
+| **Input/TextField** | 0 | ✅ | 0 | Form hierarchy sizing |
+| **Avatar** | 0 | 0 | 0 | Fixed sizing |
+| **Tag** | 0 | ✅ | 0 | Monochromatic navigation/input |
+| **Pill** | 0 | ✅ | 0 | Colored status communication |
+| **Badge** | 0 | ✅ | 0 | Inherits from parent |
+| **Icon** | 0 | ✅ | 0 | LOCKED - inherits from parent |
+| **Text** | 0 | 0 | ✅ | Typography context (interface/prose) |
+| **Table** | ✅ | 0 | 0 | Row/cell spacing controlled by density |
+| **List** | ✅ | 0 | 0 | Item spacing from density |
+| **Navigation Menu** | 0 | 0 | 0 | Fixed sizing and spacing |
+| **Form Container** | ✅ | 0 | 0 | Field spacing from density |
+| **Button Container** | ✅ | 0 | 0 | Button group spacing from density |
+| **Card** | ✅ | 0 | 0 | Container with density-controlled spacing |
+| **Modal** | ✅ | 0 | ✅ | Density spacing + text context |
+| **Tabs** | ✅ | 0 | 0 | Tab spacing from density |
+| **Expansion Panel** | ✅ | 0 | 0 | Panel spacing from density |
+| **Infobox** | 0 | ✅ | 0 | Message importance sizing |
+| **Notification** | 0 | ✅ | 0 |  |
+| **Tooltip** | 0 | 0 | 0 | Fixed sizing |
+| **Spinner** | 0 | 0 | 0 |  |
+| **Slide Toggle** | 0 | 0 | 0 | Fixed sizing |
+| **Pagination** | 0 | 0 | 0 | Fixed spacing and sizing |
+
+### **Legend**
+- **✅** = Component reacts to mode switch
+- **0** = Component does not react to mode switch
+- **Density** = `compact/comfortable/spacious` affects spacing and layout
+- **Component-Size** = `sm/md/lg` affects individual component dimensions
+- **Typography-Context** = `interface/prose` affects text rendering and spacing
+
+### **Key Patterns**
+1. **Molecules** (Button, Input, Tag, Pill) → Component-Size Mode only  
+2. **Organisms** (Table, List, Form Container) → Density Mode only
+3. **Inheritance** (Badge, Icon) → Inherit sizing from parent component
+
+---
+
+## Guidelines: How to Combine Density and Component-Size Modes
+
+### **Recommended mode combinations for different contexts**
 
 #### **Compact density + small size**
 - **Use case**: Frequently used apps for power user personas
@@ -78,52 +115,49 @@ This document outlines the **Density** system for component scaling, ensuring co
 
 ---
 
-## Key principles
+## Responsive Density Behavior
 
-### **Visual hierarchy maintenance**
-- Density relationships ensure proper layout hierarchy
-- Larger spacing maintains visual separation
-- Consistency across contexts and use cases
-- Components work together consistently without visual conflicts
+### **Device-Appropriate Density Constraints**
 
-### **Designer and developer efficiency**
-- Single density collection reduces decision fatigue
-- Unified naming convention across all layouts
-- Automatic inheritance reduces manual spacing work
-- Clear implementation patterns for development teams
+Different screen sizes have different density requirements due to space limitations and interaction patterns:
 
-### **User experience consistency**
-- Predictable spacing relationships across interface
-- Context-appropriate density for different user types
-- Consistent layout patterns across different contexts
-- Maintained usability across all density variants
+**📱 Mobile (≤768px)**: **Compact density recommended**
+- Limited screen real estate requires maximum information efficiency
+- Touch interaction patterns expect tighter spacing
+- Users comfortable with scrolling for more content
+- **Guideline**: Designers should restrict to compact density on mobile devices
+- *Note: Technical enforcement in Figma is under investigation*
 
-### **Accessibility First**
-- Visual breathing room maintained in coordinated components
-- Content readability preserved in density modes
-- Focus indicators properly spaced for context
-- Universal design principles applied to all density variants
+**📟 Tablet (769px-1024px)**: **Compact + Comfortable recommended**
+- Moderate screen space allows some breathing room
+- Hybrid touch/cursor interaction supports both densities
+
+**🖥️ Desktop (≥1025px)**: **All densities available** 
+- Ample screen space supports spacious layouts
+- Cursor precision enables comfortable larger touch targets
+
+### **Implementation Strategy**
+[Product designers](../07-workflow/consumers/README.md#target-audience) set density based on viewport, overriding any broader density preferences for optimal device experience. This ensures interfaces remain usable and appropriate regardless of the underlying density system choice.
 
 ---
 
-## Token examples
+## Design Rationale: Independent Modes
 
-### **Density token collection**
-| Token Name | Compact | Medium | Generous |
-|------------|---------|--------|----------|
-| `ob.density.layout.section.gap` | 16px | 24px | 32px |
-| `ob.density.layout.card.gap` | 12px | 16px | 24px |
-| `ob.density.component.margin` | 8px | 12px | 16px |
-| `ob.density.list.item.padding` | 8px | 12px | 16px |
+We kept **density and component-size [modes](../01-introduction/glossary.md#mode-figma-context)** separate because real products need **mixed combinations** (small buttons in spacious layouts, large CTAs in compact interfaces) - merged [modes](../01-introduction/glossary.md#mode-figma-context) would force predetermined combinations and limit [product designers'](../07-workflow/consumers/README.md#target-audience) flexibility.
 
-### **Combined token usage example**
-```css
-/* Container sets density context */
-.form-section[data-density="compact"] {
-  --density-context: compact;
-  gap: var(--ob-density-layout-section-gap-compact);
-}
-```
+---
+
+## Open tasks
+
+### **Pending Tasks**
+1. **📋 Stakeholder Approval**: Present density concept to stakeholders for approval and feedback
+
+### **Implementation** (Post-Approval)  
+2. **� Token Architecture Refactoring**: Restructure dimension tokens to support multiple modes (component-size, density)
+3. **⚙️ Mode Implementation**: Implement density [variable modes](../01-introduction/glossary.md#mode-figma-context) in [token](../01-introduction/glossary.md#token) system.
+4. **🧪 Testing & Validation**:
+ Validate component behavior across all density and size combinations. Test [variable modes](../01-introduction/glossary.md#mode-figma-context) in Figma
+
 
 ---
 

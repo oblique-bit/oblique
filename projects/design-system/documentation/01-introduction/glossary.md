@@ -42,7 +42,7 @@ A reusable value in Figma that can be applied to design properties. Variables ar
 ## Design System Architecture
 
 ### **Babushka Principle**
-A hierarchical inheritance principle where smaller components (children) inherit properties from larger components (parents), similar to Russian nesting dolls. This creates systematic relationships between components of different sizes.
+A hierarchical inheritance principle where smaller components (children) inherit properties from larger components (parents), similar to nesting dolls. This creates systematic relationships between components of different sizes.
 
 **Application:** Component sizing, spacing relationships, and systematic scaling across the design system.
 
