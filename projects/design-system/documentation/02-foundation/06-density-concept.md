@@ -145,6 +145,10 @@ Different screen sizes have different density requirements due to space limitati
 
 We kept **density and component-size [modes](../01-introduction/glossary.md#mode-figma-context)** separate because real products need **mixed combinations** (small buttons in spacious layouts, large CTAs in compact interfaces) - merged [modes](../01-introduction/glossary.md#mode-figma-context) would force predetermined combinations and limit [product designers'](../07-workflow/consumers/README.md#target-audience) flexibility.
 
+### **Grid Independence**
+
+Unlike other design systems (Dell, Horizon), we currently do not tie grid to density [modes](../01-introduction/glossary.md#mode-figma-context). Grid governs horizontal spacing (consistent gutters), while density governs vertical spacing. This may change when we tackle Grid as a foundational system.
+
 ---
 
 ## Open tasks
