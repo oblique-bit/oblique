@@ -14,7 +14,7 @@ This concept is based on  [spacing and density research](https://confluence.bit.
 
 ### **Why This Document Covers Multiple modes**
 
-We discuss **Density [mode](../01-introduction/glossary.md#mode-figma-context)** alongside other [modes](../01-introduction/glossary.md#mode-figma-context) because they are **deliberately independent** - [product designers](../07-workflow/consumers/README.md#target-audience) need to understand and control both density (layout spacing) and component-size (individual dimensions) together for complete layout control, while maintaining the flexibility to use any combination (e.g., compact density + large components).
+We discuss **Density [mode](../01-introduction/glossary.md#mode-figma-context)** alongside other [modes](../01-introduction/glossary.md#mode-figma-context) because they are **deliberately independent** - [product designers](02-personas.md#21-productproject-designers) need to understand and control both density (layout spacing) and component-size (individual dimensions) together for complete layout control, while maintaining the flexibility to use any combination (e.g., compact density + large components).
 
 ## Scope & Distinction: Density vs Component-Size modes
 
@@ -28,12 +28,12 @@ To avoid confusion about what impacts component sizing, we establish clear **res
 **Density mode controls** spacing and layout density, primarily affecting **Data components and Organisms**:
 - **Tables**, **Lists**, **Forms** - container spacing and layout density
 - **Purpose**: Information efficiency and screen real estate optimization  
-- **Control**: System [mode](../01-introduction/glossary.md#mode-figma-context) defined by [product designer](../07-workflow/consumers/README.md#target-audience) to match product needs (compact/comfortable/spacious). Unlike Lightness [modes](../01-introduction/glossary.md#mode-figma-context) (light/dark), density is not offered as an end-user switch, though products may optionally add this in application settings for specific use cases. In practice, [product designers](../07-workflow/consumers/README.md#target-audience) select the appropriate density **[variable mode](../01-introduction/glossary.md#mode-figma-context)** in Figma's right panel when designing their interfaces.
+- **Control**: System [mode](../01-introduction/glossary.md#mode-figma-context) defined by [product designer](02-personas.md#21-productproject-designers) to match product needs (compact/comfortable/spacious). Unlike Lightness [modes](../01-introduction/glossary.md#mode-figma-context) (light/dark), density is not offered as an end-user switch, though products may optionally add this in application settings for specific use cases. In practice, [product designers](02-personas.md#21-productproject-designers) select the appropriate density **[variable mode](../01-introduction/glossary.md#mode-figma-context)** in Figma's right panel when designing their interfaces.
 
 ### **What Density Controls vs What It Doesn't**
 **✅ Density Controls:**
 - **Information efficiency**: Controls how much content fits on screen without compromising usability
-- **Product-level density**: System [mode](../01-introduction/glossary.md#mode-figma-context) set by [product designer](../07-workflow/consumers/README.md#target-audience) to match specific product needs
+- **Product-level density**: System [mode](../01-introduction/glossary.md#mode-figma-context) set by [product designer](02-personas.md#21-productproject-designers) to match specific product needs
 - **Container-level control**: Affects layout containers (tables, forms, lists) not individual components
 - **Outer spacing**: Triggers spacing outside components, mostly atoms and molecules
 - **Visual density**: Determines overall page layout density with outer gaps, margins, and layout breathing room
@@ -58,27 +58,27 @@ The **Component [mode](../01-introduction/glossary.md#component-mode) Responsive
 |-----------|:-------:|:--------------:|:-----------------:|-------|
 | **Button** | 0 | ✅ | 0 | Individual sizing |
 | **Input/TextField** | 0 | ✅ | 0 | Form hierarchy sizing |
-| **Avatar** | 0 | 0 | 0 | Fixed sizing |
+| **Avatar** | 0 | 0 | 0 | Fixed  |
 | **Tag** | 0 | ✅ | 0 | Monochromatic navigation/input |
 | **Pill** | 0 | ✅ | 0 | Colored status communication |
-| **Badge** | 0 | ✅ | 0 | Inherits from parent |
+| **Badge** | 0 | 0 | 0 | Does not react
 | **Icon** | 0 | ✅ | 0 | LOCKED - inherits from parent |
 | **Text** | 0 | 0 | ✅ | Typography context (interface/prose) |
 | **Table** | ✅ | 0 | 0 | Row/cell spacing controlled by density |
 | **List** | ✅ | 0 | 0 | Item spacing from density |
-| **Navigation Menu** | 0 | 0 | 0 | Fixed sizing and spacing |
-| **Form Container** | ✅ | 0 | 0 | Field spacing from density |
+| **Navigation Menu** | 0 | 0 | 0 | Fixed |
+| **Form Container** | ✅ | 0 | 0 | spacing between fields from density |
 | **Button Container** | ✅ | 0 | 0 | Button group spacing from density |
 | **Card** | ✅ | 0 | 0 | Container with density-controlled spacing |
 | **Modal** | ✅ | 0 | ✅ | Density spacing + text context |
 | **Tabs** | ✅ | 0 | 0 | Tab spacing from density |
 | **Expansion Panel** | ✅ | 0 | 0 | Panel spacing from density |
-| **Infobox** | 0 | ✅ | 0 | Message importance sizing |
+| **Infobox** | 0 | 0 | 0 | Fixed |
 | **Notification** | 0 | ✅ | 0 |  |
-| **Tooltip** | 0 | 0 | 0 | Fixed sizing |
-| **Spinner** | 0 | 0 | 0 |  |
-| **Slide Toggle** | 0 | 0 | 0 | Fixed sizing |
-| **Pagination** | 0 | 0 | 0 | Fixed spacing and sizing |
+| **Tooltip** | 0 | 0 | 0 | Fixed |
+| **Spinner** | 0 | 0 | 0 | Fixed |
+| **Slide Toggle** | 0 | 0 | 0 | Fixed |
+| **Pagination** | 0 | 0 | 0 | Fixed  |
 
 ### **Legend**
 - **✅** = Component reacts to mode switch
@@ -137,13 +137,13 @@ Different screen sizes have different density requirements due to space limitati
 - Cursor precision enables comfortable larger touch targets
 
 ### **Implementation Strategy**
-[Product designers](../07-workflow/consumers/README.md#target-audience) set density based on viewport, overriding any broader density preferences for optimal device experience. This ensures interfaces remain usable and appropriate regardless of the underlying density system choice.
+[Product designers](02-personas.md#21-productproject-designers) set density based on viewport, overriding any broader density preferences for optimal device experience. This ensures interfaces remain usable and appropriate regardless of the underlying density system choice.
 
 ---
 
 ## Design Rationale: Independent modes
 
-We kept **density and component-size [modes](../01-introduction/glossary.md#mode-figma-context)** separate because real products need **mixed combinations** (small buttons in spacious layouts, large CTAs in compact interfaces) - merged [modes](../01-introduction/glossary.md#mode-figma-context) would force predetermined combinations and limit [product designers'](../07-workflow/consumers/README.md#target-audience) flexibility.
+We kept **density and component-size [modes](../01-introduction/glossary.md#mode-figma-context)** separate because real products need **mixed combinations** (small buttons in spacious layouts, large CTAs in compact interfaces) - merged [modes](../01-introduction/glossary.md#mode-figma-context) would force predetermined combinations and limit [product designers'](02-personas.md#21-productproject-designers) flexibility.
 
 ### **Grid Independence**
 
