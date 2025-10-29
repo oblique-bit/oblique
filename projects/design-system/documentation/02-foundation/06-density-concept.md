@@ -122,7 +122,7 @@ The **Component [mode](../01-introduction/glossary.md#component-mode) Responsive
 Different screen sizes have different density requirements due to space limitations and interaction patterns:
 
 **📱 Mobile (≤768px)**: **Compact density recommended**
-- Limited screen real estate requires maximum information efficiency
+- Small screens need tighter spacing to fit more content
 - Touch interaction patterns expect tighter spacing
 - Users comfortable with scrolling for more content
 - **Guideline**: Designers should restrict to compact density on mobile devices
@@ -138,6 +138,16 @@ Different screen sizes have different density requirements due to space limitati
 
 ### **Implementation Strategy**
 [Product designers](02-personas.md#21-productproject-designers) set density based on viewport, overriding any broader density preferences for optimal device experience. This ensures interfaces remain usable and appropriate regardless of the underlying density system choice.
+
+---
+
+## Conflicts & Unknown Issues
+
+### **Mobile Touch Targets vs Density**
+
+**Conflict**: Mobile needs compact density but also 44-48px touch targets. Increasing button size creates inconsistent row heights - rows with buttons become taller than rows without buttons.
+
+**Status**: Needs specific guidelines for mixed-density layouts where accessibility overrides density constraints.
 
 ---
 
