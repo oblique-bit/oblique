@@ -25,7 +25,7 @@ To avoid confusion about what impacts component sizing, we establish clear **res
 - **Button**, **Pills**, **Tags**, **Inputs** - individual component sizing (sm/md/lg)
 - **Control**: [System consumer](../07-workflow/consumers/README.md#target-audience) can override the default component size based on contextual importance
 
-**Density mode controls** spacing and layout density, primarily affecting **Data components and Organisms**:
+**Density mode controls** spacing and layout density, primarily affecting **Data components and some Organisms**:
 - **Tables**, **Lists**, **Forms** - container spacing and layout density
 - **Purpose**: Information efficiency and screen real estate optimization  
 - **Control**: System [mode](../01-introduction/glossary.md#mode-figma-context) defined by [product designer](02-personas.md#21-productproject-designers) to match product needs (compact/comfortable/spacious). Unlike Lightness [modes](../01-introduction/glossary.md#mode-figma-context) (light/dark), density is not offered as an end-user switch, though products may optionally add this in application settings for specific use cases. In practice, [product designers](02-personas.md#21-productproject-designers) select the appropriate density **[variable mode](../01-introduction/glossary.md#mode-figma-context)** in Figma's right panel when designing their interfaces.
