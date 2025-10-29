@@ -63,7 +63,7 @@ The **Component [mode](../01-introduction/glossary.md#component-mode) Responsive
 | **Pill** | 0 | ✅ | 0 | Colored status communication |
 | **Badge** | 0 | 0 | 0 | Does not react
 | **Icon** | 0 | ✅ | 0 | LOCKED - inherits from parent |
-| **Text** | 0 | 0 | ✅ | Typography context (interface/prose) |
+| **Text components** | 0 | 0 | ✅ | Typography context (interface/prose) |
 | **Table** | ✅ | 0 | 0 | Row/cell spacing controlled by density |
 | **List** | ✅ | 0 | 0 | Item spacing from density |
 | **Navigation Menu** | 0 | 0 | 0 | Fixed |
