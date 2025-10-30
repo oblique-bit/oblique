@@ -139,5 +139,5 @@ The practice of having one variable reference another variable, enabling hierarc
 
 - **Token Architecture:** `../03-design-tokens/` - Detailed token structure and naming
 - **Component Documentation:** `../04-components/` - Individual component specifications  
-- **Figma Workflows:** `../07-workflow/consumers/figma-component-creation.md` - Variable and variant usage
+- **Figma Workflows:** `../03-design-tokens/03-workflows/designers/figma-component-creation.md` - Variable and variant usage
 - **System Overview:** `./system-overview.md` - High-level design system concepts

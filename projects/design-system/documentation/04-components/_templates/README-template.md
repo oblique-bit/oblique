@@ -53,4 +53,4 @@ The {04_component-name} 04_component provides {COMPONENT_PURPOSE} for different 
 
 ---
 
-**Need help?** Check the [Component Strategy Guide](../../07-workflow/maintainers/04_component-documentation-separation-strategy.md) or reach out to the Design System Team.
+**Need help?** Check the [Component Strategy Guide](../../03-design-tokens/03-workflows/maintainers/component-documentation-separation-strategy.md) or reach out to the Design System Team.

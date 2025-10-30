@@ -77,5 +77,5 @@ YYYYMMDD_HHMM-{04_component-name}-{category}-{type}-report.md
 ---
 
 **Validation Tools:**
-- [Figma MCP Prompts](../../../07-workflow/maintainers/prompts/) - Automated validation
-- [Component Strategy Guide](../../../07-workflow/maintainers/04_component-documentation-separation-strategy.md) - Process documentation
+- [Figma MCP Prompts](../../../03-design-tokens/03-workflows/maintainers/prompts/) - Automated validation
+- [Component Strategy Guide](../../../03-design-tokens/03-workflows/maintainers/component-documentation-separation-strategy.md) - Process documentation
