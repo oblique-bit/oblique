@@ -1,5 +1,5 @@
 <h2 class="page-header">Table</h2>
-<ob-column-layout [left]="false">
+<ob-column-layout left="NONE">
 	<div column-main-content [class.ob-table-scrollable]="isScrollable$ | async">
 		<form [formGroup]="tableManager.editForm" [ngClass]="collapsedStyles$ | async">
 			<div class="actions-header">

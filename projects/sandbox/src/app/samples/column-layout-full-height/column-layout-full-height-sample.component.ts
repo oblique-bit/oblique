@@ -7,8 +7,8 @@ import {ObMasterLayoutService} from '@oblique/oblique';
 	templateUrl: './column-layout-full-height-sample.component.html'
 })
 export class ColumnLayoutFullHeightSampleComponent implements OnInit, OnDestroy {
-	left = true;
-	right = true;
+	left = 'OPENED';
+	right = 'OPENED';
 	noLayout = false;
 	wider = false;
 	private readonly masterLayoutService = inject(ObMasterLayoutService);
