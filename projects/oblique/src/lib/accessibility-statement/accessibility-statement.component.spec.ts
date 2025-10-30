@@ -293,4 +293,93 @@ describe(AccessibilityStatementComponent.name, () => {
 			});
 		});
 	});
+
+	describe('With "createdOn", "exceptions" and ', () => {
+		describe('contact array contains only an empty phone', () => {
+			beforeEach(async () => {
+				await TestBed.configureTestingModule({
+					imports: [AccessibilityStatementComponent, TranslateModule],
+					providers: [
+						provideHttpClient(),
+						provideObliqueTestingConfiguration({
+							accessibilityStatement: {
+								applicationName: 'applicationName',
+								applicationOperator: 'Operator',
+								conformity: 'partial',
+								createdOn: new Date('2025-01-31'),
+								contact: [{phone: ''}],
+								exceptions: ['exception']
+							}
+						})
+					]
+				}).compileComponents();
+			});
+
+			it('should throw an error when the contact array contains only an empty phone', () => {
+				expect(() => {
+					fixture = TestBed.createComponent(AccessibilityStatementComponent);
+				}).toThrow(
+					'Please provide valid contact information for the accessibility statement. At least one object with a non-empty phone, email, or url property.'
+				);
+			});
+		});
+
+		describe('contact array contains only an empty email', () => {
+			beforeEach(async () => {
+				await TestBed.configureTestingModule({
+					imports: [AccessibilityStatementComponent, TranslateModule],
+					providers: [
+						provideHttpClient(),
+						provideObliqueTestingConfiguration({
+							accessibilityStatement: {
+								applicationName: 'applicationName',
+								applicationOperator: 'Operator',
+								conformity: 'partial',
+								createdOn: new Date('2025-01-31'),
+								contact: [{email: ''}],
+								exceptions: ['exception']
+							}
+						})
+					]
+				}).compileComponents();
+			});
+
+			it('should throw an error when the contact array contains only an empty email', () => {
+				expect(() => {
+					fixture = TestBed.createComponent(AccessibilityStatementComponent);
+				}).toThrow(
+					'Please provide valid contact information for the accessibility statement. At least one object with a non-empty phone, email, or url property.'
+				);
+			});
+		});
+
+		describe('contact array contains only an empty url', () => {
+			beforeEach(async () => {
+				await TestBed.configureTestingModule({
+					imports: [AccessibilityStatementComponent, TranslateModule],
+					providers: [
+						provideHttpClient(),
+						provideObliqueTestingConfiguration({
+							accessibilityStatement: {
+								applicationName: 'applicationName',
+								applicationOperator: 'Operator',
+								conformity: 'partial',
+								createdOn: new Date('2025-01-31'),
+								contact: [{url: ''}],
+								exceptions: ['exception']
+							}
+						})
+					]
+				}).compileComponents();
+			});
+
+			it('should throw an error when the contact array contains only an empty url', () => {
+				expect(() => {
+					fixture = TestBed.createComponent(AccessibilityStatementComponent);
+				}).toThrow(
+					'Please provide valid contact information for the accessibility statement. At least one object with a non-empty phone, email, or url property.'
+				);
+			});
+		});
+	});
 });
