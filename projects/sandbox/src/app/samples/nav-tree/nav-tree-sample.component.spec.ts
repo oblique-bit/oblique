@@ -1,4 +1,4 @@
-import {type ComponentFixture, TestBed, inject, waitForAsync} from '@angular/core/testing';
+import {type ComponentFixture, TestBed, inject} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
@@ -16,14 +16,14 @@ describe(NavTreeSampleComponent.name, () => {
 	let component: NavTreeSampleComponent;
 	let fixture: ComponentFixture<NavTreeSampleComponent>;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			declarations: [NavTreeSampleComponent],
 			imports: [CommonModule, FormsModule, RouterTestingModule, MatRadioModule, MatCheckboxModule, MatSlideToggleModule, TranslateModule],
 			providers: [provideObliqueTestingConfiguration()],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
-	}));
+	});
 
 	beforeEach(inject([ActivatedRoute], (activatedRoute: ActivatedRoute) => {
 		activatedRoute.data = of({sample: {navTree: {items: []}}});

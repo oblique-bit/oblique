@@ -49,13 +49,6 @@ export default [
 		}
 	},
 	{
-		files: ['projects/sandbox/src/**/*.spec.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/no-floating-promises': 'off'
-		}
-	},
-	{
 		files: ['projects/sandbox/**/*.html'],
 		rules: {
 			// rules that are not respected because too costly to refactor
