@@ -158,6 +158,11 @@ describe('ObServiceNavigationService', () => {
 				await expect(firstValueFrom(service.getLoginUrl$())).rejects.toThrow('Cannot load service navigation config');
 			});
 
+			it('should emit undefined in getLoginState$', async () => {
+				service.getLoginState$().subscribe();
+				await expect(firstValueFrom(service.getLoginState$())).resolves.toBe(undefined);
+			});
+
 			it('should show a notification', () => {
 				service.getLoginUrl$().subscribe({});
 				expect(notification.error).toHaveBeenCalledWith({
@@ -566,7 +571,8 @@ describe('ObServiceNavigationService', () => {
 			{inputs: ['SA', 'S2OK'], emitTimes: 2},
 			{inputs: ['SA', 'S2OK', 'S2OK'], emitTimes: 2},
 			{inputs: ['S2OK'], emitTimes: 1},
-			{inputs: ['S2OK', 'SA'], emitTimes: 2}
+			{inputs: ['S2OK', 'SA'], emitTimes: 2},
+			{inputs: [undefined], emitTimes: 1}
 		])('getLoginState$', ({inputs, emitTimes}) => {
 			const mockStateChangeDuplicate = new Subject();
 			beforeEach(() => {
