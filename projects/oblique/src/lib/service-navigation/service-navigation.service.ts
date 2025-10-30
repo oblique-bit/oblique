@@ -1,6 +1,6 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, ReplaySubject, combineLatest, share, switchMap, throwError} from 'rxjs';
+import {Observable, ReplaySubject, combineLatest, of, share, switchMap, throwError} from 'rxjs';
 import {catchError, combineLatestWith, distinctUntilChanged, map, shareReplay, startWith, tap} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
@@ -160,7 +160,9 @@ export class ObServiceNavigationService {
 	}
 
 	getLoginState$(): Observable<ObLoginState> {
-		return this.state$.pipe(
+		return this.config$.pipe(
+			switchMap(() => this.state$),
+			catchError(() => of({loginState: undefined})),
 			map(state => state.loginState),
 			distinctUntilChanged((previousState, newState) => previousState === newState)
 		);
