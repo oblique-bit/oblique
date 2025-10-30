@@ -1,4 +1,4 @@
-import {TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
 import {SlugService} from './slug.service';
 import {Router, RouterModule} from '@angular/router';
@@ -208,13 +208,9 @@ describe(SlugService.name, () => {
 	};
 	describe.each([10, 11, 12, 13, 14])(`${SlugService.prototype.getNewSlug.name} version %s`, version => {
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-		it.each(versionRoutes[version])(
-			'should return "$newSlug" with "$route"',
-			fakeAsync(({route, newSlug}) => {
-				router.navigate([route]);
-				tick();
-				expect(service.getNewSlug(version)).toBe(newSlug);
-			})
-		);
+		it.each(versionRoutes[version])('should return "$newSlug" with "$route"', async ({route, newSlug}) => {
+			await router.navigate([route]);
+			expect(service.getNewSlug(version)).toBe(newSlug);
+		});
 	});
 });

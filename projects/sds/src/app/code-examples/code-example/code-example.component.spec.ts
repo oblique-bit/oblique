@@ -111,9 +111,9 @@ describe(CodeExampleComponent.name, () => {
 	);
 
 	describe('title property', () => {
-		beforeEach(() => {
+		beforeEach(async () => {
 			// cannot use setupComponent because of whenStable
-			TestBed.configureTestingModule({
+			await TestBed.configureTestingModule({
 				imports: [
 					MockPreviewComponent,
 					IdPipe,
