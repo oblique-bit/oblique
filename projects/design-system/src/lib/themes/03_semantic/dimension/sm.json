@@ -3,7 +3,8 @@
     "s": {
       "dimension": {
         "dynamic": {
-          "none": {
+          "component_size": {
+            "none": {
             "px": {
               "$type": "dimension",
               "$value": "{ob.p.dimension.px.0}",
@@ -331,4 +332,5 @@
       }
     }
   }
+}
 }

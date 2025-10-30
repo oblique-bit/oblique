@@ -60,32 +60,32 @@
           "custom_buttons_container": {
             "width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.macro.sm.px}"
+              "$value": "{ob.s.dimension.dynamic.component_size.macro.sm.px}"
             }
           },
           "custom_buttons": {
             "min_width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.container.xl.px}"
+              "$value": "{ob.s.dimension.dynamic.component_size.container.xl.px}"
             }
           },
           "padded_container": {
             "width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.macro.sm.px}",
+              "$value": "{ob.s.dimension.dynamic.component_size.macro.sm.px}",
               "$description": "Sets a fixed default width (320px) for popover consistency. Can be overridden for specific requirements."
             }
           },
           "close_button": {
             "width": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.spacing.sm.px}"
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.sm.px}"
             }
           },
           "text_variant_container": {
             "min_height": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.spacing.md.px}"
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.md.px}"
             }
           }
         },

@@ -7,23 +7,23 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
+                "$value": "{ob.s.dimension.dynamic.component_size.element.sm.rem}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.element.xl.rem}"
+                "$value": "{ob.s.dimension.dynamic.component_size.element.xl.rem}"
               }
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
+              "$value": "{ob.s.dimension.dynamic.component_size.element.sm.rem}"
             }
           },
           "container": {
             "size": {
               "min_height": {
                 "$type": "sizing",
-                "$value": "{ob.s.dimension.dynamic.spacing.md.rem}"
+                "$value": "{ob.s.dimension.dynamic.component_size.spacing.md.rem}"
               }
             }
           },
@@ -38,11 +38,11 @@
             "padding": {
               "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
+                "$value": "{ob.s.dimension.dynamic.component_size.element.sm.rem}"
               },
               "horizontal": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.element.sm.rem}"
+                "$value": "{ob.s.dimension.dynamic.component_size.element.sm.rem}"
               }
             }
           }
