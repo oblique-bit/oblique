@@ -73,6 +73,31 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			expect(component.lastUsedApplications).toEqual([]);
 		});
 
+		describe('when there is no last-used applications', () => {
+			beforeEach(async () => {
+				component.isLoggedIn = true;
+				await harness.openPopover();
+			});
+
+			it('should find first h4 with "i18n.oblique.service-navigation.applications.last-used.header"', () => {
+				const firstH4 = document.querySelectorAll('h4')[0];
+				expect(firstH4.innerHTML).toContain('i18n.oblique.service-navigation.applications.last-used.header');
+			});
+
+			it.each([
+				'i18n.oblique.service-navigation.applications.last-used.empty',
+				'i18n.oblique.service-navigation.applications.last-used.description'
+			])('should display translation key %s', key => {
+				const emptyFavoritesText = document.querySelector('#service-navigation-emtpy-last-used-text');
+				expect(emptyFavoritesText.innerHTML).toContain(key);
+			});
+
+			it('should find favorite button with text "i18n.oblique.service-navigation.applications.last-used.button"', () => {
+				const secondH4 = document.querySelector('#service-navigation-all-services');
+				expect(secondH4.innerHTML).toContain('i18n.oblique.service-navigation.applications.link.label');
+			});
+		});
+
 		describe('with some applications and while loggedIn', () => {
 			beforeEach(fakeAsync(async () => {
 				component.isLoggedIn = true;
@@ -99,13 +124,13 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				});
 
-				it('should be 1', () => {
-					expect(sections.length).toBe(1);
+				it('should be 2', () => {
+					expect(sections.length).toBe(2);
 				});
 
-				it('should not find all favorite services link', () => {
+				it('should find all favorite services link', () => {
 					const allFavoriteLink = document.querySelector(ObServiceNavigationApplicationsHarness.allFavoriteLinkSelector);
-					expect(allFavoriteLink).toBeNull();
+					expect(allFavoriteLink).toBeTruthy();
 				});
 
 				describe('first section', () => {
@@ -319,6 +344,31 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			expect(component.favoriteApplications).toEqual([]);
 		});
 
+		describe('when there is no favorite applications', () => {
+			beforeEach(async () => {
+				component.isLoggedIn = true;
+				await harness.openPopover();
+			});
+
+			it('should find second h4 with "i18n.oblique.service-navigation.applications.favorite.header"', () => {
+				const secondH4 = document.querySelectorAll('h4')[1];
+				expect(secondH4.innerHTML).toContain('i18n.oblique.service-navigation.applications.favorite.header');
+			});
+
+			it.each([
+				'i18n.oblique.service-navigation.applications.favorite.empty',
+				'i18n.oblique.service-navigation.applications.favorite.description'
+			])('should display translation key %s', key => {
+				const emptyFavoritesText = document.querySelector('#service-navigation-emtpy-favorites-text');
+				expect(emptyFavoritesText.innerHTML).toContain(key);
+			});
+
+			it('should find favorite button with text "i18n.oblique.service-navigation.applications.favorite.button"', () => {
+				const secondH4 = document.querySelector('#service-navigation-all-favorite-services');
+				expect(secondH4.innerHTML).toContain('i18n.oblique.service-navigation.applications.favorite.button');
+			});
+		});
+
 		describe('with some applications and while loggedIn', () => {
 			beforeEach(fakeAsync(async () => {
 				component.isLoggedIn = true;
@@ -379,8 +429,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				});
 
-				it('should be 1', () => {
-					expect(sections.length).toBe(1);
+				it('should be 2', () => {
+					expect(sections.length).toBe(2);
 				});
 
 				describe('first section', () => {
@@ -388,8 +438,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					let content: DebugElement;
 					let links: DebugElement[];
 					beforeEach(() => {
-						section = sections[0].componentInstance;
-						content = fixture.debugElement.query(By.css('[obContent]'));
+						section = sections[1].componentInstance;
+						content = fixture.debugElement.queryAll(By.css('[obContent]'))[2];
 						links = content.queryAll(By.css('a'));
 					});
 
