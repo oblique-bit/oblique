@@ -42,7 +42,14 @@ export class ObServiceNavigationService {
 					});
 					return throwError(() => new Error('Cannot load service navigation config'));
 				}),
-				tap(data => this.pollingService.initializeStateUpdate(1, data.pollingNotificationsInterval, rootUrl, favoriteApplicationsCount)),
+				tap(data =>
+					this.pollingService.initializeStateUpdate(
+						data.pollingInterval,
+						data.pollingNotificationsInterval,
+						rootUrl,
+						favoriteApplicationsCount
+					)
+				),
 				tap(() => (this.timeoutService.rootUrl = rootUrl)),
 				tap(data => (this.timeoutService.logoutUrl = data.logout.url)),
 				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
