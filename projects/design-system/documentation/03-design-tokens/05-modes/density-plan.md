@@ -28,7 +28,7 @@ Create separate multipliers for component-size vs density groups:
             "sm": 0.8, "md": 1.0, "lg": 1.25
           },
           "density": {
-            "compact": 0.75, "standard": 1.0, "spacious": 1.5
+            "compact": 0.8, "standard": 1.0, "spacious": 1.25
           }
         }
       }
