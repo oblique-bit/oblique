@@ -80,8 +80,8 @@ describe(ObFocusInvalidDirective.name, () => {
 	let fixture: ComponentFixture<UntypedReactiveFormTestComponent>;
 	let component: UntypedReactiveFormTestComponent;
 
-	beforeEach(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			declarations: [UntypedReactiveFormTestComponent],
 			imports: [
 				ObFocusInvalidDirective,

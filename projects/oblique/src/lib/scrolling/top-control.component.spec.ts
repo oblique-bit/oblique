@@ -1,5 +1,5 @@
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObTopControlComponent} from './top-control.component';
 import {Observable} from 'rxjs';
@@ -8,13 +8,13 @@ describe('ObTopControlComponent', () => {
 	let fixture: ComponentFixture<ObTopControlComponent>;
 	let topControlComponent: ObTopControlComponent;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [ObTopControlComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			providers: [provideObliqueTestingConfiguration()]
 		}).compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObTopControlComponent);

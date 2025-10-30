@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutFooterComponent} from './master-layout-footer.component';
@@ -16,8 +16,8 @@ describe('ObMasterLayoutFooterComponent', () => {
 		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>()}
 	};
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [RouterTestingModule, ObLocalizePipe, TranslateModule],
 			declarations: [ObMasterLayoutFooterComponent],
 			providers: [
@@ -27,7 +27,7 @@ describe('ObMasterLayoutFooterComponent', () => {
 				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: true}
 			]
 		}).compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutFooterComponent);

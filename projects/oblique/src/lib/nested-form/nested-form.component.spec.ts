@@ -8,8 +8,8 @@ describe('NestedFormComponent', () => {
 	let fixture: ComponentFixture<ObNestedFormComponent>;
 	let nestedForm: UntypedFormGroup;
 
-	beforeEach(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [ObNestedFormComponent],
 			providers: [ObParentFormDirective]
 		}).compileComponents();

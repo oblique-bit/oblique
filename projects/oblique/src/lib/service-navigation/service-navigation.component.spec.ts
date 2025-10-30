@@ -77,9 +77,9 @@ describe('ObServiceNavigationComponent', () => {
 		languages: ObServiceNavigationLanguagesHarness.hostSelector
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 		TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockServiceNavigationService});
-		TestBed.configureTestingModule({
+		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe, CustomControlsTestComponent],
 			imports: [RouterTestingModule, HttpClientTestingModule]
 		}).compileComponents();

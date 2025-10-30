@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, fakeAsync, tick, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -26,8 +26,8 @@ describe('NotificationComponent', () => {
 	const message = 'myMessage';
 	const title = 'myTitle';
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			declarations: [ObNotificationComponent],
 			imports: [ObMockAlertComponent, ObMockTranslatePipe, ObTranslateParamsModule, CommonModule, RouterTestingModule],
 			providers: [
@@ -37,7 +37,7 @@ describe('NotificationComponent', () => {
 				{provide: WINDOW, useValue: window}
 			]
 		}).compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObNotificationComponent);
@@ -133,6 +133,7 @@ describe('NotificationComponent', () => {
 	}));
 
 	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', () => {
+		jest.useFakeTimers();
 		// Send multiple notifications:
 		component.open({message, groupSimilar: true});
 		component.open({message, groupSimilar: true});
@@ -142,6 +143,11 @@ describe('NotificationComponent', () => {
 		expect(component.notifications.length).toBe(1);
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(1);
+		// Ensure that the timers responsible for closing notifications are executed before ending the test,
+		// so the corresponding branch (if) is covered. This became necessary after switching from
+		// "waitForAsync" to "async/await" to preserve equivalent test coverage.
+		jest.runAllTimers();
+		jest.useRealTimers();
 	});
 
 	it('should have multiple messages if same message is send multiple times with groupSimilar disabled', () => {

@@ -100,8 +100,8 @@ describe(ObSchemaValidateDirective.name, () => {
 			let controls: Record<string, AbstractControl>;
 			let subproperties: Record<string, AbstractControl>;
 
-			beforeEach(() => {
-				TestBed.configureTestingModule({
+			beforeEach(async () => {
+				await TestBed.configureTestingModule({
 					declarations: [config.testComponent],
 					imports: [ObSchemaValidationDirective, ObSchemaValidateDirective, config.formModule],
 					providers: [{provide: WINDOW, useValue: window}]

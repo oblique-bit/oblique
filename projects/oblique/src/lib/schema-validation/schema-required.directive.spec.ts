@@ -50,11 +50,10 @@ describe(ObSchemaRequiredDirective.name, () => {
 	let directive: ObSchemaRequiredDirective;
 
 	describe('Reactive form', () => {
-		beforeEach(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [ObSchemaRequiredDirective, TestReactiveComponent]
 			}).compileComponents();
-
 			fixture = TestBed.createComponent(TestReactiveComponent);
 			const debugElement = fixture.debugElement.query(By.directive(ObSchemaRequiredDirective));
 			directive = debugElement.injector.get(ObSchemaRequiredDirective);
@@ -65,8 +64,8 @@ describe(ObSchemaRequiredDirective.name, () => {
 	});
 
 	describe('Template driven form', () => {
-		beforeEach(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [ObSchemaRequiredDirective, TestTemplateComponent]
 			}).compileComponents();
 

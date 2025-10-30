@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, fakeAsync, tick, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -39,8 +39,8 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 	let component: ObMasterLayoutNavigationComponent;
 	let fixture: ComponentFixture<ObMasterLayoutNavigationComponent>;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			declarations: [
 				ObMasterLayoutNavigationComponent,
 				ObMasterLayoutNavigationSubMenuItemComponent,
@@ -69,7 +69,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: false}
 			]
 		}).compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutNavigationComponent);
@@ -101,14 +101,10 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 	test.each<{route: string; label: string}>([
 		{route: 'defaultPathMatch', label: 'default'},
 		{route: 'full/2/users', label: 'ItemFull'}
-	])(
-		'that after routing to: $route, the textContent of the active element contains: $label',
-		fakeAsync(({route, label}) => {
-			router.navigate([route]);
-			tick();
-			expect(getElementByQueryAllCSS('.active')[0].nativeElement.textContent).toContain(label);
-		})
-	);
+	])('that after routing to: $route, the textContent of the active element contains: $label', async ({route, label}) => {
+		await router.navigate([route]);
+		expect(getElementByQueryAllCSS('.active')[0].nativeElement.textContent).toContain(label);
+	});
 
 	test.each<{route: string; length: number}>([
 		{route: 'defaultPathMatch', length: 1},
@@ -116,15 +112,11 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		{route: 'prefix/3/users', length: 0},
 		{route: 'full/1/users', length: 1},
 		{route: 'full/1', length: 0}
-	])(
-		'that $length element(s) have class active after routing to: $route',
-		fakeAsync(({route, length}) => {
-			router.navigate([route]);
-			tick();
-			const prefixLink = getElementByQueryAllCSS('.active');
-			expect(prefixLink.length).toBe(length);
-		})
-	);
+	])('that $length element(s) have class active after routing to: $route', async ({route, length}) => {
+		await router.navigate([route]);
+		const prefixLink = getElementByQueryAllCSS('.active');
+		expect(prefixLink.length).toBe(length);
+	});
 
 	describe('HTMLAnchorElement in template pathMatch with navigation elements', () => {
 		describe.each<{id: string; label: string}>([

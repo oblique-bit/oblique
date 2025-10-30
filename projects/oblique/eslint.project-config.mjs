@@ -124,8 +124,7 @@ export default [
 		files: ['projects/oblique/src/lib/**/*.spec.ts'],
 		rules: {
 			// rules that are not respected
-			'@typescript-eslint/ban-ts-comment': 'off',
-			'@typescript-eslint/no-floating-promises': 'off'
+			'@typescript-eslint/ban-ts-comment': 'off'
 		}
 	},
 	{

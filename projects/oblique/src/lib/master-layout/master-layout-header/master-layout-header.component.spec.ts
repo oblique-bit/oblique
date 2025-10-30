@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
@@ -29,8 +29,8 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		layout: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isMenuOpened: false}
 	};
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [ObMockTranslatePipe, RouterTestingModule, ObLocalizePipe, TranslateModule],
 			declarations: [ObMasterLayoutHeaderComponent],
 			providers: [
@@ -41,7 +41,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
-	}));
+	});
 
 	describe('Without OB_BANNER injectionToken', () => {
 		beforeEach(() => {

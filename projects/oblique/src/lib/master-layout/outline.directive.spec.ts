@@ -13,8 +13,8 @@ describe(ObOutlineDirective.name, () => {
 	let fixture: ComponentFixture<OutLineDirectiveTestComponent>;
 	let directive: ObOutlineDirective;
 
-	beforeEach(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			declarations: [OutLineDirectiveTestComponent, ObOutlineDirective]
 		}).compileComponents();
 

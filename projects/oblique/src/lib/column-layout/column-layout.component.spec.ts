@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {Component, DebugElement, Directive, EventEmitter, Output} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {Component, DebugElement, Directive, EventEmitter, Output} from '@angular/core';
 import {skip} from 'rxjs/operators';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
@@ -46,8 +46,8 @@ describe(ObColumnLayoutComponent.name, () => {
 		let fixture: ComponentFixture<ObColumnLayoutComponent>;
 		let panels: ObColumnPanelDirective[];
 
-		beforeEach(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [TranslateModule],
 				declarations: [ObColumnLayoutComponent, ObColumnPanelDirective],
 				providers: [provideObliqueTestingConfiguration()]
@@ -186,8 +186,8 @@ describe(ObColumnLayoutComponent.name, () => {
 		let fixture: ComponentFixture<TestComponent>;
 		let testComponent: TestComponent;
 
-		beforeEach(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [TranslateModule],
 				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
 				providers: [provideObliqueTestingConfiguration()]
@@ -260,8 +260,8 @@ describe(ObColumnLayoutComponent.name, () => {
 		let element: DebugElement;
 		let fixture: ComponentFixture<TestComponent>;
 
-		beforeEach(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [TranslateModule],
 				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
 				providers: [provideObliqueTestingConfiguration()]

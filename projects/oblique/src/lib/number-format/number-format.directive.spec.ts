@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, DebugElement, Type} from '@angular/core';
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {ObNumberFormatDirective} from './number-format.directive';
@@ -35,82 +35,73 @@ describe(ObNumberFormatDirective.name, () => {
 		element = fixture.debugElement.query(By.directive(ObNumberFormatDirective));
 	}
 
-	beforeEach(waitForAsync(() => {
+	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [ObNumberFormatDirective, FormsModule],
 			declarations: [TestDefaultComponent, TestNonPersistentComponent]
 		});
-	}));
+	});
 
 	describe('with default settings', () => {
-		it('should have both model and display value rounded to 2 digits', waitForAsync(() => {
+		it('should have both model and display value rounded to 2 digits', async () => {
 			createFixture(TestDefaultComponent, 5.235689);
-			fixture.whenStable().then(() => {
-				expect(testComponent.number).toEqual(5.24);
-				expect(element.nativeElement.value).toEqual('5.24');
-			});
-		}));
-		it('should have model to be null and display value an empty string', waitForAsync(() => {
+			await fixture.whenStable();
+			expect(testComponent.number).toEqual(5.24);
+			expect(element.nativeElement.value).toEqual('5.24');
+		});
+		it('should have model to be null and display value an empty string', async () => {
 			createFixture(TestDefaultComponent, null);
-			fixture.whenStable().then(() => {
-				expect(testComponent.number).toEqual(null);
-				expect(element.nativeElement.value).toEqual('');
-			});
-		}));
-		it('should have model to be 0 and display value "0"', waitForAsync(() => {
+			await fixture.whenStable();
+			expect(testComponent.number).toEqual(null);
+			expect(element.nativeElement.value).toEqual('');
+		});
+		it('should have model to be 0 and display value "0"', async () => {
 			createFixture(TestDefaultComponent, 0);
-			fixture.whenStable().then(() => {
-				expect(testComponent.number).toEqual(0);
-				expect(element.nativeElement.value).toEqual('0');
-			});
-		}));
+			await fixture.whenStable();
+			expect(testComponent.number).toEqual(0);
+			expect(element.nativeElement.value).toEqual('0');
+		});
 	});
 
 	describe('with non persistent flag', () => {
-		it('should have rounded model value and full display value', waitForAsync(() => {
+		it('should have rounded model value and full display value', async () => {
 			createFixture(TestNonPersistentComponent, 5.235689);
-			fixture.whenStable().then(() => {
-				expect(testComponent.number).toEqual(5.235689);
-				expect(element.nativeElement.value).toEqual('5.236');
-			});
-		}));
-		it('should have no model value and empty display value', waitForAsync(() => {
+			await fixture.whenStable();
+			expect(testComponent.number).toEqual(5.235689);
+			expect(element.nativeElement.value).toEqual('5.236');
+		});
+		it('should have no model value and empty display value', async () => {
 			createFixture(TestNonPersistentComponent, null);
-			fixture.whenStable().then(() => {
-				expect(testComponent.number).toEqual(null);
-				expect(element.nativeElement.value).toEqual('');
-			});
-		}));
-		it('should have 0 as model value and "0" as display value', waitForAsync(() => {
+			await fixture.whenStable();
+			expect(testComponent.number).toEqual(null);
+			expect(element.nativeElement.value).toEqual('');
+		});
+		it('should have 0 as model value and "0" as display value', async () => {
 			createFixture(TestNonPersistentComponent, 0);
-			fixture.whenStable().then(() => {
-				expect(testComponent.number).toEqual(0);
-				expect(element.nativeElement.value).toEqual('0');
-			});
-		}));
-		it('should display full value on focus', waitForAsync(() => {
+			await fixture.whenStable();
+			expect(testComponent.number).toEqual(0);
+			expect(element.nativeElement.value).toEqual('0');
+		});
+		it('should display full value on focus', async () => {
 			createFixture(TestNonPersistentComponent, 5.235689);
-			fixture.whenStable().then(() => {
-				element.nativeElement.focus();
-				expect(testComponent.number).toEqual(5.235689);
-				expect(element.nativeElement.value).toEqual('5.235689');
-			});
-		}));
-		it('should display no value on focus', waitForAsync(() => {
+			await fixture.whenStable();
+			element.nativeElement.focus();
+			expect(testComponent.number).toEqual(5.235689);
+			expect(element.nativeElement.value).toEqual('5.235689');
+		});
+		it('should display no value on focus', async () => {
 			createFixture(TestNonPersistentComponent, null);
-			fixture.whenStable().then(() => {
-				element.nativeElement.focus();
-				expect(testComponent.number).toEqual(null);
-				expect(element.nativeElement.value).toEqual('');
-			});
-		}));
-		it('should display "0" value on focus', waitForAsync(() => {
+			await fixture.whenStable();
+			element.nativeElement.focus();
+			expect(testComponent.number).toEqual(null);
+			expect(element.nativeElement.value).toEqual('');
+		});
+		it('should display "0" value on focus', async () => {
 			createFixture(TestNonPersistentComponent, 0);
-			fixture.whenStable().then(() => {
-				element.nativeElement.focus();
-				expect(testComponent.number).toEqual(0);
-				expect(element.nativeElement.value).toEqual('0');
-			});
-		}));
+			await fixture.whenStable();
+			element.nativeElement.focus();
+			expect(testComponent.number).toEqual(0);
+			expect(element.nativeElement.value).toEqual('0');
+		});
 	});
 });
