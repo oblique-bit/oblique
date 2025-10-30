@@ -119,60 +119,60 @@
             "xs": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.16} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.16} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "16px - Small content spacing, gaps between elements (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.900} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.900} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "16px equivalent - Small content spacing (dynamic)"
               }
             },
             "sm": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.20} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.20} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "20px - Medium content spacing (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1000} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1000} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "20px equivalent - Medium content spacing (dynamic)"
               }
             },
             "md": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.24} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.24} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "24px - Large content spacing (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1100} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1100} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "24px equivalent - Large content spacing (dynamic)"
               }
             },
             "lg": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.28} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.28} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "28px - Enhanced content spacing (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1200} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1200} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "28px equivalent - Enhanced content spacing (dynamic)"
               }
             },
             "xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.32} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.32} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "32px - XL content spacing (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1300} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1300} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "32px equivalent - XL content spacing (dynamic)"
               }
             }
@@ -181,60 +181,60 @@
             "xs": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.36} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.36} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "36px - Small container padding (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1400} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1400} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "36px equivalent - Small container padding (dynamic)"
               }
             },
             "sm": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.40} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.40} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "40px - Medium container padding (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1500} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1500} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "40px equivalent - Medium container padding (dynamic)"
               }
             },
             "md": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.48} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.48} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "48px - Large container padding (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1600} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1600} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "48px equivalent - Large container padding (dynamic)"
               }
             },
             "lg": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.56} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.56} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "56px - Enhanced container padding (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1700} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1700} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "56px equivalent - Enhanced container padding (dynamic)"
               }
             },
             "xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.64} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.64} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "64px - XL container padding (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1800} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1800} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "64px equivalent - XL container padding (dynamic)"
               }
             }
@@ -243,60 +243,60 @@
             "xs": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.80} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.80} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "80px - Small layout gap (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1900} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.1900} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "80px equivalent - Small layout gap (dynamic)"
               }
             },
             "sm": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.96} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.96} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "96px - Medium layout gap (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2000} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.2000} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "96px equivalent - Medium layout gap (dynamic)"
               }
             },
             "md": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.128} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.128} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "128px - Large layout gap (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2100} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.2100} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "128px equivalent - Large layout gap (dynamic)"
               }
             },
             "lg": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.160} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.160} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "160px - Enhanced layout gap (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2200} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.2200} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "160px equivalent - Enhanced layout gap (dynamic)"
               }
             },
             "xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.192} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.192} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "192px - XL layout gap (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2300} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.2300} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "192px equivalent - XL layout gap (dynamic)"
               }
             }
@@ -305,24 +305,24 @@
             "xs": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.256} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.256} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "256px - Small page-level spacing (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2400} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.2400} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "256px equivalent - Small page-level spacing (dynamic)"
               }
             },
             "sm": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.320} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.px.320} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "320px - Large page-level spacing (dynamic)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.2500} * {ob.g.multiplier.dimension.density.standard}",
+                "$value": "{ob.p.dimension.rem.2500} * {ob.g.multiplier.dimension.component_size.md}",
                 "$description": "320px equivalent - Large page-level spacing (dynamic)"
               }
             }
