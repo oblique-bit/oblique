@@ -221,7 +221,7 @@ describe(ObCollapseComponent.name, () => {
 		});
 	});
 
-	describe('multipe collapses of which one has a custom Id', () => {
+	describe('multiple collapses of which one has a custom Id', () => {
 		let fixtureTestComponent: ComponentFixture<TestCollapseComponent>;
 
 		beforeEach(async () => {
