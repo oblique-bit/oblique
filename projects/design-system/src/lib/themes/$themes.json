@@ -2175,8 +2175,8 @@
       "03_semantic/dimension/density/compact": "enabled"
     },
     "group": "density",
-    "$figmaCollectionId": "VariableCollectionId:4046:3352",
-    "$figmaModeId": "4046:3"
+    "$figmaCollectionId": "VariableCollectionId:5000:1000",
+    "$figmaModeId": "5000:0"
   },
   {
     "id": "density-standard-2025-10-31",
@@ -2186,8 +2186,8 @@
       "03_semantic/dimension/density/standard": "enabled"
     },
     "group": "density",
-    "$figmaCollectionId": "VariableCollectionId:4046:3352",
-    "$figmaModeId": "4046:4"
+    "$figmaCollectionId": "VariableCollectionId:5000:1000",
+    "$figmaModeId": "5000:1"
   },
   {
     "id": "density-spacious-2025-10-31",
@@ -2197,7 +2197,7 @@
       "03_semantic/dimension/density/spacious": "enabled"
     },
     "group": "density",
-    "$figmaCollectionId": "VariableCollectionId:4046:3352",
-    "$figmaModeId": "4046:5"
+    "$figmaCollectionId": "VariableCollectionId:5000:1000",
+    "$figmaModeId": "5000:2"
   }
 ]
