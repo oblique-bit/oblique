@@ -1701,8 +1701,7 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/sm": "enabled",
       "03_semantic/typography/grouped/sm": "enabled",
-      "03_semantic/dimension/component_size/sm": "enabled",
-      "03_semantic/dimension/density/compact": "enabled"
+      "03_semantic/dimension/component_size/sm": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:0",
@@ -1830,8 +1829,7 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/md": "enabled",
       "03_semantic/typography/grouped/md": "enabled",
-      "03_semantic/dimension/component_size/md": "enabled",
-      "03_semantic/dimension/density/standard": "enabled"
+      "03_semantic/dimension/component_size/md": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:1",
@@ -1959,8 +1957,7 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/lg": "enabled",
       "03_semantic/typography/grouped/lg": "enabled",
-      "03_semantic/dimension/component_size/lg": "enabled",
-      "03_semantic/dimension/density/spacious": "enabled"
+      "03_semantic/dimension/component_size/lg": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:2",
@@ -2169,5 +2166,38 @@
     "group": "typography-context",
     "$figmaCollectionId": "VariableCollectionId:6191:6284",
     "$figmaModeId": "6191:1"
+  },
+  {
+    "id": "density-compact-2025-10-31",
+    "name": "compact",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/dimension/density/compact": "enabled"
+    },
+    "group": "density",
+    "$figmaCollectionId": "VariableCollectionId:4046:3352",
+    "$figmaModeId": "4046:3"
+  },
+  {
+    "id": "density-standard-2025-10-31",
+    "name": "standard",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/dimension/density/standard": "enabled"
+    },
+    "group": "density",
+    "$figmaCollectionId": "VariableCollectionId:4046:3352",
+    "$figmaModeId": "4046:4"
+  },
+  {
+    "id": "density-spacious-2025-10-31",
+    "name": "spacious",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/dimension/density/spacious": "enabled"
+    },
+    "group": "density",
+    "$figmaCollectionId": "VariableCollectionId:4046:3352",
+    "$figmaModeId": "4046:5"
   }
 ]
