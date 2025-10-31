@@ -14,7 +14,8 @@ import {
 	Output,
 	Renderer2,
 	ViewChild,
-	ViewEncapsulation
+	ViewEncapsulation,
+	inject
 } from '@angular/core';
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, map, takeUntil} from 'rxjs/operators';
@@ -32,6 +33,8 @@ import {
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 import {ObNavigationLink} from './navigation-link.model';
+import {TranslateService} from '@ngx-translate/core';
+import {OB_HAS_LANGUAGE_IN_URL} from '../../utilities';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
@@ -69,6 +72,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	private readonly currentParentRouterLinkBase: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	private readonly currentUrl: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	private readonly unsubscribe: Subject<void> = new Subject<void>();
+	private readonly hasLanguageInUrl = inject(OB_HAS_LANGUAGE_IN_URL);
 
 	constructor(
 		private readonly router: Router,
@@ -77,6 +81,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		private readonly renderer: Renderer2,
 		private readonly el: ElementRef,
 		private readonly globalEventsService: ObGlobalEventsService,
+		private readonly translate: TranslateService,
 		@Optional() @Inject(OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION) hideExternalLinks: boolean
 	) {
 		this.hideExternalLinks = hideExternalLinks ?? true;
@@ -223,6 +228,15 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		return this.currentParentAncestors.value.includes(link);
 	}
 
+	private isLinkActive(link: ObNavigationLink): boolean {
+		if (this.hasLanguageInUrl) {
+			const language = this.translate.currentLang;
+			const urlWithLanguage = `/${language}/${link.url}`;
+			return this.router.isActive(urlWithLanguage, link.routerLinkActiveOptions || this.routerLinkActiveOptions);
+		}
+		return this.router.isActive(link.url, link.routerLinkActiveOptions || this.routerLinkActiveOptions);
+	}
+
 	private markActiveLink(): void {
 		this.router.events
 			.pipe(
@@ -232,7 +246,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 			.subscribe(() => {
 				// do not use map so that the reference to the initializedLinks array remains the same. This allows the navigation to be dynamic
 				this.initializedLinks.forEach(link => {
-					link.active = this.router.isActive(link.url, link.routerLinkActiveOptions || this.routerLinkActiveOptions);
+					link.active = this.isLinkActive(link);
 				});
 			});
 	}

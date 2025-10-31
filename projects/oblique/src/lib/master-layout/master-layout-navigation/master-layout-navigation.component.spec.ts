@@ -71,194 +71,219 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		}).compileComponents();
 	});
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(ObMasterLayoutNavigationComponent);
-		component = fixture.componentInstance;
+	describe('hasLanguageInUrl=false', () => {
+		beforeEach(() => {
+			fixture = TestBed.createComponent(ObMasterLayoutNavigationComponent);
+			component = fixture.componentInstance;
 
-		component.links = basicMockLinks;
-		component.ngOnInit();
-		component.ngOnChanges();
-		router = TestBed.inject(Router);
-		router.initialNavigation();
-		fixture.detectChanges();
-	});
-
-	test('that creation works', () => {
-		expect(component).toBeTruthy();
-	});
-
-	test.each([null, undefined])('that "%s" is converted to an empty array', value => {
-		component.links = value;
-		component.ngOnChanges();
-		expect(component.initializedLinks).toEqual([]);
-	});
-
-	test.each<{idx: number}>([{idx: 0}, {idx: 1}, {idx: 2}])('that property isExternal of Link is set to false at index: $idx', ({idx}) => {
-		fixture.detectChanges();
-		expect(component.initializedLinks[idx].isExternal).toBe(false);
-	});
-
-	test.each<{route: string; label: string}>([
-		{route: 'defaultPathMatch', label: 'default'},
-		{route: 'full/2/users', label: 'ItemFull'}
-	])('that after routing to: $route, the textContent of the active element contains: $label', async ({route, label}) => {
-		await router.navigate([route]);
-		expect(getElementByQueryAllCSS('.active')[0].nativeElement.textContent).toContain(label);
-	});
-
-	test.each<{route: string; length: number}>([
-		{route: 'defaultPathMatch', length: 1},
-		{route: 'prefix/2/users', length: 1},
-		{route: 'prefix/3/users', length: 0},
-		{route: 'full/1/users', length: 1},
-		{route: 'full/1', length: 0}
-	])('that $length element(s) have class active after routing to: $route', async ({route, length}) => {
-		await router.navigate([route]);
-		const prefixLink = getElementByQueryAllCSS('.active');
-		expect(prefixLink.length).toBe(length);
-	});
-
-	describe('HTMLAnchorElement in template pathMatch with navigation elements', () => {
-		describe.each<{id: string; label: string}>([
-			{id: 'prefix', label: 'ItemPrefix'},
-			{id: 'full', label: 'ItemFull'},
-			{id: 'default', label: 'default'}
-		])('with $id pathMatch strategy', ({id, label}) => {
-			let element: HTMLElement;
-			beforeAll(() => {
-				element = getHTMLSelectElementByQueryCSS(`#${id}`);
-			});
-			test('that there is a link with id: $id', () => {
-				expect(element).toBeTruthy();
-			});
-			test('that link text contains $label', () => {
-				expect(element.textContent).toContain(label);
-			});
-		});
-	});
-
-	describe.each<{linkIndex: number; childIndex: number}>([
-		{linkIndex: 2, childIndex: 0},
-		{linkIndex: 2, childIndex: 1},
-		{linkIndex: 3, childIndex: 0},
-		{linkIndex: 3, childIndex: 1},
-		{linkIndex: 3, childIndex: 2}
-	])('with children link index: $linkIndex & child index: $childIndex', ({linkIndex, childIndex}) => {
-		beforeEach(fakeAsync(async () => {
-			component.links = mockLinksWithChildren;
+			component.links = basicMockLinks;
+			component.ngOnInit();
 			component.ngOnChanges();
+			router = TestBed.inject(Router);
+			router.initialNavigation();
 			fixture.detectChanges();
-			await fixture.whenStable();
-			expandMainNavItem(linkIndex);
-			component.changeCurrentParentLink(component.initializedLinks[linkIndex]);
-			fixture.detectChanges();
-		}));
-
-		test(`that ${ObMasterLayoutNavigationComponent.prototype.changeCurrentParentLink.name} is called after clicking go to children button`, () => {
-			jest.spyOn(component, 'changeCurrentParentLink');
-			clickGoToChildrenButton(linkIndex, childIndex);
-			expect(component.changeCurrentParentLink).toHaveBeenCalledWith(component.initializedLinks[linkIndex].children[childIndex]);
 		});
 
-		test(`that ${ObMasterLayoutNavigationComponent.prototype.backUpOrCloseSubMenu.name} is called after clicking go to children button & then back button `, fakeAsync(() => {
-			jest.spyOn(component, 'backUpOrCloseSubMenu');
-			clickGoToChildrenButton(linkIndex, childIndex);
-			clickBackButton(linkIndex);
-			expect(component.backUpOrCloseSubMenu).toHaveBeenCalledTimes(1);
-		}));
-
-		test(`that ${ObMasterLayoutNavigationComponent.prototype.closeSubMenu.name} is called after clicking go to children button & then close button `, fakeAsync(() => {
-			jest.spyOn(component, 'closeSubMenu');
-			clickGoToChildrenButton(linkIndex, childIndex);
-			clickCloseButton(linkIndex);
-			expect(component.closeSubMenu).toHaveBeenCalledTimes(1);
-		}));
-
-		test(`that ${
-			(ObMasterLayoutNavigationComponent.prototype as unknown as {isLinkInCurrentParentAncestors: {name: string}})
-				.isLinkInCurrentParentAncestors.name
-		} is called with correct link after clicking go to children button when child is not in currentParentAncestors`, () => {
-			fixture.detectChanges();
-			jest.spyOn(
-				component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void},
-				'isLinkInCurrentParentAncestors'
-			);
-			clickGoToChildrenButton(linkIndex, childIndex);
-			expect(
-				(component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void}).isLinkInCurrentParentAncestors
-			).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
+		test('that creation works', () => {
+			expect(component).toBeTruthy();
 		});
 
-		test(`that ${
-			(ObMasterLayoutNavigationComponent.prototype as unknown as {isLinkInCurrentParentAncestors: {name: string}})
-				.isLinkInCurrentParentAncestors.name
-		} is called with correct link after clicking go to children button when child is already in currentParentAncestors`, () => {
-			(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor(
-				component.initializedLinks[linkIndex].children[childIndex]
-			);
-			fixture.detectChanges();
-			jest.spyOn(
-				component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void},
-				'isLinkInCurrentParentAncestors'
-			);
-			clickGoToChildrenButton(linkIndex, childIndex);
-			expect(
-				(component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void}).isLinkInCurrentParentAncestors
-			).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
+		test.each([null, undefined])('that "%s" is converted to an empty array', value => {
+			component.links = value;
+			component.ngOnChanges();
+			expect(component.initializedLinks).toEqual([]);
 		});
 
-		test(`that ${
-			(ObMasterLayoutNavigationComponent.prototype as unknown as {addCurrentParentAncestor: {name: string}}).addCurrentParentAncestor.name
-		} is not called after clicking go to children button when child is already in currentParentAncestors`, () => {
-			(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor(
-				component.initializedLinks[linkIndex].children[childIndex]
-			);
+		test.each<{idx: number}>([{idx: 0}, {idx: 1}, {idx: 2}])('that property isExternal of Link is set to false at index: $idx', ({idx}) => {
 			fixture.detectChanges();
-			jest.spyOn(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}, 'addCurrentParentAncestor');
-			clickGoToChildrenButton(linkIndex, childIndex);
-			expect(
-				(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor
-			).not.toHaveBeenCalled();
+			expect(component.initializedLinks[idx].isExternal).toBe(false);
 		});
 
-		test(`that ${
-			(ObMasterLayoutNavigationComponent.prototype as unknown as {addCurrentParentAncestor: {name: string}}).addCurrentParentAncestor.name
-		} is called with correct link after clicking go to children button when child is not in currentParentAncestors`, () => {
-			fixture.detectChanges();
-			jest.spyOn(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}, 'addCurrentParentAncestor');
-			clickGoToChildrenButton(linkIndex, childIndex);
-			expect(
-				(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor
-			).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
+		test.each<{route: string; label: string}>([
+			{route: 'defaultPathMatch', label: 'default'},
+			{route: 'full/2/users', label: 'ItemFull'}
+		])('that after routing to: $route, the textContent of the active element contains: $label', async ({route, label}) => {
+			await router.navigate([route]);
+			expect(getElementByQueryAllCSS('.active')[0].nativeElement.textContent).toContain(label);
+		});
+
+		test.each<{route: string; length: number}>([
+			{route: 'defaultPathMatch', length: 1},
+			{route: 'prefix/2/users', length: 1},
+			{route: 'prefix/3/users', length: 0},
+			{route: 'full/1/users', length: 1},
+			{route: 'full/1', length: 0}
+		])('that $length element(s) have class active after routing to: $route', async ({route, length}) => {
+			await router.navigate([route]);
+			const prefixLink = getElementByQueryAllCSS('.active');
+			expect(prefixLink.length).toBe(length);
+		});
+
+		describe('HTMLAnchorElement in template pathMatch with navigation elements', () => {
+			describe.each<{id: string; label: string}>([
+				{id: 'prefix', label: 'ItemPrefix'},
+				{id: 'full', label: 'ItemFull'},
+				{id: 'default', label: 'default'}
+			])('with $id pathMatch strategy', ({id, label}) => {
+				let element: HTMLElement;
+				beforeAll(() => {
+					element = getHTMLSelectElementByQueryCSS(`#${id}`);
+				});
+				test('that there is a link with id: $id', () => {
+					expect(element).toBeTruthy();
+				});
+				test('that link text contains $label', () => {
+					expect(element.textContent).toContain(label);
+				});
+			});
+		});
+
+		describe.each<{linkIndex: number; childIndex: number}>([
+			{linkIndex: 2, childIndex: 0},
+			{linkIndex: 2, childIndex: 1},
+			{linkIndex: 3, childIndex: 0},
+			{linkIndex: 3, childIndex: 1},
+			{linkIndex: 3, childIndex: 2}
+		])('with children link index: $linkIndex & child index: $childIndex', ({linkIndex, childIndex}) => {
+			beforeEach(fakeAsync(async () => {
+				component.links = mockLinksWithChildren;
+				component.ngOnChanges();
+				fixture.detectChanges();
+				await fixture.whenStable();
+				expandMainNavItem(linkIndex);
+				component.changeCurrentParentLink(component.initializedLinks[linkIndex]);
+				fixture.detectChanges();
+			}));
+
+			test(`that ${ObMasterLayoutNavigationComponent.prototype.changeCurrentParentLink.name} is called after clicking go to children button`, () => {
+				jest.spyOn(component, 'changeCurrentParentLink');
+				clickGoToChildrenButton(linkIndex, childIndex);
+				expect(component.changeCurrentParentLink).toHaveBeenCalledWith(component.initializedLinks[linkIndex].children[childIndex]);
+			});
+
+			test(`that ${ObMasterLayoutNavigationComponent.prototype.backUpOrCloseSubMenu.name} is called after clicking go to children button & then back button `, fakeAsync(() => {
+				jest.spyOn(component, 'backUpOrCloseSubMenu');
+				clickGoToChildrenButton(linkIndex, childIndex);
+				clickBackButton(linkIndex);
+				expect(component.backUpOrCloseSubMenu).toHaveBeenCalledTimes(1);
+			}));
+
+			test(`that ${ObMasterLayoutNavigationComponent.prototype.closeSubMenu.name} is called after clicking go to children button & then close button `, fakeAsync(() => {
+				jest.spyOn(component, 'closeSubMenu');
+				clickGoToChildrenButton(linkIndex, childIndex);
+				clickCloseButton(linkIndex);
+				expect(component.closeSubMenu).toHaveBeenCalledTimes(1);
+			}));
+
+			test(`that ${
+				(ObMasterLayoutNavigationComponent.prototype as unknown as {isLinkInCurrentParentAncestors: {name: string}})
+					.isLinkInCurrentParentAncestors.name
+			} is called with correct link after clicking go to children button when child is not in currentParentAncestors`, () => {
+				fixture.detectChanges();
+				jest.spyOn(
+					component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void},
+					'isLinkInCurrentParentAncestors'
+				);
+				clickGoToChildrenButton(linkIndex, childIndex);
+				expect(
+					(component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void}).isLinkInCurrentParentAncestors
+				).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
+			});
+
+			test(`that ${
+				(ObMasterLayoutNavigationComponent.prototype as unknown as {isLinkInCurrentParentAncestors: {name: string}})
+					.isLinkInCurrentParentAncestors.name
+			} is called with correct link after clicking go to children button when child is already in currentParentAncestors`, () => {
+				(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor(
+					component.initializedLinks[linkIndex].children[childIndex]
+				);
+				fixture.detectChanges();
+				jest.spyOn(
+					component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void},
+					'isLinkInCurrentParentAncestors'
+				);
+				clickGoToChildrenButton(linkIndex, childIndex);
+				expect(
+					(component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void}).isLinkInCurrentParentAncestors
+				).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
+			});
+
+			test(`that ${
+				(ObMasterLayoutNavigationComponent.prototype as unknown as {addCurrentParentAncestor: {name: string}}).addCurrentParentAncestor.name
+			} is not called after clicking go to children button when child is already in currentParentAncestors`, () => {
+				(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor(
+					component.initializedLinks[linkIndex].children[childIndex]
+				);
+				fixture.detectChanges();
+				jest.spyOn(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}, 'addCurrentParentAncestor');
+				clickGoToChildrenButton(linkIndex, childIndex);
+				expect(
+					(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor
+				).not.toHaveBeenCalled();
+			});
+
+			test(`that ${
+				(ObMasterLayoutNavigationComponent.prototype as unknown as {addCurrentParentAncestor: {name: string}}).addCurrentParentAncestor.name
+			} is called with correct link after clicking go to children button when child is not in currentParentAncestors`, () => {
+				fixture.detectChanges();
+				jest.spyOn(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}, 'addCurrentParentAncestor');
+				clickGoToChildrenButton(linkIndex, childIndex);
+				expect(
+					(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor
+				).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
+			});
+		});
+
+		describe('removeItem', () => {
+			const mockMouseEvent = {preventDefault: jest.fn()} as any as MouseEvent;
+			let emittedValue: ObINavigationLink[];
+			beforeEach(done => {
+				component.linksChanged.subscribe(list => {
+					emittedValue = list;
+					done();
+				});
+				component.removeMenuItem(component.initializedLinks[0], mockMouseEvent);
+			});
+
+			test('first item is removed from initialized links', () => {
+				expect(component.initializedLinks.length).toBe(3);
+			});
+
+			test('first item is removed from links', () => {
+				expect(component.links.length).toBe(3);
+			});
+
+			test('preventDefault has been called', () => {
+				expect(mockMouseEvent.preventDefault).toHaveBeenCalled();
+			});
+
+			test('linksChanged emits the updated links', () => {
+				expect(emittedValue).toEqual(component.links);
+			});
 		});
 	});
 
-	describe('removeItem', () => {
-		const mockMouseEvent = {preventDefault: jest.fn()} as any as MouseEvent;
-		let emittedValue: ObINavigationLink[];
-		beforeEach(done => {
-			component.linksChanged.subscribe(list => {
-				emittedValue = list;
-				done();
-			});
-			component.removeMenuItem(component.initializedLinks[0], mockMouseEvent);
+	describe('hasLanguageInUrl=true', () => {
+		beforeEach(() => {
+			TestBed.overrideProvider(OB_HAS_LANGUAGE_IN_URL, {useValue: true});
+			fixture = TestBed.createComponent(ObMasterLayoutNavigationComponent);
+			component = fixture.componentInstance;
+
+			component.links = basicMockLinks;
+			component.ngOnInit();
+			component.ngOnChanges();
+			router = TestBed.inject(Router);
+			router.initialNavigation();
+			fixture.detectChanges();
 		});
 
-		test('first item is removed from initialized links', () => {
-			expect(component.initializedLinks.length).toBe(3);
-		});
-
-		test('first item is removed from links', () => {
-			expect(component.links.length).toBe(3);
-		});
-
-		test('preventDefault has been called', () => {
-			expect(mockMouseEvent.preventDefault).toHaveBeenCalled();
-		});
-
-		test('linksChanged emits the updated links', () => {
-			expect(emittedValue).toEqual(component.links);
-		});
+		test.each<{route: string; label: string}>([{route: 'defaultPathMatch', label: 'default'}])(
+			'that after routing to: $route, the textContent of the active element contains: $label',
+			async ({route, label}) => {
+				await router.navigate([route]);
+				expect(getElementByQueryAllCSS('.active')[0].nativeElement.textContent).toContain(label);
+			}
+		);
 	});
 
 	function getElementByQueryAllCSS(selector: string): DebugElement[] {
