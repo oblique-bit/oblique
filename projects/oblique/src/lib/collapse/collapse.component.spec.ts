@@ -3,7 +3,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {WINDOW} from '../utilities';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
-import {OBLIQUE_COLLAPSE_ACTIVE, ObCollapseComponent} from './collapse.component';
+import {OBLIQUE_COLLAPSE_ACTIVE, OBLIQUE_COLLAPSE_ICON_POSITION, ObCollapseComponent} from './collapse.component';
 
 @Component({
 	standalone: false,
@@ -28,6 +28,7 @@ describe(ObCollapseComponent.name, () => {
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [
 					{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'},
+					{provide: OBLIQUE_COLLAPSE_ICON_POSITION, useValue: 'right'},
 					{provide: WINDOW, useValue: window},
 					ObGlobalEventsService
 				]
@@ -48,6 +49,10 @@ describe(ObCollapseComponent.name, () => {
 
 		it('should have a true active property', () => {
 			expect(obCollapseComponent.active).toBe(true);
+		});
+
+		it('should have iconPosition property set to "right"', () => {
+			expect(obCollapseComponent.iconPosition).toBe('right');
 		});
 
 		it('should change to active false on keydown with enter', () => {
@@ -89,6 +94,10 @@ describe(ObCollapseComponent.name, () => {
 
 		it('should have a false active property ', () => {
 			expect(obCollapseComponent.active).toBe(false);
+		});
+
+		it('should have iconPosition property set to "left"', () => {
+			expect(obCollapseComponent.iconPosition).toBe('left');
 		});
 
 		it('should have a false aria-expanded property ', () => {
