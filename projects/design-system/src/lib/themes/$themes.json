@@ -1701,7 +1701,8 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/sm": "enabled",
       "03_semantic/typography/grouped/sm": "enabled",
-      "03_semantic/dimension/sm": "enabled"
+      "03_semantic/dimension/component_size/sm": "enabled",
+      "03_semantic/dimension/density/compact": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:0",
@@ -1829,7 +1830,8 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/md": "enabled",
       "03_semantic/typography/grouped/md": "enabled",
-      "03_semantic/dimension/md": "enabled"
+      "03_semantic/dimension/component_size/md": "enabled",
+      "03_semantic/dimension/density/standard": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:1",
@@ -1957,7 +1959,8 @@
     "selectedTokenSets": {
       "03_semantic/typography/single/lg": "enabled",
       "03_semantic/typography/grouped/lg": "enabled",
-      "03_semantic/dimension/lg": "enabled"
+      "03_semantic/dimension/component_size/lg": "enabled",
+      "03_semantic/dimension/density/spacious": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:4046:3352",
     "$figmaModeId": "4046:2",
