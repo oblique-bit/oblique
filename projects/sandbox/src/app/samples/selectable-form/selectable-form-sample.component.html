@@ -1,5 +1,5 @@
 <h2>{{ "i18n.routes.samples.selected.title" | translate }}</h2>
-<ob-column-layout [left]="false">
+<ob-column-layout left="NONE">
 	<section column-main-content>
 		<form [formGroup]="sampleForm">
 			<div #group="obSelectableGroup" obSelectableGroup formControlName="sampleCreatures" [mode]="mode">
