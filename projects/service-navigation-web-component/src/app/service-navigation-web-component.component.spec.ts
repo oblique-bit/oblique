@@ -14,8 +14,8 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 	let fixture: ComponentFixture<ObServiceNavigationWebComponentComponent>;
 	let component: ObServiceNavigationWebComponentComponent;
 
-	beforeEach(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [ObServiceNavigationWebComponentComponent],
 			providers: [provideObliqueTestingConfiguration(), {provide: HttpClient, useValue: {}}]
 		}).compileComponents();

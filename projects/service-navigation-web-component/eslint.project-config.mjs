@@ -35,12 +35,5 @@ export default [
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/strict-boolean-expressions': 'off' // needs strictNullChecks
 		}
-	},
-	{
-		files: ['projects/service-navigation-web-component/src/**/*.spec.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/no-floating-promises': 'off'
-		}
 	}
 ];

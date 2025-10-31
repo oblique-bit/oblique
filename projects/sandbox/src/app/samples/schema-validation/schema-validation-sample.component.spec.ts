@@ -12,8 +12,8 @@ describe(SchemaValidationSampleComponent.name, () => {
 	let component: SchemaValidationSampleComponent;
 	let fixture: ComponentFixture<SchemaValidationSampleComponent>;
 
-	beforeEach(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [
 				ObMockTranslatePipe,
 				FormsModule,

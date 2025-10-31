@@ -36,13 +36,6 @@ export default [
 		}
 	},
 	{
-		files: ['projects/sds/**/*.spec.ts'],
-		rules: {
-			// rules that are not respected
-			'@typescript-eslint/no-floating-promises': 'off'
-		}
-	},
-	{
 		files: ['projects/sds/**/*.html'],
 		rules: {
 			'@angular-eslint/template/cyclomatic-complexity': 'off'

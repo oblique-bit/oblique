@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -109,13 +109,13 @@ describe('InputClear', () => {
 		let directive: ObInputClearDirective;
 		let parentElement: HTMLElement;
 
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				declarations: [UntypedReactiveFormTestComponent],
 				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
 				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
-		}));
+		});
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(UntypedReactiveFormTestComponent);
@@ -177,13 +177,13 @@ describe('InputClear', () => {
 		let directive: ObInputClearDirective;
 		let parentElement: HTMLElement;
 
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				declarations: [StronglyTypedReactiveFormTestComponent],
 				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
 				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
-		}));
+		});
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(StronglyTypedReactiveFormTestComponent);

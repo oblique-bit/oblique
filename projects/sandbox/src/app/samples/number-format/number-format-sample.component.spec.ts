@@ -1,4 +1,4 @@
-import {type ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
@@ -9,14 +9,14 @@ describe(NumberFormatSampleComponent.name, () => {
 	let component: NumberFormatSampleComponent;
 	let fixture: ComponentFixture<NumberFormatSampleComponent>;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [FormsModule, ReactiveFormsModule, TranslateModule],
 			declarations: [NumberFormatSampleComponent],
 			providers: [provideObliqueTestingConfiguration()],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(NumberFormatSampleComponent);

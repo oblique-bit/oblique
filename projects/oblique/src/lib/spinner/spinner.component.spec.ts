@@ -12,9 +12,9 @@ describe('ObSpinnerComponent', () => {
 	let fixture: ComponentFixture<ObSpinnerComponent>;
 	let mockObSpinnerService;
 
-	beforeEach(() => {
+	beforeEach(async () => {
 		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
-		TestBed.configureTestingModule({
+		await TestBed.configureTestingModule({
 			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}],
 			imports: [ObSpinnerComponent, BrowserAnimationsModule]
 		}).compileComponents();
