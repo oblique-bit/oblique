@@ -19,7 +19,7 @@ export class Publish extends StaticScript {
 		process.chdir(`../../`);
 		executeCommandWithLog(`npm publish ./dist/${packageName} --access public --tag ${tag}`, 'Publish');
 		Publish.deprecatePreReleaseVersions(packageName, currentVersion);
-		Publish.deprecateMajorVersion(packageName, parseInt(currentVersion, 10));
+		Publish.deprecateMajorVersion(packageName);
 		Log.success();
 	}
 
@@ -35,15 +35,17 @@ export class Publish extends StaticScript {
 		}
 	}
 
-	private static deprecateMajorVersion(packageName: string, major: number): void {
+	private static deprecateMajorVersion(packageName: string): void {
 		const fullPackageName = `@oblique/${packageName}`;
-		const endOfLifeDate = Publish.eolDates[major];
-		if (new Date() > new Date(endOfLifeDate)) {
-			executeCommandWithLog(
-				`npm deprecate ${fullPackageName}@${major} "Oblique ${major} has reached its End Of Life on ${endOfLifeDate}"`,
-				`Deprecate all versions of ${major}`
-			);
-		}
+		Object.entries(Publish.eolDates)
+			.map(([major, endOfLifeDate]) => ({major, endOfLifeDate}))
+			.filter(({endOfLifeDate}) => new Date() > new Date(endOfLifeDate))
+			.forEach(({major, endOfLifeDate}) => {
+				executeCommandWithLog(
+					`npm deprecate ${fullPackageName}@${major} "Oblique ${major} has reached its End Of Life on ${endOfLifeDate}"`,
+					`Deprecate all versions of ${major}`
+				);
+			});
 	}
 
 	private static getTagOnNext(packageName: string): string {
