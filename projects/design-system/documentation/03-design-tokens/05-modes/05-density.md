@@ -159,11 +159,11 @@ Individual values don't need 4px alignment if the total component height/width a
 {
   "xs": {
     "px": {
-      "$value": "({ob.p.dimension.px.4} * {ob.g.multiplier.dimension.density.compact}) - 1",
+      "$value": "({ob.p.dimension.px.4} * {ob.g.multiplier.dimension.density.compact}) - 1px",
       "$description": "C:-1px corrector applied"
     },
     "rem": {
-      "$value": "({ob.p.dimension.rem.400} * {ob.g.multiplier.dimension.density.compact}) - 0.0625",
+      "$value": "({ob.p.dimension.rem.400} * {ob.g.multiplier.dimension.density.compact}) - 0.0625rem",
       "$description": "C:-0.0625rem corrector applied"
     }
   }
@@ -173,6 +173,7 @@ Individual values don't need 4px alignment if the total component height/width a
 **Tokens Studio Compatibility Notes:**
 - ✅ **Parentheses required**: Mathematical expressions use `({token} * {multiplier}) ± corrector` syntax
 - ✅ **Spaces mandatory**: All operators must have spaces around them for Tokens Studio compatibility
+- ✅ **Units required**: Corrector values must include units (`1px`, `0.5rem`) for proper evaluation
 - ✅ **Simple operations**: Tokens Studio supports basic arithmetic but complex expressions need parentheses for proper evaluation
 
 ---
