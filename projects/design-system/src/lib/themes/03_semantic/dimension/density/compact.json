@@ -43,13 +43,13 @@
             "lg": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.10} * {ob.g.multiplier.dimension.density.compact}",
-                "$description": "8px - Large spacing (compact density)"
+                "$value": "{ob.p.dimension.px.10} * {ob.g.multiplier.dimension.density.compact} + 0.5",
+                "$description": "8px - Large spacing (compact density) - C:+0.5px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.700} * {ob.g.multiplier.dimension.density.compact}",
-                "$description": "8px equivalent - Large spacing (compact density)"
+                "$value": "{ob.p.dimension.rem.700} * {ob.g.multiplier.dimension.density.compact} + 0.03125",
+                "$description": "8px equivalent - Large spacing (compact density) - C:+0.03125rem corrector applied"
               }
             },
             "xl": {

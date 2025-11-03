@@ -131,7 +131,7 @@ Raw multiplication creates problematic values that violate design requirements. 
 | xs | 2px / 0.125rem | 4px / 0.25rem | 6px / 0.375rem | C:-1px | C:-0.0625rem |
 | sm | 4px / 0.25rem | 6px / 0.375rem | 8px / 0.5rem | C:-0.5px | C:-0.03125rem |
 | md | 6px / 0.375rem | 8px / 0.5rem | 12px / 0.75rem | - | - |
-| lg | 8px / 0.5rem | 10px / 0.625rem | 16px / 1rem | - | S:+0.0625rem |
+| lg | 8px / 0.5rem | 10px / 0.625rem | 16px / 1rem | C:+0.5px | C:+0.03125rem, S:+1px, S:+0.0625rem |
 | xl | 10px / 0.625rem | 12px / 0.75rem | 18px / 1.125rem | C:+1px | C:+0.0625rem |
 | 2xl | 12px / 0.75rem | 16px / 1rem | 24px / 1.5rem | - | - |
 | 3xl | 16px / 1rem | 20px / 1.25rem | 32px / 2rem | C:+1px, S:+2px | C:+0.0625rem, S:+0.125rem |
