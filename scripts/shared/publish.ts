@@ -8,7 +8,7 @@ export class Publish extends StaticScript {
 	private static readonly eolDates: Record<number, string> = {
 		11: '2025-03-31',
 		12: '2025-10-31',
-		13: '2026-02-28',
+		13: '2026-03-31',
 		14: '2026-09-30'
 	};
 
