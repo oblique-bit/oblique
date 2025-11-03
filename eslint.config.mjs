@@ -7,6 +7,7 @@ import sandboxEslintConfig from './projects/sandbox/eslint.project-config.mjs';
 import sandboxSsrEslintConfig from './projects/sandbox-ssr/eslint.project-config.mjs';
 import sdsEslintConfig from './projects/sds/eslint.project-config.mjs';
 import serviceNavigationWebComponentEslintConfig from './projects/service-navigation-web-component/eslint.project-config.mjs';
+import toolchainEslintConfig from './projects/toolchain/eslint.project-config.mjs';
 import eslintConfigOblique from './projects/toolchain/src/linting/eslint-config-oblique.mjs';
 
 export default defineConfig(
@@ -65,5 +66,6 @@ export default defineConfig(
 	...sandboxEslintConfig,
 	...sandboxSsrEslintConfig,
 	...sdsEslintConfig,
-	...serviceNavigationWebComponentEslintConfig
+	...serviceNavigationWebComponentEslintConfig,
+	...toolchainEslintConfig
 );
