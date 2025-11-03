@@ -6,52 +6,52 @@
           "padded_container": {
             "padding_top": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.spacing.sm.px}",
+              "$value": "{ob.s.dimension.static.component_size.spacing.sm.px}",
               "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
             },
             "padding_right": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.spacing.sm.px}",
+              "$value": "{ob.s.dimension.static.component_size.spacing.sm.px}",
               "$description": "Top and right padding have to be the same so the position of the close button is visually apealing."
             },
             "padding_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.spacing.sm.px}",
+              "$value": "{ob.s.dimension.static.component_size.spacing.sm.px}",
               "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
             },
             "padding_left": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.spacing.sm.px}",
+              "$value": "{ob.s.dimension.static.component_size.spacing.sm.px}",
               "$description": "Enhances readability and visual appeal, preventing the text from appearing cramped and ensuring clarity."
             },
             "row_gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.element.xs.px}",
+              "$value": "{ob.s.dimension.static.component_size.element.xs.px}",
               "$description": "Sets a minimum vertical gap between container_top and container-buttons to enhance the readability."
             }
           },
           "text_bar": {
             "col_gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.spacing.xs.px}",
+              "$value": "{ob.s.dimension.static.component_size.spacing.xs.px}",
               "$description": "Prevents the title coming to close to the Close button (X)"
             },
             "padding_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.spacing.xs.px}"
+              "$value": "{ob.s.dimension.static.component_size.spacing.xs.px}"
             }
           },
           "text_variant_container": {
             "padding_top": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.micro.xs.px}",
+              "$value": "{ob.s.dimension.static.component_size.micro.xs.px}",
               "$description": "Aligns the title with the status icon and the close button on desktop."
             }
           },
           "buttons_container": {
             "margin_top": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.spacing.xs.px}",
+              "$value": "{ob.s.dimension.static.component_size.spacing.xs.px}",
               "$description": "Proper proximity from the buttons to text above. We were not able to use gap property in the padded container since it increases the gap between the title and the body as well."
             }
           }

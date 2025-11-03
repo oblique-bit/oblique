@@ -348,7 +348,7 @@
         },
         "icon_size": {
           "$type": "sizing",
-          "$value": "{ob.s.dimension.static.spacing.md.rem}"
+          "$value": "{ob.s.dimension.static.component_size.spacing.md.rem}"
         },
         "min-height": {
           "$type": "sizing",
