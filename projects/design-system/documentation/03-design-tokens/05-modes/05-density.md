@@ -1,7 +1,7 @@
-# Density Concept
-**Date:** October 29, 2025  
-**Version:** v1.0
-**Status:** UX Stakeholder Presentation and Approval pending
+# Density System Specification
+**Date:** November 3, 2025  
+**Version:** v2.0
+**Status:** Implementation Ready
 
 ## Overview
 
@@ -47,22 +47,7 @@ To avoid confusion about what impacts component sizing, we establish clear **res
 
 Density mode specifically affects the following component categories:
 
-**✅ Density-Reactive Components:**
-- **Tables** - Row and cell spacing
-- **Lists** - Item spacing and padding  
-- **Form Containers** - Field spacing and layout gaps
-- **Button Containers** - Button group spacing
-- **Cards** - Container padding and content spacing
-- **Modals** - Internal spacing and layout
-- **Tabs** - Tab spacing and container padding
-- **Expansion Panels** - Panel spacing and content gaps
-
-**❌ Density-Neutral Components:**
-- **Individual Buttons** - Size controlled by component-size mode
-- **Input Fields** - Individual sizing not affected by density
-- **Icons, Badges, Tooltips** - Fixed sizing regardless of density
-
-For complete component reactivity across all modes, see [Modes Interplay](./99-modes-interplay.md).
+For complete component reactivity and density-reactive component lists, see [Modes Interplay](./99-modes-interplay.md).
 
 ---
 
@@ -85,66 +70,116 @@ For complete component reactivity across all modes, see [Modes Interplay](./99-m
 - **Spacing**: Generous breathing room for clarity and ease
 - **Target**: Onboarding flows, marketing sites, accessibility-focused interfaces
 
----
-
-## Responsive Density Behavior
-
-### **Device-Appropriate Density Constraints**
-
-Different screen sizes have different density requirements due to space limitations and interaction patterns:
-
-**📱 Mobile (≤768px)**: **Compact density recommended**
-- Small screens need tighter spacing to fit more content
-- Touch interaction patterns expect tighter spacing
-- Users comfortable with scrolling for more content
-- **Guideline**: Designers should restrict to compact density on mobile devices
-- *Note: Technical enforcement in Figma is under investigation*
-
-**📟 Tablet (769px-1024px)**: **Compact + Comfortable recommended**
-- Moderate screen space allows some breathing room
-- Hybrid touch/cursor interaction supports both densities
-
-**🖥️ Desktop (≥1025px)**: **All densities available** 
-- Ample screen space supports spacious layouts
-- Cursor precision enables comfortable larger touch targets
-
-### **Implementation Strategy**
-[Product designers](02-personas.md#21-productproject-designers) set density based on viewport, overriding any broader density preferences for optimal device experience. This ensures interfaces remain usable and appropriate regardless of the underlying density system choice.
+For responsive behavior, device constraints, mode conflicts, and design rationale, see [Modes Interplay](./99-modes-interplay.md).
 
 ---
 
-## Conflicts & Unknown Issues
+## **Technical Implementation Specification**
 
-### **Mobile Touch Targets vs Density**
+### **Density Multiplier System**
+**Current Multipliers:** Compact: 0.75, Standard: 1.0, Spacious: 1.5
 
-**Conflict**: Mobile needs compact density but also 44-48px touch targets. Increasing button size creates inconsistent row heights - rows with buttons become taller than rows without buttons.
+### **Requirements Hierarchy (Implementation Priority)**
+1. **All values different** between compact/standard/spacious modes (HIGHEST PRIORITY)
+2. **Even numbers** preferred for better grid composition
+3. **Divisible by 4** ideal for grid alignment (when achievable without violating #1)
 
-**Status**: Needs specific guidelines for mixed-density layouts where accessibility overrides density constraints.
+### **Core Implementation Rules**
+- ✅ **No 1px or 3px** base values in system (needed only for sizing edge-cases)
+- ✅ **96px maximum** output (64px base × 1.5 spacious)
+- ✅ **All values different** between compact/standard/spacious modes
+- ✅ **Whole numbers only** for CSS compatibility (no decimals in final outputs)
+- ✅ **Even numbers enforced** where possible without creating duplicates
+
+### **Corrector Examples (Mathematical Corrections Applied)**
+
+**Why Correctors Are Needed:**
+Raw multiplication creates problematic values that violate design requirements. Correctors fix these issues:
+
+**✅ 4px base (xs token):**
+- **Raw compact**: 4px × 0.75 = 3px ❌ (violates "no 3px" rule)
+- **Corrected compact**: 3px - 1px = 2px ✅ (C:-1px corrector applied)
+- **Result**: Clean 2px/4px/6px progression
+
+**✅ 12px base (xl token):**  
+- **Raw compact**: 12px × 0.75 = 9px ❌ (odd number, awkward spacing)
+- **Corrected compact**: 9px + 1px = 10px ✅ (C:+1px corrector applied)
+- **Result**: Clean 10px/12px/18px progression
+
+### **Token Architecture**
+
+**Corrector Rules:**
+- ✅ **Never correct the base value** - Standard mode must always remain unchanged
+- ✅ **Only correct compact/spacious** - Apply correctors only to density variations  
+- ✅ **Preserve mathematical base** - Standard mode = pure base value without correctors
+- ✅ **Correctors for uniqueness** - Add correctors to meet "all values different" requirement
+- ✅ **Correctors for grid alignment** - Apply correctors to achieve even numbers or 4px alignment
+
+**Naming Convention:**
+- ✅ **Flat T-shirt structure** - Uses xs/sm/md/lg/xl/2xl/3xl/4xl/5xl/6xl/7xl/8xl/9xl/10xl/11xl
+- ✅ **No hierarchical categories** - Removed micro.sm, element.xs, spacing.md, container.lg structure
+- ✅ **Simple progressive naming** - Direct xs → sm → md → lg → xl → 2xl → ... → 11xl progression
+
+**Px/Rem Consistency:**
+- ✅ **Parallel corrector system** - Decimal rem correctors are acceptable in development
+- ✅ **Mathematical relationship maintained** - All rem values = px values ÷ 16
+
+### **Complete Density Resolution Values**
+
+| T-Shirt | Compact | Standard | Spacious | Px Corrector | Rem Corrector |
+|---------|---------|----------|----------|--------------|---------------|
+| xs | 2px / 0.125rem | 4px / 0.25rem | 6px / 0.375rem | C:-1px | C:-0.0625rem |
+| sm | 4px / 0.25rem | 6px / 0.375rem | 8px / 0.5rem | C:-0.5px | C:-0.03125rem |
+| md | 6px / 0.375rem | 8px / 0.5rem | 12px / 0.75rem | - | - |
+| lg | 8px / 0.5rem | 10px / 0.625rem | 16px / 1rem | - | S:+0.0625rem |
+| xl | 10px / 0.625rem | 12px / 0.75rem | 18px / 1.125rem | C:+1px | C:+0.0625rem |
+| 2xl | 12px / 0.75rem | 16px / 1rem | 24px / 1.5rem | - | - |
+| 3xl | 16px / 1rem | 20px / 1.25rem | 32px / 2rem | C:+1px, S:+2px | C:+0.0625rem, S:+0.125rem |
+| 4xl | 20px / 1.25rem | 24px / 1.5rem | 40px / 2.5rem | C:+2px, S:+4px | C:+0.125rem, S:+0.25rem |
+| 5xl | 24px / 1.5rem | 28px / 1.75rem | 44px / 2.75rem | C:+3px, S:+2px | C:+0.1875rem, S:+0.125rem |
+| 6xl | 24px / 1.5rem | 32px / 2rem | 48px / 3rem | - | - |
+| 7xl | 32px / 2rem | 36px / 2.25rem | 56px / 3.5rem | C:+5px, S:+2px | C:+0.3125rem, S:+0.125rem |
+| 8xl | 32px / 2rem | 40px / 2.5rem | 64px / 4rem | C:+2px, S:+4px | C:+0.125rem, S:+0.25rem |
+| 9xl | 36px / 2.25rem | 48px / 3rem | 72px / 4.5rem | - | - |
+| 10xl | 44px / 2.75rem | 56px / 3.5rem | 88px / 5.5rem | C:+2px, S:+4px | C:+0.125rem, S:+0.25rem |
+| 11xl | 48px / 3rem | 64px / 4rem | 96px / 6rem | - | - |
+
+### **Implementation Notes**
+
+**Grid Compatibility Philosophy:**
+Individual values don't need 4px alignment if the total component height/width aligns to 4px grid for layout consistency.
+
+**JSON File Structure:**
+- **standard.json** - Pure base values with standard multiplier (1.0)
+- **compact.json** - Base values with compact multiplier (0.75) + correctors
+- **spacious.json** - Base values with spacious multiplier (1.5) + correctors
+
+**Token References Pattern:**
+```json
+{
+  "xs": {
+    "px": {
+      "$value": "({ob.p.dimension.px.4} * {ob.g.multiplier.dimension.density.compact}) - 1",
+      "$description": "C:-1px corrector applied"
+    },
+    "rem": {
+      "$value": "({ob.p.dimension.rem.400} * {ob.g.multiplier.dimension.density.compact}) - 0.0625",
+      "$description": "C:-0.0625rem corrector applied"
+    }
+  }
+}
+```
 
 ---
 
-## **Design Rationale**
+## Open Tasks
 
-Density focuses specifically on **layout spacing and container behavior**. For rationale on why modes are kept independent and how they combine, see [Modes Interplay](./99-modes-interplay.md).
-
-### **Grid Independence**
-
-Unlike other design systems (Dell, Horizon), we currently do not tie grid to density [modes](../01-introduction/glossary.md#mode-figma-context). Grid governs horizontal spacing (consistent gutters), while density governs vertical spacing. This may change when we tackle Grid as a foundational system.
-
----
-
-## Open tasks
-
-### **Pending Tasks**
-1. **📋 Stakeholder Approval**: Present density concept to stakeholders for approval and feedback
-
-### **Implementation** (Post-Approval)  
-2. **� Token Architecture Refactoring**: Restructure dimension tokens to support multiple modes (component-size, density)
-3. **⚙️ mode Implementation**: Implement density [variable modes](../01-introduction/glossary.md#mode-figma-context) in [token](../01-introduction/glossary.md#token) system.
-4. **🧪 Testing & Validation**:
- Validate component behavior across all density and size combinations. Test [variable modes](../01-introduction/glossary.md#mode-figma-context) in Figma
-
+### **Implementation Status**
+1. ✅ **Density Analysis Complete** - Mathematical validation and corrector strategy finalized
+2. ✅ **Token Structure Defined** - Flat T-shirt naming and corrector rules established
+3. 🔄 **JSON Implementation** - standard.json complete, compact.json and spacious.json pending
+4. ⏳ **Figma Variable Mode Setup** - Configure Token Studio for density theme switching
 
 ---
 
-*This document focuses specifically on the density system for layout spacing and visual breathing room control.*
+*This document provides the complete technical specification for the density system implementation.*
