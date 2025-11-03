@@ -1,0 +1,192 @@
+{
+  "ob": {
+    "s": {
+      "dimension": {
+        "static": {
+          "density": {
+            "xs": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.4}",
+                "$description": "4px - Minimal spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.400}",
+                "$description": "4px equivalent - Minimal spacing (static density)"
+              }
+            },
+            "sm": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.6}",
+                "$description": "6px - Small spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.500}",
+                "$description": "6px equivalent - Small spacing (static density)"
+              }
+            },
+            "md": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.8}",
+                "$description": "8px - Medium spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.600}",
+                "$description": "8px equivalent - Medium spacing (static density)"
+              }
+            },
+            "lg": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.10}",
+                "$description": "10px - Large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.700}",
+                "$description": "10px equivalent - Large spacing (static density)"
+              }
+            },
+            "xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.12}",
+                "$description": "12px - Extra large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.800}",
+                "$description": "12px equivalent - Extra large spacing (static density)"
+              }
+            },
+            "2xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.16}",
+                "$description": "16px - 2X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.900}",
+                "$description": "16px equivalent - 2X large spacing (static density)"
+              }
+            },
+            "3xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.20}",
+                "$description": "20px - 3X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.1000}",
+                "$description": "20px equivalent - 3X large spacing (static density)"
+              }
+            },
+            "4xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.24}",
+                "$description": "24px - 4X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.1100}",
+                "$description": "24px equivalent - 4X large spacing (static density)"
+              }
+            },
+            "5xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.28}",
+                "$description": "28px - 5X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.1200}",
+                "$description": "28px equivalent - 5X large spacing (static density)"
+              }
+            },
+            "6xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.32}",
+                "$description": "32px - 6X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.1300}",
+                "$description": "32px equivalent - 6X large spacing (static density)"
+              }
+            },
+            "7xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.36}",
+                "$description": "36px - 7X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.1400}",
+                "$description": "36px equivalent - 7X large spacing (static density)"
+              }
+            },
+            "8xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.40}",
+                "$description": "40px - 8X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.1500}",
+                "$description": "40px equivalent - 8X large spacing (static density)"
+              }
+            },
+            "9xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.48}",
+                "$description": "48px - 9X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.1600}",
+                "$description": "48px equivalent - 9X large spacing (static density)"
+              }
+            },
+            "10xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.56}",
+                "$description": "56px - 10X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.1700}",
+                "$description": "56px equivalent - 10X large spacing (static density)"
+              }
+            },
+            "11xl": {
+              "px": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.px.64}",
+                "$description": "64px - 11X large spacing (static density)"
+              },
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.p.dimension.rem.1800}",
+                "$description": "64px equivalent - 11X large spacing (static density)"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
