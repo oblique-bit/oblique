@@ -3,7 +3,7 @@
     "s": {
       "dimension": {
         "dynamic": {
-          "component_size": {
+          "density": {
             "none": {
             "px": {
               "$type": "dimension",
