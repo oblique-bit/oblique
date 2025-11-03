@@ -1,3 +1,9 @@
+# [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
+
+## Features
+
+- **cli:** display meaningful error when trying to execute unknown command ([72453297](https://github.com/oblique-bit/oblique/commit/72453297d7f397aee8ad45dce2828b14d8791a21))
+
 # [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.1...14.0.0) (2025-09-22)
 
 ## Bug Fixes

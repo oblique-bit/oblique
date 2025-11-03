@@ -1,3 +1,16 @@
+# [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
+
+## Bug Fixes
+
+- **sds:** harmonize title paddings ([ebd61d85](https://github.com/oblique-bit/oblique/commit/ebd61d85b196600df3a60b53901c80522d6bdd6e))
+
+## Features
+
+- **button:** demo `disabledInteractive` ([14b13d74](https://github.com/oblique-bit/oblique/commit/14b13d7465d45d5a9c1ed6831e883d8ef7cfd763))
+- **cms:** add accessibility tab ([c898db99](https://github.com/oblique-bit/oblique/commit/c898db9939d073b6aea309a3bb0c47dd233f9b9b))
+- **icon:** show info card in a popover on small screens ([f1287ec4](https://github.com/oblique-bit/oblique/commit/f1287ec4861e23f69d5c289aa2e016db19c7e3c8))
+- **icon:** make icon gallery responsive ([b6b142ab](https://github.com/oblique-bit/oblique/commit/b6b142abf593015d1d5e3695584d1a0c7a8d5a15))
+
 # [14.0.1](https://github.com/oblique-bit/oblique/compare/14.0.0...14.0.1) (2025-10-23)
 
 ## Bug Fixes

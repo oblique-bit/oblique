@@ -1,3 +1,10 @@
+# [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
+
+## Features
+
+- **linting:** update ruleset to match latest eslint version ([2c7217a0](https://github.com/oblique-bit/oblique/commit/2c7217a0fa369904bb65ccb95b81fe2c28fafd6c))
+- **linting:** create ESLint shareable config ([b700e326](https://github.com/oblique-bit/oblique/commit/b700e326c95db46ef7df06dabe7bbcc62ea9e828))
+
 # [14.0.0](https://github.com/oblique-bit/oblique/compare/13.3.3...14.0.0) (2025-09-22)
 
 ## Features

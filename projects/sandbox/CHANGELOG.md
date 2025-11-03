@@ -1,3 +1,13 @@
+# [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
+
+## Bug Fixes
+
+- **sandbox:** adjust column-layouts to valid values ([92f73c10](https://github.com/oblique-bit/oblique/commit/92f73c10280cf439c39fb495c8822a9179e16341))
+
+## Features
+
+- **button:** demo `disabledInteractive` ([3f32048f](https://github.com/oblique-bit/oblique/commit/3f32048ff0cbc404d795adcd1fb40d93a6cf58fb))
+
 # [14.0.1](https://github.com/oblique-bit/oblique/compare/14.0.0...14.0.1) (2025-10-23)
 
 ## Bug Fixes
