@@ -170,6 +170,11 @@ Individual values don't need 4px alignment if the total component height/width a
 }
 ```
 
+**Tokens Studio Compatibility Notes:**
+- ✅ **Parentheses required**: Mathematical expressions use `({token} * {multiplier}) ± corrector` syntax
+- ✅ **Spaces mandatory**: All operators must have spaces around them for Tokens Studio compatibility
+- ✅ **Simple operations**: Tokens Studio supports basic arithmetic but complex expressions need parentheses for proper evaluation
+
 ---
 
 ## Open Tasks

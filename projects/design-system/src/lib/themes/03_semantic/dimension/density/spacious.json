@@ -7,24 +7,24 @@
             "xs": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.4} * {ob.g.multiplier.dimension.density.spacious} + 2",
+                "$value": "({ob.p.dimension.px.4} * {ob.g.multiplier.dimension.density.spacious}) + 2",
                 "$description": "8px - Minimal spacing (spacious density) - S:+2px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.400} * {ob.g.multiplier.dimension.density.spacious} + 0.125",
+                "$value": "({ob.p.dimension.rem.400} * {ob.g.multiplier.dimension.density.spacious}) + 0.125",
                 "$description": "8px equivalent - Minimal spacing (spacious density) - S:+0.125rem corrector applied"
               }
             },
             "sm": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.6} * {ob.g.multiplier.dimension.density.spacious} - 1",
+                "$value": "({ob.p.dimension.px.6} * {ob.g.multiplier.dimension.density.spacious}) - 1",
                 "$description": "8px - Small spacing (spacious density) - S:-1px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.500} * {ob.g.multiplier.dimension.density.spacious} - 0.0625",
+                "$value": "({ob.p.dimension.rem.500} * {ob.g.multiplier.dimension.density.spacious}) - 0.0625",
                 "$description": "8px equivalent - Small spacing (spacious density) - S:-0.0625rem corrector applied"
               }
             },
@@ -43,12 +43,12 @@
             "lg": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.10} * {ob.g.multiplier.dimension.density.spacious} + 1",
+                "$value": "({ob.p.dimension.px.10} * {ob.g.multiplier.dimension.density.spacious}) + 1",
                 "$description": "16px - Large spacing (spacious density) - S:+1px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.700} * {ob.g.multiplier.dimension.density.spacious} + 0.0625",
+                "$value": "({ob.p.dimension.rem.700} * {ob.g.multiplier.dimension.density.spacious}) + 0.0625",
                 "$description": "16px equivalent - Large spacing (spacious density) - S:+0.0625rem corrector applied"
               }
             },
@@ -79,37 +79,37 @@
             "3xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.20} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "30px - 3X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.px.20} * {ob.g.multiplier.dimension.density.spacious}) + 2",
+                "$description": "32px - 3X large spacing (spacious density) - S:+2px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1000} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "30px equivalent - 3X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.rem.1000} * {ob.g.multiplier.dimension.density.spacious}) + 0.125",
+                "$description": "32px equivalent - 3X large spacing (spacious density) - S:+0.125rem corrector applied"
               }
             },
             "4xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.24} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "36px - 4X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.px.24} * {ob.g.multiplier.dimension.density.spacious}) + 4",
+                "$description": "40px - 4X large spacing (spacious density) - S:+4px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1100} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "36px equivalent - 4X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.rem.1100} * {ob.g.multiplier.dimension.density.spacious}) + 0.25",
+                "$description": "40px equivalent - 4X large spacing (spacious density) - S:+0.25rem corrector applied"
               }
             },
             "5xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.28} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "42px - 5X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.px.28} * {ob.g.multiplier.dimension.density.spacious}) + 2",
+                "$description": "44px - 5X large spacing (spacious density) - S:+2px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1200} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "42px equivalent - 5X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.rem.1200} * {ob.g.multiplier.dimension.density.spacious}) + 0.125",
+                "$description": "44px equivalent - 5X large spacing (spacious density) - S:+0.125rem corrector applied"
               }
             },
             "6xl": {
@@ -127,61 +127,61 @@
             "7xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.36} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "54px - 7X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.px.36} * {ob.g.multiplier.dimension.density.spacious}) + 2",
+                "$description": "56px - 7X large spacing (spacious density) - S:+2px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1400} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "54px equivalent - 7X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.rem.1400} * {ob.g.multiplier.dimension.density.spacious}) + 0.125",
+                "$description": "56px equivalent - 7X large spacing (spacious density) - S:+0.125rem corrector applied"
               }
             },
             "8xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.40} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "60px - 8X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.px.40} * {ob.g.multiplier.dimension.density.spacious}) + 4",
+                "$description": "64px - 8X large spacing (spacious density) - S:+4px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1500} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "60px equivalent - 8X large spacing (spacious density)"
+                "$value": "({ob.p.dimension.rem.1500} * {ob.g.multiplier.dimension.density.spacious}) + 0.25",
+                "$description": "64px equivalent - 8X large spacing (spacious density) - S:+0.25rem corrector applied"
               }
             },
             "9xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.48} * {ob.g.multiplier.dimension.density.spacious} - 8",
-                "$description": "64px - 9X large spacing (spacious density) - S:-8px corrector applied"
+                "$value": "({ob.p.dimension.px.48} * {ob.g.multiplier.dimension.density.spacious})",
+                "$description": "72px - 9X large spacing (spacious density)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1600} * {ob.g.multiplier.dimension.density.spacious} - 0.5",
-                "$description": "64px equivalent - 9X large spacing (spacious density) - S:-0.5rem corrector applied"
+                "$value": "({ob.p.dimension.rem.1600} * {ob.g.multiplier.dimension.density.spacious})",
+                "$description": "72px equivalent - 9X large spacing (spacious density)"
               }
             },
             "10xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.56} * {ob.g.multiplier.dimension.density.spacious} - 12",
-                "$description": "72px - 10X large spacing (spacious density) - S:-12px corrector applied"
+                "$value": "({ob.p.dimension.px.56} * {ob.g.multiplier.dimension.density.spacious}) + 4",
+                "$description": "88px - 10X large spacing (spacious density) - S:+4px corrector applied"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1700} * {ob.g.multiplier.dimension.density.spacious} - 0.75",
-                "$description": "72px equivalent - 10X large spacing (spacious density) - S:-0.75rem corrector applied"
+                "$value": "({ob.p.dimension.rem.1700} * {ob.g.multiplier.dimension.density.spacious}) + 0.25",
+                "$description": "88px equivalent - 10X large spacing (spacious density) - S:+0.25rem corrector applied"
               }
             },
             "11xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.64} * {ob.g.multiplier.dimension.density.spacious} - 16",
-                "$description": "80px - 11X large spacing (spacious density) - S:-16px corrector applied"
+                "$value": "({ob.p.dimension.px.64} * {ob.g.multiplier.dimension.density.spacious})",
+                "$description": "96px - 11X large spacing (spacious density)"
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.1800} * {ob.g.multiplier.dimension.density.spacious} - 1",
-                "$description": "80px equivalent - 11X large spacing (spacious density) - S:-1rem corrector applied"
+                "$value": "({ob.p.dimension.rem.1800} * {ob.g.multiplier.dimension.density.spacious})",
+                "$description": "96px equivalent - 11X large spacing (spacious density)"
               }
             }
           }
