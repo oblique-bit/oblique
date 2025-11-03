@@ -87,7 +87,7 @@ export function provideObliqueTestingConfiguration(
 		}),
 		{
 			provide: OB_TRANSLATION_CONFIGURATION,
-			useValue: {flatten: config.translate?.flatten ?? true, additionalFiles: config.translate?.additionalFiles}
+			useValue: {additionalFiles: config.translate?.additionalFiles, flatten: config.translate?.flatten ?? true}
 		},
 		{provide: WINDOW, useValue: window},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
@@ -106,14 +106,14 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 	const {config, flatten, additionalFiles} = configuration;
 	return makeEnvironmentProviders([
 		provideTranslateService({
-			...config,
 			loader: {
 				provide: TranslateLoader,
 				useFactory: getTranslateLoader,
 				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION]
-			}
+			},
+			...config
 		}),
-		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {flatten: flatten ?? true, additionalFiles}}
+		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}}
 	]);
 }
 

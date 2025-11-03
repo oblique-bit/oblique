@@ -26,10 +26,10 @@
 	<li *ngIf="(loginState$ | async | obIsUserLoggedIn: true) && displayProfile">
 		<ob-service-navigation-profile [userName]="userName$ | async" [profileUrls]="profileUrls$ | async" [links]="profileLinks" />
 	</li>
-	<li *ngIf="displayAuthentication && loginState$ | async as loginState">
+	<li *ngIf="displayAuthentication">
 		<ob-service-navigation-authentication
 			[loginUrl]="loginUrl$ | async"
-			[isLoggedIn]="loginState | obIsUserLoggedIn: true"
+			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: true"
 			(logoutClicked)="logoutClick()"
 		/>
 	</li>

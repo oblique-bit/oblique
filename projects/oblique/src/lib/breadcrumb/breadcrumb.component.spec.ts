@@ -1,5 +1,5 @@
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {By} from '@angular/platform-browser';
@@ -72,13 +72,12 @@ describe('ObBreadcrumbComponent', () => {
 			fixture.detectChanges();
 		});
 
-		it('should render the expected amount of breadcrumbs', waitForAsync(() => {
+		it('should render the expected amount of breadcrumbs', async () => {
 			component.ngOnInit();
-			fixture.whenStable().then(() => {
-				const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
-				expect(navEl.children.length).toBe(4);
-			});
-		}));
+			await fixture.whenStable();
+			const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
+			expect(navEl.children.length).toBe(4);
+		});
 
 		it('should beautify the url of a path with no label', () => {
 			component.ngOnInit();
@@ -175,13 +174,12 @@ describe('ObBreadcrumbComponent', () => {
 			fixture.detectChanges();
 		});
 
-		it('should render the expected amount of breadcrumbs', waitForAsync(() => {
+		it('should render the expected amount of breadcrumbs', async () => {
 			component.ngOnInit();
-			fixture.whenStable().then(() => {
-				const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
-				expect(navEl.children.length).toBe(5);
-			});
-		}));
+			await fixture.whenStable();
+			const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
+			expect(navEl.children.length).toBe(5);
+		});
 
 		it('should beautify the url of a path with no label and a param', () => {
 			component.ngOnInit();
@@ -259,13 +257,12 @@ describe('ObBreadcrumbComponent', () => {
 			fixture.detectChanges();
 		});
 
-		it('should render the expected amount of breadcrumbs', waitForAsync(() => {
+		it('should render the expected amount of breadcrumbs', async () => {
 			component.ngOnInit();
-			fixture.whenStable().then(() => {
-				const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
-				expect(navEl.children.length).toBe(3);
-			});
-		}));
+			await fixture.whenStable();
+			const navEl = fixture.debugElement.query(By.css('.ob-breadcrumbs'));
+			expect(navEl.children.length).toBe(3);
+		});
 
 		it('should translate a label and replace params', () => {
 			component.ngOnInit();

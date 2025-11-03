@@ -10,8 +10,8 @@ import {CodeExampleDirective} from './code-example.directive';
 class DummyComponent {}
 
 @Component({
-	standalone: true,
 	imports: [CodeExampleDirective],
+	standalone: true,
 	template: '<div appCodeExample [codeExampleComponent]="component"></div>'
 })
 class CodeExampleDirectiveTestComponent {

@@ -10,9 +10,9 @@ import {HtmlTableExampleCollapsePreviewComponent} from './previews/collapse/html
 
 @Component({
 	selector: 'app-code-example-html-table',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HtmlTableCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'html-table-examples';

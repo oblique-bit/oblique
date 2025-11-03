@@ -3,10 +3,10 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-nested-form-grandchild-sample',
-	exportAs: 'grandChild',
+	standalone: false,
 	templateUrl: './nested-form-grandchild-sample.component.html',
 	styleUrl: './mandatory.scss',
-	standalone: false
+	exportAs: 'grandChild'
 })
 export class NestedFormGrandChildSampleComponent {
 	grandChildForm = inject(UntypedFormBuilder).group({

@@ -50,6 +50,19 @@ export {
 export {ObOutlineDirective} from './outline.directive';
 
 @NgModule({
+	declarations: [
+		ObAriaMenuButtonDirective,
+		ObMasterLayoutComponent,
+		ObMasterLayoutFooterComponent,
+		ObMasterLayoutHeaderComponent,
+		ObMasterLayoutHeaderToggleDirective,
+		ObMasterLayoutNavigationComponent,
+		ObMasterLayoutNavigationItemDirective,
+		ObMasterLayoutNavigationMenuDirective,
+		ObMasterLayoutNavigationSubMenuItemComponent,
+		ObMasterLayoutNavigationToggleDirective,
+		ObOutlineDirective
+	],
 	imports: [
 		CommonModule,
 		MatButtonModule,
@@ -69,19 +82,6 @@ export {ObOutlineDirective} from './outline.directive';
 		ScrollingModule,
 		TranslateModule,
 		ObLocalizePipe
-	],
-	declarations: [
-		ObAriaMenuButtonDirective,
-		ObMasterLayoutComponent,
-		ObMasterLayoutFooterComponent,
-		ObMasterLayoutHeaderComponent,
-		ObMasterLayoutHeaderToggleDirective,
-		ObMasterLayoutNavigationComponent,
-		ObMasterLayoutNavigationItemDirective,
-		ObMasterLayoutNavigationMenuDirective,
-		ObMasterLayoutNavigationSubMenuItemComponent,
-		ObMasterLayoutNavigationToggleDirective,
-		ObOutlineDirective
 	],
 	exports: [
 		ObMasterLayoutComponent,

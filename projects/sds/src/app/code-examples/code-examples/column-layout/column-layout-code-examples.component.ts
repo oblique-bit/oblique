@@ -7,9 +7,9 @@ import {ColumnLayoutExampleStackblitzLinkPreviewComponent} from './previews/stac
 
 @Component({
 	selector: 'app-code-example-column-layout',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColumnLayoutCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'column-layout-examples';

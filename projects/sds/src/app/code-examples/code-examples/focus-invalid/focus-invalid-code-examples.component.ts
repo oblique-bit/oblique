@@ -7,9 +7,9 @@ import {FocusInvalidExampleDefaultPreviewComponent} from '../focus-invalid/previ
 
 @Component({
 	selector: 'app-code-example-focus-invalid',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FocusInvalidCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'focus-invalid-examples';

@@ -5,9 +5,9 @@ import {Component, Input} from '@angular/core';
  */
 @Component({
 	selector: 'ob-spinner',
-	exportAs: 'obSpinner',
+	standalone: true,
 	template: '',
-	standalone: true
+	exportAs: 'obSpinner'
 })
 export class ObMockSpinnerComponent {
 	@Input() channel = '';

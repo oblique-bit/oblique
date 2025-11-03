@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {Component, Type} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
@@ -8,14 +8,14 @@ import {ObMockUnsavedChangesService} from './_mocks/mock-unsaved-changes.service
 import {By} from '@angular/platform-browser';
 
 @Component({
-	template: ` <form obUnsavedChanges></form>`,
-	standalone: false
+	standalone: false,
+	template: ` <form obUnsavedChanges></form>`
 })
 class FaultyTestComponent {}
 
 @Component({
-	template: ` <form id="test" [isActive]="true" obUnsavedChanges></form>`,
-	standalone: false
+	standalone: false,
+	template: ` <form id="test" [isActive]="true" obUnsavedChanges></form>`
 })
 class TestComponent {}
 
@@ -29,7 +29,7 @@ describe(ObUnsavedChangesDirective.name, () => {
 		directive = fixture.debugElement.query(By.directive(ObUnsavedChangesDirective)).injector.get(ObUnsavedChangesDirective);
 	};
 
-	beforeEach(waitForAsync(() => {
+	beforeEach(async () => {
 		unsavedChangesServiceMock = {
 			isActive: true,
 			watch: jest.fn(),
@@ -38,12 +38,12 @@ describe(ObUnsavedChangesDirective.name, () => {
 			ignoreChanges: jest.fn()
 		};
 
-		TestBed.configureTestingModule({
+		await TestBed.configureTestingModule({
 			declarations: [FaultyTestComponent, TestComponent],
 			providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
 			imports: [ObUnsavedChangesDirective, CommonModule]
 		}).compileComponents();
-	}));
+	});
 
 	it('with neither id nor ngbTab should throw an error', () => {
 		expect(() => initFixture(FaultyTestComponent)).toThrow();

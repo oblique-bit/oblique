@@ -1,27 +1,29 @@
 <ob-notification />
-<div class="search">
-	<mat-form-field>
-		<mat-label>Search icons</mat-label>
-		<input matInput [formControl]="iconsFilter" />
-		<button type="button" [obInputClear]="iconsFilter">
-			<mat-icon svgIcon="xmark_circle" />
-			<span class="ob-screen-reader-only">Clear search</span>
-		</button>
-		<mat-hint>Search by name</mat-hint>
-	</mat-form-field>
+<div class="search-container">
+	<div class="search">
+		<mat-form-field>
+			<mat-label>Search icons</mat-label>
+			<input matInput [formControl]="iconsFilter" />
+			<button type="button" [obInputClear]="iconsFilter">
+				<mat-icon svgIcon="xmark_circle" />
+				<span class="ob-screen-reader-only">Clear search</span>
+			</button>
+			<mat-hint>Search by name</mat-hint>
+		</mat-form-field>
 
-	<mat-form-field>
-		<mat-label>Category</mat-label>
-		<mat-select panelClass="by-category-filter" value="'ALL'" [formControl]="byCategoryFilter">
-			<mat-option value="ALL">All icons</mat-option>
-			<mat-divider />
-			@for (item of obECategory | keyvalue; track item) {
-				<mat-option [value]="item.value">
-					{{ item.value }}
-				</mat-option>
-			}
-		</mat-select>
-	</mat-form-field>
+		<mat-form-field>
+			<mat-label>Category</mat-label>
+			<mat-select panelClass="by-category-filter" value="'ALL'" [formControl]="byCategoryFilter">
+				<mat-option value="ALL">All icons</mat-option>
+				<mat-divider />
+				@for (item of obECategory | keyvalue; track item) {
+					<mat-option [value]="item.value">
+						{{ item.value }}
+					</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+	</div>
 </div>
 <h3 class="ob-screen-reader-only">Current icon collection</h3>
 @if ((filteredIcons$ | async).length === 0) {
@@ -38,7 +40,7 @@
 		}
 	</div>
 	<div class="info-card">
-		@if (isInfoCardVisible) {
+		@if (isInfoCardVisible && !showDialog) {
 			<mat-card>
 				<div mat-card-image class="image-container">
 					<mat-icon class="icon" [svgIcon]="selectedIconName" />

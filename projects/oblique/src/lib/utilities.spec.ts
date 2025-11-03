@@ -175,7 +175,7 @@ describe('utilities', () => {
 					});
 				});
 
-				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+				it('should use "TranslateFakeCompiler" as "TranslateCompiler"', () => {
 					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
 				});
 			});
@@ -360,7 +360,7 @@ describe('utilities', () => {
 					});
 				});
 
-				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+				it('should use "TranslateFakeCompiler" as "TranslateCompiler"', () => {
 					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
 				});
 			});
@@ -419,7 +419,7 @@ describe('utilities', () => {
 			});
 
 			describe('loader', () => {
-				it('should be an instance of ObMultiTranslateLoader', () => {
+				it('should be an instance of "ObMultiTranslateLoader"', () => {
 					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
 				});
 			});
@@ -449,15 +449,13 @@ describe('utilities', () => {
 			});
 		});
 
-		describe('with custom configuration', () => {
+		describe('with a custom configuration containing "additionalFiles"', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
 						provideHttpClient(),
 						provideObliqueTranslations({
 							flatten: false,
-							config: {loader: TranslateFakeLoader},
 							additionalFiles: [
 								{prefix: './path1/', suffix: '.json'},
 								{prefix: './path2/', suffix: '.js'}
@@ -477,12 +475,12 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
+			it('should use "TranslateFakeCompiler" as "TranslateCompiler"', () => {
 				expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
 			});
 
 			describe('loader', () => {
-				it('should be an instance of ObMultiTranslateLoader', () => {
+				it('should be an instance of "ObMultiTranslateLoader"', () => {
 					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
 				});
 			});
@@ -509,6 +507,54 @@ describe('utilities', () => {
 					{index: 3, url: './path2/en.js'}
 				])('should request $url on $index call', ({index, url}) => {
 					expect(httpClient.get).toHaveBeenNthCalledWith(index, url);
+				});
+			});
+		});
+
+		describe('with a custom configuration containing a config with its own loader', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						provideHttpClient(),
+						provideObliqueTranslations({
+							flatten: false,
+							config: {loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}}
+						})
+					]
+				});
+			});
+
+			it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
+				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+					flatten: false
+				});
+			});
+
+			it('should use "TranslateFakeCompiler" as "TranslateLoader"', () => {
+				expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+			});
+
+			describe('loader', () => {
+				it('should be an instance of "TranslateFakeLoader"', () => {
+					expect(TestBed.inject(TranslateLoader) instanceof TranslateFakeLoader).toBe(true);
+				});
+			});
+
+			describe('getTranslation', () => {
+				let httpClient: HttpClient;
+				beforeEach(() => {
+					httpClient = TestBed.inject(HttpClient);
+					jest.spyOn(httpClient, 'get');
+					TestBed.inject(TranslateLoader).getTranslation('en');
+				});
+
+				afterEach(() => {
+					jest.clearAllMocks();
+				});
+
+				it(`should do 0 http calls`, () => {
+					expect(httpClient.get).toHaveBeenCalledTimes(0);
 				});
 			});
 		});

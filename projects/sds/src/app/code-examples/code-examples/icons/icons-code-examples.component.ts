@@ -10,9 +10,9 @@ import {IconsExampleTextPreviewComponent} from './previews/text/icons-example-te
 
 @Component({
 	selector: 'app-code-example-icons',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'icons-examples';

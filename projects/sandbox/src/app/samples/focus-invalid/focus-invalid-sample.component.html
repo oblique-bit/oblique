@@ -1,5 +1,5 @@
 <h2 class="page-header">Focus Invalid</h2>
-<ob-column-layout [left]="false">
+<ob-column-layout left="NONE">
 	<ng-container column-main-content>
 		<h3>Reactive form</h3>
 		<form #ngForm obFocusInvalid [formGroup]="focusInvalidFormGroup" (submit)="validateForm(ngForm.valid)">

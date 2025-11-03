@@ -19,6 +19,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 @Component({
+	standalone: false,
 	template: `<ob-service-navigation>
 		<ng-template #customWidgetTemplate>
 			<button type="button">first button</button>
@@ -26,8 +27,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 		<ng-template #customWidgetTemplate>
 			<button type="button">second button</button>
 		</ng-template>
-	</ob-service-navigation>`,
-	standalone: false
+	</ob-service-navigation>`
 })
 class CustomControlsTestComponent {}
 
@@ -77,9 +77,9 @@ describe('ObServiceNavigationComponent', () => {
 		languages: ObServiceNavigationLanguagesHarness.hostSelector
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 		TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockServiceNavigationService});
-		TestBed.configureTestingModule({
+		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe, CustomControlsTestComponent],
 			imports: [RouterTestingModule, HttpClientTestingModule]
 		}).compileComponents();

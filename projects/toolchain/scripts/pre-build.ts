@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import {Log} from '../../../scripts/shared/log';
+import {checkRules} from './check-lint-rules';
 
 const workingDir: string = process.cwd();
 const cliDistDir: string = path.resolve(workingDir, '../../dist/toolchain');
@@ -16,4 +17,6 @@ try {
 		Log.error(err);
 	}
 }
+Log.info('Checking linting rules');
+checkRules();
 Log.success();

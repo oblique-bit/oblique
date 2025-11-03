@@ -4,8 +4,8 @@ import {By} from '@angular/platform-browser';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
 
 @Component({
-	template: '<div class="ob-master-layout-header"><span obMasterLayoutNavigationMenu> test </span></div>',
-	standalone: false
+	standalone: false,
+	template: '<div class="ob-master-layout-header"><span obMasterLayoutNavigationMenu> test </span></div>'
 })
 class TestComponent {}
 

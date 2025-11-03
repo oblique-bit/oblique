@@ -1,6 +1,6 @@
 import {TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, Subject, firstValueFrom, of} from 'rxjs';
+import {Observable, Subject, firstValueFrom, of, throwError} from 'rxjs';
 import {map, skip} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
@@ -12,12 +12,15 @@ import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-ti
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 import {provideHttpClient} from '@angular/common/http';
 import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
+import {ObNotificationService} from '../notification/notification.service';
 
 describe('ObServiceNavigationService', () => {
 	let service: ObServiceNavigationService;
 	let configService: ObServiceNavigationConfigApiService;
 	let applicationsService: ObServiceNavigationApplicationsService;
 	let redirectorService: ObServiceNavigationTimeoutRedirectorService;
+	let notification: ObNotificationService;
+
 	const mockUrls = {
 		pollingInterval: 10,
 		pollingNotificationsInterval: 30,
@@ -140,6 +143,28 @@ describe('ObServiceNavigationService', () => {
 
 		it('should be created', () => {
 			expect(service).toBeTruthy();
+		});
+
+		describe('with an error while fetching the config', () => {
+			beforeEach(() => {
+				service.setUpRootUrls(ObEPamsEnvironment.TEST);
+				notification = TestBed.inject(ObNotificationService);
+				jest.spyOn(configService, 'fetchUrls').mockReturnValue(throwError(() => new Error('test')));
+				jest.spyOn(notification, 'error');
+			});
+
+			it('should throw an error', async () => {
+				service.getLoginUrl$().subscribe();
+				await expect(firstValueFrom(service.getLoginUrl$())).rejects.toThrow('Cannot load service navigation config');
+			});
+
+			it('should show a notification', () => {
+				service.getLoginUrl$().subscribe({});
+				expect(notification.error).toHaveBeenCalledWith({
+					message: 'i18n.oblique.service-navigation.config.error.message',
+					title: 'i18n.oblique.service-navigation.config.error.title'
+				});
+			});
 		});
 
 		describe('setUpRootUrls and setReturnUrl', () => {

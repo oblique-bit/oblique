@@ -4,8 +4,8 @@ import {MatIconModule} from '@angular/material/icon';
 
 @Component({
 	selector: 'app-list-group-example-icon',
-	templateUrl: './list-group-example-icon-checkbox.component.html',
 	imports: [MatListModule, MatIconModule],
+	templateUrl: './list-group-example-icon-checkbox.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListGroupExampleIconCheckboxComponent {

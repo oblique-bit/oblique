@@ -8,9 +8,9 @@ import {NotificationExampleOtherOptionsPreviewComponent} from '../notification/p
 
 @Component({
 	selector: 'app-code-example-notification',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'notification-examples';

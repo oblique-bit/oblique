@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'sb-column-layout-sample',
-	templateUrl: './column-layout-sample.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './column-layout-sample.component.html'
 })
 export class ColumnLayoutSampleComponent {
 	left = 'OPENED';

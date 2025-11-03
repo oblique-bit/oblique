@@ -8,9 +8,9 @@ import {DateComponentExampleComponent} from './previews/date-component/date-comp
 
 @Component({
 	selector: 'app-code-example-date',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DateCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'date-examples';

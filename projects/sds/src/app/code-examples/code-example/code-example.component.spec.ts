@@ -13,8 +13,8 @@ import type {PreviewComponent} from '../code-examples.model';
 
 @Component({
 	selector: 'app-preview',
-	template: '',
-	standalone: true
+	standalone: true,
+	template: ''
 })
 class MockPreviewComponent {}
 
@@ -52,10 +52,8 @@ describe(CodeExampleComponent.name, () => {
 		fixture.componentRef.setInput('codeSnippets', inputs?.codeSnippets ?? []);
 		fixture.componentRef.setInput('idPrefix', inputs?.idPrefix ?? '');
 		fixture.componentRef.setInput('preview', inputs?.preview);
-
-		await fixture.whenStable().then(() => {
-			fixture.detectChanges();
-		});
+		await fixture.whenStable();
+		fixture.detectChanges();
 	};
 
 	afterEach(() => {
@@ -111,9 +109,9 @@ describe(CodeExampleComponent.name, () => {
 	);
 
 	describe('title property', () => {
-		beforeEach(() => {
+		beforeEach(async () => {
 			// cannot use setupComponent because of whenStable
-			TestBed.configureTestingModule({
+			await TestBed.configureTestingModule({
 				imports: [
 					MockPreviewComponent,
 					IdPipe,

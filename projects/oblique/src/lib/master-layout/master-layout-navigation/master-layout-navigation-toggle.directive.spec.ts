@@ -5,8 +5,8 @@ import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigatio
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 
 @Component({
-	template: '<span obMasterLayoutNavigationToggle> test </span>',
-	standalone: false
+	standalone: false,
+	template: '<span obMasterLayoutNavigationToggle> test </span>'
 })
 class TestComponent {}
 

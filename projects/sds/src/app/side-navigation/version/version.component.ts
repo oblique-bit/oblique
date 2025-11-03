@@ -16,10 +16,10 @@ import {VersionService} from '../../shared/version/version.service';
 
 @Component({
 	selector: 'app-version',
+	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, MatLabel, MatTooltip],
 	templateUrl: './version.component.html',
 	styleUrl: './version.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, MatLabel, MatTooltip]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VersionComponent implements OnChanges {
 	readonly idPrefix = input('');

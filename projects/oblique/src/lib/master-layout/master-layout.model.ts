@@ -78,6 +78,9 @@ export interface ObILocale {
 	locales: (string | ObILocaleObject)[];
 	defaultLanguage: string;
 	disabled: boolean;
+	/**
+	 *  @deprecated since Oblique 14.1.0. The property is actually ignored as it has been replaced with ObMasterLayoutConfig.header.serviceNavigation.displayLanguages.
+	 */
 	display: boolean;
 	languages: Record<string, string>;
 }

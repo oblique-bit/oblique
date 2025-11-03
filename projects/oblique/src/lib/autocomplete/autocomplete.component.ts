@@ -17,17 +17,6 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 
 @Component({
 	selector: 'ob-autocomplete',
-	templateUrl: './autocomplete.component.html',
-	styleUrls: ['./autocomplete.component.scss'],
-	host: {class: 'ob-autocomplete'},
-	encapsulation: ViewEncapsulation.None,
-	providers: [
-		{
-			provide: NG_VALUE_ACCESSOR,
-			useExisting: ObAutocompleteComponent,
-			multi: true
-		}
-	],
 	imports: [
 		MatFormFieldModule,
 		MatIconModule,
@@ -44,6 +33,17 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 		AsyncPipe,
 		ObHighlightTextPipe,
 		TranslateModule
+	],
+	templateUrl: './autocomplete.component.html',
+	styleUrls: ['./autocomplete.component.scss'],
+	encapsulation: ViewEncapsulation.None,
+	host: {class: 'ob-autocomplete'},
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: ObAutocompleteComponent,
+			multi: true
+		}
 	]
 })
 export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor, OnDestroy {

@@ -8,9 +8,9 @@ import {SchemaValidationExampleTemplateDrivenFormPreviewComponent} from './previ
 
 @Component({
 	selector: 'app-code-example-schema-validation',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SchemaValidationCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'schema-validation-examples';

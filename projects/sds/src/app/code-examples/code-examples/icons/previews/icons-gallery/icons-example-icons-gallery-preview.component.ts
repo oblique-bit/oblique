@@ -7,7 +7,8 @@ import {
 	ObInputClearModule,
 	ObNotificationModule,
 	ObNotificationService,
-	ObPopoverModule
+	ObPopoverModule,
+	WINDOW
 } from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -25,11 +26,12 @@ import {ObECategory} from './categories.model';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDivider} from '@angular/material/divider';
+import {MatDialog} from '@angular/material/dialog';
+import {IconDialogComponent} from './icon-dialog/icon-dialog.component';
+import type {IconMetadata} from './icons.model';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
-	templateUrl: './icons-example-icons-gallery-preview.component.html',
-	styleUrl: './icons-example-icons-gallery-preview.component.scss',
 	imports: [
 		CommonModule,
 		MatIconModule,
@@ -49,15 +51,18 @@ import {MatDivider} from '@angular/material/divider';
 		ObInputClearModule,
 		ObAlertModule,
 		MatDivider
-	]
+	],
+	templateUrl: './icons-example-icons-gallery-preview.component.html',
+	styleUrl: './icons-example-icons-gallery-preview.component.scss'
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');
 	byCategoryFilter = new FormControl('ALL');
 	filteredIcons$: Observable<ObEIcon[]>;
 	isInfoCardVisible = false;
+	showDialog = false;
 	selectedIconName: string;
-	selectedIconMetaData: object;
+	selectedIconMetaData: IconMetadata;
 	selectedCategory: string;
 
 	protected readonly toggleType = ObEToggleType.CLICK;
@@ -66,6 +71,8 @@ export class IconsExampleIconsGalleryPreviewComponent {
 	protected readonly iconMetadata = iconMetadata;
 	private readonly notificationService = inject(ObNotificationService);
 	private readonly translateService = inject(TranslateService);
+	private readonly dialog = inject(MatDialog);
+	private readonly window: Window = inject(WINDOW);
 
 	constructor() {
 		this.filteredIcons$ = this.setUpIconsFilter();
@@ -96,15 +103,27 @@ export class IconsExampleIconsGalleryPreviewComponent {
 	public showIconMetaData(iconName: string): void {
 		this.toggleSelectedIcon(iconName);
 		this.selectedIconMetaData = this.getMetaDataOfIcon(this.selectedIconName);
+		if (this.showDialog) {
+			this.openDialog();
+		}
 	}
 
-	public getMetaDataOfIcon(iconName: string): object {
+	public getMetaDataOfIcon(iconName: string): IconMetadata {
 		return iconMetadata.find(icon => icon.name === iconName);
+	}
+
+	private openDialog(): void {
+		const dialogWidth = this.window.innerWidth > 650 ? '450px' : null;
+		this.dialog.open(IconDialogComponent, {
+			data: this.selectedIconMetaData,
+			width: dialogWidth
+		});
 	}
 
 	private toggleSelectedIcon(iconName: string): void {
 		this.isInfoCardVisible = iconName === this.selectedIconName ? !this.isInfoCardVisible : true;
 		this.selectedIconName = iconName;
+		this.showDialog = this.window.innerWidth < 1200;
 	}
 
 	private setUpIconsFilter(): Observable<ObEIcon[]> {

@@ -4,7 +4,7 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-nav-tree-example-default-preview',
-	templateUrl: './nav-tree-example-default-preview.component.html',
-	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule]
+	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
+	templateUrl: './nav-tree-example-default-preview.component.html'
 })
 export class NavTreeExampleDefaultPreviewComponent {}

@@ -6,8 +6,8 @@ import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 
 @Component({
-	template: `<div obAriaMenuButton="test"></div>`,
-	standalone: false
+	standalone: false,
+	template: `<div obAriaMenuButton="test"></div>`
 })
 class TestComponent {}
 

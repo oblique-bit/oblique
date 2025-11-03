@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, inject} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -10,6 +10,7 @@ import {ObInputClearDirective} from './input-clear.directive';
 import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
+	standalone: false,
 	template: ` <div [formGroup]="testForm">
 		<mat-form-field>
 			<mat-label>Test input</mat-label>
@@ -18,8 +19,7 @@ import {TranslateModule} from '@ngx-translate/core';
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`,
-	standalone: false
+	</div>`
 })
 class UntypedReactiveFormTestComponent {
 	testForm: FormGroup;
@@ -33,6 +33,7 @@ class UntypedReactiveFormTestComponent {
 }
 
 @Component({
+	standalone: false,
 	template: ` <div [formGroup]="testForm">
 		<mat-form-field>
 			<mat-label>Test input</mat-label>
@@ -41,8 +42,7 @@ class UntypedReactiveFormTestComponent {
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`,
-	standalone: false
+	</div>`
 })
 class StronglyTypedReactiveFormTestComponent {
 	testForm: FormGroup<{field1: FormControl<string>}>;
@@ -56,6 +56,7 @@ class StronglyTypedReactiveFormTestComponent {
 }
 
 @Component({
+	standalone: false,
 	template: ` <div>
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
@@ -64,14 +65,14 @@ class StronglyTypedReactiveFormTestComponent {
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`,
-	standalone: false
+	</div>`
 })
 class TemplateDrivenFormTestComponent {
 	testModel: string;
 }
 
 @Component({
+	standalone: false,
 	template: ` <div>
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
@@ -80,12 +81,12 @@ class TemplateDrivenFormTestComponent {
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`,
-	standalone: false
+	</div>`
 })
 class HtmlInputTestComponent {}
 
 @Component({
+	standalone: false,
 	template: ` <div>
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
@@ -94,8 +95,7 @@ class HtmlInputTestComponent {}
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`,
-	standalone: false
+	</div>`
 })
 class WrongConfigurationTestComponent {
 	testModel: string;
@@ -109,13 +109,13 @@ describe('InputClear', () => {
 		let directive: ObInputClearDirective;
 		let parentElement: HTMLElement;
 
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				declarations: [UntypedReactiveFormTestComponent],
 				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
 				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
-		}));
+		});
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(UntypedReactiveFormTestComponent);
@@ -177,13 +177,13 @@ describe('InputClear', () => {
 		let directive: ObInputClearDirective;
 		let parentElement: HTMLElement;
 
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				declarations: [StronglyTypedReactiveFormTestComponent],
 				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
 				providers: [provideObliqueTestingConfiguration()]
 			}).compileComponents();
-		}));
+		});
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(StronglyTypedReactiveFormTestComponent);

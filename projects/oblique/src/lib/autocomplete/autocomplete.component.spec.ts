@@ -25,8 +25,8 @@ import {ObAutocompleteComponent} from './autocomplete.component';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
-	template: ``,
-	standalone: false
+	standalone: false,
+	template: ``
 })
 class TestParentComponent {
 	model = new FormControl('');

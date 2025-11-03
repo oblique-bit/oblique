@@ -1,0 +1,56 @@
+<div mat-dialog-title>
+	<div class="image-container">
+		<mat-icon class="icon" [svgIcon]="selectedIconMetaData?.name" />
+	</div>
+
+	<button
+		class="card-title"
+		mat-button
+		obButton="tertiary"
+		type="button"
+		matTooltipPosition="above"
+		[matTooltip]="'i18n.icons.copy-icon-name' | translate"
+		(click)="copy(selectedIconMetaData?.name)"
+	>
+		<h3 [attr.aria-label]="'i18n.icons.screen-reader-title-description' | translate: { selectedIconName }">
+			{{ selectedIconMetaData?.name }}
+		</h3>
+		<mat-icon iconPositionEnd svgIcon="copy" />
+	</button>
+</div>
+
+<mat-dialog-content>
+	<div class="info-card">
+		<section>
+			<div class="info-card-usage-title">
+				<h4>Usage</h4>
+				@if (selectedIconMetaData?.purpose === "single") {
+					<mat-chip class="info">Single purpose</mat-chip>
+				} @else {
+					<mat-chip class="success">Multi purpose</mat-chip>
+				}
+			</div>
+			{{ selectedIconMetaData?.usage }}
+		</section>
+		<section>
+			<div class="title-with-popover">
+				<h4>Alternative text</h4>
+				<mat-icon class="ob-icon-text" svgIcon="info_circle" [obPopover]="alternativeText" [appendToBody]="false" />
+				<ng-template #alternativeText>
+					<div class="info-card-popover-content" [innerHTML]="'i18n.icons.alternative-text' | translate"></div>
+				</ng-template>
+			</div>
+			{{ selectedIconMetaData?.description }}
+		</section>
+		@if (selectedIconMetaData?.oldName && selectedIconMetaData?.name !== selectedIconMetaData?.oldName) {
+			<section>
+				<h4>Deprecated name</h4>
+				{{ selectedIconMetaData.oldName }}
+			</section>
+		}
+	</div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+	<button mat-button obButton="primary" type="button" [mat-dialog-close]="true">Close</button>
+</mat-dialog-actions>

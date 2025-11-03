@@ -6,10 +6,10 @@ import {ObIUploadEvent} from '../file-upload.model';
  */
 @Component({
 	selector: 'ob-drop-zone',
-	exportAs: 'obDropZone',
+	standalone: true,
 	template: '',
-	host: {class: 'ob-drop-zone'},
-	standalone: true
+	exportAs: 'obDropZone',
+	host: {class: 'ob-drop-zone'}
 })
 export class ObMockDropZoneComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();

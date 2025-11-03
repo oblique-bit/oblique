@@ -5,8 +5,8 @@ import {CollectorService} from '../shared/collector/collector.service';
 import {FeedbackTriggerDirective} from './feedback-trigger.directive';
 
 @Component({
-	template: `<button type="button" appFeedbackTrigger>btn</button>`,
-	imports: [FeedbackTriggerDirective]
+	imports: [FeedbackTriggerDirective],
+	template: `<button type="button" appFeedbackTrigger>btn</button>`
 })
 export class TestComponentComponent {}
 

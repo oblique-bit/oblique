@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component} from '@angular/core';
 import {Router, provideRouter} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
@@ -15,7 +15,10 @@ import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {appVersion} from '../../version';
 
-@Component({template: '', standalone: false})
+@Component({
+	standalone: false,
+	template: ''
+})
 export class MockComponent {}
 
 describe('ObMasterLayoutComponent', () => {
@@ -35,8 +38,8 @@ describe('ObMasterLayoutComponent', () => {
 		navigation: {refresh: jest.fn()}
 	};
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [TranslateModule],
 			declarations: [ObMasterLayoutComponent],
 			providers: [
@@ -49,7 +52,7 @@ describe('ObMasterLayoutComponent', () => {
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObMasterLayoutComponent);

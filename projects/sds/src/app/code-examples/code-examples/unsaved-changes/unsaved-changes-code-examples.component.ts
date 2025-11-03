@@ -7,9 +7,9 @@ import {UnsavedChangesExampleStackblitzLinkPreviewComponent} from '../unsaved-ch
 
 @Component({
 	selector: 'app-code-example-unsaved-changes',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UnsavedChangesCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'unsaved-changes-examples';

@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
 
 @Component({
 	selector: 'app-language-example-default-preview',
-	templateUrl: './language-example-default-preview.component.html',
-	imports: [MatButtonModule, ObButtonModule]
+	imports: [MatButtonModule, ObButtonModule],
+	templateUrl: './language-example-default-preview.component.html'
 })
 export class LanguageExampleDefaultPreviewComponent {}

@@ -5,9 +5,9 @@ import {BehaviorSubject, type Observable, Subject, map, takeUntil, withLatestFro
 
 @Component({
 	selector: 'app-global-events-example-ob-outside-filter-preview',
+	imports: [AsyncPipe],
 	templateUrl: './global-events-example-ob-outside-filter-preview.component.html',
 	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	imports: [AsyncPipe],
 	host: {class: 'layout-column'}
 })
 export class GlobalEventsExampleObOutsideFilterPreviewComponent implements AfterViewInit, OnDestroy {

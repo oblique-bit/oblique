@@ -8,8 +8,8 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 
 @Component({
 	selector: 'app-table',
-	templateUrl: './material-table-example-sortable-preview.component.html',
-	imports: [MatTableModule, MatSortModule, MatCheckboxModule, MatIconModule, MatButtonModule, ObButtonModule]
+	imports: [MatTableModule, MatSortModule, MatCheckboxModule, MatIconModule, MatButtonModule, ObButtonModule],
+	templateUrl: './material-table-example-sortable-preview.component.html'
 })
 export class MaterialTableExampleSortablePreviewComponent implements AfterViewInit {
 	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

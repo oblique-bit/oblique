@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, ReplaySubject, combineLatest, switchMap, timer} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, ReplaySubject, combineLatest, switchMap, throwError, timer} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 import {obPauseWhenPageHidden} from '../../rxjs-operators';
+import {ObNotificationService} from '../../notification/notification.service';
 import {ObServiceNavigationStateApiService} from './service-navigation-state-api.service';
 import {ObServiceNavigationCountApiService} from './service-navigation-message-count-api.service';
 import {ObIServiceNavigationState} from './service-navigation.api.model';
@@ -15,7 +16,8 @@ export class ObServiceNavigationPollingService {
 
 	constructor(
 		private readonly stateApiService: ObServiceNavigationStateApiService,
-		private readonly countApiService: ObServiceNavigationCountApiService
+		private readonly countApiService: ObServiceNavigationCountApiService,
+		private readonly notification: ObNotificationService
 	) {
 		this.state$ = this.pollingDataState.asObservable();
 	}
@@ -28,7 +30,14 @@ export class ObServiceNavigationPollingService {
 		])
 			.pipe(
 				map(results => ({...results[0], messageCount: results[1]})),
-				obPauseWhenPageHidden()
+				obPauseWhenPageHidden(),
+				catchError(() => {
+					this.notification.error({
+						message: 'i18n.oblique.service-navigation.state.error.message',
+						title: 'i18n.oblique.service-navigation.state.error.title'
+					});
+					return throwError(() => new Error('Cannot load service navigation state'));
+				})
 			)
 			.subscribe(result => this.pollingDataState.next(result));
 	}

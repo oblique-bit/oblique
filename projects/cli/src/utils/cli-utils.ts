@@ -3,7 +3,7 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '14.0.2';
+export const version = '14.1.0';
 /* End of generated content */
 
 export const currentVersions = {
@@ -151,6 +151,19 @@ export function execute(config: ObCommandConfig): void {
 		case 'npmOutdated':
 			return executeCommand('npm outdated', config.execSyncOptions);
 	}
+}
+
+// See https://nodejs.org/docs/latest/api/process.html#processargv
+export function parseCommandArguments(): {execPath: string; filePath: string; commandName: string; arguments: string[]} {
+	const {argv} = process;
+	return {
+		execPath: argv[0],
+		filePath: argv[1],
+		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+		commandName: argv[2],
+		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+		arguments: argv.slice(3)
+	};
 }
 
 function isNodeVersionRecommended(recommendedNodeMajorVersion: number): boolean {

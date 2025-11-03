@@ -5,18 +5,26 @@
 	top: 0;
 }
 
-.container {
+.container,
+.search-container {
 	display: grid;
 	grid-template-columns: 1fr 365px;
 	gap: variables.$ob-spacing-default;
+
+	@media (width <= 1600px) {
+		grid-template-columns: 1fr 273px;
+	}
+	@media (width <= 1200px) {
+		grid-template-columns: 1fr;
+	}
 }
 
 .search {
 	display: flex;
 	gap: variables.$ob-spacing-default;
 
-	.mat-form-field {
-		flex: 1 1 50%;
+	@media (width <=1200px) {
+		flex-wrap: wrap;
 	}
 }
 

@@ -9,6 +9,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {ObFocusInvalidDirective} from './focus-invalid.directive';
 
 @Component({
+	standalone: false,
 	template: `
 		<form [formGroup]="focusInvalidFormGroup" obFocusInvalid>
 			<mat-form-field>
@@ -49,8 +50,7 @@ import {ObFocusInvalidDirective} from './focus-invalid.directive';
 
 			<button type="submit">submit</button>
 		</form>
-	`,
-	standalone: false
+	`
 })
 class UntypedReactiveFormTestComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;
@@ -80,8 +80,8 @@ describe(ObFocusInvalidDirective.name, () => {
 	let fixture: ComponentFixture<UntypedReactiveFormTestComponent>;
 	let component: UntypedReactiveFormTestComponent;
 
-	beforeEach(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			declarations: [UntypedReactiveFormTestComponent],
 			imports: [
 				ObFocusInvalidDirective,

@@ -53,8 +53,10 @@
 			}
 		}
 
-		&[disabled] {
+		&[disabled],
+		&[disabledInteractive] {
 			cursor: not-allowed;
+			pointer-events: auto;
 		}
 
 		&.mat-mdc-button {
@@ -68,7 +70,7 @@
 		}
 
 		&[class*="ob-button-"] {
-			&:not([disabled]) {
+			&:not([disabled], [disabledInteractive]) {
 				&:hover {
 					.mat-mdc-button-focus-overlay {
 						opacity: 0;
@@ -143,7 +145,8 @@
 				}
 			}
 
-			&[disabled] {
+			&[disabled],
+			&[disabledInteractive] {
 				color: core-variables.$ob-secondary-300;
 			}
 		}
@@ -166,7 +169,8 @@
 				}
 			}
 
-			&[disabled] {
+			&[disabled],
+			&[disabledInteractive] {
 				background-color: core-variables.$ob-secondary-200;
 			}
 		}
@@ -175,7 +179,8 @@
 			border-color: core-variables.$ob-secondary-600;
 			background-color: core-variables.$ob-white;
 
-			&[disabled] {
+			&[disabled],
+			&[disabledInteractive] {
 				border-color: core-variables.$ob-secondary-300;
 			}
 		}

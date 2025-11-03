@@ -5,8 +5,8 @@ import {ObErrorMessagesModule, ObSchemaValidationModule} from '@oblique/oblique'
 
 @Component({
 	selector: 'app-schema-validation-example-template-driven-form-preview',
-	templateUrl: './schema-validation-example-template-driven-form-preview.component.html',
-	imports: [MatInputModule, ObSchemaValidationModule, ObErrorMessagesModule, FormsModule]
+	imports: [MatInputModule, ObSchemaValidationModule, ObErrorMessagesModule, FormsModule],
+	templateUrl: './schema-validation-example-template-driven-form-preview.component.html'
 })
 export class SchemaValidationExampleTemplateDrivenFormPreviewComponent {
 	firstName = '';

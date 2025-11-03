@@ -1,8 +1,8 @@
 import {Directive, HostBinding, Input, OnChanges} from '@angular/core';
 
 @Directive({
-	standalone: true,
-	selector: '[obDisableLink]'
+	selector: '[obDisableLink]',
+	standalone: true
 })
 export class ObDisableLinkDirective implements OnChanges {
 	@Input() set obDisableLink(condition: boolean) {

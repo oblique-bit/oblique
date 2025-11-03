@@ -1,4 +1,4 @@
-import {type ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -9,13 +9,13 @@ describe(CollapseSampleComponent.name, () => {
 	let component: CollapseSampleComponent;
 	let fixture: ComponentFixture<CollapseSampleComponent>;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [ReactiveFormsModule, MatSelectModule, NoopAnimationsModule],
 			declarations: [CollapseSampleComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
 		}).compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(CollapseSampleComponent);

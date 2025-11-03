@@ -5,12 +5,12 @@ import {By} from '@angular/platform-browser';
 import {OBLIQUE_COLLAPSE_ACTIVE, ObCollapseComponent} from './collapse.component';
 
 @Component({
+	standalone: false,
 	template: `
 		<ob-collapse />
 		<ob-collapse id="my-custom-id-for-test" />
 		<ob-collapse />
-	`,
-	standalone: false
+	`
 })
 class TestCollapseComponent {}
 
@@ -21,8 +21,8 @@ describe(ObCollapseComponent.name, () => {
 	let obCollapseComponent: ObCollapseComponent;
 
 	describe('with token set to something truthy', () => {
-		beforeEach(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [ObCollapseComponent, NoopAnimationsModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'}]
@@ -63,8 +63,8 @@ describe(ObCollapseComponent.name, () => {
 	});
 
 	describe('with token set to something falsy', () => {
-		beforeEach(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [ObCollapseComponent, NoopAnimationsModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}]
@@ -92,8 +92,8 @@ describe(ObCollapseComponent.name, () => {
 	});
 
 	describe('without token', () => {
-		beforeEach(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [ObCollapseComponent, NoopAnimationsModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			}).compileComponents();
@@ -218,8 +218,8 @@ describe(ObCollapseComponent.name, () => {
 	describe('multipe collapses of which one has a custom Id', () => {
 		let fixtureTestComponent: ComponentFixture<TestCollapseComponent>;
 
-		beforeEach(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				declarations: [TestCollapseComponent],
 				imports: [ObCollapseComponent, NoopAnimationsModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,4 +1,4 @@
-import {TestBed, waitForAsync} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {AppComponent} from './app.component';
@@ -7,15 +7,14 @@ import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {TranslateModule} from '@ngx-translate/core';
 
 describe('AppComponent', () => {
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			declarations: [AppComponent],
 			imports: [RouterTestingModule, TranslateModule],
 			providers: [provideNativeDateAdapter(), provideObliqueTestingConfiguration()],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA]
-		});
-		TestBed.compileComponents();
-	}));
+		}).compileComponents();
+	});
 
 	it('should create the app', () => {
 		const fixture = TestBed.createComponent(AppComponent);

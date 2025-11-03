@@ -4,9 +4,9 @@ import {FormBuilder, type FormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-focus-invalid-sample',
+	standalone: false,
 	templateUrl: './focus-invalid-sample.component.html',
-	styleUrl: './focus-invalid-sample.component.scss',
-	standalone: false
+	styleUrl: './focus-invalid-sample.component.scss'
 })
 export class FocusInvalidSampleComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;

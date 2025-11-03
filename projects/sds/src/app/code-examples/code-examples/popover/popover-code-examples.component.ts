@@ -8,9 +8,9 @@ import {PopoverExampleOtherOptionsPreviewComponent} from './previews/other-optio
 
 @Component({
 	selector: 'app-code-example-popover',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PopoverCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'popover-examples';

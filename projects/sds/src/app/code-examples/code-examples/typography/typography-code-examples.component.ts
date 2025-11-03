@@ -11,9 +11,9 @@ import {TypographyExampleListsPreviewComponent} from '../typography/previews/lis
 
 @Component({
 	selector: 'app-code-example-typography',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TypographyCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'typography-examples';

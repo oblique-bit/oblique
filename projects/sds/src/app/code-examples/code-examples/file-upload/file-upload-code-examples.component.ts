@@ -12,9 +12,9 @@ import {FileUploadFullyFunctioningWithCustomDeletePreviewComponent} from './prev
 
 @Component({
 	selector: 'app-code-example-file-upload',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FileUploadCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'file-upload-examples';

@@ -1,3 +1,5 @@
+@use "../../../../oblique/src/styles/scss/core/variables";
+
 :host {
 	grid-column-start: 2;
 	grid-row-start: 1;
@@ -11,5 +13,5 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	overflow-x: auto;
-	padding: 4rem 20px;
+	padding: variables.$ob-spacing-default variables.$ob-spacing-default variables.$ob-spacing-xxl;
 }

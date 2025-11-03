@@ -10,8 +10,8 @@ import type {PeriodicElement} from './mock-backend.service';
 
 @Component({
 	selector: 'app-material-table-editable-dialog',
-	templateUrl: './material-table-editable-dialog.component.html',
-	imports: [MatDialogModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule, MatIconModule, ObButtonModule]
+	imports: [MatDialogModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule, MatIconModule, ObButtonModule],
+	templateUrl: './material-table-editable-dialog.component.html'
 })
 export class AppMaterialTableExampleEditableDialogComponent {
 	editForm: UntypedFormGroup;

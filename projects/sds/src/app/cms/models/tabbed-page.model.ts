@@ -12,6 +12,7 @@ export interface TabbedPageComplete {
 	slug: string;
 	category: number;
 	api: string;
+	accessibility: string;
 	ui_ux_purpose: string;
 	ui_ux_general_rules: UiUxEntry[];
 	ui_ux_do: UiUxEntry[];
@@ -28,6 +29,7 @@ export interface TabbedPageComplete {
 export interface CmsData {
 	title: string;
 	api: string;
+	accessibility: string;
 	uiUx: UiUxData;
 	source: Type<CodeExamples> | undefined;
 	tab: string;

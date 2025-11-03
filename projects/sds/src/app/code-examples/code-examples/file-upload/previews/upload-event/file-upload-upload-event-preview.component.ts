@@ -4,9 +4,9 @@ import {mockUrls} from '../../file-upload-simulate-interceptor';
 
 @Component({
 	selector: 'app-file-upload-upload-event-preview',
+	imports: [ObFileUploadModule],
 	templateUrl: './file-upload-upload-event-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss',
-	imports: [ObFileUploadModule]
+	styleUrl: '../../../../code-example-flex-layout.scss'
 })
 export class FileUploadUploadEventPreviewComponent {
 	readonly mockUrls = mockUrls;

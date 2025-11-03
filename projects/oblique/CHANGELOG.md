@@ -1,3 +1,22 @@
+# [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
+
+## Bug Fixes
+
+- **button:** show not-allowed cursor on disabled buttons ([51344fef](https://github.com/oblique-bit/oblique/commit/51344fef3f68117eb24df12383f9623dc5ed2224))
+- **service-navigation:** the use `pollingInterval` from the backend ([d571b871](https://github.com/oblique-bit/oblique/commit/d571b871c783099fd944ce6040c50161d388aaf5))
+- **service-navigation:** timeout service do not regularly trigger change detection anymore ([7a123947](https://github.com/oblique-bit/oblique/commit/7a12394770dfb4b0c4c770507300da042ab9cbc4))
+
+## Features
+
+- **button:** apply `disabled` button style to `disabledInteractive` ([1e0d7a47](https://github.com/oblique-bit/oblique/commit/1e0d7a4746cae29aa99ba287759fa4cb47fd5d75))
+- **master-layout:** deprecate `ObILocale.display` ([4ae459e3](https://github.com/oblique-bit/oblique/commit/4ae459e3c1926c379cf0c96e838c2335e11fe597))
+- **service-navigation:** add message when favorites applications are empty ([5d501f1f](https://github.com/oblique-bit/oblique/commit/5d501f1f04b77a96db1c4c661edd66a5766e474e))
+- **service-navigation:** add message when last used applications are empty ([d36f0efa](https://github.com/oblique-bit/oblique/commit/d36f0efac2411ea7255d8d130f317439dadd198e))
+- **service-navigation:** show a meaningful notification when the `state` api call fails ([f449d466](https://github.com/oblique-bit/oblique/commit/f449d466b1c726e325e575228b626f1c01a781f8))
+- **service-navigation:** disable the login button when the config api call fails ([74d052ac](https://github.com/oblique-bit/oblique/commit/74d052ac6de3da00b2658553b6e037fb0e07e5fb))
+- **service-navigation:** show a meaningful notification when the `config` api call fails ([9a841099](https://github.com/oblique-bit/oblique/commit/9a8410990359f0645b2ad2f713f0172d5d5645ca))
+- **utilities:** ensure that the loader property is overridable ([b48756fc](https://github.com/oblique-bit/oblique/commit/b48756fc4dc979c87b0a7dc92a268cfaba8fdd89))
+
 # [14.0.2](https://github.com/oblique-bit/oblique/compare/14.0.1...14.0.2) (2025-10-27)
 
 ## Bug Fixes

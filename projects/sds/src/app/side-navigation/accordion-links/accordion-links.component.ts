@@ -7,10 +7,10 @@ import {IdPipe} from '../../shared/id/id.pipe';
 
 @Component({
 	selector: 'app-accordion-links',
+	imports: [CommonModule, RouterLink, RouterLinkActive, IdPipe],
 	templateUrl: './accordion-links.component.html',
 	styleUrl: './accordion-links.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, RouterLink, RouterLinkActive, IdPipe]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccordionLinksComponent implements OnChanges, OnInit {
 	readonly accordions = input<Accordion[]>([]);

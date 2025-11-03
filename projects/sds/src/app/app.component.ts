@@ -10,9 +10,9 @@ import {BannerComponent} from './banner/banner.component';
 
 @Component({
 	selector: 'app-root',
+	imports: [CommonModule, RouterOutlet, ObSpinnerModule, SideNavigationComponent, BannerComponent],
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.scss',
-	imports: [CommonModule, RouterOutlet, ObSpinnerModule, SideNavigationComponent, BannerComponent]
+	styleUrl: './app.component.scss'
 })
 export class AppComponent {
 	@HostBinding('class.has-opened-mobile-navigation') showMobileNavigation = false;

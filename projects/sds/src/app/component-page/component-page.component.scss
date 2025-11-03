@@ -1,4 +1,5 @@
 @use "../../styles/scss/core/mixins/layout";
+@use "../../../../oblique/src/styles/scss/core/variables";
 
 :host {
 	grid-column-start: 2;
@@ -13,18 +14,13 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	overflow-x: auto;
-	padding: 4rem 20px;
+	padding: variables.$ob-spacing-default variables.$ob-spacing-default variables.$ob-spacing-xxl;
 }
 @include layout.ob-media-breakpoint-down(md) {
 	:host {
 		margin-top: 104px; // free space for the header, with 20px padding-like space around the logo
 		border-radius: 0;
 	}
-}
-
-h1 {
-	padding-top: 0.75rem;
-	padding-left: 0.75rem;
 }
 
 .title-container {

@@ -5,8 +5,8 @@ import type {Observable} from 'rxjs';
 
 @Component({
 	selector: 'sb-utilities-sample',
-	templateUrl: './global-events-sample.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './global-events-sample.component.html'
 })
 export class GlobalEventsSampleComponent implements AfterViewInit {
 	readonly globalEvents = inject(ObGlobalEventsService);

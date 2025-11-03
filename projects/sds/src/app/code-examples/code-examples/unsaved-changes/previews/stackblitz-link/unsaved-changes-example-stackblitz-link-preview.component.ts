@@ -4,7 +4,7 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-unsaved-changes-example-stackblitz-link-preview',
-	templateUrl: './unsaved-changes-example-stackblitz-link-preview.component.html',
-	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule]
+	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
+	templateUrl: './unsaved-changes-example-stackblitz-link-preview.component.html'
 })
 export class UnsavedChangesExampleStackblitzLinkPreviewComponent {}

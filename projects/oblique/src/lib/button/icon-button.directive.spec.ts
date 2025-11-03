@@ -12,8 +12,8 @@ import {ObIconButtonDirective} from './icon-button.directive';
 })
 export class ButtonTestDirective {}
 @Component({
-	template: '<button type="button" obButton mat-icon-button matTooltip="tooltip"><mat-icon svgIcon="help" /></button>',
-	imports: [MatButtonModule, ButtonTestDirective, MatIcon, MatTooltip]
+	imports: [MatButtonModule, ButtonTestDirective, MatIcon, MatTooltip],
+	template: '<button type="button" obButton mat-icon-button matTooltip="tooltip"><mat-icon svgIcon="help" /></button>'
 })
 class ButtonTestComponent {}
 

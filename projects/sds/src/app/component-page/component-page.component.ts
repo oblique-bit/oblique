@@ -6,9 +6,9 @@ import {getComponentPageComponent} from './component-page.mapper';
 
 @Component({
 	selector: 'app-component-page',
+	imports: [CommonModule, NgComponentOutlet],
 	templateUrl: './component-page.component.html',
 	styleUrl: './component-page.component.scss',
-	imports: [CommonModule, NgComponentOutlet],
 	host: {class: 'content-page'}
 })
 export class ComponentPageComponent implements OnInit {

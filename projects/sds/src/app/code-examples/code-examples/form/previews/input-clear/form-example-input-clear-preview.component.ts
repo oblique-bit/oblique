@@ -15,9 +15,9 @@ import {ObInputClearModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-form-example-input-clear-preview',
+	imports: [MatFormFieldModule, MatIconModule, MatInputModule, ObInputClearModule, ReactiveFormsModule],
 	templateUrl: './form-example-input-clear-preview.component.html',
-	styleUrls: ['./form-example-input-clear-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	imports: [MatFormFieldModule, MatIconModule, MatInputModule, ObInputClearModule, ReactiveFormsModule]
+	styleUrls: ['./form-example-input-clear-preview.component.scss', '../../../../code-example-flex-layout.scss']
 })
 export class FormExampleInputClearPreviewComponent implements OnInit {
 	stronglyTypedForm: FormGroup<{stronglyTypedFormField: FormControl<string>}>;

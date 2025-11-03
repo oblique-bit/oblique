@@ -118,6 +118,62 @@
 	</tbody>
 	<tbody>
 		<tr>
+			<th scope="rowgroup" rowspan="3">Button interactive disabled</th>
+			<th scope="row">Text only</th>
+			<td>
+				<button type="button" disabledInteractive mat-button obButton="primary">Primary</button>
+			</td>
+			<td>
+				<button type="button" disabledInteractive mat-button obButton="secondary">Secondary</button>
+			</td>
+			<td>
+				<button type="button" disabledInteractive mat-button obButton="tertiary">Tertiary</button>
+			</td>
+			<td>
+				<button type="button" disabledInteractive mat-button [obButton]="obButton">Dynamic</button>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Icon and text</th>
+			<td>
+				<button type="button" disabledInteractive mat-button obButton="primary"><mat-icon svgIcon="logout" /> Primary</button>
+			</td>
+			<td>
+				<button type="button" disabledInteractive mat-button obButton="secondary"><mat-icon svgIcon="logout" /> Secondary</button>
+			</td>
+			<td>
+				<button type="button" disabledInteractive mat-button obButton="tertiary"><mat-icon svgIcon="logout" /> Tertiary</button>
+			</td>
+			<td>
+				<button type="button" disabledInteractive mat-button [obButton]="obButton"><mat-icon svgIcon="logout" /> Dynamic</button>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Icon only</th>
+			<td>
+				<button type="button" disabledInteractive mat-icon-button matTooltip="logout" obButton="primary">
+					<mat-icon svgIcon="logout" />
+				</button>
+			</td>
+			<td>
+				<button type="button" disabledInteractive mat-icon-button matTooltip="logout" obButton="secondary">
+					<mat-icon svgIcon="logout" />
+				</button>
+			</td>
+			<td>
+				<button type="button" disabledInteractive mat-icon-button matTooltip="logout" obButton="tertiary">
+					<mat-icon svgIcon="logout" />
+				</button>
+			</td>
+			<td>
+				<button type="button" disabledInteractive mat-icon-button matTooltip="logout" [obButton]="obButton">
+					<mat-icon svgIcon="logout" />
+				</button>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
 			<th rowspan="3" scope="rowgroup">Link</th>
 			<th>Text only</th>
 			<td>
@@ -214,6 +270,54 @@
 	</tbody>
 	<tbody>
 		<tr>
+			<th rowspan="3" scope="rowgroup">Link Interactive disabled</th>
+			<th scope="row">Text only</th>
+			<td>
+				<a href="" disabledInteractive mat-button obButton="primary">Primary</a>
+			</td>
+			<td>
+				<a href="" disabledInteractive mat-button obButton="secondary">Secondary</a>
+			</td>
+			<td>
+				<a href="" disabledInteractive mat-button obButton="tertiary">Tertiary</a>
+			</td>
+			<td>
+				<a href="" disabledInteractive mat-button [obButton]="obButton">Dynamic</a>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Icon and text</th>
+			<td>
+				<a href="" disabledInteractive mat-button obButton="primary"><mat-icon svgIcon="logout" /> Primary</a>
+			</td>
+			<td>
+				<a href="" disabledInteractive mat-button obButton="secondary"><mat-icon svgIcon="logout" /> Secondary</a>
+			</td>
+			<td>
+				<a href="" disabledInteractive mat-button obButton="tertiary"><mat-icon svgIcon="logout" /> Tertiary</a>
+			</td>
+			<td>
+				<a href="" disabledInteractive mat-button disabled [obButton]="obButton"><mat-icon svgIcon="logout" /> Dynamic</a>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Icon only</th>
+			<td>
+				<a disabledInteractive mat-icon-button matTooltip="logout" obButton="primary"><mat-icon svgIcon="logout" /></a>
+			</td>
+			<td>
+				<a disabledInteractive mat-icon-button matTooltip="logout" obButton="secondary"><mat-icon svgIcon="logout" /></a>
+			</td>
+			<td>
+				<a disabledInteractive mat-icon-button matTooltip="logout" obButton="tertiary"><mat-icon svgIcon="logout" /></a>
+			</td>
+			<td>
+				<a disabledInteractive mat-icon-button matTooltip="logout" [obButton]="obButton"><mat-icon svgIcon="logout" /></a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
 			<th rowspan="3" scope="rowgroup">External Link</th>
 			<th scope="row">Text only</th>
 			<td>
@@ -277,6 +381,7 @@
 				<a href="https://www.google.ch" mat-button disabled [obButton]="obButton">Dynamic</a>
 			</td>
 		</tr>
+
 		<tr>
 			<th scope="row">icon and text</th>
 			<td>
@@ -305,6 +410,63 @@
 			</td>
 			<td>
 				<a href="https://www.google.ch" mat-icon-button matTooltip="logout" disabled [obButton]="obButton"><mat-icon svgIcon="logout" /></a>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<th rowspan="3" scope="rowgroup">External Link Interactive Disabled</th>
+			<th scope="row">Text only</th>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-button obButton="primary">Primary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-button obButton="secondary">Secondary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-button obButton="tertiary">Tertiary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-button [obButton]="obButton">Dynamic</a>
+			</td>
+		</tr>
+
+		<tr>
+			<th scope="row">icon and text</th>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-button obButton="primary"><mat-icon svgIcon="logout" /> Primary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-button obButton="secondary"><mat-icon svgIcon="logout" /> Secondary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-button obButton="tertiary"><mat-icon svgIcon="logout" /> Tertiary</a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-button [obButton]="obButton"><mat-icon svgIcon="logout" /> Dynamic</a>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Icon only</th>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-icon-button matTooltip="logout" obButton="primary"
+					><mat-icon svgIcon="logout"
+				/></a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-icon-button matTooltip="logout" obButton="secondary"
+					><mat-icon svgIcon="logout"
+				/></a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-icon-button matTooltip="logout" obButton="tertiary"
+					><mat-icon svgIcon="logout"
+				/></a>
+			</td>
+			<td>
+				<a href="https://www.google.ch" disabledInteractive mat-icon-button matTooltip="logout" [obButton]="obButton"
+					><mat-icon svgIcon="logout"
+				/></a>
 			</td>
 		</tr>
 	</tbody>

@@ -10,8 +10,9 @@ import {
 } from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 
 @Component({
-	standalone: true,
 	selector: 'app-tabs-wrapper',
+	imports: [IdPipe, TabComponent, TabsComponent],
+	standalone: true,
 	template: `<app-tabs [idPrefix]="componentId" [id]="componentId | id: ['tabs']">
 		<app-tab name="test-tab-1" [initiallyActive]="true" [idPrefix]="componentId | id: ['tab', 1]" [id]="componentId | id: ['tab', 1]">
 			<p [id]="componentId | id: ['tab-1-content']">test-tab-1-p</p></app-tab
@@ -19,8 +20,7 @@ import {
 		<app-tab name="test-tab-2" [initiallyActive]="false" [idPrefix]="componentId | id: ['tab', 2]" [id]="componentId | id: ['tab', 2]">
 			<p [id]="componentId | id: ['tab-2-content']">test-tab-2-p</p></app-tab
 		>
-	</app-tabs>`,
-	imports: [IdPipe, TabComponent, TabsComponent]
+	</app-tabs>`
 })
 class TabsWrapperComponent {
 	readonly componentId = 'tabs-wrapper';

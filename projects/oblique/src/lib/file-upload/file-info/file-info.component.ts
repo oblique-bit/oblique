@@ -19,11 +19,6 @@ import {ObFileUploadService} from '../file-upload.service';
 
 @Component({
 	selector: 'ob-file-info',
-	exportAs: 'obFileInfo',
-	templateUrl: './file-info.component.html',
-	styleUrls: ['./file-info.component.scss'],
-	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-file-info'},
 	imports: [
 		MatTableModule,
 		MatSortModule,
@@ -36,7 +31,12 @@ import {ObFileUploadService} from '../file-upload.service';
 		NgIf,
 		ObAlertComponent,
 		TranslateModule
-	]
+	],
+	templateUrl: './file-info.component.html',
+	styleUrls: ['./file-info.component.scss'],
+	encapsulation: ViewEncapsulation.None,
+	exportAs: 'obFileInfo',
+	host: {class: 'ob-file-info'}
 })
 export class ObFileInfoComponent implements OnInit, OnDestroy {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();

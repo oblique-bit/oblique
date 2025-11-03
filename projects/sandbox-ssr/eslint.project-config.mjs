@@ -19,7 +19,13 @@ export default [
 					prefix: 'ssr',
 					style: 'kebab-case'
 				}
-			]
+			],
+
+			// rules that are not respected
+			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
+			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
+			'@typescript-eslint/strict-boolean-expressions': 'off' // needs strictNullChecks
 		}
 	},
 	{

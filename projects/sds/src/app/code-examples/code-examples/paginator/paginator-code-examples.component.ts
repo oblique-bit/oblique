@@ -8,9 +8,9 @@ import {PaginatorExampleOtherOptionsPreviewComponent} from './previews/other-opt
 
 @Component({
 	selector: 'app-paginator-code-examples',
+	imports: [CommonModule, CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, CodeExampleComponent, IdPipe]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaginatorCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'button-examples';

@@ -4,8 +4,8 @@ import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
 @Component({
-	template: `<ob-master-layout />`,
-	standalone: false
+	standalone: false,
+	template: `<ob-master-layout />`
 })
 class OutLineDirectiveTestComponent {}
 
@@ -13,8 +13,8 @@ describe(ObOutlineDirective.name, () => {
 	let fixture: ComponentFixture<OutLineDirectiveTestComponent>;
 	let directive: ObOutlineDirective;
 
-	beforeEach(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			declarations: [OutLineDirectiveTestComponent, ObOutlineDirective]
 		}).compileComponents();
 

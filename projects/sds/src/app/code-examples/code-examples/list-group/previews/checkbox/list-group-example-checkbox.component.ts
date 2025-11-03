@@ -3,8 +3,8 @@ import {MatListModule} from '@angular/material/list';
 
 @Component({
 	selector: 'app-list-group-example-check-box',
-	templateUrl: './list-group-example-checkbox.component.html',
 	imports: [MatListModule],
+	templateUrl: './list-group-example-checkbox.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListGroupExampleCheckBoxComponent {

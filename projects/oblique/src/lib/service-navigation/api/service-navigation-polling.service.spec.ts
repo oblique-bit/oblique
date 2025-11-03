@@ -1,5 +1,6 @@
 import {TestBed, discardPeriodicTasks, fakeAsync, tick} from '@angular/core/testing';
-import {Observable, of} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
+import {ObNotificationService} from '../../notification/notification.service';
 import {ObServiceNavigationStateApiService} from './service-navigation-state-api.service';
 import {ObServiceNavigationCountApiService} from './service-navigation-message-count-api.service';
 import {ObServiceNavigationPollingService} from './service-navigation-polling.service';
@@ -8,6 +9,7 @@ describe('ObServiceNavigationPollingService', () => {
 	let service: ObServiceNavigationPollingService;
 	let countApiService: ObServiceNavigationCountApiService;
 	let stateApiService: ObServiceNavigationStateApiService;
+	let notification: ObNotificationService;
 	const mockData = {
 		test: true
 	};
@@ -24,6 +26,7 @@ describe('ObServiceNavigationPollingService', () => {
 		service = TestBed.inject(ObServiceNavigationPollingService);
 		stateApiService = TestBed.inject(ObServiceNavigationStateApiService);
 		countApiService = TestBed.inject(ObServiceNavigationCountApiService);
+		notification = TestBed.inject(ObNotificationService);
 	});
 
 	afterEach(() => {
@@ -91,5 +94,33 @@ describe('ObServiceNavigationPollingService', () => {
 				expect(countApiService.get).toHaveBeenCalledWith('http://rootUrl/');
 			});
 		});
+	});
+
+	describe.each([
+		{service: 'state', apiService: () => stateApiService},
+		{service: 'count', apiService: () => countApiService}
+	])('with an error while fetching the $service', ({apiService}) => {
+		beforeEach(() => {
+			jest.spyOn(apiService(), 'get').mockReturnValue(throwError(() => new Error('test')));
+			jest.spyOn(notification, 'error');
+		});
+
+		it('should throw an error', fakeAsync(() => {
+			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
+			expect(() => tick(1000)).toThrow('Cannot load service navigation state');
+		}));
+
+		it('should show a notification', fakeAsync(() => {
+			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
+			try {
+				tick(1000);
+			} catch (err) {
+				/* empty */
+			}
+			expect(notification.error).toHaveBeenCalledWith({
+				message: 'i18n.oblique.service-navigation.state.error.message',
+				title: 'i18n.oblique.service-navigation.state.error.title'
+			});
+		}));
 	});
 });

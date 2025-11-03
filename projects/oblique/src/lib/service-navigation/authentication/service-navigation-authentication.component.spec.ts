@@ -90,9 +90,9 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 					});
 
 					describe('on click', () => {
-						beforeEach(() => {
+						beforeEach(async () => {
 							jest.spyOn(component.logoutClicked, 'emit');
-							button.click();
+							await button.click();
 						});
 
 						it('should call the logoutClicked Emitter once', () => {

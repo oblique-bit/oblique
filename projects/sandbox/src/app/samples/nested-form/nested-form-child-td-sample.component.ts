@@ -3,10 +3,10 @@ import {NgForm} from '@angular/forms';
 
 @Component({
 	selector: 'sb-nested-form-child-td-sample',
-	exportAs: 'childTD',
+	standalone: false,
 	templateUrl: './nested-form-child-td-sample.component.html',
 	styleUrl: './mandatory.scss',
-	standalone: false
+	exportAs: 'childTD'
 })
 export class NestedFormChildTDSampleComponent {
 	readonly ngForm = viewChild(NgForm);

@@ -5,10 +5,10 @@ import {uploadInterceptor} from '../../../../../../main';
 
 @Component({
 	selector: 'app-file-upload-fully-functioning-with-custom-delete-preview',
-	templateUrl: './file-upload-fully-functioning-with-custom-delete-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss',
+	imports: [ObFileUploadModule],
 	standalone: true,
-	imports: [ObFileUploadModule]
+	templateUrl: './file-upload-fully-functioning-with-custom-delete-preview.component.html',
+	styleUrl: '../../../../code-example-flex-layout.scss'
 })
 export class FileUploadFullyFunctioningWithCustomDeletePreviewComponent {
 	mockUrls = mockUrls;

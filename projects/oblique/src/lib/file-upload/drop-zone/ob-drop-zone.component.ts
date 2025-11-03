@@ -9,13 +9,13 @@ import {ObValidationService} from './validation.service';
 
 @Component({
 	selector: 'ob-drop-zone',
-	exportAs: 'obDropZone',
+	imports: [ObDragDropDirective, MatIconModule, NgIf, NgFor, TranslateModule, ObAcceptAllPipe],
 	templateUrl: './ob-drop-zone.component.html',
 	styleUrls: ['./ob-drop-zone.component.scss'],
-	providers: [ObValidationService],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-drop-zone'},
-	imports: [ObDragDropDirective, MatIconModule, NgIf, NgFor, TranslateModule, ObAcceptAllPipe]
+	exportAs: 'obDropZone',
+	providers: [ObValidationService],
+	host: {class: 'ob-drop-zone'}
 })
 export class ObDropZoneComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();

@@ -3,9 +3,9 @@ import {UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/fo
 
 @Component({
 	selector: 'sb-stepper-horizontal',
+	standalone: false,
 	templateUrl: './stepper-horizontal.component.html',
-	styleUrl: './stepper-horizontal.component.scss',
-	standalone: false
+	styleUrl: './stepper-horizontal.component.scss'
 })
 export class StepperHorizontalComponent implements OnInit {
 	firstFormGroup: UntypedFormGroup;

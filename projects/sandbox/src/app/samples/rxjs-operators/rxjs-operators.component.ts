@@ -5,8 +5,8 @@ import {obPauseWhenPageHidden} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-rxjs-operators',
-	templateUrl: './rxjs-operators.component.html',
-	standalone: false
+	standalone: false,
+	templateUrl: './rxjs-operators.component.html'
 })
 export class RxjsOperatorsComponent {
 	readonly interval = timer(0, 1000).pipe(takeUntilDestroyed(), obPauseWhenPageHidden());

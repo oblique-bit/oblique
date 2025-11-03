@@ -10,8 +10,8 @@ describe(TranslationsService.name, () => {
 	let service: TranslationsService;
 	let translate: TranslateService;
 
-	beforeEach(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			providers: [TranslationsService, provideObliqueTranslations(), {provide: HttpClient, useValue: {get: jest.fn(() => of({}))}}]
 		}).compileComponents();
 

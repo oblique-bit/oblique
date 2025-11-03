@@ -5,9 +5,9 @@ import {Component, QueryList, TemplateRef} from '@angular/core';
  */
 @Component({
 	selector: 'ob-master-layout-footer',
-	exportAs: 'obMasterLayoutFooter',
+	standalone: false,
 	template: '',
-	standalone: false
+	exportAs: 'obMasterLayoutFooter'
 })
 export class ObMockMasterLayoutFooterComponent {
 	home = '';

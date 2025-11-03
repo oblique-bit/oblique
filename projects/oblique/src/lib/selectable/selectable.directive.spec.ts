@@ -6,16 +6,16 @@ import {ObSelectableDirective} from './selectable.directive';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @Component({
-	template: ` <div obSelectable value="test"></div>`,
-	standalone: false
+	standalone: false,
+	template: ` <div obSelectable value="test"></div>`
 })
 class FaultyTestComponent {}
 
 @Component({
+	standalone: false,
 	template: ` <div obSelectableGroup>
 		<div obSelectable value="test"></div>
-	</div>`,
-	standalone: false
+	</div>`
 })
 class TestComponent {}
 

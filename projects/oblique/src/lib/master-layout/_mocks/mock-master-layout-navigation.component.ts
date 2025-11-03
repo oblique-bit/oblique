@@ -6,9 +6,9 @@ import {ObINavigationLink} from '../master-layout.module';
  */
 @Component({
 	selector: 'ob-master-layout-navigation',
-	exportAs: 'obMasterLayoutNavigation',
+	standalone: false,
 	template: '',
-	standalone: false
+	exportAs: 'obMasterLayoutNavigation'
 })
 export class ObMockMasterLayoutNavigationComponent {
 	isFullWidth = true;

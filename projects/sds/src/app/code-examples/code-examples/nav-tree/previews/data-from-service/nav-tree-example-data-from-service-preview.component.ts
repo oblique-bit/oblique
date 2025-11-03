@@ -4,7 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 @Component({
 	selector: 'app-nav-tree-example-data-from-service-preview',
-	templateUrl: './nav-tree-example-data-from-service-preview.component.html',
-	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule]
+	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
+	templateUrl: './nav-tree-example-data-from-service-preview.component.html'
 })
 export class NavTreeExampleDataFromServicePreviewComponent {}

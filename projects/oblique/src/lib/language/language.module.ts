@@ -7,7 +7,7 @@ export {ObDateFormat} from './date/date.model';
 export {ObDateComponent} from './date/date.component';
 
 @NgModule({
-	exports: [ObDatePipe, ObDateComponent],
-	imports: [ObDatePipe, ObDateComponent]
+	imports: [ObDatePipe, ObDateComponent],
+	exports: [ObDatePipe, ObDateComponent]
 })
 export class ObLanguageModule {}

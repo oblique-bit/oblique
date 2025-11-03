@@ -34,6 +34,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'ob-service-navigation-web-component',
+	imports: [ObServiceNavigationModule, MatButtonModule, MatTooltipModule, MatIconModule, MatBadgeModule, ObButtonModule],
 	templateUrl: './service-navigation-web-component.component.html',
 	styleUrls: [
 		'./service-navigation-web-component.component.scss',
@@ -42,7 +43,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 		'../../../oblique/src/styles/scss/core/components/_external-link.scss'
 	],
 	encapsulation: ViewEncapsulation.None,
-	imports: [ObServiceNavigationModule, MatButtonModule, MatTooltipModule, MatIconModule, MatBadgeModule, ObButtonModule],
 	providers: [TranslationsService],
 	host: {'ob-version': appVersion}
 })

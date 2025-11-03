@@ -37,8 +37,6 @@ import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
 
 @Component({
 	selector: 'app-side-navigation',
-	templateUrl: './side-navigation.component.html',
-	styleUrl: './side-navigation.component.scss',
 	imports: [
 		ImageComponent,
 		VersionComponent,
@@ -56,7 +54,9 @@ import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
 		ObButtonDirective,
 		NgOptimizedImage,
 		FeedbackTriggerDirective
-	]
+	],
+	templateUrl: './side-navigation.component.html',
+	styleUrl: './side-navigation.component.scss'
 })
 export class SideNavigationComponent implements OnInit {
 	readonly showMobileNavigation = output<boolean>();

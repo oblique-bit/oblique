@@ -8,9 +8,9 @@ import {ObBreadcrumbConfig, ObIBreadcrumb} from '../breadcrumb.model';
  */
 @Component({
 	selector: 'ob-breadcrumb',
-	exportAs: 'obBreadcrumb',
+	standalone: false,
 	template: '',
-	standalone: false
+	exportAs: 'obBreadcrumb'
 })
 export class ObMockBreadcrumbComponent {
 	static DEFAULTS: ObBreadcrumbConfig = {

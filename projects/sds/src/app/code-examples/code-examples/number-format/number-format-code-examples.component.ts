@@ -9,9 +9,9 @@ import {NumberFormatExampleOtherOptionsPreviewComponent} from '../number-format/
 
 @Component({
 	selector: 'app-code-example-number-format',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [CommonModule, IdPipe, CodeExampleComponent]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NumberFormatCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'number-format-examples';

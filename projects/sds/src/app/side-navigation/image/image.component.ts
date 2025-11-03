@@ -4,9 +4,9 @@ import {NgOptimizedImage} from '@angular/common';
 
 @Component({
 	selector: 'app-image',
+	imports: [IdPipe, NgOptimizedImage],
 	templateUrl: './image.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [IdPipe, NgOptimizedImage]
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImageComponent {
 	readonly height = input.required<number>();
