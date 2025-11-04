@@ -6,7 +6,7 @@
           "spacing": {
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.density.element.xl.rem}",
+              "$value": "{ob.s.dimension.dynamic.component_size.element.xl.rem}",
               "$description": "Spacing between single tags "
             }
           }
@@ -15,18 +15,18 @@
           "padding": {
             "vertical": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.density.element.xs.rem}",
+              "$value": "{ob.s.dimension.dynamic.component_size.element.xs.rem}",
               "$description": "Top and bottom padding  – for medium size tags."
             },
             "horizontal": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.density.element.xl.px}",
+              "$value": "{ob.s.dimension.dynamic.component_size.element.xl.px}",
               "$description": "Left and right padding  – for medium size tags."
             }
           },
           "gap": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.dynamic.density.element.xs.px}",
+            "$value": "{ob.s.dimension.dynamic.component_size.element.xs.px}",
             "$description": "Horizontal gap between icon and text label  – for medium size tags."
           }
         },

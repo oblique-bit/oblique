@@ -6,18 +6,18 @@
           "padding": {
             "vertical": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.density.element.xs.px}",
+              "$value": "{ob.s.dimension.dynamic.component_size.element.xs.px}",
               "$description": "Top and bottom padding  – for medium size pills."
             },
             "horizontal": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.density.spacing.xs.px}",
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.xs.px}",
               "$description": "Left and right padding  – for medium size pills."
             }
           },
           "gap": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.dynamic.density.element.xl.px}",
+            "$value": "{ob.s.dimension.dynamic.component_size.element.xl.px}",
             "$description": "Horizontal gap between icon and text label  – for medium size pills."
           }
         },
@@ -32,15 +32,15 @@
           "min_height": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.density.spacing.xs.px}"
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.xs.px}"
             },
             "md": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.density.spacing.xs.px}"
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.xs.px}"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.density.spacing.xl.px}"
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.xl.px}"
             }
           }
         },
@@ -352,7 +352,7 @@
         },
         "min-height": {
           "$type": "sizing",
-          "$value": "{ob.s.dimension.dynamic.density.spacing.xl.rem}"
+          "$value": "{ob.s.dimension.dynamic.component_size.spacing.xl.rem}"
         }
       }
     }
