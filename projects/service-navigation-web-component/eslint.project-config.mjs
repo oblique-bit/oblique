@@ -25,7 +25,6 @@ export default [
 			'@angular-eslint/use-injectable-provided-in': 'off',
 
 			// rules that are not respected
-			'@angular-eslint/prefer-output-emitter-ref': 'off',
 			'@typescript-eslint/no-deprecated': 'off', // need an alternative to provide icons
 			'@typescript-eslint/no-magic-numbers': 'off', // would violate member-ordering
 			'@typescript-eslint/no-unsafe-return': 'off', // need extensive type checking
