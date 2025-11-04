@@ -132,6 +132,7 @@ The `build` type has a mandatory scope that must be one of the following:
 - **contributing**: Changes to anything related to the contributing guideline
 - **dependencies**: Changes related to dependencies that are not applicable to another scope
 - **lint**: Changes to anything related to linting and formatting
+- **readme**: Changes related to the readme
 - **release**: New releases or changes to anything related to releases
 - **scripts**: Changes to the node scripts that are not applicable to another scope
 
