@@ -1,17 +1,15 @@
-# OUI-4098: 
+# <type>(design-system/tokens): <subject>
 
-# Infrastructure/tooling changes:
-# - Focus on technical benefits
-# - Mention validation/quality improvements
-# - Use terms like "enhance", "optimize", "standardize"
+OUI-
 
-# Avoid words that raise eyebrows:
-# - "new feature", "experimental", "prototype" 
-# - "workflow change", "process overhaul"
-# - "time-saving", "efficiency" (sounds like you were inefficient before)
+# Template format: <type>(design-system/tokens): <subject>
+# Types: feat, fix, docs, style, refactor, test, chore
+#
+# Run: npm run jira:recent to see latest tickets
 
-# Good patterns:
-# - "Add validation tooling"
-# - "Enhance development workflow" 
-# - "Update build infrastructure"
-# - "Improve token analysis process"
+# Infrastructure/tooling changes - focus on technical benefits:
+# - "Add validation tooling", "enhance development workflow"
+# - "Update build infrastructure", "improve token analysis process"
+# - Use: "enhance", "optimize", "standardize", "validate"
+# 
+# Avoid: "new feature", "experimental", "workflow change", "time-saving"

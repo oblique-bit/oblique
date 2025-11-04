@@ -24,6 +24,7 @@
     "trace-token": "node scripts-custom/trace-token-references.js",
     "search-tokens": "node scripts-custom/trace-token-references.js --search",
     "trace-figma": "node scripts-custom/trace-token-references.js --figma",
+
     "tokens:build": "style-dictionary build --config style-dictionary.config.js",
     "tokens:clean": "style-dictionary clean",
     "validate:tokens-build": "npm run tokens:build && echo '✅ Style Dictionary build successful'",
