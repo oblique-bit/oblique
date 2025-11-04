@@ -1,0 +1,45 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --ob-p-color-cobalt-alpha-50-extensions-studio-tokens-modify: 0.05;
+  --ob-p-color-cobalt-alpha-100-extensions-studio-tokens-modify: 0.1;
+  --ob-p-color-cobalt-alpha-200-extensions-studio-tokens-modify: 0.2;
+  --ob-p-color-cobalt-alpha-300-extensions-studio-tokens-modify: 0.3;
+  --ob-p-color-cobalt-alpha-400-extensions-studio-tokens-modify: 0.4;
+  --ob-p-color-cobalt-alpha-500-extensions-studio-tokens-modify: 0.5;
+  --ob-p-color-cobalt-alpha-600-extensions-studio-tokens-modify: 0.6;
+  --ob-p-color-cobalt-alpha-700-extensions-studio-tokens-modify: 0.7;
+  --ob-p-color-cobalt-alpha-800-extensions-studio-tokens-modify: 0.8;
+  --ob-p-color-cobalt-alpha-900-extensions-studio-tokens-modify: 0.9;
+  --ob-p-color-white-alpha-50-extensions-studio-tokens-modify: 0.05;
+  --ob-p-color-white-alpha-100-extensions-studio-tokens-modify: 0.1;
+  --ob-p-color-white-alpha-200-extensions-studio-tokens-modify: 0.2;
+  --ob-p-color-white-alpha-300-extensions-studio-tokens-modify: 0.3;
+  --ob-p-color-white-alpha-400-extensions-studio-tokens-modify: 0.4;
+  --ob-p-color-white-alpha-500-extensions-studio-tokens-modify: 0.5;
+  --ob-p-color-white-alpha-600-extensions-studio-tokens-modify: 0.6;
+  --ob-p-color-white-alpha-700-extensions-studio-tokens-modify: 0.7;
+  --ob-p-color-white-alpha-800-extensions-studio-tokens-modify: 0.8;
+  --ob-p-color-white-alpha-900-extensions-studio-tokens-modify: 0.9;
+  --ob-p-color-indigo-alpha-900-extensions-studio-tokens-modify: 0.2;
+  --ob-s1-color-neutral-border-subtle-inversity-normal-extensions-studio-tokens-modify: 0.1;
+  --ob-s1-color-neutral-border-subtle-inversity-flipped-extensions-studio-tokens-modify: 0.1;
+  --ob-s1-color-neutral-border-medium-inversity-normal-extensions-studio-tokens-modify: 0.2;
+  --ob-s1-color-neutral-border-medium-inversity-flipped-extensions-studio-tokens-modify: 0.2;
+  --ob-s1-color-interaction-emphasis-high-fg-disabled-contrast-low-inversity-normal-extensions-studio-tokens-modify: 0.4;
+  --ob-s1-color-interaction-emphasis-high-fg-disabled-contrast-low-inversity-flipped-extensions-studio-tokens-modify: 0.4;
+  --ob-s1-color-interaction-emphasis-high-bg-disabled-opacity-inversity-flipped-extensions-studio-tokens-modify: 0.4;
+  --ob-s1-color-interaction-emphasis-low-fg-disabled-contrast-low-inversity-normal-extensions-studio-tokens-modify: 0.4;
+  /**
+   * [FIGMA-ONLY]
+   * Token for Figma design workflow only.
+   */
+  --figma-doc-color-figma-section-bg-extensions-studio-tokens-modify: 0.3;
+  /**
+   * [FIGMA-ONLY]
+   * Token for Figma design workflow only.
+   */
+  --figma-doc-color-figma-section-border-extensions-studio-tokens-modify: 0.1;
+}

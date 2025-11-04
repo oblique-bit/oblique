@@ -23,7 +23,14 @@
     "docs:validate-structure": "node scripts-custom/validate-documentation-structure.js",
     "trace-token": "node scripts-custom/trace-token-references.js",
     "search-tokens": "node scripts-custom/trace-token-references.js --search",
-    "trace-figma": "node scripts-custom/trace-token-references.js --figma"
+    "trace-figma": "node scripts-custom/trace-token-references.js --figma",
+    "tokens:build": "style-dictionary build --config style-dictionary.config.js",
+    "tokens:clean": "style-dictionary clean",
+    "validate:tokens-build": "npm run tokens:build && echo '✅ Style Dictionary build successful'",
+    "validate:pre-handoff": "node scripts-custom/validate-pre-handoff.js",
+    "validate:pre-handoff:fix": "node scripts-custom/validate-pre-handoff.js --fix",
+    "validate:handoff-quick": "node scripts-custom/validate-handoff-quick.js",
+    "check": "npm run validate:tokens-build"
   },
   "peerDependencies": {
     "@angular/cdk": "^19.0.0 || ^20.0.0",
@@ -34,7 +41,8 @@
   },
   "devDependencies": {
     "glob": "^11.0.3",
-    "ng-packagr": "^19.2.2"
+    "ng-packagr": "^19.2.2",
+    "style-dictionary": "^5.1.1"
   },
   "sideEffects": false
 }
