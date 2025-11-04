@@ -75,8 +75,8 @@
               },
               "rem": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.500} * {ob.g.multiplier.dimension.component_size.sm}",
-                "$description": "6px equivalent - Small component spacing (dynamic)"
+                "$value": "roundTo({ob.p.dimension.rem.500} * {ob.g.multiplier.dimension.component_size.sm}, 3)",
+                "$description": "6px equivalent - Small component spacing (dynamic, rounded to fix floating-point precision)"
               }
             },
             "md": {
