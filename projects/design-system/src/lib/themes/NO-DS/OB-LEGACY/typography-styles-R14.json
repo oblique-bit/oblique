@@ -109,7 +109,7 @@
         "dialog": {
           "title": {
             "$type": "typography",
-            "$value": "{ob.s.typography.content.heading.default.H2}",
+            "$value": "{ob.h.typography.style.heading.H2}",
             "$description": "[OB-LEGACY]\nAn H2 heading for dialog titles establishes their importance as temporary focal points that interrupt the main interface while still adhering to the structural hierarchy for accessibility purposes. R13 token."
           },
           "text": {
