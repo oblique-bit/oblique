@@ -1,23 +1,21 @@
 import {
 	Component,
 	DOCUMENT,
-	EventEmitter,
 	HostListener,
 	type OnChanges,
 	type OnInit,
-	Output,
 	type SimpleChange,
 	type SimpleChanges,
 	ViewEncapsulation,
 	booleanAttribute,
 	inject,
 	input,
-	numberAttribute
+	numberAttribute,
+	output
 } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
-import type {Observable} from 'rxjs';
 import {ObServiceNavigationModule} from '../../../oblique/src/lib/service-navigation/service-navigation.module';
 import {
 	ObEPamsEnvironment,
@@ -31,6 +29,7 @@ import {ObButtonModule} from '../../../oblique/src/lib/button/button.module';
 import {TranslationsService} from './translations-service';
 import type {ObICustomButton, ObILink} from './service-navigation-web-component.model';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ob-service-navigation-web-component',
@@ -74,10 +73,10 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	readonly rootUrl = input<string>(undefined);
 	readonly returnUrl = input<string>(undefined);
 	readonly customButtons = input<string>(undefined);
-	@Output() readonly languageChange: Observable<string>;
-	@Output() readonly loginState = new EventEmitter<ObLoginState>();
-	@Output() readonly buttonClickedEmitter = new EventEmitter<ObEIcon>();
-	@Output() readonly logoutTriggered = new EventEmitter<string>();
+	readonly languageChange = outputFromObservable<string>(inject(TranslationsService).languageChange$);
+	readonly loginState = output<ObLoginState>();
+	readonly buttonClickedEmitter = output<ObEIcon>();
+	readonly logoutTriggered = output<string>();
 
 	environmentParsed: ObEPamsEnvironment;
 	infoContactParsed: ObIServiceNavigationContact | undefined;
@@ -86,10 +85,6 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	customButtonsParsed: ObICustomButton[] = [];
 	private readonly translationService = inject(TranslationsService);
 	private readonly document = inject(DOCUMENT);
-
-	constructor() {
-		this.languageChange = this.translationService.languageChange$;
-	}
 
 	@HostListener('window:mousedown')
 	@HostListener('window:keydown')

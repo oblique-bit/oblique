@@ -51,7 +51,12 @@ export class AccessibilityStatementComponent {
 		if (contact.email) {
 			return this.buildMailContact(contact.email, contact.context);
 		}
-		return this.buildUrlContact(contact.url, contact.context);
+		if (contact.url) {
+			return this.buildUrlContact(contact.url, contact.context);
+		}
+		throw new Error(
+			'Please provide valid contact information for the accessibility statement. At least one object with a non-empty phone, email, or url property.'
+		);
 	}
 
 	private buildPhoneContact(phone: string, context: string): ObIAccessibilityStatementContactInfo {

@@ -1,3 +1,12 @@
+# [14.1.1](https://github.com/oblique-bit/oblique/compare/14.1.0...14.1.1) (2025-11-06)
+
+## Bug Fixes
+
+- **accessibility-statement:** make `ObContactData` properties mutually exclusive ([cbaa6b51](https://github.com/oblique-bit/oblique/commit/cbaa6b518cfd569d6cc4e2a2efb8559b22a1666b))
+- **accessibility-statement:** print meaningful error message in case of empty contact info ([958dbb79](https://github.com/oblique-bit/oblique/commit/958dbb791417c7c570d725ffb9ffc37440cd5f77))
+- **master-layout:** mark main nav as active if sub nav is active ([75f689d4](https://github.com/oblique-bit/oblique/commit/75f689d48a633a6065e4f86c77efee2fb023d2c1))
+- **service-navigation:** fix message last used / favorite applications are empty TPEFD-9925 ([4761e140](https://github.com/oblique-bit/oblique/commit/4761e14002d021f278bd82b81ae57f618902b4a7))
+
 # [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
 
 ## Bug Fixes
