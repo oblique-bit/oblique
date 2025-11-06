@@ -30,7 +30,6 @@
       "04_component/atom/badge": "enabled",
       "04_component/atom/spinner": "enabled",
       "04_component/atom/tooltip": "enabled",
-      "04_component/molecule/infobox/static": "enabled",
       "04_component/molecule/popover": "enabled",
       "04_component/molecule/tag/typography": "source",
       "04_component/molecule/tag/tag": "enabled",
@@ -47,7 +46,8 @@
       "04_component/molecule/pill/pill": "enabled",
       "04_component/molecule/pill/typography": "source",
       "01_global/themes-scoped/static": "source",
-      "01_global/themes-user/lightness/static": "source"
+      "01_global/themes-user/lightness/static": "source",
+      "04_component/molecule/infobox/02_layout": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -331,9 +331,9 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "01_global/multipliers/viewport/desktop": "enabled",
-      "04_component/molecule/infobox/responsive/desktop": "enabled",
       "05_html/button/05_viewport/desktop": "enabled",
-      "01_global/viewport/desktop": "enabled"
+      "01_global/viewport/desktop": "enabled",
+      "04_component/molecule/infobox/03_viewport/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.viewport.breakpoint.min": "4c3f1caee269ca68c176ee69930791f177c82fcc",
@@ -375,9 +375,9 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "01_global/multipliers/viewport/mobile": "enabled",
-      "04_component/molecule/infobox/responsive/mobile": "enabled",
       "05_html/button/05_viewport/mobile": "enabled",
-      "01_global/viewport/mobile": "enabled"
+      "01_global/viewport/mobile": "enabled",
+      "04_component/molecule/infobox/03_viewport/mobile": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.g.viewport.breakpoint.min": "4c3f1caee269ca68c176ee69930791f177c82fcc",
@@ -424,8 +424,8 @@
       "02_primitive/color": "source",
       "03_semantic/color/s1-lightness/light": "enabled",
       "03_semantic/asset/theme/lightness/light": "enabled",
-      "04_component/molecule/infobox/color": "enabled",
-      "01_global/themes-user/lightness/dynamic/light": "enabled"
+      "01_global/themes-user/lightness/dynamic/light": "enabled",
+      "04_component/molecule/infobox/01_color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -736,8 +736,8 @@
       "02_primitive/color": "source",
       "03_semantic/color/s1-lightness/dark": "enabled",
       "03_semantic/asset/theme/lightness/dark": "enabled",
-      "04_component/molecule/infobox/color": "enabled",
-      "01_global/themes-user/lightness/dynamic/dark": "enabled"
+      "01_global/themes-user/lightness/dynamic/dark": "enabled",
+      "04_component/molecule/infobox/01_color": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
