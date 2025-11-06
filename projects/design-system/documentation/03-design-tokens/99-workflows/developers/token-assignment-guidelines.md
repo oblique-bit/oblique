@@ -206,6 +206,126 @@ Components (ob.c.tag.container.spacing.gap.spacing.gap -> Semantics (ob.s.z_inde
 
 ---
 
+## Dimension Token Consumption Rules
+
+### Unit Type Selection Guidelines
+
+**Rule:** When creating component tokens, the choice between `px` and `rem` units must be made based on the element's scaling requirements and accessibility needs.
+
+#### When to Use PX Units
+
+**Use `px` for elements that must maintain fixed visual appearance:**
+
+1. **Borders and Outlines**
+   ```json
+   // CORRECT: Borders always use px for consistent appearance
+   "ob.c.button.border.width": {
+     "$value": "{ob.s.border_width.sm}",  // References {ob.p.dimension.px.2}
+     "$description": "2px border for consistent visual weight"
+   }
+   ```
+
+2. **Fine Lines and Dividers**
+   ```json
+   // CORRECT: Hairlines and dividers use px
+   "ob.c.card.divider.height": {
+     "$value": "{ob.s.dimension.static.component_size.detail.sm.px}",
+     "$description": "1px divider line"
+   }
+   ```
+
+3. **Icon Sizing (where pixel-perfect is critical)**
+   ```json
+   // CORRECT: Icons that need pixel-perfect rendering
+   "ob.c.icon.size.micro": {
+     "$value": "{ob.s.dimension.static.component_size.element.xs.px}",
+     "$description": "16px icon for crisp rendering"
+   }
+   ```
+
+#### When to Use REM Units
+
+**Use `rem` for elements that should scale with user preferences:**
+
+1. **Component Padding and Spacing**
+   ```json
+   // CORRECT: Internal component spacing uses rem
+   "ob.c.button.spacing.padding_horizontal": {
+     "$value": "{ob.s.dimension.static.component_size.spacing.sm.rem}",
+     "$description": "Scalable horizontal padding"
+   }
+   ```
+
+2. **Layout Gaps and Margins**
+   ```json
+   // CORRECT: Layout spacing uses rem for accessibility
+   "ob.c.card.spacing.gap": {
+     "$value": "{ob.s.dimension.static.component_size.spacing.md.rem}",
+     "$description": "Gap between card elements that scales with font size"
+   }
+   ```
+
+3. **Typography-Related Spacing**
+   ```json
+   // CORRECT: Typography spacing always uses rem
+   "ob.c.paragraph.spacing.margin_bottom": {
+     "$value": "{ob.s.dimension.static.surface.xs.rem}",
+     "$description": "Paragraph spacing that scales with text size"
+   }
+   ```
+
+### Dimension Token Architecture Rules
+
+1. **Parallel Scale Consumption**: Always choose the appropriate unit from the parallel `px`/`rem` scales
+2. **Unit Consistency**: Maintain consistent unit choice within related token groups
+3. **Accessibility Priority**: When in doubt, prefer `rem` for better user accessibility
+4. **Visual Consistency**: Use `px` only when visual consistency across zoom levels is critical
+
+#### Component Type Guidelines
+
+| Component Area | Preferred Unit | Rationale |
+|---------------|----------------|-----------|
+| **Borders** | `px` | Consistent visual weight across zoom levels |
+| **Border Radius** | `px` | Consistent corner appearance |
+| **Shadows** | `px` | Fixed shadow rendering |
+| **Component Padding** | `rem` | Scales with user font size preferences |
+| **Layout Spacing** | `rem` | Responsive to accessibility settings |
+| **Typography Margins** | `rem` | Maintains text rhythm and readability |
+| **Icon Containers** | `rem` | Scales with content unless pixel-perfect needed |
+| **Fine Lines** | `px` | Ensures visibility at all zoom levels |
+
+### Unit Selection Decision Framework
+
+**Before creating component tokens, ask:**
+
+1. **Must this element maintain exact visual appearance?** → Use `px`
+2. **Should this element scale with user font preferences?** → Use `rem`  
+3. **Is this related to typography or content spacing?** → Use `rem`
+4. **Is this a border, outline, or fine visual detail?** → Use `px`
+5. **Does this need to be accessible to users with large font sizes?** → Use `rem`
+
+#### ❌ Anti-Patterns
+
+```json
+// WRONG: Border using rem (inconsistent visual weight)
+"ob.c.button.border.width": {
+  "$value": "{ob.s.dimension.static.component_size.detail.sm.rem}"
+}
+
+// WRONG: Typography spacing using px (not accessible)
+"ob.c.heading.spacing.margin_bottom": {
+  "$value": "{ob.s.dimension.static.surface.xs.px}"
+}
+
+// WRONG: Mixed units in related spacing
+"ob.c.card.spacing": {
+  "padding_top": "{ob.s.dimension.static.component_size.spacing.md.px}",
+  "padding_bottom": "{ob.s.dimension.static.component_size.spacing.md.rem}"
+}
+```
+
+---
+
 ## Cross-Domain Consumption Rules
 
 ### Typography + Color Integration
@@ -328,6 +448,8 @@ When creating or reviewing component tokens, ensure:
 - [ ] **Semantic alignment**: Component purpose matches token type (status/interaction/neutral)
 - [ ] **Theming support**: Required theming capabilities are available through token choice
 - [ ] **Reference chain**: Token references follow proper hierarchy (except 01_global tokens which can be referenced from any level)
+- [ ] **Unit consistency**: Dimension tokens use appropriate `px` vs `rem` units (see [Dimension Unit Selection](#dimension-token-consumption-rules))
+- [ ] **Unit type coherence**: Related spacing tokens use consistent unit types within component
 
 ### Interactive Component Checklist
 
@@ -423,8 +545,10 @@ When creating a new component:
 1. **Identify component type**: Status-based, interactive, or neutral
 2. **Choose appropriate token layer**: L2 or L3 based on theming needs
 3. **Select semantic category**: status, interaction, or neutral
-4. **Define all necessary states**: enabled, hover, focus, active, disabled
-5. **Test theming**: Verify emphasis and inversity theming work as expected
+4. **Apply unit selection guidelines**: Use [Dimension Unit Selection Framework](#unit-selection-decision-framework) for all dimension tokens
+5. **Define all necessary states**: enabled, hover, focus, active, disabled
+6. **Test theming**: Verify emphasis and inversity theming work as expected
+7. **Validate unit consistency**: Ensure related tokens use appropriate and consistent units
 
 ### 2. Existing Component Migration
 
@@ -432,9 +556,11 @@ When migrating existing components:
 
 1. **Audit current consumption**: Identify any primitive or S1 references
 2. **Map to semantic tokens**: Choose appropriate S2/S3 semantic tokens
-3. **Preserve visual appearance**: Ensure migration doesn't break existing designs
-4. **Test theme switching**: Verify all theme combinations work correctly
-5. **Update documentation**: Reflect new token usage patterns
+3. **Apply unit selection review**: Ensure existing dimension tokens follow unit guidelines
+4. **Preserve visual appearance**: Ensure migration doesn't break existing designs
+5. **Test theme switching**: Verify all theme combinations work correctly
+6. **Validate unit consistency**: Check that related dimension tokens use consistent units
+7. **Update documentation**: Reflect new token usage patterns
 
 ### 3. Theme Application
 
