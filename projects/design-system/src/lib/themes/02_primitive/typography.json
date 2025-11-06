@@ -9,7 +9,7 @@
         },
         "mono": {
           "$type": "fontFamilies",
-          "$value": "'Noto Sans Mono', ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace",
+          "$value": "'Noto Sans Mono', ui-monospace, sfmono-regular, consolas, 'Liberation Mono', menlo, monospace",
           "$description": "Monospace font with modern system fallbacks for code and technical content"
         }
       },
