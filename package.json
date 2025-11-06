@@ -73,22 +73,22 @@
     "@angular/compiler-cli": "^20.3.9",
     "@types/jest": "^29.5.14",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^20.19.11",
+    "@types/node": "^20.19.24",
     "angular-eslint": "^19.8.1",
     "chalk": "^4.1.2",
-    "eslint": "^9.34.0",
+    "eslint": "^9.39.1",
     "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-sonar": "^0.2.16",
     "lint-staged": "^15.5.2",
     "prettier": "^3.6.2",
-    "stylelint": "^16.23.1",
+    "stylelint": "^16.25.0",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-scss": "^6.12.1",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.41.0"
+    "typescript-eslint": "^8.46.3"
   },
   "overrides": {
     "parse5": "<7.3.0"
