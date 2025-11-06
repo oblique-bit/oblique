@@ -1,3 +1,9 @@
+# [14.1.1](https://github.com/oblique-bit/oblique/compare/14.1.0...14.1.1) (2025-11-06)
+
+## Bug Fixes
+
+- **service-navigation:** fix message last used / favorite applications are empty TPEFD-9925 ([4761e140](https://github.com/oblique-bit/oblique/commit/4761e14002d021f278bd82b81ae57f618902b4a7))
+
 # [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
 
 ## Bug Fixes
