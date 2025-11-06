@@ -286,7 +286,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 			// can't use filter or conditional chaining as we need to modify a value
 			if (eslintConfiguration.overrides) {
 				eslintConfiguration.overrides.forEach(configuration => {
-					if (configuration.files && configuration.files[0] === '*.ts') {
+					if (configuration.files?.[0] === '*.ts') {
 						if (!configuration.rules) {
 							configuration.rules = {};
 						}

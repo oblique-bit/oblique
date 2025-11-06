@@ -402,6 +402,7 @@ export default [
 			'prefer-rest-params': 'error',
 			'prefer-spread': 'error',
 			'prefer-template': 'error',
+			'preserve-caught-error': 'off',
 			radix: 'error',
 			'require-atomic-updates': 'error',
 			/**
