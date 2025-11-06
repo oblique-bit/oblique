@@ -52,7 +52,6 @@ function embedMasterLayout(title: string): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique: Embedding Master Layout');
 		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
-		importModuleInRoot(tree, 'BrowserAnimationsModule', '@angular/platform-browser/animations');
 		addMasterLayout(tree, title);
 		infoMigration(
 			context,
