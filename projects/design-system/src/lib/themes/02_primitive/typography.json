@@ -4,7 +4,7 @@
       "fontFamily": {
         "sans": {
           "$type": "fontFamilies",
-          "$value": "'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+          "$value": "'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif",
           "$description": "BIT Corporate Web Font with comprehensive system fallbacks for cross-platform consistency"
         },
         "mono": {
