@@ -19,7 +19,7 @@
     "raw-loader": "^4.0.2"
   },
   "devDependencies": {
-    "@schematics/angular": "^20.0.4",
+    "@schematics/angular": "^20.3.8",
     "jest-raw-loader": "^1.0.1"
   }
 }
