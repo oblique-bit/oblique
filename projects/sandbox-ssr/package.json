@@ -12,11 +12,11 @@
     "release": "ts-node scripts/release.ts"
   },
   "dependencies": {
-    "@angular/platform-server": "^20.2.1",
-    "@angular/ssr": "^20.2.0",
+    "@angular/platform-server": "^20.3.9",
+    "@angular/ssr": "^20.3.8",
     "express": "^4.21.2"
   },
   "devDependencies": {
-    "@types/express": "^4.17.23"
+    "@types/express": "^4.17.25"
   }
 }
