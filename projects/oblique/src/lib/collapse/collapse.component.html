@@ -26,12 +26,11 @@
 	}
 </div>
 <div
+	#collapseContent
 	[id]="id + '-content'"
 	class="ob-collapse-content"
-	[@expandCollapse]="{
-		value: active ? 'open' : 'close',
-		params: { time: time }
-	}"
+	[style.height.px]="contentHeight"
+	[style.transitionDuration.ms]="time"
 >
 	<ng-content select="[obCollapseMain]" />
 </div>

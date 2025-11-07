@@ -1,7 +1,6 @@
 import {NgModule, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
@@ -58,7 +57,6 @@ registerLocaleData(localeDE);
 	declarations: [AppComponent, HomePageComponent],
 	imports: [
 		AppRoutingModule,
-		BrowserAnimationsModule,
 		BrowserModule,
 		FormsModule,
 		MatButtonModule,
