@@ -75,13 +75,13 @@ describe(IconsCodeExamplesComponent.name, () => {
 			expect(input).toBeTruthy();
 		});
 
-		test(`that there is 19 ${MatIcon.name}s when the iconsFilter input has the value "ri"`, () => {
+		test(`that there is 12 ${MatIcon.name}s when the iconsFilter input has the value "ri"`, () => {
 			input.nativeElement.value = 'ri';
 			input.nativeElement.dispatchEvent(new Event('input'));
 			fixture.detectChanges();
 			expect(
 				fixture.debugElement.query(By.css('app-icons-example-icons-gallery-preview div.gallery')).queryAll(By.directive(MatIcon)).length
-			).toBe(19);
+			).toBe(99);
 		});
 
 		test(`that there is 10 ${MatIcon.name}s when the byCategoryFilter dropdown has the value "ACCESSIBILITY"`, () => {
@@ -105,7 +105,7 @@ describe(IconsCodeExamplesComponent.name, () => {
 			fixture.detectChanges();
 			expect(
 				fixture.debugElement.query(By.css('app-icons-example-icons-gallery-preview div.gallery')).queryAll(By.directive(MatIcon)).length
-			).toBe(2);
+			).toBe(8);
 		});
 	});
 });

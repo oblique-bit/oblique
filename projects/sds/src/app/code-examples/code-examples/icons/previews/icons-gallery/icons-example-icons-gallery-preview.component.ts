@@ -29,10 +29,12 @@ import {MatDivider} from '@angular/material/divider';
 import {MatDialog} from '@angular/material/dialog';
 import {IconDialogComponent} from './icon-dialog/icon-dialog.component';
 import type {IconMetadata} from './icons.model';
+import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
 	imports: [
+		MarkifyPipe,
 		CommonModule,
 		MatIconModule,
 		MatButtonModule,
@@ -129,18 +131,51 @@ export class IconsExampleIconsGalleryPreviewComponent {
 	private setUpIconsFilter(): Observable<ObEIcon[]> {
 		return this.iconsFilter.valueChanges.pipe(
 			startWith(null),
+			map(filter => (filter ? filter.trim() : filter)),
 			combineLatestWith(this.byCategoryFilter.valueChanges.pipe(startWith('ALL'))),
-			map(([filter, category]) =>
-				this.icons.filter(iconName => this.matchFilter(filter, iconName) && this.matchCategory(category, iconName))
-			)
+			map(([filter, category]) => this.filterIcons(this.icons, category, filter))
 		);
 	}
 
-	private matchFilter(filter: string, iconName: string): boolean {
-		return filter === null || iconName.toLowerCase().includes(filter.toLowerCase());
+	private filterIcons(icons: ObEIcon[], category: string, filter: string): ObEIcon[] {
+		const matchedName: ObEIcon[] = [];
+		const matchedAliases: ObEIcon[] = [];
+
+		icons.forEach(iconName => {
+			const trimmedIconName = iconName.trim();
+			if (this.matchCategory(category, trimmedIconName)) {
+				if (this.matchFilterAgainstName(filter, trimmedIconName)) {
+					matchedName.push(iconName);
+				} else if (this.matchFilterAgainstAliases(filter, trimmedIconName)) {
+					matchedAliases.push(iconName);
+				}
+			}
+		});
+		return [...matchedName, ...matchedAliases];
+	}
+
+	private matchFilterAgainstName(filter: string, iconName: string): boolean {
+		return filter === null || this.match(filter.toLowerCase(), iconName.toLowerCase());
+	}
+
+	private matchFilterAgainstAliases(filter: string, iconName: string): boolean {
+		const metaData = this.getMetaDataOfIcon(iconName);
+		const aliases = metaData.aliases ?? [];
+		return filter === null || aliases.some(alias => this.match(filter.toLowerCase(), alias.trim()));
 	}
 
 	private matchCategory(category: string, iconName: string): boolean {
 		return category === 'ALL' || iconMetadata.some(item => item.name === iconName && item.category === category);
+	}
+
+	private match(search: string, text: string): boolean {
+		const searchTokens = this.getTokens(search);
+		const textTokens = this.getTokens(text);
+
+		return textTokens.join(' ').includes(searchTokens.join(' ')) || searchTokens.some(searchToken => textTokens.includes(searchToken));
+	}
+
+	private getTokens(text: string): string[] {
+		return text.split(/[-_ ]/u);
 	}
 }
