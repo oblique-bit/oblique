@@ -165,7 +165,6 @@
   "i18n.oblique.service-navigation.profile.my-profile": "My profile",
   "i18n.oblique.service-navigation.profile.my-permissions": "My permissions",
   "i18n.oblique.service-navigation.profile.my-email-sms-notifications": "My Email / SMS notifications",
-  "i18n.oblique.service-navigation.profile.my-business-partnerships": "My business partnerships",
   "i18n.oblique.service-navigation.profile.redeem-code": "Redeem invitation code",
   "i18n.oblique.service-navigation.section.phone.aria-label": "Phone link: {{ phoneNumber }}",
   "i18n.oblique.service-navigation.config.error.title": "Service unavailable",
