@@ -21,5 +21,6 @@
 
 	.ob-collapse-content {
 		overflow: hidden;
+		transition: height ease-in-out;
 	}
 }
