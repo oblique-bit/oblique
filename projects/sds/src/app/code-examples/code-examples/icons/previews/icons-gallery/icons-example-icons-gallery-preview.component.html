@@ -8,7 +8,7 @@
 				<mat-icon svgIcon="xmark_circle" />
 				<span class="ob-screen-reader-only">Clear search</span>
 			</button>
-			<mat-hint>Search by name</mat-hint>
+			<mat-hint>Search by name or keyword (home, access, ...)</mat-hint>
 		</mat-form-field>
 
 		<mat-form-field>
@@ -35,7 +35,7 @@
 		@for (icon of filteredIcons$ | async; track icon) {
 			<button class="icon-card" mat-button type="button" [obButton]="isButtonActive(icon)" (click)="showIconMetaData(icon)">
 				<mat-icon aria-hidden="false" class="icon" [attr.aria-label]="getMetaDataOfIcon(icon)?.description" [svgIcon]="icon" />
-				<span>{{ icon }}</span>
+				<span [innerHTML]="icon | markify: iconsFilter.value"></span>
 			</button>
 		}
 	</div>

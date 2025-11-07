@@ -83,4 +83,11 @@
 	.mat-icon.icon {
 		font-size: 48px;
 	}
+
+	::ng-deep {
+		mark {
+			font-weight: bold;
+			background-color: transparent;
+		}
+	}
 }
