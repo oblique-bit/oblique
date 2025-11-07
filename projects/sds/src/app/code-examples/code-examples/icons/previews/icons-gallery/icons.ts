@@ -2424,7 +2424,7 @@ export const iconMetadata: IconMetadata[] = [
 			'hilfe',
 			'assistance',
 			'aid',
-			'service ',
+			'service',
 			'guidance'
 		],
 		description: 'A question mark.'
@@ -2451,7 +2451,7 @@ export const iconMetadata: IconMetadata[] = [
 			'hilfe',
 			'assistance',
 			'aid',
-			'service ',
+			'service',
 			'guidance'
 		],
 		description: 'A circle with a question mark inside, representing help or additional information.'
@@ -3364,7 +3364,21 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for enabling closed captions in videos.',
 		category: 'Accessibility',
 		aliases: [
-			'closed captions, cc, subtitles, captioning, video captions, accessibility, transcript, media text, audio captions, subtitle icon, hearing accessibility, caption icon, audio, video, player'
+			'closed captions',
+			'cc',
+			'subtitles',
+			'captioning',
+			'video captions',
+			'accessibility',
+			'transcript',
+			'media text',
+			'audio captions',
+			'subtitle icon',
+			'hearing accessibility',
+			'caption icon',
+			'audio',
+			'video',
+			'player'
 		],
 		description: 'The abbreviation CC in a frame representing closed captions.'
 	},
@@ -3617,7 +3631,7 @@ export const iconMetadata: IconMetadata[] = [
 			'bestätigte',
 			'verified',
 			'checked',
-			'completed ',
+			'completed',
 			'geprüft',
 			'validated',
 			'approved',
@@ -3982,7 +3996,7 @@ export const iconMetadata: IconMetadata[] = [
 			'format',
 			'zip',
 			'compressed',
-			'packed ',
+			'packed',
 			'komprimiert',
 			'compression',
 			'archived',
