@@ -24,6 +24,7 @@ The scripts in this project are only for internal usage.
 - **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
 - **build**: build the library; Automatically run on the CI pipeline
 - **release**: create a new release, i.e. bump version number and updates the changelog
+- **extract-tokens**: extracts design tokens from GitHub and generates CSS variables
 
 ## Usage
 

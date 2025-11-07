@@ -1,0 +1,9 @@
+extends: "../../.stylelintrc.yml"
+rules:
+  alpha-value-notation: number # used by tokens-studio
+  color-function-notation: modern # used by tokens-studio
+  # all variables must start with "ob"
+  # followed by one of "c", "h", "s1", "s2" or "s3"
+  # followed by one or more words containing any combination of letters, digits and underscores
+  # all parts are joined with a dash
+  custom-property-pattern: ^ob-(?:c|h|s[123]?)(?:-[a-z0-9_]+)+$ # used by oblique tokens

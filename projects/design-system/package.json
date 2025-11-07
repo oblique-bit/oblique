@@ -7,7 +7,8 @@
     "test": "cd ../.. && ng test design-system",
     "test-ci": "cd ../.. && ng run design-system:test:ci",
     "build": "ng build design-system && ts-node scripts/post-build.ts",
-    "release": "ts-node scripts/release.ts"
+    "release": "ts-node scripts/release.ts",
+    "extract-tokens": "node scripts/extract-tokens.mjs"
   },
   "peerDependencies": {
     "@angular/cdk": "^20.0.0 || ^21.0.0",
@@ -17,6 +18,7 @@
     "@ngx-translate/core": ">=16.0.0"
   },
   "devDependencies": {
+    "@tokens-studio/sd-transforms": "^2.0.1",
     "ng-packagr": "^20.3.0"
   },
   "sideEffects": false
