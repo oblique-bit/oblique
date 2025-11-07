@@ -165,7 +165,6 @@
   "i18n.oblique.service-navigation.profile.my-profile": "Il mio profilo",
   "i18n.oblique.service-navigation.profile.my-permissions": "Le mie autorizzazioni",
   "i18n.oblique.service-navigation.profile.my-email-sms-notifications": "Le mie notifiche Email / SMS",
-  "i18n.oblique.service-navigation.profile.my-business-partnerships": "Le mie collaborazioni commerciali",
   "i18n.oblique.service-navigation.profile.redeem-code": "Attivare un codice di invito",
   "i18n.oblique.service-navigation.section.phone.aria-label": "Collegamento telefonico: {{ phoneNumber }}",
   "i18n.oblique.service-navigation.config.error.title": "Servizio non disponibile",

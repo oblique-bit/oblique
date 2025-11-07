@@ -137,11 +137,6 @@ export class ObServiceNavigationService {
 						isInternalLink: true
 					},
 					{
-						url: `${base}/profile/business-partnerships`,
-						label: 'i18n.oblique.service-navigation.profile.my-business-partnerships',
-						isInternalLink: true
-					},
-					{
 						url: `${base}/redeem`,
 						label: 'i18n.oblique.service-navigation.profile.redeem-code',
 						isInternalLink: true

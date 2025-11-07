@@ -414,12 +414,6 @@ describe('ObServiceNavigationService', () => {
 								},
 								{
 									index: 3,
-									url: `http://applications/profile/business-partnerships`,
-									label: 'i18n.oblique.service-navigation.profile.my-business-partnerships',
-									isInternalLink: true
-								},
-								{
-									index: 4,
 									url: `http://applications/redeem`,
 									label: 'i18n.oblique.service-navigation.profile.redeem-code',
 									isInternalLink: true
