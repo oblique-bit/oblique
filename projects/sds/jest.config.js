@@ -25,12 +25,6 @@ module.exports = {
 	coveragePathIgnorePatterns: ['<rootDir>/projects/oblique'],
 	coverageThreshold: {
 		...baseConfig.coverageThreshold,
-		'projects/sds/src/app.routes.ts': {
-			statements: 30,
-			branches: 0,
-			functions: 0,
-			lines: 30,
-		},
 		'projects/sds/src/app/': {
 			statements: 87,
 			branches: 30,

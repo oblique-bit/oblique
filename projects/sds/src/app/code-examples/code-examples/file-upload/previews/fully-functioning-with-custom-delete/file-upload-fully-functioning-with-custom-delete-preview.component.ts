@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-import {ObEUploadEventType, ObFileUploadModule, type ObIFileDescription, type ObIUploadEvent} from '@oblique/oblique';
-import {mockUrls} from '../../file-upload-simulate-interceptor';
-import {uploadInterceptor} from '../../../../../../main';
+import {ObFileUploadModule, type ObIFileDescription} from '@oblique/oblique';
+import {mockCustomDeleteURL, mockGetUploadedFilesURL, mockUploadURL} from '../../file-upload-simulate-interceptor';
 
 @Component({
 	selector: 'app-file-upload-fully-functioning-with-custom-delete-preview',
@@ -11,13 +10,9 @@ import {uploadInterceptor} from '../../../../../../main';
 	styleUrl: '../../../../code-example-flex-layout.scss',
 })
 export class FileUploadFullyFunctioningWithCustomDeletePreviewComponent {
-	mockUrls = mockUrls;
-
-	checkForCanceledUploads(event: ObIUploadEvent): void {
-		if (event.type === ObEUploadEventType.CANCELED) {
-			uploadInterceptor.mockCancel(event.files as File[], 0);
-		}
-	}
+	readonly uploadURL = `${mockUploadURL}/custom-delete`;
+	readonly getUploadedFilesURL = `${mockGetUploadedFilesURL}/custom-delete`;
+	readonly deleteURL = `${mockCustomDeleteURL}/custom-delete`;
 
 	// the default map function is
 	// files => btoa(JSON.stringify(files.map(file => file.name)));

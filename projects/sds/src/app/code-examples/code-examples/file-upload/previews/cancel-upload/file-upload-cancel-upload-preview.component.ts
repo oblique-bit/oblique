@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ObAlertComponent, ObFileUploadModule} from '@oblique/oblique';
-import {mockUrls} from '../../file-upload-simulate-interceptor';
+import {mockUploadURL} from '../../file-upload-simulate-interceptor';
 
 @Component({
 	selector: 'app-file-upload-cancel-upload-preview',
@@ -9,5 +9,5 @@ import {mockUrls} from '../../file-upload-simulate-interceptor';
 	styleUrl: './file-upload-cancel-upload-preview.component.scss',
 })
 export class FileUploadCancelUploadPreviewComponent {
-	mockUrls = mockUrls;
+	readonly uploadURL = `${mockUploadURL}/cancel-upload`;
 }
