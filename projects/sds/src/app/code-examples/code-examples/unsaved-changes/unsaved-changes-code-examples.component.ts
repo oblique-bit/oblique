@@ -9,7 +9,7 @@ import {UnsavedChangesExampleStackblitzLinkPreviewComponent} from '../unsaved-ch
 	selector: 'app-code-example-unsaved-changes',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UnsavedChangesCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'unsaved-changes-examples';
@@ -17,7 +17,7 @@ export class UnsavedChangesCodeExamplesComponent extends CodeExamples {
 		{
 			component: UnsavedChangesExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example'
-		}
+			title: 'Link to Stackblitz Example',
+		},
 	];
 }

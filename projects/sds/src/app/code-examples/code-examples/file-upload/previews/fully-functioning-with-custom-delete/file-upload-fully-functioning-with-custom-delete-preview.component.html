@@ -1,4 +1,8 @@
-<ob-file-upload [uploadUrl]="mockUrls[0].upload" [singleRequest]="false" (uploadEvent)="checkForCanceledUploads($event)" />
+<ob-file-upload
+	[uploadUrl]="mockUrls[0].upload"
+	[singleRequest]="false"
+	(uploadEvent)="checkForCanceledUploads($event)"
+/>
 <ob-file-info
 	[mapFilesToDeleteUrlFunction]="customMapForDelete"
 	[getUploadedFilesUrl]="mockUrls[0].getUploadedFiles"

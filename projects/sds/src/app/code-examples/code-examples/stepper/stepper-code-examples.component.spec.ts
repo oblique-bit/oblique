@@ -13,7 +13,7 @@ describe(StepperCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [StepperCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [StepperCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(StepperCodeExamplesComponent);

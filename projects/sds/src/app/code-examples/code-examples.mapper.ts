@@ -111,7 +111,7 @@ const codeExamples: Record<string, Type<CodeExamples>> = {
 	translations: TranslationsCodeExamplesComponent,
 	typography: TypographyCodeExamplesComponent,
 	'unknown-route': UnknownRouteCodeExamplesComponent,
-	'unsaved-changes': UnsavedChangesCodeExamplesComponent
+	'unsaved-changes': UnsavedChangesCodeExamplesComponent,
 };
 
 export function getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {

@@ -8,7 +8,7 @@ import {
 	addPrefixMatchExactOrSuffix,
 	addPrefixMatchSuffix,
 	minAngularVersion,
-	renameExactOrSuffix
+	renameExactOrSuffix,
 } from './ng-update-utils';
 import {
 	addAngularConfigInList,
@@ -25,7 +25,7 @@ import {
 	readFile,
 	removeImport,
 	replaceInFile,
-	setAngularProjectsConfig
+	setAngularProjectsConfig,
 } from '../utils';
 import {appModulePath, createSrcFile, getTemplate, obliqueCssPath} from '../ng-add/ng-add-utils';
 import {getPackageJsonDependency, removePackageJsonDependency} from '@schematics/angular/utility/dependencies';
@@ -39,7 +39,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 		'@ngx-translate/core': 13,
 		'@ng-bootstrap/ng-bootstrap': [9, 0],
 		'@angular/material': (angular: number) => [angular, 0],
-		ajv: [6, 0]
+		ajv: [6, 0],
 	};
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -59,7 +59,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 				this.migrateDropdown(),
 				this.removeUnsubscribe(),
 				this.adaptHtmlToCss(),
-				this.adaptCssClassNaming()
+				this.adaptCssClassNaming(),
 			])(tree, context);
 		};
 	}
@@ -68,9 +68,10 @@ export class UpdateV5toV6 implements ObIMigrations {
 		return (tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Migrating font');
 			const module = readFile(tree, appModulePath);
-			const match = /(?<full>\s*{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'\s}]*)['"]?\s*},?)/.exec(
-				module
-			);
+			const match =
+				/(?<full>\s*{\s*provide\s*:\s*OBLIQUE_FONT\s*,\s*useValue\s*:\s*(?:FONTS\.)?['"]?(?<font>[^"'\s}]*)['"]?\s*},?)/.exec(
+					module
+				);
 			const full = match?.groups?.full;
 			const font = match?.groups?.font;
 			if (full && font) {
@@ -103,7 +104,11 @@ export class UpdateV5toV6 implements ObIMigrations {
 	private addFontFiles(tree: Tree, font: string): void {
 		if (font === 'roboto') {
 			setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => {
-				config.splice(1, 0, {glob: '*/**', input: 'node_modules/@oblique/oblique/styles/fonts', output: 'assets/fonts'});
+				config.splice(1, 0, {
+					glob: '*/**',
+					input: 'node_modules/@oblique/oblique/styles/fonts',
+					output: 'assets/fonts',
+				});
 				return config;
 			});
 		}
@@ -133,7 +138,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 			{glob: '**/*', input: 'node_modules/@oblique/oblique/assets', output: 'assets'},
 			...config
 				.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/assets')
-				.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/styles')
+				.filter((asset: any) => asset?.input !== 'node_modules/@oblique/oblique/styles'),
 		]);
 	}
 
@@ -143,14 +148,18 @@ export class UpdateV5toV6 implements ObIMigrations {
 			const indexFileReplacements = [
 				{searchValue: /<!--\[if lt.*?endif]-->\s/s, replaceValue: ''},
 				{searchValue: /<!--\[if gte.*(<html.*?>).*endif]-->\s/s, replaceValue: '$1'},
-				{searchValue: /<body([^>]*)>\n/, replaceValue: `<body$1>\n${getTemplate(tree, 'default-index.html')}`}
+				{searchValue: /<body([^>]*)>\n/, replaceValue: `<body$1>\n${getTemplate(tree, 'default-index.html')}`},
 			];
 			getIndexPaths(tree).forEach((element: string) =>
 				indexFileReplacements.forEach(value => {
 					overwriteIndexFile(element, tree, value.searchValue, value.replaceValue);
 				})
 			);
-			return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
+			return addAngularConfigInList(
+				tree,
+				['architect', 'build', 'options', 'scripts'],
+				'node_modules/@oblique/oblique/ob-features.js'
+			);
 		};
 	}
 
@@ -183,7 +192,12 @@ export class UpdateV5toV6 implements ObIMigrations {
 			const toApply = (filePath: string): void => {
 				const config = /(?<config>\w*):\s*ObMasterLayoutConfig/.exec(readFile(tree, filePath))?.groups?.config;
 				if (config) {
-					replaceInFile(tree, filePath, new RegExp(`${config}\\.locale\\.default([\\s=])`, 'g'), `${config}.locale.defaultLanguage$1`);
+					replaceInFile(
+						tree,
+						filePath,
+						new RegExp(`${config}\\.locale\\.default([\\s=])`, 'g'),
+						`${config}.locale.defaultLanguage$1`
+					);
 				}
 			};
 			return applyInTree(tree, toApply, '*.ts');
@@ -206,10 +220,16 @@ export class UpdateV5toV6 implements ObIMigrations {
 	}
 
 	private adaptTestDependencies(tree: Tree): void {
-		const usesProtractor = checkIfAngularConfigExists(tree, ['architect', 'e2e', 'builder'], '@angular-devkit/build-angular:protractor');
+		const usesProtractor = checkIfAngularConfigExists(
+			tree,
+			['architect', 'e2e', 'builder'],
+			'@angular-devkit/build-angular:protractor'
+		);
 		const usesJest = checkIfAngularConfigExists(tree, ['architect', 'test', 'builder'], '@angular-builders/jest:run');
 		const deps = Object.keys(getJson(tree, packageJsonConfigPath)?.devDependencies || {});
-		deps.filter(dep => dep.includes(usesJest ? 'karma' : 'jest')).forEach(dep => removePackageJsonDependency(tree, dep));
+		deps
+			.filter(dep => dep.includes(usesJest ? 'karma' : 'jest'))
+			.forEach(dep => removePackageJsonDependency(tree, dep));
 		if (usesJest && !usesProtractor) {
 			deps.filter(dep => dep.includes('jasmine')).forEach(dep => removePackageJsonDependency(tree, dep));
 		}
@@ -252,8 +272,18 @@ export class UpdateV5toV6 implements ObIMigrations {
 		return (tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Migrate ObDropdownComponent');
 			const toApply = (filePath: string): void => {
-				replaceInFile(tree, filePath, /<button(.*?) dropdown-toggle[^>]*>\s*(<[^\s]*)(.*)\s*<\/button>/g, '$2 dropdown-toggle$1$3');
-				replaceInFile(tree, filePath, /<button dropdown-toggle>(\w*)<\/button>/g, '<ng-container dropdown-toggle>$1</ng-container>');
+				replaceInFile(
+					tree,
+					filePath,
+					/<button(.*?) dropdown-toggle[^>]*>\s*(<[^\s]*)(.*)\s*<\/button>/g,
+					'$2 dropdown-toggle$1$3'
+				);
+				replaceInFile(
+					tree,
+					filePath,
+					/<button dropdown-toggle>(\w*)<\/button>/g,
+					'<ng-container dropdown-toggle>$1</ng-container>'
+				);
 			};
 			return applyInTree(tree, toApply, '*.html');
 		};
@@ -270,7 +300,12 @@ export class UpdateV5toV6 implements ObIMigrations {
 					addImport(tree, filePath, 'OnDestroy', '@angular/core');
 					addImport(tree, filePath, 'Subject', 'rxjs');
 					removeImport(tree, filePath, 'ObUnsubscribable', '@oblique/oblique');
-					replaceInFile(tree, filePath, /\n([\t ]*)constructor\(/, '$1private readonly unsubscribe = new Subject();\n\n$1constructor(');
+					replaceInFile(
+						tree,
+						filePath,
+						/\n([\t ]*)constructor\(/,
+						'$1private readonly unsubscribe = new Subject();\n\n$1constructor('
+					);
 					this.addNgOnDestroy(tree, filePath, content.includes('ngOnDestroy'));
 				}
 			};
@@ -311,7 +346,16 @@ export class UpdateV5toV6 implements ObIMigrations {
 				addClassPrefix(tree, filePath, 'sticky', ['content', 'main', 'header', 'footer', 'title', 'actions', 'layout']);
 				addClassPrefix(tree, filePath, 'control', ['link', 'item', 'icon', 'label', 'toggle', 'locale']);
 				addClassPrefix(tree, filePath, 'multiselect', ['toggle', 'label', 'control']);
-				addClassPrefix(tree, filePath, 'nav', ['tree', 'link', 'indent', 'bordered', 'hover', 'toggle', 'step', 'horizontal']);
+				addClassPrefix(tree, filePath, 'nav', [
+					'tree',
+					'link',
+					'indent',
+					'bordered',
+					'hover',
+					'toggle',
+					'step',
+					'horizontal',
+				]);
 				addClassPrefix(tree, filePath, 'tab', ['item', 'link']);
 			};
 			return applyInTree(tree, apply, '*.html');
@@ -322,7 +366,15 @@ export class UpdateV5toV6 implements ObIMigrations {
 		return (tree: Tree, context: SchematicContext) => {
 			infoMigration(context, "Prefix Oblique's classes in SCSS");
 			const apply = (filePath: string): void => {
-				addPrefixMatchExactOrSuffix(tree, filePath, 'toggle', ['after', 'before', 'justified', 'down', 'up', 'right', 'left']);
+				addPrefixMatchExactOrSuffix(tree, filePath, 'toggle', [
+					'after',
+					'before',
+					'justified',
+					'down',
+					'up',
+					'right',
+					'left',
+				]);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'notification', ['container', 'title']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'alert', ['info', 'success', 'warning', 'error', 'link']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'search-box', ['input']);
@@ -336,7 +388,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 					'actions',
 					'sm',
 					'lg',
-					'layout'
+					'layout',
 				]);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'nav-stepper', ['sm', 'lg']);
 				addPrefixMatchExactOrSuffix(tree, filePath, 'table', ['cicd', 'plain', 'collapse', 'hover', 'scrollable']);
@@ -347,7 +399,16 @@ export class UpdateV5toV6 implements ObIMigrations {
 				addPrefixMatchSuffix(tree, filePath, 'cover', ['layout', 'viewport', 'header', 'alert']);
 				addPrefixMatchSuffix(tree, filePath, 'control', ['link', 'item', 'icon', 'label', 'toggle', 'locale']);
 				addPrefixMatchSuffix(tree, filePath, 'multiselect', ['toggle', 'label', 'control']);
-				addPrefixMatchSuffix(tree, filePath, 'nav', ['tree', 'link', 'indent', 'bordered', 'hover', 'toggle', 'step', 'horizontal']);
+				addPrefixMatchSuffix(tree, filePath, 'nav', [
+					'tree',
+					'link',
+					'indent',
+					'bordered',
+					'hover',
+					'toggle',
+					'step',
+					'horizontal',
+				]);
 				addPrefixMatchSuffix(tree, filePath, 'tab', ['item', 'link']);
 				addPrefixMatchSuffix(tree, filePath, 'search', ['results-list', 'dropdown']);
 				addPrefixMatchSuffix(tree, filePath, 'header', ['locale', 'controls']);
@@ -363,7 +424,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 					'custom',
 					'top-control',
 					'highlight',
-					'slide-control'
+					'slide-control',
 				]);
 				renameExactOrSuffix(
 					tree,
@@ -372,7 +433,13 @@ export class UpdateV5toV6 implements ObIMigrations {
 					['navigation', 'header', 'fixed', 'brand', 'footer', 'scrolling', 'content'],
 					'ob-master-layout'
 				);
-				renameExactOrSuffix(tree, filePath, 'offcanvas', ['sidebar', 'main', 'in', 'header', 'content', 'backdrop'], 'ob-off-canvas');
+				renameExactOrSuffix(
+					tree,
+					filePath,
+					'offcanvas',
+					['sidebar', 'main', 'in', 'header', 'content', 'backdrop'],
+					'ob-off-canvas'
+				);
 			};
 			return applyInTree(tree, apply, '*.scss');
 		};

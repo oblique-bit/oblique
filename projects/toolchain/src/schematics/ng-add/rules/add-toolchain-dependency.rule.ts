@@ -3,7 +3,7 @@ import {
 	type NodeDependency,
 	NodeDependencyType,
 	addPackageJsonDependency,
-	removePackageJsonDependency
+	removePackageJsonDependency,
 } from '@schematics/angular/utility/dependencies';
 import {currentToolchainVersion} from '../../version';
 
@@ -13,7 +13,7 @@ export function addToolchain(): Rule {
 			type: NodeDependencyType.Dev,
 			name: '@oblique/toolchain',
 			version: `^${currentToolchainVersion}`,
-			overwrite: false
+			overwrite: false,
 		};
 		removePackageJsonDependency(tree, '@oblique/toolchain'); // to remove it from dependencies
 		addPackageJsonDependency(tree, dep);

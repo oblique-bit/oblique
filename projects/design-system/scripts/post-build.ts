@@ -18,12 +18,25 @@ class PostBuild extends StaticScript {
 	}
 
 	private static copyDistFiles(): void {
-		CopyFiles.initialize(PostBuild.projectName).copyRootFiles('LICENSE').copyProjectRootFiles('README.md', 'CHANGELOG.md').finalize();
+		CopyFiles.initialize(PostBuild.projectName)
+			.copyRootFiles('LICENSE')
+			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
+			.finalize();
 	}
 
 	private static adaptPackageJson(): void {
 		PackageJson.initialize(PostBuild.projectName)
-			.addFieldsFromRoot('version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs')
+			.addFieldsFromRoot(
+				'version',
+				'description',
+				'keywords',
+				'author',
+				'contributors',
+				'homepage',
+				'repository',
+				'license',
+				'bugs'
+			)
 			.write()
 			.finalize();
 	}

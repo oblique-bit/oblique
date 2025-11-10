@@ -45,7 +45,7 @@ export {
 	ObIMasterLayoutEvent,
 	ObEMasterLayoutEventValues,
 	ObISkipLink,
-	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
+	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 } from './master-layout.model';
 export {ObOutlineDirective} from './outline.directive';
 
@@ -61,7 +61,7 @@ export {ObOutlineDirective} from './outline.directive';
 		ObMasterLayoutNavigationMenuDirective,
 		ObMasterLayoutNavigationSubMenuItemComponent,
 		ObMasterLayoutNavigationToggleDirective,
-		ObOutlineDirective
+		ObOutlineDirective,
 	],
 	imports: [
 		CommonModule,
@@ -81,14 +81,14 @@ export {ObOutlineDirective} from './outline.directive';
 		RouterModule,
 		ScrollingModule,
 		TranslateModule,
-		ObLocalizePipe
+		ObLocalizePipe,
 	],
 	exports: [
 		ObMasterLayoutComponent,
 		ObMasterLayoutFooterComponent,
 		ObMasterLayoutHeaderComponent,
 		ObMasterLayoutNavigationComponent,
-		ObOutlineDirective
-	]
+		ObOutlineDirective,
+	],
 })
 export class ObMasterLayoutModule {}

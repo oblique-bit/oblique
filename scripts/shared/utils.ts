@@ -45,7 +45,10 @@ export function adaptReadmeLinks(project: string): void {
 	Files.overwrite(filePath, content =>
 		content
 			.replace('../../README.md)', 'https://github.com/oblique-bit/oblique/blob/master/README.md) on GitHub')
-			.replace('../../CONTRIBUTING.md)', 'https://github.com/oblique-bit/oblique/blob/master/CONTRIBUTING.md) on GitHub')
+			.replace(
+				'../../CONTRIBUTING.md)',
+				'https://github.com/oblique-bit/oblique/blob/master/CONTRIBUTING.md) on GitHub'
+			)
 			.replace('../../LICENSE', 'LICENSE')
 	);
 }

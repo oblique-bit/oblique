@@ -12,7 +12,7 @@ describe(TabbedPageComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, IdPipe, RouterTestingModule, TabbedPageComponent, TabsComponent, TabComponent]
+			imports: [HttpClientTestingModule, IdPipe, RouterTestingModule, TabbedPageComponent, TabsComponent, TabComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TabbedPageComponent);

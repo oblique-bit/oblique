@@ -9,7 +9,7 @@ import {FocusInvalidExampleDefaultPreviewComponent} from '../focus-invalid/previ
 	selector: 'app-code-example-focus-invalid',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FocusInvalidCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'focus-invalid-examples';
@@ -21,8 +21,8 @@ export class FocusInvalidCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('focus-invalid', 'default/focus-invalid-example-default-preview.component.html', 'HTML'),
 				this.getSnippet('focus-invalid', 'default/focus-invalid-example-default-preview.component.ts', 'TS'),
-				this.getSnippet('focus-invalid', 'default/focus-invalid-example-default-preview.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('focus-invalid', 'default/focus-invalid-example-default-preview.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

@@ -2,7 +2,7 @@ import {Directive, EventEmitter, HostBinding, HostListener, Output} from '@angul
 
 @Directive({
 	selector: '[obDragDrop]',
-	standalone: true
+	standalone: true,
 })
 export class ObDragDropDirective {
 	@Output() readonly fileDropped = new EventEmitter<FileList>();

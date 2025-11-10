@@ -5,7 +5,7 @@ import {ObSelectableGroupDirective} from '@oblique/oblique';
 	selector: 'sb-card',
 	standalone: false,
 	templateUrl: './card.component.html',
-	styleUrl: './card.component.scss'
+	styleUrl: './card.component.scss',
 })
 export class CardComponent {
 	readonly selectableGroup = viewChild(ObSelectableGroupDirective);

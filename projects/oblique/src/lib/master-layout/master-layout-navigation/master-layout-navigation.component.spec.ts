@@ -10,7 +10,8 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockMasterLayoutNavigationItemDirective} from '../_mocks/mock-master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './sub-menu-item/master-layout-navigation-sub-menu-item.component';
-import {basicMockLinks, mockLinksWithChildren} from './master-layout-navigation.component.spec-data';
+import {mockLinksWithChildren} from './master-layout-navigation.component.spec-mock-links-with-data';
+import {basicMockLinks} from './master-layout-navigation.component.spec-basic-mocks-links';
 import {ObNavigationLink} from './navigation-link.model';
 import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/master-layout-navigation-go-to-children.component';
 import {ObINavigationLink} from '@oblique/oblique';
@@ -18,19 +19,19 @@ import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 
 @Component({
 	standalone: false,
-	template: ''
+	template: '',
 })
 class DummyFullPathComponent {}
 
 @Component({
 	standalone: false,
-	template: ''
+	template: '',
 })
 class DummyPrefixPathComponent {}
 
 @Component({
 	standalone: false,
-	template: ''
+	template: '',
 })
 class DummyDefaultPathComponent {}
 
@@ -47,7 +48,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				ObMockMasterLayoutNavigationItemDirective,
 				DummyFullPathComponent,
 				DummyPrefixPathComponent,
-				DummyDefaultPathComponent
+				DummyDefaultPathComponent,
 			],
 			imports: [
 				ObMasterLayoutNavigationGoToChildrenComponent,
@@ -58,16 +59,16 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 					{path: 'prefix/:id/users', component: DummyPrefixPathComponent},
 					{path: 'full/2/users', component: DummyFullPathComponent},
 					{path: 'full/:id', component: DummyFullPathComponent},
-					{path: '**', redirectTo: 'defaultPathMatch'}
+					{path: '**', redirectTo: 'defaultPathMatch'},
 				]),
-				ObLocalizePipe
+				ObLocalizePipe,
 			],
 			schemas: [NO_ERRORS_SCHEMA],
 			providers: [
 				provideObliqueTestingConfiguration(),
 				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
-				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: false}
-			]
+				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: false},
+			],
 		}).compileComponents();
 	});
 
@@ -94,25 +95,31 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			expect(component.initializedLinks).toEqual([]);
 		});
 
-		test.each<{idx: number}>([{idx: 0}, {idx: 1}, {idx: 2}])('that property isExternal of Link is set to false at index: $idx', ({idx}) => {
-			fixture.detectChanges();
-			expect(component.initializedLinks[idx].isExternal).toBe(false);
-		});
+		test.each<{idx: number}>([{idx: 0}, {idx: 1}, {idx: 2}])(
+			'that property isExternal of Link is set to false at index: $idx',
+			({idx}) => {
+				fixture.detectChanges();
+				expect(component.initializedLinks[idx].isExternal).toBe(false);
+			}
+		);
 
 		test.each<{route: string; label: string}>([
 			{route: 'defaultPathMatch', label: 'default'},
-			{route: 'full/2/users', label: 'ItemFull'}
-		])('that after routing to: $route, the textContent of the active element contains: $label', async ({route, label}) => {
-			await router.navigate([route]);
-			expect(getElementByQueryAllCSS('.active')[0].nativeElement.textContent).toContain(label);
-		});
+			{route: 'full/2/users', label: 'ItemFull'},
+		])(
+			'that after routing to: $route, the textContent of the active element contains: $label',
+			async ({route, label}) => {
+				await router.navigate([route]);
+				expect(getElementByQueryAllCSS('.active')[0].nativeElement.textContent).toContain(label);
+			}
+		);
 
 		test.each<{route: string; length: number}>([
 			{route: 'defaultPathMatch', length: 1},
 			{route: 'prefix/2/users', length: 1},
 			{route: 'prefix/3/users', length: 0},
 			{route: 'full/1/users', length: 1},
-			{route: 'full/1', length: 0}
+			{route: 'full/1', length: 0},
 		])('that $length element(s) have class active after routing to: $route', async ({route, length}) => {
 			await router.navigate([route]);
 			const prefixLink = getElementByQueryAllCSS('.active');
@@ -123,7 +130,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			describe.each<{id: string; label: string}>([
 				{id: 'prefix', label: 'ItemPrefix'},
 				{id: 'full', label: 'ItemFull'},
-				{id: 'default', label: 'default'}
+				{id: 'default', label: 'default'},
 			])('with $id pathMatch strategy', ({id, label}) => {
 				let element: HTMLElement;
 				beforeAll(() => {
@@ -143,7 +150,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			{linkIndex: 2, childIndex: 1},
 			{linkIndex: 3, childIndex: 0},
 			{linkIndex: 3, childIndex: 1},
-			{linkIndex: 3, childIndex: 2}
+			{linkIndex: 3, childIndex: 2},
 		])('with children link index: $linkIndex & child index: $childIndex', ({linkIndex, childIndex}) => {
 			beforeEach(fakeAsync(async () => {
 				component.links = mockLinksWithChildren;
@@ -158,7 +165,9 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			test(`that ${ObMasterLayoutNavigationComponent.prototype.changeCurrentParentLink.name} is called after clicking go to children button`, () => {
 				jest.spyOn(component, 'changeCurrentParentLink');
 				clickGoToChildrenButton(linkIndex, childIndex);
-				expect(component.changeCurrentParentLink).toHaveBeenCalledWith(component.initializedLinks[linkIndex].children[childIndex]);
+				expect(component.changeCurrentParentLink).toHaveBeenCalledWith(
+					component.initializedLinks[linkIndex].children[childIndex]
+				);
 			});
 
 			test(`that ${ObMasterLayoutNavigationComponent.prototype.backUpOrCloseSubMenu.name} is called after clicking go to children button & then back button `, fakeAsync(() => {
@@ -186,7 +195,8 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				);
 				clickGoToChildrenButton(linkIndex, childIndex);
 				expect(
-					(component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void}).isLinkInCurrentParentAncestors
+					(component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void})
+						.isLinkInCurrentParentAncestors
 				).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
 			});
 
@@ -204,32 +214,43 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				);
 				clickGoToChildrenButton(linkIndex, childIndex);
 				expect(
-					(component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void}).isLinkInCurrentParentAncestors
+					(component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void})
+						.isLinkInCurrentParentAncestors
 				).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
 			});
 
 			test(`that ${
-				(ObMasterLayoutNavigationComponent.prototype as unknown as {addCurrentParentAncestor: {name: string}}).addCurrentParentAncestor.name
+				(ObMasterLayoutNavigationComponent.prototype as unknown as {addCurrentParentAncestor: {name: string}})
+					.addCurrentParentAncestor.name
 			} is not called after clicking go to children button when child is already in currentParentAncestors`, () => {
 				(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor(
 					component.initializedLinks[linkIndex].children[childIndex]
 				);
 				fixture.detectChanges();
-				jest.spyOn(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}, 'addCurrentParentAncestor');
+				jest.spyOn(
+					component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void},
+					'addCurrentParentAncestor'
+				);
 				clickGoToChildrenButton(linkIndex, childIndex);
 				expect(
-					(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor
+					(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void})
+						.addCurrentParentAncestor
 				).not.toHaveBeenCalled();
 			});
 
 			test(`that ${
-				(ObMasterLayoutNavigationComponent.prototype as unknown as {addCurrentParentAncestor: {name: string}}).addCurrentParentAncestor.name
+				(ObMasterLayoutNavigationComponent.prototype as unknown as {addCurrentParentAncestor: {name: string}})
+					.addCurrentParentAncestor.name
 			} is called with correct link after clicking go to children button when child is not in currentParentAncestors`, () => {
 				fixture.detectChanges();
-				jest.spyOn(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}, 'addCurrentParentAncestor');
+				jest.spyOn(
+					component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void},
+					'addCurrentParentAncestor'
+				);
 				clickGoToChildrenButton(linkIndex, childIndex);
 				expect(
-					(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor
+					(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void})
+						.addCurrentParentAncestor
 				).toHaveBeenNthCalledWith(1, component.initializedLinks[linkIndex].children[childIndex]);
 			});
 		});
@@ -307,7 +328,9 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 	}
 
 	function clickChildButton(linkIndex: number, childIndex: number, uniquePartOfId: string): void {
-		getHTMLSelectElementByQueryCSS(`#${uniquePartOfId}-${component.initializedLinks[linkIndex].children[childIndex].id}`).click();
+		getHTMLSelectElementByQueryCSS(
+			`#${uniquePartOfId}-${component.initializedLinks[linkIndex].children[childIndex].id}`
+		).click();
 	}
 
 	function clickGoToChildrenButton(linkIndex: number, childIndex: number): void {
@@ -315,6 +338,8 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 	}
 
 	function expandMainNavItem(linkIndex: number): void {
-		getHTMLSelectElementByQueryCSS(`#ob-main-nav-item-${component.initializedLinks[linkIndex].id}`).classList.add('ob-expanded');
+		getHTMLSelectElementByQueryCSS(`#ob-main-nav-item-${component.initializedLinks[linkIndex].id}`).classList.add(
+			'ob-expanded'
+		);
 	}
 });

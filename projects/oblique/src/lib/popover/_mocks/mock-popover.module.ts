@@ -8,6 +8,6 @@ export {ObMockPopoverDirective} from './mock-popover.directive';
  */
 @NgModule({
 	imports: [ObMockPopoverDirective],
-	exports: [ObMockPopoverDirective]
+	exports: [ObMockPopoverDirective],
 })
 export class ObMockPopoverModule {}

@@ -19,8 +19,16 @@ describe(obPauseWhenPageHidden.name, () => {
 			{description: 'emit once, visibility change, emit twice', events: [1, 2], result: [0]},
 			{description: 'emit twice, visibility change, emit twice', events: [2, 2], result: [0, 1]},
 			{description: 'visibility change, emit twice, visibility change, emit twice', events: [0, 2, 2], result: [2, 3]},
-			{description: 'emit once, visibility change, emit twice, visibility change, emit twice', events: [1, 2, 2], result: [0, 3, 4]},
-			{description: 'emit twice, visibility change, emit twice, visibility change, emit twice', events: [2, 2, 2], result: [0, 1, 4, 5]}
+			{
+				description: 'emit once, visibility change, emit twice, visibility change, emit twice',
+				events: [1, 2, 2],
+				result: [0, 3, 4],
+			},
+			{
+				description: 'emit twice, visibility change, emit twice, visibility change, emit twice',
+				events: [2, 2, 2],
+				result: [0, 1, 4, 5],
+			},
 		])('$description, yields $result', ({events, result}) => {
 			const visibilityChange = new Subject<void>();
 			jest.spyOn(rxjs, 'fromEvent').mockImplementation(() => visibilityChange.asObservable());

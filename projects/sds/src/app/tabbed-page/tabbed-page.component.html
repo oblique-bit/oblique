@@ -10,7 +10,12 @@
 	@if (cmsData.deprecation) {
 		<div class="deprecation-container" [innerHtml]="cmsData.deprecation | safeHtml"></div>
 	}
-	<app-tabs [idPrefix]="componentId" [id]="componentId | id: ['tabs']" [selectedTab]="cmsData.tab" (tabChanged)="handleTabChanged($event)">
+	<app-tabs
+		[idPrefix]="componentId"
+		[id]="componentId | id: ['tabs']"
+		[selectedTab]="cmsData.tab"
+		(tabChanged)="handleTabChanged($event)"
+	>
 		<app-tab name="Examples" [hidden]="!!!cmsData.source" [id]="componentId | id: ['examples-tab']">
 			<ng-template appCodeExample [codeExampleComponent]="cmsData.source" />
 		</app-tab>

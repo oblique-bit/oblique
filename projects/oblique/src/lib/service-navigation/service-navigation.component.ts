@@ -1,7 +1,21 @@
-import {Component, ContentChildren, Input, OnInit, Output, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {
+	Component,
+	ContentChildren,
+	Input,
+	OnInit,
+	Output,
+	QueryList,
+	TemplateRef,
+	ViewEncapsulation,
+} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationService} from './service-navigation.service';
-import {ObEPamsEnvironment, ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState} from './service-navigation.model';
+import {
+	ObEPamsEnvironment,
+	ObIServiceNavigationContact,
+	ObIServiceNavigationLink,
+	ObLoginState,
+} from './service-navigation.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
 import {ObServiceNavigationTimeoutCookieService} from './timeout/service-navigation-timeout-cookie.service';
@@ -22,9 +36,9 @@ import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navi
 		ObServiceNavigationTimeoutCookieService,
 		ObServiceNavigationTimeoutRedirectorService,
 		ObServiceNavigationTimeoutCookieActivityService,
-		ObServiceNavigationTimeoutReturnUrlService
+		ObServiceNavigationTimeoutReturnUrlService,
 	],
-	host: {class: 'ob-service-navigation'}
+	host: {class: 'ob-service-navigation'},
 })
 export class ObServiceNavigationComponent implements OnInit {
 	@Input() profileLinks: ObIServiceNavigationLink[] = [];

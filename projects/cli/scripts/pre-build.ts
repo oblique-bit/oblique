@@ -30,6 +30,9 @@ function addSchemaData(): void {
 	Log.info('Add schema data to "ob-new.model.ts"');
 	const schema = Files.readJson('src/new/schema.json') as {properties: object};
 	Files.overwrite('./src/new/ob-new.model.ts', content =>
-		content.replace(/(?<=const schema = ).*(?= as \{properties: ObNewOptions<ObNewSchemaOption>\})/u, JSON.stringify(schema))
+		content.replace(
+			/(?<=const schema = ).*(?= as \{properties: ObNewOptions<ObNewSchemaOption>\})/u,
+			JSON.stringify(schema)
+		)
 	);
 }

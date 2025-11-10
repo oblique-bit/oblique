@@ -9,7 +9,7 @@ import {getComponentPageComponent} from './component-page.mapper';
 	imports: [CommonModule, NgComponentOutlet],
 	templateUrl: './component-page.component.html',
 	styleUrl: './component-page.component.scss',
-	host: {class: 'content-page'}
+	host: {class: 'content-page'},
 })
 export class ComponentPageComponent implements OnInit {
 	public componentToLoad: ComponentPage;

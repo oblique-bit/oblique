@@ -9,8 +9,8 @@ module.exports = {
 			'jest-sonar',
 			{
 				outputDirectory: '<rootDir>/coverage/sandbox-ssr',
-				outputName: 'sqr.xml'
-			}
-		]
-	]
+				outputName: 'sqr.xml',
+			},
+		],
+	],
 };

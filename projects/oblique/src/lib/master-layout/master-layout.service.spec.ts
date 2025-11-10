@@ -27,8 +27,8 @@ describe('ObMasterLayoutService', () => {
 				{provide: ObMasterLayoutHeaderService, useClass: ObMockMasterLayoutHeaderService},
 				{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},
 				{provide: ObMasterLayoutNavigationService, useClass: ObMockMasterLayoutNavigationService},
-				{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService}
-			]
+				{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService},
+			],
 		});
 		masterLayoutService = TestBed.inject(ObMasterLayoutService);
 	});

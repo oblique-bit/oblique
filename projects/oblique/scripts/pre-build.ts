@@ -18,7 +18,7 @@ class PreBuild extends StaticScript {
 			.filter(filePath => filePath.endsWith('.component.ts'))
 			.map(filePath => ({
 				filePath: PreBuild.getDirectoryPath(filePath),
-				content: Files.read(filePath)
+				content: Files.read(filePath),
 			}))
 			.map(file => ({filePath: file.filePath, styleUrls: PreBuild.getStyleUrls(file.content)}))
 			.filter(file => file.styleUrls)
@@ -42,7 +42,7 @@ class PreBuild extends StaticScript {
 				.exec(fileContent)
 				?.groups?.styleUrls.replace(/'|\t|\n|\.\/|\s|\.scss/g, '')
 				.split(',')
-				.filter(url => !url.startsWith('.'));
+				.filter(url => url && !url.startsWith('.'));
 		}
 		if (fileContent.includes('styleUrl')) {
 			return [/styleUrl:\s*'(?<styleUrls>[^']*)'/m.exec(fileContent)?.groups?.styleUrls.replace(/\.\/|\s|\.scss/g, '')];

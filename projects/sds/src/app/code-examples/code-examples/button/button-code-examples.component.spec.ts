@@ -10,7 +10,7 @@ describe(ButtonCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ButtonCodeExamplesComponent]
+			imports: [ButtonCodeExamplesComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ButtonCodeExamplesComponent);

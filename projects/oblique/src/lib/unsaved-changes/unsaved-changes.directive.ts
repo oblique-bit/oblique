@@ -6,7 +6,7 @@ import {ObUnsavedChangesService} from './unsaved-changes.service';
 	selector: '[obUnsavedChanges]',
 	exportAs: 'obUnsavedChanges',
 	host: {class: 'ob-unsaved-changes'},
-	standalone: true
+	standalone: true,
 })
 export class ObUnsavedChangesDirective implements OnChanges, OnInit, OnDestroy {
 	@Input() id: string;

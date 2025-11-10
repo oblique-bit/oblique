@@ -1,7 +1,14 @@
 import {Command, type OptionValues} from '@commander-js/extra-typings';
 import * as path from 'node:path';
 import fs from 'node:fs';
-import {commandUsageText, currentVersions, execute, getHelpText, ngAddOblique, startObCommand} from '../utils/cli-utils';
+import {
+	commandUsageText,
+	currentVersions,
+	execute,
+	getHelpText,
+	ngAddOblique,
+	startObCommand,
+} from '../utils/cli-utils';
 import {type PackageDependencies, updateDescriptions} from './ob-update.model';
 import chalk from 'chalk';
 import {execSync} from 'child_process';
@@ -24,7 +31,11 @@ export function initializeCommand(command: Command<[string], OptionValues>): Com
 }
 
 function handleAction(): void {
-	startObCommand(handleObUpdateActions as (options: undefined) => void, 'Oblique CLI ob update completed in', undefined);
+	startObCommand(
+		handleObUpdateActions as (options: undefined) => void,
+		'Oblique CLI ob update completed in',
+		undefined
+	);
 }
 
 export function handleObUpdateActions(): void {
@@ -46,7 +57,9 @@ export function handleObUpdateActions(): void {
 export function checkNeededDependencies(): void {
 	if (!isDependencyInPackage('@oblique/oblique')) {
 		console.error(
-			chalk.red(`Package @oblique/oblique not found. Please install Oblique with '${ngAddOblique.command}' to ${ngAddOblique.description}.`)
+			chalk.red(
+				`Package @oblique/oblique not found. Please install Oblique with '${ngAddOblique.command}' to ${ngAddOblique.description}.`
+			)
 		);
 		process.exit(1);
 	}
@@ -122,7 +135,10 @@ export function isDependencyInPackage(dependency: keyof typeof currentVersions):
 		const devDependencies = packageJson.devDependencies ?? {};
 		return dependency in dependencies || dependency in devDependencies;
 	} catch (error) {
-		console.error(chalk.red(`[Error]: This command is not available when running the Oblique CLI outside a workspace`), error);
+		console.error(
+			chalk.red(`[Error]: This command is not available when running the Oblique CLI outside a workspace`),
+			error
+		);
 		/* eslint-disable @typescript-eslint/no-magic-numbers */
 		process.exit(3);
 		/* eslint-enable @typescript-eslint/no-magic-numbers */

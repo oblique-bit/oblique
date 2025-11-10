@@ -15,6 +15,6 @@ export {ObColumnToggleDirective} from './column-toggle.directive';
 @NgModule({
 	declarations: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective],
 	imports: [CdkScrollableModule, CommonModule, MatIconModule, TranslateModule],
-	exports: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective]
+	exports: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective],
 })
 export class ObColumnLayoutModule {}

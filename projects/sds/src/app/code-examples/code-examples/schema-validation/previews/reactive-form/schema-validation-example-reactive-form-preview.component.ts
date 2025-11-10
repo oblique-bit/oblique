@@ -6,7 +6,7 @@ import {ObErrorMessagesModule, ObSchemaValidationModule} from '@oblique/oblique'
 @Component({
 	selector: 'app-schema-validation-example-reactive-form-preview',
 	imports: [MatInputModule, ReactiveFormsModule, ObSchemaValidationModule, ObErrorMessagesModule],
-	templateUrl: './schema-validation-example-reactive-form-preview.component.html'
+	templateUrl: './schema-validation-example-reactive-form-preview.component.html',
 })
 export class SchemaValidationExampleReactiveFormPreviewComponent implements OnInit {
 	schema = {
@@ -17,19 +17,19 @@ export class SchemaValidationExampleReactiveFormPreviewComponent implements OnIn
 			firstName: {
 				type: 'string',
 				minLength: 2,
-				maxLength: 30
+				maxLength: 30,
 			},
 			lastName: {
 				type: 'string',
 				minLength: 2,
-				maxLength: 30
+				maxLength: 30,
 			},
 			age: {
 				type: 'number',
 				minimum: 18, // 18 is included, 17 is the first invalid value
-				exclusiveMaximum: 120 // 120 is not included, max is 119
-			}
-		}
+				exclusiveMaximum: 120, // 120 is not included, max is 119
+			},
+		},
 	};
 	nameFormGroup: FormGroup;
 
@@ -39,7 +39,7 @@ export class SchemaValidationExampleReactiveFormPreviewComponent implements OnIn
 		this.nameFormGroup = this.formBuilder.group({
 			firstName: new FormControl(''),
 			lastName: new FormControl(''),
-			age: new FormControl(18)
+			age: new FormControl(18),
 		});
 	}
 }

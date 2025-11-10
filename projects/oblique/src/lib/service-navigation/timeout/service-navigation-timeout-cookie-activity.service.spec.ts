@@ -29,10 +29,10 @@ describe('ServiceNavigationTimeoutCookieActivityService', () => {
 						wheel$: fakeWheel.asObservable(),
 						mouseMove$: fakeMouseMove.asObservable(),
 						click$: fakeClick.asObservable(),
-						keyDown$: fakeKeyDown.asObservable()
-					}
-				}
-			]
+						keyDown$: fakeKeyDown.asObservable(),
+					},
+				},
+			],
 		});
 		service = TestBed.inject(ObServiceNavigationTimeoutCookieActivityService);
 		fakeSetCookie.mockReset();
@@ -52,7 +52,7 @@ describe('ServiceNavigationTimeoutCookieActivityService', () => {
 			['wheel', () => fakeWheel],
 			['mouse move', () => fakeMouseMove],
 			['click', () => fakeClick],
-			['key down', () => fakeKeyDown]
+			['key down', () => fakeKeyDown],
 		])('should be triggered when there is a %s event', (event, fakeEvent) => {
 			fakeEvent().next('');
 			expect(fakeSetCookie).toHaveBeenCalledTimes(1);

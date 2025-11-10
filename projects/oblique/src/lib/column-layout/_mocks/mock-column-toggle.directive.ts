@@ -6,6 +6,6 @@ import {Directive} from '@angular/core';
 @Directive({
 	selector: '[obColumnToggle]',
 	exportAs: 'obColumnToggle',
-	standalone: false
+	standalone: false,
 })
 export class ObMockColumnToggleDirective {}

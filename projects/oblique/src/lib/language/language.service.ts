@@ -7,7 +7,7 @@ import {ObILocaleObject} from '../master-layout/master-layout.model';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObLanguageService {
 	readonly locale$: Observable<string>;

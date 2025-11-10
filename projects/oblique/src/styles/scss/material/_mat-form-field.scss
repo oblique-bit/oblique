@@ -38,15 +38,11 @@
 		max-width: calc(100% - 80px);
 	}
 
-	&:has(.mat-mdc-form-field-text-suffix).mat-form-field-invalid
-		.mdc-notched-outline
-		.mdc-notched-outline__notch {
+	&:has(.mat-mdc-form-field-text-suffix).mat-form-field-invalid .mdc-notched-outline .mdc-notched-outline__notch {
 		max-width: calc(100% - 80px);
 	}
 
-	&.mat-mdc-form-field-type-mat-select.mat-form-field-invalid
-		.mdc-notched-outline
-		.mdc-notched-outline__notch {
+	&.mat-mdc-form-field-type-mat-select.mat-form-field-invalid .mdc-notched-outline .mdc-notched-outline__notch {
 		max-width: calc(100% - 90px);
 	}
 
@@ -66,9 +62,7 @@
 		}
 	}
 
-	&:has(.mat-mdc-form-field-text-prefix):has(
-			.mat-mdc-form-field-text-suffix
-		).mat-form-field-invalid {
+	&:has(.mat-mdc-form-field-text-prefix):has(.mat-mdc-form-field-text-suffix).mat-form-field-invalid {
 		.mdc-notched-outline .mdc-notched-outline__notch {
 			max-width: calc(100% - 110px);
 		}
@@ -172,9 +166,7 @@
 	}
 
 	&:has(.mat-mdc-form-field-textarea-control) {
-		.mat-mdc-text-field-wrapper
-			.mat-mdc-form-field-flex
-			.mat-mdc-floating-label:not(.mdc-floating-label--float-above) {
+		.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label:not(.mdc-floating-label--float-above) {
 			top: 19px;
 
 			.ob-form-sm &,
@@ -194,10 +186,7 @@
 	}
 
 	&:not(.mat-form-field-invalid) {
-		@include mat-form-field.ob-form-field-colors(
-			core-variables.$ob-default,
-			core-variables.$ob-white
-		);
+		@include mat-form-field.ob-form-field-colors(core-variables.$ob-default, core-variables.$ob-white);
 	}
 
 	.mat-mdc-form-field-infix {
@@ -212,24 +201,15 @@
 
 	&:not([readonly], :has([readonly]), .mat-form-field-disabled) {
 		&.mat-accent {
-			@include mat-form-field.ob-focused-form-field-colors(
-				core-variables.$ob-default,
-				core-variables.$ob-white
-			);
+			@include mat-form-field.ob-focused-form-field-colors(core-variables.$ob-default, core-variables.$ob-white);
 		}
 
 		&.mat-warn {
-			@include mat-form-field.ob-focused-form-field-colors(
-				core-variables.$ob-red-800,
-				core-variables.$ob-white
-			);
+			@include mat-form-field.ob-focused-form-field-colors(core-variables.$ob-red-800, core-variables.$ob-white);
 		}
 
 		&.mat-form-field-invalid {
-			@include mat-form-field.ob-focused-form-field-colors(
-				core-variables.$ob-red-800,
-				core-variables.$ob-red-50
-			);
+			@include mat-form-field.ob-focused-form-field-colors(core-variables.$ob-red-800, core-variables.$ob-red-50);
 
 			.mat-mdc-input-element {
 				padding-right: 28px; // empiric number: icon width + $ob-spacing-xs
@@ -272,28 +252,19 @@
 
 		&:not(:focus-within) {
 			&.mat-form-field-invalid {
-				@include mat-form-field.ob-form-field-colors(
-					core-variables.$ob-red-800,
-					core-variables.$ob-red-50
-				);
+				@include mat-form-field.ob-form-field-colors(core-variables.$ob-red-800, core-variables.$ob-red-50);
 			}
 
 			&:has([aria-required="true"]) {
 				&.mat-form-field-invalid {
-					@include mat-form-field.ob-form-field-colors(
-						core-variables.$ob-red-800,
-						core-variables.$ob-red-50
-					);
+					@include mat-form-field.ob-form-field-colors(core-variables.$ob-red-800, core-variables.$ob-red-50);
 				}
 			}
 		}
 	}
 
 	&.mat-form-field-disabled {
-		@include mat-form-field.ob-form-field-colors(
-			core-variables.$ob-secondary-300,
-			core-variables.$ob-white
-		);
+		@include mat-form-field.ob-form-field-colors(core-variables.$ob-secondary-300, core-variables.$ob-white);
 		cursor: not-allowed;
 		color: core-variables.$ob-secondary-300;
 
@@ -445,18 +416,10 @@
 			margin-top: material-variables.$ob-form-field-margin;
 		}
 
-		@include mat-form-field.ob-form-field-size(
-			material-variables.$ob-form-field-padding-top,
-			0.5em,
-			2em
-		);
+		@include mat-form-field.ob-form-field-size(material-variables.$ob-form-field-padding-top, 0.5em, 2em);
 
 		.ob-form-sm & {
-			@include mat-form-field.ob-form-field-size(
-				material-variables.$ob-form-field-padding-top-sm,
-				0.25em,
-				1.8em
-			);
+			@include mat-form-field.ob-form-field-size(material-variables.$ob-form-field-padding-top-sm, 0.25em, 1.8em);
 
 			&:has(.mat-mdc-form-field-textarea-control) {
 				padding-bottom: 0;
@@ -473,11 +436,7 @@
 		}
 
 		.ob-form-lg & {
-			@include mat-form-field.ob-form-field-size(
-				material-variables.$ob-form-field-padding-top-lg,
-				1em,
-				2.5em
-			);
+			@include mat-form-field.ob-form-field-size(material-variables.$ob-form-field-padding-top-lg, 1em, 2.5em);
 
 			.mat-mdc-form-field-infix {
 				padding-bottom: 19px;

@@ -8,7 +8,7 @@ describe(TabComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [TabComponent, IdPipe]
+			imports: [TabComponent, IdPipe],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TabComponent);
@@ -35,7 +35,9 @@ describe(TabComponent.name, () => {
 	describe('initiallyActive = true', () => {
 		beforeEach(() => {
 			fixture.componentRef.setInput('initiallyActive', true);
-			component.ngOnChanges({initiallyActive: {previousValue: false, currentValue: true, firstChange: true, isFirstChange: () => true}});
+			component.ngOnChanges({
+				initiallyActive: {previousValue: false, currentValue: true, firstChange: true, isFirstChange: () => true},
+			});
 		});
 
 		it(`should be active by default`, () => {

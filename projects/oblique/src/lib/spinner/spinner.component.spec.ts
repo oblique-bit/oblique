@@ -15,7 +15,7 @@ describe('ObSpinnerComponent', () => {
 		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
 		await TestBed.configureTestingModule({
 			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}],
-			imports: [ObSpinnerComponent]
+			imports: [ObSpinnerComponent],
 		}).compileComponents();
 	});
 
@@ -47,7 +47,7 @@ describe('ObSpinnerComponent', () => {
 		it.each([
 			{description: 'should add "ob-overlay-fixed" class when set to true', state: true, result: true},
 			{description: 'should remove "ob-overlay-fixed" class when set to false', state: false, result: undefined},
-			{description: 'should remove "ob-overlay-fixed" class when not provided', state: undefined, result: undefined}
+			{description: 'should remove "ob-overlay-fixed" class when not provided', state: undefined, result: undefined},
 		])('$description', ({state, result}) => {
 			component.fixed = state;
 			fixture.detectChanges();

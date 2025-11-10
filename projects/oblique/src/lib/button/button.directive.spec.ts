@@ -6,7 +6,7 @@ import {ObButtonDirective} from './button.directive';
 
 @Component({
 	standalone: false,
-	template: ''
+	template: '',
 })
 class ButtonDirectiveTestComponent {
 	obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
@@ -30,7 +30,7 @@ describe(ObButtonDirective.name, () => {
 		TestBed.resetTestingModule();
 		await TestBed.configureTestingModule({
 			declarations: [ButtonDirectiveTestComponent],
-			imports: [MatButtonModule, ObButtonDirective]
+			imports: [MatButtonModule, ObButtonDirective],
 		}).compileComponents();
 	});
 
@@ -38,8 +38,8 @@ describe(ObButtonDirective.name, () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
-					template: '<button mat-button obButton="primary">Primary</button>'
-				}
+					template: '<button mat-button obButton="primary">Primary</button>',
+				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
@@ -76,8 +76,8 @@ describe(ObButtonDirective.name, () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
-					template: '<button mat-button obButton="secondary">Secondary</button>'
-				}
+					template: '<button mat-button obButton="secondary">Secondary</button>',
+				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
@@ -114,8 +114,8 @@ describe(ObButtonDirective.name, () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
-					template: '<button mat-button obButton="tertiary">Tertiary</button>'
-				}
+					template: '<button mat-button obButton="tertiary">Tertiary</button>',
+				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
@@ -162,8 +162,8 @@ describe(ObButtonDirective.name, () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
-					template: '<button mat-button obButton>Undefined</button>'
-				}
+					template: '<button mat-button obButton>Undefined</button>',
+				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
@@ -200,8 +200,8 @@ describe(ObButtonDirective.name, () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
-					template: '<button mat-button obButton="illegal">Illegal</button>'
-				}
+					template: '<button mat-button obButton="illegal">Illegal</button>',
+				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
@@ -244,8 +244,8 @@ describe(ObButtonDirective.name, () => {
 			jest.spyOn(console, 'error');
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
-					template: '<button mat-raised-button obButton="primary">Raised button</button>'
-				}
+					template: '<button mat-raised-button obButton="primary">Raised button</button>',
+				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
@@ -309,7 +309,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'primary',
 			expectedButtonAfterChange: 'primary',
 			expectedButtonClassBeforeChange: {primary: true, flat: true, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false},
 		},
 		{
 			obButtonBeforeChange: '',
@@ -317,7 +317,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'primary',
 			expectedButtonAfterChange: 'primary',
 			expectedButtonClassBeforeChange: {primary: true, flat: true, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false},
 		},
 		{
 			obButtonBeforeChange: '',
@@ -325,7 +325,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'primary',
 			expectedButtonAfterChange: 'secondary',
 			expectedButtonClassBeforeChange: {primary: true, flat: true, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: true}
+			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: true},
 		},
 		{
 			obButtonBeforeChange: '',
@@ -333,7 +333,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'primary',
 			expectedButtonAfterChange: 'tertiary',
 			expectedButtonClassBeforeChange: {primary: true, flat: true, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: false},
 		},
 		{
 			obButtonBeforeChange: 'primary',
@@ -341,7 +341,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'primary',
 			expectedButtonAfterChange: 'primary',
 			expectedButtonClassBeforeChange: {primary: true, flat: true, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false},
 		},
 		{
 			obButtonBeforeChange: 'primary',
@@ -349,7 +349,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'primary',
 			expectedButtonAfterChange: 'primary',
 			expectedButtonClassBeforeChange: {primary: true, flat: true, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false},
 		},
 		{
 			obButtonBeforeChange: 'primary',
@@ -357,7 +357,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'primary',
 			expectedButtonAfterChange: 'secondary',
 			expectedButtonClassBeforeChange: {primary: true, flat: true, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: true}
+			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: true},
 		},
 		{
 			obButtonBeforeChange: 'primary',
@@ -365,7 +365,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'primary',
 			expectedButtonAfterChange: 'tertiary',
 			expectedButtonClassBeforeChange: {primary: true, flat: true, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: false},
 		},
 		{
 			obButtonBeforeChange: 'secondary',
@@ -373,7 +373,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'secondary',
 			expectedButtonAfterChange: 'secondary',
 			expectedButtonClassBeforeChange: {primary: true, flat: false, stroked: true},
-			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: true}
+			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: true},
 		},
 		{
 			obButtonBeforeChange: 'secondary',
@@ -381,7 +381,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'secondary',
 			expectedButtonAfterChange: 'primary',
 			expectedButtonClassBeforeChange: {primary: true, flat: false, stroked: true},
-			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false},
 		},
 		{
 			obButtonBeforeChange: 'secondary',
@@ -389,7 +389,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'secondary',
 			expectedButtonAfterChange: 'primary',
 			expectedButtonClassBeforeChange: {primary: true, flat: false, stroked: true},
-			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false},
 		},
 		{
 			obButtonBeforeChange: 'secondary',
@@ -397,7 +397,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'secondary',
 			expectedButtonAfterChange: 'tertiary',
 			expectedButtonClassBeforeChange: {primary: true, flat: false, stroked: true},
-			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: false},
 		},
 		{
 			obButtonBeforeChange: 'tertiary',
@@ -405,7 +405,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'tertiary',
 			expectedButtonAfterChange: 'tertiary',
 			expectedButtonClassBeforeChange: {primary: true, flat: false, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: false},
 		},
 		{
 			obButtonBeforeChange: 'tertiary',
@@ -413,7 +413,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'tertiary',
 			expectedButtonAfterChange: 'primary',
 			expectedButtonClassBeforeChange: {primary: true, flat: false, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false}
+			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false},
 		},
 		{
 			obButtonBeforeChange: 'tertiary',
@@ -421,7 +421,7 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'tertiary',
 			expectedButtonAfterChange: 'secondary',
 			expectedButtonClassBeforeChange: {primary: true, flat: false, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: true}
+			expectedButtonClassAfterChange: {primary: true, flat: false, stroked: true},
 		},
 		{
 			obButtonBeforeChange: 'tertiary',
@@ -429,14 +429,14 @@ describe(ObButtonDirective.name, () => {
 			expectedButtonBeforeChange: 'tertiary',
 			expectedButtonAfterChange: 'primary',
 			expectedButtonClassBeforeChange: {primary: true, flat: false, stroked: false},
-			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false}
-		}
+			expectedButtonClassAfterChange: {primary: true, flat: true, stroked: false},
+		},
 	])('dynamic button', (parameter: ButtonDirectiveTestParameter) => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
-					template: '<button mat-button [obButton]="obButton">Dynamic</button>'
-				}
+					template: '<button mat-button [obButton]="obButton">Dynamic</button>',
+				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
 			component.obButton = parameter.obButtonBeforeChange;

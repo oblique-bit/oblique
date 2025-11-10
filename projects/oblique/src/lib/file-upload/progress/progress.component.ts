@@ -1,6 +1,15 @@
 import {NgFor, NgIf} from '@angular/common';
 import {HttpEvent, HttpEventType} from '@angular/common/http';
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Output, ViewEncapsulation, inject} from '@angular/core';
+import {
+	ChangeDetectorRef,
+	Component,
+	EventEmitter,
+	Input,
+	OnDestroy,
+	Output,
+	ViewEncapsulation,
+	inject,
+} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -13,11 +22,20 @@ import {ObFileUploadService} from '../file-upload.service';
 
 @Component({
 	selector: 'ob-progress',
-	imports: [NgFor, NgIf, MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslateModule],
+	imports: [
+		NgFor,
+		NgIf,
+		MatProgressBarModule,
+		MatButtonModule,
+		ObButtonDirective,
+		MatTooltipModule,
+		MatIconModule,
+		TranslateModule,
+	],
 	templateUrl: './progress.component.html',
 	styleUrls: ['./progress.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-progress'}
+	host: {class: 'ob-progress'},
 })
 export class ObProgressComponent implements OnDestroy {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
@@ -41,7 +59,10 @@ export class ObProgressComponent implements OnDestroy {
 	}
 
 	cancelUpload(file: ObIFile): void {
-		if (!file.completed && (!this.cancelConfirmation || this.window.confirm(this.translate.instant('i18n.oblique.file-upload.remove')))) {
+		if (
+			!file.completed &&
+			(!this.cancelConfirmation || this.window.confirm(this.translate.instant('i18n.oblique.file-upload.remove')))
+		) {
 			this.uploadedFiles.files[file.index]?.subscription.unsubscribe();
 			this.uploadedFiles.files.splice(file.index, 1);
 			this.uploadedFiles.fileCount--;
@@ -85,7 +106,10 @@ export class ObProgressComponent implements OnDestroy {
 
 	private isUploadComplete(): void {
 		if (!this.uploadedFiles.files.some(file => !file.completed)) {
-			const completedFiles = this.uploadedFiles.files.reduce((files, file) => [...files, ...this.arrayifyFiles(file.binary)], []);
+			const completedFiles = this.uploadedFiles.files.reduce(
+				(files, file) => [...files, ...this.arrayifyFiles(file.binary)],
+				[]
+			);
 			this.uploadEvent.emit({type: ObEUploadEventType.UPLOADED, files: completedFiles});
 			this.fileUploadService.notifyUploadComplete();
 			// delay the reset to let users see what is happening
@@ -99,9 +123,11 @@ export class ObProgressComponent implements OnDestroy {
 
 	private uploadFilesTogether(files: File[]): void {
 		this.uploadedFiles.files = [this.convertToObIFile(files, 0)];
-		this.uploadedFiles.files[0].subscription = this.fileUploadService.multiUpload(this.uploadUrl, files).subscribe(event => {
-			this.updateFileProgress(event, 0);
-		});
+		this.uploadedFiles.files[0].subscription = this.fileUploadService
+			.multiUpload(this.uploadUrl, files)
+			.subscribe(event => {
+				this.updateFileProgress(event, 0);
+			});
 	}
 
 	private updateFileProgress(
@@ -109,7 +135,10 @@ export class ObProgressComponent implements OnDestroy {
 		index: number
 	): void {
 		if (event.type === HttpEventType.User) {
-			this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: (event as {type: HttpEventType; files: File[]}).files});
+			this.uploadEvent.emit({
+				type: ObEUploadEventType.ERRORED,
+				files: (event as {type: HttpEventType; files: File[]}).files,
+			});
 		} else {
 			this.uploadedFiles.files[index].progress =
 				event.type === HttpEventType.UploadProgress ? Math.round((event.loaded / event.total) * 100) : 100;
@@ -128,7 +157,7 @@ export class ObProgressComponent implements OnDestroy {
 			progress: 0,
 			hasError: false,
 			binary: file,
-			subscription: undefined
+			subscription: undefined,
 		};
 	}
 

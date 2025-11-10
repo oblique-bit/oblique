@@ -4,7 +4,7 @@ import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
 
 @Directive({
 	selector: '[appFeedbackTrigger]',
-	providers: [CollectorService]
+	providers: [CollectorService],
 })
 export class FeedbackTriggerDirective implements OnInit {
 	private readonly collectorService = inject(CollectorService);

@@ -6,6 +6,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 @Component({
 	selector: 'sb-example-dialog',
 	imports: [MatButtonModule, MatDialogModule, ObButtonModule],
-	templateUrl: './example-dialog.component.html'
+	templateUrl: './example-dialog.component.html',
 })
 export class ExampleDialogComponent {}

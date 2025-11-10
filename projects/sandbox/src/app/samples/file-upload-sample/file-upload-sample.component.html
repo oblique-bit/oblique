@@ -36,12 +36,19 @@
 			/>
 		}
 		@if (!toggleCustomMapForDelete) {
-			<ob-file-info [getUploadedFilesUrl]="getUrl" [deleteUrl]="deleteUrl" [mapFunction]="mapData" (uploadEvent)="uploadEvent($event)" />
+			<ob-file-info
+				[getUploadedFilesUrl]="getUrl"
+				[deleteUrl]="deleteUrl"
+				[mapFunction]="mapData"
+				(uploadEvent)="uploadEvent($event)"
+			/>
 		}
 		<div>
 			<ob-alert type="info">
 				The link of the style guide:
-				<a href="https://www.sketch.com/s/8ca1c363-8e0d-49c0-8f63-fb363cc27664/a/JwMeqz">Sketch - Styleguide - File upload</a>
+				<a href="https://www.sketch.com/s/8ca1c363-8e0d-49c0-8f63-fb363cc27664/a/JwMeqz"
+					>Sketch - Styleguide - File upload</a
+				>
 			</ob-alert>
 		</div>
 	</section>
@@ -54,12 +61,18 @@
 					<mat-slide-toggle matTooltip="Allow multiple files" [(ngModel)]="multipleFile">multiple</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Use a single request for all files" [(ngModel)]="singleRequest" (change)="setUploadURL()">
+					<mat-slide-toggle
+						matTooltip="Use a single request for all files"
+						[(ngModel)]="singleRequest"
+						(change)="setUploadURL()"
+					>
 						singleRequest
 					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Show a cancel confirmation" [(ngModel)]="cancelConfirmation"> cancelConfirmation </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Show a cancel confirmation" [(ngModel)]="cancelConfirmation">
+						cancelConfirmation
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-form-field>
 					<mat-label>accept</mat-label>

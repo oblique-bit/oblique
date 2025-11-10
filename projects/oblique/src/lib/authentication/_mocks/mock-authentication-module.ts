@@ -13,7 +13,7 @@ export {ObMockAuthenticationService} from './mock-authentication-service';
 @NgModule({
 	providers: [
 		{provide: ObAuthenticationConfigService, useClass: ObMockAuthenticationConfigService},
-		{provide: ObAuthenticationService, useClass: ObMockAuthenticationService}
-	]
+		{provide: ObAuthenticationService, useClass: ObMockAuthenticationService},
+	],
 })
 export class ObMockAuthenticationModule {}

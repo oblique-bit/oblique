@@ -5,7 +5,7 @@ import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 	selector: 'sb-error-messages-sample',
 	standalone: false,
 	templateUrl: './error-messages-sample.component.html',
-	styleUrl: './error-messages-sample.component.scss'
+	styleUrl: './error-messages-sample.component.scss',
 })
 export class ErrorMessagesSampleComponent {
 	select = new UntypedFormControl('', [Validators.required]);

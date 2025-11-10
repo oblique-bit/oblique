@@ -1,11 +1,19 @@
-import {type Rule, type SchematicContext, SchematicsException, type Tree, chain, noop, schematic} from '@angular-devkit/schematics';
+import {
+	type Rule,
+	type SchematicContext,
+	SchematicsException,
+	type Tree,
+	chain,
+	noop,
+	schematic,
+} from '@angular-devkit/schematics';
 import {
 	addPreviewToPreviewsInCodeExample,
 	areOptionsValid,
 	createPreviewDirectoryPath,
 	createPreviewFiles,
 	getDirectoryOrFalse,
-	getPreviewSymbolName
+	getPreviewSymbolName,
 } from './add-preview.utils';
 import {dasherize} from '@angular-devkit/core/src/utils/strings';
 import type {AddPreviewOptions} from './add-preview.model';
@@ -67,14 +75,14 @@ function createPreview(options: AddPreviewOptions) {
 					...options,
 					dasherizedPreviewName: dasherize(options.preview),
 					componentName: getPreviewSymbolName(options.preview, options.codeExample),
-					dasherizedCodeExampleName: dasherize(options.codeExample)
+					dasherizedCodeExampleName: dasherize(options.codeExample),
 				},
 				await createPreviewDirectoryPath(options, tree)
 			),
 			addPreviewToPreviewsInCodeExample(options.preview, options.codeExample),
 			() => {
 				showAddPreviewCompleteMessage(context, options);
-			}
+			},
 		]);
 	};
 }

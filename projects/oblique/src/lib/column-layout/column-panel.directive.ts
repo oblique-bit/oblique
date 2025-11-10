@@ -5,7 +5,7 @@ import {ObTColumnState} from './column-layout.model';
 	selector: '[obColumnPanel]',
 	exportAs: 'obColumnPanel',
 	host: {class: 'ob-column-panel'},
-	standalone: false
+	standalone: false,
 })
 export class ObColumnPanelDirective implements OnInit {
 	@Input() initialState: ObTColumnState;

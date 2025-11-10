@@ -7,31 +7,31 @@ export const defaultConfig: Options = {
 		{
 			name: 'arrow',
 			options: {
-				element: '.ob-popover-arrow'
-			}
+				element: '.ob-popover-arrow',
+			},
 		},
 		{
 			name: 'offset',
 			options: {
-				offset: [0, 16]
-			}
+				offset: [0, 16],
+			},
 		},
 		{
 			name: 'computeStyles',
 			options: {
-				gpuAcceleration: false
-			}
+				gpuAcceleration: false,
+			},
 		},
 		{
 			name: 'flip',
 			options: {
-				padding: 2
-			}
-		}
-	]
+				padding: 2,
+			},
+		},
+	],
 };
 
 export enum ObEToggleType {
 	CLICK,
-	HOVER
+	HOVER,
 }

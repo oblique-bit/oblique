@@ -6,6 +6,6 @@ import {ObDatepickerIntlService} from './ob-datepicker.service';
 	imports: [MatDatepickerModule],
 	exports: [MatDatepickerModule],
 	// This overrides the default provided by MatDatepickerModule
-	providers: [{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService}]
+	providers: [{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService}],
 })
 export class ObDatepickerModule {}

@@ -26,7 +26,7 @@ function getObliqueRules(): {all: string[]; disabled: string[]} {
 		disabled: Object.entries(rules)
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars -- destructuring imposes to define the variable even if not used
 			.filter(([name, state]) => state === 'off')
-			.map(([name]) => name)
+			.map(([name]) => name),
 	};
 }
 
@@ -39,7 +39,7 @@ function getAllRules(): {all: string[]; disabled: string[]} {
 	const angularRules = Object.keys(ngEslint.configs.all.rules).filter(rule => !exceptions.includes(rule));
 	return {
 		all: [...eslintRules, ...angularRules, ...typescriptRules.all],
-		disabled: typescriptRules.disabled
+		disabled: typescriptRules.disabled,
 	};
 }
 
@@ -51,7 +51,7 @@ function getTypescriptRules(): {all: string[]; disabled: string[]} {
 		// contains all rules created by typescript-eslint
 		all: allTypescriptRules.filter(rule => rule.startsWith('@typescript-eslint')),
 		// contains all eslint rules that typescript-eslint must deactivate, no-return-await is deprecated and should not be used
-		disabled: allTypescriptRules.filter(rule => !rule.startsWith('@typescript-eslint') && !exceptions.includes(rule))
+		disabled: allTypescriptRules.filter(rule => !rule.startsWith('@typescript-eslint') && !exceptions.includes(rule)),
 	};
 }
 

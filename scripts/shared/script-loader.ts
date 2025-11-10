@@ -20,7 +20,8 @@ export class AddScriptloader extends StaticScript {
 
 	addScriptLoaders(pathToIndexFile: string): AddScriptloader {
 		Log.info(`Replace scripts with a custom script loader in index.html`);
-		const scriptSrcAttrRegex = /<script\ssrc="(?<src>\w+\.\w+\.js)"\s(?:type="(?<type>\w+)")?(?<defer>defer)?><\/script>/g;
+		const scriptSrcAttrRegex =
+			/<script\ssrc="(?<src>\w+\.\w+\.js)"\s(?:type="(?<type>\w+)")?(?<defer>defer)?><\/script>/g;
 		const foundScripts: Script[] = [];
 		const fileContent = Files.read(pathToIndexFile);
 
@@ -54,7 +55,9 @@ export class AddScriptloader extends StaticScript {
 		if (fileContent.includes('onload="this.media=\'all\'"')) {
 			Files.write(
 				pathToIndexFile,
-				fileContent.replace(onLoadContentRegex, 'load-handler').replace(/<\/script>/gm, Files.read(this.pathToOnLoadTemplate))
+				fileContent
+					.replace(onLoadContentRegex, 'load-handler')
+					.replace(/<\/script>/gm, Files.read(this.pathToOnLoadTemplate))
 			);
 		}
 		return AddScriptloader.instance as AddScriptloader;
@@ -66,7 +69,10 @@ export class AddScriptloader extends StaticScript {
 		const securityFileFileContent = Files.read(pathToSecurityHeadersFile);
 		const scriptSrcTemplate = AddScriptloader.getScriptSrcTemplate(indexFileContent);
 
-		Files.write(pathToSecurityHeadersFile, securityFileFileContent.replace("'script-src-hash-placeholder'", scriptSrcTemplate));
+		Files.write(
+			pathToSecurityHeadersFile,
+			securityFileFileContent.replace("'script-src-hash-placeholder'", scriptSrcTemplate)
+		);
 
 		return AddScriptloader.instance as AddScriptloader;
 	}

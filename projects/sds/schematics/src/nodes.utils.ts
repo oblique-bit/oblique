@@ -1,6 +1,10 @@
 import {type Rule, type SchematicContext, SchematicsException, chain, noop} from '@angular-devkit/schematics';
 import {findNodes, getSourceNodes} from '@schematics/angular/utility/ast-utils';
-import {type Node, type SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {
+	type Node,
+	type SourceFile,
+	SyntaxKind,
+} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {changeInsertLeft, changeInsertRight, replaceUpdate, showAlreadyExistsMessage} from './sds.utils';
 import {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
 
@@ -23,7 +27,9 @@ export function checkPropertyLiteralExists(
 export function findIdentifierNode(nodes: Node[], identifierName: string): Node {
 	const foundNode = nodes.find(node => node.kind === SyntaxKind.Identifier && node.getText() === identifierName);
 	if (!foundNode?.parent) {
-		throw new SchematicsException(`Error: Expected variable ${identifierName} not found in ${nodes.pop().parent.getText()}.`);
+		throw new SchematicsException(
+			`Error: Expected variable ${identifierName} not found in ${nodes.pop().parent.getText()}.`
+		);
 	}
 	return foundNode;
 }
@@ -43,7 +49,7 @@ export function addNodeToSyntaxList(
 			showAlreadyExistsMessage(context, {
 				elementDescription: 'element',
 				symbol: toAdd.text,
-				existsIn: `in the list ${identifierName} within the file ${sourceFile.fileName}`
+				existsIn: `in the list ${identifierName} within the file ${sourceFile.fileName}`,
 			});
 			return chain([]);
 		}
@@ -71,7 +77,14 @@ export function addNodeToSyntaxList(
 					);
 				}
 				return replaceUpdate(
-					[new ReplaceChange(sourceFile.fileName, indexToAdd, syntaxList.getText(), getSortedText(syntaxList, toAdd.kind, toAdd.text))],
+					[
+						new ReplaceChange(
+							sourceFile.fileName,
+							indexToAdd,
+							syntaxList.getText(),
+							getSortedText(syntaxList, toAdd.kind, toAdd.text)
+						),
+					],
 					sourceFile.fileName,
 					syntaxList.getFirstToken().getStart()
 				);

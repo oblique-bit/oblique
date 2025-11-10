@@ -8,7 +8,7 @@ describe('InvalidComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [InvalidComponent, RouterModule.forRoot([])]
+			imports: [InvalidComponent, RouterModule.forRoot([])],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(InvalidComponent);

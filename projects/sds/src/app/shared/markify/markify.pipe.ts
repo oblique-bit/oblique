@@ -5,7 +5,7 @@ import {Pipe, type PipeTransform, SecurityContext, inject} from '@angular/core';
  * A pipe that makes bold part of a string
  */
 @Pipe({
-	name: 'markify'
+	name: 'markify',
 })
 export class MarkifyPipe implements PipeTransform {
 	private readonly sanitizer = inject(DomSanitizer);

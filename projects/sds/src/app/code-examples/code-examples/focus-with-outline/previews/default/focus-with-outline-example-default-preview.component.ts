@@ -8,7 +8,7 @@ import {ObButtonDirective, obFocusWithOutline} from '@oblique/oblique';
 @Component({
 	selector: 'app-focus-with-outline-example-default-preview',
 	imports: [MatFormField, MatSelect, MatOption, MatLabel, MatButton, ObButtonDirective, MatInput],
-	templateUrl: './focus-with-outline-example-default-preview.component.html'
+	templateUrl: './focus-with-outline-example-default-preview.component.html',
 })
 export class FocusWithOutlineExampleDefaultPreviewComponent {
 	private readonly input: Signal<ElementRef<HTMLElement>> = viewChild.required(MatInput, {read: ElementRef});

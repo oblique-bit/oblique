@@ -7,6 +7,6 @@ export {ObNavTreeItemModel} from './nav-tree-item.model';
 
 @NgModule({
 	imports: [ObNavTreeComponent],
-	exports: [ObNavTreeComponent]
+	exports: [ObNavTreeComponent],
 })
 export class ObNavTreeModule {}

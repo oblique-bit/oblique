@@ -14,8 +14,8 @@ export class ObMockHttpApiInterceptorConfig {
 			severity: ObENotificationType.ERROR,
 			title: undefined,
 			text: undefined,
-			sticky: undefined
-		}
+			sticky: undefined,
+		},
 	};
 	timeout = 15000;
 }

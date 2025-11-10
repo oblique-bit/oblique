@@ -7,7 +7,7 @@ import {Directive, Input} from '@angular/core';
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '[ngModel]',
 	exportAs: 'ngModel',
-	standalone: true
+	standalone: true,
 })
 export class ObMockSchemaRequiredDirective {
 	@Input() name: string;

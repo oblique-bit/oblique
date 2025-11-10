@@ -22,7 +22,8 @@ export class ObSchemaValidatorInstance {
 			this.ajv.validate(propertyPath, value);
 			if (this.ajv.errors && ![null, undefined, ''].includes(value)) {
 				// when a value is empty, do not check its type
-				const key = this.ajv.errors[0].keyword === 'format' && this.ajv.errors[0].params.format === 'date-time' ? '.date' : '';
+				const key =
+					this.ajv.errors[0].keyword === 'format' && this.ajv.errors[0].params.format === 'date-time' ? '.date' : '';
 				return {[`ajv.${this.ajv.errors[0].keyword}${key}`]: this.ajv.errors[0].params};
 			}
 		}

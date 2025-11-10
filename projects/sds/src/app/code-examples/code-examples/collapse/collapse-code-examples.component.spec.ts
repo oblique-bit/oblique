@@ -14,7 +14,7 @@ describe(CollapseCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [CollapseCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule],
-			providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService]
+			providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(CollapseCodeExamplesComponent);

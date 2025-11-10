@@ -14,7 +14,7 @@ describe(AppComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [AppComponent, TranslateModule.forRoot(), MatButtonToggle],
-			providers: [provideRouter(routes)]
+			providers: [provideRouter(routes)],
 		}).compileComponents();
 		fixture = TestBed.createComponent(AppComponent);
 		fixture.detectChanges();

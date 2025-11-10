@@ -5,7 +5,7 @@ import {TranslateService} from '@ngx-translate/core';
 	name: 'obTranslateParams',
 	// eslint-disable-next-line @angular-eslint/no-pipe-impure
 	pure: false,
-	standalone: true
+	standalone: true,
 })
 export class ObTranslateParamsPipe implements PipeTransform {
 	constructor(private readonly translate: TranslateService) {}
@@ -14,11 +14,13 @@ export class ObTranslateParamsPipe implements PipeTransform {
 		return this.translate.instant(value, typeof params === 'object' ? this.translateParams(params) : undefined);
 	}
 
-	private translateParams(params: Record<string, string | number | boolean>): Record<string, string | number | boolean> {
+	private translateParams(
+		params: Record<string, string | number | boolean>
+	): Record<string, string | number | boolean> {
 		return Object.keys(params).reduce(
 			(parameters, key) => ({
 				...parameters,
-				[key]: typeof params[key] === 'string' ? this.translate.instant(params[key]) : params[key]
+				[key]: typeof params[key] === 'string' ? this.translate.instant(params[key]) : params[key],
 			}),
 			{}
 		);

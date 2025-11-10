@@ -39,14 +39,16 @@ class DependenciesUpdate extends StaticScript {
 			if (dependencies[iterator]?.peerDependencies) {
 				Files.writeJson(path, {
 					...DependenciesUpdate.readPackagesJson()[iterator],
-					peerDependencies: dependencies[iterator].peerDependencies
+					peerDependencies: dependencies[iterator].peerDependencies,
 				});
 			}
 		});
 	}
 
 	private static readPackagesJson(): {peerDependencies: Record<string, string>}[] {
-		return DependenciesUpdate.packageJsonPaths.map(path => Files.readJson(path) as {peerDependencies: Record<string, string>});
+		return DependenciesUpdate.packageJsonPaths.map(
+			path => Files.readJson(path) as {peerDependencies: Record<string, string>}
+		);
 	}
 
 	private static execute(command: string): void {

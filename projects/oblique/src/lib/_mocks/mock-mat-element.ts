@@ -8,7 +8,7 @@ import {Component} from '@angular/core';
 	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'mat-select, mat-slide-toggle, mat-slider',
 	standalone: true,
-	template: ``
+	template: ``,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ObMockMatElement implements ControlValueAccessor {

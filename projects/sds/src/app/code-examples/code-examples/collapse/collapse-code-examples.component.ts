@@ -12,7 +12,7 @@ import {CollapseExampleAnimationDurationPreviewComponent} from './previews/anima
 	selector: 'app-code-example-collapse',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CollapseCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'collapse-examples';
@@ -23,17 +23,25 @@ export class CollapseCodeExamplesComponent extends CodeExamples {
 			title: 'Default',
 			snippets: [
 				this.getSnippet('collapse', 'default/collapse-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('collapse', 'default/collapse-example-default-preview.component.ts', 'TS')
-			]
+				this.getSnippet('collapse', 'default/collapse-example-default-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: CollapseExampleAnimationDurationPreviewComponent,
 			idParts: ['animation', 'duration'],
 			title: 'Animation Duration',
 			snippets: [
-				this.getSnippet('collapse', 'animation-duration/collapse-example-animation-duration-preview.component.html', 'HTML'),
-				this.getSnippet('collapse', 'animation-duration/collapse-example-animation-duration-preview.component.ts', 'TS')
-			]
+				this.getSnippet(
+					'collapse',
+					'animation-duration/collapse-example-animation-duration-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'collapse',
+					'animation-duration/collapse-example-animation-duration-preview.component.ts',
+					'TS'
+				),
+			],
 		},
 		{
 			component: CollapseExampleIconPositionPreviewComponent,
@@ -41,8 +49,8 @@ export class CollapseCodeExamplesComponent extends CodeExamples {
 			title: 'Icon Position',
 			snippets: [
 				this.getSnippet('collapse', 'icon-position/collapse-example-icon-position-preview.component.html', 'HTML'),
-				this.getSnippet('collapse', 'icon-position/collapse-example-icon-position-preview.component.ts', 'TS')
-			]
+				this.getSnippet('collapse', 'icon-position/collapse-example-icon-position-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: CollapseExampleStatePreviewComponent,
@@ -50,8 +58,8 @@ export class CollapseCodeExamplesComponent extends CodeExamples {
 			title: 'State',
 			snippets: [
 				this.getSnippet('collapse', 'state/collapse-example-state-preview.component.html', 'HTML'),
-				this.getSnippet('collapse', 'state/collapse-example-state-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('collapse', 'state/collapse-example-state-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

@@ -10,6 +10,6 @@ export {ObErrorMessagesDirective} from './error-messages.directive';
 
 @NgModule({
 	imports: [ObErrorMessagesDirective, ObMatErrorDirective, ObTranslateParamsPipe],
-	exports: [ObErrorMessagesDirective, ObMatErrorDirective, ObTranslateParamsPipe]
+	exports: [ObErrorMessagesDirective, ObMatErrorDirective, ObTranslateParamsPipe],
 })
 export class ObErrorMessagesModule {}

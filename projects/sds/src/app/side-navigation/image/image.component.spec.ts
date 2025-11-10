@@ -35,7 +35,7 @@ describe(ImageComponent.name, () => {
 	const imageBeforeEach = async (imageInputsOptional?: ImageInputsOptional): Promise<any> => {
 		const {alt, height, width, idPrefix, src} = new ImageInputs(imageInputsOptional);
 		await TestBed.configureTestingModule({
-			imports: [IdPipe, ImageComponent]
+			imports: [IdPipe, ImageComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ImageComponent);
@@ -60,16 +60,19 @@ describe(ImageComponent.name, () => {
 				height: 500,
 				width: 500,
 				idPrefix: 'content',
-				src: 'http://www.image-src.com'
+				src: 'http://www.image-src.com',
 			});
 		});
 
 		it('should display image with attributes set correctly', () => {
 			expect(
-				getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix(), [component.componentId, imgId])).attributes
+				getDebugElementById<ImageComponent>(
+					fixture,
+					idPipe.transform(component.idPrefix(), [component.componentId, imgId])
+				).attributes
 			).toEqual(
 				expect.objectContaining({
-					src: 'http://www.image-src.com'
+					src: 'http://www.image-src.com',
 				})
 			);
 		});
@@ -82,13 +85,16 @@ describe(ImageComponent.name, () => {
 				height: 500,
 				width: 500,
 				idPrefix: 'content',
-				src: 'http://www.image-src.com'
+				src: 'http://www.image-src.com',
 			});
 		});
 
 		it('should display image when just alt is falsy', () => {
 			expect(
-				getDebugElementById<ImageComponent>(fixture, idPipe.transform(component.idPrefix(), [component.componentId, imgId]))
+				getDebugElementById<ImageComponent>(
+					fixture,
+					idPipe.transform(component.idPrefix(), [component.componentId, imgId])
+				)
 			).toBeTruthy();
 		});
 	});

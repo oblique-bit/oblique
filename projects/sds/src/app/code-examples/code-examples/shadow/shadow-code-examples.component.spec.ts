@@ -12,7 +12,7 @@ describe(ShadowCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ShadowCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [ShadowCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ShadowCodeExamplesComponent);

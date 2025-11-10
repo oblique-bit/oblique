@@ -1,4 +1,9 @@
-import {ObAutocompleteModule, ObEIcon, type ObIAutocompleteInputOption, type ObIAutocompleteInputOptionGroup} from '@oblique/oblique';
+import {
+	ObAutocompleteModule,
+	ObEIcon,
+	type ObIAutocompleteInputOption,
+	type ObIAutocompleteInputOptionGroup,
+} from '@oblique/oblique';
 import {type AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
@@ -6,7 +11,7 @@ import {JsonPipe} from '@angular/common';
 @Component({
 	selector: 'app-autocomplete-example-options-group',
 	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
-	templateUrl: './autocomplete-example-options-group.component.html'
+	templateUrl: './autocomplete-example-options-group.component.html',
 })
 export class AutocompleteExampleIconOptionsGroupComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;
@@ -19,19 +24,19 @@ export class AutocompleteExampleIconOptionsGroupComponent implements AfterViewIn
 				{
 					label: 'Group - 1 Graceling realm',
 					disabled: false,
-					iconName: ObEIcon.ADDRESS_BOOK
+					iconName: ObEIcon.ADDRESS_BOOK,
 				},
 				{
 					label: 'Group - 1 Dr. Who',
 					disabled: false,
-					iconName: ObEIcon.ARCHIVE_BOX
+					iconName: ObEIcon.ARCHIVE_BOX,
 				},
 				{
 					label: 'Group - 1 Octopus',
 					disabled: false,
-					iconName: ObEIcon.NOTIFICATION
-				}
-			]
+					iconName: ObEIcon.NOTIFICATION,
+				},
+			],
 		},
 		{
 			groupLabel: 'Group - 2',
@@ -40,19 +45,19 @@ export class AutocompleteExampleIconOptionsGroupComponent implements AfterViewIn
 				{
 					label: 'Group - 2 Graceling realm',
 					disabled: false,
-					iconName: ObEIcon.WRENCH
+					iconName: ObEIcon.WRENCH,
 				},
 				{
 					label: 'Group - 2 Octopus',
 					disabled: false,
-					iconName: ObEIcon.WHEELCHAIR
+					iconName: ObEIcon.WHEELCHAIR,
 				},
 				{
 					label: 'Group - 2 Five',
 					disabled: false,
-					iconName: ObEIcon.EXCLAMATION_TRIANGLE
-				}
-			]
+					iconName: ObEIcon.EXCLAMATION_TRIANGLE,
+				},
+			],
 		},
 		{
 			groupLabel: 'Group - 3',
@@ -61,20 +66,20 @@ export class AutocompleteExampleIconOptionsGroupComponent implements AfterViewIn
 				{
 					label: 'Group - 3 Five',
 					disabled: false,
-					iconName: ObEIcon.MAIL_OPEN
+					iconName: ObEIcon.MAIL_OPEN,
 				},
 				{
 					label: 'Group - 3 Ice-cream',
 					disabled: false,
-					iconName: ObEIcon.COLOR_PICKER
+					iconName: ObEIcon.COLOR_PICKER,
 				},
 				{
 					label: 'Group - 3 Octopus',
 					disabled: false,
-					iconName: ObEIcon.SHOPPING_CART
-				}
-			]
-		}
+					iconName: ObEIcon.SHOPPING_CART,
+				},
+			],
+		},
 	];
 	showSelection($event: ObIAutocompleteInputOption): void {
 		this.selectedOption = $event;

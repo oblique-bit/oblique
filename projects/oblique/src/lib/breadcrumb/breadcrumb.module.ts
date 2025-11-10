@@ -13,13 +13,13 @@ export {ObBreadcrumbComponent} from './breadcrumb.component';
 @NgModule({
 	declarations: [ObBreadcrumbComponent],
 	imports: [CommonModule, MatIconModule, MatTooltipModule, RouterModule, TranslateModule],
-	exports: [ObBreadcrumbComponent]
+	exports: [ObBreadcrumbComponent],
 })
 export class ObBreadcrumbModule {
 	static forRoot(config?: ObBreadcrumbConfig): ModuleWithProviders<ObBreadcrumbModule> {
 		return {
 			ngModule: ObBreadcrumbModule,
-			providers: [{provide: ObTBreadcrumbConfig, useValue: {...defaultBreadcrumbConfig, ...config}}]
+			providers: [{provide: ObTBreadcrumbConfig, useValue: {...defaultBreadcrumbConfig, ...config}}],
 		};
 	}
 }

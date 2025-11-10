@@ -1,10 +1,18 @@
-import {ChangeDetectorRef, Component, type OnChanges, type SimpleChange, type SimpleChanges, inject, input} from '@angular/core';
+import {
+	ChangeDetectorRef,
+	Component,
+	type OnChanges,
+	type SimpleChange,
+	type SimpleChanges,
+	inject,
+	input,
+} from '@angular/core';
 
 @Component({
 	selector: 'app-tab',
 	imports: [],
 	templateUrl: './tab.component.html',
-	styleUrl: './tab.component.scss'
+	styleUrl: './tab.component.scss',
 })
 export class TabComponent implements OnChanges {
 	readonly hidden = input(false);

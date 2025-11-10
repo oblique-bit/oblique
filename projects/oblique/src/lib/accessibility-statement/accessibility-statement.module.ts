@@ -5,6 +5,6 @@ export {AccessibilityStatementComponent} from './accessibility-statement.compone
 
 @NgModule({
 	imports: [AccessibilityStatementComponent],
-	exports: [AccessibilityStatementComponent]
+	exports: [AccessibilityStatementComponent],
 })
 export class AccessibilityStatementModule {}

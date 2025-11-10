@@ -9,7 +9,7 @@ import {FocusWithOutlineExampleDefaultPreviewComponent} from './previews/default
 	selector: 'app-code-example-focus-with-outline',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FocusWithOutlineExamplesComponent extends CodeExamples {
 	readonly componentId = 'focus-with-outline-examples';
@@ -19,9 +19,13 @@ export class FocusWithOutlineExamplesComponent extends CodeExamples {
 			idParts: ['default'],
 			title: 'Default',
 			snippets: [
-				this.getSnippet('focus-with-outline', 'default/focus-with-outline-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('focus-with-outline', 'default/focus-with-outline-example-default-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet(
+					'focus-with-outline',
+					'default/focus-with-outline-example-default-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet('focus-with-outline', 'default/focus-with-outline-example-default-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

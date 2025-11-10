@@ -18,7 +18,7 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationAuthenticationComponent],
-			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, MatButtonModule, ObButtonModule]
+			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, MatButtonModule, ObButtonModule],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationAuthenticationComponent);
@@ -76,7 +76,7 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 						{attribute: 'mat-button', value: ''},
 						{attribute: 'id', value: 'ob-service-navigation-authentication-button-to-logout'},
 						{attribute: 'type', value: 'button'},
-						{attribute: 'role', value: 'link'}
+						{attribute: 'role', value: 'link'},
 					])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
 						expect(await button.getAttribute(attribute)).toBe(value);
 					});
@@ -130,7 +130,7 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 
 					it.each([
 						{attribute: 'href', value: 'loginUrl'},
-						{attribute: 'id', value: 'ob-service-navigation-authentication-link-to-login'}
+						{attribute: 'id', value: 'ob-service-navigation-authentication-link-to-login'},
 					])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
 						expect(await (await harness.getLinkElement()).getAttribute(attribute)).toBe(value);
 					});

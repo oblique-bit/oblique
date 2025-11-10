@@ -6,7 +6,7 @@ import {Directive} from '@angular/core';
 @Directive({
 	selector: '[obMasterLayoutNavigationToggle]',
 	exportAs: 'obMasterLayoutNavigationToggle',
-	standalone: false
+	standalone: false,
 })
 export class ObMockMasterLayoutNavigationToggleDirective {
 	onClick(event?: KeyboardEvent | MouseEvent): void {}

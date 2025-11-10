@@ -9,7 +9,7 @@ import {OffCanvasExampleStackblitzLinkPreviewComponent} from './previews/stackbl
 	selector: 'app-code-example-off-canvas',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OffCanvasCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'off-canvas-examples';
@@ -18,7 +18,7 @@ export class OffCanvasCodeExamplesComponent extends CodeExamples {
 			component: OffCanvasExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
 			title: 'Link to Stackblitz Example',
-			snippets: []
-		}
+			snippets: [],
+		},
 	];
 }

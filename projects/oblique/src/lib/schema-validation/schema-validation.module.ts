@@ -13,6 +13,6 @@ export {ObSchemaValidatorInstance} from './schema-validator.instance';
 
 @NgModule({
 	imports: [ObSchemaRequiredDirective, ObSchemaValidateDirective, ObSchemaValidationDirective],
-	exports: [ObSchemaRequiredDirective, ObSchemaValidateDirective, ObSchemaValidationDirective]
+	exports: [ObSchemaRequiredDirective, ObSchemaValidateDirective, ObSchemaValidationDirective],
 })
 export class ObSchemaValidationModule {}

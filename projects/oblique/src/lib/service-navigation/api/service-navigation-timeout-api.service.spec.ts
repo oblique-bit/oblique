@@ -10,13 +10,13 @@ describe('ObServiceNavigationTimeoutApiService', () => {
 	const mockData = {
 		statusCode: 200,
 		success: true,
-		data: true
+		data: true,
 	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule],
-			providers: [ObServiceNavigationTimeoutApiService]
+			providers: [ObServiceNavigationTimeoutApiService],
 		});
 		service = TestBed.inject(ObServiceNavigationTimeoutApiService);
 		httpClient = TestBed.inject(HttpClient);
@@ -42,7 +42,9 @@ describe('ObServiceNavigationTimeoutApiService', () => {
 			});
 
 			it('should be called with proper parameters', () => {
-				expect(httpClient.get).toHaveBeenCalledWith('http://rootUrl/api/authentication/refresh', {withCredentials: true});
+				expect(httpClient.get).toHaveBeenCalledWith('http://rootUrl/api/authentication/refresh', {
+					withCredentials: true,
+				});
 			});
 		});
 	});

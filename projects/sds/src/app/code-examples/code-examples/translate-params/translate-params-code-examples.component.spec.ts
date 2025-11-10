@@ -12,7 +12,7 @@ describe(TranslateParamsCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [TranslateParamsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TranslateParamsCodeExamplesComponent);

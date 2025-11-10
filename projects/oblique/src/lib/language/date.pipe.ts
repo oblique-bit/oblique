@@ -6,7 +6,7 @@ import {ObLanguageService} from './language.service';
 	name: 'obDate',
 	// eslint-disable-next-line @angular-eslint/no-pipe-impure
 	pure: false,
-	standalone: true
+	standalone: true,
 })
 export class ObDatePipe implements PipeTransform {
 	private locale: string;

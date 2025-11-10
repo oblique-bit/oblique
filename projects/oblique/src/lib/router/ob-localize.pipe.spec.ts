@@ -8,13 +8,13 @@ describe(ObLocalizePipe.name, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObLocalizePipe, provideObliqueTestingConfiguration()]
+			providers: [ObLocalizePipe, provideObliqueTestingConfiguration()],
 		});
 	});
 
 	describe.each([
 		{text: 'without', hasLanguageInUrl: false},
-		{text: 'with', hasLanguageInUrl: true}
+		{text: 'with', hasLanguageInUrl: true},
 	])('$text hasLanguageInUrl', ({hasLanguageInUrl}) => {
 		beforeEach(async () => {
 			await TestBed.overrideProvider(OB_HAS_LANGUAGE_IN_URL, {useValue: hasLanguageInUrl}).compileComponents();

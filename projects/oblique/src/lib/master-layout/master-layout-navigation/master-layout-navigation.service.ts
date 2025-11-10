@@ -10,7 +10,7 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObMasterLayoutNavigationService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
@@ -48,7 +48,7 @@ export class ObMasterLayoutNavigationService {
 		this.isFullWidthInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH,
-			value
+			value,
 		});
 	}
 
@@ -60,7 +60,7 @@ export class ObMasterLayoutNavigationService {
 		this.scrollModeInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE,
-			mode: value
+			mode: value,
 		});
 	}
 

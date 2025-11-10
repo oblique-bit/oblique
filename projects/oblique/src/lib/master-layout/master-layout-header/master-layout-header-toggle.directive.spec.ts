@@ -6,7 +6,7 @@ import {ObMasterLayoutHeaderToggleDirective} from './master-layout-header-toggle
 
 @Component({
 	standalone: false,
-	template: '<a obMasterLayoutHeaderToggle> test </a>'
+	template: '<a obMasterLayoutHeaderToggle> test </a>',
 })
 class TestComponent {}
 
@@ -19,7 +19,7 @@ describe('ObMasterLayoutHeaderToggleDirective', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, ObMasterLayoutHeaderToggleDirective],
-			providers: [{provide: ObMasterLayoutComponentService, useValue: {isMenuOpened: false}}]
+			providers: [{provide: ObMasterLayoutComponentService, useValue: {isMenuOpened: false}}],
 		});
 
 		fixture = TestBed.createComponent(TestComponent);

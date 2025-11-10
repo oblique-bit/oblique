@@ -26,7 +26,7 @@ import {ScreenReaderOnlyComponent} from './screen-reader-only/screen-reader-only
 		PaletteComponent,
 		ScreenReaderOnlyComponent,
 		TableComponent,
-		TypographyComponent
+		TypographyComponent,
 	],
 	imports: [
 		CommonModule,
@@ -41,12 +41,12 @@ import {ScreenReaderOnlyComponent} from './screen-reader-only/screen-reader-only
 			{path: 'screen-reader-only', component: ScreenReaderOnlyComponent},
 			{path: 'table', component: TableComponent},
 			{path: 'typography', component: TypographyComponent},
-			{path: '', redirectTo: 'typography', pathMatch: 'full'}
+			{path: '', redirectTo: 'typography', pathMatch: 'full'},
 		]),
 		FormsModule,
 		MatRadioModule,
 		ObColumnLayoutModule,
-		ReactiveFormsModule
-	]
+		ReactiveFormsModule,
+	],
 })
 export class StylesModule {}

@@ -1,12 +1,22 @@
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {DestroyRef, Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Optional, inject} from '@angular/core';
+import {
+	DestroyRef,
+	Directive,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	Input,
+	OnInit,
+	Optional,
+	inject,
+} from '@angular/core';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @Directive({
 	selector: '[obSelectable]',
 	exportAs: 'obSelectable',
 	host: {class: 'ob-selectable'},
-	standalone: true
+	standalone: true,
 })
 export class ObSelectableDirective<T = any> implements OnInit {
 	@Input() value: T;
@@ -32,7 +42,9 @@ export class ObSelectableDirective<T = any> implements OnInit {
 	ngOnInit(): void {
 		this.initialTabindex = this.tabindex;
 		this.group.register(this);
-		this.group.mode$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(mode => (this.role = mode === 'windows' ? undefined : mode));
+		this.group.mode$
+			.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe(mode => (this.role = mode === 'windows' ? undefined : mode));
 		this.group.disabled$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(disabled => {
 			this.toggleDisabled(disabled);
 		});

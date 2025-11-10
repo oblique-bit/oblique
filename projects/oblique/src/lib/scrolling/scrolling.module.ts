@@ -6,6 +6,6 @@ export {ObTopControlComponent} from './top-control.component';
 
 @NgModule({
 	imports: [ObTopControlComponent],
-	exports: [ObTopControlComponent]
+	exports: [ObTopControlComponent],
 })
 export class ObScrollingModule {}

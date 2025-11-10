@@ -13,10 +13,10 @@ import {NestedFormExampleTemplateDrivenPreviewGrandchildComponent} from '../gran
 		MatFormFieldModule,
 		NestedFormExampleTemplateDrivenPreviewGrandchildComponent,
 		ObErrorMessagesModule,
-		ObNestedFormModule
+		ObNestedFormModule,
 	],
 	templateUrl: './nested-form-example-template-driven-preview-child.component.html',
-	exportAs: 'child'
+	exportAs: 'child',
 })
 export class NestedFormExampleTemplateDrivenPreviewChildComponent {
 	readonly ngForm = viewChild(NgForm);

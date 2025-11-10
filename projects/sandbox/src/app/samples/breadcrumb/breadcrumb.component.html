@@ -19,13 +19,15 @@
 <p><ob-breadcrumb maxWidth="8ch" /></p>
 
 <p>
-	Here's a breadcrumb component with url beautifing disabled (only applies to routes with no label and parameter values):<br />
+	Here's a breadcrumb component with url beautifing disabled (only applies to routes with no label and parameter
+	values):<br />
 	<code> &lt;ob-breadcrumb [beautifyUrls]="false">&lt;/ob-breadcrumb> </code>
 </p>
 <p><ob-breadcrumb [beautifyUrls]="false" /></p>
 
 <p>
-	Here's a breadcrumb component with a custom separator (only applies to routes with no label and more than one part in the path):<br />
+	Here's a breadcrumb component with a custom separator (only applies to routes with no label and more than one part in
+	the path):<br />
 	<code> &lt;ob-breadcrumb parameterSeparator=" | ">&lt;/ob-breadcrumb> </code>
 </p>
 <p><ob-breadcrumb parameterSeparator=" | " /></p>
@@ -39,7 +41,9 @@
 		<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'some-page']">Some Page</a>
 		<ol>
 			<li>
-				<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'some-page', 'some-sub-page']">Sub-Page</a>
+				<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'some-page', 'some-sub-page']"
+					>Sub-Page</a
+				>
 			</li>
 		</ol>
 	</li>
@@ -49,7 +53,9 @@
 		>
 	</li>
 	<li>
-		<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'i18n-label']">Route with a translated label</a>
+		<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'i18n-label']"
+			>Route with a translated label</a
+		>
 	</li>
 </ol>
 
@@ -71,7 +77,9 @@ The content of this input is used for the param value:
 		>Route with param/path, label using the parameter placeholder</a
 	>
 	<br />
-	<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', i.value, 'details', 'missing-label']"
+	<a
+		routerLinkActive="router-link-active"
+		[routerLink]="['/samples', 'breadcrumb', i.value, 'details', 'missing-label']"
 		>Child of route with param/path and parameter label (used to test a link with parameter values)</a
 	>
 	<br />

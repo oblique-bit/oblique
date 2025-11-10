@@ -2,7 +2,11 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObServiceNavigationWebComponentComponent} from './service-navigation-web-component.component';
 import {SimpleChange, type SimpleChanges} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {type ObIServiceNavigationContact, ObServiceNavigationComponent, provideObliqueTestingConfiguration} from '@oblique/oblique';
+import {
+	type ObIServiceNavigationContact,
+	ObServiceNavigationComponent,
+	provideObliqueTestingConfiguration,
+} from '@oblique/oblique';
 import {appVersion} from './version';
 import {HttpClient} from '@angular/common/http';
 
@@ -17,7 +21,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObServiceNavigationWebComponentComponent],
-			providers: [provideObliqueTestingConfiguration(), {provide: HttpClient, useValue: {}}]
+			providers: [provideObliqueTestingConfiguration(), {provide: HttpClient, useValue: {}}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationWebComponentComponent);
@@ -44,7 +48,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 				{environmentName: 'TEST', environmentCode: '-t'},
 				{environmentName: 'REF', environmentCode: '-r'},
 				{environmentName: 'ABN', environmentCode: '-a'},
-				{environmentName: 'PROD', environmentCode: ''}
+				{environmentName: 'PROD', environmentCode: ''},
 			])(
 				'should return $environmentCode according to the key $environmentName from the enum ObEPamsEnvironment',
 				({environmentName, environmentCode}) => {
@@ -79,7 +83,9 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			fixture.componentRef.setInput('environment', 'DEV');
 			fixture.componentRef.setInput('languageList', 'en, fr');
 			const func = (): void => component.ngOnInit();
-			expect(func).toThrow('"language-list" expects a comma separated list of ISO 639-1 languages (e.g. en,fr,de) but received "en, fr"');
+			expect(func).toThrow(
+				'"language-list" expects a comma separated list of ISO 639-1 languages (e.g. en,fr,de) but received "en, fr"'
+			);
 		});
 	});
 
@@ -89,7 +95,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 				const contact = {phone: '+41 99 999 99 99', phoneText: 'some text'} as ObIServiceNavigationContact;
 				component.ngOnChanges({
 					...defaultChangesValues(),
-					infoContact: new SimpleChange(null, JSON.stringify(contact), true)
+					infoContact: new SimpleChange(null, JSON.stringify(contact), true),
 				});
 				expect(component.infoContactParsed).toEqual(contact);
 			});
@@ -101,7 +107,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			it('should return empty array []', () => {
 				component.ngOnChanges({
 					...defaultChangesValues(),
-					profileLinks: new SimpleChange(null, undefined, true)
+					profileLinks: new SimpleChange(null, undefined, true),
 				});
 				expect(component.profileLinksParsed).toEqual([]);
 			});
@@ -110,22 +116,26 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 		describe('stringify object', () => {
 			it('should return the object as a real object', () => {
 				const links = [
-					{fr: 'Lien de profile 1', en: 'Profile link 1', links: {fr: 'https://fr.profile.com', en: 'https://en.profile.com'}},
-					{fr: 'Lien de profile 2', en: 'Profile link 2', link: 'https://profile.com'}
+					{
+						fr: 'Lien de profile 1',
+						en: 'Profile link 1',
+						links: {fr: 'https://fr.profile.com', en: 'https://en.profile.com'},
+					},
+					{fr: 'Lien de profile 2', en: 'Profile link 2', link: 'https://profile.com'},
 				];
 				const expectedParsedLinks = [
 					{
 						label: 'profile-link.0.label',
-						url: 'profile-link.0.url'
+						url: 'profile-link.0.url',
 					},
 					{
 						label: 'profile-link.1.label',
-						url: 'profile-link.1.url'
-					}
+						url: 'profile-link.1.url',
+					},
 				];
 				component.ngOnChanges({
 					...defaultChangesValues(),
-					profileLinks: new SimpleChange(null, JSON.stringify(links), true)
+					profileLinks: new SimpleChange(null, JSON.stringify(links), true),
 				});
 				expect(component.profileLinksParsed).toEqual(expectedParsedLinks);
 			});
@@ -137,7 +147,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			it('should return empty array []', () => {
 				component.ngOnChanges({
 					...defaultChangesValues(),
-					infoLinks: new SimpleChange(null, undefined, true)
+					infoLinks: new SimpleChange(null, undefined, true),
 				});
 				expect(component.infoLinksParsed).toEqual([]);
 			});
@@ -145,17 +155,23 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 
 		describe('stringify object', () => {
 			it('should return the object as a real object', () => {
-				const links = [{fr: 'Lien de contact', en: 'Contact link', links: {fr: 'https://fr.contact.com', en: 'https://en.contact.com'}}];
+				const links = [
+					{
+						fr: 'Lien de contact',
+						en: 'Contact link',
+						links: {fr: 'https://fr.contact.com', en: 'https://en.contact.com'},
+					},
+				];
 
 				const expectedParsedLinks = [
 					{
 						label: 'info-link.0.label',
-						url: 'info-link.0.url'
-					}
+						url: 'info-link.0.url',
+					},
 				];
 				component.ngOnChanges({
 					...defaultChangesValues(),
-					infoLinks: new SimpleChange(null, JSON.stringify(links), true)
+					infoLinks: new SimpleChange(null, JSON.stringify(links), true),
 				});
 				expect(component.infoLinksParsed).toEqual(expectedParsedLinks);
 			});
@@ -179,10 +195,12 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 					fixture.componentRef.setInput('languageList', 'en');
 					component.ngOnChanges({
 						...defaultChangesValues(),
-						customButtons: new SimpleChange(null, JSON.stringify(customButtonsObject), true)
+						customButtons: new SimpleChange(null, JSON.stringify(customButtonsObject), true),
 					});
 					fixture.detectChanges();
-					buttons = fixture.nativeElement.querySelectorAll('.ob-service-navigation-custom-control > button') as HTMLElement[];
+					buttons = fixture.nativeElement.querySelectorAll(
+						'.ob-service-navigation-custom-control > button'
+					) as HTMLElement[];
 				});
 
 				it('should make two buttons visible in the dom', () => {
@@ -241,12 +259,12 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			{inputName: 'infoContact', attributeName: 'info-contact'},
 			{inputName: 'customButtons', attributeName: 'custom-buttons'},
 			{inputName: 'profileLinks', attributeName: 'profile-links'},
-			{inputName: 'infoLinks', attributeName: 'info-links'}
+			{inputName: 'infoLinks', attributeName: 'info-links'},
 		])('should throw an error for the invalid $attributeName attribute value', ({inputName, attributeName}) => {
 			expect(() => {
 				component.ngOnChanges({
 					...defaultChangesValues(),
-					[inputName]: new SimpleChange(null, 'not-a-valid-json', true)
+					[inputName]: new SimpleChange(null, 'not-a-valid-json', true),
 				});
 			}).toThrow(
 				`The value for the attribute ${attributeName} is invalid. Check the documentation at https://oblique.bit.admin.ch/guidelines/service-navigation-web-component for the expected format.`

@@ -4,7 +4,7 @@ import type {MatAccordionDisplayMode, MatAccordionTogglePosition} from '@angular
 @Component({
 	selector: 'sb-expansion-panel',
 	standalone: false,
-	templateUrl: './expansion-panel.component.html'
+	templateUrl: './expansion-panel.component.html',
 })
 export class ExpansionPanelComponent {
 	panelOpenState = false;

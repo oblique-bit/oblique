@@ -6,6 +6,6 @@ import {MatIconModule} from '@angular/material/icon';
 	selector: 'app-tabs-example-variations-preview',
 	imports: [MatTabsModule, MatIconModule],
 	templateUrl: './tabs-example-variations-preview.component.html',
-	styleUrl: './tabs-example-variations-preview.component.scss'
+	styleUrl: './tabs-example-variations-preview.component.scss',
 })
 export class TabsExampleVariationsPreviewComponent {}

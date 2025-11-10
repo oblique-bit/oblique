@@ -20,11 +20,15 @@ export class ObServiceNavigationApplicationsHarness extends ContentContainerComp
 		return this.locatorForOptional(ObServiceNavigationApplicationsHarness.popoverSelector)();
 	}
 
-	public getTooltipHarness(fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>): Promise<MatTooltipHarness> {
+	public getTooltipHarness(
+		fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>
+	): Promise<MatTooltipHarness> {
 		return TestbedHarnessEnvironment.documentRootLoader(fixture).getHarnessOrNull(MatTooltipHarness);
 	}
 
-	public getAllTooltipHarness(fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>): Promise<MatTooltipHarness[]> {
+	public getAllTooltipHarness(
+		fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>
+	): Promise<MatTooltipHarness[]> {
 		return TestbedHarnessEnvironment.documentRootLoader(fixture).getAllHarnesses(MatTooltipHarness);
 	}
 

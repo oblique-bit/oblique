@@ -12,7 +12,7 @@ describe(NewsletterComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule, RouterTestingModule, NewsletterComponent, ReactiveFormsModule],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NewsletterComponent);
@@ -66,8 +66,16 @@ describe(NewsletterComponent.name, () => {
 
 	describe('handleRequest()', () => {
 		describe.each([
-			{unsubscribe: false, email: 'max.muster@bit.admin.ch', successMessage: 'You have successfully subscribed to our newsletter!'},
-			{unsubscribe: true, email: 'max.muster@bit.admin.chREMOVE', successMessage: 'You have successfully unsubscribed to our newsletter!'}
+			{
+				unsubscribe: false,
+				email: 'max.muster@bit.admin.ch',
+				successMessage: 'You have successfully subscribed to our newsletter!',
+			},
+			{
+				unsubscribe: true,
+				email: 'max.muster@bit.admin.chREMOVE',
+				successMessage: 'You have successfully unsubscribed to our newsletter!',
+			},
 		])('with unsubscribe: $unsubscribe', ({unsubscribe, email, successMessage}) => {
 			beforeEach(() => {
 				jest.spyOn(component, 'sendRequest');

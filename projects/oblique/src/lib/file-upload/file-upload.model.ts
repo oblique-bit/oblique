@@ -34,7 +34,7 @@ export enum ObEUploadEventType {
 	SELECTED = 'selected',
 	DELETED = 'deleted',
 	CANCELED = 'canceled',
-	ERRORED = 'errored'
+	ERRORED = 'errored',
 }
 
 export interface ObIFileValidationOptions {
@@ -65,7 +65,7 @@ export enum ObEWildCardMimeTypes {
 	'video/*' = 'mpeg|mpg|mpe|qt|mov|avi|movie|viv|',
 	'magnus-internal/*' = 'cgi|exe|bat|jsp|map|shtml',
 	'application/msword/*' = 'doc|dot|dotm',
-	'application/msexcel/*' = 'xls|xla'
+	'application/msexcel/*' = 'xls|xla',
 }
 
 export enum ObEMimeTypes {
@@ -107,6 +107,6 @@ export enum ObEMimeTypes {
 	'magnus-internal/imagemap' = 'map',
 	'magnus-internal/parsed-html' = 'shtml',
 	'magnus-internal/cgi' = 'cgi',
-	'magnus-internal/jsp' = 'exe|bat'
+	'magnus-internal/jsp' = 'exe|bat',
 }
 /* eslint-enable @typescript-eslint/naming-convention */

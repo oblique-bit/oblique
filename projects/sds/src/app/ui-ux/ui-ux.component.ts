@@ -11,7 +11,7 @@ import {latest} from '../../obliqueVersion';
 	imports: [SafeHtmlPipe, RouterLink, RelatedLinkPipe, ObExternalLinkDirective],
 	standalone: true,
 	templateUrl: './ui-ux.component.html',
-	styleUrl: './ui-ux.component.scss'
+	styleUrl: './ui-ux.component.scss',
 })
 export class UiUxComponent {
 	readonly currentObliqueVersion = Number(latest.split('.')[0]);

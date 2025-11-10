@@ -8,6 +8,6 @@ export {ObMockCollapseComponent} from './mock-collapse.component';
  */
 @NgModule({
 	imports: [ObMockCollapseComponent],
-	exports: [ObMockCollapseComponent]
+	exports: [ObMockCollapseComponent],
 })
 export class ObMockCollapseModule {}

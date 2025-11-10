@@ -5,7 +5,7 @@ import type {MatBadgePosition} from '@angular/material/badge';
 @Component({
 	selector: 'sb-badge',
 	standalone: false,
-	templateUrl: './badge.component.html'
+	templateUrl: './badge.component.html',
 })
 export class BadgeComponent {
 	colors: ThemePalette[] = [];
@@ -26,7 +26,12 @@ export class BadgeComponent {
 	constructor() {
 		this.colors = [this.PRIMARY_COLOR, this.ACCENT_COLOR, this.WARN_COLOR];
 		this.color = this.colors[0];
-		this.positions = [this.POSITION_ABOVE_AFTER, this.POSITION_ABOVE_BEFORE, this.POSITION_BELOW_AFTER, this.POSITION_BELOW_BEFORE];
+		this.positions = [
+			this.POSITION_ABOVE_AFTER,
+			this.POSITION_ABOVE_BEFORE,
+			this.POSITION_BELOW_AFTER,
+			this.POSITION_BELOW_BEFORE,
+		];
 		this.position = this.positions[0];
 	}
 }

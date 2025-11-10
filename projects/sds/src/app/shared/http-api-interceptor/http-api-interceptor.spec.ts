@@ -18,9 +18,9 @@ describe('HttpApiInterceptor', () => {
 				{
 					provide: HTTP_INTERCEPTORS,
 					useClass: HttpApiInterceptor,
-					multi: true
-				}
-			]
+					multi: true,
+				},
+			],
 		});
 
 		httpMock = TestBed.inject(HttpTestingController);

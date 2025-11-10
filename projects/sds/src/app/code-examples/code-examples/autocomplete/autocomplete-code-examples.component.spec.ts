@@ -10,7 +10,7 @@ describe('AutocompleteCodeExamplesComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [AutocompleteCodeExamplesComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(AutocompleteCodeExamplesComponent);

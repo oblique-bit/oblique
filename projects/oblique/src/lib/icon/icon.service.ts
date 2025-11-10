@@ -5,7 +5,7 @@ import {ObIconConfig} from './icon.model';
 import {iconSet as obliqueIconSet} from '../../assets/oblique-icons';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObIconService {
 	constructor(
@@ -30,12 +30,16 @@ export class ObIconService {
 
 	registerIconsAsync(...icons: {name: string; url: string}[]): void {
 		//bypassSecurityTrustHtml is not safe. Projects are responsible to ensure the SVGs they are providing are safe.
-		icons.forEach(icon => this.registry.addSvgIcon(icon.name, this.domSanitizer.bypassSecurityTrustResourceUrl(icon.url)));
+		icons.forEach(icon =>
+			this.registry.addSvgIcon(icon.name, this.domSanitizer.bypassSecurityTrustResourceUrl(icon.url))
+		);
 	}
 
 	registerIcons(...icons: {name: string; svg: string}[]): void {
 		//bypassSecurityTrustHtml is not safe. Projects are responsible to ensure the SVGs they are providing are safe.
-		icons.forEach(icon => this.registry.addSvgIconLiteral(icon.name, this.domSanitizer.bypassSecurityTrustHtml(icon.svg)));
+		icons.forEach(icon =>
+			this.registry.addSvgIconLiteral(icon.name, this.domSanitizer.bypassSecurityTrustHtml(icon.svg))
+		);
 	}
 
 	private getIconSets(config: ObIconConfig): string[] {

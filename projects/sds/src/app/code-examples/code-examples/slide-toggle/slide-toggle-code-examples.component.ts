@@ -10,7 +10,7 @@ import {SlideToggleExampleSecondPreviewComponent} from './previews/second/slide-
 	selector: 'app-code-example-slide-toggle',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SlideToggleCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'slide-toggle-examples';
@@ -20,10 +20,14 @@ export class SlideToggleCodeExamplesComponent extends CodeExamples {
 			idParts: ['colors'],
 			title: 'Colors',
 			snippets: [
-				this.getSnippet('slide-toggle', 'first-colors/slide-toggle-example-first-colors-preview.component.html', 'HTML'),
+				this.getSnippet(
+					'slide-toggle',
+					'first-colors/slide-toggle-example-first-colors-preview.component.html',
+					'HTML'
+				),
 				this.getSnippet('slide-toggle', 'first-colors/slide-toggle-example-first-colors-preview.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: SlideToggleExampleSecondPreviewComponent,
@@ -32,8 +36,8 @@ export class SlideToggleCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('slide-toggle', 'second/slide-toggle-example-second-preview.component.html', 'HTML'),
 				this.getSnippet('slide-toggle', 'second/slide-toggle-example-second-preview.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

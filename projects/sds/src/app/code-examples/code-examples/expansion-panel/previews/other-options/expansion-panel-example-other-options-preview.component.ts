@@ -4,12 +4,18 @@ import {
 	MatExpansionPanel,
 	MatExpansionPanelDescription,
 	MatExpansionPanelHeader,
-	MatExpansionPanelTitle
+	MatExpansionPanelTitle,
 } from '@angular/material/expansion';
 
 @Component({
 	selector: 'app-expansion-panel-example-other-options-preview',
-	imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelTitle],
-	templateUrl: './expansion-panel-example-other-options-preview.component.html'
+	imports: [
+		MatAccordion,
+		MatExpansionPanel,
+		MatExpansionPanelDescription,
+		MatExpansionPanelHeader,
+		MatExpansionPanelTitle,
+	],
+	templateUrl: './expansion-panel-example-other-options-preview.component.html',
 })
 export class ExpansionPanelExampleOtherOptionsPreviewComponent {}

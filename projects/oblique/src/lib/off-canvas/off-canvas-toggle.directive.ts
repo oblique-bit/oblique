@@ -6,7 +6,7 @@ import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 	selector: '[obOffCanvasToggle]',
 	exportAs: 'obOffCanvasToggle',
 	host: {class: 'ob-off-canvas-toggle'},
-	standalone: true
+	standalone: true,
 })
 export class ObOffCanvasToggleDirective {
 	constructor(

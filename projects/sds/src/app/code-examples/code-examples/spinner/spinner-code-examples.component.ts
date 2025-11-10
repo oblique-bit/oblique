@@ -10,7 +10,7 @@ import {MultipleActivationsPreviewComponent} from './previews/multiple-activatio
 	selector: 'app-spinner-code-examples',
 	imports: [CodeExampleComponent, CommonModule, IdPipe],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpinnerCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'spinner-examples';
@@ -22,8 +22,8 @@ export class SpinnerCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('spinner', 'custom-channel/custom-channel-preview.component.html', 'HTML'),
 				this.getSnippet('spinner', 'custom-channel/custom-channel-preview.component.ts', 'TS'),
-				this.getSnippet('spinner', 'custom-channel/custom-channel-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('spinner', 'custom-channel/custom-channel-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: MultipleActivationsPreviewComponent,
@@ -32,8 +32,8 @@ export class SpinnerCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('spinner', 'multiple-activations/multiple-activations-preview.component.html', 'HTML'),
 				this.getSnippet('spinner', 'multiple-activations/multiple-activations-preview.component.ts', 'TS'),
-				this.getSnippet('spinner', 'multiple-activations/multiple-activations-preview.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('spinner', 'multiple-activations/multiple-activations-preview.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

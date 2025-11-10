@@ -14,7 +14,15 @@ describe(TabsCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [TabsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, MatTabsModule, MatIconModule, ObIconModule]
+			imports: [
+				TabsCodeExamplesComponent,
+				CommonModule,
+				IdPipe,
+				CodeExampleComponent,
+				MatTabsModule,
+				MatIconModule,
+				ObIconModule,
+			],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TabsCodeExamplesComponent);

@@ -6,7 +6,7 @@ export function mapCMSPageShortToAccordion(data: CMSPage[], category: Category):
 	return {
 		id: `${category.id}`,
 		links: mapToLink(data.filter(entry => entry.category === category.id)),
-		title: category.name.toLowerCase()
+		title: category.name.toLowerCase(),
 	};
 }
 
@@ -18,7 +18,7 @@ function mapToLink(data: CMSPage[]): Link[] {
 				minVersion: value.min_version,
 				maxVersion: value.max_version,
 				slug: value.slug,
-				title: value.name
+				title: value.name,
 			}) as Link
 	);
 }

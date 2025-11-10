@@ -5,7 +5,7 @@ import {ObSpinnerService} from '@oblique/oblique';
 	selector: 'sb-spinner-sample',
 	standalone: false,
 	templateUrl: './spinner-sample.component.html',
-	styleUrl: './spinner-sample.component.scss'
+	styleUrl: './spinner-sample.component.scss',
 })
 export class SpinnerSampleComponent {
 	spinnerVisible = false;

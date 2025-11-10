@@ -6,14 +6,20 @@ import {ObIconButtonDirective} from './icon-button.directive';
 	exportAs: 'obButton',
 	host: {class: 'ob-button mat-primary'},
 	hostDirectives: [ObIconButtonDirective],
-	standalone: true
+	standalone: true,
 })
 export class ObButtonDirective implements OnInit, OnChanges {
 	@Input() obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
 	@HostBinding('class.ob-button-primary') primaryClass: boolean;
 	@HostBinding('class.ob-button-secondary') secondaryClass: boolean;
 	@HostBinding('class.ob-button-tertiary') tertiaryClass: boolean;
-	private static readonly forbidden = ['mat-raised-button', 'mat-fab', 'mat-mini-fab', 'mat-stroked-button', 'mat-flat-button'];
+	private static readonly forbidden = [
+		'mat-raised-button',
+		'mat-fab',
+		'mat-mini-fab',
+		'mat-stroked-button',
+		'mat-flat-button',
+	];
 
 	constructor(private readonly element: ElementRef) {}
 

@@ -17,11 +17,11 @@ describe('ObMasterLayoutFooterService', () => {
 					useValue: {
 						footer: {
 							isCustom: false,
-							isSticky: false
-						}
-					}
-				}
-			]
+							isSticky: false,
+						},
+					},
+				},
+			],
 		});
 		service = TestBed.inject(ObMasterLayoutFooterService);
 	});

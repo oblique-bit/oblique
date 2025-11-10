@@ -4,7 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 
 @Pipe({
 	name: 'ObServiceNavigationApplicationNameStatus',
-	standalone: false
+	standalone: false,
 })
 export class ObServiceNavigationApplicationNameStatusPipe implements PipeTransform {
 	private readonly translateService = inject(TranslateService);

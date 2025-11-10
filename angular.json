@@ -116,10 +116,7 @@
               "projects/sandbox/src/scss/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "projects/oblique/src/styles/scss/core",
-                "projects/oblique/src/styles/scss/core/mixins"
-              ]
+              "includePaths": ["projects/oblique/src/styles/scss/core", "projects/oblique/src/styles/scss/core/mixins"]
             },
             "scripts": ["projects/oblique/src/ob-features.js"]
           },
@@ -254,10 +251,7 @@
               "projects/sds/src/styles/styles.scss",
               "node_modules/highlight.js/styles/sunburst.css"
             ],
-            "scripts": [
-              "projects/oblique/src/ob-features.js",
-              "node_modules/jquery/dist/jquery.js"
-            ]
+            "scripts": ["projects/oblique/src/ob-features.js", "node_modules/jquery/dist/jquery.js"]
           },
           "configurations": {
             "production": {

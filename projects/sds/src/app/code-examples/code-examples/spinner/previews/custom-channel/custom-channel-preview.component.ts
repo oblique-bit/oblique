@@ -7,7 +7,7 @@ import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/obliqu
 	selector: 'app-custom-channel-preview',
 	imports: [ObSpinnerModule, MatButtonModule, ObButtonModule, MatSlideToggleModule],
 	templateUrl: './custom-channel-preview.component.html',
-	styleUrl: './custom-channel-preview.component.scss'
+	styleUrl: './custom-channel-preview.component.scss',
 })
 export class CustomChannelPreviewComponent implements OnDestroy {
 	readonly channel = 'demoChannel';

@@ -6,12 +6,12 @@ describe('ObUnsavedChangesGuard', () => {
 	let guard: ObUnsavedChangesGuard;
 
 	const mockUnsavedChangesService = {
-		canDeactivate: jest.fn()
+		canDeactivate: jest.fn(),
 	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [{provide: ObUnsavedChangesService, useValue: mockUnsavedChangesService}]
+			providers: [{provide: ObUnsavedChangesService, useValue: mockUnsavedChangesService}],
 		});
 		guard = TestBed.inject(ObUnsavedChangesGuard);
 	});

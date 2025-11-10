@@ -1,6 +1,11 @@
 import {Component, inject} from '@angular/core';
 import {HttpClient, type HttpErrorResponse} from '@angular/common/http';
-import {ObENotificationType, ObHttpApiInterceptorEvents, type ObIHttpApiRequest, ObNotificationService} from '@oblique/oblique';
+import {
+	ObENotificationType,
+	ObHttpApiInterceptorEvents,
+	type ObIHttpApiRequest,
+	ObNotificationService,
+} from '@oblique/oblique';
 import {delay, mergeMap, take, tap} from 'rxjs/operators';
 import {type Observable, from} from 'rxjs';
 import {HttpMockErrorInterceptor} from './http-mock-error.interceptor';
@@ -10,7 +15,7 @@ let requestId = 0;
 @Component({
 	selector: 'sb-http-api-interceptor-sample',
 	standalone: false,
-	templateUrl: './http-interceptor-sample.component.html'
+	templateUrl: './http-interceptor-sample.component.html',
 })
 export class HttpInterceptorSampleComponent {
 	static readonly API_URL = 'https://jsonplaceholder.typicode.com';
@@ -21,7 +26,7 @@ export class HttpInterceptorSampleComponent {
 		title: undefined,
 		text: undefined,
 		sticky: false,
-		timeout: 3500
+		timeout: 3500,
 	};
 	spinner = true;
 	variants = ObENotificationType;
@@ -94,9 +99,13 @@ export class HttpInterceptorSampleComponent {
 				},
 				(error: HttpErrorResponse) => {
 					const elapsed = Date.now() - started;
-					this.log(`${currentId} - Received ${error.status} ${error.statusText} in ${elapsed} ms with ${requestDelay} ms delay.`);
+					this.log(
+						`${currentId} - Received ${error.status} ${error.statusText} in ${elapsed} ms with ${requestDelay} ms delay.`
+					);
 					if (!this.notification.active) {
-						this.notificationService.info('Oblique error handling is disabled. The component itself is responsible for error handling.');
+						this.notificationService.info(
+							'Oblique error handling is disabled. The component itself is responsible for error handling.'
+						);
 					}
 				}
 			)

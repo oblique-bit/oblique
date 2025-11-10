@@ -5,7 +5,7 @@ import {ObServiceNavigationInfoApiService} from './service-navigation-info-api.s
 import {
 	ObISeriviceNavigationHelpResponse,
 	ObIServiceNavigationBackendInfo,
-	ObIServiceNavigationResponse
+	ObIServiceNavigationResponse,
 } from './service-navigation.api.model';
 
 describe('ObServiceNavigationInfoApiService', () => {
@@ -14,7 +14,7 @@ describe('ObServiceNavigationInfoApiService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObServiceNavigationInfoApiService, provideHttpClient()]
+			providers: [ObServiceNavigationInfoApiService, provideHttpClient()],
 		});
 		httpClient = TestBed.inject(HttpClient);
 		service = TestBed.inject(ObServiceNavigationInfoApiService);
@@ -36,7 +36,7 @@ describe('ObServiceNavigationInfoApiService', () => {
 
 				expect(httpClient.get).toHaveBeenCalledWith('rootUrl/api/applications/42/helpinformation', {
 					params: {lang: 'en'},
-					withCredentials: true
+					withCredentials: true,
 				});
 			});
 		});
@@ -86,7 +86,9 @@ describe('ObServiceNavigationInfoApiService', () => {
 				});
 
 				it('should have a "contact.formUrlText" property with links[0] optionalInformation', () => {
-					expect(result.contact.formUrlText).toEqual(fixtureApplicationHelp().data.contact.links[0].optionalInformation);
+					expect(result.contact.formUrlText).toEqual(
+						fixtureApplicationHelp().data.contact.links[0].optionalInformation
+					);
 				});
 			});
 
@@ -114,13 +116,13 @@ describe('ObServiceNavigationInfoApiService', () => {
 						of({
 							errorCode: fakeErrorCode,
 							message: fakeErrorMessage,
-							data: {}
+							data: {},
 						} as ObIServiceNavigationResponse<ObISeriviceNavigationHelpResponse>)
 					);
 					service.get(fakeRootUrl, fakeAppId, '').subscribe({
 						error: (err: Error) => {
 							error = err;
-						}
+						},
 					});
 				});
 
@@ -135,7 +137,9 @@ describe('ObServiceNavigationInfoApiService', () => {
 					});
 
 					it('should contain the url', () => {
-						expect(errorMessages[0]).toContain(`Url ${fakeRootUrl}api/applications/${fakeAppId}/helpinformation failed.`);
+						expect(errorMessages[0]).toContain(
+							`Url ${fakeRootUrl}api/applications/${fakeAppId}/helpinformation failed.`
+						);
 					});
 
 					it('should contain the error code', () => {
@@ -157,44 +161,44 @@ function fixtureApplicationHelp(): ObIServiceNavigationResponse<ObISeriviceNavig
 			title: {
 				application: {
 					applicationName: '',
-					applicationDescription: ''
+					applicationDescription: '',
 				},
 				tenant: {
 					tenantName: '',
-					tenantAbbreviation: ''
+					tenantAbbreviation: '',
 				},
-				optionalInformation: 'random description'
+				optionalInformation: 'random description',
 			},
 			help: {
 				links: [
 					{
 						title: 'link1',
 						link: 'https://example.com/1',
-						optionalInformation: ''
-					}
+						optionalInformation: '',
+					},
 				],
-				optionalInformation: 'help text'
+				optionalInformation: 'help text',
 			},
 			contact: {
 				links: [
 					{
 						title: '',
 						link: 'https://example.com/contact',
-						optionalInformation: 'form url text'
-					}
+						optionalInformation: 'form url text',
+					},
 				],
 				email: {
 					emailAddress: 'example@example.com',
-					optionalInformation: 'email text'
+					optionalInformation: 'email text',
 				},
 				phone: {
 					phoneNumber: '+411234567',
-					optionalInformation: 'tel text'
+					optionalInformation: 'tel text',
 				},
-				optionalInformation: 'contact text'
-			}
+				optionalInformation: 'contact text',
+			},
 		},
 		statusCode: 200,
-		success: true
+		success: true,
 	};
 }

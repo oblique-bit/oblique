@@ -24,7 +24,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [ObMockTranslatePipe, MatTooltipModule, ObTranslateParamsModule, MatIconModule, MatBadgeModule],
 			declarations: [ObServiceNavigationMessageComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 		}).compileComponents();
 	});
 
@@ -182,7 +182,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 		it.each([
 			{attribute: 'obButton', value: 'tertiary'},
-			{attribute: 'mat-icon-button', value: ''}
+			{attribute: 'mat-icon-button', value: ''},
 		])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
 			expect(await link.getAttribute(attribute)).toBe(value);
 		});

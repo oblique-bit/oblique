@@ -13,7 +13,7 @@ import {
 	QueryList,
 	TemplateRef,
 	ViewChildren,
-	ViewEncapsulation
+	ViewEncapsulation,
 } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
@@ -27,7 +27,7 @@ import {
 	ObEMasterLayoutEventValues,
 	ObIMasterLayoutEvent,
 	ObINavigationLink,
-	ObIServiceNavigationConfig
+	ObIServiceNavigationConfig,
 } from '../master-layout.model';
 import {ObEColor} from '../../style/colors.model';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
@@ -38,7 +38,7 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header-controls.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-header'}
+	host: {class: 'ob-master-layout-header'},
 })
 export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	home$: Observable<string>;

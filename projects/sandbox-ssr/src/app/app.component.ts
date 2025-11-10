@@ -10,7 +10,7 @@ import {filter} from 'rxjs';
 	selector: 'ssr-root',
 	imports: [RouterOutlet, RouterLink, MatButtonToggleGroup, MatButtonToggle, ReactiveFormsModule],
 	templateUrl: './app.component.html',
-	styleUrl: 'app.component.scss'
+	styleUrl: 'app.component.scss',
 })
 export class AppComponent {
 	readonly language = new FormControl('en');
@@ -19,6 +19,8 @@ export class AppComponent {
 	constructor() {
 		this.translateService.addLangs(['en', 'fr']);
 		this.translateService.use('en');
-		this.language.valueChanges.pipe(takeUntilDestroyed(), filter(Boolean)).subscribe(lang => this.translateService.use(lang));
+		this.language.valueChanges
+			.pipe(takeUntilDestroyed(), filter(Boolean))
+			.subscribe(lang => this.translateService.use(lang));
 	}
 }

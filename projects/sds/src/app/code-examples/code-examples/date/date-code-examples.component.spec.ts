@@ -14,7 +14,7 @@ describe(DateCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [DateCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(DateCodeExamplesComponent);

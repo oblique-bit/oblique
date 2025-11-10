@@ -5,7 +5,7 @@ import {ObColumnPanelDirective} from './column-panel.directive';
 	selector: '[obColumnToggle]',
 	exportAs: 'obColumnToggle',
 	host: {class: 'ob-column-toggle'},
-	standalone: false
+	standalone: false,
 })
 export class ObColumnToggleDirective {
 	constructor(private readonly parent: ObColumnPanelDirective) {}

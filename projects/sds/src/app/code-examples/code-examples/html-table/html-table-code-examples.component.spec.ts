@@ -10,7 +10,7 @@ describe(HtmlTableCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [HtmlTableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [HtmlTableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(HtmlTableCodeExamplesComponent);

@@ -10,7 +10,7 @@ import {EXTERNAL_LINK} from './external-link.model';
 
 @Component({
 	standalone: false,
-	template: `<a href="http://www.google.ch">External Link</a>`
+	template: `<a href="http://www.google.ch">External Link</a>`,
 })
 class TestComponent {}
 
@@ -28,16 +28,19 @@ describe(ObExternalLinkDirective.name, () => {
 			declarations: [TestComponent],
 			providers: [
 				{provide: WINDOW, useValue: window},
-				{provide: MatIconRegistry, useValue: {getNamedSvgIcon: jest.fn().mockReturnValue(of(document.createElement('svg')))}},
+				{
+					provide: MatIconRegistry,
+					useValue: {getNamedSvgIcon: jest.fn().mockReturnValue(of(document.createElement('svg')))},
+				},
 				{
 					provide: TranslateService,
 					useValue: {
 						onLangChange: lang,
 						instant: jest.fn().mockReturnValue('Opens in new tab'),
-						stream: () => subject.asObservable()
-					}
-				}
-			]
+						stream: () => subject.asObservable(),
+					},
+				},
+			],
 		});
 	});
 
@@ -262,7 +265,9 @@ describe(ObExternalLinkDirective.name, () => {
 	describe('With custom configuration', () => {
 		beforeEach(() => {
 			TestBed.overrideTemplate(TestComponent, '<a>Link</a>');
-			TestBed.overrideProvider(EXTERNAL_LINK, {useValue: {rel: 'custom rel', target: 'custom target', icon: 'left', isExternalLink: true}});
+			TestBed.overrideProvider(EXTERNAL_LINK, {
+				useValue: {rel: 'custom rel', target: 'custom target', icon: 'left', isExternalLink: true},
+			});
 			globalSetup();
 		});
 

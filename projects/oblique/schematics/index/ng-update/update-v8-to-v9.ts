@@ -14,7 +14,7 @@ import {
 	overwriteIndexFile,
 	packageJsonConfigPath,
 	readFile,
-	replaceInFile
+	replaceInFile,
 } from '../utils';
 
 export interface IUpdateV8Schema {}
@@ -34,7 +34,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 				this.useKebabCaseForMixins(),
 				this.renameOpened(),
 				this.addTelemetryInfo(),
-				this.addIconModule()
+				this.addIconModule(),
 			])(tree, context);
 		};
 	}
@@ -53,8 +53,10 @@ export class UpdateV8toV9 implements ObIMigrations {
 					'allSelected',
 					'offCanvas',
 					'topControl',
-					'noResults'
-				].forEach(key => replaceInFile(tree, filePath, new RegExp(`(?<=i18n\\.oblique[\\w.-]*)${key}`, 'g'), this.toKebabCase(key)));
+					'noResults',
+				].forEach(key =>
+					replaceInFile(tree, filePath, new RegExp(`(?<=i18n\\.oblique[\\w.-]*)${key}`, 'g'), this.toKebabCase(key))
+				);
 			};
 			return applyInTree(tree, apply, '*.{html,ts,json}');
 		});
@@ -106,11 +108,17 @@ export class UpdateV8toV9 implements ObIMigrations {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Rename some mixins to use kebab-case');
 			const apply = (filePath: string): void => {
-				['ob-gridTemplate', 'ob-gridSpan', 'ob-gridWidth', 'ob-flexBase', 'ob-flexGrow', 'ob-dropShadow', 'ob-innerBottomShadow'].forEach(
-					mixin => {
-						replaceInFile(tree, filePath, new RegExp(mixin, 'g'), this.toKebabCase(mixin));
-					}
-				);
+				[
+					'ob-gridTemplate',
+					'ob-gridSpan',
+					'ob-gridWidth',
+					'ob-flexBase',
+					'ob-flexGrow',
+					'ob-dropShadow',
+					'ob-innerBottomShadow',
+				].forEach(mixin => {
+					replaceInFile(tree, filePath, new RegExp(mixin, 'g'), this.toKebabCase(mixin));
+				});
 			};
 			return applyInTree(tree, apply, '*.scss');
 		});
@@ -162,7 +170,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 			.map(project => ({
 				project,
 				mainTsPath: this.getProjectPath(mainTsPathPerProject, project),
-				tsConfigPath: this.getProjectPath(tsConfigPathsPerProject, project)
+				tsConfigPath: this.getProjectPath(tsConfigPathsPerProject, project),
 			}))
 			.filter(paths => !!paths.mainTsPath && !!paths.tsConfigPath)
 			.forEach(paths => {
@@ -173,7 +181,10 @@ export class UpdateV8toV9 implements ObIMigrations {
 	}
 
 	private extractIsTelemetryDisabled(fileContent: string): boolean {
-		return /{\s*provide\s*:\s*TELEMETRY_DISABLE\s*,\s*useValue\s*:\s*(?<isDisabled>\w*)}/.exec(fileContent)?.groups?.isDisabled === 'true';
+		return (
+			/{\s*provide\s*:\s*TELEMETRY_DISABLE\s*,\s*useValue\s*:\s*(?<isDisabled>\w*)}/.exec(fileContent)?.groups
+				?.isDisabled === 'true'
+		);
 	}
 
 	private getProjectPath(target: PathPerProject[], project: string): string {
@@ -200,7 +211,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 							/(?<=platformBrowserDynamic\(\s*)\[?\s*(?<providers>{\s*provide.*})?\s*]?\s*(?=\))/s,
 							'[$<providers>,\n{provide: OB_PROJECT_INFO, useValue: {name: packageInfo.name, version: packageInfo.version, title: packageInfo.title}}\n]'
 						)
-						.replace(/\[,/, '[')
+						.replace(/\[,/, '['),
 				].join('\n')
 			);
 		}
@@ -218,7 +229,10 @@ export class UpdateV8toV9 implements ObIMigrations {
 		if (!/^\s*"title"/.test(content)) {
 			tree.overwrite(
 				packageJsonConfigPath,
-				content.replace(/^(?<tabs>\s*)"name"\s*:\s*"(?<name>.*)"/m, '$<tabs>"title": "$<name>",\n$<tabs>"name": "$<name>"')
+				content.replace(
+					/^(?<tabs>\s*)"name"\s*:\s*"(?<name>.*)"/m,
+					'$<tabs>"title": "$<name>",\n$<tabs>"name": "$<name>"'
+				)
 			);
 		}
 	}

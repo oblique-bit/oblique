@@ -32,29 +32,29 @@ bootstrapApplication(AppComponent, {
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		provideMomentDateAdapter({
 			parse: {
-				dateInput: 'DD.MM.YYYY'
+				dateInput: 'DD.MM.YYYY',
 			},
 			display: {
 				dateInput: 'DD.MM.YYYY',
 				monthYearLabel: 'MMM YYYY',
 				dateA11yLabel: 'LL',
-				monthYearA11yLabel: 'MMMM YYYY'
-			}
+				monthYearA11yLabel: 'MMMM YYYY',
+			},
 		}),
 		{
 			provide: HTTP_INTERCEPTORS,
 			useValue: uploadInterceptor,
-			multi: true
+			multi: true,
 		},
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: HttpApiInterceptor,
-			multi: true
+			multi: true,
 		},
 		provideRouter(appRoutes, withPreloading(PreloadAllModules)),
 		provideAnimations(),
 		provideHttpClient(withInterceptorsFromDi()),
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
-		provideObliqueTranslations()
-	]
+		provideObliqueTranslations(),
+	],
 }).catch((err: unknown) => console.error(err));

@@ -20,7 +20,7 @@ describe(NestedFormCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [CodeExampleComponent, CommonModule, IdPipe, NestedFormCodeExamplesComponent],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NestedFormCodeExamplesComponent);
@@ -45,7 +45,9 @@ describe(NestedFormCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there is 1 ${NestedFormExampleReactivePreviewGrandchildComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(NestedFormExampleReactivePreviewGrandchildComponent)).length).toBe(1);
+		expect(
+			fixture.debugElement.queryAll(By.directive(NestedFormExampleReactivePreviewGrandchildComponent)).length
+		).toBe(1);
 	});
 
 	test(`that there is 1 ${NestedFormExampleTemplateDrivenPreviewComponent.name}s`, () => {
@@ -53,11 +55,15 @@ describe(NestedFormCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there is 1 ${NestedFormExampleTemplateDrivenPreviewChildComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(NestedFormExampleTemplateDrivenPreviewChildComponent)).length).toBe(1);
+		expect(
+			fixture.debugElement.queryAll(By.directive(NestedFormExampleTemplateDrivenPreviewChildComponent)).length
+		).toBe(1);
 	});
 
 	test(`that there is 1 ${NestedFormExampleTemplateDrivenPreviewGrandchildComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(NestedFormExampleTemplateDrivenPreviewGrandchildComponent)).length).toBe(1);
+		expect(
+			fixture.debugElement.queryAll(By.directive(NestedFormExampleTemplateDrivenPreviewGrandchildComponent)).length
+		).toBe(1);
 	});
 
 	test(`that there are 4 ${ObNestedFormComponent.name}s`, () => {

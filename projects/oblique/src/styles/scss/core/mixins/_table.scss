@@ -25,9 +25,7 @@
 		tfoot > tr > th {
 			position: relative;
 			margin-left: variables.$ob-table-collapsed-header-width;
-			min-height: calc(
-				1.42857em + 2 * #{variables.$ob-spacing-sm} + 1px
-			); // line-height + padding + border
+			min-height: calc(1.42857em + 2 * #{variables.$ob-spacing-sm} + 1px); // line-height + padding + border
 			border: none;
 			border-top: 1px solid variables.$ob-secondary-200;
 

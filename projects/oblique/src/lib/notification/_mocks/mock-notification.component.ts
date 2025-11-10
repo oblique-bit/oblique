@@ -8,7 +8,7 @@ import {ObINotification} from '../notification.model';
 	selector: 'ob-notification',
 	standalone: false,
 	template: '',
-	exportAs: 'obNotification'
+	exportAs: 'obNotification',
 })
 export class ObMockNotificationComponent {
 	static REMOVE_DELAY = 350;

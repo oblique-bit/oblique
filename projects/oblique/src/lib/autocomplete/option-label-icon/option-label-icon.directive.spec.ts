@@ -11,7 +11,7 @@ import {provideObliqueTestingConfiguration} from '../../utilities';
 
 @Component({
 	standalone: false,
-	template: ''
+	template: '',
 })
 class OptionLabelTestComponent {
 	iconName: ObEIcon | '' = '';
@@ -32,8 +32,8 @@ describe(ObOptionLabelIconDirective.name, () => {
 			providers: [
 				provideObliqueTestingConfiguration(),
 				{provide: ObIconService, useClass: ObIconService},
-				{provide: MatIconRegistry, useClass: MatIconRegistry}
-			]
+				{provide: MatIconRegistry, useClass: MatIconRegistry},
+			],
 		}).compileComponents();
 	});
 
@@ -44,8 +44,8 @@ describe(ObOptionLabelIconDirective.name, () => {
 			expected: {
 				iconName: undefined,
 				iconPosition: 'end',
-				innerHtml: 'Text'
-			}
+				innerHtml: 'Text',
+			},
 		},
 		{
 			caseText: 'iconName is info and position is end',
@@ -54,8 +54,8 @@ describe(ObOptionLabelIconDirective.name, () => {
 				iconName: 'info',
 				iconPosition: 'end',
 				innerHtml:
-					'Text<span class="mat-icon" style="margin-left: auto;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M11.26535,7.65413h1.48047v13.3457h-1.48047V7.65413ZM12.76437,3.09456c-.18555-.19238-.43359-.28809-.74609-.28809s-.55957.0957-.74023.28809c-.18066.19141-.27148.42676-.27148.7041,0,.27832.09082.51074.27148.69922.18066.1875.42773.28125.74023.28125s.56055-.09375.74609-.28125c.18457-.18848.27734-.4209.27734-.69922,0-.27734-.09277-.5127-.27734-.7041Z"></path></svg></span>'
-			}
+					'Text<span class="mat-icon" style="margin-left: auto;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M11.26535,7.65413h1.48047v13.3457h-1.48047V7.65413ZM12.76437,3.09456c-.18555-.19238-.43359-.28809-.74609-.28809s-.55957.0957-.74023.28809c-.18066.19141-.27148.42676-.27148.7041,0,.27832.09082.51074.27148.69922.18066.1875.42773.28125.74023.28125s.56055-.09375.74609-.28125c.18457-.18848.27734-.4209.27734-.69922,0-.27734-.09277-.5127-.27734-.7041Z"></path></svg></span>',
+			},
 		},
 		{
 			caseText: 'iconName is info and position is start',
@@ -64,16 +64,18 @@ describe(ObOptionLabelIconDirective.name, () => {
 				iconName: 'info',
 				iconPosition: 'start',
 				innerHtml:
-					'<span class="mat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M11.26535,7.65413h1.48047v13.3457h-1.48047V7.65413ZM12.76437,3.09456c-.18555-.19238-.43359-.28809-.74609-.28809s-.55957.0957-.74023.28809c-.18066.19141-.27148.42676-.27148.7041,0,.27832.09082.51074.27148.69922.18066.1875.42773.28125.74023.28125s.56055-.09375.74609-.28125c.18457-.18848.27734-.4209.27734-.69922,0-.27734-.09277-.5127-.27734-.7041Z"></path></svg></span>Text'
-			}
-		}
+					'<span class="mat-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M11.26535,7.65413h1.48047v13.3457h-1.48047V7.65413ZM12.76437,3.09456c-.18555-.19238-.43359-.28809-.74609-.28809s-.55957.0957-.74023.28809c-.18066.19141-.27148.42676-.27148.7041,0,.27832.09082.51074.27148.69922.18066.1875.42773.28125.74023.28125s.56055-.09375.74609-.28125c.18457-.18848.27734-.4209.27734-.69922,0-.27734-.09277-.5127-.27734-.7041Z"></path></svg></span>Text',
+			},
+		},
 	])('with $caseText', ({template, expected}) => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(OptionLabelTestComponent, {
-				set: {template}
+				set: {template},
 			}).createComponent(OptionLabelTestComponent);
 			component = fixture.componentInstance;
-			directive = fixture.debugElement.query(By.directive(ObOptionLabelIconDirective)).injector.get(ObOptionLabelIconDirective);
+			directive = fixture.debugElement
+				.query(By.directive(ObOptionLabelIconDirective))
+				.injector.get(ObOptionLabelIconDirective);
 			directiveNode = fixture.debugElement.query(By.directive(ObOptionLabelIconDirective));
 			fixture.detectChanges();
 		});
@@ -108,10 +110,12 @@ describe(ObOptionLabelIconDirective.name, () => {
 	describe('remove icon', () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(OptionLabelTestComponent, {
-				set: {template: '<div  obOptionLabelIcon iconName="{{iconName}}" iconPosition="{{position}}">Text</div>'}
+				set: {template: '<div  obOptionLabelIcon iconName="{{iconName}}" iconPosition="{{position}}">Text</div>'},
 			}).createComponent(OptionLabelTestComponent);
 			component = fixture.componentInstance;
-			directive = fixture.debugElement.query(By.directive(ObOptionLabelIconDirective)).injector.get(ObOptionLabelIconDirective);
+			directive = fixture.debugElement
+				.query(By.directive(ObOptionLabelIconDirective))
+				.injector.get(ObOptionLabelIconDirective);
 			directiveNode = fixture.debugElement.query(By.directive(ObOptionLabelIconDirective));
 			fixture.detectChanges();
 		});

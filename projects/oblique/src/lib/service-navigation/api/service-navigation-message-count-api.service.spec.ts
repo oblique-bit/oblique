@@ -11,7 +11,7 @@ describe('ObServiceNavigationCountApiService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule],
-			providers: [ObServiceNavigationCountApiService]
+			providers: [ObServiceNavigationCountApiService],
 		});
 		httpClient = TestBed.inject(HttpClient);
 		jest.spyOn(httpClient, 'get').mockReturnValue(of({data: 42}));

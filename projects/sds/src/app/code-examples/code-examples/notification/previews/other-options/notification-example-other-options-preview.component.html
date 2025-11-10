@@ -7,8 +7,12 @@
 <div class="container">
 	<h3>Send with placement</h3>
 	<div class="buttons">
-		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.BOTTOM_LEFT)">bottom left</button>
-		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.BOTTOM_RIGHT)">bottom right</button>
+		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.BOTTOM_LEFT)">
+			bottom left
+		</button>
+		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.BOTTOM_RIGHT)">
+			bottom right
+		</button>
 		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.TOP_LEFT)">top left</button>
 		<button type="button" mat-button obButton="primary" (click)="sendPlacement(placements.TOP_RIGHT)">top right</button>
 	</div>
@@ -25,7 +29,12 @@
 <div class="container">
 	<h3>Send message with parameters</h3>
 	<div class="buttons">
-		<button type="button" mat-button obButton="primary" (click)="sendMessageParams({ message: 'foo', parameters: 'bar' })">
+		<button
+			type="button"
+			mat-button
+			obButton="primary"
+			(click)="sendMessageParams({ message: 'foo', parameters: 'bar' })"
+		>
 			with params "foo" and "bar"
 		</button>
 	</div>

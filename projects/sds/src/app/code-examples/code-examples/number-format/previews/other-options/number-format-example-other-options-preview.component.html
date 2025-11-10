@@ -1,7 +1,14 @@
 <div>
 	<p>Format with 4 decimals</p>
 	<mat-form-field>
-		<input type="number" matInput obNumberFormat name="example4decimals" [decimals]="4" [(ngModel)]="example4decimals" />
+		<input
+			type="number"
+			matInput
+			obNumberFormat
+			name="example4decimals"
+			[decimals]="4"
+			[(ngModel)]="example4decimals"
+		/>
 	</mat-form-field>
 	<p>Model value : {{ example4decimals }}</p>
 </div>

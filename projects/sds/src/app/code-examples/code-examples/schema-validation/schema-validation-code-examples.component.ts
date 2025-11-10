@@ -10,7 +10,7 @@ import {SchemaValidationExampleTemplateDrivenFormPreviewComponent} from './previ
 	selector: 'app-code-example-schema-validation',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SchemaValidationCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'schema-validation-examples';
@@ -20,9 +20,17 @@ export class SchemaValidationCodeExamplesComponent extends CodeExamples {
 			idParts: ['reactive', 'form'],
 			title: 'Reactive Form',
 			snippets: [
-				this.getSnippet('schema-validation', 'reactive-form/schema-validation-example-reactive-form-preview.component.html', 'HTML'),
-				this.getSnippet('schema-validation', 'reactive-form/schema-validation-example-reactive-form-preview.component.ts', 'TS')
-			]
+				this.getSnippet(
+					'schema-validation',
+					'reactive-form/schema-validation-example-reactive-form-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'schema-validation',
+					'reactive-form/schema-validation-example-reactive-form-preview.component.ts',
+					'TS'
+				),
+			],
 		},
 		{
 			component: SchemaValidationExampleTemplateDrivenFormPreviewComponent,
@@ -38,8 +46,8 @@ export class SchemaValidationCodeExamplesComponent extends CodeExamples {
 					'schema-validation',
 					'template-driven-form/schema-validation-example-template-driven-form-preview.component.ts',
 					'TS'
-				)
-			]
-		}
+				),
+			],
+		},
 	];
 }

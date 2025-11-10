@@ -8,7 +8,7 @@ import {
 	ObNotificationModule,
 	ObNotificationService,
 	ObPopoverModule,
-	WINDOW
+	WINDOW,
 } from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -52,10 +52,10 @@ import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 		MatInputModule,
 		ObInputClearModule,
 		ObAlertModule,
-		MatDivider
+		MatDivider,
 	],
 	templateUrl: './icons-example-icons-gallery-preview.component.html',
-	styleUrl: './icons-example-icons-gallery-preview.component.scss'
+	styleUrl: './icons-example-icons-gallery-preview.component.scss',
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');
@@ -85,15 +85,17 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		navigator.clipboard.writeText(text).then(
 			() =>
 				this.notificationService.success({
-					message: this.translateService.instant('i18n.icons.copy.notification.success.message', {iconName: text}) as string,
+					message: this.translateService.instant('i18n.icons.copy.notification.success.message', {
+						iconName: text,
+					}) as string,
 					title: this.translateService.instant('i18n.icons.copy.notification.success.title', {element}) as string,
-					timeout: timeoutDuration
+					timeout: timeoutDuration,
 				}),
 			() =>
 				this.notificationService.warning({
 					message: this.translateService.instant('i18n.icons.notification.error.message', {iconName: text}) as string,
 					title: this.translateService.instant('i18n.icons.notification.error.title', {element}) as string,
-					timeout: timeoutDuration
+					timeout: timeoutDuration,
 				})
 		);
 	}
@@ -118,7 +120,7 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		const dialogWidth = this.window.innerWidth > 650 ? '450px' : null;
 		this.dialog.open(IconDialogComponent, {
 			data: this.selectedIconMetaData,
-			width: dialogWidth
+			width: dialogWidth,
 		});
 	}
 
@@ -172,7 +174,10 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		const searchTokens = this.getTokens(search);
 		const textTokens = this.getTokens(text);
 
-		return textTokens.join(' ').includes(searchTokens.join(' ')) || searchTokens.some(searchToken => textTokens.includes(searchToken));
+		return (
+			textTokens.join(' ').includes(searchTokens.join(' ')) ||
+			searchTokens.some(searchToken => textTokens.includes(searchToken))
+		);
 	}
 
 	private getTokens(text: string): string[] {

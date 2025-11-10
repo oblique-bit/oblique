@@ -52,11 +52,11 @@ const OBLIQUE_MODULES = [
 	ObTranslateParamsModule,
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule,
-	ObExternalLinkModule
+	ObExternalLinkModule,
 ];
 
 @NgModule({
 	imports: OBLIQUE_MODULES,
-	exports: OBLIQUE_MODULES
+	exports: OBLIQUE_MODULES,
 })
 export class ObliqueModule {}

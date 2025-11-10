@@ -11,7 +11,7 @@ import {ExpansionPanelExampleOtherOptionsPreviewComponent} from './previews/othe
 	selector: 'app-code-example-expansion-panel',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExpansionPanelCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'expansion-panel-examples';
@@ -22,8 +22,8 @@ export class ExpansionPanelCodeExamplesComponent extends CodeExamples {
 			title: 'Basic',
 			snippets: [
 				this.getSnippet('expansion-panel', 'basic/expansion-panel-example-basic-preview.component.html', 'HTML'),
-				this.getSnippet('expansion-panel', 'basic/expansion-panel-example-basic-preview.component.ts', 'TS')
-			]
+				this.getSnippet('expansion-panel', 'basic/expansion-panel-example-basic-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: ExpansionPanelExampleTogglePreviewComponent,
@@ -31,17 +31,25 @@ export class ExpansionPanelCodeExamplesComponent extends CodeExamples {
 			title: 'Toggle Position',
 			snippets: [
 				this.getSnippet('expansion-panel', 'toggle/expansion-panel-example-toggle-preview.component.html', 'HTML'),
-				this.getSnippet('expansion-panel', 'toggle/expansion-panel-example-toggle-preview.component.ts', 'TS')
-			]
+				this.getSnippet('expansion-panel', 'toggle/expansion-panel-example-toggle-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: ExpansionPanelExampleOtherOptionsPreviewComponent,
 			idParts: ['other', 'options'],
 			title: 'Other Options',
 			snippets: [
-				this.getSnippet('expansion-panel', 'other-options/expansion-panel-example-other-options-preview.component.html', 'HTML'),
-				this.getSnippet('expansion-panel', 'other-options/expansion-panel-example-other-options-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet(
+					'expansion-panel',
+					'other-options/expansion-panel-example-other-options-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'expansion-panel',
+					'other-options/expansion-panel-example-other-options-preview.component.ts',
+					'TS'
+				),
+			],
+		},
 	];
 }

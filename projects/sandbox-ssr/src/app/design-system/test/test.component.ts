@@ -5,6 +5,6 @@ import {DemoComponent} from '@oblique/design-system';
 @Component({
 	selector: 'ssr-test',
 	imports: [DemoComponent, TranslateModule],
-	templateUrl: './test.component.html'
+	templateUrl: './test.component.html',
 })
 export class TestComponent {}

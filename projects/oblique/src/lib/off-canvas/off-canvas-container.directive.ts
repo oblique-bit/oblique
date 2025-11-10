@@ -7,7 +7,7 @@ import {Subject} from 'rxjs';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '.ob-off-canvas, ob-master-layout',
-	standalone: true
+	standalone: true,
 })
 export class ObOffCanvasContainerDirective implements OnDestroy {
 	@HostBinding('class.ob-off-canvas-in') open = false;

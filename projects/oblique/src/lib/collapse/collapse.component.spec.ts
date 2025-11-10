@@ -11,7 +11,7 @@ import {OBLIQUE_COLLAPSE_ACTIVE, OBLIQUE_COLLAPSE_ICON_POSITION, ObCollapseCompo
 		<ob-collapse />
 		<ob-collapse id="my-custom-id-for-test" />
 		<ob-collapse />
-	`
+	`,
 })
 class TestCollapseComponent {}
 
@@ -30,8 +30,8 @@ describe(ObCollapseComponent.name, () => {
 					{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'},
 					{provide: OBLIQUE_COLLAPSE_ICON_POSITION, useValue: 'right'},
 					{provide: WINDOW, useValue: window},
-					ObGlobalEventsService
-				]
+					ObGlobalEventsService,
+				],
 			}).compileComponents();
 		});
 
@@ -77,7 +77,11 @@ describe(ObCollapseComponent.name, () => {
 			await TestBed.configureTestingModule({
 				imports: [ObCollapseComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false}, {provide: WINDOW, useValue: window}, ObGlobalEventsService]
+				providers: [
+					{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false},
+					{provide: WINDOW, useValue: window},
+					ObGlobalEventsService,
+				],
 			}).compileComponents();
 		});
 
@@ -110,7 +114,7 @@ describe(ObCollapseComponent.name, () => {
 			await TestBed.configureTestingModule({
 				imports: [ObCollapseComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService]
+				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 			}).compileComponents();
 		});
 
@@ -238,7 +242,7 @@ describe(ObCollapseComponent.name, () => {
 				declarations: [TestCollapseComponent],
 				imports: [ObCollapseComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService]
+				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 			}).compileComponents();
 		});
 
@@ -285,7 +289,7 @@ describe(ObCollapseComponent.name, () => {
 				declarations: [TestCollapseComponent],
 				imports: [ObCollapseComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
-				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService]
+				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 			})
 				.overrideTemplate(
 					TestCollapseComponent,
@@ -294,7 +298,9 @@ describe(ObCollapseComponent.name, () => {
 				.compileComponents();
 
 			fixtureTestComponent = TestBed.createComponent(TestCollapseComponent);
-			obCollapseComponent = fixtureTestComponent.debugElement.query(By.directive(ObCollapseComponent)).componentInstance;
+			obCollapseComponent = fixtureTestComponent.debugElement.query(
+				By.directive(ObCollapseComponent)
+			).componentInstance;
 			element = fixtureTestComponent.debugElement.query(By.css('[obCollapseMain]')).nativeElement;
 			Object.defineProperty(element, 'scrollHeight', {value: 42, configurable: true}); // necessary because jsdom ignores scrollHeight
 			fixtureTestComponent.detectChanges();

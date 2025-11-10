@@ -7,7 +7,7 @@ import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-
 	templateUrl: './service-navigation-info.component.html',
 	styleUrls: ['./service-navigation-info.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-service-navigation-info'}
+	host: {class: 'ob-service-navigation-info'},
 })
 export class ObServiceNavigationInfoComponent {
 	@Input() helpText: string;

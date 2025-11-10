@@ -10,8 +10,16 @@ import type {PeriodicElement} from './mock-backend.service';
 
 @Component({
 	selector: 'app-material-table-editable-dialog',
-	imports: [MatDialogModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule, MatIconModule, ObButtonModule],
-	templateUrl: './material-table-editable-dialog.component.html'
+	imports: [
+		MatDialogModule,
+		MatInputModule,
+		MatFormFieldModule,
+		ReactiveFormsModule,
+		MatButtonModule,
+		MatIconModule,
+		ObButtonModule,
+	],
+	templateUrl: './material-table-editable-dialog.component.html',
 })
 export class AppMaterialTableExampleEditableDialogComponent {
 	editForm: UntypedFormGroup;
@@ -43,7 +51,7 @@ export class AppMaterialTableExampleEditableDialogComponent {
 			name: [element.name, Validators.required],
 			position: [element.position, Validators.required],
 			weight: [element.weight, Validators.required],
-			symbol: [element.symbol, Validators.required]
+			symbol: [element.symbol, Validators.required],
 		});
 	}
 }

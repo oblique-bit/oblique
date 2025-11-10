@@ -16,7 +16,7 @@ describe('ObProgressComponent', () => {
 		new File(['sample'], 'sample.txt', {type: 'plain/text'}),
 		new File(['test1'], 'test1.txt', {type: 'plain/text', endings: 'native'}),
 		new File(['sample1'], 'sample1.txt', {type: 'plain/text'}),
-		new File(['sample2'], 'sample2.jpg', {type: 'image/jpg'})
+		new File(['sample2'], 'sample2.jpg', {type: 'image/jpg'}),
 	];
 	let component: ObProgressComponent;
 	let fixture: ComponentFixture<ObProgressComponent>;
@@ -25,8 +25,11 @@ describe('ObProgressComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObProgressComponent, ObMockTranslatePipe],
-			providers: [provideObliqueTestingConfiguration(), {provide: ObFileUploadService, useClass: ObMockFileUploadService}],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+			providers: [
+				provideObliqueTestingConfiguration(),
+				{provide: ObFileUploadService, useClass: ObMockFileUploadService},
+			],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 		}).compileComponents();
 		uploadService = TestBed.inject(ObFileUploadService);
 	});
@@ -344,7 +347,7 @@ describe('ObProgressComponent', () => {
 						progress: 0,
 						hasError: false,
 						binary: component.uploadedFiles.files[0].binary,
-						subscription: undefined
+						subscription: undefined,
 					});
 				});
 
@@ -358,7 +361,9 @@ describe('ObProgressComponent', () => {
 
 		describe('progress', () => {
 			beforeEach(fakeAsync(() => {
-				jest.spyOn(uploadService, 'upload').mockReturnValue(of({type: HttpEventType.UploadProgress, loaded: 1, total: 2} as any));
+				jest
+					.spyOn(uploadService, 'upload')
+					.mockReturnValue(of({type: HttpEventType.UploadProgress, loaded: 1, total: 2} as any));
 				component.files = files;
 				tick(1);
 			}));
@@ -527,7 +532,10 @@ describe('ObProgressComponent', () => {
 					});
 
 					it('should not emit a cancel event', () => {
-						expect(component.uploadEvent.emit).not.toHaveBeenCalledWith({type: ObEUploadEventType.CANCELED, files: file.binary});
+						expect(component.uploadEvent.emit).not.toHaveBeenCalledWith({
+							type: ObEUploadEventType.CANCELED,
+							files: file.binary,
+						});
 					});
 				});
 			});
@@ -556,7 +564,9 @@ describe('ObProgressComponent', () => {
 
 		describe('progress', () => {
 			beforeEach(fakeAsync(() => {
-				jest.spyOn(uploadService, 'multiUpload').mockReturnValue(of({type: HttpEventType.UploadProgress, loaded: 1, total: 2} as any));
+				jest
+					.spyOn(uploadService, 'multiUpload')
+					.mockReturnValue(of({type: HttpEventType.UploadProgress, loaded: 1, total: 2} as any));
 				component.files = files;
 				tick(1);
 			}));

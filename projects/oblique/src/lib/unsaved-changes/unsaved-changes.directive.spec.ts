@@ -9,13 +9,13 @@ import {By} from '@angular/platform-browser';
 
 @Component({
 	standalone: false,
-	template: ` <form obUnsavedChanges></form>`
+	template: ` <form obUnsavedChanges></form>`,
 })
 class FaultyTestComponent {}
 
 @Component({
 	standalone: false,
-	template: ` <form id="test" [isActive]="true" obUnsavedChanges></form>`
+	template: ` <form id="test" [isActive]="true" obUnsavedChanges></form>`,
 })
 class TestComponent {}
 
@@ -26,7 +26,9 @@ describe(ObUnsavedChangesDirective.name, () => {
 	const initFixture = (component: Type<FaultyTestComponent | TestComponent>): void => {
 		fixture = TestBed.createComponent(component);
 		fixture.detectChanges();
-		directive = fixture.debugElement.query(By.directive(ObUnsavedChangesDirective)).injector.get(ObUnsavedChangesDirective);
+		directive = fixture.debugElement
+			.query(By.directive(ObUnsavedChangesDirective))
+			.injector.get(ObUnsavedChangesDirective);
 	};
 
 	beforeEach(async () => {
@@ -35,13 +37,13 @@ describe(ObUnsavedChangesDirective.name, () => {
 			watch: jest.fn(),
 			unWatch: jest.fn(),
 			canDeactivate: jest.fn(),
-			ignoreChanges: jest.fn()
+			ignoreChanges: jest.fn(),
 		};
 
 		await TestBed.configureTestingModule({
 			declarations: [FaultyTestComponent, TestComponent],
 			providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
-			imports: [ObUnsavedChangesDirective, CommonModule]
+			imports: [ObUnsavedChangesDirective, CommonModule],
 		}).compileComponents();
 	});
 

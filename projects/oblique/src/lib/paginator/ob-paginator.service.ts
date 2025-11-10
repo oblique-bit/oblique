@@ -29,7 +29,7 @@ export class ObPaginatorService extends MatPaginatorIntl {
 				'i18n.pagination.of-label',
 				'i18n.pagination.page-label',
 				'i18n.pagination.first-page',
-				'i18n.pagination.last-page'
+				'i18n.pagination.last-page',
 			])
 			.subscribe(translation => {
 				this.itemsPerPageLabel = translation['i18n.pagination.items-per-page'];
