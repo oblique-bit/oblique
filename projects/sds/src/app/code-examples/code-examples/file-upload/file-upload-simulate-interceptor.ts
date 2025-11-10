@@ -1,223 +1,99 @@
-import {Injectable, type OnDestroy} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
 	type HttpEvent,
 	HttpEventType,
 	type HttpHandler,
 	type HttpInterceptor,
+	type HttpProgressEvent,
 	type HttpRequest,
 	HttpResponse,
 } from '@angular/common/http';
 import type {ObIFileDescription} from '@oblique/oblique';
-import {map, take, takeUntil} from 'rxjs/operators';
-import {BehaviorSubject, type Observable, Subject, combineLatest, interval, of} from 'rxjs';
+import {map, takeWhile} from 'rxjs/operators';
+import {type Observable, concatWith, interval, of, tap} from 'rxjs';
 
-const mockUploadURL = 'mockUploadURL';
-const mockGetUploadedFilesURL = 'mockGetUploadedFilesURL';
-const mockDeleteURL = 'mockDeleteURL';
-const mockCustomDeleteURL = 'mockCustomDeleteURL';
+export const mockUploadURL = 'mockUploadURL';
+export const mockGetUploadedFilesURL = 'mockGetUploadedFilesURL';
+export const mockDeleteURL = 'mockDeleteURL';
+export const mockCustomDeleteURL = 'mockCustomDeleteURL';
+
+type UploadEvent = HttpProgressEvent | HttpResponse<unknown>;
 
 @Injectable()
-export class UploadInterceptor implements HttpInterceptor, OnDestroy {
-	private readonly unsubscribe = new Subject<void>();
-	private readonly uploadedFiles: BehaviorSubject<Record<string, ObIFileDescription[]>> = new BehaviorSubject<
-		Record<string, ObIFileDescription[]>
-	>({} as Record<string, ObIFileDescription[]>);
-	private readonly uploadingFiles: BehaviorSubject<Record<string, ObIFileDescription[]>> = new BehaviorSubject<
-		Record<string, ObIFileDescription[]>
-	>({} as Record<string, ObIFileDescription[]>);
+export class UploadInterceptor implements HttpInterceptor {
+	private readonly uploadedFiles: Record<string, ObIFileDescription[]> = {};
 
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
-	}
-
-	intercept(req: HttpRequest<Request>, next: HttpHandler): Observable<HttpEvent<any>> {
-		const urlParts = req.url.split('/');
-		const baseUrl = urlParts[0];
-		const idx = urlParts[1];
-		this.initUploadedFilesIdx(idx);
-		this.initUploadingFilesIdx(idx);
+	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+		const [baseUrl, id, files] = request.url.split('/');
 
 		switch (baseUrl) {
 			case mockUploadURL:
-				return this.mockUpload(req.body.has('files[]') ? req.body.getAll('files[]') : req.body.getAll('file'), idx);
+				return this.mockUpload(id, request.body);
 			case mockGetUploadedFilesURL:
-				return this.mockGetUploadedFiles(idx);
+				return this.mockGetUploadedFiles(id);
 			case mockDeleteURL:
-				return this.mockDelete(JSON.parse(atob(urlParts[2])) as string[], idx);
+				return this.mockDelete(id, JSON.parse(atob(files)) as string[]);
 			case mockCustomDeleteURL:
-				return this.mockDelete(urlParts[2].split(':'), idx);
+				return this.mockDelete(id, files.split(':'));
 			default:
-				return next.handle(req);
+				return next.handle(request);
 		}
 	}
 
-	mockCancel(files: File[], idx: number): void {
-		const index = (idx + 1).toString();
-		this.getUploadingFiles(index)
-			.pipe(take(1), takeUntil(this.unsubscribe))
-			.subscribe(uploadingFiles => {
-				this.updateUploadingFiles(
-					uploadingFiles.filter(
-						uploadingFile => !files.map(canceledFile => canceledFile.name).includes(uploadingFile.name)
-					),
-					index
-				);
-			});
+	private mockUpload(id: string, body: unknown): Observable<UploadEvent> {
+		if (!body || !(body instanceof FormData)) {
+			return of(new HttpResponse({status: 200}));
+		}
+		const files = body
+			.getAll(body.has('files[]') ? 'files[]' : 'file')
+			.map(file => (file instanceof File ? {name: file.name, size: file.size} : {name: file, size: 0}));
+		const totalSize = files.reduce((size, file) => size + file.size, 0);
+		const progressEvents = this.buildProgressEvents(totalSize, 5);
+		const responseEvent = of(new HttpResponse()).pipe(tap(() => this.updateUploadedFiles(files, id)));
+
+		return progressEvents.pipe(concatWith(responseEvent));
 	}
 
-	private mockDelete(files: string[], idx: string): Observable<HttpEvent<unknown>> {
-		this.getUploadedFiles(idx)
-			.pipe(take(1), takeUntil(this.unsubscribe))
-			.subscribe(uploadedFiles => {
-				this.updateUploadedFiles(
-					uploadedFiles.filter(uploadedFile => !files.includes(uploadedFile.name)),
-					idx
-				);
-			});
+	private mockGetUploadedFiles(id: string): Observable<HttpResponse<ObIFileDescription[]>> {
+		return of(
+			new HttpResponse({
+				status: 200,
+				body: this.uploadedFiles[id],
+			})
+		);
+	}
+
+	private mockDelete(id: string, files: string[]): Observable<HttpEvent<unknown>> {
+		this.uploadedFiles[id] = this.uploadedFiles[id].filter(file => files.includes(file.name));
 
 		return of(new HttpResponse({status: 200}));
 	}
 
-	private mockGetUploadedFiles(idx: string): Observable<HttpEvent<ObIFileDescription[]>> {
-		return this.getUploadedFiles(idx).pipe(
-			take(1),
-			map(
-				uploadedFiles =>
-					new HttpResponse({
-						status: 200,
-						body: uploadedFiles,
-					})
-			)
+	private buildProgressEvents(size: number, chunksNumber: number): Observable<HttpProgressEvent> {
+		const chunkSize = Math.floor(size / chunksNumber);
+
+		return interval(400).pipe(
+			map(index => this.buildUploadProgressEvent(Math.min(chunkSize * (index + 1), size), size)),
+			takeWhile(event => event.loaded < size, true)
 		);
 	}
 
-	// eslint-disable-next-line max-lines-per-function
-	private mockUpload(
-		files: File[],
-		idx: string
-	): Observable<HttpEvent<HttpEventType.Response | HttpEventType.UploadProgress>> {
-		const obFileDescriptions = files.map(file => ({name: file.name}));
-		this.getUploadingFiles(idx)
-			.pipe(take(1), takeUntil(this.unsubscribe))
-			.subscribe(uploadingFiles => {
-				this.updateUploadingFiles([...uploadingFiles, ...obFileDescriptions], idx);
-			});
-		const totalSize = files.reduce((size, file) => size + file.size, 0);
-		const events = this.buildHttpEvents(totalSize);
-
-		const allUploadEvents$ = interval(Math.ceil(totalSize / 100)).pipe(
-			take(events.length),
-			takeUntil(this.unsubscribe),
-			map(eventIdx => events[eventIdx])
-		);
-
-		allUploadEvents$.pipe(takeUntil(this.unsubscribe)).subscribe({
-			complete: () => {
-				combineLatest([this.getUploadedFiles(idx), this.getUploadingFiles(idx)])
-					.pipe(take(1), takeUntil(this.unsubscribe))
-					.subscribe(([uploadedFiles, uploadingFiles]) => {
-						this.updateUploadedFiles(
-							[
-								...uploadedFiles,
-								...uploadingFiles.filter(file =>
-									obFileDescriptions.map(obFileDescription => obFileDescription.name).includes(file.name)
-								),
-							].filter((file, index, arr) => arr.findIndex(item => item.name === file.name) === index),
-							idx
-						);
-					});
-			},
-		});
-
-		return allUploadEvents$;
+	private buildUploadProgressEvent(loaded: number, total: number): HttpProgressEvent {
+		return {
+			type: HttpEventType.UploadProgress,
+			loaded,
+			total,
+		};
 	}
 
-	private buildHttpEvents(totalSize: number): HttpEvent<HttpEventType.Response | HttpEventType.UploadProgress>[] {
-		const chunksNumber = 5;
-		const chunkSize = Math.ceil(totalSize / chunksNumber);
-		return [...Array(chunksNumber).keys()]
-			.reverse()
-			.reduce(
-				(tot, current) => [this.buildUploadProgressEvent(chunkSize * (current + 1), totalSize), ...tot],
-				[{type: HttpEventType.Response} as HttpEvent<HttpEventType.Response | HttpEventType.UploadProgress>]
-			);
-	}
-
-	private buildUploadProgressEvent(loaded: number, total: number): HttpEvent<HttpEventType.UploadProgress> {
-		return {type: HttpEventType.UploadProgress, loaded, total};
-	}
-
-	private getUploadingFiles(idx: string): Observable<ObIFileDescription[]> {
-		return this.uploadingFiles.pipe(
-			take(1),
-			takeUntil(this.unsubscribe),
-			map(uploadingFiles => uploadingFiles[idx] ?? [])
-		);
-	}
-
-	private getUploadedFiles(idx: string): Observable<ObIFileDescription[]> {
-		return this.uploadedFiles.pipe(
-			take(1),
-			takeUntil(this.unsubscribe),
-			map(uploadedFiles => uploadedFiles[idx] ?? [])
-		);
-	}
-
-	private initUploadedFilesIdx(idx: string): void {
-		this.getUploadedFiles(idx)
-			.pipe(take(1), takeUntil(this.unsubscribe))
-			.subscribe(uploadedFiles => {
-				if (!uploadedFiles || uploadedFiles.length < 1) {
-					this.updateUploadedFiles([], idx);
-				}
-			});
-	}
-
-	private initUploadingFilesIdx(idx: string): void {
-		this.getUploadingFiles(idx)
-			.pipe(take(1), takeUntil(this.unsubscribe))
-			.subscribe(uploadingFiles => {
-				if (!uploadingFiles || uploadingFiles.length < 1) {
-					this.updateUploadingFiles([], idx);
-				}
-			});
-	}
-
-	private updateUploadedFiles(files: ObIFileDescription[], idx: string): void {
-		this.uploadedFiles.pipe(take(1), takeUntil(this.unsubscribe)).subscribe(uploadedFiles => {
-			uploadedFiles[idx] = files;
-			this.uploadedFiles.next(uploadedFiles);
+	private updateUploadedFiles(files: ObIFileDescription[], id: string): void {
+		files.forEach(file => {
+			if (!this.uploadedFiles[id]) {
+				this.uploadedFiles[id] = [];
+			}
+			if (!this.uploadedFiles[id].find(uploadedFile => uploadedFile.name === file.name)) {
+				this.uploadedFiles[id].push({name: file.name});
+			}
 		});
 	}
-
-	private updateUploadingFiles(files: ObIFileDescription[], idx: string): void {
-		this.uploadingFiles.pipe(take(1), takeUntil(this.unsubscribe)).subscribe(uploadingFiles => {
-			uploadingFiles[idx] = files;
-			this.uploadingFiles.next(uploadingFiles);
-		});
-	}
-}
-
-export const mockUrls: UploadGetUploadedFilesDelete[] = [...Array(4).keys()].map(idx => {
-	const index = idx + 1;
-	return {
-		upload: `${mockUploadURL}/${index}`,
-		getUploadedFiles: `${mockGetUploadedFilesURL}/${index}`,
-		delete: `${mockDeleteURL}/${index}`,
-		customDelete: `${mockCustomDeleteURL}/${index}`,
-	};
-});
-
-interface UploadGetUploadedFilesDelete {
-	upload: string;
-	getUploadedFiles: string;
-	delete: string;
-	customDelete: string;
-}
-
-interface Request {
-	url: string;
-	has: (str: string) => boolean;
-	getAll: (str: string) => File[];
 }
