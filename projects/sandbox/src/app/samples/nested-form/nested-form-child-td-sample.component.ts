@@ -6,7 +6,7 @@ import {NgForm} from '@angular/forms';
 	standalone: false,
 	templateUrl: './nested-form-child-td-sample.component.html',
 	styleUrl: './mandatory.scss',
-	exportAs: 'childTD'
+	exportAs: 'childTD',
 })
 export class NestedFormChildTDSampleComponent {
 	readonly ngForm = viewChild(NgForm);

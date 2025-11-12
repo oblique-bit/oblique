@@ -12,7 +12,7 @@ import {HtmlTableExampleCollapsePreviewComponent} from './previews/collapse/html
 	selector: 'app-code-example-html-table',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HtmlTableCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'html-table-examples';
@@ -24,8 +24,8 @@ export class HtmlTableCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('html-table', 'default/html-table-example-default-preview.component.html', 'HTML'),
 				this.getSnippet('html-table', 'default/html-table-example-default-preview.component.ts', 'TS'),
-				this.getSnippet('html-table', 'default/html-table-example-default-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('html-table', 'default/html-table-example-default-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: HtmlTableExampleStylesPreviewComponent,
@@ -34,8 +34,8 @@ export class HtmlTableCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.html', 'HTML'),
 				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.ts', 'TS'),
-				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('html-table', 'styles/html-table-example-styles-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: HtmlTableExampleSizesPreviewComponent,
@@ -44,8 +44,8 @@ export class HtmlTableCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('html-table', 'sizes/html-table-example-sizes-preview.component.html', 'HTML'),
 				this.getSnippet('html-table', 'sizes/html-table-example-sizes-preview.component.ts', 'TS'),
-				this.getSnippet('html-table', 'sizes/html-table-example-sizes-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('html-table', 'sizes/html-table-example-sizes-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: HtmlTableExampleCollapsePreviewComponent,
@@ -54,8 +54,8 @@ export class HtmlTableCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('html-table', 'collapse/html-table-example-collapse-preview.component.html', 'HTML'),
 				this.getSnippet('html-table', 'collapse/html-table-example-collapse-preview.component.ts', 'TS'),
-				this.getSnippet('html-table', 'collapse/html-table-example-collapse-preview.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('html-table', 'collapse/html-table-example-collapse-preview.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

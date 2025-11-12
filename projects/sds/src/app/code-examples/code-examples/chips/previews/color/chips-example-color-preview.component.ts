@@ -6,6 +6,6 @@ import {MatInputModule} from '@angular/material/input';
 	selector: 'app-chips-example-primary-color-preview',
 	imports: [MatChipsModule, MatInputModule],
 	templateUrl: './chips-example-color-preview.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipsExampleColorPreviewComponent {}

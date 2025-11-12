@@ -47,7 +47,8 @@ export class ObUnsavedChangesService {
 
 	private hasPendingChanges(ids: string[] = Object.keys(this.controlContainer)): boolean {
 		const includesPendingChanges =
-			Object.keys(this.controlContainer).filter(formId => ids.includes(formId) && this.controlContainer[formId].dirty).length > 0;
+			Object.keys(this.controlContainer).filter(formId => ids.includes(formId) && this.controlContainer[formId].dirty)
+				.length > 0;
 		return this.isActive && includesPendingChanges;
 	}
 

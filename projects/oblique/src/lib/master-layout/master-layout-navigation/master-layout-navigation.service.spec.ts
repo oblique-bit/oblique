@@ -14,10 +14,10 @@ import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 describe('MasterLayoutNavigationService', () => {
 	let service: ObMasterLayoutNavigationService;
 	const translateMock = {
-		onLangChange: of()
+		onLangChange: of(),
 	};
 	const mockMasterLayout = {
-		navigation: {}
+		navigation: {},
 	};
 	beforeEach(() =>
 		TestBed.configureTestingModule({
@@ -28,8 +28,8 @@ describe('MasterLayoutNavigationService', () => {
 				{provide: ObMasterLayoutComponentService, useValue: ObMockMasterLayoutComponentService},
 				{provide: ObOffCanvasService, useValue: {opened$: of(true)}},
 				{provide: ObGlobalEventsService, useValue: ObMockGlobalEventsService},
-				{provide: WINDOW, useValue: window}
-			]
+				{provide: WINDOW, useValue: window},
+			],
 		})
 	);
 

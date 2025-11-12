@@ -5,10 +5,10 @@ import {ObSchemaValidatorInstance} from './schema-validator.instance';
 
 @Directive({
 	selector: '[obSchemaValidation]',
-	exportAs: 'obSchemaValidation',
+	standalone: true,
 	providers: [ObSchemaValidationService],
 	host: {class: 'ob-schema-validation'},
-	standalone: true
+	exportAs: 'obSchemaValidation',
 })
 export class ObSchemaValidationDirective implements OnInit {
 	@Input('obSchemaValidation') schema: any;

@@ -18,7 +18,7 @@ export class ObServiceNavigationTimeoutCookieService {
 			path: '/',
 			domain: this.getDomainUrl(),
 			secure: !this.isLocal(),
-			sameSite: 'Strict'
+			sameSite: 'Strict',
 		});
 	}
 
@@ -27,7 +27,7 @@ export class ObServiceNavigationTimeoutCookieService {
 			path: '/',
 			domain: this.getDomainUrl(),
 			secure: !this.isLocal(),
-			sameSite: 'Strict'
+			sameSite: 'Strict',
 		});
 	}
 

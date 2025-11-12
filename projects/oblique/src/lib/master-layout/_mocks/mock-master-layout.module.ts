@@ -49,7 +49,15 @@ export {ObMockAriaMenuButtonDirective} from './mock-aria-menu-button.directive';
 		ObMockMasterLayoutNavigationComponent,
 		ObMockMasterLayoutNavigationItemDirective,
 		ObMockMasterLayoutNavigationMenuDirective,
-		ObMockMasterLayoutNavigationToggleDirective
+		ObMockMasterLayoutNavigationToggleDirective,
+	],
+	providers: [
+		{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},
+		{provide: ObMasterLayoutHeaderService, useClass: ObMockMasterLayoutHeaderService},
+		{provide: ObMasterLayoutNavigationService, useClass: ObMockMasterLayoutNavigationService},
+		{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService},
+		{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
+		{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService},
 	],
 	exports: [
 		ObMockAriaMenuButtonDirective,
@@ -60,15 +68,7 @@ export {ObMockAriaMenuButtonDirective} from './mock-aria-menu-button.directive';
 		ObMockMasterLayoutNavigationComponent,
 		ObMockMasterLayoutNavigationItemDirective,
 		ObMockMasterLayoutNavigationMenuDirective,
-		ObMockMasterLayoutNavigationToggleDirective
+		ObMockMasterLayoutNavigationToggleDirective,
 	],
-	providers: [
-		{provide: ObMasterLayoutFooterService, useClass: ObMockMasterLayoutFooterService},
-		{provide: ObMasterLayoutHeaderService, useClass: ObMockMasterLayoutHeaderService},
-		{provide: ObMasterLayoutNavigationService, useClass: ObMockMasterLayoutNavigationService},
-		{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService},
-		{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
-		{provide: ObMasterLayoutService, useClass: ObMockMasterLayoutService}
-	]
 })
 export class ObMockMasterLayoutModule {}

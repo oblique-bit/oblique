@@ -283,5 +283,5 @@ export enum ObEIcon {
 	XMARK = 'xmark',
 	YOUTUBE = 'youtube',
 	ZOOM_IN = 'zoom_in',
-	ZOOM_OUT = 'zoom_out'
+	ZOOM_OUT = 'zoom_out',
 }

@@ -10,7 +10,7 @@ import {GlobalEventsExampleObOutsideFilterPreviewComponent} from '../global-even
 	selector: 'app-code-example-global-events',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GlobalEventsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'global-events-examples';
@@ -23,19 +23,27 @@ export class GlobalEventsCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('global-events', 'properties/global-events-example-properties-preview.component.html', 'HTML'),
 				this.getSnippet('global-events', 'properties/global-events-example-properties-preview.component.ts', 'TS'),
 				this.getSnippet('global-events', 'global-events-example-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: GlobalEventsExampleObOutsideFilterPreviewComponent,
 			idParts: ['ob', 'outside', 'filter'],
 			title: 'Outside filter',
 			snippets: [
-				this.getSnippet('global-events', 'ob-outside-filter/global-events-example-ob-outside-filter-preview.component.html', 'HTML'),
-				this.getSnippet('global-events', 'ob-outside-filter/global-events-example-ob-outside-filter-preview.component.ts', 'TS'),
+				this.getSnippet(
+					'global-events',
+					'ob-outside-filter/global-events-example-ob-outside-filter-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'global-events',
+					'ob-outside-filter/global-events-example-ob-outside-filter-preview.component.ts',
+					'TS'
+				),
 				this.getSnippet('global-events', 'global-events-example-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

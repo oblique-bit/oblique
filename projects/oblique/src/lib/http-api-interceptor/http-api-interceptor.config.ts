@@ -49,8 +49,8 @@ export class ObHttpApiInterceptorConfig {
 			 * @default 'i18n.error.http.status.' + error.status
 			 */
 			text: undefined,
-			sticky: undefined
-		}
+			sticky: undefined,
+		},
 	};
 
 	/**

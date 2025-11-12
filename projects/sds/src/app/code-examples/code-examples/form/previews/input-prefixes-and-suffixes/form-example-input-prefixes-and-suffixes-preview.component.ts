@@ -9,7 +9,10 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 	selector: 'app-form-example-input-prefixes-and-suffixes-preview',
 	imports: [FormsModule, MatFormFieldModule, MatIconModule, MatInputModule, ObErrorMessagesModule],
 	templateUrl: './form-example-input-prefixes-and-suffixes-preview.component.html',
-	styleUrls: ['./form-example-input-prefixes-and-suffixes-preview.component.scss', '../../../../code-example-flex-layout.scss']
+	styleUrls: [
+		'./form-example-input-prefixes-and-suffixes-preview.component.scss',
+		'../../../../code-example-flex-layout.scss',
+	],
 })
 export class FormExampleInputPrefixesAndSuffixesPreviewComponent implements AfterViewInit {
 	/* The whole content of this class is simply a workaround for https://github.com/angular/components/issues/26428. This is an Angular bug

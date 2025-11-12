@@ -6,7 +6,7 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-
 
 @Component({
 	standalone: false,
-	template: '<span obMasterLayoutNavigationToggle> test </span>'
+	template: '<span obMasterLayoutNavigationToggle> test </span>',
 })
 class TestComponent {}
 
@@ -15,13 +15,13 @@ describe('ObMasterLayoutNavigationToggleDirective', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let directive: ObMasterLayoutNavigationToggleDirective;
 	const mock = {
-		toggleSubMenu: jest.fn()
+		toggleSubMenu: jest.fn(),
 	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, ObMasterLayoutNavigationToggleDirective],
-			providers: [{provide: ObMasterLayoutNavigationItemDirective, useValue: mock}]
+			providers: [{provide: ObMasterLayoutNavigationItemDirective, useValue: mock}],
 		});
 
 		fixture = TestBed.createComponent(TestComponent);

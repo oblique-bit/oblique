@@ -10,7 +10,7 @@ import {ProgressBarExampleModesPreviewComponent} from './previews/modes/progress
 	selector: 'app-code-example-progress-bar',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressBarCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'progress-bar-examples';
@@ -22,8 +22,8 @@ export class ProgressBarCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('progress-bar', 'colors/progress-bar-example-colors-preview.component.html', 'HTML'),
 				this.getSnippet('progress-bar', 'colors/progress-bar-example-colors-preview.component.ts', 'TS'),
-				this.getSnippet('progress-bar', 'colors/progress-bar-example-colors-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('progress-bar', 'colors/progress-bar-example-colors-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: ProgressBarExampleModesPreviewComponent,
@@ -32,8 +32,8 @@ export class ProgressBarCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('progress-bar', 'modes/progress-bar-example-modes-preview.component.html', 'HTML'),
 				this.getSnippet('progress-bar', 'modes/progress-bar-example-modes-preview.component.ts', 'TS'),
-				this.getSnippet('progress-bar', 'modes/progress-bar-example-modes-preview.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('progress-bar', 'modes/progress-bar-example-modes-preview.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

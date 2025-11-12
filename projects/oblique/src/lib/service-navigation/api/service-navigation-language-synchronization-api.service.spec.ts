@@ -14,8 +14,8 @@ describe('ObServiceNavigationLanguageSynchronizationApiService', () => {
 			providers: [
 				provideHttpClient(withInterceptorsFromDi()),
 				provideObliqueTestingConfiguration(),
-				ObServiceNavigationLanguageSynchronizationApiService
-			]
+				ObServiceNavigationLanguageSynchronizationApiService,
+			],
 		});
 		service = TestBed.inject(ObServiceNavigationLanguageSynchronizationApiService);
 		httpClient = TestBed.inject(HttpClient);
@@ -46,10 +46,10 @@ describe('ObServiceNavigationLanguageSynchronizationApiService', () => {
 					'http://rootUrl/api/user/application',
 					{
 						languageCode: 'de',
-						applicationID: 48
+						applicationID: 48,
 					},
 					{
-						withCredentials: true
+						withCredentials: true,
 					}
 				);
 			});

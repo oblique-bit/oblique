@@ -7,6 +7,6 @@ import {ObMockIconModule} from '../../icon/_mocks/mock-icon.module';
  */
 @NgModule({
 	imports: [ObMockIconModule, ObMockOptionLabelIconDirective],
-	exports: [ObMockOptionLabelIconDirective]
+	exports: [ObMockOptionLabelIconDirective],
 })
 export class ObMockOptionLabelIconModule {}

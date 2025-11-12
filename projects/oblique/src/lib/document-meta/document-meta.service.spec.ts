@@ -7,7 +7,7 @@ describe('DocumentMetaService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			providers: [ObDocumentMetaService, provideObliqueTestingConfiguration()]
+			providers: [ObDocumentMetaService, provideObliqueTestingConfiguration()],
 		});
 	});
 

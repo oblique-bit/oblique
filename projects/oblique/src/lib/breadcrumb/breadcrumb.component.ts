@@ -10,7 +10,7 @@ import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcru
 	standalone: false,
 	templateUrl: './breadcrumb.component.html',
 	styleUrls: ['./breadcrumb.component.scss'],
-	exportAs: 'obBreadcrumb'
+	exportAs: 'obBreadcrumb',
 })
 export class ObBreadcrumbComponent implements OnInit {
 	/* eslint-disable @angular-eslint/no-input-rename */
@@ -94,7 +94,9 @@ export class ObBreadcrumbComponent implements OnInit {
 			);
 		}
 
-		const labelFromUrlWithParamValues = pathSplitter.map(text => this.beautify(this.applyParams(text, params, 'url'))).join(this.separator);
+		const labelFromUrlWithParamValues = pathSplitter
+			.map(text => this.beautify(this.applyParams(text, params, 'url')))
+			.join(this.separator);
 		return next({label: labelFromUrlWithParamValues, url: urlWithParamValues});
 	}
 
@@ -123,7 +125,7 @@ export class ObBreadcrumbComponent implements OnInit {
 		const routeConfig = route?.routeConfig;
 		return {
 			path: routeConfig?.path,
-			breadCrumbLabel: routeConfig?.data?.breadcrumb
+			breadCrumbLabel: routeConfig?.data?.breadcrumb,
 		};
 	}
 }

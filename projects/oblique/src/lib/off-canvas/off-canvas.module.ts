@@ -11,6 +11,6 @@ export {ObOffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 
 @NgModule({
 	imports: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective],
-	exports: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective]
+	exports: [ObOffCanvasBackdropDirective, ObOffCanvasContainerDirective, ObOffCanvasToggleDirective],
 })
 export class ObOffCanvasModule {}

@@ -34,7 +34,7 @@ import {
 	ObErrorMessagesModule,
 	ObInputClearModule,
 	ObSelectableModule,
-	ObSpinnerModule
+	ObSpinnerModule,
 } from '@oblique/oblique';
 import {ButtonComponent} from './button/button.component';
 import {CardComponent} from './card/card.component';
@@ -86,7 +86,7 @@ const appRoutes: Routes = [
 	{path: 'table', component: TableComponent},
 	{path: 'tabs', component: TabsComponent},
 	{path: 'tooltip', component: TooltipComponent},
-	{path: '', redirectTo: 'card', pathMatch: 'full'}
+	{path: '', redirectTo: 'card', pathMatch: 'full'},
 ];
 
 @NgModule({
@@ -112,7 +112,7 @@ const appRoutes: Routes = [
 		TableComponent,
 		TableEditComponent,
 		TabsComponent,
-		TooltipComponent
+		TooltipComponent,
 	],
 	imports: [
 		CdkTableModule,
@@ -155,7 +155,7 @@ const appRoutes: Routes = [
 		ObSpinnerModule,
 		ReactiveFormsModule,
 		TranslateModule,
-		RouterModule.forChild(appRoutes)
-	]
+		RouterModule.forChild(appRoutes),
+	],
 })
 export class MaterialModule {}

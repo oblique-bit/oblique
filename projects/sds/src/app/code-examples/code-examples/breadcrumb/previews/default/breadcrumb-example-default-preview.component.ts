@@ -5,6 +5,6 @@ import {ObBreadcrumbModule, ObButtonModule, ObExternalLinkModule} from '@oblique
 @Component({
 	selector: 'app-breadcrumb-example-default-preview',
 	imports: [MatButtonModule, ObBreadcrumbModule, ObButtonModule, ObExternalLinkModule],
-	templateUrl: './breadcrumb-example-default-preview.component.html'
+	templateUrl: './breadcrumb-example-default-preview.component.html',
 })
 export class BreadcrumbExampleDefaultPreviewComponent {}

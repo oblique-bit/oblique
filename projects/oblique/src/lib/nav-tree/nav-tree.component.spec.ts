@@ -9,7 +9,12 @@ import {ObNavTreeComponent} from './nav-tree.component';
 
 @Component({
 	standalone: false,
-	template: ` <ob-nav-tree [items]="items" [prefix]="prefix" [filterPattern]="filterPattern" [labelFormatter]="labelFormatter" />`
+	template: ` <ob-nav-tree
+		[items]="items"
+		[prefix]="prefix"
+		[filterPattern]="filterPattern"
+		[labelFormatter]="labelFormatter"
+	/>`,
 })
 class TestComponent {
 	items = [
@@ -25,11 +30,11 @@ class TestComponent {
 					items: [
 						new ObNavTreeItemModel({id: 'B2-1', label: 'B.2.1 - Label'}),
 						new ObNavTreeItemModel({id: 'B2-2', label: 'B.2.2 - Label'}),
-						new ObNavTreeItemModel({id: 'B2-3', label: 'B.2.3 - Label'})
-					]
+						new ObNavTreeItemModel({id: 'B2-3', label: 'B.2.3 - Label'}),
+					],
 				}),
-				new ObNavTreeItemModel({id: 'B-3', label: 'B.3 - Label'})
-			]
+				new ObNavTreeItemModel({id: 'B-3', label: 'B.3 - Label'}),
+			],
 		}),
 		new ObNavTreeItemModel({
 			id: 'C',
@@ -37,9 +42,9 @@ class TestComponent {
 			items: [
 				new ObNavTreeItemModel({id: 'C-1', label: 'C.1 - Label'}),
 				new ObNavTreeItemModel({id: 'C-2', label: 'C.2 - Label'}),
-				new ObNavTreeItemModel({id: 'C-3', label: 'C.3 - Label'})
-			]
-		})
+				new ObNavTreeItemModel({id: 'C-3', label: 'C.3 - Label'}),
+			],
+		}),
 	];
 
 	prefix = 'nav-tree-test';
@@ -61,7 +66,7 @@ describe(ObNavTreeComponent.name, () => {
 			imports: [ObNavTreeComponent, RouterTestingModule, TranslateModule],
 			declarations: [TestComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
-			schemas: [NO_ERRORS_SCHEMA]
+			schemas: [NO_ERRORS_SCHEMA],
 		}).compileComponents();
 	});
 

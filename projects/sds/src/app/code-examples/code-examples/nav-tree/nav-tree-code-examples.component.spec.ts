@@ -16,7 +16,7 @@ describe(NavTreeCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [NavTreeCodeExamplesComponent, RouterTestingModule],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NavTreeCodeExamplesComponent);

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ReplaySubject} from 'rxjs';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class SlugToIdService {
 	readonly readyToMap: ReplaySubject<void> = new ReplaySubject<void>();

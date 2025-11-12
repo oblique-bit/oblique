@@ -17,10 +17,10 @@ export class ObServiceNavigationLanguageSynchronizationApiService {
 				environmentUrl + this.resourceUrl,
 				{
 					languageCode: this.translate.currentLang,
-					applicationID: eportalId
+					applicationID: eportalId,
 				},
 				{
-					withCredentials: true
+					withCredentials: true,
 				}
 			)
 			.pipe(map(() => undefined));

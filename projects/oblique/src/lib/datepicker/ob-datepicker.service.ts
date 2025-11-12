@@ -23,7 +23,7 @@ export class ObDatepickerIntlService extends MatDatepickerIntl {
 				'i18n.datepicker.next-multi-year.label',
 				'i18n.datepicker.switch-to-month-view.label',
 				'i18n.datepicker.switch-to-multi-year-view.label',
-				'i18n.datepicker.comparison-date.label'
+				'i18n.datepicker.comparison-date.label',
 			])
 			.subscribe(translation => {
 				this.calendarLabel = translation['i18n.datepicker.calender.label'];

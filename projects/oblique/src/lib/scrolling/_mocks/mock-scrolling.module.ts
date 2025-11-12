@@ -8,6 +8,6 @@ export {ObMockTopControlComponent} from './mock-top-control.component';
  */
 @NgModule({
 	imports: [ObMockTopControlComponent],
-	exports: [ObMockTopControlComponent]
+	exports: [ObMockTopControlComponent],
 })
 export class ObMockScrollingModule {}

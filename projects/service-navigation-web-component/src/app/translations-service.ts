@@ -19,7 +19,11 @@ export class TranslationsService {
 		this.languageChange$ = this.translate.onLangChange.pipe(map(event => event.lang));
 	}
 
-	initializeTranslations(languageList: string, language: string | undefined, defaultLanguage: string | undefined): void {
+	initializeTranslations(
+		languageList: string,
+		language: string | undefined,
+		defaultLanguage: string | undefined
+	): void {
 		this.parsedLanguages = this.parseLanguages(languageList);
 		this.parsedDefaultLanguage = this.parseDefaultLanguage(defaultLanguage, this.parsedLanguages);
 		const parsedLanguage = this.parseLanguage(language, this.parsedDefaultLanguage, this.parsedLanguages);
@@ -108,7 +112,11 @@ export class TranslationsService {
 		}
 	}
 
-	private buildTranslations(languages: string[], infoLinks: string, profileLinks: string): Record<string, Record<string, string>> {
+	private buildTranslations(
+		languages: string[],
+		infoLinks: string,
+		profileLinks: string
+	): Record<string, Record<string, string>> {
 		let translations = this.initializeTranslationsObject(languages);
 		translations = this.populateTranslations({rawLinks: infoLinks, type: 'info', languages, translations});
 		translations = this.populateTranslations({rawLinks: profileLinks, type: 'profile', languages, translations});

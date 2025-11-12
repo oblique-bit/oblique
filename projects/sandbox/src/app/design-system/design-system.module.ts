@@ -6,6 +6,6 @@ import {DesignSystemComponent} from './design-system.component';
 
 @NgModule({
 	declarations: [DesignSystemComponent],
-	imports: [CommonModule, DemoComponent, DesignSystemRoutingModule]
+	imports: [CommonModule, DemoComponent, DesignSystemRoutingModule],
 })
 export class DesignSystemModule {}

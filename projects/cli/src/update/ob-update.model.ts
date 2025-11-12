@@ -1,5 +1,5 @@
 export const updateDescriptions = {
-	summaryText: 'Updates Oblique and runs the migration.'
+	summaryText: 'Updates Oblique and runs the migration.',
 };
 
 export interface PackageDependencies {

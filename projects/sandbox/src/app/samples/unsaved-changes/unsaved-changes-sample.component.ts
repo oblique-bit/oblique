@@ -5,11 +5,11 @@ import {UntypedFormBuilder} from '@angular/forms';
 	selector: 'sb-unsaved-changes',
 	standalone: false,
 	templateUrl: './unsaved-changes-sample.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UnsavedChangesSampleComponent {
 	standAloneReactive = inject(UntypedFormBuilder).group({text: '', number: '', integer: ''});
 	tabModels = {
-		standAloneTemplate: {number: null, text: null, integer: null}
+		standAloneTemplate: {number: null, text: null, integer: null},
 	};
 }

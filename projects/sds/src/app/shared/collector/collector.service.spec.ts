@@ -33,7 +33,9 @@ describe(CollectorService.name, () => {
 			});
 
 			test('that it has the correct source', () => {
-				expect(scriptNode.src).toBe('https://jira.bit.admin.ch/plugins/servlet/issueCollectorBootstrap.js?collectorId=id&locale=en_US');
+				expect(scriptNode.src).toBe(
+					'https://jira.bit.admin.ch/plugins/servlet/issueCollectorBootstrap.js?collectorId=id&locale=en_US'
+				);
 			});
 		});
 
@@ -76,33 +78,36 @@ describe(CollectorService.name, () => {
 				});
 			});
 
-			describe.each([{key1: () => 'a'}, {key2: () => 'b', key3: () => 'b'}])('with defaultValues (%s)', configuration => {
-				const triggerFunction = jest.fn();
-				const keys = Object.keys(configuration);
-				beforeEach(() => {
-					service.initializeCollector('id');
-					service.defaultValues = configuration;
-					window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
-					window.ATL_JQ_PAGE_PROPS.fieldValues();
-					service.collect();
-				});
+			describe.each([{key1: () => 'a'}, {key2: () => 'b', key3: () => 'b'}])(
+				'with defaultValues (%s)',
+				configuration => {
+					const triggerFunction = jest.fn();
+					const keys = Object.keys(configuration);
+					beforeEach(() => {
+						service.initializeCollector('id');
+						service.defaultValues = configuration;
+						window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
+						window.ATL_JQ_PAGE_PROPS.fieldValues();
+						service.collect();
+					});
 
-				test('that the trigger function is called', () => {
-					expect(triggerFunction).toHaveBeenCalled();
-				});
+					test('that the trigger function is called', () => {
+						expect(triggerFunction).toHaveBeenCalled();
+					});
 
-				test(`that the fieldValues contains ${keys.length} values`, () => {
-					expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).length).toBe(keys.length);
-				});
+					test(`that the fieldValues contains ${keys.length} values`, () => {
+						expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).length).toBe(keys.length);
+					});
 
-				test.each(keys)('that the fieldValues contains a "%s" property', key => {
-					expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).includes(key)).toBe(true);
-				});
+					test.each(keys)('that the fieldValues contains a "%s" property', key => {
+						expect(Object.keys(window.ATL_JQ_PAGE_PROPS.fieldValues).includes(key)).toBe(true);
+					});
 
-				test.each(keys)('that the fieldValues has the correct value for %s property', key => {
-					expect(window.ATL_JQ_PAGE_PROPS.fieldValues[key]).toBe(configuration[key]());
-				});
-			});
+					test.each(keys)('that the fieldValues has the correct value for %s property', key => {
+						expect(window.ATL_JQ_PAGE_PROPS.fieldValues[key]).toBe(configuration[key]());
+					});
+				}
+			);
 		});
 
 		describe('without collector', () => {

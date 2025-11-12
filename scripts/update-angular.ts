@@ -49,7 +49,10 @@ class UpdateAngular extends StaticScript {
 		return Object.keys(packageDependencies)
 			.filter(key => key.startsWith('@angular') || key.startsWith('@schematics') || key === 'ng-packagr')
 			.filter(key => !rootPackageJson.dependencies[key] && !rootPackageJson.devDependencies[key])
-			.reduce((dependencies, dependencyName) => ({...dependencies, [dependencyName]: packageDependencies[dependencyName]}), {});
+			.reduce(
+				(dependencies, dependencyName) => ({...dependencies, [dependencyName]: packageDependencies[dependencyName]}),
+				{}
+			);
 	}
 
 	private static listPackageDependencies(projects: string[]): Record<string, string> {
@@ -59,7 +62,10 @@ class UpdateAngular extends StaticScript {
 			.reduce((allDependencies, currentDependencies) => ({...allDependencies, ...currentDependencies}), {});
 	}
 
-	private static addDependenciesInRootPackageJson(rootPackageJson: Dependencies, ngDependencies: Record<string, string>): void {
+	private static addDependenciesInRootPackageJson(
+		rootPackageJson: Dependencies,
+		ngDependencies: Record<string, string>
+	): void {
 		Log.info("Add packages' dependencies to root package.json");
 		rootPackageJson.dependencies = {...rootPackageJson.dependencies, ...ngDependencies};
 		Files.writeJson(UpdateAngular.packageJsonPath, rootPackageJson);

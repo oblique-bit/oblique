@@ -4,7 +4,7 @@ import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {toSignal} from '@angular/core/rxjs-interop';
 
 @Directive({
-	selector: '[obEllipsisTooltip]'
+	selector: '[obEllipsisTooltip]',
 })
 export class ObEllipsisTooltipDirective {
 	obEllipsisTooltip = input('');

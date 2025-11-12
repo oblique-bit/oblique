@@ -9,7 +9,7 @@ describe('ObServiceNavigationLanguageSynchronizationService', () => {
 	let service: ObServiceNavigationLanguageSynchronizationService;
 	let translateService: TranslateService;
 	const fakeApiService = {
-		synchronizeLanguage: jest.fn(() => of())
+		synchronizeLanguage: jest.fn(() => of()),
 	};
 
 	beforeEach(fakeAsync(() => {
@@ -17,8 +17,8 @@ describe('ObServiceNavigationLanguageSynchronizationService', () => {
 			providers: [
 				provideObliqueTestingConfiguration(),
 				ObServiceNavigationLanguageSynchronizationService,
-				{provide: ObServiceNavigationLanguageSynchronizationApiService, useValue: fakeApiService}
-			]
+				{provide: ObServiceNavigationLanguageSynchronizationApiService, useValue: fakeApiService},
+			],
 		});
 
 		service = TestBed.inject(ObServiceNavigationLanguageSynchronizationService);

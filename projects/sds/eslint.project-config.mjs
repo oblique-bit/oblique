@@ -4,8 +4,8 @@ export default [
 		ignores: [
 			'projects/sds/schematics/src/add-preview/templates/*',
 			'projects/sds/schematics/src/add-code-example/templates/*',
-			'projects/sds/schematics/src/**/*.js'
-		]
+			'projects/sds/schematics/src/**/*.js',
+		],
 	},
 	{
 		files: ['projects/sds/**/*.ts'],
@@ -21,7 +21,7 @@ export default [
 				{selector: 'enumMember', format: ['UPPER_CASE']},
 				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
 				// rules that are not respected
-				{selector: 'property', format: ['camelCase', 'snake_case']}
+				{selector: 'property', format: ['camelCase', 'snake_case']},
 			],
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
@@ -32,14 +32,14 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
-			'accessor-pairs': 'off'
-		}
+			'accessor-pairs': 'off',
+		},
 	},
 	{
 		files: ['projects/sds/**/*.html'],
 		rules: {
-			'@angular-eslint/template/cyclomatic-complexity': 'off'
-		}
+			'@angular-eslint/template/cyclomatic-complexity': 'off',
+		},
 	},
 	{
 		files: ['projects/sds/src/app/code-examples/code-examples.model.ts'],
@@ -47,8 +47,8 @@ export default [
 			'@typescript-eslint/no-require-imports': 'off',
 
 			// rules that are not respected
-			'@typescript-eslint/no-unsafe-return': 'off'
-		}
+			'@typescript-eslint/no-unsafe-return': 'off',
+		},
 	},
 	{
 		files: ['projects/sds/schematics/**/*.ts'],
@@ -57,7 +57,7 @@ export default [
 			'@typescript-eslint/max-params': 'off',
 			'max-lines-per-function': 'off',
 			'max-statements': 'off',
-			'no-param-reassign': 'off'
-		}
-	}
+			'no-param-reassign': 'off',
+		},
+	},
 ];

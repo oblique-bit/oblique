@@ -1,4 +1,16 @@
-import {Directive, ElementRef, HostBinding, Inject, Input, OnChanges, OnDestroy, OnInit, Optional, Renderer2, inject} from '@angular/core';
+import {
+	Directive,
+	ElementRef,
+	HostBinding,
+	Inject,
+	Input,
+	OnChanges,
+	OnDestroy,
+	OnInit,
+	Optional,
+	Renderer2,
+	inject,
+} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, switchMap} from 'rxjs';
@@ -9,7 +21,7 @@ import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'a',
-	standalone: true
+	standalone: true,
 })
 export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() @HostBinding('attr.rel') rel: string;
@@ -100,7 +112,9 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.translate
 			.stream('i18n.oblique.external')
 			.pipe(takeUntil(this.unsubscribe))
-			.subscribe((text: string) => this.renderer.setProperty(this.screenReaderOnlyTextElement, 'textContent', ` - ${text}`));
+			.subscribe((text: string) =>
+				this.renderer.setProperty(this.screenReaderOnlyTextElement, 'textContent', ` - ${text}`)
+			);
 	}
 
 	private addIcon(): void {

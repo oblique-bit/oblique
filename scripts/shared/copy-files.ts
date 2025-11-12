@@ -25,7 +25,7 @@ export class CopyFiles extends StaticScript {
 		fileList
 			.map(filePath => ({
 				source: filePath,
-				destination: filePath.replace(source, this.distFolder)
+				destination: filePath.replace(source, this.distFolder),
 			}))
 			.forEach(file => {
 				Files.copy(file.source, file.destination);

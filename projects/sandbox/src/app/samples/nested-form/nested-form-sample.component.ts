@@ -6,16 +6,16 @@ import {ObNotificationService} from '@oblique/oblique';
 	selector: 'sb-nested-form-sample',
 	standalone: false,
 	templateUrl: './nested-form-sample.component.html',
-	styleUrl: './mandatory.scss'
+	styleUrl: './mandatory.scss',
 })
 export class NestedFormSampleComponent {
 	parentForm = inject(UntypedFormBuilder).group({
 		child: [''],
-		parent: ['', [Validators.required]]
+		parent: ['', [Validators.required]],
 	});
 	model = {
 		parent: '',
-		child: undefined
+		child: undefined,
 	};
 	readonly reactiveForm = viewChild(FormGroupDirective);
 	readonly templateForm = viewChild(NgForm);

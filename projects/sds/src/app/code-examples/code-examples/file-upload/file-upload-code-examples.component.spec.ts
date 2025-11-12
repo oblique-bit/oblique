@@ -4,7 +4,12 @@ import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FileUploadCodeExamplesComponent} from './file-upload-code-examples.component';
-import {ObDropZoneComponent, ObFileUploadComponent, ObMockTranslatePipe, provideObliqueTestingConfiguration} from '@oblique/oblique';
+import {
+	ObDropZoneComponent,
+	ObFileUploadComponent,
+	ObMockTranslatePipe,
+	provideObliqueTestingConfiguration,
+} from '@oblique/oblique';
 import {By} from '@angular/platform-browser';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
@@ -14,8 +19,15 @@ describe(FileUploadCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, CodeExampleComponent, CommonModule, FileUploadCodeExamplesComponent, HttpClientTestingModule, IdPipe],
-			providers: [provideObliqueTestingConfiguration()]
+			imports: [
+				ObMockTranslatePipe,
+				CodeExampleComponent,
+				CommonModule,
+				FileUploadCodeExamplesComponent,
+				HttpClientTestingModule,
+				IdPipe,
+			],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(FileUploadCodeExamplesComponent);

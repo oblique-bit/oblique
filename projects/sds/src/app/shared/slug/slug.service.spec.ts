@@ -42,9 +42,9 @@ describe(SlugService.name, () => {
 					{path: 'guidelines/service-navigation-web-component/examples', component: DummyComponent},
 					{path: 'guidelines/service-navigation-web-component-14/examples', component: DummyComponent},
 					{path: 'helpers/provide-oblique-configuration/examples', component: DummyComponent},
-					{path: 'helpers/provide-oblique-configuration-14/examples', component: DummyComponent}
-				])
-			]
+					{path: 'helpers/provide-oblique-configuration-14/examples', component: DummyComponent},
+				]),
+			],
 		});
 		service = TestBed.inject(SlugService);
 		router = TestBed.inject(Router);
@@ -83,7 +83,7 @@ describe(SlugService.name, () => {
 			{route: 'guidelines/service-navigation-web-component/examples', newSlug: undefined},
 			{route: 'guidelines/service-navigation-web-component-14/examples', newSlug: undefined},
 			{route: 'helpers/provide-oblique-configuration/examples', newSlug: undefined},
-			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: undefined}
+			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: undefined},
 		],
 		11: [
 			{route: 'inexistent/route', newSlug: undefined},
@@ -113,7 +113,7 @@ describe(SlugService.name, () => {
 			{route: 'guidelines/service-navigation-web-component/examples', newSlug: undefined},
 			{route: 'guidelines/service-navigation-web-component-14/examples', newSlug: 'service-navigation-web-component'},
 			{route: 'helpers/provide-oblique-configuration/examples', newSlug: undefined},
-			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: 'provide-oblique-configuration'}
+			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: 'provide-oblique-configuration'},
 		],
 		12: [
 			{route: 'inexistent/route', newSlug: undefined},
@@ -143,7 +143,7 @@ describe(SlugService.name, () => {
 			{route: 'guidelines/service-navigation-web-component/examples', newSlug: undefined},
 			{route: 'guidelines/service-navigation-web-component-14/examples', newSlug: 'service-navigation-web-component'},
 			{route: 'helpers/provide-oblique-configuration/examples', newSlug: undefined},
-			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: 'provide-oblique-configuration'}
+			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: 'provide-oblique-configuration'},
 		],
 		13: [
 			{route: 'inexistent/route', newSlug: undefined},
@@ -173,7 +173,7 @@ describe(SlugService.name, () => {
 			{route: 'guidelines/service-navigation-web-component/examples', newSlug: undefined},
 			{route: 'guidelines/service-navigation-web-component-14/examples', newSlug: 'service-navigation-web-component'},
 			{route: 'helpers/provide-oblique-configuration/examples', newSlug: undefined},
-			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: 'provide-oblique-configuration'}
+			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: 'provide-oblique-configuration'},
 		],
 		14: [
 			{route: 'inexistent/route', newSlug: undefined},
@@ -203,8 +203,8 @@ describe(SlugService.name, () => {
 			{route: 'guidelines/service-navigation-web-component/examples', newSlug: 'service-navigation-web-component-14'},
 			{route: 'guidelines/service-navigation-web-component-14/examples', newSlug: undefined},
 			{route: 'helpers/provide-oblique-configuration/examples', newSlug: 'provide-oblique-configuration-14'},
-			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: undefined}
-		]
+			{route: 'helpers/provide-oblique-configuration-14/examples', newSlug: undefined},
+		],
 	};
 	describe.each([10, 11, 12, 13, 14])(`${SlugService.prototype.getNewSlug.name} version %s`, version => {
 		it.each(versionRoutes[version] as readonly {route: string; newSlug: string}[])(

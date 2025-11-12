@@ -4,7 +4,7 @@ import type {Observable} from 'rxjs';
 import type {NewsletterTokenComplete} from './newsletter-token.model';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class NewsletterService {
 	readonly baseUrl = 'https://oblique.directus.app/';

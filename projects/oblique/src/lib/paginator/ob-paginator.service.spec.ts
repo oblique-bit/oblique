@@ -13,7 +13,7 @@ describe('ObPaginatorService', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			providers: [ObPaginatorService, provideObliqueTestingConfiguration()]
+			providers: [ObPaginatorService, provideObliqueTestingConfiguration()],
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
 		paginatorService = TestBed.inject(ObPaginatorService);
@@ -39,42 +39,90 @@ describe('ObPaginatorService', () => {
 			language: 'en',
 			labels: [
 				{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expectedTranslation: `Page 2 of 5`},
-				{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expectedTranslation: `Page 1 of 1`},
+				{
+					name: 'pageSize equal as length and page 0',
+					page: 0,
+					pageSize: 10,
+					length: 10,
+					expectedTranslation: `Page 1 of 1`,
+				},
 				{name: 'length 0', page: 0, pageSize: 2, length: 0, expectedTranslation: `Page 0 of 0`},
 				{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expectedTranslation: `Page 0 of 2`},
-				{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expectedTranslation: `Page 3 of 1`}
-			]
+				{
+					name: 'length lower than page * pageSize',
+					page: 2,
+					pageSize: 3,
+					length: 1,
+					expectedTranslation: `Page 3 of 1`,
+				},
+			],
 		},
 		{
 			language: 'it',
 			labels: [
 				{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expectedTranslation: `Pagina 2 di 5`},
-				{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expectedTranslation: `Pagina 1 di 1`},
+				{
+					name: 'pageSize equal as length and page 0',
+					page: 0,
+					pageSize: 10,
+					length: 10,
+					expectedTranslation: `Pagina 1 di 1`,
+				},
 				{name: 'length 0', page: 0, pageSize: 2, length: 0, expectedTranslation: `Pagina 0 di 0`},
 				{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expectedTranslation: `Pagina 0 di 2`},
-				{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expectedTranslation: `Pagina 3 di 1`}
-			]
+				{
+					name: 'length lower than page * pageSize',
+					page: 2,
+					pageSize: 3,
+					length: 1,
+					expectedTranslation: `Pagina 3 di 1`,
+				},
+			],
 		},
 		{
 			language: 'de',
 			labels: [
 				{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expectedTranslation: `Seite 2 von 5`},
-				{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expectedTranslation: `Seite 1 von 1`},
+				{
+					name: 'pageSize equal as length and page 0',
+					page: 0,
+					pageSize: 10,
+					length: 10,
+					expectedTranslation: `Seite 1 von 1`,
+				},
 				{name: 'length 0', page: 0, pageSize: 2, length: 0, expectedTranslation: `Seite 0 von 0`},
 				{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expectedTranslation: `Seite 0 von 2`},
-				{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expectedTranslation: `Seite 3 von 1`}
-			]
+				{
+					name: 'length lower than page * pageSize',
+					page: 2,
+					pageSize: 3,
+					length: 1,
+					expectedTranslation: `Seite 3 von 1`,
+				},
+			],
 		},
 		{
 			language: 'fr',
 			labels: [
 				{name: 'page 2, pageSize 5, length 25', page: 1, pageSize: 5, length: 25, expectedTranslation: `Page 2 sur 5`},
-				{name: 'pageSize equal as length and page 0', page: 0, pageSize: 10, length: 10, expectedTranslation: `Page 1 sur 1`},
+				{
+					name: 'pageSize equal as length and page 0',
+					page: 0,
+					pageSize: 10,
+					length: 10,
+					expectedTranslation: `Page 1 sur 1`,
+				},
 				{name: 'length 0', page: 0, pageSize: 2, length: 0, expectedTranslation: `Page 0 sur 0`},
 				{name: 'pageSize 0', page: 0, pageSize: 0, length: 2, expectedTranslation: `Page 0 sur 2`},
-				{name: 'length lower than page * pageSize', page: 2, pageSize: 3, length: 1, expectedTranslation: `Page 3 sur 1`}
-			]
-		}
+				{
+					name: 'length lower than page * pageSize',
+					page: 2,
+					pageSize: 3,
+					length: 1,
+					expectedTranslation: `Page 3 sur 1`,
+				},
+			],
+		},
 	])(`should get $expected if $name`, ({language, labels}) => {
 		beforeEach(() => {
 			translateService.use(language);
@@ -104,8 +152,8 @@ describe('ObPaginatorService', () => {
 				{labelName: 'nextPageLabel', expectedTranslation: 'Go to the next page'},
 				{labelName: 'previousPageLabel', expectedTranslation: 'Go to the previous page'},
 				{labelName: 'pageLabel', expectedTranslation: 'Page'},
-				{labelName: 'ofLabel', expectedTranslation: 'of'}
-			]
+				{labelName: 'ofLabel', expectedTranslation: 'of'},
+			],
 		},
 		{
 			language: 'it',
@@ -116,8 +164,8 @@ describe('ObPaginatorService', () => {
 				{labelName: 'previousPageLabel', expectedTranslation: 'Andare alla pagina precedente'},
 				{labelName: 'firstPageLabel', expectedTranslation: 'Salta alla prima pagina'},
 				{labelName: 'pageLabel', expectedTranslation: 'Pagina'},
-				{labelName: 'ofLabel', expectedTranslation: 'di'}
-			]
+				{labelName: 'ofLabel', expectedTranslation: 'di'},
+			],
 		},
 		{
 			language: 'de',
@@ -128,8 +176,8 @@ describe('ObPaginatorService', () => {
 				{labelName: 'previousPageLabel', expectedTranslation: 'Auf die vorige Seite gehen'},
 				{labelName: 'firstPageLabel', expectedTranslation: 'Auf die erste Seite springen'},
 				{labelName: 'pageLabel', expectedTranslation: 'Seite'},
-				{labelName: 'ofLabel', expectedTranslation: 'von'}
-			]
+				{labelName: 'ofLabel', expectedTranslation: 'von'},
+			],
 		},
 		{
 			language: 'fr',
@@ -140,9 +188,9 @@ describe('ObPaginatorService', () => {
 				{labelName: 'previousPageLabel', expectedTranslation: 'Aller à la page précédente'},
 				{labelName: 'firstPageLabel', expectedTranslation: 'Sauter à la première page'},
 				{labelName: 'pageLabel', expectedTranslation: 'Page'},
-				{labelName: 'ofLabel', expectedTranslation: 'sur'}
-			]
-		}
+				{labelName: 'ofLabel', expectedTranslation: 'sur'},
+			],
+		},
 	])(`labels for $language language`, ({language, labels}) => {
 		beforeEach(() => {
 			translateService.use(language);

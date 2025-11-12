@@ -8,7 +8,7 @@ import {ObLanguageService} from '../language/language.service';
 import {OB_HAS_LANGUAGE_IN_URL} from '../utilities';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObRouterService {
 	private readonly language = inject(ObLanguageService); // needs to be injected to ensure ObLanguageService is instantiated
@@ -30,7 +30,9 @@ export class ObRouterService {
 		return {
 			path: 'accessibility-statement',
 			component: AccessibilityStatementComponent,
-			data: this.masterLayoutConfig.showAccessibilityTitle ? {title: 'i18n.oblique.accessibility-statement.statement.title'} : undefined
+			data: this.masterLayoutConfig.showAccessibilityTitle
+				? {title: 'i18n.oblique.accessibility-statement.statement.title'}
+				: undefined,
 		};
 	}
 
@@ -39,9 +41,9 @@ export class ObRouterService {
 			{
 				matcher: (url: UrlSegment[]): UrlMatchResult =>
 					url.length && this.isLangSupported(url[0].path) ? {consumed: [url[0]], posParams: {lang: url[0]}} : null,
-				children: this.router.config
+				children: this.router.config,
 			},
-			{path: '', redirectTo: () => ['', this.translate.defaultLang].join('/')}
+			{path: '', redirectTo: () => ['', this.translate.defaultLang].join('/')},
 		];
 	}
 

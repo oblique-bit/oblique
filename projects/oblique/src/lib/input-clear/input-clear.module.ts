@@ -6,6 +6,6 @@ export {ObInputClearDirective} from './input-clear.directive';
 
 @NgModule({
 	imports: [ObInputClearDirective],
-	exports: [ObInputClearDirective]
+	exports: [ObInputClearDirective],
 })
 export class ObInputClearModule {}

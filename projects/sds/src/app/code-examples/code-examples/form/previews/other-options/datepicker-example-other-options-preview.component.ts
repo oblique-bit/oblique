@@ -10,20 +10,20 @@ import {ObDatepickerModule} from '@oblique/oblique';
 	selector: 'app-datepicker-example-other-options-preview',
 	imports: [DatePipe, MatFormFieldModule, MatInputModule, ObDatepickerModule, ReactiveFormsModule],
 	templateUrl: './datepicker-example-other-options-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss'
+	styleUrl: '../../../../code-example-flex-layout.scss',
 })
 export class DatepickerExampleOtherOptionsPreviewComponent {
 	readonly august1st1891 = new Date(1891, 7, 1);
 	readonly errorControl = new FormControl(new Date(), [
-		(control: FormControl) => (new Date(control.value as Date) < new Date() ? {pastDate: true} : null)
+		(control: FormControl) => (new Date(control.value as Date) < new Date() ? {pastDate: true} : null),
 	]);
 
 	readonly minErrorControl = new FormControl(new Date(), [
-		(control: FormControl) => (new Date(control.value as Date) < new Date() ? {pastDate: true} : null)
+		(control: FormControl) => (new Date(control.value as Date) < new Date() ? {pastDate: true} : null),
 	]);
 
 	readonly maxErrorControl = new FormControl(new Date(), [
-		(control: FormControl) => (new Date(control.value as Date) > new Date() ? {futureDate: true} : null)
+		(control: FormControl) => (new Date(control.value as Date) > new Date() ? {futureDate: true} : null),
 	]);
 	lastDateChange: MatDatepickerInputEvent<any>;
 	lastDateInput: MatDatepickerInputEvent<any>;

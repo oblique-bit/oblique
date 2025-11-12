@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {Component, inject} from '@angular/core';
 import {ObEScrollMode, type ObICollapseBreakpoints, type ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
 import {type Observable, share} from 'rxjs';
@@ -8,7 +9,7 @@ import {DynamicNavigationService} from './dynamic-navigation.service';
 	selector: 'sb-master-layout-sample',
 	standalone: false,
 	templateUrl: './master-layout-sample.component.html',
-	styleUrl: './master-layout-sample.component.scss'
+	styleUrl: './master-layout-sample.component.scss',
 })
 export class MasterLayoutSampleComponent {
 	coverLayout = false;
@@ -222,42 +223,54 @@ export class MasterLayoutSampleComponent {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl?.length > 0;
 	}
 	set hasContactForm(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl = value ? this.infoContact.formUrl : undefined;
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl = value
+			? this.infoContact.formUrl
+			: undefined;
 	}
 
 	get hasContactFormText(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrlText?.length > 0;
 	}
 	set hasContactFormText(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrlText = value ? this.infoContact.formUrlText : undefined;
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrlText = value
+			? this.infoContact.formUrlText
+			: undefined;
 	}
 
 	get hasContactEmail(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.email?.length > 0;
 	}
 	set hasContactEmail(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.email = value ? this.infoContact.email : undefined;
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.email = value
+			? this.infoContact.email
+			: undefined;
 	}
 
 	get hasContactEmailText(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.emailText?.length > 0;
 	}
 	set hasContactEmailText(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.emailText = value ? this.infoContact.emailText : undefined;
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.emailText = value
+			? this.infoContact.emailText
+			: undefined;
 	}
 
 	get hasContactPhone(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.phone?.length > 0;
 	}
 	set hasContactPhone(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.phone = value ? this.infoContact.phone : undefined;
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.phone = value
+			? this.infoContact.phone
+			: undefined;
 	}
 
 	get hasContactPhoneText(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.phoneText?.length > 0;
 	}
 	set hasContactPhoneText(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.phoneText = value ? this.infoContact.phoneText : undefined;
+		this.masterLayout.header.serviceNavigationConfiguration.infoContact.phoneText = value
+			? this.infoContact.phoneText
+			: undefined;
 	}
 
 	get hasProfileLinks(): boolean {
@@ -280,7 +293,7 @@ export class MasterLayoutSampleComponent {
 		this.dynamicNavigationService.addLink({
 			id: `id${crypto.randomUUID()}`,
 			label: 'test',
-			url: 'urlTest'
+			url: 'urlTest',
 		});
 	}
 

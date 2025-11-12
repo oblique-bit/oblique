@@ -14,10 +14,10 @@ export {ObMockNotificationConfig} from './mock-notification.config';
  */
 @NgModule({
 	declarations: [ObMockNotificationComponent],
-	exports: [ObMockNotificationComponent],
 	providers: [
 		{provide: ObNotificationService, useClass: ObMockNotificationService},
-		{provide: ObNotificationConfig, useClass: ObMockNotificationConfig}
-	]
+		{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
+	],
+	exports: [ObMockNotificationComponent],
 })
 export class ObMockNotificationModule {}

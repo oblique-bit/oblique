@@ -9,7 +9,10 @@ export function addJest(jest: boolean): Rule {
 		}
 
 		infoMigration(context, 'Toolchain: Replacing karma/jasmine with jest');
-		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest(), adaptTsConfigSpec()])(tree, context);
+		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest(), adaptTsConfigSpec()])(
+			tree,
+			context
+		);
 	};
 }
 
@@ -34,7 +37,9 @@ function removeJasmine() {
 function addJestDependencies() {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, context: SchematicContext): Tree => {
-		['jest', '@types/jest', 'jest-sonar-reporter', '@angular-builders/jest'].forEach(dependency => addDevDependency(tree, dependency));
+		['jest', '@types/jest', 'jest-sonar-reporter', '@angular-builders/jest'].forEach(dependency =>
+			addDevDependency(tree, dependency)
+		);
 		removeDevDependencies(tree, 'jasmine');
 		return removeDevDependencies(tree, 'karma');
 	};
@@ -44,7 +49,11 @@ function createJestConfigFiles() {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, context: SchematicContext): Tree => {
 		addFile(tree, 'tests/jest.config.js', getTemplate(tree, 'default-jest.config'));
-		addFile(tree, 'tests/setupJest.ts', "import './jestGlobalMocks'; // browser mocks globally available for every test");
+		addFile(
+			tree,
+			'tests/setupJest.ts',
+			"import './jestGlobalMocks'; // browser mocks globally available for every test"
+		);
 		addFile(tree, 'tests/jestGlobalMocks.ts', getTemplate(tree, 'default-jestGlobalMocks.config'));
 
 		return tree;
@@ -59,8 +68,8 @@ function referToJest() {
 			options: {
 				configPath: 'tests/jest.config.js',
 				tsConfig: 'tsconfig.spec.json',
-				'max-workers': ['2']
-			}
+				'max-workers': ['2'],
+			},
 		});
 }
 

@@ -16,8 +16,8 @@ describe('LanguageService', () => {
 				locales: [],
 				default: 'de',
 				disabled: false,
-				display: true
-			}
+				display: true,
+			},
 		} as unknown as ObMasterLayoutConfig;
 
 		it('should throw', () => {
@@ -36,7 +36,7 @@ describe('LanguageService', () => {
 				onLangChange: new Subject<void>(),
 				getBrowserLang: jest.fn(),
 				getDefaultLang: jest.fn(),
-				currentLang: 'de'
+				currentLang: 'de',
 			};
 			jest.spyOn(console, 'warn');
 
@@ -50,11 +50,11 @@ describe('LanguageService', () => {
 								locales: ['de-CH', 'fr-CH', 'it-CH'],
 								default: 'de',
 								disabled: false,
-								display: true
-							}
-						}
-					}
-				]
+								display: true,
+							},
+						},
+					},
+				],
 			});
 			service = TestBed.inject(ObLanguageService);
 			translate = TestBed.inject(TranslateService);
@@ -108,7 +108,7 @@ describe('LanguageService', () => {
 				onLangChange: new Subject<void>(),
 				getBrowserLang: jest.fn(),
 				getDefaultLang: jest.fn(),
-				currentLang: 'de'
+				currentLang: 'de',
 			};
 			const dateAdapterMock = {setLocale: jest.fn()};
 			jest.spyOn(console, 'warn');
@@ -124,11 +124,11 @@ describe('LanguageService', () => {
 								locales: ['de-CH', 'fr-CH', 'it-CH'],
 								default: 'de',
 								disabled: false,
-								display: true
-							}
-						}
-					}
-				]
+								display: true,
+							},
+						},
+					},
+				],
 			});
 			service = TestBed.inject(ObLanguageService);
 			translate = TestBed.inject(TranslateService);

@@ -3,7 +3,14 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {ControlValueAccessor, FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {
+	ControlValueAccessor,
+	FormControl,
+	FormGroup,
+	FormsModule,
+	NG_VALUE_ACCESSOR,
+	ReactiveFormsModule,
+} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatAutocompleteHarness} from '@angular/material/autocomplete/testing';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -26,11 +33,13 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
 	standalone: false,
-	template: ``
+	template: ``,
 })
 class TestParentComponent {
 	model = new FormControl('');
-	autocompleteOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [{label: 'c 5', disabled: false}];
+	autocompleteOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [
+		{label: 'c 5', disabled: false},
+	];
 	inputType = 'text';
 	optionIconPosition = 'start';
 	inputLabel = 'search.title';
@@ -64,10 +73,10 @@ describe(ObAutocompleteComponent.name, () => {
 				ObMockTranslateParamsModule,
 				ObOptionLabelIconModule,
 				CommonModule,
-				MatIconTestingModule
+				MatIconTestingModule,
 			],
 			declarations: [TestParentComponent],
-			providers: [provideObliqueTestingConfiguration(), {provide: ObAutocompleteTextToFindService}]
+			providers: [provideObliqueTestingConfiguration(), {provide: ObAutocompleteTextToFindService}],
 		}).compileComponents();
 	});
 
@@ -133,8 +142,8 @@ describe(ObAutocompleteComponent.name, () => {
 		beforeEach(() => {
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
 				set: {
-					template: `<form [formGroup]="parentFormControl"><ob-autocomplete formControlName="model"></ob-autocomplete></form>`
-				}
+					template: `<form [formGroup]="parentFormControl"><ob-autocomplete formControlName="model"></ob-autocomplete></form>`,
+				},
 			}).createComponent(TestParentComponent);
 			parentComponent = parentFixture.componentInstance;
 			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
@@ -160,7 +169,7 @@ describe(ObAutocompleteComponent.name, () => {
 				[noResultKey]="noResultKey"
 				[formControl]="model"
 				>
-				</ob-autocomplete>`
+				</ob-autocomplete>`,
 		},
 		{
 			caseDescription: 'Form (Template driven)',
@@ -172,39 +181,39 @@ describe(ObAutocompleteComponent.name, () => {
 				[inputLabelKey]="inputLabel"
 				[noResultKey]="noResultKey"
 				[disabled]="isDisabled">
-				</ob-autocomplete>`
-		}
+				</ob-autocomplete>`,
+		},
 	])('$caseDescription', ({template}) => {
 		const firstTestOptionList = [
 			{label: 'unicorn a 1', disabled: false},
 			{label: 'fat unicorn b 2', disabled: false},
 			{label: 'boring b 3', disabled: false},
-			{label: 'fat unicorn c 4', disabled: false}
+			{label: 'fat unicorn c 4', disabled: false},
 		] as ObIAutocompleteInputOption[];
 		const secondTestOptionList = [
 			{label: 'rolling unicorn', disabled: false},
 			{label: 'fat unicorn b 2', disabled: false},
 			{label: 'fat unicorn c 4', disabled: false},
-			{label: 'c 5', disabled: false}
+			{label: 'c 5', disabled: false},
 		] as ObIAutocompleteInputOption[];
 		const optionGroups: ObIAutocompleteInputOptionGroup[] = [
 			{
 				groupLabel: 'group 1',
 				disabled: false,
-				groupOptions: firstTestOptionList
+				groupOptions: firstTestOptionList,
 			},
 			{
 				groupLabel: 'extraordinary fat unicorn',
 				disabled: false,
-				groupOptions: secondTestOptionList
-			}
+				groupOptions: secondTestOptionList,
+			},
 		] as ObIAutocompleteInputOptionGroup[];
 
 		beforeEach(async () => {
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
 				set: {
-					template
-				}
+					template,
+				},
 			}).createComponent(TestParentComponent);
 			parentComponent = parentFixture.componentInstance;
 			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
@@ -235,7 +244,10 @@ describe(ObAutocompleteComponent.name, () => {
 		});
 
 		it('should have a matAutocomplete', async () => {
-			const matAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, MatAutocompleteHarness);
+			const matAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(
+				parentFixture,
+				MatAutocompleteHarness
+			);
 			const host = await matAutocompleteHarness.host();
 			expect(host).toBeTruthy();
 		});
@@ -418,30 +430,42 @@ describe(ObAutocompleteComponent.name, () => {
 			[
 				'dragon',
 				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
-				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}]
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}],
 			],
 			[
 				'Dragon',
 				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
-				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}]
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}],
 			],
-			['1', [{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}], [{label: 'fat dragon 1'}, {label: 'unicorn 1'}]],
+			[
+				'1',
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
+				[{label: 'fat dragon 1'}, {label: 'unicorn 1'}],
+			],
 			['2', [{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}], [{label: 'fat dragon 2'}]],
-			['search term that matches nothing', [{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}], []],
+			[
+				'search term that matches nothing',
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
+				[],
+			],
 			[
 				'',
 				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
-				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}]
+				[{label: 'fat dragon 1'}, {label: 'fat dragon 2'}, {label: 'unicorn 1'}],
 			],
-			['dragon', [{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}], [{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}]],
-			['.', [{label: 'fat.dragon 1'}, {label: 'fat dragon 2'}], [{label: 'fat.dragon 1'}]]
+			[
+				'dragon',
+				[{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}],
+				[{label: 'fat-dragon 1'}, {label: 'fat dragon 2'}],
+			],
+			['.', [{label: 'fat.dragon 1'}, {label: 'fat dragon 2'}], [{label: 'fat.dragon 1'}]],
 		];
 
 		beforeEach(() => {
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
 				set: {
-					template: `<form [formGroup]="parentFormControl"><ob-autocomplete [autocompleteOptions]="autocompleteOptions" formControlName="model"></ob-autocomplete></form>`
-				}
+					template: `<form [formGroup]="parentFormControl"><ob-autocomplete [autocompleteOptions]="autocompleteOptions" formControlName="model"></ob-autocomplete></form>`,
+				},
 			}).createComponent(TestParentComponent);
 
 			parentComponent = parentFixture.componentInstance;

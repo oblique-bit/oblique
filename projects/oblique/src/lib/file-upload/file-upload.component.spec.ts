@@ -12,14 +12,14 @@ describe('ObFileUploadComponent', () => {
 		new File(['sample'], 'sample.txt', {type: 'plain/text'}),
 		new File(['test1'], 'test1.txt', {type: 'plain/text', endings: 'native'}),
 		new File(['sample1'], 'sample1.txt', {type: 'plain/text'}),
-		new File(['sample2'], 'sample2.jpg', {type: 'image/jpg'})
+		new File(['sample2'], 'sample2.jpg', {type: 'image/jpg'}),
 	];
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObFileUploadComponent],
 			schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 	});
 

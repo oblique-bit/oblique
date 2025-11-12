@@ -6,7 +6,7 @@ import {
 	ObIServiceNavigationApplicationIdentifier,
 	ObIServiceNavigationApplicationInfo,
 	ObIServiceNavigationApplicationParsedInfo,
-	ObIServiceNavigationRawApplication
+	ObIServiceNavigationRawApplication,
 } from '../api/service-navigation.api.model';
 import {ObServiceNavigationApplicationStatus} from '../service-navigation.model';
 
@@ -16,7 +16,9 @@ export class ObServiceNavigationApplicationsService {
 
 	getApplications(
 		rootUrl: string
-	): (source$: Observable<ObIServiceNavigationRawApplication[]>) => Observable<ObIServiceNavigationApplicationParsedInfo[]> {
+	): (
+		source$: Observable<ObIServiceNavigationRawApplication[]>
+	) => Observable<ObIServiceNavigationApplicationParsedInfo[]> {
 		return source$ =>
 			source$.pipe(
 				filter(applications => applications?.length > 0),
@@ -31,7 +33,7 @@ export class ObServiceNavigationApplicationsService {
 						name: application.name,
 						url: application.url,
 						image: application.image,
-						status: this.getApplicationStatus(application)
+						status: this.getApplicationStatus(application),
 					}))
 				)
 			);
@@ -52,7 +54,7 @@ export class ObServiceNavigationApplicationsService {
 	): (ObIServiceNavigationApplicationInfo & ObIServiceNavigationRawApplication)[] {
 		return applications.map(application => ({
 			...application,
-			...rawApplications.find(rawApp => rawApp.appID === application.applicationID)
+			...rawApplications.find(rawApp => rawApp.appID === application.applicationID),
 		}));
 	}
 
@@ -61,17 +63,24 @@ export class ObServiceNavigationApplicationsService {
 	) => Observable<ObIServiceNavigationRawApplication[]> {
 		return source$ =>
 			source$.pipe(
-				distinctUntilChanged((previousState: ObIServiceNavigationRawApplication[], newState: ObIServiceNavigationRawApplication[]) => {
-					const newStateIds = newState.map(application => application.appID);
-					return !(previousState.length !== newState.length || previousState.map(app => app.appID).some(id => !newStateIds.includes(id)));
-				})
+				distinctUntilChanged(
+					(previousState: ObIServiceNavigationRawApplication[], newState: ObIServiceNavigationRawApplication[]) => {
+						const newStateIds = newState.map(application => application.appID);
+						return !(
+							previousState.length !== newState.length ||
+							previousState.map(app => app.appID).some(id => !newStateIds.includes(id))
+						);
+					}
+				)
 			);
 	}
 
-	private getApplicationsIdentifiers(applications: ObIServiceNavigationRawApplication[]): ObIServiceNavigationApplicationIdentifier[] {
+	private getApplicationsIdentifiers(
+		applications: ObIServiceNavigationRawApplication[]
+	): ObIServiceNavigationApplicationIdentifier[] {
 		return applications.map(application => ({
 			applicationID: application.appID,
-			childApplicationID: application.childAppID
+			childApplicationID: application.childAppID,
 		}));
 	}
 }

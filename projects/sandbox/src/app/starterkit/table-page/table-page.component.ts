@@ -6,7 +6,7 @@ import type {ObNavTreeItemModel} from '@oblique/oblique';
 	selector: 'sb-table-page',
 	standalone: false,
 	templateUrl: './table-page.component.html',
-	styleUrl: './table-page.component.scss'
+	styleUrl: './table-page.component.scss',
 })
 export class TablePageComponent {
 	selection = new SelectionModel<unknown>(true, []);
@@ -21,7 +21,7 @@ export class TablePageComponent {
 		{position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
 		{position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
+		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 	];
 
 	items: ObNavTreeItemModel[] = [
@@ -43,13 +43,13 @@ export class TablePageComponent {
 								{
 									id: 'tree-item-1-1-1-1',
 									label: 'Item 1.1.1.1',
-									routes: []
-								}
-							]
-						}
-					]
-				}
-			]
+									routes: [],
+								},
+							],
+						},
+					],
+				},
+			],
 		},
 		{
 			id: 'tree-item-2',
@@ -69,14 +69,14 @@ export class TablePageComponent {
 								{
 									id: 'tree-item-2-1-1-1',
 									label: 'Item 2.1.1.1',
-									routes: []
-								}
-							]
-						}
-					]
-				}
-			]
-		}
+									routes: [],
+								},
+							],
+						},
+					],
+				},
+			],
+		},
 	];
 
 	isAllSelected(): boolean {

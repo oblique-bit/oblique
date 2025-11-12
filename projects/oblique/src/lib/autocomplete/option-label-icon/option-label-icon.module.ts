@@ -7,6 +7,6 @@ import {ObIconModule} from './../../icon/icon.module';
 
 @NgModule({
 	imports: [CommonModule, MatIconModule, ObIconModule, ObOptionLabelIconDirective],
-	exports: [ObOptionLabelIconDirective]
+	exports: [ObOptionLabelIconDirective],
 })
 export class ObOptionLabelIconModule {}

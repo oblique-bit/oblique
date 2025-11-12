@@ -17,7 +17,8 @@
 				[indeterminate]="selectionStatus === 'some'"
 				[disabled]="!dataSource.data.length"
 				[aria-label]="
-					(selectionStatus === 'all' ? 'i18n.oblique.file-upload.all.deselect' : 'i18n.oblique.file-upload.all.select') | translate
+					(selectionStatus === 'all' ? 'i18n.oblique.file-upload.all.deselect' : 'i18n.oblique.file-upload.all.select')
+						| translate
 				"
 			/>
 		</th>

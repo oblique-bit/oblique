@@ -7,7 +7,7 @@ import {ObIServiceNavigationApplication} from '../service-navigation.model';
 	templateUrl: './service-navigation-applications.component.html',
 	styleUrls: ['./service-navigation-applications.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-service-navigation-applications'}
+	host: {class: 'ob-service-navigation-applications'},
 })
 export class ObServiceNavigationApplicationsComponent {
 	@Input() applicationsUrl = '';

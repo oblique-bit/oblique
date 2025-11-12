@@ -4,7 +4,7 @@ import {Observable, map, tap} from 'rxjs';
 import {
 	ObISeriviceNavigationHelpResponse,
 	ObIServiceNavigationBackendInfo,
-	ObIServiceNavigationResponse
+	ObIServiceNavigationResponse,
 } from './service-navigation.api.model';
 
 @Injectable({providedIn: 'root'})
@@ -15,7 +15,9 @@ export class ObServiceNavigationInfoApiService {
 		const url = `${rootUrl}api/applications/${appId}/helpinformation`;
 
 		return this.httpClient
-			.get<ObIServiceNavigationResponse<ObISeriviceNavigationHelpResponse>>(url, {params: {lang: language}, withCredentials: true})
+			.get<
+				ObIServiceNavigationResponse<ObISeriviceNavigationHelpResponse>
+			>(url, {params: {lang: language}, withCredentials: true})
 			.pipe(
 				tap(info => this.errorManagement(info, url)),
 				map(info => this.formatData(info))
@@ -28,7 +30,9 @@ export class ObServiceNavigationInfoApiService {
 		}
 	}
 
-	private formatData(info: ObIServiceNavigationResponse<ObISeriviceNavigationHelpResponse>): ObIServiceNavigationBackendInfo {
+	private formatData(
+		info: ObIServiceNavigationResponse<ObISeriviceNavigationHelpResponse>
+	): ObIServiceNavigationBackendInfo {
 		return {
 			description: info.data.title.optionalInformation,
 			helpText: info.data.help.optionalInformation,
@@ -40,8 +44,8 @@ export class ObServiceNavigationInfoApiService {
 				phoneText: info.data.contact.phone.optionalInformation,
 				phone: info.data.contact.phone.phoneNumber,
 				formUrlText: info.data.contact.links[0]?.optionalInformation,
-				formUrl: info.data.contact.links[0]?.link ?? undefined
-			}
+				formUrl: info.data.contact.links[0]?.link ?? undefined,
+			},
 		};
 	}
 }

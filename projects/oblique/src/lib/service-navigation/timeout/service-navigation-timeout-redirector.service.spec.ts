@@ -16,7 +16,7 @@ describe('ServiceNavigationTimeoutRedirectorService', () => {
 	const mockLogoutUrl = jest.fn(() => of(fakeLogoutUrl));
 	const fakeServiceNavigationService = {
 		getLogoutUrl$: mockLogoutUrl,
-		setLogoutTrigger: fakeSetLogoutTrigger
+		setLogoutTrigger: fakeSetLogoutTrigger,
 	};
 
 	beforeEach(() => {
@@ -26,10 +26,13 @@ describe('ServiceNavigationTimeoutRedirectorService', () => {
 				{provide: WINDOW, useValue: fakeWindow},
 				{
 					provide: ObServiceNavigationService,
-					useValue: fakeServiceNavigationService
+					useValue: fakeServiceNavigationService,
 				},
-				{provide: ObServiceNavigationTimeoutCookieService, useValue: {setCookie: fakeSetCookie, setShortCookie: fakeSetShortCookie}}
-			]
+				{
+					provide: ObServiceNavigationTimeoutCookieService,
+					useValue: {setCookie: fakeSetCookie, setShortCookie: fakeSetShortCookie},
+				},
+			],
 		});
 		fakeServiceNavigationService.getLogoutUrl$.mockClear();
 		fakeServiceNavigationService.setLogoutTrigger.mockClear();

@@ -4,10 +4,13 @@ import {map, tap} from 'rxjs/operators';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {WINDOW} from '../../utilities';
 import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
-import {ObIServiceNavigationApplicationIdentifier, ObIServiceNavigationApplicationInfo} from '../api/service-navigation.api.model';
+import {
+	ObIServiceNavigationApplicationIdentifier,
+	ObIServiceNavigationApplicationInfo,
+} from '../api/service-navigation.api.model';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObServiceNavigationApplicationsStoreService {
 	private readonly localStorageKey = 'ObliqueHeaderWidgetApplications';
@@ -30,7 +33,9 @@ export class ObServiceNavigationApplicationsStoreService {
 		applications: ObIServiceNavigationApplicationIdentifier[]
 	): Observable<ObIServiceNavigationApplicationInfo[]> {
 		const cachedApplicationIds = Object.keys(this.cachedApplications);
-		const applicationsToFetch = applications.filter(application => !cachedApplicationIds.includes(this.buildApplicationId(application)));
+		const applicationsToFetch = applications.filter(
+			application => !cachedApplicationIds.includes(this.buildApplicationId(application))
+		);
 
 		return applicationsToFetch.length
 			? this.applicationInfoService.fetchApplicationsInfo(rootUrl, applicationsToFetch).pipe(
@@ -38,7 +43,9 @@ export class ObServiceNavigationApplicationsStoreService {
 					map(() => applications.map(application => this.cachedApplications[this.buildApplicationId(application)]))
 				)
 			: of(
-					applications.map(application => this.buildApplicationId(application)).map(applicationId => this.cachedApplications[applicationId])
+					applications
+						.map(application => this.buildApplicationId(application))
+						.map(applicationId => this.cachedApplications[applicationId])
 				);
 	}
 
@@ -55,7 +62,7 @@ export class ObServiceNavigationApplicationsStoreService {
 			.reduce(
 				(cachedApplications, application) => ({
 					...cachedApplications,
-					[this.buildApplicationId(application)]: application
+					[this.buildApplicationId(application)]: application,
 				}),
 				this.cachedApplications
 			);
@@ -64,7 +71,9 @@ export class ObServiceNavigationApplicationsStoreService {
 		}
 	}
 
-	private buildApplicationId(application: ObIServiceNavigationApplicationInfo | ObIServiceNavigationApplicationIdentifier): string {
+	private buildApplicationId(
+		application: ObIServiceNavigationApplicationInfo | ObIServiceNavigationApplicationIdentifier
+	): string {
 		return `${application.applicationID}_${application.childApplicationID || 0}`;
 	}
 }

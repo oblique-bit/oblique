@@ -4,6 +4,6 @@ import {Component} from '@angular/core';
 	selector: 'app-grid-system-example-grid-preview',
 	standalone: true,
 	templateUrl: './grid-system-example-grid-preview.component.html',
-	styleUrl: './grid-system-example-grid-preview.component.scss'
+	styleUrl: './grid-system-example-grid-preview.component.scss',
 })
 export class GridSystemExampleGridPreviewComponent {}

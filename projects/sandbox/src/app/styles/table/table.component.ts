@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'sb-table',
 	standalone: false,
-	templateUrl: './table.component.html'
+	templateUrl: './table.component.html',
 })
 export class TableComponent {
 	oblique = true;

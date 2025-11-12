@@ -10,7 +10,7 @@ describe('CardCodeExamplesComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [CardCodeExamplesComponent, RouterTestingModule],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(CardCodeExamplesComponent);

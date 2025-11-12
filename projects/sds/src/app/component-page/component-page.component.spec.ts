@@ -9,7 +9,7 @@ describe(ComponentPageComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, RouterTestingModule, ComponentPageComponent]
+			imports: [HttpClientTestingModule, RouterTestingModule, ComponentPageComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ComponentPageComponent);

@@ -66,7 +66,7 @@ import {
 	ObServiceNavigationModule,
 	ObSpinnerModule,
 	ObUnknownRouteModule,
-	ObUnsavedChangesModule
+	ObUnsavedChangesModule,
 } from '@oblique/oblique';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
@@ -125,7 +125,7 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		ServiceNavigationSampleComponent,
 		SpinnerSampleComponent,
 		UnknownRouteSampleComponent,
-		UnsavedChangesSampleComponent
+		UnsavedChangesSampleComponent,
 	],
 	imports: [
 		A11yModule,
@@ -171,9 +171,9 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		ReactiveFormsModule,
 		RouterModule,
 		SamplesRoutingModule,
-		TranslateModule
+		TranslateModule,
 	],
 	exports: [RouterModule],
-	providers: [SampleDataResolver]
+	providers: [SampleDataResolver],
 })
 export class SamplesModule {}

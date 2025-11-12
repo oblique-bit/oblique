@@ -3,7 +3,7 @@ export enum ObEPamsEnvironment {
 	REF = '-r',
 	TEST = '-t',
 	ABN = '-a',
-	PROD = ''
+	PROD = '',
 }
 
 export interface ObIServiceNavigationLink {

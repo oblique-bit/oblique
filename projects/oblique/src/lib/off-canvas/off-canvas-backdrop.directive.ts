@@ -8,7 +8,7 @@ import {Subject} from 'rxjs';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '.ob-off-canvas-backdrop',
-	standalone: true
+	standalone: true,
 })
 export class ObOffCanvasBackdropDirective implements OnInit, OnDestroy {
 	private readonly unsubscribe = new Subject<void>();

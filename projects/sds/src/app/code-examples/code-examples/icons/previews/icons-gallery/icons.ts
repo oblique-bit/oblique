@@ -8,7 +8,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for the homepage in the global navigation.',
 		category: 'Navigation',
 		aliases: ['homepage', 'startseite', 'landing page', 'hauptseite', 'front page', 'index', 'dashboard'],
-		description: 'An icon for a home or start page represented by a house with a pitched roof.'
+		description: 'An icon for a home or start page represented by a house with a pitched roof.',
 	},
 	{
 		name: 'menu',
@@ -16,7 +16,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for opening the main navigation menu.',
 		category: 'Navigation',
 		aliases: ['hamburger', 'navigation', 'navbar', 'menü', 'dropdown', 'burger menu', '3 lines', 'mobile menu'],
-		description: 'Three horizontal lines representing the main menu.'
+		description: 'Three horizontal lines representing the main menu.',
 	},
 	{
 		name: 'apps',
@@ -34,9 +34,9 @@ export const iconMetadata: IconMetadata[] = [
 			'widgets',
 			'services',
 			'service panel',
-			'menu'
+			'menu',
 		],
-		description: '3 by 3 grid of circles representing a collection of applications or services.'
+		description: '3 by 3 grid of circles representing a collection of applications or services.',
 	},
 	{
 		name: 'search',
@@ -44,7 +44,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for a search.',
 		category: 'Navigation',
 		aliases: ['finden', 'suche', 'magnifying glass', 'magnifier', 'lupe', 'query', 'finden', 'lookup', 'discover'],
-		description: 'A magnifying glass symbol representing search functionality.'
+		description: 'A magnifying glass symbol representing search functionality.',
 	},
 	{
 		name: 'login',
@@ -68,9 +68,9 @@ export const iconMetadata: IconMetadata[] = [
 			'account',
 			'authentication',
 			'sign up',
-			'sign-up'
+			'sign-up',
 		],
-		description: 'An arrow pointing to the right into a doorway, indicating login.'
+		description: 'An arrow pointing to the right into a doorway, indicating login.',
 	},
 	{
 		name: 'logout',
@@ -91,9 +91,9 @@ export const iconMetadata: IconMetadata[] = [
 			'beenden',
 			'disconnect',
 			'account',
-			'end session'
+			'end session',
 		],
-		description: 'An arrow pointing to the right out of a doorway, indicating logout.'
+		description: 'An arrow pointing to the right out of a doorway, indicating logout.',
 	},
 	{
 		name: 'bookmark',
@@ -101,15 +101,26 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for saving content as a favorite or bookmark.',
 		category: 'Navigation',
 		aliases: ['favorite', 'lesezeichen', 'save', 'favorit', 'pin', 'merken', 'star', 'speichern'],
-		description: 'A ribbon-shaped symbol representing saving content or adding it to favorites.'
+		description: 'A ribbon-shaped symbol representing saving content or adding it to favorites.',
 	},
 	{
 		name: 'link',
 		purpose: 'single',
 		usage: 'Reserved for links, URLs, and copy link.',
 		category: 'Navigation',
-		aliases: ['verknüpfung', 'hyperlink', 'url', 'weblink', 'connect', 'verbindung', 'chain', 'website', 'www', 'https'],
-		description: 'A diagonally tilted chain of three connected parts, symbolizing a hyperlink or URL.'
+		aliases: [
+			'verknüpfung',
+			'hyperlink',
+			'url',
+			'weblink',
+			'connect',
+			'verbindung',
+			'chain',
+			'website',
+			'www',
+			'https',
+		],
+		description: 'A diagonally tilted chain of three connected parts, symbolizing a hyperlink or URL.',
 	},
 	{
 		oldName: 'unlink',
@@ -131,9 +142,9 @@ export const iconMetadata: IconMetadata[] = [
 			'cut link',
 			'delete connection',
 			'www',
-			'https'
+			'https',
 		],
-		description: 'A broken chain with small fragments or splashes, symbolizing link removal or disconnection.'
+		description: 'A broken chain with small fragments or splashes, symbolizing link removal or disconnection.',
 	},
 	{
 		oldName: 'external',
@@ -160,9 +171,9 @@ export const iconMetadata: IconMetadata[] = [
 			'www',
 			'https',
 			'website',
-			'shortcut'
+			'shortcut',
 		],
-		description: 'External link icon – an arrow pointing out of a square.'
+		description: 'External link icon – an arrow pointing out of a square.',
 	},
 	{
 		name: 'anchor',
@@ -187,15 +198,16 @@ export const iconMetadata: IconMetadata[] = [
 			'weblink',
 			'website',
 			'www',
-			'https'
+			'https',
 		],
-		description: 'A ship anchor symbol indicating an in-page link.'
+		description: 'A ship anchor symbol indicating an in-page link.',
 	},
 	{
 		oldName: 'more',
 		name: 'show-more_vertical',
 		purpose: 'single',
-		usage: 'Reserved for more actions menus and overflows.\nNot intended for expanding table rows; use the chevron_down icon instead.',
+		usage:
+			'Reserved for more actions menus and overflows.\nNot intended for expanding table rows; use the chevron_down icon instead.',
 		category: 'Navigation',
 		aliases: [
 			'vertical',
@@ -211,14 +223,15 @@ export const iconMetadata: IconMetadata[] = [
 			'show more',
 			'three dots',
 			'actions',
-			'menu'
+			'menu',
 		],
-		description: 'Three vertical dots representing a more options menu.'
+		description: 'Three vertical dots representing a more options menu.',
 	},
 	{
 		name: 'show-more_horizontal',
 		purpose: 'single',
-		usage: 'Reserved for more actions menus and overflows.\nNot intended for expanding table rows; use the chevron_down icon instead.',
+		usage:
+			'Reserved for more actions menus and overflows.\nNot intended for expanding table rows; use the chevron_down icon instead.',
 		category: 'Navigation',
 		aliases: [
 			'horizontal',
@@ -234,9 +247,9 @@ export const iconMetadata: IconMetadata[] = [
 			'show more',
 			'three dots',
 			'actions',
-			'menu'
+			'menu',
 		],
-		description: 'Three horizontal dots representing a more options menu.'
+		description: 'Three horizontal dots representing a more options menu.',
 	},
 	{
 		oldName: 'alternate-arrow',
@@ -256,34 +269,58 @@ export const iconMetadata: IconMetadata[] = [
 			'alternate-arrow',
 			'double',
 			'both',
-			'bidirectional'
+			'bidirectional',
 		],
-		description: 'A bidirectional horizontal arrow indicating scrollable content.'
+		description: 'A bidirectional horizontal arrow indicating scrollable content.',
 	},
 	{
 		name: 'scroll_vertical',
 		purpose: 'single',
 		usage: 'Reserved for indicating that an object can be scrolled vertically.',
 		category: 'Navigation',
-		aliases: ['scrollen', 'vertical', 'scroll', 'verschieben', 'move', 'pan', 'alternate-arrow', 'double', 'both', 'bidirectional'],
-		description: 'A bidirectional vertical arrow indicating scrollable content.'
+		aliases: [
+			'scrollen',
+			'vertical',
+			'scroll',
+			'verschieben',
+			'move',
+			'pan',
+			'alternate-arrow',
+			'double',
+			'both',
+			'bidirectional',
+		],
+		description: 'A bidirectional vertical arrow indicating scrollable content.',
 	},
 	{
 		oldName: 'exchange',
 		name: 'swap_horizontal',
 		purpose: 'single',
-		usage: 'Reserved for switching or swapping elements horizontally.\nNot intended to represent paste or replace actions.',
+		usage:
+			'Reserved for switching or swapping elements horizontally.\nNot intended to represent paste or replace actions.',
 		category: 'Navigation',
-		aliases: ['tauschen', 'wechseln', 'switch', 'trade', 'austausch', 'replace', 'flip', 'alternate', 'horizontal', 'exchange'],
-		description: 'Two horizontal arrows pointing in opposite directions, indicating a horizontal swap.'
+		aliases: [
+			'tauschen',
+			'wechseln',
+			'switch',
+			'trade',
+			'austausch',
+			'replace',
+			'flip',
+			'alternate',
+			'horizontal',
+			'exchange',
+		],
+		description: 'Two horizontal arrows pointing in opposite directions, indicating a horizontal swap.',
 	},
 	{
 		name: 'swap_vertical',
 		purpose: 'single',
-		usage: 'Reserved for switching or swapping elements vertically.\nNot intended to represent paste or replace actions.',
+		usage:
+			'Reserved for switching or swapping elements vertically.\nNot intended to represent paste or replace actions.',
 		category: 'Navigation',
 		aliases: ['tauschen', 'wechseln', 'switch', 'trade', 'austausch', 'replace', 'flip', 'alternate', 'vertical'],
-		description: 'Two vertical arrows pointing in opposite directions, indicating a horizontal swap.'
+		description: 'Two vertical arrows pointing in opposite directions, indicating a horizontal swap.',
 	},
 	{
 		oldName: 'repeat',
@@ -293,7 +330,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to retry an action (e.g., resending a request, restart a video), to update data, or rotate an element.\nUse the refresh icon to refresh the content or reset. Use the redo icon to redo the resent user activity.',
 		category: 'Navigation',
 		aliases: ['rotation', 'rotate', 'right', 'turn'],
-		description: 'A clockwise open circle arrow.'
+		description: 'A clockwise open circle arrow.',
 	},
 	{
 		name: 'arrow_counterclockwise',
@@ -314,9 +351,9 @@ export const iconMetadata: IconMetadata[] = [
 			'update',
 			'rotate',
 			'left',
-			'turn'
+			'turn',
 		],
-		description: 'A counterclockwise open circle arrow.'
+		description: 'A counterclockwise open circle arrow.',
 	},
 	{
 		oldName: 'arrow-up',
@@ -325,8 +362,21 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Used to sort content in ascending order.\nTo the top of the page, or for collapsing sections such as menus or accordions use the chevron_up icon.\nTo maximize content view use the expand icon.',
 		category: 'Navigation',
-		aliases: ['arrow', 'pfeil', 'direction', 'oben', 'up', 'aufwärts', 'upwards', 'north', 'ascend', 'top', 'improvement', 'sorting'],
-		description: 'An arrow pointing up.'
+		aliases: [
+			'arrow',
+			'pfeil',
+			'direction',
+			'oben',
+			'up',
+			'aufwärts',
+			'upwards',
+			'north',
+			'ascend',
+			'top',
+			'improvement',
+			'sorting',
+		],
+		description: 'An arrow pointing up.',
 	},
 	{
 		oldName: 'arrow-up-left',
@@ -348,9 +398,9 @@ export const iconMetadata: IconMetadata[] = [
 			'upper',
 			'schräg',
 			'top',
-			'upwards'
+			'upwards',
 		],
-		description: 'An arrow pointing diagonally upwards and to the left.'
+		description: 'An arrow pointing diagonally upwards and to the left.',
 	},
 	{
 		oldName: 'arrow-up-right',
@@ -372,9 +422,9 @@ export const iconMetadata: IconMetadata[] = [
 			'upper',
 			'schräg',
 			'top',
-			'upwards'
+			'upwards',
 		],
-		description: 'An arrow pointing diagonally upwards and to the right.'
+		description: 'An arrow pointing diagonally upwards and to the right.',
 	},
 	{
 		oldName: 'arrow-down',
@@ -395,9 +445,9 @@ export const iconMetadata: IconMetadata[] = [
 			'descend',
 			'bottom',
 			'deterioration',
-			'sorting'
+			'sorting',
 		],
-		description: 'An arrow pointing down.'
+		description: 'An arrow pointing down.',
 	},
 	{
 		oldName: 'arrow-down-left',
@@ -419,9 +469,9 @@ export const iconMetadata: IconMetadata[] = [
 			'lower',
 			'schräg',
 			'bottom',
-			'downwards'
+			'downwards',
 		],
-		description: 'An arrow pointing diagonally downwards and to the left.'
+		description: 'An arrow pointing diagonally downwards and to the left.',
 	},
 	{
 		oldName: 'arrow-down-right',
@@ -444,9 +494,9 @@ export const iconMetadata: IconMetadata[] = [
 			'schräg',
 			'bottom',
 			'diagonal',
-			'downwards'
+			'downwards',
 		],
-		description: 'An arrow pointing diagonally downwards and to the right.'
+		description: 'An arrow pointing diagonally downwards and to the right.',
 	},
 	{
 		oldName: 'arrow-right',
@@ -466,9 +516,9 @@ export const iconMetadata: IconMetadata[] = [
 			'next',
 			'forward',
 			'weiter',
-			'nächste'
+			'nächste',
 		],
-		description: 'An arrow pointing right.'
+		description: 'An arrow pointing right.',
 	},
 	{
 		oldName: 'arrow-left',
@@ -484,9 +534,9 @@ export const iconMetadata: IconMetadata[] = [
 			'left',
 			'linkswärts',
 			'leftwards',
-			'west,\nback,\n\nprevious,\n\nbackward,\n\nzurück'
+			'west,\nback,\n\nprevious,\n\nbackward,\n\nzurück',
 		],
-		description: 'An arrow pointing left.'
+		description: 'An arrow pointing left.',
 	},
 	{
 		oldName: 'chevron-left',
@@ -496,7 +546,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to navigate to the previous element or page (e.g. in menus, pagination, carousels, and buttons) or to expand/collapse vertical sections.',
 		category: 'Navigation',
 		aliases: ['winkel', 'links', 'left,\nback,\n\nprevious,\n\nbackward,\n\nzurück'],
-		description: 'A left-pointing chevron.'
+		description: 'A left-pointing chevron.',
 	},
 	{
 		oldName: 'chevron-small-left',
@@ -505,7 +555,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used in small components to navigate to the previous element or to expand/collapse vertical sections.',
 		category: 'Navigation',
 		aliases: ['winkel', 'links', 'left', 'small', 'klein,\nback,\n\nprevious,\n\nbackward,\n\nzurück'],
-		description: 'A small left-pointing chevron.'
+		description: 'A small left-pointing chevron.',
 	},
 	{
 		oldName: 'chevron-double-left',
@@ -514,7 +564,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Use to indicate multiple steps at once.',
 		category: 'Navigation',
 		aliases: ['doppel', 'double', 'winkel', 'links', 'left', 'fast', 'skip', 'schnell', 'rewind'],
-		description: 'A double left-pointing chevron.'
+		description: 'A double left-pointing chevron.',
 	},
 	{
 		oldName: 'chevron-line-left',
@@ -522,8 +572,22 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to navigate to the first page or to the start of a content sequence (e.g., in pagination).',
 		category: 'Navigation',
-		aliases: ['winkel', 'to', 'line', 'linie', 'links', 'beginning', 'start', 'anfang', 'leftmost', 'erste', 'seite', 'first', 'page'],
-		description: 'A left-pointing chevron with vertical line.'
+		aliases: [
+			'winkel',
+			'to',
+			'line',
+			'linie',
+			'links',
+			'beginning',
+			'start',
+			'anfang',
+			'leftmost',
+			'erste',
+			'seite',
+			'first',
+			'page',
+		],
+		description: 'A left-pointing chevron with vertical line.',
 	},
 	{
 		oldName: 'chevron-right',
@@ -533,7 +597,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to navigate to the next element or page (e.g. in menus, pagination, carousels, or buttons) or to expand/collapse vertical sections.',
 		category: 'Navigation',
 		aliases: ['winkel', 'rechts', 'right', 'next', 'forward', 'weiter', 'nächste'],
-		description: 'A right-pointing chevron.'
+		description: 'A right-pointing chevron.',
 	},
 	{
 		oldName: 'chevron-small-right',
@@ -543,7 +607,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used in small components to navigate to the next element, expand or collapse vertical sections, or indicate hierarchy in breadcrumbs.',
 		category: 'Navigation',
 		aliases: ['winkel', 'rechts', 'right', 'small', 'klein', 'next', 'forward', 'weiter', 'nächste'],
-		description: 'A small right-pointing chevron.'
+		description: 'A small right-pointing chevron.',
 	},
 	{
 		oldName: 'chevron-double-right',
@@ -552,7 +616,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to indicate multiple steps at once.',
 		category: 'Navigation',
 		aliases: ['doppel', 'double', 'winkel', 'rechts', 'right', 'fast', 'skip', 'schnell'],
-		description: 'A double right-pointing chevron.'
+		description: 'A double right-pointing chevron.',
 	},
 	{
 		oldName: 'chevron-line-right',
@@ -560,8 +624,21 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to navigate to the last page or the end of a content sequence (e.g., in pagination).',
 		category: 'Navigation',
-		aliases: ['winkel', 'to', 'line', 'linie', 'rechts', 'finish', 'ende', 'rightmost', 'last', 'page', 'letzte', 'seite'],
-		description: 'A right-pointing chevron with vertical line.'
+		aliases: [
+			'winkel',
+			'to',
+			'line',
+			'linie',
+			'rechts',
+			'finish',
+			'ende',
+			'rightmost',
+			'last',
+			'page',
+			'letzte',
+			'seite',
+		],
+		description: 'A right-pointing chevron with vertical line.',
 	},
 	{
 		oldName: 'chevron-down',
@@ -570,34 +647,37 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to expand sections (such as dropdowns, selects, accordions, or panels).',
 		category: 'Navigation',
 		aliases: ['winkel', 'unten', 'down', 'bottom'],
-		description: 'A downward-pointing chevron.'
+		description: 'A downward-pointing chevron.',
 	},
 	{
 		oldName: 'chevron-small-down',
 		name: 'chevron_down-small',
 		purpose: 'multi',
-		usage: 'Used in small components to expand dropdowns, selects, or panels.\nUse the chevron_down icon to expand accordions.',
+		usage:
+			'Used in small components to expand dropdowns, selects, or panels.\nUse the chevron_down icon to expand accordions.',
 		category: 'Navigation',
 		aliases: ['winkel', 'unten', 'down', 'bottom', 'small', 'klein', 'expand', 'open', 'show', 'dropdown', 'menu'],
-		description: 'A small downward-pointing chevron.'
+		description: 'A small downward-pointing chevron.',
 	},
 	{
 		oldName: 'chevron-up',
 		name: 'chevron_up',
 		purpose: 'multi',
-		usage: 'Used to collapse sections, typically as the opposite of the chevron_down icon, and also to navigate to the top of the page.',
+		usage:
+			'Used to collapse sections, typically as the opposite of the chevron_down icon, and also to navigate to the top of the page.',
 		category: 'Navigation',
 		aliases: ['winkel', 'oben', 'up', 'top', 'collapse', 'close', 'hide', 'dropdown', 'menu'],
-		description: 'An upward-pointing chevron.'
+		description: 'An upward-pointing chevron.',
 	},
 	{
 		oldName: 'chevron-small-up',
 		name: 'chevron_up-small',
 		purpose: 'multi',
-		usage: 'Used in small components to expand dropdowns, selects, or panels.\nTo collapse accordions use the chevron_up icon.',
+		usage:
+			'Used in small components to expand dropdowns, selects, or panels.\nTo collapse accordions use the chevron_up icon.',
 		category: 'Navigation',
 		aliases: ['winkel', 'oben', 'up', 'top', 'small', 'klein', 'collapse', 'close', 'hide', 'dropdown', 'menu'],
-		description: 'A small upward-pointing chevron.'
+		description: 'A small upward-pointing chevron.',
 	},
 	{
 		oldName: 'cog',
@@ -616,9 +696,9 @@ export const iconMetadata: IconMetadata[] = [
 			'customize',
 			'optionen',
 			'konfiguration',
-			'system'
+			'system',
 		],
-		description: 'Settings menu, represented by a gear symbol'
+		description: 'Settings menu, represented by a gear symbol',
 	},
 	{
 		name: 'share',
@@ -626,7 +706,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for sharing an object.',
 		category: 'Interface',
 		aliases: ['teilen', 'send', 'freigeben', 'social media', 'distribute', 'publish', 'senden', 'connect', 'access'],
-		description: 'Three circles connected with lines, representing sharing options.'
+		description: 'Three circles connected with lines, representing sharing options.',
 	},
 	{
 		name: 'filter',
@@ -635,7 +715,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Reserved for filtering search results, data or other content based on specific criteria.\nFor sorting use the arrow_ down and the arrow_up icons.',
 		category: 'Interface',
 		aliases: ['sort', 'filtern', 'refine', 'sortieren', 'funnel', 'narrow', 'trichter', 'kategorisieren', 'refine'],
-		description: 'A funnel-shaped symbol indicating filtering options.'
+		description: 'A funnel-shaped symbol indicating filtering options.',
 	},
 	{
 		oldName: 'filter-descending',
@@ -652,9 +732,9 @@ export const iconMetadata: IconMetadata[] = [
 			'absteigend sortieren',
 			'largest first',
 			'descending order',
-			'high to low'
+			'high to low',
 		],
-		description: 'A vertical downward arrow next to horizontal lines, indicating descending sort order.'
+		description: 'A vertical downward arrow next to horizontal lines, indicating descending sort order.',
 	},
 	{
 		oldName: 'filter-ascending',
@@ -671,9 +751,9 @@ export const iconMetadata: IconMetadata[] = [
 			'aufsteigend sortieren',
 			'smallest first',
 			'ascending order',
-			'low to high'
+			'low to high',
 		],
-		description: 'An upward arrow next to horizontal lines, indicating ascending sort order.'
+		description: 'An upward arrow next to horizontal lines, indicating ascending sort order.',
 	},
 	{
 		name: 'expand',
@@ -682,7 +762,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Reserved for maximizing a view.\nTypically used in pair with the collapse icon.\nFor media full-screen actions use the fullscreen and the fullscreen_exit icons instead.',
 		category: 'Interface',
 		aliases: ['vergrössern', 'maximize', 'fullscreen', 'zoom', 'grow', 'stretch', 'enlarge', 'resize', 'full', 'size'],
-		description: 'Two outward-facing diagonal arrows.'
+		description: 'Two outward-facing diagonal arrows.',
 	},
 	{
 		oldName: 'compress',
@@ -692,7 +772,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Reserved for minimizing a view.\nShould be used in combination with the expand icon.\nFor media full-screen actions use the fullscreen and the fullscreen_exit icons instead.',
 		category: 'Interface',
 		aliases: ['komprimieren', 'minimize', 'schrumpfen', 'verkleinern', 'reduce', 'shrink', 'resize', 'zusammenfalten'],
-		description: 'Two inward-facing diagonal arrows.'
+		description: 'Two inward-facing diagonal arrows.',
 	},
 	{
 		name: 'download',
@@ -700,7 +780,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for file download.',
 		category: 'Interface',
 		aliases: ['herunterladen', 'save file', 'speichern', 'cloud', 'daten holen', 'get file', 'fetch', 'retrieve'],
-		description: 'A downward arrow and a line below, indicating download.'
+		description: 'A downward arrow and a line below, indicating download.',
 	},
 	{
 		name: 'upload',
@@ -709,15 +789,26 @@ export const iconMetadata: IconMetadata[] = [
 			'Reserved for uploading files, content, or other data.\nFor cloud-specific uploads use the cloud_upload icon. For sharing use the share icon.',
 		category: 'Interface',
 		aliases: ['hochladen', 'send', 'senden', 'file', 'datei', 'upload', 'transfer'],
-		description: 'An upward arrow and a line below, indicating upload.'
+		description: 'An upward arrow and a line below, indicating upload.',
 	},
 	{
 		name: 'save',
 		purpose: 'single',
 		usage: 'Reserved for saving changes.',
 		category: 'Interface',
-		aliases: ['speichern', 'store', 'sichern', 'preserve', 'aufbewahren', 'backup', 'record', 'keep', 'diskette', 'floppy disk'],
-		description: 'A floppy disk symbol, indicating a save action.'
+		aliases: [
+			'speichern',
+			'store',
+			'sichern',
+			'preserve',
+			'aufbewahren',
+			'backup',
+			'record',
+			'keep',
+			'diskette',
+			'floppy disk',
+		],
+		description: 'A floppy disk symbol, indicating a save action.',
 	},
 	{
 		oldName: 'pen',
@@ -725,8 +816,20 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Mainly used for editing content.',
 		category: 'Interface',
-		aliases: ['stift', 'edit', 'write', 'bearbeiten', 'modify', 'bleistift', 'farbstift', 'schreiben', 'ändern', 'update', 'rename'],
-		description: 'A diagonal pencil symbol, representing edit or drawing functionality.'
+		aliases: [
+			'stift',
+			'edit',
+			'write',
+			'bearbeiten',
+			'modify',
+			'bleistift',
+			'farbstift',
+			'schreiben',
+			'ändern',
+			'update',
+			'rename',
+		],
+		description: 'A diagonal pencil symbol, representing edit or drawing functionality.',
 	},
 	{
 		oldName: 'printer',
@@ -734,8 +837,18 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used for the print function or to display a print-friendly version.',
 		category: 'Interface',
-		aliases: ['drucker', 'drucken', 'papierform', 'hard copy', 'document', 'ausdruck', 'print out', 'printing', 'paper'],
-		description: 'A printer with a printed page coming out.'
+		aliases: [
+			'drucker',
+			'drucken',
+			'papierform',
+			'hard copy',
+			'document',
+			'ausdruck',
+			'print out',
+			'printing',
+			'paper',
+		],
+		description: 'A printer with a printed page coming out.',
 	},
 	{
 		oldName: 'trash',
@@ -743,16 +856,40 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'single',
 		usage: 'Reserved for deleting an object.',
 		category: 'Interface',
-		aliases: ['papierkorb', 'löschen', 'remove', 'abfalleimer', 'kübel', 'entfernen', 'bin', 'discard', 'garbage', 'eliminate'],
-		description: 'A trash bin symbol, representing a delete action.'
+		aliases: [
+			'papierkorb',
+			'löschen',
+			'remove',
+			'abfalleimer',
+			'kübel',
+			'entfernen',
+			'bin',
+			'discard',
+			'garbage',
+			'eliminate',
+		],
+		description: 'A trash bin symbol, representing a delete action.',
 	},
 	{
 		name: 'clock',
 		purpose: 'multi',
 		usage: 'Used for clock, current time, working hours, timers, or alarms.',
 		category: 'Interface',
-		aliases: ['uhr', 'uhrzeit', 'zeit', 'watch', 'alarm', 'timer', 'timepiece', 'hour', 'minute', 'second', 'recent', 'history'],
-		description: 'An analog clock face showing time.'
+		aliases: [
+			'uhr',
+			'uhrzeit',
+			'zeit',
+			'watch',
+			'alarm',
+			'timer',
+			'timepiece',
+			'hour',
+			'minute',
+			'second',
+			'recent',
+			'history',
+		],
+		description: 'An analog clock face showing time.',
 	},
 	{
 		name: 'history',
@@ -770,17 +907,29 @@ export const iconMetadata: IconMetadata[] = [
 			'records',
 			'time machine',
 			'rotate left',
-			'manage history'
+			'manage history',
 		],
-		description: 'A circular arrow forming a loop with clock hands inside.'
+		description: 'A circular arrow forming a loop with clock hands inside.',
 	},
 	{
 		name: 'calendar',
 		purpose: 'multi',
 		usage: 'Used for dates, date input fields, to represent agendas, scheduling, or calendar-related functions.',
 		category: 'Interface',
-		aliases: ['kalender', 'date', 'termin', 'schedule', 'appointment', 'agenda', 'planner', 'event', 'month', 'day', 'year'],
-		description: 'A paper calendar with top binding.'
+		aliases: [
+			'kalender',
+			'date',
+			'termin',
+			'schedule',
+			'appointment',
+			'agenda',
+			'planner',
+			'event',
+			'month',
+			'day',
+			'year',
+		],
+		description: 'A paper calendar with top binding.',
 	},
 	{
 		name: 'tag',
@@ -789,7 +938,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used for labeling, categorizing, or assigning metadata.\nFor flagging use the flag icon. For payments use the credit-card icon. For tickets use the ticket icon.',
 		category: 'Interface',
 		aliases: ['etikett', 'label', 'markierung', 'keyword', 'category', 'badge', 'classify', 'marker', 'topic', 'price'],
-		description: 'A tag-shaped label with angled edge and circular hole.'
+		description: 'A tag-shaped label with angled edge and circular hole.',
 	},
 	{
 		name: 'camera',
@@ -798,15 +947,16 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to enable the device camera or take photos.\nUse the image icon for placeholders, the video icon for video content, the eye icon for visibility, and the screenshot icon for capturing the screen.',
 		category: 'Interface',
 		aliases: ['kamera', 'photo', 'snapshot', 'capture', 'aufnahme', 'photography', 'shoot', 'record'],
-		description: 'A classic camera with lens and viewfinder.'
+		description: 'A classic camera with lens and viewfinder.',
 	},
 	{
 		name: 'refresh',
 		purpose: 'multi',
-		usage: 'Reserved for refreshing data or syncing content.\nUse the arrow_clockwise icon for retry or update actions.',
+		usage:
+			'Reserved for refreshing data or syncing content.\nUse the arrow_clockwise icon for retry or update actions.',
 		category: 'Interface',
 		aliases: ['aktualisieren', 'reload', 'update', 'neu laden', 'renew', 'sync', 'regenerate', 'reset', 'synchronize'],
-		description: 'Two arrows forming a circle, pointing in an clockwise direction.'
+		description: 'Two arrows forming a circle, pointing in an clockwise direction.',
 	},
 	{
 		name: 'undo',
@@ -814,15 +964,25 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for undoing a recent action.',
 		category: 'Interface',
 		aliases: ['rückgängig', 'zurück', 'revert', 'cancel', 'previous', 'annullieren', 'restore', 'backwards'],
-		description: 'An arrow pointing left, with a curved hook at the other end.'
+		description: 'An arrow pointing left, with a curved hook at the other end.',
 	},
 	{
 		name: 'redo',
 		purpose: 'single',
 		usage: 'Reserved for redoing a recent action.',
 		category: 'Interface',
-		aliases: ['redo', 'repeat', 'arrow', 'redo arrow', 'forward arrow', 'erneut', 'erneut ausführen', 'aktion wiederholen', 'zurücksetzen'],
-		description: 'An arrow pointing right, with a curved hook at the other end.'
+		aliases: [
+			'redo',
+			'repeat',
+			'arrow',
+			'redo arrow',
+			'forward arrow',
+			'erneut',
+			'erneut ausführen',
+			'aktion wiederholen',
+			'zurücksetzen',
+		],
+		description: 'An arrow pointing right, with a curved hook at the other end.',
 	},
 	{
 		oldName: 'zoom-in',
@@ -840,9 +1000,9 @@ export const iconMetadata: IconMetadata[] = [
 			'detail',
 			'scale up',
 			'magnifying glass',
-			'magnifier'
+			'magnifier',
 		],
-		description: 'A magnifying glass with a plus sign inside, indicating zoom in.'
+		description: 'A magnifying glass with a plus sign inside, indicating zoom in.',
 	},
 	{
 		oldName: 'zoom-out',
@@ -860,9 +1020,9 @@ export const iconMetadata: IconMetadata[] = [
 			'distance',
 			'scale down',
 			'magnifying glass',
-			'magnifier'
+			'magnifier',
 		],
-		description: 'A magnifying glass with a minus sign inside, indicating zoom out.'
+		description: 'A magnifying glass with a minus sign inside, indicating zoom out.',
 	},
 	{
 		oldName: 'text-area-left',
@@ -870,8 +1030,17 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'single',
 		usage: 'Reserved for resizing a textarea element (used as part of components).',
 		category: 'Interface',
-		aliases: ['textfeld links', 'resize left', 'adjust left', 'expand left', 'text resize', 'handle left', 'drag left', 'text area'],
-		description: 'A short and long parallel diagonal lines angled downwards to the left.'
+		aliases: [
+			'textfeld links',
+			'resize left',
+			'adjust left',
+			'expand left',
+			'text resize',
+			'handle left',
+			'drag left',
+			'text area',
+		],
+		description: 'A short and long parallel diagonal lines angled downwards to the left.',
 	},
 	{
 		oldName: 'text-area-right',
@@ -879,8 +1048,17 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'single',
 		usage: 'Reserved for resizing a textarea element (used as part of components).',
 		category: 'Interface',
-		aliases: ['textfeld rechts', 'resize right', 'adjust right', 'expand right', 'text resize', 'handle right', 'drag right', 'text area'],
-		description: 'A short and long parallel diagonal lines angled downwards to the right.'
+		aliases: [
+			'textfeld rechts',
+			'resize right',
+			'adjust right',
+			'expand right',
+			'text resize',
+			'handle right',
+			'drag right',
+			'text area',
+		],
+		description: 'A short and long parallel diagonal lines angled downwards to the right.',
 	},
 	{
 		name: 'drag-indicator',
@@ -888,7 +1066,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for draggable elements along a vertical axis.',
 		category: 'Interface',
 		aliases: ['ziehen', 'verschieben', 'drag handle', 'move', 'grab', 'handle', 'gripper', 'reorder', 'drag dots'],
-		description: 'Six dots arranged in two vertical columns.'
+		description: 'Six dots arranged in two vertical columns.',
 	},
 	{
 		name: 'screenshot',
@@ -908,9 +1086,9 @@ export const iconMetadata: IconMetadata[] = [
 			'screen image',
 			'camera',
 			'bildschirmfoto',
-			'bildschirm erfassen'
+			'bildschirm erfassen',
 		],
-		description: 'A four-corner frame with a camera symbol, representing a screenshot or screen capture.'
+		description: 'A four-corner frame with a camera symbol, representing a screenshot or screen capture.',
 	},
 	{
 		name: 'crop',
@@ -918,7 +1096,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for cropping images.',
 		category: 'Interface',
 		aliases: ['zuschneiden', 'trim', 'resize', 'ausschneiden', 'cut', 'frame', 'adjust', 'selection'],
-		description: 'Two overlapping right-angle corners forming a cropping frame.'
+		description: 'Two overlapping right-angle corners forming a cropping frame.',
 	},
 	{
 		oldName: 'wand',
@@ -938,9 +1116,9 @@ export const iconMetadata: IconMetadata[] = [
 			'special effects',
 			'wand',
 			'suggestion',
-			'surprise'
+			'surprise',
 		],
-		description: 'A tilted wand with sparkles around the tip, symbolizing magic.'
+		description: 'A tilted wand with sparkles around the tip, symbolizing magic.',
 	},
 	{
 		oldName: 'eyedropper',
@@ -949,7 +1127,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for select a color with a color picker.',
 		category: 'Interface',
 		aliases: ['pipette', 'farbwähler', 'color selection', 'dropper', 'palette', 'color sample', 'tone', 'hue'],
-		description: 'An eyedropper tool tilted diagonally.'
+		description: 'An eyedropper tool tilted diagonally.',
 	},
 	{
 		name: 'brush',
@@ -957,7 +1135,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent drawing or styling tools.',
 		category: 'Interface',
 		aliases: ['pinsel', 'malen', 'paint', 'kunstpinsel', 'draw', 'painting', 'art', 'stroke'],
-		description: 'A paintbrush with curved bristles.'
+		description: 'A paintbrush with curved bristles.',
 	},
 	{
 		oldName: 'art',
@@ -965,8 +1143,20 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Reserved for colour palettes, colour selection, theme customisation or design-related settings.',
 		category: 'Interface',
-		aliases: ['farbpalette', 'farben', 'colors', 'painting', 'kunst', 'artistic', 'scheme', 'design', 'styles', 'paint', 'theme'],
-		description: 'An artist palette with a paintbrush.'
+		aliases: [
+			'farbpalette',
+			'farben',
+			'colors',
+			'painting',
+			'kunst',
+			'artistic',
+			'scheme',
+			'design',
+			'styles',
+			'paint',
+			'theme',
+		],
+		description: 'An artist palette with a paintbrush.',
 	},
 	{
 		name: 'eraser',
@@ -975,7 +1165,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Intended for manual removal of strokes, shapes, or annotations.\nFor canceling an action or change use the xmark icon;\nfor undo the resent user action use the Undo icon;\nfor deleting objects use the delete icon.',
 		category: 'Interface',
 		aliases: ['radiergummi', 'löschen', 'remove', 'clean', 'entfernen', 'delete', 'clear', 'erase'],
-		description: 'A rubber eraser tilted diagonally.'
+		description: 'A rubber eraser tilted diagonally.',
 	},
 	{
 		name: 'plus',
@@ -984,7 +1174,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used for creating or adding an object (e.g., a row in a table) or for mathematical addition.\nNot intended for expanding content (e.g., accordions or menus); use the chevron icons instead.',
 		category: 'Interface',
 		aliases: ['hinzufügen', 'add', 'new', 'create', 'erstellen', 'positive', 'insert', 'increase'],
-		description: 'A plus sign.'
+		description: 'A plus sign.',
 	},
 	{
 		oldName: 'plus-circle',
@@ -992,8 +1182,20 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Alternative for the plus icon.\nNot intended for expanding the content (e.g. in accordions, menus).',
 		category: 'Interface',
-		aliases: ['kreis', 'circle', 'add button', 'create', 'new', 'hinzufügen', 'new item', 'positive', 'insert', 'create', 'add'],
-		description: 'A plus sign inside a circle.'
+		aliases: [
+			'kreis',
+			'circle',
+			'add button',
+			'create',
+			'new',
+			'hinzufügen',
+			'new item',
+			'positive',
+			'insert',
+			'create',
+			'add',
+		],
+		description: 'A plus sign inside a circle.',
 	},
 	{
 		name: 'minus',
@@ -1002,15 +1204,25 @@ export const iconMetadata: IconMetadata[] = [
 			'Used in certain cases as the opposite of the Plus icon or for mathematical subtraction.\nFor deleting objects, use the delete icon. For manual removal of strokes or annotations use the eraser icon.',
 		category: 'Interface',
 		aliases: ['entfernen', 'remove', 'subtract', 'delete', 'weniger', 'negative', 'reduce', 'decrease'],
-		description: 'A minus sign.'
+		description: 'A minus sign.',
 	},
 	{
 		name: 'minus_circle',
 		purpose: 'multi',
 		usage: 'Alternative for the minus icon.',
 		category: 'Interface',
-		aliases: ['kreis', 'circle', 'remove button', 'delete item', 'entfernen', 'subtract', 'decrease', 'negative', 'reduce'],
-		description: 'A minus sign inside a circle.'
+		aliases: [
+			'kreis',
+			'circle',
+			'remove button',
+			'delete item',
+			'entfernen',
+			'subtract',
+			'decrease',
+			'negative',
+			'reduce',
+		],
+		description: 'A minus sign inside a circle.',
 	},
 	{
 		oldName: 'cards',
@@ -1018,8 +1230,19 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'single',
 		usage: 'Reserved for toggling to grid layout.',
 		category: 'Interface',
-		aliases: ['karten', 'kachelansicht', 'grid view', 'tiles', 'raster', 'gallery', 'thumbnails', 'matrix', 'layout', 'cards'],
-		description: 'A 2 by 2 square grid layout.'
+		aliases: [
+			'karten',
+			'kachelansicht',
+			'grid view',
+			'tiles',
+			'raster',
+			'gallery',
+			'thumbnails',
+			'matrix',
+			'layout',
+			'cards',
+		],
+		description: 'A 2 by 2 square grid layout.',
 	},
 	{
 		name: 'list',
@@ -1038,9 +1261,9 @@ export const iconMetadata: IconMetadata[] = [
 			'sequential',
 			'bullet',
 			'unordered',
-			'tasks'
+			'tasks',
 		],
-		description: 'Three horizontal lines with dots on the left.'
+		description: 'Three horizontal lines with dots on the left.',
 	},
 	{
 		oldName: 'list-paragraph',
@@ -1057,9 +1280,9 @@ export const iconMetadata: IconMetadata[] = [
 			'article',
 			'text blocks',
 			'paragraphs',
-			'document'
+			'document',
 		],
-		description: 'A paragraph symbol next to three horizontal lines.'
+		description: 'A paragraph symbol next to three horizontal lines.',
 	},
 	{
 		name: 'pin',
@@ -1067,16 +1290,36 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Used for pinning elements in place or making content sticky.\nFor location use the location icon.\nTo remember things use the bookmark or the star icons.',
 		category: 'Interface',
-		aliases: ['stecknadel', 'merken', 'fixieren', 'attach', 'festhalten', 'secure', 'push pin', 'thumbtack', 'note', 'remember'],
-		description: 'A pushpin, as used to pin documents on a notice board, depicted in diagonal direction.'
+		aliases: [
+			'stecknadel',
+			'merken',
+			'fixieren',
+			'attach',
+			'festhalten',
+			'secure',
+			'push pin',
+			'thumbtack',
+			'note',
+			'remember',
+		],
+		description: 'A pushpin, as used to pin documents on a notice board, depicted in diagonal direction.',
 	},
 	{
 		name: 'compare',
 		purpose: 'single',
 		usage: 'Reserved to compare two or more objects.',
 		category: 'Interface',
-		aliases: ['vergleichen', 'side by side', 'gegenüberstellen', 'contrast', 'unterschiede', 'similarities', 'evaluate', 'assessment'],
-		description: 'Two columns, each with squares on top and three horizontal lines underneath.'
+		aliases: [
+			'vergleichen',
+			'side by side',
+			'gegenüberstellen',
+			'contrast',
+			'unterschiede',
+			'similarities',
+			'evaluate',
+			'assessment',
+		],
+		description: 'Two columns, each with squares on top and three horizontal lines underneath.',
 	},
 	{
 		name: 'inbox',
@@ -1085,7 +1328,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Reserved for inboxes, such as mail inboxes, task inboxes, or central task depots.\nCan be used with the badge component to display the number of messages.\nFor notifications use the notification icon.',
 		category: 'Communication',
 		aliases: ['messages', 'posteingang', 'mail', 'email', 'notifications', 'mailbox', 'nachrichten', 'unread'],
-		description: 'A paper tray, representing an inbox.'
+		description: 'A paper tray, representing an inbox.',
 	},
 	{
 		name: 'phone',
@@ -1094,7 +1337,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used before a phone number or for a content related to phone calls.\nFor call centers or support phone lines use the headset icon. For general support content use the support icon.',
 		category: 'Communication',
 		aliases: ['telefon', 'call', 'anruf', 'contact', 'mobile', 'cell', 'handy', 'telephone', 'dial out', 'natel'],
-		description: 'The handset of a traditional telephone.'
+		description: 'The handset of a traditional telephone.',
 	},
 	{
 		name: 'fax',
@@ -1102,8 +1345,17 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Used for fax numbers or the option to send and receive faxes.\nFor printing use the print icon. For phone numbers use the phone, support, or headset icon depending on the context.',
 		category: 'Communication',
-		aliases: ['faxgerät', 'telecopier', 'faxen', 'send fax', 'document transfer', 'telefax', 'facsimile', 'fax machine'],
-		description: 'A fax machine with a paper in its tray.'
+		aliases: [
+			'faxgerät',
+			'telecopier',
+			'faxen',
+			'send fax',
+			'document transfer',
+			'telefax',
+			'facsimile',
+			'fax machine',
+		],
+		description: 'A fax machine with a paper in its tray.',
 	},
 	{
 		oldName: 'lifering',
@@ -1125,9 +1377,9 @@ export const iconMetadata: IconMetadata[] = [
 			'lifebuoy',
 			'life preserver',
 			'sos',
-			'bay watch'
+			'bay watch',
 		],
-		description: 'A round, segmented ring buoy, symbolizing support or help.'
+		description: 'A round, segmented ring buoy, symbolizing support or help.',
 	},
 	{
 		name: 'headset',
@@ -1135,8 +1387,20 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Used for call centers or direct support phone lines.\nFor general support or help content use the support icon. For FAQ use the question icon.',
 		category: 'Communication',
-		aliases: ['kopfhörer', 'audio', 'sound', 'listen', 'microphone', 'hören', 'headset', 'earphones', 'headphones', 'live', 'call center'],
-		description: 'An over-ear headset with microphone.'
+		aliases: [
+			'kopfhörer',
+			'audio',
+			'sound',
+			'listen',
+			'microphone',
+			'hören',
+			'headset',
+			'earphones',
+			'headphones',
+			'live',
+			'call center',
+		],
+		description: 'An over-ear headset with microphone.',
 	},
 	{
 		oldName: 'language',
@@ -1145,8 +1409,17 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Reserved for multilingual language translation.\nNot intended for regular language selection (DE/IT/FR/RM/EN); for that use the related Oblique language switcher component.',
 		category: 'Communication',
-		aliases: ['sprache', 'übersetzung', 'translation', 'idioma', 'localization', 'multilingual', 'interpreter', 'languages'],
-		description: 'Latin letter A next to a non-Latin character.'
+		aliases: [
+			'sprache',
+			'übersetzung',
+			'translation',
+			'idioma',
+			'localization',
+			'multilingual',
+			'interpreter',
+			'languages',
+		],
+		description: 'Latin letter A next to a non-Latin character.',
 	},
 	{
 		name: 'globe',
@@ -1154,8 +1427,21 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Used for the world in general, coordinates, time zones, international topics. Also to represent global communication, connectivity, the internet, or networks.\nFor multilingual or translation contexts use the translate icon. For geographic maps use the map icon.',
 		category: 'Communication',
-		aliases: ['weltkugel', 'world', 'erde', 'international', 'global', 'planet', 'earth', 'atlas', 'worldwide', 'map', 'internet', 'www'],
-		description: 'A wireframe-style globe with meridians and parallels.'
+		aliases: [
+			'weltkugel',
+			'world',
+			'erde',
+			'international',
+			'global',
+			'planet',
+			'earth',
+			'atlas',
+			'worldwide',
+			'map',
+			'internet',
+			'www',
+		],
+		description: 'A wireframe-style globe with meridians and parallels.',
 	},
 	{
 		oldName: 'bullhorn',
@@ -1175,9 +1461,9 @@ export const iconMetadata: IconMetadata[] = [
 			'public',
 			'bullhorn',
 			'news',
-			'loudspeaker'
+			'loudspeaker',
 		],
-		description: "A handheld megaphone or loudspeaker, as used to amplify a person's voice."
+		description: "A handheld megaphone or loudspeaker, as used to amplify a person's voice.",
 	},
 	{
 		name: 'rss',
@@ -1185,7 +1471,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for RSS feeds.',
 		category: 'Communication',
 		aliases: ['feed', 'news', 'updates', 'syndication', 'abonnement', 'newsfeed', 'subscribe', 'channel'],
-		description: 'The RSS symbol: dot with two curved lines. Indicates a broadcast or feed signal.'
+		description: 'The RSS symbol: dot with two curved lines. Indicates a broadcast or feed signal.',
 	},
 	{
 		name: 'reply',
@@ -1193,7 +1479,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for replying to a message thread.',
 		category: 'Communication',
 		aliases: ['antworten', 'respond', 'answer', 'feedback', 'reaktion', 'message back', 'write back'],
-		description: 'A left arrow with a corner.'
+		description: 'A left arrow with a corner.',
 	},
 	{
 		name: 'forward',
@@ -1201,12 +1487,13 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for forwarding messages.',
 		category: 'Communication',
 		aliases: ['weiterleiten', 'send to', 'share with', 'transfer', 'pass on', 'redirect', 'send forward', 'distribute'],
-		description: 'A right arrow with a corner.'
+		description: 'A right arrow with a corner.',
 	},
 	{
 		name: 'address-book',
 		purpose: 'multi',
-		usage: 'Used for address books or collections of contacts.\nFor user lists or groups of people use the person_group icon.',
+		usage:
+			'Used for address books or collections of contacts.\nFor user lists or groups of people use the person_group icon.',
 		category: 'Communication',
 		aliases: [
 			'adressbuch',
@@ -1219,9 +1506,9 @@ export const iconMetadata: IconMetadata[] = [
 			'people',
 			'person',
 			'book',
-			'address'
+			'address',
 		],
-		description: 'An address book with a simplified person figure on the cover.'
+		description: 'An address book with a simplified person figure on the cover.',
 	},
 	{
 		oldName: 'envelope',
@@ -1241,9 +1528,9 @@ export const iconMetadata: IconMetadata[] = [
 			'kontakt',
 			'envelope',
 			'message',
-			'inbox'
+			'inbox',
 		],
-		description: 'A closed rectangular envelope with a triangular flap.'
+		description: 'A closed rectangular envelope with a triangular flap.',
 	},
 	{
 		oldName: 'envelope-open',
@@ -1260,9 +1547,9 @@ export const iconMetadata: IconMetadata[] = [
 			'gelesene post',
 			'letter',
 			'inbox',
-			'open'
+			'open',
 		],
-		description: 'An open rectangular envelope with a triangular flap.'
+		description: 'An open rectangular envelope with a triangular flap.',
 	},
 	{
 		oldName: 'mail-attachment',
@@ -1270,8 +1557,19 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'single',
 		usage: 'Reserved for emails with an attachment.',
 		category: 'Communication',
-		aliases: ['anhang', 'attachment', 'file', 'dokument', 'document', 'beilage', 'enclosed', 'beigefügt', 'paper', 'clip'],
-		description: 'A closed envelope with a paperclip on the lower-right corner.'
+		aliases: [
+			'anhang',
+			'attachment',
+			'file',
+			'dokument',
+			'document',
+			'beilage',
+			'enclosed',
+			'beigefügt',
+			'paper',
+			'clip',
+		],
+		description: 'A closed envelope with a paperclip on the lower-right corner.',
 	},
 	{
 		oldName: 'speech-bubble',
@@ -1291,9 +1589,9 @@ export const iconMetadata: IconMetadata[] = [
 			'text',
 			'comment',
 			'speech bubble',
-			'message'
+			'message',
 		],
-		description: 'A rectangular speech bubble with no content.'
+		description: 'A rectangular speech bubble with no content.',
 	},
 	{
 		oldName: 'paper-plane',
@@ -1315,9 +1613,9 @@ export const iconMetadata: IconMetadata[] = [
 			'paper',
 			'airplane',
 			'aeroplane',
-			'plane'
+			'plane',
 		],
-		description: 'A paper plane angled upward to the right.'
+		description: 'A paper plane angled upward to the right.',
 	},
 	{
 		oldName: 'bell',
@@ -1339,9 +1637,9 @@ export const iconMetadata: IconMetadata[] = [
 			'alarm',
 			'bell',
 			'reminder',
-			'chime'
+			'chime',
 		],
-		description: 'A bell with a small top handle and rounded clapper visible at the bottom.'
+		description: 'A bell with a small top handle and rounded clapper visible at the bottom.',
 	},
 	{
 		oldName: 'bell-slash',
@@ -1364,9 +1662,9 @@ export const iconMetadata: IconMetadata[] = [
 			'off',
 			'muted',
 			'mute',
-			'slash'
+			'slash',
 		],
-		description: 'A bell crossed by a diagonal line.'
+		description: 'A bell crossed by a diagonal line.',
 	},
 	{
 		name: 'shopping-cart',
@@ -1374,7 +1672,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent a shopping cart or basket in main navigation.',
 		category: 'Physical items and infrastructure',
 		aliases: ['cart', 'warenkorb', 'basket', 'einkaufswagen', 'checkout', 'purchase', 'kaufen', 'trolley'],
-		description: 'A shopping cart that you might find in a supermarket.'
+		description: 'A shopping cart that you might find in a supermarket.',
 	},
 	{
 		name: 'map',
@@ -1383,7 +1681,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Reserved for representing a geographical map.\nFor physical addresses use the location or mail icon; for global context se the globe icon.',
 		category: 'Physical items and infrastructure',
 		aliases: ['karte', 'landkarte', 'geography', 'navigation', 'plan', 'route', 'atlas', 'directions', 'location'],
-		description: 'A paper map with creases.'
+		description: 'A paper map with creases.',
 	},
 	{
 		oldName: 'map-marker',
@@ -1393,7 +1691,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to represent a physical address, position, or geographic location.\nNot intended for status indicators or highlighting informational content.',
 		category: 'Physical items and infrastructure',
 		aliases: ['standort', 'pin', 'position', 'ort', 'place', 'gps', 'coordinates', 'address', 'map'],
-		description: 'A map marker with circular center.'
+		description: 'A map marker with circular center.',
 	},
 	{
 		name: 'compass',
@@ -1416,9 +1714,9 @@ export const iconMetadata: IconMetadata[] = [
 			'location cardinal directions north',
 			'south',
 			'east',
-			'west'
+			'west',
 		],
-		description: 'A navigation compass.'
+		description: 'A navigation compass.',
 	},
 	{
 		oldName: 'bullseye',
@@ -1439,9 +1737,9 @@ export const iconMetadata: IconMetadata[] = [
 			'crosshair',
 			'reticule',
 			'reticle',
-			'purpose'
+			'purpose',
 		],
-		description: 'A target shape with central bullseye.'
+		description: 'A target shape with central bullseye.',
 	},
 	{
 		name: 'calculator',
@@ -1449,15 +1747,16 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used in contexts related to calculations, mathematics, or financial input.',
 		category: 'Physical items and infrastructure',
 		aliases: ['rechner', 'math', 'berechnen', 'compute', 'calculation', 'numbers', 'taschenrechner', 'counting'],
-		description: 'A calculator with buttons and display.'
+		description: 'A calculator with buttons and display.',
 	},
 	{
 		name: 'graduation-cap',
 		purpose: 'multi',
-		usage: 'Used to represent education, learning, academic content in an international context, or for academic graduation.',
+		usage:
+			'Used to represent education, learning, academic content in an international context, or for academic graduation.',
 		category: 'Physical items and infrastructure',
 		aliases: ['education', 'graduation', 'academic', 'university', 'learning', 'student', 'cas', 'bachelor', 'master'],
-		description: 'A graduation cap, worn on the head of students graduating from college or university.'
+		description: 'A graduation cap, worn on the head of students graduating from college or university.',
 	},
 	{
 		name: 'book',
@@ -1465,15 +1764,25 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for various content concerning reading, writing, learning, and schooling.',
 		category: 'Physical items and infrastructure',
 		aliases: ['buch', 'literature', 'reading', 'publication', 'lesen', 'bibliothek', 'manual', 'education'],
-		description: 'A closed hardcover book, shown from the front.'
+		description: 'A closed hardcover book, shown from the front.',
 	},
 	{
 		name: 'key',
 		purpose: 'multi',
 		usage: 'Used to represent access, authentication, security, or credentials.',
 		category: 'Physical items and infrastructure',
-		aliases: ['schlüssel', 'zugang', 'access', 'passwort', 'password', 'secure', 'security', 'authorization', 'authentication'],
-		description: 'A classic key with round head and teeth.'
+		aliases: [
+			'schlüssel',
+			'zugang',
+			'access',
+			'passwort',
+			'password',
+			'secure',
+			'security',
+			'authorization',
+			'authentication',
+		],
+		description: 'A classic key with round head and teeth.',
 	},
 	{
 		name: 'bundeshaus',
@@ -1481,8 +1790,19 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Reserved to represent the Bundeshaus (Federal Parliament) or a federal department (Bundesamt).\nNot intended for other buildings or institutions.',
 		category: 'Physical items and infrastructure',
-		aliases: ['parliament', 'regierung', 'schweiz', 'bern', 'federal house', 'switzerland', 'politik', 'government', 'swiss', 'country'],
-		description: 'A stylized image of the Swiss Federal Palace with dome and side towers.'
+		aliases: [
+			'parliament',
+			'regierung',
+			'schweiz',
+			'bern',
+			'federal house',
+			'switzerland',
+			'politik',
+			'government',
+			'swiss',
+			'country',
+		],
+		description: 'A stylized image of the Swiss Federal Palace with dome and side towers.',
 	},
 	{
 		name: 'coffee',
@@ -1490,15 +1810,27 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for a break time, refreshments, or coffee.',
 		category: 'Physical items and infrastructure',
 		aliases: ['kaffee', 'tasse', 'drink', 'cup', 'getränk', 'break', 'brew', 'caffeine', 'pause', 'cafe', 'buffet'],
-		description: 'A coffee cup on a small saucer.'
+		description: 'A coffee cup on a small saucer.',
 	},
 	{
 		name: 'flask',
 		purpose: 'multi',
 		usage: 'Used to represent science, laboratories, or experimental features.',
 		category: 'Physical items and infrastructure',
-		aliases: ['kolben', 'labor', 'experimental', 'science', 'chemie', 'test', 'laboratory', 'research', 'labs', 'erlenmeyer', 'beaker'],
-		description: 'A rounded-bottom flask with thin neck.'
+		aliases: [
+			'kolben',
+			'labor',
+			'experimental',
+			'science',
+			'chemie',
+			'test',
+			'laboratory',
+			'research',
+			'labs',
+			'erlenmeyer',
+			'beaker',
+		],
+		description: 'A rounded-bottom flask with thin neck.',
 	},
 	{
 		name: 'dog',
@@ -1506,7 +1838,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent dogs, and in some cases, broader animal-related content.',
 		category: 'Physical items and infrastructure',
 		aliases: ['hund', 'haustier', 'pet', 'animal', 'tier', 'canine', 'companion'],
-		description: 'A dog head in profile.'
+		description: 'A dog head in profile.',
 	},
 	{
 		name: 'horse',
@@ -1514,16 +1846,17 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent horses.',
 		category: 'Physical items and infrastructure',
 		aliases: ['pferd', 'tier', 'animal', 'equine', 'reiten', 'riding', 'steed', 'livestock'],
-		description: 'A horse head in profile.'
+		description: 'A horse head in profile.',
 	},
 	{
 		oldName: 'balance',
 		name: 'justice-scales',
 		purpose: 'single',
-		usage: 'Reserved for legal topics, official regulations, and laws currently in force.\nFor comparisons use the compare icon.',
+		usage:
+			'Reserved for legal topics, official regulations, and laws currently in force.\nFor comparisons use the compare icon.',
 		category: 'Physical items and infrastructure',
 		aliases: ['waage', 'balance', 'gerechtigkeit', 'justice', 'recht', 'fairness', 'law', 'equality', 'scales'],
-		description: 'A classic balance scale.'
+		description: 'A classic balance scale.',
 	},
 	{
 		oldName: 'balance-slash',
@@ -1544,9 +1877,9 @@ export const iconMetadata: IconMetadata[] = [
 			'balance',
 			'law',
 			'no',
-			'off'
+			'off',
 		],
-		description: 'A classic balance scale with a diagonal line crossing through it.'
+		description: 'A classic balance scale with a diagonal line crossing through it.',
 	},
 	{
 		oldName: 'scroll',
@@ -1554,8 +1887,17 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'May be used for structured documents such as declarations, transcripts, formal lists, or receipts.',
 		category: 'Physical items and infrastructure',
-		aliases: ['schriftrolle', 'document', 'ancient text', 'papyrus', 'pergament', 'historical document', 'old text', 'record'],
-		description: 'A vertical manuscript with rolled top and bottom edges, and text lines.'
+		aliases: [
+			'schriftrolle',
+			'document',
+			'ancient text',
+			'papyrus',
+			'pergament',
+			'historical document',
+			'old text',
+			'record',
+		],
+		description: 'A vertical manuscript with rolled top and bottom edges, and text lines.',
 	},
 	{
 		name: 'credit-card',
@@ -1563,7 +1905,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for payment methods, billing information, invoices.',
 		category: 'Physical items and infrastructure',
 		aliases: ['kreditkarte', 'payment', 'zahlung', 'bank card', 'plastic money', 'finance', 'transaction', 'banking'],
-		description: 'A horizontal credit card with a magnetic strip.'
+		description: 'A horizontal credit card with a magnetic strip.',
 	},
 	{
 		name: 'coins',
@@ -1571,7 +1913,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent money, currency, or coins.\nFor payment methods use the credit-card card icon.',
 		category: 'Physical items and infrastructure',
 		aliases: ['münzen', 'geld', 'money', 'currency', 'cash', 'finance', 'payment', 'wealth'],
-		description: 'A vertical stack of coins with one front-facing coin marked with the number 5.'
+		description: 'A vertical stack of coins with one front-facing coin marked with the number 5.',
 	},
 	{
 		name: 'magnet',
@@ -1579,15 +1921,26 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent attraction or sticky behavior, such as snap-to-grid or edge alignment.',
 		category: 'Physical items and infrastructure',
 		aliases: ['magnet', 'anziehung', 'attraction', 'force', 'magnetisch', 'pull', 'attract', 'polarized'],
-		description: 'A U-shaped magnet.'
+		description: 'A U-shaped magnet.',
 	},
 	{
 		name: 'briefcase',
 		purpose: 'multi',
 		usage: 'Used for work-related topics, job vacancies, or business services.',
 		category: 'Physical items and infrastructure',
-		aliases: ['aktentasche', 'business', 'arbeit', 'work', 'job', 'career', 'office', 'professional', 'suitcase', 'toolbox'],
-		description: 'A case with a handle on top.'
+		aliases: [
+			'aktentasche',
+			'business',
+			'arbeit',
+			'work',
+			'job',
+			'career',
+			'office',
+			'professional',
+			'suitcase',
+			'toolbox',
+		],
+		description: 'A case with a handle on top.',
 	},
 	{
 		name: 'certificate',
@@ -1595,7 +1948,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent official documents, certifications, approvals, or credentials.',
 		category: 'Physical items and infrastructure',
 		aliases: ['zertifikat', 'diploma', 'achievement', 'qualification', 'urkunde', 'document', 'credential', 'award'],
-		description: 'A horizontal document with a ribbon badge on the left and horizontal lines indicating text.'
+		description: 'A horizontal document with a ribbon badge on the left and horizontal lines indicating text.',
 	},
 	{
 		name: 'building',
@@ -1604,15 +1957,24 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to represent agencies, public institutions, service locations, or government-owned facilities.\nFor university or museum use the antient-building icon.',
 		category: 'Physical items and infrastructure',
 		aliases: ['gebäude', 'architecture', 'structure', 'office', 'haus', 'construction', 'tower', 'skyscraper'],
-		description: 'A modern multi-story building with multiple windows.'
+		description: 'A modern multi-story building with multiple windows.',
 	},
 	{
 		name: 'hospital',
 		purpose: 'multi',
 		usage: 'Used for medical institutions.',
 		category: 'Physical items and infrastructure',
-		aliases: ['krankenhaus', 'medical', 'healthcare', 'clinic', 'spital', 'emergency', 'healthcare facility', 'medical center'],
-		description: 'A building with a medical cross on top and multiple windows.'
+		aliases: [
+			'krankenhaus',
+			'medical',
+			'healthcare',
+			'clinic',
+			'spital',
+			'emergency',
+			'healthcare facility',
+			'medical center',
+		],
+		description: 'A building with a medical cross on top and multiple windows.',
 	},
 	{
 		oldName: 'university',
@@ -1636,9 +1998,9 @@ export const iconMetadata: IconMetadata[] = [
 			'landmark',
 			'heritage',
 			'classical',
-			'archeological'
+			'archeological',
 		],
-		description: 'A classical or antique building with columns.'
+		description: 'A classical or antique building with columns.',
 	},
 	{
 		oldName: 'industry',
@@ -1647,8 +2009,17 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Used to represent industrial facilities, manufacturing, or production sites. In broader contexts, it may symbolize a company or business.',
 		category: 'Physical items and infrastructure',
-		aliases: ['industry', 'manufacturing', 'production', 'fabrik', 'plant', 'production facility', 'industrial', 'manufacturing plant'],
-		description: 'An industrial building with sawtooth roofline.'
+		aliases: [
+			'industry',
+			'manufacturing',
+			'production',
+			'fabrik',
+			'plant',
+			'production facility',
+			'industrial',
+			'manufacturing plant',
+		],
+		description: 'An industrial building with sawtooth roofline.',
 	},
 	{
 		oldName: 'bed',
@@ -1656,8 +2027,21 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used for places to stay, like hotels or sleeping areas.',
 		category: 'Physical items and infrastructure',
-		aliases: ['bett', 'hotel', 'sleep', 'lodging', 'unterkunft', 'rest', 'bedroom', 'hostel', 'bed', 'occupied', 'furniture', 'hostel'],
-		description: 'A human figure in a bed.'
+		aliases: [
+			'bett',
+			'hotel',
+			'sleep',
+			'lodging',
+			'unterkunft',
+			'rest',
+			'bedroom',
+			'hostel',
+			'bed',
+			'occupied',
+			'furniture',
+			'hostel',
+		],
+		description: 'A human figure in a bed.',
 	},
 	{
 		name: 'car',
@@ -1665,7 +2049,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent driving, vehicles, or transport.',
 		category: 'Physical items and infrastructure',
 		aliases: ['auto', 'fahrzeug', 'vehicle', 'automobile', 'pkw', 'transportation', 'drive', 'motor vehicle'],
-		description: 'A front view of a car.'
+		description: 'A front view of a car.',
 	},
 	{
 		name: 'truck',
@@ -1673,7 +2057,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent delivery, transport, or logistics.',
 		category: 'Physical items and infrastructure',
 		aliases: ['lkw', 'lastwagen', 'transport', 'delivery', 'vehicle', 'lorry', 'freight', 'hauling'],
-		description: 'A side view of a truck.'
+		description: 'A side view of a truck.',
 	},
 	{
 		name: 'wrench',
@@ -1681,7 +2065,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for repair, tools, or technical services.',
 		category: 'Physical items and infrastructure',
 		aliases: ['schraubenschlüssel', 'tool', 'werkzeug', 'repair', 'fix', 'mechanic', 'maintenance', 'spanner'],
-		description: 'A wrench tool displayed at a diagonal angle.'
+		description: 'A wrench tool displayed at a diagonal angle.',
 	},
 	{
 		name: 'ticket',
@@ -1689,7 +2073,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent event tickets, reservations, or bookings.',
 		category: 'Physical items and infrastructure',
 		aliases: ['ticket', 'eintrittskarte', 'admission', 'stub', 'event pass', 'voucher', 'entry', 'pass', 'billet'],
-		description: 'A ticket with a perforated line.'
+		description: 'A ticket with a perforated line.',
 	},
 	{
 		name: 'weight',
@@ -1697,7 +2081,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent physical weight.',
 		category: 'Physical items and infrastructure',
 		aliases: ['gewicht', 'mass', 'schwer', 'heavy', 'scale', 'measurement', 'load', 'heft'],
-		description: 'A heavy weight with a handle.'
+		description: 'A heavy weight with a handle.',
 	},
 	{
 		oldName: 'fitness',
@@ -1706,7 +2090,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent fitness-related content.',
 		category: 'Physical items and infrastructure',
 		aliases: ['fitness', 'hantel', 'workout', 'exercise', 'training', 'gym', 'strength', 'bodybuilding'],
-		description: 'A dumbbell with weight plates on both sides.'
+		description: 'A dumbbell with weight plates on both sides.',
 	},
 	{
 		name: 'artificial-intelligence',
@@ -1737,9 +2121,10 @@ export const iconMetadata: IconMetadata[] = [
 			'zukunftstechnologie',
 			'bot',
 			'virtueller assistent',
-			'tech'
+			'tech',
 		],
-		description: 'The abbreviation AI for Artificial Intelligence inside a square, with a sparkle in the bottom-right corner.'
+		description:
+			'The abbreviation AI for Artificial Intelligence inside a square, with a sparkle in the bottom-right corner.',
 	},
 	{
 		name: 'bot',
@@ -1769,9 +2154,9 @@ export const iconMetadata: IconMetadata[] = [
 			'intelligence',
 			'künstliche intelligenz',
 			'ki',
-			'virtueller assistent'
+			'virtueller assistent',
 		],
-		description: 'A robot figure with a rectangular head and an antenna.'
+		description: 'A robot figure with a rectangular head and an antenna.',
 	},
 	{
 		name: 'cloud',
@@ -1780,7 +2165,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Reserved for cloud-related functionality, such as online storage, cloud computing, or remote services.\nNot intended for weather-related use — consider an external icon sets for weather-specific content.',
 		category: 'Devices and tech',
 		aliases: ['wolke', 'speicher', 'storage', 'online', 'server', 'web', 'remote', 'data center'],
-		description: 'A cloud symbol representing cloud-based technology or storage.'
+		description: 'A cloud symbol representing cloud-based technology or storage.',
 	},
 	{
 		oldName: 'cloud-upload',
@@ -1803,9 +2188,9 @@ export const iconMetadata: IconMetadata[] = [
 			'file',
 			'datei',
 			'upload',
-			'transfer'
+			'transfer',
 		],
-		description: 'A cloud symbol with an upward arrow, representing file upload to the cloud.'
+		description: 'A cloud symbol with an upward arrow, representing file upload to the cloud.',
 	},
 	{
 		name: 'wifi',
@@ -1813,7 +2198,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for everything directly related to a wireless or wi-fi connection.',
 		category: 'Devices and tech',
 		aliases: ['wlan', 'wireless', 'internet', 'network', 'connection', 'verbindung', 'netzwerk', 'hotspot'],
-		description: 'The symbol for a wireless or Wi-Fi connection: curved lines radiating upward from a central point.'
+		description: 'The symbol for a wireless or Wi-Fi connection: curved lines radiating upward from a central point.',
 	},
 	{
 		name: 'antenna',
@@ -1821,15 +2206,24 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent signal transmission, broadcast, or wireless communication.',
 		category: 'Devices and tech',
 		aliases: ['radio transmission', 'radio tower', 'funk antenna', 'antenna'],
-		description: 'A radio tower with circular waves, symbolizing a wireless signal or broadcast'
+		description: 'A radio tower with circular waves, symbolizing a wireless signal or broadcast',
 	},
 	{
 		name: 'database',
 		purpose: 'multi',
 		usage: 'Used for database-related content, such as data storage, structured records, or backend systems.',
 		category: 'Devices and tech',
-		aliases: ['datenbank', 'datenspeicher', 'storage', 'records', 'information', 'data storage', 'server', 'structured data'],
-		description: 'A stack of three cylindrical layers representing a database.'
+		aliases: [
+			'datenbank',
+			'datenspeicher',
+			'storage',
+			'records',
+			'information',
+			'data storage',
+			'server',
+			'structured data',
+		],
+		description: 'A stack of three cylindrical layers representing a database.',
 	},
 	{
 		name: 'server',
@@ -1837,7 +2231,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent data servers, hosting infrastructure, backend systems, or network services.',
 		category: 'Devices and tech',
 		aliases: ['server', 'host', 'computer', 'web server', 'cloud', 'rechenzentrum', 'service', 'hosting'],
-		description: 'Two horizontal rectangles with dots on the left side representing server units.'
+		description: 'Two horizontal rectangles with dots on the left side representing server units.',
 	},
 	{
 		oldName: 'code-branch',
@@ -1855,17 +2249,28 @@ export const iconMetadata: IconMetadata[] = [
 			'codebase',
 			'repository,\ncode',
 			'development',
-			'github,\n\nbranches'
+			'github,\n\nbranches',
 		],
-		description: 'Three connected circles with one diverging path, suggesting a split or fork in a line.'
+		description: 'Three connected circles with one diverging path, suggesting a split or fork in a line.',
 	},
 	{
 		name: 'bug',
 		purpose: 'single',
 		usage: 'Reserved for software bugs.',
 		category: 'Devices and tech',
-		aliases: ['fehler', 'insekt', 'error', 'problem', 'issue', 'software', 'glitch', 'defect', 'software error', 'report'],
-		description: 'A beetle-like insect with a segmented body, legs, and antennas.'
+		aliases: [
+			'fehler',
+			'insekt',
+			'error',
+			'problem',
+			'issue',
+			'software',
+			'glitch',
+			'defect',
+			'software error',
+			'report',
+		],
+		description: 'A beetle-like insect with a segmented body, legs, and antennas.',
 	},
 	{
 		name: 'keyboard',
@@ -1873,7 +2278,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for keyboard support.',
 		category: 'Devices and tech',
 		aliases: ['tastatur', 'eingabe', 'tippen', 'input', 'type', 'keys', 'schreiben', 'computer input'],
-		description: 'A computer keyboard with buttons and a spacebar on the bottom row.'
+		description: 'A computer keyboard with buttons and a spacebar on the bottom row.',
 	},
 	{
 		name: 'headphones',
@@ -1882,7 +2287,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to represent audio output via headphones or personal listening.\nFor direct support or service lines use the headset icon instead.',
 		category: 'Devices and tech',
 		aliases: ['headphones', 'earphones', 'kopfhörer', 'audio'],
-		description: 'A pair of over-ear headphones.'
+		description: 'A pair of over-ear headphones.',
 	},
 	{
 		oldName: 'audio',
@@ -1890,8 +2295,21 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to represent audio output, sound settings, or full volume.',
 		category: 'Devices and tech',
-		aliases: ['ton', 'lautstärke', 'sound', 'audio', 'musik', 'speaker', 'media', 'high', 'on', 'louder', 'up', 'read aloud'],
-		description: 'A speaker with two sound waves indicating high or full volume.'
+		aliases: [
+			'ton',
+			'lautstärke',
+			'sound',
+			'audio',
+			'musik',
+			'speaker',
+			'media',
+			'high',
+			'on',
+			'louder',
+			'up',
+			'read aloud',
+		],
+		description: 'A speaker with two sound waves indicating high or full volume.',
 	},
 	{
 		oldName: 'audio-low',
@@ -1913,9 +2331,9 @@ export const iconMetadata: IconMetadata[] = [
 			'quiet',
 			'gedämpft',
 			'soft',
-			'on'
+			'on',
 		],
-		description: 'A speaker with one small sound wave indicating low volume.'
+		description: 'A speaker with one small sound wave indicating low volume.',
 	},
 	{
 		oldName: 'audio-mute',
@@ -1940,9 +2358,9 @@ export const iconMetadata: IconMetadata[] = [
 			'slash',
 			'off',
 			'silent',
-			'quiet'
+			'quiet',
 		],
-		description: 'A speaker with a diagonal strikethrough, representing muted or no sound.'
+		description: 'A speaker with a diagonal strikethrough, representing muted or no sound.',
 	},
 	{
 		name: 'microphone',
@@ -1969,9 +2387,9 @@ export const iconMetadata: IconMetadata[] = [
 			'interview',
 			'podcast',
 			'radio',
-			'call'
+			'call',
 		],
-		description: 'A studio microphone on a stand.'
+		description: 'A studio microphone on a stand.',
 	},
 	{
 		oldName: 'microphone-slash',
@@ -2004,9 +2422,9 @@ export const iconMetadata: IconMetadata[] = [
 			'interview',
 			'podcast',
 			'radio',
-			'call'
+			'call',
 		],
-		description: 'A microphone on a stand with a diagonal strikethrough.'
+		description: 'A microphone on a stand with a diagonal strikethrough.',
 	},
 	{
 		name: 'barcode',
@@ -2014,7 +2432,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for product codes, scanning, or inventory tracking.',
 		category: 'Devices and tech',
 		aliases: ['strichcode', 'scan', 'product code', 'upc', 'ean', 'identification', 'scanner', 'product identifier'],
-		description: 'A vertical lines representing a barcode.'
+		description: 'A vertical lines representing a barcode.',
 	},
 	{
 		name: 'qr-code',
@@ -2031,9 +2449,9 @@ export const iconMetadata: IconMetadata[] = [
 			'link code',
 			'square code',
 			'ticket',
-			'link'
+			'link',
 		],
-		description: 'A square QR code symbol.'
+		description: 'A square QR code symbol.',
 	},
 	{
 		name: 'mobile',
@@ -2054,25 +2472,46 @@ export const iconMetadata: IconMetadata[] = [
 			'smartphone',
 			'natel',
 			'screen',
-			'display'
+			'display',
 		],
-		description: 'A portrait smartphone with speaker slit and bottom dot.'
+		description: 'A portrait smartphone with speaker slit and bottom dot.',
 	},
 	{
 		name: 'tablet',
 		purpose: 'multi',
 		usage: 'Used for tablets, touch devices, or tablet-optimized views.',
 		category: 'Devices and tech',
-		aliases: ['tablet', 'ipad', 'device', 'touchscreen', 'pad', 'flachcomputer', 'touch device', 'portable', 'screen', 'display'],
-		description: 'A portrait tablet with speaker slit and bottom dot.'
+		aliases: [
+			'tablet',
+			'ipad',
+			'device',
+			'touchscreen',
+			'pad',
+			'flachcomputer',
+			'touch device',
+			'portable',
+			'screen',
+			'display',
+		],
+		description: 'A portrait tablet with speaker slit and bottom dot.',
 	},
 	{
 		name: 'desktop',
 		purpose: 'multi',
 		usage: 'Used for desktop PCs, monitors, or screen-based layouts.',
 		category: 'Devices and tech',
-		aliases: ['computer', 'pc', 'workstation', 'desktop computer', 'bürorechner', 'station', 'monitor', 'screen', 'display'],
-		description: 'A widescreen desktop monitor with a stand.'
+		aliases: [
+			'computer',
+			'pc',
+			'workstation',
+			'desktop computer',
+			'bürorechner',
+			'station',
+			'monitor',
+			'screen',
+			'display',
+		],
+		description: 'A widescreen desktop monitor with a stand.',
 	},
 	{
 		name: 'lock',
@@ -2094,9 +2533,9 @@ export const iconMetadata: IconMetadata[] = [
 			'restricted',
 			'security',
 			'authentication',
-			'password'
+			'password',
 		],
-		description: 'A closed padlock.'
+		description: 'A closed padlock.',
 	},
 	{
 		oldName: 'unlock',
@@ -2124,9 +2563,9 @@ export const iconMetadata: IconMetadata[] = [
 			'restricted',
 			'security',
 			'authentication',
-			'password'
+			'password',
 		],
-		description: 'An opened padlock.'
+		description: 'An opened padlock.',
 	},
 	{
 		name: 'shield_checkmark',
@@ -2148,9 +2587,9 @@ export const iconMetadata: IconMetadata[] = [
 			'safe icon',
 			'shield with tick',
 			'verified security',
-			'access'
+			'access',
 		],
-		description: 'A shield containing a checkmark symbol.'
+		description: 'A shield containing a checkmark symbol.',
 	},
 	{
 		name: 'shield_lock',
@@ -2172,9 +2611,9 @@ export const iconMetadata: IconMetadata[] = [
 			'secure environment',
 			'locked icon',
 			'shield with lock',
-			'access'
+			'access',
 		],
-		description: 'A shield containing a padlock symbol.'
+		description: 'A shield containing a padlock symbol.',
 	},
 	{
 		name: 'eye',
@@ -2182,8 +2621,21 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Used for toggling visibility on or indicating that content is visible (e.g., passwords). Also used to show detail view or previews.',
 		category: 'Status and feedback',
-		aliases: ['auge', 'open eye', 'show', 'reveal', 'view', 'sichtbar', 'visible', 'visibility', 'watch', 'zeigen', 'preview', 'detail'],
-		description: 'A human eye, looking forward.'
+		aliases: [
+			'auge',
+			'open eye',
+			'show',
+			'reveal',
+			'view',
+			'sichtbar',
+			'visible',
+			'visibility',
+			'watch',
+			'zeigen',
+			'preview',
+			'detail',
+		],
+		description: 'A human eye, looking forward.',
 	},
 	{
 		oldName: 'eye-slash',
@@ -2192,7 +2644,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for toggling visibility off or indicating that content is hidden (e.g., passwords).',
 		category: 'Status and feedback',
 		aliases: ['verstecken', 'hide', 'unsichtbar', 'verbergen', 'mask', 'conceal', 'invisible', 'hidden'],
-		description: 'A human eye with diagonal strikethrough.'
+		description: 'A human eye with diagonal strikethrough.',
 	},
 	{
 		oldName: 'bolt',
@@ -2200,8 +2652,20 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used for electricity, speed, or to draw attention. Also represents energy or lightning.',
 		category: 'Status and feedback',
-		aliases: ['blitz', 'energie', 'power', 'flash', 'schnell', 'speed', 'electricity', 'thunderbolt', 'fast', 'instant', 'energy'],
-		description: 'A zigzag lightning bolt in vertical orientation.'
+		aliases: [
+			'blitz',
+			'energie',
+			'power',
+			'flash',
+			'schnell',
+			'speed',
+			'electricity',
+			'thunderbolt',
+			'fast',
+			'instant',
+			'energy',
+		],
+		description: 'A zigzag lightning bolt in vertical orientation.',
 	},
 	{
 		oldName: 'thumbs-up',
@@ -2223,9 +2687,9 @@ export const iconMetadata: IconMetadata[] = [
 			'upvote',
 			'feedback',
 			'hand',
-			'gesture'
+			'gesture',
 		],
-		description: 'A thumbs-up gesture indicating approval.'
+		description: 'A thumbs-up gesture indicating approval.',
 	},
 	{
 		oldName: 'thumbs-down',
@@ -2245,9 +2709,9 @@ export const iconMetadata: IconMetadata[] = [
 			'downvote',
 			'feedback',
 			'hand',
-			'gesture'
+			'gesture',
 		],
-		description: 'A thumbs-down gesture indicating disapproval.'
+		description: 'A thumbs-down gesture indicating disapproval.',
 	},
 	{
 		oldName: 'smile',
@@ -2255,8 +2719,21 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to show positive feedback or a good experience.',
 		category: 'Status and feedback',
-		aliases: ['glücklich', 'froh', 'smiley', 'smile', 'grinsen', 'lachen', 'positivity', 'joy', 'cheerful', 'emoji', 'emoticon', 'face'],
-		description: 'A happy face with a smile.'
+		aliases: [
+			'glücklich',
+			'froh',
+			'smiley',
+			'smile',
+			'grinsen',
+			'lachen',
+			'positivity',
+			'joy',
+			'cheerful',
+			'emoji',
+			'emoticon',
+			'face',
+		],
+		description: 'A happy face with a smile.',
 	},
 	{
 		oldName: 'frown',
@@ -2278,9 +2755,9 @@ export const iconMetadata: IconMetadata[] = [
 			'emoji',
 			'emoticon',
 			'smiley',
-			'face'
+			'face',
 		],
-		description: 'A frowning face with a downturned smile.'
+		description: 'A frowning face with a downturned smile.',
 	},
 	{
 		name: 'heart',
@@ -2289,7 +2766,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Indicates an item can be liked or favorited (default state). Toggles to the heart_filled when selected.\nFor bookmarking content, use the bookmark icon.',
 		category: 'Status and feedback',
 		aliases: ['herz', 'liebe', 'favourite', 'love', 'gefällt mir', 'like', 'emotion', 'affection'],
-		description: 'A classic love heart, outlined.'
+		description: 'A classic love heart, outlined.',
 	},
 	{
 		oldName: 'heart-filled',
@@ -2299,7 +2776,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Indicates an item has been liked or favorited (selected state). Toggles back to the heart icon when unselected.\nFor bookmarking content, use the bookmark icon.',
 		category: 'Status and feedback',
 		aliases: ['ausgefülltes herz', 'love', 'favourited', 'liked', 'marked', 'saved', 'selected', 'cherished', 'filled'],
-		description: 'A classic love heart, filled.'
+		description: 'A classic love heart, filled.',
 	},
 	{
 		name: 'flag',
@@ -2308,7 +2785,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to mark or report content for review (default state). Toggles to flag_filled when selected.\nFor favorites or bookmarks, use the bookmark, star, or heart icons. For reporting software issues use the bug icon.',
 		category: 'Status and feedback',
 		aliases: ['flagge', 'fahne', 'banner', 'mark', 'markieren', 'indicator', 'report', 'important'],
-		description: 'Outlined simple flag on a vertical pole.'
+		description: 'Outlined simple flag on a vertical pole.',
 	},
 	{
 		oldName: 'flag-filled',
@@ -2317,8 +2794,18 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Indicates that content has been marked or reported for review (selected state).\nFor favorites or bookmarks, use the bookmark, star, or heart icons. For reporting software issues use the bug icon.',
 		category: 'Status and feedback',
-		aliases: ['ausgefüllte flagge', 'flagged', 'marked', 'reported', 'saved', 'bookmarked', 'highlighted', 'pinned', 'filled'],
-		description: 'A filled simple flag on a vertical pole.'
+		aliases: [
+			'ausgefüllte flagge',
+			'flagged',
+			'marked',
+			'reported',
+			'saved',
+			'bookmarked',
+			'highlighted',
+			'pinned',
+			'filled',
+		],
+		description: 'A filled simple flag on a vertical pole.',
 	},
 	{
 		name: 'star',
@@ -2327,7 +2814,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to mark favorites, highlight important content, or represent ratings (e.g., in a 1–5 star system).\nToggles to the star_filled icon when selected.',
 		category: 'Status and feedback',
 		aliases: ['stern', 'bewertung', 'rating', 'favourited', 'highlight', 'wichtig', 'special', 'mark'],
-		description: 'An outlined five-pointed star.'
+		description: 'An outlined five-pointed star.',
 	},
 	{
 		oldName: 'star-filled',
@@ -2336,17 +2823,29 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Indicates that an item has been marked as a favorite, highlighted, or given a rating (e.g., selected state in a 1–5 star system).\nToggles back to the star icon when unselected.',
 		category: 'Status and feedback',
-		aliases: ['ausgefüllter stern', 'rating', 'rated', 'favourited', 'bookmarked', 'saved', 'preferred', 'marked', 'important', 'filled'],
-		description: 'A filled five-pointed star.'
+		aliases: [
+			'ausgefüllter stern',
+			'rating',
+			'rated',
+			'favourited',
+			'bookmarked',
+			'saved',
+			'preferred',
+			'marked',
+			'important',
+			'filled',
+		],
+		description: 'A filled five-pointed star.',
 	},
 	{
 		oldName: 'stop',
 		name: 'stop-gesture',
 		purpose: 'multi',
-		usage: 'Used to signal that an operation, process, or action should be stopped. Can also represent a raised hand gesture.',
+		usage:
+			'Used to signal that an operation, process, or action should be stopped. Can also represent a raised hand gesture.',
 		category: 'Status and feedback',
 		aliases: ['stop', 'anhalten', 'pause', 'end', 'beenden', 'halt', 'abort', 'cease', 'hand'],
-		description: 'A raised open hand.'
+		description: 'A raised open hand.',
 	},
 	{
 		name: 'info',
@@ -2355,7 +2854,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to indicate helpful or additional information; not intended for standalone use.\nUse the info_bold icon for alert messages.',
 		category: 'Status and feedback',
 		aliases: ['mark', 'information', 'hinweis', 'details', 'notice', 'mehr', 'erfahren', 'learn', 'more', 'additional'],
-		description: 'A lower case letter i.'
+		description: 'A lower case letter i.',
 	},
 	{
 		oldName: 'info-circle',
@@ -2377,9 +2876,9 @@ export const iconMetadata: IconMetadata[] = [
 			'erfahren',
 			'learn',
 			'more',
-			'additional'
+			'additional',
 		],
-		description: 'A lower case letter i inside a circle.'
+		description: 'A lower case letter i inside a circle.',
 	},
 	{
 		oldName: 'alert-information',
@@ -2400,9 +2899,9 @@ export const iconMetadata: IconMetadata[] = [
 			'erfahren',
 			'learn',
 			'more',
-			'additional'
+			'additional',
 		],
-		description: 'A lower case bold letter i.'
+		description: 'A lower case bold letter i.',
 	},
 	{
 		oldName: 'help',
@@ -2425,9 +2924,9 @@ export const iconMetadata: IconMetadata[] = [
 			'assistance',
 			'aid',
 			'service',
-			'guidance'
+			'guidance',
 		],
-		description: 'A question mark.'
+		description: 'A question mark.',
 	},
 	{
 		oldName: 'help-circle',
@@ -2452,9 +2951,9 @@ export const iconMetadata: IconMetadata[] = [
 			'assistance',
 			'aid',
 			'service',
-			'guidance'
+			'guidance',
 		],
-		description: 'A circle with a question mark inside, representing help or additional information.'
+		description: 'A circle with a question mark inside, representing help or additional information.',
 	},
 	{
 		oldName: 'warning',
@@ -2463,8 +2962,20 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Used to highlight important content; not intended for standalone usage.\nUse the exclamation_circle icon in input field error states or warning pills, the exclamation_triangle icon for warnings, and the exclamation_bold icon for alert messages or informational content.',
 		category: 'Status and feedback',
-		aliases: ['warnung', '!', 'exclaim', 'alert', 'caution', 'attention', 'achtung', 'notice', 'warning', 'notice', 'issue'],
-		description: 'An exclamation mark.'
+		aliases: [
+			'warnung',
+			'!',
+			'exclaim',
+			'alert',
+			'caution',
+			'attention',
+			'achtung',
+			'notice',
+			'warning',
+			'notice',
+			'issue',
+		],
+		description: 'An exclamation mark.',
 	},
 	{
 		oldName: 'alert-warning',
@@ -2486,15 +2997,16 @@ export const iconMetadata: IconMetadata[] = [
 			'notice',
 			'warning',
 			'notice',
-			'issue'
+			'issue',
 		],
-		description: 'A bold exclamation mark.'
+		description: 'A bold exclamation mark.',
 	},
 	{
 		oldName: 'warning-triangle',
 		name: 'exclamation_triangle',
 		purpose: 'single',
-		usage: 'Reserved for warning in infoboxes (alerts) and warning in notifications.\nDisplayed in combination with the specific color.',
+		usage:
+			'Reserved for warning in infoboxes (alerts) and warning in notifications.\nDisplayed in combination with the specific color.',
 		category: 'Status and feedback',
 		aliases: [
 			'dreieck',
@@ -2512,9 +3024,9 @@ export const iconMetadata: IconMetadata[] = [
 			'notice',
 			'issue',
 			'hazard',
-			'danger'
+			'danger',
 		],
-		description: 'An exclamation mark inside a triangle.'
+		description: 'An exclamation mark inside a triangle.',
 	},
 	{
 		oldName: 'warning-circle',
@@ -2535,9 +3047,9 @@ export const iconMetadata: IconMetadata[] = [
 			'notice',
 			'warning',
 			'notice',
-			'issue'
+			'issue',
 		],
-		description: 'An exclamation mark inside a circle.'
+		description: 'An exclamation mark inside a circle.',
 	},
 	{
 		oldName: 'warning-box',
@@ -2563,9 +3075,9 @@ export const iconMetadata: IconMetadata[] = [
 			'notice',
 			'issue',
 			'hazard',
-			'danger'
+			'danger',
 		],
-		description: 'An exclamation mark inside a diamond shape.'
+		description: 'An exclamation mark inside a diamond shape.',
 	},
 	{
 		name: 'checkmark',
@@ -2585,9 +3097,9 @@ export const iconMetadata: IconMetadata[] = [
 			'positive',
 			'mark',
 			'done',
-			'verification'
+			'verification',
 		],
-		description: 'A simple checkmark.'
+		description: 'A simple checkmark.',
 	},
 	{
 		oldName: 'checkmark-circle',
@@ -2610,9 +3122,9 @@ export const iconMetadata: IconMetadata[] = [
 			'positive',
 			'mark',
 			'done',
-			'verification'
+			'verification',
 		],
-		description: 'A circle with a check mark inside.'
+		description: 'A circle with a check mark inside.',
 	},
 	{
 		oldName: 'alert-success',
@@ -2634,17 +3146,18 @@ export const iconMetadata: IconMetadata[] = [
 			'positive',
 			'mark',
 			'done',
-			'verification'
+			'verification',
 		],
-		description: 'A bold checkmark.'
+		description: 'A bold checkmark.',
 	},
 	{
 		name: 'checkmark_star',
 		purpose: 'multi',
-		usage: 'Used for checkout confirmation by web-shop order process.\nNot intended for common system feedback messages.',
+		usage:
+			'Used for checkout confirmation by web-shop order process.\nNot intended for common system feedback messages.',
 		category: 'Status and feedback',
 		aliases: ['shop check out', 'order', 'shopping', 'erfolgreich gekauft', 'purchase completed'],
-		description: 'An eight-pointed star with rounded corners and a checkmark inside.'
+		description: 'An eight-pointed star with rounded corners and a checkmark inside.',
 	},
 	{
 		oldName: 'cancel',
@@ -2667,9 +3180,9 @@ export const iconMetadata: IconMetadata[] = [
 			'x',
 			'mark',
 			'fehler',
-			'issue'
+			'issue',
 		],
-		description: 'A cross mark formed by two diagonal lines.'
+		description: 'A cross mark formed by two diagonal lines.',
 	},
 	{
 		oldName: 'cancel-circle',
@@ -2693,9 +3206,9 @@ export const iconMetadata: IconMetadata[] = [
 			'x',
 			'mark',
 			'fehler',
-			'issue'
+			'issue',
 		],
-		description: 'A cross mark inside a circle.'
+		description: 'A cross mark inside a circle.',
 	},
 	{
 		oldName: 'alert-error',
@@ -2722,15 +3235,16 @@ export const iconMetadata: IconMetadata[] = [
 			'x',
 			'mark',
 			'fehler',
-			'issue'
+			'issue',
 		],
-		description: 'A bold cross mark.'
+		description: 'A bold cross mark.',
 	},
 	{
 		oldName: 'ban',
 		name: 'prohibition',
 		purpose: 'multi',
-		usage: 'Used to represent prohibition, restriction, or denial of access.\nIndicates a disallowed or forbidden action.',
+		usage:
+			'Used to represent prohibition, restriction, or denial of access.\nIndicates a disallowed or forbidden action.',
 		category: 'Status and feedback',
 		aliases: [
 			'ban',
@@ -2744,9 +3258,10 @@ export const iconMetadata: IconMetadata[] = [
 			'restricted',
 			'forbid',
 			'block',
-			'stop'
+			'stop',
 		],
-		description: 'The prohibition symbol: a circle with a diagonal strikethrough, indicating restriction or forbidden action.'
+		description:
+			'The prohibition symbol: a circle with a diagonal strikethrough, indicating restriction or forbidden action.',
 	},
 	{
 		oldName: 'user',
@@ -2754,8 +3269,19 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to represent a person or a user.',
 		category: 'People and identity',
-		aliases: ['benutzer', 'user', 'account', 'profile', 'person', 'individual', 'member', 'identity', 'avatar', 'customer'],
-		description: 'A simplified human figure with a round head and shoulders.'
+		aliases: [
+			'benutzer',
+			'user',
+			'account',
+			'profile',
+			'person',
+			'individual',
+			'member',
+			'identity',
+			'avatar',
+			'customer',
+		],
+		description: 'A simplified human figure with a round head and shoulders.',
 	},
 	{
 		oldName: 'users',
@@ -2763,8 +3289,18 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to represent a group or collection of people or users.',
 		category: 'People and identity',
-		aliases: ['benutzergruppe', 'group', 'team', 'users', 'community', 'multiple', 'mehrere', 'people', 'collective family'],
-		description: 'A group of three simplified human figures.'
+		aliases: [
+			'benutzergruppe',
+			'group',
+			'team',
+			'users',
+			'community',
+			'multiple',
+			'mehrere',
+			'people',
+			'collective family',
+		],
+		description: 'A group of three simplified human figures.',
 	},
 	{
 		oldName: 'user-checkmark',
@@ -2784,9 +3320,9 @@ export const iconMetadata: IconMetadata[] = [
 			'validated',
 			'trusted',
 			'authenticated',
-			'checkmark'
+			'checkmark',
 		],
-		description: 'A simplified human figure next to a checkmark at the top right corner.'
+		description: 'A simplified human figure next to a checkmark at the top right corner.',
 	},
 	{
 		oldName: 'user-cog',
@@ -2806,9 +3342,9 @@ export const iconMetadata: IconMetadata[] = [
 			'configure',
 			'preferences',
 			'config',
-			'management'
+			'management',
 		],
-		description: 'A simplified human figure next to a gear icon in the top right corner.'
+		description: 'A simplified human figure next to a gear icon in the top right corner.',
 	},
 	{
 		oldName: 'user-pen',
@@ -2828,9 +3364,9 @@ export const iconMetadata: IconMetadata[] = [
 			'modification',
 			'update',
 			'author',
-			'autor'
+			'autor',
 		],
-		description: 'A simplified human figure next to a pencil icon in the top right corner.'
+		description: 'A simplified human figure next to a pencil icon in the top right corner.',
 	},
 	{
 		oldName: 'user-brush',
@@ -2838,8 +3374,19 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to represent a designer, an artist, or a creative professional.',
 		category: 'People and identity',
-		aliases: ['benutzerstil', 'user', 'style', 'profile', 'designer', 'customization', 'anpassen', 'styling', 'personalize', 'customize'],
-		description: 'A simplified human figure next to a brush icon in the top right corner.'
+		aliases: [
+			'benutzerstil',
+			'user',
+			'style',
+			'profile',
+			'designer',
+			'customization',
+			'anpassen',
+			'styling',
+			'personalize',
+			'customize',
+		],
+		description: 'A simplified human figure next to a brush icon in the top right corner.',
 	},
 	{
 		oldName: 'user-code',
@@ -2847,8 +3394,19 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to represent a software developer, or someone involved in coding.',
 		category: 'People and identity',
-		aliases: ['entwickler', 'programmer', 'coder', 'developer', 'user', 'account', 'programmierer', 'tech', 'engineer', 'coding'],
-		description: 'A simplified human figure next to angle brackets representing code in the top right corner.'
+		aliases: [
+			'entwickler',
+			'programmer',
+			'coder',
+			'developer',
+			'user',
+			'account',
+			'programmierer',
+			'tech',
+			'engineer',
+			'coding',
+		],
+		description: 'A simplified human figure next to angle brackets representing code in the top right corner.',
 	},
 	{
 		oldName: 'doctor',
@@ -2856,9 +3414,20 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to represent a medical worker, doctor, or healthcare professionals.',
 		category: 'People and identity',
-		aliases: ['arzt', 'physician', 'professional', 'healthcare', 'worker', 'doktor', 'medical', 'health', 'staff', 'spital'],
+		aliases: [
+			'arzt',
+			'physician',
+			'professional',
+			'healthcare',
+			'worker',
+			'doktor',
+			'medical',
+			'health',
+			'staff',
+			'spital',
+		],
 		description:
-			'A simplified human figure wearing a medical hat, with a medical cross on the chest, representing a healthcare worker or doctor.'
+			'A simplified human figure wearing a medical hat, with a medical cross on the chest, representing a healthcare worker or doctor.',
 	},
 	{
 		name: 'badge',
@@ -2866,7 +3435,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent ID badges or access passes.',
 		category: 'People and identity',
 		aliases: ['abzeichen, credentials, identification, ausweis, badge card, security pass, permit'],
-		description: 'A personal badge with a chip, a person icon, and two horizontal lines representing text.'
+		description: 'A personal badge with a chip, a person icon, and two horizontal lines representing text.',
 	},
 	{
 		name: 'id-card',
@@ -2885,9 +3454,9 @@ export const iconMetadata: IconMetadata[] = [
 			'personalausweis',
 			'badge',
 			'license',
-			'credentials'
+			'credentials',
 		],
-		description: 'A personal identification card with a person icon, and two horizontal lines representing text.'
+		description: 'A personal identification card with a person icon, and two horizontal lines representing text.',
 	},
 	{
 		oldName: 'gender-identity-agender',
@@ -2896,7 +3465,8 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent agender individuals or identity (people who do not identify with any gender).',
 		category: 'People and identity',
 		aliases: ['agender', 'geschlechtslos', 'without', 'genderless', 'neutral', 'non', 'gendered'],
-		description: 'Agender identity symbol: a circle with a horizontal line across the center and a vertical line extending upward.'
+		description:
+			'Agender identity symbol: a circle with a horizontal line across the center and a vertical line extending upward.',
 	},
 	{
 		oldName: 'gender-identity-bigender',
@@ -2906,7 +3476,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Used to represent bigender identity (someone who identifies with both male and female genders).\nNot to be confused with the heterosexuality symbol.',
 		category: 'People and identity',
 		aliases: ['bigender', 'zwei', 'geschlechter', 'dual', 'gender', 'both', 'fluid', 'multi', 'diverse'],
-		description: 'Bigender symbol: circle with an arrow at the top right and a cross at the bottom.'
+		description: 'Bigender symbol: circle with an arrow at the top right and a cross at the bottom.',
 	},
 	{
 		oldName: 'gender-identity-female',
@@ -2915,7 +3485,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used as a representation of women, feminine identity, or female gender.',
 		category: 'People and identity',
 		aliases: ['weiblich', 'frau', 'woman', 'feminine', 'female', 'venus', 'girl'],
-		description: 'Female gender symbol: circle with a cross at the bottom.'
+		description: 'Female gender symbol: circle with a cross at the bottom.',
 	},
 	{
 		oldName: 'gender-identity-male',
@@ -2924,7 +3494,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used as a representation of men, masculine identity, or male gender.',
 		category: 'People and identity',
 		aliases: ['männlich', 'mann', 'man', 'masculine', 'male', 'mars', 'boy'],
-		description: 'Male gender symbol: circle with an arrow at the top right.'
+		description: 'Male gender symbol: circle with an arrow at the top right.',
 	},
 	{
 		oldName: 'gender-identity-gender-expansive',
@@ -2932,9 +3502,19 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'single',
 		usage: 'Used to represent transgender identity.',
 		category: 'People and identity',
-		aliases: ['gender', 'transgender', 'expansive', 'broad', 'expanded', 'identity', 'spectrum', 'erweitert', 'diverse'],
+		aliases: [
+			'gender',
+			'transgender',
+			'expansive',
+			'broad',
+			'expanded',
+			'identity',
+			'spectrum',
+			'erweitert',
+			'diverse',
+		],
 		description:
-			'Transgender symbol: a circle with an arrow at the top right, a cross at the bottom, and a stroked arrow at the top-left side.'
+			'Transgender symbol: a circle with an arrow at the top right, a cross at the bottom, and a stroked arrow at the top-left side.',
 	},
 	{
 		oldName: 'gender-identity-neutrois',
@@ -2943,7 +3523,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent neutrois identity.',
 		category: 'People and identity',
 		aliases: ['neutrois', 'neutral', 'null', 'neither', 'weder noch', 'gender', 'third', 'non-binary', 'nicht-binär'],
-		description: 'Neutrois gender symbol: circle with a vertical line extending downward.'
+		description: 'Neutrois gender symbol: circle with a vertical line extending downward.',
 	},
 	{
 		oldName: 'gender-identity-non-binary',
@@ -2952,7 +3532,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to represent non-binary identity.',
 		category: 'People and identity',
 		aliases: ['nicht-binär', 'enby', 'weder noch', 'queer', 'third', 'diverse'],
-		description: 'Non-binary gender symbol: circle and an upward line with an asterisk on top.'
+		description: 'Non-binary gender symbol: circle and an upward line with an asterisk on top.',
 	},
 	{
 		oldName: 'increase',
@@ -2973,9 +3553,9 @@ export const iconMetadata: IconMetadata[] = [
 			'arrow',
 			'increase',
 			'line',
-			'chart grow'
+			'chart grow',
 		],
-		description: 'A rising zigzag arrow.'
+		description: 'A rising zigzag arrow.',
 	},
 	{
 		oldName: 'decrease',
@@ -2997,9 +3577,9 @@ export const iconMetadata: IconMetadata[] = [
 			'arrow',
 			'decrease',
 			'line',
-			'chart decrease'
+			'chart decrease',
 		],
-		description: 'A falling zigzag arrow.'
+		description: 'A falling zigzag arrow.',
 	},
 	{
 		oldName: 'chart-bar',
@@ -3017,9 +3597,9 @@ export const iconMetadata: IconMetadata[] = [
 			'horizontal',
 			'Data visualisation',
 			'metrics',
-			'bar graph'
+			'bar graph',
 		],
-		description: 'A horizontal bar chart with multiple bars of varying length.'
+		description: 'A horizontal bar chart with multiple bars of varying length.',
 	},
 	{
 		oldName: 'chart',
@@ -3028,8 +3608,17 @@ export const iconMetadata: IconMetadata[] = [
 		usage:
 			'Used to display data in a vertical column chart or diagram.\nFor metrics or performance indicators, consider using the tachometer icon.',
 		category: 'Data visualisation',
-		aliases: ['diagramm', 'graph', 'statistics', 'data visualization', 'vertical', 'Data visualisation', 'metrics', 'visualization'],
-		description: 'A Vertical bar chart with multiple bars of varying length.'
+		aliases: [
+			'diagramm',
+			'graph',
+			'statistics',
+			'data visualization',
+			'vertical',
+			'Data visualisation',
+			'metrics',
+			'visualization',
+		],
+		description: 'A Vertical bar chart with multiple bars of varying length.',
 	},
 	{
 		oldName: 'chart-pie',
@@ -3037,8 +3626,19 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to present data as a pie chart, typically to show proportions or distribution.',
 		category: 'Data visualisation',
-		aliases: ['kreis', 'diagramm', 'pie', 'graph', 'sector graph', 'circular', 'torten', 'kuchen', 'segments', 'proportion'],
-		description: 'Circular pie chart with four segments.'
+		aliases: [
+			'kreis',
+			'diagramm',
+			'pie',
+			'graph',
+			'sector graph',
+			'circular',
+			'torten',
+			'kuchen',
+			'segments',
+			'proportion',
+		],
+		description: 'Circular pie chart with four segments.',
 	},
 	{
 		oldName: 'chart-line',
@@ -3046,8 +3646,18 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used to display trends or continuous data in a line graph.',
 		category: 'Data visualisation',
-		aliases: ['linien', 'diagramm', 'trend', 'graph', 'progress', 'verlauf', 'time series', 'development', 'trajectory'],
-		description: 'Line chart with a single fluctuating line.'
+		aliases: [
+			'linien',
+			'diagramm',
+			'trend',
+			'graph',
+			'progress',
+			'verlauf',
+			'time series',
+			'development',
+			'trajectory',
+		],
+		description: 'Line chart with a single fluctuating line.',
 	},
 	{
 		oldName: 'chart-increase',
@@ -3076,9 +3686,9 @@ export const iconMetadata: IconMetadata[] = [
 			'chart',
 			'bar',
 			'line',
-			'diagramm'
+			'diagramm',
 		],
-		description: 'Line chart with a rising zigzag arrow indicating growth.'
+		description: 'Line chart with a rising zigzag arrow indicating growth.',
 	},
 	{
 		oldName: 'chart-decrease',
@@ -3105,9 +3715,9 @@ export const iconMetadata: IconMetadata[] = [
 			'chart',
 			'bar',
 			'line',
-			'diagramm'
+			'diagramm',
 		],
-		description: 'Line chart with a diagonal zigzag arrow pointing downwards.'
+		description: 'Line chart with a diagonal zigzag arrow pointing downwards.',
 	},
 	{
 		oldName: 'chart-search',
@@ -3132,9 +3742,9 @@ export const iconMetadata: IconMetadata[] = [
 			'graph',
 			'magnifier',
 			'magnifying',
-			'lupe'
+			'lupe',
 		],
-		description: 'Magnifier glass with three chart columns inside the lens.'
+		description: 'Magnifier glass with three chart columns inside the lens.',
 	},
 	{
 		name: 'tachometer',
@@ -3151,9 +3761,9 @@ export const iconMetadata: IconMetadata[] = [
 			'performance',
 			'indicator',
 			'dial',
-			'metrics'
+			'metrics',
 		],
-		description: 'Circular gauge with needle.'
+		description: 'Circular gauge with needle.',
 	},
 	{
 		oldName: 'universal-access',
@@ -3175,9 +3785,10 @@ export const iconMetadata: IconMetadata[] = [
 			'access',
 			'equal',
 			'wcag',
-			'wheelchair'
+			'wheelchair',
 		],
-		description: 'Universal accessibility symbol: stylized human figure with outstretched arms and legs inside a circle.'
+		description:
+			'Universal accessibility symbol: stylized human figure with outstretched arms and legs inside a circle.',
 	},
 	{
 		name: 'wheelchair',
@@ -3202,9 +3813,9 @@ export const iconMetadata: IconMetadata[] = [
 			'zugänglich',
 			'universal',
 			'equal',
-			'wheelchair'
+			'wheelchair',
 		],
-		description: 'The International Symbol of Access: Side view of human figure in a wheelchair.'
+		description: 'The International Symbol of Access: Side view of human figure in a wheelchair.',
 	},
 	{
 		oldName: 'blind',
@@ -3226,9 +3837,9 @@ export const iconMetadata: IconMetadata[] = [
 			'loss',
 			'sight',
 			'disability',
-			'sight'
+			'sight',
 		],
-		description: 'A person walking with a white cane as a mobility aid.'
+		description: 'A person walking with a white cane as a mobility aid.',
 	},
 	{
 		name: 'low-vision',
@@ -3254,10 +3865,10 @@ export const iconMetadata: IconMetadata[] = [
 			'impaired',
 			'loss',
 			'sight',
-			'disability'
+			'disability',
 		],
 		description:
-			'An eye with one diagonal line passing through from top right to bottom left and six diagonal lines (alternating black and white) covering right side.'
+			'An eye with one diagonal line passing through from top right to bottom left and six diagonal lines (alternating black and white) covering right side.',
 	},
 	{
 		oldName: 'deaf',
@@ -3280,17 +3891,28 @@ export const iconMetadata: IconMetadata[] = [
 			'loss',
 			'ear',
 			'aid',
-			'listening'
+			'listening',
 		],
-		description: 'An ear with a broken line across it.'
+		description: 'An ear with a broken line across it.',
 	},
 	{
 		name: 'sign-language',
 		purpose: 'single',
 		usage: 'Indicates that sign language interpretation is provided.',
 		category: 'Accessibility',
-		aliases: ['gebärdensprache', 'signing', 'hand', 'signs', 'deaf', 'communication', 'asl', 'nonverbal', 'language', 'gestures'],
-		description: 'Two open overlapping hands.'
+		aliases: [
+			'gebärdensprache',
+			'signing',
+			'hand',
+			'signs',
+			'deaf',
+			'communication',
+			'asl',
+			'nonverbal',
+			'language',
+			'gestures',
+		],
+		description: 'Two open overlapping hands.',
 	},
 	{
 		name: 'easy-language',
@@ -3309,9 +3931,9 @@ export const iconMetadata: IconMetadata[] = [
 			'communication',
 			'text',
 			'basic',
-			'book'
+			'book',
 		],
-		description: 'An open book with a thumbs-up hand in front, representing easy or accessible language.'
+		description: 'An open book with a thumbs-up hand in front, representing easy or accessible language.',
 	},
 	{
 		name: 'braille',
@@ -3330,9 +3952,9 @@ export const iconMetadata: IconMetadata[] = [
 			'blind',
 			'alphabet',
 			'communication',
-			'text'
+			'text',
 		],
-		description: 'Two Braille letters spelling CH.'
+		description: 'Two Braille letters spelling CH.',
 	},
 	{
 		name: 'audio-description',
@@ -3353,9 +3975,10 @@ export const iconMetadata: IconMetadata[] = [
 			'media',
 			'volume',
 			'sound',
-			'audio'
+			'audio',
 		],
-		description: 'The abbreviation AD followed by sound waves, representing audio description for visually impaired users.'
+		description:
+			'The abbreviation AD followed by sound waves, representing audio description for visually impaired users.',
 	},
 	{
 		oldName: 'closed-captions',
@@ -3378,9 +4001,9 @@ export const iconMetadata: IconMetadata[] = [
 			'caption icon',
 			'audio',
 			'video',
-			'player'
+			'player',
 		],
-		description: 'The abbreviation CC in a frame representing closed captions.'
+		description: 'The abbreviation CC in a frame representing closed captions.',
 	},
 	{
 		oldName: 'git-hub',
@@ -3389,7 +4012,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for links to GitHub pages or to indicate that GitHub is part of the project.',
 		category: 'Social media',
 		aliases: ['github', 'git', 'repository', 'version control', 'code hosting', 'open source', 'development'],
-		description: 'GitHub logo showing Octocat character.'
+		description: 'GitHub logo showing Octocat character.',
 	},
 	{
 		name: 'facebook',
@@ -3397,7 +4020,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to link to or represent a presence on Facebook.',
 		category: 'Social media',
 		aliases: ['media', 'fb', 'meta', 'soziales', 'netzwerk', 'social media', 'network', 'platform'],
-		description: 'Facebook logo with outlined letter f.'
+		description: 'Facebook logo with outlined letter f.',
 	},
 	{
 		name: 'instagram',
@@ -3405,7 +4028,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to link to or represent a presence on Instagram.',
 		category: 'Social media',
 		aliases: ['social media', 'ig', 'insta', 'fotos', 'platform', 'network', 'photos', 'image', 'sharing'],
-		description: 'Instagram logo with camera icon.'
+		description: 'Instagram logo with camera icon.',
 	},
 	{
 		oldName: 'linked-in',
@@ -3413,16 +4036,38 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'single',
 		usage: 'Used to link to or represent a presence on LinkedIn.',
 		category: 'Social media',
-		aliases: ['business', 'network', 'career', 'platform', 'professional', 'job', 'beruflich', 'netzwerk', 'social', 'media'],
-		description: 'LinkedIn logo with letters in.'
+		aliases: [
+			'business',
+			'network',
+			'career',
+			'platform',
+			'professional',
+			'job',
+			'beruflich',
+			'netzwerk',
+			'social',
+			'media',
+		],
+		description: 'LinkedIn logo with letters in.',
 	},
 	{
 		name: 'xing',
 		purpose: 'single',
 		usage: 'Used to link to or represent a presence on Xing.',
 		category: 'Social media',
-		aliases: ['business', 'network', 'career', 'platform', 'professional', 'job', 'beruflich', 'netzwerk', 'social', 'media'],
-		description: 'Xing logo with stylized x shape'
+		aliases: [
+			'business',
+			'network',
+			'career',
+			'platform',
+			'professional',
+			'job',
+			'beruflich',
+			'netzwerk',
+			'social',
+			'media',
+		],
+		description: 'Xing logo with stylized x shape',
 	},
 	{
 		name: 'x-twitter',
@@ -3430,7 +4075,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to link to or represent a presence on X (formerly Twitter).',
 		category: 'Social media',
 		aliases: ['twitter', 'x', 'tweet', 'social media', 'microblogging', 'kurz', 'nachrichten', 'network', 'platform'],
-		description: 'Social network X logo (formerly Twitter) with letter x.'
+		description: 'Social network X logo (formerly Twitter) with letter x.',
 	},
 	{
 		name: 'youtube',
@@ -3438,7 +4083,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used to link to or represent a presence on YouTube.',
 		category: 'Social media',
 		aliases: ['video', 'platform', 'yt', 'videos', 'channel', 'kanal', 'streaming', 'content', 'sharing'],
-		description: 'YouTube logo with play button.'
+		description: 'YouTube logo with play button.',
 	},
 	{
 		name: 'clipboard',
@@ -3446,7 +4091,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for pasting content from the clipboard, or to represent clipboard and notes.',
 		category: 'Content and files',
 		aliases: ['zwischenablage', 'copy', 'paste', 'board', 'klemmboard', 'notes', 'clipping', 'holder'],
-		description: 'A clipboard with a top clip.'
+		description: 'A clipboard with a top clip.',
 	},
 	{
 		name: 'folder',
@@ -3454,7 +4099,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used for folders or to represent structured, categorized, or work-related content.',
 		category: 'Content and files',
 		aliases: ['ordner', 'verzeichnis', 'directory', 'archive', 'collection', 'data', 'files', 'documents'],
-		description: 'A paper folder with tab on the top left.'
+		description: 'A paper folder with tab on the top left.',
 	},
 	{
 		oldName: 'folder-open',
@@ -3471,9 +4116,9 @@ export const iconMetadata: IconMetadata[] = [
 			'inspecting',
 			'file access',
 			'navigate',
-			'explore'
+			'explore',
 		],
-		description: 'A slightly open paper folder.'
+		description: 'A slightly open paper folder.',
 	},
 	{
 		name: 'image',
@@ -3481,7 +4126,7 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Used as an image placeholder, or for image upload.\nFor image files use the file_image icon.',
 		category: 'Content and files',
 		aliases: ['bild', 'foto', 'picture', 'grafik', 'illustration', 'photo', 'visual', 'artwork', 'placeholder'],
-		description: 'A placeholder image with mountains and a sun in the top left.'
+		description: 'A placeholder image with mountains and a sun in the top left.',
 	},
 	{
 		name: 'stack',
@@ -3502,9 +4147,9 @@ export const iconMetadata: IconMetadata[] = [
 			'content stack',
 			'stack icon',
 			'multi document',
-			'resource stack'
+			'resource stack',
 		],
-		description: 'Three stacked layers or papers shown in perspective.'
+		description: 'Three stacked layers or papers shown in perspective.',
 	},
 	{
 		oldName: 'duplicate',
@@ -3524,9 +4169,9 @@ export const iconMetadata: IconMetadata[] = [
 			'duplicate',
 			'object',
 			'files',
-			'data'
+			'data',
 		],
-		description: 'Two overlapping rectangles or sheets of paper.'
+		description: 'Two overlapping rectangles or sheets of paper.',
 	},
 	{
 		name: 'attachment',
@@ -3535,7 +4180,7 @@ export const iconMetadata: IconMetadata[] = [
 			'Reserved for attaching files to messages or other objects, or for indicating that an attachment is present.\nNot to be confused with the link icon.',
 		category: 'Content and files',
 		aliases: ['anhang', 'beilage', 'paper', 'clip', 'file', 'dokument', 'attached', 'dateianhang', 'enclosed'],
-		description: 'A paper clip, as used to hold together sheets of paper..'
+		description: 'A paper clip, as used to hold together sheets of paper..',
 	},
 	{
 		oldName: 'archive',
@@ -3557,9 +4202,9 @@ export const iconMetadata: IconMetadata[] = [
 			'document',
 			'datei',
 			'dokument',
-			'archivieren'
+			'archivieren',
 		],
-		description: 'An archive box with a lid.'
+		description: 'An archive box with a lid.',
 	},
 	{
 		name: 'video',
@@ -3567,15 +4212,27 @@ export const iconMetadata: IconMetadata[] = [
 		usage: 'Reserved for video content.',
 		category: 'Content and files',
 		aliases: ['video', 'film', 'movie', 'clip', 'aufnahme', 'recording', 'footage', 'media'],
-		description: 'A rectangular video tape with right-pointing triangle at the center.'
+		description: 'A rectangular video tape with right-pointing triangle at the center.',
 	},
 	{
 		name: 'file',
 		purpose: 'multi',
 		usage: 'Used for a generic file or document, regardless of content type.',
 		category: 'Content and files',
-		aliases: ['datei', 'document', 'dokument', 'data', 'record', 'paper', 'page', 'sheet', 'papier', 'print', 'drucken'],
-		description: 'A sheet of paper with a folded corner, representing a file.'
+		aliases: [
+			'datei',
+			'document',
+			'dokument',
+			'data',
+			'record',
+			'paper',
+			'page',
+			'sheet',
+			'papier',
+			'print',
+			'drucken',
+		],
+		description: 'A sheet of paper with a folded corner, representing a file.',
 	},
 	{
 		oldName: 'file-lines',
@@ -3583,8 +4240,21 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'multi',
 		usage: 'Used for files or documents that contain text content.',
 		category: 'Content and files',
-		aliases: ['datei', 'document', 'dokument', 'data', 'record', 'paper', 'page', 'sheet', 'format', 'text', 'written', 'content'],
-		description: 'A sheet of paper with text lines.'
+		aliases: [
+			'datei',
+			'document',
+			'dokument',
+			'data',
+			'record',
+			'paper',
+			'page',
+			'sheet',
+			'format',
+			'text',
+			'written',
+			'content',
+		],
+		description: 'A sheet of paper with text lines.',
 	},
 	{
 		oldName: 'file-bullet',
@@ -3608,9 +4278,9 @@ export const iconMetadata: IconMetadata[] = [
 			'dotted',
 			'structured',
 			'ordered',
-			'points'
+			'points',
 		],
-		description: 'A sheet of paper with bulleted list.'
+		description: 'A sheet of paper with bulleted list.',
 	},
 	{
 		oldName: 'file-checkmark',
@@ -3635,9 +4305,9 @@ export const iconMetadata: IconMetadata[] = [
 			'geprüft',
 			'validated',
 			'approved',
-			'confirmed'
+			'confirmed',
 		],
-		description: 'A sheet of paper a folded corner and a checkmark.'
+		description: 'A sheet of paper a folded corner and a checkmark.',
 	},
 	{
 		oldName: 'file-user',
@@ -3660,9 +4330,9 @@ export const iconMetadata: IconMetadata[] = [
 			'profile',
 			'personal',
 			'persönlich',
-			'individual'
+			'individual',
 		],
-		description: 'A sheet of paper with person silhouette.'
+		description: 'A sheet of paper with person silhouette.',
 	},
 	{
 		oldName: 'file-plus',
@@ -3687,9 +4357,9 @@ export const iconMetadata: IconMetadata[] = [
 			'neu',
 			'additional',
 			'creation',
-			'generation'
+			'generation',
 		],
-		description: 'A sheet of paper with plus sign.'
+		description: 'A sheet of paper with plus sign.',
 	},
 	{
 		oldName: 'file-forward',
@@ -3714,9 +4384,9 @@ export const iconMetadata: IconMetadata[] = [
 			'teilen',
 			'sharing',
 			'transfer',
-			'pass'
+			'pass',
 		],
-		description: 'A sheet of paper with right arrow.'
+		description: 'A sheet of paper with right arrow.',
 	},
 	{
 		oldName: 'file-image',
@@ -3746,9 +4416,9 @@ export const iconMetadata: IconMetadata[] = [
 			'png',
 			'jpeg',
 			'avif',
-			'webp'
+			'webp',
 		],
-		description: 'A sheet of paper with a folded corner and an image placeholder, representing an image file.'
+		description: 'A sheet of paper with a folded corner and an image placeholder, representing an image file.',
 	},
 	{
 		oldName: 'file-pdf',
@@ -3756,8 +4426,21 @@ export const iconMetadata: IconMetadata[] = [
 		purpose: 'single',
 		usage: 'Used for files in PDF format.',
 		category: 'Content and files',
-		aliases: ['datei', 'document', 'dokument', 'data', 'record', 'paper', 'page', 'sheet', 'format', 'pdf', 'portable', 'adobe,'],
-		description: 'A sheet of paper with PDF label.'
+		aliases: [
+			'datei',
+			'document',
+			'dokument',
+			'data',
+			'record',
+			'paper',
+			'page',
+			'sheet',
+			'format',
+			'pdf',
+			'portable',
+			'adobe,',
+		],
+		description: 'A sheet of paper with PDF label.',
 	},
 	{
 		oldName: 'file-epub',
@@ -3784,9 +4467,9 @@ export const iconMetadata: IconMetadata[] = [
 			'elektronisch',
 			'buch',
 			'reader',
-			'publication'
+			'publication',
 		],
-		description: 'A sheet of paper with EPUB label.'
+		description: 'A sheet of paper with EPUB label.',
 	},
 	{
 		oldName: 'file-xml',
@@ -3811,9 +4494,9 @@ export const iconMetadata: IconMetadata[] = [
 			'language',
 			'code',
 			'extensible',
-			'structure'
+			'structure',
 		],
-		description: 'A sheet of paper with XML label.'
+		description: 'A sheet of paper with XML label.',
 	},
 	{
 		oldName: 'file-csv',
@@ -3839,9 +4522,9 @@ export const iconMetadata: IconMetadata[] = [
 			'tabellen',
 			'values',
 			'database',
-			'tabular'
+			'tabular',
 		],
-		description: 'A sheet of paper with CSV label.'
+		description: 'A sheet of paper with CSV label.',
 	},
 	{
 		oldName: 'file-code',
@@ -3865,9 +4548,9 @@ export const iconMetadata: IconMetadata[] = [
 			'coding',
 			'programmierung',
 			'development',
-			'source'
+			'source',
 		],
-		description: 'A paper sheet with code symbol made of angle brackets and a slash inside.'
+		description: 'A paper sheet with code symbol made of angle brackets and a slash inside.',
 	},
 	{
 		oldName: 'file-json',
@@ -3890,9 +4573,9 @@ export const iconMetadata: IconMetadata[] = [
 			'object',
 			'structure',
 			'web',
-			'structured'
+			'structured',
 		],
-		description: 'A sheet of paper with JSON label.'
+		description: 'A sheet of paper with JSON label.',
 	},
 	{
 		oldName: 'file-ppt',
@@ -3917,9 +4600,9 @@ export const iconMetadata: IconMetadata[] = [
 			'präsentation',
 			'pptx',
 			'ppt',
-			'microsoft'
+			'microsoft',
 		],
-		description: 'A sheet of paper with PPT label.'
+		description: 'A sheet of paper with PPT label.',
 	},
 	{
 		oldName: 'file-word',
@@ -3945,9 +4628,9 @@ export const iconMetadata: IconMetadata[] = [
 			'doc',
 			'docx',
 			'editing',
-			'microsoft'
+			'microsoft',
 		],
-		description: 'A sheet of paper with DOC label.'
+		description: 'A sheet of paper with DOC label.',
 	},
 	{
 		oldName: 'file-excel',
@@ -3974,9 +4657,9 @@ export const iconMetadata: IconMetadata[] = [
 			'worksheet',
 			'xls',
 			'xlsx',
-			'microsoft'
+			'microsoft',
 		],
-		description: 'A sheet of paper with XLS label.'
+		description: 'A sheet of paper with XLS label.',
 	},
 	{
 		oldName: 'file-zip',
@@ -4000,9 +4683,9 @@ export const iconMetadata: IconMetadata[] = [
 			'komprimiert',
 			'compression',
 			'archived',
-			'compressed'
+			'compressed',
 		],
-		description: 'A sheet of paper with a folded corner and a zipper, representing a compressed file.'
+		description: 'A sheet of paper with a folded corner and a zipper, representing a compressed file.',
 	},
 	{
 		oldName: 'file-video',
@@ -4030,9 +4713,9 @@ export const iconMetadata: IconMetadata[] = [
 			'mp4',
 			'avi',
 			'mpeg',
-			'mov'
+			'mov',
 		],
-		description: 'A sheet of paper with a folded corner, a filmstrip, and a play button symbol.'
+		description: 'A sheet of paper with a folded corner, a filmstrip, and a play button symbol.',
 	},
 	{
 		oldName: 'file-audio',
@@ -4056,9 +4739,9 @@ export const iconMetadata: IconMetadata[] = [
 			'audio',
 			'clip',
 			'ton',
-			'recording'
+			'recording',
 		],
-		description: 'A sheet of paper with a folded corner and a speaker symbol.'
+		description: 'A sheet of paper with a folded corner and a speaker symbol.',
 	},
 	{
 		oldName: 'file-server',
@@ -4081,9 +4764,9 @@ export const iconMetadata: IconMetadata[] = [
 			'hosted',
 			'network',
 			'remote',
-			'storage'
+			'storage',
 		],
-		description: 'A sheet of paper with a folded corner and server stack symbol.'
+		description: 'A sheet of paper with a folded corner and server stack symbol.',
 	},
 	{
 		oldName: 'file-refresh',
@@ -4109,9 +4792,9 @@ export const iconMetadata: IconMetadata[] = [
 			'laden',
 			'update',
 			'sync',
-			'renew'
+			'renew',
 		],
-		description: 'A sheet of paper with a folded corner and refresh arrows.'
+		description: 'A sheet of paper with a folded corner and refresh arrows.',
 	},
 	{
 		name: 'play',
@@ -4131,9 +4814,9 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'A right-pointing triangle representing the play button.'
+		description: 'A right-pointing triangle representing the play button.',
 	},
 	{
 		name: 'stop',
@@ -4153,9 +4836,9 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'A solid square representing the stop button.'
+		description: 'A solid square representing the stop button.',
 	},
 	{
 		name: 'pause',
@@ -4174,9 +4857,9 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'Two vertical bars representing the pause button.'
+		description: 'Two vertical bars representing the pause button.',
 	},
 	{
 		name: 'fast-forward',
@@ -4194,9 +4877,9 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'Two right-pointing triangles indicating fast forward or skip ahead.'
+		description: 'Two right-pointing triangles indicating fast forward or skip ahead.',
 	},
 	{
 		name: 'rewind',
@@ -4214,9 +4897,9 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'Two left-pointing triangles indicating rewind or skip back.'
+		description: 'Two left-pointing triangles indicating rewind or skip back.',
 	},
 	{
 		name: 'skip_back',
@@ -4234,9 +4917,9 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'A left-pointing triangle with a vertical bar, indicating skip to previous.'
+		description: 'A left-pointing triangle with a vertical bar, indicating skip to previous.',
 	},
 	{
 		name: 'skip_next',
@@ -4254,9 +4937,9 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'A right-pointing triangle with a vertical bar, indicating skip to next.'
+		description: 'A right-pointing triangle with a vertical bar, indicating skip to next.',
 	},
 	{
 		name: 'fullscreen',
@@ -4273,9 +4956,9 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'A square frame formed by four outward-pointing arrows, representing fullscreen mode.'
+		description: 'A square frame formed by four outward-pointing arrows, representing fullscreen mode.',
 	},
 	{
 		name: 'fullscreen_exit',
@@ -4293,17 +4976,27 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'Four inward-pointing arrows indicating exit from fullscreen mode.'
+		description: 'Four inward-pointing arrows indicating exit from fullscreen mode.',
 	},
 	{
 		name: 'hd',
 		purpose: 'single',
 		usage: 'Reserved for toggling high-definition (HD) video quality.',
 		category: 'Media player',
-		aliases: ['high definition', 'hochauflösend', 'videoqualität', 'auflösung', 'playback', 'video', 'audio', 'media', 'player'],
-		description: 'The abbreviation HD for high-definition video quality, enclosed in a frame.'
+		aliases: [
+			'high definition',
+			'hochauflösend',
+			'videoqualität',
+			'auflösung',
+			'playback',
+			'video',
+			'audio',
+			'media',
+			'player',
+		],
+		description: 'The abbreviation HD for high-definition video quality, enclosed in a frame.',
 	},
 	{
 		oldName: 'random',
@@ -4325,22 +5018,22 @@ export const iconMetadata: IconMetadata[] = [
 			'video',
 			'audio',
 			'media',
-			'player'
+			'player',
 		],
-		description: 'Two arrows pointing right while crossing over one another.'
+		description: 'Two arrows pointing right while crossing over one another.',
 	},
 	{
 		name: 'ald',
 		purpose: 'single',
 		usage: 'Indicates the presence of assistive listening systems (e.g., induction loops).',
 		category: 'Deprecated icons',
-		description: 'An ear with a diagonal dots and a wave.'
+		description: 'An ear with a diagonal dots and a wave.',
 	},
 	{
 		name: 'family',
 		purpose: 'multi',
 		usage: 'Used to represent a family.',
 		category: 'Deprecated icons',
-		description: 'A group of three simplified human figures — two representing adults and one representing a child.'
-	}
+		description: 'A group of three simplified human figures — two representing adults and one representing a child.',
+	},
 ];

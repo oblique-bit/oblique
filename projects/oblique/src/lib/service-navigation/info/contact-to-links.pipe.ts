@@ -3,7 +3,7 @@ import {ObISectionLink, ObIServiceNavigationContact} from '../service-navigation
 
 @Pipe({
 	name: 'obContactToLinks',
-	standalone: false
+	standalone: false,
 })
 export class ObContactToLinksPipe implements PipeTransform {
 	transform(values?: ObIServiceNavigationContact): ObISectionLink[] {
@@ -20,7 +20,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 			label: value.email,
 			isInternalLink: true,
 			icon: 'mail',
-			extraText: value.emailText
+			extraText: value.emailText,
 		};
 	}
 
@@ -40,10 +40,10 @@ export class ObContactToLinksPipe implements PipeTransform {
 					phoneNumber: value.phone
 						.split('')
 						.filter(character => character !== ' ')
-						.join(', ')
-				}
+						.join(', '),
+				},
 			},
-			extraText: value.phoneText
+			extraText: value.phoneText,
 		};
 	}
 
@@ -56,7 +56,7 @@ export class ObContactToLinksPipe implements PipeTransform {
 			url: value.formUrl,
 			label: 'i18n.oblique.service-navigation.info.contact.form',
 			isInternalLink: false,
-			extraText: value.formUrlText
+			extraText: value.formUrlText,
 		};
 	}
 }

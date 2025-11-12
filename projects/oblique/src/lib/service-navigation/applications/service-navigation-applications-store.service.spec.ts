@@ -15,8 +15,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 		TestBed.configureTestingModule({
 			providers: [
 				{provide: ObServiceNavigationApplicationsApiService, useValue: {fetchApplicationsInfo: jest.fn()}},
-				{provide: ObGlobalEventsService, useValue: {beforeUnload$: mockedBeforeUnload}}
-			]
+				{provide: ObGlobalEventsService, useValue: {beforeUnload$: mockedBeforeUnload}},
+			],
 		});
 	});
 
@@ -26,7 +26,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 
 	describe.each([
 		{description: 'without window', useWindow: undefined},
-		{description: 'with window, without localStorage', useWindow: {}}
+		{description: 'with window, without localStorage', useWindow: {}},
 	])('$description', ({useWindow}) => {
 		beforeEach(() => {
 			if (useWindow) {
@@ -50,8 +50,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						.fetchApplicationsInfo('rootUrl', [
 							{
 								applicationID: 1,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						])
 						.subscribe(data => {
 							result = data;
@@ -67,8 +67,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					expect(applicationService.fetchApplicationsInfo).toHaveBeenCalledWith('rootUrl', [
 						{
 							applicationID: 1,
-							childApplicationID: 0
-						}
+							childApplicationID: 0,
+						},
 					]);
 				});
 
@@ -86,8 +86,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						.fetchApplicationsInfo('rootUrl', [
 							{
 								applicationID: 1,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						])
 						.subscribe(data => {
 							results.push(data);
@@ -100,8 +100,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						.fetchApplicationsInfo('rootUrl', [
 							{
 								applicationID: 1,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						])
 						.subscribe(data => {
 							results.push(data);
@@ -117,8 +117,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					expect(applicationService.fetchApplicationsInfo).toHaveBeenCalledWith('rootUrl', [
 						{
 							applicationID: 1,
-							childApplicationID: 0
-						}
+							childApplicationID: 0,
+						},
 					]);
 				});
 
@@ -136,8 +136,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						.fetchApplicationsInfo('rootUrl', [
 							{
 								applicationID: 1,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						])
 						.subscribe(data => {
 							results.push(data);
@@ -151,8 +151,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						.fetchApplicationsInfo('rootUrl', [
 							{
 								applicationID: 2,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						])
 						.subscribe(data => {
 							results.push(data);
@@ -166,15 +166,15 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 
 				it.each([
 					{index: 1, applicationId: 1},
-					{index: 2, applicationId: 2}
+					{index: 2, applicationId: 2},
 				])(
 					'should call ObServiceNavigationApplicationsService.fetchApplicationsInfo with "$applicationId" as applicationID',
 					({index, applicationId}) => {
 						expect(applicationService.fetchApplicationsInfo).toHaveBeenNthCalledWith(index, 'rootUrl', [
 							{
 								applicationID: applicationId,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						]);
 					}
 				);
@@ -193,8 +193,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						.fetchApplicationsInfo('rootUrl', [
 							{
 								applicationID: 1,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						])
 						.subscribe(data => {
 							results.push(data);
@@ -208,12 +208,12 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						.fetchApplicationsInfo('rootUrl', [
 							{
 								applicationID: 1,
-								childApplicationID: 0
+								childApplicationID: 0,
 							},
 							{
 								applicationID: 2,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						])
 						.subscribe(data => {
 							results.push(data);
@@ -227,15 +227,15 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 
 				it.each([
 					{index: 1, applicationId: 1},
-					{index: 2, applicationId: 2}
+					{index: 2, applicationId: 2},
 				])(
 					'should call ObServiceNavigationApplicationsService.fetchApplicationsInfo with "$applicationId" as applicationID',
 					({index, applicationId}) => {
 						expect(applicationService.fetchApplicationsInfo).toHaveBeenNthCalledWith(index, 'rootUrl', [
 							{
 								applicationID: applicationId,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						]);
 					}
 				);
@@ -299,8 +299,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 							.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 1,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							])
 							.subscribe(data => {
 								result = data;
@@ -316,8 +316,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						expect(applicationService.fetchApplicationsInfo).toHaveBeenCalledWith('rootUrl', [
 							{
 								applicationID: 1,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						]);
 					});
 
@@ -346,8 +346,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 							.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 1,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							])
 							.subscribe(data => {
 								results.push(data);
@@ -360,8 +360,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 							.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 1,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							])
 							.subscribe(data => {
 								results.push(data);
@@ -377,8 +377,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						expect(applicationService.fetchApplicationsInfo).toHaveBeenCalledWith('rootUrl', [
 							{
 								applicationID: 1,
-								childApplicationID: 0
-							}
+								childApplicationID: 0,
+							},
 						]);
 					});
 
@@ -407,8 +407,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 							.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 1,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							])
 							.subscribe(data => {
 								results.push(data);
@@ -422,8 +422,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 							.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 2,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							])
 							.subscribe(data => {
 								results.push(data);
@@ -437,15 +437,15 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 
 					it.each([
 						{index: 1, applicationId: 1},
-						{index: 2, applicationId: 2}
+						{index: 2, applicationId: 2},
 					])(
 						'should call ObServiceNavigationApplicationsService.fetchApplicationsInfo with "$applicationId" as applicationID',
 						({index, applicationId}) => {
 							expect(applicationService.fetchApplicationsInfo).toHaveBeenNthCalledWith(index, 'rootUrl', [
 								{
 									applicationID: applicationId,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							]);
 						}
 					);
@@ -484,8 +484,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 							.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 1,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							])
 							.subscribe(data => {
 								results.push(data);
@@ -499,12 +499,12 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 							.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 1,
-									childApplicationID: 0
+									childApplicationID: 0,
 								},
 								{
 									applicationID: 2,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							])
 							.subscribe(data => {
 								results.push(data);
@@ -518,15 +518,15 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 
 					it.each([
 						{index: 1, applicationId: 1},
-						{index: 2, applicationId: 2}
+						{index: 2, applicationId: 2},
 					])(
 						'should call ObServiceNavigationApplicationsService.fetchApplicationsInfo with "$applicationId" as applicationID',
 						({index, applicationId}) => {
 							expect(applicationService.fetchApplicationsInfo).toHaveBeenNthCalledWith(index, 'rootUrl', [
 								{
 									applicationID: applicationId,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							]);
 						}
 					);
@@ -573,8 +573,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 							image: 'imageBase64_1',
 							lastModificationDate: 'timestamp_1',
 							name: {en: 'EN_1', de: 'DE_1', fr: 'FR_1', it: 'IT_1'},
-							url: 'appUrl_1'
-						}
+							url: 'appUrl_1',
+						},
 					})
 				);
 				service = TestBed.inject(ObServiceNavigationApplicationsStoreService);
@@ -599,8 +599,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 							.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 1,
-									childApplicationID: 0
-								}
+									childApplicationID: 0,
+								},
 							])
 							.subscribe(data => {
 								result = data;
@@ -633,7 +633,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				image: `imageBase64_${numeral}`,
 				lastModificationDate: `timestamp_${numeral}`,
 				name: {en: `EN_${numeral}`, de: `DE_${numeral}`, fr: `FR_${numeral}`, it: `IT_${numeral}`},
-				url: `appUrl_${numeral}`
+				url: `appUrl_${numeral}`,
 			};
 		});
 	}

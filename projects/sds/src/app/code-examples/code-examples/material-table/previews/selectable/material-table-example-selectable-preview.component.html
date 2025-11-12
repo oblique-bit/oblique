@@ -50,7 +50,11 @@
 </ng-template>
 
 <ng-template #selectContent let-row="row" let-tableManager="tableManager">
-	<mat-checkbox [checked]="row.isSelected" (click)="$event.stopPropagation()" (change)="$event ? tableManager.toggleRow(row) : null" />
+	<mat-checkbox
+		[checked]="row.isSelected"
+		(click)="$event.stopPropagation()"
+		(change)="$event ? tableManager.toggleRow(row) : null"
+	/>
 </ng-template>
 
 <ng-template #columnHeader let-column="column">
@@ -83,7 +87,13 @@
 
 <ng-template #actionsContent let-tableManager="tableManager" let-element="element">
 	<div class="actions">
-		<button type="button" mat-icon-button obButton="secondary" matTooltip="Remove this row" (click)="tableManager.removeRows(element)">
+		<button
+			type="button"
+			mat-icon-button
+			obButton="secondary"
+			matTooltip="Remove this row"
+			(click)="tableManager.removeRows(element)"
+		>
 			<mat-icon svgIcon="delete" />
 		</button>
 	</div>

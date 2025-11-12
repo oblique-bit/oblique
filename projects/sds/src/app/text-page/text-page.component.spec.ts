@@ -10,7 +10,7 @@ describe(TextPageComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, IdPipe, RouterTestingModule, TextPageComponent]
+			imports: [HttpClientTestingModule, IdPipe, RouterTestingModule, TextPageComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TextPageComponent);

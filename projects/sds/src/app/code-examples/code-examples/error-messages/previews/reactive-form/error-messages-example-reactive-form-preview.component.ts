@@ -7,7 +7,7 @@ import {MatInputModule} from '@angular/material/input';
 @Component({
 	selector: 'app-error-messages-example-reactive-form-preview',
 	imports: [ReactiveFormsModule, ObErrorMessagesModule, MatFormFieldModule, MatInputModule],
-	templateUrl: './error-messages-example-reactive-form-preview.component.html'
+	templateUrl: './error-messages-example-reactive-form-preview.component.html',
 })
 export class ErrorMessagesExampleReactiveFormPreviewComponent {
 	form: FormGroup;
@@ -15,7 +15,7 @@ export class ErrorMessagesExampleReactiveFormPreviewComponent {
 
 	constructor() {
 		this.form = this.formBuilder.group({
-			control: [null, Validators.required]
+			control: [null, Validators.required],
 		});
 	}
 }

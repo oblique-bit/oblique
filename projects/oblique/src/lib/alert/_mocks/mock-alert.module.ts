@@ -8,6 +8,6 @@ export {ObMockAlertComponent} from './mock-alert.component';
  */
 @NgModule({
 	imports: [ObMockAlertComponent],
-	exports: [ObMockAlertComponent]
+	exports: [ObMockAlertComponent],
 })
 export class ObMockAlertModule {}

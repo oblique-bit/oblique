@@ -18,7 +18,7 @@ export class ObValidationService {
 		if (fileOptions.multiple) {
 			this.notifyErrors('i18n.oblique.file-upload.error.overflow', {
 				ignoredFiles: dispatchedFiles.overflowing,
-				maxAmount: fileOptions.maxAmount
+				maxAmount: fileOptions.maxAmount,
 			});
 		} else {
 			this.notifyErrors('i18n.oblique.file-upload.error.single', {ignoredFiles: dispatchedFiles.overflowing});
@@ -26,9 +26,12 @@ export class ObValidationService {
 
 		this.notifyErrors('i18n.oblique.file-upload.error.type', {
 			ignoredFiles: dispatchedFiles.invalid,
-			supportedTypes: fileOptions.accept.join(', ')
+			supportedTypes: fileOptions.accept.join(', '),
 		});
-		this.notifyErrors('i18n.oblique.file-upload.error.size', {ignoredFiles: dispatchedFiles.tooLarge, maxSize: fileOptions.maxSize});
+		this.notifyErrors('i18n.oblique.file-upload.error.size', {
+			ignoredFiles: dispatchedFiles.tooLarge,
+			maxSize: fileOptions.maxSize,
+		});
 
 		return dispatchedFiles.valid;
 	}
@@ -37,7 +40,10 @@ export class ObValidationService {
 		return fileOptions.files.reduce(
 			(result, file, index) => {
 				const size = file.size / 1024 / 1024;
-				if ((index > 0 && !fileOptions.multiple) || (fileOptions.maxAmount > 0 && fileOptions.files.length > fileOptions.maxAmount)) {
+				if (
+					(index > 0 && !fileOptions.multiple) ||
+					(fileOptions.maxAmount > 0 && fileOptions.files.length > fileOptions.maxAmount)
+				) {
 					result.overflowing.push(file.name);
 				} else if (!this.isFileTypeValid(file.name.toLowerCase(), fileOptions.accept)) {
 					result.invalid.push(file.name);
@@ -56,14 +62,18 @@ export class ObValidationService {
 		if (parameters.ignoredFiles.length) {
 			const params = {
 				...parameters,
-				ignoredFiles: parameters.ignoredFiles.join(', ')
+				ignoredFiles: parameters.ignoredFiles.join(', '),
 			};
 			this.notification.error({message, messageParams: params, title: 'i18n.oblique.file-upload.error.title'});
 		}
 	}
 
 	private isFileTypeValid(filename: string, accept: string[]): boolean {
-		return this.areAllTypesAllowed(accept) || this.hasValidMimeType(filename, accept) || this.hasValidExtension(filename, accept);
+		return (
+			this.areAllTypesAllowed(accept) ||
+			this.hasValidMimeType(filename, accept) ||
+			this.hasValidExtension(filename, accept)
+		);
 	}
 
 	private hasValidMimeType(filename: string, accept: string[]): boolean {

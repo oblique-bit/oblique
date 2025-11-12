@@ -7,7 +7,10 @@ import {ObIDependencies, versionFunc} from './ng-update.model';
 export function checkDependencies(tree: Tree, context: SchematicContext, deps: ObIDependencies): void {
 	const angular = getDepVersion(tree, '@angular/core');
 	const warnings = Object.keys(deps)
-		.reduce<string[]>((warns, dep) => [...warns, checkDependency(tree, context, dep, getVersions(deps[dep], angular))], [])
+		.reduce<string[]>(
+			(warns, dep) => [...warns, checkDependency(tree, context, dep, getVersions(deps[dep], angular))],
+			[]
+		)
 		.filter(warning => !!warning)
 		.map(warning => `\n    • ${warning}`)
 		.join('');
@@ -21,7 +24,10 @@ export function checkDependencies(tree: Tree, context: SchematicContext, deps: O
 
 export function minAngularVersion(tree: Tree, context: SchematicContext, oblique: number, angular: number): void {
 	if (getDepVersion(tree, '@angular/core') < angular) {
-		warn(context, `Oblique ${oblique} is designed to work with Angular ${angular}. If the update fails, try to update angular first.`);
+		warn(
+			context,
+			`Oblique ${oblique} is designed to work with Angular ${angular}. If the update fails, try to update angular first.`
+		);
 	}
 }
 
@@ -34,7 +40,12 @@ export function addClassesPrefix(tree: Tree, filePath: string, target: string, s
 
 export function addClassPrefix(tree: Tree, filePath: string, target: string, suffixes: string[]): void {
 	suffixes.forEach(suffix => {
-		replaceInFile(tree, filePath, new RegExp(`class="((?:[\\w-]*\\s)*|)(${target}-${suffix})(\\s.*|)"`, 'g'), `class="$1ob-$2$3"`);
+		replaceInFile(
+			tree,
+			filePath,
+			new RegExp(`class="((?:[\\w-]*\\s)*|)(${target}-${suffix})(\\s.*|)"`, 'g'),
+			`class="$1ob-$2$3"`
+		);
 	});
 }
 
@@ -50,8 +61,19 @@ export function addPrefixMatchExact(tree: Tree, filePath: string, targets: strin
 	replaceInFile(tree, filePath, new RegExp(`\\.(${targets.join('|')}[:\\.\\s{])`, 'g'), '.ob-$1');
 }
 
-export function renameExactOrSuffix(tree: Tree, filePath: string, target: string, suffix: string[], result: string): void {
-	replaceInFile(tree, filePath, new RegExp(`\\.${target}([:\\.\\s{]|(?:-(?:${suffix.join('|')})))`, 'g'), `.${result}$1`);
+export function renameExactOrSuffix(
+	tree: Tree,
+	filePath: string,
+	target: string,
+	suffix: string[],
+	result: string
+): void {
+	replaceInFile(
+		tree,
+		filePath,
+		new RegExp(`\\.${target}([:\\.\\s{]|(?:-(?:${suffix.join('|')})))`, 'g'),
+		`.${result}$1`
+	);
 }
 
 function checkDependency(tree: Tree, context: SchematicContext, dependency: string, versions: number[]): string {
@@ -94,13 +116,17 @@ export function removePolyFill(tree: Tree, polyfillName: string, importPattern: 
 export function removeProperty(fileContent: string, service: string, name: string): string {
 	const serviceName = getServiceName(fileContent, service);
 	return serviceName
-		? fileContent.replace(new RegExp(`^\\s*(?:return\\s*)?(?:this\\.)?${serviceName}\\.${name}(?:\\s*=\\s*(\\w*))?;$`, 'gm'), '')
+		? fileContent.replace(
+				new RegExp(`^\\s*(?:return\\s*)?(?:this\\.)?${serviceName}\\.${name}(?:\\s*=\\s*(\\w*))?;$`, 'gm'),
+				''
+			)
 		: fileContent;
 }
 
 export function getServiceName(fileContent: string, serviceName: string): string | undefined {
 	const serviceClass = serviceName.charAt(0).toUpperCase() + serviceName.slice(1);
-	let service = new RegExp(`(?<service>\\w+)\\s*:\\s*ObMasterLayout${serviceClass}Service`).exec(fileContent)?.groups?.service;
+	let service = new RegExp(`(?<service>\\w+)\\s*:\\s*ObMasterLayout${serviceClass}Service`).exec(fileContent)?.groups
+		?.service;
 	if (!service) {
 		service = /(?<service>\w+)\s*:\s*ObMasterLayoutService/.exec(fileContent)?.groups?.service;
 		service = service ? `${service}.${serviceName}` : undefined;

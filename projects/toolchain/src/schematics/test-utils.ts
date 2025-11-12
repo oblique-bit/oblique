@@ -2,7 +2,10 @@ import type * as fs from 'fs';
 import type {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import type {Rule} from '@angular-devkit/schematics';
 
-type FsFunctions = keyof Pick<typeof fs, 'readFileSync' | 'existsSync' | 'writeFileSync' | 'unlinkSync' | 'mkdirSync' | 'readdirSync'>;
+type FsFunctions = keyof Pick<
+	typeof fs,
+	'readFileSync' | 'existsSync' | 'writeFileSync' | 'unlinkSync' | 'mkdirSync' | 'readdirSync'
+>;
 
 type FsMocks = Partial<Record<FsFunctions, jest.Mock>>;
 
@@ -16,7 +19,7 @@ export function mockFs(...functionsToMock: FsFunctions[]): FsMocks {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 	jest.mock('fs', () => ({
 		...jest.requireActual('fs'),
-		...mocks
+		...mocks,
 	}));
 
 	return mocks;

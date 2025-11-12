@@ -45,24 +45,11 @@ export {
 	ObIMasterLayoutEvent,
 	ObEMasterLayoutEventValues,
 	ObISkipLink,
-	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
+	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 } from './master-layout.model';
 export {ObOutlineDirective} from './outline.directive';
 
 @NgModule({
-	declarations: [
-		ObAriaMenuButtonDirective,
-		ObMasterLayoutComponent,
-		ObMasterLayoutFooterComponent,
-		ObMasterLayoutHeaderComponent,
-		ObMasterLayoutHeaderToggleDirective,
-		ObMasterLayoutNavigationComponent,
-		ObMasterLayoutNavigationItemDirective,
-		ObMasterLayoutNavigationMenuDirective,
-		ObMasterLayoutNavigationSubMenuItemComponent,
-		ObMasterLayoutNavigationToggleDirective,
-		ObOutlineDirective
-	],
 	imports: [
 		CommonModule,
 		MatButtonModule,
@@ -81,14 +68,27 @@ export {ObOutlineDirective} from './outline.directive';
 		RouterModule,
 		ScrollingModule,
 		TranslateModule,
-		ObLocalizePipe
+		ObLocalizePipe,
+	],
+	declarations: [
+		ObAriaMenuButtonDirective,
+		ObMasterLayoutComponent,
+		ObMasterLayoutFooterComponent,
+		ObMasterLayoutHeaderComponent,
+		ObMasterLayoutHeaderToggleDirective,
+		ObMasterLayoutNavigationComponent,
+		ObMasterLayoutNavigationItemDirective,
+		ObMasterLayoutNavigationMenuDirective,
+		ObMasterLayoutNavigationSubMenuItemComponent,
+		ObMasterLayoutNavigationToggleDirective,
+		ObOutlineDirective,
 	],
 	exports: [
 		ObMasterLayoutComponent,
 		ObMasterLayoutFooterComponent,
 		ObMasterLayoutHeaderComponent,
 		ObMasterLayoutNavigationComponent,
-		ObOutlineDirective
-	]
+		ObOutlineDirective,
+	],
 })
 export class ObMasterLayoutModule {}

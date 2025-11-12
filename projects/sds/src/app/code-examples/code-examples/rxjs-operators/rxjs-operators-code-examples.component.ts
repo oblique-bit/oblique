@@ -9,7 +9,7 @@ import {RxjsOperatorsExampleDefaultPreviewComponent} from './previews/default/rx
 	selector: 'app-code-example-rxjs-operators',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RxjsOperatorsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'rxjs-operators-examples';
@@ -20,8 +20,8 @@ export class RxjsOperatorsCodeExamplesComponent extends CodeExamples {
 			title: 'obPauseWhenPageHidden',
 			snippets: [
 				this.getSnippet('rxjs-operators', 'default/rxjs-operators-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('rxjs-operators', 'default/rxjs-operators-example-default-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('rxjs-operators', 'default/rxjs-operators-example-default-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

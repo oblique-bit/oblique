@@ -8,7 +8,7 @@ import {uploadInterceptor} from '../../../../../../main';
 	imports: [ObFileUploadModule],
 	standalone: true,
 	templateUrl: './file-upload-fully-functioning-with-custom-delete-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss'
+	styleUrl: '../../../../code-example-flex-layout.scss',
 })
 export class FileUploadFullyFunctioningWithCustomDeletePreviewComponent {
 	mockUrls = mockUrls;

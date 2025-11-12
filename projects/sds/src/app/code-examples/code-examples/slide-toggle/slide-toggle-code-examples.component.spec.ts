@@ -12,7 +12,7 @@ describe(SlideToggleCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [SlideToggleCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [SlideToggleCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SlideToggleCodeExamplesComponent);

@@ -8,7 +8,7 @@ import {ObExternalLinkModule} from '@oblique/oblique';
 	standalone: true,
 	templateUrl: './banner.component.html',
 	styleUrl: './banner.component.scss',
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
 })
 export class BannerComponent {
 	readonly content = input<string>(undefined);

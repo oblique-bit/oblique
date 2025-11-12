@@ -43,7 +43,7 @@ export class TokenFormat {
 					...indentedRootTokens,
 					...rootModeTokens,
 					'}',
-					...componentModeTokens
+					...componentModeTokens,
 				].join(this.#lineSeparator)
 			: null;
 	}
@@ -75,8 +75,8 @@ export class TokenFormat {
 			usesDtcg: true,
 			formatting: {
 				commentStyle: 'none',
-				lineSeparator: this.#lineSeparator
-			}
+				lineSeparator: this.#lineSeparator,
+			},
 		});
 	}
 
@@ -92,14 +92,14 @@ export class TokenFormat {
 		return Object.entries(this.#extractMediaTokens(modeTokens, isComponent))
 			.map(([selector, tokens]) => ({
 				selector,
-				tokens: tokens.filter(token => include.test(token)).map(token => `${this.#indent}${token}`)
+				tokens: tokens.filter(token => include.test(token)).map(token => `${this.#indent}${token}`),
 			}))
 			.filter(({tokens}) => tokens.length)
 			.reduce(
 				(modeTokens, tokens) => [
 					...modeTokens,
 					'',
-					...[`${tokens.selector} {`, ...tokens.tokens, `}`].map(token => `${this.#indent}${token}`)
+					...[`${tokens.selector} {`, ...tokens.tokens, `}`].map(token => `${this.#indent}${token}`),
 				],
 				[]
 			);
@@ -120,14 +120,14 @@ export class TokenFormat {
 		return Object.entries(this.#extractComponentTokens(modeTokens, isComponent))
 			.map(([selector, tokens]) => ({
 				selector,
-				tokens: tokens.filter(token => include.test(token)).map(token => `${this.#indent}${token}`)
+				tokens: tokens.filter(token => include.test(token)).map(token => `${this.#indent}${token}`),
 			}))
 			.filter(({tokens}) => tokens.length)
 			.reduce(
 				(modeTokens, tokens) => [
 					...modeTokens,
 					'',
-					...[`:host(${tokens.selector}),`, `:host-context(${tokens.selector}) {`, ...tokens.tokens, `}`]
+					...[`:host(${tokens.selector}),`, `:host-context(${tokens.selector}) {`, ...tokens.tokens, `}`],
 				],
 				[]
 			);

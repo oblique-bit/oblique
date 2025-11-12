@@ -5,6 +5,6 @@ import {ObFileUploadModule} from '@oblique/oblique';
 	selector: 'app-file-upload-basic-options-preview',
 	imports: [ObFileUploadModule],
 	templateUrl: './file-upload-basic-options-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss'
+	styleUrl: '../../../../code-example-flex-layout.scss',
 })
 export class FileUploadBasicOptionsPreviewComponent {}

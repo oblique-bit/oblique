@@ -34,8 +34,8 @@ describe('NotificationComponent', () => {
 				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
 				{provide: ObNotificationService, useClass: ObMockNotificationService},
 				{provide: TranslateService, useClass: ObMockTranslateService},
-				{provide: WINDOW, useValue: window}
-			]
+				{provide: WINDOW, useValue: window},
+			],
 		}).compileComponents();
 	});
 
@@ -97,7 +97,9 @@ describe('NotificationComponent', () => {
 		});
 
 		it('should have an accessible text', () => {
-			expect(closeButton.query(By.css('.ob-screen-reader-only')).nativeElement.textContent).toBe('i18n.oblique.notification.close');
+			expect(closeButton.query(By.css('.ob-screen-reader-only')).nativeElement.textContent).toBe(
+				'i18n.oblique.notification.close'
+			);
 		});
 
 		it('should close a notification when clicked', fakeAsync(() => {
@@ -166,7 +168,7 @@ describe('NotificationComponent', () => {
 		const notification = {
 			message,
 			title,
-			sticky: false
+			sticky: false,
 		};
 		component.open(notification);
 		tick(2 * notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
@@ -184,7 +186,7 @@ describe('NotificationComponent', () => {
 		component.open({
 			message,
 			title,
-			sticky: true
+			sticky: true,
 		});
 		tick(notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
 		fixture.detectChanges();

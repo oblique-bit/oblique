@@ -114,7 +114,14 @@
 			</mat-form-field>
 			<mat-form-field class="ms-fix">
 				<mat-label> {{ labelText.repeat(labelRepeater) }}</mat-label>
-				<input matInput name="field9" required [disabled]="disabled" [matDatepicker]="picker" [(ngModel)]="longLabelsForm.field9" />
+				<input
+					matInput
+					name="field9"
+					required
+					[disabled]="disabled"
+					[matDatepicker]="picker"
+					[(ngModel)]="longLabelsForm.field9"
+				/>
 				<mat-datepicker-toggle matSuffix [for]="picker" />
 				<mat-datepicker #picker />
 			</mat-form-field>

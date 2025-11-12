@@ -4,9 +4,9 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-
 
 @Directive({
 	selector: '[obMasterLayoutNavigationToggle]',
-	exportAs: 'obMasterLayoutNavigationToggle',
+	standalone: false,
 	host: {class: 'ob-master-layout-navigation-toggle'},
-	standalone: false
+	exportAs: 'obMasterLayoutNavigationToggle',
 })
 export class ObMasterLayoutNavigationToggleDirective {
 	constructor(private readonly item: ObMasterLayoutNavigationItemDirective) {}

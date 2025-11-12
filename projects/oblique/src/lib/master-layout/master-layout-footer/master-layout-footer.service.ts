@@ -5,7 +5,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObMasterLayoutFooterService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
@@ -25,7 +25,7 @@ export class ObMasterLayoutFooterService {
 		this.isCustomInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM,
-			value
+			value,
 		});
 	}
 
@@ -37,7 +37,7 @@ export class ObMasterLayoutFooterService {
 		this.isStickyInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.FOOTER_IS_STICKY,
-			value
+			value,
 		});
 	}
 }

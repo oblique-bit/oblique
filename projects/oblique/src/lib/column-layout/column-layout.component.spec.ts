@@ -20,8 +20,8 @@ window.ResizeObserver = ResizeObserver;
 
 @Directive({
 	selector: '[obColumnPanel]',
+	standalone: false,
 	exportAs: 'obColumnPanel',
-	standalone: false
 })
 class ObColumnPanelDirective {
 	collapsed = false;
@@ -35,7 +35,7 @@ class ObColumnPanelDirective {
 
 @Component({
 	standalone: false,
-	template: `<ob-column-layout [left]="NONE" [right]="NONE" />`
+	template: `<ob-column-layout [left]="NONE" [right]="NONE" />`,
 })
 class TestComponent {}
 
@@ -50,7 +50,7 @@ describe(ObColumnLayoutComponent.name, () => {
 			await TestBed.configureTestingModule({
 				imports: [TranslateModule],
 				declarations: [ObColumnLayoutComponent, ObColumnPanelDirective],
-				providers: [provideObliqueTestingConfiguration()]
+				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 
@@ -73,7 +73,7 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		describe.each([
 			{property: 'wider', className: 'ob-wider-columns'},
-			{property: 'noLayout', className: 'ob-no-layout'}
+			{property: 'noLayout', className: 'ob-no-layout'},
 		])('property $property', ({property, className}) => {
 			test('that it initializes to false', () => {
 				expect(component[property]).toBe(false);
@@ -94,7 +94,7 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		describe.each([
 			{property: 'toggleLeftIcon$', initialValue: 'left', toggledValue: 'right', index: 0},
-			{property: 'toggleRightIcon$', initialValue: 'right', toggledValue: 'left', index: 1}
+			{property: 'toggleRightIcon$', initialValue: 'right', toggledValue: 'left', index: 1},
 		])('property $property', ({property, initialValue, toggledValue, index}) => {
 			test('that it is an observable', () => {
 				expect(component[property] instanceof Observable).toBe(true);
@@ -118,7 +118,7 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		describe.each([
 			{method: 'toggleLeft', index: 0, panel: 'left'},
-			{method: 'toggleRight', index: 1, panel: 'right'}
+			{method: 'toggleRight', index: 1, panel: 'right'},
 		])('method $method', ({method, index, panel}) => {
 			test('that it toggles the panel', () => {
 				jest.spyOn(panels[index], 'toggle');
@@ -156,9 +156,11 @@ describe(ObColumnLayoutComponent.name, () => {
 					{description: 'half the height with a height less than window height', height: 1, top: '0.5px'},
 					{description: 'half the height with a height less than window height', height: 767, top: '383.5px'},
 					{description: 'half the height with a height equal to window height', height: 768, top: '384px'},
-					{description: 'half the window height with a height bigger than window height', height: 769, top: '384px'}
+					{description: 'half the window height with a height bigger than window height', height: 769, top: '384px'},
 				])('that it is $description', ({height, top}) => {
-					jest.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect').mockReturnValue({top: 0, height, windowHeight: 768});
+					jest
+						.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect')
+						.mockReturnValue({top: 0, height, windowHeight: 768});
 					component.ngDoCheck();
 					fixture.detectChanges();
 					expect(element.nativeElement.style.top).toBe(top);
@@ -171,9 +173,15 @@ describe(ObColumnLayoutComponent.name, () => {
 					{description: 'half the height with a height less than window height - top', height: 1, top: '0.5px'},
 					{description: 'half the height with a height less than window height - top', height: 757, top: '378.5px'},
 					{description: 'half the height with a height equal to window height - top', height: 758, top: '379px'},
-					{description: 'half the (window height - top) with a height bigger than window height - top', height: 759, top: '379px'}
+					{
+						description: 'half the (window height - top) with a height bigger than window height - top',
+						height: 759,
+						top: '379px',
+					},
 				])('that it is $description', ({height, top}) => {
-					jest.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect').mockReturnValue({top: 10, height, windowHeight: 768});
+					jest
+						.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect')
+						.mockReturnValue({top: 10, height, windowHeight: 768});
 					component.ngDoCheck();
 					fixture.detectChanges();
 					expect(element.nativeElement.style.top).toBe(top);
@@ -190,14 +198,16 @@ describe(ObColumnLayoutComponent.name, () => {
 			await TestBed.configureTestingModule({
 				imports: [TranslateModule],
 				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
-				providers: [provideObliqueTestingConfiguration()]
+				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);
 			testComponent = fixture.componentInstance;
-			component = fixture.debugElement.query(By.directive(ObColumnLayoutComponent)).injector.get(ObColumnLayoutComponent);
+			component = fixture.debugElement
+				.query(By.directive(ObColumnLayoutComponent))
+				.injector.get(ObColumnLayoutComponent);
 			component.left = 'NONE';
 			component.right = 'NONE';
 			fixture.detectChanges();
@@ -219,7 +229,7 @@ describe(ObColumnLayoutComponent.name, () => {
 
 		describe.each([
 			{property: 'toggleLeftIcon$', initialValue: 'left', toggledValue: 'right', index: 0},
-			{property: 'toggleRightIcon$', initialValue: 'right', toggledValue: 'left', index: 1}
+			{property: 'toggleRightIcon$', initialValue: 'right', toggledValue: 'left', index: 1},
 		])('property $property changed back', ({property, initialValue, toggledValue, index}) => {
 			let panels: ObColumnPanelDirective[];
 
@@ -264,7 +274,7 @@ describe(ObColumnLayoutComponent.name, () => {
 			await TestBed.configureTestingModule({
 				imports: [TranslateModule],
 				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
-				providers: [provideObliqueTestingConfiguration()]
+				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 
@@ -274,7 +284,9 @@ describe(ObColumnLayoutComponent.name, () => {
 				`<ob-master-layout><div class="ob-master-layout-header"></div><ob-column-layout></ob-column-layout></ob-master-layout>`
 			);
 			fixture = TestBed.createComponent(TestComponent);
-			component = fixture.debugElement.query(By.directive(ObColumnLayoutComponent)).injector.get(ObColumnLayoutComponent);
+			component = fixture.debugElement
+				.query(By.directive(ObColumnLayoutComponent))
+				.injector.get(ObColumnLayoutComponent);
 			fixture.detectChanges();
 		});
 
@@ -288,9 +300,13 @@ describe(ObColumnLayoutComponent.name, () => {
 			});
 
 			test.each([
-				{description: 'half the sum of the element and header heights with a smaller header height', height: 49, top: '49.5px'},
+				{
+					description: 'half the sum of the element and header heights with a smaller header height',
+					height: 49,
+					top: '49.5px',
+				},
 				{description: 'empty with the header height equal to the element height', height: 50, top: ''},
-				{description: 'empty with the header height greater than the element height', height: 51, top: ''}
+				{description: 'empty with the header height greater than the element height', height: 51, top: ''},
 			])('that it is $description', ({height, top}) => {
 				resizerCallback([{contentRect: {height}}]);
 				jest

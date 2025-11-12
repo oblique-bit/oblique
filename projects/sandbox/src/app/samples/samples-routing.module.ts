@@ -66,27 +66,27 @@ const samplesRoutes: Routes = [
 						path: 'some-sub-page',
 						component: BreadcrumbSampleComponent,
 						data: {breadcrumb: 'Sub-Page'},
-						children: []
-					}
-				]
+						children: [],
+					},
+				],
 			},
 			{
 				path: 'missing-label',
-				component: BreadcrumbSampleComponent
+				component: BreadcrumbSampleComponent,
 			},
 			{
 				path: 'i18n-label',
 				component: BreadcrumbSampleComponent,
-				data: {breadcrumb: 'i18n.oblique.header.navigation.title'}
+				data: {breadcrumb: 'i18n.oblique.header.navigation.title'},
 			},
 			{
 				path: 'with-params/:param',
-				component: BreadcrumbSampleComponent
+				component: BreadcrumbSampleComponent,
 			},
 			{
 				path: 'with-params-and-label/:param',
 				component: BreadcrumbSampleComponent,
-				data: {breadcrumb: 'i18n.routes.samples.breadcrumb.label-with-params'}
+				data: {breadcrumb: 'i18n.routes.samples.breadcrumb.label-with-params'},
 			},
 			{
 				path: ':param/details',
@@ -99,17 +99,17 @@ const samplesRoutes: Routes = [
 						children: [
 							{
 								path: 'missing-label',
-								component: BreadcrumbSampleComponent
-							}
-						]
-					}
-				]
+								component: BreadcrumbSampleComponent,
+							},
+						],
+					},
+				],
 			},
 			{
 				path: ':param',
-				component: BreadcrumbSampleComponent
-			}
-		]
+				component: BreadcrumbSampleComponent,
+			},
+		],
 	},
 	{path: 'button', component: ButtonSampleComponent},
 	{path: 'collapse', component: CollapseSampleComponent},
@@ -153,13 +153,13 @@ const samplesRoutes: Routes = [
 		path: 'nav-tree',
 		component: NavTreeSampleComponent,
 		resolve: {
-			sample: SampleDataResolver
+			sample: SampleDataResolver,
 		},
 		children: [
 			{path: ':section', component: NavTreeDetailSampleComponent},
 			{path: ':section/:subsection', component: NavTreeDetailSampleComponent},
-			{path: ':section/:subsection/:subsubsection', component: NavTreeDetailSampleComponent}
-		]
+			{path: ':section/:subsection/:subsubsection', component: NavTreeDetailSampleComponent},
+		],
 	},
 	{path: 'nested-form', component: NestedFormSampleComponent},
 	{path: 'notification', component: NotificationSampleComponent},
@@ -177,11 +177,11 @@ const samplesRoutes: Routes = [
 	{path: 'spinner/4', component: SpinnerSampleComponent},
 	{path: 'spinner/5', component: SpinnerSampleComponent},
 	{path: 'unknown-route-sample', component: UnknownRouteSampleComponent},
-	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [ObUnsavedChangesGuard]}
+	{path: 'unsaved-changes', component: UnsavedChangesSampleComponent, canDeactivate: [ObUnsavedChangesGuard]},
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(samplesRoutes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
 export class SamplesRoutingModule {}

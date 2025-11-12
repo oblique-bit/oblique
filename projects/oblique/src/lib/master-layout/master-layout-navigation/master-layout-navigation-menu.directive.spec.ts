@@ -5,7 +5,7 @@ import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-
 
 @Component({
 	standalone: false,
-	template: '<div class="ob-master-layout-header"><span obMasterLayoutNavigationMenu> test </span></div>'
+	template: '<div class="ob-master-layout-header"><span obMasterLayoutNavigationMenu> test </span></div>',
 })
 class TestComponent {}
 
@@ -16,7 +16,7 @@ describe(ObMasterLayoutNavigationMenuDirective.name, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [TestComponent, ObMasterLayoutNavigationMenuDirective]
+			declarations: [TestComponent, ObMasterLayoutNavigationMenuDirective],
 		});
 
 		fixture = TestBed.createComponent(TestComponent);

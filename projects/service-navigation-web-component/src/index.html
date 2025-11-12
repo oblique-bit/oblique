@@ -9,11 +9,18 @@
 	</head>
 	<body>
 		<input type="checkbox" id="showLanguages" checked /><label for="showLanguages">show language widget</label><br />
-		<input type="checkbox" id="showMessage" checked /><label for="showMessage">show message widget (needs to be logged in)</label><br />
+		<input type="checkbox" id="showMessage" checked /><label for="showMessage"
+			>show message widget (needs to be logged in)</label
+		><br />
 		<input type="checkbox" id="showInfo" checked /><label for="showInfo">show info widget</label><br />
-		<input type="checkbox" id="showApplications" checked /><label for="showApplications">show applications widget</label><br />
-		<input type="checkbox" id="showProfile" checked /><label for="showProfile">show profile widget (needs to be logged in)</label><br />
-		<input type="checkbox" id="showAuthentication" checked /><label for="showAuthentication">show authentication widget</label><br />
+		<input type="checkbox" id="showApplications" checked /><label for="showApplications">show applications widget</label
+		><br />
+		<input type="checkbox" id="showProfile" checked /><label for="showProfile"
+			>show profile widget (needs to be logged in)</label
+		><br />
+		<input type="checkbox" id="showAuthentication" checked /><label for="showAuthentication"
+			>show authentication widget</label
+		><br />
 		<hr />
 		<select id="languageSelect">
 			<option value="en">EN</option>
@@ -45,22 +52,34 @@
 
 		<script>
 			document.querySelector("#showLanguages").addEventListener("change", (event) => {
-				document.querySelector("ob-service-navigation-web-component").setAttribute("display-languages", event.srcElement.checked);
+				document
+					.querySelector("ob-service-navigation-web-component")
+					.setAttribute("display-languages", event.srcElement.checked);
 			});
 			document.querySelector("#showMessage").addEventListener("change", (event) => {
-				document.querySelector("ob-service-navigation-web-component").setAttribute("display-message", event.srcElement.checked);
+				document
+					.querySelector("ob-service-navigation-web-component")
+					.setAttribute("display-message", event.srcElement.checked);
 			});
 			document.querySelector("#showInfo").addEventListener("change", (event) => {
-				document.querySelector("ob-service-navigation-web-component").setAttribute("display-info", event.srcElement.checked);
+				document
+					.querySelector("ob-service-navigation-web-component")
+					.setAttribute("display-info", event.srcElement.checked);
 			});
 			document.querySelector("#showApplications").addEventListener("change", (event) => {
-				document.querySelector("ob-service-navigation-web-component").setAttribute("display-applications", event.srcElement.checked);
+				document
+					.querySelector("ob-service-navigation-web-component")
+					.setAttribute("display-applications", event.srcElement.checked);
 			});
 			document.querySelector("#showProfile").addEventListener("change", (event) => {
-				document.querySelector("ob-service-navigation-web-component").setAttribute("display-profile", event.srcElement.checked);
+				document
+					.querySelector("ob-service-navigation-web-component")
+					.setAttribute("display-profile", event.srcElement.checked);
 			});
 			document.querySelector("#showAuthentication").addEventListener("change", (event) => {
-				document.querySelector("ob-service-navigation-web-component").setAttribute("display-authentication", event.srcElement.checked);
+				document
+					.querySelector("ob-service-navigation-web-component")
+					.setAttribute("display-authentication", event.srcElement.checked);
 			});
 			document.querySelector("ob-service-navigation-web-component").addEventListener("languageChange", (event) => {
 				const lang = event.detail;

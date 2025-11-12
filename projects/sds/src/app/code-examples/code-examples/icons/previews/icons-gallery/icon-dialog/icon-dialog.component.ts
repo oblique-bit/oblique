@@ -21,10 +21,10 @@ import type {IconMetadata} from '../icons.model';
 		MatCardModule,
 		MatTooltipModule,
 		MatChipsModule,
-		TranslateModule
+		TranslateModule,
 	],
 	templateUrl: './icon-dialog.component.html',
-	styleUrl: './icon-dialog.component.scss'
+	styleUrl: './icon-dialog.component.scss',
 })
 export class IconDialogComponent {
 	selectedIconMetaData = inject<IconMetadata>(MAT_DIALOG_DATA);
@@ -37,15 +37,17 @@ export class IconDialogComponent {
 		navigator.clipboard.writeText(text).then(
 			() =>
 				this.notificationService.success({
-					message: this.translateService.instant('i18n.icons.copy.notification.success.message', {iconName: text}) as string,
+					message: this.translateService.instant('i18n.icons.copy.notification.success.message', {
+						iconName: text,
+					}) as string,
 					title: this.translateService.instant('i18n.icons.copy.notification.success.title', {element}) as string,
-					timeout: timeoutDuration
+					timeout: timeoutDuration,
 				}),
 			() =>
 				this.notificationService.warning({
 					message: this.translateService.instant('i18n.icons.notification.error.message', {iconName: text}) as string,
 					title: this.translateService.instant('i18n.icons.notification.error.title', {element}) as string,
-					timeout: timeoutDuration
+					timeout: timeoutDuration,
 				})
 		);
 	}

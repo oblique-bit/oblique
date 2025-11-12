@@ -23,7 +23,9 @@ export class ObNotificationService {
 		public config: ObNotificationConfig,
 		router: Router
 	) {
-		router.events.pipe(filter(evt => evt instanceof NavigationEnd && this.clearAllOnNavigate)).subscribe(() => this.clearAll());
+		router.events
+			.pipe(filter(evt => evt instanceof NavigationEnd && this.clearAllOnNavigate))
+			.subscribe(() => this.clearAll());
 	}
 
 	public get events(): Observable<ObINotification> {
@@ -88,7 +90,7 @@ export class ObNotificationService {
 			channel: conf.channel || this.config[type].channel || this.config.channel,
 			sticky: conf.sticky ?? this.config[type].sticky ?? this.config.sticky,
 			timeout: conf.timeout || this.config[type].timeout || this.config.timeout,
-			groupSimilar: conf.groupSimilar || this.config[type].groupSimilar || this.config.groupSimilar
+			groupSimilar: conf.groupSimilar || this.config[type].groupSimilar || this.config.groupSimilar,
 		};
 		this.eventSubject.next(notification);
 

@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
 	selector: 'app-popover-example-other-options-preview',
 	imports: [ObPopoverModule, ObButtonModule, MatButtonModule],
 	templateUrl: './popover-example-other-options-preview.component.html',
-	styleUrls: ['../../../../code-example-flex-layout.scss', './popover-example-other-options-preview.component.scss']
+	styleUrls: ['../../../../code-example-flex-layout.scss', './popover-example-other-options-preview.component.scss'],
 })
 export class PopoverExampleOtherOptionsPreviewComponent {
 	toggleType: ObEToggleType;

@@ -9,7 +9,7 @@ import {ExternalLinkExampleStackblitzLinkPreviewComponent} from '../external-lin
 	selector: 'app-code-example-external-link',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExternalLinkCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'external-link-examples';
@@ -17,7 +17,7 @@ export class ExternalLinkCodeExamplesComponent extends CodeExamples {
 		{
 			component: ExternalLinkExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'ExternalLink stackblitzLink'
-		}
+			title: 'ExternalLink stackblitzLink',
+		},
 	];
 }

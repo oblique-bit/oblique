@@ -9,7 +9,11 @@ import {MatInputModule} from '@angular/material/input';
 import {TranslateModule} from '@ngx-translate/core';
 import {Observable, Subject, debounceTime} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
-import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '../autocomplete/autocomplete.model';
+import {
+	ObIAutocompleteInputOption,
+	ObIAutocompleteInputOptionGroup,
+	OptionLabelIconPosition,
+} from '../autocomplete/autocomplete.model';
 import {ObInputClearDirective} from '../input-clear/input-clear.directive';
 import {ObAutocompleteTextToFindService} from './autocomplete-text-to-find.service';
 import {ObHighlightTextPipe} from './highlight-text/highlight-text.pipe';
@@ -32,19 +36,19 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 		ObOptionLabelIconDirective,
 		AsyncPipe,
 		ObHighlightTextPipe,
-		TranslateModule
+		TranslateModule,
 	],
 	templateUrl: './autocomplete.component.html',
 	styleUrls: ['./autocomplete.component.scss'],
-	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-autocomplete'},
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
 			useExisting: ObAutocompleteComponent,
-			multi: true
-		}
-	]
+			multi: true,
+		},
+	],
+	encapsulation: ViewEncapsulation.None,
+	host: {class: 'ob-autocomplete'},
 })
 export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor, OnDestroy {
 	@Input() inputLabelKey = 'i18n.oblique.search.title';
@@ -55,7 +59,8 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	@Input() highlightCssClass = 'ob-highlight-text';
 	@Input() optionIconPosition: OptionLabelIconPosition = 'end';
 
-	@Output() readonly selectedOptionChange: EventEmitter<ObIAutocompleteInputOption> = new EventEmitter<ObIAutocompleteInputOption>();
+	@Output() readonly selectedOptionChange: EventEmitter<ObIAutocompleteInputOption> =
+		new EventEmitter<ObIAutocompleteInputOption>();
 	autocompleteInputControl = new FormControl('', {updateOn: 'change'});
 	filteredOptions$: Observable<(ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[]>;
 	hasGroupOptions = false;
@@ -143,7 +148,10 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 			: this.filterOptions(optionsToFilter as ObIAutocompleteInputOption[], searchText);
 	}
 
-	private filterGroups(groups: ObIAutocompleteInputOptionGroup[], searchText: string): ObIAutocompleteInputOptionGroup[] {
+	private filterGroups(
+		groups: ObIAutocompleteInputOptionGroup[],
+		searchText: string
+	): ObIAutocompleteInputOptionGroup[] {
 		return groups
 			.map(group => ({...group, groupOptions: this.filterOptions(group.groupOptions, searchText)}))
 			.filter(group => group.groupOptions.length > 0);
@@ -151,7 +159,9 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 
 	private filterOptions(options: ObIAutocompleteInputOption[], searchText: string): ObIAutocompleteInputOption[] {
 		const escapedSearchText = this.obAutocompleteTextToFindService.escapeRegexCharacter(searchText);
-		return options.filter((option: ObIAutocompleteInputOption) => new RegExp(escapedSearchText, this.filterRegexFlag).test(option.label));
+		return options.filter((option: ObIAutocompleteInputOption) =>
+			new RegExp(escapedSearchText, this.filterRegexFlag).test(option.label)
+		);
 	}
 
 	private isGroupOption(option: ObIAutocompleteInputOptionGroup | ObIAutocompleteInputOption): boolean {

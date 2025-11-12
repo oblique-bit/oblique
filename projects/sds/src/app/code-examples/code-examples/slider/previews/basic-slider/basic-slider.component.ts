@@ -5,6 +5,6 @@ import {MatSliderModule} from '@angular/material/slider';
 	selector: 'app-basic-slider',
 	imports: [MatSliderModule],
 	templateUrl: './basic-slider.component.html',
-	styleUrl: './basic-slider.component.scss'
+	styleUrl: './basic-slider.component.scss',
 })
 export class BasicSliderComponent {}

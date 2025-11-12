@@ -14,18 +14,18 @@ export class Log extends StaticScript {
 		info: {
 			icon: 'ℹ',
 			text: 'started',
-			color: chalk.blue
+			color: chalk.blue,
 		},
 		success: {
 			icon: '✔',
 			text: 'completed',
-			color: chalk.green
+			color: chalk.green,
 		},
 		error: {
 			icon: '✘',
 			text: 'error',
-			color: chalk.red
-		}
+			color: chalk.red,
+		},
 	};
 	private static readonly padLength = Math.max(...Object.values(Log.prefixes).map(prefix => prefix.text.length));
 

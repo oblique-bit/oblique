@@ -8,6 +8,6 @@ import type {Environment} from '../app/app.component.model';
 export const environment: Environment = {
 	production: false,
 	banner: {
-		text: 'LOCAL'
-	}
+		text: 'LOCAL',
+	},
 };

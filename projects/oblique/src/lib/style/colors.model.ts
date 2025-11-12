@@ -22,5 +22,5 @@ export enum ObEColor {
 	WARNING_DARK = '#c2410c',
 	ERROR_LIGHT = '#fae1e2',
 	ERROR = '#99191e',
-	ERROR_DARK = '#801519'
+	ERROR_DARK = '#801519',
 }

@@ -10,11 +10,14 @@ import {
 	mergeWith,
 	move,
 	template,
-	url
+	url,
 } from '@angular-devkit/schematics';
 import {getSdsSourceRootPath} from '../workspace.utils';
 import {addNodeToSyntaxList, checkPropertyLiteralExists} from '../nodes.utils';
-import {type SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {
+	type SourceFile,
+	SyntaxKind,
+} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import * as colors from 'ansi-colors';
 import type {AddCodeExampleOptions} from './add-code-example.model';
 import {
@@ -24,11 +27,15 @@ import {
 	getExampleSymbolName,
 	getSourceFileOrFalse,
 	isNameValid,
-	showAlreadyExistsMessage
+	showAlreadyExistsMessage,
 } from '../sds.utils';
 import {createHost} from '../host.utils';
 
-export function areCodeExampleOptionsValid(options: AddCodeExampleOptions, tree: Tree, context: SchematicContext): boolean {
+export function areCodeExampleOptionsValid(
+	options: AddCodeExampleOptions,
+	tree: Tree,
+	context: SchematicContext
+): boolean {
 	let isValid = true;
 	if (!options.name) {
 		context.logger.error(`${colors.symbols.cross}\tError: A name must be provided for the example.`);
@@ -45,7 +52,10 @@ export function areCodeExampleOptionsValid(options: AddCodeExampleOptions, tree:
 
 export function createCodeExampleFile(variables: Record<string, string>, directoryPath: string): Rule {
 	const sourceTemplates = url('templates');
-	const sourceParametrizedTemplates = apply(sourceTemplates, [template({...variables, dasherize}), move(directoryPath)]);
+	const sourceParametrizedTemplates = apply(sourceTemplates, [
+		template({...variables, dasherize}),
+		move(directoryPath),
+	]);
 	return mergeWith(sourceParametrizedTemplates);
 }
 
@@ -74,9 +84,9 @@ function addSlug(exampleName: string): Rule {
 				addNodeToSyntaxList(mapperSourceFile, 'codeExamples', {
 					kind: SyntaxKind.ObjectLiteralExpression,
 					text: slugText,
-					insert: 'ascending'
+					insert: 'ascending',
 				}),
-				importSlugSymbol(exampleName)
+				importSlugSymbol(exampleName),
 			]);
 		}
 		return chain([]);
@@ -105,14 +115,14 @@ function checkSlugAlreadyExists(sourceFile: SourceFile, name: string, context: S
 	const elementToFind = {
 		identifierName: 'codeExamples',
 		propertyName: dasherize(name),
-		className: `${classify(name)}CodeExamplesComponent`
+		className: `${classify(name)}CodeExamplesComponent`,
 	};
 	const alreadyExists = checkPropertyLiteralExists(getSourceNodes(sourceFile), elementToFind);
 	if (alreadyExists) {
 		showAlreadyExistsMessage(context, {
 			elementDescription: 'slug',
 			symbol: elementToFind.propertyName,
-			existsIn: `in the array ${elementToFind.identifierName}`
+			existsIn: `in the array ${elementToFind.identifierName}`,
 		});
 	}
 	return alreadyExists;

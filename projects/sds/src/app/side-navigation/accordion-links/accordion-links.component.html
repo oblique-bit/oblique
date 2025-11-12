@@ -11,7 +11,9 @@
 					>
 						<span
 							[id]="idPrefix() | id: [componentId, 'triangle', i]"
-							[ngClass]="'triangle-pointing-' + ((collapsedAccordionsRecord$ | async)![accordion.id] ? 'right' : 'down')"
+							[ngClass]="
+								'triangle-pointing-' + ((collapsedAccordionsRecord$ | async)![accordion.id] ? 'right' : 'down')
+							"
 						></span>
 						{{ accordion.title }}
 					</button>

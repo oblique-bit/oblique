@@ -4,9 +4,9 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
 	selector: '[obSchemaValidate][ngModel],[obSchemaValidate][formControlName]',
-	exportAs: 'obSchemaRequiredValidation',
+	standalone: true,
 	host: {class: 'ob-schema-required-validation'},
-	standalone: true
+	exportAs: 'obSchemaRequiredValidation',
 })
 export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
 	@HostBinding('attr.aria-required') required: boolean;

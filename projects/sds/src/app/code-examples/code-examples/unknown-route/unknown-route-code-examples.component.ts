@@ -9,7 +9,7 @@ import {UnknownRouteExampleStackblitzLinkPreviewComponent} from '../unknown-rout
 	selector: 'app-code-example-unknown-route',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UnknownRouteCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'unknown-route-examples';
@@ -17,7 +17,7 @@ export class UnknownRouteCodeExamplesComponent extends CodeExamples {
 		{
 			component: UnknownRouteExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example'
-		}
+			title: 'Link to Stackblitz Example',
+		},
 	];
 }

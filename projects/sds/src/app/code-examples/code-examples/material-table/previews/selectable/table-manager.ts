@@ -54,7 +54,9 @@ export class TableManager<T> {
 	}
 
 	private buildMasterToggleObservable(): Connectable<string> {
-		return connectable<string>(this.selection.changed.pipe(map(() => this.masterToggleState())), {connector: () => new ReplaySubject()});
+		return connectable<string>(this.selection.changed.pipe(map(() => this.masterToggleState())), {
+			connector: () => new ReplaySubject(),
+		});
 	}
 
 	private masterToggleState(): 'checked' | 'indeterminate' | undefined {

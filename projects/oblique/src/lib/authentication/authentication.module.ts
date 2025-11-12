@@ -8,7 +8,7 @@ export {ObAuthenticationService} from './authentication.service';
 export {ObIResourceAccessRoles} from './authentication.model';
 
 @NgModule({
-	imports: [CommonModule, OAuthModule]
+	imports: [CommonModule, OAuthModule],
 })
 export class ObAuthenticationModule {
 	constructor(@Optional() @SkipSelf() parentModule?: ObAuthenticationModule) {
@@ -30,7 +30,11 @@ export class ObAuthenticationModule {
 	): ModuleWithProviders<ObAuthenticationModule> {
 		return {
 			ngModule: ObAuthenticationModule,
-			providers: [ObAuthenticationService, ObAuthenticationConfigService, provideOAuthClient(config, validationHandlerClass)]
+			providers: [
+				ObAuthenticationService,
+				ObAuthenticationConfigService,
+				provideOAuthClient(config, validationHandlerClass),
+			],
 		};
 	}
 }

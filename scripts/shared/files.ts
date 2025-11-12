@@ -1,4 +1,15 @@
-import {copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, unlinkSync, writeFileSync} from 'fs';
+import {
+	copyFileSync,
+	existsSync,
+	mkdirSync,
+	readFileSync,
+	readdirSync,
+	renameSync,
+	rmSync,
+	statSync,
+	unlinkSync,
+	writeFileSync,
+} from 'fs';
 import path from 'path';
 
 export class Files {
@@ -60,7 +71,8 @@ export class Files {
 		return Files.readDirectory(directory)
 			.map(fileName => path.join(directoryPath, fileName))
 			.reduce<string[]>(
-				(filePaths, filePath) => (Files.isDirectory(filePath) ? [...filePaths, ...Files.list(filePath)] : [...filePaths, filePath]),
+				(filePaths, filePath) =>
+					Files.isDirectory(filePath) ? [...filePaths, ...Files.list(filePath)] : [...filePaths, filePath],
 				[]
 			);
 	}
@@ -71,6 +83,8 @@ export class Files {
 	}
 
 	static buildOSSafePath(...filePaths: string[]): string {
-		return path.join(...filePaths.map(filePath => filePath.replace('/', path.sep).replace(`${path.sep}${path.sep}`, path.sep)));
+		return path.join(
+			...filePaths.map(filePath => filePath.replace('/', path.sep).replace(`${path.sep}${path.sep}`, path.sep))
+		);
 	}
 }

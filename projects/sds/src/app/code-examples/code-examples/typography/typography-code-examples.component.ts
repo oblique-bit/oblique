@@ -13,7 +13,7 @@ import {TypographyExampleListsPreviewComponent} from '../typography/previews/lis
 	selector: 'app-code-example-typography',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TypographyCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'typography-examples';
@@ -26,8 +26,8 @@ export class TypographyCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('typography', 'mixins/typography-example-mixins-preview.component.html', 'HTML'),
 				this.getSnippet('typography', 'mixins/typography-example-mixins-preview.component.ts', 'TS'),
 				this.getSnippet('typography', 'mixins/typography-example-mixins-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: TypographyExampleHeadingsPreviewComponent,
@@ -35,28 +35,44 @@ export class TypographyCodeExamplesComponent extends CodeExamples {
 			title: 'Headings',
 			snippets: [
 				this.getSnippet('typography', 'headings/typography-example-headings-preview.component.html', 'HTML'),
-				this.getSnippet('typography', 'headings/typography-example-headings-preview.component.ts', 'TS')
-			]
+				this.getSnippet('typography', 'headings/typography-example-headings-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: TypographyExampleInlineElementsPreviewComponent,
 			idParts: ['inline', 'elements'],
 			title: 'Inline Elements',
 			snippets: [
-				this.getSnippet('typography', 'inline-elements/typography-example-inline-elements-preview.component.html', 'HTML'),
+				this.getSnippet(
+					'typography',
+					'inline-elements/typography-example-inline-elements-preview.component.html',
+					'HTML'
+				),
 				this.getSnippet('typography', 'inline-elements/typography-example-inline-elements-preview.component.ts', 'TS'),
-				this.getSnippet('typography', 'inline-elements/typography-example-inline-elements-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet(
+					'typography',
+					'inline-elements/typography-example-inline-elements-preview.component.scss',
+					'SCSS'
+				),
+			],
 		},
 		{
 			component: TypographyExampleBlockElementsPreviewComponent,
 			idParts: ['block', 'elements'],
 			title: 'Block Elements',
 			snippets: [
-				this.getSnippet('typography', 'block-elements/typography-example-block-elements-preview.component.html', 'HTML'),
+				this.getSnippet(
+					'typography',
+					'block-elements/typography-example-block-elements-preview.component.html',
+					'HTML'
+				),
 				this.getSnippet('typography', 'block-elements/typography-example-block-elements-preview.component.ts', 'TS'),
-				this.getSnippet('typography', 'block-elements/typography-example-block-elements-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet(
+					'typography',
+					'block-elements/typography-example-block-elements-preview.component.scss',
+					'SCSS'
+				),
+			],
 		},
 		{
 			component: TypographyExampleListsPreviewComponent,
@@ -64,8 +80,8 @@ export class TypographyCodeExamplesComponent extends CodeExamples {
 			title: 'Lists',
 			snippets: [
 				this.getSnippet('typography', 'lists/typography-example-lists-preview.component.html', 'HTML'),
-				this.getSnippet('typography', 'lists/typography-example-lists-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('typography', 'lists/typography-example-lists-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

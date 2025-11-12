@@ -9,7 +9,7 @@ import {BannerExampleDefaultPreviewComponent} from './previews/default/banner-ex
 	selector: 'app-code-example-banner',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BannerCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'banner-examples';
@@ -17,7 +17,7 @@ export class BannerCodeExamplesComponent extends CodeExamples {
 		{
 			component: BannerExampleDefaultPreviewComponent,
 			idParts: ['default'],
-			title: 'Link to Stackblitz Example'
-		}
+			title: 'Link to Stackblitz Example',
+		},
 	];
 }

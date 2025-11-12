@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import type {Version} from '../../cms/models/version.model';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class VersionService {
 	private cmsVersion: Version[];

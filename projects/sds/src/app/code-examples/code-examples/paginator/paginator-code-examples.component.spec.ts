@@ -13,7 +13,7 @@ describe(PaginatorCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [PaginatorCodeExamplesComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(PaginatorCodeExamplesComponent);

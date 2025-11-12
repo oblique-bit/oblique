@@ -17,13 +17,13 @@ interface Data {
 
 export enum Mode {
 	DIALOG = 0,
-	FORM = 1
+	FORM = 1,
 }
 
 export enum EditMode {
 	NONE = 0,
 	EDIT = 1,
-	ADD = 2
+	ADD = 2,
 }
 
 export class TableManager<T> {
@@ -90,7 +90,9 @@ export class TableManager<T> {
 				.pipe(filter(data => data))
 				.subscribe(
 					data =>
-						(this.dataSource.data = this.dataSource.data.map(item => (Object.is(item, row) ? {...data, editMode: EditMode.NONE} : item)))
+						(this.dataSource.data = this.dataSource.data.map(item =>
+							Object.is(item, row) ? {...data, editMode: EditMode.NONE} : item
+						))
 				);
 		} else {
 			row.editMode = EditMode.EDIT;
@@ -151,7 +153,9 @@ export class TableManager<T> {
 	}
 
 	private buildMasterToggleObservable(): Connectable<string> {
-		return connectable<string>(this.selection.changed.pipe(map(() => this.masterToggleState())), {connector: () => new ReplaySubject()});
+		return connectable<string>(this.selection.changed.pipe(map(() => this.masterToggleState())), {
+			connector: () => new ReplaySubject(),
+		});
 	}
 
 	private buildMasterRemoveObservable(): Connectable<boolean> {

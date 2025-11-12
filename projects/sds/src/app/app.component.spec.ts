@@ -22,11 +22,16 @@ describe('AppComponent', () => {
 				CmsDataService,
 				{
 					provide: TranslateService,
-					useValue: {addLangs: jest.fn(), setDefaultLang: jest.fn(), use: jest.fn(), stream: jest.fn().mockReturnValue(of(''))}
+					useValue: {
+						addLangs: jest.fn(),
+						setDefaultLang: jest.fn(),
+						use: jest.fn(),
+						stream: jest.fn().mockReturnValue(of('')),
+					},
 				},
-				{provide: WINDOW, useValue: window}
+				{provide: WINDOW, useValue: window},
 			],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 		}).compileComponents();
 	});
 

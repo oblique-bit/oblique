@@ -1,4 +1,12 @@
-import {ChangeDetectionStrategy, Component, type OnChanges, Output, type SimpleChanges, inject, input} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	type OnChanges,
+	Output,
+	type SimpleChanges,
+	inject,
+	input,
+} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
@@ -19,7 +27,7 @@ import {VersionService} from '../../shared/version/version.service';
 	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, MatLabel, MatTooltip],
 	templateUrl: './version.component.html',
 	styleUrl: './version.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VersionComponent implements OnChanges {
 	readonly idPrefix = input('');
@@ -66,7 +74,7 @@ export class VersionComponent implements OnChanges {
 			.sort((v1, v2) => v2 - v1)
 			.map((version, index) => ({
 				number: version,
-				label: index === 0 ? `${latest} (latest)` : `${version}`
+				label: index === 0 ? `${latest} (latest)` : `${version}`,
 			}));
 	}
 

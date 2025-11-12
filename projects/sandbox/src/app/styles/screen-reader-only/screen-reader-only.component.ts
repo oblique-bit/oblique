@@ -6,14 +6,16 @@ import {ObMasterLayoutService} from '@oblique/oblique';
 	selector: 'sb-screen-reader-only',
 	standalone: false,
 	templateUrl: './screen-reader-only.component.html',
-	styleUrl: './screen-reader-only.component.scss'
+	styleUrl: './screen-reader-only.component.scss',
 })
 export class ScreenReaderOnlyComponent implements OnInit {
 	layout: UntypedFormControl;
 	private readonly masterLayout = inject(ObMasterLayoutService);
 
 	ngOnInit(): void {
-		this.layout = new UntypedFormControl(this.computeValue(this.masterLayout.header.isSticky, this.masterLayout.footer.isSticky));
+		this.layout = new UntypedFormControl(
+			this.computeValue(this.masterLayout.header.isSticky, this.masterLayout.footer.isSticky)
+		);
 		this.layout.valueChanges.subscribe(value => {
 			this.masterLayout.header.isSticky = ['fixed', 'stickyHeader'].includes(value);
 			this.masterLayout.footer.isSticky = ['fixed', 'stickyFooter'].includes(value);

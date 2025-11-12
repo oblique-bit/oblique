@@ -6,7 +6,7 @@ import {FormBuilder, type FormGroup, Validators} from '@angular/forms';
 	selector: 'sb-focus-invalid-sample',
 	standalone: false,
 	templateUrl: './focus-invalid-sample.component.html',
-	styleUrl: './focus-invalid-sample.component.scss'
+	styleUrl: './focus-invalid-sample.component.scss',
 })
 export class FocusInvalidSampleComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;
@@ -28,7 +28,7 @@ export class FocusInvalidSampleComponent implements OnInit {
 			select: ['', Validators.required],
 			checkbox: ['', Validators.required],
 			textarea: ['', Validators.required],
-			radio: ['', Validators.requiredTrue]
+			radio: ['', Validators.requiredTrue],
 		});
 	}
 

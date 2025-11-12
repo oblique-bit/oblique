@@ -6,7 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 	selector: 'app-list-group-example-icon',
 	imports: [MatListModule, MatIconModule],
 	templateUrl: './list-group-example-icon-checkbox.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListGroupExampleIconCheckboxComponent {
 	readonly contentForList = [
@@ -16,7 +16,7 @@ export class ListGroupExampleIconCheckboxComponent {
 			line1: 'Cadrozzi AG',
 			line2: 'CHE-123.456.789 (active)',
 			line3: 'Musterstrasse 99, 3000 Bern',
-			icon: 'person_checkmark'
+			icon: 'person_checkmark',
 		},
 		{
 			id: 'list-item-2',
@@ -24,7 +24,7 @@ export class ListGroupExampleIconCheckboxComponent {
 			line1: 'Bananopa AG',
 			line2: 'CHE-123.633.789',
 			line3: 'Laupenfuss 59, 3002 Bern',
-			icon: 'person'
+			icon: 'person',
 		},
 		{
 			id: 'list-item-3',
@@ -32,7 +32,7 @@ export class ListGroupExampleIconCheckboxComponent {
 			line1: 'Lavani GmbH',
 			line2: 'CHE-123.456.408 (active)',
 			line3: 'Taubendorfstrasse 45, 3004 Bern',
-			icon: 'person_checkmark'
-		}
+			icon: 'person_checkmark',
+		},
 	];
 }

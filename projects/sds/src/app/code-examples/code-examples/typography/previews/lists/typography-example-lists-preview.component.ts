@@ -4,6 +4,6 @@ import {Component} from '@angular/core';
 	selector: 'app-typography-example-lists-preview',
 	standalone: true,
 	templateUrl: './typography-example-lists-preview.component.html',
-	styleUrl: './typography-example-lists-preview.component.scss'
+	styleUrl: './typography-example-lists-preview.component.scss',
 })
 export class TypographyExampleListsPreviewComponent {}

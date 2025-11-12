@@ -15,7 +15,7 @@ import {ObSelectableDirective} from '@oblique/oblique';
 		<div obSelectable [value]="1"></div>
 		<div obSelectable [value]="2"></div>
 		<div obSelectable [value]="3"></div>
-	</div>`
+	</div>`,
 })
 class TestComponent {
 	selectableGroup = new FormControl([1]);
@@ -32,7 +32,7 @@ describe(ObSelectableGroupDirective.name, () => {
 		TestBed.configureTestingModule({
 			imports: [ObSelectableGroupDirective, ObMockSelectableDirective, ReactiveFormsModule],
 			providers: [{provide: WINDOW, useValue: window}],
-			declarations: [TestComponent]
+			declarations: [TestComponent],
 		});
 	}));
 
@@ -511,8 +511,8 @@ describe(ObSelectableGroupDirective.name, () => {
 										<div obSelectable [value]="1"></div>
 										<div obSelectable [value]="2"></div>
 										<div obSelectable [value]="3"></div>
-									</div>`
-				}
+									</div>`,
+				},
 			}).createComponent(TestComponent);
 			component = fixture.componentInstance;
 			component = fixture.debugElement.query(By.directive(ObSelectableGroupDirective)).componentInstance;
@@ -540,15 +540,18 @@ describe(ObSelectableGroupDirective.name, () => {
 	});
 
 	describe('with a reactive form', () => {
-		const selectableDirectives = [{value: 1} as ObSelectableDirective<number>, {value: 2} as ObSelectableDirective<number>];
+		const selectableDirectives = [
+			{value: 1} as ObSelectableDirective<number>,
+			{value: 2} as ObSelectableDirective<number>,
+		];
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(TestComponent, {
 				set: {
 					template: `<div obSelectableGroup [formControl]="selectableGroup">
 										<div obSelectable [value]="1"></div>
 										<div obSelectable [value]="2"></div>
-									</div>`
-				}
+									</div>`,
+				},
 			}).createComponent(TestComponent);
 			component = fixture.debugElement.query(By.directive(ObSelectableGroupDirective)).componentInstance;
 			fixture.detectChanges();

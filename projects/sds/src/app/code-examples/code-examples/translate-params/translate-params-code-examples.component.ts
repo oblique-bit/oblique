@@ -9,7 +9,7 @@ import {TranslateParamsExampleDefaultPreviewComponent} from '../translate-params
 	selector: 'app-code-example-translate-params',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TranslateParamsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'translate-params-examples';
@@ -21,8 +21,8 @@ export class TranslateParamsCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('translate-params', 'default/translate-params-example-default-preview.component.html', 'HTML'),
 				this.getSnippet('translate-params', 'default/translate-params-example-default-preview.component.ts', 'TS'),
-				this.getJsonSnippet('i18n', 'en.json', 'JSON')
-			]
-		}
+				this.getJsonSnippet('i18n', 'en.json', 'JSON'),
+			],
+		},
 	];
 }

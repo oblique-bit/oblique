@@ -7,6 +7,6 @@ export {ObNestedFormComponent} from './nested-form.component';
 
 @NgModule({
 	imports: [ObNestedFormComponent, ObParentFormDirective],
-	exports: [ObNestedFormComponent, ObParentFormDirective]
+	exports: [ObNestedFormComponent, ObParentFormDirective],
 })
 export class ObNestedFormModule {}

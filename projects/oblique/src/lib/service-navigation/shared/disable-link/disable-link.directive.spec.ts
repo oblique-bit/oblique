@@ -9,7 +9,7 @@ import {CommonModule} from '@angular/common';
 	template: `
 		<a [id]="standardId" [obDisableLink]="disableLink" [href]="randomurl">randomlink</a>
 		<a [id]="defaultId" obDisableLink [href]="randomurl">randomlink</a>
-	`
+	`,
 })
 export class ObTestingComponent {
 	disableLink = true;
@@ -24,7 +24,7 @@ describe('obDisableLinkDirective', () => {
 	let element: HTMLElement;
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [CommonModule, ObDisableLinkDirective, ObTestingComponent]
+			imports: [CommonModule, ObDisableLinkDirective, ObTestingComponent],
 		});
 
 		fixture = TestBed.createComponent(ObTestingComponent);

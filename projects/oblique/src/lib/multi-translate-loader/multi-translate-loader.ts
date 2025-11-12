@@ -14,7 +14,11 @@ export class ObMultiTranslateLoader implements TranslateLoader {
 	public getTranslation(language: string): Observable<Record<string, string>> {
 		const requests = this.resources
 			.map(resource => `${resource.prefix}${language}${resource.suffix}`)
-			.map(url => this.getTranslationFile(url, this.shouldFlattenFiles).pipe(catchError(() => ObMultiTranslateLoader.handleError(url))));
+			.map(url =>
+				this.getTranslationFile(url, this.shouldFlattenFiles).pipe(
+					catchError(() => ObMultiTranslateLoader.handleError(url))
+				)
+			);
 		return forkJoin(requests).pipe(
 			map(response => response.reduce<Record<string, string>>((total, current) => ({...total, ...current}), {}))
 		);
@@ -26,7 +30,11 @@ export class ObMultiTranslateLoader implements TranslateLoader {
 	}
 
 	// if some files are flat while others are expanded, the flatten properties will be ignored. Therefore, all files are flatten to avoid conflicts
-	private flatten(object: DeepString, parent?: string, flatObject: Record<string, string> = {}): Record<string, string> {
+	private flatten(
+		object: DeepString,
+		parent?: string,
+		flatObject: Record<string, string> = {}
+	): Record<string, string> {
 		return Object.keys(object)
 			.map(key => ({current: key, full: parent ? `${parent}.${key}` : key}))
 			.reduce(

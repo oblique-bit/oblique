@@ -8,7 +8,12 @@ import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMasterLayoutService} from '../master-layout.service';
-import {ObEEnvironment, ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
+import {
+	ObEEnvironment,
+	ObEMasterLayoutEventValues,
+	ObIMasterLayoutEvent,
+	ObINavigationLink,
+} from '../master-layout.model';
 import {By} from '@angular/platform-browser';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {TranslateModule} from '@ngx-translate/core';
@@ -24,9 +29,9 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			isSmall: false,
 			serviceNavigation: {},
 			emitLoginState: jest.fn(),
-			emitLogoutUrl: jest.fn()
+			emitLogoutUrl: jest.fn(),
 		},
-		layout: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isMenuOpened: false}
+		layout: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isMenuOpened: false},
 	};
 
 	beforeEach(async () => {
@@ -37,9 +42,9 @@ describe('ObMasterLayoutHeaderComponent', () => {
 				provideObliqueTestingConfiguration(),
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
-				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: true}
+				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: true},
 			],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 		}).compileComponents();
 	});
 
@@ -67,7 +72,10 @@ describe('ObMasterLayoutHeaderComponent', () => {
 				});
 
 				it('should be updated with the service', () => {
-					mockMasterLayoutService.header.configEvents$.next({name: ObEMasterLayoutEventValues.HEADER_IS_CUSTOM, value: true});
+					mockMasterLayoutService.header.configEvents$.next({
+						name: ObEMasterLayoutEventValues.HEADER_IS_CUSTOM,
+						value: true,
+					});
 					expect(component.isCustom).toBe(true);
 				});
 			});
@@ -78,7 +86,10 @@ describe('ObMasterLayoutHeaderComponent', () => {
 				});
 
 				it('should be updated with the service', () => {
-					mockMasterLayoutService.header.configEvents$.next({name: ObEMasterLayoutEventValues.HEADER_IS_SMALL, value: true});
+					mockMasterLayoutService.header.configEvents$.next({
+						name: ObEMasterLayoutEventValues.HEADER_IS_SMALL,
+						value: true,
+					});
 					expect(component.isSmall).toBe(true);
 				});
 			});
@@ -91,7 +102,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 				it('should be set to the value emitted by the ObMasterLayoutService', () => {
 					mockMasterLayoutService.header.configEvents$.next({
 						name: ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION,
-						config: {displayApplications: true}
+						config: {displayApplications: true},
 					});
 					expect(component.serviceNavigationConfig).toEqual({displayApplications: true});
 				});
@@ -135,14 +146,14 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			DEV: 'rgb(255, 215, 0)',
 			REF: 'rgb(234, 88, 12)',
 			TEST: 'rgb(70, 89, 107)',
-			ABN: 'rgb(153, 25, 30)'
+			ABN: 'rgb(153, 25, 30)',
 		};
 		const colors: Record<ObEEnvironment, string> = {
 			LOCAL: 'rgb(255, 255, 255)',
 			DEV: 'rgb(28, 40, 52)',
 			REF: 'rgb(28, 40, 52)',
 			TEST: 'rgb(255, 255, 255)',
-			ABN: 'rgb(255, 255, 255)'
+			ABN: 'rgb(255, 255, 255)',
 		};
 		let banner: DebugElement;
 		describe.each(Object.values(ObEEnvironment))('Environment %s', environment => {
@@ -153,7 +164,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			});
 
 			it('should have the correct text', () => {
-				expect(banner.nativeElement.textContent).toBe(environment);
+				expect(banner.nativeElement.textContent.trim()).toBe(environment);
 			});
 
 			it('should have the correct background-color', () => {
@@ -174,7 +185,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			});
 
 			it('should have the correct text', () => {
-				expect(banner.nativeElement.textContent).toBe('unknownBanner');
+				expect(banner.nativeElement.textContent.trim()).toBe('unknownBanner');
 			});
 
 			it('should have correct background-color', () => {
@@ -195,7 +206,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			});
 
 			it('should have the correct text', () => {
-				expect(banner.nativeElement.textContent).toBe(environment);
+				expect(banner.nativeElement.textContent.trim()).toBe(environment);
 			});
 
 			it('should have correct background-color', () => {

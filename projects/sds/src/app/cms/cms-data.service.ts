@@ -9,7 +9,7 @@ import type {CMSPageShortList} from './models/cms-page.model';
 import type {BannerCms} from './models/banner.model';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class CmsDataService {
 	readonly baseUrl = 'https://oblique.directus.app/';

@@ -5,6 +5,6 @@ export {ObFocusInvalidDirective} from './focus-invalid.directive';
 
 @NgModule({
 	imports: [ObFocusInvalidDirective],
-	exports: [ObFocusInvalidDirective]
+	exports: [ObFocusInvalidDirective],
 })
 export class ObFocusInvalidModule {}

@@ -7,7 +7,7 @@ describe('SliderCodeExamplesComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [SliderCodeExamplesComponent]
+			imports: [SliderCodeExamplesComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SliderCodeExamplesComponent);

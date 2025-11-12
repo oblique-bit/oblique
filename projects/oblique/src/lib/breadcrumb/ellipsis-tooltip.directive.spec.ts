@@ -17,7 +17,7 @@ function setElementWidths(element: HTMLElement, offset: number, scroll: number):
 
 @Component({
 	imports: [ObEllipsisTooltipDirective, MatTooltipModule],
-	template: ` <span [matTooltip]="text()" [obEllipsisTooltip]="text()">{{ text() }}</span> `
+	template: ` <span [matTooltip]="text()" [obEllipsisTooltip]="text()">{{ text() }}</span> `,
 })
 class TestHostComponent {
 	text = input('');
@@ -42,7 +42,11 @@ describe('ObEllipsisTooltipDirective', () => {
 
 		await TestBed.configureTestingModule({
 			imports: [TestHostComponent],
-			providers: [{provide: WINDOW, useValue: windowMock}, {provide: DOCUMENT, useValue: document}, ObGlobalEventsService]
+			providers: [
+				{provide: WINDOW, useValue: windowMock},
+				{provide: DOCUMENT, useValue: document},
+				ObGlobalEventsService,
+			],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TestHostComponent);
@@ -69,20 +73,20 @@ describe('ObEllipsisTooltipDirective', () => {
 				caseTitle: 'disables tooltip when offest is equal scroll',
 				offset: 200,
 				scroll: 200,
-				expectedDisabled: true
+				expectedDisabled: true,
 			},
 			{
 				caseTitle: 'enables tooltip if offset smaller than scroll',
 				offset: 80,
 				scroll: 81,
-				expectedDisabled: false
+				expectedDisabled: false,
 			},
 			{
 				caseTitle: 'disables tooltip after ellipsis disappears',
 				offset: 121,
 				scroll: 120,
-				expectedDisabled: true
-			}
+				expectedDisabled: true,
+			},
 		])('$caseTitle', async ({offset, scroll, expectedDisabled}) => {
 			setElementWidths(hostElement, offset, scroll);
 

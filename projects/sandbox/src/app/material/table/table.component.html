@@ -3,7 +3,10 @@
 	<div column-main-content [class.ob-table-scrollable]="isScrollable$ | async">
 		<form [formGroup]="tableManager.editForm" [ngClass]="collapsedStyles$ | async">
 			<div class="actions-header">
-				<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: false }" />
+				<ng-container
+					[ngTemplateOutlet]="actionsHeader"
+					[ngTemplateOutletContext]="{ tableManager, isInTable: false }"
+				/>
 			</div>
 			@if (isStructureDefault$ | async) {
 				<table
@@ -51,14 +54,24 @@
 					}
 					<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
 						<td *matHeaderCellDef mat-cell>
-							<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: true }" />
+							<ng-container
+								[ngTemplateOutlet]="actionsHeader"
+								[ngTemplateOutletContext]="{ tableManager, isInTable: true }"
+							/>
 						</td>
 						<td *matCellDef="let element" mat-cell [attr.data-title]="'Actions'">
-							<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
+							<ng-container
+								[ngTemplateOutlet]="actionsContent"
+								[ngTemplateOutletContext]="{ tableManager, element, editMode }"
+							/>
 						</td>
 					</ng-container>
 					<tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-					<tr *matRowDef="let row; columns: displayedColumns" mat-row [class.edit-mode]="row.editMode !== editMode.NONE"></tr>
+					<tr
+						*matRowDef="let row; columns: displayedColumns"
+						mat-row
+						[class.edit-mode]="row.editMode !== editMode.NONE"
+					></tr>
 				</table>
 			}
 
@@ -102,10 +115,16 @@
 					}
 					<ng-container [matColumnDef]="COLUMN_NAME_ACTIONS">
 						<mat-cell *matHeaderCellDef>
-							<ng-container [ngTemplateOutlet]="actionsHeader" [ngTemplateOutletContext]="{ tableManager, isInTable: true }" />
+							<ng-container
+								[ngTemplateOutlet]="actionsHeader"
+								[ngTemplateOutletContext]="{ tableManager, isInTable: true }"
+							/>
 						</mat-cell>
 						<mat-cell *matCellDef="let element">
-							<ng-container [ngTemplateOutlet]="actionsContent" [ngTemplateOutletContext]="{ tableManager, element, editMode }" />
+							<ng-container
+								[ngTemplateOutlet]="actionsContent"
+								[ngTemplateOutletContext]="{ tableManager, element, editMode }"
+							/>
 						</mat-cell>
 					</ng-container>
 					<mat-header-row *cdkHeaderRowDef="displayedColumns" />
@@ -140,13 +159,24 @@
 				{{ column.name }}
 			</ng-template>
 
-			<ng-template #columnContent let-column="column" let-element="element" let-editMode="editMode" let-tableManager="tableManager">
+			<ng-template
+				#columnContent
+				let-column="column"
+				let-element="element"
+				let-editMode="editMode"
+				let-tableManager="tableManager"
+			>
 				@if (element.editMode === editMode.NONE) {
 					{{ element[column.key] }}
 				} @else {
 					<mat-form-field obErrorMessages>
 						<mat-label>{{ column.name }}</mat-label>
-						<input matInput [type]="column.type" [formControlName]="column.key" (keyup.enter)="tableManager.saveRow(element)" />
+						<input
+							matInput
+							[type]="column.type"
+							[formControlName]="column.key"
+							(keyup.enter)="tableManager.saveRow(element)"
+						/>
 						<mat-error />
 					</mat-form-field>
 				}
@@ -158,7 +188,9 @@
 						type="button"
 						mat-icon-button
 						obButton="secondary"
-						[matTooltip]="'Add a new row' + (isInTable ? '' : ' to the table of characteristics of periodical elements')"
+						[matTooltip]="
+							'Add a new row' + (isInTable ? '' : ' to the table of characteristics of periodical elements')
+						"
 						[disabled]="tableManager.isEditMode$ | async"
 						(click)="tableManager.addRow()"
 					>
@@ -168,7 +200,10 @@
 						type="button"
 						mat-icon-button
 						obButton="secondary"
-						[matTooltip]="'Remove all selected rows' + (isInTable ? '' : ' from the table of characteristics of periodical elements')"
+						[matTooltip]="
+							'Remove all selected rows' +
+							(isInTable ? '' : ' from the table of characteristics of periodical elements')
+						"
 						[disabled]="(tableManager.isEditMode$ | async) || (tableManager.isMasterRemoveDisabled$ | async)"
 						(click)="tableManager.removeRows()"
 					>
@@ -201,10 +236,22 @@
 							<mat-icon svgIcon="delete" />
 						</button>
 					} @else {
-						<button type="submit" mat-icon-button obButton="secondary" matTooltip="Save" (click)="tableManager.saveRow(element)">
+						<button
+							type="submit"
+							mat-icon-button
+							obButton="secondary"
+							matTooltip="Save"
+							(click)="tableManager.saveRow(element)"
+						>
 							<mat-icon svgIcon="checkmark" />
 						</button>
-						<button type="reset" mat-icon-button obButton="secondary" matTooltip="Reset" (click)="tableManager.cancel(element)">
+						<button
+							type="reset"
+							mat-icon-button
+							obButton="secondary"
+							matTooltip="Reset"
+							(click)="tableManager.cancel(element)"
+						>
 							<mat-icon svgIcon="xmark" />
 						</button>
 					}
@@ -225,9 +272,15 @@
 			<fieldset>
 				<legend>Structure</legend>
 				<div class="form-elements">
-					<mat-slide-toggle formControlName="default" matTooltip="Toggle between default and flex table"> Default table </mat-slide-toggle>
-					<mat-slide-toggle formControlName="selection" matTooltip="Toggle selection column">Selection column </mat-slide-toggle>
-					<mat-slide-toggle formControlName="actions" matTooltip="Toggle actions column">Actions column </mat-slide-toggle>
+					<mat-slide-toggle formControlName="default" matTooltip="Toggle between default and flex table">
+						Default table
+					</mat-slide-toggle>
+					<mat-slide-toggle formControlName="selection" matTooltip="Toggle selection column"
+						>Selection column
+					</mat-slide-toggle>
+					<mat-slide-toggle formControlName="actions" matTooltip="Toggle actions column"
+						>Actions column
+					</mat-slide-toggle>
 					<mat-slide-toggle formControlName="caption" matTooltip="Toggle caption"> Table caption </mat-slide-toggle>
 				</div>
 			</fieldset>
@@ -241,16 +294,28 @@
 			<fieldset>
 				<legend class="mat-control">Oblique styling classes</legend>
 				<div formGroupName="style" class="form-elements">
-					<mat-slide-toggle formControlName="ob-table" matTooltip="Toggle Oblique styling for tables"> ob-table </mat-slide-toggle>
-					<mat-slide-toggle formControlName="ob-table-plain" matTooltip="Toggle odd lines highlighting"> ob-table-plain </mat-slide-toggle>
-					<mat-slide-toggle formControlName="ob-table-disable-hover-style" matTooltip="Toggle hover effect on table's rows"
+					<mat-slide-toggle formControlName="ob-table" matTooltip="Toggle Oblique styling for tables">
+						ob-table
+					</mat-slide-toggle>
+					<mat-slide-toggle formControlName="ob-table-plain" matTooltip="Toggle odd lines highlighting">
+						ob-table-plain
+					</mat-slide-toggle>
+					<mat-slide-toggle
+						formControlName="ob-table-disable-hover-style"
+						matTooltip="Toggle hover effect on table's rows"
 						>ob-table-disable-hover-style
 					</mat-slide-toggle>
-					<mat-slide-toggle formControlName="ob-table-disable-checked-style" matTooltip="Toggle checked effect on table's rows"
+					<mat-slide-toggle
+						formControlName="ob-table-disable-checked-style"
+						matTooltip="Toggle checked effect on table's rows"
 						>ob-table-disable-checked-style
 					</mat-slide-toggle>
-					<mat-slide-toggle formControlName="ob-table-sm" matTooltip="Toggle small table variant"> ob-table-sm </mat-slide-toggle>
-					<mat-slide-toggle formControlName="ob-table-lg" matTooltip="Toggle large table variant"> ob-table-lg </mat-slide-toggle>
+					<mat-slide-toggle formControlName="ob-table-sm" matTooltip="Toggle small table variant">
+						ob-table-sm
+					</mat-slide-toggle>
+					<mat-slide-toggle formControlName="ob-table-lg" matTooltip="Toggle large table variant">
+						ob-table-lg
+					</mat-slide-toggle>
 				</div>
 			</fieldset>
 			<fieldset>

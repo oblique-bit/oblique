@@ -4,7 +4,7 @@ import type {ObNavTreeItemModel} from '@oblique/oblique';
 @Component({
 	selector: 'sb-nav-page',
 	standalone: false,
-	templateUrl: './nav-page.component.html'
+	templateUrl: './nav-page.component.html',
 })
 export class NavPageComponent {
 	items: ObNavTreeItemModel[] = [
@@ -26,13 +26,13 @@ export class NavPageComponent {
 								{
 									id: 'tree-item-1-1-1-1',
 									label: 'Item 1.1.1.1',
-									routes: []
-								}
-							]
-						}
-					]
-				}
-			]
+									routes: [],
+								},
+							],
+						},
+					],
+				},
+			],
 		},
 		{
 			id: 'tree-item-2',
@@ -52,13 +52,13 @@ export class NavPageComponent {
 								{
 									id: 'tree-item-2-1-1-1',
 									label: 'Item 2.1.1.1',
-									routes: []
-								}
-							]
-						}
-					]
-				}
-			]
-		}
+									routes: [],
+								},
+							],
+						},
+					],
+				},
+			],
+		},
 	];
 }

@@ -6,8 +6,8 @@ import {isNotKeyboardEventOnButton} from '../utilities';
 
 @Directive({
 	selector: '[obAriaMenuButton]',
+	standalone: false,
 	exportAs: 'obAriaMenuButton',
-	standalone: false
 })
 export class ObAriaMenuButtonDirective implements OnInit {
 	@Input('obAriaMenuButton') @HostBinding('attr.aria-controls') target: string;

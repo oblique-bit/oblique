@@ -5,6 +5,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-date-example-default-preview',
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
-	templateUrl: './date-example-default-preview.component.html'
+	templateUrl: './date-example-default-preview.component.html',
 })
 export class DateExampleDefaultPreviewComponent {}
