@@ -8,7 +8,7 @@ import {NgControl} from '@angular/forms';
 	selector: 'ob-error-messages',
 	standalone: true,
 	template: '',
-	exportAs: 'obErrorMessages'
+	exportAs: 'obErrorMessages',
 })
 export class ObMockErrorMessagesComponent {
 	@Input() control: NgControl;

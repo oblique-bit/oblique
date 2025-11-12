@@ -23,8 +23,8 @@ describe('draft07Convert', () => {
 				type: 'object',
 				properties: {
 					required: {type: 'string', required: true},
-					optional: {type: 'any'}
-				}
+					optional: {type: 'any'},
+				},
 			});
 		});
 
@@ -40,8 +40,8 @@ describe('draft07Convert', () => {
 				required: ['required'],
 				properties: {
 					required: {type: 'string'},
-					optional: {type: 'object'}
-				}
+					optional: {type: 'object'},
+				},
 			});
 		});
 	});

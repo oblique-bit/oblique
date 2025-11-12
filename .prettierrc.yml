@@ -4,13 +4,8 @@ overrides:
       semi: true
       singleQuote: true
       bracketSpacing: false
-      trailingComma: none
+      trailingComma: es5
       arrowParens: avoid
   - files: "*.{css,scss}"
     options:
       semi: true
-      singleQuote: false
-      bracketSpacing: false
-  - files: "*.html"
-    options:
-      trailingComma: none

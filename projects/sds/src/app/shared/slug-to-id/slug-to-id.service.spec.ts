@@ -30,7 +30,7 @@ describe(SlugToIdService.name, () => {
 				new Map<string, number>([
 					['slug-1', 1],
 					['slug-2', 2],
-					['slug-3', 3]
+					['slug-3', 3],
 				])
 			);
 		});
@@ -38,7 +38,7 @@ describe(SlugToIdService.name, () => {
 		it.each([
 			{slug: 'slug-1', id: 1},
 			{slug: 'slug-2', id: 2},
-			{slug: 'slug-3', id: 3}
+			{slug: 'slug-3', id: 3},
 		])('should give the id $id for slug $slug', ({slug, id}) => {
 			expect(service.getIdForSlug(slug)).toBe(id);
 		});

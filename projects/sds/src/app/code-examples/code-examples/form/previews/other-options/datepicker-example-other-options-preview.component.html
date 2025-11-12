@@ -35,7 +35,10 @@
 		<input matInput [min]="today" [matDatepicker]="minDatepicker" [formControl]="minErrorControl" />
 		<mat-datepicker-toggle matIconSuffix [for]="minDatepicker" />
 		<mat-datepicker #minDatepicker />
-		<mat-hint>"min" input prevent past dates to be selected. To prevent them from being manually set, error control is needed.</mat-hint>
+		<mat-hint
+			>"min" input prevent past dates to be selected. To prevent them from being manually set, error control is
+			needed.</mat-hint
+		>
 		<mat-error>The date may not be in the past. Note that no value means January 1, 1970.</mat-error>
 	</mat-form-field>
 </div>
@@ -45,7 +48,10 @@
 		<input matInput [max]="today" [matDatepicker]="maxDatepicker" [formControl]="maxErrorControl" />
 		<mat-datepicker-toggle matIconSuffix [for]="maxDatepicker" />
 		<mat-datepicker #maxDatepicker />
-		<mat-hint>"max" input prevent future dates to be selected. To prevent them from being manually set, error control is needed.</mat-hint>
+		<mat-hint
+			>"max" input prevent future dates to be selected. To prevent them from being manually set, error control is
+			needed.</mat-hint
+		>
 		<mat-error>The date may not be in the future</mat-error>
 	</mat-form-field>
 </div>

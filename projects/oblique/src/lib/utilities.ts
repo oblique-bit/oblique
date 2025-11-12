@@ -1,5 +1,12 @@
 import {HttpClient} from '@angular/common/http';
-import {DOCUMENT, EnvironmentProviders, InjectionToken, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
+import {
+	DOCUMENT,
+	EnvironmentProviders,
+	InjectionToken,
+	inject,
+	makeEnvironmentProviders,
+	provideAppInitializer,
+} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
@@ -14,7 +21,7 @@ import {
 	ObIObliqueConfiguration,
 	ObIPamsConfiguration,
 	ObITranslateConfig,
-	ObITranslateConfigInternal
+	ObITranslateConfigInternal,
 } from './utilities.model';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
@@ -48,7 +55,7 @@ const materialProviders = {
 	MAT_CHECKBOX_OPTIONS: {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
 	MAT_RADIO_OPTIONS: {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
 	MAT_SLIDE_TOGGLE_OPTIONS: {provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-	MAT_TABS_CONFIG: {provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}}
+	MAT_TABS_CONFIG: {provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}},
 };
 
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
@@ -66,12 +73,13 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
 		Object.entries(materialProviders).map(([provider, token]) => ({
 			provide: token.provide,
-			useValue: {...token.useValue, ...config.material?.[provider]}
-		}))
+			useValue: {...token.useValue, ...config.material?.[provider]},
+		})),
 	]);
 }
 export function provideObliqueTestingConfiguration(
-	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> & Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>> = {}
+	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> &
+		Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>> = {}
 ): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
@@ -82,12 +90,12 @@ export function provideObliqueTestingConfiguration(
 			...config.translate,
 			loader: {
 				provide: TranslateLoader,
-				useValue: {getTranslation: () => of({})}
-			}
+				useValue: {getTranslation: () => of({})},
+			},
 		}),
 		{
 			provide: OB_TRANSLATION_CONFIGURATION,
-			useValue: {additionalFiles: config.translate?.additionalFiles, flatten: config.translate?.flatten ?? true}
+			useValue: {additionalFiles: config.translate?.additionalFiles, flatten: config.translate?.flatten ?? true},
 		},
 		{provide: WINDOW, useValue: window},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
@@ -97,8 +105,8 @@ export function provideObliqueTestingConfiguration(
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
 		Object.entries(materialProviders).map(([provider, token]) => ({
 			provide: token.provide,
-			useValue: {...token.useValue, ...config.material?.[provider]}
-		}))
+			useValue: {...token.useValue, ...config.material?.[provider]},
+		})),
 	]);
 }
 
@@ -109,11 +117,11 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 			loader: {
 				provide: TranslateLoader,
 				useFactory: getTranslateLoader,
-				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION]
+				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION],
 			},
-			...config
+			...config,
 		}),
-		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}}
+		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}},
 	]);
 }
 
@@ -124,9 +132,9 @@ function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal
 		[
 			{
 				prefix: './assets/i18n/oblique-',
-				suffix: '.json'
+				suffix: '.json',
 			},
-			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}])
+			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}]),
 		],
 		flatten
 	);

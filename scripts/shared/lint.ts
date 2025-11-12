@@ -24,7 +24,7 @@ export class Lint extends StaticScript {
 		}
 		Lint.executeCommand('eslint', files, {
 			cache: true,
-			fix: this.hasFix
+			fix: this.hasFix,
 		});
 		// Eventually restore the working directory
 		if (wd) {
@@ -37,7 +37,7 @@ export class Lint extends StaticScript {
 		Lint.executeCommand('stylelint', files, {
 			cache: true,
 			allowEmptyInput: true,
-			fix: this.hasFix
+			fix: this.hasFix,
 		});
 		return Lint.instance as Lint;
 	}
@@ -48,7 +48,7 @@ export class Lint extends StaticScript {
 			cacheLocation: '.prettiercache',
 			logLevel: 'warn',
 			write: this.hasFix,
-			check: !this.hasFix
+			check: !this.hasFix,
 		});
 		return Lint.instance as Lint;
 	}
@@ -57,7 +57,11 @@ export class Lint extends StaticScript {
 		Lint.instance = undefined;
 	}
 
-	private static executeCommand(commandName: string, files: string | string[], options?: Record<string, string | boolean>): void {
+	private static executeCommand(
+		commandName: string,
+		files: string | string[],
+		options?: Record<string, string | boolean>
+	): void {
 		const command = this.buildCommand(commandName, Array.isArray(files) ? files : [files], options);
 		executeCommandWithLog(command, `Lint with ${commandName}`);
 	}

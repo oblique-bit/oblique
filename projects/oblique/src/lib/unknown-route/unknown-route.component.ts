@@ -9,7 +9,7 @@ import {RouterLink} from '@angular/router';
 	templateUrl: './unknown-route.component.html',
 	styleUrls: ['./unknown-route.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-unknown-route'}
+	host: {class: 'ob-unknown-route'},
 })
 export class ObUnknownRouteComponent {
 	public homePageRoute;

@@ -8,7 +8,7 @@ import {map} from 'rxjs';
 	selector: 'sb-nav-tree-sample',
 	standalone: false,
 	templateUrl: './nav-tree-sample.component.html',
-	styleUrl: './nav-tree-sample.component.scss'
+	styleUrl: './nav-tree-sample.component.scss',
 })
 export class NavTreeSampleComponent {
 	public readonly items: Signal<ObNavTreeItemModel[]>;
@@ -17,13 +17,15 @@ export class NavTreeSampleComponent {
 		pattern: null,
 		clear: (): void => {
 			this.filter.pattern = null;
-		}
+		},
 	};
 	public hasEmbeddedFilter = false;
 
 	constructor() {
 		const route = inject(ActivatedRoute);
-		this.items = toSignal(route.data.pipe(map(data => data.sample.navTree.items.map(item => new ObNavTreeItemModel(item)))));
+		this.items = toSignal(
+			route.data.pipe(map(data => data.sample.navTree.items.map(item => new ObNavTreeItemModel(item))))
+		);
 	}
 
 	setDisabled(index: number): void {

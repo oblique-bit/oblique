@@ -10,7 +10,7 @@ import {
 	removeImport,
 	replaceInFile,
 	setAngularConfig,
-	warnIfStandalone
+	warnIfStandalone,
 } from '../utils';
 
 export interface IUpdateV13Schema {}
@@ -35,7 +35,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				this.removeTranslationFiles(),
 				this.removeOldFontReferences(),
 				this.removeOBShowExternalLinkIconClass(),
-				warnIfStandalone()
+				warnIfStandalone(),
 			])(tree, context);
 	}
 
@@ -68,7 +68,9 @@ export class UpdateV12toV13 implements ObIMigrations {
 			infoMigration(context, 'Remove deprecated MasterLayoutService configs.');
 			const toApply = (filePath: string): void => {
 				const fileContent = readFile(tree, filePath);
-				const replacement = fileContent.replace(/^.*footer\.hasLogoOnScroll.*$/gm, '').replace(/^.*header\.reduceOnScroll.*$/gm, '');
+				const replacement = fileContent
+					.replace(/^.*footer\.hasLogoOnScroll.*$/gm, '')
+					.replace(/^.*header\.reduceOnScroll.*$/gm, '');
 				if (fileContent !== replacement) {
 					tree.overwrite(filePath, replacement);
 				}
@@ -120,7 +122,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 					`accessibilityStatement: {applicationName: "Replace me with the application's name", conformity: 'none', applicationOperator: 'Replace me with the name and address of the federal office that exploit this application, HTML is permitted', contact: {/* at least 1 email or phone number has to be provided */ emails: [''], phones: ['']}}`,
 					this.getMaterialConfiguration(content),
 					this.getIconConfiguration(content),
-					this.getTranslateConfiguration(content)
+					this.getTranslateConfiguration(content),
 				].join(',');
 				replaceInFile(tree, filePath, /(?<=provideObliqueConfiguration\()(?=\))/, `{${configs}}`);
 			};
@@ -135,7 +137,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 			'MAT_CHECKBOXoptions',
 			'MAT_RADIOoptions',
 			'MAT_SLIDE_TOGGLEoptions',
-			'MAT_TABS_CONFIG'
+			'MAT_TABS_CONFIG',
 		]
 			.map(token => ({token, result: new RegExp(`(?<=${token}:\\s*){[^}]*}`).exec(content)}))
 			.filter(({result}) => !!result)
@@ -150,8 +152,10 @@ export class UpdateV12toV13 implements ObIMigrations {
 	}
 
 	private getTranslateConfiguration(content: string): string {
-		const translateConfig = /(?<=TranslateModule\.forRoot\s*\(\s*multiTranslateLoader\().*?(?=\)+)/s.exec(content) ?? [];
-		const translateFiles = /(?<={\s*provide\s*:\s*TRANSLATION_FILES\s*,\s*useValue\s*:\s*).*?(?=})/s.exec(content) ?? [];
+		const translateConfig =
+			/(?<=TranslateModule\.forRoot\s*\(\s*multiTranslateLoader\().*?(?=\)+)/s.exec(content) ?? [];
+		const translateFiles =
+			/(?<={\s*provide\s*:\s*TRANSLATION_FILES\s*,\s*useValue\s*:\s*).*?(?=})/s.exec(content) ?? [];
 		const config = [];
 		if (translateConfig[0]?.length) {
 			config.push(`config: ${translateConfig[0]}`);
@@ -167,7 +171,12 @@ export class UpdateV12toV13 implements ObIMigrations {
 			infoMigration(context, 'Remove OB_MATERIAL_CONFIG');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'OB_MATERIAL_CONFIG', '@oblique/oblique');
-				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*OB_MATERIAL_CONFIG\s*,\s*useValue\s*:\s*\{.*?}\s*}\s*}.?/s, '');
+				replaceInFile(
+					tree,
+					filePath,
+					/\s*{\s*provide\s*:\s*OB_MATERIAL_CONFIG\s*,\s*useValue\s*:\s*\{.*?}\s*}\s*}.?/s,
+					''
+				);
 			};
 			return applyInTree(tree, apply, 'app.module.ts');
 		});
@@ -212,7 +221,9 @@ export class UpdateV12toV13 implements ObIMigrations {
 			getAngularConfigs(tree, ['architect', 'build', 'options', 'styles']).forEach(project => {
 				setAngularConfig(tree, ['architect', 'build', 'options', 'styles'], {
 					project: project.project,
-					config: project.config.filter((style: string) => !(style.endsWith('roboto.css') || style.endsWith('frutiger.css')))
+					config: project.config.filter(
+						(style: string) => !(style.endsWith('roboto.css') || style.endsWith('frutiger.css'))
+					),
 				});
 			});
 			return tree;

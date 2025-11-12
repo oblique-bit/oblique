@@ -16,5 +16,5 @@ export interface ObBreadcrumbConfig {
 export const defaultBreadcrumbConfig: ObBreadcrumbConfig = {
 	maxWidth: '32ch',
 	parameterSeparator: ' – ',
-	beautifyUrls: true
+	beautifyUrls: true,
 };

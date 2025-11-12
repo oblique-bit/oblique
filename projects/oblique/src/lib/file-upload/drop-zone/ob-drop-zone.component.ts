@@ -15,7 +15,7 @@ import {ObValidationService} from './validation.service';
 	encapsulation: ViewEncapsulation.None,
 	exportAs: 'obDropZone',
 	providers: [ObValidationService],
-	host: {class: 'ob-drop-zone'}
+	host: {class: 'ob-drop-zone'},
 })
 export class ObDropZoneComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
@@ -34,7 +34,7 @@ export class ObDropZoneComponent {
 			accept: this.accept,
 			maxSize: this.maxFileSize,
 			maxAmount: this.maxFileAmount,
-			multiple: this.multiple
+			multiple: this.multiple,
 		});
 		if (files.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.CHOSEN, files});

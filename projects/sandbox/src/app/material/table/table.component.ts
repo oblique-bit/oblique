@@ -12,7 +12,7 @@ import {EditMode, Mode, TableManager} from './table-manager';
 	selector: 'sb-table',
 	standalone: false,
 	templateUrl: './table.component.html',
-	styleUrl: './table.component.scss'
+	styleUrl: './table.component.scss',
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	readonly sort = viewChild(MatSort);
@@ -32,7 +32,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		{key: 'position', name: 'Position', type: 'number'},
 		{key: 'name', name: 'Name', type: 'text'},
 		{key: 'weight', name: 'Weight', type: 'number'},
-		{key: 'symbol', name: 'Symbol', type: 'text'}
+		{key: 'symbol', name: 'Symbol', type: 'text'},
 	];
 	readonly tableManager: TableManager<ObIPeriodicElement>;
 	readonly COLUMN_NAME_SELECT = 'select';
@@ -49,7 +49,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		{position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
 		{position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
+		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 	];
 	private readonly formBuilder = inject(UntypedFormBuilder);
 
@@ -86,7 +86,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 			position: [null, Validators.required],
 			name: [null, Validators.required],
 			weight: [null, Validators.required],
-			symbol: [null, Validators.required]
+			symbol: [null, Validators.required],
 		});
 	}
 
@@ -104,9 +104,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 				'ob-table-disable-hover-style': false,
 				'ob-table-disable-checked-style': false,
 				'ob-table-sm': false,
-				'ob-table-lg': false
+				'ob-table-lg': false,
 			}),
-			collapsed: 'none'
+			collapsed: 'none',
 		});
 	}
 
@@ -116,7 +116,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.valueChanges<boolean>('actions').subscribe(isEnabled => this.toggleActionsVisibility(isEnabled));
 		this.valueChanges<boolean>('style.ob-table').subscribe(isEnabled => this.handleDisableState(isEnabled));
 		this.valueChanges<Mode>('mode').subscribe(mode => this.tableManager.setMode(mode));
-		this.isStructureDefault$ = this.valueChanges<boolean>('default').pipe(tap(isDefault => this.structureChange(isDefault)));
+		this.isStructureDefault$ = this.valueChanges<boolean>('default').pipe(
+			tap(isDefault => this.structureChange(isDefault))
+		);
 		this.hasCaption$ = this.valueChanges<boolean>('caption');
 		this.isScrollable$ = this.valueChanges<string>('collapsed').pipe(map(value => value === 'ob-table-scrollable'));
 		this.tableStyles$ = this.getTableStylesObservable();
@@ -125,7 +127,11 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	private valueChanges<T>(field: string): Observable<T> {
 		const control = this.controls.get(field);
-		return control.valueChanges.pipe(startWith(control.value), share({connector: () => new ReplaySubject(1)}), takeUntil(this.unsubscribe));
+		return control.valueChanges.pipe(
+			startWith(control.value),
+			share({connector: () => new ReplaySubject(1)}),
+			takeUntil(this.unsubscribe)
+		);
 	}
 
 	private filter(filterText: string): void {
@@ -149,7 +155,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	private structureChange(isDefault: boolean): void {
-		['caption', 'collapsed'].map(key => this.controls.get(key)).forEach(control => TableComponent.setDisabledState(control, isDefault));
+		['caption', 'collapsed']
+			.map(key => this.controls.get(key))
+			.forEach(control => TableComponent.setDisabledState(control, isDefault));
 	}
 
 	private static setDisabledState(control: AbstractControl, isEnabled: boolean): void {
@@ -161,15 +169,18 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	private getTableStylesObservable(): Observable<Record<string, boolean>> {
-		return combineLatest([this.valueChanges<Record<string, boolean>>('style'), this.getCollapsedStylesObservable()]).pipe(
-			map(classes => ({...classes[0], ...classes[1]}))
-		);
+		return combineLatest([
+			this.valueChanges<Record<string, boolean>>('style'),
+			this.getCollapsedStylesObservable(),
+		]).pipe(map(classes => ({...classes[0], ...classes[1]})));
 	}
 
 	private getCollapsedStylesObservable(): Observable<Record<string, boolean>> {
 		const collapse = ['ob-table-collapse', 'ob-table-collapse-sm', 'ob-table-collapse-md'];
 		return this.valueChanges<string>('collapsed').pipe(
-			map(value => collapse.reduce<Record<string, boolean>>((total, current) => ({...total, [current]: current === value}), {}))
+			map(value =>
+				collapse.reduce<Record<string, boolean>>((total, current) => ({...total, [current]: current === value}), {})
+			)
 		);
 	}
 

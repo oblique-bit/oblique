@@ -9,8 +9,8 @@ module.exports = {
 			'jest-sonar',
 			{
 				outputDirectory: '<rootDir>/coverage/oblique',
-				outputName: 'sqr.xml'
-			}
-		]
-	]
+				outputName: 'sqr.xml',
+			},
+		],
+	],
 };

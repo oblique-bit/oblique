@@ -16,7 +16,7 @@ describe(NumberFormatCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [NumberFormatCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: WINDOW, useValue: window}]
+			providers: [{provide: WINDOW, useValue: window}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NumberFormatCodeExamplesComponent);
@@ -33,11 +33,15 @@ describe(NumberFormatCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there is 1 ${NumberFormatExampleDefaultWithReactiveFormPreviewComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(NumberFormatExampleDefaultWithReactiveFormPreviewComponent)).length).toBe(1);
+		expect(
+			fixture.debugElement.queryAll(By.directive(NumberFormatExampleDefaultWithReactiveFormPreviewComponent)).length
+		).toBe(1);
 	});
 
 	test(`that there is 1 ${NumberFormatExampleDefaultWithTemplateFromPreviewComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(NumberFormatExampleDefaultWithTemplateFromPreviewComponent)).length).toBe(1);
+		expect(
+			fixture.debugElement.queryAll(By.directive(NumberFormatExampleDefaultWithTemplateFromPreviewComponent)).length
+		).toBe(1);
 	});
 
 	test(`that there is 1 ${NumberFormatExampleOtherOptionsPreviewComponent.name}`, () => {

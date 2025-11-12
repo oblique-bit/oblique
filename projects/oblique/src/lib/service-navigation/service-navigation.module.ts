@@ -39,7 +39,7 @@ import {ObServiceNavigationApplicationNameStatusPipe} from './applications/servi
 		ObServiceNavigationLanguagesComponent,
 		ObServiceNavigationMessageComponent,
 		ObServiceNavigationPopoverSectionComponent,
-		ObServiceNavigationProfileComponent
+		ObServiceNavigationProfileComponent,
 	],
 	imports: [
 		CommonModule,
@@ -56,15 +56,15 @@ import {ObServiceNavigationApplicationNameStatusPipe} from './applications/servi
 		ObPopoverModule,
 		ObTranslateParamsModule,
 		ObIsCurrentUrlPipe,
-		TranslateModule
+		TranslateModule,
 	],
 	exports: [ObServiceNavigationComponent],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: ObEportalCsrfInterceptor,
-			multi: true
-		}
-	]
+			multi: true,
+		},
+	],
 })
 export class ObServiceNavigationModule {}

@@ -12,7 +12,7 @@ describe('ObTopControlComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [ObTopControlComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 	});
 

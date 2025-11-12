@@ -21,11 +21,11 @@ describe(SchemaValidationSampleComponent.name, () => {
 				HttpClientTestingModule,
 				RouterTestingModule,
 				ObDatepickerModule,
-				MatMomentDateModule
+				MatMomentDateModule,
 			],
 			declarations: [SchemaValidationSampleComponent],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 		}).compileComponents();
 	});
 

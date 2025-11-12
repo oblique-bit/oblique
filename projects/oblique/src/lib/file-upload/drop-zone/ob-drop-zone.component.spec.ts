@@ -9,7 +9,7 @@ import {provideObliqueTestingConfiguration} from '../../utilities';
 
 @Pipe({
 	name: 'obAcceptAll',
-	standalone: false
+	standalone: false,
 })
 export class ObMockAreAllTypesAllowedPipe implements PipeTransform {
 	transform(): boolean {
@@ -23,7 +23,7 @@ describe('DropZoneComponent', () => {
 	const service = {filterInvalidFiles: jest.fn()} as unknown as ObValidationService;
 	const files = [
 		new File(['text'], 'sample.txt', {type: 'text/plain'}),
-		new File(['image'], 'sample.jpg', {type: 'text/plain'})
+		new File(['image'], 'sample.jpg', {type: 'text/plain'}),
 	] as unknown as FileList;
 
 	beforeEach(async () => {
@@ -32,7 +32,7 @@ describe('DropZoneComponent', () => {
 			imports: [ObDropZoneComponent],
 			declarations: [ObMockAreAllTypesAllowedPipe],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 	});
 

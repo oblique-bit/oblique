@@ -6,7 +6,7 @@ import {isNotKeyboardEventOnButton} from '../../utilities';
 	selector: '[obMasterLayoutHeaderToggle]',
 	exportAs: 'obMasterLayoutHeaderToggle',
 	host: {class: 'ob-master-layout-header-toggle'},
-	standalone: false
+	standalone: false,
 })
 export class ObMasterLayoutHeaderToggleDirective {
 	constructor(private readonly masterLayout: ObMasterLayoutComponentService) {}

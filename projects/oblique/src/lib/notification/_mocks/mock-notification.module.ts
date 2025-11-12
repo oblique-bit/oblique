@@ -17,7 +17,7 @@ export {ObMockNotificationConfig} from './mock-notification.config';
 	exports: [ObMockNotificationComponent],
 	providers: [
 		{provide: ObNotificationService, useClass: ObMockNotificationService},
-		{provide: ObNotificationConfig, useClass: ObMockNotificationConfig}
-	]
+		{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
+	],
 })
 export class ObMockNotificationModule {}

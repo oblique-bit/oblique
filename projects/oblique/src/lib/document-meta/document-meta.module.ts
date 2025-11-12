@@ -5,6 +5,6 @@ import {TranslateModule} from '@ngx-translate/core';
 export {ObDocumentMetaService} from './document-meta.service';
 
 @NgModule({
-	imports: [CommonModule, TranslateModule]
+	imports: [CommonModule, TranslateModule],
 })
 export class ObDocumentMetaModule {}

@@ -13,7 +13,7 @@ describe('ObDatepickerIntlService', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			providers: [ObDatepickerIntlService, provideObliqueTestingConfiguration()]
+			providers: [ObDatepickerIntlService, provideObliqueTestingConfiguration()],
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
 		datepickerService = TestBed.inject(ObDatepickerIntlService);
@@ -49,8 +49,8 @@ describe('ObDatepickerIntlService', () => {
 				{labelName: 'nextMultiYearLabel', expectedTranslation: 'Next 24 years'},
 				{labelName: 'switchToMonthViewLabel', expectedTranslation: 'Choose date'},
 				{labelName: 'switchToMultiYearViewLabel', expectedTranslation: 'Choose month and year'},
-				{labelName: 'comparisonDateLabel', expectedTranslation: 'Comparison range'}
-			]
+				{labelName: 'comparisonDateLabel', expectedTranslation: 'Comparison range'},
+			],
 		},
 		{
 			language: 'it',
@@ -66,8 +66,8 @@ describe('ObDatepickerIntlService', () => {
 				{labelName: 'nextMultiYearLabel', expectedTranslation: '24 anni successivi'},
 				{labelName: 'switchToMonthViewLabel', expectedTranslation: 'Scegliere la data'},
 				{labelName: 'switchToMultiYearViewLabel', expectedTranslation: "Scegliere il mese e l'anno"},
-				{labelName: 'comparisonDateLabel', expectedTranslation: 'Intervallo di confronto'}
-			]
+				{labelName: 'comparisonDateLabel', expectedTranslation: 'Intervallo di confronto'},
+			],
 		},
 		{
 			language: 'de',
@@ -83,8 +83,8 @@ describe('ObDatepickerIntlService', () => {
 				{labelName: 'nextMultiYearLabel', expectedTranslation: 'Nächste 24 Jahre'},
 				{labelName: 'switchToMonthViewLabel', expectedTranslation: 'Wähle ein Datum'},
 				{labelName: 'switchToMultiYearViewLabel', expectedTranslation: 'Wähle ein Monat und Jahr'},
-				{labelName: 'comparisonDateLabel', expectedTranslation: 'Vergleichsspanne'}
-			]
+				{labelName: 'comparisonDateLabel', expectedTranslation: 'Vergleichsspanne'},
+			],
 		},
 		{
 			language: 'fr',
@@ -100,9 +100,9 @@ describe('ObDatepickerIntlService', () => {
 				{labelName: 'nextMultiYearLabel', expectedTranslation: 'Prochaines 24 années'},
 				{labelName: 'switchToMonthViewLabel', expectedTranslation: 'Choisir la date'},
 				{labelName: 'switchToMultiYearViewLabel', expectedTranslation: "Choisir le mois et l'année"},
-				{labelName: 'comparisonDateLabel', expectedTranslation: 'Plage de comparaison'}
-			]
-		}
+				{labelName: 'comparisonDateLabel', expectedTranslation: 'Plage de comparaison'},
+			],
+		},
 	])(`labels for $language language`, ({language, labels}) => {
 		beforeEach(() => {
 			translateService.use(language);

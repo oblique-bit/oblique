@@ -10,6 +10,6 @@ export {ObMockColumnLayoutComponent} from './mock-column-layout.component';
  */
 @NgModule({
 	declarations: [ObMockColumnLayoutComponent, ObMockColumnPanelDirective, ObMockColumnToggleDirective],
-	exports: [ObMockColumnLayoutComponent]
+	exports: [ObMockColumnLayoutComponent],
 })
 export class ObMockColumnLayoutModule {}

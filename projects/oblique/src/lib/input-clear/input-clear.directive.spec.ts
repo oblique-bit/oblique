@@ -1,6 +1,14 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, inject} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
+import {
+	AbstractControl,
+	FormBuilder,
+	FormControl,
+	FormGroup,
+	FormsModule,
+	NgModel,
+	ReactiveFormsModule,
+} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {By} from '@angular/platform-browser';
@@ -19,7 +27,7 @@ import {TranslateModule} from '@ngx-translate/core';
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
 })
 class UntypedReactiveFormTestComponent {
 	testForm: FormGroup;
@@ -27,7 +35,7 @@ class UntypedReactiveFormTestComponent {
 
 	constructor() {
 		this.testForm = this.formBuilder.group({
-			field1: ['']
+			field1: [''],
 		});
 	}
 }
@@ -42,7 +50,7 @@ class UntypedReactiveFormTestComponent {
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
 })
 class StronglyTypedReactiveFormTestComponent {
 	testForm: FormGroup<{field1: FormControl<string>}>;
@@ -50,7 +58,7 @@ class StronglyTypedReactiveFormTestComponent {
 
 	constructor() {
 		this.testForm = this.formBuilder.group({
-			field1: ['']
+			field1: [''],
 		});
 	}
 }
@@ -65,7 +73,7 @@ class StronglyTypedReactiveFormTestComponent {
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
 })
 class TemplateDrivenFormTestComponent {
 	testModel: string;
@@ -81,7 +89,7 @@ class TemplateDrivenFormTestComponent {
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
 })
 class HtmlInputTestComponent {}
 
@@ -95,7 +103,7 @@ class HtmlInputTestComponent {}
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
-	</div>`
+	</div>`,
 })
 class WrongConfigurationTestComponent {
 	testModel: string;
@@ -113,7 +121,7 @@ describe('InputClear', () => {
 			await TestBed.configureTestingModule({
 				declarations: [UntypedReactiveFormTestComponent],
 				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
-				providers: [provideObliqueTestingConfiguration()]
+				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 
@@ -181,7 +189,7 @@ describe('InputClear', () => {
 			await TestBed.configureTestingModule({
 				declarations: [StronglyTypedReactiveFormTestComponent],
 				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
-				providers: [provideObliqueTestingConfiguration()]
+				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 
@@ -248,7 +256,7 @@ describe('InputClear', () => {
 			await TestBed.configureTestingModule({
 				declarations: [TemplateDrivenFormTestComponent],
 				imports: [ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
-				providers: [provideObliqueTestingConfiguration()]
+				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 
@@ -314,8 +322,15 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [HtmlInputTestComponent],
-				imports: [ObMockTranslatePipe, ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
-				providers: [provideObliqueTestingConfiguration()]
+				imports: [
+					ObMockTranslatePipe,
+					ObInputClearDirective,
+					FormsModule,
+					MatFormFieldModule,
+					MatInputModule,
+					TranslateModule,
+				],
+				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 
@@ -374,8 +389,15 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [WrongConfigurationTestComponent],
-				imports: [ObMockTranslatePipe, ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
-				providers: [provideObliqueTestingConfiguration()]
+				imports: [
+					ObMockTranslatePipe,
+					ObInputClearDirective,
+					FormsModule,
+					MatFormFieldModule,
+					MatInputModule,
+					TranslateModule,
+				],
+				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 

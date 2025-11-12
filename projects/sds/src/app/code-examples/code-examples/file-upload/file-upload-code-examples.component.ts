@@ -14,7 +14,7 @@ import {FileUploadFullyFunctioningWithCustomDeletePreviewComponent} from './prev
 	selector: 'app-code-example-file-upload',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FileUploadCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'file-upload-examples';
@@ -26,8 +26,8 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('file-upload', 'basic-options/file-upload-basic-options-preview.component.html', 'HTML'),
 				this.getSnippet('file-upload', 'basic-options/file-upload-basic-options-preview.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: FileUploadCancelUploadPreviewComponent,
@@ -36,8 +36,8 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.html', 'HTML'),
 				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.ts', 'TS'),
-				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('file-upload', 'cancel-upload/file-upload-cancel-upload-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: FileUploadUploadEventPreviewComponent,
@@ -46,8 +46,8 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('file-upload', 'upload-event/file-upload-upload-event-preview.component.html', 'HTML'),
 				this.getSnippet('file-upload', 'upload-event/file-upload-upload-event-preview.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: FileUploadMapFunctionAndObFileInfoPreviewComponent,
@@ -64,18 +64,22 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 					'map-function-and-ob-file-info/file-upload-map-function-and-ob-file-info-preview.component.ts',
 					'TS'
 				),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: FileUploadFullyFunctioningPreviewComponent,
 			idParts: ['fully-functioning'],
 			title: 'Fully functioning mock example',
 			snippets: [
-				this.getSnippet('file-upload', 'fully-functioning/file-upload-fully-functioning-preview.component.html', 'HTML'),
+				this.getSnippet(
+					'file-upload',
+					'fully-functioning/file-upload-fully-functioning-preview.component.html',
+					'HTML'
+				),
 				this.getSnippet('file-upload', 'fully-functioning/file-upload-fully-functioning-preview.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: FileUploadFullyFunctioningWithCustomDeletePreviewComponent,
@@ -92,8 +96,8 @@ export class FileUploadCodeExamplesComponent extends CodeExamples {
 					'fully-functioning-with-custom-delete/file-upload-fully-functioning-with-custom-delete-preview.component.ts',
 					'TS'
 				),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

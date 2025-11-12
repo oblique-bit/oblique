@@ -1,7 +1,9 @@
 import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-export function obOutsideFilter<T extends Event>(...elements: HTMLElement[]): (source$: Observable<T>) => Observable<T> {
+export function obOutsideFilter<T extends Event>(
+	...elements: HTMLElement[]
+): (source$: Observable<T>) => Observable<T> {
 	return source$ =>
 		source$.pipe(
 			filter(

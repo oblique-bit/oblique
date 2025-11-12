@@ -23,8 +23,7 @@
 				height: 40px;
 				border: 0;
 				transform: rotate(360deg);
-				filter: invert(64%) sepia(7%) saturate(675%) hue-rotate(169deg) brightness(86%)
-					contrast(89%); // This filter is for ensuring that the SVG icon's color matches 'variables.$ob-gray-extra-light'.
+				filter: invert(64%) sepia(7%) saturate(675%) hue-rotate(169deg) brightness(86%) contrast(89%); // This filter is for ensuring that the SVG icon's color matches 'variables.$ob-gray-extra-light'.
 			}
 		}
 
@@ -33,8 +32,7 @@
 		}
 
 		.mat-expansion-panel-header:not([aria-disabled="true"]).cdk-keyboard-focused,
-		.mat-expansion-panel
-			.mat-expansion-panel-header:not([aria-disabled="true"]).cdk-program-focused {
+		.mat-expansion-panel .mat-expansion-panel-header:not([aria-disabled="true"]).cdk-program-focused {
 			background-color: variables.$ob-gray-extra-light;
 		}
 	}

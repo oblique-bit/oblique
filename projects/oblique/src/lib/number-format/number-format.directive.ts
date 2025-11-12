@@ -6,7 +6,7 @@ import {distinctUntilChanged} from 'rxjs/operators';
 	selector: '[obNumberFormat]',
 	exportAs: 'obNumberFormat',
 	host: {class: 'ob-number-format'},
-	standalone: true
+	standalone: true,
 })
 export class ObNumberFormatDirective implements OnInit {
 	@Input() decimals = 2;

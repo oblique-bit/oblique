@@ -29,10 +29,18 @@
 					}
 					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 				</a>
-				<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
+				<div
+					[id]="'#' + itemKey(item)"
+					class="collapse"
+					*ngIf="item.items"
+					[hidden]="isParentCollapsed || item.collapsed"
+				>
 					<ul class="ob-nav-tree disabled" [class.ob-expanded]="!isParentCollapsed && !item.collapsed" role="group">
 						<ng-container
-							*ngTemplateOutlet="itemList; context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }"
+							*ngTemplateOutlet="
+								itemList;
+								context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }
+							"
 						/>
 					</ul>
 				</div>
@@ -68,10 +76,18 @@
 					}
 					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
 				</a>
-				<div [id]="'#' + itemKey(item)" class="collapse" *ngIf="item.items" [hidden]="isParentCollapsed || item.collapsed">
+				<div
+					[id]="'#' + itemKey(item)"
+					class="collapse"
+					*ngIf="item.items"
+					[hidden]="isParentCollapsed || item.collapsed"
+				>
 					<ul class="ob-nav-tree" [class.ob-expanded]="!isParentCollapsed && !item.collapsed" role="group">
 						<ng-container
-							*ngTemplateOutlet="itemList; context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }"
+							*ngTemplateOutlet="
+								itemList;
+								context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }
+							"
 						/>
 					</ul>
 				</div>

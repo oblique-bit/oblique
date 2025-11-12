@@ -8,6 +8,6 @@ import {MatSelectModule} from '@angular/material/select';
 @Component({
 	selector: 'app-form-example-horizontal-preview',
 	imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule],
-	templateUrl: './form-example-horizontal-preview.component.html'
+	templateUrl: './form-example-horizontal-preview.component.html',
 })
 export class FormExampleHorizontalPreviewComponent {}

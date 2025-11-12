@@ -6,6 +6,6 @@ export {ObNumberFormatDirective} from './number-format.directive';
 
 @NgModule({
 	imports: [ObNumberFormatDirective],
-	exports: [ObNumberFormatDirective]
+	exports: [ObNumberFormatDirective],
 })
 export class ObNumberFormatModule {}

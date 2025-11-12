@@ -59,9 +59,10 @@ class Icons extends StaticScript {
 		const iconCSS = [
 			`.ob-icon {\n\t&::before {\n\tdisplay: inline-block;\n\twidth: 1em;\n\theight: 1em;\n}`,
 			...svgs.map(
-				({svg, id}) => `&.ob-${id}::before {\n\tcontent: url("data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}");\n}`
+				({svg, id}) =>
+					`&.ob-${id}::before {\n\tcontent: url("data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}");\n}`
 			),
-			`\n}`
+			`\n}`,
 		];
 		Files.write(filePath, `${iconCSS.join('\n\n')}\n`);
 	}
@@ -71,12 +72,19 @@ class Icons extends StaticScript {
 		const iconNames = svgs.map(({id}) => `${id.toUpperCase().replace(/-/g, '_')} = '${id}'`);
 		Files.write(
 			filePath,
-			Files.read(filePath).replace(/(?<=export enum ObEIcon {\r?\n).*(?=})/s, `${iconNames.map(name => `\t${name}`).join(',\n')}\n`)
+			Files.read(filePath).replace(
+				/(?<=export enum ObEIcon {\r?\n).*(?=})/s,
+				`${iconNames.map(name => `\t${name}`).join(',\n')}\n`
+			)
 		);
 	}
 
 	private static prettify(): void {
-		const files = ['src/assets/oblique-icons.ts', 'src/styles/scss/oblique-icons.scss', 'src/lib/icon/icon.model.ts'].join(',');
+		const files = [
+			'src/assets/oblique-icons.ts',
+			'src/styles/scss/oblique-icons.scss',
+			'src/lib/icon/icon.model.ts',
+		].join(',');
 		executeCommandWithLog(`prettier "{${files}}" --log-level warn --write`, 'Prettify generated files');
 	}
 }

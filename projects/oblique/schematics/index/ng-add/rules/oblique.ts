@@ -12,7 +12,7 @@ import {
 	readFile,
 	removeImport,
 	replaceInFile,
-	setAngularProjectsConfig
+	setAngularProjectsConfig,
 } from '../../utils';
 import {addLocales} from './locales';
 
@@ -29,7 +29,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addObliqueAssets(),
 			addFontFiles(),
 			addLocales(options.locales.split(' ')),
-			raiseBuildBudget()
+			raiseBuildBudget(),
 		])(tree, context);
 }
 
@@ -86,9 +86,18 @@ function addFeatureDetection(): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique: Adding browser compatibility check');
 		getIndexPaths(tree).forEach((indexPath: string) =>
-			overwriteIndexFile(indexPath, tree, /<body>(?<lineBreak>\r?\n)/, `<body>$<lineBreak>${getTemplate(tree, 'default-index.html')}`)
+			overwriteIndexFile(
+				indexPath,
+				tree,
+				/<body>(?<lineBreak>\r?\n)/,
+				`<body>$<lineBreak>${getTemplate(tree, 'default-index.html')}`
+			)
 		);
-		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
+		return addAngularConfigInList(
+			tree,
+			['architect', 'build', 'options', 'scripts'],
+			'node_modules/@oblique/oblique/ob-features.js'
+		);
 	});
 }
 
@@ -111,7 +120,10 @@ function addMainCSS(): Rule {
 function addLocalAssets(): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique: Adding local assets');
-		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => ['src/assets', ...config]);
+		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => [
+			'src/assets',
+			...config,
+		]);
 	});
 }
 
@@ -122,9 +134,9 @@ function addObliqueAssets(): Rule {
 			{
 				glob: '**/*',
 				input: 'node_modules/@oblique/oblique/assets',
-				output: 'assets'
+				output: 'assets',
 			},
-			...config
+			...config,
 		]);
 	});
 }
@@ -136,7 +148,7 @@ function addFontFiles(): Rule {
 			config.splice(1, 0, {
 				glob: '*/**',
 				input: 'node_modules/@oblique/oblique/styles/fonts',
-				output: 'assets/fonts'
+				output: 'assets/fonts',
 			});
 			return config;
 		});
@@ -159,7 +171,10 @@ function addMasterLayout(tree: Tree, title: string): void {
 
 function addComment(tree: Tree): void {
 	const appModuleContent = readFile(tree, appModulePath);
-	tree.overwrite(appModulePath, appModuleContent.replace(/ObButtonModule,\n/, 'ObButtonModule, // add other Oblique modules as needed\n'));
+	tree.overwrite(
+		appModulePath,
+		appModuleContent.replace(/ObButtonModule,\n/, 'ObButtonModule, // add other Oblique modules as needed\n')
+	);
 }
 
 function raiseBuildBudget(): Rule {
@@ -172,13 +187,13 @@ function raiseBuildBudget(): Rule {
 				{
 					type: 'initial',
 					maximumWarning: '1.7mb',
-					maximumError: '2mb'
+					maximumError: '2mb',
 				},
 				{
 					type: 'anyComponentStyle',
 					maximumWarning: '3kb',
-					maximumError: '4kb'
-				}
+					maximumError: '4kb',
+				},
 			]
 		);
 	});

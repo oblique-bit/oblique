@@ -12,7 +12,11 @@ describe(TranslationsService.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			providers: [TranslationsService, provideObliqueTranslations(), {provide: HttpClient, useValue: {get: jest.fn(() => of({}))}}]
+			providers: [
+				TranslationsService,
+				provideObliqueTranslations(),
+				{provide: HttpClient, useValue: {get: jest.fn(() => of({}))}},
+			],
 		}).compileComponents();
 
 		service = TestBed.inject(TranslationsService);
@@ -87,7 +91,13 @@ describe(TranslationsService.name, () => {
 
 	describe('buildTranslations', () => {
 		describe('infoLinks', () => {
-			const infoLinks = [{fr: 'Lien de contact', en: 'Contact link', links: {fr: 'https://fr.contact.com', en: 'https://en.contact.com'}}];
+			const infoLinks = [
+				{
+					fr: 'Lien de contact',
+					en: 'Contact link',
+					links: {fr: 'https://fr.contact.com', en: 'https://en.contact.com'},
+				},
+			];
 
 			beforeEach(() => {
 				translate.setDefaultLang('en');
@@ -116,7 +126,11 @@ describe(TranslationsService.name, () => {
 
 			describe('with data', () => {
 				const profileLinks = [
-					{fr: 'Lien de profile 1', en: 'Profile link 1', links: {fr: 'https://fr.profile.com', en: 'https://en.profile.com'}}
+					{
+						fr: 'Lien de profile 1',
+						en: 'Profile link 1',
+						links: {fr: 'https://fr.profile.com', en: 'https://en.profile.com'},
+					},
 				];
 
 				beforeEach(() => {
@@ -140,7 +154,7 @@ describe(TranslationsService.name, () => {
 		const key = 'test.key';
 		const translations = {
 			en: 'english',
-			fr: 'french'
+			fr: 'french',
 		} as ObITranslateObject;
 
 		beforeEach(() => {

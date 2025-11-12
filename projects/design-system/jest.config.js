@@ -6,8 +6,8 @@ module.exports = {
 	roots: ['<rootDir>/projects/design-system'],
 	displayName: {
 		name: 'design-system',
-		color: 'cyan'
+		color: 'cyan',
 	},
 	coverageDirectory: '<rootDir>/coverage/design-system',
-	collectCoverageFrom: ['<rootDir>/projects/design-system/src/lib/**/*.ts', '!**/**.harness.ts', '!**/index.ts']
+	collectCoverageFrom: ['<rootDir>/projects/design-system/src/lib/**/*.ts', '!**/**.harness.ts', '!**/index.ts'],
 };

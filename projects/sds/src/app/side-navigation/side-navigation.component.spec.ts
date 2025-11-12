@@ -28,9 +28,9 @@ describe(SideNavigationComponent.name, () => {
 				IdPipe,
 				ImageComponent,
 				SideNavigationComponent,
-				VersionComponent
+				VersionComponent,
 			],
-			providers: [{provide: WINDOW, useValue: window}]
+			providers: [{provide: WINDOW, useValue: window}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SideNavigationComponent);
@@ -47,7 +47,9 @@ describe(SideNavigationComponent.name, () => {
 		it.each<{id: SideNavigationIds}>([{id: 'accordion-links'}, {id: 'logo'}, {id: 'search-input'}, {id: 'version'}])(
 			'should display $id',
 			({id}) => {
-				expect(getDebugElementById<SideNavigationComponent>(fixture, idPipe.transform(component.componentId, [id]))).toBeTruthy();
+				expect(
+					getDebugElementById<SideNavigationComponent>(fixture, idPipe.transform(component.componentId, [id]))
+				).toBeTruthy();
 			}
 		);
 	});

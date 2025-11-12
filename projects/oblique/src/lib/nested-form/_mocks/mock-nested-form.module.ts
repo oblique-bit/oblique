@@ -10,6 +10,6 @@ export {ObMockNestedFormComponent} from './mock-nested-form.component';
  */
 @NgModule({
 	imports: [ObMockNestedFormComponent, ObMockParentFormDirective],
-	exports: [ObMockNestedFormComponent, ObMockParentFormDirective]
+	exports: [ObMockNestedFormComponent, ObMockParentFormDirective],
 })
 export class ObMockNestedFormModule {}

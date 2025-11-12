@@ -5,7 +5,7 @@ import {Directive, HostBinding, HostListener, Input} from '@angular/core';
  */
 @Directive({
 	selector: '[obAriaMenuButton]',
-	standalone: false
+	standalone: false,
 })
 export class ObMockAriaMenuButtonDirective {
 	@Input('obAriaMenuButton') target: string;

@@ -51,7 +51,7 @@
 					radio of [
 						{ text: "Simple Options", value: "onlyOptions" },
 						{ text: "Options in groups", value: "group" },
-						{ text: "Empty list", value: "empty" }
+						{ text: "Empty list", value: "empty" },
 					];
 					track radio.value
 				) {
@@ -70,7 +70,7 @@
 					radio of [
 						{ text: "Position end", value: "end" },
 						{ text: "Position start", value: "start" },
-						{ text: "No icons", value: "none" }
+						{ text: "No icons", value: "none" },
 					];
 					track radio.value
 				) {
@@ -84,7 +84,7 @@
 				@for (
 					radio of [
 						{ text: "Enabled", value: false },
-						{ text: "Disabled", value: true }
+						{ text: "Disabled", value: true },
 					];
 					track radio.value
 				) {
@@ -94,11 +94,15 @@
 		</fieldset>
 		<fieldset>
 			<legend>Disable options in list</legend>
-			<mat-radio-group aria-label="Select icon position" [(ngModel)]="areDisabled" (change)="disableOptions($event.value)">
+			<mat-radio-group
+				aria-label="Select icon position"
+				[(ngModel)]="areDisabled"
+				(change)="disableOptions($event.value)"
+			>
 				@for (
 					radio of [
 						{ text: "Enabled", value: false },
-						{ text: "Disabled", value: true }
+						{ text: "Disabled", value: true },
 					];
 					track radio.value
 				) {
@@ -112,7 +116,7 @@
 				@for (
 					radio of [
 						{ text: "ReactiveForms", value: true },
-						{ text: "Forms", value: false }
+						{ text: "Forms", value: false },
 					];
 					track radio.value
 				) {

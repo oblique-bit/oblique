@@ -6,7 +6,7 @@ import {formatDate} from '@angular/common';
 
 @Component({
 	selector: 'ob-date',
-	templateUrl: './date.component.html'
+	templateUrl: './date.component.html',
 })
 export class ObDateComponent {
 	readonly date = input.required<string | Date>();

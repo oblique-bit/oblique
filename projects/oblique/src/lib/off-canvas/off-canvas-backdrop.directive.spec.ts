@@ -7,7 +7,7 @@ describe('ObOffCanvasBackdropDirective', () => {
 	const offCanvasService = {open: false} as ObOffCanvasService;
 	const keyUpSubject = new Subject<KeyboardEvent>();
 	const globalEventMock = {
-		keyUp$: keyUpSubject.asObservable()
+		keyUp$: keyUpSubject.asObservable(),
 	};
 	let directive: ObOffCanvasBackdropDirective;
 
@@ -40,11 +40,15 @@ describe('ObOffCanvasBackdropDirective', () => {
 		describe.each([
 			{key: 'Escape', close: true},
 			{key: 'Space', close: false},
-			{key: 'Enter', close: false}
+			{key: 'Enter', close: false},
 		])('when "$key" is pressed', ({key, close}) => {
 			it.each([
-				{description: `should ${close ? 'close the offCanvas' : 'do nothing'} if the offCanvas is opened`, isOpen: true, result: !close},
-				{description: 'should do nothing if the offCanvas is already closed', isOpen: false, result: false}
+				{
+					description: `should ${close ? 'close the offCanvas' : 'do nothing'} if the offCanvas is opened`,
+					isOpen: true,
+					result: !close,
+				},
+				{description: 'should do nothing if the offCanvas is already closed', isOpen: false, result: false},
 			])('$description', ({isOpen, result}) => {
 				offCanvasService.open = isOpen;
 				keyUpSubject.next({key} as KeyboardEvent);

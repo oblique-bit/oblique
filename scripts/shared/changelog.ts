@@ -29,7 +29,11 @@ export class Changelog extends StaticScript {
 			);
 		}
 		const previousTag = Git.getLatestVersionTag();
-		Changelog.prependRelease(Changelog.getCommits(previousTag, 'HEAD', projectName, additionalPackageWithScope), previousTag, version);
+		Changelog.prependRelease(
+			Changelog.getCommits(previousTag, 'HEAD', projectName, additionalPackageWithScope),
+			previousTag,
+			version
+		);
 	}
 
 	static generate(projectName: string): void {
@@ -69,7 +73,7 @@ export class Changelog extends StaticScript {
 			text: `- **${scope}:** ${subject} ([${hash.substring(0, 8)}](https://github.com/oblique-bit/oblique/commit/${hash}))`,
 			type,
 			scope,
-			breakingChanges: Changelog.parseBreakingChanges(breakingChanges, scope)
+			breakingChanges: Changelog.parseBreakingChanges(breakingChanges, scope),
 		};
 	}
 
@@ -89,11 +93,14 @@ export class Changelog extends StaticScript {
 			: [];
 	}
 
-	private static groupCommitsByType(changes: Commits, commit: {text: string; type: CommitType; breakingChanges: string[]}): Commits {
+	private static groupCommitsByType(
+		changes: Commits,
+		commit: {text: string; type: CommitType; breakingChanges: string[]}
+	): Commits {
 		return {
 			...changes,
 			[commit.type]: [...changes[commit.type], commit.text],
-			breakingChanges: [...changes.breakingChanges, ...commit.breakingChanges]
+			breakingChanges: [...changes.breakingChanges, ...commit.breakingChanges],
 		};
 	}
 
@@ -105,7 +112,7 @@ export class Changelog extends StaticScript {
 					Changelog.getSection(commits.fix, 'Bug Fixes'),
 					Changelog.getSection(commits.feat, 'Features'),
 					Changelog.getSection(commits.breakingChanges, 'BREAKING CHANGES'),
-					content
+					content,
 				].join('\n\n')
 			);
 		}

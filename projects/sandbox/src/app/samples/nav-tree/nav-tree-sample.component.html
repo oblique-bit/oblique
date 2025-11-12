@@ -21,8 +21,8 @@
 				<ob-alert>
 					<strong>Empty page</strong>
 					<p>
-						No link of the <code>nav-tree</code> has been clicked, which means the <code>router-outlet</code> is empty and there's nothing
-						to see. Click on one of the navigation tree link to activate a route and see content.
+						No link of the <code>nav-tree</code> has been clicked, which means the <code>router-outlet</code> is empty
+						and there's nothing to see. Click on one of the navigation tree link to activate a route and see content.
 					</p>
 				</ob-alert>
 			}
@@ -40,8 +40,12 @@
 		</fieldset>
 		<fieldset>
 			<legend>Actions</legend>
-			<button type="button" obButton mat-button (click)="obNavTree.collapseAll()"><mat-icon svgIcon="collapse" /> Collapse All</button>
-			<button type="button" obButton mat-button (click)="obNavTree.expandAll()"><mat-icon svgIcon="expand" /> Expand All</button>
+			<button type="button" obButton mat-button (click)="obNavTree.collapseAll()">
+				<mat-icon svgIcon="collapse" /> Collapse All
+			</button>
+			<button type="button" obButton mat-button (click)="obNavTree.expandAll()">
+				<mat-icon svgIcon="expand" /> Expand All
+			</button>
 			<mat-slide-toggle (click)="setDisabled(0)">Disable Tree Item 1</mat-slide-toggle>
 			<mat-slide-toggle (click)="setDisabled(1)">Disable Tree Item 2</mat-slide-toggle>
 		</fieldset>

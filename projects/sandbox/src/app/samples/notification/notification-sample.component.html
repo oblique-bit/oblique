@@ -102,11 +102,23 @@
 	}
 </fieldset>
 <div class="form-actions">
-	<button obButton="tertiary" mat-button type="button" matTooltip="Clears notifications from current selected channel." (click)="clear()">
+	<button
+		obButton="tertiary"
+		mat-button
+		type="button"
+		matTooltip="Clears notifications from current selected channel."
+		(click)="clear()"
+	>
 		<mat-icon svgIcon="delete" />
 		<span>Clear</span>
 	</button>
-	<button obButton="tertiary" mat-button type="button" matTooltip="Clears notifications from all channels." (click)="clearAllChannels()">
+	<button
+		obButton="tertiary"
+		mat-button
+		type="button"
+		matTooltip="Clears notifications from all channels."
+		(click)="clearAllChannels()"
+	>
 		<mat-icon svgIcon="delete" />
 		<span>Clear all</span>
 	</button>

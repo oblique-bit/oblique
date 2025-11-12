@@ -2,13 +2,7 @@
 @use "sass:selector";
 @use "../variables";
 
-@mixin ob-stepper-state(
-	$bullet-color,
-	$bullet-bg,
-	$bullet-border,
-	$bg-color: false,
-	$feedback-icon: false
-) {
+@mixin ob-stepper-state($bullet-color, $bullet-bg, $bullet-border, $bg-color: false, $feedback-icon: false) {
 	&::before {
 		color: $bullet-color;
 		background-color: $bullet-bg;

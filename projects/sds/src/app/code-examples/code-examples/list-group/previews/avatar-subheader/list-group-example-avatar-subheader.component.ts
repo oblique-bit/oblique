@@ -7,7 +7,7 @@ import {NgOptimizedImage} from '@angular/common';
 	selector: 'app-list-group-example-avatar-subheader',
 	imports: [MatListModule, MatIconModule, NgOptimizedImage],
 	templateUrl: './list-group-example-avatar-subheader.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListGroupExampleAvatarSubheaderComponent {
 	readonly contentForList = [
@@ -18,7 +18,7 @@ export class ListGroupExampleAvatarSubheaderComponent {
 			line2: 'CHE-123.456.789 (active)',
 			line3: 'Musterstrasse 99, 3000 Bern',
 			icon: 'person_checkmark',
-			avatar: 'assets/images/ListGroupImageExample.jpg'
+			avatar: 'assets/images/ListGroupImageExample.jpg',
 		},
 		{
 			id: 'list-item-2',
@@ -27,7 +27,7 @@ export class ListGroupExampleAvatarSubheaderComponent {
 			line2: 'CHE-123.633.789',
 			line3: 'Laupenfuss 59, 3002 Bern',
 			icon: 'person',
-			avatar: 'assets/images/ListGroupImageExample.jpg'
+			avatar: 'assets/images/ListGroupImageExample.jpg',
 		},
 		{
 			id: 'list-item-3',
@@ -36,7 +36,7 @@ export class ListGroupExampleAvatarSubheaderComponent {
 			line2: 'CHE-123.456.408 (active)',
 			line3: 'Taubendorfstrasse 45, 3004 Bern',
 			icon: 'person_checkmark',
-			avatar: 'assets/images/ListGroupImageExample.jpg'
-		}
+			avatar: 'assets/images/ListGroupImageExample.jpg',
+		},
 	];
 }

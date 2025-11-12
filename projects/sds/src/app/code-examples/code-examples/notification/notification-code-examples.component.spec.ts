@@ -15,7 +15,7 @@ describe(NotificationCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [NotificationCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: WINDOW, useValue: window}]
+			providers: [{provide: WINDOW, useValue: window}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NotificationCodeExamplesComponent);

@@ -12,7 +12,7 @@ import {ObSpinnerService} from './spinner.service';
 	styleUrls: ['./spinner.component.scss', './spinner-animations.scss'],
 	encapsulation: ViewEncapsulation.None,
 	exportAs: 'obSpinner',
-	host: {class: 'ob-spinner'}
+	host: {class: 'ob-spinner'},
 })
 export class ObSpinnerComponent implements OnInit {
 	@Input() channel: string = ObSpinnerService.CHANNEL;

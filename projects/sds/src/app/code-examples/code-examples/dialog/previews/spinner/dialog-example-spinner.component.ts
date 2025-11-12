@@ -7,7 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
 	selector: 'app-dialog-example-spinner',
 	imports: [MatButtonModule, MatDialogModule, ObButtonModule],
-	templateUrl: './dialog-example-spinner.component.html'
+	templateUrl: './dialog-example-spinner.component.html',
 })
 export class DialogExampleSpinnerComponent {
 	private readonly dialog = inject(MatDialog);

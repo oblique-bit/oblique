@@ -5,6 +5,6 @@ export {ObTranslateParamsPipe} from './translate-params.pipe';
 
 @NgModule({
 	imports: [ObTranslateParamsPipe],
-	exports: [ObTranslateParamsPipe]
+	exports: [ObTranslateParamsPipe],
 })
 export class ObTranslateParamsModule {}

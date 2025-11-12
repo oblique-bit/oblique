@@ -6,6 +6,6 @@ export {EXTERNAL_LINK, ObEExternalLinkIcon, ObIExternalLink} from './external-li
 
 @NgModule({
 	imports: [ObExternalLinkDirective],
-	exports: [ObExternalLinkDirective]
+	exports: [ObExternalLinkDirective],
 })
 export class ObExternalLinkModule {}

@@ -1,6 +1,17 @@
 import type {AddPreviewOptions} from './add-preview.model';
 import {createHost} from '../host.utils';
-import {type Rule, type SchematicContext, type Tree, apply, chain, mergeWith, move, noop, template, url} from '@angular-devkit/schematics';
+import {
+	type Rule,
+	type SchematicContext,
+	type Tree,
+	apply,
+	chain,
+	mergeWith,
+	move,
+	noop,
+	template,
+	url,
+} from '@angular-devkit/schematics';
 import {camelize, classify, dasherize} from '@angular-devkit/core/src/utils/strings';
 import {
 	addImportToFile,
@@ -9,16 +20,22 @@ import {
 	getExampleDirectoryOrFalse,
 	getExampleDirectoryPath,
 	getSourceFileOrFalse,
-	isNameValid
+	isNameValid,
 } from '../sds.utils';
 import {isImported} from '@schematics/angular/utility/ast-utils';
 import {addNodeToSyntaxList} from '../nodes.utils';
-import {type SourceFile, SyntaxKind} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {
+	type SourceFile,
+	SyntaxKind,
+} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import * as colors from 'ansi-colors';
 
 export function createPreviewFiles(variables: Record<string, string>, pathToFeature: string): Rule {
 	const sourceTemplates = url('templates');
-	const sourceParametrizedTemplates = apply(sourceTemplates, [template({...variables, dasherize}), move(pathToFeature)]);
+	const sourceParametrizedTemplates = apply(sourceTemplates, [
+		template({...variables, dasherize}),
+		move(pathToFeature),
+	]);
 	return mergeWith(sourceParametrizedTemplates);
 }
 
@@ -57,9 +74,9 @@ export function addPreviewToPreviewsInCodeExample(previewName: string, exampleNa
 				addNodeToSyntaxList(sourceFile, 'previews', {
 					kind: SyntaxKind.ArrayLiteralExpression,
 					text: previewTextToAdd,
-					insert: 'right'
+					insert: 'right',
 				}),
-				addImportToFile({symbolName: previewSymbolName, relativePath: symbolImportPath}, exampleComponentFilePath)
+				addImportToFile({symbolName: previewSymbolName, relativePath: symbolImportPath}, exampleComponentFilePath),
 			]);
 		}
 
@@ -82,7 +99,11 @@ function getIdParts(previewName: string): string {
 	return dasherize(previewName).split('-').join("', '");
 }
 
-function showExampleComponentPathNotFoundWarning(context: SchematicContext, previewTextToAdd: string, exampleName: string): void {
+function showExampleComponentPathNotFoundWarning(
+	context: SchematicContext,
+	previewTextToAdd: string,
+	exampleName: string
+): void {
 	context.logger.warn(
 		`File with name ${createExampleFileName(exampleName)} not found. Please add your preview \n${colors.greenBright(
 			previewTextToAdd

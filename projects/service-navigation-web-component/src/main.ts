@@ -15,8 +15,8 @@ createApplication({
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
 		provideObliqueTranslations(),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
-		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
-	]
+		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+	],
 })
 	.then(appRef => {
 		const element = createCustomElement(ObServiceNavigationWebComponentComponent, {injector: appRef.injector});

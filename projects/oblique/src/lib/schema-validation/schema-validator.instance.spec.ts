@@ -11,11 +11,11 @@ describe(ObSchemaValidatorInstance.name, () => {
 			minLength: {type: 'string', minLength: 5},
 			date: {
 				type: ['object', 'string', 'number'],
-				format: 'date-time'
+				format: 'date-time',
 			},
 			nested: {required: ['required'], properties: {required: {type: 'string'}, optional: {type: 'string'}}},
-			empty: {}
-		}
+			empty: {},
+		},
 	});
 
 	describe('validate', () => {
@@ -35,7 +35,7 @@ describe(ObSchemaValidatorInstance.name, () => {
 			{property: 'required', value: '42'},
 			{property: 'minLength', value: 'minLength'},
 			{property: 'date', value: ''}, // this is because no language data has been loaded
-			{property: undefined, value: ''}
+			{property: undefined, value: ''},
 		])('succeed when $property is correct', ({property, value}) => {
 			expect(validator.validate(property, value)).toBeNull();
 		});
@@ -47,7 +47,7 @@ describe(ObSchemaValidatorInstance.name, () => {
 			{property: 'optional', path: [], result: false},
 			{property: 'required', path: ['nested'], result: true},
 			{property: 'optional', path: ['nested'], result: false},
-			{property: 'nonexistent', path: ['nested'], result: false}
+			{property: 'nonexistent', path: ['nested'], result: false},
 		])('"$property" property with "$path" path returns "$result"', ({property, path, result}) => {
 			expect(validator.isRequired(property, path)).toBe(result);
 		});

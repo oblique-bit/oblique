@@ -10,7 +10,7 @@ import {PopoverExampleOtherOptionsPreviewComponent} from './previews/other-optio
 	selector: 'app-code-example-popover',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopoverCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'popover-examples';
@@ -23,8 +23,8 @@ export class PopoverCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('popover', 'default/popover-example-default-preview.component.html', 'HTML'),
 				this.getSnippet('popover', 'default/popover-example-default-preview.component.ts', 'TS'),
 				this.getSnippet('popover-12', 'default/popover12-example-default-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: PopoverExampleOtherOptionsPreviewComponent,
@@ -34,8 +34,8 @@ export class PopoverCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('popover', 'other-options/popover-example-other-options-preview.component.html', 'HTML'),
 				this.getSnippet('popover', 'other-options/popover-example-other-options-preview.component.ts', 'TS'),
 				this.getSnippet('popover', 'other-options/popover-example-other-options-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

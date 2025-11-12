@@ -11,9 +11,18 @@ import {MatTooltip} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'app-table',
-	imports: [AsyncPipe, NgTemplateOutlet, MatTableModule, MatTooltip, MatCheckboxModule, MatIconModule, MatButtonModule, ObButtonModule],
+	imports: [
+		AsyncPipe,
+		NgTemplateOutlet,
+		MatTableModule,
+		MatTooltip,
+		MatCheckboxModule,
+		MatIconModule,
+		MatButtonModule,
+		ObButtonModule,
+	],
 	templateUrl: './material-table-example-selectable-preview.component.html',
-	styleUrl: './material-table-example-selectable-preview.component.scss'
+	styleUrl: './material-table-example-selectable-preview.component.scss',
 })
 export class MaterialTableExampleSelectablePreviewComponent {
 	readonly displayedColumns = ['select', 'position', 'name', 'weight', 'symbol', 'actions'];
@@ -21,7 +30,7 @@ export class MaterialTableExampleSelectablePreviewComponent {
 		{key: 'position', name: 'No.', type: 'number'},
 		{key: 'name', name: 'Name', type: 'text'},
 		{key: 'weight', name: 'Weight', type: 'number'},
-		{key: 'symbol', name: 'Symbol', type: 'text'}
+		{key: 'symbol', name: 'Symbol', type: 'text'},
 	];
 	readonly tableManager: TableManager<ObIPeriodicElement>;
 
@@ -35,7 +44,7 @@ export class MaterialTableExampleSelectablePreviewComponent {
 		{position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
 		{position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
+		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 	];
 
 	constructor() {
@@ -47,7 +56,7 @@ export class MaterialTableExampleSelectablePreviewComponent {
 			position: 0,
 			name: 'EXAMPLIUM',
 			weight: 1.2345,
-			symbol: 'XYZ'
+			symbol: 'XYZ',
 		});
 	}
 }

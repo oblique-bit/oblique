@@ -13,11 +13,11 @@ import {NestedFormExampleReactivePreviewGrandchildComponent} from '../grandchild
 		NestedFormExampleReactivePreviewGrandchildComponent,
 		ObErrorMessagesModule,
 		ObNestedFormModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
 	],
 	templateUrl: './nested-form-example-reactive-preview-child.component.html',
 	styleUrl: '../../nested-form-example-preview.scss',
-	exportAs: 'child'
+	exportAs: 'child',
 })
 export class NestedFormExampleReactivePreviewChildComponent {
 	nestedForm: UntypedFormGroup;
@@ -27,7 +27,7 @@ export class NestedFormExampleReactivePreviewChildComponent {
 		this.nestedForm = this.formBuilder.group({
 			field1: ['', [Validators.required]],
 			field2: [''],
-			grandchild: [{field1: '', field2: ''}]
+			grandchild: [{field1: '', field2: ''}],
 		});
 	}
 }

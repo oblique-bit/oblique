@@ -7,7 +7,7 @@ describe('SchemaValidationService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObSchemaValidationService]
+			providers: [ObSchemaValidationService],
 		});
 	});
 
@@ -23,17 +23,17 @@ describe('SchemaValidationService', () => {
 					someProperty: {
 						type: 'string',
 						minLength: 4,
-						maxLength: 10
+						maxLength: 10,
 					},
 					object: {
 						type: 'object',
 						properties: {
 							subproperty: {
-								type: 'number'
-							}
-						}
-					}
-				}
+								type: 'number',
+							},
+						},
+					},
+				},
 			});
 		});
 
@@ -45,15 +45,15 @@ describe('SchemaValidationService', () => {
 			expect(validator.validate('someProperty', 4)).toEqual({
 				'ajv.type': {
 					// error type (in this case a type Issue)
-					type: 'string' // The required type
-				}
+					type: 'string', // The required type
+				},
 			});
 
 			expect(validator.validate('someProperty', 'fuu')).toEqual({
 				'ajv.minLength': {
 					// error type (in this case a type Issue)
-					limit: 4 // The required type
-				}
+					limit: 4, // The required type
+				},
 			});
 		});
 
@@ -68,8 +68,8 @@ describe('SchemaValidationService', () => {
 		it('should return angular conform error objects if subproperties are validated', () => {
 			expect(validator.validate('object.subproperty', 'string')).toEqual({
 				'ajv.type': {
-					type: 'number'
-				}
+					type: 'number',
+				},
 			});
 		});
 

@@ -1,5 +1,13 @@
 import {Rule, SchematicContext, Tree, chain, noop} from '@angular-devkit/schematics';
-import {applyInTree, createSafeRule, infoMigration, readFile, removeImport, replaceInFile, warnIfStandalone} from '../utils';
+import {
+	applyInTree,
+	createSafeRule,
+	infoMigration,
+	readFile,
+	removeImport,
+	replaceInFile,
+	warnIfStandalone,
+} from '../utils';
 import {ObIMigrations} from './ng-update.model';
 
 export interface IUpdateV15Schema {}

@@ -15,9 +15,9 @@ import {ObDatepickerModule, ObErrorMessagesModule} from '@oblique/oblique';
 		MatInputModule,
 		ObDatepickerModule,
 		ReactiveFormsModule,
-		ObErrorMessagesModule
+		ObErrorMessagesModule,
 	],
-	templateUrl: './datepicker.component.html'
+	templateUrl: './datepicker.component.html',
 })
 export class DatepickerComponent implements OnInit {
 	untypedForm: UntypedFormGroup;
@@ -42,7 +42,7 @@ export class DatepickerComponent implements OnInit {
 	ngOnInit(): void {
 		this.untypedForm = this.formBuilder.group({
 			minMaxControl: [],
-			filterControl: []
+			filterControl: [],
 		});
 	}
 

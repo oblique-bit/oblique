@@ -10,7 +10,7 @@ import {CommonModule} from '@angular/common';
 	selector: 'app-button-code-examples',
 	imports: [CodeExampleComponent, IdPipe, CommonModule],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'button-examples';
@@ -22,8 +22,8 @@ export class ButtonCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('button', 'colors/button-example-colors.component.html', 'HTML'),
 				this.getSnippet('button', 'colors/button-example-colors.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: ButtonExampleOtherOptionsComponent,
@@ -32,8 +32,8 @@ export class ButtonCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('button', 'other-options/button-example-other-options.component.html', 'HTML'),
 				this.getSnippet('button', 'other-options/button-example-other-options.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

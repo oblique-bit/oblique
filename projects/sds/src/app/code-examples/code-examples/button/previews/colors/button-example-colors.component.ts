@@ -9,6 +9,6 @@ import {ObButtonModule} from '@oblique/oblique';
 	templateUrl: './button-example-colors.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	host: {class: 'layout-breakpoint-sm'}
+	host: {class: 'layout-breakpoint-sm'},
 })
 export class ButtonExampleColorsComponent {}

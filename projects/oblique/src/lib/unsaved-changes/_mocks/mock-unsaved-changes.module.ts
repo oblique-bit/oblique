@@ -17,7 +17,7 @@ export {ObMockUnsavedChangesGuard} from './mock-unsaved-changes.guard';
 	exports: [ObMockUnsavedChangesDirective],
 	providers: [
 		{provide: ObUnsavedChangesService, useClass: ObMockUnsavedChangesService},
-		{provide: ObUnsavedChangesGuard, useClass: ObMockUnsavedChangesGuard}
-	]
+		{provide: ObUnsavedChangesGuard, useClass: ObMockUnsavedChangesGuard},
+	],
 })
 export class ObMockUnsavedChangesModule {}

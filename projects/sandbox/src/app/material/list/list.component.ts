@@ -4,14 +4,20 @@ import {Component} from '@angular/core';
 	selector: 'sb-list',
 	standalone: false,
 	templateUrl: './list.component.html',
-	styleUrl: './list.component.scss'
+	styleUrl: './list.component.scss',
 })
 export class ListComponent {
 	isDisabled = false;
 	invertIconAndCheckbox = false;
 
-	listType: 'list-without-icon' | 'list-with-icon' | 'selection-list-without-icon' | 'selection-list-with-icon' = 'list-with-icon';
-	readonly listTypes = ['list-without-icon', 'list-with-icon', 'selection-list-without-icon', 'selection-list-with-icon'];
+	listType: 'list-without-icon' | 'list-with-icon' | 'selection-list-without-icon' | 'selection-list-with-icon' =
+		'list-with-icon';
+	readonly listTypes = [
+		'list-without-icon',
+		'list-with-icon',
+		'selection-list-without-icon',
+		'selection-list-with-icon',
+	];
 
 	readonly contentForList = [
 		{
@@ -20,7 +26,7 @@ export class ListComponent {
 			line1: 'Cadrozzi AG',
 			line2: 'CHE-123.456.789 (active)',
 			line3: 'Musterstrasse 99, 3000 Bern',
-			icon: 'person_checkmark'
+			icon: 'person_checkmark',
 		},
 		{
 			id: 'list-item-2',
@@ -28,7 +34,7 @@ export class ListComponent {
 			line1: 'Bananopa AG',
 			line2: 'CHE-123.633.789',
 			line3: 'Laupenfuss 59, 3002 Bern',
-			icon: 'person'
+			icon: 'person',
 		},
 		{
 			id: 'list-item-3',
@@ -36,7 +42,7 @@ export class ListComponent {
 			line1: 'Lavani GmbH',
 			line2: 'CHE-123.456.408 (active)',
 			line3: 'Taubendorfstrasse 45, 3004 Bern',
-			icon: 'person_checkmark'
-		}
+			icon: 'person_checkmark',
+		},
 	];
 }

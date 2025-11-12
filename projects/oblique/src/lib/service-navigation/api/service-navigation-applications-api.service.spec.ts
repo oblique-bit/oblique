@@ -17,10 +17,10 @@ describe('ObServiceNavigationApplicationsApiService', () => {
 					image: 'imageBase64',
 					lastModificationDate: 'timestamp',
 					name: {en: 'EN', de: 'DE', fr: 'FR', it: 'IT'},
-					url: 'appUrl'
-				}
-			]
-		}
+					url: 'appUrl',
+				},
+			],
+		},
 	};
 
 	beforeEach(() => {
@@ -36,7 +36,10 @@ describe('ObServiceNavigationApplicationsApiService', () => {
 
 	describe('fetchApplicationsInfo', () => {
 		it('should return an Observable', () => {
-			expect(service.fetchApplicationsInfo('http:/rootUrl/', [{applicationID: 1, childApplicationID: 0}]) instanceof Observable).toBe(true);
+			expect(
+				service.fetchApplicationsInfo('http:/rootUrl/', [{applicationID: 1, childApplicationID: 0}]) instanceof
+					Observable
+			).toBe(true);
 		});
 
 		it('should receive that "data" part of the mockUrls', async () => {
@@ -61,9 +64,9 @@ describe('ObServiceNavigationApplicationsApiService', () => {
 						applications: [
 							{
 								applicationID: 1,
-								childApplicationID: 0
-							}
-						]
+								childApplicationID: 0,
+							},
+						],
 					},
 					{withCredentials: true}
 				);

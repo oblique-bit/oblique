@@ -24,10 +24,10 @@ describe(AccessibilityStatementComponent.name, () => {
 						conformity: 'none',
 						createdOn: new Date('2025-01-31'),
 						applicationOperator: 'Operator',
-						contact: [{email: 'e@mail.com'}]
-					}
-				})
-			]
+						contact: [{email: 'e@mail.com'}],
+					},
+				}),
+			],
 		}).compileComponents();
 	});
 
@@ -39,8 +39,8 @@ describe(AccessibilityStatementComponent.name, () => {
 					applicationOperator: 'Operator',
 					contact: [{email: 'e@mail.com'}],
 					createdOn: new Date('2025-01-31'),
-					conformity
-				}
+					conformity,
+				},
 			});
 			fixture = TestBed.createComponent(AccessibilityStatementComponent);
 			component = fixture.componentInstance;
@@ -61,7 +61,7 @@ describe(AccessibilityStatementComponent.name, () => {
 				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 0},
 				{tag: 'p', number: 6},
-				{tag: 'p > a', number: 1}
+				{tag: 'p > a', number: 1},
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -75,7 +75,7 @@ describe(AccessibilityStatementComponent.name, () => {
 			test.each([
 				{property: 'applicationName', value: 'appName'},
 				{property: 'conformity', value: `i18n.oblique.accessibility-statement.statement.${conformity}`},
-				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.no-exception'}
+				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.no-exception'},
 			])('to have "$value" as "$property"', ({property, value}) => {
 				expect(component.statementParameters[property]).toBe(value);
 			});
@@ -88,7 +88,7 @@ describe(AccessibilityStatementComponent.name, () => {
 
 			test('to be an array with correct properties', () => {
 				expect(component.contacts).toEqual([
-					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false}
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false},
 				]);
 			});
 		});
@@ -103,8 +103,8 @@ describe(AccessibilityStatementComponent.name, () => {
 					contact: [{email: 'e@mail.com'}],
 					conformity: 'partial',
 					createdOn: new Date('2025-01-31'),
-					exceptions: ['test']
-				}
+					exceptions: ['test'],
+				},
 			});
 			fixture = TestBed.createComponent(AccessibilityStatementComponent);
 			component = fixture.componentInstance;
@@ -125,7 +125,7 @@ describe(AccessibilityStatementComponent.name, () => {
 				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 1},
 				{tag: 'p', number: 7},
-				{tag: 'p > a', number: 1}
+				{tag: 'p > a', number: 1},
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -139,7 +139,7 @@ describe(AccessibilityStatementComponent.name, () => {
 			test.each([
 				{property: 'applicationName', value: 'appName'},
 				{property: 'conformity', value: 'i18n.oblique.accessibility-statement.statement.partial'},
-				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.exception'}
+				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.exception'},
 			])('to have "$value" as "$property"', ({property, value}) => {
 				expect(component.statementParameters[property]).toBe(value);
 			});
@@ -152,7 +152,7 @@ describe(AccessibilityStatementComponent.name, () => {
 
 			test('to be an array with correct properties', () => {
 				expect(component.contacts).toEqual([
-					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false}
+					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false},
 				]);
 			});
 		});
@@ -166,8 +166,8 @@ describe(AccessibilityStatementComponent.name, () => {
 					applicationOperator: 'Operator',
 					conformity: 'none',
 					contact: [{email: 'e@mail.com'}, {url: 'http://my-external-url.admin.ch'}],
-					createdOn: new Date()
-				}
+					createdOn: new Date(),
+				},
 			});
 			fixture = TestBed.createComponent(AccessibilityStatementComponent);
 			component = fixture.componentInstance;
@@ -188,7 +188,7 @@ describe(AccessibilityStatementComponent.name, () => {
 				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 0},
 				{tag: 'p', number: 6},
-				{tag: 'p > a', number: 1}
+				{tag: 'p > a', number: 1},
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -202,7 +202,7 @@ describe(AccessibilityStatementComponent.name, () => {
 			test.each([
 				{property: 'applicationName', value: 'applicationName'},
 				{property: 'conformity', value: 'i18n.oblique.accessibility-statement.statement.none'},
-				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.no-exception'}
+				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.no-exception'},
 			])('to have "$value" as "$property"', ({property, value}) => {
 				expect(component.statementParameters[property]).toBe(value);
 			});
@@ -221,8 +221,8 @@ describe(AccessibilityStatementComponent.name, () => {
 						url: 'http://my-external-url.admin.ch',
 						icon: 'link_external',
 						context: undefined,
-						isExternal: true
-					}
+						isExternal: true,
+					},
 				]);
 			});
 		});
@@ -236,9 +236,13 @@ describe(AccessibilityStatementComponent.name, () => {
 					applicationOperator: 'Operator',
 					conformity: 'partial',
 					createdOn: new Date('2025-01-31'),
-					contact: [{email: 'e@mail.com'}, {phone: 'phone', context: 'context'}, {url: 'my/internal/url', context: 'context'}],
-					exceptions: ['exception']
-				}
+					contact: [
+						{email: 'e@mail.com'},
+						{phone: 'phone', context: 'context'},
+						{url: 'my/internal/url', context: 'context'},
+					],
+					exceptions: ['exception'],
+				},
 			});
 			fixture = TestBed.createComponent(AccessibilityStatementComponent);
 			component = fixture.componentInstance;
@@ -259,7 +263,7 @@ describe(AccessibilityStatementComponent.name, () => {
 				{tag: 'ul', number: 2},
 				{tag: 'ol', number: 1},
 				{tag: 'p', number: 7},
-				{tag: 'p > a', number: 1}
+				{tag: 'p > a', number: 1},
 			])('has $number "$tag" tags', ({tag, number}) => {
 				expect(fixture.debugElement.queryAll(By.css(tag)).length).toBe(number);
 			});
@@ -273,7 +277,7 @@ describe(AccessibilityStatementComponent.name, () => {
 			test.each([
 				{property: 'applicationName', value: 'applicationName'},
 				{property: 'conformity', value: 'i18n.oblique.accessibility-statement.statement.partial'},
-				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.exception'}
+				{property: 'exceptionText', value: 'i18n.oblique.accessibility-statement.statement.exception'},
 			])('to have "$value" as "$property"', ({property, value}) => {
 				expect(component.statementParameters[property]).toBe(value);
 			});
@@ -288,7 +292,7 @@ describe(AccessibilityStatementComponent.name, () => {
 				expect(component.contacts).toEqual([
 					{label: 'e@mail.com', url: `mailto:e@mail.com`, icon: 'mail', context: undefined, isExternal: false},
 					{label: 'phone', url: `tel:phone`, icon: 'phone', context: 'context', isExternal: false},
-					{label: 'my/internal/url', url: `my/internal/url`, icon: 'link', context: 'context', isExternal: false}
+					{label: 'my/internal/url', url: `my/internal/url`, icon: 'link', context: 'context', isExternal: false},
 				]);
 			});
 		});
@@ -308,10 +312,10 @@ describe(AccessibilityStatementComponent.name, () => {
 								conformity: 'partial',
 								createdOn: new Date('2025-01-31'),
 								contact: [{phone: ''}],
-								exceptions: ['exception']
-							}
-						})
-					]
+								exceptions: ['exception'],
+							},
+						}),
+					],
 				}).compileComponents();
 			});
 
@@ -337,10 +341,10 @@ describe(AccessibilityStatementComponent.name, () => {
 								conformity: 'partial',
 								createdOn: new Date('2025-01-31'),
 								contact: [{email: ''}],
-								exceptions: ['exception']
-							}
-						})
-					]
+								exceptions: ['exception'],
+							},
+						}),
+					],
 				}).compileComponents();
 			});
 
@@ -366,10 +370,10 @@ describe(AccessibilityStatementComponent.name, () => {
 								conformity: 'partial',
 								createdOn: new Date('2025-01-31'),
 								contact: [{url: ''}],
-								exceptions: ['exception']
-							}
-						})
-					]
+								exceptions: ['exception'],
+							},
+						}),
+					],
 				}).compileComponents();
 			});
 

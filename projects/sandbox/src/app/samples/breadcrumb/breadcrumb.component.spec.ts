@@ -12,7 +12,7 @@ describe(BreadcrumbSampleComponent.name, () => {
 		await TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule, RouterTestingModule],
 			declarations: [BreadcrumbSampleComponent],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 		}).compileComponents();
 	});
 

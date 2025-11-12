@@ -4,7 +4,7 @@ const mock = (): Partial<Storage> => {
 		getItem: (key: string) => (key in storage ? storage[key] : null),
 		setItem: (key: string, value: string) => (storage[key] = value || ''),
 		removeItem: (key: string) => delete storage[key],
-		clear: () => (storage = {})
+		clear: () => (storage = {}),
 	};
 };
 
@@ -17,14 +17,14 @@ console.info = jest.fn().mockImplementation(() => {});
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
 	observe: jest.fn(),
 	unobserve: jest.fn(),
-	disconnect: jest.fn()
+	disconnect: jest.fn(),
 }));
 
 Object.defineProperty(window, 'localStorage', {value: mock()});
 Object.defineProperty(window, 'sessionStorage', {value: mock()});
 Object.defineProperty(window, 'scrollIntoView', {value: mock()});
 Object.defineProperty(window, 'getComputedStyle', {
-	value: () => ['-webkit-appearance']
+	value: () => ['-webkit-appearance'],
 });
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 (window as any).HTMLElement.prototype.scrollIntoView = function () {};

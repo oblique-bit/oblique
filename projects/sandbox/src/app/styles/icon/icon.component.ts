@@ -4,7 +4,7 @@ import {ObEIcon} from '@oblique/oblique';
 @Component({
 	selector: 'sb-icon-sample',
 	standalone: false,
-	templateUrl: './icon.component.html'
+	templateUrl: './icon.component.html',
 })
 export class IconSampleComponent {
 	icons = Object.values(ObEIcon);

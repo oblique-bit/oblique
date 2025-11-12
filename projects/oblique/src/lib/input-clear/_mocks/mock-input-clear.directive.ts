@@ -7,7 +7,7 @@ import {MatDatepicker} from '@angular/material/datepicker';
 @Directive({
 	selector: '[obInputClear]',
 	exportAs: 'obInputClear',
-	standalone: true
+	standalone: true,
 })
 export class ObMockInputClearDirective {
 	@Input('obInputClear') control: HTMLInputElement;

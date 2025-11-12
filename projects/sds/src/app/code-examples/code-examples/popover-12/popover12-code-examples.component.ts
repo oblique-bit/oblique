@@ -11,7 +11,7 @@ import {Popover12ExampleEventsPreviewComponent} from './previews/events/popover1
 	selector: 'app-code-example-popover12',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Popover12CodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'popover-examples';
@@ -24,8 +24,8 @@ export class Popover12CodeExamplesComponent extends CodeExamples {
 				this.getSnippet('popover-12', 'default/popover12-example-default-preview.component.html', 'HTML'),
 				this.getSnippet('popover-12', 'default/popover12-example-default-preview.component.ts', 'TS'),
 				this.getSnippet('popover-12', 'default/popover12-example-default-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: Popover12ExampleOtherOptionsPreviewComponent,
@@ -35,8 +35,8 @@ export class Popover12CodeExamplesComponent extends CodeExamples {
 				this.getSnippet('popover-12', 'other-options/popover12-example-other-options-preview.component.html', 'HTML'),
 				this.getSnippet('popover-12', 'other-options/popover12-example-other-options-preview.component.ts', 'TS'),
 				this.getSnippet('popover-12', 'other-options/popover12-example-other-options-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: Popover12ExampleEventsPreviewComponent,
@@ -45,8 +45,8 @@ export class Popover12CodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('popover-12', 'events/popover12-example-events-preview.component.html', 'HTML'),
 				this.getSnippet('popover-12', 'events/popover12-example-events-preview.component.ts', 'TS'),
-				this.getSnippet('popover-12', 'events/popover12-example-events-preview.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('popover-12', 'events/popover12-example-events-preview.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

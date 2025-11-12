@@ -1,12 +1,16 @@
 import {Component, type OnInit} from '@angular/core';
-import type {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup, OptionLabelIconPosition} from '@oblique/oblique';
+import type {
+	ObIAutocompleteInputOption,
+	ObIAutocompleteInputOptionGroup,
+	OptionLabelIconPosition,
+} from '@oblique/oblique';
 import {FormControl} from '@angular/forms';
 
 @Component({
 	selector: 'sb-autocomplete-sample',
 	standalone: false,
 	templateUrl: './autocomplete.component.html',
-	styleUrl: './autocomplete.component.scss'
+	styleUrl: './autocomplete.component.scss',
 })
 export class AutocompleteSampleComponent implements OnInit {
 	isDisabled = false;
@@ -15,8 +19,35 @@ export class AutocompleteSampleComponent implements OnInit {
 	selectedOption: ObIAutocompleteInputOption;
 	optionList: ObIAutocompleteInputOption[];
 	listType: 'group' | 'onlyOptions' | 'empty' = 'onlyOptions';
-	icons: string[];
-	randomWords: string[];
+	icons = [
+		'address-book',
+		'universal-access',
+		'antique-building',
+		'link_disconnect',
+		'lock_open',
+		'upload',
+		'person',
+		'person_brush',
+		'person_checkmark',
+		'person_code',
+		'person_cog',
+		'exclamation_triangle',
+		'weight',
+		'wheelchair',
+		'wifi',
+		'wrench',
+	];
+	randomWords = [
+		'Unicorn',
+		'Dragon',
+		'Ice-cream',
+		'Blue',
+		'Five',
+		'Graceling realm',
+		'Baloo the bear',
+		'Octopus',
+		'Dr. Who',
+	];
 	optionIconPosition: OptionLabelIconPosition = 'end';
 	searchText: string;
 	visibleOptionList: ObIAutocompleteInputOption[] | ObIAutocompleteInputOptionGroup[];
@@ -56,25 +87,6 @@ formControl = new FormControl('');
 			this.replacedPattern = this.replacedPattern.replace('textToFind', value);
 			this.pattern = value;
 		});
-		this.icons = [
-			'address-book',
-			'universal-access',
-			'antique-building',
-			'link_disconnect',
-			'lock_open',
-			'upload',
-			'person',
-			'person_brush',
-			'person_checkmark',
-			'person_code',
-			'person_cog',
-			'exclamation_triangle',
-			'weight',
-			'wheelchair',
-			'wifi',
-			'wrench'
-		];
-		this.randomWords = ['Unicorn', 'Dragon', 'Ice-cream', 'Blue', 'Five', 'Graceling realm', 'Baloo the bear', 'Octopus', 'Dr. Who'];
 		this.optionList = this.createOptionList(10);
 		this.optionGroupList = this.createOptionGroupList(10, this.areDisabled);
 		this.updateVisibleOptionList();
@@ -92,7 +104,7 @@ formControl = new FormControl('');
 			optionGroupList.push({
 				groupLabel,
 				disabled,
-				groupOptions
+				groupOptions,
 			});
 		}
 		return optionGroupList;
@@ -104,7 +116,7 @@ formControl = new FormControl('');
 			optionList.push({
 				label: `${groupName} ${this.randomWords[Math.floor(Math.random() * this.randomWords?.length - 1) + 1]}`,
 				disabled,
-				iconName: this.icons[Math.floor(Math.random() * this.icons?.length - 1) + 1]
+				iconName: this.icons[Math.floor(Math.random() * this.icons?.length - 1) + 1],
 			});
 		}
 		return optionList;

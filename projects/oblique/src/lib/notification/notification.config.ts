@@ -14,23 +14,26 @@ export class ObNotificationConfig {
 	placement: ObENotificationPlacement = ObENotificationPlacement.TOP_RIGHT;
 
 	info = {
-		title: 'i18n.oblique.notification.type.info'
+		title: 'i18n.oblique.notification.type.info',
 	} as ObINotificationConfig;
 
 	success = {
-		title: 'i18n.oblique.notification.type.success'
+		title: 'i18n.oblique.notification.type.success',
 	} as ObINotificationConfig;
 
 	warning = {
-		title: 'i18n.oblique.notification.type.warning'
+		title: 'i18n.oblique.notification.type.warning',
 	} as ObINotificationConfig;
 
 	error = {
 		title: 'i18n.oblique.notification.type.error',
-		sticky: true
+		sticky: true,
 	} as ObINotificationConfig;
 
-	constructor(@Optional() @Inject(CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE) clear, @Optional() @Inject(GROUP_SIMILAR_NOTIFICATIONS) group) {
+	constructor(
+		@Optional() @Inject(CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE) clear,
+		@Optional() @Inject(GROUP_SIMILAR_NOTIFICATIONS) group
+	) {
 		this.clearAllOnNavigate = clear || false;
 		this.groupSimilar = group || false;
 	}

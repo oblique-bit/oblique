@@ -12,7 +12,7 @@ describe(DialogCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [DialogCodeExamplesComponent]
+			imports: [DialogCodeExamplesComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(DialogCodeExamplesComponent);
@@ -40,9 +40,13 @@ describe(DialogCodeExamplesComponent.name, () => {
 		expect(fixture.debugElement.queryAll(By.directive(ObButtonDirective)).length).toBe(2);
 	});
 
-	test.each<{index: number}>([{index: 0}, {index: 1}])(`that all ${ObButtonDirective.name}s contain text "Open dialog"`, ({index}) => {
-		expect(
-			(fixture.debugElement.queryAll(By.directive(ObButtonDirective))[index].nativeElement as {textContent: string}).textContent
-		).toContain('Open dialog');
-	});
+	test.each<{index: number}>([{index: 0}, {index: 1}])(
+		`that all ${ObButtonDirective.name}s contain text "Open dialog"`,
+		({index}) => {
+			expect(
+				(fixture.debugElement.queryAll(By.directive(ObButtonDirective))[index].nativeElement as {textContent: string})
+					.textContent
+			).toContain('Open dialog');
+		}
+	);
 });

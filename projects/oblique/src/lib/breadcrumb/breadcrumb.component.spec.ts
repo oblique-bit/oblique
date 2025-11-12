@@ -19,17 +19,17 @@ describe('ObBreadcrumbComponent', () => {
 	const mockBreadcrumbConfig: ObBreadcrumbConfig = {
 		beautifyUrls: true,
 		parameterSeparator: ' - ',
-		maxWidth: '4ch'
+		maxWidth: '4ch',
 	};
 
 	const translations = {
 		'test.translation-key-param': 'Translated Label with {{param}}',
-		'test.translation': 'Translated Label'
+		'test.translation': 'Translated Label',
 	};
 
 	const translateServiceMock = {
 		get: jest.fn((key: string) => of(translations[key] ?? key)),
-		onLangChange: of({})
+		onLangChange: of({}),
 	};
 
 	describe('static routes', () => {
@@ -45,12 +45,12 @@ describe('ObBreadcrumbComponent', () => {
 							path: 'path-with-label',
 							label: 'Path with Label',
 							firstChild: createRoute({
-								path: 'double/path'
-							})
-						})
-					})
-				})
-			})
+								path: 'double/path',
+							}),
+						}),
+					}),
+				}),
+			}),
 		};
 
 		beforeEach(async () => {
@@ -60,9 +60,9 @@ describe('ObBreadcrumbComponent', () => {
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{provide: ObTBreadcrumbConfig, useValue: mockBreadcrumbConfig},
-					{provide: ActivatedRoute, useValue: staticRouteMock}
+					{provide: ActivatedRoute, useValue: staticRouteMock},
 				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			}).compileComponents();
 		});
 
@@ -103,7 +103,7 @@ describe('ObBreadcrumbComponent', () => {
 		it.each([
 			[0, '/path-with-no-label'],
 			[1, '/path-with-no-label/simplepath'],
-			[2, '/path-with-no-label/simplepath/path-with-label']
+			[2, '/path-with-no-label/simplepath/path-with-label'],
 		])('should build the url from the routes', (index, expected) => {
 			component.ngOnInit();
 
@@ -122,12 +122,15 @@ describe('ObBreadcrumbComponent', () => {
 			expect(component.breadcrumbs$).toBeTruthy();
 		});
 
-		it.each([[[]], [[{label: 'label', url: 'url'} as ObIBreadcrumb]]])('should return crumbs on empty route', crumbs => {
-			const result = component.getCrumbs(null, crumbs);
-			expect(isObservable(result)).toBe(true);
+		it.each([[[]], [[{label: 'label', url: 'url'} as ObIBreadcrumb]]])(
+			'should return crumbs on empty route',
+			crumbs => {
+				const result = component.getCrumbs(null, crumbs);
+				expect(isObservable(result)).toBe(true);
 
-			result.subscribe(crumbList => expect(crumbList).toBe(crumbs));
-		});
+				result.subscribe(crumbList => expect(crumbList).toBe(crumbs));
+			}
+		);
 	});
 
 	describe('dynamic routes', () => {
@@ -147,12 +150,12 @@ describe('ObBreadcrumbComponent', () => {
 							label: 'Static Label',
 							params: {param: 'My Value'},
 							firstChild: createRoute({
-								path: 'double/path'
-							})
-						})
-					})
-				})
-			})
+								path: 'double/path',
+							}),
+						}),
+					}),
+				}),
+			}),
 		};
 
 		beforeEach(async () => {
@@ -162,9 +165,9 @@ describe('ObBreadcrumbComponent', () => {
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{provide: ObTBreadcrumbConfig, useValue: mockBreadcrumbConfig},
-					{provide: ActivatedRoute, useValue: dynamicRouteMock}
+					{provide: ActivatedRoute, useValue: dynamicRouteMock},
 				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			}).compileComponents();
 		});
 
@@ -211,7 +214,7 @@ describe('ObBreadcrumbComponent', () => {
 
 		it.each([
 			[0, '/path-with-no-label/param-value-1'],
-			[1, '/path-with-no-label/param-value-1/param-value-2']
+			[1, '/path-with-no-label/param-value-1/param-value-2'],
 		])('should build the url from the routes', (index, expected) => {
 			component.ngOnInit();
 
@@ -232,10 +235,10 @@ describe('ObBreadcrumbComponent', () => {
 					params: {'param-only': 'param-value-2'},
 					label: 'test.translation',
 					firstChild: createRoute({
-						path: 'placeholder'
-					})
-				})
-			})
+						path: 'placeholder',
+					}),
+				}),
+			}),
 		};
 
 		beforeEach(async () => {
@@ -245,9 +248,9 @@ describe('ObBreadcrumbComponent', () => {
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{provide: ObTBreadcrumbConfig, useValue: mockBreadcrumbConfig},
-					{provide: ActivatedRoute, useValue: dynamicRouteMock}
+					{provide: ActivatedRoute, useValue: dynamicRouteMock},
 				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			}).compileComponents();
 		});
 
@@ -290,11 +293,11 @@ describe('ObBreadcrumbComponent', () => {
 					firstChild: createRoute({
 						path: 'some-path',
 						firstChild: createRoute({
-							path: 'placeholder'
-						})
-					})
-				})
-			})
+							path: 'placeholder',
+						}),
+					}),
+				}),
+			}),
 		};
 
 		beforeEach(async () => {
@@ -305,11 +308,11 @@ describe('ObBreadcrumbComponent', () => {
 					{provide: TranslateService, useValue: translateServiceMock},
 					{
 						provide: ObTBreadcrumbConfig,
-						useValue: {parameterSeparator: '/'}
+						useValue: {parameterSeparator: '/'},
 					},
-					{provide: ActivatedRoute, useValue: dynamicRouteMock}
+					{provide: ActivatedRoute, useValue: dynamicRouteMock},
 				],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			}).compileComponents();
 		});
 
@@ -346,7 +349,7 @@ function createRoute({
 	path,
 	label,
 	params,
-	firstChild
+	firstChild,
 }: {
 	path: string;
 	label?: string;
@@ -360,11 +363,11 @@ function createRoute({
 	return {
 		routeConfig: {
 			path,
-			data: {breadcrumb: label}
+			data: {breadcrumb: label},
 		},
 		snapshot: {
-			params
+			params,
 		},
-		firstChild
+		firstChild,
 	};
 }

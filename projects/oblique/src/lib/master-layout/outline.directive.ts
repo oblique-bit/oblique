@@ -3,7 +3,7 @@ import {DOCUMENT, Directive, HostListener, Inject} from '@angular/core';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'ob-master-layout',
-	standalone: false
+	standalone: false,
 })
 export class ObOutlineDirective {
 	constructor(@Inject(DOCUMENT) private readonly document: Document) {}

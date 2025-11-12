@@ -10,6 +10,6 @@ import {ObButtonModule} from '@oblique/oblique';
 	templateUrl: './button-example-other-options.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	host: {class: 'layout-breakpoint-sm'}
+	host: {class: 'layout-breakpoint-sm'},
 })
 export class ButtonExampleOtherOptionsComponent {}

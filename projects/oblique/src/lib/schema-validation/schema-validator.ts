@@ -6,7 +6,7 @@ import {WINDOW} from '../utilities';
 @Directive({
 	selector: '[obSchemaValidate][ngModel],[obSchemaValidate][formControlName]',
 	providers: [{provide: NG_VALIDATORS, useExisting: ObSchemaValidateDirective, multi: true}],
-	standalone: true
+	standalone: true,
 })
 export class ObSchemaValidateDirective implements AfterViewInit, Validator {
 	private propertyName: string;

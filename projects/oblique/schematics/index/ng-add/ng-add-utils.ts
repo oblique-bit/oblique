@@ -5,11 +5,14 @@ import {
 	NodeDependencyType,
 	addPackageJsonDependency,
 	getPackageJsonDependency,
-	removePackageJsonDependency
+	removePackageJsonDependency,
 } from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {error, getJson, infoMigration, packageJsonConfigPath, readFile} from '../utils';
-import {ScriptTarget, createSourceFile} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {
+	ScriptTarget,
+	createSourceFile,
+} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {ObIVersion} from './ng-add.model';
 
 export const angularAppFilesNames = {
@@ -17,7 +20,7 @@ export const angularAppFilesNames = {
 	appModule: 'app-module.ts',
 	appRoutingModule: 'app-routing-module.ts',
 	appComponent: 'app.ts',
-	appComponentSpec: 'app.spec.ts'
+	appComponentSpec: 'app.spec.ts',
 };
 export const appModulePath = `src/app/${angularAppFilesNames.appModule}`;
 export const routingModulePath = `src/app/${angularAppFilesNames.appRoutingModule}`;
@@ -51,13 +54,15 @@ const versions: Record<string, string | versionFunc> = {
 	husky: '^9.0.0',
 	jest: '^29.0.0',
 	'jest-sonar-reporter': '^2.0.0',
-	prettier: '^3.0.0'
+	prettier: '^3.0.0',
 };
 
 export function getPreconditionVersion(tree: Tree, pkg: string): string {
 	const current = extractVersion(getDepVersion(tree, pkg) || '');
 	const target = extractVersion(getDepVersion(tree, '@angular/core') || '') || ({} as ObIVersion);
-	return !current || current.major !== target.major || current.minor !== target.minor ? `${target.major}.${target.minor}` : '';
+	return !current || current.major !== target.major || current.minor !== target.minor
+		? `${target.major}.${target.minor}`
+		: '';
 }
 
 export function checkPrecondition(tree: Tree, pkg: string): void {
@@ -105,7 +110,9 @@ export function importModuleInRoot(tree: Tree, moduleName: string, src: string):
 
 export function applyChanges(tree: Tree, filePath: string, changes: Change[]): Tree {
 	const records = tree.beginUpdate(filePath);
-	changes.filter(change => change instanceof InsertChange).forEach((change: InsertChange) => records.insertLeft(change.pos, change.toAdd));
+	changes
+		.filter(change => change instanceof InsertChange)
+		.forEach((change: InsertChange) => records.insertLeft(change.pos, change.toAdd));
 	tree.commitUpdate(records);
 	return tree;
 }
@@ -116,7 +123,8 @@ export function getTemplate(tree: Tree, file: string): string {
 
 export function getAngularVersion(tree: Tree): number {
 	return parseInt(
-		/@angular\/core":\s*"[~,^]?(?<version>\d+)\.\d+\.\d+"/.exec(readFile(tree, packageJsonConfigPath))?.groups?.version || '0',
+		/@angular\/core":\s*"[~,^]?(?<version>\d+)\.\d+\.\d+"/.exec(readFile(tree, packageJsonConfigPath))?.groups
+			?.version || '0',
 		10
 	);
 }
@@ -160,7 +168,12 @@ export function createSrcFile(tree: Tree, source: string): any {
 	return createSourceFile(source, readFile(tree, source), ScriptTarget.Latest, true);
 }
 
-export function adaptInsertChange(tree: Tree, change: InsertChange, search: string | RegExp, replace: string): InsertChange {
+export function adaptInsertChange(
+	tree: Tree,
+	change: InsertChange,
+	search: string | RegExp,
+	replace: string
+): InsertChange {
 	const pos = readFile(tree, appModulePath).indexOf('@NgModule');
 	if (change.pos < pos) {
 		change.toAdd = change.toAdd.replace(search, replace);
@@ -175,7 +188,7 @@ function extractVersion(version: string): ObIVersion | undefined {
 		? {
 				major: parseInt(hit.groups.major, 10),
 				minor: parseInt(hit.groups.minor, 10),
-				patch: parseInt(hit.groups.patch, 10)
+				patch: parseInt(hit.groups.patch, 10),
 			}
 		: undefined;
 }

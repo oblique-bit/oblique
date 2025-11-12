@@ -5,6 +5,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-banner-example-default-preview',
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
-	templateUrl: './banner-example-default-preview.component.html'
+	templateUrl: './banner-example-default-preview.component.html',
 })
 export class BannerExampleDefaultPreviewComponent {}

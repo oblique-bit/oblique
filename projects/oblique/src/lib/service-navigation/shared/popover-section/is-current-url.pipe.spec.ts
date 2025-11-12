@@ -7,7 +7,7 @@ describe('IsCurrentUrlPipe', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			providers: [{provide: WINDOW, useValue: window}, ObIsCurrentUrlPipe]
+			providers: [{provide: WINDOW, useValue: window}, ObIsCurrentUrlPipe],
 		}).compileComponents();
 
 		pipe = TestBed.inject(ObIsCurrentUrlPipe);

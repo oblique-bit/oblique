@@ -8,6 +8,6 @@ export {ObDateComponent} from './date/date.component';
 
 @NgModule({
 	imports: [ObDatePipe, ObDateComponent],
-	exports: [ObDatePipe, ObDateComponent]
+	exports: [ObDatePipe, ObDateComponent],
 })
 export class ObLanguageModule {}

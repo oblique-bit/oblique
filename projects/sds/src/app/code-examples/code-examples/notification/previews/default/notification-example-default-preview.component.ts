@@ -5,7 +5,7 @@ import {Component, inject} from '@angular/core';
 @Component({
 	selector: 'app-notification-example-default-preview',
 	imports: [ObNotificationModule, ObButtonModule, MatButtonModule],
-	templateUrl: './notification-example-default-preview.component.html'
+	templateUrl: './notification-example-default-preview.component.html',
 })
 export class NotificationExampleDefaultPreviewComponent {
 	private readonly obNotificationService = inject(ObNotificationService);
@@ -13,7 +13,7 @@ export class NotificationExampleDefaultPreviewComponent {
 	send(): void {
 		this.obNotificationService.send({
 			title: 'Title',
-			message: 'Hello this is the notification message'
+			message: 'Hello this is the notification message',
 		});
 	}
 }

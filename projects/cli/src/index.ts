@@ -12,7 +12,7 @@ import {
 	parseCommandArguments,
 	runObCommand,
 	startObCommand,
-	titleText
+	titleText,
 } from './utils/cli-utils';
 import {createObUpdateCommand} from './update/ob-update';
 

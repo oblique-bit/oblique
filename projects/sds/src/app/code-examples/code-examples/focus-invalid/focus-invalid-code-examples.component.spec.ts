@@ -12,7 +12,7 @@ describe(FocusInvalidCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [FocusInvalidCodeExamplesComponent, TranslateModule.forRoot()],
-			providers: [provideNativeDateAdapter()]
+			providers: [provideNativeDateAdapter()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(FocusInvalidCodeExamplesComponent);

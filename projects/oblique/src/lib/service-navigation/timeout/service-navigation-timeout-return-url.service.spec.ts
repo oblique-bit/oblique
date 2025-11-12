@@ -14,7 +14,7 @@ describe('ServiceNavigationTimeoutReturnUrlService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObServiceNavigationTimeoutReturnUrlService, {provide: WINDOW, useValue: fakeWindow}]
+			providers: [ObServiceNavigationTimeoutReturnUrlService, {provide: WINDOW, useValue: fakeWindow}],
 		});
 		service = TestBed.inject(ObServiceNavigationTimeoutReturnUrlService);
 		fakeWindow.location.href = eportalUrl;

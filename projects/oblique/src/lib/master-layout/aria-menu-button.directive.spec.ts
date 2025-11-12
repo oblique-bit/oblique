@@ -7,7 +7,7 @@ import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 
 @Component({
 	standalone: false,
-	template: `<div obAriaMenuButton="test"></div>`
+	template: `<div obAriaMenuButton="test"></div>`,
 })
 class TestComponent {}
 
@@ -17,13 +17,13 @@ describe(ObAriaMenuButtonDirective.name, () => {
 	let element: HTMLElement;
 	let directive: ObAriaMenuButtonDirective;
 	const mock = {
-		click$: new Subject()
+		click$: new Subject(),
 	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			declarations: [TestComponent, ObAriaMenuButtonDirective],
-			providers: [{provide: ObGlobalEventsService, useValue: mock}]
+			providers: [{provide: ObGlobalEventsService, useValue: mock}],
 		});
 
 		fixture = TestBed.createComponent(TestComponent);

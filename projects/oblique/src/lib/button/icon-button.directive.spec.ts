@@ -8,19 +8,19 @@ import {ObIconButtonDirective} from './icon-button.directive';
 
 @Directive({
 	selector: '[obButton]',
-	hostDirectives: [ObIconButtonDirective]
+	hostDirectives: [ObIconButtonDirective],
 })
 export class ButtonTestDirective {}
 @Component({
 	imports: [MatButtonModule, ButtonTestDirective, MatIcon, MatTooltip],
-	template: '<button type="button" obButton mat-icon-button matTooltip="tooltip"><mat-icon svgIcon="help" /></button>'
+	template: '<button type="button" obButton mat-icon-button matTooltip="tooltip"><mat-icon svgIcon="help" /></button>',
 })
 class ButtonTestComponent {}
 
 let isDevModeEnabled = true;
 jest.mock('@angular/core', () => ({
 	...jest.requireActual('@angular/core'),
-	isDevMode: jest.fn().mockImplementation(() => isDevModeEnabled)
+	isDevMode: jest.fn().mockImplementation(() => isDevModeEnabled),
 }));
 
 describe(ObIconButtonDirective.name, () => {
@@ -30,13 +30,13 @@ describe(ObIconButtonDirective.name, () => {
 
 	describe.each([
 		{mode: 'dev', isDevMode: true, warning: 'presence'},
-		{mode: 'prod', isDevMode: false, warning: 'absence'}
+		{mode: 'prod', isDevMode: false, warning: 'absence'},
 	])('$mode mode', ({isDevMode, warning}) => {
 		beforeEach(async () => {
 			isDevModeEnabled = isDevMode;
 			TestBed.resetTestingModule();
 			await TestBed.configureTestingModule({
-				imports: [MatButtonModule, ButtonTestComponent, MatIconModule]
+				imports: [MatButtonModule, ButtonTestComponent, MatIconModule],
 			}).compileComponents();
 			jest.spyOn(console, 'warn');
 		});
@@ -48,7 +48,7 @@ describe(ObIconButtonDirective.name, () => {
 		describe('without tooltip', () => {
 			beforeEach(() => {
 				fixture = TestBed.overrideComponent(ButtonTestComponent, {
-					set: {template: '<button type="button" obButton mat-icon-button><mat-icon svgIcon="help" /></button>'}
+					set: {template: '<button type="button" obButton mat-icon-button><mat-icon svgIcon="help" /></button>'},
 				}).createComponent(ButtonTestComponent);
 				button = fixture.debugElement.query(By.directive(ObIconButtonDirective));
 				directive = button.injector.get(ObIconButtonDirective);
@@ -101,8 +101,8 @@ describe(ObIconButtonDirective.name, () => {
 				fixture = TestBed.overrideComponent(ButtonTestComponent, {
 					set: {
 						template:
-							'<button type="button" obButton mat-icon-button aria-describedby="my-id" matTooltip="tooltip"><mat-icon svgIcon="help" /></button>'
-					}
+							'<button type="button" obButton mat-icon-button aria-describedby="my-id" matTooltip="tooltip"><mat-icon svgIcon="help" /></button>',
+					},
 				}).createComponent(ButtonTestComponent);
 				button = fixture.debugElement.query(By.directive(ObIconButtonDirective));
 				directive = button.injector.get(ObIconButtonDirective);

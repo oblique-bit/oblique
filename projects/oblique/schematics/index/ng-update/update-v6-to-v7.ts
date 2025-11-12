@@ -9,7 +9,7 @@ export interface IUpdateV7Schema {}
 export class UpdateV6toV7 implements ObIMigrations {
 	dependencies = {
 		ajv: 8,
-		'ajv-formats': 2
+		'ajv-formats': 2,
 	};
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -23,7 +23,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 				this.renameTableTitleAttribute(),
 				this.removeDirection(),
 				this.migrateAlerts(),
-				this.migrateNavigationPathMatch()
+				this.migrateNavigationPathMatch(),
 			])(tree, context);
 		};
 	}
@@ -60,7 +60,12 @@ export class UpdateV6toV7 implements ObIMigrations {
 		return (tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Renaming title attribute into data-title for tables');
 			const toApply = (filePath: string): void => {
-				replaceInFile(tree, filePath, /(?<=<table[^>]*?class=".*?ob-table-collapse.*?".*?<td[^>]*?)(?<!data-)title="/gs, 'data-title="');
+				replaceInFile(
+					tree,
+					filePath,
+					/(?<=<table[^>]*?class=".*?ob-table-collapse.*?".*?<td[^>]*?)(?<!data-)title="/gs,
+					'data-title="'
+				);
 			};
 			return applyInTree(tree, toApply, '*.html');
 		};

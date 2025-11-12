@@ -5,7 +5,7 @@ import {ExampleDialogComponent} from './example-dialog/example-dialog.component'
 @Component({
 	selector: 'sb-dialog',
 	standalone: false,
-	templateUrl: './dialog.component.html'
+	templateUrl: './dialog.component.html',
 })
 export class DialogComponent {
 	dialog = inject(MatDialog);
@@ -28,7 +28,7 @@ export class DialogComponent {
 		this.dialogState = this.DIALOG_STATE_OPEN;
 		const dialogRef = this.dialog.open(ExampleDialogComponent, {
 			width: this.DIALOG_WIDTH,
-			data: {name: this.name, animal: this.animal, spinner: this.spinner}
+			data: {name: this.name, animal: this.animal, spinner: this.spinner},
 		});
 
 		dialogRef.afterClosed().subscribe(result => {

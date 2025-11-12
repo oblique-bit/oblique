@@ -11,7 +11,7 @@ import {NumberFormatExampleOtherOptionsPreviewComponent} from '../number-format/
 	selector: 'app-code-example-number-format',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NumberFormatCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'number-format-examples';
@@ -31,8 +31,8 @@ export class NumberFormatCodeExamplesComponent extends CodeExamples {
 					'default-with-reactive-form/number-format-example-default-with-reactive-form-preview.component.ts',
 					'TS'
 				),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: NumberFormatExampleDefaultWithTemplateFromPreviewComponent,
@@ -49,18 +49,26 @@ export class NumberFormatCodeExamplesComponent extends CodeExamples {
 					'default-with-template-from/number-format-example-default-with-template-from-preview.component.ts',
 					'TS'
 				),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: NumberFormatExampleOtherOptionsPreviewComponent,
 			idParts: ['other', 'options'],
 			title: 'Other options',
 			snippets: [
-				this.getSnippet('number-format', 'other-options/number-format-example-other-options-preview.component.html', 'HTML'),
-				this.getSnippet('number-format', 'other-options/number-format-example-other-options-preview.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet(
+					'number-format',
+					'other-options/number-format-example-other-options-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'number-format',
+					'other-options/number-format-example-other-options-preview.component.ts',
+					'TS'
+				),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

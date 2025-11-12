@@ -13,7 +13,7 @@ describe('ObMasterLayoutFooterComponent', () => {
 	let component: ObMasterLayoutFooterComponent;
 	let fixture: ComponentFixture<ObMasterLayoutFooterComponent>;
 	const mockMasterLayoutService = {
-		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>()}
+		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>()},
 	};
 
 	beforeEach(async () => {
@@ -23,9 +23,12 @@ describe('ObMasterLayoutFooterComponent', () => {
 			providers: [
 				provideObliqueTestingConfiguration(),
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
-				{provide: ObMasterLayoutConfig, useValue: {homePageRoute: 'home', footer: {isCustom: false}, locale: {locales: ['en']}}},
-				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: true}
-			]
+				{
+					provide: ObMasterLayoutConfig,
+					useValue: {homePageRoute: 'home', footer: {isCustom: false}, locale: {locales: ['en']}},
+				},
+				{provide: OB_HAS_LANGUAGE_IN_URL, useValue: true},
+			],
 		}).compileComponents();
 	});
 
@@ -53,7 +56,10 @@ describe('ObMasterLayoutFooterComponent', () => {
 		});
 
 		it('should be updated with the service', () => {
-			mockMasterLayoutService.footer.configEvents$.next({name: ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM, value: true});
+			mockMasterLayoutService.footer.configEvents$.next({
+				name: ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM,
+				value: true,
+			});
 			expect(component.isCustom).toBe(true);
 		});
 	});

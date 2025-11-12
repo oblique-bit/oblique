@@ -6,6 +6,6 @@ import {MatButtonModule} from '@angular/material/button';
 	selector: 'app-column-layout-example-stackblitz-link-preview',
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
 	templateUrl: './column-layout-example-stackblitz-link-preview.component.html',
-	styleUrl: '../../../../stackblitz-link.scss'
+	styleUrl: '../../../../stackblitz-link.scss',
 })
 export class ColumnLayoutExampleStackblitzLinkPreviewComponent {}

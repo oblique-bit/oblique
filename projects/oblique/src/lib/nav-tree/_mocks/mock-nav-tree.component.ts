@@ -10,13 +10,13 @@ import {ObNavTreeItemModel} from '../nav-tree-item.model';
 	standalone: true,
 	template: '',
 	exportAs: 'obNavTree',
-	host: {class: 'ob-nav-tree'}
+	host: {class: 'ob-nav-tree'},
 })
 export class ObMockNavTreeComponent {
 	static DEFAULTS = {
 		VARIANT: 'ob-nav-bordered ob-nav-hover',
 		HIGHLIGHT: 'ob-pattern-highlight',
-		LABEL_FORMATTER: {}
+		LABEL_FORMATTER: {},
 	};
 
 	@Input() items: ObNavTreeItemModel[] = [];

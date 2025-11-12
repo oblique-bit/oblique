@@ -13,7 +13,7 @@ describe(BadgeCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [IdPipe, BadgeCodeExamplesComponent]
+			imports: [IdPipe, BadgeCodeExamplesComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(BadgeCodeExamplesComponent);

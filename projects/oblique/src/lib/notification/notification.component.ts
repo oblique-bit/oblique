@@ -1,4 +1,13 @@
-import {ChangeDetectorRef, Component, HostBinding, Inject, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {
+	ChangeDetectorRef,
+	Component,
+	HostBinding,
+	Inject,
+	Input,
+	OnDestroy,
+	OnInit,
+	ViewEncapsulation,
+} from '@angular/core';
 import {WINDOW} from '../utilities';
 import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
@@ -11,7 +20,7 @@ import {Subject, takeUntil} from 'rxjs';
 	styleUrls: ['./notification.component.scss', './notification-animations.scss'],
 	encapsulation: ViewEncapsulation.None,
 	exportAs: 'obNotification',
-	host: {class: 'ob-notification-container'}
+	host: {class: 'ob-notification-container'},
 })
 export class ObNotificationComponent implements OnInit, OnDestroy {
 	public static REMOVE_DELAY = 350;
@@ -101,7 +110,9 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 	}
 
 	private isPlacementOnLeft(): boolean {
-		return [ObENotificationPlacement.BOTTOM_LEFT, ObENotificationPlacement.TOP_LEFT].includes(this.notificationService.placement);
+		return [ObENotificationPlacement.BOTTOM_LEFT, ObENotificationPlacement.TOP_LEFT].includes(
+			this.notificationService.placement
+		);
 	}
 
 	private selfClose(notification: ObINotificationPrivate): void {

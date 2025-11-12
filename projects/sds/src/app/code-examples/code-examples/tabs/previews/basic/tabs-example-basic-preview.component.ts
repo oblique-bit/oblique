@@ -5,6 +5,6 @@ import {MatIconModule} from '@angular/material/icon';
 @Component({
 	selector: 'app-tabs-example-basic-preview',
 	imports: [MatTabsModule, MatIconModule],
-	templateUrl: './tabs-example-basic-preview.component.html'
+	templateUrl: './tabs-example-basic-preview.component.html',
 })
 export class TabsExampleBasicPreviewComponent {}

@@ -12,7 +12,7 @@ import {obMasterLayoutNavigationSubMenuFilter} from './masterLayoutNavigationSub
 	selector: '[obMasterLayoutNavigationItem]',
 	exportAs: 'obMasterLayoutNavigationItem',
 	host: {class: 'ob-master-layout-navigation-item'},
-	standalone: false
+	standalone: false,
 })
 export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy {
 	@HostBinding('class.ob-expanded') isExpanded = false;
@@ -57,7 +57,10 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 
 	private monitorForClickOutside(): void {
 		merge(
-			this.globalEventsService.click$.pipe(obOutsideFilter(this.element.nativeElement), obMasterLayoutNavigationSubMenuFilter()),
+			this.globalEventsService.click$.pipe(
+				obOutsideFilter(this.element.nativeElement),
+				obMasterLayoutNavigationSubMenuFilter()
+			),
 			this.globalEventsService.keyUp$.pipe(filter(event => event.key === 'Escape'))
 		)
 			.pipe(

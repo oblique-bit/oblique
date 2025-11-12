@@ -14,7 +14,7 @@ describe(NumberFormatSampleComponent.name, () => {
 			imports: [FormsModule, ReactiveFormsModule, TranslateModule],
 			declarations: [NumberFormatSampleComponent],
 			providers: [provideObliqueTestingConfiguration()],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 		}).compileComponents();
 	});
 

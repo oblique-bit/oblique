@@ -9,7 +9,7 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 	imports: [MatInputModule, MatFormFieldModule, ObErrorMessagesModule, ReactiveFormsModule],
 	templateUrl: './nested-form-example-reactive-preview-grandchild.component.html',
 	styleUrl: '../../nested-form-example-preview.scss',
-	exportAs: 'grandchild'
+	exportAs: 'grandchild',
 })
 export class NestedFormExampleReactivePreviewGrandchildComponent {
 	grandchildForm: UntypedFormGroup;
@@ -18,7 +18,7 @@ export class NestedFormExampleReactivePreviewGrandchildComponent {
 	constructor() {
 		this.grandchildForm = this.formBuilder.group({
 			field1: ['', [Validators.required]],
-			field2: ['', Validators.minLength(5)]
+			field2: ['', Validators.minLength(5)],
 		});
 	}
 }

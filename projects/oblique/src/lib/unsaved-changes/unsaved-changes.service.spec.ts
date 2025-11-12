@@ -15,8 +15,8 @@ describe('UnsavedChangesService', () => {
 			providers: [
 				provideObliqueTestingConfiguration(),
 				ObUnsavedChangesService,
-				{provide: ObGlobalEventsService, useValue: {beforeUnload$: unload.asObservable()}}
-			]
+				{provide: ObGlobalEventsService, useValue: {beforeUnload$: unload.asObservable()}},
+			],
 		});
 		globalEventsService = TestBed.inject(ObGlobalEventsService);
 	});

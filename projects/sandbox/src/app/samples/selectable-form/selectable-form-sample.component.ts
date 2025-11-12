@@ -5,7 +5,7 @@ import {FormBuilder, type FormControl, type FormGroup} from '@angular/forms';
 	selector: 'sb-selectable-form-sample',
 	standalone: false,
 	templateUrl: './selectable-form-sample.component.html',
-	styleUrl: './selectable-form-sample.component.scss'
+	styleUrl: './selectable-form-sample.component.scss',
 })
 export class SelectableFormSampleComponent implements OnInit {
 	mode = 'checkbox';
@@ -14,7 +14,7 @@ export class SelectableFormSampleComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.sampleForm = this.formBuilder.group({
-			sampleCreatures: [['cat', 'dog']]
+			sampleCreatures: [['cat', 'dog']],
 		});
 	}
 

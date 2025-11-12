@@ -14,7 +14,7 @@ describe(ErrorMessagesSampleComponent.name, () => {
 		await TestBed.configureTestingModule({
 			imports: [ReactiveFormsModule, FormsModule, MatSelectModule, MatFormFieldModule, MatInputModule],
 			declarations: [ErrorMessagesSampleComponent],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 		}).compileComponents();
 	});
 

@@ -7,7 +7,7 @@ import {JsonPipe} from '@angular/common';
 	selector: 'app-selectable-example-in-a-form-preview',
 	imports: [ObSelectableModule, ReactiveFormsModule, JsonPipe],
 	templateUrl: './selectable-example-in-a-form-preview.component.html',
-	styleUrl: '../selectable-example-preview.component.scss'
+	styleUrl: '../selectable-example-preview.component.scss',
 })
 export class SelectableExampleInAFormPreviewComponent implements OnInit {
 	sampleForm: FormGroup;
@@ -15,7 +15,7 @@ export class SelectableExampleInAFormPreviewComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.sampleForm = this.formBuilder.group({
-			sampleCreatures: [[], Validators.required]
+			sampleCreatures: [[], Validators.required],
 		});
 	}
 }

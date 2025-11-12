@@ -8,6 +8,6 @@ export {ObMockNavTreeComponent} from './mock-nav-tree.component';
  */
 @NgModule({
 	imports: [ObMockNavTreeComponent],
-	exports: [ObMockNavTreeComponent]
+	exports: [ObMockNavTreeComponent],
 })
 export class ObMockNavTreeModule {}

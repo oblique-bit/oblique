@@ -6,7 +6,7 @@ import {mockUrls} from '../../file-upload-simulate-interceptor';
 	selector: 'app-file-upload-upload-event-preview',
 	imports: [ObFileUploadModule],
 	templateUrl: './file-upload-upload-event-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss'
+	styleUrl: '../../../../code-example-flex-layout.scss',
 })
 export class FileUploadUploadEventPreviewComponent {
 	readonly mockUrls = mockUrls;
@@ -16,7 +16,7 @@ export class FileUploadUploadEventPreviewComponent {
 	uploadEvent(event: ObIUploadEvent): void {
 		this.last5UploadEvents.unshift({
 			eventType: event.type,
-			fileNames: event.files.map((file: File | string) => (file instanceof File ? file.name : file)).join(', ')
+			fileNames: event.files.map((file: File | string) => (file instanceof File ? file.name : file)).join(', '),
 		});
 
 		this.last5UploadEvents.length = this.last5UploadEvents.length > 5 ? 5 : this.last5UploadEvents.length;

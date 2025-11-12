@@ -1,6 +1,12 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {NodeDependencyType} from '@schematics/angular/utility/dependencies';
-import {addDependency, checkForMultiProject, checkPrecondition, getPreconditionVersion, hasDependency} from './ng-add-utils';
+import {
+	addDependency,
+	checkForMultiProject,
+	checkPrecondition,
+	getPreconditionVersion,
+	hasDependency,
+} from './ng-add-utils';
 import {ObIOptionsSchema} from './ng-add.model';
 import {
 	checkForSSR,
@@ -12,7 +18,7 @@ import {
 	installDependencies,
 	isSuccessful,
 	success,
-	warn
+	warn,
 } from '../utils';
 import {obliqueFeatures} from './rules/obliqueFeatures';
 import {toolchain} from './rules/toolchain';
@@ -29,7 +35,7 @@ export function addOblique(options: ObIOptionsSchema): Rule {
 			obliqueFeatures(options),
 			toolchain(options),
 			installDependencies(),
-			finalize(options)
+			finalize(options),
 		])(tree, context);
 }
 
@@ -53,16 +59,16 @@ function checkRequiredDependencies(tree: Tree, context: SchematicContext): void 
 	const errors = [
 		{
 			name: '@angular/material',
-			type: NodeDependencyType.Default
+			type: NodeDependencyType.Default,
 		},
 		{
 			name: '@angular/cdk',
-			type: NodeDependencyType.Default
+			type: NodeDependencyType.Default,
 		},
 		{
 			name: '@oblique/toolchain',
-			type: NodeDependencyType.Dev
-		}
+			type: NodeDependencyType.Dev,
+		},
 	]
 		.map(dep => {
 			if (!hasDependency(tree, dep)) {
@@ -91,7 +97,10 @@ function finalize(options: ObIOptionsSchema): Rule {
 		if (isSuccessful) {
 			success(context, 'Oblique has been successfully integrated. Please review the changes.');
 		} else {
-			warn(context, 'Oblique has only been partially integrated. Please check for warnings in the console and review the changes.');
+			warn(
+				context,
+				'Oblique has only been partially integrated. Please check for warnings in the console and review the changes.'
+			);
 		}
 		if (options.husky) {
 			infoText(context, 'Please run "npm prepare" to finalize Husky installation.');

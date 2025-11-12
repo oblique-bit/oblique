@@ -45,7 +45,7 @@ export class CollectorService {
 			triggerFunction: (showCollectorDialog: CollectorFunction) => {
 				this.openCollectorDialog = showCollectorDialog;
 			},
-			fieldValues: () => ({})
+			fieldValues: () => ({}),
 		};
 	}
 

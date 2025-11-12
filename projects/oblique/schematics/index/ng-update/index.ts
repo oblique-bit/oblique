@@ -73,7 +73,10 @@ function startup(migrations: ObIMigrations, options: Record<string, any>): Rule 
 	return (tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Starting migrations');
 
-		return chain([migrations.applyMigrations(options), installDependencies(), finalize(migrations.dependencies)])(tree, context);
+		return chain([migrations.applyMigrations(options), installDependencies(), finalize(migrations.dependencies)])(
+			tree,
+			context
+		);
 	};
 }
 

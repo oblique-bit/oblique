@@ -10,7 +10,7 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 	selector: 'ob-master-layout-header',
 	standalone: false,
 	template: '',
-	exportAs: 'obMasterLayoutHeader'
+	exportAs: 'obMasterLayoutHeader',
 })
 export class ObMockMasterLayoutHeaderComponent {
 	home$ = of('');

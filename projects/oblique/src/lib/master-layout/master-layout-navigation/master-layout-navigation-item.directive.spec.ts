@@ -10,7 +10,7 @@ import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-
 
 @Component({
 	standalone: false,
-	template: '<li role="presentation" obMasterLayoutNavigationItem> test </li>'
+	template: '<li role="presentation" obMasterLayoutNavigationItem> test </li>',
 })
 class TestComponent {}
 
@@ -21,13 +21,13 @@ describe(ObMasterLayoutNavigationItemDirective.name, () => {
 	let masterLayoutService: ObMasterLayoutComponentService;
 	const mock = {
 		menuOpened: jest.fn(),
-		menuClosed: jest.fn()
+		menuClosed: jest.fn(),
 	};
 	const clickSubject = new Subject<MouseEvent>();
 	const keyUpSubject = new Subject<KeyboardEvent>();
 	const globalEventMock = {
 		click$: clickSubject.asObservable(),
-		keyUp$: keyUpSubject.asObservable()
+		keyUp$: keyUpSubject.asObservable(),
 	};
 
 	beforeEach(() => {
@@ -36,8 +36,8 @@ describe(ObMasterLayoutNavigationItemDirective.name, () => {
 			providers: [
 				{provide: ObMasterLayoutComponentService, useClass: ObMockMasterLayoutComponentService},
 				{provide: ObGlobalEventsService, useValue: globalEventMock},
-				{provide: ObMasterLayoutNavigationMenuDirective, useValue: mock}
-			]
+				{provide: ObMasterLayoutNavigationMenuDirective, useValue: mock},
+			],
 		});
 
 		fixture = TestBed.createComponent(TestComponent);
@@ -95,8 +95,10 @@ describe(ObMasterLayoutNavigationItemDirective.name, () => {
 
 		test(`that it does not collapse on mouse click when the target of the event is a non closing element within an .ob-sub-menu`, () => {
 			const mouseEvent = new MouseEvent('click');
-			// eslint-disable-next-line @typescript-eslint/no-misused-spread
-			clickSubject.next({...mouseEvent, target: {closest: (selector: string) => selector === '.ob-sub-menu'} as unknown as EventTarget});
+			clickSubject.next({
+				...mouseEvent, // eslint-disable-line @typescript-eslint/no-misused-spread
+				target: {closest: (selector: string) => selector === '.ob-sub-menu'} as unknown as EventTarget,
+			});
 			expect(directive.isExpanded).toBe(true);
 		});
 

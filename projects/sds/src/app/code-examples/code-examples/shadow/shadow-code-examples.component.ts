@@ -9,7 +9,7 @@ import {ShadowExampleShadowPreviewComponent} from './previews/shadow/shadow-exam
 	selector: 'app-code-example-shadow',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShadowCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'shadow-examples';
@@ -21,8 +21,8 @@ export class ShadowCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('shadow', 'shadow/shadow-example-shadow-preview.component.html', 'HTML'),
 				this.getSnippet('shadow', 'shadow/shadow-example-shadow-preview.component.ts', 'TS'),
 				this.getSnippet('shadow', 'shadow/shadow-example-shadow-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

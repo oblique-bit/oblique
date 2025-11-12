@@ -66,7 +66,9 @@
 		<fieldset>
 			<legend>Variants</legend>
 			<div class="form-controls">
-				<mat-slide-toggle [disabled]="!listType.includes('selection')" [(ngModel)]="isDisabled">Disabled</mat-slide-toggle>
+				<mat-slide-toggle [disabled]="!listType.includes('selection')" [(ngModel)]="isDisabled"
+					>Disabled</mat-slide-toggle
+				>
 				<mat-slide-toggle [disabled]="!listType.includes('selection')" [(ngModel)]="invertIconAndCheckbox"
 					>Invert icon and checkbox</mat-slide-toggle
 				>

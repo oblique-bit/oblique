@@ -10,7 +10,7 @@ import {BreakpointsExampleDownPreviewComponent} from './previews/breakpoints/dow
 	selector: 'app-code-example-breakpoints',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreakpointsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'breakpoints-examples';
@@ -21,8 +21,8 @@ export class BreakpointsCodeExamplesComponent extends CodeExamples {
 			title: 'ob-media-breakpoint-up',
 			snippets: [
 				this.getSnippet('breakpoints', 'breakpoints/up/breakpoints-example-up-preview.component.html', 'HTML'),
-				this.getSnippet('breakpoints', 'breakpoints/up/breakpoints-example-up-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('breakpoints', 'breakpoints/up/breakpoints-example-up-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: BreakpointsExampleDownPreviewComponent,
@@ -30,8 +30,8 @@ export class BreakpointsCodeExamplesComponent extends CodeExamples {
 			title: 'ob-media-breakpoint-down',
 			snippets: [
 				this.getSnippet('breakpoints', 'breakpoints/down/breakpoints-example-down-preview.component.html', 'HTML'),
-				this.getSnippet('breakpoints', 'breakpoints/down/breakpoints-example-down-preview.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('breakpoints', 'breakpoints/down/breakpoints-example-down-preview.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

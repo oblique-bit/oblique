@@ -2,7 +2,7 @@ import {
 	ObIServiceNavigationContact,
 	ObIServiceNavigationLink,
 	ObLoginState,
-	ObServiceNavigationApplicationStatus
+	ObServiceNavigationApplicationStatus,
 } from '../service-navigation.model';
 
 export interface ObIServiceNavigationResponse<T> {

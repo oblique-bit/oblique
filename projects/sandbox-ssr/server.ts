@@ -50,7 +50,7 @@ function buildRenderOptions(request: Request, indexHtml: string, browserDistFold
 		documentFilePath: indexHtml,
 		url: `${protocol}://${headers.host}${originalUrl}`,
 		publicPath: browserDistFolder,
-		providers: [{provide: APP_BASE_HREF, useValue: baseUrl}]
+		providers: [{provide: APP_BASE_HREF, useValue: baseUrl}],
 	};
 }
 

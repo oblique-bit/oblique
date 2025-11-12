@@ -5,7 +5,7 @@ import {FormControl, UntypedFormBuilder, type UntypedFormGroup, Validators} from
 	selector: 'sb-mandatory.sample',
 	standalone: false,
 	templateUrl: './mandatory.sample.component.html',
-	styleUrl: './mandatory.sample.component.scss'
+	styleUrl: './mandatory.sample.component.scss',
 })
 export class MandatorySampleComponent implements OnInit {
 	/**
@@ -35,7 +35,7 @@ export class MandatorySampleComponent implements OnInit {
 			matChipListRequired: new FormControl<string[]>([''], Validators.required),
 			matChipListDynamicRequired: new FormControl<string[]>(['']),
 			matChipListOptional: new FormControl<string[]>(['']),
-			matChipListNonRequired: new FormControl<string[]>([''])
+			matChipListNonRequired: new FormControl<string[]>(['']),
 		});
 	}
 

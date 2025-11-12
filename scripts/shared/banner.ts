@@ -8,7 +8,7 @@ import {Files} from './files';
 export class Banner extends StaticScript {
 	// manually set for versions with prolonged support
 	private static readonly eolDates = {
-		'10.0.0': '2024-06-30'
+		'10.0.0': '2024-06-30',
 	};
 
 	static addToFilesInProject(projectName: string): void {

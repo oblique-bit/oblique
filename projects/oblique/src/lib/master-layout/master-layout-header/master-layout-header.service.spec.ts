@@ -19,11 +19,11 @@ describe('ObMasterLayoutHeaderService', () => {
 							isCustom: false,
 							isSmall: false,
 							isSticky: false,
-							serviceNavigation: {}
-						}
-					}
-				}
-			]
+							serviceNavigation: {},
+						},
+					},
+				},
+			],
 		});
 		service = TestBed.inject(ObMasterLayoutHeaderService);
 	});

@@ -9,7 +9,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 @Component({
 	selector: 'app-badge-code-examples',
 	imports: [CommonModule, CodeExampleComponent, IdPipe],
-	templateUrl: '../../code-examples.component.html'
+	templateUrl: '../../code-examples.component.html',
 })
 export class BadgeCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'badge-examples';
@@ -22,8 +22,8 @@ export class BadgeCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('badge', 'colors/badge-example-colors.component.html', 'HTML'),
 				this.getSnippet('badge', 'colors/badge-example-colors.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: BadgeExampleOtherOptionsComponent,
@@ -32,8 +32,8 @@ export class BadgeCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('badge', 'other-options/badge-example-other-options.component.html', 'HTML'),
 				this.getSnippet('badge', 'other-options/badge-example-other-options.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

@@ -50,7 +50,7 @@ import {ObFocusInvalidDirective} from './focus-invalid.directive';
 
 			<button type="submit">submit</button>
 		</form>
-	`
+	`,
 })
 class UntypedReactiveFormTestComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;
@@ -63,7 +63,7 @@ class UntypedReactiveFormTestComponent implements OnInit {
 			select: [undefined, Validators.required],
 			checkbox: [false, Validators.requiredTrue],
 			textarea: ['', Validators.required],
-			radio: [undefined, Validators.required]
+			radio: [undefined, Validators.required],
 		});
 	}
 }
@@ -75,7 +75,7 @@ describe(ObFocusInvalidDirective.name, () => {
 		select: 2,
 		checkbox: true,
 		textarea: 'some text',
-		radio: '1'
+		radio: '1',
 	};
 	let fixture: ComponentFixture<UntypedReactiveFormTestComponent>;
 	let component: UntypedReactiveFormTestComponent;
@@ -90,8 +90,8 @@ describe(ObFocusInvalidDirective.name, () => {
 				MatInputModule,
 				MatSelectModule,
 				MatCheckboxModule,
-				MatRadioModule
-			]
+				MatRadioModule,
+			],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(UntypedReactiveFormTestComponent);
@@ -109,9 +109,11 @@ describe(ObFocusInvalidDirective.name, () => {
 		{setValues: ['text', 'datepicker'], result: 'select'},
 		{setValues: ['text', 'datepicker', 'select'], result: 'checkbox', id: 'checkbox-input'},
 		{setValues: ['text', 'datepicker', 'select', 'checkbox'], result: 'textarea'},
-		{setValues: ['text', 'datepicker', 'select', 'checkbox', 'textarea'], result: 'radio', id: 'mat-radio-a10-input'}
+		{setValues: ['text', 'datepicker', 'select', 'checkbox', 'textarea'], result: 'radio', id: 'mat-radio-a10-input'},
 	])('the $result field is focused when all preceding fields received a value', ({setValues, result, id}) => {
-		component.focusInvalidFormGroup.patchValue(setValues.reduce((patchValues, key) => ({...patchValues, [key]: values[key]}), {}));
+		component.focusInvalidFormGroup.patchValue(
+			setValues.reduce((patchValues, key) => ({...patchValues, [key]: values[key]}), {})
+		);
 		fixture.detectChanges();
 		fixture.nativeElement.querySelector('button').click();
 		expect(document.activeElement.id).toBe(id ?? result);

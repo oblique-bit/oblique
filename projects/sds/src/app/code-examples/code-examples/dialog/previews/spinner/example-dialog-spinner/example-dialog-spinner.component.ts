@@ -8,8 +8,16 @@ import {MatButtonModule} from '@angular/material/button';
 
 @Component({
 	selector: 'sb-example-dialog-spinner',
-	imports: [FormsModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, ObButtonModule, ObSpinnerModule],
-	templateUrl: './example-dialog-spinner.component.html'
+	imports: [
+		FormsModule,
+		MatButtonModule,
+		MatDialogModule,
+		MatFormFieldModule,
+		MatInputModule,
+		ObButtonModule,
+		ObSpinnerModule,
+	],
+	templateUrl: './example-dialog-spinner.component.html',
 })
 export class ExampleDialogSpinnerComponent implements AfterViewInit, OnDestroy {
 	readonly sampleChannel = 'demo';

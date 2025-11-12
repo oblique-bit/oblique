@@ -14,7 +14,7 @@ describe('EportalCsrfInterceptor', () => {
 		handle: response => {
 			httpResponseSpy = response;
 			return of(new HttpResponse<unknown>(response));
-		}
+		},
 	};
 
 	beforeEach(() => {

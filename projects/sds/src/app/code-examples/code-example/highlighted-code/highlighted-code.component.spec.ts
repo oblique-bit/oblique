@@ -9,7 +9,7 @@ describe('HighlightedCodeComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [IdPipe, HighlightedCodeComponent]
+			imports: [IdPipe, HighlightedCodeComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(HighlightedCodeComponent);

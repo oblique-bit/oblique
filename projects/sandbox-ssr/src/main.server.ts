@@ -3,6 +3,7 @@ import {type BootstrapContext, bootstrapApplication} from '@angular/platform-bro
 import {AppComponent} from './app/app.component';
 import {config} from './app/app.config.server';
 
-const bootstrap = async (context: BootstrapContext): Promise<ApplicationRef> => bootstrapApplication(AppComponent, config, context);
+const bootstrap = async (context: BootstrapContext): Promise<ApplicationRef> =>
+	bootstrapApplication(AppComponent, config, context);
 
 export default bootstrap;

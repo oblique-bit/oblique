@@ -10,7 +10,7 @@ import {IdPipe} from '../../shared/id/id.pipe';
 	imports: [CommonModule, RouterLink, RouterLinkActive, IdPipe],
 	templateUrl: './accordion-links.component.html',
 	styleUrl: './accordion-links.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccordionLinksComponent implements OnChanges, OnInit {
 	readonly accordions = input<Accordion[]>([]);
@@ -22,7 +22,9 @@ export class AccordionLinksComponent implements OnChanges, OnInit {
 	readonly componentId = 'accordion-links';
 
 	accordionIds$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
-	collapsedAccordionsRecord$: BehaviorSubject<Record<string, boolean>> = new BehaviorSubject<Record<string, boolean>>({});
+	collapsedAccordionsRecord$: BehaviorSubject<Record<string, boolean>> = new BehaviorSubject<Record<string, boolean>>(
+		{}
+	);
 	collapsedAccordionIds$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
 	ngOnChanges(changes: AccordionLinksChanges): void {
@@ -37,7 +39,9 @@ export class AccordionLinksComponent implements OnChanges, OnInit {
 				const accordionIds = next[0];
 				const collapsedAccordionIds = next[1];
 				const collapsedAccordionsRecord = {} as Record<string, boolean>;
-				accordionIds.map(accordionId => (collapsedAccordionsRecord[accordionId] = collapsedAccordionIds.includes(accordionId)));
+				accordionIds.map(
+					accordionId => (collapsedAccordionsRecord[accordionId] = collapsedAccordionIds.includes(accordionId))
+				);
 				return collapsedAccordionsRecord;
 			})
 		) as BehaviorSubject<Record<string, boolean>>;

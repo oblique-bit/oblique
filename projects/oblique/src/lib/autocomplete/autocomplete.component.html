@@ -1,7 +1,13 @@
 <mat-form-field>
 	<mat-icon svgIcon="search" matPrefix />
 	<mat-label *ngIf="inputLabelKey?.length > 0">{{ inputLabelKey | translate }}</mat-label>
-	<input (blur)="onModelTouched()" [formControl]="autocompleteInputControl" [matAutocomplete]="autocomplete" matInput type="text" />
+	<input
+		(blur)="onModelTouched()"
+		[formControl]="autocompleteInputControl"
+		[matAutocomplete]="autocomplete"
+		matInput
+		type="text"
+	/>
 	<ng-content select="[matPrefix]" />
 	<button [obInputClear]="autocompleteInputControl" type="button">
 		<mat-icon svgIcon="xmark_circle" />
@@ -11,10 +17,16 @@
 </mat-form-field>
 
 <mat-autocomplete #autocomplete="matAutocomplete" class="ob-autocomplete-panel" classList="ob-autocomplete-panel">
-	<ng-container *ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }" />
+	<ng-container
+		*ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }"
+	/>
 
 	<ng-template #optionGroups let-options>
-		<mat-optgroup *ngFor="let group of options; let i = index" [disabled]="group['disabled']" [label]="group['groupLabel']">
+		<mat-optgroup
+			*ngFor="let group of options; let i = index"
+			[disabled]="group['disabled']"
+			[label]="group['groupLabel']"
+		>
 			<ng-container
 				*ngTemplateOutlet="
 					group['groupOptions']?.length > 0 && hasGroupOptions ? onlyOptions : optionGroups;
@@ -32,7 +44,11 @@
 			[disabled]="option.disabled"
 		>
 			<span obOptionLabelIcon [iconName]="option['iconName'] || ''" [iconPosition]="optionIconPosition">
-				<span [innerHTML]="option.label | obHighlightTextPipe: autocompleteInputControl.value : highlightCssClass : filterRegexFlag"></span>
+				<span
+					[innerHTML]="
+						option.label | obHighlightTextPipe: autocompleteInputControl.value : highlightCssClass : filterRegexFlag
+					"
+				></span>
 			</span>
 		</mat-option>
 	</ng-template>

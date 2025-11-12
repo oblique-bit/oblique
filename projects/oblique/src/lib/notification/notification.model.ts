@@ -29,12 +29,12 @@ export enum ObENotificationType {
 	INFO = 'info',
 	SUCCESS = 'success',
 	WARNING = 'warning',
-	ERROR = 'error'
+	ERROR = 'error',
 }
 
 export enum ObENotificationPlacement {
 	BOTTOM_LEFT = 'ob-bottom-left',
 	BOTTOM_RIGHT = 'ob-bottom-right',
 	TOP_LEFT = 'ob-top-left',
-	TOP_RIGHT = 'ob-top-right'
+	TOP_RIGHT = 'ob-top-right',
 }

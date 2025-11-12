@@ -11,7 +11,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 	selector: 'app-card-code-examples',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'card-examples';
@@ -22,8 +22,8 @@ export class CardCodeExamplesComponent extends CodeExamples {
 			title: 'Basic card',
 			snippets: [
 				this.getSnippet('card', 'basic-card/basic-card.component.html', 'HTML'),
-				this.getSnippet('card', 'basic-card/basic-card.component.ts', 'TS')
-			]
+				this.getSnippet('card', 'basic-card/basic-card.component.ts', 'TS'),
+			],
 		},
 		{
 			component: ClickableCardsComponent,
@@ -32,8 +32,8 @@ export class CardCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('card', 'clickable-cards/clickable-cards.component.html', 'HTML'),
 				this.getSnippet('card', 'clickable-cards/clickable-cards.component.ts', 'TS'),
-				this.getSnippet('card', 'clickable-cards/clickable-cards.component.scss', 'SCSS')
-			]
+				this.getSnippet('card', 'clickable-cards/clickable-cards.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: CardWithMultipleSectionsComponent,
@@ -42,8 +42,8 @@ export class CardCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('card', 'card-with-multiple-sections/card-with-multiple-sections.component.html', 'HTML'),
 				this.getSnippet('card', 'card-with-multiple-sections/card-with-multiple-sections.component.ts', 'TS'),
-				this.getSnippet('card', 'card-with-multiple-sections/card-with-multiple-sections.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('card', 'card-with-multiple-sections/card-with-multiple-sections.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

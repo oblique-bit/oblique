@@ -10,12 +10,12 @@ export class ObErrorMessagesService {
 			if (subkeys.length === 1 && typeof control.errors[key][subkeys[0]] === 'object') {
 				return {
 					key: `i18n.validation.${key}.${subkeys[0]}`,
-					params: control.errors[key][subkeys[0]]
+					params: control.errors[key][subkeys[0]],
 				};
 			}
 			return {
 				key: `i18n.validation.${key}`,
-				params: control.errors[key]
+				params: control.errors[key],
 			};
 		});
 	}

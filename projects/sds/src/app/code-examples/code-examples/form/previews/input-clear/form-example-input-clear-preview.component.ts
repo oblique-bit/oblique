@@ -6,7 +6,7 @@ import {
 	type FormGroup,
 	ReactiveFormsModule,
 	UntypedFormBuilder,
-	type UntypedFormGroup
+	type UntypedFormGroup,
 } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -17,7 +17,7 @@ import {ObInputClearModule} from '@oblique/oblique';
 	selector: 'app-form-example-input-clear-preview',
 	imports: [MatFormFieldModule, MatIconModule, MatInputModule, ObInputClearModule, ReactiveFormsModule],
 	templateUrl: './form-example-input-clear-preview.component.html',
-	styleUrls: ['./form-example-input-clear-preview.component.scss', '../../../../code-example-flex-layout.scss']
+	styleUrls: ['./form-example-input-clear-preview.component.scss', '../../../../code-example-flex-layout.scss'],
 })
 export class FormExampleInputClearPreviewComponent implements OnInit {
 	stronglyTypedForm: FormGroup<{stronglyTypedFormField: FormControl<string>}>;
@@ -30,11 +30,11 @@ export class FormExampleInputClearPreviewComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.stronglyTypedForm = this.stronglyTypedFormBuilder.group({
-			stronglyTypedFormField: new FormControl<string>('')
+			stronglyTypedFormField: new FormControl<string>(''),
 		});
 		this.stronglyTypedFormField = this.stronglyTypedForm.get('stronglyTypedFormField');
 		this.untypedForm = this.untypedFormBuilder.group({
-			untypedFormField: ['']
+			untypedFormField: [''],
 		});
 		this.untypedFormField = this.untypedForm.get('untypedFormField');
 	}

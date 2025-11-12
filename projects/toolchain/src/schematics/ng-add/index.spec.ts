@@ -13,7 +13,7 @@ async function executeRule(runner: SchematicTestRunner, rule: Rule, initialTree:
 	return new Promise((resolve, reject) => {
 		runner.callRule(rule, initialTree).subscribe({
 			next: resultingTree => resolve(resultingTree as UnitTestTree),
-			error: reject
+			error: reject,
 		});
 	});
 }

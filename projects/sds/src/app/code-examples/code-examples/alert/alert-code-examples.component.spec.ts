@@ -12,7 +12,7 @@ describe(AlertCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [AlertCodeExamplesComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(AlertCodeExamplesComponent);

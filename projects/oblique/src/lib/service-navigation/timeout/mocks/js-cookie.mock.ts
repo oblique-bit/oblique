@@ -15,5 +15,5 @@ function removeCookie(name: string): void {
 export const CookiesMock = {
 	getDetails: getCookieDetails,
 	set: setCookie,
-	remove: removeCookie
+	remove: removeCookie,
 };

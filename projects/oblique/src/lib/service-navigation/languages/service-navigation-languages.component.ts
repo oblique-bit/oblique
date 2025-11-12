@@ -7,7 +7,7 @@ import {ObILanguage} from '../service-navigation.model';
 	templateUrl: './service-navigation-languages.component.html',
 	styleUrls: ['./service-navigation-languages.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-service-navigation-languages'}
+	host: {class: 'ob-service-navigation-languages'},
 })
 export class ObServiceNavigationLanguagesComponent {
 	@Input() language: string;

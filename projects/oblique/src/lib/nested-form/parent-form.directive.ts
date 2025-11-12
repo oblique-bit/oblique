@@ -5,7 +5,7 @@ import {Observable, Subject} from 'rxjs';
 	selector: '[obParentFormDirective]',
 	exportAs: 'obParentFormDirective',
 	host: {class: 'ob-parent-form-directive'},
-	standalone: true
+	standalone: true,
 })
 export class ObParentFormDirective implements OnDestroy {
 	public readonly submit$: Observable<void>;

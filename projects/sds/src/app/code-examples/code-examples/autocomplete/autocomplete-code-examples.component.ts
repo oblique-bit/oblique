@@ -10,7 +10,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 @Component({
 	selector: 'app-autocomplete-code-examples',
 	imports: [CommonModule, CodeExampleComponent, IdPipe],
-	templateUrl: '../../code-examples.component.html'
+	templateUrl: '../../code-examples.component.html',
 })
 export class AutocompleteCodeExamplesComponent extends CodeExamples {
 	readonly previews: CodeExample[] = [
@@ -20,17 +20,25 @@ export class AutocompleteCodeExamplesComponent extends CodeExamples {
 			title: 'Autocomplete default',
 			snippets: [
 				this.getSnippet('autocomplete', 'default/autocomplete-example-default.component.html', 'HTML'),
-				this.getSnippet('autocomplete', 'default/autocomplete-example-default.component.ts', 'TS')
-			]
+				this.getSnippet('autocomplete', 'default/autocomplete-example-default.component.ts', 'TS'),
+			],
 		},
 		{
 			component: AutocompleteExampleIconPositionStartComponent,
 			idParts: ['autocomplete', 'icon', 'position', 'start'],
 			title: 'Autocomplete icon position start',
 			snippets: [
-				this.getSnippet('autocomplete', 'icon-position-start/autocomplete-example-icon-position-start.component.html', 'HTML'),
-				this.getSnippet('autocomplete', 'icon-position-start/autocomplete-example-icon-position-start.component.ts', 'TS')
-			]
+				this.getSnippet(
+					'autocomplete',
+					'icon-position-start/autocomplete-example-icon-position-start.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'autocomplete',
+					'icon-position-start/autocomplete-example-icon-position-start.component.ts',
+					'TS'
+				),
+			],
 		},
 		{
 			component: AutocompleteExampleIconOptionsGroupComponent,
@@ -38,8 +46,8 @@ export class AutocompleteCodeExamplesComponent extends CodeExamples {
 			title: 'Autocomplete options group',
 			snippets: [
 				this.getSnippet('autocomplete', 'options-group/autocomplete-example-options-group.component.html', 'HTML'),
-				this.getSnippet('autocomplete', 'options-group/autocomplete-example-options-group.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('autocomplete', 'options-group/autocomplete-example-options-group.component.ts', 'TS'),
+			],
+		},
 	];
 }

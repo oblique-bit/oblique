@@ -11,7 +11,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 	selector: 'app-slider-code-examples',
 	imports: [CodeExampleComponent, CommonModule, IdPipe],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SliderCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'slider-examples';
@@ -23,8 +23,8 @@ export class SliderCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('slider', 'basic-slider/basic-slider.component.html', 'HTML'),
 				this.getSnippet('slider', 'basic-slider/basic-slider.component.ts', 'TS'),
-				this.getSnippet('slider', 'basic-slider/basic-slider.component.scss', 'SCSS')
-			]
+				this.getSnippet('slider', 'basic-slider/basic-slider.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: SliderOptionsComponent,
@@ -33,8 +33,8 @@ export class SliderCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('slider', 'slider-options/slider-options.component.html', 'HTML'),
 				this.getSnippet('slider', 'slider-options/slider-options.component.ts', 'TS'),
-				this.getSnippet('slider', 'slider-options/slider-options.component.scss', 'SCSS')
-			]
+				this.getSnippet('slider', 'slider-options/slider-options.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: RangeSliderComponent,
@@ -43,8 +43,8 @@ export class SliderCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('slider', 'range-slider/range-slider.component.html', 'HTML'),
 				this.getSnippet('slider', 'range-slider/range-slider.component.ts', 'TS'),
-				this.getSnippet('slider', 'range-slider/range-slider.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('slider', 'range-slider/range-slider.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

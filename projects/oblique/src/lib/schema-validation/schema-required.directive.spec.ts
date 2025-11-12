@@ -8,13 +8,21 @@ import {ObSchemaRequiredDirective} from './schema-required.directive';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Component({
-	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
+	imports: [
+		FormsModule,
+		ObSchemaValidationDirective,
+		ObSchemaRequiredDirective,
+		MatFormField,
+		MatInput,
+		MatLabel,
+		ReactiveFormsModule,
+	],
 	template: `<form [obSchemaValidation]="schema" [formGroup]="form">
 		<mat-form-field appearance="outline">
 			<mat-label>label</mat-label>
 			<input matInput obSchemaValidate type="text" formControlName="text" />
 		</mat-form-field>
-	</form>`
+	</form>`,
 })
 class TestReactiveComponent {
 	form = inject(FormBuilder).group({text: ''});
@@ -22,7 +30,7 @@ class TestReactiveComponent {
 		title: 'SampleSchemaValidation',
 		type: 'object',
 		required: ['text'],
-		properties: {text: {type: 'string'}}
+		properties: {text: {type: 'string'}},
 	};
 }
 
@@ -33,7 +41,7 @@ class TestReactiveComponent {
 			<mat-label>label</mat-label>
 			<input matInput obSchemaValidate type="text" name="text" [(ngModel)]="text" />
 		</mat-form-field>
-	</form>`
+	</form>`,
 })
 class TestTemplateComponent {
 	text: string;
@@ -41,7 +49,7 @@ class TestTemplateComponent {
 		title: 'SampleSchemaValidation',
 		type: 'object',
 		required: ['text'],
-		properties: {text: {type: 'string'}}
+		properties: {text: {type: 'string'}},
 	};
 }
 
@@ -52,7 +60,7 @@ describe(ObSchemaRequiredDirective.name, () => {
 	describe('Reactive form', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObSchemaRequiredDirective, TestReactiveComponent]
+				imports: [ObSchemaRequiredDirective, TestReactiveComponent],
 			}).compileComponents();
 			fixture = TestBed.createComponent(TestReactiveComponent);
 			const debugElement = fixture.debugElement.query(By.directive(ObSchemaRequiredDirective));
@@ -66,7 +74,7 @@ describe(ObSchemaRequiredDirective.name, () => {
 	describe('Template driven form', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObSchemaRequiredDirective, TestTemplateComponent]
+				imports: [ObSchemaRequiredDirective, TestTemplateComponent],
 			}).compileComponents();
 
 			fixture = TestBed.createComponent(TestTemplateComponent);
@@ -101,9 +109,12 @@ describe(ObSchemaRequiredDirective.name, () => {
 				expect(span.nativeElement.getAttribute('aria-hidden')).toBe('true');
 			});
 
-			test.each(['mat-mdc-form-field-required-marker', 'mdc-floating-label--required'])('span has %s class', className => {
-				expect(span.nativeElement.classList.contains(className)).toBe(true);
-			});
+			test.each(['mat-mdc-form-field-required-marker', 'mdc-floating-label--required'])(
+				'span has %s class',
+				className => {
+					expect(span.nativeElement.classList.contains(className)).toBe(true);
+				}
+			);
 		});
 	}
 });

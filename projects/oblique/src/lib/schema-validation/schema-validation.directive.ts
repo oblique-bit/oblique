@@ -8,7 +8,7 @@ import {ObSchemaValidatorInstance} from './schema-validator.instance';
 	exportAs: 'obSchemaValidation',
 	providers: [ObSchemaValidationService],
 	host: {class: 'ob-schema-validation'},
-	standalone: true
+	standalone: true,
 })
 export class ObSchemaValidationDirective implements OnInit {
 	@Input('obSchemaValidation') schema: any;

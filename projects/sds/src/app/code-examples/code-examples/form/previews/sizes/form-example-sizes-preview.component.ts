@@ -10,6 +10,6 @@ import {ObDatepickerModule} from '@oblique/oblique';
 	selector: 'app-form-example-sizes-preview',
 	imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, ObDatepickerModule],
 	templateUrl: './form-example-sizes-preview.component.html',
-	styleUrl: './form-example-sizes-preview.component.scss'
+	styleUrl: './form-example-sizes-preview.component.scss',
 })
 export class FormExampleSizesPreviewComponent {}

@@ -7,7 +7,11 @@
 >
 	<ng-container obHeaderTitle>Oblique</ng-container>
 	<ng-template #obHeaderControl>
-		<ob-autocomplete class="ob-sm-down-width-100" [autocompleteOptions]="autocompleteItems$ | async" [formControl]="search">
+		<ob-autocomplete
+			class="ob-sm-down-width-100"
+			[autocompleteOptions]="autocompleteItems$ | async"
+			[formControl]="search"
+		>
 			<mat-icon svgIcon="search" matSuffix />
 		</ob-autocomplete>
 	</ng-template>
@@ -37,7 +41,13 @@
 		</button>
 	</ng-template>
 	<ng-template #obHeaderControl>
-		<button type="button" mat-icon-button obButton="tertiary" matTooltip="Open example popover" [obPopover]="languageButton">
+		<button
+			type="button"
+			mat-icon-button
+			obButton="tertiary"
+			matTooltip="Open example popover"
+			[obPopover]="languageButton"
+		>
 			<mat-icon svgIcon="settings" />
 		</button>
 		<ng-template #languageButton>
@@ -56,7 +66,12 @@
 		</ng-template>
 	</ng-template>
 	<ng-template #obHeaderMobileControl>
-		<button type="button" mat-icon-button obButton="tertiary" matTooltip="This is just a placeholder, it doesn't do anything when clicked.">
+		<button
+			type="button"
+			mat-icon-button
+			obButton="tertiary"
+			matTooltip="This is just a placeholder, it doesn't do anything when clicked."
+		>
 			<mat-icon svgIcon="question" />
 		</button>
 	</ng-template>

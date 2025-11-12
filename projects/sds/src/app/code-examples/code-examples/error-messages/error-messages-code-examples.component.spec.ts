@@ -16,7 +16,7 @@ describe(ErrorMessagesCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ErrorMessagesCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ErrorMessagesCodeExamplesComponent);
@@ -33,10 +33,14 @@ describe(ErrorMessagesCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there is 1 ${ErrorMessagesExampleReactiveFormPreviewComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ErrorMessagesExampleReactiveFormPreviewComponent)).length).toBe(1);
+		expect(fixture.debugElement.queryAll(By.directive(ErrorMessagesExampleReactiveFormPreviewComponent)).length).toBe(
+			1
+		);
 	});
 
 	test(`that there is 1 ${ErrorMessagesExampleTemplateDrivenFormPreviewComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ErrorMessagesExampleTemplateDrivenFormPreviewComponent)).length).toBe(1);
+		expect(
+			fixture.debugElement.queryAll(By.directive(ErrorMessagesExampleTemplateDrivenFormPreviewComponent)).length
+		).toBe(1);
 	});
 });

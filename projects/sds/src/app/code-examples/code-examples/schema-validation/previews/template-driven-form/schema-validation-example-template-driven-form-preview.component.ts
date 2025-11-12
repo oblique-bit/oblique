@@ -6,7 +6,7 @@ import {ObErrorMessagesModule, ObSchemaValidationModule} from '@oblique/oblique'
 @Component({
 	selector: 'app-schema-validation-example-template-driven-form-preview',
 	imports: [MatInputModule, ObSchemaValidationModule, ObErrorMessagesModule, FormsModule],
-	templateUrl: './schema-validation-example-template-driven-form-preview.component.html'
+	templateUrl: './schema-validation-example-template-driven-form-preview.component.html',
 })
 export class SchemaValidationExampleTemplateDrivenFormPreviewComponent {
 	firstName = '';
@@ -20,18 +20,18 @@ export class SchemaValidationExampleTemplateDrivenFormPreviewComponent {
 			firstName: {
 				type: 'string',
 				minLength: 2,
-				maxLength: 30
+				maxLength: 30,
 			},
 			lastName: {
 				type: 'string',
 				minLength: 2,
-				maxLength: 30
+				maxLength: 30,
 			},
 			age: {
 				type: 'number',
 				minimum: 18, // 18 is included, 17 is first invalid value
-				exclusiveMaximum: 120 // 120 is not included, max is 119
-			}
-		}
+				exclusiveMaximum: 120, // 120 is not included, max is 119
+			},
+		},
 	};
 }

@@ -5,7 +5,7 @@ import type {ThemePalette} from '@angular/material/core';
 	selector: 'sb-slider',
 	standalone: false,
 	templateUrl: './slider.component.html',
-	styleUrl: './slider.component.scss'
+	styleUrl: './slider.component.scss',
 })
 export class SliderComponent {
 	value = 20;

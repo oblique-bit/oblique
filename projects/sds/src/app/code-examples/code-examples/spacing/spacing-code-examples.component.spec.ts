@@ -12,7 +12,7 @@ describe(SpacingCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [SpacingCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [SpacingCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SpacingCodeExamplesComponent);

@@ -10,7 +10,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 	selector: 'app-dialog-code-example',
 	imports: [CodeExampleComponent, CommonModule, IdPipe],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogCodeExamplesComponent extends CodeExamples {
 	readonly previews: CodeExample[] = [
@@ -22,8 +22,8 @@ export class DialogCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('dialog', 'default/dialog-example-default.component.html', 'HTML'),
 				this.getSnippet('dialog', 'default/dialog-example-default.component.ts', 'TS'),
 				this.getSnippet('dialog', 'default/example-dialog/example-dialog.component.html', 'HTML (DIALOG)'),
-				this.getSnippet('dialog', 'default/example-dialog/example-dialog.component.ts', 'TS (DIALOG)')
-			]
+				this.getSnippet('dialog', 'default/example-dialog/example-dialog.component.ts', 'TS (DIALOG)'),
+			],
 		},
 		{
 			component: DialogExampleSpinnerComponent,
@@ -32,9 +32,13 @@ export class DialogCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('dialog', 'spinner/dialog-example-spinner.component.html', 'HTML'),
 				this.getSnippet('dialog', 'spinner/dialog-example-spinner.component.ts', 'TS'),
-				this.getSnippet('dialog', 'spinner/example-dialog-spinner/example-dialog-spinner.component.html', 'HTML (DIALOG)'),
-				this.getSnippet('dialog', 'spinner/example-dialog-spinner/example-dialog-spinner.component.ts', 'TS (DIALOG)')
-			]
-		}
+				this.getSnippet(
+					'dialog',
+					'spinner/example-dialog-spinner/example-dialog-spinner.component.html',
+					'HTML (DIALOG)'
+				),
+				this.getSnippet('dialog', 'spinner/example-dialog-spinner/example-dialog-spinner.component.ts', 'TS (DIALOG)'),
+			],
+		},
 	];
 }

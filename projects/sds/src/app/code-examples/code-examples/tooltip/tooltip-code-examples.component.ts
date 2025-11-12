@@ -10,7 +10,7 @@ import {TooltipExampleBasicPreviewComponent} from './previews/basic/tooltip-exam
 	selector: 'app-code-example-tooltip',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TooltipCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'tooltip-examples';
@@ -21,8 +21,8 @@ export class TooltipCodeExamplesComponent extends CodeExamples {
 			title: 'Tooltip basic',
 			snippets: [
 				this.getSnippet('tooltip', 'basic/tooltip-example-basic-preview.component.html', 'HTML'),
-				this.getSnippet('tooltip', 'basic/tooltip-example-basic-preview.component.ts', 'TS')
-			]
+				this.getSnippet('tooltip', 'basic/tooltip-example-basic-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: TooltipExamplePositionPreviewComponent,
@@ -31,8 +31,8 @@ export class TooltipCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('tooltip', 'position/tooltip-example-position-preview.component.html', 'HTML'),
 				this.getSnippet('tooltip', 'position/tooltip-example-position-preview.component.ts', 'TS'),
-				this.getSnippet('tooltip', 'position/tooltip-example-position-preview.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('tooltip', 'position/tooltip-example-position-preview.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

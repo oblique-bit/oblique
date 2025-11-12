@@ -5,7 +5,7 @@ import type {Duration, IconPosition} from './collapse-sample.model';
 @Component({
 	selector: 'sb-collapse-sample',
 	standalone: false,
-	templateUrl: './collapse-sample.component.html'
+	templateUrl: './collapse-sample.component.html',
 })
 export class CollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';
@@ -20,13 +20,13 @@ export class CollapseSampleComponent {
 		{value: 500, viewValue: '500 ms'},
 		{value: 1000, viewValue: '1000 ms'},
 		{value: 1500, viewValue: '1500 ms'},
-		{value: 2000, viewValue: '2000 ms'}
+		{value: 2000, viewValue: '2000 ms'},
 	];
 
 	iconPositions: IconPosition[] = [
 		{value: 'left', viewValue: 'Move the icon to the left'},
 		{value: 'right', viewValue: 'Move the icon to the right'},
 		{value: 'justified', viewValue: 'Justify the icon to the right'},
-		{value: 'none', viewValue: 'Do not show the icon'}
+		{value: 'none', viewValue: 'Do not show the icon'},
 	];
 }

@@ -11,9 +11,17 @@ import {MatListModule} from '@angular/material/list';
 
 @Component({
 	selector: 'app-chips-example-autocomplete-preview',
-	imports: [CommonModule, MatChipsModule, MatAutocompleteModule, MatIconModule, MatFormFieldModule, ReactiveFormsModule, MatListModule],
+	imports: [
+		CommonModule,
+		MatChipsModule,
+		MatAutocompleteModule,
+		MatIconModule,
+		MatFormFieldModule,
+		ReactiveFormsModule,
+		MatListModule,
+	],
 	templateUrl: './chips-example-autocomplete-preview.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipsExampleAutocompletePreviewComponent {
 	separatorKeysCodes: number[] = [ENTER, COMMA];

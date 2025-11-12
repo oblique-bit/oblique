@@ -24,8 +24,12 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe, TranslateModule],
-			declarations: [ObServiceNavigationInfoComponent, ObServiceNavigationPopoverSectionComponent, ObContactToLinksPipe],
-			providers: [provideObliqueTestingConfiguration()]
+			declarations: [
+				ObServiceNavigationInfoComponent,
+				ObServiceNavigationPopoverSectionComponent,
+				ObContactToLinksPipe,
+			],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationInfoComponent);
@@ -64,7 +68,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 			beforeEach(fakeAsync(async () => {
 				component.links = [
 					{url: 'url_1', label: 'URL 1'},
-					{url: 'url_2', label: 'URL 2'}
+					{url: 'url_2', label: 'URL 2'},
 				];
 				await harness.openPopover();
 				fixture.detectChanges();
@@ -93,14 +97,14 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 					it.each([
 						{property: 'url', value: 'url_1'},
-						{property: 'label', value: 'URL 1'}
+						{property: 'label', value: 'URL 1'},
 					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
 						expect(section.links[0][property]).toBe(value);
 					});
 
 					it.each([
 						{property: 'url', value: 'url_2'},
-						{property: 'label', value: 'URL 2'}
+						{property: 'label', value: 'URL 2'},
 					])('should have "$value" as "$property" property on the second link', ({property, value}) => {
 						expect(section.links[1][property]).toBe(value);
 					});
@@ -290,7 +294,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 					phone: '123',
 					phoneText: 'tel text',
 					formUrl: 'https://example.com/',
-					formUrlText: 'form url text'
+					formUrlText: 'form url text',
 				};
 				await harness.openPopover();
 				fixture.detectChanges();
@@ -385,7 +389,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 			{attribute: 'obButton', value: 'tertiary'},
 			{attribute: 'mat-icon-button', value: ''},
 			{attribute: 'id', value: 'service-navigation-info-popover-toggle'},
-			{attribute: 'placement', value: 'bottom'}
+			{attribute: 'placement', value: 'bottom'},
 		])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
 			expect(await element.getAttribute(attribute)).toBe(value);
 		});
