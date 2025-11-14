@@ -216,14 +216,17 @@ class HookCommitRules {
 	}
 
 	private static extractList(contributing: string, type: string): string[] {
-		return HookCommitRules.extractMarkdownList(contributing, type)
+		return HookCommitRules.extractMarkdownTable(contributing, type)
 			.split('\n')
 			.filter(Boolean)
 			.map(line => /(?<=\*\*)[a-z-]+(?=\*\*)/.exec(line)?.[0] ?? '');
 	}
 
-	private static extractMarkdownList(markdown: string, title: string): string {
-		const regexp = new RegExp(`(?<=# <a name="${title.toLowerCase()}"><\\/a> ${title}.*)- .*?^$`, 'sm');
+	private static extractMarkdownTable(markdown: string, title: string): string {
+		const regexp = new RegExp(
+			`(?<=#+ <a name="${title.toLowerCase()}"><\\/a> ${title}.*?\\n\\|[-| ]+\\|\n).*?\n(?=\n|$)`,
+			's'
+		);
 		return regexp.exec(markdown)?.[0] ?? '';
 	}
 
