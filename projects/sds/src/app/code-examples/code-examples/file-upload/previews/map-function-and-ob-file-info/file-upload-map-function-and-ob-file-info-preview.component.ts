@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ObFileUploadModule, type ObIFileDescription} from '@oblique/oblique';
-import {mockUrls} from '../../file-upload-simulate-interceptor';
+import {mockCustomDeleteURL, mockGetUploadedFilesURL, mockUploadURL} from '../../file-upload-simulate-interceptor';
 
 @Component({
 	selector: 'app-file-upload-map-function-and-ob-file-info-preview',
@@ -9,7 +9,9 @@ import {mockUrls} from '../../file-upload-simulate-interceptor';
 	styleUrl: '../../../../code-example-flex-layout.scss',
 })
 export class FileUploadMapFunctionAndObFileInfoPreviewComponent {
-	mockUrls = mockUrls;
+	readonly uploadURL = `${mockUploadURL}/map`;
+	readonly getUploadedFilesURL = `${mockGetUploadedFilesURL}/map`;
+	readonly deleteURL = `${mockCustomDeleteURL}/map`;
 
 	mapData(files: ObIFileDescription[]): ObIFileDescription[] {
 		return files.map((file, idx) => ({...file, number: idx + 1}));
