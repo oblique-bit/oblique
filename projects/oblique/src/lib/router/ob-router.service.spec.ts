@@ -228,7 +228,7 @@ describe(ObRouterService.name, () => {
 
 				test('update language', async () => {
 					await router.navigate(['it']);
-					expect(translate.currentLang).toBe('it');
+					expect(translate.getCurrentLang()).toBe('it');
 				});
 			});
 

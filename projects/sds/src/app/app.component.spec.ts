@@ -24,7 +24,7 @@ describe('AppComponent', () => {
 					provide: TranslateService,
 					useValue: {
 						addLangs: jest.fn(),
-						setDefaultLang: jest.fn(),
+						setFallbackLang: jest.fn(),
 						use: jest.fn(),
 						stream: jest.fn().mockReturnValue(of('')),
 					},
@@ -68,7 +68,7 @@ describe('AppComponent', () => {
 			});
 
 			it('should have english as default language', () => {
-				expect(translateService.setDefaultLang).toHaveBeenCalledWith('en');
+				expect(translateService.setFallbackLang).toHaveBeenCalledWith('en');
 			});
 
 			it('should use english', () => {

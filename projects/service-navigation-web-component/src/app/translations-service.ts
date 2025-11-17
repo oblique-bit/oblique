@@ -93,7 +93,7 @@ export class TranslationsService {
 		languages.forEach(lang => {
 			this.translate.setTranslation(lang, this.getObliqueTranslations(lang), true);
 		});
-		this.translate.setDefaultLang(defaultLanguage);
+		this.translate.setFallbackLang(defaultLanguage);
 		this.translate.use(language);
 	}
 
@@ -113,7 +113,7 @@ export class TranslationsService {
 	}
 
 	private buildTranslations(
-		languages: string[],
+		languages: readonly string[],
 		infoLinks: string,
 		profileLinks: string
 	): Record<string, Record<string, string>> {
@@ -123,14 +123,14 @@ export class TranslationsService {
 		return translations;
 	}
 
-	private initializeTranslationsObject(languages: string[]): Record<string, Record<string, string>> {
+	private initializeTranslationsObject(languages: readonly string[]): Record<string, Record<string, string>> {
 		return languages.reduce((translations, language) => ({...translations, [language]: {}}), {});
 	}
 
 	private populateTranslations(options: {
 		rawLinks: string | undefined;
 		type: string;
-		languages: string[];
+		languages: readonly string[];
 		translations: Record<string, Record<string, string>>;
 	}): Record<string, Record<string, string>> {
 		const {rawLinks, type, languages, translations} = options;

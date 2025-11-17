@@ -62,7 +62,7 @@ describe(TranslationsService.name, () => {
 				const languageList = ['en', 'fr', 'de', 'it'];
 				service.initializeTranslations(languageList.join(','), undefined, undefined);
 
-				expect(translate.langs).toEqual(languageList);
+				expect(translate.getLangs()).toEqual(languageList);
 			});
 		});
 
@@ -84,7 +84,7 @@ describe(TranslationsService.name, () => {
 				const expectedLang = 'en';
 				service.initializeTranslations(languageList, undefined, expectedLang);
 
-				expect(translate.defaultLang).toEqual(expectedLang);
+				expect(translate.getFallbackLang()).toEqual(expectedLang);
 			});
 		});
 	});
@@ -100,7 +100,7 @@ describe(TranslationsService.name, () => {
 			];
 
 			beforeEach(() => {
-				translate.setDefaultLang('en');
+				translate.setFallbackLang('en');
 				service.initializeTranslations('en', 'en', 'en');
 				service.handleTranslations(JSON.stringify(infoLinks), '');
 			});
@@ -117,7 +117,7 @@ describe(TranslationsService.name, () => {
 		describe('profileLinks', () => {
 			describe('empty', () => {
 				it('should not fail', () => {
-					translate.setDefaultLang('en');
+					translate.setFallbackLang('en');
 					service.initializeTranslations('en', 'en', 'en');
 					const func = (): void => service.handleTranslations('', null);
 					expect(func).not.toThrow();
@@ -134,7 +134,7 @@ describe(TranslationsService.name, () => {
 				];
 
 				beforeEach(() => {
-					translate.setDefaultLang('en');
+					translate.setFallbackLang('en');
 					service.initializeTranslations('en', 'en', 'en');
 					service.handleTranslations('', JSON.stringify(profileLinks));
 				});

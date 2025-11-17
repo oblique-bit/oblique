@@ -22,7 +22,7 @@ export class AppComponent {
 	constructor() {
 		const translate = inject(TranslateService);
 		translate.addLangs(['en']);
-		translate.setDefaultLang('en');
+		translate.setFallbackLang('en');
 		translate.use('en');
 	}
 

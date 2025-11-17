@@ -26,7 +26,7 @@ export class ObLanguageService {
 			const languages = locales.map(locale => locale.split('-')[0]);
 			this.validateLocales(locales);
 			this.initTranslateService(languages, config.locale.defaultLanguage);
-			this.locale = new BehaviorSubject<string>(this.getLocale(locales, translate.currentLang));
+			this.locale = new BehaviorSubject<string>(this.getLocale(locales, translate.getCurrentLang()));
 			this.locale$ = this.locale.asObservable();
 			this.languageChange(locales, rendererFactory.createRenderer(null, null), document.head.parentElement);
 			this.setLocaleOnDateAdapter(adapter);
@@ -45,7 +45,7 @@ export class ObLanguageService {
 
 	private initTranslateService(languages: string[], defaultLanguage: string): void {
 		this.translate.addLangs(languages);
-		this.translate.setDefaultLang(this.getDefaultLang(languages, defaultLanguage));
+		this.translate.setFallbackLang(this.getDefaultLang(languages, defaultLanguage));
 		this.translate.use(this.getCurrentLang(languages, defaultLanguage));
 	}
 
@@ -71,7 +71,7 @@ export class ObLanguageService {
 
 	private getDefaultLang(languages: string[], defaultLanguage: string): string {
 		// prettier-ignore
-		return this.getSupportedLang(languages, this.translate.getDefaultLang())
+		return this.getSupportedLang(languages, this.translate.getFallbackLang())
 			|| this.getSupportedLang(languages, defaultLanguage)
 			|| languages[0];
 	}

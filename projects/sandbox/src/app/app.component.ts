@@ -80,7 +80,7 @@ export class AppComponent implements OnDestroy {
 			)
 			.subscribe(item => {
 				this.search.reset('');
-				const language = this.translate.currentLang;
+				const language = this.translate.getCurrentLang();
 				void this.router.navigateByUrl(`/${language}/${item.url}`);
 			});
 	}
@@ -107,7 +107,7 @@ export class AppComponent implements OnDestroy {
 			[]
 		);
 		return this.translate.onLangChange.pipe(
-			startWith(this.translate.currentLang),
+			startWith(this.translate.getCurrentLang()),
 			map(() => autocompleteItems.map(item => ({...item, label: this.translate.instant(item.label)})))
 		);
 	}

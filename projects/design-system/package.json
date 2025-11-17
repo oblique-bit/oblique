@@ -15,7 +15,7 @@
     "@angular/common": "^20.0.0 || ^21.0.0",
     "@angular/core": "^20.0.0 || ^21.0.0",
     "@angular/material": "^20.0.0 || ^21.0.0",
-    "@ngx-translate/core": ">=16.0.0"
+    "@ngx-translate/core": "^17.0.0"
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^2.0.1",
