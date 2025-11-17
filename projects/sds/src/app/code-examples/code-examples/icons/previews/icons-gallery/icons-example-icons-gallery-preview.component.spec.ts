@@ -43,8 +43,8 @@ describe(IconsExampleIconsGalleryPreviewComponent.name, () => {
 			input = fixture.debugElement.query(By.css('input'));
 		});
 
-		test(`that there are 279 ${MatIcon.name}s`, () => {
-			expect(fixture.debugElement.query(By.css('div.gallery')).queryAll(By.directive(MatIcon)).length).toBe(279);
+		test(`that there are 277 ${MatIcon.name}s`, () => {
+			expect(fixture.debugElement.query(By.css('div.gallery')).queryAll(By.directive(MatIcon)).length).toBe(277);
 		});
 
 		test(`that there is a byCategoryFilter dropdown`, () => {
