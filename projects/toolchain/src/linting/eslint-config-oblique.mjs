@@ -709,8 +709,10 @@ export default [
 			'@angular-eslint/no-async-lifecycle-method': 'error',
 			'@angular-eslint/no-attribute-decorator': 'error',
 			'@angular-eslint/no-conflicting-lifecycle': 'error',
+			'@angular-eslint/no-developer-preview': 'error',
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'error',
 			'@angular-eslint/no-empty-lifecycle-method': 'error',
+			'@angular-eslint/no-experimental': 'error',
 			'@angular-eslint/no-forward-ref': 'error',
 			'@angular-eslint/no-input-prefix': 'error',
 			'@angular-eslint/no-input-rename': 'error',
@@ -724,11 +726,12 @@ export default [
 			'@angular-eslint/no-queries-metadata-property': 'error',
 			'@angular-eslint/no-uncalled-signals': 'error',
 			'@angular-eslint/pipe-prefix': 'error',
+			'@angular-eslint/prefer-host-metadata-property': 'error',
+			'@angular-eslint/prefer-inject': 'off',
 			/**
 			 * Rule: @angular-eslint/prefer-on-push-component-change-detection (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-on-push-component-change-detection.md)
 			 * Reason for disabling: OnPush is not always the best choice, especially with signals
 			 */
-			'@angular-eslint/prefer-inject': 'off',
 			'@angular-eslint/prefer-on-push-component-change-detection': 'off',
 			'@angular-eslint/prefer-output-emitter-ref': 'error',
 			'@angular-eslint/prefer-output-readonly': 'error',

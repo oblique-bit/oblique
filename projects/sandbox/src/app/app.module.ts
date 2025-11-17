@@ -54,7 +54,6 @@ registerLocaleData(localeFR);
 registerLocaleData(localeDE);
 
 @NgModule({
-	declarations: [AppComponent, HomePageComponent],
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
@@ -84,6 +83,7 @@ registerLocaleData(localeDE);
 		ReactiveFormsModule,
 		TranslateModule,
 	],
+	declarations: [AppComponent, HomePageComponent],
 	providers: [
 		{provide: OB_BANNER, useValue: environment.banner},
 		{provide: OB_PAMS_CONFIGURATION, useValue: environment.pams},

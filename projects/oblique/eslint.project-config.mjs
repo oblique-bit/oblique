@@ -33,6 +33,7 @@ export default [
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'off',
 			'@angular-eslint/prefer-output-emitter-ref': 'off',
 			'@angular-eslint/prefer-signals': 'off',
+			'@angular-eslint/prefer-host-metadata-property': 'off',
 			'@angular-eslint/prefer-standalone': 'off',
 			'@typescript-eslint/consistent-type-exports': 'off',
 			'@typescript-eslint/consistent-type-imports': 'off',

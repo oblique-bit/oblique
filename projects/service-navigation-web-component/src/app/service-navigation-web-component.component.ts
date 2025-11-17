@@ -48,8 +48,8 @@ import {outputFromObservable} from '@angular/core/rxjs-interop';
 		'../../../oblique/src/styles/scss/core/components/_popover.scss',
 		'../../../oblique/src/styles/scss/core/components/_external-link.scss',
 	],
-	encapsulation: ViewEncapsulation.None,
 	providers: [TranslationsService],
+	encapsulation: ViewEncapsulation.None,
 	host: {'ob-version': appVersion},
 })
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {

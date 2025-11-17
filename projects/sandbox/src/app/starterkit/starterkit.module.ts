@@ -19,7 +19,6 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-	declarations: [NavPageComponent, TablePageComponent, TitlePageComponent],
 	imports: [
 		CommonModule,
 		MatButtonModule,
@@ -32,5 +31,6 @@ const appRoutes: Routes = [
 		ObNavTreeModule,
 		RouterModule.forChild(appRoutes),
 	],
+	declarations: [NavPageComponent, TablePageComponent, TitlePageComponent],
 })
 export class StarterkitModule {}
