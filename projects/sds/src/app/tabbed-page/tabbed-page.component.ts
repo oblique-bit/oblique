@@ -4,7 +4,7 @@ import {CdkScrollable} from '@angular/cdk/scrolling';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {getCodeExampleComponent} from '../code-examples/code-examples.mapper';
-import {type Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
+import {type Observable, concatWith, filter, first, map, partition, switchMap, tap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -18,6 +18,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {VersionService} from '../shared/version/version.service';
 import {UiUxComponent} from '../ui-ux/ui-ux.component';
+import {IconsExampleIconsGalleryPreviewComponent} from '../code-examples/code-examples/icons/previews/icons-gallery/icons-example-icons-gallery-preview.component';
 
 @Component({
 	selector: 'app-tabbed-page',
@@ -30,6 +31,7 @@ import {UiUxComponent} from '../ui-ux/ui-ux.component';
 		IdPipe,
 		SafeHtmlPipe,
 		MatChipsModule,
+		IconsExampleIconsGalleryPreviewComponent,
 	],
 	templateUrl: './tabbed-page.component.html',
 	styleUrl: './tabbed-page.component.scss',
@@ -37,6 +39,7 @@ import {UiUxComponent} from '../ui-ux/ui-ux.component';
 	hostDirectives: [CdkScrollable],
 })
 export class TabbedPageComponent {
+	showGalleryTab = false;
 	readonly componentId = 'tabbed-page';
 	readonly cmsData$: Observable<CmsData>;
 	private readonly activatedRoute = inject(ActivatedRoute);
@@ -47,6 +50,7 @@ export class TabbedPageComponent {
 	private isNull = true;
 	private readonly serializer = inject(UrlSerializer);
 	private readonly versionService = inject(VersionService);
+	private readonly galleryPageId = 43;
 
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
@@ -100,6 +104,7 @@ export class TabbedPageComponent {
 	private buildCmsDataObservable(validPageId$: Observable<number>): Observable<CmsData> {
 		return validPageId$.pipe(
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
+			tap(data => (this.showGalleryTab = data.data.id === this.galleryPageId)),
 			map(cmsData => this.buildCmsData(cmsData.data))
 		);
 	}
