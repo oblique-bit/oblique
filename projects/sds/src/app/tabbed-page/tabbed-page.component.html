@@ -22,6 +22,11 @@
 		<app-tab name="UI/UX" [hidden]="!!!cmsData.uiUx" [id]="componentId | id: ['ui-ux-tab']">
 			<app-ui-ux [uiUx]="cmsData.uiUx || {}" />
 		</app-tab>
+		@if (showGalleryTab) {
+			<app-tab name="Icon Gallery" [hidden]="false" [id]="componentId | id: ['icon-gallery-tab']">
+				<app-icons-example-icons-gallery-preview />
+			</app-tab>
+		}
 		<app-tab name="API" [hidden]="!!!cmsData.api" [id]="componentId | id: ['api-tab']">
 			<div [id]="componentId | id: ['html-container']" [innerHtml]="cmsData.api | safeHtml"></div>
 		</app-tab>

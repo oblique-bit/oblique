@@ -1,28 +1,31 @@
 <ob-notification />
-<div class="search-container">
-	<div class="search">
-		<mat-form-field>
-			<mat-label>Search icons</mat-label>
-			<input matInput [formControl]="iconsFilter" />
-			<button type="button" [obInputClear]="iconsFilter">
-				<mat-icon svgIcon="xmark_circle" />
-				<span class="ob-screen-reader-only">Clear search</span>
-			</button>
-			<mat-hint>Search by name or keyword (home, access, ...)</mat-hint>
-		</mat-form-field>
+<div class="header">
+	<h2>Icon Gallery</h2>
+	<div class="search-container">
+		<div class="search">
+			<mat-form-field>
+				<mat-label>Search icons</mat-label>
+				<input matInput [formControl]="iconsFilter" />
+				<button type="button" [obInputClear]="iconsFilter">
+					<mat-icon svgIcon="xmark_circle" />
+					<span class="ob-screen-reader-only">Clear search</span>
+				</button>
+				<mat-hint>Search by name or keyword (home, access, ...)</mat-hint>
+			</mat-form-field>
 
-		<mat-form-field>
-			<mat-label>Category</mat-label>
-			<mat-select panelClass="by-category-filter" value="'ALL'" [formControl]="byCategoryFilter">
-				<mat-option value="ALL">All icons</mat-option>
-				<mat-divider />
-				@for (item of obECategory | keyvalue; track item) {
-					<mat-option [value]="item.value">
-						{{ item.value }}
-					</mat-option>
-				}
-			</mat-select>
-		</mat-form-field>
+			<mat-form-field>
+				<mat-label>Category</mat-label>
+				<mat-select panelClass="by-category-filter" value="'ALL'" [formControl]="byCategoryFilter">
+					<mat-option value="ALL">All icons</mat-option>
+					<mat-divider />
+					@for (item of obECategory | keyvalue; track item) {
+						<mat-option [value]="item.value">
+							{{ item.value }}
+						</mat-option>
+					}
+				</mat-select>
+			</mat-form-field>
+		</div>
 	</div>
 </div>
 <h3 class="ob-screen-reader-only">Current icon collection</h3>
