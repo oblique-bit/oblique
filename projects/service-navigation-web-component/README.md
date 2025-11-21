@@ -1,26 +1,51 @@
 # Service Navigation Web Component
 
-This library simply distributes Oblique's Service Navigation component as a [Web Component](https://angular.dev/guide/elements).
-This is useful for non-Angular applications that still use ePortal.
+The Oblique Service Navigation Web Component provides a framework-agnostic implementation of
+Oblique’s Service Navigation based on [Angular Elements](https://angular.dev/guide/elements). It enables
+non-Angular applications to integrate seamlessly with [ePortal](https://eportal.admin.ch/) while adhering to the
+federal Web Guidelines. This component ensures a consistent and compliant navigation experience across projects,
+even in non-Angular environments.
 
-This package is the `@oblique/service-navigation-web-component` library distributed on NPM.
+See [README.md](../../README.md) for information about the other packages and projects in the Oblique ecosystem.
 
-See [README.md](../../README.md) for information about the other packages.
+## Documentation
 
-## Scripts
+The official Oblique Service Navigation Web Component documentation is located here:
+<https://oblique.bit.admin.ch/guidelines/service-navigation-web-component-14>
 
-The scripts in this project are only for internal usage.
+## Getting Started
 
-- **start**: starts the project on port 3003
-- **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
-- **format**: same as lint, but with autofix parameter
-- **test**: run all tests and collects coverage
-- **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
-- **build**: build the library; Automatically run on the CI pipeline
-- **release**: create a new release, i.e. bump version number and updates the changelog
+From the monorepo root, start the development server:
+
+```shell
+npm start -w @oblique/service-navigation-web-component
+```
+
+The application will be available at `http://localhost:3003`
+
+For the Service Navigation to actually connect to [ePortal](https://www.eportal.admin.ch), `pams-proxy-library` must be running before
+starting the Sandbox.
+This library is only available inside the federal network and is necessary for local development.
+
+## Content
+
+This package includes:
+
+- A Web Component that wraps the Service Navigation component from `@oblique/oblique`
+
+## Tips & Best Practices
+
+- Use the Service Navigation Web Component as a regular NPM dependency that is installed locally
+- Install the Service Navigation Web Component locally, do not use it directly from the web
+- If the application is build with Angular, consider using the standard Service Navigation component from `@oblique/oblique` instead
+
+## Contributing
+
+Contributions from federal teams and the open-source community are welcome.
+Please refer to our [contributing guidelines](../../CONTRIBUTING.md) while contributing to the Oblique ecosystem.
 
 ## License
 
-Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication FOITT.
+Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication (FOITT).
 
 Licensed under the [MIT](../../LICENSE) license.

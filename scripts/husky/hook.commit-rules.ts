@@ -216,14 +216,18 @@ class HookCommitRules {
 	}
 
 	private static extractList(contributing: string, type: string): string[] {
-		const regexp = new RegExp(`(?<=# <a name="${type.toLowerCase()}"><\\/a> ${type}.*)(?<block>- .*?^$)`, 'sm');
-		const result = regexp.exec(contributing);
-		return result
-			? result.groups.block
-					.split('\n')
-					.filter(line => !!line)
-					.map(line => /(?<=\*\*)(?<item>[a-z-]+)(?=\*\*)/.exec(line).groups.item)
-			: [];
+		return HookCommitRules.extractMarkdownTable(contributing, type)
+			.split('\n')
+			.filter(Boolean)
+			.map(line => /(?<=\*\*)[a-z-]+(?=\*\*)/.exec(line)?.[0] ?? '');
+	}
+
+	private static extractMarkdownTable(markdown: string, title: string): string {
+		const regexp = new RegExp(
+			`(?<=#+ <a name="${title.toLowerCase()}"><\\/a> ${title}.*?\\n\\|[-| ]+\\|\n).*?\n(?=\n|$)`,
+			's'
+		);
+		return regexp.exec(markdown)?.[0] ?? '';
 	}
 
 	private static hasTypeScopes(contributing: string, type: string): boolean {

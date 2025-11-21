@@ -1,11 +1,15 @@
-# Contributing to Oblique
+# Contributing to the Oblique monorepo
 
-Welcome, and thank you for your interest in contributing to Oblique.
-As a contributor, here are the guidelines we would like you to follow:
+Thank you for your interest in contributing to Oblique! We welcome contributions of all kinds, whether it’s
+fixing bugs, adding features, improving documentation, or helping with tests.
+
+To make the process smooth and enjoyable for everyone, we ask contributors to follow these guidelines:
 
 - [Code of Conduct](#coc)
 - [Providing Feedback & Asking Questions](#feedback)
 - [Submitting a Pull Request](#pr)
+  - [BitBucket](#pr_bitbucket)
+  - [GitHub](#pr_github)
 - [Commit Message Guidelines](#commit)
   - [General Rules](#general)
   - [Format](#format)
@@ -34,16 +38,38 @@ Issues are for bug reports and feature requests. For general support questions t
 
 ## <a name="pr"></a> Submitting a Pull Request (PR)
 
-You are welcomed to submit Pull Requests following the following guidelines:
+We welcome Pull Requests that follow these guidelines:
 
-- We have strict linting rules in place, don't try to circumvent them
-- Write unit tests for your code, and make sure not to lower the test coverage
-- Document all public API methods and properties
+- Respect the linting rules; do not bypass them
+- Write unit tests for your changes and ensure test coverage does not decrease
+- Document all public API methods and properties with JsDoc
 - Follow our [Commit Message Guidelines](#commit)
-- Make sure to have a clean history, use [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode) when necessary
-- Target the `master` branch. We will make sure to redirect your PR to the next release branch
+- Maintain a clean history by using [interactive rebase](https://git-scm.com/docs/git-rebase#_interactive_mode)
 
-The Oblique team reserves the right not to accept PRs from the community.
+The Oblique team reserves the right to review and decide on all PRs submitted by the community.
+
+### <a name="pr_bitbucket"></a> BitBucket
+
+BitBucket is the primary repository for the Oblique monorepo. If you have access, prefer opening PRs there.
+
+PRs should target one of the release branches according to the type of changes:
+
+- `release/major_X.0.0` - for breaking changes
+- `release/minor_X.Y.0` - for new features
+- `release/patch_X.Y.Z` - for other changes
+
+### <a name="pr_github"></a> GitHub
+
+The `master` branch on GitHub is a public mirror of the `master` branch on BitBucket. To avoid branch pollution,
+conflicts and confusion, only the `master` branch is available on GitHub, development and release branches exist
+only on BitBucket.
+
+If you do not have BitBucket access, you may open a PR against `master` on GitHub. The Oblique team will then:
+
+- Temporarily push the corresponding release branch to GitHub
+- Redirect the PR to that release branch
+- Merge the PR once approved
+- Remove the temporary release branch from GitHub
 
 ## <a name="commit"></a> Commit Message Guidelines
 
@@ -60,10 +86,12 @@ project history which provides 3 main advantages:
 
 A good commit message:
 
-- uses 1 and only one [Package](#package), if multiples packages are concerned, split the commit.
-- uses 1 and only one [Scope](#scope), if a commit spans multiple scopes, split it into several commits. **Exception**: changes that spans most of the library can be grouped together, in which case the scope should be omitted
-- concerns 1 and only one change, a change includes its tests, documentation and schematics
-- keep all lines below 101 characters
+- Uses 1 and only one [Package](#package), if multiples packages are concerned, split the commit
+- Uses 1 and only one [Scope](#scope), if a commit spans multiple scopes, split it into several commits. **Exception**: changes that spans most of the library, such as formatting, can be grouped together, in which case the scope should be omitted
+- Concerns 1 and only one change, a change includes its tests, documentation and schematics
+- Keep all lines below 101 characters
+
+With the help of Huksy, all commits will be validated against these guidelines.
 
 ### <a name="format"></a> Format
 
@@ -91,32 +119,41 @@ The header is mandatory and follows the following structure:
 <type>(<package>/<scope>): <subject>
 ```
 
+For example:
+
+> feat(oblique/alert): add `fatal` type
+
 ##### <a name="type"></a> Type
 
-The type is mandatory and must be one of the following:
+The type is required and must be one of the following:
 
-- **build**: Changes that affect the build system or external dependencies
-- **ci**: Changes that affect the CI/CD configuration files
-- **docs**: Changes that affect only the documentation
-- **feat**: Changes that creates, improves or removes a feature
-- **fix**: Changes that fixes a bug
-- **refactor**: Changes to a feature that neither adds, removes nor fixes a behavior
-- **test**: Changes that affect tests or their configuration only
+| Type         | Description                                                          |
+| ------------ | -------------------------------------------------------------------- |
+| **build**    | Changes that affect the build system or external dependencies        |
+| **ci**       | Changes that affect the CI/CD configuration files                    |
+| **docs**     | Changes that affect only the documentation                           |
+| **feat**     | Changes that creates, improves or removes a feature                  |
+| **fix**      | Changes that fixes a bug                                             |
+| **refactor** | Changes to a feature that neither adds, removes nor fixes a behavior |
+| **test**     | Changes that affect tests or their configuration only                |
 
 ##### <a name="package"></a> Package
 
 The package is required and must be one of the following:
 
-- **cli**: Changes in the CLI library
-- **design-system**: Changes in the Design System library
-- **oblique**: Changes in the Oblique library, including the changes to the service-navigation component
-- **sandbox**: Changes in the Sandbox project
-- **sandbox-ssr**: Changes in the Sandbox-SSR project
-- **sds**: Changes in the Swiss Design System project
-- **service-navigation**: Changes in the Service Navigation Web Component project
-- **toolchain**: Changes in the Toolchain project
+| Package                | Description                                                                               |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| **cli**                | Changes in the CLI library                                                                |
+| **design-system**      | Changes in the Design System library                                                      |
+| **oblique**            | Changes in the Oblique library, including the changes to the service-navigation component |
+| **sandbox**            | Changes in the Sandbox project                                                            |
+| **sandbox-ssr**        | Changes in the Sandbox-SSR project                                                        |
+| **sds**                | Changes in the Swiss Design System project                                                |
+| **service-navigation** | Changes in the Service Navigation Web Component project                                   |
+| **toolchain**          | Changes in the Toolchain project                                                          |
 
-Changes outside any package may omit the package name. This is the case for changes in the root folder of the repository.
+Changes outside any package may omit the package name. This is the case for changes in the root folder of the
+repository or changes that affect the whole codebase, such as code format.
 If the package is omitted, then the scope is mandatory and the separating slash (`/`) is also omitted.
 
 ##### <a name="scope"></a> Scope
@@ -128,33 +165,39 @@ If no scope fits the change then it can be omitted and the separating slash (`/`
 
 The `build` type has a mandatory scope that must be one of the following:
 
-- **changelog**: Changes to anything related to the changelog
-- **contributing**: Changes to anything related to the contributing guideline
-- **dependencies**: Changes related to dependencies that are not applicable to another scope
-- **lint**: Changes to anything related to linting and formatting
-- **release**: New releases or changes to anything related to releases
-- **scripts**: Changes to the node scripts that are not applicable to another scope
+| Scope            | Description                                                              |
+| ---------------- | ------------------------------------------------------------------------ |
+| **cli**          | Changes in the CLI library                                               |
+| **changelog**    | Changes to anything related to the changelog                             |
+| **contributing** | Changes to anything related to the contributing guideline                |
+| **dependencies** | Changes related to dependencies that are not applicable to another scope |
+| **lint**         | Changes to anything related to linting and formatting                    |
+| **readme**       | Changes related to the readme                                            |
+| **release**      | New releases or changes to anything related to releases                  |
+| **scripts**      | Changes to the node scripts that are not applicable to another scope     |
 
 ###### <a name="ci"></a> ci
 
 The `ci` type, which stands for Continuous Integration, has a mandatory scope that must be one of the following:
 
-- **rhos**: Changes to the Red Hat Open Shift configuration files
-- **jenkins**: Changes to the Jenkins configuration files
-- **github**: for changes to the GitHub configuration files
+| Scope       | Description                                           |
+| ----------- | ----------------------------------------------------- |
+| **rhos**    | Changes to the Red Hat Open Shift configuration files |
+| **jenkins** | Changes to the Jenkins configuration files            |
+| **github**  | for changes to the GitHub configuration files         |
 
 ###### <a name="others"></a> others
 
 The `docs`, `feat`, `fix`, `test`, and `refactor` types must use scopes according to the project involved:
 
-- [CLI](projects/cli/CONTRIBUTING.md)
-- [Design System](projects/design-system/CONTRIBUTING.md)
-- [Oblique](projects/oblique/CONTRIBUTING.md)
-- [Sandbox](projects/sandbox/CONTRIBUTING.md)
-- [Sandbox-SSR](projects/sandbox-ssr/CONTRIBUTING.md)
-- [SDS](projects/sds/CONTRIBUTING.md)
-- [Service Navigation](projects/service-navigation-web-component/CONTRIBUTING.md)
-- [Toolchain](projects/toolchain/CONTRIBUTING.md)
+- [CLI](projects/cli/CONTRIBUTING.md#scope)
+- [Design System](projects/design-system/CONTRIBUTING.md#scope)
+- [Oblique](projects/oblique/CONTRIBUTING.md#scope)
+- [Sandbox](projects/sandbox/CONTRIBUTING.md#scope)
+- [Sandbox-SSR](projects/sandbox-ssr/CONTRIBUTING.md#scope)
+- [SDS](projects/sds/CONTRIBUTING.md#scope)
+- [Service Navigation](projects/service-navigation-web-component/CONTRIBUTING.md#scope)
+- [Toolchain](projects/toolchain/CONTRIBUTING.md#scope)
 
 ##### <a name="subject"></a> Subject
 
@@ -168,7 +211,8 @@ The subject is mandatory and contains a **succinct** description of the change:
 
 #### <a name="body"></a> Body
 
-The body is optional and just as in the subject, use the imperative, present tense, e.g.: "change" not "changed" nor "changes".
+The body is optional and similarly to the subject, use the imperative, present tense, e.g.: "change" not "changed"
+nor "changes". Multiple paragraphs and bullet points are allowed.
 
 Explain the motivation for the change, explain _why_ you are making the change.
 You can include a comparison of the previous behavior with the new one in order to illustrate the impact of the change.
