@@ -43,12 +43,12 @@ export class ObRouterService {
 					url.length && this.isLangSupported(url[0].path) ? {consumed: [url[0]], posParams: {lang: url[0]}} : null,
 				children: this.router.config,
 			},
-			{path: '', redirectTo: () => ['', this.translate.defaultLang].join('/')},
+			{path: '', redirectTo: () => ['', this.translate.getFallbackLang()].join('/')},
 		];
 	}
 
 	private isLangSupported(lang: string): boolean {
-		return this.translate.langs.includes(lang);
+		return this.translate.getLangs().includes(lang);
 	}
 
 	private updateRouteOnLanguageChange(): void {
@@ -62,7 +62,7 @@ export class ObRouterService {
 	private updateLanguageOnRouteChange(): void {
 		this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(({url}) => {
 			const lang = url.split('/')[1];
-			if (this.isLangSupported(lang) && this.translate.currentLang !== lang) {
+			if (this.isLangSupported(lang) && this.translate.getCurrentLang() !== lang) {
 				this.translate.use(lang);
 			}
 		});

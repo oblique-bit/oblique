@@ -1,5 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {
+	ClassProvider,
 	DOCUMENT,
 	EnvironmentProviders,
 	InjectionToken,
@@ -8,7 +9,14 @@ import {
 	provideAppInitializer,
 } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
+import {
+	MissingTranslationHandler,
+	TranslateCompiler,
+	TranslateLoader,
+	TranslateModuleConfig,
+	TranslateParser,
+	provideTranslateService,
+} from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
@@ -119,7 +127,7 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 				useFactory: getTranslateLoader,
 				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION],
 			},
-			...config,
+			...addProviders(config),
 		}),
 		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}},
 	]);
@@ -138,6 +146,23 @@ function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal
 		],
 		flatten
 	);
+}
+
+function addProviders(config: TranslateModuleConfig = {}): TranslateModuleConfig {
+	const providers = {
+		compiler: TranslateCompiler,
+		loader: TranslateLoader,
+		parser: TranslateParser,
+		missingTranslationHandler: MissingTranslationHandler,
+	} as const;
+	const configWithProviders = {};
+	Object.keys(config).forEach(option => {
+		configWithProviders[option] =
+			providers[option] && config[option] instanceof Function
+				? ({provide: providers[option], useClass: config[option]} as ClassProvider)
+				: config[option];
+	});
+	return configWithProviders;
 }
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once

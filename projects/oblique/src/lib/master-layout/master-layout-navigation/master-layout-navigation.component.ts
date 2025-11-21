@@ -244,7 +244,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 
 	private isLinkActive(link: ObNavigationLink): boolean {
 		if (this.hasLanguageInUrl) {
-			const language = this.translate.currentLang;
+			const language = this.translate.getCurrentLang();
 			const urlWithLanguage = `/${language}/${link.url}`;
 			return this.router.isActive(urlWithLanguage, link.routerLinkActiveOptions || this.routerLinkActiveOptions);
 		}

@@ -14,7 +14,7 @@ export class ObLocalizePipe implements PipeTransform {
 	private readonly currentLang = toSignal(
 		this.translate.onLangChange.pipe(
 			map(evt => evt.lang),
-			startWith(this.translate.currentLang)
+			startWith(this.translate.getCurrentLang())
 		)
 	);
 

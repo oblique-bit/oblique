@@ -9,9 +9,9 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {
 	TranslateCompiler,
-	TranslateFakeCompiler,
-	TranslateFakeLoader,
 	TranslateLoader,
+	TranslateNoOpCompiler,
+	TranslateNoOpLoader,
 	TranslateService,
 } from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
@@ -31,7 +31,14 @@ import {
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
-import {Observable, firstValueFrom} from 'rxjs';
+import {Observable, firstValueFrom, of} from 'rxjs';
+const translations: any = {};
+class FakeLoader implements TranslateLoader {
+	// eslint-disable-next-line @typescript-eslint/naming-convention,@typescript-eslint/no-unused-vars
+	getTranslation(_lang: string): Observable<any> {
+		return of(translations);
+	}
+}
 
 describe('utilities', () => {
 	describe('windowProvider', () => {
@@ -131,7 +138,7 @@ describe('utilities', () => {
 				TestBed.configureTestingModule({
 					providers: [
 						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						{provide: TranslateLoader, useClass: FakeLoader},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement: {
@@ -154,7 +161,7 @@ describe('utilities', () => {
 							},
 							translate: {
 								flatten: false,
-								config: {compiler: TranslateFakeCompiler},
+								config: {compiler: TranslateNoOpCompiler},
 								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
 							},
 							hasLanguageInUrl: true,
@@ -181,8 +188,8 @@ describe('utilities', () => {
 					});
 				});
 
-				it('should use "TranslateFakeCompiler" as "TranslateCompiler"', () => {
-					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+				it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
+					expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
 				});
 			});
 
@@ -318,7 +325,7 @@ describe('utilities', () => {
 				TestBed.configureTestingModule({
 					providers: [
 						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						{provide: TranslateCompiler, useClass: TranslateNoOpCompiler},
 						provideHttpClient(),
 						provideObliqueTestingConfiguration({
 							accessibilityStatement: {
@@ -341,7 +348,7 @@ describe('utilities', () => {
 							},
 							translate: {
 								flatten: false,
-								config: {compiler: TranslateFakeCompiler},
+								config: {compiler: TranslateNoOpCompiler},
 								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
 							},
 							hasLanguageInUrl: true,
@@ -368,8 +375,8 @@ describe('utilities', () => {
 					});
 				});
 
-				it('should use "TranslateFakeCompiler" as "TranslateCompiler"', () => {
-					expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+				it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
+					expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
 				});
 			});
 
@@ -483,8 +490,8 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should use "TranslateFakeCompiler" as "TranslateCompiler"', () => {
-				expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+			it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
+				expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
 			});
 
 			describe('loader', () => {
@@ -523,11 +530,11 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: TranslateCompiler, useClass: TranslateFakeCompiler},
+						{provide: TranslateCompiler, useClass: TranslateNoOpCompiler},
 						provideHttpClient(),
 						provideObliqueTranslations({
 							flatten: false,
-							config: {loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}},
+							config: {loader: {provide: TranslateLoader, useClass: TranslateNoOpLoader}},
 						}),
 					],
 				});
@@ -539,13 +546,13 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should use "TranslateFakeCompiler" as "TranslateLoader"', () => {
-				expect(TestBed.inject(TranslateService).compiler instanceof TranslateFakeCompiler).toBe(true);
+			it('should use "TranslateNoOpCompiler " as "TranslateLoader"', () => {
+				expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
 			});
 
 			describe('loader', () => {
-				it('should be an instance of "TranslateFakeLoader"', () => {
-					expect(TestBed.inject(TranslateLoader) instanceof TranslateFakeLoader).toBe(true);
+				it('should be an instance of "TranslateNoOpLoader "', () => {
+					expect(TestBed.inject(TranslateLoader) instanceof TranslateNoOpLoader).toBe(true);
 				});
 			});
 
