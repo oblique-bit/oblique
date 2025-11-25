@@ -37,6 +37,10 @@ program.addCommand(obUpdateCommandConfigured);
 const {commandName} = parseCommandArguments();
 const availableCommands = program.commands.map(cmd => cmd.name());
 
+if (!commandName) {
+	program.help();
+}
+
 if (!commandName.startsWith('-') && !availableCommands.includes(commandName)) {
 	console.error(`Unknown command: "${commandName}"`);
 	console.error('\nTo see a list of supported oblique cli commands, run:\n  ob --help');
