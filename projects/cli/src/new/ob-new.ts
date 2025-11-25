@@ -55,6 +55,7 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 		}
 		const workingDirectory: string = getApplicationDirectory(options.projectName);
 		runAddMaterial(workingDirectory);
+		runAddAdditionalDependencies(workingDirectory);
 		runAddOblique(cmdOptions, options.projectName, workingDirectory);
 		cleanupDependencies(workingDirectory);
 		formatCode(workingDirectory);
@@ -79,6 +80,11 @@ function runNgNewAngularWorkspace(projectName: string, interactive: boolean, pre
 function runAddMaterial(dir: string): void {
 	console.info(`[Info]: Adds Angular Material`);
 	execute({name: 'npmInstall', dependencies: ['@angular/material', '@angular/cdk', '@angular/animations'], execSyncOptions: {cwd: dir}});
+}
+
+function runAddAdditionalDependencies(dir: string): void {
+	console.info(`[Info]: Adds additional Dependencies`);
+	execute({name: 'npmInstall', dependencies: ['@angular/platform-browser-dynamic'], execSyncOptions: {cwd: dir}});
 }
 
 function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string, workingDirectory: string): void {

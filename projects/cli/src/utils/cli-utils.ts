@@ -14,6 +14,7 @@ export const currentVersions = {
 	'@angular/core': '20',
 	'@angular/cdk': '20',
 	'@angular/animations': '20',
+	'@angular/platform-browser-dynamic': '20',
 	'@types/jest': '29',
 	'@angular-builders/jest': '20',
 	'@schematics/angular': '20',
