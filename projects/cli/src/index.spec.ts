@@ -70,6 +70,13 @@ describe('index.ts', () => {
 				expect(result.stderr).toBe('Unknown command: "nwe"\n\nTo see a list of supported oblique cli commands, run:\n  ob --help\n');
 			});
 		});
+
+		describe('execute the cli without a command', () => {
+			test('displays the help text', () => {
+				const result = spawnSync('ts-node', [cliPath], options);
+				expect(cleanOutput(result.stdout.toString())).toContain(`HOW TO USE THE OBLIQUE CLI`);
+			});
+		});
 	});
 
 	function cleanOutput(output: Buffer | string): string {
