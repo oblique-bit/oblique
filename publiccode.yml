@@ -1,8 +1,8 @@
-publiccodeYmlVersion: 0.4.0
+publiccodeYmlVersion: 0.5.0
 name: Oblique
 applicationSuite: Oblique
 url: https://github.com/oblique-bit/oblique.git
-landingUrl: https://github.com/oblique-bit/oblique
+landingURL: https://github.com/oblique-bit/oblique
 softwareVersion: 14.1.0
 releaseDate: 2025-11-03
 logo: https://avatars.githubusercontent.com/u/58680335?s=400&u=3dd6b0ffa4ac1661e85c452456734a2b08f9eb38&v=4
@@ -10,6 +10,9 @@ platforms:
   - web
 categories:
   - application-development
+fundedBy:
+  - name: FOITT
+    uri: https://www.bit.admin.ch/en
 usedBy:
   - Central Compensation Office (CCO)
   - Federal Chancellery (FCh)
@@ -29,6 +32,9 @@ usedBy:
   - Swiss National Library (NL)
 developmentStatus: stable
 softwareType: library
+organisation:
+  uri: https://ld.admin.ch/office/V.1.7
+  name: Federal Office of Information Technology, Systems and Telecommunication
 description:
   en:
     localisedName: Oblique
@@ -44,7 +50,7 @@ description:
       It is a monorepo containing the following packages and applications:
 
       | Project                          | Description                                           |
-      |----------------------------------| ------------------------------------------------------|
+      |----------------------------------|-------------------------------------------------------|
       | CLI                              | Command-line interface for managing frontend projects |
       | Design System                    | Core visual and interaction design foundations        |
       | Oblique                          | The historical all-in-one Angular library             |
