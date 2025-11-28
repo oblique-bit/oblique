@@ -8,7 +8,11 @@
 				[formControl]="formControl"
 				[optionIconPosition]="optionIconPosition"
 				(selectedOptionChange)="showSelection($event)"
-			/>
+			>
+				<mat-hint>Start mat-hint content</mat-hint>
+				<mat-hint align="end">End mat-hint content</mat-hint>
+				This is not projected
+			</ob-autocomplete>
 			<label>ReactiveForms</label>
 			<code>
 				<pre>
@@ -23,7 +27,11 @@
 				[optionIconPosition]="optionIconPosition"
 				[(ngModel)]="searchText"
 				(selectedOptionChange)="showSelection($event)"
-			/>
+			>
+				<mat-hint>Start mat-hint content</mat-hint>
+				<mat-hint align="end">End mat-hint content</mat-hint>
+				This is not projected
+			</ob-autocomplete>
 			<label>ngModel snippet:</label>
 			<code>
 				<pre>
