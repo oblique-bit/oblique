@@ -11,6 +11,7 @@ import {ObColumnPanelDirective} from './column-panel.directive';
 export {ObColumnLayoutComponent} from './column-layout.component';
 export {ObColumnPanelDirective} from './column-panel.directive';
 export {ObColumnToggleDirective} from './column-toggle.directive';
+export {ObTColumnState} from './column-layout.model';
 
 @NgModule({
 	declarations: [ObColumnLayoutComponent, ObColumnPanelDirective, ObColumnToggleDirective],
