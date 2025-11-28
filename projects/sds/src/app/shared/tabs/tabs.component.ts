@@ -18,7 +18,7 @@ export class TabsComponent implements OnChanges {
 
 	ngOnChanges(): void {
 		setTimeout(() => {
-			this.selectTabWithName(this.selectedTab());
+			this.activateTab(this.selectedTab());
 		});
 	}
 
@@ -29,9 +29,17 @@ export class TabsComponent implements OnChanges {
 		this.tabChanged.emit(selectedTab.name());
 	}
 
-	private selectTabWithName(tabName: string): void {
-		const foundTab: TabComponent = this.tabs().find(tab => tab.name() === tabName && !tab.hidden());
+	private activateTab(tabName: string): void {
+		const foundTab = this.getActiveTab() || this.getTabWithName(tabName);
 		this.selectTab(foundTab ?? this.getDefaultTab());
+	}
+
+	private getActiveTab(): TabComponent {
+		return this.tabs().find(tab => !tab.hidden() && tab.active === true);
+	}
+
+	private getTabWithName(tabName: string): TabComponent {
+		return this.tabs().find(tab => !tab.hidden() && tab.name() === tabName);
 	}
 
 	private getDefaultTab(): TabComponent {
