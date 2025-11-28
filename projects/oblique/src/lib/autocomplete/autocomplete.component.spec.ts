@@ -138,6 +138,27 @@ describe(ObAutocompleteComponent.name, () => {
 		});
 	});
 
+	describe('Content projection', () => {
+		beforeEach(() => {
+			parentFixture = TestBed.overrideComponent(TestParentComponent, {
+				set: {
+					template: `<form [formGroup]="parentFormControl"><ob-autocomplete formControlName="model"><mat-hint>hello</mat-hint></ob-autocomplete></form>`,
+				},
+			}).createComponent(TestParentComponent);
+			parentComponent = parentFixture.componentInstance;
+			loader = TestbedHarnessEnvironment.loader(parentFixture);
+			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+			parentFixture.detectChanges();
+		});
+
+		it('should project the mat-hint', async () => {
+			const formField = await loader.getHarness(MatFormFieldHarness);
+			const hints = await formField.getTextHints();
+
+			expect(hints).toContain('hello');
+		});
+	});
+
 	describe('Form Wrapped', () => {
 		beforeEach(() => {
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
