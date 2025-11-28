@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, contentChildren, input, output} from '@angular/core';
+import {Component, type OnChanges, contentChildren, input, output} from '@angular/core';
 import {TabComponent} from './tab/tab.component';
 import {IdPipe} from '../id/id.pipe';
 
@@ -8,7 +8,7 @@ import {IdPipe} from '../id/id.pipe';
 	templateUrl: './tabs.component.html',
 	styleUrl: './tabs.component.scss'
 })
-export class TabsComponent implements AfterViewInit {
+export class TabsComponent implements OnChanges {
 	readonly idPrefix = input('');
 	readonly selectedTab = input('');
 	readonly tabs = contentChildren(TabComponent);
@@ -16,7 +16,7 @@ export class TabsComponent implements AfterViewInit {
 
 	readonly componentId = 'tabs';
 
-	ngAfterViewInit(): void {
+	ngOnChanges(): void {
 		setTimeout(() => {
 			this.selectTabWithName(this.selectedTab());
 		});
