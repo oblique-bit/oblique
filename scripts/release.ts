@@ -55,8 +55,8 @@ class Release extends StaticScript {
 			const today = new Date().toISOString().split('T')[0];
 			Files.overwrite('publiccode.yml', content =>
 				content
-					.replace(/(?=softwareVersion:\s)\d+\.\d+\.\d+/u, version)
-					.replace(/(?=releaseDate:\s)\d{4}-\d{2}-\d{2}/, today)
+					.replace(/(?<=softwareVersion:\s)\d+\.\d+\.\d+/u, version)
+					.replace(/(?<=releaseDate:\s)\d{4}-\d{2}-\d{2}/, today)
 			);
 		}
 	}
