@@ -53,6 +53,7 @@ export class AutocompleteSampleComponent implements OnInit {
 	visibleOptionList: ObIAutocompleteInputOption[] | ObIAutocompleteInputOptionGroup[];
 	isFromControl = true;
 	formControl = new FormControl('');
+	formControlDisplayWith = new FormControl('');
 
 	reactiveFormSnippet = `
 // *.component.html
@@ -155,5 +156,9 @@ formControl = new FormControl('');
 		} else {
 			this.formControl.enable();
 		}
+	}
+
+	displayFn(option: string): string {
+		return option ? `'*~-., ${option} ,.-~*'` : '';
 	}
 }

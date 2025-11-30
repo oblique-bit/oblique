@@ -13,6 +13,16 @@
 				<mat-hint align="end">End mat-hint content</mat-hint>
 				This is not projected
 			</ob-autocomplete>
+			<ob-autocomplete
+				filterRegexFlag="gi"
+				[autocompleteOptions]="visibleOptionList"
+				[formControl]="formControlDisplayWith"
+				[displayWith]="displayFn"
+				[optionIconPosition]="optionIconPosition"
+				(selectedOptionChange)="showSelection($event)"
+			>
+				<mat-hint>With a custom displayWith function</mat-hint>
+			</ob-autocomplete>
 			<label>ReactiveForms</label>
 			<code>
 				<pre>
@@ -31,6 +41,16 @@
 				<mat-hint>Start mat-hint content</mat-hint>
 				<mat-hint align="end">End mat-hint content</mat-hint>
 				This is not projected
+			</ob-autocomplete>
+			<ob-autocomplete
+				filterRegexFlag="gi"
+				[autocompleteOptions]="visibleOptionList"
+				[optionIconPosition]="optionIconPosition"
+				[displayWith]="displayFn"
+				[(ngModel)]="searchText"
+				(selectedOptionChange)="showSelection($event)"
+			>
+				<mat-hint>With a custom displayWith function</mat-hint>
 			</ob-autocomplete>
 			<label>ngModel snippet:</label>
 			<code>
