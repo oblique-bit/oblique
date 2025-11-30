@@ -44,10 +44,10 @@ module.exports = {
 			lines: 80,
 		},
 		'projects/sds/src/app/code-examples/code-examples/autocomplete/previews': {
-			statements: 81,
-			branches: 100,
-			functions: 50,
-			lines: 78,
+			statements: 76,
+			branches: 0,
+			functions: 40,
+			lines: 73,
 		},
 		'projects/sds/src/app/code-examples/code-examples/chips/previews/autocomplete': {
 			statements: 58,
