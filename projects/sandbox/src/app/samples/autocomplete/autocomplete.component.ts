@@ -21,7 +21,7 @@ export class AutocompleteSampleComponent implements OnInit {
 	listType: 'group' | 'onlyOptions' | 'empty' = 'onlyOptions';
 	icons = [
 		'address-book',
-		'universal-access',
+		'accessibility',
 		'antique-building',
 		'link_disconnect',
 		'lock_open',
@@ -30,7 +30,7 @@ export class AutocompleteSampleComponent implements OnInit {
 		'person_brush',
 		'person_checkmark',
 		'person_code',
-		'person_cog',
+		'person_settings',
 		'exclamation_triangle',
 		'weight',
 		'wheelchair',
