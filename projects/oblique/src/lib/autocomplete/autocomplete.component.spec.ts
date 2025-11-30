@@ -37,7 +37,7 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 })
 class TestParentComponent {
 	model = new FormControl('');
-	autocompleteOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [
+	autocompleteOptions: (ObIAutocompleteInputOption<unknown> | ObIAutocompleteInputOptionGroup<unknown>)[] = [
 		{label: 'c 5', disabled: false},
 	];
 	inputType = 'text';
@@ -47,10 +47,13 @@ class TestParentComponent {
 	searchText = '';
 	isDisabled = false;
 	parentFormControl = new FormGroup({model: this.model});
+	displayWith(option: {name: string}): string {
+		return option.name;
+	}
 }
 
 describe(ObAutocompleteComponent.name, () => {
-	let fixture: ComponentFixture<ObAutocompleteComponent>;
+	let fixture: ComponentFixture<ObAutocompleteComponent<any>>;
 	let component: ObAutocompleteComponent;
 	let parentFixture: ComponentFixture<TestParentComponent>;
 	let parentComponent: TestParentComponent;
@@ -82,7 +85,7 @@ describe(ObAutocompleteComponent.name, () => {
 
 	describe('Only ObAutocompleteComponent', () => {
 		beforeEach(() => {
-			fixture = TestBed.createComponent(ObAutocompleteComponent);
+			fixture = TestBed.createComponent<ObAutocompleteComponent>(ObAutocompleteComponent);
 			component = fixture.componentInstance;
 			valueAccessor = fixture.debugElement.injector.get(NG_VALUE_ACCESSOR);
 		});
@@ -443,6 +446,34 @@ describe(ObAutocompleteComponent.name, () => {
 				const group = await obAutocompleteHarness.openPanelAndGetAllOptionGroups();
 				expect(await group[1].getAttribute('aria-disabled')).toBe('true');
 			});
+		});
+	});
+
+	describe('displayWith', () => {
+		beforeEach(async () => {
+			parentFixture = TestBed.overrideComponent(TestParentComponent, {
+				set: {
+					template: `<form [formGroup]="parentFormControl">
+									<ob-autocomplete formControlName="model" [autocompleteOptions]="autocompleteOptions" [displayWith]="displayWith"></ob-autocomplete>
+									</form>`,
+				},
+			}).createComponent(TestParentComponent);
+			parentComponent = parentFixture.componentInstance;
+			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+			loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
+			obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
+			parentFixture.detectChanges();
+		});
+
+		it('modifies the display of the selected option using the displayWith method', async () => {
+			parentComponent.autocompleteOptions = [{label: {name: 'hello'}}];
+			obAutocompleteHarness = await loader.getHarnessOrNull(ObAutocompleteHarness);
+			const options = await obAutocompleteHarness.openPanelAndGetAllOptions();
+			await options[0].click();
+			parentFixture.detectChanges();
+
+			const input = parentFixture.nativeElement.querySelector('input');
+			expect(input.value).toBe('hello');
 		});
 	});
 

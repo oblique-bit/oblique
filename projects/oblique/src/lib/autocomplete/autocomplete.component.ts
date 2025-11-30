@@ -12,6 +12,7 @@ import {
 	computed,
 	contentChildren,
 	inject,
+	input,
 } from '@angular/core';
 import {ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -20,7 +21,7 @@ import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {TranslateModule} from '@ngx-translate/core';
-import {Observable, Subject, debounceTime} from 'rxjs';
+import {Observable, Subject, debounceTime, shareReplay} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
 import {
 	ObIAutocompleteInputOption,
@@ -63,20 +64,25 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-autocomplete'},
 })
-export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor, OnDestroy {
+export class ObAutocompleteComponent<T = string> implements OnChanges, ControlValueAccessor, OnDestroy {
 	@Input() inputLabelKey = 'i18n.oblique.search.title';
 	@Input() noResultKey = 'i18n.oblique.search.no-results';
-	@Input() autocompleteOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [];
-
+	@Input() autocompleteOptions: (ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[] = [];
 	@Input() filterRegexFlag = 'gi';
 	@Input() highlightCssClass = 'ob-highlight-text';
 	@Input() optionIconPosition: OptionLabelIconPosition = 'end';
+	displayWith = input<(value: any) => string>(value => value);
 
-	@Output() readonly selectedOptionChange: EventEmitter<ObIAutocompleteInputOption> =
-		new EventEmitter<ObIAutocompleteInputOption>();
-	autocompleteInputControl = new FormControl('', {updateOn: 'change'});
-	filteredOptions$: Observable<(ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[]>;
+	@Output() readonly selectedOptionChange: EventEmitter<ObIAutocompleteInputOption<T>> = new EventEmitter<
+		ObIAutocompleteInputOption<T>
+	>();
+	autocompleteInputControl = new FormControl<T | string>('', {updateOn: 'change'});
+	filteredOptions$: Observable<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>;
 	hasGroupOptions = false;
+	readonly searchText$ = this.autocompleteInputControl.valueChanges.pipe(
+		map(value => this.getStringValue(value)),
+		shareReplay()
+	);
 	onModelTouched: () => void;
 	readonly hints: Signal<{align: 'start' | 'end'; template: string}[]>;
 	private readonly matHints = contentChildren(MatHint);
@@ -120,7 +126,7 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	/**
 	 * Write a new value to the element.
 	 */
-	writeValue(value: string): void {
+	writeValue(value: T): void {
 		this.autocompleteInputControl.setValue(value);
 		// when the value is reset, the options should also be reset
 		if (value === null || value === undefined) {
@@ -148,11 +154,16 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 			.subscribe(() => this.autocompleteInputControl.markAllAsTouched());
 	}
 
+	private getStringValue(value: T | string): string {
+		return typeof value === 'string' ? value : this.displayWith()(value);
+	}
+
 	private setupOptionsFilter(): void {
 		this.filteredOptions$ = this.autocompleteInputControl.valueChanges.pipe(
 			takeUntil(this.unsubscribeOptions),
 			startWith(''),
 			debounceTime(200),
+			map(searchValue => this.getStringValue(searchValue)),
 			map((searchValue: string) => {
 				if (this.autocompleteOptions.length > 0) {
 					const toFilter = JSON.parse(JSON.stringify(this.autocompleteOptions));
@@ -165,35 +176,35 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 
 	private filterAutocomplete(
 		filterValue: string,
-		optionsToFilter: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[]
-	): (ObIAutocompleteInputOptionGroup | ObIAutocompleteInputOption)[] {
+		optionsToFilter: (ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]
+	): (ObIAutocompleteInputOptionGroup<T> | ObIAutocompleteInputOption<T>)[] {
 		this.hasGroupOptions = this.isGroupOption(optionsToFilter[0]);
 		const searchText = filterValue.toLowerCase();
 		if (this.autocompleteInputControl.value === '') {
 			return this.autocompleteOptions;
 		}
 		return this.hasGroupOptions
-			? this.filterGroups(optionsToFilter as ObIAutocompleteInputOptionGroup[], searchText)
-			: this.filterOptions(optionsToFilter as ObIAutocompleteInputOption[], searchText);
+			? this.filterGroups(optionsToFilter as ObIAutocompleteInputOptionGroup<T>[], searchText)
+			: this.filterOptions(optionsToFilter as ObIAutocompleteInputOption<T>[], searchText);
 	}
 
 	private filterGroups(
-		groups: ObIAutocompleteInputOptionGroup[],
+		groups: ObIAutocompleteInputOptionGroup<T>[],
 		searchText: string
-	): ObIAutocompleteInputOptionGroup[] {
+	): ObIAutocompleteInputOptionGroup<T>[] {
 		return groups
 			.map(group => ({...group, groupOptions: this.filterOptions(group.groupOptions, searchText)}))
 			.filter(group => group.groupOptions.length > 0);
 	}
 
-	private filterOptions(options: ObIAutocompleteInputOption[], searchText: string): ObIAutocompleteInputOption[] {
+	private filterOptions(options: ObIAutocompleteInputOption<T>[], searchText: string): ObIAutocompleteInputOption<T>[] {
 		const escapedSearchText = this.obAutocompleteTextToFindService.escapeRegexCharacter(searchText);
-		return options.filter((option: ObIAutocompleteInputOption) =>
-			new RegExp(escapedSearchText, this.filterRegexFlag).test(option.label)
+		return options.filter((option: ObIAutocompleteInputOption<T>) =>
+			new RegExp(escapedSearchText, this.filterRegexFlag).test(this.getStringValue(option.label))
 		);
 	}
 
-	private isGroupOption(option: ObIAutocompleteInputOptionGroup | ObIAutocompleteInputOption): boolean {
+	private isGroupOption(option: ObIAutocompleteInputOptionGroup<T> | ObIAutocompleteInputOption<T>): boolean {
 		return !!(option as ObIAutocompleteInputOptionGroup).groupOptions;
 	}
 }

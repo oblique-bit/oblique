@@ -1,14 +1,14 @@
 import {ObEIcon} from '../icon/icon.model';
 
-export interface ObIAutocompleteInputOption {
-	label: string;
+export interface ObIAutocompleteInputOption<T = string> {
+	label: T;
 	iconName?: ObEIcon;
 	disabled?: boolean;
 }
 
-export interface ObIAutocompleteInputOptionGroup {
+export interface ObIAutocompleteInputOptionGroup<T = string> {
 	groupLabel: string;
-	groupOptions: ObIAutocompleteInputOption[];
+	groupOptions: ObIAutocompleteInputOption<T>[];
 	disabled?: boolean;
 }
 
