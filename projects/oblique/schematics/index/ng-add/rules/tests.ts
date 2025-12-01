@@ -35,7 +35,7 @@ function addJestDependencies() {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, context: SchematicContext): Tree => {
 		['jest', '@types/jest', 'jest-sonar-reporter', '@angular-builders/jest'].forEach(dependency => addDevDependency(tree, dependency));
-
+		removeDevDependencies(tree, 'jasmine');
 		return removeDevDependencies(tree, 'karma');
 	};
 }
