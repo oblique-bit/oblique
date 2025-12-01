@@ -40,6 +40,7 @@ export class Publish extends StaticScript {
 		Object.entries(Publish.eolDates)
 			.map(([major, endOfLifeDate]) => ({major, endOfLifeDate}))
 			.filter(({endOfLifeDate}) => new Date() > new Date(endOfLifeDate))
+			.filter(({major}) => getResultFromCommand(`npm view ${fullPackageName}@${major} deprecated`).length === 0)
 			.forEach(({major, endOfLifeDate}) => {
 				executeCommandWithLog(
 					`npm deprecate ${fullPackageName}@${major} "Oblique ${major} has reached its End Of Life on ${endOfLifeDate}"`,
