@@ -31,7 +31,18 @@ must use the **service-navigation** package and one of the following scopes:
 
 Tests must be run with the `test` script and not through the IDE because the IDE can't properly execute `ts-node`.
 
-- From the monorepo root
-  To test that the CLI is globally executable, you need to execute the following commands:
+To test that the CLI is globally executable, you need to execute the following commands from the monorepo root:
+
+```shell
+npm run build -w projects/cli
+```
+
+```shell
+cd dist/cli
+```
+
+```shell
+npm link
+```
 
 You can now call the CLI directly with `ob <command>`.
