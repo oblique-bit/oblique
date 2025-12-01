@@ -7,9 +7,10 @@ type ObEIconValue = `${ObEIcon}`;
 export interface IconMetadata {
 	name: ObEIconValue;
 	oldName?: string;
-	purpose: 'single' | 'multi';
+	purpose: 'single' | 'multi' | 'deprecated';
 	usage: string;
 	category: ObECategoryValue;
 	aliases?: string[];
 	description: string;
+	deprecatedPurpose?: string;
 }

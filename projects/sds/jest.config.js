@@ -22,7 +22,7 @@ module.exports = {
 		'<rootDir>/projects/sds/schematics/src/add-preview/templates',
 	],
 	coverageDirectory: '<rootDir>/coverage/sds',
-	coveragePathIgnorePatterns: ['<rootDir>/projects/oblique'],
+	coveragePathIgnorePatterns: ['<rootDir>/projects/oblique', 'src/polyfills.ts'],
 	coverageThreshold: {
 		...baseConfig.coverageThreshold,
 		'projects/sds/src/app/': {

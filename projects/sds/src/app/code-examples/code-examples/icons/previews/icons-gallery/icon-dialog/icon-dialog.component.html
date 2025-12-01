@@ -26,8 +26,12 @@
 				<h4>Usage</h4>
 				@if (selectedIconMetaData?.purpose === "single") {
 					<mat-chip class="info">Single purpose</mat-chip>
-				} @else {
+				}
+				@if (selectedIconMetaData?.purpose === "multi") {
 					<mat-chip class="success">Multi purpose</mat-chip>
+				}
+				@if (selectedIconMetaData?.purpose === "deprecated") {
+					<mat-chip class="warning">Deprecated</mat-chip>
 				}
 			</div>
 			{{ selectedIconMetaData?.usage }}
@@ -46,6 +50,12 @@
 			<section>
 				<h4>Deprecated name</h4>
 				{{ selectedIconMetaData.oldName }}
+			</section>
+		}
+		@if (selectedIconMetaData?.deprecatedPurpose) {
+			<section>
+				<h4>Deprecated purpose</h4>
+				{{ selectedIconMetaData.deprecatedPurpose }}
 			</section>
 		}
 	</div>

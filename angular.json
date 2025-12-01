@@ -231,7 +231,7 @@
             "outputPath": "dist/sds/public",
             "index": "projects/sds/src/index.html",
             "main": "projects/sds/src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": ["zone.js", "projects/sds/src/polyfills.ts"],
             "tsConfig": "projects/sds/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [

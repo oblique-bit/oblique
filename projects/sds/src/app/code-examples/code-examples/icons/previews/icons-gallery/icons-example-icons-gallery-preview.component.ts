@@ -60,7 +60,7 @@ import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');
 	byCategoryFilter = new FormControl('ALL');
-	filteredIcons$: Observable<ObEIcon[]>;
+	filteredIcons$: Observable<ObEIcon[][]>;
 	isInfoCardVisible = false;
 	showDialog = false;
 	selectedIconName: string;
@@ -130,30 +130,39 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		this.showDialog = this.window.innerWidth < 1200;
 	}
 
-	private setUpIconsFilter(): Observable<ObEIcon[]> {
+	private setUpIconsFilter(): Observable<ObEIcon[][]> {
 		return this.iconsFilter.valueChanges.pipe(
 			startWith(null),
 			map(filter => (filter ? filter.trim() : filter)),
 			combineLatestWith(this.byCategoryFilter.valueChanges.pipe(startWith('ALL'))),
-			map(([filter, category]) => this.filterIcons(this.icons, category, filter))
+			map(([filter, category]) => {
+				return this.filterIcons(this.icons, category, filter);
+			})
 		);
 	}
 
-	private filterIcons(icons: ObEIcon[], category: string, filter: string): ObEIcon[] {
-		const matchedName: ObEIcon[] = [];
-		const matchedAliases: ObEIcon[] = [];
-
-		icons.forEach(iconName => {
+	private filterIcons(icons: ObEIcon[], category: string, filter: string): ObEIcon[][] {
+		const categoryMatches = icons.filter(iconName => {
 			const trimmedIconName = iconName.trim();
-			if (this.matchCategory(category, trimmedIconName)) {
-				if (this.matchFilterAgainstName(filter, trimmedIconName)) {
-					matchedName.push(iconName);
-				} else if (this.matchFilterAgainstAliases(filter, trimmedIconName)) {
-					matchedAliases.push(iconName);
-				}
-			}
+			return this.matchCategory(category, trimmedIconName);
 		});
-		return [...matchedName, ...matchedAliases];
+
+		const matches = Object.groupBy(categoryMatches, (iconName: string) => {
+			const trimmedIconName = iconName.trim();
+			if (this.matchFilterAgainstName(filter, trimmedIconName)) {
+				return 'nameMatch';
+			} else if (this.matchFilterAgainstAliases(filter, trimmedIconName)) {
+				return 'aliasMatch';
+			}
+			return 'none';
+		}) as {nameMatch: ObEIcon[]; aliasMatch: ObEIcon[]; none: ObEIcon[]};
+
+		const groups = Object.groupBy([...(matches.nameMatch || []), ...(matches.aliasMatch || [])], (iconName: string) => {
+			const iconCategory = this.getMetaDataOfIcon(iconName).category as ObECategory;
+			return iconCategory === ObECategory.DEPRECATED_ICONS ? 'deprecatedIcons' : 'icons';
+		}) as {icons: ObEIcon[]; deprecatedIcons: ObEIcon[]};
+
+		return [groups.icons || [], groups.deprecatedIcons || []];
 	}
 
 	private matchFilterAgainstName(filter: string, iconName: string): boolean {

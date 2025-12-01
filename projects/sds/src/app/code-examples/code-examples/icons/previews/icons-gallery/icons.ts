@@ -2288,6 +2288,7 @@ export const iconMetadata: IconMetadata[] = [
 		category: 'Devices and tech',
 		aliases: ['headphones', 'earphones', 'kopfhörer', 'audio'],
 		description: 'A pair of over-ear headphones.',
+		deprecatedPurpose: 'Previously, this icon displayed a headset. A new, separate "headset" icon has been created.',
 	},
 	{
 		oldName: 'audio',
@@ -3457,6 +3458,8 @@ export const iconMetadata: IconMetadata[] = [
 			'credentials',
 		],
 		description: 'A personal identification card with a person icon, and two horizontal lines representing text.',
+		deprecatedPurpose:
+			'Previously, this icon displayed a badge or an access pass. A new, separate "badge" icon has been created',
 	},
 	{
 		oldName: 'gender-identity-agender',
@@ -5024,16 +5027,20 @@ export const iconMetadata: IconMetadata[] = [
 	},
 	{
 		name: 'ald',
-		purpose: 'single',
+		purpose: 'deprecated',
 		usage: 'Indicates the presence of assistive listening systems (e.g., induction loops).',
 		category: 'Deprecated icons',
 		description: 'An ear with a diagonal dots and a wave.',
+		deprecatedPurpose:
+			'Not supported since Oblique 14. Removed for redundancy reason. Use the "hard-of-hearing" icon instead.',
 	},
 	{
 		name: 'family',
-		purpose: 'multi',
+		purpose: 'deprecated',
 		usage: 'Used to represent a family.',
 		category: 'Deprecated icons',
 		description: 'A group of three simplified human figures — two representing adults and one representing a child.',
+		deprecatedPurpose:
+			'Not supported since Oblique 14. Removed for redundancy reason. Use the "person_group" icon instead.',
 	},
 ];

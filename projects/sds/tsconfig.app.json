@@ -11,7 +11,7 @@
     "downlevelIteration": true,
     "module": "esnext"
   },
-  "files": ["src/main.ts"],
+  "files": ["src/main.ts", "src/polyfills.ts"],
   "paths": {
     "cms/*": ["src/app/cms/*"],
     "shared/*": ["src/app/shared/*"],
