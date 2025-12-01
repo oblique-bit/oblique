@@ -1,3 +1,11 @@
+# [14.1.2](https://github.com/oblique-bit/oblique/compare/14.1.1...14.1.2) (2025-12-01)
+
+## Bug Fixes
+
+- **column-layout:** export missing `ObTColumnState` ([cd163d0c](https://github.com/oblique-bit/oblique/commit/cd163d0c67dc4133b285bdd03e8045667936dbb3))
+- **master-layout:** avoid badges overlapping the header separator line ([80d33a4d](https://github.com/oblique-bit/oblique/commit/80d33a4dbbd9fa7e7efb6d4030aa679b08f8964f))
+- **schematics:** removes jasmine if jest is active ([69b89755](https://github.com/oblique-bit/oblique/commit/69b8975578befed1cacf81ed2c179a421748740a))
+
 # [14.1.1](https://github.com/oblique-bit/oblique/compare/14.1.0...14.1.1) (2025-11-06)
 
 ## Bug Fixes

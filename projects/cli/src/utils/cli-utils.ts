@@ -3,7 +3,7 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '14.1.1';
+export const version = '14.1.2';
 /* End of generated content */
 
 export const currentVersions = {
@@ -14,6 +14,7 @@ export const currentVersions = {
 	'@angular/core': '20',
 	'@angular/cdk': '20',
 	'@angular/animations': '20',
+	'@angular/platform-browser-dynamic': '20',
 	'@types/jest': '29',
 	'@angular-builders/jest': '20',
 	'@schematics/angular': '20',

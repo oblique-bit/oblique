@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, contentChildren, input, output} from '@angular/core';
+import {Component, type OnChanges, contentChildren, input, output} from '@angular/core';
 import {TabComponent} from './tab/tab.component';
 import {IdPipe} from '../id/id.pipe';
 
@@ -8,7 +8,7 @@ import {IdPipe} from '../id/id.pipe';
 	templateUrl: './tabs.component.html',
 	styleUrl: './tabs.component.scss'
 })
-export class TabsComponent implements AfterViewInit {
+export class TabsComponent implements OnChanges {
 	readonly idPrefix = input('');
 	readonly selectedTab = input('');
 	readonly tabs = contentChildren(TabComponent);
@@ -16,9 +16,9 @@ export class TabsComponent implements AfterViewInit {
 
 	readonly componentId = 'tabs';
 
-	ngAfterViewInit(): void {
+	ngOnChanges(): void {
 		setTimeout(() => {
-			this.selectTabWithName(this.selectedTab());
+			this.activateTab(this.selectedTab());
 		});
 	}
 
@@ -29,9 +29,17 @@ export class TabsComponent implements AfterViewInit {
 		this.tabChanged.emit(selectedTab.name());
 	}
 
-	private selectTabWithName(tabName: string): void {
-		const foundTab: TabComponent = this.tabs().find(tab => tab.name() === tabName && !tab.hidden());
+	private activateTab(tabName: string): void {
+		const foundTab = this.getActiveTab() || this.getTabWithName(tabName);
 		this.selectTab(foundTab ?? this.getDefaultTab());
+	}
+
+	private getActiveTab(): TabComponent {
+		return this.tabs().find(tab => !tab.hidden() && tab.active === true);
+	}
+
+	private getTabWithName(tabName: string): TabComponent {
+		return this.tabs().find(tab => !tab.hidden() && tab.name() === tabName);
 	}
 
 	private getDefaultTab(): TabComponent {
