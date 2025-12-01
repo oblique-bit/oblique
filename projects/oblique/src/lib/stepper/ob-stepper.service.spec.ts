@@ -13,7 +13,7 @@ describe('ObStepperIntlService', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			providers: [ObStepperIntlService, provideObliqueTestingConfiguration()]
+			providers: [ObStepperIntlService, provideObliqueTestingConfiguration()],
 		}).compileComponents();
 		translateService = TestBed.inject(TranslateService);
 		stepperService = TestBed.inject(ObStepperIntlService);
@@ -40,33 +40,33 @@ describe('ObStepperIntlService', () => {
 			labels: [
 				{labelName: 'optionalLabel', expectedTranslation: 'Optional'},
 				{labelName: 'completedLabel', expectedTranslation: 'Completed'},
-				{labelName: 'editableLabel', expectedTranslation: 'Editable'}
-			]
+				{labelName: 'editableLabel', expectedTranslation: 'Editable'},
+			],
 		},
 		{
 			language: 'it',
 			labels: [
 				{labelName: 'optionalLabel', expectedTranslation: 'Opzionale'},
 				{labelName: 'completedLabel', expectedTranslation: 'Completato'},
-				{labelName: 'editableLabel', expectedTranslation: 'Modificabile'}
-			]
+				{labelName: 'editableLabel', expectedTranslation: 'Modificabile'},
+			],
 		},
 		{
 			language: 'de',
 			labels: [
 				{labelName: 'optionalLabel', expectedTranslation: 'Optional'},
 				{labelName: 'completedLabel', expectedTranslation: 'Abgeschlossen'},
-				{labelName: 'editableLabel', expectedTranslation: 'Editierbar'}
-			]
+				{labelName: 'editableLabel', expectedTranslation: 'Editierbar'},
+			],
 		},
 		{
 			language: 'fr',
 			labels: [
 				{labelName: 'optionalLabel', expectedTranslation: 'Optionnel'},
 				{labelName: 'completedLabel', expectedTranslation: 'Terminé'},
-				{labelName: 'editableLabel', expectedTranslation: 'Modifiable'}
-			]
-		}
+				{labelName: 'editableLabel', expectedTranslation: 'Modifiable'},
+			],
+		},
 	])(`labels for $language language`, ({language, labels}) => {
 		beforeEach(() => {
 			translateService.use(language);

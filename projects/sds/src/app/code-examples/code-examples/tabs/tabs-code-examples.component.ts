@@ -11,7 +11,7 @@ import {TabsExampleStretchedPreviewComponent} from './previews/stretched/tabs-ex
 	selector: 'app-code-example-tabs',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'tabs-examples';
@@ -22,8 +22,8 @@ export class TabsCodeExamplesComponent extends CodeExamples {
 			title: 'Tabs basic',
 			snippets: [
 				this.getSnippet('tabs', 'basic/tabs-example-basic-preview.component.html', 'HTML'),
-				this.getSnippet('tabs', 'basic/tabs-example-basic-preview.component.ts', 'TS')
-			]
+				this.getSnippet('tabs', 'basic/tabs-example-basic-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: TabsExampleVariationsPreviewComponent,
@@ -32,8 +32,8 @@ export class TabsCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('tabs', 'variations/tabs-example-variations-preview.component.html', 'HTML'),
 				this.getSnippet('tabs', 'variations/tabs-example-variations-preview.component.ts', 'TS'),
-				this.getSnippet('tabs', 'variations/tabs-example-variations-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('tabs', 'variations/tabs-example-variations-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: TabsExampleStretchedPreviewComponent,
@@ -41,8 +41,8 @@ export class TabsCodeExamplesComponent extends CodeExamples {
 			title: 'Tabs stretched',
 			snippets: [
 				this.getSnippet('tabs', 'stretched/tabs-example-stretched-preview.component.html', 'HTML'),
-				this.getSnippet('tabs', 'stretched/tabs-example-stretched-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('tabs', 'stretched/tabs-example-stretched-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

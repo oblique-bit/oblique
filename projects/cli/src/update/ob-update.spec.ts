@@ -9,11 +9,11 @@ describe('ObUpdateCommand Tests', () => {
 		const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
 
 		jest.mock('node:fs', () => ({
-			readFileSync: jest.fn().mockImplementation(jest.fn())
+			readFileSync: jest.fn().mockImplementation(jest.fn()),
 		}));
 
 		jest.mock('node:path', () => ({
-			resolve: jest.fn().mockReturnValue('path')
+			resolve: jest.fn().mockReturnValue('path'),
 		}));
 
 		beforeAll(() => {
@@ -23,7 +23,9 @@ describe('ObUpdateCommand Tests', () => {
 		});
 
 		beforeEach(() => {
-			jest.spyOn(fs, 'readFileSync').mockReturnValue(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+			jest
+				.spyOn(fs, 'readFileSync')
+				.mockReturnValue(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 			jest.spyOn(path, 'resolve').mockReturnValue('path');
 		});
 
@@ -80,29 +82,39 @@ describe('ObUpdateCommand Tests', () => {
 
 		describe('findPackage', () => {
 			test('should call path.resolve with process.cwd and package.json', () => {
-				jest.spyOn(fs, 'readFileSync').mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				jest
+					.spyOn(fs, 'readFileSync')
+					.mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 				jest.spyOn(path, 'resolve').mockReturnValueOnce('path');
 				obUpdate.findPackage();
 				expect(path.resolve).toHaveBeenCalledWith(process.cwd(), 'package.json');
 			});
 
 			test('should call fs.readFileSync with "path" and "utf-8"', () => {
-				jest.spyOn(fs, 'readFileSync').mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				jest
+					.spyOn(fs, 'readFileSync')
+					.mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 				jest.spyOn(path, 'resolve').mockReturnValueOnce('path');
 				obUpdate.findPackage();
 				expect(fs.readFileSync).toHaveBeenCalledWith('path', 'utf-8');
 			});
 
 			test('should JSON.parse with ', () => {
-				jest.spyOn(fs, 'readFileSync').mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				jest
+					.spyOn(fs, 'readFileSync')
+					.mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 				jest.spyOn(path, 'resolve').mockReturnValueOnce('path');
 				jest.spyOn(JSON, 'parse');
 				obUpdate.findPackage();
-				expect(JSON.parse).toHaveBeenCalledWith(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				expect(JSON.parse).toHaveBeenCalledWith(
+					JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies)
+				);
 			});
 
 			test('should return parsed package.json content', () => {
-				jest.spyOn(fs, 'readFileSync').mockReturnValue(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				jest
+					.spyOn(fs, 'readFileSync')
+					.mockReturnValue(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 				(path.resolve as jest.Mock).mockReturnValue('path');
 
 				const packageJson = obUpdate.findPackage();

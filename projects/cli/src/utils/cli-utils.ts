@@ -19,19 +19,19 @@ export const currentVersions = {
 	'@angular-builders/jest': '20',
 	'@schematics/angular': '20',
 	'angular-oauth2-oidc': '20',
-	jest: '29'
+	jest: '29',
 } as const;
 
 export const optionDescriptions = {
 	ob: {
 		version: {flags: '-v, --version', description: 'Shows the current version of @oblique/cli', command: 'ob -v'},
-		help: {flags: '-h, --help', description: getHelpText('ob'), command: 'ob -h'}
+		help: {flags: '-h, --help', description: getHelpText('ob'), command: 'ob -h'},
 	},
 	new: {
 		obNewCommand: {command: 'ob new <project-name> [...options]', description: 'Create a new Oblique project'},
-		help: {flags: '-h, --help', description: getHelpText('ob new'), command: 'ob new -h'}
+		help: {flags: '-h, --help', description: getHelpText('ob new'), command: 'ob new -h'},
 	},
-	update: {obUpdateCommand: {command: 'ob update', description: 'Update an Oblique project'}}
+	update: {obUpdateCommand: {command: 'ob update', description: 'Update an Oblique project'}},
 };
 
 export const ngAddOblique = {command: 'ng add @oblique/oblique', description: 'add Oblique to the project'};
@@ -41,7 +41,10 @@ export const obExamples = [
 	{command: optionDescriptions.ob.help.command, description: optionDescriptions.ob.help.description},
 	{command: optionDescriptions.new.obNewCommand.command, description: optionDescriptions.new.obNewCommand.description},
 	{command: optionDescriptions.new.help.command, description: optionDescriptions.new.help.description},
-	{command: optionDescriptions.update.obUpdateCommand.command, description: optionDescriptions.update.obUpdateCommand.description}
+	{
+		command: optionDescriptions.update.obUpdateCommand.command,
+		description: optionDescriptions.update.obUpdateCommand.description,
+	},
 ];
 
 const spaceUnit = `\t`;
@@ -86,7 +89,10 @@ export const startObCommand = <T>(callback: (options: T) => void, label: string,
 	console.timeEnd(label);
 };
 
-export function commandUsageText(subCommand: '<command>' | 'new' | 'update' = '<command>', option = '[...options]'): string {
+export function commandUsageText(
+	subCommand: '<command>' | 'new' | 'update' = '<command>',
+	option = '[...options]'
+): string {
 	if (subCommand === 'new') {
 		return `${projectNamePlaceholder} ${option}`;
 	}
@@ -105,7 +111,9 @@ export function createAdditionalHelpText(
 ): string {
 	return [
 		title,
-		examples.map(example => `${spaceUnit}${example.command.padEnd(maxCommandWidth + paddingSize, ' ')}${example.description}`).join('\n')
+		examples
+			.map(example => `${spaceUnit}${example.command.padEnd(maxCommandWidth + paddingSize, ' ')}${example.description}`)
+			.join('\n'),
 	].join('');
 }
 
@@ -129,7 +137,11 @@ export function execute(config: ObCommandConfig): void {
 		case 'ngNew':
 			return executeNgCommand(`new ${config.projectName}`, config.options, config.execSyncOptions);
 		case 'ngAdd':
-			return executeNgCommand(`add ${getVersionedDependency(config.dependency)}`, config.options, config.execSyncOptions);
+			return executeNgCommand(
+				`add ${getVersionedDependency(config.dependency)}`,
+				config.options,
+				config.execSyncOptions
+			);
 		case 'ngUpdate':
 			return executeNgCommand(
 				`update ${versionDependencies(config.dependencies).join(' ')}`,
@@ -155,7 +167,12 @@ export function execute(config: ObCommandConfig): void {
 }
 
 // See https://nodejs.org/docs/latest/api/process.html#processargv
-export function parseCommandArguments(): {execPath: string; filePath: string; commandName: string; arguments: string[]} {
+export function parseCommandArguments(): {
+	execPath: string;
+	filePath: string;
+	commandName: string;
+	arguments: string[];
+} {
 	const {argv} = process;
 	return {
 		execPath: argv[0],
@@ -163,7 +180,7 @@ export function parseCommandArguments(): {execPath: string; filePath: string; co
 		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 		commandName: argv[2],
 		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-		arguments: argv.slice(3)
+		arguments: argv.slice(3),
 	};
 }
 

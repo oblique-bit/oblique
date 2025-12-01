@@ -10,7 +10,7 @@ describe(ProgressBarCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ProgressBarCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [ProgressBarCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ProgressBarCodeExamplesComponent);

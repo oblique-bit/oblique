@@ -11,7 +11,7 @@ describe(GridSystemCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [GridSystemCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [GridSystemCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(GridSystemCodeExamplesComponent);

@@ -35,7 +35,7 @@ import {
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObUnsavedChangesModule,
-	provideObliqueConfiguration
+	provideObliqueConfiguration,
 } from '@oblique/oblique';
 // App:
 import {AppComponent} from './app.component';
@@ -82,7 +82,7 @@ registerLocaleData(localeDE);
 		ObSpinnerModule,
 		ObUnsavedChangesModule,
 		ReactiveFormsModule,
-		TranslateModule
+		TranslateModule,
 	],
 	providers: [
 		{provide: OB_BANNER, useValue: environment.banner},
@@ -101,20 +101,23 @@ registerLocaleData(localeDE);
 				exceptions: [
 					'i18n.routes.accessibility.exception.first',
 					'i18n.routes.accessibility.exception.second',
-					'i18n.routes.accessibility.exception.third'
+					'i18n.routes.accessibility.exception.third',
 				],
 				applicationOperator: 'i18n.routes.accessibility.operator',
 				contact: [
 					{email: 'oblique@bit.admin.ch', context: 'Oblique Team'},
 					{phone: '123'},
-					{url: 'http://example-contact-page.bit.admin.ch', context: 'Some random, inexistent, external link to demonstrate the feature'},
-					{url: '/samples/button', context: 'Some random internal link to demonstrate the feature'}
-				]
+					{
+						url: 'http://example-contact-page.bit.admin.ch',
+						context: 'Some random, inexistent, external link to demonstrate the feature',
+					},
+					{url: '/samples/button', context: 'Some random internal link to demonstrate the feature'},
+				],
 			},
-			hasLanguageInUrl: true
-		})
+			hasLanguageInUrl: true,
+		}),
 	],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
 })
 export class AppModule {
 	constructor() {

@@ -15,14 +15,17 @@ describe('NotificationService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterTestingModule],
-			providers: [ObNotificationConfig, ObNotificationService]
+			providers: [ObNotificationConfig, ObNotificationService],
 		});
 	});
 
-	beforeEach(inject([ObNotificationConfig, ObNotificationService], (config: ObNotificationConfig, service: ObNotificationService) => {
-		notificationService = service;
-		notificationConfig = config;
-	}));
+	beforeEach(inject(
+		[ObNotificationConfig, ObNotificationService],
+		(config: ObNotificationConfig, service: ObNotificationService) => {
+			notificationService = service;
+			notificationConfig = config;
+		}
+	));
 
 	describe('send()', () => {
 		let notification: ObINotification;

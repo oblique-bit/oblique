@@ -10,11 +10,11 @@ import {ObBreadcrumbConfig, ObIBreadcrumb} from '../breadcrumb.model';
 	selector: 'ob-breadcrumb',
 	standalone: false,
 	template: '',
-	exportAs: 'obBreadcrumb'
+	exportAs: 'obBreadcrumb',
 })
 export class ObMockBreadcrumbComponent {
 	static DEFAULTS: ObBreadcrumbConfig = {
-		maxWidth: '32ch'
+		maxWidth: '32ch',
 	};
 
 	/* eslint-disable @angular-eslint/no-input-rename	*/

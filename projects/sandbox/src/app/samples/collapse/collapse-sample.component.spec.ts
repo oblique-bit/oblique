@@ -12,7 +12,7 @@ describe(CollapseSampleComponent.name, () => {
 		await TestBed.configureTestingModule({
 			imports: [ReactiveFormsModule, MatSelectModule],
 			declarations: [CollapseSampleComponent],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 		}).compileComponents();
 	});
 

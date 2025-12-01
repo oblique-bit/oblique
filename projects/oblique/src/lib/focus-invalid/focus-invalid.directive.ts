@@ -3,8 +3,8 @@ import {NgControl} from '@angular/forms';
 
 @Directive({
 	selector: 'form[obFocusInvalid]',
+	standalone: true,
 	exportAs: 'obFocusInvalid',
-	standalone: true
 })
 export class ObFocusInvalidDirective {
 	@ContentChildren(NgControl, {descendants: true, read: ElementRef}) formElements: QueryList<ElementRef<HTMLElement>>;

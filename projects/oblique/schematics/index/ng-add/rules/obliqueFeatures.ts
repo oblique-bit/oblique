@@ -5,7 +5,7 @@ import {
 	addImportToModule,
 	addProviderToModule,
 	addRouteDeclarationToModule,
-	insertImport
+	insertImport,
 } from '@schematics/angular/utility/ast-utils';
 import {
 	adaptInsertChange,
@@ -15,7 +15,7 @@ import {
 	applyChanges,
 	createSrcFile,
 	getTemplate,
-	routingModulePath
+	routingModulePath,
 } from '../ng-add-utils';
 import {ObIOptionsSchema} from '../ng-add.model';
 import {
@@ -26,7 +26,7 @@ import {
 	readFile,
 	replaceInFile,
 	setOrCreateAngularProjectsConfig,
-	writeFile
+	writeFile,
 } from '../../utils';
 
 export function obliqueFeatures(options: ObIOptionsSchema): Rule {
@@ -40,7 +40,7 @@ export function obliqueFeatures(options: ObIOptionsSchema): Rule {
 			addBanner(options.banner, options.environments),
 			addDefaultHomeComponent(options.prefix),
 			addExternalLink(options.externalLink),
-			setObliqueConfiguration(options.title, options.applicationOperator, options.contact, options.hasLanguageInUrl)
+			setObliqueConfiguration(options.title, options.applicationOperator, options.contact, options.hasLanguageInUrl),
 		])(tree, context);
 	};
 }
@@ -51,7 +51,9 @@ function addObliqueProviders(): Rule {
 		const sourceFile = createSrcFile(tree, appModulePath);
 		const changes = addProviderToModule(sourceFile, appModulePath, 'provideObliqueConfiguration()', '@oblique/oblique')
 			.filter((change: Change) => change instanceof InsertChange)
-			.map((change: InsertChange) => adaptInsertChange(tree, change, 'provideObliqueConfiguration()', 'provideObliqueConfiguration'));
+			.map((change: InsertChange) =>
+				adaptInsertChange(tree, change, 'provideObliqueConfiguration()', 'provideObliqueConfiguration')
+			);
 		return applyChanges(tree, appModulePath, changes);
 	});
 }
@@ -63,7 +65,11 @@ function addAjv(ajv: boolean): Rule {
 			addDevDependency(tree, 'ajv');
 			addDevDependency(tree, 'ajv-formats');
 		}
-		setOrCreateAngularProjectsConfig(tree, ['architect', 'build', 'options', 'allowedCommonJsDependencies'], ['ajv', 'ajv-formats']);
+		setOrCreateAngularProjectsConfig(
+			tree,
+			['architect', 'build', 'options', 'allowedCommonJsDependencies'],
+			['ajv', 'ajv-formats']
+		);
 		return tree;
 	});
 }
@@ -89,7 +95,10 @@ function enableAnchorScrolling(): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique feature: enabling anchor scrolling');
 		const content = readFile(tree, routingModulePath);
-		const newContent = content.replace('RouterModule.forRoot(routes)', 'RouterModule.forRoot(routes, { anchorScrolling: "enabled" })');
+		const newContent = content.replace(
+			'RouterModule.forRoot(routes)',
+			'RouterModule.forRoot(routes, { anchorScrolling: "enabled" })'
+		);
 		writeFile(tree, routingModulePath, newContent);
 		return tree;
 	});
@@ -103,9 +112,18 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 			const obliqueInterceptorProvider = '{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true}';
 			const sourceFile = createSrcFile(tree, appModulePath);
 			const changes = addProviderToModule(sourceFile, appModulePath, obliqueInterceptorProvider, ObliquePackage)
-				.concat(addProviderToModule(sourceFile, appModulePath, 'provideHttpClient(withInterceptorsFromDi())', '@angular/common/http'))
+				.concat(
+					addProviderToModule(
+						sourceFile,
+						appModulePath,
+						'provideHttpClient(withInterceptorsFromDi())',
+						'@angular/common/http'
+					)
+				)
 				.filter((change: Change) => change instanceof InsertChange)
-				.map((change: InsertChange) => adaptInsertChange(tree, change, obliqueInterceptorProvider, obliqueInterceptorModuleName))
+				.map((change: InsertChange) =>
+					adaptInsertChange(tree, change, obliqueInterceptorProvider, obliqueInterceptorModuleName)
+				)
 				.map((change: InsertChange) =>
 					adaptInsertChange(
 						tree,
@@ -157,7 +175,11 @@ function addDefaultHomeComponent(prefix: string): Rule {
 function addDefaultComponent(tree: Tree, prefix: string): void {
 	addFile(tree, 'src/app/home/home.html', getTemplate(tree, `home.html`));
 	addFile(tree, 'src/app/home/home.scss', getTemplate(tree, `home.scss.config`));
-	addFile(tree, 'src/app/home/home.ts', getTemplate(tree, 'home.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix));
+	addFile(
+		tree,
+		'src/app/home/home.ts',
+		getTemplate(tree, 'home.ts.config').replace('_APP_PREFIX_PLACEHOLDER_', prefix)
+	);
 }
 
 function addDefaultComponentToAppModule(tree: Tree): void {
@@ -222,7 +244,7 @@ function parseContact(contacts: string): {emails: string[]; phones: string[]} {
 			contacts
 				?.trim()
 				.split(/\s*,\s*/)
-				.filter((element: string) => !element.includes('@')) ?? []
+				.filter((element: string) => !element.includes('@')) ?? [],
 	};
 }
 
@@ -236,7 +258,12 @@ function isEmpty(array?: string[]): boolean {
 	return !array || array.length === 0;
 }
 
-function setObliqueConfiguration(applicationTitle: string, applicationOperator: string, contact: string, hasLanguageInUrl: boolean): Rule {
+function setObliqueConfiguration(
+	applicationTitle: string,
+	applicationOperator: string,
+	contact: string,
+	hasLanguageInUrl: boolean
+): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique feature: Adding accessibility statement configuration');
 		const {emails, phones} = parseContact(contact);
@@ -246,14 +273,25 @@ function setObliqueConfiguration(applicationTitle: string, applicationOperator: 
 		const accessibilityConfig = buildAccessibilityConfig(applicationTitle, applicationOperator, emails, phones);
 		const hasLanguageInUrlConfig = buildHasLanguageInUrlConfig(hasLanguageInUrl);
 
-		const newContent = content.replace(/(?<=provideObliqueConfiguration\()(?=\))/, `{${accessibilityConfig}, ${hasLanguageInUrlConfig}}`);
+		const newContent = content.replace(
+			/(?<=provideObliqueConfiguration\()(?=\))/,
+			`{${accessibilityConfig}, ${hasLanguageInUrlConfig}}`
+		);
 		writeFile(tree, appModulePath, newContent);
 		return tree;
 	});
 }
 
-function buildAccessibilityConfig(title: string, applicationOperator: string, emails: string[] = [], phones: string[] = []): string {
-	const contactFields = [...emails.map(email => `{email: '${email}'}`), ...phones.map(phone => `{phone: '${phone}'}`)].join(', ');
+function buildAccessibilityConfig(
+	title: string,
+	applicationOperator: string,
+	emails: string[] = [],
+	phones: string[] = []
+): string {
+	const contactFields = [
+		...emails.map(email => `{email: '${email}'}`),
+		...phones.map(phone => `{phone: '${phone}'}`),
+	].join(', ');
 
 	const createdOn = new Date().toISOString().split('T')[0];
 

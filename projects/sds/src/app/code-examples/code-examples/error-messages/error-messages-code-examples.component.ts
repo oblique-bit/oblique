@@ -10,7 +10,7 @@ import {ErrorMessagesExampleReactiveFormPreviewComponent} from './previews/react
 	selector: 'app-code-example-error-messages',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ErrorMessagesCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'error-messages-examples';
@@ -25,17 +25,29 @@ export class ErrorMessagesCodeExamplesComponent extends CodeExamples {
 					'template-driven-form/error-messages-example-template-driven-form-preview.component.html',
 					'HTML'
 				),
-				this.getSnippet('error-messages', 'template-driven-form/error-messages-example-template-driven-form-preview.component.ts', 'TS')
-			]
+				this.getSnippet(
+					'error-messages',
+					'template-driven-form/error-messages-example-template-driven-form-preview.component.ts',
+					'TS'
+				),
+			],
 		},
 		{
 			component: ErrorMessagesExampleReactiveFormPreviewComponent,
 			idParts: ['reactive', 'form'],
 			title: 'Reactive Form',
 			snippets: [
-				this.getSnippet('error-messages', 'reactive-form/error-messages-example-reactive-form-preview.component.html', 'HTML'),
-				this.getSnippet('error-messages', 'reactive-form/error-messages-example-reactive-form-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet(
+					'error-messages',
+					'reactive-form/error-messages-example-reactive-form-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'error-messages',
+					'reactive-form/error-messages-example-reactive-form-preview.component.ts',
+					'TS'
+				),
+			],
+		},
 	];
 }

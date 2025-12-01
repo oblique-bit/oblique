@@ -1,7 +1,21 @@
-import {Component, ContentChildren, Input, OnInit, Output, QueryList, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {
+	Component,
+	ContentChildren,
+	Input,
+	OnInit,
+	Output,
+	QueryList,
+	TemplateRef,
+	ViewEncapsulation,
+} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationService} from './service-navigation.service';
-import {ObEPamsEnvironment, ObIServiceNavigationContact, ObIServiceNavigationLink, ObLoginState} from './service-navigation.model';
+import {
+	ObEPamsEnvironment,
+	ObIServiceNavigationContact,
+	ObIServiceNavigationLink,
+	ObLoginState,
+} from './service-navigation.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
 import {ObServiceNavigationTimeoutCookieService} from './timeout/service-navigation-timeout-cookie.service';
@@ -15,7 +29,6 @@ import {ObServiceNavigationLanguageSynchronizationService} from './language-sync
 	standalone: false,
 	templateUrl: './service-navigation.component.html',
 	styleUrls: ['./service-navigation.component.scss'],
-	encapsulation: ViewEncapsulation.None,
 	providers: [
 		ObServiceNavigationService,
 		ObServiceNavigationApplicationsService,
@@ -24,9 +37,10 @@ import {ObServiceNavigationLanguageSynchronizationService} from './language-sync
 		ObServiceNavigationTimeoutCookieService,
 		ObServiceNavigationTimeoutRedirectorService,
 		ObServiceNavigationTimeoutCookieActivityService,
-		ObServiceNavigationTimeoutReturnUrlService
+		ObServiceNavigationTimeoutReturnUrlService,
 	],
-	host: {class: 'ob-service-navigation'}
+	encapsulation: ViewEncapsulation.None,
+	host: {class: 'ob-service-navigation'},
 })
 export class ObServiceNavigationComponent implements OnInit {
 	@Input() profileLinks: ObIServiceNavigationLink[] = [];

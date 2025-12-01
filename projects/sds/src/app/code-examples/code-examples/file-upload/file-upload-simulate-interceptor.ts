@@ -1,5 +1,12 @@
 import {Injectable, type OnDestroy} from '@angular/core';
-import {type HttpEvent, HttpEventType, type HttpHandler, type HttpInterceptor, type HttpRequest, HttpResponse} from '@angular/common/http';
+import {
+	type HttpEvent,
+	HttpEventType,
+	type HttpHandler,
+	type HttpInterceptor,
+	type HttpRequest,
+	HttpResponse,
+} from '@angular/common/http';
 import type {ObIFileDescription} from '@oblique/oblique';
 import {map, take, takeUntil} from 'rxjs/operators';
 import {BehaviorSubject, type Observable, Subject, combineLatest, interval, of} from 'rxjs';
@@ -51,7 +58,9 @@ export class UploadInterceptor implements HttpInterceptor, OnDestroy {
 			.pipe(take(1), takeUntil(this.unsubscribe))
 			.subscribe(uploadingFiles => {
 				this.updateUploadingFiles(
-					uploadingFiles.filter(uploadingFile => !files.map(canceledFile => canceledFile.name).includes(uploadingFile.name)),
+					uploadingFiles.filter(
+						uploadingFile => !files.map(canceledFile => canceledFile.name).includes(uploadingFile.name)
+					),
 					index
 				);
 			});
@@ -77,13 +86,17 @@ export class UploadInterceptor implements HttpInterceptor, OnDestroy {
 				uploadedFiles =>
 					new HttpResponse({
 						status: 200,
-						body: uploadedFiles
+						body: uploadedFiles,
 					})
 			)
 		);
 	}
 
-	private mockUpload(files: File[], idx: string): Observable<HttpEvent<HttpEventType.Response | HttpEventType.UploadProgress>> {
+	// eslint-disable-next-line max-lines-per-function
+	private mockUpload(
+		files: File[],
+		idx: string
+	): Observable<HttpEvent<HttpEventType.Response | HttpEventType.UploadProgress>> {
 		const obFileDescriptions = files.map(file => ({name: file.name}));
 		this.getUploadingFiles(idx)
 			.pipe(take(1), takeUntil(this.unsubscribe))
@@ -107,12 +120,14 @@ export class UploadInterceptor implements HttpInterceptor, OnDestroy {
 						this.updateUploadedFiles(
 							[
 								...uploadedFiles,
-								...uploadingFiles.filter(file => obFileDescriptions.map(obFileDescription => obFileDescription.name).includes(file.name))
+								...uploadingFiles.filter(file =>
+									obFileDescriptions.map(obFileDescription => obFileDescription.name).includes(file.name)
+								),
 							].filter((file, index, arr) => arr.findIndex(item => item.name === file.name) === index),
 							idx
 						);
 					});
-			}
+			},
 		});
 
 		return allUploadEvents$;
@@ -190,7 +205,7 @@ export const mockUrls: UploadGetUploadedFilesDelete[] = [...Array(4).keys()].map
 		upload: `${mockUploadURL}/${index}`,
 		getUploadedFiles: `${mockGetUploadedFilesURL}/${index}`,
 		delete: `${mockDeleteURL}/${index}`,
-		customDelete: `${mockCustomDeleteURL}/${index}`
+		customDelete: `${mockCustomDeleteURL}/${index}`,
 	};
 });
 

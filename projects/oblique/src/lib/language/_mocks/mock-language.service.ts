@@ -6,7 +6,7 @@ import {of} from 'rxjs';
  *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
  */
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObMockLanguageService {
 	readonly locale$ = of('en-GB');

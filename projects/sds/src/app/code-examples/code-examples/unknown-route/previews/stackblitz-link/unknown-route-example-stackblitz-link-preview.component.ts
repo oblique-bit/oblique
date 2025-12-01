@@ -5,6 +5,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 @Component({
 	selector: 'app-unknown-route-example-stackblitz-link-preview',
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
-	templateUrl: './unknown-route-example-stackblitz-link-preview.component.html'
+	templateUrl: './unknown-route-example-stackblitz-link-preview.component.html',
 })
 export class UnknownRouteExampleStackblitzLinkPreviewComponent {}

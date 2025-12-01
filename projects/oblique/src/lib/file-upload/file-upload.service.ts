@@ -1,4 +1,11 @@
-import {HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpRequest, HttpUserEvent} from '@angular/common/http';
+import {
+	HttpClient,
+	HttpErrorResponse,
+	HttpEvent,
+	HttpEventType,
+	HttpRequest,
+	HttpUserEvent,
+} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, Subject, of} from 'rxjs';
 import {catchError, filter} from 'rxjs/operators';
@@ -51,7 +58,7 @@ export class ObFileUploadService {
 				this.notification.error({
 					message: 'i18n.oblique.file-upload.error.failed',
 					messageParams: {failedFiles: files.map(file => file.name).join(', ')},
-					title: 'i18n.oblique.file-upload.error.title'
+					title: 'i18n.oblique.file-upload.error.title',
 				});
 				return of({type: HttpEventType.User, files, error} as HttpUserEvent<{
 					type: HttpEventType;

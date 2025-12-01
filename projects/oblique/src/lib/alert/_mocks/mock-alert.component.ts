@@ -7,7 +7,7 @@ import {Component, Input} from '@angular/core';
 	selector: 'ob-alert',
 	standalone: true,
 	template: '<ng-content />',
-	exportAs: 'obAlert'
+	exportAs: 'obAlert',
 })
 export class ObMockAlertComponent {
 	@Input() type = 'info';

@@ -13,7 +13,7 @@ describe(GlobalEventsCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [GlobalEventsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: WINDOW, useValue: window}]
+			providers: [{provide: WINDOW, useValue: window}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(GlobalEventsCodeExamplesComponent);

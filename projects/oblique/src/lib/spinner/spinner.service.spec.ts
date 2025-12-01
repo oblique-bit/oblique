@@ -8,7 +8,7 @@ describe(ObSpinnerService.name, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObSpinnerService]
+			providers: [ObSpinnerService],
 		});
 		service = TestBed.inject(ObSpinnerService);
 	});

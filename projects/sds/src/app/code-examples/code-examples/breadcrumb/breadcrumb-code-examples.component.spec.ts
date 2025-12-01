@@ -14,7 +14,7 @@ describe(BreadcrumbCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [BreadcrumbCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(BreadcrumbCodeExamplesComponent);

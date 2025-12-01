@@ -5,7 +5,7 @@ import {UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/fo
 	selector: 'sb-stepper-vertical',
 	standalone: false,
 	templateUrl: './stepper-vertical.component.html',
-	styleUrl: './stepper-vertical.component.scss'
+	styleUrl: './stepper-vertical.component.scss',
 })
 export class StepperVerticalComponent implements OnInit {
 	firstFormGroup: UntypedFormGroup;
@@ -17,10 +17,10 @@ export class StepperVerticalComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.firstFormGroup = this.formBuilder.group({
-			firstCtrl: ['', Validators.required]
+			firstCtrl: ['', Validators.required],
 		});
 		this.secondFormGroup = this.formBuilder.group({
-			secondCtrl: ['', Validators.required]
+			secondCtrl: ['', Validators.required],
 		});
 	}
 }

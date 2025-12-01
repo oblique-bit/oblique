@@ -15,7 +15,7 @@ export class ObEportalCsrfInterceptor implements HttpInterceptor {
 				return next.handle(httpRequest);
 			}
 			const headers = {
-				[headerName]: cookie
+				[headerName]: cookie,
 			};
 			const modifiedReq = httpRequest.clone({setHeaders: headers});
 

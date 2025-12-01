@@ -4,6 +4,6 @@ import {Component} from '@angular/core';
 	selector: 'app-html-table-example-styles-preview',
 	standalone: true,
 	templateUrl: './html-table-example-styles-preview.component.html',
-	styleUrl: './html-table-example-styles-preview.component.scss'
+	styleUrl: './html-table-example-styles-preview.component.scss',
 })
 export class HtmlTableExampleStylesPreviewComponent {}

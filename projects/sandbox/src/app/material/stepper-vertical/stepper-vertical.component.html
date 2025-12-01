@@ -57,7 +57,11 @@
 			<fieldset>
 				<legend>Stepper features</legend>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Disable ripple on header click" [checked]="false" (change)="isRippleDisabled = !isRippleDisabled">
+					<mat-slide-toggle
+						matTooltip="Disable ripple on header click"
+						[checked]="false"
+						(change)="isRippleDisabled = !isRippleDisabled"
+					>
 						Disable ripples
 					</mat-slide-toggle>
 				</mat-list-item>

@@ -4,7 +4,7 @@ import {
 	type ObIServiceNavigationLink,
 	type ObLoginState,
 	ObServiceNavigationComponent,
-	WINDOW
+	WINDOW,
 } from '@oblique/oblique';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -14,7 +14,7 @@ import {environment} from '../../../environments/environment';
 	selector: 'sb-service-navigation',
 	standalone: false,
 	templateUrl: './service-navigation-sample.component.html',
-	styleUrl: './service-navigation-sample.component.scss'
+	styleUrl: './service-navigation-sample.component.scss',
 })
 export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	returnUrl: string;
@@ -35,36 +35,36 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	profileLinks: ObIServiceNavigationLink[] = [
 		{
 			url: 'i18n.service-navigation.profile.link.unicorn.url',
-			label: 'i18n.service-navigation.profile.link.unicorn.label'
+			label: 'i18n.service-navigation.profile.link.unicorn.label',
 		},
 		{
 			url: 'i18n.service-navigation.profile.link.dragon.url',
-			label: 'i18n.service-navigation.profile.link.dragon.label'
+			label: 'i18n.service-navigation.profile.link.dragon.label',
 		},
 		{
 			url: 'i18n.service-navigation.profile.link.phoenix.url',
-			label: 'i18n.service-navigation.profile.link.phoenix.label'
+			label: 'i18n.service-navigation.profile.link.phoenix.label',
 		},
 		{
 			url: 'i18n.service-navigation.profile.link.ork.url',
-			label: 'i18n.service-navigation.profile.link.ork.label'
+			label: 'i18n.service-navigation.profile.link.ork.label',
 		},
 		{
 			url: 'i18n.service-navigation.profile.link.kappa.url',
-			label: 'i18n.service-navigation.profile.link.kappa.label'
-		}
+			label: 'i18n.service-navigation.profile.link.kappa.label',
+		},
 	];
 	hasProfileLinks = true;
 	hasInfoLinks = true;
 	infoLinks: ObIServiceNavigationLink[] = [
 		{
 			url: 'i18n.service-navigation.info.link.user-documentation.url',
-			label: 'i18n.service-navigation.info.link.user-documentation.label'
+			label: 'i18n.service-navigation.info.link.user-documentation.label',
 		},
 		{
 			url: 'i18n.service-navigation.info.link.multimedia-manual.url',
-			label: 'i18n.service-navigation.info.link.multimedia-manual.label'
-		}
+			label: 'i18n.service-navigation.info.link.multimedia-manual.label',
+		},
 	];
 	infoHelpText = 'help example text';
 	infoContactText = 'contact example text';
@@ -79,7 +79,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 		phone: '+41 58 461 61 11',
 		phoneText: 'tel detailed text',
 		formUrl: 'https://example.com/',
-		formUrlText: 'form detailed text'
+		formUrlText: 'form detailed text',
 	};
 	hasCustomWidgets = true;
 	readonly rootUrl = environment.pams?.rootUrl;
@@ -91,7 +91,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 		phone: '+41 58 461 61 11',
 		phoneText: 'tel detailed text',
 		formUrl: 'https://example.com/',
-		formUrlText: 'form detailed text'
+		formUrlText: 'form detailed text',
 	};
 	private readonly headerControlsComponent = viewChild(ObServiceNavigationComponent);
 	private readonly window = inject<Window>(WINDOW);
@@ -101,8 +101,12 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-		this.lastUsedApplicationsLength$ = this.headerControlsComponent().lastUsedApplications$.pipe(map(applications => applications.length));
-		this.favoriteApplicationsLength$ = this.headerControlsComponent().favoriteApplications$.pipe(map(applications => applications.length));
+		this.lastUsedApplicationsLength$ = this.headerControlsComponent().lastUsedApplications$.pipe(
+			map(applications => applications.length)
+		);
+		this.favoriteApplicationsLength$ = this.headerControlsComponent().favoriteApplications$.pipe(
+			map(applications => applications.length)
+		);
 	}
 
 	handleContactInfo(): void {

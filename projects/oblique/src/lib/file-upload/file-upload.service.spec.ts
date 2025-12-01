@@ -16,7 +16,7 @@ describe('ObFilesUploadService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule],
-			providers: [ObFileUploadService, {provide: ObNotificationService, useClass: ObMockNotificationService}]
+			providers: [ObFileUploadService, {provide: ObNotificationService, useClass: ObMockNotificationService}],
 		});
 		service = TestBed.inject(ObFileUploadService);
 		httpMock = TestBed.inject(HttpClient);

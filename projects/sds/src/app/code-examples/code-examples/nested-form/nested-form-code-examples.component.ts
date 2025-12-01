@@ -10,7 +10,7 @@ import {NestedFormExampleTemplateDrivenPreviewComponent} from './previews/templa
 	selector: 'app-code-example-nested-form',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NestedFormCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'nested-form-examples';
@@ -22,8 +22,16 @@ export class NestedFormCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('nested-form', 'reactive/nested-form-example-reactive-preview.component.html', 'HTML'),
 				this.getSnippet('nested-form', 'reactive/nested-form-example-reactive-preview.component.ts', 'TS'),
-				this.getSnippet('nested-form', 'reactive/child/nested-form-example-reactive-preview-child.component.html', 'HTML (child)'),
-				this.getSnippet('nested-form', 'reactive/child/nested-form-example-reactive-preview-child.component.ts', 'TS (child)'),
+				this.getSnippet(
+					'nested-form',
+					'reactive/child/nested-form-example-reactive-preview-child.component.html',
+					'HTML (child)'
+				),
+				this.getSnippet(
+					'nested-form',
+					'reactive/child/nested-form-example-reactive-preview-child.component.ts',
+					'TS (child)'
+				),
 				this.getSnippet(
 					'nested-form',
 					'reactive/grandchild/nested-form-example-reactive-preview-grandchild.component.html',
@@ -34,16 +42,24 @@ export class NestedFormCodeExamplesComponent extends CodeExamples {
 					'reactive/grandchild/nested-form-example-reactive-preview-grandchild.component.ts',
 					'TS (grandchild)'
 				),
-				this.getSnippet('nested-form', 'nested-form-example-preview.scss', 'SCSS')
-			]
+				this.getSnippet('nested-form', 'nested-form-example-preview.scss', 'SCSS'),
+			],
 		},
 		{
 			component: NestedFormExampleTemplateDrivenPreviewComponent,
 			idParts: ['template', 'driven'],
 			title: 'Template driven',
 			snippets: [
-				this.getSnippet('nested-form', 'template-driven/nested-form-example-template-driven-preview.component.html', 'HTML'),
-				this.getSnippet('nested-form', 'template-driven/nested-form-example-template-driven-preview.component.ts', 'TS'),
+				this.getSnippet(
+					'nested-form',
+					'template-driven/nested-form-example-template-driven-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'nested-form',
+					'template-driven/nested-form-example-template-driven-preview.component.ts',
+					'TS'
+				),
 				this.getSnippet(
 					'nested-form',
 					'template-driven/child/nested-form-example-template-driven-preview-child.component.html',
@@ -64,8 +80,8 @@ export class NestedFormCodeExamplesComponent extends CodeExamples {
 					'template-driven/grandchild/nested-form-example-template-driven-preview-grandchild.component.ts',
 					'TS (grandchild)'
 				),
-				this.getSnippet('nested-form', 'nested-form-example-preview.scss', 'SCSS')
-			]
-		}
+				this.getSnippet('nested-form', 'nested-form-example-preview.scss', 'SCSS'),
+			],
+		},
 	];
 }

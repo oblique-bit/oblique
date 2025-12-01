@@ -7,7 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
 	selector: 'app-dialog-example-default',
 	imports: [MatButtonModule, MatDialogModule, ObButtonModule],
-	templateUrl: './dialog-example-default.component.html'
+	templateUrl: './dialog-example-default.component.html',
 })
 export class DialogExampleDefaultComponent {
 	private readonly dialog = inject(MatDialog);

@@ -10,12 +10,12 @@ describe('ErrorMessagesService', () => {
 		controlMock = {
 			errors: {
 				bar: {
-					limit: 1
+					limit: 1,
 				},
 				fuu: {
-					valid: false
-				}
-			}
+					valid: false,
+				},
+			},
 		};
 		result = service.createMessages(controlMock);
 	});

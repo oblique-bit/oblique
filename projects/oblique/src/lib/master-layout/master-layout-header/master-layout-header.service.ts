@@ -2,7 +2,11 @@ import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObIServiceNavigationConfigWithNotice} from '../master-layout.model';
+import {
+	ObEMasterLayoutEventValues,
+	ObIMasterLayoutEvent,
+	ObIServiceNavigationConfigWithNotice,
+} from '../master-layout.model';
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutHeaderService {
@@ -31,7 +35,7 @@ export class ObMasterLayoutHeaderService {
 		this.isCustomInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.HEADER_IS_CUSTOM,
-			value
+			value,
 		});
 	}
 
@@ -43,7 +47,7 @@ export class ObMasterLayoutHeaderService {
 		this.isSmallInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.HEADER_IS_SMALL,
-			value
+			value,
 		});
 	}
 
@@ -55,7 +59,7 @@ export class ObMasterLayoutHeaderService {
 		this.isStickyInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.HEADER_IS_STICKY,
-			value
+			value,
 		});
 	}
 
@@ -73,7 +77,7 @@ export class ObMasterLayoutHeaderService {
 		this.serviceNavigationConfigurationInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION,
-			config: value
+			config: value,
 		});
 	}
 

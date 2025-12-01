@@ -6,6 +6,6 @@ import {RouterLink} from '@angular/router';
 	imports: [RouterLink],
 	templateUrl: './invalid.component.html',
 	styleUrl: './invalid.component.scss',
-	host: {class: 'content-page'}
+	host: {class: 'content-page'},
 })
 export class InvalidComponent {}

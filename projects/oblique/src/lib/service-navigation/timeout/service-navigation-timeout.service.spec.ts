@@ -22,7 +22,7 @@ describe('ServiceNavigationTimeout', () => {
 	const getLoginStateEmitter = new BehaviorSubject<string>('');
 	const fakeHeaderService = {
 		getLogoutUrl$: jest.fn(() => of(fakeLogoutUrl)),
-		getLoginState$: () => getLoginStateEmitter.asObservable()
+		getLoginState$: () => getLoginStateEmitter.asObservable(),
 	};
 	const validCookieTime = '999999999999999';
 	const expiredCookieTime = '0';
@@ -36,15 +36,15 @@ describe('ServiceNavigationTimeout', () => {
 	const fakeRedirectorService = {
 		redirectOrEmit: jest.fn(),
 		shouldRedirect: jest.fn(() => true),
-		logoutCookieName
+		logoutCookieName,
 	};
 	const fakeApiService = {
-		refreshPamsToken: jest.fn(() => of())
+		refreshPamsToken: jest.fn(() => of()),
 	};
 	const fakeCookieService = {
 		deleteCookie: jest.fn(() => of()),
 		setShortCookie: jest.fn(() => of()),
-		setCookie: jest.fn(() => of())
+		setCookie: jest.fn(() => of()),
 	};
 
 	beforeEach(() => {
@@ -56,14 +56,14 @@ describe('ServiceNavigationTimeout', () => {
 				{provide: ObServiceNavigationService, useValue: fakeHeaderService},
 				{
 					provide: ObServiceNavigationTimeoutCookieActivityService,
-					useValue: {activityCookieName: eportalLastUserActivityCookieName, initialize: jest.fn()}
+					useValue: {activityCookieName: eportalLastUserActivityCookieName, initialize: jest.fn()},
 				},
 				{provide: ObServiceNavigationTimeoutRedirectorService, useValue: fakeRedirectorService},
 				{provide: ObServiceNavigationTimeoutApiService, useValue: fakeApiService},
 				ObServiceNavigationTimeoutReturnUrlService,
 				ObServiceNavigationTimeoutCookieService,
-				{provide: WINDOW, useValue: fakeWindow}
-			]
+				{provide: WINDOW, useValue: fakeWindow},
+			],
 		});
 		TestBed.overrideProvider(ObServiceNavigationTimeoutCookieService, {useValue: fakeCookieService});
 

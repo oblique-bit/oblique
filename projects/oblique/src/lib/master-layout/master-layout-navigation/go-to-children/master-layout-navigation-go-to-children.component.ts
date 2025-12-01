@@ -13,7 +13,7 @@ import {TranslateModule} from '@ngx-translate/core';
 	templateUrl: './master-layout-navigation-go-to-children.component.html',
 	styleUrls: ['./master-layout-navigation-go-to-children.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-navigation-go-to-children'}
+	host: {class: 'ob-master-layout-navigation-go-to-children'},
 })
 export class ObMasterLayoutNavigationGoToChildrenComponent implements OnChanges {
 	@HostBinding('class.hide') hide = false;

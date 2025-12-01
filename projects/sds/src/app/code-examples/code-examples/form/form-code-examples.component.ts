@@ -14,7 +14,7 @@ import {DatepickerExampleOtherOptionsPreviewComponent} from './previews/other-op
 	selector: 'app-code-example-form',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'form-examples';
@@ -26,8 +26,8 @@ export class FormCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('form', 'sizes/form-example-sizes-preview.component.html', 'HTML'),
 				this.getSnippet('form', 'sizes/form-example-sizes-preview.component.ts', 'TS'),
-				this.getSnippet('form', 'sizes/form-example-sizes-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('form', 'sizes/form-example-sizes-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: FormExampleStatesPreviewComponent,
@@ -36,8 +36,8 @@ export class FormCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('form', 'states/form-example-states-preview.component.html', 'HTML'),
 				this.getSnippet('form', 'states/form-example-states-preview.component.ts', 'TS'),
-				this.getSnippet('form', 'states/form-example-states-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('form', 'states/form-example-states-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: FormExampleHorizontalPreviewComponent,
@@ -45,8 +45,8 @@ export class FormCodeExamplesComponent extends CodeExamples {
 			title: 'Horizontal',
 			snippets: [
 				this.getSnippet('form', 'horizontal/form-example-horizontal-preview.component.html', 'HTML'),
-				this.getSnippet('form', 'horizontal/form-example-horizontal-preview.component.ts', 'TS')
-			]
+				this.getSnippet('form', 'horizontal/form-example-horizontal-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: FormExampleInputClearPreviewComponent,
@@ -56,19 +56,31 @@ export class FormCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.html', 'HTML'),
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.ts', 'TS'),
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: FormExampleInputPrefixesAndSuffixesPreviewComponent,
 			idParts: ['input', 'prefixes', 'and', 'suffixes'],
 			title: 'Input prefixes & suffixes',
 			snippets: [
-				this.getSnippet('form', 'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.html', 'HTML'),
-				this.getSnippet('form', 'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.ts', 'TS'),
-				this.getSnippet('form', 'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet(
+					'form',
+					'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'form',
+					'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.ts',
+					'TS'
+				),
+				this.getSnippet(
+					'form',
+					'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.scss',
+					'SCSS'
+				),
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: DatepickerExampleOtherOptionsPreviewComponent,
@@ -77,8 +89,8 @@ export class FormCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('form', 'other-options/datepicker-example-other-options-preview.component.html', 'HTML'),
 				this.getSnippet('form', 'other-options/datepicker-example-other-options-preview.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

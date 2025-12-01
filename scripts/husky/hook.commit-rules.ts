@@ -59,18 +59,22 @@ class HookCommitRules {
 	private static checkHeaderFormat(header: string): void {
 		Log.info('Check header format');
 		if (!/^[a-z-]+(?:\([a-z-/]+(?:\/[a-z-]+)?\))?:\s.+$/.test(header)) {
-			HookCommitRules.fatal(`1st line matches neither the "type(package/scope): subject" nor the "type(package): subject" formats.`);
+			HookCommitRules.fatal(
+				`1st line matches neither the "type(package/scope): subject" nor the "type(package): subject" formats.`
+			);
 		}
 	}
 
 	private static extractHeaderParts(header: string, contributing: string): Header {
-		const result = /^(?<type>[a-z-]+)(?:\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?)?:\s(?<subject>.+)$/.exec(header)?.groups;
+		const result = /^(?<type>[a-z-]+)(?:\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?)?:\s(?<subject>.+)$/.exec(
+			header
+		)?.groups;
 		const hasTypeScopes = HookCommitRules.hasTypeScopes(contributing, result.type);
 		return {
 			type: result.type,
 			pkg: HookCommitRules.getPackage(result.pkg, result.scope, hasTypeScopes),
 			scope: HookCommitRules.getScope(result.pkg, result.scope, hasTypeScopes),
-			subject: result.subject
+			subject: result.subject,
 		};
 	}
 
@@ -102,7 +106,8 @@ class HookCommitRules {
 	private static checkType(type: string, types: string[]): void {
 		Log.info('Check header type');
 		if (!types.includes(type)) {
-			HookCommitRules.fatal(`1st line has an invalid type '${type}'. Allowed types are: ${HookCommitRules.join(types)}.`);
+			const message = `1st line has an invalid type '${type}'. Allowed types are: ${HookCommitRules.join(types)}.`;
+			HookCommitRules.fatal(message);
 		}
 	}
 
@@ -110,7 +115,8 @@ class HookCommitRules {
 		Log.info('Check header package');
 		if (pkg) {
 			if (!packages.includes(pkg)) {
-				HookCommitRules.fatal(`1st line has an invalid package '${pkg}'. Allowed packages are: ${HookCommitRules.join(packages)}.`);
+				const message = `1st line has an invalid package '${pkg}'. Allowed packages are: ${HookCommitRules.join(packages)}.`;
+				HookCommitRules.fatal(message);
 			}
 
 			const filePaths = Git.getChangedFileNames()
@@ -123,7 +129,7 @@ class HookCommitRules {
 							'angular.json',
 							'CONTRIBUTING.md',
 							'README.md',
-							'projects/stylesBuilder/oblique-components.scss'
+							'projects/stylesBuilder/oblique-components.scss',
 						].includes(filePath)
 				)
 				.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
@@ -210,7 +216,8 @@ class HookCommitRules {
 	}
 
 	private static extractList(contributing: string, type: string): string[] {
-		const result = new RegExp(`(?<=# <a name="${type.toLowerCase()}"><\\/a> ${type}.*)(?<block>- .*?^$)`, 'sm').exec(contributing);
+		const regexp = new RegExp(`(?<=# <a name="${type.toLowerCase()}"><\\/a> ${type}.*)(?<block>- .*?^$)`, 'sm');
+		const result = regexp.exec(contributing);
 		return result
 			? result.groups.block
 					.split('\n')

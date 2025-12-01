@@ -5,7 +5,7 @@ import {appVersion} from '@oblique/version';
 	selector: 'sb-home',
 	standalone: false,
 	templateUrl: './home.page.html',
-	styleUrl: './home.page.scss'
+	styleUrl: './home.page.scss',
 })
 export class HomePageComponent {
 	version = appVersion;

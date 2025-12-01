@@ -3,13 +3,13 @@ import {Injectable} from '@angular/core';
 import {
 	ObIServiceNavigationApplicationIdentifier,
 	ObIServiceNavigationApplicationInfo,
-	ObIServiceNavigationResponse
+	ObIServiceNavigationResponse,
 } from './service-navigation.api.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObServiceNavigationApplicationsApiService {
 	private readonly resourceUrl = 'api/widget/applications';

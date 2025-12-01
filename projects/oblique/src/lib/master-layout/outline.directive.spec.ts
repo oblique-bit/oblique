@@ -5,7 +5,7 @@ import {By} from '@angular/platform-browser';
 
 @Component({
 	standalone: false,
-	template: `<ob-master-layout />`
+	template: `<ob-master-layout />`,
 })
 class OutLineDirectiveTestComponent {}
 
@@ -15,7 +15,7 @@ describe(ObOutlineDirective.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [OutLineDirectiveTestComponent, ObOutlineDirective]
+			declarations: [OutLineDirectiveTestComponent, ObOutlineDirective],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(OutLineDirectiveTestComponent);
@@ -85,7 +85,7 @@ describe(ObOutlineDirective.name, () => {
 
 		describe.each([
 			{eventName: 'mousedown', eventObject: new MouseEvent('mousedown')},
-			{eventName: 'keydown', eventObject: new KeyboardEvent('keydown')}
+			{eventName: 'keydown', eventObject: new KeyboardEvent('keydown')},
 		])('on $eventName', ({eventObject}) => {
 			test(`that it calls ${ObOutlineDirective.prototype.removeOutline.name} once`, () => {
 				window.dispatchEvent(eventObject);

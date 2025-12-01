@@ -15,7 +15,7 @@ describe(PopoverCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [PopoverCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [{provide: WINDOW, useValue: window}]
+			providers: [{provide: WINDOW, useValue: window}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(PopoverCodeExamplesComponent);

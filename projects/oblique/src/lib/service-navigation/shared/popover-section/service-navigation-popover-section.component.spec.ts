@@ -13,7 +13,7 @@ import {ObIsCurrentUrlPipe} from './is-current-url.pipe';
 
 @Component({
 	standalone: false,
-	template: ''
+	template: '',
 })
 class TestComponent {}
 
@@ -27,7 +27,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 		await TestBed.configureTestingModule({
 			imports: [ObMockTranslatePipe, MatIconModule, NgOptimizedImage, ObIsCurrentUrlPipe],
 			declarations: [ObServiceNavigationPopoverSectionComponent, TestComponent],
-			providers: [{provide: WINDOW, useValue: fakeWindow}]
+			providers: [{provide: WINDOW, useValue: fakeWindow}],
 		}).compileComponents();
 	});
 
@@ -71,7 +71,10 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 			describe('image', () => {
 				it('should not exists', async () => {
 					const testFixture = TestBed.createComponent(TestComponent);
-					harness = await TestbedHarnessEnvironment.harnessForFixture(testFixture, ObServiceNavigationPopOverSectionHarness);
+					harness = await TestbedHarnessEnvironment.harnessForFixture(
+						testFixture,
+						ObServiceNavigationPopOverSectionHarness
+					);
 					expect(await harness.getHeaderImage()).toBeNull();
 				});
 			});
@@ -123,7 +126,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 					{url: 'link1', label: 'Label 1'},
 					{url: 'link2', label: 'Label 2', icon: 'cog'},
 					{url: 'link3', label: 'Label 3', isInternalLink: true},
-					{url: 'link4', label: 'Label 4', ariaLabel: {text: 'some.key', parameters: null}}
+					{url: 'link4', label: 'Label 4', ariaLabel: {text: 'some.key', parameters: null}},
 				];
 				let links: TestElement[];
 				beforeEach(async () => {
@@ -233,7 +236,10 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 					`<ob-service-navigation-popover-section><img obHeaderPrefix alt="altText" ngSrc="http://image-src" [height]="500" [width]="500" /></ob-service-navigation-popover-section>`
 				);
 				const testFixture = TestBed.createComponent(TestComponent);
-				harness = await TestbedHarnessEnvironment.harnessForFixture(testFixture, ObServiceNavigationPopOverSectionHarness);
+				harness = await TestbedHarnessEnvironment.harnessForFixture(
+					testFixture,
+					ObServiceNavigationPopOverSectionHarness
+				);
 				image = await harness.getHeaderImage();
 			});
 
@@ -243,7 +249,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 
 			it.each([
 				{property: 'src', value: 'http://image-src'},
-				{property: 'alt', value: 'altText'}
+				{property: 'alt', value: 'altText'},
 			])('should have "$value" as "$property" property', async ({property, value}) => {
 				expect(await image.getAttribute(property)).toBe(value);
 			});
@@ -256,7 +262,10 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 					`<ob-service-navigation-popover-section><div obContent></div></ob-service-navigation-popover-section>`
 				);
 				const testFixture = TestBed.createComponent(TestComponent);
-				harness = await TestbedHarnessEnvironment.harnessForFixture(testFixture, ObServiceNavigationPopOverSectionHarness);
+				harness = await TestbedHarnessEnvironment.harnessForFixture(
+					testFixture,
+					ObServiceNavigationPopOverSectionHarness
+				);
 				expect(await harness.getAlternateContent()).toBeTruthy();
 			});
 		});

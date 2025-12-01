@@ -11,9 +11,17 @@ import {ObButtonModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-feedback',
-	imports: [AsyncPipe, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, ObButtonModule, ReactiveFormsModule],
+	imports: [
+		AsyncPipe,
+		MatButtonModule,
+		MatDialogModule,
+		MatFormFieldModule,
+		MatInputModule,
+		ObButtonModule,
+		ReactiveFormsModule,
+	],
 	templateUrl: './feedback-form.component.html',
-	styleUrl: './feedback-form.component.scss'
+	styleUrl: './feedback-form.component.scss',
 })
 export class FeedbackFormComponent {
 	readonly formGroup = new FormGroup({});
@@ -22,7 +30,7 @@ export class FeedbackFormComponent {
 		description$: undefined,
 		url$: undefined,
 		name$: undefined,
-		email$: undefined
+		email$: undefined,
 	};
 	readonly charactersUsed$: Observable<number>;
 	readonly body$ = this.formGroup.valueChanges.pipe(
@@ -38,7 +46,7 @@ export class FeedbackFormComponent {
 		{name: 'description', validators: [Validators.required, Validators.minLength(25), Validators.maxLength(3000)]},
 		{name: 'url', validators: [Validators.required], defaultValue: window.location.pathname},
 		{name: 'name', validators: [Validators.required]},
-		{name: 'email', validators: [Validators.required, Validators.email]}
+		{name: 'email', validators: [Validators.required, Validators.email]},
 	];
 	private readonly dialogRef = inject(MatDialogRef<any>);
 

@@ -31,10 +31,10 @@ describe('ObServiceNavigationProfileComponent', () => {
 				MatTooltipModule,
 				NgOptimizedImage,
 				ObIsCurrentUrlPipe,
-				TranslateModule
+				TranslateModule,
 			],
 			declarations: [ObServiceNavigationProfileComponent, ObServiceNavigationPopoverSectionComponent],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationProfileComponent);
@@ -59,14 +59,16 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 		describe.each([
 			{name: '', header: 'i18n.oblique.service-navigation.profile.guest'},
-			{name: 'John Doe', header: 'John Doe'}
+			{name: 'John Doe', header: 'John Doe'},
 		])('set to "$name"', ({name, header}) => {
 			it(`should show "${header}" as header`, fakeAsync(async () => {
 				component.userName = name;
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
-				const section = fixture.debugElement.query(By.directive(ObServiceNavigationPopoverSectionComponent)).componentInstance;
+				const section = fixture.debugElement.query(
+					By.directive(ObServiceNavigationPopoverSectionComponent)
+				).componentInstance;
 				expect(section.header).toBe(header);
 			}));
 		});
@@ -79,14 +81,16 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 		describe.each([
 			{url: '', label: ''},
-			{url: 'Http://settings-url', label: 'settings url', isInternalLink: true}
+			{url: 'Http://settings-url', label: 'settings url', isInternalLink: true},
 		])('set to "%s"', url => {
 			it(`should show "${url.url}" as link`, fakeAsync(async () => {
 				component.profileUrls = [url];
 				await harness.openPopover();
 				fixture.detectChanges();
 				tick();
-				const section = fixture.debugElement.query(By.directive(ObServiceNavigationPopoverSectionComponent)).componentInstance;
+				const section = fixture.debugElement.query(
+					By.directive(ObServiceNavigationPopoverSectionComponent)
+				).componentInstance;
 				expect(section.links[0].url).toBe(url.url);
 			}));
 		});
@@ -102,7 +106,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 		it.each([
 			{attribute: 'id', value: 'service-navigation-toggle-profile-icon-button'},
 			{attribute: 'obButton', value: 'secondary'},
-			{attribute: 'mat-icon-button', value: ''}
+			{attribute: 'mat-icon-button', value: ''},
 		])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
 			expect(await button.getAttribute(attribute)).toBe(value);
 		});
@@ -152,7 +156,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 			beforeEach(fakeAsync(async () => {
 				component.links = [
 					{url: 'url_1', label: 'URL 1'},
-					{url: 'url_2', label: 'URL 2'}
+					{url: 'url_2', label: 'URL 2'},
 				];
 				await harness.openPopover();
 				fixture.detectChanges();
@@ -181,14 +185,14 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 					it.each([
 						{property: 'url', value: 'url_1'},
-						{property: 'label', value: 'URL 1'}
+						{property: 'label', value: 'URL 1'},
 					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
 						expect(section.links[0][property]).toBe(value);
 					});
 
 					it.each([
 						{property: 'url', value: 'url_2'},
-						{property: 'label', value: 'URL 2'}
+						{property: 'label', value: 'URL 2'},
 					])('should have "$value" as "$property" property on the second link', ({property, value}) => {
 						expect(section.links[1][property]).toBe(value);
 					});
@@ -212,7 +216,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 			{attribute: 'placement', value: 'bottom'},
 			{attribute: 'id', value: 'service-navigation-toggle-profile-icon-button'},
 			{attribute: 'obButton', value: 'secondary'},
-			{attribute: 'mat-icon-button', value: ''}
+			{attribute: 'mat-icon-button', value: ''},
 		])('should have an "$attribute" attribute set to "$value"', async ({attribute, value}) => {
 			expect(await button.getAttribute(attribute)).toBe(value);
 		});
@@ -242,7 +246,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 		describe('popover', () => {
 			const fakeProfileUrls = [
 				{url: 'http://fakeUrl1.url', label: 'url1'},
-				{url: 'http://fakeUrl2.url', label: 'url2'}
+				{url: 'http://fakeUrl2.url', label: 'url2'},
 			];
 
 			beforeEach(fakeAsync(async () => {

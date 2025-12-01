@@ -10,7 +10,7 @@ export class ObServiceNavigationTimeoutApiService {
 	refreshPamsToken(environmentUrl: string): Observable<void> {
 		return this.httpClient
 			.get(environmentUrl + this.resourceUrl, {
-				withCredentials: true
+				withCredentials: true,
 			})
 			.pipe(map(() => undefined));
 	}

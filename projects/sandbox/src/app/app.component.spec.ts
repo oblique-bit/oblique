@@ -12,7 +12,7 @@ describe('AppComponent', () => {
 			declarations: [AppComponent],
 			imports: [RouterTestingModule, TranslateModule],
 			providers: [provideNativeDateAdapter(), provideObliqueTestingConfiguration()],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 		}).compileComponents();
 	});
 

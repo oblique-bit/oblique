@@ -7,7 +7,14 @@
 
 <mat-form-field>
 	<mat-label>Minlength with input clear</mat-label>
-	<input #minlengthControl="ngModel" type="text" matInput placeholder="Minimum length" minlength="3" [(ngModel)]="minlengthModel" />
+	<input
+		#minlengthControl="ngModel"
+		type="text"
+		matInput
+		placeholder="Minimum length"
+		minlength="3"
+		[(ngModel)]="minlengthModel"
+	/>
 	<button type="button" [obInputClear]="minlengthControl">
 		<mat-icon svgIcon="xmark_circle" />
 		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
@@ -40,7 +47,14 @@
 
 	<mat-form-field>
 		<mat-label>Mandatory LG with input clear</mat-label>
-		<input #mandatoryLgControl="ngModel" type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatoryLgModel" />
+		<input
+			#mandatoryLgControl="ngModel"
+			type="text"
+			matInput
+			placeholder="Mandatory"
+			required
+			[(ngModel)]="mandatoryLgModel"
+		/>
 		<button type="button" [obInputClear]="mandatoryLgControl">
 			<mat-icon svgIcon="xmark_circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
@@ -56,7 +70,14 @@
 
 	<mat-form-field>
 		<mat-label>Mandatory SM with input clear</mat-label>
-		<input #mandatorySmControl="ngModel" type="text" matInput placeholder="Mandatory" required [(ngModel)]="mandatorySmModel" />
+		<input
+			#mandatorySmControl="ngModel"
+			type="text"
+			matInput
+			placeholder="Mandatory"
+			required
+			[(ngModel)]="mandatorySmModel"
+		/>
 		<button type="button" [obInputClear]="mandatorySmControl">
 			<mat-icon svgIcon="xmark_circle" />
 			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
@@ -73,7 +94,12 @@
 
 <mat-form-field>
 	<mat-label>Datepicker with input clear</mat-label>
-	<input #datepickerControl="ngModel" matInput [matDatepicker]="datepickerWithInputClear" [(ngModel)]="datepickerModel" />
+	<input
+		#datepickerControl="ngModel"
+		matInput
+		[matDatepicker]="datepickerWithInputClear"
+		[(ngModel)]="datepickerModel"
+	/>
 	<mat-datepicker-toggle matSuffix [for]="datepickerWithInputClear" />
 	<mat-datepicker #datepickerWithInputClear />
 	<button type="button" [obInputClear]="datepickerControl" [datePickerRef]="datepickerWithInputClear">

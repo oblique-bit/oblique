@@ -5,7 +5,7 @@ import type {MatTooltip, TooltipPosition} from '@angular/material/tooltip';
 	selector: 'sb-tooltip',
 	standalone: false,
 	templateUrl: './tooltip.component.html',
-	styleUrl: './tooltip.component.scss'
+	styleUrl: './tooltip.component.scss',
 })
 export class TooltipComponent {
 	message = 'Tooltip information text';
@@ -29,7 +29,7 @@ export class TooltipComponent {
 			this.TOOLTIP_POSITION_ABOVE,
 			this.TOOLTIP_POSITION_BELOW,
 			this.TOOLTIP_POSITION_LEFT,
-			this.TOOLTIP_POSITION_RIGHT
+			this.TOOLTIP_POSITION_RIGHT,
 		];
 		this.position = this.positionOptions[0];
 	}

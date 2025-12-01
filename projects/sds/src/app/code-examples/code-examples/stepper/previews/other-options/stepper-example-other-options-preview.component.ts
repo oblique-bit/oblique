@@ -18,10 +18,10 @@ import {TranslateModule} from '@ngx-translate/core';
 		MatStepperModule,
 		ObButtonModule,
 		ReactiveFormsModule,
-		TranslateModule
+		TranslateModule,
 	],
 	templateUrl: './stepper-example-other-options-preview.component.html',
-	styleUrl: './stepper-example-other-options-preview.component.scss'
+	styleUrl: './stepper-example-other-options-preview.component.scss',
 })
 export class StepperExampleOtherOptionsPreviewComponent {
 	firstFormGroup: UntypedFormGroup;
@@ -30,10 +30,10 @@ export class StepperExampleOtherOptionsPreviewComponent {
 	constructor() {
 		const formBuilder = inject(UntypedFormBuilder);
 		this.firstFormGroup = formBuilder.group({
-			firstCtrl: ['', Validators.required]
+			firstCtrl: ['', Validators.required],
 		});
 		this.secondFormGroup = formBuilder.group({
-			secondCtrl: ['', Validators.required]
+			secondCtrl: ['', Validators.required],
 		});
 	}
 }

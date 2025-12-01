@@ -1,6 +1,6 @@
 export const urlConst = {
 	urlParams: {
 		selectedSlug: 'selectedSlug',
-		selectedTab: 'selectedTab'
-	}
+		selectedTab: 'selectedTab',
+	},
 };

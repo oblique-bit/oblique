@@ -19,7 +19,7 @@ describe(IconsCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [CodeExampleComponent, CommonModule, IconsCodeExamplesComponent, IdPipe],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(IconsCodeExamplesComponent);
@@ -63,7 +63,9 @@ describe(IconsCodeExamplesComponent.name, () => {
 
 		test(`that there are 279 ${MatIcon.name}s`, () => {
 			expect(
-				fixture.debugElement.query(By.css('app-icons-example-icons-gallery-preview div.gallery')).queryAll(By.directive(MatIcon)).length
+				fixture.debugElement
+					.query(By.css('app-icons-example-icons-gallery-preview div.gallery'))
+					.queryAll(By.directive(MatIcon)).length
 			).toBe(279);
 		});
 
@@ -80,7 +82,9 @@ describe(IconsCodeExamplesComponent.name, () => {
 			input.nativeElement.dispatchEvent(new Event('input'));
 			fixture.detectChanges();
 			expect(
-				fixture.debugElement.query(By.css('app-icons-example-icons-gallery-preview div.gallery')).queryAll(By.directive(MatIcon)).length
+				fixture.debugElement
+					.query(By.css('app-icons-example-icons-gallery-preview div.gallery'))
+					.queryAll(By.directive(MatIcon)).length
 			).toBe(99);
 		});
 
@@ -91,7 +95,9 @@ describe(IconsCodeExamplesComponent.name, () => {
 			options[1].click();
 			fixture.detectChanges();
 			expect(
-				fixture.debugElement.query(By.css('app-icons-example-icons-gallery-preview div.gallery')).queryAll(By.directive(MatIcon)).length
+				fixture.debugElement
+					.query(By.css('app-icons-example-icons-gallery-preview div.gallery'))
+					.queryAll(By.directive(MatIcon)).length
 			).toBe(10);
 		});
 
@@ -104,7 +110,9 @@ describe(IconsCodeExamplesComponent.name, () => {
 			options[1].click();
 			fixture.detectChanges();
 			expect(
-				fixture.debugElement.query(By.css('app-icons-example-icons-gallery-preview div.gallery')).queryAll(By.directive(MatIcon)).length
+				fixture.debugElement
+					.query(By.css('app-icons-example-icons-gallery-preview div.gallery'))
+					.queryAll(By.directive(MatIcon)).length
 			).toBe(8);
 		});
 	});

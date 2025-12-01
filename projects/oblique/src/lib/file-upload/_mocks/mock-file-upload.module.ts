@@ -13,6 +13,6 @@ export {ObMockDropZoneComponent} from './mock-drop-zone.component';
  */
 @NgModule({
 	imports: [ObMockDropZoneComponent, ObMockFileInfoComponent, ObMockFileUploadComponent],
-	exports: [ObMockFileInfoComponent, ObMockFileUploadComponent]
+	exports: [ObMockFileInfoComponent, ObMockFileUploadComponent],
 })
 export class ObMockFileUploadModule {}

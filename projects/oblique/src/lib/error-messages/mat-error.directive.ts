@@ -9,7 +9,7 @@ import {Subject} from 'rxjs';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'mat-error',
-	standalone: true
+	standalone: true,
 })
 export class ObMatErrorDirective implements OnInit, OnDestroy {
 	private readonly pipe: ObTranslateParamsPipe;

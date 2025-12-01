@@ -13,7 +13,7 @@ describe(BreakpointsCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [BreakpointsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [BreakpointsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(BreakpointsCodeExamplesComponent);

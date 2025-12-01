@@ -6,6 +6,6 @@ import {ObSelectableModule} from '@oblique/oblique';
 	selector: 'app-selectable-example-disabled-preview',
 	imports: [AsyncPipe, ObSelectableModule],
 	templateUrl: './selectable-example-disabled-preview.component.html',
-	styleUrl: '../selectable-example-preview.component.scss'
+	styleUrl: '../selectable-example-preview.component.scss',
 })
 export class SelectableExampleDisabledPreviewComponent {}

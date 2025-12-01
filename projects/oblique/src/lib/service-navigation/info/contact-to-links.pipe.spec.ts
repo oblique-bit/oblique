@@ -16,17 +16,33 @@ describe('ObContactToLinksPipe', () => {
 			{
 				description: 'an empty array when all elements are empty strings',
 				values: {email: '', formUrl: '', tel: ''},
-				result: []
+				result: [],
 			},
 			{
 				description: 'an email only',
 				values: {email: 'test@test.com'},
-				result: [{url: 'mailto:test@test.com', label: 'test@test.com', icon: 'mail', isInternalLink: true, extraText: undefined}]
+				result: [
+					{
+						url: 'mailto:test@test.com',
+						label: 'test@test.com',
+						icon: 'mail',
+						isInternalLink: true,
+						extraText: undefined,
+					},
+				],
 			},
 			{
 				description: 'an email and an undefined phone number',
 				values: {email: 'test@test.com', phone: undefined},
-				result: [{url: 'mailto:test@test.com', label: 'test@test.com', icon: 'mail', isInternalLink: true, extraText: undefined}]
+				result: [
+					{
+						url: 'mailto:test@test.com',
+						label: 'test@test.com',
+						icon: 'mail',
+						isInternalLink: true,
+						extraText: undefined,
+					},
+				],
 			},
 			{
 				description: 'a contact URL only',
@@ -36,9 +52,9 @@ describe('ObContactToLinksPipe', () => {
 						url: 'http://example.com',
 						label: 'i18n.oblique.service-navigation.info.contact.form',
 						isInternalLink: false,
-						extraText: undefined
-					}
-				]
+						extraText: undefined,
+					},
+				],
 			},
 			{
 				description: 'a phone number only',
@@ -51,11 +67,11 @@ describe('ObContactToLinksPipe', () => {
 						isInternalLink: true,
 						ariaLabel: {
 							text: 'i18n.oblique.service-navigation.section.phone.aria-label',
-							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'}
+							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'},
 						},
-						extraText: undefined
-					}
-				]
+						extraText: undefined,
+					},
+				],
 			},
 			{
 				description: 'a phone number and an undefined email',
@@ -68,11 +84,11 @@ describe('ObContactToLinksPipe', () => {
 						icon: 'phone',
 						ariaLabel: {
 							text: 'i18n.oblique.service-navigation.section.phone.aria-label',
-							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'}
+							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'},
 						},
-						extraText: undefined
-					}
-				]
+						extraText: undefined,
+					},
+				],
 			},
 			{
 				description: 'all options',
@@ -82,7 +98,7 @@ describe('ObContactToLinksPipe', () => {
 					phoneText: 'tel text',
 					phone: '+4123456',
 					formUrlText: 'form url text',
-					formUrl: 'http://example.com'
+					formUrl: 'http://example.com',
 				},
 				result: [
 					{
@@ -92,19 +108,25 @@ describe('ObContactToLinksPipe', () => {
 						icon: 'phone',
 						ariaLabel: {
 							text: 'i18n.oblique.service-navigation.section.phone.aria-label',
-							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'}
+							parameters: {phoneNumber: '+, 4, 1, 2, 3, 4, 5, 6'},
 						},
-						extraText: 'tel text'
+						extraText: 'tel text',
 					},
-					{url: 'mailto:test@test.com', label: 'test@test.com', isInternalLink: true, icon: 'mail', extraText: 'email text'},
+					{
+						url: 'mailto:test@test.com',
+						label: 'test@test.com',
+						isInternalLink: true,
+						icon: 'mail',
+						extraText: 'email text',
+					},
 					{
 						isInternalLink: false,
 						label: 'i18n.oblique.service-navigation.info.contact.form',
 						url: 'http://example.com',
-						extraText: 'form url text'
-					}
-				]
-			}
+						extraText: 'form url text',
+					},
+				],
+			},
 		])('should return an url array when provided with $description', ({values, result}) => {
 			expect(pipe.transform(values as ObIServiceNavigationContact)).toEqual(result);
 		});

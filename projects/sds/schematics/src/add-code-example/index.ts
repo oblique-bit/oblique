@@ -13,7 +13,9 @@ function addExampleComponent(options: AddCodeExampleOptions): Rule {
 	return async (tree: Tree, context: SchematicContext) => {
 		const exampleExists = await getExampleDirectoryOrFalse(tree, options.name);
 		if (exampleExists) {
-			context.logger.info(`${colors.symbols.info}\tInfo: Example ${options.name} already exists at path ${colors.yellow(exampleExists)}.`);
+			context.logger.info(
+				`${colors.symbols.info}\tInfo: Example ${options.name} already exists at path ${colors.yellow(exampleExists)}.`
+			);
 			return chain([]);
 		}
 		if (areCodeExampleOptionsValid(options, tree, context)) {
@@ -23,7 +25,7 @@ function addExampleComponent(options: AddCodeExampleOptions): Rule {
 					await createExampleDirectoryPath(tree, options.name)
 				),
 				updateMapper(options.name),
-				() => showAddCodeExampleCompletedMessage(context, options)
+				() => showAddCodeExampleCompletedMessage(context, options),
 			]);
 		}
 		return noop();

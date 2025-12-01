@@ -23,8 +23,8 @@ Object.defineProperty(window, 'getComputedStyle', {
 	value: () => ({
 		getPropertyValue: () => {
 			return '';
-		}
-	})
+		},
+	}),
 });
 
 describe(ObServiceNavigationApplicationsComponent.name, () => {
@@ -43,14 +43,14 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				ObDisableLinkDirective,
 				MatTooltipModule,
 				ObIsCurrentUrlPipe,
-				TranslateModule
+				TranslateModule,
 			],
 			declarations: [
 				ObServiceNavigationApplicationsComponent,
 				ObServiceNavigationPopoverSectionComponent,
-				ObServiceNavigationApplicationNameStatusPipe
+				ObServiceNavigationApplicationNameStatusPipe,
 			],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationApplicationsComponent);
@@ -86,7 +86,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 			it.each([
 				'i18n.oblique.service-navigation.applications.last-used.empty',
-				'i18n.oblique.service-navigation.applications.last-used.description'
+				'i18n.oblique.service-navigation.applications.last-used.description',
 			])('should display translation key %s', key => {
 				const emptyFavoritesText = document.querySelector('#service-navigation-emtpy-last-used-text');
 				expect(emptyFavoritesText.innerHTML).toContain(key);
@@ -103,7 +103,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				component.isLoggedIn = true;
 				component.lastUsedApplications = [
 					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
-					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'}
+					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'},
 				];
 				await harness.openPopover();
 				fixture.detectChanges();
@@ -129,7 +129,9 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				});
 
 				it('should find all favorite services link', () => {
-					const allFavoriteLink = document.querySelector(ObServiceNavigationApplicationsHarness.allFavoriteLinkSelector);
+					const allFavoriteLink = document.querySelector(
+						ObServiceNavigationApplicationsHarness.allFavoriteLinkSelector
+					);
 					expect(allFavoriteLink).toBeTruthy();
 				});
 
@@ -357,7 +359,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 			it.each([
 				'i18n.oblique.service-navigation.applications.favorite.empty',
-				'i18n.oblique.service-navigation.applications.favorite.description'
+				'i18n.oblique.service-navigation.applications.favorite.description',
 			])('should display translation key %s', key => {
 				const emptyFavoritesText = document.querySelector('#service-navigation-emtpy-favorites-text');
 				expect(emptyFavoritesText.innerHTML).toContain(key);
@@ -374,7 +376,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				component.isLoggedIn = true;
 				component.favoriteApplications = [
 					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
-					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'}
+					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'},
 				];
 				await harness.openPopover();
 				fixture.detectChanges();
@@ -395,12 +397,12 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				it.each([
 					{
 						attribute: 'mat-button',
-						value: ''
+						value: '',
 					},
 					{
 						attribute: 'obButton',
-						value: 'secondary'
-					}
+						value: 'secondary',
+					},
 				])('should have attribute "$attribute" to have value "$value"', async ({attribute, value}) => {
 					expect(await button.getAttribute(attribute)).toBe(value);
 				});
@@ -408,12 +410,12 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				it.each([
 					{
 						property: 'href',
-						value: `http://localhost/?favoritesOnly=true`
+						value: `http://localhost/?favoritesOnly=true`,
 					},
 					{
 						property: 'isExternalLink',
-						value: false
-					}
+						value: false,
+					},
 				])('should have property "$attribute" to have value "$value"', async ({property, value}) => {
 					expect(await button.getProperty(property)).toBe(value);
 				});
@@ -662,7 +664,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 			it.each([
 				{attribute: 'obButton', val: 'tertiary'},
-				{attribute: 'mat-icon-button', val: ''}
+				{attribute: 'mat-icon-button', val: ''},
 			])('should have "$val" as "$attribute" attribute', async ({attribute, val}) => {
 				expect(await trigger.getAttribute(attribute)).toBe(val);
 			});
@@ -708,7 +710,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 			it.each([
 				{attribute: 'id', val: 'service-navigation-applications-link'},
-				{attribute: 'href', val: ''}
+				{attribute: 'href', val: ''},
 			])('should have $val as $attribute', async ({attribute, val}) => {
 				expect(await trigger.getAttribute(attribute)).toBe(val);
 			});
@@ -732,7 +734,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				component.isLoggedIn = true;
 				component.lastUsedApplications = [
 					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
-					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'}
+					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'},
 				];
 				fixture.detectChanges();
 				trigger = await harness.getTrigger();
@@ -745,7 +747,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			it.each([
 				{attribute: 'id', val: 'service-navigation-applications-button'},
 				{attribute: 'type', val: 'button'},
-				{attribute: 'placement', val: 'bottom'}
+				{attribute: 'placement', val: 'bottom'},
 			])('should have $val as $attribute', async ({attribute, val}) => {
 				expect(await trigger.getAttribute(attribute)).toBe(val);
 			});
@@ -776,12 +778,12 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					it.each([
 						{
 							attribute: 'mat-button',
-							value: ''
+							value: '',
 						},
 						{
 							attribute: 'obButton',
-							value: 'secondary'
-						}
+							value: 'secondary',
+						},
 					])('should have attribute "$attribute" to have value "$value"', async ({attribute, value}) => {
 						expect(await button.getAttribute(attribute)).toBe(value);
 					});
@@ -789,12 +791,12 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					it.each([
 						{
 							property: 'href',
-							value: `http://localhost/`
+							value: `http://localhost/`,
 						},
 						{
 							property: 'isExternalLink',
-							value: false
-						}
+							value: false,
+						},
 					])('should have property "$attribute" to have value "$value"', async ({property, value}) => {
 						expect(await button.getProperty(property)).toBe(value);
 					});

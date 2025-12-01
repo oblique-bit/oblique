@@ -3,7 +3,7 @@ import {type Observable, Subject} from 'rxjs';
 import type {ObICollapseBreakpoints, ObINavigationLink} from '@oblique/oblique';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class DynamicNavigationService {
 	navigationLinks$: Observable<ObINavigationLink[]>;

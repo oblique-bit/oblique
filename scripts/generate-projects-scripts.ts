@@ -27,10 +27,10 @@ const scripts = Object.entries(config).reduce(
 		...val.reduce(
 			(coll, script) => ({
 				...coll,
-				[`${script}:${key}`]: `npm run ${script} --prefix ./${key}`
+				[`${script}:${key}`]: `npm run ${script} --prefix ./${key}`,
 			}),
 			{}
-		)
+		),
 	}),
 	{}
 );

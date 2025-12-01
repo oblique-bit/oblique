@@ -26,7 +26,7 @@ export class ObSpinnerService {
 		if (this.increase(channel) === 1) {
 			this.broadcast({
 				active: true,
-				channel
+				channel,
 			});
 		}
 	}
@@ -35,7 +35,7 @@ export class ObSpinnerService {
 		if (this.decrease(channel) === 0) {
 			this.broadcast({
 				active: false,
-				channel
+				channel,
 			});
 		}
 	}

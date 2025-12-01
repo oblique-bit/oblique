@@ -6,6 +6,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 	selector: 'app-master-layout-example-stackblitz-link-preview',
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
 	templateUrl: './master-layout-example-stackblitz-link-preview.component.html',
-	styleUrl: '../../../../stackblitz-link.scss'
+	styleUrl: '../../../../stackblitz-link.scss',
 })
 export class MasterLayoutExampleStackblitzLinkPreviewComponent {}

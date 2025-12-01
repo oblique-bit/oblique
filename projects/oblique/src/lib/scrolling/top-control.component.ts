@@ -8,7 +8,7 @@ import {MatIconModule} from '@angular/material/icon';
 	templateUrl: './top-control.component.html',
 	styleUrls: ['./top-control.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-top-control'}
+	host: {class: 'ob-top-control'},
 })
 export class ObTopControlComponent {
 	@Output() readonly scrollToTop = new EventEmitter<void>();

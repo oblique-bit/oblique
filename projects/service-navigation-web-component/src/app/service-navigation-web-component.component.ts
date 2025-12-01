@@ -11,7 +11,7 @@ import {
 	inject,
 	input,
 	numberAttribute,
-	output
+	output,
 } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -21,7 +21,7 @@ import {
 	ObEPamsEnvironment,
 	type ObIServiceNavigationContact,
 	type ObIServiceNavigationLink,
-	type ObLoginState
+	type ObLoginState,
 } from '../../../oblique/src/lib/service-navigation/service-navigation.model';
 import {appVersion} from './version';
 import type {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
@@ -33,17 +33,24 @@ import {outputFromObservable} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ob-service-navigation-web-component',
-	imports: [ObServiceNavigationModule, MatButtonModule, MatTooltipModule, MatIconModule, MatBadgeModule, ObButtonModule],
+	imports: [
+		ObServiceNavigationModule,
+		MatButtonModule,
+		MatTooltipModule,
+		MatIconModule,
+		MatBadgeModule,
+		ObButtonModule,
+	],
 	templateUrl: './service-navigation-web-component.component.html',
 	styleUrls: [
 		'./service-navigation-web-component.component.scss',
 		'../../../oblique/src/styles/scss/oblique-material.scss',
 		'../../../oblique/src/styles/scss/core/components/_popover.scss',
-		'../../../oblique/src/styles/scss/core/components/_external-link.scss'
+		'../../../oblique/src/styles/scss/core/components/_external-link.scss',
 	],
 	encapsulation: ViewEncapsulation.None,
 	providers: [TranslationsService],
-	host: {'ob-version': appVersion}
+	host: {'ob-version': appVersion},
 })
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
 	readonly languageList = input<string>(undefined);
@@ -158,12 +165,13 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		const links = this.parseRawLinks(rawLinks.currentValue, type);
 		return links.map((link, index) => ({
 			url: `${type}-link.${index}.url`,
-			label: `${type}-link.${index}.label`
+			label: `${type}-link.${index}.label`,
 		}));
 	}
 
 	private parseRawLinks(links: unknown, type: 'info' | 'profile'): ObILink[] {
-		const parsedLinks: unknown = typeof links === 'string' ? this.parseAttributeValue(`${type}-links`, links, '[]') : [];
+		const parsedLinks: unknown =
+			typeof links === 'string' ? this.parseAttributeValue(`${type}-links`, links, '[]') : [];
 		return Array.isArray(parsedLinks) ? parsedLinks : [];
 	}
 

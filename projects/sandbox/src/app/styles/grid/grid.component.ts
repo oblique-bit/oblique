@@ -4,6 +4,6 @@ import {Component} from '@angular/core';
 	selector: 'sb-grid',
 	standalone: false,
 	templateUrl: './grid.component.html',
-	styleUrl: './grid.component.scss'
+	styleUrl: './grid.component.scss',
 })
 export class GridComponent {}

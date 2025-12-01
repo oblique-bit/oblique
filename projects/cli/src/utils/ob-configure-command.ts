@@ -35,7 +35,9 @@ export function configureOption(config: ObNewSchemaOption, longFlag: string): Op
 	const longFlagClean = (longFlag || '').trim();
 	const flagValuePlaceholder = config.flagValuePlaceholder?.trim() ?? '';
 
-	const flags = [shortFlag ? `-${shortFlag}` : '', longFlagClean ? `--${longFlagClean}` : ''].filter(flag => Boolean(flag)).join(', ');
+	const flags = [shortFlag ? `-${shortFlag}` : '', longFlagClean ? `--${longFlagClean}` : '']
+		.filter(flag => Boolean(flag))
+		.join(', ');
 
 	const option = new Option([flags, flagValuePlaceholder].filter(Boolean).join(' ').trim(), config.description);
 

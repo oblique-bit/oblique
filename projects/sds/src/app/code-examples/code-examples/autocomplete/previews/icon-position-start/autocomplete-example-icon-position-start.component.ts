@@ -6,7 +6,7 @@ import {JsonPipe} from '@angular/common';
 @Component({
 	selector: 'app-autocomplete-example-icon-position-start',
 	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
-	templateUrl: './autocomplete-example-icon-position-start.component.html'
+	templateUrl: './autocomplete-example-icon-position-start.component.html',
 })
 export class AutocompleteExampleIconPositionStartComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;
@@ -15,18 +15,18 @@ export class AutocompleteExampleIconPositionStartComponent implements AfterViewI
 		{
 			label: ' Graceling realm',
 			disabled: false,
-			iconName: ObEIcon.ADDRESS_BOOK
+			iconName: ObEIcon.ADDRESS_BOOK,
 		},
 		{
 			label: ' Ice-cream',
 			disabled: false,
-			iconName: ObEIcon.ARCHIVE_BOX
+			iconName: ObEIcon.ARCHIVE_BOX,
 		},
 		{
 			label: ' Blue',
 			disabled: false,
-			iconName: ObEIcon.NOTIFICATION
-		}
+			iconName: ObEIcon.NOTIFICATION,
+		},
 	];
 	showSelection($event: ObIAutocompleteInputOption): void {
 		this.selectedOption = $event;

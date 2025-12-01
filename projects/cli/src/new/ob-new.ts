@@ -6,7 +6,7 @@ import {
 	optionDescriptions,
 	projectNamePlaceholder,
 	startObCommand,
-	version
+	version,
 } from '../utils/cli-utils';
 import {addObNewCommandOptions, convertOptionPropertyNames} from '../utils/ob-configure-command';
 import {
@@ -15,7 +15,7 @@ import {
 	createsWorkspaceMessage,
 	immutableOptions,
 	obNewConfig,
-	schema
+	schema,
 } from './ob-new.model';
 
 export function createObNewCommand(): Command<[string], OptionValues> {
@@ -40,12 +40,20 @@ function initializeCommand(command: Command<[string], OptionValues>): Command<[s
 }
 
 function handleAction(options: HandleObNewActionOptions): void {
-	startObCommand(handleObNewActions as (options: HandleObNewActionOptions) => void, 'Oblique CLI ob new completed in', options);
+	startObCommand(
+		handleObNewActions as (options: HandleObNewActionOptions) => void,
+		'Oblique CLI ob new completed in',
+		options
+	);
 }
 
 function handleObNewActions(options: HandleObNewActionOptions): void {
-	let cmdOptions: ObNewOptions<string | boolean> = convertOptionPropertyNames(options.command.opts() as ObNewOptions<string | boolean>);
-	cmdOptions = (cmdOptions.interactive as boolean) ? ({interactive: true} as ObNewOptions<string | boolean>) : cmdOptions;
+	let cmdOptions: ObNewOptions<string | boolean> = convertOptionPropertyNames(
+		options.command.opts() as ObNewOptions<string | boolean>
+	);
+	cmdOptions = (cmdOptions.interactive as boolean)
+		? ({interactive: true} as ObNewOptions<string | boolean>)
+		: cmdOptions;
 	try {
 		runNgNewAngularWorkspace(options.projectName, cmdOptions.interactive as boolean, cmdOptions.prefix as string);
 		if (cmdOptions.interactive as boolean) {
@@ -73,13 +81,17 @@ function runNgNewAngularWorkspace(projectName: string, interactive: boolean, pre
 	execute({
 		name: 'ngNew',
 		projectName,
-		options: interactive ? {...filterValidOptions(baseOptions)} : {...filterValidOptions(baseOptions), prefix}
+		options: interactive ? {...filterValidOptions(baseOptions)} : {...filterValidOptions(baseOptions), prefix},
 	});
 }
 
 function runAddMaterial(dir: string): void {
 	console.info(`[Info]: Adds Angular Material`);
-	execute({name: 'npmInstall', dependencies: ['@angular/material', '@angular/cdk', '@angular/animations'], execSyncOptions: {cwd: dir}});
+	execute({
+		name: 'npmInstall',
+		dependencies: ['@angular/material', '@angular/cdk', '@angular/animations'],
+		execSyncOptions: {cwd: dir},
+	});
 }
 
 function runAddAdditionalDependencies(dir: string): void {
@@ -97,7 +109,12 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 	const filteredOptions = filterValidOptions(commandOptions);
 
 	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: workingDirectory}});
-	execute({name: 'ngAdd', dependency: '@oblique/oblique', options: filteredOptions, execSyncOptions: {cwd: workingDirectory}});
+	execute({
+		name: 'ngAdd',
+		dependency: '@oblique/oblique',
+		options: filteredOptions,
+		execSyncOptions: {cwd: workingDirectory},
+	});
 }
 
 function cleanupDependencies(workingDirectory: string): void {

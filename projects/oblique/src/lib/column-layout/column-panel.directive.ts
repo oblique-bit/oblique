@@ -3,9 +3,9 @@ import {ObTColumnState} from './column-layout.model';
 
 @Directive({
 	selector: '[obColumnPanel]',
-	exportAs: 'obColumnPanel',
+	standalone: false,
 	host: {class: 'ob-column-panel'},
-	standalone: false
+	exportAs: 'obColumnPanel',
 })
 export class ObColumnPanelDirective implements OnInit {
 	@Input() initialState: ObTColumnState;

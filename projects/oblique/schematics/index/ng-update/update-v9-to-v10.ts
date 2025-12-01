@@ -1,6 +1,13 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDependency} from '../ng-add/ng-add-utils';
-import {applyInTree, createSafeRule, infoMigration, removeImport, replaceInFile, setAngularProjectsConfig} from '../utils';
+import {
+	applyInTree,
+	createSafeRule,
+	infoMigration,
+	removeImport,
+	replaceInFile,
+	setAngularProjectsConfig,
+} from '../utils';
 import {ObIMigrations} from './ng-update.model';
 
 export interface IUpdateV9Schema {}
@@ -17,7 +24,7 @@ export class UpdateV9toV10 implements ObIMigrations {
 				this.removeTelemetryFromMainTs(),
 				this.removeBootstrapCSS(),
 				this.removeMaterialCSS(),
-				this.addAngularAuthAndJwtDecodeDependencies()
+				this.addAngularAuthAndJwtDecodeDependencies(),
 			])(tree, context);
 	}
 
@@ -39,7 +46,12 @@ export class UpdateV9toV10 implements ObIMigrations {
 			infoMigration(context, 'Remove ObUseObliqueIcons');
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'ObUseObliqueIcons', '@oblique/oblique');
-				replaceInFile(tree, filePath, /(?:,\s*)?{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*(?:true|false)\s*}/, '');
+				replaceInFile(
+					tree,
+					filePath,
+					/(?:,\s*)?{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*(?:true|false)\s*}/,
+					''
+				);
 			};
 			return applyInTree(tree, apply, '*.ts');
 		});
@@ -51,7 +63,12 @@ export class UpdateV9toV10 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				removeImport(tree, filePath, 'OB_PROJECT_INFO', '@oblique/oblique');
 				replaceInFile(tree, filePath, /import\s+packageInfo\s+from\s+['"]\.\.\/package\.json['"]\s*;\s?/s, '');
-				replaceInFile(tree, filePath, /(?:,\s*)?{\s*provide\s*:\s*OB_PROJECT_INFO\s*,\s*useValue\s*:\s*{.*}\s*,?\s*/s, '');
+				replaceInFile(
+					tree,
+					filePath,
+					/(?:,\s*)?{\s*provide\s*:\s*OB_PROJECT_INFO\s*,\s*useValue\s*:\s*{.*}\s*,?\s*/s,
+					''
+				);
 				replaceInFile(tree, filePath, /\s*\[\s*]\s*/, '');
 			};
 			return applyInTree(tree, apply, 'main.ts');
@@ -63,7 +80,8 @@ export class UpdateV9toV10 implements ObIMigrations {
 			infoMigration(context, 'Remove oblique-bootstrap and oblique-utilities from angular.json');
 			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) =>
 				(config || []).filter(
-					(style: string) => !/node_modules\/@oblique\/oblique\/styles\/s?css\/oblique-(?:utilities|bootstrap)\.s?css?/.test(style)
+					(style: string) =>
+						!/node_modules\/@oblique\/oblique\/styles\/s?css\/oblique-(?:utilities|bootstrap)\.s?css?/.test(style)
 				)
 			);
 		});
@@ -73,7 +91,9 @@ export class UpdateV9toV10 implements ObIMigrations {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Remove oblique-material from angular.json');
 			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) =>
-				(config || []).filter((style: string) => !/node_modules\/@oblique\/oblique\/styles\/s?css\/oblique-material\.s?css/.test(style))
+				(config || []).filter(
+					(style: string) => !/node_modules\/@oblique\/oblique\/styles\/s?css\/oblique-material\.s?css/.test(style)
+				)
 			);
 		});
 	}

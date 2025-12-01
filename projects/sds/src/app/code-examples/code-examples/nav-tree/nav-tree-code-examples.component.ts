@@ -13,7 +13,7 @@ import {NavTreeExampleDisabledPreviewComponent} from './previews/disabled/nav-tr
 	selector: 'app-code-example-nav-tree',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavTreeCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'nav-tree-examples';
@@ -22,31 +22,31 @@ export class NavTreeCodeExamplesComponent extends CodeExamples {
 			component: NavTreeExampleDefaultPreviewComponent,
 			idParts: ['default'],
 			title: 'Default',
-			snippets: []
+			snippets: [],
 		},
 		{
 			component: NavTreeExampleFilterPreviewComponent,
 			idParts: ['filter'],
 			title: 'Filter',
-			snippets: []
+			snippets: [],
 		},
 		{
 			component: NavTreeExampleExpandCollapsePreviewComponent,
 			idParts: ['expand', 'collapse'],
 			title: 'Expand / collapse',
-			snippets: []
+			snippets: [],
 		},
 		{
 			component: NavTreeExampleDataFromServicePreviewComponent,
 			idParts: ['data', 'from', 'service'],
 			title: 'Data from a service',
-			snippets: []
+			snippets: [],
 		},
 		{
 			component: NavTreeExampleDisabledPreviewComponent,
 			idParts: ['disabled'],
 			title: 'Disabled',
-			snippets: []
-		}
+			snippets: [],
+		},
 	];
 }

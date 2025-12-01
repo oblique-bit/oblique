@@ -61,11 +61,12 @@ export function createSafeRule(callback: (tree: Tree, context: SchematicContext)
 function getErrorInfo(thrownError: unknown): {message: string; file: string; line: string} {
 	if (thrownError instanceof Error) {
 		const {file, line} =
-			/@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(thrownError.stack || '')?.groups || {};
+			/@oblique[/\\]oblique[/\\]schematics[/\\].*[/\\](?<file>\w*\.js):(?<line>\d*)/.exec(thrownError.stack || '')
+				?.groups || {};
 		return {
 			message: thrownError.message,
 			file,
-			line
+			line,
 		};
 	}
 	if (typeof thrownError === 'string') {
@@ -116,7 +117,9 @@ export function checkForSSR(): Rule {
 	return (tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Check if application uses SSR');
 		if (getAngularConfigs(tree, ['architect', 'build', 'options', 'ssr', 'entry']).length) {
-			error('SSR application detected. Oblique is not yet compatible with SSR applications. SSR needs to be deactivated.');
+			error(
+				'SSR application detected. Oblique is not yet compatible with SSR applications. SSR needs to be deactivated.'
+			);
 		}
 	};
 }
@@ -174,8 +177,8 @@ export function getAngularProjectsWithConfigs(tree: Tree, path: string[]): {proj
 			...config,
 			{
 				project,
-				config: getJsonProperty(json, ['projects', project, ...path].join(';'))
-			}
+				config: getJsonProperty(json, ['projects', project, ...path].join(';')),
+			},
 		],
 		[]
 	);
@@ -214,7 +217,7 @@ export function setAngularProjectsConfig(tree: Tree, path: string[], config: any
 	getAngularConfigs(tree, path).forEach(project => {
 		setAngularConfig(tree, path, {
 			project: project.project,
-			config: config instanceof Function ? config(project.config) : config
+			config: config instanceof Function ? config(project.config) : config,
 		});
 	});
 	return tree;
@@ -224,7 +227,7 @@ export function setOrCreateAngularProjectsConfig(tree: Tree, path: string[], con
 	getAngularProjectsWithConfigs(tree, path).forEach(project => {
 		setAngularConfig(tree, path, {
 			project: project.project,
-			config: config instanceof Function ? config(project.config) : config
+			config: config instanceof Function ? config(project.config) : config,
 		});
 	});
 	return tree;
@@ -234,7 +237,7 @@ export function addAngularConfigInList(tree: Tree, path: string[], value: any): 
 	getAngularConfigs(tree, path).forEach(project =>
 		setAngularConfig(tree, path, {
 			project: project.project,
-			config: [...(project.config || []).filter((current: any) => current !== value), value]
+			config: [...(project.config || []).filter((current: any) => current !== value), value],
 		})
 	);
 	return tree;
@@ -299,7 +302,10 @@ export function removeImport(tree: Tree, fileName: string, name: string, pkg: st
 			new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
 				? content.replace(new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*`), '')
 				: content
-						.replace(new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`, 's'), '$1$2')
+						.replace(
+							new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`, 's'),
+							'$1$2'
+						)
 						.replace(/,\s*}/, '}')
 						.replace(/,\s*,/, ',\n')
 		);
@@ -328,7 +334,10 @@ export function addTsCompilerOption(content: string, option: string): string {
 		return content.replace(new RegExp(`(?<="${option}"\\s*:\\s*)false`), 'true');
 	}
 	if (content.includes('compilerOptions')) {
-		return content.replace(/(?<=compilerOptions"\s*:\s*{)(?<whitespace>\s*)/, `$<whitespace>"${option}": true,$<whitespace>`);
+		return content.replace(
+			/(?<=compilerOptions"\s*:\s*{)(?<whitespace>\s*)/,
+			`$<whitespace>"${option}": true,$<whitespace>`
+		);
 	}
 	return content.replace(
 		/(?<={)(?<whitespace>\s*)/,
@@ -375,7 +384,7 @@ export function getRootFilesPaths(tree: Tree): RootFilesPaths[] {
 			projectName: project.project,
 			appModulePath: project.path,
 			appComponentPath: project.componentPath,
-			appComponentTemplatePath: mergePaths(project.componentPath, project.templatePath)
+			appComponentTemplatePath: mergePaths(project.componentPath, project.templatePath),
 		}));
 }
 
@@ -387,7 +396,10 @@ export function getProjectList(tree: Tree): string[] {
 export function removeHtmlTagAttribute(tree: Tree, fileName: string, tagName: string, attributeName: string): void {
 	tree.overwrite(
 		fileName,
-		readFile(tree, fileName).replace(new RegExp(`(?<=<${tagName}.+)\\s*\\[?${attributeName}\\]?(?:=["']{1,2}.*?["']{1,2})?`, 'gs'), '')
+		readFile(tree, fileName).replace(
+			new RegExp(`(?<=<${tagName}.+)\\s*\\[?${attributeName}\\]?(?:=["']{1,2}.*?["']{1,2})?`, 'gs'),
+			''
+		)
 	);
 }
 
@@ -419,7 +431,10 @@ export function appendCodeToFunction(tree: Tree, filePath: string, functionName:
 	if (!fileContent.includes(code)) {
 		tree.overwrite(
 			filePath,
-			fileContent.replace(new RegExp(`(?<=${functionName}\\s*\\(.*?\\)(?:\\s*:\\s*\\w+)?\\s*\\{.*?)(?=}(?![;)]))`, 's'), `\t${code}\n\t`)
+			fileContent.replace(
+				new RegExp(`(?<=${functionName}\\s*\\(.*?\\)(?:\\s*:\\s*\\w+)?\\s*\\{.*?)(?=}(?![;)]))`, 's'),
+				`\t${code}\n\t`
+			)
 		);
 	}
 }
@@ -449,7 +464,12 @@ function removeEmptyConstructor(tree: Tree, filePath: string): void {
 }
 
 function removeInjectionFromInject(tree: Tree, filePath: string, token: string): void {
-	replaceInFile(tree, filePath, new RegExp(`[\\w\\s]*(?::\\s*${token})?\\s*=\\s*inject\\(\\s*${token}\\s*\\)\\s*;\n?`), '');
+	replaceInFile(
+		tree,
+		filePath,
+		new RegExp(`[\\w\\s]*(?::\\s*${token})?\\s*=\\s*inject\\(\\s*${token}\\s*\\)\\s*;\n?`),
+		''
+	);
 }
 
 export function removeServiceMethodCall(tree: Tree, filePath: string, methodToken: string): void {
@@ -466,7 +486,8 @@ function extractBootstrappedModule(fileContent: string): string {
 
 function extractRootModulePath(moduleName: string, fileContent: string): string {
 	return (
-		RegExp(`import\\s*{\\s*${moduleName}\\s*}\\s*from\\s*["'](?<rootModulePath>.*)["']`).exec(fileContent)?.groups?.rootModulePath ?? ''
+		RegExp(`import\\s*{\\s*${moduleName}\\s*}\\s*from\\s*["'](?<rootModulePath>.*)["']`).exec(fileContent)?.groups
+			?.rootModulePath ?? ''
 	);
 }
 
@@ -529,7 +550,8 @@ function extractBootstrappedComponent(fileContent: string): string {
 
 function extractComponentPath(componentName: string, fileContent: string): string {
 	const filePath =
-		new RegExp(`import\\s+{\\s*${componentName}\\s*}\\s*from\\s*['"](?<path>.*?)['"]`, 's').exec(fileContent)?.groups?.path ?? '';
+		new RegExp(`import\\s+{\\s*${componentName}\\s*}\\s*from\\s*['"](?<path>.*?)['"]`, 's').exec(fileContent)?.groups
+			?.path ?? '';
 	return addFileExtension(filePath);
 }
 

@@ -9,7 +9,7 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 	imports: [FormsModule, MatInputModule, MatFormFieldModule, ObErrorMessagesModule],
 	templateUrl: './nested-form-example-template-driven-preview-grandchild.component.html',
 	styleUrl: '../../nested-form-example-preview.scss',
-	exportAs: 'grandchild'
+	exportAs: 'grandchild',
 })
 export class NestedFormExampleTemplateDrivenPreviewGrandchildComponent {
 	readonly ngForm = viewChild(NgForm);

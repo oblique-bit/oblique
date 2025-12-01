@@ -1,6 +1,16 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import {NgFor, NgIf} from '@angular/common';
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation, inject} from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	Input,
+	OnDestroy,
+	OnInit,
+	Output,
+	ViewChild,
+	ViewEncapsulation,
+	inject,
+} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
@@ -30,13 +40,13 @@ import {ObFileUploadService} from '../file-upload.service';
 		MatIconModule,
 		NgIf,
 		ObAlertComponent,
-		TranslateModule
+		TranslateModule,
 	],
 	templateUrl: './file-info.component.html',
 	styleUrls: ['./file-info.component.scss'],
 	encapsulation: ViewEncapsulation.None,
+	host: {class: 'ob-file-info'},
 	exportAs: 'obFileInfo',
-	host: {class: 'ob-file-info'}
 })
 export class ObFileInfoComponent implements OnInit, OnDestroy {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
@@ -109,7 +119,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 				)
 				.subscribe({
 					next: () => this.uploadEvent.emit({type: ObEUploadEventType.DELETED, files: fileNames}),
-					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileNames, error})
+					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileNames, error}),
 				});
 		}
 	}
@@ -127,7 +137,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 				)
 				.subscribe({
 					next: files => this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields),
-					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error})
+					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error}),
 				});
 		}
 	}

@@ -28,19 +28,6 @@ import {ObIsCurrentUrlPipe} from './shared/popover-section/is-current-url.pipe';
 import {ObServiceNavigationApplicationNameStatusPipe} from './applications/service-navigation-application-name-status.pipe';
 
 @NgModule({
-	declarations: [
-		ObContactToLinksPipe,
-		ObIsUserLoggedInPipe,
-		ObServiceNavigationApplicationNameStatusPipe,
-		ObServiceNavigationApplicationsComponent,
-		ObServiceNavigationAuthenticationComponent,
-		ObServiceNavigationComponent,
-		ObServiceNavigationInfoComponent,
-		ObServiceNavigationLanguagesComponent,
-		ObServiceNavigationMessageComponent,
-		ObServiceNavigationPopoverSectionComponent,
-		ObServiceNavigationProfileComponent
-	],
 	imports: [
 		CommonModule,
 		MatBadgeModule,
@@ -56,15 +43,28 @@ import {ObServiceNavigationApplicationNameStatusPipe} from './applications/servi
 		ObPopoverModule,
 		ObTranslateParamsModule,
 		ObIsCurrentUrlPipe,
-		TranslateModule
+		TranslateModule,
 	],
-	exports: [ObServiceNavigationComponent],
+	declarations: [
+		ObContactToLinksPipe,
+		ObIsUserLoggedInPipe,
+		ObServiceNavigationApplicationNameStatusPipe,
+		ObServiceNavigationApplicationsComponent,
+		ObServiceNavigationAuthenticationComponent,
+		ObServiceNavigationComponent,
+		ObServiceNavigationInfoComponent,
+		ObServiceNavigationLanguagesComponent,
+		ObServiceNavigationMessageComponent,
+		ObServiceNavigationPopoverSectionComponent,
+		ObServiceNavigationProfileComponent,
+	],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: ObEportalCsrfInterceptor,
-			multi: true
-		}
-	]
+			multi: true,
+		},
+	],
+	exports: [ObServiceNavigationComponent],
 })
 export class ObServiceNavigationModule {}

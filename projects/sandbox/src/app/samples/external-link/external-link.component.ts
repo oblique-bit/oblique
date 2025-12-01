@@ -15,7 +15,7 @@ interface IsLinkExternalState {
 	selector: 'sb-external-link',
 	standalone: false,
 	templateUrl: './external-link.component.html',
-	styleUrl: './external-link.component.scss'
+	styleUrl: './external-link.component.scss',
 })
 export class ExternalLinkComponent {
 	iconPosition: ObEExternalLinkIcon = 'left';
@@ -24,12 +24,12 @@ export class ExternalLinkComponent {
 	iconPositions: IconPosition[] = [
 		{value: 'left', viewValue: 'Left'},
 		{value: 'right', viewValue: 'Right'},
-		{value: 'none', viewValue: 'None'}
+		{value: 'none', viewValue: 'None'},
 	];
 
 	isLinkExternal: IsLinkExternalState[] = [
 		{value: 'auto', viewValue: 'Auto'},
 		{value: true, viewValue: 'True'},
-		{value: false, viewValue: 'False'}
+		{value: false, viewValue: 'False'},
 	];
 }

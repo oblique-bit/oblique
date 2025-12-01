@@ -6,6 +6,6 @@ export {ObIconService} from './icon.service';
 export {ObIconConfig, ObEIcon} from './icon.model';
 
 @NgModule({
-	imports: [CommonModule, MatIconModule]
+	imports: [CommonModule, MatIconModule],
 })
 export class ObIconModule {}

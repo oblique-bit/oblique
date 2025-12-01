@@ -8,6 +8,6 @@ export {ObMockBreadcrumbComponent} from './mock-breadcrumb.component';
  */
 @NgModule({
 	declarations: [ObMockBreadcrumbComponent],
-	exports: [ObMockBreadcrumbComponent]
+	exports: [ObMockBreadcrumbComponent],
 })
 export class ObMockBreadcrumbModule {}

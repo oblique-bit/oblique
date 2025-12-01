@@ -5,14 +5,14 @@ import {CodeExampleDirective} from './code-example.directive';
 
 @Component({
 	standalone: true,
-	template: 'Hello World'
+	template: 'Hello World',
 })
 class DummyComponent {}
 
 @Component({
 	imports: [CodeExampleDirective],
 	standalone: true,
-	template: '<div appCodeExample [codeExampleComponent]="component"></div>'
+	template: '<div appCodeExample [codeExampleComponent]="component"></div>',
 })
 class CodeExampleDirectiveTestComponent {
 	component = DummyComponent;
@@ -23,7 +23,7 @@ describe(CodeExampleDirective.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [CodeExampleDirectiveTestComponent, CodeExampleDirective, DummyComponent]
+			imports: [CodeExampleDirectiveTestComponent, CodeExampleDirective, DummyComponent],
 		}).compileComponents();
 	});
 

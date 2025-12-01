@@ -1,6 +1,12 @@
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
-import {ObButtonModule, ObENotificationPlacement, ObENotificationType, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
+import {
+	ObButtonModule,
+	ObENotificationPlacement,
+	ObENotificationType,
+	ObNotificationModule,
+	ObNotificationService,
+} from '@oblique/oblique';
 import {Component, inject} from '@angular/core';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -8,7 +14,10 @@ import {TranslateModule} from '@ngx-translate/core';
 	selector: 'app-notification-example-other-options-preview',
 	imports: [ObNotificationModule, ObButtonModule, MatButtonModule, TranslateModule, MatSlideToggleModule],
 	templateUrl: './notification-example-other-options-preview.component.html',
-	styleUrls: ['./notification-example-other-options-preview.component.scss', '../../../../code-example-flex-layout.scss']
+	styleUrls: [
+		'./notification-example-other-options-preview.component.scss',
+		'../../../../code-example-flex-layout.scss',
+	],
 })
 export class NotificationExampleOtherOptionsPreviewComponent {
 	public types = ObENotificationType;
@@ -22,7 +31,7 @@ export class NotificationExampleOtherOptionsPreviewComponent {
 		this.obNotificationService.send({
 			channel: this.channel,
 			title: 'Title',
-			message: 'Hello this is the notification message'
+			message: 'Hello this is the notification message',
 		});
 	}
 
@@ -30,28 +39,28 @@ export class NotificationExampleOtherOptionsPreviewComponent {
 		this.obNotificationService.info({
 			channel: this.channel,
 			title: 'Title of the info message',
-			message: 'This is the message text'
+			message: 'This is the message text',
 		});
 	}
 	sendSuccess(): void {
 		this.obNotificationService.success({
 			channel: this.channel,
 			title: 'Title of the success message',
-			message: 'This is the message text'
+			message: 'This is the message text',
 		});
 	}
 	sendWarning(): void {
 		this.obNotificationService.warning({
 			channel: this.channel,
 			title: 'Title of the warning message',
-			message: 'This is the message text'
+			message: 'This is the message text',
 		});
 	}
 	sendError(): void {
 		this.obNotificationService.error({
 			channel: this.channel,
 			title: 'Title of error message',
-			message: 'This is the message text'
+			message: 'This is the message text',
 		});
 	}
 
@@ -60,7 +69,7 @@ export class NotificationExampleOtherOptionsPreviewComponent {
 			channel: this.channel,
 			message: 'i18n.notification.sampleMessage',
 			title: 'This is the title of the message with params',
-			messageParams
+			messageParams,
 		});
 	}
 
@@ -70,7 +79,7 @@ export class NotificationExampleOtherOptionsPreviewComponent {
 			title: 'Title of message using group similar',
 			message: 'This is the message text',
 			groupSimilar: true,
-			type
+			type,
 		});
 	}
 
@@ -79,7 +88,7 @@ export class NotificationExampleOtherOptionsPreviewComponent {
 			channel: this.channel,
 			message: sticky ? 'This message is sticky' : 'This message is not sticky',
 			title: 'Title',
-			sticky
+			sticky,
 		});
 	}
 
@@ -89,7 +98,7 @@ export class NotificationExampleOtherOptionsPreviewComponent {
 			title: `Title of the message with timeout  ${String(timeout)} ms`,
 			message: 'This is the message text',
 			sticky: false,
-			timeout
+			timeout,
 		});
 	}
 
@@ -98,7 +107,7 @@ export class NotificationExampleOtherOptionsPreviewComponent {
 			channel: this.channel,
 			title: `Notification with HTML`,
 			message: `<p>A subset of HTML tags, as allowed by <strong>Angular sanitization</strong>, are supported.</p><p class="ob-list-title">For instance:</p><ul><li><code>&lt;code&gt;</code></li><li><code>&lt;br/&gt;</code></li><li><code>&lt;em&gt;</code></li><li>...</li></li></ul>`,
-			sticky: true
+			sticky: true,
 		});
 	}
 

@@ -20,6 +20,9 @@
 		<div [id]="notification.idPrefix + 'title'" class="ob-notification-title">
 			{{ notification.title | obTranslateParams: notification.titleParams }}
 		</div>
-		<p [id]="notification.idPrefix + 'text'" [innerHTML]="notification.message | obTranslateParams: notification.messageParams"></p>
+		<p
+			[id]="notification.idPrefix + 'text'"
+			[innerHTML]="notification.message | obTranslateParams: notification.messageParams"
+		></p>
 	</ob-alert>
 }

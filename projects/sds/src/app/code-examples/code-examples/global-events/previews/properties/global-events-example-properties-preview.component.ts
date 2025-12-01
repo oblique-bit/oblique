@@ -7,7 +7,7 @@ import {type Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
 	selector: 'app-global-events-example-properties-preview',
 	imports: [AsyncPipe],
 	templateUrl: './global-events-example-properties-preview.component.html',
-	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss']
+	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
 })
 export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, OnDestroy {
 	click$: Observable<number>;
@@ -24,7 +24,7 @@ export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, On
 	private readonly counter = {
 		beforeUnload: 0,
 		click: 0,
-		mouseDown: 0
+		mouseDown: 0,
 	};
 
 	ngOnInit(): void {

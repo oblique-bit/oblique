@@ -10,13 +10,13 @@ describe('ObServiceNavigationStateApiService', () => {
 	const mockData = {
 		statusCode: 200,
 		success: true,
-		data: {test: 'test'}
+		data: {test: 'test'},
 	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule],
-			providers: [ObServiceNavigationStateApiService]
+			providers: [ObServiceNavigationStateApiService],
 		});
 		service = TestBed.inject(ObServiceNavigationStateApiService);
 		httpClient = TestBed.inject(HttpClient);
@@ -49,7 +49,7 @@ describe('ObServiceNavigationStateApiService', () => {
 			it('should be called with proper parameters', () => {
 				expect(httpClient.get).toHaveBeenCalledWith('http://rootUrl/api/widget/state', {
 					withCredentials: true,
-					params: {lastUsedLimit: 4, favoriteLimit}
+					params: {lastUsedLimit: 4, favoriteLimit},
 				});
 			});
 		});

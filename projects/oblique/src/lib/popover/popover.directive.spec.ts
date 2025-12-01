@@ -6,7 +6,7 @@ import {
 	OBLIQUE_POPOVER_APPEND_TO_BODY,
 	OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE,
 	OBLIQUE_POPOVER_TOGGLE_HANDLE,
-	ObPopoverDirective
+	ObPopoverDirective,
 } from './popover.directive';
 import {ObEToggleType} from './popover.model';
 
@@ -17,7 +17,7 @@ import {ObEToggleType} from './popover.model';
 		<ng-template #myPopover>
 			<p>Hello World</p>
 		</ng-template>
-	`
+	`,
 })
 class TestPopoverComponent {}
 
@@ -35,7 +35,7 @@ describe(ObPopoverDirective.name, () => {
 			imports: [ObPopoverDirective],
 			declarations: [TestPopoverComponent],
 			providers: [{provide: WINDOW, useValue: window}],
-			schemas: [NO_ERRORS_SCHEMA]
+			schemas: [NO_ERRORS_SCHEMA],
 		});
 	});
 

@@ -7,7 +7,13 @@ import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MatPaginatorIntl} from '@angular/material/paginator';
-import {TranslateCompiler, TranslateFakeCompiler, TranslateFakeLoader, TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {
+	TranslateCompiler,
+	TranslateFakeCompiler,
+	TranslateFakeLoader,
+	TranslateLoader,
+	TranslateService,
+} from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
@@ -20,7 +26,7 @@ import {
 	provideObliqueConfiguration,
 	provideObliqueTestingConfiguration,
 	provideObliqueTranslations,
-	windowProvider
+	windowProvider,
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
@@ -51,10 +57,10 @@ describe('utilities', () => {
 								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
-								contact: [{email: 'e@mail.com'}]
-							}
-						})
-					]
+								contact: [{email: 'e@mail.com'}],
+							},
+						}),
+					],
 				});
 			});
 
@@ -95,7 +101,7 @@ describe('utilities', () => {
 					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary'}},
 					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'primary'}},
 					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
-					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}}
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}},
 				])('should create $token injection token', ({token, config}) => {
 					expect(TestBed.inject(token)).toEqual(config);
 				});
@@ -108,7 +114,7 @@ describe('utilities', () => {
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: [{email: 'e@mail.com'}]
+						contact: [{email: 'e@mail.com'}],
 					});
 				});
 			});
@@ -133,7 +139,7 @@ describe('utilities', () => {
 								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
-								contact: [{email: 'e@mail.com'}]
+								contact: [{email: 'e@mail.com'}],
 							},
 							material: {
 								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
@@ -141,19 +147,19 @@ describe('utilities', () => {
 								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
 								MAT_RADIO_OPTIONS: {color: 'accent'},
 								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
-								MAT_TABS_CONFIG: {fitInkBarToContent: true}
+								MAT_TABS_CONFIG: {fitInkBarToContent: true},
 							},
 							icon: {
-								additionalIcons: []
+								additionalIcons: [],
 							},
 							translate: {
 								flatten: false,
 								config: {compiler: TranslateFakeCompiler},
-								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
+								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
 							},
-							hasLanguageInUrl: true
-						})
-					]
+							hasLanguageInUrl: true,
+						}),
+					],
 				});
 			});
 
@@ -171,7 +177,7 @@ describe('utilities', () => {
 				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
 					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
 						additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
-						flatten: false
+						flatten: false,
 					});
 				});
 
@@ -187,7 +193,7 @@ describe('utilities', () => {
 					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary', clickAction: 'check'}},
 					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
 					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary', hideIcon: true}},
-					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}}
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}},
 				])('should create $token injection token', ({token, config}) => {
 					expect(TestBed.inject(token)).toEqual(config);
 				});
@@ -200,7 +206,7 @@ describe('utilities', () => {
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: [{email: 'e@mail.com'}]
+						contact: [{email: 'e@mail.com'}],
 					});
 				});
 			});
@@ -226,10 +232,10 @@ describe('utilities', () => {
 								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
-								contact: [{email: 'e@mail.com'}]
-							}
-						})
-					]
+								contact: [{email: 'e@mail.com'}],
+							},
+						}),
+					],
 				});
 			});
 
@@ -268,7 +274,9 @@ describe('utilities', () => {
 					});
 
 					it('should have a "getTranslation" function that emits an empty object', async () => {
-						expect(await firstValueFrom(TestBed.inject(TranslateService).currentLoader.getTranslation('en'))).toEqual({});
+						expect(await firstValueFrom(TestBed.inject(TranslateService).currentLoader.getTranslation('en'))).toEqual(
+							{}
+						);
 					});
 				});
 			});
@@ -280,7 +288,7 @@ describe('utilities', () => {
 					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary'}},
 					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'primary'}},
 					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
-					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}}
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}},
 				])('should create $token injection token', ({token, config}) => {
 					expect(TestBed.inject(token)).toEqual(config);
 				});
@@ -293,7 +301,7 @@ describe('utilities', () => {
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: [{email: 'e@mail.com'}]
+						contact: [{email: 'e@mail.com'}],
 					});
 				});
 			});
@@ -318,7 +326,7 @@ describe('utilities', () => {
 								createdOn: new Date('2025-01-31'),
 								conformity: 'none',
 								applicationOperator: 'Operator',
-								contact: [{email: 'e@mail.com'}]
+								contact: [{email: 'e@mail.com'}],
 							},
 							material: {
 								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
@@ -326,19 +334,19 @@ describe('utilities', () => {
 								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
 								MAT_RADIO_OPTIONS: {color: 'accent'},
 								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
-								MAT_TABS_CONFIG: {fitInkBarToContent: true}
+								MAT_TABS_CONFIG: {fitInkBarToContent: true},
 							},
 							icon: {
-								additionalIcons: []
+								additionalIcons: [],
 							},
 							translate: {
 								flatten: false,
 								config: {compiler: TranslateFakeCompiler},
-								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}]
+								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
 							},
-							hasLanguageInUrl: true
-						})
-					]
+							hasLanguageInUrl: true,
+						}),
+					],
 				});
 			});
 
@@ -356,7 +364,7 @@ describe('utilities', () => {
 				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
 					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
 						additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
-						flatten: false
+						flatten: false,
 					});
 				});
 
@@ -372,7 +380,7 @@ describe('utilities', () => {
 					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary', clickAction: 'check'}},
 					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
 					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary', hideIcon: true}},
-					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}}
+					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}},
 				])('should create $token injection token', ({token, config}) => {
 					expect(TestBed.inject(token)).toEqual(config);
 				});
@@ -385,7 +393,7 @@ describe('utilities', () => {
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
 						applicationOperator: 'Operator',
-						contact: [{email: 'e@mail.com'}]
+						contact: [{email: 'e@mail.com'}],
 					});
 				});
 			});
@@ -402,7 +410,7 @@ describe('utilities', () => {
 		describe('with default configuration', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
-					providers: [provideHttpClient(), provideObliqueTranslations()]
+					providers: [provideHttpClient(), provideObliqueTranslations()],
 				});
 			});
 
@@ -442,7 +450,7 @@ describe('utilities', () => {
 
 				it.each([
 					{index: 1, url: './assets/i18n/oblique-en.json'},
-					{index: 2, url: './assets/i18n/en.json'}
+					{index: 2, url: './assets/i18n/en.json'},
 				])('should request $url on $index call', ({index, url}) => {
 					expect(httpClient.get).toHaveBeenNthCalledWith(index, url);
 				});
@@ -458,10 +466,10 @@ describe('utilities', () => {
 							flatten: false,
 							additionalFiles: [
 								{prefix: './path1/', suffix: '.json'},
-								{prefix: './path2/', suffix: '.js'}
-							]
-						})
-					]
+								{prefix: './path2/', suffix: '.js'},
+							],
+						}),
+					],
 				});
 			});
 
@@ -469,9 +477,9 @@ describe('utilities', () => {
 				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
 					additionalFiles: [
 						{prefix: './path1/', suffix: '.json'},
-						{prefix: './path2/', suffix: '.js'}
+						{prefix: './path2/', suffix: '.js'},
 					],
-					flatten: false
+					flatten: false,
 				});
 			});
 
@@ -504,7 +512,7 @@ describe('utilities', () => {
 				it.each([
 					{index: 1, url: './assets/i18n/oblique-en.json'},
 					{index: 2, url: './path1/en.json'},
-					{index: 3, url: './path2/en.js'}
+					{index: 3, url: './path2/en.js'},
 				])('should request $url on $index call', ({index, url}) => {
 					expect(httpClient.get).toHaveBeenNthCalledWith(index, url);
 				});
@@ -519,15 +527,15 @@ describe('utilities', () => {
 						provideHttpClient(),
 						provideObliqueTranslations({
 							flatten: false,
-							config: {loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}}
-						})
-					]
+							config: {loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}},
+						}),
+					],
 				});
 			});
 
 			it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
 				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
-					flatten: false
+					flatten: false,
 				});
 			});
 

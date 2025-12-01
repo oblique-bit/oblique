@@ -12,18 +12,18 @@ describe('IconService', () => {
 		test1: {
 			literal:
 				'<svg id="test_1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-app" viewBox="0 0 16 16"><path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"/></svg>',
-			core: '<path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"/>'
+			core: '<path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"/>',
 		},
 		test2: {
 			literal:
 				'<svg id="test_2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2 13.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 0-1H3.707L13.854 2.854a.5.5 0 0 0-.708-.708L3 12.293V7.5a.5.5 0 0 0-1 0v6z"/></svg>',
-			core: '<path fill-rule="evenodd" d="M2 13.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 0-1H3.707L13.854 2.854a.5.5 0 0 0-.708-.708L3 12.293V7.5a.5.5 0 0 0-1 0v6z"/>'
+			core: '<path fill-rule="evenodd" d="M2 13.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 0-1H3.707L13.854 2.854a.5.5 0 0 0-.708-.708L3 12.293V7.5a.5.5 0 0 0-1 0v6z"/>',
 		},
 		overwrite1: {
 			literal:
 				'<svg id="test_1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2 13.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 0-1H3.707L13.854 2.854a.5.5 0 0 0-.708-.708L3 12.293V7.5a.5.5 0 0 0-1 0v6z"/></svg>',
-			core: '<path fill-rule="evenodd" d="M2 13.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 0-1H3.707L13.854 2.854a.5.5 0 0 0-.708-.708L3 12.293V7.5a.5.5 0 0 0-1 0v6z"/>'
-		}
+			core: '<path fill-rule="evenodd" d="M2 13.5a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 0-1H3.707L13.854 2.854a.5.5 0 0 0-.708-.708L3 12.293V7.5a.5.5 0 0 0-1 0v6z"/>',
+		},
 	};
 	const iconSet1 = `<svg><defs>${icons.test1.literal}</defs></svg>`;
 	const iconSet2 = `<svg><defs>${icons.test2.literal.replace('test_2', 'test_1')}</defs></svg>`;
@@ -35,8 +35,8 @@ describe('IconService', () => {
 				imports: [ObIconModule, HttpClientModule, MatIconTestingModule],
 				providers: [
 					{provide: ObIconService, useClass: ObIconService},
-					{provide: MatIconRegistry, useClass: MatIconRegistry}
-				]
+					{provide: MatIconRegistry, useClass: MatIconRegistry},
+				],
 			});
 			registry = TestBed.inject(MatIconRegistry);
 			iconService = TestBed.inject(ObIconService);
@@ -55,7 +55,10 @@ describe('IconService', () => {
 				});
 			});
 			it('should overwrite icons with same name', done => {
-				iconService.registerIcons({name: 'test_1', svg: icons.test1.literal}, {name: 'test_1', svg: icons.test2.literal});
+				iconService.registerIcons(
+					{name: 'test_1', svg: icons.test1.literal},
+					{name: 'test_1', svg: icons.test2.literal}
+				);
 				registry.getNamedSvgIcon('test_1').subscribe(svg => {
 					expect(serializer.serializeToString(svg)).toContain(icons.test2.core);
 					done();
@@ -106,11 +109,11 @@ describe('IconService', () => {
 				imports: [MatIconTestingModule],
 				providers: [
 					provideObliqueTestingConfiguration({
-						icon: {registerObliqueIcons: false}
+						icon: {registerObliqueIcons: false},
 					}),
 					{provide: ObIconService, useClass: ObIconService},
-					{provide: MatIconRegistry, useClass: MatIconRegistry}
-				]
+					{provide: MatIconRegistry, useClass: MatIconRegistry},
+				],
 			});
 			registry = TestBed.inject(MatIconRegistry);
 			iconService = TestBed.inject(ObIconService);
@@ -132,11 +135,11 @@ describe('IconService', () => {
 				imports: [MatIconTestingModule],
 				providers: [
 					provideObliqueTestingConfiguration({
-						icon: {registerObliqueIcons: false, fontClass: 'fa'}
+						icon: {registerObliqueIcons: false, fontClass: 'fa'},
 					}),
 					{provide: ObIconService, useClass: ObIconService},
-					{provide: MatIconRegistry, useClass: MatIconRegistry}
-				]
+					{provide: MatIconRegistry, useClass: MatIconRegistry},
+				],
 			});
 			registry = TestBed.inject(MatIconRegistry);
 			iconService = TestBed.inject(ObIconService);
@@ -158,11 +161,11 @@ describe('IconService', () => {
 				imports: [MatIconTestingModule],
 				providers: [
 					provideObliqueTestingConfiguration({
-						icon: {registerObliqueIcons: false, additionalIcons: [iconSet1]}
+						icon: {registerObliqueIcons: false, additionalIcons: [iconSet1]},
 					}),
 					{provide: ObIconService, useClass: ObIconService},
-					{provide: MatIconRegistry, useClass: MatIconRegistry}
-				]
+					{provide: MatIconRegistry, useClass: MatIconRegistry},
+				],
 			});
 			registry = TestBed.inject(MatIconRegistry);
 			iconService = TestBed.inject(ObIconService);

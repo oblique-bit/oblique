@@ -13,12 +13,12 @@ describe(UnknownRouteCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		const staticRouteMock = {
 			root: {
-				path: 'unknown-route'
-			}
+				path: 'unknown-route',
+			},
 		};
 		await TestBed.configureTestingModule({
 			imports: [UnknownRouteCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [provideObliqueTestingConfiguration(), {provide: ActivatedRoute, useValue: staticRouteMock}]
+			providers: [provideObliqueTestingConfiguration(), {provide: ActivatedRoute, useValue: staticRouteMock}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(UnknownRouteCodeExamplesComponent);

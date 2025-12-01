@@ -9,8 +9,12 @@
 		<mat-error />
 	</mat-form-field>
 	<div class="actions">
-		<button mat-button obButton="primary" type="submit" [disabled]="formGroup.invalid" (click)="handleRequest(false)">Subscribe</button>
-		<button mat-button obButton="secondary" type="submit" [disabled]="formGroup.invalid" (click)="handleRequest(true)">Unsubscribe</button>
+		<button mat-button obButton="primary" type="submit" [disabled]="formGroup.invalid" (click)="handleRequest(false)">
+			Subscribe
+		</button>
+		<button mat-button obButton="secondary" type="submit" [disabled]="formGroup.invalid" (click)="handleRequest(true)">
+			Unsubscribe
+		</button>
 	</div>
 </form>
 <ob-notification />

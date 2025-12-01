@@ -3,7 +3,7 @@ import {ObLoginState} from '../service-navigation.model';
 
 @Pipe({
 	name: 'obIsUserLoggedIn',
-	standalone: false
+	standalone: false,
 })
 export class ObIsUserLoggedInPipe implements PipeTransform {
 	transform(loginState: ObLoginState, isGuestAllowed: boolean): boolean {

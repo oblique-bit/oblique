@@ -19,7 +19,7 @@ import {
 	ViewChild,
 	ViewEncapsulation,
 	inject,
-	isDevMode
+	isDevMode,
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
 import {delay, filter, map, takeUntil, tap} from 'rxjs/operators';
@@ -34,7 +34,7 @@ import {
 	ObIDynamicSkipLink,
 	ObIMasterLayoutEvent,
 	ObINavigationLink,
-	ObISkipLink
+	ObISkipLink,
 } from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject, fromEvent, startWith} from 'rxjs';
@@ -49,11 +49,11 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 		'./master-layout.component.scss',
 		'./master-layout-cover.component.scss',
 		'./master-layout-offcanvas.component.scss',
-		'./master-layout-accessibility.component.scss'
+		'./master-layout-accessibility.component.scss',
 	],
 	encapsulation: ViewEncapsulation.None,
+	host: {class: 'ob-master-layout', 'ob-version': appVersion},
 	exportAs: 'obMasterLayout',
-	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
 export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnChanges {
 	home = this.config.homePageRoute;
@@ -98,7 +98,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 		sm: 600,
 		md: 905,
 		lg: 1240,
-		xl: 1440
+		xl: 1440,
 	} as const;
 
 	constructor(
@@ -158,7 +158,8 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 
 	scrollTop(element?: HTMLElement): void {
 		const scrollTop =
-			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
+			element?.scrollTop ??
+			(this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;
 		}
@@ -176,7 +177,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 		if (document.activeElement !== element && isDevMode()) {
 			element.setAttribute('tabindex', '-1');
 			element.focus({preventScroll: true});
-			console.info(`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`);
+			console.info(
+				`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`
+			);
 		}
 	}
 
@@ -202,7 +205,10 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 
 	private updateSkipLinks(hasNavigation: boolean): void {
 		const staticSkipLinks = hasNavigation && this.navigation?.length ? 2 : 1;
-		this.skipLinks = this.skipLinks.map((skipLink, index: number) => ({...skipLink, accessKey: index + staticSkipLinks}));
+		this.skipLinks = this.skipLinks.map((skipLink, index: number) => ({
+			...skipLink,
+			accessKey: index + staticSkipLinks,
+		}));
 	}
 
 	private layoutHasMainNavigationChange(): void {

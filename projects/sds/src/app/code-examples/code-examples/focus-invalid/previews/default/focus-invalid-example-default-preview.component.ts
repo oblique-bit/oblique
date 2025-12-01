@@ -23,10 +23,10 @@ import {MatButtonModule} from '@angular/material/button';
 		ReactiveFormsModule,
 		ObErrorMessagesDirective,
 		ObFocusInvalidDirective,
-		ObMatErrorDirective
+		ObMatErrorDirective,
 	],
 	templateUrl: './focus-invalid-example-default-preview.component.html',
-	styleUrl: './focus-invalid-example-default-preview.component.scss'
+	styleUrl: './focus-invalid-example-default-preview.component.scss',
 })
 export class FocusInvalidExampleDefaultPreviewComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;
@@ -39,7 +39,7 @@ export class FocusInvalidExampleDefaultPreviewComponent implements OnInit {
 			select: ['', Validators.required],
 			textarea: ['', Validators.required],
 			checkbox: [null, Validators.requiredTrue],
-			radio: [null, Validators.required]
+			radio: [null, Validators.required],
 		});
 	}
 }

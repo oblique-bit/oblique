@@ -4,7 +4,7 @@ import {share} from 'rxjs/operators';
 import {WINDOW} from '../utilities';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObGlobalEventsService {
 	public readonly beforeUnload$: Observable<BeforeUnloadEvent>;

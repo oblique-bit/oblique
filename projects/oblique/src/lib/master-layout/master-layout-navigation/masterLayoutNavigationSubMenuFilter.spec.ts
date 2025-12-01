@@ -20,7 +20,7 @@ describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 		{elementTag: 'a', classes: ['ob-master-layout-navigation-link'], expected: true},
 		{elementTag: 'a', classes: ['ob-master-layout-navigation-link', 'ob-main-nav-link'], expected: true},
 		{elementTag: 'button', classes: ['ob-master-layout-navigation-link', 'ob-main-nav-link'], expected: true},
-		{elementTag: 'button', classes: ['ob-fake-button'], expected: true}
+		{elementTag: 'button', classes: ['ob-fake-button'], expected: true},
 	])(
 		'that a click of $elementTag element with class(es): $classes will result in emitted being $expected',
 		fakeAsync(({elementTag, classes, expected}) => {
@@ -46,7 +46,7 @@ describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 		{elementTag: 'button', classes: ['ob-sub-menu-close-button'], expected: true},
 		{elementTag: 'a', classes: ['ob-master-layout-navigation-link'], expected: true},
 		{elementTag: 'a', classes: ['ob-master-layout-navigation-link', 'ob-main-nav-link'], expected: false},
-		{elementTag: 'button', classes: ['ob-master-layout-navigation-link', 'ob-main-nav-link'], expected: false}
+		{elementTag: 'button', classes: ['ob-master-layout-navigation-link', 'ob-main-nav-link'], expected: false},
 	])(
 		'that a click of $elementTag element with class(es): $classes within: div.ob-sub-menu will result in emitted being $expected',
 		fakeAsync(({elementTag, classes, expected}) => {

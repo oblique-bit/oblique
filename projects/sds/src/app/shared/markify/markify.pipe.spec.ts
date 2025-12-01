@@ -6,7 +6,7 @@ describe(MarkifyPipe.name, () => {
 	describe(MarkifyPipe.prototype.transform.name, () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [BrowserModule]
+				imports: [BrowserModule],
 			});
 		});
 
@@ -15,7 +15,7 @@ describe(MarkifyPipe.name, () => {
 			{text: 'home', bold: 'h', expected: '<mark>h</mark>ome'},
 			{text: 'home', bold: 'ho', expected: '<mark>ho</mark>me'},
 			{text: 'home', bold: 'hom', expected: '<mark>hom</mark>e'},
-			{text: 'home', bold: 'home', expected: '<mark>home</mark>'}
+			{text: 'home', bold: 'home', expected: '<mark>home</mark>'},
 		])('should transform text: $text into $expected', ({text, bold, expected}) => {
 			TestBed.runInInjectionContext(() => {
 				expect(new MarkifyPipe().transform(text, bold)).toEqual(expected);

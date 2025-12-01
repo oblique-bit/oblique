@@ -14,7 +14,7 @@ import {MaterialTableExampleSortablePreviewComponent} from './previews/sortable/
 	selector: 'app-code-example-material-table',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MaterialTableCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'material-table-examples';
@@ -25,8 +25,8 @@ export class MaterialTableCodeExamplesComponent extends CodeExamples {
 			title: 'Default',
 			snippets: [
 				this.getSnippet('material-table', 'default/material-table-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('material-table', 'default/material-table-example-default-preview.component.ts', 'TS')
-			]
+				this.getSnippet('material-table', 'default/material-table-example-default-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: MaterialTableExampleStylesPreviewComponent,
@@ -34,8 +34,8 @@ export class MaterialTableCodeExamplesComponent extends CodeExamples {
 			title: 'Styles',
 			snippets: [
 				this.getSnippet('material-table', 'styles/material-table-example-styles-preview.component.html', 'HTML'),
-				this.getSnippet('material-table', 'styles/material-table-example-styles-preview.component.ts', 'TS')
-			]
+				this.getSnippet('material-table', 'styles/material-table-example-styles-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: MaterialTableExampleSizesPreviewComponent,
@@ -44,8 +44,8 @@ export class MaterialTableCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('material-table', 'sizes/material-table-example-sizes-preview.component.html', 'HTML'),
 				this.getSnippet('material-table', 'sizes/material-table-example-sizes-preview.component.ts', 'TS'),
-				this.getSnippet('material-table', 'sizes/material-table-example-sizes-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('material-table', 'sizes/material-table-example-sizes-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: MaterialTableExampleEditablePreviewComponent,
@@ -57,18 +57,26 @@ export class MaterialTableCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('material-table', 'editable/material-table-example-editable-preview.component.scss', 'SCSS'),
 				this.getSnippet('material-table', 'editable/material-table-editable-dialog.component.html', 'HTML (Dialog)'),
 				this.getSnippet('material-table', 'editable/material-table-editable-dialog.component.ts', 'TS (Dialog)'),
-				this.getSnippet('material-table', 'editable/mock-backend.service.ts', 'TS (Mock Backend)')
-			]
+				this.getSnippet('material-table', 'editable/mock-backend.service.ts', 'TS (Mock Backend)'),
+			],
 		},
 		{
 			component: MaterialTableExampleSelectablePreviewComponent,
 			idParts: ['selectable'],
 			title: 'Selectable',
 			snippets: [
-				this.getSnippet('material-table', 'selectable/material-table-example-selectable-preview.component.html', 'HTML'),
+				this.getSnippet(
+					'material-table',
+					'selectable/material-table-example-selectable-preview.component.html',
+					'HTML'
+				),
 				this.getSnippet('material-table', 'selectable/material-table-example-selectable-preview.component.ts', 'TS'),
-				this.getSnippet('material-table', 'selectable/material-table-example-selectable-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet(
+					'material-table',
+					'selectable/material-table-example-selectable-preview.component.scss',
+					'SCSS'
+				),
+			],
 		},
 		{
 			component: MaterialTableExampleSortablePreviewComponent,
@@ -76,8 +84,8 @@ export class MaterialTableCodeExamplesComponent extends CodeExamples {
 			title: 'Sortable',
 			snippets: [
 				this.getSnippet('material-table', 'sortable/material-table-example-sortable-preview.component.html', 'HTML'),
-				this.getSnippet('material-table', 'sortable/material-table-example-sortable-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('material-table', 'sortable/material-table-example-sortable-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

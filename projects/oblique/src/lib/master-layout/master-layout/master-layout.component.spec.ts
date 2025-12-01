@@ -17,7 +17,7 @@ import {appVersion} from '../../version';
 
 @Component({
 	standalone: false,
-	template: ''
+	template: '',
 })
 export class MockComponent {}
 
@@ -31,11 +31,11 @@ describe('ObMasterLayoutComponent', () => {
 			hasLayout: false,
 			isMenuOpened: false,
 			hasMainNavigation: false,
-			hasOffCanvas: false
+			hasOffCanvas: false,
 		},
 		header: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
 		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
-		navigation: {refresh: jest.fn()}
+		navigation: {refresh: jest.fn()},
 	};
 
 	beforeEach(async () => {
@@ -48,9 +48,9 @@ describe('ObMasterLayoutComponent', () => {
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
 				{provide: ObOffCanvasService, useClass: ObMockOffCanvasService},
-				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService}
+				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
 			],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 		}).compileComponents();
 	});
 
@@ -153,7 +153,7 @@ describe('ObMasterLayoutComponent', () => {
 					it.each([
 						{text: 'empty', value: []},
 						{text: 'null', value: null},
-						{text: 'undefined', value: undefined}
+						{text: 'undefined', value: undefined},
 					])('should add accessKey 1 with an $text navigation', ({value}) => {
 						component.navigation = value;
 						component.ngOnInit();
@@ -204,7 +204,10 @@ describe('ObMasterLayoutComponent', () => {
 				expect(component.isHeaderSticky).toBe(mockMasterLayoutService.header.isSticky);
 			});
 			it('should be updated with the service', () => {
-				mockMasterLayoutService.header.configEvents$.next({name: ObEMasterLayoutEventValues.HEADER_IS_STICKY, value: true});
+				mockMasterLayoutService.header.configEvents$.next({
+					name: ObEMasterLayoutEventValues.HEADER_IS_STICKY,
+					value: true,
+				});
 				expect(component.isHeaderSticky).toBe(true);
 			});
 		});
@@ -214,7 +217,10 @@ describe('ObMasterLayoutComponent', () => {
 				expect(component.isFooterSticky).toBe(mockMasterLayoutService.footer.isSticky);
 			});
 			it('should be updated with the service', () => {
-				mockMasterLayoutService.footer.configEvents$.next({name: ObEMasterLayoutEventValues.FOOTER_IS_STICKY, value: true});
+				mockMasterLayoutService.footer.configEvents$.next({
+					name: ObEMasterLayoutEventValues.FOOTER_IS_STICKY,
+					value: true,
+				});
 				expect(component.isFooterSticky).toBe(true);
 			});
 		});
@@ -224,7 +230,10 @@ describe('ObMasterLayoutComponent', () => {
 				expect(component.noNavigation).toBe(true);
 			});
 			it('should be updated with the service', () => {
-				mockMasterLayoutService.layout.configEvents$.next({name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION, value: true});
+				mockMasterLayoutService.layout.configEvents$.next({
+					name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION,
+					value: true,
+				});
 				expect(component.noNavigation).toBe(false);
 			});
 		});
@@ -320,7 +329,9 @@ describe('ObMasterLayoutComponent', () => {
 				expect(element.focus).not.toHaveBeenCalled();
 			});
 			it('should console.error that the targetted element does not correspond to an existing dom element', () => {
-				expect(console.error).toHaveBeenCalledWith('not_existing_element does not correspond to an existing DOM element.');
+				expect(console.error).toHaveBeenCalledWith(
+					'not_existing_element does not correspond to an existing DOM element.'
+				);
 			});
 			afterEach(() => {
 				jest.clearAllMocks();
@@ -368,7 +379,7 @@ describe('ObMasterLayoutComponent', () => {
 
 		it.each([
 			{property: 'isLayoutExpanded', expected: false},
-			{property: 'isLayoutCollapsed', expected: true}
+			{property: 'isLayoutCollapsed', expected: true},
 		])('should have "$property" set to "$expected" with non matching media query', ({property, expected}) => {
 			Object.defineProperty(window, 'matchMedia', {
 				value: jest.fn(() => ({
@@ -376,23 +387,23 @@ describe('ObMasterLayoutComponent', () => {
 					onchange: null,
 					addListener: jest.fn(),
 					addEventListener: jest.fn(),
-					removeEventListener: jest.fn()
-				}))
+					removeEventListener: jest.fn(),
+				})),
 			});
 			component.ngOnChanges({
 				collapseBreakpoint: {
 					previousValue: undefined,
 					currentValue: undefined,
 					firstChange: false,
-					isFirstChange: () => true
-				}
+					isFirstChange: () => true,
+				},
 			});
 			expect(component[property]).toBe(expected);
 		});
 
 		it.each([
 			{property: 'isLayoutExpanded', expected: true},
-			{property: 'isLayoutCollapsed', expected: false}
+			{property: 'isLayoutCollapsed', expected: false},
 		])('should have "$property" set to "$expected" with matching media query', ({property, expected}) => {
 			Object.defineProperty(window, 'matchMedia', {
 				value: jest.fn(() => ({
@@ -400,16 +411,16 @@ describe('ObMasterLayoutComponent', () => {
 					onchange: null,
 					addListener: jest.fn(),
 					addEventListener: jest.fn(),
-					removeEventListener: jest.fn()
-				}))
+					removeEventListener: jest.fn(),
+				})),
 			});
 			component.ngOnChanges({
 				collapseBreakpoint: {
 					previousValue: undefined,
 					currentValue: undefined,
 					firstChange: false,
-					isFirstChange: () => true
-				}
+					isFirstChange: () => true,
+				},
 			});
 			expect(component[property]).toBe(expected);
 		});

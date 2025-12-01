@@ -1,5 +1,14 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {addImport, applyInTree, createSafeRule, infoMigration, readFile, removeImport, replaceInFile, warnIfStandalone} from '../utils';
+import {
+	addImport,
+	applyInTree,
+	createSafeRule,
+	infoMigration,
+	readFile,
+	removeImport,
+	replaceInFile,
+	warnIfStandalone,
+} from '../utils';
 import {ObIMigrations} from './ng-update.model';
 
 export interface IUpdateV14Schema {}
@@ -21,7 +30,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 				this.migrateColumnLayoutColumnsState(),
 				this.removeObIconModuleForRoot(),
 				this.migrateScrollToTop(),
-				this.removeHttpInterceptorModule()
+				this.removeHttpInterceptorModule(),
 			])(tree, context);
 	}
 
@@ -319,7 +328,12 @@ export class UpdateV13toV14 implements ObIMigrations {
 					}
 					if (!content.includes('createdOn')) {
 						const createdOn = new Date().toISOString().split('T')[0];
-						replaceInFile(tree, filePath, /(?<=accessibilityStatement\s*:\s*\{)/, `\n\t\t\t\tcreatedOn: new Date('${createdOn}'),`);
+						replaceInFile(
+							tree,
+							filePath,
+							/(?<=accessibilityStatement\s*:\s*\{)/,
+							`\n\t\t\t\tcreatedOn: new Date('${createdOn}'),`
+						);
 					}
 				}
 			};
@@ -342,7 +356,10 @@ export class UpdateV13toV14 implements ObIMigrations {
 				if (content.includes('header.serviceNavigation.infoContact')) {
 					tree.overwrite(
 						filePath,
-						content.replace(/(?<prefix>header\.serviceNavigation\.infoContact\s*=\s*{.*)tel(?<suffix>.*})/s, '$<prefix>phone$<suffix>')
+						content.replace(
+							/(?<prefix>header\.serviceNavigation\.infoContact\s*=\s*{.*)tel(?<suffix>.*})/s,
+							'$<prefix>phone$<suffix>'
+						)
 					);
 				}
 			};
@@ -410,7 +427,12 @@ export class UpdateV13toV14 implements ObIMigrations {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Migrate scrollTarget.scrollTo({top: 0}) to focusElement("content")');
 			const toApply = (filePath: string): void => {
-				replaceInFile(tree, filePath, /scrollTarget\.scrollTo\(\s*\{\s*top\s*:\s*0\s*\}\s*\)/gmu, "focusElement('content')");
+				replaceInFile(
+					tree,
+					filePath,
+					/scrollTarget\.scrollTo\(\s*\{\s*top\s*:\s*0\s*\}\s*\)/gmu,
+					"focusElement('content')"
+				);
 			};
 			return applyInTree(tree, toApply, '*.ts');
 		});

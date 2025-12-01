@@ -1,4 +1,15 @@
-import {DestroyRef, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, inject} from '@angular/core';
+import {
+	DestroyRef,
+	Directive,
+	ElementRef,
+	EventEmitter,
+	HostBinding,
+	HostListener,
+	Input,
+	OnInit,
+	Output,
+	inject,
+} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
@@ -7,9 +18,9 @@ import {fromEvent, startWith} from 'rxjs';
 
 @Directive({
 	selector: '[obInputClear]',
-	exportAs: 'obInputClear',
+	standalone: true,
 	host: {class: 'ob-input-clear'},
-	standalone: true
+	exportAs: 'obInputClear',
 })
 export class ObInputClearDirective implements OnInit {
 	@Input('obInputClear') control: AbstractControl | HTMLInputElement | NgModel;
@@ -63,15 +74,19 @@ export class ObInputClearDirective implements OnInit {
 
 	private subscribeToInputValueChange(): void {
 		if (this.control instanceof AbstractControl) {
-			this.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value)).subscribe(value => {
-				this.handleParentClass(value);
-			});
+			this.control.valueChanges
+				.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value))
+				.subscribe(value => {
+					this.handleParentClass(value);
+				});
 		}
 
 		if (this.control instanceof NgModel) {
-			this.control.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value)).subscribe(value => {
-				this.handleParentClass(value);
-			});
+			this.control.control.valueChanges
+				.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value))
+				.subscribe(value => {
+					this.handleParentClass(value);
+				});
 		}
 
 		if (this.control instanceof HTMLInputElement) {

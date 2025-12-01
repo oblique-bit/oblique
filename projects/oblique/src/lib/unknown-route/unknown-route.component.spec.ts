@@ -11,7 +11,7 @@ describe(ObUnknownRouteComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObUnknownRouteComponent, RouterTestingModule],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 		}).compileComponents();
 	});
 

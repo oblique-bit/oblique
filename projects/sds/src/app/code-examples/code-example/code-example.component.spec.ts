@@ -14,7 +14,7 @@ import type {PreviewComponent} from '../code-examples.model';
 @Component({
 	selector: 'app-preview',
 	standalone: true,
-	template: ''
+	template: '',
 })
 class MockPreviewComponent {}
 
@@ -43,8 +43,8 @@ describe(CodeExampleComponent.name, () => {
 				HighlightedCodeComponent,
 				TabComponent,
 				TabsComponent,
-				CodeExampleDirective
-			]
+				CodeExampleDirective,
+			],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(CodeExampleComponent);
@@ -79,8 +79,12 @@ describe(CodeExampleComponent.name, () => {
 		'should display $id when only codeSnippets & idPrefix inputs are truthy',
 		async ({id}) => {
 			await setupComponent({
-				codeSnippets: [new SourceCode('soucecode', 'html'), new SourceCode('soucecode', 'scss'), new SourceCode('soucecode', 'ts')],
-				idPrefix: 'test'
+				codeSnippets: [
+					new SourceCode('soucecode', 'html'),
+					new SourceCode('soucecode', 'scss'),
+					new SourceCode('soucecode', 'ts'),
+				],
+				idPrefix: 'test',
 			});
 
 			expect(getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
@@ -100,9 +104,13 @@ describe(CodeExampleComponent.name, () => {
 		'should display $id when all inputs are truthy',
 		async ({id}) => {
 			await setupComponent({
-				codeSnippets: [new SourceCode('soucecode', 'html'), new SourceCode('soucecode', 'scss'), new SourceCode('soucecode', 'ts')],
+				codeSnippets: [
+					new SourceCode('soucecode', 'html'),
+					new SourceCode('soucecode', 'scss'),
+					new SourceCode('soucecode', 'ts'),
+				],
 				idPrefix: 'test',
-				preview: MockPreviewComponent
+				preview: MockPreviewComponent,
 			});
 			expect(getDebugElementById(fixture, idPipe.transform(component.idPrefix(), getIdParts(id)))).toBeTruthy();
 		}
@@ -119,8 +127,8 @@ describe(CodeExampleComponent.name, () => {
 					HighlightedCodeComponent,
 					TabComponent,
 					TabsComponent,
-					CodeExampleDirective
-				]
+					CodeExampleDirective,
+				],
 			}).compileComponents();
 
 			fixture = TestBed.createComponent(CodeExampleComponent);

@@ -24,7 +24,7 @@ describe(FormCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [CodeExampleComponent, CommonModule, FormCodeExamplesComponent, IdPipe],
-			providers: [provideNativeDateAdapter(), provideObliqueTestingConfiguration()]
+			providers: [provideNativeDateAdapter(), provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(FormCodeExamplesComponent);

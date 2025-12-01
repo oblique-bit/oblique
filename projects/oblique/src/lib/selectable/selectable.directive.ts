@@ -1,13 +1,23 @@
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {DestroyRef, Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Optional, inject} from '@angular/core';
+import {
+	DestroyRef,
+	Directive,
+	ElementRef,
+	HostBinding,
+	HostListener,
+	Input,
+	OnInit,
+	Optional,
+	inject,
+} from '@angular/core';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 import {startWith} from 'rxjs';
 
 @Directive({
 	selector: '[obSelectable]',
-	exportAs: 'obSelectable',
+	standalone: true,
 	host: {class: 'ob-selectable'},
-	standalone: true
+	exportAs: 'obSelectable',
 })
 export class ObSelectableDirective<T = any> implements OnInit {
 	@Input() value: T;

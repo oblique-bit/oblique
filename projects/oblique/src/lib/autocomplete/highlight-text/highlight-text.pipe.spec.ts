@@ -10,7 +10,7 @@ describe('ObHighlightTextPipe', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [BrowserTestingModule]
+			imports: [BrowserTestingModule],
 		});
 		textToFindService = TestBed.inject(ObAutocompleteTextToFindService);
 		pipe = new ObHighlightTextPipe(textToFindService);

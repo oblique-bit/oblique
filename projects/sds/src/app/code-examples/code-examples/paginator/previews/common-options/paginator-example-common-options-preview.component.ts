@@ -6,6 +6,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 	imports: [MatPaginatorModule],
 	templateUrl: './paginator-example-common-options-preview.component.html',
 	styleUrls: ['../paginator-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	host: {class: 'layout-column'}
+	host: {class: 'layout-column'},
 })
 export class PaginatorExampleCommonOptionsPreviewComponent {}

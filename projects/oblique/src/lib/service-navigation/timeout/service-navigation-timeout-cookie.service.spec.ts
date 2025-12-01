@@ -19,7 +19,7 @@ describe('ServiceNavigationTimeoutCookieService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObServiceNavigationTimeoutCookieService, {provide: WINDOW, useValue: fakeWindow}]
+			providers: [ObServiceNavigationTimeoutCookieService, {provide: WINDOW, useValue: fakeWindow}],
 		});
 		service = TestBed.inject(ObServiceNavigationTimeoutCookieService);
 		fakeSetCookie.mockReset();
@@ -58,7 +58,7 @@ describe('ServiceNavigationTimeoutCookieService', () => {
 				['localhost', fakeLocalhostUrl],
 				['localhost', 'https://localhost:1234'],
 				['localhost', 'https://127.0.0.1:1234'],
-				['.admin.ch', eportalUrl]
+				['.admin.ch', eportalUrl],
 			])('should be "%s" when the current url is %s', (expectedResult, url) => {
 				fakeWindow.location.href = url;
 				service.setCookie(fakeKey, fakeValue);
@@ -79,7 +79,7 @@ describe('ServiceNavigationTimeoutCookieService', () => {
 				[false, fake127001Url],
 				[false, 'https://localhost:1234'],
 				[false, 'https://127.0.0.1:1234'],
-				[true, eportalUrl]
+				[true, eportalUrl],
 			])('should be %s when the current url is %s', (expectedSecure, url) => {
 				fakeWindow.location.href = url;
 				service.setCookie(fakeKey, fakeValue);

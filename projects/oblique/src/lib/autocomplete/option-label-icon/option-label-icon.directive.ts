@@ -7,8 +7,8 @@ import {ObEIcon} from '../../icon/icon.model';
 
 @Directive({
 	selector: '[obOptionLabelIcon]',
+	standalone: true,
 	host: {class: 'ob-option-label-icon'},
-	standalone: true
 })
 export class ObOptionLabelIconDirective implements OnChanges {
 	@Input() iconName?: ObEIcon;
@@ -46,7 +46,12 @@ export class ObOptionLabelIconDirective implements OnChanges {
 		}
 	}
 
-	private addIcon(iconName: string, iconSpan: HTMLSpanElement, host: HTMLElement, position: OptionLabelIconPosition): void {
+	private addIcon(
+		iconName: string,
+		iconSpan: HTMLSpanElement,
+		host: HTMLElement,
+		position: OptionLabelIconPosition
+	): void {
 		if (iconName && iconSpan) {
 			if (position === 'start') {
 				this.renderer.insertBefore(host, iconSpan, host.firstChild);
@@ -64,7 +69,11 @@ export class ObOptionLabelIconDirective implements OnChanges {
 		}
 	}
 
-	private createIconElement(svg: SVGElement, host: HTMLElement, iconPosition: OptionLabelIconPosition): HTMLSpanElement {
+	private createIconElement(
+		svg: SVGElement,
+		host: HTMLElement,
+		iconPosition: OptionLabelIconPosition
+	): HTMLSpanElement {
 		const span = this.renderer.createElement('span');
 		this.renderer.addClass(span, 'mat-icon');
 		this.setupIconPositionStyle(span, host, iconPosition);
@@ -72,7 +81,11 @@ export class ObOptionLabelIconDirective implements OnChanges {
 		return span;
 	}
 
-	private setupIconPositionStyle(span: HTMLSpanElement, host: HTMLElement, iconPosition: OptionLabelIconPosition): void {
+	private setupIconPositionStyle(
+		span: HTMLSpanElement,
+		host: HTMLElement,
+		iconPosition: OptionLabelIconPosition
+	): void {
 		if (iconPosition === 'end') {
 			this.renderer.setStyle(host, 'align-items', 'center');
 			this.renderer.setStyle(span, 'margin-left', 'auto');

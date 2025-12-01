@@ -4,6 +4,6 @@ import {Component} from '@angular/core';
 	selector: 'sb-form-sample',
 	standalone: false,
 	templateUrl: './form.component.html',
-	styleUrl: './form.component.scss'
+	styleUrl: './form.component.scss',
 })
 export class FormSampleComponent {}

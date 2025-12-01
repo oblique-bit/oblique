@@ -16,13 +16,16 @@ StyleDictionary.registerPreprocessor(compositionPreprocessor);
 export async function generateCSS(files, libFolder) {
 	const modes = [
 		{exclude: /(?:prose|lg|sm|low|mobile|dark|compact|spacious)\.json/},
-		{exclude: /(?:prose|lg|sm|low|mobile|light|compact|spacious)\.json/, selector: '@media (prefers-color-scheme: dark)'},
+		{
+			exclude: /(?:prose|lg|sm|low|mobile|light|compact|spacious)\.json/,
+			selector: '@media (prefers-color-scheme: dark)',
+		},
 		{exclude: /(?:prose|lg|sm|low|desktop|dark|compact|spacious)\.json/, selector: '@media (width <= 767px)'},
 		{exclude: /(?:prose|md|sm|low|mobile|dark|compact|spacious)\.json/, selector: '.ob-size-lg'},
 		{exclude: /(?:prose|lg|md|low|mobile|dark)|compact|spacious\.json/, selector: '.ob-size-sm'},
 		{exclude: /(?:prose|lg|md|low|mobile|dark)|standard|spacious\.json/, selector: '.ob-density-compact'},
 		{exclude: /(?:prose|lg|md|low|mobile|dark)|compact|standard\.json/, selector: '.ob-density-spacious'},
-		{exclude: /(?:interface|lg|sm|low|mobile|dark|compact|spacious)\.json/, selector: '.ob-typography-context-prose'}
+		{exclude: /(?:interface|lg|sm|low|mobile|dark|compact|spacious)\.json/, selector: '.ob-typography-context-prose'},
 	];
 
 	for (const config of buildConfigs(modes, files, libFolder)) {
@@ -46,36 +49,40 @@ function buildConfigs(modes, files, libFolder) {
 							'ts/color/modifiers',
 							'ts/size/px',
 							'ts/resolveMath',
-							'ts/shadow/innerShadow'
+							'ts/shadow/innerShadow',
 						],
 						files: [
 							{
 								destination: `${libFolder}/styles/oblique-tokens.css`,
 								format: coreFormat.name,
 								options: {
-									mode: mode.selector
-								}
+									mode: mode.selector,
+								},
 							},
 							...components.map(component => ({
 								destination: `${libFolder}/${component}/${component}-tokens.css`,
 								format: componentFormat.name,
 								options: {
 									mode: mode.selector,
-									component
-								}
-							}))
-						]
-					}
+									component,
+								},
+							})),
+						],
+					},
 				},
 				log: {
-					verbosity: logVerbosityLevels.verbose
-				}
+					verbosity: logVerbosityLevels.verbose,
+				},
 			})
 	);
 }
 
 function listComponents(files, libFolder) {
 	return [
-		...new Set(files.filter(path => path.includes('/04_component/')).map(path => /(?<=component\/(?:atom|molecule)\/)[\w-]+/.exec(path)[0]))
+		...new Set(
+			files
+				.filter(path => path.includes('/04_component/'))
+				.map(path => /(?<=component\/(?:atom|molecule)\/)[\w-]+/.exec(path)[0])
+		),
 	].filter(component => existsSync(`${libFolder}/${component}`));
 }

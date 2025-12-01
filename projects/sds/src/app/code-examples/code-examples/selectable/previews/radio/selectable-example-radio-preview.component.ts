@@ -6,6 +6,6 @@ import {ObSelectableModule} from '@oblique/oblique';
 	selector: 'app-selectable-example-radio-preview',
 	imports: [CommonModule, ObSelectableModule],
 	templateUrl: './selectable-example-radio-preview.component.html',
-	styleUrl: '../selectable-example-preview.component.scss'
+	styleUrl: '../selectable-example-preview.component.scss',
 })
 export class SelectableExampleRadioPreviewComponent {}

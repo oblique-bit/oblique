@@ -5,8 +5,8 @@ import {Directive} from '@angular/core';
  */
 @Directive({
 	selector: '[obMasterLayoutNavigationMenu]',
+	standalone: false,
 	exportAs: 'obMasterLayoutNavigationMenu',
-	standalone: false
 })
 export class ObMockMasterLayoutNavigationMenuDirective {
 	hasOpenedMenu = false;

@@ -4,9 +4,9 @@ import {distinctUntilChanged} from 'rxjs/operators';
 
 @Directive({
 	selector: '[obNumberFormat]',
-	exportAs: 'obNumberFormat',
+	standalone: true,
 	host: {class: 'ob-number-format'},
-	standalone: true
+	exportAs: 'obNumberFormat',
 })
 export class ObNumberFormatDirective implements OnInit {
 	@Input() decimals = 2;

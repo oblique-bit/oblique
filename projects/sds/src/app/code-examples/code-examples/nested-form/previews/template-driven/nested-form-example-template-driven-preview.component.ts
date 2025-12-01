@@ -3,7 +3,13 @@ import {JsonPipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {ObButtonModule, ObErrorMessagesModule, ObNestedFormModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
+import {
+	ObButtonModule,
+	ObErrorMessagesModule,
+	ObNestedFormModule,
+	ObNotificationModule,
+	ObNotificationService,
+} from '@oblique/oblique';
 import {NestedFormExampleTemplateDrivenPreviewChildComponent} from './child/nested-form-example-template-driven-preview-child.component';
 import {MatButtonModule} from '@angular/material/button';
 
@@ -20,16 +26,16 @@ import {MatButtonModule} from '@angular/material/button';
 		ObErrorMessagesModule,
 		ObNestedFormModule,
 		ObNotificationModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
 	],
 	templateUrl: './nested-form-example-template-driven-preview.component.html',
-	styleUrl: '../nested-form-example-preview.scss'
+	styleUrl: '../nested-form-example-preview.scss',
 })
 export class NestedFormExampleTemplateDrivenPreviewComponent {
 	readonly channel = 'template-driven-channel';
 	readonly model = {
 		parent: '',
-		child: undefined
+		child: undefined,
 	};
 	private readonly notification = inject(ObNotificationService);
 

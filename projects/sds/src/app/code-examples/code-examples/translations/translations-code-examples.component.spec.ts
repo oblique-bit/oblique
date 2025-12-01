@@ -14,7 +14,7 @@ describe(TranslationsCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [TranslationsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TranslationsCodeExamplesComponent);

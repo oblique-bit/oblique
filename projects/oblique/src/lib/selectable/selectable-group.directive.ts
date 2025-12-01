@@ -1,21 +1,31 @@
 import {BehaviorSubject} from 'rxjs';
-import {AfterContentInit, Directive, EventEmitter, HostBinding, HostListener, Input, Output, booleanAttribute, inject} from '@angular/core';
+import {
+	AfterContentInit,
+	Directive,
+	EventEmitter,
+	HostBinding,
+	HostListener,
+	Input,
+	Output,
+	booleanAttribute,
+	inject,
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {WINDOW} from './../utilities';
 import {ObSelectableDirective} from './selectable.directive';
 
 @Directive({
 	selector: '[obSelectableGroup]',
-	exportAs: 'obSelectableGroup',
-	host: {class: 'ob-selectable-group'},
 	standalone: true,
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
 			useExisting: ObSelectableGroupDirective,
-			multi: true
-		}
-	]
+			multi: true,
+		},
+	],
+	host: {class: 'ob-selectable-group'},
+	exportAs: 'obSelectableGroup',
 })
 export class ObSelectableGroupDirective<T = any> implements AfterContentInit, ControlValueAccessor {
 	@HostBinding('attr.disabled') isDisabled = undefined;
@@ -35,7 +45,7 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	private readonly modeToggle = {
 		checkbox: this.checkboxSelect.bind(this),
 		radio: this.radioSelect.bind(this),
-		windows: this.windowsSelect.bind(this)
+		windows: this.windowsSelect.bind(this),
 	};
 
 	constructor() {

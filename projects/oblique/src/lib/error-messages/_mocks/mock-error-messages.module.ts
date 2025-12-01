@@ -16,7 +16,7 @@ export {ObMockErrorMessagesService} from './mock-error-messages.service';
  */
 @NgModule({
 	imports: [ObMockErrorMessagesComponent, ObMockErrorMessagesDirective, ObMockMatErrorDirective],
+	providers: [{provide: ObErrorMessagesService, useClass: ObMockErrorMessagesService}],
 	exports: [ObMockErrorMessagesComponent, ObMockErrorMessagesDirective, ObMockMatErrorDirective],
-	providers: [{provide: ObErrorMessagesService, useClass: ObMockErrorMessagesService}]
 })
 export class ObMockErrorMessagesModule {}

@@ -15,14 +15,14 @@ export default defineConfig(
 		// We need to disable TypeScript here because of
 		// https://github.com/typescript-eslint/typescript-eslint/issues/11543
 		// @ts-ignore
-		extends: eslintConfigOblique
+		extends: eslintConfigOblique,
 	},
 	{
 		files: ['scripts/shared/log.ts'],
 		rules: {
 			// special case
-			'no-console': ['error', {allow: ['log']}]
-		}
+			'no-console': ['error', {allow: ['log']}],
+		},
 	},
 	{
 		files: ['scripts/**/*.ts'],
@@ -40,8 +40,8 @@ export default defineConfig(
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'@typescript-eslint/strict-boolean-expressions': 'off',
 			'no-implicit-coercion': 'off',
-			'require-unicode-regexp': 'off'
-		}
+			'require-unicode-regexp': 'off',
+		},
 	},
 	{
 		files: ['tests/**/*.ts'],
@@ -56,8 +56,8 @@ export default defineConfig(
 			'@typescript-eslint/no-dynamic-delete': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off',
-			'func-names': 'off'
-		}
+			'func-names': 'off',
+		},
 	},
 
 	...obliqueEslintConfig,

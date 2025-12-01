@@ -5,6 +5,6 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'app-language-example-default-preview',
 	imports: [MatButtonModule, ObButtonModule],
-	templateUrl: './language-example-default-preview.component.html'
+	templateUrl: './language-example-default-preview.component.html',
 })
 export class LanguageExampleDefaultPreviewComponent {}

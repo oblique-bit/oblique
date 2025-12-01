@@ -1,13 +1,29 @@
-<nav class="ob-access-keys" role="navigation" [attr.aria-label]="'i18n.oblique.master-layout.accesskey.title' | translate">
+<nav
+	class="ob-access-keys"
+	role="navigation"
+	[attr.aria-label]="'i18n.oblique.master-layout.accesskey.title' | translate"
+>
 	<ul>
 		<li>
-			<a class="ob-accessible" accesskey="0" [routerLink]="route.path" [queryParams]="route.params" [fragment]="contentId">
+			<a
+				class="ob-accessible"
+				accesskey="0"
+				[routerLink]="route.path"
+				[queryParams]="route.params"
+				[fragment]="contentId"
+			>
 				<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
 		</li>
 		<li *ngIf="!noNavigation && navigation?.length">
-			<a class="ob-accessible" accesskey="1" [routerLink]="route.path" [queryParams]="route.params" fragment="navigation">
+			<a
+				class="ob-accessible"
+				accesskey="1"
+				[routerLink]="route.path"
+				[queryParams]="route.params"
+				fragment="navigation"
+			>
 				<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
 				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
 			</a>
@@ -104,8 +120,20 @@
 <ob-spinner [fixed]="true" />
 <ng-template #logo>
 	@if (hasHighContrast) {
-		<img [alt]="'i18n.oblique.header.logo' | translate" ngSrc="assets/images/logo-white.svg" priority [height]="38" [width]="156" />
+		<img
+			[alt]="'i18n.oblique.header.logo' | translate"
+			ngSrc="assets/images/logo-white.svg"
+			priority
+			[height]="38"
+			[width]="156"
+		/>
 	} @else {
-		<img [alt]="'i18n.oblique.header.logo' | translate" ngSrc="assets/images/logo.svg" priority [height]="38" [width]="156" />
+		<img
+			[alt]="'i18n.oblique.header.logo' | translate"
+			ngSrc="assets/images/logo.svg"
+			priority
+			[height]="38"
+			[width]="156"
+		/>
 	}
 </ng-template>

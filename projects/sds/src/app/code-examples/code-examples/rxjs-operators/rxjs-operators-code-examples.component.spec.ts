@@ -12,7 +12,7 @@ describe(RxjsOperatorsCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [RxjsOperatorsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [RxjsOperatorsCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(RxjsOperatorsCodeExamplesComponent);

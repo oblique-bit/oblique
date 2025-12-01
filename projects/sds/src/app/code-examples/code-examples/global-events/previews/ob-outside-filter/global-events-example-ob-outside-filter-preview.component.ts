@@ -8,13 +8,15 @@ import {BehaviorSubject, type Observable, Subject, map, takeUntil, withLatestFro
 	imports: [AsyncPipe],
 	templateUrl: './global-events-example-ob-outside-filter-preview.component.html',
 	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	host: {class: 'layout-column'}
+	host: {class: 'layout-column'},
 })
 export class GlobalEventsExampleObOutsideFilterPreviewComponent implements AfterViewInit, OnDestroy {
 	clicksOutsideObOutsideFilterItems$: Observable<number>;
 
 	private readonly events = inject(ObGlobalEventsService);
-	private readonly obOutsideFilterItem: Signal<ElementRef<HTMLElement>> = viewChild('obOutsideFilterItem', {read: ElementRef});
+	private readonly obOutsideFilterItem: Signal<ElementRef<HTMLElement>> = viewChild('obOutsideFilterItem', {
+		read: ElementRef,
+	});
 	private readonly clicksOutsideObOutsideFilterItems: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 	private readonly unsubscribe = new Subject<void>();
 
@@ -30,7 +32,9 @@ export class GlobalEventsExampleObOutsideFilterPreviewComponent implements After
 				map(val => val[1]),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(clicksOutsideObOutsideFilterItems => this.clicksOutsideObOutsideFilterItems.next(clicksOutsideObOutsideFilterItems + 1));
+			.subscribe(clicksOutsideObOutsideFilterItems =>
+				this.clicksOutsideObOutsideFilterItems.next(clicksOutsideObOutsideFilterItems + 1)
+			);
 	}
 
 	ngOnDestroy(): void {

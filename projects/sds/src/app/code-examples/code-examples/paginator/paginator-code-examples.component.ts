@@ -10,7 +10,7 @@ import {PaginatorExampleOtherOptionsPreviewComponent} from './previews/other-opt
 	selector: 'app-paginator-code-examples',
 	imports: [CommonModule, CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginatorCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'button-examples';
@@ -23,8 +23,8 @@ export class PaginatorCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('paginator', 'common-options/paginator-example-common-options-preview.component.html', 'HTML'),
 				this.getSnippet('paginator', 'common-options/paginator-example-common-options-preview.component.ts', 'TS'),
 				this.getSnippet('paginator', 'paginator-example-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
 		},
 		{
 			component: PaginatorExampleOtherOptionsPreviewComponent,
@@ -34,8 +34,8 @@ export class PaginatorCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('paginator', 'other-options/paginator-example-other-options-preview.component.html', 'HTML'),
 				this.getSnippet('paginator', 'other-options/paginator-example-other-options-preview.component.ts', 'TS'),
 				this.getSnippet('paginator', 'paginator-example-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

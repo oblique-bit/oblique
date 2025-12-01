@@ -17,7 +17,10 @@ export class ObServiceNavigationTimeoutReturnUrlService {
 		const urlWithoutTimeoutAndReturnUrlParameter = url.origin + url.pathname;
 		const params = new URLSearchParams('');
 		params.append(key, 'true');
-		params.append(returnUrlKey, urlWithoutTimeoutAndReturnUrlParameter + this.addQuestionMarkWhenNotEmpty(returnUrlParams));
+		params.append(
+			returnUrlKey,
+			urlWithoutTimeoutAndReturnUrlParameter + this.addQuestionMarkWhenNotEmpty(returnUrlParams)
+		);
 
 		const eportalUrlWithParameters = new URL(eportalUrl);
 		eportalUrlWithParameters.search = params.toString();

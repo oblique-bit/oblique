@@ -12,7 +12,7 @@ describe(FocusWithOutlineExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [FocusWithOutlineExamplesComponent, TranslateModule.forRoot()],
-			providers: [provideNativeDateAdapter()]
+			providers: [provideNativeDateAdapter()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(FocusWithOutlineExamplesComponent);

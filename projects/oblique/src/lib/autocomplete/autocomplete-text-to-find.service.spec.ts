@@ -34,7 +34,7 @@ describe('ObAutocompleteTextToFindService', () => {
 			{value: '$', expected: '\\$'},
 			{value: '|', expected: '\\|'},
 			{value: '#', expected: '\\#'},
-			{value: '-', expected: '\\-'}
+			{value: '-', expected: '\\-'},
 		])('should escape $value regex characters', ({value, expected}) => {
 			const escapeString = service.escapeRegexCharacter(value);
 			expect(escapeString).toBe(expected);

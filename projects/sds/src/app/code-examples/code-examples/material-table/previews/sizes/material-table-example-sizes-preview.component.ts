@@ -5,7 +5,7 @@ import {MatTableModule} from '@angular/material/table';
 	selector: 'app-material-table-example-sizes-preview',
 	imports: [MatTableModule],
 	templateUrl: './material-table-example-sizes-preview.component.html',
-	styleUrl: './material-table-example-sizes-preview.component.scss'
+	styleUrl: './material-table-example-sizes-preview.component.scss',
 })
 export class MaterialTableExampleSizesPreviewComponent {
 	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -19,6 +19,6 @@ export class MaterialTableExampleSizesPreviewComponent {
 		{position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
 		{position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
+		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 	];
 }

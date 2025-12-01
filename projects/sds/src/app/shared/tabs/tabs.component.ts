@@ -6,7 +6,7 @@ import {IdPipe} from '../id/id.pipe';
 	selector: 'app-tabs',
 	imports: [IdPipe],
 	templateUrl: './tabs.component.html',
-	styleUrl: './tabs.component.scss'
+	styleUrl: './tabs.component.scss',
 })
 export class TabsComponent implements OnChanges {
 	readonly idPrefix = input('');

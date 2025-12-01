@@ -6,7 +6,7 @@ import {Component, Input} from '@angular/core';
 @Component({
 	selector: 'ob-icon',
 	standalone: true,
-	template: ''
+	template: '',
 })
 export class ObMockIconComponent {
 	@Input() icon: string;

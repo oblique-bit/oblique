@@ -9,12 +9,21 @@ import {ObTranslateParamsModule} from '../translate-params/translate-params.modu
 
 export {ObNotificationComponent} from './notification.component';
 export {ObNotificationService} from './notification.service';
-export {ObNotificationConfig, CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, GROUP_SIMILAR_NOTIFICATIONS} from './notification.config';
-export {ObINotification, ObINotificationConfig, ObENotificationType, ObENotificationPlacement} from './notification.model';
+export {
+	ObNotificationConfig,
+	CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE,
+	GROUP_SIMILAR_NOTIFICATIONS,
+} from './notification.config';
+export {
+	ObINotification,
+	ObINotificationConfig,
+	ObENotificationType,
+	ObENotificationPlacement,
+} from './notification.model';
 
 @NgModule({
-	declarations: [ObNotificationComponent],
 	imports: [CommonModule, MatTooltipModule, ObAlertModule, ObTranslateParamsModule, TranslateModule],
-	exports: [ObNotificationComponent]
+	declarations: [ObNotificationComponent],
+	exports: [ObNotificationComponent],
 })
 export class ObNotificationModule {}

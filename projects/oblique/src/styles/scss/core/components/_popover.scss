@@ -2,8 +2,7 @@
 @use "../mixins/shadow";
 
 .ob-popover-content {
-	padding: variables.$ob-spacing-default 0 variables.$ob-spacing-default
-		variables.$ob-spacing-default;
+	padding: variables.$ob-spacing-default 0 variables.$ob-spacing-default variables.$ob-spacing-default;
 	max-width: 40%; // empiric value
 	background: variables.$ob-white;
 	z-index: variables.$ob-z-index-widget;

@@ -6,16 +6,16 @@ export default [
 		files: ['**/*.ts'],
 		plugins: {
 			'@typescript-eslint': plugin,
-			'@angular-eslint': tsPlugin
+			'@angular-eslint': tsPlugin,
 		},
 		processor: processInlineTemplates,
 		languageOptions: {
 			parser,
 			parserOptions: {
 				projectService: true,
-				tsconfigRootDir: import.meta.dirname
+				tsconfigRootDir: import.meta.dirname,
 			},
-			sourceType: 'module'
+			sourceType: 'module',
 		},
 		rules: {
 			// https://eslint.org/docs/latest/rules
@@ -138,9 +138,9 @@ export default [
 						'Pipe',
 						'SkipSelf',
 						'ViewChild',
-						'ViewChildren'
-					]
-				}
+						'ViewChildren',
+					],
+				},
 			],
 			'no-alert': 'error',
 			/**
@@ -511,9 +511,9 @@ export default [
 						'private-constructor',
 						'public-method',
 						'protected-method',
-						'private-method'
-					]
-				}
+						'private-method',
+					],
+				},
 			],
 			'@typescript-eslint/method-signature-style': 'error',
 			/**
@@ -525,7 +525,7 @@ export default [
 				{selector: 'default', format: ['camelCase']},
 				{selector: 'typeLike', format: ['PascalCase']}, // class, enum, interface, type, ...
 				{selector: 'enumMember', format: ['UPPER_CASE']},
-				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']}
+				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
 			],
 			'@typescript-eslint/no-array-constructor': 'error',
 			'@typescript-eslint/no-array-delete': 'error',
@@ -744,15 +744,15 @@ export default [
 			'@angular-eslint/use-component-view-encapsulation': 'error',
 			'@angular-eslint/use-injectable-provided-in': 'error',
 			'@angular-eslint/use-lifecycle-interface': 'error',
-			'@angular-eslint/use-pipe-transform-interface': 'error'
-		}
+			'@angular-eslint/use-pipe-transform-interface': 'error',
+		},
 	},
 	{
 		files: ['**/*.spec.ts'],
 		plugins: {
 			'@typescript-eslint': plugin,
 			'@angular-eslint': tsPlugin,
-			'@angular-eslint/template': templatePlugin // because tests can have inline template
+			'@angular-eslint/template': templatePlugin, // because tests can have inline template
 		},
 		rules: {
 			/**
@@ -789,7 +789,10 @@ export default [
 			 * Rule: @typescript-eslint/consistent-type-imports (https://typescript-eslint.io/rules/consistent-type-imports)
 			 * Reason for {disallowTypeAnnotations: false}: In tests, types are often used in type annotations (e.g. for spies) so it's better to allow type imports in type annotations
 			 */
-			'@typescript-eslint/consistent-type-imports': ['error', {fixStyle: 'inline-type-imports', disallowTypeAnnotations: false}],
+			'@typescript-eslint/consistent-type-imports': [
+				'error',
+				{fixStyle: 'inline-type-imports', disallowTypeAnnotations: false},
+			],
 			/**
 			 * Rule: @typescript-eslint/init-declarations (https://typescript-eslint.io/rules/init-declarations)
 			 * Reason for disabling: Variables are often initialized in beforeEach blocks
@@ -828,16 +831,16 @@ export default [
 			 * Example with enabled rule:
 			 * expect(someSpy.bind(this)).toHaveBeenCalled();
 			 */
-			'@typescript-eslint/unbound-method': 'off'
-		}
+			'@typescript-eslint/unbound-method': 'off',
+		},
 	},
 	{
 		files: ['**/*.html'],
 		plugins: {
-			'@angular-eslint/template': templatePlugin
+			'@angular-eslint/template': templatePlugin,
 		},
 		languageOptions: {
-			parser: templateParser
+			parser: templateParser,
 		},
 		rules: {
 			// https://github.com/angular-eslint/angular-eslint/tree/main/packages/eslint-plugin-template/docs/rules
@@ -879,8 +882,8 @@ export default [
 			'@angular-eslint/template/role-has-required-aria': 'error',
 			'@angular-eslint/template/table-scope': 'error',
 			'@angular-eslint/template/use-track-by-function': 'error',
-			'@angular-eslint/template/valid-aria': 'error'
-		}
+			'@angular-eslint/template/valid-aria': 'error',
+		},
 	},
 	{
 		files: ['**/index.html'],
@@ -889,7 +892,7 @@ export default [
 			 * Rule: @angular-eslint/template/no-inline-styles (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/src/rules/no-inline-styles.ts)
 			 * Reason for disabling: Oblique adds inline styles to display unsupported browser in index.html. This is necessary so that the error messages are displayed even if the loading of external resources is blocked.
 			 */
-			'@angular-eslint/template/no-inline-styles': 'off'
-		}
-	}
+			'@angular-eslint/template/no-inline-styles': 'off',
+		},
+	},
 ];

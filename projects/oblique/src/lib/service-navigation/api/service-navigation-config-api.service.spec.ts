@@ -10,12 +10,12 @@ describe('ObServiceNavigationUrlsApiService', () => {
 	const mockUrls = {
 		statusCode: 200,
 		success: true,
-		data: {test: 'test'}
+		data: {test: 'test'},
 	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule]
+			imports: [HttpClientTestingModule],
 		});
 		httpClient = TestBed.inject(HttpClient);
 		jest.spyOn(httpClient, 'get').mockReturnValue(of(mockUrls));

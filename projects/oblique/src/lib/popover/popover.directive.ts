@@ -16,7 +16,7 @@ import {
 	Renderer2,
 	TemplateRef,
 	ViewContainerRef,
-	inject
+	inject,
 } from '@angular/core';
 import {Instance, Options, Placement, createPopper} from '@popperjs/core';
 import {race} from 'rxjs';
@@ -26,17 +26,21 @@ import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outsideFilter';
 import {isNotKeyboardEventOnButton} from '../utilities';
 
-export const OBLIQUE_POPOVER_TOGGLE_HANDLE = new InjectionToken<ObEToggleType>('Define the toggle handle for all Oblique popover');
+export const OBLIQUE_POPOVER_TOGGLE_HANDLE = new InjectionToken<ObEToggleType>(
+	'Define the toggle handle for all Oblique popover'
+);
 export const OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE = new InjectionToken<boolean>(
 	'All Oblique popover are only closed when clicking on the toggle element'
 );
-export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>('Appends all popover to the body per default');
+export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>(
+	'Appends all popover to the body per default'
+);
 
 @Directive({
 	selector: '[obPopover]',
-	exportAs: 'obPopover',
+	standalone: true,
 	host: {class: 'ob-popover', 'aria-haspopup': 'menu'},
-	standalone: true
+	exportAs: 'obPopover',
 })
 export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input('obPopover') target: TemplateRef<HTMLElement>;

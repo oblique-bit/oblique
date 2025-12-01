@@ -23,17 +23,17 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 		MatIconModule,
 		MatInputModule,
 		RouterModule,
-		TranslateModule
+		TranslateModule,
 	],
 	templateUrl: './nav-tree.component.html',
 	styleUrls: ['./nav-tree.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	exportAs: 'obNavTree'
+	exportAs: 'obNavTree',
 })
 export class ObNavTreeComponent implements OnDestroy {
 	static DEFAULTS = {
 		HIGHLIGHT: 'ob-pattern-highlight',
-		LABEL_FORMATTER: defaultLabelFormatterFactory
+		LABEL_FORMATTER: defaultLabelFormatterFactory,
 	};
 
 	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
@@ -41,9 +41,8 @@ export class ObNavTreeComponent implements OnDestroy {
 	@Input() prefix = 'nav-tree';
 	@Input() hasFilter = false;
 	@Input() filterPattern: string;
-	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(
-		this.translate
-	);
+	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string =
+		ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate);
 	@Input() treeAriaLabelledBy: string;
 	@Input() treeAriaLabel: string;
 	private readonly unsubscribe = new Subject<void>();
@@ -114,13 +113,18 @@ export class ObNavTreeComponent implements OnDestroy {
 	}
 }
 
-export function defaultLabelFormatterFactory(translate: TranslateService): (item: ObNavTreeItemModel, filterPattern: string) => string {
+export function defaultLabelFormatterFactory(
+	translate: TranslateService
+): (item: ObNavTreeItemModel, filterPattern: string) => string {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
 	const formatter = (item: ObNavTreeItemModel, filterPattern: string): string => {
 		const pattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label: string = translate.instant(item.label, item.labelParams);
 		return pattern
-			? label.replace(new RegExp(pattern, 'ig'), text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`)
+			? label.replace(
+					new RegExp(pattern, 'ig'),
+					text => `<span class="${ObNavTreeComponent.DEFAULTS.HIGHLIGHT}">${text}</span>`
+				)
 			: label;
 	};
 

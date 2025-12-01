@@ -4,7 +4,7 @@ import {ObENotificationPlacement, ObENotificationType, ObNotificationService} fr
 @Component({
 	selector: 'sb-notification-sample',
 	standalone: false,
-	templateUrl: './notification-sample.component.html'
+	templateUrl: './notification-sample.component.html',
 })
 export class NotificationSampleComponent {
 	messageWithParams = false;
@@ -21,13 +21,13 @@ export class NotificationSampleComponent {
 	titleKey = 'i18n.notification.sampleTitle';
 	titleParams = {
 		title: 'title',
-		parameters: 'parameters'
+		parameters: 'parameters',
 	};
 	message = 'You successfully sent your first notification with Oblique :)';
 	messageKey = 'i18n.notification.sampleMessage';
 	messageParams = {
 		message: 'message',
-		parameters: 'parameters'
+		parameters: 'parameters',
 	};
 	sticky = false;
 	timeout = 2500;
@@ -60,7 +60,7 @@ export class NotificationSampleComponent {
 			channel: this.channel,
 			timeout: this.timeout,
 			groupSimilar: this.group,
-			type: this.variant
+			type: this.variant,
 		});
 	}
 

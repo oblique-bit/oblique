@@ -21,11 +21,20 @@ import {UiUxComponent} from '../ui-ux/ui-ux.component';
 
 @Component({
 	selector: 'app-tabbed-page',
-	imports: [TabsComponent, TabComponent, UiUxComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
+	imports: [
+		TabsComponent,
+		TabComponent,
+		UiUxComponent,
+		CodeExampleDirective,
+		CommonModule,
+		IdPipe,
+		SafeHtmlPipe,
+		MatChipsModule,
+	],
 	templateUrl: './tabbed-page.component.html',
 	styleUrl: './tabbed-page.component.scss',
 	host: {class: 'content-page'},
-	hostDirectives: [CdkScrollable]
+	hostDirectives: [CdkScrollable],
 })
 export class TabbedPageComponent {
 	readonly componentId = 'tabbed-page';
@@ -64,7 +73,7 @@ export class TabbedPageComponent {
 			this.router.createUrlTree([urlParamForTab], {
 				relativeTo: this.activatedRoute.parent,
 				queryParamsHandling: 'preserve',
-				preserveFragment: true
+				preserveFragment: true,
 			})
 		);
 		this.location.replaceState(newUrl);
@@ -104,7 +113,7 @@ export class TabbedPageComponent {
 			uiUx: this.buildUiUxData(cmsData),
 			source: getCodeExampleComponent(cmsData.slug),
 			tab: this.getSelectedTab(),
-			deprecation: cmsData.deprecation
+			deprecation: cmsData.deprecation,
 		};
 	}
 
@@ -127,7 +136,16 @@ export class TabbedPageComponent {
 	private buildUiUxData(cmsData: TabbedPageComplete): UiUxData {
 		const data: UiUxData = {};
 		// we take every field that we need and map the value from Directus to it
-		['purpose', 'additionalInfo', 'generalRules', 'do', 'doNot', 'relatedLinks', 'designFileLatest', 'designFilePrevious']
+		[
+			'purpose',
+			'additionalInfo',
+			'generalRules',
+			'do',
+			'doNot',
+			'relatedLinks',
+			'designFileLatest',
+			'designFilePrevious',
+		]
 			.map(property => ({property, cmsProperty: this.mapCMSProperty(property)}))
 			.map(({property, cmsProperty}) => ({property, cmsUiUxData: cmsData[cmsProperty] as string | UiUxEntry[]}))
 			.filter(({cmsUiUxData}) => cmsUiUxData?.length) // Directus provides all fields, even empty ones

@@ -12,7 +12,7 @@ import {
 	Output,
 	ViewChild,
 	ViewEncapsulation,
-	inject
+	inject,
 } from '@angular/core';
 import {Subject, filter, fromEvent, merge, tap} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -21,7 +21,9 @@ import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 export const OBLIQUE_COLLAPSE_ACTIVE = new InjectionToken<boolean>('OBLIQUE_COLLAPSE_STATUS');
-export const OBLIQUE_COLLAPSE_ICON_POSITION = new InjectionToken<'left' | 'right' | 'justified' | 'none'>('The default icon position');
+export const OBLIQUE_COLLAPSE_ICON_POSITION = new InjectionToken<'left' | 'right' | 'justified' | 'none'>(
+	'The default icon position'
+);
 export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | number>('The default animation speed');
 
 @Component({
@@ -30,8 +32,8 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 	templateUrl: './collapse.component.html',
 	styleUrls: ['./collapse.component.scss'],
 	encapsulation: ViewEncapsulation.None,
+	host: {class: 'ob-collapse'},
 	exportAs: 'obCollapse',
-	host: {class: 'ob-collapse'}
 })
 export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterContentChecked {
 	static index = 0;

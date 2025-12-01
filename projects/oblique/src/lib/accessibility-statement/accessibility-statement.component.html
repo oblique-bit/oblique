@@ -2,7 +2,10 @@
 <p>{{ "i18n.oblique.accessibility-statement.information-and-services" | translate }}</p>
 <p>
 	{{ "i18n.oblique.accessibility-statement.the-federal-administration-strives.text-before-link" | translate }}
-	<a [href]="'i18n.oblique.accessibility-statement.the-federal-administration-strives.url' | translate" [isExternalLink]="true" icon="right"
+	<a
+		[href]="'i18n.oblique.accessibility-statement.the-federal-administration-strives.url' | translate"
+		[isExternalLink]="true"
+		icon="right"
 		>eCH-0059 Accessibility Standard</a
 	>
 	{{ "i18n.oblique.accessibility-statement.the-federal-administration-strives.text-after-link" | translate }}
@@ -31,7 +34,7 @@
 			| translate
 				: {
 						createdOn: (parameters.createdOn | obDate: 'shortDate'),
-						createdOnISO: (parameters.createdOn | date: 'yyyy-MM-dd')
+						createdOnISO: (parameters.createdOn | date: 'yyyy-MM-dd'),
 				  }
 	"
 ></p>
@@ -42,7 +45,7 @@
 				| translate
 					: {
 							reviewedOn: (parameters.reviewedOn | obDate: 'shortDate'),
-							reviewedOnISO: (parameters.reviewedOn | date: 'yyyy-MM-dd')
+							reviewedOnISO: (parameters.reviewedOn | date: 'yyyy-MM-dd'),
 					  }
 		"
 	></p>

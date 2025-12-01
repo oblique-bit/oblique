@@ -32,10 +32,11 @@
 </p>
 <ob-breadcrumb maxWidth="3ch" />
 <p>
-	The max width property can be freely set by consumers of the component. It should be noted that very small width values expressed in
-	character units such as 1ch or 2ch do not reliably produce overflow in Firefox. Firefox calculates the minimal text width differently from
-	Chromium in these boundary cases and will not generate visible overflow. Consumers are therefore advised not to use max width values below
-	3ch if consistent ellipsis behavior is required in Firefox. This is a technical characteristic of the Firefox layout engine.
+	The max width property can be freely set by consumers of the component. It should be noted that very small width
+	values expressed in character units such as 1ch or 2ch do not reliably produce overflow in Firefox. Firefox calculates
+	the minimal text width differently from Chromium in these boundary cases and will not generate visible overflow.
+	Consumers are therefore advised not to use max width values below 3ch if consistent ellipsis behavior is required in
+	Firefox. This is a technical characteristic of the Firefox layout engine.
 </p>
 <p>
 	Here's a breadcrumb component with a max-width configuration of 2rem:<br />
@@ -44,13 +45,15 @@
 <ob-breadcrumb maxWidth="2rem" />
 
 <p>
-	Here's a breadcrumb component with url beautifing disabled (only applies to routes with no label and parameter values):<br />
+	Here's a breadcrumb component with url beautifing disabled (only applies to routes with no label and parameter
+	values):<br />
 	<code> &lt;ob-breadcrumb [beautifyUrls]="false">&lt;/ob-breadcrumb> </code>
 </p>
 <p><ob-breadcrumb [beautifyUrls]="false" /></p>
 
 <p>
-	Here's a breadcrumb component with a custom separator (only applies to routes with no label and more than one part in the path):<br />
+	Here's a breadcrumb component with a custom separator (only applies to routes with no label and more than one part in
+	the path):<br />
 	<code> &lt;ob-breadcrumb parameterSeparator=" | ">&lt;/ob-breadcrumb> </code>
 </p>
 <p><ob-breadcrumb parameterSeparator=" | " /></p>
@@ -64,7 +67,9 @@
 		<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'some-page']">Some Page</a>
 		<ol>
 			<li>
-				<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'some-page', 'some-sub-page']">Sub-Page</a>
+				<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'some-page', 'some-sub-page']"
+					>Sub-Page</a
+				>
 			</li>
 		</ol>
 	</li>
@@ -74,7 +79,9 @@
 		>
 	</li>
 	<li>
-		<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'i18n-label']">Route with a translated label</a>
+		<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', 'i18n-label']"
+			>Route with a translated label</a
+		>
 	</li>
 </ol>
 
@@ -96,7 +103,9 @@ The content of this input is used for the param value:
 		>Route with param/path, label using the parameter placeholder</a
 	>
 	<br />
-	<a routerLinkActive="router-link-active" [routerLink]="['/samples', 'breadcrumb', i.value, 'details', 'missing-label']"
+	<a
+		routerLinkActive="router-link-active"
+		[routerLink]="['/samples', 'breadcrumb', i.value, 'details', 'missing-label']"
 		>Child of route with param/path and parameter label (used to test a link with parameter values)</a
 	>
 	<br />

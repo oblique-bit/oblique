@@ -11,13 +11,13 @@ export {ObMockIconComponent} from './mock-icon.component';
  */
 @NgModule({
 	imports: [ObMockIconComponent],
+	providers: [{provide: ObMockIconService, useClass: ObMockIconService}],
 	exports: [ObMockIconComponent],
-	providers: [{provide: ObMockIconService, useClass: ObMockIconService}]
 })
 export class ObMockIconModule {
 	static forRoot(config?: ObIconConfig): ModuleWithProviders<ObIconModule> {
 		return {
-			ngModule: ObIconModule
+			ngModule: ObIconModule,
 		};
 	}
 }

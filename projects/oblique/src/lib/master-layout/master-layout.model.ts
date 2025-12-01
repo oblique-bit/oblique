@@ -6,7 +6,7 @@ import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-
 export enum ObEScrollMode {
 	AUTO,
 	ENABLED,
-	DISABLED
+	DISABLED,
 }
 
 export interface ObIMasterLayoutHeader {
@@ -146,7 +146,7 @@ export enum ObEMasterLayoutEventValues {
 	LAYOUT_HAS_OFF_CANVAS,
 	NAVIGATION_IS_FULL_WIDTH,
 	NAVIGATION_SCROLL_MODE,
-	SERVICE_NAVIGATION_CONFIGURATION
+	SERVICE_NAVIGATION_CONFIGURATION,
 }
 
 export enum ObEEnvironment {
@@ -154,7 +154,7 @@ export enum ObEEnvironment {
 	DEV = 'DEV',
 	REF = 'REF',
 	TEST = 'TEST',
-	ABN = 'ABN'
+	ABN = 'ABN',
 }
 
 export const OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION = new InjectionToken<boolean>(

@@ -12,7 +12,7 @@ import {OBLIQUE_HAS_ROLE_ALERT, ObAlertComponent} from './alert.component';
 			The following text should be shown as hyperlink:
 			<a href="www.google.com">www.google.com</a></ob-alert
 		>
-	`
+	`,
 })
 class DefaultTestComponent {}
 
@@ -21,7 +21,7 @@ class DefaultTestComponent {}
 	template: ` <ob-alert role="alert" type="success">
 		The following text should be shown as hyperlink:
 		<a href="www.google.com">www.google.com</a></ob-alert
-	>`
+	>`,
 })
 class AlertRoleTestComponent {}
 
@@ -30,7 +30,7 @@ class AlertRoleTestComponent {}
 	template: ` <ob-alert type="success">
 		The following text should be shown as hyperlink:
 		<a href="www.google.com">www.google.com</a></ob-alert
-	>`
+	>`,
 })
 class ConfiguredTestComponent {}
 
@@ -46,7 +46,7 @@ describe('ObAlertComponent', () => {
 				imports: [ObAlertComponent],
 				declarations: [DefaultTestComponent],
 				providers: [provideObliqueTestingConfiguration()],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			}).compileComponents();
 		});
 
@@ -116,7 +116,7 @@ describe('ObAlertComponent', () => {
 				imports: [ObAlertComponent],
 				declarations: [ConfiguredTestComponent],
 				providers: [provideObliqueTestingConfiguration()],
-				schemas: [CUSTOM_ELEMENTS_SCHEMA]
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			}).compileComponents();
 		});
 
@@ -157,7 +157,7 @@ describe('ObAlertComponent', () => {
 					imports: [ObAlertComponent],
 					declarations: [AlertRoleTestComponent],
 					providers: [provideObliqueTestingConfiguration()],
-					schemas: [CUSTOM_ELEMENTS_SCHEMA]
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				}).compileComponents();
 			});
 
@@ -206,7 +206,7 @@ describe('ObAlertComponent', () => {
 					imports: [ObAlertComponent],
 					declarations: [DefaultTestComponent],
 					providers: [provideObliqueTestingConfiguration()],
-					schemas: [CUSTOM_ELEMENTS_SCHEMA]
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				}).compileComponents();
 			});
 
@@ -310,7 +310,7 @@ describe('ObAlertComponent', () => {
 					imports: [ObAlertComponent],
 					declarations: [DefaultTestComponent],
 					providers: [provideObliqueTestingConfiguration(), {provide: OBLIQUE_HAS_ROLE_ALERT, useValue: true}],
-					schemas: [CUSTOM_ELEMENTS_SCHEMA]
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				}).compileComponents();
 			});
 
@@ -374,7 +374,7 @@ describe('ObAlertComponent', () => {
 					imports: [ObAlertComponent],
 					declarations: [DefaultTestComponent],
 					providers: [provideObliqueTestingConfiguration(), {provide: OBLIQUE_HAS_ROLE_ALERT, useValue: false}],
-					schemas: [CUSTOM_ELEMENTS_SCHEMA]
+					schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				}).compileComponents();
 			});
 

@@ -27,7 +27,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 		<ng-template #customWidgetTemplate>
 			<button type="button">second button</button>
 		</ng-template>
-	</ob-service-navigation>`
+	</ob-service-navigation>`,
 })
 class CustomControlsTestComponent {}
 
@@ -56,7 +56,7 @@ describe('ObServiceNavigationComponent', () => {
 				helpText: 'backend help text',
 				links: [{url: 'backend url link1', label: 'backend label link1'}],
 				contactText: 'backend contact text',
-				contact: {tel: 'backend phone', email: 'backend email', contactUrl: 'backend contactUrl'}
+				contact: {tel: 'backend phone', email: 'backend email', contactUrl: 'backend contactUrl'},
 			})
 		),
 		getLanguages: jest.fn().mockReturnValue([{code: 'en', label: 'English'}]),
@@ -66,7 +66,7 @@ describe('ObServiceNavigationComponent', () => {
 		logout: jest.fn(),
 		getLogoutTrigger$: jest.fn(),
 		setEportalLanguageSynchronization: jest.fn(),
-		setHandleLogout: jest.fn()
+		setHandleLogout: jest.fn(),
 	};
 
 	const selectors = {
@@ -75,14 +75,14 @@ describe('ObServiceNavigationComponent', () => {
 		message: ObServiceNavigationMessageHarness.hostSelector,
 		info: ObServiceNavigationInfoHarness.hostSelector,
 		applications: ObServiceNavigationApplicationsHarness.hostSelector,
-		languages: ObServiceNavigationLanguagesHarness.hostSelector
+		languages: ObServiceNavigationLanguagesHarness.hostSelector,
 	};
 
 	beforeEach(async () => {
 		TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockServiceNavigationService});
 		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe, CustomControlsTestComponent],
-			imports: [RouterTestingModule, HttpClientTestingModule]
+			imports: [RouterTestingModule, HttpClientTestingModule],
 		}).compileComponents();
 	});
 
@@ -262,13 +262,17 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe.each([
 			{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
-			{property: 'profileUrls$', method: 'getProfileUrls$', emit: [{url: 'profileUrl', label: 'profile', isInternalLink: true}]},
+			{
+				property: 'profileUrls$',
+				method: 'getProfileUrls$',
+				emit: [{url: 'profileUrl', label: 'profile', isInternalLink: true}],
+			},
 			{property: 'userName$', method: 'getUserName$', emit: 'John Doe'},
 			{property: 'inboxMailUrl$', method: 'getInboxMailUrl$', emit: 'inboxMailUrl'},
 			{property: 'messageCount$', method: 'getMessageCount$', emit: 42},
 			{property: 'applicationsUrl$', method: 'getApplicationsUrl$', emit: 'applicationsUrl'},
 			{property: 'lastUsedApplications$', method: 'getLastUsedApplications$', emit: [{test: true}]},
-			{property: 'favoriteApplications$', method: 'getFavoriteApplications$', emit: [{test: true}]}
+			{property: 'favoriteApplications$', method: 'getFavoriteApplications$', emit: [{test: true}]},
 		])('$method', ({property, method, emit}) => {
 			it('should be an observable', () => {
 				expect(component[property] instanceof Observable).toBe(true);
@@ -344,7 +348,7 @@ describe('ObServiceNavigationComponent', () => {
 				{property: 'displayApplications', value: false},
 				{property: 'displayProfile', value: false},
 				{property: 'displayAuthentication', value: false},
-				{property: 'displayLanguages', value: true}
+				{property: 'displayLanguages', value: true},
 			])('$property', ({property, value}) => {
 				it(`should be initialized to "${value}"`, () => {
 					expect(component[property]).toEqual(value);
@@ -357,7 +361,7 @@ describe('ObServiceNavigationComponent', () => {
 				{loginState: 'S2OK', widgets: allWidgets},
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},
-				{loginState: 'S3+OK', widgets: allWidgets}
+				{loginState: 'S3+OK', widgets: allWidgets},
 			])('loginState "$loginState" and all widgets', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
@@ -385,7 +389,15 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('customControlTemplates', () => {
 			let customControlFixture: ComponentFixture<CustomControlsTestComponent>;
-			const allWidgets = ['button', 'button', selectors.message, selectors.info, selectors.applications, selectors.profile, selectors.auth];
+			const allWidgets = [
+				'button',
+				'button',
+				selectors.message,
+				selectors.info,
+				selectors.applications,
+				selectors.profile,
+				selectors.auth,
+			];
 			beforeEach(async () => {
 				customControlFixture = TestBed.createComponent(CustomControlsTestComponent);
 				customControlFixture.detectChanges();
@@ -395,15 +407,20 @@ describe('ObServiceNavigationComponent', () => {
 
 			describe.each([
 				{loginState: 'SA', widgets: ['button', 'button', selectors.info, selectors.applications, selectors.auth]},
-				{loginState: 'S1', widgets: ['button', 'button', selectors.info, selectors.applications, selectors.profile, selectors.auth]},
+				{
+					loginState: 'S1',
+					widgets: ['button', 'button', selectors.info, selectors.applications, selectors.profile, selectors.auth],
+				},
 				{loginState: 'S2OK', widgets: allWidgets},
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},
-				{loginState: 'S3+OK', widgets: allWidgets}
+				{loginState: 'S3+OK', widgets: allWidgets},
 			])('loginState "$loginState" and all widgets', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
-					const customComponent = customControlFixture.debugElement.query(By.directive(ObServiceNavigationComponent)).componentInstance;
+					const customComponent = customControlFixture.debugElement.query(
+						By.directive(ObServiceNavigationComponent)
+					).componentInstance;
 					customComponent.displayApplications = true;
 					customComponent.displayInfo = true;
 					customComponent.displayProfile = true;
@@ -437,7 +454,7 @@ describe('ObServiceNavigationComponent', () => {
 
 				describe.each([
 					{description: 'first widget', index: 0, content: 'first button'},
-					{description: 'second widget', index: 1, content: 'second button'}
+					{description: 'second widget', index: 1, content: 'second button'},
 				])('$description', ({index, content}) => {
 					it('should be a button', async () => {
 						expect(await customElements[index].matchesSelector('button')).toBe(true);
@@ -482,18 +499,21 @@ describe('ObServiceNavigationComponent', () => {
 					{inputExpectedResult: 'backend help text', input: 'helpText'},
 					{
 						inputExpectedResult: [{url: 'backend url link1', label: 'backend label link1'}],
-						input: 'links'
+						input: 'links',
 					},
 					{
 						inputExpectedResult: {contactUrl: 'backend contactUrl', email: 'backend email', tel: 'backend phone'},
-						input: 'contact'
-					}
-				])('should add infoBackend$.$input to ob-service-navigation-info $input input', async ({input, inputExpectedResult}) => {
-					const expectedResult = inputExpectedResult;
-					const property = await infoElement.getProperty(input);
+						input: 'contact',
+					},
+				])(
+					'should add infoBackend$.$input to ob-service-navigation-info $input input',
+					async ({input, inputExpectedResult}) => {
+						const expectedResult = inputExpectedResult;
+						const property = await infoElement.getProperty(input);
 
-					expect(property).toEqual(expectedResult);
-				});
+						expect(property).toEqual(expectedResult);
+					}
+				);
 			});
 
 			describe('when is false', () => {
@@ -517,18 +537,21 @@ describe('ObServiceNavigationComponent', () => {
 					{inputExpectedResult: 'input help text', input: 'helpText'},
 					{
 						inputExpectedResult: [{url: 'input url link1', label: 'input label link1'}],
-						input: 'links'
+						input: 'links',
 					},
 					{
 						inputExpectedResult: {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'},
-						input: 'contact'
-					}
-				])('should add infoBackend$.$input to ob-service-navigation-info $input input', async ({input, inputExpectedResult}) => {
-					const expectedResult = inputExpectedResult;
-					const property = await infoElement.getProperty(input);
+						input: 'contact',
+					},
+				])(
+					'should add infoBackend$.$input to ob-service-navigation-info $input input',
+					async ({input, inputExpectedResult}) => {
+						const expectedResult = inputExpectedResult;
+						const property = await infoElement.getProperty(input);
 
-					expect(property).toEqual(expectedResult);
-				});
+						expect(property).toEqual(expectedResult);
+					}
+				);
 			});
 		});
 	});
@@ -537,7 +560,7 @@ describe('ObServiceNavigationComponent', () => {
 		beforeEach(() => {
 			mockServiceNavigationService.getLanguages = jest.fn().mockReturnValue([
 				{code: 'en', label: ''},
-				{code: 'fr', label: ''}
+				{code: 'fr', label: ''},
 			]);
 			TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockServiceNavigationService});
 		});
@@ -562,7 +585,7 @@ describe('ObServiceNavigationComponent', () => {
 				selectors.applications,
 				selectors.profile,
 				selectors.auth,
-				selectors.languages
+				selectors.languages,
 			];
 			beforeEach(async () => {
 				list = await harness.getListElement();
@@ -578,11 +601,14 @@ describe('ObServiceNavigationComponent', () => {
 
 			describe.each([
 				{loginState: 'SA', widgets: [selectors.info, selectors.applications, selectors.auth, selectors.languages]},
-				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.profile, selectors.auth, selectors.languages]},
+				{
+					loginState: 'S1',
+					widgets: [selectors.info, selectors.applications, selectors.profile, selectors.auth, selectors.languages],
+				},
 				{loginState: 'S2OK', widgets: allWidgets},
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},
-				{loginState: 'S3+OK', widgets: allWidgets}
+				{loginState: 'S3+OK', widgets: allWidgets},
 			])('loginState "$loginState"', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {

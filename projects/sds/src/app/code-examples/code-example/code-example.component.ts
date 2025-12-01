@@ -12,7 +12,7 @@ import type {PreviewComponent} from '../code-examples.model';
 	imports: [TabsComponent, TabComponent, CodeExampleDirective, HighlightedCodeComponent, IdPipe],
 	templateUrl: './code-example.component.html',
 	styleUrl: './code-example.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CodeExampleComponent implements OnInit {
 	readonly codeSnippets = input<SourceCode[]>([]);

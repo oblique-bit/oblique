@@ -6,7 +6,7 @@ import {
 	NG_VALUE_ACCESSOR,
 	UntypedFormGroup,
 	ValidationErrors,
-	Validator
+	Validator,
 } from '@angular/forms';
 import {ObParentFormDirective} from './parent-form.directive';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -15,12 +15,12 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 	selector: 'ob-nested-form',
 	standalone: true,
 	templateUrl: './nested-form.component.html',
-	exportAs: 'obNestedForm',
 	providers: [
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObNestedFormComponent},
-		{provide: NG_VALIDATORS, multi: true, useExisting: ObNestedFormComponent}
+		{provide: NG_VALIDATORS, multi: true, useExisting: ObNestedFormComponent},
 	],
-	host: {class: 'ob-nested-form'}
+	host: {class: 'ob-nested-form'},
+	exportAs: 'obNestedForm',
 })
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
 	@Input() nestedForm: UntypedFormGroup;

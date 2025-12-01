@@ -36,7 +36,7 @@ import {ObMockBreadcrumbModule} from './breadcrumb/_mocks/mock-breadcrumb.module
 export {
 	ObMockAuthenticationModule,
 	ObMockAuthenticationConfigService,
-	ObMockAuthenticationService
+	ObMockAuthenticationService,
 } from './authentication/_mocks/mock-authentication-module';
 export {ObMockBreadcrumbModule, ObMockBreadcrumbComponent} from './breadcrumb/_mocks/mock-breadcrumb.module';
 export {ObMockButtonModule, ObMockButtonDirective} from './button/_mocks/mock-button.module';
@@ -48,7 +48,7 @@ export {
 	ObMockErrorMessagesService,
 	ObMockErrorMessagesComponent,
 	ObMockErrorMessagesDirective,
-	ObMockMatErrorDirective
+	ObMockMatErrorDirective,
 } from './error-messages/_mocks/mock-error-messages.module';
 export {ObMockExternalLinkDirective, ObMockExternalLinkModule} from './external-link/_mocks/mock-external-link.module';
 export {
@@ -56,7 +56,7 @@ export {
 	ObMockFileUploadModule,
 	ObMockFileUploadService,
 	ObMockFileUploadComponent,
-	ObMockDropZoneComponent
+	ObMockDropZoneComponent,
 } from './file-upload/_mocks/mock-file-upload.module';
 export {ObMockDatePipe, ObMockLanguageModule} from './language/_mocks/mock-language.module';
 export {ObMockIconModule, ObMockIconService, ObMockIconComponent} from './icon/_mocks/mock-icon.module';
@@ -77,15 +77,19 @@ export {
 	ObMockMasterLayoutNavigationToggleDirective,
 	ObMockMasterLayoutService,
 	ObMockMasterLayoutComponentService,
-	ObMockAriaMenuButtonDirective
+	ObMockAriaMenuButtonDirective,
 } from './master-layout/_mocks/mock-master-layout.module';
 export {ObMockNavTreeModule, ObMockNavTreeComponent} from './nav-tree/_mocks/mock-nav-tree.module';
-export {ObMockParentFormDirective, ObMockNestedFormModule, ObMockNestedFormComponent} from './nested-form/_mocks/mock-nested-form.module';
+export {
+	ObMockParentFormDirective,
+	ObMockNestedFormModule,
+	ObMockNestedFormComponent,
+} from './nested-form/_mocks/mock-nested-form.module';
 export {
 	ObMockNotificationModule,
 	ObMockNotificationService,
 	ObMockNotificationComponent,
-	ObMockNotificationConfig
+	ObMockNotificationConfig,
 } from './notification/_mocks/mock-notification.module';
 export {ObMockNumberFormatModule, ObMockNumberFormatDirective} from './number-format/_mocks/mock-number-format.module';
 export {ObMockPopoverDirective, ObMockPopoverModule} from './popover/_mocks/mock-popover.module';
@@ -93,36 +97,39 @@ export {
 	ObMockHttpApiInterceptorModule,
 	ObMockHttpApiInterceptor,
 	ObMockHttpApiInterceptorConfig,
-	ObMockHttpApiInterceptorEvents
+	ObMockHttpApiInterceptorEvents,
 } from './http-api-interceptor/_mocks/mock-http-api-interceptor.module';
 export {
 	ObMockOffCanvasModule,
 	ObMockOffCanvasBackdropDirective,
 	ObMockOffCanvasContainerDirective,
 	ObMockOffCanvasService,
-	ObMockOffCanvasToggleDirective
+	ObMockOffCanvasToggleDirective,
 } from './off-canvas/_mocks/mock-off-canvas.module';
 export {
 	ObMockSchemaValidationModule,
 	ObMockSchemaRequiredDirective,
 	ObMockSchemaValidateDirective,
 	ObMockSchemaValidationDirective,
-	ObMockSchemaValidationService
+	ObMockSchemaValidationService,
 } from './schema-validation/_mocks/mock-schema-validation.module';
 export {
 	ObMockSelectableDirective,
 	ObMockSelectableGroupDirective,
-	ObMockObSelectableModule
+	ObMockObSelectableModule,
 } from './selectable/_mocks/mock-selectable.module';
 export {ObMockScrollingModule, ObMockTopControlComponent} from './scrolling/_mocks/mock-scrolling.module';
 export {ObMockSpinnerModule, ObMockSpinnerComponent, ObMockSpinnerService} from './spinner/_mocks/mock-spinner.module';
-export {ObMockTranslateParamsModule, ObMockTranslateParamsPipe} from './translate-params/_mocks/mock-translate-params.module';
+export {
+	ObMockTranslateParamsModule,
+	ObMockTranslateParamsPipe,
+} from './translate-params/_mocks/mock-translate-params.module';
 export {ObMockUnknownRouteModule, ObMockUnknownRouteComponent} from './unknown-route/_mocks/mock-unknown-route.module';
 export {
 	ObMockUnsavedChangesModule,
 	ObMockUnsavedChangesGuard,
 	ObMockUnsavedChangesDirective,
-	ObMockUnsavedChangesService
+	ObMockUnsavedChangesService,
 } from './unsaved-changes/_mocks/mock-unsaved-changes.module';
 export {ObMockTranslateService} from './_mocks/mock-translate.service';
 export {ObMockTranslatePipe} from './_mocks/mock-translate.pipe';
@@ -156,7 +163,7 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockInputClearModule,
 	ObMockTranslateParamsModule,
 	ObMockUnknownRouteModule,
-	ObMockUnsavedChangesModule
+	ObMockUnsavedChangesModule,
 ];
 
 /**
@@ -164,10 +171,10 @@ const MOCK_OBLIQUE_MODULES = [
  */
 @NgModule({
 	imports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],
-	exports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],
 	providers: [
 		{provide: TranslateService, useClass: ObMockTranslateService},
-		{provide: WINDOW, useValue: window}
-	]
+		{provide: WINDOW, useValue: window},
+	],
+	exports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],
 })
 export class ObliqueTestingModule {}

@@ -5,7 +5,7 @@ import {
 	UntypedFormBuilder,
 	type UntypedFormGroup,
 	type ValidationErrors,
-	type ValidatorFn
+	type ValidatorFn,
 } from '@angular/forms';
 import {ObNotificationService, ObSchemaValidationService} from '@oblique/oblique';
 import {of} from 'rxjs';
@@ -14,7 +14,7 @@ import {of} from 'rxjs';
 	selector: 'sb-schema-validation',
 	standalone: false,
 	templateUrl: './schema-validation-sample.component.html',
-	styleUrl: './schema-validation-sample.component.scss'
+	styleUrl: './schema-validation-sample.component.scss',
 })
 export class SchemaValidationSampleComponent implements OnInit {
 	text: string;
@@ -30,7 +30,7 @@ export class SchemaValidationSampleComponent implements OnInit {
 		{label: 'Eee', value: 'eee'},
 		{label: 'Invalid-1', value: 'invalid-1'},
 		{label: 'Invalid-2', value: 'invalid-2'},
-		{label: 'Invalid-3', value: 'invalid-3'}
+		{label: 'Invalid-3', value: 'invalid-3'},
 	];
 
 	formData: UntypedFormGroup;
@@ -42,34 +42,34 @@ export class SchemaValidationSampleComponent implements OnInit {
 			text: {
 				type: 'string',
 				minLength: 3,
-				maxLength: 64
+				maxLength: 64,
 			},
 			number: {
 				type: 'number',
 				minimum: 1,
-				maximum: 10000000
+				maximum: 10000000,
 			},
 			integer: {
 				type: 'integer',
 				minimum: 1,
-				maximum: 100
+				maximum: 100,
 			},
 			date: {
 				type: ['object', 'string', 'number'],
-				format: 'date-time'
+				format: 'date-time',
 			},
 			time: {
 				format: 'date-time',
-				type: ['object', 'string']
+				type: ['object', 'string'],
 			},
 			select: {
 				type: 'string',
-				enum: ['aaa', 'bbb', 'ccc', 'ddd', 'eee']
+				enum: ['aaa', 'bbb', 'ccc', 'ddd', 'eee'],
 			},
 			textarea: {
 				type: 'string',
 				minLength: 5,
-				maxLength: 140
+				maxLength: 140,
 			},
 			name: {
 				type: 'object',
@@ -77,23 +77,23 @@ export class SchemaValidationSampleComponent implements OnInit {
 				properties: {
 					firstName: {
 						type: 'string',
-						minLength: 2
+						minLength: 2,
 					},
 					lastName: {
 						type: 'string',
-						minLength: 2
+						minLength: 2,
 					},
 					address: {
 						type: 'object',
 						required: ['street', 'number'],
 						properties: {
 							street: {type: 'string'},
-							number: {type: 'integer'}
-						}
-					}
-				}
-			}
-		}
+							number: {type: 'integer'},
+						},
+					},
+				},
+			},
+		},
 	});
 	private readonly schemaValidation = inject(ObSchemaValidationService);
 	private readonly notification = inject(ObNotificationService);
@@ -112,9 +112,9 @@ export class SchemaValidationSampleComponent implements OnInit {
 				lastName: undefined,
 				address: this.formBuilder.group({
 					street: undefined,
-					number: undefined
-				})
-			})
+					number: undefined,
+				}),
+			}),
 		});
 
 		this.initMaterialForm();
@@ -138,10 +138,12 @@ export class SchemaValidationSampleComponent implements OnInit {
 
 			this.materialTestForm = this.formBuilder.group({
 				dateField: undefined,
-				textField: ''
+				textField: '',
 			});
 
-			this.materialTestForm.get('dateField').setValidators([schemaValidatorInstance.getValidator('date'), this.dateBeforeNowValidator()]);
+			this.materialTestForm
+				.get('dateField')
+				.setValidators([schemaValidatorInstance.getValidator('date'), this.dateBeforeNowValidator()]);
 
 			this.materialTestForm.get('textField').setValidators([schemaValidatorInstance.getValidator('text')]);
 		});

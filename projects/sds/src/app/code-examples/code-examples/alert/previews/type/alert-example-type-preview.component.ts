@@ -5,6 +5,6 @@ import {ObAlertModule} from '@oblique/oblique';
 	selector: 'app-alert-example-type-preview',
 	imports: [ObAlertModule],
 	templateUrl: './alert-example-type-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss'
+	styleUrl: '../../../../code-example-flex-layout.scss',
 })
 export class AlertExampleTypePreviewComponent {}

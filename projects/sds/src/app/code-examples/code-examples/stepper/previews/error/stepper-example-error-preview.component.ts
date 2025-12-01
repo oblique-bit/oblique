@@ -19,15 +19,15 @@ import {TranslateModule} from '@ngx-translate/core';
 		MatStepperModule,
 		ObButtonModule,
 		ReactiveFormsModule,
-		TranslateModule
+		TranslateModule,
 	],
 	templateUrl: './stepper-example-error-preview.component.html',
 	providers: [
 		{
 			provide: STEPPER_GLOBAL_OPTIONS,
-			useValue: {showError: true}
-		}
-	]
+			useValue: {showError: true},
+		},
+	],
 })
 export class StepperExampleErrorPreviewComponent {
 	firstFormGroup: UntypedFormGroup;
@@ -36,10 +36,10 @@ export class StepperExampleErrorPreviewComponent {
 	constructor() {
 		const formBuilder = inject(UntypedFormBuilder);
 		this.firstFormGroup = formBuilder.group({
-			firstCtrl: ['', Validators.required]
+			firstCtrl: ['', Validators.required],
 		});
 		this.secondFormGroup = formBuilder.group({
-			secondCtrl: ['', Validators.required]
+			secondCtrl: ['', Validators.required],
 		});
 	}
 }

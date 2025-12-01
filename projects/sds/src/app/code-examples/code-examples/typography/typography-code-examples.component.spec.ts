@@ -15,7 +15,7 @@ describe(TypographyCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [TypographyCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [TypographyCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TypographyCodeExamplesComponent);

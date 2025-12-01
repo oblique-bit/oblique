@@ -2,7 +2,7 @@ import {buildTypographyToken} from './style-dictionary-preprocessors-typography.
 
 export const compositionPreprocessor = {
 	name: 'oblique/composition',
-	preprocessor: dictionary => walk(dictionary, false)
+	preprocessor: dictionary => walk(dictionary, false),
 };
 
 function walk(dictionary, isTypographicToken) {
@@ -41,7 +41,12 @@ function flattenBoxShadow(token) {
 		return token;
 	}
 	const boxShadows = Array.isArray(token.$value) ? token.$value : [token.$value];
-	return {...token, $value: boxShadows.map(shadow => `${shadow.x} ${shadow.y} ${shadow.blur} ${shadow.spread} ${shadow.color}`).join(', ')};
+	return {
+		...token,
+		$value: boxShadows
+			.map(shadow => `${shadow.x} ${shadow.y} ${shadow.blur} ${shadow.spread} ${shadow.color}`)
+			.join(', '),
+	};
 }
 
 function flattenTypography(token) {
@@ -54,14 +59,17 @@ function flattenTypography(token) {
 		.filter(Boolean)
 		.join(' ');
 	const nonFontValues = Object.keys(value)
-		.filter(key => !['fontFamily', 'fontSize', 'fontStretch', 'fontStyle', 'fontVariant', 'fontWeight', 'lineHeight'].includes(key))
+		.filter(
+			key =>
+				!['fontFamily', 'fontSize', 'fontStretch', 'fontStyle', 'fontVariant', 'fontWeight', 'lineHeight'].includes(key)
+		)
 		.reduce((font, key) => ({...font, [key]: value[key]}), {});
 
 	return {
 		...token,
 		$value: {
 			font,
-			...nonFontValues
-		}
+			...nonFontValues,
+		},
 	};
 }

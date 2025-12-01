@@ -18,9 +18,9 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 		MatRadioModule,
 		MatSelectModule,
 		MatDatepickerModule,
-		ObErrorMessagesModule
+		ObErrorMessagesModule,
 	],
 	templateUrl: './form-example-states-preview.component.html',
-	styleUrl: './form-example-states-preview.component.scss'
+	styleUrl: './form-example-states-preview.component.scss',
 })
 export class FormExampleStatesPreviewComponent {}
