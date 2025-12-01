@@ -1,3 +1,10 @@
+# [14.1.2](https://github.com/oblique-bit/oblique/compare/14.1.1...14.1.2) (2025-12-01)
+
+## Bug Fixes
+
+- **cli:** display help text when no command is given ([4fc44912](https://github.com/oblique-bit/oblique/commit/4fc4491285fa0c87864553908c9de4218fb7bf4a))
+- **new:** force `@angular/platform-browser-dynamic` installation ([05153151](https://github.com/oblique-bit/oblique/commit/051531517cabe18a774952c4fd4b700ea50d6ffe))
+
 # [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
 
 ## Features

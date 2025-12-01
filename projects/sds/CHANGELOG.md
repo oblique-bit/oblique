@@ -1,3 +1,10 @@
+# [14.1.2](https://github.com/oblique-bit/oblique/compare/14.1.1...14.1.2) (2025-12-01)
+
+## Bug Fixes
+
+- **tabbed-page:** ensure selected tabs remain selected if possible ([82bb90aa](https://github.com/oblique-bit/oblique/commit/82bb90aacdb0d10b05fd5b55bf877afb88b6ff8f))
+- **tabbed-page:** ensure tab selection is refreshed on navigation ([bd58fdce](https://github.com/oblique-bit/oblique/commit/bd58fdce7ddd1b983f7040cfb82b963df4544648))
+
 # [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
 
 ## Bug Fixes
