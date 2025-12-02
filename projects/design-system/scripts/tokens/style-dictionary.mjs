@@ -23,8 +23,8 @@ export async function generateCSS(files, libFolder) {
 		{exclude: /(?:prose|lg|sm|low|desktop|dark|compact|spacious)\.json/, selector: '@media (width <= 767px)'},
 		{exclude: /(?:prose|md|sm|low|mobile|dark|compact|spacious)\.json/, selector: '.ob-size-lg'},
 		{exclude: /(?:prose|lg|md|low|mobile|dark)|compact|spacious\.json/, selector: '.ob-size-sm'},
-		{exclude: /(?:prose|lg|md|low|mobile|dark)|standard|spacious\.json/, selector: '.ob-density-compact'},
-		{exclude: /(?:prose|lg|md|low|mobile|dark)|compact|standard\.json/, selector: '.ob-density-spacious'},
+		{exclude: /(?:prose|lg|sm|low|mobile|dark)|standard|spacious\.json/, selector: '.ob-density-compact'},
+		{exclude: /(?:prose|lg|sm|low|mobile|dark)|compact|standard\.json/, selector: '.ob-density-spacious'},
 		{exclude: /(?:interface|lg|sm|low|mobile|dark|compact|spacious)\.json/, selector: '.ob-typography-context-prose'},
 	];
 
