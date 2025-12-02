@@ -16,7 +16,7 @@
 	<ng-content select="[matSuffix]" />
 </mat-form-field>
 
-<mat-autocomplete #autocomplete="matAutocomplete" class="ob-autocomplete-panel" classList="ob-autocomplete-panel">
+<mat-autocomplete #autocomplete="matAutocomplete" class="ob-autocomplete-panel">
 	<ng-container
 		*ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }"
 	/>
