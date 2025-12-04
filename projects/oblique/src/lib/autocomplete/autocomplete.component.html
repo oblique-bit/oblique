@@ -8,6 +8,9 @@
 		matInput
 		type="text"
 	/>
+	@for (hint of hints(); track hint) {
+		<mat-hint [align]="hint.align" [innerHTML]="hint.template" />
+	}
 	<ng-content select="[matPrefix]" />
 	<button [obInputClear]="autocompleteInputControl" type="button">
 		<mat-icon svgIcon="xmark_circle" />
@@ -16,7 +19,7 @@
 	<ng-content select="[matSuffix]" />
 </mat-form-field>
 
-<mat-autocomplete #autocomplete="matAutocomplete" class="ob-autocomplete-panel" classList="ob-autocomplete-panel">
+<mat-autocomplete #autocomplete="matAutocomplete" class="ob-autocomplete-panel">
 	<ng-container
 		*ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }"
 	/>

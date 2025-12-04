@@ -1,9 +1,22 @@
 import {AsyncPipe, NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
-import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output, ViewEncapsulation, inject} from '@angular/core';
+import {
+	Component,
+	ElementRef,
+	EventEmitter,
+	Input,
+	OnChanges,
+	OnDestroy,
+	Output,
+	Signal,
+	ViewEncapsulation,
+	computed,
+	contentChildren,
+	inject,
+} from '@angular/core';
 import {ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatOptionModule} from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {TranslateModule} from '@ngx-translate/core';
@@ -65,9 +78,25 @@ export class ObAutocompleteComponent implements OnChanges, ControlValueAccessor,
 	filteredOptions$: Observable<(ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[]>;
 	hasGroupOptions = false;
 	onModelTouched: () => void;
+	readonly hints: Signal<{align: 'start' | 'end'; template: string}[]>;
+	private readonly matHints = contentChildren(MatHint);
+	private readonly matHintsElementRefs = contentChildren(MatHint, {read: ElementRef<HTMLElement>});
 	private readonly unsubscribe = new Subject<void>();
 	private readonly unsubscribeOptions = new Subject<void>();
 	private readonly obAutocompleteTextToFindService = inject(ObAutocompleteTextToFindService);
+
+	constructor() {
+		// MatHint cannot be projected into MatFormField because MatFormField’s content
+		// projection is resolved before ObAutocomplete’s. As a result, MatHint elements
+		// must already exist when the component initializes, and they must be populated
+		// manually with the content of the projected MatHint elements
+		this.hints = computed(() =>
+			this.matHintsElementRefs().map((template, index) => ({
+				align: this.matHints()[index].align,
+				template: template.nativeElement.innerHTML,
+			}))
+		);
+	}
 
 	ngOnChanges(): void {
 		this.setupOptionsFilter();
