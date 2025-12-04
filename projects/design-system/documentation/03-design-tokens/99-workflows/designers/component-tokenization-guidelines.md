@@ -2,6 +2,7 @@
 
 ## About This Document
 
+**Status:** Draft  
 **Target Audience:** Designers working with Figma components and Tokens Studio  
 **Prerequisites:** Basic understanding of design tokens and semantic token structure  
 **Context:** Part of Oblique Design System tokenization workflow  
