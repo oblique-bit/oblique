@@ -16,7 +16,7 @@ import {
 })
 export class TabComponent implements OnChanges {
 	readonly hidden = input(false);
-	readonly initiallyActive = input(true);
+	readonly initiallyActive = input(false);
 	readonly name = input('');
 
 	active = false;

@@ -23,7 +23,12 @@
 			<app-ui-ux [uiUx]="cmsData.uiUx || {}" />
 		</app-tab>
 		@if (showGalleryTab) {
-			<app-tab name="Icon Gallery" [hidden]="false" [id]="componentId | id: ['icon-gallery-tab']">
+			<app-tab
+				name="Icon Gallery"
+				[initiallyActive]="true"
+				[hidden]="false"
+				[id]="componentId | id: ['icon-gallery-tab']"
+			>
 				<app-icons-example-icons-gallery-preview />
 			</app-tab>
 		}
