@@ -58,20 +58,5 @@ ob.h.{element}.{property}.{variant}.{state}    // W3C HTML elements
 - **HTML Typography:** Use `ob.h.typography.*` for W3C typography elements like H1
 
 ### Token Structure
-- Reference semantic tokens, not primitives
-- Support theming (lightness, emphasis, inversity)
-- Document purpose and context
+- Reference semantic tokens ob.s in the component tokens, never primitives.
 
-## 3. Validation Process (WiP)
-
-### MCP Figma Validation 
-1. Select component in Figma
-2. Run `mcp_figma_dev_mod_get_variable_defs`
-3. Verify all properties use tokens
-4. Test across mode combinations
-
-### Validation Checklist
-- [ ] Zero hardcoded values
-- [ ] All properties tokenized
-- [ ] Mode switching works
-- [ ] Component maintains visual integrity
