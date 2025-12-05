@@ -7,6 +7,7 @@ import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {AutocompleteExampleHintsComponent} from './previews/hints/autocomplete-example-hints.component';
+import {AutocompleteExampleDisplayWithComponent} from './previews/display-with/autocomplete-example-display-with.component';
 
 @Component({
 	selector: 'app-autocomplete-code-examples',
@@ -57,6 +58,15 @@ export class AutocompleteCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('autocomplete', 'hints/autocomplete-example-hints.component.html', 'HTML'),
 				this.getSnippet('autocomplete', 'hints/autocomplete-example-hints.component.ts', 'TS'),
+			],
+		},
+		{
+			component: AutocompleteExampleDisplayWithComponent,
+			idParts: ['autocomplete', 'options', 'display-with'],
+			title: 'Autocomplete displayWith',
+			snippets: [
+				this.getSnippet('autocomplete', 'display-with/autocomplete-example-display-with.component.html', 'HTML'),
+				this.getSnippet('autocomplete', 'display-with/autocomplete-example-display-with.component.ts', 'TS'),
 			],
 		},
 	];

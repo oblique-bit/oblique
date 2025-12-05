@@ -19,7 +19,7 @@
 	<ng-content select="[matSuffix]" />
 </mat-form-field>
 
-<mat-autocomplete #autocomplete="matAutocomplete" class="ob-autocomplete-panel">
+<mat-autocomplete #autocomplete="matAutocomplete" [displayWith]="displayWith()" class="ob-autocomplete-panel">
 	<ng-container
 		*ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }"
 	/>
@@ -49,7 +49,8 @@
 			<span obOptionLabelIcon [iconName]="option['iconName'] || ''" [iconPosition]="optionIconPosition">
 				<span
 					[innerHTML]="
-						option.label | obHighlightTextPipe: autocompleteInputControl.value : highlightCssClass : filterRegexFlag
+						displayWith()(option.label)
+							| obHighlightTextPipe: (searchText$ | async) : highlightCssClass : filterRegexFlag
 					"
 				></span>
 			</span>

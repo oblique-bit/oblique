@@ -21,7 +21,7 @@ export class AutocompleteSampleComponent implements OnInit {
 	listType: 'group' | 'onlyOptions' | 'empty' = 'onlyOptions';
 	icons = [
 		'address-book',
-		'universal-access',
+		'accessibility',
 		'antique-building',
 		'link_disconnect',
 		'lock_open',
@@ -30,7 +30,7 @@ export class AutocompleteSampleComponent implements OnInit {
 		'person_brush',
 		'person_checkmark',
 		'person_code',
-		'person_cog',
+		'person_settings',
 		'exclamation_triangle',
 		'weight',
 		'wheelchair',
@@ -53,6 +53,7 @@ export class AutocompleteSampleComponent implements OnInit {
 	visibleOptionList: ObIAutocompleteInputOption[] | ObIAutocompleteInputOptionGroup[];
 	isFromControl = true;
 	formControl = new FormControl('');
+	formControlDisplayWith = new FormControl('');
 
 	reactiveFormSnippet = `
 // *.component.html
@@ -155,5 +156,9 @@ formControl = new FormControl('');
 		} else {
 			this.formControl.enable();
 		}
+	}
+
+	displayFn(option: string): string {
+		return option ? `'*~-., ${option} ,.-~*'` : '';
 	}
 }
