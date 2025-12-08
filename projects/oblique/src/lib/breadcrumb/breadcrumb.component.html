@@ -4,7 +4,6 @@
 			<ng-container *ngIf="!isLast">
 				<a
 					class="ob-breadcrumb-label"
-					[attr.mat-label]="crumb.label | translate"
 					#element
 					[routerLink]="crumb.url"
 					[style.max-width]="maxWidth"
