@@ -15,7 +15,9 @@
 				<span class="ob-breadcrumb-separator ob-icon-text"><mat-icon svgIcon="chevron_right-small" /></span>
 			</ng-container>
 
-			<span aria-current="page" class="ob-breadcrumb-label" *ngIf="isLast">{{ crumb.label | translate }}</span>
+			<span aria-current="page" class="ob-breadcrumb-label" [style.max-width]="maxWidth" *ngIf="isLast">
+				{{ crumb.label | translate }}
+			</span>
 		</li>
 	</ol>
 </nav>
