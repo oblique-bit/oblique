@@ -19,6 +19,13 @@
             "letter_spacing": {
               "$type": "letterSpacing",
               "$value": "{ob.s.static.letter_spacing_px.narrow}"
+            },
+            "color": {
+              "fg": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.fg.contrast_low.inversity_normal}",
+                "$description": "Foreground-color of H1 in Interface mode. Value: Low contrast is suitable for larger font sizes in terms of Grauwert."
+              }
             }
           },
           "h2": {
@@ -37,6 +44,13 @@
             "letter_spacing": {
               "$type": "letterSpacing",
               "$value": "{ob.s.static.letter_spacing_px.narrow}"
+            },
+            "color": {
+              "fg": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_normal}",
+                "$description": "Foreground-color of H2 in Interface mode. Value: Medium contrast is suitable for larger font sizes in terms of Grauwert."
+              }
             }
           },
           "h3": {
@@ -55,6 +69,13 @@
             "letter_spacing": {
               "$type": "letterSpacing",
               "$value": "{ob.s.static.letter_spacing_px.normal}"
+            },
+            "color": {
+              "fg": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}",
+                "$description": "Foreground-color of H3 in Interface mode. Value: High contrast is suitable for medium font sizes in terms of Grauwert."
+              }
             }
           },
           "h4": {
@@ -73,6 +94,13 @@
             "letter_spacing": {
               "$type": "letterSpacing",
               "$value": "{ob.s.static.letter_spacing_px.normal}"
+            },
+            "color": {
+              "fg": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}",
+                "$description": "Foreground-color of H4 in Interface mode. Value: High contrast is suitable for medium font sizes in terms of Grauwert."
+              }
             }
           },
           "h5": {
@@ -91,6 +119,13 @@
             "letter_spacing": {
               "$type": "letterSpacing",
               "$value": "{ob.s.static.letter_spacing_px.normal}"
+            },
+            "color": {
+              "fg": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}",
+                "$description": "Foreground-color of H5 in Interface mode. Value: High contrast is suitable here in terms of Grauwert."
+              }
             }
           },
           "h6": {
@@ -109,6 +144,13 @@
             "letter_spacing": {
               "$type": "letterSpacing",
               "$value": "{ob.s.static.letter_spacing_px.normal}"
+            },
+            "color": {
+              "fg": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}",
+                "$description": "Foreground-color of H6 in Interface mode. Value: High contrast is suitable here in terms of Grauwert."
+              }
             }
           },
           "body": {
