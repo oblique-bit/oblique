@@ -8,14 +8,21 @@
 					[routerLink]="crumb.url"
 					[style.max-width]="maxWidth"
 					[matTooltip]="crumb.label | translate"
-					[matTooltipDisabled]="!showTooltip(element)"
+					[obEllipsisTooltip]="crumb.label | translate"
 				>
 					{{ crumb.label | translate }}</a
 				>
 				<span class="ob-breadcrumb-separator ob-icon-text"><mat-icon svgIcon="chevron_right-small" /></span>
 			</ng-container>
 
-			<span aria-current="page" class="ob-breadcrumb-label" [style.max-width]="maxWidth" *ngIf="isLast">
+			<span
+				aria-current="page"
+				class="ob-breadcrumb-label"
+				[style.max-width]="maxWidth"
+				*ngIf="isLast"
+				[matTooltip]="crumb.label | translate"
+				[obEllipsisTooltip]="crumb.label | translate"
+			>
 				{{ crumb.label | translate }}
 			</span>
 		</li>
