@@ -225,6 +225,13 @@
                 "$type": "letterSpacing",
                 "$value": "{ob.s.static.letter_spacing_px.narrow}"
               }
+            },
+            "color": {
+              "fg": {
+                "$type": "color",
+                "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
+                "$description": "Foreground-color of body in all typography context modes. Value: Highest contrast for optimal readability."
+              }
             }
           }
         }

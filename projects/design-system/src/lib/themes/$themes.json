@@ -2029,7 +2029,13 @@
       "ob.h.typography.context.body.lead.font_size": "09cfca48eab8bcb0051c191a3bb5329e87be7555",
       "ob.h.typography.context.body.lead.font_weight": "6ff043f24909c299534f6a822538104ba1360b82",
       "ob.h.typography.context.body.lead.line_height": "42c8e3726f97e3c290b012b0e1bcbc873e09b244",
-      "ob.h.typography.context.body.lead.letter_spacing": "041c8725c03c430cae91c266363a66b141d4e165"
+      "ob.h.typography.context.body.lead.letter_spacing": "041c8725c03c430cae91c266363a66b141d4e165",
+      "ob.h.typography.context.h1.color.fg": "a1936379df2a904693418b85406ee0b9e242f490",
+      "ob.h.typography.context.h2.color.fg": "205d3b686ebc534f0b39129b4f8cbb24e1f4c587",
+      "ob.h.typography.context.h3.color.fg": "095866439f6f49481e88822ae48690da1debeaee",
+      "ob.h.typography.context.h4.color.fg": "76de474289f676532273f0b6d46372e67a23ba46",
+      "ob.h.typography.context.h5.color.fg": "2e608e5ff03a625b242d3e0d39f008499edff001",
+      "ob.h.typography.context.h6.color.fg": "3fe8508db8d48dd56296240b13f7956df0a6068c"
     },
     "$figmaCollectionId": "VariableCollectionId:6191:6284",
     "$figmaModeId": "6191:0",
@@ -2082,7 +2088,13 @@
       "ob.h.typography.context.body.lead.font_size": "09cfca48eab8bcb0051c191a3bb5329e87be7555",
       "ob.h.typography.context.body.lead.font_weight": "6ff043f24909c299534f6a822538104ba1360b82",
       "ob.h.typography.context.body.lead.line_height": "42c8e3726f97e3c290b012b0e1bcbc873e09b244",
-      "ob.h.typography.context.body.lead.letter_spacing": "041c8725c03c430cae91c266363a66b141d4e165"
+      "ob.h.typography.context.body.lead.letter_spacing": "041c8725c03c430cae91c266363a66b141d4e165",
+      "ob.h.typography.context.h1.color.fg": "a1936379df2a904693418b85406ee0b9e242f490",
+      "ob.h.typography.context.h2.color.fg": "205d3b686ebc534f0b39129b4f8cbb24e1f4c587",
+      "ob.h.typography.context.h3.color.fg": "095866439f6f49481e88822ae48690da1debeaee",
+      "ob.h.typography.context.h4.color.fg": "76de474289f676532273f0b6d46372e67a23ba46",
+      "ob.h.typography.context.h5.color.fg": "2e608e5ff03a625b242d3e0d39f008499edff001",
+      "ob.h.typography.context.h6.color.fg": "3fe8508db8d48dd56296240b13f7956df0a6068c"
     },
     "$figmaCollectionId": "VariableCollectionId:6191:6284",
     "$figmaModeId": "6191:1",
