@@ -58,11 +58,6 @@
             "$type": "color",
             "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}",
             "$description": "Color of link during click interaction."
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{ob.s3.color.interaction.state.fg.disabled.inversity_normal}",
-            "$description": "Color of a visually disabled, non-clickable link."
           }
         },
         "enabled": {
