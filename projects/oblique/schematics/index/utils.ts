@@ -308,7 +308,10 @@ export function removeImport(tree: Tree, fileName: string, name: string, pkg: st
 
 export function getIndexPaths(tree: Tree): string[] {
 	const index = getDefaultAngularConfig(tree, ['architect', 'build', 'options', 'index']) as string | null;
-	return index ? ([index] as string[]) : getAngularConfigs(tree, ['architect', 'build', 'options', 'index']).map(project => project.config);
+	const result = index
+		? ([index] as string[])
+		: getAngularConfigs(tree, ['architect', 'build', 'options', 'index']).map(project => project.config);
+	return result.length > 0 ? result : ['src/index.html'];
 }
 
 function getDefaultAngularConfig(tree: Tree, path: string[]): string | boolean | number | null | unknown {
