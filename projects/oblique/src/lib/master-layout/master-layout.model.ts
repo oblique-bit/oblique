@@ -38,7 +38,7 @@ export interface ObIServiceNavigationConfig {
 	handleLogout?: boolean;
 }
 
-export interface ObIServiceNavigationConfigWithNotice {
+export interface ObIServiceNavigationConfigLive {
 	profileLinks?: ObIServiceNavigationLink[];
 	infoHelpText?: string;
 	infoLinks?: ObIServiceNavigationLink[];
