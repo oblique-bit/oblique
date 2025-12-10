@@ -21,6 +21,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 		return (tree: Tree, context: SchematicContext) =>
 			chain([
 				warnIfStandalone(),
+				this.removeMaxFavoriteApplications(),
 				this.removeObILocaleDisplay(),
 				this.renameIcons(),
 				this.removeBrowserAnimationModuleIfUnused(),
@@ -95,6 +96,16 @@ export class UpdateV14toV15 implements ObIMigrations {
 			infoMigration(context, 'Remove OblLocale.display property');
 			const apply = (filePath: string): void => {
 				this.removeProperty(tree, filePath, 'locale', 'display');
+			};
+			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private removeMaxFavoriteApplications(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove maxFavoriteApplications property');
+			const apply = (filePath: string): void => {
+				this.removeProperty(tree, filePath, 'serviceNavigationConfiguration', 'maxFavoriteApplications');
 			};
 			return applyInTree(tree, apply, '*.ts');
 		});

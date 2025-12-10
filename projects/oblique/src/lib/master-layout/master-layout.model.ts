@@ -47,10 +47,6 @@ export interface ObIServiceNavigationConfigLive {
 	infoContact?: ObIServiceNavigationContact;
 	useInfoBackend?: boolean;
 	maxLastUsedApplications?: number;
-	/**
-	 *  @deprecated since Oblique 14. It will be removed without replacement in the next major.
-	 */
-	maxFavoriteApplications?: number;
 	returnUrl?: string;
 	pamsAppId?: string;
 	displayApplications?: boolean;

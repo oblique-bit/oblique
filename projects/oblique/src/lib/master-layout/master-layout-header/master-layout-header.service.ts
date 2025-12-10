@@ -64,12 +64,6 @@ export class ObMasterLayoutHeaderService {
 	}
 
 	set serviceNavigationConfiguration(value: ObIServiceNavigationConfigLive) {
-		if (value.maxFavoriteApplications && Object.keys(value).length === 1) {
-			return;
-		}
-		if (value.maxFavoriteApplications && Object.keys(value).length !== 1) {
-			delete value.maxFavoriteApplications;
-		}
 		this.serviceNavigationConfigurationInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION,
