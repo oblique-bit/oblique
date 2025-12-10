@@ -14,7 +14,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.4xl}"
+              "$value": "{ob.s.static.lineHeight.3xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -26,6 +26,10 @@
                 "$value": "{ob.s3.color.neutral.fg.contrast_low.inversity_normal}",
                 "$description": "Foreground-color of H1 in Prose mode. Value: Low contrast is suitable here in terms of Grauwert."
               }
+            },
+            "paragraph_spacing": {
+              "$type": "paragraphSpacing",
+              "$value": "{ob.s.static.paragraphSpacing.2xl}"
             }
           },
           "h2": {
@@ -39,7 +43,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.3xl}"
+              "$value": "{ob.s.static.lineHeight.2xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -51,6 +55,10 @@
                 "$value": "{ob.s3.color.neutral.fg.contrast_low.inversity_normal}",
                 "$description": "Foreground-color of H2 in Prose mode. Value: Low contrast is suitable here in terms of Grauwert."
               }
+            },
+            "paragraph_spacing": {
+              "$type": "paragraphSpacing",
+              "$value": "{ob.s.static.paragraphSpacing.2xl}"
             }
           },
           "h3": {
@@ -64,7 +72,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.3xl}"
+              "$value": "{ob.s.static.lineHeight.2xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -76,6 +84,10 @@
                 "$value": "{ob.s3.color.neutral.fg.contrast_low.inversity_normal}",
                 "$description": "Foreground-color of H3 in Prose mode. Value: Low contrast is suitable here in terms of Grauwert."
               }
+            },
+            "paragraph_spacing": {
+              "$type": "paragraphSpacing",
+              "$value": "{ob.s.static.paragraphSpacing.2xl}"
             }
           },
           "h4": {
@@ -101,6 +113,10 @@
                 "$value": "{ob.s3.color.neutral.fg.contrast_low.inversity_normal}",
                 "$description": "Low contrast is moresuitable for larger font sizes in terms of Grauwert."
               }
+            },
+            "paragraph_spacing": {
+              "$type": "paragraphSpacing",
+              "$value": "{ob.s.static.paragraphSpacing.2xl}"
             }
           },
           "h5": {
@@ -126,6 +142,10 @@
                 "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_normal}",
                 "$description": "Foreground-color of H5 in Prose mode. Value: Medium contrast is suitable here in terms of Grauwert."
               }
+            },
+            "paragraph_spacing": {
+              "$type": "paragraphSpacing",
+              "$value": "{ob.s.static.paragraphSpacing.2xl}"
             }
           },
           "h6": {
@@ -151,6 +171,10 @@
                 "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}",
                 "$description": "Foreground-color of H5 in Prose mode. Value: High contrast is suitable here in terms of Grauwert."
               }
+            },
+            "paragraph_spacing": {
+              "$type": "paragraphSpacing",
+              "$value": "{ob.s.static.paragraphSpacing.2xl}"
             }
           },
           "body": {
@@ -232,6 +256,10 @@
                 "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
                 "$description": "Foreground-color of body in all typography context modes. Value: Highest contrast for optimal readability."
               }
+            },
+            "paragraph_spacing": {
+              "$type": "paragraphSpacing",
+              "$value": "{ob.s.static.paragraphSpacing.2xl}"
             }
           }
         }

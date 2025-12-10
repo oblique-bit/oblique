@@ -81,19 +81,12 @@
           },
           "$description": "a:focus. Displays already a border. No need for additional visual emphasis."
         },
-        "active": {
+        "pressed": {
           "$type": "typography",
           "$value": {
             "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
           },
           "$description": "a:active"
-        },
-        "disabled": {
-          "$type": "typography",
-          "$value": {
-            "textDecoration": "{ob.s.static.text_decoration.link.emphasis_low}"
-          },
-          "$description": "non css standard but required.No need for underline when disabled."
         }
       }
     }

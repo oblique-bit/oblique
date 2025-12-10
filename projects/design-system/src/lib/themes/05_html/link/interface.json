@@ -1,0 +1,14 @@
+{
+  "ob": {
+    "h": {
+      "link": {
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{ob.s.static.font_size.md}"
+          }
+        }
+      }
+    }
+  }
+}

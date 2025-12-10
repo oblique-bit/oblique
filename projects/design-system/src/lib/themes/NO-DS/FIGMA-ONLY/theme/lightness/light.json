@@ -5,6 +5,11 @@
         "$type": "color",
         "$value": "#9747FF",
         "$description": "[FIGMA-ONLY]\nToken for Figma design workflow only."
+      },
+      "bg-violet": {
+        "$type": "color",
+        "$value": "#e9d9ff",
+        "$description": "[FIGMA-ONLY]\nToken for Figma design workflow only."
       }
     }
   }

@@ -67,7 +67,7 @@
           },
           "2xl": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeightRem.1100} * {ob.g.multiplier.typography.md}"
+            "$value": "{ob.p.lineHeightRem.1000} * {ob.g.multiplier.typography.md}"
           },
           "3xl": {
             "$type": "lineHeights",
