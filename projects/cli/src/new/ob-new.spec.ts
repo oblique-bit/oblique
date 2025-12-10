@@ -189,10 +189,10 @@ describe('Ob new command', () => {
 					);
 				});
 
-				test(`should call npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']}`, () => {
+				test(`should call npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']}`, () => {
 					expect(execSync).toHaveBeenNthCalledWith(
 						2,
-						`npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']} @angular/animations@${currentVersions['@angular/animations']} --audit false --fund false`,
+						`npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']} --audit false --fund false`,
 						{
 							cwd: `${process.cwd()}/${projectName}`,
 							stdio: 'inherit',
