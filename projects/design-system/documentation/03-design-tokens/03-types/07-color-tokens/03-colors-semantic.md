@@ -31,14 +31,14 @@ src/lib/themes/03_semantic/color/
 - **Contains**: `neutral`, `interaction`, and `status` categories
 - **Files**: `light.json`, `dark.json`
 - **Inversity**: Each token has flat `inversity_normal` and `inversity_flipped` variants (not a separate semantic level)
-- **Example token**: `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index`
+- **Example token**: `ob.s1.color.neutral.bg.contrast_high.inversity_normal`
 
 #### **S2 - Emphasis Semantic Level** (`s2-emphasis/`)
 - **Purpose**: High/low emphasis variations for interaction elements  
 - **Contains**: `interaction` category only (buttons, links, form controls)
 - **Files**: `high.json`, `low.json`
 - **Reference**: All S2 tokens reference S1 tokens directly
-- **Example token**: `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index`
+- **Example token**: `ob.s2.color.interaction.bg.primary.enabled.inversity_normal`
 
 #### **S3 - Semantic Compilation** (`s3-semantic/`)
 - **Purpose**: Complete, clean collection of all semantic colors
