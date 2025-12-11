@@ -1,3 +1,11 @@
+# [14.1.3](https://github.com/oblique-bit/oblique/compare/14.1.2...14.1.3) (2025-12-11)
+
+## Bug Fixes
+
+- **file-upload:** use a correct mime type for docx and xslsx ([0c835a32](https://github.com/oblique-bit/oblique/commit/0c835a32c898c1c7c17d80052497313bda06687a))
+- **master-layout:** ensure that the close icon does not overlap the scroll button ([9b9af4e0](https://github.com/oblique-bit/oblique/commit/9b9af4e0ba4118d5da33a178d787d3828585fa67))
+- **schematics:** return index.html path even when not defined in angular.json file ([c4bb704e](https://github.com/oblique-bit/oblique/commit/c4bb704e89115c911cb385c6eea21011c690aead))
+
 # [14.1.2](https://github.com/oblique-bit/oblique/compare/14.1.1...14.1.2) (2025-12-01)
 
 ## Bug Fixes
