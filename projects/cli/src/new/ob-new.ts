@@ -89,7 +89,7 @@ function runAddMaterial(dir: string): void {
 	console.info(`[Info]: Adds Angular Material`);
 	execute({
 		name: 'npmInstall',
-		dependencies: ['@angular/material', '@angular/cdk', '@angular/animations'],
+		dependencies: ['@angular/material', '@angular/cdk'],
 		execSyncOptions: {cwd: dir},
 	});
 }
