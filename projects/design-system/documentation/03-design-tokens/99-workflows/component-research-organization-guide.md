@@ -222,11 +222,11 @@ How will we measure success?
 
 ## Research by Component
 ### Button
-- [Remove Button Analysis](../04-04_components/button/research/competitive-analysis/2025-09-08_remove-button-patterns.md)
-- [Size Variants Study](../04-04_components/button/research/design-exploration/2025-09-05_size-exploration.md)
+- Remove Button Analysis (Reference implementation examples)
+- Size Variants Study (Component sizing exploration)
 
 ### Input  
-- [Accessibility Standards](../04-04_components/input/research/user-research/2025-08-20_accessibility-audit.md)
+- Accessibility Standards (Component accessibility guidelines)
 ```
 
 ### Implementation Steps

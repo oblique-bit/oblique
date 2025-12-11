@@ -97,7 +97,7 @@ When MCP tools can't find certain tokens in Figma:
 These tokens (e.g., text vertical trim, responsive typography scales, or complex state tokens) are not supported in Figma and cannot be inspected via MCP. They remain part of the design system and must be implemented as documented.
 ```
 
-**Related Guide:** [Figma Unsupported Tokens Handling](./06-figma-unsupported-tokens-handling.md)
+**Related Guide:** [Figma Unsupported Properties](./figma-unsupported-properties.md)
 
 ## standard practices
 

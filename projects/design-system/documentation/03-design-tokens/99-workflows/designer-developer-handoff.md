@@ -211,14 +211,14 @@ Resources: [links-to-guidance-documentation]
 ### **Link:** Quick Reference Links
 
 **For Designers:**
-- [Complete Tokenization Workflow](./13-tokenization-workflow-complete.md)
-- [Tokenization Quick Checklist](../../03-design-tokens/tokenization-checklist.md)
+- [Complete Tokenization Workflow](./tokenization-workflow-complete.md)
+
 - [MCP Validation Prompts](./prompts/figma-mcp-tokenization-validation.md)
 
 **For Developers:**
-- [Figma and Tokens for Developers](./02-figma-and-tokens-for-developers.md)
-- [Component Token Implementation](../../03-design-tokens/04_component-tokens.md)
-- [Token Debugging Guide](./03-figma-token-debugging.md)
+- [Figma and Tokens for Developers](./figma-and-tokens-for-developers.md)
+- [Component Token Implementation](../03-types/06-component-tokens.md)
+- [Token Debugging Guide](./figma-token-debugging.md)
 
 ---
 

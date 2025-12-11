@@ -8,6 +8,8 @@
 
 > **If a token cannot be used in Figma, then it should not be created.**
 
+**Reference**: See [Figma Unsupported Properties](20-figma-unsupported-properties.md) for comprehensive list of CSS properties that cannot be controlled by Figma variables and therefore should not be tokenized.
+
 If a token cannot be directly used in code, the developer may propose alternative approaches:
 
 1. **Component Anatomy Refactoring**: Collaborate with designers to refactor the Figma component structure and create another token that is viable in code

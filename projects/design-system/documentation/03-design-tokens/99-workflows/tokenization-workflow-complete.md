@@ -7,9 +7,9 @@
 
 ---
 
-## **Goal:** Tokenization Definition
+## **Goal:** Component Tokenization Definition
 
-**Tokenization** is the systematic workflow for design system maintainers (primarily designers) to create, apply, and validate design tokens for 04_components in the design system. This process ensures all design properties are connected to tokens, even those not currently supported by Figma, in preparation for future tool capabilities.
+**Tokenization** is the systematic workflow for design system maintainers to create, apply to component, and validate tokenized components. This process ensures all design properties are connected to proper tokens.
 
 ### Core Principles
 
@@ -254,11 +254,11 @@ Developers can reject 04_components for:
 
 ## **Link:** Related Documentation
 
-- [Token Studio Context](./01-tokens-studio-context.md)
-- [Figma Token Debugging](./03-figma-token-debugging.md)
-- [Component Tokens](../../03-design-tokens/04_component-tokens.md)
-- [Compound Units](../../03-design-tokens/compound-units.md)
-- [MCP Inspection Guide](./12-figma-mcp-inspection-guide.md)
+- [Token Studio Context](./tokens-studio-context.md)
+- [Figma Token Debugging](./figma-token-debugging.md)
+- [Component Tokens](../03-types/06-component-tokens.md)
+
+- [MCP Inspection Guide](./figma-mcp-inspection-guide.md)
 - [Tokenization Checklist](../../03-design-tokens/tokenization-checklist.md)
 
 ---

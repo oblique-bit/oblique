@@ -1,5 +1,13 @@
 # Token Assignment Guidelines
 
+**⚠️ OUTDATED DOCUMENT - MARKED FOR REVISION ⚠️**
+
+**Status:** Outdated - Content requires review and updates  
+**Last Updated:** [Date unknown]  
+**Action Required:** Review against current token architecture
+
+---
+
 **Tokenization Process - Part 2: Assigning Tokens**
 
 This document defines rules for token assignment (consumption) across all token types in the Oblique Design System. Following these guidelines ensures proper token architecture, theming capabilities, and semantic consistency.
