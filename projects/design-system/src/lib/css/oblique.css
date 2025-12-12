@@ -1,3 +1,4 @@
-@layer oblique.tokens;
+@layer oblique.fonts, oblique.tokens;
 
+@import "./layers/fonts.css" layer(oblique.fonts);
 @import "./layers/tokens.css" layer(oblique.tokens);
