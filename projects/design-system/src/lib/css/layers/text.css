@@ -1,0 +1,14 @@
+/*
+ * This file mirrors Figma's structure for text elements. Each file corresponds to a Figma text component.
+ *
+ * - text.base:
+ *   Contains the CSS rules that are applied to native HTML elements, without CSS class or id selector.
+ *   CSS class or can be targeted by a specific selector.
+ *   The main goal is to define base styles that are applied by default
+ *   to a raw (i.e. without CSS classes) HTML document.
+ */
+@layer oblique.text.base;
+
+@import "./text/heading.css" layer(oblique.text.base);
+@import "./text/paragraph.css" layer(oblique.text.base);
+@import "./text/link.css" layer(oblique.text.base);

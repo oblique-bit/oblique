@@ -1,0 +1,11 @@
+/*
+ * This file mirrors Figma's structure for the text/paragraph component.
+ */
+p {
+	font-size: var(--ob-h-typography-context-body-normal-font_size);
+	font-weight: var(--ob-h-typography-context-body-normal-font_weight);
+	letter-spacing: var(--ob-h-typography-context-body-normal-letter_spacing);
+	line-height: var(--ob-h-typography-context-body-normal-line_height);
+	color: var(--ob-h-typography-context-body-color-fg);
+	margin-block: var(--ob-h-typography-context-p-top) var(--ob-h-typography-context-p-bottom);
+}
