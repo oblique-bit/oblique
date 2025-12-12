@@ -1,0 +1,21 @@
+/**
+ * This CSS files set the rules that ensure a consistent rendering
+ * across different browsers.
+ */
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: var(--ob-s-static-font_family-body);
+	background-color: var(--ob-s3-color-neutral-bg-contrast_high-inversity_normal);
+	color: var(--ob-s3-color-neutral-fg-contrast_high-inversity_normal);
+	margin: 0;
+}
