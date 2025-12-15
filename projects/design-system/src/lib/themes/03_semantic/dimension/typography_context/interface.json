@@ -1,0 +1,40 @@
+{
+  "ob": {
+    "s": {
+      "dimension": {
+        "static": {
+          "typography_context": {
+            "xs": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.8}"
+            },
+            "sm": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.12}"
+            },
+            "md": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.16}"
+            },
+            "lg": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.20}"
+            },
+            "xl": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.24}"
+            },
+            "2xl": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.28}"
+            },
+            "3xl": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.32}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

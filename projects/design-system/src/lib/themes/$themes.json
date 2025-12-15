@@ -1199,7 +1199,8 @@
       "01_global/multipliers/dimension": "source",
       "05_html/typography/style": "enabled",
       "03_semantic/dimension/component_size/static": "enabled",
-      "03_semantic/dimension/density/static": "enabled"
+      "03_semantic/dimension/density/static": "enabled",
+      "03_semantic/dimension/typography_context/static": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -2006,7 +2007,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "05_html/typography/context/interface": "enabled",
-      "05_html/link/interface": "enabled"
+      "05_html/link/interface": "enabled",
+      "03_semantic/dimension/typography_context/interface": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.typography.context.h1.font_size": "c2d7a3ca098218d5a6d60a55cb7e8476c63f076e",
@@ -2075,7 +2077,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "05_html/typography/context/prose": "enabled",
-      "05_html/link/prose": "enabled"
+      "05_html/link/prose": "enabled",
+      "03_semantic/dimension/typography_context/prose": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.typography.context.h1.font_size": "c2d7a3ca098218d5a6d60a55cb7e8476c63f076e",
