@@ -2,7 +2,7 @@
   "ob": {
     "s": {
       "dimension": {
-        "dynamic": {
+        "static": {
           "typography_context": {
             "xs": {
               "$type": "spacing",

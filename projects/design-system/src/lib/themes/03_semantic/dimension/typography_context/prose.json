@@ -30,7 +30,7 @@
             },
             "3xl": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.32}"
+              "$value": "{ob.p.dimension.px.36}"
             }
           }
         }
