@@ -143,7 +143,7 @@ describe('ObMasterLayoutComponent', () => {
 				it('should add accessKey 1 if there is no navigation', () => {
 					component.noNavigation = true;
 					component.ngOnInit();
-					expect(component.skipLinks).toEqual([{label: 'test', url: '', accessKey: 1}]);
+					expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 1}]);
 				});
 
 				describe('with navigation', () => {
@@ -157,12 +157,12 @@ describe('ObMasterLayoutComponent', () => {
 					])('should add accessKey 1 with an $text navigation', ({value}) => {
 						component.navigation = value;
 						component.ngOnInit();
-						expect(component.skipLinks).toEqual([{label: 'test', url: '', accessKey: 1}]);
+						expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 1}]);
 					});
 					it('should add accessKey 2 with non-empty navigation', () => {
 						component.navigation = [{label: 'test', url: ''}];
 						component.ngOnInit();
-						expect(component.skipLinks).toEqual([{label: 'test', url: '', accessKey: 2}]);
+						expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 2}]);
 					});
 
 					describe('when the navigation is set', () => {
@@ -171,7 +171,7 @@ describe('ObMasterLayoutComponent', () => {
 							fixture.detectChanges();
 						});
 						it('should add accessKey 2', () => {
-							expect(component.skipLinks).toEqual([{label: 'test', url: '', accessKey: 2}]);
+							expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 2}]);
 						});
 
 						it('should refresh the navigation service', () => {

@@ -83,6 +83,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 	@ViewChild('offCanvasClose', {read: ElementRef}) readonly offCanvasClose: ElementRef<HTMLElement>;
 	@ViewChild('main') readonly main: ElementRef<HTMLElement>;
 	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;
+	skipLinksInternal: ObIDynamicSkipLink[];
 	private readonly unsubscribe = new Subject<void>();
 	private readonly unsubscribeMediaQuery = new Subject<void>();
 	private navigationLength: number;
@@ -205,7 +206,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 
 	private updateSkipLinks(hasNavigation: boolean): void {
 		const staticSkipLinks = hasNavigation && this.navigation?.length ? 2 : 1;
-		this.skipLinks = this.skipLinks.map((skipLink, index: number) => ({
+		this.skipLinksInternal = this.skipLinks.map((skipLink, index: number) => ({
 			...skipLink,
 			accessKey: index + staticSkipLinks,
 		}));
