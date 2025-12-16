@@ -85,7 +85,12 @@ export function runUpdateDependencies(): void {
 		const dependencies = Object.entries(currentVersions)
 			.map(([dependency]) => dependency as keyof typeof currentVersions)
 			.filter(dependency => isDependencyInPackage(dependency));
-		execute({name: 'ngUpdate', dependencies, options: {force: true}});
+		execute({
+			name: 'ngUpdate',
+			dependencies,
+			angularDependencies: getAngularDependenciesFromPackage(),
+			options: {force: true},
+		});
 	} catch (error) {
 		console.error(error);
 	}
@@ -154,4 +159,13 @@ export function findPackage(): PackageDependencies {
 	throw new Error(
 		`Cant find the package.json at path: ${[process.cwd(), 'package.json'].join('/')}. Please navigate to the level of your package.json and try "ob update" again.`
 	);
+}
+
+function getAngularDependenciesFromPackage(): string[] {
+	const pkg = findPackage();
+	const dependencies = {
+		...(pkg.dependencies ?? {}),
+		...(pkg.devDependencies ?? {}),
+	};
+	return Object.keys(dependencies).filter(dependency => dependency.startsWith('@angular/'));
 }
