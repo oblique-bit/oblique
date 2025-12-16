@@ -1,0 +1,34 @@
+{
+  "figma-doc": {
+    "color": {
+      "fg": {
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0",
+              "space": "srgb"
+            }
+          }
+        },
+        "$type": "color",
+        "$value": "{ob.s3.color.status.waiting.fg.contrast_low.inversity_normal}",
+        "$description": "[FIGMA-ONLY]\nToken for Figma design workflow only."
+      },
+      "bg-violet": {
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0",
+              "space": "srgb"
+            }
+          }
+        },
+        "$type": "color",
+        "$value": "{ob.s3.color.status.waiting.fg.contrast_low.inversity_flipped}",
+        "$description": "[FIGMA-ONLY]\nToken for Figma design workflow only."
+      }
+    }
+  }
+}

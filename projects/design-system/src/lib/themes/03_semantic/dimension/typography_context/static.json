@@ -4,6 +4,10 @@
       "dimension": {
         "static": {
           "typography_context": {
+            "none": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.0}"
+            },
             "xs": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.8}"

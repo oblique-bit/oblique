@@ -31,6 +31,10 @@
             "3xl": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.36}"
+            },
+            "none": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.0}"
             }
           }
         }

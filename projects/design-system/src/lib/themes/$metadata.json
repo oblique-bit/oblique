@@ -81,8 +81,8 @@
     "04_component/molecule/tag/reference_only",
     "NO-DS/FIGMA-ONLY/typography",
     "NO-DS/FIGMA-ONLY/colors-static",
-    "NO-DS/FIGMA-ONLY/theme/lightness/light",
-    "NO-DS/FIGMA-ONLY/theme/lightness/dark",
+    "NO-DS/FIGMA-ONLY/on",
+    "NO-DS/FIGMA-ONLY/off",
     "NO-DS/OB-LEGACY/typography-styles-R14"
   ]
 }

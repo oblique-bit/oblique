@@ -3,12 +3,12 @@
     "color": {
       "fg": {
         "$type": "color",
-        "$value": "#d8bbff",
+        "$value": "{ob.s3.color.status.waiting.fg.contrast_low.inversity_normal}",
         "$description": "[FIGMA-ONLY]\nToken for Figma design workflow only."
       },
       "bg-violet": {
         "$type": "color",
-        "$value": "#7e1cff",
+        "$value": "{ob.s3.color.status.waiting.fg.contrast_low.inversity_flipped}",
         "$description": "[FIGMA-ONLY]\nToken for Figma design workflow only."
       }
     }
