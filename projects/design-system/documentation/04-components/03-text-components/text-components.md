@@ -122,6 +122,10 @@ Not a Figma component — just a combination of:
 
 No spacing tokens needed; link inherits from surrounding text context.
 
+**Interaction states:**
+
+Per the overarching states concept (not part of this document): focus exists on a separate layer and can be combined with other states (e.g., enabled, visited). Focus has no dedicated typographic properties — it is always "enabled + focused", "visited + focused", etc.
+
 **Display behavior:**
 - **Inline** (default, especially in Figma)
 - Block element possible in CSS but not exposed in Figma
@@ -195,7 +199,7 @@ Vertical spacing in Figma text components is realized via a **spacer component**
 | **Size source** | Dimension tokens (typography context) |
 | **Default** | Dynamic dimension typography tokens (responsive to typography mode) |
 | **Optional variant** | Static tokens — no size change when switching between interface/prose modes |
-| **Visibility mode** | `_dev_notes` (Figma-only): `visible` or `hidden` |
+| **Visibility mode** | `_notes` (Figma-only): `on` or `off` |
 
 The spacer's dimension token values **are exported to code** as the actual spacing values.
 
@@ -212,10 +216,11 @@ The spacer's dimension token values **are exported to code** as the actual spaci
 
 ## Figma `paragraphSpacing` Behavior
 
-- In Figma, `paragraphSpacing` controls the space **only when a user manually breaks a line** (Enter/Return key).
-- This is **not** the same as margin-bottom in CSS.
-- For headings: rarely used (only if heading has manual line breaks).
-- For paragraphs: used for internal text flow, but **not** for spacing between separate `<p>` elements.
+`paragraphSpacing` controls space after manual line breaks only — in code: `<br>` or line breaks within `<h1>...</h1>` / `<p>...</p>`, in Figma: Enter/Return key. It does **not** control spacing between separate elements.
+
+Structural vertical rhythm is controlled exclusively via `spacing.top` / `spacing.bottom` tokens.
+
+> **Why alias?** `paragraphSpacing` references `spacing.bottom` (no standalone value). This ensures a single source of truth — one token to maintain, consistent spacing whether the gap comes from element margins or internal line breaks.
 
 ---
 
