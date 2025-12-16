@@ -19,7 +19,11 @@
 						[attr.aria-current]="(link.url | obIsCurrentUrl) ? 'page' : undefined"
 						[href]="link.url | translate"
 						[isExternalLink]="!link.isInternalLink"
-						[attr.aria-label]="link.ariaLabel?.text | translate: link.ariaLabel?.parameters"
+						[attr.aria-label]="
+							typeof link.ariaLabel === 'string'
+								? (link.ariaLabel | translate)
+								: (link.ariaLabel?.text | translate: link.ariaLabel?.parameters)
+						"
 					>
 						@if (link.icon) {
 							<mat-icon [svgIcon]="link.icon" class="ob-icon-text" />
