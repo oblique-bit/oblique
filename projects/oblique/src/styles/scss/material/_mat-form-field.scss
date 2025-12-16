@@ -628,4 +628,9 @@
 	&.mat-mdc-form-field-type-mat-native-select .mat-mdc-form-field-infix::after {
 		z-index: 1;
 	}
+
+	&.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mdc-notched-outline__notch {
+		// the class duplication serves to increase specificity enough to beat `.mat-mdc-form-field:not([readonly],:has([readonly]),.mat-form-field-disabled):not(:focus-within):has([aria-required=true]).mat-form-field-invalid .mat-mdc-text-field-wrapper.mdc-text-field [class*=mdc-notched-outline__]` defined further up this stylesheet. This is based on Material's handling of the problem: https://github.com/angular/components/blob/8b96a84e7622299c9249a58a4e98720bda43bf9f/src/material/form-field/_mdc-text-field-structure-overrides.scss#L165
+		border-left: transparent;
+	}
 }
