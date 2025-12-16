@@ -21,14 +21,16 @@
 			<span id="ob-file-upload-caption">{{ "i18n.oblique.file-upload.caption" | translate }}</span>
 		</p>
 		<p class="ob-drop-zone-hints">
-			<ng-container *ngIf="!(accept | obAcceptAll)">
+			@if (!(accept | obAcceptAll)) {
 				{{ "i18n.oblique.file-upload.hint.type" | translate }}
-				<ng-container *ngFor="let extension of accept; last as isLast">
+				@for (extension of accept; track extension) {
 					<code>{{ extension }}</code>
-					<ng-container *ngIf="!isLast">,</ng-container>
-				</ng-container>
+					@if (!$last) {
+						,
+					}
+				}
 				.
-			</ng-container>
+			}
 			{{ "i18n.oblique.file-upload.hint.size" | translate: { size: maxFileSize } }}
 		</p>
 	</div>

@@ -5,23 +5,31 @@
 			{{ header | translate }}
 		</h4>
 	</header>
-	<p *ngIf="text">{{ text | translate }}</p>
-	<ul class="ob-popover-list" *ngIf="links?.length > 0">
-		<li *ngFor="let link of links">
-			<a
-				[id]="link.label + '-ob-popover-link'"
-				class="ob-popover-link"
-				[class.active]="link.url | obIsCurrentUrl"
-				[attr.aria-current]="(link.url | obIsCurrentUrl) ? 'page' : undefined"
-				[href]="link.url | translate"
-				[isExternalLink]="!link.isInternalLink"
-				[attr.aria-label]="link.ariaLabel?.text | translate: link.ariaLabel?.parameters"
-			>
-				<mat-icon *ngIf="link.icon" [svgIcon]="link.icon" class="ob-icon-text" />
-				{{ link.label | translate }}</a
-			>
-		</li>
-	</ul>
+	@if (text) {
+		<p>{{ text | translate }}</p>
+	}
+	@if (links?.length > 0) {
+		<ul class="ob-popover-list">
+			@for (link of links; track link) {
+				<li>
+					<a
+						[id]="link.label + '-ob-popover-link'"
+						class="ob-popover-link"
+						[class.active]="link.url | obIsCurrentUrl"
+						[attr.aria-current]="(link.url | obIsCurrentUrl) ? 'page' : undefined"
+						[href]="link.url | translate"
+						[isExternalLink]="!link.isInternalLink"
+						[attr.aria-label]="link.ariaLabel?.text | translate: link.ariaLabel?.parameters"
+					>
+						@if (link.icon) {
+							<mat-icon [svgIcon]="link.icon" class="ob-icon-text" />
+						}
+						{{ link.label | translate }}</a
+					>
+				</li>
+			}
+		</ul>
+	}
 	<div class="ob-content">
 		<ng-content select="[obContent]" />
 	</div>

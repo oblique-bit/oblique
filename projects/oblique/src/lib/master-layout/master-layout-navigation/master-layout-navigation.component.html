@@ -1,208 +1,225 @@
-<h2 id="ob-navigationlabel" class="ob-screen-reader-only" *ngIf="initializedLinks.length">
-	{{ "i18n.oblique.header.navigation.title" | translate }}
-</h2>
-<button
-	class="ob-navigation-scrollable-control ob-navigation-scrollable-control-left"
-	type="button"
-	(click)="scrollLeft()"
-	*ngIf="isScrollable"
-	[disabled]="!currentScroll"
-	aria-hidden="true"
-	id="ob-navigation-scrollable-control-left"
-	[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-left' | translate"
->
-	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_left" /></span>
-</button>
-<ng-content *ngIf="!initializedLinks.length" />
-<nav *ngIf="initializedLinks.length" aria-labelledby="ob-navigationlabel">
-	<ul
-		#mainNav
-		aria-labelledby="ob-navigationlabel"
-		id="navigation"
-		class="ob-main-nav"
-		[class.ob-navigation-scrollable-content]="isScrollable"
-		[class.ob-main-nav-fw]="isFullWidth"
-		tabindex="-1"
-		obMasterLayoutNavigationMenu
+@if (initializedLinks.length) {
+	<h2 id="ob-navigationlabel" class="ob-screen-reader-only">
+		{{ "i18n.oblique.header.navigation.title" | translate }}
+	</h2>
+}
+@if (isScrollable) {
+	<button
+		class="ob-navigation-scrollable-control ob-navigation-scrollable-control-left"
+		type="button"
+		(click)="scrollLeft()"
+		[disabled]="!currentScroll"
+		aria-hidden="true"
+		id="ob-navigation-scrollable-control-left"
+		[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-left' | translate"
 	>
-		<li
-			class="ob-main-nav-item"
-			obMasterLayoutNavigationItem
-			#obMasterLayoutNavigationItem="obMasterLayoutNavigationItem"
-			*ngFor="let link of initializedLinks; let index = $index"
-			[class.ob-start-of-right-side-links]="link.startOfRightSideLinks"
-			[class.ob-expandable]="link.children?.length"
-			[class.ob-just-close]="currentParentLink.id === link.id"
-			[class.ob-has-grandparent]="!!currentGrandparentLink?.label"
-			[class.ob-is-removable]="link.removable"
-			[id]="'ob-main-nav-item-' + link.id"
+		<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_left" /></span>
+	</button>
+}
+@if (!initializedLinks.length) {
+	<ng-content />
+}
+@if (initializedLinks.length) {
+	<nav aria-labelledby="ob-navigationlabel">
+		<ul
+			#mainNav
+			aria-labelledby="ob-navigationlabel"
+			id="navigation"
+			class="ob-main-nav"
+			[class.ob-navigation-scrollable-content]="isScrollable"
+			[class.ob-main-nav-fw]="isFullWidth"
+			tabindex="-1"
+			obMasterLayoutNavigationMenu
 		>
-			<ng-container *ngIf="!link.children?.length; else expandable">
-				<ng-container *ngIf="link.isExternal; else internalLink">
-					<a
-						class="ob-master-layout-navigation-link ob-main-nav-link"
-						[icon]="hideExternalLinks ? 'none' : 'right'"
-						[id]="link.id"
-						[href]="link.url"
-						[isExternalLink]="link.isExternal"
-						[target]="link.sameTarget ? '' : undefined"
-						[rel]="link.sameTarget ? '' : undefined"
-						[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
-						(focus)="toggleFocus('ob-main-nav-item-', link.id)"
-						(focusout)="toggleFocus('ob-main-nav-item-', link.id)"
-					>
-						<span class="ob-icon-wrapper" *ngIf="link.icon"><mat-icon [svgIcon]="link.icon" /></span>
-						<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-					</a>
-					<button
-						*ngIf="link.removable"
-						type="button"
-						class="ob-remove-menu-item"
-						[matTooltip]="'i18n.oblique.header.navigation.remove' | translate"
-						(click)="removeMenuItem(link, $event)"
-					>
-						<mat-icon svgIcon="xmark" />
-					</button>
-				</ng-container>
-				<ng-template #internalLink>
-					<a
-						class="ob-master-layout-navigation-link ob-main-nav-link"
-						[id]="link.id"
-						[routerLink]="link.url | obLocalize"
-						[routerLinkActive]="activeClass"
-						[isExternalLink]="link.isExternal"
-						[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
-						[fragment]="link.fragment"
-						[queryParams]="link.queryParams"
-						[attr.aria-current]="link.active ? 'page' : undefined"
-						[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
-						(click)="close()"
-						(focus)="toggleFocus('ob-main-nav-item-', link.id)"
-						(focusout)="toggleFocus('ob-main-nav-item-', link.id)"
-					>
-						<span class="ob-icon-wrapper" *ngIf="link.icon"><mat-icon [svgIcon]="link.icon" /></span>
-						<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-					</a>
-					<button
-						*ngIf="link.removable"
-						type="button"
-						class="ob-remove-menu-item"
-						[matTooltip]="'i18n.oblique.header.navigation.remove' | translate"
-						(click)="removeMenuItem(link, $event)"
-					>
-						<mat-icon svgIcon="xmark" />
-					</button>
-				</ng-template>
-			</ng-container>
-			<ng-template #expandable>
-				<button
-					type="button"
-					class="ob-master-layout-navigation-link ob-main-nav-link ob-master-layout-navigation-toggle"
-					[id]="link.id"
-					[class.active]="link.active"
-					[attr.aria-current]="link.active ? 'page' : undefined"
-					[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
-					(click)="toggleSubMenu(obMasterLayoutNavigationItem, link)"
-					(focus)="toggleFocus('ob-main-nav-item-', link.id)"
-					(focusout)="toggleFocus('ob-main-nav-item-', link.id)"
-					[obAriaMenuButton]="'ob-menu-' + link.id"
+			@for (link of initializedLinks; track link) {
+				<li
+					class="ob-main-nav-item"
+					obMasterLayoutNavigationItem
+					#obMasterLayoutNavigationItem="obMasterLayoutNavigationItem"
+					[class.ob-start-of-right-side-links]="link.startOfRightSideLinks"
+					[class.ob-expandable]="link.children?.length"
+					[class.ob-just-close]="currentParentLink.id === link.id"
+					[class.ob-has-grandparent]="!!currentGrandparentLink?.label"
+					[class.ob-is-removable]="link.removable"
+					[id]="'ob-main-nav-item-' + link.id"
 				>
-					<span class="ob-icon-wrapper" *ngIf="link.icon"><mat-icon [svgIcon]="link.icon" /></span>
-					<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
-					<span class="ob-icon-wrapper ob-toggle-collapsed"
-						><mat-icon svgIcon="chevron_down" class="ob-nav-toggle"
-					/></span>
-					<span class="ob-icon-wrapper ob-toggle-expanded"
-						><mat-icon svgIcon="chevron_up" class="ob-nav-toggle"
-					/></span>
-				</button>
-				@if (!currentGrandparentLink?.label) {
-					<ob-master-layout-navigation-go-to-children
-						[disableRipple]="true"
-						[isCurrentParent]="currentParentLink.id === link.id"
-						[link]="link"
-						(changeCurrentParent)="toggleSubMenu(obMasterLayoutNavigationItem, $event)"
-					/>
-				}
-				<div
-					class="ob-sub-menu"
-					[id]="'ob-menu-' + link.id"
-					[class.ob-parent-link-has-icon-and-label]="!!link.icon && !link.iconOnly"
-					[class.ob-has-current-parent-link]="currentParentLink.id !== link.id"
-				>
-					<div class="ob-sub-menu-back-close-container" [class.ob-just-close]="currentParentLink.id === link.id">
+					@if (!link.children?.length) {
+						@if (link.isExternal) {
+							<a
+								class="ob-master-layout-navigation-link ob-main-nav-link"
+								[icon]="hideExternalLinks ? 'none' : 'right'"
+								[id]="link.id"
+								[href]="link.url"
+								[isExternalLink]="link.isExternal"
+								[target]="link.sameTarget ? '' : undefined"
+								[rel]="link.sameTarget ? '' : undefined"
+								[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
+								(focus)="toggleFocus('ob-main-nav-item-', link.id)"
+								(focusout)="toggleFocus('ob-main-nav-item-', link.id)"
+							>
+								@if (link.icon) {
+									<span class="ob-icon-wrapper"><mat-icon [svgIcon]="link.icon" /></span>
+								}
+								<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
+							</a>
+							@if (link.removable) {
+								<button
+									type="button"
+									class="ob-remove-menu-item"
+									[matTooltip]="'i18n.oblique.header.navigation.remove' | translate"
+									(click)="removeMenuItem(link, $event)"
+								>
+									<mat-icon svgIcon="xmark" />
+								</button>
+							}
+						} @else {
+							<a
+								class="ob-master-layout-navigation-link ob-main-nav-link"
+								[id]="link.id"
+								[routerLink]="link.url | obLocalize"
+								[routerLinkActive]="activeClass"
+								[isExternalLink]="link.isExternal"
+								[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
+								[fragment]="link.fragment"
+								[queryParams]="link.queryParams"
+								[attr.aria-current]="link.active ? 'page' : undefined"
+								[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
+								(click)="close()"
+								(focus)="toggleFocus('ob-main-nav-item-', link.id)"
+								(focusout)="toggleFocus('ob-main-nav-item-', link.id)"
+							>
+								@if (link.icon) {
+									<span class="ob-icon-wrapper"><mat-icon [svgIcon]="link.icon" /></span>
+								}
+								<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
+							</a>
+							@if (link.removable) {
+								<button
+									type="button"
+									class="ob-remove-menu-item"
+									[matTooltip]="'i18n.oblique.header.navigation.remove' | translate"
+									(click)="removeMenuItem(link, $event)"
+								>
+									<mat-icon svgIcon="xmark" />
+								</button>
+							}
+						}
+					} @else {
 						<button
 							type="button"
-							mat-button
-							obButton="tertiary"
-							class="ob-sub-menu-back-button"
-							[class.hide-md-up]="currentParentLink.id === link.id"
-							[class.ob-just-sub-menu-back-button-home-icon]="!currentGrandparentLink?.label"
-							[id]="'ob-sub-menu-back-button-' + link.id"
-							(click)="backUpOrCloseSubMenu(link, obMasterLayoutNavigationItem)"
+							class="ob-master-layout-navigation-link ob-main-nav-link ob-master-layout-navigation-toggle"
+							[id]="link.id"
+							[class.active]="link.active"
+							[attr.aria-current]="link.active ? 'page' : undefined"
+							[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
+							(click)="toggleSubMenu(obMasterLayoutNavigationItem, link)"
+							(focus)="toggleFocus('ob-main-nav-item-', link.id)"
+							(focusout)="toggleFocus('ob-main-nav-item-', link.id)"
+							[obAriaMenuButton]="'ob-menu-' + link.id"
 						>
-							<ng-container *ngIf="!!currentGrandparentLink?.label; else homeIcon"
-								>{{ currentGrandparentLink.label | translate }}
-							</ng-container>
-							<ng-template #homeIcon>
-								<mat-icon class="ob-sub-menu-back-button-home-icon" matSuffix svgIcon="home" />
-							</ng-template>
-							<mat-icon matPrefix svgIcon="arrow_left" />
+							@if (link.icon) {
+								<span class="ob-icon-wrapper"><mat-icon [svgIcon]="link.icon" /></span>
+							}
+							<span [class.ob-screen-reader-only]="link.icon && link.iconOnly">{{ link.label | translate }}</span>
+							<span class="ob-icon-wrapper ob-toggle-collapsed"
+								><mat-icon svgIcon="chevron_down" class="ob-nav-toggle"
+							/></span>
+							<span class="ob-icon-wrapper ob-toggle-expanded"
+								><mat-icon svgIcon="chevron_up" class="ob-nav-toggle"
+							/></span>
 						</button>
-						<button
-							type="button"
-							mat-button
-							obButton="tertiary"
-							class="ob-sub-menu-close-button"
-							[id]="'ob-sub-menu-close-button-' + link.id"
-							(click)="closeSubMenu(obMasterLayoutNavigationItem, link)"
-						>
-							{{ "i18n.common.close" | translate }} <mat-icon matSuffix svgIcon="xmark" />
-						</button>
-					</div>
-					<ob-master-layout-navigation-sub-menu-item
-						*ngIf="currentParentLink.id !== link.id"
-						[activeClass]="activeClass"
-						[child]="currentParentLink"
-						[currentParent]="currentParentLink"
-						[hideExternalLinks]="hideExternalLinks"
-						[link]="currentParentLink"
-						[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
-						[routerLinkActiveOptions]="routerLinkActiveOptions"
-						[routerLinkBase]="currentParentRouterLinkBase$ | async | obLocalize"
-						[showChildren]="false"
-						class="ob-sub-menu-parent-link"
-						[class.is-exact-match]="isCurrentParentLinkExactMatch"
-					/>
-					<ul class="ob-main-nav ob-sub-nav">
-						<li *ngFor="let child of link.children">
-							<ob-master-layout-navigation-sub-menu-item
-								[activeClass]="activeClass"
-								[child]="child"
-								[currentParent]="currentParentLink"
-								[hideExternalLinks]="hideExternalLinks"
+						@if (!currentGrandparentLink?.label) {
+							<ob-master-layout-navigation-go-to-children
+								[disableRipple]="true"
+								[isCurrentParent]="currentParentLink.id === link.id"
 								[link]="link"
-								[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
-								[routerLinkActiveOptions]="routerLinkActiveOptions"
-								[routerLinkBase]="link.url | obLocalize"
-								(changeCurrentParent)="changeCurrentParentLink($event)"
+								(changeCurrentParent)="toggleSubMenu(obMasterLayoutNavigationItem, $event)"
 							/>
-						</li>
-					</ul>
-				</div>
-			</ng-template>
-		</li>
-	</ul>
-</nav>
-<button
-	class="ob-navigation-scrollable-control ob-navigation-scrollable-control-right"
-	(click)="scrollRight()"
-	type="button"
-	*ngIf="isScrollable"
-	[disabled]="currentScroll === maxScroll"
-	aria-hidden="true"
-	id="ob-navigation-scrollable-control-right"
-	[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-right' | translate"
->
-	<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_right" /></span>
-</button>
+						}
+						<div
+							class="ob-sub-menu"
+							[id]="'ob-menu-' + link.id"
+							[class.ob-parent-link-has-icon-and-label]="!!link.icon && !link.iconOnly"
+							[class.ob-has-current-parent-link]="currentParentLink.id !== link.id"
+						>
+							<div class="ob-sub-menu-back-close-container" [class.ob-just-close]="currentParentLink.id === link.id">
+								<button
+									type="button"
+									mat-button
+									obButton="tertiary"
+									class="ob-sub-menu-back-button"
+									[class.hide-md-up]="currentParentLink.id === link.id"
+									[class.ob-just-sub-menu-back-button-home-icon]="!currentGrandparentLink?.label"
+									[id]="'ob-sub-menu-back-button-' + link.id"
+									(click)="backUpOrCloseSubMenu(link, obMasterLayoutNavigationItem)"
+								>
+									@if (!!currentGrandparentLink?.label) {
+										{{ currentGrandparentLink.label | translate }}
+									} @else {
+										<mat-icon class="ob-sub-menu-back-button-home-icon" matSuffix svgIcon="home" />
+									}
+									<mat-icon matPrefix svgIcon="arrow_left" />
+								</button>
+								<button
+									type="button"
+									mat-button
+									obButton="tertiary"
+									class="ob-sub-menu-close-button"
+									[id]="'ob-sub-menu-close-button-' + link.id"
+									(click)="closeSubMenu(obMasterLayoutNavigationItem, link)"
+								>
+									{{ "i18n.common.close" | translate }} <mat-icon matSuffix svgIcon="xmark" />
+								</button>
+							</div>
+							@if (currentParentLink.id !== link.id) {
+								<ob-master-layout-navigation-sub-menu-item
+									[activeClass]="activeClass"
+									[child]="currentParentLink"
+									[currentParent]="currentParentLink"
+									[hideExternalLinks]="hideExternalLinks"
+									[link]="currentParentLink"
+									[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
+									[routerLinkActiveOptions]="routerLinkActiveOptions"
+									[routerLinkBase]="currentParentRouterLinkBase$ | async | obLocalize"
+									[showChildren]="false"
+									class="ob-sub-menu-parent-link"
+									[class.is-exact-match]="isCurrentParentLinkExactMatch"
+								/>
+							}
+							<ul class="ob-main-nav ob-sub-nav">
+								@for (child of link.children; track child) {
+									<li>
+										<ob-master-layout-navigation-sub-menu-item
+											[activeClass]="activeClass"
+											[child]="child"
+											[currentParent]="currentParentLink"
+											[hideExternalLinks]="hideExternalLinks"
+											[link]="link"
+											[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
+											[routerLinkActiveOptions]="routerLinkActiveOptions"
+											[routerLinkBase]="link.url | obLocalize"
+											(changeCurrentParent)="changeCurrentParentLink($event)"
+										/>
+									</li>
+								}
+							</ul>
+						</div>
+					}
+				</li>
+			}
+		</ul>
+	</nav>
+}
+@if (isScrollable) {
+	<button
+		class="ob-navigation-scrollable-control ob-navigation-scrollable-control-right"
+		(click)="scrollRight()"
+		type="button"
+		[disabled]="currentScroll === maxScroll"
+		aria-hidden="true"
+		id="ob-navigation-scrollable-control-right"
+		[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-right' | translate"
+	>
+		<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_right" /></span>
+	</button>
+}

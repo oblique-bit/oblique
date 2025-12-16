@@ -1,99 +1,113 @@
-<mat-form-field *ngIf="hasFilter">
-	<mat-label>{{ "i18n.oblique.nav-tree.label.filter" | translate }}</mat-label>
-	<input type="text" matInput [(ngModel)]="filterPattern" />
-	<mat-icon svgIcon="search" matIconPrefix />
-</mat-form-field>
+@if (hasFilter) {
+	<mat-form-field>
+		<mat-label>{{ "i18n.oblique.nav-tree.label.filter" | translate }}</mat-label>
+		<input type="text" matInput [(ngModel)]="filterPattern" />
+		<mat-icon svgIcon="search" matIconPrefix />
+	</mat-form-field>
+}
 <ng-template #itemList let-items let-isParentCollapsed="isParentCollapsed">
-	<ng-container *ngFor="let item of items">
+	@for (item of items; track item) {
 		@if (item.disabled === true || null) {
-			<li
-				*ngIf="visible(item)"
-				class="open disabled"
-				role="presentation"
-				[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
-			>
-				<a
-					class="ob-nav-link"
-					role="treeitem"
-					aria-selected="false"
-					disabled
-					[class.collapsed]="item.items ? isParentCollapsed || item.collapsed : undefined"
-					[class.has-child]="item.items"
-					[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
-					[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
+			@if (visible(item)) {
+				<li
+					class="open disabled"
+					role="presentation"
+					[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
 				>
-					@if (isParentCollapsed || item.collapsed) {
-						<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_right" *ngIf="item.items" /></span>
-					} @else {
-						<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_down" *ngIf="item.items" /></span>
+					<a
+						class="ob-nav-link"
+						role="treeitem"
+						aria-selected="false"
+						disabled
+						[class.collapsed]="item.items ? isParentCollapsed || item.collapsed : undefined"
+						[class.has-child]="item.items"
+						[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
+						[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
+					>
+						@if (isParentCollapsed || item.collapsed) {
+							<span class="ob-icon-wrapper">
+								@if (item.items) {
+									<mat-icon svgIcon="chevron_right" />
+								}
+							</span>
+						} @else {
+							<span class="ob-icon-wrapper">
+								@if (item.items) {
+									<mat-icon svgIcon="chevron_down" />
+								}
+							</span>
+						}
+						<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
+					</a>
+					@if (item.items) {
+						<div [id]="'#' + itemKey(item)" class="collapse" [hidden]="isParentCollapsed || item.collapsed">
+							<ul class="ob-nav-tree disabled" [class.ob-expanded]="!isParentCollapsed && !item.collapsed" role="group">
+								<ng-container
+									*ngTemplateOutlet="
+										itemList;
+										context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }
+									"
+								/>
+							</ul>
+						</div>
 					}
-					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
-				</a>
-				<div
-					[id]="'#' + itemKey(item)"
-					class="collapse"
-					*ngIf="item.items"
-					[hidden]="isParentCollapsed || item.collapsed"
-				>
-					<ul class="ob-nav-tree disabled" [class.ob-expanded]="!isParentCollapsed && !item.collapsed" role="group">
-						<ng-container
-							*ngTemplateOutlet="
-								itemList;
-								context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }
-							"
-						/>
-					</ul>
-				</div>
-			</li>
+				</li>
+			}
 		} @else {
-			<li
-				*ngIf="visible(item)"
-				class="open"
-				role="presentation"
-				(ob.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
-				[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
-			>
-				<a
-					class="ob-nav-link"
-					role="treeitem"
-					aria-selected="false"
-					[routerLink]="item.routes"
-					#rla="routerLinkActive"
-					routerLinkActive
-					[queryParams]="item.queryParams"
-					[fragment]="item.fragment"
-					(click)="item.collapsed = !item.collapsed"
-					[class.collapsed]="item.items ? isParentCollapsed || item.collapsed : undefined"
-					[class.has-child]="item.items"
-					[class.active]="isLinkActive(rla, item)"
-					[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
-					[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
+			@if (visible(item)) {
+				<li
+					class="open"
+					role="presentation"
+					(ob.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
+					[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
 				>
-					@if (isParentCollapsed || item.collapsed) {
-						<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_right" *ngIf="item.items" /></span>
-					} @else {
-						<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_down" *ngIf="item.items" /></span>
+					<a
+						class="ob-nav-link"
+						role="treeitem"
+						aria-selected="false"
+						[routerLink]="item.routes"
+						#rla="routerLinkActive"
+						routerLinkActive
+						[queryParams]="item.queryParams"
+						[fragment]="item.fragment"
+						(click)="item.collapsed = !item.collapsed"
+						[class.collapsed]="item.items ? isParentCollapsed || item.collapsed : undefined"
+						[class.has-child]="item.items"
+						[class.active]="isLinkActive(rla, item)"
+						[attr.data-toggle]="item.items && !filterPattern ? 'collapse' : null"
+						[attr.aria-expanded]="item.items ? !isParentCollapsed && !item.collapsed : undefined"
+					>
+						@if (isParentCollapsed || item.collapsed) {
+							<span class="ob-icon-wrapper">
+								@if (item.items) {
+									<mat-icon svgIcon="chevron_right" />
+								}
+							</span>
+						} @else {
+							<span class="ob-icon-wrapper">
+								@if (item.items) {
+									<mat-icon svgIcon="chevron_down" />
+								}
+							</span>
+						}
+						<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
+					</a>
+					@if (item.items) {
+						<div [id]="'#' + itemKey(item)" class="collapse" [hidden]="isParentCollapsed || item.collapsed">
+							<ul class="ob-nav-tree" [class.ob-expanded]="!isParentCollapsed && !item.collapsed" role="group">
+								<ng-container
+									*ngTemplateOutlet="
+										itemList;
+										context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }
+									"
+								/>
+							</ul>
+						</div>
 					}
-					<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
-				</a>
-				<div
-					[id]="'#' + itemKey(item)"
-					class="collapse"
-					*ngIf="item.items"
-					[hidden]="isParentCollapsed || item.collapsed"
-				>
-					<ul class="ob-nav-tree" [class.ob-expanded]="!isParentCollapsed && !item.collapsed" role="group">
-						<ng-container
-							*ngTemplateOutlet="
-								itemList;
-								context: { $implicit: item.items, isParentCollapsed: isParentCollapsed || item.collapsed }
-							"
-						/>
-					</ul>
-				</div>
-			</li>
+				</li>
+			}
 		}
-	</ng-container>
+	}
 </ng-template>
 <ul
 	#root

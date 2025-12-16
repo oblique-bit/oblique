@@ -121,7 +121,6 @@ export default [
 			'@angular-eslint/template/cyclomatic-complexity': 'off',
 			'@angular-eslint/template/no-call-expression': 'off',
 			'@angular-eslint/template/no-inline-styles': 'off',
-			'@angular-eslint/template/prefer-control-flow': 'off',
 			'@angular-eslint/template/use-track-by-function': 'off',
 		},
 	},

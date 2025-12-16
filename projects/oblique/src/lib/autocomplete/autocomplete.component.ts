@@ -1,4 +1,4 @@
-import {AsyncPipe, NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
 	Component,
 	ElementRef,
@@ -38,14 +38,12 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 	imports: [
 		MatFormFieldModule,
 		MatIconModule,
-		NgIf,
 		MatInputModule,
 		FormsModule,
 		MatAutocompleteModule,
 		ReactiveFormsModule,
 		ObInputClearDirective,
 		NgTemplateOutlet,
-		NgFor,
 		MatOptionModule,
 		ObOptionLabelIconDirective,
 		AsyncPipe,

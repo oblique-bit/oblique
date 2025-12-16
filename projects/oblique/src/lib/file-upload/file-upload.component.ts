@@ -2,11 +2,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ObEUploadEventType, ObIUploadEvent} from './file-upload.model';
 import {ObProgressComponent} from './progress/progress.component';
 import {ObDropZoneComponent} from './drop-zone/ob-drop-zone.component';
-import {NgIf} from '@angular/common';
 
 @Component({
 	selector: 'ob-file-upload',
-	imports: [NgIf, ObDropZoneComponent, ObProgressComponent],
+	imports: [ObDropZoneComponent, ObProgressComponent],
 	templateUrl: './file-upload.component.html',
 	host: {class: 'ob-file-upload'},
 	exportAs: 'obFileUpload',

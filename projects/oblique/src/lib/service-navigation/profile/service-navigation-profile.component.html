@@ -18,10 +18,11 @@
 			[header]="userName || 'i18n.oblique.service-navigation.profile.guest' | translate"
 			[links]="profileUrls"
 		/>
-		<ob-service-navigation-popover-section
-			*ngIf="links?.length > 0"
-			header="i18n.oblique.service-navigation.profile.links.header"
-			[links]="links"
-		/>
+		@if (links?.length > 0) {
+			<ob-service-navigation-popover-section
+				header="i18n.oblique.service-navigation.profile.links.header"
+				[links]="links"
+			/>
+		}
 	</div>
 </ng-template>

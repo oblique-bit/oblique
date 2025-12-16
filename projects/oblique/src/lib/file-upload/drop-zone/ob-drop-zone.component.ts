@@ -1,4 +1,3 @@
-import {NgFor, NgIf} from '@angular/common';
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
@@ -9,7 +8,7 @@ import {ObValidationService} from './validation.service';
 
 @Component({
 	selector: 'ob-drop-zone',
-	imports: [ObDragDropDirective, MatIconModule, NgIf, NgFor, TranslateModule, ObAcceptAllPipe],
+	imports: [ObDragDropDirective, MatIconModule, TranslateModule, ObAcceptAllPipe],
 	templateUrl: './ob-drop-zone.component.html',
 	styleUrls: ['./ob-drop-zone.component.scss'],
 	providers: [ObValidationService],
