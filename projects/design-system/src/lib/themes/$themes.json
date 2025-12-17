@@ -74,10 +74,8 @@
       "ob.h.hr.color.default": "4198d4769b58e945c85a41f0121d0fa0146542b3",
       "ob.h.hr.color.strong": "a417313469d70c6585e313bea174a3bf417e8be9",
       "ob.h.link.spacing.gap": "f2f8183f6661303aaf7b3ca7d89ab6f1a52991bd",
-      "ob.h.link.color.link": "9c96f990a0adfca247d9ce5829bb1d70bb63f2a8",
       "ob.h.link.color.visited": "104f62e16fe7e5de404693e8fd4d9297cfb9482a",
       "ob.h.link.color.hover": "3dc78ce4fd9e4ff4c8b5e7724913f651fdcd9299",
-      "ob.h.link.color.pressed": "8ada142ad3860a6a277a2c5d30ab4ebeaa3a06b0",
       "ob.h.list.single_item.spacing.marker_gap": "9d1ebaa33352c81834b40b8b7881e606241435b5",
       "ob.h.list.single_item.spacing.margin_bottom": "d92ebd59dd25282410e23b7549b9390f413e24f3",
       "ob.h.list.group.spacing.high.margin_top": "43a4672d84e7a2e15fe67e22fab144dd3201b133",
@@ -340,7 +338,9 @@
       "figma-doc.color.fg_static": "00a0bfe32d36acc52756e37b5614b25c7810bf60",
       "figma-doc.color.figma_canvas_bg": "1dc202bfb1100bf8035ac592571c371ae858f85c",
       "figma-doc.color.figma_section_bg": "bb1d2e3e44823afe3203cb148287de46e27fe38c",
-      "figma-doc.color.figma_section_border": "83949dc8c35aebbb586909bad28f307ae4147799"
+      "figma-doc.color.figma_section_border": "83949dc8c35aebbb586909bad28f307ae4147799",
+      "ob.h.link.color.default": "9c96f990a0adfca247d9ce5829bb1d70bb63f2a8",
+      "ob.h.link.color.active": "8ada142ad3860a6a277a2c5d30ab4ebeaa3a06b0"
     },
     "group": "core"
   },

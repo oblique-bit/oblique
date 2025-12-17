@@ -39,7 +39,7 @@
           }
         },
         "color": {
-          "link": {
+          "default": {
             "$type": "color",
             "$value": "{ob.s3.color.interaction.state.fg.enabled.inversity_normal}",
             "$description": "Default color of unvisited links."
@@ -54,7 +54,7 @@
             "$value": "{ob.s3.color.interaction.state.fg.hover.inversity_normal}",
             "$description": "Color of link when hovered with the mouse."
           },
-          "pressed": {
+          "active": {
             "$type": "color",
             "$value": "{ob.s3.color.interaction.state.fg.pressed.inversity_normal}",
             "$description": "Color of link during click interaction."
