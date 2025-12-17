@@ -34,7 +34,7 @@
             "spacing": {
               "top": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.static.typography_context.xs}"
+                "$value": "{ob.s.dimension.static.typography_context.none}"
               },
               "bottom": {
                 "$type": "spacing",
@@ -320,6 +320,26 @@
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
               "$value": "{ob.s.static.paragraphSpacing.2xl}"
+            }
+          },
+          "p": {
+            "top": {
+              "$type": "spacing",
+              "$value": "1px"
+            },
+            "bottom": {
+              "$type": "spacing",
+              "$value": "1px"
+            }
+          },
+          "p_lead": {
+            "top": {
+              "$type": "spacing",
+              "$value": "1px"
+            },
+            "bottom": {
+              "$type": "spacing",
+              "$value": "1px"
             }
           }
         }
