@@ -73,7 +73,7 @@
             "spacing": {
               "top": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.static.typography_context.xs}"
+                "$value": "{ob.s.dimension.static.typography_context.md}"
               },
               "bottom": {
                 "$type": "spacing",
@@ -112,7 +112,7 @@
             "spacing": {
               "top": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.static.typography_context.xs}"
+                "$value": "{ob.s.dimension.static.typography_context.md}"
               },
               "bottom": {
                 "$type": "spacing",
@@ -151,7 +151,7 @@
             "spacing": {
               "top": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.static.typography_context.xs}"
+                "$value": "{ob.s.dimension.static.typography_context.md}"
               },
               "bottom": {
                 "$type": "spacing",
@@ -190,7 +190,7 @@
             "spacing": {
               "top": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.static.typography_context.xs}"
+                "$value": "{ob.s.dimension.static.typography_context.md}"
               },
               "bottom": {
                 "$type": "spacing",
@@ -229,7 +229,7 @@
             "spacing": {
               "top": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.static.typography_context.xs}"
+                "$value": "{ob.s.dimension.static.typography_context.sm}"
               },
               "bottom": {
                 "$type": "spacing",
@@ -325,21 +325,21 @@
           "p": {
             "top": {
               "$type": "spacing",
-              "$value": "1px"
+              "$value": "{ob.s.dimension.static.typography_context.xs}"
             },
             "bottom": {
               "$type": "spacing",
-              "$value": "1px"
+              "$value": "{ob.s.dimension.static.typography_context.sm}"
             }
           },
           "p_lead": {
             "top": {
               "$type": "spacing",
-              "$value": "1px"
+              "$value": "{ob.s.dimension.static.typography_context.xs}"
             },
             "bottom": {
               "$type": "spacing",
-              "$value": "1px"
+              "$value": "{ob.s.dimension.static.typography_context.2xl}"
             }
           }
         }

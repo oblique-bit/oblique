@@ -8,6 +8,22 @@
             "$value": "{ob.s.static.font_size.lg}"
           }
         }
+      },
+      "typography": {
+        "context": {
+          "h3": {
+            "spacing": {
+              "top": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.md}"
+              },
+              "bottom": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              }
+            }
+          }
+        }
       }
     }
   }

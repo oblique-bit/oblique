@@ -427,8 +427,8 @@
       "ob.c.infobox.container.spacing.padding_left": "0cb6a9a5ffdefab536103ed256516ec4a98dbff0",
       "ob.c.infobox.container.spacing.padding_right": "82a70f0042a2ed00b979cdfe9cda7addccfdd80e",
       "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6",
-      "ob.c.infobox.sizing.icon_size": "3d708d1c4d42a535196c5fe30341192644524cea",
-      "ob.c.infobox.sizing.close_button_size": "7d459a1132e7945cf24fbe76ca445b7287991c2a"
+      "ob.c.infobox.sizing.icon_size": "a4f8b9f5f3fc7ed3003e0d42138b7c80d74ab576",
+      "ob.c.infobox.sizing.close_button_size": "17c7d4f17170bcb816d162e887d5de2b680f7967"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -2090,6 +2090,10 @@
       "ob.h.typography.context.h5.spacing.bottom": "2d7a9b2616fee24a3b6f32586e3d486d8b48f7a9",
       "ob.h.typography.context.h6.spacing.top": "27cac7c4bba191c09f88ab55cbef725474d9a0f9",
       "ob.h.typography.context.h6.spacing.bottom": "70ae0029bf4c5920b60fd394a9ba7c0db71f41a8",
+      "ob.h.typography.context.p.top": "1d7dc6c393c05c1ae4f56bd319c4bee9ef7dd56a",
+      "ob.h.typography.context.p.bottom": "094c0a2fbe44ba08c1976eee98465c19a54e1c60",
+      "ob.h.typography.context.p_lead.top": "1f2554d59c22f3d46349a3a70d98fd3a1ea4d80e",
+      "ob.h.typography.context.p_lead.bottom": "77c74e5880123839073ab69c0a27e9fb76e58302",
       "ob.h.link.icon.size": "8583bc99a670a2bbf3a35878bae77c70e548d931"
     },
     "$figmaCollectionId": "VariableCollectionId:6191:6284",
@@ -2180,6 +2184,10 @@
       "ob.h.typography.context.h5.spacing.bottom": "2d7a9b2616fee24a3b6f32586e3d486d8b48f7a9",
       "ob.h.typography.context.h6.spacing.top": "27cac7c4bba191c09f88ab55cbef725474d9a0f9",
       "ob.h.typography.context.h6.spacing.bottom": "70ae0029bf4c5920b60fd394a9ba7c0db71f41a8",
+      "ob.h.typography.context.p.top": "1d7dc6c393c05c1ae4f56bd319c4bee9ef7dd56a",
+      "ob.h.typography.context.p.bottom": "094c0a2fbe44ba08c1976eee98465c19a54e1c60",
+      "ob.h.typography.context.p_lead.top": "1f2554d59c22f3d46349a3a70d98fd3a1ea4d80e",
+      "ob.h.typography.context.p_lead.bottom": "77c74e5880123839073ab69c0a27e9fb76e58302",
       "ob.h.link.icon.size": "8583bc99a670a2bbf3a35878bae77c70e548d931"
     },
     "$figmaCollectionId": "VariableCollectionId:6191:6284",
