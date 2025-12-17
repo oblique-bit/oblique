@@ -30,6 +30,16 @@
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
               "$value": "{ob.s.static.paragraphSpacing.2xl}"
+            },
+            "spacing": {
+              "top": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              },
+              "bottom": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              }
             }
           },
           "h2": {
@@ -59,6 +69,16 @@
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
               "$value": "{ob.s.static.paragraphSpacing.2xl}"
+            },
+            "spacing": {
+              "top": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              },
+              "bottom": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              }
             }
           },
           "h3": {
@@ -88,6 +108,16 @@
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
               "$value": "{ob.s.static.paragraphSpacing.2xl}"
+            },
+            "spacing": {
+              "top": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              },
+              "bottom": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              }
             }
           },
           "h4": {
@@ -117,6 +147,16 @@
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
               "$value": "{ob.s.static.paragraphSpacing.2xl}"
+            },
+            "spacing": {
+              "top": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              },
+              "bottom": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              }
             }
           },
           "h5": {
@@ -146,6 +186,16 @@
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
               "$value": "{ob.s.static.paragraphSpacing.2xl}"
+            },
+            "spacing": {
+              "top": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              },
+              "bottom": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              }
             }
           },
           "h6": {
@@ -175,6 +225,16 @@
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
               "$value": "{ob.s.static.paragraphSpacing.2xl}"
+            },
+            "spacing": {
+              "top": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              },
+              "bottom": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.typography_context.xs}"
+              }
             }
           },
           "body": {

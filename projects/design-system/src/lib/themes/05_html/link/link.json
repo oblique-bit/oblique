@@ -14,27 +14,27 @@
             "internal": {
               "$type": "asset",
               "$value": "none",
-              "$description": "No icon on internal links (except in lists - defined in another token). Devselopers do not use this in the code."
+              "$description": "No icon on internal links (except in lists - defined in another token). This token is informative only; developers should not use tokens for icon. "
             },
             "internal_list": {
               "$type": "asset",
               "$value": "arrow-right",
-              "$description": "Icon displayed for internal links (list only). Devselopers do not use this in the code."
+              "$description": "Icon displayed for internal links (list only). This token is informative only; developers should not use tokens for icon. "
             },
             "external": {
               "$type": "asset",
               "$value": "external",
-              "$description": "Icon displayed for all external links. Devselopers do not use this in the code."
+              "$description": "Icon displayed for all external links. This token is informative only; developers should not use tokens for icon. "
             },
             "phone": {
               "$type": "asset",
               "$value": "phone",
-              "$description": "Icon displayed for all phone number links. Devselopers do not use this in the code."
+              "$description": "Icon displayed for all phone number links. This token is informative only; developers should not use tokens for icon. "
             },
             "mail": {
               "$type": "asset",
               "$value": "envelope",
-              "$description": "Icon displayed for email links. Devselopers do not use this in the code."
+              "$description": "Icon displayed for email links. This token is informative only; developers should not use tokens for icon. "
             }
           }
         },
@@ -81,7 +81,7 @@
           },
           "$description": "a:focus. Displays already a border. No need for additional visual emphasis."
         },
-        "pressed": {
+        "active": {
           "$type": "typography",
           "$value": {
             "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
