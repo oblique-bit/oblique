@@ -122,9 +122,13 @@ Not a Figma component — just a combination of:
 
 No spacing tokens needed; link inherits from surrounding text context.
 
-**Interaction states:**
+**Interaction states:** See [States Concept](../../02-foundation/04-states.md)
 
-Per the overarching states concept (not part of this document): focus exists on a separate layer and can be combined with other states (e.g., enabled, visited). Focus has no dedicated typographic properties — it is always "enabled + focused", "visited + focused", etc.
+Focus exists on a separate layer and can be combined with other states (e.g., enabled, visited). Focus has no dedicated typographic properties — it is always "enabled + focused", "visited + focused", etc.
+
+- **Visited + hover / Visited + active:** Same color as visited (no additional variation)
+- **Focus (all states):** No color change
+- **Disabled:** Not applicable — non-actionable links should not render. Use tertiary button for interactions requiring a disabled state.
 
 **Display behavior:**
 - **Inline** (default, especially in Figma)
@@ -154,6 +158,8 @@ Per the overarching states concept (not part of this document): focus exists on 
 ### 5. text/link-list
 
 A Figma component for displaying multiple links vertically.
+
+**Interaction states:** See [States Concept](../../02-foundation/04-states.md)
 
 **Icons:**
 
