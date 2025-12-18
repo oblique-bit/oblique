@@ -29,7 +29,8 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}"
+              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
               "top": {
@@ -68,7 +69,8 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}"
+              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
               "top": {
@@ -107,7 +109,8 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}"
+              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
               "top": {
@@ -146,7 +149,8 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}"
+              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
               "top": {
@@ -185,7 +189,8 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}"
+              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
               "top": {
@@ -224,7 +229,8 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}"
+              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
               "top": {
