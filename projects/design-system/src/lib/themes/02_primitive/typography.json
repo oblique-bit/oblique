@@ -92,6 +92,10 @@
         }
       },
       "paragraphSpacing": {
+        "0": {
+          "$type": "paragraphSpacing",
+          "$value": "0"
+        },
         "50": {
           "$type": "paragraphSpacing",
           "$value": "1 * {ob.p.lineHeight.base}"
@@ -154,6 +158,11 @@
         }
       },
       "paragraphSpacingRem": {
+        "0": {
+          "$type": "paragraphSpacing",
+          "$value": "0rem",
+          "$description": "4px @ 16px base font size"
+        },
         "50": {
           "$type": "paragraphSpacing",
           "$value": "0.25rem",

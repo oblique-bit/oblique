@@ -79,6 +79,10 @@
           }
         },
         "paragraphSpacing": {
+          "none": {
+            "$type": "paragraphSpacing",
+            "$value": "{ob.p.paragraphSpacingRem.0}"
+          },
           "xs": {
             "$type": "paragraphSpacing",
             "$value": "{ob.s.static.lineHeight.xs} / 2"

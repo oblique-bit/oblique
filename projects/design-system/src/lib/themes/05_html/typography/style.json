@@ -12,7 +12,7 @@
                 "fontWeight": "{ob.h.typography.context.h1.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h1.letter_spacing}",
                 "lineHeight": "{ob.h.typography.context.h1.line_height}",
-                "paragraphSpacing": "{ob.p.paragraphSpacingRem.1400}"
+                "paragraphSpacing": "{ob.h.typography.context.h1.paragraph_spacing}"
               },
               "$description": "Dynamic primary page heading that adapts between compact and prose contexts via variable modes."
             },
@@ -24,7 +24,7 @@
                 "fontWeight": "{ob.h.typography.context.h2.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h2.letter_spacing}",
                 "lineHeight": "{ob.h.typography.context.h2.line_height}",
-                "paragraphSpacing": "{ob.p.paragraphSpacingRem.1300}"
+                "paragraphSpacing": "{ob.h.typography.context.h2.paragraph_spacing}"
               },
               "$description": "Dynamic secondary heading that adapts between compact and prose contexts via variable modes."
             },
@@ -36,7 +36,7 @@
                 "fontWeight": "{ob.h.typography.context.h3.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h3.letter_spacing}",
                 "lineHeight": "{ob.h.typography.context.h3.line_height}",
-                "paragraphSpacing": "{ob.p.paragraphSpacingRem.1100}"
+                "paragraphSpacing": "{ob.h.typography.context.h3.paragraph_spacing}"
               },
               "$description": "Dynamic tertiary heading that adapts between compact and prose contexts via variable modes."
             },
@@ -48,7 +48,7 @@
                 "fontWeight": "{ob.h.typography.context.h4.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h4.letter_spacing}",
                 "lineHeight": "{ob.h.typography.context.h4.line_height}",
-                "paragraphSpacing": "{ob.p.paragraphSpacingRem.900}"
+                "paragraphSpacing": "{ob.h.typography.context.h4.paragraph_spacing}"
               },
               "$description": "Dynamic heading level 4 that adapts between compact and prose contexts via variable modes."
             },
@@ -60,7 +60,7 @@
                 "fontWeight": "{ob.h.typography.context.h5.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h5.letter_spacing}",
                 "lineHeight": "{ob.h.typography.context.h5.line_height}",
-                "paragraphSpacing": "{ob.p.paragraphSpacingRem.800}"
+                "paragraphSpacing": "{ob.h.typography.context.h5.paragraph_spacing}"
               },
               "$description": "Dynamic heading level 5 that adapts between compact and prose contexts via variable modes."
             },
@@ -72,7 +72,7 @@
                 "fontWeight": "{ob.h.typography.context.h6.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h6.letter_spacing}",
                 "lineHeight": "{ob.h.typography.context.h6.line_height}",
-                "paragraphSpacing": "{ob.p.paragraphSpacingRem.700}"
+                "paragraphSpacing": "{ob.h.typography.context.h6.paragraph_spacing}"
               },
               "$description": "Dynamic heading level 6 that adapts between compact and prose contexts via variable modes."
             }
