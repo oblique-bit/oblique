@@ -295,7 +295,7 @@
             "lead": {
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.static.font_size.lg}"
+                "$value": "{ob.s.static.font_size.md}"
               },
               "font_weight": {
                 "$type": "fontWeights",
