@@ -10,6 +10,14 @@
 
 Text components bridge the gap between Figma's text style limitations and the full styling capabilities needed for production. Figma text styles only define typography properties — they cannot include spacing and color. Text components wrap text styles in frames that carry these additional properties via design tokens. 
 
+**Core principle:** Each text component is responsible for the spacing between itself and the following element — not the other way around. 
+
+Typography containers (containing the Figma text components such as Heading, Paragraph...) operate with zero vertical gap. The preceding component owns the gap. 
+
+Since Figma text styles cannot carry margin/padding, the Figma text component takes ownership of vertical rhythm predominantly through bottom spacing tokens. 
+
+Additionally, heading components (H1–H6) provide top spacing for sufficient whitespace separation from preceding content.
+
 **Scope of this document:**
 - Vertical spacing (top/bottom)
 - Color assignment
@@ -37,11 +45,15 @@ Text components bridge the gap between Figma's text style limitations and the fu
 
 **Solution:** Figma text components = Frame containing text formatted with a text style (H1, paragraph, lead, etc.). The frame holds the spacing tokens.
 
+> **Figma Dev Mode:** Select the component frame to inspect spacing tokens; select the text layer inside to inspect typography tokens.
+
 ---
 
 ## Text Components
 
 ### 1. text/heading
+
+Each heading level (H1–H6) has dedicated tokens for typography, spacing and even color (yes, colors differ slightly across levels for Grauwert reasons). Tokens are mode-aware: typography-context (interface/prose) and lightness (light/dark).
 
 | Token | Purpose | CSS Output |
 |-------|---------|------------|
