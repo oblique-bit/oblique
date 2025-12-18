@@ -63,7 +63,6 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 		}
 		const workingDirectory: string = getApplicationDirectory(options.projectName);
 		runAddMaterial(workingDirectory);
-		runAddAdditionalDependencies(workingDirectory);
 		runAddOblique(cmdOptions, options.projectName, workingDirectory);
 		cleanupDependencies(workingDirectory);
 		formatCode(workingDirectory);
@@ -92,11 +91,6 @@ function runAddMaterial(dir: string): void {
 		dependencies: ['@angular/material', '@angular/cdk'],
 		execSyncOptions: {cwd: dir},
 	});
-}
-
-function runAddAdditionalDependencies(dir: string): void {
-	console.info(`[Info]: Adds additional Dependencies`);
-	execute({name: 'npmInstall', dependencies: ['@angular-devkit/build-angular'], execSyncOptions: {cwd: dir}});
 }
 
 function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string, workingDirectory: string): void {
