@@ -158,12 +158,17 @@ Focus exists on a separate layer and can be combined with other states (e.g., en
 > **Figma vs Code:** In Figma, text/link is a text-style + color-variable combination — no icon slot exists. In code, icons are injected automatically based on `href` analysis (see below). Note: text/link-list displays icons alongside links in Figma.
 
 *Automatic icon display (code):*
-- **External link** — definition TBD:
-  - [ ] Other domain?
-  - [ ] Same domain, other subdomain?
-  - [ ] Other application?
-  - → *Reference existing definition and add here*
-- **Download** — links to files (not pages)
+
+| Icon | Condition |
+|------|-----------|
+| **External link** | URL is not same origin |
+| **Download** | URL points to a file (zip, docx, pdf, etc. — full list TBD) |
+
+*Manual icon selection (code):*
+
+Phone number, Email, PDF — developer specifies via attribute, if specified in Figma (project)
+
+> **Override behavior:** Custom icon choice overrides automatic detection.
 
 ---
 
