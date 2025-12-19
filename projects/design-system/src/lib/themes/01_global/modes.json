@@ -12,7 +12,7 @@
             "$value": "default"
           }
         },
-        "s1_lightness": {
+        "s1-lightness": {
           "light": {
             "$type": "other",
             "$value": "default"
@@ -22,7 +22,7 @@
             "$value": ".ob-s1-lightness-dark"
           }
         },
-        "s2_emphasis": {
+        "s2-emphasis": {
           "high": {
             "$type": "other",
             "$value": "default"
@@ -32,7 +32,7 @@
             "$value": ".ob-s2-emphasis-low"
           }
         },
-        "component_size": {
+        "component-size": {
           "sm": {
             "$type": "other",
             "$value": ".ob-component-size-sm"
@@ -60,7 +60,7 @@
             "$value": ".ob-density-spacious"
           }
         },
-        "typography_context": {
+        "typography-context": {
           "interface": {
             "$type": "other",
             "$value": "default"
