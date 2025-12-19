@@ -15,21 +15,21 @@
         "s1_lightness": {
           "light": {
             "$type": "other",
-            "$value": "default"
+            "$value": ".ob-s1_lightness-light"
           },
           "dark": {
             "$type": "other",
-            "$value": "default"
+            "$value": ".ob-s1_lightness-dark"
           }
         },
         "s2_emphasis": {
           "high": {
             "$type": "other",
-            "$value": "default"
+            "$value": ".ob-s2_emphasis-high"
           },
           "low": {
             "$type": "other",
-            "$value": "default"
+            "$value": ".ob-s2_emphasis-low"
           }
         },
         "component_size": {
@@ -39,7 +39,7 @@
           },
           "md": {
             "$type": "other",
-            "$value": "default"
+            "$value": ".ob-size-md"
           },
           "lg": {
             "$type": "other",
@@ -53,7 +53,7 @@
           },
           "standard": {
             "$type": "other",
-            "$value": "default"
+            "$value": ".ob-density-standard"
           },
           "spacious": {
             "$type": "other",
@@ -63,7 +63,7 @@
         "typography_context": {
           "interface": {
             "$type": "other",
-            "$value": "default"
+            "$value": ".ob-typography-context-interface"
           },
           "prose": {
             "$type": "other",
@@ -73,7 +73,7 @@
         "motion": {
           "enabled": {
             "$type": "other",
-            "$value": "default"
+            "$value": ".ob-motion-enabled"
           },
           "disabled": {
             "$type": "other",
