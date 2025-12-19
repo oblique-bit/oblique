@@ -1,0 +1,15 @@
+{
+  "ob": {
+    "h": {
+      "button": {
+        "motion": {
+          "duration": {
+            "$type": "duration",
+            "$value": "{ob.s.motion.duration.smooth}",
+            "$description": "Button transition duration"
+          }
+        }
+      }
+    }
+  }
+}

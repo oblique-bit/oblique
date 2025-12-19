@@ -9,6 +9,13 @@
             "$description": "Gap between icon and text in the text link."
           }
         },
+        "motion": {
+          "duration": {
+            "$type": "duration",
+            "$value": "{ob.s.motion.duration.micro}",
+            "$description": "Link transition duration for hover/focus states"
+          }
+        },
         "asset": {
           "type": {
             "internal": {

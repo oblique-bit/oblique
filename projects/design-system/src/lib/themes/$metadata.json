@@ -64,6 +64,7 @@
     "05_html/button/04_layout",
     "05_html/button/05_viewport/desktop",
     "05_html/button/05_viewport/mobile",
+    "05_html/button/06_motion",
     "05_html/button/07_reference_only",
     "04_component/atom/icon_slot/static",
     "04_component/atom/icon_slot/size",
