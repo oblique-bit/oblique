@@ -276,10 +276,64 @@ p {
 
 ---
 
-## Decisions
+## Token Resolution Flow
 
-- [x] Heading levels (H1–H6) have individual spacing tokens (not shared)
-- [x] `spacing.bottom` is source, `paragraphSpacing` is alias (for paragraph)
-- [ ] Define actual token values per level
-- [ ] Define text/link token structure
-- [ ] Define text/link-list token structure
+```
++------------------------------------------------------------------+
+| LEVEL 1: CONTEXT MODES (switch between interface/prose)          |
++------------------------------------------------------------------+
+|                                                                  |
+|  interface.json               prose.json                         |
+|  +-------------------+        +-------------------+              |
+|  | ob.h.typography   |        | ob.h.typography   |              |
+|  | .context.h1       |        | .context.h1       |              |
+|  |   font_size: 2xl  |        |   font_size: 5xl  |              |
+|  |   font_weight:bold|        |   font_weight:semi|              |
+|  |   line_height: xl |        |   line_height: 3xl|              |
+|  |   spacing.bottom:xs        |   spacing.bottom:sm              |
+|  +-------------------+        +-------------------+              |
+|            |                           |                         |
+|            +------------+--------------+                         |
+|                         v                                        |
+|                (mode switch in figma)                            |
++------------------------------------------------------------------+
+                          |
+                          v
++------------------------------------------------------------------+
+| LEVEL 2: STYLE COMPOSITION (collects context tokens)             |
++------------------------------------------------------------------+
+|                                                                  |
+|  style.json                                                      |
+|  +----------------------------------------------+                |
+|  | ob.h.typography.style.heading.H1             |                |
+|  |   fontFamily: {ob.s.static.font_family.body} | <-- static     |
+|  |   fontSize:   {ob.h...context.h1.font_size}  | <-- from mode  |
+|  |   fontWeight: {ob.h...context.h1.font_weight}| <-- from mode  |
+|  |   lineHeight: {ob.h...context.h1.line_height}| <-- from mode  |
+|  +----------------------------------------------+                |
++------------------------------------------------------------------+
+                          |
+                          v
++------------------------------------------------------------------+
+| LEVEL 3: FIGMA COMPONENT (collects all token types)              |
++------------------------------------------------------------------+
+|                                                                  |
+|  +------------------------------------------------------------+  |
+|  |                         <H1>                               |  |
+|  |  +------------------------------------------------------+  |  |
+|  |  | typography --> ob.h.typography.style.heading.H1      |  |  |
+|  |  | fg color   --> ob.h.typography.context.h1.color.fg   |  |  |
+|  |  | margin-top --> ob.h.typography.context.h1.spacing.top|  |  |
+|  |  | margin-bot --> ob.h.typography.context.h1.spacing.bot|  |  |
+|  |  +------------------------------------------------------+  |  |
+|  +------------------------------------------------------------+  |
++------------------------------------------------------------------+
+```
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+1. mode files define same token paths with different values
+2. style.json composites them into typography style token
+3. figma component binds to style + color + spacing tokens
+4. switching mode → all h1 properties update together
