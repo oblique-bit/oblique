@@ -30,9 +30,9 @@ export class TokenFormat {
 	}
 
 	#format(selector, include, isComponent) {
-		const rootTokens = this.#transformRootTokens(this.#rootTokens, include, isComponent);
+		const rootTokens = this.#transformRootTokens(this.#rootTokens, include);
 		const indentedRootTokens = rootTokens.map(token => `${this.#indent}${token}`);
-		const modeTokens = this.#transformModeTokens(this.#modeTokens, rootTokens, isComponent);
+		const modeTokens = this.#transformModeTokens(this.#modeTokens, rootTokens);
 		const rootModeTokens = this.#buildRootModeTokens(modeTokens, isComponent, include);
 		const componentModeTokens = this.#buildComponentModeTokens(modeTokens, isComponent, include);
 		return rootTokens.length
@@ -48,18 +48,18 @@ export class TokenFormat {
 			: null;
 	}
 
-	#transformRootTokens(rootTokens, include, isComponent) {
-		return this.#transformTokens(rootTokens, [], isComponent).filter(token => include.test(token));
+	#transformRootTokens(rootTokens, include) {
+		return this.#transformTokens(rootTokens, []).filter(token => include.test(token));
 	}
 
-	#transformModeTokens(modeTokens, rootTokens, isComponent) {
+	#transformModeTokens(modeTokens, rootTokens) {
 		return Object.fromEntries(
-			Object.entries(modeTokens).map(([mode, tokens]) => [mode, this.#transformTokens(tokens, rootTokens, isComponent)])
+			Object.entries(modeTokens).map(([mode, tokens]) => [mode, this.#transformTokens(tokens, rootTokens)])
 		);
 	}
 
-	#transformTokens(dictionary, rootTokens, outputReferences) {
-		return this.#styleDictionaryFormat(dictionary, outputReferences)
+	#transformTokens(dictionary, rootTokens) {
+		return this.#styleDictionaryFormat(dictionary)
 			.split(this.#lineSeparator)
 			.map(token => token.trim())
 			.filter(token => this.#filterTokens(token, rootTokens))
@@ -67,11 +67,11 @@ export class TokenFormat {
 			.sort();
 	}
 
-	#styleDictionaryFormat(dictionary, outputReferences) {
+	#styleDictionaryFormat(dictionary) {
 		return formattedVariables({
 			format: 'css',
 			dictionary,
-			outputReferences,
+			outputReferences: token => /^ob-[ch]-/.test(token.name),
 			usesDtcg: true,
 			formatting: {
 				commentStyle: 'none',
@@ -83,7 +83,6 @@ export class TokenFormat {
 	#filterTokens(token, rootTokens) {
 		return (
 			!rootTokens.includes(token) && // avoid duplicates
-			!token.startsWith('--ob-s-static-font_family-heading:') && // redundant since each heading already have its own font-family
 			!token.startsWith('--ob-h-typography-style') // only used by tokens-studio
 		);
 	}
