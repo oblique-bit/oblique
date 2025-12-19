@@ -14,6 +14,11 @@
             "$type": "duration",
             "$value": "{ob.s.motion.duration.micro}",
             "$description": "Link transition duration for hover/focus states"
+          },
+          "easing": {
+            "$type": "cubicBezier",
+            "$value": "{ob.s.motion.easing.standard}",
+            "$description": "Link transition easing"
           }
         },
         "asset": {

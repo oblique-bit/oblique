@@ -7,6 +7,11 @@
             "$type": "duration",
             "$value": "{ob.s.motion.duration.smooth}",
             "$description": "Button transition duration"
+          },
+          "easing": {
+            "$type": "cubicBezier",
+            "$value": "{ob.s.motion.easing.standard}",
+            "$description": "Button transition easing"
           }
         }
       }
