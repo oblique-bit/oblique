@@ -79,6 +79,14 @@
             "$type": "other",
             "$value": ".ob-motion-disabled"
           }
+        },
+        "core": {
+          "$type": "other",
+          "$value": ".ob-core"
+        },
+        "semantic": {
+          "$type": "other",
+          "$value": ".ob-semantic"
         }
       }
     }
