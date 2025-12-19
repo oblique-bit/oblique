@@ -15,35 +15,35 @@
         "s1_lightness": {
           "light": {
             "$type": "other",
-            "$value": ".ob-s1_lightness-light"
+            "$value": ".ob-s1-lightness-light"
           },
           "dark": {
             "$type": "other",
-            "$value": ".ob-s1_lightness-dark"
+            "$value": ".ob-s1-lightness-dark"
           }
         },
         "s2_emphasis": {
           "high": {
             "$type": "other",
-            "$value": ".ob-s2_emphasis-high"
+            "$value": ".ob-s2-emphasis-high"
           },
           "low": {
             "$type": "other",
-            "$value": ".ob-s2_emphasis-low"
+            "$value": ".ob-s2-emphasis-low"
           }
         },
         "component_size": {
           "sm": {
             "$type": "other",
-            "$value": ".ob-size-sm"
+            "$value": ".ob-component-size-sm"
           },
           "md": {
             "$type": "other",
-            "$value": ".ob-size-md"
+            "$value": "default"
           },
           "lg": {
             "$type": "other",
-            "$value": ".ob-size-lg"
+            "$value": ".ob-component-size-lg"
           }
         },
         "density": {
@@ -53,7 +53,7 @@
           },
           "standard": {
             "$type": "other",
-            "$value": ".ob-density-standard"
+            "$value": "default"
           },
           "spacious": {
             "$type": "other",
@@ -63,7 +63,7 @@
         "typography_context": {
           "interface": {
             "$type": "other",
-            "$value": ".ob-typography-context-interface"
+            "$value": "default"
           },
           "prose": {
             "$type": "other",
@@ -73,20 +73,12 @@
         "motion": {
           "enabled": {
             "$type": "other",
-            "$value": ".ob-motion-enabled"
+            "$value": "default"
           },
           "disabled": {
             "$type": "other",
             "$value": ".ob-motion-disabled"
           }
-        },
-        "core": {
-          "$type": "other",
-          "$value": ".ob-core"
-        },
-        "semantic": {
-          "$type": "other",
-          "$value": ".ob-semantic"
         }
       }
     }
