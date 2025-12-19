@@ -84,7 +84,7 @@ export class TokenFormat {
 		return (
 			!rootTokens.includes(token) && // avoid duplicates
 			!token.startsWith('--ob-s-static-font_family-heading:') && // redundant since each heading already have its own font-family
-			!token.startsWith('--ob-h-typography-context') // only used by tokens-studio
+			!token.startsWith('--ob-h-typography-style') // only used by tokens-studio
 		);
 	}
 
