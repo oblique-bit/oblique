@@ -4,6 +4,10 @@
       "typography": {
         "context": {
           "h1": {
+            "font_family": {
+              "$type": "fontFamilies",
+              "$value": "{ob.s.static.font_family.heading}"
+            },
             "font_size": {
               "$type": "fontSizes",
               "$value": "{ob.s.static.font_size.5xl}"
@@ -44,6 +48,10 @@
             }
           },
           "h2": {
+            "font_family": {
+              "$type": "fontFamilies",
+              "$value": "{ob.s.static.font_family.heading}"
+            },
             "font_size": {
               "$type": "fontSizes",
               "$value": "{ob.s.static.font_size.4xl}"
@@ -84,6 +92,10 @@
             }
           },
           "h3": {
+            "font_family": {
+              "$type": "fontFamilies",
+              "$value": "{ob.s.static.font_family.heading}"
+            },
             "font_size": {
               "$type": "fontSizes",
               "$value": "{ob.s.static.font_size.3xl}"
@@ -124,6 +136,10 @@
             }
           },
           "h4": {
+            "font_family": {
+              "$type": "fontFamilies",
+              "$value": "{ob.s.static.font_family.heading}"
+            },
             "font_size": {
               "$type": "fontSizes",
               "$value": "{ob.s.static.font_size.2xl}"
@@ -164,6 +180,10 @@
             }
           },
           "h5": {
+            "font_family": {
+              "$type": "fontFamilies",
+              "$value": "{ob.s.static.font_family.heading}"
+            },
             "font_size": {
               "$type": "fontSizes",
               "$value": "{ob.s.static.font_size.xl}"
@@ -204,6 +224,10 @@
             }
           },
           "h6": {
+            "font_family": {
+              "$type": "fontFamilies",
+              "$value": "{ob.s.static.font_family.heading}"
+            },
             "font_size": {
               "$type": "fontSizes",
               "$value": "{ob.s.static.font_size.lg}"
@@ -245,6 +269,10 @@
           },
           "body": {
             "normal": {
+              "font_family": {
+                "$type": "fontFamilies",
+                "$value": "{ob.s.static.font_family.body}"
+              },
               "font_size": {
                 "$type": "fontSizes",
                 "$value": "{ob.s.static.font_size.lg}"
@@ -263,6 +291,10 @@
               }
             },
             "link": {
+              "font_family": {
+                "$type": "fontFamilies",
+                "$value": "{ob.s.static.font_family.body}"
+              },
               "font_size": {
                 "$type": "fontSizes",
                 "$value": "{ob.s.static.font_size.lg}"
@@ -281,6 +313,10 @@
               }
             },
             "strong": {
+              "font_family": {
+                "$type": "fontFamilies",
+                "$value": "{ob.s.static.font_family.body}"
+              },
               "font_size": {
                 "$type": "fontSizes",
                 "$value": "{ob.s.static.font_size.lg}"
@@ -299,6 +335,10 @@
               }
             },
             "lead": {
+              "font_family": {
+                "$type": "fontFamilies",
+                "$value": "{ob.s.static.font_family.body}"
+              },
               "font_size": {
                 "$type": "fontSizes",
                 "$value": "{ob.s.static.font_size.lg}"

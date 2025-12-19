@@ -7,7 +7,7 @@
             "H1": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontFamily": "{ob.h.typography.context.h1.font_family}",
                 "fontSize": "{ob.h.typography.context.h1.font_size}",
                 "fontWeight": "{ob.h.typography.context.h1.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h1.letter_spacing}",
@@ -19,7 +19,7 @@
             "H2": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontFamily": "{ob.h.typography.context.h2.font_family}",
                 "fontSize": "{ob.h.typography.context.h2.font_size}",
                 "fontWeight": "{ob.h.typography.context.h2.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h2.letter_spacing}",
@@ -31,7 +31,7 @@
             "H3": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontFamily": "{ob.h.typography.context.h3.font_family}",
                 "fontSize": "{ob.h.typography.context.h3.font_size}",
                 "fontWeight": "{ob.h.typography.context.h3.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h3.letter_spacing}",
@@ -43,7 +43,7 @@
             "H4": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontFamily": "{ob.h.typography.context.h4.font_family}",
                 "fontSize": "{ob.h.typography.context.h4.font_size}",
                 "fontWeight": "{ob.h.typography.context.h4.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h4.letter_spacing}",
@@ -55,7 +55,7 @@
             "H5": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontFamily": "{ob.h.typography.context.h5.font_family}",
                 "fontSize": "{ob.h.typography.context.h5.font_size}",
                 "fontWeight": "{ob.h.typography.context.h5.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h5.letter_spacing}",
@@ -67,7 +67,7 @@
             "H6": {
               "$type": "typography",
               "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
+                "fontFamily": "{ob.h.typography.context.h6.font_family}",
                 "fontSize": "{ob.h.typography.context.h6.font_size}",
                 "fontWeight": "{ob.h.typography.context.h6.font_weight}",
                 "letterSpacing": "{ob.h.typography.context.h6.letter_spacing}",
