@@ -5,7 +5,7 @@
         "sizing": {
           "height": {
             "$type": "dimension",
-            "$value": "1"
+            "$value": "{ob.s.border_width.xs}"
           }
         },
         "color": {

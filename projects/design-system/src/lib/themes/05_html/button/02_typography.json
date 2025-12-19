@@ -31,13 +31,13 @@
             },
             "text_decoration": {
               "$type": "textDecoration",
-              "$value": "none",
+              "$value": "{ob.s.static.text_decoration.link.emphasis_low}",
               "$description": "No text decoration for button labels"
             },
             "text_transform": {
               "$type": "textCase",
               "$value": "none",
-              "$description": "No text transformation for button labels"
+              "$description": "No text transformation for button labels - no semantic token exists"
             }
           }
         }
