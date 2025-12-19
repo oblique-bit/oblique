@@ -15,7 +15,7 @@
         "s1_lightness": {
           "light": {
             "$type": "other",
-            "$value": ".ob-s1-lightness-light"
+            "$value": "default"
           },
           "dark": {
             "$type": "other",
@@ -25,7 +25,7 @@
         "s2_emphasis": {
           "high": {
             "$type": "other",
-            "$value": ".ob-s2-emphasis-high"
+            "$value": "default"
           },
           "low": {
             "$type": "other",
