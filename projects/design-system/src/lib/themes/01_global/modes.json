@@ -1,7 +1,7 @@
 {
   "ob": {
     "g": {
-      "mode": {
+      "modes": {
         "viewport": {
           "mobile": {
             "$type": "other",
@@ -82,11 +82,11 @@
         },
         "core": {
           "$type": "other",
-          "$value": ".ob-core"
+          "$value": "default"
         },
         "semantic": {
           "$type": "other",
-          "$value": ".ob-semantic"
+          "$value": "default"
         }
       }
     }
