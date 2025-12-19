@@ -10,6 +10,7 @@
     "01_global/themes-user/lightness/dynamic/light",
     "01_global/themes-user/lightness/dynamic/dark",
     "01_global/themes-user/lightness/static",
+    "01_global/modes",
     "02_primitive/color",
     "02_primitive/position",
     "02_primitive/typography",

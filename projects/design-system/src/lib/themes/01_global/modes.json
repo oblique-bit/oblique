@@ -1,0 +1,18 @@
+{
+  "ob": {
+    "g": {
+      "mode": {
+        "viewport": {
+          "mobile": {
+            "$type": "other",
+            "$value": "'@media (width <= 767px)'"
+          },
+          "desktop": {
+            "$type": "other",
+            "$value": "default"
+          }
+        }
+      }
+    }
+  }
+}
