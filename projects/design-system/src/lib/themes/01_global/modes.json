@@ -12,6 +12,26 @@
             "$value": "default"
           }
         },
+        "s1_lightness": {
+          "light": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "dark": {
+            "$type": "other",
+            "$value": "default"
+          }
+        },
+        "s2_emphasis": {
+          "high": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "low": {
+            "$type": "other",
+            "$value": "default"
+          }
+        },
         "component_size": {
           "sm": {
             "$type": "other",
