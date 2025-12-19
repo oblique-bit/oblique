@@ -1186,7 +1186,7 @@
     "selectedTokenSets": {
       "03_semantic/color/s3-semantic/semantic": "enabled",
       "03_semantic/border": "enabled",
-      "03_semantic/motion": "enabled",
+      "03_semantic/motion/static": "enabled",
       "03_semantic/z-index": "enabled",
       "03_semantic/typography/single/static": "enabled",
       "03_semantic/typography/grouped/static": "enabled",
@@ -2323,6 +2323,32 @@
       "ob.s.dimension.dynamic.density.11xl.rem": "ea699ebf27039529196377bec9cd2274c404f1be"
     },
     "group": "density"
+  },
+  {
+    "id": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
+    "name": "enabled",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/motion/static": "source",
+      "03_semantic/motion/mode/enabled": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "motion"
+  },
+  {
+    "id": "z9y8x7w6v5u4t3s2r1q0p9o8n7m6l5k4j3i2h1g0",
+    "name": "disabled",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/motion/static": "source",
+      "03_semantic/motion/mode/disabled": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "motion"
   },
   {
     "id": "e092857f2a6a98e628fe6ebfd10e0a127067adda",

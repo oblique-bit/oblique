@@ -1,0 +1,35 @@
+{
+  "ob": {
+    "s": {
+      "motion": {
+        "duration": {
+          "instant": {
+            "$type": "duration",
+            "$value": "{ob.p.motion.duration.instant}",
+            "$description": "No animation - immediate state changes"
+          },
+          "micro": {
+            "$type": "duration",
+            "$value": "{ob.p.motion.duration.instant}",
+            "$description": "Reduced motion: instant transition"
+          },
+          "smooth": {
+            "$type": "duration",
+            "$value": "{ob.p.motion.duration.instant}",
+            "$description": "Reduced motion: instant transition"
+          },
+          "comfortable": {
+            "$type": "duration",
+            "$value": "{ob.p.motion.duration.instant}",
+            "$description": "Reduced motion: instant transition"
+          },
+          "relaxed": {
+            "$type": "duration",
+            "$value": "{ob.p.motion.duration.instant}",
+            "$description": "Reduced motion: instant transition"
+          }
+        }
+      }
+    }
+  }
+}
