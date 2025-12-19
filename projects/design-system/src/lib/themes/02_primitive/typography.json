@@ -249,6 +249,24 @@
           "$value": "none"
         }
       },
+      "text_case": {
+        "none": {
+          "$type": "textCase",
+          "$value": "none"
+        },
+        "uppercase": {
+          "$type": "textCase",
+          "$value": "uppercase"
+        },
+        "lowercase": {
+          "$type": "textCase",
+          "$value": "lowercase"
+        },
+        "capitalize": {
+          "$type": "textCase",
+          "$value": "capitalize"
+        }
+      },
       "lineHeight": {
         "50": {
           "$type": "lineHeights",

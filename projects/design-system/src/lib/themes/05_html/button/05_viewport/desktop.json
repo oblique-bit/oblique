@@ -14,8 +14,8 @@
         "touch_target": {
           "min_size": {
             "$type": "dimension",
-            "$value": "44px",
-            "$description": "Standard desktop touch target minimum size"
+            "$value": "{ob.s.dimension.static.component_size.none.px}",
+            "$description": "No touch target constraint for desktop - mouse interaction"
           }
         }
       }

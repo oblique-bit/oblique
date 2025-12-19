@@ -193,6 +193,28 @@
             }
           }
         },
+        "text_case": {
+          "none": {
+            "$type": "textCase",
+            "$value": "{ob.p.text_case.none}",
+            "$description": "No text transformation applied."
+          },
+          "uppercase": {
+            "$type": "textCase",
+            "$value": "{ob.p.text_case.uppercase}",
+            "$description": "Transform text to uppercase."
+          },
+          "lowercase": {
+            "$type": "textCase",
+            "$value": "{ob.p.text_case.lowercase}",
+            "$description": "Transform text to lowercase."
+          },
+          "capitalize": {
+            "$type": "textCase",
+            "$value": "{ob.p.text_case.capitalize}",
+            "$description": "Capitalize first letter of each word."
+          }
+        },
         "letter_spacing_rem": {
           "superNarrow": {
             "$type": "letterSpacing",

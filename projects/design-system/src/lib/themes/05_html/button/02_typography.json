@@ -36,8 +36,8 @@
             },
             "text_transform": {
               "$type": "textCase",
-              "$value": "none",
-              "$description": "No text transformation for button labels - no semantic token exists"
+              "$value": "{ob.s.static.text_case.none}",
+              "$description": "No text transformation for button labels"
             }
           }
         }

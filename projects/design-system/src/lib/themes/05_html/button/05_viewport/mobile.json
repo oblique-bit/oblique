@@ -14,7 +14,7 @@
         "touch_target": {
           "min_size": {
             "$type": "dimension",
-            "$value": "48px",
+            "$value": "{ob.s.dimension.static.density.9xl.px}",
             "$description": "Enhanced mobile touch target minimum size for better accessibility"
           }
         }
