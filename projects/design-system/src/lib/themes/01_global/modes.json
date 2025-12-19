@@ -5,11 +5,59 @@
         "viewport": {
           "mobile": {
             "$type": "other",
-            "$value": "'@media (width <= 767px)'"
+            "$value": "@media (width <= 767px)"
           },
           "desktop": {
             "$type": "other",
             "$value": "default"
+          }
+        },
+        "component_size": {
+          "sm": {
+            "$type": "other",
+            "$value": ".ob-size-sm"
+          },
+          "md": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "lg": {
+            "$type": "other",
+            "$value": ".ob-size-lg"
+          }
+        },
+        "density": {
+          "compact": {
+            "$type": "other",
+            "$value": ".ob-density-compact"
+          },
+          "standard": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "spacious": {
+            "$type": "other",
+            "$value": ".ob-density-spacious"
+          }
+        },
+        "typography_context": {
+          "interface": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "prose": {
+            "$type": "other",
+            "$value": ".ob-typography-context-prose"
+          }
+        },
+        "motion": {
+          "enabled": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "disabled": {
+            "$type": "other",
+            "$value": ".ob-motion-disabled"
           }
         }
       }
