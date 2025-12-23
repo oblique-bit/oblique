@@ -13,36 +13,18 @@ StyleDictionary.registerTransform(kebabTransform);
 StyleDictionary.registerTransform(colorTransform);
 StyleDictionary.registerPreprocessor(compositionPreprocessor);
 
-export async function generateCSS(files, libFolder) {
-	const modes = [
-		{exclude: /(?:prose|lg|sm|low|mobile|dark|compact|spacious|disabled)\.json/},
-		{
-			exclude: /(?:prose|lg|sm|low|mobile|light|compact|spacious|disabled)\.json/,
-			selector: '@media (prefers-color-scheme: dark)',
-		},
-		{exclude: /(?:prose|lg|sm|low|desktop|dark|compact|spacious|disabled)\.json/, selector: '@media (width <= 767px)'},
-		{exclude: /(?:prose|md|sm|low|mobile|dark|compact|spacious|disabled)\.json/, selector: '.ob-size-lg'},
-		{exclude: /(?:prose|lg|md|low|mobile|dark)|compact|spacious|disabled\.json/, selector: '.ob-size-sm'},
-		{exclude: /(?:prose|lg|sm|low|mobile|dark)|standard|spacious|disabled\.json/, selector: '.ob-density-compact'},
-		{exclude: /(?:prose|lg|sm|low|mobile|dark)|compact|standard|disabled\.json/, selector: '.ob-density-spacious'},
-		{
-			exclude: /(?:interface|lg|sm|low|mobile|dark|compact|spacious|disabled)\.json/,
-			selector: '.ob-typography-context-prose',
-		},
-		{exclude: /(?:prose|lg|sm|low|mobile|dark|compact|spacious|enabled)\.json/, selector: '.ob-motion-disabled'},
-	];
-
-	const components = listComponents(files, libFolder);
-	for (const config of buildConfigs(modes, files, libFolder, components)) {
+export async function generateCSS(modes, libFolder) {
+	const components = listComponents(modes, libFolder);
+	for (const config of buildConfigs(modes, libFolder, components)) {
 		await config.buildAllPlatforms();
 	}
 }
 
-function buildConfigs(modes, files, libFolder, components) {
+function buildConfigs(modes, libFolder, components) {
 	return modes.map(
 		mode =>
 			new StyleDictionary({
-				source: files.filter(file => !mode.exclude.test(file)),
+				source: mode.tokenSets,
 				preprocessors: [compositionPreprocessor.name, 'tokens-studio'],
 				expand: true,
 				platforms: {
@@ -81,10 +63,11 @@ function buildConfigs(modes, files, libFolder, components) {
 	);
 }
 
-function listComponents(files, libFolder) {
+function listComponents(modes, libFolder) {
 	return [
 		...new Set(
-			files
+			modes
+				.flatMap(mode => mode.tokenSets)
 				.filter(path => path.includes('/04_component/'))
 				.map(path => /(?<=component\/(?:atom|molecule)\/)[\w-]+/.exec(path)[0])
 		),
