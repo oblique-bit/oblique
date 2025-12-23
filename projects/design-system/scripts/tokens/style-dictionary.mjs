@@ -32,13 +32,13 @@ export async function generateCSS(files, libFolder) {
 		{exclude: /(?:prose|lg|sm|low|mobile|dark|compact|spacious|enabled)\.json/, selector: '.ob-motion-disabled'},
 	];
 
-	for (const config of buildConfigs(modes, files, libFolder)) {
+	const components = listComponents(files, libFolder);
+	for (const config of buildConfigs(modes, files, libFolder, components)) {
 		await config.buildAllPlatforms();
 	}
 }
 
-function buildConfigs(modes, files, libFolder) {
-	const components = listComponents(files, libFolder);
+function buildConfigs(modes, files, libFolder, components) {
 	return modes.map(
 		mode =>
 			new StyleDictionary({
