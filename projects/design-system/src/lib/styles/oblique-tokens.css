@@ -198,6 +198,8 @@
 	--ob-h-button-label_icon-spacing-gap: 0.375rem;
 	--ob-h-button-label_icon-spacing-padding-horizontal: 0.75rem;
 	--ob-h-button-label_icon-spacing-padding-vertical: 0.375rem;
+	--ob-h-button-motion-duration: 200ms;
+	--ob-h-button-motion-easing: cubic-bezier(0, 0, 0.2, 1);
 	--ob-h-button-remove-spacing-padding-horizontal: 0rem;
 	--ob-h-button-remove-spacing-padding-vertical: 0rem;
 	--ob-h-button-touch_target-min_size: 0px;
@@ -218,6 +220,8 @@
 	--ob-h-link-focus-text_decoration: none;
 	--ob-h-link-hover-text_decoration: underline;
 	--ob-h-link-icon-size: 1rem;
+	--ob-h-link-motion-duration: 100ms;
+	--ob-h-link-motion-easing: cubic-bezier(0, 0, 0.2, 1);
 	--ob-h-link-spacing-gap: 2px;
 	--ob-h-list-group-spacing-high-margin_top: 12px;
 	--ob-h-list-group-spacing-low-margin_top: 0px;
@@ -501,6 +505,15 @@
 	--ob-s-dynamic-text_decoration-link-emphasis_high: underline;
 	--ob-s-dynamic-text_decoration-link-emphasis_low: none;
 	--ob-s-fx-blur-sm: 12;
+	--ob-s-motion-duration-comfortable: 300ms;
+	--ob-s-motion-duration-instant: 0ms;
+	--ob-s-motion-duration-micro: 100ms;
+	--ob-s-motion-duration-relaxed: 500ms;
+	--ob-s-motion-duration-smooth: 200ms;
+	--ob-s-motion-easing-emphasis: cubic-bezier(0.4, 0, 0.2, 1);
+	--ob-s-motion-easing-entrance: cubic-bezier(0, 0, 0.2, 1);
+	--ob-s-motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
+	--ob-s-motion-easing-standard: cubic-bezier(0, 0, 0.2, 1);
 	--ob-s-outline_offset-lg: 4px;
 	--ob-s-outline_offset-md: 3px;
 	--ob-s-outline_offset-none: 0px;
@@ -2195,5 +2208,14 @@
 		--ob-s-dimension-dynamic-typography_context-sm: 16px;
 		--ob-s-dimension-dynamic-typography_context-xl: 28px;
 		--ob-s-dimension-dynamic-typography_context-xs: 12px;
+	}
+
+	.ob-motion-disabled {
+		--ob-h-button-motion-duration: 0ms;
+		--ob-h-link-motion-duration: 0ms;
+		--ob-s-motion-duration-comfortable: 0ms;
+		--ob-s-motion-duration-micro: 0ms;
+		--ob-s-motion-duration-relaxed: 0ms;
+		--ob-s-motion-duration-smooth: 0ms;
 	}
 }
