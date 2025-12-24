@@ -13,6 +13,7 @@ import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-nav
 import {provideHttpClient} from '@angular/common/http';
 import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 import {ObNotificationService} from '../notification/notification.service';
+import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
 
 describe('ObServiceNavigationService', () => {
 	let service: ObServiceNavigationService;
@@ -20,6 +21,7 @@ describe('ObServiceNavigationService', () => {
 	let applicationsService: ObServiceNavigationApplicationsService;
 	let redirectorService: ObServiceNavigationTimeoutRedirectorService;
 	let notification: ObNotificationService;
+	let languageSynchronizationService: ObServiceNavigationLanguageSynchronizationService;
 
 	const mockUrls = {
 		pollingInterval: 10,
@@ -41,6 +43,8 @@ describe('ObServiceNavigationService', () => {
 	const mockRedirectorLogout = jest.fn();
 	const fakeInfoBackend = {fakeInfoBackend: true};
 	const mockGetInfoBackend$ = jest.fn(() => of(fakeInfoBackend));
+	const mockLanguageSynchronizationInitialize = jest.fn();
+	const mockLanguageSynchronizationSetLanguage = jest.fn();
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -69,6 +73,13 @@ describe('ObServiceNavigationService', () => {
 					useValue: {get: mockGetInfoBackend$}
 				},
 				{
+					provide: ObServiceNavigationLanguageSynchronizationService,
+					useValue: {
+						initialize: mockLanguageSynchronizationInitialize,
+						setLanguage: mockLanguageSynchronizationSetLanguage
+					}
+				},
+				{
 					provide: TranslateService,
 					useValue: {
 						onLangChange: mockLangChange.asObservable(),
@@ -83,6 +94,7 @@ describe('ObServiceNavigationService', () => {
 
 	describe('fetch a single state', () => {
 		beforeEach(() => {
+			languageSynchronizationService = TestBed.inject(ObServiceNavigationLanguageSynchronizationService);
 			service = TestBed.inject(ObServiceNavigationService);
 			configService = TestBed.inject(ObServiceNavigationConfigApiService);
 			applicationsService = TestBed.inject(ObServiceNavigationApplicationsService);
@@ -331,6 +343,12 @@ describe('ObServiceNavigationService', () => {
 									service[method]().subscribe();
 								});
 
+								describe('languageSynchronizationService', () => {
+									it('should initialized languageSynchronizationService with the correct rootUrl', () => {
+										expect(mockLanguageSynchronizationInitialize).toHaveBeenNthCalledWith(1, calledPamsUrl);
+									});
+								});
+
 								it('should have been called once', () => {
 									expect(configService.fetchUrls).toHaveBeenCalledTimes(1);
 								});
@@ -552,6 +570,14 @@ describe('ObServiceNavigationService', () => {
 							it('should be gettable', () => {
 								const result = service.getLogoutTrigger$();
 								expect(result).toBe(mockGetLogoutTrigger$);
+							});
+						});
+
+						describe('setEportalLanguageSynchronization', () => {
+							it('should be settable', () => {
+								const expected = true;
+								service.setEportalLanguageSynchronization(expected);
+								expect(languageSynchronizationService.shouldSynchronize).toBe(expected);
 							});
 						});
 					});

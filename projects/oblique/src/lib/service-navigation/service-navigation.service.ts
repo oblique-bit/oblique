@@ -16,6 +16,7 @@ import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-ti
 import {ObNotificationService} from '../notification/notification.service';
 import {ObHttpApiInterceptorEvents} from '../http-api-interceptor/http-api-interceptor.events';
 import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
+import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
 
 @Injectable()
 export class ObServiceNavigationService {
@@ -50,6 +51,7 @@ export class ObServiceNavigationService {
 						favoriteApplicationsCount
 					)
 				),
+				tap(() => this.languageSynchronizationService.initialize(rootUrl)),
 				tap(() => (this.timeoutService.rootUrl = rootUrl)),
 				tap(data => (this.timeoutService.logoutUrl = data.logout.url)),
 				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
@@ -65,6 +67,7 @@ export class ObServiceNavigationService {
 	private readonly translateService = inject(TranslateService);
 	private readonly redirectorService = inject(ObServiceNavigationTimeoutRedirectorService);
 	private readonly timeoutService = inject(ObServiceNavigationTimeoutService);
+	private readonly languageSynchronizationService = inject(ObServiceNavigationLanguageSynchronizationService);
 	private readonly notification = inject(ObNotificationService);
 	private readonly httpApiInterceptorEvents = inject(ObHttpApiInterceptorEvents);
 
@@ -95,6 +98,10 @@ export class ObServiceNavigationService {
 
 	getLogoutTrigger$(): Observable<string> {
 		return this.redirectorService.logoutTrigger$;
+	}
+
+	setEportalLanguageSynchronization(synchronization: boolean): void {
+		this.languageSynchronizationService.shouldSynchronize = synchronization;
 	}
 
 	getLoginUrl$(): Observable<string> {
