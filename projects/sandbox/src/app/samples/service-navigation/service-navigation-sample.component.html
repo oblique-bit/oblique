@@ -20,6 +20,7 @@
 			[displayProfile]="displayProfile"
 			[displayAuthentication]="displayAuthentication"
 			[displayLanguages]="displayLanguages"
+			[eportalLanguageSynchronization]="eportalLanguageSynchronization"
 			[handleLogout]="handleLogout"
 			(loginState)="loginState = $event"
 			(logoutTriggered)="logoutURL = $event"
@@ -89,6 +90,10 @@
 		<fieldset class="toggles">
 			<legend>Custom widgets settings</legend>
 			<mat-slide-toggle [(ngModel)]="hasCustomWidgets">toggle custom widgets</mat-slide-toggle>
+		</fieldset>
+		<fieldset class="toggles">
+			<legend>ePortal language synchronization</legend>
+			<mat-slide-toggle [(ngModel)]="eportalLanguageSynchronization">toggle synchronization</mat-slide-toggle>
 		</fieldset>
 	</ng-container>
 </ob-column-layout>
