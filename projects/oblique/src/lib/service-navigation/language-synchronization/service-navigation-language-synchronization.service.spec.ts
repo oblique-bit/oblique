@@ -66,4 +66,65 @@ describe('ObServiceNavigationLanguageSynchronizationService', () => {
 			expect(fakeApiService.synchronizeLanguage).toHaveBeenNthCalledWith(1, rootUrl);
 		});
 	});
+
+	describe('setLanguage', () => {
+		it('should call change the language when shouldSynchronize is true, language is provided and different of the current one', () => {
+			const newLanguage = 'fr';
+			service.shouldSynchronize = true;
+			translateService.use('de');
+
+			service.setLanguage(newLanguage);
+
+			expect(translateService.use).toHaveBeenCalledWith(newLanguage);
+		});
+
+		it('should not call PAMS when language change', () => {
+			const newLanguage = 'fr';
+			service.initialize('test-root-url');
+			translateService.use('en');
+			service.shouldSynchronize = true;
+
+			service.setLanguage(newLanguage);
+
+			expect(fakeApiService.synchronizeLanguage).not.toHaveBeenCalled();
+		});
+
+		it('should not change the language when shouldSynchronize is false', () => {
+			(translateService.use as jest.Mock).mockClear();
+			service.shouldSynchronize = false;
+
+			service.setLanguage('fr');
+
+			expect(translateService.use).not.toHaveBeenCalled();
+		});
+
+		it('should not change the language when language is undefined', () => {
+			(translateService.use as jest.Mock).mockClear();
+			service.shouldSynchronize = true;
+
+			service.setLanguage(undefined);
+
+			expect(translateService.use).not.toHaveBeenCalled();
+		});
+
+		it('should not change the language when language is the same as current language', () => {
+			service.setLanguage('de');
+			(translateService.use as jest.Mock).mockClear();
+			service.shouldSynchronize = true;
+
+			service.setLanguage('de');
+
+			expect(translateService.use).not.toHaveBeenCalled();
+		});
+
+		it('should not change the language when language is not supported', () => {
+			service.setLanguage('de');
+			(translateService.use as jest.Mock).mockClear();
+			service.shouldSynchronize = true;
+
+			service.setLanguage('ru');
+
+			expect(translateService.use).not.toHaveBeenCalled();
+		});
+	});
 });

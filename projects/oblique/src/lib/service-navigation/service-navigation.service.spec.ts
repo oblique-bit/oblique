@@ -435,7 +435,7 @@ describe('ObServiceNavigationService', () => {
 								let urls: ObISectionLink[];
 								beforeEach(async () => {
 									const profileUrls = firstValueFrom(service.getProfileUrls$());
-									mockStateChange.next({loginState: 'S3+OK'} as ObIServiceNavigationState);
+									mockStateChange.next({loginState: 'S3+OK', profile: {}} as ObIServiceNavigationState);
 									urls = await profileUrls;
 								});
 
@@ -455,7 +455,7 @@ describe('ObServiceNavigationService', () => {
 							describe.each(['SA', 'S1'])('no enough rights with %s', rightLevel => {
 								it(`should return empty array`, async () => {
 									const profileUrls = firstValueFrom(service.getProfileUrls$());
-									mockStateChange.next({loginState: rightLevel} as ObIServiceNavigationState);
+									mockStateChange.next({loginState: rightLevel, profile: {}} as ObIServiceNavigationState);
 									const urls = await profileUrls;
 									expect(urls).toHaveLength(0);
 								});
@@ -583,6 +583,13 @@ describe('ObServiceNavigationService', () => {
 					});
 				}
 			);
+		});
+
+		it(`should set language synchronization`, () => {
+			const languageCode = 'en';
+			mockStateChange.next({profile: {language: languageCode}} as ObIServiceNavigationState);
+
+			expect(mockLanguageSynchronizationSetLanguage).toHaveBeenNthCalledWith(1, languageCode);
 		});
 	});
 

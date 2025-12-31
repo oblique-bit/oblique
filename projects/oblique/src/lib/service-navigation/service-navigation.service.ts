@@ -71,6 +71,10 @@ export class ObServiceNavigationService {
 	private readonly notification = inject(ObNotificationService);
 	private readonly httpApiInterceptorEvents = inject(ObHttpApiInterceptorEvents);
 
+	constructor() {
+		this.setLanguageOnStateChange();
+	}
+
 	setUpRootUrls(environment: ObEPamsEnvironment, rootUrl?: string): void {
 		// can't use !environment as ObEPamsEnvironment.PROD is an empty string
 		if (environment !== null && environment !== undefined) {
@@ -214,6 +218,10 @@ export class ObServiceNavigationService {
 
 	logout(): void {
 		this.redirectorService.logout();
+	}
+
+	private setLanguageOnStateChange(): void {
+		this.pollingService.state$.subscribe(state => this.languageSynchronizationService.setLanguage(state.profile.language));
 	}
 
 	private getApplications$(applicationListName: 'favoriteApps' | 'lastUsedApps'): Observable<ObIServiceNavigationApplication[]> {
