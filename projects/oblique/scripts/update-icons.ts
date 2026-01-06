@@ -22,6 +22,7 @@ class Icons extends StaticScript {
 
 	private static getSVGs(iconsPath: string): SVG[] {
 		return Files.readDirectory(iconsPath)
+			.filter(fileName => !fileName.startsWith('.'))
 			.sort((first, second) => first.toLowerCase().localeCompare(second.toLowerCase()))
 			.map(fileName => ({fileName, id: Icons.getId(fileName)}))
 			.map(({fileName, id}) => ({svg: Icons.readIconFile(fileName, iconsPath, id), id}));
