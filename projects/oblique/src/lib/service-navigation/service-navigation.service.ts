@@ -1,14 +1,10 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject, combineLatest, share, switchMap, throwError} from 'rxjs';
-import {catchError, combineLatestWith, distinctUntilChanged, map, startWith, tap} from 'rxjs/operators';
+import {catchError, combineLatestWith, distinctUntilChanged, map, shareReplay, startWith, tap} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
-import {
-	ObIServiceNavigationApplicationParsedInfo,
-	ObIServiceNavigationBackendInfo,
-	ObIServiceNavigationState
-} from './api/service-navigation.api.model';
+import {ObIServiceNavigationApplicationParsedInfo, ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
 import {ObEPamsEnvironment, ObILanguage, ObISectionLink, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
@@ -71,9 +67,11 @@ export class ObServiceNavigationService {
 	private readonly notification = inject(ObNotificationService);
 	private readonly httpApiInterceptorEvents = inject(ObHttpApiInterceptorEvents);
 
-	constructor() {
-		this.setLanguageOnStateChange();
-	}
+	private readonly state$ = this.pollingService.state$.pipe(
+		tap(state => (this.timeoutService.loginState = state.loginState)),
+		tap(state => this.languageSynchronizationService.setLanguage(state.profile.language)),
+		shareReplay({bufferSize: 1, refCount: true})
+	);
 
 	setUpRootUrls(environment: ObEPamsEnvironment, rootUrl?: string): void {
 		// can't use !environment as ObEPamsEnvironment.PROD is an empty string
@@ -123,7 +121,7 @@ export class ObServiceNavigationService {
 
 	getProfileUrls$(): Observable<ObISectionLink[]> {
 		return this.config$.pipe(
-			combineLatestWith(this.pollingService.state$),
+			combineLatestWith(this.state$),
 			map(([config, state]): ObISectionLink[] => {
 				if (state.loginState === 'SA' || state.loginState === 'S1') {
 					return [];
@@ -162,21 +160,21 @@ export class ObServiceNavigationService {
 	}
 
 	getLoginState$(): Observable<ObLoginState> {
-		return this.getState$().pipe(
+		return this.state$.pipe(
 			map(state => state.loginState),
 			distinctUntilChanged((previousState, newState) => previousState === newState)
 		);
 	}
 
 	getUserName$(): Observable<string> {
-		return this.getState$().pipe(
-			map(state => state.profile?.fullname),
+		return this.state$.pipe(
+			map(state => state.profile.fullname),
 			distinctUntilChanged((previousState, newState) => previousState === newState)
 		);
 	}
 
 	getMessageCount$(): Observable<number> {
-		return this.getState$().pipe(
+		return this.state$.pipe(
 			map(state => state.messageCount),
 			distinctUntilChanged((previousState, newState) => previousState === newState)
 		);
@@ -220,14 +218,10 @@ export class ObServiceNavigationService {
 		this.redirectorService.logout();
 	}
 
-	private setLanguageOnStateChange(): void {
-		this.pollingService.state$.subscribe(state => this.languageSynchronizationService.setLanguage(state.profile.language));
-	}
-
 	private getApplications$(applicationListName: 'favoriteApps' | 'lastUsedApps'): Observable<ObIServiceNavigationApplication[]> {
 		return this.rootUrl$.pipe(
 			switchMap(rootUrl =>
-				this.getState$().pipe(
+				this.state$.pipe(
 					map(state => state[applicationListName]),
 					this.applicationsService.getApplications(rootUrl),
 					this.combineWithLanguage<ObIServiceNavigationApplicationParsedInfo[]>(),
@@ -252,14 +246,6 @@ export class ObServiceNavigationService {
 					)
 				)
 			);
-	}
-
-	private getState$(): Observable<ObIServiceNavigationState> {
-		return this.config$.pipe(
-			combineLatestWith(this.pollingService.state$),
-			map(values => values[1]),
-			tap(values => (this.timeoutService.loginState = values.loginState))
-		);
 	}
 
 	private addAppId(url: string, pamsAppId: string): string {
