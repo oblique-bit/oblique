@@ -43,8 +43,8 @@ describe(IconsExampleIconsGalleryPreviewComponent.name, () => {
 			input = fixture.debugElement.query(By.css('input'));
 		});
 
-		test(`that there are 277 ${MatIcon.name}s`, () => {
-			expect(fixture.debugElement.query(By.css('div.gallery')).queryAll(By.directive(MatIcon)).length).toBe(277);
+		test(`that there are 284 ${MatIcon.name}s`, () => {
+			expect(fixture.debugElement.query(By.css('div.gallery')).queryAll(By.directive(MatIcon)).length).toBe(284);
 		});
 
 		test(`that there is a byCategoryFilter dropdown`, () => {
@@ -55,11 +55,11 @@ describe(IconsExampleIconsGalleryPreviewComponent.name, () => {
 			expect(input).toBeTruthy();
 		});
 
-		test(`that there is 19 ${MatIcon.name}s when the iconsFilter input has the value "ri"`, () => {
+		test(`that there is 104 ${MatIcon.name}s when the iconsFilter input has the value "ri"`, () => {
 			input.nativeElement.value = 'ri';
 			input.nativeElement.dispatchEvent(new Event('input'));
 			fixture.detectChanges();
-			expect(fixture.debugElement.query(By.css('div.gallery')).queryAll(By.directive(MatIcon)).length).toBe(99);
+			expect(fixture.debugElement.query(By.css('div.gallery')).queryAll(By.directive(MatIcon)).length).toBe(104);
 		});
 
 		test(`that there is 10 ${MatIcon.name}s when the byCategoryFilter dropdown has the value "ACCESSIBILITY"`, () => {
