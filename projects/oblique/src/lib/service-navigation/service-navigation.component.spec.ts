@@ -65,6 +65,7 @@ describe('ObServiceNavigationComponent', () => {
 		setFavoriteApplicationsCount: jest.fn(),
 		logout: jest.fn(),
 		getLogoutTrigger$: jest.fn(),
+		setEportalLanguageSynchronization: jest.fn(),
 		setHandleLogout: jest.fn()
 	};
 
@@ -198,6 +199,14 @@ describe('ObServiceNavigationComponent', () => {
 		describe('infoContact', () => {
 			it('should be initialized to undefined', () => {
 				expect(component.infoContact).toBeUndefined();
+			});
+		});
+
+		describe('eportalLanguageSynchronization setter', () => {
+			it('should set the value correctly ', () => {
+				const expectedResult = true;
+				component.eportalLanguageSynchronization = expectedResult;
+				expect(mockServiceNavigationService.setEportalLanguageSynchronization).toBeCalledWith(expectedResult);
 			});
 		});
 

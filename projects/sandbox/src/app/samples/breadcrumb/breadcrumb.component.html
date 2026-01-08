@@ -19,6 +19,31 @@
 <p><ob-breadcrumb maxWidth="8ch" /></p>
 
 <p>
+	<em>This doesn't work in Firefox:</em>
+	Here's a breadcrumb component with a max-width configuration of 2ch:<br />
+	<code> &lt;ob-breadcrumb maxWidth="2ch">&lt;/ob-breadcrumb> </code>
+</p>
+<ob-breadcrumb maxWidth="2ch" />
+
+<p>
+	<em>This works in Firefox:</em>
+	Here's a breadcrumb component with a max-width configuration of 3ch:<br />
+	<code> &lt;ob-breadcrumb maxWidth="3ch">&lt;/ob-breadcrumb> </code>
+</p>
+<ob-breadcrumb maxWidth="3ch" />
+<p>
+	The max width property can be freely set by consumers of the component. It should be noted that very small width values expressed in
+	character units such as 1ch or 2ch do not reliably produce overflow in Firefox. Firefox calculates the minimal text width differently from
+	Chromium in these boundary cases and will not generate visible overflow. Consumers are therefore advised not to use max width values below
+	3ch if consistent ellipsis behavior is required in Firefox. This is a technical characteristic of the Firefox layout engine.
+</p>
+<p>
+	Here's a breadcrumb component with a max-width configuration of 2rem:<br />
+	<code> &lt;ob-breadcrumb maxWidth="2rem">&lt;/ob-breadcrumb> </code>
+</p>
+<ob-breadcrumb maxWidth="2rem" />
+
+<p>
 	Here's a breadcrumb component with url beautifing disabled (only applies to routes with no label and parameter values):<br />
 	<code> &lt;ob-breadcrumb [beautifyUrls]="false">&lt;/ob-breadcrumb> </code>
 </p>

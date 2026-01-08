@@ -195,6 +195,14 @@ export class MasterLayoutSampleComponent {
 		this.masterLayout.header.serviceNavigationConfiguration.displayProfile = value;
 	}
 
+	get hasEportalLanguageSynchronization(): boolean {
+		return this.masterLayout.header.serviceNavigationConfiguration.eportalLanguageSynchronization;
+	}
+
+	set hasEportalLanguageSynchronization(value: boolean) {
+		this.masterLayout.header.serviceNavigationConfiguration.eportalLanguageSynchronization = value;
+	}
+
 	get hasInfoLinks(): boolean {
 		return this.masterLayout.header.serviceNavigationConfiguration.infoLinks?.length > 0;
 	}

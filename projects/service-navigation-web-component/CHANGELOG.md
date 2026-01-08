@@ -1,3 +1,11 @@
+# [14.2.0](https://github.com/oblique-bit/oblique/compare/14.1.3...14.2.0) (2026-01-08)
+
+## Features
+
+- **service-navigation:** use language code in state endpoint ([ebbcac0a](https://github.com/oblique-bit/oblique/commit/ebbcac0ad3768061edcc6ca256c7de8534880efa))
+- **service-navigation:** add language synchronization with PAMS ([91665799](https://github.com/oblique-bit/oblique/commit/91665799e5f5ab7157a71d14e90aada1f17dcf26))
+- **web-component:** bind eportalLanguageSynchronization input with Oblique ([4eb77381](https://github.com/oblique-bit/oblique/commit/4eb773811e47be1bdbf42a648750f50db3f11119))
+
 # [14.1.1](https://github.com/oblique-bit/oblique/compare/14.1.0...14.1.1) (2025-11-06)
 
 ## Bug Fixes

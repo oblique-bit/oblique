@@ -6,13 +6,14 @@ import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObBreadcrumbComponent} from '../breadcrumb/breadcrumb.component';
 import {ObBreadcrumbConfig, ObTBreadcrumbConfig, defaultBreadcrumbConfig} from './breadcrumb.model';
+import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
 
 export {ObBreadcrumbConfig, ObTBreadcrumbConfig} from './breadcrumb.model';
 export {ObBreadcrumbComponent} from './breadcrumb.component';
 
 @NgModule({
 	declarations: [ObBreadcrumbComponent],
-	imports: [CommonModule, MatIconModule, MatTooltipModule, RouterModule, TranslateModule],
+	imports: [CommonModule, MatIconModule, MatTooltipModule, RouterModule, TranslateModule, ObEllipsisTooltipDirective],
 	exports: [ObBreadcrumbComponent]
 })
 export class ObBreadcrumbModule {

@@ -124,4 +124,5 @@ export interface ObIServiceNavigationApplicationIdentifier {
 export interface ObIProfileState {
 	avatarID: number;
 	fullname: string;
+	language?: string;
 }

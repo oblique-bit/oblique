@@ -13,6 +13,7 @@ import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-nav
 import {provideHttpClient} from '@angular/common/http';
 import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 import {ObNotificationService} from '../notification/notification.service';
+import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
 
 describe('ObServiceNavigationService', () => {
 	let service: ObServiceNavigationService;
@@ -20,6 +21,7 @@ describe('ObServiceNavigationService', () => {
 	let applicationsService: ObServiceNavigationApplicationsService;
 	let redirectorService: ObServiceNavigationTimeoutRedirectorService;
 	let notification: ObNotificationService;
+	let languageSynchronizationService: ObServiceNavigationLanguageSynchronizationService;
 
 	const mockUrls = {
 		pollingInterval: 10,
@@ -41,6 +43,8 @@ describe('ObServiceNavigationService', () => {
 	const mockRedirectorLogout = jest.fn();
 	const fakeInfoBackend = {fakeInfoBackend: true};
 	const mockGetInfoBackend$ = jest.fn(() => of(fakeInfoBackend));
+	const mockLanguageSynchronizationInitialize = jest.fn();
+	const mockLanguageSynchronizationSetLanguage = jest.fn();
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -69,6 +73,13 @@ describe('ObServiceNavigationService', () => {
 					useValue: {get: mockGetInfoBackend$}
 				},
 				{
+					provide: ObServiceNavigationLanguageSynchronizationService,
+					useValue: {
+						initialize: mockLanguageSynchronizationInitialize,
+						setLanguage: mockLanguageSynchronizationSetLanguage
+					}
+				},
+				{
 					provide: TranslateService,
 					useValue: {
 						onLangChange: mockLangChange.asObservable(),
@@ -83,6 +94,7 @@ describe('ObServiceNavigationService', () => {
 
 	describe('fetch a single state', () => {
 		beforeEach(() => {
+			languageSynchronizationService = TestBed.inject(ObServiceNavigationLanguageSynchronizationService);
 			service = TestBed.inject(ObServiceNavigationService);
 			configService = TestBed.inject(ObServiceNavigationConfigApiService);
 			applicationsService = TestBed.inject(ObServiceNavigationApplicationsService);
@@ -311,17 +323,7 @@ describe('ObServiceNavigationService', () => {
 							service.setReturnUrl('http://localhost');
 						});
 
-						describe.each([
-							'getLoginUrl$',
-							'getLoginState$',
-							'getUserName$',
-							'getProfileUrls$',
-							'getInboxMailUrl$',
-							'getMessageCount$',
-							'getApplicationsUrl$',
-							'getLastUsedApplications$',
-							'getFavoriteApplications$'
-						])('%s', method => {
+						describe.each(['getLoginUrl$', 'getProfileUrls$', 'getInboxMailUrl$'])('%s', method => {
 							it('should return an observable', () => {
 								expect(service[method]() instanceof Observable).toBe(true);
 							});
@@ -329,6 +331,12 @@ describe('ObServiceNavigationService', () => {
 							describe('ObServiceNavigationConfigService.fetchUrls', () => {
 								beforeEach(() => {
 									service[method]().subscribe();
+								});
+
+								describe('languageSynchronizationService', () => {
+									it('should initialized languageSynchronizationService with the correct rootUrl', () => {
+										expect(mockLanguageSynchronizationInitialize).toHaveBeenNthCalledWith(1, calledPamsUrl);
+									});
 								});
 
 								it('should have been called once', () => {
@@ -417,7 +425,7 @@ describe('ObServiceNavigationService', () => {
 								let urls: ObISectionLink[];
 								beforeEach(async () => {
 									const profileUrls = firstValueFrom(service.getProfileUrls$());
-									mockStateChange.next({loginState: 'S3+OK'} as ObIServiceNavigationState);
+									mockStateChange.next({loginState: 'S3+OK', profile: {}} as ObIServiceNavigationState);
 									urls = await profileUrls;
 								});
 
@@ -437,7 +445,7 @@ describe('ObServiceNavigationService', () => {
 							describe.each(['SA', 'S1'])('no enough rights with %s', rightLevel => {
 								it(`should return empty array`, async () => {
 									const profileUrls = firstValueFrom(service.getProfileUrls$());
-									mockStateChange.next({loginState: rightLevel} as ObIServiceNavigationState);
+									mockStateChange.next({loginState: rightLevel, profile: {}} as ObIServiceNavigationState);
 									const urls = await profileUrls;
 									expect(urls).toHaveLength(0);
 								});
@@ -448,7 +456,7 @@ describe('ObServiceNavigationService', () => {
 							describe.each(['S1', 'S2OK', 'S2+OK', 'S3OK', 'S3+OK'])('with "%s"', loginState => {
 								it(`should emit "${loginState}"`, async () => {
 									const promise = firstValueFrom(service.getLoginState$());
-									mockStateChange.next({loginState} as ObIServiceNavigationState);
+									mockStateChange.next({loginState, profile: {}} as ObIServiceNavigationState);
 									await expect(promise).resolves.toEqual(loginState);
 								});
 							});
@@ -465,7 +473,7 @@ describe('ObServiceNavigationService', () => {
 						describe('getMessageCount$', () => {
 							it(`should emit "42"`, async () => {
 								const promise = firstValueFrom(service.getMessageCount$());
-								mockStateChange.next({messageCount: 42} as ObIServiceNavigationState);
+								mockStateChange.next({messageCount: 42, profile: {}} as ObIServiceNavigationState);
 								await expect(promise).resolves.toEqual(42);
 							});
 						});
@@ -482,7 +490,7 @@ describe('ObServiceNavigationService', () => {
 								beforeEach(() => {
 									promise = firstValueFrom(service[method]());
 									mockLangChange.next({lang: language});
-									mockStateChange.next({lastUsedApps: [{appID: 42}]} as ObIServiceNavigationState);
+									mockStateChange.next({lastUsedApps: [{appID: 42}], profile: {}} as ObIServiceNavigationState);
 								});
 
 								it('should call getApplications once', () => {
@@ -554,9 +562,25 @@ describe('ObServiceNavigationService', () => {
 								expect(result).toBe(mockGetLogoutTrigger$);
 							});
 						});
+
+						describe('setEportalLanguageSynchronization', () => {
+							it('should be settable', () => {
+								const expected = true;
+								service.setEportalLanguageSynchronization(expected);
+								expect(languageSynchronizationService.shouldSynchronize).toBe(expected);
+							});
+						});
 					});
 				}
 			);
+		});
+
+		it(`should set language synchronization`, () => {
+			const languageCode = 'en';
+			service.getLoginState$().subscribe(); // just to subscribe the state
+			mockStateChange.next({profile: {language: languageCode}} as ObIServiceNavigationState);
+
+			expect(mockLanguageSynchronizationSetLanguage).toHaveBeenNthCalledWith(1, languageCode);
 		});
 	});
 
@@ -587,7 +611,7 @@ describe('ObServiceNavigationService', () => {
 				service.getLoginState$().subscribe(state => {
 					emittedStates.push(state);
 				});
-				inputs.forEach(input => mockStateChangeDuplicate.next({loginState: input}));
+				inputs.forEach(input => mockStateChangeDuplicate.next({loginState: input, profile: {}}));
 
 				expect(emittedStates).toHaveLength(emitTimes);
 			});

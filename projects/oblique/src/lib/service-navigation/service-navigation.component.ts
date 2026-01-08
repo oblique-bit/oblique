@@ -8,6 +8,7 @@ import {ObServiceNavigationTimeoutCookieService} from './timeout/service-navigat
 import {ObServiceNavigationTimeoutCookieActivityService} from './timeout/service-navigation-timeout-cookie-activity.service';
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navigation-timeout-return-url.service';
+import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
 
 @Component({
 	selector: 'ob-service-navigation',
@@ -18,6 +19,7 @@ import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navi
 	providers: [
 		ObServiceNavigationService,
 		ObServiceNavigationApplicationsService,
+		ObServiceNavigationLanguageSynchronizationService,
 		ObServiceNavigationTimeoutService,
 		ObServiceNavigationTimeoutCookieService,
 		ObServiceNavigationTimeoutRedirectorService,
@@ -55,6 +57,10 @@ export class ObServiceNavigationComponent implements OnInit {
 	@Input()
 	set handleLogout(newHandleLogout: boolean) {
 		this.headerControlsService.setHandleLogout(newHandleLogout);
+	}
+	@Input()
+	set eportalLanguageSynchronization(synchronization: boolean) {
+		this.headerControlsService.setEportalLanguageSynchronization(synchronization);
 	}
 	@Output()
 	readonly loginState: Observable<ObLoginState> = this.headerControlsService.getLoginState$();
