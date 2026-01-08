@@ -51,10 +51,6 @@ export class ObBreadcrumbComponent implements OnInit {
 		);
 	}
 
-	showTooltip(element: HTMLElement): boolean {
-		return element.offsetWidth < element.scrollWidth;
-	}
-
 	getCrumbs(route: ActivatedRoute, crumbs: ObIBreadcrumb[] = [], currentUrl = ''): Observable<ObIBreadcrumb[]> {
 		if (!route) {
 			return of(crumbs);

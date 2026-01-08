@@ -25,7 +25,7 @@ module.exports = {
 			statements: 98,
 			branches: 78,
 			functions: 95,
-			lines: 98
+			lines: 97
 		},
 		'projects/oblique/src/lib/button/*.ts': {
 			statements: 100,

@@ -11,6 +11,11 @@ import {ObMockIconModule} from '../icon/_mocks/mock-icon.module';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {MatTooltipHarness} from '@angular/material/tooltip/testing';
+import {HarnessLoader} from '@angular/cdk/testing';
+import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
+import {WINDOW} from '../utilities';
 
 describe('ObBreadcrumbComponent', () => {
 	let component: ObBreadcrumbComponent;
@@ -97,7 +102,7 @@ describe('ObBreadcrumbComponent', () => {
 			component.ngOnInit();
 
 			const el = fixture.debugElement.queryAll(By.css('li'))[3];
-			expect(el.nativeElement.textContent).toBe('Double - Path');
+			expect(el.nativeElement.textContent).toBe(' Double - Path ');
 		});
 
 		it.each([
@@ -241,11 +246,19 @@ describe('ObBreadcrumbComponent', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [ObBreadcrumbComponent],
-				imports: [ObMockTranslatePipe, RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
+				imports: [
+					ObMockTranslatePipe,
+					RouterTestingModule,
+					ObMockIconModule,
+					MatIconTestingModule,
+					MatTooltipModule,
+					ObEllipsisTooltipDirective
+				],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{provide: ObTBreadcrumbConfig, useValue: mockBreadcrumbConfig},
-					{provide: ActivatedRoute, useValue: dynamicRouteMock}
+					{provide: ActivatedRoute, useValue: dynamicRouteMock},
+					{provide: WINDOW, useValue: window}
 				],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
 			}).compileComponents();
@@ -300,13 +313,21 @@ describe('ObBreadcrumbComponent', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [ObBreadcrumbComponent],
-				imports: [ObMockTranslatePipe, RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
+				imports: [
+					ObMockTranslatePipe,
+					RouterTestingModule,
+					ObMockIconModule,
+					MatIconTestingModule,
+					MatTooltipModule,
+					ObEllipsisTooltipDirective
+				],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{
 						provide: ObTBreadcrumbConfig,
 						useValue: {parameterSeparator: '/'}
 					},
+					{provide: WINDOW, useValue: window},
 					{provide: ActivatedRoute, useValue: dynamicRouteMock}
 				],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -338,6 +359,87 @@ describe('ObBreadcrumbComponent', () => {
 
 			const el = fixture.debugElement.queryAll(By.css('a'))[2];
 			expect(el.nativeElement.innerHTML.trim()).toBe('some-path');
+		});
+
+		describe('ellipsis tooltip usage', () => {
+			let loader: HarnessLoader;
+
+			const getLabelElements = (): HTMLElement[] => {
+				return fixture.debugElement.queryAll(By.css('.ob-breadcrumb-label')).map(de => de.nativeElement as HTMLElement);
+			};
+
+			beforeEach(() => {
+				fixture.detectChanges();
+				loader = TestbedHarnessEnvironment.loader(fixture);
+			});
+
+			it('should attach one tooltip to each breadcrumb label', async () => {
+				const labels = getLabelElements();
+				const tooltips = await loader.getAllHarnesses(MatTooltipHarness);
+
+				expect(tooltips.length).toBe(labels.length);
+			});
+
+			describe.each([
+				['ellipsed', 40, 100, false],
+				['not ellipsed', 120, 100, true]
+			])('when the text is %s', (stateLabel: string, width: number, scroll: number, expectedDisabled: boolean) => {
+				test(`should set disabled=${expectedDisabled} for all tooltips when text is ${stateLabel}`, async () => {
+					const labels = getLabelElements();
+
+					for (const el of labels) {
+						Object.defineProperty(el, 'offsetWidth', {value: width, configurable: true});
+						Object.defineProperty(el, 'scrollWidth', {value: scroll, configurable: true});
+					}
+
+					window.dispatchEvent(new Event('resize'));
+					fixture.detectChanges();
+					await fixture.whenRenderingDone();
+
+					const tooltips = await loader.getAllHarnesses(MatTooltipHarness);
+					const disabledStates = await Promise.all(tooltips.map(tooltip => tooltip.isDisabled()));
+
+					expect(disabledStates.every(state => state === expectedDisabled)).toBe(true);
+				});
+			});
+
+			it('should toggle tooltip disabled state for each tooltip when text changes from ellipsed to not ellipsed', async () => {
+				const labels = getLabelElements();
+
+				// start with ellipsed texts
+				for (const el of labels) {
+					Object.defineProperty(el, 'offsetWidth', {value: 40, configurable: true});
+					Object.defineProperty(el, 'scrollWidth', {value: 120, configurable: true});
+				}
+
+				window.dispatchEvent(new Event('resize'));
+				fixture.detectChanges();
+				await fixture.whenRenderingDone();
+
+				const tooltips = await loader.getAllHarnesses(MatTooltipHarness);
+				const disabledStates = await Promise.all(tooltips.map(tooltip => tooltip.isDisabled()));
+
+				// all enabled when ellipsed
+				expect(disabledStates.every(state => state === false)).toBe(true);
+			});
+
+			it('should keep tooltips disabled when text is not ellipsed', async () => {
+				const labels = getLabelElements();
+
+				for (const el of labels) {
+					Object.defineProperty(el, 'offsetWidth', {value: 120, configurable: true});
+					Object.defineProperty(el, 'scrollWidth', {value: 100, configurable: true});
+				}
+
+				window.dispatchEvent(new Event('resize'));
+				fixture.detectChanges();
+				await fixture.whenRenderingDone();
+
+				const tooltips = await loader.getAllHarnesses(MatTooltipHarness);
+				const disabledStates = await Promise.all(tooltips.map(tooltip => tooltip.isDisabled()));
+
+				expect(disabledStates.every(state => state === true)).toBe(true);
+			});
 		});
 	});
 });
