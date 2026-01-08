@@ -1,3 +1,11 @@
+# [14.2.0](https://github.com/oblique-bit/oblique/compare/14.1.3...14.2.0) (2026-01-08)
+
+## Features
+
+- **breadcrumb:** add examples for special-cases of firefox ([3af100a2](https://github.com/oblique-bit/oblique/commit/3af100a2da98292fa00ca01633d05556ee425645))
+- **master-layout:** update with new PAMS language synchronization ([e3cca963](https://github.com/oblique-bit/oblique/commit/e3cca9636b7842d1d804dec2f4208ce3d0eb4605))
+- **service-navigation:** update with new PAMS language synchronization ([51533a33](https://github.com/oblique-bit/oblique/commit/51533a3338070bcab9871ee2f7162b542d99f1eb))
+
 # [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
 
 ## Bug Fixes

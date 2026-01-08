@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sandbox-ssr",
-  "version": "14.1.3",
+  "version": "14.2.0",
   "scripts": {
     "start": "ng serve",
     "start-ssr": "node ../../dist/sandbox-ssr/server/server.mjs",

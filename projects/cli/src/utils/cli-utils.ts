@@ -3,7 +3,7 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '14.1.3';
+export const version = '14.2.0';
 /* End of generated content */
 
 export const currentVersions = {

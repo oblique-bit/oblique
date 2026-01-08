@@ -1,3 +1,17 @@
+# [14.2.0](https://github.com/oblique-bit/oblique/compare/14.1.3...14.2.0) (2026-01-08)
+
+## Bug Fixes
+
+- **breadcrumb:** make the last item ellipsable ([7303c3f2](https://github.com/oblique-bit/oblique/commit/7303c3f2329a3056ca932899705038cbeaa7d2f9))
+- **material:** remove vertical line in form fields in error state ([cc61f3e8](https://github.com/oblique-bit/oblique/commit/cc61f3e813ba8a0ed1da9597018569b29e9d7f29))
+- **popover:** ensure placement doesn't change after popover has been created ([9850e9a0](https://github.com/oblique-bit/oblique/commit/9850e9a017f08892d63d0dd2ddb5221e05bfc011))
+
+## Features
+
+- **master-layout:** update with new PAMS language synchronization ([1589004f](https://github.com/oblique-bit/oblique/commit/1589004fe28233c65b61264b87188163639256eb))
+- **service-navigation:** use language code in state endpoint ([ebbcac0a](https://github.com/oblique-bit/oblique/commit/ebbcac0ad3768061edcc6ca256c7de8534880efa))
+- **service-navigation:** add language synchronization with PAMS ([91665799](https://github.com/oblique-bit/oblique/commit/91665799e5f5ab7157a71d14e90aada1f17dcf26))
+
 # [14.1.3](https://github.com/oblique-bit/oblique/compare/14.1.2...14.1.3) (2025-12-11)
 
 ## Bug Fixes
