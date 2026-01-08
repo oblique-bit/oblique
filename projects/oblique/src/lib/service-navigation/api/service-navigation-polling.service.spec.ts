@@ -117,7 +117,7 @@ describe('ObServiceNavigationPollingService', () => {
 			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
 			try {
 				tick(1000);
-			} catch (err) {
+			} catch {
 				/* empty */
 			}
 			expect(notification.error).toHaveBeenCalledWith({
