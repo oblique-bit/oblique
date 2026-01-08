@@ -34,6 +34,7 @@ export interface ObIServiceNavigationConfig {
 	displayLanguages?: boolean;
 	displayMessage?: boolean;
 	displayProfile?: boolean;
+	eportalLanguageSynchronization?: boolean;
 	handleLogout?: boolean;
 }
 
@@ -58,6 +59,7 @@ export interface ObIServiceNavigationConfigWithNotice {
 	displayLanguages?: boolean;
 	displayMessage?: boolean;
 	displayProfile?: boolean;
+	eportalLanguageSynchronization?: boolean;
 	handleLogout?: boolean;
 }
 

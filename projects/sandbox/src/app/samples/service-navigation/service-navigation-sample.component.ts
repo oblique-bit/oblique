@@ -28,6 +28,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	displayProfile = true;
 	displayAuthentication = true;
 	displayLanguages = true;
+	eportalLanguageSynchronization = false;
 	handleLogout = true;
 	loginState: ObLoginState;
 	logoutURL: string;

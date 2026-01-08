@@ -68,6 +68,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	readonly displayApplications = input(true, {transform: booleanAttribute});
 	readonly displayProfile = input(true, {transform: booleanAttribute});
 	readonly displayAuthentication = input(true, {transform: booleanAttribute});
+	readonly eportalLanguageSynchronization = input(false, {transform: booleanAttribute});
 	readonly handleLogout = input<boolean, unknown>(undefined, {transform: booleanAttribute});
 	readonly pamsAppId = input<string>(undefined);
 	readonly rootUrl = input<string>(undefined);
