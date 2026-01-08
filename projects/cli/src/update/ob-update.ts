@@ -122,7 +122,7 @@ export function outputOutdatedDependencies(): void {
 	console.info(chalk.blue('[Info]: Following dependencies should also be manually updated.\n'));
 	try {
 		execute({name: 'npmOutdated'});
-	} catch (error) {
+	} catch {
 		// npm outdated always fails, but no error management is needed since the execute function will already print its output.
 		// the try..catch block only serves to avoid the error being thrown
 	}
