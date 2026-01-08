@@ -163,6 +163,9 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private setPopperOptionsAndUpdate(): void {
 		void this.instance?.setOptions({...this.popperOptions, placement: this.placement});
 		void this.instance?.update();
+		if (this.popover) {
+			this.renderer.removeClass(this.popover, 'ob-popover-is-hidden');
+		}
 	}
 
 	private buildPopover(): HTMLDivElement {
@@ -174,6 +177,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		});
 		this.renderer.appendChild(popover, contentWrapper);
 		this.renderer.addClass(popover, 'ob-popover-content');
+		this.renderer.addClass(popover, 'ob-popover-is-hidden');
 		this.renderer.setAttribute(popover, 'role', 'tooltip');
 		this.renderer.setAttribute(popover, 'id', this.idContent);
 
