@@ -1,5 +1,4 @@
 import {createApplication} from '@angular/platform-browser';
-import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideHttpClient} from '@angular/common/http';
 import {createCustomElement} from '@angular/elements';
 import {WINDOW, windowProvider} from '../../oblique/src/lib/utilities';
@@ -11,7 +10,6 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 createApplication({
 	providers: [
 		provideHttpClient(),
-		provideAnimations(),
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
 		provideObliqueTranslations(),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},

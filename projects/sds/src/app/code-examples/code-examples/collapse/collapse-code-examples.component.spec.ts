@@ -5,7 +5,6 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {CollapseCodeExamplesComponent} from './collapse-code-examples.component';
 import {ObCollapseComponent, ObGlobalEventsService, WINDOW} from '@oblique/oblique';
 import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe(CollapseCodeExamplesComponent.name, () => {
 	let component: CollapseCodeExamplesComponent;
@@ -13,7 +12,7 @@ describe(CollapseCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [CollapseCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent, NoopAnimationsModule],
+			imports: [CollapseCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 			providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 		}).compileComponents();
 

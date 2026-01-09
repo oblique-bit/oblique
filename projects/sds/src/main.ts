@@ -1,7 +1,6 @@
 import {AppComponent} from './app/app.component';
 import {ObIconService, ObStepperIntlService, WINDOW, provideObliqueTranslations} from '@oblique/oblique';
 import {bootstrapApplication} from '@angular/platform-browser';
-import {provideAnimations} from '@angular/platform-browser/animations';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
@@ -52,7 +51,6 @@ bootstrapApplication(AppComponent, {
 			multi: true,
 		},
 		provideRouter(appRoutes, withPreloading(PreloadAllModules)),
-		provideAnimations(),
 		provideHttpClient(withInterceptorsFromDi()),
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
 		provideObliqueTranslations(),
