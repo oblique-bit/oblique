@@ -8,18 +8,18 @@ export const version = '14.2.1';
 
 export const currentVersions = {
 	'@oblique/oblique': version,
-	'@angular/cli': '^20.2',
-	'@angular/material': '20',
+	'@angular/cli': '^21',
+	'@angular/material': '21',
 	'@oblique/toolchain': version,
-	'@angular/core': '20',
-	'@angular/cdk': '20',
-	'@angular/animations': '20',
-	'@angular/platform-browser-dynamic': '20',
-	'@types/jest': '29',
-	'@angular-builders/jest': '20',
-	'@schematics/angular': '20',
+	'@angular/core': '21',
+	'@angular/cdk': '21',
+	'@angular/animations': '21',
+	'@angular/platform-browser-dynamic': '21',
+	'@types/jest': '30',
+	'@angular-builders/jest': '21',
+	'@schematics/angular': '21',
 	'angular-oauth2-oidc': '20',
-	jest: '29',
+	jest: '30',
 } as const;
 
 export const optionDescriptions = {

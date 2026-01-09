@@ -12,8 +12,8 @@
     "release": "ts-node scripts/release.ts"
   },
   "dependencies": {
-    "@angular/platform-server": "^20.3.9",
-    "@angular/ssr": "^20.3.8",
+    "@angular/platform-server": "^21.1.0",
+    "@angular/ssr": "^21.1.0",
     "express": "^4.21.2"
   },
   "devDependencies": {

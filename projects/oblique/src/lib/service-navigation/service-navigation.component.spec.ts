@@ -206,7 +206,7 @@ describe('ObServiceNavigationComponent', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = true;
 				component.eportalLanguageSynchronization = expectedResult;
-				expect(mockServiceNavigationService.setEportalLanguageSynchronization).toBeCalledWith(expectedResult);
+				expect(mockServiceNavigationService.setEportalLanguageSynchronization).toHaveBeenCalledWith(expectedResult);
 			});
 		});
 
@@ -214,7 +214,7 @@ describe('ObServiceNavigationComponent', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = false;
 				component.handleLogout = expectedResult;
-				expect(mockServiceNavigationService.setHandleLogout).toBeCalledWith(expectedResult);
+				expect(mockServiceNavigationService.setHandleLogout).toHaveBeenCalledWith(expectedResult);
 			});
 		});
 
@@ -223,7 +223,7 @@ describe('ObServiceNavigationComponent', () => {
 				const expectedResult = 'randomAppId';
 				component.pamsAppId = expectedResult;
 				component.ngOnInit();
-				expect(mockServiceNavigationService.setPamsAppId).toBeCalledWith(expectedResult);
+				expect(mockServiceNavigationService.setPamsAppId).toHaveBeenCalledWith(expectedResult);
 			});
 		});
 

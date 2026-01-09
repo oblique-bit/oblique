@@ -54,11 +54,11 @@ describe('ObServiceNavigationApplicationsApiService', () => {
 			});
 
 			it('should be called once', () => {
-				expect(httpClient.post).toBeCalledTimes(1);
+				expect(httpClient.post).toHaveBeenCalledTimes(1);
 			});
 
 			it('should be called with correct parameters', () => {
-				expect(httpClient.post).toBeCalledWith(
+				expect(httpClient.post).toHaveBeenCalledWith(
 					'http:/rootUrl/api/widget/applications',
 					{
 						applications: [

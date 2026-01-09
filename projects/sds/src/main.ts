@@ -9,7 +9,7 @@ import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {HttpApiInterceptor} from './app/shared/http-api-interceptor/http-api-interceptor';
 import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
-import {LOCALE_ID, inject, provideAppInitializer} from '@angular/core';
+import {LOCALE_ID, inject, provideAppInitializer, provideZoneChangeDetection} from '@angular/core';
 import {PreloadAllModules, provideRouter, withPreloading} from '@angular/router';
 import {appRoutes} from './app.routes';
 import {UploadInterceptor} from './app/code-examples/code-examples/file-upload/file-upload-simulate-interceptor';
@@ -20,6 +20,7 @@ export const uploadInterceptor = new UploadInterceptor();
 
 bootstrapApplication(AppComponent, {
 	providers: [
+		provideZoneChangeDetection(),
 		{provide: LOCALE_ID, useValue: 'en-CH'},
 		{provide: WINDOW, useValue: window},
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

@@ -24,7 +24,7 @@ describe('ObUnsavedChangesGuard', () => {
 		it('should call canDeactivate once', () => {
 			guard.canDeactivate();
 
-			expect(mockUnsavedChangesService.canDeactivate).toBeCalledTimes(1);
+			expect(mockUnsavedChangesService.canDeactivate).toHaveBeenCalledTimes(1);
 		});
 
 		it.each([false, true])('should return %s when the ObUnsavedChangesService returns %s', $expected => {

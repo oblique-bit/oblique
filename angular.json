@@ -57,14 +57,15 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "max-workers": ["2"],
+            "zoneless": false
           },
           "configurations": {
             "default": {
-              "configPath": "jest.config.js"
+              "config": "jest.config.js"
             },
             "ci": {
-              "configPath": "jest.config.ci.js"
+              "config": "jest.config.ci.js"
             }
           },
           "defaultConfiguration": "default"
@@ -194,10 +195,10 @@
           },
           "configurations": {
             "default": {
-              "configPath": "jest.config.js"
+              "config": "jest.config.js"
             },
             "ci": {
-              "configPath": "jest.config.ci.js"
+              "config": "jest.config.ci.js"
             }
           },
           "defaultConfiguration": "default"
@@ -303,16 +304,17 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "configPath": "jest.config.js",
+            "config": "jest.config.js",
             "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "max-workers": ["2"],
+            "zoneless": false
           },
           "configurations": {
             "default": {
-              "configPath": "jest.config.js"
+              "config": "jest.config.js"
             },
             "ci": {
-              "configPath": "jest.config.ci.js"
+              "config": "jest.config.ci.js"
             }
           },
           "defaultConfiguration": "default"
@@ -395,16 +397,16 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "configPath": "jest.config.js",
+            "config": "jest.config.js",
             "tsConfig": "tsconfig.spec.json",
             "max-workers": ["2"]
           },
           "configurations": {
             "default": {
-              "configPath": "jest.config.js"
+              "config": "jest.config.js"
             },
             "ci": {
-              "configPath": "jest.config.ci.js"
+              "config": "jest.config.ci.js"
             }
           },
           "defaultConfiguration": "default"
@@ -503,10 +505,10 @@
           },
           "configurations": {
             "default": {
-              "configPath": "jest.config.js"
+              "config": "jest.config.js"
             },
             "ci": {
-              "configPath": "jest.config.ci.js"
+              "config": "jest.config.ci.js"
             }
           },
           "defaultConfiguration": "default"
@@ -542,10 +544,10 @@
           },
           "configurations": {
             "default": {
-              "configPath": "jest.config.js"
+              "config": "jest.config.js"
             },
             "ci": {
-              "configPath": "jest.config.ci.js"
+              "config": "jest.config.ci.js"
             }
           },
           "defaultConfiguration": "default"

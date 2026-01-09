@@ -153,12 +153,12 @@
 									[id]="'ob-sub-menu-back-button-' + link.id"
 									(click)="backUpOrCloseSubMenu(link, obMasterLayoutNavigationItem)"
 								>
+									<mat-icon svgIcon="arrow_left" />
 									@if (!!currentGrandparentLink?.label) {
 										{{ currentGrandparentLink.label | translate }}
 									} @else {
-										<mat-icon class="ob-sub-menu-back-button-home-icon" matSuffix svgIcon="home" />
+										<mat-icon class="ob-sub-menu-back-button-home-icon" svgIcon="home" />
 									}
-									<mat-icon matPrefix svgIcon="arrow_left" />
 								</button>
 								<button
 									type="button"
@@ -168,7 +168,7 @@
 									[id]="'ob-sub-menu-close-button-' + link.id"
 									(click)="closeSubMenu(obMasterLayoutNavigationItem, link)"
 								>
-									{{ "i18n.common.close" | translate }} <mat-icon matSuffix svgIcon="xmark" />
+									{{ "i18n.common.close" | translate }} <mat-icon svgIcon="xmark" />
 								</button>
 							</div>
 							@if (currentParentLink.id !== link.id) {

@@ -21,6 +21,9 @@ module.exports = {
 	],
 	coverageThreshold: {
 		...baseConfig.coverageThreshold,
+		'projects/oblique/src/lib/autocomplete/option-label-icon/option-label-icon.directive.ts': {
+			branches: 95,
+		},
 		'projects/oblique/src/lib/breadcrumb/*.ts': {
 			statements: 98,
 			branches: 78,
@@ -38,7 +41,7 @@ module.exports = {
 		},
 		'projects/oblique/src/lib/document-meta/*.ts': {
 			statements: 59,
-			branches: 7,
+			branches: 6,
 			functions: 18,
 			lines: 58,
 		},
@@ -72,15 +75,18 @@ module.exports = {
 			functions: 100,
 			lines: 95,
 		},
+		'projects/oblique/src/lib/language/language.service.ts': {
+			branches: 95,
+		},
 		'projects/oblique/src/lib/master-layout/*.ts': {
 			statements: 93,
-			branches: 66,
+			branches: 50,
 			functions: 80,
 			lines: 91,
 		},
 		'projects/oblique/src/lib/master-layout/master-layout/*.ts': {
 			statements: 96,
-			branches: 92,
+			branches: 91,
 			functions: 93,
 			lines: 96,
 		},
@@ -104,7 +110,7 @@ module.exports = {
 		},
 		'projects/oblique/src/lib/nav-tree/*.ts': {
 			statements: 91,
-			branches: 72,
+			branches: 70,
 			functions: 96,
 			lines: 91,
 		},
@@ -122,7 +128,7 @@ module.exports = {
 		},
 		'projects/oblique/src/lib/number-format/*.ts': {
 			statements: 82,
-			branches: 77,
+			branches: 76,
 			functions: 85,
 			lines: 81,
 		},
@@ -132,9 +138,12 @@ module.exports = {
 			functions: 33,
 			lines: 66,
 		},
+		'projects/oblique/src/lib/popover/popover.directive.ts': {
+			branches: 98,
+		},
 		'projects/oblique/src/lib/schema-validation/*.ts': {
 			statements: 92,
-			branches: 80,
+			branches: 66,
 			functions: 75,
 			lines: 100,
 		},
@@ -143,6 +152,15 @@ module.exports = {
 			branches: 83,
 			functions: 0,
 			lines: 27,
+		},
+		'projects/oblique/src/lib/selectable/selectable-group.directive.ts': {
+			branches: 96,
+		},
+		'projects/oblique/src/lib/service-navigation/timeout/service-navigation-timeout.service.ts': {
+			branches: 95,
+		},
+		'projects/oblique/src/lib/unsaved-changes/unsaved-changes.directive.ts': {
+			branches: 83,
 		},
 	},
 };

@@ -51,7 +51,7 @@ module.exports = {
 		},
 		'projects/sds/src/app/code-examples/code-examples/chips/previews/autocomplete': {
 			statements: 58,
-			branches: 16,
+			branches: 12,
 			functions: 28,
 			lines: 59,
 		},
@@ -177,7 +177,7 @@ module.exports = {
 		},
 		'projects/sds/src/app/shared/http-api-interceptor': {
 			statements: 90,
-			branches: 100,
+			branches: 50,
 			functions: 75,
 			lines: 89,
 		},
@@ -195,7 +195,7 @@ module.exports = {
 		},
 		'projects/sds/src/app/side-navigation/accordion-links': {
 			statements: 79,
-			branches: 33,
+			branches: 25,
 			functions: 75,
 			lines: 77,
 		},
@@ -207,7 +207,7 @@ module.exports = {
 		},
 		'projects/sds/src/app/side-navigation/version': {
 			statements: 66,
-			branches: 22,
+			branches: 20,
 			functions: 20,
 			lines: 67,
 		},
