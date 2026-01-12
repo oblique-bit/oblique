@@ -36,8 +36,7 @@
     "hook-commit-msg": "ts-node scripts/husky/hook.commit-rules.ts",
     "hook-post-checkout": "ts-node scripts/husky/install-dependencies.ts && ts-node scripts/delete-tags.ts",
     "prepare": "husky",
-    "release": "ts-node scripts/release.ts",
-    "troubleshoot": "ts-node scripts/troubleshoot.ts"
+    "release": "ts-node scripts/release.ts"
   },
   "engines": {
     "node": ">=22.12.0"
