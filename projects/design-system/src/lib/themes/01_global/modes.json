@@ -19,7 +19,7 @@
           },
           "dark": {
             "$type": "other",
-            "$value": ".ob-s1-lightness-dark"
+            "$value": ".ob-lightness-dark"
           }
         },
         "s2-emphasis": {
@@ -29,7 +29,7 @@
           },
           "low": {
             "$type": "other",
-            "$value": ".ob-s2-emphasis-low"
+            "$value": ".ob-emphasis-low"
           }
         },
         "component-size": {
