@@ -63,7 +63,8 @@
       "01_global/themes-user/lightness/static": "source",
       "04_component/molecule/infobox/02_layout": "enabled",
       "05_html/link/link": "enabled",
-      "NO-DS/FIGMA-ONLY/typography": "enabled"
+      "NO-DS/FIGMA-ONLY/typography": "enabled",
+      "05_html/button/06_motion": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
