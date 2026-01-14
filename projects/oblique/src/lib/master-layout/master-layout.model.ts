@@ -24,7 +24,6 @@ export interface ObIServiceNavigationConfig {
 	infoDescription?: string;
 	infoContact?: ObIServiceNavigationContact;
 	useInfoBackend?: boolean;
-	maxLastUsedApplications?: number;
 	maxFavoriteApplications?: number;
 	returnUrl?: string;
 	pamsAppId?: string;

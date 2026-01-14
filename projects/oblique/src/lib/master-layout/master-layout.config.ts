@@ -64,10 +64,6 @@ export class ObMasterLayoutConfig {
 			profileLinks: [],
 			infoLinks: [],
 			infoContact: {},
-			/**
-			 *  @deprecated since Oblique 13.3.2. It will be removed in the next major version.
-			 */
-			maxLastUsedApplications: 3,
 			maxFavoriteApplications: 8,
 			displayLanguages: true,
 			pamsAppId: undefined,

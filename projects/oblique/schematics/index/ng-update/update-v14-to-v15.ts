@@ -22,6 +22,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 			chain([
 				warnIfStandalone(),
 				this.removeMaxFavoriteApplications(),
+				this.removeMaxLastUsedApplications(),
 				this.removeObILocaleDisplay(),
 				this.renameIcons(),
 				this.removeBrowserAnimationModuleIfUnused(),
@@ -127,5 +128,15 @@ export class UpdateV14toV15 implements ObIMigrations {
 		if (newContent !== content) {
 			writeFile(tree, fileName, newContent);
 		}
+	}
+
+	private removeMaxLastUsedApplications(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove maxLastUsedApplications property');
+			const apply = (filePath: string): void => {
+				this.removeProperty(tree, filePath, 'locale', 'maxLastUsedApplications');
+			};
+			return applyInTree(tree, apply, '*.ts');
+		});
 	}
 }
