@@ -332,7 +332,11 @@ export default [
 			 */
 			'no-unused-expressions': 'off',
 			'no-unused-labels': 'error',
-			'no-unused-private-class-members': 'error',
+			/**
+			 * Rule: no-unused-private-class-members (https://eslint.org/docs/latest/rules/no-unused-private-class-members)
+			 * Reason for disabling: Replaced by @typescript-eslint/no-unused-private-class-members
+			 */
+			'no-unused-private-class-members': 'off',
 			/**
 			 * Rule: no-unused-vars (https://eslint.org/docs/latest/rules/no-unused-vars)
 			 * Reason for disabling: Replaced by @typescript-eslint/no-unused-vars
@@ -617,6 +621,7 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'error',
 			'@typescript-eslint/no-unsafe-unary-minus': 'error',
 			'@typescript-eslint/no-unused-expressions': 'error',
+			'@typescript-eslint/no-unused-private-class-members': 'off',
 			'@typescript-eslint/no-unused-vars': ['error'],
 			/**
 			 * Rule: @typescript-eslint/no-use-before-define (https://typescript-eslint.io/rules/no-use-before-define)
@@ -628,6 +633,7 @@ export default [
 			'@typescript-eslint/no-use-before-define': ['error', {functions: false}],
 			'@typescript-eslint/no-useless-constructor': 'error',
 			'@typescript-eslint/no-useless-empty-export': 'error',
+			'@typescript-eslint/no-useless-default-assignment': 'off',
 			'@typescript-eslint/no-wrapper-object-types': 'error',
 			'@typescript-eslint/non-nullable-type-assertion-style': 'error',
 			'@typescript-eslint/only-throw-error': 'error',
@@ -675,6 +681,7 @@ export default [
 			'@typescript-eslint/restrict-template-expressions': 'error',
 			'@typescript-eslint/return-await': 'error',
 			'@typescript-eslint/strict-boolean-expressions': 'error',
+			'@typescript-eslint/strict-void-return': 'off',
 			'@typescript-eslint/switch-exhaustiveness-check': 'error',
 			'@typescript-eslint/triple-slash-reference': 'error',
 			/**
@@ -702,7 +709,6 @@ export default [
 			'@angular-eslint/directive-class-suffix': 'error',
 			'@angular-eslint/no-async-lifecycle-method': 'error',
 			'@angular-eslint/no-attribute-decorator': 'error',
-			'@angular-eslint/no-conflicting-lifecycle': 'error',
 			'@angular-eslint/no-developer-preview': 'error',
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'error',
 			'@angular-eslint/no-empty-lifecycle-method': 'error',
@@ -729,6 +735,7 @@ export default [
 			'@angular-eslint/prefer-on-push-component-change-detection': 'off',
 			'@angular-eslint/prefer-output-emitter-ref': 'error',
 			'@angular-eslint/prefer-output-readonly': 'error',
+			'@angular-eslint/prefer-signal-model': 'off',
 			'@angular-eslint/prefer-signals': 'error',
 			'@angular-eslint/prefer-standalone': 'error',
 			'@angular-eslint/relative-url-prefix': 'error',

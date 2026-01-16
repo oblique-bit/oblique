@@ -32,7 +32,6 @@ import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.
 })
 /* A warning is given by eslint when using both DoCheck and OnChanges to prevent checking @Input changes in the DoCheck hook.
 	As long as the OnChanges lifecycle exclusively deals with @Input changes this warning isn't necessary. */
-/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy, OnChanges {
 	@Input() left: ObTColumnState = 'OPENED';
 	@Input() right: ObTColumnState = 'OPENED';

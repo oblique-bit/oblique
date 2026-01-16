@@ -71,7 +71,7 @@
     "@types/jest": "^30.0.0",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20.19.30",
-    "angular-eslint": "~20.6.0",
+    "angular-eslint": "~21.1.0",
     "chalk": "^4.1.2",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
@@ -80,13 +80,13 @@
     "jest-sonar": "^0.2.16",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.0",
-    "stylelint": "^16.26.1",
-    "stylelint-config-prettier-scss": "^1.0.0",
-    "stylelint-config-standard-scss": "^13.1.0",
-    "stylelint-scss": "^6.14.0",
+    "stylelint": "~16.26.1",
+    "stylelint-config-prettier-scss": "~1.0.0",
+    "stylelint-config-standard-scss": "~13.1.0",
+    "stylelint-scss": "~6.14.0",
     "ts-node": "^10.9.2",
     "typescript": "~5.9.3",
-    "typescript-eslint": "~8.46.3"
+    "typescript-eslint": "~8.53.0"
   },
   "overrides": {
     "parse5": "<7.3.0"

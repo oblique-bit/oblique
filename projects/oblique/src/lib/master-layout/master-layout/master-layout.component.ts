@@ -1,4 +1,4 @@
-/* eslint-disable @angular-eslint/no-conflicting-lifecycle, max-lines */
+/* eslint-disable max-lines */
 import {
 	Component,
 	ContentChild,
