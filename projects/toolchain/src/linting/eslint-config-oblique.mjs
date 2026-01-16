@@ -727,7 +727,7 @@ export default [
 			'@angular-eslint/no-uncalled-signals': 'error',
 			'@angular-eslint/pipe-prefix': 'error',
 			'@angular-eslint/prefer-host-metadata-property': 'error',
-			'@angular-eslint/prefer-inject': 'off',
+			'@angular-eslint/prefer-inject': 'error',
 			/**
 			 * Rule: @angular-eslint/prefer-on-push-component-change-detection (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-on-push-component-change-detection.md)
 			 * Reason for disabling: OnPush is not always the best choice, especially with signals
