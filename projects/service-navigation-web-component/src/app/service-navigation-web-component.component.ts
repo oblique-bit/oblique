@@ -1,7 +1,6 @@
 import {
 	Component,
 	DOCUMENT,
-	HostListener,
 	type OnChanges,
 	type OnInit,
 	type SimpleChange,
@@ -50,7 +49,17 @@ import {outputFromObservable} from '@angular/core/rxjs-interop';
 	],
 	providers: [TranslationsService],
 	encapsulation: ViewEncapsulation.None,
-	host: {'ob-version': appVersion},
+	host: {
+		'(window:keydown)': 'removeOutline()',
+		'(window:keydown.arrowDown)': 'addOutline()',
+		'(window:keydown.arrowLeft)': 'addOutline()',
+		'(window:keydown.arrowRight)': 'addOutline()',
+		'(window:keydown.arrowUp)': 'addOutline()',
+		'(window:keydown.shift.tab)': 'addOutline()',
+		'(window:keydown.tab)': 'addOutline()',
+		'(window:mousedown)': 'removeOutline()',
+		'ob-version': appVersion,
+	},
 })
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
 	readonly languageList = input<string>(undefined);
@@ -90,18 +99,10 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	private readonly translationService = inject(TranslationsService);
 	private readonly document = inject(DOCUMENT);
 
-	@HostListener('window:mousedown')
-	@HostListener('window:keydown')
 	removeOutline(): void {
 		this.document.querySelector('ob-service-navigation-web-component').classList.remove('ob-outline');
 	}
 
-	@HostListener('window:keydown.tab')
-	@HostListener('window:keydown.shift.tab')
-	@HostListener('window:keydown.arrowUp')
-	@HostListener('window:keydown.arrowDown')
-	@HostListener('window:keydown.arrowRight')
-	@HostListener('window:keydown.arrowLeft')
 	addOutline(): void {
 		this.document.querySelector('ob-service-navigation-web-component').classList.add('ob-outline');
 	}
