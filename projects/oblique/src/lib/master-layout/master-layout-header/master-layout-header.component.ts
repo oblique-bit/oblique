@@ -20,7 +20,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {OB_BANNER, OB_PAMS_CONFIGURATION, WINDOW} from '../../utilities';
+import {OB_BANNER, OB_PAMS_CONFIGURATION} from '../../utilities';
 import {ObIBanner, ObIPamsConfiguration} from '../../utilities.model';
 import {
 	ObEEnvironment,
@@ -58,8 +58,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
 		private readonly config: ObMasterLayoutConfig,
-		private readonly el: ElementRef,
-		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner,
 		@Inject(OB_PAMS_CONFIGURATION) @Optional() public readonly pamsConfiguration: ObIPamsConfiguration
 	) {

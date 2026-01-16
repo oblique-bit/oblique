@@ -19,7 +19,7 @@ export class ObOptionLabelIconDirective implements OnChanges {
 
 	constructor(
 		private readonly renderer: Renderer2,
-		private readonly elementRef: ElementRef,
+		elementRef: ElementRef,
 		private readonly iconRegistry: MatIconRegistry
 	) {
 		this.host = elementRef.nativeElement;

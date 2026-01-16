@@ -11,7 +11,7 @@ export class ObUnsavedChangesService {
 	private readonly window = inject(WINDOW);
 
 	constructor(
-		private readonly obGlobalEventsService: ObGlobalEventsService,
+		obGlobalEventsService: ObGlobalEventsService,
 		private readonly translateService: TranslateService
 	) {
 		obGlobalEventsService.beforeUnload$.subscribe(event => {

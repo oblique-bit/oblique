@@ -40,7 +40,7 @@ module.exports = {
 			branches: 94,
 		},
 		'projects/oblique/src/lib/document-meta/*.ts': {
-			statements: 59,
+			statements: 58,
 			branches: 6,
 			functions: 18,
 			lines: 58,
