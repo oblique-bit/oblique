@@ -20,6 +20,7 @@ describe('ObUpdateCommand Tests', () => {
 			jest.spyOn(console, 'info').mockImplementation(() => {});
 			jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
 			jest.spyOn(console, 'error').mockImplementation(() => {});
+			jest.spyOn(console, 'warn').mockImplementation(() => {});
 		});
 
 		beforeEach(() => {
