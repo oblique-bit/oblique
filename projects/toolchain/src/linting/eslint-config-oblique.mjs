@@ -681,7 +681,7 @@ export default [
 			'@typescript-eslint/restrict-template-expressions': 'error',
 			'@typescript-eslint/return-await': 'error',
 			'@typescript-eslint/strict-boolean-expressions': 'error',
-			'@typescript-eslint/strict-void-return': 'off',
+			'@typescript-eslint/strict-void-return': 'error',
 			'@typescript-eslint/switch-exhaustiveness-check': 'error',
 			'@typescript-eslint/triple-slash-reference': 'error',
 			/**
