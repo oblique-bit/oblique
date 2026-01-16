@@ -42,6 +42,10 @@ describe('ObSpinnerComponent', () => {
 		expect(spinnerElement.classes['ob-spinner']).toBe(true);
 	});
 
+	it('should have "aria-hidden" attribute', () => {
+		expect(spinnerElement.attributes['aria-hidden']).toBe('true');
+	});
+
 	describe('property "channel"', () => {
 		it('should not be initialized to "default"', () => {
 			expect(component.channel).toBe('default');

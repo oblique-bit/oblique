@@ -11,7 +11,7 @@ import {ObSpinnerService} from './spinner.service';
 	templateUrl: './spinner.component.html',
 	styleUrls: ['./spinner.component.scss', './spinner-animations.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-spinner'},
+	host: {class: 'ob-spinner', '[attr.aria-hidden]': 'true'},
 	exportAs: 'obSpinner',
 })
 export class ObSpinnerComponent implements OnInit {
