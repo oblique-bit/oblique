@@ -135,7 +135,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		let result: unknown = null;
 		try {
 			result = JSON.parse(attributeValue || fallback);
-		} catch (err) {
+		} catch {
 			this.invalidAttributeValue(attributeName);
 		}
 

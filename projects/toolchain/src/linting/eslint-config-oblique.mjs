@@ -617,13 +617,7 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'error',
 			'@typescript-eslint/no-unsafe-unary-minus': 'error',
 			'@typescript-eslint/no-unused-expressions': 'error',
-			/**
-			 * Rule: @typescript-eslint/no-unused-vars (https://typescript-eslint.io/rules/no-unused-vars)
-			 * Reason for {caughtErrors: 'none'}: The error variable in a try...catch block is mandatory but not always used.
-			 * Example with {caughtErrors: 'none'}:
-			 * try {...} catch (error) { }
-			 */
-			'@typescript-eslint/no-unused-vars': ['error', {caughtErrors: 'none'}],
+			'@typescript-eslint/no-unused-vars': ['error'],
 			/**
 			 * Rule: @typescript-eslint/no-use-before-define (https://typescript-eslint.io/rules/no-use-before-define)
 			 * Reason for {functions: false}: Functions are hoisted so they can be used before they are defined
