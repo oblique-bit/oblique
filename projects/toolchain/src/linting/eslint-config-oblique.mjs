@@ -633,7 +633,7 @@ export default [
 			'@typescript-eslint/no-use-before-define': ['error', {functions: false}],
 			'@typescript-eslint/no-useless-constructor': 'error',
 			'@typescript-eslint/no-useless-empty-export': 'error',
-			'@typescript-eslint/no-useless-default-assignment': 'off',
+			'@typescript-eslint/no-useless-default-assignment': 'error',
 			'@typescript-eslint/no-wrapper-object-types': 'error',
 			'@typescript-eslint/non-nullable-type-assertion-style': 'error',
 			'@typescript-eslint/only-throw-error': 'error',
