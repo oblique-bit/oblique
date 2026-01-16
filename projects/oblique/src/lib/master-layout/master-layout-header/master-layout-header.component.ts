@@ -4,7 +4,6 @@ import {
 	ContentChildren,
 	ElementRef,
 	EventEmitter,
-	HostBinding,
 	Inject,
 	Input,
 	OnDestroy,
@@ -38,7 +37,10 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header-controls.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-header'},
+	host: {
+		'[class.ob-master-layout-header-small]': 'isSmall',
+		class: 'ob-master-layout-header',
+	},
 })
 export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	home$: Observable<string>;
@@ -47,7 +49,7 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	serviceNavigationConfig: ObIServiceNavigationConfig;
 	@Input() navigation: ObINavigationLink[];
 	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
-	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
+	isSmall = this.masterLayout.header.isSmall;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<unknown>>;
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<unknown>>;

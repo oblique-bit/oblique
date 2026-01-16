@@ -1,30 +1,32 @@
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {
-	DestroyRef,
-	Directive,
-	ElementRef,
-	HostBinding,
-	HostListener,
-	Input,
-	OnInit,
-	Optional,
-	inject,
-} from '@angular/core';
+import {DestroyRef, Directive, ElementRef, Input, OnInit, Optional, inject} from '@angular/core';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 import {startWith} from 'rxjs';
 
 @Directive({
 	selector: '[obSelectable]',
 	standalone: true,
-	host: {class: 'ob-selectable'},
+	host: {
+		'(click)': 'onClick($event)',
+		'(focus)': 'onFocus()',
+		'(keydown.control.space)': 'onClick($event)',
+		'(keydown.shift.space)': 'onClick($event)',
+		'(keydown.space)': 'onClick($event)',
+		'[attr.aria-checked]': 'selected',
+		'[attr.role]': 'role',
+		'[attr.tabindex]': 'tabindex',
+		'[class.ob-selectable]': 'selectable',
+		'[class.ob-selected]': 'selected',
+		class: 'ob-selectable',
+	},
 	exportAs: 'obSelectable',
 })
 export class ObSelectableDirective<T = any> implements OnInit {
 	@Input() value: T;
-	@Input() @HostBinding('class.ob-selected') @HostBinding('attr.aria-checked') selected = false;
-	@HostBinding('class.ob-selectable') readonly selectable = true;
-	@Input() @HostBinding('attr.tabindex') tabindex = 0;
-	@HostBinding('attr.role') role = 'checkbox';
+	@Input() selected = false;
+	readonly selectable = true;
+	@Input() tabindex = 0;
+	role = 'checkbox';
 	private readonly destroyRef = inject(DestroyRef);
 	private disabled = false;
 	private initialTabindex: number;
@@ -51,10 +53,6 @@ export class ObSelectableDirective<T = any> implements OnInit {
 		});
 	}
 
-	@HostListener('click', ['$event'])
-	@HostListener('keydown.space', ['$event'])
-	@HostListener('keydown.shift.space', ['$event'])
-	@HostListener('keydown.control.space', ['$event'])
 	onClick($event: KeyboardEvent | MouseEvent): void {
 		$event.preventDefault();
 		if (!this.disabled) {
@@ -62,7 +60,6 @@ export class ObSelectableDirective<T = any> implements OnInit {
 		}
 	}
 
-	@HostListener('focus')
 	onFocus(): void {
 		this.group.focus(this);
 	}

@@ -3,8 +3,6 @@ import {
 	Directive,
 	ElementRef,
 	EventEmitter,
-	HostBinding,
-	HostListener,
 	Inject,
 	InjectionToken,
 	Input,
@@ -39,7 +37,17 @@ export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>(
 @Directive({
 	selector: '[obPopover]',
 	standalone: true,
-	host: {class: 'ob-popover', 'aria-haspopup': 'menu'},
+	host: {
+		'(click)': 'toggle($event)',
+		'(keyup.enter)': 'toggle($event)',
+		'(mouseenter)': 'handleMouseEnter()',
+		'(mouseleave)': 'handleMouseLeave()',
+		'[attr.aria-controls]': 'idContent',
+		'[attr.aria-describedby]': 'idContent',
+		'[attr.aria-expanded]': 'isExpanded',
+		'aria-haspopup': 'menu',
+		class: 'ob-popover',
+	},
 	exportAs: 'obPopover',
 })
 export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
@@ -52,8 +60,8 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() closeOnlyOnToggle: boolean;
 	@Input() appendToBody = false;
 	@Output() readonly visibilityChange = new EventEmitter<boolean>();
-	@HostBinding('attr.aria-describedby') @HostBinding('attr.aria-controls') idContent: string;
-	@HostBinding('attr.aria-expanded') isExpanded = false;
+	idContent: string;
+	isExpanded = false;
 
 	private static idCount = 0;
 	private readonly body: HTMLElement;
@@ -96,8 +104,6 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		this.close();
 	}
 
-	@HostListener('click', ['$event'])
-	@HostListener('keyup.enter', ['$event'])
 	toggle(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {
 			if (event instanceof MouseEvent && this.isMouseHoverConfigured) {
@@ -112,13 +118,13 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		}
 	}
 
-	@HostListener('mouseleave') handleMouseLeave(): void {
+	handleMouseLeave(): void {
 		if (this.isMouseHoverConfigured) {
 			this.close();
 		}
 	}
 
-	@HostListener('mouseenter') handleMouseEnter(): void {
+	handleMouseEnter(): void {
 		if (this.isMouseHoverConfigured) {
 			this.open();
 		}

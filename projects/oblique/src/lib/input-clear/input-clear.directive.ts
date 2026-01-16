@@ -1,15 +1,4 @@
-import {
-	DestroyRef,
-	Directive,
-	ElementRef,
-	EventEmitter,
-	HostBinding,
-	HostListener,
-	Input,
-	OnInit,
-	Output,
-	inject,
-} from '@angular/core';
+import {DestroyRef, Directive, ElementRef, EventEmitter, Input, OnInit, Output, inject} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
@@ -19,7 +8,11 @@ import {fromEvent, startWith} from 'rxjs';
 @Directive({
 	selector: '[obInputClear]',
 	standalone: true,
-	host: {class: 'ob-input-clear'},
+	host: {
+		'(click)': 'onClick($event)',
+		'[class.ob-text-control-clear]': 'cssClass',
+		class: 'ob-input-clear',
+	},
 	exportAs: 'obInputClear',
 })
 export class ObInputClearDirective implements OnInit {
@@ -28,7 +21,7 @@ export class ObInputClearDirective implements OnInit {
 	@Input() datePickerRef: MatDatepicker<unknown>;
 	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
 	@Output() readonly onClear = new EventEmitter<MouseEvent>();
-	@HostBinding('class.ob-text-control-clear') cssClass = true;
+	cssClass = true;
 
 	private readonly element = inject(ElementRef);
 	private readonly validControlTypes = [AbstractControl, HTMLInputElement, NgModel];
@@ -47,7 +40,6 @@ export class ObInputClearDirective implements OnInit {
 		this.subscribeToInputValueChange();
 	}
 
-	@HostListener('click', ['$event'])
 	onClick($event: MouseEvent): void {
 		this.clearDatePicker();
 		this.clearInputField();

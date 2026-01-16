@@ -1,18 +1,23 @@
-import {Directive, ElementRef, HostBinding, Input, OnChanges, OnInit} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, OnInit} from '@angular/core';
 import {ObIconButtonDirective} from './icon-button.directive';
 
 @Directive({
 	selector: '[obButton]',
 	standalone: true,
-	host: {class: 'ob-button mat-primary'},
+	host: {
+		'[class.ob-button-primary]': 'primaryClass',
+		'[class.ob-button-secondary]': 'secondaryClass',
+		'[class.ob-button-tertiary]': 'tertiaryClass',
+		class: 'ob-button mat-primary',
+	},
 	hostDirectives: [ObIconButtonDirective],
 	exportAs: 'obButton',
 })
 export class ObButtonDirective implements OnInit, OnChanges {
 	@Input() obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
-	@HostBinding('class.ob-button-primary') primaryClass: boolean;
-	@HostBinding('class.ob-button-secondary') secondaryClass: boolean;
-	@HostBinding('class.ob-button-tertiary') tertiaryClass: boolean;
+	primaryClass: boolean;
+	secondaryClass: boolean;
+	tertiaryClass: boolean;
 	private static readonly forbidden = [
 		'mat-raised-button',
 		'mat-fab',

@@ -1,15 +1,17 @@
-import {ContentChildren, Directive, ElementRef, HostListener, QueryList} from '@angular/core';
+import {ContentChildren, Directive, ElementRef, QueryList} from '@angular/core';
 import {NgControl} from '@angular/forms';
 
 @Directive({
 	selector: 'form[obFocusInvalid]',
 	standalone: true,
+	host: {
+		'(submit)': 'focusFirstInvalidField()',
+	},
 	exportAs: 'obFocusInvalid',
 })
 export class ObFocusInvalidDirective {
 	@ContentChildren(NgControl, {descendants: true, read: ElementRef}) formElements: QueryList<ElementRef<HTMLElement>>;
 
-	@HostListener('submit')
 	focusFirstInvalidField(): void {
 		const elements = this.formElements
 			.map(element => element.nativeElement)

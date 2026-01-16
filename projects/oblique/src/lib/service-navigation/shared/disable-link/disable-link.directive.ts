@@ -1,8 +1,13 @@
-import {Directive, HostBinding, Input, OnChanges} from '@angular/core';
+import {Directive, Input, OnChanges} from '@angular/core';
 
 @Directive({
 	selector: '[obDisableLink]',
 	standalone: true,
+	host: {
+		'[attr.aria-disabled]': 'disabled',
+		'[attr.role]': 'role',
+		'[attr.href]': 'attributeHref',
+	},
 })
 export class ObDisableLinkDirective implements OnChanges {
 	@Input() set obDisableLink(condition: boolean) {
@@ -13,11 +18,8 @@ export class ObDisableLinkDirective implements OnChanges {
 	@Input()
 	href: string;
 
-	@HostBinding('attr.aria-disabled')
 	protected disabled: string;
-	@HostBinding('attr.role')
 	protected role: string;
-	@HostBinding('attr.href')
 	protected attributeHref: string;
 
 	private originalHref: string;

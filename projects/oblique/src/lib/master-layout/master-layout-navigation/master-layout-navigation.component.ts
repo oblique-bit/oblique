@@ -4,7 +4,6 @@ import {
 	Component,
 	ElementRef,
 	EventEmitter,
-	HostBinding,
 	Inject,
 	Input,
 	OnChanges,
@@ -42,7 +41,11 @@ import {OB_HAS_LANGUAGE_IN_URL} from '../../utilities';
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation-scrollable.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-navigation'},
+	host: {
+		'[class.navigation-scrollable]': 'isScrollable',
+		'[class.navigation-scrollable-active]': 'isScrollable',
+		class: 'ob-master-layout-navigation',
+	},
 })
 export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
 	isFullWidth = this.masterLayout.navigation.isFullWidth;
@@ -59,7 +62,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	hideExternalLinks = true;
 	@Input() links: ObINavigationLink[] = [];
 	@Output() readonly linksChanged = new EventEmitter<ObINavigationLink[]>();
-	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
+	isScrollable: boolean;
 	routerLinkActiveOptions: IsActiveMatchOptions = {
 		paths: 'subset',
 		queryParams: 'subset',

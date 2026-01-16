@@ -1,13 +1,4 @@
-import {
-	ChangeDetectorRef,
-	Component,
-	HostBinding,
-	Inject,
-	Input,
-	OnDestroy,
-	OnInit,
-	ViewEncapsulation,
-} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {WINDOW} from '../utilities';
 import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
@@ -19,14 +10,18 @@ import {Subject, takeUntil} from 'rxjs';
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss', './notification-animations.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-notification-container'},
+	host: {
+		'[class.ob-custom]': 'customChannel',
+		'[class]': 'getPlacement',
+		class: 'ob-notification-container',
+	},
 	exportAs: 'obNotification',
 })
 export class ObNotificationComponent implements OnInit, OnDestroy {
 	public static REMOVE_DELAY = 350;
 	@Input() channel: string;
-	@HostBinding('class.ob-custom') customChannel = false;
-	@HostBinding('class') get getPlacement(): ObENotificationPlacement {
+	customChannel = false;
+	get getPlacement(): ObENotificationPlacement {
 		return this.notificationService.placement;
 	}
 	public notifications: ObINotificationPrivate[] = [];

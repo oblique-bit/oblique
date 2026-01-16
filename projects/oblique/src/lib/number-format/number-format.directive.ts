@@ -1,11 +1,15 @@
-import {Directive, ElementRef, HostListener, Input, OnInit} from '@angular/core';
+import {Directive, ElementRef, Input, OnInit} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {distinctUntilChanged} from 'rxjs/operators';
 
 @Directive({
 	selector: '[obNumberFormat]',
 	standalone: true,
-	host: {class: 'ob-number-format'},
+	host: {
+		'(blur)': 'onBlur()',
+		'(focus)': 'onFocus()',
+		class: 'ob-number-format',
+	},
 	exportAs: 'obNumberFormat',
 })
 export class ObNumberFormatDirective implements OnInit {
@@ -19,7 +23,6 @@ export class ObNumberFormatDirective implements OnInit {
 		private readonly el: ElementRef
 	) {}
 
-	@HostListener('blur')
 	onBlur(): void {
 		this.focused = false;
 		const value = ObNumberFormatDirective.toFixedNumber(this.ngControl.value, this.decimals);
@@ -31,7 +34,6 @@ export class ObNumberFormatDirective implements OnInit {
 		}
 	}
 
-	@HostListener('focus')
 	onFocus(): void {
 		this.focused = true;
 		if (!this.persistent) {

@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostBinding, HostListener, Input, OnInit} from '@angular/core';
+import {Directive, ElementRef, Input, OnInit} from '@angular/core';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outsideFilter';
 import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation/masterLayoutNavigationSubMenuFilter';
@@ -7,11 +7,18 @@ import {isNotKeyboardEventOnButton} from '../utilities';
 @Directive({
 	selector: '[obAriaMenuButton]',
 	standalone: false,
+	host: {
+		'(click)': 'onClick($event)',
+		'(keyup.enter)': 'onClick($event)',
+		'(keyup.escape)': 'onEscape()',
+		'[attr.aria-controls]': 'target',
+		'[attr.aria-expanded]': 'active',
+	},
 	exportAs: 'obAriaMenuButton',
 })
 export class ObAriaMenuButtonDirective implements OnInit {
-	@Input('obAriaMenuButton') @HostBinding('attr.aria-controls') target: string;
-	@HostBinding('attr.aria-expanded') active = false;
+	@Input('obAriaMenuButton') target: string;
+	active = false;
 
 	constructor(
 		private readonly globalEvents: ObGlobalEventsService,
@@ -22,15 +29,12 @@ export class ObAriaMenuButtonDirective implements OnInit {
 		this.monitorForClickOutside();
 	}
 
-	@HostListener('click', ['$event'])
-	@HostListener('keyup.enter', ['$event'])
 	onClick(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {
 			this.active = !this.active;
 		}
 	}
 
-	@HostListener('keyup.escape')
 	onEscape(): void {
 		this.active = undefined;
 	}
