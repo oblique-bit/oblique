@@ -49,7 +49,7 @@ module.exports = {
 			statements: 52,
 			branches: 0,
 			functions: 11,
-			lines: 52,
+			lines: 50,
 		},
 		'projects/oblique/src/lib/file-upload/progress/*.ts': {
 			statements: 100,

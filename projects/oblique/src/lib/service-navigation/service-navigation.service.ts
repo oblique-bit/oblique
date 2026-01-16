@@ -56,10 +56,18 @@ export class ObServiceNavigationService {
 						favoriteApplicationsCount
 					)
 				),
-				tap(() => this.languageSynchronizationService.initialize(rootUrl)),
-				tap(() => (this.timeoutService.rootUrl = rootUrl)),
-				tap(data => (this.timeoutService.logoutUrl = data.logout.url)),
-				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
+				tap(() => {
+					this.languageSynchronizationService.initialize(rootUrl);
+				}),
+				tap(() => {
+					this.timeoutService.rootUrl = rootUrl;
+				}),
+				tap(data => {
+					this.timeoutService.logoutUrl = data.logout.url;
+				}),
+				tap(data => {
+					this.redirectorService.logoutUrl = data.logout.url;
+				})
 			);
 		}),
 		// the http request should not be fired again, hence the deactivation of both resets
@@ -77,8 +85,12 @@ export class ObServiceNavigationService {
 	private readonly httpApiInterceptorEvents = inject(ObHttpApiInterceptorEvents);
 
 	private readonly state$ = this.pollingService.state$.pipe(
-		tap(state => (this.timeoutService.loginState = state.loginState)),
-		tap(state => this.languageSynchronizationService.setLanguage(state.profile.language)),
+		tap(state => {
+			this.timeoutService.loginState = state.loginState;
+		}),
+		tap(state => {
+			this.languageSynchronizationService.setLanguage(state.profile.language);
+		}),
 		shareReplay({bufferSize: 1, refCount: true})
 	);
 

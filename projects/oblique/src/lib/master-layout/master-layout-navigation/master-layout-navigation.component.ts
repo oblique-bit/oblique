@@ -218,7 +218,9 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isFullWidth = event.value));
+			.subscribe(event => {
+				this.isFullWidth = event.value;
+			});
 	}
 
 	private closeOnEscape(): void {
@@ -283,9 +285,9 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	}
 
 	private monitorForCurrentParentLinkChanges(): void {
-		this.currentParentLinkSource
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(currentParentLink => (this.currentParentLink = currentParentLink));
+		this.currentParentLinkSource.pipe(takeUntil(this.unsubscribe)).subscribe(currentParentLink => {
+			this.currentParentLink = currentParentLink;
+		});
 	}
 
 	private monitorForNavigationEndEvents(): void {

@@ -94,7 +94,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_CUSTOM),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isCustom = event.value));
+			.subscribe(event => {
+				this.isCustom = event.value;
+			});
 	}
 
 	private smallChange(): void {
@@ -103,7 +105,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_SMALL),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isSmall = event.value));
+			.subscribe(event => {
+				this.isSmall = event.value;
+			});
 	}
 
 	private serviceNavigationConfiguration(): void {
@@ -112,7 +116,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.serviceNavigationConfig = event.config));
+			.subscribe(event => {
+				this.serviceNavigationConfig = event.config;
+			});
 	}
 
 	private initializeBanner(bannerToken): ObIBanner {

@@ -317,7 +317,9 @@ export class UpdateV7toV8 implements ObIMigrations {
 					const stylesPath = ['architect', 'build', 'options', 'styles'];
 					[theme, font]
 						.filter(property => !!property)
-						.forEach(property => addAngularConfigInList(tree, stylesPath, property));
+						.forEach(property => {
+							addAngularConfigInList(tree, stylesPath, property);
+						});
 
 					tree.overwrite(
 						filePath,

@@ -111,7 +111,9 @@ export function applyChanges(tree: Tree, filePath: string, changes: Change[]): T
 	const records = tree.beginUpdate(filePath);
 	changes
 		.filter(change => change instanceof InsertChange)
-		.forEach((change: InsertChange) => records.insertLeft(change.pos, change.toAdd));
+		.forEach((change: InsertChange) => {
+			records.insertLeft(change.pos, change.toAdd);
+		});
 	tree.commitUpdate(records);
 	return tree;
 }

@@ -234,12 +234,12 @@ export function setOrCreateAngularProjectsConfig(tree: Tree, path: string[], con
 }
 
 export function addAngularConfigInList(tree: Tree, path: string[], value: any): Tree {
-	getAngularConfigs(tree, path).forEach(project =>
+	getAngularConfigs(tree, path).forEach(project => {
 		setAngularConfig(tree, path, {
 			project: project.project,
 			config: [...(project.config || []).filter((current: any) => current !== value), value],
-		})
-	);
+		});
+	});
 	return tree;
 }
 
@@ -254,7 +254,9 @@ export function includeAngularConfigInList(tree: Tree, path: string[], value: an
 }
 
 export function removeAngularProjectsConfig(tree: Tree, path: string[]): Tree {
-	getAngularConfigs(tree, path).forEach(project => removeAngularConfig(tree, path, project.project));
+	getAngularConfigs(tree, path).forEach(project => {
+		removeAngularConfig(tree, path, project.project);
+	});
 	return tree;
 }
 

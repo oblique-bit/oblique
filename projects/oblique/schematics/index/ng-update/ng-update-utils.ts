@@ -108,7 +108,9 @@ export function removePolyFill(tree: Tree, polyfillName: string, importPattern: 
 		.filter(polyfill => importPattern.test(polyfill.file));
 
 	if (polyfills.length) {
-		polyfills.forEach(polyfill => tree.overwrite(polyfill.name, polyfill.file.replace(importPattern, '')));
+		polyfills.forEach(polyfill => {
+			tree.overwrite(polyfill.name, polyfill.file.replace(importPattern, ''));
+		});
 		removePackageJsonDependency(tree, polyfillName);
 	}
 }

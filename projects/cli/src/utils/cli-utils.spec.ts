@@ -32,10 +32,10 @@ describe('CLI Utils', () => {
 	const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
 
 	beforeAll(() => {
-		console.info = jest.fn();
-		console.time = jest.fn();
-		console.timeEnd = jest.fn();
-		console.warn = jest.fn();
+		jest.spyOn(console, 'info').mockImplementation(() => {});
+		jest.spyOn(console, 'time').mockImplementation(() => {});
+		jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
+		jest.spyOn(console, 'warn').mockImplementation(() => {});
 	});
 
 	describe('optionDescriptions', () => {
@@ -105,7 +105,7 @@ describe('CLI Utils', () => {
 
 	describe('startObCommand', () => {
 		test('startObCommand should start the timer', () => {
-			const mockCallback = jest.fn();
+			const mockCallback = jest.fn() as (options: {test: string}) => void;
 			Object.defineProperty(process.versions, 'node', {
 				value: getMinimumRecommendedVersion(),
 				configurable: true,
@@ -119,7 +119,7 @@ describe('CLI Utils', () => {
 		});
 
 		test('startObCommand should execute the callback', () => {
-			const mockCallback = jest.fn();
+			const mockCallback = jest.fn() as (options: {test: string}) => void;
 			const label = 'test label';
 			const options = {test: 'test'};
 
@@ -129,7 +129,7 @@ describe('CLI Utils', () => {
 		});
 
 		test('startObCommand should end the timer', () => {
-			const mockCallback = jest.fn();
+			const mockCallback = jest.fn() as (options: {test: string}) => void;
 			const label = 'test label';
 			const options = {test: 'test'};
 

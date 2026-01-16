@@ -35,7 +35,9 @@ describe(obPauseWhenPageHidden.name, () => {
 
 			const calls: number[] = [];
 			const emitter = new Subject<number>();
-			emitter.pipe(obPauseWhenPageHidden(doc)).subscribe(number => calls.push(number));
+			emitter.pipe(obPauseWhenPageHidden(doc)).subscribe(number => {
+				calls.push(number);
+			});
 
 			let index = 0;
 			events.forEach(nbr => {

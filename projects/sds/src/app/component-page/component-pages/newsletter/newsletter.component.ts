@@ -52,16 +52,21 @@ export class NewsletterComponent implements OnInit {
 		this.newsletterService
 			.getNewsletterToken()
 			.pipe(
-				tap(result => (this.newsletterService.token = result.data.token)),
+				tap(result => {
+					this.newsletterService.token = result.data.token;
+				}),
 				mergeMap(() => this.newsletterService.addNewsletterEntry(email))
 			)
 			.subscribe({
-				complete: () => this.obNotificationService.success({title: 'Success', message: successMessage}),
-				error: (error: HttpErrorResponse) =>
+				complete: () => {
+					this.obNotificationService.success({title: 'Success', message: successMessage});
+				},
+				error: (error: HttpErrorResponse) => {
 					this.obNotificationService.error({
 						title: 'Error',
 						message: `Something went wrong!. Error: ${error?.message}`,
-					}),
+					});
+				},
 			});
 	}
 }

@@ -47,19 +47,21 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private handleUnknownError(error: ObIObliqueHttpErrorResponse): Observable<never> {
-		return this.handleError(error, !(error.error instanceof HttpErrorResponse), () =>
-			this.notificationService.error('i18n.oblique.http.error.general')
-		);
+		return this.handleError(error, !(error.error instanceof HttpErrorResponse), () => {
+			this.notificationService.error('i18n.oblique.http.error.general');
+		});
 	}
 
 	private handleSessionExpiredError(error: ObIObliqueHttpErrorResponse): Observable<never> {
-		return this.handleError(error, error.error.status === 401, () => this.interceptorEvents.sessionExpire());
+		return this.handleError(error, error.error.status === 401, () => {
+			this.interceptorEvents.sessionExpire();
+		});
 	}
 
 	private handleHttpError(error: ObIObliqueHttpErrorResponse, obliqueRequest: ObIHttpApiRequest): Observable<never> {
-		return this.handleError(error, obliqueRequest.notification.active, () =>
-			this.notify(obliqueRequest.notification, error.error)
-		);
+		return this.handleError(error, obliqueRequest.notification.active, () => {
+			this.notify(obliqueRequest.notification, error.error);
+		});
 	}
 
 	private handleError(error: ObIObliqueHttpErrorResponse, hasError: boolean, action: () => void): Observable<never> {
@@ -123,14 +125,14 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 					title: texts[titleKey] === titleKey ? error.statusText : titleKey,
 				}))
 			)
-			.subscribe(keys =>
+			.subscribe(keys => {
 				this.notificationService.send({
 					message: notification.text || keys.text,
 					title: notification.title || keys.title,
 					type: notification.severity,
 					sticky: notification.sticky,
-				})
-			);
+				});
+			});
 	}
 
 	private isApiCall(url: string): boolean {

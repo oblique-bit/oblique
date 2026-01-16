@@ -40,6 +40,8 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isCustom = event.value));
+			.subscribe(event => {
+				this.isCustom = event.value;
+			});
 	}
 }

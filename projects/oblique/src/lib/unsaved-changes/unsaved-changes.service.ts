@@ -14,7 +14,9 @@ export class ObUnsavedChangesService {
 		private readonly obGlobalEventsService: ObGlobalEventsService,
 		private readonly translateService: TranslateService
 	) {
-		obGlobalEventsService.beforeUnload$.subscribe(event => this.onUnload(event));
+		obGlobalEventsService.beforeUnload$.subscribe(event => {
+			this.onUnload(event);
+		});
 	}
 
 	watch(formId: string, form: ControlContainer): void {

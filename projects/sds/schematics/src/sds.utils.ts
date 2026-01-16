@@ -63,7 +63,9 @@ export async function getSourceFileOrFalse(
 export function changeInsertLeft(changes: InsertChange[], path: string): Rule {
 	return (tree: Tree) => {
 		const updateRecorder = tree.beginUpdate(path);
-		changes.forEach((change: InsertChange) => updateRecorder.insertLeft(change.pos, change.toAdd));
+		changes.forEach((change: InsertChange) => {
+			updateRecorder.insertLeft(change.pos, change.toAdd);
+		});
 		tree.commitUpdate(updateRecorder);
 	};
 }

@@ -118,7 +118,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			let event: KeyboardEvent;
 			let mode;
 			beforeEach(() => {
-				directive.mode$.subscribe(newMode => (mode = newMode));
+				directive.mode$.subscribe(newMode => {
+					mode = newMode;
+				});
 				directive.mode = 'checkbox';
 				directive.toggle(items[4]);
 				directive.focus(items[2]);
@@ -215,7 +217,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			let event: KeyboardEvent;
 			let mode;
 			beforeEach(() => {
-				directive.mode$.subscribe(newMode => (mode = newMode));
+				directive.mode$.subscribe(newMode => {
+					mode = newMode;
+				});
 				directive.mode = 'radio';
 				directive.toggle(items[4]);
 				directive.focus(items[2]);
@@ -262,7 +266,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			describe('selectAll function', () => {
 				it('should do nothing', fakeAsync(() => {
 					let data;
-					directive.selected$.subscribe(selection => (data = selection));
+					directive.selected$.subscribe(selection => {
+						data = selection;
+					});
 					directive.selectAll();
 					skip(1000);
 					expect(data).toBeUndefined();
@@ -272,7 +278,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			describe('deselectAll function', () => {
 				it('should do nothing', () => {
 					let data;
-					directive.selected$.subscribe(selection => (data = selection));
+					directive.selected$.subscribe(selection => {
+						data = selection;
+					});
 					directive.deselectAll();
 					skip(1000);
 					expect(data).toBeUndefined();
@@ -332,7 +340,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			let event: KeyboardEvent;
 			let mode: string;
 			beforeEach(() => {
-				directive.mode$.subscribe(newMode => (mode = newMode));
+				directive.mode$.subscribe(newMode => {
+					mode = newMode;
+				});
 				directive.mode = 'windows';
 				directive.toggle(items[4]);
 				directive.focus(items[2]);
@@ -559,7 +569,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			directive = element.injector.get(ObSelectableGroupDirective);
 			selectableDirectives.forEach(selectableDirective => directive.register(selectableDirective));
 			// reset state before each test case
-			selectableDirectives.forEach(selectableDirective => (selectableDirective.selected = false));
+			selectableDirectives.forEach(selectableDirective => {
+				(selectableDirective as any).selected = false;
+			});
 		});
 
 		describe('writeValue function', () => {

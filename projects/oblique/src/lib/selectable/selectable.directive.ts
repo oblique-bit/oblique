@@ -43,9 +43,9 @@ export class ObSelectableDirective<T = any> implements OnInit {
 	ngOnInit(): void {
 		this.initialTabindex = this.tabindex;
 		this.group.register(this);
-		this.group.mode$
-			.pipe(startWith(this.group.mode), takeUntilDestroyed(this.destroyRef))
-			.subscribe(mode => (this.role = mode === 'windows' ? undefined : mode));
+		this.group.mode$.pipe(startWith(this.group.mode), takeUntilDestroyed(this.destroyRef)).subscribe(mode => {
+			this.role = mode === 'windows' ? undefined : mode;
+		});
 		this.group.disabled$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(disabled => {
 			this.toggleDisabled(disabled);
 		});

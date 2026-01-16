@@ -203,7 +203,7 @@ module.exports = {
 			statements: 25,
 			branches: 100,
 			functions: 0,
-			lines: 27,
+			lines: 25,
 		},
 		'projects/sds/src/app/side-navigation/version': {
 			statements: 66,

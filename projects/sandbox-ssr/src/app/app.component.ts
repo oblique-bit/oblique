@@ -19,8 +19,8 @@ export class AppComponent {
 	constructor() {
 		this.translateService.addLangs(['en', 'fr']);
 		this.translateService.use('en');
-		this.language.valueChanges
-			.pipe(takeUntilDestroyed(), filter(Boolean))
-			.subscribe(lang => this.translateService.use(lang));
+		this.language.valueChanges.pipe(takeUntilDestroyed(), filter(Boolean)).subscribe(lang => {
+			this.translateService.use(lang);
+		});
 	}
 }

@@ -214,7 +214,9 @@ describe('ObFileInfoComponent', () => {
 			});
 
 			it('should unselect all if all are selected', () => {
-				component.dataSource.data.forEach(file => component.selection.select(file));
+				component.dataSource.data.forEach(file => {
+					component.selection.select(file);
+				});
 				component.selectOrUnselectAllItems();
 				expect(component.selection.isEmpty()).toBe(true);
 			});

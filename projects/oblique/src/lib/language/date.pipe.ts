@@ -12,7 +12,9 @@ export class ObDatePipe implements PipeTransform {
 	private locale: string;
 
 	constructor(language: ObLanguageService) {
-		language.locale$.subscribe(locale => (this.locale = locale));
+		language.locale$.subscribe(locale => {
+			this.locale = locale;
+		});
 	}
 
 	transform(value: string | number | Date, format = 'datetime', timezone?: string): string {
