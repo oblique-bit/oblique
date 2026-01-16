@@ -621,7 +621,7 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'error',
 			'@typescript-eslint/no-unsafe-unary-minus': 'error',
 			'@typescript-eslint/no-unused-expressions': 'error',
-			'@typescript-eslint/no-unused-private-class-members': 'off',
+			'@typescript-eslint/no-unused-private-class-members': 'error',
 			'@typescript-eslint/no-unused-vars': ['error'],
 			/**
 			 * Rule: @typescript-eslint/no-use-before-define (https://typescript-eslint.io/rules/no-use-before-define)
