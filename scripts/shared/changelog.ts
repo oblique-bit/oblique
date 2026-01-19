@@ -87,6 +87,7 @@ export class Changelog extends StaticScript {
 	private static parseBreakingChanges(breakingChanges: string, scope: string): string[] {
 		return breakingChanges
 			? breakingChanges
+					.replace(/\*\*/g, '\n  -')
 					.split('*')
 					.filter(change => !!change)
 					.map(change => `- **${scope}:** ${change.trim()}`)
