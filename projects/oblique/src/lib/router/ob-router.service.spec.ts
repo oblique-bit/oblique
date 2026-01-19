@@ -51,7 +51,6 @@ describe(ObRouterService.name, () => {
 				profileLinks: [],
 				infoLinks: [],
 				infoContact: {},
-				maxLastUsedApplications: 3,
 				maxFavoriteApplications: 3,
 				displayLanguages: true,
 				pamsAppId: undefined,
