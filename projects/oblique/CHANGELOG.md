@@ -109,7 +109,7 @@
 - **column-layout:** allow columns to be initially closed ([c46ee3b7](https://github.com/oblique-bit/oblique/commit/c46ee3b78bba6c96350f350ec235d3c5cd3bb8c4))
 - **icon:** remove `ObTIconConfig` ([9eba071d](https://github.com/oblique-bit/oblique/commit/9eba071d86bff47427af6173658ed3247465691c))
 - **icon:** remove `ObIconModule.forRoot` method ([0e5e9afa](https://github.com/oblique-bit/oblique/commit/0e5e9afa3f7865f9e9e56ab638bd478929903705))
-- **icon:** update icon library ([31fb447e](https://github.com/oblique-bit/oblique/commit/31fb447eec48acbfb6199410af47bde3a6a99a34))
+- **icon:** update icon set with new, renamed, redrawn and removed icons ([31fb447e](https://github.com/oblique-bit/oblique/commit/31fb447eec48acbfb6199410af47bde3a6a99a34))
 - **language:** use type instead of an enum for date format ([975db92b](https://github.com/oblique-bit/oblique/commit/975db92bf04b2c7260d8b1076ae2c10e92bb09d6))
 - **master-layout:** increase icon size and realign icons ([bd1d9ef3](https://github.com/oblique-bit/oblique/commit/bd1d9ef34f273f549a3869c39e2a539c4083d605))
 - **master-layout:** deprecate `maxFavoriteApplications` in `ObMasterLayoutHeaderService` ([5349e849](https://github.com/oblique-bit/oblique/commit/5349e849ce26b7489f9d0ee1cc0ed58387db7eea))
@@ -174,7 +174,7 @@
 - **http-interceptor:** `ObHttpApiInterceptorModule` have been removed without replacement, it was already doing nothing (Solved with Schematics)
 - **icon:** `ObTIconConfig` have been removed, use `provideObliqueConfiguration` instead
 - **icon:** `ObIconModule.forRoot` have been removed, use `provideObliqueConfiguration` instead
-- **icon:** Many icons have been renamed. (Solved with Schematics)
+- **icon:** Many icons have been renamed (Solved with Schematics). Since this is a substantial change, please refer to [schematics code](https://github.com/oblique-bit/oblique/blob/master/projects/oblique/schematics/index/ng-update/update-v13-to-v14.ts#L31) for more details.
 - **language:** Use the given formats of type `ObDateFormat` instead of the enum `ObEDateFormats`
 - **master-layout:** `scrollTarget` has been removed without replacement.
 - **master-layout:** `ObMasterLayoutConfig.focusableFragments` have been removed without replacement. Now all fragments are focusable (Solved with Schematics)
