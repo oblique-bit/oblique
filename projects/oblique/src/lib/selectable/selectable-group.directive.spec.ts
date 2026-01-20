@@ -583,5 +583,19 @@ describe(ObSelectableGroupDirective.name, () => {
 				expect(component.selectableGroup.value).toEqual([2]);
 			});
 		});
+
+		describe('disabled state', () => {
+			it('should not add "disabled" attribute if enabled', () => {
+				component.selectableGroup.enable();
+				fixture.detectChanges();
+				expect(element.attributes['disabled']).toBeUndefined();
+			});
+
+			it('should add "disabled" attribute if disabled', () => {
+				component.selectableGroup.disable();
+				fixture.detectChanges();
+				expect(element.attributes['disabled']).toBe('');
+			});
+		});
 	});
 });
