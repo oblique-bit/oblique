@@ -2,11 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {
-	ObEMasterLayoutEventValues,
-	ObIMasterLayoutEvent,
-	ObIServiceNavigationConfigWithNotice,
-} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObIServiceNavigationConfigLive} from '../master-layout.model';
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutHeaderService {
@@ -63,17 +59,11 @@ export class ObMasterLayoutHeaderService {
 		});
 	}
 
-	get serviceNavigationConfiguration(): ObIServiceNavigationConfigWithNotice {
+	get serviceNavigationConfiguration(): ObIServiceNavigationConfigLive {
 		return this.serviceNavigationConfigurationInternal;
 	}
 
-	set serviceNavigationConfiguration(value: ObIServiceNavigationConfigWithNotice) {
-		if (value.maxFavoriteApplications && Object.keys(value).length === 1) {
-			return;
-		}
-		if (value.maxFavoriteApplications && Object.keys(value).length !== 1) {
-			delete value.maxFavoriteApplications;
-		}
+	set serviceNavigationConfiguration(value: ObIServiceNavigationConfigLive) {
 		this.serviceNavigationConfigurationInternal = value;
 		this.events.next({
 			name: ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION,

@@ -49,10 +49,6 @@ export class ObServiceNavigationComponent implements OnInit {
 	@Input() infoLinks: ObIServiceNavigationLink[] = [];
 	@Input() infoContactText: string;
 	@Input() infoContact: ObIServiceNavigationContact;
-	/**
-	 * @deprecated since Oblique 13.3.2. It will be removed in the next major version.
-	 */
-	@Input() maxLastUsedApplications = 3;
 	@Input() maxFavoriteApplications = 8;
 	@Input() environment: ObEPamsEnvironment;
 	@Input() rootUrl: string;

@@ -7,6 +7,7 @@ import {
 	removeImport,
 	replaceInFile,
 	warnIfStandalone,
+	writeFile,
 } from '../utils';
 import {ObIMigrations} from './ng-update.model';
 
@@ -18,7 +19,14 @@ export class UpdateV14toV15 implements ObIMigrations {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	applyMigrations(options: IUpdateV15Schema): Rule {
 		return (tree: Tree, context: SchematicContext) =>
-			chain([warnIfStandalone(), this.renameIcons(), this.removeBrowserAnimationModuleIfUnused()])(tree, context);
+			chain([
+				warnIfStandalone(),
+				this.removeMaxFavoriteApplications(),
+				this.removeMaxLastUsedApplications(),
+				this.removeObILocaleDisplay(),
+				this.renameIcons(),
+				this.removeBrowserAnimationModuleIfUnused(),
+			])(tree, context);
 	}
 
 	private removeBrowserAnimationModuleIfUnused(): Rule {
@@ -81,6 +89,54 @@ export class UpdateV14toV15 implements ObIMigrations {
 				replaceInFile(tree, filePath, /ObEIcon\.SORT-LIST_ASCENDING/g, 'ObEIcon.SORT_LIST_ASCENDING');
 			};
 			return applyInTree(tree, toApply, '*.{ts,html}');
+		});
+	}
+
+	private removeObILocaleDisplay(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove OblLocale.display property');
+			const apply = (filePath: string): void => {
+				this.removeProperty(tree, filePath, 'locale', 'display');
+			};
+			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private removeMaxFavoriteApplications(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove maxFavoriteApplications property');
+			const apply = (filePath: string): void => {
+				this.removeProperty(tree, filePath, 'serviceNavigationConfiguration', 'maxFavoriteApplications');
+			};
+			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private removeProperty(tree: Tree, fileName: string, key: string, property: string): void {
+		const content = readFile(tree, fileName);
+		// match assignments like service.locale.display = true;
+		const assignmentRegex = new RegExp(
+			String.raw`.*(?:\[[\x60'"])?${key}(?:[\x60'"]\])?(?:\[[\x60'"]|\.)${property}(?:[\x60'"]\])?\s*=\s*[^;\n]+;?;`,
+			'mu'
+		);
+		// match object properties like service.locale = {display: true, ...};
+		const objectPropertyRegex = new RegExp(
+			String.raw`(?<=.*?${key}\s*=\s*\{.*)(?:\s*,?\s*${property}\s*:\s*(?<value>[^,}]+),?)`,
+			'mu'
+		);
+		const newContent = content.replace(assignmentRegex, '').replace(objectPropertyRegex, '');
+		if (newContent !== content) {
+			writeFile(tree, fileName, newContent);
+		}
+	}
+
+	private removeMaxLastUsedApplications(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove maxLastUsedApplications property');
+			const apply = (filePath: string): void => {
+				this.removeProperty(tree, filePath, 'locale', 'maxLastUsedApplications');
+			};
+			return applyInTree(tree, apply, '*.ts');
 		});
 	}
 }
