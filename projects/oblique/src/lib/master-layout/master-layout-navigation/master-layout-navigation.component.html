@@ -9,7 +9,6 @@
 		type="button"
 		(click)="scrollLeft()"
 		[disabled]="!currentScroll"
-		aria-hidden="true"
 		id="ob-navigation-scrollable-control-left"
 		[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-left' | translate"
 	>
@@ -216,7 +215,6 @@
 		(click)="scrollRight()"
 		type="button"
 		[disabled]="currentScroll === maxScroll"
-		aria-hidden="true"
 		id="ob-navigation-scrollable-control-right"
 		[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-right' | translate"
 	>
