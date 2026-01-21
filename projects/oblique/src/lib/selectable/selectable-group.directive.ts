@@ -92,6 +92,7 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	setDisabledState(isDisabled: boolean): void {
 		this.isDisabled = isDisabled;
 		this.isDisabled = isDisabled ? '' : undefined;
+		this.disabled$.next(isDisabled);
 	}
 
 	register(directive: ObSelectableDirective<T>): void {
