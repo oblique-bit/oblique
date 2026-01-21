@@ -1,3 +1,11 @@
+# [14.2.1](https://github.com/oblique-bit/oblique/compare/14.2.0...14.2.1) (2026-01-21)
+
+## Bug Fixes
+
+- **selectable:** initialize `mode` correctly ([128ce0d0](https://github.com/oblique-bit/oblique/commit/128ce0d0db52b36f0b7a863ecad555564182a438))
+- **selectable:** propagate disabled state from group to each selectable item ([e6783a6e](https://github.com/oblique-bit/oblique/commit/e6783a6ea107944b28805ef54b0c386d48c36646))
+- **selectable:** do not bind boolean value to `disabled` attribute when set via forms ([2095faef](https://github.com/oblique-bit/oblique/commit/2095faeff76c3f5cae00506c08f59d611a593ace))
+
 # [14.2.0](https://github.com/oblique-bit/oblique/compare/14.1.3...14.2.0) (2026-01-08)
 
 ## Bug Fixes
