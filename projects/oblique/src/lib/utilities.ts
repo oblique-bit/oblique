@@ -40,6 +40,7 @@ import {ObStepperIntlService} from './stepper/ob-stepper.service';
 import {MatDatepickerIntl} from '@angular/material/datepicker';
 import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
+import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
 
 export const WINDOW = new InjectionToken<Window>('Window');
@@ -70,6 +71,7 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
 			inject(ObIconService).registerOnAppInit(config.icon);
+			inject(ObLanguageService).initialize();
 			inject(ObRouterService).initialize();
 		}),
 		provideObliqueTranslations(config.translate),
@@ -92,6 +94,7 @@ export function provideObliqueTestingConfiguration(
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
 			inject(ObIconService).registerOnAppInit(config.icon);
+			inject(ObLanguageService).initialize();
 			inject(ObRouterService).initialize();
 		}),
 		provideTranslateService({

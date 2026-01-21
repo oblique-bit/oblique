@@ -13,23 +13,34 @@ export class ObLanguageService {
 	readonly locale$: Observable<string>;
 	private static readonly token = 'oblique_lang';
 	private readonly locale: BehaviorSubject<string>;
+	private readonly languages: string[];
+	private readonly locales: string[];
 
 	constructor(
 		private readonly translate: TranslateService,
-		rendererFactory: RendererFactory2,
-		config: ObMasterLayoutConfig,
-		@Inject(DOCUMENT) document: Document,
-		@Optional() adapter: DateAdapter<unknown>
+		private readonly rendererFactory: RendererFactory2,
+		private readonly config: ObMasterLayoutConfig,
+		@Inject(DOCUMENT) private readonly document: Document,
+		@Optional() private readonly adapter: DateAdapter<unknown>
 	) {
-		if (!config.locale.disabled) {
-			const locales = config.locale.locales.map(locale => (locale as ObILocaleObject).locale || locale) as string[];
-			const languages = locales.map(locale => locale.split('-')[0]);
-			this.validateLocales(locales);
-			this.initTranslateService(languages, config.locale.defaultLanguage);
-			this.locale = new BehaviorSubject<string>(this.getLocale(locales, translate.getCurrentLang()));
-			this.locale$ = this.locale.asObservable();
-			this.languageChange(locales, rendererFactory.createRenderer(null, null), document.head.parentElement);
-			this.setLocaleOnDateAdapter(adapter);
+		this.locales = this.config.locale.locales.map(locale => (locale as ObILocaleObject).locale || locale) as string[];
+		this.validateLocales(this.locales);
+		this.languages = this.locales.map(locale => locale.split('-')[0]);
+		this.locale = new BehaviorSubject<string>(
+			this.getLocale(this.locales, this.getCurrentLang(this.languages, this.config.locale.defaultLanguage))
+		);
+		this.locale$ = this.locale.asObservable();
+	}
+
+	initialize(): void {
+		if (!this.config.locale.disabled) {
+			this.initTranslateService(this.languages, this.config.locale.defaultLanguage);
+			this.languageChange(
+				this.locales,
+				this.rendererFactory.createRenderer(null, null),
+				this.document.head.parentElement
+			);
+			this.setLocaleOnDateAdapter(this.adapter);
 		}
 	}
 
