@@ -1,3 +1,9 @@
+# [14.2.1](https://github.com/oblique-bit/oblique/compare/14.2.0...14.2.1) (2026-01-21)
+
+## Features
+
+- **selectable:** add a selectable card ([23458d4d](https://github.com/oblique-bit/oblique/commit/23458d4d4d576d9faf26ac3b2b222265738bb57e))
+
 # [14.2.0](https://github.com/oblique-bit/oblique/compare/14.1.3...14.2.0) (2026-01-08)
 
 ## Features
