@@ -53,6 +53,7 @@ const versions: Record<string, string | versionFunc> = {
 	'eslint-plugin-prettier': '^5.0.0',
 	husky: '^9.0.0',
 	jest: '^30.0.0',
+	'jest-environment-jsdom': '^30.0.0',
 	'jest-sonar-reporter': '^2.0.0',
 	prettier: '^3.0.0',
 };

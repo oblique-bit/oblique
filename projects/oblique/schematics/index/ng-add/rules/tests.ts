@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {addDevDependency, getTemplate, removeDevDependencies} from '../ng-add-utils';
-import {addFile, deleteFile, infoMigration, readFile, setAngularProjectsConfig} from '../../utils';
+import {addFile, infoMigration, setAngularProjectsConfig} from '../../utils';
 
 export function addJest(jest: boolean): Rule {
 	return (tree: Tree, context: SchematicContext) => {
@@ -9,14 +9,11 @@ export function addJest(jest: boolean): Rule {
 		}
 
 		infoMigration(context, 'Toolchain: Replacing karma/jasmine with jest');
-		return chain([removeJasmine(), addJestDependencies(), createJestConfigFiles(), referToJest(), adaptTsConfigSpec()])(
-			tree,
-			context
-		);
+		return chain([updateTsConfigSpec(), addJestDependencies(), createJestConfigFiles(), referToJest()])(tree, context);
 	};
 }
 
-function removeJasmine() {
+function updateTsConfigSpec() {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, context: SchematicContext): Tree => {
 		const tsConfigSpec = 'tsconfig.spec.json';
@@ -27,9 +24,6 @@ function removeJasmine() {
 			tree.create(tsConfigSpec, tpl);
 		}
 
-		deleteFile(tree, 'src/test.ts');
-		deleteFile(tree, 'karma.conf.js');
-
 		return tree;
 	};
 }
@@ -37,11 +31,12 @@ function removeJasmine() {
 function addJestDependencies() {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	return (tree: Tree, context: SchematicContext): Tree => {
-		['jest', '@types/jest', 'jest-sonar-reporter', '@angular-builders/jest'].forEach(dependency =>
-			addDevDependency(tree, dependency)
+		removeDevDependencies(tree, 'vitest');
+		removeDevDependencies(tree, 'jsdom');
+		['jest', '@types/jest', 'jest-sonar-reporter', '@angular-builders/jest', 'jest-environment-jsdom'].forEach(
+			dependency => addDevDependency(tree, dependency)
 		);
-		removeDevDependencies(tree, 'jasmine');
-		return removeDevDependencies(tree, 'karma');
+		return tree;
 	};
 }
 
@@ -66,23 +61,9 @@ function referToJest() {
 		setAngularProjectsConfig(tree, ['architect', 'test'], {
 			builder: '@angular-builders/jest:run',
 			options: {
-				configPath: 'tests/jest.config.js',
+				config: 'tests/jest.config.js',
 				tsConfig: 'tsconfig.spec.json',
 				'max-workers': ['2'],
 			},
 		});
-}
-
-function adaptTsConfigSpec() {
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return (tree: Tree, context: SchematicContext): void => {
-		const tsConfigName = 'tsconfig.spec.json';
-		if (tree.exists(tsConfigName)) {
-			const tsConfig = readFile(tree, tsConfigName).replace(
-				/(?<prefix>"types"\s*:\s*\[\s*)"jasmine"(?<suffix>\s*])/,
-				'$<prefix>"node", "jest"$<suffix></suffix>'
-			);
-			tree.overwrite(tsConfigName, tsConfig);
-		}
-	};
 }
