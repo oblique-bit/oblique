@@ -3,10 +3,10 @@ import {angularAppFilesNames, appModulePath, getTemplate, importModuleInRoot, ob
 import {ObIOptionsSchema} from '../ng-add.model';
 import {
 	ObliquePackage,
-	addAngularConfigInList,
 	applyInTree,
 	createSafeRule,
 	getIndexPaths,
+	includeAngularConfigInList,
 	infoMigration,
 	overwriteIndexFile,
 	readFile,
@@ -93,7 +93,7 @@ function addFeatureDetection(): Rule {
 				`<body>$<lineBreak>${getTemplate(tree, 'default-index.html')}`
 			)
 		);
-		return addAngularConfigInList(
+		return includeAngularConfigInList(
 			tree,
 			['architect', 'build', 'options', 'scripts'],
 			'node_modules/@oblique/oblique/ob-features.js'
