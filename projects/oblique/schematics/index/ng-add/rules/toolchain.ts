@@ -25,7 +25,6 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			moveStyles(),
 			addNpmrc(options.npmrc),
 			removeFavicon(),
-			removeI18nFromAngularJson(),
 			removeUnusedScripts(),
 			addPrefix(options.prefix),
 			updateExistingPrefixes(options.prefix),
@@ -127,13 +126,6 @@ function removeFavicon(): Rule {
 					item => typeof item === 'string' || JSON.stringify(item) !== '{"glob":"**/*","input":"public"}'
 				)
 		);
-	});
-}
-
-function removeI18nFromAngularJson(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, "Toolchain: Removing Angular's i18n");
-		return removeAngularProjectsConfig(tree, ['architect', 'extract-i18n']);
 	});
 }
 
