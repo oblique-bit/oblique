@@ -305,6 +305,13 @@ function setEnvironments(environments: string): Rule {
 						'prod',
 						environment
 					);
+				} else {
+					config[environment].fileReplacements = [
+						{
+							replace: 'projects/sandbox/src/environments/environment.ts',
+							with: `projects/sandbox/src/environments/environment.${environment}.ts`,
+						},
+					];
 				}
 
 				if (environment === 'dev') {
