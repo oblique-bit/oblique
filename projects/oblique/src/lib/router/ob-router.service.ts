@@ -4,14 +4,12 @@ import {TranslateService} from '@ngx-translate/core';
 import {filter} from 'rxjs';
 import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
-import {ObLanguageService} from '../language/language.service';
 import {OB_HAS_LANGUAGE_IN_URL} from '../utilities';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class ObRouterService {
-	private readonly language = inject(ObLanguageService); // needs to be injected to ensure ObLanguageService is instantiated
 	private readonly router = inject(Router);
 	private readonly masterLayoutConfig = inject(ObMasterLayoutConfig);
 	private readonly hasLanguageInUrl = inject(OB_HAS_LANGUAGE_IN_URL);

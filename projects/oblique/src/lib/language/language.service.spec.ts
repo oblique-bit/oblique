@@ -66,6 +66,49 @@ describe('LanguageService', () => {
 			expect(service).toBeTruthy();
 		});
 
+		describe('locale$', () => {
+			it('should be an observable', () => {
+				expect(service.locale$ instanceof Observable).toBe(true);
+			});
+		});
+	});
+
+	describe('with valid locales and without DateAdapter after call of initialize()', () => {
+		beforeEach(() => {
+			const mock = {
+				addLangs: jest.fn(),
+				setFallbackLang: jest.fn(),
+				use: jest.fn(),
+				onLangChange: new Subject<{lang: string; translations: unknown}>(),
+				getBrowserLang: jest.fn(),
+				getFallbackLang: jest.fn(),
+				getCurrentLang: jest.fn(),
+			};
+
+			jest.spyOn(console, 'warn');
+
+			TestBed.configureTestingModule({
+				providers: [
+					{provide: TranslateService, useValue: mock},
+					{
+						provide: ObMasterLayoutConfig,
+						useValue: {
+							locale: {
+								locales: ['de-CH', 'fr-CH', 'it-CH'],
+								default: 'de',
+								disabled: false,
+								display: true,
+							},
+						},
+					},
+				],
+			});
+
+			service = TestBed.inject(ObLanguageService);
+			translate = TestBed.inject(TranslateService);
+			service.initialize();
+		});
+
 		it('should call addLangs', () => {
 			expect(translate.addLangs).toHaveBeenCalledWith(['de', 'fr', 'it']);
 		});
@@ -79,10 +122,6 @@ describe('LanguageService', () => {
 		});
 
 		describe('locale$', () => {
-			it('should be an observable', () => {
-				expect(service.locale$ instanceof Observable).toBe(true);
-			});
-
 			it('should emit a locale when language changes to defined one', done => {
 				// @ts-ignore as translate is mocked, onLangChange is a Subject instead of an Observable
 				translate.onLangChange.next({lang: 'fr', translations: null});
@@ -145,6 +184,52 @@ describe('LanguageService', () => {
 			expect(service).toBeTruthy();
 		});
 
+		describe('locale$', () => {
+			it('should be an observable', () => {
+				expect(service.locale$ instanceof Observable).toBe(true);
+			});
+		});
+	});
+
+	describe('with valid locales and a DateAdapter after call of initialize()', () => {
+		beforeEach(() => {
+			const mock = {
+				addLangs: jest.fn(),
+				setFallbackLang: jest.fn(),
+				use: jest.fn(),
+				onLangChange: new Subject<{lang: string; translations: unknown}>(),
+				getBrowserLang: jest.fn(),
+				getFallbackLang: jest.fn(),
+				getCurrentLang: jest.fn().mockReturnValue('de'),
+			};
+
+			const dateAdapterMock = {setLocale: jest.fn()};
+
+			jest.spyOn(console, 'warn');
+
+			TestBed.configureTestingModule({
+				providers: [
+					{provide: DateAdapter, useValue: dateAdapterMock},
+					{provide: TranslateService, useValue: mock},
+					{
+						provide: ObMasterLayoutConfig,
+						useValue: {
+							locale: {
+								locales: ['de-CH', 'fr-CH', 'it-CH'],
+								defaultLanguage: 'de',
+								disabled: false,
+								display: true,
+							},
+						},
+					},
+				],
+			});
+
+			service = TestBed.inject(ObLanguageService);
+			translate = TestBed.inject(TranslateService);
+			service.initialize();
+		});
+
 		it('should call addLangs', () => {
 			expect(translate.addLangs).toHaveBeenCalledWith(['de', 'fr', 'it']);
 		});
@@ -163,10 +248,6 @@ describe('LanguageService', () => {
 		});
 
 		describe('locale$', () => {
-			it('should be an observable', () => {
-				expect(service.locale$ instanceof Observable).toBe(true);
-			});
-
 			it('should emit a locale when language changes to defined one', done => {
 				// @ts-ignore as translate is mocked, onLangChange is a Subject instead of an Observable
 				translate.onLangChange.next({lang: 'fr', translations: null});

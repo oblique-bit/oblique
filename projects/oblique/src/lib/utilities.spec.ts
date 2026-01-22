@@ -32,6 +32,7 @@ import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
 import {Observable, firstValueFrom, of} from 'rxjs';
+import {ObLanguageService} from './language/language.service';
 const translations: any = {};
 class FakeLoader implements TranslateLoader {
 	// eslint-disable-next-line @typescript-eslint/naming-convention,@typescript-eslint/no-unused-vars
@@ -57,6 +58,7 @@ describe('utilities', () => {
 				TestBed.configureTestingModule({
 					providers: [
 						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement: {
@@ -84,6 +86,12 @@ describe('utilities', () => {
 			describe('Icon configuration', () => {
 				it('should call "registerOnAppInit" on "ObIconService"', () => {
 					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith(undefined);
+				});
+			});
+
+			describe('Language configuration', () => {
+				it('should call "initialize" on "ObLanguageService"', () => {
+					expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalled();
 				});
 			});
 
