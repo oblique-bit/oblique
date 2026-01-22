@@ -46,6 +46,7 @@ function setBuilder(): Rule {
 		infoMigration(context, 'Toolchain: Setting angular builder');
 		getAngularConfigs(tree, []).forEach(project => {
 			const {build} = project.config.architect;
+			const {serve} = project.config.architect;
 			const buildOptions = build.options;
 			const buildConfigurations = build.configurations;
 			const buildConfigurationsProduction = buildConfigurations.production;
@@ -73,6 +74,14 @@ function setBuilder(): Rule {
 							...buildConfigurationsProduction,
 						},
 					},
+				},
+			});
+
+			setAngularConfig(tree, ['architect', 'serve'], {
+				project: project.project,
+				config: {
+					...serve,
+					builder: '@angular-devkit/build-angular:dev-server',
 				},
 			});
 		});
