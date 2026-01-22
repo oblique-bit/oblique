@@ -1,6 +1,13 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {addDevDependency, addScript, angularAppFilesNames, getTemplate, removeScript} from '../ng-add-utils';
+import {
+	addDevDependency,
+	addScript,
+	angularAppFilesNames,
+	getTemplate,
+	removeRootProperty,
+	removeScript,
+} from '../ng-add-utils';
 import {
 	addFile,
 	createSafeRule,
@@ -213,6 +220,7 @@ function addPrettier(eslint: boolean): Rule {
 			);
 			addScript(tree, 'format', 'npm run lint -- --fix');
 			writeFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
+			removeRootProperty(tree, 'prettier');
 		}
 		return tree;
 	});

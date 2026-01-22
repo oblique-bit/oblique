@@ -148,6 +148,13 @@ export function removeScript(tree: Tree, script: string): Tree {
 	return tree;
 }
 
+export function removeRootProperty(tree: Tree, property: string): Tree {
+	const packageJson = getJson(tree, packageJsonConfigPath);
+	delete packageJson[property];
+	tree.overwrite(packageJsonConfigPath, JSON.stringify(packageJson, null, 2));
+	return tree;
+}
+
 export function addRootProperty(tree: Tree, name: string, content: any): Tree {
 	const packageJson = getJson(tree, packageJsonConfigPath);
 	packageJson[name] = content;
