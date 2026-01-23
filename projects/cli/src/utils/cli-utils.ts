@@ -13,7 +13,6 @@ export const currentVersions = {
 	'@oblique/toolchain': version,
 	'@angular/core': '21',
 	'@angular/cdk': '21',
-	'@angular/animations': '21',
 	'@angular-devkit/build-angular': '21',
 	'@types/jest': '30',
 	'@angular-builders/jest': '21',
@@ -144,7 +143,7 @@ export function execute(config: ObCommandConfig): void {
 			);
 		case 'ngUpdate':
 			return executeNgCommand(
-				`update ${versionDependencies(config.dependencies).join(' ')}`,
+				`update ${buildNgUpdateDependencyArgs(config.dependencies, config.angularDependencies)}`,
 				{'allow-dirty': true, ...config.options},
 				config.execSyncOptions
 			);
@@ -182,6 +181,26 @@ export function parseCommandArguments(): {
 		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 		arguments: argv.slice(3),
 	};
+}
+
+function buildNgUpdateDependencyArgs(
+	dependencies: (keyof typeof currentVersions)[],
+	angularDependencies: string[]
+): string {
+	const versioned = versionDependencies(dependencies);
+	const additionalAngular = angularDependencies.filter(
+		dep => !versioned.some(versionedDep => new RegExp(`^${dep}(?:@.+)?$`, 'u').test(versionedDep))
+	);
+	const angular = additionalAngular
+		.map(dep => {
+			if (dep.startsWith('@angular')) {
+				return `${dep}@${currentVersions['@angular/core']}`;
+			}
+			return dep;
+		})
+		.join(' ');
+
+	return [...versioned, angular].join(' ').trim();
 }
 
 function isNodeVersionRecommended(recommendedNodeMajorVersion: number): boolean {

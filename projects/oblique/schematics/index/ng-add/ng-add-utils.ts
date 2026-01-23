@@ -35,6 +35,7 @@ const versions: Record<string, string | versionFunc> = {
 	'@angular/core': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
+	'@angular-devkit/build-angular': version => `^${version}.0.0`,
 	'@angular-eslint/eslint-plugin': '^21.0.0',
 	'@angular-eslint/eslint-plugin-template': '^21.0.0',
 	'@angular-eslint/template-parser': '^21.0.0',

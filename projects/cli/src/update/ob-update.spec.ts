@@ -3,6 +3,12 @@ import path from 'node:path';
 import fs from 'node:fs';
 import type {PackageDependencies} from './ob-update.model';
 import * as obUpdate from './ob-update';
+import {execute} from '../utils/cli-utils';
+// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+jest.mock('../utils/cli-utils', () => ({
+	...jest.requireActual('../utils/cli-utils'),
+	execute: jest.fn(),
+}));
 
 describe('ObUpdateCommand Tests', () => {
 	describe('functions ', () => {
@@ -67,14 +73,14 @@ describe('ObUpdateCommand Tests', () => {
 					expect(command.summary()).toBe('Updates Oblique and runs the migration.');
 				});
 
-				test('with usage to be "update"', () => {
-					expect(command.usage()).toBe('update');
+				test('with usage to be " "', () => {
+					expect(command.usage()).toBe(' ');
 				});
 
 				describe('with help settings', () => {
 					test('with help Information to be usage text', () => {
 						expect(command.helpInformation()).toBe(
-							`Usage: update update\n\nOptions:\n  -h, --help  Shows a help message for the "ob update" command in the console\n`
+							`Usage: update  \n\nOptions:\n  -h, --help  Shows a help message for the "ob update" command in the console\n`
 						);
 					});
 				});
@@ -127,6 +133,94 @@ describe('ObUpdateCommand Tests', () => {
 				expect(() => obUpdate.findPackage()).toThrow(
 					`Cant find the package.json at path: ${[process.cwd(), 'package.json'].join('/')}. Please navigate to the level of your package.json and try "ob update" again.`
 				);
+			});
+		});
+
+		describe('runUpdateDependencies', () => {
+			describe('successful execution', () => {
+				beforeEach(() => {
+					jest.spyOn(obUpdate, 'isDependencyInPackage').mockImplementation(dependency => dependency === 'jest');
+
+					jest.spyOn(obUpdate, 'findPackage').mockReturnValue({
+						dependencies: {jest: '29.0.0'},
+					});
+
+					obUpdate.runUpdateDependencies();
+				});
+
+				test('calls execute', () => {
+					expect(execute).toHaveBeenCalledTimes(6);
+				});
+
+				test('uses ngUpdate command', () => {
+					expect(execute).toHaveBeenCalledWith(expect.objectContaining({name: 'ngUpdate'}));
+				});
+
+				test('passes filtered dependencies', () => {
+					expect(execute).toHaveBeenCalledWith(
+						expect.objectContaining({
+							dependencies: ['jest'],
+						})
+					);
+				});
+
+				test('passes force option', () => {
+					expect(execute).toHaveBeenCalledWith(
+						expect.objectContaining({
+							options: {force: true},
+						})
+					);
+				});
+
+				test('passes angularDependencies from package', () => {
+					expect(execute).toHaveBeenCalledWith(
+						expect.objectContaining({
+							angularDependencies: [],
+						})
+					);
+				});
+			});
+			describe('empty package', () => {
+				beforeEach(() => {
+					jest.spyOn(obUpdate, 'isDependencyInPackage').mockImplementation(() => true);
+					jest.spyOn(obUpdate, 'findPackage').mockReturnValue({
+						dependencies: {},
+					});
+					jest.spyOn(console, 'error').mockImplementation(() => {});
+					obUpdate.runUpdateDependencies();
+				});
+
+				test('uses ngUpdate command', () => {
+					expect(execute).toHaveBeenCalledWith(expect.objectContaining({name: 'ngUpdate'}));
+				});
+
+				test('passes no  empty angular dependencies', () => {
+					expect(execute).toHaveBeenCalledWith(
+						expect.objectContaining({
+							angularDependencies: [],
+						})
+					);
+				});
+			});
+
+			describe('error handling', () => {
+				beforeEach(() => {
+					jest.spyOn(obUpdate, 'isDependencyInPackage').mockReturnValue(true);
+					jest.spyOn(obUpdate, 'findPackage').mockReturnValue({
+						dependencies: {jest: '29.0.0'},
+					});
+
+					jest.spyOn(console, 'error').mockImplementation(() => {});
+					(execute as jest.Mock).mockImplementation(() => {
+						throw new Error('boom');
+					});
+
+					obUpdate.runUpdateDependencies();
+				});
+
+				test('logs error to console', () => {
+					expect(console.error).toHaveBeenCalledTimes(2);
+				});
 			});
 		});
 	});
