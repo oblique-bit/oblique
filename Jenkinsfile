@@ -13,14 +13,6 @@ nodejsPipelineTemplate {
 			'test': 'npm run test-ci --workspaces',
 			'build': 'npm run build --workspaces'
 		],
-		'release/major_15.0.0': [
-			'publish': [
-				'@oblique/oblique',
-				'@oblique/cli',
-				'@oblique/service-navigation-web-component',
-				'@oblique/toolchain'
-			]
-		],
 		master: [
 			'publish': [
 				'@oblique/oblique',
