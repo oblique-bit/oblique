@@ -41,8 +41,8 @@ class Release extends StaticScript {
 			const branchName = Git.getCurrentBranchName();
 			Files.overwrite('Jenkinsfile', content =>
 				content.replace(
-					/(?=master)/,
-					`'${branchName}': [\n\t\t\tpublish: [\n\t\t\t\t'@oblique/oblique',\n\t\t\t\t'@oblique/cli',\n\t\t\t\t'@oblique/service-navigation-web-component',\n\t\t\t\t'@oblique/toolchain'\n\t\t\t],\n\t\t\tgitTag: true\n\t\t],\n\t\t`
+					/^\s*master\s*:\s*\[(?:[^[\]]|\[(?:[^[\]]|\[[^[\]]*\])*\])*\]/mu,
+					match => `${match.replace('master', `'${branchName}'`)},\n${match}`
 				)
 			);
 		}
