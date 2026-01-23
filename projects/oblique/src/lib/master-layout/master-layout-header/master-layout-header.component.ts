@@ -20,7 +20,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {OB_BANNER, OB_PAMS_CONFIGURATION, WINDOW} from '../../utilities';
+import {OB_BANNER, OB_PAMS_CONFIGURATION} from '../../utilities';
 import {ObIBanner, ObIPamsConfiguration} from '../../utilities.model';
 import {
 	ObEEnvironment,
@@ -58,8 +58,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
 		private readonly config: ObMasterLayoutConfig,
-		private readonly el: ElementRef,
-		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner,
 		@Inject(OB_PAMS_CONFIGURATION) @Optional() public readonly pamsConfiguration: ObIPamsConfiguration
 	) {
@@ -94,7 +92,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_CUSTOM),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isCustom = event.value));
+			.subscribe(event => {
+				this.isCustom = event.value;
+			});
 	}
 
 	private smallChange(): void {
@@ -103,7 +103,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_SMALL),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isSmall = event.value));
+			.subscribe(event => {
+				this.isSmall = event.value;
+			});
 	}
 
 	private serviceNavigationConfiguration(): void {
@@ -112,7 +114,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.serviceNavigationConfig = event.config));
+			.subscribe(event => {
+				this.serviceNavigationConfig = event.config;
+			});
 	}
 
 	private initializeBanner(bannerToken): ObIBanner {

@@ -61,7 +61,7 @@ describe(CollectorService.name, () => {
 	describe(`method ${CollectorService.prototype.collect.name}`, () => {
 		describe('with collector', () => {
 			describe('without defaultValues', () => {
-				const triggerFunction = jest.fn();
+				const triggerFunction = jest.fn() as () => void;
 				beforeEach(() => {
 					service.initializeCollector('id');
 					window.ATL_JQ_PAGE_PROPS.triggerFunction(triggerFunction);
@@ -81,7 +81,7 @@ describe(CollectorService.name, () => {
 			describe.each([{key1: () => 'a'}, {key2: () => 'b', key3: () => 'b'}])(
 				'with defaultValues (%s)',
 				configuration => {
-					const triggerFunction = jest.fn();
+					const triggerFunction = jest.fn() as () => void;
 					const keys = Object.keys(configuration);
 					beforeEach(() => {
 						service.initializeCollector('id');

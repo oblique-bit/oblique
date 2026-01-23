@@ -48,9 +48,13 @@ export class TableManager<T> {
 		if (this.areAllRowsSelected()) {
 			this.selection.clear();
 		} else {
-			this.dataSource.data.forEach(row => this.selection.select(row));
+			this.dataSource.data.forEach(row => {
+				this.selection.select(row);
+			});
 		}
-		this.dataSource.data.forEach(row => (row.isSelected = this.selection.isSelected(row)));
+		this.dataSource.data.forEach(row => {
+			row.isSelected = this.selection.isSelected(row);
+		});
 	}
 
 	private buildMasterToggleObservable(): Connectable<string> {

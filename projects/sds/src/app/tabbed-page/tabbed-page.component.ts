@@ -104,7 +104,9 @@ export class TabbedPageComponent {
 	private buildCmsDataObservable(validPageId$: Observable<number>): Observable<CmsData> {
 		return validPageId$.pipe(
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
-			tap(data => (this.showGalleryTab = data.data.id === this.galleryPageId)),
+			tap(data => {
+				this.showGalleryTab = data.data.id === this.galleryPageId;
+			}),
 			map(cmsData => this.buildCmsData(cmsData.data))
 		);
 	}

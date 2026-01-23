@@ -34,8 +34,8 @@ describe(ObUnsavedChangesDirective.name, () => {
 	beforeEach(async () => {
 		unsavedChangesServiceMock = {
 			isActive: true,
-			watch: jest.fn(),
-			unWatch: jest.fn(),
+			watch: jest.fn() as () => void,
+			unWatch: jest.fn() as () => void,
 			canDeactivate: jest.fn(),
 			ignoreChanges: jest.fn(),
 		};

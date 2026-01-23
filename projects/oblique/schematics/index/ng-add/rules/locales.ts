@@ -38,7 +38,9 @@ function importLocales(locales: string[]): Rule {
 			.map(locale => insertImport(sourceFile, file, getLocaleVariable(locale), `@angular/common/locales/${locale}`))
 			.filter((change: Change) => change instanceof InsertChange)
 			.map((change: InsertChange) => adaptInsertChange(tree, change, /(?:{\s*)|(?:\s*})/g, ''))
-			.forEach((change: InsertChange) => changes.push(change));
+			.forEach((change: InsertChange) => {
+				changes.push(change);
+			});
 		return applyChanges(tree, appModulePath, changes);
 	});
 }

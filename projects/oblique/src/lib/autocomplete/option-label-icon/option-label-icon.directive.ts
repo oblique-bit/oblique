@@ -19,7 +19,7 @@ export class ObOptionLabelIconDirective implements OnChanges {
 
 	constructor(
 		private readonly renderer: Renderer2,
-		private readonly elementRef: ElementRef,
+		elementRef: ElementRef,
 		private readonly iconRegistry: MatIconRegistry
 	) {
 		this.host = elementRef.nativeElement;
@@ -38,7 +38,9 @@ export class ObOptionLabelIconDirective implements OnChanges {
 				.getNamedSvgIcon(iconName)
 				.pipe(
 					first(),
-					tap(svg => (this.iconSpan = this.createIconElement(svg, host, iconPosition)))
+					tap(svg => {
+						this.iconSpan = this.createIconElement(svg, host, iconPosition);
+					})
 				)
 				.subscribe(() => {
 					this.addIcon(iconName, this.iconSpan, host, iconPosition);

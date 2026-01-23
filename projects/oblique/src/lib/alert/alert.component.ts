@@ -71,14 +71,14 @@ export class ObAlertComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.role = this.getAlertRole();
-		['info', 'success', 'warning', 'error'].forEach(type =>
+		['info', 'success', 'warning', 'error'].forEach(type => {
 			// Sanitation is bypassed because it doesn't allow SVG at all. And since they come from Oblique and not from any user
 			this.matIconRegistry.addSvgIconLiteralInNamespace(
 				'alert',
 				type,
 				this.domSanitizer.bypassSecurityTrustHtml(alertIcons[type])
-			)
-		);
+			);
+		});
 	}
 
 	private getAlertRole(): string {

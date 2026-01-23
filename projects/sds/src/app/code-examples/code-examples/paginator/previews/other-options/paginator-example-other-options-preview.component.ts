@@ -15,8 +15,8 @@ export class PaginatorExampleOtherOptionsPreviewComponent implements AfterViewIn
 	private readonly initializedPaginator = viewChild.required<MatPaginator>('initialized');
 
 	ngAfterViewInit(): void {
-		this.initializedPaginator().initialized.subscribe(
-			() => (this.initializedText = 'Paginator has now been initialized')
-		);
+		this.initializedPaginator().initialized.subscribe(() => {
+			this.initializedText = 'Paginator has now been initialized';
+		});
 	}
 }

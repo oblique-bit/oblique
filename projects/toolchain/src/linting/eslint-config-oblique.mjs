@@ -406,7 +406,7 @@ export default [
 			'prefer-rest-params': 'error',
 			'prefer-spread': 'error',
 			'prefer-template': 'error',
-			'preserve-caught-error': 'off',
+			'preserve-caught-error': 'error',
 			radix: 'error',
 			'require-atomic-updates': 'error',
 			/**
@@ -621,7 +621,7 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'error',
 			'@typescript-eslint/no-unsafe-unary-minus': 'error',
 			'@typescript-eslint/no-unused-expressions': 'error',
-			'@typescript-eslint/no-unused-private-class-members': 'off',
+			'@typescript-eslint/no-unused-private-class-members': 'error',
 			'@typescript-eslint/no-unused-vars': ['error'],
 			/**
 			 * Rule: @typescript-eslint/no-use-before-define (https://typescript-eslint.io/rules/no-use-before-define)
@@ -633,7 +633,7 @@ export default [
 			'@typescript-eslint/no-use-before-define': ['error', {functions: false}],
 			'@typescript-eslint/no-useless-constructor': 'error',
 			'@typescript-eslint/no-useless-empty-export': 'error',
-			'@typescript-eslint/no-useless-default-assignment': 'off',
+			'@typescript-eslint/no-useless-default-assignment': 'error',
 			'@typescript-eslint/no-wrapper-object-types': 'error',
 			'@typescript-eslint/non-nullable-type-assertion-style': 'error',
 			'@typescript-eslint/only-throw-error': 'error',
@@ -681,7 +681,7 @@ export default [
 			'@typescript-eslint/restrict-template-expressions': 'error',
 			'@typescript-eslint/return-await': 'error',
 			'@typescript-eslint/strict-boolean-expressions': 'error',
-			'@typescript-eslint/strict-void-return': 'off',
+			'@typescript-eslint/strict-void-return': 'error',
 			'@typescript-eslint/switch-exhaustiveness-check': 'error',
 			'@typescript-eslint/triple-slash-reference': 'error',
 			/**
@@ -727,7 +727,7 @@ export default [
 			'@angular-eslint/no-uncalled-signals': 'error',
 			'@angular-eslint/pipe-prefix': 'error',
 			'@angular-eslint/prefer-host-metadata-property': 'error',
-			'@angular-eslint/prefer-inject': 'off',
+			'@angular-eslint/prefer-inject': 'error',
 			/**
 			 * Rule: @angular-eslint/prefer-on-push-component-change-detection (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-on-push-component-change-detection.md)
 			 * Reason for disabling: OnPush is not always the best choice, especially with signals
@@ -735,7 +735,7 @@ export default [
 			'@angular-eslint/prefer-on-push-component-change-detection': 'off',
 			'@angular-eslint/prefer-output-emitter-ref': 'error',
 			'@angular-eslint/prefer-output-readonly': 'error',
-			'@angular-eslint/prefer-signal-model': 'off',
+			'@angular-eslint/prefer-signal-model': 'error',
 			'@angular-eslint/prefer-signals': 'error',
 			'@angular-eslint/prefer-standalone': 'error',
 			'@angular-eslint/relative-url-prefix': 'error',

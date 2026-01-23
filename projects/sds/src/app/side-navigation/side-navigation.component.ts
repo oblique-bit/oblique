@@ -158,7 +158,11 @@ export class SideNavigationComponent implements OnInit {
 	private setUpSlugToIdServiceDataSet(accordions: Accordion[]): void {
 		const idAndSlugs = new Map<string, number>();
 
-		accordions.forEach(accordion => accordion.links.forEach(link => idAndSlugs.set(link.slug, link.id)));
+		accordions.forEach(accordion =>
+			accordion.links.forEach(link => {
+				idAndSlugs.set(link.slug, link.id);
+			})
+		);
 
 		this.slugToIdService.setupDataSet(idAndSlugs);
 	}

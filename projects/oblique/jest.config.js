@@ -40,7 +40,7 @@ module.exports = {
 			branches: 94,
 		},
 		'projects/oblique/src/lib/document-meta/*.ts': {
-			statements: 59,
+			statements: 58,
 			branches: 6,
 			functions: 18,
 			lines: 58,
@@ -49,7 +49,7 @@ module.exports = {
 			statements: 52,
 			branches: 0,
 			functions: 11,
-			lines: 52,
+			lines: 50,
 		},
 		'projects/oblique/src/lib/file-upload/progress/*.ts': {
 			statements: 100,

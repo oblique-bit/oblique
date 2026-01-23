@@ -2,16 +2,23 @@ const mock = (): Partial<Storage> => {
 	let storage: Record<string, string> = {};
 	return {
 		getItem: (key: string) => (key in storage ? storage[key] : null),
-		setItem: (key: string, value: string) => (storage[key] = value || ''),
-		removeItem: (key: string) => delete storage[key],
-		clear: () => (storage = {}),
+		setItem: (key: string, value: string) => {
+			storage[key] = value || '';
+		},
+		removeItem: (key: string) => {
+			delete storage[key];
+		},
+		clear: () => {
+			storage = {};
+		},
 	};
 };
-
 /* eslint-disable @typescript-eslint/no-empty-function */
-console.error = jest.fn().mockImplementation(() => {});
-console.warn = jest.fn().mockImplementation(() => {});
-console.info = jest.fn().mockImplementation(() => {});
+beforeAll(() => {
+	jest.spyOn(console, 'error').mockImplementation(() => {});
+	jest.spyOn(console, 'warn').mockImplementation(() => {});
+	jest.spyOn(console, 'info').mockImplementation(() => {});
+});
 /* eslint-enable @typescript-eslint/no-empty-function */
 
 global.ResizeObserver = jest.fn().mockImplementation(() => ({

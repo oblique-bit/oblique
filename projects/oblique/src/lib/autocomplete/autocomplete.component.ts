@@ -138,18 +138,20 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 	 * when the control receives a change event.
 	 */
 	registerOnChange(fn: (v: unknown) => void): void {
-		this.autocompleteInputControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(value => fn(value));
+		this.autocompleteInputControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(value => {
+			fn(value);
+		});
 	}
 
 	/**
 	 * Set the function to be called
 	 * when the control receives a touch event.
 	 */
-	registerOnTouched(fn: () => unknown): void {
+	registerOnTouched(fn: () => void): void {
 		this.onModelTouched = fn;
-		this.autocompleteInputControl.valueChanges
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(() => this.autocompleteInputControl.markAllAsTouched());
+		this.autocompleteInputControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
+			this.autocompleteInputControl.markAllAsTouched();
+		});
 	}
 
 	private getStringValue(value: T | string): string {

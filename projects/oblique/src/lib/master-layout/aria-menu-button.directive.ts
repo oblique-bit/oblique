@@ -38,6 +38,8 @@ export class ObAriaMenuButtonDirective implements OnInit {
 	private monitorForClickOutside(): void {
 		this.globalEvents.click$
 			.pipe(obOutsideFilter(this.element.nativeElement), obMasterLayoutNavigationSubMenuFilter())
-			.subscribe(() => (this.active = false));
+			.subscribe(() => {
+				this.active = false;
+			});
 	}
 }

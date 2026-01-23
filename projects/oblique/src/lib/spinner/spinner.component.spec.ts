@@ -88,7 +88,9 @@ describe('ObSpinnerComponent', () => {
 		it('should not emit when an ObISpinnerEvent is emitted in another channel', fakeAsync(() => {
 			let emitted = false;
 			// skip(1) is to ignore the `startWith`value
-			component.state$.pipe(skip(1)).subscribe(() => (emitted = true));
+			component.state$.pipe(skip(1)).subscribe(() => {
+				emitted = true;
+			});
 			mockObSpinnerService.events$.next({active: true, channel: 'alt'});
 			tick();
 			expect(emitted).toBe(false);

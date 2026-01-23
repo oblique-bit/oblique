@@ -25,7 +25,9 @@ export class PackageJson extends StaticScript {
 		const rootPackage = PackageJson.readRootPackageJson();
 		Object.keys(rootPackage)
 			.filter(key => fields.includes(key))
-			.forEach(key => (this.content[key] = rootPackage[key]));
+			.forEach(key => {
+				this.content[key] = rootPackage[key];
+			});
 		return PackageJson.instance as PackageJson;
 	}
 
@@ -34,7 +36,9 @@ export class PackageJson extends StaticScript {
 		const rootPackage = PackageJson.readRootPackageJson() as {dependencies: Record<string, string>};
 		Object.entries(rootPackage.dependencies)
 			.filter(([key]) => dependencies.includes(key))
-			.forEach(([key, value]) => (this.content.dependencies[key] = value));
+			.forEach(([key, value]) => {
+				this.content.dependencies[key] = value;
+			});
 		return PackageJson.instance as PackageJson;
 	}
 
@@ -49,7 +53,9 @@ export class PackageJson extends StaticScript {
 
 	removeDependencies(dependencyType: 'devDependencies' | 'dependencies', ...dependencyNames: string[]): PackageJson {
 		Log.info(`Remove ${humanizeList(dependencyNames)} ${dependencyType} from the distributed package.json`);
-		dependencyNames.forEach(dependencyName => delete this.content[dependencyType][dependencyName]);
+		dependencyNames.forEach(dependencyName => {
+			delete this.content[dependencyType][dependencyName];
+		});
 		if (!Object.keys(this.content[dependencyType]).length) {
 			delete this.content[dependencyType];
 		}

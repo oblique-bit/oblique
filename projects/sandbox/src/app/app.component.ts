@@ -54,9 +54,9 @@ export class AppComponent implements OnDestroy {
 		this.nav.navigationLinks$.subscribe(links => {
 			this.navigation = links;
 		});
-		this.router.events
-			.pipe(filter(event => event instanceof NavigationEnd))
-			.subscribe(() => (header.serviceNavigationConfiguration.returnUrl = window.location.href));
+		this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
+			header.serviceNavigationConfiguration.returnUrl = window.location.href;
+		});
 	}
 
 	ngOnDestroy(): void {

@@ -218,7 +218,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.noNavigation = !event.value));
+			.subscribe(event => {
+				this.noNavigation = !event.value;
+			});
 	}
 
 	private layoutHasCoverChange(): void {
@@ -227,7 +229,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_COVER),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.hasCover = event.value));
+			.subscribe(event => {
+				this.hasCover = event.value;
+			});
 	}
 
 	private layoutHasOffCanvasChange(): void {
@@ -236,7 +240,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.hasOffCanvas = event.value));
+			.subscribe(event => {
+				this.hasOffCanvas = event.value;
+			});
 	}
 
 	private layoutIsMenuOpenedChange(): void {
@@ -245,7 +251,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isMenuOpened = event.value));
+			.subscribe(event => {
+				this.isMenuOpened = event.value;
+			});
 	}
 
 	private layoutHasDefaultLayoutChange(): void {
@@ -254,7 +262,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.hasLayout = event.value));
+			.subscribe(event => {
+				this.hasLayout = event.value;
+			});
 	}
 
 	private layoutHasMaxWidthChange(): void {
@@ -263,14 +273,18 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.hasMaxWidth = event.value));
+			.subscribe(event => {
+				this.hasMaxWidth = event.value;
+			});
 	}
 
 	private headerIsStickyChange(): void {
 		this.masterLayout.header.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_STICKY),
-				tap((evt: ObIMasterLayoutEvent) => (this.isHeaderSticky = evt.value)),
+				tap((evt: ObIMasterLayoutEvent) => {
+					this.isHeaderSticky = evt.value;
+				}),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe();
@@ -280,7 +294,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 		this.masterLayout.footer.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_IS_STICKY),
-				tap((evt: ObIMasterLayoutEvent) => (this.isFooterSticky = evt.value)),
+				tap((evt: ObIMasterLayoutEvent) => {
+					this.isFooterSticky = evt.value;
+				}),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe();
@@ -291,8 +307,12 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 			.pipe(
 				filter(evt => evt instanceof NavigationEnd),
 				map((evt: NavigationEnd) => evt.url),
-				tap(url => (this.route.path = (/^[^?&#]*/.exec(url) || [])[0])),
-				tap(url => (this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/)))),
+				tap(url => {
+					this.route.path = (/^[^?&#]*/.exec(url) || [])[0];
+				}),
+				tap(url => {
+					this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/));
+				}),
 				map(url => this.extractUrlPart(url, /#[^?&]*/)),
 				filter(fragment => !!fragment)
 			)

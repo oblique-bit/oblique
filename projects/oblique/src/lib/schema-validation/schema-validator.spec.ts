@@ -61,7 +61,7 @@ describe(ObSchemaValidateDirective.name, () => {
 
 		constructor(
 			private readonly formBuilder: FormBuilder,
-			private readonly schemaValidationService: ObSchemaValidationService
+			schemaValidationService: ObSchemaValidationService
 		) {
 			this.validator = schemaValidationService.compileSchema(schema);
 		}

@@ -6,13 +6,6 @@ export class Git {
 		body: '%b',
 		hash: '%H',
 	};
-	private static readonly diffRange = {
-		changedFiles: '--cached',
-		latestHead: 'HEAD@{1} HEAD',
-	};
-	private static readonly diffOptions = {
-		fileNameOnly: 'name-only',
-	};
 
 	static commit(header: string, ...lines: string[]): void {
 		executeCommandWithLog(`git commit ${[`-am "${header}"`, ...lines].join(' -m ')}`, `Commit changes`);

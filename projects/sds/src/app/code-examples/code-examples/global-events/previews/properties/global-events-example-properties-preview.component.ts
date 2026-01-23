@@ -98,7 +98,9 @@ export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, On
 
 	private setupBeforeUnload(): void {
 		this.beforeUnload$ = this.events.beforeUnload$.pipe(
-			tap(event => (event.returnValue = 'Oblique')),
+			tap(event => {
+				event.returnValue = 'Oblique';
+			}),
 			map(() => ++this.counter.beforeUnload),
 			startWith(this.counter.beforeUnload),
 			takeUntil(this.unsubscribe)

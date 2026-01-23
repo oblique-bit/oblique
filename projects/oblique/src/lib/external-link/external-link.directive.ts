@@ -60,11 +60,17 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 			.getNamedSvgIcon('link_external')
 			.pipe(
 				first(),
-				tap(svg => (this.iconElement = this.createIconElement(svg))),
+				tap(svg => {
+					this.iconElement = this.createIconElement(svg);
+				}),
 				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isUrlExternal(this.host.href)))),
-				tap(isLinkExternal => (this.isLinkExternal = isLinkExternal))
+				tap(isLinkExternal => {
+					this.isLinkExternal = isLinkExternal;
+				})
 			)
-			.subscribe(isLinkExternal => this.manageLink(isLinkExternal));
+			.subscribe(isLinkExternal => {
+				this.manageLink(isLinkExternal);
+			});
 	}
 
 	ngOnChanges(): void {
@@ -112,9 +118,9 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.translate
 			.stream('i18n.oblique.external')
 			.pipe(takeUntil(this.unsubscribe))
-			.subscribe((text: string) =>
-				this.renderer.setProperty(this.screenReaderOnlyTextElement, 'textContent', ` - ${text}`)
-			);
+			.subscribe((text: string) => {
+				this.renderer.setProperty(this.screenReaderOnlyTextElement, 'textContent', ` - ${text}`);
+			});
 	}
 
 	private addIcon(): void {

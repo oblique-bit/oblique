@@ -83,7 +83,9 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 				takeUntil(this.unsubscribe),
 				map(() => this.computeSelectionStatus())
 			)
-			.subscribe(status => (this.selectionStatus = status));
+			.subscribe(status => {
+				this.selectionStatus = status;
+			});
 	}
 
 	ngOnDestroy(): void {
@@ -95,7 +97,9 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 		if (this.selectionStatus === 'all') {
 			this.selection.clear();
 		} else {
-			this.dataSource.data.forEach(row => this.selection.select(row));
+			this.dataSource.data.forEach(row => {
+				this.selection.select(row);
+			});
 		}
 		this.uploadEvent.emit({type: ObEUploadEventType.SELECTED, files: this.selection.selected.map(file => file.name)});
 	}
@@ -111,9 +115,15 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 			this.fileUploadService
 				.delete(this.deleteUrl, this.mapFilesToDeleteUrlFunction(files))
 				.pipe(
-					tap(() => (this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name)))),
+					tap(() => {
+						this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name));
+					}),
 					tap(() => this.dataChange.next()),
-					tap(() => files.forEach(file => this.selection.deselect(file)))
+					tap(() => {
+						files.forEach(file => {
+							this.selection.deselect(file);
+						});
+					})
 				)
 				.subscribe({
 					next: () => this.uploadEvent.emit({type: ObEUploadEventType.DELETED, files: fileNames}),
@@ -128,9 +138,13 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 				.getUploadedFiles(this.getUploadedFilesUrl)
 				.pipe(
 					map(this.mapFunction),
-					tap(files => (this.dataSource.data = files)),
+					tap(files => {
+						this.dataSource.data = files;
+					}),
 					tap(() => this.dataChange.next()),
-					tap(files => this.reselectFiles(files)),
+					tap(files => {
+						this.reselectFiles(files);
+					}),
 					tap(() => this.initializeSort())
 				)
 				.subscribe({

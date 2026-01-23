@@ -54,7 +54,9 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 			if (mode === 'radio') {
 				this.getSelected()
 					.slice(1)
-					.forEach(item => (item.selected = false));
+					.forEach(item => {
+						item.selected = false;
+					});
 				this.updateSelection();
 			}
 		});
@@ -126,14 +128,18 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 
 	selectAll(): void {
 		if (this.mode !== 'radio') {
-			this.selectables.forEach(item => (item.selected = true));
+			this.selectables.forEach(item => {
+				item.selected = true;
+			});
 			this.updateSelection();
 		}
 	}
 
 	deselectAll(): void {
 		if (this.mode !== 'radio') {
-			this.selectables.forEach(item => (item.selected = false));
+			this.selectables.forEach(item => {
+				item.selected = false;
+			});
 			this.updateSelection();
 		}
 	}
@@ -222,7 +228,9 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	}
 
 	private radioSelect(directive: ObSelectableDirective<T>): void {
-		this.selectables.forEach(item => (item.selected = false));
+		this.selectables.forEach(item => {
+			item.selected = false;
+		});
 		directive.selected = true;
 	}
 
@@ -238,10 +246,14 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 			const endFocused = this.selectables.findIndex(item => item === directive);
 			const start = Math.min(this.startFocused, endFocused);
 			const end = Math.max(this.startFocused, endFocused);
-			this.selectables.forEach((item, index) => (item.selected = !(index < start || index > end)));
+			this.selectables.forEach((item, index) => {
+				item.selected = !(index < start || index > end);
+			});
 		} else {
 			this.startFocused = undefined;
-			this.selectables.forEach(item => (item.selected = false));
+			this.selectables.forEach(item => {
+				item.selected = false;
+			});
 			directive.selected = true;
 		}
 	}

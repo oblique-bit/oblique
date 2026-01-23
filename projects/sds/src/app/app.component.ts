@@ -34,7 +34,9 @@ export class AppComponent {
 		return cmsDataService.getBanner().pipe(
 			map(data => data.data.content),
 			filter(content => Boolean(content)),
-			tap(() => (this.hasBanner = true))
+			tap(() => {
+				this.hasBanner = true;
+			})
 		);
 	}
 }

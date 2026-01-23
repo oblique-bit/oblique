@@ -12,7 +12,9 @@ export function composeAccordions(value: {
 
 	const allPages: CMSPage[] = [...value.tabbedPages.data, ...value.textPages.data];
 
-	value.categories.data.forEach(category => accordions.push(mapCMSPageShortToAccordion(allPages, category)));
+	value.categories.data.forEach(category => {
+		accordions.push(mapCMSPageShortToAccordion(allPages, category));
+	});
 
 	return accordions;
 }

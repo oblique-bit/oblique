@@ -46,7 +46,9 @@ describe('ObServiceNavigationInfoApiService', () => {
 				let result: ObIServiceNavigationBackendInfo;
 				beforeEach(() => {
 					jest.spyOn(httpClient, 'get').mockReturnValue(of(fixtureApplicationHelp()));
-					service.get('', '', '').subscribe(infoBackend => (result = infoBackend));
+					service.get('', '', '').subscribe(infoBackend => {
+						result = infoBackend;
+					});
 				});
 
 				it('should have a "description" property with the title optional information', () => {
@@ -98,7 +100,9 @@ describe('ObServiceNavigationInfoApiService', () => {
 					fixture.data.contact.links = [];
 					jest.spyOn(httpClient, 'get').mockReturnValue(of(fixture));
 					let result: ObIServiceNavigationBackendInfo;
-					service.get('', '', '').subscribe(infoBackend => (result = infoBackend));
+					service.get('', '', '').subscribe(infoBackend => {
+						result = infoBackend;
+					});
 
 					expect(result.contact.formUrl).toEqual(undefined);
 				});
