@@ -16,30 +16,34 @@
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
 		</li>
-		<li *ngIf="!noNavigation && navigation?.length">
-			<a
-				class="ob-accessible"
-				accesskey="1"
-				[routerLink]="route.path"
-				[queryParams]="route.params"
-				fragment="navigation"
-			>
-				<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
-				{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
-			</a>
-		</li>
-		<li *ngFor="let skipLink of skipLinks; let i = index">
-			<a
-				class="ob-accessible"
-				[attr.accesskey]="skipLink.accessKey"
-				[routerLink]="skipLink.url === 'current' ? route.path : skipLink.url"
-				[queryParams]="route.params"
-				[fragment]="skipLink.fragment"
-			>
-				<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
-				{{ skipLink.label | translate }} [{{ skipLink.accessKey }}]
-			</a>
-		</li>
+		@if (!noNavigation && navigation?.length) {
+			<li>
+				<a
+					class="ob-accessible"
+					accesskey="1"
+					[routerLink]="route.path"
+					[queryParams]="route.params"
+					fragment="navigation"
+				>
+					<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
+					{{ "i18n.oblique.master-layout.accesskey.navigation" | translate }}
+				</a>
+			</li>
+		}
+		@for (skipLink of skipLinksInternal; track skipLink) {
+			<li>
+				<a
+					class="ob-accessible"
+					[attr.accesskey]="skipLink.accessKey"
+					[routerLink]="skipLink.url === 'current' ? route.path : skipLink.url"
+					[queryParams]="route.params"
+					[fragment]="skipLink.fragment"
+				>
+					<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
+					{{ skipLink.label | translate }} [{{ skipLink.accessKey }}]
+				</a>
+			</li>
+		}
 	</ul>
 </nav>
 <div
@@ -48,23 +52,38 @@
 	[class.ob-continuous-layout]="!isFooterSticky && !isHeaderSticky"
 	[class.ob-off-canvas-main]="hasOffCanvas"
 >
-	<ng-container *ngIf="isHeaderSticky && !isFooterSticky" [ngTemplateOutlet]="header" />
+	@if (isHeaderSticky && !isFooterSticky) {
+		<ng-container [ngTemplateOutlet]="header" />
+	}
 	<div class="ob-master-layout-wrapper" cdkScrollable (scroll)="scrollTop(wrapper)" #wrapper>
-		<ng-container *ngIf="!isHeaderSticky || isFooterSticky" [ngTemplateOutlet]="header" />
-		<div class="ob-cover-layout" *ngIf="hasCover; else normalLayout">
-			<div class="ob-cover-viewport">
-				<ng-container *ngTemplateOutlet="normalLayout" />
+		@if (!isHeaderSticky || isFooterSticky) {
+			<ng-container [ngTemplateOutlet]="header" />
+		}
+		@if (hasCover) {
+			<div class="ob-cover-layout">
+				<div class="ob-cover-viewport">
+					<ng-container *ngTemplateOutlet="normalLayout" />
+				</div>
 			</div>
-		</div>
+		} @else {
+			<main id="content" class="ob-main-layout" tabindex="-1" cdkScrollable (scroll)="scrollTop(main)" #main>
+				<ob-notification channel="oblique" />
+				<router-outlet />
+			</main>
+		}
 		<ng-template #normalLayout>
 			<main id="content" class="ob-main-layout" tabindex="-1" cdkScrollable (scroll)="scrollTop(main)" #main>
 				<ob-notification channel="oblique" />
 				<router-outlet />
 			</main>
 		</ng-template>
-		<ng-container *ngIf="!isFooterSticky || isHeaderSticky" [ngTemplateOutlet]="footer" />
+		@if (!isFooterSticky || isHeaderSticky) {
+			<ng-container [ngTemplateOutlet]="footer" />
+		}
 	</div>
-	<ng-container *ngIf="isFooterSticky && !isHeaderSticky" [ngTemplateOutlet]="footer" />
+	@if (isFooterSticky && !isHeaderSticky) {
+		<ng-container [ngTemplateOutlet]="footer" />
+	}
 
 	<ng-template #header>
 		<ob-master-layout-header [navigation]="navigation" (navigationChanged)="emitNavigation($event)">
@@ -72,12 +91,16 @@
 			<ng-content select="[obHeaderAction]" obHeaderAction />
 			<ng-content select="[obHeaderTitle]" obHeaderTitle />
 			<ng-content select="[obNavigation]" obNavigation />
-			<ng-template #obHeaderControl *ngFor="let template of headerControlTemplates">
-				<ng-container [ngTemplateOutlet]="template" />
-			</ng-template>
-			<ng-template #obHeaderMobileControl *ngFor="let template of headerMobileControlTemplates">
-				<ng-container [ngTemplateOutlet]="template" />
-			</ng-template>
+			@for (template of headerControlTemplates; track template) {
+				<ng-template #obHeaderControl>
+					<ng-container [ngTemplateOutlet]="template" />
+				</ng-template>
+			}
+			@for (template of headerMobileControlTemplates; track template) {
+				<ng-template #obHeaderMobileControl>
+					<ng-container [ngTemplateOutlet]="template" />
+				</ng-template>
+			}
 			<ng-template #obHeaderLogo>
 				<ng-container [ngTemplateOutlet]="obLogo || logo" />
 			</ng-template>
@@ -88,35 +111,41 @@
 		<ob-master-layout-footer [version]="version">
 			<ng-content select="[obFooter]" obFooter />
 			<ng-content select="[obFooterInfo]" obFooterInfo />
-			<ng-template #obFooterLink *ngFor="let template of footerLinkTemplates">
-				<ng-container [ngTemplateOutlet]="template" />
-			</ng-template>
+			@for (template of footerLinkTemplates; track template) {
+				<ng-template #obFooterLink>
+					<ng-container [ngTemplateOutlet]="template" />
+				</ng-template>
+			}
 		</ob-master-layout-footer>
 	</ng-template>
 </div>
 <ob-top-control (scrollToTop)="focusElement(this.contentId)" />
-<div class="ob-off-canvas-sidebar" *ngIf="hasOffCanvas">
-	<header class="ob-off-canvas-header">
-		<h2>
-			<ng-content select="[obOffCanvasTitle]" />
-		</h2>
-		<button
-			type="button"
-			mat-icon-button
-			obButton="secondary"
-			[matTooltip]="'i18n.common.close' | translate"
-			obOffCanvasToggle
-			class="ob-close"
-			#offCanvasClose
-		>
-			<mat-icon svgIcon="xmark" />
-		</button>
-	</header>
-	<div class="ob-off-canvas-content">
-		<ng-content select="[obOffCanvasContent]" />
+@if (hasOffCanvas) {
+	<div class="ob-off-canvas-sidebar">
+		<header class="ob-off-canvas-header">
+			<h2>
+				<ng-content select="[obOffCanvasTitle]" />
+			</h2>
+			<button
+				type="button"
+				mat-icon-button
+				obButton="secondary"
+				[matTooltip]="'i18n.common.close' | translate"
+				obOffCanvasToggle
+				class="ob-close"
+				#offCanvasClose
+			>
+				<mat-icon svgIcon="xmark" />
+			</button>
+		</header>
+		<div class="ob-off-canvas-content">
+			<ng-content select="[obOffCanvasContent]" />
+		</div>
 	</div>
-</div>
-<div class="ob-off-canvas-backdrop" *ngIf="hasOffCanvas"></div>
+}
+@if (hasOffCanvas) {
+	<div class="ob-off-canvas-backdrop"></div>
+}
 <ob-spinner [fixed]="true" />
 <ng-template #logo>
 	@if (hasHighContrast) {

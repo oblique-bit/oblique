@@ -35,24 +35,25 @@ const versions: Record<string, string | versionFunc> = {
 	'@angular/core': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
-	'@angular-eslint/eslint-plugin': '^19.0.0',
-	'@angular-eslint/eslint-plugin-template': '^19.0.0',
-	'@angular-eslint/template-parser': '^19.0.0',
-	'@angular-eslint/utils': '^19.0.0',
+	'@angular-eslint/eslint-plugin': '^21.0.0',
+	'@angular-eslint/eslint-plugin-template': '^21.0.0',
+	'@angular-eslint/template-parser': '^21.0.0',
+	'@angular-eslint/utils': '^21.0.0',
 	'@ngx-translate/core': '^17.0.0',
 	'@popperjs/core': '^2.0.0',
 	'@typescript-eslint/eslint-plugin': '^8.30.1',
 	'@typescript-eslint/parser': '^8.30.1',
-	'@types/jest': '^29.0.0',
+	'@types/jest': '^30.0.0',
 	ajv: '^8.0.0',
 	'ajv-formats': '^3.0.0',
-	'angular-eslint': '^19.0.0',
+	'angular-eslint': '^21.0.0',
 	'angular-oauth2-oidc': '^20.0.0',
 	eslint: '^9.0.0',
 	'eslint-config-prettier': '^9.0.0',
 	'eslint-plugin-prettier': '^5.0.0',
 	husky: '^9.0.0',
-	jest: '^29.0.0',
+	jest: '^30.0.0',
+	'jest-environment-jsdom': '^30.0.0',
 	'jest-sonar-reporter': '^2.0.0',
 	prettier: '^3.0.0',
 };
@@ -60,9 +61,7 @@ const versions: Record<string, string | versionFunc> = {
 export function getPreconditionVersion(tree: Tree, pkg: string): string {
 	const current = extractVersion(getDepVersion(tree, pkg) || '');
 	const target = extractVersion(getDepVersion(tree, '@angular/core') || '') || ({} as ObIVersion);
-	return !current || current.major !== target.major || current.minor !== target.minor
-		? `${target.major}.${target.minor}`
-		: '';
+	return current?.major !== target.major || current.minor !== target.minor ? `${target.major}.${target.minor}` : '';
 }
 
 export function checkPrecondition(tree: Tree, pkg: string): void {
@@ -146,6 +145,13 @@ export function removeDevDependencies(tree: Tree, dependency: string): Tree {
 export function removeScript(tree: Tree, script: string): Tree {
 	const packageJson = getJson(tree, packageJsonConfigPath);
 	delete packageJson.scripts[script];
+	tree.overwrite(packageJsonConfigPath, JSON.stringify(packageJson, null, 2));
+	return tree;
+}
+
+export function removeRootProperty(tree: Tree, property: string): Tree {
+	const packageJson = getJson(tree, packageJsonConfigPath);
+	delete packageJson[property];
 	tree.overwrite(packageJsonConfigPath, JSON.stringify(packageJson, null, 2));
 	return tree;
 }

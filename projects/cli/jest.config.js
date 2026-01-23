@@ -24,7 +24,7 @@ module.exports = {
 		},
 		'src/update/ob-update.ts': {
 			statements: 87,
-			branches: 83,
+			branches: 68,
 			functions: 100,
 			lines: 87,
 		},

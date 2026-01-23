@@ -6,7 +6,7 @@ import {Directive, EventEmitter, HostBinding, HostListener, Output} from '@angul
 })
 export class ObDragDropDirective {
 	@Output() readonly fileDropped = new EventEmitter<FileList>();
-	@HostBinding('class.ob-dragging') private isDragging = false;
+	@HostBinding('class.ob-dragging') protected isDragging = false;
 
 	@HostListener('dragover', ['$event'])
 	public onDragOver(event: DragEvent): void {

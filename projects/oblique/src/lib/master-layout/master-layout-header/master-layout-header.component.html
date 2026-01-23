@@ -1,14 +1,18 @@
 <header class="ob-header">
-	<ng-content select="[obHeader]" *ngIf="isCustom" />
-	<ng-container *ngIf="!isCustom">
+	@if (isCustom) {
+		<ng-content select="[obHeader]" />
+	}
+	@if (!isCustom) {
 		<div class="ob-master-layout-header-action">
 			<ng-content select="[obHeaderAction]" />
 		</div>
 		<div class="ob-master-layout-header-title">
 			<div class="ob-master-layout-brand">
-				<aside *ngIf="banner.text" [style.color]="banner.color" [style.backgroundColor]="banner.bgColor">
-					{{ banner.text }}
-				</aside>
+				@if (banner.text) {
+					<aside [style.color]="banner.color" [style.backgroundColor]="banner.bgColor">
+						{{ banner.text }}
+					</aside>
+				}
 				<a class="ob-master-layout-logo" [routerLink]="home$ | async | obLocalize" tabindex="-1">
 					<ng-container [ngTemplateOutlet]="obLogo" />
 				</a>
@@ -19,9 +23,11 @@
 				</span>
 			</div>
 			<ul class="ob-collapsed-layout">
-				<li *ngFor="let template of mobileTemplates" #headerMobileControl>
-					<ng-container [ngTemplateOutlet]="template" />
-				</li>
+				@for (template of mobileTemplates; track template) {
+					<li #headerMobileControl>
+						<ng-container [ngTemplateOutlet]="template" />
+					</li>
+				}
 				<li class="ob-master-layout-header-toggle-container">
 					<button
 						type="button"
@@ -65,11 +71,13 @@
 			(loginState)="emitLoginState($event)"
 			(logoutTriggered)="emitLogoutUrl($event)"
 		>
-			<ng-template #customWidgetTemplate *ngFor="let template of templates">
-				<ng-container [ngTemplateOutlet]="template" />
-			</ng-template>
+			@for (template of templates; track template) {
+				<ng-template #customWidgetTemplate>
+					<ng-container [ngTemplateOutlet]="template" />
+				</ng-template>
+			}
 		</ob-service-navigation>
-	</ng-container>
+	}
 </header>
 <ob-master-layout-navigation [links]="navigation" (linksChanged)="emitNavigation($event)">
 	<ng-content select="[obNavigation]" />

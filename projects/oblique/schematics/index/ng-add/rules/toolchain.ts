@@ -1,6 +1,14 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {ObIOptionsSchema} from '../ng-add.model';
-import {addDevDependency, addScript, angularAppFilesNames, getTemplate, removeScript} from '../ng-add-utils';
+import {
+	addDevDependency,
+	addScript,
+	angularAppFilesNames,
+	getTemplate,
+	removeDevDependencies,
+	removeRootProperty,
+	removeScript,
+} from '../ng-add-utils';
 import {
 	addFile,
 	createSafeRule,
@@ -25,7 +33,6 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			moveStyles(),
 			addNpmrc(options.npmrc),
 			removeFavicon(),
-			removeI18nFromAngularJson(),
 			removeUnusedScripts(),
 			addPrefix(options.prefix),
 			updateExistingPrefixes(options.prefix),
@@ -37,6 +44,7 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			overwriteEslintRC(options.eslint, options.prefix),
 			addHusky(options.husky),
 			addEnvironmentFiles(options.environments, options.banner),
+			excludeEnvironmentFiles(),
 			setEnvironments(options.environments),
 		])(tree, context);
 }
@@ -46,6 +54,7 @@ function setBuilder(): Rule {
 		infoMigration(context, 'Toolchain: Setting angular builder');
 		getAngularConfigs(tree, []).forEach(project => {
 			const {build} = project.config.architect;
+			const {serve} = project.config.architect;
 			const buildOptions = build.options;
 			const buildConfigurations = build.configurations;
 			const buildConfigurationsProduction = buildConfigurations.production;
@@ -75,8 +84,17 @@ function setBuilder(): Rule {
 					},
 				},
 			});
+
+			setAngularConfig(tree, ['architect', 'serve'], {
+				project: project.project,
+				config: {
+					...serve,
+					builder: '@angular-devkit/build-angular:dev-server',
+				},
+			});
 		});
 		removeAngularProjectsConfig(tree, ['architect', 'build', 'options', 'browser']);
+		removeDevDependencies(tree, '@angular/build');
 		return tree;
 	});
 }
@@ -118,13 +136,6 @@ function removeFavicon(): Rule {
 					item => typeof item === 'string' || JSON.stringify(item) !== '{"glob":"**/*","input":"public"}'
 				)
 		);
-	});
-}
-
-function removeI18nFromAngularJson(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, "Toolchain: Removing Angular's i18n");
-		return removeAngularProjectsConfig(tree, ['architect', 'extract-i18n']);
 	});
 }
 
@@ -212,6 +223,7 @@ function addPrettier(eslint: boolean): Rule {
 			);
 			addScript(tree, 'format', 'npm run lint -- --fix');
 			writeFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
+			removeRootProperty(tree, 'prettier');
 		}
 		return tree;
 	});
@@ -273,6 +285,20 @@ function addEnvironmentFiles(environments: string, hasBanner: boolean): Rule {
 	});
 }
 
+function excludeEnvironmentFiles() {
+	return (tree: Tree, context: SchematicContext): Tree => {
+		infoMigration(context, 'Toolchain: Exclude environment files for tsConfig');
+		// can't use JSON.parse as the file contains comments
+		const tsConfigPath = 'tsconfig.app.json';
+		const tsConfig = readFile(tree, tsConfigPath).replace(
+			/(?<indent>^\s*)(?<key>"exclude"\s*:\s*\[\s*)/mu,
+			'$<indent>$<key>"src/environments/environment.*.ts",\n$<indent>$<indent>'
+		);
+		writeFile(tree, tsConfigPath, tsConfig);
+		return tree;
+	};
+}
+
 function getEnvironmentFileContent(environment: string, hasBanner: boolean): string {
 	return `export const environment = ${hasBanner && environment !== 'prod' ? `{banner: {text: '${environment.toUpperCase()}'}}` : '{}'};`;
 }
@@ -294,6 +320,13 @@ function setEnvironments(environments: string): Rule {
 						'prod',
 						environment
 					);
+				} else {
+					config[environment].fileReplacements = [
+						{
+							replace: 'projects/sandbox/src/environments/environment.ts',
+							with: `projects/sandbox/src/environments/environment.${environment}.ts`,
+						},
+					];
 				}
 
 				if (environment === 'dev') {

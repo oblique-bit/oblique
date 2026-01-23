@@ -3,7 +3,7 @@ import {ActivatedRoute, RouterLink, RouterLinkActive, RouterModule} from '@angul
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
-import {NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
@@ -13,8 +13,6 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 @Component({
 	selector: 'ob-nav-tree',
 	imports: [
-		NgFor,
-		NgIf,
 		RouterLinkActive,
 		RouterLink,
 		MatIconModule,

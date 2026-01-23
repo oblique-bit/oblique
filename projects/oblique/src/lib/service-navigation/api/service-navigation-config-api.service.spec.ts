@@ -37,11 +37,11 @@ describe('ObServiceNavigationUrlsApiService', () => {
 			});
 
 			it('should be called once', () => {
-				expect(httpClient.get).toBeCalledTimes(1);
+				expect(httpClient.get).toHaveBeenCalledTimes(1);
 			});
 
 			it('should be called with correct parameters', () => {
-				expect(httpClient.get).toBeCalledWith('http:/rootUrl/api/v2/widget/config', {withCredentials: true});
+				expect(httpClient.get).toHaveBeenCalledWith('http:/rootUrl/api/v2/widget/config', {withCredentials: true});
 			});
 		});
 	});

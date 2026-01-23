@@ -1,31 +1,33 @@
 @if (loginUrl) {
-	<a
-		*ngIf="!isLoggedIn"
-		[href]="loginUrl"
-		id="ob-service-navigation-authentication-link-to-login"
-		[isExternalLink]="false"
-		mat-button
-		obButton="secondary"
-		icon="none"
-		class="ob-widget"
-	>
-		{{ "i18n.oblique.service-navigation.authentication.login" | translate }}
-		<mat-icon svgIcon="login" />
-	</a>
+	@if (!isLoggedIn) {
+		<a
+			[href]="loginUrl"
+			id="ob-service-navigation-authentication-link-to-login"
+			[isExternalLink]="false"
+			mat-button
+			obButton="secondary"
+			icon="none"
+			class="ob-widget"
+		>
+			{{ "i18n.oblique.service-navigation.authentication.login" | translate }}
+			<mat-icon svgIcon="login" />
+		</a>
+	}
 
-	<button
-		*ngIf="isLoggedIn"
-		type="button"
-		role="link"
-		id="ob-service-navigation-authentication-button-to-logout"
-		class="ob-widget"
-		mat-button
-		obButton="secondary"
-		(click)="logoutClick()"
-	>
-		{{ "i18n.oblique.service-navigation.authentication.logout" | translate }}
-		<mat-icon svgIcon="logout" />
-	</button>
+	@if (isLoggedIn) {
+		<button
+			type="button"
+			role="link"
+			id="ob-service-navigation-authentication-button-to-logout"
+			class="ob-widget"
+			mat-button
+			obButton="secondary"
+			(click)="logoutClick()"
+		>
+			{{ "i18n.oblique.service-navigation.authentication.logout" | translate }}
+			<mat-icon svgIcon="logout" />
+		</button>
+	}
 } @else {
 	<span [matTooltip]="'i18n.oblique.service-navigation.config.error.message' | translate">
 		<a

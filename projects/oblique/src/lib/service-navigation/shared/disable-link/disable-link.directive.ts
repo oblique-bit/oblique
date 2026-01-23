@@ -14,11 +14,11 @@ export class ObDisableLinkDirective implements OnChanges {
 	href: string;
 
 	@HostBinding('attr.aria-disabled')
-	private disabled: string;
+	protected disabled: string;
 	@HostBinding('attr.role')
-	private role: string;
+	protected role: string;
 	@HostBinding('attr.href')
-	private attributeHref: string;
+	protected attributeHref: string;
 
 	private originalHref: string;
 	private condition = true;

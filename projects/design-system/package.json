@@ -18,8 +18,8 @@
     "@ngx-translate/core": "^17.0.0"
   },
   "devDependencies": {
-    "@tokens-studio/sd-transforms": "^2.0.1",
-    "ng-packagr": "^20.3.0"
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "ng-packagr": "^21.1.0"
   },
   "sideEffects": false
 }

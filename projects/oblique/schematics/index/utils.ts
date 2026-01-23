@@ -243,6 +243,16 @@ export function addAngularConfigInList(tree: Tree, path: string[], value: any): 
 	return tree;
 }
 
+export function includeAngularConfigInList(tree: Tree, path: string[], value: any): Tree {
+	getProjectList(tree).forEach(project => {
+		setAngularConfig(tree, path, {
+			project,
+			config: [value],
+		});
+	});
+	return tree;
+}
+
 export function removeAngularProjectsConfig(tree: Tree, path: string[]): Tree {
 	getAngularConfigs(tree, path).forEach(project => removeAngularConfig(tree, path, project.project));
 	return tree;

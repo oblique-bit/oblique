@@ -285,14 +285,14 @@ describe(ObAutocompleteComponent.name, () => {
 		// ensures the ControlValueAccessor is correct implemented and used
 		describe('registerOnChange', () => {
 			it('should be called', () => {
-				expect(component.registerOnChange).toBeCalled();
+				expect(component.registerOnChange).toHaveBeenCalled();
 			});
 		});
 
 		// ensures the ControlValueAccessor is correct implemented and used
 		describe('registerOnTouched', () => {
 			it('should be called', () => {
-				expect(component.registerOnTouched).toBeCalled();
+				expect(component.registerOnTouched).toHaveBeenCalled();
 			});
 		});
 
@@ -303,13 +303,13 @@ describe(ObAutocompleteComponent.name, () => {
 				obAutocompleteHarness = await loader.getHarnessOrNull(ObAutocompleteHarness);
 				const inputElement = await obAutocompleteHarness.getInputElement();
 				await inputElement.blur();
-				expect(component.onModelTouched).toBeCalled();
+				expect(component.onModelTouched).toHaveBeenCalled();
 			});
 		});
 
 		describe('writeValue', () => {
 			it('should be called ', () => {
-				expect(component.writeValue).toBeCalled();
+				expect(component.writeValue).toHaveBeenCalled();
 			});
 		});
 
@@ -324,7 +324,7 @@ describe(ObAutocompleteComponent.name, () => {
 				parentComponent.isDisabled = true;
 				parentFixture.detectChanges();
 				tick();
-				expect(component.setDisabledState).toBeCalledWith(true);
+				expect(component.setDisabledState).toHaveBeenCalledWith(true);
 			}));
 
 			it('should called setDisabledState with false', fakeAsync(() => {
@@ -336,7 +336,7 @@ describe(ObAutocompleteComponent.name, () => {
 				parentComponent.isDisabled = false;
 				parentFixture.detectChanges();
 				tick();
-				expect(component.setDisabledState).toBeCalledWith(false);
+				expect(component.setDisabledState).toHaveBeenCalledWith(false);
 			}));
 		});
 

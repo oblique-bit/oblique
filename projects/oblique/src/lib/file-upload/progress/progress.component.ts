@@ -1,4 +1,3 @@
-import {NgFor, NgIf} from '@angular/common';
 import {HttpEvent, HttpEventType} from '@angular/common/http';
 import {
 	ChangeDetectorRef,
@@ -22,16 +21,7 @@ import {ObFileUploadService} from '../file-upload.service';
 
 @Component({
 	selector: 'ob-progress',
-	imports: [
-		NgFor,
-		NgIf,
-		MatProgressBarModule,
-		MatButtonModule,
-		ObButtonDirective,
-		MatTooltipModule,
-		MatIconModule,
-		TranslateModule,
-	],
+	imports: [MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslateModule],
 	templateUrl: './progress.component.html',
 	styleUrls: ['./progress.component.scss'],
 	encapsulation: ViewEncapsulation.None,

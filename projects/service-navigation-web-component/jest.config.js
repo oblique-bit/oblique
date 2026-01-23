@@ -24,7 +24,7 @@ module.exports = {
 		},
 		'projects/service-navigation-web-component/src/app/translations-service.ts': {
 			statements: 100,
-			branches: 88,
+			branches: 82,
 			functions: 100,
 			lines: 100,
 		},

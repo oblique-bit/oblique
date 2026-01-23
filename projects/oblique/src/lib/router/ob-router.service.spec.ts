@@ -233,14 +233,16 @@ describe(ObRouterService.name, () => {
 
 			describe('change language', () => {
 				test('update language in URL', async () => {
+					jest.spyOn(router, 'navigate');
 					await firstValueFrom(translate.use('en'));
-					expect(router.url).toBe('/en');
+					expect(router.navigate).toHaveBeenCalledWith(['en']);
 				});
 
 				test('update language in URL but stay on same page', async () => {
+					jest.spyOn(router, 'navigate');
 					await router.navigate(['it/home']);
 					await firstValueFrom(translate.use('en'));
-					expect(router.url).toBe('/en/home');
+					expect(router.navigate).toHaveBeenCalledWith(['en', 'home']);
 				});
 			});
 		});

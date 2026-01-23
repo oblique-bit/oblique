@@ -3,15 +3,12 @@ import {angularAppFilesNames, appModulePath, getTemplate, importModuleInRoot, ob
 import {ObIOptionsSchema} from '../ng-add.model';
 import {
 	ObliquePackage,
-	addAngularConfigInList,
-	applyInTree,
 	createSafeRule,
 	getIndexPaths,
+	includeAngularConfigInList,
 	infoMigration,
 	overwriteIndexFile,
 	readFile,
-	removeImport,
-	replaceInFile,
 	setAngularProjectsConfig,
 } from '../../utils';
 import {addLocales} from './locales';
@@ -21,7 +18,6 @@ export function oblique(options: ObIOptionsSchema): Rule {
 		chain([
 			addFavIcon(),
 			embedMasterLayout(options.title),
-			removeBrowserModule(),
 			addAdditionalModules(),
 			addFeatureDetection(),
 			addMainCSS(),
@@ -61,17 +57,6 @@ function embedMasterLayout(title: string): Rule {
 	});
 }
 
-function removeBrowserModule(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Oblique: Remove BrowserModule');
-		const apply = (filePath: string): void => {
-			removeImport(tree, appModulePath, 'BrowserModule', '@angular/platform-browser');
-			replaceInFile(tree, filePath, /\s*BrowserModule,?/g, '');
-		};
-		return applyInTree(tree, apply, angularAppFilesNames.appModule);
-	});
-}
-
 function addAdditionalModules(): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique: Add ObButtonModule');
@@ -93,7 +78,7 @@ function addFeatureDetection(): Rule {
 				`<body>$<lineBreak>${getTemplate(tree, 'default-index.html')}`
 			)
 		);
-		return addAngularConfigInList(
+		return includeAngularConfigInList(
 			tree,
 			['architect', 'build', 'options', 'scripts'],
 			'node_modules/@oblique/oblique/ob-features.js'

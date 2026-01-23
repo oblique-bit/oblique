@@ -1,5 +1,5 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {NgFor, NgIf} from '@angular/common';
+
 import {
 	Component,
 	EventEmitter,
@@ -32,13 +32,11 @@ import {ObFileUploadService} from '../file-upload.service';
 	imports: [
 		MatTableModule,
 		MatSortModule,
-		NgFor,
 		MatCheckboxModule,
 		MatButtonModule,
 		ObButtonDirective,
 		MatTooltipModule,
 		MatIconModule,
-		NgIf,
 		ObAlertComponent,
 		TranslateModule,
 	],

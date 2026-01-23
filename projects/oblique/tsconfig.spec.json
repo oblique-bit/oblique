@@ -3,7 +3,8 @@
   "compilerOptions": {
     "types": ["jest", "node"],
     "target": "ES2016",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
   "include": ["**/*.spec.ts"],
   "exclude": []

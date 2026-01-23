@@ -96,7 +96,7 @@ function runAddMaterial(dir: string): void {
 
 function runAddAdditionalDependencies(dir: string): void {
 	console.info(`[Info]: Adds additional Dependencies`);
-	execute({name: 'npmInstall', dependencies: ['@angular/platform-browser-dynamic'], execSyncOptions: {cwd: dir}});
+	execute({name: 'npmInstall', dependencies: ['@angular-devkit/build-angular'], execSyncOptions: {cwd: dir}});
 }
 
 function runAddOblique(options: ObNewOptions<string | boolean>, projectName: string, workingDirectory: string): void {

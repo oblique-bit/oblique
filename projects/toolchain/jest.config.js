@@ -14,6 +14,9 @@ module.exports = {
 	transform: {
 		'^.+\\.ts$': 'ts-jest',
 	},
+	moduleNameMapper: {
+		'^(ora)$': '<rootDir>/__mocks__/ora.js',
+	},
 	...coverageConfig,
 	coverageDirectory: '../../coverage/toolchain',
 	collectCoverageFrom: ['src/**/*.ts', '!src/schematics/test-utils.ts'],
