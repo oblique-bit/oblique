@@ -44,6 +44,7 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			overwriteEslintRC(options.eslint, options.prefix),
 			addHusky(options.husky),
 			addEnvironmentFiles(options.environments, options.banner),
+			excludeEnvironmentFiles(),
 			setEnvironments(options.environments),
 		])(tree, context);
 }
@@ -282,6 +283,20 @@ function addEnvironmentFiles(environments: string, hasBanner: boolean): Rule {
 		}
 		return tree;
 	});
+}
+
+function excludeEnvironmentFiles() {
+	return (tree: Tree, context: SchematicContext): Tree => {
+		infoMigration(context, 'Toolchain: Exclude environment files for tsConfig');
+		// can't use JSON.parse as the file contains comments
+		const tsConfigPath = 'tsconfig.app.json';
+		const tsConfig = readFile(tree, tsConfigPath).replace(
+			/(?<indent>^\s*)(?<key>"exclude"\s*:\s*\[\s*)/mu,
+			'$<indent>$<key>"src/environments/environment.*.ts",\n$<indent>$<indent>'
+		);
+		writeFile(tree, tsConfigPath, tsConfig);
+		return tree;
+	};
 }
 
 function getEnvironmentFileContent(environment: string, hasBanner: boolean): string {
