@@ -5,6 +5,7 @@ import {
 	addScript,
 	angularAppFilesNames,
 	getTemplate,
+	removeDevDependencies,
 	removeRootProperty,
 	removeScript,
 } from '../ng-add-utils';
@@ -92,6 +93,7 @@ function setBuilder(): Rule {
 			});
 		});
 		removeAngularProjectsConfig(tree, ['architect', 'build', 'options', 'browser']);
+		removeDevDependencies(tree, '@angular/build');
 		return tree;
 	});
 }
