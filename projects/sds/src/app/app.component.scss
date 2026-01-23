@@ -1,4 +1,6 @@
+@use "sass:map";
 @use "../styles/scss/core/mixins/layout";
+@use "../styles/scss/core/variables";
 
 $banner-height: 50px;
 
@@ -26,5 +28,7 @@ $banner-height: 50px;
 	display: grid;
 	grid-template-columns: fit-content(500px) 30fr;
 	height: 100dvh;
-	width: 100vw;
+	width: 100%;
+	max-width: map.get(variables.$ob-grid-breakpoints, xl);
+	margin: 0 auto;
 }
