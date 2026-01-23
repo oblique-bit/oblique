@@ -95,6 +95,7 @@ function setBuilder(): Rule {
 		});
 		removeAngularProjectsConfig(tree, ['architect', 'build', 'options', 'browser']);
 		removeDevDependencies(tree, '@angular/build');
+		addDevDependency(tree, '@angular-devkit/build-angular');
 		return tree;
 	});
 }
