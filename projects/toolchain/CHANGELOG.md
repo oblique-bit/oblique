@@ -1,3 +1,15 @@
+# [15.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0-rc.1) (2026-01-23)
+
+## Features
+
+- **linting:** activate `@typescript-eslint/no-useless-default-assignment` rule ([73cd99a9](https://github.com/oblique-bit/oblique/commit/73cd99a9f8d62cddf0fd6923f4806a5f3cdf2de7))
+- **linting:** activate `@typescript-eslint/no-unused-private-class-members` rule ([e60221d5](https://github.com/oblique-bit/oblique/commit/e60221d514427c385488217764940adedf3fb454))
+- **linting:** activate `preserve-caught-error` rule ([104a017d](https://github.com/oblique-bit/oblique/commit/104a017dbf5ab85a09e49842c0752071af845253))
+- **linting:** activate `@angular-eslint/strict-void-return` rule ([80f62888](https://github.com/oblique-bit/oblique/commit/80f62888382e356b4dc9e083e2750c6376cddb7d))
+- **linting:** activate `@angular-eslint/prefer-inject` rule ([65f1f939](https://github.com/oblique-bit/oblique/commit/65f1f9397cc9fb8459a3795ed76abe54e49c4fae))
+- **linting:** activate `@angular-eslint/prefer-signal-model` rule ([837cb343](https://github.com/oblique-bit/oblique/commit/837cb3437f33e16b9e4cda14317c91334d67bf75))
+- **linting:** disallow unused variables in catch statement ([00666686](https://github.com/oblique-bit/oblique/commit/0066668601151e870578654ec776d7688f53a1f4))
+
 # [14.1.0](https://github.com/oblique-bit/oblique/compare/14.0.2...14.1.0) (2025-11-03)
 
 ## Features

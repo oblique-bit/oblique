@@ -1,3 +1,18 @@
+# [15.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0-rc.1) (2026-01-23)
+
+## Features
+
+- **service-navigation:** remove deprecated `maxLastUsedApplications` property ([9470fcd5](https://github.com/oblique-bit/oblique/commit/9470fcd583d0898e76dc908d0fbc4cc0a1769937))
+- **service-navigation:** remove my-business-partnerships link in profile widget ([60eb5332](https://github.com/oblique-bit/oblique/commit/60eb53328ce1e36957f109768817035eeb634512))
+- **service-navigation:** return `undefined` in case of error while getting the login state ([3e12e2ac](https://github.com/oblique-bit/oblique/commit/3e12e2ac143239034c63d732c40bbd73d974a0eb))
+- **web-component:** remove deprecated `maxLastUsedApplications` ([aac03272](https://github.com/oblique-bit/oblique/commit/aac032724c863111d691e7027a2c56812e1782b2))
+
+## BREAKING CHANGES
+
+- **service-navigation:** `maxLastUsedApplications` input has been removed without replacement
+- **service-navigation:** `loginState` now emits `undefined` if the config is unreachable. Before nothing was emitted.
+- **web-component:** `maxLastUsedApplications` input has been removed without replacement
+
 # [14.2.0](https://github.com/oblique-bit/oblique/compare/14.1.3...14.2.0) (2026-01-08)
 
 ## Features

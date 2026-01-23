@@ -1,3 +1,49 @@
+# [15.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0-rc.1) (2026-01-23)
+
+## Bug Fixes
+
+- **master-layout:** make scroll buttons visible to screen readers ([b88b8820](https://github.com/oblique-bit/oblique/commit/b88b88208ff3cad047d0c32845397cce7bca689d))
+- **master-layout:** ensure nav scroll button icons are correctly sized ([91c89113](https://github.com/oblique-bit/oblique/commit/91c891131ab350cde05ab5dad397fe0433d45814))
+- **schematics:** ensure `ng-add` installs `@ngx-translate/core@17` instead of 16 ([771ca22a](https://github.com/oblique-bit/oblique/commit/771ca22ab21c6ca391ca615987416692c9aff45f))
+
+## Features
+
+- **autocomplete:** add support for complex objects with `displayWith` ([95eeb698](https://github.com/oblique-bit/oblique/commit/95eeb6981733f384f4dd690699ddfe5b9619aa16))
+- **autocomplete:** add support for `mat-hint` ([ba4ddcbc](https://github.com/oblique-bit/oblique/commit/ba4ddcbc8c19840c2938acbb3e7c9bf598533080))
+- **collapse:** use css animations instead of angular animations ([08be5093](https://github.com/oblique-bit/oblique/commit/08be5093e55f5f4b18a7fa78c12a224e62ccd937))
+- **icon:** update icon set with new, renamed and redrawn icons ([0ca1c464](https://github.com/oblique-bit/oblique/commit/0ca1c4645e118a95d90de1fbd959a57a7b9d4b9c))
+- **master-layout:** remove deprecated `maxLastUsedApplications` property ([74603fe0](https://github.com/oblique-bit/oblique/commit/74603fe024c4694b7a475b779b4182b7e535b3be))
+- **master-layout:** remove deprecated `maxFavoriteApplications` ([1a55eaa5](https://github.com/oblique-bit/oblique/commit/1a55eaa5b01f30dd96610bfe22e751d472d824ad))
+- **master-layout:** remove deprecated `ObILocale.display` ([e366dae7](https://github.com/oblique-bit/oblique/commit/e366dae78aa9c806b4afcf70496735421beaa5e0))
+- **schematics:** update schematics remove `BrowserAnimationsModule` if not used ([6528b6c7](https://github.com/oblique-bit/oblique/commit/6528b6c7e7deaabac5d23df9f84e5729504702d3))
+- **schematics:** add migration Schematics to Oblique 15 ([bfea029b](https://github.com/oblique-bit/oblique/commit/bfea029b082dc55f89d287b624cb4e6e075a18c8))
+- **schematics:** don't add `BrowserAnimationModule` to new projects ([d6b74614](https://github.com/oblique-bit/oblique/commit/d6b74614685f9120cc8977aba62b6a54729c578f))
+- **service-navigation:** remove deprecated `maxLastUsedApplications` property ([9470fcd5](https://github.com/oblique-bit/oblique/commit/9470fcd583d0898e76dc908d0fbc4cc0a1769937))
+- **service-navigation:** remove my-business-partnerships link in profile widget ([60eb5332](https://github.com/oblique-bit/oblique/commit/60eb53328ce1e36957f109768817035eeb634512))
+- **service-navigation:** return `undefined` in case of error while getting the login state ([3e12e2ac](https://github.com/oblique-bit/oblique/commit/3e12e2ac143239034c63d732c40bbd73d974a0eb))
+
+## BREAKING CHANGES
+
+- **collapse:** `ObGlobalEvents` is required is tests using `ObCollapse`
+- **icon:** The following icons have been renamed (Solved by Schematics):
+  - arrow_down-left -> arrow_down_left
+  - arrow_down-right -> arrow_down_right
+  - arrow_up-left -> arrow_up_left
+  - arrow_up-right -> arrow_up_right
+  - chevron_left-small -> chevron_left_small
+  - chevron_double-left -> chevron_left_double
+  - chevron_right-small -> chevron_right_small
+  - chevron_double-right -> chevron_right_double
+  - chevron_down-small -> chevron_down_small
+  - chevron_up-small -> chevron_up_small
+  - sort-list_descending -> sort_list_descending
+  - sort-list_ascending -> sort_list_ascending
+- **master-layout:** `maxLastUsedApplications` property has been removed without replacement (Solved with Schematics)
+- **master-layout:** `maxFavoriteApplications` has been removed from `ObMasterLayoutHeaderService` without replacement.The property is still accepted by `ObMasterLayoutConfig` (Solved with Schematics)
+- **master-layout:** `ObILocale.display` has been removed in favor of`ObMasterLayoutConfig.header.serviceNavigation.displayLanguages` (partially solved with Schematics)
+- **service-navigation:** `maxLastUsedApplications` input has been removed without replacement
+- **service-navigation:** `loginState` now emits `undefined` if the config is unreachable. Before nothing was emitted.
+
 # [14.2.1](https://github.com/oblique-bit/oblique/compare/14.2.0...14.2.1) (2026-01-21)
 
 ## Bug Fixes

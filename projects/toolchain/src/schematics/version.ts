@@ -1,1 +1,1 @@
-export const currentToolchainVersion = '14.2.1';
+export const currentToolchainVersion = '15.0.0-rc.1';

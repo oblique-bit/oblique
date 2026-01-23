@@ -1,3 +1,14 @@
+# [15.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0-rc.1) (2026-01-23)
+
+## Bug Fixes
+
+- **autocomplete:** fix icon names ([466d0214](https://github.com/oblique-bit/oblique/commit/466d021422079712ab145f572defa39404ba4b69))
+
+## Features
+
+- **autocomplete:** add example with `displayWith` ([6ca5d1d3](https://github.com/oblique-bit/oblique/commit/6ca5d1d370afaa333ebaaf25c88209a7a39d493c))
+- **autocomplete:** add `mat-hint` ([a4e3842c](https://github.com/oblique-bit/oblique/commit/a4e3842c847a2d0730010b8f9fe1125862178951))
+
 # [14.2.1](https://github.com/oblique-bit/oblique/compare/14.2.0...14.2.1) (2026-01-21)
 
 ## Features
