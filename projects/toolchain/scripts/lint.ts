@@ -4,7 +4,7 @@ import {Log} from '../../../scripts/shared/log';
 
 Log.start('Lint Toolchain project');
 Lint.initialize(hasFlag('fix'))
-	.esLint('projects/cli/**/*.{ts,js,mjs}', '../..')
+	.esLint('projects/toolchain/**/*.{ts,js,mjs}', '../..')
 	.prettier('**/*.{ts,js,mjs,json,yml,md}')
 	.finalize();
 Log.success();
