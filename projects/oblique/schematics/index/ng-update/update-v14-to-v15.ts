@@ -2,6 +2,7 @@ import {Rule, SchematicContext, Tree, chain, noop} from '@angular-devkit/schemat
 import {
 	applyInTree,
 	createSafeRule,
+	getJson,
 	infoMigration,
 	readFile,
 	removeImport,
@@ -10,6 +11,7 @@ import {
 	writeFile,
 } from '../utils';
 import {ObIMigrations} from './ng-update.model';
+import {addDevDependency, getDepVersion} from '../ng-add/ng-add-utils';
 
 export interface IUpdateV15Schema {}
 
@@ -26,7 +28,22 @@ export class UpdateV14toV15 implements ObIMigrations {
 				this.removeObILocaleDisplay(),
 				this.renameIcons(),
 				this.removeBrowserAnimationModuleIfUnused(),
+				this.fixTestConfig(),
 			])(tree, context);
+	}
+
+	private fixTestConfig(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Adapt Jest configuration');
+			if (getDepVersion(tree, 'jest')) {
+				addDevDependency(tree, 'jest-environment-jsdom');
+				replaceInFile(tree, 'angular.json', /configPath/gu, 'config');
+				const tsconfig = getJson(tree, 'tsconfig.spec.json');
+				tsconfig.compilerOptions.isolatedModules = true;
+				writeFile(tree, 'tsconfig.spec.json', JSON.stringify(tsconfig, null, 2));
+			}
+			return tree;
+		});
 	}
 
 	private removeBrowserAnimationModuleIfUnused(): Rule {
