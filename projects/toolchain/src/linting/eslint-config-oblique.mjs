@@ -13,7 +13,6 @@ export default [
 			parser,
 			parserOptions: {
 				projectService: true,
-				tsconfigRootDir: import.meta.dirname,
 			},
 			sourceType: 'module',
 		},
