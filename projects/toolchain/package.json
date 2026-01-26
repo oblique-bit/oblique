@@ -18,5 +18,8 @@
   "keywords": [
     "schematics"
   ],
+  "exports": {
+    "./eslint-config": "./linting/eslint-config-oblique.mjs"
+  },
   "schematics": "./schematics/collection.json"
 }
