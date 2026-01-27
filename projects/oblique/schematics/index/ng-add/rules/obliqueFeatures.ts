@@ -217,7 +217,7 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 
 function removeTitleTest(tree: Tree): void {
 	const appSpecFile = `src/app/${angularAppFilesNames.appComponentSpec}`;
-	replaceInFile(tree, appSpecFile, /import\s+{[^}]*}.*from\s+['"]@angular\/core['"];/, '');
+	replaceInFile(tree, appSpecFile, /\s*it\('should render title', .*?}\);/s, '');
 }
 
 function addExternalLink(externalLink: boolean): Rule {
