@@ -11,7 +11,6 @@ export default [
 		files: ['projects/sds/**/*.ts'],
 		rules: {
 			// rules that are not respected
-			'@angular-eslint/prefer-host-metadata-property': 'off',
 			'@angular-eslint/prefer-output-emitter-ref': 'off',
 			'@angular-eslint/use-component-view-encapsulation': 'off',
 			'@angular-eslint/use-injectable-provided-in': ['error', {ignoreClassNamePattern: 'CollectorService'}],

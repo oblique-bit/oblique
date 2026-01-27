@@ -1,4 +1,4 @@
-import {Component, HostListener, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, UrlSerializer} from '@angular/router';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {CmsDataService} from '../cms/cms-data.service';
@@ -35,7 +35,10 @@ import {IconsExampleIconsGalleryPreviewComponent} from '../code-examples/code-ex
 	],
 	templateUrl: './tabbed-page.component.html',
 	styleUrl: './tabbed-page.component.scss',
-	host: {class: 'content-page'},
+	host: {
+		'(click)': 'onClick($event)',
+		class: 'content-page',
+	},
 	hostDirectives: [CdkScrollable],
 })
 export class TabbedPageComponent {
@@ -61,7 +64,6 @@ export class TabbedPageComponent {
 		this.cmsData$ = this.buildCmsDataObservable(validPageId$);
 	}
 
-	@HostListener('click', ['$event'])
 	onClick(event: MouseEvent): void {
 		const {target} = event;
 		if (!(target instanceof HTMLAnchorElement) || !target.closest('.deprecation-container')) {

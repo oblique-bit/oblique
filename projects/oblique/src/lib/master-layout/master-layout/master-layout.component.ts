@@ -7,7 +7,6 @@ import {
 	DoCheck,
 	ElementRef,
 	EventEmitter,
-	HostBinding,
 	Input,
 	OnChanges,
 	OnDestroy,
@@ -52,7 +51,19 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 		'./master-layout-accessibility.component.scss',
 	],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout', 'ob-version': appVersion},
+	host: {
+		'[class.ob-layout-collapsed]': 'isLayoutCollapsed',
+		'[class.ob-layout-expanded]': 'isLayoutExpanded',
+		'[class.ob-has-cover]': 'hasCover',
+		'[class.ob-has-layout]': 'hasLayout',
+		'[class.ob-has-max-width]': 'hasMaxWidth',
+		'[class.ob-header-expanded]': 'isMenuOpened',
+		'[class.ob-no-navigation]': 'noNavigation',
+		'[class.ob-off-canvas]': 'hasOffCanvas',
+		'[class.ob-master-layout-scrolling]': 'isScrolling',
+		class: 'ob-master-layout',
+		'ob-version': appVersion,
+	},
 	exportAs: 'obMasterLayout',
 })
 export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnChanges {
@@ -65,15 +76,15 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 	@Input() collapseBreakpoint: ObICollapseBreakpoints;
 	@Input() version?: string;
 	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
-	@HostBinding('class.ob-layout-collapsed') isLayoutCollapsed = false;
-	@HostBinding('class.ob-layout-expanded') isLayoutExpanded = true;
-	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
-	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
-	@HostBinding('class.ob-has-max-width') hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
-	@HostBinding('class.ob-header-expanded') isMenuOpened = this.masterLayout.layout.isMenuOpened;
-	@HostBinding('class.ob-no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
-	@HostBinding('class.ob-off-canvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
-	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
+	isLayoutCollapsed = false;
+	isLayoutExpanded = true;
+	hasCover = this.masterLayout.layout.hasCover;
+	hasLayout = this.masterLayout.layout.hasLayout;
+	hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
+	isMenuOpened = this.masterLayout.layout.isMenuOpened;
+	noNavigation = !this.masterLayout.layout.hasMainNavigation;
+	hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
+	isScrolling = false;
 	isHeaderSticky = this.masterLayout.header.isSticky;
 	isFooterSticky = this.masterLayout.footer.isSticky;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;

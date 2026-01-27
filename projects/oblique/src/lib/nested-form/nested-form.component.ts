@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, DestroyRef, HostListener, Input, inject} from '@angular/core';
+import {AfterViewInit, Component, DestroyRef, Input, inject} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -19,7 +19,10 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObNestedFormComponent},
 		{provide: NG_VALIDATORS, multi: true, useExisting: ObNestedFormComponent},
 	],
-	host: {class: 'ob-nested-form'},
+	host: {
+		'(focusout)': 'onBlur()',
+		class: 'ob-nested-form',
+	},
 	exportAs: 'obNestedForm',
 })
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
@@ -28,7 +31,7 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 	private readonly parent = inject(ObParentFormDirective);
 	private readonly destroyRef = inject(DestroyRef);
 
-	@HostListener('focusout') onBlur(): void {
+	onBlur(): void {
 		this.onTouched();
 	}
 

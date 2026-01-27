@@ -1,4 +1,4 @@
-import {Component, type ElementRef, HostListener, type OnInit, inject, output, viewChild} from '@angular/core';
+import {Component, type ElementRef, type OnInit, inject, output, viewChild} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, type NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
@@ -57,6 +57,9 @@ import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
 	],
 	templateUrl: './side-navigation.component.html',
 	styleUrl: './side-navigation.component.scss',
+	host: {
+		'(window:keydown)': 'moveFocusToSearch($event)',
+	},
 })
 export class SideNavigationComponent implements OnInit {
 	readonly showMobileNavigation = output<boolean>();
@@ -104,7 +107,6 @@ export class SideNavigationComponent implements OnInit {
 		}
 	}
 
-	@HostListener('window:keydown', ['$event'])
 	moveFocusToSearch($event: KeyboardEvent): void {
 		//  On Macintosh keyboards, the metaKey is the ⌘ Command key.
 		if (($event.ctrlKey || $event.metaKey) && $event.key === 'k') {

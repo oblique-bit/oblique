@@ -1,7 +1,6 @@
 import {
 	Directive,
 	ElementRef,
-	HostBinding,
 	Inject,
 	Input,
 	OnChanges,
@@ -22,12 +21,17 @@ import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'a',
 	standalone: true,
+	host: {
+		'[attr.rel]': 'rel',
+		'[attr.target]': 'target',
+		'[class.ob-external-link]': 'isLinkExternal',
+	},
 })
 export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
-	@Input() @HostBinding('attr.rel') rel: string;
-	@Input() @HostBinding('attr.target') target: string;
+	@Input() rel: string;
+	@Input() target: string;
 	@Input() isExternalLink: boolean | 'auto' = 'auto';
-	@HostBinding('class.ob-external-link') isLinkExternal = false;
+	isLinkExternal = false;
 	@Input() icon: ObEExternalLinkIcon;
 
 	private readonly unsubscribe = new Subject<void>();

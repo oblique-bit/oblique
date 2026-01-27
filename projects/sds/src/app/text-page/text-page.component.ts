@@ -1,4 +1,4 @@
-import {type AfterViewChecked, Component, HostListener, inject} from '@angular/core';
+import {type AfterViewChecked, Component, inject} from '@angular/core';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {type Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
@@ -14,7 +14,10 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 	imports: [CommonModule, IdPipe],
 	templateUrl: './text-page.component.html',
 	styleUrl: './text-page.component.scss',
-	host: {class: 'content-page'},
+	host: {
+		'(click)': 'onClick($event)',
+		class: 'content-page',
+	},
 })
 export class TextPageComponent implements AfterViewChecked {
 	readonly componentId = 'text-page';
@@ -38,7 +41,6 @@ export class TextPageComponent implements AfterViewChecked {
 		this.handleFragments();
 	}
 
-	@HostListener('click', ['$event'])
 	onClick(event: MouseEvent): void {
 		const {target} = event;
 		if (!(target instanceof HTMLAnchorElement && target.target !== '_blank')) {

@@ -1,14 +1,4 @@
-import {
-	Component,
-	ElementRef,
-	EventEmitter,
-	HostBinding,
-	Input,
-	OnChanges,
-	Output,
-	ViewEncapsulation,
-	inject,
-} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, inject} from '@angular/core';
 import {ObMasterLayoutNavigationItemDirective} from '../master-layout-navigation-item.directive';
 import {IsActiveMatchOptions} from '@angular/router';
 import {ObNavigationLink} from '../navigation-link.model';
@@ -19,11 +9,15 @@ import {ObNavigationLink} from '../navigation-link.model';
 	templateUrl: './master-layout-navigation-sub-menu-item.component.html',
 	styleUrls: ['./master-layout-navigation-sub-menu-item.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-navigation-sub-menu-item'},
+	host: {
+		'[class.column]': 'column',
+		'[class.ob-has-keyboard-focused-child]': 'hasFocusedChild',
+		class: 'ob-master-layout-navigation-sub-menu-item',
+	},
 })
 export class ObMasterLayoutNavigationSubMenuItemComponent implements OnChanges {
-	@HostBinding('class.column') @Input() column = false;
-	@HostBinding('class.ob-has-keyboard-focused-child') hasFocusedChild = false;
+	@Input() column = false;
+	hasFocusedChild = false;
 	@Input() activeClass = '';
 	@Input() child: ObNavigationLink = new ObNavigationLink();
 	@Input() currentParent: ObNavigationLink = new ObNavigationLink();

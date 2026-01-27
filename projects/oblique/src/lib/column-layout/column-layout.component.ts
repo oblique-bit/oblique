@@ -4,7 +4,6 @@ import {
 	Component,
 	DoCheck,
 	ElementRef,
-	HostBinding,
 	Inject,
 	Input,
 	OnChanges,
@@ -27,7 +26,11 @@ import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.
 	templateUrl: './column-layout.component.html',
 	styleUrls: ['./column-layout.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-column-layout'},
+	host: {
+		'[class.ob-no-layout]': 'noLayout',
+		'[class.ob-wider-columns]': 'wider',
+		class: 'ob-column-layout',
+	},
 	exportAs: 'obColumnLayout',
 })
 /* A warning is given by eslint when using both DoCheck and OnChanges to prevent checking @Input changes in the DoCheck hook.
@@ -35,8 +38,8 @@ import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.
 export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy, OnChanges {
 	@Input() left: ObTColumnState = 'OPENED';
 	@Input() right: ObTColumnState = 'OPENED';
-	@Input() @HostBinding('class.ob-wider-columns') wider = false;
-	@Input() @HostBinding('class.ob-no-layout') noLayout = false;
+	@Input() wider = false;
+	@Input() noLayout = false;
 	toggleLeftIcon$: Observable<ObIToggleDirection>;
 	toggleRightIcon$: Observable<ObIToggleDirection>;
 	@ViewChild('columnLeft') private readonly columnLeft: ObColumnPanelDirective;

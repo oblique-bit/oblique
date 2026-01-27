@@ -1,10 +1,13 @@
-import {Directive, HostListener, type OnInit, inject} from '@angular/core';
+import {Directive, type OnInit, inject} from '@angular/core';
 import {CollectorService} from '../shared/collector/collector.service';
 import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
 
 @Directive({
 	selector: '[appFeedbackTrigger]',
 	providers: [CollectorService],
+	host: {
+		'(click)': 'collectFeedback()',
+	},
 })
 export class FeedbackTriggerDirective implements OnInit {
 	private readonly collectorService = inject(CollectorService);
@@ -16,7 +19,6 @@ export class FeedbackTriggerDirective implements OnInit {
 		this.collectorService.fallbackDialog = FeedbackFormComponent;
 	}
 
-	@HostListener('click')
 	collectFeedback(): void {
 		this.collectorService.collect();
 	}

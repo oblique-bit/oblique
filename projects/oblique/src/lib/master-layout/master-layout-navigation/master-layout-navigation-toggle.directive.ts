@@ -1,18 +1,20 @@
-import {Directive, HostListener} from '@angular/core';
+import {Directive} from '@angular/core';
 import {isNotKeyboardEventOnButton} from '../../utilities';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationToggle]',
 	standalone: false,
-	host: {class: 'ob-master-layout-navigation-toggle'},
+	host: {
+		'(click)': 'onClick($event)',
+		'(keyup.enter)': 'onClick($event)',
+		class: 'ob-master-layout-navigation-toggle',
+	},
 	exportAs: 'obMasterLayoutNavigationToggle',
 })
 export class ObMasterLayoutNavigationToggleDirective {
 	constructor(private readonly item: ObMasterLayoutNavigationItemDirective) {}
 
-	@HostListener('click', ['$event'])
-	@HostListener('keyup.enter', ['$event'])
 	onClick(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {
 			// As ENTER keypress delegates to click events, let's ensure

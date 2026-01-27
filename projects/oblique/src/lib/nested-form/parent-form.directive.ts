@@ -1,10 +1,14 @@
-import {Directive, HostListener, OnDestroy} from '@angular/core';
+import {Directive, OnDestroy} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
 @Directive({
 	selector: '[obParentFormDirective]',
 	standalone: true,
-	host: {class: 'ob-parent-form-directive'},
+	host: {
+		'(reset)': 'reset()',
+		'(submit)': 'submit()',
+		class: 'ob-parent-form-directive',
+	},
 	exportAs: 'obParentFormDirective',
 })
 export class ObParentFormDirective implements OnDestroy {
@@ -23,11 +27,11 @@ export class ObParentFormDirective implements OnDestroy {
 		this.resetSubject.complete();
 	}
 
-	@HostListener('submit') submit(): void {
+	submit(): void {
 		this.submitSubject.next();
 	}
 
-	@HostListener('reset') reset(): void {
+	reset(): void {
 		this.resetSubject.next();
 	}
 }
