@@ -15,6 +15,7 @@ export const currentVersions = {
 	'@angular/cdk': '21',
 	'@angular-devkit/build-angular': '21',
 	'@angular-eslint/schematics': '21',
+	'angular-eslint': '21',
 	'@types/jest': '30',
 	'@angular-builders/jest': '21',
 	'@schematics/angular': '21',
