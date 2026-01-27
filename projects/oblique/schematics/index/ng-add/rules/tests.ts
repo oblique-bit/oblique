@@ -33,8 +33,8 @@ function addJestDependencies() {
 	return (tree: Tree, context: SchematicContext): Tree => {
 		removeDevDependencies(tree, 'vitest');
 		removeDevDependencies(tree, 'jsdom');
-		['jest', '@types/jest', 'jest-sonar-reporter', '@angular-builders/jest', 'jest-environment-jsdom'].forEach(
-			dependency => addDevDependency(tree, dependency)
+		['jest', '@types/jest', '@angular-builders/jest', 'jest-environment-jsdom'].forEach(dependency =>
+			addDevDependency(tree, dependency)
 		);
 		return tree;
 	};
