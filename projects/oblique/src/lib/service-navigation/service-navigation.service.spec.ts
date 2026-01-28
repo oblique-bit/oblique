@@ -5,7 +5,7 @@ import {map, skip} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
-import {ObEPamsEnvironment, ObISectionLink} from './service-navigation.model';
+import {ObEPamsEnvironment, ObISectionLink, ObLoginState} from './service-navigation.model';
 import {ObIServiceNavigationBackendInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
@@ -77,6 +77,7 @@ describe('ObServiceNavigationService', () => {
 					useValue: {
 						initialize: mockLanguageSynchronizationInitialize,
 						setLanguage: mockLanguageSynchronizationSetLanguage,
+						loginLevel: 'SA',
 					},
 				},
 				{
@@ -100,6 +101,7 @@ describe('ObServiceNavigationService', () => {
 			applicationsService = TestBed.inject(ObServiceNavigationApplicationsService);
 			redirectorService = TestBed.inject(ObServiceNavigationTimeoutRedirectorService);
 			service.setFavoriteApplicationsCount(1);
+			languageSynchronizationService.loginLevel = 'SA';
 		});
 
 		afterEach(() => {
@@ -584,6 +586,16 @@ describe('ObServiceNavigationService', () => {
 			mockStateChange.next({profile: {language: languageCode}} as ObIServiceNavigationState);
 
 			expect(mockLanguageSynchronizationSetLanguage).toHaveBeenNthCalledWith(1, languageCode);
+		});
+
+		it(`should set login state`, () => {
+			const loginLevel: ObLoginState = 'S2OK';
+
+			service.setUpRootUrls(ObEPamsEnvironment.TEST);
+			service.getLoginState$().subscribe();
+			mockStateChange.next({loginState: loginLevel, profile: {}} as ObIServiceNavigationState);
+
+			expect(languageSynchronizationService.loginLevel).toBe(loginLevel);
 		});
 	});
 

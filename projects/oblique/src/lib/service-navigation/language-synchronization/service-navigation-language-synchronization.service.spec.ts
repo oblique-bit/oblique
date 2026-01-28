@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObServiceNavigationLanguageSynchronizationService} from './service-navigation-language-synchronization.service';
 import {ObServiceNavigationLanguageSynchronizationApiService} from '../api/service-navigation-language-synchronization-api.service';
 import {provideObliqueTestingConfiguration} from '../../utilities';
+import {ObLoginState} from '../service-navigation.model';
 
 describe('ObServiceNavigationLanguageSynchronizationService', () => {
 	let service: ObServiceNavigationLanguageSynchronizationService;
@@ -22,6 +23,7 @@ describe('ObServiceNavigationLanguageSynchronizationService', () => {
 		});
 
 		service = TestBed.inject(ObServiceNavigationLanguageSynchronizationService);
+		service.loginLevel = 'S3OK';
 		translateService = TestBed.inject(TranslateService);
 		translateService.use(`de`);
 		jest.spyOn(translateService, 'use');
@@ -43,6 +45,34 @@ describe('ObServiceNavigationLanguageSynchronizationService', () => {
 
 			expect(fakeApiService.synchronizeLanguage).not.toHaveBeenCalled();
 		});
+
+		it.each(['SA', 'S1'] as ObLoginState[])(
+			'should skip the language synchronization when user has login level of %s',
+			loginLevel => {
+				service.shouldSynchronize = true;
+				service.loginLevel = loginLevel;
+				service.initialize(rootUrl);
+
+				translateService.use('en');
+				translateService.use('fr');
+
+				expect(fakeApiService.synchronizeLanguage).not.toHaveBeenCalled();
+			}
+		);
+
+		it.each(['S2+OK', 'S2OK', 'S3+OK', 'S3OK'] as ObLoginState[])(
+			'should synchronize the language  when user has login level of %s',
+			loginLevel => {
+				service.shouldSynchronize = true;
+				service.loginLevel = loginLevel;
+				service.initialize(rootUrl);
+
+				translateService.use('en');
+				translateService.use('fr');
+
+				expect(fakeApiService.synchronizeLanguage).toHaveBeenCalled();
+			}
+		);
 
 		it('should skip first language change synchronization when shouldSynchronize is true', () => {
 			service.shouldSynchronize = true;
