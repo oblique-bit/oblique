@@ -19,7 +19,8 @@
     "schematics"
   ],
   "exports": {
-    "./eslint-config": "./linting/eslint-config-oblique.mjs"
+    "./eslint-config": "./linting/eslint-config-oblique.mjs",
+    "./package.json": "./package.json"
   },
   "schematics": "./schematics/collection.json"
 }
