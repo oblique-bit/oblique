@@ -90,6 +90,7 @@ export class ObServiceNavigationService {
 		}),
 		tap(state => {
 			this.languageSynchronizationService.setLanguage(state.profile.language);
+			this.languageSynchronizationService.loginLevel = state.loginState;
 		}),
 		shareReplay({bufferSize: 1, refCount: true})
 	);

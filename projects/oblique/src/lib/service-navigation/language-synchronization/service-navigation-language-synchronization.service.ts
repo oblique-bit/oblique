@@ -2,10 +2,12 @@ import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ObServiceNavigationLanguageSynchronizationApiService} from '../api/service-navigation-language-synchronization-api.service';
 import {filter, switchMap} from 'rxjs';
+import {ObLoginState} from '../service-navigation.model';
 
 @Injectable()
 export class ObServiceNavigationLanguageSynchronizationService {
 	public shouldSynchronize = false;
+	public loginLevel: ObLoginState = 'SA';
 	private enableOnLangChange = true;
 
 	private readonly translateService = inject(TranslateService);
@@ -15,6 +17,7 @@ export class ObServiceNavigationLanguageSynchronizationService {
 		this.translateService.onLangChange
 			.pipe(
 				filter(() => this.shouldSynchronize),
+				filter(() => this.loginLevel !== 'SA' && this.loginLevel !== 'S1'),
 				filter(() => this.enableOnLangChange),
 				switchMap(() => this.languageSynchronizationApiService.synchronizeLanguage(rootUrl))
 			)
