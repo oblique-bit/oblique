@@ -6,8 +6,8 @@ export default [
 			'no-console': [
 				'error',
 				{
-					allow: ['info', 'warn', 'error', 'time', 'timeEnd']
-				}
+					allow: ['info', 'warn', 'error', 'time', 'timeEnd'],
+				},
 			],
 			'@typescript-eslint/consistent-return': 'off', // covered by noImplicitReturns
 			'default-case': 'off', // covered by noImplicitReturns
@@ -19,8 +19,8 @@ export default [
 			'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off', // needs strictNullChecks
 			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
-			'@typescript-eslint/strict-boolean-expressions': 'off' // needs strictNullChecks
-		}
+			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
+		},
 	},
 	{
 		files: ['projects/cli/src/**/*.spec.ts'],
@@ -28,7 +28,7 @@ export default [
 			// these two rules do have valid exceptions and should be deactivated where necessary. This is not possible as the IDE
 			// doesn't see the errors and thus removes the deactivation comment
 			'@typescript-eslint/no-unsafe-assignment': 'off',
-			'no-console': 'off'
-		}
-	}
+			'no-console': 'off',
+		},
+	},
 ];

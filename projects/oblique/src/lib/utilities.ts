@@ -1,7 +1,22 @@
 import {HttpClient} from '@angular/common/http';
-import {DOCUMENT, EnvironmentProviders, InjectionToken, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
+import {
+	ClassProvider,
+	DOCUMENT,
+	EnvironmentProviders,
+	InjectionToken,
+	inject,
+	makeEnvironmentProviders,
+	provideAppInitializer,
+} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
+import {
+	MissingTranslationHandler,
+	TranslateCompiler,
+	TranslateLoader,
+	TranslateModuleConfig,
+	TranslateParser,
+	provideTranslateService,
+} from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
@@ -14,7 +29,7 @@ import {
 	ObIObliqueConfiguration,
 	ObIPamsConfiguration,
 	ObITranslateConfig,
-	ObITranslateConfigInternal
+	ObITranslateConfigInternal,
 } from './utilities.model';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
@@ -25,6 +40,7 @@ import {ObStepperIntlService} from './stepper/ob-stepper.service';
 import {MatDatepickerIntl} from '@angular/material/datepicker';
 import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
+import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
 
 export const WINDOW = new InjectionToken<Window>('Window');
@@ -48,13 +64,14 @@ const materialProviders = {
 	MAT_CHECKBOX_OPTIONS: {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
 	MAT_RADIO_OPTIONS: {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
 	MAT_SLIDE_TOGGLE_OPTIONS: {provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-	MAT_TABS_CONFIG: {provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}}
+	MAT_TABS_CONFIG: {provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}},
 };
 
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
 			inject(ObIconService).registerOnAppInit(config.icon);
+			inject(ObLanguageService).initialize();
 			inject(ObRouterService).initialize();
 		}),
 		provideObliqueTranslations(config.translate),
@@ -66,28 +83,30 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
 		Object.entries(materialProviders).map(([provider, token]) => ({
 			provide: token.provide,
-			useValue: {...token.useValue, ...config.material?.[provider]}
-		}))
+			useValue: {...token.useValue, ...config.material?.[provider]},
+		})),
 	]);
 }
 export function provideObliqueTestingConfiguration(
-	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> & Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>> = {}
+	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> &
+		Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>> = {}
 ): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
 			inject(ObIconService).registerOnAppInit(config.icon);
+			inject(ObLanguageService).initialize();
 			inject(ObRouterService).initialize();
 		}),
 		provideTranslateService({
 			...config.translate,
 			loader: {
 				provide: TranslateLoader,
-				useValue: {getTranslation: () => of({})}
-			}
+				useValue: {getTranslation: () => of({})},
+			},
 		}),
 		{
 			provide: OB_TRANSLATION_CONFIGURATION,
-			useValue: {additionalFiles: config.translate?.additionalFiles, flatten: config.translate?.flatten ?? true}
+			useValue: {additionalFiles: config.translate?.additionalFiles, flatten: config.translate?.flatten ?? true},
 		},
 		{provide: WINDOW, useValue: window},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
@@ -97,8 +116,8 @@ export function provideObliqueTestingConfiguration(
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: config.hasLanguageInUrl || false},
 		Object.entries(materialProviders).map(([provider, token]) => ({
 			provide: token.provide,
-			useValue: {...token.useValue, ...config.material?.[provider]}
-		}))
+			useValue: {...token.useValue, ...config.material?.[provider]},
+		})),
 	]);
 }
 
@@ -109,11 +128,11 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 			loader: {
 				provide: TranslateLoader,
 				useFactory: getTranslateLoader,
-				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION]
+				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION],
 			},
-			...config
+			...addProviders(config),
 		}),
-		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}}
+		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}},
 	]);
 }
 
@@ -124,12 +143,29 @@ function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal
 		[
 			{
 				prefix: './assets/i18n/oblique-',
-				suffix: '.json'
+				suffix: '.json',
 			},
-			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}])
+			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}]),
 		],
 		flatten
 	);
+}
+
+function addProviders(config: TranslateModuleConfig = {}): TranslateModuleConfig {
+	const providers = {
+		compiler: TranslateCompiler,
+		loader: TranslateLoader,
+		parser: TranslateParser,
+		missingTranslationHandler: MissingTranslationHandler,
+	} as const;
+	const configWithProviders = {};
+	Object.keys(config).forEach(option => {
+		configWithProviders[option] =
+			providers[option] && config[option] instanceof Function
+				? ({provide: providers[option], useClass: config[option]} as ClassProvider)
+				: config[option];
+	});
+	return configWithProviders;
 }
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once

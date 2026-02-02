@@ -6,9 +6,9 @@ import {Observable} from 'rxjs';
  */
 @Directive({
 	selector: '[obParentFormDirective]',
-	exportAs: 'obParentFormDirective',
+	standalone: true,
 	host: {class: 'ob-parent-form-directive'},
-	standalone: true
+	exportAs: 'obParentFormDirective',
 })
 export class ObMockParentFormDirective {
 	public readonly submit$: Observable<void>;

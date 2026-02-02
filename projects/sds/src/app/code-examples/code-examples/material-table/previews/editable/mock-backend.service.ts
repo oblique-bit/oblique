@@ -19,7 +19,7 @@ export class MockBackEndService {
 		{id: 7, position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
 		{id: 8, position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
 		{id: 9, position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-		{id: 10, position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'}
+		{id: 10, position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 	];
 
 	public getData(): Observable<PeriodicElement[]> {

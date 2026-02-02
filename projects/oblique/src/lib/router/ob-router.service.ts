@@ -4,14 +4,12 @@ import {TranslateService} from '@ngx-translate/core';
 import {filter} from 'rxjs';
 import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
-import {ObLanguageService} from '../language/language.service';
 import {OB_HAS_LANGUAGE_IN_URL} from '../utilities';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
 export class ObRouterService {
-	private readonly language = inject(ObLanguageService); // needs to be injected to ensure ObLanguageService is instantiated
 	private readonly router = inject(Router);
 	private readonly masterLayoutConfig = inject(ObMasterLayoutConfig);
 	private readonly hasLanguageInUrl = inject(OB_HAS_LANGUAGE_IN_URL);
@@ -30,7 +28,9 @@ export class ObRouterService {
 		return {
 			path: 'accessibility-statement',
 			component: AccessibilityStatementComponent,
-			data: this.masterLayoutConfig.showAccessibilityTitle ? {title: 'i18n.oblique.accessibility-statement.statement.title'} : undefined
+			data: this.masterLayoutConfig.showAccessibilityTitle
+				? {title: 'i18n.oblique.accessibility-statement.statement.title'}
+				: undefined,
 		};
 	}
 
@@ -39,14 +39,14 @@ export class ObRouterService {
 			{
 				matcher: (url: UrlSegment[]): UrlMatchResult =>
 					url.length && this.isLangSupported(url[0].path) ? {consumed: [url[0]], posParams: {lang: url[0]}} : null,
-				children: this.router.config
+				children: this.router.config,
 			},
-			{path: '', redirectTo: () => ['', this.translate.defaultLang].join('/')}
+			{path: '', redirectTo: () => ['', this.translate.getFallbackLang()].join('/')},
 		];
 	}
 
 	private isLangSupported(lang: string): boolean {
-		return this.translate.langs.includes(lang);
+		return this.translate.getLangs().includes(lang);
 	}
 
 	private updateRouteOnLanguageChange(): void {
@@ -60,7 +60,7 @@ export class ObRouterService {
 	private updateLanguageOnRouteChange(): void {
 		this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(({url}) => {
 			const lang = url.split('/')[1];
-			if (this.isLangSupported(lang) && this.translate.currentLang !== lang) {
+			if (this.isLangSupported(lang) && this.translate.getCurrentLang() !== lang) {
 				this.translate.use(lang);
 			}
 		});

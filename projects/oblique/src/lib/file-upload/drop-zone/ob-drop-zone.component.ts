@@ -1,4 +1,3 @@
-import {NgFor, NgIf} from '@angular/common';
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
@@ -9,13 +8,13 @@ import {ObValidationService} from './validation.service';
 
 @Component({
 	selector: 'ob-drop-zone',
-	imports: [ObDragDropDirective, MatIconModule, NgIf, NgFor, TranslateModule, ObAcceptAllPipe],
+	imports: [ObDragDropDirective, MatIconModule, TranslateModule, ObAcceptAllPipe],
 	templateUrl: './ob-drop-zone.component.html',
 	styleUrls: ['./ob-drop-zone.component.scss'],
-	encapsulation: ViewEncapsulation.None,
-	exportAs: 'obDropZone',
 	providers: [ObValidationService],
-	host: {class: 'ob-drop-zone'}
+	encapsulation: ViewEncapsulation.None,
+	host: {class: 'ob-drop-zone'},
+	exportAs: 'obDropZone',
 })
 export class ObDropZoneComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
@@ -34,7 +33,7 @@ export class ObDropZoneComponent {
 			accept: this.accept,
 			maxSize: this.maxFileSize,
 			maxAmount: this.maxFileAmount,
-			multiple: this.multiple
+			multiple: this.multiple,
 		});
 		if (files.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.CHOSEN, files});

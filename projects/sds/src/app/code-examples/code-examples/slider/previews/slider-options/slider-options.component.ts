@@ -5,6 +5,6 @@ import {MatSliderModule} from '@angular/material/slider';
 	selector: 'app-slider-options',
 	imports: [MatSliderModule],
 	templateUrl: './slider-options.component.html',
-	styleUrl: './slider-options.component.scss'
+	styleUrl: './slider-options.component.scss',
 })
 export class SliderOptionsComponent {}

@@ -11,7 +11,7 @@ describe('ObServiceNavigationCountApiService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule],
-			providers: [ObServiceNavigationCountApiService]
+			providers: [ObServiceNavigationCountApiService],
 		});
 		httpClient = TestBed.inject(HttpClient);
 		jest.spyOn(httpClient, 'get').mockReturnValue(of({data: 42}));
@@ -36,11 +36,13 @@ describe('ObServiceNavigationCountApiService', () => {
 			});
 
 			it('should be called once', () => {
-				expect(httpClient.get).toBeCalledTimes(1);
+				expect(httpClient.get).toHaveBeenCalledTimes(1);
 			});
 
 			it('should be called with correct parameters', () => {
-				expect(httpClient.get).toBeCalledWith('http://rootUrl/api/widget/notifications/count', {withCredentials: true});
+				expect(httpClient.get).toHaveBeenCalledWith('http://rootUrl/api/widget/notifications/count', {
+					withCredentials: true,
+				});
 			});
 		});
 	});

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostBinding, Input, OnChanges, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation} from '@angular/core';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -13,10 +13,13 @@ import {TranslateModule} from '@ngx-translate/core';
 	templateUrl: './master-layout-navigation-go-to-children.component.html',
 	styleUrls: ['./master-layout-navigation-go-to-children.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-navigation-go-to-children'}
+	host: {
+		'[class.hide]': 'hide',
+		class: 'ob-master-layout-navigation-go-to-children',
+	},
 })
 export class ObMasterLayoutNavigationGoToChildrenComponent implements OnChanges {
-	@HostBinding('class.hide') hide = false;
+	hide = false;
 	@Input() disableRipple = false;
 	@Input() isCurrentParent = false;
 	@Input() isChildWithoutUrl = false;

@@ -13,7 +13,7 @@ describe(ObMasterLayoutNavigationGoToChildrenComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}]
+			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObMasterLayoutNavigationGoToChildrenComponent);

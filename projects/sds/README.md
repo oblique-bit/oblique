@@ -1,30 +1,53 @@
 # Swiss Design System (SDS)
 
-This package is the documentation of Oblique that can be found on [https://oblique.bit.admin.ch](https://oblique.bit.admin.ch).
+SDS is the documentation site for the entire Oblique ecosystem, and it is deployed at https://oblique.bit.admin.ch.
 
-See [README.md](../../README.md) for information about the other packages.
+See [README.md](../../README.md) for information about the other packages and projects in the Oblique ecosystem.
 
-## Data source
+## Getting Started
 
-This application mainly displays data that are provided by our Headless CMS. This CMS is only editable by the Oblique
-team, but everybody can read from it. This means that, even in development mode, data will be displayed.
+From the monorepo root, start the development server:
 
-## Scripts
+```shell
+npm start -w @oblique/sds
+```
 
-The scripts in this project are only for internal usage.
+The application will be available at `http://localhost:4200`
 
-- **start**: starts the project on port 4200
-- **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
-- **format**: same as lint, but with autofix parameter
-- **test**: run all tests and collects coverage
-- **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
-- **build**: build the library; Automatically run on the CI pipeline
-- **add-code-example**: a schematics that can automatically add a new code example
-- **add-preview**: a schematics that can automatically add a preview to an existing code example
-- **release**: create a new release, i.e. bump version number and updates the changelog
+### Data source
+
+All data except from the code examples are stored in a headless CMS. There is only one CMS instance, meaning that even in development, production data
+are used.
+
+There are 3 types of pages: text, tabbed and component pages.
+
+#### Text pages
+
+The most basic page type - it simply displays the content of the _description_ field from the CMS. It is used for pages that mostly contains text.
+Each page can be versioned, meaning that its presence and content depend on the selected version.
+
+#### Tabbed pages
+
+The core page type used to document features. It contains 3 tabs: Examples, UI/UX and API.
+
+- The **UI/UX** and **API** tabs, like text pages, display the content of a field in the CMS. These tabs can also be versioned, so their content
+  depends on the selected version.
+- The **Examples** tab, on the other hand, shows working code examples. These examples are not stored on the CMS but are loaded from the application
+  itself. While different examples can be loaded depending on the selected version, they always use the latest version of Oblique. They demonstrate
+- what the selected version could do, but are implemented with the most recent version.
+
+#### Component page
+
+A special page type that displays an Angular component, which may or may not load data from the CMS. It is used for specific pages that include logic
+or to avoid code duplication in the CMS.
+
+## Contributing
+
+Contributions from federal teams and the open-source community are welcome.
+Please refer to our [contributing guidelines](../../CONTRIBUTING.md) while contributing to the Oblique ecosystem.
 
 ## License
 
-Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication FOITT.
+Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication (FOITT).
 
 Licensed under the [MIT](../../LICENSE) license.

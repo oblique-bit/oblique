@@ -1,4 +1,4 @@
-import {DestroyRef, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, inject} from '@angular/core';
+import {DestroyRef, Directive, ElementRef, EventEmitter, Input, OnInit, Output, inject} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
@@ -7,9 +7,13 @@ import {fromEvent, startWith} from 'rxjs';
 
 @Directive({
 	selector: '[obInputClear]',
+	standalone: true,
+	host: {
+		'(click)': 'onClick($event)',
+		'[class.ob-text-control-clear]': 'cssClass',
+		class: 'ob-input-clear',
+	},
 	exportAs: 'obInputClear',
-	host: {class: 'ob-input-clear'},
-	standalone: true
 })
 export class ObInputClearDirective implements OnInit {
 	@Input('obInputClear') control: AbstractControl | HTMLInputElement | NgModel;
@@ -17,7 +21,7 @@ export class ObInputClearDirective implements OnInit {
 	@Input() datePickerRef: MatDatepicker<unknown>;
 	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
 	@Output() readonly onClear = new EventEmitter<MouseEvent>();
-	@HostBinding('class.ob-text-control-clear') cssClass = true;
+	cssClass = true;
 
 	private readonly element = inject(ElementRef);
 	private readonly validControlTypes = [AbstractControl, HTMLInputElement, NgModel];
@@ -36,7 +40,6 @@ export class ObInputClearDirective implements OnInit {
 		this.subscribeToInputValueChange();
 	}
 
-	@HostListener('click', ['$event'])
 	onClick($event: MouseEvent): void {
 		this.clearDatePicker();
 		this.clearInputField();
@@ -63,15 +66,19 @@ export class ObInputClearDirective implements OnInit {
 
 	private subscribeToInputValueChange(): void {
 		if (this.control instanceof AbstractControl) {
-			this.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value)).subscribe(value => {
-				this.handleParentClass(value);
-			});
+			this.control.valueChanges
+				.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value))
+				.subscribe(value => {
+					this.handleParentClass(value);
+				});
 		}
 
 		if (this.control instanceof NgModel) {
-			this.control.control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value)).subscribe(value => {
-				this.handleParentClass(value);
-			});
+			this.control.control.valueChanges
+				.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value))
+				.subscribe(value => {
+					this.handleParentClass(value);
+				});
 		}
 
 		if (this.control instanceof HTMLInputElement) {

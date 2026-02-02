@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostBinding, OnDestroy, OnInit} from '@angular/core';
+import {Directive, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {Subject, merge} from 'rxjs';
@@ -10,12 +10,15 @@ import {obMasterLayoutNavigationSubMenuFilter} from './masterLayoutNavigationSub
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',
+	standalone: false,
+	host: {
+		'[class.ob-expanded]': 'isExpanded',
+		class: 'ob-master-layout-navigation-item',
+	},
 	exportAs: 'obMasterLayoutNavigationItem',
-	host: {class: 'ob-master-layout-navigation-item'},
-	standalone: false
 })
 export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy {
-	@HostBinding('class.ob-expanded') isExpanded = false;
+	isExpanded = false;
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
@@ -57,7 +60,10 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 
 	private monitorForClickOutside(): void {
 		merge(
-			this.globalEventsService.click$.pipe(obOutsideFilter(this.element.nativeElement), obMasterLayoutNavigationSubMenuFilter()),
+			this.globalEventsService.click$.pipe(
+				obOutsideFilter(this.element.nativeElement),
+				obMasterLayoutNavigationSubMenuFilter()
+			),
 			this.globalEventsService.keyUp$.pipe(filter(event => event.key === 'Escape'))
 		)
 			.pipe(

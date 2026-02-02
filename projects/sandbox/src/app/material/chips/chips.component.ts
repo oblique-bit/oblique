@@ -10,7 +10,7 @@ import {map} from 'rxjs/operators';
 	selector: 'sb-chips',
 	standalone: false,
 	templateUrl: './chips.component.html',
-	styleUrl: './chips.component.scss'
+	styleUrl: './chips.component.scss',
 })
 export class ChipsComponent implements OnInit {
 	disabled = false;
@@ -31,7 +31,9 @@ export class ChipsComponent implements OnInit {
 	readonly matAutocomplete = viewChild<MatAutocomplete>('auto');
 
 	ngOnInit(): void {
-		this.filteredTags = this.tagsCtrl.valueChanges.pipe(map((tag: string | null) => (tag ? this.filter(tag) : this.remainingTags())));
+		this.filteredTags = this.tagsCtrl.valueChanges.pipe(
+			map((tag: string | null) => (tag ? this.filter(tag) : this.remainingTags()))
+		);
 	}
 
 	add(event: MatChipInputEvent): void {

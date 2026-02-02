@@ -1,0 +1,83 @@
+publiccodeYmlVersion: 0.5.0
+name: Oblique
+applicationSuite: Oblique
+url: https://github.com/oblique-bit/oblique.git
+landingURL: https://github.com/oblique-bit/oblique
+softwareVersion: 14.1.0
+releaseDate: 2025-11-03
+logo: https://avatars.githubusercontent.com/u/58680335?s=400&u=3dd6b0ffa4ac1661e85c452456734a2b08f9eb38&v=4
+platforms:
+  - web
+categories:
+  - application-development
+fundedBy:
+  - name: FOITT
+    uri: https://www.bit.admin.ch/en
+usedBy:
+  - Central Compensation Office (CCO)
+  - Federal Chancellery (FCh)
+  - Federal Department of Economic Affairs, Education and Research (EAER)
+  - Federal Department of Justice and Police (FDJP)
+  - Federal Office for Agriculture (FOAG)
+  - Federal Office for Buildings and Logistics (FOBL)
+  - Federal Office for Civil Protection (FOCP)
+  - Federal Office for Customs and Border Security (FOCBS)
+  - Federal Office for Gender Equality (FOGE)
+  - Federal Office of Information Technology, Systems and Telecommunication (FOITT)
+  - Federal Office of Police (FEDPOL)
+  - Federal Office of Public Health (FOPH)
+  - Federal Roads Office (FEDRO)
+  - Federal Statistical Office (FSO)
+  - Federal Tax Administration (FTA)
+  - State Secretariat for Migration (SEM)
+  - Swiss National Library (NL)
+developmentStatus: stable
+softwareType: library
+organisation:
+  uri: https://ld.admin.ch/office/V.1.7
+  name: Federal Office of Information Technology, Systems and Telecommunication
+description:
+  en:
+    localisedName: Oblique
+    shortDescription: Oblique is the unified frontend ecosystem of the Swiss Confederation
+    longDescription: >
+      Oblique is the unified frontend ecosystem of the Swiss Confederation —
+      encompassing all libraries, tools, guidelines and services that shape how
+      we design, build, and maintain user interfaces.
+
+      It provides a cohesive foundation for consistent, maintainable and
+      high-quality frontend development across all projects.
+
+      It is a monorepo containing the following packages and applications:
+
+      | Project                          | Description                                           |
+      |----------------------------------|-------------------------------------------------------|
+      | CLI                              | Command-line interface for managing frontend projects |
+      | Design System                    | Core visual and interaction design foundations        |
+      | Oblique                          | The historical all-in-one Angular library             |
+      | Sandbox                          | Development playground for testing Oblique features   |
+      | Sandbox SSR                      | Server-side rendered sandbox setup                    |
+      | SDS                              | The documentation for the Oblique ecosystem           |
+      | Service Navigation Web Component | The Service Navigation implemented as a Web Component |
+      | Toolchain                        | Shared build and development tooling                  |
+    documentation: https://oblique.bit.admin.ch/
+    apiDocumentation: https://oblique.bit.admin.ch/
+    features:
+      - A Command-line interface for managing frontend projects
+      - A Design System for federal applications
+      - A shared build and development tooling
+      - A Web Component to connect to ePortal
+legal:
+  license: mit
+maintenance:
+  type: internal
+  contacts:
+    - name: Oblique
+      email: oblique@bit.admin.ch
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - de
+    - fr
+    - it
+    - en

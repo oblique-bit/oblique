@@ -3,7 +3,7 @@ const coverageConfig = require('../../tests/jest.config.coverage');
 module.exports = {
 	displayName: {
 		name: 'Toolchain',
-		color: 'cyan'
+		color: 'cyan',
 	},
 	preset: 'ts-jest',
 	testEnvironment: 'node',
@@ -12,9 +12,12 @@ module.exports = {
 	 * the 'transform' property has to be manually set
 	 */
 	transform: {
-		'^.+\\.ts$': 'ts-jest'
+		'^.+\\.ts$': 'ts-jest',
+	},
+	moduleNameMapper: {
+		'^(ora)$': '<rootDir>/__mocks__/ora.js',
 	},
 	...coverageConfig,
 	coverageDirectory: '../../coverage/toolchain',
-	collectCoverageFrom: ['src/**/*.ts', '!src/schematics/test-utils.ts']
+	collectCoverageFrom: ['src/**/*.ts', '!src/schematics/test-utils.ts'],
 };

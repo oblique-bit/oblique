@@ -4,7 +4,6 @@ import {
 	Component,
 	ElementRef,
 	EventEmitter,
-	HostBinding,
 	Inject,
 	Input,
 	OnChanges,
@@ -15,7 +14,7 @@ import {
 	Renderer2,
 	ViewChild,
 	ViewEncapsulation,
-	inject
+	inject,
 } from '@angular/core';
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, map, takeUntil} from 'rxjs/operators';
@@ -28,7 +27,7 @@ import {
 	ObEMasterLayoutEventValues,
 	ObEScrollMode,
 	ObIMasterLayoutEvent,
-	ObINavigationLink
+	ObINavigationLink,
 } from '../master-layout.model';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
@@ -42,7 +41,11 @@ import {OB_HAS_LANGUAGE_IN_URL} from '../../utilities';
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation-scrollable.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-navigation'}
+	host: {
+		'[class.navigation-scrollable]': 'isScrollable',
+		'[class.navigation-scrollable-active]': 'isScrollable',
+		class: 'ob-master-layout-navigation',
+	},
 })
 export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
 	isFullWidth = this.masterLayout.navigation.isFullWidth;
@@ -59,13 +62,20 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	hideExternalLinks = true;
 	@Input() links: ObINavigationLink[] = [];
 	@Output() readonly linksChanged = new EventEmitter<ObINavigationLink[]>();
-	@HostBinding('class.navigation-scrollable') @HostBinding('class.navigation-scrollable-active') isScrollable: boolean;
-	routerLinkActiveOptions: IsActiveMatchOptions = {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'};
+	isScrollable: boolean;
+	routerLinkActiveOptions: IsActiveMatchOptions = {
+		paths: 'subset',
+		queryParams: 'subset',
+		fragment: 'ignored',
+		matrixParams: 'ignored',
+	};
 	private static readonly buttonWidth = 30;
 
 	@ViewChild('mainNav') private readonly nav?: ElementRef<HTMLElement>;
 
-	private readonly currentParentAncestors: BehaviorSubject<ObNavigationLink[]> = new BehaviorSubject<ObNavigationLink[]>([]);
+	private readonly currentParentAncestors: BehaviorSubject<ObNavigationLink[]> = new BehaviorSubject<
+		ObNavigationLink[]
+	>([]);
 	private readonly currentParentLinkSource: BehaviorSubject<ObNavigationLink> = new BehaviorSubject<ObNavigationLink>(
 		new ObNavigationLink()
 	);
@@ -105,7 +115,9 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	}
 
 	ngAfterViewInit(): void {
-		this.masterLayout.navigation.scrolled.pipe(takeUntil(this.unsubscribe)).subscribe(offset => this.updateScroll(offset));
+		this.masterLayout.navigation.scrolled
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(offset => this.updateScroll(offset));
 	}
 
 	ngOnDestroy(): void {
@@ -114,7 +126,9 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	}
 
 	toggleFocus(prefix: string, linkId: string): void {
-		const focusedEl: HTMLElement = this.el.nativeElement.querySelector(`.ob-master-layout-navigation-link.ob-main-nav-link#${linkId}`);
+		const focusedEl: HTMLElement = this.el.nativeElement.querySelector(
+			`.ob-master-layout-navigation-link.ob-main-nav-link#${linkId}`
+		);
 		const idOfNavItem = `#${prefix}${linkId}`;
 		const navItem: HTMLElement = this.el.nativeElement.querySelector(idOfNavItem);
 		if (focusedEl.classList.contains('cdk-keyboard-focused')) {
@@ -124,7 +138,10 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		}
 	}
 
-	backUpOrCloseSubMenu(link: ObNavigationLink, obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective): void {
+	backUpOrCloseSubMenu(
+		link: ObNavigationLink,
+		obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective
+	): void {
 		if (this.currentParentLink.id === link.id) {
 			this.closeSubMenu(obMasterLayoutNavigationItem, link);
 		} else {
@@ -204,7 +221,9 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isFullWidth = event.value));
+			.subscribe(event => {
+				this.isFullWidth = event.value;
+			});
 	}
 
 	private closeOnEscape(): void {
@@ -230,7 +249,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 
 	private isLinkActive(link: ObNavigationLink): boolean {
 		if (this.hasLanguageInUrl) {
-			const language = this.translate.currentLang;
+			const language = this.translate.getCurrentLang();
 			const urlWithLanguage = `/${language}/${link.url}`;
 			return this.router.isActive(urlWithLanguage, link.routerLinkActiveOptions || this.routerLinkActiveOptions);
 		}
@@ -252,21 +271,26 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	}
 
 	private monitorForCurrentParentAncestorChanges(): void {
-		this.currentParentAncestors.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.onCurrentParentAncestorsChange());
+		this.currentParentAncestors
+			.pipe(takeUntil(this.unsubscribe))
+			.subscribe(() => this.onCurrentParentAncestorsChange());
 	}
 
 	private monitorForIsCurrentParentLinkExactMatchChanges(): void {
 		this.currentUrl
-			.pipe(combineLatestWith(this.currentParentRouterLinkBase, this.currentParentLinkSource), takeUntil(this.unsubscribe))
+			.pipe(
+				combineLatestWith(this.currentParentRouterLinkBase, this.currentParentLinkSource),
+				takeUntil(this.unsubscribe)
+			)
 			.subscribe(([url, currentParentRouterLinkBase, currentParentLink]) => {
 				this.isCurrentParentLinkExactMatch = url.endsWith(`${currentParentRouterLinkBase}/${currentParentLink.url}`);
 			});
 	}
 
 	private monitorForCurrentParentLinkChanges(): void {
-		this.currentParentLinkSource
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(currentParentLink => (this.currentParentLink = currentParentLink));
+		this.currentParentLinkSource.pipe(takeUntil(this.unsubscribe)).subscribe(currentParentLink => {
+			this.currentParentLink = currentParentLink;
+		});
 	}
 
 	private monitorForNavigationEndEvents(): void {
@@ -292,7 +316,10 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.currentGrandparentLink = this.getCurrentGrandparentLink();
 	}
 
-	private onSubMenuExpandedChanges(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, link: ObNavigationLink): void {
+	private onSubMenuExpandedChanges(
+		obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective,
+		link: ObNavigationLink
+	): void {
 		if (obMasterLayoutNavigationItem.isExpanded) {
 			this.changeCurrentParentLink(link);
 		} else {
@@ -306,12 +333,16 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 			if (scrollMode === ObEScrollMode.DISABLED) {
 				this.isScrollable = false;
 			} else {
-				const childWidth = Array.from(this.nav.nativeElement.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
+				const childWidth = Array.from(this.nav.nativeElement.children).reduce(
+					(total, el: HTMLElement) => total + el.clientWidth,
+					0
+				);
 				this.maxScroll = Math.max(
 					0,
 					-(this.nav.nativeElement.clientWidth - childWidth - 2 * ObMasterLayoutNavigationComponent.buttonWidth)
 				);
-				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > this.nav.nativeElement.clientWidth;
+				this.isScrollable =
+					scrollMode === ObEScrollMode.ENABLED ? true : childWidth > this.nav.nativeElement.clientWidth;
 			}
 			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
 		}

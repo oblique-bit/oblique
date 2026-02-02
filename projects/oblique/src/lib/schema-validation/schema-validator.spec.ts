@@ -15,17 +15,17 @@ describe(ObSchemaValidateDirective.name, () => {
 			string: {
 				type: 'string',
 				minLength: 2,
-				maxLength: 10
+				maxLength: 10,
 			},
 			object: {
 				type: 'object',
 				properties: {
 					subproperty: {
-						type: 'number'
-					}
-				}
-			}
-		}
+						type: 'number',
+					},
+				},
+			},
+		},
 	};
 
 	@Component({
@@ -37,7 +37,7 @@ describe(ObSchemaValidateDirective.name, () => {
 					<input type="number" name="subproperty" ngModel obSchemaValidate />
 				</div>
 			</form>
-		`
+		`,
 	})
 	class TemplateFormTestComponent {
 		schema = schema;
@@ -53,7 +53,7 @@ describe(ObSchemaValidateDirective.name, () => {
 				</div>
 			</form>
 		`,
-		providers: [ObSchemaValidationService]
+		providers: [ObSchemaValidationService],
 	})
 	class ModelFormTestComponent implements OnInit {
 		sampleForm: FormGroup;
@@ -61,7 +61,7 @@ describe(ObSchemaValidateDirective.name, () => {
 
 		constructor(
 			private readonly formBuilder: FormBuilder,
-			private readonly schemaValidationService: ObSchemaValidationService
+			schemaValidationService: ObSchemaValidationService
 		) {
 			this.validator = schemaValidationService.compileSchema(schema);
 		}
@@ -70,8 +70,8 @@ describe(ObSchemaValidateDirective.name, () => {
 			this.sampleForm = this.formBuilder.group({
 				string: ['', this.validator.getValidator('string')],
 				object: this.formBuilder.group({
-					subproperty: [null, this.validator.getValidator('object.subproperty')]
-				})
+					subproperty: [null, this.validator.getValidator('object.subproperty')],
+				}),
 			});
 		}
 	}
@@ -85,14 +85,14 @@ describe(ObSchemaValidateDirective.name, () => {
 			testComponent: TemplateFormTestComponent,
 			formModule: FormsModule,
 			getControls: (fixture): Record<string, AbstractControl> =>
-				fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls
+				fixture.debugElement.query(By.directive(NgForm)).injector.get(NgForm).controls,
 		},
 		{
 			formType: 'model',
 			testComponent: ModelFormTestComponent,
 			formModule: ReactiveFormsModule,
-			getControls: (fixture): Record<string, AbstractControl> => fixture.componentInstance.sampleForm.controls
-		}
+			getControls: (fixture): Record<string, AbstractControl> => fixture.componentInstance.sampleForm.controls,
+		},
 	].forEach(config => {
 		// TODO: add test for more complex types and required option
 		describe(`in a ${config.formType} driven form`, () => {
@@ -104,7 +104,7 @@ describe(ObSchemaValidateDirective.name, () => {
 				await TestBed.configureTestingModule({
 					declarations: [config.testComponent],
 					imports: [ObSchemaValidationDirective, ObSchemaValidateDirective, config.formModule],
-					providers: [{provide: WINDOW, useValue: window}]
+					providers: [{provide: WINDOW, useValue: window}],
 				}).compileComponents();
 			});
 
@@ -132,8 +132,8 @@ describe(ObSchemaValidateDirective.name, () => {
 				expect(controls.string.errors).not.toBeNull();
 				expect(controls.string.errors).toEqual({
 					'ajv.maxLength': {
-						limit: 10
-					}
+						limit: 10,
+					},
 				});
 			});
 
@@ -152,8 +152,8 @@ describe(ObSchemaValidateDirective.name, () => {
 				expect(subproperties.subproperty.errors).not.toBeNull();
 				expect(subproperties.subproperty.errors).toEqual({
 					'ajv.type': {
-						type: 'number'
-					}
+						type: 'number',
+					},
 				});
 			});
 		});

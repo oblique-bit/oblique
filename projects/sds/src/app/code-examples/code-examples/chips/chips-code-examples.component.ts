@@ -11,7 +11,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 	selector: 'app-chip-code-examples',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChipsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'chips-examples';
@@ -24,8 +24,8 @@ export class ChipsCodeExamplesComponent extends CodeExamples {
 			title: 'Colors',
 			snippets: [
 				this.getSnippet(this.directory, 'color/chips-example-color-preview.component.html', 'HTML'),
-				this.getSnippet(this.directory, 'color/chips-example-color-preview.component.ts', 'TS')
-			]
+				this.getSnippet(this.directory, 'color/chips-example-color-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: ChipsExampleStackPreviewComponent,
@@ -34,8 +34,8 @@ export class ChipsCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet(this.directory, 'stack/chips-example-stack-preview.component.html', 'HTML'),
 				this.getSnippet(this.directory, 'stack/chips-example-stack-preview.component.ts', 'TS'),
-				this.getSnippet(this.directory, 'stack/chips-example-stack-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet(this.directory, 'stack/chips-example-stack-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: ChipsExampleAutocompletePreviewComponent,
@@ -43,8 +43,8 @@ export class ChipsCodeExamplesComponent extends CodeExamples {
 			title: 'Chips autocomplete',
 			snippets: [
 				this.getSnippet(this.directory, 'autocomplete/chips-example-autocomplete-preview.component.html', 'HTML'),
-				this.getSnippet(this.directory, 'autocomplete/chips-example-autocomplete-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet(this.directory, 'autocomplete/chips-example-autocomplete-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

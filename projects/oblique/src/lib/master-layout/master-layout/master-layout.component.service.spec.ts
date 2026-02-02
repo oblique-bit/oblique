@@ -14,9 +14,17 @@ describe('ObMasterLayoutComponentService', () => {
 				ObMasterLayoutComponentService,
 				{
 					provide: ObMasterLayoutConfig,
-					useValue: {layout: {hasCover: false, hasOffCanvas: false, hasMainNavigation: false, hasLayout: false, hasMaxWidth: false}}
-				}
-			]
+					useValue: {
+						layout: {
+							hasCover: false,
+							hasOffCanvas: false,
+							hasMainNavigation: false,
+							hasLayout: false,
+							hasMaxWidth: false,
+						},
+					},
+				},
+			],
 		});
 		service = TestBed.inject(ObMasterLayoutComponentService);
 	});

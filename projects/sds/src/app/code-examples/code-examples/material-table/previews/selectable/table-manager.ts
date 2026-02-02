@@ -48,13 +48,19 @@ export class TableManager<T> {
 		if (this.areAllRowsSelected()) {
 			this.selection.clear();
 		} else {
-			this.dataSource.data.forEach(row => this.selection.select(row));
+			this.dataSource.data.forEach(row => {
+				this.selection.select(row);
+			});
 		}
-		this.dataSource.data.forEach(row => (row.isSelected = this.selection.isSelected(row)));
+		this.dataSource.data.forEach(row => {
+			row.isSelected = this.selection.isSelected(row);
+		});
 	}
 
 	private buildMasterToggleObservable(): Connectable<string> {
-		return connectable<string>(this.selection.changed.pipe(map(() => this.masterToggleState())), {connector: () => new ReplaySubject()});
+		return connectable<string>(this.selection.changed.pipe(map(() => this.masterToggleState())), {
+			connector: () => new ReplaySubject(),
+		});
 	}
 
 	private masterToggleState(): 'checked' | 'indeterminate' | undefined {

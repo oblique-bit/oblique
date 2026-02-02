@@ -15,7 +15,7 @@ import {
 	replaceInFile,
 	setAngularConfig,
 	setAngularProjectsConfig,
-	writeFile
+	writeFile,
 } from '../utils';
 import {ObIDependencies, ObIMigrations} from './ng-update.model';
 import {getServiceName, removeProperty} from './ng-update-utils';
@@ -42,7 +42,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.migrateConfigEvents(),
 				this.updateBrowserCompatibilityMessage(),
 				this.migrateEditorConfig(),
-				this.migrateLinting()
+				this.migrateLinting(),
 			])(tree, context);
 		};
 	}
@@ -159,8 +159,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 					'stepper-lg-font-size',
 					'table-collapsed-header-width',
 					'grid-breakpoints',
-					'icon-font-family'
-				].forEach(scssVariable => replaceInFile(tree, filePath, new RegExp(`\\$${scssVariable}`, 'g'), `$ob-${scssVariable}`));
+					'icon-font-family',
+				].forEach(scssVariable =>
+					replaceInFile(tree, filePath, new RegExp(`\\$${scssVariable}`, 'g'), `$ob-${scssVariable}`)
+				);
 
 				[
 					// Brand
@@ -183,8 +185,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 					'logo-height',
 					'logo-height-collapsed',
 					'logo-width-collapsed',
-					'line-width'
-				].forEach(scssVariable => replaceInFile(tree, filePath, new RegExp(`\\$brand-${scssVariable}`, 'g'), `$ob-${scssVariable}`));
+					'line-width',
+				].forEach(scssVariable =>
+					replaceInFile(tree, filePath, new RegExp(`\\$brand-${scssVariable}`, 'g'), `$ob-${scssVariable}`)
+				);
 
 				// Palette Oblique colors
 				replaceInFile(tree, filePath, new RegExp(/\$(primary|error|gray|success|warning)-(\d00?)/g), '$ob-$1-$2');
@@ -247,8 +251,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 					'form-field-size',
 					'dropShadow',
 					'innerBottomShadow',
-					'list-title'
-				].forEach(mixin => replaceInFile(tree, filePath, new RegExp(`\\@include ${mixin}`, 'g'), `@include ob-${mixin}`));
+					'list-title',
+				].forEach(mixin =>
+					replaceInFile(tree, filePath, new RegExp(`\\@include ${mixin}`, 'g'), `@include ob-${mixin}`)
+				);
 			};
 			return applyInTree(tree, apply, '*.scss');
 		});
@@ -288,7 +294,9 @@ export class UpdateV7toV8 implements ObIMigrations {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Removing compat styles');
 			return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'styles'], (config: any) =>
-				(config || []).filter((style: string) => !/node_modules\/@oblique\/oblique\/styles\/css\/oblique-compat\.s?css/.test(style))
+				(config || []).filter(
+					(style: string) => !/node_modules\/@oblique\/oblique\/styles\/css\/oblique-compat\.s?css/.test(style)
+				)
 			);
 		});
 	}
@@ -300,10 +308,18 @@ export class UpdateV7toV8 implements ObIMigrations {
 				const fileContent = readFile(tree, filePath);
 				if (fileContent.includes('ObThemeService')) {
 					const service = /(?<service>\w*)\s*:\s*ObThemeService,?/.exec(fileContent)?.groups?.service;
-					const theme = this.getCSSPath(new RegExp(`${service}\\.setTheme\\((?<theme>.*)\\)`).exec(fileContent)?.groups?.theme || '');
-					const font = this.getCSSPath(new RegExp(`${service}\\.setFont\\((?<font>.*)\\)`).exec(fileContent)?.groups?.font || '');
+					const theme = this.getCSSPath(
+						new RegExp(`${service}\\.setTheme\\((?<theme>.*)\\)`).exec(fileContent)?.groups?.theme || ''
+					);
+					const font = this.getCSSPath(
+						new RegExp(`${service}\\.setFont\\((?<font>.*)\\)`).exec(fileContent)?.groups?.font || ''
+					);
 					const stylesPath = ['architect', 'build', 'options', 'styles'];
-					[theme, font].filter(property => !!property).forEach(property => addAngularConfigInList(tree, stylesPath, property));
+					[theme, font]
+						.filter(property => !!property)
+						.forEach(property => {
+							addAngularConfigInList(tree, stylesPath, property);
+						});
 
 					tree.overwrite(
 						filePath,
@@ -376,7 +392,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 					.replace(/ObEMasterLayoutEventValues\.MEDIUM\b/g, 'ObEMasterLayoutEventValues.HEADER_IS_SMALL')
 					.replace(/ObEMasterLayoutEventValues\.COVER\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_COVER')
 					.replace(/ObEMasterLayoutEventValues\.OFF_CANVAS\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS')
-					.replace(/ObEMasterLayoutEventValues\.MAIN_NAVIGATION\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION')
+					.replace(
+						/ObEMasterLayoutEventValues\.MAIN_NAVIGATION\b/g,
+						'ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION'
+					)
 					.replace(/ObEMasterLayoutEventValues\.LAYOUT\b/g, 'ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT')
 					.replace(/ObEMasterLayoutEventValues\.COLLAPSE\b/g, 'ObEMasterLayoutEventValues.IS_MENU_OPENED')
 					.replace(/ObEMasterLayoutEventValues\.FULL_WIDTH\b/g, 'ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH')
@@ -413,8 +432,14 @@ export class UpdateV7toV8 implements ObIMigrations {
 						new RegExp(`^(\\s*${service})\\.layout\\.isFixed\\s*=\\s*(\\w*)\\s*;$`, 'm'),
 						`$1.header.isSticky = $2;\n$1.footer.isSticky = $2;`
 					)
-					.replace(new RegExp(`^(\\s*${service}\\.footer)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.hasLogoOnScroll = $2;')
-					.replace(new RegExp(`^(\\s*${service}\\.header)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.reduceOnScroll = $2;')
+					.replace(
+						new RegExp(`^(\\s*${service}\\.footer)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'),
+						'$1.hasLogoOnScroll = $2;'
+					)
+					.replace(
+						new RegExp(`^(\\s*${service}\\.header)\\.hasScrollTransitions\\s*=\\s*(\\w*)\\s*;$`, 'm'),
+						'$1.reduceOnScroll = $2;'
+					)
 					.replace(new RegExp(`^(\\s*${service}\\.header)\\.isMedium\\s*=\\s*(\\w*)\\s*;$`, 'm'), '$1.isSmall = $2;')
 			: fileContent;
 	}
@@ -440,7 +465,10 @@ export class UpdateV7toV8 implements ObIMigrations {
 			if (!masterLayoutService) {
 				fileContent = fileContent
 					.replace(/(constructor\s*\()(\s*)/, '$1$2private readonly masterLayout: ObMasterLayoutService,$2')
-					.replace(/import\s*{(.*)}\s*from\s*['"]@oblique\/oblique['"]/, `import {$1, ObMasterLayoutService} from '@oblique/oblique'`);
+					.replace(
+						/import\s*{(.*)}\s*from\s*['"]@oblique\/oblique['"]/,
+						`import {$1, ObMasterLayoutService} from '@oblique/oblique'`
+					);
 				masterLayoutService = 'masterLayout';
 			}
 			return fileContent.replace(
@@ -490,7 +518,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 				this.addEslint(),
 				this.addEslintConfiguration(),
 				this.addPrettier(),
-				this.overwriteEslintRC(prefix)
+				this.overwriteEslintRC(prefix),
 			]);
 		});
 	}
@@ -533,9 +561,9 @@ export class UpdateV7toV8 implements ObIMigrations {
 					config: {
 						builder: '@angular-eslint/builder:lint',
 						options: {
-							lintFilePatterns: [`${rootPath}/**/*.ts`, `${rootPath}/**/*.html`]
-						}
-					}
+							lintFilePatterns: [`${rootPath}/**/*.ts`, `${rootPath}/**/*.html`],
+						},
+					},
 				});
 			});
 
@@ -546,7 +574,9 @@ export class UpdateV7toV8 implements ObIMigrations {
 	private addPrettier(): Rule {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Toolchain: add "prettier"');
-			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency => addDevDependency(tree, dependency));
+			['prettier', 'eslint-config-prettier', 'eslint-plugin-prettier'].forEach(dependency =>
+				addDevDependency(tree, dependency)
+			);
 			addScript(tree, 'format', 'npm run lint -- --fix');
 			writeFile(tree, '.prettierrc', getTemplate(tree, 'default-prettierrc.config'));
 			return tree;

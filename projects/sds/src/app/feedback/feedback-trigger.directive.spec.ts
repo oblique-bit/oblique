@@ -6,7 +6,7 @@ import {FeedbackTriggerDirective} from './feedback-trigger.directive';
 
 @Component({
 	imports: [FeedbackTriggerDirective],
-	template: `<button type="button" appFeedbackTrigger>btn</button>`
+	template: `<button type="button" appFeedbackTrigger>btn</button>`,
 })
 export class TestComponentComponent {}
 
@@ -18,11 +18,13 @@ describe(FeedbackTriggerDirective.name, () => {
 	beforeEach(async () => {
 		TestBed.overrideProvider(CollectorService, {useValue: service});
 		await TestBed.configureTestingModule({
-			imports: [TestComponentComponent]
+			imports: [TestComponentComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TestComponentComponent);
-		directive = fixture.debugElement.query(By.directive(FeedbackTriggerDirective)).injector.get(FeedbackTriggerDirective);
+		directive = fixture.debugElement
+			.query(By.directive(FeedbackTriggerDirective))
+			.injector.get(FeedbackTriggerDirective);
 		fixture.detectChanges();
 	});
 
@@ -48,8 +50,10 @@ describe(FeedbackTriggerDirective.name, () => {
 		});
 
 		test('default values of the service', () => {
-			// eslint-disable-next-line @typescript-eslint/naming-convention
-			expect(JSON.stringify(service.defaultValues)).toEqual(JSON.stringify({customfield_12505: () => window.location.href}));
+			expect(JSON.stringify(service.defaultValues)).toEqual(
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				JSON.stringify({customfield_12505: () => window.location.href})
+			);
 		});
 	});
 

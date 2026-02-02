@@ -11,12 +11,12 @@ export {ObUnknownRouteComponent} from './unknown-route.component';
 		CommonModule,
 		ObUnknownRouteComponent,
 		RouterModule.forChild([
-			{path: 'unknown-route', component: ObUnknownRouteComponent}
+			{path: 'unknown-route', component: ObUnknownRouteComponent},
 			// TODO uncomment once https://github.com/angular/angular/issues/12648 is fixed
 			// {path: '**', redirectTo: 'unknown-route'}
 		]),
-		TranslateModule
+		TranslateModule,
 	],
-	exports: [ObUnknownRouteComponent]
+	exports: [ObUnknownRouteComponent],
 })
 export class ObUnknownRouteModule {}

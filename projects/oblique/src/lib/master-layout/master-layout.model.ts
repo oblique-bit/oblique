@@ -6,7 +6,7 @@ import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-
 export enum ObEScrollMode {
 	AUTO,
 	ENABLED,
-	DISABLED
+	DISABLED,
 }
 
 export interface ObIMasterLayoutHeader {
@@ -24,7 +24,6 @@ export interface ObIServiceNavigationConfig {
 	infoDescription?: string;
 	infoContact?: ObIServiceNavigationContact;
 	useInfoBackend?: boolean;
-	maxLastUsedApplications?: number;
 	maxFavoriteApplications?: number;
 	returnUrl?: string;
 	pamsAppId?: string;
@@ -38,7 +37,7 @@ export interface ObIServiceNavigationConfig {
 	handleLogout?: boolean;
 }
 
-export interface ObIServiceNavigationConfigWithNotice {
+export interface ObIServiceNavigationConfigLive {
 	profileLinks?: ObIServiceNavigationLink[];
 	infoHelpText?: string;
 	infoLinks?: ObIServiceNavigationLink[];
@@ -47,10 +46,6 @@ export interface ObIServiceNavigationConfigWithNotice {
 	infoContact?: ObIServiceNavigationContact;
 	useInfoBackend?: boolean;
 	maxLastUsedApplications?: number;
-	/**
-	 *  @deprecated since Oblique 14. It will be removed without replacement in the next major.
-	 */
-	maxFavoriteApplications?: number;
 	returnUrl?: string;
 	pamsAppId?: string;
 	displayApplications?: boolean;
@@ -80,10 +75,6 @@ export interface ObILocale {
 	locales: (string | ObILocaleObject)[];
 	defaultLanguage: string;
 	disabled: boolean;
-	/**
-	 *  @deprecated since Oblique 14.1.0. The property is actually ignored as it has been replaced with ObMasterLayoutConfig.header.serviceNavigation.displayLanguages.
-	 */
-	display: boolean;
 	languages: Record<string, string>;
 }
 
@@ -146,7 +137,7 @@ export enum ObEMasterLayoutEventValues {
 	LAYOUT_HAS_OFF_CANVAS,
 	NAVIGATION_IS_FULL_WIDTH,
 	NAVIGATION_SCROLL_MODE,
-	SERVICE_NAVIGATION_CONFIGURATION
+	SERVICE_NAVIGATION_CONFIGURATION,
 }
 
 export enum ObEEnvironment {
@@ -154,7 +145,7 @@ export enum ObEEnvironment {
 	DEV = 'DEV',
 	REF = 'REF',
 	TEST = 'TEST',
-	ABN = 'ABN'
+	ABN = 'ABN',
 }
 
 export const OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION = new InjectionToken<boolean>(

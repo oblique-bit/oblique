@@ -4,8 +4,8 @@ import {NewsletterComponent} from './component-pages/newsletter/newsletter.compo
 const components: Record<string, ComponentPage> = {
 	newsletter: {
 		title: 'Newsletter',
-		component: NewsletterComponent
-	}
+		component: NewsletterComponent,
+	},
 };
 
 export function getComponentPageComponent(name: string): ComponentPage | undefined {

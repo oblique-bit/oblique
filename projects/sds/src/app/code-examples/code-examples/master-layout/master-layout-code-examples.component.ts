@@ -9,7 +9,7 @@ import {MasterLayoutExampleStackblitzLinkPreviewComponent} from './previews/stac
 	selector: 'app-code-example-master-layout',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MasterLayoutCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'master-layout-examples';
@@ -17,7 +17,7 @@ export class MasterLayoutCodeExamplesComponent extends CodeExamples {
 		{
 			component: MasterLayoutExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example'
-		}
+			title: 'Link to Stackblitz Example',
+		},
 	];
 }

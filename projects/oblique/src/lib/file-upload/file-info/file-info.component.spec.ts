@@ -21,12 +21,12 @@ describe('ObFileInfoComponent', () => {
 		const mockFileUpload = {
 			uploadComplete$: uploadComplete.asObservable(),
 			getUploadedFiles: () => of(files),
-			delete: () => of()
+			delete: () => of(),
 		};
 		await TestBed.configureTestingModule({
 			imports: [MatTableModule, ObFileInfoComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-			providers: [{provide: ObFileUploadService, useValue: mockFileUpload}, provideObliqueTestingConfiguration()]
+			providers: [{provide: ObFileUploadService, useValue: mockFileUpload}, provideObliqueTestingConfiguration()],
 		}).compileComponents();
 		uploadService = TestBed.inject(ObFileUploadService);
 	});
@@ -73,7 +73,8 @@ describe('ObFileInfoComponent', () => {
 
 	describe('with custom mapFunction', () => {
 		beforeEach(() => {
-			component.mapFunction = (filesToMap: ObIFileDescription[]) => filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
+			component.mapFunction = (filesToMap: ObIFileDescription[]) =>
+				filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
 			fixture.detectChanges();
 		});
 
@@ -94,12 +95,15 @@ describe('ObFileInfoComponent', () => {
 				expect(uploadService.getUploadedFiles).toHaveBeenCalled();
 			});
 
-			it.each([null, undefined, ''])("should not reload files on uploadComplete when there's no getUploadedFilesUrl (½s)", value => {
-				component.getUploadedFilesUrl = value;
-				jest.spyOn(uploadService, 'getUploadedFiles');
-				uploadComplete.next();
-				expect(uploadService.getUploadedFiles).not.toHaveBeenCalled();
-			});
+			it.each([null, undefined, ''])(
+				"should not reload files on uploadComplete when there's no getUploadedFilesUrl (½s)",
+				value => {
+					component.getUploadedFilesUrl = value;
+					jest.spyOn(uploadService, 'getUploadedFiles');
+					uploadComplete.next();
+					expect(uploadService.getUploadedFiles).not.toHaveBeenCalled();
+				}
+			);
 
 			describe('add new row while rows are selected', () => {
 				beforeEach(() => {
@@ -210,7 +214,9 @@ describe('ObFileInfoComponent', () => {
 			});
 
 			it('should unselect all if all are selected', () => {
-				component.dataSource.data.forEach(file => component.selection.select(file));
+				component.dataSource.data.forEach(file => {
+					component.selection.select(file);
+				});
 				component.selectOrUnselectAllItems();
 				expect(component.selection.isEmpty()).toBe(true);
 			});
@@ -296,8 +302,8 @@ describe('ObFileInfoComponent', () => {
 				{
 					case: 'default',
 					mapper: (filesDesc: ObIFileDescription[]) => filesDesc.map(file => file.name.split('.')[0]).join('-'),
-					fileId: 'file'
-				}
+					fileId: 'file',
+				},
 			])('with %case mapFilesToDeleteUrlFunction', ({mapper, fileId}) => {
 				beforeEach(() => {
 					if (mapper) {

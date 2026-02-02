@@ -12,7 +12,7 @@ describe(LanguageCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [LanguageCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [LanguageCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(LanguageCodeExamplesComponent);

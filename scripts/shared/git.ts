@@ -4,14 +4,7 @@ export class Git {
 	private static readonly format = {
 		subject: '%s',
 		body: '%b',
-		hash: '%H'
-	};
-	private static readonly diffRange = {
-		changedFiles: '--cached',
-		latestHead: 'HEAD@{1} HEAD'
-	};
-	private static readonly diffOptions = {
-		fileNameOnly: 'name-only'
+		hash: '%H',
 	};
 
 	static commit(header: string, ...lines: string[]): void {
@@ -19,7 +12,10 @@ export class Git {
 	}
 
 	static createBranchFrom(branch: string, sourceBranch: string): void {
-		executeCommandWithLog(`git checkout -b ${branch} --no-track ${sourceBranch}`, `Create ${branch} branch from ${sourceBranch}`);
+		executeCommandWithLog(
+			`git checkout -b ${branch} --no-track ${sourceBranch}`,
+			`Create ${branch} branch from ${sourceBranch}`
+		);
 	}
 
 	static doTagExist(tag: string): boolean {
@@ -59,7 +55,13 @@ export class Git {
 		return getResultFromCommand(`git tag -l "${pattern}"`);
 	}
 
-	static listCommits(format: (keyof typeof Git.format)[], separator: string, commitSeparator: string, from: string, to: string): string {
+	static listCommits(
+		format: (keyof typeof Git.format)[],
+		separator: string,
+		commitSeparator: string,
+		from: string,
+		to: string
+	): string {
 		const fullFormat = format.map(item => Git.format[item]).join(separator);
 		return getResultFromCommand(`git log --pretty=format:"${fullFormat}${commitSeparator}" ${from}..${to}`);
 	}

@@ -4,7 +4,7 @@ import {type FormControl, type FormGroup, UntypedFormBuilder, type UntypedFormGr
 @Component({
 	selector: 'sb-input-clear',
 	standalone: false,
-	templateUrl: './input-clear.component.html'
+	templateUrl: './input-clear.component.html',
 })
 export class InputClearSampleComponent implements OnInit {
 	mandatoryModel: string;
@@ -20,11 +20,11 @@ export class InputClearSampleComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.untypedForm = this.formBuilder.group({
-			untypedFormField: ['']
+			untypedFormField: [''],
 		});
 
 		this.stronglyTypedForm = this.formBuilder.group({
-			stronglyTypedFormField: ['']
+			stronglyTypedFormField: [''],
 		});
 	}
 }

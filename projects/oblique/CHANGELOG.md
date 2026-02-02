@@ -1,3 +1,49 @@
+# [15.0.0](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0) (2026-02-02)
+
+## Features
+
+- **autocomplete:** add support for complex objects with `displayWith` ([95eeb698](https://github.com/oblique-bit/oblique/commit/95eeb6981733f384f4dd690699ddfe5b9619aa16))
+- **autocomplete:** add support for `mat-hint` ([ba4ddcbc](https://github.com/oblique-bit/oblique/commit/ba4ddcbc8c19840c2938acbb3e7c9bf598533080))
+- **icon:** update icon set with new, renamed and redrawn icons ([0ca1c464](https://github.com/oblique-bit/oblique/commit/0ca1c4645e118a95d90de1fbd959a57a7b9d4b9c))
+- **master-layout:** remove deprecated `maxLastUsedApplications` property ([74603fe0](https://github.com/oblique-bit/oblique/commit/74603fe024c4694b7a475b779b4182b7e535b3be))
+- **master-layout:** remove deprecated `maxFavoriteApplications` ([1a55eaa5](https://github.com/oblique-bit/oblique/commit/1a55eaa5b01f30dd96610bfe22e751d472d824ad))
+- **master-layout:** remove deprecated `ObILocale.display` ([e366dae7](https://github.com/oblique-bit/oblique/commit/e366dae78aa9c806b4afcf70496735421beaa5e0))
+- **schematics:** update schematics remove `BrowserAnimationsModule` if not used ([6528b6c7](https://github.com/oblique-bit/oblique/commit/6528b6c7e7deaabac5d23df9f84e5729504702d3))
+- **schematics:** add migration Schematics to Oblique 15 ([bfea029b](https://github.com/oblique-bit/oblique/commit/bfea029b082dc55f89d287b624cb4e6e075a18c8))
+- **schematics:** don't add `BrowserAnimationModule` to new projects ([d6b74614](https://github.com/oblique-bit/oblique/commit/d6b74614685f9120cc8977aba62b6a54729c578f))
+- **service-navigation:** remove deprecated `maxLastUsedApplications` property ([9470fcd5](https://github.com/oblique-bit/oblique/commit/9470fcd583d0898e76dc908d0fbc4cc0a1769937))
+- **service-navigation:** remove my-business-partnerships link in profile widget ([60eb5332](https://github.com/oblique-bit/oblique/commit/60eb53328ce1e36957f109768817035eeb634512))
+- **service-navigation:** return `undefined` in case of error while getting the login state ([3e12e2ac](https://github.com/oblique-bit/oblique/commit/3e12e2ac143239034c63d732c40bbd73d974a0eb))
+
+## Bug Fixes
+
+- **master-layout:** make scroll buttons visible to screen readers ([b88b8820](https://github.com/oblique-bit/oblique/commit/b88b88208ff3cad047d0c32845397cce7bca689d))
+- **master-layout:** ensure nav scroll button icons are correctly sized ([91c89113](https://github.com/oblique-bit/oblique/commit/91c891131ab350cde05ab5dad397fe0433d45814))
+- **schematics:** ensure `ng-add` installs `@ngx-translate/core@17` instead of 16 ([771ca22a](https://github.com/oblique-bit/oblique/commit/771ca22ab21c6ca391ca615987416692c9aff45f))
+
+## BREAKING CHANGES
+
+- **collapse:** `ObGlobalEvents` is required is tests using `ObCollapse`
+- **dependencies**: Angular 20 isn't supported anymore
+- **icon:** The following icons have been renamed (Solved by Schematics):
+  - arrow_down-left -> arrow_down_left
+  - arrow_down-right -> arrow_down_right
+  - arrow_up-left -> arrow_up_left
+  - arrow_up-right -> arrow_up_right
+  - chevron_left-small -> chevron_left_small
+  - chevron_double-left -> chevron_left_double
+  - chevron_right-small -> chevron_right_small
+  - chevron_double-right -> chevron_right_double
+  - chevron_down-small -> chevron_down_small
+  - chevron_up-small -> chevron_up_small
+  - sort-list_descending -> sort_list_descending
+  - sort-list_ascending -> sort_list_ascending
+- **master-layout:** `maxLastUsedApplications` property has been removed without replacement (Solved with Schematics)
+- **master-layout:** `maxFavoriteApplications` has been removed from `ObMasterLayoutHeaderService` without replacement.The property is still accepted by `ObMasterLayoutConfig` (Solved with Schematics)
+- **master-layout:** `ObILocale.display` has been removed in favor of`ObMasterLayoutConfig.header.serviceNavigation.displayLanguages` (partially solved with Schematics)
+- **service-navigation:** `maxLastUsedApplications` input has been removed without replacement
+- **service-navigation:** `loginState` now emits `undefined` if the config is unreachable. Before nothing was emitted.
+
 # [14.2.1](https://github.com/oblique-bit/oblique/compare/14.2.0...14.2.1) (2026-01-21)
 
 ## Bug Fixes
@@ -109,7 +155,7 @@
 - **column-layout:** allow columns to be initially closed ([c46ee3b7](https://github.com/oblique-bit/oblique/commit/c46ee3b78bba6c96350f350ec235d3c5cd3bb8c4))
 - **icon:** remove `ObTIconConfig` ([9eba071d](https://github.com/oblique-bit/oblique/commit/9eba071d86bff47427af6173658ed3247465691c))
 - **icon:** remove `ObIconModule.forRoot` method ([0e5e9afa](https://github.com/oblique-bit/oblique/commit/0e5e9afa3f7865f9e9e56ab638bd478929903705))
-- **icon:** update icon library ([31fb447e](https://github.com/oblique-bit/oblique/commit/31fb447eec48acbfb6199410af47bde3a6a99a34))
+- **icon:** update icon set with new, renamed, redrawn and removed icons ([31fb447e](https://github.com/oblique-bit/oblique/commit/31fb447eec48acbfb6199410af47bde3a6a99a34))
 - **language:** use type instead of an enum for date format ([975db92b](https://github.com/oblique-bit/oblique/commit/975db92bf04b2c7260d8b1076ae2c10e92bb09d6))
 - **master-layout:** increase icon size and realign icons ([bd1d9ef3](https://github.com/oblique-bit/oblique/commit/bd1d9ef34f273f549a3869c39e2a539c4083d605))
 - **master-layout:** deprecate `maxFavoriteApplications` in `ObMasterLayoutHeaderService` ([5349e849](https://github.com/oblique-bit/oblique/commit/5349e849ce26b7489f9d0ee1cc0ed58387db7eea))
@@ -174,7 +220,7 @@
 - **http-interceptor:** `ObHttpApiInterceptorModule` have been removed without replacement, it was already doing nothing (Solved with Schematics)
 - **icon:** `ObTIconConfig` have been removed, use `provideObliqueConfiguration` instead
 - **icon:** `ObIconModule.forRoot` have been removed, use `provideObliqueConfiguration` instead
-- **icon:** Many icons have been renamed. (Solved with Schematics)
+- **icon:** Many icons have been renamed (Solved with Schematics). Since this is a substantial change, please refer to [schematics code](https://github.com/oblique-bit/oblique/blob/master/projects/oblique/schematics/index/ng-update/update-v13-to-v14.ts#L31) for more details.
 - **language:** Use the given formats of type `ObDateFormat` instead of the enum `ObEDateFormats`
 - **master-layout:** `scrollTarget` has been removed without replacement.
 - **master-layout:** `ObMasterLayoutConfig.focusableFragments` have been removed without replacement. Now all fragments are focusable (Solved with Schematics)

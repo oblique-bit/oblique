@@ -11,16 +11,19 @@ describe('ObServiceNavigationPollingService', () => {
 	let stateApiService: ObServiceNavigationStateApiService;
 	let notification: ObNotificationService;
 	const mockData = {
-		test: true
+		test: true,
 	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
 				{provide: ObServiceNavigationStateApiService, useValue: {get: jest.fn().mockReturnValue(of(mockData))}},
-				{provide: ObServiceNavigationCountApiService, useValue: {get: jest.fn().mockReturnValue(of({messageCount: 42}))}},
-				ObServiceNavigationPollingService
-			]
+				{
+					provide: ObServiceNavigationCountApiService,
+					useValue: {get: jest.fn().mockReturnValue(of({messageCount: 42}))},
+				},
+				ObServiceNavigationPollingService,
+			],
 		});
 
 		service = TestBed.inject(ObServiceNavigationPollingService);
@@ -57,7 +60,7 @@ describe('ObServiceNavigationPollingService', () => {
 			{time: 0, number: 2},
 			{time: 999, number: 2},
 			{time: 1000, number: 3},
-			{time: 4500, number: 6}
+			{time: 4500, number: 6},
 		])('with 1s interval and $time ms processing time', ({time, number}) => {
 			beforeEach(fakeAsync(() => {
 				service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
@@ -78,7 +81,7 @@ describe('ObServiceNavigationPollingService', () => {
 			{time: 0, number: 2},
 			{time: 999, number: 2},
 			{time: 1000, number: 2},
-			{time: 4500, number: 4}
+			{time: 4500, number: 4},
 		])('with 2s interval and $time ms processing time', ({time, number}) => {
 			beforeEach(fakeAsync(() => {
 				service.initializeStateUpdate(1, 2, 'http://rootUrl/', 1);
@@ -98,7 +101,7 @@ describe('ObServiceNavigationPollingService', () => {
 
 	describe.each([
 		{service: 'state', apiService: () => stateApiService},
-		{service: 'count', apiService: () => countApiService}
+		{service: 'count', apiService: () => countApiService},
 	])('with an error while fetching the $service', ({apiService}) => {
 		beforeEach(() => {
 			jest.spyOn(apiService(), 'get').mockReturnValue(throwError(() => new Error('test')));
@@ -114,12 +117,12 @@ describe('ObServiceNavigationPollingService', () => {
 			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
 			try {
 				tick(1000);
-			} catch (err) {
+			} catch {
 				/* empty */
 			}
 			expect(notification.error).toHaveBeenCalledWith({
 				message: 'i18n.oblique.service-navigation.state.error.message',
-				title: 'i18n.oblique.service-navigation.state.error.title'
+				title: 'i18n.oblique.service-navigation.state.error.title',
 			});
 		}));
 	});

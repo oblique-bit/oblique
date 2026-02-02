@@ -6,7 +6,7 @@ import {type Observable, filter, map} from 'rxjs';
 @Component({
 	selector: 'sb-nav-tree-detail-sample',
 	standalone: false,
-	templateUrl: './nav-tree-detail-sample.component.html'
+	templateUrl: './nav-tree-detail-sample.component.html',
 })
 export class NavTreeDetailSampleComponent {
 	readonly url: Signal<{param: string; value: string}[]>;

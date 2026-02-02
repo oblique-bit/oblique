@@ -16,7 +16,7 @@ import {
 	recommendedVersion,
 	runObCommand,
 	startObCommand,
-	titleText
+	titleText,
 } from './cli-utils';
 import {lt} from 'semver';
 
@@ -32,10 +32,10 @@ describe('CLI Utils', () => {
 	const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
 
 	beforeAll(() => {
-		console.info = jest.fn();
-		console.time = jest.fn();
-		console.timeEnd = jest.fn();
-		console.warn = jest.fn();
+		jest.spyOn(console, 'info').mockImplementation(() => {});
+		jest.spyOn(console, 'time').mockImplementation(() => {});
+		jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
+		jest.spyOn(console, 'warn').mockImplementation(() => {});
 	});
 
 	describe('optionDescriptions', () => {
@@ -57,9 +57,15 @@ describe('CLI Utils', () => {
 			expect(obExamples).toEqual([
 				{command: optionDescriptions.ob.version.command, description: optionDescriptions.ob.version.description},
 				{command: optionDescriptions.ob.help.command, description: optionDescriptions.ob.help.description},
-				{command: optionDescriptions.new.obNewCommand.command, description: optionDescriptions.new.obNewCommand.description},
+				{
+					command: optionDescriptions.new.obNewCommand.command,
+					description: optionDescriptions.new.obNewCommand.description,
+				},
 				{command: optionDescriptions.new.help.command, description: optionDescriptions.new.help.description},
-				{command: optionDescriptions.update.obUpdateCommand.command, description: optionDescriptions.update.obUpdateCommand.description}
+				{
+					command: optionDescriptions.update.obUpdateCommand.command,
+					description: optionDescriptions.update.obUpdateCommand.description,
+				},
 			]);
 		});
 	});
@@ -67,12 +73,16 @@ describe('CLI Utils', () => {
 	describe('runObCommand', () => {
 		test('runObCommand should log the correct messages', () => {
 			runObCommand();
-			expect(console.info).toHaveBeenCalledWith(expect.stringContaining(`Use \`ob new <project-name>\` to create a new project`));
+			expect(console.info).toHaveBeenCalledWith(
+				expect.stringContaining(`Use \`ob new <project-name>\` to create a new project`)
+			);
 		});
 
 		test('runObCommand should log the help command message', () => {
 			runObCommand();
-			expect(console.info).toHaveBeenCalledWith(expect.stringContaining('Use `ob --help` to explore the available commands'));
+			expect(console.info).toHaveBeenCalledWith(
+				expect.stringContaining('Use `ob --help` to explore the available commands')
+			);
 		});
 
 		test('runObCommand should log the new help command message', () => {
@@ -95,10 +105,10 @@ describe('CLI Utils', () => {
 
 	describe('startObCommand', () => {
 		test('startObCommand should start the timer', () => {
-			const mockCallback = jest.fn();
+			const mockCallback = jest.fn() as (options: {test: string}) => void;
 			Object.defineProperty(process.versions, 'node', {
 				value: getMinimumRecommendedVersion(),
-				configurable: true
+				configurable: true,
 			});
 			const label = 'test label';
 			const options = {test: 'test'};
@@ -109,7 +119,7 @@ describe('CLI Utils', () => {
 		});
 
 		test('startObCommand should execute the callback', () => {
-			const mockCallback = jest.fn();
+			const mockCallback = jest.fn() as (options: {test: string}) => void;
 			const label = 'test label';
 			const options = {test: 'test'};
 
@@ -119,7 +129,7 @@ describe('CLI Utils', () => {
 		});
 
 		test('startObCommand should end the timer', () => {
-			const mockCallback = jest.fn();
+			const mockCallback = jest.fn() as (options: {test: string}) => void;
 			const label = 'test label';
 			const options = {test: 'test'};
 
@@ -135,7 +145,7 @@ describe('CLI Utils', () => {
 			{subCommand: `new` as 'new' | 'update' | '<command>', option: 'options', expected: `<project-name> options`},
 			{subCommand: `update` as 'new' | 'update' | '<command>', option: 'options', expected: `options`},
 			{subCommand: `<command>` as 'new' | 'update' | '<command>', expected: `<command> [...options]`},
-			{subCommand: undefined as 'new' | 'update' | '<command>', expected: `<command> [...options]`}
+			{subCommand: undefined as 'new' | 'update' | '<command>', expected: `<command> [...options]`},
 		])('commandUsageText("$property") should return correct usage text', ({subCommand, option, expected}) => {
 			expect(commandUsageText(subCommand, option)).toBe(expected);
 		});
@@ -153,7 +163,7 @@ describe('CLI Utils', () => {
 		test('exampleUsageText should return formatted examples', () => {
 			const examples = [
 				{command: 'ob new', description: 'Creates a new project'},
-				{command: 'ob update', description: 'Updates the project'}
+				{command: 'ob update', description: 'Updates the project'},
 			];
 			const expectedOutput = `
 Examples of use:
@@ -166,7 +176,7 @@ Examples of use:
 		test('exampleUsageText should return formatted example usage text', () => {
 			const examples = [
 				{command: 'ob -v', description: ' Shows the current version of @oblique/cli'},
-				{command: 'ob -h', description: ' Shows a help message for the "ob" command in the console'}
+				{command: 'ob -h', description: ' Shows a help message for the "ob" command in the console'},
 			];
 			const expectedOutput =
 				'\nExamples of use:\n\tob -v Shows the current version of @oblique/cli\n\tob -h Shows a help message for the "ob" command in the console';
@@ -180,7 +190,7 @@ Examples of use:
 			const title = 'Usage';
 			const examples = [
 				{command: 'cmd1', description: 'description1'},
-				{command: 'cmd2', description: 'description2'}
+				{command: 'cmd2', description: 'description2'},
 			];
 			const maxCommandWidth = 4;
 
@@ -205,7 +215,7 @@ Examples of use:
 			const title = 'Usage';
 			const examples = [
 				{command: 'cmd1', description: 'description1'},
-				{command: 'cmd2', description: 'description2'}
+				{command: 'cmd2', description: 'description2'},
 			];
 			const maxCommandWidth = 6;
 
@@ -219,7 +229,7 @@ Examples of use:
 			const title = 'Usage';
 			const examples = [
 				{command: 'longcommand1', description: 'description1'},
-				{command: 'cmd2', description: 'description2'}
+				{command: 'cmd2', description: 'description2'},
 			];
 			const maxCommandWidth = examples[0].command.length;
 
@@ -233,7 +243,7 @@ Examples of use:
 			const title = '\nExample usages:\n';
 			const examples = [
 				{command: 'ob -v', description: 'Shows the current version of @oblique/cli'},
-				{command: 'ob -h', description: 'Shows a help message for the "ob" command in the console'}
+				{command: 'ob -h', description: 'Shows a help message for the "ob" command in the console'},
 			];
 			const maxCommandWidth = 5;
 			const expectedOutput =
@@ -287,143 +297,235 @@ Examples of use:
 		describe('ngNew', () => {
 			test.each([
 				{text: 'without', options: undefined},
-				{text: 'with empty', options: {}}
+				{text: 'with empty', options: {}},
 			])('%text options object', ({options}) => {
 				execute({name: 'ngNew', projectName: 'project', options});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 new project', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^21 new project', {
+					stdio: 'inherit',
+				});
 			});
 
 			test('with filled options object', () => {
-				execute({name: 'ngNew', projectName: 'project', options: {truthyFlag: true, falsyFlag: false, option: 'value'}});
+				execute({
+					name: 'ngNew',
+					projectName: 'project',
+					options: {truthyFlag: true, falsyFlag: false, option: 'value'},
+				});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^20.2 new project --truthyFlag --no-falsyFlag --option="value"',
+					'npx @angular/cli@^21 new project --truthyFlag --no-falsyFlag --option="value"',
 					{stdio: 'inherit'}
 				);
 			});
 
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'ngNew', projectName: 'project', execSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 new project', {stdio: 'inherit', cwd: 'test'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^21 new project', {
+					stdio: 'inherit',
+					cwd: 'test',
+				});
 			});
 
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'ngNew', projectName: 'project', execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 new project', {stdio: 'pipe'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^21 new project', {stdio: 'pipe'});
 			});
 		});
 
 		describe('ngAdd', () => {
 			test.each([
 				{text: 'without', options: undefined},
-				{text: 'with empty', options: {}}
+				{text: 'with empty', options: {}},
 			])('%text options object', ({options}) => {
 				execute({name: 'ngAdd', dependency: 'jest', options});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 add jest@29', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^21 add jest@30', {
+					stdio: 'inherit',
+				});
 			});
 
 			test('with filled options object', () => {
 				execute({name: 'ngAdd', dependency: 'jest', options: {truthyFlag: true, falsyFlag: false, option: 'value'}});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^20.2 add jest@29 --truthyFlag --no-falsyFlag --option="value"',
+					'npx @angular/cli@^21 add jest@30 --truthyFlag --no-falsyFlag --option="value"',
 					{stdio: 'inherit'}
 				);
 			});
 
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'ngAdd', dependency: 'jest', execSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 add jest@29', {stdio: 'inherit', cwd: 'test'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^21 add jest@30', {
+					stdio: 'inherit',
+					cwd: 'test',
+				});
 			});
 
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'ngAdd', dependency: 'jest', execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 add jest@29', {stdio: 'pipe'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^21 add jest@30', {stdio: 'pipe'});
 			});
 		});
 
 		describe('ngUpdate', () => {
 			test('with a single dependency', () => {
-				execute({name: 'ngUpdate', dependencies: ['jest']});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --allow-dirty', {stdio: 'inherit'});
+				execute({name: 'ngUpdate', dependencies: ['jest'], angularDependencies: ['@angular/cli']});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 update jest@30 @angular/cli@21 --allow-dirty',
+					{
+						stdio: 'inherit',
+					}
+				);
+			});
+			test('with a single dependency', () => {
+				execute({name: 'ngUpdate', dependencies: [], angularDependencies: ['jest']});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^21 update jest --allow-dirty', {
+					stdio: 'inherit',
+				});
+			});
+			test('with a single dependency', () => {
+				execute({name: 'ngUpdate', dependencies: ['jest'], angularDependencies: ['jest']});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^21 update jest@30 --allow-dirty', {
+					stdio: 'inherit',
+				});
+			});
+			test('without angularDependenciy in angularDependencies ', () => {
+				execute({name: 'ngUpdate', dependencies: ['jest', '@angular/cli'], angularDependencies: []});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 update jest@30 @angular/cli@^21 --allow-dirty',
+					{
+						stdio: 'inherit',
+					}
+				);
 			});
 			test('with multiple dependencies', () => {
-				execute({name: 'ngUpdate', dependencies: ['jest', '@types/jest']});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 @types/jest@29 --allow-dirty', {
-					stdio: 'inherit'
+				execute({
+					name: 'ngUpdate',
+					dependencies: ['jest', '@types/jest', '@angular/cdk'],
+					angularDependencies: ['@angular/cdk'],
 				});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 update jest@30 @types/jest@30 @angular/cdk@21 --allow-dirty',
+					{
+						stdio: 'inherit',
+					}
+				);
 			});
 
 			test('with an additional option', () => {
-				execute({name: 'ngUpdate', dependencies: ['jest'], options: {force: true}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --allow-dirty --force', {
-					stdio: 'inherit'
+				execute({
+					name: 'ngUpdate',
+					dependencies: ['jest'],
+					angularDependencies: ['@angular/cli', '@angular/core'],
+					options: {force: true},
 				});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 update jest@30 @angular/cli@21 @angular/core@21 --allow-dirty --force',
+					{
+						stdio: 'inherit',
+					}
+				);
 			});
 
 			test('with an overwriting option', () => {
-				execute({name: 'ngUpdate', dependencies: ['jest'], options: {'allow-dirty': false}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --no-allow-dirty', {
-					stdio: 'inherit'
+				execute({
+					name: 'ngUpdate',
+					dependencies: ['jest'],
+					angularDependencies: ['@angular/cli'],
+					options: {'allow-dirty': false},
 				});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 update jest@30 @angular/cli@21 --no-allow-dirty',
+					{
+						stdio: 'inherit',
+					}
+				);
 			});
 
 			test('with an additional execSyncOptions', () => {
-				execute({name: 'ngUpdate', dependencies: ['jest'], execSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --allow-dirty', {
-					stdio: 'inherit',
-					cwd: 'test'
+				execute({
+					name: 'ngUpdate',
+					dependencies: ['jest', '@angular/cli'],
+					angularDependencies: ['@angular/common'],
+					execSyncOptions: {cwd: 'test'},
 				});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 update jest@30 @angular/cli@^21 @angular/common@21 --allow-dirty',
+					{
+						stdio: 'inherit',
+						cwd: 'test',
+					}
+				);
 			});
 
 			test('with an overwriting execSyncOptions', () => {
-				execute({name: 'ngUpdate', dependencies: ['jest'], execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^20.2 update jest@29 --allow-dirty', {stdio: 'pipe'});
+				execute({
+					name: 'ngUpdate',
+					dependencies: ['jest'],
+					angularDependencies: ['@angular/cli'],
+					execSyncOptions: {stdio: 'pipe'},
+				});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 update jest@30 @angular/cli@21 --allow-dirty',
+					{
+						stdio: 'pipe',
+					}
+				);
 			});
 		});
 
 		describe('npmInstall', () => {
 			test('with one dependency', () => {
 				execute({name: 'npmInstall', dependencies: ['jest']});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29 --audit false --fund false', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@30 --audit false --fund false', {
+					stdio: 'inherit',
+				});
 			});
 
 			test('with multiple dependencies', () => {
 				execute({name: 'npmInstall', dependencies: ['jest', '@types/jest']});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29 @types/jest@29 --audit false --fund false', {
-					stdio: 'inherit'
-				});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npm install jest@30 @types/jest@30 --audit false --fund false',
+					{
+						stdio: 'inherit',
+					}
+				);
 			});
 
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'npmInstall', dependencies: ['jest'], execSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29 --audit false --fund false', {
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@30 --audit false --fund false', {
 					stdio: 'inherit',
-					cwd: 'test'
+					cwd: 'test',
 				});
 			});
 
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'npmInstall', dependencies: ['jest'], execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@29 --audit false --fund false', {stdio: 'pipe'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm install jest@30 --audit false --fund false', {
+					stdio: 'pipe',
+				});
 			});
 		});
 
 		describe('npmUpdate', () => {
 			test('without additional execSyncOptions', () => {
 				execute({name: 'npmUpdate'});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save --audit false --fund false', {stdio: 'inherit'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save --audit false --fund false', {
+					stdio: 'inherit',
+				});
 			});
 
 			test('with an additional execSyncOptions', () => {
 				execute({name: 'npmUpdate', execSyncOptions: {cwd: 'test'}});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save --audit false --fund false', {
 					stdio: 'inherit',
-					cwd: 'test'
+					cwd: 'test',
 				});
 			});
 
 			test('with an overwriting execSyncOptions', () => {
 				execute({name: 'npmUpdate', execSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save --audit false --fund false', {stdio: 'pipe'});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npm update --save --audit false --fund false', {
+					stdio: 'pipe',
+				});
 			});
 		});
 
@@ -460,7 +562,7 @@ Examples of use:
 		afterEach(() => {
 			Object.defineProperty(process.versions, 'node', {
 				value: originalNodeVersion,
-				configurable: true
+				configurable: true,
 			});
 			jest.restoreAllMocks();
 		});
@@ -469,7 +571,7 @@ Examples of use:
 			beforeEach(() => {
 				Object.defineProperty(process.versions, 'node', {
 					value: '16.13.0',
-					configurable: true
+					configurable: true,
 				});
 			});
 
@@ -503,7 +605,7 @@ Examples of use:
 			beforeEach(() => {
 				Object.defineProperty(process.versions, 'node', {
 					value: minimumSupportedVersion,
-					configurable: true
+					configurable: true,
 				});
 			});
 
@@ -527,7 +629,7 @@ Examples of use:
 			beforeEach(() => {
 				Object.defineProperty(process.versions, 'node', {
 					value: getMinimumRecommendedVersion(),
-					configurable: true
+					configurable: true,
 				});
 			});
 
@@ -546,7 +648,7 @@ Examples of use:
 			beforeEach(() => {
 				Object.defineProperty(process.versions, 'node', {
 					value: '23.0.0',
-					configurable: true
+					configurable: true,
 				});
 			});
 
@@ -587,7 +689,7 @@ Examples of use:
 				{arg: 'execPath', value: '/usr/local/bin/node'},
 				{arg: 'filePath', value: '/home/dario/.nvm/versions/node/v22.12.0/bin/ob'},
 				{arg: 'commandName', value: 'new'},
-				{arg: 'arguments', value: ['my-app']}
+				{arg: 'arguments', value: ['my-app']},
 			])('extract the $arg', ({arg, value}) => {
 				expect(parseResult[arg])[typeof value === 'string' ? 'toBe' : 'toEqual'](value);
 			});

@@ -12,7 +12,7 @@ import {ListGroupExampleImagePreviewComponent} from './previews/image/list-group
 @Component({
 	selector: 'app-list-group-code-examples',
 	imports: [CommonModule, CodeExampleComponent, IdPipe],
-	templateUrl: '../../code-examples.component.html'
+	templateUrl: '../../code-examples.component.html',
 })
 export class ListGroupCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'list-group-examples';
@@ -24,8 +24,8 @@ export class ListGroupCodeExamplesComponent extends CodeExamples {
 			title: 'Default',
 			snippets: [
 				this.getSnippet('list-group', 'default/list-group-example-default.component.html', 'HTML'),
-				this.getSnippet('list-group', 'default/list-group-example-default.component.ts', 'TS')
-			]
+				this.getSnippet('list-group', 'default/list-group-example-default.component.ts', 'TS'),
+			],
 		},
 		{
 			component: ListGroupExampleCheckBoxComponent,
@@ -33,8 +33,8 @@ export class ListGroupCodeExamplesComponent extends CodeExamples {
 			title: 'Checkbox',
 			snippets: [
 				this.getSnippet('list-group', 'checkbox/list-group-example-checkbox.component.html', 'HTML'),
-				this.getSnippet('list-group', 'checkbox/list-group-example-checkbox.component.ts', 'TS')
-			]
+				this.getSnippet('list-group', 'checkbox/list-group-example-checkbox.component.ts', 'TS'),
+			],
 		},
 		{
 			component: ListGroupExampleAvatarSubheaderComponent,
@@ -42,8 +42,8 @@ export class ListGroupCodeExamplesComponent extends CodeExamples {
 			title: 'Avatar & subheader',
 			snippets: [
 				this.getSnippet('list-group', 'avatar-subheader/list-group-example-avatar-subheader.component.html', 'HTML'),
-				this.getSnippet('list-group', 'avatar-subheader/list-group-example-avatar-subheader.component.ts', 'TS')
-			]
+				this.getSnippet('list-group', 'avatar-subheader/list-group-example-avatar-subheader.component.ts', 'TS'),
+			],
 		},
 		{
 			component: ListGroupExampleIconCheckboxComponent,
@@ -51,8 +51,8 @@ export class ListGroupCodeExamplesComponent extends CodeExamples {
 			title: 'Icons & checkbox',
 			snippets: [
 				this.getSnippet('list-group', 'icon-checkbox/list-group-example-icon-checkbox.component.html', 'HTML'),
-				this.getSnippet('list-group', 'icon-checkbox/list-group-example-icon-checkbox.component.ts', 'TS')
-			]
+				this.getSnippet('list-group', 'icon-checkbox/list-group-example-icon-checkbox.component.ts', 'TS'),
+			],
 		},
 		{
 			component: ListGroupExampleImagePreviewComponent,
@@ -60,8 +60,8 @@ export class ListGroupCodeExamplesComponent extends CodeExamples {
 			title: 'Image',
 			snippets: [
 				this.getSnippet('list-group', 'image/list-group-example-image-preview.component.html', 'HTML'),
-				this.getSnippet('list-group', 'image/list-group-example-image-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('list-group', 'image/list-group-example-image-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

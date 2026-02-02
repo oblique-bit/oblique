@@ -12,7 +12,7 @@ import {firstValueFrom} from 'rxjs';
 
 @Component({
 	standalone: false,
-	template: ''
+	template: '',
 })
 export class MockComponent {}
 
@@ -33,15 +33,15 @@ describe(ObRouterService.name, () => {
 				de: 'Deutsch',
 				fr: 'Français',
 				it: 'Italiano',
-				en: 'English'
-			}
+				en: 'English',
+			},
 		},
 		layout: {
 			hasCover: false,
 			hasMainNavigation: true,
 			hasOffCanvas: false,
 			hasLayout: true,
-			hasMaxWidth: false
+			hasMaxWidth: false,
 		},
 		header: {
 			isSticky: true,
@@ -51,31 +51,30 @@ describe(ObRouterService.name, () => {
 				profileLinks: [],
 				infoLinks: [],
 				infoContact: {},
-				maxLastUsedApplications: 3,
 				maxFavoriteApplications: 3,
 				displayLanguages: true,
 				pamsAppId: undefined,
-				handleLogout: true
-			}
+				handleLogout: true,
+			},
 		},
 		navigation: {
 			isFullWidth: false,
 			scrollMode: ObEScrollMode.AUTO,
 			scrollDelta: 95,
 			activeClass: 'active',
-			links: []
+			links: [],
 		},
 		footer: {
 			isSticky: false,
-			isCustom: false
-		}
+			isCustom: false,
+		},
 	};
 	const routes = [
 		{
 			component: MockComponent,
 			path: 'home',
-			data: {masterLayout: {homePageRoute: 'test'}}
-		}
+			data: {masterLayout: {homePageRoute: 'test'}},
+		},
 	];
 
 	describe('without hasLanguageInUrl', () => {
@@ -84,10 +83,10 @@ describe(ObRouterService.name, () => {
 				providers: [
 					provideRouter(routes),
 					provideObliqueTestingConfiguration({
-						hasLanguageInUrl: false
+						hasLanguageInUrl: false,
 					}),
-					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig}
-				]
+					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig},
+				],
 			});
 		});
 
@@ -95,13 +94,13 @@ describe(ObRouterService.name, () => {
 			{
 				text: 'with',
 				showAccessibilityTitle: true,
-				data: {title: 'i18n.oblique.accessibility-statement.statement.title'}
+				data: {title: 'i18n.oblique.accessibility-statement.statement.title'},
 			},
 			{
 				text: 'without',
 				showAccessibilityTitle: false,
-				data: undefined
-			}
+				data: undefined,
+			},
 		])('$text showAccessibilityTitle', ({showAccessibilityTitle, data}) => {
 			beforeEach(() => {
 				TestBed.overrideProvider(ObMasterLayoutConfig, {useValue: {...mockMasterLayoutConfig, showAccessibilityTitle}});
@@ -123,9 +122,9 @@ describe(ObRouterService.name, () => {
 					{
 						component: AccessibilityStatementComponent,
 						path: 'accessibility-statement',
-						data
+						data,
 					},
-					...routes
+					...routes,
 				]);
 			});
 		});
@@ -137,10 +136,10 @@ describe(ObRouterService.name, () => {
 				providers: [
 					provideRouter(routes),
 					provideObliqueTestingConfiguration({
-						hasLanguageInUrl: true
+						hasLanguageInUrl: true,
 					}),
-					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig}
-				]
+					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig},
+				],
 			});
 		});
 
@@ -148,13 +147,13 @@ describe(ObRouterService.name, () => {
 			{
 				text: 'with',
 				showAccessibilityTitle: true,
-				data: {title: 'i18n.oblique.accessibility-statement.statement.title'}
+				data: {title: 'i18n.oblique.accessibility-statement.statement.title'},
 			},
 			{
 				text: 'without',
 				showAccessibilityTitle: false,
-				data: undefined
-			}
+				data: undefined,
+			},
 		])('$text showAccessibilityTitle', ({showAccessibilityTitle, data}) => {
 			beforeEach(() => {
 				TestBed.overrideProvider(ObMasterLayoutConfig, {useValue: {...mockMasterLayoutConfig, showAccessibilityTitle}});
@@ -191,9 +190,9 @@ describe(ObRouterService.name, () => {
 							{
 								component: AccessibilityStatementComponent,
 								path: 'accessibility-statement',
-								data
+								data,
 							},
-							...routes
+							...routes,
 						]);
 					});
 				});
@@ -220,7 +219,7 @@ describe(ObRouterService.name, () => {
 					{route: 'non-existent', url: '/de'},
 					{route: 'de/home', url: '/de/home'},
 					{route: 'fr', url: '/fr'},
-					{route: 'fr/home', url: '/fr/home'}
+					{route: 'fr/home', url: '/fr/home'},
 				])('"$route" route redirects to "$url"', async ({route, url}) => {
 					await router.navigate([route]);
 					expect(router.url).toBe(url);
@@ -228,20 +227,22 @@ describe(ObRouterService.name, () => {
 
 				test('update language', async () => {
 					await router.navigate(['it']);
-					expect(translate.currentLang).toBe('it');
+					expect(translate.getCurrentLang()).toBe('it');
 				});
 			});
 
 			describe('change language', () => {
 				test('update language in URL', async () => {
+					jest.spyOn(router, 'navigate');
 					await firstValueFrom(translate.use('en'));
-					expect(router.url).toBe('/en');
+					expect(router.navigate).toHaveBeenCalledWith(['en']);
 				});
 
 				test('update language in URL but stay on same page', async () => {
+					jest.spyOn(router, 'navigate');
 					await router.navigate(['it/home']);
 					await firstValueFrom(translate.use('en'));
-					expect(router.url).toBe('/en/home');
+					expect(router.navigate).toHaveBeenCalledWith(['en', 'home']);
 				});
 			});
 		});

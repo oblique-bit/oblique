@@ -1,6 +1,12 @@
 import {Component, inject} from '@angular/core';
 import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
-import {ObButtonModule, ObErrorMessagesModule, ObNestedFormModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
+import {
+	ObButtonModule,
+	ObErrorMessagesModule,
+	ObNestedFormModule,
+	ObNotificationModule,
+	ObNotificationService,
+} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {JsonPipe} from '@angular/common';
 import {NestedFormExampleReactivePreviewChildComponent} from './child/nested-form-example-reactive-preview-child.component';
@@ -19,10 +25,10 @@ import {MatButtonModule} from '@angular/material/button';
 		ObErrorMessagesModule,
 		ObNestedFormModule,
 		ObNotificationModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
 	],
 	templateUrl: './nested-form-example-reactive-preview.component.html',
-	styleUrl: '../nested-form-example-preview.scss'
+	styleUrl: '../nested-form-example-preview.scss',
 })
 export class NestedFormExampleReactivePreviewComponent {
 	readonly channel = 'reactive-channel';
@@ -38,11 +44,11 @@ export class NestedFormExampleReactivePreviewComponent {
 					field2: '',
 					grandchild: {
 						field1: '',
-						field2: ''
-					}
-				}
+						field2: '',
+					},
+				},
 			],
-			parent: ['', [Validators.required]]
+			parent: ['', [Validators.required]],
 		});
 	}
 

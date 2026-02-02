@@ -47,10 +47,20 @@ class PostBuild extends StaticScript {
 
 	private static adaptPackageJson(): void {
 		PackageJson.initialize('oblique')
-			.addFieldsFromRoot('version', 'description', 'keywords', 'author', 'contributors', 'homepage', 'repository', 'license', 'bugs')
+			.addFieldsFromRoot(
+				'version',
+				'description',
+				'keywords',
+				'author',
+				'contributors',
+				'homepage',
+				'repository',
+				'license',
+				'bugs'
+			)
 			.addExports({
 				...PostBuild.getExportEntriesForSCSS(),
-				'./assets/images/cover-background.jpg': './assets/images/cover-background.jpg' // used by oblique-components.css
+				'./assets/images/cover-background.jpg': './assets/images/cover-background.jpg', // used by oblique-components.css
 			})
 			.write()
 			.finalize();
@@ -75,7 +85,11 @@ class PostBuild extends StaticScript {
 
 	private static updateFontPath(): void {
 		Log.info('Update path to Noto font.');
-		PostBuild.replaceInFiles(['../../dist/oblique/styles/css/oblique-core.css'], /(?<=url\()(?=noto-sans)/, '../fonts/');
+		PostBuild.replaceInFiles(
+			['../../dist/oblique/styles/css/oblique-core.css'],
+			/(?<=url\()(?=noto-sans)/,
+			'../fonts/'
+		);
 	}
 
 	private static distributeObFeatures(): void {
@@ -107,14 +121,21 @@ class PostBuild extends StaticScript {
 			.map(filePath => filePath.replace(/\\/g, '/'))
 			.map(filePath => filePath.replace(distPath, '.'))
 			.map(filePath => ({importPath: filePath.replace(/_|\.scss/g, ''), filePath}))
-			.reduce<ExportEntries>((exportEntries, {importPath, filePath}) => ({...exportEntries, [importPath]: {sass: filePath}}), {});
+			.reduce<ExportEntries>(
+				(exportEntries, {importPath, filePath}) => ({...exportEntries, [importPath]: {sass: filePath}}),
+				{}
+			);
 	}
 
 	private static replaceInFiles(filePathList: string[], searchValue: string | RegExp, replaceValue: string): void {
 		filePathList
 			.map(filePath => ({file: Files.read(filePath), filePath}))
-			.filter(fileObject => (typeof searchValue === 'string' ? fileObject.file.includes(searchValue) : searchValue.test(fileObject.file)))
-			.forEach(fileObject => Files.write(fileObject.filePath, fileObject.file.replace(new RegExp(searchValue, 'g'), replaceValue)));
+			.filter(fileObject =>
+				typeof searchValue === 'string' ? fileObject.file.includes(searchValue) : searchValue.test(fileObject.file)
+			)
+			.forEach(fileObject =>
+				Files.write(fileObject.filePath, fileObject.file.replace(new RegExp(searchValue, 'g'), replaceValue))
+			);
 	}
 }
 

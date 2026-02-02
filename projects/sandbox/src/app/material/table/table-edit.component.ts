@@ -12,7 +12,7 @@ interface Data {
 @Component({
 	selector: 'sb-table-edit',
 	standalone: false,
-	templateUrl: './table-edit.component.html'
+	templateUrl: './table-edit.component.html',
 })
 export class TableEditComponent implements OnInit {
 	editForm: UntypedFormGroup;
@@ -46,7 +46,7 @@ export class TableEditComponent implements OnInit {
 			position: [data.position, Validators.required],
 			name: [data.name, Validators.required],
 			weight: [data.weight, Validators.required],
-			symbol: [data.symbol, Validators.required]
+			symbol: [data.symbol, Validators.required],
 		});
 	}
 }

@@ -1,42 +1,76 @@
 <ob-notification />
-<div class="search-container">
-	<div class="search">
-		<mat-form-field>
-			<mat-label>Search icons</mat-label>
-			<input matInput [formControl]="iconsFilter" />
-			<button type="button" [obInputClear]="iconsFilter">
-				<mat-icon svgIcon="xmark_circle" />
-				<span class="ob-screen-reader-only">Clear search</span>
-			</button>
-			<mat-hint>Search by name</mat-hint>
-		</mat-form-field>
+<div class="header">
+	<h2>Icon Gallery</h2>
+	<div class="search-container">
+		<div class="search">
+			<mat-form-field>
+				<mat-label>Search icons</mat-label>
+				<input matInput [formControl]="iconsFilter" />
+				<button type="button" [obInputClear]="iconsFilter">
+					<mat-icon svgIcon="xmark_circle" />
+					<span class="ob-screen-reader-only">Clear search</span>
+				</button>
+				<mat-hint>Search by name or keyword (home, access, ...)</mat-hint>
+			</mat-form-field>
 
-		<mat-form-field>
-			<mat-label>Category</mat-label>
-			<mat-select panelClass="by-category-filter" value="'ALL'" [formControl]="byCategoryFilter">
-				<mat-option value="ALL">All icons</mat-option>
-				<mat-divider />
-				@for (item of obECategory | keyvalue; track item) {
-					<mat-option [value]="item.value">
-						{{ item.value }}
-					</mat-option>
-				}
-			</mat-select>
-		</mat-form-field>
+			<mat-form-field>
+				<mat-label>Category</mat-label>
+				<mat-select panelClass="by-category-filter" value="'ALL'" [formControl]="byCategoryFilter">
+					<mat-option value="ALL">All icons</mat-option>
+					<mat-divider />
+					@for (item of obECategory | keyvalue; track item) {
+						@if (item.value !== obECategory.DEPRECATED_ICONS) {
+							<mat-option [value]="item.value">
+								{{ item.value }}
+							</mat-option>
+						}
+					}
+					<mat-divider />
+					<mat-option [value]="obECategory.DEPRECATED_ICONS">{{ obECategory.DEPRECATED_ICONS }}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
 	</div>
 </div>
 <h3 class="ob-screen-reader-only">Current icon collection</h3>
-@if ((filteredIcons$ | async).length === 0) {
+
+@let filteredIcons = filteredIcons$ | async;
+
+@if (filteredIcons[0].length === 0 && filteredIcons[1].length === 0) {
 	<ob-alert>No results found. Refine your search and try again.</ob-alert>
 }
 
 <div class="container">
-	<div class="gallery">
-		@for (icon of filteredIcons$ | async; track icon) {
-			<button class="icon-card" mat-button type="button" [obButton]="isButtonActive(icon)" (click)="showIconMetaData(icon)">
-				<mat-icon aria-hidden="false" class="icon" [attr.aria-label]="getMetaDataOfIcon(icon)?.description" [svgIcon]="icon" />
-				<span>{{ icon }}</span>
-			</button>
+	<div class="gallery-container">
+		@for (icons of filteredIcons; track icons; let idx = $index) {
+			@if (icons.length > 0) {
+				<section [ngClass]="{ 'icons-set': true, deprecated: idx === 1 }">
+					@if (idx === 1) {
+						<h3>Deprecated icons</h3>
+					}
+					<div class="gallery">
+						@for (icon of icons; track icon) {
+							<button
+								class="icon-card"
+								mat-button
+								type="button"
+								[matTooltip]="idx === 1 ? 'Deprecated' : null"
+								[matTooltipPositionAtOrigin]="true"
+								[obButton]="isButtonActive(icon)"
+								(click)="showIconMetaData(icon)"
+							>
+								<mat-icon
+									aria-hidden="false"
+									class="icon"
+									[attr.aria-label]="getMetaDataOfIcon(icon)?.description"
+									[svgIcon]="icon"
+								/>
+								<span [innerHTML]="icon | markify: iconsFilter.value"></span>
+							</button>
+						}
+					</div>
+				</section>
+			}
 		}
 	</div>
 	<div class="info-card">
@@ -67,14 +101,20 @@
 							<h4>Usage</h4>
 							@if (selectedIconMetaData?.purpose === "single") {
 								<mat-chip class="info">Single purpose</mat-chip>
-							} @else {
+							}
+							@if (selectedIconMetaData?.purpose === "multi") {
 								<mat-chip class="success">Multi purpose</mat-chip>
+							}
+							@if (selectedIconMetaData?.purpose === "deprecated") {
+								<mat-chip class="warning">Deprecated</mat-chip>
 							}
 						</div>
 						{{ selectedIconMetaData?.usage }}
 					</section>
 					<section>
-						<h4>Alternative text <mat-icon svgIcon="info_circle" [obPopover]="alternativeText" [appendToBody]="true" /></h4>
+						<h4>
+							Alternative text <mat-icon svgIcon="info_circle" [obPopover]="alternativeText" [appendToBody]="true" />
+						</h4>
 						{{ selectedIconMetaData?.description }}
 						<ng-template #alternativeText>
 							<div [innerHTML]="'i18n.icons.alternative-text' | translate"></div>
@@ -84,6 +124,12 @@
 						<section>
 							<h4>Deprecated name</h4>
 							{{ selectedIconMetaData.oldName }}
+						</section>
+					}
+					@if (selectedIconMetaData?.deprecatedPurpose) {
+						<section>
+							<h4>Deprecated purpose</h4>
+							{{ selectedIconMetaData.deprecatedPurpose }}
 						</section>
 					}
 				</mat-card-content>

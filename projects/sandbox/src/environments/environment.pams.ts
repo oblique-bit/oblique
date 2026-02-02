@@ -9,10 +9,10 @@ import type {Environment} from '../app/app.component.model';
 export const environment: Environment = {
 	production: false,
 	banner: {
-		text: 'LOCAL'
+		text: 'LOCAL',
 	},
 	pams: {
 		environment: ObEPamsEnvironment.REF,
-		rootUrl: 'http://localhost:8207/'
-	}
+		rootUrl: 'http://localhost:8207/',
+	},
 };

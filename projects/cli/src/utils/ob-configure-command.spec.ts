@@ -13,13 +13,13 @@ describe('ob-configure-command tests', () => {
 			const inputOptions = {
 				SomeOption: 'value1', // eslint-disable-line @typescript-eslint/naming-convention
 				aThirdOption: true,
-				anotherOption: 'value2'
+				anotherOption: 'value2',
 			} as unknown as ObNewOptions<string | boolean>;
 
 			const expectedOptions = {
 				someOption: 'value1',
 				anotherOption: 'value2',
-				aThirdOption: true
+				aThirdOption: true,
 			};
 
 			const result = convertOptionPropertyNames(inputOptions);
@@ -34,14 +34,14 @@ describe('ob-configure-command tests', () => {
 				properties: {
 					option1: {
 						description: 'Description for option 1',
-						flagValuePlaceholder: 'value1'
+						flagValuePlaceholder: 'value1',
 					},
 					option2: {
 						description: 'Description for option 2',
 						shortFlag: 'o',
-						choices: ['choice1', 'choice2']
-					}
-				}
+						choices: ['choice1', 'choice2'],
+					},
+				},
 			} as unknown as ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>>;
 
 			const command = new Command<[string], OptionValues>('test-command');
@@ -67,31 +67,48 @@ describe('ob-configure-command tests', () => {
 			defaultValue: 'defaultValue',
 			choices: ['choice1', 'choice2'],
 			mandatory: true,
-			flagValuePlaceholder: 'testValue'
+			flagValuePlaceholder: 'testValue',
 		} as ObNewSchemaOption;
 		option = configureOption(config, 'test-option');
 
 		const testCases = [
 			{description: 'option flags to contain -t', actual: option.flags, expected: '-t', matcher: 'toContain'},
-			{description: 'option flags to contain --test-option', actual: option.flags, expected: '--test-option', matcher: 'toContain'},
-			{description: 'option flags to contain testValue', actual: option.flags, expected: 'testValue', matcher: 'toContain'},
-			{description: 'default value to be defaultValue', actual: option.defaultValue, expected: 'defaultValue', matcher: 'toBe'},
+			{
+				description: 'option flags to contain --test-option',
+				actual: option.flags,
+				expected: '--test-option',
+				matcher: 'toContain',
+			},
+			{
+				description: 'option flags to contain testValue',
+				actual: option.flags,
+				expected: 'testValue',
+				matcher: 'toContain',
+			},
+			{
+				description: 'default value to be defaultValue',
+				actual: option.defaultValue,
+				expected: 'defaultValue',
+				matcher: 'toBe',
+			},
 			{description: 'mandatory to be true', actual: option.mandatory, expected: true, matcher: 'toBe'},
 			{
 				description: 'argument choices to equal choice1 and choice2',
 				actual: option.argChoices,
 				expected: ['choice1', 'choice2'],
-				matcher: 'toEqual'
-			}
+				matcher: 'toEqual',
+			},
 		];
 
 		test('should throw if both shortFlag and longFlag are missing or empty', () => {
 			const brokenConfig = {
 				description: 'No flags here',
-				flagValuePlaceholder: 'value'
+				flagValuePlaceholder: 'value',
 			} as ObNewSchemaOption;
 
-			expect(() => configureOption(brokenConfig, '')).toThrow(/At least one of shortFlag or longFlag must be provided./iu);
+			expect(() => configureOption(brokenConfig, '')).toThrow(
+				/At least one of shortFlag or longFlag must be provided./iu
+			);
 		});
 
 		test.each(testCases)('should have $description', ({actual, expected, matcher}) => {
@@ -109,7 +126,7 @@ describe('ob-configure-command tests', () => {
 				{
 					description: 'Test option description',
 					flagValuePlaceholder: 'testValue',
-					type: 'string'
+					type: 'string',
 				} as ObNewSchemaOption,
 				'test-option'
 			);
@@ -124,29 +141,29 @@ describe('ob-configure-command tests', () => {
 				optionConfig: {shortFlag: 's', description: 'Test option'} as ObNewSchemaOption,
 				longFlag: 'testOption',
 				expectedShortFlag: '-s',
-				expectedLongFlag: '--testOption'
+				expectedLongFlag: '--testOption',
 			},
 			{
 				description: 'longFlag is an empty string',
 				optionConfig: {shortFlag: 's', description: 'Test option'} as ObNewSchemaOption,
 				longFlag: '',
 				expectedShortFlag: '-s',
-				expectedLongFlag: undefined
+				expectedLongFlag: undefined,
 			},
 			{
 				description: 'longFlag is undefined',
 				optionConfig: {shortFlag: 's', description: 'Test option'} as ObNewSchemaOption,
 				longFlag: undefined,
 				expectedShortFlag: '-s',
-				expectedLongFlag: undefined
+				expectedLongFlag: undefined,
 			},
 			{
 				description: 'longFlag is null',
 				optionConfig: {shortFlag: 's', description: 'Test option'} as ObNewSchemaOption,
 				longFlag: null,
 				expectedShortFlag: '-s',
-				expectedLongFlag: undefined
-			}
+				expectedLongFlag: undefined,
+			},
 		])('should handle $description', ({optionConfig, longFlag, expectedShortFlag, expectedLongFlag}) => {
 			const result = configureOption(optionConfig, longFlag);
 
@@ -162,7 +179,7 @@ describe('ob-configure-command tests', () => {
 
 		test('should handle no choices', () => {
 			const optionConfig = {
-				description: 'Test option description'
+				description: 'Test option description',
 			} as ObNewSchemaOption;
 			const optionWithoutChoice = configureOption(optionConfig, 'test-option');
 			expect(optionWithoutChoice.argChoices).toBeUndefined();

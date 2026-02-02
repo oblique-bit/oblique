@@ -9,7 +9,7 @@ import {BreadcrumbExampleDefaultPreviewComponent} from '../breadcrumb/previews/d
 	selector: 'app-code-example-breadcrumb',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreadcrumbCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'breadcrumb-examples';
@@ -17,7 +17,7 @@ export class BreadcrumbCodeExamplesComponent extends CodeExamples {
 		{
 			component: BreadcrumbExampleDefaultPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example'
-		}
+			title: 'Link to Stackblitz Example',
+		},
 	];
 }

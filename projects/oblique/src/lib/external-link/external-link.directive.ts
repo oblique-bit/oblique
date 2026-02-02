@@ -1,4 +1,15 @@
-import {Directive, ElementRef, HostBinding, Inject, Input, OnChanges, OnDestroy, OnInit, Optional, Renderer2, inject} from '@angular/core';
+import {
+	Directive,
+	ElementRef,
+	Inject,
+	Input,
+	OnChanges,
+	OnDestroy,
+	OnInit,
+	Optional,
+	Renderer2,
+	inject,
+} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, switchMap} from 'rxjs';
@@ -9,13 +20,18 @@ import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'a',
-	standalone: true
+	standalone: true,
+	host: {
+		'[attr.rel]': 'rel',
+		'[attr.target]': 'target',
+		'[class.ob-external-link]': 'isLinkExternal',
+	},
 })
 export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
-	@Input() @HostBinding('attr.rel') rel: string;
-	@Input() @HostBinding('attr.target') target: string;
+	@Input() rel: string;
+	@Input() target: string;
 	@Input() isExternalLink: boolean | 'auto' = 'auto';
-	@HostBinding('class.ob-external-link') isLinkExternal = false;
+	isLinkExternal = false;
 	@Input() icon: ObEExternalLinkIcon;
 
 	private readonly unsubscribe = new Subject<void>();
@@ -48,11 +64,17 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 			.getNamedSvgIcon('link_external')
 			.pipe(
 				first(),
-				tap(svg => (this.iconElement = this.createIconElement(svg))),
+				tap(svg => {
+					this.iconElement = this.createIconElement(svg);
+				}),
 				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isUrlExternal(this.host.href)))),
-				tap(isLinkExternal => (this.isLinkExternal = isLinkExternal))
+				tap(isLinkExternal => {
+					this.isLinkExternal = isLinkExternal;
+				})
 			)
-			.subscribe(isLinkExternal => this.manageLink(isLinkExternal));
+			.subscribe(isLinkExternal => {
+				this.manageLink(isLinkExternal);
+			});
 	}
 
 	ngOnChanges(): void {
@@ -100,7 +122,9 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.translate
 			.stream('i18n.oblique.external')
 			.pipe(takeUntil(this.unsubscribe))
-			.subscribe((text: string) => this.renderer.setProperty(this.screenReaderOnlyTextElement, 'textContent', ` - ${text}`));
+			.subscribe((text: string) => {
+				this.renderer.setProperty(this.screenReaderOnlyTextElement, 'textContent', ` - ${text}`);
+			});
 	}
 
 	private addIcon(): void {

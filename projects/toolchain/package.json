@@ -1,6 +1,6 @@
 {
   "name": "@oblique/toolchain",
-  "version": "14.2.1",
+  "version": "15.0.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },
@@ -18,5 +18,9 @@
   "keywords": [
     "schematics"
   ],
+  "exports": {
+    "./eslint-config": "./linting/eslint-config-oblique.mjs",
+    "./package.json": "./package.json"
+  },
   "schematics": "./schematics/collection.json"
 }

@@ -45,24 +45,13 @@
 			@if (uiUx().designFileLatest) {
 				<section class="design-files">
 					<h2>Design Figma Files</h2>
-					<a class="figma" [href]="uiUx().designFileLatest"
-						><span>Community Lib {{ currentObliqueVersion }} </span></a
+					<h3>BIT projects</h3>
+					<p>For projects developed by BIT or in collaboration with BIT, please click the following button:</p>
+					<a class="figma" routerLink="/introductions/getting-started-as-a-designer">
+						<img ngSrc="/assets/images/figma_logo.svg" alt="" width="18" height="27" /> Getting started</a
 					>
-					<div class="designer">
-						<div class="title" id="older-libraries">Looking for previous version?</div>
-						<ul class="link-list" aria-labelledby="older-libraries">
-							<li>
-								<a [href]="uiUx().designFilePrevious"
-									><span>Community Lib {{ lastObliqueVersion }}</span></a
-								>
-							</li>
-						</ul>
-						<div class="title" id="intern">Are you part of BIT?</div>
-						<p aria-labelledby="intern">
-							Please read <a routerLink="/introductions/getting-started-as-a-designer">Getting started as a designer</a> and submit there a
-							request for accessing the FIGMA file in the BIT space.
-						</p>
-					</div>
+					<h3>External projects</h3>
+					<p>Use the free <a href="https://www.figma.com/@oblique">Community version</a> of Oblique Figma.</p>
 				</section>
 			}
 			@if (uiUx().relatedLinks?.length) {

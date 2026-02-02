@@ -8,6 +8,6 @@ export {ObSpinnerService} from './spinner.service';
 
 @NgModule({
 	imports: [ObSpinnerComponent],
-	exports: [ObSpinnerComponent]
+	exports: [ObSpinnerComponent],
 })
 export class ObSpinnerModule {}

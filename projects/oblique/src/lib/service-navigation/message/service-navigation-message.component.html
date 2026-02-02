@@ -3,8 +3,10 @@
 		| obTranslateParams
 			: {
 					messagePluralizationKey:
-						count > 1 ? "i18n.oblique.service-navigation.message.plural" : "i18n.oblique.service-navigation.message.singular",
-					count: count === 0 ? "i18n.oblique.service-navigation.message.count.zero" : count
+						count > 1
+							? "i18n.oblique.service-navigation.message.plural"
+							: "i18n.oblique.service-navigation.message.singular",
+					count: count === 0 ? "i18n.oblique.service-navigation.message.count.zero" : count,
 			  };
 <a
 	id="my-notifications-link"

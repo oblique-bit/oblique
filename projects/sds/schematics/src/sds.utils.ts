@@ -3,7 +3,7 @@ import {
 	ScriptKind,
 	ScriptTarget,
 	type SourceFile,
-	createSourceFile
+	createSourceFile,
 } from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {isImported} from '@schematics/angular/utility/ast-utils';
 import type {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
@@ -34,11 +34,14 @@ export function addImportToFile(toAdd: {symbolName: string; relativePath: string
 			if (existsSymbolImport) {
 				showAlreadyExistsMessage(context, {
 					elementDescription: 'import',
-					symbol: `{${classify(toAdd.symbolName)}} from ${toAdd.relativePath}`
+					symbol: `{${classify(toAdd.symbolName)}} from ${toAdd.relativePath}`,
 				});
 				return noop();
 			}
-			return changeInsertLeft([insertImport(sourceFile, pathToFile, toAdd.symbolName, toAdd.relativePath) as InsertChange], pathToFile);
+			return changeInsertLeft(
+				[insertImport(sourceFile, pathToFile, toAdd.symbolName, toAdd.relativePath) as InsertChange],
+				pathToFile
+			);
 		}
 		return noop();
 	};
@@ -60,7 +63,9 @@ export async function getSourceFileOrFalse(
 export function changeInsertLeft(changes: InsertChange[], path: string): Rule {
 	return (tree: Tree) => {
 		const updateRecorder = tree.beginUpdate(path);
-		changes.forEach((change: InsertChange) => updateRecorder.insertLeft(change.pos, change.toAdd));
+		changes.forEach((change: InsertChange) => {
+			updateRecorder.insertLeft(change.pos, change.toAdd);
+		});
 		tree.commitUpdate(updateRecorder);
 	};
 }

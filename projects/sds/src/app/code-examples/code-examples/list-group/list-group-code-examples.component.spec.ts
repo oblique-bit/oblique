@@ -7,7 +7,7 @@ describe(ListGroupCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ListGroupCodeExamplesComponent]
+			imports: [ListGroupCodeExamplesComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ListGroupCodeExamplesComponent);

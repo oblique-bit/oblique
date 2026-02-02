@@ -1,15 +1,18 @@
-import {AfterViewInit, Directive, ElementRef, HostBinding, OnInit, Renderer2, inject} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, OnInit, Renderer2, inject} from '@angular/core';
 import {FormControlName, NgModel, NgModelGroup} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
 	selector: '[obSchemaValidate][ngModel],[obSchemaValidate][formControlName]',
+	standalone: true,
+	host: {
+		'[attr.aria-required]': 'required',
+		class: 'ob-schema-required-validation',
+	},
 	exportAs: 'obSchemaRequiredValidation',
-	host: {class: 'ob-schema-required-validation'},
-	standalone: true
 })
 export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
-	@HostBinding('attr.aria-required') required: boolean;
+	required: boolean;
 
 	private readonly host = inject(ElementRef);
 	private readonly renderer = inject(Renderer2);

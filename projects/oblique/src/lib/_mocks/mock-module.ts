@@ -8,6 +8,6 @@ export {ObMockMatElement} from './mock-mat-element';
  */
 @NgModule({
 	imports: [ObMockMatElement],
-	exports: [ObMockMatElement]
+	exports: [ObMockMatElement],
 })
 export class ObMockModule {}

@@ -43,8 +43,8 @@ export {ObFileUploadService} from './file-upload.service';
 		ObFileUploadComponent,
 		ObNotificationModule,
 		ObProgressComponent,
-		TranslateModule
+		TranslateModule,
 	],
-	exports: [ObDropZoneComponent, ObFileInfoComponent, ObFileUploadComponent]
+	exports: [ObDropZoneComponent, ObFileInfoComponent, ObFileUploadComponent],
 })
 export class ObFileUploadModule {}

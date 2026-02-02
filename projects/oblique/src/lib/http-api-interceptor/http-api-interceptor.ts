@@ -9,7 +9,11 @@ import {ObNotificationService} from '../notification/notification.module';
 import {ObSpinnerService} from '../spinner/spinner.module';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
 import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
-import {ObIHttpApiRequest, ObIHttpApiRequestNotification, ObIObliqueHttpErrorResponse} from './http-api-interceptor.model';
+import {
+	ObIHttpApiRequest,
+	ObIHttpApiRequestNotification,
+	ObIObliqueHttpErrorResponse,
+} from './http-api-interceptor.model';
 
 @Injectable({providedIn: 'root'})
 export class ObHttpApiInterceptor implements HttpInterceptor {
@@ -43,17 +47,21 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private handleUnknownError(error: ObIObliqueHttpErrorResponse): Observable<never> {
-		return this.handleError(error, !(error.error instanceof HttpErrorResponse), () =>
-			this.notificationService.error('i18n.oblique.http.error.general')
-		);
+		return this.handleError(error, !(error.error instanceof HttpErrorResponse), () => {
+			this.notificationService.error('i18n.oblique.http.error.general');
+		});
 	}
 
 	private handleSessionExpiredError(error: ObIObliqueHttpErrorResponse): Observable<never> {
-		return this.handleError(error, error.error.status === 401, () => this.interceptorEvents.sessionExpire());
+		return this.handleError(error, error.error.status === 401, () => {
+			this.interceptorEvents.sessionExpire();
+		});
 	}
 
 	private handleHttpError(error: ObIObliqueHttpErrorResponse, obliqueRequest: ObIHttpApiRequest): Observable<never> {
-		return this.handleError(error, obliqueRequest.notification.active, () => this.notify(obliqueRequest.notification, error.error));
+		return this.handleError(error, obliqueRequest.notification.active, () => {
+			this.notify(obliqueRequest.notification, error.error);
+		});
 	}
 
 	private handleError(error: ObIObliqueHttpErrorResponse, hasError: boolean, action: () => void): Observable<never> {
@@ -65,7 +73,9 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	}
 
 	private setupHeader(request: HttpRequest<unknown>): HttpRequest<unknown> {
-		return request.clone(this.isApiCall(request.url) ? {headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')} : undefined);
+		return request.clone(
+			this.isApiCall(request.url) ? {headers: request.headers.set('X-Requested-With', 'XMLHttpRequest')} : undefined
+		);
 	}
 
 	private setTimer(): number {
@@ -78,7 +88,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	private broadcast(): ObIHttpApiRequest {
 		const evt: ObIHttpApiRequest = {
 			notification: this.config.api.notification,
-			spinner: this.config.api.spinner
+			spinner: this.config.api.spinner,
 		};
 		this.interceptorEvents.requestIntercept(evt);
 
@@ -112,17 +122,17 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 			.pipe(
 				map(texts => ({
 					text: texts[textKey] === textKey ? 'i18n.oblique.http.error.general' : textKey,
-					title: texts[titleKey] === titleKey ? error.statusText : titleKey
+					title: texts[titleKey] === titleKey ? error.statusText : titleKey,
 				}))
 			)
-			.subscribe(keys =>
+			.subscribe(keys => {
 				this.notificationService.send({
 					message: notification.text || keys.text,
 					title: notification.title || keys.title,
 					type: notification.severity,
-					sticky: notification.sticky
-				})
-			);
+					sticky: notification.sticky,
+				});
+			});
 	}
 
 	private isApiCall(url: string): boolean {

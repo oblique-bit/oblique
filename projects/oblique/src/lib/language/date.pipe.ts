@@ -4,15 +4,17 @@ import {ObLanguageService} from './language.service';
 
 @Pipe({
 	name: 'obDate',
+	standalone: true,
 	// eslint-disable-next-line @angular-eslint/no-pipe-impure
 	pure: false,
-	standalone: true
 })
 export class ObDatePipe implements PipeTransform {
 	private locale: string;
 
 	constructor(language: ObLanguageService) {
-		language.locale$.subscribe(locale => (this.locale = locale));
+		language.locale$.subscribe(locale => {
+			this.locale = locale;
+		});
 	}
 
 	transform(value: string | number | Date, format = 'datetime', timezone?: string): string {

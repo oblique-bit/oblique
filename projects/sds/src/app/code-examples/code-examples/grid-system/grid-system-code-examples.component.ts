@@ -10,7 +10,7 @@ import {GridSystemExampleFlexPreviewComponent} from './previews/flex/grid-system
 	selector: 'app-code-example-grid-system',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridSystemCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'grid-system-examples';
@@ -23,8 +23,8 @@ export class GridSystemCodeExamplesComponent extends CodeExamples {
 			title: 'Grid system',
 			snippets: [
 				this.getSnippet(this.directory, 'grid/grid-system-example-grid-preview.component.html', 'HTML'),
-				this.getSnippet(this.directory, 'grid/grid-system-example-grid-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet(this.directory, 'grid/grid-system-example-grid-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: GridSystemExampleFlexPreviewComponent,
@@ -32,8 +32,8 @@ export class GridSystemCodeExamplesComponent extends CodeExamples {
 			title: 'Flex system',
 			snippets: [
 				this.getSnippet(this.directory, 'flex/grid-system-example-flex-preview.component.html', 'HTML'),
-				this.getSnippet(this.directory, 'flex/grid-system-example-flex-preview.component.scss', 'SCSS')
-			]
-		}
+				this.getSnippet(this.directory, 'flex/grid-system-example-flex-preview.component.scss', 'SCSS'),
+			],
+		},
 	];
 }

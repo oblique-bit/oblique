@@ -19,7 +19,11 @@ export class TranslationsService {
 		this.languageChange$ = this.translate.onLangChange.pipe(map(event => event.lang));
 	}
 
-	initializeTranslations(languageList: string, language: string | undefined, defaultLanguage: string | undefined): void {
+	initializeTranslations(
+		languageList: string,
+		language: string | undefined,
+		defaultLanguage: string | undefined
+	): void {
 		this.parsedLanguages = this.parseLanguages(languageList);
 		this.parsedDefaultLanguage = this.parseDefaultLanguage(defaultLanguage, this.parsedLanguages);
 		const parsedLanguage = this.parseLanguage(language, this.parsedDefaultLanguage, this.parsedLanguages);
@@ -89,7 +93,7 @@ export class TranslationsService {
 		languages.forEach(lang => {
 			this.translate.setTranslation(lang, this.getObliqueTranslations(lang), true);
 		});
-		this.translate.setDefaultLang(defaultLanguage);
+		this.translate.setFallbackLang(defaultLanguage);
 		this.translate.use(language);
 	}
 
@@ -108,21 +112,25 @@ export class TranslationsService {
 		}
 	}
 
-	private buildTranslations(languages: string[], infoLinks: string, profileLinks: string): Record<string, Record<string, string>> {
+	private buildTranslations(
+		languages: readonly string[],
+		infoLinks: string,
+		profileLinks: string
+	): Record<string, Record<string, string>> {
 		let translations = this.initializeTranslationsObject(languages);
 		translations = this.populateTranslations({rawLinks: infoLinks, type: 'info', languages, translations});
 		translations = this.populateTranslations({rawLinks: profileLinks, type: 'profile', languages, translations});
 		return translations;
 	}
 
-	private initializeTranslationsObject(languages: string[]): Record<string, Record<string, string>> {
+	private initializeTranslationsObject(languages: readonly string[]): Record<string, Record<string, string>> {
 		return languages.reduce((translations, language) => ({...translations, [language]: {}}), {});
 	}
 
 	private populateTranslations(options: {
 		rawLinks: string | undefined;
 		type: string;
-		languages: string[];
+		languages: readonly string[];
 		translations: Record<string, Record<string, string>>;
 	}): Record<string, Record<string, string>> {
 		const {rawLinks, type, languages, translations} = options;

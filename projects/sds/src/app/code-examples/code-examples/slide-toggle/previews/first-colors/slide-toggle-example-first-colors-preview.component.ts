@@ -6,6 +6,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 	imports: [MatSlideToggleModule],
 	templateUrl: './slide-toggle-example-first-colors-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
-	host: {class: 'layout-breakpoint-sm'}
+	host: {class: 'layout-breakpoint-sm'},
 })
 export class SlideToggleExampleFirstColorsPreviewComponent {}

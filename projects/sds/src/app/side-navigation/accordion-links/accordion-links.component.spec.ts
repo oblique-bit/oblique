@@ -3,7 +3,10 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {AccordionLinksComponent} from './accordion-links.component';
 import type {Accordion} from './accordion-links.model';
-import {getClassForDebugElementById, getDebugElementById} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
+import {
+	getClassForDebugElementById,
+	getDebugElementById,
+} from '../../../test-helpers/unit-test-helpers/unit-test-helpers';
 
 describe(AccordionLinksComponent.name, () => {
 	let component: AccordionLinksComponent;
@@ -12,14 +15,16 @@ describe(AccordionLinksComponent.name, () => {
 
 	const accordionLinksBeforeEach = async (accordions: Accordion[]): Promise<any> => {
 		await TestBed.configureTestingModule({
-			imports: [RouterTestingModule, AccordionLinksComponent, IdPipe]
+			imports: [RouterTestingModule, AccordionLinksComponent, IdPipe],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(AccordionLinksComponent);
 		fixture.componentRef.setInput('accordions', accordions);
 		component = fixture.componentInstance;
 		component.ngOnInit();
-		component.ngOnChanges({accordions: {previousValue: {}, currentValue: {}, firstChange: false, isFirstChange: () => false}});
+		component.ngOnChanges({
+			accordions: {previousValue: {}, currentValue: {}, firstChange: false, isFirstChange: () => false},
+		});
 		fixture.autoDetectChanges();
 		return fixture.whenStable();
 	};
@@ -29,7 +34,7 @@ describe(AccordionLinksComponent.name, () => {
 			{
 				id: 'Component',
 				links: [],
-				title: 'Components'
+				title: 'Components',
 			},
 			{
 				id: 'Guideline',
@@ -38,10 +43,10 @@ describe(AccordionLinksComponent.name, () => {
 						id: 2,
 						minVersion: 1,
 						slug: 'guideline-sub-item-1',
-						title: 'Guideline Sub Item #1'
-					}
+						title: 'Guideline Sub Item #1',
+					},
 				],
-				title: 'Guidelines'
+				title: 'Guidelines',
 			},
 			{
 				id: 'Introduction',
@@ -50,17 +55,17 @@ describe(AccordionLinksComponent.name, () => {
 						id: 1,
 						minVersion: 1,
 						slug: 'introduction-sub-item-2',
-						title: 'Introduction Sub Item # 1'
+						title: 'Introduction Sub Item # 1',
 					},
 					{
 						id: 3,
 						minVersion: 1,
 						slug: 'introduction-sub-item-2',
-						title: 'Introduction Sub Item #2'
-					}
+						title: 'Introduction Sub Item #2',
+					},
 				],
-				title: 'Introductions'
-			}
+				title: 'Introductions',
+			},
 		]);
 	});
 
@@ -77,23 +82,29 @@ describe(AccordionLinksComponent.name, () => {
 		).toBeTruthy();
 	});
 
-	it.each<{index: number}>([{index: 3}, {index: 4}, {index: 5}])('should not display accordion at: $index', ({index}) => {
-		expect(
-			getDebugElementById<AccordionLinksComponent>(
-				fixture,
-				idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index])
-			)
-		).toBeFalsy();
-	});
+	it.each<{index: number}>([{index: 3}, {index: 4}, {index: 5}])(
+		'should not display accordion at: $index',
+		({index}) => {
+			expect(
+				getDebugElementById<AccordionLinksComponent>(
+					fixture,
+					idPipe.transform(component.idPrefix(), [component.componentId, 'triangle', index])
+				)
+			).toBeFalsy();
+		}
+	);
 
-	it.each<{indexes: number[]}>([{indexes: [1, 0]}, {indexes: [2, 0]}, {indexes: [2, 1]}])('should display link at: $index', ({indexes}) => {
-		expect(
-			getDebugElementById<AccordionLinksComponent>(
-				fixture,
-				idPipe.transform(component.idPrefix(), [component.componentId, 'link', ...indexes])
-			)
-		).toBeTruthy();
-	});
+	it.each<{indexes: number[]}>([{indexes: [1, 0]}, {indexes: [2, 0]}, {indexes: [2, 1]}])(
+		'should display link at: $index',
+		({indexes}) => {
+			expect(
+				getDebugElementById<AccordionLinksComponent>(
+					fixture,
+					idPipe.transform(component.idPrefix(), [component.componentId, 'link', ...indexes])
+				)
+			).toBeTruthy();
+		}
+	);
 
 	it.each<{indexes: number[]}>([{indexes: [0, 0]}, {indexes: [2, 2]}, {indexes: [3, 0]}])(
 		'should not display link at: $indexes',
@@ -109,7 +120,7 @@ describe(AccordionLinksComponent.name, () => {
 
 	it.each<{indexes: number[]; accordionName: string}>([
 		{indexes: [2, 0], accordionName: 'Introduction'},
-		{indexes: [2, 1], accordionName: 'Introduction'}
+		{indexes: [2, 1], accordionName: 'Introduction'},
 	])(`should have accordion at: $indexes ($accordionName) expanded`, ({indexes}) => {
 		expect(
 			getClassForDebugElementById<AccordionLinksComponent>(
@@ -123,7 +134,7 @@ describe(AccordionLinksComponent.name, () => {
 	it.each<{index: number; direction: 'down' | 'right'}>([
 		{index: 0, direction: 'right'},
 		{index: 1, direction: 'right'},
-		{index: 2, direction: 'right'}
+		{index: 2, direction: 'right'},
 	])(`should not have triangle pointing $direction for accordion at: $index`, ({index, direction}) => {
 		expect(
 			getClassForDebugElementById<AccordionLinksComponent>(
@@ -137,7 +148,7 @@ describe(AccordionLinksComponent.name, () => {
 	it.each<{index: number; direction: 'down' | 'right'}>([
 		{index: 0, direction: 'down'},
 		{index: 1, direction: 'down'},
-		{index: 2, direction: 'down'}
+		{index: 2, direction: 'down'},
 	])(`should have triangle pointing $direction for accordion at: $index`, ({index, direction}) => {
 		expect(
 			getClassForDebugElementById<AccordionLinksComponent>(

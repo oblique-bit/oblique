@@ -21,12 +21,12 @@ export class ObDocumentMetaService implements OnDestroy {
 	private readonly metaDescription: HTMLElement;
 	private readonly currentMetaInformation = {
 		title: '',
-		description: ''
+		description: '',
 	};
 	private readonly unsubscribe = new Subject<void>();
 
 	constructor(
-		private readonly router: Router,
+		router: Router,
 		private readonly activatedRoute: ActivatedRoute,
 		private readonly titleService: Title,
 		private readonly translate: TranslateService,

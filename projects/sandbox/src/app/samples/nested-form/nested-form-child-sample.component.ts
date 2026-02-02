@@ -6,12 +6,12 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 	standalone: false,
 	templateUrl: './nested-form-child-sample.component.html',
 	styleUrl: './mandatory.scss',
-	exportAs: 'child'
+	exportAs: 'child',
 })
 export class NestedFormChildSampleComponent {
 	nestedForm = inject(UntypedFormBuilder).group({
 		field1: ['', [Validators.required]],
 		field2: [''],
-		grandchild: ''
+		grandchild: '',
 	});
 }

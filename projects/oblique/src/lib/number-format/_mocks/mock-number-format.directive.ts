@@ -5,8 +5,8 @@ import {Directive, Input} from '@angular/core';
  */
 @Directive({
 	selector: '[obNumberFormat]',
+	standalone: true,
 	exportAs: 'obNumberFormat',
-	standalone: true
 })
 export class ObMockNumberFormatDirective {
 	@Input() decimals = 2;

@@ -1,23 +1,25 @@
 {
   "name": "@oblique/design-system",
-  "version": "14.2.1",
+  "version": "15.0.0",
   "scripts": {
     "lint": "ts-node scripts/lint.ts",
     "format": "ts-node scripts/lint.ts --fix",
     "test": "cd ../.. && ng test design-system",
     "test-ci": "cd ../.. && ng run design-system:test:ci",
     "build": "ng build design-system && ts-node scripts/post-build.ts",
-    "release": "ts-node scripts/release.ts"
+    "release": "ts-node scripts/release.ts",
+    "extract-tokens": "node scripts/extract-tokens.mjs"
   },
   "peerDependencies": {
     "@angular/cdk": "^20.0.0 || ^21.0.0",
     "@angular/common": "^20.0.0 || ^21.0.0",
     "@angular/core": "^20.0.0 || ^21.0.0",
     "@angular/material": "^20.0.0 || ^21.0.0",
-    "@ngx-translate/core": ">=16.0.0"
+    "@ngx-translate/core": "^17.0.0"
   },
   "devDependencies": {
-    "ng-packagr": "^20.2.0"
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "ng-packagr": "^21.1.0"
   },
   "sideEffects": false
 }

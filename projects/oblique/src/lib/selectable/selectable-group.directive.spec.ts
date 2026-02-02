@@ -15,7 +15,7 @@ import {ObSelectableDirective} from '@oblique/oblique';
 		<div obSelectable [value]="1"></div>
 		<div obSelectable [value]="2"></div>
 		<div obSelectable [value]="3"></div>
-	</div>`
+	</div>`,
 })
 class TestComponent {
 	selectableGroup = new FormControl([1]);
@@ -32,7 +32,7 @@ describe(ObSelectableGroupDirective.name, () => {
 		TestBed.configureTestingModule({
 			imports: [ObSelectableGroupDirective, ObMockSelectableDirective, ReactiveFormsModule],
 			providers: [{provide: WINDOW, useValue: window}],
-			declarations: [TestComponent]
+			declarations: [TestComponent],
 		});
 	}));
 
@@ -118,7 +118,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			let event: KeyboardEvent;
 			let mode;
 			beforeEach(() => {
-				directive.mode$.subscribe(newMode => (mode = newMode));
+				directive.mode$.subscribe(newMode => {
+					mode = newMode;
+				});
 				directive.mode = 'checkbox';
 				directive.toggle(items[4]);
 				directive.focus(items[2]);
@@ -215,7 +217,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			let event: KeyboardEvent;
 			let mode;
 			beforeEach(() => {
-				directive.mode$.subscribe(newMode => (mode = newMode));
+				directive.mode$.subscribe(newMode => {
+					mode = newMode;
+				});
 				directive.mode = 'radio';
 				directive.toggle(items[4]);
 				directive.focus(items[2]);
@@ -262,7 +266,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			describe('selectAll function', () => {
 				it('should do nothing', fakeAsync(() => {
 					let data;
-					directive.selected$.subscribe(selection => (data = selection));
+					directive.selected$.subscribe(selection => {
+						data = selection;
+					});
 					directive.selectAll();
 					skip(1000);
 					expect(data).toBeUndefined();
@@ -272,7 +278,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			describe('deselectAll function', () => {
 				it('should do nothing', () => {
 					let data;
-					directive.selected$.subscribe(selection => (data = selection));
+					directive.selected$.subscribe(selection => {
+						data = selection;
+					});
 					directive.deselectAll();
 					skip(1000);
 					expect(data).toBeUndefined();
@@ -332,7 +340,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			let event: KeyboardEvent;
 			let mode: string;
 			beforeEach(() => {
-				directive.mode$.subscribe(newMode => (mode = newMode));
+				directive.mode$.subscribe(newMode => {
+					mode = newMode;
+				});
 				directive.mode = 'windows';
 				directive.toggle(items[4]);
 				directive.focus(items[2]);
@@ -511,8 +521,8 @@ describe(ObSelectableGroupDirective.name, () => {
 										<div obSelectable [value]="1"></div>
 										<div obSelectable [value]="2"></div>
 										<div obSelectable [value]="3"></div>
-									</div>`
-				}
+									</div>`,
+				},
 			}).createComponent(TestComponent);
 			component = fixture.componentInstance;
 			component = fixture.debugElement.query(By.directive(ObSelectableGroupDirective)).componentInstance;
@@ -540,15 +550,18 @@ describe(ObSelectableGroupDirective.name, () => {
 	});
 
 	describe('with a reactive form', () => {
-		const selectableDirectives = [{value: 1} as ObSelectableDirective<number>, {value: 2} as ObSelectableDirective<number>];
+		const selectableDirectives = [
+			{value: 1} as ObSelectableDirective<number>,
+			{value: 2} as ObSelectableDirective<number>,
+		];
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(TestComponent, {
 				set: {
 					template: `<div obSelectableGroup [formControl]="selectableGroup">
 										<div obSelectable [value]="1"></div>
 										<div obSelectable [value]="2"></div>
-									</div>`
-				}
+									</div>`,
+				},
 			}).createComponent(TestComponent);
 			component = fixture.debugElement.query(By.directive(ObSelectableGroupDirective)).componentInstance;
 			fixture.detectChanges();
@@ -556,7 +569,9 @@ describe(ObSelectableGroupDirective.name, () => {
 			directive = element.injector.get(ObSelectableGroupDirective);
 			selectableDirectives.forEach(selectableDirective => directive.register(selectableDirective));
 			// reset state before each test case
-			selectableDirectives.forEach(selectableDirective => (selectableDirective.selected = false));
+			selectableDirectives.forEach(selectableDirective => {
+				(selectableDirective as any).selected = false;
+			});
 		});
 
 		describe('writeValue function', () => {

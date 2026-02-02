@@ -7,6 +7,6 @@ export {ObIAlertType} from './alert.model';
 
 @NgModule({
 	imports: [ObAlertComponent],
-	exports: [ObAlertComponent]
+	exports: [ObAlertComponent],
 })
 export class ObAlertModule {}

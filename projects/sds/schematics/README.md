@@ -1,82 +1,87 @@
 # SDS Schematics
 
-This README contains the details to the schematics which depends on the SDS project.
+SDS proposes Schematics to help documenting Oblique features efficiently
 
-SDS provides the following schematics:
+## Getting Started
 
-- add-code-examples
-- add-preview
+### Add a New Code Example
 
-These schematics are generate-schematics. For more information about generate-schematics
-see https://angular.io/cli/generate
+From the monorepo root, generate a new code example:
 
-## Prerequisites
-
-Make sure you have installed the schematics package: `npm install -g @angular-devkit/schematics-cli`
-
-## How to run
-
-You can run it
-
-- over the scripts `add-code-example` and `add-preview` located in `./projects/sds/package.json`
-- with the console commands running the scripts (see [Add code examples](#add-code-example) and [Add-preview](#add-preview))
-- over the npm package called `schematics` (see [If you run with schematics package](#if-you-run-with-schematics-package))
-
-It matters where you run the schematics from.
-
-### Add-code-example
-
-```
-npm run add-code-example [name] -w projects/sds
+```shell
+npm run add-code-example <code-example-name> -w projects/sds
 ```
 
-#### Add-code-example arguments
+This will create a new folder in `projects/sds/src/app/code-examples/code-examples/<code-example-name>` that contains
+the wrapper component for documenting the feature.
 
-If you don't add the name the add-example-schematics will ask you for it.
+If `<code-example-name>` is not provided, the Schematics will prompt for it.
 
-| ARGUMENT | DESCRIPTION                 | VALUE TYPE |
-| -------- | --------------------------- | ---------- |
-| name     | The name of the new example | string     |
+### Add a Preview
 
-### Add-preview
+From the monorepo root, add a preview to an existing code example:
 
-```
-npm run add-preview [code-example] [preview] -w projects/sds
-```
-
-#### Add-preview arguments
-
-If you don't add the name the add-example-schematics will ask you for it.
-
-| ARGUMENT     | DESCRIPTION                                                               | VALUE TYPE |
-| ------------ | ------------------------------------------------------------------------- | ---------- |
-| code-example | The name of the example. If it doesn't already exist, it will be created. | string     |
-| preview      | The name of the new preview. Must be unique within the code-example.      | string     |
-
-- The **first** argument is the name of the new or existing example where the preview will be added. If the code-example
-  don't exist, a new one will be created.
-- The **second** argument is the name of the new preview which will be created.
-
-### If you run with schematics package
-
-If you want to run the schematics with the `@angular/schematics` package, you need to execute the build script first.
-
-For example:
-
-```
-npm run schematics-build -w projects/sds
+```shell
+npm run add-preview <code-example-name> <preview-name> -w projects/sds
 ```
 
-## Options
+This will create a new folder in `projects/sds/src/app/code-examples/code-examples/<example-name>/<preview-name>`
+that contains the component to demonstrate the preview
 
-For more information about schematic options see https://angular.io/cli/generate
+If `<code-example-name>` and `<preview-name>` are not provided, the Schematics will prompt for them. If only one
+argument is provided, it is assumed to be `<code-example-name>`.
 
-## Troubleshooting
+## Contributing
 
-### No files written to disk
+Contributions from federal teams and the open-source community are welcome.
+Please refer to our [contributing guidelines](../../CONTRIBUTING.md) while contributing to the Oblique ecosystem.
 
-**Problem**: If you have the message `Dry run enabled by default in debug mode. No files written to disk.` in the console and no files are written to disk.
+## License
 
-**Solution**: Add at the end of your command `--dry-run=false` .
+Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication (FOITT).
 
-**Reason**: If you are running the schematic locally, by default it will be running in a dry run.
+Licensed under the [MIT](../../LICENSE) license.
+
+# SDS Schematics
+
+SDS proposes some Schematics to help documenting Oblique features.
+
+## Getting Started
+
+### Add a New Code Example
+
+From the monorepo root, generate a new code example:
+
+```shell
+npm run add-code-example <code-example-name> -w projects/sds
+```
+
+This will create a new folder in `projects/sds/src/app/code-examples/code-examples/<code-example-name>` that contains
+the wrapper component to document the feature.
+
+If `<code-example-name>` is not provided, the Schematics will prompt for it.
+
+### Add a Preview
+
+From the monorepo root, add a preview to an existing code example:
+
+```shell
+npm run add-preview <code-example-name> <preview-name> -w projects/sds
+```
+
+This will create a new folder in `projects/sds/src/app/code-examples/code-examples/<example-name>/<preview-name>`
+that contains the component to demonstrate the preview
+
+If `<code-example-name>` and `<preview-name>` aren't provided, the Schematics will prompt for them. If only one
+argument is provided, it will be assumed to be `<code-example-name>`
+
+## Contributing
+
+Contributions from federal teams and the open-source community are welcome.
+Please refer to our [contributing guidelines](../../CONTRIBUTING.md) while contributing to the Oblique ecosystem.
+
+## License
+
+Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication (FOITT).
+
+Licensed under the [MIT](../../LICENSE) license.

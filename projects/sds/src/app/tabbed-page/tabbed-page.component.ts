@@ -1,10 +1,10 @@
-import {Component, HostListener, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, UrlSerializer} from '@angular/router';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {CmsDataService} from '../cms/cms-data.service';
 import {CodeExampleDirective} from '../code-examples/code-example.directive';
 import {getCodeExampleComponent} from '../code-examples/code-examples.mapper';
-import {type Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
+import {type Observable, concatWith, filter, first, map, partition, switchMap, tap} from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
@@ -18,16 +18,31 @@ import {MatChipsModule} from '@angular/material/chips';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {VersionService} from '../shared/version/version.service';
 import {UiUxComponent} from '../ui-ux/ui-ux.component';
+import {IconsExampleIconsGalleryPreviewComponent} from '../code-examples/code-examples/icons/previews/icons-gallery/icons-example-icons-gallery-preview.component';
 
 @Component({
 	selector: 'app-tabbed-page',
-	imports: [TabsComponent, TabComponent, UiUxComponent, CodeExampleDirective, CommonModule, IdPipe, SafeHtmlPipe, MatChipsModule],
+	imports: [
+		TabsComponent,
+		TabComponent,
+		UiUxComponent,
+		CodeExampleDirective,
+		CommonModule,
+		IdPipe,
+		SafeHtmlPipe,
+		MatChipsModule,
+		IconsExampleIconsGalleryPreviewComponent,
+	],
 	templateUrl: './tabbed-page.component.html',
 	styleUrl: './tabbed-page.component.scss',
-	host: {class: 'content-page'},
-	hostDirectives: [CdkScrollable]
+	host: {
+		'(click)': 'onClick($event)',
+		class: 'content-page',
+	},
+	hostDirectives: [CdkScrollable],
 })
 export class TabbedPageComponent {
+	showGalleryTab = false;
 	readonly componentId = 'tabbed-page';
 	readonly cmsData$: Observable<CmsData>;
 	private readonly activatedRoute = inject(ActivatedRoute);
@@ -38,6 +53,7 @@ export class TabbedPageComponent {
 	private isNull = true;
 	private readonly serializer = inject(UrlSerializer);
 	private readonly versionService = inject(VersionService);
+	private readonly galleryPageId = 43;
 
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
@@ -48,7 +64,6 @@ export class TabbedPageComponent {
 		this.cmsData$ = this.buildCmsDataObservable(validPageId$);
 	}
 
-	@HostListener('click', ['$event'])
 	onClick(event: MouseEvent): void {
 		const {target} = event;
 		if (!(target instanceof HTMLAnchorElement) || !target.closest('.deprecation-container')) {
@@ -64,7 +79,7 @@ export class TabbedPageComponent {
 			this.router.createUrlTree([urlParamForTab], {
 				relativeTo: this.activatedRoute.parent,
 				queryParamsHandling: 'preserve',
-				preserveFragment: true
+				preserveFragment: true,
 			})
 		);
 		this.location.replaceState(newUrl);
@@ -91,6 +106,9 @@ export class TabbedPageComponent {
 	private buildCmsDataObservable(validPageId$: Observable<number>): Observable<CmsData> {
 		return validPageId$.pipe(
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
+			tap(data => {
+				this.showGalleryTab = data.data.id === this.galleryPageId;
+			}),
 			map(cmsData => this.buildCmsData(cmsData.data))
 		);
 	}
@@ -104,7 +122,7 @@ export class TabbedPageComponent {
 			uiUx: this.buildUiUxData(cmsData),
 			source: getCodeExampleComponent(cmsData.slug),
 			tab: this.getSelectedTab(),
-			deprecation: cmsData.deprecation
+			deprecation: cmsData.deprecation,
 		};
 	}
 
@@ -127,7 +145,16 @@ export class TabbedPageComponent {
 	private buildUiUxData(cmsData: TabbedPageComplete): UiUxData {
 		const data: UiUxData = {};
 		// we take every field that we need and map the value from Directus to it
-		['purpose', 'additionalInfo', 'generalRules', 'do', 'doNot', 'relatedLinks', 'designFileLatest', 'designFilePrevious']
+		[
+			'purpose',
+			'additionalInfo',
+			'generalRules',
+			'do',
+			'doNot',
+			'relatedLinks',
+			'designFileLatest',
+			'designFilePrevious',
+		]
 			.map(property => ({property, cmsProperty: this.mapCMSProperty(property)}))
 			.map(({property, cmsProperty}) => ({property, cmsUiUxData: cmsData[cmsProperty] as string | UiUxEntry[]}))
 			.filter(({cmsUiUxData}) => cmsUiUxData?.length) // Directus provides all fields, even empty ones

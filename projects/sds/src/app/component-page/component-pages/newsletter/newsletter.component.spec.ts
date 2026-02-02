@@ -1,7 +1,6 @@
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {NewsletterComponent} from './newsletter.component';
@@ -12,8 +11,8 @@ describe(NewsletterComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, RouterTestingModule, NewsletterComponent, ReactiveFormsModule, BrowserAnimationsModule],
-			providers: [provideObliqueTestingConfiguration()]
+			imports: [HttpClientTestingModule, RouterTestingModule, NewsletterComponent, ReactiveFormsModule],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(NewsletterComponent);
@@ -67,8 +66,16 @@ describe(NewsletterComponent.name, () => {
 
 	describe('handleRequest()', () => {
 		describe.each([
-			{unsubscribe: false, email: 'max.muster@bit.admin.ch', successMessage: 'You have successfully subscribed to our newsletter!'},
-			{unsubscribe: true, email: 'max.muster@bit.admin.chREMOVE', successMessage: 'You have successfully unsubscribed to our newsletter!'}
+			{
+				unsubscribe: false,
+				email: 'max.muster@bit.admin.ch',
+				successMessage: 'You have successfully subscribed to our newsletter!',
+			},
+			{
+				unsubscribe: true,
+				email: 'max.muster@bit.admin.chREMOVE',
+				successMessage: 'You have successfully unsubscribed to our newsletter!',
+			},
 		])('with unsubscribe: $unsubscribe', ({unsubscribe, email, successMessage}) => {
 			beforeEach(() => {
 				jest.spyOn(component, 'sendRequest');

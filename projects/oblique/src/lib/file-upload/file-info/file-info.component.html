@@ -4,10 +4,14 @@
 	[dataSource]="dataSource"
 	class="ob-table ob-table-disable-checked-style ob-table-disable-hover-style ob-table-plain"
 >
-	<ng-container [matColumnDef]="field" *ngFor="let field of fields">
-		<th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>{{ "i18n.file-upload." + field | translate }}</th>
-		<td mat-cell *matCellDef="let file">{{ file[field] }}</td>
-	</ng-container>
+	@for (field of fields; track field) {
+		<ng-container [matColumnDef]="field">
+			<th scope="col" mat-header-cell *matHeaderCellDef mat-sort-header>
+				{{ "i18n.file-upload." + field | translate }}
+			</th>
+			<td mat-cell *matCellDef="let file">{{ file[field] }}</td>
+		</ng-container>
+	}
 
 	<ng-container [matColumnDef]="COLUMN_SELECT">
 		<th scope="col" mat-header-cell *matHeaderCellDef>
@@ -17,7 +21,8 @@
 				[indeterminate]="selectionStatus === 'some'"
 				[disabled]="!dataSource.data.length"
 				[aria-label]="
-					(selectionStatus === 'all' ? 'i18n.oblique.file-upload.all.deselect' : 'i18n.oblique.file-upload.all.select') | translate
+					(selectionStatus === 'all' ? 'i18n.oblique.file-upload.all.deselect' : 'i18n.oblique.file-upload.all.select')
+						| translate
 				"
 			/>
 		</th>
@@ -63,4 +68,6 @@
 	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 	<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-<ob-alert *ngIf="!dataSource.data.length">{{ "i18n.oblique.file-upload.empty" | translate }}</ob-alert>
+@if (!dataSource.data.length) {
+	<ob-alert>{{ "i18n.oblique.file-upload.empty" | translate }}</ob-alert>
+}

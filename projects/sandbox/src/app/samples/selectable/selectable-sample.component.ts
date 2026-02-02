@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
 	selector: 'sb-selectable-sample',
 	standalone: false,
 	templateUrl: './selectable-sample.component.html',
-	styleUrl: './selectable-sample.component.scss'
+	styleUrl: './selectable-sample.component.scss',
 })
 export class SelectableSampleComponent {
 	mode = 'checkbox';

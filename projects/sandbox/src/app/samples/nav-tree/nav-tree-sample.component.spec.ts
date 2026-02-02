@@ -19,9 +19,17 @@ describe(NavTreeSampleComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [NavTreeSampleComponent],
-			imports: [CommonModule, FormsModule, RouterTestingModule, MatRadioModule, MatCheckboxModule, MatSlideToggleModule, TranslateModule],
+			imports: [
+				CommonModule,
+				FormsModule,
+				RouterTestingModule,
+				MatRadioModule,
+				MatCheckboxModule,
+				MatSlideToggleModule,
+				TranslateModule,
+			],
 			providers: [provideObliqueTestingConfiguration()],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 		}).compileComponents();
 	});
 

@@ -6,8 +6,8 @@ import {NG_VALIDATORS, UntypedFormControl, ValidationErrors, Validator} from '@a
  */
 @Directive({
 	selector: '[obSchemaValidate][ngModel],[obSchemaValidate][formControlName]',
+	standalone: true,
 	providers: [{provide: NG_VALIDATORS, useExisting: ObMockSchemaValidateDirective, multi: true}],
-	standalone: true
 })
 export class ObMockSchemaValidateDirective implements Validator {
 	validate(formControl: UntypedFormControl): ValidationErrors {

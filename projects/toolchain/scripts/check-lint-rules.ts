@@ -1,3 +1,5 @@
+import {pathToFileURL} from 'node:url';
+import path from 'path';
 import eslint from '@eslint/js';
 import tsEslint from 'typescript-eslint';
 import ngEslint from '@angular-eslint/eslint-plugin';
@@ -26,7 +28,7 @@ function getObliqueRules(): {all: string[]; disabled: string[]} {
 		disabled: Object.entries(rules)
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars -- destructuring imposes to define the variable even if not used
 			.filter(([name, state]) => state === 'off')
-			.map(([name]) => name)
+			.map(([name]) => name),
 	};
 }
 
@@ -39,7 +41,7 @@ function getAllRules(): {all: string[]; disabled: string[]} {
 	const angularRules = Object.keys(ngEslint.configs.all.rules).filter(rule => !exceptions.includes(rule));
 	return {
 		all: [...eslintRules, ...angularRules, ...typescriptRules.all],
-		disabled: typescriptRules.disabled
+		disabled: typescriptRules.disabled,
 	};
 }
 
@@ -51,7 +53,7 @@ function getTypescriptRules(): {all: string[]; disabled: string[]} {
 		// contains all rules created by typescript-eslint
 		all: allTypescriptRules.filter(rule => rule.startsWith('@typescript-eslint')),
 		// contains all eslint rules that typescript-eslint must deactivate, no-return-await is deprecated and should not be used
-		disabled: allTypescriptRules.filter(rule => !rule.startsWith('@typescript-eslint') && !exceptions.includes(rule))
+		disabled: allTypescriptRules.filter(rule => !rule.startsWith('@typescript-eslint') && !exceptions.includes(rule)),
 	};
 }
 
@@ -60,7 +62,7 @@ function checkMissingRules(rules: string[], obRules: string[]): void {
 	const missingRules = rules.filter(rule => !obRules.includes(rule));
 	if (missingRules.length) {
 		console.error(missingRules);
-		throw new Error('The previous rules need to be defined');
+		throwError('The previous rules need to be defined');
 	}
 }
 
@@ -69,7 +71,7 @@ function checkDeprecatedRules(rules: string[], obRules: string[]): void {
 	const deprecatedRules = obRules.filter(rule => !rules.includes(rule));
 	if (deprecatedRules.length) {
 		console.error(deprecatedRules);
-		throw new Error('The previous rules are deprecated and should be removed');
+		throwError('The previous rules are deprecated and should be removed');
 	}
 }
 
@@ -78,6 +80,12 @@ function checkDisabledRules(rules: string[], obRules: string[]): void {
 	const disabledRules = rules.filter(rule => !obRules.includes(rule));
 	if (disabledRules.length) {
 		console.error(disabledRules);
-		throw new Error('The previous rules need to be disabled');
+		throwError('The previous rules need to be disabled');
 	}
+}
+
+function throwError(text: string): void {
+	const filePath = pathToFileURL(path.resolve('src/linting/eslint-config-oblique.mjs')).href;
+	const link = `\u001b]8;;${filePath}\u001b\\projects/toolchain/src/linting/eslint-config-oblique.mjs\u001b]8;;\u001b\\`;
+	throw new Error(`${text} in ${link}`);
 }

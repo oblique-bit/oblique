@@ -1,66 +1,78 @@
 # Oblique
 
-An Angular front-end framework tailored for your swiss branded business web application.
+An Angular front-end framework tailored for Swiss-branded business web applications.
 
-Oblique provides a standardized corporate design look and feel as well as a collection of ready-to-use Angular components. Oblique, through its fully customizable master layout, takes care of the application's structure, letting you focus on the content.
+Oblique provides a standardized corporate design look and feel, along with a collection of ready-to-use Angular
+components. Through its fully customizable master layout, Oblique manages the overall application structure,
+allowing focus on the content.
 
-This package is the `@oblique/oblique` library distributed on NPM.
+@oblique/oblique is the original library that includes all tools, components, and utilities needed for frontend
+development. Over time, it became too large and difficult to maintain, so its features are now being redistributed
+into smaller, purpose-driven libraries.
 
-See [README.md](../../README.md) for information about the other packages.
+All features in this library continue to be actively maintained and developed unless they are explicitly marked as
+legacy.
+
+See [README.md](../../README.md) for information about the other packages and projects in the Oblique ecosystem.
 
 ## Documentation
 
-The official Oblique documentation is located here: <https://oblique.bit.admin.ch/>
+The official Oblique documentation, including this library, is located here: <https://oblique.bit.admin.ch/>
 
-You will find information about how to use Oblique, code samples, FAQ and many more.
+It includes information about the entire ecosystem, usage instructions, code samples, FAQs, and more.
 
-## Scripts
+## Getting Started
 
-The scripts in this project are only for internal usage.
+### New Projects
 
-- **lint**: lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline
-- **format**: same as lint, but with autofix parameter
-- **test**: run all tests and collects coverage
-- **test-ci**: same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline
-- **test-debugging**: same as test, but with extra debugging options
-- **build**: build the library; Automatically run on the CI pipeline
-- **release**: create a new release, i.e. bump version number and updates the changelog
-- **update-icons**: create icon sets and icons as CSS files, should be called whenever there is a change to any icon SVG
-- **tarball**: creates a tarball with a fresh build. If one or more paths to other projects can be passed as parameter, the tarball will be installed in those projects
+The recommended way to install `@oblique/oblique` is through Oblique's CLI.
 
-## Usage
+```shell
+npx @oblique/cli@latest new <projectName>
+```
 
-### Make a new project with Oblique embedded into it
+This command creates a new project with all necessary dependencies and configurations.
 
-Make a new Oblique-embedded project with:
-`npx @oblique/cli@13 new <my-project-name>`
+### Existing Projects
 
-For further instructions go to: "https://oblique.bit.admin.ch/introductions/getting-started-as-a-developer", under "Creating a new Oblique application".
+Add @oblique/oblique to a project with:
 
-### Embedding Oblique into your project
+```shell
+ng add @oblique/oblique@latest
+```
 
-1. Update your project to the Angular version supported by the Oblique version you want to install. Have a look at the Angular update guide for more instructions: <https://update.angular.io>
-2. Add Oblique to your project: `ng add @oblique/oblique`. This interactive command will:
-   - add oblique and its dependencies
-   - refactor your application to integrate Oblique
-   - optionally replace jasmine with jest
-   - optionally configure Sonar
-   - optionally replace `tslint` with `eslint` and `prettier`
-   - optionally add a git hook to auto format files before push
+It may be necessary to replace `latest` with the major version compatible with the current Angular version. Refer
+to [Oblique life cycle](https://oblique.bit.admin.ch/introductions/life-cycle) for details.
 
-### Checking for updates
+This command triggers Oblique's Schematics, which will install all necessary dependencies and guide the configuration
+of the framework.
 
-- Bump dependencies through Angular cli first: `ng update`
-- Then update oblique: `ng update @oblique/oblique`
-- Finally, update the dependencies without build-in schematics: `npm update`
-- New major versions can be discovered through `npm outdated`
+## Content
 
-## Contribute to Oblique
+This package includes:
 
-If you'd like to contribute, please follow our [contributing guidelines](../../CONTRIBUTING.md).
+- Angular UI components
+- Guards, pipes, directives services and helper utilities
+- icons
+- Global styling rules
+- Schematics for creating or updating projects
+- Testing utilities
+- Linting utilities
+
+## Tips & Best Practices
+
+- Install the Oblique library through the CLI
+- Keep the application up to date by using the CLI regularly
+- Minimize deviations from Oblique’s standards — each deviation increases the effort required for updates
+- Migrate to replacement libraries as soon as Oblique provides a migration path to continue benefiting from the latest improvements
+
+## Contributing
+
+Contributions from federal teams and the open-source community are welcome.
+Please refer to our [contributing guidelines](../../CONTRIBUTING.md) while contributing to the Oblique ecosystem.
 
 ## License
 
-Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication FOITT.
+Copyright (c) The Swiss Confederation, represented by the Federal Office of Information Technology, Systems and Telecommunication (FOITT).
 
 Licensed under the [MIT](../../LICENSE) license.

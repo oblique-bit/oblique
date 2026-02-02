@@ -1,32 +1,40 @@
-<p class="ob-progress-heading">{{ "i18n.oblique.file-upload.progress-bar.title" | translate: { fileCount: uploadedFiles.fileCount } }}</p>
-<div class="ob-file-progress" *ngFor="let file of uploadedFiles.files">
-	<span class="ob-file-progress-title" *ngIf="file.name">{{ file.name }}</span>
-	<div class="ob-file-progress-bar" [class.negative-margin-top]="file.hasError || file.completed">
-		<mat-progress-bar
-			[id]="'ob-progress-bar-' + file.index"
-			[value]="file.progress"
-			[color]="file.hasError ? 'warn' : 'primary'"
-			[class.completed]="file.completed"
-		/>
-		<button
-			*ngIf="!file.completed && file.hasError"
-			type="button"
-			mat-icon-button
-			obButton="secondary"
-			[matTooltip]="'i18n.oblique.file-upload.retry' | translate"
-			(click)="retryUpload(file)"
-		>
-			<mat-icon svgIcon="arrow_clockwise" />
-		</button>
-		<button
-			*ngIf="!file.completed"
-			type="button"
-			mat-icon-button
-			[matTooltip]="'i18n.common.cancel' | translate"
-			obButton="secondary"
-			(click)="cancelUpload(file)"
-		>
-			<mat-icon svgIcon="xmark" />
-		</button>
+<p class="ob-progress-heading">
+	{{ "i18n.oblique.file-upload.progress-bar.title" | translate: { fileCount: uploadedFiles.fileCount } }}
+</p>
+@for (file of uploadedFiles.files; track file) {
+	<div class="ob-file-progress">
+		@if (file.name) {
+			<span class="ob-file-progress-title">{{ file.name }}</span>
+		}
+		<div class="ob-file-progress-bar" [class.negative-margin-top]="file.hasError || file.completed">
+			<mat-progress-bar
+				[id]="'ob-progress-bar-' + file.index"
+				[value]="file.progress"
+				[color]="file.hasError ? 'warn' : 'primary'"
+				[class.completed]="file.completed"
+			/>
+			@if (!file.completed && file.hasError) {
+				<button
+					type="button"
+					mat-icon-button
+					obButton="secondary"
+					[matTooltip]="'i18n.oblique.file-upload.retry' | translate"
+					(click)="retryUpload(file)"
+				>
+					<mat-icon svgIcon="arrow_clockwise" />
+				</button>
+			}
+			@if (!file.completed) {
+				<button
+					type="button"
+					mat-icon-button
+					[matTooltip]="'i18n.common.cancel' | translate"
+					obButton="secondary"
+					(click)="cancelUpload(file)"
+				>
+					<mat-icon svgIcon="xmark" />
+				</button>
+			}
+		</div>
 	</div>
-</div>
+}

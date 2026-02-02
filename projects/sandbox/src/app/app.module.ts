@@ -1,7 +1,6 @@
 import {NgModule, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
@@ -36,7 +35,7 @@ import {
 	ObSelectableModule,
 	ObSpinnerModule,
 	ObUnsavedChangesModule,
-	provideObliqueConfiguration
+	provideObliqueConfiguration,
 } from '@oblique/oblique';
 // App:
 import {AppComponent} from './app.component';
@@ -55,10 +54,8 @@ registerLocaleData(localeFR);
 registerLocaleData(localeDE);
 
 @NgModule({
-	declarations: [AppComponent, HomePageComponent],
 	imports: [
 		AppRoutingModule,
-		BrowserAnimationsModule,
 		BrowserModule,
 		FormsModule,
 		MatButtonModule,
@@ -84,8 +81,9 @@ registerLocaleData(localeDE);
 		ObSpinnerModule,
 		ObUnsavedChangesModule,
 		ReactiveFormsModule,
-		TranslateModule
+		TranslateModule,
 	],
+	declarations: [AppComponent, HomePageComponent],
 	providers: [
 		{provide: OB_BANNER, useValue: environment.banner},
 		{provide: OB_PAMS_CONFIGURATION, useValue: environment.pams},
@@ -103,20 +101,23 @@ registerLocaleData(localeDE);
 				exceptions: [
 					'i18n.routes.accessibility.exception.first',
 					'i18n.routes.accessibility.exception.second',
-					'i18n.routes.accessibility.exception.third'
+					'i18n.routes.accessibility.exception.third',
 				],
 				applicationOperator: 'i18n.routes.accessibility.operator',
 				contact: [
 					{email: 'oblique@bit.admin.ch', context: 'Oblique Team'},
 					{phone: '123'},
-					{url: 'http://example-contact-page.bit.admin.ch', context: 'Some random, inexistent, external link to demonstrate the feature'},
-					{url: '/samples/button', context: 'Some random internal link to demonstrate the feature'}
-				]
+					{
+						url: 'http://example-contact-page.bit.admin.ch',
+						context: 'Some random, inexistent, external link to demonstrate the feature',
+					},
+					{url: '/samples/button', context: 'Some random internal link to demonstrate the feature'},
+				],
 			},
-			hasLanguageInUrl: true
-		})
+			hasLanguageInUrl: true,
+		}),
 	],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
 })
 export class AppModule {
 	constructor() {

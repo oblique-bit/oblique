@@ -21,13 +21,14 @@ export function buildServer(): Express {
 	const indexHtml = join(serverDistFolder, 'index.server.html');
 	const server = express();
 	server.set('view engine', 'html');
-	addStaticRoute(server, browserDistFolder);
-	addAngularRoute(server, indexHtml, browserDistFolder);
+	addStaticRoute(server, browserDistFolder); // eslint-disable-line @typescript-eslint/strict-void-return
+	addAngularRoute(server, indexHtml, browserDistFolder); // eslint-disable-line @typescript-eslint/strict-void-return
 
 	return server;
 }
 
 function addStaticRoute(server: Express, browserDistFolder: string): void {
+	// eslint-disable-next-line @typescript-eslint/strict-void-return
 	server.get('*.*', express.static(browserDistFolder, {maxAge: '1y'}));
 }
 
@@ -50,7 +51,7 @@ function buildRenderOptions(request: Request, indexHtml: string, browserDistFold
 		documentFilePath: indexHtml,
 		url: `${protocol}://${headers.host}${originalUrl}`,
 		publicPath: browserDistFolder,
-		providers: [{provide: APP_BASE_HREF, useValue: baseUrl}]
+		providers: [{provide: APP_BASE_HREF, useValue: baseUrl}],
 	};
 }
 

@@ -7,7 +7,7 @@ import {ObNumberFormatDirective} from './number-format.directive';
 @Component({
 	standalone: false,
 	template: '<input name="number" [(ngModel)]="number" obNumberFormat/>',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestDefaultComponent {
 	number: number;
@@ -16,7 +16,7 @@ class TestDefaultComponent {
 @Component({
 	standalone: false,
 	template: '<input name="number" [(ngModel)]="number" obNumberFormat [persistent]="false" [decimals]="3"/>',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestNonPersistentComponent {
 	number: number;
@@ -27,7 +27,10 @@ describe(ObNumberFormatDirective.name, () => {
 	let fixture: ComponentFixture<TestDefaultComponent>;
 	let element: DebugElement;
 
-	function createFixture(component: Type<TestDefaultComponent | TestNonPersistentComponent>, initialValue: number | null): void {
+	function createFixture(
+		component: Type<TestDefaultComponent | TestNonPersistentComponent>,
+		initialValue: number | null
+	): void {
 		fixture = TestBed.createComponent(component);
 		testComponent = fixture.componentInstance;
 		testComponent.number = initialValue;
@@ -38,7 +41,7 @@ describe(ObNumberFormatDirective.name, () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [ObNumberFormatDirective, FormsModule],
-			declarations: [TestDefaultComponent, TestNonPersistentComponent]
+			declarations: [TestDefaultComponent, TestNonPersistentComponent],
 		});
 	});
 

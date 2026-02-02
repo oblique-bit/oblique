@@ -5,7 +5,7 @@ import {ObDragDropDirective} from './drag-and-drop.directive';
 
 @Component({
 	standalone: false,
-	template: `<input obDragDrop (fileDropped)="saveFiles($event)" />`
+	template: `<input obDragDrop (fileDropped)="saveFiles($event)" />`,
 })
 class TestDropDirectiveComponent {
 	files;
@@ -20,7 +20,7 @@ describe(ObDragDropDirective.name, () => {
 	beforeEach(() => {
 		fixture = TestBed.configureTestingModule({
 			imports: [ObDragDropDirective],
-			declarations: [TestDropDirectiveComponent]
+			declarations: [TestDropDirectiveComponent],
 		}).createComponent(TestDropDirectiveComponent);
 		input = fixture.debugElement.query(By.directive(ObDragDropDirective));
 		fixture.detectChanges();
@@ -128,7 +128,7 @@ describe(ObDragDropDirective.name, () => {
 			beforeEach(() => {
 				event = new CustomEvent('drop', {bubbles: true, cancelable: true});
 				event.dataTransfer = {
-					files: JSON.parse('{"0":{},"1":{},"length": 2}')
+					files: JSON.parse('{"0":{},"1":{},"length": 2}'),
 				} as DataTransfer;
 				jest.spyOn(event, 'stopPropagation');
 				input.nativeElement.dispatchEvent(event);

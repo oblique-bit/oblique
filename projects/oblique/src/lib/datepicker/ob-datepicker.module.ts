@@ -4,8 +4,8 @@ import {ObDatepickerIntlService} from './ob-datepicker.service';
 
 @NgModule({
 	imports: [MatDatepickerModule],
-	exports: [MatDatepickerModule],
 	// This overrides the default provided by MatDatepickerModule
-	providers: [{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService}]
+	providers: [{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService}],
+	exports: [MatDatepickerModule],
 })
 export class ObDatepickerModule {}

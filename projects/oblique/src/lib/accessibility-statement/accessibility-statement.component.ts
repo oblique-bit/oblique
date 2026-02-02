@@ -14,15 +14,16 @@ import {ObIAccessibilityStatementContactInfo} from './accessibility-statement.mo
 	selector: 'ob-accessibility-statement',
 	imports: [ObExternalLinkModule, TranslateModule, ObTranslateParamsPipe, ObDatePipe, DatePipe, MatIcon],
 	templateUrl: './accessibility-statement.component.html',
-	styleUrl: './accessibility-statement.component.scss'
+	styleUrl: './accessibility-statement.component.scss',
 })
 export class AccessibilityStatementComponent {
 	readonly parameters = inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION);
-	readonly exceptions = 'exceptions' in this.parameters && this.parameters.exceptions.length > 0 ? this.parameters.exceptions : [];
+	readonly exceptions =
+		'exceptions' in this.parameters && this.parameters.exceptions.length > 0 ? this.parameters.exceptions : [];
 	readonly statementParameters = {
 		applicationName: this.parameters.applicationName,
 		conformity: this.getConformity(this.parameters.conformity),
-		exceptionText: this.getConformityText(this.exceptions.length > 0)
+		exceptionText: this.getConformityText(this.exceptions.length > 0),
 	};
 	readonly contacts = this.parameters.contact.map(contact => this.parseContact(contact));
 	// eslint-disable-next-line @typescript-eslint/consistent-return
@@ -65,7 +66,7 @@ export class AccessibilityStatementComponent {
 			url: `tel:${phone}`,
 			icon: ObEIcon.PHONE,
 			context,
-			isExternal: false
+			isExternal: false,
 		};
 	}
 
@@ -75,7 +76,7 @@ export class AccessibilityStatementComponent {
 			url: `mailto:${email}`,
 			icon: ObEIcon.MAIL,
 			context,
-			isExternal: false
+			isExternal: false,
 		};
 	}
 
@@ -86,7 +87,7 @@ export class AccessibilityStatementComponent {
 			url,
 			icon: isExternal ? ObEIcon.LINK_EXTERNAL : ObEIcon.LINK,
 			context,
-			isExternal
+			isExternal,
 		};
 	}
 }

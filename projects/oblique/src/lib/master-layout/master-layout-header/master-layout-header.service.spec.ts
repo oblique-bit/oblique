@@ -19,11 +19,11 @@ describe('ObMasterLayoutHeaderService', () => {
 							isCustom: false,
 							isSmall: false,
 							isSticky: false,
-							serviceNavigation: {}
-						}
-					}
-				}
-			]
+							serviceNavigation: {},
+						},
+					},
+				},
+			],
 		});
 		service = TestBed.inject(ObMasterLayoutHeaderService);
 	});
@@ -98,7 +98,7 @@ describe('ObMasterLayoutHeaderService', () => {
 			});
 		});
 
-		describe('when given as value an object that does not contain the key maxFavoriteApplications', () => {
+		describe('when given as value an object', () => {
 			let event: ObIMasterLayoutEvent;
 			beforeEach(done => {
 				service.configEvents$.pipe(first()).subscribe(evt => {
@@ -117,27 +117,14 @@ describe('ObMasterLayoutHeaderService', () => {
 			});
 		});
 
-		describe('when given only as value an object that contains only the key maxFavoriteApplications', () => {
-			it('should not emit an event', () => {
-				const spy = jest.fn();
-				const subscription = service.configEvents$.subscribe(spy);
-				service.serviceNavigationConfiguration = {maxFavoriteApplications: 666};
-				jest.runAllTimers?.();
-
-				expect(spy).not.toHaveBeenCalled();
-
-				subscription.unsubscribe();
-			});
-		});
-
-		describe('when given as value an object that contains key maxFavoriteApplications and also other values', () => {
+		describe('when given as value an object', () => {
 			let event: ObIMasterLayoutEvent;
 			beforeEach(done => {
 				service.configEvents$.pipe(first()).subscribe(evt => {
 					event = evt;
 					done();
 				});
-				service.serviceNavigationConfiguration = {maxFavoriteApplications: 123, infoDescription: 'blabla'};
+				service.serviceNavigationConfiguration = {infoDescription: 'blabla'};
 			});
 
 			it(`should emit a SERVICE_NAVIGATION_CONFIGURATION event`, () => {

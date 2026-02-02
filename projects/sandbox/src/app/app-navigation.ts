@@ -7,7 +7,7 @@ export const appNavigation: ObINavigationLink[] = [
 		icon: ObEIcon.HOME,
 		iconOnly: true,
 		fragment: 'test',
-		queryParams: {param1: 'a', param2: 'b'}
+		queryParams: {param1: 'a', param2: 'b'},
 	},
 	{url: 'http://www.google.ch', label: 'Google', icon: ObEIcon.SEARCH},
 	{url: 'http://www.google.ch', label: 'Google sameTarget', sameTarget: true},
@@ -35,20 +35,20 @@ export const appNavigation: ObINavigationLink[] = [
 										children: [
 											{url: '1', label: 'Alert 1.1.1.1'},
 											{url: '2', label: 'Alert 1.1.1.2'},
-											{url: '3', label: 'Alert 1.1.1.3'}
-										]
+											{url: '3', label: 'Alert 1.1.1.3'},
+										],
 									},
 									{url: '2', label: 'Alert 1.1.2'},
-									{url: '3', label: 'Alert 1.1.3'}
-								]
+									{url: '3', label: 'Alert 1.1.3'},
+								],
 							},
 							{url: '2', label: 'Alert 1.2'},
-							{url: '3', label: 'Alert 1.3'}
-						]
+							{url: '3', label: 'Alert 1.3'},
+						],
 					},
 					{url: '2', label: 'Alert 2'},
-					{url: '3', label: 'Alert 3'}
-				]
+					{url: '3', label: 'Alert 3'},
+				],
 			},
 			{url: 'autocomplete', label: 'Autocomplete'},
 			{url: 'breadcrumb', label: 'Breadcrumb'},
@@ -76,8 +76,8 @@ export const appNavigation: ObINavigationLink[] = [
 					{url: '17', label: 'Collapse 17'},
 					{url: '18', label: 'Collapse 18'},
 					{url: '19', label: 'Collapse 19'},
-					{url: '20', label: 'Collapse 20'}
-				]
+					{url: '20', label: 'Collapse 20'},
+				],
 			},
 			{url: 'column-layout', label: 'i18n.routes.samples.column-layout.title'},
 			{url: 'column-layout-full-height', label: 'Column Layout full height'},
@@ -112,12 +112,12 @@ export const appNavigation: ObINavigationLink[] = [
 					{url: '2', label: 'Spinner 2'},
 					{url: '3', label: 'Spinner 3'},
 					{url: '4', label: 'Spinner 4'},
-					{url: '5', label: 'Spinner 5'}
-				]
+					{url: '5', label: 'Spinner 5'},
+				],
 			},
 			{url: 'unknown-route-sample', label: 'Unknown route'},
-			{url: 'unsaved-changes', label: 'Unsaved changes'}
-		]
+			{url: 'unsaved-changes', label: 'Unsaved changes'},
+		],
 	},
 	{
 		url: 'styles',
@@ -132,8 +132,8 @@ export const appNavigation: ObINavigationLink[] = [
 			{url: 'lists', label: 'Lists'},
 			{url: 'palette', label: 'Palette'},
 			{url: 'screen-reader-only', label: 'Screen reader only'},
-			{url: 'typography', label: 'Typography'}
-		]
+			{url: 'typography', label: 'Typography'},
+		],
 	},
 	{
 		url: 'material',
@@ -159,8 +159,8 @@ export const appNavigation: ObINavigationLink[] = [
 			{url: 'stepper-vertical', label: 'Stepper vertical'},
 			{url: 'table', label: 'Table'},
 			{url: 'tabs', label: 'Tabs'},
-			{url: 'tooltip', label: 'Tooltip'}
-		]
+			{url: 'tooltip', label: 'Tooltip'},
+		],
 	},
 	{
 		url: 'icon sample',
@@ -173,8 +173,8 @@ export const appNavigation: ObINavigationLink[] = [
 			{url: 'home', label: 'icon only', icon: ObEIcon.ANCHOR, iconOnly: true},
 			{url: 'http://www.google.ch', icon: ObEIcon.HARD_OF_HEARING, label: 'External, icon with label'},
 			{url: 'http://www.google.ch', label: 'External, label only'},
-			{url: 'http://www.google.ch', label: 'External, icon only', icon: ObEIcon.ANCHOR, iconOnly: true}
-		]
+			{url: 'http://www.google.ch', label: 'External, icon only', icon: ObEIcon.ANCHOR, iconOnly: true},
+		],
 	},
 	{
 		url: 'starterkit',
@@ -182,8 +182,8 @@ export const appNavigation: ObINavigationLink[] = [
 		children: [
 			{url: 'title-page', label: 'Title page'},
 			{url: 'nav-page', label: 'Nav page'},
-			{url: 'table-page', label: 'Table page'}
-		]
+			{url: 'table-page', label: 'Table page'},
+		],
 	},
 	{
 		url: 'home',
@@ -192,15 +192,15 @@ export const appNavigation: ObINavigationLink[] = [
 			{
 				url: 'home',
 				label: 'Sub nav with url',
-				children: [{url: 'home', label: 'Subnav'}]
+				children: [{url: 'home', label: 'Subnav'}],
 			},
 			{
 				url: null,
 				label: 'Sub nav without url',
-				children: [{url: 'home', label: 'Subnav'}]
-			}
-		]
+				children: [{url: 'home', label: 'Subnav'}],
+			},
+		],
 	},
 	{url: 'http://www.google.ch', label: 'About Us', isExternal: true, startOfRightSideLinks: true},
-	{url: 'http://www.google.ch', label: 'Contact', isExternal: true}
+	{url: 'http://www.google.ch', label: 'Contact', isExternal: true},
 ];

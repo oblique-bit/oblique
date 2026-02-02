@@ -13,9 +13,9 @@ function getTranslateLoader(http: HttpClient): ObMultiTranslateLoader {
 	return new ObMultiTranslateLoader(http, [
 		{
 			prefix: './assets/i18n/oblique-',
-			suffix: '.json'
+			suffix: '.json',
 		},
-		...[{prefix: './assets/i18n/', suffix: '.json'}]
+		...[{prefix: './assets/i18n/', suffix: '.json'}],
 	]);
 }
 
@@ -25,7 +25,7 @@ export function multiTranslateLoader(config: TranslateModuleConfig = {}): Transl
 		loader: {
 			provide: TranslateLoader,
 			useFactory: getTranslateLoader,
-			deps: [HttpClient]
-		}
+			deps: [HttpClient],
+		},
 	};
 }

@@ -8,6 +8,6 @@ export {ObDocumentMetaService} from '../document-meta.service';
  *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
  */
 @NgModule({
-	providers: [{provide: ObDocumentMetaService, useClass: ObMockDocumentMetaService}]
+	providers: [{provide: ObDocumentMetaService, useClass: ObMockDocumentMetaService}],
 })
 export class ObMockDocumentMetaModule {}

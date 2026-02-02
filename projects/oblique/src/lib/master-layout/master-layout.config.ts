@@ -1,5 +1,11 @@
 import {Injectable} from '@angular/core';
-import {ObEScrollMode, ObILocale, ObIMasterLayoutFooter, ObIMasterLayoutHeader, ObIMasterLayoutNavigation} from './master-layout.model';
+import {
+	ObEScrollMode,
+	ObILocale,
+	ObIMasterLayoutFooter,
+	ObIMasterLayoutHeader,
+	ObIMasterLayoutNavigation,
+} from './master-layout.model';
 
 /**
  * Configuration service for the Master Layout component.
@@ -28,13 +34,12 @@ export class ObMasterLayoutConfig {
 		locales: ['de-CH', 'fr-CH', 'it-CH'],
 		defaultLanguage: 'de',
 		disabled: false,
-		display: true,
 		languages: {
 			de: 'Deutsch',
 			fr: 'Français',
 			it: 'Italiano',
-			en: 'English'
-		}
+			en: 'English',
+		},
 	};
 
 	/**
@@ -45,7 +50,7 @@ export class ObMasterLayoutConfig {
 		hasMainNavigation: true,
 		hasOffCanvas: false,
 		hasLayout: true,
-		hasMaxWidth: false
+		hasMaxWidth: false,
 	};
 
 	/**
@@ -59,15 +64,11 @@ export class ObMasterLayoutConfig {
 			profileLinks: [],
 			infoLinks: [],
 			infoContact: {},
-			/**
-			 *  @deprecated since Oblique 13.3.2. It will be removed in the next major version.
-			 */
-			maxLastUsedApplications: 3,
 			maxFavoriteApplications: 8,
 			displayLanguages: true,
 			pamsAppId: undefined,
-			handleLogout: true
-		}
+			handleLogout: true,
+		},
 	};
 
 	/**
@@ -78,7 +79,7 @@ export class ObMasterLayoutConfig {
 		scrollMode: ObEScrollMode.AUTO,
 		scrollDelta: 95,
 		activeClass: 'active',
-		links: []
+		links: [],
 	};
 
 	/**
@@ -86,6 +87,6 @@ export class ObMasterLayoutConfig {
 	 */
 	footer: ObIMasterLayoutFooter = {
 		isSticky: false,
-		isCustom: false
+		isCustom: false,
 	};
 }

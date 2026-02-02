@@ -6,7 +6,7 @@ import type {Placement} from '@popperjs/core';
 	selector: 'sb-popover',
 	standalone: false,
 	templateUrl: './popover.component.html',
-	styleUrl: './popover.component.scss'
+	styleUrl: './popover.component.scss',
 })
 export class PopoverComponent {
 	param = 'This is a param.';

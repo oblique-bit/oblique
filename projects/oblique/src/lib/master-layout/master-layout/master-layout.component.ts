@@ -1,4 +1,4 @@
-/* eslint-disable @angular-eslint/no-conflicting-lifecycle, max-lines */
+/* eslint-disable max-lines */
 import {
 	Component,
 	ContentChild,
@@ -7,7 +7,6 @@ import {
 	DoCheck,
 	ElementRef,
 	EventEmitter,
-	HostBinding,
 	Input,
 	OnChanges,
 	OnDestroy,
@@ -19,7 +18,7 @@ import {
 	ViewChild,
 	ViewEncapsulation,
 	inject,
-	isDevMode
+	isDevMode,
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
 import {delay, filter, map, takeUntil, tap} from 'rxjs/operators';
@@ -34,7 +33,7 @@ import {
 	ObIDynamicSkipLink,
 	ObIMasterLayoutEvent,
 	ObINavigationLink,
-	ObISkipLink
+	ObISkipLink,
 } from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject, fromEvent, startWith} from 'rxjs';
@@ -49,11 +48,23 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 		'./master-layout.component.scss',
 		'./master-layout-cover.component.scss',
 		'./master-layout-offcanvas.component.scss',
-		'./master-layout-accessibility.component.scss'
+		'./master-layout-accessibility.component.scss',
 	],
 	encapsulation: ViewEncapsulation.None,
+	host: {
+		'[class.ob-layout-collapsed]': 'isLayoutCollapsed',
+		'[class.ob-layout-expanded]': 'isLayoutExpanded',
+		'[class.ob-has-cover]': 'hasCover',
+		'[class.ob-has-layout]': 'hasLayout',
+		'[class.ob-has-max-width]': 'hasMaxWidth',
+		'[class.ob-header-expanded]': 'isMenuOpened',
+		'[class.ob-no-navigation]': 'noNavigation',
+		'[class.ob-off-canvas]': 'hasOffCanvas',
+		'[class.ob-master-layout-scrolling]': 'isScrolling',
+		class: 'ob-master-layout',
+		'ob-version': appVersion,
+	},
 	exportAs: 'obMasterLayout',
-	host: {class: 'ob-master-layout', 'ob-version': appVersion}
 })
 export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnChanges {
 	home = this.config.homePageRoute;
@@ -65,15 +76,15 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 	@Input() collapseBreakpoint: ObICollapseBreakpoints;
 	@Input() version?: string;
 	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
-	@HostBinding('class.ob-layout-collapsed') isLayoutCollapsed = false;
-	@HostBinding('class.ob-layout-expanded') isLayoutExpanded = true;
-	@HostBinding('class.ob-has-cover') hasCover = this.masterLayout.layout.hasCover;
-	@HostBinding('class.ob-has-layout') hasLayout = this.masterLayout.layout.hasLayout;
-	@HostBinding('class.ob-has-max-width') hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
-	@HostBinding('class.ob-header-expanded') isMenuOpened = this.masterLayout.layout.isMenuOpened;
-	@HostBinding('class.ob-no-navigation') noNavigation = !this.masterLayout.layout.hasMainNavigation;
-	@HostBinding('class.ob-off-canvas') hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
-	@HostBinding('class.ob-master-layout-scrolling') isScrolling = false;
+	isLayoutCollapsed = false;
+	isLayoutExpanded = true;
+	hasCover = this.masterLayout.layout.hasCover;
+	hasLayout = this.masterLayout.layout.hasLayout;
+	hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
+	isMenuOpened = this.masterLayout.layout.isMenuOpened;
+	noNavigation = !this.masterLayout.layout.hasMainNavigation;
+	hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
+	isScrolling = false;
 	isHeaderSticky = this.masterLayout.header.isSticky;
 	isFooterSticky = this.masterLayout.footer.isSticky;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
@@ -83,6 +94,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 	@ViewChild('offCanvasClose', {read: ElementRef}) readonly offCanvasClose: ElementRef<HTMLElement>;
 	@ViewChild('main') readonly main: ElementRef<HTMLElement>;
 	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;
+	skipLinksInternal: ObIDynamicSkipLink[];
 	private readonly unsubscribe = new Subject<void>();
 	private readonly unsubscribeMediaQuery = new Subject<void>();
 	private navigationLength: number;
@@ -98,7 +110,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 		sm: 600,
 		md: 905,
 		lg: 1240,
-		xl: 1440
+		xl: 1440,
 	} as const;
 
 	constructor(
@@ -158,7 +170,8 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 
 	scrollTop(element?: HTMLElement): void {
 		const scrollTop =
-			element?.scrollTop ?? (this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
+			element?.scrollTop ??
+			(this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
 		if (this.isScrolling !== scrollTop > 0) {
 			this.isScrolling = scrollTop > 0;
 		}
@@ -176,7 +189,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 		if (document.activeElement !== element && isDevMode()) {
 			element.setAttribute('tabindex', '-1');
 			element.focus({preventScroll: true});
-			console.info(`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`);
+			console.info(
+				`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`
+			);
 		}
 	}
 
@@ -202,7 +217,10 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 
 	private updateSkipLinks(hasNavigation: boolean): void {
 		const staticSkipLinks = hasNavigation && this.navigation?.length ? 2 : 1;
-		this.skipLinks = this.skipLinks.map((skipLink, index: number) => ({...skipLink, accessKey: index + staticSkipLinks}));
+		this.skipLinksInternal = this.skipLinks.map((skipLink, index: number) => ({
+			...skipLink,
+			accessKey: index + staticSkipLinks,
+		}));
 	}
 
 	private layoutHasMainNavigationChange(): void {
@@ -211,7 +229,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.noNavigation = !event.value));
+			.subscribe(event => {
+				this.noNavigation = !event.value;
+			});
 	}
 
 	private layoutHasCoverChange(): void {
@@ -220,7 +240,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_COVER),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.hasCover = event.value));
+			.subscribe(event => {
+				this.hasCover = event.value;
+			});
 	}
 
 	private layoutHasOffCanvasChange(): void {
@@ -229,7 +251,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.hasOffCanvas = event.value));
+			.subscribe(event => {
+				this.hasOffCanvas = event.value;
+			});
 	}
 
 	private layoutIsMenuOpenedChange(): void {
@@ -238,7 +262,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.IS_MENU_OPENED),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isMenuOpened = event.value));
+			.subscribe(event => {
+				this.isMenuOpened = event.value;
+			});
 	}
 
 	private layoutHasDefaultLayoutChange(): void {
@@ -247,7 +273,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_DEFAULT_LAYOUT),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.hasLayout = event.value));
+			.subscribe(event => {
+				this.hasLayout = event.value;
+			});
 	}
 
 	private layoutHasMaxWidthChange(): void {
@@ -256,14 +284,18 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAX_WIDTH),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.hasMaxWidth = event.value));
+			.subscribe(event => {
+				this.hasMaxWidth = event.value;
+			});
 	}
 
 	private headerIsStickyChange(): void {
 		this.masterLayout.header.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_STICKY),
-				tap((evt: ObIMasterLayoutEvent) => (this.isHeaderSticky = evt.value)),
+				tap((evt: ObIMasterLayoutEvent) => {
+					this.isHeaderSticky = evt.value;
+				}),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe();
@@ -273,7 +305,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 		this.masterLayout.footer.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_IS_STICKY),
-				tap((evt: ObIMasterLayoutEvent) => (this.isFooterSticky = evt.value)),
+				tap((evt: ObIMasterLayoutEvent) => {
+					this.isFooterSticky = evt.value;
+				}),
 				takeUntil(this.unsubscribe)
 			)
 			.subscribe();
@@ -284,8 +318,12 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 			.pipe(
 				filter(evt => evt instanceof NavigationEnd),
 				map((evt: NavigationEnd) => evt.url),
-				tap(url => (this.route.path = (/^[^?&#]*/.exec(url) || [])[0])),
-				tap(url => (this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/)))),
+				tap(url => {
+					this.route.path = (/^[^?&#]*/.exec(url) || [])[0];
+				}),
+				tap(url => {
+					this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/));
+				}),
 				map(url => this.extractUrlPart(url, /#[^?&]*/)),
 				filter(fragment => !!fragment)
 			)

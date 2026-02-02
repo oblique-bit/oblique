@@ -6,12 +6,12 @@ describe('ObUnsavedChangesGuard', () => {
 	let guard: ObUnsavedChangesGuard;
 
 	const mockUnsavedChangesService = {
-		canDeactivate: jest.fn()
+		canDeactivate: jest.fn(),
 	};
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [{provide: ObUnsavedChangesService, useValue: mockUnsavedChangesService}]
+			providers: [{provide: ObUnsavedChangesService, useValue: mockUnsavedChangesService}],
 		});
 		guard = TestBed.inject(ObUnsavedChangesGuard);
 	});
@@ -24,7 +24,7 @@ describe('ObUnsavedChangesGuard', () => {
 		it('should call canDeactivate once', () => {
 			guard.canDeactivate();
 
-			expect(mockUnsavedChangesService.canDeactivate).toBeCalledTimes(1);
+			expect(mockUnsavedChangesService.canDeactivate).toHaveBeenCalledTimes(1);
 		});
 
 		it.each([false, true])('should return %s when the ObUnsavedChangesService returns %s', $expected => {

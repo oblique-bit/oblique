@@ -5,14 +5,13 @@ import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {IconsExampleDefaultPreviewComponent} from './previews/default/icons-example-default-preview.component';
 import {IconsExampleFontSizePreviewComponent} from './previews/font-size/icons-example-font-size-preview.component';
-import {IconsExampleIconsGalleryPreviewComponent} from './previews/icons-gallery/icons-example-icons-gallery-preview.component';
 import {IconsExampleTextPreviewComponent} from './previews/text/icons-example-text-preview.component';
 
 @Component({
 	selector: 'app-code-example-icons',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'icons-examples';
@@ -23,8 +22,8 @@ export class IconsCodeExamplesComponent extends CodeExamples {
 			title: 'Icon Default',
 			snippets: [
 				this.getSnippet('icons', 'default/icons-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('icons', 'default/icons-example-default-preview.component.ts', 'TS')
-			]
+				this.getSnippet('icons', 'default/icons-example-default-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: IconsExampleTextPreviewComponent,
@@ -32,8 +31,8 @@ export class IconsCodeExamplesComponent extends CodeExamples {
 			title: 'Icon text',
 			snippets: [
 				this.getSnippet('icons', 'text/icons-example-text-preview.component.html', 'HTML'),
-				this.getSnippet('icons', 'text/icons-example-text-preview.component.ts', 'TS')
-			]
+				this.getSnippet('icons', 'text/icons-example-text-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: IconsExampleFontSizePreviewComponent,
@@ -42,13 +41,8 @@ export class IconsCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('icons', 'font-size/icons-example-font-size-preview.component.html', 'HTML'),
 				this.getSnippet('icons', 'font-size/icons-example-font-size-preview.component.ts', 'TS'),
-				this.getSnippet('icons', 'font-size/icons-example-font-size-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('icons', 'font-size/icons-example-font-size-preview.component.scss', 'SCSS'),
+			],
 		},
-		{
-			component: IconsExampleIconsGalleryPreviewComponent,
-			idParts: ['icons', 'gallery'],
-			title: 'Icon Gallery'
-		}
 	];
 }

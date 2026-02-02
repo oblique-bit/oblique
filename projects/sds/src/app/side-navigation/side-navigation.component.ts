@@ -1,4 +1,4 @@
-import {Component, type ElementRef, HostListener, type OnInit, inject, output, viewChild} from '@angular/core';
+import {Component, type ElementRef, type OnInit, inject, output, viewChild} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, type NavigationExtras, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
@@ -18,7 +18,7 @@ import {
 	of,
 	startWith,
 	switchMap,
-	tap
+	tap,
 } from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
@@ -53,10 +53,13 @@ import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
 		MatButtonModule,
 		ObButtonDirective,
 		NgOptimizedImage,
-		FeedbackTriggerDirective
+		FeedbackTriggerDirective,
 	],
 	templateUrl: './side-navigation.component.html',
-	styleUrl: './side-navigation.component.scss'
+	styleUrl: './side-navigation.component.scss',
+	host: {
+		'(window:keydown)': 'moveFocusToSearch($event)',
+	},
 })
 export class SideNavigationComponent implements OnInit {
 	readonly showMobileNavigation = output<boolean>();
@@ -104,7 +107,6 @@ export class SideNavigationComponent implements OnInit {
 		}
 	}
 
-	@HostListener('window:keydown', ['$event'])
 	moveFocusToSearch($event: KeyboardEvent): void {
 		//  On Macintosh keyboards, the metaKey is the ⌘ Command key.
 		if (($event.ctrlKey || $event.metaKey) && $event.key === 'k') {
@@ -118,7 +120,7 @@ export class SideNavigationComponent implements OnInit {
 		return forkJoin({
 			categories: this.cmsDataService.getCategories(),
 			tabbedPages: this.cmsDataService.getTabbedPagesShort(),
-			textPages: this.cmsDataService.getTextPagesShort()
+			textPages: this.cmsDataService.getTextPagesShort(),
 		}).pipe(
 			map(value => composeAccordions(value)),
 			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions)),
@@ -158,7 +160,11 @@ export class SideNavigationComponent implements OnInit {
 	private setUpSlugToIdServiceDataSet(accordions: Accordion[]): void {
 		const idAndSlugs = new Map<string, number>();
 
-		accordions.forEach(accordion => accordion.links.forEach(link => idAndSlugs.set(link.slug, link.id)));
+		accordions.forEach(accordion =>
+			accordion.links.forEach(link => {
+				idAndSlugs.set(link.slug, link.id);
+			})
+		);
 
 		this.slugToIdService.setupDataSet(idAndSlugs);
 	}
@@ -168,36 +174,45 @@ export class SideNavigationComponent implements OnInit {
 			? accordions
 					.map(accordion => ({
 						...accordion,
-						links: accordion.links.filter(link => link.title.toLowerCase().includes(searchText.toLowerCase()))
+						links: accordion.links.filter(link => link.title.toLowerCase().includes(searchText.toLowerCase())),
 					}))
 					.filter(accordion => accordion.links.length > 0)
 			: accordions;
 	}
 
-	private getAccordionsMatchingSearchTextAndVersion(accordions: Accordion[], searchText?: string, version?: number): Accordion[] {
+	private getAccordionsMatchingSearchTextAndVersion(
+		accordions: Accordion[],
+		searchText?: string,
+		version?: number
+	): Accordion[] {
 		return this.getAccordionsMatchingSearchText(accordions, searchText)
 			.map(accordion => ({
 				...accordion,
-				links: this.getNewestLinksForVersion(accordion, version)
+				links: this.getNewestLinksForVersion(accordion, version),
 			}))
 			.filter(accordion => accordion.links.length > 0);
 	}
 
 	private getNewestLinksForVersion(accordion: Accordion, version?: number): Link[] {
 		return this.getValidLinksForVersion(accordion, version).filter(
-			(link, index, validLinks) => !validLinks.some(otherLink => otherLink.slug === link.slug && otherLink.minVersion > link.minVersion)
+			(link, index, validLinks) =>
+				!validLinks.some(otherLink => otherLink.slug === link.slug && otherLink.minVersion > link.minVersion)
 		);
 	}
 
 	private getSelectedSlug(activatedRoute?: ActivatedRoute): Observable<string | undefined> {
 		return activatedRoute?.root.firstChild
-			? activatedRoute?.root.firstChild.paramMap.pipe(map(paramMap => paramMap.get(urlConst.urlParams.selectedSlug) ?? undefined))
+			? activatedRoute?.root.firstChild.paramMap.pipe(
+					map(paramMap => paramMap.get(urlConst.urlParams.selectedSlug) ?? undefined)
+				)
 			: of(undefined);
 	}
 
 	private getValidLinksForVersion(accordion: Accordion, version?: number): Link[] {
 		return accordion.links.filter(
-			link => (!link.minVersion || link.minVersion <= (version ?? 9999)) && (!link.maxVersion || link.maxVersion >= (version ?? -1))
+			link =>
+				(!link.minVersion || link.minVersion <= (version ?? 9999)) &&
+				(!link.maxVersion || link.maxVersion >= (version ?? -1))
 		);
 	}
 

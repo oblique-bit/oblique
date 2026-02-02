@@ -12,7 +12,7 @@ describe(VersionComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule, ReactiveFormsModule, IdPipe, VersionComponent],
-			providers: [provideRouter([])]
+			providers: [provideRouter([])],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(VersionComponent);

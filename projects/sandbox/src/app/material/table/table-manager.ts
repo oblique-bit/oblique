@@ -17,13 +17,13 @@ interface Data {
 
 export enum Mode {
 	DIALOG = 0,
-	FORM = 1
+	FORM = 1,
 }
 
 export enum EditMode {
 	NONE = 0,
 	EDIT = 1,
-	ADD = 2
+	ADD = 2,
 }
 
 export class TableManager<T> {
@@ -72,9 +72,13 @@ export class TableManager<T> {
 		if (this.areAllRowsSelected()) {
 			this.selection.clear();
 		} else {
-			this.dataSource.data.forEach(row => this.selection.select(row));
+			this.dataSource.data.forEach(row => {
+				this.selection.select(row);
+			});
 		}
-		this.dataSource.data.forEach(row => (row.isSelected = this.selection.isSelected(row)));
+		this.dataSource.data.forEach(row => {
+			row.isSelected = this.selection.isSelected(row);
+		});
 	}
 
 	toggleRow(row: T & Data): void {
@@ -88,10 +92,11 @@ export class TableManager<T> {
 				.open(TableEditComponent, {data: row})
 				.afterClosed()
 				.pipe(filter(data => data))
-				.subscribe(
-					data =>
-						(this.dataSource.data = this.dataSource.data.map(item => (Object.is(item, row) ? {...data, editMode: EditMode.NONE} : item)))
-				);
+				.subscribe(data => {
+					this.dataSource.data = this.dataSource.data.map(item =>
+						Object.is(item, row) ? {...data, editMode: EditMode.NONE} : item
+					);
+				});
 		} else {
 			row.editMode = EditMode.EDIT;
 			this.editForm.patchValue(row);
@@ -104,7 +109,9 @@ export class TableManager<T> {
 				.open(TableEditComponent)
 				.afterClosed()
 				.pipe(filter(data => data))
-				.subscribe(data => (this.dataSource.data = [...this.dataSource.data, {...data, editMode: EditMode.NONE}]));
+				.subscribe(data => {
+					this.dataSource.data = [...this.dataSource.data, {...data, editMode: EditMode.NONE}];
+				});
 		} else {
 			this.dataSource.data.unshift({editMode: EditMode.ADD} as T & Data);
 			this.dataSource.data = [...this.dataSource.data];
@@ -151,7 +158,9 @@ export class TableManager<T> {
 	}
 
 	private buildMasterToggleObservable(): Connectable<string> {
-		return connectable<string>(this.selection.changed.pipe(map(() => this.masterToggleState())), {connector: () => new ReplaySubject()});
+		return connectable<string>(this.selection.changed.pipe(map(() => this.masterToggleState())), {
+			connector: () => new ReplaySubject(),
+		});
 	}
 
 	private buildMasterRemoveObservable(): Connectable<boolean> {

@@ -16,7 +16,7 @@ import {
 	infoText,
 	readFile,
 	replaceInFile,
-	warn
+	warn,
 } from '../utils';
 import {applyChanges, createSrcFile} from '../ng-add/ng-add-utils';
 
@@ -29,11 +29,11 @@ export function serviceNavigation(): Rule {
 				{
 					providerName: 'OB_PAMS_CONFIGURATION',
 					provide: '	{provide: OB_PAMS_CONFIGURATION, useValue: {environment: ObEPamsEnvironment.PROD}}\n',
-					additionalImports: ['ObEPamsEnvironment']
-				}
+					additionalImports: ['ObEPamsEnvironment'],
+				},
 			]),
 			removeEmptyLifecycleHook('ngOnInit'),
-			removeEmptyLifecycleHook('ngAfterViewInit')
+			removeEmptyLifecycleHook('ngAfterViewInit'),
 		])(tree, context);
 }
 
@@ -43,7 +43,9 @@ function addServiceNavigationConfiguration(): Rule {
 			.map(project => ({...project, templateContent: readFile(tree, project.appComponentTemplatePath)}))
 			.map(project => ({...project, parameters: extractHeaderWidgetParameters(project.templateContent)}))
 			.forEach(({appModulePath, appComponentPath, parameters}) => {
-				parameters.forEach(({name, value}) => mapParameter(tree, name, value, appModulePath, appComponentPath, context));
+				parameters.forEach(({name, value}) =>
+					mapParameter(tree, name, value, appModulePath, appComponentPath, context)
+				);
 			});
 
 		return tree;
@@ -101,12 +103,18 @@ function mapParameter(
 		case 'links':
 		case 'profileLinks':
 		case 'customButtons':
-			warn(context, `"The ${name}" Header Widget parameter couldn't be automatically migrated, you need to process it manually.`);
+			warn(
+				context,
+				`"The ${name}" Header Widget parameter couldn't be automatically migrated, you need to process it manually.`
+			);
 			return undefined;
 		case 'openInNewTab':
 		case 'cms':
 		case 'showSettings':
-			warn(context, `The "${name}" Header Widget parameter doesn't exist with the Service Navigation, it will be removed.`);
+			warn(
+				context,
+				`The "${name}" Header Widget parameter doesn't exist with the Service Navigation, it will be removed.`
+			);
 			return undefined;
 		default:
 			infoText(context, `The "${name}" Header Widget parameter is unknown and will be ignored`);
@@ -119,7 +127,12 @@ function addMasterLayoutConfig(tree: Tree, property: string, value: string | boo
 	appendPrivateVoidFunctionToClass(tree, appModulePath, 'configureServiceNavigation');
 	addConstructor(tree, appModulePath);
 	appendCodeToFunction(tree, appModulePath, 'constructor', `this.configureServiceNavigation();`);
-	appendCodeToFunction(tree, appModulePath, 'configureServiceNavigation', `this.masterLayoutConfig.${property} = ${value};`);
+	appendCodeToFunction(
+		tree,
+		appModulePath,
+		'configureServiceNavigation',
+		`this.masterLayoutConfig.${property} = ${value};`
+	);
 }
 
 function mapEnvironment(tree: Tree, value: string, appModulePath: string): void {
@@ -132,7 +145,7 @@ function mapEnvironment(tree: Tree, value: string, appModulePath: string): void 
 			`{provide: OB_PAMS_CONFIGURATION, useValue: {environment: ObEEnvironment.${value}}}`
 		),
 		...addImportToModule(sourceFile, appModulePath, 'OB_PAMS_CONFIGURATION', '@oblique/oblique'),
-		...addImportToModule(sourceFile, appModulePath, 'ObEEnvironment', '@oblique/oblique')
+		...addImportToModule(sourceFile, appModulePath, 'ObEEnvironment', '@oblique/oblique'),
 	];
 	applyChanges(tree, appModulePath, changes);
 }
@@ -170,18 +183,30 @@ function mapLanguageChange(tree: Tree, value: string, appComponentPath: string):
 
 export function removeHeaderWidgetCode(): Rule[] {
 	return [
-		removeCode(/^\s*<ng-template #obHeaderMobileControl>\s*<header-widget-mobile.*?<\/ng-template>\s*$/gms, '<header-widget-mobile> tags'),
+		removeCode(
+			/^\s*<ng-template #obHeaderMobileControl>\s*<header-widget-mobile.*?<\/ng-template>\s*$/gms,
+			'<header-widget-mobile> tags'
+		),
 		removeCode(
 			/(?:^\s*<ng-template #obHeaderControl>\s*)?^\s*<header-widget.*(?:<\/header-widget>|\/>)\s*$(?:\s*<\/ng-template>\s*$)?/gms,
 			'<header-widget> tags'
 		),
-		removeCode(/\s*(?:const|let)?.*headerWidgetScriptElement.*\s?.*\s?;\s*$/gm, 'headerWidgetScriptElement declaration'),
-		removeCode(/\s*headerWidgetScriptElement\.setAttribute\(.*\s?.*\s*\)?;\s*$/gm, 'headerWidgetScriptElement.setAttribute code'),
+		removeCode(
+			/\s*(?:const|let)?.*headerWidgetScriptElement.*\s?.*\s?;\s*$/gm,
+			'headerWidgetScriptElement declaration'
+		),
+		removeCode(
+			/\s*headerWidgetScriptElement\.setAttribute\(.*\s?.*\s*\)?;\s*$/gm,
+			'headerWidgetScriptElement.setAttribute code'
+		),
 		removeCode(
 			/\s*document.body.append\(headerWidgetScriptElement\)(?:.*\s?.*\s*)?;\s*$/gm,
 			'document.body.append of headerWidgetScriptElement'
 		),
-		removeCode(/\s*<script.*widget\.eportal<.admin\.ch\/header-widget\.js.*<\/script>\s*/g, 'script tags with script header-widget.js'),
+		removeCode(
+			/\s*<script.*widget\.eportal<.admin\.ch\/header-widget\.js.*<\/script>\s*/g,
+			'script tags with script header-widget.js'
+		),
 		removeCode(
 			/\s*(?:const|let)?\s?widgetMobile\s*=\s*document\.getElementById\(.widget-mobile.\);\s*$/gm,
 			'widgetMobile variable by Id widget-mobile'
@@ -189,7 +214,7 @@ export function removeHeaderWidgetCode(): Rule[] {
 		removeCode(
 			/\s*(?:const|let)?.*obliqueHeader\s=\sdocument\.querySelector\(.\.ob-header-controls.\);\s*obliqueHeader\.prepend\(widgetMobile\);\s*$/gm,
 			'variable obliqueHeader that prepend widgetMobile'
-		)
+		),
 	];
 }
 
@@ -224,7 +249,9 @@ export function removeCode(regex: RegExp, caseDescription: string): Rule {
 	});
 }
 
-export function addProvidersToRootModule(providers: {provide: string; providerName: string; additionalImports?: string[]}[]): Rule {
+export function addProvidersToRootModule(
+	providers: {provide: string; providerName: string; additionalImports?: string[]}[]
+): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		const mainTsPathPerProject = getFilePathPerProject(tree, ['architect', 'build', 'options', 'main']);
 		getRootModulePathPerProject(tree, mainTsPathPerProject).forEach(({path: appModulePath}) => {
@@ -233,9 +260,16 @@ export function addProvidersToRootModule(providers: {provide: string; providerNa
 			const providerImports: string[] = [];
 			providers.forEach((provider: {provide: string; providerName: string; additionalImports?: string[]}) => {
 				if (!providerAlreadyExists(provider.providerName, readFile(tree, appModulePath))) {
-					providerChanges.push(...addSymbolToNgModuleMetadata(sourceFile, appModulePath, 'providers', provider.provide));
-					providerImports.push(...setupImportArray(provider.providerName, tree, appModulePath, provider.additionalImports));
-					infoMigration(context, `Oblique's ServiceNavigation: Adding provider  ${provider.providerName} in ${appModulePath}`);
+					providerChanges.push(
+						...addSymbolToNgModuleMetadata(sourceFile, appModulePath, 'providers', provider.provide)
+					);
+					providerImports.push(
+						...setupImportArray(provider.providerName, tree, appModulePath, provider.additionalImports)
+					);
+					infoMigration(
+						context,
+						`Oblique's ServiceNavigation: Adding provider  ${provider.providerName} in ${appModulePath}`
+					);
 				}
 			});
 			const importChanges = importProviderModules(providerImports, sourceFile, appModulePath, context);
@@ -246,7 +280,12 @@ export function addProvidersToRootModule(providers: {provide: string; providerNa
 	});
 }
 
-export function setupImportArray(providerName: string, tree: Tree, appModulePath: string, additionalImports?: string[]): string[] {
+export function setupImportArray(
+	providerName: string,
+	tree: Tree,
+	appModulePath: string,
+	additionalImports?: string[]
+): string[] {
 	const providerImports: string[] = [];
 	if (additionalImports && additionalImports.length > 0) {
 		providerImports.push(...additionalImports);

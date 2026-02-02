@@ -1,0 +1,12 @@
+<!--This if is a workaround for an Angular bug, see the TS file for more information -->
+@if (show) {
+	<ob-autocomplete
+		[autocompleteOptions]="optionList"
+		[formControl]="formControl"
+		(selectedOptionChange)="showSelection($event)"
+	>
+		<mat-hint>Both Material "start" ...</mat-hint>
+		<mat-hint align="end">... and "end" hints are supported</mat-hint>
+	</ob-autocomplete>
+	<p>selectedOption: {{ selectedOption | json }}</p>
+}

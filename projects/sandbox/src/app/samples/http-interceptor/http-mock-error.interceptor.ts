@@ -1,5 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpErrorResponse, type HttpEvent, type HttpHandler, type HttpInterceptor, type HttpRequest} from '@angular/common/http';
+import {
+	HttpErrorResponse,
+	type HttpEvent,
+	type HttpHandler,
+	type HttpInterceptor,
+	type HttpRequest,
+} from '@angular/common/http';
 import {type Observable, of, throwError} from 'rxjs';
 import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 
@@ -32,7 +38,7 @@ export class HttpMockErrorInterceptor implements HttpInterceptor {
 					return throwError(
 						new HttpErrorResponse({
 							status: Number(code),
-							statusText: HttpMockErrorInterceptor.getStatusText(Number(code))
+							statusText: HttpMockErrorInterceptor.getStatusText(Number(code)),
 						})
 					);
 				}

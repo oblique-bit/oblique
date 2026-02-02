@@ -12,7 +12,7 @@ describe(HomePageComponent.name, () => {
 		await TestBed.configureTestingModule({
 			imports: [TranslateModule],
 			declarations: [HomePageComponent],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 	});
 

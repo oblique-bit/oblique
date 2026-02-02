@@ -11,13 +11,13 @@ describe('NestedFormComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObNestedFormComponent],
-			providers: [ObParentFormDirective]
+			providers: [ObParentFormDirective],
 		}).compileComponents();
 		fixture = TestBed.createComponent(ObNestedFormComponent);
 		component = fixture.componentInstance;
 		nestedForm = new UntypedFormGroup({
 			email: new UntypedFormControl('', Validators.required),
-			name: new UntypedFormControl('', Validators.required)
+			name: new UntypedFormControl('', Validators.required),
 		});
 		component.nestedForm = nestedForm;
 		fixture.detectChanges();
@@ -69,7 +69,10 @@ describe('NestedFormComponent', () => {
 			});
 
 			it('should call patchValue with the correct parameters', () => {
-				expect(patchValueSpy).toHaveBeenCalledWith({field1: 'Field1-Testvalue', field2: 'Field2-Testvalue'}, {emitEvent: false});
+				expect(patchValueSpy).toHaveBeenCalledWith(
+					{field1: 'Field1-Testvalue', field2: 'Field2-Testvalue'},
+					{emitEvent: false}
+				);
 			});
 		});
 

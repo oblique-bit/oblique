@@ -8,6 +8,6 @@ export {ObUnsavedChangesService} from './unsaved-changes.service';
 
 @NgModule({
 	imports: [ObUnsavedChangesDirective],
-	exports: [ObUnsavedChangesDirective]
+	exports: [ObUnsavedChangesDirective],
 })
 export class ObUnsavedChangesModule {}

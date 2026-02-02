@@ -7,7 +7,7 @@ import {Log} from './log';
 export class Publish extends StaticScript {
 	private static readonly eolDates: Record<number, string> = {
 		13: '2026-03-31',
-		14: '2026-09-30'
+		14: '2026-09-30',
 	};
 
 	static perform(packageName: string, releaseTag?: string): void {

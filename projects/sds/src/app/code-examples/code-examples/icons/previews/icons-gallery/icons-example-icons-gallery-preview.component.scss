@@ -5,16 +5,35 @@
 	top: 0;
 }
 
+.header {
+	position: sticky;
+	top: variables.$ob-spacing-md;
+	background: white;
+	z-index: 2;
+
+	// prevent the scrolling gallery from showing through the gap above the sticky header
+	&::before {
+		content: "";
+		position: absolute;
+		top: -1 * variables.$ob-spacing-md;
+		height: variables.$ob-spacing-md;
+		width: 100%;
+		margin-left: -1 * variables.$ob-spacing-default;
+		background: inherit;
+	}
+}
+
 .container,
 .search-container {
 	display: grid;
 	grid-template-columns: 1fr 365px;
 	gap: variables.$ob-spacing-default;
 
-	@media (width <= 1600px) {
+	@media (width <=1600px) {
 		grid-template-columns: 1fr 273px;
 	}
-	@media (width <= 1200px) {
+
+	@media (width <=1200px) {
 		grid-template-columns: 1fr;
 	}
 }
@@ -29,6 +48,10 @@
 }
 
 .info-card {
+	position: sticky;
+	top: 120px; // 120 is empiric
+	align-self: start;
+
 	.image-container {
 		display: flex;
 		justify-content: center;
@@ -47,6 +70,11 @@
 		height: 64px;
 		padding: variables.$ob-spacing-default;
 		margin: variables.$ob-spacing-default 0;
+	}
+
+	.card-content {
+		overflow: auto;
+		max-height: calc(100vh - 349px); // 349 is empiric
 	}
 
 	.info-card-usage-title {
@@ -83,4 +111,15 @@
 	.mat-icon.icon {
 		font-size: 48px;
 	}
+
+	::ng-deep {
+		mark {
+			font-weight: bold;
+			background-color: transparent;
+		}
+	}
+}
+
+.icons-set.deprecated {
+	margin-top: variables.$ob-spacing-md;
 }

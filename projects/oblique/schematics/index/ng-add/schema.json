@@ -87,7 +87,7 @@
       "type": "boolean",
       "default": true,
       "description": "Jest for unit tests",
-      "x-prompt": "[13 / 17] Replace Karma / Jasmine with Jest as the application's testing framework?"
+      "x-prompt": "[13 / 17] Replace vitest with Jest as the application's testing framework?"
     },
     "npmrc": {
       "type": "boolean",

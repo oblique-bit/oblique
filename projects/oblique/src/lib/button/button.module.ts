@@ -7,6 +7,6 @@ export {ObIconButtonDirective} from './icon-button.directive';
 
 @NgModule({
 	imports: [ObButtonDirective, ObIconButtonDirective],
-	exports: [ObButtonDirective, ObIconButtonDirective]
+	exports: [ObButtonDirective, ObIconButtonDirective],
 })
 export class ObButtonModule {}

@@ -1,3 +1,26 @@
+# [15.0.0](https://github.com/oblique-bit/oblique/compare/14.1.2...15.0.0) (2026-02-02)
+
+## Bug Fixes
+
+- **icon:** fix aliases for multiple icons ([7853f304](https://github.com/oblique-bit/oblique/commit/7853f304d6988bf70f530015358d68645c574356))
+- **tabbed-page:** ensure initially active tabs are not ignored ([60bab1f7](https://github.com/oblique-bit/oblique/commit/60bab1f77dfe007e4fe727a16bd78c3b3217b9c5))
+
+## Features
+
+- **autocomplete:** add example with `displayWith` ([b10330d3](https://github.com/oblique-bit/oblique/commit/b10330d3234478632ca155d54f75cd21300625c0))
+- **autocomplete:** add `mat-hint` example ([e93dcdb3](https://github.com/oblique-bit/oblique/commit/e93dcdb355a7a10fcf90603f1fbf387b8e42d57d))
+- **banner:** limit the width of the content to 1440px ([cc1a3edf](https://github.com/oblique-bit/oblique/commit/cc1a3edfa5f44d5daf1aaddf1479a8251f33a124))
+- **icon:** update icon set ([d3813af3](https://github.com/oblique-bit/oblique/commit/d3813af36d9f02d0531e0a9444f4c7b87727ab67))
+- **icon:** set icon gallery tab to initiallyActive ([ea1ca045](https://github.com/oblique-bit/oblique/commit/ea1ca045df3228f58fb1ff112025b1e846c58a91))
+- **icon:** add support for deprecated icons ([52e7c12c](https://github.com/oblique-bit/oblique/commit/52e7c12ce2dc6adbcf8c40c556dee8054a5d22a4))
+- **icon:** update metadata for family, ald, id-card and headphones icons ([a0d88d9e](https://github.com/oblique-bit/oblique/commit/a0d88d9e6599fee44ac8350e435110b1c6df44ba))
+- **icon:** improve gallery usability ([b39e6b5a](https://github.com/oblique-bit/oblique/commit/b39e6b5ab6e246d698d5ec044c79d29aef074924))
+- **icon:** move the gallery to a dedicated tab ([83a7c5f0](https://github.com/oblique-bit/oblique/commit/83a7c5f023e185eb72a869854ca57bea5a4e3526))
+- **icon:** search icons by alias ([bed52b8d](https://github.com/oblique-bit/oblique/commit/bed52b8db5fd8987e791c9c5f8197c0f8f7f2631))
+- **sds:** add a polyfill for `Object.groupBy` ([70697fd9](https://github.com/oblique-bit/oblique/commit/70697fd9c1a35e0bf5bb192d6e2d137ca6308102))
+- **styles:** limit the width of the application to 1440px ([6ef73350](https://github.com/oblique-bit/oblique/commit/6ef73350168ac33c4dcc970afb87e616b284d48f))
+- **tabbed-page:** rework the Figma box ([9077aa7e](https://github.com/oblique-bit/oblique/commit/9077aa7ef3223e23fb82b2fcb6e8e6e04497a48d))
+
 # [14.1.2](https://github.com/oblique-bit/oblique/compare/14.1.1...14.1.2) (2025-12-01)
 
 ## Bug Fixes

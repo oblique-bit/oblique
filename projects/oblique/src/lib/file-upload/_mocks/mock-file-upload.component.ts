@@ -8,8 +8,8 @@ import {ObIUploadEvent} from '../file-upload.model';
 	selector: 'ob-file-upload',
 	standalone: true,
 	template: '',
+	host: {class: 'ob-file-upload'},
 	exportAs: 'obFileUpload',
-	host: {class: 'ob-file-upload'}
 })
 export class ObMockFileUploadComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();

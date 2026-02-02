@@ -3,27 +3,36 @@ import path from 'node:path';
 import fs from 'node:fs';
 import type {PackageDependencies} from './ob-update.model';
 import * as obUpdate from './ob-update';
+import {execute} from '../utils/cli-utils';
+// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+jest.mock('../utils/cli-utils', () => ({
+	...jest.requireActual('../utils/cli-utils'),
+	execute: jest.fn(),
+}));
 
 describe('ObUpdateCommand Tests', () => {
 	describe('functions ', () => {
 		const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
 
 		jest.mock('node:fs', () => ({
-			readFileSync: jest.fn().mockImplementation(jest.fn())
+			readFileSync: jest.fn().mockImplementation(jest.fn()),
 		}));
 
 		jest.mock('node:path', () => ({
-			resolve: jest.fn().mockReturnValue('path')
+			resolve: jest.fn().mockReturnValue('path'),
 		}));
 
 		beforeAll(() => {
 			jest.spyOn(console, 'info').mockImplementation(() => {});
 			jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
 			jest.spyOn(console, 'error').mockImplementation(() => {});
+			jest.spyOn(console, 'warn').mockImplementation(() => {});
 		});
 
 		beforeEach(() => {
-			jest.spyOn(fs, 'readFileSync').mockReturnValue(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+			jest
+				.spyOn(fs, 'readFileSync')
+				.mockReturnValue(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 			jest.spyOn(path, 'resolve').mockReturnValue('path');
 		});
 
@@ -64,14 +73,14 @@ describe('ObUpdateCommand Tests', () => {
 					expect(command.summary()).toBe('Updates Oblique and runs the migration.');
 				});
 
-				test('with usage to be "update"', () => {
-					expect(command.usage()).toBe('update');
+				test('with usage to be " "', () => {
+					expect(command.usage()).toBe(' ');
 				});
 
 				describe('with help settings', () => {
 					test('with help Information to be usage text', () => {
 						expect(command.helpInformation()).toBe(
-							`Usage: update update\n\nOptions:\n  -h, --help  Shows a help message for the "ob update" command in the console\n`
+							`Usage: update  \n\nOptions:\n  -h, --help  Shows a help message for the "ob update" command in the console\n`
 						);
 					});
 				});
@@ -80,29 +89,39 @@ describe('ObUpdateCommand Tests', () => {
 
 		describe('findPackage', () => {
 			test('should call path.resolve with process.cwd and package.json', () => {
-				jest.spyOn(fs, 'readFileSync').mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				jest
+					.spyOn(fs, 'readFileSync')
+					.mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 				jest.spyOn(path, 'resolve').mockReturnValueOnce('path');
 				obUpdate.findPackage();
 				expect(path.resolve).toHaveBeenCalledWith(process.cwd(), 'package.json');
 			});
 
 			test('should call fs.readFileSync with "path" and "utf-8"', () => {
-				jest.spyOn(fs, 'readFileSync').mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				jest
+					.spyOn(fs, 'readFileSync')
+					.mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 				jest.spyOn(path, 'resolve').mockReturnValueOnce('path');
 				obUpdate.findPackage();
 				expect(fs.readFileSync).toHaveBeenCalledWith('path', 'utf-8');
 			});
 
 			test('should JSON.parse with ', () => {
-				jest.spyOn(fs, 'readFileSync').mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				jest
+					.spyOn(fs, 'readFileSync')
+					.mockReturnValueOnce(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 				jest.spyOn(path, 'resolve').mockReturnValueOnce('path');
 				jest.spyOn(JSON, 'parse');
 				obUpdate.findPackage();
-				expect(JSON.parse).toHaveBeenCalledWith(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				expect(JSON.parse).toHaveBeenCalledWith(
+					JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies)
+				);
 			});
 
 			test('should return parsed package.json content', () => {
-				jest.spyOn(fs, 'readFileSync').mockReturnValue(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
+				jest
+					.spyOn(fs, 'readFileSync')
+					.mockReturnValue(JSON.stringify({dependencies: {jest: '^26.0.0'}} as PackageDependencies));
 				(path.resolve as jest.Mock).mockReturnValue('path');
 
 				const packageJson = obUpdate.findPackage();
@@ -114,6 +133,94 @@ describe('ObUpdateCommand Tests', () => {
 				expect(() => obUpdate.findPackage()).toThrow(
 					`Cant find the package.json at path: ${[process.cwd(), 'package.json'].join('/')}. Please navigate to the level of your package.json and try "ob update" again.`
 				);
+			});
+		});
+
+		describe('runUpdateDependencies', () => {
+			describe('successful execution', () => {
+				beforeEach(() => {
+					jest.spyOn(obUpdate, 'isDependencyInPackage').mockImplementation(dependency => dependency === 'jest');
+
+					jest.spyOn(obUpdate, 'findPackage').mockReturnValue({
+						dependencies: {jest: '29.0.0'},
+					});
+
+					obUpdate.runUpdateDependencies();
+				});
+
+				test('calls execute', () => {
+					expect(execute).toHaveBeenCalledTimes(6);
+				});
+
+				test('uses ngUpdate command', () => {
+					expect(execute).toHaveBeenCalledWith(expect.objectContaining({name: 'ngUpdate'}));
+				});
+
+				test('passes filtered dependencies', () => {
+					expect(execute).toHaveBeenCalledWith(
+						expect.objectContaining({
+							dependencies: ['jest'],
+						})
+					);
+				});
+
+				test('passes force option', () => {
+					expect(execute).toHaveBeenCalledWith(
+						expect.objectContaining({
+							options: {force: true},
+						})
+					);
+				});
+
+				test('passes angularDependencies from package', () => {
+					expect(execute).toHaveBeenCalledWith(
+						expect.objectContaining({
+							angularDependencies: [],
+						})
+					);
+				});
+			});
+			describe('empty package', () => {
+				beforeEach(() => {
+					jest.spyOn(obUpdate, 'isDependencyInPackage').mockImplementation(() => true);
+					jest.spyOn(obUpdate, 'findPackage').mockReturnValue({
+						dependencies: {},
+					});
+					jest.spyOn(console, 'error').mockImplementation(() => {});
+					obUpdate.runUpdateDependencies();
+				});
+
+				test('uses ngUpdate command', () => {
+					expect(execute).toHaveBeenCalledWith(expect.objectContaining({name: 'ngUpdate'}));
+				});
+
+				test('passes no  empty angular dependencies', () => {
+					expect(execute).toHaveBeenCalledWith(
+						expect.objectContaining({
+							angularDependencies: [],
+						})
+					);
+				});
+			});
+
+			describe('error handling', () => {
+				beforeEach(() => {
+					jest.spyOn(obUpdate, 'isDependencyInPackage').mockReturnValue(true);
+					jest.spyOn(obUpdate, 'findPackage').mockReturnValue({
+						dependencies: {jest: '29.0.0'},
+					});
+
+					jest.spyOn(console, 'error').mockImplementation(() => {});
+					(execute as jest.Mock).mockImplementation(() => {
+						throw new Error('boom');
+					});
+
+					obUpdate.runUpdateDependencies();
+				});
+
+				test('logs error to console', () => {
+					expect(console.error).toHaveBeenCalledTimes(2);
+				});
 			});
 		});
 	});

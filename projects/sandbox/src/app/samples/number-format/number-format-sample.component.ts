@@ -4,7 +4,7 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 @Component({
 	selector: 'sb-number-format',
 	standalone: false,
-	templateUrl: './number-format-sample.component.html'
+	templateUrl: './number-format-sample.component.html',
 })
 export class NumberFormatSampleComponent {
 	number1 = 5.236548;
@@ -14,7 +14,7 @@ export class NumberFormatSampleComponent {
 	formData = inject(UntypedFormBuilder).group({
 		number5: 5.236548,
 		number6: 5.236548,
-		numberRequired: [5.236548, Validators.required]
+		numberRequired: [5.236548, Validators.required],
 	});
 
 	setNumber5(): void {

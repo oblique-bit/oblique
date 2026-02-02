@@ -6,7 +6,7 @@ import {OptionLabelIconPosition} from '../autocomplete.model';
  */
 @Directive({
 	selector: '[obOptionLabelIcon]',
-	standalone: true
+	standalone: true,
 })
 export class ObMockOptionLabelIconDirective {
 	@Input() optionLabelIconName?: string;

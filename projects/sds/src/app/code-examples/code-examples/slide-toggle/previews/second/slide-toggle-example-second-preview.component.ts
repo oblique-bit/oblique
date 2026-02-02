@@ -6,7 +6,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 	imports: [MatSlideToggleModule],
 	templateUrl: './slide-toggle-example-second-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
-	host: {class: 'layout-breakpoint-lg'}
+	host: {class: 'layout-breakpoint-lg'},
 })
 export class SlideToggleExampleSecondPreviewComponent {
 	toggleValue: 'checked' | 'unchecked' = 'unchecked';

@@ -1,12 +1,21 @@
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, ReplaySubject, combineLatest, share, switchMap, throwError} from 'rxjs';
+import {Observable, ReplaySubject, combineLatest, of, share, switchMap, throwError} from 'rxjs';
 import {catchError, combineLatestWith, distinctUntilChanged, map, shareReplay, startWith, tap} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
-import {ObIServiceNavigationApplicationParsedInfo, ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
+import {
+	ObIServiceNavigationApplicationParsedInfo,
+	ObIServiceNavigationBackendInfo,
+} from './api/service-navigation.api.model';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
-import {ObEPamsEnvironment, ObILanguage, ObISectionLink, ObIServiceNavigationApplication, ObLoginState} from './service-navigation.model';
+import {
+	ObEPamsEnvironment,
+	ObILanguage,
+	ObISectionLink,
+	ObIServiceNavigationApplication,
+	ObLoginState,
+} from './service-navigation.model';
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
 import {ObNotificationService} from '../notification/notification.service';
@@ -20,7 +29,7 @@ export class ObServiceNavigationService {
 		de: 'Deutsch',
 		fr: 'Français',
 		it: 'Italiano',
-		en: 'English'
+		en: 'English',
 	};
 	private readonly rootUrl$ = new ReplaySubject<string>(1);
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
@@ -35,7 +44,7 @@ export class ObServiceNavigationService {
 				catchError(() => {
 					this.notification.error({
 						message: 'i18n.oblique.service-navigation.config.error.message',
-						title: 'i18n.oblique.service-navigation.config.error.title'
+						title: 'i18n.oblique.service-navigation.config.error.title',
 					});
 					return throwError(() => new Error('Cannot load service navigation config'));
 				}),
@@ -47,10 +56,18 @@ export class ObServiceNavigationService {
 						favoriteApplicationsCount
 					)
 				),
-				tap(() => this.languageSynchronizationService.initialize(rootUrl)),
-				tap(() => (this.timeoutService.rootUrl = rootUrl)),
-				tap(data => (this.timeoutService.logoutUrl = data.logout.url)),
-				tap(data => (this.redirectorService.logoutUrl = data.logout.url))
+				tap(() => {
+					this.languageSynchronizationService.initialize(rootUrl);
+				}),
+				tap(() => {
+					this.timeoutService.rootUrl = rootUrl;
+				}),
+				tap(data => {
+					this.timeoutService.logoutUrl = data.logout.url;
+				}),
+				tap(data => {
+					this.redirectorService.logoutUrl = data.logout.url;
+				})
 			);
 		}),
 		// the http request should not be fired again, hence the deactivation of both resets
@@ -68,8 +85,13 @@ export class ObServiceNavigationService {
 	private readonly httpApiInterceptorEvents = inject(ObHttpApiInterceptorEvents);
 
 	private readonly state$ = this.pollingService.state$.pipe(
-		tap(state => (this.timeoutService.loginState = state.loginState)),
-		tap(state => this.languageSynchronizationService.setLanguage(state.profile.language)),
+		tap(state => {
+			this.timeoutService.loginState = state.loginState;
+		}),
+		tap(state => {
+			this.languageSynchronizationService.setLanguage(state.profile.language);
+			this.languageSynchronizationService.loginLevel = state.loginState;
+		}),
 		shareReplay({bufferSize: 1, refCount: true})
 	);
 
@@ -129,23 +151,26 @@ export class ObServiceNavigationService {
 
 				const base = config.allServices.url;
 				return [
-					{url: `${base}/profile/details`, label: 'i18n.oblique.service-navigation.profile.my-profile', isInternalLink: true},
-					{url: `${base}/profile/permissions`, label: 'i18n.oblique.service-navigation.profile.my-permissions', isInternalLink: true},
+					{
+						url: `${base}/profile/details`,
+						label: 'i18n.oblique.service-navigation.profile.my-profile',
+						isInternalLink: true,
+					},
+					{
+						url: `${base}/profile/permissions`,
+						label: 'i18n.oblique.service-navigation.profile.my-permissions',
+						isInternalLink: true,
+					},
 					{
 						url: `${base}/profile/push-notifications`,
 						label: 'i18n.oblique.service-navigation.profile.my-email-sms-notifications',
-						isInternalLink: true
-					},
-					{
-						url: `${base}/profile/business-partnerships`,
-						label: 'i18n.oblique.service-navigation.profile.my-business-partnerships',
-						isInternalLink: true
+						isInternalLink: true,
 					},
 					{
 						url: `${base}/redeem`,
 						label: 'i18n.oblique.service-navigation.profile.redeem-code',
-						isInternalLink: true
-					}
+						isInternalLink: true,
+					},
 				];
 			})
 		);
@@ -160,7 +185,9 @@ export class ObServiceNavigationService {
 	}
 
 	getLoginState$(): Observable<ObLoginState> {
-		return this.state$.pipe(
+		return this.config$.pipe(
+			switchMap(() => this.state$),
+			catchError(() => of({loginState: undefined})),
 			map(state => state.loginState),
 			distinctUntilChanged((previousState, newState) => previousState === newState)
 		);
@@ -189,7 +216,9 @@ export class ObServiceNavigationService {
 	}
 
 	getInfoBackend$(): Observable<ObIServiceNavigationBackendInfo> {
-		const onLanguageChange$ = this.translateService.onLangChange.pipe(startWith({lang: this.translateService.currentLang}));
+		const onLanguageChange$ = this.translateService.onLangChange.pipe(
+			startWith({lang: this.translateService.currentLang})
+		);
 		return combineLatest([this.rootUrl$, this.pamsAppId$, onLanguageChange$]).pipe(
 			switchMap(([rootUrl, pamsId, onLangChange]) => {
 				return this.infoService.get(rootUrl, pamsId, onLangChange.lang);
@@ -207,7 +236,9 @@ export class ObServiceNavigationService {
 	}
 
 	getLanguages(): ObILanguage[] {
-		return this.translateService.getLangs().map(language => ({code: language, label: ObServiceNavigationService.languageLabels[language]}));
+		return this.translateService
+			.getLangs()
+			.map(language => ({code: language, label: ObServiceNavigationService.languageLabels[language]}));
 	}
 
 	setLanguage(language: string): void {
@@ -218,7 +249,9 @@ export class ObServiceNavigationService {
 		this.redirectorService.logout();
 	}
 
-	private getApplications$(applicationListName: 'favoriteApps' | 'lastUsedApps'): Observable<ObIServiceNavigationApplication[]> {
+	private getApplications$(
+		applicationListName: 'favoriteApps' | 'lastUsedApps'
+	): Observable<ObIServiceNavigationApplication[]> {
 		return this.rootUrl$.pipe(
 			switchMap(rootUrl =>
 				this.state$.pipe(
@@ -228,7 +261,7 @@ export class ObServiceNavigationService {
 					map(([applicationsInfo, lang]) =>
 						applicationsInfo.map(applicationInfo => ({
 							...applicationInfo,
-							name: applicationInfo.name[lang] ?? applicationInfo.name[Object.keys(applicationInfo.name)[0]]
+							name: applicationInfo.name[lang] ?? applicationInfo.name[Object.keys(applicationInfo.name)[0]],
 						}))
 					)
 				)

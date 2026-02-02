@@ -1,5 +1,4 @@
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {By} from '@angular/platform-browser';
 import {Observable, Subject} from 'rxjs';
 import {ObISpinnerEvent} from './spinner.model';
@@ -16,7 +15,7 @@ describe('ObSpinnerComponent', () => {
 		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
 		await TestBed.configureTestingModule({
 			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}],
-			imports: [ObSpinnerComponent, BrowserAnimationsModule]
+			imports: [ObSpinnerComponent],
 		}).compileComponents();
 	});
 
@@ -48,7 +47,7 @@ describe('ObSpinnerComponent', () => {
 		it.each([
 			{description: 'should add "ob-overlay-fixed" class when set to true', state: true, result: true},
 			{description: 'should remove "ob-overlay-fixed" class when set to false', state: false, result: undefined},
-			{description: 'should remove "ob-overlay-fixed" class when not provided', state: undefined, result: undefined}
+			{description: 'should remove "ob-overlay-fixed" class when not provided', state: undefined, result: undefined},
 		])('$description', ({state, result}) => {
 			component.fixed = state;
 			fixture.detectChanges();
@@ -89,7 +88,9 @@ describe('ObSpinnerComponent', () => {
 		it('should not emit when an ObISpinnerEvent is emitted in another channel', fakeAsync(() => {
 			let emitted = false;
 			// skip(1) is to ignore the `startWith`value
-			component.state$.pipe(skip(1)).subscribe(() => (emitted = true));
+			component.state$.pipe(skip(1)).subscribe(() => {
+				emitted = true;
+			});
 			mockObSpinnerService.events$.next({active: true, channel: 'alt'});
 			tick();
 			expect(emitted).toBe(false);

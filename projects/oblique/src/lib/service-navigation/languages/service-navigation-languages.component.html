@@ -1,4 +1,6 @@
-<span class="ob-screen-reader-only" id="ob-language-change">{{ "i18n.oblique.header.languages.title" | translate }}</span>
+<span class="ob-screen-reader-only" id="ob-language-change">{{
+	"i18n.oblique.header.languages.title" | translate
+}}</span>
 <mat-form-field class="ob-language-dropdown">
 	<mat-select
 		id="ob-language-dropdown"
@@ -7,16 +9,17 @@
 		(openedChange)="changeChevron()"
 		panelClass="ob-language-dropdown"
 	>
-		<mat-option
-			*ngFor="let languageObject of languages"
-			[id]="'ob-language-' + languageObject.code + '-option'"
-			[attr.aria-current]="language === languageObject.code ? true : undefined"
-			[class.ob-active]="language === languageObject.code"
-			[attr.aria-label]="languageObject.label"
-			[value]="languageObject.code"
-			[attr.lang]="languageObject.code"
-			>{{ languageObject.code.toUpperCase() }}</mat-option
-		>
+		@for (languageObject of languages; track languageObject) {
+			<mat-option
+				[id]="'ob-language-' + languageObject.code + '-option'"
+				[attr.aria-current]="language === languageObject.code ? true : undefined"
+				[class.ob-active]="language === languageObject.code"
+				[attr.aria-label]="languageObject.label"
+				[value]="languageObject.code"
+				[attr.lang]="languageObject.code"
+				>{{ languageObject.code.toUpperCase() }}</mat-option
+			>
+		}
 	</mat-select>
 	<mat-icon matSuffix [svgIcon]="chevron" />
 </mat-form-field>

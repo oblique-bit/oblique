@@ -8,6 +8,6 @@ export {ObMockDatePipe} from './mock-date.pipe';
  */
 @NgModule({
 	imports: [ObMockDatePipe],
-	exports: [ObMockDatePipe]
+	exports: [ObMockDatePipe],
 })
 export class ObMockLanguageModule {}

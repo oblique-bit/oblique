@@ -8,7 +8,7 @@ import {MatSelectModule} from '@angular/material/select';
 @Component({
 	selector: 'app-expansion-panel-example-basic-preview',
 	imports: [MatExpansionModule, MatFormFieldModule, MatInputModule, FormsModule, MatSelectModule],
-	templateUrl: './expansion-panel-example-basic-preview.component.html'
+	templateUrl: './expansion-panel-example-basic-preview.component.html',
 })
 export class ExpansionPanelExampleBasicPreviewComponent {
 	heroName = 'Super*';

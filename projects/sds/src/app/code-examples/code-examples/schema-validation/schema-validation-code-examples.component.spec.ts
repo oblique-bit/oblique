@@ -20,9 +20,9 @@ describe(SchemaValidationCodeExamplesComponent.name, () => {
 				IdPipe,
 				CodeExampleComponent,
 				SchemaValidationExampleReactiveFormPreviewComponent,
-				SchemaValidationExampleTemplateDrivenFormPreviewComponent
+				SchemaValidationExampleTemplateDrivenFormPreviewComponent,
 			],
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(SchemaValidationCodeExamplesComponent);
@@ -39,10 +39,14 @@ describe(SchemaValidationCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there is 1 ${SchemaValidationExampleReactiveFormPreviewComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(SchemaValidationExampleReactiveFormPreviewComponent)).length).toBe(1);
+		expect(
+			fixture.debugElement.queryAll(By.directive(SchemaValidationExampleReactiveFormPreviewComponent)).length
+		).toBe(1);
 	});
 
 	test(`that there is 1 ${SchemaValidationExampleTemplateDrivenFormPreviewComponent.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(SchemaValidationExampleTemplateDrivenFormPreviewComponent)).length).toBe(1);
+		expect(
+			fixture.debugElement.queryAll(By.directive(SchemaValidationExampleTemplateDrivenFormPreviewComponent)).length
+		).toBe(1);
 	});
 });

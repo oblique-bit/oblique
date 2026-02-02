@@ -1,18 +1,20 @@
-import {Directive, HostListener} from '@angular/core';
+import {Directive} from '@angular/core';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {isNotKeyboardEventOnButton} from '../../utilities';
 
 @Directive({
 	selector: '[obMasterLayoutHeaderToggle]',
+	standalone: false,
+	host: {
+		'(click)': 'toggle($event)',
+		'(keyup.enter)': 'toggle($event)',
+		class: 'ob-master-layout-header-toggle',
+	},
 	exportAs: 'obMasterLayoutHeaderToggle',
-	host: {class: 'ob-master-layout-header-toggle'},
-	standalone: false
 })
 export class ObMasterLayoutHeaderToggleDirective {
 	constructor(private readonly masterLayout: ObMasterLayoutComponentService) {}
 
-	@HostListener('click', ['$event'])
-	@HostListener('keyup.enter', ['$event'])
 	toggle(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {
 			// As ENTER keypress delegates to click events, let's ensure

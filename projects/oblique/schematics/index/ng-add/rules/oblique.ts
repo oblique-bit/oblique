@@ -3,16 +3,13 @@ import {angularAppFilesNames, appModulePath, getTemplate, importModuleInRoot, ob
 import {ObIOptionsSchema} from '../ng-add.model';
 import {
 	ObliquePackage,
-	addAngularConfigInList,
-	applyInTree,
 	createSafeRule,
 	getIndexPaths,
+	includeAngularConfigInList,
 	infoMigration,
 	overwriteIndexFile,
 	readFile,
-	removeImport,
-	replaceInFile,
-	setAngularProjectsConfig
+	setAngularProjectsConfig,
 } from '../../utils';
 import {addLocales} from './locales';
 
@@ -21,7 +18,6 @@ export function oblique(options: ObIOptionsSchema): Rule {
 		chain([
 			addFavIcon(),
 			embedMasterLayout(options.title),
-			removeBrowserModule(),
 			addAdditionalModules(),
 			addFeatureDetection(),
 			addMainCSS(),
@@ -29,7 +25,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addObliqueAssets(),
 			addFontFiles(),
 			addLocales(options.locales.split(' ')),
-			raiseBuildBudget()
+			raiseBuildBudget(),
 		])(tree, context);
 }
 
@@ -52,24 +48,12 @@ function embedMasterLayout(title: string): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique: Embedding Master Layout');
 		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
-		importModuleInRoot(tree, 'BrowserAnimationsModule', '@angular/platform-browser/animations');
 		addMasterLayout(tree, title);
 		infoMigration(
 			context,
 			"MasterLayout integrated. Please don’t forget to update the 'application operator' placeholder in the footer with your actual operator."
 		);
 		return tree;
-	});
-}
-
-function removeBrowserModule(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Oblique: Remove BrowserModule');
-		const apply = (filePath: string): void => {
-			removeImport(tree, appModulePath, 'BrowserModule', '@angular/platform-browser');
-			replaceInFile(tree, filePath, /\s*BrowserModule,?/g, '');
-		};
-		return applyInTree(tree, apply, angularAppFilesNames.appModule);
 	});
 }
 
@@ -87,9 +71,18 @@ function addFeatureDetection(): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique: Adding browser compatibility check');
 		getIndexPaths(tree).forEach((indexPath: string) =>
-			overwriteIndexFile(indexPath, tree, /<body>(?<lineBreak>\r?\n)/, `<body>$<lineBreak>${getTemplate(tree, 'default-index.html')}`)
+			overwriteIndexFile(
+				indexPath,
+				tree,
+				/<body>(?<lineBreak>\r?\n)/,
+				`<body>$<lineBreak>${getTemplate(tree, 'default-index.html')}`
+			)
 		);
-		return addAngularConfigInList(tree, ['architect', 'build', 'options', 'scripts'], 'node_modules/@oblique/oblique/ob-features.js');
+		return includeAngularConfigInList(
+			tree,
+			['architect', 'build', 'options', 'scripts'],
+			'node_modules/@oblique/oblique/ob-features.js'
+		);
 	});
 }
 
@@ -112,7 +105,10 @@ function addMainCSS(): Rule {
 function addLocalAssets(): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique: Adding local assets');
-		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => ['src/assets', ...config]);
+		return setAngularProjectsConfig(tree, ['architect', 'build', 'options', 'assets'], (config: any) => [
+			'src/assets',
+			...config,
+		]);
 	});
 }
 
@@ -123,9 +119,9 @@ function addObliqueAssets(): Rule {
 			{
 				glob: '**/*',
 				input: 'node_modules/@oblique/oblique/assets',
-				output: 'assets'
+				output: 'assets',
 			},
-			...config
+			...config,
 		]);
 	});
 }
@@ -137,7 +133,7 @@ function addFontFiles(): Rule {
 			config.splice(1, 0, {
 				glob: '*/**',
 				input: 'node_modules/@oblique/oblique/styles/fonts',
-				output: 'assets/fonts'
+				output: 'assets/fonts',
 			});
 			return config;
 		});
@@ -160,7 +156,10 @@ function addMasterLayout(tree: Tree, title: string): void {
 
 function addComment(tree: Tree): void {
 	const appModuleContent = readFile(tree, appModulePath);
-	tree.overwrite(appModulePath, appModuleContent.replace(/ObButtonModule,\n/, 'ObButtonModule, // add other Oblique modules as needed\n'));
+	tree.overwrite(
+		appModulePath,
+		appModuleContent.replace(/ObButtonModule,\n/, 'ObButtonModule, // add other Oblique modules as needed\n')
+	);
 }
 
 function raiseBuildBudget(): Rule {
@@ -173,13 +172,13 @@ function raiseBuildBudget(): Rule {
 				{
 					type: 'initial',
 					maximumWarning: '1.7mb',
-					maximumError: '2mb'
+					maximumError: '2mb',
 				},
 				{
 					type: 'anyComponentStyle',
 					maximumWarning: '3kb',
-					maximumError: '4kb'
-				}
+					maximumError: '4kb',
+				},
 			]
 		);
 	});

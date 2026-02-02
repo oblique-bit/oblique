@@ -9,7 +9,7 @@ import {ColumnLayoutExampleStackblitzLinkPreviewComponent} from './previews/stac
 	selector: 'app-code-example-column-layout',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ColumnLayoutCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'column-layout-examples';
@@ -17,7 +17,7 @@ export class ColumnLayoutCodeExamplesComponent extends CodeExamples {
 		{
 			component: ColumnLayoutExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example'
-		}
+			title: 'Link to Stackblitz Example',
+		},
 	];
 }

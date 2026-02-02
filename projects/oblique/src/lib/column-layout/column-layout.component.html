@@ -1,67 +1,71 @@
-<div
-	*ngIf="left === 'OPENED' || left === 'CLOSED'"
-	[initialState]="left"
-	class="ob-column-left"
-	role="complementary"
-	[attr.aria-label]="'i18n.oblique.column.left.title' | translate"
-	obColumnPanel
-	#columnLeft="obColumnPanel"
-	id="ob-column-left"
-	[attr.aria-hidden]="columnLeft.collapsed ? true : undefined"
->
-	<button
-		type="button"
-		class="ob-column-toggle-left"
-		aria-controls="ob-column-left"
-		[attr.aria-expanded]="columnLeft.collapsed ? undefined : true"
-		obColumnToggle
-		#columnToggle
-		*ngIf="toggleLeftIcon$ | async as direction"
+@if (left === "OPENED" || left === "CLOSED") {
+	<div
+		[initialState]="left"
+		class="ob-column-left"
+		role="complementary"
+		[attr.aria-label]="'i18n.oblique.column.left.title' | translate"
+		obColumnPanel
+		#columnLeft="obColumnPanel"
+		id="ob-column-left"
+		[attr.aria-hidden]="columnLeft.collapsed ? true : undefined"
 	>
-		@if (direction === "left") {
-			<mat-icon svgIcon="chevron_left" />
-		} @else if (direction === "right") {
-			<mat-icon svgIcon="chevron_right" />
+		@if (toggleLeftIcon$ | async; as direction) {
+			<button
+				type="button"
+				class="ob-column-toggle-left"
+				aria-controls="ob-column-left"
+				[attr.aria-expanded]="columnLeft.collapsed ? undefined : true"
+				obColumnToggle
+				#columnToggle
+			>
+				@if (direction === "left") {
+					<mat-icon svgIcon="chevron_left" />
+				} @else if (direction === "right") {
+					<mat-icon svgIcon="chevron_right" />
+				}
+				<span class="ob-screen-reader-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
+			</button>
 		}
-		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.left.toggle" | translate }}</span>
-	</button>
-	<div class="ob-column-content" cdkScrollable>
-		<ng-content select="[column-left-content]" />
+		<div class="ob-column-content" cdkScrollable>
+			<ng-content select="[column-left-content]" />
+		</div>
 	</div>
-</div>
+}
 <div class="ob-column-main">
 	<div class="ob-column-content" cdkScrollable>
 		<ng-content select="[column-main-content]" />
 	</div>
 </div>
-<div
-	*ngIf="right === 'OPENED' || right === 'CLOSED'"
-	[initialState]="right"
-	class="ob-column-right"
-	role="complementary"
-	[attr.aria-label]="'i18n.oblique.column.right.title' | translate"
-	obColumnPanel
-	#columnRight="obColumnPanel"
-	id="ob-column-right"
-	[attr.aria-hidden]="columnRight.collapsed ? true : undefined"
->
-	<button
-		type="button"
-		class="ob-column-toggle-right"
-		aria-controls="ob-column-right"
-		[attr.aria-expanded]="columnRight.collapsed ? undefined : true"
-		obColumnToggle
-		#columnToggle
-		*ngIf="toggleRightIcon$ | async as direction"
+@if (right === "OPENED" || right === "CLOSED") {
+	<div
+		[initialState]="right"
+		class="ob-column-right"
+		role="complementary"
+		[attr.aria-label]="'i18n.oblique.column.right.title' | translate"
+		obColumnPanel
+		#columnRight="obColumnPanel"
+		id="ob-column-right"
+		[attr.aria-hidden]="columnRight.collapsed ? true : undefined"
 	>
-		@if (direction === "left") {
-			<mat-icon svgIcon="chevron_left" />
-		} @else if (direction === "right") {
-			<mat-icon svgIcon="chevron_right" />
+		@if (toggleRightIcon$ | async; as direction) {
+			<button
+				type="button"
+				class="ob-column-toggle-right"
+				aria-controls="ob-column-right"
+				[attr.aria-expanded]="columnRight.collapsed ? undefined : true"
+				obColumnToggle
+				#columnToggle
+			>
+				@if (direction === "left") {
+					<mat-icon svgIcon="chevron_left" />
+				} @else if (direction === "right") {
+					<mat-icon svgIcon="chevron_right" />
+				}
+				<span class="ob-screen-reader-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
+			</button>
 		}
-		<span class="ob-screen-reader-only">{{ "i18n.oblique.column.right.toggle" | translate }}</span>
-	</button>
-	<div class="ob-column-content" cdkScrollable>
-		<ng-content select="[column-right-content]" />
+		<div class="ob-column-content" cdkScrollable>
+			<ng-content select="[column-right-content]" />
+		</div>
 	</div>
-</div>
+}

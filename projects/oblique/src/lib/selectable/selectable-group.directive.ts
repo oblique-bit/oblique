@@ -1,26 +1,43 @@
 import {BehaviorSubject} from 'rxjs';
-import {AfterContentInit, Directive, EventEmitter, HostBinding, HostListener, Input, Output, booleanAttribute, inject} from '@angular/core';
+import {AfterContentInit, Directive, EventEmitter, Input, Output, booleanAttribute, inject} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {WINDOW} from './../utilities';
 import {ObSelectableDirective} from './selectable.directive';
 
 @Directive({
 	selector: '[obSelectableGroup]',
-	exportAs: 'obSelectableGroup',
-	host: {class: 'ob-selectable-group'},
 	standalone: true,
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
 			useExisting: ObSelectableGroupDirective,
-			multi: true
-		}
-	]
+			multi: true,
+		},
+	],
+	host: {
+		'[attr.disabled]': 'isDisabled',
+		'[attr.role]': 'role',
+		'(keydown.arrowDown)': 'onArrowDown($event)',
+		'(keydown.arrowRight)': 'onArrowDown($event)',
+		'(keydown.arrowUp)': 'onArrowUp($event)',
+		'(keydown.arrowLeft)': 'onArrowUp($event)',
+		'(keydown.shift.arrowDown)': 'onShiftArrowDown($event)',
+		'(keydown.shift.arrowRight)': 'onShiftArrowDown($event)',
+		'(keydown.shift.arrowUp)': 'onShiftArrowUp($event)',
+		'(keydown.shift.arrowLeft)': 'onShiftArrowUp($event)',
+		'(keydown.control.arrowDown)': 'onCtrlArrowDown($event)',
+		'(keydown.control.arrowRight)': 'onCtrlArrowDown($event)',
+		'(keydown.control.arrowUp)': 'onCtrlArrowUp($event)',
+		'(keydown.control.arrowLeft)': 'onCtrlArrowUp($event)',
+		'[class.ob-selectable-group]': 'selectable',
+		class: 'ob-selectable-group',
+	},
+	exportAs: 'obSelectableGroup',
 })
 export class ObSelectableGroupDirective<T = any> implements AfterContentInit, ControlValueAccessor {
-	@HostBinding('attr.disabled') isDisabled = undefined;
-	@HostBinding('attr.role') role = 'group';
-	@HostBinding('class.ob-selectable-group') readonly selectable = true;
+	isDisabled = undefined;
+	role = 'group';
+	readonly selectable = true;
 	@Output() readonly selected$ = new EventEmitter<ObSelectableDirective<T>[]>();
 	@Output() readonly mode$ = new EventEmitter<'checkbox' | 'radio' | 'windows'>();
 
@@ -35,7 +52,7 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	private readonly modeToggle = {
 		checkbox: this.checkboxSelect.bind(this),
 		radio: this.radioSelect.bind(this),
-		windows: this.windowsSelect.bind(this)
+		windows: this.windowsSelect.bind(this),
 	};
 
 	constructor() {
@@ -44,7 +61,9 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 			if (mode === 'radio') {
 				this.getSelected()
 					.slice(1)
-					.forEach(item => (item.selected = false));
+					.forEach(item => {
+						item.selected = false;
+					});
 				this.updateSelection();
 			}
 		});
@@ -116,14 +135,18 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 
 	selectAll(): void {
 		if (this.mode !== 'radio') {
-			this.selectables.forEach(item => (item.selected = true));
+			this.selectables.forEach(item => {
+				item.selected = true;
+			});
 			this.updateSelection();
 		}
 	}
 
 	deselectAll(): void {
 		if (this.mode !== 'radio') {
-			this.selectables.forEach(item => (item.selected = false));
+			this.selectables.forEach(item => {
+				item.selected = false;
+			});
 			this.updateSelection();
 		}
 	}
@@ -132,38 +155,26 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 		this.selectables.sort(sortFunction);
 	}
 
-	@HostListener('keydown.arrowDown', ['$event'])
-	@HostListener('keydown.arrowRight', ['$event'])
 	onArrowDown($event: KeyboardEvent): void {
 		this.next(1, $event);
 	}
 
-	@HostListener('keydown.arrowUp', ['$event'])
-	@HostListener('keydown.arrowLeft', ['$event'])
 	onArrowUp($event: KeyboardEvent): void {
 		this.next(-1, $event);
 	}
 
-	@HostListener('keydown.shift.arrowDown', ['$event'])
-	@HostListener('keydown.shift.arrowRight', ['$event'])
 	onShiftArrowDown($event: KeyboardEvent): void {
 		this.add(+1, $event);
 	}
 
-	@HostListener('keydown.shift.arrowUp', ['$event'])
-	@HostListener('keydown.shift.arrowLeft', ['$event'])
 	onShiftArrowUp($event: KeyboardEvent): void {
 		this.add(-1, $event);
 	}
 
-	@HostListener('keydown.control.arrowDown', ['$event'])
-	@HostListener('keydown.control.arrowRight', ['$event'])
 	onCtrlArrowDown($event: KeyboardEvent): void {
 		this.move(+1, $event);
 	}
 
-	@HostListener('keydown.control.arrowUp', ['$event'])
-	@HostListener('keydown.control.arrowLeft', ['$event'])
 	onCtrlArrowUp($event: KeyboardEvent): void {
 		this.move(-1, $event);
 	}
@@ -212,7 +223,9 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	}
 
 	private radioSelect(directive: ObSelectableDirective<T>): void {
-		this.selectables.forEach(item => (item.selected = false));
+		this.selectables.forEach(item => {
+			item.selected = false;
+		});
 		directive.selected = true;
 	}
 
@@ -228,10 +241,14 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 			const endFocused = this.selectables.findIndex(item => item === directive);
 			const start = Math.min(this.startFocused, endFocused);
 			const end = Math.max(this.startFocused, endFocused);
-			this.selectables.forEach((item, index) => (item.selected = !(index < start || index > end)));
+			this.selectables.forEach((item, index) => {
+				item.selected = !(index < start || index > end);
+			});
 		} else {
 			this.startFocused = undefined;
-			this.selectables.forEach(item => (item.selected = false));
+			this.selectables.forEach(item => {
+				item.selected = false;
+			});
 			directive.selected = true;
 		}
 	}

@@ -5,6 +5,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 	selector: 'app-progress-bar-example-colors-preview',
 	imports: [MatProgressBarModule],
 	templateUrl: './progress-bar-example-colors-preview.component.html',
-	styleUrl: './progress-bar-example-colors-preview.component.scss'
+	styleUrl: './progress-bar-example-colors-preview.component.scss',
 })
 export class ProgressBarExampleColorsPreviewComponent {}

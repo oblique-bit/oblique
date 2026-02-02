@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 	selector: 'ob-unknown-route',
 	standalone: true,
 	template: '',
-	exportAs: 'obUnknownRoute'
+	exportAs: 'obUnknownRoute',
 })
 export class ObMockUnknownRouteComponent {
 	homePageRoute;

@@ -9,7 +9,7 @@ import {Subject} from 'rxjs';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'mat-error',
-	standalone: true
+	standalone: true,
 })
 export class ObMatErrorDirective implements OnInit, OnDestroy {
 	private readonly pipe: ObTranslateParamsPipe;
@@ -23,7 +23,9 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 	) {
 		if (this.control) {
 			this.pipe = new ObTranslateParamsPipe(translate);
-			translate.onLangChange.subscribe(() => this.showErrors(this.errors || {}));
+			translate.onLangChange.subscribe(() => {
+				this.showErrors(this.errors || {});
+			});
 		}
 	}
 
@@ -32,10 +34,14 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 			this.control.errors$
 				.pipe(
 					filter(errors => !!errors),
-					tap(errors => (this.errors = errors)),
+					tap(errors => {
+						this.errors = errors;
+					}),
 					takeUntil(this.unsubscribe)
 				)
-				.subscribe(errors => this.showErrors(errors));
+				.subscribe(errors => {
+					this.showErrors(errors);
+				});
 		}
 	}
 

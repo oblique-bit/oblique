@@ -114,7 +114,10 @@ export class ObServiceNavigationTimeoutService {
 		const userIsInactive = Date.now() - userLastActivity > seconds29minute * this.secondsFactor;
 		if (userIsInactive) {
 			this.cookieService.setShortCookie(this.timeoutCookieName, this.window.location.href);
-			this.cookieService.setCookie(this.logoutReminderCookieName, this.returnUrlService.getRedirectUrl('timeout', this.eportalUrl));
+			this.cookieService.setCookie(
+				this.logoutReminderCookieName,
+				this.returnUrlService.getRedirectUrl('timeout', this.eportalUrl)
+			);
 			this.redirectorService.redirectOrEmit(this.logoutUrl);
 		} else {
 			this.timeoutApiService.refreshPamsToken(this.rootUrl).subscribe();

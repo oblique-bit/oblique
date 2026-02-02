@@ -15,11 +15,10 @@ const appRoutes: Routes = [
 	{path: 'title-page', component: TitlePageComponent},
 	{path: 'nav-page', component: NavPageComponent},
 	{path: 'table-page', component: TablePageComponent},
-	{path: '', redirectTo: 'title-page', pathMatch: 'full'}
+	{path: '', redirectTo: 'title-page', pathMatch: 'full'},
 ];
 
 @NgModule({
-	declarations: [NavPageComponent, TablePageComponent, TitlePageComponent],
 	imports: [
 		CommonModule,
 		MatButtonModule,
@@ -30,7 +29,8 @@ const appRoutes: Routes = [
 		ObButtonModule,
 		ObExternalLinkModule,
 		ObNavTreeModule,
-		RouterModule.forChild(appRoutes)
-	]
+		RouterModule.forChild(appRoutes),
+	],
+	declarations: [NavPageComponent, TablePageComponent, TitlePageComponent],
 })
 export class StarterkitModule {}

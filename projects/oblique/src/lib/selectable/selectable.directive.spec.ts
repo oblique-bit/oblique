@@ -7,7 +7,7 @@ import {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @Component({
 	standalone: false,
-	template: ` <div obSelectable value="test"></div>`
+	template: ` <div obSelectable value="test"></div>`,
 })
 class FaultyTestComponent {}
 
@@ -15,14 +15,14 @@ class FaultyTestComponent {}
 	standalone: false,
 	template: ` <div obSelectableGroup>
 		<div obSelectable value="test"></div>
-	</div>`
+	</div>`,
 })
 class TestComponent {}
 
 @Directive({
 	selector: '[obSelectableGroup]',
+	standalone: false,
 	exportAs: 'obSelectableGroup',
-	standalone: false
 })
 export class ObMockSelectableGroupDirective {
 	mode$ = new BehaviorSubject<string>('checkbox');
@@ -34,8 +34,8 @@ export class ObMockSelectableGroupDirective {
 
 @Directive({
 	selector: '[obSelectableGroup]',
+	standalone: false,
 	exportAs: 'obSelectableGroup',
-	standalone: false
 })
 export class ObMockDisabledSelectableGroupDirective {
 	mode$ = new BehaviorSubject<string>('checkbox');
@@ -57,7 +57,7 @@ describe(ObSelectableDirective.name, () => {
 		beforeEach(waitForAsync(() => {
 			TestBed.configureTestingModule({
 				imports: [ObSelectableDirective],
-				declarations: [FaultyTestComponent]
+				declarations: [FaultyTestComponent],
 			});
 		}));
 
@@ -73,7 +73,7 @@ describe(ObSelectableDirective.name, () => {
 			TestBed.configureTestingModule({
 				imports: [ObSelectableDirective],
 				declarations: [ObMockSelectableGroupDirective, TestComponent],
-				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}]
+				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}],
 			});
 		}));
 
@@ -83,7 +83,9 @@ describe(ObSelectableDirective.name, () => {
 			fixture.detectChanges();
 			element = fixture.debugElement.query(By.directive(ObSelectableDirective));
 			directive = element.injector.get(ObSelectableDirective);
-			group = fixture.debugElement.query(By.directive(ObMockSelectableGroupDirective)).injector.get(ObSelectableGroupDirective);
+			group = fixture.debugElement
+				.query(By.directive(ObMockSelectableGroupDirective))
+				.injector.get(ObSelectableGroupDirective);
 		});
 
 		afterEach(() => {
@@ -208,7 +210,7 @@ describe(ObSelectableDirective.name, () => {
 			TestBed.configureTestingModule({
 				imports: [ObSelectableDirective],
 				declarations: [ObMockDisabledSelectableGroupDirective, TestComponent],
-				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockDisabledSelectableGroupDirective}]
+				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockDisabledSelectableGroupDirective}],
 			});
 		}));
 
@@ -218,7 +220,9 @@ describe(ObSelectableDirective.name, () => {
 			fixture.detectChanges();
 			element = fixture.debugElement.query(By.directive(ObSelectableDirective));
 			directive = element.injector.get(ObSelectableDirective);
-			group = fixture.debugElement.query(By.directive(ObMockDisabledSelectableGroupDirective)).injector.get(ObSelectableGroupDirective);
+			group = fixture.debugElement
+				.query(By.directive(ObMockDisabledSelectableGroupDirective))
+				.injector.get(ObSelectableGroupDirective);
 		});
 
 		describe('onclick', () => {

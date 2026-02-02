@@ -7,7 +7,7 @@ import {
 	type ObINavigationLink,
 	type ObISkipLink,
 	ObMasterLayoutHeaderService,
-	WINDOW
+	WINDOW,
 } from '@oblique/oblique';
 import {appVersion} from '@oblique/version';
 import {type Observable, Subject} from 'rxjs';
@@ -19,7 +19,7 @@ import {appNavigation} from './app-navigation';
 	selector: 'sb-root',
 	standalone: false,
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.scss'
+	styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnDestroy {
 	version = appVersion;
@@ -33,7 +33,11 @@ export class AppComponent implements OnDestroy {
 		{url: '../samples', fragment: 'fragment', label: 'Skip to samples with fragment'},
 		{url: '../samples', label: 'Skip to samples without fragment'},
 		{url: 'current', fragment: 'link-to-blick-ch', label: 'Skip to "Blick" link in the footer'},
-		{url: '../samples/file-upload', fragment: 'fantasy', label: 'Example to demo console message for a non existing element.'}
+		{
+			url: '../samples/file-upload',
+			fragment: 'fantasy',
+			label: 'Example to demo console message for a non existing element.',
+		},
 	];
 	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
 	readonly nav = inject(DynamicNavigationService);
@@ -50,9 +54,9 @@ export class AppComponent implements OnDestroy {
 		this.nav.navigationLinks$.subscribe(links => {
 			this.navigation = links;
 		});
-		this.router.events
-			.pipe(filter(event => event instanceof NavigationEnd))
-			.subscribe(() => (header.serviceNavigationConfiguration.returnUrl = window.location.href));
+		this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
+			header.serviceNavigationConfiguration.returnUrl = window.location.href;
+		});
 	}
 
 	ngOnDestroy(): void {
@@ -76,7 +80,7 @@ export class AppComponent implements OnDestroy {
 			)
 			.subscribe(item => {
 				this.search.reset('');
-				const language = this.translate.currentLang;
+				const language = this.translate.getCurrentLang();
 				void this.router.navigateByUrl(`/${language}/${item.url}`);
 			});
 	}
@@ -90,8 +94,8 @@ export class AppComponent implements OnDestroy {
 					...links,
 					...link.children.map(child => ({
 						...child,
-						url: `${link.url}/${child.url}`
-					}))
+						url: `${link.url}/${child.url}`,
+					})),
 				],
 				[]
 			);
@@ -103,7 +107,7 @@ export class AppComponent implements OnDestroy {
 			[]
 		);
 		return this.translate.onLangChange.pipe(
-			startWith(this.translate.currentLang),
+			startWith(this.translate.getCurrentLang()),
 			map(() => autocompleteItems.map(item => ({...item, label: this.translate.instant(item.label)})))
 		);
 	}

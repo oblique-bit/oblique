@@ -1,3 +1,15 @@
+# [15.0.0](https://github.com/oblique-bit/oblique/compare/14.1.2...15.0.0) (2026-02-02)
+
+## Bug Fixes
+
+- **update:** update angular-eslint too ([d9f98770](https://github.com/oblique-bit/oblique/commit/d9f98770e21c9d93cec61f2db5cd17bb0e59553d))
+
+## Features
+
+- **new:** remove installation of additional dependencies ([109bba61](https://github.com/oblique-bit/oblique/commit/109bba614d336192eaeab21f6e4b745a834bfe42))
+- **new:** no longer add `@angular/animations` ([ced1c9b1](https://github.com/oblique-bit/oblique/commit/ced1c9b1d1deb0888d19d23b8895b95a67277273))
+- **update:** update all Angular dependencies of the project ([7d8a536d](https://github.com/oblique-bit/oblique/commit/7d8a536d929c59ae202ccb9eaf4c875ce03451e4))
+
 # [14.1.2](https://github.com/oblique-bit/oblique/compare/14.1.1...14.1.2) (2025-12-01)
 
 ## Bug Fixes

@@ -1,39 +1,61 @@
 <ul class="ob-service-navigation-list">
-	<li *ngFor="let customControl of customWidgetTemplate" class="ob-service-navigation-custom-control">
-		<ng-container *ngTemplateOutlet="customControl" />
-	</li>
-	<li *ngIf="(loginState$ | async | obIsUserLoggedIn: false) && displayMessage">
-		<ob-service-navigation-message [linkHref]="inboxMailUrl$ | async" [count]="messageCount$ | async" />
-	</li>
-	<li *ngIf="displayInfo">
-		@let infoBackend = useInfoBackend ? (infoBackend$ | async) : {};
-		<ob-service-navigation-info
-			[links]="infoBackend.links ? infoBackend.links : infoLinks"
-			[contact]="infoBackend.contact ? infoBackend.contact : infoContact"
-			[helpText]="infoBackend.helpText ? infoBackend.helpText : infoHelpText"
-			[contactText]="infoBackend.contactText ? infoBackend.contactText : infoContactText"
-			[description]="infoBackend.description ? infoBackend.description : infoDescription"
-		/>
-	</li>
-	<li *ngIf="displayApplications">
-		<ob-service-navigation-applications
-			[applicationsUrl]="applicationsUrl$ | async"
-			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: false"
-			[lastUsedApplications]="lastUsedApplications$ | async"
-			[favoriteApplications]="favoriteApplications$ | async"
-		/>
-	</li>
-	<li *ngIf="(loginState$ | async | obIsUserLoggedIn: true) && displayProfile">
-		<ob-service-navigation-profile [userName]="userName$ | async" [profileUrls]="profileUrls$ | async" [links]="profileLinks" />
-	</li>
-	<li *ngIf="displayAuthentication">
-		<ob-service-navigation-authentication
-			[loginUrl]="loginUrl$ | async"
-			[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: true"
-			(logoutClicked)="logoutClick()"
-		/>
-	</li>
-	<li *ngIf="languages.length > 1 && displayLanguages">
-		<ob-service-navigation-languages [languages]="languages" [language]="language$ | async" (languageChange)="changeLanguage($event)" />
-	</li>
+	@for (customControl of customWidgetTemplate; track customControl) {
+		<li class="ob-service-navigation-custom-control">
+			<ng-container *ngTemplateOutlet="customControl" />
+		</li>
+	}
+	@if ((loginState$ | async | obIsUserLoggedIn: false) && displayMessage) {
+		<li>
+			<ob-service-navigation-message [linkHref]="inboxMailUrl$ | async" [count]="messageCount$ | async" />
+		</li>
+	}
+	@if (displayInfo) {
+		<li>
+			@let infoBackend = useInfoBackend ? (infoBackend$ | async) : {};
+			<ob-service-navigation-info
+				[links]="infoBackend.links ? infoBackend.links : infoLinks"
+				[contact]="infoBackend.contact ? infoBackend.contact : infoContact"
+				[helpText]="infoBackend.helpText ? infoBackend.helpText : infoHelpText"
+				[contactText]="infoBackend.contactText ? infoBackend.contactText : infoContactText"
+				[description]="infoBackend.description ? infoBackend.description : infoDescription"
+			/>
+		</li>
+	}
+	@if (displayApplications) {
+		<li>
+			<ob-service-navigation-applications
+				[applicationsUrl]="applicationsUrl$ | async"
+				[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: false"
+				[lastUsedApplications]="lastUsedApplications$ | async"
+				[favoriteApplications]="favoriteApplications$ | async"
+			/>
+		</li>
+	}
+	@if ((loginState$ | async | obIsUserLoggedIn: true) && displayProfile) {
+		<li>
+			<ob-service-navigation-profile
+				[userName]="userName$ | async"
+				[profileUrls]="profileUrls$ | async"
+				[links]="profileLinks"
+			/>
+		</li>
+	}
+	@if (displayAuthentication) {
+		<li>
+			<ob-service-navigation-authentication
+				[loginUrl]="loginUrl$ | async"
+				[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: true"
+				(logoutClicked)="logoutClick()"
+			/>
+		</li>
+	}
+	@if (languages.length > 1 && displayLanguages) {
+		<li>
+			<ob-service-navigation-languages
+				[languages]="languages"
+				[language]="language$ | async"
+				(languageChange)="changeLanguage($event)"
+			/>
+		</li>
+	}
 </ul>

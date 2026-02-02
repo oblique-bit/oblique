@@ -9,7 +9,7 @@ import {LanguageExampleDefaultPreviewComponent} from './previews/default/languag
 	selector: 'app-code-example-langugage',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'language-examples';
@@ -20,8 +20,8 @@ export class LanguageCodeExamplesComponent extends CodeExamples {
 			title: 'Language default',
 			snippets: [
 				this.getSnippet('language', 'default/language-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('language', 'default/language-example-default-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('language', 'default/language-example-default-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

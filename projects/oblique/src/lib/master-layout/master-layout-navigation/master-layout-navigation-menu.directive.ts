@@ -1,13 +1,16 @@
-import {Directive, ElementRef, HostBinding, Renderer2, inject} from '@angular/core';
+import {Directive, ElementRef, Renderer2, inject} from '@angular/core';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationMenu]',
+	standalone: false,
+	host: {
+		'[class.ob-has-opened-menu]': 'hasOpenedMenu',
+		class: 'ob-master-layout-navigation-menu',
+	},
 	exportAs: 'obMasterLayoutNavigationMenu',
-	host: {class: 'ob-master-layout-navigation-menu'},
-	standalone: false
 })
 export class ObMasterLayoutNavigationMenuDirective {
-	@HostBinding('class.ob-has-opened-menu') public hasOpenedMenu = false;
+	public hasOpenedMenu = false;
 	private counter = 0;
 	private readonly renderer = inject(Renderer2);
 	private readonly element = inject(ElementRef);

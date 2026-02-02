@@ -3,7 +3,7 @@ import {MatIconButton} from '@angular/material/button';
 import {MatTooltip} from '@angular/material/tooltip';
 
 @Directive({
-	standalone: true
+	standalone: true,
 })
 export class ObIconButtonDirective {
 	private readonly isIconButton = Boolean(inject(MatIconButton, {optional: true}));
@@ -32,7 +32,9 @@ export class ObIconButtonDirective {
 
 	private observeAriaDescribedbyChange(button: HTMLButtonElement): void {
 		const observer = new MutationObserver(mutations => {
-			const mutation = mutations.map(() => button.getAttribute('aria-describedby')).find(aria => aria.includes('cdk-describedby-message'));
+			const mutation = mutations
+				.map(() => button.getAttribute('aria-describedby'))
+				.find(aria => aria.includes('cdk-describedby-message'));
 			if (mutation) {
 				observer.disconnect();
 				this.adaptAriaAttributes(mutation);

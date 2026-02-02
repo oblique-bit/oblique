@@ -1,7 +1,7 @@
 // @ts-check
 export default [
 	{
-		ignores: ['projects/oblique/styles/**/*', 'schematics/**/*.js']
+		ignores: ['projects/oblique/styles/**/*', 'schematics/**/*.js'],
 	},
 	{
 		files: ['projects/oblique/**/*.ts'],
@@ -11,8 +11,8 @@ export default [
 				{
 					type: 'attribute',
 					prefix: 'ob',
-					style: 'camelCase'
-				}
+					style: 'camelCase',
+				},
 			],
 
 			'@angular-eslint/component-selector': [
@@ -20,8 +20,8 @@ export default [
 				{
 					type: 'element',
 					prefix: 'ob',
-					style: 'kebab-case'
-				}
+					style: 'kebab-case',
+				},
 			],
 
 			'@angular-eslint/use-component-view-encapsulation': 'off',
@@ -31,6 +31,7 @@ export default [
 			'@angular-eslint/component-max-inline-declarations': 'off',
 			'@angular-eslint/consistent-component-styles': 'off',
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'off',
+			'@angular-eslint/prefer-inject': 'off',
 			'@angular-eslint/prefer-output-emitter-ref': 'off',
 			'@angular-eslint/prefer-signals': 'off',
 			'@angular-eslint/prefer-standalone': 'off',
@@ -47,14 +48,18 @@ export default [
 				// rules that are not respected
 				{selector: 'variable', format: ['camelCase', 'UPPER_CASE']},
 				{selector: 'variable', format: ['PascalCase'], filter: '^(?:CookiesMock|ObTBreadcrumbConfig|ObliquePackage)$'},
-				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER)|^(?:ABN|TEST|DEV|REF|LOCAL)$'},
+				{
+					selector: 'objectLiteralProperty',
+					format: ['UPPER_CASE'],
+					filter: '^(?:MAT|STEPPER)|^(?:ABN|TEST|DEV|REF|LOCAL)$',
+				},
 				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:LABEL_FORMATTER|HIGHLIGHT|VARIANT)'},
 				{selector: 'objectLiteralMethod', format: null, modifiers: ['requiresQuotes']},
 				{selector: 'typeProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER)'},
 				{selector: 'typeAlias', format: ['camelCase'], filter: '^versionFunc$'},
 				{selector: 'parameter', format: ['PascalCase'], filter: '^CookiesMock$'},
 				{selector: 'classProperty', format: ['camelCase', 'UPPER_CASE']},
-				{selector: 'import', format: null}
+				{selector: 'import', format: null},
 			],
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-dynamic-delete': 'off',
@@ -80,21 +85,22 @@ export default [
 			'no-duplicate-imports': 'off',
 			'no-implicit-coercion': 'off',
 			'no-warning-comments': 'off',
-			'require-unicode-regexp': 'off'
-		}
+			'require-unicode-regexp': 'off',
+		},
 	},
 	{
 		files: ['projects/oblique/**/*.decorator.ts'],
 		rules: {
-			'max-lines-per-function': 'off'
-		}
+			'max-lines-per-function': 'off',
+		},
 	},
 	{
 		files: ['projects/oblique/**/mock-*.ts'],
 		rules: {
 			'@typescript-eslint/no-unused-vars': 'off',
-			'@typescript-eslint/no-empty-function': 'off'
-		}
+			'@typescript-eslint/no-empty-function': 'off',
+			'@typescript-eslint/no-unused-private-class-members': 'off',
+		},
 	},
 	{
 		files: ['projects/oblique/schematics/**/*.ts'],
@@ -104,8 +110,8 @@ export default [
 			'max-lines': 'off',
 			'max-lines-per-function': 'off',
 			'max-statements': 'off',
-			'no-param-reassign': 'off'
-		}
+			'no-param-reassign': 'off',
+		},
 	},
 	{
 		files: ['projects/oblique/**/*.html'],
@@ -116,36 +122,35 @@ export default [
 			'@angular-eslint/template/cyclomatic-complexity': 'off',
 			'@angular-eslint/template/no-call-expression': 'off',
 			'@angular-eslint/template/no-inline-styles': 'off',
-			'@angular-eslint/template/prefer-control-flow': 'off',
-			'@angular-eslint/template/use-track-by-function': 'off'
-		}
+			'@angular-eslint/template/use-track-by-function': 'off',
+		},
 	},
 	{
 		files: ['projects/oblique/src/lib/**/*.spec.ts'],
 		rules: {
 			// rules that are not respected
-			'@typescript-eslint/ban-ts-comment': 'off'
-		}
+			'@typescript-eslint/ban-ts-comment': 'off',
+		},
 	},
 	{
 		files: ['projects/oblique/src/lib/collapse/collapse.component.spec.ts'],
 		rules: {
 			// rules that are not respected
-			'@typescript-eslint/prefer-destructuring': 'off'
-		}
+			'@typescript-eslint/prefer-destructuring': 'off',
+		},
 	},
 	{
 		files: ['projects/oblique/src/lib/nav-tree/*.ts'],
 		rules: {
 			// rules that are not respected
-			'new-cap': 'off'
-		}
+			'new-cap': 'off',
+		},
 	},
 	{
 		files: ['projects/oblique/schematics/index/utils.ts'],
 		rules: {
 			// rules that are not respected
-			'@typescript-eslint/no-require-imports': 'off'
-		}
-	}
+			'@typescript-eslint/no-require-imports': 'off',
+		},
+	},
 ];

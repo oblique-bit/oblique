@@ -11,10 +11,12 @@ export class ObUnsavedChangesService {
 	private readonly window = inject(WINDOW);
 
 	constructor(
-		private readonly obGlobalEventsService: ObGlobalEventsService,
+		obGlobalEventsService: ObGlobalEventsService,
 		private readonly translateService: TranslateService
 	) {
-		obGlobalEventsService.beforeUnload$.subscribe(event => this.onUnload(event));
+		obGlobalEventsService.beforeUnload$.subscribe(event => {
+			this.onUnload(event);
+		});
 	}
 
 	watch(formId: string, form: ControlContainer): void {
@@ -47,7 +49,8 @@ export class ObUnsavedChangesService {
 
 	private hasPendingChanges(ids: string[] = Object.keys(this.controlContainer)): boolean {
 		const includesPendingChanges =
-			Object.keys(this.controlContainer).filter(formId => ids.includes(formId) && this.controlContainer[formId].dirty).length > 0;
+			Object.keys(this.controlContainer).filter(formId => ids.includes(formId) && this.controlContainer[formId].dirty)
+				.length > 0;
 		return this.isActive && includesPendingChanges;
 	}
 

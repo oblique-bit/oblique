@@ -1,7 +1,6 @@
 import {
 	Component,
 	DOCUMENT,
-	HostListener,
 	type OnChanges,
 	type OnInit,
 	type SimpleChange,
@@ -11,7 +10,7 @@ import {
 	inject,
 	input,
 	numberAttribute,
-	output
+	output,
 } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -21,7 +20,7 @@ import {
 	ObEPamsEnvironment,
 	type ObIServiceNavigationContact,
 	type ObIServiceNavigationLink,
-	type ObLoginState
+	type ObLoginState,
 } from '../../../oblique/src/lib/service-navigation/service-navigation.model';
 import {appVersion} from './version';
 import type {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
@@ -33,17 +32,34 @@ import {outputFromObservable} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ob-service-navigation-web-component',
-	imports: [ObServiceNavigationModule, MatButtonModule, MatTooltipModule, MatIconModule, MatBadgeModule, ObButtonModule],
+	imports: [
+		ObServiceNavigationModule,
+		MatButtonModule,
+		MatTooltipModule,
+		MatIconModule,
+		MatBadgeModule,
+		ObButtonModule,
+	],
 	templateUrl: './service-navigation-web-component.component.html',
 	styleUrls: [
 		'./service-navigation-web-component.component.scss',
 		'../../../oblique/src/styles/scss/oblique-material.scss',
 		'../../../oblique/src/styles/scss/core/components/_popover.scss',
-		'../../../oblique/src/styles/scss/core/components/_external-link.scss'
+		'../../../oblique/src/styles/scss/core/components/_external-link.scss',
 	],
-	encapsulation: ViewEncapsulation.None,
 	providers: [TranslationsService],
-	host: {'ob-version': appVersion}
+	encapsulation: ViewEncapsulation.None,
+	host: {
+		'(window:keydown)': 'removeOutline()',
+		'(window:keydown.arrowDown)': 'addOutline()',
+		'(window:keydown.arrowLeft)': 'addOutline()',
+		'(window:keydown.arrowRight)': 'addOutline()',
+		'(window:keydown.arrowUp)': 'addOutline()',
+		'(window:keydown.shift.tab)': 'addOutline()',
+		'(window:keydown.tab)': 'addOutline()',
+		'(window:mousedown)': 'removeOutline()',
+		'ob-version': appVersion,
+	},
 })
 export class ObServiceNavigationWebComponentComponent implements OnChanges, OnInit {
 	readonly languageList = input<string>(undefined);
@@ -57,10 +73,6 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	readonly infoLinks = input<string>(undefined);
 	readonly useInfoBackend = input(false, {transform: booleanAttribute});
 	readonly profileLinks = input<string>(undefined);
-	/**
-	 * @deprecated since Oblique 13.3.2. It will be removed in the next major version.
-	 */
-	readonly maxLastUsedApplications = input(3, {transform: numberAttribute});
 	readonly maxFavoriteApplications = input(8, {transform: numberAttribute});
 	readonly displayLanguages = input(true, {transform: booleanAttribute});
 	readonly displayMessage = input(true, {transform: booleanAttribute});
@@ -87,18 +99,10 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 	private readonly translationService = inject(TranslationsService);
 	private readonly document = inject(DOCUMENT);
 
-	@HostListener('window:mousedown')
-	@HostListener('window:keydown')
 	removeOutline(): void {
 		this.document.querySelector('ob-service-navigation-web-component').classList.remove('ob-outline');
 	}
 
-	@HostListener('window:keydown.tab')
-	@HostListener('window:keydown.shift.tab')
-	@HostListener('window:keydown.arrowUp')
-	@HostListener('window:keydown.arrowDown')
-	@HostListener('window:keydown.arrowRight')
-	@HostListener('window:keydown.arrowLeft')
 	addOutline(): void {
 		this.document.querySelector('ob-service-navigation-web-component').classList.add('ob-outline');
 	}
@@ -128,7 +132,7 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		let result: unknown = null;
 		try {
 			result = JSON.parse(attributeValue || fallback);
-		} catch (err) {
+		} catch {
 			this.invalidAttributeValue(attributeName);
 		}
 
@@ -158,12 +162,13 @@ export class ObServiceNavigationWebComponentComponent implements OnChanges, OnIn
 		const links = this.parseRawLinks(rawLinks.currentValue, type);
 		return links.map((link, index) => ({
 			url: `${type}-link.${index}.url`,
-			label: `${type}-link.${index}.label`
+			label: `${type}-link.${index}.label`,
 		}));
 	}
 
 	private parseRawLinks(links: unknown, type: 'info' | 'profile'): ObILink[] {
-		const parsedLinks: unknown = typeof links === 'string' ? this.parseAttributeValue(`${type}-links`, links, '[]') : [];
+		const parsedLinks: unknown =
+			typeof links === 'string' ? this.parseAttributeValue(`${type}-links`, links, '[]') : [];
 		return Array.isArray(parsedLinks) ? parsedLinks : [];
 	}
 

@@ -11,5 +11,5 @@ export enum ObECategory {
 	SOCIAL_MEDIA = 'Social media',
 	CONTENT_AND_FILES = 'Content and files',
 	MEDIA_PLAYER = 'Media player',
-	DEPRECATED_ICONS = 'Deprecated icons'
+	DEPRECATED_ICONS = 'Deprecated icons',
 }

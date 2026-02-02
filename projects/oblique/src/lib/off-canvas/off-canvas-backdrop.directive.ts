@@ -1,4 +1,4 @@
-import {Directive, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
 
 import {ObOffCanvasService} from './off-canvas.service';
 import {filter, takeUntil} from 'rxjs/operators';
@@ -8,7 +8,10 @@ import {Subject} from 'rxjs';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '.ob-off-canvas-backdrop',
-	standalone: true
+	standalone: true,
+	host: {
+		'(click)': 'close()',
+	},
 })
 export class ObOffCanvasBackdropDirective implements OnInit, OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
@@ -18,7 +21,6 @@ export class ObOffCanvasBackdropDirective implements OnInit, OnDestroy {
 		private readonly globalEventsService: ObGlobalEventsService
 	) {}
 
-	@HostListener('click')
 	close(): void {
 		this.offCanvas.open = false;
 	}

@@ -4,7 +4,6 @@ import {
 	ContentChildren,
 	ElementRef,
 	EventEmitter,
-	HostBinding,
 	Inject,
 	Input,
 	OnDestroy,
@@ -13,21 +12,21 @@ import {
 	QueryList,
 	TemplateRef,
 	ViewChildren,
-	ViewEncapsulation
+	ViewEncapsulation,
 } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {OB_BANNER, OB_PAMS_CONFIGURATION, WINDOW} from '../../utilities';
+import {OB_BANNER, OB_PAMS_CONFIGURATION} from '../../utilities';
 import {ObIBanner, ObIPamsConfiguration} from '../../utilities.model';
 import {
 	ObEEnvironment,
 	ObEMasterLayoutEventValues,
 	ObIMasterLayoutEvent,
 	ObINavigationLink,
-	ObIServiceNavigationConfig
+	ObIServiceNavigationConfig,
 } from '../master-layout.model';
 import {ObEColor} from '../../style/colors.model';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
@@ -38,7 +37,10 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header-controls.component.scss'],
 	encapsulation: ViewEncapsulation.None,
-	host: {class: 'ob-master-layout-header'}
+	host: {
+		'[class.ob-master-layout-header-small]': 'isSmall',
+		class: 'ob-master-layout-header',
+	},
 })
 export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	home$: Observable<string>;
@@ -47,7 +49,7 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	serviceNavigationConfig: ObIServiceNavigationConfig;
 	@Input() navigation: ObINavigationLink[];
 	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
-	@HostBinding('class.ob-master-layout-header-small') isSmall = this.masterLayout.header.isSmall;
+	isSmall = this.masterLayout.header.isSmall;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<unknown>>;
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<unknown>>;
@@ -58,8 +60,6 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	constructor(
 		private readonly masterLayout: ObMasterLayoutService,
 		private readonly config: ObMasterLayoutConfig,
-		private readonly el: ElementRef,
-		@Inject(WINDOW) private readonly window: Window,
 		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner,
 		@Inject(OB_PAMS_CONFIGURATION) @Optional() public readonly pamsConfiguration: ObIPamsConfiguration
 	) {
@@ -94,7 +94,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_CUSTOM),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isCustom = event.value));
+			.subscribe(event => {
+				this.isCustom = event.value;
+			});
 	}
 
 	private smallChange(): void {
@@ -103,7 +105,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_SMALL),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.isSmall = event.value));
+			.subscribe(event => {
+				this.isSmall = event.value;
+			});
 	}
 
 	private serviceNavigationConfiguration(): void {
@@ -112,7 +116,9 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION),
 				takeUntil(this.unsubscribe)
 			)
-			.subscribe(event => (this.serviceNavigationConfig = event.config));
+			.subscribe(event => {
+				this.serviceNavigationConfig = event.config;
+			});
 	}
 
 	private initializeBanner(bannerToken): ObIBanner {

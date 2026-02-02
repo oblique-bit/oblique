@@ -12,11 +12,11 @@ describe(FeedbackFormComponent.name, () => {
 
 	beforeEach(async () => {
 		dialogRef = {
-			close: jest.fn()
+			close: jest.fn(),
 		};
 		await TestBed.configureTestingModule({
 			imports: [MatDialogModule],
-			providers: [{provide: MAT_DIALOG_DATA, useValue: {}}, {provide: MatDialogRef, useValue: dialogRef}, MatDialog]
+			providers: [{provide: MAT_DIALOG_DATA, useValue: {}}, {provide: MatDialogRef, useValue: dialogRef}, MatDialog],
 		}).compileComponents();
 		fixture = TestBed.createComponent(FeedbackFormComponent);
 		component = fixture.componentInstance;

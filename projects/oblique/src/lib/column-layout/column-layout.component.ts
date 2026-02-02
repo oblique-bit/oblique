@@ -4,7 +4,6 @@ import {
 	Component,
 	DoCheck,
 	ElementRef,
-	HostBinding,
 	Inject,
 	Input,
 	OnChanges,
@@ -13,7 +12,7 @@ import {
 	Renderer2,
 	ViewChild,
 	ViewChildren,
-	ViewEncapsulation
+	ViewEncapsulation,
 } from '@angular/core';
 import {combineLatestWith, delay, distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
@@ -27,17 +26,20 @@ import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.
 	templateUrl: './column-layout.component.html',
 	styleUrls: ['./column-layout.component.scss'],
 	encapsulation: ViewEncapsulation.None,
+	host: {
+		'[class.ob-no-layout]': 'noLayout',
+		'[class.ob-wider-columns]': 'wider',
+		class: 'ob-column-layout',
+	},
 	exportAs: 'obColumnLayout',
-	host: {class: 'ob-column-layout'}
 })
 /* A warning is given by eslint when using both DoCheck and OnChanges to prevent checking @Input changes in the DoCheck hook.
 	As long as the OnChanges lifecycle exclusively deals with @Input changes this warning isn't necessary. */
-/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy, OnChanges {
 	@Input() left: ObTColumnState = 'OPENED';
 	@Input() right: ObTColumnState = 'OPENED';
-	@Input() @HostBinding('class.ob-wider-columns') wider = false;
-	@Input() @HostBinding('class.ob-no-layout') noLayout = false;
+	@Input() wider = false;
+	@Input() noLayout = false;
 	toggleLeftIcon$: Observable<ObIToggleDirection>;
 	toggleRightIcon$: Observable<ObIToggleDirection>;
 	@ViewChild('columnLeft') private readonly columnLeft: ObColumnPanelDirective;
@@ -103,7 +105,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 			combineLatestWith(this.getHeaderHeightObservable()),
 			map(([dimension, headerHeight]) => ({
 				...dimension,
-				headerHeight
+				headerHeight,
 			})),
 			takeUntil(this.unsubscribe)
 		);
@@ -126,7 +128,9 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		// this ensures a value is emitted even when the master layout isn't there
 		const headerHeight$ = new BehaviorSubject<number>(0);
 		this.observer = new ResizeObserver(entries => headerHeight$.next(entries[0].contentRect.height));
-		this.observer.observe(this.getMasterLayout(this.el.nativeElement.parentElement).querySelector('.ob-master-layout-header'));
+		this.observer.observe(
+			this.getMasterLayout(this.el.nativeElement.parentElement).querySelector('.ob-master-layout-header')
+		);
 
 		return headerHeight$;
 	}

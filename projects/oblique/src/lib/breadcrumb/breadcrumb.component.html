@@ -1,30 +1,32 @@
 <nav [attr.aria-label]="'i18n.oblique.breadcrumb' | translate">
 	<ol class="ob-breadcrumbs">
-		<li *ngFor="let crumb of breadcrumbs$ | async; last as isLast">
-			<ng-container *ngIf="!isLast">
-				<a
-					class="ob-breadcrumb-label"
-					#element
-					[routerLink]="crumb.url"
-					[style.max-width]="maxWidth"
-					[matTooltip]="crumb.label | translate"
-					[obEllipsisTooltip]="crumb.label | translate"
-				>
-					{{ crumb.label | translate }}</a
-				>
-				<span class="ob-breadcrumb-separator ob-icon-text"><mat-icon svgIcon="chevron_right-small" /></span>
-			</ng-container>
-
-			<span
-				aria-current="page"
-				class="ob-breadcrumb-label"
-				[style.max-width]="maxWidth"
-				*ngIf="isLast"
-				[matTooltip]="crumb.label | translate"
-				[obEllipsisTooltip]="crumb.label | translate"
-			>
-				{{ crumb.label | translate }}
-			</span>
-		</li>
+		@for (crumb of breadcrumbs$ | async; track crumb) {
+			<li>
+				@if (!$last) {
+					<a
+						class="ob-breadcrumb-label"
+						#element
+						[routerLink]="crumb.url"
+						[style.max-width]="maxWidth"
+						[matTooltip]="crumb.label | translate"
+						[obEllipsisTooltip]="crumb.label | translate"
+					>
+						{{ crumb.label | translate }}</a
+					>
+					<span class="ob-breadcrumb-separator ob-icon-text"><mat-icon svgIcon="chevron_right_small" /></span>
+				}
+				@if ($last) {
+					<span
+						aria-current="page"
+						class="ob-breadcrumb-label"
+						[style.max-width]="maxWidth"
+						[matTooltip]="crumb.label | translate"
+						[obEllipsisTooltip]="crumb.label | translate"
+					>
+						{{ crumb.label | translate }}
+					</span>
+				}
+			</li>
+		}
 	</ol>
 </nav>

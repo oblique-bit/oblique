@@ -14,7 +14,9 @@ export class PackageJson extends StaticScript {
 		PackageJson.instance = new PackageJson();
 		const subPath = folder ? `${projectName}/${folder}` : projectName;
 		(PackageJson.instance as PackageJson).path = `../../dist/${subPath}/package.json`;
-		(PackageJson.instance as PackageJson).content = Files.readJson((PackageJson.instance as PackageJson).path) as PackageJsonContent;
+		(PackageJson.instance as PackageJson).content = Files.readJson(
+			(PackageJson.instance as PackageJson).path
+		) as PackageJsonContent;
 		return PackageJson.instance as PackageJson;
 	}
 
@@ -23,7 +25,9 @@ export class PackageJson extends StaticScript {
 		const rootPackage = PackageJson.readRootPackageJson();
 		Object.keys(rootPackage)
 			.filter(key => fields.includes(key))
-			.forEach(key => (this.content[key] = rootPackage[key]));
+			.forEach(key => {
+				this.content[key] = rootPackage[key];
+			});
 		return PackageJson.instance as PackageJson;
 	}
 
@@ -32,7 +36,9 @@ export class PackageJson extends StaticScript {
 		const rootPackage = PackageJson.readRootPackageJson() as {dependencies: Record<string, string>};
 		Object.entries(rootPackage.dependencies)
 			.filter(([key]) => dependencies.includes(key))
-			.forEach(([key, value]) => (this.content.dependencies[key] = value));
+			.forEach(([key, value]) => {
+				this.content.dependencies[key] = value;
+			});
 		return PackageJson.instance as PackageJson;
 	}
 
@@ -40,14 +46,16 @@ export class PackageJson extends StaticScript {
 		Log.info(`Add export property to the distributed package.json`);
 		this.content.exports = {
 			...(this.content.exports as object),
-			...Object.keys(fields).reduce<ExportEntries>((exports, field) => ({...exports, [field]: fields[field]}), {})
+			...Object.keys(fields).reduce<ExportEntries>((exports, field) => ({...exports, [field]: fields[field]}), {}),
 		};
 		return PackageJson.instance as PackageJson;
 	}
 
 	removeDependencies(dependencyType: 'devDependencies' | 'dependencies', ...dependencyNames: string[]): PackageJson {
 		Log.info(`Remove ${humanizeList(dependencyNames)} ${dependencyType} from the distributed package.json`);
-		dependencyNames.forEach(dependencyName => delete this.content[dependencyType][dependencyName]);
+		dependencyNames.forEach(dependencyName => {
+			delete this.content[dependencyType][dependencyName];
+		});
 		if (!Object.keys(this.content[dependencyType]).length) {
 			delete this.content[dependencyType];
 		}

@@ -6,37 +6,42 @@ export {
 	ObAuthenticationModule,
 	ObAuthenticationService,
 	ObAuthenticationConfigService,
-	ObIResourceAccessRoles
+	ObIResourceAccessRoles,
 } from './lib/authentication/authentication.module';
-export {ObBreadcrumbModule, ObBreadcrumbComponent, ObTBreadcrumbConfig, ObBreadcrumbConfig} from './lib/breadcrumb/breadcrumb.module';
+export {
+	ObBreadcrumbModule,
+	ObBreadcrumbComponent,
+	ObTBreadcrumbConfig,
+	ObBreadcrumbConfig,
+} from './lib/breadcrumb/breadcrumb.module';
 export {ObButtonDirective, ObButtonModule, ObIconButtonDirective} from './lib/button/button.module';
 export {
 	ObCollapseComponent,
 	ObCollapseModule,
 	OBLIQUE_COLLAPSE_ACTIVE,
 	OBLIQUE_COLLAPSE_ICON_POSITION,
-	OBLIQUE_COLLAPSE_DURATION
+	OBLIQUE_COLLAPSE_DURATION,
 } from './lib/collapse/collapse.module';
 export {
 	ObColumnLayoutModule,
 	ObColumnLayoutComponent,
 	ObColumnToggleDirective,
 	ObColumnPanelDirective,
-	ObTColumnState
+	ObTColumnState,
 } from './lib/column-layout/column-layout.module';
 export {ObDocumentMetaService, ObDocumentMetaModule} from './lib/document-meta/document-meta.module';
 export {
 	ObMatErrorDirective,
 	ObErrorMessagesDirective,
 	ObErrorMessagesModule,
-	ObErrorMessagesService
+	ObErrorMessagesService,
 } from './lib/error-messages/error-messages.module';
 export {
 	ObExternalLinkModule,
 	ObExternalLinkDirective,
 	EXTERNAL_LINK,
 	ObIExternalLink,
-	ObEExternalLinkIcon
+	ObEExternalLinkIcon,
 } from './lib/external-link/external-link.module';
 export {ObDatepickerModule} from './lib/datepicker/ob-datepicker.module';
 export {
@@ -47,7 +52,7 @@ export {
 	ObFileUploadComponent,
 	ObFileInfoComponent,
 	ObIUploadEvent,
-	ObIFileDescription
+	ObIFileDescription,
 } from './lib/file-upload/file-upload.module';
 export {ObFocusInvalidModule, ObFocusInvalidDirective} from './lib/focus-invalid/focus-invalid.module';
 export {
@@ -56,14 +61,14 @@ export {
 	ObEPamsEnvironment,
 	ObIServiceNavigationLink,
 	ObIServiceNavigationContact,
-	ObLoginState
+	ObLoginState,
 } from './lib/service-navigation';
 export {ObStepperIntlService} from './lib/stepper/ob-stepper.service';
 export {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
 	ObHttpApiInterceptorEvents,
-	ObIHttpApiRequest
+	ObIHttpApiRequest,
 } from './lib/http-api-interceptor/index';
 export {ObIconModule, ObIconService, ObIconConfig, ObEIcon} from './lib/icon/icon.module';
 export {ObLanguageModule, ObDatePipe, ObDateComponent, ObDateFormat} from './lib/language/language.module';
@@ -86,7 +91,7 @@ export {
 	ObINavigationLink,
 	ObISkipLink,
 	ObOutlineDirective,
-	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION
+	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 } from './lib/master-layout/master-layout.module';
 export {ObNavTreeComponent, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
 export {ObNestedFormModule, ObNestedFormComponent, ObParentFormDirective} from './lib/nested-form/nested-form.module';
@@ -100,7 +105,7 @@ export {
 	ObENotificationType,
 	ObENotificationPlacement,
 	ObINotificationConfig,
-	ObINotification
+	ObINotification,
 } from './lib/notification/notification.module';
 export {ObAlertComponent, ObIAlertType, ObAlertModule, OBLIQUE_HAS_ROLE_ALERT} from './lib/alert/alert.module';
 export {ObNumberFormatDirective, ObNumberFormatModule} from './lib/number-format/number-format.module';
@@ -109,14 +114,14 @@ export {
 	ObOffCanvasContainerDirective,
 	ObOffCanvasModule,
 	ObOffCanvasService,
-	ObOffCanvasToggleDirective
+	ObOffCanvasToggleDirective,
 } from './lib/off-canvas/off-canvas.module';
 export {
 	ObPopoverModule,
 	ObPopoverDirective,
 	OBLIQUE_POPOVER_TOGGLE_HANDLE,
 	OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE,
-	ObEToggleType
+	ObEToggleType,
 } from './lib/popover/popover.module';
 export {obPauseWhenPageHidden} from './lib/rxjs-operators';
 export {
@@ -126,10 +131,14 @@ export {
 	ObSchemaValidationDirective,
 	ObSchemaValidationModule,
 	ObSchemaValidationService,
-	ObSchemaValidatorInstance
+	ObSchemaValidatorInstance,
 } from './lib/schema-validation/schema-validation.module';
 export {ObScrollingModule, ObTopControlComponent} from './lib/scrolling/scrolling.module';
-export {ObSelectableDirective, ObSelectableModule, ObSelectableGroupDirective} from './lib/selectable/selectable.module';
+export {
+	ObSelectableDirective,
+	ObSelectableModule,
+	ObSelectableGroupDirective,
+} from './lib/selectable/selectable.module';
 export {ObISpinnerEvent, ObSpinnerComponent, ObSpinnerModule, ObSpinnerService} from './lib/spinner/spinner.module';
 export {ObInputClearDirective, ObInputClearModule} from './lib/input-clear/input-clear.module';
 export {ObTranslateParamsModule, ObTranslateParamsPipe} from './lib/translate-params/translate-params.module';
@@ -138,7 +147,7 @@ export {
 	ObUnsavedChangesDirective,
 	ObUnsavedChangesGuard,
 	ObUnsavedChangesModule,
-	ObUnsavedChangesService
+	ObUnsavedChangesService,
 } from './lib/unsaved-changes/unsaved-changes.module';
 export {
 	OB_BANNER,
@@ -147,9 +156,14 @@ export {
 	provideObliqueTestingConfiguration,
 	provideObliqueTranslations,
 	obFocusWithOutline,
-	WINDOW
+	WINDOW,
 } from './lib/utilities';
-export {ObIBanner, ObIMaterialConfig, ObIObliqueConfiguration, ObIAccessibilityStatementConfiguration} from './lib/utilities.model';
+export {
+	ObIBanner,
+	ObIMaterialConfig,
+	ObIObliqueConfiguration,
+	ObIAccessibilityStatementConfiguration,
+} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
@@ -162,6 +176,6 @@ export {
 	ObAutocompleteModule,
 	ObIAutocompleteInputOption,
 	ObIAutocompleteInputOptionGroup,
-	OptionLabelIconPosition
+	OptionLabelIconPosition,
 } from './lib/autocomplete/autocomplete.module';
 export {ObPaginatorService} from './lib/paginator/ob-paginator.service';

@@ -9,7 +9,7 @@ describe('index.ts', () => {
 		encoding: 'utf-8',
 		stdio: 'pipe',
 		shell: true,
-		cwd: workingDirectory
+		cwd: workingDirectory,
 	} as SpawnSyncOptions;
 
 	describe('Oblique CLI with spawnSync', () => {
@@ -39,7 +39,7 @@ describe('index.ts', () => {
 
 		describe.each([
 			{correctOption: '--help', wrongOption: '--holp'},
-			{correctOption: '--version', wrongOption: '--vorsion'}
+			{correctOption: '--version', wrongOption: '--vorsion'},
 		])(`Wrong Option $wrongOption instead of $correctOption`, ({wrongOption, correctOption}) => {
 			test(`show suggestion "(Did you mean ${correctOption}?)"`, () => {
 				const result = spawnSync('ts-node', [cliPath, wrongOption], options);
@@ -67,7 +67,9 @@ describe('index.ts', () => {
 		describe('an informative error is displayed when you try to execute an unknown command', () => {
 			test('display an error', () => {
 				const result = spawnSync('ts-node', [cliPath, 'nwe'], options);
-				expect(result.stderr).toBe('Unknown command: "nwe"\n\nTo see a list of supported oblique cli commands, run:\n  ob --help\n');
+				expect(result.stderr).toBe(
+					'Unknown command: "nwe"\n\nTo see a list of supported oblique cli commands, run:\n  ob --help\n'
+				);
 			});
 		});
 

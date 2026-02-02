@@ -23,14 +23,18 @@ export class CodeExamples {
 				return require(`!!raw-loader!../../../../../node_modules/@oblique/oblique/src/styles/scss/core/${filePath}`);
 			}
 			case 'node_modules/@oblique/oblique/src/styles/scss/core/mixins': {
-				return require(`!!raw-loader!../../../../../node_modules/@oblique/oblique/src/styles/scss/core/mixins/${filePath}`);
+				return require(
+					`!!raw-loader!../../../../../node_modules/@oblique/oblique/src/styles/scss/core/mixins/${filePath}`
+				);
 			}
 			case 'code-examples': {
 				const fileContent = require(`!!raw-loader!./${filePath}`) as {default: string};
 				return {default: this.fixPath(filePath.split('.').pop(), fileContent.default ?? '')};
 			}
 			default: {
-				const fileContent = require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`) as {default: string};
+				const fileContent = require(`!!raw-loader!./code-examples/${directory}/previews/${filePath}`) as {
+					default: string;
+				};
 				return {default: this.fixPath(filePath.split('.').pop(), fileContent.default ?? '')};
 			}
 		}

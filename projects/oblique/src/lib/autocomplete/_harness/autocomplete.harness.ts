@@ -1,4 +1,10 @@
-import {AsyncFactoryFn, BaseHarnessFilters, ContentContainerComponentHarness, HarnessPredicate, TestElement} from '@angular/cdk/testing';
+import {
+	AsyncFactoryFn,
+	BaseHarnessFilters,
+	ContentContainerComponentHarness,
+	HarnessPredicate,
+	TestElement,
+} from '@angular/cdk/testing';
 import {MatInputHarness} from '@angular/material/input/testing';
 import {MatFormFieldHarness} from '@angular/material/form-field/testing';
 
@@ -7,14 +13,17 @@ export class ObAutocompleteHarness extends ContentContainerComponentHarness {
 
 	protected getFormField: AsyncFactoryFn<TestElement> = this.locatorFor('mat-form-field');
 	protected getOptions: AsyncFactoryFn<TestElement[]> = this.documentRootLocatorFactory().locatorForAll('mat-option');
-	protected getOptionGroup: AsyncFactoryFn<TestElement[]> = this.documentRootLocatorFactory().locatorForAll('mat-optgroup');
+	protected getOptionGroup: AsyncFactoryFn<TestElement[]> =
+		this.documentRootLocatorFactory().locatorForAll('mat-optgroup');
 
 	static with(options: ObAutocompleteFilters): HarnessPredicate<ObAutocompleteHarness> {
 		return new HarnessPredicate<ObAutocompleteHarness>(ObAutocompleteHarness, options)
 			.addOption('text in input value', options.searchText, (harness, text) =>
 				HarnessPredicate.stringMatches(harness.getInputValue(), text)
 			)
-			.addOption('label of form-field', options.formLabel, (harness, text) => HarnessPredicate.stringMatches(harness.getFormLabel(), text));
+			.addOption('label of form-field', options.formLabel, (harness, text) =>
+				HarnessPredicate.stringMatches(harness.getFormLabel(), text)
+			);
 	}
 
 	async getFormLabel(): Promise<string> {

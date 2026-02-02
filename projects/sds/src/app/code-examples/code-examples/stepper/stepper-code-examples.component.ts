@@ -11,7 +11,7 @@ import {StepperExampleErrorPreviewComponent} from '../stepper/previews/error/ste
 	selector: 'app-code-example-stepper',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepperCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'stepper-examples';
@@ -23,8 +23,8 @@ export class StepperCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('stepper', 'default/stepper-example-default-preview.component.html', 'HTML'),
 				this.getSnippet('stepper', 'default/stepper-example-default-preview.component.ts', 'TS'),
-				this.getSnippet('stepper', 'default/stepper-example-default-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('stepper', 'default/stepper-example-default-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: StepperExampleOtherOptionsPreviewComponent,
@@ -33,8 +33,8 @@ export class StepperCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('stepper', 'other-options/stepper-example-other-options-preview.component.html', 'HTML'),
 				this.getSnippet('stepper', 'other-options/stepper-example-other-options-preview.component.ts', 'TS'),
-				this.getSnippet('stepper', 'other-options/stepper-example-other-options-preview.component.scss', 'SCSS')
-			]
+				this.getSnippet('stepper', 'other-options/stepper-example-other-options-preview.component.scss', 'SCSS'),
+			],
 		},
 		{
 			component: StepperExampleErrorPreviewComponent,
@@ -42,8 +42,8 @@ export class StepperCodeExamplesComponent extends CodeExamples {
 			title: 'Error icon',
 			snippets: [
 				this.getSnippet('stepper', 'error/stepper-example-error-preview.component.html', 'HTML'),
-				this.getSnippet('stepper', 'error/stepper-example-error-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('stepper', 'error/stepper-example-error-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

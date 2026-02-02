@@ -1,20 +1,15 @@
 import {Component} from '@angular/core';
-import {ObEUploadEventType, ObFileUploadModule, type ObIUploadEvent} from '@oblique/oblique';
-import {mockUrls} from '../../file-upload-simulate-interceptor';
-import {uploadInterceptor} from '../../../../../../main';
+import {ObFileUploadModule} from '@oblique/oblique';
+import {mockDeleteURL, mockGetUploadedFilesURL, mockUploadURL} from '../../file-upload-simulate-interceptor';
 
 @Component({
 	selector: 'app-file-upload-fully-functioning-preview',
 	imports: [ObFileUploadModule],
 	templateUrl: './file-upload-fully-functioning-preview.component.html',
-	styleUrl: '../../../../code-example-flex-layout.scss'
+	styleUrl: '../../../../code-example-flex-layout.scss',
 })
 export class FileUploadFullyFunctioningPreviewComponent {
-	mockUrls = mockUrls;
-
-	checkForCanceledUploads(event: ObIUploadEvent): void {
-		if (event.type === ObEUploadEventType.CANCELED) {
-			uploadInterceptor.mockCancel(event.files as File[], 0);
-		}
-	}
+	readonly uploadURL = `${mockUploadURL}/fully-functioning`;
+	readonly getUploadedFilesURL = `${mockGetUploadedFilesURL}/fully-functioning`;
+	readonly deleteURL = `${mockDeleteURL}/fully-functioning`;
 }

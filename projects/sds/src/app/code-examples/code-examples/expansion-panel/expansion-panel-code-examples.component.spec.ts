@@ -14,7 +14,7 @@ describe(ExpansionPanelCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ExpansionPanelCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent]
+			imports: [ExpansionPanelCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ExpansionPanelCodeExamplesComponent);
@@ -39,6 +39,8 @@ describe(ExpansionPanelCodeExamplesComponent.name, () => {
 	});
 
 	test(`that there is 1 ${ExpansionPanelExampleOtherOptionsPreviewComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ExpansionPanelExampleOtherOptionsPreviewComponent)).length).toBe(1);
+		expect(fixture.debugElement.queryAll(By.directive(ExpansionPanelExampleOtherOptionsPreviewComponent)).length).toBe(
+			1
+		);
 	});
 });

@@ -5,7 +5,7 @@ import type {ObIFileDescription, ObIUploadEvent} from '@oblique/oblique';
 	selector: 'sb-file-upload-sample',
 	standalone: false,
 	templateUrl: './file-upload-sample.component.html',
-	styleUrl: './file-upload-sample.component.scss'
+	styleUrl: './file-upload-sample.component.scss',
 })
 export class FileUploadSampleComponent {
 	uploadUrl: string;
@@ -22,7 +22,7 @@ export class FileUploadSampleComponent {
 		['.txt', '.ts'],
 		['.txt', '.ts', '.xlsx'],
 		['.txt', '.ts', '.xlsx', '.exe'],
-		['.txt', '.ts', '.cs', '.xlsx', '.exe', 'text/html', '.tgz', '.zip']
+		['.txt', '.ts', '.cs', '.xlsx', '.exe', 'text/html', '.tgz', '.zip'],
 	];
 	acceptFiles = this.acceptFilesOptions[0];
 

@@ -10,7 +10,7 @@ import {TranslationsExampleStackblitzLinkPreviewComponent} from '../translations
 	selector: 'app-code-example-translations',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TranslationsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'translations-examples';
@@ -18,7 +18,7 @@ export class TranslationsCodeExamplesComponent extends CodeExamples {
 		{
 			component: TranslationsExampleStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example'
+			title: 'Link to Stackblitz Example',
 		},
 		{
 			idParts: ['files'],
@@ -27,8 +27,8 @@ export class TranslationsCodeExamplesComponent extends CodeExamples {
 				this.getJsonSnippet('node_modules/@oblique/oblique/src/assets/i18n', 'oblique-de.json', 'oblique-de.json'),
 				this.getJsonSnippet('node_modules/@oblique/oblique/src/assets/i18n', 'oblique-en.json', 'oblique-en.json'),
 				this.getJsonSnippet('node_modules/@oblique/oblique/src/assets/i18n', 'oblique-fr.json', 'oblique-fr.json'),
-				this.getJsonSnippet('node_modules/@oblique/oblique/src/assets/i18n', 'oblique-it.json', 'oblique-it.json')
-			]
-		}
+				this.getJsonSnippet('node_modules/@oblique/oblique/src/assets/i18n', 'oblique-it.json', 'oblique-it.json'),
+			],
+		},
 	];
 }

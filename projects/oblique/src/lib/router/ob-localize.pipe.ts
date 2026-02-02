@@ -6,7 +6,7 @@ import {OB_HAS_LANGUAGE_IN_URL} from '../utilities';
 
 @Pipe({
 	name: 'obLocalize',
-	pure: false // eslint-disable-line @angular-eslint/no-pipe-impure
+	pure: false, // eslint-disable-line @angular-eslint/no-pipe-impure
 })
 export class ObLocalizePipe implements PipeTransform {
 	private readonly hasLanguageInUrl = inject(OB_HAS_LANGUAGE_IN_URL);
@@ -14,7 +14,7 @@ export class ObLocalizePipe implements PipeTransform {
 	private readonly currentLang = toSignal(
 		this.translate.onLangChange.pipe(
 			map(evt => evt.lang),
-			startWith(this.translate.currentLang)
+			startWith(this.translate.getCurrentLang())
 		)
 	);
 

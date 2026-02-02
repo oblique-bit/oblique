@@ -1,4 +1,4 @@
-<ng-container *ngIf="!showLoadingBox; else loading">
+@if (!showLoadingBox) {
 	<ob-drop-zone
 		[accept]="accept"
 		[maxFileSize]="maxFileSize"
@@ -6,9 +6,7 @@
 		[multiple]="multiple"
 		(uploadEvent)="processEvent($event)"
 	/>
-</ng-container>
-
-<ng-template #loading>
+} @else {
 	<ob-progress
 		[files]="files"
 		[singleRequest]="singleRequest"
@@ -16,4 +14,4 @@
 		[cancelConfirmation]="cancelConfirmation"
 		(uploadEvent)="processEvent($event)"
 	/>
-</ng-template>
+}

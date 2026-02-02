@@ -5,7 +5,7 @@ import {map, skip} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
-import {ObEPamsEnvironment, ObISectionLink} from './service-navigation.model';
+import {ObEPamsEnvironment, ObISectionLink, ObLoginState} from './service-navigation.model';
 import {ObIServiceNavigationBackendInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
@@ -29,12 +29,12 @@ describe('ObServiceNavigationService', () => {
 		login: {
 			url: 'http://login',
 			params: '?returnURL=<yourReturnURL>&language=<yourLanguageID>',
-			method: ''
+			method: '',
 		},
 		logout: {url: 'http://logout'},
 		settings: {url: 'http://settings'},
 		inboxMail: {url: 'http://inboxMail'},
-		allServices: {url: 'http://applications'}
+		allServices: {url: 'http://applications'},
 	};
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
@@ -54,30 +54,31 @@ describe('ObServiceNavigationService', () => {
 				{provide: ObServiceNavigationTimeoutService, useValue: {initialize: jest.fn(), logout: jest.fn()}},
 				{
 					provide: ObServiceNavigationConfigApiService,
-					useValue: {fetchUrls: jest.fn().mockReturnValue(of(mockUrls))}
+					useValue: {fetchUrls: jest.fn().mockReturnValue(of(mockUrls))},
 				},
 				{
 					provide: ObServiceNavigationPollingService,
-					useValue: {initializeStateUpdate: jest.fn(), state$: mockStateChange.asObservable()}
+					useValue: {initializeStateUpdate: jest.fn(), state$: mockStateChange.asObservable()},
 				},
 				{
 					provide: ObServiceNavigationTimeoutRedirectorService,
-					useValue: {logoutTrigger$: mockGetLogoutTrigger$, logout: mockRedirectorLogout}
+					useValue: {logoutTrigger$: mockGetLogoutTrigger$, logout: mockRedirectorLogout},
 				},
 				{
 					provide: ObServiceNavigationApplicationsService,
-					useValue: {getApplications: jest.fn().mockReturnValue(source$ => source$.pipe(map(() => mockApplications)))}
+					useValue: {getApplications: jest.fn().mockReturnValue(source$ => source$.pipe(map(() => mockApplications)))},
 				},
 				{
 					provide: ObServiceNavigationInfoApiService,
-					useValue: {get: mockGetInfoBackend$}
+					useValue: {get: mockGetInfoBackend$},
 				},
 				{
 					provide: ObServiceNavigationLanguageSynchronizationService,
 					useValue: {
 						initialize: mockLanguageSynchronizationInitialize,
-						setLanguage: mockLanguageSynchronizationSetLanguage
-					}
+						setLanguage: mockLanguageSynchronizationSetLanguage,
+						loginLevel: 'SA',
+					},
 				},
 				{
 					provide: TranslateService,
@@ -85,10 +86,10 @@ describe('ObServiceNavigationService', () => {
 						onLangChange: mockLangChange.asObservable(),
 						currentLang: 'en',
 						getLangs: jest.fn().mockReturnValue(['en', 'de', 'fr', 'it']),
-						use: jest.fn()
-					}
-				}
-			]
+						use: jest.fn(),
+					},
+				},
+			],
 		});
 	});
 
@@ -100,6 +101,7 @@ describe('ObServiceNavigationService', () => {
 			applicationsService = TestBed.inject(ObServiceNavigationApplicationsService);
 			redirectorService = TestBed.inject(ObServiceNavigationTimeoutRedirectorService);
 			service.setFavoriteApplicationsCount(1);
+			languageSynchronizationService.loginLevel = 'SA';
 		});
 
 		afterEach(() => {
@@ -166,15 +168,18 @@ describe('ObServiceNavigationService', () => {
 			});
 
 			it('should throw an error', async () => {
-				service.getLoginUrl$().subscribe();
 				await expect(firstValueFrom(service.getLoginUrl$())).rejects.toThrow('Cannot load service navigation config');
+			});
+
+			it('should emit undefined in getLoginState$', async () => {
+				await expect(firstValueFrom(service.getLoginState$())).resolves.toBe(undefined);
 			});
 
 			it('should show a notification', () => {
 				service.getLoginUrl$().subscribe({});
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.service-navigation.config.error.message',
-					title: 'i18n.oblique.service-navigation.config.error.title'
+					title: 'i18n.oblique.service-navigation.config.error.title',
 				});
 			});
 		});
@@ -187,14 +192,14 @@ describe('ObServiceNavigationService', () => {
 					desc: 'only "setUpRootUrls" called with "null" as "environment',
 					callSetupRootUrl: true,
 					environment: null,
-					callSetReturnUrl: false
+					callSetReturnUrl: false,
 				},
 				{
 					desc: 'only "setUpRootUrls" called with "undefined" as "environment',
 					callSetupRootUrl: true,
 					environment: undefined,
-					callSetReturnUrl: false
-				}
+					callSetReturnUrl: false,
+				},
 			])('$desc', ({callSetupRootUrl, environment, callSetReturnUrl}) => {
 				beforeEach(() => {
 					if (callSetupRootUrl) {
@@ -213,7 +218,7 @@ describe('ObServiceNavigationService', () => {
 					'getMessageCount$',
 					'getApplicationsUrl$',
 					'getLastUsedApplications$',
-					'getFavoriteApplications$'
+					'getFavoriteApplications$',
 				])('%s', method => {
 					it('should return an observable', () => {
 						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
@@ -276,7 +281,7 @@ describe('ObServiceNavigationService', () => {
 							{code: 'en', label: 'English'},
 							{code: 'de', label: 'Deutsch'},
 							{code: 'fr', label: 'Français'},
-							{code: 'it', label: 'Italiano'}
+							{code: 'it', label: 'Italiano'},
 						]);
 					});
 				});
@@ -306,7 +311,7 @@ describe('ObServiceNavigationService', () => {
 			});
 
 			describe.each([
-				{environment: ObEPamsEnvironment.DEV, pamsRootUrl: 'https://pams-api.eportal-d.admin.ch/'}
+				{environment: ObEPamsEnvironment.DEV, pamsRootUrl: 'https://pams-api.eportal-d.admin.ch/'},
 				// {environment: ObEPamsEnvironment.REF, pamsRootUrl: 'https://pams-api.eportal-r.admin.ch/'},
 				// {environment: ObEPamsEnvironment.TEST, pamsRootUrl: 'https://pams-api.eportal-t.admin.ch/'},
 				// {environment: ObEPamsEnvironment.ABN, pamsRootUrl: 'https://pams-api.eportal-a.admin.ch/'},
@@ -316,7 +321,11 @@ describe('ObServiceNavigationService', () => {
 				({environment, pamsRootUrl}) => {
 					describe.each([
 						// {desc: 'and no "rootUrl"', calledPamsUrl: pamsRootUrl},
-						{desc: 'and "http://root-url" as "rootUrl"', rootUrl: 'http://root-url/', calledPamsUrl: 'http://root-url/'}
+						{
+							desc: 'and "http://root-url" as "rootUrl"',
+							rootUrl: 'http://root-url/',
+							calledPamsUrl: 'http://root-url/',
+						},
 					])('$desc', ({rootUrl, calledPamsUrl}) => {
 						beforeEach(() => {
 							service.setUpRootUrls(environment, rootUrl);
@@ -374,7 +383,9 @@ describe('ObServiceNavigationService', () => {
 									it(`should emit "http://login?returnURL=http://localhost&language=${language}&appid=${randomPamsAppId}"`, async () => {
 										const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
 										mockLangChange.next({lang: language});
-										expect(await promise).toBe(`http://login?returnURL=http://localhost&language=${language}&appid=${randomPamsAppId}`);
+										expect(await promise).toBe(
+											`http://login?returnURL=http://localhost&language=${language}&appid=${randomPamsAppId}`
+										);
 									});
 								});
 							});
@@ -382,7 +393,7 @@ describe('ObServiceNavigationService', () => {
 
 						describe.each([
 							{method: 'getInboxMailUrl$', url: 'http://inboxMail'},
-							{method: 'getApplicationsUrl$', url: 'http://applications'}
+							{method: 'getApplicationsUrl$', url: 'http://applications'},
 						])('$method', ({method, url}) => {
 							it(`should emit "${JSON.stringify(url)}"`, async () => {
 								await expect(firstValueFrom(service[method]())).resolves.toBe(url);
@@ -395,32 +406,26 @@ describe('ObServiceNavigationService', () => {
 									index: 0,
 									url: `http://applications/profile/details`,
 									label: 'i18n.oblique.service-navigation.profile.my-profile',
-									isInternalLink: true
+									isInternalLink: true,
 								},
 								{
 									index: 1,
 									url: `http://applications/profile/permissions`,
 									label: 'i18n.oblique.service-navigation.profile.my-permissions',
-									isInternalLink: true
+									isInternalLink: true,
 								},
 								{
 									index: 2,
 									url: `http://applications/profile/push-notifications`,
 									label: 'i18n.oblique.service-navigation.profile.my-email-sms-notifications',
-									isInternalLink: true
+									isInternalLink: true,
 								},
 								{
 									index: 3,
-									url: `http://applications/profile/business-partnerships`,
-									label: 'i18n.oblique.service-navigation.profile.my-business-partnerships',
-									isInternalLink: true
-								},
-								{
-									index: 4,
 									url: `http://applications/redeem`,
 									label: 'i18n.oblique.service-navigation.profile.redeem-code',
-									isInternalLink: true
-								}
+									isInternalLink: true,
+								},
 							])('Url number $index', expectedUrl => {
 								let urls: ObISectionLink[];
 								beforeEach(async () => {
@@ -484,7 +489,7 @@ describe('ObServiceNavigationService', () => {
 								{language: 'fr', name: 'nom'},
 								{language: 'it', name: 'nome'},
 								{language: 'en', name: 'name'},
-								{language: 'es', name: 'name'}
+								{language: 'es', name: 'name'},
 							])('with "$language" as language', ({language, name}) => {
 								let promise: Promise<any>;
 								beforeEach(() => {
@@ -527,7 +532,7 @@ describe('ObServiceNavigationService', () => {
 									{code: 'en', label: 'English'},
 									{code: 'de', label: 'Deutsch'},
 									{code: 'fr', label: 'Français'},
-									{code: 'it', label: 'Italiano'}
+									{code: 'it', label: 'Italiano'},
 								]);
 							});
 						});
@@ -582,6 +587,16 @@ describe('ObServiceNavigationService', () => {
 
 			expect(mockLanguageSynchronizationSetLanguage).toHaveBeenNthCalledWith(1, languageCode);
 		});
+
+		it(`should set login state`, () => {
+			const loginLevel: ObLoginState = 'S2OK';
+
+			service.setUpRootUrls(ObEPamsEnvironment.TEST);
+			service.getLoginState$().subscribe();
+			mockStateChange.next({loginState: loginLevel, profile: {}} as ObIServiceNavigationState);
+
+			expect(languageSynchronizationService.loginLevel).toBe(loginLevel);
+		});
 	});
 
 	describe('fetch multiple states', () => {
@@ -590,15 +605,16 @@ describe('ObServiceNavigationService', () => {
 			{inputs: ['SA', 'S2OK'], emitTimes: 2},
 			{inputs: ['SA', 'S2OK', 'S2OK'], emitTimes: 2},
 			{inputs: ['S2OK'], emitTimes: 1},
-			{inputs: ['S2OK', 'SA'], emitTimes: 2}
+			{inputs: ['S2OK', 'SA'], emitTimes: 2},
+			{inputs: [undefined], emitTimes: 1},
 		])('getLoginState$', ({inputs, emitTimes}) => {
 			const mockStateChangeDuplicate = new Subject();
 			beforeEach(() => {
 				TestBed.overrideProvider(ObServiceNavigationPollingService, {
 					useValue: {
 						initializeStateUpdate: jest.fn(),
-						state$: mockStateChangeDuplicate.asObservable()
-					}
+						state$: mockStateChangeDuplicate.asObservable(),
+					},
 				});
 				service = TestBed.inject(ObServiceNavigationService);
 			});

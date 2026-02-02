@@ -8,7 +8,7 @@ describe(ObSpinnerService.name, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObSpinnerService]
+			providers: [ObSpinnerService],
 		});
 		service = TestBed.inject(ObSpinnerService);
 	});
@@ -51,7 +51,9 @@ describe(ObSpinnerService.name, () => {
 		service.activate();
 		service.activate();
 		let emitted = false;
-		service.events$.subscribe(() => (emitted = true));
+		service.events$.subscribe(() => {
+			emitted = true;
+		});
 		service.deactivate();
 		tick(1000);
 		expect(emitted).toBe(false);

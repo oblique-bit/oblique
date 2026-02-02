@@ -7,7 +7,7 @@ describe('ObGlobalEventsService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [provideObliqueTestingConfiguration()]
+			providers: [provideObliqueTestingConfiguration()],
 		});
 		service = TestBed.inject(ObGlobalEventsService);
 	});

@@ -19,7 +19,7 @@ nodejsPipelineTemplate {
 				'@oblique/cli',
 				'@oblique/service-navigation-web-component',
 				'@oblique/toolchain'
-			],
+			]
 		]
 	]
 }

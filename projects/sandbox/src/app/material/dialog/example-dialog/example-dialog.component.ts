@@ -6,7 +6,7 @@ import type {ObIDialogData} from '../dialog.model';
 @Component({
 	selector: 'sb-example-dialog',
 	standalone: false,
-	templateUrl: './example-dialog.component.html'
+	templateUrl: './example-dialog.component.html',
 })
 export class ExampleDialogComponent implements AfterViewInit, OnDestroy {
 	sampleChannel = 'demo';

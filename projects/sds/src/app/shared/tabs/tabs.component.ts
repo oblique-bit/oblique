@@ -6,7 +6,7 @@ import {IdPipe} from '../id/id.pipe';
 	selector: 'app-tabs',
 	imports: [IdPipe],
 	templateUrl: './tabs.component.html',
-	styleUrl: './tabs.component.scss'
+	styleUrl: './tabs.component.scss',
 })
 export class TabsComponent implements OnChanges {
 	readonly idPrefix = input('');
@@ -30,7 +30,7 @@ export class TabsComponent implements OnChanges {
 	}
 
 	private activateTab(tabName: string): void {
-		const foundTab = this.getActiveTab() || this.getTabWithName(tabName);
+		const foundTab = this.getInitiallyActiveTab() || this.getActiveTab() || this.getTabWithName(tabName);
 		this.selectTab(foundTab ?? this.getDefaultTab());
 	}
 
@@ -42,8 +42,11 @@ export class TabsComponent implements OnChanges {
 		return this.tabs().find(tab => !tab.hidden() && tab.name() === tabName);
 	}
 
+	private getInitiallyActiveTab(): TabComponent {
+		return this.tabs().find(tab => Boolean(tab.initiallyActive()) && !tab.hidden());
+	}
+
 	private getDefaultTab(): TabComponent {
-		const tabs = this.tabs();
-		return tabs.find(tab => Boolean(tab.initiallyActive()) && !tab.hidden()) ?? tabs.at(0);
+		return this.tabs().at(0);
 	}
 }

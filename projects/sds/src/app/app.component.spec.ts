@@ -2,7 +2,6 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {type ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
 import {CmsDataService} from './cms/cms-data.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
@@ -17,16 +16,21 @@ describe('AppComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [AppComponent, NoopAnimationsModule, RouterTestingModule, HttpClientTestingModule],
+			imports: [AppComponent, RouterTestingModule, HttpClientTestingModule],
 			providers: [
 				CmsDataService,
 				{
 					provide: TranslateService,
-					useValue: {addLangs: jest.fn(), setDefaultLang: jest.fn(), use: jest.fn(), stream: jest.fn().mockReturnValue(of(''))}
+					useValue: {
+						addLangs: jest.fn(),
+						setFallbackLang: jest.fn(),
+						use: jest.fn(),
+						stream: jest.fn().mockReturnValue(of('')),
+					},
 				},
-				{provide: WINDOW, useValue: window}
+				{provide: WINDOW, useValue: window},
 			],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 		}).compileComponents();
 	});
 
@@ -63,7 +67,7 @@ describe('AppComponent', () => {
 			});
 
 			it('should have english as default language', () => {
-				expect(translateService.setDefaultLang).toHaveBeenCalledWith('en');
+				expect(translateService.setFallbackLang).toHaveBeenCalledWith('en');
 			});
 
 			it('should use english', () => {

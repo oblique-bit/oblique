@@ -10,7 +10,7 @@ import {DateComponentExampleComponent} from './previews/date-component/date-comp
 	selector: 'app-code-example-date',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'date-examples';
@@ -21,8 +21,8 @@ export class DateCodeExamplesComponent extends CodeExamples {
 			title: 'Link to Stackblitz Example',
 			snippets: [
 				this.getSnippet('date', 'default/date-example-default-preview.component.html', 'HTML'),
-				this.getSnippet('date', 'default/date-example-default-preview.component.ts', 'TS')
-			]
+				this.getSnippet('date', 'default/date-example-default-preview.component.ts', 'TS'),
+			],
 		},
 		{
 			component: DateComponentExampleComponent,
@@ -30,8 +30,8 @@ export class DateCodeExamplesComponent extends CodeExamples {
 			title: 'Link to Stackblitz ObDateComponent Example',
 			snippets: [
 				this.getSnippet('date', 'date-component/date-component-example-preview.component.html', 'HTML'),
-				this.getSnippet('date', 'date-component/date-component-example-preview.component.ts', 'TS')
-			]
-		}
+				this.getSnippet('date', 'date-component/date-component-example-preview.component.ts', 'TS'),
+			],
+		},
 	];
 }

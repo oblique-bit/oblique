@@ -1,6 +1,16 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {NgFor, NgIf} from '@angular/common';
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation, inject} from '@angular/core';
+
+import {
+	Component,
+	EventEmitter,
+	Input,
+	OnDestroy,
+	OnInit,
+	Output,
+	ViewChild,
+	ViewEncapsulation,
+	inject,
+} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
@@ -22,21 +32,19 @@ import {ObFileUploadService} from '../file-upload.service';
 	imports: [
 		MatTableModule,
 		MatSortModule,
-		NgFor,
 		MatCheckboxModule,
 		MatButtonModule,
 		ObButtonDirective,
 		MatTooltipModule,
 		MatIconModule,
-		NgIf,
 		ObAlertComponent,
-		TranslateModule
+		TranslateModule,
 	],
 	templateUrl: './file-info.component.html',
 	styleUrls: ['./file-info.component.scss'],
 	encapsulation: ViewEncapsulation.None,
+	host: {class: 'ob-file-info'},
 	exportAs: 'obFileInfo',
-	host: {class: 'ob-file-info'}
 })
 export class ObFileInfoComponent implements OnInit, OnDestroy {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
@@ -75,7 +83,9 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 				takeUntil(this.unsubscribe),
 				map(() => this.computeSelectionStatus())
 			)
-			.subscribe(status => (this.selectionStatus = status));
+			.subscribe(status => {
+				this.selectionStatus = status;
+			});
 	}
 
 	ngOnDestroy(): void {
@@ -87,7 +97,9 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 		if (this.selectionStatus === 'all') {
 			this.selection.clear();
 		} else {
-			this.dataSource.data.forEach(row => this.selection.select(row));
+			this.dataSource.data.forEach(row => {
+				this.selection.select(row);
+			});
 		}
 		this.uploadEvent.emit({type: ObEUploadEventType.SELECTED, files: this.selection.selected.map(file => file.name)});
 	}
@@ -103,13 +115,19 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 			this.fileUploadService
 				.delete(this.deleteUrl, this.mapFilesToDeleteUrlFunction(files))
 				.pipe(
-					tap(() => (this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name)))),
+					tap(() => {
+						this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name));
+					}),
 					tap(() => this.dataChange.next()),
-					tap(() => files.forEach(file => this.selection.deselect(file)))
+					tap(() => {
+						files.forEach(file => {
+							this.selection.deselect(file);
+						});
+					})
 				)
 				.subscribe({
 					next: () => this.uploadEvent.emit({type: ObEUploadEventType.DELETED, files: fileNames}),
-					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileNames, error})
+					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileNames, error}),
 				});
 		}
 	}
@@ -120,14 +138,18 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 				.getUploadedFiles(this.getUploadedFilesUrl)
 				.pipe(
 					map(this.mapFunction),
-					tap(files => (this.dataSource.data = files)),
+					tap(files => {
+						this.dataSource.data = files;
+					}),
 					tap(() => this.dataChange.next()),
-					tap(files => this.reselectFiles(files)),
+					tap(files => {
+						this.reselectFiles(files);
+					}),
 					tap(() => this.initializeSort())
 				)
 				.subscribe({
 					next: files => this.setTableHeaders(files.length ? Object.keys(files[0]) : this.fields),
-					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error})
+					error: error => this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: [], error}),
 				});
 		}
 	}

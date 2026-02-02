@@ -18,7 +18,7 @@ import {
 	removeInjectionInClass,
 	replaceInFile,
 	setAngularProjectsConfig,
-	warn
+	warn,
 } from '../utils';
 import {getDepVersion, getTemplate} from '../ng-add/ng-add-utils';
 
@@ -56,7 +56,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 				this.removeGlobalsFromJestConfig(),
 				this.addNodeToCompilerOptions(),
 				this.addDataNoSnippet(),
-				this.addBrowserslistrcFile()
+				this.addBrowserslistrcFile(),
 			])(tree, context);
 	}
 
@@ -76,10 +76,16 @@ export class UpdateV10toV11 implements ObIMigrations {
 						'{provide: WINDOW, useValue: window},'
 					);
 					const propertyName =
-						/(?<propertyName>\w+)\s*(?::\s*ObPopUpService)?\s*=\s*TestBed\s*\.\s*inject\(\s*ObPopUpService\s*\)\s*;/.exec(content)?.groups
-							?.propertyName;
+						/(?<propertyName>\w+)\s*(?::\s*ObPopUpService)?\s*=\s*TestBed\s*\.\s*inject\(\s*ObPopUpService\s*\)\s*;/.exec(
+							content
+						)?.groups?.propertyName;
 					if (propertyName) {
-						replaceInFile(tree, filePath, new RegExp(`let\\s+${propertyName}\\s*(?::\\s*ObPopUpService\\s*)?;`, 'g'), '');
+						replaceInFile(
+							tree,
+							filePath,
+							new RegExp(`let\\s+${propertyName}\\s*(?::\\s*ObPopUpService\\s*)?;`, 'g'),
+							''
+						);
 						replaceInFile(tree, filePath, new RegExp(propertyName, 'g'), 'window');
 						replaceInFile(tree, filePath, /[^;]*TestBed\s*.\s*inject\(\s*ObPopUpService\s*\)\s*;/gs, '');
 					}
@@ -202,7 +208,10 @@ export class UpdateV10toV11 implements ObIMigrations {
 				replaceInFile(
 					tree,
 					filePath,
-					new RegExp(`(?<content>(?<whitespace>[\t ]*)<(?<tag>[\\w-]+)[^<]*?${token}.*?>.*?^\\k<whitespace><\\/\\k<tag>>)`, 'gsm'),
+					new RegExp(
+						`(?<content>(?<whitespace>[\t ]*)<(?<tag>[\\w-]+)[^<]*?${token}.*?>.*?^\\k<whitespace><\\/\\k<tag>>)`,
+						'gsm'
+					),
 					'<ng-template #obHeaderControl>\n$<content>\n</ng-template>'
 				);
 			};
@@ -257,10 +266,13 @@ export class UpdateV10toV11 implements ObIMigrations {
 			if (angularMaterialVersion.startsWith('17')) {
 				infoMigration(context, `Runs the mdc-migration.`);
 				return externalSchematic('@angular/material', 'mdc-migration', {
-					components: ['all']
+					components: ['all'],
 				});
 			}
-			warn(context, `No compatible @angular/material version found to run the mdc-migration. @angular/material@17 is needed.`);
+			warn(
+				context,
+				`No compatible @angular/material version found to run the mdc-migration. @angular/material@17 is needed.`
+			);
 			return tree;
 		});
 	}
@@ -271,7 +283,10 @@ export class UpdateV10toV11 implements ObIMigrations {
 			const path = 'tests/jestGlobalMocks.ts';
 			tree.overwrite(
 				path,
-				readFile(tree, path).replace(/Object\.defineProperty\s*\(\s*document\.body\.style\s*,\s*['"]transform['"].*?}\s*\)\s*;\s+/gs, '')
+				readFile(tree, path).replace(
+					/Object\.defineProperty\s*\(\s*document\.body\.style\s*,\s*['"]transform['"].*?}\s*\)\s*;\s+/gs,
+					''
+				)
 			);
 			// can't use applyInTree as the target file is outside sourceRoot
 			return tree;
@@ -282,11 +297,13 @@ export class UpdateV10toV11 implements ObIMigrations {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, `Deactivate "@angular-eslint/prefer-standalone-component" rule`);
 			const path = '.eslintrc.json';
-			const eslintConfiguration: {overrides: {files: string[]; rules?: Record<string, string>}[]} = JSON.parse(readFile(tree, path));
+			const eslintConfiguration: {overrides: {files: string[]; rules?: Record<string, string>}[]} = JSON.parse(
+				readFile(tree, path)
+			);
 			// can't use filter or conditional chaining as we need to modify a value
 			if (eslintConfiguration.overrides) {
 				eslintConfiguration.overrides.forEach(configuration => {
-					if (configuration.files && configuration.files[0] === '*.ts') {
+					if (configuration.files?.[0] === '*.ts') {
 						if (!configuration.rules) {
 							configuration.rules = {};
 						}

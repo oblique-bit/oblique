@@ -8,7 +8,7 @@ import {
 	infoMigration,
 	readFile,
 	removeInjectionInClass,
-	removeServiceMethodCall
+	removeServiceMethodCall,
 } from '../utils';
 
 export interface IUpdateV11Schema {}

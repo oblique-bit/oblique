@@ -18,10 +18,10 @@ import {DomSanitizer} from '@angular/platform-browser';
 		ReactiveFormsModule,
 		ObErrorMessagesModule,
 		ObButtonModule,
-		ObNotificationModule
+		ObNotificationModule,
 	],
 	templateUrl: './newsletter.component.html',
-	styleUrl: './newsletter.component.scss'
+	styleUrl: './newsletter.component.scss',
 })
 export class NewsletterComponent implements OnInit {
 	formGroup: FormGroup<{email: FormControl<string>}>;
@@ -32,7 +32,7 @@ export class NewsletterComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.formGroup = this.formBuilder.group({
-			email: ['', [Validators.email, Validators.required]]
+			email: ['', [Validators.email, Validators.required]],
 		});
 	}
 
@@ -52,13 +52,21 @@ export class NewsletterComponent implements OnInit {
 		this.newsletterService
 			.getNewsletterToken()
 			.pipe(
-				tap(result => (this.newsletterService.token = result.data.token)),
+				tap(result => {
+					this.newsletterService.token = result.data.token;
+				}),
 				mergeMap(() => this.newsletterService.addNewsletterEntry(email))
 			)
 			.subscribe({
-				complete: () => this.obNotificationService.success({title: 'Success', message: successMessage}),
-				error: (error: HttpErrorResponse) =>
-					this.obNotificationService.error({title: 'Error', message: `Something went wrong!. Error: ${error?.message}`})
+				complete: () => {
+					this.obNotificationService.success({title: 'Success', message: successMessage});
+				},
+				error: (error: HttpErrorResponse) => {
+					this.obNotificationService.error({
+						title: 'Error',
+						message: `Something went wrong!. Error: ${error?.message}`,
+					});
+				},
 			});
 	}
 }

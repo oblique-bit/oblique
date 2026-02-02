@@ -34,7 +34,7 @@ import {
 	ObErrorMessagesModule,
 	ObInputClearModule,
 	ObSelectableModule,
-	ObSpinnerModule
+	ObSpinnerModule,
 } from '@oblique/oblique';
 import {ButtonComponent} from './button/button.component';
 import {CardComponent} from './card/card.component';
@@ -86,34 +86,10 @@ const appRoutes: Routes = [
 	{path: 'table', component: TableComponent},
 	{path: 'tabs', component: TabsComponent},
 	{path: 'tooltip', component: TooltipComponent},
-	{path: '', redirectTo: 'card', pathMatch: 'full'}
+	{path: '', redirectTo: 'card', pathMatch: 'full'},
 ];
 
 @NgModule({
-	declarations: [
-		BadgeComponent,
-		ButtonComponent,
-		CardComponent,
-		ChipsComponent,
-		DialogComponent,
-		ExampleDialogComponent,
-		ExpansionPanelComponent,
-		FormComponent,
-		IconSampleComponent,
-		ListComponent,
-		MandatorySampleComponent,
-		MenuComponent,
-		ProgressBarComponent,
-		SliderComponent,
-		SlideToggleComponent,
-		SpinnerComponent,
-		StepperHorizontalComponent,
-		StepperVerticalComponent,
-		TableComponent,
-		TableEditComponent,
-		TabsComponent,
-		TooltipComponent
-	],
 	imports: [
 		CdkTableModule,
 		CommonModule,
@@ -155,7 +131,31 @@ const appRoutes: Routes = [
 		ObSpinnerModule,
 		ReactiveFormsModule,
 		TranslateModule,
-		RouterModule.forChild(appRoutes)
-	]
+		RouterModule.forChild(appRoutes),
+	],
+	declarations: [
+		BadgeComponent,
+		ButtonComponent,
+		CardComponent,
+		ChipsComponent,
+		DialogComponent,
+		ExampleDialogComponent,
+		ExpansionPanelComponent,
+		FormComponent,
+		IconSampleComponent,
+		ListComponent,
+		MandatorySampleComponent,
+		MenuComponent,
+		ProgressBarComponent,
+		SliderComponent,
+		SlideToggleComponent,
+		SpinnerComponent,
+		StepperHorizontalComponent,
+		StepperVerticalComponent,
+		TableComponent,
+		TableEditComponent,
+		TabsComponent,
+		TooltipComponent,
+	],
 })
 export class MaterialModule {}

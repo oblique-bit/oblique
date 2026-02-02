@@ -5,6 +5,6 @@ import {LogoComponent} from './logo/logo.component';
 @Component({
 	selector: 'ssr-home',
 	imports: [TranslateModule, LogoComponent],
-	templateUrl: './home.component.html'
+	templateUrl: './home.component.html',
 })
 export class HomeComponent {}

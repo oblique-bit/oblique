@@ -1,4 +1,4 @@
-import {Component, HostBinding, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ObSpinnerModule} from '@oblique/oblique';
 import {RouterOutlet} from '@angular/router';
@@ -12,17 +12,21 @@ import {BannerComponent} from './banner/banner.component';
 	selector: 'app-root',
 	imports: [CommonModule, RouterOutlet, ObSpinnerModule, SideNavigationComponent, BannerComponent],
 	templateUrl: './app.component.html',
-	styleUrl: './app.component.scss'
+	styleUrl: './app.component.scss',
+	host: {
+		'[class.has-opened-mobile-navigation]': 'showMobileNavigation',
+		'[class.has-banner]': 'hasBanner',
+	},
 })
 export class AppComponent {
-	@HostBinding('class.has-opened-mobile-navigation') showMobileNavigation = false;
-	@HostBinding('class.has-banner') hasBanner = false;
+	showMobileNavigation = false;
+	hasBanner = false;
 	readonly bannerData$: Observable<string> = this.getBannerData(inject(CmsDataService));
 
 	constructor() {
 		const translate = inject(TranslateService);
 		translate.addLangs(['en']);
-		translate.setDefaultLang('en');
+		translate.setFallbackLang('en');
 		translate.use('en');
 	}
 
@@ -34,7 +38,9 @@ export class AppComponent {
 		return cmsDataService.getBanner().pipe(
 			map(data => data.data.content),
 			filter(content => Boolean(content)),
-			tap(() => (this.hasBanner = true))
+			tap(() => {
+				this.hasBanner = true;
+			})
 		);
 	}
 }

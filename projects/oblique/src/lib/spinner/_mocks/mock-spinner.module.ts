@@ -12,7 +12,7 @@ export {ObMockSpinnerService} from './mock-spinner.service';
  */
 @NgModule({
 	imports: [ObMockSpinnerComponent],
+	providers: [{provide: ObSpinnerService, useClass: ObMockSpinnerService}],
 	exports: [ObMockSpinnerComponent],
-	providers: [{provide: ObSpinnerService, useClass: ObMockSpinnerService}]
 })
 export class ObMockSpinnerModule {}

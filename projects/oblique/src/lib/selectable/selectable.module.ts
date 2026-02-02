@@ -7,6 +7,6 @@ export {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @NgModule({
 	imports: [ObSelectableDirective, ObSelectableGroupDirective],
-	exports: [ObSelectableDirective, ObSelectableGroupDirective]
+	exports: [ObSelectableDirective, ObSelectableGroupDirective],
 })
 export class ObSelectableModule {}

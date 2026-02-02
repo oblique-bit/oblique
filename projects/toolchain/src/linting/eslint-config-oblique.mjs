@@ -6,16 +6,15 @@ export default [
 		files: ['**/*.ts'],
 		plugins: {
 			'@typescript-eslint': plugin,
-			'@angular-eslint': tsPlugin
+			'@angular-eslint': tsPlugin,
 		},
 		processor: processInlineTemplates,
 		languageOptions: {
 			parser,
 			parserOptions: {
 				projectService: true,
-				tsconfigRootDir: import.meta.dirname
 			},
-			sourceType: 'module'
+			sourceType: 'module',
 		},
 		rules: {
 			// https://eslint.org/docs/latest/rules
@@ -138,9 +137,9 @@ export default [
 						'Pipe',
 						'SkipSelf',
 						'ViewChild',
-						'ViewChildren'
-					]
-				}
+						'ViewChildren',
+					],
+				},
 			],
 			'no-alert': 'error',
 			/**
@@ -332,7 +331,11 @@ export default [
 			 */
 			'no-unused-expressions': 'off',
 			'no-unused-labels': 'error',
-			'no-unused-private-class-members': 'error',
+			/**
+			 * Rule: no-unused-private-class-members (https://eslint.org/docs/latest/rules/no-unused-private-class-members)
+			 * Reason for disabling: Replaced by @typescript-eslint/no-unused-private-class-members
+			 */
+			'no-unused-private-class-members': 'off',
 			/**
 			 * Rule: no-unused-vars (https://eslint.org/docs/latest/rules/no-unused-vars)
 			 * Reason for disabling: Replaced by @typescript-eslint/no-unused-vars
@@ -402,6 +405,7 @@ export default [
 			'prefer-rest-params': 'error',
 			'prefer-spread': 'error',
 			'prefer-template': 'error',
+			'preserve-caught-error': 'error',
 			radix: 'error',
 			'require-atomic-updates': 'error',
 			/**
@@ -510,9 +514,9 @@ export default [
 						'private-constructor',
 						'public-method',
 						'protected-method',
-						'private-method'
-					]
-				}
+						'private-method',
+					],
+				},
 			],
 			'@typescript-eslint/method-signature-style': 'error',
 			/**
@@ -524,7 +528,7 @@ export default [
 				{selector: 'default', format: ['camelCase']},
 				{selector: 'typeLike', format: ['PascalCase']}, // class, enum, interface, type, ...
 				{selector: 'enumMember', format: ['UPPER_CASE']},
-				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']}
+				{selector: 'objectLiteralProperty', format: null, modifiers: ['requiresQuotes']},
 			],
 			'@typescript-eslint/no-array-constructor': 'error',
 			'@typescript-eslint/no-array-delete': 'error',
@@ -616,13 +620,8 @@ export default [
 			'@typescript-eslint/no-unsafe-type-assertion': 'error',
 			'@typescript-eslint/no-unsafe-unary-minus': 'error',
 			'@typescript-eslint/no-unused-expressions': 'error',
-			/**
-			 * Rule: @typescript-eslint/no-unused-vars (https://typescript-eslint.io/rules/no-unused-vars)
-			 * Reason for {caughtErrors: 'none'}: The error variable in a try...catch block is mandatory but not always used.
-			 * Example with {caughtErrors: 'none'}:
-			 * try {...} catch (error) { }
-			 */
-			'@typescript-eslint/no-unused-vars': ['error', {caughtErrors: 'none'}],
+			'@typescript-eslint/no-unused-private-class-members': 'error',
+			'@typescript-eslint/no-unused-vars': ['error'],
 			/**
 			 * Rule: @typescript-eslint/no-use-before-define (https://typescript-eslint.io/rules/no-use-before-define)
 			 * Reason for {functions: false}: Functions are hoisted so they can be used before they are defined
@@ -633,6 +632,7 @@ export default [
 			'@typescript-eslint/no-use-before-define': ['error', {functions: false}],
 			'@typescript-eslint/no-useless-constructor': 'error',
 			'@typescript-eslint/no-useless-empty-export': 'error',
+			'@typescript-eslint/no-useless-default-assignment': 'error',
 			'@typescript-eslint/no-wrapper-object-types': 'error',
 			'@typescript-eslint/non-nullable-type-assertion-style': 'error',
 			'@typescript-eslint/only-throw-error': 'error',
@@ -680,6 +680,7 @@ export default [
 			'@typescript-eslint/restrict-template-expressions': 'error',
 			'@typescript-eslint/return-await': 'error',
 			'@typescript-eslint/strict-boolean-expressions': 'error',
+			'@typescript-eslint/strict-void-return': 'error',
 			'@typescript-eslint/switch-exhaustiveness-check': 'error',
 			'@typescript-eslint/triple-slash-reference': 'error',
 			/**
@@ -707,9 +708,10 @@ export default [
 			'@angular-eslint/directive-class-suffix': 'error',
 			'@angular-eslint/no-async-lifecycle-method': 'error',
 			'@angular-eslint/no-attribute-decorator': 'error',
-			'@angular-eslint/no-conflicting-lifecycle': 'error',
+			'@angular-eslint/no-developer-preview': 'error',
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'error',
 			'@angular-eslint/no-empty-lifecycle-method': 'error',
+			'@angular-eslint/no-experimental': 'error',
 			'@angular-eslint/no-forward-ref': 'error',
 			'@angular-eslint/no-input-prefix': 'error',
 			'@angular-eslint/no-input-rename': 'error',
@@ -723,14 +725,16 @@ export default [
 			'@angular-eslint/no-queries-metadata-property': 'error',
 			'@angular-eslint/no-uncalled-signals': 'error',
 			'@angular-eslint/pipe-prefix': 'error',
+			'@angular-eslint/prefer-host-metadata-property': 'error',
+			'@angular-eslint/prefer-inject': 'error',
 			/**
 			 * Rule: @angular-eslint/prefer-on-push-component-change-detection (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-on-push-component-change-detection.md)
 			 * Reason for disabling: OnPush is not always the best choice, especially with signals
 			 */
-			'@angular-eslint/prefer-inject': 'off',
 			'@angular-eslint/prefer-on-push-component-change-detection': 'off',
 			'@angular-eslint/prefer-output-emitter-ref': 'error',
 			'@angular-eslint/prefer-output-readonly': 'error',
+			'@angular-eslint/prefer-signal-model': 'error',
 			'@angular-eslint/prefer-signals': 'error',
 			'@angular-eslint/prefer-standalone': 'error',
 			'@angular-eslint/relative-url-prefix': 'error',
@@ -743,15 +747,15 @@ export default [
 			'@angular-eslint/use-component-view-encapsulation': 'error',
 			'@angular-eslint/use-injectable-provided-in': 'error',
 			'@angular-eslint/use-lifecycle-interface': 'error',
-			'@angular-eslint/use-pipe-transform-interface': 'error'
-		}
+			'@angular-eslint/use-pipe-transform-interface': 'error',
+		},
 	},
 	{
 		files: ['**/*.spec.ts'],
 		plugins: {
 			'@typescript-eslint': plugin,
 			'@angular-eslint': tsPlugin,
-			'@angular-eslint/template': templatePlugin // because tests can have inline template
+			'@angular-eslint/template': templatePlugin, // because tests can have inline template
 		},
 		rules: {
 			/**
@@ -788,7 +792,10 @@ export default [
 			 * Rule: @typescript-eslint/consistent-type-imports (https://typescript-eslint.io/rules/consistent-type-imports)
 			 * Reason for {disallowTypeAnnotations: false}: In tests, types are often used in type annotations (e.g. for spies) so it's better to allow type imports in type annotations
 			 */
-			'@typescript-eslint/consistent-type-imports': ['error', {fixStyle: 'inline-type-imports', disallowTypeAnnotations: false}],
+			'@typescript-eslint/consistent-type-imports': [
+				'error',
+				{fixStyle: 'inline-type-imports', disallowTypeAnnotations: false},
+			],
 			/**
 			 * Rule: @typescript-eslint/init-declarations (https://typescript-eslint.io/rules/init-declarations)
 			 * Reason for disabling: Variables are often initialized in beforeEach blocks
@@ -827,16 +834,16 @@ export default [
 			 * Example with enabled rule:
 			 * expect(someSpy.bind(this)).toHaveBeenCalled();
 			 */
-			'@typescript-eslint/unbound-method': 'off'
-		}
+			'@typescript-eslint/unbound-method': 'off',
+		},
 	},
 	{
 		files: ['**/*.html'],
 		plugins: {
-			'@angular-eslint/template': templatePlugin
+			'@angular-eslint/template': templatePlugin,
 		},
 		languageOptions: {
-			parser: templateParser
+			parser: templateParser,
 		},
 		rules: {
 			// https://github.com/angular-eslint/angular-eslint/tree/main/packages/eslint-plugin-template/docs/rules
@@ -878,8 +885,8 @@ export default [
 			'@angular-eslint/template/role-has-required-aria': 'error',
 			'@angular-eslint/template/table-scope': 'error',
 			'@angular-eslint/template/use-track-by-function': 'error',
-			'@angular-eslint/template/valid-aria': 'error'
-		}
+			'@angular-eslint/template/valid-aria': 'error',
+		},
 	},
 	{
 		files: ['**/index.html'],
@@ -888,7 +895,7 @@ export default [
 			 * Rule: @angular-eslint/template/no-inline-styles (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin-template/src/rules/no-inline-styles.ts)
 			 * Reason for disabling: Oblique adds inline styles to display unsupported browser in index.html. This is necessary so that the error messages are displayed even if the loading of external resources is blocked.
 			 */
-			'@angular-eslint/template/no-inline-styles': 'off'
-		}
-	}
+			'@angular-eslint/template/no-inline-styles': 'off',
+		},
+	},
 ];

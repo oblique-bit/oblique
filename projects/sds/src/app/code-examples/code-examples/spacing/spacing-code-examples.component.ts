@@ -9,7 +9,7 @@ import {SpacingExampleSpacingPreviewComponent} from './previews/spacing/spacing-
 	selector: 'app-code-example-spacing-and-layout',
 	imports: [CommonModule, IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpacingCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'spacing-examples';
@@ -22,8 +22,8 @@ export class SpacingCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('spacing', 'spacing/spacing-example-spacing-preview.component.html', 'HTML'),
 				this.getSnippet('spacing', 'spacing/spacing-example-spacing-preview.component.ts', 'TS'),
 				this.getSnippet('spacing', 'spacing/spacing-example-spacing-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout')
-			]
-		}
+				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
+			],
+		},
 	];
 }

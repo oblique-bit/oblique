@@ -8,7 +8,7 @@ import {
 	ObNotificationModule,
 	ObNotificationService,
 	ObPopoverModule,
-	WINDOW
+	WINDOW,
 } from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -29,10 +29,12 @@ import {MatDivider} from '@angular/material/divider';
 import {MatDialog} from '@angular/material/dialog';
 import {IconDialogComponent} from './icon-dialog/icon-dialog.component';
 import type {IconMetadata} from './icons.model';
+import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 
 @Component({
 	selector: 'app-icons-example-icons-gallery-preview',
 	imports: [
+		MarkifyPipe,
 		CommonModule,
 		MatIconModule,
 		MatButtonModule,
@@ -50,15 +52,15 @@ import type {IconMetadata} from './icons.model';
 		MatInputModule,
 		ObInputClearModule,
 		ObAlertModule,
-		MatDivider
+		MatDivider,
 	],
 	templateUrl: './icons-example-icons-gallery-preview.component.html',
-	styleUrl: './icons-example-icons-gallery-preview.component.scss'
+	styleUrl: './icons-example-icons-gallery-preview.component.scss',
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');
 	byCategoryFilter = new FormControl('ALL');
-	filteredIcons$: Observable<ObEIcon[]>;
+	filteredIcons$: Observable<ObEIcon[][]>;
 	isInfoCardVisible = false;
 	showDialog = false;
 	selectedIconName: string;
@@ -83,15 +85,17 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		navigator.clipboard.writeText(text).then(
 			() =>
 				this.notificationService.success({
-					message: this.translateService.instant('i18n.icons.copy.notification.success.message', {iconName: text}) as string,
+					message: this.translateService.instant('i18n.icons.copy.notification.success.message', {
+						iconName: text,
+					}) as string,
 					title: this.translateService.instant('i18n.icons.copy.notification.success.title', {element}) as string,
-					timeout: timeoutDuration
+					timeout: timeoutDuration,
 				}),
 			() =>
 				this.notificationService.warning({
 					message: this.translateService.instant('i18n.icons.notification.error.message', {iconName: text}) as string,
 					title: this.translateService.instant('i18n.icons.notification.error.title', {element}) as string,
-					timeout: timeoutDuration
+					timeout: timeoutDuration,
 				})
 		);
 	}
@@ -116,7 +120,7 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		const dialogWidth = this.window.innerWidth > 650 ? '450px' : null;
 		this.dialog.open(IconDialogComponent, {
 			data: this.selectedIconMetaData,
-			width: dialogWidth
+			width: dialogWidth,
 		});
 	}
 
@@ -126,21 +130,66 @@ export class IconsExampleIconsGalleryPreviewComponent {
 		this.showDialog = this.window.innerWidth < 1200;
 	}
 
-	private setUpIconsFilter(): Observable<ObEIcon[]> {
+	private setUpIconsFilter(): Observable<ObEIcon[][]> {
 		return this.iconsFilter.valueChanges.pipe(
 			startWith(null),
+			map(filter => (filter ? filter.trim() : filter)),
 			combineLatestWith(this.byCategoryFilter.valueChanges.pipe(startWith('ALL'))),
-			map(([filter, category]) =>
-				this.icons.filter(iconName => this.matchFilter(filter, iconName) && this.matchCategory(category, iconName))
-			)
+			map(([filter, category]) => {
+				return this.filterIcons(this.icons, category, filter);
+			})
 		);
 	}
 
-	private matchFilter(filter: string, iconName: string): boolean {
-		return filter === null || iconName.toLowerCase().includes(filter.toLowerCase());
+	private filterIcons(icons: ObEIcon[], category: string, filter: string): ObEIcon[][] {
+		const categoryMatches = icons.filter(iconName => {
+			const trimmedIconName = iconName.trim();
+			return this.matchCategory(category, trimmedIconName);
+		});
+
+		const matches = Object.groupBy(categoryMatches, (iconName: string) => {
+			const trimmedIconName = iconName.trim();
+			if (this.matchFilterAgainstName(filter, trimmedIconName)) {
+				return 'nameMatch';
+			} else if (this.matchFilterAgainstAliases(filter, trimmedIconName)) {
+				return 'aliasMatch';
+			}
+			return 'none';
+		}) as {nameMatch: ObEIcon[]; aliasMatch: ObEIcon[]; none: ObEIcon[]};
+
+		const groups = Object.groupBy([...(matches.nameMatch || []), ...(matches.aliasMatch || [])], (iconName: string) => {
+			const iconCategory = this.getMetaDataOfIcon(iconName).category as ObECategory;
+			return iconCategory === ObECategory.DEPRECATED_ICONS ? 'deprecatedIcons' : 'icons';
+		}) as {icons: ObEIcon[]; deprecatedIcons: ObEIcon[]};
+
+		return [groups.icons || [], groups.deprecatedIcons || []];
+	}
+
+	private matchFilterAgainstName(filter: string, iconName: string): boolean {
+		return filter === null || this.match(filter.toLowerCase(), iconName.toLowerCase());
+	}
+
+	private matchFilterAgainstAliases(filter: string, iconName: string): boolean {
+		const metaData = this.getMetaDataOfIcon(iconName);
+		const aliases = metaData.aliases ?? [];
+		return filter === null || aliases.some(alias => this.match(filter.toLowerCase(), alias.trim()));
 	}
 
 	private matchCategory(category: string, iconName: string): boolean {
 		return category === 'ALL' || iconMetadata.some(item => item.name === iconName && item.category === category);
+	}
+
+	private match(search: string, text: string): boolean {
+		const searchTokens = this.getTokens(search);
+		const textTokens = this.getTokens(text);
+
+		return (
+			textTokens.join(' ').includes(searchTokens.join(' ')) ||
+			searchTokens.some(searchToken => textTokens.includes(searchToken))
+		);
+	}
+
+	private getTokens(text: string): string[] {
+		return text.split(/[-_ ]/u);
 	}
 }

@@ -30,7 +30,10 @@
 				}
 				@if (contentVisible) {
 					<mat-card-content>
-						<p>The default card is only a presentational artifact, without any form of interaction except for eventual buttons inside.</p>
+						<p>
+							The default card is only a presentational artifact, without any form of interaction except for eventual
+							buttons inside.
+						</p>
 						@if (signatureVisible) {
 							<div class="ob-signature">
 								<span>OFIT</span>
@@ -90,7 +93,13 @@
 					</mat-card-actions>
 				}
 			</mat-card>
-			<button type="button" mat-button obButton="primary" class="ob-button-card" [attr.disabled]="disabled ? '' : undefined">
+			<button
+				type="button"
+				mat-button
+				obButton="primary"
+				class="ob-button-card"
+				[attr.disabled]="disabled ? '' : undefined"
+			>
 				<mat-card>
 					@if (pictureVisible) {
 						<img
@@ -254,25 +263,39 @@
 			<fieldset>
 				<legend>Toggle features</legend>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle avatar" [checked]="true" (click)="toggleAvatarVisibility()"> Avatar </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle avatar" [checked]="true" (click)="toggleAvatarVisibility()">
+						Avatar
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle title" [checked]="true" (click)="toggleTitleVisibility()"> Title </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle title" [checked]="true" (click)="toggleTitleVisibility()">
+						Title
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle subtitle" [checked]="true" (click)="toggleSubtitleVisibility()">Subtitle </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle subtitle" [checked]="true" (click)="toggleSubtitleVisibility()"
+						>Subtitle
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle header" [checked]="true" (click)="toggleHeaderVisibility()"> Header </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle header" [checked]="true" (click)="toggleHeaderVisibility()">
+						Header
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle picture" [checked]="true" (click)="togglePictureVisibility()"> Picture </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle picture" [checked]="true" (click)="togglePictureVisibility()">
+						Picture
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle content" [checked]="true" (click)="toggleContentVisibility()"> Content </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle content" [checked]="true" (click)="toggleContentVisibility()">
+						Content
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle actions" [checked]="true" (click)="toggleActionsVisibility()"> Actions </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle actions" [checked]="true" (click)="toggleActionsVisibility()">
+						Actions
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
 					<mat-slide-toggle matTooltip="Toggle checkbox mode" [checked]="true" (click)="toggleCheckboxMode()">
@@ -280,13 +303,19 @@
 					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle alert" [checked]="true" (click)="toggleAlertVisibility()"> Alert </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle alert" [checked]="true" (click)="toggleAlertVisibility()">
+						Alert
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle disabled mode" [checked]="false" (click)="toggleDisabledMode()"> Disabled </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle disabled mode" [checked]="false" (click)="toggleDisabledMode()">
+						Disabled
+					</mat-slide-toggle>
 				</mat-list-item>
 				<mat-list-item>
-					<mat-slide-toggle matTooltip="Toggle signature" [checked]="true" (click)="toggleSignature()"> Signature </mat-slide-toggle>
+					<mat-slide-toggle matTooltip="Toggle signature" [checked]="true" (click)="toggleSignature()">
+						Signature
+					</mat-slide-toggle>
 				</mat-list-item>
 			</fieldset>
 		</mat-list>

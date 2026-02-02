@@ -7,7 +7,7 @@ import {JsonPipe} from '@angular/common';
 	imports: [JsonPipe, MatPaginatorModule],
 	templateUrl: './paginator-example-other-options-preview.component.html',
 	styleUrls: ['../paginator-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
-	host: {class: 'layout-column'}
+	host: {class: 'layout-column'},
 })
 export class PaginatorExampleOtherOptionsPreviewComponent implements AfterViewInit {
 	initializedText = 'Paginator has not yet been initialized';
@@ -15,6 +15,8 @@ export class PaginatorExampleOtherOptionsPreviewComponent implements AfterViewIn
 	private readonly initializedPaginator = viewChild.required<MatPaginator>('initialized');
 
 	ngAfterViewInit(): void {
-		this.initializedPaginator().initialized.subscribe(() => (this.initializedText = 'Paginator has now been initialized'));
+		this.initializedPaginator().initialized.subscribe(() => {
+			this.initializedText = 'Paginator has now been initialized';
+		});
 	}
 }
