@@ -14,8 +14,8 @@ import {BannerComponent} from './banner/banner.component';
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 	host: {
-		'class.has-opened-mobile-navigation': 'showMobileNavigation',
-		'class.has-banner': 'hasBanner',
+		'[class.has-opened-mobile-navigation]': 'showMobileNavigation',
+		'[class.has-banner]': 'hasBanner',
 	},
 })
 export class AppComponent {
