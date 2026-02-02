@@ -53,6 +53,9 @@ export const OB_ACCESSIBILITY_STATEMENT_CONFIGURATION = new InjectionToken<ObIAc
 	'AccessibilityStatementConfiguration'
 );
 export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current language in URL');
+export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
+	'Prefix for the translation keys of custom error messages.'
+);
 
 export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
