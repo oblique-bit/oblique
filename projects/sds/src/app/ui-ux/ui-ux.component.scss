@@ -23,7 +23,7 @@ aside {
 
 	.design-files,
 	.related-links {
-		padding: 24px 16px 16px 16px;
+		padding: 24px;
 	}
 
 	.design-files {
@@ -34,37 +34,18 @@ aside {
 		background-color: #e5e5e5;
 	}
 
-	.link-list {
-		display: flex;
-		flex-direction: column;
-		gap: 16px;
-		padding: 0;
-
-		li {
-			display: block;
-		}
-	}
-
 	.figma {
 		display: flex;
-		padding-left: 42px;
+		justify-content: center;
+		align-items: center;
+		gap: 16px;
 		line-height: 45px;
 		border-radius: 4px;
 		color: #ffffff;
-		background: #1e1e1e url("/assets/images/figma_logo.svg") no-repeat 16px 50%;
+		background-color: #1e1e1e;
 
 		&:hover {
 			background-color: rgb(0, 79, 128);
-		}
-	}
-
-	.designer {
-		margin-top: 16px;
-		font-size: 12px;
-		margin-bottom: 0;
-
-		.title {
-			font-weight: 700;
 		}
 	}
 
