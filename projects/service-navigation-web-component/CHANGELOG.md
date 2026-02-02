@@ -1,4 +1,8 @@
-# [15.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0-rc.1) (2026-01-23)
+# [15.0.0](https://github.com/oblique-bit/oblique/compare/14.2.0...15.0.0) (2026-02-02)
+
+## Bug Fixes
+
+- **service-navigation:** don't sync language when not logged in ([41412700](https://github.com/oblique-bit/oblique/commit/4141270039600ce6784c48981add69922abc2602))
 
 ## Features
 

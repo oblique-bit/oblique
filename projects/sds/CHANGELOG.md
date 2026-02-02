@@ -1,4 +1,4 @@
-# [15.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0-rc.1) (2026-01-23)
+# [15.0.0](https://github.com/oblique-bit/oblique/compare/14.1.2...15.0.0) (2026-02-02)
 
 ## Bug Fixes
 
@@ -19,6 +19,7 @@
 - **icon:** search icons by alias ([bed52b8d](https://github.com/oblique-bit/oblique/commit/bed52b8db5fd8987e791c9c5f8197c0f8f7f2631))
 - **sds:** add a polyfill for `Object.groupBy` ([70697fd9](https://github.com/oblique-bit/oblique/commit/70697fd9c1a35e0bf5bb192d6e2d137ca6308102))
 - **styles:** limit the width of the application to 1440px ([6ef73350](https://github.com/oblique-bit/oblique/commit/6ef73350168ac33c4dcc970afb87e616b284d48f))
+- **tabbed-page:** rework the Figma box ([9077aa7e](https://github.com/oblique-bit/oblique/commit/9077aa7ef3223e23fb82b2fcb6e8e6e04497a48d))
 
 # [14.1.2](https://github.com/oblique-bit/oblique/compare/14.1.1...14.1.2) (2025-12-01)
 

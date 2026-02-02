@@ -1,10 +1,8 @@
-# [15.0.0-rc.3](https://github.com/oblique-bit/oblique/compare/15.0.0-rc.2...15.0.0-rc.3) (2026-01-28)
+# [15.0.0](https://github.com/oblique-bit/oblique/compare/14.1.2...15.0.0) (2026-02-02)
 
 ## Bug Fixes
 
 - **update:** update angular-eslint too ([d9f98770](https://github.com/oblique-bit/oblique/commit/d9f98770e21c9d93cec61f2db5cd17bb0e59553d))
-
-# [15.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0-rc.1) (2026-01-23)
 
 ## Features
 

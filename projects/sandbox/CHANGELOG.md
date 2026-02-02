@@ -1,4 +1,4 @@
-# [15.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0-rc.1) (2026-01-23)
+# [15.0.0](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0) (2026-02-02)
 
 ## Bug Fixes
 

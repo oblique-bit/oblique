@@ -1,16 +1,9 @@
-# [15.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0-rc.1) (2026-01-23)
-
-## Bug Fixes
-
-- **master-layout:** make scroll buttons visible to screen readers ([b88b8820](https://github.com/oblique-bit/oblique/commit/b88b88208ff3cad047d0c32845397cce7bca689d))
-- **master-layout:** ensure nav scroll button icons are correctly sized ([91c89113](https://github.com/oblique-bit/oblique/commit/91c891131ab350cde05ab5dad397fe0433d45814))
-- **schematics:** ensure `ng-add` installs `@ngx-translate/core@17` instead of 16 ([771ca22a](https://github.com/oblique-bit/oblique/commit/771ca22ab21c6ca391ca615987416692c9aff45f))
+# [15.0.0](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0) (2026-02-02)
 
 ## Features
 
 - **autocomplete:** add support for complex objects with `displayWith` ([95eeb698](https://github.com/oblique-bit/oblique/commit/95eeb6981733f384f4dd690699ddfe5b9619aa16))
 - **autocomplete:** add support for `mat-hint` ([ba4ddcbc](https://github.com/oblique-bit/oblique/commit/ba4ddcbc8c19840c2938acbb3e7c9bf598533080))
-- **collapse:** use css animations instead of angular animations ([08be5093](https://github.com/oblique-bit/oblique/commit/08be5093e55f5f4b18a7fa78c12a224e62ccd937))
 - **icon:** update icon set with new, renamed and redrawn icons ([0ca1c464](https://github.com/oblique-bit/oblique/commit/0ca1c4645e118a95d90de1fbd959a57a7b9d4b9c))
 - **master-layout:** remove deprecated `maxLastUsedApplications` property ([74603fe0](https://github.com/oblique-bit/oblique/commit/74603fe024c4694b7a475b779b4182b7e535b3be))
 - **master-layout:** remove deprecated `maxFavoriteApplications` ([1a55eaa5](https://github.com/oblique-bit/oblique/commit/1a55eaa5b01f30dd96610bfe22e751d472d824ad))
@@ -22,9 +15,16 @@
 - **service-navigation:** remove my-business-partnerships link in profile widget ([60eb5332](https://github.com/oblique-bit/oblique/commit/60eb53328ce1e36957f109768817035eeb634512))
 - **service-navigation:** return `undefined` in case of error while getting the login state ([3e12e2ac](https://github.com/oblique-bit/oblique/commit/3e12e2ac143239034c63d732c40bbd73d974a0eb))
 
+## Bug Fixes
+
+- **master-layout:** make scroll buttons visible to screen readers ([b88b8820](https://github.com/oblique-bit/oblique/commit/b88b88208ff3cad047d0c32845397cce7bca689d))
+- **master-layout:** ensure nav scroll button icons are correctly sized ([91c89113](https://github.com/oblique-bit/oblique/commit/91c891131ab350cde05ab5dad397fe0433d45814))
+- **schematics:** ensure `ng-add` installs `@ngx-translate/core@17` instead of 16 ([771ca22a](https://github.com/oblique-bit/oblique/commit/771ca22ab21c6ca391ca615987416692c9aff45f))
+
 ## BREAKING CHANGES
 
 - **collapse:** `ObGlobalEvents` is required is tests using `ObCollapse`
+- **dependencies**: Angular 20 isn't supported anymore
 - **icon:** The following icons have been renamed (Solved by Schematics):
   - arrow_down-left -> arrow_down_left
   - arrow_down-right -> arrow_down_right
