@@ -4,14 +4,18 @@
 > The source code is already public to support transparency and collaboration.  
 > The library will be published to npm once the first stable version is ready.
 
-Tailored for Swiss branded business web application, the Oblique Design System provides a unified foundation
-for building applications within the Oblique ecosystem. It enforces the federal corporate design, ensuring
-visual and behavioral consistency, accessibility, and compliance across all federal web applications.
+Tailored for your Swiss branded business web application, the Oblique Design System provides a unified foundation for
+building applications within the Oblique ecosystem. It enforces the federal corporate design, ensuring visual and
+behavioral consistency, accessibility, and compliance across all federal web applications.
 
-A strict 1:1 correspondence between code and Figma components is maintained: each Figma token translates directly
-into a CSS variable. This ensures that designers and developers work with a shared source of truth — the same design
-decisions, the same components, and the same behavior across all products. This guarantees a consistent look and
-feel across all federal projects.
+A strict 1:1 correspondence between code and Figma components is maintained: each Figma token translates directly into
+a CSS variable. This ensures that designers and developers work with a shared source of truth — the same design
+decisions, the same components, and the same behavior across all products. This guarantees a consistent look and feel
+across all federal projects.
+
+While the system follows the Federal Web Guidelines published by the Federal Chancellery, certain deviations are
+necessary. The guidelines were primarily created for websites, whereas the Design System is tailored to the specific
+needs of web applications.
 
 While the system follows the Federal Web Guidelines published by the Federal Chancellery, certain
 [deviations](https://oblique.bit.admin.ch/introductions/deviations-from-wgl) are necessary. The guidelines were
@@ -60,72 +64,39 @@ This package includes:
 
 ### Design Tokens
 
-All visual properties — including colors, typography, spacing, radii, and more — are defined as design tokens
-in Figma, which serves as the single source of truth. These tokens are automatically exported and converted
-into CSS variables during the build and release process, ensuring perfect synchronization between Figma, tokens,
-and code while maintaining compliance with corporate design and federal web standards.
-
-Design tokens enable automated updates across the design system, eliminating the need for developers to manually
-transfer values from visual design to code, and ensuring consistent, seamless synchronization throughout the system.
+All visual properties — including colors, typography, spacing, radii, and more — are defined as design tokens in Figma,
+which serves as the single source of truth. These tokens are automatically exported and converted into CSS variables
+during the build and release process, ensuring perfect synchronization between Figma, tokens, and code while
+maintaining compliance with corporate design and federal web standards.
 
 #### Token hierarchy
 
 Figma defines three levels of tokens:
 
-- Primitive tokens — hold raw values (e.g., hex color codes, numeric values)
-- Semantic tokens — reference primitive tokens and are intended for project use
-- Component tokens — reference semantic tokens and are used internally by Oblique components
+- **Primitive** - for internal use only
+- **Semantic** - for internal and project use
+- **Component** - for internal use only; used to build Oblique component
+
+Some component tokens are used to style native HTML elements. In Figma, these are regular component tokens. However, because the codebase does not provide a dedicated component for every HTML element, these tokens require special handling in code.
+
+While these HTML-related tokens are technically available to projects, they are considered implementation details and should not be reused.
+
+| Figma Token | Value                                              | CSS variable                         | Defined in                      | Usable by projects |
+| ----------- | -------------------------------------------------- | ------------------------------------ | ------------------------------- | ------------------ |
+| Primitive   | Raw values (e.g., hex color codes, numeric values) | -                                    | -                               | No                 |
+| Semantic    | Reference to a primitive token                     | Raw value                            | Global stylesheet               | Yes                |
+| Component   | Reference to a semantic token                      | Reference to a semantic CSS variable | Individual component stylesheet | No                 |
+| HTML        | Reference to a semantic token                      | Reference to a semantic CSS variable | Global stylesheet               | No                 |
 
 #### Modes
 
-Tokens can vary across multiple modes:
+Modes are a mechanism for conditionally changing the values of a collection of related tokens. A mode represents a
+consistent and coherent design variant that reuses the same tokens. Modes are defined directly in Figma and can be
+activated by switching them on, immediately adapting the look and feel of the affected components.
 
-- Lightness
-  - `light`: default mode with a light background and dark text
-  - `dark`: alternative mode with a dark background and light text
-- Viewport
-  - `desktop`: default mode for large viewports
-  - `mobile`: alternative mode for smaller viewports
-- Size
-  - `medium`: default mode for standard applications
-  - `small`: smaller components, suited for data-heavy interfaces
-  - `large`: larger components, optimized for accessibility
-- Typography context
-  - `interface`: compact headings, suited for web applications
-  - `prose`: larger headings, suited for websites
-- Emphasis
-  - `high`: default mode for primary actions and critical elements
-  - `low`: less prominent mode for secondary or background elements
-- Density
-  - `standard`: default mode for general-purpose applications
-  - `compact`: smaller margins, suited for dense data views
-  - `spacious`: larger margins, suited for focus-intensive interfaces
-
-#### Usage and availability
-
-- Primitive tokens are for internal use only — no CSS variables are generated for them
-- Semantic tokens are exposed as CSS variables and should be used by projects to build their own components
-- Component tokens are used internally by Oblique components and are not exposed globally
-- HTML tokens are a subset of Component tokens that are exposed as CSS variables. They are used to style HTML
-  elements such as headings or paragraph
-
-All modes are already embedded in the oblique stylesheet
-
-- Default modes are always available
-- Lightness and viewport modes are applied automatically using media queries.
-- Other modes must be activated by applying the corresponding CSS class:
-
-| Mode                      | Class                          |
-| ------------------------- | ------------------------------ |
-| size: small               | `.ob-size-small`               |
-| size: large               | `.ob-size-large`               |
-| typography-context: prose | `.ob-typography-context-prose` |
-| density: compact          | `.ob-density-compact`          |
-| density: spacious         | `.ob-density-spacious`         |
-
-Each semantic and html token has a corresponding CSS variable with the same name in Oblique stylesheet. Since
-component-level CSS variables reference semantic tokens, updating a semantic token automatically updates all
-components that use it.
+At the code level, modes are controlled through CSS classes and media queries. This means projects can gain support
+for features such as dark mode in their custom components simply by using the relevant tokens, with no additional
+implementation effort.
 
 ## Tips & Best Practices
 
