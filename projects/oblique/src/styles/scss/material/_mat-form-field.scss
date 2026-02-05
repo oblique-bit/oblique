@@ -108,7 +108,6 @@
 		}
 
 		.mat-mdc-text-field-wrapper {
-			padding-left: 12px; // empiric value
 			@include mat-form-field.standard-max-height();
 
 			.ob-form-sm & {
