@@ -1,4 +1,5 @@
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Observable, Subject} from 'rxjs';
 import {ObISpinnerEvent} from './spinner.model';
@@ -6,22 +7,30 @@ import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerService} from './spinner.service';
 import {skip} from 'rxjs/operators';
 
+@Component({
+	imports: [ObSpinnerComponent],
+	template: `<div><ob-spinner /></div>`,
+})
+class MockComponent {}
+
 describe('ObSpinnerComponent', () => {
 	let component: ObSpinnerComponent;
-	let fixture: ComponentFixture<ObSpinnerComponent>;
+	let spinnerElement: DebugElement;
+	let fixture: ComponentFixture<MockComponent>;
 	let mockObSpinnerService;
 
 	beforeEach(async () => {
 		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
 		await TestBed.configureTestingModule({
 			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}],
-			imports: [ObSpinnerComponent],
+			imports: [MockComponent],
 		}).compileComponents();
 	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ObSpinnerComponent);
-		component = fixture.componentInstance;
+		fixture = TestBed.createComponent(MockComponent);
+		spinnerElement = fixture.debugElement.query(By.directive(ObSpinnerComponent));
+		component = spinnerElement.componentInstance;
 		fixture.detectChanges();
 	});
 
@@ -30,7 +39,7 @@ describe('ObSpinnerComponent', () => {
 	});
 
 	it('should have "ob-spinner" class', () => {
-		expect(fixture.debugElement.classes['ob-spinner']).toBe(true);
+		expect(spinnerElement.classes['ob-spinner']).toBe(true);
 	});
 
 	describe('property "channel"', () => {
@@ -51,7 +60,7 @@ describe('ObSpinnerComponent', () => {
 		])('$description', ({state, result}) => {
 			component.fixed = state;
 			fixture.detectChanges();
-			expect(fixture.debugElement.query(By.css('.ob-overlay')).classes['ob-overlay-fixed']).toBe(result);
+			expect(spinnerElement.query(By.css('.ob-overlay')).classes['ob-overlay-fixed']).toBe(result);
 		});
 	});
 
