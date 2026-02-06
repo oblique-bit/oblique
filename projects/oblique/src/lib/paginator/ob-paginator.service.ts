@@ -12,7 +12,7 @@ export class ObPaginatorService extends MatPaginatorIntl {
 		this.initTranslation();
 	}
 
-	getRangeLabel = (page: number, pageSize: number, length: number): string => {
+	override getRangeLabel = (page: number, pageSize: number, length: number): string => {
 		if (length === 0 || pageSize === 0) {
 			return `${this.pageLabel} 0 ${this.ofLabel} ${length}`;
 		}
