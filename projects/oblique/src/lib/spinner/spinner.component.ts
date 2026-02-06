@@ -1,8 +1,8 @@
 import {AsyncPipe} from '@angular/common';
-import {Component, ElementRef, Input, OnInit, ViewEncapsulation, inject} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, Renderer2, ViewEncapsulation, inject} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {Observable} from 'rxjs';
-import {delay, filter, map, startWith} from 'rxjs/operators';
+import {delay, filter, map, startWith, tap} from 'rxjs/operators';
 import {ObSpinnerService} from './spinner.service';
 
 @Component({
@@ -19,8 +19,10 @@ export class ObSpinnerComponent implements OnInit {
 	@Input() fixed = false;
 	state$: Observable<string>;
 
+	private readonly renderer = inject(Renderer2);
 	private readonly spinnerService = inject(ObSpinnerService);
 	private readonly element = inject(ElementRef);
+	private readonly parentElement = this.element.nativeElement.parentElement;
 
 	ngOnInit(): void {
 		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
@@ -28,7 +30,18 @@ export class ObSpinnerComponent implements OnInit {
 			filter(event => event.channel === this.channel),
 			map(event => (event.active ? 'in' : 'out')),
 			startWith('out'),
-			delay(0) // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
+			delay(0), // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
+			tap(state => {
+				this.setInert(state);
+			})
 		);
+	}
+
+	private setInert(state: string): void {
+		if (state === 'in') {
+			this.renderer.setAttribute(this.parentElement, 'inert', '');
+		} else {
+			this.renderer.removeAttribute(this.parentElement, 'inert');
+		}
 	}
 }

@@ -92,9 +92,9 @@ describe('ObSpinnerComponent', () => {
 		}));
 
 		describe.each([
-			{desc: 'active', active: true, state: 'in'},
-			{desc: 'inactive', active: false, state: 'out'},
-		])('$desc ObISpinnerEvent is emitted in the same channel', ({active, state}) => {
+			{desc: 'active', active: true, state: 'in', inert: true},
+			{desc: 'inactive', active: false, state: 'out', inert: false},
+		])('$desc ObISpinnerEvent is emitted in the same channel', ({active, state, inert}) => {
 			let stateValue: string;
 			beforeEach(done => {
 				// skip(1) is to ignore the `startWith`value
@@ -107,6 +107,10 @@ describe('ObSpinnerComponent', () => {
 
 			it(`should emit "${state}"`, () => {
 				expect(stateValue).toBe(state);
+			});
+
+			it('should toggle "inert" on the parent element', () => {
+				expect(spinnerElement.parent.nativeElement.hasAttribute('inert')).toBe(inert);
 			});
 		});
 	});
