@@ -11,7 +11,13 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
 	imports: [ObSpinnerComponent],
-	template: `<div><ob-spinner /></div>`,
+	template: `
+		<button type="button" id="outside">outside</button>
+		<div>
+			<button type="button" id="inside">inside</button>
+			<ob-spinner />
+		</div>
+	`,
 })
 class MockComponent {}
 
@@ -153,6 +159,112 @@ describe('ObSpinnerComponent', () => {
 
 			it('should announce', () => {
 				expect(announcer.announce).toHaveBeenCalledWith(announce);
+			});
+		});
+	});
+
+	describe('focus handling', () => {
+		describe('focus is on the outside button when spinner is activated', () => {
+			let outsideButton: HTMLButtonElement;
+			let element: HTMLElement;
+
+			beforeEach(done => {
+				outsideButton = fixture.debugElement.query(By.css('#outside')).nativeElement;
+				outsideButton.focus();
+
+				// skip(1) is to ignore the `startWith`value
+				component.state$.pipe(skip(1)).subscribe(() => {
+					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
+					done();
+				});
+
+				mockObSpinnerService.events$.next({active: true, channel: ObSpinnerService.CHANNEL});
+			});
+
+			test('no focusable element is created', () => {
+				expect(element).toBeNull();
+			});
+
+			test('focus stays on the outside button', () => {
+				expect(document.activeElement === outsideButton).toBe(true);
+			});
+		});
+
+		describe.each([
+			{desc: 'fixed', fixed: true, text: 'i18n.oblique.spinner.is-fixed.activate'},
+			{desc: 'floating', fixed: false, text: 'i18n.oblique.spinner.activate'},
+		])('focus is on the inside button when $desc spinner is activated', ({fixed, text}) => {
+			let outsideButton: HTMLButtonElement;
+			let insideButton: HTMLButtonElement;
+			let element: HTMLElement;
+
+			beforeEach(done => {
+				outsideButton = fixture.debugElement.query(By.css('#outside')).nativeElement;
+				insideButton = fixture.debugElement.query(By.css('#inside')).nativeElement;
+				insideButton.focus();
+				component.fixed = fixed;
+
+				// skip(1) is to ignore the `startWith`value
+				component.state$.pipe(skip(1)).subscribe(() => {
+					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
+					done();
+				});
+
+				mockObSpinnerService.events$.next({active: true, channel: ObSpinnerService.CHANNEL});
+			});
+
+			test('a focusable element is created', () => {
+				expect(element).toBeTruthy();
+			});
+
+			test(`the focusable element contains the "${text}"`, () => {
+				expect(element.textContent).toBe(text);
+			});
+
+			test('focus moved outside of the inert area', () => {
+				expect(document.activeElement === element).toBe(true);
+			});
+
+			describe('spinner is deactivated without changing the focus', () => {
+				beforeEach(done => {
+					// skip(1) is to ignore the `startWith`value
+					component.state$.pipe(skip(1)).subscribe(() => {
+						element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
+						done();
+					});
+
+					mockObSpinnerService.events$.next({active: false, channel: ObSpinnerService.CHANNEL});
+				});
+
+				test('the focusable element is destroyed', () => {
+					expect(element).toBeNull();
+				});
+
+				test('focus restored', () => {
+					expect(document.activeElement === insideButton).toBe(true);
+				});
+			});
+
+			describe('spinner is deactivated after the focus have been changed', () => {
+				beforeEach(done => {
+					outsideButton.focus();
+
+					// skip(1) is to ignore the `startWith`value
+					component.state$.pipe(skip(1)).subscribe(() => {
+						element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
+						done();
+					});
+
+					mockObSpinnerService.events$.next({active: false, channel: ObSpinnerService.CHANNEL});
+				});
+
+				test('the focusable element is destroyed', () => {
+					expect(element).toBeNull();
+				});
+
+				test('focus stays on the outside button', () => {
+					expect(document.activeElement === outsideButton).toBe(true);
+				});
 			});
 		});
 	});
