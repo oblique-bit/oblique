@@ -67,24 +67,6 @@ describe('ObSpinnerComponent', () => {
 			});
 		});
 
-		it('should emit "in" when an active ObISpinnerEvent is emitted in the same channel', done => {
-			// skip(1) is to ignore the `startWith`value
-			component.state$.pipe(skip(1)).subscribe(value => {
-				expect(value).toBe('in');
-				done();
-			});
-			mockObSpinnerService.events$.next({active: true, channel: ObSpinnerService.CHANNEL});
-		});
-
-		it('should emit "out" when an active ObISpinnerEvent is emitted in the same channel', done => {
-			// skip(1) is to ignore the `startWith`value
-			component.state$.pipe(skip(1)).subscribe(value => {
-				expect(value).toBe('out');
-				done();
-			});
-			mockObSpinnerService.events$.next({active: false, channel: ObSpinnerService.CHANNEL});
-		});
-
 		it('should not emit when an ObISpinnerEvent is emitted in another channel', fakeAsync(() => {
 			let emitted = false;
 			// skip(1) is to ignore the `startWith`value
@@ -95,5 +77,24 @@ describe('ObSpinnerComponent', () => {
 			tick();
 			expect(emitted).toBe(false);
 		}));
+
+		describe.each([
+			{desc: 'active', active: true, state: 'in'},
+			{desc: 'inactive', active: false, state: 'out'},
+		])('$desc ObISpinnerEvent is emitted in the same channel', ({active, state}) => {
+			let stateValue: string;
+			beforeEach(done => {
+				// skip(1) is to ignore the `startWith`value
+				component.state$.pipe(skip(1)).subscribe(value => {
+					stateValue = value;
+					done();
+				});
+				mockObSpinnerService.events$.next({active, channel: ObSpinnerService.CHANNEL});
+			});
+
+			it(`should emit "${state}"`, () => {
+				expect(stateValue).toBe(state);
+			});
+		});
 	});
 });
