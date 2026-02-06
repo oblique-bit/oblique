@@ -1,19 +1,24 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.angular.json",
   "compilerOptions": {
-    "module": "es2015",
+    "strict": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "isolatedModules": false,
+    "useDefineForClassFields": false,
     "declaration": true,
-    "inlineSources": true,
-    "importHelpers": true,
-    "types": ["node"]
+    "declarationMap": true,
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
     "enableResourceInlining": true,
-    "compilationMode": "partial"
+    "compilationMode": "partial",
+    "strictTemplates": false
   },
   "exclude": ["src/test.ts", "**/*.spec.ts"]
 }

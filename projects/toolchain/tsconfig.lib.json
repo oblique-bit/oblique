@@ -1,17 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "downlevelIteration": true,
-    "skipLibCheck": true,
-    "strict": true,
+    "module": "commonjs",
     "declaration": true,
-    "sourceMap": false,
+    "declarationMap": true,
     "rootDir": "src/",
     "outDir": "../../dist/toolchain"
   },
