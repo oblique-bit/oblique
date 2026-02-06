@@ -1,6 +1,8 @@
 import {AsyncPipe} from '@angular/common';
 import {Component, ElementRef, Input, OnInit, Renderer2, ViewEncapsulation, inject} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
+import {TranslateService} from '@ngx-translate/core';
 import {Observable} from 'rxjs';
 import {delay, filter, map, startWith, tap} from 'rxjs/operators';
 import {ObSpinnerService} from './spinner.service';
@@ -22,6 +24,8 @@ export class ObSpinnerComponent implements OnInit {
 	private readonly renderer = inject(Renderer2);
 	private readonly spinnerService = inject(ObSpinnerService);
 	private readonly element = inject(ElementRef);
+	private readonly liveAnnouncer = inject(LiveAnnouncer);
+	private readonly translate = inject(TranslateService);
 	private readonly parentElement = this.element.nativeElement.parentElement;
 
 	ngOnInit(): void {
@@ -33,6 +37,7 @@ export class ObSpinnerComponent implements OnInit {
 			delay(0), // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
 			tap(state => {
 				this.setInert(state);
+				this.announceSpinnerState(state);
 			})
 		);
 	}
@@ -43,5 +48,16 @@ export class ObSpinnerComponent implements OnInit {
 		} else {
 			this.renderer.removeAttribute(this.parentElement, 'inert');
 		}
+	}
+
+	private announceSpinnerState(state: string): void {
+		void this.liveAnnouncer.announce(this.translate.instant(this.getAnnouncementText(state)));
+	}
+
+	private getAnnouncementText(state: string): string {
+		if (state === 'out') {
+			return 'i18n.oblique.spinner.deactivate';
+		}
+		return this.fixed ? 'i18n.oblique.spinner.is-fixed.activate' : 'i18n.oblique.spinner.activate';
 	}
 }

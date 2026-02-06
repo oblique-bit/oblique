@@ -1,11 +1,13 @@
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {Observable, Subject} from 'rxjs';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerService} from './spinner.service';
 import {skip} from 'rxjs/operators';
+import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
 	imports: [ObSpinnerComponent],
@@ -22,7 +24,7 @@ describe('ObSpinnerComponent', () => {
 	beforeEach(async () => {
 		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
 		await TestBed.configureTestingModule({
-			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}],
+			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}, provideObliqueTestingConfiguration()],
 			imports: [MockComponent],
 		}).compileComponents();
 	});
@@ -92,11 +94,47 @@ describe('ObSpinnerComponent', () => {
 		}));
 
 		describe.each([
-			{desc: 'active', active: true, state: 'in', inert: true},
-			{desc: 'inactive', active: false, state: 'out', inert: false},
-		])('$desc ObISpinnerEvent is emitted in the same channel', ({active, state, inert}) => {
+			{
+				desc: 'active fixed',
+				active: true,
+				fixed: true,
+				state: 'in',
+				inert: true,
+				announce: 'i18n.oblique.spinner.is-fixed.activate',
+			},
+			{
+				desc: 'active floating',
+				active: true,
+				fixed: false,
+				state: 'in',
+				inert: true,
+				announce: 'i18n.oblique.spinner.activate',
+			},
+			{
+				desc: 'inactive fixed',
+				active: false,
+				fixed: true,
+				state: 'out',
+				inert: false,
+				announce: 'i18n.oblique.spinner.deactivate',
+			},
+			{
+				desc: 'inactive floating',
+				active: false,
+				fixed: true,
+				state: 'out',
+				inert: false,
+				announce: 'i18n.oblique.spinner.deactivate',
+			},
+		])('$desc ObISpinnerEvent is emitted in the same channel', ({active, fixed, state, inert, announce}) => {
 			let stateValue: string;
+			let announcer: LiveAnnouncer;
+
 			beforeEach(done => {
+				announcer = TestBed.inject(LiveAnnouncer);
+				jest.spyOn(announcer, 'announce');
+				component.fixed = fixed;
+
 				// skip(1) is to ignore the `startWith`value
 				component.state$.pipe(skip(1)).subscribe(value => {
 					stateValue = value;
@@ -111,6 +149,10 @@ describe('ObSpinnerComponent', () => {
 
 			it('should toggle "inert" on the parent element', () => {
 				expect(spinnerElement.parent.nativeElement.hasAttribute('inert')).toBe(inert);
+			});
+
+			it('should announce', () => {
+				expect(announcer.announce).toHaveBeenCalledWith(announce);
 			});
 		});
 	});
