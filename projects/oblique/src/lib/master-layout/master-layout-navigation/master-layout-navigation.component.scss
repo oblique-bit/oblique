@@ -315,10 +315,6 @@
 					right: 0;
 				}
 
-				&:last-of-type.ob-expandable .ob-sub-menu {
-					right: 0;
-				}
-
 				> a,
 				> button:not(.ob-remove-menu-item) {
 					border-bottom: variables.$ob-line-width-sm solid transparent;
