@@ -1,3 +1,10 @@
+# [15.0.1](https://github.com/oblique-bit/oblique/compare/15.0.0...15.0.1) (2026-02-16)
+
+## Bug Fixes
+
+- **master-layout:** ensure only main navigation items past the 5th item are right aligned ([23831a11](https://github.com/oblique-bit/oblique/commit/23831a11f5a1ebf1d78d68c008f884a9b23b0ebf))
+- **material:** align icon prefix in inputs ([248ea38a](https://github.com/oblique-bit/oblique/commit/248ea38a86e39740e5baa71d41f1379424420f95))
+
 # [15.0.0](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0) (2026-02-02)
 
 ## Features

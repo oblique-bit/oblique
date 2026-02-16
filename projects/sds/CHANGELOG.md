@@ -1,3 +1,10 @@
+# [15.0.1](https://github.com/oblique-bit/oblique/compare/15.0.0...15.0.1) (2026-02-16)
+
+## Bug Fixes
+
+- **cms:** ensure the current page is always valid with the current version ([91a25039](https://github.com/oblique-bit/oblique/commit/91a250392b139405d7a182e02952070f8ceeddc7))
+- **side-navigation:** link to the correct Figma page ([af769fb7](https://github.com/oblique-bit/oblique/commit/af769fb798738266741e03335322a6865f188ef0))
+
 # [15.0.0](https://github.com/oblique-bit/oblique/compare/14.1.2...15.0.0) (2026-02-02)
 
 ## Bug Fixes

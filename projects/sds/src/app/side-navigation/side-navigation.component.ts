@@ -16,9 +16,11 @@ import {
 	forkJoin,
 	map,
 	of,
+	shareReplay,
 	startWith,
 	switchMap,
 	tap,
+	withLatestFrom,
 } from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
@@ -34,6 +36,7 @@ import {ImageComponent} from './image/image.component';
 import {VersionService} from '../shared/version/version.service';
 import {SlugService} from '../shared/slug/slug.service';
 import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
+import type {CMSPageShort, CMSPages} from '../cms/models/cms-page.model';
 
 @Component({
 	selector: 'app-side-navigation',
@@ -84,10 +87,11 @@ export class SideNavigationComponent implements OnInit {
 	private readonly collapseBreakpointSize = 905;
 
 	constructor() {
+		const pages$ = this.preparePages();
 		this.urlParamVersion$ = this.prepareUrlParams();
 		this.selectedSlug$ = this.prepareSelectedSlug();
-		this.filteredAccordions$ = this.prepareAccordions();
-		this.redirectOnVersionChange();
+		this.filteredAccordions$ = this.prepareAccordions(pages$);
+		this.redirectOnVersionChange(pages$);
 	}
 
 	ngOnInit(): void {
@@ -116,13 +120,19 @@ export class SideNavigationComponent implements OnInit {
 		}
 	}
 
-	private prepareAccordions(): Observable<Accordion[]> {
+	private preparePages(): Observable<CMSPages> {
 		return forkJoin({
-			categories: this.cmsDataService.getCategories(),
 			tabbedPages: this.cmsDataService.getTabbedPagesShort(),
 			textPages: this.cmsDataService.getTextPagesShort(),
+		}).pipe(shareReplay({bufferSize: 1, refCount: true}));
+	}
+
+	private prepareAccordions(pages$: Observable<CMSPages>): Observable<Accordion[]> {
+		return forkJoin({
+			categories: this.cmsDataService.getCategories(),
+			pages: pages$,
 		}).pipe(
-			map(value => composeAccordions(value)),
+			map(({categories, pages}) => composeAccordions({categories, ...pages})),
 			tap(accordions => this.setUpSlugToIdServiceDataSet(accordions)),
 			combineLatestWith(this.prepareSearchText(), this.version$, this.urlParamVersion$),
 			map(([accordions, searchText, versionId, urlParamVersion]) =>
@@ -220,12 +230,13 @@ export class SideNavigationComponent implements OnInit {
 		return Number(activatedRoute.snapshot.queryParamMap.get('version')) || undefined;
 	}
 
-	private redirectOnVersionChange(): void {
+	private redirectOnVersionChange(pages$: Observable<CMSPages>): void {
 		this.version$
 			.pipe(
 				skip(3),
+				withLatestFrom(this.getVersionedPages(pages$)),
 				takeUntilDestroyed(),
-				map(version => this.slugService.getNewSlug(version)),
+				map(([version, pages]) => this.slugService.getNewSlug(version, pages)),
 				filter(slug => Boolean(slug))
 			)
 			.subscribe(slug => {
@@ -236,6 +247,21 @@ export class SideNavigationComponent implements OnInit {
 					void this.router.navigate(['..', slug], {...extras, relativeTo: this.activatedRoute.children[0]});
 				}
 			});
+	}
+
+	private getVersionedPages(pages$: Observable<CMSPages>): Observable<CMSPageShort[]> {
+		return pages$.pipe(
+			map(({tabbedPages, textPages}) => [...tabbedPages.data, ...textPages.data]),
+			map(pages => pages.filter(page => page.min_version !== 11 || page.max_version)),
+			map(pages =>
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				pages.map(({slug, min_version, max_version}) => ({
+					slug,
+					minVersion: min_version,
+					maxVersion: max_version ?? Infinity,
+				}))
+			)
+		);
 	}
 
 	private isLayoutCollapsed(): boolean {
