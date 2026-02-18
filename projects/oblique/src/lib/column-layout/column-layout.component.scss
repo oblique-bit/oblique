@@ -20,6 +20,24 @@
 		order: 1;
 	}
 
+	.ob-layout-expanded &.ob-wider-columns {
+		.ob-column-left,
+		.ob-column-right {
+			flex-basis: 2 * variables.$ob-column-width;
+			max-width: 2 * variables.$ob-column-width;
+		}
+	}
+
+	&.ob-wider-columns .ob-collapsed.ob-column-panel {
+		&.ob-column-left {
+			margin-left: -2 * variables.$ob-column-width;
+		}
+
+		&.ob-column-right {
+			margin-right: -2 * variables.$ob-column-width;
+		}
+	}
+
 	@include layout.ob-media-breakpoint-up(sm) {
 		flex-flow: row wrap;
 
@@ -127,11 +145,6 @@
 			flex: 0 0 variables.$ob-column-width;
 			order: 0;
 			max-width: variables.$ob-column-width; // Ensure columns keep shrinking even if text content may overflow.
-
-			@at-root #{selector.append(".ob-wider-columns", &)} {
-				flex-basis: 2 * variables.$ob-column-width;
-				max-width: 2 * variables.$ob-column-width;
-			}
 		}
 
 		.ob-column-left {
@@ -139,10 +152,6 @@
 
 			&.ob-collapsed {
 				margin-left: -(variables.$ob-column-width);
-
-				@at-root #{selector.append(".ob-wider-columns", &)} {
-					margin-left: -2 * variables.$ob-column-width;
-				}
 
 				.ob-column-toggle-left {
 					transform-origin: 0 50%;
@@ -167,10 +176,6 @@
 
 			&.ob-collapsed {
 				margin-right: -(variables.$ob-column-width);
-
-				@at-root #{selector.append(".ob-wider-columns", &)} {
-					margin-right: -2 * variables.$ob-column-width;
-				}
 
 				.ob-column-toggle-right {
 					transform-origin: 100% 50%;
