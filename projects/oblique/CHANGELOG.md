@@ -1032,15 +1032,6 @@
 - **service-navigation:** update notification widget's translations ([a99d965](https://github.com/oblique-bit/oblique/commit/a99d9655acf89c456627a16ee030cca582bf8ed8))
 - **translation:** correct typo in French ([5720713](https://github.com/oblique-bit/oblique/commit/5720713c78b36980a98bf6b9356f33cdb30090b2))
 
-## Features
-
-- **toolchain:** postpone Oblique 10 end of life date to 2024-06-30 ([e1c4323](https://github.com/oblique-bit/oblique/commit/e1c4323483f8701b541fbb5de84891de646ccc60))
-
-## BREAKING CHANGES
-
-- **sticky:** deprecate `ObStickyModule` in favor of CSS flexbox
-- **pop-up:** deprecate `ObPopUpService` in favor of `WINDOW`
-
 # [10.2.0](https://github.com/oblique-bit/oblique/compare/10.1.2...10.2.0) (2023-08-31)
 
 ## Bug Fixes
