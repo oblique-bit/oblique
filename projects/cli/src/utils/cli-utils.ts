@@ -127,10 +127,13 @@ export function getVersionedDependency(dependency: keyof typeof currentVersions)
 }
 
 export function buildOption(key: string, value: string | boolean): string {
-	if (typeof value === 'string') {
-		return `${key}="${value}"`;
+	if (value === true || value === 'true') {
+		return key;
 	}
-	return value ? key : `no-${key}`;
+	if (value === false || value === 'false') {
+		return `no-${key}`;
+	}
+	return `${key}="${value}"`;
 }
 
 export function execute(config: ObCommandConfig): void {
