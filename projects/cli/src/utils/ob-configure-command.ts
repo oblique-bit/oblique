@@ -28,26 +28,35 @@ export function addObNewCommandOptions(
 }
 
 export function configureOption(config: ObNewSchemaOption, longFlag: string): Option {
-	if (isBlank(config.shortFlag) && isBlank(longFlag)) {
-		throw new Error('At least one of shortFlag or longFlag must be provided.');
-	}
-	const shortFlag = (config.shortFlag ?? '').trim();
-	const longFlagClean = (longFlag || '').trim();
-	const flagValuePlaceholder = config.flagValuePlaceholder?.trim() ?? '';
-
-	const flags = [shortFlag ? `-${shortFlag}` : '', longFlagClean ? `--${longFlagClean}` : '']
-		.filter(flag => Boolean(flag))
-		.join(', ');
-
-	const option = new Option([flags, flagValuePlaceholder].filter(Boolean).join(' ').trim(), config.description);
-
+	validateFlags(config, longFlag);
+	const flags = buildFlags(config.shortFlag, longFlag);
+	const option = createValueCommanderOption(config, flags);
 	const optionWithMandatory = addMandatory(option, config.mandatory);
 	const optionWithDefault = addDefaultValue(optionWithMandatory, config.defaultValue, config.defaultValueDescription);
 	return addChoices(optionWithDefault, config.choices);
 }
 
+function validateFlags(config: ObNewSchemaOption, longFlag: string): void {
+	if (isBlank(config.shortFlag) && isBlank(longFlag)) {
+		throw new Error('Either a shortFlag or a longFlag must be provided.');
+	}
+}
+
 function isBlank(value?: string): boolean {
 	return value === undefined || value === null || value.trim().length === 0;
+}
+
+function buildFlags(shortFlag?: string, longFlag?: string): string {
+	const shortFlagClean = (shortFlag ?? '').trim();
+	const longFlagClean = (longFlag ?? '').trim();
+
+	return [shortFlagClean ? `-${shortFlagClean}` : '', longFlagClean ? `--${longFlagClean}` : '']
+		.filter(Boolean)
+		.join(', ');
+}
+
+function createValueCommanderOption(config: ObNewSchemaOption, flags: string): Option {
+	return new Option(`${flags} ${config.flagValuePlaceholder}`.trim(), config.description);
 }
 
 function createOptionDescription(description: string, resources?: string[]): string {
