@@ -18,9 +18,16 @@
   "keywords": [
     "schematics"
   ],
+  "dependencies": {
+    "chalk": "^4.1.2"
+  },
   "exports": {
     "./eslint-config": "./linting/eslint-config-oblique.mjs",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./logger": {
+      "types": "./logger/index.d.ts",
+      "default": "./logger/index.js"
+    }
   },
   "schematics": "./schematics/collection.json",
   "ng-add": {
