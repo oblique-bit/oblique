@@ -827,6 +827,14 @@ export default [
 			 */
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			/**
+			 * Rule @typescript-eslint/strict-void-return (https://typescript-eslint.io/rules/strict-void-return)
+			 * Reason for disabling: `jest.fn()` does not strictly preserve a void return type.
+			 * When mocking typed void functions, the rule flags valid Jest patterns
+			 * Example of invalid code with enabled rule:
+			 * const mock: jest.Mocked<{ func: () => void }> = { func: jest.fn() };
+			 */
+			'@typescript-eslint/strict-void-return': 'off',
+			/**
 			 * Rule: @typescript-eslint/unbound-method (https://typescript-eslint.io/rules/unbound-method)
 			 * Reason for disabling: `toHaveBeenCalled` and similar matchers are always called on unbound methods
 			 * Example with disabled rule:
