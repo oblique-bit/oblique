@@ -1,6 +1,8 @@
-import type {LogLevel, LoggerOptions, Writer} from './types';
+import type {LogLevel, LoggerOptions, MethodKeys, Writer} from './types';
 import {BaseLogger} from './base-logger';
 import type {ObGroupLogger, ObLogger} from './logger.types';
+import {ObLoggerInactiveGroupError} from './errors/ob-logger-error-inactive-group';
+import {ObLoggerNoActiveStepError} from './errors/ob-logger-error-no-active-step';
 
 export class GroupLogger extends BaseLogger implements ObGroupLogger {
 	private static readonly millisecondsPerSecond = 1000;
@@ -13,6 +15,7 @@ export class GroupLogger extends BaseLogger implements ObGroupLogger {
 	private stepMessage: string | undefined;
 	private stepStartTime: number | undefined;
 	private hasError = false;
+	private isGroupInactive = false;
 
 	constructor(writer: Writer, options: LoggerOptions) {
 		super(writer);
@@ -23,6 +26,7 @@ export class GroupLogger extends BaseLogger implements ObGroupLogger {
 	}
 
 	group(message: string): ObGroupLogger {
+		this.validateActiveGroup('group');
 		if (this.stepMessage) {
 			this.stepSuccess(this.stepMessage);
 		}
@@ -31,6 +35,7 @@ export class GroupLogger extends BaseLogger implements ObGroupLogger {
 	}
 
 	step(message: string): void {
+		this.validateActiveGroup('step');
 		if (this.stepMessage) {
 			this.stepSuccess(this.stepMessage);
 		}
@@ -39,14 +44,17 @@ export class GroupLogger extends BaseLogger implements ObGroupLogger {
 		this.stepStartTime = performance.now();
 	}
 
-	stepError(message = this.stepMessage): void {
-		this.error(message ?? '');
+	stepError(message?: string): void {
+		this.validateActiveGroup('stepError');
+		const activeMessage = this.getStepMessage('stepError');
+		this.error(message ?? activeMessage);
 		this.stepMessage = undefined;
 		this.stepStartTime = undefined;
 		this.hasError = true;
 	}
 
 	end(message = this.groupMessage): void {
+		this.validateActiveGroup('end');
 		if (this.stepMessage) {
 			this.success(this.stepMessage);
 		}
@@ -56,6 +64,7 @@ export class GroupLogger extends BaseLogger implements ObGroupLogger {
 		} else {
 			this.parent.success(msg);
 		}
+		this.isGroupInactive = true;
 	}
 
 	protected override formatMessage(level: LogLevel, message: string): string {
@@ -89,5 +98,19 @@ export class GroupLogger extends BaseLogger implements ObGroupLogger {
 
 	private formatTime(time: number): string {
 		return time.toFixed(GroupLogger.timePrecision);
+	}
+
+	private validateActiveGroup(methodName: MethodKeys<GroupLogger>): void {
+		if (this.isGroupInactive) {
+			throw new ObLoggerInactiveGroupError(methodName);
+		}
+	}
+
+	private getStepMessage(methodName: MethodKeys<GroupLogger>): string {
+		if (!this.stepMessage) {
+			throw new ObLoggerNoActiveStepError(methodName);
+		}
+
+		return this.stepMessage;
 	}
 }

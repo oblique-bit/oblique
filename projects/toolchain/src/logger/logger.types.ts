@@ -80,6 +80,7 @@ export interface ObGroupLogger extends ObLogger {
 	 * The nested group must be closed by calling {@link ObGroupLogger#end|end()}.
 	 *
 	 * @param message - The title of the nested log group.
+	 * @throws {ObLoggerInactiveGroupError} If called after {@link end|end()}.
 	 * @returns A new {@link ObGroupLogger} for the nested group.
 	 */
 	group(message: string): ObGroupLogger;
@@ -90,6 +91,7 @@ export interface ObGroupLogger extends ObLogger {
 	 * If a previous step is active, it is automatically completed with a success message including duration.
 	 *
 	 * @param message - Description of the step.
+	 * @throws {ObLoggerInactiveGroupError} If called after {@link end|end()}.
 	 * @returns void
 	 */
 	step(message: string): void;
@@ -100,6 +102,8 @@ export interface ObGroupLogger extends ObLogger {
 	 * If no message is provided, the last tracked step message is used.
 	 *
 	 * @param message - Optional step message. Defaults to the current step.
+	 * @throws {ObLoggerInactiveGroupError} If called after {@link end|end()}.
+	 * @throws {ObLoggerNoActiveStepError} If called before {@link step|step()}.
 	 * @returns void
 	 */
 	stepError(message?: string): void;
@@ -111,6 +115,7 @@ export interface ObGroupLogger extends ObLogger {
 	 * as success if no step failed, or as error if any step failed.
 	 *
 	 * @param message - Optional group name to display. Defaults to the current group name.
+	 * @throws {ObLoggerInactiveGroupError} If called after {@link end|end()}.
 	 * @returns void
 	 */
 	end(message?: string): void;

@@ -3,6 +3,8 @@ import {GroupLogger} from './group-logger';
 import {Logger} from './logger';
 import {BaseLogger} from './base-logger';
 import chalk from 'chalk';
+import {ObLoggerNoActiveStepError} from './errors/ob-logger-error-no-active-step';
+import {ObLoggerInactiveGroupError} from './errors/ob-logger-error-inactive-group';
 
 class FakeClock {
 	private time: number;
@@ -231,8 +233,27 @@ describe(GroupLogger.name, () => {
 
 	describe('invalid run', () => {
 		test('call "stepError" before "step"', () => {
-			logger.stepError();
-			expect(writer.error).toHaveBeenCalledWith(chalk.red('  ✖ ERROR   '));
+			expect(() => logger.stepError('step 1')).toThrow(ObLoggerNoActiveStepError);
+		});
+
+		test('call "stepError" after "end"', () => {
+			logger.end();
+			expect(() => logger.stepError('step 1')).toThrow(ObLoggerInactiveGroupError);
+		});
+
+		test('call "step" after "end"', () => {
+			logger.end();
+			expect(() => logger.step('step 1')).toThrow(ObLoggerInactiveGroupError);
+		});
+
+		test('call "group" after "end"', () => {
+			logger.end();
+			expect(() => logger.group('step 1')).toThrow(ObLoggerInactiveGroupError);
+		});
+
+		test('call "end" after "end"', () => {
+			logger.end();
+			expect(() => logger.end('step 1')).toThrow(ObLoggerInactiveGroupError);
 		});
 	});
 });
