@@ -1,2 +1,2 @@
 export {obCreateLogger, obCreateSchematicsLogger} from './factory';
-export type {ObLogger} from './logger.types';
+export type {ObLogger, ObGroupLogger} from './logger.types';

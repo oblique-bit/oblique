@@ -1,5 +1,5 @@
 import type {LogLevel, Writer} from './types';
-import type {ObLogger} from './logger.types';
+import type {ObGroupLogger, ObLogger} from './logger.types';
 import chalk, {type Chalk} from 'chalk';
 
 export abstract class BaseLogger implements ObLogger {
@@ -37,6 +37,8 @@ export abstract class BaseLogger implements ObLogger {
 	raw(message: string): void {
 		this.writer.raw(message);
 	}
+
+	abstract group(message: string): ObGroupLogger;
 
 	protected formatMessage(level: LogLevel, message: string): string {
 		const {symbol, label, color} = this.getLevelInfo(level);

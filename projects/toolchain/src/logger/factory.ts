@@ -16,6 +16,11 @@ import {Logger} from './logger';
  * const logger = obCreateLogger();
  * logger.info('Start process');
  * logger.success('Process completed');
+ *
+ * const buildLogger = logger.group('Build project');
+ * buildLogger.step('Transpile code');
+ * buildLogger.step('Copy assets');
+ * buildLogger.end();
  * ```
  *
  * @returns A configured {@link ObLogger} instance that writes to the console.
@@ -43,9 +48,8 @@ export function obCreateLogger(): ObLogger {
  * @example
  * ```ts
  * return (tree: Tree, context: SchematicContext) => {
- *   const logger = obCreateSchematicsLogger(context);
- *   logger.info('Start Schematics')
- *   return chain([doSomething(logger), () => logger.success('Schematics completed')])(tree, context);
+ *   const logger = obCreateSchematicsLogger(context).group('Start Schematics');
+ *   return chain([doSomething(logger.group('DoSomething')), () => logger.end()])(tree, context);
  * };
  * ```
  *

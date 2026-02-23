@@ -1,3 +1,7 @@
+import type {ObLogger} from './logger.types';
+
+export type LogLevel = 'info' | 'success' | 'warn' | 'error';
+
 export interface Writer {
 	info: (message: string) => void;
 	success: (message: string) => void;
@@ -6,4 +10,8 @@ export interface Writer {
 	raw: (message: string) => void;
 }
 
-export type LogLevel = 'info' | 'success' | 'warn' | 'error';
+export interface LoggerOptions {
+	indentation: number;
+	parent: ObLogger;
+	group: string;
+}
