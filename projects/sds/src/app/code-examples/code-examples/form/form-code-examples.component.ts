@@ -56,7 +56,6 @@ export class FormCodeExamplesComponent extends CodeExamples {
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.html', 'HTML'),
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.ts', 'TS'),
 				this.getSnippet('form', 'input-clear/form-example-input-clear-preview.component.scss', 'SCSS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
 			],
 		},
 		{
@@ -79,7 +78,6 @@ export class FormCodeExamplesComponent extends CodeExamples {
 					'input-prefixes-and-suffixes/form-example-input-prefixes-and-suffixes-preview.component.scss',
 					'SCSS'
 				),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
 			],
 		},
 		{
@@ -89,7 +87,6 @@ export class FormCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('form', 'other-options/datepicker-example-other-options-preview.component.html', 'HTML'),
 				this.getSnippet('form', 'other-options/datepicker-example-other-options-preview.component.ts', 'TS'),
-				this.getSnippet('code-examples', 'code-example-flex-layout.scss', 'Flex Layout'),
 			],
 		},
 	];
