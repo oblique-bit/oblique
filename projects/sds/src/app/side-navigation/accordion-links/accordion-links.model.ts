@@ -4,6 +4,8 @@ export interface Accordion {
 	id: string;
 	links: Link[];
 	title: string;
+	minVersion: number;
+	maxVersion?: number;
 }
 
 export interface Link {
