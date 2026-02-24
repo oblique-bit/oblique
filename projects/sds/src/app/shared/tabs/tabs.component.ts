@@ -23,10 +23,20 @@ export class TabsComponent implements OnChanges {
 	}
 
 	selectTab(selectedTab: TabComponent): void {
-		this.tabs().forEach(tab => {
-			tab.updateActive(selectedTab.name() === tab.name());
-		});
-		this.tabChanged.emit(selectedTab.name());
+		const currentActiveTab = this.getActiveTab();
+		const nextActiveTab =
+			this.tabs().find((tab: TabComponent) => tab.name() === selectedTab.name() && !tab.hidden()) ??
+			this.getFallbackTab();
+
+		if (currentActiveTab === nextActiveTab) {
+			return;
+		}
+
+		currentActiveTab?.updateActive(false);
+		if (nextActiveTab) {
+			nextActiveTab.updateActive(true);
+			this.tabChanged.emit(nextActiveTab.name());
+		}
 	}
 
 	private activateTab(tabName: string): void {
@@ -48,5 +58,13 @@ export class TabsComponent implements OnChanges {
 
 	private getDefaultTab(): TabComponent {
 		return this.tabs().at(0);
+	}
+
+	private getVisibleDefaultTab(): TabComponent {
+		return this.tabs().find((tab: TabComponent) => !tab.hidden());
+	}
+
+	private getFallbackTab(): TabComponent {
+		return this.getInitiallyActiveTab() || this.getActiveTab() || this.getVisibleDefaultTab();
 	}
 }
