@@ -459,7 +459,7 @@ describe('ObMasterLayoutComponent', () => {
 			it('should not focus the element', () => {
 				expect(element.focus).not.toHaveBeenCalled();
 			});
-			it('should console.error that the targetted element does not correspond to an existing dom element', () => {
+			it('should console.error that the targeted element does not correspond to an existing dom element', () => {
 				expect(console.error).toHaveBeenCalledWith(
 					'not_existing_element does not correspond to an existing DOM element.'
 				);
