@@ -42,6 +42,8 @@ import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
 import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
+import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
+import {ObILocale} from './master-layout/master-layout.model';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -78,8 +80,9 @@ const materialProviders = {
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
+			const localesConfiguration = getLocalesConfiguration(config);
 			inject(ObIconService).registerOnAppInit(config.icon);
-			inject(ObLanguageService).initialize();
+			inject(ObLanguageService).initialize(localesConfiguration);
 			inject(ObRouterService).initialize();
 			inject(OB_HISTORY_STATE).initialLength = inject(WINDOW).history.length;
 		}),
@@ -97,14 +100,16 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		})),
 	]);
 }
+
 export function provideObliqueTestingConfiguration(
 	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> &
 		Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>> = {}
 ): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
+			const localesConfiguration = getLocalesConfiguration(config);
 			inject(ObIconService).registerOnAppInit(config.icon);
-			inject(ObLanguageService).initialize();
+			inject(ObLanguageService).initialize(localesConfiguration);
 			inject(ObRouterService).initialize();
 			inject(OB_HISTORY_STATE).initialLength = inject(WINDOW).history.length;
 		}),
@@ -131,6 +136,14 @@ export function provideObliqueTestingConfiguration(
 			useValue: {...token.useValue, ...config.material?.[provider]},
 		})),
 	]);
+}
+
+function getLocalesConfiguration(
+	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> &
+		Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>>
+): ObILocale {
+	const masterLayoutConfig = inject(ObMasterLayoutConfig);
+	return config.translate?.locales ?? masterLayoutConfig.locale;
 }
 
 export function provideObliqueTranslations(configuration: ObITranslateConfig = {}): EnvironmentProviders {
