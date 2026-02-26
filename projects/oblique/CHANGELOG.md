@@ -1,3 +1,9 @@
+# [15.0.2](https://github.com/oblique-bit/oblique/compare/15.0.1...15.0.2) (2026-02-26)
+
+## Bug Fixes
+
+- **column-layout:** ensure styling for wider column applies ([73aea4f5](https://github.com/oblique-bit/oblique/commit/73aea4f5cd7f322cc8724e57cc9c39217113d1b2))
+
 # [15.0.1](https://github.com/oblique-bit/oblique/compare/15.0.0...15.0.1) (2026-02-16)
 
 ## Bug Fixes
