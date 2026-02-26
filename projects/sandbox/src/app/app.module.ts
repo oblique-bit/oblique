@@ -116,6 +116,17 @@ registerLocaleData(localeDE);
 					{url: '/samples/button', context: 'Some random internal link to demonstrate the feature'},
 				],
 			},
+			translate: {
+				locales: {
+					locales: ['en-us', 'fr-CH'],
+					defaultLanguage: 'en',
+					disabled: false,
+					languages: {
+						en: 'English',
+						fr: 'Français',
+					},
+				},
+			},
 			hasLanguageInUrl: true,
 		}),
 	],
@@ -133,7 +144,6 @@ export class AppModule {
 		documentMetaService.description = 'i18n.application.description';
 
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
-		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
 		this.configureServiceSNavigation(config);
 	}
