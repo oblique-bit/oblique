@@ -1,7 +1,19 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.angular.json",
   "compilerOptions": {
-    "module": "esnext"
+    "strict": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "isolatedModules": false,
+    "useDefineForClassFields": false,
+    "baseUrl": "../../",
+    "paths": {
+      "@oblique/oblique": ["./projects/oblique/src/public_api"],
+      "@oblique/*": ["./projects/oblique/src/lib/*"],
+      "@oblique/design-system": ["./projects/design-system/src/public-api"]
+    }
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": false
   },
   "files": ["src/main.ts"]
 }

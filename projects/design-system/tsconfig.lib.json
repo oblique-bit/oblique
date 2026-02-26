@@ -1,18 +1,8 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.angular.json",
   "compilerOptions": {
-    "noImplicitAny": true,
     "declaration": true,
-    "declarationMap": true,
-    "inlineSources": true,
-    "strict": true,
-    "types": [],
-    "module": "esnext"
-  },
-  "angularCompilerOptions": {
-    "strictInjectionParameters": true,
-    "strictTemplates": true
+    "declarationMap": true
   },
   "exclude": ["**/*.spec.ts"]
 }
