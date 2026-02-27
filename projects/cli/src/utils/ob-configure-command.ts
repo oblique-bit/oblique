@@ -28,7 +28,7 @@ export function addObNewCommandOptions(
 }
 
 export function configureOption(config: ObNewSchemaOption, longFlag: string): Option {
-	if (isEmpty(config.shortFlag) && isEmpty(longFlag)) {
+	if (isBlank(config.shortFlag) && isBlank(longFlag)) {
 		throw new Error('At least one of shortFlag or longFlag must be provided.');
 	}
 	const shortFlag = (config.shortFlag ?? '').trim();
@@ -46,11 +46,8 @@ export function configureOption(config: ObNewSchemaOption, longFlag: string): Op
 	return addChoices(optionWithDefault, config.choices);
 }
 
-function isEmpty(flag: string | undefined | null): boolean {
-	if (flag === undefined || flag === null) {
-		return true;
-	}
-	return flag.trim() === '';
+function isBlank(value?: string): boolean {
+	return value === undefined || value === null || value.trim().length === 0;
 }
 
 function createOptionDescription(description: string, resources?: string[]): string {
