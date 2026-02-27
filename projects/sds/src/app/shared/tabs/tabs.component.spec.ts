@@ -38,7 +38,10 @@ class TabsWrapperComponent {
 
 describe(TabsComponent.name, () => {
 	let fixture: ComponentFixture<TabsWrapperComponent>;
+	let tabFixture: ComponentFixture<TabComponent>;
 	let component: TabsWrapperComponent;
+	let tabComponent: TabComponent;
+	let tabsComponent: TabsComponent;
 	const idPipe = new IdPipe();
 
 	beforeEach(async () => {
@@ -49,6 +52,13 @@ describe(TabsComponent.name, () => {
 
 		fixture = TestBed.createComponent(TabsWrapperComponent);
 		component = fixture.componentInstance;
+		tabFixture = TestBed.createComponent(TabComponent);
+		tabComponent = tabFixture.componentInstance;
+
+		// Query for the TabsComponent child
+		tabsComponent = fixture.debugElement.query(el => el.componentInstance instanceof TabsComponent)
+			?.componentInstance as TabsComponent;
+
 		fixture.detectChanges();
 	});
 
@@ -113,6 +123,14 @@ describe(TabsComponent.name, () => {
 		fixture.detectChanges();
 		expect(
 			getDebugElementById<TabsWrapperComponent>(fixture, idPipe.transform(component.componentId, ['tab-2-content']))
+		).toBeTruthy();
+	});
+
+	it('should display 1st tab content when activating a tab that does not exist', () => {
+		tabsComponent.selectTab(tabComponent);
+		fixture.detectChanges();
+		expect(
+			getDebugElementById<TabsWrapperComponent>(fixture, idPipe.transform(component.componentId, ['tab-1-content']))
 		).toBeTruthy();
 	});
 });
