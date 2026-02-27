@@ -43,15 +43,19 @@ export class TextPageComponent implements AfterViewChecked {
 
 	onClick(event: MouseEvent): void {
 		const {target} = event;
-		if (!(target instanceof HTMLAnchorElement && target.target !== '_blank')) {
+		if (!(target instanceof HTMLAnchorElement)) {
 			return;
 		}
 		event.preventDefault();
-		if (target.hash) {
-			const fragment = target.hash.replace('#', '');
-			void this.router.navigate([target.pathname], {fragment});
+		if (target.origin === window.location.origin) {
+			if (target.hash) {
+				const fragment = target.hash.replace('#', '');
+				void this.router.navigate([target.pathname], {fragment});
+			} else {
+				void this.router.navigate([target.pathname]);
+			}
 		} else {
-			void this.router.navigate([target.pathname]);
+			window.open(target.href, '_blank', 'noopener,noreferrer');
 		}
 	}
 

@@ -66,11 +66,15 @@ export class TabbedPageComponent {
 
 	onClick(event: MouseEvent): void {
 		const {target} = event;
-		if (!(target instanceof HTMLAnchorElement) || !target.closest('.deprecation-container')) {
+		if (!(target instanceof HTMLAnchorElement)) {
 			return;
 		}
 		event.preventDefault();
-		void this.router.navigate([target.pathname]);
+		if (target.origin === window.location.origin) {
+			void this.router.navigate([target.pathname]);
+		} else {
+			window.open(target.href, '_blank', 'noopener,noreferrer');
+		}
 	}
 
 	handleTabChanged(tabName: string): void {
