@@ -223,10 +223,14 @@ export class SideNavigationComponent implements OnInit {
 		versionables: T[],
 		version?: number
 	): T[] {
+		if (!version) {
+			return versionables;
+		}
+
 		return versionables.filter(
 			versionable =>
-				(!versionable.minVersion || versionable.minVersion <= (version ?? 9999)) &&
-				(!versionable.maxVersion || versionable.maxVersion >= (version ?? -1))
+				(!versionable.minVersion || versionable.minVersion <= version) &&
+				(!versionable.maxVersion || versionable.maxVersion >= version)
 		);
 	}
 
