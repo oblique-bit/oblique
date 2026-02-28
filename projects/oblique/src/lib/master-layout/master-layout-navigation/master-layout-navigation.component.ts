@@ -12,7 +12,6 @@ import {
 	Optional,
 	Output,
 	Renderer2,
-	ViewChild,
 	ViewEncapsulation,
 	inject,
 } from '@angular/core';
@@ -71,8 +70,6 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	};
 	private static readonly buttonWidth = 30;
 
-	@ViewChild('mainNav') private readonly nav?: ElementRef<HTMLElement>;
-
 	private readonly currentParentAncestors: BehaviorSubject<ObNavigationLink[]> = new BehaviorSubject<
 		ObNavigationLink[]
 	>([]);
@@ -89,7 +86,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		private readonly masterLayout: ObMasterLayoutService,
 		private readonly config: ObMasterLayoutConfig,
 		private readonly renderer: Renderer2,
-		private readonly el: ElementRef,
+		private readonly el: ElementRef<HTMLElement>,
 		private readonly globalEventsService: ObGlobalEventsService,
 		private readonly translate: TranslateService,
 		@Optional() @Inject(OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION) hideExternalLinks: boolean
@@ -328,21 +325,18 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	}
 
 	private refresh(): void {
-		if (this.nav) {
+		const nav = this.getNav();
+		if (nav) {
 			const {scrollMode} = this.masterLayout.navigation;
 			if (scrollMode === ObEScrollMode.DISABLED) {
 				this.isScrollable = false;
 			} else {
-				const childWidth = Array.from(this.nav.nativeElement.children).reduce(
-					(total, el: HTMLElement) => total + el.clientWidth,
-					0
-				);
+				const childWidth = Array.from(nav.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
 				this.maxScroll = Math.max(
 					0,
-					-(this.nav.nativeElement.clientWidth - childWidth - 2 * ObMasterLayoutNavigationComponent.buttonWidth)
+					-(nav.clientWidth - childWidth - 2 * ObMasterLayoutNavigationComponent.buttonWidth)
 				);
-				this.isScrollable =
-					scrollMode === ObEScrollMode.ENABLED ? true : childWidth > this.nav.nativeElement.clientWidth;
+				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > nav.clientWidth;
 			}
 			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
 		}
@@ -357,9 +351,14 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	}
 
 	private updateScroll(delta: number): void {
+		const nav = this.getNav();
 		this.currentScroll += delta;
 		this.currentScroll = Math.max(0, this.currentScroll);
 		this.currentScroll = Math.min(this.currentScroll, this.maxScroll);
-		this.renderer.setStyle(this.nav.nativeElement.children[0], 'margin-left', `-${this.currentScroll}px`);
+		this.renderer.setStyle(nav.children[0], 'margin-left', `-${this.currentScroll}px`);
+	}
+
+	private getNav(): Element {
+		return this.el.nativeElement.querySelector('.ob-main-nav:not(.ob-sub-nav)');
 	}
 }
