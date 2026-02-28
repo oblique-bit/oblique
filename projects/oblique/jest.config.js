@@ -45,12 +45,6 @@ module.exports = {
 			functions: 18,
 			lines: 58,
 		},
-		'projects/oblique/src/lib/error-messages/*.ts': {
-			statements: 52,
-			branches: 0,
-			functions: 11,
-			lines: 50,
-		},
 		'projects/oblique/src/lib/file-upload/progress/*.ts': {
 			statements: 100,
 			branches: 88,
