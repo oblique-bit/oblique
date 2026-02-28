@@ -8,30 +8,58 @@
 	--ob-h-button-box_shadow-focus: var(--ob-s-shadow-none);
 	--ob-h-button-box_shadow-hover: var(--ob-s-shadow-xl);
 	--ob-h-button-box_shadow-pressed: var(--ob-s-shadow-none);
-	--ob-h-button-color-bg-primary-inversity_flipped-disabled: var(--ob-s3-color-interaction-state-bg-disabled-inversity_normal);
-	--ob-h-button-color-bg-primary-inversity_flipped-enabled: var(--ob-s3-color-interaction-state-bg-enabled-inversity_normal);
-	--ob-h-button-color-bg-primary-inversity_flipped-hover: var(--ob-s3-color-interaction-state-bg-hover-inversity_normal);
-	--ob-h-button-color-bg-primary-inversity_flipped-pressed: var(--ob-s3-color-interaction-state-bg-pressed-inversity_normal);
-	--ob-h-button-color-bg-primary-inversity_normal-disabled: var(--ob-s3-color-interaction-state-bg-disabled-inversity_flipped);
-	--ob-h-button-color-bg-primary-inversity_normal-enabled: var(--ob-s3-color-interaction-state-bg-enabled-inversity_flipped);
-	--ob-h-button-color-bg-primary-inversity_normal-hover: var(--ob-s3-color-interaction-state-bg-hover-inversity_flipped);
-	--ob-h-button-color-bg-primary-inversity_normal-pressed: var(--ob-s3-color-interaction-state-bg-pressed-inversity_flipped);
+	--ob-h-button-color-bg-primary-inversity_flipped-disabled: var(
+		--ob-s3-color-interaction-state-bg-disabled-inversity_normal
+	);
+	--ob-h-button-color-bg-primary-inversity_flipped-enabled: var(
+		--ob-s3-color-interaction-state-bg-enabled-inversity_normal
+	);
+	--ob-h-button-color-bg-primary-inversity_flipped-hover: var(
+		--ob-s3-color-interaction-state-bg-hover-inversity_normal
+	);
+	--ob-h-button-color-bg-primary-inversity_flipped-pressed: var(
+		--ob-s3-color-interaction-state-bg-pressed-inversity_normal
+	);
+	--ob-h-button-color-bg-primary-inversity_normal-disabled: var(
+		--ob-s3-color-interaction-state-bg-disabled-inversity_flipped
+	);
+	--ob-h-button-color-bg-primary-inversity_normal-enabled: var(
+		--ob-s3-color-interaction-state-bg-enabled-inversity_flipped
+	);
+	--ob-h-button-color-bg-primary-inversity_normal-hover: var(
+		--ob-s3-color-interaction-state-bg-hover-inversity_flipped
+	);
+	--ob-h-button-color-bg-primary-inversity_normal-pressed: var(
+		--ob-s3-color-interaction-state-bg-pressed-inversity_flipped
+	);
 	--ob-h-button-color-bg-secondary-inversity_flipped-disabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-bg-secondary-inversity_flipped-enabled: var(--ob-s3-color-neutral-no_color);
-	--ob-h-button-color-bg-secondary-inversity_flipped-hover: var(--ob-s3-color-interaction-state-bg-hover-inversity_flipped);
+	--ob-h-button-color-bg-secondary-inversity_flipped-hover: var(
+		--ob-s3-color-interaction-state-bg-hover-inversity_flipped
+	);
 	--ob-h-button-color-bg-secondary-inversity_flipped-pressed: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-bg-secondary-inversity_normal-disabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-bg-secondary-inversity_normal-enabled: var(--ob-s3-color-neutral-no_color);
-	--ob-h-button-color-bg-secondary-inversity_normal-hover: var(--ob-s3-color-interaction-state-bg-hover-inversity_normal);
+	--ob-h-button-color-bg-secondary-inversity_normal-hover: var(
+		--ob-s3-color-interaction-state-bg-hover-inversity_normal
+	);
 	--ob-h-button-color-bg-secondary-inversity_normal-pressed: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-bg-tertiary-inversity_flipped-disabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-bg-tertiary-inversity_flipped-enabled: var(--ob-s3-color-neutral-no_color);
-	--ob-h-button-color-bg-tertiary-inversity_flipped-hover: var(--ob-s3-color-interaction-state-bg-hover-inversity_flipped);
-	--ob-h-button-color-bg-tertiary-inversity_flipped-pressed: var(--ob-s3-color-interaction-state-bg-pressed-inversity_flipped);
+	--ob-h-button-color-bg-tertiary-inversity_flipped-hover: var(
+		--ob-s3-color-interaction-state-bg-hover-inversity_flipped
+	);
+	--ob-h-button-color-bg-tertiary-inversity_flipped-pressed: var(
+		--ob-s3-color-interaction-state-bg-pressed-inversity_flipped
+	);
 	--ob-h-button-color-bg-tertiary-inversity_normal-disabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-bg-tertiary-inversity_normal-enabled: var(--ob-s3-color-neutral-no_color);
-	--ob-h-button-color-bg-tertiary-inversity_normal-hover: var(--ob-s3-color-interaction-state-bg-hover-inversity_normal);
-	--ob-h-button-color-bg-tertiary-inversity_normal-pressed: var(--ob-s3-color-interaction-state-bg-pressed-inversity_normal);
+	--ob-h-button-color-bg-tertiary-inversity_normal-hover: var(
+		--ob-s3-color-interaction-state-bg-hover-inversity_normal
+	);
+	--ob-h-button-color-bg-tertiary-inversity_normal-pressed: var(
+		--ob-s3-color-interaction-state-bg-pressed-inversity_normal
+	);
 	--ob-h-button-color-border-primary-inversity_flipped-disabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-border-primary-inversity_flipped-enabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-border-primary-inversity_flipped-hover: var(--ob-s3-color-neutral-no_color);
@@ -40,14 +68,30 @@
 	--ob-h-button-color-border-primary-inversity_normal-enabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-border-primary-inversity_normal-hover: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-border-primary-inversity_normal-pressed: var(--ob-s3-color-neutral-no_color);
-	--ob-h-button-color-border-secondary-inversity_flipped-disabled: var(--ob-s3-color-interaction-state-fg-disabled-inversity_flipped);
-	--ob-h-button-color-border-secondary-inversity_flipped-enabled: var(--ob-s3-color-interaction-state-fg-enabled-inversity_flipped);
-	--ob-h-button-color-border-secondary-inversity_flipped-hover: var(--ob-s3-color-interaction-state-fg-hover-inversity_flipped);
-	--ob-h-button-color-border-secondary-inversity_flipped-pressed: var(--ob-s3-color-interaction-state-fg-pressed-inversity_flipped);
-	--ob-h-button-color-border-secondary-inversity_normal-disabled: var(--ob-s3-color-interaction-state-fg-disabled-inversity_normal);
-	--ob-h-button-color-border-secondary-inversity_normal-enabled: var(--ob-s3-color-interaction-state-fg-enabled-inversity_normal);
-	--ob-h-button-color-border-secondary-inversity_normal-hover: var(--ob-s3-color-interaction-state-fg-hover-inversity_normal);
-	--ob-h-button-color-border-secondary-inversity_normal-pressed: var(--ob-s3-color-interaction-state-fg-pressed-inversity_normal);
+	--ob-h-button-color-border-secondary-inversity_flipped-disabled: var(
+		--ob-s3-color-interaction-state-fg-disabled-inversity_flipped
+	);
+	--ob-h-button-color-border-secondary-inversity_flipped-enabled: var(
+		--ob-s3-color-interaction-state-fg-enabled-inversity_flipped
+	);
+	--ob-h-button-color-border-secondary-inversity_flipped-hover: var(
+		--ob-s3-color-interaction-state-fg-hover-inversity_flipped
+	);
+	--ob-h-button-color-border-secondary-inversity_flipped-pressed: var(
+		--ob-s3-color-interaction-state-fg-pressed-inversity_flipped
+	);
+	--ob-h-button-color-border-secondary-inversity_normal-disabled: var(
+		--ob-s3-color-interaction-state-fg-disabled-inversity_normal
+	);
+	--ob-h-button-color-border-secondary-inversity_normal-enabled: var(
+		--ob-s3-color-interaction-state-fg-enabled-inversity_normal
+	);
+	--ob-h-button-color-border-secondary-inversity_normal-hover: var(
+		--ob-s3-color-interaction-state-fg-hover-inversity_normal
+	);
+	--ob-h-button-color-border-secondary-inversity_normal-pressed: var(
+		--ob-s3-color-interaction-state-fg-pressed-inversity_normal
+	);
 	--ob-h-button-color-border-tertiary-inversity_flipped-disabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-border-tertiary-inversity_flipped-enabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-border-tertiary-inversity_flipped-hover: var(--ob-s3-color-neutral-no_color);
@@ -56,135 +100,386 @@
 	--ob-h-button-color-border-tertiary-inversity_normal-enabled: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-border-tertiary-inversity_normal-hover: var(--ob-s3-color-neutral-no_color);
 	--ob-h-button-color-border-tertiary-inversity_normal-pressed: var(--ob-s3-color-neutral-no_color);
-	--ob-h-button-color-fg-primary-inversity_flipped-disabled: var(--ob-s3-color-interaction-state-fg-disabled-inversity_normal);
-	--ob-h-button-color-fg-primary-inversity_flipped-enabled: var(--ob-s3-color-interaction-state-fg-enabled-inversity_normal);
-	--ob-h-button-color-fg-primary-inversity_flipped-focus: var(--ob-s3-color-interaction-state-fg-focus-inversity_normal);
-	--ob-h-button-color-fg-primary-inversity_flipped-hover: var(--ob-s3-color-interaction-state-fg-hover-inversity_normal);
-	--ob-h-button-color-fg-primary-inversity_flipped-pressed: var(--ob-s3-color-interaction-state-fg-pressed-inversity_normal);
-	--ob-h-button-color-fg-primary-inversity_normal-disabled: var(--ob-s3-color-interaction-state-fg-disabled-inversity_flipped);
-	--ob-h-button-color-fg-primary-inversity_normal-enabled: var(--ob-s3-color-interaction-state-fg-enabled-inversity_flipped);
-	--ob-h-button-color-fg-primary-inversity_normal-focus: var(--ob-s3-color-interaction-state-fg-focus-inversity_flipped);
-	--ob-h-button-color-fg-primary-inversity_normal-hover: var(--ob-s3-color-interaction-state-fg-hover-inversity_flipped);
-	--ob-h-button-color-fg-primary-inversity_normal-pressed: var(--ob-s3-color-interaction-state-fg-pressed-inversity_flipped);
-	--ob-h-button-color-fg-secondary-inversity_flipped-disabled: var(--ob-s3-color-interaction-state-fg-disabled-inversity_flipped);
-	--ob-h-button-color-fg-secondary-inversity_flipped-enabled: var(--ob-s3-color-interaction-state-fg-enabled-inversity_flipped);
-	--ob-h-button-color-fg-secondary-inversity_flipped-focus: var(--ob-s3-color-interaction-state-fg-focus-inversity_flipped);
-	--ob-h-button-color-fg-secondary-inversity_flipped-hover: var(--ob-s3-color-interaction-state-fg-hover-inversity_flipped);
-	--ob-h-button-color-fg-secondary-inversity_flipped-pressed: var(--ob-s3-color-interaction-state-fg-pressed-inversity_flipped);
-	--ob-h-button-color-fg-secondary-inversity_normal-disabled: var(--ob-s3-color-interaction-state-fg-disabled-inversity_normal);
-	--ob-h-button-color-fg-secondary-inversity_normal-enabled: var(--ob-s3-color-interaction-state-fg-enabled-inversity_normal);
-	--ob-h-button-color-fg-secondary-inversity_normal-focus: var(--ob-s3-color-interaction-state-fg-focus-inversity_normal);
-	--ob-h-button-color-fg-secondary-inversity_normal-hover: var(--ob-s3-color-interaction-state-fg-hover-inversity_normal);
-	--ob-h-button-color-fg-secondary-inversity_normal-pressed: var(--ob-s3-color-interaction-state-fg-pressed-inversity_normal);
-	--ob-h-button-color-fg-tertiary-inversity_flipped-disabled: var(--ob-s3-color-interaction-state-fg-disabled-inversity_flipped);
-	--ob-h-button-color-fg-tertiary-inversity_flipped-enabled: var(--ob-s3-color-interaction-state-fg-enabled-inversity_flipped);
-	--ob-h-button-color-fg-tertiary-inversity_flipped-focus: var(--ob-s3-color-interaction-state-fg-focus-inversity_flipped);
-	--ob-h-button-color-fg-tertiary-inversity_flipped-hover: var(--ob-s3-color-interaction-state-fg-hover-inversity_flipped);
-	--ob-h-button-color-fg-tertiary-inversity_flipped-pressed: var(--ob-s3-color-interaction-state-fg-pressed-inversity_flipped);
-	--ob-h-button-color-fg-tertiary-inversity_normal-disabled: var(--ob-s3-color-interaction-state-fg-disabled-inversity_normal);
-	--ob-h-button-color-fg-tertiary-inversity_normal-enabled: var(--ob-s3-color-interaction-state-fg-enabled-inversity_normal);
-	--ob-h-button-color-fg-tertiary-inversity_normal-focus: var(--ob-s3-color-interaction-state-fg-focus-inversity_normal);
-	--ob-h-button-color-fg-tertiary-inversity_normal-hover: var(--ob-s3-color-interaction-state-fg-hover-inversity_normal);
-	--ob-h-button-color-fg-tertiary-inversity_normal-pressed: var(--ob-s3-color-interaction-state-fg-pressed-inversity_normal);
-	--ob-h-button-composite-fg_label-font: var(--ob-s-dynamic-font_weight-medium) var(--ob-s-dynamic-font_size-md)/var(--ob-s-dynamic-line_height-xs) var(--ob-s-static-font_family-body);
+	--ob-h-button-color-fg-primary-inversity_flipped-disabled: var(
+		--ob-s3-color-interaction-state-fg-disabled-inversity_normal
+	);
+	--ob-h-button-color-fg-primary-inversity_flipped-enabled: var(
+		--ob-s3-color-interaction-state-fg-enabled-inversity_normal
+	);
+	--ob-h-button-color-fg-primary-inversity_flipped-focus: var(
+		--ob-s3-color-interaction-state-fg-focus-inversity_normal
+	);
+	--ob-h-button-color-fg-primary-inversity_flipped-hover: var(
+		--ob-s3-color-interaction-state-fg-hover-inversity_normal
+	);
+	--ob-h-button-color-fg-primary-inversity_flipped-pressed: var(
+		--ob-s3-color-interaction-state-fg-pressed-inversity_normal
+	);
+	--ob-h-button-color-fg-primary-inversity_normal-disabled: var(
+		--ob-s3-color-interaction-state-fg-disabled-inversity_flipped
+	);
+	--ob-h-button-color-fg-primary-inversity_normal-enabled: var(
+		--ob-s3-color-interaction-state-fg-enabled-inversity_flipped
+	);
+	--ob-h-button-color-fg-primary-inversity_normal-focus: var(
+		--ob-s3-color-interaction-state-fg-focus-inversity_flipped
+	);
+	--ob-h-button-color-fg-primary-inversity_normal-hover: var(
+		--ob-s3-color-interaction-state-fg-hover-inversity_flipped
+	);
+	--ob-h-button-color-fg-primary-inversity_normal-pressed: var(
+		--ob-s3-color-interaction-state-fg-pressed-inversity_flipped
+	);
+	--ob-h-button-color-fg-secondary-inversity_flipped-disabled: var(
+		--ob-s3-color-interaction-state-fg-disabled-inversity_flipped
+	);
+	--ob-h-button-color-fg-secondary-inversity_flipped-enabled: var(
+		--ob-s3-color-interaction-state-fg-enabled-inversity_flipped
+	);
+	--ob-h-button-color-fg-secondary-inversity_flipped-focus: var(
+		--ob-s3-color-interaction-state-fg-focus-inversity_flipped
+	);
+	--ob-h-button-color-fg-secondary-inversity_flipped-hover: var(
+		--ob-s3-color-interaction-state-fg-hover-inversity_flipped
+	);
+	--ob-h-button-color-fg-secondary-inversity_flipped-pressed: var(
+		--ob-s3-color-interaction-state-fg-pressed-inversity_flipped
+	);
+	--ob-h-button-color-fg-secondary-inversity_normal-disabled: var(
+		--ob-s3-color-interaction-state-fg-disabled-inversity_normal
+	);
+	--ob-h-button-color-fg-secondary-inversity_normal-enabled: var(
+		--ob-s3-color-interaction-state-fg-enabled-inversity_normal
+	);
+	--ob-h-button-color-fg-secondary-inversity_normal-focus: var(
+		--ob-s3-color-interaction-state-fg-focus-inversity_normal
+	);
+	--ob-h-button-color-fg-secondary-inversity_normal-hover: var(
+		--ob-s3-color-interaction-state-fg-hover-inversity_normal
+	);
+	--ob-h-button-color-fg-secondary-inversity_normal-pressed: var(
+		--ob-s3-color-interaction-state-fg-pressed-inversity_normal
+	);
+	--ob-h-button-color-fg-tertiary-inversity_flipped-disabled: var(
+		--ob-s3-color-interaction-state-fg-disabled-inversity_flipped
+	);
+	--ob-h-button-color-fg-tertiary-inversity_flipped-enabled: var(
+		--ob-s3-color-interaction-state-fg-enabled-inversity_flipped
+	);
+	--ob-h-button-color-fg-tertiary-inversity_flipped-focus: var(
+		--ob-s3-color-interaction-state-fg-focus-inversity_flipped
+	);
+	--ob-h-button-color-fg-tertiary-inversity_flipped-hover: var(
+		--ob-s3-color-interaction-state-fg-hover-inversity_flipped
+	);
+	--ob-h-button-color-fg-tertiary-inversity_flipped-pressed: var(
+		--ob-s3-color-interaction-state-fg-pressed-inversity_flipped
+	);
+	--ob-h-button-color-fg-tertiary-inversity_normal-disabled: var(
+		--ob-s3-color-interaction-state-fg-disabled-inversity_normal
+	);
+	--ob-h-button-color-fg-tertiary-inversity_normal-enabled: var(
+		--ob-s3-color-interaction-state-fg-enabled-inversity_normal
+	);
+	--ob-h-button-color-fg-tertiary-inversity_normal-focus: var(
+		--ob-s3-color-interaction-state-fg-focus-inversity_normal
+	);
+	--ob-h-button-color-fg-tertiary-inversity_normal-hover: var(
+		--ob-s3-color-interaction-state-fg-hover-inversity_normal
+	);
+	--ob-h-button-color-fg-tertiary-inversity_normal-pressed: var(
+		--ob-s3-color-interaction-state-fg-pressed-inversity_normal
+	);
+	--ob-h-button-composite-fg_label-font: var(--ob-s-dynamic-font_weight-medium)
+		var(--ob-s-dynamic-font_size-md)/var(--ob-s-dynamic-line_height-xs) var(--ob-s-static-font_family-body);
 	--ob-h-button-composite-fg_label-letter_spacing: var(--ob-s-dynamic-letter_spacing_px-wide);
 	--ob-h-button-composite-fg_label-paragraph_spacing: var(--ob-s-dynamic-paragraph_spacing-xs);
-	--ob-h-button-composite-primary-inversity_flipped-disabled-button_surface-border_color: var(--ob-h-button-color-border-primary-inversity_flipped-disabled);
-	--ob-h-button-composite-primary-inversity_flipped-disabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-disabled);
-	--ob-h-button-composite-primary-inversity_flipped-disabled-button_surface-fill: var(--ob-h-button-color-bg-primary-inversity_flipped-disabled);
-	--ob-h-button-composite-primary-inversity_flipped-disabled-fg_color-fill: var(--ob-h-button-color-fg-primary-inversity_flipped-disabled);
-	--ob-h-button-composite-primary-inversity_flipped-enabled-button_surface-border_color: var(--ob-h-button-color-border-primary-inversity_flipped-enabled);
-	--ob-h-button-composite-primary-inversity_flipped-enabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-enabled);
-	--ob-h-button-composite-primary-inversity_flipped-enabled-button_surface-fill: var(--ob-h-button-color-bg-primary-inversity_flipped-enabled);
-	--ob-h-button-composite-primary-inversity_flipped-enabled-fg_color-fill: var(--ob-h-button-color-fg-primary-inversity_flipped-enabled);
-	--ob-h-button-composite-primary-inversity_flipped-hover-button_surface-border_color: var(--ob-h-button-color-border-primary-inversity_flipped-hover);
-	--ob-h-button-composite-primary-inversity_flipped-hover-button_surface-box_shadow: var(--ob-h-button-box_shadow-hover);
-	--ob-h-button-composite-primary-inversity_flipped-hover-button_surface-fill: var(--ob-h-button-color-bg-primary-inversity_flipped-hover);
-	--ob-h-button-composite-primary-inversity_flipped-hover-fg_color-fill: var(--ob-h-button-color-fg-primary-inversity_flipped-hover);
-	--ob-h-button-composite-primary-inversity_flipped-pressed-button_surface-border_color: var(--ob-h-button-color-border-primary-inversity_flipped-pressed);
-	--ob-h-button-composite-primary-inversity_flipped-pressed-button_surface-box_shadow: var(--ob-h-button-box_shadow-pressed);
-	--ob-h-button-composite-primary-inversity_flipped-pressed-button_surface-fill: var(--ob-h-button-color-bg-primary-inversity_flipped-pressed);
-	--ob-h-button-composite-primary-inversity_flipped-pressed-fg_color-fill: var(--ob-h-button-color-fg-primary-inversity_flipped-pressed);
-	--ob-h-button-composite-primary-inversity_normal-disabled-button_surface-border_color: var(--ob-h-button-color-border-primary-inversity_normal-disabled);
-	--ob-h-button-composite-primary-inversity_normal-disabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-disabled);
-	--ob-h-button-composite-primary-inversity_normal-disabled-button_surface-fill: var(--ob-h-button-color-bg-primary-inversity_normal-disabled);
-	--ob-h-button-composite-primary-inversity_normal-disabled-fg_color-fill: var(--ob-h-button-color-fg-primary-inversity_normal-disabled);
-	--ob-h-button-composite-primary-inversity_normal-enabled-button_surface-border_color: var(--ob-h-button-color-border-primary-inversity_normal-enabled);
-	--ob-h-button-composite-primary-inversity_normal-enabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-enabled);
-	--ob-h-button-composite-primary-inversity_normal-enabled-button_surface-fill: var(--ob-h-button-color-bg-primary-inversity_normal-enabled);
-	--ob-h-button-composite-primary-inversity_normal-enabled-fg_color-fill: var(--ob-h-button-color-fg-primary-inversity_normal-enabled);
-	--ob-h-button-composite-primary-inversity_normal-hover-button_surface-border_color: var(--ob-h-button-color-border-primary-inversity_normal-hover);
+	--ob-h-button-composite-primary-inversity_flipped-disabled-button_surface-border_color: var(
+		--ob-h-button-color-border-primary-inversity_flipped-disabled
+	);
+	--ob-h-button-composite-primary-inversity_flipped-disabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-disabled
+	);
+	--ob-h-button-composite-primary-inversity_flipped-disabled-button_surface-fill: var(
+		--ob-h-button-color-bg-primary-inversity_flipped-disabled
+	);
+	--ob-h-button-composite-primary-inversity_flipped-disabled-fg_color-fill: var(
+		--ob-h-button-color-fg-primary-inversity_flipped-disabled
+	);
+	--ob-h-button-composite-primary-inversity_flipped-enabled-button_surface-border_color: var(
+		--ob-h-button-color-border-primary-inversity_flipped-enabled
+	);
+	--ob-h-button-composite-primary-inversity_flipped-enabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-enabled
+	);
+	--ob-h-button-composite-primary-inversity_flipped-enabled-button_surface-fill: var(
+		--ob-h-button-color-bg-primary-inversity_flipped-enabled
+	);
+	--ob-h-button-composite-primary-inversity_flipped-enabled-fg_color-fill: var(
+		--ob-h-button-color-fg-primary-inversity_flipped-enabled
+	);
+	--ob-h-button-composite-primary-inversity_flipped-hover-button_surface-border_color: var(
+		--ob-h-button-color-border-primary-inversity_flipped-hover
+	);
+	--ob-h-button-composite-primary-inversity_flipped-hover-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-hover
+	);
+	--ob-h-button-composite-primary-inversity_flipped-hover-button_surface-fill: var(
+		--ob-h-button-color-bg-primary-inversity_flipped-hover
+	);
+	--ob-h-button-composite-primary-inversity_flipped-hover-fg_color-fill: var(
+		--ob-h-button-color-fg-primary-inversity_flipped-hover
+	);
+	--ob-h-button-composite-primary-inversity_flipped-pressed-button_surface-border_color: var(
+		--ob-h-button-color-border-primary-inversity_flipped-pressed
+	);
+	--ob-h-button-composite-primary-inversity_flipped-pressed-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-pressed
+	);
+	--ob-h-button-composite-primary-inversity_flipped-pressed-button_surface-fill: var(
+		--ob-h-button-color-bg-primary-inversity_flipped-pressed
+	);
+	--ob-h-button-composite-primary-inversity_flipped-pressed-fg_color-fill: var(
+		--ob-h-button-color-fg-primary-inversity_flipped-pressed
+	);
+	--ob-h-button-composite-primary-inversity_normal-disabled-button_surface-border_color: var(
+		--ob-h-button-color-border-primary-inversity_normal-disabled
+	);
+	--ob-h-button-composite-primary-inversity_normal-disabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-disabled
+	);
+	--ob-h-button-composite-primary-inversity_normal-disabled-button_surface-fill: var(
+		--ob-h-button-color-bg-primary-inversity_normal-disabled
+	);
+	--ob-h-button-composite-primary-inversity_normal-disabled-fg_color-fill: var(
+		--ob-h-button-color-fg-primary-inversity_normal-disabled
+	);
+	--ob-h-button-composite-primary-inversity_normal-enabled-button_surface-border_color: var(
+		--ob-h-button-color-border-primary-inversity_normal-enabled
+	);
+	--ob-h-button-composite-primary-inversity_normal-enabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-enabled
+	);
+	--ob-h-button-composite-primary-inversity_normal-enabled-button_surface-fill: var(
+		--ob-h-button-color-bg-primary-inversity_normal-enabled
+	);
+	--ob-h-button-composite-primary-inversity_normal-enabled-fg_color-fill: var(
+		--ob-h-button-color-fg-primary-inversity_normal-enabled
+	);
+	--ob-h-button-composite-primary-inversity_normal-hover-button_surface-border_color: var(
+		--ob-h-button-color-border-primary-inversity_normal-hover
+	);
 	--ob-h-button-composite-primary-inversity_normal-hover-button_surface-box_shadow: var(--ob-h-button-box_shadow-hover);
-	--ob-h-button-composite-primary-inversity_normal-hover-button_surface-fill: var(--ob-h-button-color-bg-primary-inversity_normal-hover);
-	--ob-h-button-composite-primary-inversity_normal-hover-fg_color-fill: var(--ob-h-button-color-fg-primary-inversity_normal-hover);
-	--ob-h-button-composite-primary-inversity_normal-pressed-button_surface-border_color: var(--ob-h-button-color-border-primary-inversity_normal-pressed);
-	--ob-h-button-composite-primary-inversity_normal-pressed-button_surface-box_shadow: var(--ob-h-button-box_shadow-pressed);
-	--ob-h-button-composite-primary-inversity_normal-pressed-button_surface-fill: var(--ob-h-button-color-bg-primary-inversity_normal-pressed);
-	--ob-h-button-composite-primary-inversity_normal-pressed-fg_color-fill: var(--ob-h-button-color-fg-primary-inversity_normal-pressed);
-	--ob-h-button-composite-secondary-inversity_flipped-disabled-button_surface-border_color: var(--ob-h-button-color-border-secondary-inversity_flipped-disabled);
-	--ob-h-button-composite-secondary-inversity_flipped-disabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-disabled);
-	--ob-h-button-composite-secondary-inversity_flipped-disabled-button_surface-fill: var(--ob-h-button-color-bg-secondary-inversity_flipped-disabled);
-	--ob-h-button-composite-secondary-inversity_flipped-disabled-fg_color-fill: var(--ob-h-button-color-fg-secondary-inversity_flipped-disabled);
-	--ob-h-button-composite-secondary-inversity_flipped-enabled-button_surface-border_color: var(--ob-h-button-color-border-secondary-inversity_flipped-enabled);
-	--ob-h-button-composite-secondary-inversity_flipped-enabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-enabled);
-	--ob-h-button-composite-secondary-inversity_flipped-enabled-button_surface-fill: var(--ob-h-button-color-bg-secondary-inversity_flipped-enabled);
-	--ob-h-button-composite-secondary-inversity_flipped-enabled-fg_color-fill: var(--ob-h-button-color-fg-secondary-inversity_flipped-enabled);
-	--ob-h-button-composite-secondary-inversity_flipped-hover-button_surface-border_color: var(--ob-h-button-color-border-secondary-inversity_flipped-hover);
-	--ob-h-button-composite-secondary-inversity_flipped-hover-button_surface-box_shadow: var(--ob-h-button-box_shadow-hover);
-	--ob-h-button-composite-secondary-inversity_flipped-hover-button_surface-fill: var(--ob-h-button-color-bg-secondary-inversity_flipped-hover);
-	--ob-h-button-composite-secondary-inversity_flipped-hover-fg_color-fill: var(--ob-h-button-color-fg-secondary-inversity_flipped-hover);
-	--ob-h-button-composite-secondary-inversity_flipped-pressed-button_surface-border_color: var(--ob-h-button-color-border-secondary-inversity_flipped-pressed);
-	--ob-h-button-composite-secondary-inversity_flipped-pressed-button_surface-box_shadow: var(--ob-h-button-box_shadow-pressed);
-	--ob-h-button-composite-secondary-inversity_flipped-pressed-button_surface-fill: var(--ob-h-button-color-bg-secondary-inversity_flipped-pressed);
-	--ob-h-button-composite-secondary-inversity_flipped-pressed-fg_color-fill: var(--ob-h-button-color-fg-secondary-inversity_flipped-pressed);
-	--ob-h-button-composite-secondary-inversity_normal-disabled-button_surface-border_color: var(--ob-h-button-color-border-secondary-inversity_normal-disabled);
-	--ob-h-button-composite-secondary-inversity_normal-disabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-disabled);
-	--ob-h-button-composite-secondary-inversity_normal-disabled-button_surface-fill: var(--ob-h-button-color-bg-secondary-inversity_normal-disabled);
-	--ob-h-button-composite-secondary-inversity_normal-disabled-fg_color-fill: var(--ob-h-button-color-fg-secondary-inversity_normal-disabled);
-	--ob-h-button-composite-secondary-inversity_normal-enabled-button_surface-border_color: var(--ob-h-button-color-border-secondary-inversity_normal-enabled);
-	--ob-h-button-composite-secondary-inversity_normal-enabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-enabled);
-	--ob-h-button-composite-secondary-inversity_normal-enabled-button_surface-fill: var(--ob-h-button-color-bg-secondary-inversity_normal-enabled);
-	--ob-h-button-composite-secondary-inversity_normal-enabled-fg_color-fill: var(--ob-h-button-color-fg-secondary-inversity_normal-enabled);
-	--ob-h-button-composite-secondary-inversity_normal-hover-button_surface-border_color: var(--ob-h-button-color-border-secondary-inversity_normal-hover);
-	--ob-h-button-composite-secondary-inversity_normal-hover-button_surface-box_shadow: var(--ob-h-button-box_shadow-hover);
-	--ob-h-button-composite-secondary-inversity_normal-hover-button_surface-fill: var(--ob-h-button-color-bg-secondary-inversity_normal-hover);
-	--ob-h-button-composite-secondary-inversity_normal-hover-fg_color-fill: var(--ob-h-button-color-fg-secondary-inversity_normal-hover);
-	--ob-h-button-composite-secondary-inversity_normal-pressed-button_surface-border_color: var(--ob-h-button-color-border-secondary-inversity_normal-pressed);
-	--ob-h-button-composite-secondary-inversity_normal-pressed-button_surface-box_shadow: var(--ob-h-button-box_shadow-pressed);
-	--ob-h-button-composite-secondary-inversity_normal-pressed-button_surface-fill: var(--ob-h-button-color-bg-secondary-inversity_normal-pressed);
-	--ob-h-button-composite-secondary-inversity_normal-pressed-fg_color-fill: var(--ob-h-button-color-fg-secondary-inversity_normal-pressed);
-	--ob-h-button-composite-tertiary-inversity_flipped-disabled-button_surface-border_color: var(--ob-h-button-color-border-tertiary-inversity_flipped-disabled);
-	--ob-h-button-composite-tertiary-inversity_flipped-disabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-disabled);
-	--ob-h-button-composite-tertiary-inversity_flipped-disabled-button_surface-fill: var(--ob-h-button-color-bg-tertiary-inversity_flipped-disabled);
-	--ob-h-button-composite-tertiary-inversity_flipped-disabled-fg_color-fill: var(--ob-h-button-color-fg-tertiary-inversity_flipped-disabled);
-	--ob-h-button-composite-tertiary-inversity_flipped-enabled-button_surface-border_color: var(--ob-h-button-color-border-tertiary-inversity_flipped-enabled);
-	--ob-h-button-composite-tertiary-inversity_flipped-enabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-enabled);
-	--ob-h-button-composite-tertiary-inversity_flipped-enabled-button_surface-fill: var(--ob-h-button-color-bg-tertiary-inversity_flipped-enabled);
-	--ob-h-button-composite-tertiary-inversity_flipped-enabled-fg_color-fill: var(--ob-h-button-color-fg-tertiary-inversity_flipped-enabled);
-	--ob-h-button-composite-tertiary-inversity_flipped-hover-button_surface-border_color: var(--ob-h-button-color-border-tertiary-inversity_flipped-hover);
-	--ob-h-button-composite-tertiary-inversity_flipped-hover-button_surface-box_shadow: var(--ob-h-button-box_shadow-hover);
-	--ob-h-button-composite-tertiary-inversity_flipped-hover-button_surface-fill: var(--ob-h-button-color-bg-tertiary-inversity_flipped-hover);
-	--ob-h-button-composite-tertiary-inversity_flipped-hover-fg_color-fill: var(--ob-h-button-color-fg-tertiary-inversity_flipped-hover);
-	--ob-h-button-composite-tertiary-inversity_flipped-pressed-button_surface-border_color: var(--ob-h-button-color-border-tertiary-inversity_flipped-pressed);
-	--ob-h-button-composite-tertiary-inversity_flipped-pressed-button_surface-box_shadow: var(--ob-h-button-box_shadow-pressed);
-	--ob-h-button-composite-tertiary-inversity_flipped-pressed-button_surface-fill: var(--ob-h-button-color-bg-tertiary-inversity_flipped-pressed);
-	--ob-h-button-composite-tertiary-inversity_flipped-pressed-fg_color-fill: var(--ob-h-button-color-fg-tertiary-inversity_flipped-pressed);
-	--ob-h-button-composite-tertiary-inversity_normal-disabled-button_surface-border_color: var(--ob-h-button-color-border-tertiary-inversity_normal-disabled);
-	--ob-h-button-composite-tertiary-inversity_normal-disabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-disabled);
-	--ob-h-button-composite-tertiary-inversity_normal-disabled-button_surface-fill: var(--ob-h-button-color-bg-tertiary-inversity_normal-disabled);
-	--ob-h-button-composite-tertiary-inversity_normal-disabled-fg_color-fill: var(--ob-h-button-color-fg-tertiary-inversity_normal-disabled);
-	--ob-h-button-composite-tertiary-inversity_normal-enabled-button_surface-border_color: var(--ob-h-button-color-border-tertiary-inversity_normal-enabled);
-	--ob-h-button-composite-tertiary-inversity_normal-enabled-button_surface-box_shadow: var(--ob-h-button-box_shadow-enabled);
-	--ob-h-button-composite-tertiary-inversity_normal-enabled-button_surface-fill: var(--ob-h-button-color-bg-tertiary-inversity_normal-enabled);
-	--ob-h-button-composite-tertiary-inversity_normal-enabled-fg_color-fill: var(--ob-h-button-color-fg-tertiary-inversity_normal-enabled);
-	--ob-h-button-composite-tertiary-inversity_normal-hover-button_surface-border_color: var(--ob-h-button-color-border-tertiary-inversity_normal-hover);
-	--ob-h-button-composite-tertiary-inversity_normal-hover-button_surface-box_shadow: var(--ob-h-button-box_shadow-hover);
-	--ob-h-button-composite-tertiary-inversity_normal-hover-button_surface-fill: var(--ob-h-button-color-bg-tertiary-inversity_normal-hover);
-	--ob-h-button-composite-tertiary-inversity_normal-hover-fg_color-fill: var(--ob-h-button-color-fg-tertiary-inversity_normal-hover);
-	--ob-h-button-composite-tertiary-inversity_normal-pressed-button_surface-border_color: var(--ob-h-button-color-border-tertiary-inversity_normal-pressed);
-	--ob-h-button-composite-tertiary-inversity_normal-pressed-button_surface-box_shadow: var(--ob-h-button-box_shadow-pressed);
-	--ob-h-button-composite-tertiary-inversity_normal-pressed-button_surface-fill: var(--ob-h-button-color-bg-tertiary-inversity_normal-pressed);
-	--ob-h-button-composite-tertiary-inversity_normal-pressed-fg_color-fill: var(--ob-h-button-color-fg-tertiary-inversity_normal-pressed);
+	--ob-h-button-composite-primary-inversity_normal-hover-button_surface-fill: var(
+		--ob-h-button-color-bg-primary-inversity_normal-hover
+	);
+	--ob-h-button-composite-primary-inversity_normal-hover-fg_color-fill: var(
+		--ob-h-button-color-fg-primary-inversity_normal-hover
+	);
+	--ob-h-button-composite-primary-inversity_normal-pressed-button_surface-border_color: var(
+		--ob-h-button-color-border-primary-inversity_normal-pressed
+	);
+	--ob-h-button-composite-primary-inversity_normal-pressed-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-pressed
+	);
+	--ob-h-button-composite-primary-inversity_normal-pressed-button_surface-fill: var(
+		--ob-h-button-color-bg-primary-inversity_normal-pressed
+	);
+	--ob-h-button-composite-primary-inversity_normal-pressed-fg_color-fill: var(
+		--ob-h-button-color-fg-primary-inversity_normal-pressed
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-disabled-button_surface-border_color: var(
+		--ob-h-button-color-border-secondary-inversity_flipped-disabled
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-disabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-disabled
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-disabled-button_surface-fill: var(
+		--ob-h-button-color-bg-secondary-inversity_flipped-disabled
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-disabled-fg_color-fill: var(
+		--ob-h-button-color-fg-secondary-inversity_flipped-disabled
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-enabled-button_surface-border_color: var(
+		--ob-h-button-color-border-secondary-inversity_flipped-enabled
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-enabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-enabled
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-enabled-button_surface-fill: var(
+		--ob-h-button-color-bg-secondary-inversity_flipped-enabled
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-enabled-fg_color-fill: var(
+		--ob-h-button-color-fg-secondary-inversity_flipped-enabled
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-hover-button_surface-border_color: var(
+		--ob-h-button-color-border-secondary-inversity_flipped-hover
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-hover-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-hover
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-hover-button_surface-fill: var(
+		--ob-h-button-color-bg-secondary-inversity_flipped-hover
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-hover-fg_color-fill: var(
+		--ob-h-button-color-fg-secondary-inversity_flipped-hover
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-pressed-button_surface-border_color: var(
+		--ob-h-button-color-border-secondary-inversity_flipped-pressed
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-pressed-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-pressed
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-pressed-button_surface-fill: var(
+		--ob-h-button-color-bg-secondary-inversity_flipped-pressed
+	);
+	--ob-h-button-composite-secondary-inversity_flipped-pressed-fg_color-fill: var(
+		--ob-h-button-color-fg-secondary-inversity_flipped-pressed
+	);
+	--ob-h-button-composite-secondary-inversity_normal-disabled-button_surface-border_color: var(
+		--ob-h-button-color-border-secondary-inversity_normal-disabled
+	);
+	--ob-h-button-composite-secondary-inversity_normal-disabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-disabled
+	);
+	--ob-h-button-composite-secondary-inversity_normal-disabled-button_surface-fill: var(
+		--ob-h-button-color-bg-secondary-inversity_normal-disabled
+	);
+	--ob-h-button-composite-secondary-inversity_normal-disabled-fg_color-fill: var(
+		--ob-h-button-color-fg-secondary-inversity_normal-disabled
+	);
+	--ob-h-button-composite-secondary-inversity_normal-enabled-button_surface-border_color: var(
+		--ob-h-button-color-border-secondary-inversity_normal-enabled
+	);
+	--ob-h-button-composite-secondary-inversity_normal-enabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-enabled
+	);
+	--ob-h-button-composite-secondary-inversity_normal-enabled-button_surface-fill: var(
+		--ob-h-button-color-bg-secondary-inversity_normal-enabled
+	);
+	--ob-h-button-composite-secondary-inversity_normal-enabled-fg_color-fill: var(
+		--ob-h-button-color-fg-secondary-inversity_normal-enabled
+	);
+	--ob-h-button-composite-secondary-inversity_normal-hover-button_surface-border_color: var(
+		--ob-h-button-color-border-secondary-inversity_normal-hover
+	);
+	--ob-h-button-composite-secondary-inversity_normal-hover-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-hover
+	);
+	--ob-h-button-composite-secondary-inversity_normal-hover-button_surface-fill: var(
+		--ob-h-button-color-bg-secondary-inversity_normal-hover
+	);
+	--ob-h-button-composite-secondary-inversity_normal-hover-fg_color-fill: var(
+		--ob-h-button-color-fg-secondary-inversity_normal-hover
+	);
+	--ob-h-button-composite-secondary-inversity_normal-pressed-button_surface-border_color: var(
+		--ob-h-button-color-border-secondary-inversity_normal-pressed
+	);
+	--ob-h-button-composite-secondary-inversity_normal-pressed-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-pressed
+	);
+	--ob-h-button-composite-secondary-inversity_normal-pressed-button_surface-fill: var(
+		--ob-h-button-color-bg-secondary-inversity_normal-pressed
+	);
+	--ob-h-button-composite-secondary-inversity_normal-pressed-fg_color-fill: var(
+		--ob-h-button-color-fg-secondary-inversity_normal-pressed
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-disabled-button_surface-border_color: var(
+		--ob-h-button-color-border-tertiary-inversity_flipped-disabled
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-disabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-disabled
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-disabled-button_surface-fill: var(
+		--ob-h-button-color-bg-tertiary-inversity_flipped-disabled
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-disabled-fg_color-fill: var(
+		--ob-h-button-color-fg-tertiary-inversity_flipped-disabled
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-enabled-button_surface-border_color: var(
+		--ob-h-button-color-border-tertiary-inversity_flipped-enabled
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-enabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-enabled
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-enabled-button_surface-fill: var(
+		--ob-h-button-color-bg-tertiary-inversity_flipped-enabled
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-enabled-fg_color-fill: var(
+		--ob-h-button-color-fg-tertiary-inversity_flipped-enabled
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-hover-button_surface-border_color: var(
+		--ob-h-button-color-border-tertiary-inversity_flipped-hover
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-hover-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-hover
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-hover-button_surface-fill: var(
+		--ob-h-button-color-bg-tertiary-inversity_flipped-hover
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-hover-fg_color-fill: var(
+		--ob-h-button-color-fg-tertiary-inversity_flipped-hover
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-pressed-button_surface-border_color: var(
+		--ob-h-button-color-border-tertiary-inversity_flipped-pressed
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-pressed-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-pressed
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-pressed-button_surface-fill: var(
+		--ob-h-button-color-bg-tertiary-inversity_flipped-pressed
+	);
+	--ob-h-button-composite-tertiary-inversity_flipped-pressed-fg_color-fill: var(
+		--ob-h-button-color-fg-tertiary-inversity_flipped-pressed
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-disabled-button_surface-border_color: var(
+		--ob-h-button-color-border-tertiary-inversity_normal-disabled
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-disabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-disabled
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-disabled-button_surface-fill: var(
+		--ob-h-button-color-bg-tertiary-inversity_normal-disabled
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-disabled-fg_color-fill: var(
+		--ob-h-button-color-fg-tertiary-inversity_normal-disabled
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-enabled-button_surface-border_color: var(
+		--ob-h-button-color-border-tertiary-inversity_normal-enabled
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-enabled-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-enabled
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-enabled-button_surface-fill: var(
+		--ob-h-button-color-bg-tertiary-inversity_normal-enabled
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-enabled-fg_color-fill: var(
+		--ob-h-button-color-fg-tertiary-inversity_normal-enabled
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-hover-button_surface-border_color: var(
+		--ob-h-button-color-border-tertiary-inversity_normal-hover
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-hover-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-hover
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-hover-button_surface-fill: var(
+		--ob-h-button-color-bg-tertiary-inversity_normal-hover
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-hover-fg_color-fill: var(
+		--ob-h-button-color-fg-tertiary-inversity_normal-hover
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-pressed-button_surface-border_color: var(
+		--ob-h-button-color-border-tertiary-inversity_normal-pressed
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-pressed-button_surface-box_shadow: var(
+		--ob-h-button-box_shadow-pressed
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-pressed-button_surface-fill: var(
+		--ob-h-button-color-bg-tertiary-inversity_normal-pressed
+	);
+	--ob-h-button-composite-tertiary-inversity_normal-pressed-fg_color-fill: var(
+		--ob-h-button-color-fg-tertiary-inversity_normal-pressed
+	);
 	--ob-h-button-container-spacing-gap: var(--ob-s-dimension-dynamic-component_size-spacing-xs-px);
 	--ob-h-button-icon-size: var(--ob-s-dimension-static-component_size-spacing-md-rem);
 	--ob-h-button-icon_only-focus_ring-border_radius: var(--ob-s-border_radius-rounded);
@@ -203,7 +498,8 @@
 	--ob-h-button-remove-spacing-padding-horizontal: var(--ob-s-dimension-static-component_size-none-rem);
 	--ob-h-button-remove-spacing-padding-vertical: var(--ob-s-dimension-static-component_size-none-rem);
 	--ob-h-button-touch_target-min_size: var(--ob-s-dimension-static-component_size-none-px);
-	--ob-h-button-typography-text_label-font: var(--ob-s-dynamic-font_weight-medium) var(--ob-s-dynamic-font_size-md)/var(--ob-s-dynamic-line_height-xs) var(--ob-s-static-font_family-body);
+	--ob-h-button-typography-text_label-font: var(--ob-s-dynamic-font_weight-medium)
+		var(--ob-s-dynamic-font_size-md)/var(--ob-s-dynamic-line_height-xs) var(--ob-s-static-font_family-body);
 	--ob-h-button-typography-text_label-letter_spacing: var(--ob-s-dynamic-letter_spacing_px-normal);
 	--ob-h-button-typography-text_label-text_decoration: var(--ob-s-static-text_decoration-link-emphasis_low);
 	--ob-h-button-typography-text_label-text_transform: var(--ob-s-static-text_case-none);
@@ -571,14 +867,18 @@
 	--ob-s-shadow-2xl: 1 10 70 -8 rgb(7.451% 10.588% 13.333% / 0.05), 0 10 20 0 rgb(7.451% 10.588% 13.333% / 0.1);
 	--ob-s-shadow-default: 0 2 4 -1 rgb(7.451% 10.588% 13.333% / 0.05), 0 4 10 -1 rgb(7.451% 10.588% 13.333% / 0.1);
 	--ob-s-shadow-lg: 0 2 6 -1 rgb(7.451% 10.588% 13.333% / 0.05), 0 5 20 -2 rgb(7.451% 10.588% 13.333% / 0.1);
-	--ob-s-shadow-main_nav-active: 1 10 70 -8 rgb(7.451% 10.588% 13.333% / 0.05), 0 10 20 0 rgb(7.451% 10.588% 13.333% / 0.1);
+	--ob-s-shadow-main_nav-active:
+		1 10 70 -8 rgb(7.451% 10.588% 13.333% / 0.05), 0 10 20 0 rgb(7.451% 10.588% 13.333% / 0.1);
 	--ob-s-shadow-md: 0 1 2 0 rgb(7.451% 10.588% 13.333% / 0.05), 0 1 5 0 rgb(7.451% 10.588% 13.333% / 0.1);
 	--ob-s-shadow-none: none;
 	--ob-s-shadow-sm: 0 1 2 0 rgb(7.451% 10.588% 13.333% / 0.05);
 	--ob-s-shadow-xl: 0 6 10 -5 rgb(7.451% 10.588% 13.333% / 0.05), 0 15 25 -3 rgb(7.451% 10.588% 13.333% / 0.1);
-	--ob-s-static-font_family-body: 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
-	--ob-s-static-font_family-code: 'Noto Sans Mono', ui-monospace, sfmono-regular, consolas, 'Liberation Mono', menlo, monospace;
-	--ob-s-static-font_family-heading: 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-static-font_family-body:
+		"Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue", Arial, sans-serif;
+	--ob-s-static-font_family-code:
+		"Noto Sans Mono", ui-monospace, sfmono-regular, consolas, "Liberation Mono", menlo, monospace;
+	--ob-s-static-font_family-heading:
+		"Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue", Arial, sans-serif;
 	--ob-s-static-font_size-2xl: 1.75rem;
 	--ob-s-static-font_size-3xl: 2.125rem;
 	--ob-s-static-font_size-4xl: 2.5rem;
@@ -634,100 +934,164 @@
 	--ob-s-static-text_case-uppercase: uppercase;
 	--ob-s-static-text_decoration-link-emphasis_high: underline;
 	--ob-s-static-text_decoration-link-emphasis_low: none;
-	--ob-s-typography-grouped-dynamic-2xl-normal-font: 400 1.75rem/2.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-2xl-normal-font:
+		400 1.75rem/2.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-2xl-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-2xl-normal-paragraph_spacing: 1.375rem;
-	--ob-s-typography-grouped-dynamic-2xl-strong-font: 800 1.75rem/2.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-2xl-strong-font:
+		800 1.75rem/2.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-2xl-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-2xl-strong-paragraph_spacing: 1.375rem;
-	--ob-s-typography-grouped-dynamic-3xl-normal-font: 400 2.125rem/3.5rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-3xl-normal-font:
+		400 2.125rem/3.5rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-3xl-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-3xl-normal-paragraph_spacing: 1.75rem;
-	--ob-s-typography-grouped-dynamic-3xl-strong-font: 800 2.125rem/3.5rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-3xl-strong-font:
+		800 2.125rem/3.5rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-3xl-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-3xl-strong-paragraph_spacing: 1.75rem;
-	--ob-s-typography-grouped-dynamic-4xl-normal-font: 400 2.5rem/3.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-4xl-normal-font:
+		400 2.5rem/3.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-4xl-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-4xl-normal-paragraph_spacing: 1.875rem;
-	--ob-s-typography-grouped-dynamic-4xl-strong-font: 800 2.5rem/3.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-4xl-strong-font:
+		800 2.5rem/3.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-4xl-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-4xl-strong-paragraph_spacing: 1.875rem;
-	--ob-s-typography-grouped-dynamic-lg-normal-font: 400 1.125rem/1.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-lg-normal-font:
+		400 1.125rem/1.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-lg-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-lg-normal-paragraph_spacing: 0.875rem;
-	--ob-s-typography-grouped-dynamic-lg-strong-font: 800 1.125rem/1.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-lg-strong-font:
+		800 1.125rem/1.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-lg-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-lg-strong-paragraph_spacing: 0.875rem;
-	--ob-s-typography-grouped-dynamic-md-normal-font: 500 1rem/1.5rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-md-normal-font:
+		500 1rem/1.5rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-md-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-md-normal-paragraph_spacing: 0.75rem;
-	--ob-s-typography-grouped-dynamic-md-strong-font: 800 1rem/1.5rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-md-strong-font:
+		800 1rem/1.5rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-md-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-md-strong-paragraph_spacing: 0.75rem;
-	--ob-s-typography-grouped-dynamic-sm-normal-font: 500 0.875rem/1.25rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-sm-normal-font:
+		500 0.875rem/1.25rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-sm-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-sm-normal-paragraph_spacing: 0.625rem;
-	--ob-s-typography-grouped-dynamic-sm-strong-font: 800 0.875rem/1.25rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-sm-strong-font:
+		800 0.875rem/1.25rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-sm-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-sm-strong-paragraph_spacing: 0.625rem;
-	--ob-s-typography-grouped-dynamic-xl-normal-font: 400 1.4375rem/2.25rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-xl-normal-font:
+		400 1.4375rem/2.25rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-xl-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-xl-normal-paragraph_spacing: 1.125rem;
-	--ob-s-typography-grouped-dynamic-xl-strong-font: 800 1.4375rem/2.25rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-xl-strong-font:
+		800 1.4375rem/2.25rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-xl-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-xl-strong-paragraph_spacing: 1.125rem;
-	--ob-s-typography-grouped-dynamic-xs-normal-font: 500 0.75rem/1rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-xs-normal-font:
+		500 0.75rem/1rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-xs-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-xs-normal-paragraph_spacing: 0.5rem;
-	--ob-s-typography-grouped-dynamic-xs-strong-font: 800 0.75rem/1rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-dynamic-xs-strong-font:
+		800 0.75rem/1rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-dynamic-xs-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-dynamic-xs-strong-paragraph_spacing: 0.5rem;
-	--ob-s-typography-grouped-static-2xl-normal-font: 400 1.75rem/3rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-2xl-normal-font:
+		400 1.75rem/3rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-2xl-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-static-2xl-normal-paragraph_spacing: 1.5rem;
-	--ob-s-typography-grouped-static-2xl-strong-font: 800 1.75rem/3rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-2xl-strong-font:
+		800 1.75rem/3rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-2xl-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-static-2xl-strong-paragraph_spacing: 1.5rem;
-	--ob-s-typography-grouped-static-3xl-normal-font: 400 2.125rem/3.5rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-3xl-normal-font:
+		400 2.125rem/3.5rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-3xl-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-static-3xl-normal-paragraph_spacing: 1.75rem;
-	--ob-s-typography-grouped-static-3xl-strong-font: 800 2.125rem/3.5rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-3xl-strong-font:
+		800 2.125rem/3.5rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-3xl-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-static-3xl-strong-paragraph_spacing: 1.75rem;
-	--ob-s-typography-grouped-static-4xl-normal-font: 400 2.5rem/3.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-4xl-normal-font:
+		400 2.5rem/3.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-4xl-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-static-4xl-normal-paragraph_spacing: 1.875rem;
-	--ob-s-typography-grouped-static-4xl-strong-font: 800 2.5rem/3.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-4xl-strong-font:
+		800 2.5rem/3.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-4xl-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-static-4xl-strong-paragraph_spacing: 1.875rem;
-	--ob-s-typography-grouped-static-lg-normal-font: 400 1.125rem/1.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-lg-normal-font:
+		400 1.125rem/1.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-static-lg-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-static-lg-normal-paragraph_spacing: 0.875rem;
-	--ob-s-typography-grouped-static-lg-strong-font: 800 1.125rem/1.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-lg-strong-font:
+		800 1.125rem/1.75rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-static-lg-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-static-lg-strong-paragraph_spacing: 0.875rem;
-	--ob-s-typography-grouped-static-md-normal-font: 500 1rem/1.5rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-md-normal-font:
+		500 1rem/1.5rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-md-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-static-md-normal-paragraph_spacing: 0.75rem;
-	--ob-s-typography-grouped-static-md-strong-font: 800 1rem/1.5rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-md-strong-font:
+		800 1rem/1.5rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-md-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-static-md-strong-paragraph_spacing: 0.75rem;
-	--ob-s-typography-grouped-static-sm-normal-font: 500 0.875rem/1.25rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-sm-normal-font:
+		500 0.875rem/1.25rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-static-sm-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-static-sm-normal-paragraph_spacing: 0.625rem;
-	--ob-s-typography-grouped-static-sm-strong-font: 800 0.875rem/1.25rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-sm-strong-font:
+		800 0.875rem/1.25rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-static-sm-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-static-sm-strong-paragraph_spacing: 0.625rem;
-	--ob-s-typography-grouped-static-xl-normal-font: 400 1.4375rem/2.25rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-xl-normal-font:
+		400 1.4375rem/2.25rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-static-xl-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-static-xl-normal-paragraph_spacing: 1.125rem;
-	--ob-s-typography-grouped-static-xl-strong-font: 800 1.4375rem/2.25rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-xl-strong-font:
+		800 1.4375rem/2.25rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+		"Helvetica Neue", Arial, sans-serif;
 	--ob-s-typography-grouped-static-xl-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-static-xl-strong-paragraph_spacing: 1.125rem;
-	--ob-s-typography-grouped-static-xs-normal-font: 500 0.75rem/1rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-xs-normal-font:
+		500 0.75rem/1rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-xs-normal-letter_spacing: auto;
 	--ob-s-typography-grouped-static-xs-normal-paragraph_spacing: 0.5rem;
-	--ob-s-typography-grouped-static-xs-strong-font: 800 0.75rem/1rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+	--ob-s-typography-grouped-static-xs-strong-font:
+		800 0.75rem/1rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue",
+		Arial, sans-serif;
 	--ob-s-typography-grouped-static-xs-strong-letter_spacing: auto;
 	--ob-s-typography-grouped-static-xs-strong-paragraph_spacing: 0.5rem;
 	--ob-s-z_index-drawer: 1200;
@@ -1317,8 +1681,12 @@
 		--ob-s1-color-interaction-emphasis_high-fg_base-contrast_low-inversity_normal: #6eb8e9;
 		--ob-s1-color-interaction-emphasis_high-fg_base-contrast_medium-inversity_flipped: #255069;
 		--ob-s1-color-interaction-emphasis_high-fg_base-contrast_medium-inversity_normal: #aacae6;
-		--ob-s1-color-interaction-emphasis_high-fg_disabled-contrast_low-inversity_flipped: rgb(7.451% 10.588% 13.333% / 0.4);
-		--ob-s1-color-interaction-emphasis_high-fg_disabled-contrast_low-inversity_normal: rgb(94.118% 95.686% 96.863% / 0.4);
+		--ob-s1-color-interaction-emphasis_high-fg_disabled-contrast_low-inversity_flipped: rgb(
+			7.451% 10.588% 13.333% / 0.4
+		);
+		--ob-s1-color-interaction-emphasis_high-fg_disabled-contrast_low-inversity_normal: rgb(
+			94.118% 95.686% 96.863% / 0.4
+		);
 		--ob-s1-color-interaction-emphasis_high-fg_visited-contrast_high-inversity_flipped: #312e81;
 		--ob-s1-color-interaction-emphasis_high-fg_visited-contrast_high-inversity_normal: #eef2ff;
 		--ob-s1-color-interaction-emphasis_high-fg_visited-contrast_low-inversity_flipped: #4338ca;
@@ -1935,37 +2303,69 @@
 		--ob-s-dynamic-paragraph_spacing-sm: 0.4785rem;
 		--ob-s-dynamic-paragraph_spacing-xl: 0.8614rem;
 		--ob-s-dynamic-paragraph_spacing-xs: 0.3828rem;
-		--ob-s-typography-grouped-dynamic-2xl-normal-font: 400 1.5313rem/2.625rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-2xl-normal-font:
+			400 1.5313rem/2.625rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-2xl-normal-paragraph_spacing: 1.1484rem;
-		--ob-s-typography-grouped-dynamic-2xl-strong-font: 800 1.5313rem/2.625rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-2xl-strong-font:
+			800 1.5313rem/2.625rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-2xl-strong-paragraph_spacing: 1.1484rem;
-		--ob-s-typography-grouped-dynamic-3xl-normal-font: 400 1.8594rem/3.0625rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-3xl-normal-font:
+			400 1.8594rem/3.0625rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-3xl-normal-paragraph_spacing: 1.3398rem;
-		--ob-s-typography-grouped-dynamic-3xl-strong-font: 800 1.8594rem/3.0625rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-3xl-strong-font:
+			800 1.8594rem/3.0625rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-3xl-strong-paragraph_spacing: 1.3398rem;
-		--ob-s-typography-grouped-dynamic-4xl-normal-font: 400 2.1875rem/3.2813rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-4xl-normal-font:
+			400 2.1875rem/3.2813rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-4xl-normal-paragraph_spacing: 1.4356rem;
-		--ob-s-typography-grouped-dynamic-4xl-strong-font: 800 2.1875rem/3.2813rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-4xl-strong-font:
+			800 2.1875rem/3.2813rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-4xl-strong-paragraph_spacing: 1.4356rem;
-		--ob-s-typography-grouped-dynamic-lg-normal-font: 400 0.9844rem/1.5313rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-lg-normal-font:
+			400 0.9844rem/1.5313rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-lg-normal-paragraph_spacing: 0.6699rem;
-		--ob-s-typography-grouped-dynamic-lg-strong-font: 800 0.9844rem/1.5313rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-lg-strong-font:
+			800 0.9844rem/1.5313rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-lg-strong-paragraph_spacing: 0.6699rem;
-		--ob-s-typography-grouped-dynamic-md-normal-font: 500 0.875rem/1.3125rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-md-normal-font:
+			500 0.875rem/1.3125rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-md-normal-paragraph_spacing: 0.5742rem;
-		--ob-s-typography-grouped-dynamic-md-strong-font: 800 0.875rem/1.3125rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-md-strong-font:
+			800 0.875rem/1.3125rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-md-strong-paragraph_spacing: 0.5742rem;
-		--ob-s-typography-grouped-dynamic-sm-normal-font: 500 0.7656rem/1.0938rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-sm-normal-font:
+			500 0.7656rem/1.0938rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-sm-normal-paragraph_spacing: 0.4785rem;
-		--ob-s-typography-grouped-dynamic-sm-strong-font: 800 0.7656rem/1.0938rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-sm-strong-font:
+			800 0.7656rem/1.0938rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-sm-strong-paragraph_spacing: 0.4785rem;
-		--ob-s-typography-grouped-dynamic-xl-normal-font: 400 1.2578rem/1.9688rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-xl-normal-font:
+			400 1.2578rem/1.9688rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-xl-normal-paragraph_spacing: 0.8614rem;
-		--ob-s-typography-grouped-dynamic-xl-strong-font: 800 1.2578rem/1.9688rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-xl-strong-font:
+			800 1.2578rem/1.9688rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-xl-strong-paragraph_spacing: 0.8614rem;
-		--ob-s-typography-grouped-dynamic-xs-normal-font: 500 0.6563rem/0.875rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-xs-normal-font:
+			500 0.6563rem/0.875rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-xs-normal-paragraph_spacing: 0.3828rem;
-		--ob-s-typography-grouped-dynamic-xs-strong-font: 800 0.6563rem/0.875rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-xs-strong-font:
+			800 0.6563rem/0.875rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-xs-strong-paragraph_spacing: 0.3828rem;
 	}
 
@@ -2040,37 +2440,69 @@
 		--ob-s-dynamic-paragraph_spacing-sm: 0.791rem;
 		--ob-s-dynamic-paragraph_spacing-xl: 1.4239rem;
 		--ob-s-dynamic-paragraph_spacing-xs: 0.6328rem;
-		--ob-s-typography-grouped-dynamic-2xl-normal-font: 400 1.9688rem/3.375rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-2xl-normal-font:
+			400 1.9688rem/3.375rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-2xl-normal-paragraph_spacing: 1.8984rem;
-		--ob-s-typography-grouped-dynamic-2xl-strong-font: 800 1.9688rem/3.375rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-2xl-strong-font:
+			800 1.9688rem/3.375rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-2xl-strong-paragraph_spacing: 1.8984rem;
-		--ob-s-typography-grouped-dynamic-3xl-normal-font: 400 2.3906rem/3.9375rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-3xl-normal-font:
+			400 2.3906rem/3.9375rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-3xl-normal-paragraph_spacing: 2.2148rem;
-		--ob-s-typography-grouped-dynamic-3xl-strong-font: 800 2.3906rem/3.9375rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-3xl-strong-font:
+			800 2.3906rem/3.9375rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-3xl-strong-paragraph_spacing: 2.2148rem;
-		--ob-s-typography-grouped-dynamic-4xl-normal-font: 400 2.8125rem/4.2188rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-4xl-normal-font:
+			400 2.8125rem/4.2188rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-4xl-normal-paragraph_spacing: 2.3731rem;
-		--ob-s-typography-grouped-dynamic-4xl-strong-font: 800 2.8125rem/4.2188rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-4xl-strong-font:
+			800 2.8125rem/4.2188rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-4xl-strong-paragraph_spacing: 2.3731rem;
-		--ob-s-typography-grouped-dynamic-lg-normal-font: 400 1.2656rem/1.9688rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-lg-normal-font:
+			400 1.2656rem/1.9688rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-lg-normal-paragraph_spacing: 1.1075rem;
-		--ob-s-typography-grouped-dynamic-lg-strong-font: 800 1.2656rem/1.9688rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-lg-strong-font:
+			800 1.2656rem/1.9688rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-lg-strong-paragraph_spacing: 1.1075rem;
-		--ob-s-typography-grouped-dynamic-md-normal-font: 500 1.125rem/1.6875rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-md-normal-font:
+			500 1.125rem/1.6875rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-md-normal-paragraph_spacing: 0.9492rem;
-		--ob-s-typography-grouped-dynamic-md-strong-font: 800 1.125rem/1.6875rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-md-strong-font:
+			800 1.125rem/1.6875rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-md-strong-paragraph_spacing: 0.9492rem;
-		--ob-s-typography-grouped-dynamic-sm-normal-font: 500 0.9844rem/1.4063rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-sm-normal-font:
+			500 0.9844rem/1.4063rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-sm-normal-paragraph_spacing: 0.791rem;
-		--ob-s-typography-grouped-dynamic-sm-strong-font: 800 0.9844rem/1.4063rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-sm-strong-font:
+			800 0.9844rem/1.4063rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-sm-strong-paragraph_spacing: 0.791rem;
-		--ob-s-typography-grouped-dynamic-xl-normal-font: 400 1.6172rem/2.5313rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-xl-normal-font:
+			400 1.6172rem/2.5313rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-xl-normal-paragraph_spacing: 1.4239rem;
-		--ob-s-typography-grouped-dynamic-xl-strong-font: 800 1.6172rem/2.5313rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-xl-strong-font:
+			800 1.6172rem/2.5313rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-xl-strong-paragraph_spacing: 1.4239rem;
-		--ob-s-typography-grouped-dynamic-xs-normal-font: 500 0.8438rem/1.125rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-xs-normal-font:
+			500 0.8438rem/1.125rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-xs-normal-paragraph_spacing: 0.6328rem;
-		--ob-s-typography-grouped-dynamic-xs-strong-font: 800 0.8438rem/1.125rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
+		--ob-s-typography-grouped-dynamic-xs-strong-font:
+			800 0.8438rem/1.125rem "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto,
+			"Helvetica Neue", Arial, sans-serif;
 		--ob-s-typography-grouped-dynamic-xs-strong-paragraph_spacing: 0.6328rem;
 	}
 
