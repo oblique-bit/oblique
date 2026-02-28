@@ -24,7 +24,7 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 		if (this.control) {
 			this.pipe = new ObTranslateParamsPipe(translate);
 			translate.onLangChange.subscribe(() => {
-				this.showErrors(this.errors || {});
+				this.showErrors(this.errors);
 			});
 		}
 	}
