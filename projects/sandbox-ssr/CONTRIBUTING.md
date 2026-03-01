@@ -7,9 +7,10 @@
 
 ### <a name="scope"></a> Scope
 
-| Scope   | Description                           |
-| ------- | ------------------------------------- |
-| **app** | For changes to the application itself |
+| Scope    | Description                           |
+| -------- | ------------------------------------- |
+| **app**  | For changes to the application itself |
+| **text** | For changes to the text page          |
 
 ## <a name="scripts"></a> Scripts
 
