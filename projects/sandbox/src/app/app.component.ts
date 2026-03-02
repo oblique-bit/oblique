@@ -8,8 +8,8 @@ import {
 	type ObISkipLink,
 	ObMasterLayoutHeaderService,
 	WINDOW,
+	appVersion,
 } from '@oblique/oblique';
-import {appVersion} from '@oblique/version';
 import {type Observable, Subject} from 'rxjs';
 import {delay, filter, map, startWith, takeUntil} from 'rxjs/operators';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
