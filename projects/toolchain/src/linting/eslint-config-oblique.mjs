@@ -621,7 +621,7 @@ export default [
 			'@typescript-eslint/no-unsafe-unary-minus': 'error',
 			'@typescript-eslint/no-unused-expressions': 'error',
 			'@typescript-eslint/no-unused-private-class-members': 'error',
-			'@typescript-eslint/no-unused-vars': ['error'],
+			'@typescript-eslint/no-unused-vars': 'error',
 			/**
 			 * Rule: @typescript-eslint/no-use-before-define (https://typescript-eslint.io/rules/no-use-before-define)
 			 * Reason for {functions: false}: Functions are hoisted so they can be used before they are defined
@@ -696,6 +696,10 @@ export default [
 			'@typescript-eslint/use-unknown-in-catch-callback-variable': 'error',
 
 			// https://github.com/angular-eslint/angular-eslint/tree/main/packages/eslint-plugin/docs/rules
+			/**
+			 * Rule: @angular-eslint/component-class-suffix (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-class-suffix.md)
+			 * Reason for disabling: as of angular 20, this is no longer recommended by the Angular Team
+			 */
 			'@angular-eslint/component-class-suffix': 'error',
 			/**
 			 * Rule: @angular-eslint/component-max-inline-declarations (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-max-inline-declarations.md)
