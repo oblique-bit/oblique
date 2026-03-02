@@ -4,7 +4,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable} from 'rxjs';
-import {delay, filter, map, startWith, tap} from 'rxjs/operators';
+import {delay, filter, map, tap} from 'rxjs/operators';
 import {ObSpinnerService} from './spinner.service';
 
 @Component({
@@ -37,7 +37,6 @@ export class ObSpinnerComponent implements OnInit {
 		this.state$ = this.spinnerService.events$.pipe(
 			filter(event => event.channel === this.channel),
 			map(event => (event.active ? 'in' : 'out')),
-			startWith('out'),
 			delay(0), // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
 			tap(state => {
 				this.setInert(state);

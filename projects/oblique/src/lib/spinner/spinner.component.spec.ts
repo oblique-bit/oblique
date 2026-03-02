@@ -6,7 +6,6 @@ import {Observable, Subject} from 'rxjs';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerService} from './spinner.service';
-import {skip} from 'rxjs/operators';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
@@ -81,17 +80,16 @@ describe('ObSpinnerComponent', () => {
 			expect(component.state$ instanceof Observable).toBe(true);
 		});
 
-		it('should initially emit "out"', done => {
-			component.state$.subscribe(value => {
-				expect(value).toBe('out');
-				done();
+		it('should initially emit nothing', fakeAsync(() => {
+			component.state$.subscribe(() => {
+				fail('Should not emit anything');
 			});
-		});
+			tick();
+		}));
 
 		it('should not emit when an ObISpinnerEvent is emitted in another channel', fakeAsync(() => {
 			let emitted = false;
-			// skip(1) is to ignore the `startWith`value
-			component.state$.pipe(skip(1)).subscribe(() => {
+			component.state$.subscribe(() => {
 				emitted = true;
 			});
 			mockObSpinnerService.events$.next({active: true, channel: 'alt'});
@@ -141,8 +139,7 @@ describe('ObSpinnerComponent', () => {
 				jest.spyOn(announcer, 'announce');
 				component.fixed = fixed;
 
-				// skip(1) is to ignore the `startWith`value
-				component.state$.pipe(skip(1)).subscribe(value => {
+				component.state$.subscribe(value => {
 					stateValue = value;
 					done();
 				});
@@ -172,8 +169,7 @@ describe('ObSpinnerComponent', () => {
 				outsideButton = fixture.debugElement.query(By.css('#outside')).nativeElement;
 				outsideButton.focus();
 
-				// skip(1) is to ignore the `startWith`value
-				component.state$.pipe(skip(1)).subscribe(() => {
+				component.state$.subscribe(() => {
 					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 					done();
 				});
@@ -204,8 +200,7 @@ describe('ObSpinnerComponent', () => {
 				insideButton.focus();
 				component.fixed = fixed;
 
-				// skip(1) is to ignore the `startWith`value
-				component.state$.pipe(skip(1)).subscribe(() => {
+				component.state$.subscribe(() => {
 					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 					done();
 				});
@@ -227,8 +222,7 @@ describe('ObSpinnerComponent', () => {
 
 			describe('spinner is deactivated without changing the focus', () => {
 				beforeEach(done => {
-					// skip(1) is to ignore the `startWith`value
-					component.state$.pipe(skip(1)).subscribe(() => {
+					component.state$.subscribe(() => {
 						element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 						done();
 					});
@@ -249,8 +243,7 @@ describe('ObSpinnerComponent', () => {
 				beforeEach(done => {
 					outsideButton.focus();
 
-					// skip(1) is to ignore the `startWith`value
-					component.state$.pipe(skip(1)).subscribe(() => {
+					component.state$.subscribe(() => {
 						element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 						done();
 					});
