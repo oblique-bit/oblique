@@ -5,7 +5,7 @@
         "viewport": {
           "mobile": {
             "$type": "other",
-            "$value": "@media (width <= 767px)"
+            "$value": ".ob-viewport-mobile"
           },
           "desktop": {
             "$type": "other",
