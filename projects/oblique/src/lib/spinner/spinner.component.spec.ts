@@ -6,7 +6,6 @@ import {Observable, Subject} from 'rxjs';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerService} from './spinner.service';
-import {skip} from 'rxjs/operators';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
@@ -76,22 +75,21 @@ describe('ObSpinnerComponent', () => {
 		});
 	});
 
-	describe('property "state$"', () => {
+	describe('property "isActive$"', () => {
 		it('should be an Observable', () => {
-			expect(component.state$ instanceof Observable).toBe(true);
+			expect(component.isActive$ instanceof Observable).toBe(true);
 		});
 
-		it('should initially emit "out"', done => {
-			component.state$.subscribe(value => {
-				expect(value).toBe('out');
-				done();
+		it('should initially emit nothing', fakeAsync(() => {
+			component.isActive$.subscribe(() => {
+				fail('Should not emit anything');
 			});
-		});
+			tick();
+		}));
 
 		it('should not emit when an ObISpinnerEvent is emitted in another channel', fakeAsync(() => {
 			let emitted = false;
-			// skip(1) is to ignore the `startWith`value
-			component.state$.pipe(skip(1)).subscribe(() => {
+			component.isActive$.subscribe(() => {
 				emitted = true;
 			});
 			mockObSpinnerService.events$.next({active: true, channel: 'alt'});
@@ -104,7 +102,7 @@ describe('ObSpinnerComponent', () => {
 				desc: 'active fixed',
 				active: true,
 				fixed: true,
-				state: 'in',
+				isActive: true,
 				inert: true,
 				announce: 'i18n.oblique.spinner.is-fixed.activate',
 			},
@@ -112,7 +110,7 @@ describe('ObSpinnerComponent', () => {
 				desc: 'active floating',
 				active: true,
 				fixed: false,
-				state: 'in',
+				isActive: true,
 				inert: true,
 				announce: 'i18n.oblique.spinner.activate',
 			},
@@ -120,7 +118,7 @@ describe('ObSpinnerComponent', () => {
 				desc: 'inactive fixed',
 				active: false,
 				fixed: true,
-				state: 'out',
+				isActive: false,
 				inert: false,
 				announce: 'i18n.oblique.spinner.deactivate',
 			},
@@ -128,12 +126,12 @@ describe('ObSpinnerComponent', () => {
 				desc: 'inactive floating',
 				active: false,
 				fixed: true,
-				state: 'out',
+				isActive: false,
 				inert: false,
 				announce: 'i18n.oblique.spinner.deactivate',
 			},
-		])('$desc ObISpinnerEvent is emitted in the same channel', ({active, fixed, state, inert, announce}) => {
-			let stateValue: string;
+		])('$desc ObISpinnerEvent is emitted in the same channel', ({active, fixed, isActive, inert, announce}) => {
+			let stateValue: boolean;
 			let announcer: LiveAnnouncer;
 
 			beforeEach(done => {
@@ -141,16 +139,15 @@ describe('ObSpinnerComponent', () => {
 				jest.spyOn(announcer, 'announce');
 				component.fixed = fixed;
 
-				// skip(1) is to ignore the `startWith`value
-				component.state$.pipe(skip(1)).subscribe(value => {
+				component.isActive$.subscribe(value => {
 					stateValue = value;
 					done();
 				});
 				mockObSpinnerService.events$.next({active, channel: ObSpinnerService.CHANNEL});
 			});
 
-			it(`should emit "${state}"`, () => {
-				expect(stateValue).toBe(state);
+			it(`should emit "${isActive}"`, () => {
+				expect(stateValue).toBe(isActive);
 			});
 
 			it('should toggle "inert" on the parent element', () => {
@@ -172,8 +169,7 @@ describe('ObSpinnerComponent', () => {
 				outsideButton = fixture.debugElement.query(By.css('#outside')).nativeElement;
 				outsideButton.focus();
 
-				// skip(1) is to ignore the `startWith`value
-				component.state$.pipe(skip(1)).subscribe(() => {
+				component.isActive$.subscribe(() => {
 					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 					done();
 				});
@@ -204,8 +200,7 @@ describe('ObSpinnerComponent', () => {
 				insideButton.focus();
 				component.fixed = fixed;
 
-				// skip(1) is to ignore the `startWith`value
-				component.state$.pipe(skip(1)).subscribe(() => {
+				component.isActive$.subscribe(() => {
 					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 					done();
 				});
@@ -227,8 +222,7 @@ describe('ObSpinnerComponent', () => {
 
 			describe('spinner is deactivated without changing the focus', () => {
 				beforeEach(done => {
-					// skip(1) is to ignore the `startWith`value
-					component.state$.pipe(skip(1)).subscribe(() => {
+					component.isActive$.subscribe(() => {
 						element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 						done();
 					});
@@ -249,8 +243,7 @@ describe('ObSpinnerComponent', () => {
 				beforeEach(done => {
 					outsideButton.focus();
 
-					// skip(1) is to ignore the `startWith`value
-					component.state$.pipe(skip(1)).subscribe(() => {
+					component.isActive$.subscribe(() => {
 						element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 						done();
 					});

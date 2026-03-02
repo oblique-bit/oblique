@@ -4,7 +4,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable} from 'rxjs';
-import {delay, filter, map, startWith, tap} from 'rxjs/operators';
+import {delay, filter, map, tap} from 'rxjs/operators';
 import {ObSpinnerService} from './spinner.service';
 
 @Component({
@@ -19,7 +19,7 @@ import {ObSpinnerService} from './spinner.service';
 export class ObSpinnerComponent implements OnInit {
 	@Input() channel: string = ObSpinnerService.CHANNEL;
 	@Input() fixed = false;
-	state$: Observable<string>;
+	isActive$: Observable<boolean>;
 	storedFocusedElement: HTMLElement;
 	elementOutsideInertArea: HTMLElement;
 
@@ -34,14 +34,13 @@ export class ObSpinnerComponent implements OnInit {
 	ngOnInit(): void {
 		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
 		this.elementOutsideInertArea = this.createFocusableElement();
-		this.state$ = this.spinnerService.events$.pipe(
+		this.isActive$ = this.spinnerService.events$.pipe(
 			filter(event => event.channel === this.channel),
-			map(event => (event.active ? 'in' : 'out')),
-			startWith('out'),
+			map(event => event.active),
 			delay(0), // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
-			tap(state => {
-				this.setInert(state);
-				this.handleFocus(state);
+			tap((isActive: boolean) => {
+				this.setInert(isActive);
+				this.handleFocus(isActive);
 			})
 		);
 	}
@@ -53,40 +52,40 @@ export class ObSpinnerComponent implements OnInit {
 		return element;
 	}
 
-	private setInert(state: string): void {
-		if (state === 'in') {
+	private setInert(isActive: boolean): void {
+		if (isActive) {
 			this.renderer.setAttribute(this.parentElement, 'inert', '');
 		} else {
 			this.renderer.removeAttribute(this.parentElement, 'inert');
 		}
 	}
 
-	private announceSpinnerState(state: string): void {
-		void this.liveAnnouncer.announce(this.translate.instant(this.getAnnouncementText(state)));
+	private announceSpinnerState(isActive: boolean): void {
+		void this.liveAnnouncer.announce(this.translate.instant(this.getAnnouncementText(isActive)));
 	}
 
-	private getAnnouncementText(state: string): string {
-		if (state === 'out') {
+	private getAnnouncementText(isActive: boolean): string {
+		if (!isActive) {
 			return 'i18n.oblique.spinner.deactivate';
 		}
 		return this.fixed ? 'i18n.oblique.spinner.is-fixed.activate' : 'i18n.oblique.spinner.activate';
 	}
 
-	private handleFocus(state: string): void {
+	private handleFocus(isActive: boolean): void {
 		const currentFocusedElement = this.document.activeElement as HTMLElement;
-		if (state === 'in') {
-			this.handleFocusOnActivation(currentFocusedElement, state);
+		if (isActive) {
+			this.handleFocusOnActivation(currentFocusedElement, isActive);
 		} else {
-			this.handleFocusOnDeactivation(currentFocusedElement, state);
+			this.handleFocusOnDeactivation(currentFocusedElement, isActive);
 		}
 	}
 
-	private handleFocusOnActivation(currentFocusedElement: HTMLElement, state: string): void {
+	private handleFocusOnActivation(currentFocusedElement: HTMLElement, isActive: boolean): void {
 		if (this.isElementInsideInertArea(currentFocusedElement)) {
 			this.storedFocusedElement = currentFocusedElement;
 			this.moveFocusOutsideInertArea();
 		} else {
-			this.announceSpinnerState(state);
+			this.announceSpinnerState(isActive);
 		}
 	}
 
@@ -98,20 +97,20 @@ export class ObSpinnerComponent implements OnInit {
 		this.renderer.setProperty(
 			this.elementOutsideInertArea,
 			'innerHTML',
-			this.translate.instant(this.getAnnouncementText('in'))
+			this.translate.instant(this.getAnnouncementText(true))
 		);
 		this.renderer.insertBefore(this.parentElement.parentElement, this.elementOutsideInertArea, this.parentElement);
 		this.elementOutsideInertArea.focus();
 	}
 
-	private handleFocusOnDeactivation(currentFocusedElement: HTMLElement, state: string): void {
+	private handleFocusOnDeactivation(currentFocusedElement: HTMLElement, isActive: boolean): void {
 		if (currentFocusedElement === this.elementOutsideInertArea) {
 			this.storedFocusedElement.focus();
 		}
 		if (this.elementOutsideInertArea.parentElement) {
 			this.removeElementOutsideInertArea();
 		}
-		this.announceSpinnerState(state);
+		this.announceSpinnerState(isActive);
 	}
 
 	private removeElementOutsideInertArea(): void {
