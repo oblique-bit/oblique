@@ -1,11 +1,15 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Location} from '@angular/common';
 import {provideHttpClient} from '@angular/common/http';
 import {TranslateModule} from '@ngx-translate/core';
-import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, provideObliqueTestingConfiguration} from '../utilities';
+import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, WINDOW, provideObliqueTestingConfiguration} from '../utilities';
 import {AccessibilityStatementComponent} from './accessibility-statement.component';
 import {registerLocaleData} from '@angular/common';
 import localeDE from '@angular/common/locales/de-CH';
 import {By} from '@angular/platform-browser';
+import {Router, provideRouter} from '@angular/router';
+import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
+import {ObMasterLayoutService} from '../master-layout/master-layout.service';
 
 registerLocaleData(localeDE);
 
@@ -18,6 +22,8 @@ describe(AccessibilityStatementComponent.name, () => {
 			imports: [AccessibilityStatementComponent, TranslateModule],
 			providers: [
 				provideHttpClient(),
+				provideRouter([]),
+				{provide: ObMasterLayoutService, useValue: {layout: {hasMainNavigation: true}}},
 				provideObliqueTestingConfiguration({
 					accessibilityStatement: {
 						applicationName: 'appName',
@@ -384,6 +390,66 @@ describe(AccessibilityStatementComponent.name, () => {
 					'Please provide valid contact information for the accessibility statement. At least one object with a non-empty phone, email, or url property.'
 				);
 			});
+		});
+	});
+
+	describe('back button and navigation', () => {
+		let historyStack: string[];
+		let mockWindow: Window;
+
+		beforeEach(() => {
+			historyStack = ['/initial'];
+			mockWindow = {
+				history: {
+					get length() {
+						return historyStack.length;
+					},
+				},
+			} as unknown as Window;
+
+			const masterLayoutConfig = new ObMasterLayoutConfig();
+			masterLayoutConfig.layout = {...masterLayoutConfig.layout, hasMainNavigation: false};
+			masterLayoutConfig.homePageRoute = '/home';
+
+			TestBed.overrideProvider(ObMasterLayoutConfig, {
+				useValue: masterLayoutConfig,
+			});
+			TestBed.overrideProvider(ObMasterLayoutService, {
+				useValue: {layout: {hasMainNavigation: false}},
+			});
+			TestBed.overrideProvider(WINDOW, {useValue: mockWindow});
+			fixture = TestBed.createComponent(AccessibilityStatementComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+		});
+
+		it('should display the back button when main navigation is disabled', () => {
+			expect(fixture.debugElement.query(By.css('.ob-accessibility-back button'))).toBeTruthy();
+		});
+
+		it('should navigate back when there is in-app history', () => {
+			const location = TestBed.inject(Location);
+			const router = TestBed.inject(Router);
+			jest.spyOn(location, 'back').mockImplementation();
+			jest.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
+			historyStack.push('/in-app');
+
+			component.navigateBack();
+
+			expect(location.back).toHaveBeenCalled();
+			expect(router.navigateByUrl).not.toHaveBeenCalled();
+		});
+
+		it('should navigate to home when there is no in-app history', () => {
+			const location = TestBed.inject(Location);
+			const router = TestBed.inject(Router);
+			jest.spyOn(location, 'back').mockImplementation();
+			jest.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
+
+			component.navigateBack();
+
+			expect(location.back).not.toHaveBeenCalled();
+			expect(router.navigateByUrl).toHaveBeenCalledWith('/home');
 		});
 	});
 });

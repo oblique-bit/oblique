@@ -18,6 +18,7 @@ import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-l
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_HAS_LANGUAGE_IN_URL,
+	OB_HISTORY_STATE,
 	OB_TRANSLATION_CONFIGURATION,
 	WINDOW,
 	getRootRoute,
@@ -139,6 +140,12 @@ describe('utilities', () => {
 					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(false);
 				});
 			});
+
+			describe('history state', () => {
+				it('should capture the initial browser history length', () => {
+					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
+				});
+			});
 		});
 
 		describe('with custom configuration', () => {
@@ -229,6 +236,12 @@ describe('utilities', () => {
 			describe('has language in URL', () => {
 				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
 					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
+				});
+			});
+
+			describe('history state', () => {
+				it('should capture the initial browser history length', () => {
+					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
 				});
 			});
 		});
@@ -326,6 +339,12 @@ describe('utilities', () => {
 					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(false);
 				});
 			});
+
+			describe('history state', () => {
+				it('should capture the initial browser history length', () => {
+					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
+				});
+			});
 		});
 
 		describe('with custom configuration', () => {
@@ -416,6 +435,12 @@ describe('utilities', () => {
 			describe('has language in URL', () => {
 				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
 					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
+				});
+			});
+
+			describe('history state', () => {
+				it('should capture the initial browser history length', () => {
+					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
 				});
 			});
 		});

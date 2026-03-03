@@ -56,6 +56,11 @@ export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current l
 export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
 );
+export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
+
+export interface ObIHistoryState {
+	initialLength: number;
+}
 
 export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
@@ -76,9 +81,11 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 			inject(ObIconService).registerOnAppInit(config.icon);
 			inject(ObLanguageService).initialize();
 			inject(ObRouterService).initialize();
+			inject(OB_HISTORY_STATE).initialLength = inject(WINDOW).history.length;
 		}),
 		provideObliqueTranslations(config.translate),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
+		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
@@ -99,6 +106,7 @@ export function provideObliqueTestingConfiguration(
 			inject(ObIconService).registerOnAppInit(config.icon);
 			inject(ObLanguageService).initialize();
 			inject(ObRouterService).initialize();
+			inject(OB_HISTORY_STATE).initialLength = inject(WINDOW).history.length;
 		}),
 		provideTranslateService({
 			...config.translate,
@@ -112,6 +120,7 @@ export function provideObliqueTestingConfiguration(
 			useValue: {additionalFiles: config.translate?.additionalFiles, flatten: config.translate?.flatten ?? true},
 		},
 		{provide: WINDOW, useValue: window},
+		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
