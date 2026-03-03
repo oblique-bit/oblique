@@ -432,14 +432,26 @@ describe('ObMasterLayoutComponent', () => {
 				element = content.querySelector('h1');
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
+				component.prefersReducedMotion = true;
+				component.focusElementById('content');
+			});
+
+			it('should scroll to the element', () => {
+				expect(element.scrollIntoView).toHaveBeenCalledWith({behavior: 'instant'});
+			});
+		});
+
+		describe('with prefersReducedMotion false', () => {
+			beforeEach(() => {
+				element = document.getElementById('content');
+				jest.spyOn(element, 'scrollIntoView');
+				jest.spyOn(element, 'focus');
+				component.prefersReducedMotion = false;
 				component.focusElementById('content');
 			});
 
 			it('should scroll to the element', () => {
 				expect(element.scrollIntoView).toHaveBeenCalledWith({behavior: 'smooth'});
-			});
-			it('should focus the element', () => {
-				expect(element.focus).toHaveBeenCalledWith({preventScroll: true});
 			});
 		});
 
