@@ -163,31 +163,31 @@ export class ObMasterLayoutComponent
 	}
 
 	focusElementById(elementId: string): void {
-		const element = this.getElementToFocus(elementId);
-		if (!element) {
+		const elementToFocus = this.getElement(elementId);
+		if (!elementToFocus) {
 			if (isDevMode()) {
 				console.error(`${elementId} does not correspond to an existing DOM element.`);
 			}
 			return;
 		}
 		const behavior = this.prefersReducedMotion ? 'instant' : 'smooth';
-		if (this.isMainFocusedInStickyLayout(element.id)) {
+		if (this.isMainFocusedInStickyLayout(elementToFocus.id)) {
 			// Here the target is the already fully visible main container. The content of the container is being scrolled to the top.
-			element.scrollTo({
+			elementToFocus.scrollTo({
 				top: 0,
 				behavior,
 			});
 		} else {
 			// Here the whole page is scrolled to the target element.
-			element.scrollIntoView({behavior});
+			elementToFocus.scrollIntoView({behavior});
 		}
-		element.focus({preventScroll: true});
-		if (document.activeElement !== element) {
-			element.setAttribute('tabindex', '-1');
-			element.focus({preventScroll: true});
+		elementToFocus.focus({preventScroll: true});
+		if (document.activeElement !== elementToFocus) {
+			elementToFocus.setAttribute('tabindex', '-1');
+			elementToFocus.focus({preventScroll: true});
 			if (isDevMode()) {
 				console.info(
-					`The element: ${this.createElementDescription(element)} is not focusable. Oblique added a tabindex in order to make it focusable.`
+					`The element: ${this.createElementDescription(elementToFocus)} is not focusable. Oblique added a tabindex in order to make it focusable.`
 				);
 			}
 		}
@@ -289,7 +289,7 @@ export class ObMasterLayoutComponent
 			.subscribe(() => this.offCanvasClose.nativeElement.focus());
 	}
 
-	private getElementToFocus(elementId: string): HTMLElement | null {
+	private getElement(elementId: string): HTMLElement | null {
 		return this.document.querySelector<HTMLElement>(`#${elementId}`);
 	}
 }
