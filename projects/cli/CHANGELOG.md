@@ -1,3 +1,9 @@
+# [15.0.3](https://github.com/oblique-bit/oblique/compare/15.0.2...15.0.3) (2026-03-03)
+
+## Bug Fixes
+
+- **cli:** ensure cli options can be negated ([0ff2756c](https://github.com/oblique-bit/oblique/commit/0ff2756c121c544b95cc9829b2fbf4b8c48732e1))
+
 # [15.0.0](https://github.com/oblique-bit/oblique/compare/14.1.2...15.0.0) (2026-02-02)
 
 ## Bug Fixes

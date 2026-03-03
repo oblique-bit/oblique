@@ -98,7 +98,7 @@ describe('Ob new command', () => {
 					},
 					{
 						description: 'Option for the interactive mode',
-						expected: `--interactive Enables interactive mode for the Oblique's "add" Schematic. When activated, this flag prompts the user for all options, bypassing default and predefined settings. It offers greater flexibility and control through a step-by-step configuration process.`,
+						expected: `--interactive [boolean] Enables interactive mode for the Oblique's "add" Schematic. When activated, this flag prompts the user for all options, bypassing default and predefined settings. It offers greater flexibility and control through a step-by-step configuration process.`,
 					},
 					{
 						description: "Option to specify the application's title",
@@ -128,47 +128,47 @@ describe('Ob new command', () => {
 					{
 						description: 'Option to add Ajv dependency for form validation',
 						expected:
-							'--ajv Add Ajv dependency: Value "true" enables form validation based on a schema delivered by the server. See more information at https://www.npmjs.com/package/ajv (default: true)',
+							'--ajv [boolean] Add Ajv dependency: Value "true" enables form validation based on a schema delivered by the server. See more information at https://www.npmjs.com/package/ajv (default: true)',
 					},
 					{
 						description: 'Option for unknown route management',
 						expected:
-							"--unknownRoute Unknown route management: This will display custom 404 pages instead of redirecting to the home page. See more information at Oblique's Unknown route API at https://oblique.bit.admin.ch/helpers/unknown-route/api (default: true)",
+							"--unknownRoute [boolean] Unknown route management: This will display custom 404 pages instead of redirecting to the home page. See more information at Oblique's Unknown route API at https://oblique.bit.admin.ch/helpers/unknown-route/api (default: true)",
 					},
 					{
 						description: 'Option to add HTTP interceptors',
 						expected:
-							"-httpInterceptors Http interceptor: If set to true, it will provide the ObHttpApiInterceptor in the app.module.ts. The interceptor displays a spinner on API calls and a notification on errors. See more information at Oblique's ObHttpInterceptor API at https://oblique.bit.admin.ch/helpers/http-interceptor/api (default: true)",
+							"-httpInterceptors [boolean] Http interceptor: If set to true, it will provide the ObHttpApiInterceptor in the app.module.ts. The interceptor displays a spinner on API calls and a notification on errors. See more information at Oblique's ObHttpInterceptor API at https://oblique.bit.admin.ch/helpers/http-interceptor/api (default: true)",
 					},
 					{
 						description: 'Option to show a banner for the current environment',
 						expected:
-							"--banner Banner to show current environment: The ObBanner will show the current environment in the header. This feature is only available if at least 1 environment will be defined. To define your environments, use the option --environments <Environments>. See more information at Oblique's ObBanner API at https://oblique.bit.admin.ch/helpers/banner/api",
+							"--banner [boolean] Banner to show current environment: The ObBanner will show the current environment in the header. This feature is only available if at least 1 environment will be defined. To define your environments, use the option --environments <Environments>. See more information at Oblique's ObBanner API at https://oblique.bit.admin.ch/helpers/banner/api",
 					},
 					{
 						description: 'Option to add the external link module',
 						expected:
-							"--externalLink External link: If true, it imports the ObExternalLinkModule. This feature automatically enhances external links. See more information at Oblique's External link API at https://oblique.bit.admin.ch/components/external-link/api (default: true)",
+							"--externalLink [boolean] External link: If true, it imports the ObExternalLinkModule. This feature automatically enhances external links. See more information at Oblique's External link API at https://oblique.bit.admin.ch/components/external-link/api (default: true)",
 					},
 					{
 						description: 'Option to use Jest for unit tests',
 						expected:
-							"--jest Jest for unit tests: If true, Karma/Jasmine will be replaced with Jest as your application's testing framework. See more information at Jest at npm https://www.npmjs.com/package/jest and Jest's documentation: https://jestjs.io/docs/getting-started (default: true)",
+							"--jest [boolean] Jest for unit tests: If true, Karma/Jasmine will be replaced with Jest as your application's testing framework. See more information at Jest at npm https://www.npmjs.com/package/jest and Jest's documentation: https://jestjs.io/docs/getting-started (default: true)",
 					},
 					{
 						description: 'Option to create an .npmrc file',
 						expected:
-							'--npmrc Create .npmrc: If you use this flag, it adds an .npmrc file, suitable for projects located within confederation/federal network. (default: true)',
+							'--npmrc [boolean] Create .npmrc: If you use this flag, it adds an .npmrc file, suitable for projects located within confederation/federal network. (default: true)',
 					},
 					{
 						description: 'Option to add ESLint and Prettier',
 						expected:
-							' --eslint ESLint & Prettier: If true, it adds eslint & prettier configuration as used by the Oblique team. See more information at ESLint Documentation: https://eslint.org/docs/latest/use/getting-started (default: true)',
+							' --eslint [boolean] ESLint & Prettier: If true, it adds eslint & prettier configuration as used by the Oblique team. See more information at ESLint Documentation: https://eslint.org/docs/latest/use/getting-started (default: true)',
 					},
 					{
 						description: 'Option to add Husky configuration for git hooks',
 						expected:
-							"--husky Husky configuration: If true, it adds git hooks to automatically format changed files. See more information at Husky Documentation at https://typicode.github.io/husky/ and Husky's package at npm https://www.npmjs.com/package/husky (default: true)",
+							"--husky [boolean] Husky configuration: If true, it adds git hooks to automatically format changed files. See more information at Husky Documentation at https://typicode.github.io/husky/ and Husky's package at npm https://www.npmjs.com/package/husky (default: true)",
 					},
 					{
 						description: 'Option to display help information',

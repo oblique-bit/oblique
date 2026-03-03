@@ -1,6 +1,7 @@
 import {type Command, Option, type OptionValues} from '@commander-js/extra-typings';
 import type {ObNewOptions, ObNewSchemaOption, OptionKeys} from '../new/ob-new.model';
 import type {ObCliSchema} from './ob-cli.model';
+const flagPrefixLength = 2;
 
 //this is needed because commander sometimes converts the option to firstUpperCase
 export function convertOptionPropertyNames(options: ObNewOptions<string | boolean>): ObNewOptions<string | boolean> {
@@ -19,7 +20,10 @@ export function addObNewCommandOptions(
 	if (Object.prototype.hasOwnProperty.call(schema, 'properties')) {
 		for (const [key, value] of Object.entries(schema.properties)) {
 			value.description = createOptionDescription(value.description, value.resources);
-			command.addOption(configureOption(value, key));
+			const options = configureOption(value, key);
+			for (const option of options) {
+				command.addOption(option);
+			}
 		}
 	} else {
 		throw new Error(`Schema for command ob ${command.name()} not found!`);
@@ -27,30 +31,52 @@ export function addObNewCommandOptions(
 	return command;
 }
 
-export function configureOption(config: ObNewSchemaOption, longFlag: string): Option {
-	if (isEmpty(config.shortFlag) && isEmpty(longFlag)) {
-		throw new Error('At least one of shortFlag or longFlag must be provided.');
-	}
-	const shortFlag = (config.shortFlag ?? '').trim();
-	const longFlagClean = (longFlag || '').trim();
-	const flagValuePlaceholder = config.flagValuePlaceholder?.trim() ?? '';
-
-	const flags = [shortFlag ? `-${shortFlag}` : '', longFlagClean ? `--${longFlagClean}` : '']
-		.filter(flag => Boolean(flag))
-		.join(', ');
-
-	const option = new Option([flags, flagValuePlaceholder].filter(Boolean).join(' ').trim(), config.description);
-
-	const optionWithMandatory = addMandatory(option, config.mandatory);
-	const optionWithDefault = addDefaultValue(optionWithMandatory, config.defaultValue, config.defaultValueDescription);
-	return addChoices(optionWithDefault, config.choices);
+export function configureOption(config: ObNewSchemaOption, longFlag: string): Option[] {
+	validateFlags(config, longFlag);
+	const flags = buildFlags(config.shortFlag, longFlag);
+	const options = createCommanderOption(config, flags);
+	return options
+		.map(option => addMandatory(option, config.mandatory))
+		.map(option => addDefaultValue(option, config.defaultValue, config.defaultValueDescription))
+		.map(option => addChoices(option, config.choices));
 }
 
-function isEmpty(flag: string | undefined | null): boolean {
-	if (flag === undefined || flag === null) {
-		return true;
+function validateFlags(config: ObNewSchemaOption, longFlag: string): void {
+	if (isBlank(config.shortFlag) && isBlank(longFlag)) {
+		throw new Error('Either a shortFlag or a longFlag must be provided.');
 	}
-	return flag.trim() === '';
+}
+
+function isBlank(value?: string): boolean {
+	return value === undefined || value === null || value.trim().length === 0;
+}
+
+function buildFlags(shortFlag?: string, longFlag?: string): string {
+	const shortFlagClean = (shortFlag ?? '').trim();
+	const longFlagClean = (longFlag ?? '').trim();
+
+	return [shortFlagClean ? `-${shortFlagClean}` : '', longFlagClean ? `--${longFlagClean}` : '']
+		.filter(Boolean)
+		.join(', ');
+}
+
+function createCommanderOption(config: ObNewSchemaOption, longFlag: string): Option[] {
+	if (config.type === 'boolean') {
+		return [...createBooleanCommanderOptions(config, longFlag.slice(flagPrefixLength))];
+	}
+	validateFlags(config, longFlag);
+	return [createValueCommanderOption(config, longFlag)];
+}
+
+function createBooleanCommanderOptions(config: ObNewSchemaOption, flag: string): Option[] {
+	return [
+		new Option(`--${flag} [boolean]`, config.description).conflicts(`--no-${flag}`),
+		new Option(`--no-${flag}`, config.description).hideHelp(true).conflicts(`--${flag}`),
+	];
+}
+
+function createValueCommanderOption(config: ObNewSchemaOption, flags: string): Option {
+	return new Option(`${flags} ${config.flagValuePlaceholder}`.trim(), config.description);
 }
 
 function createOptionDescription(description: string, resources?: string[]): string {

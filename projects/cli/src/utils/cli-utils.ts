@@ -3,7 +3,7 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '15.0.2';
+export const version = '15.0.3';
 /* End of generated content */
 
 export const currentVersions = {
@@ -127,10 +127,13 @@ export function getVersionedDependency(dependency: keyof typeof currentVersions)
 }
 
 export function buildOption(key: string, value: string | boolean): string {
-	if (typeof value === 'string') {
-		return `${key}="${value}"`;
+	if (value === true || value === 'true') {
+		return key;
 	}
-	return value ? key : `no-${key}`;
+	if (value === false || value === 'false') {
+		return `no-${key}`;
+	}
+	return `${key}="${value}"`;
 }
 
 export function execute(config: ObCommandConfig): void {

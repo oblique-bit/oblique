@@ -1,3 +1,9 @@
+# [15.0.3](https://github.com/oblique-bit/oblique/compare/15.0.2...15.0.3) (2026-03-03)
+
+## Bug Fixes
+
+- **web-component:** activate interceptors for the service-navigation ([f14b359f](https://github.com/oblique-bit/oblique/commit/f14b359f0a7d95a735620e758383fd839d8dd93b))
+
 # [15.0.0](https://github.com/oblique-bit/oblique/compare/14.2.0...15.0.0) (2026-02-02)
 
 ## Bug Fixes
