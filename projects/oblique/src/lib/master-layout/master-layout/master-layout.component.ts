@@ -79,6 +79,7 @@ export class ObMasterLayoutComponent
 	isLayoutCollapsed = false;
 	isLayoutExpanded = true;
 	isScrolling = false;
+	prefersReducedMotion = false;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<unknown>>;
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<unknown>>;
@@ -129,6 +130,7 @@ export class ObMasterLayoutComponent
 			this.collapseBreakpoint = this.defaultCollapseBreakpoint;
 			this.handleLayoutMode();
 		}
+		this.prefersReducedMotion = this.window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 	}
 
 	ngDoCheck(): void {
@@ -165,15 +167,16 @@ export class ObMasterLayoutComponent
 			console.error(`${elementId} does not correspond to an existing DOM element.`);
 			return;
 		}
+		const behavior = this.prefersReducedMotion ? 'instant' : 'smooth';
 		if (this.isMainFocusedInStickyLayout(element.id)) {
 			// Here the target is the already fully visible main container. The content of the container is being scrolled to the top.
 			element.scrollTo({
 				top: 0,
-				behavior: 'smooth',
+				behavior,
 			});
 		} else {
 			// Here the whole page is scrolled to the target element.
-			element.scrollIntoView({behavior: 'smooth'});
+			element.scrollIntoView({behavior});
 		}
 		element.focus({preventScroll: true});
 		if (document.activeElement !== element) {
