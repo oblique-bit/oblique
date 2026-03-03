@@ -1,3 +1,11 @@
+# [15.0.3](https://github.com/oblique-bit/oblique/compare/15.0.2...15.0.3) (2026-03-03)
+
+## Bug Fixes
+
+- **tabbed-page:** open all external links safely in new tab ([0e0775e8](https://github.com/oblique-bit/oblique/commit/0e0775e8e2e21e36847c0f98442d4d8810734ace))
+- **text-page:** open external links safely in new tab ([f5a379c9](https://github.com/oblique-bit/oblique/commit/f5a379c94c33791926a224cd50eab56f908f96e9))
+- **text-page:** ensure external links are properly identified ([82825fa1](https://github.com/oblique-bit/oblique/commit/82825fa167ff1833c0d5dce3559b9f4b2ce52143))
+
 # [15.0.1](https://github.com/oblique-bit/oblique/compare/15.0.0...15.0.1) (2026-02-16)
 
 ## Bug Fixes
