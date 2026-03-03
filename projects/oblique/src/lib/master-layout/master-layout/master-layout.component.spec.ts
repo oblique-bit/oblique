@@ -92,7 +92,7 @@ describe('ObMasterLayoutComponent', () => {
 	describe('initialization', () => {
 		describe('with a fragment', () => {
 			beforeEach(async () => {
-				jest.spyOn(component, 'focusElement');
+				jest.spyOn(component, 'focusElementById');
 				const router = TestBed.inject(Router);
 				router.initialNavigation();
 				await router.navigate(['some/path'], {fragment: 'someFragment', queryParams: {param: 'someParam'}});
@@ -106,14 +106,14 @@ describe('ObMasterLayoutComponent', () => {
 				expect(component.route.params).toEqual({param: 'someParam'});
 			});
 
-			it('should call focusElement with "someFragment"', () => {
-				expect(component.focusElement).toHaveBeenCalledWith('someFragment');
+			it('should call focusElementById with "someFragment"', () => {
+				expect(component.focusElementById).toHaveBeenCalledWith('someFragment');
 			});
 		});
 
 		describe('without fragment', () => {
 			beforeEach(async () => {
-				jest.spyOn(component, 'focusElement');
+				jest.spyOn(component, 'focusElementById');
 				const router = TestBed.inject(Router);
 				router.initialNavigation();
 				await router.navigate(['some/path'], {queryParams: {param: 'someParam'}});
@@ -127,8 +127,8 @@ describe('ObMasterLayoutComponent', () => {
 				expect(component.route.params).toEqual({param: 'someParam'});
 			});
 
-			it('should not call focusElement', () => {
-				expect(component.focusElement).not.toHaveBeenCalled();
+			it('should not call focusElementById', () => {
+				expect(component.focusElementById).not.toHaveBeenCalled();
 			});
 		});
 	});
@@ -292,7 +292,7 @@ describe('ObMasterLayoutComponent', () => {
 		});
 	});
 
-	describe('focusElement', () => {
+	describe('focusElementById', () => {
 		let element: HTMLElement;
 		let content: HTMLElement;
 
@@ -315,7 +315,7 @@ describe('ObMasterLayoutComponent', () => {
 				element = document.getElementById('content');
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
-				component.focusElement('content');
+				component.focusElementById('content');
 			});
 			it('should scroll to the element', () => {
 				expect(element.scrollIntoView).toHaveBeenCalledWith({behavior: 'smooth'});
@@ -337,7 +337,7 @@ describe('ObMasterLayoutComponent', () => {
 				});
 				jest.spyOn(element, 'scrollTo');
 				jest.spyOn(element, 'focus');
-				component.focusElement('content');
+				component.focusElementById('content');
 			});
 			it('should scroll within the containing element', () => {
 				expect(element.scrollTo).toHaveBeenCalledWith({behavior: 'smooth', top: 0});
@@ -360,7 +360,7 @@ describe('ObMasterLayoutComponent', () => {
 				element = content.querySelector('h1');
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
-				component.focusElement('content');
+				component.focusElementById('content');
 			});
 
 			it('should scroll to the element', () => {
@@ -379,7 +379,7 @@ describe('ObMasterLayoutComponent', () => {
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
 				jest.spyOn(global.console, 'error');
-				component.focusElement('not_existing_element');
+				component.focusElementById('not_existing_element');
 			});
 			it('should not scroll to the element', () => {
 				expect(element.scrollIntoView).not.toHaveBeenCalled();
@@ -410,18 +410,18 @@ describe('ObMasterLayoutComponent', () => {
 				expect(document.activeElement === content).toBe(true);
 			});
 			it('should scroll to the element', () => {
-				component.focusElement('not_focusable_element');
+				component.focusElementById('not_focusable_element');
 				expect(element.scrollIntoView).toHaveBeenCalledWith({behavior: 'smooth'});
 			});
 
 			it('should console.info that the targetted element is not focusable', () => {
-				component.focusElement('not_focusable_element');
+				component.focusElementById('not_focusable_element');
 				expect(console.info).toHaveBeenCalledWith(
 					'The element: input#not_focusable_element.foo.bar is not focusable. Oblique added a tabindex in order to make it focusable.'
 				);
 			});
 			it(`should give it a tabindex="-1" to make it focusable again`, () => {
-				component.focusElement('not_focusable_element');
+				component.focusElementById('not_focusable_element');
 				expect(element.getAttribute('tabindex')).toEqual('-1');
 			});
 		});
