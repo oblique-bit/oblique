@@ -55,6 +55,11 @@
       "description": "Upgrade Oblique to version 15",
       "version": "15.0.0-0",
       "factory": "./index/ng-update/index#upgradeToV15"
+    },
+    "migrate-15-to-16": {
+      "description": "Upgrade Oblique to version 16",
+      "version": "16.0.0-0",
+      "factory": "./index/ng-update/index#upgradeToV16"
     }
   }
 }
