@@ -20,7 +20,7 @@ import {
 	isDevMode,
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
-import {delay, filter, map, takeUntil, tap} from 'rxjs/operators';
+import {delay, filter, map, skip, takeUntil, tap} from 'rxjs/operators';
 
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
@@ -108,6 +108,7 @@ export class ObMasterLayoutComponent
 	constructor() {
 		super();
 
+		this.handleFocusAfterNavigation();
 		this.focusFragment();
 		this.focusOffCanvasClose();
 	}
@@ -163,8 +164,10 @@ export class ObMasterLayoutComponent
 
 	focusElementById(elementId: string): void {
 		const element = this.getElementToFocus(elementId);
-		if (!(element instanceof Element) && isDevMode()) {
-			console.error(`${elementId} does not correspond to an existing DOM element.`);
+		if (!element) {
+			if (isDevMode()) {
+				console.error(`${elementId} does not correspond to an existing DOM element.`);
+			}
 			return;
 		}
 		const behavior = this.prefersReducedMotion ? 'instant' : 'smooth';
@@ -198,6 +201,22 @@ export class ObMasterLayoutComponent
 		const id = element.id ? `#${element.id}` : '';
 		const classes = element.classList.length ? `.${Array.from(element.classList).join('.')}` : '';
 		return `${element.tagName.toLowerCase()}${id}${classes}`;
+	}
+
+	private handleFocusAfterNavigation(): void {
+		this.router.events
+			.pipe(
+				filter(routerEvent => routerEvent instanceof NavigationEnd),
+				skip(1),
+				takeUntil(this.unsubscribe)
+			)
+			.subscribe(() => {
+				this.focusMainAfterNavigation();
+			});
+	}
+
+	private focusMainAfterNavigation(): void {
+		this.focusElementById(this.contentId);
 	}
 
 	private handleLayoutMode(): void {
@@ -270,8 +289,7 @@ export class ObMasterLayoutComponent
 			.subscribe(() => this.offCanvasClose.nativeElement.focus());
 	}
 
-	private getElementToFocus(elementId: string): HTMLElement {
-		const element = this.document.querySelector<HTMLElement>(`#${elementId}`);
-		return elementId === this.contentId ? (element.querySelector<HTMLHeadingElement>('h1') ?? element) : element;
+	private getElementToFocus(elementId: string): HTMLElement | null {
+		return this.document.querySelector<HTMLElement>(`#${elementId}`);
 	}
 }
