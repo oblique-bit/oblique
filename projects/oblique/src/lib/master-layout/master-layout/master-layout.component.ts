@@ -159,7 +159,7 @@ export class ObMasterLayoutComponent
 		}
 	}
 
-	focusElement(elementId: string): void {
+	focusElementById(elementId: string): void {
 		const element = this.getElementToFocus(elementId);
 		if (!(element instanceof Element) && isDevMode()) {
 			console.error(`${elementId} does not correspond to an existing DOM element.`);
@@ -240,7 +240,7 @@ export class ObMasterLayoutComponent
 				filter(fragment => !!fragment)
 			)
 			.subscribe(fragment => {
-				this.focusElement(fragment);
+				this.focusElementById(fragment);
 			});
 	}
 
