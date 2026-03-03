@@ -21,5 +21,10 @@
     "@tokens-studio/sd-transforms": "^2.0.3",
     "ng-packagr": "^21.1.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "exports": {
+    "./oblique.css": {
+      "style": "./css/oblique.css"
+    }
+  }
 }

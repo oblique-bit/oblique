@@ -4,9 +4,11 @@ import {Banner} from '../../../scripts/shared/banner';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
 import {adaptReadmeLinks} from '../../../scripts/shared/utils';
+import {Files} from '../../../scripts/shared/files';
 
 class PostBuild extends StaticScript {
 	private static readonly projectName = 'design-system';
+	private static readonly cssFolder = 'src/lib/css';
 
 	static perform(): void {
 		Log.start('Finalize build');
@@ -21,6 +23,7 @@ class PostBuild extends StaticScript {
 		CopyFiles.initialize(PostBuild.projectName)
 			.copyRootFiles('LICENSE')
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
+			.copyProjectFiles(Files.buildOSSafePath('src/lib'), ...Files.list(PostBuild.cssFolder))
 			.finalize();
 	}
 
