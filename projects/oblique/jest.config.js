@@ -66,10 +66,10 @@ module.exports = {
 			lines: 91,
 		},
 		'projects/oblique/src/lib/master-layout/master-layout/*.ts': {
-			statements: 96,
-			branches: 91,
-			functions: 91,
-			lines: 96,
+			statements: 97,
+			branches: 85,
+			functions: 92,
+			lines: 97,
 		},
 		'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
 			statements: 83,

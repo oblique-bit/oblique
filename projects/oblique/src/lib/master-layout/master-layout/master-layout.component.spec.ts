@@ -59,7 +59,10 @@ describe('ObMasterLayoutComponent', () => {
 			declarations: [ObMasterLayoutComponent],
 			providers: [
 				provideObliqueTestingConfiguration(),
-				provideRouter([{path: 'some/path', component: MockComponent}]),
+				provideRouter([
+					{path: 'some/path', component: MockComponent},
+					{path: 'some/path2', component: MockComponent},
+				]),
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
 				{provide: ObOffCanvasService, useClass: ObMockOffCanvasService},
@@ -90,6 +93,20 @@ describe('ObMasterLayoutComponent', () => {
 	});
 
 	describe('initialization', () => {
+		describe('focusMainAfterNavigation', () => {
+			it('should focus main content only from the second NavigationEnd event', async () => {
+				jest.spyOn(component, 'focusElementById');
+				const router = TestBed.inject(Router);
+				router.initialNavigation();
+
+				await router.navigate(['some/path']);
+				expect(component.focusElementById).not.toHaveBeenCalled();
+
+				await router.navigate(['some/path2']);
+				expect(component.focusElementById).toHaveBeenCalledWith(component.contentId);
+			});
+		});
+
 		describe('with a fragment', () => {
 			beforeEach(async () => {
 				jest.spyOn(component, 'focusElementById');
@@ -309,7 +326,7 @@ describe('ObMasterLayoutComponent', () => {
 			{desc: 'neither header nor footer is sticky', isFooterSticky: false, isHeaderSticky: false},
 			{desc: 'only footer is sticky', isFooterSticky: true, isHeaderSticky: false},
 			{desc: 'only header is sticky', isFooterSticky: false, isHeaderSticky: true},
-		])('targeting the id "content" when there is no h1 in the page and $desc', ({isFooterSticky, isHeaderSticky}) => {
+		])('targeting the id "content" when $desc', ({isFooterSticky, isHeaderSticky}) => {
 			beforeEach(() => {
 				recreateComponentWithStickyState(isFooterSticky, isHeaderSticky);
 				element = document.getElementById('content');
@@ -325,7 +342,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targeting the id "content" when there is no h1 in the page and both the header and footer are sticky', () => {
+		describe('targeting the id "content" when both the header and footer are sticky', () => {
 			beforeEach(() => {
 				recreateComponentWithStickyState(true, true);
 
@@ -344,28 +361,6 @@ describe('ObMasterLayoutComponent', () => {
 			});
 			it('should focus the element', () => {
 				expect(element.focus).toHaveBeenCalledWith({preventScroll: true});
-			});
-		});
-
-		describe.each([
-			{desc: 'neither header nor footer is sticky', isFooterSticky: false, isHeaderSticky: false},
-			{desc: 'only footer is sticky', isFooterSticky: true, isHeaderSticky: false},
-			{desc: 'only header is sticky', isFooterSticky: false, isHeaderSticky: true},
-			{desc: 'both header and footer are sticky', isFooterSticky: true, isHeaderSticky: true},
-		])('targeting the id "content" when there is a h1 in the page and $desc', ({isFooterSticky, isHeaderSticky}) => {
-			beforeEach(() => {
-				recreateComponentWithStickyState(isFooterSticky, isHeaderSticky);
-				content = document.getElementById('content');
-				content.prepend(document.createElement('h1'));
-				element = content.querySelector('h1');
-				jest.spyOn(element, 'scrollIntoView');
-				jest.spyOn(element, 'focus');
-				component.prefersReducedMotion = true;
-				component.focusElementById('content');
-			});
-
-			it('should scroll to the element', () => {
-				expect(element.scrollIntoView).toHaveBeenCalledWith({behavior: 'instant'});
 			});
 		});
 
