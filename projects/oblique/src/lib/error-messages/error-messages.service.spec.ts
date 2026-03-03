@@ -1,31 +1,63 @@
+import {NgControl} from '@angular/forms';
 import {ObErrorMessagesService} from './error-messages.service';
 
-describe('ErrorMessagesService', () => {
+describe(ObErrorMessagesService.name, () => {
 	let service: ObErrorMessagesService;
-	let controlMock;
-	let result;
 
 	beforeEach(() => {
 		service = new ObErrorMessagesService();
-		controlMock = {
-			errors: {
-				bar: {
-					limit: 1,
-				},
-				fuu: {
-					valid: false,
-				},
-			},
-		};
-		result = service.createMessages(controlMock);
 	});
 
-	it('should add the `i18n.validation.` prefix to the key', () => {
-		expect(result[0].key).toBe('i18n.validation.bar');
-		expect(result[1].key).toBe('i18n.validation.fuu');
+	it('should create the service', () => {
+		expect(service).toBeTruthy();
 	});
 
-	it('should keep the params if they are provided', () => {
-		expect(result[0].params).toBe(controlMock.errors.bar);
+	it.each([
+		{
+			desc: 'simple error',
+			control: {
+				errors: {
+					required: true,
+					minlength: {requiredLength: 5, actualLength: 2},
+				},
+			} as unknown as NgControl,
+			expected: [
+				{key: 'i18n.validation.required', params: true},
+				{
+					key: 'i18n.validation.minlength',
+					params: {requiredLength: 5, actualLength: 2},
+				},
+			],
+		},
+		{
+			desc: 'nested object errors',
+			control: {
+				errors: {
+					pattern: {
+						regex: {pattern: '[a-z]+', value: '123'},
+					},
+					max: {
+						maxValue: {value: 10},
+					},
+				},
+			} as unknown as NgControl,
+			expected: [
+				{
+					key: 'i18n.validation.pattern.regex',
+					params: {pattern: '[a-z]+', value: '123'},
+				},
+				{
+					key: 'i18n.validation.max.maxValue',
+					params: {value: 10},
+				},
+			],
+		},
+		{
+			desc: 'empty error',
+			control: {errors: {}} as unknown as NgControl,
+			expected: [],
+		},
+	])('should map $desc correctly', ({control, expected}) => {
+		expect(service.createMessages(control)).toEqual(expected);
 	});
 });

@@ -44,6 +44,18 @@
 		<input matInput formControlName="email" />
 		<mat-error />
 	</mat-form-field>
+	<mat-form-field class="form-element" obErrorMessages prefix="i18n.custom-input-prefix.">
+		<mat-label>Custom error with prefix</mat-label>
+		<mat-hint>Add a string containing the letter "a" to see the custom validation</mat-hint>
+		<input matInput formControlName="forbiddenLetterInput" />
+		<mat-error />
+	</mat-form-field>
+	<mat-form-field class="form-element" obErrorMessages>
+		<mat-label>Custom error without prefix</mat-label>
+		<mat-hint>Add a string containing the letter "a" to see the custom validation</mat-hint>
+		<input matInput formControlName="forbiddenLetterToken" />
+		<mat-error />
+	</mat-form-field>
 	<div class="form-element form-actions">
 		<button mat-raised-button type="reset">Cancel</button>
 		<button mat-raised-button color="primary" type="submit">Check</button>

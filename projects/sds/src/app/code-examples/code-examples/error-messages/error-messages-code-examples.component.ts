@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {ErrorMessagesExampleTemplateDrivenFormPreviewComponent} from './previews/template-driven-form/error-messages-example-template-driven-form-preview.component';
 import {ErrorMessagesExampleReactiveFormPreviewComponent} from './previews/reactive-form/error-messages-example-reactive-form-preview.component';
+import {ErrorMessagesExampleCustomErrorMessagePreviewComponent} from './previews/custom-error-message/error-messages-example-custom-error-message-preview.component';
 
 @Component({
 	selector: 'app-code-example-error-messages',
@@ -45,6 +46,23 @@ export class ErrorMessagesCodeExamplesComponent extends CodeExamples {
 				this.getSnippet(
 					'error-messages',
 					'reactive-form/error-messages-example-reactive-form-preview.component.ts',
+					'TS'
+				),
+			],
+		},
+		{
+			component: ErrorMessagesExampleCustomErrorMessagePreviewComponent,
+			idParts: ['custom', 'error', 'message'],
+			title: 'Custom Error Message',
+			snippets: [
+				this.getSnippet(
+					'error-messages',
+					'custom-error-message/error-messages-example-custom-error-message-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'error-messages',
+					'custom-error-message/error-messages-example-custom-error-message-preview.component.ts',
 					'TS'
 				),
 			],
