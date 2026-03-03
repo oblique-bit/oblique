@@ -12,7 +12,6 @@ import {ObEIcon} from '../icon/icon.model';
 import {ObIAccessibilityStatementContactInfo} from './accessibility-statement.model';
 import {ObButtonDirective} from '../button/button.directive';
 import {Router} from '@angular/router';
-import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 import {ObMasterLayoutService} from '../master-layout/master-layout.service';
 
 @Component({
@@ -43,7 +42,8 @@ export class AccessibilityStatementComponent {
 	readonly contacts = this.parameters.contact.map(contact => this.parseContact(contact));
 	private readonly historyState = inject(OB_HISTORY_STATE);
 	private readonly location = inject(Location);
-	private readonly masterLayoutConfig = inject(ObMasterLayoutConfig);
+	private readonly masterLayoutService = inject(ObMasterLayoutService);
+
 	private readonly router = inject(Router);
 	private readonly window = inject(WINDOW);
 
@@ -52,7 +52,7 @@ export class AccessibilityStatementComponent {
 			this.location.back();
 			return;
 		}
-		void this.router.navigateByUrl(this.masterLayoutConfig.homePageRoute);
+		void this.router.navigateByUrl(this.masterLayoutService.homePageRoute);
 	}
 
 	// eslint-disable-next-line @typescript-eslint/consistent-return

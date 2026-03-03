@@ -23,7 +23,7 @@ describe(AccessibilityStatementComponent.name, () => {
 			providers: [
 				provideHttpClient(),
 				provideRouter([]),
-				{provide: ObMasterLayoutService, useValue: {layout: {hasMainNavigation: true}}},
+				{provide: ObMasterLayoutService, useValue: {layout: {hasMainNavigation: true}, homePageRoute: '/home'}},
 				provideObliqueTestingConfiguration({
 					accessibilityStatement: {
 						applicationName: 'appName',
@@ -415,7 +415,7 @@ describe(AccessibilityStatementComponent.name, () => {
 				useValue: masterLayoutConfig,
 			});
 			TestBed.overrideProvider(ObMasterLayoutService, {
-				useValue: {layout: {hasMainNavigation: false}},
+				useValue: {layout: {hasMainNavigation: false}, homePageRoute: '/home'},
 			});
 			TestBed.overrideProvider(WINDOW, {useValue: mockWindow});
 			fixture = TestBed.createComponent(AccessibilityStatementComponent);
