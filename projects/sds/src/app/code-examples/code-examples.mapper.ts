@@ -46,6 +46,7 @@ import type {Type} from '@angular/core';
 import {TypographyCodeExamplesComponent} from './code-examples/typography/typography-code-examples.component';
 import {UnknownRouteCodeExamplesComponent} from './code-examples/unknown-route/unknown-route-code-examples.component';
 import {UnsavedChangesCodeExamplesComponent} from './code-examples/unsaved-changes/unsaved-changes-code-examples.component';
+import {VersionCodeExamplesComponent} from './code-examples/version/version-code-examples.component';
 import {CollapseCodeExamplesComponent} from './code-examples/collapse/collapse-code-examples.component';
 import {DateCodeExamplesComponent} from './code-examples/date/date-code-examples.component';
 import {ErrorMessagesCodeExamplesComponent} from './code-examples/error-messages/error-messages-code-examples.component';
@@ -112,6 +113,7 @@ const codeExamples: Record<string, Type<CodeExamples>> = {
 	typography: TypographyCodeExamplesComponent,
 	'unknown-route': UnknownRouteCodeExamplesComponent,
 	'unsaved-changes': UnsavedChangesCodeExamplesComponent,
+	version: VersionCodeExamplesComponent,
 };
 
 export function getCodeExampleComponent(slug: string): Type<CodeExamples> | undefined {

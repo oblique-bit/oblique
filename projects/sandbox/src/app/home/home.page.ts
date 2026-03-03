@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {appVersion} from '@oblique/version';
+import {appVersion} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-home',

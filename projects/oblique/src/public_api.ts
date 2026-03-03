@@ -179,3 +179,4 @@ export {
 	OptionLabelIconPosition,
 } from './lib/autocomplete/autocomplete.module';
 export {ObPaginatorService} from './lib/paginator/ob-paginator.service';
+export {appVersion} from './lib/version';

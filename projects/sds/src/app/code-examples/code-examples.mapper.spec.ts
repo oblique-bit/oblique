@@ -8,6 +8,7 @@ describe('getCodeExampleComponent', () => {
 		{slug: 'master-layout-13', name: 'MasterLayoutCodeExamplesComponent'},
 		{slug: 'master-layout-14', name: 'MasterLayoutCodeExamplesComponent'},
 		{slug: 'popover-12', name: 'Popover12CodeExamplesComponent'},
+		{slug: 'version', name: 'VersionCodeExamplesComponent'},
 	])('should return "$name" with "$slug" slug', ({name, slug}) => {
 		expect(getCodeExampleComponent(slug).name).toBe(name);
 	});
