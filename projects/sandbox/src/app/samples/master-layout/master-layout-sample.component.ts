@@ -22,6 +22,7 @@ export class MasterLayoutSampleComponent {
 	private readonly infoLinks = [...this.masterLayout.header.serviceNavigationConfiguration.infoLinks];
 	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
 	private readonly profileLinks = [...this.masterLayout.header.serviceNavigationConfiguration.profileLinks];
+	private useCustomNavigationInternal = false;
 
 	constructor() {
 		this.coverLayout = this.masterLayout.layout.hasCover;
@@ -287,6 +288,15 @@ export class MasterLayoutSampleComponent {
 
 	set handleLogout(value: boolean) {
 		this.masterLayout.header.serviceNavigationConfiguration.handleLogout = value;
+	}
+
+	get useCustomNavigation(): boolean {
+		return this.useCustomNavigationInternal;
+	}
+
+	set useCustomNavigation(value: boolean) {
+		this.useCustomNavigationInternal = value;
+		this.dynamicNavigationService.useCustomNavigation(value);
 	}
 
 	addItem(): void {

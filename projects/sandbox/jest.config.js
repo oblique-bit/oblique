@@ -23,10 +23,10 @@ module.exports = {
 			lines: 78,
 		},
 		'projects/sandbox/src/app/samples/master-layout/dynamic-navigation.service.ts': {
-			statements: 64,
+			statements: 66,
 			branches: 100,
-			functions: 50,
-			lines: 61,
+			functions: 60,
+			lines: 64,
 		},
 		'projects/sandbox/src/app/samples/nav-tree/*.ts': {
 			statements: 80,

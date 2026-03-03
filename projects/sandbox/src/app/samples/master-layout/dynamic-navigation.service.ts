@@ -30,4 +30,8 @@ export class DynamicNavigationService {
 		this.links = this.links.slice(0, -1);
 		this.navigationLinks.next(this.links);
 	}
+
+	useCustomNavigation(isActive: boolean): void {
+		this.navigationLinks.next(isActive ? [] : this.links);
+	}
 }
