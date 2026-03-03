@@ -21,6 +21,9 @@
 		<input type="checkbox" id="showAuthentication" checked /><label for="showAuthentication"
 			>show authentication widget</label
 		><br />
+		<input type="checkbox" id="languageSynchronization" checked /><label for="languageSynchronization"
+			>activate language synchronization</label
+		><br />
 		<hr />
 		<select id="languageSelect">
 			<option value="en">EN</option>
@@ -48,6 +51,7 @@
 			info-links='[{"fr":"Lien de contact","en":"Contact link","links":{"fr":"https://fr.contact.com","en":"https://en.contact.com"}}]'
 			profile-links='[{"fr":"Lien de profile 1","en":"Profile link 1","links":{"fr":"https://fr.profile.com","en":"https://en.profile.com"}},{"fr":"Lien de profile 2","en":"Profile link 2","link":"https://profile.com"}]'
 			custom-buttons='[{"obliqueIconName":"happy", "badge":"1", "tooltip":"Tooltip Text", "accessibilityText":"Accessability Text"},{"obliqueIconName":"calendar", "tooltip":""}]'
+			eportal-language-synchronization="true"
 		></ob-service-navigation-web-component>
 
 		<script>
@@ -80,6 +84,11 @@
 				document
 					.querySelector("ob-service-navigation-web-component")
 					.setAttribute("display-authentication", event.srcElement.checked);
+			});
+			document.querySelector("#languageSynchronization").addEventListener("change", (event) => {
+				document
+					.querySelector("ob-service-navigation-web-component")
+					.setAttribute("eportal-language-synchronization", event.srcElement.checked);
 			});
 			document.querySelector("ob-service-navigation-web-component").addEventListener("languageChange", (event) => {
 				const lang = event.detail;
