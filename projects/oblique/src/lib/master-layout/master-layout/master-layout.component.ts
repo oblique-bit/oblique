@@ -290,6 +290,6 @@ export class ObMasterLayoutComponent
 	}
 
 	private getElement(elementId: string): HTMLElement | null {
-		return this.document.querySelector<HTMLElement>(`#${elementId}`);
+		return this.document.getElementById(elementId);
 	}
 }
