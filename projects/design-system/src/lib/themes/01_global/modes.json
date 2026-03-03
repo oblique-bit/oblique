@@ -80,9 +80,10 @@
             "$value": ".ob-motion-disabled"
           }
         },
-        "core": {
+        "static": {
           "$type": "other",
-          "$value": "default"
+          "$value": "default",
+          "$description": "refactor(design-system/tokens): update ob.g.modes.core to ob.g.modes.static to reflect the updated collection name.\n\nOUI-4364"
         },
         "semantic": {
           "$type": "other",
