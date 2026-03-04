@@ -68,3 +68,12 @@
 		</li>
 	}
 </ul>
+
+@if (showBackButton) {
+	<div class="ob-accessibility-back">
+		<button type="button" mat-button obButton="secondary" (click)="navigateBack()">
+			<mat-icon svgIcon="chevron_left" />
+			{{ "i18n.oblique.accessibility-statement.back" | translate }}
+		</button>
+	</div>
+}
