@@ -29,6 +29,7 @@ export class ObMasterLayoutConfig {
 
 	/**
 	 * Locales of the application
+	 * @deprecated since version 15.1.0 Configure locales through `provideObliqueConfiguration({translate: {locales}})` instead.
 	 */
 	locale: ObILocale = {
 		locales: ['de-CH', 'fr-CH', 'it-CH'],

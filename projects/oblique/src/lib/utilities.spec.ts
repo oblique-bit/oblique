@@ -34,6 +34,7 @@ import {ObPaginatorService} from './paginator/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
 import {Observable, firstValueFrom, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
+import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
 const translations: any = {};
 class FakeLoader implements TranslateLoader {
 	// eslint-disable-next-line @typescript-eslint/naming-convention,@typescript-eslint/no-unused-vars
@@ -245,9 +246,109 @@ describe('utilities', () => {
 				});
 			});
 		});
+
+		describe('with locales provided through translate configuration', () => {
+			const locales = {
+				locales: ['de-CH', 'fr-CH', 'it-CH'],
+				defaultLanguage: 'de',
+				disabled: false,
+				languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
+			};
+
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement: {
+								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: [{email: 'e@mail.com'}],
+							},
+							translate: {locales},
+						}),
+					],
+				});
+			});
+
+			it('should initialize language with locales from translate configuration', () => {
+				expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(locales);
+			});
+		});
+
+		describe('with missing locales in both configuration and ObMasterLayoutConfig', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObMasterLayoutConfig, useValue: {}},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement: {
+								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: [{email: 'e@mail.com'}],
+							},
+						}),
+					],
+				});
+			});
+
+			it('should throw', () => {
+				expect(() => TestBed.inject(WINDOW)).toThrow();
+			});
+		});
+
+		describe('with missing locales and null ObMasterLayoutConfig', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObMasterLayoutConfig, useValue: null},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement: {
+								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: [{email: 'e@mail.com'}],
+							},
+						}),
+					],
+				});
+			});
+
+			it('should throw', () => {
+				expect(() => TestBed.inject(WINDOW)).toThrow();
+			});
+		});
 	});
 
 	describe('provideObliqueTestingConfiguration', () => {
+		describe('with default parameters', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueTestingConfiguration(),
+					],
+				});
+			});
+
+			it('should initialize language', () => {
+				expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalled();
+			});
+		});
+
 		describe('with default configuration', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
@@ -447,6 +548,39 @@ describe('utilities', () => {
 	});
 
 	describe('provideObliqueTranslations', () => {
+		describe('with locale fallback from ObMasterLayoutConfig through provideObliqueConfiguration', () => {
+			const locale = {
+				locales: ['de-CH', 'fr-CH', 'it-CH'],
+				defaultLanguage: 'de',
+				disabled: false,
+				languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
+			};
+
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObMasterLayoutConfig, useValue: {locale}},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement: {
+								applicationName: 'appName',
+								createdOn: new Date('2025-01-31'),
+								conformity: 'none',
+								applicationOperator: 'Operator',
+								contact: [{email: 'e@mail.com'}],
+							},
+						}),
+					],
+				});
+			});
+
+			it('should initialize language with locale from ObMasterLayoutConfig when translate.locales is not provided', () => {
+				expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(locale);
+			});
+		});
+
 		describe('with default configuration', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({

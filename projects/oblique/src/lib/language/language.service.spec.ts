@@ -3,7 +3,7 @@ import {DateAdapter} from '@angular/material/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject} from 'rxjs';
 import {ObLanguageService} from './language.service';
-import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
+import {ObILocale} from '../master-layout/master-layout.model';
 
 describe('LanguageService', () => {
 	let service: ObLanguageService;
@@ -11,29 +11,37 @@ describe('LanguageService', () => {
 
 	describe('with invalid locales', () => {
 		const mock = {} as TranslateService;
-		const config = {
-			locale: {
-				locales: [],
-				defaultLanguage: 'de',
-				disabled: false,
-				display: true,
-			},
-		} as unknown as ObMasterLayoutConfig;
+		const localesConfiguration = {
+			locales: [],
+			defaultLanguage: 'de',
+			disabled: false,
+			languages: {},
+		} as unknown as ObILocale;
 
 		it('should throw', () => {
-			expect(() => new ObLanguageService(mock, null, config, null, null)).toThrow(
-				"Oblique's MasterLayout config needs to either define at least 1 locale or to be disabled."
+			const serviceWithInvalidConfig = new ObLanguageService(mock, null, null, null);
+			expect(() => serviceWithInvalidConfig.initialize(localesConfiguration)).toThrow(
+				"Oblique's language config needs to either define at least 1 locale or to be disabled."
 			);
 		});
 	});
 
 	describe('with valid locales and without DateAdapter', () => {
+		const localesConfiguration = {
+			locales: ['de-CH', 'fr-CH', 'it-CH'],
+			defaultLanguage: 'de',
+			disabled: false,
+			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
+		} as ObILocale;
+		let onLangChange: Subject<{lang: string; translations: unknown}>;
+
 		beforeEach(() => {
+			onLangChange = new Subject<{lang: string; translations: unknown}>();
 			const mock = {
 				addLangs: jest.fn(),
 				setFallbackLang: jest.fn(),
 				use: jest.fn(),
-				onLangChange: new Subject<{lang: string; translations: unknown}>(),
+				onLangChange,
 				getBrowserLang: jest.fn(),
 				getFallbackLang: jest.fn(),
 				getCurrentLang: jest.fn(),
@@ -42,24 +50,12 @@ describe('LanguageService', () => {
 			jest.spyOn(console, 'warn');
 
 			TestBed.configureTestingModule({
-				providers: [
-					{provide: TranslateService, useValue: mock},
-					{
-						provide: ObMasterLayoutConfig,
-						useValue: {
-							locale: {
-								locales: ['de-CH', 'fr-CH', 'it-CH'],
-								default: 'de',
-								disabled: false,
-								display: true,
-							},
-						},
-					},
-				],
+				providers: [{provide: TranslateService, useValue: mock}],
 			});
 
 			service = TestBed.inject(ObLanguageService);
 			translate = TestBed.inject(TranslateService);
+			service.initialize(localesConfiguration);
 		});
 
 		it('should be created', () => {
@@ -70,11 +66,35 @@ describe('LanguageService', () => {
 			it('should be an observable', () => {
 				expect(service.locale$ instanceof Observable).toBe(true);
 			});
+
+			it('should update locale and localStorage on language change', done => {
+				onLangChange.next({lang: 'fr', translations: null});
+				service.locale$.subscribe(locale => {
+					expect(localStorage.getItem('oblique_lang')).toBe('fr');
+					expect(locale).toBe('fr-CH');
+					done();
+				});
+			});
+
+			it('should fallback to language code when locale is not configured', done => {
+				onLangChange.next({lang: 'es', translations: null});
+				service.locale$.subscribe(locale => {
+					expect(locale).toBe('es');
+					done();
+				});
+			});
 		});
 	});
 
-	describe('with valid locales and without DateAdapter after call of initialize()', () => {
-		beforeEach(() => {
+	describe('with disabled locales configuration', () => {
+		const localesConfiguration = {
+			locales: ['de-CH', 'fr-CH', 'it-CH'],
+			defaultLanguage: 'de',
+			disabled: true,
+			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
+		} as ObILocale;
+
+		it('should return early and not initialize translation', () => {
 			const mock = {
 				addLangs: jest.fn(),
 				setFallbackLang: jest.fn(),
@@ -85,64 +105,28 @@ describe('LanguageService', () => {
 				getCurrentLang: jest.fn(),
 			};
 
-			jest.spyOn(console, 'warn');
-
 			TestBed.configureTestingModule({
-				providers: [
-					{provide: TranslateService, useValue: mock},
-					{
-						provide: ObMasterLayoutConfig,
-						useValue: {
-							locale: {
-								locales: ['de-CH', 'fr-CH', 'it-CH'],
-								default: 'de',
-								disabled: false,
-								display: true,
-							},
-						},
-					},
-				],
+				providers: [{provide: TranslateService, useValue: mock}],
 			});
 
 			service = TestBed.inject(ObLanguageService);
 			translate = TestBed.inject(TranslateService);
-			service.initialize();
-		});
+			service.initialize(localesConfiguration);
 
-		it('should call addLangs', () => {
-			expect(translate.addLangs).toHaveBeenCalledWith(['de', 'fr', 'it']);
-		});
-
-		it('should call setFallbackLang', () => {
-			expect(translate.setFallbackLang).toHaveBeenCalledWith('de');
-		});
-
-		it('should call use', () => {
-			expect(translate.use).toHaveBeenCalledWith('de');
-		});
-
-		describe('locale$', () => {
-			it('should emit a locale when language changes to defined one', done => {
-				// @ts-ignore as translate is mocked, onLangChange is a Subject instead of an Observable
-				translate.onLangChange.next({lang: 'fr', translations: null});
-				service.locale$.subscribe(locale => {
-					expect(locale).toBe('fr-CH');
-					done();
-				});
-			});
-
-			it('should emit a language when language changes to undefined one', done => {
-				// @ts-ignore as translate is mocked, onLangChange is a Subject instead of an Observable
-				translate.onLangChange.next({lang: 'es', translations: null});
-				service.locale$.subscribe(locale => {
-					expect(locale).toBe('es');
-					done();
-				});
-			});
+			expect(translate.addLangs).not.toHaveBeenCalled();
+			expect(translate.setFallbackLang).not.toHaveBeenCalled();
+			expect(translate.use).not.toHaveBeenCalled();
 		});
 	});
 
 	describe('with valid locales and a DateAdapter', () => {
+		const localesConfiguration = {
+			locales: ['de-CH', 'fr-CH', 'it-CH'],
+			defaultLanguage: 'de',
+			disabled: false,
+			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
+		} as ObILocale;
+
 		beforeEach(() => {
 			const mock = {
 				addLangs: jest.fn(),
@@ -162,22 +146,11 @@ describe('LanguageService', () => {
 				providers: [
 					{provide: DateAdapter, useValue: dateAdapterMock},
 					{provide: TranslateService, useValue: mock},
-					{
-						provide: ObMasterLayoutConfig,
-						useValue: {
-							locale: {
-								locales: ['de-CH', 'fr-CH', 'it-CH'],
-								defaultLanguage: 'de',
-								disabled: false,
-								display: true,
-							},
-						},
-					},
 				],
 			});
 
 			service = TestBed.inject(ObLanguageService);
-			translate = TestBed.inject(TranslateService);
+			service.initialize(localesConfiguration);
 		});
 
 		it('should be created', () => {
@@ -191,7 +164,14 @@ describe('LanguageService', () => {
 		});
 	});
 
-	describe('with valid locales and a DateAdapter after call of initialize()', () => {
+	describe('with locale objects', () => {
+		const localesConfiguration = {
+			locales: [{locale: 'de-CH'}, {locale: 'fr-CH'}, {locale: 'it-CH'}],
+			defaultLanguage: 'de',
+			disabled: false,
+			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
+		} as ObILocale;
+
 		beforeEach(() => {
 			const mock = {
 				addLangs: jest.fn(),
@@ -200,71 +180,58 @@ describe('LanguageService', () => {
 				onLangChange: new Subject<{lang: string; translations: unknown}>(),
 				getBrowserLang: jest.fn(),
 				getFallbackLang: jest.fn(),
-				getCurrentLang: jest.fn().mockReturnValue('de'),
+				getCurrentLang: jest.fn(),
 			};
 
-			const dateAdapterMock = {setLocale: jest.fn()};
-
-			jest.spyOn(console, 'warn');
-
 			TestBed.configureTestingModule({
-				providers: [
-					{provide: DateAdapter, useValue: dateAdapterMock},
-					{provide: TranslateService, useValue: mock},
-					{
-						provide: ObMasterLayoutConfig,
-						useValue: {
-							locale: {
-								locales: ['de-CH', 'fr-CH', 'it-CH'],
-								defaultLanguage: 'de',
-								disabled: false,
-								display: true,
-							},
-						},
-					},
-				],
+				providers: [{provide: TranslateService, useValue: mock}],
 			});
 
 			service = TestBed.inject(ObLanguageService);
 			translate = TestBed.inject(TranslateService);
-			service.initialize();
+			service.initialize(localesConfiguration);
 		});
 
-		it('should call addLangs', () => {
+		it('should initialize languages from object locales', () => {
 			expect(translate.addLangs).toHaveBeenCalledWith(['de', 'fr', 'it']);
 		});
+	});
 
-		it('should call setFallbackLang', () => {
-			expect(translate.setFallbackLang).toHaveBeenCalledWith('de');
+	describe('with unsupported browser and default languages', () => {
+		const localesConfiguration = {
+			locales: ['de-CH', 'fr-CH'],
+			defaultLanguage: 'it',
+			disabled: false,
+			languages: {de: 'Deutsch', fr: 'Francais'},
+		} as ObILocale;
+
+		beforeEach(() => {
+			localStorage.removeItem('oblique_lang');
+			const mock = {
+				addLangs: jest.fn(),
+				setFallbackLang: jest.fn(),
+				use: jest.fn(),
+				onLangChange: new Subject<{lang: string; translations: unknown}>(),
+				getBrowserLang: jest.fn().mockReturnValue('es'),
+				getFallbackLang: jest.fn().mockReturnValue('pt'),
+				getCurrentLang: jest.fn(),
+			};
+
+			TestBed.configureTestingModule({
+				providers: [{provide: TranslateService, useValue: mock}],
+			});
+
+			service = TestBed.inject(ObLanguageService);
+			translate = TestBed.inject(TranslateService);
+			service.initialize(localesConfiguration);
 		});
 
-		it('should call use', () => {
+		it('should fallback to first language for current language', () => {
 			expect(translate.use).toHaveBeenCalledWith('de');
 		});
 
-		it('should set the locale on the adapter', () => {
-			const adapter = TestBed.inject(DateAdapter);
-			expect(adapter.setLocale).toHaveBeenCalledWith('de-CH');
-		});
-
-		describe('locale$', () => {
-			it('should emit a locale when language changes to defined one', done => {
-				// @ts-ignore as translate is mocked, onLangChange is a Subject instead of an Observable
-				translate.onLangChange.next({lang: 'fr', translations: null});
-				service.locale$.subscribe(locale => {
-					expect(locale).toBe('fr-CH');
-					done();
-				});
-			});
-
-			it('should emit a language when language changes to undefined one', done => {
-				// @ts-ignore as translate is mocked, onLangChange is a Subject instead of an Observable
-				translate.onLangChange.next({lang: 'es', translations: null});
-				service.locale$.subscribe(locale => {
-					expect(locale).toBe('es');
-					done();
-				});
-			});
+		it('should fallback to first language for default language', () => {
+			expect(translate.setFallbackLang).toHaveBeenCalledWith('de');
 		});
 	});
 });
