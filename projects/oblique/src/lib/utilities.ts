@@ -100,7 +100,7 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		})),
 	]);
 }
-
+/* eslint-disable max-lines-per-function */
 export function provideObliqueTestingConfiguration(
 	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> &
 		Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>> = {}
