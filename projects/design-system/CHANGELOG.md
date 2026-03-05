@@ -1,3 +1,9 @@
+# [15.1.0](https://github.com/oblique-bit/oblique/compare/15.0.3...15.1.0) (2026-03-05)
+
+## Features
+
+- **styles:** update CSS variables from Figma design tokens ([44579992](https://github.com/oblique-bit/oblique/commit/445799927472ebc0ac2fa40f304469698f5c31e8))
+
 # [15.0.0](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0) (2026-02-02)
 
 ## Features

@@ -1,3 +1,21 @@
+# [15.1.0](https://github.com/oblique-bit/oblique/compare/15.0.3...15.1.0) (2026-03-05)
+
+## Bug Fixes
+
+- **master-layout:** ensure that custom navigation is scrollable ([ca41817e](https://github.com/oblique-bit/oblique/commit/ca41817e2856fd528056e665019bfad094043480))
+
+## Features
+
+- **error-messages:** deprecate `ObErrorMessagesService` ([552cabbd](https://github.com/oblique-bit/oblique/commit/552cabbdc72b095259484678f492719ade9631f3))
+- **error-messages:** add custom validators ([d55be9fd](https://github.com/oblique-bit/oblique/commit/d55be9fdc5ffe9d441fc5c4666dc87bfd06b950e))
+- **material:** allow multiline step label for horizonal `mat-stepper` ([b681ec6b](https://github.com/oblique-bit/oblique/commit/b681ec6bdcd6c4e1f52ba4a01b7fbaf48a54bef4))
+- **spinner:** ensure focus is never trapped inside an inert area ([488d3402](https://github.com/oblique-bit/oblique/commit/488d3402e7b3081167437f5325bbea12b97283bf))
+- **spinner:** announce spinner activation and deactivation to screen readers ([a305bad2](https://github.com/oblique-bit/oblique/commit/a305bad24bd03322cca783c4ff9b1bf7fa534148))
+- **spinner:** ensure screen readers ignore elements behind the backdrop ([bd1bf0bb](https://github.com/oblique-bit/oblique/commit/bd1bf0bbbc1727e5ce78af010d826c7c5fd72a8e))
+- **spinner:** ensure spinner component is hidden from screen readers ([100046a1](https://github.com/oblique-bit/oblique/commit/100046a194b32c2f60906e719cb5bf447d84feaf))
+- **translation:** mark locales as deprecated ([df4c0a7d](https://github.com/oblique-bit/oblique/commit/df4c0a7d76f45203603208c3fe86eb37d4799799))
+- **utilities:** export oblique-version via the public api ([2ff94f30](https://github.com/oblique-bit/oblique/commit/2ff94f30ea438c26fee0480520b616fedad8b6b5))
+
 # [15.0.2](https://github.com/oblique-bit/oblique/compare/15.0.1...15.0.2) (2026-02-26)
 
 ## Bug Fixes

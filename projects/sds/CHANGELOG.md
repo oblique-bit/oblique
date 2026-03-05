@@ -1,3 +1,14 @@
+# [15.1.0](https://github.com/oblique-bit/oblique/compare/15.0.3...15.1.0) (2026-03-05)
+
+## Bug Fixes
+
+- **material:** remove flex layout wrapper in form examples for better documentation ([041681c9](https://github.com/oblique-bit/oblique/commit/041681c95bd806525f1f1c360d7a05345d8be79c))
+- **tabbed-page:** always redirect to a visible tab in tabbed pages ([e04cbeed](https://github.com/oblique-bit/oblique/commit/e04cbeed8ebd98198923b480ac6df600dd67a1d9))
+
+## Features
+
+- **error-messages:** add custom validators demo ([b801f130](https://github.com/oblique-bit/oblique/commit/b801f1307255c430ed54636bf0a758b5b21e044d))
+
 # [15.0.3](https://github.com/oblique-bit/oblique/compare/15.0.2...15.0.3) (2026-03-03)
 
 ## Bug Fixes

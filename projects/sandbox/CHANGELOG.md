@@ -1,3 +1,10 @@
+# [15.1.0](https://github.com/oblique-bit/oblique/compare/15.0.3...15.1.0) (2026-03-05)
+
+## Features
+
+- **error-messages:** add custom validators demo ([edbb34b9](https://github.com/oblique-bit/oblique/commit/edbb34b975365767372f1bbc24e411466a39d86c))
+- **master-layout:** add custom navigation example ([390d6b0b](https://github.com/oblique-bit/oblique/commit/390d6b0b1ac7b2d5cce5239c2d4a7032e85ae847))
+
 # [15.0.0](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0) (2026-02-02)
 
 ## Bug Fixes
