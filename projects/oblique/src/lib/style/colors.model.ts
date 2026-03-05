@@ -23,4 +23,9 @@ export enum ObEColor {
 	ERROR_LIGHT = '#fae1e2',
 	ERROR = '#99191e',
 	ERROR_DARK = '#801519',
+	ENV_LOCAL = 'var(--ob-env-local)',
+	ENV_DEV = 'var(--ob-env-dev)',
+	ENV_REF = 'var(--ob-env-ref)',
+	ENV_TEST = 'var(--ob-env-test)',
+	ENV_ABN = 'var(--ob-env-abn)',
 }
