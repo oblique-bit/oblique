@@ -55,6 +55,10 @@ input {
 	overflow: visible; // Edge
 }
 
+input {
+	text-overflow: ellipsis;
+}
+
 button,
 select {
 	text-transform: none; // RFirefox
