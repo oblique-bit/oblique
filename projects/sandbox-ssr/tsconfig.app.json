@@ -1,15 +1,10 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.angular.json",
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "downlevelIteration": true,
-    "module": "esnext"
+    "baseUrl": "../../",
+    "paths": {
+      "@oblique/design-system": ["./projects/design-system/src/public-api"]
+    }
   },
   "files": ["src/main.ts", "src/main.server.ts", "server.ts"]
 }

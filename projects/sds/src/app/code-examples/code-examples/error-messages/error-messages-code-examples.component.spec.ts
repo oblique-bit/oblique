@@ -6,6 +6,7 @@ import {ErrorMessagesCodeExamplesComponent} from './error-messages-code-examples
 import {By} from '@angular/platform-browser';
 import {ErrorMessagesExampleReactiveFormPreviewComponent} from './previews/reactive-form/error-messages-example-reactive-form-preview.component';
 import {ErrorMessagesExampleTemplateDrivenFormPreviewComponent} from './previews/template-driven-form/error-messages-example-template-driven-form-preview.component';
+import {ErrorMessagesExampleCustomErrorMessagePreviewComponent} from './previews/custom-error-message/error-messages-example-custom-error-message-preview.component';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '@oblique/oblique';
 
@@ -28,8 +29,8 @@ describe(ErrorMessagesCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 2 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
+	test(`that there are 3 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(3);
 	});
 
 	test(`that there is 1 ${ErrorMessagesExampleReactiveFormPreviewComponent.name}`, () => {
@@ -41,6 +42,12 @@ describe(ErrorMessagesCodeExamplesComponent.name, () => {
 	test(`that there is 1 ${ErrorMessagesExampleTemplateDrivenFormPreviewComponent.name}`, () => {
 		expect(
 			fixture.debugElement.queryAll(By.directive(ErrorMessagesExampleTemplateDrivenFormPreviewComponent)).length
+		).toBe(1);
+	});
+
+	test(`that there is 1 ${ErrorMessagesExampleCustomErrorMessagePreviewComponent.name}`, () => {
+		expect(
+			fixture.debugElement.queryAll(By.directive(ErrorMessagesExampleCustomErrorMessagePreviewComponent)).length
 		).toBe(1);
 	});
 });

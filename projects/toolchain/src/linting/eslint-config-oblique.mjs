@@ -621,7 +621,7 @@ export default [
 			'@typescript-eslint/no-unsafe-unary-minus': 'error',
 			'@typescript-eslint/no-unused-expressions': 'error',
 			'@typescript-eslint/no-unused-private-class-members': 'error',
-			'@typescript-eslint/no-unused-vars': ['error'],
+			'@typescript-eslint/no-unused-vars': 'error',
 			/**
 			 * Rule: @typescript-eslint/no-use-before-define (https://typescript-eslint.io/rules/no-use-before-define)
 			 * Reason for {functions: false}: Functions are hoisted so they can be used before they are defined
@@ -696,6 +696,10 @@ export default [
 			'@typescript-eslint/use-unknown-in-catch-callback-variable': 'error',
 
 			// https://github.com/angular-eslint/angular-eslint/tree/main/packages/eslint-plugin/docs/rules
+			/**
+			 * Rule: @angular-eslint/component-class-suffix (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-class-suffix.md)
+			 * Reason for disabling: as of angular 20, this is no longer recommended by the Angular Team
+			 */
 			'@angular-eslint/component-class-suffix': 'error',
 			/**
 			 * Rule: @angular-eslint/component-max-inline-declarations (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-max-inline-declarations.md)
@@ -826,6 +830,22 @@ export default [
 			 * Reason for disabling: `fixture.nativeElement` is typed `any`, triggering this rule prevents its usage
 			 */
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
+			/**
+			 * Rule @typescript-eslint/only-throw-error (https://typescript-eslint.io/rules/only-throw-error)
+			 * Reason for disabling: JavaScript technically allows throwing any value (`throw 'oops'`, `throw 42`,
+			 * `throw undefined`).
+			 * While not recommended, legacy or third-party code may do this.
+			 * Tests must be able to simulate and assert such behavior.
+			 */
+			'@typescript-eslint/only-throw-error': 'off',
+			/**
+			 * Rule @typescript-eslint/strict-void-return (https://typescript-eslint.io/rules/strict-void-return)
+			 * Reason for disabling: `jest.fn()` does not strictly preserve a void return type.
+			 * When mocking typed void functions, the rule flags valid Jest patterns
+			 * Example of invalid code with enabled rule:
+			 * const mock: jest.Mocked<{ func: () => void }> = { func: jest.fn() };
+			 */
+			'@typescript-eslint/strict-void-return': 'off',
 			/**
 			 * Rule: @typescript-eslint/unbound-method (https://typescript-eslint.io/rules/unbound-method)
 			 * Reason for disabling: `toHaveBeenCalled` and similar matchers are always called on unbound methods

@@ -1,10 +1,11 @@
-import {Directive, ElementRef, OnDestroy, OnInit, Optional} from '@angular/core';
+import {Directive, ElementRef, OnDestroy, OnInit, Optional, inject} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, takeUntil, tap} from 'rxjs/operators';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.module';
 import {ObErrorMessagesDirective} from './error-messages.directive';
 import {Subject} from 'rxjs';
+import {OB_MAT_ERROR_PREFIX} from '../utilities';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
@@ -15,6 +16,7 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 	private readonly pipe: ObTranslateParamsPipe;
 	private errors: ValidationErrors = {};
 	private readonly unsubscribe = new Subject<void>();
+	private readonly obMatErrorPrefix = inject(OB_MAT_ERROR_PREFIX, {optional: true});
 
 	constructor(
 		@Optional() private readonly control: ObErrorMessagesDirective,
@@ -24,7 +26,7 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 		if (this.control) {
 			this.pipe = new ObTranslateParamsPipe(translate);
 			translate.onLangChange.subscribe(() => {
-				this.showErrors(this.errors || {});
+				this.showErrors(this.errors);
 			});
 		}
 	}
@@ -52,7 +54,16 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 
 	private showErrors(errors: ValidationErrors): void {
 		this.el.nativeElement.innerText = Object.keys(errors)
-			.map(key => this.pipe.transform(`i18n.validation.${key}`, errors[key]))
+			.map(key => this.getErrorTranslation(key, errors))
 			.join('\n');
+	}
+
+	private getErrorTranslation(key: string, errors: ValidationErrors): string {
+		const obliqueKey = `i18n.validation.${key}`;
+		const obliqueTranslation = this.pipe.transform(obliqueKey, errors[key]);
+		const customPrefix = this.control.prefix ?? this.obMatErrorPrefix ?? null;
+		return customPrefix === null || obliqueTranslation !== obliqueKey
+			? obliqueTranslation
+			: this.pipe.transform(`${customPrefix}${key}`, errors[key]);
 	}
 }

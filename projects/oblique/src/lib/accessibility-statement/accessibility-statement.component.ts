@@ -1,23 +1,37 @@
 import {Component, inject} from '@angular/core';
-import {DatePipe} from '@angular/common';
+import {DatePipe, Location} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
+import {MatButton} from '@angular/material/button';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObConformity, ObContactData} from '../utilities.model';
-import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from '../utilities';
+import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, OB_HISTORY_STATE, WINDOW} from '../utilities';
 import {ObDatePipe} from '../language/date.pipe';
 import {ObEIcon} from '../icon/icon.model';
 import {ObIAccessibilityStatementContactInfo} from './accessibility-statement.model';
+import {ObButtonDirective} from '../button/button.directive';
+import {Router} from '@angular/router';
+import {ObMasterLayoutService} from '../master-layout/master-layout.service';
 
 @Component({
 	selector: 'ob-accessibility-statement',
-	imports: [ObExternalLinkModule, TranslateModule, ObTranslateParamsPipe, ObDatePipe, DatePipe, MatIcon],
+	imports: [
+		ObExternalLinkModule,
+		TranslateModule,
+		ObTranslateParamsPipe,
+		ObDatePipe,
+		DatePipe,
+		MatIcon,
+		MatButton,
+		ObButtonDirective,
+	],
 	templateUrl: './accessibility-statement.component.html',
 	styleUrl: './accessibility-statement.component.scss',
 })
 export class AccessibilityStatementComponent {
 	readonly parameters = inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION);
+	readonly showBackButton = !inject(ObMasterLayoutService).layout.hasMainNavigation;
 	readonly exceptions =
 		'exceptions' in this.parameters && this.parameters.exceptions.length > 0 ? this.parameters.exceptions : [];
 	readonly statementParameters = {
@@ -26,6 +40,21 @@ export class AccessibilityStatementComponent {
 		exceptionText: this.getConformityText(this.exceptions.length > 0),
 	};
 	readonly contacts = this.parameters.contact.map(contact => this.parseContact(contact));
+	private readonly historyState = inject(OB_HISTORY_STATE);
+	private readonly location = inject(Location);
+	private readonly masterLayoutService = inject(ObMasterLayoutService);
+
+	private readonly router = inject(Router);
+	private readonly window = inject(WINDOW);
+
+	navigateBack(): void {
+		if (this.window.history.length > this.historyState.initialLength) {
+			this.location.back();
+			return;
+		}
+		void this.router.navigateByUrl(this.masterLayoutService.homePageRoute);
+	}
+
 	// eslint-disable-next-line @typescript-eslint/consistent-return
 	private getConformity(conformity: ObConformity): string {
 		// eslint-disable-next-line default-case

@@ -7,6 +7,7 @@ import {MatSlideToggleDefaultOptions} from '@angular/material/slide-toggle';
 import {MatTabsConfig} from '@angular/material/tabs';
 import {TranslateModuleConfig} from '@ngx-translate/core';
 import {ObIconConfig} from './icon/icon.model';
+import {ObILocale} from './master-layout/master-layout.model';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 
 export interface ObIBanner {
@@ -41,6 +42,7 @@ export interface ObITranslateConfig {
 	flatten?: boolean;
 	config?: TranslateModuleConfig;
 	additionalFiles?: ObITranslationFile[];
+	locales?: ObILocale;
 }
 
 export interface ObITranslateConfigInternal {

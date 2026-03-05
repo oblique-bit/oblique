@@ -27,4 +27,16 @@ describe(ErrorMessagesSampleComponent.name, () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
+
+	describe.each(['forbiddenLetterToken', 'forbiddenLetterInput'])('%s', control => {
+		it(`should errors forbidA when it contains "a"`, () => {
+			component[control].setValue('a');
+			expect(component[control].errors).toEqual({forbidA: true});
+		});
+
+		it(`should not error when it does not contain "a"`, () => {
+			component.forbiddenLetterInput.setValue('b');
+			expect(component.forbiddenLetterInput.errors).toBeNull();
+		});
+	});
 });

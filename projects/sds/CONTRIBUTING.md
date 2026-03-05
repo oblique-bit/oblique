@@ -47,6 +47,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for details about how to contribute
 | **translate-params**   | For changes to the translate-params documentation   |
 | **unknown-route**      | For changes to the unknown-route documentation      |
 | **unsaved-changes**    | For changes to the unsaved-changes documentation    |
+| **version**            | For changes to the version documentation            |
 | **material**           | For changes to the material documentation           |
 | **banner**             | For changes to the banner documentation             |
 | **cms**                | For changes to the ASDF documentation               |

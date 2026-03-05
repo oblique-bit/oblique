@@ -1,3 +1,11 @@
+# [15.1.0](https://github.com/oblique-bit/oblique/compare/15.0.3...15.1.0) (2026-03-05)
+
+## Features
+
+- **linting:** deactivate `@angular-eslint/component-class-suffix` rule ([89a59cc7](https://github.com/oblique-bit/oblique/commit/89a59cc7c0d5c3a5468c477db9875c317c3bda45))
+- **linting:** disable `@typescript-eslint/only-throw-error` for tests ([dea53b4c](https://github.com/oblique-bit/oblique/commit/dea53b4cbde48a9e2fc14affb452e9cd144b54bf))
+- **linting:** disable `@typescript-eslint/strict-void-return` for tests ([4a0b0d29](https://github.com/oblique-bit/oblique/commit/4a0b0d2914b6ad879764879685ba4cd4432ccdd6))
+
 # [15.0.0](https://github.com/oblique-bit/oblique/compare/14.2.1...15.0.0) (2026-02-02)
 
 ## Features

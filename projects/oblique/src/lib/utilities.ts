@@ -42,6 +42,8 @@ import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
 import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
+import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
+import {ObILocale} from './master-layout/master-layout.model';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
@@ -53,6 +55,14 @@ export const OB_ACCESSIBILITY_STATEMENT_CONFIGURATION = new InjectionToken<ObIAc
 	'AccessibilityStatementConfiguration'
 );
 export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current language in URL');
+export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
+	'Prefix for the translation keys of custom error messages.'
+);
+export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
+
+export interface ObIHistoryState {
+	initialLength: number;
+}
 
 export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
@@ -70,12 +80,15 @@ const materialProviders = {
 export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
+			const localesConfiguration = getLocalesConfiguration(config);
 			inject(ObIconService).registerOnAppInit(config.icon);
-			inject(ObLanguageService).initialize();
+			inject(ObLanguageService).initialize(localesConfiguration);
 			inject(ObRouterService).initialize();
+			inject(OB_HISTORY_STATE).initialLength = inject(WINDOW).history.length;
 		}),
 		provideObliqueTranslations(config.translate),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
+		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
@@ -87,15 +100,18 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 		})),
 	]);
 }
+/* eslint-disable max-lines-per-function */
 export function provideObliqueTestingConfiguration(
 	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> &
 		Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>> = {}
 ): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
+			const localesConfiguration = getLocalesConfiguration(config);
 			inject(ObIconService).registerOnAppInit(config.icon);
-			inject(ObLanguageService).initialize();
+			inject(ObLanguageService).initialize(localesConfiguration);
 			inject(ObRouterService).initialize();
+			inject(OB_HISTORY_STATE).initialLength = inject(WINDOW).history.length;
 		}),
 		provideTranslateService({
 			...config.translate,
@@ -109,6 +125,7 @@ export function provideObliqueTestingConfiguration(
 			useValue: {additionalFiles: config.translate?.additionalFiles, flatten: config.translate?.flatten ?? true},
 		},
 		{provide: WINDOW, useValue: window},
+		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
@@ -119,6 +136,14 @@ export function provideObliqueTestingConfiguration(
 			useValue: {...token.useValue, ...config.material?.[provider]},
 		})),
 	]);
+}
+
+function getLocalesConfiguration(
+	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> &
+		Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>>
+): ObILocale {
+	const masterLayoutConfig = inject(ObMasterLayoutConfig);
+	return config.translate?.locales ?? masterLayoutConfig.locale;
 }
 
 export function provideObliqueTranslations(configuration: ObITranslateConfig = {}): EnvironmentProviders {

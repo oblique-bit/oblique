@@ -13,7 +13,7 @@ function buildModes(sourceFolder) {
 	const baseTokenSets = listBaseTokenSets(baseThemeNames, themes);
 
 	return [
-		{mode: 'core', tokenSets: [...baseTokenSets, ...listModeTokenSets(modes, themes, {name: 'core'})]},
+		{mode: 'static', tokenSets: [...baseTokenSets, ...listModeTokenSets(modes, themes, {name: 'static'})]},
 		...listTokenSets(modes, themes, baseTokenSets),
 	].map(mode => ({
 		...mode,

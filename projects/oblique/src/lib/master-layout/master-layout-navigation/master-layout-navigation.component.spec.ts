@@ -16,6 +16,8 @@ import {ObNavigationLink} from './navigation-link.model';
 import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/master-layout-navigation-go-to-children.component';
 import {ObINavigationLink} from '@oblique/oblique';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
+import {ObEScrollMode} from '../master-layout.model';
+import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
 
 @Component({
 	standalone: false,
@@ -35,6 +37,19 @@ class DummyPrefixPathComponent {}
 })
 class DummyDefaultPathComponent {}
 
+@Component({
+	standalone: false,
+	template: `
+		<ob-master-layout-navigation [links]="[]">
+			<ul class="ob-main-nav">
+				<li id="custom-main-nav-item-1"></li>
+				<li id="custom-main-nav-item-2"></li>
+			</ul>
+		</ob-master-layout-navigation>
+	`,
+})
+class CustomNavigationHostComponent {}
+
 describe(ObMasterLayoutNavigationComponent.name, () => {
 	let router: Router;
 	let component: ObMasterLayoutNavigationComponent;
@@ -49,6 +64,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				DummyFullPathComponent,
 				DummyPrefixPathComponent,
 				DummyDefaultPathComponent,
+				CustomNavigationHostComponent,
 			],
 			imports: [
 				ObMasterLayoutNavigationGoToChildrenComponent,
@@ -305,6 +321,31 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				expect(getElementByQueryAllCSS('.active')[0].nativeElement.textContent).toContain(label);
 			}
 		);
+	});
+
+	describe('with projected custom navigation', () => {
+		test('refresh computes scrollability for projected navigation when links are empty', () => {
+			jest.useFakeTimers();
+			const hostFixture = TestBed.createComponent(CustomNavigationHostComponent);
+			hostFixture.detectChanges();
+			const hostDebugElement = hostFixture.debugElement.query(By.directive(ObMasterLayoutNavigationComponent));
+			const projectedNavigation = hostFixture.nativeElement.querySelector('.ob-main-nav') as HTMLElement;
+			const projectedNavigationChildren = projectedNavigation.children as HTMLCollectionOf<HTMLElement>;
+			const projectedNavigationComponent = hostDebugElement.componentInstance as ObMasterLayoutNavigationComponent;
+			const navigationService = TestBed.inject(ObMasterLayoutNavigationService);
+
+			Object.defineProperty(projectedNavigation, 'clientWidth', {value: 120});
+			Object.defineProperty(projectedNavigationChildren[0], 'clientWidth', {value: 110});
+			Object.defineProperty(projectedNavigationChildren[1], 'clientWidth', {value: 110});
+			jest.spyOn(navigationService, 'scrollMode', 'get').mockReturnValue(ObEScrollMode.AUTO);
+
+			navigationService.refresh();
+			jest.advanceTimersToNextFrame();
+
+			expect(projectedNavigationComponent.isScrollable).toBe(true);
+			expect(projectedNavigationComponent.maxScroll).toBeGreaterThan(0);
+			jest.useRealTimers();
+		});
 	});
 
 	function getElementByQueryAllCSS(selector: string): DebugElement[] {

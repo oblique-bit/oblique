@@ -49,6 +49,7 @@ import localeFR from '@angular/common/locales/fr-CH';
 import localeDE from '@angular/common/locales/de-CH';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {infoContact, infoLinks, profileLinks} from './service-navigation.config';
+import {OB_MAT_ERROR_PREFIX} from '@oblique/utilities';
 
 registerLocaleData(localeFR);
 registerLocaleData(localeDE);
@@ -90,6 +91,7 @@ registerLocaleData(localeDE);
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
+		{provide: OB_MAT_ERROR_PREFIX, useValue: 'i18n.custom-token-prefix.'},
 		provideMomentDateAdapter(),
 		provideHttpClient(withInterceptorsFromDi()),
 		provideObliqueConfiguration({
@@ -114,6 +116,17 @@ registerLocaleData(localeDE);
 					{url: '/samples/button', context: 'Some random internal link to demonstrate the feature'},
 				],
 			},
+			translate: {
+				locales: {
+					locales: ['en-us', 'fr-CH'],
+					defaultLanguage: 'en',
+					disabled: false,
+					languages: {
+						en: 'English',
+						fr: 'Français',
+					},
+				},
+			},
 			hasLanguageInUrl: true,
 		}),
 	],
@@ -131,7 +144,6 @@ export class AppModule {
 		documentMetaService.description = 'i18n.application.description';
 
 		interceptorConfig.api.url = HttpInterceptorSampleComponent.API_URL;
-		config.locale.locales = ['en-us', 'fr-CH'];
 		config.layout.hasOffCanvas = true;
 		this.configureServiceSNavigation(config);
 	}

@@ -1,0 +1,9 @@
+<form [formGroup]="form">
+	<mat-form-field obErrorMessages prefix="i18n.custom-error.">
+		<mat-label>Required field</mat-label>
+		<mat-hint>add a string containing the letter "a" to see the custom error message</mat-hint>
+		<input matInput formControlName="control" type="text" />
+		<mat-error />
+	</mat-form-field>
+</form>
+<p>For the purpose of the demonstration, the translation key of the error message is displayed untranslated.</p>

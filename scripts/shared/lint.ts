@@ -53,7 +53,7 @@ export class Lint extends StaticScript {
 		return Lint.instance as Lint;
 	}
 
-	finalize(): void {
+	override finalize(): void {
 		Lint.instance = undefined;
 	}
 

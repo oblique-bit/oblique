@@ -195,7 +195,8 @@ export class SideNavigationComponent implements OnInit {
 		searchText?: string,
 		version?: number
 	): Accordion[] {
-		return this.getAccordionsMatchingSearchText(accordions, searchText)
+		const filteredAccordions = this.filterItemsByVersion(accordions, version);
+		return this.getAccordionsMatchingSearchText(filteredAccordions, searchText)
 			.map(accordion => ({
 				...accordion,
 				links: this.getNewestLinksForVersion(accordion, version),
@@ -204,7 +205,7 @@ export class SideNavigationComponent implements OnInit {
 	}
 
 	private getNewestLinksForVersion(accordion: Accordion, version?: number): Link[] {
-		return this.getValidLinksForVersion(accordion, version).filter(
+		return this.filterItemsByVersion<Link>(accordion.links, version).filter(
 			(link, index, validLinks) =>
 				!validLinks.some(otherLink => otherLink.slug === link.slug && otherLink.minVersion > link.minVersion)
 		);
@@ -218,11 +219,18 @@ export class SideNavigationComponent implements OnInit {
 			: of(undefined);
 	}
 
-	private getValidLinksForVersion(accordion: Accordion, version?: number): Link[] {
-		return accordion.links.filter(
-			link =>
-				(!link.minVersion || link.minVersion <= (version ?? 9999)) &&
-				(!link.maxVersion || link.maxVersion >= (version ?? -1))
+	private filterItemsByVersion<T extends {minVersion: number; maxVersion?: number}>(
+		versionables: T[],
+		version?: number
+	): T[] {
+		if (!version) {
+			return versionables;
+		}
+
+		return versionables.filter(
+			versionable =>
+				(!versionable.minVersion || versionable.minVersion <= version) &&
+				(!versionable.maxVersion || versionable.maxVersion >= version)
 		);
 	}
 

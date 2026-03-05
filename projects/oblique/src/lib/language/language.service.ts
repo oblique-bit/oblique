@@ -1,10 +1,9 @@
 import {DOCUMENT, Inject, Injectable, Optional, Renderer2, RendererFactory2} from '@angular/core';
 import {DateAdapter} from '@angular/material/core';
 import {TranslateService} from '@ngx-translate/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ObILocaleObject} from '../master-layout/master-layout.model';
-import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
+import {ObILocale, ObILocaleObject} from '../master-layout/master-layout.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -12,41 +11,40 @@ import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 export class ObLanguageService {
 	readonly locale$: Observable<string>;
 	private static readonly token = 'oblique_lang';
-	private readonly locale: BehaviorSubject<string>;
-	private readonly languages: string[];
-	private readonly locales: string[];
+	private readonly locale = new ReplaySubject<string>(1);
 
 	constructor(
 		private readonly translate: TranslateService,
 		private readonly rendererFactory: RendererFactory2,
-		private readonly config: ObMasterLayoutConfig,
 		@Inject(DOCUMENT) private readonly document: Document,
 		@Optional() private readonly adapter: DateAdapter<unknown>
 	) {
-		this.locales = this.config.locale.locales.map(locale => (locale as ObILocaleObject).locale || locale) as string[];
-		this.validateLocales(this.locales);
-		this.languages = this.locales.map(locale => locale.split('-')[0]);
-		this.locale = new BehaviorSubject<string>(
-			this.getLocale(this.locales, this.getCurrentLang(this.languages, this.config.locale.defaultLanguage))
-		);
 		this.locale$ = this.locale.asObservable();
 	}
 
-	initialize(): void {
-		if (!this.config.locale.disabled) {
-			this.initTranslateService(this.languages, this.config.locale.defaultLanguage);
-			this.languageChange(
-				this.locales,
-				this.rendererFactory.createRenderer(null, null),
-				this.document.head.parentElement
-			);
-			this.setLocaleOnDateAdapter(this.adapter);
+	initialize(localesConfiguration: ObILocale): void {
+		const {disabled, locales: localesList, defaultLanguage} = localesConfiguration;
+
+		if (disabled) {
+			return;
 		}
+		const locales = localesList.map(locale => (locale as ObILocaleObject).locale || locale) as string[];
+		this.validateLocales(locales);
+		const languages = locales.map(locale => locale.split('-')[0]);
+		const currentLang = this.getCurrentLang(languages, defaultLanguage);
+		const renderer = this.rendererFactory.createRenderer(null, null);
+		const html = this.document.head.parentElement;
+
+		this.initTranslateService(languages, defaultLanguage);
+		renderer.setAttribute(html, 'lang', currentLang);
+		this.locale.next(this.getLocale(locales, currentLang));
+		this.languageChange(locales, renderer, html);
+		this.setLocaleOnDateAdapter(this.adapter);
 	}
 
 	private validateLocales(locales: string[]): void {
 		if (!Array.isArray(locales) || !locales.length) {
-			throw new Error("Oblique's MasterLayout config needs to either define at least 1 locale or to be disabled.");
+			throw new Error("Oblique's language config needs to either define at least 1 locale or to be disabled.");
 		}
 	}
 

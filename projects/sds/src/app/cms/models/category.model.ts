@@ -6,4 +6,6 @@ export interface CategoryCms {
 export interface Category {
 	id: number;
 	name: string;
+	min_version: number;
+	max_version?: number;
 }

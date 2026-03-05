@@ -6,6 +6,10 @@
 	margin: auto;
 }
 
+.ob-accessibility-back {
+	margin-bottom: variables.$ob-spacing-md;
+}
+
 .ob-contact-link {
 	display: flex;
 	gap: variables.$ob-spacing-xs;

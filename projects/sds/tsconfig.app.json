@@ -1,26 +1,21 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.angular.json",
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
     "strict": false,
-    "noImplicitOverride": false,
+    "strictBindCallApply": true,
+    "alwaysStrict": true,
+    "useUnknownInCatchVariables": true,
     "noPropertyAccessFromIndexSignature": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "downlevelIteration": true,
-    "module": "esnext"
-  },
-  "files": ["src/main.ts", "src/polyfills.ts"],
-  "paths": {
-    "cms/*": ["src/app/cms/*"],
-    "shared/*": ["src/app/shared/*"],
-    "side-navigation/*": ["src/app/side-navigation/*"],
-    "test-helpers/*": ["src/test-helpers/*"]
+    "isolatedModules": false,
+    "useDefineForClassFields": false,
+    "resolveJsonModule": true,
+    "baseUrl": "../../",
+    "paths": {
+      "@oblique/oblique": ["./projects/oblique/src/public_api"]
+    }
   },
   "angularCompilerOptions": {
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
     "strictTemplates": false
-  }
+  },
+  "files": ["src/main.ts", "src/polyfills.ts"]
 }

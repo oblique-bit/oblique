@@ -152,6 +152,8 @@ $offset-lg: 51px;
 
 			.mat-step-label {
 				padding-top: variables.$ob-spacing-sm;
+				max-width: 150px;
+				white-space: initial;
 			}
 		}
 	}
