@@ -2,6 +2,11 @@
 @use "../../../styles/scss/core/variables";
 
 .ob-master-layout-header {
+	--ob-env-local: #{variables.$ob-env-local};
+	--ob-env-dev: #{variables.$ob-env-dev};
+	--ob-env-ref: #{variables.$ob-env-ref};
+	--ob-env-test: #{variables.$ob-env-test};
+	--ob-env-abn: #{variables.$ob-env-abn};
 	display: flex;
 	flex-direction: column;
 	background-color: variables.$ob-white;

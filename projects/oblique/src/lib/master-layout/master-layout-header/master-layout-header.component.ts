@@ -124,17 +124,17 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	private initializeBanner(bannerToken): ObIBanner {
 		switch (bannerToken?.text) {
 			case ObEEnvironment.LOCAL:
-				return {color: '#fff', bgColor: ObEColor.SUCCESS, ...bannerToken};
+				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...bannerToken};
 			case ObEEnvironment.DEV:
-				return {color: ObEColor.DEFAULT, bgColor: '#ffd700', ...bannerToken};
+				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_DEV, ...bannerToken};
 			case ObEEnvironment.REF:
-				return {color: ObEColor.DEFAULT, bgColor: ObEColor.WARNING, ...bannerToken};
+				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_REF, ...bannerToken};
 			case ObEEnvironment.TEST:
-				return {color: '#fff', bgColor: ObEColor.PRIMARY, ...bannerToken};
+				return {color: '#fff', bgColor: ObEColor.ENV_TEST, ...bannerToken};
 			case ObEEnvironment.ABN:
-				return {color: '#fff', bgColor: ObEColor.ERROR, ...bannerToken};
+				return {color: '#fff', bgColor: ObEColor.ENV_ABN, ...bannerToken};
 			default:
-				return {color: '#fff', bgColor: ObEColor.SUCCESS, ...bannerToken};
+				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...bannerToken};
 		}
 	}
 }
