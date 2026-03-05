@@ -1293,7 +1293,7 @@
 	--ob-s3-color-status-waiting-fg-contrast_medium-inversity_flipped: #ede9fe;
 	--ob-s3-color-status-waiting-fg-contrast_medium-inversity_normal: #6d28d9;
 
-	@media (width <= 767px) {
+	.ob-viewport-mobile {
 		--ob-h-button-container-spacing-gap: var(--ob-s-dimension-dynamic-component_size-element-xl-px);
 		--ob-h-button-touch_target-min_size: var(--ob-s-dimension-static-density-9xl-px);
 	}
