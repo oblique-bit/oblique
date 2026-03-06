@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable, Subject, merge} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 import {delay, filter} from 'rxjs/operators';
@@ -21,19 +21,19 @@ export class ObMasterLayoutNavigationService {
 	private readonly refreshed$ = this.refreshedInternal.asObservable();
 	private isFullWidthInternal = this.config.navigation.isFullWidth;
 	private scrollModeInternal = this.config.navigation.scrollMode;
+	private readonly globalEventsService = inject(ObGlobalEventsService);
+	private readonly window = inject(WINDOW);
 
 	constructor(
 		private readonly config: ObMasterLayoutConfig,
 		layoutService: ObMasterLayoutComponentService,
-		globalEventsService: ObGlobalEventsService,
 		offCanvas: ObOffCanvasService,
-		translate: TranslateService,
-		@Inject(WINDOW) private readonly window: Window
+		translate: TranslateService
 	) {
 		merge(
 			translate.onLangChange,
 			offCanvas.opened$.pipe(delay(600)), // delay for the animation duration
-			globalEventsService.resize$
+			this.globalEventsService.resize$
 		)
 			.pipe(filter(() => layoutService.hasMainNavigation && this.scrollMode !== ObEScrollMode.DISABLED))
 			.subscribe(() => this.refresh());
