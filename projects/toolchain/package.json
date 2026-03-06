@@ -22,5 +22,8 @@
     "./eslint-config": "./linting/eslint-config-oblique.mjs",
     "./package.json": "./package.json"
   },
-  "schematics": "./schematics/collection.json"
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "devDependencies"
+  }
 }
