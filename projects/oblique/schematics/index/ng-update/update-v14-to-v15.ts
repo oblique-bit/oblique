@@ -7,6 +7,7 @@ import {
 	readFile,
 	removeImport,
 	replaceInFile,
+	setOrCreateAngularProjectsConfig,
 	warnIfStandalone,
 	writeFile,
 } from '../utils';
@@ -30,6 +31,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 				this.renameIcons(),
 				this.removeBrowserAnimationModuleIfUnused(),
 				this.fixTestConfig(),
+				this.disableZonelessIfAsyncUsed(),
 			])(tree, context);
 	}
 
@@ -151,6 +153,29 @@ export class UpdateV14toV15 implements ObIMigrations {
 				this.removeProperty(tree, filePath, 'locale', 'maxLastUsedApplications');
 			};
 			return applyInTree(tree, apply, '*.ts');
+		});
+	}
+
+	private disableZonelessIfAsyncUsed(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			let useAsyncTesting = false;
+			applyInTree(
+				tree,
+				(filePath: string): void => {
+					const text = tree.readText(filePath);
+					const found = text.includes('fakeAsync') || text.includes('waitForAsync');
+					if (found) {
+						useAsyncTesting = true;
+					}
+				},
+				'*.spec.ts'
+			);
+
+			if (useAsyncTesting) {
+				infoMigration(context, 'Disable zoneless for tests');
+				setOrCreateAngularProjectsConfig(tree, ['architect', 'test', 'options', 'zoneless'], false);
+			}
+			return tree;
 		});
 	}
 }
