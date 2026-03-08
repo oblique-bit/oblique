@@ -23,7 +23,7 @@
 			<a
 				class="ob-master-layout-navigation-link"
 				[id]="child.id"
-				[routerLink]="routerLinkBase + '/' + child.url"
+				[routerLink]="routerLinkBase + '/' + child.url | obLocalize"
 				[routerLinkActive]="activeClass"
 				[fragment]="child.fragment"
 				[isExternalLink]="child.isExternal"
