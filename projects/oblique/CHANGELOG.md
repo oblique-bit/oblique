@@ -1,3 +1,10 @@
+# [15.1.1](https://github.com/oblique-bit/oblique/compare/15.1.0...15.1.1) (2026-03-09)
+
+## Bug Fixes
+
+- **master-layout:** resolve 'ObGlobalEventsService' initialization error ([7f5f74d6](https://github.com/oblique-bit/oblique/commit/7f5f74d614fb4f8b3298ae92fc6bc8d8e0b311d8))
+- **styles:** truncates form values ([3f55242e](https://github.com/oblique-bit/oblique/commit/3f55242e2bf0ffa84849389f07fc1826132fc327))
+
 # [15.1.0](https://github.com/oblique-bit/oblique/compare/15.0.3...15.1.0) (2026-03-05)
 
 ## Bug Fixes
