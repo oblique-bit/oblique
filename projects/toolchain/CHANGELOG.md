@@ -1,3 +1,9 @@
+# [15.1.1](https://github.com/oblique-bit/oblique/compare/15.1.0...15.1.1) (2026-03-09)
+
+## Bug Fixes
+
+- **toolchain:** `ng-add` adds `@oblique/toolchain` as a `devDependency` ([8cdc4c5f](https://github.com/oblique-bit/oblique/commit/8cdc4c5f3bd608a16e52563fdcb1ae79e9eccd1f))
+
 # [15.1.0](https://github.com/oblique-bit/oblique/compare/15.0.3...15.1.0) (2026-03-05)
 
 ## Features
