@@ -5,6 +5,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {By} from '@angular/platform-browser';
 import {ActivatedRoute} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
+import {Pipe, PipeTransform} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {isObservable, of} from 'rxjs';
 import {ObMockIconModule} from '../icon/_mocks/mock-icon.module';
@@ -16,6 +17,21 @@ import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {HarnessLoader} from '@angular/cdk/testing';
 import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
 import {WINDOW} from '../utilities';
+
+@Pipe({
+	name: 'obLocalize',
+})
+export class ObMockLocalizePipe implements PipeTransform {
+	transform(route: string | string[] | null | undefined): string | null | undefined {
+		if (route === null) {
+			return null;
+		}
+		if (route === undefined) {
+			return undefined;
+		}
+		return typeof route === 'string' ? route : route.join('/');
+	}
+}
 
 describe('ObBreadcrumbComponent', () => {
 	let component: ObBreadcrumbComponent;
@@ -61,7 +77,14 @@ describe('ObBreadcrumbComponent', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [ObBreadcrumbComponent],
-				imports: [ObMockTranslatePipe, RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
+				imports: [
+					ObMockTranslatePipe,
+					RouterTestingModule,
+					ObMockIconModule,
+					MatIconTestingModule,
+					MatTooltipModule,
+					ObMockLocalizePipe,
+				],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{provide: ObTBreadcrumbConfig, useValue: mockBreadcrumbConfig},
@@ -166,7 +189,14 @@ describe('ObBreadcrumbComponent', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [ObBreadcrumbComponent],
-				imports: [ObMockTranslatePipe, RouterTestingModule, ObMockIconModule, MatIconTestingModule, MatTooltipModule],
+				imports: [
+					ObMockTranslatePipe,
+					RouterTestingModule,
+					ObMockIconModule,
+					MatIconTestingModule,
+					MatTooltipModule,
+					ObMockLocalizePipe,
+				],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
 					{provide: ObTBreadcrumbConfig, useValue: mockBreadcrumbConfig},
@@ -256,6 +286,7 @@ describe('ObBreadcrumbComponent', () => {
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObEllipsisTooltipDirective,
+					ObMockLocalizePipe,
 				],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
@@ -323,6 +354,7 @@ describe('ObBreadcrumbComponent', () => {
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObEllipsisTooltipDirective,
+					ObMockLocalizePipe,
 				],
 				providers: [
 					{provide: TranslateService, useValue: translateServiceMock},
