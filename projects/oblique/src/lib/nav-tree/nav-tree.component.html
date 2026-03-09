@@ -65,7 +65,7 @@
 						class="ob-nav-link"
 						role="treeitem"
 						aria-selected="false"
-						[routerLink]="item.routes"
+						[routerLink]="item.routes | obLocalize"
 						#rla="routerLinkActive"
 						routerLinkActive
 						[queryParams]="item.queryParams"

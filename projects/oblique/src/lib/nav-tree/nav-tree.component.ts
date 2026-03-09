@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {Subject} from 'rxjs';
+import {ObLocalizePipe} from '../router/ob-localize.pipe';
 import {ObNavTreeItemModel} from './nav-tree-item.model';
 
 @Component({
@@ -22,6 +23,7 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 		MatInputModule,
 		RouterModule,
 		TranslateModule,
+		ObLocalizePipe,
 	],
 	templateUrl: './nav-tree.component.html',
 	styleUrls: ['./nav-tree.component.scss'],

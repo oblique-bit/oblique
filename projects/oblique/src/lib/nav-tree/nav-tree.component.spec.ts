@@ -2,10 +2,10 @@ import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+import {TranslateService} from '@ngx-translate/core';
 import {ObNavTreeItemModel} from './nav-tree-item.model';
 import {ObNavTreeComponent} from './nav-tree.component';
+import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
 	standalone: false,
@@ -63,9 +63,9 @@ describe(ObNavTreeComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObNavTreeComponent, RouterTestingModule, TranslateModule],
+			imports: [ObNavTreeComponent, RouterTestingModule],
 			declarations: [TestComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
+			providers: [provideObliqueTestingConfiguration()],
 			schemas: [NO_ERRORS_SCHEMA],
 		}).compileComponents();
 	});
