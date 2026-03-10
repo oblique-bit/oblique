@@ -8,6 +8,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {AutocompleteExampleHintsComponent} from './previews/hints/autocomplete-example-hints.component';
 import {AutocompleteExampleDisplayWithComponent} from './previews/display-with/autocomplete-example-display-with.component';
+import {AutocompleteExampleAriaLabelComponent} from './previews/aria-label/autocomplete-example-aria-label.component';
 
 @Component({
 	selector: 'app-autocomplete-code-examples',
@@ -67,6 +68,15 @@ export class AutocompleteCodeExamplesComponent extends CodeExamples {
 			snippets: [
 				this.getSnippet('autocomplete', 'display-with/autocomplete-example-display-with.component.html', 'HTML'),
 				this.getSnippet('autocomplete', 'display-with/autocomplete-example-display-with.component.ts', 'TS'),
+			],
+		},
+		{
+			component: AutocompleteExampleAriaLabelComponent,
+			idParts: ['autocomplete', 'ariaLabel'],
+			title: 'Autocomplete ariaLabel',
+			snippets: [
+				this.getSnippet('autocomplete', 'aria-label/autocomplete-example-aria-label.component.html', 'HTML'),
+				this.getSnippet('autocomplete', 'aria-label/autocomplete-example-aria-label.component.ts', 'TS'),
 			],
 		},
 	];
