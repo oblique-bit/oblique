@@ -23,6 +23,8 @@ export const currentVersions = {
 	jest: '30',
 } as const;
 
+export const nonUpdatableDependencies = ['@angular/flex-layout'];
+
 export const optionDescriptions = {
 	ob: {
 		version: {flags: '-v, --version', description: 'Shows the current version of @oblique/cli', command: 'ob -v'},
