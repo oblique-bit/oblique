@@ -53,6 +53,16 @@ export class GroupLogger extends BaseLogger implements ObGroupLogger {
 		this.hasError = true;
 	}
 
+	logRawOutput(output: string): void {
+		this.validateActiveGroup('logRawOutput');
+		output
+			.split(/\r?\n/u)
+			.filter(line => line.trim() !== '')
+			.forEach(line => {
+				this.writer.raw(this.indent(this.indentation + 1) + line);
+			});
+	}
+
 	end(message = this.groupMessage): void {
 		this.validateActiveGroup('end');
 		if (this.stepMessage) {

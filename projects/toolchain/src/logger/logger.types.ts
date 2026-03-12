@@ -109,6 +109,14 @@ export interface ObGroupLogger extends ObLogger {
 	stepError(message?: string): void;
 
 	/**
+	 * Logs a block of raw output, preserving current indentation level.
+	 * @param output - Multiline string to log.
+	 * @throws {ObLoggerInactiveGroupError} If called after the group has ended.
+	 * @returns void
+	 */
+	logRawOutput(output: string): void;
+
+	/**
 	 * Ends the group, logging a summary message with duration.
 	 *
 	 * Automatically closes any active step. The summary is logged

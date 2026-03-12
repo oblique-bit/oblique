@@ -53,6 +53,24 @@ describe(GroupLogger.name, () => {
 		expect(logger instanceof BaseLogger).toBe(true);
 	});
 
+	describe(GroupLogger.prototype.logRawOutput.name, () => {
+		beforeEach(() => {
+			logger.logRawOutput('a\r\nb\r\nc');
+		});
+
+		test('write 3 lines', () => {
+			expect(writer.raw).toHaveBeenCalledTimes(3);
+		});
+
+		test.each([
+			{index: 1, result: '    a'},
+			{index: 2, result: '    b'},
+			{index: 3, result: '    c'},
+		])('$index call prints "$result"', ({index, result}) => {
+			expect(writer.raw).toHaveBeenNthCalledWith(index, result);
+		});
+	});
+
 	describe('successful run without custom end message', () => {
 		beforeEach(() => {
 			logger.step('step 1');
@@ -254,6 +272,11 @@ describe(GroupLogger.name, () => {
 		test('call "end" after "end"', () => {
 			logger.end();
 			expect(() => logger.end('step 1')).toThrow(ObLoggerInactiveGroupError);
+		});
+
+		test('call "logBlock" after "end"', () => {
+			logger.end();
+			expect(() => logger.logRawOutput('step 1')).toThrow(ObLoggerInactiveGroupError);
 		});
 	});
 });
