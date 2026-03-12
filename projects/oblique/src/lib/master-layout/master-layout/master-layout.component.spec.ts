@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, Component} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, Component, Pipe, PipeTransform} from '@angular/core';
 import {Router, provideRouter} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
@@ -21,6 +21,21 @@ import {appVersion} from '../../version';
 })
 export class MockComponent {}
 
+@Pipe({
+	name: 'obLocalize',
+})
+export class ObMockLocalizePipe implements PipeTransform {
+	transform(route: string | string[] | null | undefined): string | null | undefined {
+		if (route === null) {
+			return null;
+		}
+		if (route === undefined) {
+			return undefined;
+		}
+		return typeof route === 'string' ? route : route.join('/');
+	}
+}
+
 describe('ObMasterLayoutComponent', () => {
 	let component: ObMasterLayoutComponent;
 	let fixture: ComponentFixture<ObMasterLayoutComponent>;
@@ -40,7 +55,7 @@ describe('ObMasterLayoutComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [TranslateModule],
+			imports: [TranslateModule, ObMockLocalizePipe],
 			declarations: [ObMasterLayoutComponent],
 			providers: [
 				provideObliqueTestingConfiguration(),

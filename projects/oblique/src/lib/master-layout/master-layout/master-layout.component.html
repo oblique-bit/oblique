@@ -8,7 +8,7 @@
 			<a
 				class="ob-accessible"
 				accesskey="0"
-				[routerLink]="route.path"
+				[routerLink]="route.path | obLocalize"
 				[queryParams]="route.params"
 				[fragment]="contentId"
 			>
@@ -21,7 +21,7 @@
 				<a
 					class="ob-accessible"
 					accesskey="1"
-					[routerLink]="route.path"
+					[routerLink]="route.path | obLocalize"
 					[queryParams]="route.params"
 					fragment="navigation"
 				>
@@ -35,7 +35,7 @@
 				<a
 					class="ob-accessible"
 					[attr.accesskey]="skipLink.accessKey"
-					[routerLink]="skipLink.url === 'current' ? route.path : skipLink.url"
+					[routerLink]="skipLink.url === 'current' ? route.path : (skipLink.url | obLocalize)"
 					[queryParams]="route.params"
 					[fragment]="skipLink.fragment"
 				>
