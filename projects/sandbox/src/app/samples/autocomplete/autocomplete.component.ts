@@ -118,6 +118,7 @@ formControl = new FormControl('');
 				label: `${groupName} ${this.randomWords[Math.floor(Math.random() * this.randomWords?.length - 1) + 1]}`,
 				disabled,
 				iconName: this.icons[Math.floor(Math.random() * this.icons?.length - 1) + 1],
+				ariaLabel: 'Aria Label text example',
 			});
 		}
 		return optionList;

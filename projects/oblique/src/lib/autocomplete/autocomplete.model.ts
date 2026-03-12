@@ -4,6 +4,7 @@ export interface ObIAutocompleteInputOption<T = string> {
 	label: T;
 	iconName?: ObEIcon;
 	disabled?: boolean;
+	ariaLabel?: string;
 }
 
 export interface ObIAutocompleteInputOptionGroup<T = string> {
