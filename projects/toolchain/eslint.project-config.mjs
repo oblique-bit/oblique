@@ -11,4 +11,14 @@ export default [
 			'default-case': 'off', // covered by noImplicitReturns
 		},
 	},
+	{
+		files: ['projects/toolchain/src/schematics/**/*.ts'],
+		rules: {
+			// triggers false positive on
+			// 	return (tree: Tree, context: SchematicContext) => {
+			// 		return chain([])(tree, context);
+			// };
+			'@typescript-eslint/promise-function-async': 'off',
+		},
+	},
 ];
