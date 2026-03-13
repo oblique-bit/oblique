@@ -27,6 +27,10 @@
     "./logger": {
       "types": "./logger/index.d.ts",
       "default": "./logger/index.js"
+    },
+    "./logger/mock": {
+      "types": "./logger/mock/index.d.ts",
+      "default": "./logger/mock/index.js"
     }
   },
   "schematics": "./schematics/collection.json",
