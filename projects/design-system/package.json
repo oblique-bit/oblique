@@ -25,6 +25,9 @@
   "exports": {
     "./oblique.css": {
       "style": "./css/oblique.css"
+    },
+    "./oblique.min.css": {
+      "style": "./css/oblique.min.css"
     }
   }
 }
