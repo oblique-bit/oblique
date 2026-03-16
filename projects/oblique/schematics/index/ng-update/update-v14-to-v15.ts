@@ -123,6 +123,9 @@ export class UpdateV14toV15 implements ObIMigrations {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Remove maxFavoriteApplications property');
 			const apply = (filePath: string): void => {
+				if (!readFile(tree, filePath).includes('maxFavoriteApplications')) {
+					return;
+				}
 				this.removeProperty(tree, filePath, 'serviceNavigationConfiguration', 'maxFavoriteApplications');
 			};
 			return applyInTree(tree, apply, '*.ts');
@@ -133,15 +136,15 @@ export class UpdateV14toV15 implements ObIMigrations {
 		const content = readFile(tree, fileName);
 		// match assignments like service.locale.display = true;
 		const assignmentRegex = new RegExp(
-			String.raw`.*(?:\[[\x60'"])?${key}(?:[\x60'"]\])?(?:\[[\x60'"]|\.)${property}(?:[\x60'"]\])?\s*=\s*[^;\n]+;?;`,
-			'mu'
+			String.raw`^[^\n]*(?:\[[\x60'"])?${key}(?:[\x60'"]\])?(?:\[[\x60'"]|\.)${property}(?:[\x60'"]\])?\s*=\s*[^;\n]+;?;`,
+			'gmu'
 		);
 		// match object properties like service.locale = {display: true, ...};
 		const objectPropertyRegex = new RegExp(
-			String.raw`(?<=.*?${key}\s*=\s*\{.*)(?:\s*,?\s*${property}\s*:\s*(?<value>[^,}]+),?)`,
+			String.raw`^(?<prefix>[^\n]*${key}\s*=\s*\{[^\n]*?)(?:(?:\s*,\s*${property}\s*:\s*[^,}]+)|(?:\s*${property}\s*:\s*[^,}]+\s*,?))(?<suffix>[^\n]*)`,
 			'mu'
 		);
-		const newContent = content.replace(assignmentRegex, '').replace(objectPropertyRegex, '');
+		const newContent = content.replace(assignmentRegex, '').replace(objectPropertyRegex, '$<prefix>$<suffix>');
 		if (newContent !== content) {
 			writeFile(tree, fileName, newContent);
 		}
