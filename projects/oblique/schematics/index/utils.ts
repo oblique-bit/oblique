@@ -552,7 +552,7 @@ function setOption(json: any, path: string[], value?: any): void {
 				json[option] = {};
 			}
 			setOption(json[option], path, value);
-		} else if (value) {
+		} else if (value !== undefined && value !== null) {
 			json[option] = value;
 		} else {
 			delete json[option];
