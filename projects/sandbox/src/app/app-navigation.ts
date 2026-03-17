@@ -85,6 +85,7 @@ export const appNavigation: ObINavigationLink[] = [
 			{url: 'external-link', label: 'External-link'},
 			{url: 'file-upload', label: 'File Upload'},
 			{url: 'form', label: 'Forms', children: [{url: '1', label: 'Forms 1'}]},
+			{url: 'form-combinations', label: 'Form Combinations'},
 			{url: 'focus-invalid', label: 'Focus Invalid'},
 			{url: 'focus-with-outline', label: 'Focus with outline'},
 			{url: 'global-events', label: 'Global events'},

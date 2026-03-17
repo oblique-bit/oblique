@@ -89,6 +89,7 @@ import {MasterLayoutHeaderSampleComponent} from './master-layout/master-layout-h
 import {MasterLayoutFooterSampleComponent} from './master-layout/master-layout-footer-sample/master-layout-footer-sample.component';
 import {MasterLayoutLayoutSampleComponent} from './master-layout/master-layout-layout-sample/master-layout-layout-sample.component';
 import {MasterLayoutNavigationSampleComponent} from './master-layout/master-layout-navigation-sample/master-layout-navigation-sample.component';
+import {FormSampleCombinationsComponent} from './form-combinations/form-sample-combinations.component';
 
 @NgModule({
 	imports: [
@@ -140,6 +141,7 @@ import {MasterLayoutNavigationSampleComponent} from './master-layout/master-layo
 		MasterLayoutFooterSampleComponent,
 		MasterLayoutLayoutSampleComponent,
 		MasterLayoutNavigationSampleComponent,
+		FormSampleCombinationsComponent,
 	],
 	declarations: [
 		AlertSampleComponent,
