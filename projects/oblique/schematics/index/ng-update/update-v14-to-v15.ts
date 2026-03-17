@@ -12,6 +12,7 @@ import {
 } from '../utils';
 import {ObIMigrations} from './ng-update.model';
 import {addDevDependency, getDepVersion} from '../ng-add/ng-add-utils';
+import {createObjectPropertyRegex, createPropertyAssignmentRegex} from '../utils';
 
 export interface IUpdateV15Schema {}
 
@@ -76,6 +77,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 			return applyInTree(tree, toApply, '*.ts');
 		});
 	}
+
 	private renameIcons(): Rule {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Rename icons');
@@ -123,6 +125,9 @@ export class UpdateV14toV15 implements ObIMigrations {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Remove maxFavoriteApplications property');
 			const apply = (filePath: string): void => {
+				if (!readFile(tree, filePath).includes('maxFavoriteApplications')) {
+					return;
+				}
 				this.removeProperty(tree, filePath, 'serviceNavigationConfiguration', 'maxFavoriteApplications');
 			};
 			return applyInTree(tree, apply, '*.ts');
@@ -131,17 +136,9 @@ export class UpdateV14toV15 implements ObIMigrations {
 
 	private removeProperty(tree: Tree, fileName: string, key: string, property: string): void {
 		const content = readFile(tree, fileName);
-		// match assignments like service.locale.display = true;
-		const assignmentRegex = new RegExp(
-			String.raw`.*(?:\[[\x60'"])?${key}(?:[\x60'"]\])?(?:\[[\x60'"]|\.)${property}(?:[\x60'"]\])?\s*=\s*[^;\n]+;?;`,
-			'mu'
-		);
-		// match object properties like service.locale = {display: true, ...};
-		const objectPropertyRegex = new RegExp(
-			String.raw`(?<=.*?${key}\s*=\s*\{.*)(?:\s*,?\s*${property}\s*:\s*(?<value>[^,}]+),?)`,
-			'mu'
-		);
-		const newContent = content.replace(assignmentRegex, '').replace(objectPropertyRegex, '');
+		const assignmentRegex = createPropertyAssignmentRegex(key, property);
+		const objectPropertyRegex = createObjectPropertyRegex(key, property);
+		const newContent = content.replace(assignmentRegex, '').replace(objectPropertyRegex, '$<prefix>$<suffix>');
 		if (newContent !== content) {
 			writeFile(tree, fileName, newContent);
 		}

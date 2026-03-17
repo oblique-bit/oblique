@@ -461,6 +461,20 @@ export function addConstructor(tree: Tree, filePath: string): void {
 	}
 }
 
+export function createPropertyAssignmentRegex(key: string, property: string): RegExp {
+	return new RegExp(
+		String.raw`^[^\n]*(?:\[[\x60'"])?${key}(?:[\x60'"]\])?(?:\[[\x60'"]|\.)${property}(?:[\x60'"]\])?\s*=\s*[^;\n]+;?;`,
+		'gmu'
+	);
+}
+
+export function createObjectPropertyRegex(key: string, property: string): RegExp {
+	return new RegExp(
+		String.raw`^(?<prefix>[^\n]*${key}\s*=\s*\{[^\n]*?)(?:(?:\s*,\s*${property}\s*:\s*[^,}]+)|(?:\s*${property}\s*:\s*[^,}]+\s*,?))(?<suffix>[^\n]*)`,
+		'mu'
+	);
+}
+
 export function removeInjectionInClass(tree: Tree, filePath: string, token: string, pkg: string): void {
 	removeInjectionFromInject(tree, filePath, token);
 	removeInjectionFromConstructor(tree, filePath, token);
