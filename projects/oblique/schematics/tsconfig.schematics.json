@@ -21,5 +21,5 @@
     "types": ["node"]
   },
   "include": ["index/**/*"],
-  "exclude": ["index/**/*.test.ts", "index/**/files/**/*"]
+  "exclude": ["index/**/*.test.ts", "index/**/*.spec.ts", "index/**/files/**/*"]
 }
