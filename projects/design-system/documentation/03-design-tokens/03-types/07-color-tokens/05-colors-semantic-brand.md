@@ -12,7 +12,7 @@ Brand colors maintain consistent visual identity across all themes and contexts.
 
 ### Brand Token Structure
 ```
-ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` references `{ob.p.color.red.50.red.50.red.50}` (Swiss federal red)
+ob.s3.color.brand` references `{ob.p.color.basic.bundesrot}` (Swiss federal red)
 - **Static Behavior**: Never changes with light/dark themes or other variations  
 - **Usage**: Brand elements, logos, primary brand touches, selected states
 
@@ -21,7 +21,7 @@ ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_inde
 {
   "brand": {
     "$type": "color",
-    "$value": "{ob.p.color.red.50.red.50.red.50}",
+    "$value": "{ob.p.color.basic.bundesrot}",
     "$description": "Static color to be used in the brand relevant UI elements."
   }
 }
@@ -37,7 +37,9 @@ ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_inde
 ### Selection Indicators
 ```json
 {
-  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+  "ob.s3.color.interaction.state.bg.selected.inversity_normal": {
+    "$type": "color",
+    "$value": "{ob.s2.color.interaction.state.bg.selected.inversity_normal}"
   }
 }
 ```
@@ -72,9 +74,9 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
 ## Technical Implementation
 
 ### File Location
-- **Path**: `src/lib/themes/03_03_semantic/color/s3-03_semantic/03_semantic.json`
+- **Path**: `src/lib/themes/03_semantic/color/s3-semantic/semantic.json`
 - **Layer**: Semantic (s3) - static brand color integrated in final compilation
-- **References**: `{ob.p.color.red.50.red.50.red.50}` primitive
+- **References**: `{ob.p.color.basic.bundesrot}` primitive
 
 ### Integration Pattern
 ```json
@@ -84,7 +86,7 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
       "color": {
         "brand": {
           "$type": "color",
-          "$value": "{ob.p.color.red.50.red.50.red.50}",
+          "$value": "{ob.p.color.basic.bundesrot}",
           "$description": "Static color to be used in the brand relevant UI elements."
         }
       }

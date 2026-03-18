@@ -5,7 +5,7 @@ Interaction colors provide visual feedback for user interactions and establish c
 ## Token Structure
 
 ```
-ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.{emphasis_level}.{element_type}.{contrast_level}.{inversity_variation}
+ob.s1.color.interaction.{emphasis_level}.{element_type}.{contrast_level}.{inversity_variation}
 ```
 
 ### Emphasis Levels
@@ -364,20 +364,20 @@ Focus rings are implemented using dedicated sibling tokens that provide the same
 ```
 
 **Token Reference:**
-- `ob.s.border.focus` - CSS implementation using border token type
-- `ob.s.shadow.focus` - Figma implementation using boxShadow token type  
+- `ob.s.border.focus_ring` - CSS implementation using border token type
+- `ob.s.shadow.focus` - Figma implementation using boxShadow token type (planned)  
 - `ob.s1.color.interaction.focus_ring` - Shared color for both implementations
 
 ### Implementation Guidelines
 
 **For Developers:**
-- Use `ob.s.border.focus` with CSS `outline` property
+- Use `ob.s.border.focus_ring` with CSS `outline` property
 - Apply to all focusable interactive elements
 - Include `outline-offset` for better visual separation
 - Never use `outline: none` without alternative focus indication
 
 **For Designers:**
-- Use `ob.s.shadow.focus` as drop shadow effect in Figma
+- Use `ob.s.shadow.focus` as drop shadow effect in Figma (planned)
 - Apply to focus state variants of interactive components
 - Maintains visual consistency with CSS implementation
 - Both tokens reference the same underlying color values

@@ -47,12 +47,12 @@ src/lib/themes/03_semantic/color/
 - **Reference**: Compiles tokens from S1, S2, and static sources
 - **Usage**: Primary consumption point for component tokens
 
-#### **L3 - Semantic Compilation** (`s3-semantic/`)
+#### **S3 - Semantic Compilation (cont.)** (`s3-semantic/`)
 - **Purpose**: Complete semantic color compilation and final token definitions
 - **Contains**: Final compiled semantic colors combining all layer variations plus static colors
 - **Files**: `semantic.json`
 - **Inversity**: Flat inversity variants preserved in final compilation (not dimensional)
-- **Example token**: `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+- **Example token**: `ob.s3.color.neutral.fg.contrast_highest.inversity_normal`
 
 ---
 
@@ -65,8 +65,10 @@ Static colors are **non-themeable** values that remain constant across all theme
 #### **Static Brand**
 ```json
 {
-  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
-    "description": "Static color to be used in the brand relevant UI elements."
+  "ob.s3.color.brand": {
+    "$type": "color",
+    "$value": "{ob.p.color.basic.bundesrot}",
+    "$description": "Static color to be used in the brand relevant UI elements."
   }
 }
 ```
@@ -81,8 +83,10 @@ Static colors are **non-themeable** values that remain constant across all theme
 #### **No Color / Transparent**
 ```json
 {
-  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}",
-    "description": "Static value when no color respectively 0% opacity is needed."
+  "ob.s3.color.neutral.no_color": {
+    "$type": "color",
+    "$value": "{ob.p.color.basic.transparent}",
+    "$description": "Static value when no color respectively 0% opacity is needed."
   }
 }
 ```
@@ -97,10 +101,15 @@ Static colors are **non-themeable** values that remain constant across all theme
 #### **Selection States**
 ```json
 {
-  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+  "ob.s3.color.interaction.state.bg.selected.inversity_normal": {
+    "$type": "color",
+    "$value": "{ob.s2.color.interaction.state.bg.selected.inversity_normal}",
+    "$description": "Interactive element background - selected state, normal theme"
   },
-  "ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}",
-    "description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
+  "ob.s3.color.interaction.state.bg.enabled.inversity_normal": {
+    "$type": "color",
+    "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_normal}",
+    "$description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
   }
 }
 ```
@@ -155,9 +164,9 @@ The semantic color system is organized into **four main categories**:
 
 ### **Layered Token Example**
 ```
-ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+ob.s3.color.brand → {ob.p.color.basic.bundesrot} → #ff0000
 │
-└─ L3 (Semantic): Direct static value (bundesrot) - no theme, emphasis, or inversity variations
+└─ S3 (Semantic): Direct static value (bundesrot) - no theme, emphasis, or inversity variations
 ```
 
 ### **Inversity as Flat Property**
