@@ -1,6 +1,26 @@
 {
   "ob": {
-    "s3": {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}  });    }      console.log(label + ' L' + (i+1) + ': ' + line.trim());    if (line.includes('no_color') || (line.includes('transparent') && line.includes('$value'))) {  lines.forEach((line, i) => {  const lines = content.split('\n');  const content = fs.readFileSync(base + fp, 'utf8');for (const [label, fp] of Object.entries(files)) {console.log('=== Reference chain verification ===\n');};  'S3': 'src/lib/themes/03_semantic/color/s3-semantic/semantic.json'  'S2-low': 'src/lib/themes/03_semantic/color/s2-emphasis/low.json',  'S2-high': 'src/lib/themes/03_semantic/color/s2-emphasis/high.json',  'S1-dark': 'src/lib/themes/03_semantic/color/s1-lightness/dark.json',  'S1-light': 'src/lib/themes/03_semantic/color/s1-lightness/light.json',  'P': 'src/lib/themes/02_primitive/color.json',const files = {    "s3": {
       "color": {
         "brand": {
           "$type": "color",
@@ -10,8 +30,8 @@
         "neutral": {
           "no_color": {
             "$type": "color",
-            "$value": "{ob.p.color.basic.transparent}",
-            "$description": "Static value when no color respectively 0% opacity is needed. References primitive transparent token."
+            "$value": "{ob.s1.color.neutral.no_color}",
+            "$description": "Static value when no color respectively 0% opacity is needed."
           },
           "fg": {
             "contrast_lowest": {

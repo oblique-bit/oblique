@@ -3,6 +3,11 @@
     "s1": {
       "color": {
         "neutral": {
+          "no_color": {
+            "$type": "color",
+            "$value": "{ob.p.color.basic.transparent}",
+            "$description": "Static value when no color is needed. Same in both light and dark."
+          },
           "bg": {
             "contrast_highest": {
               "inversity_normal": {
@@ -1338,7 +1343,7 @@
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_normal}",
+                  "$value": "{ob.p.color.basic.white}",
                   "$description": "Used as bg in 2nd and 3d buttons"
                 },
                 "inversity_flipped": {
@@ -1487,7 +1492,7 @@
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_normal}"
+                  "$value": "{ob.p.color.basic.white}"
                 },
                 "inversity_flipped": {
                   "$type": "color",

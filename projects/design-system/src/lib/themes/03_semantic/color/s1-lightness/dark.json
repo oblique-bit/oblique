@@ -3,6 +3,11 @@
     "s1": {
       "color": {
         "neutral": {
+          "no_color": {
+            "$type": "color",
+            "$value": "{ob.p.color.basic.transparent}",
+            "$description": "Static value when no color is needed. Same in both light and dark."
+          },
           "bg": {
             "contrast_highest": {
               "inversity_normal": {
