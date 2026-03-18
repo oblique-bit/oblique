@@ -3,6 +3,7 @@ import {
 	addImport,
 	applyInTree,
 	createSafeRule,
+	filePatterns,
 	infoMigration,
 	readFile,
 	removeImport,
@@ -286,7 +287,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 				replaceInFile(tree, filePath, /svgIcon="random"/g, 'svgIcon="shuffle"');
 				replaceInFile(tree, filePath, /ObEIcon\.RANDOM/g, 'ObEIcon.SHUFFLE');
 			};
-			return applyInTree(tree, toApply, '*.{ts,html}');
+			return applyInTree(tree, toApply, filePatterns.tsAndHtml);
 		});
 	}
 
@@ -308,7 +309,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 					replaceInFile(tree, filePath, /(?<=contact\s*:\s*)\s*\{\s*[^}]*\}/gmu, `[${contacts.join(', ')}]`);
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -337,7 +338,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 					}
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 	private getConformity(content: string): string {
@@ -363,7 +364,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 					);
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -378,7 +379,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 					replaceInFile(tree, filePath, /ObPaginatorModule/g, 'MatPaginatorModule');
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -392,7 +393,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 					replaceInFile(tree, filePath, regexp, '');
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -409,7 +410,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 					replaceInFile(tree, filePath, /\[right\]="false"/gu, `right="NONE"`);
 				}
 			};
-			return applyInTree(tree, toApply, '*.html');
+			return applyInTree(tree, toApply, filePatterns.html);
 		});
 	}
 
@@ -419,7 +420,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /ObIconModule\.forRoot\(\w*\),?/gu, '');
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -434,7 +435,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 					"focusElement('content')"
 				);
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -448,7 +449,7 @@ export class UpdateV13toV14 implements ObIMigrations {
 					replaceInFile(tree, filePath, /ObHttpApiInterceptorModule,?/gu, '');
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 }

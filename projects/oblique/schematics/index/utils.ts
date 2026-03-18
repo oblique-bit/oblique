@@ -5,6 +5,15 @@ import {getTemplate} from './ng-add/ng-add-utils';
 
 export const packageJsonConfigPath = '/package.json';
 export const ObliquePackage = '@oblique/oblique';
+export const filePatterns = {
+	ts: '*.ts',
+	test: '*.spec.ts',
+	html: '*.html',
+	scss: '*.scss',
+	scssAndCss: '*.{css,scss}',
+	tsAndHtml: '*.{ts,html}',
+	appModule: 'app.module.ts',
+} as const;
 const glob = require('glob');
 
 const angularJsonConfigPath = './angular.json/';
@@ -86,7 +95,7 @@ export function checkForStandalone(): Rule {
 				);
 			}
 		};
-		return applyInTree(tree, apply, '*.ts');
+		return applyInTree(tree, apply, filePatterns.ts);
 	};
 }
 
@@ -101,7 +110,7 @@ export function warnIfStandalone(): Rule {
 					standaloneDetected = true;
 				}
 			},
-			'*.ts'
+			filePatterns.ts
 		);
 
 		if (standaloneDetected) {

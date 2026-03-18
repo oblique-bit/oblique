@@ -5,6 +5,7 @@ import {
 	checkForSSR,
 	checkForStandalone,
 	createSafeRule,
+	filePatterns,
 	infoMigration,
 	readFile,
 	removeInjectionInClass,
@@ -32,7 +33,7 @@ export class UpdateV11toV12 implements ObIMigrations {
 					removeServiceMethodCall(tree, filePath, 'setLocaleOnAdapter');
 				}
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 }

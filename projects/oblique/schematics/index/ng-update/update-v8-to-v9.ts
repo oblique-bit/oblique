@@ -6,6 +6,7 @@ import {
 	addTsCompilerOption,
 	applyInTree,
 	createSafeRule,
+	filePatterns,
 	getFilePathPerProject,
 	getIndexPaths,
 	getPackageJsonPath,
@@ -79,7 +80,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 				replaceInFile(tree, filePath, /,+\s*{\s*provide\s*:\s*ObUseObliqueIcons\s*,\s*useValue\s*:\s*true\s*}\s*/, '');
 				replaceInFile(tree, filePath, /ObUseObliqueIcons\s*,?/, '');
 			};
-			return applyInTree(tree, apply, 'app.module.ts');
+			return applyInTree(tree, apply, filePatterns.appModule);
 		});
 	}
 
@@ -100,7 +101,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 				replaceInFile(tree, filePath, /ObIJumpLink/g, 'ObISkipLink');
 				replaceInFile(tree, filePath, /jumpLinks/g, 'skipLinks');
 			};
-			return applyInTree(tree, apply, '*.{ts,html}');
+			return applyInTree(tree, apply, filePatterns.tsAndHtml);
 		});
 	}
 
@@ -120,7 +121,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 					replaceInFile(tree, filePath, new RegExp(mixin, 'g'), this.toKebabCase(mixin));
 				});
 			};
-			return applyInTree(tree, apply, '*.scss');
+			return applyInTree(tree, apply, filePatterns.scss);
 		});
 	}
 
@@ -134,7 +135,7 @@ export class UpdateV8toV9 implements ObIMigrations {
 					replaceInFile(tree, filePath, new RegExp(`${offCanvas}.opened(?!\\$)`), `${offCanvas}.opened$`);
 				}
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 

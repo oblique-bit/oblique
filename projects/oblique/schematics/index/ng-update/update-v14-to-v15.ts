@@ -2,6 +2,7 @@ import {Rule, SchematicContext, Tree, chain, noop} from '@angular-devkit/schemat
 import {
 	applyInTree,
 	createSafeRule,
+	filePatterns,
 	getJson,
 	infoMigration,
 	readFile,
@@ -59,7 +60,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 						useAnimations = true;
 					}
 				},
-				'*.ts'
+				filePatterns.ts
 			);
 
 			return useAnimations ? noop() : this.removeBrowserAnimationsModule();
@@ -76,7 +77,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 					replaceInFile(tree, filePath, /BrowserAnimationsModule,?/gu, '');
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -109,7 +110,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 				replaceInFile(tree, filePath, /svgIcon="sort-list_ascending"/g, 'svgIcon="sort_list_ascending"');
 				replaceInFile(tree, filePath, /ObEIcon\.SORT-LIST_ASCENDING/g, 'ObEIcon.SORT_LIST_ASCENDING');
 			};
-			return applyInTree(tree, toApply, '*.{ts,html}');
+			return applyInTree(tree, toApply, filePatterns.tsAndHtml);
 		});
 	}
 
@@ -119,7 +120,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				this.removeProperty(tree, filePath, 'locale', 'display');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -132,7 +133,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 				}
 				this.removeProperty(tree, filePath, 'serviceNavigationConfiguration', 'maxFavoriteApplications');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -152,7 +153,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				this.removeProperty(tree, filePath, 'locale', 'maxLastUsedApplications');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -168,7 +169,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 						useAsyncTesting = true;
 					}
 				},
-				'*.spec.ts'
+				filePatterns.test
 			);
 
 			if (useAsyncTesting) {
