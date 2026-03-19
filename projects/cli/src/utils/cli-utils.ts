@@ -3,7 +3,7 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '15.1.1';
+export const version = '15.1.2';
 /* End of generated content */
 
 export const currentVersions = {
@@ -22,6 +22,8 @@ export const currentVersions = {
 	'angular-oauth2-oidc': '20',
 	jest: '30',
 } as const;
+
+export const nonUpdatableDependencies = ['@angular/flex-layout'];
 
 export const optionDescriptions = {
 	ob: {

@@ -2,16 +2,19 @@ import {Rule, SchematicContext, Tree, chain, noop} from '@angular-devkit/schemat
 import {
 	applyInTree,
 	createSafeRule,
+	filePatterns,
 	getJson,
 	infoMigration,
 	readFile,
 	removeImport,
 	replaceInFile,
+	setOrCreateAngularProjectsConfig,
 	warnIfStandalone,
 	writeFile,
 } from '../utils';
 import {ObIMigrations} from './ng-update.model';
 import {addDevDependency, getDepVersion} from '../ng-add/ng-add-utils';
+import {createObjectPropertyRegex, createPropertyAssignmentRegex} from '../utils';
 
 export interface IUpdateV15Schema {}
 
@@ -29,6 +32,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 				this.renameIcons(),
 				this.removeBrowserAnimationModuleIfUnused(),
 				this.fixTestConfig(),
+				this.disableZonelessIfAsyncUsed(),
 			])(tree, context);
 	}
 
@@ -56,7 +60,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 						useAnimations = true;
 					}
 				},
-				'*.ts'
+				filePatterns.ts
 			);
 
 			return useAnimations ? noop() : this.removeBrowserAnimationsModule();
@@ -73,9 +77,10 @@ export class UpdateV14toV15 implements ObIMigrations {
 					replaceInFile(tree, filePath, /BrowserAnimationsModule,?/gu, '');
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
+
 	private renameIcons(): Rule {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Rename icons');
@@ -105,7 +110,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 				replaceInFile(tree, filePath, /svgIcon="sort-list_ascending"/g, 'svgIcon="sort_list_ascending"');
 				replaceInFile(tree, filePath, /ObEIcon\.SORT-LIST_ASCENDING/g, 'ObEIcon.SORT_LIST_ASCENDING');
 			};
-			return applyInTree(tree, toApply, '*.{ts,html}');
+			return applyInTree(tree, toApply, filePatterns.tsAndHtml);
 		});
 	}
 
@@ -115,7 +120,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				this.removeProperty(tree, filePath, 'locale', 'display');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -123,25 +128,20 @@ export class UpdateV14toV15 implements ObIMigrations {
 		return createSafeRule((tree: Tree, context: SchematicContext) => {
 			infoMigration(context, 'Remove maxFavoriteApplications property');
 			const apply = (filePath: string): void => {
+				if (!readFile(tree, filePath).includes('maxFavoriteApplications')) {
+					return;
+				}
 				this.removeProperty(tree, filePath, 'serviceNavigationConfiguration', 'maxFavoriteApplications');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
 	private removeProperty(tree: Tree, fileName: string, key: string, property: string): void {
 		const content = readFile(tree, fileName);
-		// match assignments like service.locale.display = true;
-		const assignmentRegex = new RegExp(
-			String.raw`.*(?:\[[\x60'"])?${key}(?:[\x60'"]\])?(?:\[[\x60'"]|\.)${property}(?:[\x60'"]\])?\s*=\s*[^;\n]+;?;`,
-			'mu'
-		);
-		// match object properties like service.locale = {display: true, ...};
-		const objectPropertyRegex = new RegExp(
-			String.raw`(?<=.*?${key}\s*=\s*\{.*)(?:\s*,?\s*${property}\s*:\s*(?<value>[^,}]+),?)`,
-			'mu'
-		);
-		const newContent = content.replace(assignmentRegex, '').replace(objectPropertyRegex, '');
+		const assignmentRegex = createPropertyAssignmentRegex(key, property);
+		const objectPropertyRegex = createObjectPropertyRegex(key, property);
+		const newContent = content.replace(assignmentRegex, '').replace(objectPropertyRegex, '$<prefix>$<suffix>');
 		if (newContent !== content) {
 			writeFile(tree, fileName, newContent);
 		}
@@ -153,7 +153,30 @@ export class UpdateV14toV15 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				this.removeProperty(tree, filePath, 'locale', 'maxLastUsedApplications');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
+		});
+	}
+
+	private disableZonelessIfAsyncUsed(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			let useAsyncTesting = false;
+			applyInTree(
+				tree,
+				(filePath: string): void => {
+					const text = tree.readText(filePath);
+					const found = text.includes('fakeAsync') || text.includes('waitForAsync');
+					if (found) {
+						useAsyncTesting = true;
+					}
+				},
+				filePatterns.test
+			);
+
+			if (useAsyncTesting) {
+				infoMigration(context, 'Disable zoneless for tests');
+				setOrCreateAngularProjectsConfig(tree, ['architect', 'test', 'options', 'zoneless'], false);
+			}
+			return tree;
 		});
 	}
 }

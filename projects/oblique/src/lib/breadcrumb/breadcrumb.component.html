@@ -6,7 +6,7 @@
 					<a
 						class="ob-breadcrumb-label"
 						#element
-						[routerLink]="crumb.url"
+						[routerLink]="crumb.url | obLocalize"
 						[style.max-width]="maxWidth"
 						[matTooltip]="crumb.label | translate"
 						[obEllipsisTooltip]="crumb.label | translate"

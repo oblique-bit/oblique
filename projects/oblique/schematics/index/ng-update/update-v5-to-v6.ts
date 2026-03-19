@@ -16,6 +16,7 @@ import {
 	addInterface,
 	applyInTree,
 	checkIfAngularConfigExists,
+	filePatterns,
 	getAngularConfigs,
 	getIndexPaths,
 	getJson,
@@ -171,7 +172,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info/g), '$brand-primary');
 				replaceInFile(tree, filePath, new RegExp(/\$brand-info-dark/g), '$brand-dark');
 			};
-			return applyInTree(tree, apply, '*.scss');
+			return applyInTree(tree, apply, filePatterns.scss);
 		};
 	}
 
@@ -182,7 +183,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 				replaceInFile(tree, filePath, /MockCollapseComponent/g, 'ObMockCollapseComponent');
 				replaceInFile(tree, filePath, /MockCollapseModule/g, 'ObMockCollapseModule');
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		};
 	}
 
@@ -200,7 +201,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 					);
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		};
 	}
 
@@ -285,7 +286,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 					'<ng-container dropdown-toggle>$1</ng-container>'
 				);
 			};
-			return applyInTree(tree, toApply, '*.html');
+			return applyInTree(tree, toApply, filePatterns.html);
 		};
 	}
 
@@ -309,7 +310,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 					this.addNgOnDestroy(tree, filePath, content.includes('ngOnDestroy'));
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		};
 	}
 
@@ -358,7 +359,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 				]);
 				addClassPrefix(tree, filePath, 'tab', ['item', 'link']);
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		};
 	}
 
@@ -441,7 +442,7 @@ export class UpdateV5toV6 implements ObIMigrations {
 					'ob-off-canvas'
 				);
 			};
-			return applyInTree(tree, apply, '*.scss');
+			return applyInTree(tree, apply, filePatterns.scss);
 		};
 	}
 }

@@ -203,6 +203,28 @@ describe('ObUpdateCommand Tests', () => {
 				});
 			});
 
+			test('filters non-updatable angular dependencies', () => {
+				(execute as jest.Mock).mockClear();
+				jest.spyOn(fs, 'readFileSync').mockReturnValue(
+					JSON.stringify({
+						dependencies: {
+							'@angular/flex-layout': '15.0.0',
+							'@angular/core': '21.0.0',
+						},
+					} as PackageDependencies)
+				);
+				jest.spyOn(obUpdate, 'isDependencyInPackage').mockImplementation(() => false);
+
+				obUpdate.runUpdateDependencies();
+
+				expect(execute).toHaveBeenCalledWith(
+					expect.objectContaining({
+						name: 'ngUpdate',
+						angularDependencies: ['@angular/core'],
+					})
+				);
+			});
+
 			describe('error handling', () => {
 				beforeEach(() => {
 					jest.spyOn(obUpdate, 'isDependencyInPackage').mockReturnValue(true);

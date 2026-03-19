@@ -8,6 +8,22 @@ import {ObMasterLayoutNavigationSubMenuItemComponent} from './master-layout-navi
 import {ObMasterLayoutNavigationSubMenuItemHarness} from './master-layout-navigation-sub-menu-item.harness';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
+import {Pipe, PipeTransform} from '@angular/core';
+
+@Pipe({
+	name: 'obLocalize',
+})
+export class ObMockLocalizePipe implements PipeTransform {
+	transform(route: string | string[] | null | undefined): string | null | undefined {
+		if (route === null) {
+			return null;
+		}
+		if (route === undefined) {
+			return undefined;
+		}
+		return typeof route === 'string' ? route : route.join('/');
+	}
+}
 
 describe(ObMasterLayoutNavigationSubMenuItemComponent.name, () => {
 	let component: ObMasterLayoutNavigationSubMenuItemComponent;
@@ -17,7 +33,7 @@ describe(ObMasterLayoutNavigationSubMenuItemComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [ObMasterLayoutNavigationSubMenuItemComponent],
-			imports: [ObMockTranslatePipe, BrowserModule, CommonModule],
+			imports: [ObMockTranslatePipe, BrowserModule, CommonModule, ObMockLocalizePipe],
 			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
 		}).compileComponents();
 

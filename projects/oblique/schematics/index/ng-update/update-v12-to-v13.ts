@@ -4,6 +4,7 @@ import {
 	addImport,
 	applyInTree,
 	createSafeRule,
+	filePatterns,
 	getAngularConfigs,
 	infoMigration,
 	readFile,
@@ -48,7 +49,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				removeImport(tree, filePath, 'ObFormFieldModule', '@oblique/oblique');
 				replaceInFile(tree, filePath, /(?:ObFormFieldModule|ObFormFieldDirective|ObSelectDirective)\s*,?\s*/g, '');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -59,7 +60,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				removeImport(tree, filePath, 'ObPaginatorDirective', '@oblique/oblique');
 				replaceInFile(tree, filePath, /ObPaginatorDirective\s*,?\s*/g, '');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -75,7 +76,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 					tree.overwrite(filePath, replacement);
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -87,7 +88,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				removeImport(tree, filePath, 'ObCheckboxDirective', '@oblique/oblique');
 				replaceInFile(tree, filePath, /(?:ObCheckboxModule|ObCheckboxDirective)\s*,?\s*/g, '');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -98,7 +99,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				replaceInFile(tree, filePath, /(?<=tr|&)\.ob-table-row-checked/g, ':has([checked])');
 				replaceInFile(tree, filePath, /\.ob-table-row-checked/g, 'tr:has([checked])');
 			};
-			return applyInTree(tree, apply, '*.{scss,css}');
+			return applyInTree(tree, apply, filePatterns.scssAndCss);
 		});
 	}
 
@@ -109,7 +110,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				addImport(tree, filePath, 'provideObliqueConfiguration', '@oblique/oblique');
 				replaceInFile(tree, filePath, /(?<=providers\s*:\s*)\[/, '[provideObliqueConfiguration(),\n');
 			};
-			return applyInTree(tree, apply, 'app.module.ts');
+			return applyInTree(tree, apply, filePatterns.appModule);
 		});
 	}
 
@@ -126,7 +127,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				].join(',');
 				replaceInFile(tree, filePath, /(?<=provideObliqueConfiguration\()(?=\))/, `{${configs}}`);
 			};
-			return applyInTree(tree, apply, 'app.module.ts');
+			return applyInTree(tree, apply, filePatterns.appModule);
 		});
 	}
 
@@ -178,7 +179,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 					''
 				);
 			};
-			return applyInTree(tree, apply, 'app.module.ts');
+			return applyInTree(tree, apply, filePatterns.appModule);
 		});
 	}
 
@@ -189,7 +190,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				removeImport(tree, filePath, 'ObIconModule', '@oblique/oblique');
 				replaceInFile(tree, filePath, /ObIconModule\.forRoot\s*\(.*?\),?\s*/s, '');
 			};
-			return applyInTree(tree, apply, 'app.module.ts');
+			return applyInTree(tree, apply, filePatterns.appModule);
 		});
 	}
 
@@ -200,7 +201,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				removeImport(tree, filePath, 'multiTranslateLoader', '@oblique/oblique');
 				replaceInFile(tree, filePath, /(?<=TranslateModule)\.forRoot\s*\(.*?\)+/s, '');
 			};
-			return applyInTree(tree, apply, 'app.module.ts');
+			return applyInTree(tree, apply, filePatterns.appModule);
 		});
 	}
 
@@ -211,7 +212,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				removeImport(tree, filePath, 'TRANSLATION_FILES', '@oblique/oblique');
 				replaceInFile(tree, filePath, /\s*{\s*provide\s*:\s*TRANSLATION_FILES\s*,\s*useValue\s*:.*},?/s, '');
 			};
-			return applyInTree(tree, apply, 'app.module.ts');
+			return applyInTree(tree, apply, filePatterns.appModule);
 		});
 	}
 
@@ -237,7 +238,7 @@ export class UpdateV12toV13 implements ObIMigrations {
 				replaceInFile(tree, filePath, /ob-show-external-link-icon/g, '');
 				replaceInFile(tree, filePath, /class="" ?/g, '');
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 }

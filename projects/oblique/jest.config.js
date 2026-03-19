@@ -96,12 +96,6 @@ module.exports = {
 			functions: 90,
 			lines: 80,
 		},
-		'projects/oblique/src/lib/multi-translate-loader/*.ts': {
-			statements: 22,
-			branches: 0,
-			functions: 0,
-			lines: 25,
-		},
 		'projects/oblique/src/lib/nav-tree/*.ts': {
 			statements: 91,
 			branches: 70,

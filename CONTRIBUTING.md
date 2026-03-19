@@ -236,8 +236,16 @@ If there is neither a ticket nor a breaking change, the footer may be omitted.
 If a ticket is referenced:
 
 - it must be listed first
-- only one ticket number is allowed. Subtasks must omit the parent ticket number
-- for GitHub issues, use the corresponding JIRA ticket number if available. If no JIRA ticket exists, use the GitHub issue number.
+- more than one ticket number is allowed. Subtasks must omit the parent ticket number
+- Jira ticket numbers must be listed first, GitHub Issues second.
+- for GitHub issues, also use the corresponding JIRA ticket number if available.
+- tickets must be separated with a comma and a whitespace
+
+For example:
+
+```
+OUI-1234, GitHub-1234, AnyOtherTicket-1234
+```
 
 ##### <a name="breaking_changes"></a> Breaking changes
 

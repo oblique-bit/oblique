@@ -9,6 +9,7 @@ import {
 	appendPrivateVoidFunctionToClass,
 	applyInTree,
 	createSafeRule,
+	filePatterns,
 	getFilePathPerProject,
 	getRootFilesPaths,
 	getRootModulePathPerProject,
@@ -233,7 +234,7 @@ export function removeEmptyLifecycleHook(methodName: 'ngOnInit' | 'ngAfterViewIn
 				replaceInFile(tree, filePath, /(?<=import\s*.*),(?=})/g, '');
 			}
 		};
-		return applyInTree(tree, toApply, '*.ts');
+		return applyInTree(tree, toApply, filePatterns.ts);
 	});
 }
 
@@ -245,7 +246,7 @@ export function removeCode(regex: RegExp, caseDescription: string): Rule {
 				replaceInFile(tree, filePath, regex, '');
 			}
 		};
-		return applyInTree(tree, toApply, '*.{ts,html}');
+		return applyInTree(tree, toApply, filePatterns.tsAndHtml);
 	});
 }
 

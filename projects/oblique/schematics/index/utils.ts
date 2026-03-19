@@ -5,6 +5,15 @@ import {getTemplate} from './ng-add/ng-add-utils';
 
 export const packageJsonConfigPath = '/package.json';
 export const ObliquePackage = '@oblique/oblique';
+export const filePatterns = {
+	ts: '*.ts',
+	test: '*.spec.ts',
+	html: '*.html',
+	scss: '*.scss',
+	scssAndCss: '*.{css,scss}',
+	tsAndHtml: '*.{ts,html}',
+	appModule: 'app.module.ts',
+} as const;
 const glob = require('glob');
 
 const angularJsonConfigPath = './angular.json/';
@@ -86,7 +95,7 @@ export function checkForStandalone(): Rule {
 				);
 			}
 		};
-		return applyInTree(tree, apply, '*.ts');
+		return applyInTree(tree, apply, filePatterns.ts);
 	};
 }
 
@@ -101,7 +110,7 @@ export function warnIfStandalone(): Rule {
 					standaloneDetected = true;
 				}
 			},
-			'*.ts'
+			filePatterns.ts
 		);
 
 		if (standaloneDetected) {
@@ -461,6 +470,20 @@ export function addConstructor(tree: Tree, filePath: string): void {
 	}
 }
 
+export function createPropertyAssignmentRegex(key: string, property: string): RegExp {
+	return new RegExp(
+		String.raw`^[^\n]*(?:\[[\x60'"])?${key}(?:[\x60'"]\])?(?:\[[\x60'"]|\.)${property}(?:[\x60'"]\])?\s*=\s*[^;\n]+;?;`,
+		'gmu'
+	);
+}
+
+export function createObjectPropertyRegex(key: string, property: string): RegExp {
+	return new RegExp(
+		String.raw`^(?<prefix>[^\n]*${key}\s*=\s*\{[^\n]*?)(?:(?:\s*,\s*${property}\s*:\s*[^,}]+)|(?:\s*${property}\s*:\s*[^,}]+\s*,?))(?<suffix>[^\n]*)`,
+		'mu'
+	);
+}
+
 export function removeInjectionInClass(tree: Tree, filePath: string, token: string, pkg: string): void {
 	removeInjectionFromInject(tree, filePath, token);
 	removeInjectionFromConstructor(tree, filePath, token);
@@ -538,7 +561,7 @@ function setOption(json: any, path: string[], value?: any): void {
 				json[option] = {};
 			}
 			setOption(json[option], path, value);
-		} else if (value) {
+		} else if (value !== undefined && value !== null) {
 			json[option] = value;
 		} else {
 			delete json[option];

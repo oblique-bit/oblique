@@ -7,6 +7,7 @@ import {
 	execute,
 	getHelpText,
 	ngAddOblique,
+	nonUpdatableDependencies,
 	startObCommand,
 } from '../utils/cli-utils';
 import {type PackageDependencies, updateDescriptions} from './ob-update.model';
@@ -85,10 +86,14 @@ export function runUpdateDependencies(): void {
 		const dependencies = Object.entries(currentVersions)
 			.map(([dependency]) => dependency as keyof typeof currentVersions)
 			.filter(dependency => isDependencyInPackage(dependency));
+		const angularDependencies = getAngularDependenciesFromPackage().filter(
+			dependency => !skipDependencyUpdate(dependency)
+		);
+
 		execute({
 			name: 'ngUpdate',
 			dependencies,
-			angularDependencies: getAngularDependenciesFromPackage(),
+			angularDependencies,
 			options: {force: true},
 		});
 	} catch (error) {
@@ -168,4 +173,8 @@ function getAngularDependenciesFromPackage(): string[] {
 		...(pkg.devDependencies ?? {}),
 	};
 	return Object.keys(dependencies).filter(dependency => dependency.startsWith('@angular/'));
+}
+
+function skipDependencyUpdate(dependency: string): boolean {
+	return nonUpdatableDependencies.includes(dependency);
 }
