@@ -2,8 +2,9 @@
 
 ## Bug Fixes
 
+- **cms**: make categories versionable ([e04cbeed](https://github.com/oblique-bit/oblique/commit/e04cbeed8ebd98198923b480ac6df600dd67a1d9))
 - **material:** remove flex layout wrapper in form examples for better documentation ([041681c9](https://github.com/oblique-bit/oblique/commit/041681c95bd806525f1f1c360d7a05345d8be79c))
-- **tabbed-page:** always redirect to a visible tab in tabbed pages ([e04cbeed](https://github.com/oblique-bit/oblique/commit/e04cbeed8ebd98198923b480ac6df600dd67a1d9))
+- **tabbed-page:** always redirect to a visible tab in tabbed pages ([64a3f918](https://github.com/oblique-bit/oblique/commit/64a3f91838ad15225821a281c1ffdcf74ebbc3f1))
 
 ## Features
 
