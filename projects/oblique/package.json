@@ -1,24 +1,25 @@
 {
   "name": "@oblique/oblique",
   "version": "15.4.4",
+  "type": "module",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },
   "scripts": {
-    "lint": "ts-node scripts/lint.ts",
-    "format": "ts-node scripts/lint.ts --fix",
+    "lint": "tsx scripts/lint.ts",
+    "format": "tsx scripts/lint.ts --fix",
     "test": "cd ../.. && ng test oblique",
     "test-ci": "cd ../.. && ng run oblique:test:ci",
     "test-debugging": "cd ../.. && node --expose-gc ../../node_modules/@angular/cli/bin/ng test oblique --log-heap-usage",
-    "prebuild": "ts-node scripts/pre-build.ts && ng build oblique-styles",
+    "prebuild": "tsx scripts/pre-build.ts && ng build oblique-styles",
     "build": "ng build oblique && npm run schematics",
-    "postbuild": "ts-node scripts/post-build.ts",
+    "postbuild": "tsx scripts/post-build.ts",
     "schematics": "tsc -p schematics/tsconfig.schematics.json",
     "prerelease": "npm run update-icons",
-    "npm-publish": "ts-node scripts/publish.ts",
-    "release": "ts-node scripts/release.ts",
-    "update-icons": "ts-node scripts/update-icons.ts",
-    "tarball": "ts-node scripts/tarball.ts"
+    "npm-publish": "tsx scripts/publish.ts",
+    "release": "tsx scripts/release.ts",
+    "update-icons": "tsx scripts/update-icons.ts",
+    "tarball": "tsx scripts/tarball.ts"
   },
   "peerDependencies": {
     "@angular/cdk": "^21.0.0",
