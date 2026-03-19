@@ -8,6 +8,7 @@ import {
 	checkForSSR,
 	checkForStandalone,
 	createSafeRule,
+	filePatterns,
 	getAngularConfigs,
 	getIndexPaths,
 	infoMigration,
@@ -91,7 +92,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 					}
 				}
 			};
-			return applyInTree(tree, apply, '*.spec.ts');
+			return applyInTree(tree, apply, filePatterns.test);
 		});
 	}
 
@@ -107,7 +108,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 					replaceInFile(tree, filePath, 'wINDOW', 'window');
 				}
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -117,7 +118,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				removeHtmlTagAttribute(tree, filePath, 'ob-nav-tree', 'variant');
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 
@@ -127,7 +128,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				removeHtmlTagAttribute(tree, filePath, 'ob-nav-tree', 'activateAncestors');
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 
@@ -140,7 +141,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 				removeImport(tree, filePath, 'ObISearchWidgetItem', '@oblique/oblique');
 				replaceInFile(tree, filePath, /ObSearchBoxModule\s*,?\s*/, '');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -151,7 +152,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 				removeImport(tree, filePath, 'ObNavTreeFakeFocusDirective', '@oblique/oblique');
 				replaceInFile(tree, filePath, /\[?obNavTreeFakeFocus]?\s*=\s*["'].*?["']\s*/g, '');
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 
@@ -182,7 +183,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 					'<ng-template #obHeaderControl>$<content></ng-template>'
 				);
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 
@@ -197,7 +198,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 					'<ng-template #obHeaderControl>$<content></ng-template>'
 				);
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 
@@ -215,7 +216,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 					'<ng-template #obHeaderControl>\n$<content>\n</ng-template>'
 				);
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 
@@ -225,7 +226,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(`\\s*${token}`, 'g'), '');
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 
@@ -241,7 +242,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 				);
 				replaceInFile(tree, filePath, /OB_ACTIVATE_SERVICE_NAVIGATION\s*,?\s*/, '');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -255,7 +256,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 				replaceInFile(tree, filePath, /class\s*=\s*["']\s*["']/g, ''); // class=""
 				replaceInFile(tree, filePath, /\[ngClass]\s*=\s*['"]\{\s*}\s*["']/g, ''); // [ngClass]="{}"
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 
@@ -303,7 +304,7 @@ export class UpdateV10toV11 implements ObIMigrations {
 			// can't use filter or conditional chaining as we need to modify a value
 			if (eslintConfiguration.overrides) {
 				eslintConfiguration.overrides.forEach(configuration => {
-					if (configuration.files?.[0] === '*.ts') {
+					if (configuration.files?.[0] === filePatterns.ts) {
 						if (!configuration.rules) {
 							configuration.rules = {};
 						}

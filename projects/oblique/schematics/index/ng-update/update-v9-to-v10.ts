@@ -3,6 +3,7 @@ import {addDependency} from '../ng-add/ng-add-utils';
 import {
 	applyInTree,
 	createSafeRule,
+	filePatterns,
 	infoMigration,
 	removeImport,
 	replaceInFile,
@@ -37,7 +38,7 @@ export class UpdateV9toV10 implements ObIMigrations {
 				replaceInFile(tree, filePath, /ObEIcon.ATTACHEMENT/g, 'ObEIcon.ATTACHMENT');
 				replaceInFile(tree, filePath, /ObEIcon.MAIL_ATTACHEMENT/g, 'ObEIcon.MAIL_ATTACHMENT');
 			};
-			return applyInTree(tree, toApply, '*.{ts,html}');
+			return applyInTree(tree, toApply, filePatterns.tsAndHtml);
 		});
 	}
 
@@ -53,7 +54,7 @@ export class UpdateV9toV10 implements ObIMigrations {
 					''
 				);
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 

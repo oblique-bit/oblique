@@ -1,6 +1,6 @@
 /* eslint-disable prefer-named-capture-group */
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {applyInTree, infoMigration, replaceInFile} from '../utils';
+import {applyInTree, filePatterns, infoMigration, replaceInFile} from '../utils';
 import {removePolyFill} from './ng-update-utils';
 import {ObIMigrations} from './ng-update.model';
 
@@ -42,7 +42,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /ObIconsConfig/g, 'ObIconConfig');
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		};
 	}
 
@@ -52,7 +52,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /\$spacing-lg/g, '$spacing-xl');
 			};
-			return applyInTree(tree, toApply, '*.scss');
+			return applyInTree(tree, toApply, filePatterns.scss);
 		};
 	}
 
@@ -67,7 +67,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 					'data-title="'
 				);
 			};
-			return applyInTree(tree, toApply, '*.html');
+			return applyInTree(tree, toApply, filePatterns.html);
 		};
 	}
 
@@ -77,7 +77,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 			const toApply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(<ob-collapse\s.*?)\[?direction]?=".*?"\s?(.*?>)/g, '$1$2');
 			};
-			return applyInTree(tree, toApply, '*.html');
+			return applyInTree(tree, toApply, filePatterns.html);
 		};
 	}
 
@@ -92,7 +92,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 					'<ob-alert type="$1">$2</ob-alert>'
 				);
 			};
-			return applyInTree(tree, toApply, '*.html');
+			return applyInTree(tree, toApply, filePatterns.html);
 		};
 	}
 
@@ -113,7 +113,7 @@ export class UpdateV6toV7 implements ObIMigrations {
 					"routerLinkActiveOptions: {paths: 'subset', queryParams: 'subset', fragment: 'ignored', matrixParams: 'ignored'}"
 				);
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		};
 	}
 }

@@ -6,6 +6,7 @@ import {
 	applyInTree,
 	createSafeRule,
 	deleteFile,
+	filePatterns,
 	getAngularConfigs,
 	getIndexPaths,
 	infoMigration,
@@ -193,7 +194,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 				// Palette Oblique colors
 				replaceInFile(tree, filePath, new RegExp(/\$(primary|error|gray|success|warning)-(\d00?)/g), '$ob-$1-$2');
 			};
-			return applyInTree(tree, apply, '*.scss');
+			return applyInTree(tree, apply, filePatterns.scss);
 		});
 	}
 
@@ -256,7 +257,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					replaceInFile(tree, filePath, new RegExp(`\\@include ${mixin}`, 'g'), `@include ob-${mixin}`)
 				);
 			};
-			return applyInTree(tree, apply, '*.scss');
+			return applyInTree(tree, apply, filePatterns.scss);
 		});
 	}
 
@@ -266,7 +267,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, /(?:ob-)?layout-collapse-(up|down)(?:\(\))?/g, `ob-media-breakpoint-$1(md)`);
 			};
-			return applyInTree(tree, apply, '*.scss');
+			return applyInTree(tree, apply, filePatterns.scss);
 		});
 	}
 
@@ -276,7 +277,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\s?(Ob(?:Mock)?Mandatory(?:Module|Directive),?)/g), '');
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -286,7 +287,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 			const apply = (filePath: string): void => {
 				replaceInFile(tree, filePath, new RegExp(/\s?ob-horizontal-(?:large|small)/g), '');
 			};
-			return applyInTree(tree, apply, '*.html');
+			return applyInTree(tree, apply, filePatterns.html);
 		});
 	}
 
@@ -334,7 +335,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					);
 				}
 			};
-			return applyInTree(tree, apply, '*.ts');
+			return applyInTree(tree, apply, filePatterns.ts);
 		});
 	}
 
@@ -378,7 +379,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					tree.overwrite(filePath, replacement);
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -404,7 +405,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					tree.overwrite(filePath, replacement);
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
@@ -418,7 +419,7 @@ export class UpdateV7toV8 implements ObIMigrations {
 					tree.overwrite(filePath, replacement);
 				}
 			};
-			return applyInTree(tree, toApply, '*.ts');
+			return applyInTree(tree, toApply, filePatterns.ts);
 		});
 	}
 
