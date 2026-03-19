@@ -13,6 +13,7 @@
 
 ## Features
 
+- **accessibility-statement**: add a back navigation button to oblique's accessibility statement ([c015e183](https://github.com/oblique-bit/oblique/commit/c015e1831f451959d64608877ab7b7221887a07b))
 - **error-messages:** deprecate `ObErrorMessagesService` ([552cabbd](https://github.com/oblique-bit/oblique/commit/552cabbdc72b095259484678f492719ade9631f3))
 - **error-messages:** add custom validators ([d55be9fd](https://github.com/oblique-bit/oblique/commit/d55be9fdc5ffe9d441fc5c4666dc87bfd06b950e))
 - **material:** allow multiline step label for horizonal `mat-stepper` ([b681ec6b](https://github.com/oblique-bit/oblique/commit/b681ec6bdcd6c4e1f52ba4a01b7fbaf48a54bef4))
