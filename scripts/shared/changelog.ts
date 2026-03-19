@@ -18,6 +18,7 @@ interface Commit {
 	subject: string;
 	breakingChanges: string;
 	hash: string;
+	issues: string;
 }
 
 export class Changelog extends StaticScript {
@@ -54,8 +55,8 @@ export class Changelog extends StaticScript {
 			.split(commitSeparator)
 			.filter(
 				commit =>
-					new RegExp(`^(?:fix|feat)\\(${projectName}(?:/[a-z-]+)?\\)`).test(commit) ||
-					new RegExp(`^(?:fix|feat)\\(${additionalPackageWithScope}\\)`).test(commit)
+					new RegExp(String.raw`^(?:fix|feat)\(${projectName}(?:/[a-z-]+)?\)`).test(commit) ||
+					new RegExp(String.raw`^(?:fix|feat)\(${additionalPackageWithScope}\)`).test(commit)
 			)
 			.map(commit => commit.replace(`${projectName}/`, ''))
 			.map(commit => commit.replace(additionalPackageWithScope, additionalPackageWithScope.split('/').pop()))
@@ -68,20 +69,63 @@ export class Changelog extends StaticScript {
 		commit: string,
 		separator: string
 	): {text: string; type: CommitType; scope: string; breakingChanges: string[]} {
-		const {type, scope, subject, breakingChanges, hash} = Changelog.parseCommit(commit, separator);
+		const {type, scope, subject, breakingChanges, hash, issues} = Changelog.parseCommit(commit, separator);
+
 		return {
-			text: `- **${scope}:** ${subject} ([${hash.substring(0, 8)}](https://github.com/oblique-bit/oblique/commit/${hash}))`,
+			text: this.buildText(scope, subject, issues, hash),
 			type,
 			scope,
 			breakingChanges: Changelog.parseBreakingChanges(breakingChanges, scope),
 		};
 	}
 
+	private static buildText(scope: string, subject: string, issues: string, hash: string): string {
+		const sortedIssues = issues ? this.sortIssues(issues) : [];
+		const issueWithLinks = this.addGitHubIssueLinks(sortedIssues);
+		const ticketsString = issueWithLinks.join(', ');
+		const refs = [`[${hash.substring(0, 8)}](https://github.com/oblique-bit/oblique/commit/${hash})`];
+		if (ticketsString) {
+			refs.push(ticketsString);
+		}
+
+		return `- **${scope}:** ${subject} (${refs.join(', ')})`;
+	}
+
+	private static sortIssues(issues: string): string[] {
+		// eslint-disable-next-line @typescript-eslint/naming-convention
+		const order = {OUI: 1, GitHub: 2, TPEFD: 3};
+		return issues
+			.replace(/\s/g, '')
+			.split(',')
+			.sort((aText, bText) => {
+				const cleanedUpA = aText.replace(/[^a-zA-Z]/g, '');
+				const cleanedUpB = bText.replace(/[^a-zA-Z]/g, '');
+				// Fallback in case we get a ticket not in the order list
+				if (!order[cleanedUpA]) {
+					return order[cleanedUpB] - 4;
+				}
+				if (!order[cleanedUpB]) {
+					return order[cleanedUpA] - 4;
+				}
+				return order[cleanedUpA] - order[cleanedUpB];
+			});
+	}
+
+	private static addGitHubIssueLinks(issues: string[]): string[] {
+		issues.forEach((issue, index) => {
+			if (issue.includes('GitHub')) {
+				const issueNumber = issue.replace(/[^\d]/g, '');
+				issues[index] = `[${issue}](https://github.com/oblique-bit/oblique/issues/${issueNumber})`;
+			}
+		});
+		return issues;
+	}
+
 	private static parseCommit(commit: string, separator: string): Commit {
-		const {type, scope, subject, breakingChanges, hash} = new RegExp(
-			`(?<type>\\w+)\\((?<scope>[\\w-]+)\\): (?<subject>[^${separator}]*)${separator}.*?(?:BREAKING CHANGE:(?<breakingChanges>[^${separator}]*))?${separator}(?<hash>\\w*)`
+		const {type, scope, subject, breakingChanges, hash, issues} = new RegExp(
+			String.raw`(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>[^${separator}]*)${separator}(?<issues>[^${separator}]*\s?\w*?-\d*,?\s?)*.*?(?:BREAKING CHANGE:(?<breakingChanges>[^${separator}]*))?${separator}(?<hash>\w*)`
 		).exec(commit).groups;
-		return {type, scope, subject, breakingChanges, hash} as Commit;
+		return {type, scope, subject, breakingChanges, hash, issues} as Commit;
 	}
 
 	private static parseBreakingChanges(breakingChanges: string, scope: string): string[] {
