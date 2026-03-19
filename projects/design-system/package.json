@@ -1,13 +1,14 @@
 {
   "name": "@oblique/design-system",
   "version": "15.4.0",
+  "type": "module",
   "scripts": {
-    "lint": "ts-node scripts/lint.ts",
-    "format": "ts-node scripts/lint.ts --fix",
+    "lint": "tsx scripts/lint.ts",
+    "format": "tsx scripts/lint.ts --fix",
     "test": "cd ../.. && ng test design-system",
     "test-ci": "cd ../.. && ng run design-system:test:ci",
-    "build": "ng build design-system && ts-node scripts/post-build.ts",
-    "release": "ts-node scripts/release.ts",
+    "build": "ng build design-system && tsx scripts/post-build.ts",
+    "release": "tsx scripts/release.ts",
     "extract-tokens": "node scripts/extract-tokens.mjs"
   },
   "peerDependencies": {
