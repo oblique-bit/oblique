@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Inject, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation, inject} from '@angular/core';
 import {WINDOW} from '../utilities';
 import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
@@ -28,11 +28,11 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 	public variant: Record<string, string> = {};
 
 	private readonly unsubscribe = new Subject<void>();
+	private readonly window = inject(WINDOW);
 
 	constructor(
 		private readonly notificationService: ObNotificationService,
-		private readonly changeDetectorRef: ChangeDetectorRef,
-		@Inject(WINDOW) private readonly window: Window
+		private readonly changeDetectorRef: ChangeDetectorRef
 	) {}
 
 	ngOnInit(): void {
