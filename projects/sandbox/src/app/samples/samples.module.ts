@@ -85,6 +85,10 @@ import {ServiceNavigationSampleComponent} from './service-navigation/service-nav
 import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
 import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
+import {MasterLayoutHeaderSampleComponent} from './master-layout/master-layout-header-sample/master-layout-header-sample.component';
+import {MasterLayoutFooterSampleComponent} from './master-layout/master-layout-footer-sample/master-layout-footer-sample.component';
+import {MasterLayoutLayoutSampleComponent} from './master-layout/master-layout-layout-sample/master-layout-layout-sample.component';
+import {MasterLayoutNavigationSampleComponent} from './master-layout/master-layout-navigation-sample/master-layout-navigation-sample.component';
 
 @NgModule({
 	imports: [
@@ -132,6 +136,10 @@ import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.
 		RouterModule,
 		SamplesRoutingModule,
 		TranslateModule,
+		MasterLayoutHeaderSampleComponent,
+		MasterLayoutFooterSampleComponent,
+		MasterLayoutLayoutSampleComponent,
+		MasterLayoutNavigationSampleComponent,
 	],
 	declarations: [
 		AlertSampleComponent,
