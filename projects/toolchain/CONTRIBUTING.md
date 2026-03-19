@@ -13,6 +13,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for details about how to contribute
 | -------------- | ------------------------------------------- |
 | **linting**    | For changes to any of the linting solutions |
 | **logger**     | For changes to the logger                   |
+| **exec**       | For changes to the exec functions           |
 | **schematics** | For changes to any Schematics               |
 
 ## <a name="scripts"></a> Scripts
