@@ -9,84 +9,154 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "focus": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "pressed": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "selected": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
-                  "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
+                  "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_flipped}",
-                  "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links."
+                  "$description": "For navigation. fg does not change, only the indicator (other token). No use in buttons and text-links.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "visited": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_low.inversity_normal}",
-                  "$description": "For text-links. No use in buttons."
+                  "$description": "For text-links. No use in buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_visited.contrast_low.inversity_flipped}",
-                  "$description": "For text-links. No use in buttons."
+                  "$description": "For text-links. No use in buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "disabled": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons."
+                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Used in text-links, secondary and tertiary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               }
             },
@@ -95,84 +165,154 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}",
-                  "$description": "Background for primary buttons."
+                  "$description": "Background for primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_low.inversity_flipped}",
-                  "$description": "Background for primary buttons."
+                  "$description": "Background for primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}",
-                  "$description": "Background for primary buttons."
+                  "$description": "Background for primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_flipped}",
-                  "$description": "Background for primary buttons."
+                  "$description": "Background for primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "focus": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
-                  "$description": "Background for primary buttons."
+                  "$description": "Background for primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_flipped}",
-                  "$description": "Background for primary buttons."
+                  "$description": "Background for primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "pressed": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}",
-                  "$description": "Background for primary buttons."
+                  "$description": "Background for primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_high.inversity_flipped}",
-                  "$description": "Background for primary buttons."
+                  "$description": "Background for primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "selected": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_low.inversity_normal}",
-                  "$description": "For navigation."
+                  "$description": "For navigation.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_low.inversity_flipped}",
-                  "$description": "For navigation."
+                  "$description": "For navigation.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "visited": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.neutral.no_color}",
-                  "$description": "No use. For consistency only. Text-links need no bg color."
+                  "$description": "No use. For consistency only. Text-links need no bg color.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.neutral.no_color}",
-                  "$description": "No use. For consistency only. Text-links need no bg color."
+                  "$description": "No use. For consistency only. Text-links need no bg color.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               },
               "disabled": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_normal}",
-                  "$description": "Used for fill in primary buttons."
+                  "$description": "Used for fill in primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_flipped}",
-                  "$description": "Used for fill in primary buttons."
+                  "$description": "Used for fill in primary buttons.",
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  }
                 }
               }
             }

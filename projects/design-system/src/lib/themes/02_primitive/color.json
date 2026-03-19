@@ -6,61 +6,111 @@
           "50": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#ffedee"
+            "$value": "#ffedee",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fae1e2"
+            "$value": "#fae1e2",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#ffccce"
+            "$value": "#ffccce",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fa9da1"
+            "$value": "#fa9da1",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fc656b"
+            "$value": "#fc656b",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#e53940"
+            "$value": "#e53940",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#d8232a"
+            "$value": "#d8232a",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#bf1f25"
+            "$value": "#bf1f25",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#99191e"
+            "$value": "#99191e",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#801519"
+            "$value": "#801519",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "cobalt": {
@@ -68,61 +118,111 @@
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#f0f4f7"
+            "$value": "#f0f4f7",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#dfe4e9"
+            "$value": "#dfe4e9",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#acb4bd"
+            "$value": "#acb4bd",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#828e9a"
+            "$value": "#828e9a",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#596978"
+            "$value": "#596978",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#46596b"
+            "$value": "#46596b",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#2f4356"
+            "$value": "#2f4356",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#263645"
+            "$value": "#263645",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#1c2834"
+            "$value": "#1c2834",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#131b22"
+            "$value": "#131b22",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "basic": {
@@ -130,19 +230,34 @@
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#ffffff"
+            "$value": "#ffffff",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "bundesrot": {
             "parent": "Primitives/Colors",
             "oldValue": "#ff0000",
             "$type": "color",
             "$value": "#ff0000",
-            "$description": "The color provided by Federal Chancellery."
+            "$description": "The color provided by Federal Chancellery.",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "transparent": {
             "$type": "color",
             "$value": "transparent",
-            "$description": "Fully transparent color. CSS 'transparent' keyword for optimal browser compatibility and semantic clarity."
+            "$description": "Fully transparent color. CSS 'transparent' keyword for optimal browser compatibility and semantic clarity.",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "orange": {
@@ -150,61 +265,111 @@
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fff7ed"
+            "$value": "#fff7ed",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#ffedd5"
+            "$value": "#ffedd5",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fed7aa"
+            "$value": "#fed7aa",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fdba74"
+            "$value": "#fdba74",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fb923c"
+            "$value": "#fb923c",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#f97316"
+            "$value": "#f97316",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#ea580c"
+            "$value": "#ea580c",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#c2410c"
+            "$value": "#c2410c",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#9a3412"
+            "$value": "#9a3412",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#7c2d12"
+            "$value": "#7c2d12",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "yellow": {
@@ -212,61 +377,111 @@
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fffbeb"
+            "$value": "#fffbeb",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fef3c7"
+            "$value": "#fef3c7",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fde68a"
+            "$value": "#fde68a",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fcd34d"
+            "$value": "#fcd34d",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fbbf24"
+            "$value": "#fbbf24",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#f59e0b"
+            "$value": "#f59e0b",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#d97706"
+            "$value": "#d97706",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#b45309"
+            "$value": "#b45309",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#92400e"
+            "$value": "#92400e",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#78350f"
+            "$value": "#78350f",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "green": {
@@ -274,113 +489,213 @@
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#ecfdf5"
+            "$value": "#ecfdf5",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#d1fae5"
+            "$value": "#d1fae5",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#a7f3d0"
+            "$value": "#a7f3d0",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#6ee7b7"
+            "$value": "#6ee7b7",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#34d399"
+            "$value": "#34d399",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#10b981"
+            "$value": "#10b981",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#059669"
+            "$value": "#059669",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#047857"
+            "$value": "#047857",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#065f46"
+            "$value": "#065f46",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#064e3b"
+            "$value": "#064e3b",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "steelblue": {
           "50": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#F3F4F5"
+            "$value": "#F3F4F5",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#D3DEE9"
+            "$value": "#D3DEE9",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#AACAE6"
+            "$value": "#AACAE6",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#6EB8E9"
+            "$value": "#6EB8E9",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#48A4D7"
+            "$value": "#48A4D7",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#2E8FBF"
+            "$value": "#2E8FBF",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#2379A4"
+            "$value": "#2379A4",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#236487"
+            "$value": "#236487",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#255069"
+            "$value": "#255069",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#233C4D"
+            "$value": "#233C4D",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "teal": {
@@ -388,61 +703,111 @@
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#f2fdfc"
+            "$value": "#f2fdfc",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#cbfbf8"
+            "$value": "#cbfbf8",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#98f6f3"
+            "$value": "#98f6f3",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#5de8ea"
+            "$value": "#5de8ea",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#2bced4"
+            "$value": "#2bced4",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#14afb8"
+            "$value": "#14afb8",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#0d8b96"
+            "$value": "#0d8b96",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#0f6b75"
+            "$value": "#0f6b75",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#11575f"
+            "$value": "#11575f",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#13474e"
+            "$value": "#13474e",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "indigo": {
@@ -450,61 +815,111 @@
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#eef2ff"
+            "$value": "#eef2ff",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#e0e7ff"
+            "$value": "#e0e7ff",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#c7d2fe"
+            "$value": "#c7d2fe",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#a5b4fc"
+            "$value": "#a5b4fc",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#818cf8"
+            "$value": "#818cf8",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#6366f1"
+            "$value": "#6366f1",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#4f46e5"
+            "$value": "#4f46e5",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#4338ca"
+            "$value": "#4338ca",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#3730a3"
+            "$value": "#3730a3",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#312e81"
+            "$value": "#312e81",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "purple": {
@@ -512,61 +927,111 @@
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#f5f3ff"
+            "$value": "#f5f3ff",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#ede9fe"
+            "$value": "#ede9fe",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#ddd6fe"
+            "$value": "#ddd6fe",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#c4b5fd"
+            "$value": "#c4b5fd",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#a78bfa"
+            "$value": "#a78bfa",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#8b5cf6"
+            "$value": "#8b5cf6",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#7c3aed"
+            "$value": "#7c3aed",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#6d28d9"
+            "$value": "#6d28d9",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#5b21b6"
+            "$value": "#5b21b6",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#4c1d95"
+            "$value": "#4c1d95",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "pink": {
@@ -574,61 +1039,111 @@
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fdf2f8"
+            "$value": "#fdf2f8",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fce7f3"
+            "$value": "#fce7f3",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#fbcfe8"
+            "$value": "#fbcfe8",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#f9a8d4"
+            "$value": "#f9a8d4",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#f472b6"
+            "$value": "#f472b6",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#ec4899"
+            "$value": "#ec4899",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#db2777"
+            "$value": "#db2777",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#be185d"
+            "$value": "#be185d",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#9d174d"
+            "$value": "#9d174d",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
-            "$value": "#831843"
+            "$value": "#831843",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         },
         "cobalt_alpha": {
@@ -641,6 +1156,9 @@
                   "value": "0.05",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -655,6 +1173,9 @@
                   "value": "0.1",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -669,6 +1190,9 @@
                   "value": "0.2",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -683,6 +1207,9 @@
                   "value": "0.3",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -697,6 +1224,9 @@
                   "value": "0.4",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -711,6 +1241,9 @@
                   "value": "0.5",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -725,6 +1258,9 @@
                   "value": "0.6",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -739,6 +1275,9 @@
                   "value": "0.7",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -753,6 +1292,9 @@
                   "value": "0.8",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -767,6 +1309,9 @@
                   "value": "0.9",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -783,6 +1328,9 @@
                   "value": "0.05",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -797,6 +1345,9 @@
                   "value": "0.1",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -811,6 +1362,9 @@
                   "value": "0.2",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -825,6 +1379,9 @@
                   "value": "0.3",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -839,6 +1396,9 @@
                   "value": "0.4",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -853,6 +1413,9 @@
                   "value": "0.5",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -867,6 +1430,9 @@
                   "value": "0.6",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -881,6 +1447,9 @@
                   "value": "0.7",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -895,6 +1464,9 @@
                   "value": "0.8",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -909,6 +1481,9 @@
                   "value": "0.9",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -925,6 +1500,9 @@
                   "value": "0.2",
                   "space": "srgb"
                 }
+              },
+              "ob.figma": {
+                "semanticAssigned": true
               }
             },
             "$type": "color",
@@ -936,52 +1514,102 @@
           "50": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#EFF6FF"
+            "$value": "#EFF6FF",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#DBEAFE"
+            "$value": "#DBEAFE",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#bfdbfe"
+            "$value": "#bfdbfe",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#93c5fd"
+            "$value": "#93c5fd",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#60a5fa"
+            "$value": "#60a5fa",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#3b82f6"
+            "$value": "#3b82f6",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#2563EB"
+            "$value": "#2563EB",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#1D4ED8"
+            "$value": "#1D4ED8",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#1E40AF"
+            "$value": "#1E40AF",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
-            "$value": "#1E3A8A"
+            "$value": "#1E3A8A",
+            "$extensions": {
+              "ob.figma": {
+                "semanticAssigned": true
+              }
+            }
           }
         }
       }
