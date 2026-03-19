@@ -1,3 +1,14 @@
+# [15.1.2](https://github.com/oblique-bit/oblique/compare/15.1.1...15.1.2) (2026-03-19)
+
+## Bug Fixes
+
+- **breadcrumb:** respect `hasLanguageInUrl` ([553647d6](https://github.com/oblique-bit/oblique/commit/553647d6823ccdad7c178daba48467b60e904f72), OUI-4173)
+- **master-layout:** respect `hasLanguageInUrl` for skip links ([9d19d636](https://github.com/oblique-bit/oblique/commit/9d19d636e2eab99bd0404149df75f1d8e66648d0), OUI-4173)
+- **nav-tree:** respect `hasLanguageInUrl` ([da86db60](https://github.com/oblique-bit/oblique/commit/da86db60b3c8dd41cd664d8b556232171b03d5c0), OUI-4173)
+- **schematics:** `ng-update` disable zoneless in tests if async testing is used ([5695972f](https://github.com/oblique-bit/oblique/commit/5695972fb4e33be873be1f877c9f94be8e8a010a), OUI-4350)
+- **schematics:** improve migration schematics performance by non-greedy property search ([f4cb35ee](https://github.com/oblique-bit/oblique/commit/f4cb35eea3560d0d3dc807e74a8dcc47ad16eb15), OUI-4355)
+- **unknown-route:** respect `hasLanguageInUrl` ([e659c16f](https://github.com/oblique-bit/oblique/commit/e659c16f19876a3d9f54e7b56b1d1240c62d58c2), OUI-4173)
+
 # [15.1.1](https://github.com/oblique-bit/oblique/compare/15.1.0...15.1.1) (2026-03-09)
 
 ## Bug Fixes

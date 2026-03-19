@@ -1,3 +1,9 @@
+# [15.1.2](https://github.com/oblique-bit/oblique/compare/15.1.1...15.1.2) (2026-03-19)
+
+## Bug Fixes
+
+- **update:** skip update for @angular/flex-layout dependency ([65dece35](https://github.com/oblique-bit/oblique/commit/65dece3512d53ad7dbebb24c2f926cd3a578fe1c), OUI-4344)
+
 # [15.0.3](https://github.com/oblique-bit/oblique/compare/15.0.2...15.0.3) (2026-03-03)
 
 ## Bug Fixes
