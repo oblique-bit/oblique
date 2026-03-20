@@ -1,4 +1,4 @@
-import {Directive, Inject} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {ObOffCanvasService} from './off-canvas.service';
 import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 
@@ -13,10 +13,9 @@ import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 	exportAs: 'obOffCanvasToggle',
 })
 export class ObOffCanvasToggleDirective {
-	constructor(
-		private readonly offCanvas: ObOffCanvasService,
-		@Inject(WINDOW) private readonly window: Window
-	) {}
+	private readonly window = inject(WINDOW);
+
+	constructor(private readonly offCanvas: ObOffCanvasService) {}
 
 	toggle(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {

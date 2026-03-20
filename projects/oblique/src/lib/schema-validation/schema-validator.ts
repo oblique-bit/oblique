@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, Inject, Injector} from '@angular/core';
+import {AfterViewInit, Directive, Injector, inject} from '@angular/core';
 import {NG_VALIDATORS, NgControl, UntypedFormControl, ValidationErrors, Validator} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {WINDOW} from '../utilities';
@@ -10,11 +10,11 @@ import {WINDOW} from '../utilities';
 })
 export class ObSchemaValidateDirective implements AfterViewInit, Validator {
 	private propertyName: string;
+	private readonly window = inject(WINDOW);
 
 	constructor(
 		private readonly schemaDirective: ObSchemaValidationDirective,
-		private readonly injector: Injector,
-		@Inject(WINDOW) private readonly window: Window
+		private readonly injector: Injector
 	) {}
 
 	ngAfterViewInit(): void {

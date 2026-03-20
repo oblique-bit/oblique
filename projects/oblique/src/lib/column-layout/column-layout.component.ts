@@ -4,7 +4,6 @@ import {
 	Component,
 	DoCheck,
 	ElementRef,
-	Inject,
 	Input,
 	OnChanges,
 	OnDestroy,
@@ -13,6 +12,7 @@ import {
 	ViewChild,
 	ViewChildren,
 	ViewEncapsulation,
+	inject,
 } from '@angular/core';
 import {combineLatestWith, delay, distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
@@ -48,13 +48,13 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 
 	private readonly unsubscribe = new Subject<void>();
 	private readonly dimensionChange = new Subject<{top: number; height: number; windowHeight: number}>();
+	private readonly window = inject(WINDOW);
 	private observer: ResizeObserver;
 
 	constructor(
 		private readonly el: ElementRef<HTMLElement>,
 		private readonly renderer: Renderer2,
-		private readonly changeDetectorRef: ChangeDetectorRef,
-		@Inject(WINDOW) private readonly window: Window
+		private readonly changeDetectorRef: ChangeDetectorRef
 	) {}
 
 	ngOnChanges(): void {
