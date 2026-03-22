@@ -708,7 +708,7 @@ export default [
 			 * Rule: @angular-eslint/component-class-suffix (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-class-suffix.md)
 			 * Reason for disabling: as of angular 20, this is no longer recommended by the Angular Team
 			 */
-			'@angular-eslint/component-class-suffix': 'error',
+			'@angular-eslint/component-class-suffix': 'off',
 			/**
 			 * Rule: @angular-eslint/component-max-inline-declarations (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-max-inline-declarations.md)
 			 * Reason for {template: 0, styles: 0, animations: 0}: Templates, styles and animations should be external
