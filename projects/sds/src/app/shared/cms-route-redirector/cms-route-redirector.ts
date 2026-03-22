@@ -1,6 +1,7 @@
 import {Injectable, inject} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
-import {type Observable, map, withLatestFrom} from 'rxjs';
+import {WINDOW} from '@oblique/oblique';
+import {type Observable, Subject, map, merge, withLatestFrom} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import type {CMSPageShort, CMSPages} from '../../cms/models/cms-page.model';
 import {humanizeList} from '../humanize/humanize';
@@ -10,6 +11,8 @@ import {humanizeList} from '../humanize/humanize';
 })
 export class CmsRouteRedirector {
 	private readonly router = inject(Router);
+	private readonly window = inject(WINDOW);
+	private readonly navigation$ = new Subject<string>();
 	private readonly route$ = this.router.events.pipe(
 		filter(event => event instanceof NavigationEnd),
 		map(event => event.url)
@@ -17,17 +20,31 @@ export class CmsRouteRedirector {
 
 	redirectOnVersionChange(pages$: Observable<CMSPages>, version$: Observable<number>): void {
 		const pagesShort$ = this.mapToPageShort(pages$);
-		version$
-			.pipe(
+		merge(
+			version$.pipe(
 				withLatestFrom(pagesShort$, this.route$),
-				map(([version, pages, route]) => this.createRouteSegments(route, version, pages))
+				map(([version, pages, route]) => ({route, version, pages}))
+			),
+			this.navigation$.pipe(
+				withLatestFrom(pagesShort$, version$),
+				map(([route, pages, version]) => ({route, version, pages}))
 			)
+		)
+			.pipe(map(({route, version, pages}) => this.createRouteSegments(route, version, pages)))
 			.subscribe(routeSegments => {
 				void this.router.navigate(routeSegments, {
 					queryParamsHandling: 'preserve',
 					preserveFragment: true,
 				});
 			});
+	}
+
+	navigate(origin: string, route: string): void {
+		if (origin === this.window.location.origin) {
+			this.navigation$.next(route);
+		} else {
+			this.window.open(`${origin}${route}`, '_blank', 'noopener,noreferrer');
+		}
 	}
 
 	private mapToPageShort(pages$: Observable<CMSPages>): Observable<CMSPageShort[]> {

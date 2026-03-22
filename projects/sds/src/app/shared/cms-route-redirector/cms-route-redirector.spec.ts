@@ -1,9 +1,10 @@
 import {TestBed} from '@angular/core/testing';
-import {Router, provideRouter} from '@angular/router';
+import {NavigationEnd, Router, provideRouter} from '@angular/router';
 import {Component} from '@angular/core';
 import {RouterTestingHarness} from '@angular/router/testing';
 import {WINDOW} from '@oblique/oblique';
-import {type Observable, Subject, of} from 'rxjs';
+import {type Observable, Subject, firstValueFrom, of} from 'rxjs';
+import {filter} from 'rxjs/operators';
 import type {CMSPages} from '../../cms/models/cms-page.model';
 import {CmsRouteRedirector} from './cms-route-redirector';
 
@@ -177,6 +178,34 @@ describe(CmsRouteRedirector.name, () => {
 				} else {
 					expect(console.error).not.toHaveBeenCalledWith();
 				}
+			});
+		});
+	});
+
+	describe(CmsRouteRedirector.prototype.navigate.name, () => {
+		test(`no navigation occurs if called before "${CmsRouteRedirector.prototype.redirectOnVersionChange.name}"`, () => {
+			service.navigate('http://localhost', '/path');
+			expect(router.navigate).not.toHaveBeenCalled();
+			expect(mockWindow.open).not.toHaveBeenCalled();
+		});
+
+		describe(`after "${CmsRouteRedirector.prototype.redirectOnVersionChange.name}"`, () => {
+			beforeEach(() => {
+				service.redirectOnVersionChange(pages$, version$);
+				version$.next(2);
+			});
+
+			test('internal url', async () => {
+				service.navigate('http://localhost', '/category/regular/tab');
+				await firstValueFrom(router.events.pipe(filter(event => event instanceof NavigationEnd)));
+				expect(router.url).toBe('/category/regular/tab');
+				expect(mockWindow.open).not.toHaveBeenCalledWith();
+			});
+
+			test('external url', () => {
+				service.navigate('http://external', '/path');
+				expect(router.navigate).not.toHaveBeenCalled();
+				expect(mockWindow.open).toHaveBeenCalledWith('http://external/path', '_blank', 'noopener,noreferrer');
 			});
 		});
 	});
