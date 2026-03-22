@@ -33,7 +33,7 @@ describe(TabbedPageComponent.name, () => {
 			jest.spyOn(window, 'open');
 		});
 		describe('target is not an anchor', () => {
-			const event = {target: document.createElement('div'), preventDefault: jest.fn()} as unknown as MouseEvent;
+			const event = {target: document.createElement('div'), preventDefault: jest.fn()} as unknown as PointerEvent;
 			beforeEach(() => {
 				component.onClick(event);
 			});
@@ -49,12 +49,12 @@ describe(TabbedPageComponent.name, () => {
 		});
 
 		describe('target is an internal link', () => {
-			let event: MouseEvent;
+			let event: PointerEvent;
 			beforeEach(() => {
 				const anchor = document.createElement('a');
 				anchor.href = `${window.location.origin}/about`;
 				anchor.hash = '';
-				event = {target: anchor, preventDefault: jest.fn()} as unknown as MouseEvent;
+				event = {target: anchor, preventDefault: jest.fn()} as unknown as PointerEvent;
 				component.onClick(event);
 			});
 			it('should prevent default', () => {
@@ -69,11 +69,11 @@ describe(TabbedPageComponent.name, () => {
 		});
 
 		describe('target is an external link', () => {
-			let event: MouseEvent;
+			let event: PointerEvent;
 			beforeEach(() => {
 				const anchor = document.createElement('a');
 				anchor.href = 'https://external.com';
-				event = {target: anchor, preventDefault: jest.fn()} as unknown as MouseEvent;
+				event = {target: anchor, preventDefault: jest.fn()} as unknown as PointerEvent;
 				component.onClick(event);
 			});
 			it('should prevent default', () => {

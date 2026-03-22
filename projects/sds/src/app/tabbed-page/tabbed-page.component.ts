@@ -64,7 +64,7 @@ export class TabbedPageComponent {
 		this.cmsData$ = this.buildCmsDataObservable(validPageId$);
 	}
 
-	onClick(event: MouseEvent): void {
+	onClick(event: PointerEvent): void {
 		const {target} = event;
 		if (!(target instanceof HTMLAnchorElement)) {
 			return;
