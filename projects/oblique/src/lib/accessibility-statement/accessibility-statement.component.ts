@@ -55,9 +55,7 @@ export class AccessibilityStatementComponent {
 		void this.router.navigateByUrl(this.masterLayoutService.homePageRoute);
 	}
 
-	// eslint-disable-next-line @typescript-eslint/consistent-return
 	private getConformity(conformity: ObConformity): string {
-		// eslint-disable-next-line default-case
 		switch (conformity) {
 			case 'full':
 				return 'i18n.oblique.accessibility-statement.statement.full';

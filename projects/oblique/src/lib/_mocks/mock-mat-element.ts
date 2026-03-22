@@ -10,7 +10,6 @@ import {Component} from '@angular/core';
 	standalone: true,
 	template: ``,
 })
-// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ObMockMatElement implements ControlValueAccessor {
 	registerOnChange(fn: any): void {}
 
