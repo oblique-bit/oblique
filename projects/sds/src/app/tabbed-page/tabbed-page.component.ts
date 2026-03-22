@@ -19,6 +19,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {VersionService} from '../shared/version/version.service';
 import {UiUxComponent} from '../ui-ux/ui-ux.component';
 import {IconsExampleIconsGalleryPreviewComponent} from '../code-examples/code-examples/icons/previews/icons-gallery/icons-example-icons-gallery-preview.component';
+import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redirector';
 
 @Component({
 	selector: 'app-tabbed-page',
@@ -53,6 +54,7 @@ export class TabbedPageComponent {
 	private isNull = true;
 	private readonly serializer = inject(UrlSerializer);
 	private readonly versionService = inject(VersionService);
+	private readonly cmsRouteRedirector = inject(CmsRouteRedirector);
 	private readonly galleryPageId = 43;
 
 	constructor() {
@@ -70,11 +72,7 @@ export class TabbedPageComponent {
 			return;
 		}
 		event.preventDefault();
-		if (target.origin === window.location.origin) {
-			void this.router.navigate([target.pathname]);
-		} else {
-			window.open(target.href, '_blank', 'noopener,noreferrer');
-		}
+		this.cmsRouteRedirector.navigate(target.origin, target.pathname);
 	}
 
 	handleTabChanged(tabName: string): void {
