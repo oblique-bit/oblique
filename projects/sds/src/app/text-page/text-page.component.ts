@@ -41,7 +41,7 @@ export class TextPageComponent implements AfterViewChecked {
 		this.handleFragments();
 	}
 
-	onClick(event: MouseEvent): void {
+	onClick(event: PointerEvent): void {
 		const {target} = event;
 		if (!(target instanceof HTMLAnchorElement)) {
 			return;
