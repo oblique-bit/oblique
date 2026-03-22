@@ -9,8 +9,6 @@ export default [
 					allow: ['info', 'warn', 'error', 'time', 'timeEnd'],
 				},
 			],
-			'@typescript-eslint/consistent-return': 'off', // covered by noImplicitReturns
-			'default-case': 'off', // covered by noImplicitReturns
 
 			// rules that are not respected
 			// this rule would need a massive refactoring as the types are not currently safe
