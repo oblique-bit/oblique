@@ -10,6 +10,13 @@ Log.start('Checking linting rules');
 checkRules();
 Log.success('All linting rules are correct');
 
+type RuleState = 'off' | 'warn' | 'error';
+type RuleEntry = RuleState | [RuleState, ...unknown[]];
+interface EslintConfig {
+	files: string[];
+	rules: Record<string, RuleEntry>;
+}
+
 export function checkRules(): void {
 	const obliqueRules = getObliqueRules();
 	const allRules = getAllRules();
@@ -20,16 +27,49 @@ export function checkRules(): void {
 
 function getObliqueRules(): {all: string[]; disabled: string[]} {
 	Log.info('Loading Oblique linting rules');
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access -- because eslintConfigOblique is not typed
-	const rules: Record<string, string> = eslintConfigOblique[0].rules;
+	if (!isESLintConfigArray(eslintConfigOblique)) {
+		throw new Error('Invalid Eslint config');
+	}
+	const rules = eslintConfigOblique[0].rules;
 
 	return {
 		all: Object.keys(rules),
 		disabled: Object.entries(rules)
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars -- destructuring imposes to define the variable even if not used
-			.filter(([name, state]) => state === 'off')
+			.filter(([, state]) => state === 'off')
 			.map(([name]) => name),
 	};
+}
+
+function isESLintConfigArray(config: unknown): config is EslintConfig[] {
+	return Array.isArray(config) && config.every(item => isEsLintConfig(item));
+}
+
+function isEsLintConfig(item: unknown): item is {rules: Record<string, RuleEntry>} {
+	return (
+		typeof item === 'object' &&
+		item !== null &&
+		!Array.isArray(item) &&
+		'files' in item &&
+		isEslintFiles(item.files) &&
+		'rules' in item &&
+		isEslintRules(item.rules)
+	);
+}
+
+function isEslintFiles(files: unknown): files is string[] {
+	return Array.isArray(files) && files.length > 0 && files.every(file => typeof file === 'string');
+}
+
+function isEslintRules(rules: unknown): rules is Record<string, RuleEntry> {
+	return typeof rules === 'object' && rules !== null && Object.values(rules).every(rule => isEslintRule(rule));
+}
+
+function isEslintRule(rule: unknown): rule is RuleEntry {
+	return isEslintRuleState(rule) || (Array.isArray(rule) && rule.length > 0 && isEslintRuleState(rule[0]));
+}
+
+function isEslintRuleState(state: unknown): state is RuleState {
+	return typeof state === 'string' && ['off', 'error', 'warn'].includes(state);
 }
 
 function getAllRules(): {all: string[]; disabled: string[]} {
