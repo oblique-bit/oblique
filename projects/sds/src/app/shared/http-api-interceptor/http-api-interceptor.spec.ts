@@ -1,5 +1,4 @@
-// eslint-disable-next-line sort-imports
-import {HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
 import {ObSpinnerService} from '@oblique/oblique';

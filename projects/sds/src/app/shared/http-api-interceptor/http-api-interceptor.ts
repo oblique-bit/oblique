@@ -13,10 +13,8 @@ export class HttpApiInterceptor implements HttpInterceptor {
 		this.activateSpinner(request.url);
 
 		return next.handle(request).pipe(
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-			catchError(error => throwError({error, handled: false})),
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-			catchError(error => throwError(error.error)),
+			catchError((error: unknown) => throwError({error, handled: false})),
+			catchError((error: {error: unknown}) => throwError(error.error)),
 			finalize(() => {
 				this.deactivateSpinner(request.url);
 			})
