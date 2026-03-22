@@ -53,7 +53,11 @@ export default [
 			'consistent-this': 'error',
 			'constructor-super': 'error',
 			curly: 'error',
-			'default-case': 'error',
+			/**
+			 * Rule: default-case (https://eslint.org/docs/latest/rules/default-case)
+			 * Reason for disabling: Covered by @typescript-eslint/switch-exhaustiveness-check and TypeScript noImplicitReturns
+			 */
+			'default-case': 'off',
 			'default-case-last': 'error',
 			/**
 			 * Rule: default-param-last (https://eslint.org/docs/latest/rules/default-param-last)
@@ -457,7 +461,11 @@ export default [
 			'@typescript-eslint/class-methods-use-this': 'off',
 			'@typescript-eslint/consistent-generic-constructors': 'error',
 			'@typescript-eslint/consistent-indexed-object-style': 'error',
-			'@typescript-eslint/consistent-return': 'error',
+			/**
+			 * Rule: @typescript-eslint/consistent-return (https://typescript-eslint.io/rules/consistent-return)
+			 * Reason for disabling: covered by TypeScript noImplicitReturns
+			 */
+			'@typescript-eslint/consistent-return': 'off',
 			'@typescript-eslint/consistent-type-assertions': 'error',
 			'@typescript-eslint/consistent-type-definitions': 'error',
 			'@typescript-eslint/consistent-type-exports': 'error',
