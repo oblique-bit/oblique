@@ -66,7 +66,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		fragment: 'ignored',
 		matrixParams: 'ignored',
 	};
-	private static readonly buttonWidth = 30;
+	private static readonly buttonWidth = 40; // $ob-navigation-scrollable-padding
 	private readonly router = inject(Router);
 	private readonly masterLayout = inject(ObMasterLayoutService);
 	private readonly config = inject(ObMasterLayoutConfig);
