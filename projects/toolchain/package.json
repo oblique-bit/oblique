@@ -31,6 +31,10 @@
     "./logger/mock": {
       "types": "./logger/mock/index.d.ts",
       "default": "./logger/mock/index.js"
+    },
+    "./exec": {
+      "types": "./process/index.d.ts",
+      "default": "./process/index.js"
     }
   },
   "schematics": "./schematics/collection.json",
