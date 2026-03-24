@@ -24,10 +24,10 @@ export class TranslationsCodeExamplesComponent extends CodeExamples {
 			idParts: ['files'],
 			title: 'Oblique translation files',
 			snippets: [
-				this.getJsonSnippet('node_modules/@oblique/oblique/src/assets/i18n', 'oblique-de.json', 'oblique-de.json'),
-				this.getJsonSnippet('node_modules/@oblique/oblique/src/assets/i18n', 'oblique-en.json', 'oblique-en.json'),
-				this.getJsonSnippet('node_modules/@oblique/oblique/src/assets/i18n', 'oblique-fr.json', 'oblique-fr.json'),
-				this.getJsonSnippet('node_modules/@oblique/oblique/src/assets/i18n', 'oblique-it.json', 'oblique-it.json'),
+				this.getJsonSnippet('oblique/src/assets/i18n', 'oblique-de.json', 'oblique-de.json'),
+				this.getJsonSnippet('oblique/src/assets/i18n', 'oblique-en.json', 'oblique-en.json'),
+				this.getJsonSnippet('oblique/src/assets/i18n', 'oblique-fr.json', 'oblique-fr.json'),
+				this.getJsonSnippet('oblique/src/assets/i18n', 'oblique-it.json', 'oblique-it.json'),
 			],
 		},
 	];
