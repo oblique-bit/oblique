@@ -1,0 +1,13 @@
+.spinner-channel {
+	border: 1px solid var(--ob-secondary-300);
+	border-radius: 4px;
+	padding: 16px;
+}
+
+.spinner-channel-active {
+	border-color: var(--ob-primary-500);
+}
+
+.spinner-placeholder {
+	min-height: 64px;
+}
