@@ -35,7 +35,7 @@ function getObliqueRules(): {all: string[]; disabled: string[]} {
 	return {
 		all: Object.keys(rules),
 		disabled: Object.entries(rules)
-			.filter(([, state]) => state === 'off')
+			.filter(([, state]) => (Array.isArray(state) ? state[0] === 'off' : state === 'off'))
 			.map(([name]) => name),
 	};
 }
