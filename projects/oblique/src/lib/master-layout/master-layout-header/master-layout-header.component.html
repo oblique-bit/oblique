@@ -79,6 +79,8 @@
 		</ob-service-navigation>
 	}
 </header>
-<ob-master-layout-navigation [links]="navigation" (linksChanged)="emitNavigation($event)">
-	<ng-content select="[obNavigation]" />
-</ob-master-layout-navigation>
+@if (hasMainNavigation) {
+	<ob-master-layout-navigation [links]="navigation" (linksChanged)="emitNavigation($event)">
+		<ng-content select="[obNavigation]" />
+	</ob-master-layout-navigation>
+}
