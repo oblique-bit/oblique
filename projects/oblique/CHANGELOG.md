@@ -1,3 +1,14 @@
+# [15.1.3](https://github.com/oblique-bit/oblique/compare/15.1.2...15.1.3) (2026-03-25)
+
+## Bug Fixes
+
+- **column-layout:** resolve 'WINDOW' initialization error ([2e13b89b](https://github.com/oblique-bit/oblique/commit/2e13b89b05d3235298ae344aa3f3ebe6303de6f2), OUI-4395)
+- **global-events:** resolve 'WINDOW' initialization error ([7b4e6336](https://github.com/oblique-bit/oblique/commit/7b4e6336b7e73594aabe30d67195940929debfee), OUI-4395)
+- **http-interceptor:** resolve 'WINDOW' initialization error ([ef58ffeb](https://github.com/oblique-bit/oblique/commit/ef58ffeb8eb82e3daa7547c5c7ad1401240a763b), OUI-4395)
+- **notification:** resolve 'WINDOW' initialization error ([dda80ac2](https://github.com/oblique-bit/oblique/commit/dda80ac256b2ff0fc97b5d5e3ba99f89c079926a), OUI-4395)
+- **off-canvas:** resolve 'WINDOW' initialization error ([9f38a15e](https://github.com/oblique-bit/oblique/commit/9f38a15e45f94bacacd31a9549542343db86a456), OUI-4395)
+- **schema-validation:** resolve 'WINDOW' initialization error ([e3d3d7c3](https://github.com/oblique-bit/oblique/commit/e3d3d7c365f5d480c7bbaa5d95f81ae541a35cbd), OUI-4395)
+
 # [15.1.2](https://github.com/oblique-bit/oblique/compare/15.1.1...15.1.2) (2026-03-19)
 
 ## Bug Fixes

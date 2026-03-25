@@ -1,6 +1,7 @@
-import {waitForAsync} from '@angular/core/testing';
+import {TestBed, waitForAsync} from '@angular/core/testing';
 import {ObOffCanvasToggleDirective} from './off-canvas-toggle.directive';
 import {ObOffCanvasService} from './off-canvas.service';
+import {WINDOW} from '../utilities';
 
 describe('ObOffCanvasToggleDirective', () => {
 	let directive: ObOffCanvasToggleDirective;
@@ -8,7 +9,14 @@ describe('ObOffCanvasToggleDirective', () => {
 
 	beforeEach(waitForAsync(() => {
 		service = {open: false} as ObOffCanvasService;
-		directive = new ObOffCanvasToggleDirective(service, window);
+		TestBed.configureTestingModule({
+			providers: [
+				ObOffCanvasToggleDirective,
+				{provide: ObOffCanvasService, useValue: service},
+				{provide: WINDOW, useValue: window},
+			],
+		});
+		directive = TestBed.inject(ObOffCanvasToggleDirective);
 	}));
 
 	it('should create an instance', () => {

@@ -1,3 +1,9 @@
+# [15.1.3](https://github.com/oblique-bit/oblique/compare/15.1.2...15.1.3) (2026-03-25)
+
+## Bug Fixes
+
+- **code-examples:** do not load code examples from node_modules folder ([c0a4c786](https://github.com/oblique-bit/oblique/commit/c0a4c78657695adccdecb94001883cb2ba4a4c8d), OUI-4405)
+
 # [15.1.0](https://github.com/oblique-bit/oblique/compare/15.0.3...15.1.0) (2026-03-05)
 
 ## Bug Fixes

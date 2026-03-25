@@ -19,14 +19,6 @@ export class CodeExamples {
 
 	private getRequire(directory: string, filePath: string): {default: string} {
 		switch (directory) {
-			case 'node_modules/@oblique/oblique/src/styles/scss/core': {
-				return require(`!!raw-loader!../../../../../node_modules/@oblique/oblique/src/styles/scss/core/${filePath}`);
-			}
-			case 'node_modules/@oblique/oblique/src/styles/scss/core/mixins': {
-				return require(
-					`!!raw-loader!../../../../../node_modules/@oblique/oblique/src/styles/scss/core/mixins/${filePath}`
-				);
-			}
 			case 'code-examples': {
 				const fileContent = require(`!!raw-loader!./${filePath}`) as {default: string};
 				return {default: this.fixPath(filePath.split('.').pop(), fileContent.default ?? '')};
@@ -56,8 +48,8 @@ export class CodeExamples {
 			case 'i18n': {
 				return require(`../../assets/i18n/${filePath}`);
 			}
-			case 'node_modules/@oblique/oblique/src/assets/i18n': {
-				return require(`../../../../../node_modules/@oblique/oblique/src/assets/i18n/${filePath}`);
+			case 'oblique/src/assets/i18n': {
+				return require(`../../../../oblique/src/assets/i18n/${filePath}`);
 			}
 			default: {
 				// adding `.json` tells `require` that the file is a JSON. Otherwise, it tries to load any file type
