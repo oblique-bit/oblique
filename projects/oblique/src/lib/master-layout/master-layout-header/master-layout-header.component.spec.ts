@@ -16,6 +16,7 @@ import {
 import {By} from '@angular/platform-browser';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {TranslateModule} from '@ngx-translate/core';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {RouterModule} from '@angular/router';
 
 describe('ObMasterLayoutHeaderComponent', () => {
@@ -67,6 +68,10 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		});
 
 		describe('properties', () => {
+			it('should have hasMainNavigation enabled by default', () => {
+				expect(component.hasMainNavigation).toBe(true);
+			});
+
 			it('should have a home$ property', () => {
 				expect(component.home$ instanceof Observable).toBe(true);
 			});
@@ -111,6 +116,22 @@ describe('ObMasterLayoutHeaderComponent', () => {
 					});
 					expect(component.serviceNavigationConfig).toEqual({displayApplications: true});
 				});
+			});
+		});
+
+		describe('main navigation', () => {
+			it('should render the main navigation by default', () => {
+				expect(fixture.nativeElement.querySelector('ob-master-layout-navigation')).toBeTruthy();
+			});
+
+			it('should use the main navigation flag from the config', () => {
+				expect(component.hasMainNavigation).toBe(true);
+			});
+
+			it('should react to a change of config via ObMasterLayoutService', () => {
+				TestBed.inject(ObMasterLayoutComponentService).hasMainNavigation = false;
+
+				expect(component.hasMainNavigation).toBe(false);
 			});
 		});
 
@@ -255,6 +276,20 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 		test('navigationChanged emits the given parameter', () => {
 			expect(emittedValue).toEqual([{id: 'id', url: 'url', label: 'label'}]);
+		});
+	});
+
+	describe('with main navigation disabled in the config', () => {
+		beforeEach(() => {
+			const masterLayoutConfig = new ObMockMasterLayoutConfig();
+			masterLayoutConfig.layout.hasMainNavigation = false;
+			TestBed.overrideProvider(ObMasterLayoutConfig, {useValue: masterLayoutConfig});
+			globalSetup();
+		});
+
+		it('should remove the main navigation from the DOM', () => {
+			expect(component.hasMainNavigation).toBe(false);
+			expect(fixture.nativeElement.querySelector('ob-master-layout-navigation')).toBeFalsy();
 		});
 	});
 
