@@ -3,317 +3,315 @@
     "s2": {
       "color": {
         "interaction": {
-          "state": {
-            "fg": {
-              "enabled": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+          "fg": {
+            "enabled": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
                 },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                }
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
               },
-              "hover": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
                 },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                }
-              },
-              "focus": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                }
-              },
-              "pressed": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                }
-              },
-              "selected": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
-                  "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                }
-              },
-              "visited": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
-                  "$description": "For text-links.PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
-                  "$description": "For text-links.PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                }
-              },
-              "disabled": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_normal}",
-                  "$description": "Used in text-links, secondary and tertiary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_flipped}",
-                  "$description": "Used in text-links, secondary and tertiary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                }
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
               }
             },
-            "bg": {
-              "enabled": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
-                  "$description": "Background for primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+            "hover": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
                 },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
-                  "$description": "Background for primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  }
-                }
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
               },
-              "hover": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
-                  "$description": "Background for primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
                 },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
-                  "$description": "Background for primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. Overwrites the overarching muted emphasis mode and uses a saturated color from the default emphasis palette on purpose for scannability and a more distinctive hover effect."
+              }
+            },
+            "focus": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
-                }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
               },
-              "focus": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
-                  "$description": "Background for primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
                 },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
-                  "$description": "Background for primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
+              }
+            },
+            "pressed": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
-                }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
               },
-              "pressed": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
-                  "$description": "Background for primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
                 },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
-                  "$description": "Background for primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
+              }
+            },
+            "selected": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
-                }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
               },
-              "selected": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
-                  "$description": "For navigation.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
                 },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_flipped}",
-                  "$description": "For navigation.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
+                "$description": "PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
+              }
+            },
+            "visited": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
-                }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
+                "$description": "For text-links.PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
               },
-              "visited": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.transparent}",
-                  "$description": "No use. For consistency only. Text-links need no bg color.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
                 },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.transparent}",
-                  "$description": "No use. For consistency only. Text-links need no bg color.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+                "$type": "color",
+                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
+                "$description": "For text-links.PROOF OF CONCEPT: Skipping s2, referencing s1 directly. References the neutral semantic color to ensure the color consistency."
+              }
+            },
+            "disabled": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
-                }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_normal}",
+                "$description": "Used in text-links, secondary and tertiary buttons."
               },
-              "disabled": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_normal}",
-                  "$description": "Used for fill in primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
                 },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_flipped}",
-                  "$description": "Used for fill in primary buttons.",
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_flipped}",
+                "$description": "Used in text-links, secondary and tertiary buttons."
+              }
+            }
+          },
+          "bg": {
+            "enabled": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
                   }
-                }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                "$description": "Background for primary buttons."
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
+                "$description": "Background for primary buttons."
+              }
+            },
+            "hover": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                "$description": "Background for primary buttons."
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
+                "$description": "Background for primary buttons."
+              }
+            },
+            "focus": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
+                "$description": "Background for primary buttons."
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
+                "$description": "Background for primary buttons."
+              }
+            },
+            "pressed": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                "$description": "Background for primary buttons."
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
+                "$description": "Background for primary buttons."
+              }
+            },
+            "selected": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
+                "$description": "For navigation."
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_flipped}",
+                "$description": "For navigation."
+              }
+            },
+            "visited": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.p.color.basic.transparent}",
+                "$description": "No use. For consistency only. Text-links need no bg color."
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.p.color.basic.transparent}",
+                "$description": "No use. For consistency only. Text-links need no bg color."
+              }
+            },
+            "disabled": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_normal}",
+                "$description": "Used for fill in primary buttons."
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_flipped}",
+                "$description": "Used for fill in primary buttons."
               }
             }
           }

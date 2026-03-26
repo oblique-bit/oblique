@@ -339,317 +339,315 @@
           }
         },
         "interaction": {
-          "state": {
-            "fg": {
-              "enabled": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_normal}",
-                  "$description": "Interactive element foreground - enabled state, normal theme"
+          "fg": {
+            "enabled": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
                 },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.enabled.inversity_flipped}",
-                  "$description": "Interactive element foreground - enabled state, flipped theme"
-                }
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.enabled.inversity_normal}",
+                "$description": "Interactive element foreground - enabled state, normal theme"
               },
-              "hover": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.hover.inversity_normal}",
-                  "$description": "Interactive element foreground - hover state, normal theme"
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
                 },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.hover.inversity_flipped}",
-                  "$description": "Interactive element foreground - hover state, flipped theme"
-                }
-              },
-              "focus": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.focus.inversity_normal}",
-                  "$description": "Interactive element foreground - focus state, normal theme"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.focus.inversity_flipped}",
-                  "$description": "Interactive element foreground - focus state, flipped theme"
-                }
-              },
-              "pressed": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.pressed.inversity_normal}",
-                  "$description": "Interactive element foreground - pressed state, normal theme"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.pressed.inversity_flipped}",
-                  "$description": "Interactive element foreground - pressed state, flipped theme"
-                }
-              },
-              "selected": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.selected.inversity_normal}",
-                  "$description": "Interactive element foreground - selected state, normal theme"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.selected.inversity_flipped}",
-                  "$description": "Interactive element foreground - selected state, flipped theme"
-                }
-              },
-              "disabled": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.disabled.inversity_normal}",
-                  "$description": "Interactive element foreground - disabled state, normal theme"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.disabled.inversity_flipped}",
-                  "$description": "Interactive element foreground - disabled state, flipped theme"
-                }
-              },
-              "visited": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.visited.inversity_normal}",
-                  "$description": "Interactive element foreground - visited state, normal theme"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.fg.visited.inversity_flipped}",
-                  "$description": "Interactive element foreground - visited state, flipped theme"
-                }
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.enabled.inversity_flipped}",
+                "$description": "Interactive element foreground - enabled state, flipped theme"
               }
             },
-            "bg": {
-              "enabled": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_normal}",
-                  "$description": "Interactive element background - enabled state, normal theme"
+            "hover": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
                 },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_flipped}",
-                  "$description": "Interactive element background - enabled state, flipped theme"
-                }
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.hover.inversity_normal}",
+                "$description": "Interactive element foreground - hover state, normal theme"
               },
-              "hover": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.hover.inversity_normal}",
-                  "$description": "Interactive element background - hover state, normal theme"
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
                 },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.hover.inversity_flipped}",
-                  "$description": "Interactive element background - hover state, flipped theme"
-                }
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.hover.inversity_flipped}",
+                "$description": "Interactive element foreground - hover state, flipped theme"
+              }
+            },
+            "focus": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.focus.inversity_normal}",
+                "$description": "Interactive element foreground - focus state, normal theme"
               },
-              "focus": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.focus.inversity_normal}",
-                  "$description": "Interactive element background - focus state, normal theme"
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
                 },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.focus.inversity_flipped}",
-                  "$description": "Interactive element background - focus state, flipped theme"
-                }
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.focus.inversity_flipped}",
+                "$description": "Interactive element foreground - focus state, flipped theme"
+              }
+            },
+            "pressed": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.pressed.inversity_normal}",
+                "$description": "Interactive element foreground - pressed state, normal theme"
               },
-              "pressed": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.pressed.inversity_normal}",
-                  "$description": "Interactive element background - pressed state, normal theme"
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
                 },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.pressed.inversity_flipped}",
-                  "$description": "Interactive element background - pressed state, flipped theme"
-                }
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.pressed.inversity_flipped}",
+                "$description": "Interactive element foreground - pressed state, flipped theme"
+              }
+            },
+            "selected": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.selected.inversity_normal}",
+                "$description": "Interactive element foreground - selected state, normal theme"
               },
-              "selected": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.selected.inversity_normal}",
-                  "$description": "Interactive element background - selected state, normal theme"
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
                 },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.selected.inversity_flipped}",
-                  "$description": "Interactive element background - selected state, flipped theme"
-                }
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.selected.inversity_flipped}",
+                "$description": "Interactive element foreground - selected state, flipped theme"
+              }
+            },
+            "disabled": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.disabled.inversity_normal}",
+                "$description": "Interactive element foreground - disabled state, normal theme"
               },
-              "visited": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.visited.inversity_normal}",
-                  "$description": "Interactive element background - visited state, normal theme"
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
                 },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.visited.inversity_flipped}",
-                  "$description": "Interactive element background - visited state, flipped theme"
-                }
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.disabled.inversity_flipped}",
+                "$description": "Interactive element foreground - disabled state, flipped theme"
+              }
+            },
+            "visited": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.visited.inversity_normal}",
+                "$description": "Interactive element foreground - visited state, normal theme"
               },
-              "disabled": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.disabled.inversity_normal}",
-                  "$description": "Interactive element background - disabled state, normal theme"
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
                 },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.state.bg.disabled.inversity_flipped}",
-                  "$description": "Interactive element background - disabled state, flipped theme"
-                }
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.visited.inversity_flipped}",
+                "$description": "Interactive element foreground - visited state, flipped theme"
+              }
+            }
+          },
+          "bg": {
+            "enabled": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.enabled.inversity_normal}",
+                "$description": "Interactive element background - enabled state, normal theme"
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.enabled.inversity_flipped}",
+                "$description": "Interactive element background - enabled state, flipped theme"
+              }
+            },
+            "hover": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.hover.inversity_normal}",
+                "$description": "Interactive element background - hover state, normal theme"
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.hover.inversity_flipped}",
+                "$description": "Interactive element background - hover state, flipped theme"
+              }
+            },
+            "focus": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.focus.inversity_normal}",
+                "$description": "Interactive element background - focus state, normal theme"
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.focus.inversity_flipped}",
+                "$description": "Interactive element background - focus state, flipped theme"
+              }
+            },
+            "pressed": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.pressed.inversity_normal}",
+                "$description": "Interactive element background - pressed state, normal theme"
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.pressed.inversity_flipped}",
+                "$description": "Interactive element background - pressed state, flipped theme"
+              }
+            },
+            "selected": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.selected.inversity_normal}",
+                "$description": "Interactive element background - selected state, normal theme"
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.selected.inversity_flipped}",
+                "$description": "Interactive element background - selected state, flipped theme"
+              }
+            },
+            "visited": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.visited.inversity_normal}",
+                "$description": "Interactive element background - visited state, normal theme"
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.visited.inversity_flipped}",
+                "$description": "Interactive element background - visited state, flipped theme"
+              }
+            },
+            "disabled": {
+              "inversity_normal": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.disabled.inversity_normal}",
+                "$description": "Interactive element background - disabled state, normal theme"
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.disabled.inversity_flipped}",
+                "$description": "Interactive element background - disabled state, flipped theme"
               }
             }
           },
