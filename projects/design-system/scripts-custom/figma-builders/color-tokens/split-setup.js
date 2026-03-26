@@ -221,6 +221,11 @@
     return results;
   }
 
+  const ROLE_PARTS = ['bg', 'fg', 'border', 'shadow', 'focus_ring', 'no_color'];
+  function extractRole(tokenName) {
+    return tokenName.split('.').find(p => ROLE_PARTS.includes(p)) || '';
+  }
+
   function findInstance(node, name) {
     if (!node || !node.children) return null;
     return node.children.find(c => c.name === name && c.type === 'INSTANCE') || null;
@@ -471,7 +476,7 @@
           highRow.layoutSizingHorizontal = 'FILL';
           const nameCell = findChild(highRow, 'Cell: Name');
           if (nameCell) await setText(findFirstText(nameCell), token.name);
-          if (hasRole) { const roleCell = findChild(highRow, 'Cell: Role'); if (roleCell) await setText(findFirstText(roleCell), token.description || ''); }
+          if (hasRole) { const roleCell = findChild(highRow, 'Cell: Role'); if (roleCell) await setText(findFirstText(roleCell), extractRole(token.name)); }
           const emphCell = findChild(highRow, 'Cell: Emphasis');
           if (emphCell) await setText(findFirstText(emphCell), 'high');
           const highRef = token.references ? token.references.high : token.reference;
@@ -491,7 +496,7 @@
             lowRow.layoutSizingHorizontal = 'FILL';
             const lowNameCell = findChild(lowRow, 'Cell: Name');
             if (lowNameCell) await setText(findFirstText(lowNameCell), token.name);
-            if (hasRole) { const lowRoleCell = findChild(lowRow, 'Cell: Role'); if (lowRoleCell) await setText(findFirstText(lowRoleCell), token.description || ''); }
+            if (hasRole) { const lowRoleCell = findChild(lowRow, 'Cell: Role'); if (lowRoleCell) await setText(findFirstText(lowRoleCell), extractRole(token.name)); }
             const lowEmphCell = findChild(lowRow, 'Cell: Emphasis');
             if (lowEmphCell) await setText(findFirstText(lowEmphCell), 'low');
             const lowRef = token.references ? token.references.low : token.reference;
@@ -532,7 +537,7 @@
           row.layoutSizingHorizontal = 'FILL';
           const nameCell = findChild(row, 'Cell: Name');
           if (nameCell) await setText(findFirstText(nameCell), token.name);
-          if (hasRole) { const roleCell = findChild(row, 'Cell: Role'); if (roleCell) await setText(findFirstText(roleCell), token.description || ''); }
+          if (hasRole) { const roleCell = findChild(row, 'Cell: Role'); if (roleCell) await setText(findFirstText(roleCell), extractRole(token.name)); }
           populateReferenceCell(row, token.references || token.reference, tableData.tier);
           for (const mode of ['light', 'dark']) {
             const { instance: swInst, rect: swRect, hex: hexNode } = getSwatchNodes2Mode(row, mode);
