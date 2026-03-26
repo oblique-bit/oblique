@@ -16,6 +16,10 @@ const files = [
   'split-data-s1-status-right.js',
   'split-data-s3-status-left.js',
   'split-data-s3-status-right.js',
+  'split-data-s1-free-left.js',
+  'split-data-s1-free-right.js',
+  'split-data-s3-free-left.js',
+  'split-data-s3-free-right.js',
 ];
 
 for (const file of files) {

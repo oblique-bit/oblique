@@ -1782,185 +1782,183 @@
             }
           },
           "yellow": {
-            "": {
-              "bg": {
-                "contrast_highest": {
-                  "inversity_normal": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_normal}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast highest, inversity normal"
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
                   },
-                  "inversity_flipped": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_flipped}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast highest, inversity flipped"
-                  }
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_normal}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast highest, inversity normal"
                 },
-                "contrast_high": {
-                  "inversity_normal": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_normal}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast high, inversity normal"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
                   },
-                  "inversity_flipped": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_flipped}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast high, inversity flipped"
-                  }
-                },
-                "contrast_medium": {
-                  "inversity_normal": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_normal}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast medium, inversity normal"
-                  },
-                  "inversity_flipped": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_flipped}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast medium, inversity flipped"
-                  }
-                },
-                "contrast_low": {
-                  "inversity_normal": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_normal}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast low, inversity normal"
-                  },
-                  "inversity_flipped": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_flipped}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast low, inversity flipped"
-                  }
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_flipped}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast highest, inversity flipped"
                 }
               },
-              "fg": {
-                "contrast_highest": {
-                  "inversity_normal": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_normal}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast highest, inversity normal"
+              "contrast_high": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
                   },
-                  "inversity_flipped": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_flipped}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast highest, inversity flipped"
-                  }
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_normal}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast high, inversity normal"
                 },
-                "contrast_high": {
-                  "inversity_normal": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_normal}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast high, inversity normal"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
                   },
-                  "inversity_flipped": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_flipped}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast high, inversity flipped"
-                  }
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_flipped}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_normal}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast medium, inversity normal"
                 },
-                "contrast_medium": {
-                  "inversity_normal": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_normal}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast medium, inversity normal"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
                   },
-                  "inversity_flipped": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_flipped}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast medium, inversity flipped"
-                  }
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_flipped}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_normal}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast low, inversity normal"
                 },
-                "contrast_low": {
-                  "inversity_normal": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_normal}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast low, inversity normal"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
                   },
-                  "inversity_flipped": {
-                    "$extensions": {
-                      "ob.figma": {
-                        "semanticAssigned": false
-                      }
-                    },
-                    "$type": "color",
-                    "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_flipped}",
-                    "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast low, inversity flipped"
-                  }
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_flipped}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast low, inversity flipped"
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_normal}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast highest, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_flipped}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast highest, inversity flipped"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_normal}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast high, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_flipped}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast high, inversity flipped"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_normal}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast medium, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_flipped}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast medium, inversity flipped"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_normal}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast low, inversity normal"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_flipped}",
+                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast low, inversity flipped"
                 }
               }
             }

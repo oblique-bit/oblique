@@ -2,80 +2,72 @@
 (async () => {
   const SPEC = {
   "file": {
-    "key": "u62wvOTp4pUhjksQraRjfj",
-    "name": "DS-Token-Colors",
+    "key": "51tJjbxBSBmjAmKjQmhsz3",
+    "name": "DesignSystem@Tokens V9.6",
     "page": {
-      "id": "0:1",
-      "name": "🎨 Colors – Maintainer"
+      "id": "9544:41",
+      "name": "🎨  Colors – Maintainer"
     },
-    "colorTokensSection": "1:902",
-    "colorTokensFrame": "1:903",
-    "buildingBlocks": "1:1835"
+    "colorTokensSection": "9544:34302",
+    "colorTokensFrame": "9544:34303",
+    "buildingBlocks": "9544:35234"
   },
   "sections": {
-    "primitive": "1:904",
-    "s1": "1:1070",
-    "s2": "1:1385",
-    "s3": "1:1478"
+    "primitive": "9544:34304",
+    "s1": "9544:34470",
+    "s2": "9544:34786",
+    "s3": "9544:34877"
   },
   "tableIds": {
-    "s1-neutral": "1:1075",
-    "s1-interaction": "1:1112",
-    "s1-status-left": "1:1173",
-    "s1-status-right": "1:1278",
-    "s2-interaction": "1:1390",
-    "s3-brand": "1:1484",
-    "s3-neutral": "1:1490",
-    "s3-interaction": "1:1528",
-    "s3-status-left": "1:1626",
-    "s3-status-right": "1:1731",
-    "p-set1-left": "1:909",
-    "p-set1-right": "1:967",
-    "p-set2-left": "1:1026",
-    "p-set2-right": "1:1044"
+    "s1-neutral": "9544:34475",
+    "s1-interaction": "9544:34513",
+    "s1-status-left": "9544:34574",
+    "s1-status-right": "9544:34679",
+    "s1-free-left": "9678:205159",
+    "s1-free-right": "9678:205264",
+    "s2-interaction": "9544:34791",
+    "s3-brand": "9544:34883",
+    "s3-neutral": "9544:34889",
+    "s3-interaction": "9544:34927",
+    "s3-status-left": "9544:35022",
+    "s3-status-right": "9544:35127",
+    "s3-free-left": "9678:260810",
+    "s3-free-right": "9678:260915",
+    "p-set1-left": "9544:34309",
+    "p-set1-right": "9544:34367",
+    "p-set2-left": "9544:34426",
+    "p-set2-right": "9544:34444"
   },
   "components": {
     "2-mode": {
-      "set": {
-        "row": "3:317442",
-        "header": "3:317445"
-      },
       "withRole": {
-        "row": "1:1966",
-        "header": "1:1888"
+        "row": "9544:35357",
+        "header": "9544:35280"
       },
       "noRole": {
-        "row": "1:2067",
-        "header": "1:2087"
+        "row": "9544:35379",
+        "header": "9544:35295"
       }
     },
     "4-mode": {
-      "set": {
-        "row": "3:317443",
-        "rowLow": "3:317444",
-        "header": "3:317446"
-      },
       "withRole": {
-        "row": "1:1914",
-        "rowLow": "1:1939",
-        "header": "1:1871"
+        "row": "9544:35400",
+        "rowLow": "9544:35449",
+        "header": "9544:35309"
       },
       "noRole": {
-        "row": "1:2100",
-        "rowLow": "1:2123",
-        "header": "1:2145"
+        "row": "9544:35425",
+        "rowLow": "9544:35473",
+        "header": "9544:35326"
       },
-      "separator": "1:1963"
+      "separator": "9544:35343"
     },
     "primitive": {
-      "header": "1:1903",
-      "row": "1:1988"
+      "header": "9544:35270",
+      "row": "9544:35346"
     },
     "utility": {
-      "swatch": "1:1998",
-      "sectionBar": "1:1839",
-      "setHeading": "1:1857",
-      "groupHeader": "1:1866"
+      "groupHeader": "9544:35265"
     }
   },
   "collections": {
@@ -158,31 +150,31 @@
 };
   const COMP_MAP = {
   "primitive": {
-    "row": "1:1988",
-    "header": "1:1903"
+    "row": "9544:35346",
+    "header": "9544:35270"
   },
   "2-mode": {
     "withRole": {
-      "row": "1:1966",
-      "header": "1:1888"
+      "row": "9544:35357",
+      "header": "9544:35280"
     },
     "noRole": {
-      "row": "1:2067",
-      "header": "1:2087"
+      "row": "9544:35379",
+      "header": "9544:35295"
     }
   },
   "4-mode": {
     "withRole": {
-      "row": "1:1914",
-      "rowLow": "1:1939",
-      "header": "1:1871"
+      "row": "9544:35400",
+      "rowLow": "9544:35449",
+      "header": "9544:35309"
     },
     "noRole": {
-      "row": "1:2100",
-      "rowLow": "1:2123",
-      "header": "1:2145"
+      "row": "9544:35425",
+      "rowLow": "9544:35473",
+      "header": "9544:35326"
     },
-    "separator": "1:1963"
+    "separator": "9544:35343"
   }
 };
 
