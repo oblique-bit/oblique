@@ -764,7 +764,7 @@
                   },
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic info background - contrast low, inversity normal"
+                  "$description": "Info Status Background – contrast low, inversity normal. High saturation compensates for lower contrast. Preferred for small status surfaces: Badge background, Infobox border."
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -774,7 +774,7 @@
                   },
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic info background - contrast low, inversity flipped"
+                  "$description": "Info Status Background – contrast low, inversity flipped. High saturation compensates for lower contrast. Preferred for small status surfaces: Badge background, Infobox border."
                 }
               }
             },

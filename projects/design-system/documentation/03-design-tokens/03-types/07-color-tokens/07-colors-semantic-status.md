@@ -169,6 +169,8 @@ ob.s3.color.status.{status_name}.{property}.{contrast_level}.{inversity_variatio
 - `contrast_medium` - Standard contrast for normal usage
 - `contrast_low` - Subtle contrast for secondary contexts
 
+> **Recommended contrast level for `bg` and `border`:** Use `contrast_low` for all status `bg` and `border` tokens in components. Despite the lower luminance contrast, `contrast_low` shades retain full color saturation, making the status hue immediately recognisable. This applies to all status categories (info, critical, resolved, attention, pending, confirmed, progress, scheduled, waiting, closed, fatal). Use cases include small status surfaces such as Badge backgrounds and Infobox borders, where a saturated but visually unobtrusive fill or stroke is preferable to the heavier visual weight of `contrast_medium` or `contrast_high`.
+
 ### The `contrast_highest` Tier — Intentional Hue Alien
 
 Every status color category — regardless of its hue — maps `fg.contrast_highest` to the same neutral primitive:
