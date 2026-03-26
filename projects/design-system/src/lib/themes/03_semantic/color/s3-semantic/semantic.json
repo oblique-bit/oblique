@@ -9,7 +9,7 @@
             }
           },
           "$type": "color",
-          "$value": "{ob.p.color.basic.bundesrot}",
+          "$value": "{ob.p.color.basic.federal_red}",
           "$description": "Static color to be used in the brand relevant UI elements."
         },
         "neutral": {

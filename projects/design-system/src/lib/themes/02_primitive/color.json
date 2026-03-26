@@ -237,7 +237,7 @@
               }
             }
           },
-          "bundesrot": {
+          "federal_red": {
             "parent": "Primitives/Colors",
             "oldValue": "#ff0000",
             "$type": "color",
