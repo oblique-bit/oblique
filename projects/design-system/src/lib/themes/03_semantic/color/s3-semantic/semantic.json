@@ -1415,188 +1415,6 @@
               }
             }
           },
-          "closed": {
-            "bg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.bg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic closed background - contrast highest, inversity normal"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.bg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic closed background - contrast highest, inversity flipped"
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.bg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic closed background - contrast high, inversity normal"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.bg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic closed background - contrast high, inversity flipped"
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.bg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic closed background - contrast medium, inversity normal"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.bg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic closed background - contrast medium, inversity flipped"
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.bg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic closed background - contrast low, inversity normal"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.bg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic closed background - contrast low, inversity flipped"
-                }
-              }
-            },
-            "fg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.fg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic closed foreground - contrast highest, inversity normal"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.fg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic closed foreground - contrast highest, inversity flipped"
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.fg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic closed foreground - contrast high, inversity normal"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.fg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic closed foreground - contrast high, inversity flipped"
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.fg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic closed foreground - contrast medium, inversity normal"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.fg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic closed foreground - contrast medium, inversity flipped"
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.fg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic closed foreground - contrast low, inversity normal"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.closed.fg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic closed foreground - contrast low, inversity flipped"
-                }
-              }
-            }
-          },
           "fatal": {
             "bg": {
               "contrast_highest": {
@@ -1778,8 +1596,10 @@
                 }
               }
             }
-          },
-          "pending": {
+          }
+        },
+        "free": {
+          "cobalt": {
             "bg": {
               "contrast_highest": {
                 "inversity_normal": {
@@ -1789,8 +1609,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic pending background - contrast highest, inversity normal"
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic closed background - contrast highest, inversity normal"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1799,8 +1619,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic pending background - contrast highest, inversity flipped"
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic closed background - contrast highest, inversity flipped"
                 }
               },
               "contrast_high": {
@@ -1811,8 +1631,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic pending background - contrast high, inversity normal"
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic closed background - contrast high, inversity normal"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1821,8 +1641,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic pending background - contrast high, inversity flipped"
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic closed background - contrast high, inversity flipped"
                 }
               },
               "contrast_medium": {
@@ -1833,8 +1653,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic pending background - contrast medium, inversity normal"
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic closed background - contrast medium, inversity normal"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1843,8 +1663,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic pending background - contrast medium, inversity flipped"
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic closed background - contrast medium, inversity flipped"
                 }
               },
               "contrast_low": {
@@ -1855,8 +1675,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic pending background - contrast low, inversity normal"
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic closed background - contrast low, inversity normal"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1865,8 +1685,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic pending background - contrast low, inversity flipped"
+                  "$value": "{ob.s1.color.status.closed.bg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic closed background - contrast low, inversity flipped"
                 }
               }
             },
@@ -1879,8 +1699,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic pending foreground - contrast highest, inversity normal"
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_highest.inversity_normal}",
+                  "$description": "S3 semantic closed foreground - contrast highest, inversity normal"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1889,8 +1709,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic pending foreground - contrast highest, inversity flipped"
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_highest.inversity_flipped}",
+                  "$description": "S3 semantic closed foreground - contrast highest, inversity flipped"
                 }
               },
               "contrast_high": {
@@ -1901,8 +1721,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic pending foreground - contrast high, inversity normal"
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_high.inversity_normal}",
+                  "$description": "S3 semantic closed foreground - contrast high, inversity normal"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1911,8 +1731,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic pending foreground - contrast high, inversity flipped"
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_high.inversity_flipped}",
+                  "$description": "S3 semantic closed foreground - contrast high, inversity flipped"
                 }
               },
               "contrast_medium": {
@@ -1923,8 +1743,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic pending foreground - contrast medium, inversity normal"
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_medium.inversity_normal}",
+                  "$description": "S3 semantic closed foreground - contrast medium, inversity normal"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1933,8 +1753,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic pending foreground - contrast medium, inversity flipped"
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_medium.inversity_flipped}",
+                  "$description": "S3 semantic closed foreground - contrast medium, inversity flipped"
                 }
               },
               "contrast_low": {
@@ -1945,8 +1765,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic pending foreground - contrast low, inversity normal"
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_low.inversity_normal}",
+                  "$description": "S3 semantic closed foreground - contrast low, inversity normal"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1955,13 +1775,197 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic pending foreground - contrast low, inversity flipped"
+                  "$value": "{ob.s1.color.status.closed.fg.contrast_low.inversity_flipped}",
+                  "$description": "S3 semantic closed foreground - contrast low, inversity flipped"
                 }
               }
             }
           },
-          "confirmed": {
+          "yellow": {
+            "": {
+              "bg": {
+                "contrast_highest": {
+                  "inversity_normal": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_normal}",
+                    "$description": "S3 semantic pending background - contrast highest, inversity normal"
+                  },
+                  "inversity_flipped": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_flipped}",
+                    "$description": "S3 semantic pending background - contrast highest, inversity flipped"
+                  }
+                },
+                "contrast_high": {
+                  "inversity_normal": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_normal}",
+                    "$description": "S3 semantic pending background - contrast high, inversity normal"
+                  },
+                  "inversity_flipped": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_flipped}",
+                    "$description": "S3 semantic pending background - contrast high, inversity flipped"
+                  }
+                },
+                "contrast_medium": {
+                  "inversity_normal": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_normal}",
+                    "$description": "S3 semantic pending background - contrast medium, inversity normal"
+                  },
+                  "inversity_flipped": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_flipped}",
+                    "$description": "S3 semantic pending background - contrast medium, inversity flipped"
+                  }
+                },
+                "contrast_low": {
+                  "inversity_normal": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_normal}",
+                    "$description": "S3 semantic pending background - contrast low, inversity normal"
+                  },
+                  "inversity_flipped": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_flipped}",
+                    "$description": "S3 semantic pending background - contrast low, inversity flipped"
+                  }
+                }
+              },
+              "fg": {
+                "contrast_highest": {
+                  "inversity_normal": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_normal}",
+                    "$description": "S3 semantic pending foreground - contrast highest, inversity normal"
+                  },
+                  "inversity_flipped": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_flipped}",
+                    "$description": "S3 semantic pending foreground - contrast highest, inversity flipped"
+                  }
+                },
+                "contrast_high": {
+                  "inversity_normal": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_normal}",
+                    "$description": "S3 semantic pending foreground - contrast high, inversity normal"
+                  },
+                  "inversity_flipped": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_flipped}",
+                    "$description": "S3 semantic pending foreground - contrast high, inversity flipped"
+                  }
+                },
+                "contrast_medium": {
+                  "inversity_normal": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_normal}",
+                    "$description": "S3 semantic pending foreground - contrast medium, inversity normal"
+                  },
+                  "inversity_flipped": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_flipped}",
+                    "$description": "S3 semantic pending foreground - contrast medium, inversity flipped"
+                  }
+                },
+                "contrast_low": {
+                  "inversity_normal": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_normal}",
+                    "$description": "S3 semantic pending foreground - contrast low, inversity normal"
+                  },
+                  "inversity_flipped": {
+                    "$extensions": {
+                      "ob.figma": {
+                        "semanticAssigned": true
+                      }
+                    },
+                    "$type": "color",
+                    "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_flipped}",
+                    "$description": "S3 semantic pending foreground - contrast low, inversity flipped"
+                  }
+                }
+              }
+            }
+          },
+          "teal": {
             "bg": {
               "contrast_highest": {
                 "inversity_normal": {
@@ -2143,7 +2147,7 @@
               }
             }
           },
-          "progress": {
+          "indigo": {
             "bg": {
               "contrast_highest": {
                 "inversity_normal": {
@@ -2357,7 +2361,7 @@
               }
             }
           },
-          "scheduled": {
+          "pink": {
             "bg": {
               "contrast_highest": {
                 "inversity_normal": {
