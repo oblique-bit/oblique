@@ -590,3 +590,61 @@ This script automatically updates token descriptions with classification informa
 ---
 
 *For related documentation, see [Neutral Colors](./colors-03_semantic-neutral.md) and [Interaction Colors](./colors-03_semantic-interaction.md)*
+
+---
+
+## Free Colors — Consumer Guidance
+
+The `ob.s3.color.free.*` group contains colors that carry no fixed semantic meaning. The name communicates governance intent: these colors are free for any project-specific purpose — categorization, tagging, data visualization, priority levels, swimlane colors, etc.
+
+### Two usage patterns
+
+#### Pattern 1 — Decorative or categorical use (no renaming needed)
+
+If the color is used purely for visual differentiation and does not carry a named status meaning, consume `free.*` tokens directly. No project-level token override is required.
+
+Example: a "Documents" category badge that uses yellow purely to distinguish it from other categories — not to communicate a workflow state.
+
+```css
+/* Direct consumption — no semantic meaning attached */
+background: var(--ob-s3-color-free-yellow-bg-contrast-medium-inversity-normal);
+color: var(--ob-s3-color-free-yellow-fg-contrast-high-inversity-normal);
+```
+
+This is valid. The token path makes no claim about what the yellow means in this context.
+
+#### Pattern 2 — Status extension (rename at S-level)
+
+If the project assigns a named workflow status to one of the free colors, the project should create its own S-level token that references the `free.*` token. This gives the color a proper semantic name in the project's token namespace.
+
+Example: a project adds a "Pending" status and decides yellow is the right color for it.
+
+```json
+// Project-level semantic token (in project token override layer)
+"ob": {
+  "s3": {
+    "color": {
+      "status": {
+        "pending": {
+          "fg": {
+            "contrast_high": {
+              "$value": "{ob.s3.color.free.yellow.fg.contrast_high.inversity_normal}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Now `status.pending` is a named concept in the project's token namespace and components reference `status.pending.*` — not raw `free.yellow.*`. If the project later decides to change the color, they update the mapping in one place.
+
+### When to use which pattern
+
+| Situation | Pattern |
+|-----------|---------|
+| Color used for visual grouping only, no workflow meaning | Consume `free.*` directly |
+| Color assigned to a named status or workflow state | Create project S-level token mapping to `free.*` |
+| Color needs to appear in a status component (badge, pill) with a label | Create project S-level token mapping |
+| Data visualization, charts, arbitrary categorical color | Consume `free.*` directly |
