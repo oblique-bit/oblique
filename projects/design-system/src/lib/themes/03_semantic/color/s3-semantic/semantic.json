@@ -495,6 +495,18 @@
               }
             }
           },
+          "border": {
+            "selected": {
+              "$extensions": {
+                "ob.figma": {
+                  "semanticAssigned": false
+                }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.basic.federal_red}",
+              "$description": "Interactive element border - selected state. Pending color decision: federal_red is shared with error state."
+            }
+          },
           "bg": {
             "enabled": {
               "inversity_normal": {

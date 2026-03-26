@@ -78,3 +78,16 @@ For these tokens, S3 references `ob.p.*` directly instead of going through the f
 ```
 
 This pattern is the **exception**, not the rule. All other S3 color tokens must follow the full reference chain.
+
+### Element-Type Splits at S3
+
+At S3, color tokens are named not only by state but also by the **element type** they color (`fg`, `bg`, `border`, etc.). When a single interaction state affects multiple element types that may resolve to different colors, each element type **must have its own token** — even if the values happen to be identical today.
+
+The canonical example is the selected/active state in navigation and segmented button contexts:
+
+- `ob.s3.color.interaction.state.border.selected.*` — the indicator element (underline, active border)
+- `ob.s3.color.interaction.state.fg.selected.*` — the label text color
+
+These cannot share one token because:
+1. **Semantic correctness** — `fg` means text and icon. Applying it to a border element is a naming lie.
+2. **Independent theming** — the indicator typically carries the saturated brand accent color, while the label may stay monochromatic. A single token cannot express two different resolved values.
