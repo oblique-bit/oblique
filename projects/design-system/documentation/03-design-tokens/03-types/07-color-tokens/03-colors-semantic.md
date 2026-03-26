@@ -158,6 +158,18 @@ The semantic color system is organized into **four main categories**:
   - Flexible statuses (pending, confirmed, progress, etc.)
   - Foreground and background variations
 
+### **Contrast Levels per Category**
+
+Semantic color tokens use a **contrast scale** (`lowest` → `low` → `medium` → `high` → `highest`) to express visual weight. The number of levels available differs per category by design:
+
+| Category        | Contrast levels used                              |
+|-----------------|---------------------------------------------------|
+| **Neutral**     | All 5: `lowest`, `low`, `medium`, `high`, `highest` |
+| **Status**      | 4: `low`, `medium`, `high`, `highest`             |
+| **Interaction** | 3 at S1: `low`, `medium`, `high`                  |
+
+Currently, the full 5-level scale is provided only for the **Neutral** category (`fg` and `bg`). Status and Interaction use a narrower subset. If the need arises during component development, the scale may be extended for those categories. However, the intent is to keep the number of options deliberately limited to ensure visual consistency across projects through constrained design choices.
+
 ---
 
 ## **Token Resolution Flow**

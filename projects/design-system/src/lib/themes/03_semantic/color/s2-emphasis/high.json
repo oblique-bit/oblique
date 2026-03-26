@@ -274,7 +274,7 @@
               "visited": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.neutral.no_color}",
+                  "$value": "{ob.p.color.basic.transparent}",
                   "$description": "No use. For consistency only. Text-links need no bg color.",
                   "$extensions": {
                     "ob.figma": {
@@ -284,7 +284,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.neutral.no_color}",
+                  "$value": "{ob.p.color.basic.transparent}",
                   "$description": "No use. For consistency only. Text-links need no bg color.",
                   "$extensions": {
                     "ob.figma": {

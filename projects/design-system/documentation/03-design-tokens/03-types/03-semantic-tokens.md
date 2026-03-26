@@ -56,3 +56,25 @@ A major point of failure was creating semantic tokens that pointed to primitive 
   }
 }
 ```
+
+### Intentional Primitive Bypass for Static Utility Colors
+
+Some utility color tokens (e.g., `ob.s3.color.neutral.no_color`) are **intentionally defined to reference a primitive directly**, bypassing the S1 and S2 semantic tiers.
+
+This is a deliberate architectural exception for values that are:
+- **Static and invariant** — the value does not change between light/dark or emphasis modes.
+- **Not subject to theming** — routing through S1 (lightness) and S2 (emphasis) would add ceremony with no semantic benefit.
+
+For these tokens, S3 references `ob.p.*` directly instead of going through the full `S3 → S2 → S1 → primitive` chain.
+
+```json
+// ✔️ Intentional: ob.s3.color.neutral.no_color references primitive directly
+// Reason: transparent is always transparent — no mode variation exists
+"no_color": {
+  "$type": "color",
+  "$value": "{ob.p.color.basic.transparent}",
+  "$description": "Static utility color. No mode variation. Bypasses S1/S2 intentionally."
+}
+```
+
+This pattern is the **exception**, not the rule. All other S3 color tokens must follow the full reference chain.
