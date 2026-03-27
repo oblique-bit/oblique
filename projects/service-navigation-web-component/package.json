@@ -1,18 +1,19 @@
 {
   "name": "@oblique/service-navigation-web-component",
   "version": "15.4.0",
+  "type": "module",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },
   "scripts": {
     "start": "ng serve",
-    "lint": "ts-node scripts/lint.ts",
-    "format": "ts-node scripts/lint.ts --fix",
+    "lint": "tsx scripts/lint.ts",
+    "format": "tsx scripts/lint.ts --fix",
     "test": "cd ../.. && ng test service-navigation-web-component",
     "test-ci": "cd ../.. && ng run service-navigation-web-component:test:ci",
-    "build": "ng build && ts-node scripts/post-build.ts",
-    "release": "ts-node scripts/release.ts",
-    "npm-publish": "ts-node scripts/publish.ts"
+    "build": "ng build && tsx scripts/post-build.ts",
+    "release": "tsx scripts/release.ts",
+    "npm-publish": "tsx scripts/publish.ts"
   },
   "keywords": [
     "service-navigation-web-component"

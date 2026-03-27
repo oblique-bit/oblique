@@ -15,24 +15,24 @@ describe('index.ts', () => {
 	describe('Oblique CLI with spawnSync', () => {
 		describe.each(['-h', '--help'])('help option with %s', flag => {
 			test(`stdout should not be empty`, () => {
-				const result = spawnSync('ts-node', [cliPath, flag], options);
+				const result = spawnSync('tsx', [cliPath, flag], options);
 				expect(result.stdout).not.toBe('');
 			});
 
 			test(`stderr should be empty`, () => {
-				const result = spawnSync('ts-node', [cliPath, flag], options);
+				const result = spawnSync('tsx', [cliPath, flag], options);
 				expect(result.stderr).toBe('');
 			});
 		});
 
 		describe.each(['-v', '--version'])('version option with %s', flag => {
 			test(`stdout should contain the version from package.json`, () => {
-				const result = spawnSync('ts-node', [cliPath, flag], options);
+				const result = spawnSync('tsx', [cliPath, flag], options);
 				expect(cleanOutput(result.stdout)).toBe(cleanOutput(cliPackage.version));
 			});
 
 			test(`stderr should be empty`, () => {
-				const result = spawnSync('ts-node', [cliPath, flag], options);
+				const result = spawnSync('tsx', [cliPath, flag], options);
 				expect(result.stderr).toBe('');
 			});
 		});
@@ -42,31 +42,31 @@ describe('index.ts', () => {
 			{correctOption: '--version', wrongOption: '--vorsion'},
 		])(`Wrong Option $wrongOption instead of $correctOption`, ({wrongOption, correctOption}) => {
 			test(`show suggestion "(Did you mean ${correctOption}?)"`, () => {
-				const result = spawnSync('ts-node', [cliPath, wrongOption], options);
+				const result = spawnSync('tsx', [cliPath, wrongOption], options);
 				expect(cleanOutput(result.stderr.toString())).toContain(`(Did you mean ${correctOption}?)`);
 			});
 
 			test(`stdout should be empty`, () => {
-				const result = spawnSync('ts-node', [cliPath, wrongOption], options);
+				const result = spawnSync('tsx', [cliPath, wrongOption], options);
 				expect(result.stdout).toBe('');
 			});
 		});
 
 		describe('error handling for unknown options', () => {
 			test(`stderr should contain "error: unknown option '--unicornpoop'"`, () => {
-				const result = spawnSync('ts-node', [cliPath, '--unicornpoop'], options);
+				const result = spawnSync('tsx', [cliPath, '--unicornpoop'], options);
 				expect(cleanOutput(result.stderr)).toContain(`error: unknown option '--unicornpoop'`);
 			});
 
 			test(`stdout should be empty for unknown option`, () => {
-				const result = spawnSync('ts-node', [cliPath, '--unicornpoop'], options);
+				const result = spawnSync('tsx', [cliPath, '--unicornpoop'], options);
 				expect(result.stdout).toBe('');
 			});
 		});
 
 		describe('an informative error is displayed when you try to execute an unknown command', () => {
 			test('display an error', () => {
-				const result = spawnSync('ts-node', [cliPath, 'nwe'], options);
+				const result = spawnSync('tsx', [cliPath, 'nwe'], options);
 				expect(result.stderr).toBe(
 					'Unknown command: "nwe"\n\nTo see a list of supported oblique cli commands, run:\n  ob --help\n'
 				);
@@ -75,7 +75,7 @@ describe('index.ts', () => {
 
 		describe('execute the cli without a command', () => {
 			test('displays the help text', () => {
-				const result = spawnSync('ts-node', [cliPath], options);
+				const result = spawnSync('tsx', [cliPath], options);
 				expect(cleanOutput(result.stdout.toString())).toContain(`HOW TO USE THE OBLIQUE CLI`);
 			});
 		});

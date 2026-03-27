@@ -1,15 +1,16 @@
 {
   "name": "@oblique/sandbox",
   "version": "15.4.0",
+  "type": "module",
   "scripts": {
     "start": "ng serve",
     "start-pams": "ng serve --configuration pams",
-    "lint": "ts-node scripts/lint.ts",
-    "format": "ts-node scripts/lint.ts --fix",
+    "lint": "tsx scripts/lint.ts",
+    "format": "tsx scripts/lint.ts --fix",
     "test": "cd ../.. && ng test sandbox",
     "test-ci": "cd ../.. && ng run sandbox:test:ci",
-    "build": "ng build && ts-node scripts/post-build.ts",
-    "release": "ts-node scripts/release.ts"
+    "build": "ng build && tsx scripts/post-build.ts",
+    "release": "tsx scripts/release.ts"
   },
   "dependencies": {
     "raw-loader": "^4.0.2"

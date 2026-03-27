@@ -2,6 +2,7 @@ import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import * as colors from 'ansi-colors';
 import {getTemplate} from './ng-add/ng-add-utils';
+import {globSync} from 'glob';
 
 export const packageJsonConfigPath = '/package.json';
 export const ObliquePackage = '@oblique/oblique';
@@ -14,7 +15,6 @@ export const filePatterns = {
 	tsAndHtml: '*.{ts,html}',
 	appModule: 'app.module.ts',
 } as const;
-const glob = require('glob');
 
 const angularJsonConfigPath = './angular.json/';
 export let isSuccessful = true;
@@ -280,7 +280,7 @@ export function installDependencies(): Rule {
 export function applyInTree(tree: Tree, toApply: (file: string) => void, pattern = '*'): Tree {
 	getAngularConfigs(tree, ['sourceRoot'])
 		.map(project => project.config)
-		.reduce<string[]>((files, root: string) => [...files, ...glob.sync(`${root}/**/${pattern}`, {})], [])
+		.reduce<string[]>((files, root: string) => [...files, ...globSync(`${root}/**/${pattern}`, {})], [])
 		.forEach((file: string) => toApply(file));
 	return tree;
 }
