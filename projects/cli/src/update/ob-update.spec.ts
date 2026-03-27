@@ -4,9 +4,8 @@ import fs from 'node:fs';
 import type {PackageDependencies} from './ob-update.model';
 import * as obUpdate from './ob-update';
 import {execute} from '../utils/cli-utils';
-// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 jest.mock('../utils/cli-utils', () => ({
-	...jest.requireActual('../utils/cli-utils'),
+	...jest.requireActual<typeof import('../utils/cli-utils')>('../utils/cli-utils'),
 	execute: jest.fn(),
 }));
 

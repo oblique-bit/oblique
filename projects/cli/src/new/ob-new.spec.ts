@@ -279,13 +279,13 @@ describe('Ob new command', () => {
 				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse(options, {from: 'user'});
 			});
-			/* eslint-disable @typescript-eslint/restrict-template-expressions */
+
 			test(`should have option --interactive to be ${options.includes(`--interactive`)}`, () => {
 				const isInteractive: boolean = parsedObNewCommand.opts().interactive as boolean;
 				expect(isInteractive).toBe(options.includes(`--interactive`));
 			});
 
-			test(`should call npx ${options}`, () => {
+			test(`should call npx ${options.join(', ')}`, () => {
 				const expected = options.includes('--interactive')
 					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
 					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --npmrc --eslint --husky`;

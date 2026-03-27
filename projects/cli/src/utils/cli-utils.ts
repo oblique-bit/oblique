@@ -179,14 +179,12 @@ export function parseCommandArguments(): {
 	commandName: string;
 	arguments: string[];
 } {
-	const {argv} = process;
+	const [execPath, filePath, commandName, ...args] = process.argv;
 	return {
-		execPath: argv[0],
-		filePath: argv[1],
-		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-		commandName: argv[2],
-		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-		arguments: argv.slice(3),
+		execPath,
+		filePath,
+		commandName,
+		arguments: args,
 	};
 }
 

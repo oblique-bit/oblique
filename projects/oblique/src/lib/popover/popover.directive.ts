@@ -86,8 +86,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		/* eslint-disable logical-assignment-operators */
-		this.id = this.id || `popover-${ObPopoverDirective.idCount++}`;
+		this.id ||= `popover-${ObPopoverDirective.idCount++}`;
 		this.idContent = this.panelContentId || `${this.id}-content`;
 		this.appendToBody = this.globalAppendToBody ?? this.appendToBody;
 		this.updateToggleMethod();
