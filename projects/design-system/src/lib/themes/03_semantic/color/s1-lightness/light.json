@@ -1042,7 +1042,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1052,7 +1052,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1064,7 +1064,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1073,7 +1073,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1084,7 +1084,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1093,7 +1093,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1104,7 +1104,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1113,7 +1113,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1126,7 +1126,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1136,7 +1136,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1148,7 +1148,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1157,7 +1157,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1169,7 +1169,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1178,7 +1178,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1190,7 +1190,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1199,7 +1199,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1215,7 +1215,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1225,7 +1225,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1237,7 +1237,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1246,7 +1246,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1257,7 +1257,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1266,7 +1266,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1277,7 +1277,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1286,7 +1286,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1299,7 +1299,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1309,7 +1309,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1321,7 +1321,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1330,7 +1330,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1342,7 +1342,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1351,7 +1351,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1363,7 +1363,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1372,7 +1372,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1388,7 +1388,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1398,7 +1398,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1410,7 +1410,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1419,7 +1419,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1428,7 +1428,7 @@
                 "inversity_flipped_alpha": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1440,7 +1440,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1449,7 +1449,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1460,7 +1460,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1469,7 +1469,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1480,7 +1480,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1490,7 +1490,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1504,7 +1504,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1514,7 +1514,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1526,7 +1526,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1535,7 +1535,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1547,7 +1547,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1556,7 +1556,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1568,7 +1568,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1577,7 +1577,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1593,7 +1593,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1603,7 +1603,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1615,7 +1615,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1624,7 +1624,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1635,7 +1635,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1644,7 +1644,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1655,7 +1655,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1664,7 +1664,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1677,7 +1677,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1687,7 +1687,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1699,7 +1699,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1708,7 +1708,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1720,7 +1720,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1729,7 +1729,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1741,7 +1741,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1750,7 +1750,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1939,7 +1939,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1949,7 +1949,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1961,7 +1961,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1970,7 +1970,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1981,7 +1981,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -1990,7 +1990,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2001,7 +2001,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2010,7 +2010,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2023,7 +2023,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2033,7 +2033,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2045,7 +2045,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2054,7 +2054,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2066,7 +2066,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2075,7 +2075,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2087,7 +2087,7 @@
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
@@ -2096,7 +2096,7 @@
                 "inversity_flipped": {
                   "$extensions": {
                     "ob.figma": {
-                      "semanticAssigned": true
+                      "semanticAssigned": false
                     }
                   },
                   "$type": "color",
