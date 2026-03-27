@@ -3,21 +3,25 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TextPageComponent} from './text-page.component';
 import {IdPipe} from '../shared/id/id.pipe';
-import {Router} from '@angular/router';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
+import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redirector';
 
 describe(TextPageComponent.name, () => {
 	let component: TextPageComponent;
 	let fixture: ComponentFixture<TextPageComponent>;
-	let router: Router;
+	let service: CmsRouteRedirector;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule, IdPipe, RouterTestingModule, TextPageComponent],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TextPageComponent);
 		component = fixture.componentInstance;
-		router = TestBed.inject(Router);
+		service = TestBed.inject(CmsRouteRedirector);
+		jest.spyOn(service, 'redirectOnVersionChange').mockImplementation(() => {});
+		jest.spyOn(service, 'navigate');
 		fixture.detectChanges();
 	});
 
@@ -26,12 +30,8 @@ describe(TextPageComponent.name, () => {
 	});
 
 	describe('onClick', () => {
-		beforeEach(() => {
-			jest.spyOn(router, 'navigate');
-			jest.spyOn(window, 'open');
-		});
 		describe('target is not an anchor', () => {
-			const event = {target: document.createElement('div'), preventDefault: jest.fn()} as unknown as MouseEvent;
+			const event = {target: document.createElement('div'), preventDefault: jest.fn()} as unknown as PointerEvent;
 			beforeEach(() => {
 				component.onClick(event);
 			});
@@ -39,69 +39,23 @@ describe(TextPageComponent.name, () => {
 				expect(event.preventDefault).not.toHaveBeenCalled();
 			});
 			it('should not navigate', () => {
-				expect(router.navigate).not.toHaveBeenCalled();
-			});
-			it('should not open a new tab', () => {
-				expect(window.open).not.toHaveBeenCalled();
+				expect(service.navigate).not.toHaveBeenCalled();
 			});
 		});
 
-		describe('target is an internal link', () => {
-			let event: MouseEvent;
+		describe('target is a link', () => {
+			let event: PointerEvent;
+			const anchor = document.createElement('a');
 			beforeEach(() => {
-				const anchor = document.createElement('a');
-				anchor.href = `${window.location.origin}/about`;
-				anchor.hash = '';
-				event = {target: anchor, preventDefault: jest.fn()} as unknown as MouseEvent;
+				event = {target: anchor, preventDefault: jest.fn()} as unknown as PointerEvent;
+				anchor.href = 'http://localhost/about';
 				component.onClick(event);
 			});
 			it('should prevent default', () => {
 				expect(event.preventDefault).toHaveBeenCalled();
 			});
-			it('should navigate internally', () => {
-				expect(router.navigate).toHaveBeenCalledWith(['/about']);
-			});
-			it('should not open a new tab', () => {
-				expect(window.open).not.toHaveBeenCalled();
-			});
-		});
-
-		describe('target is an internal link with a fragment', () => {
-			let event: MouseEvent;
-			beforeEach(() => {
-				const anchor = document.createElement('a');
-				anchor.href = `${window.location.origin}/about#section`;
-				anchor.hash = '#section';
-				event = {target: anchor, preventDefault: jest.fn()} as unknown as MouseEvent;
-				component.onClick(event);
-			});
-			it('should prevent default', () => {
-				expect(event.preventDefault).toHaveBeenCalled();
-			});
-			it('should navigate internally', () => {
-				expect(router.navigate).toHaveBeenCalledWith(['/about'], {fragment: 'section'});
-			});
-			it('should not open a new tab', () => {
-				expect(window.open).not.toHaveBeenCalled();
-			});
-		});
-
-		describe('target is an external link', () => {
-			let event: MouseEvent;
-			beforeEach(() => {
-				const anchor = document.createElement('a');
-				anchor.href = 'https://external.com';
-				event = {target: anchor, preventDefault: jest.fn()} as unknown as MouseEvent;
-				component.onClick(event);
-			});
-			it('should prevent default', () => {
-				expect(event.preventDefault).toHaveBeenCalled();
-			});
-			it('should not navigate internally', () => {
-				expect(router.navigate).not.toHaveBeenCalled();
-			});
-			it('should not open a new tab', () => {
-				expect(window.open).toHaveBeenCalledWith('https://external.com/', '_blank', 'noopener,noreferrer');
+			it('should navigate', () => {
+				expect(service.navigate).toHaveBeenCalledWith(anchor.origin, anchor.pathname);
 			});
 		});
 	});

@@ -1,11 +1,9 @@
 import {Component, type ElementRef, type OnInit, inject, output, viewChild} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ActivatedRoute, NavigationEnd, type NavigationExtras, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {skip} from 'rxjs/operators';
 import {CmsDataService} from '../cms/cms-data.service';
 import {
 	BehaviorSubject,
@@ -20,7 +18,6 @@ import {
 	startWith,
 	switchMap,
 	tap,
-	withLatestFrom,
 } from 'rxjs';
 import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
@@ -34,9 +31,9 @@ import {AccordionLinksComponent} from './accordion-links/accordion-links.compone
 import {VersionComponent} from './version/version.component';
 import {ImageComponent} from './image/image.component';
 import {VersionService} from '../shared/version/version.service';
-import {SlugService} from '../shared/slug/slug.service';
+import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redirector';
 import {FeedbackTriggerDirective} from '../feedback/feedback-trigger.directive';
-import type {CMSPageShort, CMSPages} from '../cms/models/cms-page.model';
+import type {CMSPages} from '../cms/models/cms-page.model';
 
 @Component({
 	selector: 'app-side-navigation',
@@ -81,7 +78,7 @@ export class SideNavigationComponent implements OnInit {
 	private readonly cmsDataService = inject(CmsDataService);
 	private readonly router = inject(Router);
 	private readonly slugToIdService = inject(SlugToIdService);
-	private readonly slugService = inject(SlugService);
+	private readonly urlOrchestrator = inject(CmsRouteRedirector);
 	private readonly versionService = inject(VersionService);
 	private readonly window = inject(WINDOW);
 	private readonly collapseBreakpointSize = 905;
@@ -91,7 +88,7 @@ export class SideNavigationComponent implements OnInit {
 		this.urlParamVersion$ = this.prepareUrlParams();
 		this.selectedSlug$ = this.prepareSelectedSlug();
 		this.filteredAccordions$ = this.prepareAccordions(pages$);
-		this.redirectOnVersionChange(pages$);
+		this.urlOrchestrator.redirectOnVersionChange(pages$, this.version$.asObservable());
 	}
 
 	ngOnInit(): void {
@@ -236,40 +233,6 @@ export class SideNavigationComponent implements OnInit {
 
 	private getVersionFromUrlParam(activatedRoute?: ActivatedRoute): number | undefined {
 		return Number(activatedRoute.snapshot.queryParamMap.get('version')) || undefined;
-	}
-
-	private redirectOnVersionChange(pages$: Observable<CMSPages>): void {
-		this.version$
-			.pipe(
-				skip(3),
-				withLatestFrom(this.getVersionedPages(pages$)),
-				takeUntilDestroyed(),
-				map(([version, pages]) => this.slugService.getNewSlug(version, pages)),
-				filter(slug => Boolean(slug))
-			)
-			.subscribe(slug => {
-				const extras: NavigationExtras = {queryParamsHandling: 'preserve', preserveFragment: true};
-				if (slug.startsWith('welcome')) {
-					void this.router.navigate(['introductions', slug], extras);
-				} else {
-					void this.router.navigate(['..', slug], {...extras, relativeTo: this.activatedRoute.children[0]});
-				}
-			});
-	}
-
-	private getVersionedPages(pages$: Observable<CMSPages>): Observable<CMSPageShort[]> {
-		return pages$.pipe(
-			map(({tabbedPages, textPages}) => [...tabbedPages.data, ...textPages.data]),
-			map(pages => pages.filter(page => page.min_version !== 11 || page.max_version)),
-			map(pages =>
-				// eslint-disable-next-line @typescript-eslint/naming-convention
-				pages.map(({slug, min_version, max_version}) => ({
-					slug,
-					minVersion: min_version,
-					maxVersion: max_version ?? Infinity,
-				}))
-			)
-		);
 	}
 
 	private isLayoutCollapsed(): boolean {
