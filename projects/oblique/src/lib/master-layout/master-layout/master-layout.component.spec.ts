@@ -294,8 +294,15 @@ describe('ObMasterLayoutComponent', () => {
 		let element: HTMLElement;
 		let content: HTMLElement;
 
-		describe('targeting the id "content" when there is no h1 in the page', () => {
+		describe.each([
+			{desc: 'neither header nor footer is sticky', isFooterSticky: false, isHeaderSticky: false},
+			{desc: 'only footer is sticky', isFooterSticky: true, isHeaderSticky: false},
+			{desc: 'only header is sticky', isFooterSticky: false, isHeaderSticky: true},
+		])('targeting the id "content" when there is no h1 in the page and $desc', ({isFooterSticky, isHeaderSticky}) => {
 			beforeEach(() => {
+				component.isFooterSticky = isFooterSticky;
+				component.isHeaderSticky = isHeaderSticky;
+				fixture.detectChanges();
 				element = document.getElementById('content');
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
@@ -309,8 +316,40 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
-		describe('targeting the id "content" when there is a h1 in the page', () => {
+		describe('targeting the id "content" when there is no h1 in the page and both the header and footer are sticky', () => {
 			beforeEach(() => {
+				component.isFooterSticky = true;
+				component.isHeaderSticky = true;
+				fixture.detectChanges();
+
+				element = document.getElementById('content');
+				// scrollTo is not defined in jsdom
+				Object.defineProperty(element, 'scrollTo', {
+					value: jest.fn(),
+					writable: true,
+				});
+				jest.spyOn(element, 'scrollTo');
+				jest.spyOn(element, 'focus');
+				component.focusElement('content');
+			});
+			it('should scroll within the containing element', () => {
+				expect(element.scrollTo).toHaveBeenCalledWith({behavior: 'smooth', top: 0});
+			});
+			it('should focus the element', () => {
+				expect(element.focus).toHaveBeenCalledWith({preventScroll: true});
+			});
+		});
+
+		describe.each([
+			{desc: 'neither header nor footer is sticky', isFooterSticky: false, isHeaderSticky: false},
+			{desc: 'only footer is sticky', isFooterSticky: true, isHeaderSticky: false},
+			{desc: 'only header is sticky', isFooterSticky: false, isHeaderSticky: true},
+			{desc: 'both header and footer are sticky', isFooterSticky: true, isHeaderSticky: true},
+		])('targeting the id "content" when there is a h1 in the page and $desc', ({isFooterSticky, isHeaderSticky}) => {
+			beforeEach(() => {
+				component.isFooterSticky = isFooterSticky;
+				component.isHeaderSticky = isHeaderSticky;
+				fixture.detectChanges();
 				content = document.getElementById('content');
 				content.prepend(document.createElement('h1'));
 				element = content.querySelector('h1');

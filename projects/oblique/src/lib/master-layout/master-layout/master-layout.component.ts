@@ -183,8 +183,16 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 			console.error(`${elementId} does not correspond to an existing DOM element.`);
 			return;
 		}
-
-		element.scrollIntoView({behavior: 'smooth'});
+		if (this.isMainFocusedInStickyLayout(element.id)) {
+			// Here the target is the already fully visible main container. The content of the container is being scrolled to the top.
+			element.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			});
+		} else {
+			// Here the whole page is scrolled to the target element.
+			element.scrollIntoView({behavior: 'smooth'});
+		}
 		element.focus({preventScroll: true});
 		if (document.activeElement !== element && isDevMode()) {
 			element.setAttribute('tabindex', '-1');
@@ -194,6 +202,10 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 			);
 		}
 	}
+
+	private isMainFocusedInStickyLayout(id: string): boolean {
+		return id === this.contentId && this.isFooterSticky && this.isHeaderSticky;
+	}	
 
 	private setup(): void {
 		this.home = this.config.homePageRoute;
