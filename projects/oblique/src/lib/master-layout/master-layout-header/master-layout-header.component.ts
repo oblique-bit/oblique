@@ -14,7 +14,7 @@ import {
 	inject,
 } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
@@ -29,6 +29,7 @@ import {
 } from '../master-layout.model';
 import {ObEColor} from '../../style/colors.model';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -46,6 +47,7 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	isCustom: boolean;
 	banner: ObIBanner;
 	serviceNavigationConfig: ObIServiceNavigationConfig;
+	hasMainNavigation: boolean;
 	@Input() navigation: ObINavigationLink[];
 	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
 	isSmall: boolean;
@@ -69,6 +71,17 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 		this.banner = this.initializeBanner(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
 		this.serviceNavigationConfig = this.config.header.serviceNavigation;
+		this.hasMainNavigation = this.config.layout.hasMainNavigation;
+
+		inject(ObMasterLayoutComponentService)
+			.configEvents$.pipe(
+				takeUntil(this.unsubscribe),
+				filter(events => events.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION),
+				map(event => event.value)
+			)
+			.subscribe(hasMainNavigation => {
+				this.hasMainNavigation = hasMainNavigation;
+			});
 	}
 
 	ngOnDestroy(): void {
