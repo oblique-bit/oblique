@@ -1,6 +1,6 @@
 // @ts-check
-const coverageConfig = require('../../tests/jest.config.coverage');
-module.exports = {
+import coverageConfig from '../../tests/jest.config.coverage.js';
+export default {
 	displayName: {
 		name: 'CLI',
 		color: 'cyan',
