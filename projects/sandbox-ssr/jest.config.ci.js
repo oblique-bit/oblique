@@ -1,7 +1,7 @@
 // @ts-check
-const baseConfig = require('./jest.config');
+import baseConfig from './jest.config.js';
 
-module.exports = {
+export default {
 	...baseConfig,
 	reporters: [
 		'default',

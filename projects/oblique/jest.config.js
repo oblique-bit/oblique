@@ -1,7 +1,7 @@
 // @ts-check
-const baseConfig = require('../../tests/jest.config');
+import baseConfig from '../../tests/jest.config.js';
 
-module.exports = {
+export default {
 	...baseConfig,
 	roots: ['<rootDir>/projects/oblique'],
 	displayName: {
