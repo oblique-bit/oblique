@@ -1,0 +1,12 @@
+{
+  "doc": {
+    "page_title": {
+      "$type": "other",
+      "$value": ""
+    },
+    "page_intro": {
+      "$type": "other",
+      "$value": ""
+    }
+  }
+}
