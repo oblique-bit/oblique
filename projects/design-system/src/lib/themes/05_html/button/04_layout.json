@@ -48,6 +48,13 @@
           }
         },
         "remove": {
+          "icon": {
+            "asset": {
+              "$type": "asset",
+              "$value": "cancel-circle",
+              "$description": "Default icon asset for button.remove."
+            }
+          },
           "spacing": {
             "padding": {
               "vertical": {
