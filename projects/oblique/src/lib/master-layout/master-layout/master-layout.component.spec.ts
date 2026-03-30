@@ -394,7 +394,7 @@ describe('ObMasterLayoutComponent', () => {
 		describe('targeting an id that is corresponding to an existing dom element', () => {
 			beforeEach(() => {
 				content = document.getElementById('content');
-				content.innerHTML = '<input id="not_focusable_element" disabled />';
+				content.innerHTML = '<input id="not_focusable_element" class="foo bar" disabled />';
 				element = document.getElementById('not_focusable_element');
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
@@ -412,7 +412,7 @@ describe('ObMasterLayoutComponent', () => {
 			it('should console.info that the targetted element is not focusable', () => {
 				component.focusElement('not_focusable_element');
 				expect(console.info).toHaveBeenCalledWith(
-					'The element with the id: not_focusable_element is not focusable. Oblique added a tabindex in order to make it focusable.'
+					'The element: input#not_focusable_element.foo.bar is not focusable. Oblique added a tabindex in order to make it focusable.'
 				);
 			});
 			it(`should give it a tabindex="-1" to make it focusable again`, () => {
