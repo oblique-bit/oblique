@@ -2,16 +2,71 @@
   "ob": {
     "c": {
       "icon_slot": {
-        "size_proportional": {
-          "standard": {
-            "$type": "dimension",
-            "$value": "{ob.s.dimension.dynamic.component_size.spacing.md.rem}",
-            "$description": "Standard icon holder size, equivalent to 32px."
-          },
-          "mini": {
-            "$type": "dimension",
-            "$value": "{ob.s.dimension.dynamic.component_size.spacing.xs.rem}",
-            "$description": "Mini icon holder size for compact contexts like button.remove, equivalent to 20px."
+        "static": {
+          "size": {
+            "xs": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.static.component_size.spacing.xs.rem}",
+              "$description": "16px fixed icon size for static contexts."
+            },
+            "sm": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.static.component_size.spacing.sm.rem}",
+              "$description": "20px fixed icon size for static contexts."
+            },
+            "md": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.static.component_size.spacing.md.rem}",
+              "$description": "24px fixed icon size for static contexts."
+            },
+            "lg": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.static.component_size.spacing.xl.rem}",
+              "$description": "32px fixed icon size for static contexts."
+            }
+          }
+        },
+        "component_context": {
+          "size": {
+            "xs": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.xs.rem}",
+              "$description": "16px icon size reacting to component-size mode."
+            },
+            "sm": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.sm.rem}",
+              "$description": "20px icon size reacting to component-size mode."
+            },
+            "md": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.md.rem}",
+              "$description": "24px icon size reacting to component-size mode."
+            },
+            "lg": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.dynamic.component_size.spacing.xl.rem}",
+              "$description": "32px icon size reacting to component-size mode."
+            }
+          }
+        },
+        "inline_icon": {
+          "size": {
+            "body": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.dynamic.typography_context.md}",
+              "$description": "Inline icon size for body text."
+            },
+            "h1": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.dynamic.typography_context.2xl}",
+              "$description": "Inline icon size for h1 text context."
+            },
+            "h2": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.dynamic.typography_context.xl}",
+              "$description": "Inline icon size for h2 text context."
+            }
           }
         }
       }
