@@ -76,10 +76,12 @@
 
 		.ob-column-main {
 			flex: 1 1 100%;
+			overflow: auto;
 		}
 
 		.ob-column-content {
 			height: 100%;
+			overflow: auto;
 		}
 	}
 
