@@ -212,10 +212,10 @@ module.exports = {
 			lines: 67,
 		},
 		'projects/sds/src/app/tabbed-page': {
-			statements: 49,
-			branches: 0,
-			functions: 11,
-			lines: 50,
+			statements: 83,
+			branches: 56,
+			functions: 74,
+			lines: 84,
 		},
 		'projects/sds/src/app/text-page': {
 			statements: 61,
