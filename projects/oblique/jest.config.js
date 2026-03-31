@@ -16,7 +16,6 @@ module.exports = {
 		'!**/**.harness.ts',
 		'!**/index.ts',
 		// the following files have no spec files and therefore have a 0 coverage. Tests will be written later
-		'!**/http-api-interceptor.ts',
 		'!**/off-canvas-container.directive.ts',
 	],
 	coverageThreshold: {
@@ -44,12 +43,6 @@ module.exports = {
 			branches: 88,
 			functions: 100,
 			lines: 100,
-		},
-		'projects/oblique/src/lib/http-api-interceptor/*.ts': {
-			statements: 0,
-			branches: 0,
-			functions: 0,
-			lines: 0,
 		},
 		'projects/oblique/src/lib/icon/*.ts': {
 			statements: 96,
