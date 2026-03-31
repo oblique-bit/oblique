@@ -1,0 +1,15 @@
+{
+  "ob": {
+    "c": {
+      "icon_slot": {
+        "color": {
+          "fg": {
+            "$type": "color",
+            "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
+            "$description": "Default icon foreground color. Highest contrast neutral foreground for consistency with default text color. Reacts to lightness mode changes."
+          }
+        }
+      }
+    }
+  }
+}

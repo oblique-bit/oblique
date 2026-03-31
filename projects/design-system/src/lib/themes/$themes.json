@@ -57,6 +57,7 @@
       "05_html/button/07_reference_only": "source",
       "04_component/atom/icon_slot/static": "enabled",
       "04_component/atom/icon_slot/size": "enabled",
+      "04_component/atom/icon_slot/color": "enabled",
       "04_component/molecule/pill/pill": "enabled",
       "04_component/molecule/pill/typography": "source",
       "01_global/themes-scoped/static": "source",
