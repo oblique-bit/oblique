@@ -35,6 +35,7 @@ import {ObIconService} from './icon/icon.service';
 import {Observable, firstValueFrom, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
 import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
+
 const translations: any = {};
 class FakeLoader implements TranslateLoader {
 	// eslint-disable-next-line @typescript-eslint/naming-convention,@typescript-eslint/no-unused-vars
@@ -46,11 +47,13 @@ class FakeLoader implements TranslateLoader {
 describe('utilities', () => {
 	describe('windowProvider', () => {
 		it('should return Window if provided with document', () => {
-			expect(windowProvider(document)).toEqual(window);
+			const actualWindowProvider = windowProvider(document);
+			expect(actualWindowProvider).toEqual(window);
 		});
 
 		it('should return en empty object if not provided document', () => {
-			expect(windowProvider({} as Document)).toEqual({});
+			const actualWindowProvider = windowProvider({} as Document);
+			expect(actualWindowProvider).toEqual({});
 		});
 	});
 
@@ -76,38 +79,52 @@ describe('utilities', () => {
 			});
 
 			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
+				const currentWindow = TestBed.inject(WINDOW);
+
+				expect(currentWindow).toEqual(window);
 			});
 
 			describe('Paginator configuration', () => {
 				it('should provide MatPaginatorIntl as ObPaginatorService', () => {
-					expect(TestBed.inject(MatPaginatorIntl) instanceof ObPaginatorService).toBe(true);
+					const paginatorIntl = TestBed.inject(MatPaginatorIntl);
+
+					expect(paginatorIntl instanceof ObPaginatorService).toBe(true);
 				});
 			});
 
 			describe('Icon configuration', () => {
 				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith(undefined);
+					const iconService = TestBed.inject(ObIconService);
+
+					expect(iconService.registerOnAppInit).toHaveBeenCalledWith(undefined);
 				});
 			});
 
 			describe('Language configuration', () => {
 				it('should call "initialize" on "ObLanguageService"', () => {
-					expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalled();
+					const languageService = TestBed.inject(ObLanguageService);
+
+					expect(languageService.initialize).toHaveBeenCalled();
 				});
 			});
 
 			describe('Translate configuration', () => {
 				it('should provide "TranslateService"', () => {
-					expect(TestBed.inject(TranslateService)).toBeTruthy();
+					const translateService = TestBed.inject(TranslateService);
+
+					expect(translateService).toBeTruthy();
 				});
 
 				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
-					expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
+					const translateService = TestBed.inject(TranslateService);
+
+					expect(translateService.currentLoader).toBeInstanceOf(ObMultiTranslateLoader);
 				});
 
 				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({flatten: true});
+					const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+					expect(translationConfiguration).toEqual({flatten: true});
 				});
 			});
 
@@ -120,13 +137,15 @@ describe('utilities', () => {
 					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
 					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}},
 				])('should create $token injection token', ({token, config}) => {
-					expect(TestBed.inject(token)).toEqual(config);
+					const actualToken = TestBed.inject(token);
+					expect(actualToken).toEqual(config);
 				});
 			});
 
 			describe('accessibility statement configuration', () => {
 				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
-					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+					const actualAccessibilityStatement = TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION);
+					expect(actualAccessibilityStatement).toEqual({
 						applicationName: 'appName',
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
@@ -138,13 +157,17 @@ describe('utilities', () => {
 
 			describe('has language in URL', () => {
 				it('should provide OB_HAS_LANGUAGE_IN_URL as false', () => {
-					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(false);
+					const hasLanguageInUrl = TestBed.inject(OB_HAS_LANGUAGE_IN_URL);
+
+					expect(hasLanguageInUrl).toBe(false);
 				});
 			});
 
 			describe('history state', () => {
 				it('should capture the initial browser history length', () => {
-					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
+					const historyState = TestBed.inject(OB_HISTORY_STATE);
+
+					expect(historyState).toEqual({initialLength: window.history.length});
 				});
 			});
 		});
@@ -187,25 +210,31 @@ describe('utilities', () => {
 			});
 
 			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
+				const actualWindow = TestBed.inject(WINDOW);
+				expect(actualWindow).toEqual(window);
 			});
 
 			describe('Icon configuration', () => {
 				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({additionalIcons: []});
+					const obIconService = TestBed.inject(ObIconService);
+
+					expect(obIconService.registerOnAppInit).toHaveBeenCalledWith({additionalIcons: []});
 				});
 			});
 
 			describe('Translate configuration', () => {
 				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+					const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+					expect(translationConfiguration).toEqual({
 						additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
 						flatten: false,
 					});
 				});
 
 				it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-					expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
+					const translateService = TestBed.inject(TranslateService);
+					expect(translateService.compiler).toBeInstanceOf(TranslateNoOpCompiler);
 				});
 			});
 
@@ -236,13 +265,17 @@ describe('utilities', () => {
 
 			describe('has language in URL', () => {
 				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
-					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
+					const hasLanguageInUrl = TestBed.inject(OB_HAS_LANGUAGE_IN_URL);
+
+					expect(hasLanguageInUrl).toBe(true);
 				});
 			});
 
 			describe('history state', () => {
 				it('should capture the initial browser history length', () => {
-					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
+					const historyState = TestBed.inject(OB_HISTORY_STATE);
+
+					expect(historyState).toEqual({initialLength: window.history.length});
 				});
 			});
 		});
@@ -276,7 +309,9 @@ describe('utilities', () => {
 			});
 
 			it('should initialize language with locales from translate configuration', () => {
-				expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(locales);
+				const obLanguageService = TestBed.inject(ObLanguageService);
+
+				expect(obLanguageService.initialize).toHaveBeenCalledWith(locales);
 			});
 		});
 
@@ -577,7 +612,8 @@ describe('utilities', () => {
 			});
 
 			it('should initialize language with locale from ObMasterLayoutConfig when translate.locales is not provided', () => {
-				expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(locale);
+				const obLanguageService = TestBed.inject(ObLanguageService);
+				expect(obLanguageService.initialize).toHaveBeenCalledWith(locale);
 			});
 		});
 
@@ -589,20 +625,25 @@ describe('utilities', () => {
 			});
 
 			it('should provide "TranslateService"', () => {
-				expect(TestBed.inject(TranslateService)).toBeTruthy();
+				const translateService = TestBed.inject(TranslateService);
+				expect(translateService).toBeTruthy();
 			});
 
 			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
-				expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
+				const translateService = TestBed.inject(TranslateService);
+				expect(translateService.currentLoader).toBeInstanceOf(ObMultiTranslateLoader);
 			});
 
 			it('should provide "TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({additionalFiles: undefined, flatten: true});
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(translationConfiguration).toEqual({additionalFiles: undefined, flatten: true});
 			});
 
 			describe('loader', () => {
 				it('should be an instance of "ObMultiTranslateLoader"', () => {
-					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
+					const translateLoader = TestBed.inject(TranslateLoader);
+					expect(translateLoader).toBeInstanceOf(ObMultiTranslateLoader);
 				});
 			});
 
@@ -648,7 +689,9 @@ describe('utilities', () => {
 			});
 
 			it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(translationConfiguration).toEqual({
 					additionalFiles: [
 						{prefix: './path1/', suffix: '.json'},
 						{prefix: './path2/', suffix: '.js'},
@@ -658,12 +701,14 @@ describe('utilities', () => {
 			});
 
 			it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-				expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
+				const translateService = TestBed.inject(TranslateService);
+				expect(translateService.compiler).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 
 			describe('loader', () => {
 				it('should be an instance of "ObMultiTranslateLoader"', () => {
-					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
+					const translateLoader = TestBed.inject(TranslateLoader);
+					expect(translateLoader).toBeInstanceOf(ObMultiTranslateLoader);
 				});
 			});
 
@@ -708,18 +753,22 @@ describe('utilities', () => {
 			});
 
 			it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(translationConfiguration).toEqual({
 					flatten: false,
 				});
 			});
 
 			it('should use "TranslateNoOpCompiler " as "TranslateLoader"', () => {
-				expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
+				const translateService = TestBed.inject(TranslateService);
+				expect(translateService.compiler instanceof TranslateNoOpCompiler).toBe(true);
 			});
 
 			describe('loader', () => {
 				it('should be an instance of "TranslateNoOpLoader "', () => {
-					expect(TestBed.inject(TranslateLoader) instanceof TranslateNoOpLoader).toBe(true);
+					const translateLoader = TestBed.inject(TranslateLoader);
+					expect(translateLoader instanceof TranslateNoOpLoader).toBe(true);
 				});
 			});
 
