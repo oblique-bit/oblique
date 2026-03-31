@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",
-    "ng-packagr": "^21.1.0"
+    "ng-packagr": "^21.2.2"
   },
   "sideEffects": false,
   "exports": {
