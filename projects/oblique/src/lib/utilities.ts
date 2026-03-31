@@ -26,7 +26,9 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {
 	ObIAccessibilityStatementConfiguration,
 	ObIBanner,
+	ObIHistoryState,
 	ObIObliqueConfiguration,
+	ObIObliqueTestingConfiguration,
 	ObIPamsConfiguration,
 	ObITranslateConfig,
 	ObITranslateConfigInternal,
@@ -60,10 +62,6 @@ export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
 );
 export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
-
-export interface ObIHistoryState {
-	initialLength: number;
-}
 
 export function windowProvider(doc: Document): Window {
 	return doc.defaultView || ({} as Window);
@@ -102,10 +100,7 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 	]);
 }
 /* eslint-disable max-lines-per-function */
-export function provideObliqueTestingConfiguration(
-	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> &
-		Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>> = {}
-): EnvironmentProviders {
+export function provideObliqueTestingConfiguration(config: ObIObliqueTestingConfiguration = {}): EnvironmentProviders {
 	return makeEnvironmentProviders([
 		provideAppInitializer(() => {
 			const localesConfiguration = getLocalesConfiguration(config);
@@ -138,15 +133,10 @@ export function provideObliqueTestingConfiguration(
 		})),
 	]);
 }
-
-function getLocalesConfiguration(
-	config: Omit<ObIObliqueConfiguration, 'accessibilityStatement'> &
-		Partial<Pick<ObIObliqueConfiguration, 'accessibilityStatement'>>
-): ObILocale {
+function getLocalesConfiguration(config: ObIObliqueTestingConfiguration): ObILocale {
 	const masterLayoutConfig = inject(ObMasterLayoutConfig);
 	return config.translate?.locales ?? masterLayoutConfig.locale;
 }
-
 export function provideObliqueTranslations(configuration: ObITranslateConfig = {}): EnvironmentProviders {
 	const {config, flatten, additionalFiles} = configuration;
 	return makeEnvironmentProviders([

@@ -40,6 +40,14 @@ export interface ObIObliqueConfiguration {
 	hasLanguageInUrl?: boolean;
 }
 
+export interface ObIHistoryState {
+	initialLength: number;
+}
+
+export type ObIObliqueTestingConfiguration = Omit<ObIObliqueConfiguration, 'accessibilityStatement'> & {
+	accessibilityStatement?: ObIAccessibilityStatementConfiguration;
+};
+
 export interface ObITranslateConfig {
 	flatten?: boolean;
 	config?: TranslateModuleConfig;
