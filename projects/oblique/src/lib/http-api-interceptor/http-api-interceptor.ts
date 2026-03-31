@@ -15,6 +15,12 @@ import {
 	ObIObliqueHttpErrorResponse,
 } from './http-api-interceptor.model';
 
+/**
+ * HTTP interceptor for Oblique API calls.
+ *
+ * It can activate the spinner for matching API requests and route that spinner to a specific channel.
+ * The channel is configured through `ObHttpApiInterceptorConfig.api.spinnerChannel` and defaults to ObSpinnerService.CHANNEL.
+ */
 @Injectable({providedIn: 'root'})
 export class ObHttpApiInterceptor implements HttpInterceptor {
 	private readonly config = inject(ObHttpApiInterceptorConfig);
