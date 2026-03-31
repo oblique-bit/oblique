@@ -68,6 +68,23 @@ ob.s.category.component.property.variant.state
 - **Examples**: `ob.c.button.bg.primary.hover`, `ob.c.input.border.focus`
 - **Rule**: Describe *component-specific styling*
 
+#### **Consumer Usage Names (Token-Safe)**
+For usage-facing naming that is read by system consumers, prefer concise underscore identifiers.
+
+- **Pattern**: `{usage_name}` using lowercase + underscore
+- **Approved icon usage names**:
+  - `static`
+  - `component`
+  - `inline_text`
+- **Rule**: Keep technical variable modes and implementation details out of the primary usage label.
+
+For backward compatibility, existing technical token paths may still use legacy segment names.
+When this happens, document the mapping explicitly:
+
+- `static` -> `ob.c.icon_slot.static.*`
+- `component` -> `ob.c.icon_slot.component.*`
+- `inline_text` -> `ob.c.icon_slot.inline_text.*`
+
 ---
 
 ## **Primitive vs Semantic Naming**

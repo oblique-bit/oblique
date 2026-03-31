@@ -173,8 +173,6 @@
       "ob.h.button.border_radius": "9fc5728a87638f32272ca3b62a6ab048544c9940",
       "ob.h.button.border_width": "aa596ea2391ac4f822028d6b4d24fa287dd4ae94",
       "ob.h.button.icon.size": "742fbfa6f504ca99b37b85c27383ec254dbb42d0",
-      "ob.c.icon_slot.size_proportional.standard": "6bc1167481dc9b64764db5cd17f35f760b75bf36",
-      "ob.c.icon_slot.size_proportional.mini": "8dadcc1e94602423cb2e0b27baffe28a30d39001",
       "ob.c.badge.color.bg.attention.enabled": "cb625cf24e822b51963e781f1eb2d2d34a0fbe1f",
       "ob.c.badge.color.bg.attention.disabled": "dcc31804263308a858b6a991b461a02ec7c24d60",
       "ob.c.badge.color.bg.info.enabled": "043ec8ebec0c632736372db663d11ebcfb3b053a",
