@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnInit} from '@angular/core';
+import {Directive, ElementRef, Input, OnInit, inject} from '@angular/core';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outsideFilter';
 import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation/masterLayoutNavigationSubMenuFilter';
@@ -19,11 +19,8 @@ import {isNotKeyboardEventOnButton} from '../utilities';
 export class ObAriaMenuButtonDirective implements OnInit {
 	@Input('obAriaMenuButton') target: string;
 	active = false;
-
-	constructor(
-		private readonly globalEvents: ObGlobalEventsService,
-		private readonly element: ElementRef
-	) {}
+	private readonly globalEvents = inject(ObGlobalEventsService);
+	private readonly element = inject(ElementRef);
 
 	ngOnInit(): void {
 		this.monitorForClickOutside();

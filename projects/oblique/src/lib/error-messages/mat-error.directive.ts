@@ -1,4 +1,4 @@
-import {Directive, ElementRef, OnDestroy, OnInit, Optional, inject} from '@angular/core';
+import {Directive, ElementRef, OnDestroy, OnInit, inject} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, takeUntil, tap} from 'rxjs/operators';
@@ -13,18 +13,18 @@ import {OB_MAT_ERROR_PREFIX} from '../utilities';
 	standalone: true,
 })
 export class ObMatErrorDirective implements OnInit, OnDestroy {
+	private readonly control = inject(ObErrorMessagesDirective, {optional: true});
+	private readonly el = inject(ElementRef);
 	private readonly pipe: ObTranslateParamsPipe;
 	private errors: ValidationErrors = {};
 	private readonly unsubscribe = new Subject<void>();
 	private readonly obMatErrorPrefix = inject(OB_MAT_ERROR_PREFIX, {optional: true});
 
-	constructor(
-		@Optional() private readonly control: ObErrorMessagesDirective,
-		private readonly el: ElementRef,
-		translate: TranslateService
-	) {
+	constructor() {
+		const translate = inject(TranslateService);
+
 		if (this.control) {
-			this.pipe = new ObTranslateParamsPipe(translate);
+			this.pipe = new ObTranslateParamsPipe();
 			translate.onLangChange.subscribe(() => {
 				this.showErrors(this.errors);
 			});

@@ -1,4 +1,4 @@
-import {Directive, OnDestroy, OnInit} from '@angular/core';
+import {Directive, OnDestroy, OnInit, inject} from '@angular/core';
 
 import {ObOffCanvasService} from './off-canvas.service';
 import {filter, takeUntil} from 'rxjs/operators';
@@ -14,12 +14,9 @@ import {Subject} from 'rxjs';
 	},
 })
 export class ObOffCanvasBackdropDirective implements OnInit, OnDestroy {
+	private readonly offCanvas = inject(ObOffCanvasService);
+	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly unsubscribe = new Subject<void>();
-
-	constructor(
-		private readonly offCanvas: ObOffCanvasService,
-		private readonly globalEventsService: ObGlobalEventsService
-	) {}
 
 	close(): void {
 		this.offCanvas.open = false;

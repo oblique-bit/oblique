@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {isNotKeyboardEventOnButton} from '../../utilities';
 
@@ -13,7 +13,7 @@ import {isNotKeyboardEventOnButton} from '../../utilities';
 	exportAs: 'obMasterLayoutHeaderToggle',
 })
 export class ObMasterLayoutHeaderToggleDirective {
-	constructor(private readonly masterLayout: ObMasterLayoutComponentService) {}
+	private readonly masterLayout = inject(ObMasterLayoutComponentService);
 
 	toggle(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {

@@ -18,9 +18,15 @@ describe('LanguageService', () => {
 			languages: {},
 		} as unknown as ObILocale;
 
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				providers: [ObLanguageService, {provide: TranslateService, useValue: mock}],
+			});
+			service = TestBed.inject(ObLanguageService);
+		});
+
 		it('should throw', () => {
-			const serviceWithInvalidConfig = new ObLanguageService(mock, null, null, null);
-			expect(() => serviceWithInvalidConfig.initialize(localesConfiguration)).toThrow(
+			expect(() => service.initialize(localesConfiguration)).toThrow(
 				"Oblique's language config needs to either define at least 1 locale or to be disabled."
 			);
 		});

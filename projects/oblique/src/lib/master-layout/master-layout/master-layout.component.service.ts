@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
 import {ObMasterLayoutConfig} from '../master-layout.config';
@@ -10,6 +10,7 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 export class ObMasterLayoutComponentService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	private readonly events = new Subject<ObIMasterLayoutEvent>();
+	private readonly config = inject(ObMasterLayoutConfig);
 	private isMenuOpenedInternal = false;
 	private hasCoverInternal = this.config.layout.hasCover;
 	private hasOffCanvasInternal = this.config.layout.hasOffCanvas;
@@ -17,7 +18,7 @@ export class ObMasterLayoutComponentService {
 	private hasLayoutInternal = this.config.layout.hasLayout;
 	private hasMaxWidthInternal = this.config.layout.hasMaxWidth;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {
+	constructor() {
 		this.configEvents$ = this.events.asObservable();
 	}
 

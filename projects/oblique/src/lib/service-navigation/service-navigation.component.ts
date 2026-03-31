@@ -7,11 +7,15 @@ import {
 	QueryList,
 	TemplateRef,
 	ViewEncapsulation,
+	inject,
 } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {
 	ObEPamsEnvironment,
+	ObILanguage,
+	ObISectionLink,
+	ObIServiceNavigationApplication,
 	ObIServiceNavigationContact,
 	ObIServiceNavigationLink,
 	ObLoginState,
@@ -23,6 +27,7 @@ import {ObServiceNavigationTimeoutCookieActivityService} from './timeout/service
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navigation-timeout-return-url.service';
 import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
+import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
 
 @Component({
 	selector: 'ob-service-navigation',
@@ -73,22 +78,39 @@ export class ObServiceNavigationComponent implements OnInit {
 		this.headerControlsService.setEportalLanguageSynchronization(synchronization);
 	}
 	@Output()
-	readonly loginState: Observable<ObLoginState> = this.headerControlsService.getLoginState$();
-	@Output() readonly logoutTriggered = this.headerControlsService.getLogoutTrigger$();
+	readonly loginState: Observable<ObLoginState>;
+	@Output() readonly logoutTriggered;
 	@ContentChildren('customWidgetTemplate') customWidgetTemplate: QueryList<TemplateRef<unknown>>;
-	readonly loginUrl$ = this.headerControlsService.getLoginUrl$();
-	readonly loginState$ = this.headerControlsService.getLoginState$();
-	readonly userName$ = this.headerControlsService.getUserName$();
-	readonly profileUrls$ = this.headerControlsService.getProfileUrls$();
-	readonly inboxMailUrl$ = this.headerControlsService.getInboxMailUrl$();
-	readonly messageCount$ = this.headerControlsService.getMessageCount$();
-	readonly applicationsUrl$ = this.headerControlsService.getApplicationsUrl$();
-	readonly lastUsedApplications$ = this.headerControlsService.getLastUsedApplications$();
-	readonly favoriteApplications$ = this.headerControlsService.getFavoriteApplications$();
-	readonly language$ = this.headerControlsService.getLanguage$();
-	readonly languages = this.headerControlsService.getLanguages();
-	readonly infoBackend$ = this.headerControlsService.getInfoBackend$();
-	constructor(private readonly headerControlsService: ObServiceNavigationService) {}
+	readonly loginUrl$: Observable<string>;
+	readonly loginState$: Observable<ObLoginState>;
+	readonly userName$: Observable<string>;
+	readonly profileUrls$: Observable<ObISectionLink[]>;
+	readonly inboxMailUrl$: Observable<string>;
+	readonly messageCount$: Observable<number>;
+	readonly applicationsUrl$: Observable<string>;
+	readonly lastUsedApplications$: Observable<ObIServiceNavigationApplication[]>;
+	readonly favoriteApplications$: Observable<ObIServiceNavigationApplication[]>;
+	readonly language$: Observable<string>;
+	readonly languages: ObILanguage[];
+	readonly infoBackend$: Observable<ObIServiceNavigationBackendInfo>;
+	private readonly headerControlsService = inject(ObServiceNavigationService);
+
+	constructor() {
+		this.loginState = this.headerControlsService.getLoginState$();
+		this.logoutTriggered = this.headerControlsService.getLogoutTrigger$();
+		this.loginUrl$ = this.headerControlsService.getLoginUrl$();
+		this.loginState$ = this.headerControlsService.getLoginState$();
+		this.userName$ = this.headerControlsService.getUserName$();
+		this.profileUrls$ = this.headerControlsService.getProfileUrls$();
+		this.inboxMailUrl$ = this.headerControlsService.getInboxMailUrl$();
+		this.messageCount$ = this.headerControlsService.getMessageCount$();
+		this.applicationsUrl$ = this.headerControlsService.getApplicationsUrl$();
+		this.lastUsedApplications$ = this.headerControlsService.getLastUsedApplications$();
+		this.favoriteApplications$ = this.headerControlsService.getFavoriteApplications$();
+		this.language$ = this.headerControlsService.getLanguage$();
+		this.languages = this.headerControlsService.getLanguages();
+		this.infoBackend$ = this.headerControlsService.getInfoBackend$();
+	}
 
 	ngOnInit(): void {
 		this.headerControlsService.setUpRootUrls(this.environment, this.rootUrl);

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -6,8 +6,9 @@ import {TranslateService} from '@ngx-translate/core';
 export class ObPaginatorService extends MatPaginatorIntl {
 	private ofLabel = 'of';
 	private pageLabel = 'Page';
+	private readonly translateService = inject(TranslateService);
 
-	constructor(private readonly translateService: TranslateService) {
+	constructor() {
 		super();
 		this.initTranslation();
 	}

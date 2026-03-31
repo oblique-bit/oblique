@@ -1,4 +1,4 @@
-import {DOCUMENT, Inject, Injectable, OnDestroy} from '@angular/core';
+import {DOCUMENT, Injectable, OnDestroy, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
@@ -24,21 +24,19 @@ export class ObDocumentMetaService implements OnDestroy {
 		description: '',
 	};
 	private readonly unsubscribe = new Subject<void>();
+	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly titleService = inject(Title);
+	private readonly translate = inject(TranslateService);
+	private readonly document = inject<Document>(DOCUMENT);
 
-	constructor(
-		router: Router,
-		private readonly activatedRoute: ActivatedRoute,
-		private readonly titleService: Title,
-		private readonly translate: TranslateService,
-		@Inject(DOCUMENT) private readonly document: Document
-	) {
+	constructor() {
 		this.headElement = this.document.querySelector('head');
 		this.metaDescription = this.getOrCreateMetaElement('description');
 		this.translate.onLangChange.pipe(takeUntil(this.unsubscribe)).subscribe(this.updateMetaInformation.bind(this));
 
 		// Subscribe to NavigationEnd events and handle current activated route:
-		router.events
-			.pipe(
+		inject(Router)
+			.events.pipe(
 				filter(event => event instanceof NavigationEnd),
 				map(() => this.activatedRoute),
 				map(route => getRootRoute(route)),

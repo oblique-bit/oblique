@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Pipe, PipeTransform, inject} from '@angular/core';
 import {SafeHtml} from '@angular/platform-browser';
 import {ObAutocompleteTextToFindService} from '../autocomplete-text-to-find.service';
 
@@ -7,7 +7,7 @@ import {ObAutocompleteTextToFindService} from '../autocomplete-text-to-find.serv
 	standalone: true,
 })
 export class ObHighlightTextPipe implements PipeTransform {
-	constructor(private readonly textToFindService: ObAutocompleteTextToFindService) {}
+	private readonly textToFindService = inject(ObAutocompleteTextToFindService);
 
 	transform(value: string, textToFind: string, cssClass = 'ob-highlight-text', regexFlags = 'gi'): SafeHtml {
 		if (!textToFind) {

@@ -1,15 +1,4 @@
-import {
-	Directive,
-	ElementRef,
-	Inject,
-	Input,
-	OnChanges,
-	OnDestroy,
-	OnInit,
-	Optional,
-	Renderer2,
-	inject,
-} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, Renderer2, inject} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, switchMap} from 'rxjs';
@@ -38,22 +27,22 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private iconElement: HTMLSpanElement;
 	private readonly host: HTMLAnchorElement;
 	private hasIcon = false;
-	private readonly screenReaderOnlyTextElement: HTMLSpanElement = this.createScreenReaderOnlyTextElement();
+	private readonly screenReaderOnlyTextElement: HTMLSpanElement;
 	private readonly isLinkExternal$ = new Subject<boolean>();
 	private defaultRel: string;
 	private defaultTarget: string;
-	private readonly window: Window = inject(WINDOW);
+	private readonly window = inject<Window>(WINDOW);
+	private readonly config = inject(EXTERNAL_LINK, {optional: true});
+	private readonly renderer = inject(Renderer2);
+	private readonly translate = inject(TranslateService);
+	private readonly iconRegistry = inject(MatIconRegistry);
 
-	constructor(
-		@Optional() @Inject(EXTERNAL_LINK) private readonly config,
-		private readonly renderer: Renderer2,
-		elRef: ElementRef,
-		private readonly translate: TranslateService,
-		private readonly iconRegistry: MatIconRegistry
-	) {
+	constructor() {
+		const elRef = inject(ElementRef);
 		this.host = elRef.nativeElement;
 		this.icon = this.config?.icon || 'left';
 		this.isExternalLink = this.config?.isExternalLink || 'auto';
+		this.screenReaderOnlyTextElement = this.createScreenReaderOnlyTextElement();
 	}
 
 	ngOnInit(): void {

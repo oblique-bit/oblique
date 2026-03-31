@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, SimpleChanges, ViewEncapsulation, inject, signal} from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
@@ -30,31 +30,37 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 	encapsulation: ViewEncapsulation.None,
 	exportAs: 'obNavTree',
 })
-export class ObNavTreeComponent implements OnDestroy {
+export class ObNavTreeComponent implements OnChanges, OnDestroy {
 	static DEFAULTS = {
 		HIGHLIGHT: 'ob-pattern-highlight',
 		LABEL_FORMATTER: defaultLabelFormatterFactory,
 	};
 
+	formatter = signal<(item: ObNavTreeItemModel, filterPattern?: string) => string>(undefined);
 	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
 	@Input() items: ObNavTreeItemModel[] = [];
 	@Input() prefix = 'nav-tree';
 	@Input() hasFilter = false;
 	@Input() filterPattern: string;
-	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string =
-		ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate);
+	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string;
 	@Input() treeAriaLabelledBy: string;
 	@Input() treeAriaLabel: string;
 	private readonly unsubscribe = new Subject<void>();
+	private readonly route = inject(ActivatedRoute);
+	private readonly translate = inject(TranslateService);
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
-	constructor(
-		private readonly route: ActivatedRoute,
-		private readonly translate: TranslateService
-	) {
+	constructor() {
 		this.route.fragment.pipe(takeUntil(this.unsubscribe)).subscribe(fragment => {
 			this.activeFragment = fragment;
 		});
+		this.formatter.set(ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate));
+	}
+
+	ngOnChanges(changes: SimpleChanges<ObNavTreeComponent>): void {
+		if (changes.labelFormatter) {
+			this.formatter.set(this.labelFormatter);
+		}
 	}
 
 	ngOnDestroy(): void {

@@ -19,17 +19,17 @@ export class ObMasterLayoutNavigationService {
 	private readonly scrolled$ = this.scrolledInternal.asObservable();
 	private readonly refreshedInternal: Subject<void> = new Subject<void>();
 	private readonly refreshed$ = this.refreshedInternal.asObservable();
+	private readonly config = inject(ObMasterLayoutConfig);
 	private isFullWidthInternal = this.config.navigation.isFullWidth;
 	private scrollModeInternal = this.config.navigation.scrollMode;
 	private readonly globalEventsService = inject(ObGlobalEventsService);
-	private readonly window = inject(WINDOW);
+	private readonly window = inject<Window>(WINDOW);
 
-	constructor(
-		private readonly config: ObMasterLayoutConfig,
-		layoutService: ObMasterLayoutComponentService,
-		offCanvas: ObOffCanvasService,
-		translate: TranslateService
-	) {
+	constructor() {
+		const layoutService = inject(ObMasterLayoutComponentService);
+		const offCanvas = inject(ObOffCanvasService);
+		const translate = inject(TranslateService);
+
 		merge(
 			translate.onLangChange,
 			offCanvas.opened$.pipe(delay(600)), // delay for the animation duration

@@ -60,15 +60,12 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	readonly selection = new SelectionModel<ObIFileDescription>(true, []);
 	readonly COLUMN_SELECT = 'select';
 	readonly COLUMN_ACTION = 'action';
+	private readonly fileUploadService = inject(ObFileUploadService);
+	private readonly translate = inject(TranslateService);
 	private readonly unsubscribe = new Subject<void>();
 	private readonly dataChange = new Subject<void>();
 
-	private readonly window = inject(WINDOW);
-
-	constructor(
-		private readonly fileUploadService: ObFileUploadService,
-		private readonly translate: TranslateService
-	) {}
+	private readonly window = inject<Window>(WINDOW);
 
 	@Input() mapFunction = (files: ObIFileDescription[]): ObIFileDescription[] => files;
 	@Input() mapFilesToDeleteUrlFunction: (files: ObIFileDescription[]) => string = files =>

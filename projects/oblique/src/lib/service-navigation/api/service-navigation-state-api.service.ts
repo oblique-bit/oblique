@@ -1,13 +1,12 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable, map} from 'rxjs';
 import {ObIServiceNavigationResponse, ObIServiceNavigationState} from './service-navigation.api.model';
 
 @Injectable({providedIn: 'root'})
 export class ObServiceNavigationStateApiService {
 	private readonly resourceUrl = 'api/widget/state';
-
-	constructor(private readonly httpClient: HttpClient) {}
+	private readonly httpClient = inject(HttpClient);
 
 	get(environmentUrl: string, favoriteLimit: number): Observable<ObIServiceNavigationState> {
 		return this.httpClient

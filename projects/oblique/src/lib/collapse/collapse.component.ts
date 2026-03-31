@@ -4,11 +4,9 @@ import {
 	Component,
 	ElementRef,
 	EventEmitter,
-	Inject,
 	InjectionToken,
 	Input,
 	OnDestroy,
-	Optional,
 	Output,
 	ViewChild,
 	ViewEncapsulation,
@@ -44,6 +42,7 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterConte
 	time: number;
 	@Input() iconPosition: 'left' | 'right' | 'justified' | 'none' = 'left';
 	@Output() readonly activeChange = new EventEmitter<boolean>();
+	private isActive = inject(OBLIQUE_COLLAPSE_ACTIVE, {optional: true});
 	private readonly unsubscribe = new Subject<void>();
 
 	get active(): boolean {
@@ -59,11 +58,9 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterConte
 		this.time = ObCollapseComponent.getDuration(duration || 'slow');
 	}
 
-	constructor(
-		@Optional() @Inject(OBLIQUE_COLLAPSE_ACTIVE) private isActive: boolean,
-		@Optional() @Inject(OBLIQUE_COLLAPSE_ICON_POSITION) iconPos: 'left' | 'right' | 'justified' | 'none',
-		@Optional() @Inject(OBLIQUE_COLLAPSE_DURATION) animationSpeed: 'slow' | 'fast' | number
-	) {
+	constructor() {
+		const iconPos = inject(OBLIQUE_COLLAPSE_ICON_POSITION, {optional: true});
+		const animationSpeed = inject(OBLIQUE_COLLAPSE_DURATION, {optional: true});
 		this.isActive = !!this.isActive;
 		this.iconPosition = iconPos ?? this.iconPosition;
 		this.time = ObCollapseComponent.getDuration(animationSpeed || 'slow');

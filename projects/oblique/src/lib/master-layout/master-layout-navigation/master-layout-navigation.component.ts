@@ -4,12 +4,10 @@ import {
 	Component,
 	ElementRef,
 	EventEmitter,
-	Inject,
 	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
-	Optional,
 	Output,
 	Renderer2,
 	ViewEncapsulation,
@@ -47,8 +45,8 @@ import {OB_HAS_LANGUAGE_IN_URL} from '../../utilities';
 	},
 })
 export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
-	isFullWidth = this.masterLayout.navigation.isFullWidth;
-	activeClass = this.config.navigation.activeClass;
+	isFullWidth: boolean;
+	activeClass: string;
 	currentScroll = 0;
 
 	currentGrandparentLink: ObNavigationLink = new ObNavigationLink();
@@ -69,7 +67,13 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		matrixParams: 'ignored',
 	};
 	private static readonly buttonWidth = 30;
-
+	private readonly router = inject(Router);
+	private readonly masterLayout = inject(ObMasterLayoutService);
+	private readonly config = inject(ObMasterLayoutConfig);
+	private readonly renderer = inject(Renderer2);
+	private readonly el = inject<ElementRef<HTMLElement>>(ElementRef);
+	private readonly globalEventsService = inject(ObGlobalEventsService);
+	private readonly translate = inject(TranslateService);
 	private readonly currentParentAncestors: BehaviorSubject<ObNavigationLink[]> = new BehaviorSubject<
 		ObNavigationLink[]
 	>([]);
@@ -81,16 +85,10 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	private readonly unsubscribe: Subject<void> = new Subject<void>();
 	private readonly hasLanguageInUrl = inject(OB_HAS_LANGUAGE_IN_URL);
 
-	constructor(
-		private readonly router: Router,
-		private readonly masterLayout: ObMasterLayoutService,
-		private readonly config: ObMasterLayoutConfig,
-		private readonly renderer: Renderer2,
-		private readonly el: ElementRef<HTMLElement>,
-		private readonly globalEventsService: ObGlobalEventsService,
-		private readonly translate: TranslateService,
-		@Optional() @Inject(OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION) hideExternalLinks: boolean
-	) {
+	constructor() {
+		this.isFullWidth = this.masterLayout.navigation.isFullWidth;
+		this.activeClass = this.config.navigation.activeClass;
+		const hideExternalLinks = inject(OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, {optional: true});
 		this.hideExternalLinks = hideExternalLinks ?? true;
 		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
 		this.currentParentRouterLinkBase$ = this.currentParentRouterLinkBase.asObservable();

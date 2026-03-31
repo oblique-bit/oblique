@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ObIServiceNavigationConfig, ObIServiceNavigationResponse} from './service-navigation.api.model';
@@ -7,8 +7,7 @@ import {ObIServiceNavigationConfig, ObIServiceNavigationResponse} from './servic
 @Injectable({providedIn: 'root'})
 export class ObServiceNavigationConfigApiService {
 	private readonly resourceUrl = 'api/v2/widget/config';
-
-	constructor(private readonly httpClient: HttpClient) {}
+	private readonly httpClient = inject(HttpClient);
 
 	fetchUrls(rootUrl: string): Observable<ObIServiceNavigationConfig> {
 		return this.httpClient

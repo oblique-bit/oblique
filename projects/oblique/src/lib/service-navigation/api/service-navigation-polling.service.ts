@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable, ReplaySubject, combineLatest, switchMap, throwError, timer} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {obPauseWhenPageHidden} from '../../rxjs-operators';
@@ -13,12 +13,11 @@ import {ObIServiceNavigationState} from './service-navigation.api.model';
 export class ObServiceNavigationPollingService {
 	readonly state$: Observable<ObIServiceNavigationState>;
 	private readonly pollingDataState = new ReplaySubject<ObIServiceNavigationState>(1);
+	private readonly stateApiService = inject(ObServiceNavigationStateApiService);
+	private readonly countApiService = inject(ObServiceNavigationCountApiService);
+	private readonly notification = inject(ObNotificationService);
 
-	constructor(
-		private readonly stateApiService: ObServiceNavigationStateApiService,
-		private readonly countApiService: ObServiceNavigationCountApiService,
-		private readonly notification: ObNotificationService
-	) {
+	constructor() {
 		this.state$ = this.pollingDataState.asObservable();
 	}
 

@@ -1,10 +1,12 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {MatDatepickerIntl} from '@angular/material/datepicker';
 import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
 export class ObDatepickerIntlService extends MatDatepickerIntl {
-	constructor(private readonly translateService: TranslateService) {
+	private readonly translateService = inject(TranslateService);
+
+	constructor() {
 		super();
 		this.initTranslation();
 	}

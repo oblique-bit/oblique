@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnChanges, Renderer2, input} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, Renderer2, inject, input} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {first, tap} from 'rxjs/operators';
 
@@ -17,12 +17,12 @@ export class ObOptionLabelIconDirective implements OnChanges {
 
 	private readonly host: HTMLElement;
 	private iconSpan: HTMLSpanElement;
+	private readonly renderer = inject(Renderer2);
+	private readonly iconRegistry = inject(MatIconRegistry);
 
-	constructor(
-		private readonly renderer: Renderer2,
-		elementRef: ElementRef,
-		private readonly iconRegistry: MatIconRegistry
-	) {
+	constructor() {
+		const elementRef = inject(ElementRef);
+
 		this.host = elementRef.nativeElement;
 	}
 

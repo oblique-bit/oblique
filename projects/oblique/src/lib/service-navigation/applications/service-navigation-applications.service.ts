@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable, filter, switchMap} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {ObServiceNavigationApplicationsStoreService} from './service-navigation-applications-store.service';
@@ -12,7 +12,7 @@ import {ObServiceNavigationApplicationStatus} from '../service-navigation.model'
 
 @Injectable()
 export class ObServiceNavigationApplicationsService {
-	constructor(private readonly applicationsService: ObServiceNavigationApplicationsStoreService) {}
+	private readonly applicationsService = inject(ObServiceNavigationApplicationsStoreService);
 
 	getApplications(
 		rootUrl: string

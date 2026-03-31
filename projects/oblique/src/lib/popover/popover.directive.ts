@@ -3,13 +3,11 @@ import {
 	Directive,
 	ElementRef,
 	EventEmitter,
-	Inject,
 	InjectionToken,
 	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
-	Optional,
 	Output,
 	Renderer2,
 	TemplateRef,
@@ -73,14 +71,13 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly viewContainerRef = inject(ViewContainerRef);
 	private readonly renderer = inject(Renderer2);
+	private readonly globalToggleHandle = inject<ObEToggleType>(OBLIQUE_POPOVER_TOGGLE_HANDLE, {optional: true});
+	private readonly globalCloseOnlyOnToggle = inject(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, {optional: true});
+	private readonly globalAppendToBody = inject(OBLIQUE_POPOVER_APPEND_TO_BODY, {optional: true});
 
-	constructor(
-		el: ElementRef,
-		@Inject(DOCUMENT) document: Document,
-		@Optional() @Inject(OBLIQUE_POPOVER_TOGGLE_HANDLE) private readonly globalToggleHandle: ObEToggleType,
-		@Optional() @Inject(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE) private readonly globalCloseOnlyOnToggle: boolean,
-		@Optional() @Inject(OBLIQUE_POPOVER_APPEND_TO_BODY) private readonly globalAppendToBody: boolean
-	) {
+	constructor() {
+		const el = inject(ElementRef);
+		const document = inject<Document>(DOCUMENT);
 		this.body = document.body;
 		this.host = el.nativeElement;
 	}

@@ -50,123 +50,180 @@ class TestComponent {
 	prefix = 'nav-tree-test';
 	filterPattern: string;
 
-	labelFormatter(label: string): string {
-		return `${label} - ${this.prefix}`;
-	}
+	labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string;
+}
+
+@Component({
+	standalone: false,
+	template: ` <ob-nav-tree [items]="items" />`,
+})
+class TestComponentDefault {
+	items = [
+		new ObNavTreeItemModel({id: 'A', label: 'A - Label', fragment: 'fragment', queryParams: {foo: 'bar'}}),
+		new ObNavTreeItemModel({
+			id: 'B',
+			label: 'B - Label',
+			items: [
+				new ObNavTreeItemModel({id: 'B-1', label: 'B.1 - Label'}),
+				new ObNavTreeItemModel({
+					id: 'B-2',
+					label: 'B.2 - Label',
+					items: [
+						new ObNavTreeItemModel({id: 'B2-1', label: 'B.2.1 - Label'}),
+						new ObNavTreeItemModel({id: 'B2-2', label: 'B.2.2 - Label'}),
+						new ObNavTreeItemModel({id: 'B2-3', label: 'B.2.3 - Label'}),
+					],
+				}),
+				new ObNavTreeItemModel({id: 'B-3', label: 'B.3 - Label'}),
+			],
+		}),
+		new ObNavTreeItemModel({
+			id: 'C',
+			label: 'C - Label',
+			items: [
+				new ObNavTreeItemModel({id: 'C-1', label: 'C.1 - Label'}),
+				new ObNavTreeItemModel({id: 'C-2', label: 'C.2 - Label'}),
+				new ObNavTreeItemModel({id: 'C-3', label: 'C.3 - Label'}),
+			],
+		}),
+	];
 }
 
 describe(ObNavTreeComponent.name, () => {
 	let testComponent: TestComponent;
 	let component: ObNavTreeComponent;
 	let fixture: ComponentFixture<TestComponent>;
+	let fixtureDefault: ComponentFixture<TestComponentDefault>;
 	let element: DebugElement;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ObNavTreeComponent, RouterTestingModule],
-			declarations: [TestComponent],
+			declarations: [TestComponent, TestComponentDefault],
 			providers: [provideObliqueTestingConfiguration()],
 			schemas: [NO_ERRORS_SCHEMA],
 		}).compileComponents();
 	});
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(TestComponent);
-		testComponent = fixture.componentInstance;
-		fixture.detectChanges();
-		element = fixture.debugElement.query(By.directive(ObNavTreeComponent));
-		component = element.injector.get(ObNavTreeComponent);
-	});
+	describe('NavTree with custom formats', () => {
+		beforeEach(() => {
+			fixture = TestBed.createComponent(TestComponent);
+			testComponent = fixture.componentInstance;
+			testComponent.labelFormatter = (item: ObNavTreeItemModel) => `${item.label} - Default}`;
+			fixture.detectChanges();
+			element = fixture.debugElement.query(By.directive(ObNavTreeComponent));
+			component = element.injector.get(ObNavTreeComponent);
+		});
 
-	it('should be created', () => {
-		expect(component).toBeTruthy();
-	});
+		it('should be created', () => {
+			expect(component).toBeTruthy();
+		});
 
-	it('should create 4 navigation trees after recursive rendering', () => {
-		const navTrees = fixture.debugElement.queryAll(By.css('ul'));
-		expect(navTrees.length).toBe(4);
-	});
+		it('should create 4 navigation trees after recursive rendering', () => {
+			const navTrees = fixture.debugElement.queryAll(By.css('ul'));
+			expect(navTrees.length).toBe(4);
+		});
 
-	it('should create 12 navigation items after recursive rendering', () => {
-		const navItems = fixture.debugElement.queryAll(By.css('li'));
-		expect(navItems.length).toBe(12);
-	});
+		it('should create 12 navigation items after recursive rendering', () => {
+			const navItems = fixture.debugElement.queryAll(By.css('li'));
+			expect(navItems.length).toBe(12);
+		});
 
-	it('should detect changes if another `NavTreeItemModel is added`', () => {
-		testComponent.items.push(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}));
-		fixture.detectChanges();
+		it('should detect changes if another `NavTreeItemModel is added`', () => {
+			testComponent.items.push(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}));
+			fixture.detectChanges();
 
-		const navItems = fixture.debugElement.queryAll(By.css('li'));
-		expect(navItems.length).toBe(13);
-	});
+			const navItems = fixture.debugElement.queryAll(By.css('li'));
+			expect(navItems.length).toBe(13);
+		});
 
-	it('should custom format item labels', () => {
-		const suffix = '[custom]';
-		component.labelFormatter = (item: ObNavTreeItemModel) => `${item.label} - ${suffix}`;
-		fixture.detectChanges();
-		const firstNavItem = fixture.debugElement.query(By.css('li'));
-		expect(firstNavItem.nativeElement.innerHTML).toContain(suffix);
-	});
+		it('should custom format item labels', () => {
+			const suffix = '[custom]';
+			testComponent.labelFormatter = (item: ObNavTreeItemModel) => `${item.label} - ${suffix}`;
+			fixture.detectChanges();
+			const firstNavItem = fixture.debugElement.query(By.css('li'));
+			expect(firstNavItem.nativeElement.innerHTML).toContain(suffix);
+		});
 
-	it('should add URL fragment to `href` attribute', () => {
-		const fragment = `#${testComponent.items[0].fragment}`;
+		it('should add URL fragment to `href` attribute', () => {
+			const fragment = `#${testComponent.items[0].fragment}`;
 
-		// [routerLink] directive adds `[href]` attribute to nav item links:
-		const firstNavItem = fixture.debugElement.query(By.css('a.ob-nav-link'));
-		expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
-		expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(fragment);
-	});
+			// [routerLink] directive adds `[href]` attribute to nav item links:
+			const firstNavItem = fixture.debugElement.query(By.css('a.ob-nav-link'));
+			expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
+			expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(fragment);
+		});
 
-	it('should add URL query params to `href` attribute', () => {
-		const urlQueryParams = `foo=${testComponent.items[0].queryParams.foo as string}`;
+		it('should add URL query params to `href` attribute', () => {
+			const urlQueryParams = `foo=${testComponent.items[0].queryParams.foo as string}`;
 
-		// [routerLink] directive adds `[href]` attribute to nav item links:
-		const firstNavItem = fixture.debugElement.query(By.css('a.ob-nav-link'));
-		expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
-		expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(urlQueryParams);
-	});
+			// [routerLink] directive adds `[href]` attribute to nav item links:
+			const firstNavItem = fixture.debugElement.query(By.css('a.ob-nav-link'));
+			expect(firstNavItem.nativeElement.attributes.getNamedItem('href')).toBeDefined();
+			expect(firstNavItem.nativeElement.attributes.getNamedItem('href').value).toContain(urlQueryParams);
+		});
 
-	it('should filter navigation items', () => {
-		component.filterPattern = '2'; // Filter on '2' pattern
-		fixture.detectChanges();
+		it('should filter navigation items', () => {
+			component.filterPattern = '2'; // Filter on '2' pattern
+			fixture.detectChanges();
 
-		// All items containing the string '2' and their respective parents should be visible:
-		const navItems = fixture.debugElement.queryAll(By.css('li'));
-		expect(navItems.length).toBe(7);
-	});
+			// All items containing the string '2' and their respective parents should be visible:
+			const navItems = fixture.debugElement.queryAll(By.css('li'));
+			expect(navItems.length).toBe(7);
+		});
 
-	it('should highlight patterns on filtered navigation items', () => {
-		// Restore default label formatter:
-		const translate = TestBed.inject(TranslateService);
-		component.labelFormatter = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(translate);
-		component.filterPattern = 'C'; // Filter on 'C' pattern
-		fixture.detectChanges();
+		it('should highlight patterns on filtered navigation items', () => {
+			// Restore default label formatter:
+			const translate = TestBed.inject(TranslateService);
+			testComponent.labelFormatter = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(translate);
+			component.filterPattern = 'C'; // Filter on 'C' pattern
+			fixture.detectChanges();
 
-		// All items containing the string 'C' and their respective parents should be visible:
-		const navItems = fixture.debugElement.queryAll(By.css('li'));
-		expect(navItems.length).toBe(4);
+			// All items containing the string 'C' and their respective parents should be visible:
+			const navItems = fixture.debugElement.queryAll(By.css('li'));
+			expect(navItems.length).toBe(4);
 
-		// ...and filter patterns highlighted:
-		navItems.forEach(item => {
-			expect(item.nativeElement.innerHTML).toContain(ObNavTreeComponent.DEFAULTS.HIGHLIGHT);
+			// ...and filter patterns highlighted:
+			navItems.forEach(item => {
+				expect(item.nativeElement.innerHTML).toContain(ObNavTreeComponent.DEFAULTS.HIGHLIGHT);
+			});
+		});
+
+		it('should collapse all navigation items', () => {
+			component.collapseAll();
+			fixture.detectChanges();
+
+			const collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
+			expect(collapsed.length).toBe(3);
+		});
+
+		it('should expand all navigation items', () => {
+			component.collapseAll();
+			fixture.detectChanges();
+			component.expandAll();
+			fixture.detectChanges();
+
+			const collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
+			expect(collapsed.length).toBe(0);
 		});
 	});
 
-	it('should collapse all navigation items', () => {
-		component.collapseAll();
-		fixture.detectChanges();
+	describe('NavTree with default formats', () => {
+		beforeEach(() => {
+			fixtureDefault = TestBed.createComponent(TestComponentDefault);
+			fixtureDefault.detectChanges();
+			element = fixtureDefault.debugElement.query(By.directive(ObNavTreeComponent));
+			component = element.injector.get(ObNavTreeComponent);
+		});
 
-		const collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
-		expect(collapsed.length).toBe(3);
-	});
+		it('should be created', () => {
+			expect(component).toBeTruthy();
+		});
 
-	it('should expand all navigation items', () => {
-		component.collapseAll();
-		fixture.detectChanges();
-		component.expandAll();
-		fixture.detectChanges();
-
-		const collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
-		expect(collapsed.length).toBe(0);
+		it('should use default labelFormatter', () => {
+			const formattedLabel = 'A - Label';
+			const firstNavItem = fixtureDefault.debugElement.query(By.css('li'));
+			expect(firstNavItem.nativeElement.innerHTML).toContain(formattedLabel);
+		});
 	});
 });

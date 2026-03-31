@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit, Optional} from '@angular/core';
+import {Component, Input, OnInit, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, merge, of} from 'rxjs';
@@ -32,13 +32,10 @@ export class ObBreadcrumbComponent implements OnInit {
 	private get beautifyUrls(): boolean {
 		return this.beautifyUrlsInput ?? this.config?.beautifyUrls ?? false;
 	}
-
-	constructor(
-		private readonly router: Router,
-		private readonly route: ActivatedRoute,
-		private readonly translateService: TranslateService,
-		@Optional() @Inject(ObTBreadcrumbConfig) private readonly config: ObBreadcrumbConfig
-	) {}
+	private readonly router = inject(Router);
+	private readonly route = inject(ActivatedRoute);
+	private readonly translateService = inject(TranslateService);
+	private readonly config = inject<ObBreadcrumbConfig>(ObTBreadcrumbConfig, {optional: true});
 
 	ngOnInit(): void {
 		const navigationEndEvents = this.router.events.pipe(

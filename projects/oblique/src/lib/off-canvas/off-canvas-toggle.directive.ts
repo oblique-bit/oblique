@@ -13,9 +13,8 @@ import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 	exportAs: 'obOffCanvasToggle',
 })
 export class ObOffCanvasToggleDirective {
-	private readonly window = inject(WINDOW);
-
-	constructor(private readonly offCanvas: ObOffCanvasService) {}
+	private readonly window = inject<Window>(WINDOW);
+	private readonly offCanvas = inject(ObOffCanvasService);
 
 	toggle(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {
