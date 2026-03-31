@@ -4,6 +4,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 export interface ObIHttpApiRequest {
 	notification: ObIHttpApiRequestNotification;
 	spinner: boolean;
+	spinnerChannel: string;
 }
 
 export interface ObIHttpApiRequestNotification {
