@@ -55,7 +55,6 @@ export class TabbedPageComponent {
 	private readonly serializer = inject(UrlSerializer);
 	private readonly versionService = inject(VersionService);
 	private readonly cmsRouteRedirector = inject(CmsRouteRedirector);
-	private readonly galleryPageId = 43;
 
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
@@ -109,7 +108,8 @@ export class TabbedPageComponent {
 		return validPageId$.pipe(
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
 			tap(data => {
-				this.showGalleryTab = data.data.id === this.galleryPageId;
+				// Will match any icon page by checking its slug (e.g icons-14 or icons-15).
+				this.showGalleryTab = /^icons(?:-\d+)?$/u.test(data.data.slug);
 			}),
 			map(cmsData => this.buildCmsData(cmsData.data))
 		);
