@@ -8,7 +8,6 @@ import {Subject} from 'rxjs';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '.ob-off-canvas-backdrop',
-	standalone: true,
 	host: {
 		'(click)': 'close()',
 	},

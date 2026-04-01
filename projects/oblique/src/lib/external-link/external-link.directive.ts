@@ -9,7 +9,6 @@ import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'a',
-	standalone: true,
 	host: {
 		'[attr.rel]': 'rel',
 		'[attr.target]': 'target',

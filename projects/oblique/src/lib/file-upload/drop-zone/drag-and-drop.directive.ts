@@ -2,7 +2,6 @@ import {Directive, EventEmitter, Output} from '@angular/core';
 
 @Directive({
 	selector: '[obDragDrop]',
-	standalone: true,
 	host: {
 		'(dragleave)': 'onDragLeave($event)',
 		'(dragover)': 'onDragOver($event)',

@@ -5,7 +5,6 @@ import {startWith} from 'rxjs';
 
 @Directive({
 	selector: '[obSelectable]',
-	standalone: true,
 	host: {
 		'(click)': 'onClick($event)',
 		'(focus)': 'onFocus()',

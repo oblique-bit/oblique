@@ -6,7 +6,6 @@ import {ValidationErrors} from '@angular/forms';
  */
 @Directive({
 	selector: '[obSchemaValidation]',
-	standalone: true,
 	exportAs: 'obSchemaValidation',
 })
 export class ObMockSchemaValidationDirective {

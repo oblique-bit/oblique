@@ -4,7 +4,6 @@ import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 
 @Directive({
 	selector: '[obOffCanvasToggle]',
-	standalone: true,
 	host: {
 		'(click)': 'toggle($event)',
 		'(keyup.enter)': 'toggle($event)',

@@ -5,7 +5,6 @@ import {Directive, Input} from '@angular/core';
  */
 @Directive({
 	selector: '[obSelectable]',
-	standalone: true,
 	exportAs: 'obSelectable',
 })
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters

@@ -10,7 +10,6 @@ import {ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
  */
 @Component({
 	selector: 'ob-file-info',
-	standalone: true,
 	template: '',
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-file-info'},

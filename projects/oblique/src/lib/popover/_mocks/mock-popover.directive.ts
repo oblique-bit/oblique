@@ -7,7 +7,6 @@ import {ObEToggleType} from '../popover.model';
  */
 @Directive({
 	selector: '[obPopover]',
-	standalone: true,
 	host: {class: 'ob-popover'},
 	exportAs: 'obPopover',
 })

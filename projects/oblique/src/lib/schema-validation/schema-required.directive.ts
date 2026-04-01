@@ -4,7 +4,6 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Directive({
 	selector: '[obSchemaValidate][ngModel],[obSchemaValidate][formControlName]',
-	standalone: true,
 	host: {
 		'[attr.aria-required]': 'required',
 		class: 'ob-schema-required-validation',

@@ -2,9 +2,7 @@ import {Directive, ElementRef, Renderer2, effect, inject, isDevMode} from '@angu
 import {MatIconButton} from '@angular/material/button';
 import {MatTooltip} from '@angular/material/tooltip';
 
-@Directive({
-	standalone: true,
-})
+@Directive({})
 export class ObIconButtonDirective {
 	private readonly isIconButton = Boolean(inject(MatIconButton, {optional: true}));
 	private readonly hasTooltip = Boolean(inject(MatTooltip, {optional: true}));

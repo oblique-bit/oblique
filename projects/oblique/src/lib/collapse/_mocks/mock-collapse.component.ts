@@ -5,7 +5,6 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
  */
 @Component({
 	selector: 'ob-collapse',
-	standalone: true,
 	template: '',
 	exportAs: 'obCollapse',
 })
