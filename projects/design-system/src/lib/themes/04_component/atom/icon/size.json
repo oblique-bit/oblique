@@ -1,28 +1,33 @@
 {
   "ob": {
     "c": {
-      "icon_slot": {
+      "icon": {
         "static": {
           "size": {
             "xs": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.static.component_size.spacing.xs.rem}",
-              "$description": "16px fixed icon size. Does not react to any mode; size remains stable."
+              "$description": "16px fixed icon size. Does not react to any mode; size remains stable regardless of component_size mode changes."
             },
             "sm": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.static.component_size.spacing.sm.rem}",
-              "$description": "20px fixed icon size. Does not react to any mode; size remains stable."
+              "$description": "20px fixed icon size. Does not react to any mode; size remains stable regardless of component_size mode changes."
             },
             "md": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.static.component_size.spacing.md.rem}",
-              "$description": "24px fixed icon size. Does not react to any mode; size remains stable."
+              "$description": "24px fixed icon size. Does not react to any mode; size remains stable regardless of component_size mode changes."
             },
             "lg": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.static.component_size.spacing.xl.rem}",
-              "$description": "32px fixed icon size. Does not react to any mode; size remains stable."
+              "$description": "32px fixed icon size. Does not react to any mode; size remains stable regardless of component_size mode changes."
+            },
+            "body": {
+              "$type": "sizing",
+              "$value": "{ob.s.dimension.static.typography_context.md}",
+              "$description": "Fixed icon size for body text. Does not react to any mode; size remains stable regardless of typography_context mode changes."
             }
           }
         },
@@ -56,6 +61,15 @@
               "$type": "sizing",
               "$value": "{ob.s.dimension.dynamic.typography_context.md}",
               "$description": "Inline icon size for body text only. Reacts to typography_context mode."
+            }
+          },
+          "spacing": {
+            "vertical": {
+              "offset": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.component_size.micro.sm.px}",
+                "$description": "2px upward correction for optical baseline alignment of inline icons with adjacent capital letters. Approximates 0.125em at 16px base font size. Static: the 0.5px prose-mode difference (2.5px) has no valid primitive."
+              }
             }
           }
         }
