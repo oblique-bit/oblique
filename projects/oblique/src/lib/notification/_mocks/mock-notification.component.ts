@@ -6,7 +6,6 @@ import {ObINotification} from '../notification.model';
  */
 @Component({
 	selector: 'ob-notification',
-	standalone: false,
 	template: '',
 	exportAs: 'obNotification',
 })

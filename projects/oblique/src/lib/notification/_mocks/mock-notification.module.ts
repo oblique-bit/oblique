@@ -13,7 +13,7 @@ export {ObMockNotificationConfig} from './mock-notification.config';
  *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
  */
 @NgModule({
-	declarations: [ObMockNotificationComponent],
+	imports: [ObMockNotificationComponent],
 	providers: [
 		{provide: ObNotificationService, useClass: ObMockNotificationService},
 		{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},

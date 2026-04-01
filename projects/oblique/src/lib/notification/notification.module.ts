@@ -1,11 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
-
 import {ObNotificationComponent} from './notification.component';
-import {ObAlertModule} from '../alert/alert.module';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
 
 export {ObNotificationComponent} from './notification.component';
 export {ObNotificationService} from './notification.service';
@@ -22,8 +16,7 @@ export {
 } from './notification.model';
 
 @NgModule({
-	imports: [CommonModule, MatTooltipModule, ObAlertModule, ObTranslateParamsModule, TranslateModule],
-	declarations: [ObNotificationComponent],
+	imports: [ObNotificationComponent],
 	exports: [ObNotificationComponent],
 })
 export class ObNotificationModule {}
