@@ -1,11 +1,13 @@
 import {By} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {Component, DebugElement, Directive, EventEmitter, Output} from '@angular/core';
+import {Component, DebugElement, Directive, EventEmitter, Output, inject} from '@angular/core';
 import {skip} from 'rxjs/operators';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {ObColumnToggleDirective as ObRealColumnToggleDirective} from './column-toggle.directive';
+import {ObColumnPanelDirective as ObRealColumnPanelDirective} from './column-panel.directive';
 
 let resizerCallback;
 class ResizeObserver {
@@ -20,7 +22,6 @@ window.ResizeObserver = ResizeObserver;
 
 @Directive({
 	selector: '[obColumnPanel]',
-	standalone: false,
 	exportAs: 'obColumnPanel',
 })
 class ObColumnPanelDirective {
@@ -30,6 +31,17 @@ class ObColumnPanelDirective {
 	toggle(): void {
 		this.collapsed = !this.collapsed;
 		this.toggled.emit(this.collapsed);
+	}
+}
+
+@Directive({
+	selector: '[obColumnToggle]',
+})
+class ObColumnToggleDirective {
+	private readonly parent = inject(ObColumnPanelDirective);
+
+	onclick(): void {
+		this.parent.toggle();
 	}
 }
 
@@ -47,9 +59,12 @@ describe(ObColumnLayoutComponent.name, () => {
 		let panels: ObColumnPanelDirective[];
 
 		beforeEach(async () => {
+			TestBed.overrideComponent(ObColumnLayoutComponent, {
+				remove: {imports: [ObRealColumnPanelDirective, ObRealColumnToggleDirective]},
+				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
+			});
 			await TestBed.configureTestingModule({
-				imports: [TranslateModule],
-				declarations: [ObColumnLayoutComponent, ObColumnPanelDirective],
+				imports: [ObColumnLayoutComponent, TranslateModule],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -195,9 +210,13 @@ describe(ObColumnLayoutComponent.name, () => {
 		let testComponent: TestComponent;
 
 		beforeEach(async () => {
+			TestBed.overrideComponent(ObColumnLayoutComponent, {
+				remove: {imports: [ObRealColumnPanelDirective, ObRealColumnToggleDirective]},
+				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
+			});
 			await TestBed.configureTestingModule({
-				imports: [TranslateModule],
-				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
+				imports: [ObColumnLayoutComponent, TranslateModule],
+				declarations: [TestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -271,9 +290,13 @@ describe(ObColumnLayoutComponent.name, () => {
 		let fixture: ComponentFixture<TestComponent>;
 
 		beforeEach(async () => {
+			TestBed.overrideComponent(ObColumnLayoutComponent, {
+				remove: {imports: [ObRealColumnPanelDirective, ObRealColumnToggleDirective]},
+				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
+			});
 			await TestBed.configureTestingModule({
-				imports: [TranslateModule],
-				declarations: [TestComponent, ObColumnLayoutComponent, ObColumnPanelDirective],
+				imports: [ObColumnLayoutComponent, TranslateModule],
+				declarations: [TestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
