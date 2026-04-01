@@ -1,13 +1,26 @@
+import {AsyncPipe} from '@angular/common';
 import {Component, Input, OnInit, inject} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {ActivatedRoute, NavigationEnd, Router, RouterModule} from '@angular/router';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {Observable, merge, of} from 'rxjs';
 import {distinctUntilChanged, filter, map, switchMap} from 'rxjs/operators';
+import {ObLocalizePipe} from '../router/ob-localize.pipe';
+import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
 
 @Component({
 	selector: 'ob-breadcrumb',
-	standalone: false,
+	imports: [
+		AsyncPipe,
+		MatIconModule,
+		MatTooltipModule,
+		ObEllipsisTooltipDirective,
+		ObLocalizePipe,
+		RouterModule,
+		TranslateModule,
+	],
 	templateUrl: './breadcrumb.component.html',
 	styleUrls: ['./breadcrumb.component.scss'],
 	exportAs: 'obBreadcrumb',
