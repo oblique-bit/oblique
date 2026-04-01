@@ -7,27 +7,22 @@
             "xs": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.static.component_size.spacing.xs.rem}",
-              "$description": "16px fixed icon size. Does not react to any mode; size remains stable regardless of component_size mode changes."
+              "$description": "16px fixed. Does not react to component_size mode."
             },
             "sm": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.static.component_size.spacing.sm.rem}",
-              "$description": "20px fixed icon size. Does not react to any mode; size remains stable regardless of component_size mode changes."
+              "$description": "20px fixed. Does not react to component_size mode."
             },
             "md": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.static.component_size.spacing.md.rem}",
-              "$description": "24px fixed icon size. Does not react to any mode; size remains stable regardless of component_size mode changes."
+              "$description": "24px fixed. Does not react to component_size mode."
             },
             "lg": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.static.component_size.spacing.xl.rem}",
-              "$description": "32px fixed icon size. Does not react to any mode; size remains stable regardless of component_size mode changes."
-            },
-            "body": {
-              "$type": "sizing",
-              "$value": "{ob.s.dimension.static.typography_context.md}",
-              "$description": "Fixed icon size for body text. Does not react to any mode; size remains stable regardless of typography_context mode changes."
+              "$description": "32px fixed. Does not react to component_size mode."
             }
           }
         },
@@ -36,22 +31,22 @@
             "xs": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.dynamic.component_size.spacing.xs.rem}",
-              "$description": "Smallest icon size. Use only in edge cases where alignment or space constraints require it. Reacts to component_size mode."
+              "$description": "Smallest icon size. Reacts to component_size mode."
             },
             "sm": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.dynamic.component_size.spacing.sm.rem}",
-              "$description": "Small icon size. Use sparingly; prefer md unless space is constrained. Reacts to component_size mode."
+              "$description": "Small icon size. Reacts to component_size mode."
             },
             "md": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.dynamic.component_size.spacing.md.rem}",
-              "$description": "Default icon size for components. Reacts to component_size mode."
+              "$description": "Default icon size. Reacts to component_size mode."
             },
             "lg": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.dynamic.component_size.spacing.xl.rem}",
-              "$description": "Large icon size. Use when additional visual prominence is required. Reacts to component_size mode."
+              "$description": "Large icon size. Reacts to component_size mode."
             }
           }
         },
@@ -69,7 +64,7 @@
                 "offset": {
                   "$type": "spacing",
                   "$value": "{ob.s.dimension.static.component_size.micro.sm.px}",
-                  "$description": "2px in interface mode for body only upward correction for optical baseline alignment of inline icons with adjacent capital letters. Approximates 0.125em at 16px base font size. Static: the 0.5px prose-mode difference (2.5px) has no valid primitive."
+                  "$description": "Upward optical baseline offset for inline icons with adjacent capital letters. 2px fixed; does not react to any mode."
                 }
               }
             }
