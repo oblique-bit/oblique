@@ -6,7 +6,7 @@
           "fg": {
             "$type": "color",
             "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
-            "$description": "Default icon foreground color. Highest contrast neutral foreground for consistency with default text color. Reacts to lightness mode changes."
+            "$description": "Default icon foreground color. Highest contrast neutral foreground for consistency with default text color. Reacts to lightness mode changes. Parent components may override this color — especially interaction components such as button."
           }
         }
       }

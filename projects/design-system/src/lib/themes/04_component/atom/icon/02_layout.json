@@ -17,7 +17,7 @@
             "md": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.static.component_size.spacing.md.rem}",
-              "$description": "24px fixed. Does not react to component_size mode."
+              "$description": "Default. 24px fixed. Does not react to any size mode."
             },
             "lg": {
               "$type": "sizing",
