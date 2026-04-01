@@ -12,7 +12,6 @@ import {
 @Component({
 	selector: 'app-tabs-wrapper',
 	imports: [IdPipe, TabComponent, TabsComponent],
-	standalone: true,
 	template: `<app-tabs [idPrefix]="componentId" [id]="componentId | id: ['tabs']">
 		<app-tab
 			name="test-tab-1"
