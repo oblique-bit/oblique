@@ -64,7 +64,7 @@
                 "offset": {
                   "$type": "spacing",
                   "$value": "{ob.s.dimension.static.component_size.micro.sm.px}",
-                  "$description": "Upward optical baseline offset for inline icons with adjacent capital letters. 2px fixed; does not react to any mode."
+                  "$description": "Upward optical baseline offset for inline icons with adjacent capital letters. Fixed at 2px (= 0.125em at 16px base). Figma does not support em units — devs should implement as 0.125em in CSS so the offset scales proportionally with the adjacent text size. Does not react to any mode."
                 }
               }
             }
