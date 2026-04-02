@@ -39,7 +39,7 @@ function buildConfigs(modes, libFolder, components) {
 						],
 						files: [
 							{
-								destination: `${libFolder}/styles/oblique-tokens.css`,
+								destination: `${libFolder}/css/layers/tokens.css`,
 								format: coreFormat.name,
 								options: {
 									mode: mode.selector,

@@ -149,9 +149,7 @@ export function isDependencyInPackage(dependency: keyof typeof currentVersions):
 			chalk.red(`[Error]: This command is not available when running the Oblique CLI outside a workspace`),
 			error
 		);
-		/* eslint-disable @typescript-eslint/no-magic-numbers */
-		process.exit(3);
-		/* eslint-enable @typescript-eslint/no-magic-numbers */
+		process.exit(1);
 	}
 	return false;
 }

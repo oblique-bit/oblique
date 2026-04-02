@@ -118,6 +118,7 @@ formControl = new FormControl('');
 				label: `${groupName} ${this.randomWords[Math.floor(Math.random() * this.randomWords?.length - 1) + 1]}`,
 				disabled,
 				iconName: this.icons[Math.floor(Math.random() * this.icons?.length - 1) + 1],
+				ariaLabel: 'Aria Label text example',
 			});
 		}
 		return optionList;
@@ -140,14 +141,15 @@ formControl = new FormControl('');
 	}
 
 	disableOptions(disabled: boolean): void {
-		this.visibleOptionList.map(optionList =>
-			optionList?.groupOptions
-				? // eslint-disable-next-line array-callback-return
-					optionList?.groupOptions.map(option => {
-						option.disabled = disabled;
-					})
-				: (optionList.disabled = disabled)
-		);
+		this.visibleOptionList.forEach(optionList => {
+			if (optionList?.groupOptions) {
+				optionList.groupOptions.forEach(option => {
+					option.disabled = disabled;
+				});
+			} else {
+				optionList.disabled = disabled;
+			}
+		});
 	}
 
 	toggleDisabledState(state: boolean): void {

@@ -1,3 +1,16 @@
+# [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
+
+## Bug Fixes
+
+- **linting:** actually deactivate `@angular-eslint/component-class-suffix` ([1a19e5eb](https://github.com/oblique-bit/oblique/commit/1a19e5ebe6d262d2feedec83aa3d666f38bf307b), OUI-4404)
+
+## Features
+
+- **exec:** add `obExecWithLogging` and `obExecWithLoggingOrExit` functions ([d964582c](https://github.com/oblique-bit/oblique/commit/d964582cc27bb6f680e581eb9741d94a3a186959), OUI-4383)
+- **linting:** deactivate `default-case` and `@typescript-eslint/consistent-return` ([a02c7b19](https://github.com/oblique-bit/oblique/commit/a02c7b190566e22997b72d80220af0bc9dd63a99), OUI-4404)
+- **logger:** add `obCreateLogger` and `obCreateSchematicsLogger` factory functions ([eabecb5f](https://github.com/oblique-bit/oblique/commit/eabecb5f64f8a14ef716c17b2005b4b92f02a207), OUI-4343)
+- **schematics:** log each step ([79d48ea8](https://github.com/oblique-bit/oblique/commit/79d48ea85b15f55da1ef1ffae822273e982c35d0), OUI-4343)
+
 # [15.1.1](https://github.com/oblique-bit/oblique/compare/15.1.0...15.1.1) (2026-03-09)
 
 ## Bug Fixes

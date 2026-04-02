@@ -53,7 +53,11 @@ export default [
 			'consistent-this': 'error',
 			'constructor-super': 'error',
 			curly: 'error',
-			'default-case': 'error',
+			/**
+			 * Rule: default-case (https://eslint.org/docs/latest/rules/default-case)
+			 * Reason for disabling: Covered by @typescript-eslint/switch-exhaustiveness-check and TypeScript noImplicitReturns
+			 */
+			'default-case': 'off',
 			'default-case-last': 'error',
 			/**
 			 * Rule: default-param-last (https://eslint.org/docs/latest/rules/default-param-last)
@@ -457,7 +461,11 @@ export default [
 			'@typescript-eslint/class-methods-use-this': 'off',
 			'@typescript-eslint/consistent-generic-constructors': 'error',
 			'@typescript-eslint/consistent-indexed-object-style': 'error',
-			'@typescript-eslint/consistent-return': 'error',
+			/**
+			 * Rule: @typescript-eslint/consistent-return (https://typescript-eslint.io/rules/consistent-return)
+			 * Reason for disabling: covered by TypeScript noImplicitReturns
+			 */
+			'@typescript-eslint/consistent-return': 'off',
 			'@typescript-eslint/consistent-type-assertions': 'error',
 			'@typescript-eslint/consistent-type-definitions': 'error',
 			'@typescript-eslint/consistent-type-exports': 'error',
@@ -700,7 +708,7 @@ export default [
 			 * Rule: @angular-eslint/component-class-suffix (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-class-suffix.md)
 			 * Reason for disabling: as of angular 20, this is no longer recommended by the Angular Team
 			 */
-			'@angular-eslint/component-class-suffix': 'error',
+			'@angular-eslint/component-class-suffix': 'off',
 			/**
 			 * Rule: @angular-eslint/component-max-inline-declarations (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/component-max-inline-declarations.md)
 			 * Reason for {template: 0, styles: 0, animations: 0}: Templates, styles and animations should be external

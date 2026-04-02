@@ -19,6 +19,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {VersionService} from '../shared/version/version.service';
 import {UiUxComponent} from '../ui-ux/ui-ux.component';
 import {IconsExampleIconsGalleryPreviewComponent} from '../code-examples/code-examples/icons/previews/icons-gallery/icons-example-icons-gallery-preview.component';
+import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redirector';
 
 @Component({
 	selector: 'app-tabbed-page',
@@ -53,7 +54,7 @@ export class TabbedPageComponent {
 	private isNull = true;
 	private readonly serializer = inject(UrlSerializer);
 	private readonly versionService = inject(VersionService);
-	private readonly galleryPageId = 43;
+	private readonly cmsRouteRedirector = inject(CmsRouteRedirector);
 
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
@@ -64,17 +65,13 @@ export class TabbedPageComponent {
 		this.cmsData$ = this.buildCmsDataObservable(validPageId$);
 	}
 
-	onClick(event: MouseEvent): void {
+	onClick(event: PointerEvent): void {
 		const {target} = event;
 		if (!(target instanceof HTMLAnchorElement)) {
 			return;
 		}
 		event.preventDefault();
-		if (target.origin === window.location.origin) {
-			void this.router.navigate([target.pathname]);
-		} else {
-			window.open(target.href, '_blank', 'noopener,noreferrer');
-		}
+		this.cmsRouteRedirector.navigate(target.origin, target.pathname);
 	}
 
 	handleTabChanged(tabName: string): void {
@@ -111,7 +108,8 @@ export class TabbedPageComponent {
 		return validPageId$.pipe(
 			switchMap(id => this.cmsDataService.getTabbedPageComplete(id)),
 			tap(data => {
-				this.showGalleryTab = data.data.id === this.galleryPageId;
+				// Will match any icon page by checking its slug (e.g icons-14 or icons-15).
+				this.showGalleryTab = /^icons(?:-\d+)?$/u.test(data.data.slug);
 			}),
 			map(cmsData => this.buildCmsData(cmsData.data))
 		);

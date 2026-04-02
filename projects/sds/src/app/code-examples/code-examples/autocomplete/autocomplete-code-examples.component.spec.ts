@@ -21,4 +21,9 @@ describe('AutocompleteCodeExamplesComponent', () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
+
+	it('should include the ariaLabel example', () => {
+		const example = component.previews.find(preview => preview.idParts.includes('ariaLabel'));
+		expect(example).toBeTruthy();
+	});
 });

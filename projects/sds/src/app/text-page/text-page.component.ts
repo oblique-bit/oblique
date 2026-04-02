@@ -8,6 +8,7 @@ import {CmsDataService} from '../cms/cms-data.service';
 import {IdPipe} from '../shared/id/id.pipe';
 import {CommonModule} from '@angular/common';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redirector';
 
 @Component({
 	selector: 'app-text-page',
@@ -27,6 +28,7 @@ export class TextPageComponent implements AfterViewChecked {
 	private readonly domSanitizer = inject(DomSanitizer);
 	private readonly router = inject(Router);
 	private readonly activatedRoute = inject(ActivatedRoute);
+	private readonly cmsRouteRedirector = inject(CmsRouteRedirector);
 
 	constructor() {
 		const [validPageId$, invalidPageId$] = this.buildPageIdObservables();
@@ -41,22 +43,13 @@ export class TextPageComponent implements AfterViewChecked {
 		this.handleFragments();
 	}
 
-	onClick(event: MouseEvent): void {
+	onClick(event: PointerEvent): void {
 		const {target} = event;
 		if (!(target instanceof HTMLAnchorElement)) {
 			return;
 		}
 		event.preventDefault();
-		if (target.origin === window.location.origin) {
-			if (target.hash) {
-				const fragment = target.hash.replace('#', '');
-				void this.router.navigate([target.pathname], {fragment});
-			} else {
-				void this.router.navigate([target.pathname]);
-			}
-		} else {
-			window.open(target.href, '_blank', 'noopener,noreferrer');
-		}
+		this.cmsRouteRedirector.navigate(target.origin, target.pathname);
 	}
 
 	private buildPageIdObservables(): [Observable<number>, Observable<number>] {

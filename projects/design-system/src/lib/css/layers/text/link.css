@@ -1,0 +1,22 @@
+/*
+ * This file mirrors Figma's structure for the text/link component.
+ */
+a {
+	font-size: var(--ob-h-typography-context-body-link-font_size);
+	font-weight: var(--ob-h-typography-context-body-normal-font_weight);
+	letter-spacing: var(--ob-h-typography-context-body-link-letter_spacing);
+	line-height: var(--ob-h-typography-context-body-link-line_height);
+	color: var(--ob-h-link-color-default);
+
+	&:hover {
+		color: var(--ob-h-link-color-hover);
+	}
+
+	&:active {
+		color: var(--ob-h-link-color-active);
+	}
+
+	&:visited {
+		color: var(--ob-h-link-color-visited);
+	}
+}

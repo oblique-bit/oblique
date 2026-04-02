@@ -3,7 +3,7 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '15.1.3';
+export const version = '15.2.0';
 /* End of generated content */
 
 export const currentVersions = {
@@ -179,14 +179,12 @@ export function parseCommandArguments(): {
 	commandName: string;
 	arguments: string[];
 } {
-	const {argv} = process;
+	const [execPath, filePath, commandName, ...args] = process.argv;
 	return {
-		execPath: argv[0],
-		filePath: argv[1],
-		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-		commandName: argv[2],
-		// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-		arguments: argv.slice(3),
+		execPath,
+		filePath,
+		commandName,
+		arguments: args,
 	};
 }
 

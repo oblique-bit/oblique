@@ -46,7 +46,12 @@
 				[value]="option.label"
 				[disabled]="option.disabled"
 			>
-				<span obOptionLabelIcon [iconName]="option['iconName'] || ''" [iconPosition]="optionIconPosition">
+				<span
+					obOptionLabelIcon
+					[iconName]="option['iconName'] || ''"
+					[iconPosition]="optionIconPosition"
+					[ariaLabel]="option.ariaLabel"
+				>
 					<span
 						[innerHTML]="
 							displayWith()(option.label)

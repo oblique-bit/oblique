@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnChanges, Renderer2} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, Renderer2, input} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {first, tap} from 'rxjs/operators';
 
@@ -13,6 +13,7 @@ import {ObEIcon} from '../../icon/icon.model';
 export class ObOptionLabelIconDirective implements OnChanges {
 	@Input() iconName?: ObEIcon;
 	@Input() iconPosition: OptionLabelIconPosition = 'end';
+	ariaLabel = input<string | undefined>();
 
 	private readonly host: HTMLElement;
 	private iconSpan: HTMLSpanElement;
@@ -39,7 +40,7 @@ export class ObOptionLabelIconDirective implements OnChanges {
 				.pipe(
 					first(),
 					tap(svg => {
-						this.iconSpan = this.createIconElement(svg, host, iconPosition);
+						this.iconSpan = this.createIconElement(svg, host, iconPosition, this.ariaLabel());
 					})
 				)
 				.subscribe(() => {
@@ -74,10 +75,16 @@ export class ObOptionLabelIconDirective implements OnChanges {
 	private createIconElement(
 		svg: SVGElement,
 		host: HTMLElement,
-		iconPosition: OptionLabelIconPosition
+		iconPosition: OptionLabelIconPosition,
+		ariaLabel?: string
 	): HTMLSpanElement {
 		const span = this.renderer.createElement('span');
 		this.renderer.addClass(span, 'mat-icon');
+		if (ariaLabel) {
+			this.renderer.setAttribute(span, 'aria-label', ariaLabel);
+		} else {
+			this.renderer.setAttribute(span, 'aria-hidden', 'true');
+		}
 		this.setupIconPositionStyle(span, host, iconPosition);
 		this.renderer.appendChild(span, svg);
 		return span;

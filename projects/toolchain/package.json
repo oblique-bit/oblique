@@ -1,6 +1,6 @@
 {
   "name": "@oblique/toolchain",
-  "version": "15.1.3",
+  "version": "15.2.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },
@@ -18,9 +18,24 @@
   "keywords": [
     "schematics"
   ],
+  "dependencies": {
+    "chalk": "^4.1.2"
+  },
   "exports": {
     "./eslint-config": "./linting/eslint-config-oblique.mjs",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./logger": {
+      "types": "./logger/index.d.ts",
+      "default": "./logger/index.js"
+    },
+    "./logger/mock": {
+      "types": "./logger/mock/index.d.ts",
+      "default": "./logger/mock/index.js"
+    },
+    "./exec": {
+      "types": "./process/index.d.ts",
+      "default": "./process/index.js"
+    }
   },
   "schematics": "./schematics/collection.json",
   "ng-add": {

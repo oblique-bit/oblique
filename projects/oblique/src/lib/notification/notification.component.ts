@@ -36,8 +36,7 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit(): void {
-		/* eslint-disable logical-assignment-operators */
-		this.channel = this.channel || this.notificationService.config.channel;
+		this.channel ||= this.notificationService.config.channel;
 		this.customChannel = this.channel !== 'oblique';
 
 		this.notificationService.events.pipe(takeUntil(this.unsubscribe)).subscribe(notification => {

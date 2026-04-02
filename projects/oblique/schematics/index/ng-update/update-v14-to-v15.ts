@@ -33,6 +33,7 @@ export class UpdateV14toV15 implements ObIMigrations {
 				this.removeBrowserAnimationModuleIfUnused(),
 				this.fixTestConfig(),
 				this.disableZonelessIfAsyncUsed(),
+				this.addPrettierrcAngularHtmlParser(),
 			])(tree, context);
 	}
 
@@ -175,6 +176,24 @@ export class UpdateV14toV15 implements ObIMigrations {
 			if (useAsyncTesting) {
 				infoMigration(context, 'Disable zoneless for tests');
 				setOrCreateAngularProjectsConfig(tree, ['architect', 'test', 'options', 'zoneless'], false);
+			}
+			return tree;
+		});
+	}
+
+	private addPrettierrcAngularHtmlParser(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Add Angular html parser to .prettierrc if the file exists');
+			const prettierrc = getJson(tree, '.prettierrc');
+			if (prettierrc) {
+				const angularParser = {
+					files: '*.html',
+					options: {
+						parser: 'angular',
+					},
+				};
+				prettierrc.overrides.push(angularParser);
+				writeFile(tree, '.prettierrc', JSON.stringify(prettierrc, null, 2));
 			}
 			return tree;
 		});
