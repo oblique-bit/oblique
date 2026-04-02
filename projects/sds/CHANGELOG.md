@@ -1,3 +1,15 @@
+# [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
+
+## Bug Fixes
+
+- **tabbed-page:** show gallery tab with valid slug ids ([53a44265](https://github.com/oblique-bit/oblique/commit/53a442652080584c532334a5adb9104003ae8781), OUI-4415)
+- **tabbed-page:** make sure CMS links are properly versioned ([e0537226](https://github.com/oblique-bit/oblique/commit/e05372267147485d5c10807e82138d11813ed0e7), OUI-4328)
+- **text-page:** make sure CMS links are properly versioned ([f5f6ecda](https://github.com/oblique-bit/oblique/commit/f5f6ecda096a497a077436798dcb045227b5901d), OUI-4328)
+
+## Features
+
+- **autocomplete:** add example with aria-label ([e916bf97](https://github.com/oblique-bit/oblique/commit/e916bf970c972a0741d5f8b3a8066686ee59fed5), OUI-4236)
+
 # [15.1.3](https://github.com/oblique-bit/oblique/compare/15.1.2...15.1.3) (2026-03-25)
 
 ## Bug Fixes

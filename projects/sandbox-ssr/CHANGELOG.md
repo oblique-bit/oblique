@@ -1,3 +1,10 @@
+# [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
+
+## Features
+
+- **app:** include `oblique.css` ([ba20604b](https://github.com/oblique-bit/oblique/commit/ba20604bfbc67c81516232ca249a1fa22108f78d), OUI-4190)
+- **text:** add `text` page ([f4198f67](https://github.com/oblique-bit/oblique/commit/f4198f67cf9c31dd266ebe86486be6771fdc1e6a), OUI-4190)
+
 # [12.0.0](https://github.com/oblique-bit/oblique/compare/11.3.4...12.0.0) (2024-10-08)
 
 ## Features

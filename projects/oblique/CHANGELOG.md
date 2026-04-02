@@ -1,3 +1,13 @@
+# [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
+
+## Features
+
+- **autocomplete:** improve accessibility by labeling icons or marking them decorative ([5ef79b4d](https://github.com/oblique-bit/oblique/commit/5ef79b4d3bc4297fb8a19a2ab34f32277b560dd7), OUI-4236)
+- **icon:** mark `ObIconModule` as deprecated ([7bdbb245](https://github.com/oblique-bit/oblique/commit/7bdbb245b1dda52c8334e8302f9ed0f5009bf991), OUI-4341)
+- **schematics:** add angular html parser to `.prettierrc` config ([2bb604b7](https://github.com/oblique-bit/oblique/commit/2bb604b72189186cd0fa36a69343c982a8a05a14), OUI-4354)
+- **styles:** set Oblique banner colors ([6b3d64af2](https://github.com/oblique-bit/oblique/commit/6b3d64af258d5b1f196e0b3b96e36a71be3b6780), OUI-4335)
+- **styles:** set Oblique banner colors in `master-layout` banner([31c4707cd](https://github.com/oblique-bit/oblique/commit/31c4707cd93b58531b1be6538eb03684009abcb3), OUI-4335)
+
 # [15.1.3](https://github.com/oblique-bit/oblique/compare/15.1.2...15.1.3) (2026-03-25)
 
 ## Bug Fixes
