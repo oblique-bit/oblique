@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
 import {ObMasterLayoutConfig} from '../master-layout.config';
@@ -12,12 +12,13 @@ export class ObMasterLayoutHeaderService {
 	private readonly events = new Subject<ObIMasterLayoutEvent>();
 	private readonly loginState = new Subject<ObLoginState>();
 	private readonly logoutUrl = new Subject<string>();
+	private readonly config = inject(ObMasterLayoutConfig);
 	private isCustomInternal = this.config.header.isCustom;
 	private isSmallInternal = this.config.header.isSmall;
 	private isStickyInternal = this.config.header.isSticky;
 	private serviceNavigationConfigurationInternal = this.config.header.serviceNavigation;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {
+	constructor() {
 		this.configEvents$ = this.events.asObservable();
 		this.loginState$ = this.loginState.asObservable();
 		this.logoutUrl$ = this.logoutUrl.asObservable();

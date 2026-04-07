@@ -1,4 +1,4 @@
-import {Directive, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {Directive, ElementRef, OnDestroy, OnInit, inject} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {Subject, merge} from 'rxjs';
@@ -19,14 +19,11 @@ import {obMasterLayoutNavigationSubMenuFilter} from './masterLayoutNavigationSub
 })
 export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy {
 	isExpanded = false;
+	private readonly masterLayout = inject(ObMasterLayoutComponentService);
+	private readonly element = inject(ElementRef);
+	private readonly globalEventsService = inject(ObGlobalEventsService);
+	private readonly mainMenu = inject(ObMasterLayoutNavigationMenuDirective);
 	private readonly unsubscribe = new Subject<void>();
-
-	constructor(
-		private readonly masterLayout: ObMasterLayoutComponentService,
-		private readonly element: ElementRef,
-		private readonly globalEventsService: ObGlobalEventsService,
-		private readonly mainMenu: ObMasterLayoutNavigationMenuDirective
-	) {}
 
 	ngOnInit(): void {
 		this.monitorForClickOutside();

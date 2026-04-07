@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ObIconConfig} from './icon.model';
@@ -8,10 +8,8 @@ import {iconSet as obliqueIconSet} from '../../assets/oblique-icons';
 	providedIn: 'root',
 })
 export class ObIconService {
-	constructor(
-		private readonly registry: MatIconRegistry,
-		private readonly domSanitizer: DomSanitizer
-	) {}
+	private readonly registry = inject(MatIconRegistry);
+	private readonly domSanitizer = inject(DomSanitizer);
 
 	registerOnAppInit(iconConfig: ObIconConfig = {registerObliqueIcons: true}): void {
 		this.getIconSets(iconConfig).forEach(config => {

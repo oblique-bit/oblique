@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnChanges, OnInit} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, OnInit, inject} from '@angular/core';
 import {ObIconButtonDirective} from './icon-button.directive';
 
 @Directive({
@@ -25,8 +25,7 @@ export class ObButtonDirective implements OnInit, OnChanges {
 		'mat-stroked-button',
 		'mat-flat-button',
 	];
-
-	constructor(private readonly element: ElementRef) {}
+	private readonly element = inject(ElementRef);
 
 	ngOnInit(): void {
 		this.validateButtonVariant();

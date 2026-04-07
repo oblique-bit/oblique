@@ -1,4 +1,4 @@
-import {DOCUMENT, Inject, Injectable, inject} from '@angular/core';
+import {DOCUMENT, Injectable, inject} from '@angular/core';
 import {Observable, fromEvent} from 'rxjs';
 import {share} from 'rxjs/operators';
 import {WINDOW} from '../utilities';
@@ -16,18 +16,20 @@ export class ObGlobalEventsService {
 	public readonly scroll$: Observable<Event>;
 	public readonly wheel$: Observable<Event>;
 	public readonly resize$: Observable<UIEvent>;
-	private readonly window = inject(WINDOW);
 
-	constructor(@Inject(DOCUMENT) document: Document) {
-		this.beforeUnload$ = this.buildObservable<BeforeUnloadEvent>(this.window, 'beforeunload');
+	constructor() {
+		const document = inject<Document>(DOCUMENT);
+		const window = inject<Window>(WINDOW);
+
+		this.beforeUnload$ = this.buildObservable<BeforeUnloadEvent>(window, 'beforeunload');
 		this.click$ = this.buildObservable<MouseEvent>(document, 'click');
 		this.mouseDown$ = this.buildObservable<MouseEvent>(document, 'mousedown');
 		this.mouseMove$ = this.buildObservable<MouseEvent>(document, 'mousemove');
 		this.keyDown$ = this.buildObservable<KeyboardEvent>(document, 'keydown');
 		this.keyUp$ = this.buildObservable<KeyboardEvent>(document, 'keyup');
-		this.scroll$ = this.buildObservable<Event>(this.window, 'scroll');
-		this.wheel$ = this.buildObservable<Event>(this.window, 'wheel');
-		this.resize$ = this.buildObservable<UIEvent>(this.window, 'resize');
+		this.scroll$ = this.buildObservable<Event>(window, 'scroll');
+		this.wheel$ = this.buildObservable<Event>(window, 'wheel');
+		this.resize$ = this.buildObservable<UIEvent>(window, 'resize');
 	}
 
 	private buildObservable<T>(target: Window | Document, event: string): Observable<T> {

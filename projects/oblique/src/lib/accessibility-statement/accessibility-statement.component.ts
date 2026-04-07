@@ -45,7 +45,7 @@ export class AccessibilityStatementComponent {
 	private readonly masterLayoutService = inject(ObMasterLayoutService);
 
 	private readonly router = inject(Router);
-	private readonly window = inject(WINDOW);
+	private readonly window = inject<Window>(WINDOW);
 
 	navigateBack(): void {
 		if (this.window.history.length > this.historyState.initialLength) {

@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnInit} from '@angular/core';
+import {Directive, ElementRef, Input, OnInit, inject} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {distinctUntilChanged} from 'rxjs/operators';
 
@@ -17,11 +17,8 @@ export class ObNumberFormatDirective implements OnInit {
 	@Input() persistent = true;
 	private changed = false;
 	private focused = false;
-
-	constructor(
-		private readonly ngControl: NgControl,
-		private readonly el: ElementRef
-	) {}
+	private readonly ngControl = inject(NgControl);
+	private readonly el = inject(ElementRef);
 
 	onBlur(): void {
 		this.focused = false;

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Subject} from 'rxjs';
 import {ObENotificationType, ObINotification} from '../notification.model';
 import {ObNotificationConfig} from '../notification.config';
@@ -8,11 +8,10 @@ import {ObNotificationConfig} from '../notification.config';
  */
 @Injectable()
 export class ObMockNotificationService {
+	config = inject(ObNotificationConfig);
 	clearAllOnNavigate = false;
 
 	events = new Subject<ObINotification>();
-
-	constructor(public config: ObNotificationConfig) {}
 
 	info(config: ObINotification | string): ObINotification {
 		return {} as ObINotification;

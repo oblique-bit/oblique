@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AbstractControl, FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
@@ -58,12 +58,10 @@ describe(ObSchemaValidateDirective.name, () => {
 	class ModelFormTestComponent implements OnInit {
 		sampleForm: FormGroup;
 		validator;
-
-		constructor(
-			private readonly formBuilder: FormBuilder,
-			schemaValidationService: ObSchemaValidationService
-		) {
-			this.validator = schemaValidationService.compileSchema(schema);
+		private readonly schemaValidationService = inject(ObSchemaValidationService);
+		private readonly formBuilder = inject(FormBuilder);
+		constructor() {
+			this.validator = this.schemaValidationService.compileSchema(schema);
 		}
 
 		ngOnInit(): void {

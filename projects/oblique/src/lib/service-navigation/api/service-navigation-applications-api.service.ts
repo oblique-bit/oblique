@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {
 	ObIServiceNavigationApplicationIdentifier,
 	ObIServiceNavigationApplicationInfo,
@@ -13,8 +13,7 @@ import {map} from 'rxjs/operators';
 })
 export class ObServiceNavigationApplicationsApiService {
 	private readonly resourceUrl = 'api/widget/applications';
-
-	constructor(private readonly httpClient: HttpClient) {}
+	private readonly httpClient = inject(HttpClient);
 
 	fetchApplicationsInfo(
 		rootUrl: string,

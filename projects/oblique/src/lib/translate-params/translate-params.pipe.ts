@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Pipe, PipeTransform, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
 @Pipe({
@@ -8,7 +8,7 @@ import {TranslateService} from '@ngx-translate/core';
 	pure: false,
 })
 export class ObTranslateParamsPipe implements PipeTransform {
-	constructor(private readonly translate: TranslateService) {}
+	private readonly translate = inject(TranslateService);
 
 	transform(value: string, params?: any): string {
 		return this.translate.instant(value, typeof params === 'object' ? this.translateParams(params) : undefined);

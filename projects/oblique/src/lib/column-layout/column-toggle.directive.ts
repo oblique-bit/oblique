@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {ObColumnPanelDirective} from './column-panel.directive';
 
 @Directive({
@@ -11,7 +11,7 @@ import {ObColumnPanelDirective} from './column-panel.directive';
 	exportAs: 'obColumnToggle',
 })
 export class ObColumnToggleDirective {
-	constructor(private readonly parent: ObColumnPanelDirective) {}
+	private readonly parent = inject(ObColumnPanelDirective);
 
 	onclick(): void {
 		this.parent.toggle();

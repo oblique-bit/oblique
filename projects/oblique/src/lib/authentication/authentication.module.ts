@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
+import {ModuleWithProviders, NgModule, inject} from '@angular/core';
 import {NullValidationHandler, OAuthModule, OAuthModuleConfig, provideOAuthClient} from 'angular-oauth2-oidc';
 import {ObAuthenticationConfigService} from './authentication-config.service';
 import {ObAuthenticationService} from './authentication.service';
@@ -11,7 +11,9 @@ export {ObIResourceAccessRoles} from './authentication.model';
 	imports: [CommonModule, OAuthModule],
 })
 export class ObAuthenticationModule {
-	constructor(@Optional() @SkipSelf() parentModule?: ObAuthenticationModule) {
+	constructor() {
+		const parentModule = inject(ObAuthenticationModule, {optional: true, skipSelf: true});
+
 		if (parentModule) {
 			throw new Error("ObAuthenticationModule is already loaded. Import it in the application's root module only");
 		}

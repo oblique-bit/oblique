@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation, inject} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObEUploadEventType, ObIUploadEvent} from '../file-upload.model';
@@ -24,7 +24,7 @@ export class ObDropZoneComponent {
 	@Input() multiple = true;
 	@ViewChild('fileInput') private readonly fileInput: ElementRef<HTMLInputElement>;
 
-	constructor(private readonly validationService: ObValidationService) {}
+	private readonly validationService = inject(ObValidationService);
 
 	addFiles(fileList: FileList): void {
 		const fileArray = Array.from(fileList);

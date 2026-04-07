@@ -4,16 +4,15 @@ import {ObHighlightTextPipe} from './highlight-text.pipe';
 import {ObAutocompleteTextToFindService} from '../autocomplete-text-to-find.service';
 
 describe('ObHighlightTextPipe', () => {
-	let textToFindService: ObAutocompleteTextToFindService;
 	let pipe: ObHighlightTextPipe;
 	const testString = 'This is a testString';
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
+			providers: [ObHighlightTextPipe, ObAutocompleteTextToFindService],
 			imports: [BrowserTestingModule],
 		});
-		textToFindService = TestBed.inject(ObAutocompleteTextToFindService);
-		pipe = new ObHighlightTextPipe(textToFindService);
+		pipe = TestBed.inject(ObHighlightTextPipe);
 	});
 	it('should create an instance', () => {
 		expect(pipe).toBeTruthy();

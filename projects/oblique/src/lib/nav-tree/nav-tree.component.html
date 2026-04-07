@@ -37,7 +37,7 @@
 								}
 							</span>
 						}
-						<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
+						<span [innerHTML]="formatter()(item, filterPattern)"></span>
 					</a>
 					@if (item.items) {
 						<div [id]="'#' + itemKey(item)" class="collapse" [hidden]="isParentCollapsed || item.collapsed">
@@ -90,7 +90,7 @@
 								}
 							</span>
 						}
-						<span [innerHTML]="labelFormatter(item, filterPattern)"></span>
+						<span [innerHTML]="formatter()(item, filterPattern)"></span>
 					</a>
 					@if (item.items) {
 						<div [id]="'#' + itemKey(item)" class="collapse" [hidden]="isParentCollapsed || item.collapsed">

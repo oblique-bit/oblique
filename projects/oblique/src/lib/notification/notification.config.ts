@@ -1,4 +1,4 @@
-import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
+import {Injectable, InjectionToken, inject} from '@angular/core';
 import {ObENotificationPlacement, ObINotificationConfig} from './notification.model';
 
 export const CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE = new InjectionToken<boolean>('CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE');
@@ -30,10 +30,10 @@ export class ObNotificationConfig {
 		sticky: true,
 	} as ObINotificationConfig;
 
-	constructor(
-		@Optional() @Inject(CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE) clear,
-		@Optional() @Inject(GROUP_SIMILAR_NOTIFICATIONS) group
-	) {
+	constructor() {
+		const clear = inject(CLEAR_NOTIFICATIONS_ON_ROUTE_CHANGE, {optional: true});
+		const group = inject(GROUP_SIMILAR_NOTIFICATIONS, {optional: true});
+
 		this.clearAllOnNavigate = clear || false;
 		this.groupSimilar = group || false;
 	}

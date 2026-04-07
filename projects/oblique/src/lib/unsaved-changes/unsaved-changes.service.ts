@@ -8,12 +8,12 @@ import {WINDOW} from '../utilities';
 export class ObUnsavedChangesService {
 	public isActive = true;
 	private readonly controlContainer: Record<string, ControlContainer> = {};
-	private readonly window = inject(WINDOW);
+	private readonly translateService = inject(TranslateService);
+	private readonly window = inject<Window>(WINDOW);
 
-	constructor(
-		obGlobalEventsService: ObGlobalEventsService,
-		private readonly translateService: TranslateService
-	) {
+	constructor() {
+		const obGlobalEventsService = inject(ObGlobalEventsService);
+
 		obGlobalEventsService.beforeUnload$.subscribe(event => {
 			this.onUnload(event);
 		});

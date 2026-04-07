@@ -1,4 +1,4 @@
-import {Inject, Injectable, Optional} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
@@ -13,15 +13,13 @@ import {
 	providedIn: 'root',
 })
 export class ObServiceNavigationApplicationsStoreService {
+	private readonly applicationInfoService = inject(ObServiceNavigationApplicationsApiService);
+	private readonly window = inject<Window>(WINDOW, {optional: true});
 	private readonly localStorageKey = 'ObliqueHeaderWidgetApplications';
 	private cachedApplications = this.loadApplications();
 
-	constructor(
-		private readonly applicationInfoService: ObServiceNavigationApplicationsApiService,
-		globalEvents: ObGlobalEventsService,
-		@Inject(WINDOW) @Optional() private readonly window: Window
-	) {
-		globalEvents.beforeUnload$.subscribe(() => {
+	constructor() {
+		inject(ObGlobalEventsService).beforeUnload$.subscribe(() => {
 			if (this.window?.localStorage) {
 				this.window.localStorage.removeItem(this.localStorageKey);
 			}

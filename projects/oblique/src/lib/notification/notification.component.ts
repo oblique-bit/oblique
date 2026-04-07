@@ -28,12 +28,9 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 	public variant: Record<string, string> = {};
 
 	private readonly unsubscribe = new Subject<void>();
-	private readonly window = inject(WINDOW);
-
-	constructor(
-		private readonly notificationService: ObNotificationService,
-		private readonly changeDetectorRef: ChangeDetectorRef
-	) {}
+	private readonly window = inject<Window>(WINDOW);
+	private readonly notificationService = inject(ObNotificationService);
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
 	ngOnInit(): void {
 		this.channel ||= this.notificationService.config.channel;
