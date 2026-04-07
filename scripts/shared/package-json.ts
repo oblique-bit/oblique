@@ -62,6 +62,14 @@ export class PackageJson extends StaticScript {
 		return PackageJson.instance as PackageJson;
 	}
 
+	removeFields(...fieldNames: string[]): PackageJson {
+		Log.info(`Remove ${humanizeList(fieldNames)} properties from the distributed package.json`);
+		fieldNames.forEach(fieldName => {
+			delete this.content[fieldName];
+		});
+		return PackageJson.instance as PackageJson;
+	}
+
 	removeScripts(): PackageJson {
 		Log.info(`Remove scripts from the distributed package.json`);
 		delete this.content.scripts;

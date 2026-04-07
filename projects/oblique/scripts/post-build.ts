@@ -62,6 +62,7 @@ class PostBuild extends StaticScript {
 				...PostBuild.getExportEntriesForSCSS(),
 				'./assets/images/cover-background.jpg': './assets/images/cover-background.jpg', // used by oblique-components.css
 			})
+			.removeFields('type')
 			.write()
 			.finalize();
 	}
