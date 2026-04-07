@@ -123,20 +123,12 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.unsubscribe.complete();
 	}
 
-	toggleFocus(prefix: string, linkId: string, isFocused: boolean): void {
-		const focusedEl: HTMLElement = this.el.nativeElement.querySelector(
-			`.ob-master-layout-navigation-link.ob-main-nav-link#${linkId}`
-		);
-		const idOfNavItem = `#${prefix}${linkId}`;
-		const navItem: HTMLElement = this.el.nativeElement.querySelector(idOfNavItem);
-		if (isFocused) {
-			this.updateScroll(getScrollIntoViewDelta(this.getNav(), navItem));
-		}
-		if (focusedEl.classList.contains('cdk-keyboard-focused')) {
-			navItem.classList.add('ob-has-keyboard-focused-child');
-		} else {
-			navItem.classList.remove('ob-has-keyboard-focused-child');
-		}
+	focusIn(prefix: string, linkId: string): void {
+		this.handleNavItemFocusChange(prefix, linkId, true);
+	}
+
+	focusOut(prefix: string, linkId: string): void {
+		this.handleNavItemFocusChange(prefix, linkId, false);
 	}
 
 	backUpOrCloseSubMenu(
@@ -184,6 +176,22 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.initializedLinks = this.initializedLinks.filter(initializedLink => initializedLink.id !== item.id);
 		this.links = this.links.filter(link => link.id !== item.id);
 		this.linksChanged.emit(this.links);
+	}
+
+	private handleNavItemFocusChange(prefix: string, linkId: string, isFocused: boolean): void {
+		const focusedEl: HTMLElement = this.el.nativeElement.querySelector(
+			`.ob-master-layout-navigation-link.ob-main-nav-link#${linkId}`
+		);
+		const idOfNavItem = `#${prefix}${linkId}`;
+		const navItem: HTMLElement = this.el.nativeElement.querySelector(idOfNavItem);
+		if (isFocused) {
+			this.updateScroll(getScrollIntoViewDelta(this.getNav(), navItem));
+		}
+		if (focusedEl.classList.contains('cdk-keyboard-focused')) {
+			navItem.classList.add('ob-has-keyboard-focused-child');
+		} else {
+			navItem.classList.remove('ob-has-keyboard-focused-child');
+		}
 	}
 
 	private addCurrentParentAncestor(link: ObNavigationLink): void {

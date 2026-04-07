@@ -332,8 +332,17 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				component.maxScroll = 100;
 				fixture.detectChanges();
 				jest.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
-				component.toggleFocus('ob-main-nav-item-', 'full', true);
+				component.focusIn('ob-main-nav-item-', 'full');
 				expect(component.currentScroll).toBe(42);
+			});
+
+			test("focusing out of an element doesn't scroll it", () => {
+				component.isScrollable = true;
+				component.maxScroll = 100;
+				fixture.detectChanges();
+				jest.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
+				component.focusOut('ob-main-nav-item-', 'full');
+				expect(component.currentScroll).toBe(0);
 			});
 		});
 	});
