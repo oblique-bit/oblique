@@ -185,6 +185,7 @@
   "i18n.oblique.accessibility-statement.provisions.text": "Accessibility provisions are set out in the following ordinances:",
   "i18n.oblique.accessibility-statement.provisions.items": "<li>Article 9 of the UN Convention on the Rights of Persons with Disabilities (UN CRPD) explains the guarantee of equal access to information and services for the public.</li><li>Article 8 paragraph 2 of the Federal Constitution states that no person may be discriminated against because of a physical, mental or psychological disability.</li><li>The Disability Discrimination Act (DDA) requires measures to be taken to prevent, reduce or eliminate discrimination.</li><li>The Ordinance on the Elimination of Discrimination against People with Disabilities (EPDO) contains provisions on the requirements to accommodate people with disabilities when designing federal services.</li><li>Article 3 Principles Federal Act on the Use of Electronic Means for the Fulfillment of Official Tasks (EMBAG). Paragraph 4 They shall ensure that their services are accessible to the entire population.</li>",
   "i18n.oblique.accessibility-statement.statement.title": "Accessibility statement",
+  "i18n.oblique.accessibility-statement.statement.application-accessibility": "Accessibility of this application",
   "i18n.oblique.accessibility-statement.statement.text": "{{applicationName}} is {{conformity}}conformant with WCAG 2.1, level AA. {{exceptionText}}",
   "i18n.oblique.accessibility-statement.statement.full": "fully ",
   "i18n.oblique.accessibility-statement.statement.partial": "partially ",
