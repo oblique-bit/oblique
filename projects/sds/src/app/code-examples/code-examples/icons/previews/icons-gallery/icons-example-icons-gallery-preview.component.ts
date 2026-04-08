@@ -75,7 +75,7 @@ export class IconsExampleIconsGalleryPreviewComponent {
 	private readonly notificationService = inject(ObNotificationService);
 	private readonly translateService = inject(TranslateService);
 	private readonly dialog = inject(MatDialog);
-	private readonly window: Window = inject(WINDOW);
+	private readonly window = inject(WINDOW);
 
 	constructor() {
 		this.filteredIcons$ = this.setUpIconsFilter();
