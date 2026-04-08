@@ -160,6 +160,7 @@ export {
 } from './lib/utilities';
 export {
 	ObIBanner,
+	ObTBanner,
 	ObIMaterialConfig,
 	ObIObliqueConfiguration,
 	ObIAccessibilityStatementConfiguration,

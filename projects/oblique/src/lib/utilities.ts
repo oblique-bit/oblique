@@ -30,6 +30,7 @@ import {
 	ObIPamsConfiguration,
 	ObITranslateConfig,
 	ObITranslateConfigInternal,
+	ObTBanner,
 } from './utilities.model';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
@@ -46,7 +47,7 @@ import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
 import {ObILocale} from './master-layout/master-layout.model';
 
 export const WINDOW = new InjectionToken<Window>('Window');
-export const OB_BANNER = new InjectionToken<ObIBanner>('Banner');
+export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
 export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfigInternal>('Translation configuration');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 	'Provides the mandatory PAMS environment as well as an optional root url.'
