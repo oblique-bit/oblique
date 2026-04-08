@@ -1,3 +1,4 @@
+import path from 'path';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {PackageJson} from '../../../scripts/shared/package-json';
 import {Banner} from '../../../scripts/shared/banner';
@@ -6,26 +7,32 @@ import {Log} from '../../../scripts/shared/log';
 import {adaptReadmeLinks} from '../../../scripts/shared/utils';
 import {Files} from '../../../scripts/shared/files';
 import {minifyCss} from '../../../scripts/shared/minifyCss';
+import {findRootPath, getAbsolutePath} from '../../../scripts/shared/root';
 
 class PostBuild extends StaticScript {
+	private static readonly rootPath = findRootPath();
 	private static readonly projectName = 'design-system';
-	private static readonly cssFolder = 'src/lib/css';
+	private static readonly cssFolder = `${PostBuild.rootPath}/projects/${PostBuild.projectName}/src/lib/css`;
 
 	static async perform(): Promise<void> {
 		Log.start('Finalize build');
 		PostBuild.copyDistFiles();
 		PostBuild.adaptPackageJson();
-		await minifyCss(`${PostBuild.cssFolder}/oblique.css`, `${PostBuild.projectName}/css/oblique.min.css`);
+		await minifyCss(
+			`${PostBuild.cssFolder}/oblique.css`,
+			`${PostBuild.rootPath}/dist/${PostBuild.projectName}/css/oblique.min.css`
+		);
 		Banner.addToFilesInProject(PostBuild.projectName);
 		adaptReadmeLinks(PostBuild.projectName);
 		Log.success();
 	}
 
 	private static copyDistFiles(): void {
+		const src = getAbsolutePath(`projects/${PostBuild.projectName}/src/lib`);
 		CopyFiles.initialize(PostBuild.projectName)
 			.copyRootFiles('LICENSE')
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
-			.copyProjectFiles(Files.buildOSSafePath('src/lib'), ...Files.list(PostBuild.cssFolder))
+			.copyProjectFiles(src, ...Files.list(PostBuild.cssFolder).map(file => path.relative(src, file)))
 			.finalize();
 	}
 

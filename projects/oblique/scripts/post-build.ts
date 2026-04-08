@@ -1,5 +1,7 @@
+import path from 'path';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {adaptReadmeLinks, executeCommandWithLog} from '../../../scripts/shared/utils';
+import {getAbsolutePath} from '../../../scripts/shared/root';
 import {ExportEntries, PackageJson} from '../../../scripts/shared/package-json';
 import {Banner} from '../../../scripts/shared/banner';
 import {StaticScript} from '../../../scripts/shared/static-script';
@@ -22,15 +24,19 @@ class PostBuild extends StaticScript {
 	}
 
 	private static copyDistFiles(): void {
+		const src = getAbsolutePath(`projects/oblique/src`);
+
 		CopyFiles.initialize('oblique')
 			.copyRootFiles('LICENSE')
 			.copyProjectFiles(
-				'src',
-				...Files.list('src/assets'),
-				...Files.list('src/styles').filter(filePath => !filePath.endsWith('.scss')),
-				...Files.list('src/styles').filter(filePath =>
-					/(?:core[\\/](?:_variables|_palette)|mixins[\\/](?:_layout|_shadow|_typography))\.scss$/.test(filePath)
-				)
+				src,
+				...[
+					...Files.list(getAbsolutePath('projects/oblique/src/assets')),
+					...Files.list(getAbsolutePath('projects/oblique/src/styles')).filter(filePath => !filePath.endsWith('.scss')),
+					...Files.list(getAbsolutePath('projects/oblique/src/styles')).filter(filePath =>
+						/(?:core[\\/](?:_variables|_palette)|mixins[\\/](?:_layout|_shadow|_typography))\.scss$/.test(filePath)
+					),
+				].map(file => path.relative(src, file))
 			)
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
 			.finalize();
@@ -40,7 +46,7 @@ class PostBuild extends StaticScript {
 		const searchValue = 'oblique-oblique';
 		const replaceValue = 'oblique';
 		// Please note that order is important!
-		const fileList = Files.list('../../dist');
+		const fileList = Files.list(getAbsolutePath('dist'));
 		PostBuild.renameInFiles(fileList, searchValue, replaceValue);
 		PostBuild.renameFiles(fileList, searchValue, replaceValue);
 	}
@@ -78,7 +84,7 @@ class PostBuild extends StaticScript {
 	private static updateBackgroundImagePath(): void {
 		Log.info(`Update path to cover-background.jpg.`);
 		PostBuild.replaceInFiles(
-			['../../dist/oblique/styles/css/oblique-components.css'],
+			[getAbsolutePath('dist/oblique/styles/css/oblique-components.css')],
 			'cover-background.jpg',
 			'@oblique/oblique/assets/images/cover-background.jpg'
 		);
@@ -87,7 +93,7 @@ class PostBuild extends StaticScript {
 	private static updateFontPath(): void {
 		Log.info('Update path to Noto font.');
 		PostBuild.replaceInFiles(
-			['../../dist/oblique/styles/css/oblique-core.css'],
+			[getAbsolutePath('dist/oblique/styles/css/oblique-core.css')],
 			/(?<=url\()(?=noto-sans)/,
 			'../fonts/'
 		);
@@ -95,7 +101,7 @@ class PostBuild extends StaticScript {
 
 	private static distributeObFeatures(): void {
 		executeCommandWithLog(
-			`uglifyjs --compress --mangle --output ../../dist/oblique/ob-features.js -- src/ob-features.js`,
+			`uglifyjs --compress --mangle --output ${getAbsolutePath('dist/oblique/ob-features.js')} -- ${getAbsolutePath('projects/oblique/src/ob-features.js')}`,
 			'Copy and minify ob-features.js'
 		);
 	}
@@ -117,8 +123,9 @@ class PostBuild extends StaticScript {
 	}
 
 	private static getExportEntriesForSCSS(): ExportEntries {
-		const distPath = '../../dist/oblique';
+		const distPath = getAbsolutePath('dist/oblique');
 		return Files.list(`${distPath}/styles/scss`)
+			.map(filePath => `./${path.relative(distPath, filePath)}`)
 			.map(filePath => filePath.replace(/\\/g, '/'))
 			.map(filePath => filePath.replace(distPath, '.'))
 			.map(filePath => ({importPath: filePath.replace(/_|\.scss/g, ''), filePath}))

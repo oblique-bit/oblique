@@ -2,6 +2,7 @@ import {executeCommandWithLog} from '../../../scripts/shared/utils';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
 import {Files} from '../../../scripts/shared/files';
+import {getAbsolutePath} from '../../../scripts/shared/root';
 
 interface SVG {
 	svg: string;
@@ -11,11 +12,11 @@ interface SVG {
 class Icons extends StaticScript {
 	static perform(): void {
 		Log.start('Update all files related to icons');
-		const svgs = Icons.getSVGs('icons');
-		Icons.writeIconSet('src/assets/obliqueIcons.svg', svgs);
-		Icons.writeIconSetTS('src/assets/oblique-icons.ts', svgs);
-		Icons.writeIconCSS('src/styles/scss/oblique-icons.scss', svgs);
-		Icons.writeIconEnum('src/lib/icon/icon.model.ts', svgs);
+		const svgs = Icons.getSVGs(getAbsolutePath('projects/oblique/icons'));
+		Icons.writeIconSet(getAbsolutePath('projects/oblique/src/assets/obliqueIcons.svg'), svgs);
+		Icons.writeIconSetTS(getAbsolutePath('projects/oblique/src/assets/oblique-icons.ts'), svgs);
+		Icons.writeIconCSS(getAbsolutePath('projects/oblique/src/styles/scss/oblique-icons.scss'), svgs);
+		Icons.writeIconEnum(getAbsolutePath('projects/oblique/src/lib/icon/icon.model.ts'), svgs);
 		Icons.prettify();
 		Log.success();
 	}
@@ -82,9 +83,9 @@ class Icons extends StaticScript {
 
 	private static prettify(): void {
 		const files = [
-			'src/assets/oblique-icons.ts',
-			'src/styles/scss/oblique-icons.scss',
-			'src/lib/icon/icon.model.ts',
+			getAbsolutePath('projects/oblique/src/assets/oblique-icons.ts'),
+			getAbsolutePath('projects/oblique/src/styles/scss/oblique-icons.scss'),
+			getAbsolutePath('projects/oblique/src/lib/icon/icon.model.ts'),
 		].join(',');
 		executeCommandWithLog(`prettier "{${files}}" --log-level warn --write`, 'Prettify generated files');
 	}

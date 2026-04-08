@@ -1,8 +1,10 @@
+import path from 'path';
 import {PackageJson} from '../../../scripts/shared/package-json';
 import {Banner} from '../../../scripts/shared/banner';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {adaptReadmeLinks} from '../../../scripts/shared/utils';
+import {getAbsolutePath} from '../../../scripts/shared/root';
 import {Log} from '../../../scripts/shared/log';
 import {Files} from '../../../scripts/shared/files';
 
@@ -19,13 +21,19 @@ export class PostBuild extends StaticScript {
 	}
 
 	private static copyProjectFiles(): void {
+		const src = getAbsolutePath(`projects/${PostBuild.projectName}/src`);
 		CopyFiles.initialize(PostBuild.projectName)
 			.copyRootFiles('LICENSE')
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md', 'package.json')
 			.copyFile('collection.json', 'src/schematics', 'schematics')
 			.copyFile('schema.json', 'src/schematics/ng-add', 'schematics/ng-add')
 			.copyFile('eslint-config-oblique.mjs', 'src/linting/', 'linting')
-			.copyProjectFiles('src', ...Files.list('src/schematics/ng-add/templates'))
+			.copyProjectFiles(
+				src,
+				...Files.list(getAbsolutePath(`projects/${PostBuild.projectName}/src/schematics/ng-add/templates`)).map(file =>
+					path.relative(src, file)
+				)
+			)
 			.finalize();
 	}
 
