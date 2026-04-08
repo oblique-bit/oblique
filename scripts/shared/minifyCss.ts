@@ -7,14 +7,13 @@ import {Files} from './files';
 
 export async function minifyCss(source: string, destination: string): Promise<void> {
 	Log.info(`Create a minified version of ${source}`);
-	const destinationPath = `../../dist/${destination}`;
 	const result = await postcss([postcssImport, autoprefixer, cssnano]).process(Files.read(source), {
 		from: source,
-		to: destinationPath,
+		to: destination,
 		map: {inline: false},
 	});
-	Files.write(destinationPath, result.css);
+	Files.write(destination, result.css);
 	if (result.map) {
-		Files.write(`${destinationPath}.map`, result.map.toString());
+		Files.write(`${destination}.map`, result.map.toString());
 	}
 }

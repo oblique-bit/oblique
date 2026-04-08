@@ -4,6 +4,7 @@ import {StaticScript} from './static-script';
 import {Git} from './git';
 import {Log} from './log';
 import {Files} from './files';
+import {getAbsolutePath} from './root';
 
 export class Banner extends StaticScript {
 	// manually set for versions with prolonged support
@@ -15,7 +16,7 @@ export class Banner extends StaticScript {
 		Log.info('Add a banner in all css, js and mjs files of the distribution');
 		const banner = Banner.prepareBanner(currentVersion);
 
-		Files.list(`../../dist/${projectName}`)
+		Files.list(getAbsolutePath(`dist/${projectName}`))
 			.filter(filePath => /\.(?:m?js|css)$/.test(filePath))
 			.map(filePath => ({filePath, content: Files.read(filePath)}))
 			.filter(({content}) => !content.includes(banner))

@@ -1,4 +1,5 @@
 import {executeCommandWithLog} from './shared/utils';
+import {getAbsolutePath} from './shared/root';
 import {StaticScript} from './shared/static-script';
 import {Git} from './shared/git';
 import {Log} from './shared/log';
@@ -21,14 +22,15 @@ class DependenciesUpdate extends StaticScript {
 	}
 
 	private static buildPackageJsonList(): string[] {
-		const dir = `${__dirname}/../projects/`;
+		const dir = getAbsolutePath('projects');
 		const files = Files.readDirectory(dir)
-			.filter(path => Files.isDirectory(`${dir}${path}`))
-			.filter(path => Files.exists(`${dir}${path}/package.json`))
-			.map(path => `${dir}${path}/package.json`);
+			.filter(path => Files.isDirectory(`${dir}/${path}`))
+			.filter(path => Files.exists(`${dir}/${path}/package.json`))
+			.map(path => `${dir}/${path}/package.json`);
 
-		if (Files.exists('package.json')) {
-			files.push('package.json');
+		const packageJSONPath = getAbsolutePath('package.json');
+		if (Files.exists(packageJSONPath)) {
+			files.push(packageJSONPath);
 		}
 
 		return files;

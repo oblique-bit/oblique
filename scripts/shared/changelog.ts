@@ -3,6 +3,7 @@ import {Git} from './git';
 import {Log} from './log';
 import {fatal} from './utils';
 import {Files} from './files';
+import {getAbsolutePath} from './root';
 
 type CommitType = 'fix' | 'feat';
 
@@ -31,6 +32,7 @@ export class Changelog extends StaticScript {
 		}
 		const previousTag = Git.getLatestVersionTag();
 		Changelog.prependRelease(
+			projectName,
 			Changelog.getCommits(previousTag, 'HEAD', projectName, additionalPackageWithScope),
 			previousTag,
 			version
@@ -44,7 +46,9 @@ export class Changelog extends StaticScript {
 			.filter(tag => /^\d+\.\d+\.\d+$/.test(tag))
 			.map((tag, index, tags) => ({from: tag, to: tags[index + 1]}))
 			.filter(({to}) => !!to)
-			.forEach(({from, to}) => Changelog.prependRelease(Changelog.getCommits(from, to, projectName), from, to));
+			.forEach(({from, to}) =>
+				Changelog.prependRelease(projectName, Changelog.getCommits(from, to, projectName), from, to)
+			);
 	}
 
 	private static getCommits(from: string, to: string, projectName: string, additionalPackageWithScope = ''): Commits {
@@ -148,9 +152,9 @@ export class Changelog extends StaticScript {
 		};
 	}
 
-	private static prependRelease(commits: Commits, previousTag: string, version: string): void {
+	private static prependRelease(projectName: string, commits: Commits, previousTag: string, version: string): void {
 		if (commits.feat.length || commits.fix.length) {
-			Files.overwrite('CHANGELOG.md', content =>
+			Files.overwrite(getAbsolutePath(`projects/${projectName}/CHANGELOG.md`), content =>
 				[
 					Changelog.getTitle(version, previousTag),
 					Changelog.getSection(commits.fix, 'Bug Fixes'),
