@@ -25,7 +25,6 @@ class PostBuild extends StaticScript {
 
 	private static copyDistFiles(): void {
 		const src = getAbsolutePath(`projects/oblique/src`);
-
 		CopyFiles.initialize('oblique')
 			.copyRootFiles('LICENSE')
 			.copyProjectFiles(

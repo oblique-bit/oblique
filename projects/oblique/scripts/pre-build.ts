@@ -2,7 +2,7 @@ import path from 'path';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
 import {Files} from '../../../scripts/shared/files';
-import {findRootPath, getAbsolutePath} from '../../../scripts/shared/root';
+import {findObliqueRootPath, getAbsolutePath} from '../../../scripts/shared/root';
 
 class PreBuild extends StaticScript {
 	static perform(): void {
@@ -32,7 +32,7 @@ class PreBuild extends StaticScript {
 	}
 
 	private static getDirectoryPath(filePath: string): string {
-		const rootPath = findRootPath();
+		const rootPath = findObliqueRootPath();
 		return path.dirname(path.relative(rootPath, filePath)).replaceAll(path.sep, '/');
 	}
 

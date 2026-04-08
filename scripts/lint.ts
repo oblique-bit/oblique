@@ -1,9 +1,9 @@
 import {hasFlag} from './shared/utils';
 import {Lint} from './shared/lint';
 import {Log} from './shared/log';
-import {findRootPath} from './shared/root';
+import {findObliqueRootPath} from './shared/root';
 
-const rootPath = findRootPath();
+const rootPath = findObliqueRootPath();
 
 Log.start('Lint non project files');
 const fileTypes = '{ts,js,mjs,html,json,yml,md,css,scss}';

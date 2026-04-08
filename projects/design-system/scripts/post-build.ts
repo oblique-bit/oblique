@@ -7,10 +7,10 @@ import {Log} from '../../../scripts/shared/log';
 import {adaptReadmeLinks} from '../../../scripts/shared/utils';
 import {Files} from '../../../scripts/shared/files';
 import {minifyCss} from '../../../scripts/shared/minifyCss';
-import {findRootPath, getAbsolutePath} from '../../../scripts/shared/root';
+import {findObliqueRootPath, getAbsolutePath} from '../../../scripts/shared/root';
 
 class PostBuild extends StaticScript {
-	private static readonly rootPath = findRootPath();
+	private static readonly rootPath = findObliqueRootPath();
 	private static readonly projectName = 'design-system';
 	private static readonly cssFolder = `${PostBuild.rootPath}/projects/${PostBuild.projectName}/src/lib/css`;
 
