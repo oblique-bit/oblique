@@ -5,6 +5,7 @@ import {Observable, ReplaySubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ObILocale, ObILocaleObject} from '../master-layout/master-layout.model';
 import {WINDOW} from '../utilities';
+import {ObWindow} from '../utilities.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -16,7 +17,7 @@ export class ObLanguageService {
 	private readonly translate = inject(TranslateService);
 	private readonly rendererFactory = inject(RendererFactory2);
 	private readonly document = inject<Document>(DOCUMENT);
-	private readonly window = inject(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly adapter = inject<DateAdapter<unknown>>(DateAdapter, {optional: true});
 
 	constructor() {

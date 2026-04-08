@@ -22,6 +22,7 @@ import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {Subject, merge} from 'rxjs';
 import {map, takeUntil, tap} from 'rxjs/operators';
 import {WINDOW} from '../../utilities';
+import {ObWindow} from '../../utilities.model';
 import {ObAlertComponent} from '../../alert/alert.component';
 import {ObButtonDirective} from '../../button/button.directive';
 import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent, ObTSelectionStatus} from '../file-upload.model';
@@ -65,7 +66,7 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	private readonly unsubscribe = new Subject<void>();
 	private readonly dataChange = new Subject<void>();
 
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 
 	@Input() mapFunction = (files: ObIFileDescription[]): ObIFileDescription[] => files;
 	@Input() mapFilesToDeleteUrlFunction: (files: ObIFileDescription[]) => string = files =>

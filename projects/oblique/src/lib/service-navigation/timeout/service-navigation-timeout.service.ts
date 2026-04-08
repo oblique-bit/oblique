@@ -4,6 +4,7 @@ import {ObIsUserLoggedInPipe} from '../shared/is-user-logged-in.pipe';
 import {ObEPamsEnvironment, ObLoginState} from '../service-navigation.model';
 import {ObServiceNavigationTimeoutApiService} from '../api/service-navigation-timeout-api.service';
 import {WINDOW} from '../../utilities';
+import {ObWindow} from '../../utilities.model';
 import {ObServiceNavigationTimeoutCookieService} from './service-navigation-timeout-cookie.service';
 import {ObServiceNavigationTimeoutCookieActivityService} from './service-navigation-timeout-cookie-activity.service';
 import {ObServiceNavigationTimeoutRedirectorService} from './service-navigation-timeout-redirector.service';
@@ -21,7 +22,7 @@ export class ObServiceNavigationTimeoutService {
 	private readonly timeoutCookieName = 'eportal-timeout';
 	private readonly secondsFactor = 1000;
 	private readonly isUserLoggedInPipe = new ObIsUserLoggedInPipe();
-	private readonly window: Window = inject(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly timeoutApiService = inject(ObServiceNavigationTimeoutApiService);
 	private readonly activityCookieService = inject(ObServiceNavigationTimeoutCookieActivityService);
 	private readonly redirectorService = inject(ObServiceNavigationTimeoutRedirectorService);

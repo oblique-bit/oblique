@@ -2,6 +2,7 @@ import {AfterViewInit, Directive, Injector, inject} from '@angular/core';
 import {NG_VALIDATORS, NgControl, UntypedFormControl, ValidationErrors, Validator} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {WINDOW} from '../utilities';
+import {ObWindow} from '../utilities.model';
 
 @Directive({
 	selector: '[obSchemaValidate][ngModel],[obSchemaValidate][formControlName]',
@@ -9,7 +10,7 @@ import {WINDOW} from '../utilities';
 })
 export class ObSchemaValidateDirective implements AfterViewInit, Validator {
 	private propertyName: string;
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly schemaDirective = inject(ObSchemaValidationDirective);
 	private readonly injector = inject(Injector);
 

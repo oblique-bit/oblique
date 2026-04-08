@@ -5,6 +5,7 @@ import {Observable, throwError} from 'rxjs';
 import {catchError, finalize, map} from 'rxjs/operators';
 
 import {WINDOW} from '../utilities';
+import {ObWindow} from '../utilities.model';
 import {ObNotificationService} from '../notification/notification.module';
 import {ObSpinnerService} from '../spinner/spinner.module';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
@@ -29,7 +30,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	private readonly notificationService = inject(ObNotificationService);
 	private readonly translate = inject(TranslateService);
 	private readonly activeRequestUrlsByChannel = new Map<string, string[]>();
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 
 	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 		const obliqueRequest = this.broadcast();

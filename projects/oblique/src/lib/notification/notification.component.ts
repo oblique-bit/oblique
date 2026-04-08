@@ -4,6 +4,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {ObAlertComponent} from '../alert/alert.component';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {WINDOW} from '../utilities';
+import {ObWindow} from '../utilities.model';
 import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
 import {Subject, takeUntil} from 'rxjs';
@@ -32,7 +33,7 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 	public variant: Record<string, string> = {};
 
 	private readonly unsubscribe = new Subject<void>();
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly notificationService = inject(ObNotificationService);
 	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 

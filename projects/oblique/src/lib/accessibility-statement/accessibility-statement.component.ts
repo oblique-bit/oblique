@@ -5,7 +5,7 @@ import {MatButton} from '@angular/material/button';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
-import {ObConformity, ObContactData} from '../utilities.model';
+import {ObConformity, ObContactData, ObWindow} from '../utilities.model';
 import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, OB_HISTORY_STATE, WINDOW} from '../utilities';
 import {ObDatePipe} from '../language/date.pipe';
 import {ObEIcon} from '../icon/icon.model';
@@ -45,7 +45,7 @@ export class AccessibilityStatementComponent {
 	private readonly masterLayoutService = inject(ObMasterLayoutService);
 
 	private readonly router = inject(Router);
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 
 	navigateBack(): void {
 		if (this.window.history.length > this.historyState.initialLength) {

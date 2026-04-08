@@ -21,6 +21,7 @@ import {ObEToggleType, defaultConfig} from './popover.model';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outsideFilter';
 import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
+import {ObWindow} from '../utilities.model';
 
 export const OBLIQUE_POPOVER_TOGGLE_HANDLE = new InjectionToken<ObEToggleType>(
 	'Define the toggle handle for all Oblique popover'
@@ -73,7 +74,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private readonly globalToggleHandle = inject<ObEToggleType>(OBLIQUE_POPOVER_TOGGLE_HANDLE, {optional: true});
 	private readonly globalCloseOnlyOnToggle = inject(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, {optional: true});
 	private readonly globalAppendToBody = inject(OBLIQUE_POPOVER_APPEND_TO_BODY, {optional: true});
-	private readonly window = inject(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 
 	constructor() {
 		const el = inject(ElementRef);

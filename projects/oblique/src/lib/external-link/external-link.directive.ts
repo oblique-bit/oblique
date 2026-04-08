@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Subject, switchMap} from 'rxjs';
 import {first, startWith, takeUntil, tap} from 'rxjs/operators';
 import {WINDOW} from './../utilities';
+import {ObWindow} from './../utilities.model';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 
 @Directive({
@@ -30,7 +31,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private readonly isLinkExternal$ = new Subject<boolean>();
 	private defaultRel: string;
 	private defaultTarget: string;
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly config = inject(EXTERNAL_LINK, {optional: true});
 	private readonly renderer = inject(Renderer2);
 	private readonly translate = inject(TranslateService);
