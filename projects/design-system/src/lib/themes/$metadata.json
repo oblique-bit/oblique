@@ -22,7 +22,7 @@
     "03_semantic/color/s1_lightness/light",
     "03_semantic/color/s2_emphasis/high",
     "03_semantic/color/s2_emphasis/low",
-    "03_semantic/color/s3_semantic/semantic",
+    "03_semantic/color/compiled",
     "03_semantic/asset/theme/lightness/light",
     "03_semantic/asset/theme/lightness/dark",
     "03_semantic/border",

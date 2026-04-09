@@ -5,7 +5,7 @@
         "color": {
           "fg": {
             "$type": "color",
-            "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
+            "$value": "{ob.s.color.neutral.fg.contrast_highest.inversity_normal}",
             "$description": "Default color token for icon fills. Reacts to lightness (light / dark) mode via ob.s3.color.neutral. Parent components may override the color — especially interaction components such as button."
           }
         }

@@ -1,6 +1,6 @@
 {
   "ob": {
-    "s3": {
+    "s": {
       "color": {
         "brand": {
           "$extensions": {
@@ -335,44 +335,6 @@
                 "$value": "{ob.s1.color.neutral.border.strong.inversity_flipped}",
                 "$description": "Neutral border - strong flipped"
               }
-            }
-          }
-        },
-        "navigation": {
-          "bg": {
-            "selected": {
-              "$extensions": {
-                "ob.figma": {
-                  "semanticAssigned": true
-                }
-              },
-              "$type": "color",
-              "$value": "{ob.s3.color.neutral.bg.contrast_highest.inversity_normal}",
-              "$description": "Navigation background - selected"
-            }
-          },
-          "fg": {
-            "selected": {
-              "$extensions": {
-                "ob.figma": {
-                  "semanticAssigned": true
-                }
-              },
-              "$type": "color",
-              "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
-              "$description": "Navigation foreground - selected"
-            }
-          },
-          "border": {
-            "selected": {
-              "$extensions": {
-                "ob.figma": {
-                  "semanticAssigned": true
-                }
-              },
-              "$type": "color",
-              "$value": "{ob.s3.color.brand}",
-              "$description": "Navigation border - selected"
             }
           }
         },

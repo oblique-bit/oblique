@@ -27,7 +27,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_low.inversity_normal}",
+                "$value": "{ob.s.color.neutral.fg.contrast_low.inversity_normal}",
                 "$description": "Foreground-color of H1 in Interface mode. Value: Low contrast is suitable for larger font sizes in terms of Grauwert."
               }
             },
@@ -71,7 +71,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_medium.inversity_normal}",
+                "$value": "{ob.s.color.neutral.fg.contrast_medium.inversity_normal}",
                 "$description": "Foreground-color of H2 in Interface mode. Value: Medium contrast is suitable for larger font sizes in terms of Grauwert."
               }
             },
@@ -115,7 +115,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}",
+                "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}",
                 "$description": "Foreground-color of H3 in Interface mode. Value: High contrast is suitable for medium font sizes in terms of Grauwert."
               }
             },
@@ -159,7 +159,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}",
+                "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}",
                 "$description": "Foreground-color of H4 in Interface mode. Value: High contrast is suitable for medium font sizes in terms of Grauwert."
               }
             },
@@ -203,7 +203,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}",
+                "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}",
                 "$description": "Foreground-color of H5 in Interface mode. Value: High contrast is suitable here in terms of Grauwert."
               }
             },
@@ -247,7 +247,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_high.inversity_normal}",
+                "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}",
                 "$description": "Foreground-color of H6 in Interface mode. Value: High contrast is suitable here in terms of Grauwert."
               }
             },
@@ -359,7 +359,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
+                "$value": "{ob.s.color.neutral.fg.contrast_highest.inversity_normal}",
                 "$description": "Foreground-color of body in all typography context modes. Value: Highest contrast for optimal readability."
               }
             },
