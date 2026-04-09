@@ -46,12 +46,57 @@ ob.s.type.component.property.variant.state
 
 ### **Core Rules**
 1. **Singular naming** - Use `color` not `colors`
-2. **Lowercase only** - All segments lowercase
+2. **Lowercase only** - All segments lowercase (exception: Tokens Studio `$type` values — see [Tokens Studio `$type` Exceptions](#tokens-studio-type-exceptions) below)
 3. **Hyphen separation** - Connect compound words with hyphens in file paths
 4. **Underscore compounds** - Use underscores for multi-word identifiers within tokens
 5. **Two words max** - Keep compound terms concise
 6. **Hierarchical order** - Follow established segment order
 7. **Reference hierarchy** - Follow proper reference chain (`Component → Semantic → Primitive`), with `ob.g.*` tokens being the exception
+
+### **Tokens Studio `$type` Exceptions** {#tokens-studio-type-exceptions}
+
+The `$type` field in token JSON files is controlled by **Tokens Studio conventions**, not Oblique naming rules. These identifiers must match exactly what Tokens Studio expects — changing them to snake_case will cause the token to fall back to `other` type, breaking Figma export.
+
+> **Do not rename `$type` values during naming consistency cleanup.** Only token path segments are in scope for renaming.
+
+Tokens Studio uses camelCase for all unofficial (non-W3C) type identifiers:
+
+| `$type` value | Figma output | Rename? |
+|---|---|---|
+| `boxShadow` | **Effect Style** — must be exactly `boxShadow` | ❌ never |
+| `fontFamilies` | String variable | ❌ never |
+| `fontSizes` | Number variable | ❌ never |
+| `fontWeights` | Number variable | ❌ never |
+| `lineHeights` | Number variable | ❌ never |
+| `letterSpacing` | Number variable | ❌ never |
+| `paragraphSpacing` | Number variable | ❌ never |
+| `textCase` | String variable | ❌ never |
+| `textDecoration` | String variable | ❌ never |
+| `borderRadius` | Number variable | ❌ never |
+| `borderWidth` | Number variable | ❌ never |
+| `cubicBezier` | Not exported | ❌ never |
+| `composition` | Not exported (plugin-only) | ❌ never |
+
+**`boxShadow` is particularly critical**: Tokens Studio exports `boxShadow` tokens as Figma **Effect Styles**, not Variables. If the `$type` is changed (e.g. to `box_shadow`), Tokens Studio does not recognise it and the Effect Style is not created. The path segment for shadow tokens uses `shadow` (snake_case) while the `$type` remains `boxShadow` — this is the documented mapping, not an error.
+
+The token **path segment** for these types follows Oblique's snake_case rule as normal. Only the `$type` value is exempt:
+
+```json
+{
+  "ob": {
+    "s": {
+      "shadow": {
+        "elevation_low": {
+          "$type": "boxShadow",
+          "$value": { ... }
+        }
+      }
+    }
+  }
+}
+```
+
+Here `shadow` (path segment) is snake_case per Oblique convention; `boxShadow` (`$type`) is camelCase per Tokens Studio convention. Both are correct.
 
 ### **Layer-Specific Patterns**
 
@@ -149,9 +194,11 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 - `bg_base` / `bg_hover` / `bg_focus` / `bg_active`
 - `fg_base` / `fg_hover` / `fg_focus` / `fg_disabled`
 
-#### **Property Compounds**
+#### **Property Compounds** (token path segments — snake_case)
 - `border_radius` / `font_family` / `font_size` / `font_weight`
 - `line_height` / `letter_spacing` / `text_decoration`
+
+> These are **path segment** names, not `$type` values. The corresponding `$type` values use Tokens Studio's camelCase convention (`lineHeights`, `letterSpacing`, etc.) — see [Tokens Studio `$type` Exceptions](#tokens-studio-type-exceptions).
 
 ---
 

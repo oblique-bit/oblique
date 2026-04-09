@@ -100,9 +100,9 @@ Defined mappings:
 | `border` | `border` | W3C composite |
 | `multiplier` | `number` | Unitless ratio or scale factor |
 
-> **Note on `other`**: The `other` type (currently 172 tokens) does not map to any path segment. Tokens using `$type: other` must be audited and reassigned to a specific type with a corresponding path segment.
+> **`$type` values are immutable — do not rename them.** These identifiers are Tokens Studio's internal conventions. Renaming any `$type` value (e.g. `boxShadow` → `box_shadow`) causes Tokens Studio to fall back to `other`, silently dropping the token from all Figma export pipelines. The path segment (left column) follows Oblique's snake\_case rule; the `$type` value (right column) follows Tokens Studio's camelCase convention. Both are intentional and coexist by design. See [Tokens Studio `$type` Exceptions](./03-naming.md#tokens-studio-type-exceptions) in the naming reference.
 
-### R3 — No type inference from folder structure
+> **Note on `other`**: The `other` type (currently 172 tokens) does not map to any path segment. Tokens using `$type: other` must be audited and reassigned to a specific type with a corresponding path segment.
 
 Per the W3C DTCG spec, type must not be inferred from the file or folder an object is stored in. The `$type` annotation is authoritative. The `{type}` path segment and `$type` must independently convey the type — neither replaces the other.
 
@@ -143,7 +143,7 @@ The table below lists all types currently used in Oblique token files (via `$typ
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | Notes |
 |-----------------|----------|---------------|-----------------|-------|
 | `color` | `color` (§8.1) | Native | **Color** | Full round-trip support. Handles light/dark via mode aliasing. |
-| `boxShadow` | `shadow` (§9.5) | Unofficial composite | Partial (Figma Styles only) | Figma has no variable for shadow as a composite. Each sub-value (color, offsetX, offsetY, blur, spread) can bind individually to Number/Color variables. |
+| `boxShadow` | `shadow` (§9.5) | Unofficial composite | **Effect Style** ⚠️ | Exported as Figma Effect Style, not a Variable. The `$type` identifier must be exactly `boxShadow` (camelCase) — Tokens Studio uses this string to route the token into the Effect Style pipeline. Renaming it breaks export silently. |
 | `border` | `border` (§9.3) | Supported composite | Not supported as composite | Border width and color can each bind to Number/Color variables. Style property cannot. |
 
 ---
@@ -179,7 +179,7 @@ Path segments and `$type` values are separate concerns. The inconsistency to fix
 
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | In Oblique | Notes |
 |-----------------|----------|---------------|-----------------|------------|-------|
-| `typography` | `typography` (§9.7) | Supported composite | Partial (Text Styles only) | 142 tokens | Figma cannot bind a full typography composite to a variable. Individual sub-properties (fontSize, fontWeight, etc.) can each bind to Number or String variables. |
+| `typography` | `typography` (§9.7) | Supported composite | **Text Style** | 142 tokens | Figma cannot bind a full typography composite to a Variable. Tokens Studio exports it as a Figma Text Style. Individual sub-properties (fontSize, fontWeight, etc.) can each also bind to Number or String variables when exported separately. |
 | `fontSizes` | `dimension` (fontSize sub-value) | Unofficial → `dimension` | **Number** | 86 tokens | Tokens Studio name. Official W3C sub-value. Figma binds as Number. |
 | `fontWeights` | `fontWeight` (§8.4) | Unofficial → `fontWeight` | **Number** (numeric only) | 48 tokens | Figma supports font weight as Number variable. String weights (e.g. "bold") are not bindable as variables. |
 | `fontFamilies` | `fontFamily` (§8.3) | Unofficial → `fontFamily` | **String** | 28 tokens | Figma binds as String. Must match exact installed font name. |
@@ -205,7 +205,7 @@ Path segments and `$type` values are separate concerns. The inconsistency to fix
 
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | In Oblique | Notes |
 |-----------------|----------|---------------|-----------------|------------|-------|
-| `composition` | Not specified | Unofficial (composite) | Not supported | 78 tokens | Tokens Studio–specific composite type grouping multiple properties. No W3C equivalent. Deprecated in newer Tokens Studio versions. |
+| `composition` | Not specified | Unofficial (composite) | Not exported | 78 tokens | Tokens Studio–specific composite type that bundles multiple layer properties (fill, border, shadow) into one token. No Figma Variable or Style is created. The plugin applies the bundled values directly to a selected Figma layer when used interactively. Deprecated in Tokens Studio v2+ — migration to individual typed tokens is queued. |
 | `other` | Not specified | Unofficial | Not supported | 172 tokens | Generic catch-all in Tokens Studio. Not in W3C spec. Use specific types where possible. Should be audited and replaced with appropriate types. |
 | `text` | (§ JSON string) | Unofficial → `string` | **String** | 7 tokens | Tokens Studio label for string/text tokens. |
 | `asset` | Not specified | Unofficial | Not supported | 13 tokens | URL-based asset references. Not in W3C spec. No Figma variable binding. |
@@ -213,7 +213,28 @@ Path segments and `$type` values are separate concerns. The inconsistency to fix
 
 ---
 
-## W3C DTCG Type Inventory (for reference)
+## Composite Token Figma Export Behaviour
+
+Composite tokens cannot map to Figma Variables (Figma only accepts single-value tokens). Tokens Studio handles each composite type differently:
+
+| `$type` | Figma output | How it works |
+|---|---|---|
+| `typography` | **Text Style** | Tokens Studio creates a named Figma Text Style. Each sub-property of the composite (fontFamily, fontWeight, fontSize, …) is mapped to the Style. Sub-properties can additionally be exported as individual Number/String variables when exported separately. |
+| `boxShadow` | **Effect Style** | Tokens Studio creates a named Figma Effect Style. The composite value (offsetX, offsetY, blur, spread, color) is applied as a drop shadow or inner shadow effect. **The `$type` identifier must be exactly `boxShadow`** — Tokens Studio uses this exact string to identify Effect Style candidates. |
+| `border` | No Style | Border composites are not exportable as a named Figma Style. Individual sub-values (border-width, border-color) can be exported as Number/Color variables. |
+| `composition` | None (plugin-only) | Not exported as a Variable or Style. The plugin applies the bundled property values directly to a Figma layer when the user applies the token interactively. No named artefact is created in Figma. |
+
+### Path segment vs `$type` for composite types
+
+The Oblique path segment and the Tokens Studio `$type` value intentionally differ in case for composites:
+
+| Oblique path segment | `$type` (immutable) | Reason |
+|---|---|---|
+| `shadow` | `boxShadow` | TS convention; must stay `boxShadow` for Effect Style routing |
+| `typography` | `typography` | Single word — no case conflict |
+| `border` | `border` | Single word — no case conflict |
+
+Do not rename `boxShadow` to `box_shadow` in `$type` fields. The path segment `shadow` is correct snake\_case. Only the `$type` value is the exception.
 
 Types defined in the second editors' draft (June 2022):
 
@@ -238,6 +259,7 @@ The spec explicitly states that tools **must not** use groups to infer type — 
 | Typography composite `$type` cannot bind to Figma variables as a whole | `typography` | Uses Figma Text Styles instead; no variable-level composite |
 | `textAlign` has no Figma variable binding | `textAlign` | Code-only; 3 tokens affected |
 | S2→S3 hierarchy violations using `ob.s3.color.neutral.no_color` in S2 | `color` | 4 tokens queued for fix |
+| `boxShadow` `$type` must remain exactly `boxShadow` (camelCase) | `boxShadow` | Naming exception — do not rename; triggers Figma Effect Style export. See [Tokens Studio `$type` Exceptions](./03-naming.md#tokens-studio-type-exceptions). |
 
 ---
 
