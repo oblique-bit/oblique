@@ -11,7 +11,7 @@ import {ObILocale} from './master-layout/master-layout.model';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 
 export interface ObIBanner {
-	text: string;
+	text?: string;
 	color?: string;
 	bgColor?: string;
 }
@@ -20,6 +20,8 @@ export interface ObIPamsConfiguration {
 	environment: ObEPamsEnvironment;
 	rootUrl?: string;
 }
+
+export type ObTBanner = string | ObIBanner | undefined;
 
 export interface ObIMaterialConfig {
 	MAT_FORM_FIELD_DEFAULT_OPTIONS?: MatFormFieldDefaultOptions;

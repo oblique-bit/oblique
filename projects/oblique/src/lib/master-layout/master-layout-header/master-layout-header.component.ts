@@ -13,13 +13,13 @@ import {
 	ViewEncapsulation,
 	inject,
 } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {filter, takeUntil} from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 
-import {ObMasterLayoutService} from '../master-layout.service';
-import {ObMasterLayoutConfig} from '../master-layout.config';
-import {OB_BANNER, OB_PAMS_CONFIGURATION} from '../../utilities';
-import {ObIBanner, ObIPamsConfiguration} from '../../utilities.model';
+import { ObMasterLayoutService } from '../master-layout.service';
+import { ObMasterLayoutConfig } from '../master-layout.config';
+import { OB_BANNER, OB_PAMS_CONFIGURATION } from '../../utilities';
+import { ObIBanner, ObIPamsConfiguration, ObTBanner } from '../../utilities.model';
 import {
 	ObEEnvironment,
 	ObEMasterLayoutEventValues,
@@ -27,8 +27,8 @@ import {
 	ObINavigationLink,
 	ObIServiceNavigationConfig,
 } from '../master-layout.model';
-import {ObEColor} from '../../style/colors.model';
-import {ObLoginState} from '../../service-navigation/service-navigation.model';
+import { ObEColor } from '../../style/colors.model';
+import { ObLoginState } from '../../service-navigation/service-navigation.model';
 
 @Component({
 	selector: 'ob-master-layout-header',
@@ -54,7 +54,7 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<unknown>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
-	readonly pamsConfiguration = inject<ObIPamsConfiguration>(OB_PAMS_CONFIGURATION, {optional: true});
+	readonly pamsConfiguration = inject<ObIPamsConfiguration>(OB_PAMS_CONFIGURATION, { optional: true });
 	private readonly unsubscribe = new Subject<void>();
 	private readonly masterLayout = inject(ObMasterLayoutService);
 	private readonly config = inject(ObMasterLayoutConfig);
@@ -62,7 +62,7 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	constructor() {
 		this.isCustom = this.masterLayout.header.isCustom;
 		this.isSmall = this.masterLayout.header.isSmall;
-		const bannerToken = inject<ObIBanner>(OB_BANNER, {optional: true});
+		const bannerToken = inject<ObIBanner>(OB_BANNER, { optional: true });
 		this.customChange();
 		this.smallChange();
 		this.serviceNavigationConfiguration();
@@ -121,20 +121,22 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 			});
 	}
 
-	private initializeBanner(bannerToken): ObIBanner {
-		switch (bannerToken?.text) {
+	private initializeBanner(bannerToken: ObTBanner): ObIBanner {
+		const obIBanner: ObIBanner = typeof bannerToken === 'string' ? { text: bannerToken } : bannerToken;
+
+		switch (obIBanner?.text as ObEEnvironment) {
 			case ObEEnvironment.LOCAL:
-				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...bannerToken};
+				return { color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...obIBanner };
 			case ObEEnvironment.DEV:
-				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_DEV, ...bannerToken};
+				return { color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_DEV, ...obIBanner };
 			case ObEEnvironment.REF:
-				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_REF, ...bannerToken};
+				return { color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_REF, ...obIBanner };
 			case ObEEnvironment.TEST:
-				return {color: '#fff', bgColor: ObEColor.ENV_TEST, ...bannerToken};
+				return { color: '#fff', bgColor: ObEColor.ENV_TEST, ...obIBanner };
 			case ObEEnvironment.ABN:
-				return {color: '#fff', bgColor: ObEColor.ENV_ABN, ...bannerToken};
+				return { color: '#fff', bgColor: ObEColor.ENV_ABN, ...obIBanner };
 			default:
-				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...bannerToken};
+				return { color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...obIBanner };
 		}
 	}
 }

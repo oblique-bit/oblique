@@ -222,6 +222,25 @@ describe('ObMasterLayoutHeaderComponent', () => {
 				expect(banner.styles.color).toBe('rgb(17, 34, 51)');
 			});
 		});
+		describe('With OB_BANNER as string', () => {
+			beforeEach(() => {
+				TestBed.overrideProvider(OB_BANNER, {useValue: 'DEV'});
+				globalSetup();
+				banner = fixture.debugElement.query(By.css('aside'));
+			});
+
+			it('should handle string bannerToken correctly (text)', () => {
+				expect(banner.nativeElement.textContent.trim()).toBe('DEV');
+			});
+
+			it('should handle string bannerToken correctly (background-color)', () => {
+				expect(banner.styles['background-color']).toBe(backgroundColors.DEV);
+			});
+
+			it('should handle string bannerToken correctly (color)', () => {
+				expect(banner.styles.color).toBe(colors.DEV);
+			});
+		});
 	});
 
 	describe('emitNavigation', () => {

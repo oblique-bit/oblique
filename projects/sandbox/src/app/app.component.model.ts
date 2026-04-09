@@ -1,8 +1,8 @@
-import type {ObEPamsEnvironment, ObIBanner} from '@oblique/oblique';
+import type {ObEPamsEnvironment, ObTBanner} from '@oblique/oblique';
 
 export interface Environment {
 	production: boolean;
-	banner?: ObIBanner;
+	banner?: ObTBanner;
 	pams?: {
 		environment: ObEPamsEnvironment;
 		rootUrl?: string;
