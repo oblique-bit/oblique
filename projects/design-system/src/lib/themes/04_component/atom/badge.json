@@ -12,8 +12,8 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.disabled.bg.contrast_low.inversity_normal}",
-                "$description": "Disabled attention badge background color using status disabled tokens for semantic consistency."
+                "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}",
+                "$description": "Disabled attention badge background color using neutral tokens for disabled state."
               }
             },
             "info": {
@@ -24,8 +24,8 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.disabled.bg.contrast_low.inversity_normal}",
-                "$description": "Disabled info badge background color using status disabled tokens for semantic consistency."
+                "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}",
+                "$description": "Disabled info badge background color using neutral tokens for disabled state."
               }
             },
             "critical": {
@@ -36,8 +36,8 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.disabled.bg.contrast_low.inversity_normal}",
-                "$description": "Disabled critical badge background color using status disabled tokens for semantic consistency."
+                "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}",
+                "$description": "Disabled critical badge background color using neutral tokens for disabled state."
               }
             },
             "resolved": {
@@ -48,8 +48,8 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.disabled.bg.contrast_low.inversity_normal}",
-                "$description": "Disabled resolved badge background color using status disabled tokens for semantic consistency."
+                "$value": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}",
+                "$description": "Disabled resolved badge background color using neutral tokens for disabled state."
               }
             }
           },
@@ -62,7 +62,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.disabled.fg.contrast_highest.inversity_normal}",
+                "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast disabled info badge text color for consistency with badge design pattern."
               }
             },
@@ -74,7 +74,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.disabled.fg.contrast_highest.inversity_normal}",
+                "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast disabled attention badge text color for consistency with badge design pattern."
               }
             },
@@ -86,7 +86,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.disabled.fg.contrast_highest.inversity_normal}",
+                "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast disabled critical badge text color for consistency with badge design pattern."
               }
             },
@@ -98,7 +98,7 @@
               },
               "disabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.status.disabled.fg.contrast_highest.inversity_normal}",
+                "$value": "{ob.s3.color.neutral.fg.contrast_highest.inversity_normal}",
                 "$description": "Maximum contrast disabled resolved badge text color for consistency with badge design pattern."
               }
             }
