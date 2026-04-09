@@ -44,7 +44,7 @@
             "$value": "{ob.p.font_size_rem.300}"
           }
         },
-        "lineHeight": {
+        "line_height": {
           "xs": {
             "$type": "lineHeights",
             "$value": "{ob.p.line_height_rem.300}"
@@ -78,42 +78,42 @@
             "$value": "{ob.p.line_height_rem.1400}"
           }
         },
-        "paragraphSpacing": {
+        "paragraph_spacing": {
           "none": {
             "$type": "paragraphSpacing",
             "$value": "{ob.p.paragraph_spacing_rem.0}"
           },
           "xs": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.lineHeight.xs} / 2"
+            "$value": "{ob.s.static.line_height.xs} / 2"
           },
           "sm": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.lineHeight.sm} / 2"
+            "$value": "{ob.s.static.line_height.sm} / 2"
           },
           "md": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.lineHeight.md} / 2"
+            "$value": "{ob.s.static.line_height.md} / 2"
           },
           "lg": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.lineHeight.lg} / 2"
+            "$value": "{ob.s.static.line_height.lg} / 2"
           },
           "xl": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.lineHeight.xl} / 2"
+            "$value": "{ob.s.static.line_height.xl} / 2"
           },
           "2xl": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.lineHeight.2xl} / 2"
+            "$value": "{ob.s.static.line_height.2xl} / 2"
           },
           "3xl": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.lineHeight.3xl} / 2"
+            "$value": "{ob.s.static.line_height.3xl} / 2"
           },
           "4xl": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.lineHeight.4xl} / 2"
+            "$value": "{ob.s.static.line_height.4xl} / 2"
           }
         },
         "spacing": {

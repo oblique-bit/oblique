@@ -86,7 +86,7 @@
                 "fontWeight": "{ob.h.typography.context.body.normal.font_weight}",
                 "lineHeight": "{ob.h.typography.context.body.normal.line_height}",
                 "letterSpacing": "{ob.h.typography.context.body.normal.letter_spacing}",
-                "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}"
+                "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
               },
               "$description": "Dynamic body text style that adapts between compact and prose contexts via variable modes."
             },
@@ -98,7 +98,7 @@
                 "fontWeight": "{ob.h.typography.context.body.link.font_weight}",
                 "lineHeight": "{ob.h.typography.context.body.link.line_height}",
                 "letterSpacing": "{ob.h.typography.context.body.link.letter_spacing}",
-                "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}",
+                "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}",
                 "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
               },
               "$description": "Dynamic link text style that adapts between compact and prose contexts via variable modes. Adds an underline to the text."
@@ -111,7 +111,7 @@
                 "fontWeight": "{ob.h.typography.context.body.strong.font_weight}",
                 "lineHeight": "{ob.h.typography.context.body.strong.line_height}",
                 "letterSpacing": "{ob.h.typography.context.body.strong.letter_spacing}",
-                "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}"
+                "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
               },
               "$description": "Dynamic strong text style that adapts between compact and prose contexts via variable modes. Emphasized text for important information."
             },
@@ -123,7 +123,7 @@
                 "fontWeight": "{ob.h.typography.context.body.lead.font_weight}",
                 "lineHeight": "{ob.h.typography.context.body.lead.line_height}",
                 "letterSpacing": "{ob.h.typography.context.body.lead.letter_spacing}",
-                "paragraphSpacing": "{ob.s.static.paragraphSpacing.md}"
+                "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
               },
               "$description": "Dynamic lead text style that adapts between compact and prose contexts via variable modes. Introductory paragraph text."
             }

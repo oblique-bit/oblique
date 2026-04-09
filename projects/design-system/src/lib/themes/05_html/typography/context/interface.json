@@ -18,7 +18,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.xl}"
+              "$value": "{ob.s.static.line_height.xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -33,7 +33,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$value": "{ob.s.static.paragraph_spacing.none}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -62,7 +62,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.md}"
+              "$value": "{ob.s.static.line_height.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -77,7 +77,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$value": "{ob.s.static.paragraph_spacing.none}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -106,7 +106,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.sm}"
+              "$value": "{ob.s.static.line_height.sm}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -121,7 +121,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$value": "{ob.s.static.paragraph_spacing.none}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -150,7 +150,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.md}"
+              "$value": "{ob.s.static.line_height.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -165,7 +165,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$value": "{ob.s.static.paragraph_spacing.none}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -194,7 +194,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.md}"
+              "$value": "{ob.s.static.line_height.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -209,7 +209,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$value": "{ob.s.static.paragraph_spacing.none}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -238,7 +238,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.lineHeight.md}"
+              "$value": "{ob.s.static.line_height.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -253,7 +253,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.none}",
+              "$value": "{ob.s.static.paragraph_spacing.none}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -283,7 +283,7 @@
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.static.lineHeight.md}"
+                "$value": "{ob.s.static.line_height.md}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
@@ -305,7 +305,7 @@
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.static.lineHeight.md}"
+                "$value": "{ob.s.static.line_height.md}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
@@ -327,7 +327,7 @@
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.static.lineHeight.md}"
+                "$value": "{ob.s.static.line_height.md}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
@@ -349,7 +349,7 @@
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.static.lineHeight.lg}"
+                "$value": "{ob.s.static.line_height.lg}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
@@ -365,7 +365,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraphSpacing.2xl}"
+              "$value": "{ob.s.static.paragraph_spacing.2xl}"
             }
           },
           "p": {

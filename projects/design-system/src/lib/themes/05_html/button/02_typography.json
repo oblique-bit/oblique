@@ -11,7 +11,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.dynamic.lineHeight.xs}",
+              "$value": "{ob.s.dynamic.line_height.xs}",
               "$description": "Line height that scales with typography multiplier"
             },
             "letter_spacing": {
