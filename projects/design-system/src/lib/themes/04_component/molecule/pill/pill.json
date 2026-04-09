@@ -139,21 +139,21 @@
             "fg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.free.yellow..fg.contrast_high.inversity_normal}"
+                "$value": "{ob.s3.color.free.yellow.fg.contrast_high.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.s3.color.free.yellow..fg.contrast_high.inversity_normal}"
+                "$value": "{ob.s3.color.free.yellow.fg.contrast_high.inversity_normal}"
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.free.yellow..fg.contrast_high.inversity_normal}"
+                "$value": "{ob.s3.color.free.yellow.fg.contrast_high.inversity_normal}"
               }
             },
             "bg": {
               "enabled": {
                 "$type": "color",
-                "$value": "{ob.s3.color.free.yellow..bg.contrast_medium.inversity_normal}"
+                "$value": "{ob.s3.color.free.yellow.bg.contrast_medium.inversity_normal}"
               },
               "hover": {
                 "$type": "color",
@@ -161,7 +161,7 @@
               },
               "pressed": {
                 "$type": "color",
-                "$value": "{ob.s3.color.free.yellow..bg.contrast_low.inversity_normal}"
+                "$value": "{ob.s3.color.free.yellow.bg.contrast_low.inversity_normal}"
               }
             }
           },
