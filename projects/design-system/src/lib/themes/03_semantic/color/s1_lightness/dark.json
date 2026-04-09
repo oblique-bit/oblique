@@ -12,8 +12,8 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}",
-                "$description": "Default background color"
+                "$value": "{ob.p.color.cobalt.800}",
+                "$description": "Default dark surface color"
               },
               "inversity_flipped": {
                 "$extensions": {
@@ -22,7 +22,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.700}",
+                "$value": "{ob.p.color.basic.white}",
                 "$description": "Default dark surface color"
               }
             },
@@ -34,7 +34,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.50}",
+                "$value": "{ob.p.color.cobalt.700}",
                 "$description": "Darker surface color"
               },
               "inversity_flipped": {
@@ -44,7 +44,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.600}",
+                "$value": "{ob.p.color.cobalt.50}",
                 "$description": "Darker surface color"
               }
             },
@@ -56,7 +56,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.100}",
+                "$value": "{ob.p.color.cobalt.600}",
                 "$description": "Darker surface color"
               },
               "inversity_flipped": {
@@ -66,7 +66,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.500}",
+                "$value": "{ob.p.color.cobalt.100}",
                 "$description": "Darker surface color"
               }
             },
@@ -78,7 +78,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.200}",
+                "$value": "{ob.p.color.cobalt.400}",
                 "$description": "Darker surface color"
               },
               "inversity_flipped": {
@@ -88,7 +88,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.400}",
+                "$value": "{ob.p.color.cobalt.200}",
                 "$description": "Darker surface color"
               }
             },
@@ -111,7 +111,7 @@
                 },
                 "$type": "color",
                 "$value": "{ob.p.color.cobalt.300}",
-                "$description": "Very subtle dark background color for disabled states on inverse backgrounds"
+                "$description": "Very subtle light background color for disabled states on inverse backgrounds"
               }
             }
           },
@@ -124,8 +124,8 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt_alpha.400}",
-                "$description": "for diabled text"
+                "$value": "{ob.p.color.white_alpha.400}",
+                "$description": "For disabled"
               },
               "inversity_flipped": {
                 "$extensions": {
@@ -134,7 +134,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.white_alpha.400}",
+                "$value": "{ob.p.color.cobalt_alpha.400}",
                 "$description": "For disabled"
               }
             },
@@ -146,7 +146,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.600}"
+                "$value": "{ob.p.color.cobalt.200}"
               },
               "inversity_flipped": {
                 "$extensions": {
@@ -155,7 +155,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.200}"
+                "$value": "{ob.p.color.cobalt.600}"
               }
             },
             "contrast_medium": {
@@ -166,7 +166,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.700}",
+                "$value": "{ob.p.color.cobalt.100}",
                 "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
               },
               "inversity_flipped": {
@@ -176,7 +176,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.100}",
+                "$value": "{ob.p.color.cobalt.700}",
                 "$description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text."
               }
             },
@@ -188,7 +188,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.800}"
+                "$value": "{ob.p.color.cobalt.50}"
               },
               "inversity_flipped": {
                 "$extensions": {
@@ -197,7 +197,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.50}"
+                "$value": "{ob.p.color.cobalt.800}"
               }
             },
             "contrast_highest": {
@@ -208,7 +208,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.900}"
+                "$value": "{ob.p.color.basic.white}"
               },
               "inversity_flipped": {
                 "$extensions": {
@@ -217,22 +217,13 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.cobalt.900}"
               }
             }
           },
           "border": {
             "subtle": {
               "inversity_normal": {
-                "$extensions": {
-                  "ob.figma": {
-                    "semanticAssigned": true
-                  }
-                },
-                "$type": "color",
-                "$value": "{ob.p.color.cobalt.100}"
-              },
-              "inversity_flipped": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
@@ -247,19 +238,19 @@
                 },
                 "$type": "color",
                 "$value": "{ob.p.color.basic.white}"
-              }
-            },
-            "medium": {
-              "inversity_normal": {
+              },
+              "inversity_flipped": {
                 "$extensions": {
                   "ob.figma": {
                     "semanticAssigned": true
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.200}"
-              },
-              "inversity_flipped": {
+                "$value": "{ob.p.color.cobalt.100}"
+              }
+            },
+            "medium": {
+              "inversity_normal": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
@@ -274,6 +265,15 @@
                 },
                 "$type": "color",
                 "$value": "{ob.p.color.basic.white}"
+              },
+              "inversity_flipped": {
+                "$extensions": {
+                  "ob.figma": {
+                    "semanticAssigned": true
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.200}"
               }
             },
             "strong": {
@@ -315,8 +315,7 @@
                 }
               },
               "$type": "color",
-              "$value": "{ob.p.color.cobalt_alpha.50}",
-              "$description": "1st of 2 effects"
+              "$value": "{ob.p.color.cobalt_alpha.50}"
             },
             "second": {
               "inversity_flipped": {
@@ -335,8 +334,7 @@
                 }
               },
               "$type": "color",
-              "$value": "{ob.p.color.cobalt_alpha.100}",
-              "$description": "2nd of 2 effects"
+              "$value": "{ob.p.color.cobalt_alpha.100}"
             }
           }
         },
@@ -351,29 +349,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for info status - references white primitive for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for info status - references darkest cobalt for highest contrast"
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.blue.50}"
+                  "$description": "Maximum contrast background for info status in dark theme - references darkest cobalt"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -382,74 +359,11 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.blue.800}"
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast background for info status on inverted dark theme - references white"
                 }
               },
               "contrast_medium": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.blue.100}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.blue.700}"
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.blue.200}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.blue.600}"
-                }
-              }
-            },
-            "fg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for info status - references darkest cobalt for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for info status - references white primitive for highest contrast"
-                }
-              },
-              "contrast_high": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -466,11 +380,10 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.blue.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
+                  "$value": "{ob.p.color.blue.300}"
                 }
               },
-              "contrast_medium": {
+              "contrast_high": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -487,8 +400,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.blue.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
+                  "$value": "{ob.p.color.blue.200}"
                 }
               },
               "contrast_low": {
@@ -508,15 +420,12 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.blue.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
+                  "$value": "{ob.p.color.blue.400}"
                 }
               }
-            }
-          },
-          "resolved": {
-            "bg": {
-              "contrast_high": {
+            },
+            "fg": {
+              "contrast_highest": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -524,7 +433,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.green.50}"
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast foreground for info status in dark theme - references white for maximum readability"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -533,7 +443,28 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.green.800}"
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast foreground for info status on inverted dark theme - references darkest cobalt"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.blue.200}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.blue.800}"
                 }
               },
               "contrast_medium": {
@@ -544,7 +475,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.green.100}"
+                  "$value": "{ob.p.color.blue.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -553,10 +484,143 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.green.700}"
+                  "$value": "{ob.p.color.blue.900}"
                 }
               },
               "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.blue.400}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.blue.700}"
+                }
+              }
+            }
+          },
+          "resolved": {
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast background for resolved status in dark theme - references darkest cobalt"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast background for resolved status on inverted dark theme - references white"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.green.700}",
+                  "$description": "Paring for icon only (e.g. Alert) or a larger bold font weight. Otherwise AX critical."
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.green.400}"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.green.800}",
+                  "$description": "Paring for icon only (e.g. Alert) or a larger bold font weight. Otherwise AX critical."
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.green.300}"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.green.900}",
+                  "$description": "Paring for icon only (e.g. Alert) or a larger bold font weight. Otherwise AX critical."
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.green.200}"
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast foreground for resolved status in dark theme - references white for maximum readability"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast foreground for resolved status on inverted dark theme - references darkest cobalt"
+                }
+              },
+              "contrast_high": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -573,52 +637,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.green.600}"
-                }
-              },
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for resolved status - references white primitive for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for resolved status - references darkest cobalt for highest contrast"
-                }
-              }
-            },
-            "fg": {
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.green.800}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.green.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
+                  "$value": "{ob.p.color.green.900}"
                 }
               },
               "contrast_medium": {
@@ -629,7 +648,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.green.700}"
+                  "$value": "{ob.p.color.green.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -638,8 +657,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.green.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
+                  "$value": "{ob.p.color.green.800}"
                 }
               },
               "contrast_low": {
@@ -650,7 +668,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.green.600}"
+                  "$value": "{ob.p.color.green.400}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -659,30 +677,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.green.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
-                }
-              },
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for resolved status - references darkest cobalt for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for resolved status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.green.700}"
                 }
               }
             }
@@ -697,8 +692,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for fatal status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.red.900}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -707,8 +701,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for fatal status - references darkest cobalt for highest contrast"
+                  "$value": "{ob.p.color.red.100}"
                 }
               },
               "contrast_high": {
@@ -719,8 +712,91 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.50}",
-                  "$description": "Auto-generated: matches fg.contrast_high"
+                  "$value": "{ob.p.color.red.800}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.200}"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.700}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.300}"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.600}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.400}"
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast foreground for fatal status in dark theme - references white for maximum readability"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast foreground for fatal status on inverted dark theme - references darkest cobalt"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.100}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -740,8 +816,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.100}",
-                  "$description": "Auto-generated: matches fg.contrast_medium"
+                  "$value": "{ob.p.color.red.200}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -761,8 +836,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.200}",
-                  "$description": "Auto-generated: matches fg.contrast_low"
+                  "$value": "{ob.p.color.red.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -771,7 +845,93 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.600}"
+                  "$value": "{ob.p.color.red.700}"
+                }
+              }
+            }
+          },
+          "attention": {
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast background for attention status in dark theme - references darkest cobalt"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast background for attention status on inverted dark theme - references white"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.orange.700}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.orange.400}"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.orange.800}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.orange.300}"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.orange.900}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.orange.200}"
                 }
               }
             },
@@ -784,128 +944,21 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for fatal status - references darkest cobalt for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for fatal status - references white primitive for highest contrast"
+                  "$description": "Maximum contrast foreground for attention status in dark theme - references white for maximum readability"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast foreground for attention status on inverted dark theme - references darkest cobalt"
                 }
               },
               "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.red.800}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.red.50}"
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.red.700}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.red.100}"
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.red.600}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.red.200}"
-                }
-              }
-            }
-          },
-          "attention": {
-            "bg": {
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.orange.50}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.orange.800}"
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.orange.100}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.orange.700}"
-                }
-              },
-              "contrast_low": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -922,52 +975,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.orange.600}"
-                }
-              },
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for attention status - references white primitive for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for attention status - references darkest cobalt for highest contrast"
-                }
-              }
-            },
-            "fg": {
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.orange.800}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.orange.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
+                  "$value": "{ob.p.color.orange.700}"
                 }
               },
               "contrast_medium": {
@@ -978,7 +986,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.orange.700}"
+                  "$value": "{ob.p.color.orange.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -987,8 +995,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.orange.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
+                  "$value": "{ob.p.color.orange.800}"
                 }
               },
               "contrast_low": {
@@ -999,7 +1006,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.orange.600}"
+                  "$value": "{ob.p.color.orange.400}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1008,30 +1015,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.orange.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
-                }
-              },
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for attention status - references darkest cobalt for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for attention status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.orange.900}"
                 }
               }
             }
@@ -1046,8 +1030,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for pending status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.yellow.900}",
+                  "$description": "Maximum contrast background for pending status in dark theme"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1056,8 +1040,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for pending status - references darkest cobalt for highest contrast"
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast background for pending status on inverted dark theme"
                 }
               },
               "contrast_high": {
@@ -1068,7 +1052,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.50}"
+                  "$value": "{ob.p.color.yellow.700}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1077,7 +1061,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.800}"
+                  "$value": "{ob.p.color.yellow.400}"
                 }
               },
               "contrast_medium": {
@@ -1088,7 +1072,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.100}"
+                  "$value": "{ob.p.color.yellow.800}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1097,7 +1081,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.700}"
+                  "$value": "{ob.p.color.yellow.300}"
                 }
               },
               "contrast_low": {
@@ -1108,7 +1092,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.200}"
+                  "$value": "{ob.p.color.yellow.900}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1117,7 +1101,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.600}"
+                  "$value": "{ob.p.color.yellow.200}"
                 }
               }
             },
@@ -1130,8 +1114,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for pending status - references darkest cobalt for highest contrast"
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast foreground for pending status in dark theme"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1140,8 +1124,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for pending status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast foreground for pending status on inverted dark theme"
                 }
               },
               "contrast_high": {
@@ -1152,7 +1136,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.800}"
+                  "$value": "{ob.p.color.orange.200}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1161,8 +1145,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
+                  "$value": "{ob.p.color.yellow.700}"
                 }
               },
               "contrast_medium": {
@@ -1173,7 +1156,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.700}"
+                  "$value": "{ob.p.color.yellow.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1182,8 +1165,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
+                  "$value": "{ob.p.color.yellow.800}"
                 }
               },
               "contrast_low": {
@@ -1194,7 +1176,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.600}"
+                  "$value": "{ob.p.color.yellow.400}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1203,8 +1185,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.yellow.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
+                  "$value": "{ob.p.color.yellow.900}"
                 }
               }
             }
@@ -1219,8 +1200,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for confirmed status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.teal.900}",
+                  "$description": "Maximum contrast background for confirmed status in dark theme"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1229,8 +1210,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for confirmed status - references darkest cobalt for highest contrast"
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast background for confirmed status on inverted dark theme"
                 }
               },
               "contrast_high": {
@@ -1241,7 +1222,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.teal.50}"
+                  "$value": "{ob.p.color.teal.700}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1250,7 +1231,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.teal.800}"
+                  "$value": "{ob.p.color.teal.400}"
                 }
               },
               "contrast_medium": {
@@ -1261,7 +1242,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.teal.100}"
+                  "$value": "{ob.p.color.teal.800}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1270,10 +1251,54 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.teal.700}"
+                  "$value": "{ob.p.color.teal.300}"
                 }
               },
               "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.900}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.200}"
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast foreground for confirmed status in dark theme"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast foreground for confirmed status on inverted dark theme"
+                }
+              },
+              "contrast_high": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -1290,52 +1315,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.teal.600}"
-                }
-              }
-            },
-            "fg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for confirmed status - references darkest cobalt for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for confirmed status - references white primitive for highest contrast"
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.800}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
+                  "$value": "{ob.p.color.teal.700}"
                 }
               },
               "contrast_medium": {
@@ -1346,7 +1326,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.teal.700}"
+                  "$value": "{ob.p.color.teal.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1355,8 +1335,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.teal.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
+                  "$value": "{ob.p.color.teal.800}"
                 }
               },
               "contrast_low": {
@@ -1367,7 +1346,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.teal.600}"
+                  "$value": "{ob.p.color.teal.400}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1376,8 +1355,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.teal.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
+                  "$value": "{ob.p.color.teal.900}"
                 }
               }
             }
@@ -1392,8 +1370,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for progress status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.indigo.900}",
+                  "$description": "Maximum contrast background for progress status in dark theme"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1402,8 +1380,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for progress status - references darkest cobalt for highest contrast"
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast background for progress status on inverted dark theme"
                 }
               },
               "contrast_high": {
@@ -1414,7 +1392,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.50}"
+                  "$value": "{ob.p.color.indigo.700}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1423,7 +1401,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.800}"
+                  "$value": "{ob.p.color.indigo.400}"
                 },
                 "inversity_flipped_alpha": {
                   "$extensions": {
@@ -1444,7 +1422,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.100}"
+                  "$value": "{ob.p.color.indigo.800}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1453,7 +1431,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.700}"
+                  "$value": "{ob.p.color.indigo.300}"
                 }
               },
               "contrast_low": {
@@ -1464,7 +1442,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.200}"
+                  "$value": "{ob.p.color.indigo.900}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1473,7 +1451,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.600}"
+                  "$value": "{ob.p.color.indigo.200}"
                 }
               },
               "contrast_high_alpha": {
@@ -1508,8 +1486,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for progress status - references darkest cobalt for highest contrast"
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast foreground for progress status in dark theme"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1518,8 +1496,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for progress status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast foreground for progress status on inverted dark theme"
                 }
               },
               "contrast_high": {
@@ -1530,7 +1508,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.800}"
+                  "$value": "{ob.p.color.indigo.200}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1539,8 +1517,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
+                  "$value": "{ob.p.color.indigo.700}"
                 }
               },
               "contrast_medium": {
@@ -1551,7 +1528,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.700}"
+                  "$value": "{ob.p.color.indigo.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1560,8 +1537,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
+                  "$value": "{ob.p.color.indigo.800}"
                 }
               },
               "contrast_low": {
@@ -1572,7 +1548,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.600}"
+                  "$value": "{ob.p.color.indigo.400}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1581,8 +1557,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
+                  "$value": "{ob.p.color.indigo.900}"
                 }
               }
             }
@@ -1597,8 +1572,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for scheduled status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.pink.900}",
+                  "$description": "Maximum contrast background for scheduled status in dark theme"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1607,8 +1582,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for scheduled status - references darkest cobalt for highest contrast"
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast background for scheduled status on inverted dark theme"
                 }
               },
               "contrast_high": {
@@ -1619,7 +1594,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.50}"
+                  "$value": "{ob.p.color.pink.700}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1628,7 +1603,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.800}"
+                  "$value": "{ob.p.color.pink.400}"
                 }
               },
               "contrast_medium": {
@@ -1639,7 +1614,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.100}"
+                  "$value": "{ob.p.color.pink.800}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1648,10 +1623,54 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.700}"
+                  "$value": "{ob.p.color.pink.300}"
                 }
               },
               "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.pink.900}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.pink.200}"
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast foreground for scheduled status in dark theme"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast foreground for scheduled status on inverted dark theme"
+                }
+              },
+              "contrast_high": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -1668,52 +1687,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.600}"
-                }
-              }
-            },
-            "fg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for scheduled status - references darkest cobalt for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for scheduled status - references white primitive for highest contrast"
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.pink.800}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.pink.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
+                  "$value": "{ob.p.color.pink.700}"
                 }
               },
               "contrast_medium": {
@@ -1724,7 +1698,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.700}"
+                  "$value": "{ob.p.color.pink.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1733,8 +1707,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
+                  "$value": "{ob.p.color.pink.800}"
                 }
               },
               "contrast_low": {
@@ -1745,7 +1718,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.600}"
+                  "$value": "{ob.p.color.pink.400}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1754,15 +1727,14 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
+                  "$value": "{ob.p.color.pink.900}"
                 }
               }
             }
           },
           "critical": {
             "bg": {
-              "contrast_high": {
+              "contrast_highest": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -1770,7 +1742,8 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.50}"
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast background for critical status in dark theme - references darkest cobalt"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1779,10 +1752,95 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.800}"
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast background for critical status on inverted dark theme - references white"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.700}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.400}"
                 }
               },
               "contrast_medium": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.800}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.300}"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.900}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.red.200}"
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast foreground for critical status in dark theme - references white for maximum readability"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast foreground for critical status on inverted dark theme - references darkest cobalt"
+                }
+              },
+              "contrast_high": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -1799,10 +1857,10 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.700}"
+                  "$value": "{ob.p.color.red.900}"
                 }
               },
-              "contrast_low": {
+              "contrast_medium": {
                 "inversity_normal": {
                   "$extensions": {
                     "ob.figma": {
@@ -1819,73 +1877,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.600}"
-                }
-              },
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for critical status - references white primitive for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for critical status - references darkest cobalt for highest contrast"
-                }
-              }
-            },
-            "fg": {
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
                   "$value": "{ob.p.color.red.800}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.red.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.red.700}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.red.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
                 }
               },
               "contrast_low": {
@@ -1896,7 +1888,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.600}"
+                  "$value": "{ob.p.color.red.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1905,30 +1897,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.red.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
-                }
-              },
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for critical status - references darkest cobalt for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for critical status - references white primitive for highest contrast"
+                  "$value": "{ob.p.color.red.700}"
                 }
               }
             }
@@ -1943,8 +1912,92 @@
                     }
                   },
                   "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Maximum contrast background for closed status in dark theme"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast background for closed status - references white primitive for highest contrast"
+                  "$description": "Maximum contrast background for closed status on inverted dark theme"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.300}"
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.800}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.200}"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.700}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.400}"
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": false
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Maximum contrast foreground for closed status in dark theme"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -1954,7 +2007,7 @@
                   },
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast background for closed status - references darkest cobalt for highest contrast"
+                  "$description": "Maximum contrast foreground for closed status on inverted dark theme"
                 }
               },
               "contrast_high": {
@@ -2014,94 +2067,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.600}"
-                }
-              }
-            },
-            "fg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Maximum contrast foreground for closed status - references darkest cobalt for highest contrast"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Maximum contrast foreground for closed status - references white primitive for highest contrast"
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.800}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": false
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             }
@@ -2118,8 +2084,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Used as bg in 2nd and 3d buttons"
+                  "$value": "{ob.p.color.steelblue.900}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2128,7 +2093,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.800}"
+                  "$value": "{ob.p.color.steelblue.100}"
                 }
               },
               "contrast_medium": {
@@ -2139,7 +2104,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.100}"
+                  "$value": "{ob.p.color.steelblue.800}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2148,7 +2113,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.700}"
+                  "$value": "{ob.p.color.steelblue.200}"
                 }
               },
               "contrast_low": {
@@ -2159,7 +2124,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.200}"
+                  "$value": "{ob.p.color.steelblue.700}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2168,7 +2133,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.600}"
+                  "$value": "{ob.p.color.steelblue.300}"
                 }
               }
             },
@@ -2181,7 +2146,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.700}"
+                  "$value": "{ob.p.color.steelblue.100}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2190,8 +2155,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Text and icon color has to be white on inversion (primary buttons, badge etc.)"
+                  "$value": "{ob.p.color.steelblue.900}"
                 }
               },
               "contrast_medium": {
@@ -2202,7 +2166,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.600}"
+                  "$value": "{ob.p.color.steelblue.200}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2211,7 +2175,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.100}"
+                  "$value": "{ob.p.color.steelblue.800}"
                 }
               },
               "contrast_low": {
@@ -2222,7 +2186,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.500}"
+                  "$value": "{ob.p.color.steelblue.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2231,7 +2195,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.200}"
+                  "$value": "{ob.p.color.steelblue.700}"
                 }
               }
             },
@@ -2244,7 +2208,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.900}"
+                  "$value": "{ob.p.color.indigo.50}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2253,7 +2217,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.50}"
+                  "$value": "{ob.p.color.indigo.900}"
                 }
               },
               "contrast_medium": {
@@ -2264,7 +2228,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.800}"
+                  "$value": "{ob.p.color.indigo.100}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2273,7 +2237,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.100}"
+                  "$value": "{ob.p.color.indigo.800}"
                 }
               },
               "contrast_low": {
@@ -2284,7 +2248,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.700}"
+                  "$value": "{ob.p.color.indigo.200}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2293,7 +2257,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.200}"
+                  "$value": "{ob.p.color.indigo.700}"
                 }
               }
             },
@@ -2313,18 +2277,23 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt_alpha.900}",
-                  "$description": "Foreground color for disabled state of Text links, secondary and tertiary buttons etc. on standard backrgound."
+                  "$value": "{ob.p.color.cobalt.50}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0.4",
+                        "space": "srgb"
+                      }
+                    },
                     "ob.figma": {
                       "semanticAssigned": true
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.50}",
-                  "$description": "Foreground color on an inverted backgrounds of disabled state of Primary button, badge.."
+                  "$value": "{ob.p.color.cobalt_alpha.900}"
                 }
               }
             },
@@ -2337,8 +2306,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt_alpha.100}",
-                  "$description": "For background of disabled elements. Default, non.inversity_flipped. Opacity version."
+                  "$value": "{ob.p.color.white_alpha.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2347,7 +2315,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.200}",
+                  "$value": "{ob.p.color.cobalt.500}",
                   "$description": "For background of disabled elements, inverse. Solid version."
                 }
               },
@@ -2359,18 +2327,24 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt_alpha.100}",
-                  "$description": "For background of disabled elements. Default background (non inverted).Solid version."
+                  "$value": "{ob.p.color.white_alpha.300}",
+                  "$description": "For background of disabled elements. Solid version."
                 },
                 "inversity_flipped": {
                   "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0.4",
+                        "space": "srgb"
+                      }
+                    },
                     "ob.figma": {
                       "semanticAssigned": true
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt_alpha.300}",
-                  "$description": "For background of disabled elements, inverse. Opacity version."
+                  "$value": "{ob.p.color.cobalt.50}"
                 }
               }
             }
@@ -2385,7 +2359,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}"
+                  "$value": "{ob.p.color.cobalt.800}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2394,7 +2368,69 @@
                     }
                   },
                   "$type": "color",
+                  "$value": "{ob.p.color.cobalt.50}"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.100}"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.600}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.200}"
+                }
+              }
+            },
+            "fg_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.50}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "ob.figma": {
+                      "semanticAssigned": true
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}"
                 }
               },
               "contrast_medium": {
@@ -2414,7 +2450,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.600}"
+                  "$value": "{ob.p.color.cobalt.800}"
                 }
               },
               "contrast_low": {
@@ -2434,72 +2470,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.500}"
-                }
-              }
-            },
-            "fg_base": {
-              "contrast_high": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.50}",
-                  "$description": "Auto-generated: matches bg.contrast_high"
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.800}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.100}",
-                  "$description": "Auto-generated: matches bg.contrast_medium"
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "ob.figma": {
-                      "semanticAssigned": true
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.200}",
-                  "$description": "Auto-generated: matches bg.contrast_low"
                 }
               }
             },
@@ -2512,7 +2483,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.900}"
+                  "$value": "{ob.p.color.cobalt.50}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2521,7 +2492,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.50}"
+                  "$value": "{ob.p.color.cobalt.900}"
                 }
               },
               "contrast_medium": {
@@ -2532,7 +2503,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.800}"
+                  "$value": "{ob.p.color.cobalt.100}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2541,7 +2512,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.100}"
+                  "$value": "{ob.p.color.cobalt.800}"
                 }
               },
               "contrast_low": {
@@ -2552,7 +2523,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.700}"
+                  "$value": "{ob.p.color.cobalt.100}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2561,7 +2532,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.indigo.200}"
+                  "$value": "{ob.p.color.cobalt.700}"
                 }
               }
             },
@@ -2651,7 +2622,7 @@
                 }
               },
               "$type": "color",
-              "$value": "{ob.p.color.purple.500}",
+              "$value": "{ob.p.color.purple.400}",
               "$description": "Focus ring color for interaction elements in normal inversity"
             },
             "inversity_flipped": {
@@ -2661,7 +2632,7 @@
                 }
               },
               "$type": "color",
-              "$value": "{ob.p.color.purple.400}",
+              "$value": "{ob.p.color.purple.500}",
               "$description": "Focus ring color for interaction elements in flipped inversity"
             }
           }

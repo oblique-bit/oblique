@@ -61,7 +61,7 @@
               "$description": "Adding a larger right-padding on larger screens introduces white space that allows the design to \"breathe\"."
             }
           },
-          "parentof-buttons_container": {
+          "parentof_buttons_container": {
             "padding_left": {
               "$type": "spacing",
               "$value": "{ob.s.dimension.static.component_size.container.xl.px}"

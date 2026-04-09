@@ -33,12 +33,10 @@
       "figma-doc.typography.strong.docs_lg": "S:316782461b5f7812a3bd0937db261f92117a64a8,"
     },
     "selectedTokenSets": {
-      "NO-DS/FIGMA-ONLY/colors-static": "enabled",
       "02_primitive/color": "source",
       "02_primitive/position": "source",
       "02_primitive/typography": "source",
       "02_primitive/motion": "source",
-      "02_primitive/z-index": "source",
       "02_primitive/dimension": "source",
       "03_semantic/effect": "enabled",
       "03_semantic/elevation": "enabled",
@@ -59,12 +57,14 @@
       "04_component/atom/icon/01_color": "enabled",
       "04_component/molecule/pill/pill": "enabled",
       "04_component/molecule/pill/typography": "source",
-      "01_global/themes-scoped/static": "source",
-      "01_global/themes-user/lightness/static": "source",
       "04_component/molecule/infobox/02_layout": "enabled",
       "05_html/link/link": "enabled",
-      "NO-DS/FIGMA-ONLY/typography": "enabled",
-      "05_html/button/06_motion": "enabled"
+      "05_html/button/06_motion": "enabled",
+      "02_primitive/z_index": "source",
+      "01_global/themes_scoped/static": "source",
+      "01_global/themes_user/lightness/static": "source",
+      "NO_DS/FIGMA_ONLY/colors_static": "enabled",
+      "NO_DS/FIGMA_ONLY/typography": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -292,7 +292,6 @@
       "ob.c.pill.color.critical.bg.hover": "d26993f6e6c2ea50660a13d5e8efbee115ab6dde",
       "ob.c.pill.color.critical.bg.pressed": "4d40d15a838fa35bac16915923cab986f80eb8a9",
       "ob.c.pill.icon_size": "cd3b38a9e4ad819151ad1d03eb34b8428bfda78b",
-      "ob.c.pill.min-height": "34995d9fa79cf971883ad5751591d7f54fbbcc25",
       "ob.c.infobox.container.padding_bottom": "3a7f392c6562ab8b82fb8522c876cce1b2a5522d",
       "ob.c.infobox.border_radius.top_left": "9263e12b107ac5308c12c55720fcfe1a6d9022aa",
       "ob.c.infobox.border_radius.top_right": "ae9ea35a9ea3166f241f34dcb29579391a6e35cd",
@@ -337,10 +336,11 @@
       "ob.c.tag.color.bg.focus": "f20c622c5bc661305a9272603254a1c988be5af2",
       "ob.c.tag.color.bg.selected": "db3edac431bae4513f0ea9b408bd134ab496ee07",
       "ob.c.tag.color.bg.disabled": "3cbe6d94e228ece58185ee8c82446cf89b5e6f45",
-      "figma-doc.color.fg_static": "00a0bfe32d36acc52756e37b5614b25c7810bf60",
-      "figma-doc.color.figma_canvas_bg": "1dc202bfb1100bf8035ac592571c371ae858f85c",
-      "figma-doc.color.figma_section_bg": "bb1d2e3e44823afe3203cb148287de46e27fe38c",
-      "figma-doc.color.figma_section_border": "83949dc8c35aebbb586909bad28f307ae4147799"
+      "ob.c.pill.min_height": "34995d9fa79cf971883ad5751591d7f54fbbcc25",
+      "figma_doc.color.fg_static": "00a0bfe32d36acc52756e37b5614b25c7810bf60",
+      "figma_doc.color.figma_canvas_bg": "1dc202bfb1100bf8035ac592571c371ae858f85c",
+      "figma_doc.color.figma_section_bg": "bb1d2e3e44823afe3203cb148287de46e27fe38c",
+      "figma_doc.color.figma_section_border": "83949dc8c35aebbb586909bad28f307ae4147799"
     },
     "group": "static"
   },
@@ -370,9 +370,6 @@
       "ob.c.infobox.spacing.title_bar.col_gap": "923aaca17698af0566ecb50da4c8b182e03643cf",
       "ob.c.infobox.spacing.body.padding_right": "e65a364b11a3f221cff53884bb2012431f9d499d",
       "ob.c.infobox.spacing.body.padding_bottom": "9a523bba141e843914693b0a9e1fa0ce1e9be7b6",
-      "ob.c.infobox.spacing.parentof-buttons_container.padding_left": "998d932ba6c4ae2dc88341e52196c93137bee584",
-      "ob.c.infobox.spacing.parentof-buttons_container.padding_bottom": "d6f222d883f3f7a9bdf62708c34e620c8501d65c",
-      "ob.c.infobox.spacing.parentof-buttons_container.padding_right": "3e5e0969fa5cd218a56260840f510d3f5cdb68d4",
       "ob.c.infobox.spacing.infobox_icon_container.padding_top": "76bac9f1199e0a0a43281a49000eb317cf9a462a",
       "ob.c.infobox.spacing.title.padding_top": "036802ae9537cd637b8ecb32a8b60b6fbd50c7c2",
       "ob.c.infobox.size.title.min_height": "cd086148b17334f1d5539793befacc01ddd157bf",
@@ -382,7 +379,10 @@
       "ob.c.infobox.container.spacing.padding_top": "661c16a7bea5e48bc6789033e2bf4743c57201a0",
       "ob.c.infobox.container.spacing.padding_left": "0cb6a9a5ffdefab536103ed256516ec4a98dbff0",
       "ob.c.infobox.container.spacing.padding_right": "82a70f0042a2ed00b979cdfe9cda7addccfdd80e",
-      "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6"
+      "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6",
+      "ob.c.infobox.spacing.parentof_buttons_container.padding_left": "998d932ba6c4ae2dc88341e52196c93137bee584",
+      "ob.c.infobox.spacing.parentof_buttons_container.padding_bottom": "d6f222d883f3f7a9bdf62708c34e620c8501d65c",
+      "ob.c.infobox.spacing.parentof_buttons_container.padding_right": "3e5e0969fa5cd218a56260840f510d3f5cdb68d4"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:1",
@@ -414,9 +414,6 @@
       "ob.c.infobox.spacing.title_bar.col_gap": "923aaca17698af0566ecb50da4c8b182e03643cf",
       "ob.c.infobox.spacing.body.padding_right": "e65a364b11a3f221cff53884bb2012431f9d499d",
       "ob.c.infobox.spacing.body.padding_bottom": "9a523bba141e843914693b0a9e1fa0ce1e9be7b6",
-      "ob.c.infobox.spacing.parentof-buttons_container.padding_left": "998d932ba6c4ae2dc88341e52196c93137bee584",
-      "ob.c.infobox.spacing.parentof-buttons_container.padding_bottom": "d6f222d883f3f7a9bdf62708c34e620c8501d65c",
-      "ob.c.infobox.spacing.parentof-buttons_container.padding_right": "3e5e0969fa5cd218a56260840f510d3f5cdb68d4",
       "ob.c.infobox.spacing.infobox_icon_container.padding_top": "76bac9f1199e0a0a43281a49000eb317cf9a462a",
       "ob.c.infobox.spacing.title.padding_top": "036802ae9537cd637b8ecb32a8b60b6fbd50c7c2",
       "ob.c.infobox.size.title.min_height": "cd086148b17334f1d5539793befacc01ddd157bf",
@@ -428,7 +425,10 @@
       "ob.c.infobox.container.spacing.padding_right": "82a70f0042a2ed00b979cdfe9cda7addccfdd80e",
       "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6",
       "ob.c.infobox.size.icon_size": "028942d6afbea43044d18317d8ab598725d27e87",
-      "ob.c.infobox.size.close_button_size": "fd66680b08af7e2833e9bbf07a6291f768cb31fe"
+      "ob.c.infobox.size.close_button_size": "fd66680b08af7e2833e9bbf07a6291f768cb31fe",
+      "ob.c.infobox.spacing.parentof_buttons_container.padding_left": "998d932ba6c4ae2dc88341e52196c93137bee584",
+      "ob.c.infobox.spacing.parentof_buttons_container.padding_bottom": "d6f222d883f3f7a9bdf62708c34e620c8501d65c",
+      "ob.c.infobox.spacing.parentof_buttons_container.padding_right": "3e5e0969fa5cd218a56260840f510d3f5cdb68d4"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -440,10 +440,10 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "03_semantic/color/s1-lightness/light": "enabled",
       "03_semantic/asset/theme/lightness/light": "enabled",
-      "01_global/themes-user/lightness/dynamic/light": "enabled",
-      "04_component/molecule/infobox/01_color": "enabled"
+      "04_component/molecule/infobox/01_color": "enabled",
+      "01_global/themes_user/lightness/dynamic/light": "enabled",
+      "03_semantic/color/s1_lightness/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:3",
@@ -718,10 +718,10 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "03_semantic/color/s1-lightness/dark": "enabled",
       "03_semantic/asset/theme/lightness/dark": "enabled",
-      "01_global/themes-user/lightness/dynamic/dark": "enabled",
-      "04_component/molecule/infobox/01_color": "enabled"
+      "04_component/molecule/infobox/01_color": "enabled",
+      "01_global/themes_user/lightness/dynamic/dark": "enabled",
+      "03_semantic/color/s1_lightness/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
     "$figmaModeId": "1:4",
@@ -995,7 +995,7 @@
     "name": "high",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/color/s2-emphasis/high": "enabled"
+      "03_semantic/color/s2_emphasis/high": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.fg.enabled.inversity_normal": "cb6a5ec22797563ffdfed2653e134821f9b702b4",
@@ -1036,7 +1036,7 @@
     "name": "low",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/color/s2-emphasis/low": "enabled"
+      "03_semantic/color/s2_emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color.interaction.fg.enabled.inversity_normal": "cb6a5ec22797563ffdfed2653e134821f9b702b4",
@@ -1120,10 +1120,8 @@
       "ob.h.typography.style.body.lead": "S:673fa60e66a893c175d3d294e07158f63db40c4b,"
     },
     "selectedTokenSets": {
-      "03_semantic/color/s3-semantic/semantic": "enabled",
       "03_semantic/border": "enabled",
       "03_semantic/motion/static": "enabled",
-      "03_semantic/z-index": "enabled",
       "03_semantic/typography/single/static": "enabled",
       "03_semantic/typography/grouped/static": "enabled",
       "03_semantic/effect": "enabled",
@@ -1133,7 +1131,9 @@
       "05_html/typography/style": "enabled",
       "03_semantic/dimension/component_size/static": "enabled",
       "03_semantic/dimension/density/static": "enabled",
-      "03_semantic/dimension/typography_context/static": "enabled"
+      "03_semantic/dimension/typography_context/static": "enabled",
+      "03_semantic/z_index": "enabled",
+      "03_semantic/color/s3_semantic/semantic": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -1396,23 +1396,6 @@
       "ob.s.static.font_size.4xl": "290c17ce91504a7687d5f929a3ed4f1c5eb97caf",
       "ob.s.static.font_size.5xl": "7d7f56beb66572705ad813a915877939039bbf4c",
       "ob.s.static.font_size.base": "e209481b42ee1523d414604333e662f7ac36ea2e",
-      "ob.s.static.lineHeight.xs": "7a79eb8202f43a161073d3577228ae7064fdb95c",
-      "ob.s.static.lineHeight.sm": "eaef3264f884c16f138f264b7f2525e7e171f6d4",
-      "ob.s.static.lineHeight.md": "c9959cba977a25e45696e713864eb8076011bcc8",
-      "ob.s.static.lineHeight.lg": "c880f4738ef331261c190d6de18c6548ceb4db09",
-      "ob.s.static.lineHeight.xl": "496abeca3213cdcf297bdcc4d57e97b966725e0b",
-      "ob.s.static.lineHeight.2xl": "3ef446280f5aa8a9cc7ddc274b535ee1084d2129",
-      "ob.s.static.lineHeight.3xl": "51244ef6efebc95ea1c66c1829bc0f3e50feb965",
-      "ob.s.static.lineHeight.4xl": "d034a134ea8daf3ff1794a70c29b05a82a18fd09",
-      "ob.s.static.paragraphSpacing.none": "1f24b77a6b9a6c3b9956bc64206fcd497baca25d",
-      "ob.s.static.paragraphSpacing.xs": "6ffa58118b88b3c89dc0666df70e215e8e10bfc9",
-      "ob.s.static.paragraphSpacing.sm": "178f46df9166b18b928c0827f5f6c1104941de5d",
-      "ob.s.static.paragraphSpacing.md": "f6ad74be9a232d26d7457bf1539905845219a2f8",
-      "ob.s.static.paragraphSpacing.lg": "fbc3375c8351876b1b0b4bab2b238da044e252b5",
-      "ob.s.static.paragraphSpacing.xl": "9e6692e46e83cc3a67fc7380fa4a30114d377358",
-      "ob.s.static.paragraphSpacing.2xl": "c854ccb9c6086d91360e80a8bc56712493715d3e",
-      "ob.s.static.paragraphSpacing.3xl": "a82d6e0d98ee84788a4ab3475634ed7d889a0e7a",
-      "ob.s.static.paragraphSpacing.4xl": "c4fe537e90fe5fd483aa586bc8e4a25a7fd28b06",
       "ob.s.static.spacing.heading.top": "3a3537b2a79f497a10bdc171b2acdc411ee67b54",
       "ob.s.static.spacing.heading.top_after_p": "38d2f9cef60f7c709a6acad5ab53c274e39af464",
       "ob.s.static.spacing.heading.bottom": "76c280f5d2d7e03fb38334ca5e8d7c3ce25d3226",
@@ -1524,7 +1507,24 @@
       "ob.s.dimension.static.typography_context.lg": "3f3b12e680377dffc769c45c304374750d5e3fa9",
       "ob.s.dimension.static.typography_context.xl": "622a8fc5a371bc5708e78274f4e154b65dd0e961",
       "ob.s.dimension.static.typography_context.2xl": "a78f567930efe8c87bfe771ecd95346bc977a61b",
-      "ob.s.dimension.static.typography_context.3xl": "b00db92e52518de34eefa2997d4e186a7d32010e"
+      "ob.s.dimension.static.typography_context.3xl": "b00db92e52518de34eefa2997d4e186a7d32010e",
+      "ob.s.static.line_height.xs": "7a79eb8202f43a161073d3577228ae7064fdb95c",
+      "ob.s.static.line_height.sm": "eaef3264f884c16f138f264b7f2525e7e171f6d4",
+      "ob.s.static.line_height.md": "c9959cba977a25e45696e713864eb8076011bcc8",
+      "ob.s.static.line_height.lg": "c880f4738ef331261c190d6de18c6548ceb4db09",
+      "ob.s.static.line_height.xl": "496abeca3213cdcf297bdcc4d57e97b966725e0b",
+      "ob.s.static.line_height.2xl": "3ef446280f5aa8a9cc7ddc274b535ee1084d2129",
+      "ob.s.static.line_height.3xl": "51244ef6efebc95ea1c66c1829bc0f3e50feb965",
+      "ob.s.static.line_height.4xl": "d034a134ea8daf3ff1794a70c29b05a82a18fd09",
+      "ob.s.static.paragraph_spacing.none": "1f24b77a6b9a6c3b9956bc64206fcd497baca25d",
+      "ob.s.static.paragraph_spacing.xs": "6ffa58118b88b3c89dc0666df70e215e8e10bfc9",
+      "ob.s.static.paragraph_spacing.sm": "178f46df9166b18b928c0827f5f6c1104941de5d",
+      "ob.s.static.paragraph_spacing.md": "f6ad74be9a232d26d7457bf1539905845219a2f8",
+      "ob.s.static.paragraph_spacing.lg": "fbc3375c8351876b1b0b4bab2b238da044e252b5",
+      "ob.s.static.paragraph_spacing.xl": "9e6692e46e83cc3a67fc7380fa4a30114d377358",
+      "ob.s.static.paragraph_spacing.2xl": "c854ccb9c6086d91360e80a8bc56712493715d3e",
+      "ob.s.static.paragraph_spacing.3xl": "a82d6e0d98ee84788a4ab3475634ed7d889a0e7a",
+      "ob.s.static.paragraph_spacing.4xl": "c4fe537e90fe5fd483aa586bc8e4a25a7fd28b06"
     },
     "group": "semantic"
   },
@@ -1567,22 +1567,6 @@
       "ob.s.dynamic.font_size.4xl": "dd98ddb4b1a79f8af90f98131872dbeebaf340dd",
       "ob.s.dynamic.font_size.5xl": "36a7d70092f45ae7a4ecc97ecc6c30790f8bff11",
       "ob.s.dynamic.font_size.base": "0c2e9113cbdb200af4620fa9d5ea8620e7dfea35",
-      "ob.s.dynamic.lineHeight.xs": "5d4b4f06d23ef3b1c5ddbfe9729f0f45e0301227",
-      "ob.s.dynamic.lineHeight.sm": "db66c379a6f2a3f0af7f4660473d74f898cc5cf0",
-      "ob.s.dynamic.lineHeight.md": "56353569e047ff18ee004c588772d27d7c35bd27",
-      "ob.s.dynamic.lineHeight.lg": "c05f423e293eb9afadf2d428cc1454d3f54d5c12",
-      "ob.s.dynamic.lineHeight.xl": "3eaf078cbbe2ccf5cfeba5452c6efb8d0db6651c",
-      "ob.s.dynamic.lineHeight.2xl": "57efe956cea0ca70176031ca49436b07d44a0b0a",
-      "ob.s.dynamic.lineHeight.3xl": "c0bc53e48e15777a45b8c6bf12dad3dd5db70e0e",
-      "ob.s.dynamic.lineHeight.4xl": "e0891b1cbba2acdd8bc816fc593ead54213f5853",
-      "ob.s.dynamic.paragraphSpacing.xs": "12889ef15e0623a0e380c71e0c4189ca80aab460",
-      "ob.s.dynamic.paragraphSpacing.sm": "f2ba88fe5d75e24222bb988bc6cc3f0b9a831be8",
-      "ob.s.dynamic.paragraphSpacing.md": "cdeed96b18073ce13cd109c9671a140cd5274f0d",
-      "ob.s.dynamic.paragraphSpacing.lg": "7d0b025cdf02de44bbf74c294c0576f53df50138",
-      "ob.s.dynamic.paragraphSpacing.xl": "ccf8bfdc6806b81b39570bffd1c38b29825dd72b",
-      "ob.s.dynamic.paragraphSpacing.2xl": "f05c4de9b0a78d1059c5c05198ca500b2046356c",
-      "ob.s.dynamic.paragraphSpacing.3xl": "fc9756517e8d3a7a13091bd8dab34106f915e2e3",
-      "ob.s.dynamic.paragraphSpacing.4xl": "5a3dc24423e4c0ad9f318f1fd28bca946ff67c87",
       "ob.s.dynamic.spacing.heading.top": "746e163cf4d8b29818f5b78b7e7f757475d5153a",
       "ob.s.dynamic.spacing.heading.top_after_p": "891fff309c9eae753963a2d2e78aff3587d8838f",
       "ob.s.dynamic.spacing.heading.bottom": "c7443dcef8d7705c74d2e430a01f7bf4dbe35fd0",
@@ -1652,7 +1636,23 @@
       "ob.s.dimension.dynamic.component_size.macro.xs.px": "db4a652de11d375f2d169bc762d91d832497f202",
       "ob.s.dimension.dynamic.component_size.macro.xs.rem": "f54f62dbe2aaab445f67608393c782d2e3db6954",
       "ob.s.dimension.dynamic.component_size.macro.sm.px": "f1da2800955b4a90a449dc2c1f62125587fb4f6c",
-      "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483"
+      "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483",
+      "ob.s.dynamic.line_height.xs": "5d4b4f06d23ef3b1c5ddbfe9729f0f45e0301227",
+      "ob.s.dynamic.line_height.sm": "db66c379a6f2a3f0af7f4660473d74f898cc5cf0",
+      "ob.s.dynamic.line_height.md": "56353569e047ff18ee004c588772d27d7c35bd27",
+      "ob.s.dynamic.line_height.lg": "c05f423e293eb9afadf2d428cc1454d3f54d5c12",
+      "ob.s.dynamic.line_height.xl": "3eaf078cbbe2ccf5cfeba5452c6efb8d0db6651c",
+      "ob.s.dynamic.line_height.2xl": "57efe956cea0ca70176031ca49436b07d44a0b0a",
+      "ob.s.dynamic.line_height.3xl": "c0bc53e48e15777a45b8c6bf12dad3dd5db70e0e",
+      "ob.s.dynamic.line_height.4xl": "e0891b1cbba2acdd8bc816fc593ead54213f5853",
+      "ob.s.dynamic.paragraph_spacing.xs": "12889ef15e0623a0e380c71e0c4189ca80aab460",
+      "ob.s.dynamic.paragraph_spacing.sm": "f2ba88fe5d75e24222bb988bc6cc3f0b9a831be8",
+      "ob.s.dynamic.paragraph_spacing.md": "cdeed96b18073ce13cd109c9671a140cd5274f0d",
+      "ob.s.dynamic.paragraph_spacing.lg": "7d0b025cdf02de44bbf74c294c0576f53df50138",
+      "ob.s.dynamic.paragraph_spacing.xl": "ccf8bfdc6806b81b39570bffd1c38b29825dd72b",
+      "ob.s.dynamic.paragraph_spacing.2xl": "f05c4de9b0a78d1059c5c05198ca500b2046356c",
+      "ob.s.dynamic.paragraph_spacing.3xl": "fc9756517e8d3a7a13091bd8dab34106f915e2e3",
+      "ob.s.dynamic.paragraph_spacing.4xl": "5a3dc24423e4c0ad9f318f1fd28bca946ff67c87"
     },
     "group": "component-size"
   },
@@ -1695,22 +1695,6 @@
       "ob.s.dynamic.font_size.4xl": "dd98ddb4b1a79f8af90f98131872dbeebaf340dd",
       "ob.s.dynamic.font_size.5xl": "36a7d70092f45ae7a4ecc97ecc6c30790f8bff11",
       "ob.s.dynamic.font_size.base": "0c2e9113cbdb200af4620fa9d5ea8620e7dfea35",
-      "ob.s.dynamic.lineHeight.xs": "5d4b4f06d23ef3b1c5ddbfe9729f0f45e0301227",
-      "ob.s.dynamic.lineHeight.sm": "db66c379a6f2a3f0af7f4660473d74f898cc5cf0",
-      "ob.s.dynamic.lineHeight.md": "56353569e047ff18ee004c588772d27d7c35bd27",
-      "ob.s.dynamic.lineHeight.lg": "c05f423e293eb9afadf2d428cc1454d3f54d5c12",
-      "ob.s.dynamic.lineHeight.xl": "3eaf078cbbe2ccf5cfeba5452c6efb8d0db6651c",
-      "ob.s.dynamic.lineHeight.2xl": "57efe956cea0ca70176031ca49436b07d44a0b0a",
-      "ob.s.dynamic.lineHeight.3xl": "c0bc53e48e15777a45b8c6bf12dad3dd5db70e0e",
-      "ob.s.dynamic.lineHeight.4xl": "e0891b1cbba2acdd8bc816fc593ead54213f5853",
-      "ob.s.dynamic.paragraphSpacing.xs": "12889ef15e0623a0e380c71e0c4189ca80aab460",
-      "ob.s.dynamic.paragraphSpacing.sm": "f2ba88fe5d75e24222bb988bc6cc3f0b9a831be8",
-      "ob.s.dynamic.paragraphSpacing.md": "cdeed96b18073ce13cd109c9671a140cd5274f0d",
-      "ob.s.dynamic.paragraphSpacing.lg": "7d0b025cdf02de44bbf74c294c0576f53df50138",
-      "ob.s.dynamic.paragraphSpacing.xl": "ccf8bfdc6806b81b39570bffd1c38b29825dd72b",
-      "ob.s.dynamic.paragraphSpacing.2xl": "f05c4de9b0a78d1059c5c05198ca500b2046356c",
-      "ob.s.dynamic.paragraphSpacing.3xl": "fc9756517e8d3a7a13091bd8dab34106f915e2e3",
-      "ob.s.dynamic.paragraphSpacing.4xl": "5a3dc24423e4c0ad9f318f1fd28bca946ff67c87",
       "ob.s.dynamic.spacing.heading.top": "746e163cf4d8b29818f5b78b7e7f757475d5153a",
       "ob.s.dynamic.spacing.heading.top_after_p": "891fff309c9eae753963a2d2e78aff3587d8838f",
       "ob.s.dynamic.spacing.heading.bottom": "c7443dcef8d7705c74d2e430a01f7bf4dbe35fd0",
@@ -1780,7 +1764,23 @@
       "ob.s.dimension.dynamic.component_size.macro.xs.px": "db4a652de11d375f2d169bc762d91d832497f202",
       "ob.s.dimension.dynamic.component_size.macro.xs.rem": "f54f62dbe2aaab445f67608393c782d2e3db6954",
       "ob.s.dimension.dynamic.component_size.macro.sm.px": "f1da2800955b4a90a449dc2c1f62125587fb4f6c",
-      "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483"
+      "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483",
+      "ob.s.dynamic.line_height.xs": "5d4b4f06d23ef3b1c5ddbfe9729f0f45e0301227",
+      "ob.s.dynamic.line_height.sm": "db66c379a6f2a3f0af7f4660473d74f898cc5cf0",
+      "ob.s.dynamic.line_height.md": "56353569e047ff18ee004c588772d27d7c35bd27",
+      "ob.s.dynamic.line_height.lg": "c05f423e293eb9afadf2d428cc1454d3f54d5c12",
+      "ob.s.dynamic.line_height.xl": "3eaf078cbbe2ccf5cfeba5452c6efb8d0db6651c",
+      "ob.s.dynamic.line_height.2xl": "57efe956cea0ca70176031ca49436b07d44a0b0a",
+      "ob.s.dynamic.line_height.3xl": "c0bc53e48e15777a45b8c6bf12dad3dd5db70e0e",
+      "ob.s.dynamic.line_height.4xl": "e0891b1cbba2acdd8bc816fc593ead54213f5853",
+      "ob.s.dynamic.paragraph_spacing.xs": "12889ef15e0623a0e380c71e0c4189ca80aab460",
+      "ob.s.dynamic.paragraph_spacing.sm": "f2ba88fe5d75e24222bb988bc6cc3f0b9a831be8",
+      "ob.s.dynamic.paragraph_spacing.md": "cdeed96b18073ce13cd109c9671a140cd5274f0d",
+      "ob.s.dynamic.paragraph_spacing.lg": "7d0b025cdf02de44bbf74c294c0576f53df50138",
+      "ob.s.dynamic.paragraph_spacing.xl": "ccf8bfdc6806b81b39570bffd1c38b29825dd72b",
+      "ob.s.dynamic.paragraph_spacing.2xl": "f05c4de9b0a78d1059c5c05198ca500b2046356c",
+      "ob.s.dynamic.paragraph_spacing.3xl": "fc9756517e8d3a7a13091bd8dab34106f915e2e3",
+      "ob.s.dynamic.paragraph_spacing.4xl": "5a3dc24423e4c0ad9f318f1fd28bca946ff67c87"
     },
     "group": "component-size"
   },
@@ -1823,22 +1823,6 @@
       "ob.s.dynamic.font_size.4xl": "dd98ddb4b1a79f8af90f98131872dbeebaf340dd",
       "ob.s.dynamic.font_size.5xl": "36a7d70092f45ae7a4ecc97ecc6c30790f8bff11",
       "ob.s.dynamic.font_size.base": "0c2e9113cbdb200af4620fa9d5ea8620e7dfea35",
-      "ob.s.dynamic.lineHeight.xs": "5d4b4f06d23ef3b1c5ddbfe9729f0f45e0301227",
-      "ob.s.dynamic.lineHeight.sm": "db66c379a6f2a3f0af7f4660473d74f898cc5cf0",
-      "ob.s.dynamic.lineHeight.md": "56353569e047ff18ee004c588772d27d7c35bd27",
-      "ob.s.dynamic.lineHeight.lg": "c05f423e293eb9afadf2d428cc1454d3f54d5c12",
-      "ob.s.dynamic.lineHeight.xl": "3eaf078cbbe2ccf5cfeba5452c6efb8d0db6651c",
-      "ob.s.dynamic.lineHeight.2xl": "57efe956cea0ca70176031ca49436b07d44a0b0a",
-      "ob.s.dynamic.lineHeight.3xl": "c0bc53e48e15777a45b8c6bf12dad3dd5db70e0e",
-      "ob.s.dynamic.lineHeight.4xl": "e0891b1cbba2acdd8bc816fc593ead54213f5853",
-      "ob.s.dynamic.paragraphSpacing.xs": "12889ef15e0623a0e380c71e0c4189ca80aab460",
-      "ob.s.dynamic.paragraphSpacing.sm": "f2ba88fe5d75e24222bb988bc6cc3f0b9a831be8",
-      "ob.s.dynamic.paragraphSpacing.md": "cdeed96b18073ce13cd109c9671a140cd5274f0d",
-      "ob.s.dynamic.paragraphSpacing.lg": "7d0b025cdf02de44bbf74c294c0576f53df50138",
-      "ob.s.dynamic.paragraphSpacing.xl": "ccf8bfdc6806b81b39570bffd1c38b29825dd72b",
-      "ob.s.dynamic.paragraphSpacing.2xl": "f05c4de9b0a78d1059c5c05198ca500b2046356c",
-      "ob.s.dynamic.paragraphSpacing.3xl": "fc9756517e8d3a7a13091bd8dab34106f915e2e3",
-      "ob.s.dynamic.paragraphSpacing.4xl": "5a3dc24423e4c0ad9f318f1fd28bca946ff67c87",
       "ob.s.dynamic.spacing.heading.top": "746e163cf4d8b29818f5b78b7e7f757475d5153a",
       "ob.s.dynamic.spacing.heading.top_after_p": "891fff309c9eae753963a2d2e78aff3587d8838f",
       "ob.s.dynamic.spacing.heading.bottom": "c7443dcef8d7705c74d2e430a01f7bf4dbe35fd0",
@@ -1908,7 +1892,23 @@
       "ob.s.dimension.dynamic.component_size.macro.xs.px": "db4a652de11d375f2d169bc762d91d832497f202",
       "ob.s.dimension.dynamic.component_size.macro.xs.rem": "f54f62dbe2aaab445f67608393c782d2e3db6954",
       "ob.s.dimension.dynamic.component_size.macro.sm.px": "f1da2800955b4a90a449dc2c1f62125587fb4f6c",
-      "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483"
+      "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483",
+      "ob.s.dynamic.line_height.xs": "5d4b4f06d23ef3b1c5ddbfe9729f0f45e0301227",
+      "ob.s.dynamic.line_height.sm": "db66c379a6f2a3f0af7f4660473d74f898cc5cf0",
+      "ob.s.dynamic.line_height.md": "56353569e047ff18ee004c588772d27d7c35bd27",
+      "ob.s.dynamic.line_height.lg": "c05f423e293eb9afadf2d428cc1454d3f54d5c12",
+      "ob.s.dynamic.line_height.xl": "3eaf078cbbe2ccf5cfeba5452c6efb8d0db6651c",
+      "ob.s.dynamic.line_height.2xl": "57efe956cea0ca70176031ca49436b07d44a0b0a",
+      "ob.s.dynamic.line_height.3xl": "c0bc53e48e15777a45b8c6bf12dad3dd5db70e0e",
+      "ob.s.dynamic.line_height.4xl": "e0891b1cbba2acdd8bc816fc593ead54213f5853",
+      "ob.s.dynamic.paragraph_spacing.xs": "12889ef15e0623a0e380c71e0c4189ca80aab460",
+      "ob.s.dynamic.paragraph_spacing.sm": "f2ba88fe5d75e24222bb988bc6cc3f0b9a831be8",
+      "ob.s.dynamic.paragraph_spacing.md": "cdeed96b18073ce13cd109c9671a140cd5274f0d",
+      "ob.s.dynamic.paragraph_spacing.lg": "7d0b025cdf02de44bbf74c294c0576f53df50138",
+      "ob.s.dynamic.paragraph_spacing.xl": "ccf8bfdc6806b81b39570bffd1c38b29825dd72b",
+      "ob.s.dynamic.paragraph_spacing.2xl": "f05c4de9b0a78d1059c5c05198ca500b2046356c",
+      "ob.s.dynamic.paragraph_spacing.3xl": "fc9756517e8d3a7a13091bd8dab34106f915e2e3",
+      "ob.s.dynamic.paragraph_spacing.4xl": "5a3dc24423e4c0ad9f318f1fd28bca946ff67c87"
     },
     "group": "component-size"
   },
@@ -2278,13 +2278,13 @@
     "name": "on",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "NO-DS/FIGMA-ONLY/on": "enabled"
+      "NO_DS/FIGMA_ONLY/on": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:9010:10324",
     "$figmaModeId": "9010:0",
     "$figmaVariableReferences": {
-      "figma-doc.color.fg": "ca0bcc67fa709c2ae95319b4f16021a36141f19d",
-      "figma-doc.color.bg-violet": "a5bca785c12742a297792ce76aec68f70f987fe8"
+      "figma_doc.color.fg": "ca0bcc67fa709c2ae95319b4f16021a36141f19d",
+      "figma_doc.color.bg_violet": "a5bca785c12742a297792ce76aec68f70f987fe8"
     },
     "group": "_notes"
   },
@@ -2293,13 +2293,13 @@
     "name": "off",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "NO-DS/FIGMA-ONLY/off": "enabled"
+      "NO_DS/FIGMA_ONLY/off": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:9010:10324",
     "$figmaModeId": "9010:1",
     "$figmaVariableReferences": {
-      "figma-doc.color.fg": "ca0bcc67fa709c2ae95319b4f16021a36141f19d",
-      "figma-doc.color.bg-violet": "a5bca785c12742a297792ce76aec68f70f987fe8"
+      "figma_doc.color.fg": "ca0bcc67fa709c2ae95319b4f16021a36141f19d",
+      "figma_doc.color.bg_violet": "a5bca785c12742a297792ce76aec68f70f987fe8"
     },
     "group": "_notes"
   }

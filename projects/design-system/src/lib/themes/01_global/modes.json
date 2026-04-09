@@ -12,7 +12,7 @@
             "$value": "default"
           }
         },
-        "s1-lightness": {
+        "s1_lightness": {
           "light": {
             "$type": "other",
             "$value": "default"
@@ -22,7 +22,7 @@
             "$value": ".ob-lightness-dark"
           }
         },
-        "s2-emphasis": {
+        "s2_emphasis": {
           "high": {
             "$type": "other",
             "$value": "default"
@@ -60,7 +60,7 @@
             "$value": ".ob-density-spacious"
           }
         },
-        "typography-context": {
+        "typography_context": {
           "interface": {
             "$type": "other",
             "$value": "default"

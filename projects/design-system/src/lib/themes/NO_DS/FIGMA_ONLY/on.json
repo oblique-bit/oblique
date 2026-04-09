@@ -1,12 +1,12 @@
 {
-  "figma-doc": {
+  "figma_doc": {
     "color": {
       "fg": {
         "$type": "color",
         "$value": "{ob.s3.color.status.waiting.fg.contrast_low.inversity_normal}",
         "$description": "[FIGMA-ONLY]\nToken for Figma design workflow only."
       },
-      "bg-violet": {
+      "bg_violet": {
         "$type": "color",
         "$value": "{ob.s3.color.status.waiting.fg.contrast_low.inversity_flipped}",
         "$description": "[FIGMA-ONLY]\nToken for Figma design workflow only."

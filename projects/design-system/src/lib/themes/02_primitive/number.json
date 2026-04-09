@@ -26,7 +26,7 @@
             "$description": "Standard unitless line-height for body copy."
           }
         },
-        "letter-spacing": {
+        "letter_spacing": {
           "tight": {
             "$type": "number",
             "$value": "-2",
