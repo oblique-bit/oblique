@@ -90,7 +90,7 @@
             }
           }
         },
-        "sizing": {
+        "size": {
           "title": {
             "min_height": {
               "$type": "dimension",

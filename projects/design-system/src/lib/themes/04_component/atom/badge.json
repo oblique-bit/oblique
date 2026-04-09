@@ -132,7 +132,7 @@
             }
           }
         },
-        "sizing": {
+        "size": {
           "max_width": {
             "sm": {
               "$type": "dimension",

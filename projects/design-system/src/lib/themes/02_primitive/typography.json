@@ -1,7 +1,7 @@
 {
   "ob": {
     "p": {
-      "fontFamily": {
+      "font_family": {
         "sans": {
           "$type": "fontFamilies",
           "$value": "'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif",
@@ -91,73 +91,73 @@
           "$description": "ExtraBold 800\n"
         }
       },
-      "paragraphSpacing": {
+      "paragraph_spacing": {
         "0": {
           "$type": "paragraphSpacing",
           "$value": "0"
         },
         "50": {
           "$type": "paragraphSpacing",
-          "$value": "1 * {ob.p.lineHeight.base}"
+          "$value": "1 * {ob.p.line_height.base}"
         },
         "100": {
           "$type": "paragraphSpacing",
-          "$value": "2 * {ob.p.lineHeight.base}"
+          "$value": "2 * {ob.p.line_height.base}"
         },
         "200": {
           "$type": "paragraphSpacing",
-          "$value": "3 * {ob.p.lineHeight.base}"
+          "$value": "3 * {ob.p.line_height.base}"
         },
         "300": {
           "$type": "paragraphSpacing",
-          "$value": "4 * {ob.p.lineHeight.base}"
+          "$value": "4 * {ob.p.line_height.base}"
         },
         "400": {
           "$type": "paragraphSpacing",
-          "$value": "5 * {ob.p.lineHeight.base}"
+          "$value": "5 * {ob.p.line_height.base}"
         },
         "500": {
           "$type": "paragraphSpacing",
-          "$value": "6 * {ob.p.lineHeight.base}"
+          "$value": "6 * {ob.p.line_height.base}"
         },
         "600": {
           "$type": "paragraphSpacing",
-          "$value": "7 * {ob.p.lineHeight.base}"
+          "$value": "7 * {ob.p.line_height.base}"
         },
         "700": {
           "$type": "paragraphSpacing",
-          "$value": "8 * {ob.p.lineHeight.base}"
+          "$value": "8 * {ob.p.line_height.base}"
         },
         "800": {
           "$type": "paragraphSpacing",
-          "$value": "9 * {ob.p.lineHeight.base}"
+          "$value": "9 * {ob.p.line_height.base}"
         },
         "900": {
           "$type": "paragraphSpacing",
-          "$value": "10 * {ob.p.lineHeight.base}"
+          "$value": "10 * {ob.p.line_height.base}"
         },
         "1000": {
           "$type": "paragraphSpacing",
-          "$value": "11 * {ob.p.lineHeight.base}"
+          "$value": "11 * {ob.p.line_height.base}"
         },
         "1100": {
           "$type": "paragraphSpacing",
-          "$value": "12 * {ob.p.lineHeight.base}"
+          "$value": "12 * {ob.p.line_height.base}"
         },
         "1200": {
           "$type": "paragraphSpacing",
-          "$value": "13 * {ob.p.lineHeight.base}"
+          "$value": "13 * {ob.p.line_height.base}"
         },
         "1300": {
           "$type": "paragraphSpacing",
-          "$value": "14 * {ob.p.lineHeight.base}"
+          "$value": "14 * {ob.p.line_height.base}"
         },
         "1400": {
           "$type": "paragraphSpacing",
-          "$value": "15 * {ob.p.lineHeight.base}"
+          "$value": "15 * {ob.p.line_height.base}"
         }
       },
-      "paragraphSpacingRem": {
+      "paragraph_spacing_rem": {
         "0": {
           "$type": "paragraphSpacing",
           "$value": "0rem",
@@ -267,78 +267,78 @@
           "$value": "capitalize"
         }
       },
-      "lineHeight": {
+      "line_height": {
         "50": {
           "$type": "lineHeights",
-          "$value": "1 * {ob.p.lineHeight.base}"
+          "$value": "1 * {ob.p.line_height.base}"
         },
         "100": {
           "$type": "lineHeights",
-          "$value": "2 * {ob.p.lineHeight.base}"
+          "$value": "2 * {ob.p.line_height.base}"
         },
         "200": {
           "$type": "lineHeights",
-          "$value": "3 * {ob.p.lineHeight.base}"
+          "$value": "3 * {ob.p.line_height.base}"
         },
         "300": {
           "$type": "lineHeights",
-          "$value": "4 * {ob.p.lineHeight.base}"
+          "$value": "4 * {ob.p.line_height.base}"
         },
         "400": {
           "$type": "lineHeights",
-          "$value": "5 * {ob.p.lineHeight.base}"
+          "$value": "5 * {ob.p.line_height.base}"
         },
         "500": {
           "$type": "lineHeights",
-          "$value": "6 * {ob.p.lineHeight.base}"
+          "$value": "6 * {ob.p.line_height.base}"
         },
         "600": {
           "$type": "lineHeights",
-          "$value": "7 * {ob.p.lineHeight.base}"
+          "$value": "7 * {ob.p.line_height.base}"
         },
         "700": {
           "$type": "lineHeights",
-          "$value": "8 * {ob.p.lineHeight.base}"
+          "$value": "8 * {ob.p.line_height.base}"
         },
         "800": {
           "$type": "lineHeights",
-          "$value": "9 * {ob.p.lineHeight.base}"
+          "$value": "9 * {ob.p.line_height.base}"
         },
         "900": {
           "$type": "lineHeights",
-          "$value": "10 * {ob.p.lineHeight.base}"
+          "$value": "10 * {ob.p.line_height.base}"
         },
         "1000": {
           "$type": "lineHeights",
-          "$value": "11 * {ob.p.lineHeight.base}"
+          "$value": "11 * {ob.p.line_height.base}"
         },
         "1100": {
           "$type": "lineHeights",
-          "$value": "12 * {ob.p.lineHeight.base}"
+          "$value": "12 * {ob.p.line_height.base}"
         },
         "1200": {
           "$type": "lineHeights",
-          "$value": "13 * {ob.p.lineHeight.base}"
+          "$value": "13 * {ob.p.line_height.base}"
         },
         "1300": {
           "$type": "lineHeights",
-          "$value": "14 * {ob.p.lineHeight.base}"
+          "$value": "14 * {ob.p.line_height.base}"
         },
         "1400": {
           "$type": "lineHeights",
-          "$value": "15 * {ob.p.lineHeight.base}"
+          "$value": "15 * {ob.p.line_height.base}"
         },
         "1500": {
           "$type": "lineHeights",
-          "$value": "16 * {ob.p.lineHeight.base}"
+          "$value": "16 * {ob.p.line_height.base}"
         },
         "1600": {
           "$type": "lineHeights",
-          "$value": "17 * {ob.p.lineHeight.base}"
+          "$value": "17 * {ob.p.line_height.base}"
         },
         "1700": {
           "$type": "lineHeights",
-          "$value": "18 * {ob.p.lineHeight.base}"
+          "$value": "18 * {ob.p.line_height.base}"
         },
         "base": {
           "$type": "lineHeights",
@@ -346,7 +346,7 @@
           "$description": "Base line height multiplier - compensated from mult_static value"
         }
       },
-      "lineHeightRem": {
+      "line_height_rem": {
         "50": {
           "$type": "lineHeights",
           "$value": "0.25rem",
@@ -513,7 +513,7 @@
           "$value": "uppercase"
         }
       },
-      "letterSpacing_px": {
+      "letter_spacing_px": {
         "0": {
           "$type": "letterSpacing",
           "$value": "auto",

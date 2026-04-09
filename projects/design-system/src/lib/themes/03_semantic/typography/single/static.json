@@ -47,41 +47,41 @@
         "lineHeight": {
           "xs": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeightRem.300}"
+            "$value": "{ob.p.line_height_rem.300}"
           },
           "sm": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeightRem.400}"
+            "$value": "{ob.p.line_height_rem.400}"
           },
           "md": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeightRem.500}"
+            "$value": "{ob.p.line_height_rem.500}"
           },
           "lg": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeightRem.600}"
+            "$value": "{ob.p.line_height_rem.600}"
           },
           "xl": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeightRem.800}"
+            "$value": "{ob.p.line_height_rem.800}"
           },
           "2xl": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeightRem.1100}"
+            "$value": "{ob.p.line_height_rem.1100}"
           },
           "3xl": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeightRem.1300}"
+            "$value": "{ob.p.line_height_rem.1300}"
           },
           "4xl": {
             "$type": "lineHeights",
-            "$value": "{ob.p.lineHeightRem.1400}"
+            "$value": "{ob.p.line_height_rem.1400}"
           }
         },
         "paragraphSpacing": {
           "none": {
             "$type": "paragraphSpacing",
-            "$value": "{ob.p.paragraphSpacingRem.0}"
+            "$value": "{ob.p.paragraph_spacing_rem.0}"
           },
           "xs": {
             "$type": "paragraphSpacing",
@@ -143,17 +143,17 @@
         "font_family": {
           "body": {
             "$type": "fontFamilies",
-            "$value": "{ob.p.fontFamily.sans}",
+            "$value": "{ob.p.font_family.sans}",
             "$description": "Font of the Oblique Design System"
           },
           "heading": {
             "$type": "fontFamilies",
-            "$value": "{ob.p.fontFamily.sans}",
+            "$value": "{ob.p.font_family.sans}",
             "$description": "Font of the Oblique Design System"
           },
           "code": {
             "$type": "fontFamilies",
-            "$value": "{ob.p.fontFamily.mono}",
+            "$value": "{ob.p.font_family.mono}",
             "$description": "For code and design system figma documentation."
           }
         },
@@ -245,27 +245,27 @@
         "letter_spacing_px": {
           "superNarrow": {
             "$type": "letterSpacing",
-            "$value": "{ob.p.letterSpacing_px.neg_150}",
+            "$value": "{ob.p.letter_spacing_px.neg_150}",
             "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
           },
           "narrower": {
             "$type": "letterSpacing",
-            "$value": "{ob.p.letterSpacing_px.neg_100}",
+            "$value": "{ob.p.letter_spacing_px.neg_100}",
             "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
           },
           "narrow": {
             "$type": "letterSpacing",
-            "$value": "{ob.p.letterSpacing_px.neg_50}",
+            "$value": "{ob.p.letter_spacing_px.neg_50}",
             "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
           },
           "normal": {
             "$type": "letterSpacing",
-            "$value": "{ob.p.letterSpacing_px.0}",
+            "$value": "{ob.p.letter_spacing_px.0}",
             "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
           },
           "wide": {
             "$type": "letterSpacing",
-            "$value": "{ob.p.letterSpacing_px.50}",
+            "$value": "{ob.p.letter_spacing_px.50}",
             "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
           }
         },

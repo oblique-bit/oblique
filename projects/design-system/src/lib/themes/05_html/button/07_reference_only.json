@@ -11,7 +11,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.primary.inversity_normal.enabled}",
                     "borderColor": "{ob.h.button.color.border.primary.inversity_normal.enabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.enabled}"
+                    "boxShadow": "{ob.h.button.shadow.enabled}"
                   }
                 },
                 "fg_color": {
@@ -27,7 +27,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.primary.inversity_normal.hover}",
                     "borderColor": "{ob.h.button.color.border.primary.inversity_normal.hover}",
-                    "boxShadow": "{ob.h.button.box_shadow.hover}"
+                    "boxShadow": "{ob.h.button.shadow.hover}"
                   }
                 },
                 "fg_color": {
@@ -43,7 +43,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.primary.inversity_normal.pressed}",
                     "borderColor": "{ob.h.button.color.border.primary.inversity_normal.pressed}",
-                    "boxShadow": "{ob.h.button.box_shadow.pressed}"
+                    "boxShadow": "{ob.h.button.shadow.pressed}"
                   }
                 },
                 "fg_color": {
@@ -59,7 +59,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.primary.inversity_normal.disabled}",
                     "borderColor": "{ob.h.button.color.border.primary.inversity_normal.disabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.disabled}"
+                    "boxShadow": "{ob.h.button.shadow.disabled}"
                   }
                 },
                 "fg_color": {
@@ -77,7 +77,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.primary.inversity_flipped.enabled}",
                     "borderColor": "{ob.h.button.color.border.primary.inversity_flipped.enabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.enabled}"
+                    "boxShadow": "{ob.h.button.shadow.enabled}"
                   }
                 },
                 "fg_color": {
@@ -93,7 +93,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.primary.inversity_flipped.hover}",
                     "borderColor": "{ob.h.button.color.border.primary.inversity_flipped.hover}",
-                    "boxShadow": "{ob.h.button.box_shadow.hover}"
+                    "boxShadow": "{ob.h.button.shadow.hover}"
                   }
                 },
                 "fg_color": {
@@ -109,7 +109,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.primary.inversity_flipped.pressed}",
                     "borderColor": "{ob.h.button.color.border.primary.inversity_flipped.pressed}",
-                    "boxShadow": "{ob.h.button.box_shadow.pressed}"
+                    "boxShadow": "{ob.h.button.shadow.pressed}"
                   }
                 },
                 "fg_color": {
@@ -125,7 +125,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.primary.inversity_flipped.disabled}",
                     "borderColor": "{ob.h.button.color.border.primary.inversity_flipped.disabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.disabled}"
+                    "boxShadow": "{ob.h.button.shadow.disabled}"
                   }
                 },
                 "fg_color": {
@@ -157,7 +157,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.secondary.inversity_normal.enabled}",
                     "borderColor": "{ob.h.button.color.border.secondary.inversity_normal.enabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.enabled}"
+                    "boxShadow": "{ob.h.button.shadow.enabled}"
                   }
                 },
                 "fg_color": {
@@ -173,7 +173,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.secondary.inversity_normal.hover}",
                     "borderColor": "{ob.h.button.color.border.secondary.inversity_normal.hover}",
-                    "boxShadow": "{ob.h.button.box_shadow.hover}"
+                    "boxShadow": "{ob.h.button.shadow.hover}"
                   }
                 },
                 "fg_color": {
@@ -189,7 +189,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.secondary.inversity_normal.pressed}",
                     "borderColor": "{ob.h.button.color.border.secondary.inversity_normal.pressed}",
-                    "boxShadow": "{ob.h.button.box_shadow.pressed}"
+                    "boxShadow": "{ob.h.button.shadow.pressed}"
                   }
                 },
                 "fg_color": {
@@ -205,7 +205,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.secondary.inversity_normal.disabled}",
                     "borderColor": "{ob.h.button.color.border.secondary.inversity_normal.disabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.disabled}"
+                    "boxShadow": "{ob.h.button.shadow.disabled}"
                   }
                 },
                 "fg_color": {
@@ -223,7 +223,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.secondary.inversity_flipped.enabled}",
                     "borderColor": "{ob.h.button.color.border.secondary.inversity_flipped.enabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.enabled}"
+                    "boxShadow": "{ob.h.button.shadow.enabled}"
                   }
                 },
                 "fg_color": {
@@ -239,7 +239,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.secondary.inversity_flipped.hover}",
                     "borderColor": "{ob.h.button.color.border.secondary.inversity_flipped.hover}",
-                    "boxShadow": "{ob.h.button.box_shadow.hover}"
+                    "boxShadow": "{ob.h.button.shadow.hover}"
                   }
                 },
                 "fg_color": {
@@ -255,7 +255,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.secondary.inversity_flipped.pressed}",
                     "borderColor": "{ob.h.button.color.border.secondary.inversity_flipped.pressed}",
-                    "boxShadow": "{ob.h.button.box_shadow.pressed}"
+                    "boxShadow": "{ob.h.button.shadow.pressed}"
                   }
                 },
                 "fg_color": {
@@ -271,7 +271,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.secondary.inversity_flipped.disabled}",
                     "borderColor": "{ob.h.button.color.border.secondary.inversity_flipped.disabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.disabled}"
+                    "boxShadow": "{ob.h.button.shadow.disabled}"
                   }
                 },
                 "fg_color": {
@@ -291,7 +291,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.tertiary.inversity_normal.enabled}",
                     "borderColor": "{ob.h.button.color.border.tertiary.inversity_normal.enabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.enabled}"
+                    "boxShadow": "{ob.h.button.shadow.enabled}"
                   }
                 },
                 "fg_color": {
@@ -307,7 +307,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.tertiary.inversity_normal.hover}",
                     "borderColor": "{ob.h.button.color.border.tertiary.inversity_normal.hover}",
-                    "boxShadow": "{ob.h.button.box_shadow.hover}"
+                    "boxShadow": "{ob.h.button.shadow.hover}"
                   }
                 },
                 "fg_color": {
@@ -323,7 +323,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.tertiary.inversity_normal.pressed}",
                     "borderColor": "{ob.h.button.color.border.tertiary.inversity_normal.pressed}",
-                    "boxShadow": "{ob.h.button.box_shadow.pressed}"
+                    "boxShadow": "{ob.h.button.shadow.pressed}"
                   }
                 },
                 "fg_color": {
@@ -339,7 +339,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.tertiary.inversity_normal.disabled}",
                     "borderColor": "{ob.h.button.color.border.tertiary.inversity_normal.disabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.disabled}"
+                    "boxShadow": "{ob.h.button.shadow.disabled}"
                   }
                 },
                 "fg_color": {
@@ -357,7 +357,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.tertiary.inversity_flipped.enabled}",
                     "borderColor": "{ob.h.button.color.border.tertiary.inversity_flipped.enabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.enabled}"
+                    "boxShadow": "{ob.h.button.shadow.enabled}"
                   }
                 },
                 "fg_color": {
@@ -373,7 +373,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.tertiary.inversity_flipped.hover}",
                     "borderColor": "{ob.h.button.color.border.tertiary.inversity_flipped.hover}",
-                    "boxShadow": "{ob.h.button.box_shadow.hover}"
+                    "boxShadow": "{ob.h.button.shadow.hover}"
                   }
                 },
                 "fg_color": {
@@ -389,7 +389,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.tertiary.inversity_flipped.pressed}",
                     "borderColor": "{ob.h.button.color.border.tertiary.inversity_flipped.pressed}",
-                    "boxShadow": "{ob.h.button.box_shadow.pressed}"
+                    "boxShadow": "{ob.h.button.shadow.pressed}"
                   }
                 },
                 "fg_color": {
@@ -405,7 +405,7 @@
                   "$value": {
                     "fill": "{ob.h.button.color.bg.tertiary.inversity_flipped.disabled}",
                     "borderColor": "{ob.h.button.color.border.tertiary.inversity_flipped.disabled}",
-                    "boxShadow": "{ob.h.button.box_shadow.disabled}"
+                    "boxShadow": "{ob.h.button.shadow.disabled}"
                   }
                 },
                 "fg_color": {

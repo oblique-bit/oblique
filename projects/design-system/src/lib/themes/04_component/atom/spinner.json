@@ -2,7 +2,7 @@
   "ob": {
     "c": {
       "spinner": {
-        "sizing": {
+        "size": {
           "$type": "dimension",
           "$value": "{ob.s.dimension.dynamic.component_size.container.xl.px}",
           "$description": "Optimized spinner size (48px) suitable for both small components like Card and full-page displays"

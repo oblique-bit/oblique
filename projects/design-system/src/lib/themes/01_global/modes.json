@@ -32,7 +32,7 @@
             "$value": ".ob-emphasis-low"
           }
         },
-        "component-size": {
+        "component_size": {
           "sm": {
             "$type": "other",
             "$value": ".ob-component-size-sm"

@@ -1,7 +1,7 @@
 {
   "ob": {
     "p": {
-      "zindex": {
+      "z_index": {
         "0": {
           "$type": "number",
           "$value": "auto"

@@ -2,7 +2,7 @@
   "ob": {
     "h": {
       "hr": {
-        "sizing": {
+        "size": {
           "height": {
             "$type": "dimension",
             "$value": "{ob.s.border_width.xs}"

@@ -56,7 +56,7 @@
             }
           }
         },
-        "sizing": {
+        "size": {
           "custom_buttons_container": {
             "width": {
               "$type": "dimension",

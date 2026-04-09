@@ -14,7 +14,7 @@
             "$description": "Represents a 100% ratio."
           }
         },
-        "line-height": {
+        "line_height": {
           "tight": {
             "$type": "number",
             "$value": "1.2",

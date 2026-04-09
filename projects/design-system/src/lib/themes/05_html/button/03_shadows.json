@@ -2,7 +2,7 @@
   "ob": {
     "h": {
       "button": {
-        "box_shadow": {
+        "shadow": {
           "enabled": {
             "$type": "boxShadow",
             "$value": "{ob.s.shadow.none}",
