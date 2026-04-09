@@ -1,5 +1,5 @@
 import {version as currentVersion} from '../../package.json';
-import {executeCommandWithLog, getResultFromCommand} from './utils';
+import {executeCommand, executeCommandWithLog, getResultFromCommand} from './utils';
 import {StaticScript} from './static-script';
 import {Files} from './files';
 import {Log} from './log';
@@ -38,6 +38,7 @@ export class Publish extends StaticScript {
 		Object.entries(Publish.eolDates)
 			.map(([major, endOfLifeDate]) => ({major, endOfLifeDate}))
 			.filter(({endOfLifeDate}) => new Date() > new Date(endOfLifeDate))
+			.filter(({major}) => Publish.doesVersionExist(fullPackageName, major))
 			.filter(({major}) => getResultFromCommand(`npm view ${fullPackageName}@${major} deprecated`).length === 0)
 			.forEach(({major, endOfLifeDate}) => {
 				executeCommandWithLog(
@@ -57,5 +58,14 @@ export class Publish extends StaticScript {
 			.exec(Files.read(`./dist/${packageName}/CHANGELOG.md`))
 			.toString()
 			.trim();
+	}
+
+	private static doesVersionExist(fullPackageName: string, version: string): boolean {
+		try {
+			executeCommand(`npm view ${fullPackageName}@${version}`, {stdio: 'pipe'});
+			return true;
+		} catch {
+			return false;
+		}
 	}
 }
