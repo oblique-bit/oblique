@@ -58,7 +58,7 @@ The design system uses two distinct approaches for typography tokens based on th
 ### A) Semantic Typography Tokens (Headings)
 - **Use consolidated "composition-tokens"** that combine all typography properties (fontFamily, fontWeight, fontSize, lineHeight, letterSpacing, paragraphSpacing) into a single object
 - **Purpose**: Directly map to Figma Typography Styles for seamless design-to-code workflow
-- **Example**: `{ob.s3.typography.style.display.xl}` contains complete typography definition
+- **Example**: `{ob.s.typography.style.display.xl}` contains complete typography definition
 - **Location**: Semantic layer provides reusable typography styles
 
 ### B) Component Typography Tokens (Buttons, etc.)

@@ -185,13 +185,13 @@ toggleFilter(filter: string): void {
 --ob-c-tag-spacing-padding-horizontal-lg: var(--ob-s-spacing-2xl);
 
 /* Focus ring management for accessibility */
---ob-c-tag-focus-ring-color-enabled: var(--ob-s3-color-interaction-focus-ring-inversity-normal);
---ob-c-tag-focus-ring-color-active: var(--ob-s3-color-interaction-focus-ring-inversity-flipped);
+--ob-c-tag-focus-ring-color-enabled: var(--ob-s-color-interaction-focus-ring-inversity-normal);
+--ob-c-tag-focus-ring-color-active: var(--ob-s-color-interaction-focus-ring-inversity-flipped);
 --ob-c-tag-focus-ring-width: var(--ob-s-border-width-focus);
 --ob-c-tag-focus-ring-offset: var(--ob-s-spacing-focus-offset);
 
 /* Remove button focus (form input variant) */
---ob-c-tag-remove-button-focus-ring-color: var(--ob-s3-color-interaction-focus-ring-inversity-normal);
+--ob-c-tag-remove-button-focus-ring-color: var(--ob-s-color-interaction-focus-ring-inversity-normal);
 --ob-c-tag-remove-button-focus-ring-width: var(--ob-s-border-width-focus);
 ```
 
@@ -222,7 +222,7 @@ export class FormTagsComponent {}
   styles: [`
     ob-tag {
       /* Custom active state emphasis */
-      --ob-c-tag-focus-ring-color-active: var(--ob-s3-color-accent-fg-contrast-high-inversity-flipped);
+      --ob-c-tag-focus-ring-color-active: var(--ob-s-color-accent-fg-contrast-high-inversity-flipped);
     }
   `]
 })

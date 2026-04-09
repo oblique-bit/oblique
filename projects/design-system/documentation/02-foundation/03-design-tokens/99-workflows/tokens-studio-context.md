@@ -38,7 +38,7 @@ These tokens exist in `$themes.json` and resolve properly in Tokens Studio:
 ## Current Architecture
 - **S1 Semantic Level:** Lightness variables (light/dark theme handling)
 - **S2 Semantic Level:** Emphasis variables (high/low emphasis variations)  
-- **S3 Semantic Level:** Semantic compilation (complete semantic color collection)
+- **ob.s Compiled Level:** Semantic compilation (complete semantic color collection)
 - **Static Tokens:** Brand colors and utilities (managed in Tokens Studio)
 
 ---

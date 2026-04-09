@@ -59,7 +59,7 @@ A major point of failure was creating semantic tokens that pointed to primitive 
 
 ### Intentional Primitive Bypass for Static Utility Colors
 
-Some utility color tokens (e.g., `ob.s3.color.neutral.no_color`) are **intentionally defined to reference a primitive directly**, bypassing the S1 and S2 semantic tiers.
+Some utility color tokens (e.g., `ob.s.color.neutral.no_color`) are **intentionally defined to reference a primitive directly**, bypassing the S1 and S2 semantic tiers.
 
 This is a deliberate architectural exception for values that are:
 - **Static and invariant** — the value does not change between light/dark or emphasis modes.
@@ -68,7 +68,7 @@ This is a deliberate architectural exception for values that are:
 For these tokens, S3 references `ob.p.*` directly instead of going through the full `S3 → S2 → S1 → primitive` chain.
 
 ```json
-// ✔️ Intentional: ob.s3.color.neutral.no_color references primitive directly
+// ✔️ Intentional: ob.s.color.neutral.no_color references primitive directly
 // Reason: transparent is always transparent — no mode variation exists
 "no_color": {
   "$type": "color",
@@ -85,8 +85,8 @@ At S3, color tokens are named not only by state but also by the **element type**
 
 The canonical example is the selected/active state in navigation and segmented button contexts:
 
-- `ob.s3.color.interaction.state.border.selected.*` — the indicator element (underline, active border)
-- `ob.s3.color.interaction.state.fg.selected.*` — the label text color
+- `ob.s.color.interaction.state.border.selected.*` — the indicator element (underline, active border)
+- `ob.s.color.interaction.state.fg.selected.*` — the label text color
 
 These cannot share one token because:
 1. **Semantic correctness** — `fg` means text and icon. Applying it to a border element is a naming lie.

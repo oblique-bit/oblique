@@ -165,11 +165,11 @@ class TagRemovalBehavior {
       /* Focus ring for remove button */
       --ob-c-tag-remove-button-focus-ring-width: var(--ob-s-border-width-focus);
       --ob-c-tag-remove-button-focus-ring-offset: var(--ob-s-spacing-focus-offset);
-      --ob-c-tag-remove-button-focus-ring-color: var(--ob-s3-color-interaction-focus-ring-inversity-normal);
+      --ob-c-tag-remove-button-focus-ring-color: var(--ob-s-color-interaction-focus-ring-inversity-normal);
     }
     
     .tag-remove-button:hover {
-      background-color: var(--ob-s3-color-surface-hover-inversity-normal);
+      background-color: var(--ob-s-color-surface-hover-inversity-normal);
     }
     
     .tag-remove-button:focus {
@@ -305,7 +305,7 @@ export class SkillInputComponent {
   `,
   styles: [`
     .tag-input-container.error {
-      --ob-c-tag-border-color: var(--ob-s3-color-status-danger-border-inversity-normal);
+      --ob-c-tag-border-color: var(--ob-s-color-status-danger-border-inversity-normal);
     }
     
     .tag-input-container.disabled {
@@ -314,18 +314,18 @@ export class SkillInputComponent {
     }
     
     ob-tag.error {
-      --ob-c-tag-border-color: var(--ob-s3-color-status-danger-border-inversity-normal);
-      --ob-c-tag-background-color: var(--ob-s3-color-status-danger-surface-inversity-normal);
+      --ob-c-tag-border-color: var(--ob-s-color-status-danger-border-inversity-normal);
+      --ob-c-tag-background-color: var(--ob-s-color-status-danger-surface-inversity-normal);
     }
     
     .form-help {
       margin-top: var(--ob-s-spacing-sm);
       font-size: var(--ob-s-typography-type-scale-xs-normal-font-size);
-      color: var(--ob-s3-color-text-subtle-inversity-normal);
+      color: var(--ob-s-color-text-subtle-inversity-normal);
     }
     
     .form-field .error .form-help {
-      color: var(--ob-s3-color-status-danger-text-inversity-normal);
+      color: var(--ob-s-color-status-danger-text-inversity-normal);
     }
   `]
 })
@@ -443,16 +443,16 @@ export class AdvancedTagInputComponent {
 /* Remove button focus ring */
 --ob-c-tag-remove-button-focus-ring-width: var(--ob-s-border-width-focus);
 --ob-c-tag-remove-button-focus-ring-offset: var(--ob-s-spacing-focus-offset);
---ob-c-tag-remove-button-focus-ring-color: var(--ob-s3-color-interaction-focus-ring-inversity-normal);
+--ob-c-tag-remove-button-focus-ring-color: var(--ob-s-color-interaction-focus-ring-inversity-normal);
 
 /* Remove button colors */
---ob-c-tag-remove-button-color-default: var(--ob-s3-color-text-subtle-inversity-normal);
---ob-c-tag-remove-button-color-hover: var(--ob-s3-color-text-default-inversity-normal);
---ob-c-tag-remove-button-color-focus: var(--ob-s3-color-text-emphasis-inversity-normal);
+--ob-c-tag-remove-button-color-default: var(--ob-s-color-text-subtle-inversity-normal);
+--ob-c-tag-remove-button-color-hover: var(--ob-s-color-text-default-inversity-normal);
+--ob-c-tag-remove-button-color-focus: var(--ob-s-color-text-emphasis-inversity-normal);
 
 /* Remove button background */
---ob-c-tag-remove-button-background-hover: var(--ob-s3-color-surface-hover-inversity-normal);
---ob-c-tag-remove-button-background-pressed: var(--ob-s3-color-surface-pressed-inversity-normal);
+--ob-c-tag-remove-button-background-hover: var(--ob-s-color-surface-hover-inversity-normal);
+--ob-c-tag-remove-button-background-pressed: var(--ob-s-color-surface-pressed-inversity-normal);
 ```
 
 ---

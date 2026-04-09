@@ -20,7 +20,7 @@ src/lib/themes/03_semantic/color/
 ├── s2-emphasis/           # Semantic Level 2: High/Low emphasis variations
 │   ├── high.json          # High emphasis colors
 │   └── low.json           # Low emphasis colors
-└── s3-semantic/           # Semantic Level 3: Complete semantic color collection
+└── compiled/           # Semantic Level 3: Complete semantic color collection
     └── semantic.json      # Final semantic color compilation
 ```
 
@@ -40,32 +40,32 @@ src/lib/themes/03_semantic/color/
 - **Reference**: All S2 tokens reference S1 tokens directly
 - **Example token**: `ob.s2.color.interaction.bg.primary.enabled.inversity_normal`
 
-#### **S3 - Semantic Compilation** (`s3-semantic/`)
+#### **S3 - Semantic Compilation** (`compiled/`)
 - **Purpose**: Complete, clean collection of all semantic colors
 - **Contains**: All categories (neutral, interaction, status, static brand colors)  
 - **File**: `semantic.json`
 - **Reference**: Compiles tokens from S1, S2, and static sources
 - **Usage**: Primary consumption point for component tokens
 
-#### **S3 - Semantic Compilation (cont.)** (`s3-semantic/`)
+#### **S3 - Semantic Compilation (cont.)** (`compiled/`)
 - **Purpose**: Complete semantic color compilation and final token definitions
 - **Contains**: Final compiled semantic colors combining all layer variations plus static colors
 - **Files**: `semantic.json`
 - **Inversity**: Flat inversity variants preserved in final compilation (not dimensional)
-- **Example token**: `ob.s3.color.neutral.fg.contrast_highest.inversity_normal`
+- **Example token**: `ob.s.color.neutral.fg.contrast_highest.inversity_normal`
 
 ---
 
 ## **Static Colors**
 
-Static colors are **non-themeable** values that remain constant across all theme modes and variations. These are now integrated into the **s3-semantic semantic level**.
+Static colors are **non-themeable** values that remain constant across all theme modes and variations. These are now integrated into the **compiled semantic level**.
 
 ### **Brand Colors**
 
 #### **Static Brand**
 ```json
 {
-  "ob.s3.color.brand": {
+  "ob.s.color.brand": {
     "$type": "color",
     "$value": "{ob.p.color.basic.bundesrot}",
     "$description": "Static color to be used in the brand relevant UI elements."
@@ -76,14 +76,14 @@ Static colors are **non-themeable** values that remain constant across all theme
 - **Purpose**: Consistent brand identity
 - **Usage**: Brand elements, logos, primary brand touches  
 - **Behavior**: Never changes with theme modes
-- **Location**: `s3-semantic/03_semantic.json`
+- **Location**: `compiled/03_semantic.json`
 
 ### **Neutral Utilities**
 
 #### **No Color / Transparent**
 ```json
 {
-  "ob.s3.color.neutral.no_color": {
+  "ob.s.color.neutral.no_color": {
     "$type": "color",
     "$value": "{ob.p.color.basic.transparent}",
     "$description": "Static value when no color respectively 0% opacity is needed."
@@ -94,19 +94,19 @@ Static colors are **non-themeable** values that remain constant across all theme
 - **Purpose**: Transparent/invisible elements
 - **Usage**: Hidden borders, transparent backgrounds
 - **Behavior**: Always transparent (0% opacity)
-- **Location**: `s3-semantic/03_semantic.json`
+- **Location**: `compiled/03_semantic.json`
 
 ### **Static Interaction Indicators**
 
 #### **Selection States**
 ```json
 {
-  "ob.s3.color.interaction.state.bg.selected.inversity_normal": {
+  "ob.s.color.interaction.state.bg.selected.inversity_normal": {
     "$type": "color",
     "$value": "{ob.s2.color.interaction.state.bg.selected.inversity_normal}",
     "$description": "Interactive element background - selected state, normal theme"
   },
-  "ob.s3.color.interaction.state.bg.enabled.inversity_normal": {
+  "ob.s.color.interaction.state.bg.enabled.inversity_normal": {
     "$type": "color",
     "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_normal}",
     "$description": "Semantic Interaction color for not selected items. Used in Main Navigation, Navigation Tree, Tabs."
@@ -125,12 +125,12 @@ Static colors are **non-themeable** values that remain constant across all theme
 The semantic color system is organized into **four main categories**:
 
 ### **Brand Category**
-- **Location**: `s3-semantic/03_semantic.json` (integrated with final compilation)
+- **Location**: `compiled/03_semantic.json` (integrated with final compilation)
 - **Purpose**: Brand identity elements
 - **Includes**: Single brand color for consistent identity
 
 ### **Neutral Category**
-- **Location**: L1 semantic level files (`s1-lightness/`) + S3 compilation (`s3-semantic/`)
+- **Location**: L1 semantic level files (`s1-lightness/`) + S3 compilation (`compiled/`)
 - **Purpose**: Non-interactive UI elements
 - **Includes**: 
   - Background colors (`bg`)
@@ -140,7 +140,7 @@ The semantic color system is organized into **four main categories**:
   - Utility colors (transparent/no_color)
 
 ### **Interaction Category**
-- **Location**: L1 semantic level files (`s1-lightness/`) + S2 emphasis (`s2-emphasis/`) + S3 compilation (`s3-semantic/`)
+- **Location**: L1 semantic level files (`s1-lightness/`) + S2 emphasis (`s2-emphasis/`) + S3 compilation (`compiled/`)
 - **Purpose**: Interactive UI elements
 - **Includes**:
   - Button colors
@@ -151,7 +151,7 @@ The semantic color system is organized into **four main categories**:
   - Emphasis variations
 
 ### **Status Category**
-- **Location**: L1 semantic level files (`s1-lightness/`) + S3 compilation (`s3-semantic/`)
+- **Location**: L1 semantic level files (`s1-lightness/`) + S3 compilation (`compiled/`)
 - **Purpose**: System state communication
 - **Includes**:
   - Reserved statuses (info, resolved, critical, attention)
@@ -176,7 +176,7 @@ Currently, the full 5-level scale is provided only for the **Neutral** category 
 
 ### **Layered Token Example**
 ```
-ob.s3.color.brand → {ob.p.color.basic.bundesrot} → #ff0000
+ob.s.color.brand → {ob.p.color.basic.bundesrot} → #ff0000
 │
 └─ S3 (Semantic): Direct static value (bundesrot) - no theme, emphasis, or inversity variations
 ```

@@ -42,7 +42,7 @@ The `focus_ring` component provides a standardized focus indicator pattern for a
 - **CSS Implementation**: `outline` property with `ob.s.border.focus_ring.*` tokens and `ob.s.outline_offset.*` spacing
 - **Figma Implementation**: Manual positioning with outline-style visual treatment (no tokens)
 - **Outline Offset Support**: Semantic `ob.s.outline_offset.*` tokens (none, xs, sm, md, lg) for component-specific spacing
-- **Color Coordination**: Both reference `ob.s3.color.interaction.focus_ring.*` values
+- **Color Coordination**: Both reference `ob.s.color.interaction.focus_ring.*` values
 
 ## **Design:** Design Resources
 

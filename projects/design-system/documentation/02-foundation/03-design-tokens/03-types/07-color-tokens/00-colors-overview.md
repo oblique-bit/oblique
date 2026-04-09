@@ -71,7 +71,7 @@ Colors that communicate state and system feedback:
 
 ### Semantic Naming Convention
 ```
-ob.s3.{category}.{property}.{contrast_level}.{inversity_variation}
+ob.s.{category}.{property}.{contrast_level}.{inversity_variation}
 ```
 
 #### Structure Components
@@ -124,7 +124,7 @@ When combining categories, maintain:
 - `src/lib/themes/03_semantic/color/` - Semantic color definitions by layer
   - `s1-lightness/` - Light and dark theme definitions
   - `s2-emphasis/` - High and low emphasis variations
-  - `s3-semantic/` - Complete semantic color compilation
+  - `compiled/` - Complete semantic color compilation
 - `documentation/design-tokens/colors/` - Color system documentation
   - Specialized files for each color category and architectural topics
 

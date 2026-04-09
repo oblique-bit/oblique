@@ -21,7 +21,7 @@
 2. Component tokens (if they already exist, otherwise do step 1 first)
 
 ### Colors (mode-aware if using s3 level)
-Use `ob.s3.color.*` tokens from semantic color groups:
+Use `ob.s.color.*` tokens from semantic color groups:
 - `interactive.*` - buttons, links, form controls
 - `neutral.*` - text, backgrounds, borders
 - `status.*` - success, warning, error states
@@ -36,7 +36,7 @@ Use `ob.s.dimension.*` tokens:
 ### Borders (only colors are mode-aware)
 - **Border width:** Use `ob.s.border_width.*` tokens
 - **Border radius:** Use `ob.s.border_radius.*` tokens
-- **Border color:** Use `ob.s3.color.neutral.border.*` tokens
+- **Border color:** Use `ob.s.color.neutral.border.*` tokens
 
 ### Shadows
 Use `ob.s.shadow.*` tokens for component shadows and effects

@@ -23,7 +23,7 @@ This section contains comprehensive documentation for developers implementing de
 ```bash
 # Correct token consumption
 ob.c.button.primary.bg      → Component token (preferred)
-ob.s3.color.primary.bg      → S3 semantic token (interactive)
+ob.s.color.primary.bg      → S3 semantic token (interactive)
 ob.s2.color.primary.bg      → S2 semantic token (non-interactive)
 
 # Prohibited consumption  

@@ -8,18 +8,18 @@
 
 | Color Scale | Semantic Usage | Used In | Aura Protection | Status | Available Shades |
 |------------|----------------|---------|----------------|--------|------------------|
-| **Basic** | Neutral (Light) | ob.s3.neutral.* | None - lacks color attributes | ✅ Available | All (white, transparent, etc.) |
-| **Red** | Status Critical (Reserved) | ob.s3.status.critical.* | Multiple shades used | ❌ Reserved | None |
-| **Cobalt** | Neutral (Dark) | ob.s3.neutral.* | All shades (50-900) | ❌ Reserved | None |
-| **Orange** | Status Attention (Reserved) | ob.s3.status.attention.* | Multiple shades used | ❌ Reserved | None |
-| **Yellow** | Status Attention (Reserved) | ob.s3.status.attention.* | Multiple shades used | ❌ Reserved | None |
-| **Green** | Status Resolved (Reserved) | ob.s3.status.resolved.* | Multiple shades used | ❌ Reserved | None |
-| **Steelblue** | Interaction | ob.s3.interaction.* | Shades 100-800 | ❌ Reserved | None |
-| **Teal** | Status Confirmed (Flexible) | ob.s3.status.confirmed.* | Shades 50, 100, 200, 600, 700, 800, 900 | ⚠️ Limited | Unused shades available |
-| **Indigo** | Status Progress (Flexible) | ob.s3.status.progress.* | Shades 50, 100, 200, 600, 700, 800, 900 | ⚠️ Limited | Unused shades available |
-| **Purple** | Status Waiting + Focus Ring (Reserved) | ob.s3.status.waiting.*, ob.s3.interaction.focus_ring.* | Shades 50, 100, 200, 400, 500, 600, 700, 800, 900 | ❌ Reserved | Very limited availability |
+| **Basic** | Neutral (Light) | ob.s.neutral.* | None - lacks color attributes | ✅ Available | All (white, transparent, etc.) |
+| **Red** | Status Critical (Reserved) | ob.s.status.critical.* | Multiple shades used | ❌ Reserved | None |
+| **Cobalt** | Neutral (Dark) | ob.s.neutral.* | All shades (50-900) | ❌ Reserved | None |
+| **Orange** | Status Attention (Reserved) | ob.s.status.attention.* | Multiple shades used | ❌ Reserved | None |
+| **Yellow** | Status Attention (Reserved) | ob.s.status.attention.* | Multiple shades used | ❌ Reserved | None |
+| **Green** | Status Resolved (Reserved) | ob.s.status.resolved.* | Multiple shades used | ❌ Reserved | None |
+| **Steelblue** | Interaction | ob.s.interaction.* | Shades 100-800 | ❌ Reserved | None |
+| **Teal** | Status Confirmed (Flexible) | ob.s.status.confirmed.* | Shades 50, 100, 200, 600, 700, 800, 900 | ⚠️ Limited | Unused shades available |
+| **Indigo** | Status Progress (Flexible) | ob.s.status.progress.* | Shades 50, 100, 200, 600, 700, 800, 900 | ⚠️ Limited | Unused shades available |
+| **Purple** | Status Waiting + Focus Ring (Reserved) | ob.s.status.waiting.*, ob.s.interaction.focus_ring.* | Shades 50, 100, 200, 400, 500, 600, 700, 800, 900 | ❌ Reserved | Very limited availability |
 | **Pink** | None | - | None | ✅ Available | All shades (50-900) |
-| **Blue** | Brand, Status Info (Reserved) | ob.s3.brand.*, ob.s3.status.info.* | All shades (50-900) | ❌ Reserved | None |
+| **Blue** | Brand, Status Info (Reserved) | ob.s.brand.*, ob.s.status.info.* | All shades (50-900) | ❌ Reserved | None |
 
 ## Available for Application-Specific Semantic Roles
 

@@ -89,7 +89,7 @@ semantic/
 ├── spacing/mobile.json      # Responsive multipliers
 ├── color/s1-lightness/      # Light/dark themes
 ├── color/s2-emphasis/       # Emphasis modes
-└── color/s3-semantic/       # Compiled semantic layer
+└── color/compiled/       # Compiled semantic layer
 
 global/themes-user/
 ├── lightness/              # Light/dark switching
@@ -398,7 +398,7 @@ semantic/
 ├── color/
 │   ├── s1-lightness/    # **Success:** Theme mode implementation
 │   ├── s2-emphasis/     # **Success:** Emphasis mode implementation
-│   └── s3-semantic/     # **Success:** Compiled semantic layer
+│   └── compiled/     # **Success:** Compiled semantic layer
 └── [other categories]
 ```
 

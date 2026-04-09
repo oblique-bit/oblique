@@ -216,25 +216,25 @@ Tags use **context-appropriate inversity** to ensure focus ring scannability and
 #### State Management
 ```json
 // tag.input_mode (normal inversity, remove button focus)
-"ob.c.tag.input_mode.color.bg.enabled": "{ob.s3.color.neutral.bg.contrast_medium.inversity_normal}",
-"ob.c.tag.input_mode.color.bg.hover": "{ob.s3.color.neutral.bg.contrast_high.inversity_normal}",
-"ob.c.tag.input_mode.color.bg.focus": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}",
-"ob.c.tag.input_mode.color.bg.disabled": "{ob.s3.color.neutral.bg.contrast_low.inversity_normal}",
+"ob.c.tag.input_mode.color.bg.enabled": "{ob.s.color.neutral.bg.contrast_medium.inversity_normal}",
+"ob.c.tag.input_mode.color.bg.hover": "{ob.s.color.neutral.bg.contrast_high.inversity_normal}",
+"ob.c.tag.input_mode.color.bg.focus": "{ob.s.color.neutral.bg.contrast_low.inversity_normal}",
+"ob.c.tag.input_mode.color.bg.disabled": "{ob.s.color.neutral.bg.contrast_low.inversity_normal}",
 
 // Remove button maintains scannability (input_mode only)
-"ob.c.tag.input_mode.remove_button.focus_ring": "{ob.s3.color.interaction.focus.ring.inversity_normal}",
+"ob.c.tag.input_mode.remove_button.focus_ring": "{ob.s.color.interaction.focus.ring.inversity_normal}",
 "ob.c.tag.input_mode.remove_button.size.sm": "{ob.s.icon.size.xs}",
 "ob.c.tag.input_mode.remove_button.size.md": "{ob.s.icon.size.xs}",
 "ob.c.tag.input_mode.remove_button.size.lg": "{ob.s.icon.size.sm}",
 
 // tag.filter_mode (includes active state with flipped inversity)
-"ob.c.tag.filter_mode.color.bg.enabled": "{ob.s3.color.neutral.bg.contrast_medium.inversity_normal}",
-"ob.c.tag.filter_mode.color.bg.hover": "{ob.s3.color.neutral.bg.contrast_high.inversity_normal}",
-"ob.c.tag.filter_mode.color.bg.active": "{ob.s3.color.neutral.bg.contrast_medium.inversity_flipped}",
-"ob.c.tag.filter_mode.color.fg.active": "{ob.s3.color.neutral.fg.contrast_medium.inversity_flipped}",
+"ob.c.tag.filter_mode.color.bg.enabled": "{ob.s.color.neutral.bg.contrast_medium.inversity_normal}",
+"ob.c.tag.filter_mode.color.bg.hover": "{ob.s.color.neutral.bg.contrast_high.inversity_normal}",
+"ob.c.tag.filter_mode.color.bg.active": "{ob.s.color.neutral.bg.contrast_medium.inversity_flipped}",
+"ob.c.tag.filter_mode.color.fg.active": "{ob.s.color.neutral.fg.contrast_medium.inversity_flipped}",
 
 // Active tag focus ring (follows button.primary pattern)
-"ob.c.tag.filter_mode.focus_ring.active": "{ob.s3.color.interaction.focus.ring.inversity_flipped}",
+"ob.c.tag.filter_mode.focus_ring.active": "{ob.s.color.interaction.focus.ring.inversity_flipped}",
 
 // Default size for filter_mode (designer can override)
 "ob.c.tag.filter_mode.surface.min_height.default": "{ob.s.size.spacious}" // md
@@ -248,7 +248,7 @@ Tags use **context-appropriate inversity** to ensure focus ring scannability and
 "ob.c.tag.input_mode.body.focus": "none",
 
 // Remove button receives focus with scannable ring
-"ob.c.tag.input_mode.remove_button.focus_ring.color": "{ob.s3.color.interaction.focus.ring.inversity_normal}",
+"ob.c.tag.input_mode.remove_button.focus_ring.color": "{ob.s.color.interaction.focus.ring.inversity_normal}",
 "ob.c.tag.input_mode.remove_button.focus_ring.width": "{ob.s.border.width.focus}",
 "ob.c.tag.input_mode.remove_button.focus_ring.offset": "{ob.s.spacing.focus_offset}"
 ```
@@ -256,8 +256,8 @@ Tags use **context-appropriate inversity** to ensure focus ring scannability and
 **tag.filter_mode**:
 ```json
 // Entire tag surface is interactive and focusable
-"ob.c.tag.filter_mode.focus_ring.color.enabled": "{ob.s3.color.interaction.focus.ring.inversity_normal}",
-"ob.c.tag.filter_mode.focus_ring.color.active": "{ob.s3.color.interaction.focus.ring.inversity_flipped}",
+"ob.c.tag.filter_mode.focus_ring.color.enabled": "{ob.s.color.interaction.focus.ring.inversity_normal}",
+"ob.c.tag.filter_mode.focus_ring.color.active": "{ob.s.color.interaction.focus.ring.inversity_flipped}",
 "ob.c.tag.filter_mode.focus_ring.width": "{ob.s.border.width.focus}",
 "ob.c.tag.filter_mode.focus_ring.offset": "{ob.s.spacing.focus_offset}"
 ```

@@ -44,16 +44,16 @@
 - **`ob.p.*`** - Primitive tokens (raw values) - **❌ DON'T USE DIRECTLY**
 - **`ob.s1.*`** - Semantic Level 1 (lightness variations) - **❌ DON'T USE DIRECTLY**
 - **`ob.s2.*`** - Semantic Level 2 (emphasis variations) - **✅ USE FOR NON-INTERACTIVE**
-- **`ob.s3.*`** - Semantic Level 3 (compiled semantic colors) - **✅ USE FOR INTERACTIVE**
+- **`ob.s.*`** - Semantic Level 3 (compiled semantic colors) - **✅ USE FOR INTERACTIVE**
 - **`ob.c.*`** - Component tokens (inherit from semantic) - **✅ USE WHEN AVAILABLE**
 - **`ob.h.*`** - HTML element tokens (inherit from semantic/component) - **✅ USE WHEN AVAILABLE**
 
 ### **Designer Token Selection Rules**
 
 1. **✅ Primary Choice: Component Tokens** - Use `ob.c.*` tokens when working with specific components
-2. **✅ Interactive Elements: S3 Semantic** - Use `ob.s3.*` tokens for all interactive color decisions
+2. **✅ Interactive Elements: S3 Semantic** - Use `ob.s.*` tokens for all interactive color decisions
 3. **✅ Non-Interactive Elements: S2 Semantic** - Use `ob.s2.*` for static components  
-4. **✅ Other Properties: S2/S3 Semantic** - Use `ob.s2.*` or `ob.s3.*` for spacing, typography, sizing
+4. **✅ Other Properties: S2/S3 Semantic** - Use `ob.s2.*` or `ob.s.*` for spacing, typography, sizing
 5. **❌ Avoid Lower Layers** - Don't use `ob.s1.*` or `ob.p.*` directly in component designs
 6. **✅ Verify Token Existence** - Always confirm tokens exist in the actual system before applying
 
@@ -115,9 +115,9 @@ ob.c.tooltip.container.shadow
    - Use component-specific tokens for consistent behavior
 
 2. **Apply Semantic Tokens**
-   - **Interactive elements**: Use `ob.s3.*` tokens for colors
+   - **Interactive elements**: Use `ob.s.*` tokens for colors
    - **Static elements**: Use `ob.s2.*` tokens for colors
-   - **All elements**: Use `ob.s2.*`/`ob.s3.*` for spacing, typography, sizing
+   - **All elements**: Use `ob.s2.*`/`ob.s.*` for spacing, typography, sizing
 
 3. **Layer Naming Standards**
    - Use `underscore_format` for all layer names
@@ -166,7 +166,7 @@ ob.c.tooltip.container.shadow
 ### **❌ Tokenization Violations**
 | **Wrong** | **Correct** | **Reason** |
 |---|---|---|
-| `#ff0000` | `ob.s3.color.error.bg` | Use semantic color tokens |
+| `#ff0000` | `ob.s.color.error.bg` | Use semantic color tokens |
 | `font-size: 16px` | `ob.s2.typography.body.md` | Use typography tokens |
 | `padding: 12px` | `ob.s2.spacing.md` | Use spacing tokens |
 | `width: 240px` | `ob.s2.sizing.button.width.lg` | Use sizing tokens |

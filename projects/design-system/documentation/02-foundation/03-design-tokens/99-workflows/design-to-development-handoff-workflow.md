@@ -66,7 +66,7 @@ Components are documented using this standardized format:
 Layer-to-token relationships are documented in tables:
 | Layer Name | Layer Type | Property | Token Path | Token Value | Implementation Notes |
 |------------|------------|----------|------------|-------------|---------------------|
-| Background | Rectangle | fill | `ob.s3.color.neutral.bg.surface` | `#ffffff` | Surface background |
+| Background | Rectangle | fill | `ob.s.color.neutral.bg.surface` | `#ffffff` | Surface background |
 | Label | Text | fontSize | `ob.s.dynamic.font_size.md` | `17px` | Button text size |
 | Icon | Frame | width/height | `ob.h.button.icon.size.md` | `20px` | Icon dimensions |
 | Container | Auto Layout | padding | `ob.h.button.spacing.padding.horizontal` | `12px` | Internal spacing |
@@ -196,7 +196,7 @@ background: var(--ob-h-button-color-bg-primary-inversity-normal-enabled);
 ```
 
 #### Why Style Dictionary is Required
-- **Token References**: Handoff shows `{ob.s3.color.primary}` but not final resolved values
+- **Token References**: Handoff shows `{ob.s.color.primary}` but not final resolved values
 - **Complex Calculations**: Tokens may reference other tokens with mathematical operations  
 - **Theme Resolution**: Light/dark theme variations require compilation to actual values
 - **Platform Output**: Style Dictionary generates platform-specific formats (CSS, iOS, Android)
@@ -231,13 +231,13 @@ Components must support multiple theme and mode variations:
 ```
 Theme System Implementation:
 ├── Light Theme (default)
-│   ├── Primary colors: var(--ob-s3-color-brand-primary)
-│   ├── Surface colors: var(--ob-s3-color-neutral-bg-surface)
-│   └── Text colors: var(--ob-s3-color-neutral-fg-primary)
+│   ├── Primary colors: var(--ob-s-color-brand-primary)
+│   ├── Surface colors: var(--ob-s-color-neutral-bg-surface)
+│   └── Text colors: var(--ob-s-color-neutral-fg-primary)
 └── Dark Theme (inversity_flipped)
-    ├── Primary colors: var(--ob-s3-color-brand-primary-inversity-flipped)  
-    ├── Surface colors: var(--ob-s3-color-neutral-bg-surface-inversity-flipped)
-    └── Text colors: var(--ob-s3-color-neutral-fg-primary-inversity-flipped)
+    ├── Primary colors: var(--ob-s-color-brand-primary-inversity-flipped)  
+    ├── Surface colors: var(--ob-s-color-neutral-bg-surface-inversity-flipped)
+    └── Text colors: var(--ob-s-color-neutral-fg-primary-inversity-flipped)
 
 Responsive Modes:
 ├── Desktop (default)

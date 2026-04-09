@@ -143,7 +143,7 @@ mcp_figma_dev_mod_get_code --forceCode=true  # ✅ Completed [DATE]
 #### Complete Token Mapping
 | Layer Name | Layer Type | Property | Token Applied | Token Value | Notes |
 |------------|------------|----------|---------------|-------------|--------|
-| Background | Rectangle | fill | `ob.s3.color.neutral.bg.surface` | `#ffffff` | Primary surface |
+| Background | Rectangle | fill | `ob.s.color.neutral.bg.surface` | `#ffffff` | Primary surface |
 | Background | Rectangle | border | `ob.h.button.border.width` | `1px` | Border width |
 | Background | Rectangle | border-radius | `ob.h.button.border.radius` | `4px` | Corner radius |
 | Container | Auto Layout | padding-left | `ob.h.button.spacing.padding.horizontal` | `16px` | Left padding |
@@ -155,7 +155,7 @@ mcp_figma_dev_mod_get_code --forceCode=true  # ✅ Completed [DATE]
 | Icon | Frame | height | `ob.h.button.icon.size.md` | `20px` | Icon height |
 | Label | Text | fontSize | `ob.s.dynamic.font_size.md` | `16px` | Text size |
 | Label | Text | fontWeight | `ob.s.dynamic.fontWeight.medium` | `500` | Text weight |
-| Label | Text | color | `ob.s3.color.neutral.fg.primary` | `#1a1a1a` | Text color |
+| Label | Text | color | `ob.s.color.neutral.fg.primary` | `#1a1a1a` | Text color |
 | Label | Text | lineHeight | `ob.s.dynamic.lineHeight.md` | `24px` | Line height |
 
 ---
@@ -228,15 +228,15 @@ The hardcoded properties for this component fall into these categories:
 #### Light/Dark Theme Support
 ```
 ├── Light Mode (inversity_normal)
-│   ├── Background: ob.s3.color.neutral.bg.surface
-│   ├── Border: ob.s3.color.neutral.border.default  
-│   ├── Text: ob.s3.color.neutral.fg.primary
-│   └── Icon: ob.s3.color.neutral.fg.secondary
+│   ├── Background: ob.s.color.neutral.bg.surface
+│   ├── Border: ob.s.color.neutral.border.default  
+│   ├── Text: ob.s.color.neutral.fg.primary
+│   └── Icon: ob.s.color.neutral.fg.secondary
 └── Dark Mode (inversity_flipped)
-    ├── Background: ob.s3.color.neutral.bg.surface.inversity_flipped
-    ├── Border: ob.s3.color.neutral.border.default.inversity_flipped
-    ├── Text: ob.s3.color.neutral.fg.primary.inversity_flipped
-    └── Icon: ob.s3.color.neutral.fg.secondary.inversity_flipped
+    ├── Background: ob.s.color.neutral.bg.surface.inversity_flipped
+    ├── Border: ob.s.color.neutral.border.default.inversity_flipped
+    ├── Text: ob.s.color.neutral.fg.primary.inversity_flipped
+    └── Icon: ob.s.color.neutral.fg.secondary.inversity_flipped
 ```
 
 #### Viewport Responsive Modes

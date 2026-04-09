@@ -1,7 +1,7 @@
 # Neutral Colors
 
 **About:** Foundational colors for backgrounds, text, borders, and surfaces.  
-**Token Path:** `ob.s3.color.neutral.*`  
+**Token Path:** `ob.s.color.neutral.*`  
 **Architecture:** See [Semantic Color Architecture](03-colors-semantic.md) for system overview.
 
 ---
@@ -9,7 +9,7 @@
 ## Token Structure
 
 ```
-ob.s3.color.neutral.{property}.{contrast_level}.{inversity_variation}
+ob.s.color.neutral.{property}.{contrast_level}.{inversity_variation}
 ```
 
 **Properties:**
@@ -75,7 +75,7 @@ ob.s3.color.neutral.{property}.{contrast_level}.{inversity_variation}
 ### Static Utilities
 ```json
 {
-  "ob.s3.color.neutral.no_color": {
+  "ob.s.color.neutral.no_color": {
     "$value": "transparent",
     "$description": "Static value when no color respectively 0% opacity is needed."
   }
@@ -93,7 +93,7 @@ ob.s3.color.neutral.{property}.{contrast_level}.{inversity_variation}
 - `src/lib/themes/03_semantic/color/s1-lightness/dark.json` - Dark theme neutral colors
 - `src/lib/themes/03_semantic/color/s2-emphasis/normal.json` - Normal emphasis neutral colors
 - `src/lib/themes/03_semantic/color/s2-emphasis/high.json` - High emphasis neutral colors
-- `src/lib/themes/03_semantic/color/s3-semantic/semantic.json` - Complete neutral compilation.
+- `src/lib/themes/03_semantic/color/compiled/semantic.json` - Complete neutral compilation.
 
 
 

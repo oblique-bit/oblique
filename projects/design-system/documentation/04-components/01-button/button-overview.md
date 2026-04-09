@@ -169,7 +169,7 @@ Tag Component
 
 ## Color System Integration
 
-**Color Token Path:** `ob.s3.color.interaction`
+**Color Token Path:** `ob.s.color.interaction`
 
 All button components consume colors strictly from the interaction color group. See [colors-semantic-interaction.md](../../03-design-tokens/colors/colors-semantic-interaction.md) for complete color specifications.
 
@@ -236,9 +236,9 @@ All button components consume colors strictly from the interaction color group. 
 - `*/disabled` - Disabled state colors
 
 **Focus & Shadow:**
-- `ob/s3/color/interaction/focus_ring/inversity_normal` - Focus ring color (#8b5cf6)
-- `ob/s3/color/neutral/shadow/first` - First shadow layer (#131b220d)
-- `ob/s3/color/neutral/shadow/second` - Second shadow layer (#131b221a)
+- `ob/s/color/interaction/focus_ring/inversity_normal` - Focus ring color (#8b5cf6)
+- `ob/s/color/neutral/shadow/first` - First shadow layer (#131b220d)
+- `ob/s/color/neutral/shadow/second` - Second shadow layer (#131b221a)
 
 #### button.icon_only Tokens
 
@@ -271,7 +271,7 @@ All button components consume colors strictly from the interaction color group. 
 - Both inversity modes: normal, flipped
 
 **Neutral System:**
-- `ob/s3/color/neutral/no_color` - Transparent color (#00000000)
+- `ob/s/color/neutral/no_color` - Transparent color (#00000000)
 
 ---
 

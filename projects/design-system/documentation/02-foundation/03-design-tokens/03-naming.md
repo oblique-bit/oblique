@@ -36,7 +36,7 @@ ob.s.type.component.property.variant.state
 │  │  │    │         └─ Property (bg, fg, border, etc.)
 │  │  │    └─ Component (button, input, etc.)
 │  │  └─ Type (color, dimension, etc.)
-│  └─ Level (s1, s2, s3 for semantic layers)
+│  └─ Level (s1, s2, s for semantic layers)
 └─ Design System prefix
 ```
 
@@ -107,7 +107,7 @@ Here `shadow` (path segment) is snake_case per Oblique convention; `boxShadow` (
 
 #### **Semantic Tokens** - Describe intent  
 - **Pattern**: `ob.s{level}.{type}.{purpose}.{property}`
-- **Examples**: `ob.s3.color.primary.bg`, `ob.s1.color.critical.fg`
+- **Examples**: `ob.s.color.primary.bg`, `ob.s1.color.critical.fg`
 - **Rule**: Describe *why it's used*
 
 #### **Component Tokens** - Describe usage
@@ -146,7 +146,7 @@ This separation ensures clean abstraction levels and future-proof naming:
 ### **Correct Pattern**
 ```
 ob.p.color.transparent     → rgba(0, 0, 0, 0) (visual appearance)
-ob.s3.color.no_color      → references transparent (semantic intent)
+ob.s.color.no_color      → references transparent (semantic intent)
 ob.c.button.bg.secondary  → references no_color (component usage)
 ```
 
@@ -206,23 +206,23 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 
 ### **Valid Reference Hierarchy**
 ```
-✔️ ob.h.button.bg.primary → {ob.s3.color.primary}
-✔️ ob.s3.color.primary → {ob.p.color.blue.500}
+✔️ ob.h.button.bg.primary → {ob.s.color.primary}
+✔️ ob.s.color.primary → {ob.p.color.blue.500}
 ✔️ ob.s2.dimension.lg → {ob.p.dimension.base} * {ob.g.multiplier.dimension.lg}
-✔️ ob.c.tooltip.spacing → {ob.s3.spacing.xs}
+✔️ ob.c.tooltip.spacing → {ob.s.spacing.xs}
 ✔️ ob.s1.color.primary → {ob.p.color.blue.500} (lightness layer)
 ```
 
 ### **Invalid Reference Patterns**
 ```
 ❌ ob.h.button.bg.primary → {ob.p.color.blue.500}  (skipping semantic layer)
-❌ ob.p.color.blue.500 → {ob.s3.color.primary}      (primitive referencing semantic)
-❌ ob.s2.color.text → {ob.s3.color.primary}         (S2 referencing S3)
+❌ ob.p.color.blue.500 → {ob.s.color.primary}      (primitive referencing semantic)
+❌ ob.s2.color.text → {ob.s.color.primary}         (S2 referencing ob.s)
 ```
 
 ### **Global Token Exception**
 ```
-✔️ ob.s3.dimension.lg → {ob.g.multiplier.dimension.lg}
+✔️ ob.s.dimension.lg → {ob.g.multiplier.dimension.lg}
 ✔️ ob.c.button.padding → {ob.g.spacing.unit} * 2
 ```
 Global tokens (`ob.g.*`) can be referenced from any layer as they provide system-wide foundation values.
@@ -237,16 +237,16 @@ Style Dictionary preserves the underscore format in CSS variables, eliminating t
 ```scss
 /* Correct: Underscore format preserved */
 .button {
-  background-color: var(--ob-s3-color-primary-bg-contrast_high-inversity_normal);
+  background-color: var(--ob-s-color-primary-bg-contrast_high-inversity_normal);
   border-radius: var(--ob-c-button-border_radius-primary);
-  font-weight: var(--ob-s3-typography-font_weight-emphasis_high);
+  font-weight: var(--ob-s-typography-font_weight-emphasis_high);
 }
 ```
 
 ### **Token Studio → CSS Consistency**
-- **Token Studio**: `ob.s3.color.primary.bg.contrast_high.inversity_normal`
-- **Figma Variable**: `ob.s3.color.primary.bg.contrast_high.inversity_normal`  
-- **CSS Variable**: `--ob-s3-color-primary-bg-contrast_high-inversity_normal`
+- **Token Studio**: `ob.s.color.primary.bg.contrast_high.inversity_normal`
+- **Figma Variable**: `ob.s.color.primary.bg.contrast_high.inversity_normal`  
+- **CSS Variable**: `--ob-s-color-primary-bg-contrast_high-inversity_normal`
 
 Only the path separators change (`.` to `-`), while compound identifiers remain unchanged.
 
@@ -256,17 +256,17 @@ Only the path separators change (`.` to `-`), while compound identifiers remain 
 
 ### **Color Tokens**
 - **Structure**: `ob.{layer}.color.{color_name}.{shade}`
-- **Examples**: `ob.p.color.red.50`, `ob.s3.color.primary.bg`
+- **Examples**: `ob.p.color.red.50`, `ob.s.color.primary.bg`
 - **Modes**: Handled through S1 lightness layer (light/dark)
 
 ### **Dimension Tokens**  
 - **Structure**: `ob.{layer}.dimension.{size_name}`
-- **Examples**: `ob.p.dimension.xs`, `ob.s3.dimension.button_height`
+- **Examples**: `ob.p.dimension.xs`, `ob.s.dimension.button_height`
 - **Modes**: Handled through component-size modes (sm/md/lg)
 
 ### **Typography Tokens**
 - **Structure**: `ob.{layer}.typography.{property}.{variant}`
-- **Examples**: `ob.p.typography.font_size.lg`, `ob.s3.typography.heading.h1`
+- **Examples**: `ob.p.typography.font_size.lg`, `ob.s.typography.heading.h1`
 - **Modes**: Handled through typography-context (interface/prose)
 
 ---

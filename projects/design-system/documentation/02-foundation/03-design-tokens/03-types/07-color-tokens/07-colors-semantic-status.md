@@ -152,7 +152,7 @@ These naming choices provide:
 ## Token Structure
 
 ```
-ob.s3.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation}
+ob.s.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation}
 ```
 
 **Primitive Token Reference:** Each color value in the tables below corresponds to a primitive token from the base color palette (`ob.p.color.{color_family}.{shade}`). These primitive tokens are organized by color family (red, blue, green, orange, purple, indigo, etc.) with numbered scales from 50 (lightest) to 900 (darkest).
@@ -199,13 +199,13 @@ This applies uniformly across all 12 statuses (info, critical, resolved, attenti
 
 A badge at size `xs` displaying status `info` on a medium-contrast info background might use:
 ```
-color: var(--ob-s3-color-status-info-fg-contrast_highest-inversity_normal);
+color: var(--ob-s-color-status-info-fg-contrast_highest-inversity_normal);
 ```
 This produces near-black text (`cobalt.900`) instead of dark blue (`contrast_high`), gaining the extra contrast needed at that small size — while still referencing a token that semantically belongs to the info status group.
 
 ### Prohibited Pairing: Neutral Foreground on Status Background
 
-**Rule: Never pair neutral foreground tokens (`ob.s3.color.neutral.fg.contrast_high`, `contrast_medium`, or `contrast_low`) with status background colors.**
+**Rule: Never pair neutral foreground tokens (`ob.s.color.neutral.fg.contrast_high`, `contrast_medium`, or `contrast_low`) with status background colors.**
 
 `contrast_highest` already provides the only neutral shade that safely pairs with any status background — `cobalt.900` (#131B22) in light mode, `basic.white` (#FFFFFF) in dark mode. These are the absolute extremes of the lightness scale, which guarantees sufficient contrast against any colored background.
 
@@ -233,7 +233,7 @@ The only exception is `bg.contrast_highest`, which resolves to a neutral white/d
 
 **Why high emphasis fails on saturated backgrounds:**
 
-High-emphasis interaction tokens (e.g. `ob.s3.color.interaction.*.emphasis_high`) carry strong chromatic saturation — typically deep blues for links, vivid accent colors for buttons. When placed on a saturated status background (a red `critical`, blue `info`, or green `resolved` surface), two competing saturated hues clash:
+High-emphasis interaction tokens (e.g. `ob.s.color.interaction.*.emphasis_high`) carry strong chromatic saturation — typically deep blues for links, vivid accent colors for buttons. When placed on a saturated status background (a red `critical`, blue `info`, or green `resolved` surface), two competing saturated hues clash:
 
 - **Visual strain.** Saturated foreground on saturated background creates high chromatic tension that is hard on the eye, especially at small sizes or extended reading.
 - **Semantic collision.** The status background communicates a specific meaning (error, success, info). A vividly colored link or button introduces a second semantic signal that competes with and dilutes the status message.
@@ -597,7 +597,7 @@ This script automatically updates token descriptions with classification informa
 
 ## Free Colors — Consumer Guidance
 
-The `ob.s3.color.free.*` group contains colors that carry no fixed semantic meaning. The name communicates governance intent: these colors are free for any project-specific purpose — categorization, tagging, data visualization, priority levels, swimlane colors, etc.
+The `ob.s.color.free.*` group contains colors that carry no fixed semantic meaning. The name communicates governance intent: these colors are free for any project-specific purpose — categorization, tagging, data visualization, priority levels, swimlane colors, etc.
 
 ### Two usage patterns
 
@@ -609,8 +609,8 @@ Example: a "Documents" category badge that uses yellow purely to distinguish it 
 
 ```css
 /* Direct consumption — no semantic meaning attached */
-background: var(--ob-s3-color-free-yellow-bg-contrast-medium-inversity-normal);
-color: var(--ob-s3-color-free-yellow-fg-contrast-high-inversity-normal);
+background: var(--ob-s-color-free-yellow-bg-contrast-medium-inversity-normal);
+color: var(--ob-s-color-free-yellow-fg-contrast-high-inversity-normal);
 ```
 
 This is valid. The token path makes no claim about what the yellow means in this context.
@@ -630,7 +630,7 @@ Example: a project adds a "Pending" status and decides yellow is the right color
         "pending": {
           "fg": {
             "contrast_high": {
-              "$value": "{ob.s3.color.free.yellow.fg.contrast_high.inversity_normal}"
+              "$value": "{ob.s.color.free.yellow.fg.contrast_high.inversity_normal}"
             }
           }
         }

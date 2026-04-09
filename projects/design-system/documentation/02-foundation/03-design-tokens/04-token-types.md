@@ -258,7 +258,7 @@ The spec explicitly states that tools **must not** use groups to infer type — 
 | Figma has no variable type for `duration`, `cubicBezier`, `gradient`, `transition` | motion tokens | Applied code-only; no Figma binding possible |
 | Typography composite `$type` cannot bind to Figma variables as a whole | `typography` | Uses Figma Text Styles instead; no variable-level composite |
 | `textAlign` has no Figma variable binding | `textAlign` | Code-only; 3 tokens affected |
-| S2→S3 hierarchy violations using `ob.s3.color.neutral.no_color` in S2 | `color` | 4 tokens queued for fix |
+| S2→S3 hierarchy violations using `ob.s.color.neutral.no_color` in S2 | `color` | 4 tokens queued for fix |
 | `boxShadow` `$type` must remain exactly `boxShadow` (camelCase) | `boxShadow` | Naming exception — do not rename; triggers Figma Effect Style export. See [Tokens Studio `$type` Exceptions](./03-naming.md#tokens-studio-type-exceptions). |
 
 ---

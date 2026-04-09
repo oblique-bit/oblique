@@ -15,7 +15,7 @@ focus_ring (Utility Pattern)
 ├── Figma Implementation (Manual positioning)  
 │   ├── Manual stroke/outline visual effects
 │   └── NO-FIGMA-SUPPORT pattern (deprecated shadow tokens)
-└── Shared Color Foundation (ob.s3.color.interaction.focus_ring.*)
+└── Shared Color Foundation (ob.s.color.interaction.focus_ring.*)
     ├── Normal inversity color values
     └── Flipped inversity color values
 ```
@@ -47,7 +47,7 @@ The focus ring component leverages oblique's hierarchical token architecture:
   "inversity_normal": {
     "$type": "border",
     "$value": {
-      "color": "{ob.s3.color.interaction.focus_ring.inversity_normal}",
+      "color": "{ob.s.color.interaction.focus_ring.inversity_normal}",
       "width": "{ob.s.border_width.md}",
       "style": "solid"
     }
@@ -77,7 +77,7 @@ The focus ring component leverages oblique's hierarchical token architecture:
 
 **Color Foundation**:
 ```json
-"ob.s3.color.interaction.focus_ring": {
+"ob.s.color.interaction.focus_ring": {
   "inversity_normal": "{ob.p.color.purple.500}",
   "inversity_flipped": "{ob.p.color.purple.300}"
 }
@@ -89,7 +89,7 @@ The focus ring component leverages oblique's hierarchical token architecture:
   "inversity_normal": {
     "$type": "border",
     "$value": {
-      "color": "{ob.s3.color.interaction.focus_ring.inversity_normal}",
+      "color": "{ob.s.color.interaction.focus_ring.inversity_normal}",
       "width": "{ob.s.border_width.md}",
       "style": "solid"
     }
@@ -124,8 +124,8 @@ Since Figma doesn't support `outline-offset` equivalent as variables, focus ring
 ```json
 "ob.c.tag.filter_mode.focus_ring": {
   "color": {
-    "enabled": "{ob.s3.color.interaction.focus_ring.inversity_normal}",
-    "active": "{ob.s3.color.interaction.focus_ring.inversity_flipped}"
+    "enabled": "{ob.s.color.interaction.focus_ring.inversity_normal}",
+    "active": "{ob.s.color.interaction.focus_ring.inversity_flipped}"
   }
 }
 ```
@@ -173,7 +173,7 @@ Since Figma doesn't support `outline-offset` equivalent as variables, focus ring
   outline-offset: 2px;
   
   /* Backup for browsers that suppress outline */
-  box-shadow: 0 0 0 3px var(--ob-s3-color-interaction-focus-ring-inversity-normal);
+  box-shadow: 0 0 0 3px var(--ob-s-color-interaction-focus-ring-inversity-normal);
 }
 ```
 

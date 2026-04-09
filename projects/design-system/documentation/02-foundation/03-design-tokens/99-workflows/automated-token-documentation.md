@@ -57,7 +57,7 @@ Output format:
 {
   "_meta": { "modes": { "light-high": { "combo": [...], "tokenCount": 1768 }, ... } },
   "tokens": {
-    "ob.s3.color.neutral.fg.contrast_highest.inversity_normal": {
+    "ob.s.color.neutral.fg.contrast_highest.inversity_normal": {
       "type": "color",
       "modes": {
         "light-high": "#131b22",
@@ -79,7 +79,7 @@ Open the Figma file designated for token documentation. Ensure the Desktop Bridg
 Use prompts like:
 
 ```
-Create a color documentation page in Figma for all ob.s3.color.neutral tokens.
+Create a color documentation page in Figma for all ob.s.color.neutral tokens.
 Use the resolved tokens from _private/resolved-tokens.json.
 Template: swatch (24x24) + token path + hex value, grouped by sub-category.
 ```
@@ -121,7 +121,7 @@ All values below use Figma variable bindings — no hardcoded values.
 
 ```
 Living Documentation (FRAME, vertical auto-layout)
- └─ Token Set: ob.s3.color.neutral (FRAME, vertical auto-layout)
+ └─ Token Set: ob.s.color.neutral (FRAME, vertical auto-layout)
      ├─ Set Heading (FRAME, horizontal)
      │   ├─ __setName (TEXT, lgStrong style, fgHighest color)
      │   └─ __tokenCount (TEXT, smNormal style, fgMedium color)
@@ -151,7 +151,7 @@ Living Documentation (FRAME, vertical auto-layout)
 |----------|-------|---------------|
 | Swatch size | 24×24 | Fixed |
 | Swatch corner radius | 4px | Fixed |
-| Swatch border | 0.5px | `ob/s3/color/neutral/border/medium` |
+| Swatch border | 0.5px | `ob/s/color/neutral/border/medium` |
 | Token name style | xs/strong | Text Style `S:69cff5a0...` |
 | Reference style | xs/normal | Text Style `S:bcfb9064...` |
 | Hex value style | xs/normal | Text Style `S:bcfb9064...` |
@@ -177,7 +177,7 @@ Living Documentation (FRAME, vertical auto-layout)
 | `ob.p.color.*` | ~130 | Primitives — base palette |
 | `ob.s1.color.*` | ~273 | S1 — lightness variants |
 | `ob.s2.color.*` | ~28 | S2 — emphasis variants |
-| `ob.s3.color.*` | ~255 | S3 — semantic colors |
+| `ob.s.color.*` | ~255 | ob.s — compiled semantic colors |
 | `ob.h.*.color.*` | ~85 | HTML element colors |
 | `ob.c.*.color.*` | ~111 | Component colors |
 

@@ -52,9 +52,9 @@ Application Layers:
 ```
 
 ### **Reference Hierarchy Rules**
-1. **Components consume S3** - Primary consumption layer for component tokens
+1. **Components consume ob.s** - Primary consumption layer for component tokens
 2. **Never consume primitives directly** - Components must never reference `ob.p.*` tokens
-3. **S2/S3 reference S1 directly** - Simplified reference chain: S2→S1→Primitive, S3→S1→Primitive  
+3. **S2/ob.s reference S1 directly** - Simplified reference chain: S2→S1→Primitive, ob.s→S1→Primitive  
 4. **S1 handles theme switching** - Light/dark themes resolved at S1 level
 5. **Global tokens exception** - `ob.g.*` tokens can be referenced from any level
 
@@ -63,21 +63,21 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 
 ---
 
-## **Semantic Layer System (S1/S2/S3)**
+## **Semantic Layer System (S1/S2/ob.s)**
 
 ### **S1: Lightness Layer**
 - **Purpose**: Light/dark theme switching
 - **Files**: `light.json`, `dark.json`  
 - **References**: Direct primitive consumption
-- **Usage**: Referenced by S2 and S3, never consumed directly by components
+- **Usage**: Referenced by S2 and ob.s, never consumed directly by components
 
 ### **S2: Emphasis Layer**  
 - **Purpose**: High/low emphasis variations
 - **Files**: `high.json`, `low.json`
 - **References**: S1 lightness tokens  
-- **Usage**: Non-interactive components, fallback for missing S3 tokens
+- **Usage**: Non-interactive components, fallback for missing ob.s tokens
 
-### **S3: Compilation Layer**
+### **ob.s: Compilation Layer**
 - **Purpose**: Complete semantic color collection (no modes)
 - **Files**: `semantic.json` 
 - **References**: S1 lightness tokens
@@ -85,9 +85,9 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 
 ### **Reference Chain Simplification**
 ```
-Before (Complex): S3 → S2 → S1 → Primitive
+Before (Complex): ob.s → S2 → S1 → Primitive
 After (Simple):   S2 → S1 → Primitive
-                  S3 → S1 → Primitive
+                  ob.s → S1 → Primitive
 ```
 
 **Benefits:**
@@ -102,7 +102,7 @@ After (Simple):   S2 → S1 → Primitive
 
 ### **Color Tokens**
 - **Structure**: `ob.{layer}.color.{color_name}.{shade}`
-- **Examples**: `ob.p.color.red.50`, `ob.s3.color.primary.bg`
+- **Examples**: `ob.p.color.red.50`, `ob.s.color.primary.bg`
 - **Modes**: Handled through S1 lightness layer (light/dark)
 
 ### **Spacing Tokens**  
