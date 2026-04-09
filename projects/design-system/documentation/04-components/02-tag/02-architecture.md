@@ -11,7 +11,7 @@ The Tag component provides **interactive form categorization** across the Obliqu
 Tag Component
 ├── Surface Container (min_height tokens)
 ├── Content Area
-│   ├── Icon (optional, icon_slot pattern)
+│   ├── Icon (optional, icon pattern)
 │   ├── Text Label (typography tokens)
 │   └── Remove Button (tag.input_mode only)
 ├── Component Modes
@@ -69,11 +69,11 @@ Tag Component
 Tag demonstrates **component composition** following the babushka principle:
 
 ```
-icon_slot (foundational) → button (interactive) → tag (specialized)
+icon (foundational) → button (interactive) → tag (specialized)
 ```
 
 **Inheritance Chain**:
-1. **icon_slot**: Base icon sizing and display patterns
+1. **icon**: Base icon sizing and display patterns
 2. **button**: Interactive states, focus management, accessibility
 3. **tag**: Form-specific behaviors, removal actions, input integration
 
@@ -133,7 +133,7 @@ Tag sizes align with **babushka sizing principle** providing appropriate scale f
 - **Large (lg)**: Prominent forms, accessibility-focused interfaces, touch targets
 
 **Technical Benefits**:
-- Automatic icon scaling through icon_slot inheritance
+- Automatic icon scaling through icon inheritance
 - Typography scale consistency with button and input components
 - Proportional spacing maintained across all interaction states
 

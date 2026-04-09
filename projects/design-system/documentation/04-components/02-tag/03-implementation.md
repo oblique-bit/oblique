@@ -400,7 +400,7 @@ export class AccessibleFilterTagComponent {
 
 ### Bundle Size
 - Component size: ~3KB minified + gzipped
-- Dependencies: ObIconComponent (inherited from icon_slot)
+- Dependencies: ObIconComponent (inherited from icon)
 - Tree-shaking: Full support for unused size variants
 
 ### improvement Tips
@@ -510,7 +510,7 @@ describe('Tag Input Integration', () => {
 
 **Icon sizing inconsistency**
 - **Problem:** Icons appear too large or small relative to tag size
-- **Solution:** Verify icon_slot tokens are properly inherited and ob.c.tag.icon.size.* tokens are correctly defined
+- **Solution:** Verify icon tokens are properly inherited and ob.c.tag.icon.size.* tokens are correctly defined
 
 **Performance issues with many tags**
 - **Problem:** Slow rendering with large tag collections
@@ -552,7 +552,7 @@ export class DebugTagComponent {
 - [Tag Component Overview](01-overview.md) - Component introduction and use cases
 - [Tag Architecture](02-architecture.md) - Technical design and token structure  
 - [Tag Guidelines](04-guidelines.md) - Usage patterns and standard practices
-- [Icon Slot Component](../00-icon_slot/) - Foundation component for icon integration
+- [Icon Slot Component](../00-icon/) - Foundation component for icon integration
 - **Problem:** {PROBLEM_DESCRIPTION_2}  
 - **Solution:** {SOLUTION_2}
 

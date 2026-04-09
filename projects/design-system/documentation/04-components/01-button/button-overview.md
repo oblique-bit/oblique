@@ -245,7 +245,7 @@ All button components consume colors strictly from the interaction color group. 
 **Layout & Spacing:**
 - `ob/h/button/icon_only/spacing/padding/horizontal` - Horizontal padding (6px)
 - `ob/h/button/icon_only/spacing/padding/vertical` - Vertical padding (6px)
-- `ob/c/icon_slot/size_proportional/standard` - Icon size (24px)
+- `ob/c/icon/size_proportional/standard` - Icon size (24px)
 
 **Visual Properties:**
 - `ob/h/button/border_radius` - Border radius (1px)
@@ -260,7 +260,7 @@ All button components consume colors strictly from the interaction color group. 
 #### button.remove Tokens
 
 **Layout & Spacing:**
-- `ob/c/icon_slot/size_proportional/mini` - Icon size (16px)
+- `ob/c/icon/size_proportional/mini` - Icon size (16px)
 - Component size: 16×16px (compact square)
 
 **Color System:**

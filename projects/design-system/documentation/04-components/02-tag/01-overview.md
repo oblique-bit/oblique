@@ -80,7 +80,7 @@ Avoid using the tag component when:
 
 Tags demonstrate **intermediate complexity** in the babushka sizing hierarchy:
 
-1. **icon_slot** → foundational icon management *(inherits from)*
+1. **icon** → foundational icon management *(inherits from)*
 2. **button** → interactive behaviors *(inherits from)*  
 3. **tag** → specialized form input behavior *(this component)*
 4. **input_text** → complex field management *(builds upon)*
@@ -92,7 +92,7 @@ Tags inherit sizing and interactive patterns from button while providing special
 ### Core Features
 - **Removable functionality**: Each tag can be individually deleted
 - **Size variants**: Small (sm), Medium (md), Large (lg) following token hierarchy
-- **Icon integration**: Optional icons using icon_slot patterns
+- **Icon integration**: Optional icons using icon patterns
 - **Keyboard navigation**: Full accessibility support for form inputs
 - **State management**: Enabled, hover, focus, active, disabled states
 
@@ -167,7 +167,7 @@ This component uses design tokens for:
 - **Typography scaling**: ob.c.tag.typography.size.* following type scale
 - **Spacing harmony**: ob.c.tag.spacing.* for internal padding and gaps
 - **Color semantics**: ob.c.tag.color.* for neutral, accessible palettes
-- **Icon integration**: ob.c.tag.icon.size.* coordinated with icon_slot tokens
+- **Icon integration**: ob.c.tag.icon.size.* coordinated with icon tokens
 
 ## Related Components
 
