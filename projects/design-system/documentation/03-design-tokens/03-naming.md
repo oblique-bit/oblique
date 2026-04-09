@@ -2,7 +2,7 @@
 
 **Purpose**: Comprehensive naming standards and patterns for design tokens  
 **Audience**: Design system maintainers, developers, designers  
-**Related**: [Architecture](./02-architecture.md) | [Token Types](./01-token-types.md)
+**Related**: [Architecture](./02-architecture.md) | [Token Types](./04-token-types.md)
 
 ---
 
@@ -12,28 +12,30 @@
 
 **Semantic Token Pattern:**
 ```
-ob.{semantic_level}.{category}.{subcategory}.{property}.{variant}
+ob.{semantic_level}.{type}.{category}.{property}.{variant}
 ```
 
 **Component Token Pattern:**
 ```
-ob.{component_level}.{component}.{category}.{property}.{variant}.{state}
+ob.{component_level}.{component}.{type}.{property}.{variant}.{state}
 ```
 
 **Global Token Pattern:**
 ```
-ob.g.{category}.{property}.{variant}
+ob.g.{type}.{property}.{variant}
 ```
+
+The `{type}` segment identifies the token's data type (`color`, `dimension`, `typography`, etc.) and must be present in every token path. For the full list of valid types, their mapping to `$type` in JSON, and tooling compatibility, see [Token Types](./04-token-types.md).
 
 ### **Standard Token Hierarchy**
 ```
-ob.s.category.component.property.variant.state
-│  │  │       │         │        │       │
-│  │  │       │         │        │       └─ State (hover, focus, active)
-│  │  │       │         │        └─ Variant (primary, secondary, etc.)
-│  │  │       │         └─ Property (bg, fg, border, etc.)
-│  │  │       └─ Component (button, input, etc.)
-│  │  └─ Category (color, dimension, etc.)
+ob.s.type.component.property.variant.state
+│  │  │    │         │        │       │
+│  │  │    │         │        │       └─ State (hover, focus, active)
+│  │  │    │         │        └─ Variant (primary, secondary, etc.)
+│  │  │    │         └─ Property (bg, fg, border, etc.)
+│  │  │    └─ Component (button, input, etc.)
+│  │  └─ Type (color, dimension, etc.)
 │  └─ Level (s1, s2, s3 for semantic layers)
 └─ Design System prefix
 ```
@@ -54,12 +56,12 @@ ob.s.category.component.property.variant.state
 ### **Layer-Specific Patterns**
 
 #### **Primitive Tokens** - Describe appearance
-- **Pattern**: `ob.p.{category}.{name}.{variation}`
+- **Pattern**: `ob.p.{type}.{name}.{variation}`
 - **Examples**: `ob.p.color.red.50`, `ob.p.dimension.base`
 - **Rule**: Describe *what it looks like*
 
 #### **Semantic Tokens** - Describe intent  
-- **Pattern**: `ob.s{level}.{category}.{purpose}.{property}`
+- **Pattern**: `ob.s{level}.{type}.{purpose}.{property}`
 - **Examples**: `ob.s3.color.primary.bg`, `ob.s1.color.critical.fg`
 - **Rule**: Describe *why it's used*
 
@@ -84,6 +86,8 @@ When this happens, document the mapping explicitly:
 - `static` -> `ob.c.icon_slot.static.*`
 - `component` -> `ob.c.icon_slot.component.*`
 - `inline_text` -> `ob.c.icon_slot.inline_text.*`
+
+> **`inline_text` spacing note**: The horizontal gap between the icon and adjacent text is provided by a literal space character inserted by the consumer (`<ob-icon/> label`). This spacing is font-metric-driven (space glyph width) and cannot be tokenized. Token-driven gap control would require a flex container, which changes the layout contract from inline to block—not appropriate for inline text flow.
 
 ---
 
