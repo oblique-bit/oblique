@@ -60,7 +60,7 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 2},
+				{tag: 'h2', number: 3},
 				{tag: 'h3', number: 2},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
@@ -124,7 +124,7 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 2},
+				{tag: 'h2', number: 3},
 				{tag: 'h3', number: 3},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
@@ -187,7 +187,7 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 2},
+				{tag: 'h2', number: 3},
 				{tag: 'h3', number: 2},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},
@@ -262,7 +262,7 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('template', () => {
 			test.each([
 				{tag: 'h1', number: 1},
-				{tag: 'h2', number: 2},
+				{tag: 'h2', number: 3},
 				{tag: 'h3', number: 3},
 				{tag: 'h4', number: 2},
 				{tag: 'h5', number: 0},

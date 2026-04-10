@@ -1,5 +1,6 @@
-<h1>{{ "i18n.oblique.accessibility-statement.accessibility-in-the-federal-administration" | translate }}</h1>
+<h1>{{ "i18n.oblique.accessibility-statement.statement.title" | translate }}</h1>
 <p>{{ "i18n.oblique.accessibility-statement.information-and-services" | translate }}</p>
+<h2>{{ "i18n.oblique.accessibility-statement.accessibility-in-the-federal-administration" | translate }}</h2>
 <p>
 	{{ "i18n.oblique.accessibility-statement.the-federal-administration-strives.text-before-link" | translate }}
 	<a
@@ -15,7 +16,7 @@
 <p class="ob-list-title">{{ "i18n.oblique.accessibility-statement.provisions.text" | translate }}</p>
 <ul [innerHtml]="'i18n.oblique.accessibility-statement.provisions.items' | translate"></ul>
 
-<h2>{{ "i18n.oblique.accessibility-statement.statement.title" | translate }}</h2>
+<h2>{{ "i18n.oblique.accessibility-statement.statement.application-accessibility" | translate }}</h2>
 <p [innerHTML]="'i18n.oblique.accessibility-statement.statement.text' | obTranslateParams: statementParameters"></p>
 
 @if (exceptions.length > 0) {
