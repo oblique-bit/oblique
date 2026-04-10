@@ -194,13 +194,14 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 			element.scrollIntoView({behavior: 'smooth'});
 		}
 		element.focus({preventScroll: true});
-		if (document.activeElement !== element && isDevMode()) {
+		if (document.activeElement !== element) {
 			element.setAttribute('tabindex', '-1');
 			element.focus({preventScroll: true});
-
-			console.info(
-				`The element: ${this.createElementDescription(element)} is not focusable. Oblique added a tabindex in order to make it focusable.`
-			);
+			if (isDevMode()) {
+				console.info(
+					`The element: ${this.createElementDescription(element)} is not focusable. Oblique added a tabindex in order to make it focusable.`
+				);
+			}
 		}
 	}
 
