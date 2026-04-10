@@ -433,8 +433,8 @@
       "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6",
       "ob.h.button.container.spacing.gap": "e0f8474f4d03d3d891297010ab3bce86aab9b563",
       "ob.h.button.touch_target.min_size": "e04650bc2461769aeb18867faf7f43e82c412801",
-      "ob.c.infobox.size.icon_size": "07e279e3d5fbcd313cc46be37021d8f46b3b48c1",
-      "ob.c.infobox.size.close_button_size": "902a8d0c8ad957051c6535642bbeba889c042be6"
+      "ob.c.infobox.size.icon_size": "b76d4c9b8bbd96c1ae5be8fa9108e2bec75566c0",
+      "ob.c.infobox.size.close_button_size": "389e0f7c4b78d96105e4fca06b0f0e972e21ee5c"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -716,7 +716,7 @@
       "ob.c.infobox.color.fg.resolved": "98653c0d31e9c211441ab182424ea39e52ef96f3",
       "ob.c.infobox.color.fg.fatal": "fa72398bd8e19b36158335830b6f8b91056b5362"
     },
-    "group": "s1-lightness"
+    "group": "s1_lightness"
   },
   {
     "id": "ce28bc429f67b042f21d44ea8744f4a9409b2c77",
@@ -994,7 +994,7 @@
       "ob.c.infobox.color.fg.resolved": "98653c0d31e9c211441ab182424ea39e52ef96f3",
       "ob.c.infobox.color.fg.fatal": "fa72398bd8e19b36158335830b6f8b91056b5362"
     },
-    "group": "s1-lightness"
+    "group": "s1_lightness"
   },
   {
     "id": "f2d909efb2ab1aae1de104db99d4e047d72ccf0f",
@@ -1035,7 +1035,7 @@
     },
     "$figmaCollectionId": "VariableCollectionId:1:5",
     "$figmaModeId": "1:5",
-    "group": "s2-emphasis"
+    "group": "s2_emphasis"
   },
   {
     "id": "daee0049718efa9352d42c884e67716c9ae0401e",
@@ -1076,7 +1076,7 @@
     },
     "$figmaCollectionId": "VariableCollectionId:1:5",
     "$figmaModeId": "1:6",
-    "group": "s2-emphasis"
+    "group": "s2_emphasis"
   },
   {
     "id": "3d74d3ddefef678ceb2786609e45b7535d105271",
@@ -1660,7 +1660,7 @@
       "ob.s.dimension.dynamic.component_size.macro.sm.px": "f1da2800955b4a90a449dc2c1f62125587fb4f6c",
       "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483"
     },
-    "group": "component-size"
+    "group": "component_size"
   },
   {
     "id": "comp-size-sm-2025-09-12-multipliers",
@@ -1788,7 +1788,7 @@
       "ob.s.dimension.dynamic.component_size.macro.sm.px": "f1da2800955b4a90a449dc2c1f62125587fb4f6c",
       "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483"
     },
-    "group": "component-size"
+    "group": "component_size"
   },
   {
     "id": "comp-size-lg-2025-09-12-multipliers",
@@ -1916,7 +1916,7 @@
       "ob.s.dimension.dynamic.component_size.macro.sm.px": "f1da2800955b4a90a449dc2c1f62125587fb4f6c",
       "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483"
     },
-    "group": "component-size"
+    "group": "component_size"
   },
   {
     "id": "interface-context",
@@ -2020,7 +2020,7 @@
     },
     "$figmaCollectionId": "VariableCollectionId:6191:6284",
     "$figmaModeId": "6191:0",
-    "group": "typography-context"
+    "group": "typography_context"
   },
   {
     "id": "prose-context",
@@ -2124,7 +2124,7 @@
     },
     "$figmaCollectionId": "VariableCollectionId:6191:6284",
     "$figmaModeId": "6191:1",
-    "group": "typography-context"
+    "group": "typography_context"
   },
   {
     "id": "0096570dee3e6a2c72234af4cf22dd14d312e96b",
@@ -2167,7 +2167,7 @@
       "ob.s.dimension.dynamic.density.11xl.px": "f952df93d4968401e1667683b6fd917b9222ab7a",
       "ob.s.dimension.dynamic.density.11xl.rem": "ea699ebf27039529196377bec9cd2274c404f1be"
     },
-    "group": "density"
+    "group": "data_density"
   },
   {
     "id": "c4bd451da3d84f26703866a388fea7360d25250b",
@@ -2210,7 +2210,7 @@
       "ob.s.dimension.dynamic.density.11xl.px": "f952df93d4968401e1667683b6fd917b9222ab7a",
       "ob.s.dimension.dynamic.density.11xl.rem": "ea699ebf27039529196377bec9cd2274c404f1be"
     },
-    "group": "density"
+    "group": "data_density"
   },
   {
     "id": "6543fe5b4ff427b2c49eacd6181a0ecca7470917",
@@ -2253,7 +2253,7 @@
       "ob.s.dimension.dynamic.density.11xl.px": "f952df93d4968401e1667683b6fd917b9222ab7a",
       "ob.s.dimension.dynamic.density.11xl.rem": "ea699ebf27039529196377bec9cd2274c404f1be"
     },
-    "group": "density"
+    "group": "data_density"
   },
   {
     "id": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",

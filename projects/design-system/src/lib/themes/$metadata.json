@@ -103,7 +103,7 @@
     "doc/03_semantic/color/s1_lightness/light",
     "doc/03_semantic/color/s2_emphasis/high",
     "doc/03_semantic/color/s2_emphasis/low",
-    "doc/03_semantic/color/compiled",
+    "doc/03_semantic/color/s3_semantic/semantic",
     "doc/03_semantic/dimension/component_size/lg",
     "doc/03_semantic/dimension/component_size/md",
     "doc/03_semantic/dimension/component_size/sm",
