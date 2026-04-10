@@ -90,7 +90,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 
 	private broadcast(): ObIHttpApiRequest {
 		const evt: ObIHttpApiRequest = {
-			notification: this.config.api.notification,
+			notification: {...this.config.api.notification},
 			spinner: this.config.api.spinner,
 			spinnerChannel: this.config.api.spinnerChannel,
 		};
