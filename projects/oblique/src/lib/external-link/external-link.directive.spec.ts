@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconRegistry} from '@angular/material/icon';
 import {By} from '@angular/platform-browser';
@@ -14,9 +14,19 @@ import {EXTERNAL_LINK} from './external-link.model';
 })
 class TestComponent {}
 
+@Component({
+	imports: [ObExternalLinkDirective],
+	standalone: true,
+	template: `<a href="http://www.google.ch" [rel]="rel" [target]="target">External Link</a>`,
+})
+class BoundAttributeTestComponent {
+	@Input() rel: string | null | undefined;
+	@Input() target: string | null | undefined;
+}
+
 describe(ObExternalLinkDirective.name, () => {
 	let directive: ObExternalLinkDirective;
-	let fixture: ComponentFixture<TestComponent>;
+	let fixture: ComponentFixture<TestComponent | BoundAttributeTestComponent>;
 	let element: HTMLElement;
 	let translate: TranslateService;
 	const lang = new Subject<void>();
@@ -46,7 +56,6 @@ describe(ObExternalLinkDirective.name, () => {
 
 	describe('With default configuration', () => {
 		beforeEach(() => {
-			fixture = TestBed.createComponent(TestComponent);
 			globalSetup();
 			subject.next('Opens in new tab');
 			translate = TestBed.inject(TranslateService);
@@ -86,54 +95,60 @@ describe(ObExternalLinkDirective.name, () => {
 		});
 
 		describe('rel attribute', () => {
+			beforeEach(() => {
+				fixture = TestBed.createComponent(BoundAttributeTestComponent);
+				fixture.detectChanges();
+				const debugElement = fixture.debugElement.query(By.css('a'));
+				element = debugElement.nativeElement;
+			});
+
 			it('should be noopener noreferrer when undefined', () => {
-				directive.rel = undefined;
-				directive.ngOnChanges();
+				fixture.componentRef.setInput('rel', undefined);
 				fixture.detectChanges();
 				expect(element.getAttribute('rel')).toBe('noopener noreferrer');
 			});
 			it('should be noopener noreferrer when null', () => {
-				directive.rel = null;
-				directive.ngOnChanges();
+				fixture.componentRef.setInput('rel', null);
 				fixture.detectChanges();
 				expect(element.getAttribute('rel')).toBe('noopener noreferrer');
 			});
 			it('should not be present if empty', () => {
-				directive.rel = '';
-				directive.ngOnChanges();
+				fixture.componentRef.setInput('rel', '');
 				fixture.detectChanges();
 				expect(element.getAttribute('rel')).toBe(null);
 			});
 			it('should be the given value', () => {
-				directive.rel = 'test';
-				directive.ngOnChanges();
+				fixture.componentRef.setInput('rel', 'test');
 				fixture.detectChanges();
 				expect(element.getAttribute('rel')).toBe('test');
 			});
 		});
 
 		describe('target attribute', () => {
+			beforeEach(() => {
+				fixture = TestBed.createComponent(BoundAttributeTestComponent);
+				fixture.detectChanges();
+				const debugElement = fixture.debugElement.query(By.css('a'));
+				element = debugElement.nativeElement;
+			});
+
 			it('should be _blank when undefined', () => {
-				directive.target = undefined;
-				directive.ngOnChanges();
+				fixture.componentRef.setInput('target', undefined);
 				fixture.detectChanges();
 				expect(element.getAttribute('target')).toBe('_blank');
 			});
 			it('should be _blank when null', () => {
-				directive.target = null;
-				directive.ngOnChanges();
+				fixture.componentRef.setInput('target', null);
 				fixture.detectChanges();
 				expect(element.getAttribute('target')).toBe('_blank');
 			});
 			it('should not be present if empty', () => {
-				directive.target = '';
-				directive.ngOnChanges();
+				fixture.componentRef.setInput('target', '');
 				fixture.detectChanges();
 				expect(element.getAttribute('target')).toBe(null);
 			});
 			it('should be the given value', () => {
-				directive.target = 'test';
-				directive.ngOnChanges();
+				fixture.componentRef.setInput('target', 'test');
 				fixture.detectChanges();
 				expect(element.getAttribute('target')).toBe('test');
 			});
@@ -333,5 +348,6 @@ describe(ObExternalLinkDirective.name, () => {
 		const debugElement = fixture.debugElement.query(By.css('a'));
 		element = debugElement.nativeElement;
 		directive = debugElement.injector.get(ObExternalLinkDirective, null);
+		translate = TestBed.inject(TranslateService);
 	}
 });
