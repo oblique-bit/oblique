@@ -1,6 +1,6 @@
 {
   "name": "@oblique/service-navigation-web-component",
-  "version": "15.2.0",
+  "version": "15.2.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },
@@ -18,6 +18,6 @@
     "service-navigation-web-component"
   ],
   "devDependencies": {
-    "@angular/elements": "^21.1.0"
+    "@angular/elements": "^21.2.6"
   }
 }

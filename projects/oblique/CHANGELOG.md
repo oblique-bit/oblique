@@ -1,3 +1,10 @@
+# [15.2.1](https://github.com/oblique-bit/oblique/compare/15.2.0...15.2.1) (2026-04-13)
+
+## Bug Fixes
+
+- **master-layout:** show focus ring over active menu items ([97e223fe](https://github.com/oblique-bit/oblique/commit/97e223fe89392630cfa0dbba7fbb1bf48023cabc), OUI-4397)
+- **material:** allow multi-line labels in vertical stepper ([87266ebd](https://github.com/oblique-bit/oblique/commit/87266ebdaa9fa7b63267370e1febf586559dff78), OUI-4299)
+
 # [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
 
 ## Features

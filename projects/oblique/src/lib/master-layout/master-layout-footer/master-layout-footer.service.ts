@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
 import {ObMasterLayoutConfig} from '../master-layout.config';
@@ -10,10 +10,11 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 export class ObMasterLayoutFooterService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	private readonly events = new Subject<ObIMasterLayoutEvent>();
+	private readonly config = inject(ObMasterLayoutConfig);
 	private isCustomInternal = this.config.footer.isCustom;
 	private isStickyInternal = this.config.footer.isSticky;
 
-	constructor(private readonly config: ObMasterLayoutConfig) {
+	constructor() {
 		this.configEvents$ = this.events.asObservable();
 	}
 

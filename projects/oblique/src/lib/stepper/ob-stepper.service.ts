@@ -1,10 +1,12 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {MatStepperIntl} from '@angular/material/stepper';
 import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
 export class ObStepperIntlService extends MatStepperIntl {
-	constructor(private readonly translateService: TranslateService) {
+	private readonly translateService = inject(TranslateService);
+
+	constructor() {
 		super();
 		this.initTranslation();
 	}

@@ -51,8 +51,7 @@ export class Changelog extends StaticScript {
 		const separator = ';;';
 		const commitSeparator = '##';
 		return Git.listCommits(['subject', 'body', 'hash'], separator, commitSeparator, from, to)
-			.replace(/\n/g, '')
-			.split(commitSeparator)
+			.split(`${commitSeparator}\n`)
 			.filter(
 				commit =>
 					new RegExp(String.raw`^(?:fix|feat)\(${projectName}(?:/[a-z-]+)?\)`).test(commit) ||
@@ -123,7 +122,7 @@ export class Changelog extends StaticScript {
 
 	private static parseCommit(commit: string, separator: string): Commit {
 		const {type, scope, subject, breakingChanges, hash, issues} = new RegExp(
-			String.raw`(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>[^${separator}]*)${separator}(?<issues>[^${separator}]*\s?\w*?-\d*,?\s?)*.*?(?:BREAKING CHANGE:(?<breakingChanges>[^${separator}]*))?${separator}(?<hash>\w*)`
+			String.raw`(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>[^${separator}]*)${separator}(?:[\s\S]*?\n\n)?(?<issues>\w+-\d+(?:,\s?\w+-\d+)*)?(?:\nBREAKING CHANGE:(?<breakingChanges>[^${separator}]*))?\n${separator}(?<hash>\w*)`
 		).exec(commit).groups;
 		return {type, scope, subject, breakingChanges, hash, issues} as Commit;
 	}

@@ -4,15 +4,14 @@ import {
 	ContentChildren,
 	ElementRef,
 	EventEmitter,
-	Inject,
 	Input,
 	OnDestroy,
-	Optional,
 	Output,
 	QueryList,
 	TemplateRef,
 	ViewChildren,
 	ViewEncapsulation,
+	inject,
 } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
@@ -44,25 +43,26 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 })
 export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	home$: Observable<string>;
-	isCustom = this.masterLayout.header.isCustom;
+	isCustom: boolean;
 	banner: ObIBanner;
 	serviceNavigationConfig: ObIServiceNavigationConfig;
 	@Input() navigation: ObINavigationLink[];
 	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
-	isSmall = this.masterLayout.header.isSmall;
+	isSmall: boolean;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
 	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<unknown>>;
 	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<unknown>>;
 	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
 	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
+	readonly pamsConfiguration = inject<ObIPamsConfiguration>(OB_PAMS_CONFIGURATION, {optional: true});
 	private readonly unsubscribe = new Subject<void>();
+	private readonly masterLayout = inject(ObMasterLayoutService);
+	private readonly config = inject(ObMasterLayoutConfig);
 
-	constructor(
-		private readonly masterLayout: ObMasterLayoutService,
-		private readonly config: ObMasterLayoutConfig,
-		@Inject(OB_BANNER) @Optional() bannerToken: ObIBanner,
-		@Inject(OB_PAMS_CONFIGURATION) @Optional() public readonly pamsConfiguration: ObIPamsConfiguration
-	) {
+	constructor() {
+		this.isCustom = this.masterLayout.header.isCustom;
+		this.isSmall = this.masterLayout.header.isSmall;
+		const bannerToken = inject<ObIBanner>(OB_BANNER, {optional: true});
 		this.customChange();
 		this.smallChange();
 		this.serviceNavigationConfiguration();

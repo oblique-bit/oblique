@@ -1,4 +1,4 @@
-import {Directive, Input, OnInit} from '@angular/core';
+import {Directive, Input, OnInit, inject} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
 import {ObSchemaValidationService} from './schema-validation.service';
 import {ObSchemaValidatorInstance} from './schema-validator.instance';
@@ -13,8 +13,7 @@ import {ObSchemaValidatorInstance} from './schema-validator.instance';
 export class ObSchemaValidationDirective implements OnInit {
 	@Input('obSchemaValidation') schema: any;
 	private validator: ObSchemaValidatorInstance;
-
-	constructor(private readonly schemaValidationService: ObSchemaValidationService) {}
+	private readonly schemaValidationService = inject(ObSchemaValidationService);
 
 	ngOnInit(): void {
 		this.validator = this.schemaValidationService.compileSchema(this.schema);

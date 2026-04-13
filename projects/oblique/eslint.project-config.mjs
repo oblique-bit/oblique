@@ -31,7 +31,6 @@ export default [
 			'@angular-eslint/component-max-inline-declarations': 'off',
 			'@angular-eslint/consistent-component-styles': 'off',
 			'@angular-eslint/no-duplicates-in-metadata-arrays': 'off',
-			'@angular-eslint/prefer-inject': 'off',
 			'@angular-eslint/prefer-output-emitter-ref': 'off',
 			'@angular-eslint/prefer-signals': 'off',
 			'@angular-eslint/prefer-standalone': 'off',

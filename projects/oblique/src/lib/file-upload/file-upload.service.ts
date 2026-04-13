@@ -6,7 +6,7 @@ import {
 	HttpRequest,
 	HttpUserEvent,
 } from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {Observable, Subject, of} from 'rxjs';
 import {catchError, filter} from 'rxjs/operators';
 import {ObNotificationService} from '../notification/notification.service';
@@ -17,11 +17,10 @@ export class ObFileUploadService {
 	public uploadComplete$: Observable<void>;
 	private readonly uploadComplete = new Subject<void>();
 	private readonly events = [HttpEventType.UploadProgress, HttpEventType.Response];
+	private readonly httpClient = inject(HttpClient);
+	private readonly notification = inject(ObNotificationService);
 
-	constructor(
-		private readonly httpClient: HttpClient,
-		private readonly notification: ObNotificationService
-	) {
+	constructor() {
 		this.uploadComplete$ = this.uploadComplete.asObservable();
 	}
 

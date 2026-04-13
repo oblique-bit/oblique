@@ -4,7 +4,8 @@ import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {TranslationsExampleStackblitzLinkPreviewComponent} from '../translations/previews/stackblitz-link/translations-example-stackblitz-link-preview.component';
+import {TranslationsExampleStaticStackblitzLinkPreviewComponent} from './previews/stackblitz-link/translations-example-static-stackblitz-link-preview.component';
+import {TranslationsExampleDynamicStackblitzLinkPreviewComponent} from './previews/stackblitz-link/translations-example-dynamic-stackblitz-link-preview.component';
 
 @Component({
 	selector: 'app-code-example-translations',
@@ -16,9 +17,14 @@ export class TranslationsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'translations-examples';
 	readonly previews: CodeExample[] = [
 		{
-			component: TranslationsExampleStackblitzLinkPreviewComponent,
-			idParts: ['stackblitz', 'link'],
-			title: 'Link to Stackblitz Example',
+			component: TranslationsExampleStaticStackblitzLinkPreviewComponent,
+			idParts: ['stackblitz', 'link', 'static'],
+			title: 'Static language loading',
+		},
+		{
+			component: TranslationsExampleDynamicStackblitzLinkPreviewComponent,
+			idParts: ['stackblitz', 'link', 'dynamic'],
+			title: 'Dynamic language loading',
 		},
 		{
 			idParts: ['files'],

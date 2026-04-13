@@ -1,6 +1,6 @@
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
-import {Attribute, Component, Inject, InjectionToken, Input, OnInit, Optional, ViewEncapsulation} from '@angular/core';
+import {Component, HostAttributeToken, InjectionToken, Input, OnInit, ViewEncapsulation, inject} from '@angular/core';
 import {ObIAlertType} from './alert.model';
 import {alertIcons} from './alert-icons';
 import {TranslateModule} from '@ngx-translate/core';
@@ -29,19 +29,19 @@ export class ObAlertComponent implements OnInit {
 	success = false;
 	warning = false;
 	error = false;
-	role: string = this.initialRole;
+	role: string;
 	icon = 'alert:info';
 
 	private currentType: ObIAlertType = 'info';
 	private hasAlertRole: boolean | undefined;
 
-	constructor(
-		@Optional() @Inject(OBLIQUE_HAS_ROLE_ALERT) private readonly hasGlobalAlertRole: boolean,
-		// eslint-disable-next-line @angular-eslint/no-attribute-decorator
-		@Attribute('role') private readonly initialRole: string,
-		private readonly matIconRegistry: MatIconRegistry,
-		private readonly domSanitizer: DomSanitizer
-	) {}
+	private readonly hasGlobalAlertRole = inject(OBLIQUE_HAS_ROLE_ALERT, {optional: true});
+	private readonly initialRole = inject(new HostAttributeToken('role'), {optional: true});
+	private readonly matIconRegistry = inject(MatIconRegistry);
+	private readonly domSanitizer = inject(DomSanitizer);
+	constructor() {
+		this.role = this.initialRole;
+	}
 
 	get hasRoleAlert(): boolean | undefined {
 		return this.hasAlertRole;

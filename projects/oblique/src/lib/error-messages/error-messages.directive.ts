@@ -1,4 +1,4 @@
-import {AfterViewInit, ContentChild, Directive, Input, OnDestroy, Optional} from '@angular/core';
+import {AfterViewInit, ContentChild, Directive, Input, OnDestroy, inject} from '@angular/core';
 import {MatInput} from '@angular/material/input';
 import {FormGroupDirective, NgForm, ValidationErrors} from '@angular/forms';
 import {MatSelect} from '@angular/material/select';
@@ -19,7 +19,10 @@ export class ObErrorMessagesDirective implements AfterViewInit, OnDestroy {
 	private readonly form: NgForm | FormGroupDirective;
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(@Optional() ngForm: NgForm, @Optional() formGroupDirective: FormGroupDirective) {
+	constructor() {
+		const ngForm = inject(NgForm, {optional: true});
+		const formGroupDirective = inject(FormGroupDirective, {optional: true});
+
 		this.errors$ = this.errors.asObservable();
 		this.form = ngForm || formGroupDirective;
 

@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {isNotKeyboardEventOnButton} from '../../utilities';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 
@@ -13,7 +13,7 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-
 	exportAs: 'obMasterLayoutNavigationToggle',
 })
 export class ObMasterLayoutNavigationToggleDirective {
-	constructor(private readonly item: ObMasterLayoutNavigationItemDirective) {}
+	private readonly item = inject(ObMasterLayoutNavigationItemDirective);
 
 	onClick(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {

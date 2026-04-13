@@ -1,4 +1,4 @@
-import {DOCUMENT, Directive, Inject} from '@angular/core';
+import {DOCUMENT, Directive, inject} from '@angular/core';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
@@ -16,7 +16,7 @@ import {DOCUMENT, Directive, Inject} from '@angular/core';
 	},
 })
 export class ObOutlineDirective {
-	constructor(@Inject(DOCUMENT) private readonly document: Document) {}
+	private readonly document = inject<Document>(DOCUMENT);
 
 	removeOutline(): void {
 		this.document.body.classList.remove('ob-outline');

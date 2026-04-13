@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {ObNotificationService} from '../../notification/notification.service';
 import {ObEMimeTypes, ObEWildCardMimeTypes, ObIFileValidation, ObIFileValidationOptions} from '../file-upload.model';
 import {ObAcceptAllPipe} from './accept-all.pipe';
@@ -6,8 +6,7 @@ import {ObAcceptAllPipe} from './accept-all.pipe';
 @Injectable()
 export class ObValidationService {
 	private readonly areAllTypesAllowed = new ObAcceptAllPipe().transform.bind(this);
-
-	constructor(private readonly notification: ObNotificationService) {}
+	private readonly notification = inject(ObNotificationService);
 
 	public filterInvalidFiles(fileOptions: ObIFileValidationOptions): File[] {
 		if (!fileOptions.accept) {

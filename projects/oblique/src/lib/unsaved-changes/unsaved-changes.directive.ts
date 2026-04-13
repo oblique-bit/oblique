@@ -1,4 +1,4 @@
-import {Directive, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Directive, Input, OnChanges, OnDestroy, OnInit, inject} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
 
@@ -11,11 +11,8 @@ import {ObUnsavedChangesService} from './unsaved-changes.service';
 export class ObUnsavedChangesDirective implements OnChanges, OnInit, OnDestroy {
 	@Input() id: string;
 	@Input() isActive = true;
-
-	constructor(
-		private readonly unsavedChangesService: ObUnsavedChangesService,
-		private readonly form: ControlContainer
-	) {}
+	private readonly unsavedChangesService = inject(ObUnsavedChangesService);
+	private readonly form = inject(ControlContainer);
 
 	ngOnChanges(): void {
 		if (this.id) {

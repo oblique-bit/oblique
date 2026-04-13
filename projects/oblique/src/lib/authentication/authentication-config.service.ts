@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {AuthConfig, OAuthService, ValidationHandler} from 'angular-oauth2-oidc';
 import {Observable, from} from 'rxjs';
 import {tap} from 'rxjs/operators';
@@ -7,8 +7,7 @@ import {tap} from 'rxjs/operators';
 export class ObAuthenticationConfigService {
 	useDiscoveryDocument = true;
 	setupAutomaticSilentRefresh = false;
-
-	constructor(private readonly oAuthService: OAuthService) {}
+	private readonly oAuthService = inject(OAuthService);
 
 	configureFlow(authFlowConfig: AuthConfig, tokenValidationHandler?: ValidationHandler): Observable<boolean> {
 		this.oAuthService.configure(authFlowConfig);

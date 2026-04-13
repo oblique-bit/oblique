@@ -45,6 +45,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for details about how to contribute
 | **service-navigation** | For changes to the service-navigation documentation |
 | **spinner**            | For changes to the spinner documentation            |
 | **translate-params**   | For changes to the translate-params documentation   |
+| **translations**       | For changes to the translations documentation       |
 | **unknown-route**      | For changes to the unknown-route documentation      |
 | **unsaved-changes**    | For changes to the unsaved-changes documentation    |
 | **version**            | For changes to the version documentation            |

@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Pipe, PipeTransform, inject} from '@angular/core';
 import {formatDate} from '@angular/common';
 import {ObLanguageService} from './language.service';
 
@@ -11,8 +11,8 @@ import {ObLanguageService} from './language.service';
 export class ObDatePipe implements PipeTransform {
 	private locale: string;
 
-	constructor(language: ObLanguageService) {
-		language.locale$.subscribe(locale => {
+	constructor() {
+		inject(ObLanguageService).locale$.subscribe(locale => {
 			this.locale = locale;
 		});
 	}

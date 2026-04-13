@@ -10,12 +10,9 @@ import {WINDOW} from '../utilities';
 })
 export class ObSchemaValidateDirective implements AfterViewInit, Validator {
 	private propertyName: string;
-	private readonly window = inject(WINDOW);
-
-	constructor(
-		private readonly schemaDirective: ObSchemaValidationDirective,
-		private readonly injector: Injector
-	) {}
+	private readonly window = inject<Window>(WINDOW);
+	private readonly schemaDirective = inject(ObSchemaValidationDirective);
+	private readonly injector = inject(Injector);
 
 	ngAfterViewInit(): void {
 		// TODO: this is a workaround: if NgControl is required in the constructor, we have cyclic dependencies

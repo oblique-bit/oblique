@@ -1,3 +1,4 @@
+import {TestBed} from '@angular/core/testing';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObColumnToggleDirective} from './column-toggle.directive';
 
@@ -6,8 +7,11 @@ describe('ObColumnToggleDirective', () => {
 	let directive: ObColumnToggleDirective;
 
 	beforeEach(() => {
-		parentDirective = new ObColumnPanelDirective();
-		directive = new ObColumnToggleDirective(parentDirective);
+		TestBed.configureTestingModule({
+			providers: [ObColumnPanelDirective, ObColumnToggleDirective],
+		});
+		parentDirective = TestBed.inject(ObColumnPanelDirective);
+		directive = TestBed.inject(ObColumnToggleDirective);
 	});
 
 	it('should create an instance', () => {

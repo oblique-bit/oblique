@@ -67,7 +67,7 @@ import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 	exportAs: 'obMasterLayout',
 })
 export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnChanges {
-	home = this.config.homePageRoute;
+	home: string;
 	route = {path: '', params: undefined};
 	hasHighContrast = false;
 	readonly contentId = 'content';
@@ -78,15 +78,15 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
 	isLayoutCollapsed = false;
 	isLayoutExpanded = true;
-	hasCover = this.masterLayout.layout.hasCover;
-	hasLayout = this.masterLayout.layout.hasLayout;
-	hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
-	isMenuOpened = this.masterLayout.layout.isMenuOpened;
-	noNavigation = !this.masterLayout.layout.hasMainNavigation;
-	hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
+	hasCover: boolean;
+	hasLayout: boolean;
+	hasMaxWidth: boolean;
+	isMenuOpened: boolean;
+	noNavigation: boolean;
+	hasOffCanvas: boolean;
 	isScrolling = false;
-	isHeaderSticky = this.masterLayout.header.isSticky;
-	isFooterSticky = this.masterLayout.footer.isSticky;
+	isHeaderSticky: boolean;
+	isFooterSticky: boolean;
 	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
 	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<unknown>>;
 	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<unknown>>;
@@ -102,7 +102,9 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 	private readonly offCanvasService = inject(ObOffCanvasService);
 	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly document = inject(DOCUMENT);
-	private readonly window = inject(WINDOW);
+	private readonly window = inject<Window>(WINDOW);
+	private readonly masterLayout = inject(ObMasterLayoutService);
+	private readonly config = inject(ObMasterLayoutConfig);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
 	private readonly defaultCollapseBreakpoint = 'md';
 	private readonly gridBreakpoints = {
@@ -113,10 +115,8 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 		xl: 1440,
 	} as const;
 
-	constructor(
-		private readonly masterLayout: ObMasterLayoutService,
-		private readonly config: ObMasterLayoutConfig
-	) {
+	constructor() {
+		this.setup();
 		this.layoutHasCoverChange();
 		this.layoutHasDefaultLayoutChange();
 		this.layoutHasMainNavigationChange();
@@ -193,6 +193,18 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 				`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`
 			);
 		}
+	}
+
+	private setup(): void {
+		this.home = this.config.homePageRoute;
+		this.hasCover = this.masterLayout.layout.hasCover;
+		this.hasLayout = this.masterLayout.layout.hasLayout;
+		this.hasMaxWidth = this.masterLayout.layout.hasMaxWidth;
+		this.isMenuOpened = this.masterLayout.layout.isMenuOpened;
+		this.noNavigation = !this.masterLayout.layout.hasMainNavigation;
+		this.hasOffCanvas = this.masterLayout.layout.hasOffCanvas;
+		this.isHeaderSticky = this.masterLayout.header.isSticky;
+		this.isFooterSticky = this.masterLayout.footer.isSticky;
 	}
 
 	private handleLayoutMode(): void {

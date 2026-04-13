@@ -26,15 +26,15 @@ describe(TranslationsCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 2 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(2);
+	test(`that there are 3 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(3);
 	});
 
-	test(`that there is 1 ${ObButtonDirective.name}`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(ObButtonDirective)).length).toBe(1);
+	test(`that there are 2 ${ObButtonDirective.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(ObButtonDirective)).length).toBe(2);
 	});
 
-	test(`that there is 1 link to stackblitz`, () => {
-		expect(fixture.debugElement.queryAll(By.css('a[href*="stackblitz"]')).length).toBe(1);
+	test(`that there are 2 links to stackblitz`, () => {
+		expect(fixture.debugElement.queryAll(By.css('a[href*="stackblitz"]')).length).toBe(2);
 	});
 });

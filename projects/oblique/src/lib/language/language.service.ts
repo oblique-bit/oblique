@@ -1,4 +1,4 @@
-import {DOCUMENT, Inject, Injectable, Optional, Renderer2, RendererFactory2} from '@angular/core';
+import {DOCUMENT, Injectable, Renderer2, RendererFactory2, inject} from '@angular/core';
 import {DateAdapter} from '@angular/material/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject} from 'rxjs';
@@ -12,13 +12,12 @@ export class ObLanguageService {
 	readonly locale$: Observable<string>;
 	private static readonly token = 'oblique_lang';
 	private readonly locale = new ReplaySubject<string>(1);
+	private readonly translate = inject(TranslateService);
+	private readonly rendererFactory = inject(RendererFactory2);
+	private readonly document = inject<Document>(DOCUMENT);
+	private readonly adapter = inject<DateAdapter<unknown>>(DateAdapter, {optional: true});
 
-	constructor(
-		private readonly translate: TranslateService,
-		private readonly rendererFactory: RendererFactory2,
-		@Inject(DOCUMENT) private readonly document: Document,
-		@Optional() private readonly adapter: DateAdapter<unknown>
-	) {
+	constructor() {
 		this.locale$ = this.locale.asObservable();
 	}
 

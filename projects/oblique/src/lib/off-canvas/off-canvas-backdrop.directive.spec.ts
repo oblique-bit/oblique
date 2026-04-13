@@ -2,6 +2,8 @@ import {ObOffCanvasBackdropDirective} from './off-canvas-backdrop.directive';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {ObOffCanvasService} from './off-canvas.service';
 import {Subject} from 'rxjs';
+import {TestBed} from '@angular/core/testing';
+import {WINDOW} from '../utilities';
 
 describe('ObOffCanvasBackdropDirective', () => {
 	const offCanvasService = {open: false} as ObOffCanvasService;
@@ -12,7 +14,15 @@ describe('ObOffCanvasBackdropDirective', () => {
 	let directive: ObOffCanvasBackdropDirective;
 
 	beforeEach(() => {
-		directive = new ObOffCanvasBackdropDirective(offCanvasService, globalEventMock as ObGlobalEventsService);
+		TestBed.configureTestingModule({
+			providers: [
+				ObOffCanvasBackdropDirective,
+				{provide: ObOffCanvasService, useValue: offCanvasService},
+				{provide: ObGlobalEventsService, useValue: globalEventMock},
+				{provide: WINDOW, useValue: window},
+			],
+		});
+		directive = TestBed.inject(ObOffCanvasBackdropDirective);
 	});
 
 	afterEach(() => {

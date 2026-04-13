@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {filter} from 'rxjs/operators';
@@ -14,17 +14,15 @@ import {ObNotificationConfig} from './notification.config';
  */
 @Injectable({providedIn: 'root'})
 export class ObNotificationService {
+	config = inject(ObNotificationConfig);
 	clearAllOnNavigate = this.config.clearAllOnNavigate;
 	placement: ObENotificationPlacement = this.config.placement;
 	private readonly eventSubject: Subject<ObINotification> = new Subject<ObINotification>();
 	private readonly events$ = this.eventSubject.asObservable();
 
-	constructor(
-		public config: ObNotificationConfig,
-		router: Router
-	) {
-		router.events
-			.pipe(filter(evt => evt instanceof NavigationEnd && this.clearAllOnNavigate))
+	constructor() {
+		inject(Router)
+			.events.pipe(filter(evt => evt instanceof NavigationEnd && this.clearAllOnNavigate))
 			.subscribe(() => this.clearAll());
 	}
 

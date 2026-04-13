@@ -338,6 +338,15 @@
 					&.active,
 					&:hover {
 						border-bottom: variables.$ob-line-width-sm solid variables.$ob-accent;
+
+						&.cdk-keyboard-focused {
+							box-shadow:
+								inset 0 variables.$ob-line-width-sm 0 0 variables.$ob-purple-500,
+								inset calc(-1 * variables.$ob-line-width-sm) 0 0 0 variables.$ob-purple-500,
+								inset variables.$ob-line-width-sm 0 0 0 variables.$ob-purple-500,
+								inset 0 calc(-1 * variables.$ob-line-width-sm) 0 0 variables.$ob-accent;
+							border-bottom: variables.$ob-line-width-sm solid variables.$ob-purple-500;
+						}
 					}
 
 					&::after {

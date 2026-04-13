@@ -1,5 +1,5 @@
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {DestroyRef, Directive, ElementRef, Input, OnInit, Optional, inject} from '@angular/core';
+import {DestroyRef, Directive, ElementRef, Input, OnInit, inject} from '@angular/core';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 import {startWith} from 'rxjs';
 
@@ -30,12 +30,11 @@ export class ObSelectableDirective<T = any> implements OnInit {
 	private readonly destroyRef = inject(DestroyRef);
 	private disabled = false;
 	private initialTabindex: number;
+	private readonly element = inject(ElementRef);
+	private readonly group = inject<ObSelectableGroupDirective<T>>(ObSelectableGroupDirective, {optional: true});
 
-	constructor(
-		private readonly element: ElementRef,
-		@Optional() private readonly group: ObSelectableGroupDirective<T>
-	) {
-		if (!group) {
+	constructor() {
+		if (!this.group) {
 			throw new Error(
 				'ObSelectableDirective need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more information'
 			);

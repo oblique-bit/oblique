@@ -45,17 +45,14 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 	@ViewChild('columnLeft') private readonly columnLeft: ObColumnPanelDirective;
 	@ViewChild('columnRight') private readonly columnRight: ObColumnPanelDirective;
 	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
+	private readonly el = inject<ElementRef<HTMLElement>>(ElementRef);
+	private readonly renderer = inject(Renderer2);
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
 	private readonly unsubscribe = new Subject<void>();
 	private readonly dimensionChange = new Subject<{top: number; height: number; windowHeight: number}>();
-	private readonly window = inject(WINDOW);
+	private readonly window = inject<Window>(WINDOW);
 	private observer: ResizeObserver;
-
-	constructor(
-		private readonly el: ElementRef<HTMLElement>,
-		private readonly renderer: Renderer2,
-		private readonly changeDetectorRef: ChangeDetectorRef
-	) {}
 
 	ngOnChanges(): void {
 		// this is used to force update the columns

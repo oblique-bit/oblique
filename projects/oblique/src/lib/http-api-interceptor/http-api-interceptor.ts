@@ -17,16 +17,13 @@ import {
 
 @Injectable({providedIn: 'root'})
 export class ObHttpApiInterceptor implements HttpInterceptor {
+	private readonly config = inject(ObHttpApiInterceptorConfig);
+	private readonly interceptorEvents = inject(ObHttpApiInterceptorEvents);
+	private readonly spinner = inject(ObSpinnerService);
+	private readonly notificationService = inject(ObNotificationService);
+	private readonly translate = inject(TranslateService);
 	private readonly activeRequestUrls: string[] = [];
-	private readonly window = inject(WINDOW);
-
-	constructor(
-		private readonly config: ObHttpApiInterceptorConfig,
-		private readonly interceptorEvents: ObHttpApiInterceptorEvents,
-		private readonly spinner: ObSpinnerService,
-		private readonly notificationService: ObNotificationService,
-		private readonly translate: TranslateService
-	) {}
+	private readonly window = inject<Window>(WINDOW);
 
 	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 		const obliqueRequest = this.broadcast();

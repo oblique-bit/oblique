@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sandbox-ssr",
-  "version": "15.2.0",
+  "version": "15.2.1",
   "scripts": {
     "start": "ng serve",
     "start-ssr": "node ../../dist/sandbox-ssr/server/server.mjs",
@@ -12,8 +12,8 @@
     "release": "ts-node scripts/release.ts"
   },
   "dependencies": {
-    "@angular/platform-server": "^21.1.0",
-    "@angular/ssr": "^21.1.0"
+    "@angular/platform-server": "^21.2.6",
+    "@angular/ssr": "^21.2.5"
   },
   "devDependencies": {
     "express": "^5.2.1"

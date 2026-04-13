@@ -1,11 +1,19 @@
+import {TestBed} from '@angular/core/testing';
 import {ObDatePipe} from './date.pipe';
 import {ObLanguageService} from './language.service';
 import {of} from 'rxjs';
 
 describe('DatePipe', () => {
+	let pipe: ObDatePipe;
 	const language = {locale$: of('en')} as ObLanguageService;
 	jest.spyOn(language.locale$, 'subscribe');
-	const pipe = new ObDatePipe(language);
+
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			providers: [ObDatePipe, {provide: ObLanguageService, useValue: language}],
+		});
+		pipe = TestBed.inject(ObDatePipe);
+	});
 
 	it('should create an instance', () => {
 		expect(pipe).toBeTruthy();

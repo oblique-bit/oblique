@@ -1,4 +1,4 @@
-import {Directive, OnDestroy} from '@angular/core';
+import {Directive, OnDestroy, inject} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {ObOffCanvasService} from './off-canvas.service';
@@ -16,10 +16,12 @@ export class ObOffCanvasContainerDirective implements OnDestroy {
 	open = false;
 	private readonly unsubscribe = new Subject<void>();
 
-	constructor(offCanvas: ObOffCanvasService) {
-		offCanvas.opened$.pipe(takeUntil(this.unsubscribe)).subscribe(value => {
-			this.open = value;
-		});
+	constructor() {
+		inject(ObOffCanvasService)
+			.opened$.pipe(takeUntil(this.unsubscribe))
+			.subscribe(value => {
+				this.open = value;
+			});
 	}
 
 	ngOnDestroy(): void {
