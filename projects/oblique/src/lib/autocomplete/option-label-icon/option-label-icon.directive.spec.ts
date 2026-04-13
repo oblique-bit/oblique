@@ -132,7 +132,8 @@ describe(ObOptionLabelIconDirective.name, () => {
 		});
 
 		it(`should have a content of "Text"`, () => {
-			component.iconName = ObEIcon.INFO;
+			directive.iconName = ObEIcon.INFO;
+			directive.ngOnChanges();
 			fixture.detectChanges();
 			expect(directiveNode.nativeNode.innerHTML).toBe(
 				'Text<span class="mat-icon" aria-hidden="true" style="margin-left: auto;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M11.26535,7.65413h1.48047v13.3457h-1.48047V7.65413ZM12.76437,3.09456c-.18555-.19238-.43359-.28809-.74609-.28809s-.55957.0957-.74023.28809c-.18066.19141-.27148.42676-.27148.7041,0,.27832.09082.51074.27148.69922.18066.1875.42773.28125.74023.28125s.56055-.09375.74609-.28125c.18457-.18848.27734-.4209.27734-.69922,0-.27734-.09277-.5127-.27734-.7041Z"></path></svg></span>'
@@ -140,17 +141,19 @@ describe(ObOptionLabelIconDirective.name, () => {
 		});
 
 		it("should have removed icon if iconName = ''", () => {
-			component.iconName = ObEIcon.INFO;
+			directive.iconName = ObEIcon.INFO;
+			directive.ngOnChanges();
 			fixture.detectChanges();
-			component.iconName = '';
+			directive.iconName = '' as ObEIcon;
+			directive.ngOnChanges();
 			fixture.detectChanges();
 			expect(directiveNode.nativeNode.innerHTML).toBe('Text');
 		});
 
 		it('should have removed icon if position = none', () => {
-			component.iconName = ObEIcon.INFO;
-			component.position = 'none';
-			fixture.detectChanges();
+			directive.iconName = ObEIcon.INFO;
+			directive.iconPosition = 'none';
+			directive.ngOnChanges();
 			fixture.detectChanges();
 			expect(directiveNode.nativeNode.innerHTML).toBe('Text');
 		});
