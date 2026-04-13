@@ -11,11 +11,6 @@ These styles are exclusively used for content from Directus in the Banner API
 	align-items: center;
 	width: 7rem;
 
-	h6 {
-		margin: 0;
-		font-weight: bolder;
-	}
-
 	&.local {
 		background-color: #00813a;
 	}
@@ -34,20 +29,5 @@ These styles are exclusively used for content from Directus in the Banner API
 
 	&.abn {
 		background-color: #b00020;
-	}
-
-	&.dev,
-	&.ref {
-		h6 {
-			color: #171717;
-		}
-	}
-
-	&.local,
-	&.test,
-	&.abn {
-		h6 {
-			color: #ffffff;
-		}
 	}
 }
