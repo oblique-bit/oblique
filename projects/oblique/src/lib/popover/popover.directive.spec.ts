@@ -181,7 +181,7 @@ describe(ObPopoverDirective.name, () => {
 
 				it('should remove the popover from the DOM', () => {
 					directive.open();
-					jest.runOnlyPendingTimers();
+					runPendingOpenTimers();
 					directive.close();
 					// fixture.detectChanges();
 					popover = document.querySelector('.ob-popover-content');
@@ -321,7 +321,7 @@ describe(ObPopoverDirective.name, () => {
 					beforeEach(() => {
 						jest.spyOn(directive, 'close');
 						directive.open();
-						jest.runOnlyPendingTimers();
+						runPendingOpenTimers();
 						popover = document.querySelector('.ob-popover-content');
 					});
 
@@ -352,7 +352,7 @@ describe(ObPopoverDirective.name, () => {
 						directive.ngOnChanges();
 						jest.spyOn(directive, 'close');
 						directive.open();
-						jest.runOnlyPendingTimers();
+						runPendingOpenTimers();
 						popover = document.querySelector('.ob-popover-content');
 					});
 
@@ -384,7 +384,7 @@ describe(ObPopoverDirective.name, () => {
 
 						jest.spyOn(directive, 'close');
 						directive.open();
-						jest.runOnlyPendingTimers();
+						runPendingOpenTimers();
 						popover = document.querySelector('.ob-popover-content');
 					});
 
@@ -415,7 +415,7 @@ describe(ObPopoverDirective.name, () => {
 					directive.id = 'popover';
 					directive.ngOnInit();
 					directive.open();
-					jest.runOnlyPendingTimers();
+					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
 					expect(popover.getAttribute('id')).toBe('popover-content');
 				});
@@ -426,7 +426,7 @@ describe(ObPopoverDirective.name, () => {
 					directive.panelContentId = 'custom-panel';
 					directive.ngOnInit();
 					directive.open();
-					jest.runOnlyPendingTimers();
+					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
 					expect(popover.getAttribute('id')).toBe('custom-panel');
 				});
@@ -867,7 +867,7 @@ describe(ObPopoverDirective.name, () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
 					directive.open();
-					jest.runOnlyPendingTimers();
+					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
 				});
 
@@ -903,7 +903,7 @@ describe(ObPopoverDirective.name, () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
 					directive.open();
-					jest.runOnlyPendingTimers();
+					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
 				});
 
@@ -939,7 +939,7 @@ describe(ObPopoverDirective.name, () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
 					directive.open();
-					jest.runOnlyPendingTimers();
+					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
 				});
 
@@ -978,7 +978,7 @@ describe(ObPopoverDirective.name, () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
 					directive.open();
-					jest.runOnlyPendingTimers();
+					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
 				});
 
@@ -1014,7 +1014,7 @@ describe(ObPopoverDirective.name, () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
 					directive.open();
-					jest.runOnlyPendingTimers();
+					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
 				});
 
@@ -1050,7 +1050,7 @@ describe(ObPopoverDirective.name, () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
 					directive.open();
-					jest.runOnlyPendingTimers();
+					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
 				});
 
@@ -1087,16 +1087,20 @@ describe(ObPopoverDirective.name, () => {
 	}
 
 	function setupAndOpen(): void {
-		directive.open();
-		jest.runOnlyPendingTimers();
-		fixture.detectChanges();
+		toggle.click();
+		runPendingOpenTimers();
 		popover = document.querySelector('.ob-popover-content');
 	}
 
 	function toggleWithMouseEnter(): void {
 		directive.ngOnChanges();
 		directive.handleMouseEnter();
-		jest.runOnlyPendingTimers();
+		runPendingOpenTimers();
 		popover = document.querySelector('.ob-popover-content');
+	}
+
+	function runPendingOpenTimers(): void {
+		fixture.componentRef.changeDetectorRef.detectChanges();
+		jest.runOnlyPendingTimers();
 	}
 });
