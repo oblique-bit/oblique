@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, Component, DebugElement} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {WINDOW} from '../utilities';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
@@ -20,6 +20,11 @@ describe(ObCollapseComponent.name, () => {
 	let debugElement: DebugElement;
 	let toggleElement: HTMLDivElement;
 	let obCollapseComponent: ObCollapseComponent;
+	const stabilize = async (): Promise<void> => {
+		fixture.detectChanges();
+		await fixture.whenStable();
+		fixture.detectChanges();
+	};
 
 	describe('with token set to something truthy', () => {
 		beforeEach(async () => {
@@ -144,16 +149,18 @@ describe(ObCollapseComponent.name, () => {
 			expect(toggleElement.getAttribute('aria-expanded')).toBe('false');
 		});
 
-		it('should change aria-expended to true on keydown with space', () => {
+		it('should change aria-expended to true on keydown with space', async () => {
 			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}));
-			fixture.detectChanges();
+			fixture.componentRef.setInput('active', obCollapseComponent.active);
+			await stabilize();
 
 			expect(toggleElement.getAttribute('aria-expanded')).toBe('true');
 		});
 
-		it('should change aria-expended to true on keydown with enter', () => {
+		it('should change aria-expended to true on keydown with enter', async () => {
 			toggleElement.dispatchEvent(new KeyboardEvent('keyup', {key: 'Enter'}));
-			fixture.detectChanges();
+			fixture.componentRef.setInput('active', obCollapseComponent.active);
+			await stabilize();
 
 			expect(toggleElement.getAttribute('aria-expanded')).toBe('true');
 		});
@@ -185,18 +192,18 @@ describe(ObCollapseComponent.name, () => {
 
 		describe('iconPosition should add the icon', () => {
 			it('right', () => {
-				obCollapseComponent.iconPosition = 'right';
+				fixture.componentRef.setInput('iconPosition', 'right');
 				fixture.detectChanges();
 				expect(debugElement.query(By.css('mat-icon:first-child'))).toBeTruthy();
 			});
 			it('left', () => {
-				obCollapseComponent.iconPosition = 'left';
+				fixture.componentRef.setInput('iconPosition', 'left');
 				fixture.detectChanges();
 				expect(debugElement.query(By.css('mat-icon:last-child'))).toBeTruthy();
 			});
-			it('justified', () => {
-				obCollapseComponent.iconPosition = 'justified';
-				fixture.detectChanges();
+			it('justified', async () => {
+				fixture.componentRef.setInput('iconPosition', 'justified');
+				await stabilize();
 				const div = debugElement.query(By.css('.ob-collapse-toggle')).nativeElement;
 				expect(div.classList.contains('ob-toggle-justified')).toBe(true);
 			});
@@ -283,6 +290,7 @@ describe(ObCollapseComponent.name, () => {
 	describe('with actual content', () => {
 		let fixtureTestComponent: ComponentFixture<TestCollapseComponent>;
 		let element: HTMLDivElement;
+		let collapseChangeDetector: ChangeDetectorRef;
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
@@ -298,9 +306,9 @@ describe(ObCollapseComponent.name, () => {
 				.compileComponents();
 
 			fixtureTestComponent = TestBed.createComponent(TestCollapseComponent);
-			obCollapseComponent = fixtureTestComponent.debugElement.query(
-				By.directive(ObCollapseComponent)
-			).componentInstance;
+			const collapseDebugElement = fixtureTestComponent.debugElement.query(By.directive(ObCollapseComponent));
+			obCollapseComponent = collapseDebugElement.componentInstance;
+			collapseChangeDetector = collapseDebugElement.injector.get(ChangeDetectorRef);
 			element = fixtureTestComponent.debugElement.query(By.css('[obCollapseMain]')).nativeElement;
 			Object.defineProperty(element, 'scrollHeight', {value: 42, configurable: true}); // necessary because jsdom ignores scrollHeight
 			fixtureTestComponent.detectChanges();
@@ -314,15 +322,18 @@ describe(ObCollapseComponent.name, () => {
 
 		it('should set contentHeight to 42 when active', () => {
 			obCollapseComponent.active = true;
-			fixtureTestComponent.detectChanges();
+			collapseChangeDetector.detectChanges();
+			obCollapseComponent.ngAfterContentChecked();
 			expect(obCollapseComponent.contentHeight).toBe(42);
 		});
 
 		it('shout recompute the height when the viewport is resized', () => {
 			obCollapseComponent.active = true;
-			fixtureTestComponent.detectChanges();
+			collapseChangeDetector.detectChanges();
+			obCollapseComponent.ngAfterContentChecked();
 			Object.defineProperty(element, 'scrollHeight', {value: 420, configurable: true});
 			window.dispatchEvent(new Event('resize'));
+			obCollapseComponent.ngAfterContentChecked();
 			expect(obCollapseComponent.contentHeight).toBe(420);
 		});
 	});
