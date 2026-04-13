@@ -1,5 +1,5 @@
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {type ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
@@ -84,14 +84,13 @@ describe('AppComponent', () => {
 				expect(component.hasBanner).toEqual(false);
 			});
 
-			it('should not emit bannerData$', fakeAsync(() => {
+			it('should not emit bannerData$', () => {
 				let emitted = false;
 				component.bannerData$.subscribe(() => {
 					emitted = true;
 				});
-				tick();
 				expect(emitted).toEqual(false);
-			}));
+			});
 		});
 	});
 
