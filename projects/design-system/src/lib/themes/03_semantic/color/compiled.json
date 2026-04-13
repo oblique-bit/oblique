@@ -45,60 +45,60 @@
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_lowest.inversity_normal}",
-                "$description": "Neutral foreground - contrast lowest normal"
+                "$description": "Lowest contrast neutral foreground. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_lowest.inversity_flipped}",
-                "$description": "Neutral foreground - contrast lowest flipped"
+                "$description": "Lowest contrast neutral foreground. Inverse surface."
               }
             },
             "contrast_medium": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_medium.inversity_normal}",
-                "$description": "Neutral foreground - contrast medium normal"
+                "$description": "Medium contrast neutral foreground. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_medium.inversity_flipped}",
-                "$description": "Neutral foreground - contrast medium flipped"
+                "$description": "Medium contrast neutral foreground. Inverse surface."
               }
             },
             "contrast_low": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_low.inversity_normal}",
-                "$description": "Neutral foreground - contrast low normal"
+                "$description": "Low contrast neutral foreground. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_low.inversity_flipped}",
-                "$description": "Neutral foreground - contrast low flipped"
+                "$description": "Low contrast neutral foreground. Inverse surface."
               }
             },
             "contrast_high": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
-                "$description": "Neutral foreground - contrast high normal"
+                "$description": "High contrast neutral foreground. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
-                "$description": "Neutral foreground - contrast high flipped"
+                "$description": "High contrast neutral foreground. Inverse surface."
               }
             },
             "contrast_highest": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
-                "$description": "Neutral foreground - contrast highest normal"
+                "$description": "Highest contrast neutral foreground. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
-                "$description": "Neutral foreground - contrast highest flipped"
+                "$description": "Highest contrast neutral foreground. Inverse surface."
               }
             }
           },
@@ -107,60 +107,60 @@
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_lowest.inversity_normal}",
-                "$description": "Neutral background - contrast lowest normal"
+                "$description": "Lowest contrast neutral background. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_lowest.inversity_flipped}",
-                "$description": "Neutral background - contrast lowest flipped"
+                "$description": "Lowest contrast neutral background. Inverse surface."
               }
             },
             "contrast_highest": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_normal}",
-                "$description": "Neutral background - contrast highest normal"
+                "$description": "Highest contrast neutral background. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_highest.inversity_flipped}",
-                "$description": "Neutral background - contrast highest flipped"
+                "$description": "Highest contrast neutral background. Inverse surface."
               }
             },
             "contrast_high": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_high.inversity_normal}",
-                "$description": "Neutral background - contrast high normal"
+                "$description": "High contrast neutral background. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_high.inversity_flipped}",
-                "$description": "Neutral background - contrast high flipped"
+                "$description": "High contrast neutral background. Inverse surface."
               }
             },
             "contrast_medium": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_medium.inversity_normal}",
-                "$description": "Neutral background - contrast medium normal"
+                "$description": "Medium contrast neutral background. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_medium.inversity_flipped}",
-                "$description": "Neutral background - contrast medium flipped"
+                "$description": "Medium contrast neutral background. Inverse surface."
               }
             },
             "contrast_low": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_low.inversity_normal}",
-                "$description": "Neutral background - contrast low normal"
+                "$description": "Low contrast neutral background. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.bg.contrast_low.inversity_flipped}",
-                "$description": "Neutral background - contrast low flipped"
+                "$description": "Low contrast neutral background. Inverse surface."
               }
             }
           },
@@ -181,36 +181,36 @@
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.border.subtle.inversity_normal}",
-                "$description": "Neutral border - subtle normal"
+                "$description": "Subtle neutral border. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.border.subtle.inversity_flipped}",
-                "$description": "Neutral border - subtle flipped"
+                "$description": "Subtle neutral border. Inverse surface."
               }
             },
             "medium": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.border.medium.inversity_normal}",
-                "$description": "Neutral border - medium normal"
+                "$description": "Medium neutral border. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.border.medium.inversity_flipped}",
-                "$description": "Neutral border - medium flipped"
+                "$description": "Medium neutral border. Inverse surface."
               }
             },
             "strong": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.border.strong.inversity_normal}",
-                "$description": "Neutral border - strong normal"
+                "$description": "Strong neutral border. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s1.color.neutral.border.strong.inversity_flipped}",
-                "$description": "Neutral border - strong flipped"
+                "$description": "Strong neutral border. Inverse surface."
               }
             }
           }
@@ -230,84 +230,84 @@
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.enabled.inversity_normal}",
-                "$description": "Interactive element foreground - enabled state, normal theme"
+                "$description": "Foreground for enabled interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.enabled.inversity_flipped}",
-                "$description": "Interactive element foreground - enabled state, flipped theme"
+                "$description": "Foreground for enabled interactive element. Inverse surface."
               }
             },
             "hover": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.hover.inversity_normal}",
-                "$description": "Interactive element foreground - hover state, normal theme"
+                "$description": "Foreground for hover interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.hover.inversity_flipped}",
-                "$description": "Interactive element foreground - hover state, flipped theme"
+                "$description": "Foreground for hover interactive element. Inverse surface."
               }
             },
             "focus": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.focus.inversity_normal}",
-                "$description": "Interactive element foreground - focus state, normal theme"
+                "$description": "Foreground for focus interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.focus.inversity_flipped}",
-                "$description": "Interactive element foreground - focus state, flipped theme"
+                "$description": "Foreground for focus interactive element. Inverse surface."
               }
             },
             "pressed": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.pressed.inversity_normal}",
-                "$description": "Interactive element foreground - pressed state, normal theme"
+                "$description": "Foreground for pressed interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.pressed.inversity_flipped}",
-                "$description": "Interactive element foreground - pressed state, flipped theme"
+                "$description": "Foreground for pressed interactive element. Inverse surface."
               }
             },
             "selected": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.selected.inversity_normal}",
-                "$description": "Interactive element foreground - selected state, normal theme"
+                "$description": "Foreground for selected interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.selected.inversity_flipped}",
-                "$description": "Interactive element foreground - selected state, flipped theme"
+                "$description": "Foreground for selected interactive element. Inverse surface."
               }
             },
             "disabled": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.disabled.inversity_normal}",
-                "$description": "Interactive element foreground - disabled state, normal theme"
+                "$description": "Foreground for disabled interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.disabled.inversity_flipped}",
-                "$description": "Interactive element foreground - disabled state, flipped theme"
+                "$description": "Foreground for disabled interactive element. Inverse surface."
               }
             },
             "visited": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.visited.inversity_normal}",
-                "$description": "Interactive element foreground - visited state, normal theme"
+                "$description": "Foreground for visited interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.fg.visited.inversity_flipped}",
-                "$description": "Interactive element foreground - visited state, flipped theme"
+                "$description": "Foreground for visited interactive element. Inverse surface."
               }
             }
           },
@@ -323,84 +323,84 @@
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.enabled.inversity_normal}",
-                "$description": "Interactive element background - enabled state, normal theme"
+                "$description": "Background for enabled interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.enabled.inversity_flipped}",
-                "$description": "Interactive element background - enabled state, flipped theme"
+                "$description": "Background for enabled interactive element. Inverse surface."
               }
             },
             "hover": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.hover.inversity_normal}",
-                "$description": "Interactive element background - hover state, normal theme"
+                "$description": "Background for hover interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.hover.inversity_flipped}",
-                "$description": "Interactive element background - hover state, flipped theme"
+                "$description": "Background for hover interactive element. Inverse surface."
               }
             },
             "focus": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.focus.inversity_normal}",
-                "$description": "Interactive element background - focus state, normal theme"
+                "$description": "Background for focus interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.focus.inversity_flipped}",
-                "$description": "Interactive element background - focus state, flipped theme"
+                "$description": "Background for focus interactive element. Inverse surface."
               }
             },
             "pressed": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.pressed.inversity_normal}",
-                "$description": "Interactive element background - pressed state, normal theme"
+                "$description": "Background for pressed interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.pressed.inversity_flipped}",
-                "$description": "Interactive element background - pressed state, flipped theme"
+                "$description": "Background for pressed interactive element. Inverse surface."
               }
             },
             "selected": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.selected.inversity_normal}",
-                "$description": "Interactive element background - selected state, normal theme"
+                "$description": "Background for selected interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.selected.inversity_flipped}",
-                "$description": "Interactive element background - selected state, flipped theme"
+                "$description": "Background for selected interactive element. Inverse surface."
               }
             },
             "visited": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.visited.inversity_normal}",
-                "$description": "Interactive element background - visited state, normal theme"
+                "$description": "Background for visited interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.visited.inversity_flipped}",
-                "$description": "Interactive element background - visited state, flipped theme"
+                "$description": "Background for visited interactive element. Inverse surface."
               }
             },
             "disabled": {
               "inversity_normal": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.disabled.inversity_normal}",
-                "$description": "Interactive element background - disabled state, normal theme"
+                "$description": "Background for disabled interactive element. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
                 "$value": "{ob.s2.color.interaction.bg.disabled.inversity_flipped}",
-                "$description": "Interactive element background - disabled state, flipped theme"
+                "$description": "Background for disabled interactive element. Inverse surface."
               }
             }
           },
@@ -408,12 +408,12 @@
             "inversity_normal": {
               "$type": "color",
               "$value": "{ob.s1.color.interaction.focus_ring.inversity_normal}",
-              "$description": "Focus ring color for interaction elements - normal inversity"
+              "$description": "Focus ring color. Standard surface."
             },
             "inversity_flipped": {
               "$type": "color",
               "$value": "{ob.s1.color.interaction.focus_ring.inversity_flipped}",
-              "$description": "Focus ring color for interaction elements - flipped inversity"
+              "$description": "Focus ring color. Inverse surface."
             }
           }
         },
@@ -433,48 +433,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic info background - contrast highest, inversity normal"
+                  "$description": "Highest contrast informational status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic info background - contrast highest, inversity flipped"
+                  "$description": "Highest contrast informational status background. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic info background - contrast high, inversity normal"
+                  "$description": "High contrast informational status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic info background - contrast high, inversity flipped"
+                  "$description": "High contrast informational status background. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic info background - contrast medium, inversity normal"
+                  "$description": "Medium contrast informational status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic info background - contrast medium, inversity flipped"
+                  "$description": "Medium contrast informational status background. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_low.inversity_normal}",
-                  "$description": "Info Status Background – contrast low, inversity normal. High saturation compensates for lower contrast. Preferred for small status surfaces: Badge background, Infobox border."
+                  "$description": "Low contrast informational status background. Standard surface. High saturation compensates for lower contrast. Preferred for small status surfaces: Badge background, Infobox border."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.bg.contrast_low.inversity_flipped}",
-                  "$description": "Info Status Background – contrast low, inversity flipped. High saturation compensates for lower contrast. Preferred for small status surfaces: Badge background, Infobox border."
+                  "$description": "Low contrast informational status background. Inverse surface. High saturation compensates for lower contrast. Preferred for small status surfaces: Badge background, Infobox border."
                 }
               }
             },
@@ -483,48 +483,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.fg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic info foreground - contrast highest, inversity normal"
+                  "$description": "Highest contrast informational status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.fg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic info foreground - contrast highest, inversity flipped"
+                  "$description": "Highest contrast informational status foreground. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.fg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic info foreground - contrast high, inversity normal"
+                  "$description": "High contrast informational status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.fg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic info foreground - contrast high, inversity flipped"
+                  "$description": "High contrast informational status foreground. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.fg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic info foreground - contrast medium, inversity normal"
+                  "$description": "Medium contrast informational status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.fg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic info foreground - contrast medium, inversity flipped"
+                  "$description": "Medium contrast informational status foreground. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.fg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic info foreground - contrast low, inversity normal"
+                  "$description": "Low contrast informational status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.info.fg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic info foreground - contrast low, inversity flipped"
+                  "$description": "Low contrast informational status foreground. Inverse surface."
                 }
               }
             }
@@ -535,48 +535,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.bg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic critical background - contrast highest, inversity normal"
+                  "$description": "Highest contrast critical status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.bg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic critical background - contrast highest, inversity flipped"
+                  "$description": "Highest contrast critical status background. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.bg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic critical background - contrast high, inversity normal"
+                  "$description": "High contrast critical status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.bg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic critical background - contrast high, inversity flipped"
+                  "$description": "High contrast critical status background. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.bg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic critical background - contrast medium, inversity normal"
+                  "$description": "Medium contrast critical status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.bg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic critical background - contrast medium, inversity flipped"
+                  "$description": "Medium contrast critical status background. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.bg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic critical background - contrast low, inversity normal"
+                  "$description": "Low contrast critical status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.bg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic critical background - contrast low, inversity flipped"
+                  "$description": "Low contrast critical status background. Inverse surface."
                 }
               }
             },
@@ -585,48 +585,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.fg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic critical foreground - contrast highest, inversity normal"
+                  "$description": "Highest contrast critical status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.fg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic critical foreground - contrast highest, inversity flipped"
+                  "$description": "Highest contrast critical status foreground. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.fg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic critical foreground - contrast high, inversity normal"
+                  "$description": "High contrast critical status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.fg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic critical foreground - contrast high, inversity flipped"
+                  "$description": "High contrast critical status foreground. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.fg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic critical foreground - contrast medium, inversity normal"
+                  "$description": "Medium contrast critical status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.fg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic critical foreground - contrast medium, inversity flipped"
+                  "$description": "Medium contrast critical status foreground. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.fg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic critical foreground - contrast low, inversity normal"
+                  "$description": "Low contrast critical status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.critical.fg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic critical foreground - contrast low, inversity flipped"
+                  "$description": "Low contrast critical status foreground. Inverse surface."
                 }
               }
             }
@@ -637,48 +637,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.bg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic resolved background - contrast highest, inversity normal"
+                  "$description": "Highest contrast resolved status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.bg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic resolved background - contrast highest, inversity flipped"
+                  "$description": "Highest contrast resolved status background. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.bg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic resolved background - contrast high, inversity normal"
+                  "$description": "High contrast resolved status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.bg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic resolved background - contrast high, inversity flipped"
+                  "$description": "High contrast resolved status background. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.bg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic resolved background - contrast medium, inversity normal"
+                  "$description": "Medium contrast resolved status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.bg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic resolved background - contrast medium, inversity flipped"
+                  "$description": "Medium contrast resolved status background. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.bg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic resolved background - contrast low, inversity normal"
+                  "$description": "Low contrast resolved status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.bg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic resolved background - contrast low, inversity flipped"
+                  "$description": "Low contrast resolved status background. Inverse surface."
                 }
               }
             },
@@ -687,48 +687,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.fg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic resolved foreground - contrast highest, inversity normal"
+                  "$description": "Highest contrast resolved status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.fg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic resolved foreground - contrast highest, inversity flipped"
+                  "$description": "Highest contrast resolved status foreground. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.fg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic resolved foreground - contrast high, inversity normal"
+                  "$description": "High contrast resolved status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.fg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic resolved foreground - contrast high, inversity flipped"
+                  "$description": "High contrast resolved status foreground. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.fg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic resolved foreground - contrast medium, inversity normal"
+                  "$description": "Medium contrast resolved status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.fg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic resolved foreground - contrast medium, inversity flipped"
+                  "$description": "Medium contrast resolved status foreground. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.fg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic resolved foreground - contrast low, inversity normal"
+                  "$description": "Low contrast resolved status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.resolved.fg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic resolved foreground - contrast low, inversity flipped"
+                  "$description": "Low contrast resolved status foreground. Inverse surface."
                 }
               }
             }
@@ -739,48 +739,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.bg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic attention background - contrast highest, inversity normal"
+                  "$description": "Highest contrast attention status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.bg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic attention background - contrast highest, inversity flipped"
+                  "$description": "Highest contrast attention status background. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.bg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic attention background - contrast high, inversity normal"
+                  "$description": "High contrast attention status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.bg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic attention background - contrast high, inversity flipped"
+                  "$description": "High contrast attention status background. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.bg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic attention background - contrast medium, inversity normal"
+                  "$description": "Medium contrast attention status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.bg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic attention background - contrast medium, inversity flipped"
+                  "$description": "Medium contrast attention status background. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.bg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic attention background - contrast low, inversity normal"
+                  "$description": "Low contrast attention status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.bg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic attention background - contrast low, inversity flipped"
+                  "$description": "Low contrast attention status background. Inverse surface."
                 }
               }
             },
@@ -789,48 +789,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.fg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic attention foreground - contrast highest, inversity normal"
+                  "$description": "Highest contrast attention status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.fg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic attention foreground - contrast highest, inversity flipped"
+                  "$description": "Highest contrast attention status foreground. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.fg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic attention foreground - contrast high, inversity normal"
+                  "$description": "High contrast attention status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.fg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic attention foreground - contrast high, inversity flipped"
+                  "$description": "High contrast attention status foreground. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.fg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic attention foreground - contrast medium, inversity normal"
+                  "$description": "Medium contrast attention status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.fg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic attention foreground - contrast medium, inversity flipped"
+                  "$description": "Medium contrast attention status foreground. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.fg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic attention foreground - contrast low, inversity normal"
+                  "$description": "Low contrast attention status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.attention.fg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic attention foreground - contrast low, inversity flipped"
+                  "$description": "Low contrast attention status foreground. Inverse surface."
                 }
               }
             }
@@ -841,48 +841,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.bg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic fatal background - contrast highest, inversity normal"
+                  "$description": "Highest contrast fatal status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.bg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic fatal background - contrast highest, inversity flipped"
+                  "$description": "Highest contrast fatal status background. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.bg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic fatal background - contrast high, inversity normal"
+                  "$description": "High contrast fatal status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.bg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic fatal background - contrast high, inversity flipped"
+                  "$description": "High contrast fatal status background. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.bg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic fatal background - contrast medium, inversity normal"
+                  "$description": "Medium contrast fatal status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.bg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic fatal background - contrast medium, inversity flipped"
+                  "$description": "Medium contrast fatal status background. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.bg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic fatal background - contrast low, inversity normal"
+                  "$description": "Low contrast fatal status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.bg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic fatal background - contrast low, inversity flipped"
+                  "$description": "Low contrast fatal status background. Inverse surface."
                 }
               }
             },
@@ -891,48 +891,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.fg.contrast_highest.inversity_normal}",
-                  "$description": "S3 semantic fatal foreground - contrast highest, inversity normal"
+                  "$description": "Highest contrast fatal status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.fg.contrast_highest.inversity_flipped}",
-                  "$description": "S3 semantic fatal foreground - contrast highest, inversity flipped"
+                  "$description": "Highest contrast fatal status foreground. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.fg.contrast_high.inversity_normal}",
-                  "$description": "S3 semantic fatal foreground - contrast high, inversity normal"
+                  "$description": "High contrast fatal status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.fg.contrast_high.inversity_flipped}",
-                  "$description": "S3 semantic fatal foreground - contrast high, inversity flipped"
+                  "$description": "High contrast fatal status foreground. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.fg.contrast_medium.inversity_normal}",
-                  "$description": "S3 semantic fatal foreground - contrast medium, inversity normal"
+                  "$description": "Medium contrast fatal status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.fg.contrast_medium.inversity_flipped}",
-                  "$description": "S3 semantic fatal foreground - contrast medium, inversity flipped"
+                  "$description": "Medium contrast fatal status foreground. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.fg.contrast_low.inversity_normal}",
-                  "$description": "S3 semantic fatal foreground - contrast low, inversity normal"
+                  "$description": "Low contrast fatal status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.fatal.fg.contrast_low.inversity_flipped}",
-                  "$description": "S3 semantic fatal foreground - contrast low, inversity flipped"
+                  "$description": "Low contrast fatal status foreground. Inverse surface."
                 }
               }
             }
@@ -954,48 +954,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.bg.contrast_highest.inversity_normal}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — background, contrast highest, inversity normal"
+                  "$description": "Highest contrast cobalt background. Standard surface. Suggested use: closed, archived, inactive, locked."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.bg.contrast_highest.inversity_flipped}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — background, contrast highest, inversity flipped"
+                  "$description": "Highest contrast cobalt background. Inverse surface. Suggested use: closed, archived, inactive, locked."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.bg.contrast_high.inversity_normal}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — background, contrast high, inversity normal"
+                  "$description": "High contrast cobalt background. Standard surface. Suggested use: closed, archived, inactive, locked."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.bg.contrast_high.inversity_flipped}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — background, contrast high, inversity flipped"
+                  "$description": "High contrast cobalt background. Inverse surface. Suggested use: closed, archived, inactive, locked."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.bg.contrast_medium.inversity_normal}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — background, contrast medium, inversity normal"
+                  "$description": "Medium contrast cobalt background. Standard surface. Suggested use: closed, archived, inactive, locked."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.bg.contrast_medium.inversity_flipped}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — background, contrast medium, inversity flipped"
+                  "$description": "Medium contrast cobalt background. Inverse surface. Suggested use: closed, archived, inactive, locked."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.bg.contrast_low.inversity_normal}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — background, contrast low, inversity normal"
+                  "$description": "Low contrast cobalt background. Standard surface. Suggested use: closed, archived, inactive, locked."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.bg.contrast_low.inversity_flipped}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — background, contrast low, inversity flipped"
+                  "$description": "Low contrast cobalt background. Inverse surface. Suggested use: closed, archived, inactive, locked."
                 }
               }
             },
@@ -1004,48 +1004,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.fg.contrast_highest.inversity_normal}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — foreground, contrast highest, inversity normal"
+                  "$description": "Highest contrast cobalt foreground. Standard surface. Suggested use: closed, archived, inactive, locked."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.fg.contrast_highest.inversity_flipped}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — foreground, contrast highest, inversity flipped"
+                  "$description": "Highest contrast cobalt foreground. Inverse surface. Suggested use: closed, archived, inactive, locked."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.fg.contrast_high.inversity_normal}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — foreground, contrast high, inversity normal"
+                  "$description": "High contrast cobalt foreground. Standard surface. Suggested use: closed, archived, inactive, locked."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.fg.contrast_high.inversity_flipped}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — foreground, contrast high, inversity flipped"
+                  "$description": "High contrast cobalt foreground. Inverse surface. Suggested use: closed, archived, inactive, locked."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.fg.contrast_medium.inversity_normal}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — foreground, contrast medium, inversity normal"
+                  "$description": "Medium contrast cobalt foreground. Standard surface. Suggested use: closed, archived, inactive, locked."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.fg.contrast_medium.inversity_flipped}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — foreground, contrast medium, inversity flipped"
+                  "$description": "Medium contrast cobalt foreground. Inverse surface. Suggested use: closed, archived, inactive, locked."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.fg.contrast_low.inversity_normal}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — foreground, contrast low, inversity normal"
+                  "$description": "Low contrast cobalt foreground. Standard surface. Suggested use: closed, archived, inactive, locked."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.closed.fg.contrast_low.inversity_flipped}",
-                  "$description": "Free cobalt (e.g. closed, archived, inactive, locked) — foreground, contrast low, inversity flipped"
+                  "$description": "Low contrast cobalt foreground. Inverse surface. Suggested use: closed, archived, inactive, locked."
                 }
               }
             }
@@ -1056,48 +1056,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_normal}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast highest, inversity normal"
+                  "$description": "Highest contrast yellow background. Standard surface. Suggested use: pending, waiting, draft, awaiting reply."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.bg.contrast_highest.inversity_flipped}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast highest, inversity flipped"
+                  "$description": "Highest contrast yellow background. Inverse surface. Suggested use: pending, waiting, draft, awaiting reply."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_normal}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast high, inversity normal"
+                  "$description": "High contrast yellow background. Standard surface. Suggested use: pending, waiting, draft, awaiting reply."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.bg.contrast_high.inversity_flipped}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast high, inversity flipped"
+                  "$description": "High contrast yellow background. Inverse surface. Suggested use: pending, waiting, draft, awaiting reply."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_normal}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast medium, inversity normal"
+                  "$description": "Medium contrast yellow background. Standard surface. Suggested use: pending, waiting, draft, awaiting reply."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.bg.contrast_medium.inversity_flipped}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast medium, inversity flipped"
+                  "$description": "Medium contrast yellow background. Inverse surface. Suggested use: pending, waiting, draft, awaiting reply."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_normal}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast low, inversity normal"
+                  "$description": "Low contrast yellow background. Standard surface. Suggested use: pending, waiting, draft, awaiting reply."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.bg.contrast_low.inversity_flipped}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — background, contrast low, inversity flipped"
+                  "$description": "Low contrast yellow background. Inverse surface. Suggested use: pending, waiting, draft, awaiting reply."
                 }
               }
             },
@@ -1106,48 +1106,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_normal}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast highest, inversity normal"
+                  "$description": "Highest contrast yellow foreground. Standard surface. Suggested use: pending, waiting, draft, awaiting reply."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.fg.contrast_highest.inversity_flipped}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast highest, inversity flipped"
+                  "$description": "Highest contrast yellow foreground. Inverse surface. Suggested use: pending, waiting, draft, awaiting reply."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_normal}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast high, inversity normal"
+                  "$description": "High contrast yellow foreground. Standard surface. Suggested use: pending, waiting, draft, awaiting reply."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.fg.contrast_high.inversity_flipped}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast high, inversity flipped"
+                  "$description": "High contrast yellow foreground. Inverse surface. Suggested use: pending, waiting, draft, awaiting reply."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_normal}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast medium, inversity normal"
+                  "$description": "Medium contrast yellow foreground. Standard surface. Suggested use: pending, waiting, draft, awaiting reply."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.fg.contrast_medium.inversity_flipped}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast medium, inversity flipped"
+                  "$description": "Medium contrast yellow foreground. Inverse surface. Suggested use: pending, waiting, draft, awaiting reply."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_normal}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast low, inversity normal"
+                  "$description": "Low contrast yellow foreground. Standard surface. Suggested use: pending, waiting, draft, awaiting reply."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.pending.fg.contrast_low.inversity_flipped}",
-                  "$description": "Free yellow (e.g. pending, waiting, draft, awaiting reply) — foreground, contrast low, inversity flipped"
+                  "$description": "Low contrast yellow foreground. Inverse surface. Suggested use: pending, waiting, draft, awaiting reply."
                 }
               }
             }
@@ -1158,48 +1158,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.bg.contrast_highest.inversity_normal}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — background, contrast highest, inversity normal"
+                  "$description": "Highest contrast teal background. Standard surface. Suggested use: confirmed, active, open, approved, started."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.bg.contrast_highest.inversity_flipped}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — background, contrast highest, inversity flipped"
+                  "$description": "Highest contrast teal background. Inverse surface. Suggested use: confirmed, active, open, approved, started."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.bg.contrast_high.inversity_normal}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — background, contrast high, inversity normal"
+                  "$description": "High contrast teal background. Standard surface. Suggested use: confirmed, active, open, approved, started."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.bg.contrast_high.inversity_flipped}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — background, contrast high, inversity flipped"
+                  "$description": "High contrast teal background. Inverse surface. Suggested use: confirmed, active, open, approved, started."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.bg.contrast_medium.inversity_normal}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — background, contrast medium, inversity normal"
+                  "$description": "Medium contrast teal background. Standard surface. Suggested use: confirmed, active, open, approved, started."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.bg.contrast_medium.inversity_flipped}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — background, contrast medium, inversity flipped"
+                  "$description": "Medium contrast teal background. Inverse surface. Suggested use: confirmed, active, open, approved, started."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.bg.contrast_low.inversity_normal}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — background, contrast low, inversity normal"
+                  "$description": "Low contrast teal background. Standard surface. Suggested use: confirmed, active, open, approved, started."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.bg.contrast_low.inversity_flipped}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — background, contrast low, inversity flipped"
+                  "$description": "Low contrast teal background. Inverse surface. Suggested use: confirmed, active, open, approved, started."
                 }
               }
             },
@@ -1208,48 +1208,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.fg.contrast_highest.inversity_normal}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — foreground, contrast highest, inversity normal"
+                  "$description": "Highest contrast teal foreground. Standard surface. Suggested use: confirmed, active, open, approved, started."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.fg.contrast_highest.inversity_flipped}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — foreground, contrast highest, inversity flipped"
+                  "$description": "Highest contrast teal foreground. Inverse surface. Suggested use: confirmed, active, open, approved, started."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.fg.contrast_high.inversity_normal}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — foreground, contrast high, inversity normal"
+                  "$description": "High contrast teal foreground. Standard surface. Suggested use: confirmed, active, open, approved, started."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.fg.contrast_high.inversity_flipped}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — foreground, contrast high, inversity flipped"
+                  "$description": "High contrast teal foreground. Inverse surface. Suggested use: confirmed, active, open, approved, started."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.fg.contrast_medium.inversity_normal}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — foreground, contrast medium, inversity normal"
+                  "$description": "Medium contrast teal foreground. Standard surface. Suggested use: confirmed, active, open, approved, started."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.fg.contrast_medium.inversity_flipped}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — foreground, contrast medium, inversity flipped"
+                  "$description": "Medium contrast teal foreground. Inverse surface. Suggested use: confirmed, active, open, approved, started."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.fg.contrast_low.inversity_normal}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — foreground, contrast low, inversity normal"
+                  "$description": "Low contrast teal foreground. Standard surface. Suggested use: confirmed, active, open, approved, started."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.confirmed.fg.contrast_low.inversity_flipped}",
-                  "$description": "Free teal (e.g. confirmed, active, open, approved, started) — foreground, contrast low, inversity flipped"
+                  "$description": "Low contrast teal foreground. Inverse surface. Suggested use: confirmed, active, open, approved, started."
                 }
               }
             }
@@ -1260,65 +1260,65 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_highest.inversity_normal}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast highest, inversity normal"
+                  "$description": "Highest contrast indigo background. Standard surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_highest.inversity_flipped}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast highest, inversity flipped"
+                  "$description": "Highest contrast indigo background. Inverse surface. Suggested use: progress, in review, ready, to do."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_normal}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast high, inversity normal"
+                  "$description": "High contrast indigo background. Standard surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_flipped}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast high, inversity flipped"
+                  "$description": "High contrast indigo background. Inverse surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped_alpha": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_flipped_alpha}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast high, inversity flipped alpha"
+                  "$description": "High contrast indigo background. Semi-transparent inverse surface. Suggested use: progress, in review, ready, to do."
                 }
               },
               "contrast_high_alpha": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_high_alpha.inversity_normal}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast high alpha, inversity normal"
+                  "$description": "High contrast alpha indigo background. Standard surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_high_alpha.inversity_flipped}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast high alpha, inversity flipped"
+                  "$description": "High contrast alpha indigo background. Inverse surface. Suggested use: progress, in review, ready, to do."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_medium.inversity_normal}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast medium, inversity normal"
+                  "$description": "Medium contrast indigo background. Standard surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_medium.inversity_flipped}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast medium, inversity flipped"
+                  "$description": "Medium contrast indigo background. Inverse surface. Suggested use: progress, in review, ready, to do."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_low.inversity_normal}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast low, inversity normal"
+                  "$description": "Low contrast indigo background. Standard surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_low.inversity_flipped}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — background, contrast low, inversity flipped"
+                  "$description": "Low contrast indigo background. Inverse surface. Suggested use: progress, in review, ready, to do."
                 }
               }
             },
@@ -1327,48 +1327,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.fg.contrast_highest.inversity_normal}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — foreground, contrast highest, inversity normal"
+                  "$description": "Highest contrast indigo foreground. Standard surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.fg.contrast_highest.inversity_flipped}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — foreground, contrast highest, inversity flipped"
+                  "$description": "Highest contrast indigo foreground. Inverse surface. Suggested use: progress, in review, ready, to do."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.fg.contrast_high.inversity_normal}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — foreground, contrast high, inversity normal"
+                  "$description": "High contrast indigo foreground. Standard surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.fg.contrast_high.inversity_flipped}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — foreground, contrast high, inversity flipped"
+                  "$description": "High contrast indigo foreground. Inverse surface. Suggested use: progress, in review, ready, to do."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.fg.contrast_medium.inversity_normal}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — foreground, contrast medium, inversity normal"
+                  "$description": "Medium contrast indigo foreground. Standard surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.fg.contrast_medium.inversity_flipped}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — foreground, contrast medium, inversity flipped"
+                  "$description": "Medium contrast indigo foreground. Inverse surface. Suggested use: progress, in review, ready, to do."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.fg.contrast_low.inversity_normal}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — foreground, contrast low, inversity normal"
+                  "$description": "Low contrast indigo foreground. Standard surface. Suggested use: progress, in review, ready, to do."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.fg.contrast_low.inversity_flipped}",
-                  "$description": "Free indigo (e.g. progress, in review, ready, to do) — foreground, contrast low, inversity flipped"
+                  "$description": "Low contrast indigo foreground. Inverse surface. Suggested use: progress, in review, ready, to do."
                 }
               }
             }
@@ -1379,48 +1379,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.bg.contrast_highest.inversity_normal}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — background, contrast highest, inversity normal"
+                  "$description": "Highest contrast pink background. Standard surface. Suggested use: scheduled, planned, upcoming."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.bg.contrast_highest.inversity_flipped}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — background, contrast highest, inversity flipped"
+                  "$description": "Highest contrast pink background. Inverse surface. Suggested use: scheduled, planned, upcoming."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.bg.contrast_high.inversity_normal}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — background, contrast high, inversity normal"
+                  "$description": "High contrast pink background. Standard surface. Suggested use: scheduled, planned, upcoming."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.bg.contrast_high.inversity_flipped}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — background, contrast high, inversity flipped"
+                  "$description": "High contrast pink background. Inverse surface. Suggested use: scheduled, planned, upcoming."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.bg.contrast_medium.inversity_normal}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — background, contrast medium, inversity normal"
+                  "$description": "Medium contrast pink background. Standard surface. Suggested use: scheduled, planned, upcoming."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.bg.contrast_medium.inversity_flipped}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — background, contrast medium, inversity flipped"
+                  "$description": "Medium contrast pink background. Inverse surface. Suggested use: scheduled, planned, upcoming."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.bg.contrast_low.inversity_normal}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — background, contrast low, inversity normal"
+                  "$description": "Low contrast pink background. Standard surface. Suggested use: scheduled, planned, upcoming."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.bg.contrast_low.inversity_flipped}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — background, contrast low, inversity flipped"
+                  "$description": "Low contrast pink background. Inverse surface. Suggested use: scheduled, planned, upcoming."
                 }
               }
             },
@@ -1429,48 +1429,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.fg.contrast_highest.inversity_normal}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — foreground, contrast highest, inversity normal"
+                  "$description": "Highest contrast pink foreground. Standard surface. Suggested use: scheduled, planned, upcoming."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.fg.contrast_highest.inversity_flipped}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — foreground, contrast highest, inversity flipped"
+                  "$description": "Highest contrast pink foreground. Inverse surface. Suggested use: scheduled, planned, upcoming."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.fg.contrast_high.inversity_normal}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — foreground, contrast high, inversity normal"
+                  "$description": "High contrast pink foreground. Standard surface. Suggested use: scheduled, planned, upcoming."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.fg.contrast_high.inversity_flipped}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — foreground, contrast high, inversity flipped"
+                  "$description": "High contrast pink foreground. Inverse surface. Suggested use: scheduled, planned, upcoming."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.fg.contrast_medium.inversity_normal}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — foreground, contrast medium, inversity normal"
+                  "$description": "Medium contrast pink foreground. Standard surface. Suggested use: scheduled, planned, upcoming."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.fg.contrast_medium.inversity_flipped}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — foreground, contrast medium, inversity flipped"
+                  "$description": "Medium contrast pink foreground. Inverse surface. Suggested use: scheduled, planned, upcoming."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.fg.contrast_low.inversity_normal}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — foreground, contrast low, inversity normal"
+                  "$description": "Low contrast pink foreground. Standard surface. Suggested use: scheduled, planned, upcoming."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.s1.color.status.scheduled.fg.contrast_low.inversity_flipped}",
-                  "$description": "Free pink (e.g. scheduled, planned, upcoming) — foreground, contrast low, inversity flipped"
+                  "$description": "Low contrast pink foreground. Inverse surface. Suggested use: scheduled, planned, upcoming."
                 }
               }
             }

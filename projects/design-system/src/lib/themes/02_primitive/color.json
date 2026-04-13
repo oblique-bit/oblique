@@ -16,70 +16,70 @@
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#ffedee",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fae1e2",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#ffccce",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fa9da1",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fc656b",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#e53940",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#d8232a",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#bf1f25",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#99191e",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#801519",
-            "$description": "Exclusive. Reserved for critical status (ob.s.color.status.critical). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for critical status. Do not use in other semantic contexts."
           }
         },
         "cobalt": {
@@ -88,70 +88,70 @@
             "description": "",
             "$type": "color",
             "$value": "#f0f4f7",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#dfe4e9",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#acb4bd",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#828e9a",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#596978",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#46596b",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#2f4356",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#263645",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#1c2834",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#131b22",
-            "$description": "Shared. Used in emphasis_low interactive components (buttons, links). Also exposed as ob.s.color.free.cobalt for closed status."
+            "$description": "Role: Shared. Used in emphasis_low interactive components (buttons, links)."
           }
         },
         "basic": {
@@ -160,19 +160,19 @@
             "description": "",
             "$type": "color",
             "$value": "#ffffff",
-            "$description": "Shared. Base white reference. Used in background and inversity contexts."
+            "$description": "Role: Shared. Base white reference. Used in background and inversity contexts."
           },
           "federal_red": {
             "parent": "Primitives/Colors",
             "oldValue": "#ff0000",
             "$type": "color",
             "$value": "#ff0000",
-            "$description": "Shared. Brand color mandated by Federal Chancellery. Used in navigation and brand components."
+            "$description": "Role: Shared. Brand color mandated by Federal Chancellery. Used in navigation and brand components."
           },
           "transparent": {
             "$type": "color",
             "$value": "transparent",
-            "$description": "Shared. Fully transparent color. CSS 'transparent' keyword for optimal browser compatibility and semantic clarity."
+            "$description": "Role: Shared. Fully transparent color. CSS 'transparent' keyword for optimal browser compatibility and semantic clarity."
           }
         },
         "orange": {
@@ -181,70 +181,70 @@
             "description": "",
             "$type": "color",
             "$value": "#fff7ed",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#ffedd5",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fed7aa",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fdba74",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fb923c",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#f97316",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#ea580c",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#c2410c",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#9a3412",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#7c2d12",
-            "$description": "Exclusive. Reserved for attention status (ob.s.color.status.attention). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for attention status. Do not use in other semantic contexts."
           }
         },
         "yellow": {
@@ -253,70 +253,70 @@
             "description": "",
             "$type": "color",
             "$value": "#fffbeb",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fef3c7",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fde68a",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fcd34d",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fbbf24",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#f59e0b",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#d97706",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#b45309",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#92400e",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#78350f",
-            "$description": "Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
           }
         },
         "green": {
@@ -325,70 +325,70 @@
             "description": "",
             "$type": "color",
             "$value": "#ecfdf5",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#d1fae5",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#a7f3d0",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#6ee7b7",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#34d399",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#10b981",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#059669",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#047857",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#065f46",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#064e3b",
-            "$description": "Exclusive. Reserved for resolved status (ob.s.color.status.resolved). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for resolved status. Do not use in other semantic contexts."
           }
         },
         "steelblue": {
@@ -396,61 +396,61 @@
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#F3F4F5",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#D3DEE9",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#AACAE6",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#6EB8E9",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#48A4D7",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#2E8FBF",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#2379A4",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#236487",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#255069",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#233C4D",
-            "$description": "Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
+            "$description": "Role: Shared. Used in emphasis_high interactive components (buttons, links) and neutral semantic tokens."
           }
         },
         "teal": {
@@ -459,70 +459,70 @@
             "description": "",
             "$type": "color",
             "$value": "#f2fdfc",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#cbfbf8",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#98f6f3",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#5de8ea",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#2bced4",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#14afb8",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#0d8b96",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#0f6b75",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#11575f",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#13474e",
-            "$description": "Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
           }
         },
         "indigo": {
@@ -531,70 +531,70 @@
             "description": "",
             "$type": "color",
             "$value": "#eef2ff",
-            "$description": "Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#e0e7ff",
-            "$description": "Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#c7d2fe",
-            "$description": "Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#a5b4fc",
-            "$description": "Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
+            "$description": "Role: Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#818cf8",
-            "$description": "Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
+            "$description": "Role: Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#6366f1",
-            "$description": "Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
+            "$description": "Role: Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#4f46e5",
-            "$description": "Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
+            "$description": "Role: Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#4338ca",
-            "$description": "Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#3730a3",
-            "$description": "Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#312e81",
-            "$description": "Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for visited link colors. Do not use in other semantic contexts."
           }
         },
         "purple": {
@@ -603,70 +603,70 @@
             "description": "",
             "$type": "color",
             "$value": "#f5f3ff",
-            "$description": "Free. Not assigned to a system semantic role."
+            "$description": "Role: Free. Not assigned to a system semantic role."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#ede9fe",
-            "$description": "Free. Not assigned to a system semantic role."
+            "$description": "Role: Free. Not assigned to a system semantic role."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#ddd6fe",
-            "$description": "Free. Not assigned to a system semantic role."
+            "$description": "Role: Free. Not assigned to a system semantic role."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#c4b5fd",
-            "$description": "Exclusive. Reserved for focus ring aura (lower contrast neighbor). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for focus ring aura (lower contrast neighbor). Do not use in other semantic contexts."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#a78bfa",
-            "$description": "Exclusive. Reserved for focus ring in light mode. Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for focus ring in light mode. Do not use in other semantic contexts."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#8b5cf6",
-            "$description": "Exclusive. Reserved for focus ring in dark mode. Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for focus ring in dark mode. Do not use in other semantic contexts."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#7c3aed",
-            "$description": "Exclusive. Reserved for focus ring aura (higher contrast neighbor). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for focus ring aura (higher contrast neighbor). Do not use in other semantic contexts."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#6d28d9",
-            "$description": "Free. Not assigned to a system semantic role."
+            "$description": "Role: Free. Not assigned to a system semantic role."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#5b21b6",
-            "$description": "Free. Not assigned to a system semantic role."
+            "$description": "Role: Free. Not assigned to a system semantic role."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#4c1d95",
-            "$description": "Free. Not assigned to a system semantic role."
+            "$description": "Role: Free. Not assigned to a system semantic role."
           }
         },
         "pink": {
@@ -675,70 +675,70 @@
             "description": "",
             "$type": "color",
             "$value": "#fdf2f8",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fce7f3",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fbcfe8",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#f9a8d4",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#f472b6",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#ec4899",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#db2777",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#be185d",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#9d174d",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#831843",
-            "$description": "Free. Available via ob.s.color.free.pink. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.pink. No exclusive system assignment."
           }
         },
         "cobalt_alpha": {
@@ -755,7 +755,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           },
           "100": {
             "parent": "Colors/Mode 1",
@@ -770,7 +770,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           },
           "200": {
             "parent": "Colors/Mode 1",
@@ -785,7 +785,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           },
           "300": {
             "parent": "Colors/Mode 1",
@@ -800,7 +800,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           },
           "400": {
             "parent": "Colors/Mode 1",
@@ -815,7 +815,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           },
           "500": {
             "parent": "Colors/Mode 1",
@@ -830,7 +830,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           },
           "600": {
             "parent": "Colors/Mode 1",
@@ -845,7 +845,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           },
           "700": {
             "parent": "Colors/Mode 1",
@@ -860,7 +860,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           },
           "800": {
             "parent": "Colors/Mode 1",
@@ -875,7 +875,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           },
           "900": {
             "parent": "Colors/Mode 1",
@@ -890,7 +890,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
+            "$description": "Role: Shared. Used for disabled states and transparent overlays in emphasis_low contexts."
           }
         },
         "white_alpha": {
@@ -907,7 +907,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           },
           "100": {
             "parent": "Colors/Mode 1",
@@ -922,7 +922,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           },
           "200": {
             "parent": "Colors/Mode 1",
@@ -937,7 +937,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           },
           "300": {
             "parent": "Colors/Mode 1",
@@ -952,7 +952,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           },
           "400": {
             "parent": "Colors/Mode 1",
@@ -967,7 +967,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           },
           "500": {
             "parent": "Colors/Mode 1",
@@ -982,7 +982,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           },
           "600": {
             "parent": "Colors/Mode 1",
@@ -997,7 +997,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           },
           "700": {
             "parent": "Colors/Mode 1",
@@ -1012,7 +1012,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           },
           "800": {
             "parent": "Colors/Mode 1",
@@ -1027,7 +1027,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           },
           "900": {
             "parent": "Colors/Mode 1",
@@ -1042,7 +1042,7 @@
             },
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Shared. Used for disabled states and transparent white overlays."
+            "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           }
         },
         "indigo_alpha": {
@@ -1059,7 +1059,7 @@
             },
             "$type": "color",
             "$value": "#312e81",
-            "$description": "Shared. Used for disabled states and shadow overlays."
+            "$description": "Role: Shared. Used for disabled states and shadow overlays."
           }
         },
         "blue": {
@@ -1067,61 +1067,61 @@
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#EFF6FF",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#DBEAFE",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#bfdbfe",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#93c5fd",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#60a5fa",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#3b82f6",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#2563EB",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#1D4ED8",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#1E40AF",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#1E3A8A",
-            "$description": "Exclusive. Reserved for informational status (ob.s.color.status.info). Do not use in other semantic contexts."
+            "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           }
         }
       }
