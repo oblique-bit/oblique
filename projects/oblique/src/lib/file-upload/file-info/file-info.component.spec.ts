@@ -181,7 +181,13 @@ describe('ObFileInfoComponent', () => {
 				describe('with no data', () => {
 					beforeEach(() => {
 						jest.spyOn(uploadService, 'getUploadedFiles').mockReturnValue(of([]));
-						component.ngOnInit();
+						// Recreate the component so ngOnInit runs once against the empty response.
+						fixture.destroy();
+						fixture = TestBed.createComponent(ObFileInfoComponent);
+						component = fixture.componentInstance;
+						component.getUploadedFilesUrl = 'test-url';
+						component.mapFunction = (filesToMap: ObIFileDescription[]) =>
+							filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
 						fixture.detectChanges();
 					});
 					it('should show an infobox', () => {

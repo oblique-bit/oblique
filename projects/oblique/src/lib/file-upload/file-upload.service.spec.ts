@@ -1,6 +1,6 @@
 import {HttpClient, HttpEvent, HttpEventType} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {Observable, of, throwError} from 'rxjs';
 import {ObFileUploadService} from './file-upload.service';
 import {ObMockNotificationService} from '../notification/_mocks/mock-notification.service';
@@ -38,45 +38,41 @@ describe('ObFilesUploadService', () => {
 			expect(httpMock.request).toHaveBeenCalled();
 		});
 
-		it('should ignore Sent event type', fakeAsync(() => {
+		it('should ignore Sent event type', () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.Sent}));
 			let emitted = false;
 			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(() => {
 				emitted = true;
 			});
-			tick(0);
 			expect(emitted).toBe(false);
-		}));
+		});
 
-		it('should ignore ResponseHeader event type', fakeAsync(() => {
+		it('should ignore ResponseHeader event type', () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.ResponseHeader}));
 			let emitted = false;
 			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(() => {
 				emitted = true;
 			});
-			tick(0);
 			expect(emitted).toBe(false);
-		}));
+		});
 
-		it('should ignore User event type', fakeAsync(() => {
+		it('should ignore User event type', () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.User}));
 			let emitted = false;
 			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(() => {
 				emitted = true;
 			});
-			tick(0);
 			expect(emitted).toBe(false);
-		}));
+		});
 
-		it('should ignore DownloadProgress event type', fakeAsync(() => {
+		it('should ignore DownloadProgress event type', () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.DownloadProgress}));
 			let emitted = false;
 			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(() => {
 				emitted = true;
 			});
-			tick(0);
 			expect(emitted).toBe(false);
-		}));
+		});
 
 		it('should forward UploadProgress event type', done => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.UploadProgress}));
@@ -132,45 +128,41 @@ describe('ObFilesUploadService', () => {
 			expect(httpMock.request).toHaveBeenCalled();
 		});
 
-		it('should ignore Sent event type', fakeAsync(() => {
+		it('should ignore Sent event type', () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.Sent}));
 			let emitted = false;
 			service.upload(baseServerUrl, sampleFile).subscribe(() => {
 				emitted = true;
 			});
-			tick(0);
 			expect(emitted).toBe(false);
-		}));
+		});
 
-		it('should ignore ResponseHeader event type', fakeAsync(() => {
+		it('should ignore ResponseHeader event type', () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.ResponseHeader}));
 			let emitted = false;
 			service.upload(baseServerUrl, sampleFile).subscribe(() => {
 				emitted = true;
 			});
-			tick(0);
 			expect(emitted).toBe(false);
-		}));
+		});
 
-		it('should ignore User event type', fakeAsync(() => {
+		it('should ignore User event type', () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.User}));
 			let emitted = false;
 			service.upload(baseServerUrl, sampleFile).subscribe(() => {
 				emitted = true;
 			});
-			tick(0);
 			expect(emitted).toBe(false);
-		}));
+		});
 
-		it('should ignore DownloadProgress event type', fakeAsync(() => {
+		it('should ignore DownloadProgress event type', () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.DownloadProgress}));
 			let emitted = false;
 			service.upload(baseServerUrl, sampleFile).subscribe(() => {
 				emitted = true;
 			});
-			tick(0);
 			expect(emitted).toBe(false);
-		}));
+		});
 
 		it('should forward UploadProgress event type', done => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.UploadProgress}));
