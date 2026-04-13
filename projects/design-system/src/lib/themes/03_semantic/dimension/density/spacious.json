@@ -4,6 +4,15 @@
       "dimension": {
         "dynamic": {
           "density": {
+            "token_family_docs": {
+              "$description": "Semantic spacing tokens for the Spacious density mode — increased whitespace for comfortable reading and interaction.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
             "xs": {
               "px": {
                 "$type": "dimension",

@@ -2,6 +2,15 @@
   "ob": {
     "h": {
       "list": {
+        "token_family_docs": {
+          "$description": "Tokens for the HTML list elements — single-item and group spacing.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "single_item": {
           "spacing": {
             "marker_gap": {

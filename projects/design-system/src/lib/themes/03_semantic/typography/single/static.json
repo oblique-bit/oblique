@@ -2,6 +2,15 @@
   "ob": {
     "s": {
       "static": {
+        "token_family_docs": {
+          "$description": "Size-mode-independent individual typography tokens.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "font_size": {
           "xs": {
             "$type": "fontSizes",

@@ -4,6 +4,15 @@
       "dimension": {
         "dynamic": {
           "density": {
+            "token_family_docs": {
+              "$description": "Semantic spacing tokens for the Compact density mode — reduced whitespace for information-dense layouts.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
             "xs": {
               "px": {
                 "$type": "dimension",

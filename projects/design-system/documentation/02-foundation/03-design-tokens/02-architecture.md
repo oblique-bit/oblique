@@ -227,3 +227,82 @@ All naming conventions, patterns, and guidelines are documented in [Token Naming
 
 ---
 
+## **`$extensions` Convention**
+
+The W3C Design Token Community Group specification reserves the `$extensions` key for non-standard, tooling-specific metadata. In this system, `$extensions` is used **only for documentation purposes**  — it has no effect on token resolution, Style Dictionary output, or the compiled token values consumed by components.
+
+### **Namespace naming rule**
+
+The namespace key must be a plain string that identifies the system, **not** a dot-separated token path. The `ob.` prefix is exclusively reserved for token names (`ob.p.*`, `ob.s1.*`, etc.) and must never appear as a JSON key in `$extensions`.
+
+All Oblique-internal extensions use the namespace `"oblique"`.
+
+### **Properties in use**
+
+Both purposes share the single `"oblique"` namespace and are distinguished by which properties are present.
+
+---
+
+#### `semanticAssigned` — Color role assignment status
+
+Used on leaf color tokens (tokens that have a `$value`).
+
+| Property | Type | Meaning |
+|---|---|---|
+| `semanticAssigned` | `boolean` | `true` — this token has a fixed semantic role; system consumers must not repurpose or reassign this color. `false` — token is defined but its semantic assignment is still pending a design decision. |
+
+**Purpose**: Consumer protection signal. Documents which colors are already claimed for a specific role in the system (e.g. cobalt/indigo/purple are reserved for the focus ring accessibility requirement). Surfaced in both Figma living documentation and web documentation so consumers know which colors are off-limits for arbitrary use.
+
+**Example**:
+```json
+"focus_ring": {
+  "inversity_normal": {
+    "$extensions": {
+      "oblique": {
+        "semanticAssigned": true
+      }
+    },
+    "$type": "color",
+    "$value": "{ob.s1.color.interaction.focus_ring.inversity_normal}"
+  }
+}
+```
+
+---
+
+#### `kind` + `export` — Token family documentation node
+
+Used on `token_family_docs` nodes exclusively. A `token_family_docs` node is not a real token — it has no `$value` and must never be exported or resolved. It exists at the root of each token family to carry the family-level `$description` that appears as the table heading in documentation.
+
+| Property | Type | Meaning |
+|---|---|---|
+| `kind` | `"family_docs"` | Marks this node as a family documentation entry, not a consumable token. |
+| `export` | `false` | Instructs the build pipeline to skip this node entirely. |
+
+**Example**:
+```json
+"neutral": {
+  "token_family_docs": {
+    "$description": "Foundational colors for backgrounds, text, borders, and surfaces.",
+    "$extensions": {
+      "oblique": {
+        "kind": "family_docs",
+        "export": false
+      }
+    }
+  },
+  "fg": { ... }
+}
+```
+
+---
+
+### **Rules**
+
+1. **Documentation only** — `$extensions` values are never read by Style Dictionary transforms or token resolution logic.
+2. **Single namespace** — All Oblique internal metadata uses the `"oblique"` key. Do not create dot-separated variants such as `"ob.figma"` or `"ob.build"`.
+3. **No ad-hoc additions** — Do not add new properties to the `"oblique"` namespace or any other without updating this section first.
+4. **`family_docs` nodes are invisible to consumers** — They must be filtered out in every export, build, and documentation pipeline.
+
+---
+

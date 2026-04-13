@@ -2,6 +2,15 @@
   "ob": {
     "c": {
       "pill": {
+        "token_family_docs": {
+          "$description": "Pill tokens for internal reference — composite, foreground label, and focus ring. Not for direct component assignment.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "composite": {
           "closed": {
             "enabled": {

@@ -4,6 +4,15 @@
       "dimension": {
         "dynamic": {
           "typography_context": {
+            "token_family_docs": {
+              "$description": "Typography dimension tokens for the Prose context — generous spacing optimized for readable body text.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
             "xs": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.12}"

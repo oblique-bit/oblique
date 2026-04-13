@@ -2,6 +2,15 @@
   "ob": {
     "h": {
       "button": {
+        "token_family_docs": {
+          "$description": "HTML button tokens for internal reference — not for direct component assignment.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "composite": {
           "primary": {
             "inversity_normal": {

@@ -2,6 +2,15 @@
   "ob": {
     "h": {
       "button": {
+        "token_family_docs": {
+          "$description": "Viewport-specific layout tokens for the HTML button element at the desktop breakpoint.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "container": {
           "spacing": {
             "gap": {

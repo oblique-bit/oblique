@@ -4,6 +4,15 @@
       "typography": {
         "grouped": {
           "dynamic": {
+            "token_family_docs": {
+              "$description": "Grouped typography token sets for the Small component size mode.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
             "xs": {
               "normal": {
                 "$type": "typography",

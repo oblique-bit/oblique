@@ -2,6 +2,15 @@
   "ob": {
     "p": {
       "z_index": {
+        "token_family_docs": {
+          "$description": "Primitive z-index scale with named levels from 0 to 1500. Referenced by semantic z-index tokens.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "0": {
           "$type": "number",
           "$value": "auto"

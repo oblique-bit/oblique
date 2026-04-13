@@ -3,6 +3,15 @@
     "s": {
       "motion": {
         "easing": {
+          "token_family_docs": {
+            "$description": "Mode-independent easing curve tokens — standard, entrance, exit, and emphasis. Not affected by motion mode.",
+            "$extensions": {
+              "oblique": {
+                "kind": "token_family_docs",
+                "export": false
+              }
+            }
+          },
           "standard": {
             "$type": "cubicBezier",
             "$value": "{ob.p.motion.easing.ease_out}",

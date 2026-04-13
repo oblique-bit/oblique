@@ -2,6 +2,15 @@
   "ob": {
     "c": {
       "tooltip": {
+        "token_family_docs": {
+          "$description": "Component tokens for the Tooltip atom — spacing, color (bg, fg), and typography.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "spacing": {
           "padding_top": {
             "$type": "spacing",

@@ -2,6 +2,15 @@
   "ob": {
     "s": {
       "border_radius": {
+        "token_family_docs": {
+          "$description": "Semantic border tokens — border-radius, border-width, outline-offset, and border shorthand. Referenced by component and HTML token files.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "none": {
           "$type": "borderRadius",
           "$value": "{ob.p.dimension.px.0}"

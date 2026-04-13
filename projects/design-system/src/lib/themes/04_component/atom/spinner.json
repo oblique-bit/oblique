@@ -2,6 +2,15 @@
   "ob": {
     "c": {
       "spinner": {
+        "token_family_docs": {
+          "$description": "Component tokens for the Spinner atom — size, color (active, inactive), and border-radius.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "size": {
           "$type": "dimension",
           "$value": "{ob.s.dimension.dynamic.component_size.container.xl.px}",

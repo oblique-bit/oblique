@@ -3,6 +3,15 @@
     "s": {
       "motion": {
         "duration": {
+          "token_family_docs": {
+            "$description": "Motion tokens for the Disabled motion mode — all durations set to zero for reduced-motion accessibility.",
+            "$extensions": {
+              "oblique": {
+                "kind": "token_family_docs",
+                "export": false
+              }
+            }
+          },
           "instant": {
             "$type": "duration",
             "$value": "{ob.p.motion.duration.instant}",

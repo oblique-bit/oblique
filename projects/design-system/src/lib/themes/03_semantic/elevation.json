@@ -2,6 +2,15 @@
   "ob": {
     "s": {
       "shadow": {
+        "token_family_docs": {
+          "$description": "Semantic shadow tokens by elevation level — sm, md, default, none. Use to convey layer depth and component hierarchy.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "sm": {
           "$type": "boxShadow",
           "$value": {

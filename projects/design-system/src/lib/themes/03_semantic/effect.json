@@ -2,6 +2,15 @@
   "ob": {
     "s": {
       "fx": {
+        "token_family_docs": {
+          "$description": "Semantic visual effect tokens for surface treatments. Referenced by component and HTML token files.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "blur": {
           "sm": {
             "$type": "number",

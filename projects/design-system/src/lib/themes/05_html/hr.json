@@ -2,6 +2,15 @@
   "ob": {
     "h": {
       "hr": {
+        "token_family_docs": {
+          "$description": "Tokens for the HTML hr element — height and color (subtle, default, strong).",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "size": {
           "height": {
             "$type": "dimension",

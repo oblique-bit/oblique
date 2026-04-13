@@ -4,6 +4,15 @@
       "dimension": {
         "static": {
           "density": {
+            "token_family_docs": {
+              "$description": "Density-independent spacing tokens — fixed values not affected by density mode.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
             "xs": {
               "px": {
                 "$type": "dimension",

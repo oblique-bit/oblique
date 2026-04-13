@@ -2,6 +2,15 @@
   "ob": {
     "p": {
       "number": {
+        "token_family_docs": {
+          "$description": "Unitless numeric primitives — percentage, line-height ratios, letter-spacing values, and infinity. Referenced by semantic typography tokens.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "percentage": {
           "50": {
             "$type": "number",

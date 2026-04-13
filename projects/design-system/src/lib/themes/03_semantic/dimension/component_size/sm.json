@@ -4,6 +4,15 @@
       "dimension": {
         "dynamic": {
           "component_size": {
+            "token_family_docs": {
+              "$description": "Component dimension tokens for the Small size mode.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
             "none": {
               "px": {
                 "$type": "dimension",

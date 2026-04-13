@@ -2,6 +2,15 @@
   "ob": {
     "c": {
       "icon": {
+        "token_family_docs": {
+          "$description": "Layout and size tokens for the Icon atom — static, component, and inline-text size variants.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "static": {
           "size": {
             "xs": {

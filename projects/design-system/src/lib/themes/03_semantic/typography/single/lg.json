@@ -2,6 +2,15 @@
   "ob": {
     "s": {
       "dynamic": {
+        "token_family_docs": {
+          "$description": "Individual typography tokens for the Large component size mode — font-size, line-height, paragraph-spacing, and heading spacing.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "font_size": {
           "xs": {
             "$type": "fontSizes",

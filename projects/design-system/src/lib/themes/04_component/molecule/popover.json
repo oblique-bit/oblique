@@ -2,6 +2,15 @@
   "ob": {
     "c": {
       "popover": {
+        "token_family_docs": {
+          "$description": "Component tokens for the Popover molecule — spacing, size, and color (bg, border, fg).",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "spacing": {
           "padded_container": {
             "padding_top": {

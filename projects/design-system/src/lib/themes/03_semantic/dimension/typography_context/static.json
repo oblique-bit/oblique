@@ -4,6 +4,15 @@
       "dimension": {
         "static": {
           "typography_context": {
+            "token_family_docs": {
+              "$description": "Context-independent typography dimension tokens — fixed values not affected by typography context mode.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
             "none": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.0}"

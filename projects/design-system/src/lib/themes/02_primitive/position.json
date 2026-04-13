@@ -2,6 +2,15 @@
   "ob": {
     "p": {
       "position": {
+        "token_family_docs": {
+          "$description": "Primitive positional offset values — top and right. Referenced by layout token files.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "top": {
           "$type": "spacing",
           "$value": "0"

@@ -4,6 +4,15 @@
       "dimension": {
         "dynamic": {
           "density": {
+            "token_family_docs": {
+              "$description": "Semantic spacing tokens for the Standard density mode — balanced spacing for general-purpose layouts.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
             "xs": {
               "px": {
                 "$type": "dimension",

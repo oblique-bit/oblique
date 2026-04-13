@@ -2,6 +2,15 @@
   "ob": {
     "s": {
       "z_index": {
+        "token_family_docs": {
+          "$description": "Semantic z-index tokens for UI layering — header, drawer, modal, notification, tooltip, and other stacking contexts.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "stepper_mobile": {
           "$type": "number",
           "$value": "{ob.p.z_index.1000}"

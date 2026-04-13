@@ -2,6 +2,15 @@
   "ob": {
     "p": {
       "dimension": {
+        "token_family_docs": {
+          "$description": "Base spacing values in px and rem. Named by pixel step (e.g. 0, 4, 8, 16). Referenced by all semantic dimension tokens.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "px": {
           "0": {
             "$type": "dimension",

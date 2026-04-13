@@ -2,6 +2,15 @@
   "ob": {
     "p": {
       "assets": {
+        "token_family_docs": {
+          "$description": "Asset overrides applied in the Dark lightness theme — logo and image assets resolved for dark backgrounds.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "logo": {
           "$type": "asset",
           "$value": "logo-on-dark.svg"

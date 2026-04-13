@@ -3,6 +3,15 @@
     "h": {
       "button": {
         "color": {
+          "token_family_docs": {
+            "$description": "Color tokens for the HTML button element — foreground, background, and border across all interaction states.",
+            "$extensions": {
+              "oblique": {
+                "kind": "token_family_docs",
+                "export": false
+              }
+            }
+          },
           "fg": {
             "primary": {
               "inversity_normal": {

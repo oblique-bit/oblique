@@ -4,6 +4,15 @@
       "typography": {
         "grouped": {
           "static": {
+            "token_family_docs": {
+              "$description": "Grouped typography tokens independent of component size mode.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
             "xs": {
               "normal": {
                 "$type": "typography",

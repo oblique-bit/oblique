@@ -2,6 +2,15 @@
   "ob": {
     "h": {
       "link": {
+        "token_family_docs": {
+          "$description": "Base tokens for the HTML anchor element — spacing, motion, asset, color, and interaction states (enabled, hover, focus, active).",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "spacing": {
           "gap": {
             "$type": "spacing",

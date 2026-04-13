@@ -2,6 +2,15 @@
   "ob": {
     "c": {
       "tag": {
+        "token_family_docs": {
+          "$description": "Tag tokens for internal reference — filter styles. Not for direct component assignment.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "filter": {
           "focus_ring": {
             "border_radius": {

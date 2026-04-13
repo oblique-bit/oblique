@@ -2,6 +2,15 @@
   "ob": {
     "p": {
       "motion": {
+        "token_family_docs": {
+          "$description": "Primitive duration steps (instant, fast, medium, slow, slower) and easing curves (linear, ease_out, ease_in, ease_in_out). Referenced by semantic motion tokens.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "duration": {
           "instant": {
             "$type": "duration",

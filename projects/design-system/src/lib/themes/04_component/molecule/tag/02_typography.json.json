@@ -3,6 +3,15 @@
     "c": {
       "tag": {
         "typography": {
+          "token_family_docs": {
+            "$description": "Typography tokens for the Tag molecule label.",
+            "$extensions": {
+              "oblique": {
+                "kind": "token_family_docs",
+                "export": false
+              }
+            }
+          },
           "font_family": {
             "$type": "fontFamilies",
             "$value": "{ob.s.static.font_family.code}"

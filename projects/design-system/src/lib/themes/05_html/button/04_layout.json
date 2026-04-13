@@ -2,6 +2,15 @@
   "ob": {
     "h": {
       "button": {
+        "token_family_docs": {
+          "$description": "Layout tokens for the HTML button element — spacing, size, and border-radius.",
+          "$extensions": {
+            "oblique": {
+              "kind": "token_family_docs",
+              "export": false
+            }
+          }
+        },
         "label_icon": {
           "spacing": {
             "padding": {
