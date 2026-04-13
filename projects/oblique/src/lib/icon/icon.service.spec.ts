@@ -1,5 +1,5 @@
 import {HttpClientModule} from '@angular/common/http';
-import {TestBed, waitForAsync} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatIconRegistry} from '@angular/material/icon';
 import {ObIconModule, ObIconService} from './icon.module';
@@ -30,7 +30,7 @@ describe('IconService', () => {
 
 	const serializer = new XMLSerializer();
 	describe('without config', () => {
-		beforeEach(waitForAsync(() => {
+		beforeEach(() => {
 			TestBed.configureTestingModule({
 				imports: [ObIconModule, HttpClientModule, MatIconTestingModule],
 				providers: [
@@ -40,7 +40,7 @@ describe('IconService', () => {
 			});
 			registry = TestBed.inject(MatIconRegistry);
 			iconService = TestBed.inject(ObIconService);
-		}));
+		});
 
 		it('should be created', () => {
 			expect(iconService).toBeTruthy();
@@ -103,7 +103,7 @@ describe('IconService', () => {
 	});
 
 	describe('with default config without Oblique', () => {
-		beforeEach(waitForAsync(() => {
+		beforeEach(() => {
 			jest.resetModules();
 			TestBed.configureTestingModule({
 				imports: [MatIconTestingModule],
@@ -117,7 +117,7 @@ describe('IconService', () => {
 			});
 			registry = TestBed.inject(MatIconRegistry);
 			iconService = TestBed.inject(ObIconService);
-		}));
+		});
 
 		it('should be created', () => {
 			expect(iconService).toBeTruthy();
@@ -129,7 +129,7 @@ describe('IconService', () => {
 	});
 
 	describe('with default config without Oblique and with a font class', () => {
-		beforeEach(waitForAsync(() => {
+		beforeEach(() => {
 			jest.resetModules();
 			TestBed.configureTestingModule({
 				imports: [MatIconTestingModule],
@@ -143,7 +143,7 @@ describe('IconService', () => {
 			});
 			registry = TestBed.inject(MatIconRegistry);
 			iconService = TestBed.inject(ObIconService);
-		}));
+		});
 
 		it('should be created', () => {
 			expect(iconService).toBeTruthy();
@@ -155,7 +155,7 @@ describe('IconService', () => {
 	});
 
 	describe('with default config without Oblique and with additional icon set', () => {
-		beforeEach(waitForAsync(() => {
+		beforeEach(() => {
 			jest.resetModules();
 			TestBed.configureTestingModule({
 				imports: [MatIconTestingModule],
@@ -169,7 +169,7 @@ describe('IconService', () => {
 			});
 			registry = TestBed.inject(MatIconRegistry);
 			iconService = TestBed.inject(ObIconService);
-		}));
+		});
 
 		it('should be created', () => {
 			expect(iconService).toBeTruthy();
