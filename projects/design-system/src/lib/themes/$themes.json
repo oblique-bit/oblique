@@ -1660,7 +1660,7 @@
       "ob.s.dimension.dynamic.component_size.macro.sm.px": "f1da2800955b4a90a449dc2c1f62125587fb4f6c",
       "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483"
     },
-    "group": "component_size"
+    "group": "ui_scale"
   },
   {
     "id": "comp-size-sm-2025-09-12-multipliers",
@@ -1788,7 +1788,7 @@
       "ob.s.dimension.dynamic.component_size.macro.sm.px": "f1da2800955b4a90a449dc2c1f62125587fb4f6c",
       "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483"
     },
-    "group": "component_size"
+    "group": "ui_scale"
   },
   {
     "id": "comp-size-lg-2025-09-12-multipliers",
@@ -1916,7 +1916,7 @@
       "ob.s.dimension.dynamic.component_size.macro.sm.px": "f1da2800955b4a90a449dc2c1f62125587fb4f6c",
       "ob.s.dimension.dynamic.component_size.macro.sm.rem": "48dbcf9657b606018def55fb8bc8df27157b0483"
     },
-    "group": "component_size"
+    "group": "ui_scale"
   },
   {
     "id": "interface-context",
