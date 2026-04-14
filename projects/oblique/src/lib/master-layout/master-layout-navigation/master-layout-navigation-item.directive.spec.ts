@@ -145,7 +145,7 @@ describe(ObMasterLayoutNavigationItemDirective.name, () => {
 		beforeEach(() => {
 			directive.isExpanded = false;
 			directive.openSubMenu();
-			fixture.detectChanges();
+			fixture.componentRef.changeDetectorRef.detectChanges();
 		});
 
 		test('that it is expanded', () => {
