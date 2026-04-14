@@ -6,7 +6,7 @@
  * _Set Heading instances on a DRAFT copy of the "🎨 Colors – Maintainer" page.
  *
  * The original page (9544:41) is never touched. A new page
- * "🎨 Colors – Doc Review" is created automatically on the first run
+ * "🎨 Colors – Tokens" is created automatically on the first run
  * (duplicated from the original). Subsequent runs reuse the draft page.
  *
  * Each _Set Heading's description text is updated to show all three fields:
@@ -43,7 +43,7 @@ const DOC_DIR = path.join(ROOT, 'src/lib/themes/doc');
 // Original page to duplicate (never modified)
 const ORIGINAL_PAGE_ID = '9544:41';
 // Name of the draft copy that will be created / reused
-const DRAFT_PAGE_NAME  = '🎨 Colors – Doc Review';
+const DRAFT_PAGE_NAME  = '🎨 Colors – Tokens';
 
 // ─── Doc entry map ─────────────────────────────────────────────────────────
 // Each entry maps a readable title (as it appears in the Figma _Set Heading)

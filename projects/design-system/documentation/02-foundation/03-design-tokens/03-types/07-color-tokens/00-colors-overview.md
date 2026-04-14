@@ -16,6 +16,7 @@
   - [**Neutral Colors**](04-colors-semantic-neutral.md) - Backgrounds, text, borders, surfaces
   - [**Interaction Colors**](06-colors-semantic-interaction.md) - Hover, active, visited, disabled states  
   - [**Status Colors**](07-colors-semantic-status.md) - Success, warning, error, info states
+  - [**Free Colors**](08-colors-semantic-free.md) - Unassigned semantic colors for project-specific use
 
 ---
 
@@ -67,6 +68,14 @@ Colors that communicate state and system feedback:
 
 [View Status Colors Documentation →](07-colors-semantic-status.md)
 
+#### Free Colors
+Colors with no built-in semantic meaning, available for project-specific purposes:
+- **Decorative use**: Visual grouping, categorization, tagging without workflow meaning
+- **Status extension**: Mapped to project-defined statuses at the project's S-level
+- **Data visualization**: Charts, graphs, and arbitrary categorical color needs
+
+[View Free Colors Documentation →](08-colors-semantic-free.md)
+
 ## Token Structure
 
 ### Semantic Naming Convention
@@ -111,6 +120,7 @@ Components consume color tokens based on their semantic role. For detailed compo
 | **Buttons** | interaction | [Interaction Colors](06-colors-semantic-interaction.md) |
 | **Form inputs** | interaction + status | [Interaction Colors](06-colors-semantic-interaction.md) + [Status Colors](07-colors-semantic-status.md) |
 | **Status indicators** | status | [Status Colors](07-colors-semantic-status.md) |
+| **Categorical labels, data viz** | free | [Free Colors](08-colors-semantic-free.md) |
 
 #### Design Consistency
 When combining categories, maintain:

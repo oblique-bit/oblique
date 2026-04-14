@@ -253,70 +253,70 @@
             "description": "",
             "$type": "color",
             "$value": "#fffbeb",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fef3c7",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fde68a",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fcd34d",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#fbbf24",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#f59e0b",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#d97706",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#b45309",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#92400e",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#78350f",
-            "$description": "Role: Free. Available via ob.s.color.free.yellow for pending status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.yellow. No exclusive system assignment."
           }
         },
         "green": {
@@ -459,70 +459,70 @@
             "description": "",
             "$type": "color",
             "$value": "#f2fdfc",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#cbfbf8",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#98f6f3",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#5de8ea",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#2bced4",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#14afb8",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#0d8b96",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#0f6b75",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#11575f",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#13474e",
-            "$description": "Role: Free. Available via ob.s.color.free.teal for confirmed status indicators. No exclusive system assignment."
+            "$description": "Role: Free. Available via ob.s.color.free.teal. No exclusive system assignment."
           }
         },
         "indigo": {
@@ -552,28 +552,28 @@
             "description": "",
             "$type": "color",
             "$value": "#a5b4fc",
-            "$description": "Role: Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
+            "$description": "Role: Free. Available via ob.s.color.free.indigo. No exclusive system assignment."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#818cf8",
-            "$description": "Role: Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
+            "$description": "Role: Free. Available via ob.s.color.free.indigo. No exclusive system assignment."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#6366f1",
-            "$description": "Role: Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
+            "$description": "Role: Free. Available via ob.s.color.free.indigo. No exclusive system assignment."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "description": "",
             "$type": "color",
             "$value": "#4f46e5",
-            "$description": "Role: Free. Not assigned to a system semantic role. Available via ob.s.color.free.indigo."
+            "$description": "Role: Free. Available via ob.s.color.free.indigo. No exclusive system assignment."
           },
           "700": {
             "parent": "Colors/Mode 1",
