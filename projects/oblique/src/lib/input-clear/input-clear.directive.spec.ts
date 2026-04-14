@@ -367,7 +367,6 @@ describe('InputClear', () => {
 			test('that it added the class .ob-text-control-clear-has-value', () => {
 				input.value = 'testInput';
 				input.dispatchEvent(new Event('keyup'));
-				fixture.detectChanges();
 				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
 				expect(parentElement).toBeTruthy();
 			});
@@ -375,7 +374,6 @@ describe('InputClear', () => {
 			test('that it removed the class .ob-text-control-clear-has-value', () => {
 				input.value = null;
 				input.dispatchEvent(new Event('keyup'));
-				fixture.detectChanges();
 				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
 				expect(parentElement).toBeNull();
 			});
@@ -411,7 +409,6 @@ describe('InputClear', () => {
 			beforeEach(() => {
 				input = fixture.nativeElement.querySelector('input');
 				input.value = 'testInput';
-				fixture.detectChanges();
 				input.dispatchEvent(new Event('input'));
 				fixture.nativeElement.querySelector('button').click();
 			});
