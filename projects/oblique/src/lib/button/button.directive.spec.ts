@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {MatButtonModule} from '@angular/material/button';
@@ -25,6 +25,7 @@ describe(ObButtonDirective.name, () => {
 	let directive: ObButtonDirective;
 	let component: ButtonDirectiveTestComponent;
 	let fixture: ComponentFixture<ButtonDirectiveTestComponent>;
+	let hostChangeDetector: ChangeDetectorRef;
 
 	beforeEach(async () => {
 		TestBed.resetTestingModule();
@@ -440,6 +441,7 @@ describe(ObButtonDirective.name, () => {
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
 			component.obButton = parameter.obButtonBeforeChange;
+			hostChangeDetector = fixture.componentRef.changeDetectorRef;
 			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
 			directive = element.injector.get(ObButtonDirective);
@@ -482,7 +484,7 @@ describe(ObButtonDirective.name, () => {
 		describe('after change', () => {
 			beforeEach(() => {
 				component.obButton = parameter.obButtonAfterChange;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 			});
 
 			it('should create an instance', () => {
