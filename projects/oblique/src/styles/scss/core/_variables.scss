@@ -72,7 +72,7 @@ $ob-line-width-xs: 0.2 * $ob-line-width !default;
 $ob-border-radius-base: 4px !default;
 $ob-border-radius-button: 2px !default;
 $ob-button-height: 36px !default;
-$ob-navigation-scrollable-padding: 2 * $ob-spacing-default !default;
+$ob-navigation-scrollable-padding: 40px !default; /* width of scroll buttons */
 $ob-navigation-sub-menu-width: 308px !default;
 $ob-pop-over-max-height: 50vh !default;
 $ob-column-width: 20% !default;

@@ -17,6 +17,7 @@ import {ObINavigationLink} from '@oblique/oblique';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {ObEScrollMode} from '../master-layout.model';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
+import * as scrollDelta from './scroll-delta';
 
 @Component({
 	standalone: false,
@@ -295,6 +296,53 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 
 			test('linksChanged emits the updated links', () => {
 				expect(emittedValue).toEqual(component.links);
+			});
+		});
+
+		describe('scrolling', () => {
+			test('click on right scroll button', () => {
+				component.isScrollable = true;
+				component.maxScroll = 100;
+				fixture.detectChanges();
+
+				jest.useFakeTimers();
+				fixture.debugElement.query(By.css('#ob-navigation-scrollable-control-right')).nativeElement.click();
+				jest.runAllTimers();
+				fixture.detectChanges();
+				expect(component.currentScroll).toBe(95);
+				jest.useRealTimers();
+			});
+
+			test('click on left scroll button', () => {
+				component.isScrollable = true;
+				component.currentScroll = 15;
+				component.maxScroll = 100;
+				fixture.detectChanges();
+
+				jest.useFakeTimers();
+				fixture.debugElement.query(By.css('#ob-navigation-scrollable-control-left')).nativeElement.click();
+				jest.runAllTimers();
+				fixture.detectChanges();
+				expect(component.currentScroll).toBe(0);
+				jest.useRealTimers();
+			});
+
+			test('focusing an element scrolls it into view', () => {
+				component.isScrollable = true;
+				component.maxScroll = 100;
+				fixture.detectChanges();
+				jest.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
+				component.focusIn('ob-main-nav-item-', 'full');
+				expect(component.currentScroll).toBe(42);
+			});
+
+			test("focusing out of an element doesn't scroll it", () => {
+				component.isScrollable = true;
+				component.maxScroll = 100;
+				fixture.detectChanges();
+				jest.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
+				component.focusOut('ob-main-nav-item-', 'full');
+				expect(component.currentScroll).toBe(0);
 			});
 		});
 	});

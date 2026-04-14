@@ -31,6 +31,8 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-
 import {ObNavigationLink} from './navigation-link.model';
 import {TranslateService} from '@ngx-translate/core';
 import {OB_HAS_LANGUAGE_IN_URL} from '../../utilities';
+import {getScrollIntoViewDelta} from './scroll-delta';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
@@ -66,7 +68,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		fragment: 'ignored',
 		matrixParams: 'ignored',
 	};
-	private static readonly buttonWidth = 30;
+	private static readonly buttonWidth = 40; // $ob-navigation-scrollable-padding
 	private readonly router = inject(Router);
 	private readonly masterLayout = inject(ObMasterLayoutService);
 	private readonly config = inject(ObMasterLayoutConfig);
@@ -94,6 +96,7 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.currentParentRouterLinkBase$ = this.currentParentRouterLinkBase.asObservable();
 		this.scrollModeChange();
 		this.fullWidthChange();
+		this.preventBrowserFocusOnLastItem();
 	}
 
 	ngOnChanges(): void {
@@ -120,17 +123,12 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.unsubscribe.complete();
 	}
 
-	toggleFocus(prefix: string, linkId: string): void {
-		const focusedEl: HTMLElement = this.el.nativeElement.querySelector(
-			`.ob-master-layout-navigation-link.ob-main-nav-link#${linkId}`
-		);
-		const idOfNavItem = `#${prefix}${linkId}`;
-		const navItem: HTMLElement = this.el.nativeElement.querySelector(idOfNavItem);
-		if (focusedEl.classList.contains('cdk-keyboard-focused')) {
-			navItem.classList.add('ob-has-keyboard-focused-child');
-		} else {
-			navItem.classList.remove('ob-has-keyboard-focused-child');
-		}
+	focusIn(prefix: string, linkId: string): void {
+		this.handleNavItemFocusChange(prefix, linkId, true);
+	}
+
+	focusOut(prefix: string, linkId: string): void {
+		this.handleNavItemFocusChange(prefix, linkId, false);
 	}
 
 	backUpOrCloseSubMenu(
@@ -180,6 +178,22 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.linksChanged.emit(this.links);
 	}
 
+	private handleNavItemFocusChange(prefix: string, linkId: string, isFocused: boolean): void {
+		const focusedEl: HTMLElement = this.el.nativeElement.querySelector(
+			`.ob-master-layout-navigation-link.ob-main-nav-link#${linkId}`
+		);
+		const idOfNavItem = `#${prefix}${linkId}`;
+		const navItem: HTMLElement = this.el.nativeElement.querySelector(idOfNavItem);
+		if (isFocused) {
+			this.updateScroll(getScrollIntoViewDelta(this.getNav(), navItem));
+		}
+		if (focusedEl.classList.contains('cdk-keyboard-focused')) {
+			navItem.classList.add('ob-has-keyboard-focused-child');
+		} else {
+			navItem.classList.remove('ob-has-keyboard-focused-child');
+		}
+	}
+
 	private addCurrentParentAncestor(link: ObNavigationLink): void {
 		const currentParentAncestors = this.currentParentAncestors.value;
 		currentParentAncestors.push(link);
@@ -218,6 +232,34 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 			)
 			.subscribe(event => {
 				this.isFullWidth = event.value;
+			});
+	}
+
+	/**
+	 * Prevents the browser from automatically scrolling the last navigation item into view
+	 * when focus moves back from an element after the navigation using Shift+Tab.
+	 *
+	 * By default, the browser pulls the last item into view, breaking the scrollable
+	 * navigation's position. This function prevents the default browser behavior, and manually focuses
+	 * the last navigation item without triggering any native scroll.
+	 *
+	 * The actual scroll animation is triggered separately by `toggleFocus`
+	 */
+	private preventBrowserFocusOnLastItem(): void {
+		inject(ObGlobalEventsService)
+			.keyDown$.pipe(
+				takeUntilDestroyed(),
+				filter(
+					event =>
+						event.code === 'Tab' &&
+						event.shiftKey === true &&
+						(event.target as HTMLElement).id === 'ob-navigation-scrollable-control-right'
+				)
+			)
+			.subscribe(event => {
+				event.preventDefault();
+				// If there is no nav or the nav is empty, then no event is triggered
+				(this.getNav().lastElementChild.firstElementChild as HTMLElement).focus({preventScroll: true});
 			});
 	}
 
