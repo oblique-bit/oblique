@@ -1,4 +1,4 @@
-import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ChangeDetectorRef, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
@@ -95,6 +95,7 @@ describe(ObNavTreeComponent.name, () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let fixtureDefault: ComponentFixture<TestComponentDefault>;
 	let element: DebugElement;
+	let hostChangeDetector: ChangeDetectorRef;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
@@ -113,6 +114,7 @@ describe(ObNavTreeComponent.name, () => {
 			fixture.detectChanges();
 			element = fixture.debugElement.query(By.directive(ObNavTreeComponent));
 			component = element.injector.get(ObNavTreeComponent);
+			hostChangeDetector = fixture.componentRef.changeDetectorRef;
 		});
 
 		it('should be created', () => {
@@ -131,7 +133,7 @@ describe(ObNavTreeComponent.name, () => {
 
 		it('should detect changes if another `NavTreeItemModel is added`', () => {
 			testComponent.items.push(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}));
-			fixture.detectChanges();
+			hostChangeDetector.detectChanges();
 
 			const navItems = fixture.debugElement.queryAll(By.css('li'));
 			expect(navItems.length).toBe(13);
@@ -140,7 +142,7 @@ describe(ObNavTreeComponent.name, () => {
 		it('should custom format item labels', () => {
 			const suffix = '[custom]';
 			testComponent.labelFormatter = (item: ObNavTreeItemModel) => `${item.label} - ${suffix}`;
-			fixture.detectChanges();
+			hostChangeDetector.detectChanges();
 			const firstNavItem = fixture.debugElement.query(By.css('li'));
 			expect(firstNavItem.nativeElement.innerHTML).toContain(suffix);
 		});
@@ -165,7 +167,7 @@ describe(ObNavTreeComponent.name, () => {
 
 		it('should filter navigation items', () => {
 			component.filterPattern = '2'; // Filter on '2' pattern
-			fixture.detectChanges();
+			hostChangeDetector.detectChanges();
 
 			// All items containing the string '2' and their respective parents should be visible:
 			const navItems = fixture.debugElement.queryAll(By.css('li'));
@@ -177,7 +179,7 @@ describe(ObNavTreeComponent.name, () => {
 			const translate = TestBed.inject(TranslateService);
 			testComponent.labelFormatter = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(translate);
 			component.filterPattern = 'C'; // Filter on 'C' pattern
-			fixture.detectChanges();
+			hostChangeDetector.detectChanges();
 
 			// All items containing the string 'C' and their respective parents should be visible:
 			const navItems = fixture.debugElement.queryAll(By.css('li'));
@@ -191,7 +193,7 @@ describe(ObNavTreeComponent.name, () => {
 
 		it('should collapse all navigation items', () => {
 			component.collapseAll();
-			fixture.detectChanges();
+			hostChangeDetector.detectChanges();
 
 			const collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
 			expect(collapsed.length).toBe(3);
@@ -199,9 +201,9 @@ describe(ObNavTreeComponent.name, () => {
 
 		it('should expand all navigation items', () => {
 			component.collapseAll();
-			fixture.detectChanges();
+			hostChangeDetector.detectChanges();
 			component.expandAll();
-			fixture.detectChanges();
+			hostChangeDetector.detectChanges();
 
 			const collapsed = fixture.debugElement.queryAll(By.css('.collapsed'));
 			expect(collapsed.length).toBe(0);
