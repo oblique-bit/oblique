@@ -91,3 +91,26 @@ The canonical example is the selected/active state in navigation and segmented b
 These cannot share one token because:
 1. **Semantic correctness** — `fg` means text and icon. Applying it to a border element is a naming lie.
 2. **Independent theming** — the indicator typically carries the saturated brand accent color, while the label may stay monochromatic. A single token cannot express two different resolved values.
+
+### Choosing the Right Contrast Level
+
+Multiple contrast levels are provided intentionally to give teams design flexibility — different surfaces and contexts call for different contrast decisions, and a single-level system would force either over-contrast or under-contrast everywhere.
+
+Not every primitive shade is available as a semantic token. Shades that would produce obviously unreadable pairings are deliberately excluded. This shapes the palette to combinations that are meaningful and safe, while still leaving room for intentional contrast decisions.
+
+Choosing between the available levels involves a trade-off between two competing properties:
+
+**Luminance contrast** — how readable text or icons are against the surface. Higher contrast levels improve legibility and accessibility.
+
+**Chromatic salience** — how strongly the hue communicates its category. Saturated, mid-range colors carry the most recognizable signal (e.g., the immediate "this is red = error" read). Pushing luminance to its maximum desaturates the hue, weakening the categorical color signal.
+
+The general selection heuristic:
+
+| Contrast level | Favors | Typical use |
+|---|---|---|
+| `contrast_highest` | Legibility | Large text surfaces, body content on status backgrounds |
+| `contrast_high` | Balance | Standard status containers, primary status text |
+| `contrast_medium` | Balance | Secondary labels, supporting text, subtle surfaces |
+| `contrast_low` | Chroma / scannability | Compact elements where instant category recognition matters more than readability |
+
+Avoid `contrast_highest` on backgrounds where instant color hue recognition is critical — highest contrast reduces chroma and weakens the categorical status signal. Prefer `contrast_high` or `contrast_medium` for surfaces where the hue itself must be immediately scannable.

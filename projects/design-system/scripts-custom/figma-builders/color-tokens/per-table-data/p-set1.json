@@ -1,0 +1,1176 @@
+{
+  "tier": "primitive",
+  "heading": "Color Primitives — Set 1 (Left)",
+  "metadata": {
+    "readableName": "Brand Foundation",
+    "tokenPath": "ob.p.color",
+    "pageIntro": "Scales provided by Bundeskanzlei Design System.",
+    "recommended": "",
+    "notRecommended": ""
+  },
+  "component": "primitive",
+  "role": true,
+  "groups": [
+    {
+      "title": "Cobalt",
+      "description": "Primary neutral palette",
+      "tokens": [
+        {
+          "name": "ob.p.color.cobalt.50",
+          "value": "#f0f4f7",
+          "hex": {
+            "light-high": "#f0f4f7",
+            "light-low": "#f0f4f7",
+            "dark-high": "#f0f4f7",
+            "dark-low": "#f0f4f7"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.cobalt.100",
+          "value": "#dfe4e9",
+          "hex": {
+            "light-high": "#dfe4e9",
+            "light-low": "#dfe4e9",
+            "dark-high": "#dfe4e9",
+            "dark-low": "#dfe4e9"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.cobalt.200",
+          "value": "#acb4bd",
+          "hex": {
+            "light-high": "#acb4bd",
+            "light-low": "#acb4bd",
+            "dark-high": "#acb4bd",
+            "dark-low": "#acb4bd"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.cobalt.300",
+          "value": "#828e9a",
+          "hex": {
+            "light-high": "#828e9a",
+            "light-low": "#828e9a",
+            "dark-high": "#828e9a",
+            "dark-low": "#828e9a"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.cobalt.400",
+          "value": "#596978",
+          "hex": {
+            "light-high": "#596978",
+            "light-low": "#596978",
+            "dark-high": "#596978",
+            "dark-low": "#596978"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.cobalt.500",
+          "value": "#46596b",
+          "hex": {
+            "light-high": "#46596b",
+            "light-low": "#46596b",
+            "dark-high": "#46596b",
+            "dark-low": "#46596b"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.cobalt.600",
+          "value": "#2f4356",
+          "hex": {
+            "light-high": "#2f4356",
+            "light-low": "#2f4356",
+            "dark-high": "#2f4356",
+            "dark-low": "#2f4356"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.cobalt.700",
+          "value": "#263645",
+          "hex": {
+            "light-high": "#263645",
+            "light-low": "#263645",
+            "dark-high": "#263645",
+            "dark-low": "#263645"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.cobalt.800",
+          "value": "#1c2834",
+          "hex": {
+            "light-high": "#1c2834",
+            "light-low": "#1c2834",
+            "dark-high": "#1c2834",
+            "dark-low": "#1c2834"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.cobalt.900",
+          "value": "#131b22",
+          "hex": {
+            "light-high": "#131b22",
+            "light-low": "#131b22",
+            "dark-high": "#131b22",
+            "dark-low": "#131b22"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Red",
+      "description": "Error, danger, and alert colors",
+      "tokens": [
+        {
+          "name": "ob.p.color.red.50",
+          "value": "#ffedee",
+          "hex": {
+            "light-high": "#ffedee",
+            "light-low": "#ffedee",
+            "dark-high": "#ffedee",
+            "dark-low": "#ffedee"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.red.100",
+          "value": "#fae1e2",
+          "hex": {
+            "light-high": "#fae1e2",
+            "light-low": "#fae1e2",
+            "dark-high": "#fae1e2",
+            "dark-low": "#fae1e2"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.red.200",
+          "value": "#ffccce",
+          "hex": {
+            "light-high": "#ffccce",
+            "light-low": "#ffccce",
+            "dark-high": "#ffccce",
+            "dark-low": "#ffccce"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.red.300",
+          "value": "#fa9da1",
+          "hex": {
+            "light-high": "#fa9da1",
+            "light-low": "#fa9da1",
+            "dark-high": "#fa9da1",
+            "dark-low": "#fa9da1"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.red.400",
+          "value": "#fc656b",
+          "hex": {
+            "light-high": "#fc656b",
+            "light-low": "#fc656b",
+            "dark-high": "#fc656b",
+            "dark-low": "#fc656b"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.red.500",
+          "value": "#e53940",
+          "hex": {
+            "light-high": "#e53940",
+            "light-low": "#e53940",
+            "dark-high": "#e53940",
+            "dark-low": "#e53940"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.red.600",
+          "value": "#d8232a",
+          "hex": {
+            "light-high": "#d8232a",
+            "light-low": "#d8232a",
+            "dark-high": "#d8232a",
+            "dark-low": "#d8232a"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.red.700",
+          "value": "#bf1f25",
+          "hex": {
+            "light-high": "#bf1f25",
+            "light-low": "#bf1f25",
+            "dark-high": "#bf1f25",
+            "dark-low": "#bf1f25"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.red.800",
+          "value": "#99191e",
+          "hex": {
+            "light-high": "#99191e",
+            "light-low": "#99191e",
+            "dark-high": "#99191e",
+            "dark-low": "#99191e"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.red.900",
+          "value": "#801519",
+          "hex": {
+            "light-high": "#801519",
+            "light-low": "#801519",
+            "dark-high": "#801519",
+            "dark-low": "#801519"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Orange",
+      "description": "Warning colors",
+      "tokens": [
+        {
+          "name": "ob.p.color.orange.50",
+          "value": "#fff7ed",
+          "hex": {
+            "light-high": "#fff7ed",
+            "light-low": "#fff7ed",
+            "dark-high": "#fff7ed",
+            "dark-low": "#fff7ed"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.orange.100",
+          "value": "#ffedd5",
+          "hex": {
+            "light-high": "#ffedd5",
+            "light-low": "#ffedd5",
+            "dark-high": "#ffedd5",
+            "dark-low": "#ffedd5"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.orange.200",
+          "value": "#fed7aa",
+          "hex": {
+            "light-high": "#fed7aa",
+            "light-low": "#fed7aa",
+            "dark-high": "#fed7aa",
+            "dark-low": "#fed7aa"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.orange.300",
+          "value": "#fdba74",
+          "hex": {
+            "light-high": "#fdba74",
+            "light-low": "#fdba74",
+            "dark-high": "#fdba74",
+            "dark-low": "#fdba74"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.orange.400",
+          "value": "#fb923c",
+          "hex": {
+            "light-high": "#fb923c",
+            "light-low": "#fb923c",
+            "dark-high": "#fb923c",
+            "dark-low": "#fb923c"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.orange.500",
+          "value": "#f97316",
+          "hex": {
+            "light-high": "#f97316",
+            "light-low": "#f97316",
+            "dark-high": "#f97316",
+            "dark-low": "#f97316"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.orange.600",
+          "value": "#ea580c",
+          "hex": {
+            "light-high": "#ea580c",
+            "light-low": "#ea580c",
+            "dark-high": "#ea580c",
+            "dark-low": "#ea580c"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.orange.700",
+          "value": "#c2410c",
+          "hex": {
+            "light-high": "#c2410c",
+            "light-low": "#c2410c",
+            "dark-high": "#c2410c",
+            "dark-low": "#c2410c"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.orange.800",
+          "value": "#9a3412",
+          "hex": {
+            "light-high": "#9a3412",
+            "light-low": "#9a3412",
+            "dark-high": "#9a3412",
+            "dark-low": "#9a3412"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.orange.900",
+          "value": "#7c2d12",
+          "hex": {
+            "light-high": "#7c2d12",
+            "light-low": "#7c2d12",
+            "dark-high": "#7c2d12",
+            "dark-low": "#7c2d12"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Yellow",
+      "description": "Caution and highlight colors",
+      "tokens": [
+        {
+          "name": "ob.p.color.yellow.50",
+          "value": "#fffbeb",
+          "hex": {
+            "light-high": "#fffbeb",
+            "light-low": "#fffbeb",
+            "dark-high": "#fffbeb",
+            "dark-low": "#fffbeb"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.yellow.100",
+          "value": "#fef3c7",
+          "hex": {
+            "light-high": "#fef3c7",
+            "light-low": "#fef3c7",
+            "dark-high": "#fef3c7",
+            "dark-low": "#fef3c7"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.yellow.200",
+          "value": "#fde68a",
+          "hex": {
+            "light-high": "#fde68a",
+            "light-low": "#fde68a",
+            "dark-high": "#fde68a",
+            "dark-low": "#fde68a"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.yellow.300",
+          "value": "#fcd34d",
+          "hex": {
+            "light-high": "#fcd34d",
+            "light-low": "#fcd34d",
+            "dark-high": "#fcd34d",
+            "dark-low": "#fcd34d"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.yellow.400",
+          "value": "#fbbf24",
+          "hex": {
+            "light-high": "#fbbf24",
+            "light-low": "#fbbf24",
+            "dark-high": "#fbbf24",
+            "dark-low": "#fbbf24"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.yellow.500",
+          "value": "#f59e0b",
+          "hex": {
+            "light-high": "#f59e0b",
+            "light-low": "#f59e0b",
+            "dark-high": "#f59e0b",
+            "dark-low": "#f59e0b"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.yellow.600",
+          "value": "#d97706",
+          "hex": {
+            "light-high": "#d97706",
+            "light-low": "#d97706",
+            "dark-high": "#d97706",
+            "dark-low": "#d97706"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.yellow.700",
+          "value": "#b45309",
+          "hex": {
+            "light-high": "#b45309",
+            "light-low": "#b45309",
+            "dark-high": "#b45309",
+            "dark-low": "#b45309"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.yellow.800",
+          "value": "#92400e",
+          "hex": {
+            "light-high": "#92400e",
+            "light-low": "#92400e",
+            "dark-high": "#92400e",
+            "dark-low": "#92400e"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.yellow.900",
+          "value": "#78350f",
+          "hex": {
+            "light-high": "#78350f",
+            "light-low": "#78350f",
+            "dark-high": "#78350f",
+            "dark-low": "#78350f"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Green",
+      "description": "Success and positive colors",
+      "tokens": [
+        {
+          "name": "ob.p.color.green.50",
+          "value": "#ecfdf5",
+          "hex": {
+            "light-high": "#ecfdf5",
+            "light-low": "#ecfdf5",
+            "dark-high": "#ecfdf5",
+            "dark-low": "#ecfdf5"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.green.100",
+          "value": "#d1fae5",
+          "hex": {
+            "light-high": "#d1fae5",
+            "light-low": "#d1fae5",
+            "dark-high": "#d1fae5",
+            "dark-low": "#d1fae5"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.green.200",
+          "value": "#a7f3d0",
+          "hex": {
+            "light-high": "#a7f3d0",
+            "light-low": "#a7f3d0",
+            "dark-high": "#a7f3d0",
+            "dark-low": "#a7f3d0"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.green.300",
+          "value": "#6ee7b7",
+          "hex": {
+            "light-high": "#6ee7b7",
+            "light-low": "#6ee7b7",
+            "dark-high": "#6ee7b7",
+            "dark-low": "#6ee7b7"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.green.400",
+          "value": "#34d399",
+          "hex": {
+            "light-high": "#34d399",
+            "light-low": "#34d399",
+            "dark-high": "#34d399",
+            "dark-low": "#34d399"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.green.500",
+          "value": "#10b981",
+          "hex": {
+            "light-high": "#10b981",
+            "light-low": "#10b981",
+            "dark-high": "#10b981",
+            "dark-low": "#10b981"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.green.600",
+          "value": "#059669",
+          "hex": {
+            "light-high": "#059669",
+            "light-low": "#059669",
+            "dark-high": "#059669",
+            "dark-low": "#059669"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.green.700",
+          "value": "#047857",
+          "hex": {
+            "light-high": "#047857",
+            "light-low": "#047857",
+            "dark-high": "#047857",
+            "dark-low": "#047857"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.green.800",
+          "value": "#065f46",
+          "hex": {
+            "light-high": "#065f46",
+            "light-low": "#065f46",
+            "dark-high": "#065f46",
+            "dark-low": "#065f46"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.green.900",
+          "value": "#064e3b",
+          "hex": {
+            "light-high": "#064e3b",
+            "light-low": "#064e3b",
+            "dark-high": "#064e3b",
+            "dark-low": "#064e3b"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Teal",
+      "description": "Informational and accent colors",
+      "tokens": [
+        {
+          "name": "ob.p.color.teal.50",
+          "value": "#f2fdfc",
+          "hex": {
+            "light-high": "#f2fdfc",
+            "light-low": "#f2fdfc",
+            "dark-high": "#f2fdfc",
+            "dark-low": "#f2fdfc"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.teal.100",
+          "value": "#cbfbf8",
+          "hex": {
+            "light-high": "#cbfbf8",
+            "light-low": "#cbfbf8",
+            "dark-high": "#cbfbf8",
+            "dark-low": "#cbfbf8"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.teal.200",
+          "value": "#98f6f3",
+          "hex": {
+            "light-high": "#98f6f3",
+            "light-low": "#98f6f3",
+            "dark-high": "#98f6f3",
+            "dark-low": "#98f6f3"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.teal.300",
+          "value": "#5de8ea",
+          "hex": {
+            "light-high": "#5de8ea",
+            "light-low": "#5de8ea",
+            "dark-high": "#5de8ea",
+            "dark-low": "#5de8ea"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.teal.400",
+          "value": "#2bced4",
+          "hex": {
+            "light-high": "#2bced4",
+            "light-low": "#2bced4",
+            "dark-high": "#2bced4",
+            "dark-low": "#2bced4"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.teal.500",
+          "value": "#14afb8",
+          "hex": {
+            "light-high": "#14afb8",
+            "light-low": "#14afb8",
+            "dark-high": "#14afb8",
+            "dark-low": "#14afb8"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.teal.600",
+          "value": "#0d8b96",
+          "hex": {
+            "light-high": "#0d8b96",
+            "light-low": "#0d8b96",
+            "dark-high": "#0d8b96",
+            "dark-low": "#0d8b96"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.teal.700",
+          "value": "#0f6b75",
+          "hex": {
+            "light-high": "#0f6b75",
+            "light-low": "#0f6b75",
+            "dark-high": "#0f6b75",
+            "dark-low": "#0f6b75"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.teal.800",
+          "value": "#11575f",
+          "hex": {
+            "light-high": "#11575f",
+            "light-low": "#11575f",
+            "dark-high": "#11575f",
+            "dark-low": "#11575f"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.teal.900",
+          "value": "#13474e",
+          "hex": {
+            "light-high": "#13474e",
+            "light-low": "#13474e",
+            "dark-high": "#13474e",
+            "dark-low": "#13474e"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Blue",
+      "description": "Information and link colors",
+      "tokens": [
+        {
+          "name": "ob.p.color.blue.50",
+          "value": "#EFF6FF",
+          "hex": {
+            "light-high": "#EFF6FF",
+            "light-low": "#EFF6FF",
+            "dark-high": "#EFF6FF",
+            "dark-low": "#EFF6FF"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.blue.100",
+          "value": "#DBEAFE",
+          "hex": {
+            "light-high": "#DBEAFE",
+            "light-low": "#DBEAFE",
+            "dark-high": "#DBEAFE",
+            "dark-low": "#DBEAFE"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.blue.200",
+          "value": "#bfdbfe",
+          "hex": {
+            "light-high": "#bfdbfe",
+            "light-low": "#bfdbfe",
+            "dark-high": "#bfdbfe",
+            "dark-low": "#bfdbfe"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.blue.300",
+          "value": "#93c5fd",
+          "hex": {
+            "light-high": "#93c5fd",
+            "light-low": "#93c5fd",
+            "dark-high": "#93c5fd",
+            "dark-low": "#93c5fd"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.blue.400",
+          "value": "#60a5fa",
+          "hex": {
+            "light-high": "#60a5fa",
+            "light-low": "#60a5fa",
+            "dark-high": "#60a5fa",
+            "dark-low": "#60a5fa"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.blue.500",
+          "value": "#3b82f6",
+          "hex": {
+            "light-high": "#3b82f6",
+            "light-low": "#3b82f6",
+            "dark-high": "#3b82f6",
+            "dark-low": "#3b82f6"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.blue.600",
+          "value": "#2563EB",
+          "hex": {
+            "light-high": "#2563EB",
+            "light-low": "#2563EB",
+            "dark-high": "#2563EB",
+            "dark-low": "#2563EB"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.blue.700",
+          "value": "#1D4ED8",
+          "hex": {
+            "light-high": "#1D4ED8",
+            "light-low": "#1D4ED8",
+            "dark-high": "#1D4ED8",
+            "dark-low": "#1D4ED8"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.blue.800",
+          "value": "#1E40AF",
+          "hex": {
+            "light-high": "#1E40AF",
+            "light-low": "#1E40AF",
+            "dark-high": "#1E40AF",
+            "dark-low": "#1E40AF"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.blue.900",
+          "value": "#1E3A8A",
+          "hex": {
+            "light-high": "#1E3A8A",
+            "light-low": "#1E3A8A",
+            "dark-high": "#1E3A8A",
+            "dark-low": "#1E3A8A"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Indigo",
+      "description": "Visited state and accent colors",
+      "tokens": [
+        {
+          "name": "ob.p.color.indigo.50",
+          "value": "#eef2ff",
+          "hex": {
+            "light-high": "#eef2ff",
+            "light-low": "#eef2ff",
+            "dark-high": "#eef2ff",
+            "dark-low": "#eef2ff"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.indigo.100",
+          "value": "#e0e7ff",
+          "hex": {
+            "light-high": "#e0e7ff",
+            "light-low": "#e0e7ff",
+            "dark-high": "#e0e7ff",
+            "dark-low": "#e0e7ff"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.indigo.200",
+          "value": "#c7d2fe",
+          "hex": {
+            "light-high": "#c7d2fe",
+            "light-low": "#c7d2fe",
+            "dark-high": "#c7d2fe",
+            "dark-low": "#c7d2fe"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.indigo.300",
+          "value": "#a5b4fc",
+          "hex": {
+            "light-high": "#a5b4fc",
+            "light-low": "#a5b4fc",
+            "dark-high": "#a5b4fc",
+            "dark-low": "#a5b4fc"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.indigo.400",
+          "value": "#818cf8",
+          "hex": {
+            "light-high": "#818cf8",
+            "light-low": "#818cf8",
+            "dark-high": "#818cf8",
+            "dark-low": "#818cf8"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.indigo.500",
+          "value": "#6366f1",
+          "hex": {
+            "light-high": "#6366f1",
+            "light-low": "#6366f1",
+            "dark-high": "#6366f1",
+            "dark-low": "#6366f1"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.indigo.600",
+          "value": "#4f46e5",
+          "hex": {
+            "light-high": "#4f46e5",
+            "light-low": "#4f46e5",
+            "dark-high": "#4f46e5",
+            "dark-low": "#4f46e5"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.indigo.700",
+          "value": "#4338ca",
+          "hex": {
+            "light-high": "#4338ca",
+            "light-low": "#4338ca",
+            "dark-high": "#4338ca",
+            "dark-low": "#4338ca"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.indigo.800",
+          "value": "#3730a3",
+          "hex": {
+            "light-high": "#3730a3",
+            "light-low": "#3730a3",
+            "dark-high": "#3730a3",
+            "dark-low": "#3730a3"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.indigo.900",
+          "value": "#312e81",
+          "hex": {
+            "light-high": "#312e81",
+            "light-low": "#312e81",
+            "dark-high": "#312e81",
+            "dark-low": "#312e81"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Purple",
+      "description": "Focus ring and accent colors",
+      "tokens": [
+        {
+          "name": "ob.p.color.purple.50",
+          "value": "#f5f3ff",
+          "hex": {
+            "light-high": "#f5f3ff",
+            "light-low": "#f5f3ff",
+            "dark-high": "#f5f3ff",
+            "dark-low": "#f5f3ff"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.purple.100",
+          "value": "#ede9fe",
+          "hex": {
+            "light-high": "#ede9fe",
+            "light-low": "#ede9fe",
+            "dark-high": "#ede9fe",
+            "dark-low": "#ede9fe"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.purple.200",
+          "value": "#ddd6fe",
+          "hex": {
+            "light-high": "#ddd6fe",
+            "light-low": "#ddd6fe",
+            "dark-high": "#ddd6fe",
+            "dark-low": "#ddd6fe"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.purple.300",
+          "value": "#c4b5fd",
+          "hex": {
+            "light-high": "#c4b5fd",
+            "light-low": "#c4b5fd",
+            "dark-high": "#c4b5fd",
+            "dark-low": "#c4b5fd"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.purple.400",
+          "value": "#a78bfa",
+          "hex": {
+            "light-high": "#a78bfa",
+            "light-low": "#a78bfa",
+            "dark-high": "#a78bfa",
+            "dark-low": "#a78bfa"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.purple.500",
+          "value": "#8b5cf6",
+          "hex": {
+            "light-high": "#8b5cf6",
+            "light-low": "#8b5cf6",
+            "dark-high": "#8b5cf6",
+            "dark-low": "#8b5cf6"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.purple.600",
+          "value": "#7c3aed",
+          "hex": {
+            "light-high": "#7c3aed",
+            "light-low": "#7c3aed",
+            "dark-high": "#7c3aed",
+            "dark-low": "#7c3aed"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.purple.700",
+          "value": "#6d28d9",
+          "hex": {
+            "light-high": "#6d28d9",
+            "light-low": "#6d28d9",
+            "dark-high": "#6d28d9",
+            "dark-low": "#6d28d9"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.purple.800",
+          "value": "#5b21b6",
+          "hex": {
+            "light-high": "#5b21b6",
+            "light-low": "#5b21b6",
+            "dark-high": "#5b21b6",
+            "dark-low": "#5b21b6"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.purple.900",
+          "value": "#4c1d95",
+          "hex": {
+            "light-high": "#4c1d95",
+            "light-low": "#4c1d95",
+            "dark-high": "#4c1d95",
+            "dark-low": "#4c1d95"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Pink",
+      "description": "Decorative accent colors",
+      "tokens": [
+        {
+          "name": "ob.p.color.pink.50",
+          "value": "#fdf2f8",
+          "hex": {
+            "light-high": "#fdf2f8",
+            "light-low": "#fdf2f8",
+            "dark-high": "#fdf2f8",
+            "dark-low": "#fdf2f8"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.pink.100",
+          "value": "#fce7f3",
+          "hex": {
+            "light-high": "#fce7f3",
+            "light-low": "#fce7f3",
+            "dark-high": "#fce7f3",
+            "dark-low": "#fce7f3"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.pink.200",
+          "value": "#fbcfe8",
+          "hex": {
+            "light-high": "#fbcfe8",
+            "light-low": "#fbcfe8",
+            "dark-high": "#fbcfe8",
+            "dark-low": "#fbcfe8"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.pink.300",
+          "value": "#f9a8d4",
+          "hex": {
+            "light-high": "#f9a8d4",
+            "light-low": "#f9a8d4",
+            "dark-high": "#f9a8d4",
+            "dark-low": "#f9a8d4"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.pink.400",
+          "value": "#f472b6",
+          "hex": {
+            "light-high": "#f472b6",
+            "light-low": "#f472b6",
+            "dark-high": "#f472b6",
+            "dark-low": "#f472b6"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.pink.500",
+          "value": "#ec4899",
+          "hex": {
+            "light-high": "#ec4899",
+            "light-low": "#ec4899",
+            "dark-high": "#ec4899",
+            "dark-low": "#ec4899"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.pink.600",
+          "value": "#db2777",
+          "hex": {
+            "light-high": "#db2777",
+            "light-low": "#db2777",
+            "dark-high": "#db2777",
+            "dark-low": "#db2777"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.pink.700",
+          "value": "#be185d",
+          "hex": {
+            "light-high": "#be185d",
+            "light-low": "#be185d",
+            "dark-high": "#be185d",
+            "dark-low": "#be185d"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.pink.800",
+          "value": "#9d174d",
+          "hex": {
+            "light-high": "#9d174d",
+            "light-low": "#9d174d",
+            "dark-high": "#9d174d",
+            "dark-low": "#9d174d"
+          },
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.p.color.pink.900",
+          "value": "#831843",
+          "hex": {
+            "light-high": "#831843",
+            "light-low": "#831843",
+            "dark-high": "#831843",
+            "dark-low": "#831843"
+          },
+          "semanticAssigned": true
+        }
+      ]
+    }
+  ],
+  "tokenCount": 100
+}

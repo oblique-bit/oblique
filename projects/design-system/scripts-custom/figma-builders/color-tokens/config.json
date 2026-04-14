@@ -1,0 +1,175 @@
+{
+  "file": {
+    "key": "51tJjbxBSBmjAmKjQmhsz3",
+    "name": "DesignSystem@Tokens V9.6",
+    "page": {
+      "id": "9544:41",
+      "name": "🎨  Colors – Maintainer"
+    },
+    "colorTokensSection": "9544:34302",
+    "colorTokensFrame": "9544:34303",
+    "buildingBlocks": "9544:35234"
+  },
+  "sections": {
+    "primitive": "9544:34304",
+    "s1": "9544:34470",
+    "s2": "9544:34786",
+    "s3": "9544:34877"
+  },
+  "sectionBars": {
+    "primitive": "9544:34305",
+    "s1":        "9544:34471",
+    "s2":        "9544:34787",
+    "s3":        "9544:34878"
+  },
+  "sectionDescriptions": {
+    "primitive": "Scales provided by Bundeskanzlei Design System and additional Oblique custom primitive colors.",
+    "s1":        "Source file for S1 color tokens in the Light theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, and Free.",
+    "s2":        "State-based color mapping for interaction elements. Interactive state colors for components. Both Lightness (Light/Dark) and Emphasis (High/Low) modes affect resolved values across all 4 columns. Do: Reference when authoring compiled interaction tokens that require emphasis resolution. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead.",
+    "s3":        "Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Use these tokens in component and HTML token files. Do: Use when assigning color values in component and HTML token files. Compiled tokens are fully resolved — mode handling is integrated. Avoid: Do not reference S1 tokens directly in components — S1 is a bridging layer where mode handling is partial. Always use compiled tokens."
+  },
+  "tableIds": {
+    "s1-neutral":     "9544:34475",
+    "s1-interaction": "9544:34513",
+    "s1-status":      "9544:34574",
+    "s1-free":        "9678:205159",
+    "s2-interaction": "9544:34791",
+    "s3-brand":       "9544:34883",
+    "s3-neutral":     "9544:34889",
+    "s3-interaction": "9544:34927",
+    "s3-status":      "9544:35022",
+    "s3-free":        "9678:260810",
+    "p-set1":         "9544:34309",
+    "p-set2":         "9544:34426"
+  },
+  "components": {
+    "2-mode": {
+      "withRole": {
+        "row":    "9544:35357",
+        "header": "9544:35280"
+      },
+      "noRole": {
+        "row":    "9544:35379",
+        "header": "9544:35295"
+      }
+    },
+    "4-mode": {
+      "withRole": {
+        "row":    "9544:35400",
+        "rowLow": "9544:35449",
+        "header": "9544:35309"
+      },
+      "noRole": {
+        "row":    "9544:35425",
+        "rowLow": "9544:35473",
+        "header": "9544:35326"
+      },
+      "separator": "9544:35343"
+    },
+    "primitive": {
+      "header": "9544:35270",
+      "row":    "9544:35346"
+    },
+    "utility": {
+      "groupHeader": "9544:35265"
+    }
+  },
+  "collections": {
+    "s1-lightness": {
+      "id": "VariableCollectionId:4:836426",
+      "modes": {
+        "light": "4:3",
+        "dark":  "4:4"
+      }
+    },
+    "s2-emphasis": {
+      "id": "VariableCollectionId:4:836427",
+      "modes": {
+        "high": "4:5",
+        "low":  "4:6"
+      }
+    },
+    "semantic": {
+      "id": "VariableCollectionId:4:836428",
+      "modes": {
+        "semantic": "4:7"
+      }
+    },
+    "viewport": {
+      "id": "VariableCollectionId:4:836425",
+      "modes": {
+        "desktop": "4:1",
+        "mobile":  "4:2"
+      }
+    }
+  },
+  "rules": {
+    "allowedTokenPrefixes": ["ob.p.", "ob.s1.", "ob.s2.", "ob.s3."],
+    "excludedTokenPrefixes": ["ob.c.", "ob.h."],
+    "excludedPrefixReason": "Component (ob.c.*) and HTML (ob.h.*) tokens are not visualized on this page. Only primitive and semantic color tokens (ob.p.*, ob.s1.*, ob.s2.*, ob.s3.*) belong here.",
+    "tokenFamilyDocs": {
+      "requiredParts": ["role", "variableModes", "use", "avoid"],
+      "format": "{role sentence(s)} {variableModes sentence} Use: {list}. Avoid: {list}.",
+      "labels": {
+        "use": "Use:",
+        "avoid": "Avoid:"
+      },
+      "note": "token_family_docs nodes are documentation-only — no $value, no token children. All four parts are required. variableModes must state which mode collections apply (e.g., Light/Dark modes apply — no emphasis modes)."
+    },
+    "descriptionStyle": {
+      "noComponentNames": true,
+      "noComponentNamesReason": "Component names change over time. Use neutral spatial terms instead: surface, element, area, container, region.",
+      "preferredTerms": ["surface", "element", "area", "container", "region"],
+      "avoidTerms": ["badge", "infobox", "alert", "button", "tooltip", "chip", "tag", "banner", "toast", "card"],
+      "hueAvoidClause": "avoid when instant color hue recognition is critical — highest contrast reduces chroma and weakens the categorical status signal"
+    }
+  },
+  "tableWidths": {
+    "s1": 1500,
+    "s2": 1500,
+    "s3": 1530,
+    "primitive": 1000
+  },
+  "swatchModeOverrides": {
+    "light": {
+      "s1-lightness": "light"
+    },
+    "dark": {
+      "s1-lightness": "dark"
+    },
+    "light-high": {
+      "s1-lightness": "light",
+      "s2-emphasis":  "high"
+    },
+    "light-low": {
+      "s1-lightness": "light",
+      "s2-emphasis":  "low"
+    },
+    "dark-high": {
+      "s1-lightness": "dark",
+      "s2-emphasis":  "high"
+    },
+    "dark-low": {
+      "s1-lightness": "dark",
+      "s2-emphasis":  "low"
+    }
+  },
+  "swatchVariants": {
+    "2-mode": [
+      "Cell: Light",
+      "swatchLight INSTANCE",
+      "swatch RECTANGLE"
+    ],
+    "4-mode": [
+      "Cell: Light/High",
+      "swatchLightHigh INSTANCE",
+      "swatch RECTANGLE"
+    ],
+    "primitive": [
+      "Cell: Swatch",
+      "Swatch Wrapper",
+      "swatch INSTANCE",
+      "swatch RECTANGLE"
+    ]
+  }
+}

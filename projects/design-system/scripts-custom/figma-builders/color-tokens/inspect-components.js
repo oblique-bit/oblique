@@ -27,7 +27,7 @@
     "primitive/row": "1:1988",
     "utility/swatch": "1:1998",
     "utility/sectionBar": "1:1839",
-    "utility/setHeading": "1:1857",
+    "utility/setHeading": "9544:35256",
     "utility/groupHeader": "1:1866"
   };
 

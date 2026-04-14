@@ -1,0 +1,394 @@
+{
+  "tier": "s3",
+  "heading": "S3 Color: Neutral",
+  "metadata": {
+    "readableName": "Neutral",
+    "tokenPath": "ob.s3.color.neutral",
+    "pageIntro": "Foundational colors for backgrounds, text, borders, and surfaces.",
+    "recommended": "Use for text, background, border, and shadow roles in standard UI components.",
+    "notRecommended": "Do not use for interactive state feedback — use the interaction scale. Do not use for status communication — use the status scale."
+  },
+  "component": "2-mode",
+  "role": true,
+  "groups": [
+    {
+      "title": "Utilities",
+      "description": "Static values and transparent utilities",
+      "tokens": [
+        {
+          "name": "ob.s3.color.neutral.no_color",
+          "reference": "{ob.s1.color.neutral.no_color}",
+          "hex": {
+            "light-high": "transparent",
+            "light-low": "transparent",
+            "dark-high": "transparent",
+            "dark-low": "transparent"
+          },
+          "semanticAssigned": true,
+          "description": "Static value when no color respectively 0% opacity is needed."
+        }
+      ]
+    },
+    {
+      "title": "Foreground (fg)",
+      "description": "Colors for text, icons, UI elements",
+      "tokens": [
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_highest.inversity_normal",
+          "reference": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
+          "hex": {
+            "light-high": "#131b22",
+            "light-low": "#131b22",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast highest normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_highest.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#131b22",
+            "dark-low": "#131b22"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast highest flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_high.inversity_normal",
+          "reference": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
+          "hex": {
+            "light-high": "#1c2834",
+            "light-low": "#1c2834",
+            "dark-high": "#f0f4f7",
+            "dark-low": "#f0f4f7"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast high normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_high.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
+          "hex": {
+            "light-high": "#f0f4f7",
+            "light-low": "#f0f4f7",
+            "dark-high": "#1c2834",
+            "dark-low": "#1c2834"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast high flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_medium.inversity_normal",
+          "reference": "{ob.s1.color.neutral.fg.contrast_medium.inversity_normal}",
+          "hex": {
+            "light-high": "#263645",
+            "light-low": "#263645",
+            "dark-high": "#dfe4e9",
+            "dark-low": "#dfe4e9"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast medium normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_medium.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.fg.contrast_medium.inversity_flipped}",
+          "hex": {
+            "light-high": "#dfe4e9",
+            "light-low": "#dfe4e9",
+            "dark-high": "#263645",
+            "dark-low": "#263645"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast medium flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_low.inversity_normal",
+          "reference": "{ob.s1.color.neutral.fg.contrast_low.inversity_normal}",
+          "hex": {
+            "light-high": "#2f4356",
+            "light-low": "#2f4356",
+            "dark-high": "#acb4bd",
+            "dark-low": "#acb4bd"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast low normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_low.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.fg.contrast_low.inversity_flipped}",
+          "hex": {
+            "light-high": "#acb4bd",
+            "light-low": "#acb4bd",
+            "dark-high": "#2f4356",
+            "dark-low": "#2f4356"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast low flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_lowest.inversity_normal",
+          "reference": "{ob.s1.color.neutral.fg.contrast_lowest.inversity_normal}",
+          "hex": {
+            "light-high": "#131b22",
+            "light-low": "#131b22",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast lowest normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.fg.contrast_lowest.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.fg.contrast_lowest.inversity_flipped}",
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#131b22",
+            "dark-low": "#131b22"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral foreground - contrast lowest flipped"
+        }
+      ]
+    },
+    {
+      "title": "Background (bg)",
+      "description": "Colors for surfaces, containers, layouts",
+      "tokens": [
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_highest.inversity_normal",
+          "reference": "{ob.s1.color.neutral.bg.contrast_highest.inversity_normal}",
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#1c2834",
+            "dark-low": "#1c2834"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast highest normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_highest.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.bg.contrast_highest.inversity_flipped}",
+          "hex": {
+            "light-high": "#263645",
+            "light-low": "#263645",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast highest flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_high.inversity_normal",
+          "reference": "{ob.s1.color.neutral.bg.contrast_high.inversity_normal}",
+          "hex": {
+            "light-high": "#f0f4f7",
+            "light-low": "#f0f4f7",
+            "dark-high": "#263645",
+            "dark-low": "#263645"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast high normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_high.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.bg.contrast_high.inversity_flipped}",
+          "hex": {
+            "light-high": "#2f4356",
+            "light-low": "#2f4356",
+            "dark-high": "#f0f4f7",
+            "dark-low": "#f0f4f7"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast high flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_medium.inversity_normal",
+          "reference": "{ob.s1.color.neutral.bg.contrast_medium.inversity_normal}",
+          "hex": {
+            "light-high": "#dfe4e9",
+            "light-low": "#dfe4e9",
+            "dark-high": "#2f4356",
+            "dark-low": "#2f4356"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast medium normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_medium.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.bg.contrast_medium.inversity_flipped}",
+          "hex": {
+            "light-high": "#46596b",
+            "light-low": "#46596b",
+            "dark-high": "#dfe4e9",
+            "dark-low": "#dfe4e9"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast medium flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_low.inversity_normal",
+          "reference": "{ob.s1.color.neutral.bg.contrast_low.inversity_normal}",
+          "hex": {
+            "light-high": "#acb4bd",
+            "light-low": "#acb4bd",
+            "dark-high": "#596978",
+            "dark-low": "#596978"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast low normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_low.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.bg.contrast_low.inversity_flipped}",
+          "hex": {
+            "light-high": "#596978",
+            "light-low": "#596978",
+            "dark-high": "#acb4bd",
+            "dark-low": "#acb4bd"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast low flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_lowest.inversity_normal",
+          "reference": "{ob.s1.color.neutral.bg.contrast_lowest.inversity_normal}",
+          "hex": {
+            "light-high": "#828e9a",
+            "light-low": "#828e9a",
+            "dark-high": "#828e9a",
+            "dark-low": "#828e9a"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast lowest normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.bg.contrast_lowest.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.bg.contrast_lowest.inversity_flipped}",
+          "hex": {
+            "light-high": "#828e9a",
+            "light-low": "#828e9a",
+            "dark-high": "#828e9a",
+            "dark-low": "#828e9a"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral background - contrast lowest flipped"
+        }
+      ]
+    },
+    {
+      "title": "Border",
+      "description": "Colors for component outlines, dividers",
+      "tokens": [
+        {
+          "name": "ob.s3.color.neutral.border.medium.inversity_normal",
+          "reference": "{ob.s1.color.neutral.border.medium.inversity_normal}",
+          "hex": {
+            "light-high": "#acb4bd",
+            "light-low": "#acb4bd",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral border - medium normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.border.strong.inversity_normal",
+          "reference": "{ob.s1.color.neutral.border.strong.inversity_normal}",
+          "hex": {
+            "light-high": "#828e9a",
+            "light-low": "#828e9a",
+            "dark-high": "#828e9a",
+            "dark-low": "#828e9a"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral border - strong normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.border.subtle.inversity_normal",
+          "reference": "{ob.s1.color.neutral.border.subtle.inversity_normal}",
+          "hex": {
+            "light-high": "#dfe4e9",
+            "light-low": "#dfe4e9",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral border - subtle normal"
+        },
+        {
+          "name": "ob.s3.color.neutral.border.medium.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.border.medium.inversity_flipped}",
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#acb4bd",
+            "dark-low": "#acb4bd"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral border - medium flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.border.strong.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.border.strong.inversity_flipped}",
+          "hex": {
+            "light-high": "#828e9a",
+            "light-low": "#828e9a",
+            "dark-high": "#828e9a",
+            "dark-low": "#828e9a"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral border - strong flipped"
+        },
+        {
+          "name": "ob.s3.color.neutral.border.subtle.inversity_flipped",
+          "reference": "{ob.s1.color.neutral.border.subtle.inversity_flipped}",
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#dfe4e9",
+            "dark-low": "#dfe4e9"
+          },
+          "semanticAssigned": true,
+          "description": "Neutral border - subtle flipped"
+        }
+      ]
+    },
+    {
+      "title": "Shadow",
+      "description": "Colors for elevation shadows",
+      "tokens": [
+        {
+          "name": "ob.s3.color.neutral.shadow.first",
+          "reference": "{ob.s1.color.neutral.shadow.first}",
+          "hex": {
+            "light-high": "#131b22",
+            "light-low": "#131b22",
+            "dark-high": "#131b22",
+            "dark-low": "#131b22"
+          },
+          "semanticAssigned": true,
+          "description": "Primary shadow color for UI elements. Theme-aware shadow that works in both light and dark modes."
+        },
+        {
+          "name": "ob.s3.color.neutral.shadow.second",
+          "reference": "{ob.s1.color.neutral.shadow.second}",
+          "hex": {
+            "light-high": "#131b22",
+            "light-low": "#131b22",
+            "dark-high": "#131b22",
+            "dark-low": "#131b22"
+          },
+          "semanticAssigned": true,
+          "description": "Secondary shadow color for UI elements. Theme-aware shadow that works in both light and dark modes."
+        }
+      ]
+    }
+  ],
+  "tokenCount": 29
+}

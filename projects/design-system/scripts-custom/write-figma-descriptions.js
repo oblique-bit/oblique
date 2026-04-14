@@ -7,7 +7,7 @@
  *
  * What this script does:
  * 1. Creates new doc/ JSON files per color family (S3, S1, S2, component)
- * 2. Sets page_title and page_intro from Figma source-of-truth descriptions
+ * 2. Sets token_path and page_intro from Figma source-of-truth descriptions
  * 3. Updates doc/02_primitive/color.json with a combined primitive description
  * 4. Updates $metadata.json tokenSetOrder to include the new files
  *
@@ -128,7 +128,7 @@ const PRIMITIVE_COLOR_INTRO =
 function emptyDoc() {
   return {
     doc: {
-      page_title:        { $type: 'other', $value: '' },
+      token_path:         { $type: 'other', $value: '' },
       page_intro:        { $type: 'other', $value: '' },
       recommended:       { $type: 'other', $value: '' },
       not_recommended:   { $type: 'other', $value: '' },
@@ -159,7 +159,7 @@ for (const entry of ENTRIES) {
   try {
     if (fs.existsSync(docPath)) {
       const data = readJson(docPath);
-      const titleEmpty = (data?.doc?.page_title?.$value ?? null) === '';
+      const titleEmpty = (data?.doc?.token_path?.$value ?? null) === '';
       const introEmpty = (data?.doc?.page_intro?.$value ?? null) === '';
 
       if (!titleEmpty && !introEmpty) {
@@ -168,7 +168,7 @@ for (const entry of ENTRIES) {
         continue;
       }
 
-      if (titleEmpty) data.doc.page_title.$value = entry.readableName;
+      if (titleEmpty) data.doc.token_path.$value = entry.readableName;
       if (introEmpty) data.doc.page_intro.$value = entry.description;
       writeJson(docPath, data);
       console.log(`UPDATED  ${entry.docRelPath}`);
@@ -176,7 +176,7 @@ for (const entry of ENTRIES) {
     } else {
       fs.mkdirSync(path.dirname(docPath), { recursive: true });
       const data = emptyDoc();
-      data.doc.page_title.$value = entry.readableName;
+      data.doc.token_path.$value = entry.readableName;
       data.doc.page_intro.$value = entry.description;
       writeJson(docPath, data);
       console.log(`CREATED  ${entry.docRelPath}`);
@@ -194,14 +194,14 @@ for (const entry of ENTRIES) {
 const primPath = path.join(DOC_DIR, PRIMITIVE_COLOR_REL);
 try {
   const data = readJson(primPath);
-  const titleEmpty = (data?.doc?.page_title?.$value ?? null) === '';
+  const titleEmpty = (data?.doc?.token_path?.$value ?? null) === '';
   const introEmpty = (data?.doc?.page_intro?.$value ?? null) === '';
 
   if (!titleEmpty && !introEmpty) {
     console.log(`SKIPPED  ${PRIMITIVE_COLOR_REL} — already has content`);
     skipped++;
   } else {
-    if (titleEmpty) data.doc.page_title.$value = PRIMITIVE_COLOR_TITLE;
+    if (titleEmpty) data.doc.token_path.$value = PRIMITIVE_COLOR_TITLE;
     if (introEmpty) data.doc.page_intro.$value = PRIMITIVE_COLOR_INTRO;
     writeJson(primPath, data);
     console.log(`UPDATED  ${PRIMITIVE_COLOR_REL}`);

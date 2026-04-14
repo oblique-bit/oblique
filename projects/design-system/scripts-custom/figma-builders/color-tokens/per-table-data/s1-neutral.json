@@ -1,0 +1,481 @@
+{
+  "tier": "s1",
+  "heading": "S1 Color: Neutral",
+  "metadata": {
+    "readableName": "Neutral",
+    "tokenPath": "ob.s1.color.neutral",
+    "pageIntro": "Lightness-resolved neutral colors. Only Light/Dark modes apply. References Primitives, referenced by S3.",
+    "recommended": "Reference when authoring compiled semantic tokens that resolve to neutral foreground, background, border, or shadow values.",
+    "notRecommended": "Do not assign directly to component tokens — use compiled S-tier tokens instead."
+  },
+  "component": "2-mode",
+  "role": true,
+  "groups": [
+    {
+      "title": "Utilities",
+      "description": "Static values when no color is needed",
+      "tokens": [
+        {
+          "name": "ob.s1.color.neutral.no_color",
+          "references": {
+            "light": "{ob.p.color.basic.transparent}",
+            "dark": "{ob.p.color.basic.transparent}"
+          },
+          "hex": {
+            "light-high": "transparent",
+            "light-low": "transparent",
+            "dark-high": "transparent",
+            "dark-low": "transparent"
+          },
+          "description": "Static value when no color is needed. Same in both light and dark.",
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Background (bg)",
+      "description": "Background color tokens with contrast levels",
+      "tokens": [
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_highest.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.basic.white}",
+            "dark": "{ob.p.color.cobalt.800}"
+          },
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#1c2834",
+            "dark-low": "#1c2834"
+          },
+          "description": "Default background color",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_highest.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.cobalt.700}",
+            "dark": "{ob.p.color.basic.white}"
+          },
+          "hex": {
+            "light-high": "#263645",
+            "light-low": "#263645",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "description": "Default dark surface color",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_high.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.50}",
+            "dark": "{ob.p.color.cobalt.700}"
+          },
+          "hex": {
+            "light-high": "#f0f4f7",
+            "light-low": "#f0f4f7",
+            "dark-high": "#263645",
+            "dark-low": "#263645"
+          },
+          "description": "Darker surface color",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_high.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.cobalt.600}",
+            "dark": "{ob.p.color.cobalt.50}"
+          },
+          "hex": {
+            "light-high": "#2f4356",
+            "light-low": "#2f4356",
+            "dark-high": "#f0f4f7",
+            "dark-low": "#f0f4f7"
+          },
+          "description": "Darker surface color",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_medium.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.100}",
+            "dark": "{ob.p.color.cobalt.600}"
+          },
+          "hex": {
+            "light-high": "#dfe4e9",
+            "light-low": "#dfe4e9",
+            "dark-high": "#2f4356",
+            "dark-low": "#2f4356"
+          },
+          "description": "Darker surface color",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_medium.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.cobalt.500}",
+            "dark": "{ob.p.color.cobalt.100}"
+          },
+          "hex": {
+            "light-high": "#46596b",
+            "light-low": "#46596b",
+            "dark-high": "#dfe4e9",
+            "dark-low": "#dfe4e9"
+          },
+          "description": "Darker surface color",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_low.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.200}",
+            "dark": "{ob.p.color.cobalt.400}"
+          },
+          "hex": {
+            "light-high": "#acb4bd",
+            "light-low": "#acb4bd",
+            "dark-high": "#596978",
+            "dark-low": "#596978"
+          },
+          "description": "Darker surface color",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_low.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.cobalt.400}",
+            "dark": "{ob.p.color.cobalt.200}"
+          },
+          "hex": {
+            "light-high": "#596978",
+            "light-low": "#596978",
+            "dark-high": "#acb4bd",
+            "dark-low": "#acb4bd"
+          },
+          "description": "Darker surface color",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_lowest.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.300}",
+            "dark": "{ob.p.color.cobalt.300}"
+          },
+          "hex": {
+            "light-high": "#828e9a",
+            "light-low": "#828e9a",
+            "dark-high": "#828e9a",
+            "dark-low": "#828e9a"
+          },
+          "description": "Very subtle background color for disabled states or extremely low contrast surfaces",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.bg.contrast_lowest.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.cobalt.300}",
+            "dark": "{ob.p.color.cobalt.300}"
+          },
+          "hex": {
+            "light-high": "#828e9a",
+            "light-low": "#828e9a",
+            "dark-high": "#828e9a",
+            "dark-low": "#828e9a"
+          },
+          "description": "Very subtle dark background color for disabled states on inverse backgrounds",
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Border",
+      "description": "Border color tokens",
+      "tokens": [
+        {
+          "name": "ob.s1.color.neutral.border.medium.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.200}",
+            "dark": "{ob.p.color.basic.white}"
+          },
+          "hex": {
+            "light-high": "#acb4bd",
+            "light-low": "#acb4bd",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.border.strong.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.300}",
+            "dark": "{ob.p.color.cobalt.300}"
+          },
+          "hex": {
+            "light-high": "#828e9a",
+            "light-low": "#828e9a",
+            "dark-high": "#828e9a",
+            "dark-low": "#828e9a"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.border.subtle.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.100}",
+            "dark": "{ob.p.color.basic.white}"
+          },
+          "hex": {
+            "light-high": "#dfe4e9",
+            "light-low": "#dfe4e9",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.border.medium.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.basic.white}",
+            "dark": "{ob.p.color.cobalt.200}"
+          },
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#acb4bd",
+            "dark-low": "#acb4bd"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.border.strong.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.cobalt.300}",
+            "dark": "{ob.p.color.cobalt.300}"
+          },
+          "hex": {
+            "light-high": "#828e9a",
+            "light-low": "#828e9a",
+            "dark-high": "#828e9a",
+            "dark-low": "#828e9a"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.border.subtle.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.basic.white}",
+            "dark": "{ob.p.color.cobalt.100}"
+          },
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#dfe4e9",
+            "dark-low": "#dfe4e9"
+          },
+          "description": "",
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Foreground (fg)",
+      "description": "Foreground color tokens with contrast levels",
+      "tokens": [
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_highest.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.900}",
+            "dark": "{ob.p.color.basic.white}"
+          },
+          "hex": {
+            "light-high": "#131b22",
+            "light-low": "#131b22",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_highest.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.basic.white}",
+            "dark": "{ob.p.color.cobalt.900}"
+          },
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#131b22",
+            "dark-low": "#131b22"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_high.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.800}",
+            "dark": "{ob.p.color.cobalt.50}"
+          },
+          "hex": {
+            "light-high": "#1c2834",
+            "light-low": "#1c2834",
+            "dark-high": "#f0f4f7",
+            "dark-low": "#f0f4f7"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_high.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.cobalt.50}",
+            "dark": "{ob.p.color.cobalt.800}"
+          },
+          "hex": {
+            "light-high": "#f0f4f7",
+            "light-low": "#f0f4f7",
+            "dark-high": "#1c2834",
+            "dark-low": "#1c2834"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_medium.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.700}",
+            "dark": "{ob.p.color.cobalt.100}"
+          },
+          "hex": {
+            "light-high": "#263645",
+            "light-low": "#263645",
+            "dark-high": "#dfe4e9",
+            "dark-low": "#dfe4e9"
+          },
+          "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text.",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_medium.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.cobalt.100}",
+            "dark": "{ob.p.color.cobalt.700}"
+          },
+          "hex": {
+            "light-high": "#dfe4e9",
+            "light-low": "#dfe4e9",
+            "dark-high": "#263645",
+            "dark-low": "#263645"
+          },
+          "description": "Darker Heading Color for H6 only since it is a small font size, so it needs to be obviously strong when facing the body text.",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_low.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt.600}",
+            "dark": "{ob.p.color.cobalt.200}"
+          },
+          "hex": {
+            "light-high": "#2f4356",
+            "light-low": "#2f4356",
+            "dark-high": "#acb4bd",
+            "dark-low": "#acb4bd"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_low.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.cobalt.200}",
+            "dark": "{ob.p.color.cobalt.600}"
+          },
+          "hex": {
+            "light-high": "#acb4bd",
+            "light-low": "#acb4bd",
+            "dark-high": "#2f4356",
+            "dark-low": "#2f4356"
+          },
+          "description": "",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_lowest.inversity_normal",
+          "references": {
+            "light": "{ob.p.color.cobalt_alpha.400}",
+            "dark": "{ob.p.color.white_alpha.400}"
+          },
+          "hex": {
+            "light-high": "#131b22",
+            "light-low": "#131b22",
+            "dark-high": "#ffffff",
+            "dark-low": "#ffffff"
+          },
+          "description": "for diabled text",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.fg.contrast_lowest.inversity_flipped",
+          "references": {
+            "light": "{ob.p.color.white_alpha.400}",
+            "dark": "{ob.p.color.cobalt_alpha.400}"
+          },
+          "hex": {
+            "light-high": "#ffffff",
+            "light-low": "#ffffff",
+            "dark-high": "#131b22",
+            "dark-low": "#131b22"
+          },
+          "description": "For disabled",
+          "semanticAssigned": true
+        }
+      ]
+    },
+    {
+      "title": "Shadow",
+      "description": "Shadow color tokens",
+      "tokens": [
+        {
+          "name": "ob.s1.color.neutral.shadow.first",
+          "references": {
+            "light": "{ob.p.color.cobalt_alpha.50}",
+            "dark": "{ob.p.color.cobalt_alpha.50}"
+          },
+          "hex": {
+            "light-high": "#131b22",
+            "light-low": "#131b22",
+            "dark-high": "#131b22",
+            "dark-low": "#131b22"
+          },
+          "description": "1st of 2 effects",
+          "semanticAssigned": true
+        },
+        {
+          "name": "ob.s1.color.neutral.shadow.second",
+          "references": {
+            "light": "{ob.p.color.cobalt_alpha.100}",
+            "dark": "{ob.p.color.cobalt_alpha.100}"
+          },
+          "hex": {
+            "light-high": "#131b22",
+            "light-low": "#131b22",
+            "dark-high": "#131b22",
+            "dark-low": "#131b22"
+          },
+          "description": "2nd of 2 effects",
+          "semanticAssigned": true
+        }
+      ]
+    }
+  ],
+  "tokenCount": 29
+}

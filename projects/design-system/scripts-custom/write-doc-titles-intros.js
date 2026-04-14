@@ -2,7 +2,7 @@
 /**
  * write-doc-titles-intros.js
  *
- * Phase 2b: Populate page_title and page_intro for all doc/ token files
+ * Phase 2b: Populate token_path and page_intro for all doc/ token files
  * that still have empty values.
  *
  * Only writes fields that are currently empty — does not overwrite existing content.
@@ -447,8 +447,8 @@ for (const entry of UPDATES) {
   let changed = false;
 
   // Only write if currently empty — never overwrite existing content
-  if (!doc.page_title['$value']) {
-    doc.page_title['$value'] = entry.title;
+  if (!doc.token_path['$value']) {
+    doc.token_path['$value'] = entry.title;
     changed = true;
   }
   if (!doc.page_intro['$value']) {

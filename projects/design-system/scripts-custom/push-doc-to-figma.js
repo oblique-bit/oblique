@@ -81,19 +81,23 @@ function readDoc(relPath) {
   if (!fs.existsSync(full)) return null;
   const data = JSON.parse(fs.readFileSync(full, 'utf8'));
   return {
-    page_title:      data?.doc?.page_title?.$value      ?? '',
-    page_intro:      data?.doc?.page_intro?.$value      ?? '',
-    recommended:     data?.doc?.recommended?.$value     ?? '',
-    not_recommended: data?.doc?.not_recommended?.$value ?? '',
+    token_path:         data?.doc?.token_path?.$value         ?? '',
+    page_intro:        data?.doc?.page_intro?.$value        ?? '',
+    recommended:       data?.doc?.recommended?.$value       ?? '',
+    not_recommended:   data?.doc?.not_recommended?.$value   ?? '',
+    semantic_assigned: data?.doc?.semantic_assigned?.$value ?? '',
   };
 }
 
-function buildDescription(doc) {
-  const parts = [doc.page_intro];
-  if (doc.recommended)     parts.push('Recommend: ' + doc.recommended);
-  if (doc.not_recommended) parts.push('Avoid: '     + doc.not_recommended);
-  return parts.filter(Boolean).join('\n\n');
-}
+// Maps each doc JSON field to its canonical Figma layer name(s).
+// First name is the current canonical; subsequent names are legacy fallbacks.
+const FIELD_LAYER_MAP = {
+  token_path:         ['__token_path',        '__page_title', '__setName'],
+  page_intro:        ['__page_intro',       '__setDescription'],
+  recommended:       ['__recommended'],
+  not_recommended:   ['__not_recommended'],
+  semantic_assigned: ['__semantic_assigned'],
+};
 
 // ─── Stdio MCP Client (figma-console-mcp) ─────────────────────────────────
 
@@ -239,14 +243,18 @@ function buildInspectCode(pageId) {
       // Match _Set Heading, setHeading, or Set Heading components
       if (/set.?heading/i.test(compName) || /set heading/i.test(compName)) {
         const textNodes = node.findAll(n => n.type === 'TEXT');
-        const title = textNodes[0]?.characters ?? '(no title)';
-        const desc  = textNodes[1]?.characters ?? '(no desc)';
+        // Find title by canonical or legacy layer name
+        const titleNode = textNodes.find(t => t.name === '__token_path' || t.name === '__page_title' || t.name === '__setName')
+          ?? textNodes[0];
+        const title = titleNode?.characters ?? '(no title)';
+        // Build layer-name → node-ID map for all text nodes
+        const textLayerMap = {};
+        for (const t of textNodes) textLayerMap[t.name] = t.id;
         results.push({
-          id:        node.id,
+          id:           node.id,
           compName,
           title,
-          descPreview: desc.slice(0, 80),
-          textNodeIds: textNodes.slice(0, 2).map(t => ({ id: t.id, name: t.name })),
+          textLayerMap,
         });
       }
     }
@@ -264,35 +272,46 @@ function buildInspectCode(pageId) {
 // ─── Phase 2: update ───────────────────────────────────────────────────────
 
 function buildUpdateCode(updates) {
-  // updates: Array<{ nodeId: string, textNodeId: string, newText: string }>
+  // updates: Array<{ nodeId, title, fields: { [fieldName]: string }, textLayerMap: { [layerName]: nodeId } }>
   return `
 (async () => {
   const updates = ${JSON.stringify(updates)};
+  const FIELD_LAYER_MAP = ${JSON.stringify(FIELD_LAYER_MAP)};
   const log = [];
 
   for (const u of updates) {
     const instance = await figma.getNodeByIdAsync(u.nodeId);
     if (!instance) { log.push({ id: u.nodeId, status: 'not found' }); continue; }
 
-    // Find the description text node — either by saved ID or by index [1]
-    let textNode;
-    if (u.textNodeId) textNode = await figma.getNodeByIdAsync(u.textNodeId);
-    if (!textNode) {
-      const allText = instance.findAll(n => n.type === 'TEXT');
-      textNode = allText[1]; // description is always index 1
-    }
+    const allText = instance.findAll(n => n.type === 'TEXT');
 
-    if (!textNode || textNode.type !== 'TEXT') {
-      log.push({ id: u.nodeId, title: u.title, status: 'no text node' });
-      continue;
-    }
+    for (const [fieldName, content] of Object.entries(u.fields)) {
+      const candidateNames = FIELD_LAYER_MAP[fieldName] ?? [];
+      let textNode = null;
 
-    try {
-      await figma.loadFontAsync(textNode.fontName);
-      textNode.characters = u.newText;
-      log.push({ id: u.nodeId, title: u.title, status: 'updated', chars: u.newText.length });
-    } catch (e) {
-      log.push({ id: u.nodeId, title: u.title, status: 'error: ' + e.message });
+      // Resolve: try each candidate layer name (canonical first, then legacy fallbacks)
+      for (const layerName of candidateNames) {
+        const nodeId = u.textLayerMap[layerName];
+        if (nodeId) {
+          textNode = await figma.getNodeByIdAsync(nodeId);
+          if (textNode) break;
+        }
+        textNode = allText.find(t => t.name === layerName) ?? null;
+        if (textNode) break;
+      }
+
+      if (!textNode || textNode.type !== 'TEXT') {
+        log.push({ id: u.nodeId, title: u.title, field: fieldName, status: 'layer not found' });
+        continue;
+      }
+
+      try {
+        await figma.loadFontAsync(textNode.fontName);
+        textNode.characters = content;
+        log.push({ id: u.nodeId, title: u.title, field: fieldName, status: 'updated', chars: content.length });
+      } catch (e) {
+        log.push({ id: u.nodeId, title: u.title, field: fieldName, status: 'error: ' + e.message });
+      }
     }
   }
 
@@ -377,23 +396,29 @@ async function main() {
       continue;
     }
 
-    const newText = buildDescription(matched.doc);
-    if (!newText) {
+    const fields = {};
+    for (const fieldName of Object.keys(FIELD_LAYER_MAP)) {
+      const val = matched.doc[fieldName] ?? '';
+      if (val) fields[fieldName] = val;
+    }
+
+    if (Object.keys(fields).length === 0) {
       console.log(`  SKIP  "${titleClean}" — doc content is empty`);
       continue;
     }
 
-    const textNodeId = fe.textNodeIds[1]?.id ?? null;
     updates.push({
-      nodeId:     fe.id,
-      textNodeId,
-      title:      titleClean,
-      newText,
-      docFile:    matched.docRelPath,
+      nodeId:       fe.id,
+      title:        titleClean,
+      fields,
+      textLayerMap: fe.textLayerMap,
+      docFile:      matched.docRelPath,
     });
 
     console.log(`  MATCH "${titleClean}" → ${matched.docRelPath}`);
-    console.log(`        ${newText.slice(0, 100).replace(/\n/g, ' ↵ ')}${newText.length > 100 ? '…' : ''}`);
+    for (const [k, v] of Object.entries(fields)) {
+      console.log(`        ${k}: ${v.slice(0, 80)}${v.length > 80 ? '…' : ''}`);
+    }
   }
 
   if (unmatched.length > 0) {
@@ -424,11 +449,12 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`\n  Updated: ${result.updated ?? 0} heading(s)`);
+  console.log(`\n  Updated: ${result.updated ?? 0} field(s)`);
   if (result.log) {
     for (const entry of result.log) {
       const icon = entry.status === 'updated' ? '✓' : '✗';
-      console.log(`  ${icon}  "${entry.title ?? entry.id}" — ${entry.status}`);
+      const field = entry.field ? ` [${entry.field}]` : '';
+      console.log(`  ${icon}  "${entry.title ?? entry.id}"${field} — ${entry.status}`);
     }
   }
 

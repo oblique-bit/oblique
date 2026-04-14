@@ -1,0 +1,34 @@
+{
+  "tier": "s3",
+  "heading": "S3 Color: Brand",
+  "metadata": {
+    "readableName": "Brand",
+    "tokenPath": "ob.s3.color.brand",
+    "pageIntro": "Official federal identity color (Bundesrot).",
+    "recommended": "Use for the primary brand accent in navigation active states and official federal identity elements.",
+    "notRecommended": "Do not use for interactive states or status feedback — use the interaction or status scale instead."
+  },
+  "component": "2-mode",
+  "role": true,
+  "groups": [
+    {
+      "title": "Bundesrot",
+      "description": "Official federal red — primary brand identifier",
+      "tokens": [
+        {
+          "name": "ob.s3.color.brand",
+          "reference": "{ob.p.color.basic.bundesrot}",
+          "hex": {
+            "light-high": "#ff0000",
+            "light-low": "#ff0000",
+            "dark-high": "#ff0000",
+            "dark-low": "#ff0000"
+          },
+          "semanticAssigned": true,
+          "description": "Static color to be used in the brand relevant UI elements."
+        }
+      ]
+    }
+  ],
+  "tokenCount": 1
+}
