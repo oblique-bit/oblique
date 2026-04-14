@@ -1045,23 +1045,6 @@
             "$description": "Role: Shared. Used for disabled states and transparent white overlays."
           }
         },
-        "indigo_alpha": {
-          "900": {
-            "parent": "Colors/Mode 1",
-            "$extensions": {
-              "studio.tokens": {
-                "modify": {
-                  "type": "alpha",
-                  "value": "0.2",
-                  "space": "srgb"
-                }
-              }
-            },
-            "$type": "color",
-            "$value": "#312e81",
-            "$description": "Role: Shared. Used for disabled states and shadow overlays."
-          }
-        },
         "blue": {
           "50": {
             "parent": "Colors/Mode 1",

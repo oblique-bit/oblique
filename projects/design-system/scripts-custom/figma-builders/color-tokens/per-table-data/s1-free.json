@@ -844,21 +844,6 @@
           "semanticAssigned": true
         },
         {
-          "name": "ob.s1.color.free.indigo.bg.contrast_high_alpha.inversity_normal",
-          "references": {
-            "light": "{ob.p.color.indigo_alpha.900}",
-            "dark": "{ob.p.color.indigo_alpha.900}"
-          },
-          "hex": {
-            "light-high": "#312e81",
-            "light-low": "#312e81",
-            "dark-high": "#312e81",
-            "dark-low": "#312e81"
-          },
-          "description": "Used for spinner background alpha overlay",
-          "semanticAssigned": true
-        },
-        {
           "name": "ob.s1.color.free.indigo.bg.contrast_high.inversity_flipped",
           "references": {
             "light": "{ob.p.color.indigo.800}",
@@ -886,36 +871,6 @@
             "dark-low": "#4338ca"
           },
           "description": "Auto-generated: matches bg.contrast_high",
-          "semanticAssigned": true
-        },
-        {
-          "name": "ob.s1.color.free.indigo.bg.contrast_high_alpha.inversity_flipped",
-          "references": {
-            "light": "{ob.p.color.indigo_alpha.900}",
-            "dark": "{ob.p.color.indigo_alpha.900}"
-          },
-          "hex": {
-            "light-high": "#312e81",
-            "light-low": "#312e81",
-            "dark-high": "#312e81",
-            "dark-low": "#312e81"
-          },
-          "description": "Used for spinner background alpha overlay",
-          "semanticAssigned": true
-        },
-        {
-          "name": "ob.s1.color.free.indigo.bg.contrast_high.inversity_flipped_alpha",
-          "references": {
-            "light": "{ob.p.color.indigo_alpha.900}",
-            "dark": "{ob.p.color.indigo_alpha.900}"
-          },
-          "hex": {
-            "light-high": "#312e81",
-            "light-low": "#312e81",
-            "dark-high": "#312e81",
-            "dark-low": "#312e81"
-          },
-          "description": "Used for spinner background alpha overlay",
           "semanticAssigned": true
         },
         {
@@ -1287,5 +1242,5 @@
       ]
     }
   ],
-  "tokenCount": 83
+  "tokenCount": 80
 }

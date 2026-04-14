@@ -852,11 +852,6 @@
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.400}",
                   "$description": "High contrast in-progress status background. Inverse surface."
-                },
-                "inversity_flipped_alpha": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo_alpha.900}",
-                  "$description": "High contrast in-progress status background. Inverse surface, alpha variant."
                 }
               },
               "contrast_medium": {
@@ -881,18 +876,6 @@
                   "$type": "color",
                   "$value": "{ob.p.color.indigo.200}",
                   "$description": "Low contrast in-progress status background. Inverse surface."
-                }
-              },
-              "contrast_high_alpha": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo_alpha.900}",
-                  "$description": "High contrast alpha in-progress status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo_alpha.900}",
-                  "$description": "High contrast alpha in-progress status background. Inverse surface."
                 }
               }
             },

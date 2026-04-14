@@ -394,9 +394,9 @@ Indicates work in progress, loading states, or active processes.
 #### Background Colors
 | Contrast Level | Light Theme | Dark Theme | Primitive Token (Light) | Primitive Token (Dark) | Usage |
 |----------------|-------------|------------|-------------------------|------------------------|-------|
-| `contrast_high` | `#312e81` | `#4338ca` | `ob.p.color.indigo_alpha.900` | `ob.p.color.indigo.700` | *Not used in current 04_components* |
+| `contrast_high` | `#eef2ff` | `#4338ca` | `ob.p.color.indigo.50` | `ob.p.color.indigo.700` | *Not used in current 04_components* |
 | `contrast_medium` | `#4338ca` | `#3730a3` | `ob.p.color.indigo.700` | `ob.p.color.indigo.800` | Pill enabled/focus states |
-| `contrast_low` | `#e0e7ff` | `#312e81` | `ob.p.color.indigo.100` | `ob.p.color.indigo_alpha.900` | Pill pressed state |
+| `contrast_low` | `#e0e7ff` | `#312e81` | `ob.p.color.indigo.100` | `ob.p.color.indigo.900` | Pill pressed state |
 
 ### Additional Flexible Status Notes
 All flexible statuses listed in the table above are available in the design system. Additional considerations:

@@ -397,24 +397,7 @@
           "semanticAssigned": true
         }
       ]
-    },
-    {
-      "title": "Indigo Alpha",
-      "description": "Indigo with alpha transparency",
-      "tokens": [
-        {
-          "name": "ob.p.color.indigo_alpha.900",
-          "value": "#312e81",
-          "hex": {
-            "light-high": "#312e81",
-            "light-low": "#312e81",
-            "dark-high": "#312e81",
-            "dark-low": "#312e81"
-          },
-          "semanticAssigned": true
-        }
-      ]
     }
   ],
-  "tokenCount": 34
+  "tokenCount": 33
 }

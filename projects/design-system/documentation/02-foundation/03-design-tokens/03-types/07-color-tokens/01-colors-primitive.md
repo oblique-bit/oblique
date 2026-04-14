@@ -132,7 +132,6 @@ The primitive color system contains the following categories:
 ### Alpha Variations
 - **cobalt_alpha**: Alpha variations of cobalt.900 (50-900 scale with 0.05-0.9 opacity)
 - **white_alpha**: Alpha variations of basic.white (50-900 scale with 0.05-0.9 opacity)
-- **indigo_alpha.900**: Alpha variation of indigo with 0.2 opacity - "For Spinner"
 
 ---
 
