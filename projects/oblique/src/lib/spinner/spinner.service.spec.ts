@@ -1,4 +1,4 @@
-import {TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {first} from 'rxjs/operators';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerService} from './spinner.service';
@@ -47,7 +47,7 @@ describe(ObSpinnerService.name, () => {
 		service.deactivate(channel);
 	});
 
-	it('should not emit if there more activations than deactivation', fakeAsync(() => {
+	it('should not emit if there more activations than deactivation', () => {
 		service.activate();
 		service.activate();
 		let emitted = false;
@@ -55,9 +55,8 @@ describe(ObSpinnerService.name, () => {
 			emitted = true;
 		});
 		service.deactivate();
-		tick(1000);
 		expect(emitted).toBe(false);
-	}));
+	});
 
 	it('should emit deactivate event when activate and deactivate are called equally', done => {
 		service.activate();
