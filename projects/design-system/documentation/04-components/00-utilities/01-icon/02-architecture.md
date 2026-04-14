@@ -11,7 +11,7 @@ The icon component family is the foundational sizing layer for all icons in the 
 ├── 01_color.json     — color token (ob.c.icon.color.fg)
 └── 02_layout.json    — sizing tokens
     ├── ob.c.icon.static.size.*         — fixed sizes, no mode
-    ├── ob.c.icon.component.size.*      — reacts to component_size mode
+    ├── ob.c.icon.component.size.*      — reacts to ui_scale mode
     └── ob.c.icon.inline_text.size.*    — reacts to typography_context mode
         └── ob.c.icon.inline_text.body.spacing.vertical.offset
 ```
@@ -22,12 +22,12 @@ The icon component family is the foundational sizing layer for all icons in the 
 
 | Token | Mode | Default px |
 |-------|------|-----------|
-| `ob.c.icon.component.size.xs` | `component_size` | 16 |
-| `ob.c.icon.component.size.sm` | `component_size` | 20 |
-| `ob.c.icon.component.size.md` | `component_size` | 24 |
-| `ob.c.icon.component.size.lg` | `component_size` | 32 |
+| `ob.c.icon.component.size.xs` | `ui_scale` | 16 |
+| `ob.c.icon.component.size.sm` | `ui_scale` | 20 |
+| `ob.c.icon.component.size.md` | `ui_scale` | 24 |
+| `ob.c.icon.component.size.lg` | `ui_scale` | 32 |
 
-Tokens reference `ob.s.dimension.dynamic.component_size.spacing.*` — they resolve to different values depending on which `component_size` mode is active on an ancestor frame.
+Tokens reference `ob.s.dimension.dynamic.component_size.spacing.*` — they resolve to different values depending on which `ui_scale` mode is active on an ancestor frame.
 
 ### icon-static
 
@@ -57,7 +57,7 @@ Icon tokens sit in the `ob.c.*` component layer. They reference semantic dimensi
 ob.c.icon.component.size.md
   → ob.s.dimension.dynamic.component_size.spacing.md.rem  (dynamic = mode-reactive)
       → ob.p.dimension.spacing.xl ...or... ob.p.dimension.spacing.md
-        (resolved by active component_size mode: default=md, mini=xs, etc.)
+        (resolved by active ui_scale mode: default=md, mini=xs, etc.)
 
 ob.c.icon.static.size.md
   → ob.s.dimension.static.component_size.spacing.md.rem  (static = no mode)
@@ -76,7 +76,7 @@ Static and dynamic tokens resolve through different semantic dimension paths (`s
 
 ### Why does inline-text exist separately?
 
-Inline text icons are sized relative to typography, not to component_size. They require a different mode relationship (`typography_context` instead of `component_size`). A separate variant makes this explicit and prevents a product designer from accidentally applying `component_size` to an inline icon.
+Inline text icons are sized relative to typography, not to ui_scale. They require a different mode relationship (`typography_context` instead of `ui_scale`). A separate variant makes this explicit and prevents a product designer from accidentally applying `ui_scale` to an inline icon.
 
 ---
 

@@ -316,12 +316,12 @@ Each token family carries a `token_family_docs` node that holds human-readable d
 
 > **Documentation nodes are embedded in their respective token files. They do not live in a separate folder.**
 
-A `token_family_docs` node belongs to the namespace of the family it documents. For `ob.s3.color.neutral`, the node lives at `ob.s3.color.neutral.token_family_docs` inside `03_semantic/color/compiled.json`. For `ob.p.color`, it lives inside `02_primitive/color.json`.
+A `token_family_docs` node belongs to the namespace of the family it documents. For `ob.s.color.neutral`, the node lives at `ob.s.color.neutral.token_family_docs` inside `03_semantic/color/compiled.json`. For `ob.p.color`, it lives inside `02_primitive/color.json`.
 
 **Correct:**
 ```
 src/lib/themes/03_semantic/color/compiled.json
-  → ob.s3.color.neutral.token_family_docs
+  → ob.s.color.neutral.token_family_docs
 
 src/lib/themes/02_primitive/color.json
   → ob.p.color.token_family_docs
