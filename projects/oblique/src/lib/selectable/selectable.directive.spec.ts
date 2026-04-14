@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement, Directive} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {BehaviorSubject} from 'rxjs';
@@ -54,12 +54,12 @@ describe(ObSelectableDirective.name, () => {
 	let element: DebugElement;
 
 	describe('without obSelectableGroup', () => {
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [ObSelectableDirective],
 				declarations: [FaultyTestComponent],
-			});
-		}));
+			}).compileComponents();
+		});
 
 		it('should throw an error', () => {
 			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrow(
@@ -69,13 +69,13 @@ describe(ObSelectableDirective.name, () => {
 	});
 
 	describe('with obSelectableGroup', () => {
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [ObSelectableDirective],
 				declarations: [ObMockSelectableGroupDirective, TestComponent],
 				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}],
-			});
-		}));
+			}).compileComponents();
+		});
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);
@@ -111,7 +111,7 @@ describe(ObSelectableDirective.name, () => {
 			describe('checkbox', () => {
 				beforeEach(() => {
 					group.mode$.next('checkbox');
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 				it('should be defined as property', () => {
 					expect(directive.role).toBe('checkbox');
@@ -123,7 +123,7 @@ describe(ObSelectableDirective.name, () => {
 			describe('radio', () => {
 				beforeEach(() => {
 					group.mode$.next('radio');
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 				it('should be defined as property', () => {
 					expect(directive.role).toBe('radio');
@@ -135,7 +135,7 @@ describe(ObSelectableDirective.name, () => {
 			describe('windows', () => {
 				beforeEach(() => {
 					group.mode$.next('windows');
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 				it('should be defined as property', () => {
 					expect(directive.role).toBeUndefined();
@@ -176,7 +176,7 @@ describe(ObSelectableDirective.name, () => {
 			describe('true', () => {
 				beforeEach(() => {
 					directive.selected = true;
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 				it('should have an aria-checked attribute', () => {
 					expect(element.nativeElement.getAttribute('aria-checked')).toBe('true');
@@ -190,6 +190,23 @@ describe(ObSelectableDirective.name, () => {
 	});
 
 	describe('onclick', () => {
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				imports: [ObSelectableDirective],
+				declarations: [ObMockSelectableGroupDirective, TestComponent],
+				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}],
+			}).compileComponents();
+
+			fixture = TestBed.createComponent(TestComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+			element = fixture.debugElement.query(By.directive(ObSelectableDirective));
+			directive = element.injector.get(ObSelectableDirective);
+			group = fixture.debugElement
+				.query(By.directive(ObMockSelectableGroupDirective))
+				.injector.get(ObSelectableGroupDirective);
+		});
+
 		it('should call preventDefault on passed event', () => {
 			const event = {preventDefault: jest.fn()} as unknown as MouseEvent;
 			directive.onClick(event);
@@ -206,13 +223,13 @@ describe(ObSelectableDirective.name, () => {
 	});
 
 	describe('the parent ObSelectableGroupDirective is disabled', () => {
-		beforeEach(waitForAsync(() => {
-			TestBed.configureTestingModule({
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
 				imports: [ObSelectableDirective],
 				declarations: [ObMockDisabledSelectableGroupDirective, TestComponent],
 				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockDisabledSelectableGroupDirective}],
-			});
-		}));
+			}).compileComponents();
+		});
 
 		beforeEach(() => {
 			fixture = TestBed.createComponent(TestComponent);
@@ -239,6 +256,23 @@ describe(ObSelectableDirective.name, () => {
 	});
 
 	describe('focus', () => {
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				imports: [ObSelectableDirective],
+				declarations: [ObMockSelectableGroupDirective, TestComponent],
+				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}],
+			}).compileComponents();
+
+			fixture = TestBed.createComponent(TestComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+			element = fixture.debugElement.query(By.directive(ObSelectableDirective));
+			directive = element.injector.get(ObSelectableDirective);
+			group = fixture.debugElement
+				.query(By.directive(ObMockSelectableGroupDirective))
+				.injector.get(ObSelectableGroupDirective);
+		});
+
 		it('should set the focus', () => {
 			// @ts-expect-error
 			jest.spyOn(directive.element.nativeElement, 'focus');
@@ -253,6 +287,23 @@ describe(ObSelectableDirective.name, () => {
 	});
 
 	describe('onFocus', () => {
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				imports: [ObSelectableDirective],
+				declarations: [ObMockSelectableGroupDirective, TestComponent],
+				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}],
+			}).compileComponents();
+
+			fixture = TestBed.createComponent(TestComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+			element = fixture.debugElement.query(By.directive(ObSelectableDirective));
+			directive = element.injector.get(ObSelectableDirective);
+			group = fixture.debugElement
+				.query(By.directive(ObMockSelectableGroupDirective))
+				.injector.get(ObSelectableGroupDirective);
+		});
+
 		it('should call focus on group', () => {
 			directive.onFocus();
 			expect(group.focus).toHaveBeenCalled();
