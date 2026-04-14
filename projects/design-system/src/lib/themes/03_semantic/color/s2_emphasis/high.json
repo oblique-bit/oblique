@@ -3,21 +3,39 @@
     "s2": {
       "color": {
         "token_family_docs": {
-          "$description": "State-based color mapping for interaction elements. Interactive state colors for components. Both Lightness (Light/Dark) and Emphasis (High/Low) modes affect resolved values across all 4 columns. Do: Reference when authoring compiled interaction tokens that require emphasis resolution. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead.",
+          "$description": {
+            "$type": "other",
+            "$value": "State-based color mapping for interaction elements. Interactive state colors for components. Both Lightness (Light/Dark) and Emphasis (High/Low) modes affect resolved values across all 4 columns. Do: Reference when authoring compiled interaction tokens that require emphasis resolution. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": false
+              }
             }
           }
         },
         "interaction": {
           "token_family_docs": {
-            "$description": "Default emphasis for interactive elements — buttons, links, and form controls where the interactive role must be clearly visible. Colors are saturated and fully contrasted to signal primary actions. Do: Use for primary buttons, default call-to-action elements, and text links in content areas where a saturated interactive color is expected. Avoid: Do not use in headers, footers, or passive layout zones where saturated color would compete with surrounding content. Use Low emphasis instead.",
+            "$description": {
+              "$type": "other",
+              "$value": "Default emphasis for interactive elements — buttons, links, and form controls where the interactive role must be clearly visible. Colors are saturated and fully contrasted to signal primary actions. Do: Use for primary buttons, default call-to-action elements, and text links in content areas where a saturated interactive color is expected. Avoid: Do not use in headers, footers, or passive layout zones where saturated color would compete with surrounding content. Use Low emphasis instead."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": false
+                }
               }
             }
           },
@@ -25,7 +43,7 @@
             "enabled": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_medium.inversity_normal}",
                 "$description": "Foreground for enabled state emphasis-high interactive element. Standard surface."
               },
               "inversity_flipped": {
