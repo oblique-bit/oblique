@@ -1,13 +1,6 @@
 {
   "tier": "s3",
   "heading": "S3 Color: Neutral",
-  "metadata": {
-    "readableName": "Neutral",
-    "tokenPath": "ob.s3.color.neutral",
-    "pageIntro": "Foundational colors for backgrounds, text, borders, and surfaces.",
-    "recommended": "Use for text, background, border, and shadow roles in standard UI components.",
-    "notRecommended": "Do not use for interactive state feedback — use the interaction scale. Do not use for status communication — use the status scale."
-  },
   "component": "2-mode",
   "role": true,
   "groups": [

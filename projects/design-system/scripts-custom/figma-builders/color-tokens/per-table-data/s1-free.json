@@ -1,13 +1,6 @@
 {
   "tier": "s1",
   "heading": "S1 Color: Free",
-  "metadata": {
-    "readableName": "Free",
-    "tokenPath": "ob.s1.color.free",
-    "pageIntro": "Lightness-resolved free colors. Only Light/Dark modes apply. References Primitives, referenced by S2.",
-    "recommended": "Reference the matching S1 status sub-group when tracing how a free color scale is resolved.",
-    "notRecommended": "Do not assign directly to component tokens — use compiled S-tier tokens instead."
-  },
   "component": "2-mode",
   "role": true,
   "groups": [

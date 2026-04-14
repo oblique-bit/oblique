@@ -1,13 +1,6 @@
 {
   "tier": "s3",
   "heading": "S3 Color: Free",
-  "metadata": {
-    "readableName": "Free",
-    "tokenPath": "ob.s3.color.free",
-    "pageIntro": "Free colors. No emphasis modes — only Light/Dark modes apply. Contrast levels (e.g. contrast_highest) are available.",
-    "recommended": "Use for tags, badges, and contextual color accents where no fixed semantic role applies. Suitable for categorical distinction.",
-    "notRecommended": "Do not substitute for status or interaction colors. Free tokens carry no predefined semantic meaning — assign meaning in context."
-  },
   "component": "2-mode",
   "role": true,
   "groups": [

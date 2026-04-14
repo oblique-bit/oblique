@@ -306,3 +306,57 @@ Used on `token_family_docs` nodes exclusively. A `token_family_docs` node is not
 
 ---
 
+## **Doc Token Nodes (`token_family_docs`)**
+
+### **Purpose**
+
+Each token family carries a `token_family_docs` node that holds human-readable documentation (description, usage guidance) for Figma Living Documentation tables. These nodes live **inside the token file that owns the family** — they are not separate files and not in a separate subfolder.
+
+### **File Location Rule**
+
+> **Documentation nodes are embedded in their respective token files. They do not live in a separate folder.**
+
+A `token_family_docs` node belongs to the namespace of the family it documents. For `ob.s3.color.neutral`, the node lives at `ob.s3.color.neutral.token_family_docs` inside `03_semantic/color/compiled.json`. For `ob.p.color`, it lives inside `02_primitive/color.json`.
+
+**Correct:**
+```
+src/lib/themes/03_semantic/color/compiled.json
+  → ob.s3.color.neutral.token_family_docs
+
+src/lib/themes/02_primitive/color.json
+  → ob.p.color.token_family_docs
+```
+
+**Wrong:**
+```
+src/lib/themes/doc/03_semantic/color/neutral.json   ← separate detached folder
+scripts-custom/figma-builders/per-table-data/*.json  ← outside src/lib/themes/ entirely
+```
+
+### **Node Format**
+
+```json
+"token_family_docs": {
+  "$description": "Foundational colors for backgrounds, text, borders, and surfaces. Light/Dark modes apply. Use: text, background, border, shadow roles. Avoid: interactive state feedback or status communication.",
+  "$extensions": {
+    "oblique": {
+      "kind": "token_family_docs",
+      "export": false
+    }
+  }
+}
+```
+
+`$description` contains the full documentation text. `export: false` ensures build pipelines skip this node entirely.
+
+### **Separation of Concerns**
+
+Builder configuration files under `scripts-custom/figma-builders/color-tokens/per-table-data/` contain **structural data only** (tier, component type, role, token groups). They must never contain text content such as page introductions or usage guidelines. Text content belongs in the `token_family_docs` node inside the relevant token file.
+
+| Location | Contains |
+|---|---|
+| `src/lib/themes/…/tokenfile.json` → `token_family_docs` | Description, usage guidance |
+| `scripts-custom/…/per-table-data/` | tier, component, role, groups (build config only) |
+
+---
+

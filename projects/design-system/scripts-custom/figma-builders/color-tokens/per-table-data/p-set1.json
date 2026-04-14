@@ -1,13 +1,6 @@
 {
   "tier": "primitive",
   "heading": "Color Primitives — Set 1 (Left)",
-  "metadata": {
-    "readableName": "Brand Foundation",
-    "tokenPath": "ob.p.color",
-    "pageIntro": "Scales provided by Bundeskanzlei Design System.",
-    "recommended": "",
-    "notRecommended": ""
-  },
   "component": "primitive",
   "role": true,
   "groups": [

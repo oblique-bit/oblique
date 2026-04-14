@@ -1,13 +1,6 @@
 {
   "tier": "s1",
   "heading": "S1 Color: Status",
-  "metadata": {
-    "readableName": "Status",
-    "tokenPath": "ob.s1.color.status",
-    "pageIntro": "Lightness-resolved status colors. Only Light/Dark modes apply. References Primitives, referenced by S3.",
-    "recommended": "Reference when authoring compiled tokens that resolve to status colors.",
-    "notRecommended": "Do not assign directly to component tokens — use compiled S-tier tokens instead."
-  },
   "component": "2-mode",
   "role": true,
   "groups": [

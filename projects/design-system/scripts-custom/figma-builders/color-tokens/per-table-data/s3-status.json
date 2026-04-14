@@ -1,13 +1,6 @@
 {
   "tier": "s3",
   "heading": "S3 Color: Status",
-  "metadata": {
-    "readableName": "Status",
-    "tokenPath": "ob.s3.color.status",
-    "pageIntro": "Status communication colors. No emphasis modes — only Light/Dark modes apply. Contrast levels (e.g. contrast_highest) are available.",
-    "recommended": "Use for alerts, badges, and any element that communicates system or process state.",
-    "notRecommended": "Avoid for decoration or branding — status colors carry fixed semantic meaning. Do not use for interactive states — use the interaction scale."
-  },
   "component": "2-mode",
   "role": true,
   "groups": [

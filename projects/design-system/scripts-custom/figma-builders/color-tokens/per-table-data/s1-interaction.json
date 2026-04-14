@@ -1,13 +1,6 @@
 {
   "tier": "s1",
   "heading": "S1 Color: Interaction",
-  "metadata": {
-    "readableName": "Interaction",
-    "tokenPath": "ob.s1.color.interaction",
-    "pageIntro": "Lightness-resolved interaction colors. Only Light/Dark modes apply. References Primitives, referenced by S2.",
-    "recommended": "Reference when authoring S2 or compiled tokens that resolve to interaction state colors.",
-    "notRecommended": "Do not assign directly to component tokens — use compiled S-tier tokens instead."
-  },
   "component": "2-mode",
   "role": true,
   "groups": [

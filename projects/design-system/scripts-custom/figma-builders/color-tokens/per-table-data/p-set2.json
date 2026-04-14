@@ -1,13 +1,6 @@
 {
   "tier": "primitive",
   "heading": "Color Primitives — Set 2 (Left)",
-  "metadata": {
-    "readableName": "Oblique custom",
-    "tokenPath": "ob.p.color",
-    "pageIntro": "Additional primitive colors.",
-    "recommended": "",
-    "notRecommended": ""
-  },
   "component": "primitive",
   "role": true,
   "groups": [

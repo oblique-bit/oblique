@@ -1,13 +1,6 @@
 {
   "tier": "s3",
   "heading": "S3 Color: Interaction",
-  "metadata": {
-    "readableName": "Interaction",
-    "tokenPath": "ob.s3.color.interaction",
-    "pageIntro": "Interactive state colors for components. Both Lightness (Light/Dark) and Emphasis (High/Low) modes affect resolved values across all 4 columns.",
-    "recommended": "Use for interactive component states — buttons, links, form controls, and focusable elements.",
-    "notRecommended": "Do not use for static decorative elements. Do not use for status communication — use the status scale instead."
-  },
   "component": "4-mode",
   "role": true,
   "groups": [

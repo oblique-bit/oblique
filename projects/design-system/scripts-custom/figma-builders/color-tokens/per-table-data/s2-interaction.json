@@ -1,13 +1,6 @@
 {
   "tier": "s2",
   "heading": "S2 Color: Interaction",
-  "metadata": {
-    "readableName": "Interaction State",
-    "tokenPath": "ob.s2.color.interaction.state",
-    "pageIntro": "State-based color mapping for interaction elements. Interactive state colors for components. Both Lightness (Light/Dark) and Emphasis (High/Low) modes affect resolved values across all 4 columns.",
-    "recommended": "Reference when authoring compiled interaction tokens that require emphasis resolution.",
-    "notRecommended": "Do not assign directly to component tokens — use compiled S-tier tokens instead."
-  },
   "component": "4-mode",
   "role": true,
   "groups": [

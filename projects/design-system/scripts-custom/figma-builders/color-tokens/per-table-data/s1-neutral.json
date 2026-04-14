@@ -1,13 +1,6 @@
 {
   "tier": "s1",
   "heading": "S1 Color: Neutral",
-  "metadata": {
-    "readableName": "Neutral",
-    "tokenPath": "ob.s1.color.neutral",
-    "pageIntro": "Lightness-resolved neutral colors. Only Light/Dark modes apply. References Primitives, referenced by S3.",
-    "recommended": "Reference when authoring compiled semantic tokens that resolve to neutral foreground, background, border, or shadow values.",
-    "notRecommended": "Do not assign directly to component tokens — use compiled S-tier tokens instead."
-  },
   "component": "2-mode",
   "role": true,
   "groups": [
