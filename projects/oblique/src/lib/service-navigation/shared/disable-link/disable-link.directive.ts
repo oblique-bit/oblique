@@ -2,7 +2,6 @@ import {Directive, Input, OnChanges} from '@angular/core';
 
 @Directive({
 	selector: '[obDisableLink]',
-	standalone: true,
 	host: {
 		'[attr.aria-disabled]': 'disabled',
 		'[attr.role]': 'role',

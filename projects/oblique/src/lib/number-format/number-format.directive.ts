@@ -4,7 +4,6 @@ import {distinctUntilChanged} from 'rxjs/operators';
 
 @Directive({
 	selector: '[obNumberFormat]',
-	standalone: true,
 	host: {
 		'(blur)': 'onBlur()',
 		'(focus)': 'onFocus()',

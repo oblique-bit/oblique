@@ -7,7 +7,6 @@ import {ObNavTreeItemModel} from '../nav-tree-item.model';
  */
 @Component({
 	selector: 'ob-nav-tree',
-	standalone: true,
 	template: '',
 	host: {class: 'ob-nav-tree'},
 	exportAs: 'obNavTree',

@@ -5,7 +5,6 @@ import {CommonModule} from '@angular/common';
 
 @Component({
 	imports: [ObDisableLinkDirective],
-	standalone: true,
 	template: `
 		<a [id]="standardId" [obDisableLink]="disableLink" [href]="randomurl">randomlink</a>
 		<a [id]="defaultId" obDisableLink [href]="randomurl">randomlink</a>

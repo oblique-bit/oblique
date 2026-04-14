@@ -4,7 +4,6 @@ import {ObAutocompleteTextToFindService} from '../autocomplete-text-to-find.serv
 
 @Pipe({
 	name: 'obHighlightTextPipe',
-	standalone: true,
 })
 export class ObHighlightTextPipe implements PipeTransform {
 	private readonly textToFindService = inject(ObAutocompleteTextToFindService);

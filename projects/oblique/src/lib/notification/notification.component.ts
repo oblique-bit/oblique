@@ -1,4 +1,8 @@
 import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation, inject} from '@angular/core';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {TranslateModule} from '@ngx-translate/core';
+import {ObAlertComponent} from '../alert/alert.component';
+import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {WINDOW} from '../utilities';
 import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
@@ -6,7 +10,7 @@ import {Subject, takeUntil} from 'rxjs';
 
 @Component({
 	selector: 'ob-notification',
-	standalone: false,
+	imports: [MatTooltipModule, ObAlertComponent, ObTranslateParamsPipe, TranslateModule],
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss', './notification-animations.scss'],
 	encapsulation: ViewEncapsulation.None,

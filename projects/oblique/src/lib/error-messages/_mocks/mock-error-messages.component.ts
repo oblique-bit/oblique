@@ -6,7 +6,6 @@ import {NgControl} from '@angular/forms';
  */
 @Component({
 	selector: 'ob-error-messages',
-	standalone: true,
 	template: '',
 	exportAs: 'obErrorMessages',
 })

@@ -8,7 +8,6 @@ import {ObBreadcrumbConfig, ObIBreadcrumb} from '../breadcrumb.model';
  */
 @Component({
 	selector: 'ob-breadcrumb',
-	standalone: false,
 	template: '',
 	exportAs: 'obBreadcrumb',
 })

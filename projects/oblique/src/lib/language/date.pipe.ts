@@ -4,7 +4,6 @@ import {ObLanguageService} from './language.service';
 
 @Pipe({
 	name: 'obDate',
-	standalone: true,
 	// eslint-disable-next-line @angular-eslint/no-pipe-impure
 	pure: false,
 })

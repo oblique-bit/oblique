@@ -5,7 +5,6 @@ import {Component} from '@angular/core';
  */
 @Component({
 	selector: 'ob-top-control',
-	standalone: true,
 	template: '',
 	exportAs: 'obTopControl',
 })

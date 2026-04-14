@@ -34,7 +34,6 @@ export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>(
 
 @Directive({
 	selector: '[obPopover]',
-	standalone: true,
 	host: {
 		'(click)': 'toggle($event)',
 		'(keyup.enter)': 'toggle($event)',

@@ -6,7 +6,6 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
  */
 @Pipe({
 	name: 'obHighlightTextPipe',
-	standalone: true,
 })
 export class ObMockHighlightTextPipe implements PipeTransform {
 	private readonly sanitizer = inject(DomSanitizer);

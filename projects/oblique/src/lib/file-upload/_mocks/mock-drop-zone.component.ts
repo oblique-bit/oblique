@@ -6,7 +6,6 @@ import {ObIUploadEvent} from '../file-upload.model';
  */
 @Component({
 	selector: 'ob-drop-zone',
-	standalone: true,
 	template: '',
 	host: {class: 'ob-drop-zone'},
 	exportAs: 'obDropZone',

@@ -3,7 +3,6 @@ import type {CodeExamples, PreviewComponent} from './code-examples.model';
 
 @Directive({
 	selector: '[appCodeExample]',
-	standalone: true,
 })
 export class CodeExampleDirective implements OnChanges {
 	readonly codeExampleComponent = input<PreviewComponent | Type<CodeExamples>>(undefined);

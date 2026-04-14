@@ -5,7 +5,6 @@ import {ObSchemaValidatorInstance} from './schema-validator.instance';
 
 @Directive({
 	selector: '[obSchemaValidation]',
-	standalone: true,
 	providers: [ObSchemaValidationService],
 	host: {class: 'ob-schema-validation'},
 	exportAs: 'obSchemaValidation',

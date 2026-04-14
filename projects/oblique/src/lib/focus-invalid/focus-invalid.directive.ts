@@ -3,7 +3,6 @@ import {NgControl} from '@angular/forms';
 
 @Directive({
 	selector: 'form[obFocusInvalid]',
-	standalone: true,
 	host: {
 		'(submit)': 'focusFirstInvalidField()',
 	},

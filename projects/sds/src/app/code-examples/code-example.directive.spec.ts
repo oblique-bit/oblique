@@ -4,14 +4,12 @@ import {By} from '@angular/platform-browser';
 import {CodeExampleDirective} from './code-example.directive';
 
 @Component({
-	standalone: true,
 	template: 'Hello World',
 })
 class DummyComponent {}
 
 @Component({
 	imports: [CodeExampleDirective],
-	standalone: true,
 	template: '<div appCodeExample [codeExampleComponent]="component"></div>',
 })
 class CodeExampleDirectiveTestComponent {
