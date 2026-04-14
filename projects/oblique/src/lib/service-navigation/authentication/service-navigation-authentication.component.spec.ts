@@ -52,7 +52,7 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 			describe('set to "true"', () => {
 				beforeEach(() => {
 					component.isLoggedIn = true;
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 
 				describe('link', () => {
@@ -120,7 +120,7 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 			describe('set to "false"', () => {
 				beforeEach(() => {
 					component.isLoggedIn = false;
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 
 				describe('link', () => {

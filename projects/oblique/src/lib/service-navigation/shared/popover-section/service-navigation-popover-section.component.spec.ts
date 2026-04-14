@@ -60,7 +60,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 
 			it('should contain the header attribute', async () => {
 				component.header = 'Section title';
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				expect(await header.text()).toBe('Section title');
 			});
 
@@ -95,7 +95,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 				let paragraph: TestElement;
 				beforeEach(async () => {
 					component.text = 'Section text';
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 					paragraph = await harness.getParagraph();
 				});
 
@@ -131,7 +131,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 				let links: TestElement[];
 				beforeEach(async () => {
 					component.links = sampleLinks;
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 					list = await harness.getLinkList();
 					links = await harness.getLinks();
 				});

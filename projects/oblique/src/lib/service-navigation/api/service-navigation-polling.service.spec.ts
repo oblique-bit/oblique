@@ -1,4 +1,4 @@
-import {TestBed, discardPeriodicTasks, fakeAsync, tick} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {Observable, of, throwError} from 'rxjs';
 import {ObNotificationService} from '../../notification/notification.service';
 import {ObServiceNavigationStateApiService} from './service-navigation-state-api.service';
@@ -15,6 +15,7 @@ describe('ObServiceNavigationPollingService', () => {
 	};
 
 	beforeEach(() => {
+		jest.useFakeTimers();
 		TestBed.configureTestingModule({
 			providers: [
 				{provide: ObServiceNavigationStateApiService, useValue: {get: jest.fn().mockReturnValue(of(mockData))}},
@@ -34,6 +35,8 @@ describe('ObServiceNavigationPollingService', () => {
 
 	afterEach(() => {
 		jest.clearAllMocks();
+		jest.clearAllTimers();
+		jest.useRealTimers();
 	});
 
 	it('should be created', () => {
@@ -45,31 +48,40 @@ describe('ObServiceNavigationPollingService', () => {
 			expect(service.state$ instanceof Observable).toBe(true);
 		});
 
-		it('should not emit default data', fakeAsync(() => {
+		it('should not emit default data', () => {
 			let hasEmitted = false;
 			service.state$.subscribe(() => {
 				hasEmitted = true;
 			});
-			tick(1000);
+			jest.advanceTimersByTime(1000);
 			expect(hasEmitted).toBe(false);
-		}));
+		});
 	});
 
 	describe('initializeStateUpdate', () => {
-		describe.each([
-			{time: 0, number: 2},
-			{time: 999, number: 2},
-			{time: 1000, number: 3},
-			{time: 4500, number: 6},
-		])('with 1s interval and $time ms processing time', ({time, number}) => {
-			beforeEach(fakeAsync(() => {
-				service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
-				tick(time);
-				discardPeriodicTasks();
-			}));
+		it('should call both polling endpoints immediately when initialized', () => {
+			service.initializeStateUpdate(1, 2, 'http://rootUrl/', 1);
+			jest.advanceTimersByTime(0);
 
-			it(`should call "stateApiService.get" ${number} times`, () => {
-				expect(stateApiService.get).toHaveBeenCalledTimes(number);
+			expect(stateApiService.get).toHaveBeenCalledTimes(1);
+			expect(stateApiService.get).toHaveBeenCalledWith('http://rootUrl/', 1);
+			expect(countApiService.get).toHaveBeenCalledTimes(1);
+			expect(countApiService.get).toHaveBeenCalledWith('http://rootUrl/');
+		});
+
+		describe.each([
+			{elapsedMs: 0, expectedCalls: 1},
+			{elapsedMs: 999, expectedCalls: 1},
+			{elapsedMs: 1000, expectedCalls: 2},
+			{elapsedMs: 4500, expectedCalls: 5},
+		])('after $elapsedMs ms with 1s interval', ({elapsedMs, expectedCalls}) => {
+			beforeEach(() => {
+				service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
+				jest.advanceTimersByTime(elapsedMs);
+			});
+
+			it(`should call "stateApiService.get" ${expectedCalls} times`, () => {
+				expect(stateApiService.get).toHaveBeenCalledTimes(expectedCalls);
 			});
 
 			it('should call "stateApiService.get" with "http://rootUrl/"', () => {
@@ -78,19 +90,18 @@ describe('ObServiceNavigationPollingService', () => {
 		});
 
 		describe.each([
-			{time: 0, number: 2},
-			{time: 999, number: 2},
-			{time: 1000, number: 2},
-			{time: 4500, number: 4},
-		])('with 2s interval and $time ms processing time', ({time, number}) => {
-			beforeEach(fakeAsync(() => {
+			{elapsedMs: 0, expectedCalls: 1},
+			{elapsedMs: 999, expectedCalls: 1},
+			{elapsedMs: 1000, expectedCalls: 1},
+			{elapsedMs: 4500, expectedCalls: 3},
+		])('after $elapsedMs ms with 2s interval', ({elapsedMs, expectedCalls}) => {
+			beforeEach(() => {
 				service.initializeStateUpdate(1, 2, 'http://rootUrl/', 1);
-				tick(time);
-				discardPeriodicTasks();
-			}));
+				jest.advanceTimersByTime(elapsedMs);
+			});
 
-			it(`should call "countApiService.get" ${number} times`, () => {
-				expect(countApiService.get).toHaveBeenCalledTimes(number);
+			it(`should call "countApiService.get" ${expectedCalls} times`, () => {
+				expect(countApiService.get).toHaveBeenCalledTimes(expectedCalls);
 			});
 
 			it('should call "countApiService.get" with "http://rootUrl/"', () => {
@@ -108,15 +119,15 @@ describe('ObServiceNavigationPollingService', () => {
 			jest.spyOn(notification, 'error');
 		});
 
-		it('should throw an error', fakeAsync(() => {
+		it('should throw an error', () => {
 			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
-			expect(() => tick(1000)).toThrow('Cannot load service navigation state');
-		}));
+			expect(() => jest.advanceTimersByTime(1000)).toThrow('Cannot load service navigation state');
+		});
 
-		it('should show a notification', fakeAsync(() => {
+		it('should show a notification', () => {
 			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
 			try {
-				tick(1000);
+				jest.advanceTimersByTime(1000);
 			} catch {
 				/* empty */
 			}
@@ -124,6 +135,6 @@ describe('ObServiceNavigationPollingService', () => {
 				message: 'i18n.oblique.service-navigation.state.error.message',
 				title: 'i18n.oblique.service-navigation.state.error.title',
 			});
-		}));
+		});
 	});
 });

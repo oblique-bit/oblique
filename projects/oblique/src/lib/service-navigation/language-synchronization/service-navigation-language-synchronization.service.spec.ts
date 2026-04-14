@@ -1,4 +1,4 @@
-import {TestBed, fakeAsync} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {of} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 import {ObServiceNavigationLanguageSynchronizationService} from './service-navigation-language-synchronization.service';
@@ -13,7 +13,7 @@ describe('ObServiceNavigationLanguageSynchronizationService', () => {
 		synchronizeLanguage: jest.fn(() => of()),
 	};
 
-	beforeEach(fakeAsync(() => {
+	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
 				provideObliqueTestingConfiguration(),
@@ -28,7 +28,7 @@ describe('ObServiceNavigationLanguageSynchronizationService', () => {
 		translateService.use(`de`);
 		jest.spyOn(translateService, 'use');
 		jest.clearAllMocks();
-	}));
+	});
 
 	it('should have shouldSynchronize initially set to false', () => {
 		expect(service.shouldSynchronize).toBe(false);

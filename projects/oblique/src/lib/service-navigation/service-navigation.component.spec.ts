@@ -489,7 +489,7 @@ describe('ObServiceNavigationComponent', () => {
 				beforeEach(async () => {
 					component.useInfoBackend = true;
 					component.displayInfo = true;
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 					infoElement = await harness.getInfoElement();
 				});
 
@@ -527,7 +527,7 @@ describe('ObServiceNavigationComponent', () => {
 					component.infoHelpText = 'input help text';
 					component.infoLinks = [{url: 'input url link1', label: 'input label link1'}];
 					component.infoContact = {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'};
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 					infoElement = await harness.getInfoElement();
 				});
 
