@@ -7,7 +7,7 @@
             "token_family_docs": {
               "$description": {
                 "$type": "other",
-                "$value": "Typography dimension tokens for the Interface context — compact spacing tuned for UI controls and labels."
+                "$value": "Typography dimensions for the Interface context — compact spacing tuned for UI controls and labels. Values match the static defaults for this context."
               },
               "$extensions": {
                 "oblique": {
@@ -24,35 +24,43 @@
             },
             "none": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.0}"
+              "$value": "{ob.p.dimension.px.0}",
+              "$description": "Zero typography spacing for collapse and reset."
             },
             "xs": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.8}"
+              "$value": "{ob.p.dimension.px.8}",
+              "$description": "Extra-small typography spacing. Use for minimal text gaps, list-marker offsets, tight inline labels."
             },
             "sm": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.12}"
+              "$value": "{ob.p.dimension.px.12}",
+              "$description": "Small typography spacing. Use for compact paragraph gaps, label padding, form-field spacing."
             },
             "md": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.16}"
+              "$value": "{ob.p.dimension.px.16}",
+              "$description": "Medium typography spacing. Use for standard text block separation and content area padding."
             },
             "lg": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.20}"
+              "$value": "{ob.p.dimension.px.20}",
+              "$description": "Large typography spacing. Use for prominent text section gaps and comfortable reading flow."
             },
             "xl": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.24}"
+              "$value": "{ob.p.dimension.px.24}",
+              "$description": "Extra-large typography spacing. Use for significant visual breaks between text sections."
             },
             "2xl": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.28}"
+              "$value": "{ob.p.dimension.px.28}",
+              "$description": "2XL typography spacing. Use for major content-area separation and header spacing."
             },
             "3xl": {
               "$type": "spacing",
-              "$value": "{ob.p.dimension.px.32}"
+              "$value": "{ob.p.dimension.px.32}",
+              "$description": "3XL typography spacing. Use for maximum text-related separation and feature-section breaks."
             }
           }
         }

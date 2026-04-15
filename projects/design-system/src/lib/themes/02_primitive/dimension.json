@@ -5,7 +5,7 @@
         "token_family_docs": {
           "$description": {
             "$type": "other",
-            "$value": "Base spacing values in px and rem. Named by pixel step (e.g. 0, 4, 8, 16). Referenced by all semantic dimension tokens."
+            "$value": "Base dimension primitives in px and rem. Named by pixel step (px) or index (rem). rem descriptions show the pixel equivalent for quick reference. Not for direct use — consumed by semantic tokens."
           },
           "$extensions": {
             "oblique": {
@@ -23,270 +23,244 @@
         "px": {
           "0": {
             "$type": "dimension",
-            "$value": "0px",
-            "$description": "Zero value for resets and overrides"
+            "$value": "0px"
           },
           "1": {
             "$type": "dimension",
-            "$value": "1px",
-            "$description": "Micro-dimension for hairlines and finest details"
+            "$value": "1px"
           },
           "2": {
             "$type": "dimension",
-            "$value": "2px",
-            "$description": "Nudge value for subtle adjustments and thin borders"
+            "$value": "2px"
           },
           "3": {
             "$type": "dimension",
-            "$value": "3px",
-            "$description": "Micro-dimension for fine-tuning"
+            "$value": "3px"
           },
           "4": {
             "$type": "dimension",
-            "$value": "4px",
-            "$description": "Base unit for small-scale spacing and component internals"
+            "$value": "4px"
           },
           "6": {
             "$type": "dimension",
-            "$value": "6px",
-            "$description": "Intermediate spacing for component gaps and fine adjustments"
+            "$value": "6px"
           },
           "8": {
             "$type": "dimension",
-            "$value": "8px",
-            "$description": "Core spacing unit for layout grids and component padding"
+            "$value": "8px"
           },
           "10": {
             "$type": "dimension",
-            "$value": "10px",
-            "$description": "Enhanced spacing for improved legibility and accessibility"
+            "$value": "10px"
           },
           "12": {
             "$type": "dimension",
-            "$value": "12px",
-            "$description": "Small layout spacing and medium component padding"
+            "$value": "12px"
           },
           "16": {
             "$type": "dimension",
-            "$value": "16px",
-            "$description": "Standard layout spacing and content separation"
+            "$value": "16px"
           },
           "20": {
             "$type": "dimension",
-            "$value": "20px",
-            "$description": "Medium layout spacing"
+            "$value": "20px"
           },
           "24": {
             "$type": "dimension",
-            "$value": "24px",
-            "$description": "Large layout spacing for clear separation"
+            "$value": "24px"
           },
           "28": {
             "$type": "dimension",
-            "$value": "28px",
-            "$description": "Medium-large layout spacing"
+            "$value": "28px"
           },
           "32": {
             "$type": "dimension",
-            "$value": "32px",
-            "$description": "XL layout spacing for significant visual separation"
+            "$value": "32px"
           },
           "36": {
             "$type": "dimension",
-            "$value": "36px",
-            "$description": "XL+ layout spacing for enhanced visual hierarchy"
+            "$value": "36px"
           },
           "40": {
             "$type": "dimension",
-            "$value": "40px",
-            "$description": "2XL layout spacing"
+            "$value": "40px"
           },
           "48": {
             "$type": "dimension",
-            "$value": "48px",
-            "$description": "3XL layout spacing for section breaks"
+            "$value": "48px"
           },
           "56": {
             "$type": "dimension",
-            "$value": "56px",
-            "$description": "4XL layout spacing"
+            "$value": "56px"
           },
           "64": {
             "$type": "dimension",
-            "$value": "64px",
-            "$description": "5XL layout spacing for major content areas"
+            "$value": "64px"
           },
           "80": {
             "$type": "dimension",
-            "$value": "80px",
-            "$description": "6XL layout spacing"
+            "$value": "80px"
           },
           "96": {
             "$type": "dimension",
-            "$value": "96px",
-            "$description": "7XL layout spacing for page-level sections"
+            "$value": "96px"
           },
           "128": {
             "$type": "dimension",
-            "$value": "128px",
-            "$description": "8XL layout spacing"
+            "$value": "128px"
           },
           "160": {
             "$type": "dimension",
-            "$value": "160px",
-            "$description": "9XL layout spacing"
+            "$value": "160px"
           },
           "192": {
             "$type": "dimension",
-            "$value": "192px",
-            "$description": "10XL layout spacing"
+            "$value": "192px"
           },
           "256": {
             "$type": "dimension",
-            "$value": "256px",
-            "$description": "11XL layout spacing for hero sections"
+            "$value": "256px"
           },
           "320": {
             "$type": "dimension",
-            "$value": "320px",
-            "$description": "12XL layout spacing for maximum separation"
+            "$value": "320px"
           },
           "9999": {
             "$type": "dimension",
             "$value": "999px",
-            "$description": "for infinite, full rounded etc."
+            "$description": "Maximum value for full rounding"
           }
         },
         "rem": {
           "0": {
             "$type": "dimension",
             "$value": "0rem",
-            "$description": "0px equivalent - Zero value"
+            "$description": "0px equivalent"
           },
           "100": {
             "$type": "dimension",
             "$value": "0.0625rem",
-            "$description": "1px equivalent - Micro-dimension"
+            "$description": "1px equivalent"
           },
           "200": {
             "$type": "dimension",
             "$value": "0.125rem",
-            "$description": "2px equivalent - Nudge value"
+            "$description": "2px equivalent"
           },
           "300": {
             "$type": "dimension",
             "$value": "0.1875rem",
-            "$description": "3px equivalent - Micro fine-tuning"
+            "$description": "3px equivalent"
           },
           "400": {
             "$type": "dimension",
             "$value": "0.25rem",
-            "$description": "4px equivalent - Base unit"
+            "$description": "4px equivalent"
           },
           "500": {
             "$type": "dimension",
             "$value": "0.375rem",
-            "$description": "6px equivalent - Intermediate spacing unit"
+            "$description": "6px equivalent"
           },
           "600": {
             "$type": "dimension",
             "$value": "0.5rem",
-            "$description": "8px equivalent - Core spacing unit"
+            "$description": "8px equivalent"
           },
           "700": {
             "$type": "dimension",
             "$value": "0.625rem",
-            "$description": "10px equivalent - Enhanced legibility spacing"
+            "$description": "10px equivalent"
           },
           "800": {
             "$type": "dimension",
             "$value": "0.75rem",
-            "$description": "12px equivalent - Small layout spacing"
+            "$description": "12px equivalent"
           },
           "900": {
             "$type": "dimension",
             "$value": "1rem",
-            "$description": "16px equivalent - Standard layout spacing"
+            "$description": "16px equivalent"
           },
           "1000": {
             "$type": "dimension",
             "$value": "1.25rem",
-            "$description": "20px equivalent - Medium layout spacing"
+            "$description": "20px equivalent"
           },
           "1100": {
             "$type": "dimension",
             "$value": "1.5rem",
-            "$description": "24px equivalent - Large layout spacing"
+            "$description": "24px equivalent"
           },
           "1200": {
             "$type": "dimension",
             "$value": "1.75rem",
-            "$description": "28px equivalent - Medium-large layout spacing"
+            "$description": "28px equivalent"
           },
           "1300": {
             "$type": "dimension",
             "$value": "2rem",
-            "$description": "32px equivalent - XL layout spacing"
+            "$description": "32px equivalent"
           },
           "1400": {
             "$type": "dimension",
             "$value": "2.25rem",
-            "$description": "36px equivalent - XL+ layout spacing"
+            "$description": "36px equivalent"
           },
           "1500": {
             "$type": "dimension",
             "$value": "2.5rem",
-            "$description": "40px equivalent - 2XL layout spacing"
+            "$description": "40px equivalent"
           },
           "1600": {
             "$type": "dimension",
             "$value": "3rem",
-            "$description": "48px equivalent - 3XL layout spacing"
+            "$description": "48px equivalent"
           },
           "1700": {
             "$type": "dimension",
             "$value": "3.5rem",
-            "$description": "56px equivalent - 4XL layout spacing"
+            "$description": "56px equivalent"
           },
           "1800": {
             "$type": "dimension",
             "$value": "4rem",
-            "$description": "64px equivalent - 5XL layout spacing"
+            "$description": "64px equivalent"
           },
           "1900": {
             "$type": "dimension",
             "$value": "5rem",
-            "$description": "80px equivalent - 6XL layout spacing"
+            "$description": "80px equivalent"
           },
           "2000": {
             "$type": "dimension",
             "$value": "6rem",
-            "$description": "96px equivalent - 7XL layout spacing"
+            "$description": "96px equivalent"
           },
           "2100": {
             "$type": "dimension",
             "$value": "8rem",
-            "$description": "128px equivalent - 8XL layout spacing"
+            "$description": "128px equivalent"
           },
           "2200": {
             "$type": "dimension",
             "$value": "10rem",
-            "$description": "160px equivalent - 9XL layout spacing"
+            "$description": "160px equivalent"
           },
           "2300": {
             "$type": "dimension",
             "$value": "12rem",
-            "$description": "192px equivalent - 10XL layout spacing"
+            "$description": "192px equivalent"
           },
           "2400": {
             "$type": "dimension",
             "$value": "16rem",
-            "$description": "256px equivalent - 11XL layout spacing"
+            "$description": "256px equivalent"
           },
           "2500": {
             "$type": "dimension",
             "$value": "20rem",
-            "$description": "320px equivalent - 12XL layout spacing"
+            "$description": "320px equivalent"
           }
         }
       }

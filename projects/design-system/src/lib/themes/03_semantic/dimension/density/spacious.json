@@ -7,7 +7,7 @@
             "token_family_docs": {
               "$description": {
                 "$type": "other",
-                "$value": "Semantic spacing tokens for the Spacious density mode — increased whitespace for comfortable reading and interaction."
+                "$value": "Spacing tokens for the Spacious density mode — increased whitespace for comfortable reading and interaction. Values derived from base primitives × spacious multiplier with corrector offsets where needed."
               },
               "$extensions": {
                 "oblique": {
@@ -26,180 +26,180 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.4} * {ob.g.multiplier.dimension.density.spacious}) + 2px",
-                "$description": "8px - Minimal spacing (spacious density) - S:+2px corrector applied"
+                "$description": "Minimal density spacing. Absolute (px) — does not scale with browser font size. Use for tight fixed-size gaps between dense elements."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.400} * {ob.g.multiplier.dimension.density.spacious}) + 0.125rem",
-                "$description": "8px equivalent - Minimal spacing (spacious density) - S:+0.125rem corrector applied"
+                "$description": "Minimal density spacing. Fluid (rem) — scales with root font size for accessibility. Use for tight scalable gaps that respect user font preferences."
               }
             },
             "sm": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.6} * {ob.g.multiplier.dimension.density.spacious}) - 1px",
-                "$description": "8px - Small spacing (spacious density) - S:-1px corrector applied"
+                "$description": "Small density spacing. Absolute (px) — does not scale with browser font size. Use for compact fixed gaps and fine element separation."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.500} * {ob.g.multiplier.dimension.density.spacious}) - 0.0625rem",
-                "$description": "8px equivalent - Small spacing (spacious density) - S:-0.0625rem corrector applied"
+                "$description": "Small density spacing. Fluid (rem) — scales with root font size for accessibility. Use for compact scalable gaps and fine accessible separation."
               }
             },
             "md": {
               "px": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.px.8} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "12px - Medium spacing (spacious density)"
+                "$description": "Medium density spacing. Absolute (px) — does not scale with browser font size. Use for standard fixed component padding."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.rem.600} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "12px equivalent - Medium spacing (spacious density)"
+                "$description": "Medium density spacing. Fluid (rem) — scales with root font size for accessibility. Use for standard scalable component padding."
               }
             },
             "lg": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.10} * {ob.g.multiplier.dimension.density.spacious}) + 1px",
-                "$description": "16px - Large spacing (spacious density) - S:+1px corrector applied"
+                "$description": "Large density spacing. Absolute (px) — does not scale with browser font size. Use for comfortable fixed spacing with improved legibility."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.700} * {ob.g.multiplier.dimension.density.spacious}) + 0.0625rem",
-                "$description": "16px equivalent - Large spacing (spacious density) - S:+0.0625rem corrector applied"
+                "$description": "Large density spacing. Fluid (rem) — scales with root font size for accessibility. Use for comfortable scalable spacing."
               }
             },
             "xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.px.12} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "18px - Extra large spacing (spacious density)"
+                "$description": "Extra-large density spacing. Absolute (px) — does not scale with browser font size. Use for generous fixed component padding."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.rem.800} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "18px equivalent - Extra large spacing (spacious density)"
+                "$description": "Extra-large density spacing. Fluid (rem) — scales with root font size for accessibility. Use for generous scalable component padding."
               }
             },
             "2xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.px.16} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "24px - 2X large spacing (spacious density)"
+                "$description": "2XL density spacing. Absolute (px) — does not scale with browser font size. Use for spacious fixed content separation."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.rem.900} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "24px equivalent - 2X large spacing (spacious density)"
+                "$description": "2XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for spacious scalable content separation."
               }
             },
             "3xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.20} * {ob.g.multiplier.dimension.density.spacious}) + 2px",
-                "$description": "32px - 3X large spacing (spacious density) - S:+2px corrector applied"
+                "$description": "3XL density spacing. Absolute (px) — does not scale with browser font size. Use for prominent fixed visual breaks."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.1000} * {ob.g.multiplier.dimension.density.spacious}) + 0.125rem",
-                "$description": "32px equivalent - 3X large spacing (spacious density) - S:+0.125rem corrector applied"
+                "$description": "3XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for prominent scalable visual breaks."
               }
             },
             "4xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.24} * {ob.g.multiplier.dimension.density.spacious}) + 4px",
-                "$description": "40px - 4X large spacing (spacious density) - S:+4px corrector applied"
+                "$description": "4XL density spacing. Absolute (px) — does not scale with browser font size. Use for significant fixed section separation."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.1100} * {ob.g.multiplier.dimension.density.spacious}) + 0.25rem",
-                "$description": "40px equivalent - 4X large spacing (spacious density) - S:+0.25rem corrector applied"
+                "$description": "4XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for significant scalable section separation."
               }
             },
             "5xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.28} * {ob.g.multiplier.dimension.density.spacious}) + 2px",
-                "$description": "44px - 5X large spacing (spacious density) - S:+2px corrector applied"
+                "$description": "5XL density spacing. Absolute (px) — does not scale with browser font size. Use for generous fixed separation in spacious areas."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.1200} * {ob.g.multiplier.dimension.density.spacious}) + 0.125rem",
-                "$description": "44px equivalent - 5X large spacing (spacious density) - S:+0.125rem corrector applied"
+                "$description": "5XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for generous scalable separation in spacious areas."
               }
             },
             "6xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.px.32} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "48px - 6X large spacing (spacious density)"
+                "$description": "6XL density spacing. Absolute (px) — does not scale with browser font size. Use for large fixed visual breaks between content groups."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.rem.1300} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "48px equivalent - 6X large spacing (spacious density)"
+                "$description": "6XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for large scalable visual breaks between content groups."
               }
             },
             "7xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.36} * {ob.g.multiplier.dimension.density.spacious}) + 2px",
-                "$description": "56px - 7X large spacing (spacious density) - S:+2px corrector applied"
+                "$description": "7XL density spacing. Absolute (px) — does not scale with browser font size. Use for major fixed section spacing."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.1400} * {ob.g.multiplier.dimension.density.spacious}) + 0.125rem",
-                "$description": "56px equivalent - 7X large spacing (spacious density) - S:+0.125rem corrector applied"
+                "$description": "7XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for major scalable section spacing."
               }
             },
             "8xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.40} * {ob.g.multiplier.dimension.density.spacious}) + 4px",
-                "$description": "64px - 8X large spacing (spacious density) - S:+4px corrector applied"
+                "$description": "8XL density spacing. Absolute (px) — does not scale with browser font size. Use for substantial fixed layout separation."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.1500} * {ob.g.multiplier.dimension.density.spacious}) + 0.25rem",
-                "$description": "64px equivalent - 8X large spacing (spacious density) - S:+0.25rem corrector applied"
+                "$description": "8XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for substantial scalable layout separation."
               }
             },
             "9xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.48} * {ob.g.multiplier.dimension.density.spacious})",
-                "$description": "72px - 9X large spacing (spacious density)"
+                "$description": "9XL density spacing. Absolute (px) — does not scale with browser font size. Use for wide fixed spacing between major layout elements."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.1600} * {ob.g.multiplier.dimension.density.spacious})",
-                "$description": "72px equivalent - 9X large spacing (spacious density)"
+                "$description": "9XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for wide scalable spacing between major layout elements."
               }
             },
             "10xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.56} * {ob.g.multiplier.dimension.density.spacious}) + 4px",
-                "$description": "88px - 10X large spacing (spacious density) - S:+4px corrector applied"
+                "$description": "10XL density spacing. Absolute (px) — does not scale with browser font size. Use for expansive fixed page-level separation."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.1700} * {ob.g.multiplier.dimension.density.spacious}) + 0.25rem",
-                "$description": "88px equivalent - 10X large spacing (spacious density) - S:+0.25rem corrector applied"
+                "$description": "10XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for expansive scalable page-level separation."
               }
             },
             "11xl": {
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.64} * {ob.g.multiplier.dimension.density.spacious})",
-                "$description": "96px - 11X large spacing (spacious density)"
+                "$description": "11XL density spacing. Absolute (px) — does not scale with browser font size. Use for maximum fixed density spacing and prominent page-level gaps."
               },
               "rem": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.rem.1800} * {ob.g.multiplier.dimension.density.spacious})",
-                "$description": "96px equivalent - 11X large spacing (spacious density)"
+                "$description": "11XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for maximum scalable density spacing."
               }
             }
           }
