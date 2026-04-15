@@ -1608,8 +1608,8 @@
           },
           "border": {
             "enabled": {
+              "$value": "{ob.s.color.neutral.no_color}",
               "$type": "color",
-              "$value": "{ob.p.color.basic.transparent}",
               "$description": "Border for Navigation. Enabled state: Transparent — no visible border on navigation items in the default rest state."
             },
             "hover": {
