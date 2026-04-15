@@ -443,6 +443,18 @@
                   "$value": "{ob.s2.color.interaction.standard_states.bg.disabled.inversity_flipped}",
                   "$description": "Background for Interaction. Disabled state: Use for surfaces on elements that are not available for interaction."
                 }
+              },
+              "hover-alpha": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.hover.inversity_normal}",
+                  "$description": "Background for Interaction. Hover state: Use for surfaces when a pointer enters the interactive area."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.hover.inversity_flipped}",
+                  "$description": "Background for Interaction. Hover state: Use for surfaces when a pointer enters the interactive area."
+                }
               }
             }
           },

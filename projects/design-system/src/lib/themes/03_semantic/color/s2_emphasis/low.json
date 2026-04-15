@@ -210,6 +210,18 @@
                   "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_flipped}",
                   "$description": "Background for disabled state emphasis-low interactive element. Inverse surface."
                 }
+              },
+              "hover-alpha": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_high.inversity_normal}",
+                  "$description": "Background for hover state emphasis-high interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_flipped}",
+                  "$description": "Background for hover state emphasis-high interactive element. Inverse surface."
+                }
               }
             }
           },
