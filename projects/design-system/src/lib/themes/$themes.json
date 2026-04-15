@@ -433,8 +433,8 @@
       "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6",
       "ob.h.button.container.spacing.gap": "e0f8474f4d03d3d891297010ab3bce86aab9b563",
       "ob.h.button.touch_target.min_size": "e04650bc2461769aeb18867faf7f43e82c412801",
-      "ob.c.infobox.size.icon_size": "786c62e43ee9d6d00940838307773b995585e1b1",
-      "ob.c.infobox.size.close_button_size": "60dca9770f7d1c1a9439ec128b1725267e3fea5b"
+      "ob.c.infobox.size.icon_size": "d9c5ae742f78169e02a161b24e90adb3201f05bc",
+      "ob.c.infobox.size.close_button_size": "b118e83431b6233800f9f1ad0f84d1e774c3910f"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -1146,7 +1146,9 @@
       "ob.s2.color.interaction.contrast_levels.border.medium.inversity_normal": "de41cc32686fae53a235c91339a3e1e1eecac803",
       "ob.s2.color.interaction.contrast_levels.border.medium.inversity_flipped": "8825594930ddf6a32b2d00f3ba8ff8128827dd63",
       "ob.s2.color.interaction.contrast_levels.border.low.inversity_normal": "b6dcaf3e4eb7721243c261124ff0a76a0b1f7ed7",
-      "ob.s2.color.interaction.contrast_levels.border.low.inversity_flipped": "2246148f9343bb64371bb44f8a34582cb230e164"
+      "ob.s2.color.interaction.contrast_levels.border.low.inversity_flipped": "2246148f9343bb64371bb44f8a34582cb230e164",
+      "ob.s2.color.interaction.standard_states.bg.hover-alpha.inversity_normal": "82ddd6a62e9a78935791dc32e48f1430de6f7c3c",
+      "ob.s2.color.interaction.standard_states.bg.hover-alpha.inversity_flipped": "08d37d8e23cfcb668b90fee2359459eb52088bbb"
     },
     "$figmaCollectionId": "VariableCollectionId:1:5",
     "$figmaModeId": "1:6",
@@ -1276,6 +1278,8 @@
       "ob.s.color.interaction.standard_states.bg.visited.inversity_flipped": "b1975b54c7de09a290a4ae622759ffb7a3f19868",
       "ob.s.color.interaction.standard_states.bg.disabled.inversity_normal": "519ae9e97c5fe14f59b2b65a666a817e695b4636",
       "ob.s.color.interaction.standard_states.bg.disabled.inversity_flipped": "a39374054bbc403fe2973f82f38b92b47c7c24dd",
+      "ob.s.color.interaction.standard_states.bg.hover-alpha.inversity_normal": "56e56f356b64f19103c4843ad450afe309cf6693",
+      "ob.s.color.interaction.standard_states.bg.hover-alpha.inversity_flipped": "bfe6cc6b6f82bf5bc59e66dcc1d657b74fd90784",
       "ob.s.color.interaction.contrast_levels.fg.high.inversity_normal": "f847e1e92c41e378112e7a7fbc72f9747bbc3dcc",
       "ob.s.color.interaction.contrast_levels.fg.high.inversity_flipped": "0d447985b432bff0a6ebcebd93a96d7146eac794",
       "ob.s.color.interaction.contrast_levels.fg.medium.inversity_normal": "0cdc3189e557d5bc553d796c392be3b819625379",
