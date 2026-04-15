@@ -1,6 +1,6 @@
 # Density Mode Implementation Plan
 
-**Separate component-size from density modes using different multipliers**
+**Separate ui_scale from density modes using different multipliers**
 
 **Status:** Planning phase  
 **Strategy:** Use separate global multipliers for existing token groups
@@ -9,13 +9,13 @@
 
 ## **Current Problem**
 
-Both component-size (`element.*`) and density groups (`spacing.*`, `container.*`, `layout.*`) use the same multiplier: `{ob.g.multiplier.dimension.md}`
+Both ui_scale (`element.*`) and density groups (`spacing.*`, `container.*`, `layout.*`) use the same multiplier: `{ob.g.multiplier.dimension.md}`
 
-**Result:** Cannot independently control component size vs layout density
+**Result:** Cannot independently control ui_scale vs layout density
 
 ## **Solution**
 
-Create separate multipliers for component-size vs density groups:
+Create separate multipliers for ui_scale vs density groups:
 
 **New Global Multipliers:**
 ```json
@@ -68,4 +68,4 @@ Create separate multipliers for component-size vs density groups:
 3. **Test mode combinations** in Figma
 4. **Validate component behavior**
 
-**Result:** Independent control of component-size vs density without changing token structure.
+**Result:** Independent control of ui_scale vs density without changing token structure.

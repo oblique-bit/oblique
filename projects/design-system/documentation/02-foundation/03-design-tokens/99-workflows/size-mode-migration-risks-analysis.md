@@ -13,11 +13,11 @@
 - "Last wins" principle for token resolution
 
 **Proposed Risk:**
-- 4D theming: `lightness × viewport × component-size × density` 
+- 4D theming: `lightness × viewport × ui_scale × density` 
 - **PROBLEM:** No evidence this complex theme switching actually works in their system
 - **RISK:** Complete theme system breakdown during migration
 
-**Recommendation:** Start with **1D addition** (just component-size), validate thoroughly before adding density.
+**Recommendation:** Start with **1D addition** (just ui_scale), validate thoroughly before adding density.
 
 ### 2. **Token Reference Chain Breaking** - HIGH RISK  
 
@@ -153,15 +153,15 @@ Current system uses universal multiplier (desktop=4px, mobile=5px), but actual r
 #### **Add Single Mode Dimension**
 ```
 global/themes-user/
-├── component-size/        # 🆕 NEW: Only add ONE dimension
-│   ├── sm.json           # Overrides ob.s.size.component-modes.*
+├── ui_scale/        # 🆕 NEW: Only add ONE dimension
+│   ├── sm.json           # Overrides ob.s.size.ui_scale.*
 │   ├── md.json           # Default - no overrides needed
-│   └── lg.json           # Overrides ob.s.size.component-modes.*
+│   └── lg.json           # Overrides ob.s.size.ui_scale.*
 ```
 
 **Theme Resolution Test:**
 ```json
-// component-size/sm.json
+// ui_scale/sm.json
 {
   "ob": {
     "s": {
@@ -243,7 +243,7 @@ global/themes-user/
 3. **Success:** Test that component renders correctly
 
 ### Step 4: Theme Switching (1D Only)
-1. **Success:** Add global/themes-user/04_component-size/ directory
+1. **Success:** Add global/themes-user/04_ui_scale/ directory
 2. **Success:** Create sm.json, md.json, lg.json theme files
 3. **Success:** Test that theme switching actually works
 4. **Success:** Validate "last wins" behavior with nested overrides

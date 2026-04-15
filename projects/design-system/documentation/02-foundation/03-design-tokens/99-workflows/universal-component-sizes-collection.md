@@ -1,4 +1,4 @@
-# Universal Component-Sizes Collection Plan
+# Universal UI Scale Collection Plan
 
 **Date:** September 6, 2025  
 **Purpose:** Create a universal variable collection that can be used across multiple components  
@@ -6,7 +6,7 @@
 
 ## Collection Structure
 
-### Collection Name: `Component-Sizes`
+### Collection Name: `UI-Scale`
 **Modes:** `xs | sm | md | lg`
 
 ### Variable Properties
@@ -239,7 +239,7 @@ ob.h.button_aug.icon_only.icon.size
 ## Implementation Steps
 
 1. **Create Variable Collection in Figma:**
-   - Collection name: `Component-Sizes`
+   - Collection name: `UI-Scale`
    - Set up 4 modes: xs, sm, md, lg
    - Add all variable properties listed above
 

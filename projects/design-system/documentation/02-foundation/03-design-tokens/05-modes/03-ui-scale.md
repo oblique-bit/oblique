@@ -1,11 +1,11 @@
-# Component-Size Mode
+# UI Scale Mode
 **Date:** September 17, 2025  
 **Version:** v1.0 - Extracted from combined density-size concept  
 **Status:** Done in https://github.com/oblique-bit/oblique/tree/tokens-develop-02.05
 
 ## Overview
 
-This document outlines the **Component-Size** mode system for component scaling through unified size modes, ensuring consistent component relationships and accessible user experiences.
+This document outlines the **UI Scale** mode system for component scaling through unified size modes, ensuring consistent component relationships and accessible user experiences.
 
 ## Key principles
 
@@ -47,7 +47,7 @@ This document outlines the **Component-Size** mode system for component scaling 
 ### **Implementation**
 - **Figma**: Variable collection with modes `sm`, `md`, `lg`
 - **Tokens Studio**: Theme group with themes `sm`, `md`, `lg`
-- **Current naming**: Uses `component-size` theme group in `$themes.json` (located at `/src/lib/themes/`) - called this way because only certain components react to it currently, but can be expanded and renamed later when more components support size modes
+- **Current naming**: Uses `ui_scale` theme group in `$themes.json` (located at `/src/lib/themes/`)
 
 ### **Shared component sizes philosophy**
 Shared sizes are beneficial for:

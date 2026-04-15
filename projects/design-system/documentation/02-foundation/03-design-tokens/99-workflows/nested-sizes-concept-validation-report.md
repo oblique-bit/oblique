@@ -7,7 +7,7 @@
 
 **Core Concept**: Hybrid sizing architecture distinguishing between FREE components (consumer-controlled) and LOCKED components (context-inherited) with universal token system supporting complex nested scenarios.
 
-**Key Innovation**: W3C DTCG compliant universal Component-Sizes collection with space-aware adaptation and graceful degradation patterns.
+**Key Innovation**: W3C DTCG compliant universal UI Scale collection with space-aware adaptation and graceful degradation patterns.
 
 ---
 
@@ -19,7 +19,7 @@
 - [x] **HTML/CSS Native**: Pure CSS custom properties with minimal JavaScript
   ```css
   .button[data-size="lg"] { --size-context: lg; }
-  .icon { width: var(--component-sizes-icon-var(--size-context)); }
+  .icon { width: var(--ui-scale-icon-var(--size-context)); }
   ```
 - [x] **Performance Impact**: CSS custom property inheritance - negligible overhead
 - [x] **Browser Support**: CSS custom properties supported in target browsers (IE11+)
@@ -27,7 +27,7 @@
 - [x] **Build Integration**: Tokens Studio → CSS variables → build pipeline
 
 #### **1.2 Figma Implementation** **Success:** **PASS**  
-- [x] **Variable Support**: Component-Sizes collection with xs/sm/md/lg/xl modes
+- [x] **Variable Support**: UI Scale collection with xs/sm/md/lg/xl modes
 - [x] **Component Variants**: Button variants with size property integration
 - [x] **Auto Layout Compatible**: Padding/gap tokens work with Figma Auto Layout
 - [x] **Mode Switching**: Designers can switch between size modes per component

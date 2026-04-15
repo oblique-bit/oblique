@@ -11,7 +11,7 @@ Implement a **hybrid sizing architecture** that balances consumer control with a
 ### **Key Innovations**
 - **FREE vs LOCKED component categorization** with clear inheritance rules
 - **Space-aware token system** that adapts to container constraints  
-- **Universal Component-Sizes collection** with semantic naming
+- **Universal UI Scale collection** with semantic naming
 - **Graceful degradation patterns** for complex nesting scenarios
 
 ---
@@ -71,10 +71,10 @@ const lockedComponents = {
 
 ### **2. Universal Token Architecture**
 
-#### **Component-Sizes Collection Structure**
+#### **UI Scale Collection Structure**
 ```json
 {
-  "component-sizes": {
+  "ui-scale": {
     "$type": "collection",
     "$description": "Universal sizing tokens for all components",
     "modes": ["xs", "sm", "md", "lg", "xl"],
@@ -138,8 +138,8 @@ const lockedComponents = {
 /* FREE components define their sizing context */
 .button[data-size="lg"] {
   --size-context: lg;
-  --component-min-height: var(--component-sizes-button-lg-min-height);
-  --component-padding: var(--component-sizes-padding-lg);
+  --component-min-height: var(--ui-scale-button-lg-min-height);
+  --component-padding: var(--ui-scale-padding-lg);
 }
 ```
 
@@ -147,12 +147,12 @@ const lockedComponents = {
 ```css
 /* LOCKED components inherit from context */
 .icon {
-  width: var(--component-sizes-icon-size-var(--size-context, md));
-  height: var(--component-sizes-icon-size-var(--size-context, md));
+  width: var(--ui-scale-icon-size-var(--size-context, md));
+  height: var(--ui-scale-icon-size-var(--size-context, md));
 }
 
 .button-text {
-  font-size: var(--component-sizes-typography-size-var(--size-context, md));
+  font-size: var(--ui-scale-typography-size-var(--size-context, md));
 }
 ```
 
@@ -162,7 +162,7 @@ const lockedComponents = {
 .space-constrained {
   --max-size: calc(var(--container-width) * 0.8);
   --effective-icon-size: min(
-    var(--component-sizes-icon-size-var(--size-context)), 
+    var(--ui-scale-icon-size-var(--size-context)), 
     var(--max-size)
   );
 }
@@ -172,8 +172,8 @@ const lockedComponents = {
 ```css
 /* Accessibility and usability minimums */
 .interactive-element {
-  min-width: max(var(--component-size), 44px); /* Touch target */
-  min-height: max(var(--component-size), 44px);
+  min-width: max(var(--ui_scale), 44px); /* Touch target */
+  min-height: max(var(--ui_scale), 44px);
 }
 
 .icon {
@@ -191,7 +191,7 @@ const lockedComponents = {
 ## **Goal:** Implementation Strategy
 
 ### **Phase 1: Foundation (Weeks 1-2)**
-1. **Create Universal Component-Sizes collection** in Tokens Studio
+1. **Create Universal UI-Scale collection** in Tokens Studio
 2. **Define FREE vs LOCKED component lists** with team alignment
 3. **Establish CSS custom property patterns** for inheritance
 4. **Document size inheritance rules** for development team
@@ -223,17 +223,17 @@ const lockedComponents = {
 // CSS Custom Properties generation
 const generateSizeTokens = (collection) => {
   return Object.entries(collection.modes).map(([size, tokens]) => 
-    `--component-sizes-${size}: ${JSON.stringify(tokens)};`
+    `--ui-scale-${size}: ${JSON.stringify(tokens)};`
   ).join('\n');
 };
 
 // Component-specific token mapping
 const componentTokenMap = {
   button: (size) => ({
-    minHeight: `var(--component-sizes-min-height-${size})`,
-    padding: `var(--component-sizes-padding-vertical-${size}) var(--component-sizes-padding-horizontal-${size})`,
-    iconSize: `var(--component-sizes-icon-size-${size})`,
-    fontSize: `var(--component-sizes-typography-size-${size})`
+    minHeight: `var(--ui-scale-min-height-${size})`,
+    padding: `var(--ui-scale-padding-vertical-${size}) var(--ui-scale-padding-horizontal-${size})`,
+    iconSize: `var(--ui-scale-icon-size-${size})`,
+    fontSize: `var(--ui-scale-typography-size-${size})`
   })
 };
 ```
@@ -272,7 +272,7 @@ const Icon = ({ name, ...props }: IconProps) => (
 
 ### **Figma Variable Integration**
 ```
-Collection: Component-Sizes
+Collection: UI-Scale
 ├── Mode: xs (Extra Small)
 │   ├── padding/vertical → 4px
 │   ├── padding/horizontal → 8px

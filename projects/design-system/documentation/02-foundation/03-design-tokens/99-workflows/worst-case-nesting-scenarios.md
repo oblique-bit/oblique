@@ -189,7 +189,7 @@ Data Table (Container: responsive)
 ```css
 /* Clear inheritance context */
 .free-component {
-  --size-context: var(--component-size, md);
+  --size-context: var(--ui_scale, md);
   --icon-size: var(--size-context-icon-map);
   --text-size: var(--size-context-text-map);
 }
@@ -236,7 +236,7 @@ const testCases = [
 ### **Token Architecture for Complex Nesting**
 ```json
 {
-  "component-sizes": {
+  "ui-scale": {
     "button": {
       "sm": { 
         "min-height": "32px",
@@ -267,14 +267,14 @@ const testCases = [
 ```css
 /* 1. Establish size context */
 .free-component {
-  --component-size: var(--user-selected-size);
-  --size-context: var(--component-size);
+  --ui_scale: var(--user-selected-size);
+  --size-context: var(--ui_scale);
 }
 
 /* 2. Apply space constraints */
 .space-constrained {
-  --max-component-size: calc(var(--container-space) / var(--density-factor));
-  --effective-size: min(var(--size-context), var(--max-component-size));
+  --max-ui_scale: calc(var(--container-space) / var(--density-factor));
+  --effective-size: min(var(--size-context), var(--max-ui_scale));
 }
 
 /* 3. Ensure minimum viability */

@@ -118,7 +118,7 @@ After (Simple):   S2 → S1 → Primitive
 ### **Dimension/Sizing Tokens**
 - **Structure**: `ob.{layer}.dimension.{category}.{size}`  
 - **Examples**: `ob.s2.dimension.component.md`, `ob.c.button.dimension.height`
-- **Modes**: Support density and component-size scaling
+- **Modes**: Support density and ui_scale scaling
 
 ---
 

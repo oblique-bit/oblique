@@ -14,14 +14,14 @@ This concept is based on  [spacing and density research](https://confluence.bit.
 
 ### **Mode Relationships**
 
-Density mode works independently alongside other modes. For complete understanding of how density interacts with component-size and typography-context modes, see [Modes Interplay](./99-modes-interplay.md).
+Density mode works independently alongside other modes. For complete understanding of how density interacts with ui_scale and typography-context modes, see [Modes Interplay](./99-modes-interplay.md).
 
-## Scope & Distinction: Density vs Component-Size modes
+## Scope & Distinction: Density vs UI Scale modes
 
 ### **Clear mode Boundaries**
 To avoid confusion about what impacts component sizing, we establish clear **responsibility patterns** between our two primary scaling systems:
 
-**Component-Size mode controls** individual component dimensions and affects primarily **Molecules** (following Atomic Design principles):
+**UI Scale mode controls** individual component dimensions and affects primarily **Molecules** (following Atomic Design principles):
 - **Button**, **Pills**, **Tags**, **Inputs** - individual component sizing (sm/md/lg)
 - **Control**: [System consumer](../07-workflow/consumers/README.md#target-audience) can override the default component size based on contextual importance
 

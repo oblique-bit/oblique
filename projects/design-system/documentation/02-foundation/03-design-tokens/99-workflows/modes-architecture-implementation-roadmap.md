@@ -98,7 +98,7 @@ global/themes-user/
 
 ### **Warning:** **Identified Gaps for MVP**
 - Missing: Unified `semantic/modes/` architecture
-- Missing: `component-size` theme configuration 
+- Missing: `ui_scale` theme configuration 
 - Missing: Basic `viewport` mode simplification (desktop/mobile only)
 - Inconsistent: Component size implementation patterns
 
@@ -109,14 +109,14 @@ global/themes-user/
 src/lib/themes/
 ├── global/                            (GLOBAL CONFIGURATION - ob.g.*)
 │   └── 02-multipliers/                (PURE MULTIPLIER STORAGE - CALCULATION INPUTS)
-│       ├── dimension/                 (component-size scaling)
+│       ├── dimension/                 (ui_scale scaling)
 │       │   ├── sm.json                ({ "multiplier": 0.8 })
 │       │   ├── md.json                ({ "multiplier": 1.0 })
 │       └── lg.json                ({ "multiplier": 1.2 })
 │       ├── typography-context/        ✅ **IMPLEMENTED** (interface/prose contexts)
 │       │   ├── interface.json         ({ "multiplier": 1.0 })
 │       │   └── prose.json             ({ "multiplier": 1.125 })
-│       ├── spacing/                   (component-size scaling)
+│       ├── spacing/                   (ui_scale scaling)
 │       │   ├── sm.json                ({ "multiplier": 0.8 })
 │       │   ├── md.json                ({ "multiplier": 1.0 })
 │       │   └── lg.json                ({ "multiplier": 1.2 })
@@ -131,7 +131,7 @@ src/lib/themes/
     └── 03-dynamic/                    (MODE-AWARE VALUES - CALCULATION RESULTS - ob.s.dynamic.*)
         ├── dimension/static.json             (resolved values: base × active multiplier)
         ├── typography-context.json   ✅ **IMPLEMENTED** (resolved values: interface/prose contexts)
-        ├── spacing.json               (resolved spacing values: base × viewport × component-size multipliers)
+        ├── spacing.json               (resolved spacing values: base × viewport × ui_scale multipliers)
         └── [other categories].json   (all mode-aware semantic tokens)
 ```
 
@@ -140,15 +140,15 @@ src/lib/themes/
 src/lib/themes/
 ├── global/                            (GLOBAL CONFIGURATION - ob.g.*)
 │   └── multipliers/                   (PURE MULTIPLIER STORAGE - CALCULATION INPUTS)
-│       ├── dimension/                 (component-size scaling)
+│       ├── dimension/                 (ui_scale scaling)
 │       │   ├── sm.json                ({ "multiplier": 0.8 })
 │       │   ├── md.json                ({ "multiplier": 1.0 })
 │       │   └── lg.json                ({ "multiplier": 1.2 })
-│       ├── typography/                (component-size scaling)
+│       ├── typography/                (ui_scale scaling)
 │       │   ├── sm.json                ({ "multiplier": 0.875 })
 │       │   ├── md.json                ({ "multiplier": 1.0 })
 │       │   └── lg.json                ({ "multiplier": 1.125 })
-│       ├── spacing/                   (component-size scaling)
+│       ├── spacing/                   (ui_scale scaling)
 │       │   ├── sm.json                ({ "multiplier": 0.8 })
 │       │   ├── md.json                ({ "multiplier": 1.0 })
 │       │   └── lg.json                ({ "multiplier": 1.2 })
@@ -167,7 +167,7 @@ src/lib/themes/
     └── dynamic/                       (MODE-AWARE VALUES - CALCULATION RESULTS - ob.s.dynamic.*)
         ├── dimension/static.json             (resolved values: base × active multiplier)
         ├── typography.json            (resolved values: base × active multiplier)
-        ├── spacing.json               (resolved spacing values: base × viewport × component-size multipliers)
+        ├── spacing.json               (resolved spacing values: base × viewport × ui_scale multipliers)
         └── [other categories].json   (all mode-aware semantic tokens)
 ```
 
@@ -176,15 +176,15 @@ src/lib/themes/
 src/lib/themes/
 ├── global/                            (GLOBAL CONFIGURATION - ob.g.*)
 │   └── multipliers/                   (PURE MULTIPLIER STORAGE - CALCULATION INPUTS)
-│       ├── dimension/                 (component-size scaling)
+│       ├── dimension/                 (ui_scale scaling)
 │       │   ├── sm.json                ({ "multiplier": 0.8 })
 │       │   ├── md.json                ({ "multiplier": 1.0 })
 │       │   └── lg.json                ({ "multiplier": 1.2 })
-│       ├── typography/                (component-size scaling)
+│       ├── typography/                (ui_scale scaling)
 │       │   ├── sm.json                ({ "multiplier": 0.875 })
 │       │   ├── md.json                ({ "multiplier": 1.0 })
 │       │   └── lg.json                ({ "multiplier": 1.125 })
-│       ├── spacing/                   (component-size scaling)
+│       ├── spacing/                   (ui_scale scaling)
 │       │   ├── sm.json                ({ "multiplier": 0.8 })
 │       │   ├── md.json                ({ "multiplier": 1.0 })
 │       │   └── lg.json                ({ "multiplier": 1.2 })
@@ -216,7 +216,7 @@ src/lib/themes/
     └── dynamic/                       (MODE-AWARE VALUES - CALCULATION RESULTS - ob.s.dynamic.*)
         ├── dimension/static.json             (resolved values: base × active multiplier)
         ├── typography.json            (resolved values: base × active multiplier)
-        ├── spacing.json               (resolved spacing values: base × viewport × component-size multipliers)
+        ├── spacing.json               (resolved spacing values: base × viewport × ui_scale multipliers)
         └── [other categories].json   (all mode-aware semantic tokens)
 ```
 
@@ -254,7 +254,7 @@ src/lib/themes/
 ### **Complete Multi-Dimensional Architecture**
 ```
 Full Future System (All 11 Mode Types): 
-lightness × interaction-emphasis × viewport × component-size × density × contrast × motion × typography × user-font-scale × user-motion-pref × user-contrast-pref × dyslexia-support
+lightness × interaction-emphasis × viewport × ui_scale × density × contrast × motion × typography × user-font-scale × user-motion-pref × user-contrast-pref × dyslexia-support
 = 11-dimensional mode combinations
 ```
 
@@ -269,7 +269,7 @@ lightness × interaction-emphasis × viewport × component-size × density × co
 - ✅ **Typography-context modes**: `interface/prose` (early implementation from Phase 3)
 - **🆕 Viewport modes**: `desktop/mobile` (basic 2-breakpoint system for MVP)
 
-**Current MVP Architecture**: `lightness × interaction-emphasis × component-size × typography-context × viewport` (5D system)
+**Current MVP Architecture**: `lightness × interaction-emphasis × ui_scale × typography-context × viewport` (5D system)
 
 *Note: Density modes moved to Phase 2 - focus on size mode migration completion first*
 
@@ -297,7 +297,7 @@ lightness × interaction-emphasis × viewport × component-size × density × co
 
 #### ### Test: Test Case 5: Composite Component** - `input text field`
 - **Purpose**: Babuschka doll complexity (input + tag + remove button inside)
-- **Modes tested**: All Phase 1 modes combined (lightness × interaction-emphasis × component-size × viewport)
+- **Modes tested**: All Phase 1 modes combined (lightness × interaction-emphasis × ui_scale × viewport)
 - **Complexity**: High (nested component mode inheritance + worst-case scenario)
 
 ### **MVP Token Foundation** *(Complete Architecture, Selective Population)*
@@ -305,7 +305,7 @@ lightness × interaction-emphasis × viewport × component-size × density × co
 ```
 semantic/
 ├── modes/                    # 🆕 COMPLETE ARCHITECTURE PREPARED
-│   ├── component-size/       # **Success:** MVP: Full implementation (sm/md/lg)
+│   ├── ui_scale/       # **Success:** MVP: Full implementation (sm/md/lg)
 │   │   ├── sm.json
 │   │   ├── md.json  
 │   │   └── lg.json
@@ -326,7 +326,7 @@ global/themes-user/
 ├── lightness/              # **Success:** MVP: Existing (light/dark)
 ├── interaction-emphasis/   # **Success:** MVP: Existing (s2-emphasis modes: low/standard/high)
 ├── viewport/               # **Success:** MVP: Simplified (desktop/mobile only)
-├── component-size/         # **Success:** MVP: Full implementation  
+├── ui_scale/         # **Success:** MVP: Full implementation  
 │   ├── sm.json
 │   ├── md.json
 │   └── lg.json
@@ -334,7 +334,7 @@ global/themes-user/
 └── _future-modes/         # **Architecture:** COMPLETE STRUCTURE: All folders + placeholder files
 ```
 **Implementation Phases:**
-- **Phase 1 (MVP)**: 4 essential modes - `lightness × interaction-emphasis × viewport × component-size`
+- **Phase 1 (MVP)**: 4 essential modes - `lightness × interaction-emphasis × viewport × ui_scale`
 - **Phase 2**: Add advanced system modes - `+ density × contrast × motion + full viewport coverage`  
 - **Phase 3**: Add user preference & accessibility modes - `+ typography × user-font-scale × user-motion-pref × user-contrast-pref × dyslexia-support`
 
@@ -422,7 +422,7 @@ global/themes-user/
 ```
 semantic/
 ├── modes/               # 🆕 NEW: Universal modes system architecture
-│   ├── component-size/  # 🆕 Component dimension modes
+│   ├── ui_scale/  # 🆕 Component dimension modes
 │   │   ├── sm.json     # Small size mode tokens
 │   │   ├── md.json     # Medium size mode tokens (baseline)
 │   │   └── lg.json     # Large size mode tokens
@@ -447,7 +447,7 @@ semantic/
 
 ### Phase 2: Semantic Mode Token Definitions
 
-#### **Component Size Modes (semantic/modes/04_component-size/)**
+#### **Component Size Modes (semantic/modes/04_ui_scale/)**
 
 **sm.json** - Small component dimensions:
 ```json
@@ -455,7 +455,7 @@ semantic/
   "ob": {
     "s": {
       "modes": {
-        "component-size": {
+        "ui_scale": {
           "button": {
             "height": { "$type": "dimension", "$value": "{ob.s.size.element.sm}" },
             "min-height": { "$type": "dimension", "$value": "{ob.s.size.element.sm}" }
@@ -480,7 +480,7 @@ semantic/
   "ob": {
     "s": {
       "modes": {
-        "component-size": {
+        "ui_scale": {
           "button": {
             "height": { "$type": "dimension", "$value": "{ob.s.size.element.md}" },
             "min-height": { "$type": "dimension", "$value": "{ob.s.size.element.md}" }
@@ -546,10 +546,10 @@ semantic/
 global/themes-user/
 ├── lightness/          # **Success:** Existing: Light/dark theme modes
 ├── viewport/           # **Success:** Existing: Responsive scaling modes
-├── component-size/     # 🆕 NEW: Size modes configuration (design system controlled)
-│   ├── sm.json        # References semantic/modes/04_component-size/sm.json
-│   ├── md.json        # References semantic/modes/04_component-size/md.json (default)
-│   └── lg.json        # References semantic/modes/04_component-size/lg.json
+├── ui_scale/     # 🆕 NEW: Size modes configuration (design system controlled)
+│   ├── sm.json        # References semantic/modes/04_ui_scale/sm.json
+│   ├── md.json        # References semantic/modes/04_ui_scale/md.json (default)
+│   └── lg.json        # References semantic/modes/04_ui_scale/lg.json
 ├── density/           # 🆕 NEW: Density modes configuration (product designer controlled)
 │   ├── compact.json   # References semantic/modes/density/compact.json
 │   ├── comfortable.json # References semantic/modes/density/comfortable.json (default)
@@ -563,7 +563,7 @@ global/themes-user/
 ```
 
 **Multi-Dimensional Modes Architecture:**
-- **Phase 1**: `lightness × viewport × component-size × density` (4D) - Full implementation
+- **Phase 1**: `lightness × viewport × ui_scale × density` (4D) - Full implementation
 - **Phase 2**: `+ responsive × contrast × motion × typography` (8D) - Framework enabled, research required
 - **Phase 3**: `+ user-preferences` (9D+) - User-controlled A11y modes (font scaling, motion, contrast, dyslexia support)
 - **Future**: Additional modes as requirements emerge (nD)
@@ -597,9 +597,9 @@ Current icon_holder structure → Continue using separate files
 {
   "padding": {
     "vertical": {
-      "sm": { "$value": "{ob.s.modes.component-size.tag.padding-vertical}" },
-      "md": { "$value": "{ob.s.modes.component-size.tag.padding-vertical}" },
-      "lg": { "$value": "{ob.s.modes.component-size.tag.padding-vertical}" }
+      "sm": { "$value": "{ob.s.modes.ui_scale.tag.padding-vertical}" },
+      "md": { "$value": "{ob.s.modes.ui_scale.tag.padding-vertical}" },
+      "lg": { "$value": "{ob.s.modes.ui_scale.tag.padding-vertical}" }
     }
   }
 }
@@ -624,7 +624,7 @@ Current icon_holder structure → Continue using separate files
 
 #### **Priority 1: Create Universal Modes Architecture Foundation**
 1. Create `semantic/static/`, `semantic/dynamic/`, and `semantic/dynamic/multipliers/` folder structure
-2. Define component-size modes multipliers (sm/md/lg) 
+2. Define ui_scale modes multipliers (sm/md/lg) 
 3. Define density modes multipliers (compact/comfortable/spacious)
 4. Define viewport multipliers (desktop/mobile) to replace `{ob.s.space._base}` pattern
 5. Reserve `_future-modes/` structure for planned architecture expansions
@@ -651,8 +651,8 @@ Current icon_holder structure → Continue using separate files
 3. Validate grid alignment with multiplier system
 
 #### **Priority 3: Establish Multi-Dimensional Modes Architecture System**
-1. Add component-size and density modes configuration (controlled by design system consumers/product designers)
-2. Test multi-dimensional modes combinations (lightness × viewport × component-size × density)
+1. Add ui_scale and density modes configuration (controlled by design system consumers/product designers)
+2. Test multi-dimensional modes combinations (lightness × viewport × ui_scale × density)
 3. Document modes interaction patterns and architecture extensibility
 4. Validate scalability for future modes additions requiring research (responsive, contrast, motion, typography)
 
@@ -709,7 +709,7 @@ Based on competitive analysis findings, most design systems (75%) use independen
 **Note**: This pattern is rare in industry - only 2/8 analyzed systems use component size coordination.
 
 #### **Modes Architecture Theme Resolution Order - Extensible Framework**
-Phase 1: `lightness × viewport × component-size × density` (4D - Full Implementation)  
+Phase 1: `lightness × viewport × ui_scale × density` (4D - Full Implementation)  
 Phase 2: `+ responsive × contrast × motion × typography` (8D - Framework enabled, research required)
 Phase 3: `+ user-preferences` (9D+ - User-controlled A11y modes requiring wide research)
 Future: Additional modes as requirements emerge (nD)
@@ -720,7 +720,7 @@ Future: Additional modes as requirements emerge (nD)
 
 ### Phase 1: Universal Modes Architecture Foundation
 - [ ] Create `semantic/modes/` folder structure with extensible modes architecture design
-- [ ] Define component-size modes tokens (sm/md/lg) 
+- [ ] Define ui_scale modes tokens (sm/md/lg) 
 - [ ] Define density modes tokens (compact/comfortable/spacious)
 - [ ] Reserve `_future-modes/` architecture for Phase 2 modes (responsive, contrast, motion, typography)
 - [ ] Document modes architecture system in README.md with Phase 1/2 roadmap
@@ -770,7 +770,7 @@ Future: Additional modes as requirements emerge (nD)
 
 ### **Architecture Validation**
 - [ ] Complete modes architecture structure prepared for all future phases
-- [ ] 4D mode system working: `lightness × interaction-emphasis × viewport × component-size`
+- [ ] 4D mode system working: `lightness × interaction-emphasis × viewport × ui_scale`
 - [ ] Token resolution validates across all MVP mode combinations
 - [ ] Theme switching works seamlessly between all MVP modes
 

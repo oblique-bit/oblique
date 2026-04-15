@@ -26,7 +26,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.4} * {ob.g.multiplier.dimension.density.spacious}) + 2px",
-                "$description": "Minimal density spacing. Absolute (px) — does not scale with browser font size. Use for tight fixed-size gaps between dense elements."
+                "$description": "Minimal density spacing. Absolute (px) — does not change on mode switch. Use for tight fixed-size gaps between dense elements."
               },
               "rem": {
                 "$type": "dimension",
@@ -38,7 +38,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.6} * {ob.g.multiplier.dimension.density.spacious}) - 1px",
-                "$description": "Small density spacing. Absolute (px) — does not scale with browser font size. Use for compact fixed gaps and fine element separation."
+                "$description": "Small density spacing. Absolute (px) — does not change on mode switch. Use for compact fixed gaps and fine element separation."
               },
               "rem": {
                 "$type": "dimension",
@@ -50,7 +50,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.px.8} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "Medium density spacing. Absolute (px) — does not scale with browser font size. Use for standard fixed component padding."
+                "$description": "Medium density spacing. Absolute (px) — does not change on mode switch. Use for standard fixed component padding."
               },
               "rem": {
                 "$type": "dimension",
@@ -62,7 +62,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.10} * {ob.g.multiplier.dimension.density.spacious}) + 1px",
-                "$description": "Large density spacing. Absolute (px) — does not scale with browser font size. Use for comfortable fixed spacing with improved legibility."
+                "$description": "Large density spacing. Absolute (px) — does not change on mode switch. Use for comfortable fixed spacing with improved legibility."
               },
               "rem": {
                 "$type": "dimension",
@@ -74,7 +74,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.px.12} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "Extra-large density spacing. Absolute (px) — does not scale with browser font size. Use for generous fixed component padding."
+                "$description": "Extra-large density spacing. Absolute (px) — does not change on mode switch. Use for generous fixed component padding."
               },
               "rem": {
                 "$type": "dimension",
@@ -86,7 +86,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.px.16} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "2XL density spacing. Absolute (px) — does not scale with browser font size. Use for spacious fixed content separation."
+                "$description": "2XL density spacing. Absolute (px) — does not change on mode switch. Use for spacious fixed content separation."
               },
               "rem": {
                 "$type": "dimension",
@@ -98,7 +98,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.20} * {ob.g.multiplier.dimension.density.spacious}) + 2px",
-                "$description": "3XL density spacing. Absolute (px) — does not scale with browser font size. Use for prominent fixed visual breaks."
+                "$description": "3XL density spacing. Absolute (px) — does not change on mode switch. Use for prominent fixed visual breaks."
               },
               "rem": {
                 "$type": "dimension",
@@ -110,7 +110,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.24} * {ob.g.multiplier.dimension.density.spacious}) + 4px",
-                "$description": "4XL density spacing. Absolute (px) — does not scale with browser font size. Use for significant fixed section separation."
+                "$description": "4XL density spacing. Absolute (px) — does not change on mode switch. Use for significant fixed section separation."
               },
               "rem": {
                 "$type": "dimension",
@@ -122,7 +122,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.28} * {ob.g.multiplier.dimension.density.spacious}) + 2px",
-                "$description": "5XL density spacing. Absolute (px) — does not scale with browser font size. Use for generous fixed separation in spacious areas."
+                "$description": "5XL density spacing. Absolute (px) — does not change on mode switch. Use for generous fixed separation in spacious areas."
               },
               "rem": {
                 "$type": "dimension",
@@ -134,7 +134,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.px.32} * {ob.g.multiplier.dimension.density.spacious}",
-                "$description": "6XL density spacing. Absolute (px) — does not scale with browser font size. Use for large fixed visual breaks between content groups."
+                "$description": "6XL density spacing. Absolute (px) — does not change on mode switch. Use for large fixed visual breaks between content groups."
               },
               "rem": {
                 "$type": "dimension",
@@ -146,7 +146,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.36} * {ob.g.multiplier.dimension.density.spacious}) + 2px",
-                "$description": "7XL density spacing. Absolute (px) — does not scale with browser font size. Use for major fixed section spacing."
+                "$description": "7XL density spacing. Absolute (px) — does not change on mode switch. Use for major fixed section spacing."
               },
               "rem": {
                 "$type": "dimension",
@@ -158,7 +158,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.40} * {ob.g.multiplier.dimension.density.spacious}) + 4px",
-                "$description": "8XL density spacing. Absolute (px) — does not scale with browser font size. Use for substantial fixed layout separation."
+                "$description": "8XL density spacing. Absolute (px) — does not change on mode switch. Use for substantial fixed layout separation."
               },
               "rem": {
                 "$type": "dimension",
@@ -170,7 +170,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.48} * {ob.g.multiplier.dimension.density.spacious})",
-                "$description": "9XL density spacing. Absolute (px) — does not scale with browser font size. Use for wide fixed spacing between major layout elements."
+                "$description": "9XL density spacing. Absolute (px) — does not change on mode switch. Use for wide fixed spacing between major layout elements."
               },
               "rem": {
                 "$type": "dimension",
@@ -182,7 +182,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.56} * {ob.g.multiplier.dimension.density.spacious}) + 4px",
-                "$description": "10XL density spacing. Absolute (px) — does not scale with browser font size. Use for expansive fixed page-level separation."
+                "$description": "10XL density spacing. Absolute (px) — does not change on mode switch. Use for expansive fixed page-level separation."
               },
               "rem": {
                 "$type": "dimension",
@@ -194,7 +194,7 @@
               "px": {
                 "$type": "dimension",
                 "$value": "({ob.p.dimension.px.64} * {ob.g.multiplier.dimension.density.spacious})",
-                "$description": "11XL density spacing. Absolute (px) — does not scale with browser font size. Use for maximum fixed density spacing and prominent page-level gaps."
+                "$description": "11XL density spacing. Absolute (px) — does not change on mode switch. Use for maximum fixed density spacing and prominent page-level gaps."
               },
               "rem": {
                 "$type": "dimension",

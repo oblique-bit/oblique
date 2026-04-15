@@ -262,7 +262,7 @@ Only the path separators change (`.` to `-`), while compound identifiers remain 
 ### **Dimension Tokens**  
 - **Structure**: `ob.{layer}.dimension.{size_name}`
 - **Examples**: `ob.p.dimension.xs`, `ob.s.dimension.button_height`
-- **Modes**: Handled through component-size modes (sm/md/lg)
+- **Modes**: Handled through ui_scale modes (sm/md/lg)
 
 ### **Typography Tokens**
 - **Structure**: `ob.{layer}.typography.{property}.{variant}`

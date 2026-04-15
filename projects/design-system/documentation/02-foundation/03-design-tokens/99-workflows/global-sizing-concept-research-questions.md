@@ -125,7 +125,7 @@
 - **Documentation Review**: Size inheritance rules, nesting guidelines, edge case handling
 
 ### Phase 2: Current System Evaluation
-- **Token Architecture Assessment**: Universal Component-Sizes collection feasibility
+- **Token Architecture Assessment**: Universal UI Scale collection feasibility
 - **Component Mapping**: Free vs locked component categorization
 - **Edge Case Testing**: Complex nesting scenarios with current tokens
 

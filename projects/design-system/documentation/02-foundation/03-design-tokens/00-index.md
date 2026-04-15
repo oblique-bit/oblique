@@ -68,7 +68,7 @@
 - [**Modes Overview**](./05-token-modes/) - Complete mode system documentation
 - [**Lightness Mode**](./05-token-modes/lightness.md) - Light/dark theme switching
 - [**Emphasis Mode**](./05-token-modes/emphasis.md) - High/low emphasis design patterns
-- [**Component-Size Mode**](./05-token-modes/component-size.md) - Component sizing variations (sm/md/lg)
+- [**UI Scale Mode**](./05-token-modes/03-ui-scale.md) - Component sizing variations (sm/md/lg)
 - [**Typography-Context Mode**](./05-token-modes/typography-context.md) - Typography scaling for different contexts
 - [**Density Mode**](./05-token-modes/density.md) - Interface density modes (compact/comfortable/spacious)
 - [**Responsiveness**](./05-token-modes/responsiveness.md) - Viewport modes and responsive implementation

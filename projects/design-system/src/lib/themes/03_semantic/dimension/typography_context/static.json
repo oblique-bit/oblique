@@ -7,7 +7,7 @@
             "token_family_docs": {
               "$description": {
                 "$type": "other",
-                "$value": "Context-independent typography dimensions — fixed spacing values not affected by typography context mode. Use: for typography-related dimensions that must remain constant. Avoid: for spacing that should adapt between interface and prose contexts."
+                "$value": "Fixed vertical spacing for HTML typography elements — padding-top and padding-bottom values for headings and paragraphs. Static because this surrounding spacing remains constant regardless of typography context mode (interface vs prose)."
               },
               "$extensions": {
                 "oblique": {
@@ -25,42 +25,42 @@
             "none": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.0}",
-              "$description": "Zero typography spacing for collapse and reset."
+              "$description": "No vertical spacing — reset value. Consumed as top padding on h1, p and p_lead."
             },
             "xs": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.8}",
-              "$description": "Extra-small typography spacing. Use for minimal text gaps, list-marker offsets, tight inline labels."
+              "$description": "Minimal vertical spacing. Consumed as bottom padding on all headings (h1–h6)."
             },
             "sm": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.12}",
-              "$description": "Small typography spacing. Use for compact paragraph gaps, label padding, form-field spacing."
+              "$description": "Small vertical spacing. Consumed as top padding on subheadings (h2–h6) and bottom padding on paragraphs."
             },
             "md": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.16}",
-              "$description": "Medium typography spacing. Use for standard text block separation and content area padding."
+              "$description": "Medium vertical spacing step in the typography padding scale."
             },
             "lg": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.20}",
-              "$description": "Large typography spacing. Use for prominent text section gaps and comfortable reading flow."
+              "$description": "Large vertical spacing step in the typography padding scale."
             },
             "xl": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.24}",
-              "$description": "Extra-large typography spacing. Use for significant visual breaks between text sections."
+              "$description": "Extra-large vertical spacing step in the typography padding scale."
             },
             "2xl": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.28}",
-              "$description": "2XL typography spacing. Use for major content-area separation and header spacing."
+              "$description": "Generous vertical spacing. Consumed as bottom padding on lead paragraphs (p_lead)."
             },
             "3xl": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.32}",
-              "$description": "3XL typography spacing. Use for maximum text-related separation and feature-section breaks."
+              "$description": "Maximum vertical spacing step in the typography padding scale."
             }
           }
         }

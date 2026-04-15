@@ -38,7 +38,7 @@ After analyzing token architectures from Carbon, Microsoft Fluent, Adobe Spectru
 ```
 semantic/
   modes/
-    component-size/     # sm/md/lg for component dimensions
+    ui_scale/     # sm/md/lg for component dimensions
       button.json       # height-sm: 32px, height-md: 40px, height-lg: 48px
     density/           # Spacing density modes  
       compact.json     # Tighter spacing multipliers
@@ -58,7 +58,7 @@ semantic/
 ## Implementation Strategy
 
 1. **Keep existing base tokens** - semantic/sizing.json with W3C DTCG dimension types
-2. **Add component-specific size modes** - semantic/modes/04_component-size/
+2. **Add component-specific size modes** - semantic/modes/04_ui_scale/
 3. **Implement density modes** - semantic/modes/density/ 
 4. **Migrate gradually** - Start with button component as proof of concept
 5. **Validate grid alignment** - Ensure multipliers maintain 4px grid

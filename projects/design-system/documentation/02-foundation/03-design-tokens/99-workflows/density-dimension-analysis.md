@@ -140,7 +140,7 @@ const userDensity = 'compact'; // User prefers more information per screen
 #### **Component Sizing Tokens** (Unchanged)
 ```json
 {
-  "component-sizes": {
+  "ui-scale": {
     "button": {
       "sm": { "min-height": "32px", "padding": "8px 16px" },
       "md": { "min-height": "40px", "padding": "12px 20px" },
@@ -221,8 +221,8 @@ const userDensity = 'compact'; // User prefers more information per screen
 
 /* Component sizing remains independent */
 .button[data-size="lg"] {
-  min-height: var(--component-sizes-button-lg-min-height);
-  padding: var(--component-sizes-button-lg-padding);
+  min-height: var(--ui-scale-button-lg-min-height);
+  padding: var(--ui-scale-button-lg-padding);
 }
 
 /* Density containers apply spacing */
@@ -302,7 +302,7 @@ const suggestedDensity = itemCount > 100 ? 'compact' : 'comfortable';
 ```json
 {
   "collections": {
-    "component-sizes": { /* Existing sizing tokens */ },
+    "ui-scale": { /* Existing sizing tokens */ },
     "density": { /* New density tokens */ }
   }
 }

@@ -16,7 +16,7 @@ Token modes are designed to be **deliberately independent** - product designers 
 
 Different modes control different aspects of component behavior:
 
-**Component-Size Mode** controls individual component dimensions:
+**UI Scale Mode** controls individual component dimensions:
 - **Scope**: Primarily affects **Molecules** (following Atomic Design principles)
 - **Components**: Button, Pills, Tags, Inputs - individual component sizing (sm/md/lg)
 - **Control**: System consumer can override default component size based on contextual importance
@@ -37,7 +37,7 @@ Different modes control different aspects of component behavior:
 
 **Status**: Architectural direction - subject to refinement as components are redesigned and tested in component interplay scenarios.
 
-| Component | Density | Component-Size | Typography-Context | Notes |
+| Component | Density | UI Scale | Typography-Context | Notes |
 |-----------|:-------:|:--------------:|:-----------------:|-------|
 | **Button** | 0 | ✅ | 0 | Individual sizing |
 | **Input/TextField** | 0 | ✅ | 0 | Form hierarchy sizing |
@@ -57,7 +57,7 @@ Different modes control different aspects of component behavior:
 | **Tabs** | ✅ | 0 | 0 | Tab spacing from density |
 | **Expansion Panel** | ✅ | 0 | 0 | Panel spacing from density |
 | **Infobox** | 0 | 0 | 0 | Fixed |
-| **Notification** | 0 | ✅ | 0 | Component-size affects notification dimensions |
+| **Notification** | 0 | ✅ | 0 | UI scale affects notification dimensions |
 | **Tooltip** | 0 | 0 | 0 | Fixed |
 | **Spinner** | 0 | 0 | 0 | Fixed |
 | **Slide Toggle** | 0 | 0 | 0 | Fixed |
@@ -67,11 +67,11 @@ Different modes control different aspects of component behavior:
 - **✅** = Component reacts to mode switch
 - **0** = Component does not react to mode switch
 - **Density** = `compact/standard/spacious` affects spacing and layout
-- **Component-Size** = `sm/md/lg` affects individual component dimensions
+- **UI Scale** = `sm/md/lg` affects individual component dimensions
 - **Typography-Context** = `interface/prose` affects text rendering and spacing
 
 ### **Key Patterns**
-1. **Molecules** (Button, Input, Tag, Pill) → Component-Size mode only  
+1. **Molecules** (Button, Input, Tag, Pill) → UI Scale mode only  
 2. **Organisms** (Table, List, Form Container) → Density mode only
 3. **Text Components** → Typography-Context mode only
 4. **Complex Components** (Modal) → Multiple modes (Density + Typography-Context)
@@ -111,17 +111,17 @@ Different screen sizes impose constraints on mode combinations:
 
 **📱 Mobile (≤768px)**:
 - **Density**: Compact recommended (space limitations)
-- **Component-Size**: Small to medium (touch targets vs space)
+- **UI Scale**: Small to medium (touch targets vs space)
 - **Typography**: Interface context (scanning efficiency)
 
 **📟 Tablet (769px-1024px)**:
 - **Density**: Compact + comfortable available
-- **Component-Size**: Medium preferred (hybrid interaction)
+- **UI Scale**: Medium preferred (hybrid interaction)
 - **Typography**: Context-dependent (interface for apps, prose for content)
 
 **🖥️ Desktop (≥1025px)**:
 - **Density**: All densities available
-- **Component-Size**: All sizes available
+- **UI Scale**: All sizes available
 - **Typography**: Full context flexibility
 
 ### **Accessibility Considerations**
@@ -173,7 +173,7 @@ Different screen sizes impose constraints on mode combinations:
 ### **Design System Governance**
 
 - **Mode Matrix**: This matrix may be refined as components are redesigned
-- **Core Principles**: Molecule → component-size, Organism → density patterns remain stable
+- **Core Principles**: Molecule → ui_scale, Organism → density patterns remain stable
 - **Documentation**: Keep mode interplay documentation updated as system evolves
 
 ---
