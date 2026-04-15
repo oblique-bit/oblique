@@ -49,7 +49,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_low.inversity_flipped}",
                   "$description": "Foreground for enabled state emphasis-low interactive element. Inverse surface."
                 }
               },
@@ -61,7 +61,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_medium.inversity_flipped}",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_medium.inversity_flipped}",
                   "$description": "Foreground for hover state emphasis-low interactive element. Inverse surface."
                 }
               },
