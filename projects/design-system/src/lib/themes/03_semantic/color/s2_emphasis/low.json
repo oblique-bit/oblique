@@ -194,6 +194,24 @@
             }
           },
           "contrast-levels": {
+            "token_family_docs": {
+              "$description": {
+                "$type": "other",
+                "$value": "Raw contrast-level colors for emphasis-low interaction — near-neutral appearance. Provides fg, bg, and border at three contrast steps without state semantics. Use: Custom interaction compositions in passive layout zones requiring direct contrast control not covered by the predefined states. Avoid: Named interaction states such as hover and focus — use the standard-states tokens instead."
+              },
+              "$extensions": {
+                "oblique": {
+                  "kind": {
+                    "$type": "other",
+                    "$value": "token_family_docs"
+                  },
+                  "export": {
+                    "$type": "other",
+                    "$value": "false"
+                  }
+                }
+              }
+            },
             "fg": {
               "high": {
                 "inversity_normal": {

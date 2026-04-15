@@ -239,7 +239,7 @@
           "token_family_docs": {
             "$description": {
               "$type": "other",
-              "$value": "Interactive state colors for components. Light/Dark and High/Low emphasis modes apply — all 4 mode combinations resolve to distinct values. Use: Interactive component states — buttons, links, form controls, and focusable elements. Avoid: Static decorative elements. Status communication — use the status scale instead."
+              "$value": "Interactive state colors for components. Light/Dark and High/Low emphasis modes apply — all 4 mode combinations resolve to distinct values. No border token — fg covers text, border, and icon color as a single unified value per state. Use: Interactive component states — buttons, links, form controls, and focusable elements. Avoid: Static decorative elements. Status communication — use the status scale instead."
             },
             "$extensions": {
               "oblique": {
@@ -255,6 +255,24 @@
             }
           },
           "standard_states": {
+            "token_family_docs": {
+              "$description": {
+                "$type": "other",
+                "$value": "Predefined interaction state colors for components — enabled, hover, focus, pressed, and disabled. Lightness and Emphasis modes are pre-resolved. Use: Assigning interactive state colors to component tokens (ob.c.*). Avoid: Compositions requiring direct contrast control — use the contrast-levels group instead."
+              },
+              "$extensions": {
+                "oblique": {
+                  "kind": {
+                    "$type": "other",
+                    "$value": "token_family_docs"
+                  },
+                  "export": {
+                    "$type": "other",
+                    "$value": "false"
+                  }
+                }
+              }
+            },
             "fg": {
               "enabled": {
                 "inversity_normal": {
@@ -429,6 +447,24 @@
             }
           },
           "contrast-levels": {
+            "token_family_docs": {
+              "$description": {
+                "$type": "other",
+                "$value": "Primitive building blocks for custom interaction color compositions. Exposes fg, bg, and border at high, medium, and low contrast steps without tying them to named interaction states. Lightness and Emphasis modes are pre-resolved. Use: Composing custom interactive elements requiring direct contrast control not covered by the predefined standard-states. Avoid: Components that have a corresponding standard-states token — those already encode the correct contrast level."
+              },
+              "$extensions": {
+                "oblique": {
+                  "kind": {
+                    "$type": "other",
+                    "$value": "token_family_docs"
+                  },
+                  "export": {
+                    "$type": "other",
+                    "$value": "false"
+                  }
+                }
+              }
+            },
             "fg": {
               "high": {
                 "inversity_normal": {
