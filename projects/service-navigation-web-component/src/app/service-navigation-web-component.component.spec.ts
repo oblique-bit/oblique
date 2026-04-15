@@ -1,6 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObServiceNavigationWebComponentComponent} from './service-navigation-web-component.component';
-import {SimpleChange, type SimpleChanges} from '@angular/core';
+import {DOCUMENT, SimpleChange, type SimpleChanges} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {
 	type ObIServiceNavigationContact,
@@ -9,6 +9,7 @@ import {
 } from '@oblique/oblique';
 import {appVersion} from './version';
 import {HttpClient} from '@angular/common/http';
+import {TranslationsService} from './translations-service';
 
 function defaultChangesValues(): SimpleChanges {
 	return {environment: new SimpleChange(undefined, 'DEV', undefined)};
@@ -70,6 +71,35 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 		});
 	});
 
+	describe('switch language', () => {
+		let translationService: TranslationsService;
+		beforeEach(() => {
+			translationService = fixture.debugElement.injector.get(TranslationsService);
+		});
+
+		it('should change language if language input is a string', () => {
+			const setLangSpy = jest.spyOn(translationService, 'setLang');
+
+			component.ngOnChanges({
+				...defaultChangesValues(),
+				language: new SimpleChange(undefined, 'de-CH', true),
+			});
+
+			expect(setLangSpy).toHaveBeenCalledWith('de-CH');
+		});
+
+		it('should not change language if language input is nullish', () => {
+			const setLangSpy = jest.spyOn(translationService, 'setLang');
+
+			component.ngOnChanges({
+				...defaultChangesValues(),
+				language: new SimpleChange(undefined, undefined, true),
+			});
+
+			expect(setLangSpy).not.toHaveBeenCalled();
+		});
+	});
+
 	describe('languageList', () => {
 		it("should throw an error when it's empty", () => {
 			fixture.componentRef.setInput('environment', 'DEV');
@@ -108,6 +138,16 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 				component.ngOnChanges({
 					...defaultChangesValues(),
 					profileLinks: new SimpleChange(null, undefined, true),
+				});
+				expect(component.profileLinksParsed).toEqual([]);
+			});
+		});
+
+		describe('empty string', () => {
+			it('should return empty array []', () => {
+				component.ngOnChanges({
+					...defaultChangesValues(),
+					profileLinks: new SimpleChange(null, '', true),
 				});
 				expect(component.profileLinksParsed).toEqual([]);
 			});
@@ -153,6 +193,16 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			});
 		});
 
+		describe('non-array json', () => {
+			it('should return empty array []', () => {
+				component.ngOnChanges({
+					...defaultChangesValues(),
+					infoLinks: new SimpleChange(null, '{"en":"Contact link"}', true),
+				});
+				expect(component.infoLinksParsed).toEqual([]);
+			});
+		});
+
 		describe('stringify object', () => {
 			it('should return the object as a real object', () => {
 				const links = [
@@ -183,6 +233,16 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			describe('undefined', () => {
 				it('should return empty array []', () => {
 					component.ngOnChanges({...defaultChangesValues(), customButtons: new SimpleChange(null, undefined, true)});
+					expect(component.customButtonsParsed).toEqual([]);
+				});
+			});
+
+			describe('non-array json', () => {
+				it('should return empty array []', () => {
+					component.ngOnChanges({
+						...defaultChangesValues(),
+						customButtons: new SimpleChange(null, '{"obliqueIconName":"happy"}', true),
+					});
 					expect(component.customButtonsParsed).toEqual([]);
 				});
 			});
@@ -269,6 +329,37 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			}).toThrow(
 				`The value for the attribute ${attributeName} is invalid. Check the documentation at https://oblique.bit.admin.ch/guidelines/service-navigation-web-component for the expected format.`
 			);
+		});
+	});
+
+	describe('outline handling', () => {
+		let hostElement: HTMLElement;
+
+		beforeEach(() => {
+			hostElement = document.createElement('ob-service-navigation-web-component');
+			jest.spyOn(TestBed.inject(DOCUMENT), 'querySelector').mockReturnValue(hostElement);
+		});
+
+		afterEach(() => {
+			jest.restoreAllMocks();
+		});
+
+		it('should have no outline initially', () => {
+			expect(hostElement.classList).not.toContain('ob-outline');
+		});
+
+		it('should add outline', () => {
+			component.addOutline();
+
+			expect(hostElement.classList).toContain('ob-outline');
+		});
+
+		it('should remove outline', () => {
+			hostElement.classList.add('ob-outline');
+
+			component.removeOutline();
+
+			expect(hostElement.classList).not.toContain('ob-outline');
 		});
 	});
 });
