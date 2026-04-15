@@ -30,7 +30,7 @@ Use `ob.s.color.*` tokens from semantic color groups:
 
 ### Spacing
 Use `ob.s.dimension.*` tokens:
-- **Component-size:** `ob.s.dimension.dynamic.component_size.*` (if you need spacing to change on mode switch) or `ob.s.dimension.static.component_size.*` (for stable spacing that does not react on mode switch)
+- **Component-size:** `ob.s.dimension.dynamic.ui_scale.*` (if you need spacing to change on mode switch) or `ob.s.dimension.static.ui_scale.*` (for stable spacing that does not react on mode switch)
 - **Density:** `ob.s.dimension.dynamic.density.*` (if you need spacing to change on mode switch) or `ob.s.dimension.static.density.*` (for stable spacing that does not react on mode switch)
 
 ### Borders (only colors are mode-aware)

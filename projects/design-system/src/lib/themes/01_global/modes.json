@@ -32,7 +32,7 @@
             "$value": ".ob-emphasis-low"
           }
         },
-        "component_size": {
+        "ui_scale": {
           "sm": {
             "$type": "other",
             "$value": ".ob-component-size-sm"

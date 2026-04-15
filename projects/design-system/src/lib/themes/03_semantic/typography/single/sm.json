@@ -134,17 +134,17 @@
           "heading": {
             "top": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.component_size.none.px}",
+              "$value": "{ob.s.dimension.static.ui_scale.none.px}",
               "$description": "Standard spacing above H1 is none to use vertical space."
             },
             "top_after_p": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.component_size.container.md.px}",
+              "$value": "{ob.s.dimension.static.ui_scale.container.md.px}",
               "$description": "SPecial spacing above H1 after a paragraph"
             },
             "bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.component_size.element.md.px}"
+              "$value": "{ob.s.dimension.static.ui_scale.element.md.px}"
             }
           },
           "paragraph": {

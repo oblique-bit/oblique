@@ -24,23 +24,23 @@
           "size": {
             "xs": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.static.component_size.spacing.xs.rem}",
-              "$description": "16px fixed. Does not react to component_size mode."
+              "$value": "{ob.s.dimension.static.ui_scale.spacing.xs.rem}",
+              "$description": "16px fixed. Does not react to ui_scale mode."
             },
             "sm": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.static.component_size.spacing.sm.rem}",
-              "$description": "20px fixed. Does not react to component_size mode."
+              "$value": "{ob.s.dimension.static.ui_scale.spacing.sm.rem}",
+              "$description": "20px fixed. Does not react to ui_scale mode."
             },
             "md": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.static.component_size.spacing.md.rem}",
+              "$value": "{ob.s.dimension.static.ui_scale.spacing.md.rem}",
               "$description": "Default. 24px fixed. Does not react to any size mode."
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.static.component_size.spacing.xl.rem}",
-              "$description": "32px fixed. Does not react to component_size mode."
+              "$value": "{ob.s.dimension.static.ui_scale.spacing.xl.rem}",
+              "$description": "32px fixed. Does not react to ui_scale mode."
             }
           }
         },
@@ -48,23 +48,23 @@
           "size": {
             "xs": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.dynamic.component_size.spacing.xs.rem}",
-              "$description": "Smallest icon size. Reacts to component_size mode."
+              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xs.rem}",
+              "$description": "Smallest icon size. Reacts to ui_scale mode."
             },
             "sm": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.dynamic.component_size.spacing.sm.rem}",
-              "$description": "Small icon size. Reacts to component_size mode."
+              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.sm.rem}",
+              "$description": "Small icon size. Reacts to ui_scale mode."
             },
             "md": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.dynamic.component_size.spacing.md.rem}",
-              "$description": "Default icon size. Reacts to component_size mode."
+              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.md.rem}",
+              "$description": "Default icon size. Reacts to ui_scale mode."
             },
             "lg": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.dynamic.component_size.spacing.xl.rem}",
-              "$description": "Large icon size. Reacts to component_size mode."
+              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xl.rem}",
+              "$description": "Large icon size. Reacts to ui_scale mode."
             }
           }
         },
@@ -81,7 +81,7 @@
               "vertical": {
                 "offset": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.component_size.micro.sm.px}",
+                  "$value": "{ob.s.dimension.static.ui_scale.micro.sm.px}",
                   "$description": "Upward optical baseline offset for inline icons with adjacent capital letters. Fixed at 2px (= 0.125em at 16px base). Figma does not support em units — devs should implement as 0.125em in CSS so the offset scales proportionally with the adjacent text size. Does not react to any mode."
                 }
               }

@@ -118,22 +118,22 @@ const UPDATES = [
 
   // ── Semantic — dimension / component size ────────────────────────────────────
   {
-    file: '03_semantic/dimension/component_size/lg.json',
+    file: '03_semantic/dimension/ui_scale/lg.json',
     title: 'Large',
     intro: 'Component dimension tokens for the Large size mode.',
   },
   {
-    file: '03_semantic/dimension/component_size/md.json',
+    file: '03_semantic/dimension/ui_scale/md.json',
     title: 'Medium',
     intro: 'Component dimension tokens for the Medium size mode.',
   },
   {
-    file: '03_semantic/dimension/component_size/sm.json',
+    file: '03_semantic/dimension/ui_scale/sm.json',
     title: 'Small',
     intro: 'Component dimension tokens for the Small size mode.',
   },
   {
-    file: '03_semantic/dimension/component_size/static.json',
+    file: '03_semantic/dimension/ui_scale/static.json',
     title: 'Static',
     intro: 'Component dimension tokens independent of size mode — fixed values used across all size variants.',
   },

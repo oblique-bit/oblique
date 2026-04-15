@@ -27,7 +27,7 @@ The icon component family is the foundational sizing layer for all icons in the 
 | `ob.c.icon.component.size.md` | `ui_scale` | 24 |
 | `ob.c.icon.component.size.lg` | `ui_scale` | 32 |
 
-Tokens reference `ob.s.dimension.dynamic.component_size.spacing.*` — they resolve to different values depending on which `ui_scale` mode is active on an ancestor frame.
+Tokens reference `ob.s.dimension.dynamic.ui_scale.spacing.*` — they resolve to different values depending on which `ui_scale` mode is active on an ancestor frame.
 
 ### icon-static
 
@@ -38,7 +38,7 @@ Tokens reference `ob.s.dimension.dynamic.component_size.spacing.*` — they reso
 | `ob.c.icon.static.size.md` | none | 24 |
 | `ob.c.icon.static.size.lg` | none | 32 |
 
-Tokens reference `ob.s.dimension.static.component_size.spacing.*` — static dimension tokens that do not react to any mode.
+Tokens reference `ob.s.dimension.static.ui_scale.spacing.*` — static dimension tokens that do not react to any mode.
 
 ### inline-text
 
@@ -55,12 +55,12 @@ Icon tokens sit in the `ob.c.*` component layer. They reference semantic dimensi
 
 ```
 ob.c.icon.component.size.md
-  → ob.s.dimension.dynamic.component_size.spacing.md.rem  (dynamic = mode-reactive)
+  → ob.s.dimension.dynamic.ui_scale.spacing.md.rem  (dynamic = mode-reactive)
       → ob.p.dimension.spacing.xl ...or... ob.p.dimension.spacing.md
         (resolved by active ui_scale mode: default=md, mini=xs, etc.)
 
 ob.c.icon.static.size.md
-  → ob.s.dimension.static.component_size.spacing.md.rem  (static = no mode)
+  → ob.s.dimension.static.ui_scale.spacing.md.rem  (static = no mode)
       → ob.p.dimension.spacing.xl (always)
 ```
 

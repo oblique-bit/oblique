@@ -3,7 +3,7 @@
     "s": {
       "dimension": {
         "static": {
-          "component_size": {
+          "ui_scale": {
             "token_family_docs": {
               "$description": {
                 "$type": "other",

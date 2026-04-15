@@ -3,7 +3,7 @@
     "g": {
       "multiplier": {
         "dimension": {
-          "component_size": {
+          "ui_scale": {
             "sm": {
               "$type": "number",
               "$value": "0.8",

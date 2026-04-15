@@ -24,7 +24,7 @@ Create separate multipliers for component-size vs density groups:
     "g": {
       "multiplier": {
         "dimension": {
-          "component_size": {
+          "ui_scale": {
             "sm": 0.8, "md": 1.0, "lg": 1.25
           },
           "density": {
@@ -39,9 +39,9 @@ Create separate multipliers for component-size vs density groups:
 
 **Updated Token Usage:**
 ```json
-// Component sizing - uses component_size multiplier
+// Component sizing - uses ui_scale multiplier
 "element": {
-  "md": { "px": "{ob.p.dimension.px.8} * {ob.g.multiplier.dimension.component_size.md}" }
+  "md": { "px": "{ob.p.dimension.px.8} * {ob.g.multiplier.dimension.ui_scale.md}" }
 }
 
 // Layout density - uses density multiplier  
@@ -54,7 +54,7 @@ Create separate multipliers for component-size vs density groups:
 
 | Group | Uses Multiplier | Purpose |
 |---|---|---|
-| `element.*` | `dimension.component_size` | Component internals (4-12px) |
+| `element.*` | `dimension.ui_scale` | Component internals (4-12px) |
 | `spacing.*` | `dimension.density` | Content gaps (16-32px) |
 | `container.*` | `dimension.density` | Container padding (36-64px) |
 | `layout.*` | `dimension.density` | Layout gaps (80-192px) |

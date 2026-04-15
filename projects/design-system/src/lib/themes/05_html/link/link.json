@@ -23,7 +23,7 @@
         "spacing": {
           "gap": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.static.component_size.micro.sm.px}",
+            "$value": "{ob.s.dimension.static.ui_scale.micro.sm.px}",
             "$description": "Gap between icon and text in the text link."
           }
         },

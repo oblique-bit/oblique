@@ -24,7 +24,7 @@
           "spacing": {
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.component_size.spacing.xs.px}",
+              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xs.px}",
               "$description": "Button gap for desktop viewport - wider spacing for mouse interaction"
             }
           }
@@ -32,7 +32,7 @@
         "touch_target": {
           "min_size": {
             "$type": "dimension",
-            "$value": "{ob.s.dimension.static.component_size.none.px}",
+            "$value": "{ob.s.dimension.static.ui_scale.none.px}",
             "$description": "No touch target constraint for desktop - mouse interaction"
           }
         }
