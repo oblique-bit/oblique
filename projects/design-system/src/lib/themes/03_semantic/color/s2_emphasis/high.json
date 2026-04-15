@@ -24,7 +24,7 @@
           "token_family_docs": {
             "$description": {
               "$type": "other",
-              "$value": "Default emphasis for interactive elements — buttons, links, and form controls where the interactive role must be clearly visible. Colors are saturated and fully contrasted to signal primary actions. Do: Use for primary buttons, default call-to-action elements, and text links in content areas where a saturated interactive color is expected. Avoid: Do not use in headers, footers, or passive layout zones where saturated color would compete with surrounding content. Use Low emphasis instead."
+              "$value": "Default emphasis for interactive elements — buttons, links, and form controls where the interactive role must be clearly visible. Colors are saturated and fully contrasted to signal primary actions. Organized into standard_states (predefined interaction states) and contrast-levels (raw contrast steps for custom compositions). Do: Use for primary buttons, default call-to-action elements, and text links in content areas where a saturated interactive color is expected. Avoid: Do not use in headers, footers, or passive layout zones where saturated color would compete with surrounding content. Use Low emphasis instead."
             },
             "$extensions": {
               "oblique": {
@@ -40,6 +40,24 @@
             }
           },
           "standard_states": {
+            "token_family_docs": {
+              "$description": {
+                "$type": "other",
+                "$value": "Predefined interaction state colors for emphasis-high components — enabled, hover, focus, pressed, selected, visited, and disabled. Lightness mode is pre-resolved; Emphasis High is fixed. Use: Authoring compiled standard_states tokens for primary interactive components. Avoid: Custom contrast compositions — use the contrast-levels group instead."
+              },
+              "$extensions": {
+                "oblique": {
+                  "kind": {
+                    "$type": "other",
+                    "$value": "token_family_docs"
+                  },
+                  "export": {
+                    "$type": "other",
+                    "$value": "false"
+                  }
+                }
+              }
+            },
             "fg": {
               "enabled": {
                 "inversity_normal": {
