@@ -433,8 +433,8 @@
       "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6",
       "ob.h.button.container.spacing.gap": "e0f8474f4d03d3d891297010ab3bce86aab9b563",
       "ob.h.button.touch_target.min_size": "e04650bc2461769aeb18867faf7f43e82c412801",
-      "ob.c.infobox.size.icon_size": "df91d2b613658b50bd3ad3e3d53261182e53e191",
-      "ob.c.infobox.size.close_button_size": "c1eb36bbff418009efb33e97f64b22340aed5aae"
+      "ob.c.infobox.size.icon_size": "b5ae04f8d207ba77bd5667447bfbcf82abf19a7e",
+      "ob.c.infobox.size.close_button_size": "fe008d5cea0fb62a5d240c9a329626d4de3201ae"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
