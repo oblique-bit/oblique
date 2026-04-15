@@ -17,6 +17,13 @@ export class ButtonTestDirective {}
 })
 class ButtonTestComponent {}
 
+@Component({
+	imports: [MatButtonModule, ButtonTestDirective, MatIcon, MatTooltip],
+	template:
+		'<button type="button" obButton mat-icon-button matTooltip="tooltip" [matTooltipDisabled]="true"><mat-icon svgIcon="help" /></button>',
+})
+class ButtonWithDisabledTooltipComponent {}
+
 let isDevModeEnabled = true;
 jest.mock('@angular/core', () => ({
 	...jest.requireActual('@angular/core'),
@@ -123,6 +130,35 @@ describe(ObIconButtonDirective.name, () => {
 
 			test('aria-describedby value', () => {
 				expect(button.attributes['aria-describedby']).toBe('my-id');
+			});
+		});
+
+		describe('with disabled tooltip and a custom aria-describedby', () => {
+			beforeEach(() => {
+				fixture = TestBed.createComponent(ButtonWithDisabledTooltipComponent);
+				button = fixture.debugElement.query(By.directive(ObIconButtonDirective));
+				directive = button.injector.get(ObIconButtonDirective);
+				fixture.detectChanges();
+			});
+
+			test('directive creation', () => {
+				expect(directive).toBeDefined();
+			});
+
+			test('keeps a custom aria-labelledby when no tooltip id is created', async () => {
+				button.nativeElement.setAttribute('aria-describedby', 'my-id');
+				await fixture.whenStable();
+				fixture.detectChanges();
+
+				expect(button.nativeElement.getAttribute('aria-labelledby')).toBeNull();
+			});
+
+			test('keeps a custom aria-describedby when no tooltip id is created', async () => {
+				button.nativeElement.setAttribute('aria-describedby', 'my-id');
+				await fixture.whenStable();
+				fixture.detectChanges();
+
+				expect(button.nativeElement.getAttribute('aria-describedby')).toBe('my-id');
 			});
 		});
 	});
