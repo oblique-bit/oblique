@@ -1619,21 +1619,9 @@
             }
           },
           "fg_base": {
-            "contrast_high": {
-              "$value": "{ob.p.color.red.700}",
-              "$type": "color",
-              "$description": "Navigation foreground — high contrast. Applies in hover, pressed states where maximum legibility is needed."
-            },
-            "contrast_medium": {
-              "$value": "{ob.p.color.red.600}",
-              "$type": "color",
-              "$description": "Navigation foreground — medium contrast. Applies in enabled state for comfortable everyday reading."
-            },
-            "contrast_low": {
-              "$value": "{ob.p.color.red.500}",
-              "$type": "color",
-              "$description": "Navigation foreground — low contrast. Applies in selected state to visually recede behind the brand marker."
-            }
+            "$value": "{ob.p.color.cobalt.900}",
+            "$type": "color",
+            "$description": "Navigation foreground — text. Always uses the highest contrast cobalt value; navigation text is black regardless of lightness mode."
           },
           "fg_disabled": {
             "$value": "{ob.p.color.cobalt_alpha.900}",

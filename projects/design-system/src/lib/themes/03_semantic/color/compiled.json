@@ -1488,27 +1488,27 @@
           },
           "fg": {
             "enabled": {
-              "$value": "{ob.s1.color.navigation.fg_base.contrast_medium}",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
               "$description": "Foreground for Navigation. Enabled state: Use for text and icons in the default, ready-to-interact state."
             },
             "hover": {
-              "$value": "{ob.s1.color.navigation.fg_base.contrast_high}",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
               "$description": "Foreground for Navigation. Hover state: Use for text and icons when a pointer enters the navigation item."
             },
             "focus": {
-              "$value": "{ob.s1.color.navigation.fg_base.contrast_medium}",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
               "$description": "Foreground for Navigation. Focus state: Use for text and icons when a navigation item receives keyboard focus."
             },
             "pressed": {
-              "$value": "{ob.s1.color.navigation.fg_base.contrast_high}",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
               "$description": "Foreground for Navigation. Pressed state: Use for text and icons during an active click or tap on a navigation item."
             },
             "selected": {
-              "$value": "{ob.s1.color.navigation.fg_base.contrast_low}",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
               "$description": "Foreground for Navigation. Selected state: Use for text and icons on the currently active navigation item."
             },
