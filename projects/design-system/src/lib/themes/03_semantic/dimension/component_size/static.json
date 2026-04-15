@@ -5,11 +5,20 @@
         "static": {
           "component_size": {
             "token_family_docs": {
-              "$description": "Component dimension tokens independent of size mode — fixed values used across all size variants.",
+              "$description": {
+                "$type": "other",
+                "$value": "Component dimension tokens independent of size mode — fixed values used across all size variants."
+              },
               "$extensions": {
                 "oblique": {
-                  "kind": "token_family_docs",
-                  "export": false
+                  "kind": {
+                    "$type": "other",
+                    "$value": "token_family_docs"
+                  },
+                  "export": {
+                    "$type": "other",
+                    "$value": "false"
+                  }
                 }
               }
             },

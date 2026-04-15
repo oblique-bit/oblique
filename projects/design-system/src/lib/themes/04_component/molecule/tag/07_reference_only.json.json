@@ -3,11 +3,20 @@
     "c": {
       "tag": {
         "token_family_docs": {
-          "$description": "Tag tokens for internal reference — filter styles. Not for direct component assignment.",
+          "$description": {
+            "$type": "other",
+            "$value": "Tag tokens for internal reference — filter styles. Not for direct component assignment."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

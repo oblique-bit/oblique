@@ -4,11 +4,20 @@
       "motion": {
         "duration": {
           "token_family_docs": {
-            "$description": "Motion tokens for the Disabled motion mode — all durations set to zero for reduced-motion accessibility.",
+            "$description": {
+              "$type": "other",
+              "$value": "Motion tokens for the Disabled motion mode — all durations set to zero for reduced-motion accessibility."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

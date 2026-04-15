@@ -4,11 +4,20 @@
       "motion": {
         "easing": {
           "token_family_docs": {
-            "$description": "Mode-independent easing curve tokens — standard, entrance, exit, and emphasis. Not affected by motion mode.",
+            "$description": {
+              "$type": "other",
+              "$value": "Mode-independent easing curve tokens — standard, entrance, exit, and emphasis. Not affected by motion mode."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

@@ -4,11 +4,20 @@
       "typography": {
         "context": {
           "token_family_docs": {
-            "$description": "Typography context tokens for the Interface context — font stack, size, and spacing for UI labels and controls.",
+            "$description": {
+              "$type": "other",
+              "$value": "Typography context tokens for the Interface context — font stack, size, and spacing for UI labels and controls."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

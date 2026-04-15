@@ -15,7 +15,7 @@
               },
               "export": {
                 "$type": "other",
-                "$value": false
+                "$value": "false"
               }
             }
           }
@@ -34,7 +34,7 @@
                 },
                 "export": {
                   "$type": "other",
-                  "$value": false
+                  "$value": "false"
                 }
               }
             }

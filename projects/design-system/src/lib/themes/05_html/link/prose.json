@@ -4,11 +4,20 @@
       "link": {
         "icon": {
           "token_family_docs": {
-            "$description": "Link icon tokens for the Prose typography context.",
+            "$description": {
+              "$type": "other",
+              "$value": "Link icon tokens for the Prose typography context."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

@@ -4,11 +4,20 @@
       "button": {
         "motion": {
           "token_family_docs": {
-            "$description": "Motion tokens for the HTML button element — transition duration and easing.",
+            "$description": {
+              "$type": "other",
+              "$value": "Motion tokens for the HTML button element — transition duration and easing."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

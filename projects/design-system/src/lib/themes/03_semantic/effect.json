@@ -3,11 +3,20 @@
     "s": {
       "fx": {
         "token_family_docs": {
-          "$description": "Semantic visual effect tokens for surface treatments. Referenced by component and HTML token files.",
+          "$description": {
+            "$type": "other",
+            "$value": "Semantic visual effect tokens for surface treatments. Referenced by component and HTML token files."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

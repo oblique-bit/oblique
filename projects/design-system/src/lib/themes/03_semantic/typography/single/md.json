@@ -3,11 +3,20 @@
     "s": {
       "dynamic": {
         "token_family_docs": {
-          "$description": "Individual typography tokens for the Medium component size mode.",
+          "$description": {
+            "$type": "other",
+            "$value": "Individual typography tokens for the Medium component size mode."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

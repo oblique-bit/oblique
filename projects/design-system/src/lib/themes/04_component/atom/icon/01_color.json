@@ -4,11 +4,20 @@
       "icon": {
         "color": {
           "token_family_docs": {
-            "$description": "Component foreground color token for the icon_slot element. Resolves via the semantic chain to the contextual neutral foreground. Do: Assign to icon foreground in any context where the icon inherits the surrounding text color. Avoid: Do not override with a literal color value — always reference via the token chain.",
+            "$description": {
+              "$type": "other",
+              "$value": "Component foreground color token for the icon_slot element. Resolves via the semantic chain to the contextual neutral foreground. Do: Assign to icon foreground in any context where the icon inherits the surrounding text color. Avoid: Do not override with a literal color value — always reference via the token chain."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

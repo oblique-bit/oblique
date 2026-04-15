@@ -3,11 +3,20 @@
     "h": {
       "hr": {
         "token_family_docs": {
-          "$description": "Tokens for the HTML hr element — height and color (subtle, default, strong).",
+          "$description": {
+            "$type": "other",
+            "$value": "Tokens for the HTML hr element — height and color (subtle, default, strong)."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

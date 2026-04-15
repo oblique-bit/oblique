@@ -5,11 +5,20 @@
         "dynamic": {
           "component_size": {
             "token_family_docs": {
-              "$description": "Component dimension tokens for the Medium size mode.",
+              "$description": {
+                "$type": "other",
+                "$value": "Component dimension tokens for the Medium size mode."
+              },
               "$extensions": {
                 "oblique": {
-                  "kind": "token_family_docs",
-                  "export": false
+                  "kind": {
+                    "$type": "other",
+                    "$value": "token_family_docs"
+                  },
+                  "export": {
+                    "$type": "other",
+                    "$value": "false"
+                  }
                 }
               }
             },

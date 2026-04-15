@@ -3,11 +3,20 @@
     "h": {
       "button": {
         "token_family_docs": {
-          "$description": "HTML button tokens for internal reference — not for direct component assignment.",
+          "$description": {
+            "$type": "other",
+            "$value": "HTML button tokens for internal reference — not for direct component assignment."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

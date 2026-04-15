@@ -5,11 +5,20 @@
         "dynamic": {
           "typography_context": {
             "token_family_docs": {
-              "$description": "Typography dimension tokens for the Prose context — generous spacing optimized for readable body text.",
+              "$description": {
+                "$type": "other",
+                "$value": "Typography dimension tokens for the Prose context — generous spacing optimized for readable body text."
+              },
               "$extensions": {
                 "oblique": {
-                  "kind": "token_family_docs",
-                  "export": false
+                  "kind": {
+                    "$type": "other",
+                    "$value": "token_family_docs"
+                  },
+                  "export": {
+                    "$type": "other",
+                    "$value": "false"
+                  }
                 }
               }
             },

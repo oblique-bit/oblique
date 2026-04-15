@@ -3,11 +3,20 @@
     "s": {
       "static": {
         "token_family_docs": {
-          "$description": "Size-mode-independent individual typography tokens.",
+          "$description": {
+            "$type": "other",
+            "$value": "Size-mode-independent individual typography tokens."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

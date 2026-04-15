@@ -4,11 +4,20 @@
       "button": {
         "color": {
           "token_family_docs": {
-            "$description": "Color tokens for the HTML button element — foreground, background, and border across all interaction states.",
+            "$description": {
+              "$type": "other",
+              "$value": "Color tokens for the HTML button element — foreground, background, and border across all interaction states."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

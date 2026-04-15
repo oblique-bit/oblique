@@ -3,11 +3,20 @@
     "p": {
       "number": {
         "token_family_docs": {
-          "$description": "Unitless numeric primitives — percentage, line-height ratios, letter-spacing values, and infinity. Referenced by semantic typography tokens.",
+          "$description": {
+            "$type": "other",
+            "$value": "Unitless numeric primitives — percentage, line-height ratios, letter-spacing values, and infinity. Referenced by semantic typography tokens."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

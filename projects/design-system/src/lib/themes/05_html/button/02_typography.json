@@ -4,11 +4,20 @@
       "button": {
         "typography": {
           "token_family_docs": {
-            "$description": "Typography tokens for the HTML button element — font-size, font-weight, and line-height.",
+            "$description": {
+              "$type": "other",
+              "$value": "Typography tokens for the HTML button element — font-size, font-weight, and line-height."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

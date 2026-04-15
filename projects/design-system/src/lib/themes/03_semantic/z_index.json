@@ -3,11 +3,20 @@
     "s": {
       "z_index": {
         "token_family_docs": {
-          "$description": "Semantic z-index tokens for UI layering — header, drawer, modal, notification, tooltip, and other stacking contexts.",
+          "$description": {
+            "$type": "other",
+            "$value": "Semantic z-index tokens for UI layering — header, drawer, modal, notification, tooltip, and other stacking contexts."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

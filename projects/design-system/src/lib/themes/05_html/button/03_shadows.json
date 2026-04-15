@@ -4,11 +4,20 @@
       "button": {
         "shadow": {
           "token_family_docs": {
-            "$description": "Shadow tokens for the HTML button element.",
+            "$description": {
+              "$type": "other",
+              "$value": "Shadow tokens for the HTML button element."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

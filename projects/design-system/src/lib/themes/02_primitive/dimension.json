@@ -3,11 +3,20 @@
     "p": {
       "dimension": {
         "token_family_docs": {
-          "$description": "Base spacing values in px and rem. Named by pixel step (e.g. 0, 4, 8, 16). Referenced by all semantic dimension tokens.",
+          "$description": {
+            "$type": "other",
+            "$value": "Base spacing values in px and rem. Named by pixel step (e.g. 0, 4, 8, 16). Referenced by all semantic dimension tokens."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

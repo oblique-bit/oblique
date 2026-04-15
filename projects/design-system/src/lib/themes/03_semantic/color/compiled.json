@@ -3,35 +3,55 @@
     "s": {
       "color": {
         "token_family_docs": {
-          "$description": "Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial.",
+          "$description": {
+            "$type": "other",
+            "$value": "Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },
         "brand": {
-          "token_family_docs": {
-            "$description": "Official federal identity color (Bundesrot). Light/Dark modes apply — no emphasis modes. Use: Primary brand accent in navigation active states and official federal identity elements. Avoid: Interactive states or status feedback — use the interaction or status scale instead.",
-            "$extensions": {
-              "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+          "1": {
+            "token_family_docs": {
+              "$description": "Official federal identity color (Bundesrot). Light/Dark modes apply — no emphasis modes. Use: Primary brand accent in navigation active states and official federal identity elements. Avoid: Interactive states or status feedback — use the interaction or status scale instead.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
               }
-            }
-          },
-          "$type": "color",
-          "$value": "{ob.p.color.basic.federal_red}",
-          "$description": "Federal identity color. Use for Bundesrot brand accent in navigation active states and primary brand elements."
+            },
+            "$type": "color",
+            "$value": "{ob.p.color.basic.federal_red}",
+            "$description": "Federal identity color. Use for Bundesrot brand accent in navigation active states and primary brand elements. Numbering starts at 1 to support scalable multi-brand setups."
+          }
         },
         "neutral": {
           "token_family_docs": {
-            "$description": "Foundational colors for backgrounds, text, borders, and surfaces. Light/Dark modes apply — no emphasis modes. Use: Text, background, border, and shadow roles in standard UI components. Avoid: Interactive state feedback — use the interaction scale. Status communication — use the status scale.",
+            "$description": {
+              "$type": "other",
+              "$value": "Foundational colors for backgrounds, text, borders, and surfaces. Light/Dark modes apply — no emphasis modes. Use: Text, background, border, and shadow roles in standard UI components. Avoid: Interactive state feedback — use the interaction scale. Status communication — use the status scale."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },
@@ -217,11 +237,20 @@
         },
         "interaction": {
           "token_family_docs": {
-            "$description": "Interactive state colors for components. Light/Dark and High/Low emphasis modes apply — all 4 mode combinations resolve to distinct values. Use: Interactive component states — buttons, links, form controls, and focusable elements. Avoid: Static decorative elements. Status communication — use the status scale instead.",
+            "$description": {
+              "$type": "other",
+              "$value": "Interactive state colors for components. Light/Dark and High/Low emphasis modes apply — all 4 mode combinations resolve to distinct values. Use: Interactive component states — buttons, links, form controls, and focusable elements. Avoid: Static decorative elements. Status communication — use the status scale instead."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },
@@ -419,11 +448,20 @@
         },
         "status": {
           "token_family_docs": {
-            "$description": "Status communication colors. Contrast levels (e.g. contrast_highest) are available. Light/Dark modes apply — no emphasis modes. Use: Alerts, badges, and any element that communicates system or process state. Avoid: Decoration or branding — status colors carry fixed semantic meaning. Interactive states — use the interaction scale.",
+            "$description": {
+              "$type": "other",
+              "$value": "Status communication colors. Contrast levels (e.g. contrast_highest) are available. Light/Dark modes apply — no emphasis modes. Use: Alerts, badges, and any element that communicates system or process state. Avoid: Decoration or branding — status colors carry fixed semantic meaning. Interactive states — use the interaction scale."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },
@@ -940,11 +978,20 @@
         },
         "free": {
           "token_family_docs": {
-            "$description": "Free colors — no predefined semantic role. Contrast levels (e.g. contrast_highest) are available. Light/Dark modes apply — no emphasis modes. Use: Tags, badges, and contextual color accents. Suitable for categorical distinction. Avoid: Substituting for status or interaction colors — free tokens carry no fixed semantic meaning.",
+            "$description": {
+              "$type": "other",
+              "$value": "Free colors — no predefined semantic role. Contrast levels (e.g. contrast_highest) are available. Light/Dark modes apply — no emphasis modes. Use: Tags, badges, and contextual color accents. Suitable for categorical distinction. Avoid: Substituting for status or interaction colors — free tokens carry no fixed semantic meaning."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },
@@ -1478,107 +1525,116 @@
         },
         "navigation": {
           "token_family_docs": {
-            "$description": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect — navigation items use a single color scale based on the brand red palette.",
+            "$description": {
+              "$type": "other",
+              "$value": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect — navigation items use a single color scale based on the brand red palette."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },
           "fg": {
             "enabled": {
-              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$description": "Foreground for Navigation. Enabled state: Use for text and icons in the default, ready-to-interact state."
             },
             "hover": {
-              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$description": "Foreground for Navigation. Hover state: Use for text and icons when a pointer enters the navigation item."
             },
             "focus": {
-              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$description": "Foreground for Navigation. Focus state: Use for text and icons when a navigation item receives keyboard focus."
             },
             "pressed": {
-              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$description": "Foreground for Navigation. Pressed state: Use for text and icons during an active click or tap on a navigation item."
             },
             "selected": {
-              "$value": "{ob.s1.color.navigation.fg_base}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.fg_base}",
               "$description": "Foreground for Navigation. Selected state: Use for text and icons on the currently active navigation item."
             },
             "disabled": {
-              "$value": "{ob.s1.color.navigation.fg_disabled}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.fg_disabled}",
               "$description": "Foreground for Navigation. Disabled state: Use for text and icons on navigation items not available for interaction."
             }
           },
           "bg": {
             "enabled": {
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
               "$description": "Background for Navigation. Enabled state: Use for the surface of a navigation item in its default state."
             },
             "hover": {
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
               "$description": "Background for Navigation. Hover state: Use for the surface of a navigation item when a pointer enters it."
             },
             "focus": {
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
               "$description": "Background for Navigation. Focus state: Use for the surface of a navigation item that receives keyboard focus."
             },
             "pressed": {
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
               "$description": "Background for Navigation. Pressed state: Use for the surface of a navigation item during an active click or tap."
             },
             "selected": {
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_low}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_low}",
               "$description": "Background for Navigation. Selected state: Use for the surface of the currently active navigation item."
             },
             "disabled": {
-              "$value": "{ob.s1.color.navigation.bg_disabled.opacity}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.bg_disabled.opacity}",
               "$description": "Background for Navigation. Disabled state: Use for the surface of navigation items not available for interaction."
             }
           },
           "border": {
             "enabled": {
-              "$value": "{ob.p.color.basic.transparent}",
               "$type": "color",
+              "$value": "{ob.p.color.basic.transparent}",
               "$description": "Border for Navigation. Enabled state: Transparent — no visible border on navigation items in the default rest state."
             },
             "hover": {
-              "$value": "{ob.s1.color.navigation.border_base.subtle}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.border_base.subtle}",
               "$description": "Border for Navigation. Hover state: Subtle indicator line on navigation items when a pointer enters."
             },
             "focus": {
-              "$value": "{ob.s1.color.navigation.border_base.subtle}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.border_base.subtle}",
               "$description": "Border for Navigation. Focus state: Subtle indicator line on navigation items that receive keyboard focus."
             },
             "pressed": {
-              "$value": "{ob.s1.color.navigation.border_base.brand}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.border_base.brand}",
               "$description": "Border for Navigation. Pressed state: Brand-red indicator line during an active click or tap."
             },
             "selected": {
-              "$value": "{ob.s1.color.navigation.border_base.brand}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.border_base.brand}",
               "$description": "Border for Navigation. Selected state: Brand-red indicator line marking the currently active navigation item. Uses ob.p.color.basic.federal_red."
             },
             "disabled": {
-              "$value": "{ob.s1.color.navigation.border_base.disabled}",
               "$type": "color",
+              "$value": "{ob.s1.color.navigation.border_base.disabled}",
               "$description": "Border for Navigation. Disabled state: Muted indicator line on navigation items not available for interaction."
             }
           }

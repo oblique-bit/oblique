@@ -4,11 +4,20 @@
       "typography": {
         "style": {
           "token_family_docs": {
-            "$description": "Typography style tokens for HTML elements — heading and body style definitions.",
+            "$description": {
+              "$type": "other",
+              "$value": "Typography style tokens for HTML elements — heading and body style definitions."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

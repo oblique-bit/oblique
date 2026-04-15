@@ -3,11 +3,20 @@
     "p": {
       "font_family": {
         "token_family_docs": {
-          "$description": "Primitive typography values — font families (sans, mono), unitless font size steps, font weights, and paragraph spacing scale. Referenced by semantic typography tokens.",
+          "$description": {
+            "$type": "other",
+            "$value": "Primitive typography values — font families (sans, mono), unitless font size steps, font weights, and paragraph spacing scale. Referenced by semantic typography tokens."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

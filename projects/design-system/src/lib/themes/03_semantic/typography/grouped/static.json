@@ -5,11 +5,20 @@
         "grouped": {
           "static": {
             "token_family_docs": {
-              "$description": "Grouped typography tokens independent of component size mode.",
+              "$description": {
+                "$type": "other",
+                "$value": "Grouped typography tokens independent of component size mode."
+              },
               "$extensions": {
                 "oblique": {
-                  "kind": "token_family_docs",
-                  "export": false
+                  "kind": {
+                    "$type": "other",
+                    "$value": "token_family_docs"
+                  },
+                  "export": {
+                    "$type": "other",
+                    "$value": "false"
+                  }
                 }
               }
             },

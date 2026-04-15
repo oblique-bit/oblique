@@ -3,11 +3,20 @@
     "c": {
       "badge": {
         "token_family_docs": {
-          "$description": "Component tokens for the Badge atom — color (bg, fg), spacing, and size.",
+          "$description": {
+            "$type": "other",
+            "$value": "Component tokens for the Badge atom — color (bg, fg), spacing, and size."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

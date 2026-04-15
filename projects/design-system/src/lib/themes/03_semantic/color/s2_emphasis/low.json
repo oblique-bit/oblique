@@ -4,11 +4,20 @@
       "color": {
         "interaction": {
           "token_family_docs": {
-            "$description": "Reduced-saturation emphasis for interactive elements in passive layout zones — headers, footers, and sidebars where actions should not draw attention away from primary content. Colors appear near-neutral while remaining interactive. Do: Use for navigation links, header and footer actions, and any interactive element in a zone where monochromatic appearance is preferred over a visible call-to-action color. Avoid: Do not use as the default for primary form actions or submission buttons — those require High emphasis to communicate their role clearly.",
+            "$description": {
+              "$type": "other",
+              "$value": "Reduced-saturation emphasis for interactive elements in passive layout zones — headers, footers, and sidebars where actions should not draw attention away from primary content. Colors appear near-neutral while remaining interactive. Do: Use for navigation links, header and footer actions, and any interactive element in a zone where monochromatic appearance is preferred over a visible call-to-action color. Avoid: Do not use as the default for primary form actions or submission buttons — those require High emphasis to communicate their role clearly."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

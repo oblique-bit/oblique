@@ -3,11 +3,20 @@
     "c": {
       "infobox": {
         "token_family_docs": {
-          "$description": "Viewport-specific layout tokens for the Infobox molecule at the desktop breakpoint.",
+          "$description": {
+            "$type": "other",
+            "$value": "Viewport-specific layout tokens for the Infobox molecule at the desktop breakpoint."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

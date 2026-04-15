@@ -3,11 +3,20 @@
     "s1": {
       "color": {
         "token_family_docs": {
-          "$description": "Source file for S1 color tokens in the Dark theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, and Free.",
+          "$description": {
+            "$type": "other",
+            "$value": "Source file for S1 color tokens in the Dark theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, and Free."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },
@@ -1601,67 +1610,76 @@
         },
         "navigation": {
           "token_family_docs": {
-            "$description": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect — navigation items use a single color scale based on the brand red palette.",
+            "$description": {
+              "$type": "other",
+              "$value": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect — navigation items use a single color scale based on the brand red palette."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },
           "fg_base": {
-            "$value": "{ob.p.color.cobalt.900}",
             "$type": "color",
+            "$value": "{ob.p.color.cobalt.900}",
             "$description": "Navigation foreground — text. Always uses the highest contrast cobalt value; navigation text is black regardless of lightness mode."
           },
           "fg_disabled": {
-            "$value": "{ob.p.color.cobalt.50}",
             "$type": "color",
+            "$value": "{ob.p.color.cobalt.50}",
             "$description": "Navigation foreground — disabled. Muted text/icon color using the universal cobalt disabled scale."
           },
           "bg_base": {
             "contrast_high": {
-              "$value": "{ob.p.color.red.900}",
               "$type": "color",
+              "$value": "{ob.p.color.red.900}",
               "$description": "Navigation background — high contrast. Applies where a strong surface fill is required (e.g. pressed, selected)."
             },
             "contrast_medium": {
-              "$value": "{ob.p.color.red.800}",
               "$type": "color",
+              "$value": "{ob.p.color.red.800}",
               "$description": "Navigation background — medium contrast. Applies in hover and focus states for a visible but non-dominant surface."
             },
             "contrast_low": {
-              "$value": "{ob.p.color.red.700}",
               "$type": "color",
+              "$value": "{ob.p.color.red.700}",
               "$description": "Navigation background — low contrast. Applies in enabled state for a subtle surface that does not dominate the layout."
             }
           },
           "bg_disabled": {
             "solid": {
-              "$value": "{ob.p.color.white_alpha.300}",
               "$type": "color",
+              "$value": "{ob.p.color.white_alpha.300}",
               "$description": "Navigation background — disabled solid. Opaque muted surface for disabled navigation items."
             },
             "opacity": {
-              "$value": "{ob.p.color.white_alpha.300}",
               "$type": "color",
+              "$value": "{ob.p.color.white_alpha.300}",
               "$description": "Navigation background — disabled opacity. Semi-transparent muted surface for disabled navigation items."
             }
           },
           "border_base": {
             "brand": {
-              "$value": "{ob.p.color.basic.federal_red}",
               "$type": "color",
+              "$value": "{ob.p.color.basic.federal_red}",
               "$description": "Navigation border — brand. Uses ob.p.color.basic.federal_red. Applied to selected and pressed states as the primary brand indicator line."
             },
             "subtle": {
-              "$value": "{ob.p.color.red.500}",
               "$type": "color",
+              "$value": "{ob.p.color.red.500}",
               "$description": "Navigation border — subtle. Lighter red shade for non-active borders (enabled, hover, focus states)."
             },
             "disabled": {
-              "$value": "{ob.p.color.cobalt_alpha.300}",
               "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.300}",
               "$description": "Navigation border — disabled. Muted border using the cobalt_alpha disabled scale."
             }
           }

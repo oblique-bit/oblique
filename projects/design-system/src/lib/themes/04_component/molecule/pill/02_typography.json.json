@@ -4,11 +4,20 @@
       "pill": {
         "typography": {
           "token_family_docs": {
-            "$description": "Typography tokens for the Pill molecule label.",
+            "$description": {
+              "$type": "other",
+              "$value": "Typography tokens for the Pill molecule label."
+            },
             "$extensions": {
               "oblique": {
-                "kind": "token_family_docs",
-                "export": false
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
               }
             }
           },

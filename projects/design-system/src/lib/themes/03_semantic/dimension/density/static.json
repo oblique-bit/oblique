@@ -5,11 +5,20 @@
         "static": {
           "density": {
             "token_family_docs": {
-              "$description": "Density-independent spacing tokens — fixed values not affected by density mode.",
+              "$description": {
+                "$type": "other",
+                "$value": "Density-independent spacing tokens — fixed values not affected by density mode."
+              },
               "$extensions": {
                 "oblique": {
-                  "kind": "token_family_docs",
-                  "export": false
+                  "kind": {
+                    "$type": "other",
+                    "$value": "token_family_docs"
+                  },
+                  "export": {
+                    "$type": "other",
+                    "$value": "false"
+                  }
                 }
               }
             },

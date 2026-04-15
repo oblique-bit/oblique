@@ -3,11 +3,20 @@
     "c": {
       "pill": {
         "token_family_docs": {
-          "$description": "Layout tokens for the Pill molecule — spacing, border-radius, surface, color, icon size, and minimum height.",
+          "$description": {
+            "$type": "other",
+            "$value": "Layout tokens for the Pill molecule — spacing, border-radius, surface, color, icon size, and minimum height."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

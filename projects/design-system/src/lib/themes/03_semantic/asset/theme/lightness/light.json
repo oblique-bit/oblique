@@ -3,11 +3,20 @@
     "p": {
       "assets": {
         "token_family_docs": {
-          "$description": "Asset overrides applied in the Light lightness theme — logo and image assets resolved for light backgrounds.",
+          "$description": {
+            "$type": "other",
+            "$value": "Asset overrides applied in the Light lightness theme — logo and image assets resolved for light backgrounds."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

@@ -3,11 +3,20 @@
     "h": {
       "link": {
         "token_family_docs": {
-          "$description": "Base tokens for the HTML anchor element — spacing, motion, asset, color, and interaction states (enabled, hover, focus, active).",
+          "$description": {
+            "$type": "other",
+            "$value": "Base tokens for the HTML anchor element — spacing, motion, asset, color, and interaction states (enabled, hover, focus, active)."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },

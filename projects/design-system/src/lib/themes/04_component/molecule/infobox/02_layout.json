@@ -3,11 +3,20 @@
     "c": {
       "infobox": {
         "token_family_docs": {
-          "$description": "Layout tokens for the Infobox molecule — container padding, icon asset size, and border-radius.",
+          "$description": {
+            "$type": "other",
+            "$value": "Layout tokens for the Infobox molecule — container padding, icon asset size, and border-radius."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
             }
           }
         },
