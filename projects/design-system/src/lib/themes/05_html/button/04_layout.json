@@ -3,11 +3,20 @@
     "h": {
       "button": {
         "token_family_docs": {
-          "$description": "Layout tokens for the HTML button element — spacing, size, and border-radius.",
+          "$description": {
+            "$type": "other",
+            "$value": "Layout tokens for the HTML button element — spacing, size, and border-radius."
+          },
           "$extensions": {
             "oblique": {
-              "kind": "token_family_docs",
-              "export": false
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": false
+              }
             }
           }
         },
@@ -32,7 +41,8 @@
             "size": {
               "min_height": {
                 "$type": "sizing",
-                "$value": "{ob.s.dimension.dynamic.component_size.spacing.md.rem}"
+                "$value": "{ob.s.dimension.dynamic.component_size.container.xs.px}",
+                "$description": "old {ob.s.dimension.dynamic.component_size.spacing.md.rem}\n"
               }
             }
           },
