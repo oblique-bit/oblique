@@ -433,8 +433,8 @@
       "ob.c.infobox.buttons_order_figma": "17dcf06c1ff4e23cd09e6977889d4efa3920d0b6",
       "ob.h.button.container.spacing.gap": "e0f8474f4d03d3d891297010ab3bce86aab9b563",
       "ob.h.button.touch_target.min_size": "e04650bc2461769aeb18867faf7f43e82c412801",
-      "ob.c.infobox.size.icon_size": "e0fb471ee259197b7c417e50922c302b21f19827",
-      "ob.c.infobox.size.close_button_size": "f50c9cba3c5d59e94b63bebff0642ebe24f20a1e"
+      "ob.c.infobox.size.icon_size": "c5dcb055d1e1ccf8b06f1681c12ac1dcace99dc5",
+      "ob.c.infobox.size.close_button_size": "6bef6f2d1ad67e9d530c8a5dfcb7eeceeceb9737"
     },
     "$figmaCollectionId": "VariableCollectionId:1:3",
     "$figmaModeId": "1:2",
@@ -714,6 +714,10 @@
       "ob.s1.color.navigation.border_base.brand": "7c612ea29978b69c5ddd69f1578dbb3ecbf770fe",
       "ob.s1.color.navigation.border_base.subtle": "8131168915d32a30bff47a02f2e5cac00557a169",
       "ob.s1.color.navigation.border_base.disabled": "095775d97fa9d118a83873df3379465fc7226ef5",
+      "ob.s1.color.interaction.emphasis_high.bg_base.contrast_low_alpha.inversity_normal": "2763e259ae4f1635ad76643cc746b7fc278f7cb2",
+      "ob.s1.color.interaction.emphasis_high.bg_base.contrast_low_alpha.inversity_flipped": "1e7021c5d3ff35ebdcd3bdeeae0ee9d36e2175be",
+      "ob.s1.color.interaction.emphasis_low.bg_base.contrast_low_alpha.inversity_normal": "c918267c05a36026df85043cad6a6454c65d4c8e",
+      "ob.s1.color.interaction.emphasis_low.bg_base.contrast_low_alpha.inversity_flipped": "d8c5d7b3e96a7596c0741a557a466425bdc1be7c",
       "ob.c.infobox.color.icon.info": "00f6249fabd662d665be0f342c3f9a53ab2917ea",
       "ob.c.infobox.color.icon.critical": "1a64a228f8b8f61d01794d6ca407fc2f2a85ccd7",
       "ob.c.infobox.color.icon.attention": "2a5f2dd12d51f21a0bc9f9818fa557f9b8fcf2ae",
@@ -1146,9 +1150,7 @@
       "ob.s2.color.interaction.contrast_levels.border.medium.inversity_normal": "de41cc32686fae53a235c91339a3e1e1eecac803",
       "ob.s2.color.interaction.contrast_levels.border.medium.inversity_flipped": "8825594930ddf6a32b2d00f3ba8ff8128827dd63",
       "ob.s2.color.interaction.contrast_levels.border.low.inversity_normal": "b6dcaf3e4eb7721243c261124ff0a76a0b1f7ed7",
-      "ob.s2.color.interaction.contrast_levels.border.low.inversity_flipped": "2246148f9343bb64371bb44f8a34582cb230e164",
-      "ob.s2.color.interaction.standard_states.bg.hover-alpha.inversity_normal": "53ebe633ec5f0bc492018a49bb0599d0e920b7fd",
-      "ob.s2.color.interaction.standard_states.bg.hover-alpha.inversity_flipped": "69017c39282f5ccd3bee878a9954a8c5725af867"
+      "ob.s2.color.interaction.contrast_levels.border.low.inversity_flipped": "2246148f9343bb64371bb44f8a34582cb230e164"
     },
     "$figmaCollectionId": "VariableCollectionId:1:5",
     "$figmaModeId": "1:6",

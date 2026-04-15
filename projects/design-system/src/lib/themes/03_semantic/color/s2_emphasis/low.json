@@ -44,7 +44,7 @@
               "enabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_high.inversity_normal}",
                   "$description": "Foreground for enabled state emphasis-low interactive element. Standard surface."
                 },
                 "inversity_flipped": {
@@ -56,7 +56,7 @@
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_medium.inversity_normal}",
                   "$description": "Foreground for hover state emphasis-low interactive element. Standard surface."
                 },
                 "inversity_flipped": {
@@ -80,7 +80,7 @@
               "pressed": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_medium.inversity_normal}",
                   "$description": "Foreground for pressed state emphasis-low interactive element. Standard surface."
                 },
                 "inversity_flipped": {
