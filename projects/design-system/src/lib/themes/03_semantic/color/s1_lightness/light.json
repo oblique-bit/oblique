@@ -1571,7 +1571,7 @@
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.700}",
+                  "$value": "{ob.p.color.cobalt.600}",
                   "$description": "Low contrast foreground for emphasis-low interactive elements. Standard surface."
                 },
                 "inversity_flipped": {

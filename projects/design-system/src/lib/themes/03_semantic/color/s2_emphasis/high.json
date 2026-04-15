@@ -62,7 +62,7 @@
               "enabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}",
                   "$description": "Foreground for enabled state emphasis-high interactive element. Standard surface."
                 },
                 "inversity_flipped": {
