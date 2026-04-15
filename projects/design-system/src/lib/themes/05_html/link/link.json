@@ -71,22 +71,22 @@
         "color": {
           "default": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.fg.enabled.inversity_normal}",
+            "$value": "{ob.s.color.interaction.standard_states.fg.enabled.inversity_normal}",
             "$description": "Default color of unvisited links."
           },
           "visited": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.fg.visited.inversity_normal}",
+            "$value": "{ob.s.color.interaction.standard_states.fg.visited.inversity_normal}",
             "$description": "Color of links the user has already visited."
           },
           "hover": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.fg.hover.inversity_normal}",
+            "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_normal}",
             "$description": "Color of link when hovered with the mouse."
           },
           "active": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.fg.pressed.inversity_normal}",
+            "$value": "{ob.s.color.interaction.standard_states.fg.pressed.inversity_normal}",
             "$description": "Color of link during click interaction."
           }
         },

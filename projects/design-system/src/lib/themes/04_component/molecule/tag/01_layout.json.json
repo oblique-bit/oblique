@@ -75,7 +75,7 @@
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s.color.interaction.fg.disabled.inversity_normal}"
+              "$value": "{ob.s.color.interaction.standard_states.fg.disabled.inversity_normal}"
             }
           },
           "bg": {
