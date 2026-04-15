@@ -1607,6 +1607,190 @@
               "$description": "Focus ring indicator color. Inverse surface."
             }
           }
+        },
+        "navigation": {
+          "token_family_docs": {
+            "$description": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect — navigation items use a single color scale based on the brand red palette.",
+            "$extensions": {
+              "oblique": {
+                "kind": "token_family_docs",
+                "export": false
+              }
+            }
+          },
+          "fg_base": {
+            "contrast_high": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.red.700}",
+                "$type": "color",
+                "$description": "Navigation foreground — high contrast. Applies in hover, pressed states where maximum legibility is needed."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.basic.white}",
+                "$type": "color",
+                "$description": "Navigation foreground — high contrast. Applies in hover, pressed states where maximum legibility is needed."
+              }
+            },
+            "contrast_medium": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.red.600}",
+                "$type": "color",
+                "$description": "Navigation foreground — medium contrast. Applies in enabled state for comfortable everyday reading."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.red.100}",
+                "$type": "color",
+                "$description": "Navigation foreground — medium contrast. Applies in enabled state for comfortable everyday reading."
+              }
+            },
+            "contrast_low": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.red.500}",
+                "$type": "color",
+                "$description": "Navigation foreground — low contrast. Applies in selected state to visually recede behind the brand marker."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.red.200}",
+                "$type": "color",
+                "$description": "Navigation foreground — low contrast. Applies in selected state to visually recede behind the brand marker."
+              }
+            }
+          },
+          "fg_disabled": {
+            "inversity_normal": {
+              "$value": "{ob.p.color.cobalt_alpha.900}",
+              "$type": "color",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.4",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Navigation foreground — disabled. Muted text/icon color using the universal cobalt disabled scale."
+            },
+            "inversity_flipped": {
+              "$value": "{ob.p.color.cobalt.50}",
+              "$type": "color",
+              "$description": "Navigation foreground — disabled. Muted text/icon color using the universal cobalt disabled scale."
+            }
+          },
+          "bg_base": {
+            "contrast_high": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.basic.white}",
+                "$type": "color",
+                "$description": "Navigation background — high contrast. Applies where a strong surface fill is required (e.g. pressed, selected)."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.red.800}",
+                "$type": "color",
+                "$description": "Navigation background — high contrast. Applies where a strong surface fill is required (e.g. pressed, selected)."
+              }
+            },
+            "contrast_medium": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.red.100}",
+                "$type": "color",
+                "$description": "Navigation background — medium contrast. Applies in hover and focus states for a visible but non-dominant surface."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.red.700}",
+                "$type": "color",
+                "$description": "Navigation background — medium contrast. Applies in hover and focus states for a visible but non-dominant surface."
+              }
+            },
+            "contrast_low": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.red.200}",
+                "$type": "color",
+                "$description": "Navigation background — low contrast. Applies in enabled state for a subtle surface that does not dominate the layout."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.red.600}",
+                "$type": "color",
+                "$description": "Navigation background — low contrast. Applies in enabled state for a subtle surface that does not dominate the layout."
+              }
+            }
+          },
+          "bg_disabled": {
+            "solid": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.cobalt_alpha.100}",
+                "$type": "color",
+                "$description": "Navigation background — disabled solid. Opaque muted surface for disabled navigation items."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.cobalt.200}",
+                "$type": "color",
+                "$description": "Navigation background — disabled solid. Opaque muted surface for disabled navigation items."
+              }
+            },
+            "opacity": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.cobalt_alpha.100}",
+                "$type": "color",
+                "$description": "Navigation background — disabled opacity. Semi-transparent muted surface for disabled navigation items."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.cobalt_alpha.300}",
+                "$type": "color",
+                "$description": "Navigation background — disabled opacity. Semi-transparent muted surface for disabled navigation items."
+              }
+            }
+          },
+          "border_base": {
+            "brand": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.basic.federal_red}",
+                "$type": "color",
+                "$description": "Navigation border — brand. Uses ob.p.color.basic.federal_red. Applied to selected and pressed states as the primary brand indicator line."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.basic.federal_red}",
+                "$type": "color",
+                "$description": "Navigation border — brand. Uses ob.p.color.basic.federal_red. Applied to selected and pressed states as the primary brand indicator line."
+              }
+            },
+            "subtle": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.red.300}",
+                "$type": "color",
+                "$description": "Navigation border — subtle. Lighter red shade for non-active borders (enabled, hover, focus states)."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.red.500}",
+                "$type": "color",
+                "$description": "Navigation border — subtle. Lighter red shade for non-active borders (enabled, hover, focus states)."
+              }
+            },
+            "disabled": {
+              "inversity_normal": {
+                "$value": "{ob.p.color.cobalt_alpha.300}",
+                "$type": "color",
+                "$description": "Navigation border — disabled. Muted border using the cobalt_alpha disabled scale."
+              },
+              "inversity_flipped": {
+                "$value": "{ob.p.color.cobalt_alpha.300}",
+                "$type": "color",
+                "$description": "Navigation border — disabled. Muted border using the cobalt_alpha disabled scale."
+              }
+            }
+          },
+          "focus_ring": {
+            "inversity_normal": {
+              "$value": "{ob.p.color.purple.500}",
+              "$type": "color",
+              "$description": "Navigation focus ring. Uses the purple accessibility scale, consistent with all other focusable components."
+            },
+            "inversity_flipped": {
+              "$value": "{ob.p.color.purple.400}",
+              "$type": "color",
+              "$description": "Navigation focus ring. Uses the purple accessibility scale, consistent with all other focusable components."
+            }
+          }
         }
       }
     }
