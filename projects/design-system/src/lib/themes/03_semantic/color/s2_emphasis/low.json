@@ -142,7 +142,7 @@
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_normal}",
                   "$description": "Background for hover state emphasis-low interactive element. Standard surface."
                 },
                 "inversity_flipped": {
@@ -166,7 +166,7 @@
               "pressed": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_normal}",
                   "$description": "Background for pressed state emphasis-low interactive element. Standard surface."
                 },
                 "inversity_flipped": {
