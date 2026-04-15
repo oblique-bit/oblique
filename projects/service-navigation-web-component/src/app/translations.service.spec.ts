@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {TranslationsService} from './translations-service';
+import {TranslationsService} from './translations.service';
 import {HttpClient} from '@angular/common/http';
 import {of} from 'rxjs';
 import {provideObliqueTranslations} from '@oblique/oblique';

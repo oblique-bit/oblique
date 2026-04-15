@@ -9,7 +9,7 @@ import {
 } from '@oblique/oblique';
 import {appVersion} from './version';
 import {HttpClient} from '@angular/common/http';
-import {TranslationsService} from './translations-service';
+import {TranslationsService} from './translations.service';
 
 function defaultChangesValues(): SimpleChanges {
 	return {environment: new SimpleChange(undefined, 'DEV', undefined)};

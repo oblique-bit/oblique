@@ -25,7 +25,7 @@ import {
 import {appVersion} from './version';
 import type {ObEIcon} from '../../../oblique/src/lib/icon/icon.model';
 import {ObButtonModule} from '../../../oblique/src/lib/button/button.module';
-import {TranslationsService} from './translations-service';
+import {TranslationsService} from './translations.service';
 import type {ObICustomButton, ObILink} from './service-navigation-web-component.model';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
