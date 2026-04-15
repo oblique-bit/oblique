@@ -1344,7 +1344,7 @@
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.700}",
+                  "$value": "{ob.p.color.steelblue.800}",
                   "$description": "High contrast foreground for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
@@ -1356,7 +1356,7 @@
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.600}",
+                  "$value": "{ob.p.color.steelblue.700}",
                   "$description": "Medium contrast foreground for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
@@ -1368,7 +1368,7 @@
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.500}",
+                  "$value": "{ob.p.color.steelblue.600}",
                   "$description": "Low contrast foreground for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
@@ -1382,7 +1382,7 @@
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.700}",
+                  "$value": "{ob.p.color.steelblue.800}",
                   "$description": "High contrast border for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
@@ -1394,7 +1394,7 @@
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.600}",
+                  "$value": "{ob.p.color.steelblue.700}",
                   "$description": "Medium contrast border for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
@@ -1406,7 +1406,7 @@
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.500}",
+                  "$value": "{ob.p.color.steelblue.600}",
                   "$description": "Low contrast border for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
