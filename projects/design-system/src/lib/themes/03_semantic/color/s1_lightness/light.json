@@ -1682,11 +1682,6 @@
               "$type": "color",
               "$description": "Navigation border — disabled. Muted border using the cobalt_alpha disabled scale."
             }
-          },
-          "focus_ring": {
-            "$value": "{ob.p.color.purple.500}",
-            "$type": "color",
-            "$description": "Navigation focus ring. Uses the purple accessibility scale, consistent with all other focusable components."
           }
         }
       }

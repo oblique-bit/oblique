@@ -1552,9 +1552,9 @@
           },
           "border": {
             "enabled": {
-              "$value": "{ob.s1.color.navigation.border_base.subtle}",
+              "$value": "{ob.p.color.basic.transparent}",
               "$type": "color",
-              "$description": "Border for Navigation. Enabled state: Subtle indicator line on navigation items in the default state."
+              "$description": "Border for Navigation. Enabled state: Transparent — no visible border on navigation items in the default rest state."
             },
             "hover": {
               "$value": "{ob.s1.color.navigation.border_base.subtle}",
@@ -1581,11 +1581,6 @@
               "$type": "color",
               "$description": "Border for Navigation. Disabled state: Muted indicator line on navigation items not available for interaction."
             }
-          },
-          "focus_ring": {
-            "$value": "{ob.s1.color.navigation.focus_ring}",
-            "$type": "color",
-            "$description": "Focus ring for Navigation. Use on all focusable navigation items to communicate keyboard focus; must remain visible against any surface."
           }
         }
       }
