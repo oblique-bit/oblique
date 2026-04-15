@@ -1403,17 +1403,8 @@
             "fg_disabled": {
               "contrast_low": {
                 "inversity_normal": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "alpha",
-                        "value": "0.4",
-                        "space": "srgb"
-                      }
-                    }
-                  },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.50}",
+                  "$value": "{ob.p.color.cobalt_alpha.300}",
                   "$description": "Disabled foreground for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
