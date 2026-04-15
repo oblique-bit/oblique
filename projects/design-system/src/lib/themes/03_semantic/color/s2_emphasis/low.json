@@ -21,175 +21,177 @@
               }
             }
           },
-          "fg": {
-            "enabled": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
-                "$description": "Foreground for enabled state emphasis-low interactive element. Standard surface."
+          "standard_states": {
+            "fg": {
+              "enabled": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
+                  "$description": "Foreground for enabled state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
+                  "$description": "Foreground for enabled state emphasis-low interactive element. Inverse surface."
+                }
               },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
-                "$description": "Foreground for enabled state emphasis-low interactive element. Inverse surface."
+              "hover": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
+                  "$description": "Foreground for hover state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
+                  "$description": "Foreground for hover state emphasis-low interactive element. Inverse surface."
+                }
+              },
+              "focus": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
+                  "$description": "Foreground for focus state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
+                  "$description": "Foreground for focus state emphasis-low interactive element. Inverse surface."
+                }
+              },
+              "pressed": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
+                  "$description": "Foreground for pressed state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
+                  "$description": "Foreground for pressed state emphasis-low interactive element. Inverse surface."
+                }
+              },
+              "selected": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
+                  "$description": "Foreground for selected state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
+                  "$description": "Foreground for selected state emphasis-low interactive element. Inverse surface."
+                }
+              },
+              "visited": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
+                  "$description": "Foreground for visited state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
+                  "$description": "Foreground for visited state emphasis-low interactive element. Inverse surface."
+                }
+              },
+              "disabled": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_normal}",
+                  "$description": "Foreground for disabled state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_flipped}",
+                  "$description": "Foreground for disabled state emphasis-low interactive element. Inverse surface."
+                }
               }
             },
-            "hover": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
-                "$description": "Foreground for hover state emphasis-low interactive element. Standard surface."
+            "bg": {
+              "enabled": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                  "$description": "Background for enabled state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
+                  "$description": "Background for enabled state emphasis-low interactive element. Inverse surface."
+                }
               },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_high.inversity_flipped}",
-                "$description": "Foreground for hover state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "focus": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
-                "$description": "Foreground for focus state emphasis-low interactive element. Standard surface."
+              "hover": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                  "$description": "Background for hover state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
+                  "$description": "Background for hover state emphasis-low interactive element. Inverse surface."
+                }
               },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
-                "$description": "Foreground for focus state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "pressed": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
-                "$description": "Foreground for pressed state emphasis-low interactive element. Standard surface."
+              "focus": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
+                  "$description": "Background for focus state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
+                  "$description": "Background for focus state emphasis-low interactive element. Inverse surface."
+                }
               },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
-                "$description": "Foreground for pressed state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "selected": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}",
-                "$description": "Foreground for selected state emphasis-low interactive element. Standard surface."
+              "pressed": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                  "$description": "Background for pressed state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
+                  "$description": "Background for pressed state emphasis-low interactive element. Inverse surface."
+                }
               },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_flipped}",
-                "$description": "Foreground for selected state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "visited": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_normal}",
-                "$description": "Foreground for visited state emphasis-low interactive element. Standard surface."
+              "selected": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
+                  "$description": "Background for selected state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_flipped}",
+                  "$description": "Background for selected state emphasis-low interactive element. Inverse surface."
+                }
               },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.neutral.fg.contrast_highest.inversity_flipped}",
-                "$description": "Foreground for visited state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "disabled": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_normal}",
-                "$description": "Foreground for disabled state emphasis-low interactive element. Standard surface."
+              "visited": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}",
+                  "$description": "Transparent background for visited state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}",
+                  "$description": "Transparent background for visited state emphasis-low interactive element. Inverse surface."
+                }
               },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_high.fg_disabled.contrast_low.inversity_flipped}",
-                "$description": "Foreground for disabled state emphasis-low interactive element. Inverse surface."
-              }
-            }
-          },
-          "bg": {
-            "enabled": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
-                "$description": "Background for enabled state emphasis-low interactive element. Standard surface."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
-                "$description": "Background for enabled state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "hover": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
-                "$description": "Background for hover state emphasis-low interactive element. Standard surface."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
-                "$description": "Background for hover state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "focus": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_high.bg_base.contrast_medium.inversity_normal}",
-                "$description": "Background for focus state emphasis-low interactive element. Standard surface."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
-                "$description": "Background for focus state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "pressed": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
-                "$description": "Background for pressed state emphasis-low interactive element. Standard surface."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
-                "$description": "Background for pressed state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "selected": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
-                "$description": "Background for selected state emphasis-low interactive element. Standard surface."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_flipped}",
-                "$description": "Background for selected state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "visited": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.p.color.basic.transparent}",
-                "$description": "Transparent background for visited state emphasis-low interactive element. Standard surface."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.p.color.basic.transparent}",
-                "$description": "Transparent background for visited state emphasis-low interactive element. Inverse surface."
-              }
-            },
-            "disabled": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_normal}",
-                "$description": "Background for disabled state emphasis-low interactive element. Standard surface."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_flipped}",
-                "$description": "Background for disabled state emphasis-low interactive element. Inverse surface."
+              "disabled": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_normal}",
+                  "$description": "Background for disabled state emphasis-low interactive element. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_high.bg_disabled.opacity.inversity_flipped}",
+                  "$description": "Background for disabled state emphasis-low interactive element. Inverse surface."
+                }
               }
             }
           },

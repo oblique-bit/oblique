@@ -277,84 +277,84 @@
               "enabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.enabled.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.enabled.inversity_normal}",
                   "$description": "Foreground for Interaction. Enabled state: Use for text and icons in the default, ready-to-interact state."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.enabled.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.enabled.inversity_flipped}",
                   "$description": "Foreground for Interaction. Enabled state: Use for text and icons in the default, ready-to-interact state."
                 }
               },
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.hover.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.hover.inversity_normal}",
                   "$description": "Foreground for Interaction. Hover state: Use for text and icons when a pointer enters the interactive area."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.hover.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.hover.inversity_flipped}",
                   "$description": "Foreground for Interaction. Hover state: Use for text and icons when a pointer enters the interactive area."
                 }
               },
               "focus": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.focus.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.focus.inversity_normal}",
                   "$description": "Foreground for Interaction. Focus state: Use for text and icons when an element receives keyboard focus."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.focus.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.focus.inversity_flipped}",
                   "$description": "Foreground for Interaction. Focus state: Use for text and icons when an element receives keyboard focus."
                 }
               },
               "pressed": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.pressed.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.pressed.inversity_normal}",
                   "$description": "Foreground for Interaction. Pressed state: Use for text and icons during an active click or tap."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.pressed.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.pressed.inversity_flipped}",
                   "$description": "Foreground for Interaction. Pressed state: Use for text and icons during an active click or tap."
                 }
               },
               "selected": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.selected.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.selected.inversity_normal}",
                   "$description": "Foreground for Interaction. Selected state: Use for text and icons on a currently selected or active element."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.selected.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.selected.inversity_flipped}",
                   "$description": "Foreground for Interaction. Selected state: Use for text and icons on a currently selected or active element."
                 }
               },
               "disabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.disabled.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.disabled.inversity_normal}",
                   "$description": "Foreground for Interaction. Disabled state: Use for text and icons on elements that are not available for interaction."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.disabled.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.disabled.inversity_flipped}",
                   "$description": "Foreground for Interaction. Disabled state: Use for text and icons on elements that are not available for interaction."
                 }
               },
               "visited": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.visited.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.visited.inversity_normal}",
                   "$description": "Foreground for Interaction. Visited state: Use for text and icons on links or elements that have already been activated."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.fg.visited.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.fg.visited.inversity_flipped}",
                   "$description": "Foreground for Interaction. Visited state: Use for text and icons on links or elements that have already been activated."
                 }
               }
@@ -363,84 +363,84 @@
               "enabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.enabled.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.enabled.inversity_normal}",
                   "$description": "Background for Interaction. Enabled state: Use for surfaces in the default, ready-to-interact state."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.enabled.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.enabled.inversity_flipped}",
                   "$description": "Background for Interaction. Enabled state: Use for surfaces in the default, ready-to-interact state."
                 }
               },
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.hover.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.hover.inversity_normal}",
                   "$description": "Background for Interaction. Hover state: Use for surfaces when a pointer enters the interactive area."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.hover.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.hover.inversity_flipped}",
                   "$description": "Background for Interaction. Hover state: Use for surfaces when a pointer enters the interactive area."
                 }
               },
               "focus": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.focus.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.focus.inversity_normal}",
                   "$description": "Background for Interaction. Focus state: Use for surfaces when an element receives keyboard focus."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.focus.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.focus.inversity_flipped}",
                   "$description": "Background for Interaction. Focus state: Use for surfaces when an element receives keyboard focus."
                 }
               },
               "pressed": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.pressed.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.pressed.inversity_normal}",
                   "$description": "Background for Interaction. Pressed state: Use for surfaces during an active click or tap."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.pressed.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.pressed.inversity_flipped}",
                   "$description": "Background for Interaction. Pressed state: Use for surfaces during an active click or tap."
                 }
               },
               "selected": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.selected.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.selected.inversity_normal}",
                   "$description": "Background for Interaction. Selected state: Use for surfaces on a currently selected or active element."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.selected.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.selected.inversity_flipped}",
                   "$description": "Background for Interaction. Selected state: Use for surfaces on a currently selected or active element."
                 }
               },
               "visited": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.visited.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.visited.inversity_normal}",
                   "$description": "Background for Interaction. Visited state: Use for surfaces behind links or elements that have already been activated."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.visited.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.visited.inversity_flipped}",
                   "$description": "Background for Interaction. Visited state: Use for surfaces behind links or elements that have already been activated."
                 }
               },
               "disabled": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.disabled.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.disabled.inversity_normal}",
                   "$description": "Background for Interaction. Disabled state: Use for surfaces on elements that are not available for interaction."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.bg.disabled.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.standard_states.bg.disabled.inversity_flipped}",
                   "$description": "Background for Interaction. Disabled state: Use for surfaces on elements that are not available for interaction."
                 }
               }
