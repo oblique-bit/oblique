@@ -1488,237 +1488,104 @@
           },
           "fg": {
             "enabled": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_medium.inversity_normal}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Enabled state: Use for text and icons in the default, ready-to-interact state."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_high.inversity_flipped}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Enabled state: Use for text and icons in the default, ready-to-interact state."
-              }
+              "$value": "{ob.s1.color.navigation.fg_base.contrast_medium}",
+              "$type": "color",
+              "$description": "Foreground for Navigation. Enabled state: Use for text and icons in the default, ready-to-interact state."
             },
             "hover": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_high.inversity_normal}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Hover state: Use for text and icons when a pointer enters the navigation item."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_high.inversity_flipped}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Hover state: Use for text and icons when a pointer enters the navigation item."
-              }
+              "$value": "{ob.s1.color.navigation.fg_base.contrast_high}",
+              "$type": "color",
+              "$description": "Foreground for Navigation. Hover state: Use for text and icons when a pointer enters the navigation item."
             },
             "focus": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_medium.inversity_normal}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Focus state: Use for text and icons when a navigation item receives keyboard focus."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_medium.inversity_flipped}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Focus state: Use for text and icons when a navigation item receives keyboard focus."
-              }
+              "$value": "{ob.s1.color.navigation.fg_base.contrast_medium}",
+              "$type": "color",
+              "$description": "Foreground for Navigation. Focus state: Use for text and icons when a navigation item receives keyboard focus."
             },
             "pressed": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_high.inversity_normal}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Pressed state: Use for text and icons during an active click or tap on a navigation item."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_high.inversity_flipped}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Pressed state: Use for text and icons during an active click or tap on a navigation item."
-              }
+              "$value": "{ob.s1.color.navigation.fg_base.contrast_high}",
+              "$type": "color",
+              "$description": "Foreground for Navigation. Pressed state: Use for text and icons during an active click or tap on a navigation item."
             },
             "selected": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_low.inversity_normal}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Selected state: Use for text and icons on the currently active navigation item."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.fg_base.contrast_low.inversity_flipped}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Selected state: Use for text and icons on the currently active navigation item."
-              }
+              "$value": "{ob.s1.color.navigation.fg_base.contrast_low}",
+              "$type": "color",
+              "$description": "Foreground for Navigation. Selected state: Use for text and icons on the currently active navigation item."
             },
             "disabled": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.fg_disabled.inversity_normal}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Disabled state: Use for text and icons on navigation items not available for interaction."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.fg_disabled.inversity_flipped}",
-                "$type": "color",
-                "$description": "Foreground for Navigation. Disabled state: Use for text and icons on navigation items not available for interaction."
-              }
+              "$value": "{ob.s1.color.navigation.fg_disabled}",
+              "$type": "color",
+              "$description": "Foreground for Navigation. Disabled state: Use for text and icons on navigation items not available for interaction."
             }
           },
           "bg": {
             "enabled": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_high.inversity_normal}",
-                "$type": "color",
-                "$description": "Background for Navigation. Enabled state: Use for the surface of a navigation item in its default state."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_low.inversity_flipped}",
-                "$type": "color",
-                "$description": "Background for Navigation. Enabled state: Use for the surface of a navigation item in its default state."
-              }
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
+              "$type": "color",
+              "$description": "Background for Navigation. Enabled state: Use for the surface of a navigation item in its default state."
             },
             "hover": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_medium.inversity_normal}",
-                "$type": "color",
-                "$description": "Background for Navigation. Hover state: Use for the surface of a navigation item when a pointer enters it."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_medium.inversity_flipped}",
-                "$type": "color",
-                "$description": "Background for Navigation. Hover state: Use for the surface of a navigation item when a pointer enters it."
-              }
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
+              "$type": "color",
+              "$description": "Background for Navigation. Hover state: Use for the surface of a navigation item when a pointer enters it."
             },
             "focus": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_medium.inversity_normal}",
-                "$type": "color",
-                "$description": "Background for Navigation. Focus state: Use for the surface of a navigation item that receives keyboard focus."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_medium.inversity_flipped}",
-                "$type": "color",
-                "$description": "Background for Navigation. Focus state: Use for the surface of a navigation item that receives keyboard focus."
-              }
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
+              "$type": "color",
+              "$description": "Background for Navigation. Focus state: Use for the surface of a navigation item that receives keyboard focus."
             },
             "pressed": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_high.inversity_normal}",
-                "$type": "color",
-                "$description": "Background for Navigation. Pressed state: Use for the surface of a navigation item during an active click or tap."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_high.inversity_flipped}",
-                "$type": "color",
-                "$description": "Background for Navigation. Pressed state: Use for the surface of a navigation item during an active click or tap."
-              }
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
+              "$type": "color",
+              "$description": "Background for Navigation. Pressed state: Use for the surface of a navigation item during an active click or tap."
             },
             "selected": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_low.inversity_normal}",
-                "$type": "color",
-                "$description": "Background for Navigation. Selected state: Use for the surface of the currently active navigation item."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.bg_base.contrast_low.inversity_flipped}",
-                "$type": "color",
-                "$description": "Background for Navigation. Selected state: Use for the surface of the currently active navigation item."
-              }
+              "$value": "{ob.s1.color.navigation.bg_base.contrast_low}",
+              "$type": "color",
+              "$description": "Background for Navigation. Selected state: Use for the surface of the currently active navigation item."
             },
             "disabled": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.bg_disabled.opacity.inversity_normal}",
-                "$type": "color",
-                "$description": "Background for Navigation. Disabled state: Use for the surface of navigation items not available for interaction."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.bg_disabled.opacity.inversity_flipped}",
-                "$type": "color",
-                "$description": "Background for Navigation. Disabled state: Use for the surface of navigation items not available for interaction."
-              }
+              "$value": "{ob.s1.color.navigation.bg_disabled.opacity}",
+              "$type": "color",
+              "$description": "Background for Navigation. Disabled state: Use for the surface of navigation items not available for interaction."
             }
           },
           "border": {
             "enabled": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.border_base.subtle.inversity_normal}",
-                "$type": "color",
-                "$description": "Border for Navigation. Enabled state: Subtle indicator line on navigation items in the default state."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.border_base.subtle.inversity_flipped}",
-                "$type": "color",
-                "$description": "Border for Navigation. Enabled state: Subtle indicator line on navigation items in the default state."
-              }
+              "$value": "{ob.s1.color.navigation.border_base.subtle}",
+              "$type": "color",
+              "$description": "Border for Navigation. Enabled state: Subtle indicator line on navigation items in the default state."
             },
             "hover": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.border_base.subtle.inversity_normal}",
-                "$type": "color",
-                "$description": "Border for Navigation. Hover state: Subtle indicator line on navigation items when a pointer enters."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.border_base.subtle.inversity_flipped}",
-                "$type": "color",
-                "$description": "Border for Navigation. Hover state: Subtle indicator line on navigation items when a pointer enters."
-              }
+              "$value": "{ob.s1.color.navigation.border_base.subtle}",
+              "$type": "color",
+              "$description": "Border for Navigation. Hover state: Subtle indicator line on navigation items when a pointer enters."
             },
             "focus": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.border_base.subtle.inversity_normal}",
-                "$type": "color",
-                "$description": "Border for Navigation. Focus state: Subtle indicator line on navigation items that receive keyboard focus."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.border_base.subtle.inversity_flipped}",
-                "$type": "color",
-                "$description": "Border for Navigation. Focus state: Subtle indicator line on navigation items that receive keyboard focus."
-              }
+              "$value": "{ob.s1.color.navigation.border_base.subtle}",
+              "$type": "color",
+              "$description": "Border for Navigation. Focus state: Subtle indicator line on navigation items that receive keyboard focus."
             },
             "pressed": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.border_base.brand.inversity_normal}",
-                "$type": "color",
-                "$description": "Border for Navigation. Pressed state: Brand-red indicator line during an active click or tap."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.border_base.brand.inversity_flipped}",
-                "$type": "color",
-                "$description": "Border for Navigation. Pressed state: Brand-red indicator line during an active click or tap."
-              }
+              "$value": "{ob.s1.color.navigation.border_base.brand}",
+              "$type": "color",
+              "$description": "Border for Navigation. Pressed state: Brand-red indicator line during an active click or tap."
             },
             "selected": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.border_base.brand.inversity_normal}",
-                "$type": "color",
-                "$description": "Border for Navigation. Selected state: Brand-red indicator line marking the currently active navigation item. Uses ob.p.color.basic.federal_red."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.border_base.brand.inversity_flipped}",
-                "$type": "color",
-                "$description": "Border for Navigation. Selected state: Brand-red indicator line marking the currently active navigation item. Uses ob.p.color.basic.federal_red."
-              }
+              "$value": "{ob.s1.color.navigation.border_base.brand}",
+              "$type": "color",
+              "$description": "Border for Navigation. Selected state: Brand-red indicator line marking the currently active navigation item. Uses ob.p.color.basic.federal_red."
             },
             "disabled": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.navigation.border_base.disabled.inversity_normal}",
-                "$type": "color",
-                "$description": "Border for Navigation. Disabled state: Muted indicator line on navigation items not available for interaction."
-              },
-              "inversity_flipped": {
-                "$value": "{ob.s1.color.navigation.border_base.disabled.inversity_flipped}",
-                "$type": "color",
-                "$description": "Border for Navigation. Disabled state: Muted indicator line on navigation items not available for interaction."
-              }
+              "$value": "{ob.s1.color.navigation.border_base.disabled}",
+              "$type": "color",
+              "$description": "Border for Navigation. Disabled state: Muted indicator line on navigation items not available for interaction."
             }
           },
           "focus_ring": {
-            "inversity_normal": {
-              "$value": "{ob.s1.color.navigation.focus_ring.inversity_normal}",
-              "$type": "color",
-              "$description": "Focus ring for Navigation. Use on all focusable navigation items to communicate keyboard focus; must remain visible against any surface."
-            },
-            "inversity_flipped": {
-              "$value": "{ob.s1.color.navigation.focus_ring.inversity_flipped}",
-              "$type": "color",
-              "$description": "Focus ring for Navigation. Use on all focusable navigation items to communicate keyboard focus; must remain visible against any surface."
-            }
+            "$value": "{ob.s1.color.navigation.focus_ring}",
+            "$type": "color",
+            "$description": "Focus ring for Navigation. Use on all focusable navigation items to communicate keyboard focus; must remain visible against any surface."
           }
         }
       }
