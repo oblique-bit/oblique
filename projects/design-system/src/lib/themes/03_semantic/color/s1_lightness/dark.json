@@ -1324,6 +1324,44 @@
                 }
               }
             },
+            "border_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.100}",
+                  "$description": "High contrast border for emphasis-high interactive elements. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.900}",
+                  "$description": "High contrast border for emphasis-high interactive elements. Inverse surface."
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.200}",
+                  "$description": "Medium contrast border for emphasis-high interactive elements. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.800}",
+                  "$description": "Medium contrast border for emphasis-high interactive elements. Inverse surface."
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.300}",
+                  "$description": "Low contrast border for emphasis-high interactive elements. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.700}",
+                  "$description": "Low contrast border for emphasis-high interactive elements. Inverse surface."
+                }
+              }
+            },
             "fg_visited": {
               "contrast_high": {
                 "inversity_normal": {
@@ -1504,6 +1542,44 @@
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}",
                   "$description": "Low contrast foreground for emphasis-low interactive elements. Inverse surface."
+                }
+              }
+            },
+            "border_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.50}",
+                  "$description": "High contrast border for emphasis-low interactive elements. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "High contrast border for emphasis-low interactive elements. Inverse surface."
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.100}",
+                  "$description": "Medium contrast border for emphasis-low interactive elements. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.800}",
+                  "$description": "Medium contrast border for emphasis-low interactive elements. Inverse surface."
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.200}",
+                  "$description": "Low contrast border for emphasis-low interactive elements. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.700}",
+                  "$description": "Low contrast border for emphasis-low interactive elements. Inverse surface."
                 }
               }
             },
