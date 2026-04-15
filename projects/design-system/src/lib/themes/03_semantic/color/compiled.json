@@ -258,7 +258,7 @@
             "token_family_docs": {
               "$description": {
                 "$type": "other",
-                "$value": "Predefined interaction state colors for components — enabled, hover, focus, pressed, and disabled. Lightness and Emphasis modes are pre-resolved. Use: Assigning interactive state colors to component tokens (ob.c.*). Avoid: Compositions requiring direct contrast control — use the contrast-levels group instead."
+                "$value": "Predefined interaction state colors for components — enabled, hover, focus, pressed, and disabled. Lightness and Emphasis modes are pre-resolved. Use: Assigning interactive state colors to component tokens (ob.c.*). Avoid: Compositions requiring direct contrast control — use the contrast_levels group instead."
               },
               "$extensions": {
                 "oblique": {
@@ -446,7 +446,7 @@
               }
             }
           },
-          "contrast-levels": {
+          "contrast_levels": {
             "token_family_docs": {
               "$description": {
                 "$type": "other",
@@ -469,36 +469,36 @@
               "high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.fg.high.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.high.inversity_normal}",
                   "$description": "High contrast foreground for interaction. Use for text and icons where maximum contrast is required."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.fg.high.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.high.inversity_flipped}",
                   "$description": "High contrast foreground for interaction. Use for text and icons where maximum contrast is required."
                 }
               },
               "medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.fg.medium.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.medium.inversity_normal}",
                   "$description": "Medium contrast foreground for interaction. Use for text and icons in standard interactive states."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.fg.medium.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.medium.inversity_flipped}",
                   "$description": "Medium contrast foreground for interaction. Use for text and icons in standard interactive states."
                 }
               },
               "low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.fg.low.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.low.inversity_normal}",
                   "$description": "Low contrast foreground for interaction. Use for text and icons in subtle or secondary interactive states."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.fg.low.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.low.inversity_flipped}",
                   "$description": "Low contrast foreground for interaction. Use for text and icons in subtle or secondary interactive states."
                 }
               }
@@ -507,36 +507,36 @@
               "high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.bg.high.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.high.inversity_normal}",
                   "$description": "High contrast background for interaction. Use for surfaces where maximum contrast is required."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.bg.high.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.high.inversity_flipped}",
                   "$description": "High contrast background for interaction. Use for surfaces where maximum contrast is required."
                 }
               },
               "medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.bg.medium.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.medium.inversity_normal}",
                   "$description": "Medium contrast background for interaction. Use for surfaces in standard interactive states."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.bg.medium.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.medium.inversity_flipped}",
                   "$description": "Medium contrast background for interaction. Use for surfaces in standard interactive states."
                 }
               },
               "low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.bg.low.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.low.inversity_normal}",
                   "$description": "Low contrast background for interaction. Use for surfaces in subtle or secondary interactive states."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.bg.low.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.low.inversity_flipped}",
                   "$description": "Low contrast background for interaction. Use for surfaces in subtle or secondary interactive states."
                 }
               }
@@ -545,36 +545,36 @@
               "high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.border.high.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.border.high.inversity_normal}",
                   "$description": "High contrast border for interaction. Use for borders and outlines where maximum contrast is required."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.border.high.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.border.high.inversity_flipped}",
                   "$description": "High contrast border for interaction. Use for borders and outlines where maximum contrast is required."
                 }
               },
               "medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.border.medium.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.border.medium.inversity_normal}",
                   "$description": "Medium contrast border for interaction. Use for borders and outlines in standard interactive states."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.border.medium.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.border.medium.inversity_flipped}",
                   "$description": "Medium contrast border for interaction. Use for borders and outlines in standard interactive states."
                 }
               },
               "low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.border.low.inversity_normal}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.border.low.inversity_normal}",
                   "$description": "Low contrast border for interaction. Use for borders and outlines in subtle or secondary interactive states."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast-levels.border.low.inversity_flipped}",
+                  "$value": "{ob.s2.color.interaction.contrast_levels.border.low.inversity_flipped}",
                   "$description": "Low contrast border for interaction. Use for borders and outlines in subtle or secondary interactive states."
                 }
               }
