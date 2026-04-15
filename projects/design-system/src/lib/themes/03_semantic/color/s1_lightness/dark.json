@@ -1281,7 +1281,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.300}",
+                  "$value": "{ob.p.color.steelblue.50}",
                   "$description": "Low contrast background for emphasis-high interactive elements. Inverse surface."
                 }
               }
@@ -1307,7 +1307,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.800}",
+                  "$value": "{ob.p.color.steelblue.700}",
                   "$description": "Medium contrast foreground for emphasis-high interactive elements. Inverse surface."
                 }
               },
