@@ -1,6 +1,6 @@
 # Figma Contrast Pairings Builder
 
-Scripts to rebuild the **🎨 Colors – Contrast Pairings** living documentation page in Figma. Generates 284 `_ContrastSwatch` instances across three S3 semantic color categories.
+Scripts to rebuild the **🎨 Colors – Contrast Pairings** living documentation page in Figma. Generates 296 `_ContrastSwatch` instances across four S3 semantic color categories.
 
 ## How it works
 
@@ -26,13 +26,14 @@ or for a specific category:
 ### CLI usage
 
 ```bash
-# Rebuild all 3 categories (neutral + interaction + status)
+# Rebuild all 4 categories (neutral + interaction + status + navigation)
 node mcp-executor.js --all
 
 # Rebuild specific category
 node mcp-executor.js neutral        # 30 swatches
 node mcp-executor.js interaction    # 14 swatches
 node mcp-executor.js status         # 240 swatches
+node mcp-executor.js navigation     # 12 swatches
 
 # Extract current state from Figma to JSON
 node mcp-executor.js --extract
@@ -51,10 +52,11 @@ contrast-pairings/
   contrast-setup.js         Core builder (Phase 1) — installs globalThis.__CP
   mcp-executor.js           CLI orchestrator — spawns figma-console-mcp via stdio
   extracted-json/           Swatch data extracted from live Figma
-    all.json                All 284 entries
+    all.json                All 296 entries
     neutral.json            30 entries
     interaction.json        14 entries
     status.json             240 entries
+    navigation.json         12 entries
 ```
 
 ## Categories
@@ -64,6 +66,7 @@ contrast-pairings/
 | Neutral     | 30       | 5 fg-level rows × 5 bg-level swatches + text-link row |
 | Interaction | 14       | States row (7 swatches) + text-link row (7 swatches) |
 | Status      | 240      | 4 columns × 3 status types × (4 bg-level rows × 4 fg-level + text-link row) |
+| Navigation  | 12       | States row (6 swatches) + text-link row (6 swatches) |
 
 ## Figma IDs
 
@@ -79,6 +82,7 @@ contrast-pairings/
 | Category frame: Neutral | `9561:410202` |
 | Category frame: Interaction | `9561:410210` |
 | Category frame: Status | `9561:410218` |
+| Category frame: Navigation | `10202:986611` |
 
 ## Data schema
 

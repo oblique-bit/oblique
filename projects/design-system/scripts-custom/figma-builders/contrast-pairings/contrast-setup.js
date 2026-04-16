@@ -41,7 +41,8 @@
     categories: {
       neutral: '9561:410202',
       interaction: '9561:410210',
-      status: '9561:410218'
+      status: '9561:410218',
+      navigation: '10202:986611'
     },
 
     statusColumnsFrame: '9564:1056948',
@@ -85,13 +86,21 @@
         purpose: 'Purpose: Validates WCAG contrast for all 12 status category color pairings.',
         guideline: 'Guideline: 96 swatches across 12 status types, each with status-fg and neutral-fg variants.',
         breadcrumb: 'ob.s3.color.status × ob.s3.color.neutral.fg'
+      },
+      navigation: {
+        tierLetter: 'Navigation',
+        sectionTitle: 'Contrast Pairings',
+        purpose: 'Purpose: Validates WCAG contrast for navigation element color pairings.',
+        guideline: 'Guideline: 12 swatches covering 6 navigation states with in-hue and text-link foregrounds.',
+        breadcrumb: 'ob.s.color.navigation fg × bg combinations'
       }
     },
 
     sectionBarColors: {
       neutral: { r: 226 / 255, g: 232 / 255, b: 240 / 255 },
       interaction: { r: 191 / 255, g: 219 / 255, b: 254 / 255 },
-      status: { r: 254 / 255, g: 243 / 255, b: 199 / 255 }
+      status: { r: 254 / 255, g: 243 / 255, b: 199 / 255 },
+      navigation: { r: 254 / 255, g: 202 / 255, b: 202 / 255 }
     },
 
     miniBadge: {
@@ -113,6 +122,8 @@
       ['fatal', 'pending', 'confirmed'],
       ['progress', 'scheduled', 'waiting']
     ],
+
+    navigationStates: ['enabled', 'hover', 'focus', 'pressed', 'selected', 'disabled'],
 
     // Contrast levels per category
     neutralContrastLevels: ['highest', 'high', 'medium', 'low', 'lowest'],
@@ -760,6 +771,109 @@
     return 'unknown';
   }
 
+  function extractNavigationState(fg, bg) {
+    const states = ['enabled', 'hover', 'focus', 'pressed', 'selected', 'disabled'];
+    const combined = fg + ' ' + bg;
+    for (const s of states) {
+      if (combined.includes('.' + s)) return s;
+    }
+    return 'unknown';
+  }
+
+  /**
+   * Build the Navigation category.
+   * Structure: Section Bar → Navigation States row (6 swatches) → text link header → text link row (6 swatches)
+   */
+  async function buildNavigation(data) {
+    const categoryFrame = await figma.getNodeByIdAsync(SPEC.categories.navigation);
+    if (!categoryFrame) return { error: 'Navigation category frame not found' };
+
+    const existing = [...categoryFrame.children];
+    for (const child of existing) child.remove();
+
+    // Section Bar
+    const sBar = await buildSectionBar('navigation');
+    categoryFrame.appendChild(sBar);
+    sBar.layoutSizingHorizontal = 'FILL';
+
+    let swatchCount = 0;
+    let bindCount = 0;
+
+    // Navigation states row (in-hue fg × bg)
+    const navigationSwatches = data.filter(d =>
+      d.bg.includes('navigation.') && !d.fg.startsWith('ob.h.')
+    );
+
+    if (navigationSwatches.length > 0) {
+      const statesRow = figma.createFrame();
+      statesRow.name = 'Row: Navigation States';
+      statesRow.layoutMode = 'HORIZONTAL';
+      statesRow.itemSpacing = SPEC.layout.rowSpacing;
+      statesRow.fills = [];
+      statesRow.primaryAxisSizingMode = 'AUTO';
+      statesRow.counterAxisSizingMode = 'AUTO';
+      categoryFrame.appendChild(statesRow);
+
+      // Sort by state order
+      const stateOrder = { enabled: 0, hover: 1, focus: 2, pressed: 3, selected: 4, disabled: 5 };
+      navigationSwatches.sort((a, b) => {
+        const aState = extractNavigationState(a.fg, a.bg);
+        const bState = extractNavigationState(b.fg, b.bg);
+        return (stateOrder[aState] || 99) - (stateOrder[bState] || 99);
+      });
+
+      for (const sd of navigationSwatches) {
+        const stateName = extractNavigationState(sd.fg, sd.bg);
+        const swatch = await buildSwatch(sd);
+        swatch.name = 'Swatch: ' + stateName;
+        statesRow.appendChild(swatch);
+        swatchCount++;
+        bindCount += 2;
+      }
+    }
+
+    // Text link section
+    const textLinkSwatches = data.filter(d =>
+      d.bg.includes('navigation.') && d.fg === 'ob.h.link.color.default'
+    );
+
+    if (textLinkSwatches.length > 0) {
+      const headerInst = await buildGroupHeader(
+        'Navigation – with text link',
+        'ob.h.link.color.default × ob.s.color.navigation bg'
+      );
+      categoryFrame.appendChild(headerInst);
+
+      const linkRow = figma.createFrame();
+      linkRow.name = 'Row: text link';
+      linkRow.layoutMode = 'HORIZONTAL';
+      linkRow.itemSpacing = SPEC.layout.rowSpacing;
+      linkRow.fills = [];
+      linkRow.primaryAxisSizingMode = 'AUTO';
+      linkRow.counterAxisSizingMode = 'AUTO';
+      categoryFrame.appendChild(linkRow);
+
+      // Sort by state order
+      const stateOrder = { enabled: 0, hover: 1, focus: 2, pressed: 3, selected: 4, disabled: 5 };
+      textLinkSwatches.sort((a, b) => {
+        const aState = extractNavigationState(a.fg, a.bg);
+        const bState = extractNavigationState(b.fg, b.bg);
+        return (stateOrder[aState] || 99) - (stateOrder[bState] || 99);
+      });
+
+      for (const sd of textLinkSwatches) {
+        const stateName = extractNavigationState(sd.fg, sd.bg);
+        const swatch = await buildSwatch(sd);
+        swatch.name = 'link × ' + stateName;
+        linkRow.appendChild(swatch);
+        swatchCount++;
+        bindCount += 2;
+      }
+    }
+
+    return { category: 'navigation', swatchCount, bindCount };
+  }
+
   /**
    * Build the Status category.
    * Structure: Section Bar → Status Columns frame (4 cols × 3 groups each)
@@ -934,6 +1048,7 @@
       case 'neutral': return await buildNeutral(data);
       case 'interaction': return await buildInteraction(data);
       case 'status': return await buildStatus(data);
+      case 'navigation': return await buildNavigation(data);
       default: return { error: 'Unknown category: ' + categoryName };
     }
   }
@@ -953,9 +1068,15 @@
       d.bg.includes('status.')
     );
 
+    // Navigation data
+    const navigationData = data.filter(d =>
+      d.bg.includes('navigation.')
+    );
+
     results.neutral = await buildNeutral(neutralData);
     results.interaction = await buildInteraction(interactionData);
     results.status = await buildStatus(statusData);
+    results.navigation = await buildNavigation(navigationData);
 
     // Update pluginData with all swatch IDs
     await collectAndStorePluginData(data);

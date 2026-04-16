@@ -150,15 +150,14 @@ function getSwatchNodes2Mode(row, mode) {
 function getSwatchNodes4Mode(row, mode) {
   const parts = mode.split('-');
   const lightDark = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
-  // Both high and low row components use fixed cell names: Cell: Light/Low and Cell: Dark/High
-  const fixedSuffix = lightDark === 'Light' ? 'Low' : 'High';
-  const cellName = 'Cell: ' + lightDark + '/' + fixedSuffix;
+  const emphasis = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+  const cellName = 'Cell: ' + lightDark + '/' + emphasis;
   const cell = findChild(row, cellName);
   if (!cell) return { instance: null, rect: null, hex: null };
-  const instanceName = 'swatch' + lightDark + fixedSuffix;
+  const instanceName = 'swatch' + lightDark + emphasis;
   const inst = findInstance(cell, instanceName) || cell.children?.find(c => c.type === 'INSTANCE') || null;
   const rect = inst ? findRect(inst, 'swatch') : findByType(cell, 'RECTANGLE');
-  const hexName = 'hex' + lightDark + fixedSuffix;
+  const hexName = 'hex' + lightDark + emphasis;
   const hex = findChild(cell, hexName) || findAllByType(cell, 'TEXT').pop();
   return { instance: inst, rect, hex };
 }

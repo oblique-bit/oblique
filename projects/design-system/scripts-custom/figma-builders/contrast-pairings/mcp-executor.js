@@ -10,10 +10,11 @@
  *   Phase 2: Run data scripts that call __CP.buildCategory()
  *
  * Usage:
- *   node mcp-executor.js --all                # rebuild all 3 categories
+ *   node mcp-executor.js --all                # rebuild all 4 categories
  *   node mcp-executor.js neutral              # rebuild only neutral
  *   node mcp-executor.js interaction          # rebuild only interaction
  *   node mcp-executor.js status               # rebuild only status
+ *   node mcp-executor.js navigation           # rebuild only navigation
  *   node mcp-executor.js --extract            # extract current state to JSON
  *
  * Prerequisites:
@@ -217,7 +218,7 @@ class StdioMCPClient {
 
 // ─── Build Logic ────────────────────────────────────────────────────────────
 
-const CATEGORIES = ['neutral', 'interaction', 'status'];
+const CATEGORIES = ['neutral', 'interaction', 'status', 'navigation'];
 
 async function installSetup(client) {
   const code = fs.readFileSync(SETUP_FILE, 'utf8');
@@ -339,13 +340,15 @@ async function extractCurrent(client) {
   const neutral = allData.filter(d => d.bg.includes('neutral.'));
   const interaction = allData.filter(d => d.bg.includes('interaction.'));
   const status = allData.filter(d => d.bg.includes('status.'));
+  const navigation = allData.filter(d => d.bg.includes('navigation.'));
 
   fs.writeFileSync(path.join(JSON_DIR, 'neutral.json'), JSON.stringify(neutral, null, 2));
   fs.writeFileSync(path.join(JSON_DIR, 'interaction.json'), JSON.stringify(interaction, null, 2));
   fs.writeFileSync(path.join(JSON_DIR, 'status.json'), JSON.stringify(status, null, 2));
+  fs.writeFileSync(path.join(JSON_DIR, 'navigation.json'), JSON.stringify(navigation, null, 2));
   fs.writeFileSync(path.join(JSON_DIR, 'all.json'), JSON.stringify(allData, null, 2));
 
-  console.log(`  Written: neutral=${neutral.length}, interaction=${interaction.length}, status=${status.length}, all=${allData.length}`);
+  console.log(`  Written: neutral=${neutral.length}, interaction=${interaction.length}, status=${status.length}, navigation=${navigation.length}, all=${allData.length}`);
 }
 
 // ─── Main ──────────────────────────────────────────────────────────────────
@@ -357,10 +360,11 @@ async function main() {
   Contrast Pairings Builder — MCP Executor
 
   Usage:
-    node mcp-executor.js --all              Rebuild all 3 categories
+    node mcp-executor.js --all              Rebuild all 4 categories
     node mcp-executor.js neutral            Rebuild neutral only (30 swatches)
     node mcp-executor.js interaction        Rebuild interaction only (14 swatches)
     node mcp-executor.js status             Rebuild status only (240 swatches)
+    node mcp-executor.js navigation         Rebuild navigation only (12 swatches)
     node mcp-executor.js --extract          Extract current state from Figma to JSON
 
   Prerequisites:
