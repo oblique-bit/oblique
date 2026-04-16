@@ -372,16 +372,16 @@ button_aug (Frame: 452×319px)
 
 | Layer | Purpose | Figma Variables | HTML Suggestion | Design Tokens | Notes |
 |-------|---------|-----------------|-----------------|---------------|-------|
-| **button-surface** | Container with Auto Layout | `bg-color: primary`, `padding: md` | `<button class="ob-button">` | `ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.bg.primary` | 139×36px, horizontal gap 6px |
-| ├─ **icon-holder** | Left icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` | 24×24px, conditional render |
-| ├─ **text-label** | Button text content | `typography: button-md` | `<span class="button-text">` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` | "Button", center-aligned |
-| └─ **icon-holder** | Right icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` | 24×24px, conditional render |
+| **button-surface** | Container with Auto Layout | `bg-color: primary`, `padding: md` | `<button class="ob-button">` | `ob.h.button.color.bg.primary.inversity_normal.enabled` | 139×36px, horizontal gap 6px |
+| ├─ **icon-holder** | Left icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.c.icon.static.size.md` | 24×24px, conditional render |
+| ├─ **text-label** | Button text content | `typography: button-md` | `<span class="button-text">` | `ob.h.button.typography.text_label` | "Button", center-aligned |
+| └─ **icon-holder** | Right icon wrapper | `size: md` | `<span class="icon-slot">` | `ob.c.icon.static.size.md` | 24×24px, conditional render |
 
 ### Design Token Mapping
-- **Background**: `{ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.bg.primary.inversity_normal.enabled}` → #2379a4
-- **Text Color**: `{ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.fg.primary.inversity_normal.enabled}` → #ffffff  
-- **Icon Size**: `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}` → 24px
-- **Line Height**: `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_indexHeight.sm}` → 20px
+- **Background**: `{ob.h.button.color.bg.primary.inversity_normal.enabled}` → #2379a4
+- **Text Color**: `{ob.h.button.color.fg.primary.inversity_normal.enabled}` → #ffffff  
+- **Icon Size**: `{ob.c.icon.static.size.md}` → 24px
+- **Line Height**: `{ob.h.button.typography.text_label.line_height}` → 20px
 
 ### Component Properties
 - **Main Component**: `button_aug` with variants (primary, md, right, enabled, normal)

@@ -59,8 +59,8 @@ The generated code references comprehensive Oblique design system tokens:
 - `ob/s/dynamic/font_weight/medium: 500`
 
 ### Interactive Tokens
-- `ob/s3/color/interaction/focus_ring/inversity_normal: #8b5cf6`
-- `ob/s3/color/neutral/shadow/first: #131b220d`
+- `ob/s/color/interaction/focus_ring/inversity_normal: #8b5cf6`
+- `ob/s/color/neutral/shadow/first: #131b220d`
 
 ## Asset Management
 

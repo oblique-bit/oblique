@@ -9,12 +9,12 @@ We are refining the explanation of token levels within our design system, especi
 
 ## **Clarification to Level Documentation**
 
-Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) **do not follow the strict reference hierarchy** like other levels. Instead, they can be **referenced directly by any other token level**, including:
+Global tokens (`ob.g.*`) **do not follow the strict reference hierarchy** like other levels. Instead, they can be **referenced directly by any other token level**, including:
 
 * **Semantic tokens**
-  e.g., `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index` referencing `ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewportFactor`
+  e.g., `ob.s.dimension.dynamic.ui_scale.spacing.md.rem` referencing `ob.g.multiplier.dimension.ui_scale.md`
 * **Component tokens**
-  e.g., `ob.c.tag.container.spacing.gap.spacing.gap referencing `ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.theme_configuration.viewport`
+  e.g., `ob.c.tag.container.spacing.gap` referencing `ob.g.multiplier.dimension.density.standard`
 
 This cross-level referencing is **intentional** and reflects the **foundational role** of global tokens — they define system-wide constants and settings that are agnostic to theming depth.
 
@@ -36,7 +36,7 @@ This cross-level referencing is **intentional** and reflects the **foundational 
 
 ## **Rule to Document**
 
-> Global tokens (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`) can be consumed by any level (Primitive, Semantic, or Component) and are exempt from strict level-to-level reference rules. They act as system-level constants and may appear in token references where broader configuration is needed.
+> Global tokens (`ob.g.*`) can be consumed by any level (Primitive, Semantic, or Component) and are exempt from strict level-to-level reference rules. They act as system-level constants and may appear in token references where broader configuration is needed.
 
 ---
 
@@ -45,25 +45,25 @@ This cross-level referencing is **intentional** and reflects the **foundational 
 ```
 ┌─────────────────┐
 │  Global Tokens  │
-│    (ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*)     │
+│    (ob.g.*)     │
 └─────┬─────┬─────┘
       │     │     │
       ▼     │     │
 ┌─────────────────┐
 │Primitive Tokens │
-│    (ob.p.assets.logo.assets.logo.assets.assets.*)     │
+│    (ob.p.*)     │
 └─────────┬───────┘
           │
           ▼
 ┌─────────────────┐
 │Semantic Tokens  │
-│    (ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*)     │
+│    (ob.s.*)     │
 └─────────┬───────┘
           │
           ▼
 ┌─────────────────┐
 │Component Tokens │
-│    (ob.c.tag.container.spacing.gap.spacing.gap     │
+│    (ob.c.*)     │
 └─────────────────┘
 ```
 

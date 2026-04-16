@@ -130,17 +130,17 @@ Size Properties:
 ```
 Collection: Button-Sizes
 ├── Mode: sm
-│   ├── button/min-height → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
-│   ├── button/padding-h → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
-│   └── button/padding-v → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+│   ├── button/min-height → {ob.h.button.label_icon.container.size.min_height}
+│   ├── button/padding-h → {ob.h.button.label_icon.spacing.padding.horizontal}
+│   └── button/padding-v → {ob.h.button.label_icon.spacing.padding.vertical}
 ├── Mode: md  
-│   ├── button/min-height → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
-│   ├── button/padding-h → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
-│   └── button/padding-v → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+│   ├── button/min-height → {ob.h.button.label_icon.container.size.min_height}
+│   ├── button/padding-h → {ob.h.button.label_icon.spacing.padding.horizontal}
+│   └── button/padding-v → {ob.h.button.label_icon.spacing.padding.vertical}
 └── Mode: lg
-    ├── button/min-height → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
-    ├── button/padding-h → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
-    └── button/padding-v → {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+    ├── button/min-height → {ob.h.button.label_icon.container.size.min_height}
+    ├── button/padding-h → {ob.h.button.label_icon.spacing.padding.horizontal}
+    └── button/padding-v → {ob.h.button.label_icon.spacing.padding.vertical}
 ```
 
 ### Token Mapping Strategy

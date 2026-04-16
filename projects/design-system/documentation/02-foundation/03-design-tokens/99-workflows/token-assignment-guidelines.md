@@ -48,8 +48,8 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 #### INVALID: Direct Primitive Consumption
 ```json
 // WRONG: Component consuming primitive directly
-"ob.h.list.single_item.spacing.marker_gap.list": {
-  "$value": "{ob.p.color.red.50.red.50.red.50.50}"
+"ob.h.button.color.bg.primary.inversity_normal.enabled": {
+  "$value": "{ob.p.color.red.500}"
 }
 ```
 
@@ -57,8 +57,8 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 #### INVALID: S1 Semantic Consumption
 ```json
 // WRONG: Component consuming S1 semantic token directly
-"ob.h.list.single_item.spacing.marker_gap.list": {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}"
+"ob.h.button.color.bg.primary.inversity_normal.enabled": {
+  "$value": "{ob.s1.color.neutral.bg.contrast_high.inversity_normal}"
 }
 ```
 
@@ -67,13 +67,13 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 #### - Proper L2/L3 Consumption
 ```json
 // CORRECT: Non-interactive component consuming L2 semantic token
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+"ob.c.badge.color.bg.info.enabled": {
+  "$value": "{ob.s2.color.status.bg.info.inversity_normal}"
 }
 
 // CORRECT: Interactive component consuming L3 semantic token (REQUIRED for interactive components)
-"ob.h.list.single_item.spacing.marker_gap.list": {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+"ob.h.button.color.bg.primary.inversity_normal.enabled": {
+  "$value": "{ob.s.color.interaction.standard_states.bg.enabled.inversity_normal}"
 }
 ```
 
@@ -81,54 +81,54 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 
 #### Interactive Components Must Use L3 Interaction Tokens
 
-**Rule:** Interactive components (or interactive parts within larger components like Popover) should consume `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index tokens.
+**Rule:** Interactive components (or interactive parts within larger components like Popover) should consume `ob.s.color.interaction.*` tokens.
 
 **Rationale:** L3 tokens provide full theming capabilities including emphasis theming.
 
 ```json
 // CORRECT: Interactive button
-"ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+"ob.h.button.color.bg.primary.inversity_normal.enabled": {
+  "$value": "{ob.s.color.interaction.standard_states.bg.enabled.inversity_normal}"
 }
 
 // CORRECT: Interactive part of a popover
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+"ob.c.popover.trigger.color.bg.enabled": {
+  "$value": "{ob.s.color.interaction.standard_states.bg.enabled.inversity_normal}"
 }
 ```
 
 #### L2 Interaction Limitation
 
-**Warning:** If consuming from `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index emphasis theming is not possible.
+**Warning:** If consuming from `ob.s2.color.interaction.*`, emphasis theming is not possible.
 
 ```json
 // LIMITED: No emphasis theming available
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+"ob.c.popover.trigger.color.bg.enabled": {
+  "$value": "{ob.s2.color.interaction.state.bg.enabled.inversity_normal}"
 }
 ```
 
 ### Monochromatic Interactive Components
 
-**Rule:** Interactive components that should visually look monochromatic are **not allowed** to consume from `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.
+**Rule:** Interactive components that should visually look monochromatic are **not allowed** to consume from `ob.s2.color.neutral.*`.
 
-**Solution:** Use `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index with scoped theme `emphasis:low` applied.
+**Solution:** Use `ob.s.color.interaction.*` tokens with scoped theme `emphasis:low` applied.
 
 **Rationale:** This preserves the correct reference chain while achieving the neutral appearance.
 
 #### INVALID: Wrong Approach
 ```json
 // WRONG: Interactive component consuming neutral tokens
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+"ob.h.header-nav.color.fg.link.enabled": {
+  "$value": "{ob.s2.color.neutral.fg.contrast_high.inversity_normal}"
 }
 ```
 
 #### - Correct Approach
 ```json
 // CORRECT: Interactive component with neutral appearance via emphasis:low
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+"ob.h.header-nav.color.fg.link.enabled": {
+  "$value": "{ob.s.color.interaction.standard_states.fg.enabled.inversity_normal}"
 }
 ```
 
@@ -142,26 +142,33 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 ### Component Classification by Token Type
 
 #### Status-Based Components
-**Must consume:** `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*` or `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
-| **Infobox** | `status.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
-| **Pill** | `status.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index |
-| **Tooltip** | `status.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
-
-#### Interactive Components
-**Must consume:** `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.*` (limited)
+**Must consume:** `ob.s.color.status.*` or `ob.s2.color.status.*`
 
 | Component | Token Type | Example |
 |-----------|------------|---------|
-| **Button** | `s3.interaction.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index |
-| **Link** | `s3.interaction.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index |
-| **Tag** (interactive) | `s3.interaction.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index |
-| **Stepper** | `s3.interaction.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index |
+| **Alert** | `status.*` | `ob.s.color.status.bg.error.inversity_normal` |
+| **Infobox** | `status.*` | `ob.s.color.status.bg.info.inversity_normal` |
+| **Pill** | `status.*` | `ob.s.color.status.fg.success.inversity_normal` |
+| **Tooltip** | `status.*` | `ob.s.color.status.bg.info.inversity_normal` |
+
+#### Interactive Components
+**Must consume:** `ob.s.color.interaction.standard_states.*` (preferred) or `ob.s2.color.interaction.*` (limited)
+
+| Component | Token Type | Example |
+|-----------|------------|---------|
+| **Button** | `s3.interaction.*` | `ob.s.color.interaction.standard_states.bg.enabled.inversity_normal` |
+| **Link** | `s3.interaction.*` | `ob.s.color.interaction.standard_states.fg.enabled.inversity_normal` |
+| **Tag** (interactive) | `s3.interaction.*` | `ob.s.color.interaction.standard_states.bg.enabled.inversity_normal` |
+| **Stepper** | `s3.interaction.*` | `ob.s.color.interaction.standard_states.bg.enabled.inversity_normal` |
 
 #### Neutral/Structural Components  
-**Must consume:** `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*` or `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
-| **List** | `s2.neutral.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
-| **HR (Divider)** | `s2.neutral.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
-| **Popover** (container) | `s2.neutral.*` | `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` |
+**Must consume:** `ob.s.color.neutral.*` or `ob.s2.color.neutral.*`
+
+| Component | Token Type | Example |
+|-----------|------------|---------|
+| **List** | `s2.neutral.*` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` |
+| **HR (Divider)** | `s2.neutral.*` | `ob.s.color.neutral.border.contrast_low.inversity_normal` |
+| **Popover** (container) | `s2.neutral.*` | `ob.s.color.neutral.bg.contrast_lowest.inversity_normal` |
 
 ---
 
@@ -169,46 +176,46 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 
 ### Hierarchy Rules
 ```
-Components (ob.c.tag.container.spacing.gap.spacing.gap -> Semantics (ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*) -> Primitives (ob.p.assets.logo.assets.logo.assets.assets.*)
+Components (ob.c.*) -> Semantics (ob.s.dynamic.*) -> Primitives (ob.p.typography.*)
 ```
 
 #### - Correct Typography Consumption
 ```json
 // Component consuming semantic typography
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index-weight.semiBold}"
+"ob.c.button.typography.font_weight": {
+  "$value": "{ob.s.dynamic.font_weight.semi_bold}"
 }
 
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index-family.heading}"
+"ob.c.button.typography.font_family": {
+  "$value": "{ob.s.dynamic.font_family.heading}"
 }
 ```
 
 #### INVALID: Prohibited Typography Consumption
 ```json
 // WRONG: Component consuming primitive directly
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.p.assets.logo.assets.logo.assets.logo.assets-weight.200}"
+"ob.c.button.typography.font_weight": {
+  "$value": "{ob.p.typography.font_weight.200}"
 }
 ```
 
 ### Typography-Specific Rules
 
-1. **Font Family**: Components should consume `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index-family.*` tokens
-2. **Font Weight**: Components should consume `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index-weight.*` tokens  
-3. **Text Decoration**: Interactive text should consume `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index-decoration.link.*` with appropriate emphasis
-4. **Letter Spacing**: Components should consume `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index-spacing.*` tokens (avoid deprecated variants)
+1. **Font Family**: Components should consume `ob.s.dynamic.font_family.*` tokens
+2. **Font Weight**: Components should consume `ob.s.dynamic.font_weight.*` tokens  
+3. **Text Decoration**: Interactive text should consume `ob.s.dynamic.text_decoration.link.*` with appropriate emphasis
+4. **Letter Spacing**: Components should consume `ob.s.dynamic.letter_spacing_px.*` tokens (avoid deprecated variants)
 
 #### Text Decoration for Links
 ```json
 // High emphasis links (standard underlined links)
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index-decoration.link.emphasis_high}"
+"ob.c.link.typography.text_decoration": {
+  "$value": "{ob.s.dynamic.text_decoration.link.emphasis_high}"
 }
 
 // Low emphasis links (navigation, obvious link context)
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index-decoration.link.emphasis_low}"
+"ob.c.nav-link.typography.text_decoration": {
+  "$value": "{ob.s.dynamic.text_decoration.link.emphasis_low}"
 }
 ```
 
@@ -223,25 +230,25 @@ Components (ob.c.tag.container.spacing.gap.spacing.gap -> Semantics (ob.s.z_inde
 #### - Correct Cross-Domain Usage
 ```json
 // Typography component consuming appropriate color tokens
-"ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.H1.color.text.default": {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+"ob.c.heading.h1.color.text.default": {
+  "$value": "{ob.s.color.neutral.fg.contrast_highest.inversity_normal}"
 }
 
-"ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.H1.color.link.default": {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+"ob.c.heading.h1.color.link.default": {
+  "$value": "{ob.s.color.interaction.standard_states.fg.enabled.inversity_normal}"
 }
 ```
 
 #### INVALID: Prohibited Cross-Domain Usage
 ```json
 // WRONG: Typography consuming primitive color
-"ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.H1.color.text.default": {
-  "$value": "{ob.p.color.red.50.red.50.red.50}"
+"ob.c.heading.h1.color.text.default": {
+  "$value": "{ob.p.color.red.500}"
 }
 
 // WRONG: Typography consuming S1 color
-"ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.H1.color.text.default": {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}"
+"ob.c.heading.h1.color.text.default": {
+  "$value": "{ob.s1.color.neutral.fg.contrast_high.inversity_normal}"
 }
 ```
 
@@ -255,8 +262,8 @@ Components (ob.c.tag.container.spacing.gap.spacing.gap -> Semantics (ob.s.z_inde
 
 ```json
 // Supports emphasis theming
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+"ob.h.button.color.bg.primary.inversity_normal.enabled": {
+  "$value": "{ob.s.color.interaction.standard_states.bg.enabled.inversity_normal}"
 }
 
 // Theme application in CSS
@@ -271,8 +278,8 @@ Components (ob.c.tag.container.spacing.gap.spacing.gap -> Semantics (ob.s.z_inde
 
 ```json
 // Supports inversity theming
-"ob.c.tag.container.spacing.gap.spacing.gap {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+"ob.c.card.color.bg.default": {
+  "$value": "{ob.s.color.neutral.bg.contrast_lowest.inversity_normal}"
 }
 
 // Theme application in CSS
@@ -287,35 +294,36 @@ Components (ob.c.tag.container.spacing.gap.spacing.gap -> Semantics (ob.s.z_inde
 
 ### Static Token Consumption
 
-**Exception Rule:** Static tokens (`ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*`) may be consumed at higher levels for specific use cases.
+**Exception Rule:** Static tokens (`ob.s.color.neutral.no_color`, `ob.s.color.brand.*`) may be consumed at higher levels for specific use cases.
 
 #### Allowed Static Tokens
 
 | Token | Purpose | Allowed Contexts |
 |-------|---------|------------------|
-| `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` | Transparent/invisible elements | borders, backgrounds, shadows, interaction indicators |
-| `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index | Brand identity consistency | interaction indicators, brand elements |
+| `ob.s.color.neutral.no_color` | Transparent/invisible elements | borders, backgrounds, shadows, interaction indicators |
+| `ob.s.color.brand.bg.primary.inversity_normal` | Brand identity consistency | interaction indicators, brand elements |
 
 #### Legitimate Static Consumption Examples
 
 ```json
 // - ALLOWED: Transparent button backgrounds
-"ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list": {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+"ob.h.button.color.bg.ghost.inversity_normal.enabled": {
+  "$value": "{ob.s.color.neutral.no_color}"
 }
 
 // - ALLOWED: Interaction indicators
-"ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index": {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+"ob.s.color.interaction.standard_states.border.focus.inversity_normal": {
+  "$value": "{ob.s.color.brand.bg.primary.inversity_normal}"
 }
 
 // - ALLOWED: Brand interaction states
-"ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index": {
-  "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index
+"ob.s.color.interaction.emphasis_high.bg_accent.contrast_high.inversity_normal": {
+  "$value": "{ob.s.color.brand.bg.primary.inversity_normal}"
 }
 
 // - ALLOWED: S3 emphasis transparent backgrounds
-"ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+"ob.s.color.interaction.standard_states.bg.enabled.inversity_normal": {
+  "$value": "{ob.s.color.neutral.no_color}"
 }
 ```
 
@@ -331,8 +339,8 @@ The validation script will generate **warnings** (not errors) for static token c
 
 When creating or reviewing component tokens, ensure:
 
-- [ ] **No primitive consumption**: Components don't reference `ob.p.assets.logo.assets.logo.assets.assets.*` directly
-- [ ] **No S1 consumption**: Components don't reference `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*`
+- [ ] **No primitive consumption**: Components don't reference `ob.p.*` directly
+- [ ] **No S1 consumption**: Components don't reference `ob.s1.*`
 - [ ] **Semantic alignment**: Component purpose matches token type (status/interaction/neutral)
 - [ ] **Theming support**: Required theming capabilities are available through token choice
 - [ ] **Reference chain**: Token references follow proper hierarchy (except 01_global tokens which can be referenced from any level)
@@ -341,7 +349,7 @@ When creating or reviewing component tokens, ensure:
 
 For interactive components specifically:
 
-- [ ] **L3 interaction consumption**: Uses `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.*` for interactive elements
+- [ ] **L3 interaction consumption**: Uses `ob.s.color.interaction.standard_states.*` for interactive elements
 - [ ] **State coverage**: All interaction states (hover, focus, active, disabled) are defined
 
 ---
@@ -358,13 +366,13 @@ For interactive components specifically:
           "fg": {
             "primary": {
               "enabled": {
-                "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+                "$value": "{ob.s.color.interaction.standard_states.fg.enabled.inversity_normal}"
               },
               "hover": {
-                "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+                "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_normal}"
               },
               "disabled": {
-                "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+                "$value": "{ob.s.color.interaction.standard_states.fg.disabled.inversity_normal}"
               }
             }
           }
@@ -385,7 +393,7 @@ For interactive components specifically:
           "fg": {
             "info": {
               "enabled": {
-                "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+                "$value": "{ob.s.color.status.fg.info.inversity_normal}"
               }
             }
           }
@@ -406,10 +414,10 @@ For interactive components specifically:
           "fg": {
             "link": {
               "enabled": {
-                "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+                "$value": "{ob.s.color.interaction.standard_states.fg.enabled.inversity_normal}"
               },
               "hover": {
-                "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+                "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_normal}"
               }
             }
           }
@@ -485,8 +493,8 @@ npm run check:token-consumption
 
 The consumption hierarchy validator includes:
 - **p/s1/s2/s3 semantic color validation**: Ensures proper hierarchical token consumption
-- **Static token exceptions**: Allows legitimate use of `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index` and `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index
-- **Component S1 violation detection**: Catches components consuming `ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*` tokens
+- **Static token exceptions**: Allows legitimate use of `ob.s.color.neutral.no_color` and `ob.s.color.brand.bg.primary.inversity_normal`
+- **Component S1 violation detection**: Catches components consuming `ob.s1.*` tokens
 - **Cross-domain validation**: Validates typography, spacing, and other token consumption patterns
 
 ### Documentation Updates

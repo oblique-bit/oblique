@@ -11,8 +11,7 @@ Navigation hub for all token mode documentation.
 | **UI Scale** | Component size variations | `sm.json` / `md.json` / `lg.json` | [03-ui-scale.md](./03-ui-scale.md) |
 | **Typography-Context** | Typography contexts | `interface.json` / `prose.json` | [04-typography-context.md](./04-typography-context.md) |
 | **Density** | Interface density control | Compact/Comfortable/Spacious | [05-density.md](./05-density.md) |
-| **Responsiveness** | Device adaptation | Desktop/Mobile/Tablet scaling | [06-responsiveness.md](./06-responsiveness.md) |
-| **Modes Interplay** | Cross-mode behavior | Component reactivity matrix | [99-modes-interplay.md](./99-modes-interplay.md) |
+
 
 ## **How Modes Work**
 

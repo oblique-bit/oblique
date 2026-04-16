@@ -35,7 +35,7 @@
 - fill: **Success:** ob/h/button/color/bg/primary/inversity_normal/enabled: #2379a4 (Usage: 24x across variants)
 - borderColor: **Success:** ob/h/button/color/border/primary/inversity_normal/enabled: #00000000 (Usage: 24x across variants)
 - textColor: **Success:** ob/h/button/color/fg/primary/inversity_normal/enabled: #ffffff (Usage: 24x across variants)
-- focusRing: **Success:** ob/s3/color/interaction/focus_ring/inversity_normal: #8b5cf6 (Usage: 1x)
+- focusRing: **Success:** ob/s/color/interaction/focus_ring/inversity_normal: #8b5cf6 (Usage: 1x)
 
 **Border Properties:**
 - borderRadius: **Success:** ob/h/button/border_radius: 1 (Usage: 1x)
@@ -52,7 +52,7 @@
 - iconSize: **Success:** ob/h/button/label_icon/icon_size: 24 (Usage: 1x)
 
 **Effect Properties:**
-- boxShadow: **Success:** ob/s3/color/neutral/shadow/first: #131b220d, ob/s3/color/neutral/shadow/second: #131b221a (Usage: 2x)
+- boxShadow: **Success:** ob/s/color/neutral/shadow/first: #131b220d, ob/s/color/neutral/shadow/second: #131b221a (Usage: 2x)
 
 ---
 
@@ -62,7 +62,7 @@
 - Component Name: **button/button_label_icon** (extracted from token paths)
 - All `ob/h/button/*` tokens: **Success** CORRECT COMPONENT SCOPE
 - All `ob/s/*` semantic tokens: **Success** ALLOWED (semantic tokens)
-- All `ob/s3/*` global tokens: **Success** ALLOWED (global tokens)
+- All `ob/s/*` global tokens: **Success** ALLOWED (global tokens)
 
 **Scope Violation Detection:**
 ```
@@ -71,7 +71,7 @@
 ✅ Correct Component Tokens:
 - ob/h/button/* tokens: 67 occurrences **Success** CORRECT COMPONENT
 - ob/s/* semantic tokens: 5 occurrences **Success** ALLOWED (semantic)
-- ob/s3/* global tokens: 3 occurrences **Success** ALLOWED (global)
+- ob/s/* global tokens: 3 occurrences **Success** ALLOWED (global)
 
 ❌ No foreign component tokens detected
 ❌ No primitive token violations found
@@ -81,7 +81,7 @@
 **Token Layer Rules Compliance:**
 - **HTML tokens** (`ob/h/button/*`): ✅ All match current component scope (button)
 - **Semantic tokens** (`ob/s/*`): ✅ Allowed across all components
-- **Global tokens** (`ob/s3/*`): ✅ Allowed across all components
+- **Global tokens** (`ob/s/*`): ✅ Allowed across all components
 - **Primitive tokens** (`ob/p/*`): ✅ NONE FOUND (compliance achieved)
 
 ---

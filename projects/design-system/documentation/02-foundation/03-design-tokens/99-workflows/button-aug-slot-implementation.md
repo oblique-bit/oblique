@@ -248,7 +248,7 @@ Tooltip.bottom.dark
 ### **Token Integration**
 ```
 Button Container Spacing:
-- Icon gap: {ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}
+- Icon gap: {ob.h.button.label_icon.spacing.gap}
 - Padding: {button-aug token values}
 
 Slot Positioning:

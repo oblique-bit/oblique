@@ -34,28 +34,28 @@ Perform complete component analysis using Figma MCP tools with Token Studio-insp
 **Summary:** TOKEN ASSIGNMENT ANALYSIS:
 
 Layout Properties:
-- width: **Success:** ob.s.dimension.dynamic.ui_scale.element.md.rem (Usage: 2x)
+- width: **Success:** ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index (Usage: 2x)
 - height: **Error:** none (HARDCODED: 24px)
 - minHeight: **Success:** ob.c.tag.container.spacing.gap (Usage: 1x)
 
 Spacing Properties:
-- verticalPadding: **Success:** ob.h.button.spacing.with-text.padding.vertical.md (Usage: 1x)
-- horizontalPadding: **Success:** ob.h.button.spacing.with-text.padding.horizontal.md (Usage: 1x)
-- itemSpacing: **Success:** ob.h.button.spacing.with-text.gap.md (Usage: 1x)
+- verticalPadding: **Success:** ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.spacing.with-text.padding.vertical.md (Usage: 1x)
+- horizontalPadding: **Success:** ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.spacing.with-text.padding.horizontal.md (Usage: 1x)
+- itemSpacing: **Success:** ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.spacing.with-text.gap.md (Usage: 1x)
 
 Color Properties:
-- fill: **Success:** ob.h.button.color.bg.primary.inversity_normal.enabled (Usage: 1x)
-- borderColor: **Success:** ob.h.button.color.border.primary.inversity_normal.enabled (Usage: 1x)
-- textColor: **Success:** ob.h.button.color.fg.primary.inversity_normal.enabled (Usage: 3x)
+- fill: **Success:** ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.bg.primary.inversity_normal.enabled (Usage: 1x)
+- borderColor: **Success:** ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.border.primary.inversity_normal.enabled (Usage: 1x)
+- textColor: **Success:** ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.fg.primary.inversity_normal.enabled (Usage: 3x)
 
 Typography Properties:
-- typography: **Success:** ob.h.button.typography.text_label (Usage: 1x)
-- fontWeight: **Success:** ob.s.dimension.dynamic.ui_scale.spacing.md.rem (Usage: 1x)
-- lineHeight: **Success:** ob.h.button.typography.text_label.line_height (Usage: 1x)
-- letterSpacing: **Success:** ob.s.dimension.dynamic.ui_scale.spacing.md.rem (Usage: 1x)
+- typography: **Success:** ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.typography.text_label (Usage: 1x)
+- fontWeight: **Success:** ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index (Usage: 1x)
+- lineHeight: **Success:** ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_indexHeight.sm (Usage: 1x)
+- letterSpacing: **Success:** ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index (Usage: 1x)
 
 Effect Properties:
-- boxShadow: **Success:** ob.h.button.box-shadow.enabled (Usage: 1x)
+- boxShadow: **Success:** ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.box-shadow.enabled (Usage: 1x)
 ```
 
 ### Component Token Scope Validation
@@ -64,10 +64,10 @@ Effect Properties:
 
 **Component Token Scope Check:**
 - Extract component name from Figma metadata
-- Identify all `ob.c.{component}.*` and `ob.h.{component}.*` tokens used in component
+- Identify all `ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap.*` and `ob.h.list.single_item.spacing.marker_gap.list.list.list.list.*` tokens used in component
 - Verify component and HTML tokens match the current component scope
 - Flag any foreign component/HTML tokens as violations
-- Flag any primitive tokens (`ob.p.*.*`) applied directly to layers
+- Flag any primitive tokens (`ob.p.assets.logo.assets.logo.assets.logo.assets.logo.assets.logo.assets.*`) applied directly to layers
 
 **Scope Violation Detection:**
 ```
@@ -75,35 +75,35 @@ Effect Properties:
 
 Foreign Component Tokens:
 - Property: background-color
-- Current Token: ob.c.{component}  **Error:** WRONG COMPONENT
-- Required Token: ob.c.{component} **Success:** CORRECT COMPONENT
+- Current Token: ob.c.tag.container.spacing.gap.spacing.gap  **Error:** WRONG COMPONENT
+- Required Token: ob.c.tag.container.spacing.gap.spacing.gap **Success:** CORRECT COMPONENT
 
 Foreign HTML Tokens:
 - Property: padding
-- Current Token: ob.h.{component}  **Error:** WRONG COMPONENT
-- Required Token: ob.h.{component} **Success:** CORRECT COMPONENT
+- Current Token: ob.h.list.single_item.spacing.marker_gap.list  **Error:** WRONG COMPONENT
+- Required Token: ob.h.list.single_item.spacing.marker_gap.list.list.list **Success:** CORRECT COMPONENT
 
 Primitive Token Violations:
 - Property: color
-- Current Token: ob.p.color.red.500  **Error:** PRIMITIVE NOT ALLOWED
-- Required Token: ob.s.* **Success:** USE SEMANTIC/COMPONENT
+- Current Token: ob.p.color.red.50.red.50.red.50  **Error:** PRIMITIVE NOT ALLOWED
+- Required Token: ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index **Success:** USE SEMANTIC/COMPONENT
 
 Example Summary:
-- ob.c.{component}.* **Success:** ALLOWED (correct component)
-- ob.h.{component}.* **Success:** ALLOWED (correct component HTML tokens)
-- ob.s.*.* **Success:** ALLOWED (semantic tokens)
-- ob.g.*.* **Success:** ALLOWED (global tokens)
-- ob.p.*.* **Error:** FORBIDDEN (primitive tokens)
-- ob.c.{component}.* **Error:** FORBIDDEN (foreign component)
-- ob.h.{other_component}.* **Error:** FORBIDDEN (foreign component HTML)
+- ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap.* **Success:** ALLOWED (correct component)
+- ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.list.list.* **Success:** ALLOWED (correct component HTML tokens)
+- ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.* **Success:** ALLOWED (semantic tokens)
+- ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.* **Success:** ALLOWED (global tokens)
+- ob.p.assets.logo.assets.logo.assets.logo.assets.logo.assets.logo.assets.* **Error:** FORBIDDEN (primitive tokens)
+- ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap.* **Error:** FORBIDDEN (foreign component)
+- ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list.* **Error:** FORBIDDEN (foreign component HTML)
 ```
 
 **Token Layer Rules:**
-- **Component tokens** (`ob.c.{component}.{component}.*`): Must match current component scope
-- **HTML tokens** (`ob.h.{component}.{component}.*`): Must match current component scope  
-- **Semantic tokens** (`ob.s.*.*`): Allowed across all components
-- **Global tokens** (`ob.g.*.*`): Allowed across all components
-- **Primitive tokens** (`ob.p.*.*`): FORBIDDEN - never apply directly to layers
+- **Component tokens** (`ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap.{component}.*`): Must match current component scope
+- **HTML tokens** (`ob.h.list.single_item.spacing.marker_gap.list.list.list.list.{component}.*`): Must match current component scope  
+- **Semantic tokens** (`ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.*`): Allowed across all components
+- **Global tokens** (`ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport.*`): Allowed across all components
+- **Primitive tokens** (`ob.p.assets.logo.assets.logo.assets.logo.assets.logo.assets.logo.assets.*`): FORBIDDEN - never apply directly to layers
 
 ### Token Usage Analytics
 
@@ -120,46 +120,46 @@ Example Summary:
 **Setup:** BULK REMEDIATION PLAN:
 
 Priority 1 - Missing Tokens (CRITICAL):
-- Create token: ob.s.dimension.dynamic.ui_scale.element.md.rem for width property (currently hardcoded: 24px)
-- Assign existing token: ob.s.dimension.dynamic.ui_scale.spacing.md.rem for missing gap property
+- Create token: ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index for width property (currently hardcoded: 24px)
+- Assign existing token: ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index for missing gap property
 
 Priority 2 - Component Token Scope Violations (CRITICAL):
-- Replace: ob.c.{component} → ob.c.{component}
-- Replace: ob.h.{component} → ob.h.{component}
-- Remove primitive tokens: ob.p.color.red.500 → ob.s.*
-- Verify: All ob.c.{component}.* and ob.h.{component}.* tokens match component scope
+- Replace: ob.c.tag.container.spacing.gap.spacing.gap → ob.c.tag.container.spacing.gap.spacing.gap
+- Replace: ob.h.list.single_item.spacing.marker_gap.list → ob.h.list.single_item.spacing.marker_gap.list.list.list
+- Remove primitive tokens: ob.p.color.red.50.red.50.red.50 → ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
+- Verify: All ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap.* and ob.h.list.single_item.spacing.marker_gap.list.list.list.list.* tokens match component scope
 
 Priority 3 - Token Consistency (HIGH):
 - Standardize text color usage: 3 layers use same token (**Success:** consistent)
 - Review border radius usage across variants for consistency
 
 Priority 4 - Composite Token Opportunities (MEDIUM):
-- Button surface properties (5 tokens) → Consider ob.c.{component}
+- Button surface properties (5 tokens) → Consider ob.c.tag.container.spacing.gap.spacing.gap
 - Typography cluster (4 tokens) → Consider ob.c.tag.container.spacing.gap
 
 Bulk Operations Available:
 - Bulk remap: Foreign component tokens → Correct component tokens
-- Bulk assign: Missing icon size tokens → Apply ob.s.dimension.dynamic.ui_scale.element.md.rem
+- Bulk assign: Missing icon size tokens → Apply ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
 - Bulk validate: Typography tokens → Check composite opportunity
 ```
 ```
  BULK REMEDIATION PLAN:
 
 Priority 1 - Missing Tokens (CRITICAL):
-- Create token: ob.s.dimension.dynamic.ui_scale.element.md.rem for width property (currently hardcoded: 24px)
-- Assign existing token: ob.s.dimension.dynamic.ui_scale.spacing.md.rem for missing gap property
+- Create token: ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index for width property (currently hardcoded: 24px)
+- Assign existing token: ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index for missing gap property
 
 Priority 2 - Token Consistency (HIGH):
 - Standardize text color usage: 3 layers use same token (**Success:** consistent)
 - Review border radius usage across variants for consistency
 
 Priority 3 - Composite Token Opportunities (MEDIUM):
-- Button surface properties (5 tokens) → Consider ob.c.{component}
+- Button surface properties (5 tokens) → Consider ob.c.tag.container.spacing.gap.spacing.gap
 - Typography cluster (4 tokens) → Consider ob.c.tag.container.spacing.gap
 
 Bulk Operations Available:
 - Bulk remap: 3 text color assignments → Verify consistency
-- Bulk assign: Missing icon size tokens → Apply ob.s.dimension.dynamic.ui_scale.element.md.rem
+- Bulk assign: Missing icon size tokens → Apply ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index
 - Bulk validate: Typography tokens → Check composite opportunity
 ```
 
@@ -190,16 +190,16 @@ Bulk Operations Available:
 **Goal:** TOKEN USAGE PATTERNS:
 
 High-Frequency Tokens (3+ usages):
-- ob.h.button.color.fg.primary.inversity_normal.enabled (3x) → Good consistency
-- ob.s.dimension.dynamic.ui_scale.spacing.md.rem (2x) → Consider component-specific token
+- ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.fg.primary.inversity_normal.enabled (3x) → Good consistency
+- ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index (2x) → Consider component-specific token
 
 Single-Use Tokens (1 usage):
-- ob.h.button.box-shadow.enabled (1x) → Verify necessity
+- ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.box-shadow.enabled (1x) → Verify necessity
 - ob.c.tag.container.spacing.gap (1x) → Appropriate usage
 
 Missing Token Clusters:
-- Icon properties (2 hardcoded) → Create ob.s.dimension.dynamic.ui_scale.spacing.md.rem.* tokens
-- Typography spacing (1 hardcoded) → Apply ob.s.dimension.dynamic.ui_scale.spacing.* token
+- Icon properties (2 hardcoded) → Create ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.* tokens
+- Typography spacing (1 hardcoded) → Apply ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_indexSpacing.* token
 
 Composite Token Candidates:
 - Button surface (5 related tokens) → ob.c.tag.container.spacing.gap.*
@@ -252,8 +252,8 @@ Composite Token Candidates:
 
 **Pre-Handoff Validation:**
 - [ ] All properties have token assignments (zero "none" values)
-- [ ] Component and HTML tokens match component scope (no foreign ob.c.{component}.*/ob.h.{component}.* tokens)
-- [ ] No primitive tokens (ob.p.*.*) applied directly to layers
+- [ ] Component and HTML tokens match component scope (no foreign ob.c.tag.container.spacing.gap.spacing.gap.spacing.gap.*/ob.h.list.single_item.spacing.marker_gap.list.list.list.list.* tokens)
+- [ ] No primitive tokens (ob.p.assets.logo.assets.logo.assets.logo.assets.logo.assets.logo.assets.*) applied directly to layers
 - [ ] Token paths follow design system naming conventions
 - [ ] Token Studio connections verified active
 - [ ] Composite token opportunities evaluated and implemented

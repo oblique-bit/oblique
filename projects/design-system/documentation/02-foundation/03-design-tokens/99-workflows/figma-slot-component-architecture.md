@@ -192,7 +192,7 @@ Examples:
 ### **Enhances Existing Patterns:**
 
 **1. Component Token Architecture**
-- Slots work with existing `ob.c.tag.container.spacing.gap.spacing.gap tokens
+- Slots work with existing `ob.c.tag.container.spacing.gap` tokens
 - Maintain semantic token relationships
 - Support responsive behavior patterns
 

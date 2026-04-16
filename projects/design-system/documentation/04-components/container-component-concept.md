@@ -7,7 +7,7 @@ The Container component provides a foundational layout wrapper that constrains c
 ## Token Structure
 
 ```
-ob.c.tag.container.spacing.gap.spacing.gap.{property}.{variant}.{state}
+ob.c.container.{property}.{variant}
 ```
 
 ## Component Categories
@@ -26,22 +26,22 @@ Specialized containers for grid-based layouts.
 ### Width Constraints
 ```json
 {
-  "ob.c.tag.container.spacing.gap.spacing.gap {
+  "ob.c.container.sizing.max_width.page": {
     "$value": "1200px",
     "$type": "sizing",
     "$description": "Maximum width for main page content container"
   },
-  "ob.c.tag.container.spacing.gap.spacing.gap {
+  "ob.c.container.sizing.max_width.content": {
     "$value": "800px",
     "$type": "sizing",
     "$description": "Maximum width for content blocks like articles"
   },
-  "ob.c.tag.container.spacing.gap.spacing.gap {
+  "ob.c.container.sizing.max_width.wide": {
     "$value": "1400px",
     "$type": "sizing", 
     "$description": "Maximum width for wide layouts like dashboards"
   },
-  "ob.c.tag.container.spacing.gap.spacing.gap {
+  "ob.c.container.sizing.max_width.narrow": {
     "$value": "600px",
     "$type": "sizing",
     "$description": "Maximum width for narrow content like forms"
@@ -52,18 +52,18 @@ Specialized containers for grid-based layouts.
 ### Responsive Spacing
 ```json
 {
-  "ob.c.tag.container.spacing.gap.spacing.gap {
-    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}",
+  "ob.c.container.spacing.padding.horizontal.page": {
+    "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xl.rem}",
     "$type": "spacing",
     "$description": "Horizontal padding for page containers on desktop"
   },
-  "ob.c.tag.container.spacing.gap.spacing.gap {
-    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}",
+  "ob.c.container.spacing.padding.vertical.section": {
+    "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.lg.rem}",
     "$type": "spacing", 
     "$description": "Vertical padding for section containers"
   },
-  "ob.c.tag.container.spacing.gap.spacing.gap {
-    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}",
+  "ob.c.container.spacing.gap.grid": {
+    "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.md.rem}",
     "$type": "spacing",
     "$description": "Gap between grid items in container"
   }
@@ -74,13 +74,13 @@ Specialized containers for grid-based layouts.
 ```json
 // Mobile specific spacing
 {
-  "ob.c.tag.container.spacing.gap.spacing.gap {
-    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}",
+  "ob.c.container.spacing.padding.horizontal.page.mobile": {
+    "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.md.rem}",
     "$type": "spacing",
     "$description": "Reduced horizontal padding for page containers on mobile"
   },
-  "ob.c.tag.container.spacing.gap.spacing.gap {
-    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index}",
+  "ob.c.container.spacing.padding.vertical.section.mobile": {
+    "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.sm.rem}",
     "$type": "spacing",
     "$description": "Reduced vertical padding for section containers on mobile"
   }
@@ -171,20 +171,22 @@ Specialized containers for grid-based layouts.
 
 ### Semantic Token References
 All container tokens reference existing semantic spacing tokens:
-- `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.*}` for all spacing values
-- `{ob.g.theme_configuration.viewport.mobile.theme_configuration.viewport.mobile.theme_configuration.viewport.viewport}` for responsive behavior
+- `{ob.s.dimension.dynamic.ui_scale.spacing.*}` for all spacing values
+- `{ob.g.modes.viewport.*}` for responsive behavior
 - Follows established naming patterns
 
 ### Component Token Hierarchy
-Container tokens sit at component level (ob.c.tag.container.spacing.gap.spacing.gap and reference semantic tokens (ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index.*), maintaining the token hierarchy.
+Container tokens sit at component level (`ob.c.container.*`) and reference semantic tokens (`ob.s.dimension.*`), maintaining the token hierarchy.
 
 ### Inversity Support
 Container backgrounds can support inversity patterns when needed:
 ```json
 {
-  "ob.c.tag.container.spacing.gap.spacing.gap {
-    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index": {
-    "$value": "{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index}"
+  "ob.c.container.color.bg.inversity_normal": {
+    "$value": "{ob.s.color.neutral.bg.contrast_lowest.inversity_normal}"
+  },
+  "ob.c.container.color.bg.inversity_flipped": {
+    "$value": "{ob.s.color.neutral.bg.contrast_lowest.inversity_flipped}"
   }
 }
 ```

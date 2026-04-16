@@ -115,7 +115,7 @@ interface ButtonButtonLabelIconProps {
  * References Oblique design system tokens including:
  * - ob/h/button/color/* (color system)
  * - ob/h/button/label_icon/* (spacing, sizing)
- * - ob/s3/color/interaction/* (focus, interaction states)
+ * - ob/s/color/interaction/* (focus, interaction states)
  * 
  * @param props - ButtonButtonLabelIconProps
  * @returns JSX.Element

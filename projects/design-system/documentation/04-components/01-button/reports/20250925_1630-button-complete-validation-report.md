@@ -51,9 +51,9 @@
 
 **Interactive Properties - 100% TOKENIZED**:
 - ✅ **Focus States** (1 token): Accessibility compliance
-  - Focus ring: `ob/s3/color/interaction/focus_ring/inversity_normal: #8b5cf6`
+  - Focus ring: `ob/s/color/interaction/focus_ring/inversity_normal: #8b5cf6`
 - ✅ **Shadow Effects** (2 tokens): Hover state enhancements
-  - Shadow layers: `ob/s3/color/neutral/shadow/first`, `ob/s3/color/neutral/shadow/second`
+  - Shadow layers: `ob/s/color/neutral/shadow/first`, `ob/s/color/neutral/shadow/second`
 
 #### **Token Coverage Statistics**:
 - **Total Tokens**: 67 design tokens identified

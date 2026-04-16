@@ -21,8 +21,8 @@
 
 ### Valid Tokens (Confirmed in Tokens Studio)
 These tokens exist in `$themes.json` and resolve properly in Tokens Studio:
-- `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}` (VALID)
-- `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.z_index-color}` (VALID)
+- `{ob.s.color.neutral.fg.contrast_highest.inversity_normal}` (VALID)
+- `{ob.s.color.interaction.standard_states.fg.enabled.inversity_normal}` (VALID)
 
 ### Reference Checking
 - The JavaScript validation scripts provide complete token reference checking

@@ -150,12 +150,12 @@ button_aug (Frame: 452×319px)
 ```
 
 ### Design Token Mapping
-- **Background**: `{ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.bg.primary.inversity_normal.enabled}` → #2379a4
-- **Text Color**: `{ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.fg.primary.inversity_normal.enabled}` → #ffffff  
-- **Border**: `{ob.h.list.single_item.spacing.marker_gap.list.single_item.spacing.marker_gap.list-aug.color.border.primary.inversity_normal.enabled}` → transparent
-- **Icon Size**: `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}` → 24px
-- **Line Height**: `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_indexHeight.sm}` → 20px
-- **Border Radius**: 2px (should be `{ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index}`)
+- **Background**: `{ob.h.button.color.bg.primary.inversity_normal.enabled}` → #2379a4
+- **Text Color**: `{ob.h.button.color.fg.primary.inversity_normal.enabled}` → #ffffff  
+- **Border**: `{ob.h.button.color.border.primary.inversity_normal.enabled}` → transparent
+- **Icon Size**: `{ob.c.icon.static.size.md}` → 24px
+- **Line Height**: `{ob.h.button.typography.text_label.line_height}` → 20px
+- **Border Radius**: 2px (should be `{ob.s.border_radius.md}`)
 
 ### Component Properties
 - **Main Component**: `button_aug` with variants (primary, md, right, enabled, normal)

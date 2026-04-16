@@ -32,7 +32,7 @@
 **Color Properties:**
 - fill: **Success:** ob/h/button/color/bg/tertiary/inversity_normal/enabled (Usage: 8x across variants)
 - iconColor: **Success:** ob/h/button/color/fg/tertiary/inversity_normal/enabled (Usage: 8x across variants)
-- backgroundColor: **Success:** ob/s3/color/neutral/no_color: #00000000 (Usage: 1x)
+- backgroundColor: **Success:** ob/s/color/neutral/no_color: #00000000 (Usage: 1x)
 
 **Border Properties:**
 - borderRadius: **Success:** Inherited from button system (no border)
@@ -52,7 +52,7 @@
 - Component Name: **button/button_remove** (extracted from token paths)
 - All `ob/h/button/*` tokens: **Success** CORRECT COMPONENT SCOPE
 - All `ob/c/icon_slot/*` tokens: **Success** CORRECT ICON SYSTEM
-- All `ob/s3/*` global tokens: **Success** ALLOWED (global tokens)
+- All `ob/s/*` global tokens: **Success** ALLOWED (global tokens)
 
 **Scope Violation Detection:**
 ```
@@ -61,7 +61,7 @@
 ✅ Correct Component Tokens:
 - ob/h/button/* tokens: 8 occurrences **Success** CORRECT COMPONENT
 - ob/c/icon_slot/* tokens: 1 occurrence **Success** ALLOWED (icon system)
-- ob/s3/* global tokens: 1 occurrence **Success** ALLOWED (global)
+- ob/s/* global tokens: 1 occurrence **Success** ALLOWED (global)
 
 ❌ No foreign component tokens detected
 ❌ No primitive token violations found
@@ -71,7 +71,7 @@
 **Token Layer Rules Compliance:**
 - **HTML tokens** (`ob/h/button/*`): ✅ All match current component scope (button)
 - **Component tokens** (`ob/c/icon_slot/*`): ✅ Proper icon system integration
-- **Global tokens** (`ob/s3/*`): ✅ Allowed across all components
+- **Global tokens** (`ob/s/*`): ✅ Allowed across all components
 - **Primitive tokens** (`ob/p/*`): ✅ NONE FOUND (compliance achieved)
 
 ---
@@ -86,7 +86,7 @@
 
 **Single-Use Tokens (2 usages):**
 - ob/c/icon_slot/size_proportional/mini: 16 (1x) → **Success** Appropriate icon sizing
-- ob/s3/color/neutral/no_color (1x) → **Success** Proper transparency token
+- ob/s/color/neutral/no_color (1x) → **Success** Proper transparency token
 
 **Token Distribution Analysis:**
 ```

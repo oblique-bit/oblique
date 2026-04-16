@@ -35,7 +35,7 @@
 - fill: **Success:** ob/h/button/color/bg/primary/inversity_normal/enabled (Usage: 24x across variants)
 - borderColor: **Success:** ob/h/button/color/border/primary/inversity_normal/enabled (Usage: 24x across variants)
 - iconColor: **Success:** ob/h/button/color/fg/primary/inversity_normal/enabled (Usage: 24x across variants)
-- shadowColor: **Success:** ob/s3/color/neutral/shadow/first, ob/s3/color/neutral/shadow/second (Usage: 2x)
+- shadowColor: **Success:** ob/s/color/neutral/shadow/first, ob/s/color/neutral/shadow/second (Usage: 2x)
 
 **Border Properties:**
 - borderRadius: **Success:** ob/h/button/border_radius: 1 (Usage: 1x)
@@ -55,7 +55,7 @@
 - Component Name: **button/button_icon_only** (extracted from token paths)
 - All `ob/h/button/*` tokens: **Success** CORRECT COMPONENT SCOPE
 - All `ob/c/icon_slot/*` tokens: **Success** CORRECT ICON SYSTEM
-- All `ob/s3/*` global tokens: **Success** ALLOWED (global tokens)
+- All `ob/s/*` global tokens: **Success** ALLOWED (global tokens)
 
 **Scope Violation Detection:**
 ```
@@ -64,7 +64,7 @@
 ✅ Correct Component Tokens:
 - ob/h/button/* tokens: 48 occurrences **Success** CORRECT COMPONENT
 - ob/c/icon_slot/* tokens: 1 occurrence **Success** ALLOWED (icon system)
-- ob/s3/* global tokens: 3 occurrences **Success** ALLOWED (global)
+- ob/s/* global tokens: 3 occurrences **Success** ALLOWED (global)
 
 ❌ No foreign component tokens detected
 ❌ No primitive token violations found
@@ -74,7 +74,7 @@
 **Token Layer Rules Compliance:**
 - **HTML tokens** (`ob/h/button/*`): ✅ All match current component scope (button)
 - **Component tokens** (`ob/c/icon_slot/*`): ✅ Proper icon system integration
-- **Global tokens** (`ob/s3/*`): ✅ Allowed across all components
+- **Global tokens** (`ob/s/*`): ✅ Allowed across all components
 - **Primitive tokens** (`ob/p/*`): ✅ NONE FOUND (compliance achieved)
 
 ---

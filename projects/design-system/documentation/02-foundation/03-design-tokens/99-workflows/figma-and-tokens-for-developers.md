@@ -46,7 +46,7 @@ This document covers the developer workflow for working with design tokens throu
 **Flow:** `Figma → Tokens Studio → Style Dictionary → Code`
 
 **Your Responsibilities:**
-- Use semantic tokens (`ob.s.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index.stepper_mobile.z_index`) when available
+- Use semantic tokens (`ob.s.color.neutral.fg.contrast_highest.inversity_normal`) when available
 - Support theme variations and viewport modes
 - Check JSON files for Figma-unsupported tokens
 

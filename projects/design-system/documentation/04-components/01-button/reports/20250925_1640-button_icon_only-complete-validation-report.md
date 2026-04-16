@@ -34,13 +34,13 @@
   - State variations: enabled, hover, pressed, disabled (4 states)
   - Inversity modes: normal, flipped (2 modes)
   - Property types: background, foreground, border colors
-  - Shadow colors: `ob/s3/color/neutral/shadow/first`, `ob/s3/color/neutral/shadow/second`
+  - Shadow colors: `ob/s/color/neutral/shadow/first`, `ob/s/color/neutral/shadow/second`
 
 **Layout Properties - 100% TOKENIZED**:
 - ✅ **Spacing** (3 tokens): Icon-only specific spacing system
   - Horizontal padding: `ob/h/button/icon_only/spacing/padding/horizontal: 6`
   - Vertical padding: `ob/h/button/icon_only/spacing/padding/vertical: 6`
-  - No-color background: `ob/s3/color/neutral/no_color`
+  - No-color background: `ob/s/color/neutral/no_color`
 - ✅ **Sizing** (1 token): Icon proportional sizing
   - Icon size: `ob/c/icon_slot/size_proportional/standard: 24`
 - ✅ **Border Properties** (2 tokens): Structural tokens

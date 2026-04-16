@@ -32,13 +32,13 @@
   - State variations: enabled, hover, pressed, disabled
   - Inversity modes: normal, flipped
   - Background: `ob/h/button/color/bg/tertiary/inversity_normal/enabled`
-  - Neutral background: `ob/s3/color/neutral/no_color`
+  - Neutral background: `ob/s/color/neutral/no_color`
 
 **Layout Properties - 100% TOKENIZED**:
 - ✅ **Sizing** (1 token): Icon dimensions
   - Icon size: `ob/c/icon_slot/size_proportional/mini: 16`
 - ✅ **Layout** (1 token): Background transparency
-  - No color background: `ob/s3/color/neutral/no_color`
+  - No color background: `ob/s/color/neutral/no_color`
 
 **Component-Specific Properties - 100% TOKENIZED**:
 - ✅ **Remove Button Styling**: All interactive states properly tokenized
