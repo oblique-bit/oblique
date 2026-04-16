@@ -34,6 +34,20 @@
             "$type": "color",
             "$value": "{ob.p.color.basic.federal_red}",
             "$description": "Federal identity color. Use for Bundesrot brand accent in navigation active states and primary brand elements. Numbering starts at 1 to support scalable multi-brand setups."
+          },
+          "2": {
+            "token_family_docs": {
+              "$description": "Official federal identity color (Bundesrot). Light/Dark modes apply — no emphasis modes. Use: Primary brand accent in navigation active states and official federal identity elements. Avoid: Interactive states or status feedback — use the interaction or status scale instead.",
+              "$extensions": {
+                "oblique": {
+                  "kind": "token_family_docs",
+                  "export": false
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{ob.p.color.basic.white}",
+            "$description": "Federal second color is white. Because we don't want a black cross in darkmode."
           }
         },
         "neutral": {

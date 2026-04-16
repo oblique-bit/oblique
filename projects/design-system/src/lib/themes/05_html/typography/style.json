@@ -20,132 +20,134 @@
                 }
               }
             }
-          },
-          "heading": {
-            "H1": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.h.typography.context.h1.font_family}",
-                "fontSize": "{ob.h.typography.context.h1.font_size}",
-                "fontWeight": "{ob.h.typography.context.h1.font_weight}",
-                "letterSpacing": "{ob.h.typography.context.h1.letter_spacing}",
-                "lineHeight": "{ob.h.typography.context.h1.line_height}",
-                "paragraphSpacing": "{ob.h.typography.context.h1.paragraph_spacing}"
-              },
-              "$description": "Dynamic primary page heading that adapts between compact and prose contexts via variable modes."
-            },
-            "H2": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.h.typography.context.h2.font_family}",
-                "fontSize": "{ob.h.typography.context.h2.font_size}",
-                "fontWeight": "{ob.h.typography.context.h2.font_weight}",
-                "letterSpacing": "{ob.h.typography.context.h2.letter_spacing}",
-                "lineHeight": "{ob.h.typography.context.h2.line_height}",
-                "paragraphSpacing": "{ob.h.typography.context.h2.paragraph_spacing}"
-              },
-              "$description": "Dynamic secondary heading that adapts between compact and prose contexts via variable modes."
-            },
-            "H3": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.h.typography.context.h3.font_family}",
-                "fontSize": "{ob.h.typography.context.h3.font_size}",
-                "fontWeight": "{ob.h.typography.context.h3.font_weight}",
-                "letterSpacing": "{ob.h.typography.context.h3.letter_spacing}",
-                "lineHeight": "{ob.h.typography.context.h3.line_height}",
-                "paragraphSpacing": "{ob.h.typography.context.h3.paragraph_spacing}"
-              },
-              "$description": "Dynamic tertiary heading that adapts between compact and prose contexts via variable modes."
-            },
-            "H4": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.h.typography.context.h4.font_family}",
-                "fontSize": "{ob.h.typography.context.h4.font_size}",
-                "fontWeight": "{ob.h.typography.context.h4.font_weight}",
-                "letterSpacing": "{ob.h.typography.context.h4.letter_spacing}",
-                "lineHeight": "{ob.h.typography.context.h4.line_height}",
-                "paragraphSpacing": "{ob.h.typography.context.h4.paragraph_spacing}"
-              },
-              "$description": "Dynamic heading level 4 that adapts between compact and prose contexts via variable modes."
-            },
-            "H5": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.h.typography.context.h5.font_family}",
-                "fontSize": "{ob.h.typography.context.h5.font_size}",
-                "fontWeight": "{ob.h.typography.context.h5.font_weight}",
-                "letterSpacing": "{ob.h.typography.context.h5.letter_spacing}",
-                "lineHeight": "{ob.h.typography.context.h5.line_height}",
-                "paragraphSpacing": "{ob.h.typography.context.h5.paragraph_spacing}"
-              },
-              "$description": "Dynamic heading level 5 that adapts between compact and prose contexts via variable modes."
-            },
-            "H6": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.h.typography.context.h6.font_family}",
-                "fontSize": "{ob.h.typography.context.h6.font_size}",
-                "fontWeight": "{ob.h.typography.context.h6.font_weight}",
-                "letterSpacing": "{ob.h.typography.context.h6.letter_spacing}",
-                "lineHeight": "{ob.h.typography.context.h6.line_height}",
-                "paragraphSpacing": "{ob.h.typography.context.h6.paragraph_spacing}"
-              },
-              "$description": "Dynamic heading level 6 that adapts between compact and prose contexts via variable modes."
-            }
-          },
-          "body": {
-            "normal": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.h.typography.context.body.normal.font_size}",
-                "fontWeight": "{ob.h.typography.context.body.normal.font_weight}",
-                "lineHeight": "{ob.h.typography.context.body.normal.line_height}",
-                "letterSpacing": "{ob.h.typography.context.body.normal.letter_spacing}",
-                "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
-              },
-              "$description": "Dynamic body text style that adapts between compact and prose contexts via variable modes."
-            },
-            "link": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.h.typography.context.body.link.font_size}",
-                "fontWeight": "{ob.h.typography.context.body.link.font_weight}",
-                "lineHeight": "{ob.h.typography.context.body.link.line_height}",
-                "letterSpacing": "{ob.h.typography.context.body.link.letter_spacing}",
-                "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}",
-                "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
-              },
-              "$description": "Dynamic link text style that adapts between compact and prose contexts via variable modes. Adds an underline to the text."
-            },
-            "strong": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.h.typography.context.body.strong.font_size}",
-                "fontWeight": "{ob.h.typography.context.body.strong.font_weight}",
-                "lineHeight": "{ob.h.typography.context.body.strong.line_height}",
-                "letterSpacing": "{ob.h.typography.context.body.strong.letter_spacing}",
-                "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
-              },
-              "$description": "Dynamic strong text style that adapts between compact and prose contexts via variable modes. Emphasized text for important information."
-            },
-            "lead": {
-              "$type": "typography",
-              "$value": {
-                "fontFamily": "{ob.s.static.font_family.body}",
-                "fontSize": "{ob.h.typography.context.body.lead.font_size}",
-                "fontWeight": "{ob.h.typography.context.body.lead.font_weight}",
-                "lineHeight": "{ob.h.typography.context.body.lead.line_height}",
-                "letterSpacing": "{ob.h.typography.context.body.lead.letter_spacing}",
-                "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
-              },
-              "$description": "Dynamic lead text style that adapts between compact and prose contexts via variable modes. Introductory paragraph text."
-            }
           }
+        }
+      }
+    },
+    "html": {
+      "heading": {
+        "H1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.h.typography.context.h1.font_family}",
+            "fontSize": "{ob.h.typography.context.h1.font_size}",
+            "fontWeight": "{ob.h.typography.context.h1.font_weight}",
+            "letterSpacing": "{ob.h.typography.context.h1.letter_spacing}",
+            "lineHeight": "{ob.h.typography.context.h1.line_height}",
+            "paragraphSpacing": "{ob.h.typography.context.h1.paragraph_spacing}"
+          },
+          "$description": "Dynamic primary page heading that adapts between compact and prose contexts via variable modes."
+        },
+        "H2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.h.typography.context.h2.font_family}",
+            "fontSize": "{ob.h.typography.context.h2.font_size}",
+            "fontWeight": "{ob.h.typography.context.h2.font_weight}",
+            "letterSpacing": "{ob.h.typography.context.h2.letter_spacing}",
+            "lineHeight": "{ob.h.typography.context.h2.line_height}",
+            "paragraphSpacing": "{ob.h.typography.context.h2.paragraph_spacing}"
+          },
+          "$description": "Dynamic secondary heading that adapts between compact and prose contexts via variable modes."
+        },
+        "H3": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.h.typography.context.h3.font_family}",
+            "fontSize": "{ob.h.typography.context.h3.font_size}",
+            "fontWeight": "{ob.h.typography.context.h3.font_weight}",
+            "letterSpacing": "{ob.h.typography.context.h3.letter_spacing}",
+            "lineHeight": "{ob.h.typography.context.h3.line_height}",
+            "paragraphSpacing": "{ob.h.typography.context.h3.paragraph_spacing}"
+          },
+          "$description": "Dynamic tertiary heading that adapts between compact and prose contexts via variable modes."
+        },
+        "H4": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.h.typography.context.h4.font_family}",
+            "fontSize": "{ob.h.typography.context.h4.font_size}",
+            "fontWeight": "{ob.h.typography.context.h4.font_weight}",
+            "letterSpacing": "{ob.h.typography.context.h4.letter_spacing}",
+            "lineHeight": "{ob.h.typography.context.h4.line_height}",
+            "paragraphSpacing": "{ob.h.typography.context.h4.paragraph_spacing}"
+          },
+          "$description": "Dynamic heading level 4 that adapts between compact and prose contexts via variable modes."
+        },
+        "H5": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.h.typography.context.h5.font_family}",
+            "fontSize": "{ob.h.typography.context.h5.font_size}",
+            "fontWeight": "{ob.h.typography.context.h5.font_weight}",
+            "letterSpacing": "{ob.h.typography.context.h5.letter_spacing}",
+            "lineHeight": "{ob.h.typography.context.h5.line_height}",
+            "paragraphSpacing": "{ob.h.typography.context.h5.paragraph_spacing}"
+          },
+          "$description": "Dynamic heading level 5 that adapts between compact and prose contexts via variable modes."
+        },
+        "H6": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.h.typography.context.h6.font_family}",
+            "fontSize": "{ob.h.typography.context.h6.font_size}",
+            "fontWeight": "{ob.h.typography.context.h6.font_weight}",
+            "letterSpacing": "{ob.h.typography.context.h6.letter_spacing}",
+            "lineHeight": "{ob.h.typography.context.h6.line_height}",
+            "paragraphSpacing": "{ob.h.typography.context.h6.paragraph_spacing}"
+          },
+          "$description": "Dynamic heading level 6 that adapts between compact and prose contexts via variable modes."
+        }
+      },
+      "body": {
+        "normal": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontSize": "{ob.h.typography.context.body.normal.font_size}",
+            "fontWeight": "{ob.h.typography.context.body.normal.font_weight}",
+            "lineHeight": "{ob.h.typography.context.body.normal.line_height}",
+            "letterSpacing": "{ob.h.typography.context.body.normal.letter_spacing}",
+            "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
+          },
+          "$description": "Dynamic body text style that adapts between compact and prose contexts via variable modes."
+        },
+        "link": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontSize": "{ob.h.typography.context.body.link.font_size}",
+            "fontWeight": "{ob.h.typography.context.body.link.font_weight}",
+            "lineHeight": "{ob.h.typography.context.body.link.line_height}",
+            "letterSpacing": "{ob.h.typography.context.body.link.letter_spacing}",
+            "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}",
+            "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
+          },
+          "$description": "Dynamic link text style that adapts between compact and prose contexts via variable modes. Adds an underline to the text."
+        },
+        "strong": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontSize": "{ob.h.typography.context.body.strong.font_size}",
+            "fontWeight": "{ob.h.typography.context.body.strong.font_weight}",
+            "lineHeight": "{ob.h.typography.context.body.strong.line_height}",
+            "letterSpacing": "{ob.h.typography.context.body.strong.letter_spacing}",
+            "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
+          },
+          "$description": "Dynamic strong text style that adapts between compact and prose contexts via variable modes. Emphasized text for important information."
+        },
+        "lead": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontSize": "{ob.h.typography.context.body.lead.font_size}",
+            "fontWeight": "{ob.h.typography.context.body.lead.font_weight}",
+            "lineHeight": "{ob.h.typography.context.body.lead.line_height}",
+            "letterSpacing": "{ob.h.typography.context.body.lead.letter_spacing}",
+            "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
+          },
+          "$description": "Dynamic lead text style that adapts between compact and prose contexts via variable modes. Introductory paragraph text."
         }
       }
     }

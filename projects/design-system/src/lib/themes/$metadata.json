@@ -55,10 +55,6 @@
     "05_html/button/05_viewport/desktop",
     "05_html/button/05_viewport/mobile",
     "05_html/button/06_motion",
-    "05_html/button/07_reference_only",
-    "NO_DS/FIGMA_ONLY/typography",
-    "NO_DS/FIGMA_ONLY/colors_static",
-    "NO_DS/FIGMA_ONLY/off",
-    "NO_DS/FIGMA_ONLY/on"
+    "05_html/button/07_reference_only"
   ]
 }
