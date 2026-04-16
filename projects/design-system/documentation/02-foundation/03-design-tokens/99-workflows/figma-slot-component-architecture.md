@@ -197,7 +197,7 @@ Examples:
 - Support responsive behavior patterns
 
 **2. Figma Variable Integration**
-- Slots compatible with S1/S2/S3 variable architecture
+- Slots compatible with S1/S2/ob.s variable architecture
 - Support viewport=mobile|desktop modes
 - Work with container=wide|narrow variants
 

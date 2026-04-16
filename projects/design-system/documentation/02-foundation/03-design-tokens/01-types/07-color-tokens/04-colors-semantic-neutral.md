@@ -70,7 +70,7 @@ ob.s.color.neutral.{property}.{contrast_level}.{inversity_variation}
 
 ## Neutral Color Architecture
 
-**Note**: Neutral colors skip the s2 emphasis level in the semantic hierarchy, going directly from s1 (lightness) to s3 (compiled semantic). For complete architectural details, see [Semantic Colors Architecture](03-colors-semantic.md).
+**Note**: Neutral colors skip the s2 emphasis level in the semantic hierarchy, going directly from s1 (lightness) to ob.s (compiled semantic). For complete architectural details, see [Semantic Colors Architecture](03-colors-semantic.md).
 
 ### Static Utilities
 ```json

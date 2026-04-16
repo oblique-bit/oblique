@@ -75,14 +75,14 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
 
 ### File Location
 - **Path**: `src/lib/themes/03_semantic/color/compiled/semantic.json`
-- **Layer**: Semantic (s3) - static brand color integrated in final compilation
+- **Layer**: Semantic (ob.s) - static brand color integrated in final compilation
 - **References**: `{ob.p.color.basic.bundesrot}` primitive
 
 ### Integration Pattern
 ```json
 {
   "ob": {
-    "s3": {
+    "s": {
       "color": {
         "brand": {
           "$type": "color",

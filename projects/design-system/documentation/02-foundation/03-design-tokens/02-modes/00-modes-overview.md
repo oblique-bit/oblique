@@ -15,6 +15,6 @@ Navigation hub for all token mode documentation.
 
 ## **How Modes Work**
 
-**Mode Switching:** User modes (light/dark) switch at S1 layer through file selection. Components consume S3 semantic tokens, which reference different S1 files based on user preferences.
+**Mode Switching:** User modes (light/dark) switch at S1 layer through file selection. Components consume ob.s semantic tokens, which reference different S1 files based on user preferences.
 
 **Mode Resolution:** When multiple files define the same token, the last file loaded takes precedence ("last wins" principle).

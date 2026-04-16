@@ -29,7 +29,7 @@ This document provides diagnostic methods for troubleshooting design variables i
 
 ### Problem
 When - Apply to Badge, Button, Link, Infobox, Pill, Popover, Spinner, Tooltip
-3. Combine with S1/S2/S3 variable application after cleanup
+3. Combine with S1/S2/ob.s variable application after cleanup
 4. Version control each cleaned component for rollback capabilitying to detach all variables from a Figma component, sometimes one variable remains attached but you can't identify which layer contains it or which variable it is.
 
 ### Solution: MCP Variable Detection
@@ -285,7 +285,7 @@ For each cleaned component, document:
 This method integrates with the overall OUI-3966 component migration:
 1. Use this workflow for each component before V6→V7 migration
 2. Apply to Badge, Button, Link, Infobox, Pill, Popover, Spinner, Tooltip
-3. Combine with S1/S2/S3 token application after cleanup
+3. Combine with S1/S2/ob.s token application after cleanup
 4. Version control each cleaned component for rollback capability
 
 ---

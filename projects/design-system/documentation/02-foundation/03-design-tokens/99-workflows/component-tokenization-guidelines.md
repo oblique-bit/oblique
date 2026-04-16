@@ -20,7 +20,7 @@
 1. Figma layers and properties (can be skipped to go directly to step 2)
 2. Component tokens (if they already exist, otherwise do step 1 first)
 
-### Colors (mode-aware if using s3 level)
+### Colors (mode-aware if using ob.s level)
 Use `ob.s.color.*` tokens from semantic color groups:
 - `interactive.*` - buttons, links, form controls
 - `neutral.*` - text, backgrounds, borders

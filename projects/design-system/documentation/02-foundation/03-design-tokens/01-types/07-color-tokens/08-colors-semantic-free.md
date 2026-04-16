@@ -4,7 +4,7 @@ The `ob.s.color.free.*` group contains colors that carry no fixed semantic meani
 
 It may seem unusual that tokens in a semantic color group carry no semantic meaning. This is intentional. Free colors provide the palette range and the contrast-level scaffolding of the semantic system, while leaving the actual meaning to the design system consumer. Projects attach meaning at their own S-level by creating tokens that reference `free.*` — the design system itself makes no claim about what these colors communicate.
 
-A second reason these colors are not left at the primitive level: primitives are easy to overlook, and more importantly, the design system needs to prepare a complete reference chain up to the compiled semantic level (S3). Only by existing at the semantic level can free colors properly resolve on mode switch — light, dark, and inversity variations all depend on the semantic layer's mode-aware token resolution. Consuming a raw primitive would bypass this chain and produce static, non-adaptive values.
+A second reason these colors are not left at the primitive level: primitives are easy to overlook, and more importantly, the design system needs to prepare a complete reference chain up to the compiled semantic level (ob.s). Only by existing at the semantic level can free colors properly resolve on mode switch — light, dark, and inversity variations all depend on the semantic layer's mode-aware token resolution. Consuming a raw primitive would bypass this chain and produce static, non-adaptive values.
 
 ## Two usage patterns
 
@@ -31,7 +31,7 @@ Example: a project adds a "Pending" status and decides yellow is the right color
 ```json
 // Project-level semantic token (in project token override layer)
 "ob": {
-  "s3": {
+  "s": {
     "color": {
       "status": {
         "pending": {

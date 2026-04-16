@@ -40,14 +40,14 @@ src/lib/themes/03_semantic/color/
 - **Reference**: All S2 tokens reference S1 tokens directly
 - **Example token**: `ob.s2.color.interaction.bg.primary.enabled.inversity_normal`
 
-#### **S3 - Semantic Compilation** (`compiled/`)
+#### **ob.s - Semantic Compilation** (`compiled/`)
 - **Purpose**: Complete, clean collection of all semantic colors
 - **Contains**: All categories (neutral, interaction, status, static brand colors)  
 - **File**: `semantic.json`
 - **Reference**: Compiles tokens from S1, S2, and static sources
 - **Usage**: Primary consumption point for component tokens
 
-#### **S3 - Semantic Compilation (cont.)** (`compiled/`)
+#### **ob.s - Semantic Compilation (cont.)** (`compiled/`)
 - **Purpose**: Complete semantic color compilation and final token definitions
 - **Contains**: Final compiled semantic colors combining all layer variations plus static colors
 - **Files**: `semantic.json`
@@ -130,7 +130,7 @@ The semantic color system is organized into **four main categories**:
 - **Includes**: Single brand color for consistent identity
 
 ### **Neutral Category**
-- **Location**: L1 semantic level files (`s1-lightness/`) + S3 compilation (`compiled/`)
+- **Location**: L1 semantic level files (`s1-lightness/`) + ob.s compilation (`compiled/`)
 - **Purpose**: Non-interactive UI elements
 - **Includes**: 
   - Background colors (`bg`)
@@ -140,7 +140,7 @@ The semantic color system is organized into **four main categories**:
   - Utility colors (transparent/no_color)
 
 ### **Interaction Category**
-- **Location**: L1 semantic level files (`s1-lightness/`) + S2 emphasis (`s2-emphasis/`) + S3 compilation (`compiled/`)
+- **Location**: L1 semantic level files (`s1-lightness/`) + S2 emphasis (`s2-emphasis/`) + ob.s compilation (`compiled/`)
 - **Purpose**: Interactive UI elements
 - **Includes**:
   - Button colors
@@ -151,7 +151,7 @@ The semantic color system is organized into **four main categories**:
   - Emphasis variations
 
 ### **Status Category**
-- **Location**: L1 semantic level files (`s1-lightness/`) + S3 compilation (`compiled/`)
+- **Location**: L1 semantic level files (`s1-lightness/`) + ob.s compilation (`compiled/`)
 - **Purpose**: System state communication
 - **Includes**:
   - Reserved statuses (info, resolved, critical, attention)
@@ -178,7 +178,7 @@ Currently, the full 5-level scale is provided only for the **Neutral** category 
 ```
 ob.s.color.brand → {ob.p.color.basic.bundesrot} → #ff0000
 │
-└─ S3 (Semantic): Direct static value (bundesrot) - no theme, emphasis, or inversity variations
+└─ ob.s (Semantic): Direct static value (bundesrot) - no theme, emphasis, or inversity variations
 ```
 
 ### **Inversity as Flat Property**

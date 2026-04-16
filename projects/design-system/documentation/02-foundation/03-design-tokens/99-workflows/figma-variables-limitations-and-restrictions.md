@@ -106,7 +106,7 @@
 
 #### For Performance Issues
 1. Limit variable collections size
-2. Use semantic layering (S1/S2/S3) for organization
+2. Use semantic layering (S1/S2/ob.s) for organization
 3. Regular cleanup of unused variables
 
 ---
@@ -114,7 +114,7 @@
 ## Impact on Design System Workflows
 
 ### Token Architecture Decisions
-- **S1/S2/S3 Semantic Layers**: Designed to work within Figma limitations
+- **S1/S2/ob.s Semantic Layers**: Designed to work within Figma limitations
 - **Token Studio Primary**: Use Token Studio as primary token management tool
 - **Figma as Reference**: Treat Figma variables as reference implementation
 

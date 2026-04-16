@@ -201,7 +201,7 @@ Applies to all text fields: `$description`, `page_title`, `page_intro`, and each
 | Character | Status | Notes |
 |---|---|---|
 | ASCII printable U+0020–U+007E | ✓ Allowed | Full printable ASCII set |
-| Em dash `—` U+2014 | ✓ Allowed | Used in existing s3/free-color descriptions |
+| Em dash `—` U+2014 | ✓ Allowed | Used in existing ob.s/free-color descriptions |
 | En dash `–` U+2013 | ✓ Allowed | Used in existing dimension descriptions |
 | Single quote `'` | ✓ Allowed | No JSON escaping required |
 | Double quote `"` | ✓ Allowed | Must be JSON-escaped as `\"` in raw file; use a JSON serializer, never manual string concat |

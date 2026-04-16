@@ -96,7 +96,7 @@ The color system operates through multiple semantic layers. For detailed archite
 #### Key Layers Overview
 - **Lightness Semantic Level (S1)**: Lightness mode adaptation (light/dark theme modes)
 - **Emphasis Semantic Level (S2)**: Interaction emphasis modes (high/low emphasis variations for interactive components)
-- **Semantic Compilation (S3)**: Complete semantic color compilation including static colors
+- **Semantic Compilation (ob.s)**: Complete semantic color compilation including static colors
 
 **Note**: Inversity (normal/flipped) is a **flat property** available on most tokens, not a separate layer or mode. Components simply choose between `inversity_normal` and `inversity_flipped` variants as needed. For complete documentation, refer to [Semantic Color Architecture](03-colors-semantic.md).
 

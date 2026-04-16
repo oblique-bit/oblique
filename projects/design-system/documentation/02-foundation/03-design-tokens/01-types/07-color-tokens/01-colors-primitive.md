@@ -32,7 +32,7 @@ The primitive color system is organized within a single complete file containing
 
 ## Token Resolution Flow
 
-Primitive colors serve as the foundation for all semantic color compilation, feeding into S1 (lightness), S2 (emphasis), S3 (semantic compilation), and ultimately Component layers.
+Primitive colors serve as the foundation for all semantic color compilation, feeding into S1 (lightness), S2 (emphasis), ob.s (semantic compilation), and ultimately Component layers.
 
 ### Implementation Example
 ```json

@@ -65,7 +65,7 @@ This is a deliberate architectural exception for values that are:
 - **Static and invariant** — the value does not change between light/dark or emphasis modes.
 - **Not subject to theming** — routing through S1 (lightness) and S2 (emphasis) would add ceremony with no semantic benefit.
 
-For these tokens, S3 references `ob.p.*` directly instead of going through the full `S3 → S2 → S1 → primitive` chain.
+For these tokens, ob.s references `ob.p.*` directly instead of going through the full `ob.s → S2 → S1 → primitive` chain.
 
 ```json
 // ✔️ Intentional: ob.s.color.neutral.no_color references primitive directly
@@ -77,11 +77,11 @@ For these tokens, S3 references `ob.p.*` directly instead of going through the f
 }
 ```
 
-This pattern is the **exception**, not the rule. All other S3 color tokens must follow the full reference chain.
+This pattern is the **exception**, not the rule. All other ob.s color tokens must follow the full reference chain.
 
-### Element-Type Splits at S3
+### Element-Type Splits at ob.s
 
-At S3, color tokens are named not only by state but also by the **element type** they color (`fg`, `bg`, `border`, etc.). When a single interaction state affects multiple element types that may resolve to different colors, each element type **must have its own token** — even if the values happen to be identical today.
+At ob.s, color tokens are named not only by state but also by the **element type** they color (`fg`, `bg`, `border`, etc.). When a single interaction state affects multiple element types that may resolve to different colors, each element type **must have its own token** — even if the values happen to be identical today.
 
 The canonical example is the selected/active state in navigation and segmented button contexts:
 

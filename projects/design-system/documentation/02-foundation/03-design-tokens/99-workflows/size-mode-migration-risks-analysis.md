@@ -23,7 +23,7 @@
 
 **Current Working Pattern:**
 ```
-Components → S3 Semantic → S1 Lightness → Primitives
+Components → ob.s Semantic → S1 Lightness → Primitives
           → S2 Emphasis  → S1 Lightness → Primitives
 ```
 

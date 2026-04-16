@@ -426,7 +426,7 @@ ob.h.{element}.color.{property}.{variant}.{state}    # HTML elements
 
 ### **2. Token Reference Patterns**
 
-**Component Token Pattern (S3 Consumption Only):**
+**Component Token Pattern (ob.s Consumption Only):**
 ```json
 // DO: Reference ob.s.* (compiled semantic tokens)
 {

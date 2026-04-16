@@ -44,7 +44,7 @@ Foundation Layers:
 Semantic Layers:
   s1 → Lightness (light/dark theme switching)
   s2 → Emphasis (high/low emphasis variations)  
-  s3 → Compilation (complete semantic colors)
+  s  → Compilation (complete semantic colors)
 
 Application Layers:
   c  → Component tokens
@@ -83,18 +83,7 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 - **References**: S1 lightness tokens
 - **Usage**: **Primary consumption layer** for interactive components
 
-### **Reference Chain Simplification**
-```
-Before (Complex): ob.s → S2 → S1 → Primitive
-After (Simple):   S2 → S1 → Primitive
-                  ob.s → S1 → Primitive
-```
 
-**Benefits:**
-- Reduced complexity in token resolution
-- Faster build performance  
-- Clearer mental model for maintainers
-- Direct control over semantic compilation
 
 ---
 

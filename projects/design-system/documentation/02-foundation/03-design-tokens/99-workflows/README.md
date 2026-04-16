@@ -27,7 +27,7 @@ This folder contains workflows, guides, and processes specifically designed for 
 
 #### Foundation Workflows
 - **00-index.md** - Index and navigation for all maintainer workflows
-- **01-tokens-studio-context.md** - Token Studio fundamentals and S1/S2/S3 architecture
+- **01-tokens-studio-context.md** - Token Studio fundamentals and S1/S2/ob.s architecture
 - **02-figma-and-tokens-for-developers.md** - Figma Dev Mode MCP integration and token workflows
 
 #### Figma Integration Workflows

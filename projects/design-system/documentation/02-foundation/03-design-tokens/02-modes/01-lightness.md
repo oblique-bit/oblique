@@ -35,8 +35,8 @@ Located in: `03_semantic/color/s1-lightness/`
 
 ### **Reference Chain**
 ```
-Components → S3 Semantic → S1 Lightness → Primitives
-                            ↑
+Components → ob.s Semantic → S1 Lightness → Primitives
+                               ↑
                      Mode switching occurs here
 ```
 
@@ -85,7 +85,7 @@ Components → S3 Semantic → S1 Lightness → Primitives
 ## **Implementation Pattern**
 
 ### **Token Selection**
-The S1 lightness layer provides the foundation for all color mode switching. All other semantic layers (S2, S3) reference S1 tokens, ensuring consistent mode switching throughout the system.
+The S1 lightness layer provides the foundation for all color mode switching. All other semantic layers (S2, ob.s) reference S1 tokens, ensuring consistent mode switching throughout the system.
 
 ### **Build Configuration**
 Mode files are selected during build process based on:
