@@ -217,7 +217,7 @@ Resources: [links-to-guidance-documentation]
 
 **For Developers:**
 - [Figma and Tokens for Developers](./figma-and-tokens-for-developers.md)
-- [Component Token Implementation](../03-types/06-component-tokens.md)
+- [Component Token Implementation](../01-types/06-component-tokens.md)
 - [Token Debugging Guide](./figma-token-debugging.md)
 
 ---

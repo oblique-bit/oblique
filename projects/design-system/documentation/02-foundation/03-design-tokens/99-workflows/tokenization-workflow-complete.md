@@ -256,7 +256,7 @@ Developers can reject 04_components for:
 
 - [Token Studio Context](./tokens-studio-context.md)
 - [Figma Token Debugging](./figma-token-debugging.md)
-- [Component Tokens](../03-types/06-component-tokens.md)
+- [Component Tokens](../01-types/06-component-tokens.md)
 
 - [MCP Inspection Guide](./figma-mcp-inspection-guide.md)
 
