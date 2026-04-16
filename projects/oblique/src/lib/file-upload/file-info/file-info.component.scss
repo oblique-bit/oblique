@@ -1,7 +1,0 @@
-@use "../../../styles/scss/core/variables";
-
-.ob-file-info {
-	tbody tr:not(:hover) .mat-column-action .ob-button:not(:focus) {
-		opacity: 0;
-	}
-}

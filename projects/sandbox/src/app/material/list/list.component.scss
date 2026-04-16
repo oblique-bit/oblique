@@ -1,8 +1,0 @@
-@use "projects/oblique/src/styles/scss/core/variables";
-
-.mat-mdc-radio-group,
-.form-controls {
-	display: flex;
-	flex-direction: column;
-	gap: variables.$ob-spacing-xs;
-}

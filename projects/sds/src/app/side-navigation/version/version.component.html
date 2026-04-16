@@ -1,8 +1,0 @@
-<mat-form-field [id]="idPrefix() | id: [componentId, 'select']">
-	<mat-label>Version</mat-label>
-	<mat-select matTooltip="Select an Oblique version" [formControl]="selectedVersion">
-		@for (version of versions$ | async; track version) {
-			<mat-option [value]="version.number">{{ version.label }}</mat-option>
-		}
-	</mat-select>
-</mat-form-field>

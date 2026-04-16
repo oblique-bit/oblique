@@ -1,6 +1,0 @@
-@use "projects/oblique/src/styles/scss/core/variables";
-
-.rotate180 {
-	transform: rotate(180deg);
-	transition: transform variables.$ob-duration-default;
-}

@@ -1,6 +1,0 @@
-</script>
-<script>
-    Array.from(document.querySelectorAll('[load-handler]')).forEach(element => {
-        element.setAttribute('media', 'all');
-    });
-</script>

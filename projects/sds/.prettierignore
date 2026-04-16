@@ -1,4 +1,0 @@
-# ignore generated files
-schematics/src/**/*.js
-schematics/src/add-code-example/templates/**/*
-schematics/src/add-preview/templates/**/*

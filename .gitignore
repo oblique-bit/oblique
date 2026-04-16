@@ -1,60 +1,17 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# tokens-preview branch: only allow documentation/ and src/
+# Ignore everything
+*
 
-# compiled output
-/dist
-/target
-/projects/oblique/styles
-/tmp
-__ngcc_entry_points__.json
-/projects/sds/schematics/**/*.js
+# Allow directory traversal into the two permitted folders
+!projects/
+!projects/design-system/
+!projects/design-system/documentation/
+!projects/design-system/documentation/**
+!projects/design-system/src/
+!projects/design-system/src/**
 
-# dependencies
-/node_modules
+# Track this .gitignore
+!.gitignore
 
-# IDEs and editors
-/.idea
-/.github
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.iml
-*.sublime-project
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-
-
-# misc
-/.angular/cache
-/.sass-cache
-/connect.lock
-/coverage/*
-/projects/oblique/coverage/*
-/projects/oblique/test-report.xml
-/test-report.xml
-/libpeerconnection.log
-npm-debug.log
-testem.log
-/jest-report/*
-.eslintcache
-.stylelintcache
-.prettiercache
-
-# e2e
-/e2e/*.js
-/e2e/*.map
-
-#System Files
+# OS junk
 .DS_Store
-Thumbs.db
-/nvm.env
-/before.env
-
-# Context notes (personal development notes)
-CONTEXT_NOTES.md
-
-#nx
-.nx/cache/*

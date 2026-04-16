@@ -1,3 +1,0 @@
-"*.{ts,js,mjs,html}": eslint --fix --cache
-"*.{css,scss}": stylelint --fix --cache --allow-empty-input
-"*.{ts,js,mjs,html,json,yml,md,css,scss}": prettier --write

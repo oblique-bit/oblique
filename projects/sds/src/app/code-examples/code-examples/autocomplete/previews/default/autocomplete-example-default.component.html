@@ -1,5 +1,0 @@
-<!--This if is a workaround for an Angular bug, see the TS file for more information -->
-@if (show) {
-	<ob-autocomplete [autocompleteOptions]="optionList" [formControl]="formControl" (selectedOptionChange)="showSelection($event)" />
-	<p>selectedOption: {{ selectedOption | json }}</p>
-}

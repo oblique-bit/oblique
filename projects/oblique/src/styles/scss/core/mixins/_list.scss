@@ -1,5 +1,0 @@
-@use "../variables";
-
-@mixin ob-list-title($margin: variables.$ob-spacing-sm) {
-	margin-bottom: $margin;
-}
