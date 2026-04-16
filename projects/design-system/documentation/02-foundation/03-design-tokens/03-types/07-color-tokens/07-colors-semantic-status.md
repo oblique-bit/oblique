@@ -591,4 +591,4 @@ This script automatically updates token descriptions with classification informa
 
 ---
 
-*For related documentation, see [Free Colors](./08-colors-semantic-free.md), [Neutral Colors](./colors-03_semantic-neutral.md) and [Interaction Colors](./colors-03_semantic-interaction.md)*
+*For related documentation, see [Free Colors](./08-colors-semantic-free.md), Neutral Colors and Interaction Colors*

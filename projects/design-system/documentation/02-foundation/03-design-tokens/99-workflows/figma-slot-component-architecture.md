@@ -9,7 +9,7 @@
 **Primary:** DS/Oblique Designers, DS/Oblique Developers  
 **Secondary:** Component Architects, Figma Advanced Users  
 **Prerequisites:** Advanced Figma 04_component knowledge, understanding of slot patterns, 04_component architecture  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+**Related Personas:** Design System Personas
 
 ## Overview
 
@@ -37,7 +37,7 @@ Main Component (Shell)
 ### **Addresses Our Current Challenges**
 
 **1. Reduces Variant Explosion**
-- **Problem**: Our button 04_component has 480 variants (documented in [Component Decomposition Strategy](./09-figma-04_component-decomposition-strategy.md))
+- **Problem**: Our button 04_component has 480 variants (documented in Component Decomposition Strategy)
 - **Solution**: Single 04_component with slots instead of hundreds of variants
 
 **2. Prevents Detaching**
@@ -176,16 +176,16 @@ Examples:
 
 ### **Solves Problems Identified In:**
 
-**1. [Component Decomposition Strategy](./09-figma-04_component-decomposition-strategy.md)**
+**1. Component Decomposition Strategy**
 - **480 variant problem**: Slots reduce variants dramatically
 - **Performance issues**: Fewer variants = better performance
 - **Maintenance complexity**: Single 04_component easier to maintain
 
-**2. [Container Component Concept](../../03-design-tokens/container-04_component-concept.md)**
+**2. Container Component Concept**
 - **Content flexibility**: Slots provide dynamic content areas
 - **Nested support**: Slot architecture supports nesting naturally
 
-**3. [Button Component Behavior](../../04-04_components/button/button-overview.md)**
+**3. Button Component Behavior**
 - **Badge/Tooltip children**: Already slot-like with Boolean properties
 - **Container variants**: Can be enhanced with slot architecture
 
@@ -283,10 +283,10 @@ Examples:
 
 ## Related Documentation
 
-- [Component Decomposition Strategy](./09-figma-04_component-decomposition-strategy.md) - Addresses variant explosion problem
-- [Container Component Concept](../../03-design-tokens/container-04_component-concept.md) - Flexible container architecture
-- [Button Component Behavior](../../04-04_components/button/button-overview.md) - Current slot-like implementations
-- [Component Token Architecture](../../03-design-tokens/04_component-tokens.md) - Token integration patterns
+- Component Decomposition Strategy - Addresses variant explosion problem
+- Container Component Concept - Flexible container architecture
+- Button Component Behavior - Current slot-like implementations
+- Component Token Architecture - Token integration patterns
 
 ---
 

@@ -18,7 +18,7 @@ Semantic tokens provide context to primitive values and are the bridge between t
     *   **`surface` (16px-24px)**: For padding on self-contained UI surfaces (e.g., cards, tooltips).
     *   **`container` (32px-64px)**: For padding within larger content containers that group multiple surfaces.
     *   **`layout` (80px+)**: For spacing between major, independent sections of a page layout.
-    *   *(For more details, see the [Dimension and Sizing Scale Research](research.md)).*
+    *   *(For more details, see the Dimension and Sizing Scale Research).*
 
 ### Examples
 

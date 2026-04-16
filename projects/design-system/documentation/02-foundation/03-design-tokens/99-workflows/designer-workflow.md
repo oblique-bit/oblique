@@ -2,7 +2,7 @@
 
 **Purpose:** Complete workflow guide for designers applying tokens to components and layouts  
 **Audience:** Designers using Figma with Tokens Studio  
-**Related:** [Tokenization Process](../tokenization-process.md) | [Token Assignment Guidelines](../developers/token-assignment-guidelines.md)
+**Related:** Tokenization Process | Token Assignment Guidelines
 
 ---
 
@@ -13,7 +13,7 @@
 - [ ] Token strategy planned  
 - [ ] Tokens Studio plugin installed and ready
 - [ ] Existing token library reviewed
-- [ ] [Tokenization Process](../tokenization-process.md) understanding confirmed
+- [ ] Tokenization Process understanding confirmed
 
 ### **Token Application Process**  
 - [ ] **Use Tokens Studio for ALL token applications** (never Figma right panel)
@@ -202,6 +202,6 @@ ob.c.tooltip.container.shadow
 
 ---
 
-**Next Steps:** After completing token assignment, refer to [Token Assignment Guidelines](../../token-assignment-guidelines.md) for technical implementation details that developers will use.
+**Next Steps:** After completing token assignment, refer to Token Assignment Guidelines for technical implementation details that developers will use.
 
 *This workflow ensures consistent, maintainable token application that bridges design intent with development implementation.*

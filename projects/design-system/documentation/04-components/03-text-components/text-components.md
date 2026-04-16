@@ -2,7 +2,7 @@
 
 **Purpose**: Token structure and spacing strategies for typography-related components  
 **Audience**: Design system maintainers, UX designers, developers  
-**Related**: [Design Tokens Architecture](../../03-design-tokens/02-architecture.md)
+**Related**: Design Tokens Architecture
 
 ---
 

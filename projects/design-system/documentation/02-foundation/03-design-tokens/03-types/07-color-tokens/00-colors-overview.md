@@ -178,7 +178,7 @@ For detailed token selection examples and technical implementation, see [Semanti
 
 **⚠️ Primitive Color Selection Warning**: Picking colors directly from primitive tokens is a **high-risk approach** that should only be done with extreme caution and strict adherence to the established color usage rules. Most color needs are already addressed through semantic tokens and components - always exhaust these options first.
 
-**Validation Required**: Before using any primitive colors, consult the [Primitive Color Consumption Table](colors-primitive-consumption.md) to verify which colors are available for decorative usage and which are reserved for semantic roles.
+**Validation Required**: Before using any primitive colors, consult the Primitive Color Consumption Table to verify which colors are available for decorative usage and which are reserved for semantic roles.
 
 **Primary Approach: Semantic/Interactive Usage**
 
@@ -210,7 +210,7 @@ Always prioritize semantic and interactive color usage, which communicates meani
 **2nd Priority - Controlled Color Usage**:
 - **Illustrations and Infographics**: Proceed with extreme caution - this is where semantic conflicts most commonly occur
 - **Large Colored Surfaces**: Avoid using design system colors for large decorative surfaces. If it is required for content grouping, this does not belong to to the decorative category and must use semantic/neutral colors instead.
-- **Decorative Color Elements**: If color decoration is absolutely necessary, use [Stage 4 colors](colors-primitive.md#color-usage-classification-4-stages) (teal, pink) only.
+- **Decorative Color Elements**: If color decoration is absolutely necessary, use Stage 4 colors (teal, pink) only.
 
 **General Principle**: Avoid using any design system colors outside their defined semantic roles. Color decoration should be minimal and use only non-semantic scales to prevent user confusion and maintain accessibility standards.
 
@@ -221,15 +221,15 @@ Always prioritize semantic and interactive color usage, which communicates meani
 ## Related Documentation
 
 ### Specialized Color Topics
-- [Semantic Color Architecture](colors-03_semantic.md) - Technical architecture and layer system
-- [Brand Colors](colors-03_semantic-brand.md) - Federal identity and brand guidelines
-- [Neutral Colors](colors-03_semantic-neutral.md) - Backgrounds, text, borders, surfaces
-- [Interaction Colors](colors-03_semantic-interaction.md) - Hover, active, visited, disabled states
-- [Status Colors](colors-03_semantic-status.md) - Success, warning, error, info implementation
+- Semantic Color Architecture - Technical architecture and layer system
+- Brand Colors - Federal identity and brand guidelines
+- Neutral Colors - Backgrounds, text, borders, surfaces
+- Interaction Colors - Hover, active, visited, disabled states
+- Status Colors - Success, warning, error, info implementation
 
 ### Token System Documentation
-- [Token Consumption Guidelines](../guidelines-token-consumption.md) - Implementation patterns
-- [Guidelines for Designers](../guidelines-for-designers.md) - Design application principles
+- Token Consumption Guidelines - Implementation patterns
+- Guidelines for Designers - Design application principles
 
 ---
 

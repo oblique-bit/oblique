@@ -8,7 +8,7 @@
 **Primary:** DS/Oblique Developers, DS/Oblique Designers  
 **Secondary:** Product/Project Developers (for reference)  
 **Prerequisites:** Understanding of design system architecture and token workflows  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+**Related Personas:** Design System Personas
 
 ---
 
@@ -26,10 +26,10 @@ Each document includes audience targeting to help you quickly identify relevance
 - **Related Personas:** Links to detailed persona descriptions
 
 **Key Personas:**
-- **DS/Oblique Designers:** Design system maintainers working in Figma ([full description](../../02-foundation/02-personas.md#11-dsobl))
-- **DS/Oblique Developers:** Design system maintainers writing code ([full description](../../02-foundation/02-personas.md#12-dsobl))
-- **Product/Project Designers:** External teams using the design system ([full description](../../02-foundation/02-personas.md#21-product))
-- **Product/Project Developers:** External developers implementing with the design system ([full description](../../02-foundation/02-personas.md#23-product))
+- **DS/Oblique Designers:** Design system maintainers working in Figma (full description)
+- **DS/Oblique Developers:** Design system maintainers writing code (full description)
+- **Product/Project Designers:** External teams using the design system (full description)
+- **Product/Project Developers:** External developers implementing with the design system (full description)
 
 ### Foundation Workflows
 - **01-tokens-studio-context.md** - Token Studio fundamentals and architecture

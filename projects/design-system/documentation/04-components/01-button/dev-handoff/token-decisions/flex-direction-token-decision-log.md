@@ -190,8 +190,8 @@
 
 ## Related Documentation
 
-- [Button Overview](./button-overview.md) - Strategic architecture and principles
-- [Button Flex Direction Validation](./button-flex-direction-token-validation.05_html) - Live implementation demo
+- Button Overview - Strategic architecture and principles
+- Button Flex Direction Validation - Live implementation demo
 - Token files: `src/lib/themes/05_05_html/button_aug/06 width/`
 
 ---

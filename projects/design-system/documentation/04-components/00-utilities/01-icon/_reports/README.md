@@ -11,28 +11,28 @@ This folder contains validation reports and quality assurance documentation for 
 - Implementation readiness validation
 - Layer naming compliance checks
 
-### [02-Tokenization](02-tokenization/)
+### 02-Tokenization
 **Purpose:** Designer-focused token coverage and Token Studio integration
 - Complete tokenization validation
 - Token Studio integration verification
 - Semantic token analysis
 - Token mapping quality assessment
 
-### [03-Compliance](03-compliance/)
+### 03-Compliance
 **Purpose:** Standards and specification compliance validation
 - W3C DTCG compliance reports
 - Accessibility standards (WCAG 2.1 AA)
 - Platform standards compliance
 - Design system guidelines adherence
 
-### [04-Quality](04-quality/)
+### 04-Quality
 **Purpose:** Design quality, brand consistency, and user experience validation
 - Visual consistency audits
 - Brand compliance checks
 - Design quality assessments
 - UX heuristic evaluations
 
-### [_archive](_archive/)
+### _archive
 **Purpose:** Historical reports and outdated analyses
 - Previous validation attempts
 - Deprecated reports
@@ -77,5 +77,5 @@ YYYYMMDD_HHMM-icon-holder-{category}-{type}-report.md
 ---
 
 **Validation Tools:**
-- [Figma MCP Prompts](../../../07-workflow/maintainers/prompts/) - Automated validation
-- [Component Strategy Guide](../../../07-workflow/maintainers/04_component-documentation-separation-strategy.md) - Process documentation
+- Figma MCP Prompts - Automated validation
+- Component Strategy Guide - Process documentation

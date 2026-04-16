@@ -221,10 +221,6 @@ grep -r "hug\|fill\|constraints\|auto-layout" documentation/
 
 ## 📚 Related Documentation
 
-- [Figma Variables Limitations](./05-figma-variables-limitations-and-restrictions.md)
-- [Button Figma Extracted Code](../04-components/button/ai-generated-code-preview/ButtonLabelIcon-generated-code.md)
-- [Token Architecture](../../03-design-tokens/references/technical/architecture-patterns.md)
-- [Design-Dev Handoff Guidelines](./design-dev-handoff-guidelines.md)
 
 ---
 

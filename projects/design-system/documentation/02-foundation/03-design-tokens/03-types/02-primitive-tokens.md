@@ -68,7 +68,7 @@ Primitive tokens are the foundational, context-agnostic values of the design sys
     *   **Micro-Scale for Fine Details**: The scale must begin with `1px`, `2px`, `3px`, and `6px` to accommodate the smallest design elements such as borders, dividers, and micro-spacings. This ensures pixel-perfect control where needed.
     *   **Core Grid-Based Scale**: Following the micro-scale, all subsequent values must align with a **4px grid** (e.g., `4px`, `8px`, `12px`, `16px`). This establishes a consistent, rhythmic foundation for all components and layouts.
     *   **Comprehensive Range**: The scale must provide a wide range of values from the `1px` micro-value to large macro values required for page layouts, ensuring no gaps exist for component requirements.
-    *   *(For more details, see the [Dimension and Sizing Scale Research](research.md)).*
+    *   *(For more details, see the Dimension and Sizing Scale Research).*
 
 ## Example Workflow
 

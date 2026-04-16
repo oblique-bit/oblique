@@ -11,7 +11,7 @@ Analysis of how other design systems and products approach {COMPONENT_PURPOSE}:
 - standard practice identification
 - Benchmark studies
 
-### [User Research](user-research/)
+### User Research
 User-centered research on icon-holder usage and needs:
 - Usability studies
 - User interviews
@@ -25,7 +25,7 @@ Technical considerations and implementation research:
 - Framework integration research
 - Token architecture studies
 
-### [Decision Logs](decision-logs/)
+### Decision Logs
 Documentation of key design and technical decisions:
 - Architecture decisions
 - Design rationale documentation

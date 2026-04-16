@@ -230,6 +230,3 @@ The analysis provides compelling evidence for implementing `icon` as a foundatio
 ---
 
 **Related Documentation:**
-- [Button Component Architecture](../../02-button/02-architecture.md)
-- [Design Token Integration](../../../03-design-tokens/)
-- [Figma Component Strategy](../../../07-workflow/maintainers/10-figma-slot-04_component-architecture.md)

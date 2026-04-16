@@ -8,7 +8,7 @@
 **Primary:** DS/Oblique Designers  
 **Secondary:** DS/Oblique Developers (for MCP tools)  
 **Prerequisites:** Advanced Figma knowledge, MCP tools, understanding of variable modes  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#11-dsobl)
+**Related Personas:** Design System Personas
 
 This document provides complete methods for detaching variables from Figma components and eliminating persistent ghost variable modes that remain after variable deletion.
 
@@ -264,9 +264,6 @@ After successful ghost variable elimination, components are ready for fresh vari
 ---
 
 ## Related Documentation
-- [Figma Token Debugging Guide](./03-figma-token-debugging.md)
-- [S1/S2/S3 Architecture Documentation](../../03-design-tokens/04-references/02-modes/)
-- [Token Consumption Guidelines](../../03-design-tokens/guidelines-token-consumption.md)
 
 ---
 

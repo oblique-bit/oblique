@@ -895,10 +895,10 @@ When migrating from legacy systems:
 
 ## Related Documentation
 
-- [Token Hierarchy](./04-token-hierarchy.md) - Overall token hierarchy and patterns
-- [Token Consumption Guidelines](./guidelines-token-consumption.md) - How to consume tokens correctly
-- [Component Identification](../07-workflow/maintainers/readme.md) - Component classification and naming
-- [Semantic Color Architecture](./colors/colors-03_semantic.md) - Semantic token structure and usage
+- Token Hierarchy - Overall token hierarchy and patterns
+- Token Consumption Guidelines - How to consume tokens correctly
+- Component Identification - Component classification and naming
+- Semantic Color Architecture - Semantic token structure and usage
 
 ---
 

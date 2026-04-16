@@ -8,7 +8,7 @@
 **Primary:** DS/Oblique Designers, DS/Oblique Developers  
 **Secondary:** Product/Project Designers (for limitation awareness)  
 **Prerequisites:** Experience with Figma variables and design token systems  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+**Related Personas:** Design System Personas
 
 ---
 

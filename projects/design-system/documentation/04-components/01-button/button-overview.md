@@ -171,7 +171,7 @@ Tag Component
 
 **Color Token Path:** `ob.s.color.interaction`
 
-All button components consume colors strictly from the interaction color group. See [colors-semantic-interaction.md](../../03-design-tokens/colors/colors-semantic-interaction.md) for complete color specifications.
+All button components consume colors strictly from the interaction color group. See colors-semantic-interaction.md for complete color specifications.
 
 ---
 
@@ -294,7 +294,7 @@ All button components consume colors strictly from the interaction color group. 
 ---
 
 **Implementation Status:** Production ready  
-**Related Documentation:** [Interaction Colors](../../03-design-tokens/colors/colors-semantic-interaction.md) • [Token Architecture](./token-decisions/flex-direction-token-decision-log.md)
+**Related Documentation:** Interaction Colors • Token Architecture
 **Implementation Status:** Production ready  
-**Related Documentation:** [Interaction Colors](../../03-design-tokens/colors/colors-semantic-interaction.md) • [Token Architecture](./token-decisions/flex-direction-token-decision-log.md)
+**Related Documentation:** Interaction Colors • Token Architecture
 

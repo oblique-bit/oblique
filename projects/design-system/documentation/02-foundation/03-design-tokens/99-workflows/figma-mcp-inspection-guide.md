@@ -10,7 +10,7 @@
 **Structure:** [`prompts/06-manual-mcp-commands.md`](./prompts/figma-mcp-06-manual-mcp-commands.md)Oblique Developers, DS/Oblique Designers  
 **Secondary:** Design System Implementers, MCP Tool Users  
 **Prerequisites:** Figma desktop app, MCP tools knowledge, VS Code with GitHub Copilot  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+**Related Personas:** Design System Personas
 
 ---
 
@@ -20,9 +20,9 @@
 
 **Structure:** **Most Popular Prompts:**
 - [`01-inspect-layer-structure_simple.md`](./prompts/figma-mcp-01-inspect-layer-structure_simple.md) - Basic 04_component analysis
-- [`05-update-04_component-docs.md`](./prompts/figma-mcp-05-update-04_component-docs.md) - Update 04_component docs
-- [`03-analyze-03_semantic-tokens.md`](./prompts/figma-mcp-03-analyze-03_semantic-tokens.md) - Focus on design tokens
-- [`02-compare-04_component-variants.md`](./prompts/figma-mcp-02-compare-04_component-variants.md) - Compare variants
+- `05-update-04_component-docs.md` - Update 04_component docs
+- `03-analyze-03_semantic-tokens.md` - Focus on design tokens
+- `02-compare-04_component-variants.md` - Compare variants
 
 **Note:** **See all prompts:** [`prompts/README.md`](./prompts/README.md)  
 **Summary:** **Validation Reports:** [`prompts/_validation-reports/README.md`](./prompts/_validation-reports/README.md)
@@ -70,7 +70,7 @@
 ### 12.1.2 Direct Component Documentation Update
 
 **For immediate use, drag and drop this file into VS Code Copilot Chat:**
-**Structure:** [`prompts/05-update-04_component-docs.md`](./prompts/figma-mcp-05-update-04_component-docs.md)
+**Structure:** `prompts/05-update-04_component-docs.md`
 
 **Purpose:**
 - **Direct Documentation**: Skip chat output, go straight to file update
@@ -96,12 +96,12 @@
 ### 12.2.2 Component Variant Comparison
 
 **For immediate use, drag and drop this file into VS Code Copilot Chat:**
-**Structure:** [`prompts/02-compare-04_component-variants.md`](./prompts/figma-mcp-02-compare-04_component-variants.md)
+**Structure:** `prompts/02-compare-04_component-variants.md`
 
 ### 12.2.3 Legacy Detection
 
 **For immediate use, drag and drop this file into VS Code Copilot Chat:**
-**Structure:** [`prompts/02-detect-legacy-04_components.md`](./prompts/figma-mcp-02-detect-legacy-04_components.md)
+**Structure:** `prompts/02-detect-legacy-04_components.md`
 
 ---
 
@@ -115,7 +115,7 @@
 ### 12.3.2 Semantic Focus Analysis
 
 **For immediate use, drag and drop this file into VS Code Copilot Chat:**
-**Structure:** [`prompts/03-analyze-03_semantic-tokens.md`](./prompts/figma-mcp-03-analyze-03_semantic-tokens.md)
+**Structure:** `prompts/03-analyze-03_semantic-tokens.md`
 
 ### 12.3.3 Viewport Analysis
 
@@ -129,7 +129,7 @@
 ### 12.4.1 HTML & CSS Generation
 
 **For immediate use, drag and drop this file into VS Code Copilot Chat:**
-**Structure:** [`prompts/04-generate-05_html-css.md`](./prompts/figma-mcp-04-generate-05_html-css.md)
+**Structure:** `prompts/04-generate-05_html-css.md`
 
 ### 12.4.2 React + Tailwind Generation
 
@@ -477,5 +477,3 @@ When preparing design handoff:
 **Maintainers:** Design System Team  
 **Review Schedule:** As needed when Figma 04_component structure changes  
 **Related Documentation:** 
-- [Figma and Tokens for Developers](./02-figma-and-tokens-for-developers.md)
-- [Figma Component Decomposition Strategy](./09-figma-04_component-decomposition-strategy.md)

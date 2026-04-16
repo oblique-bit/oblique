@@ -217,7 +217,7 @@ The hardcoded properties for this component fall into these categories:
 
 ### Reference Documentation
 - See: [Figma Hardcoded Properties Reference](../figma-hardcoded-properties-reference.md)
-- Related: [CSS Layout Token Implementation](../../03-design-tokens/css-layout-tokens.md)
+- Related: CSS Layout Token Implementation
 
 ---
 
@@ -431,9 +431,6 @@ Documentation: [Storybook | Custom docs]
 ## 8. 🔗 Related Resources
 
 ### Documentation Links
-- [Component Guidelines](../../04-components/01-overview.md)
-- [Design Token Architecture](../../03-design-tokens/references/technical/architecture-patterns.md) 
-- [Accessibility Standards](../../06-guidelines/accessibility.md)
 
 ### Figma Resources
 - [Component Library File](https://figma.com/file/[fileKey])

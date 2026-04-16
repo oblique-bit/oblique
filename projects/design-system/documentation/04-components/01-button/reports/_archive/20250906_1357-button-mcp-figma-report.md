@@ -6,7 +6,7 @@
 **Analyst:** GitHub Copilot
 
 > ****Requirements:** Component Requirements**: Check the detailed [button overview documentation](../../button-overview.md) for the current button design system implementation.  
-> ****Structure:** Previous Analyses**: Archived reports available in [_archive folder](./_archive/).
+> ****Structure:** Previous Analyses**: Archived reports available in _archive folder.
 
 ---
 

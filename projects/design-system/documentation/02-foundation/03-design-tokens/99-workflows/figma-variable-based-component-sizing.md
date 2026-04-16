@@ -9,13 +9,13 @@
 **Primary:** DS/Oblique Developers, DS/Oblique Designers  
 **Secondary:** Component Architects, Token System Maintainers  
 **Prerequisites:** Understanding of Figma variables, component architecture, design token systems  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+**Related Personas:** Design System Personas
 
 ## Overview
 This document outlines the implementation of variable-based sizing for Oblique's 4 core components (Button, Badge, Tag, Pill) to replace size variants and enable semantic flexibility while reducing variant explosion.
 
 ## Strategic Context
-Based on the [Variables vs Variants Strategic Analysis](./07-figma-variables-vs-variants-strategic-analysis.md), moving sizing from variants to variables reduces potential variants by 75% while enabling semantic differentiation per component.
+Based on the Variables vs Variants Strategic Analysis, moving sizing from variants to variables reduces potential variants by 75% while enabling semantic differentiation per component.
 
 ## Existing Token Architecture Analysis
 
@@ -173,9 +173,7 @@ Collection: Button-Sizes
 5. **Document Usage Guidelines**: Create guidance for when to use each size per component
 
 ## Related Documentation
-- [Variables vs Variants Strategic Analysis](./07-figma-variables-vs-variants-strategic-analysis.md)
 - [Component Token Architecture](../../03-design-tokens/)
-- [Sizing System Guidelines](../../03-design-tokens/responsiveness.md)
 
 ---
 *This variable-based sizing system enables semantic flexibility while building on Oblique's existing token architecture and reducing system complexity.*

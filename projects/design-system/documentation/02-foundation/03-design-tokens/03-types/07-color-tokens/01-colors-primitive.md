@@ -91,7 +91,7 @@ Primitive colors serve as the foundation for all semantic color compilation, fee
 - **Rule**: No semantic consumption conflicts, safe for any decorative purpose
 - **Note**: Low-saturation neutral scales would be ideal for decoration due to minimal semantic implications, but cobalt is reserved for low-emphasis semantic purposes (strategic use of desaturation to create emphasis hierarchies while maintaining functional meanings)
 
-**For comprehensive guidance on decorative vs semantic color usage, see [Color System Overview](colors-overview.md#decorative-vs-semantic-color-usage).**
+**For comprehensive guidance on decorative vs semantic color usage, see Color System Overview.**
 
 **Usage Recommendations (in order of preference):**
 

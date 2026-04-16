@@ -42,24 +42,24 @@ Sizes: `xs` 16px · `sm` 20px · `md` 24px (default) · `lg` 32px
 
 ## **Design:** Design Resources
 
-- **Token Documentation:** [Icon Slot Tokens](../03-design-tokens/)
+- **Token Documentation:** Icon Slot Tokens
 - **Token Structure:** `ob.c.icon.*` tokens in `src/lib/themes/04_component/atom/icon/`
-- **Accessibility Guidelines:** [A11y Icon Standards](_reports/03-compliance/)
+- **Accessibility Guidelines:** A11y Icon Standards
 
 ## **Note:**️ Developer Resources
 
 - **Implementation Guide:** [03-implementation.md](03-implementation.md)
-- **Code Examples:** [Examples Repository](link-to-examples)
-- **Token Integration:** [Token Usage Guide](../03-design-tokens/)
+- **Code Examples:** Examples Repository
+- **Token Integration:** Token Usage Guide
 
 ## **Summary:** Quality Status
 
 | Validation Type | Status | Last Check |
 |----------------|--------|------------|
 | **Technical** | **Success:** Pass | [Sep 9, 2025](_reports/01-technical/) |
-| **Tokenization** | **Success:** Pass | [Sep 9, 2025](_reports/02-tokenization/) |
+| **Tokenization** | **Success:** Pass | Sep 9, 2025 |
 | **Compliance** | ⏳ Pending | Implementation required |
-| **Design Quality** | **Success:** Pass | [Sep 9, 2025](_reports/04-quality/) |
+| **Design Quality** | **Success:** Pass | Sep 9, 2025 |
 
 ## **Architecture:** Implementation Status
 

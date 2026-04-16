@@ -27,39 +27,39 @@
 ### Category 01: Layer Structure Inspection
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
-| 01-inspect-layer-structure_simple | 130% | **Success:** Excellent | Keep | [View Report](./01-inspect-layer-structure_simple_report.md) |
-| 01-inspect-layer-structure_detailed | TBD | **Success:** Excellent | Keep | [View Report](./01-inspect-layer-structure_detailed_report.md) |
+| 01-inspect-layer-structure_simple | 130% | **Success:** Excellent | Keep | View Report |
+| 01-inspect-layer-structure_detailed | TBD | **Success:** Excellent | Keep | View Report |
 
 ### Category 02: Component Analysis
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
-| 02-compare-04_component-variants | TBD | 🟡 Good | Update | [View Report](./02-compare-04_component-variants_report.md) |
-| 02-detect-legacy-04_components | TBD | 🟡 Good | Update | [View Report](./02-detect-legacy-04_components_report.md) |
+| 02-compare-04_component-variants | TBD | 🟡 Good | Update | View Report |
+| 02-detect-legacy-04_components | TBD | 🟡 Good | Update | View Report |
 
 ### Category 03: Token & Variable Analysis
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
-| 03-analyze-03_semantic-tokens | TBD | **Success:** Excellent | Keep | [View Report](./03-analyze-03_semantic-tokens_report.md) |
-| 03-analyze-viewport-modes | TBD | **Success:** Excellent | Keep | [View Report](./03-analyze-viewport-modes_report.md) |
-| 03-extract-variable-definitions | TBD | **Success:** Excellent | Keep | [View Report](./03-extract-variable-definitions_report.md) |
+| 03-analyze-03_semantic-tokens | TBD | **Success:** Excellent | Keep | View Report |
+| 03-analyze-viewport-modes | TBD | **Success:** Excellent | Keep | View Report |
+| 03-extract-variable-definitions | TBD | **Success:** Excellent | Keep | View Report |
 
 ### Category 04: Code Generation
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
-| 04-generate-05_html-css | TBD | **Success:** Excellent | Keep | [View Report](./04-generate-05_html-css_report.md) |
-| 04-generate-react-tailwind | TBD | 🟡 Good | Update | [View Report](./04-generate-react-tailwind_report.md) |
-| 04-generate-with-context | TBD | **Warning:** Needs Work | Major Update | [View Report](./04-generate-with-context_report.md) |
+| 04-generate-05_html-css | TBD | **Success:** Excellent | Keep | View Report |
+| 04-generate-react-tailwind | TBD | 🟡 Good | Update | View Report |
+| 04-generate-with-context | TBD | **Warning:** Needs Work | Major Update | View Report |
 
 ### Category 05: Documentation & Rules
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
-| 05-create-design-rules | TBD | **Warning:** Needs Work | Major Update | [View Report](./05-create-design-rules_report.md) |
-| 05-update-04_component-docs | TBD | **Success:** Excellent | Keep | [View Report](./05-update-04_component-docs_report.md) |
+| 05-create-design-rules | TBD | **Warning:** Needs Work | Major Update | View Report |
+| 05-update-04_component-docs | TBD | **Success:** Excellent | Keep | View Report |
 
 ### Category 06: Manual Operations
 | Prompt | Score | Status | Action | Report |
 |--------|-------|--------|--------|---------|
-| 06-manual-mcp-commands | 30% | **Error:** Poor | Replace/Remove | [View Report](./06-manual-mcp-commands_report.md) |
+| 06-manual-mcp-commands | 30% | **Error:** Poor | Replace/Remove | View Report |
 
 ---
 

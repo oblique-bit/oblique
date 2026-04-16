@@ -9,7 +9,7 @@
 **Primary:** DS/Oblique Designers, DS/Oblique Developers  
 **Secondary:** Design System Architects, Product Designers  
 **Prerequisites:** Advanced Figma knowledge, component design experience, understanding of design tokens  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+**Related Personas:** Design System Personas
 
 ## Overview
 

@@ -115,10 +115,10 @@ The brand color system uses Swiss federal red (bundesrot) to maintain visual con
 
 ## Related Documentation
 
-- [Color Tokens Overview](colors-overview.md) - Complete color system introduction
-- [Semantic Colors Architecture](colors-03_semantic.md) - Layer system and static colors
-- [Interaction Colors](colors-03_semantic-interaction.md) - How brand integrates with selection states
-- [Token Consumption Guidelines](../guidelines-token-consumption.md) - Implementation rules
+- Color Tokens Overview - Complete color system introduction
+- Semantic Colors Architecture - Layer system and static colors
+- Interaction Colors - How brand integrates with selection states
+- Token Consumption Guidelines - Implementation rules
 
 ---
 

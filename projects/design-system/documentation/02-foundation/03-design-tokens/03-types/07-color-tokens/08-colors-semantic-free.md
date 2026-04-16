@@ -73,4 +73,4 @@ These are non-binding examples. Each project assigns its own meaning.
 
 ---
 
-*For related documentation, see [Status Colors](./07-colors-semantic-status.md), [Neutral Colors](./colors-03_semantic-neutral.md) and [Interaction Colors](./colors-03_semantic-interaction.md)*
+*For related documentation, see [Status Colors](./07-colors-semantic-status.md), Neutral Colors and Interaction Colors*

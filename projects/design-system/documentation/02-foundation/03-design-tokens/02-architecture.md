@@ -24,7 +24,7 @@
 - Single source of truth for design decisions
 
 ### **Figma-First Token Creation**
-Following the [Tokenization Process](./03-workflows/tokenization-process.md):
+Following the Tokenization Process:
 - **Primary Rule**: If a token cannot be used in Figma, it should not be created
 - **Implementation Flexibility**: Developers can work around code limitations through creative implementation
 - **Design Intent Preservation**: All design decisions preserved (tokenized or documented)

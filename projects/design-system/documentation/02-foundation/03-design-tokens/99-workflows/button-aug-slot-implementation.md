@@ -9,7 +9,7 @@
 **Primary:** DS/Oblique Designers, DS/Oblique Developers  
 **Secondary:** Component Implementation Specialists, Figma Advanced Users  
 **Prerequisites:** Understanding of slot component architecture, advanced Figma component knowledge  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+**Related Personas:** Design System Personas
 
 ---
 

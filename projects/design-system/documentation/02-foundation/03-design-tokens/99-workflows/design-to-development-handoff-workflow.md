@@ -475,18 +475,11 @@ npm run build:tokens  # Generate current compiled CSS
 
 ### Essential References
 - [Figma Hardcoded Properties Reference](./figma-hardcoded-properties-reference.md)
-- [Design Token Architecture](../../03-design-tokens/references/technical/architecture-patterns.md)
-- [Component Implementation Guidelines](../../04-components/01-overview.md)
 
 ### Developer Tools & Templates  
 - [Component Handoff Template](./templates/component-handoff-template.md)
-- [MCP Command Reference](./templates/mcp-handoff-commands.md)
-- [Token Validation Scripts](./validation-tools/)
 
 ### Design System Resources
-- [Accessibility Guidelines](../../06-guidelines/accessibility.md)
-- [Theme Implementation Guide](../../03-design-tokens/themes/)
-- [Component Testing Standards](../../05-patterns/testing.md)
 
 ---
 

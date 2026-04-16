@@ -4,7 +4,7 @@
 **Primary:** DS/Oblique Developers  
 **Secondary:** DS/Oblique Designers, Product/Project Developers  
 **Prerequisites:** Figma desktop app, VS Code, basic MCP knowledge  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#12-dsobl)
+**Related Personas:** Design System Personas
 
 ## Overview
 
@@ -52,7 +52,7 @@ This document covers the developer workflow for working with design tokens throu
 
 ## Figma MCP Inspection
 
-For detailed Figma MCP prompts and workflows, see the **[Figma MCP Inspection Guide](./12-figma-mcp-inspection-guide.md)**.
+For detailed Figma MCP prompts and workflows, see the **Figma MCP Inspection Guide**.
 
 ### Quick Start Commands
 
@@ -68,9 +68,9 @@ mcp_figma_dev_mod_get_image
 ```
 
 ### Common Workflows
-- **[Layer Structure Inspection](./12-figma-mcp-inspection-guide.md#121-layer-structure-inspection)**: Extract component layer hierarchies
-- **[Token & Variable Analysis](./12-figma-mcp-inspection-guide.md#123-token--variable-analysis)**: Extract variable definitions and semantic tokens
-- **[Code Generation](./12-figma-mcp-inspection-guide.md#124-code-generation)**: Generate HTML/CSS and React components
+- **Layer Structure Inspection**: Extract component layer hierarchies
+- **Token & Variable Analysis**: Extract variable definitions and semantic tokens
+- **Code Generation**: Generate HTML/CSS and React components
 
 ## Handling Unsupported Tokens in Figma
 
@@ -127,7 +127,6 @@ These tokens (e.g., text vertical trim, responsive typography scales, or complex
 
 **Last Updated**: September 2025  
 **Related Documents**: 
-- [Figma MCP Inspection Guide](./12-figma-mcp-inspection-guide.md) - Complete collection of Figma MCP prompts and workflows
+- Figma MCP Inspection Guide - Complete collection of Figma MCP prompts and workflows
 - [Component Identification](./readme.md)
-- [Design Tokens](./design-tokens/)
 - [Protected Files](./readme.md)

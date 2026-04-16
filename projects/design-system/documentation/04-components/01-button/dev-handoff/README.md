@@ -11,7 +11,7 @@ This folder contains materials specifically prepared for developer handoff:
 ### 📋 **Implementation Guides**
 - **[🎯 Button Component Handoff Specification](button-component-handoff-specification.md)** - Complete formal handoff document
 - **[Implementation Summary](implementation-summary.md)** - Complete implementation overview and guidelines
-- **[Design-to-Development Workflow](design-to-development-handoff-workflow.md)** - Step-by-step handoff process
+- **Design-to-Development Workflow** - Step-by-step handoff process
 
 ### 🎨 **Generated Code Examples**  
 - **[AI Generated Code Preview](ai-generated-code-preview/)** - Complete folder of generated code examples
@@ -31,15 +31,15 @@ This folder contains materials specifically prepared for developer handoff:
 ## Usage
 
 1. **Start Here**: Begin with [🎯 Button Component Handoff Specification](button-component-handoff-specification.md)
-2. **Follow Process**: Use [Design-to-Development Workflow](design-to-development-handoff-workflow.md) 
+2. **Follow Process**: Use Design-to-Development Workflow 
 3. **Reference Code**: Explore [AI Generated Code Preview](ai-generated-code-preview/) for examples
 4. **Validate**: Test with [Token Validation Tool](button-flex-direction-token-validation.html)
 
 ## Related Documentation
 
 - [Button Overview](../button-overview.md) - Component overview and design rationale
-- [Token Decisions](../token-decisions/) - Token-specific decisions and validation
-- [AI Generated Code](../ai-generated-code-preview/) - Generated code examples
+- Token Decisions - Token-specific decisions and validation
+- AI Generated Code - Generated code examples
 - [Reports](../reports/) - Validation and testing reports
 
 ---

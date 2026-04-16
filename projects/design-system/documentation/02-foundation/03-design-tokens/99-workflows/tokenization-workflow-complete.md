@@ -259,7 +259,6 @@ Developers can reject 04_components for:
 - [Component Tokens](../03-types/06-component-tokens.md)
 
 - [MCP Inspection Guide](./figma-mcp-inspection-guide.md)
-- [Tokenization Checklist](../../03-design-tokens/tokenization-checklist.md)
 
 ---
 

@@ -56,9 +56,9 @@ Before using these prompts, ensure you have:
 
 ## Related Documentation
 
-- [12-figma-mcp-inspection-guide.md](../12-figma-mcp-inspection-guide.md) - Complete workflow guide
-- [02-figma-and-tokens-for-developers.md](../02-figma-and-tokens-for-developers.md) - Token development guide
-- [09-figma-04_component-decomposition-strategy.md](../09-figma-04_component-decomposition-strategy.md) - Component strategy
+- 12-figma-mcp-inspection-guide.md - Complete workflow guide
+- 02-figma-and-tokens-for-developers.md - Token development guide
+- 09-figma-04_component-decomposition-strategy.md - Component strategy
 
 ## Troubleshooting
 

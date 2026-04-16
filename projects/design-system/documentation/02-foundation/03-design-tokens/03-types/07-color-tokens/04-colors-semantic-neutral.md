@@ -113,12 +113,12 @@ ob.s.color.neutral.{property}.{contrast_level}.{inversity_variation}
 
 ## Related Documentation
 
-- [Color Tokens Overview](colors-overview.md) - Complete color system introduction
-- [Semantic Colors Architecture](colors-03_semantic.md) - Layer system and organization
-- [Brand Colors](colors-03_semantic-brand.md) - Brand colors that complement neutral foundations
-- [Interaction Colors](colors-03_semantic-interaction.md) - How neutrals support interactive elements
-- [Status Colors](colors-03_semantic-status.md) - Status colors that build on neutral foundations
-- [Token Consumption Guidelines](../guidelines-token-consumption.md) - Implementation rules
+- Color Tokens Overview - Complete color system introduction
+- Semantic Colors Architecture - Layer system and organization
+- Brand Colors - Brand colors that complement neutral foundations
+- Interaction Colors - How neutrals support interactive elements
+- Status Colors - Status colors that build on neutral foundations
+- Token Consumption Guidelines - Implementation rules
 
 ---
 

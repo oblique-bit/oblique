@@ -8,7 +8,7 @@
 **Primary:** DS/Oblique Developers, DS/Oblique Designers  
 **Secondary:** Product/Project Developers (for reference)  
 **Prerequisites:** Design system knowledge, token architecture understanding  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+**Related Personas:** Design System Personas
 
 ---
 

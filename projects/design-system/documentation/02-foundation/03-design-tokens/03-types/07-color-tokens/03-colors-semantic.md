@@ -229,10 +229,10 @@ ob.s.color.brand → {ob.p.color.basic.bundesrot} → #ff0000
 
 ## **Related Documentation**
 
-- [Color Tokens Overview](./colors-overview.md) - Complete color system documentation
-- [Modes System](../../02-modes/) - How modes work with semantic colors
-- [Token Consumption Guidelines](../guidelines-token-consumption.md) - How to use tokens properly
-- [Token Architecture](../architecture.md) - Token structure and naming patterns
+- Color Tokens Overview - Complete color system documentation
+- Modes System - How modes work with semantic colors
+- Token Consumption Guidelines - How to use tokens properly
+- Token Architecture - Token structure and naming patterns
 
 ---
 

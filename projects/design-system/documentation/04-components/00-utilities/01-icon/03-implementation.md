@@ -157,4 +157,4 @@ The component automatically includes:
 
 **Architecture Details**: See [icon Architecture](02-architecture.md)  
 **Usage Guidelines**: See [icon Guidelines](04-guidelines.md)  
-**Examples Repository**: [icon Examples]({EXAMPLES_LINK})
+**Examples Repository**: icon Examples

@@ -108,4 +108,4 @@ For reference, here's how common devices map to our two-viewport strategy:
 ---
 
 **Last Updated:** January 2025  
-**Related Documentation:** [Token Consumption Guidelines](./guidelines-token-consumption.md), [Modes System](./_index.md)
+**Related Documentation:** Token Consumption Guidelines, Modes System

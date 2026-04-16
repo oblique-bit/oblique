@@ -23,17 +23,17 @@ To avoid confusion about what impacts component sizing, we establish clear **res
 
 **UI Scale mode controls** individual component dimensions and affects primarily **Molecules** (following Atomic Design principles):
 - **Button**, **Pills**, **Tags**, **Inputs** - individual component sizing (sm/md/lg)
-- **Control**: [System consumer](../07-workflow/consumers/README.md#target-audience) can override the default component size based on contextual importance
+- **Control**: System consumer can override the default component size based on contextual importance
 
 **Density mode controls** spacing and layout density, primarily affecting **Data components and some Organisms**:
 - **Tables**, **Lists**, **Forms** - container spacing and layout density
 - **Purpose**: Information efficiency and screen real estate optimization  
-- **Control**: System [mode](../01-introduction/glossary.md#mode-figma-context) defined by [product designer](02-personas.md#21-productproject-designers) to match product needs (compact/comfortable/spacious). Unlike Lightness [modes](../01-introduction/glossary.md#mode-figma-context) (light/dark), density is not offered as an end-user switch, though products may optionally add this in application settings for specific use cases. In practice, [product designers](02-personas.md#21-productproject-designers) select the appropriate density **[variable mode](../01-introduction/glossary.md#mode-figma-context)** in Figma's right panel when designing their interfaces.
+- **Control**: System mode defined by product designer to match product needs (compact/comfortable/spacious). Unlike Lightness modes (light/dark), density is not offered as an end-user switch, though products may optionally add this in application settings for specific use cases. In practice, product designers select the appropriate density **variable mode** in Figma's right panel when designing their interfaces.
 
 ### **What Density Controls vs What It Doesn't**
 **✅ Density Controls:**
 - **Information efficiency**: Controls how much content fits on screen without compromising usability
-- **Product-level density**: System [mode](../01-introduction/glossary.md#mode-figma-context) set by [product designer](02-personas.md#21-productproject-designers) to match specific product needs
+- **Product-level density**: System mode set by product designer to match specific product needs
 - **Container-level control**: Affects layout containers (tables, forms, lists) not individual components
 - **Outer spacing**: Triggers spacing outside components, mostly atoms and molecules
 - **Visual density**: Determines overall page layout density with outer gaps, margins, and layout breathing room

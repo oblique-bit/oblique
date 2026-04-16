@@ -9,7 +9,7 @@
 **Primary:** DS/Oblique Designers, DS/Oblique Developers  
 **Secondary:** Component Architects, Figma Library Maintainers  
 **Prerequisites:** Advanced Figma component knowledge, performance improvement understanding  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md)
+**Related Personas:** Design System Personas
 
 ## Overview
 
@@ -23,7 +23,7 @@ Strategic approach to decomposing complex, variant-heavy components into smaller
 
 Button component with 480 variants causes performance issues in Figma across multiple pages.
 
-**User Impact**: Affects [internal designers and business analysts](../../02-foundation/02-personas.md) who primarily use browser-based Figma. Large variant sets create significant performance degradation in browser environments.
+**User Impact**: Affects internal designers and business analysts who primarily use browser-based Figma. Large variant sets create significant performance degradation in browser environments.
 
 ### Maintenance Complexity
 

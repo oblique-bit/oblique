@@ -19,7 +19,7 @@ This ensures you’re clearing out any outdated token references and keeping you
 **Primary:** DS/Oblique Designers  
 **Secondary:** DS/Oblique Developers  
 **Prerequisites:** Figma desktop app, MCP tools access, Token Studio knowledge  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#11-dsobl)
+**Related Personas:** Design System Personas
 
 This document provides diagnostic methods for troubleshooting design variables in Figma, particularly when working with Token Studio and variable detachment.
 

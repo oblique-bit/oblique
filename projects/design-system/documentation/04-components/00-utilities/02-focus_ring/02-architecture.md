@@ -193,4 +193,4 @@ Since Figma doesn't support `outline-offset` equivalent as variables, focus ring
 
 **Implementation Details**: See [Focus Ring Implementation Guide](03-implementation.md)  
 **Usage Guidelines**: See [Focus Ring Usage Guidelines](04-guidelines.md)  
-**Research Evidence**: See [Accessibility Research](_research/accessibility-research/wcag-compliance-study.md)
+**Research Evidence**: See Accessibility Research

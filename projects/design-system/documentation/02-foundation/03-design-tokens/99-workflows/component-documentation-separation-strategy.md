@@ -178,7 +178,7 @@ Based on industry analysis of 8 major design systems, remove buttons consistentl
 - Consistent touch targets
 - Clear differentiation from circular icon buttons
 
-*Research source: [Remove Button Industry Analysis](_research/competitive-analysis/2025-09-08_remove-button-industry-analysis.md)*
+*Research source: Remove Button Industry Analysis*
 
 ### Why Separate Remove Sub04_component?
 Remove buttons require specialized behavior that generic icon buttons cannot provide:
@@ -186,7 +186,7 @@ Remove buttons require specialized behavior that generic icon buttons cannot pro
 - Specialized keyboard support (Delete/Backspace)
 - Context-aware sizing within parent 04_components
 
-*Research source: [Remove vs Icon-Only Decision](_research/decision-logs/2025-09-07_remove-sub04_component-decision.md)*
+*Research source: Remove vs Icon-Only Decision*
 ```
 
 #### Research Documentation Structure

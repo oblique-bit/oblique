@@ -8,7 +8,7 @@
 **Primary:** DS/Oblique Developers  
 **Secondary:** DS/Oblique Designers  
 **Prerequisites:** Basic understanding of design tokens and Token Studio  
-**Related Personas:** [Design System Personas](../../02-foundation/02-personas.md#12-dsobl)
+**Related Personas:** Design System Personas
 
 ## Design System Token Management
 

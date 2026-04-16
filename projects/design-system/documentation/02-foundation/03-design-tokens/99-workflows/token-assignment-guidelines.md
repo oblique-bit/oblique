@@ -12,7 +12,7 @@
 
 This document defines rules for token assignment (consumption) across all token types in the Oblique Design System. Following these guidelines ensures proper token architecture, theming capabilities, and semantic consistency.
 
-**Related**: See [Tokenization Process](../tokenization-process.md) for Part 1: Creating Tokens
+**Related**: See Tokenization Process for Part 1: Creating Tokens
 
 ---
 
@@ -37,7 +37,7 @@ Components -> S3 Semantic Compilation -> S1 Lightness -> Primitive
 3. **S2 and S3 layers reference S1 directly for simplified maintenance**
 4. **S1 layer handles all theme switching (light.json/dark.json files)**
 
-**Exception:** Global tokens (`ob.g.*`) can be referenced by any level. See [Global Tokens](../../03-types/01-global-tokens.md) for more details.
+**Exception:** Global tokens (`ob.g.*`) can be referenced by any level. See Global Tokens for more details.
 
 ---
 

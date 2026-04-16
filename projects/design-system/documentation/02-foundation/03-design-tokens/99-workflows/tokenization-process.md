@@ -8,7 +8,7 @@
 
 > **If a token cannot be used in Figma, then it should not be created.**
 
-**Reference**: See [Figma Unsupported Properties](20-figma-unsupported-properties.md) for comprehensive list of CSS properties that cannot be controlled by Figma variables and therefore should not be tokenized.
+**Reference**: See Figma Unsupported Properties for comprehensive list of CSS properties that cannot be controlled by Figma variables and therefore should not be tokenized.
 
 If a token cannot be directly used in code, the developer may propose alternative approaches:
 
@@ -23,7 +23,7 @@ After tokens are created, they must be properly assigned to components and eleme
 2. **Code Assignment**: Developer implements tokens through generated CSS/SCSS  
 3. **Validation**: Verify visual and functional consistency between Figma preview and code output
 
-**Detailed Assignment Rules**: See [Token Assignment Guidelines](./workflows/developers/token-assignment-guidelines.md) for comprehensive rules on which tokens to use in different scenarios, layer consumption patterns, and semantic hierarchy requirements.
+**Detailed Assignment Rules**: See Token Assignment Guidelines for comprehensive rules on which tokens to use in different scenarios, layer consumption patterns, and semantic hierarchy requirements.
 
 This process prioritizes **Figma compatibility for token creation** while allowing **flexible code implementation strategies** to achieve the desired UX result.
 

@@ -46,10 +46,10 @@ The `focus_ring` component provides a standardized focus indicator pattern for a
 
 ## **Design:** Design Resources
 
-- **Token Documentation:** [Focus Ring Tokens](../../../03-design-tokens/colors/colors-semantic-interaction.md)
+- **Token Documentation:** Focus Ring Tokens
 - **Semantic Token Structure:** `ob.s.border.focus_ring.*` and `ob.s.outline_offset.*` in semantic border.json
 - **Component Token Structure:** `ob.h.button.*.focus_ring.*` in component-specific files
-- **Accessibility Guidelines:** [Focus Management Standards](_reports/03-compliance/)
+- **Accessibility Guidelines:** Focus Management Standards
 
 ---
 

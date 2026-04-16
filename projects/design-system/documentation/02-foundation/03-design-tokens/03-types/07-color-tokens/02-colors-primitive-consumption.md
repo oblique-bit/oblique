@@ -126,9 +126,9 @@
 
 ## Related Documentation
 
-- [Primitive Colors](colors-primitive.md) - Foundation color values and Stage classification
-- [Color Overview](colors-overview.md) - Decorative vs semantic usage guidelines
-- [Semantic Color Architecture](colors-03_semantic.md) - Technical implementation details
+- Primitive Colors - Foundation color values and Stage classification
+- Color Overview - Decorative vs semantic usage guidelines
+- Semantic Color Architecture - Technical implementation details
 
 ---
 
