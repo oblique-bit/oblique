@@ -1484,23 +1484,6 @@
                   "$type": "color",
                   "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_flipped}",
                   "$description": "Background for Free – Indigo. High contrast: Use on containers and areas communicating in-progress or review state."
-                },
-                "inversity_flipped_alpha": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.progress.bg.contrast_high.inversity_flipped_alpha}",
-                  "$description": "Background for Free – Indigo. High contrast, semi-transparent: Use on overlapping surfaces communicating in-progress or review state."
-                }
-              },
-              "contrast_high_alpha": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.progress.bg.contrast_high_alpha.inversity_normal}",
-                  "$description": "Background for Free – Indigo. High contrast, alpha transparency: Use on surfaces where background shows through, communicating in-progress or review state."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s1.color.status.progress.bg.contrast_high_alpha.inversity_flipped}",
-                  "$description": "Background for Free – Indigo. High contrast, alpha transparency: Use on surfaces where background shows through, communicating in-progress or review state."
                 }
               },
               "contrast_medium": {
