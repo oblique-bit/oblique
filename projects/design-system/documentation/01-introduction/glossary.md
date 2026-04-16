@@ -41,10 +41,6 @@ A reusable value in Figma that can be applied to design properties. Variables ar
 
 ## Design System Architecture
 
-### **Babushka Principle**
-A hierarchical inheritance principle where smaller components (children) inherit properties from larger components (parents), similar to nesting dolls. This creates systematic relationships between components of different sizes.
-
-**Application:** Component sizing, spacing relationships, and systematic scaling across the design system.
 
 ### **Inversity**
 The systematic approach to color contrast management in the Oblique Design System. Instead of traditional light/dark modes, inversity provides normal and flipped variants for every color token to ensure proper contrast relationships.
@@ -58,25 +54,17 @@ The systematic approach to color contrast management in the Oblique Design Syste
 A set of values for variables in a collection that represents a specific design context. Modes allow switching between different contexts (sizes, themes, languages) without recreating components.
 
 **Examples:**
-- Size modes: `sm/md/lg`
-- Context modes: `input_mode/filter_mode`
-- Theme modes: `light/dark`
+- ui_scale modes: `sm/md/lg`
+- lightness modes: `light/dark`
 
 ### **Collection (Figma Context)**
-A group of related variables and their modes. Collections organize variables by purpose or domain (e.g., colors, spacing, typography).
+A group of related variables and their modes. Collections organize variables by purpose or domain (e.g., ui_scale, density) and can contain multiple modes.
 
-**Organization:** Can contain up to 5,000 variables with groups for further organization.
 
 ---
 
 ## Component Architecture
 
-### **Component Mode**
-Distinct behavioral and visual variants of a component that serve different use cases while maintaining the same fundamental identity.
-
-**Examples:**
-- `tag.input_mode` - Tags within form inputs
-- `tag.filter_mode` - Tags for filtering interfaces
 
 ### **Modable Property**
 A component property where the identity and intent remain the same, but the attribute or value changes based on context.
