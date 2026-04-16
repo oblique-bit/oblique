@@ -11,6 +11,33 @@ const nodeChildProcess: typeof import('node:child_process') = jest.requireActual
 describe('Ob new command', () => {
 	const projectName = 'SuperduperProject';
 	let parsedObNewCommand: Command<[string], OptionValues>;
+
+	function buildNgAddCommand(options: string[] = []): string {
+		return [
+			`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`,
+			...options,
+		].join(' ');
+	}
+
+	function buildDefaultNgAddCommand(options: string[] = []): string {
+		return buildNgAddCommand([
+			`--title="${projectName}"`,
+			'--locales="de-CH fr-CH it-CH"',
+			'--environments="local dev ref test abn prod"',
+			'--prefix="app"',
+			'--proxy=" "',
+			'--ajv',
+			'--unknownRoute',
+			'--httpInterceptors',
+			'--no-banner',
+			'--externalLink',
+			'--jest',
+			'--eslint',
+			'--husky',
+			...options,
+		]);
+	}
+
 	beforeAll(() => {
 		jest.spyOn(console, 'info').mockImplementation(() => {});
 		jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
@@ -70,15 +97,23 @@ describe('Ob new command', () => {
 				});
 			});
 
-			const optionProperties = Object.entries(obNewSchema.properties).map(property => ({
-				key: property[0],
-				value: property[1],
-			}));
+			const optionProperties = Object.entries(obNewSchema.properties)
+				.filter(([key]) => key !== 'npmrc')
+				.map(property => ({
+					key: property[0],
+					value: property[1],
+				}));
 
 			describe.each(optionProperties)('default option', ({key, value}) => {
-				test(`should have option for ${key} with default value "${value.defaultValue}"`, () => {
-					expect(parsedObNewCommand.opts()[key]).toBe(value.defaultValue);
+				const defaultValue = 'defaultValue' in value ? value.defaultValue : undefined;
+
+				test(`should have option for ${key} with default value "${defaultValue}"`, () => {
+					expect(parsedObNewCommand.opts()[key]).toBe(defaultValue);
 				});
+			});
+
+			test('should not provide a default for npmrc', () => {
+				expect(parsedObNewCommand.opts().npmrc).toBeUndefined();
 			});
 
 			describe('help text', () => {
@@ -158,7 +193,7 @@ describe('Ob new command', () => {
 					{
 						description: 'Option to create an .npmrc file',
 						expected:
-							'--npmrc [boolean] Create .npmrc: If you use this flag, it adds an .npmrc file, suitable for projects located within confederation/federal network. (default: true)',
+							'--npmrc [boolean] Create .npmrc: If you use this flag, it adds an .npmrc file, suitable for projects located within confederation/federal network.',
 					},
 					{
 						description: 'Option to add ESLint and Prettier',
@@ -201,11 +236,10 @@ describe('Ob new command', () => {
 				});
 
 				test(`should call npx ${projectName} with default parameter`, () => {
-					expect(execSync).toHaveBeenNthCalledWith(
-						4,
-						`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --npmrc --eslint --husky`,
-						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'}
-					);
+					expect(execSync).toHaveBeenNthCalledWith(4, buildDefaultNgAddCommand(), {
+						cwd: `${process.cwd()}/${projectName}`,
+						stdio: 'inherit',
+					});
 				});
 			});
 		});
@@ -286,10 +320,40 @@ describe('Ob new command', () => {
 			});
 
 			test(`should call npx ${options.join(', ')}`, () => {
-				const expected = options.includes('--interactive')
-					? `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`
-					: `npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']} --title="${projectName}" --locales="de-CH fr-CH it-CH" --environments="local dev ref test abn prod" --prefix="app" --proxy=" " --ajv --unknownRoute --httpInterceptors --no-banner --externalLink --jest --npmrc --eslint --husky`;
+				const expected = options.includes('--interactive') ? buildNgAddCommand() : buildDefaultNgAddCommand();
 				expect(execSync).toHaveBeenNthCalledWith(4, expected, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+				});
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe.each([
+			{description: 'without npmrc flag', args: [projectName], expectedValue: undefined, expectedOption: []},
+			{description: 'with --npmrc', args: [projectName, '--npmrc'], expectedValue: true, expectedOption: ['--npmrc']},
+			{
+				description: 'with --no-npmrc',
+				args: [projectName, '--no-npmrc'],
+				expectedValue: false,
+				expectedOption: ['--no-npmrc'],
+			},
+		])('npmrc handling $description', ({args, expectedValue, expectedOption}) => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse(args, {from: 'user'});
+			});
+
+			test('should parse the npmrc option', () => {
+				expect(parsedObNewCommand.opts().npmrc).toBe(expectedValue);
+			});
+
+			test('should pass the npmrc option to ng add', () => {
+				expect(execSync).toHaveBeenNthCalledWith(4, buildDefaultNgAddCommand(expectedOption), {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 				});
