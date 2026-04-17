@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ObENotificationType} from '../notification/notification.model';
+import {ObSpinnerService} from '../spinner/spinner.module';
 
 // TODO: make sure that app.module.ts provides an instance of HttpApiInterceptorConfig filled with data from environment[.prod].ts
 
@@ -26,6 +27,12 @@ export class ObHttpApiInterceptorConfig {
 		 * Defines if spinner should be activated whenever an API request starts.
 		 */
 		spinner: true,
+
+		/**
+		 * Defines the spinner channel used whenever an API request starts.
+		 * This value must only be set together with `spinner = true`.
+		 */
+		spinnerChannel: ObSpinnerService.CHANNEL,
 
 		/**
 		 * Configuration of notification on error
