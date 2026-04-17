@@ -17,6 +17,7 @@
 
 ### **Core Concepts**
 - [**Tokenization Process**](./99-workflows/tokenization-process.md) - **START HERE** - Creating and assigning tokens in the design system
+- [**Token Usage Guide**](./05-token-usage-guide.md) - **Which token do I use?** - Practical decision guide for color, dimension, and typography
 - [**Architecture**](./02-architecture.md) - Token structure, layer system, and architectural patterns
 - [**Token Naming**](./03-naming.md) - Comprehensive naming conventions, patterns, and guidelines  
 - [**System Requirements**](./01-system-requirements.md) - Tooling compatibility priorities and cross-platform analysis
@@ -86,6 +87,7 @@
 
 | **Task** | **Documentation** | **Quick Action** |
 |---|---|---|
+| **Which token do I use?** | [Token Usage Guide](./05-token-usage-guide.md) | Decision trees for color, dimension, typography |
 | **Apply tokens in Figma** | Designer Workflow | Use Tokens Studio plugin, never Figma right panel |
 | **Implement tokens in code** | Token Assignment Guidelines | Use S3 semantic tokens for components |
 | **Understand color hierarchy** | [Colors Overview](./01-types/07-color-tokens/00-colors-overview.md) | Check S1→S2→S3 semantic chain |
