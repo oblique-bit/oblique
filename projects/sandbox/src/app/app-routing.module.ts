@@ -16,10 +16,6 @@ const appRoutes: Routes = [
 		path: 'starterkit',
 		loadChildren: async () => import('./starterkit/starterkit.module').then(module => module.StarterkitModule),
 	},
-	{
-		path: 'design-system',
-		loadChildren: async () => import('./design-system/design-system.module').then(module => module.DesignSystemModule),
-	},
 	{path: '', redirectTo: 'home', pathMatch: 'full'},
 	{path: '**', redirectTo: 'unknown-route'},
 ];
