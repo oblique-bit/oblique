@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {TranslationsService} from './translations-service';
+import {TranslationsService} from './translations.service';
 import {HttpClient} from '@angular/common/http';
 import {of} from 'rxjs';
 import {provideObliqueTranslations} from '@oblique/oblique';
@@ -114,12 +114,59 @@ describe(TranslationsService.name, () => {
 			});
 		});
 
+		describe('infoLinks with partial data', () => {
+			beforeEach(() => {
+				service.initializeTranslations('en,fr', 'en', 'en');
+			});
+
+			it('should ignore missing labels and urls for a language', () => {
+				const setTranslationSpy = jest.spyOn(translate, 'setTranslation');
+				setTranslationSpy.mockClear();
+
+				service.handleTranslations(
+					JSON.stringify([
+						{
+							en: 'Contact link',
+							links: {fr: 'https://fr.contact.com'},
+						},
+					]),
+					''
+				);
+
+				expect(setTranslationSpy).toHaveBeenCalledWith('fr', {}, true);
+			});
+
+			it('should set a label without setting a url when the language-specific url is missing', () => {
+				const setTranslationSpy = jest.spyOn(translate, 'setTranslation');
+				setTranslationSpy.mockClear();
+
+				service.handleTranslations(
+					JSON.stringify([
+						{
+							en: 'Contact link',
+							links: {fr: 'https://fr.contact.com'},
+						},
+					]),
+					''
+				);
+
+				expect(setTranslationSpy).toHaveBeenCalledWith('en', {'info-link.0.label': 'Contact link'}, true);
+			});
+		});
+
 		describe('profileLinks', () => {
 			describe('empty', () => {
 				it('should not fail', () => {
 					translate.setFallbackLang('en');
 					service.initializeTranslations('en', 'en', 'en');
 					const func = (): void => service.handleTranslations('', null);
+					expect(func).not.toThrow();
+				});
+
+				it('should not fail for non-array json', () => {
+					translate.setFallbackLang('en');
+					service.initializeTranslations('en', 'en', 'en');
+					const func = (): void => service.handleTranslations('', '{}');
 					expect(func).not.toThrow();
 				});
 			});

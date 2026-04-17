@@ -14,19 +14,4 @@ module.exports = {
 	},
 	coverageDirectory: '<rootDir>/coverage/service-navigation',
 	coveragePathIgnorePatterns: ['<rootDir>/projects/oblique'],
-	coverageThreshold: {
-		...baseConfig.coverageThreshold,
-		'projects/service-navigation-web-component/src/app/service-navigation-web-component.component.ts': {
-			statements: 95,
-			branches: 73,
-			functions: 83,
-			lines: 95,
-		},
-		'projects/service-navigation-web-component/src/app/translations-service.ts': {
-			statements: 100,
-			branches: 82,
-			functions: 100,
-			lines: 100,
-		},
-	},
 };
