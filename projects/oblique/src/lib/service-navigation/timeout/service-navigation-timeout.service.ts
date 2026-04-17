@@ -63,7 +63,7 @@ export class ObServiceNavigationTimeoutService {
 		let doesLogoutCookieExist = true;
 		let doesTimeoutCookieExist = true;
 		this.ngZone.runOutsideAngular(() => {
-			setInterval(() => {
+			this.window.setInterval(() => {
 				const logoutCheck = Cookies.get(this.redirectorService.logoutCookieName) !== undefined;
 				const logoutCookieAppears = !doesLogoutCookieExist && logoutCheck;
 				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
@@ -92,7 +92,7 @@ export class ObServiceNavigationTimeoutService {
 		const seconds1minute = 60;
 
 		this.ngZone.runOutsideAngular(() => {
-			setInterval(() => {
+			this.window.setInterval(() => {
 				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
 				if (!isUserLoggedIn) {
 					return;

@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ObILocale, ObILocaleObject} from '../master-layout/master-layout.model';
+import {WINDOW} from '../utilities';
 
 @Injectable({
 	providedIn: 'root',
@@ -15,6 +16,7 @@ export class ObLanguageService {
 	private readonly translate = inject(TranslateService);
 	private readonly rendererFactory = inject(RendererFactory2);
 	private readonly document = inject<Document>(DOCUMENT);
+	private readonly window = inject(WINDOW);
 	private readonly adapter = inject<DateAdapter<unknown>>(DateAdapter, {optional: true});
 
 	constructor() {
@@ -59,7 +61,7 @@ export class ObLanguageService {
 
 	private languageChange(locales: string[], renderer: Renderer2, html: HTMLElement): void {
 		this.translate.onLangChange.pipe(map(lang => lang.lang)).subscribe(lang => {
-			localStorage.setItem(ObLanguageService.token, lang);
+			this.window.localStorage.setItem(ObLanguageService.token, lang);
 			renderer.setAttribute(html, 'lang', lang);
 			this.locale.next(this.getLocale(locales, lang));
 		});
@@ -71,7 +73,7 @@ export class ObLanguageService {
 
 	private getCurrentLang(languages: string[], defaultLanguage: string): string {
 		// prettier-ignore
-		return this.getSupportedLang(languages, localStorage.getItem(ObLanguageService.token))
+		return this.getSupportedLang(languages, this.window.localStorage.getItem(ObLanguageService.token))
 			|| this.getSupportedLang(languages, this.translate.getBrowserLang())
 			|| this.getSupportedLang(languages, defaultLanguage)
 			|| languages[0];

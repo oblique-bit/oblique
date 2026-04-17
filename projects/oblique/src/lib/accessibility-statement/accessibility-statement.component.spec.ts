@@ -405,6 +405,7 @@ describe(AccessibilityStatementComponent.name, () => {
 						return historyStack.length;
 					},
 				},
+				localStorage: window.localStorage,
 			} as unknown as Window;
 
 			const masterLayoutConfig = new ObMasterLayoutConfig();

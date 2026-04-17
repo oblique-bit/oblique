@@ -20,7 +20,7 @@ import {filter, first} from 'rxjs/operators';
 import {ObEToggleType, defaultConfig} from './popover.model';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outsideFilter';
-import {isNotKeyboardEventOnButton} from '../utilities';
+import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 
 export const OBLIQUE_POPOVER_TOGGLE_HANDLE = new InjectionToken<ObEToggleType>(
 	'Define the toggle handle for all Oblique popover'
@@ -73,6 +73,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private readonly globalToggleHandle = inject<ObEToggleType>(OBLIQUE_POPOVER_TOGGLE_HANDLE, {optional: true});
 	private readonly globalCloseOnlyOnToggle = inject(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, {optional: true});
 	private readonly globalAppendToBody = inject(OBLIQUE_POPOVER_APPEND_TO_BODY, {optional: true});
+	private readonly window = inject(WINDOW);
 
 	constructor() {
 		const el = inject(ElementRef);
@@ -146,7 +147,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		this.renderer.insertBefore(parent, this.popover, referenceNode);
 		this.instance = createPopper(this.host, this.popover, defaultConfig);
 		// without the setTimeout, the options aren't applied
-		setTimeout(() => {
+		this.window.setTimeout(() => {
 			this.setPopperOptionsAndUpdate();
 		});
 		this.isExpanded = true;
