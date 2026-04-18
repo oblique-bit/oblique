@@ -33,10 +33,6 @@
                   "$type": "color",
                   "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_flipped}"
                 },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.focus.inversity_flipped}"
-                },
                 "pressed": {
                   "$type": "color",
                   "$value": "{ob.s.color.interaction.standard_states.fg.pressed.inversity_flipped}"
@@ -55,10 +51,6 @@
                 "hover": {
                   "$type": "color",
                   "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_normal}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.focus.inversity_normal}"
                 },
                 "pressed": {
                   "$type": "color",
@@ -81,10 +73,6 @@
                   "$type": "color",
                   "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_normal}"
                 },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.focus.inversity_normal}"
-                },
                 "pressed": {
                   "$type": "color",
                   "$value": "{ob.s.color.interaction.standard_states.fg.pressed.inversity_normal}"
@@ -103,10 +91,6 @@
                 "hover": {
                   "$type": "color",
                   "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_flipped}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.focus.inversity_flipped}"
                 },
                 "pressed": {
                   "$type": "color",
@@ -129,10 +113,6 @@
                   "$type": "color",
                   "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_normal}"
                 },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.focus.inversity_normal}"
-                },
                 "pressed": {
                   "$type": "color",
                   "$value": "{ob.s.color.interaction.standard_states.fg.pressed.inversity_normal}",
@@ -152,10 +132,6 @@
                 "hover": {
                   "$type": "color",
                   "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_flipped}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.focus.inversity_flipped}"
                 },
                 "pressed": {
                   "$type": "color",

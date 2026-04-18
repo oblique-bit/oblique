@@ -44,7 +44,7 @@
             }
           }
         },
-        "component": {
+        "ui_scale": {
           "size": {
             "xs": {
               "$type": "sizing",
@@ -68,14 +68,16 @@
             }
           }
         },
-        "inline_text": {
+        "typography_context": {
           "size": {
             "body": {
               "$type": "sizing",
               "$value": "{ob.s.dimension.dynamic.typography_context.md}",
               "$description": "Inline icon size for body text only. Reacts to typography_context mode."
             }
-          },
+          }
+        },
+        "inline_text": {
           "body": {
             "spacing": {
               "vertical": {

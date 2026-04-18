@@ -1505,7 +1505,7 @@
               "opacity": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt_alpha.100}",
+                  "$value": "{ob.p.color.white_alpha.700}",
                   "$description": "Opacity-based disabled background for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
