@@ -20,142 +20,49 @@
             }
           }
         },
-        "dynamic": {
-          "label_icon": {
-            "spacing": {
-              "padding": {
-                "vertical": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
-                },
-                "horizontal": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.xl.rem}"
-                }
-              },
-              "gap": {
+        "label_icon": {
+          "spacing": {
+            "padding": {
+              "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px}"
+                "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+              },
+              "horizontal": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.dynamic.ui_scale.element.xl.rem}"
               }
             },
-            "container": {
-              "size": {
-                "min_height": {
-                  "$type": "sizing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.container.xs.px}",
-                  "$description": "old {ob.s.dimension.dynamic.ui_scale.spacing.md.rem}\n"
-                }
-              }
-            },
-            "icon_size": {
-              "$type": "sizing",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.md.rem}",
-              "$description": "Standard proportional size of the icon inside the label_icon button subcomponent."
+            "gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px}"
             }
           },
-          "icon_only": {
-            "spacing": {
-              "padding": {
-                "vertical": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
-                },
-                "horizontal": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
-                }
-              }
-            }
-          },
-          "remove": {
-            "spacing": {
-              "padding": {
-                "vertical": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.none.rem}",
-                  "$description": "Remove button requires zero padding."
-                },
-                "horizontal": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.none.rem}",
-                  "$description": "Remove button requires zero padding."
-                }
-              }
-            }
-          },
-          "icon": {
+          "container": {
             "size": {
-              "$type": "sizing",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.md.rem}"
+              "min_height": {
+                "$type": "sizing",
+                "$value": "{ob.s.dimension.dynamic.ui_scale.container.xs.px}",
+                "$description": "old {ob.s.dimension.dynamic.ui_scale.spacing.md.rem}\n"
+              }
             }
+          },
+          "icon_size": {
+            "$type": "sizing",
+            "$value": "{ob.s.dimension.static.ui_scale.spacing.md.rem}",
+            "$description": "Standard proportional size of the icon inside the label_icon button subcomponent."
           }
         },
-        "static": {
-          "label_icon": {
-            "spacing": {
-              "padding": {
-                "vertical": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.element.sm.rem}"
-                },
-                "horizontal": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.element.xl.rem}"
-                }
-              },
-              "gap": {
+        "icon_only": {
+          "spacing": {
+            "padding": {
+              "vertical": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.static.ui_scale.element.sm.px}"
+                "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+              },
+              "horizontal": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
               }
-            },
-            "container": {
-              "size": {
-                "min_height": {
-                  "$type": "sizing",
-                  "$value": "{ob.s.dimension.static.ui_scale.container.xs.px}"
-                }
-              }
-            },
-            "icon_size": {
-              "$type": "sizing",
-              "$value": "{ob.s.dimension.static.ui_scale.spacing.md.rem}",
-              "$description": "Standard proportional size of the icon inside the label_icon button subcomponent."
-            }
-          },
-          "icon_only": {
-            "spacing": {
-              "padding": {
-                "vertical": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.element.sm.rem}"
-                },
-                "horizontal": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.element.sm.rem}"
-                }
-              }
-            }
-          },
-          "remove": {
-            "spacing": {
-              "padding": {
-                "vertical": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
-                  "$description": "Remove button requires zero padding."
-                },
-                "horizontal": {
-                  "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
-                  "$description": "Remove button requires zero padding."
-                }
-              }
-            }
-          },
-          "icon": {
-            "size": {
-              "$type": "sizing",
-              "$value": "{ob.s.dimension.static.ui_scale.spacing.md.rem}"
             }
           }
         },
@@ -165,6 +72,20 @@
               "$type": "asset",
               "$value": "cancel-circle",
               "$description": "Default icon asset for button.remove."
+            }
+          },
+          "spacing": {
+            "padding": {
+              "vertical": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
+                "$description": "Remove button requires zero padding."
+              },
+              "horizontal": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
+                "$description": "Remove button requires zero padding."
+              }
             }
           }
         },
@@ -177,6 +98,12 @@
           "$type": "borderWidth",
           "$value": "{ob.s.border_width.xs}",
           "$description": "Tinest border width possible for buttons for aesthetics and functionality: differentiation between secondary and tertiary. Static token, not reacting on changing component-size modes."
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{ob.s.dimension.static.ui_scale.spacing.md.rem}"
+          }
         }
       }
     }
