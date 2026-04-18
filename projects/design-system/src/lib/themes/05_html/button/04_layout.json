@@ -131,7 +131,7 @@
               "size": {
                 "min_height": {
                   "$type": "sizing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.container.xs.px}",
+                  "$value": "{ob.s.dimension.static.ui_scale.container.xs.px}",
                   "$description": "old {ob.s.dimension.dynamic.ui_scale.spacing.md.rem}\n"
                 }
               }
