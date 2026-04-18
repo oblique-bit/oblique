@@ -20,23 +20,57 @@
             }
           }
         },
-        "label_icon": {
-          "spacing": {
-            "padding": {
-              "vertical": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+        "dynamic": {
+          "label_icon": {
+            "spacing": {
+              "padding": {
+                "vertical": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+                },
+                "horizontal": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.xl.rem}"
+                }
               },
-              "horizontal": {
+              "gap": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.ui_scale.element.xl.rem}"
+                "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px}"
               }
-            },
-            "gap": {
-              "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px}"
             }
           },
+          "icon_only": {
+            "spacing": {
+              "padding": {
+                "vertical": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+                },
+                "horizontal": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+                }
+              }
+            }
+          },
+          "remove": {
+            "spacing": {
+              "padding": {
+                "vertical": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
+                  "$description": "Remove button requires zero padding."
+                },
+                "horizontal": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
+                  "$description": "Remove button requires zero padding."
+                }
+              }
+            }
+          }
+        },
+        "label_icon": {
           "container": {
             "size": {
               "min_height": {
@@ -52,20 +86,6 @@
             "$description": "Standard proportional size of the icon inside the label_icon button subcomponent."
           }
         },
-        "icon_only": {
-          "spacing": {
-            "padding": {
-              "vertical": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
-              },
-              "horizontal": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
-              }
-            }
-          }
-        },
         "remove": {
           "icon": {
             "asset": {
@@ -73,26 +93,12 @@
               "$value": "cancel-circle",
               "$description": "Default icon asset for button.remove."
             }
-          },
-          "spacing": {
-            "padding": {
-              "vertical": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
-                "$description": "Remove button requires zero padding."
-              },
-              "horizontal": {
-                "$type": "spacing",
-                "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
-                "$description": "Remove button requires zero padding."
-              }
-            }
           }
         },
         "border_radius": {
           "$type": "borderRadius",
-          "$value": "{ob.s.border_radius.sm}",
-          "$description": "Standard border radius for button-aug components - consistent across all sizes"
+          "$value": "{ob.s.border_radius.md}",
+          "$description": "Standard border radius for button components - consistent across all sizes"
         },
         "border_width": {
           "$type": "borderWidth",
@@ -103,6 +109,56 @@
           "size": {
             "$type": "sizing",
             "$value": "{ob.s.dimension.static.ui_scale.spacing.md.rem}"
+          }
+        },
+        "static": {
+          "label_icon": {
+            "spacing": {
+              "padding": {
+                "vertical": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+                },
+                "horizontal": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.xl.rem}"
+                }
+              },
+              "gap": {
+                "$type": "spacing",
+                "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px}"
+              }
+            }
+          },
+          "icon_only": {
+            "spacing": {
+              "padding": {
+                "vertical": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+                },
+                "horizontal": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+                }
+              }
+            }
+          },
+          "remove": {
+            "spacing": {
+              "padding": {
+                "vertical": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
+                  "$description": "Remove button requires zero padding."
+                },
+                "horizontal": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
+                  "$description": "Remove button requires zero padding."
+                }
+              }
+            }
           }
         }
       }
