@@ -1257,7 +1257,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.100}",
+                  "$value": "{ob.p.color.basic.white}",
                   "$description": "High contrast background for emphasis-high interactive elements. Inverse surface."
                 }
               },
@@ -1269,7 +1269,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.200}",
+                  "$value": "{ob.p.color.steelblue.100}",
                   "$description": "Medium contrast background for emphasis-high interactive elements. Inverse surface."
                 }
               },
@@ -1281,7 +1281,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.300}",
+                  "$value": "{ob.p.color.steelblue.200}",
                   "$description": "Low contrast background for emphasis-high interactive elements. Inverse surface."
                 }
               },
@@ -1293,7 +1293,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.300}",
+                  "$value": "{ob.p.color.steelblue.200}",
                   "$description": "Low contrast background for emphasis-high interactive elements. Inverse surface."
                 }
               }
@@ -1307,7 +1307,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.900}",
+                  "$value": "{ob.p.color.steelblue.700}",
                   "$description": "High contrast foreground for emphasis-high interactive elements. Inverse surface."
                 }
               },
@@ -1319,7 +1319,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.800}",
+                  "$value": "{ob.p.color.steelblue.600}",
                   "$description": "Medium contrast foreground for emphasis-high interactive elements. Inverse surface."
                 }
               },
@@ -1331,7 +1331,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.700}",
+                  "$value": "{ob.p.color.steelblue.500}",
                   "$description": "Low contrast foreground for emphasis-high interactive elements. Inverse surface."
                 }
               }
@@ -1345,7 +1345,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.900}",
+                  "$value": "{ob.p.color.steelblue.700}",
                   "$description": "High contrast border for emphasis-high interactive elements. Inverse surface."
                 }
               },
@@ -1357,7 +1357,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.800}",
+                  "$value": "{ob.p.color.steelblue.600}",
                   "$description": "Medium contrast border for emphasis-high interactive elements. Inverse surface."
                 }
               },
@@ -1369,7 +1369,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.700}",
+                  "$value": "{ob.p.color.steelblue.500}",
                   "$description": "Low contrast border for emphasis-high interactive elements. Inverse surface."
                 }
               }
@@ -1444,7 +1444,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.500}",
+                  "$value": "{ob.p.color.cobalt_alpha.100}",
                   "$description": "Solid disabled background for emphasis-high interactive elements. Inverse surface."
                 }
               },
@@ -1455,17 +1455,8 @@
                   "$description": "Opacity-based disabled background for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "alpha",
-                        "value": "0.4",
-                        "space": "srgb"
-                      }
-                    }
-                  },
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.50}",
+                  "$value": "{ob.p.color.white_alpha.400}",
                   "$description": "Opacity-based disabled background for emphasis-high interactive elements. Inverse surface."
                 }
               }
