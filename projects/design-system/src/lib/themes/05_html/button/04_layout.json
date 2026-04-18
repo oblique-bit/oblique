@@ -34,7 +34,7 @@
             },
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+              "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px}"
             }
           },
           "container": {
