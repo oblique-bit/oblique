@@ -1318,7 +1318,7 @@
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.100}",
+                  "$value": "{ob.p.color.steelblue.50}",
                   "$description": "Medium contrast background for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
@@ -1330,7 +1330,7 @@
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.200}",
+                  "$value": "{ob.p.color.steelblue.100}",
                   "$description": "Low contrast background for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
