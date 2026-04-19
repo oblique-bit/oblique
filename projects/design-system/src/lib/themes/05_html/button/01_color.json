@@ -198,7 +198,7 @@
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.interaction.standard_states.bg.pressed.inversity_normal}"
                 },
                 "disabled": {
                   "$type": "color",
@@ -217,7 +217,7 @@
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.interaction.standard_states.bg.pressed.inversity_flipped}"
                 },
                 "disabled": {
                   "$type": "color",
