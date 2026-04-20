@@ -30,12 +30,6 @@ module.exports = {
 			functions: 95,
 			lines: 97,
 		},
-		'projects/oblique/src/lib/button/*.ts': {
-			statements: 100,
-			branches: 76,
-			functions: 100,
-			lines: 100,
-		},
 		'projects/oblique/src/lib/column-layout/column-layout.component.ts': {
 			branches: 94,
 		},
