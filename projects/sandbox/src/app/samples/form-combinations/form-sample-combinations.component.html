@@ -1,0 +1,218 @@
+<h2>Form Combinations</h2>
+<ob-column-layout left="NONE" right="OPENED">
+	<section column-main-content>
+		<form [class]="controls.controls.size.value" [formGroup]="form" (ngSubmit)="submitForm()">
+			<h3>Text input</h3>
+			<mat-form-field obErrorMessages>
+				<mat-label>Input</mat-label>
+				<input formControlName="input" matInput type="text" [placeholder]="placeholder()" />
+				@if (controls.controls.inputClear.value) {
+					<button type="button" [obInputClear]="form.controls.input">
+						<mat-icon svgIcon="xmark_circle" />
+						<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+					</button>
+				}
+				@if (controls.controls.textPrefix.value) {
+					<span matTextPrefix>CHF</span>
+				}
+				@if (controls.controls.iconPrefix.value) {
+					<mat-icon matIconPrefix svgIcon="person" />
+				}
+				@if (controls.controls.iconSuffix.value) {
+					<mat-icon matIconSuffix svgIcon="person" />
+				}
+				@if (controls.controls.textSuffix.value) {
+					<span matTextSuffix>kg</span>
+				}
+				@if (controls.controls.longHint.value) {
+					<mat-hint align="start">{{ longHintText() }}</mat-hint>
+				} @else if (controls.controls.shortHint.value) {
+					<mat-hint align="start">{{ shortHintText() }}</mat-hint>
+				}
+				@if (controls.controls.endHint.value) {
+					<mat-hint align="end">... and "end" hints are supported</mat-hint>
+				}
+				<mat-error />
+			</mat-form-field>
+
+			<h3>ob-autocomplete</h3>
+			<ob-autocomplete
+				type="text"
+				[autocompleteOptions]="autocompleteOptions()"
+				[formControl]="form.controls.autocomplete"
+			>
+				@if (controls.controls.longHint.value) {
+					<mat-hint align="start">{{ longHintText() }}</mat-hint>
+				} @else if (controls.controls.shortHint.value) {
+					<mat-hint align="start">{{ shortHintText() }}</mat-hint>
+				}
+				@if (controls.controls.endHint.value) {
+					<mat-hint align="end">... and "end" hints are supported</mat-hint>
+				}
+
+				<!-- matPrefix don't work. matIconPrefix don't work. matTextPrefix don't work-->
+
+				@if (controls.controls.iconSuffix.value) {
+					<mat-icon matSuffix svgIcon="person" />
+					<!--only matSuffix works. matIconSuffix don't work. matTextSuffix don't work-->
+				}
+
+				<!--error don't work in ob-autocomplete?-->
+			</ob-autocomplete>
+
+			<h3>Textarea</h3>
+			<mat-form-field obErrorMessages [class]="controls.controls.size.value">
+				@if (controls.controls.textPrefix.value) {
+					<span matTextPrefix>CHF&nbsp;</span>
+				}
+				@if (controls.controls.iconPrefix.value) {
+					<mat-icon matIconPrefix svgIcon="person" />
+				}
+				<mat-label>Textarea</mat-label>
+				<textarea formControlName="textarea" matInput [placeholder]="placeholder()"></textarea>
+				@if (controls.controls.inputClear.value) {
+					<button type="button" [obInputClear]="form.controls.textarea">
+						<mat-icon svgIcon="xmark_circle" />
+						<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+					</button>
+				}
+				@if (controls.controls.iconSuffix.value) {
+					<mat-icon matSuffix svgIcon="person" />
+				}
+				@if (controls.controls.textSuffix.value) {
+					<span matTextSuffix>&nbsp;kg</span>
+				}
+				@if (controls.controls.longHint.value) {
+					<mat-hint align="start">{{ longHintText() }}</mat-hint>
+				} @else if (controls.controls.shortHint.value) {
+					<mat-hint align="start">{{ shortHintText() }}</mat-hint>
+				}
+				@if (controls.controls.endHint.value) {
+					<mat-hint align="end">... and "end" hints are supported</mat-hint>
+				}
+				<mat-error />
+			</mat-form-field>
+
+			<h3>Select</h3>
+			<mat-form-field obErrorMessages [class]="controls.controls.size.value">
+				@if (controls.controls.textPrefix.value) {
+					<span matTextPrefix>CHF&nbsp;</span>
+				}
+				@if (controls.controls.iconPrefix.value) {
+					<mat-icon matIconPrefix svgIcon="person" />
+				}
+				<mat-label>Select</mat-label>
+				<mat-select formControlName="select" [placeholder]="placeholder()">
+					@for (option of selectOptions(); track option) {
+						<mat-option [value]="option">{{ option }}</mat-option>
+					}
+				</mat-select>
+				@if (controls.controls.iconSuffix.value) {
+					<mat-icon matSuffix svgIcon="person" />
+				}
+				@if (controls.controls.textSuffix.value) {
+					<span matTextSuffix>&nbsp;kg</span>
+				}
+				@if (controls.controls.longHint.value) {
+					<mat-hint align="start">{{ longHintText() }}</mat-hint>
+				} @else if (controls.controls.shortHint.value) {
+					<mat-hint align="start">{{ shortHintText() }}</mat-hint>
+				}
+				@if (controls.controls.endHint.value) {
+					<mat-hint align="end">... and "end" hints are supported</mat-hint>
+				}
+				<mat-error />
+			</mat-form-field>
+
+			<h3>Datepicker</h3>
+			<mat-form-field obErrorMessages [class]="controls.controls.size.value">
+				<mat-label>Your birthday</mat-label>
+				<input formControlName="datepicker" matInput [matDatepicker]="picker" [placeholder]="placeholder()" />
+				<mat-datepicker-toggle matIconSuffix [for]="picker" />
+				<mat-datepicker #picker />
+				@if (controls.controls.inputClear.value) {
+					<button type="button" [obInputClear]="form.controls.datepicker">
+						<mat-icon svgIcon="xmark_circle" />
+						<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+					</button>
+				}
+				@if (controls.controls.textPrefix.value) {
+					<span matTextPrefix>Birthday:</span>
+				}
+				@if (controls.controls.iconPrefix.value) {
+					<mat-icon matIconPrefix svgIcon="person" />
+				}
+				@if (controls.controls.iconSuffix.value) {
+					<mat-icon matSuffix svgIcon="person" />
+				}
+				@if (controls.controls.textSuffix.value) {
+					<span matTextSuffix>... I was born</span>
+				}
+				@if (controls.controls.longHint.value) {
+					<mat-hint align="start">{{ longHintText() }}</mat-hint>
+				} @else if (controls.controls.shortHint.value) {
+					<mat-hint align="start">{{ shortHintText() }}, e.g. {{ dateValue() }}</mat-hint>
+				}
+				@if (controls.controls.endHint.value) {
+					<mat-hint align="end">... and "end" hints are supported</mat-hint>
+				}
+				<mat-error />
+			</mat-form-field>
+
+			<div class="button-container">
+				<button matButton obButton="primary" type="submit">Submit</button>
+				<button matButton obButton="primary" type="reset" (click)="resetForm()">Reset</button>
+			</div>
+		</form>
+	</section>
+
+	<ng-container column-right-content>
+		<h3>Controls</h3>
+		<form [formGroup]="controls">
+			<fieldset>
+				<legend>Size</legend>
+				<mat-radio-group formControlName="size">
+					<mat-radio-button value="">Default</mat-radio-button>
+					<mat-radio-button value="ob-form-sm">ob-form-sm</mat-radio-button>
+					<mat-radio-button value="ob-form-lg">ob-form-lg</mat-radio-button>
+				</mat-radio-group>
+			</fieldset>
+			<fieldset>
+				<legend>Prefix</legend>
+				<mat-slide-toggle formControlName="iconPrefix">Icon prefix</mat-slide-toggle>
+				<mat-slide-toggle formControlName="textPrefix">Text prefix</mat-slide-toggle>
+			</fieldset>
+			<fieldset>
+				<legend>Suffix</legend>
+				<mat-slide-toggle formControlName="iconSuffix">Icon suffix</mat-slide-toggle>
+				<mat-slide-toggle formControlName="textSuffix">Text suffix</mat-slide-toggle>
+			</fieldset>
+			<fieldset>
+				<legend>Texts</legend>
+				<mat-slide-toggle formControlName="placeholder">Placeholder</mat-slide-toggle>
+				@if (controls.controls.placeholder.value) {
+					<mat-hint>Focus into a form field to see the placeholder</mat-hint>
+				}
+				<mat-slide-toggle formControlName="prefilled">Prefilled values</mat-slide-toggle>
+			</fieldset>
+			<fieldset>
+				<legend>Hints</legend>
+				<mat-slide-toggle formControlName="shortHint">Start hint (short)</mat-slide-toggle>
+				<mat-slide-toggle formControlName="longHint">Start hint (long)</mat-slide-toggle>
+				<mat-slide-toggle formControlName="endHint">End hint</mat-slide-toggle>
+			</fieldset>
+			<fieldset>
+				<legend>State</legend>
+				<mat-slide-toggle formControlName="disabled">Disabled</mat-slide-toggle>
+				<mat-slide-toggle formControlName="error">Error</mat-slide-toggle>
+			</fieldset>
+			<fieldset>
+				<legend>Input Clear</legend>
+				<mat-slide-toggle formControlName="inputClear"> Input clear </mat-slide-toggle>
+				@if (controls.controls.inputClear.value) {
+					<mat-hint>Type something into one of the inputs to see the clear button</mat-hint>
+				}
+			</fieldset>
+		</form>
+	</ng-container>
+</ob-column-layout>

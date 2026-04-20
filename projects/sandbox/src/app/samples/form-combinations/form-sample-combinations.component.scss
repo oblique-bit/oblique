@@ -1,0 +1,16 @@
+@use "projects/oblique/src/styles/scss/core/variables";
+
+.button-container {
+	display: flex;
+	gap: variables.$ob-spacing-default;
+}
+
+fieldset,
+.mat-mdc-radio-button {
+	display: flex;
+	flex-direction: column;
+}
+
+mat-slide-toggle {
+	padding-top: variables.$ob-spacing-sm;
+}
