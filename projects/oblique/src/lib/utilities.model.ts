@@ -1,3 +1,4 @@
+import type {InjectionToken} from '@angular/core';
 import {MatFormFieldDefaultOptions} from '@angular/material/form-field';
 import {MatCheckboxDefaultOptions} from '@angular/material/checkbox';
 import {MatRadioDefaultOptions} from '@angular/material/radio';
@@ -39,6 +40,38 @@ export interface ObIObliqueConfiguration {
 	translate?: ObITranslateConfig;
 	hasLanguageInUrl?: boolean;
 }
+
+export interface ObIHistoryState {
+	initialLength: number;
+}
+
+export type ObIObliqueTestingConfiguration = Omit<ObIObliqueConfiguration, 'accessibilityStatement'> & {
+	accessibilityStatement?: ObIAccessibilityStatementConfiguration;
+};
+
+export type ObMaterialProvider = keyof Required<ObIMaterialConfig>;
+
+export interface ObIMaterialProviderConfiguration<Type> {
+	provide: InjectionToken<Type>;
+	useValue: Type;
+}
+
+export type ObIMaterialProviders = {
+	[Property in ObMaterialProvider]: ObIMaterialProviderConfiguration<Required<ObIMaterialConfig>[Property]>;
+};
+
+export type ObIObliqueConfigurationWithDefaults = Omit<
+	ObIObliqueConfiguration,
+	'accessibilityStatement' | 'material' | 'icon' | 'translate' | 'hasLanguageInUrl'
+> & {
+	accessibilityStatement: ObIAccessibilityStatementConfiguration;
+	material: Required<NonNullable<ObIObliqueConfiguration['material']>>;
+	icon: NonNullable<ObIObliqueConfiguration['icon']>;
+	translate: NonNullable<ObIObliqueConfiguration['translate']>;
+	hasLanguageInUrl: NonNullable<ObIObliqueConfiguration['hasLanguageInUrl']>;
+};
+
+export type DeepPartial<Type> = Type extends object ? {[Property in keyof Type]?: DeepPartial<Type[Property]>} : Type;
 
 export interface ObITranslateConfig {
 	flatten?: boolean;

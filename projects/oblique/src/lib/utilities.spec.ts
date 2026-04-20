@@ -21,8 +21,10 @@ import {
 	OB_HISTORY_STATE,
 	OB_TRANSLATION_CONFIGURATION,
 	WINDOW,
+	getLocalesConfiguration,
 	getRootRoute,
 	isNotKeyboardEventOnButton,
+	mergeDeep,
 	obFocusWithOutline,
 	provideObliqueConfiguration,
 	provideObliqueTestingConfiguration,
@@ -32,10 +34,19 @@ import {
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './paginator/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
-import {Observable, firstValueFrom, of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
 import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
+import {ObIAccessibilityStatementConfiguration, ObIObliqueConfiguration} from './utilities.model';
+
 const translations: any = {};
+const accessibilityStatement: ObIAccessibilityStatementConfiguration = {
+	applicationName: 'appName',
+	createdOn: new Date('2025-01-31'),
+	conformity: 'full',
+	applicationOperator: 'Operator',
+	contact: [{email: 'e@mail.com'}],
+};
 class FakeLoader implements TranslateLoader {
 	// eslint-disable-next-line @typescript-eslint/naming-convention,@typescript-eslint/no-unused-vars
 	getTranslation(_lang: string): Observable<any> {
@@ -46,15 +57,74 @@ class FakeLoader implements TranslateLoader {
 describe('utilities', () => {
 	describe('windowProvider', () => {
 		it('should return Window if provided with document', () => {
-			expect(windowProvider(document)).toEqual(window);
+			const actualWindowProvider = windowProvider(document);
+			expect(actualWindowProvider).toEqual(window);
 		});
 
 		it('should return en empty object if not provided document', () => {
-			expect(windowProvider({} as Document)).toEqual({});
+			const actualWindowProvider = windowProvider({} as Document);
+			expect(actualWindowProvider).toEqual({});
+		});
+	});
+
+	describe('mergeDeep', () => {
+		it('should return the override when the base is not a plain object', () => {
+			const override = {value: 'override'};
+
+			expect(mergeDeep(new Date('2025-01-31'), override as never)).toBe(override);
+		});
+
+		it('should return the override when the override is not a plain object', () => {
+			const override = new Date('2025-01-31');
+
+			expect(mergeDeep({value: 'base'}, override as never)).toBe(override);
+		});
+
+		it('should merge nested plain objects', () => {
+			const baseConfig = {
+				outer: {
+					base: true,
+					keep: 'value',
+					override: false,
+				},
+			};
+			const configOverride = {
+				outer: {
+					override: true,
+				},
+			};
+			expect(mergeDeep(baseConfig, configOverride)).toEqual({
+				outer: {
+					base: true,
+					keep: 'value',
+					override: true,
+				},
+			});
 		});
 	});
 
 	describe('provideObliqueConfiguration', () => {
+		describe('with minimal required configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueConfiguration({accessibilityStatement}),
+					],
+				});
+			});
+
+			it('should initialize language and apply default providers', () => {
+				const obLanguageService = TestBed.inject(ObLanguageService);
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(obLanguageService.initialize).toHaveBeenCalled();
+				expect(translationConfiguration).toEqual({flatten: true});
+			});
+		});
+
 		describe('with default configuration', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
@@ -76,38 +146,52 @@ describe('utilities', () => {
 			});
 
 			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
+				const currentWindow = TestBed.inject(WINDOW);
+
+				expect(currentWindow).toEqual(window);
 			});
 
 			describe('Paginator configuration', () => {
 				it('should provide MatPaginatorIntl as ObPaginatorService', () => {
-					expect(TestBed.inject(MatPaginatorIntl) instanceof ObPaginatorService).toBe(true);
+					const paginatorIntl = TestBed.inject(MatPaginatorIntl);
+
+					expect(paginatorIntl instanceof ObPaginatorService).toBe(true);
 				});
 			});
 
 			describe('Icon configuration', () => {
 				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith(undefined);
+					const iconService = TestBed.inject(ObIconService);
+
+					expect(iconService.registerOnAppInit).toHaveBeenCalledWith({registerObliqueIcons: true});
 				});
 			});
 
 			describe('Language configuration', () => {
 				it('should call "initialize" on "ObLanguageService"', () => {
-					expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalled();
+					const languageService = TestBed.inject(ObLanguageService);
+
+					expect(languageService.initialize).toHaveBeenCalled();
 				});
 			});
 
 			describe('Translate configuration', () => {
 				it('should provide "TranslateService"', () => {
-					expect(TestBed.inject(TranslateService)).toBeTruthy();
+					const translateService = TestBed.inject(TranslateService);
+
+					expect(translateService).toBeTruthy();
 				});
 
 				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
-					expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
+					const translateService = TestBed.inject(TranslateService);
+
+					expect(translateService.currentLoader).toBeInstanceOf(ObMultiTranslateLoader);
 				});
 
 				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({flatten: true});
+					const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+					expect(translationConfiguration).toEqual({flatten: true});
 				});
 			});
 
@@ -120,13 +204,15 @@ describe('utilities', () => {
 					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
 					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}},
 				])('should create $token injection token', ({token, config}) => {
-					expect(TestBed.inject(token)).toEqual(config);
+					const actualToken = TestBed.inject(token);
+					expect(actualToken).toEqual(config);
 				});
 			});
 
 			describe('accessibility statement configuration', () => {
 				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
-					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
+					const actualAccessibilityStatement = TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION);
+					expect(actualAccessibilityStatement).toEqual({
 						applicationName: 'appName',
 						createdOn: new Date('2025-01-31'),
 						conformity: 'none',
@@ -138,13 +224,17 @@ describe('utilities', () => {
 
 			describe('has language in URL', () => {
 				it('should provide OB_HAS_LANGUAGE_IN_URL as false', () => {
-					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(false);
+					const hasLanguageInUrl = TestBed.inject(OB_HAS_LANGUAGE_IN_URL);
+
+					expect(hasLanguageInUrl).toBe(false);
 				});
 			});
 
 			describe('history state', () => {
 				it('should capture the initial browser history length', () => {
-					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
+					const historyState = TestBed.inject(OB_HISTORY_STATE);
+
+					expect(historyState).toEqual({initialLength: window.history.length});
 				});
 			});
 		});
@@ -187,25 +277,34 @@ describe('utilities', () => {
 			});
 
 			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
+				const actualWindow = TestBed.inject(WINDOW);
+				expect(actualWindow).toEqual(window);
 			});
 
 			describe('Icon configuration', () => {
 				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({additionalIcons: []});
+					const obIconService = TestBed.inject(ObIconService);
+
+					expect(obIconService.registerOnAppInit).toHaveBeenCalledWith({
+						registerObliqueIcons: true,
+						additionalIcons: [],
+					});
 				});
 			});
 
 			describe('Translate configuration', () => {
 				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+					const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+					expect(translationConfiguration).toEqual({
 						additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
 						flatten: false,
 					});
 				});
 
 				it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-					expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
+					const translateService = TestBed.inject(TranslateService);
+					expect(translateService.compiler).toBeInstanceOf(TranslateNoOpCompiler);
 				});
 			});
 
@@ -236,13 +335,17 @@ describe('utilities', () => {
 
 			describe('has language in URL', () => {
 				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
-					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
+					const hasLanguageInUrl = TestBed.inject(OB_HAS_LANGUAGE_IN_URL);
+
+					expect(hasLanguageInUrl).toBe(true);
 				});
 			});
 
 			describe('history state', () => {
 				it('should capture the initial browser history length', () => {
-					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
+					const historyState = TestBed.inject(OB_HISTORY_STATE);
+
+					expect(historyState).toEqual({initialLength: window.history.length});
 				});
 			});
 		});
@@ -276,7 +379,192 @@ describe('utilities', () => {
 			});
 
 			it('should initialize language with locales from translate configuration', () => {
-				expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(locales);
+				const obLanguageService = TestBed.inject(ObLanguageService);
+
+				expect(obLanguageService.initialize).toHaveBeenCalledWith(locales);
+			});
+		});
+
+		describe('with override-only configuration', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement,
+							translate: {flatten: false},
+						}),
+					],
+				});
+			});
+
+			it('should keep provided accessibility statement while overriding translation options', () => {
+				const accessibilityStatementConfiguration = TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION);
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(accessibilityStatementConfiguration).toEqual(accessibilityStatement);
+				expect(translationConfiguration).toEqual({flatten: false});
+			});
+		});
+
+		describe('with partial material override', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement,
+							material: {
+								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
+							},
+						}),
+					],
+				});
+			});
+
+			it('should merge overridden material option with defaults and keep untouched defaults', () => {
+				const matFormFieldDefaults = TestBed.inject(MAT_FORM_FIELD_DEFAULT_OPTIONS);
+				const matCheckboxDefaults = TestBed.inject(MAT_CHECKBOX_DEFAULT_OPTIONS);
+
+				expect(matFormFieldDefaults).toEqual({appearance: 'outline', floatLabel: 'always'});
+				expect(matCheckboxDefaults).toEqual({color: 'primary'});
+			});
+		});
+
+		describe('with explicit undefined in nested material override', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement,
+							material: {
+								MAT_FORM_FIELD_DEFAULT_OPTIONS: {
+									appearance: undefined,
+									floatLabel: 'always',
+								},
+							},
+						}),
+					],
+				});
+			});
+
+			it('should ignore undefined nested overrides and keep default values', () => {
+				const matFormFieldDefaults = TestBed.inject(MAT_FORM_FIELD_DEFAULT_OPTIONS);
+				expect(matFormFieldDefaults).toEqual({appearance: 'outline', floatLabel: 'always'});
+			});
+		});
+
+		describe('with a non-plain configuration object', () => {
+			beforeEach(() => {
+				class NonPlainConfig {
+					accessibilityStatement = accessibilityStatement;
+					material = {
+						MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
+					};
+				}
+
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueConfiguration(
+							new NonPlainConfig() as unknown as Parameters<typeof provideObliqueConfiguration>[0]
+						),
+					],
+				});
+			});
+
+			it('should still apply nested material overrides', () => {
+				const matFormFieldDefaults = TestBed.inject(MAT_FORM_FIELD_DEFAULT_OPTIONS);
+				expect(matFormFieldDefaults).toEqual({appearance: 'outline', floatLabel: 'always'});
+			});
+		});
+
+		describe('with a null-prototype configuration object', () => {
+			beforeEach(() => {
+				const config = Object.assign(Object.create(null), {
+					accessibilityStatement,
+					material: {
+						MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
+					},
+				}) as ObIObliqueConfiguration;
+
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueConfiguration(config),
+					],
+				});
+			});
+
+			it('should merge defaults with null-prototype config objects', () => {
+				expect(TestBed.inject(MAT_FORM_FIELD_DEFAULT_OPTIONS)).toEqual({appearance: 'outline', floatLabel: 'always'});
+			});
+		});
+
+		describe('with partial translate override', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement,
+							translate: {
+								config: {compiler: TranslateNoOpCompiler},
+							},
+						}),
+					],
+				});
+			});
+
+			it('should keep translate defaults while overriding provided options', () => {
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(translationConfiguration).toEqual({flatten: true});
+				expect(TestBed.inject(TranslateService).compiler).toBeInstanceOf(TranslateNoOpCompiler);
+			});
+		});
+
+		describe('with multiple-level partial override', () => {
+			beforeEach(() => {
+				TestBed.configureTestingModule({
+					providers: [
+						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						provideHttpClient(),
+						provideObliqueConfiguration({
+							accessibilityStatement,
+							material: {
+								MAT_TABS_CONFIG: {fitInkBarToContent: true},
+							},
+							translate: {
+								config: {
+									loader: {provide: TranslateLoader, useClass: TranslateNoOpLoader},
+								},
+							},
+						}),
+					],
+				});
+			});
+
+			it('should keep defaults while applying deep partial overrides', () => {
+				expect(TestBed.inject(MAT_TABS_CONFIG)).toEqual({stretchTabs: false, fitInkBarToContent: true});
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(translationConfiguration).toEqual({flatten: true});
+				expect(TestBed.inject(TranslateService).currentLoader).toBeInstanceOf(TranslateNoOpLoader);
 			});
 		});
 
@@ -331,222 +619,6 @@ describe('utilities', () => {
 		});
 	});
 
-	describe('provideObliqueTestingConfiguration', () => {
-		describe('with default parameters', () => {
-			beforeEach(() => {
-				TestBed.configureTestingModule({
-					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
-						provideHttpClient(),
-						provideObliqueTestingConfiguration(),
-					],
-				});
-			});
-
-			it('should initialize language', () => {
-				expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalled();
-			});
-		});
-
-		describe('with default configuration', () => {
-			beforeEach(() => {
-				TestBed.configureTestingModule({
-					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						provideHttpClient(),
-						provideObliqueTestingConfiguration({
-							accessibilityStatement: {
-								applicationName: 'appName',
-								createdOn: new Date('2025-01-31'),
-								conformity: 'none',
-								applicationOperator: 'Operator',
-								contact: [{email: 'e@mail.com'}],
-							},
-						}),
-					],
-				});
-			});
-
-			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
-			});
-
-			describe('Paginator configuration', () => {
-				it('should provide MatPaginatorIntl as ObPaginatorService', () => {
-					expect(TestBed.inject(MatPaginatorIntl) instanceof ObPaginatorService).toBe(true);
-				});
-			});
-
-			describe('Icon configuration', () => {
-				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith(undefined);
-				});
-			});
-
-			describe('Translate configuration', () => {
-				it('should provide "TranslateService"', () => {
-					expect(TestBed.inject(TranslateService)).toBeTruthy();
-				});
-
-				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({flatten: true});
-				});
-
-				describe('TranslateLoader', () => {
-					it('should not be an instance of "TranslateLoader"', () => {
-						expect(TestBed.inject(TranslateService).currentLoader).not.toBeInstanceOf(TranslateLoader);
-					});
-
-					it('should have a "getTranslation" function that returns an observable', () => {
-						expect(TestBed.inject(TranslateService).currentLoader.getTranslation('en')).toBeInstanceOf(Observable);
-					});
-
-					it('should have a "getTranslation" function that emits an empty object', async () => {
-						expect(await firstValueFrom(TestBed.inject(TranslateService).currentLoader.getTranslation('en'))).toEqual(
-							{}
-						);
-					});
-				});
-			});
-
-			describe('Material configuration', () => {
-				it.each([
-					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline'}},
-					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false}},
-					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary'}},
-					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'primary'}},
-					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary'}},
-					{token: MAT_TABS_CONFIG, config: {stretchTabs: false}},
-				])('should create $token injection token', ({token, config}) => {
-					expect(TestBed.inject(token)).toEqual(config);
-				});
-			});
-
-			describe('accessibility statement configuration', () => {
-				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
-					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
-						applicationName: 'appName',
-						createdOn: new Date('2025-01-31'),
-						conformity: 'none',
-						applicationOperator: 'Operator',
-						contact: [{email: 'e@mail.com'}],
-					});
-				});
-			});
-
-			describe('has language in URL', () => {
-				it('should provide OB_HAS_LANGUAGE_IN_URL as false', () => {
-					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(false);
-				});
-			});
-
-			describe('history state', () => {
-				it('should capture the initial browser history length', () => {
-					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
-				});
-			});
-		});
-
-		describe('with custom configuration', () => {
-			beforeEach(() => {
-				TestBed.configureTestingModule({
-					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: TranslateCompiler, useClass: TranslateNoOpCompiler},
-						provideHttpClient(),
-						provideObliqueTestingConfiguration({
-							accessibilityStatement: {
-								applicationName: 'appName',
-								createdOn: new Date('2025-01-31'),
-								conformity: 'none',
-								applicationOperator: 'Operator',
-								contact: [{email: 'e@mail.com'}],
-							},
-							material: {
-								MAT_FORM_FIELD_DEFAULT_OPTIONS: {floatLabel: 'always'},
-								STEPPER_GLOBAL_OPTIONS: {showError: true},
-								MAT_CHECKBOX_OPTIONS: {clickAction: 'check'},
-								MAT_RADIO_OPTIONS: {color: 'accent'},
-								MAT_SLIDE_TOGGLE_OPTIONS: {hideIcon: true},
-								MAT_TABS_CONFIG: {fitInkBarToContent: true},
-							},
-							icon: {
-								additionalIcons: [],
-							},
-							translate: {
-								flatten: false,
-								config: {compiler: TranslateNoOpCompiler},
-								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
-							},
-							hasLanguageInUrl: true,
-						}),
-					],
-				});
-			});
-
-			it('should create WINDOW injection token', () => {
-				expect(TestBed.inject(WINDOW)).toEqual(window);
-			});
-
-			describe('Icon configuration', () => {
-				it('should call "registerOnAppInit" on "ObIconService"', () => {
-					expect(TestBed.inject(ObIconService).registerOnAppInit).toHaveBeenCalledWith({additionalIcons: []});
-				});
-			});
-
-			describe('Translate configuration', () => {
-				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-					expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
-						additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
-						flatten: false,
-					});
-				});
-
-				it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-					expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
-				});
-			});
-
-			describe('Material configuration', () => {
-				it.each([
-					{token: MAT_FORM_FIELD_DEFAULT_OPTIONS, config: {appearance: 'outline', floatLabel: 'always'}},
-					{token: STEPPER_GLOBAL_OPTIONS, config: {displayDefaultIndicatorType: false, showError: true}},
-					{token: MAT_CHECKBOX_DEFAULT_OPTIONS, config: {color: 'primary', clickAction: 'check'}},
-					{token: MAT_RADIO_DEFAULT_OPTIONS, config: {color: 'accent'}},
-					{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, config: {color: 'primary', hideIcon: true}},
-					{token: MAT_TABS_CONFIG, config: {stretchTabs: false, fitInkBarToContent: true}},
-				])('should create $token injection token', ({token, config}) => {
-					expect(TestBed.inject(token)).toEqual(config);
-				});
-			});
-
-			describe('accessibility statement configuration', () => {
-				it('should provide OB_ACCESSIBILITY_STATEMENT_CONFIGURATION', () => {
-					expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual({
-						applicationName: 'appName',
-						createdOn: new Date('2025-01-31'),
-						conformity: 'none',
-						applicationOperator: 'Operator',
-						contact: [{email: 'e@mail.com'}],
-					});
-				});
-			});
-
-			describe('has language in URL', () => {
-				it('should provide OB_HAS_LANGUAGE_IN_URL as true', () => {
-					expect(TestBed.inject(OB_HAS_LANGUAGE_IN_URL)).toBe(true);
-				});
-			});
-
-			describe('history state', () => {
-				it('should capture the initial browser history length', () => {
-					expect(TestBed.inject(OB_HISTORY_STATE)).toEqual({initialLength: window.history.length});
-				});
-			});
-		});
-	});
-
 	describe('provideObliqueTranslations', () => {
 		describe('with locale fallback from ObMasterLayoutConfig through provideObliqueConfiguration', () => {
 			const locale = {
@@ -577,7 +649,8 @@ describe('utilities', () => {
 			});
 
 			it('should initialize language with locale from ObMasterLayoutConfig when translate.locales is not provided', () => {
-				expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(locale);
+				const obLanguageService = TestBed.inject(ObLanguageService);
+				expect(obLanguageService.initialize).toHaveBeenCalledWith(locale);
 			});
 		});
 
@@ -589,20 +662,25 @@ describe('utilities', () => {
 			});
 
 			it('should provide "TranslateService"', () => {
-				expect(TestBed.inject(TranslateService)).toBeTruthy();
+				const translateService = TestBed.inject(TranslateService);
+				expect(translateService).toBeTruthy();
 			});
 
 			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
-				expect(TestBed.inject(TranslateService).currentLoader instanceof ObMultiTranslateLoader).toBe(true);
+				const translateService = TestBed.inject(TranslateService);
+				expect(translateService.currentLoader).toBeInstanceOf(ObMultiTranslateLoader);
 			});
 
 			it('should provide "TRANSLATION_FILES"', () => {
-				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({additionalFiles: undefined, flatten: true});
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(translationConfiguration).toEqual({additionalFiles: undefined, flatten: true});
 			});
 
 			describe('loader', () => {
 				it('should be an instance of "ObMultiTranslateLoader"', () => {
-					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
+					const translateLoader = TestBed.inject(TranslateLoader);
+					expect(translateLoader).toBeInstanceOf(ObMultiTranslateLoader);
 				});
 			});
 
@@ -648,7 +726,9 @@ describe('utilities', () => {
 			});
 
 			it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(translationConfiguration).toEqual({
 					additionalFiles: [
 						{prefix: './path1/', suffix: '.json'},
 						{prefix: './path2/', suffix: '.js'},
@@ -658,12 +738,14 @@ describe('utilities', () => {
 			});
 
 			it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-				expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
+				const translateService = TestBed.inject(TranslateService);
+				expect(translateService.compiler).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 
 			describe('loader', () => {
 				it('should be an instance of "ObMultiTranslateLoader"', () => {
-					expect(TestBed.inject(TranslateLoader) instanceof ObMultiTranslateLoader).toBe(true);
+					const translateLoader = TestBed.inject(TranslateLoader);
+					expect(translateLoader).toBeInstanceOf(ObMultiTranslateLoader);
 				});
 			});
 
@@ -708,18 +790,22 @@ describe('utilities', () => {
 			});
 
 			it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
-				expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({
+				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
+
+				expect(translationConfiguration).toEqual({
 					flatten: false,
 				});
 			});
 
 			it('should use "TranslateNoOpCompiler " as "TranslateLoader"', () => {
-				expect(TestBed.inject(TranslateService).compiler instanceof TranslateNoOpCompiler).toBe(true);
+				const translateService = TestBed.inject(TranslateService);
+				expect(translateService.compiler instanceof TranslateNoOpCompiler).toBe(true);
 			});
 
 			describe('loader', () => {
 				it('should be an instance of "TranslateNoOpLoader "', () => {
-					expect(TestBed.inject(TranslateLoader) instanceof TranslateNoOpLoader).toBe(true);
+					const translateLoader = TestBed.inject(TranslateLoader);
+					expect(translateLoader instanceof TranslateNoOpLoader).toBe(true);
 				});
 			});
 
@@ -739,6 +825,129 @@ describe('utilities', () => {
 					expect(httpClient.get).toHaveBeenCalledTimes(0);
 				});
 			});
+		});
+	});
+
+	describe('provideObliqueTestingConfiguration', () => {
+		const localeFromTranslate = {
+			locales: ['de-CH', 'fr-CH', 'it-CH'],
+			defaultLanguage: 'de',
+			disabled: false,
+			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
+		};
+		const localeFromMasterLayout = {
+			locales: ['en-CH', 'de-CH'],
+			defaultLanguage: 'en',
+			disabled: false,
+			languages: {en: 'English', de: 'Deutsch'},
+		};
+
+		it('should initialize language with locales from translate configuration when provided', () => {
+			TestBed.configureTestingModule({
+				providers: [
+					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+					{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}},
+					provideHttpClient(),
+					provideObliqueTestingConfiguration({
+						translate: {locales: localeFromTranslate},
+					}),
+				],
+			});
+
+			const obLanguageService = TestBed.inject(ObLanguageService);
+			expect(obLanguageService.initialize).toHaveBeenCalledWith(localeFromTranslate);
+		});
+
+		it('should initialize language with locale from ObMasterLayoutConfig when translate locales are not provided', () => {
+			TestBed.configureTestingModule({
+				providers: [
+					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+					{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}},
+					provideHttpClient(),
+					provideObliqueTestingConfiguration(),
+				],
+			});
+
+			expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(localeFromMasterLayout);
+		});
+
+		it('should initialize language with locale from ObMasterLayoutConfig when translate is provided without locales', () => {
+			TestBed.configureTestingModule({
+				providers: [
+					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+					{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}},
+					provideHttpClient(),
+					provideObliqueTestingConfiguration({
+						translate: {flatten: true},
+					}),
+				],
+			});
+
+			expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(localeFromMasterLayout);
+		});
+
+		it('should provide a translate loader returning empty translations', done => {
+			TestBed.configureTestingModule({
+				providers: [
+					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+					{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}},
+					provideHttpClient(),
+					provideObliqueTestingConfiguration(),
+				],
+			});
+
+			TestBed.inject(TranslateService)
+				.currentLoader.getTranslation('de')
+				.subscribe(value => {
+					expect(value).toEqual({});
+					done();
+				});
+		});
+	});
+
+	describe('getLocalesConfiguration', () => {
+		const localeFromMasterLayout = {
+			locales: ['en-CH', 'de-CH'],
+			defaultLanguage: 'en',
+			disabled: false,
+			languages: {en: 'English', de: 'Deutsch'},
+		};
+
+		beforeEach(() => {
+			TestBed.configureTestingModule({
+				providers: [{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}}],
+			});
+		});
+
+		it('should return translate locales when they are provided', () => {
+			const localeFromTranslate = {
+				locales: ['de-CH', 'fr-CH', 'it-CH'],
+				defaultLanguage: 'de',
+				disabled: false,
+				languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
+			};
+
+			const locales = TestBed.runInInjectionContext(() =>
+				getLocalesConfiguration({
+					translate: {locales: localeFromTranslate},
+				} as ObIObliqueConfiguration)
+			);
+
+			expect(locales).toEqual(localeFromTranslate);
+		});
+
+		it('should fall back to ObMasterLayoutConfig locale when translate is undefined', () => {
+			const locales = TestBed.runInInjectionContext(() =>
+				getLocalesConfiguration({
+					translate: undefined,
+				} as ObIObliqueConfiguration)
+			);
+
+			expect(locales).toEqual(localeFromMasterLayout);
 		});
 	});
 
