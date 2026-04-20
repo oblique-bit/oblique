@@ -19,7 +19,7 @@ export class ObGlobalEventsService {
 
 	constructor() {
 		const document = inject<Document>(DOCUMENT);
-		const window = inject<Window>(WINDOW);
+		const window = inject(WINDOW); // don't use ObWindow as it won't be compatible with fromEvent
 
 		this.beforeUnload$ = this.buildObservable<BeforeUnloadEvent>(window, 'beforeunload');
 		this.click$ = this.buildObservable<MouseEvent>(document, 'click');

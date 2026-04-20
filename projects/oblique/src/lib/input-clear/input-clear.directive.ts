@@ -2,6 +2,7 @@ import {DestroyRef, Directive, ElementRef, EventEmitter, Input, OnInit, Output, 
 import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../utilities';
+import {ObWindow} from '../utilities.model';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {fromEvent, startWith} from 'rxjs';
 
@@ -24,7 +25,7 @@ export class ObInputClearDirective implements OnInit {
 
 	private readonly element = inject(ElementRef);
 	private readonly validControlTypes = [AbstractControl, HTMLInputElement, NgModel];
-	private readonly window: Window = inject(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly destroyRef = inject(DestroyRef);
 
 	constructor() {

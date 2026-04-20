@@ -37,6 +37,7 @@ import {
 	ObITranslateConfigInternal,
 	ObMaterialProvider,
 	ObTBanner,
+	ObWindow,
 } from './utilities.model';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
@@ -67,8 +68,30 @@ export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 );
 export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
 
-export function windowProvider(doc: Document): Window {
-	return doc.defaultView || ({} as Window);
+function noop(): void {
+	/* noop */
+}
+
+const mockWindow: ObWindow = {
+	confirm: () => false,
+	history: {length: 0},
+	innerHeight: 700,
+	innerWidth: 700,
+	localStorage: {
+		getItem: () => '',
+		setItem: noop,
+		removeItem: noop,
+	},
+	location: {href: '', host: ''},
+	matchMedia: () => ({matches: false}),
+	open: () => null,
+	pageYOffset: 42,
+	setInterval: () => 1,
+	setTimeout: () => 1,
+} as const;
+
+export function windowProvider(doc: Document): Window | ObWindow {
+	return doc.defaultView ?? mockWindow;
 }
 
 const materialProviders: ObIMaterialProviders = {
@@ -144,7 +167,7 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 			inject(ObIconService).registerOnAppInit(mergedConfig.icon);
 			inject(ObLanguageService).initialize(localesConfiguration);
 			inject(ObRouterService).initialize();
-			inject(OB_HISTORY_STATE).initialLength = inject(WINDOW).history.length;
+			inject(OB_HISTORY_STATE).initialLength = inject<ObWindow>(WINDOW).history.length;
 		}),
 		provideObliqueTranslations(mergedConfig.translate),
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
@@ -172,7 +195,7 @@ export function provideObliqueTestingConfiguration(config: ObIObliqueTestingConf
 			inject(ObIconService).registerOnAppInit(mergedConfig.icon);
 			inject(ObLanguageService).initialize(localesConfiguration);
 			inject(ObRouterService).initialize();
-			inject(OB_HISTORY_STATE).initialLength = inject(WINDOW).history.length;
+			inject(OB_HISTORY_STATE).initialLength = inject<ObWindow>(WINDOW).history.length;
 		}),
 		provideTranslateService({
 			...mergedConfig.translate,

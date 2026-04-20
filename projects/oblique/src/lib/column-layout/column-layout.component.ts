@@ -23,6 +23,7 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObColumnToggleDirective} from './column-toggle.directive';
 import {WINDOW} from '../utilities';
+import {ObWindow} from '../utilities.model';
 import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.model';
 
 @Component({
@@ -63,7 +64,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 
 	private readonly unsubscribe = new Subject<void>();
 	private readonly dimensionChange = new Subject<{top: number; height: number; windowHeight: number}>();
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private observer: ResizeObserver;
 
 	ngOnChanges(): void {

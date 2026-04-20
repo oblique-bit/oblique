@@ -39,6 +39,8 @@ import {ObLanguageService} from './language/language.service';
 import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
 import {ObIAccessibilityStatementConfiguration, ObIObliqueConfiguration} from './utilities.model';
 
+import {ObWindow} from './utilities.model';
+
 const translations: any = {};
 const accessibilityStatement: ObIAccessibilityStatementConfiguration = {
 	applicationName: 'appName',
@@ -61,9 +63,68 @@ describe('utilities', () => {
 			expect(actualWindowProvider).toEqual(window);
 		});
 
-		it('should return en empty object if not provided document', () => {
-			const actualWindowProvider = windowProvider({} as Document);
-			expect(actualWindowProvider).toEqual({});
+		describe('without window', () => {
+			let win: ObWindow;
+
+			beforeEach(() => {
+				win = windowProvider({} as Document) as ObWindow;
+			});
+
+			it('should have a confirm function that returns a boolean', () => {
+				expect(typeof win.confirm('')).toBe('boolean');
+			});
+
+			it('should have a history.length property', () => {
+				expect(typeof win.history.length).toBe('number');
+			});
+
+			it('should have an innerHeight property', () => {
+				expect(typeof win.innerHeight).toBe('number');
+			});
+
+			it('should have an innerWidth property', () => {
+				expect(typeof win.innerWidth).toBe('number');
+			});
+
+			it('should have a localStorage.getItem function that returns a string', () => {
+				expect(typeof win.localStorage.getItem('key')).toBe('string');
+			});
+
+			it('should have a localStorage.setItem function', () => {
+				expect(() => win.localStorage.setItem('key', '')).not.toThrow();
+			});
+
+			it('should have a localStorage.removeItem function', () => {
+				expect(() => win.localStorage.removeItem('key')).not.toThrow();
+			});
+
+			it('should have a location.href property', () => {
+				expect(typeof win.location.href).toBe('string');
+			});
+
+			it('should have a location.host property', () => {
+				expect(typeof win.location.host).toBe('string');
+			});
+
+			it('should have a matchMedia function that returns an object with a matches property', () => {
+				expect(typeof win.matchMedia('(min-width: 600px)').matches).toBe('boolean');
+			});
+
+			it('should have an open function', () => {
+				expect(() => win.open('https://example.com', '_blank')).not.toThrow();
+			});
+
+			it('should have a pageYOffset property', () => {
+				expect(typeof win.pageYOffset).toBe('number');
+			});
+
+			it('should have a setTimeout function that returns a number', () => {
+				expect(typeof win.setTimeout(() => {})).toBe('number');
+			});
+
+			it('should have a setInterval function that returns a number', () => {
+				expect(typeof win.setInterval(() => {})).toBe('number');
+			});
 		});
 	});
 

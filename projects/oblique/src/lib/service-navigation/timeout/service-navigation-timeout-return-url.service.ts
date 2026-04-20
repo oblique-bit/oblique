@@ -1,9 +1,10 @@
 import {Injectable, inject} from '@angular/core';
 import {WINDOW} from '../../utilities';
+import {ObWindow} from '../../utilities.model';
 
 @Injectable()
 export class ObServiceNavigationTimeoutReturnUrlService {
-	private readonly window: Window = inject(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 
 	public getRedirectUrl(key: 'logout' | 'timeout', eportalUrl: string): string {
 		const url = new URL(this.window.location.href);

@@ -1,6 +1,7 @@
 import {Directive, inject} from '@angular/core';
 import {ObOffCanvasService} from './off-canvas.service';
 import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
+import {ObWindow} from '../utilities.model';
 
 @Directive({
 	selector: '[obOffCanvasToggle]',
@@ -12,7 +13,7 @@ import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 	exportAs: 'obOffCanvasToggle',
 })
 export class ObOffCanvasToggleDirective {
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly offCanvas = inject(ObOffCanvasService);
 
 	toggle(event?: KeyboardEvent | MouseEvent): void {

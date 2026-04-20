@@ -3,13 +3,14 @@ import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {WINDOW} from '../utilities';
+import {ObWindow} from '../utilities.model';
 
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesService {
 	public isActive = true;
 	private readonly controlContainer: Record<string, ControlContainer> = {};
 	private readonly translateService = inject(TranslateService);
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 
 	constructor() {
 		const obGlobalEventsService = inject(ObGlobalEventsService);

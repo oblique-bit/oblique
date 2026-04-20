@@ -18,7 +18,7 @@ describe('ServiceNavigationTimeout', () => {
 	let service: ObServiceNavigationTimeoutService;
 	const fakeLogoutUrl = 'http://fakeLogoutUrl.com';
 	const fakeRootUrl = 'https://eportal.admin.ch';
-	const fakeWindow = {location: {href: fakeRootUrl}};
+	const fakeWindow = {location: {href: fakeRootUrl}, setInterval: window.setInterval};
 	const getLoginStateEmitter = new BehaviorSubject<string>('');
 	const fakeHeaderService = {
 		getLogoutUrl$: jest.fn(() => of(fakeLogoutUrl)),
