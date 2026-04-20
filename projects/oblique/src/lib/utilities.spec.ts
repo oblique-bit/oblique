@@ -37,7 +37,11 @@ import {ObIconService} from './icon/icon.service';
 import {Observable, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
 import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
-import {ObIAccessibilityStatementConfiguration, ObIObliqueConfiguration} from './utilities.model';
+import {
+	ObIAccessibilityStatementConfiguration,
+	ObIObliqueConfiguration,
+	ObIObliqueConfigurationWithDefaults,
+} from './utilities.model';
 
 import {ObWindow} from './utilities.model';
 
@@ -57,6 +61,21 @@ class FakeLoader implements TranslateLoader {
 }
 
 describe('utilities', () => {
+	const getDefaultObliqueConfiguration = (): ObIObliqueConfigurationWithDefaults => ({
+		accessibilityStatement,
+		material: {
+			MAT_FORM_FIELD_DEFAULT_OPTIONS: {appearance: 'outline'},
+			STEPPER_GLOBAL_OPTIONS: {displayDefaultIndicatorType: false},
+			MAT_CHECKBOX_OPTIONS: {color: 'primary'},
+			MAT_RADIO_OPTIONS: {color: 'primary'},
+			MAT_SLIDE_TOGGLE_OPTIONS: {color: 'primary'},
+			MAT_TABS_CONFIG: {stretchTabs: false},
+		},
+		icon: {registerObliqueIcons: true},
+		translate: {flatten: true},
+		hasLanguageInUrl: false,
+	});
+
 	describe('windowProvider', () => {
 		it('should return Window if provided with document', () => {
 			const actualWindowProvider = windowProvider(document);
@@ -994,8 +1013,9 @@ describe('utilities', () => {
 
 			const locales = TestBed.runInInjectionContext(() =>
 				getLocalesConfiguration({
-					translate: {locales: localeFromTranslate},
-				} as ObIObliqueConfiguration)
+					...getDefaultObliqueConfiguration(),
+					translate: {flatten: true, locales: localeFromTranslate},
+				})
 			);
 
 			expect(locales).toEqual(localeFromTranslate);
@@ -1004,8 +1024,9 @@ describe('utilities', () => {
 		it('should fall back to ObMasterLayoutConfig locale when translate is undefined', () => {
 			const locales = TestBed.runInInjectionContext(() =>
 				getLocalesConfiguration({
+					...getDefaultObliqueConfiguration(),
 					translate: undefined,
-				} as ObIObliqueConfiguration)
+				})
 			);
 
 			expect(locales).toEqual(localeFromMasterLayout);
