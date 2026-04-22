@@ -7,7 +7,7 @@
 					type="button"
 					mat-raised-button
 					id="poptest"
-					[ngClass]="openPopoverPosition"
+					[class]="openPopoverPosition"
 					[obPopover]="popover"
 					[placement]="placement"
 					[toggleHandle]="toggleHandle"
@@ -21,7 +21,7 @@
 			@if (toggleHandle === toggleTypeHover) {
 				<p
 					tabindex="0"
-					[ngClass]="openPopoverPosition"
+					[class]="openPopoverPosition"
 					[obPopover]="popover"
 					[placement]="placement"
 					[toggleHandle]="toggleHandle"
