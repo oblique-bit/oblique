@@ -1,4 +1,4 @@
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
@@ -15,7 +15,7 @@ describe(NavTreeCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [NavTreeCodeExamplesComponent, RouterTestingModule],
+			imports: [NavTreeCodeExamplesComponent, RouterModule],
 			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 

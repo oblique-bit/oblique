@@ -2,7 +2,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {type ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {CmsDataService} from './cms/cms-data.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TranslateService} from '@ngx-translate/core';
@@ -16,7 +16,7 @@ describe('AppComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [AppComponent, RouterTestingModule, HttpClientTestingModule],
+			imports: [AppComponent, RouterModule.forRoot([{path: '**', component: AppComponent}]), HttpClientTestingModule],
 			providers: [
 				CmsDataService,
 				{
