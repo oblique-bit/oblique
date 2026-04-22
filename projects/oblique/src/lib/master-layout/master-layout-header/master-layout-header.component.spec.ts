@@ -1,5 +1,4 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
@@ -17,6 +16,7 @@ import {
 import {By} from '@angular/platform-browser';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {TranslateModule} from '@ngx-translate/core';
+import {RouterModule} from '@angular/router';
 
 describe('ObMasterLayoutHeaderComponent', () => {
 	let component: ObMasterLayoutHeaderComponent;
@@ -36,7 +36,12 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, RouterTestingModule, ObLocalizePipe, TranslateModule],
+			imports: [
+				ObMockTranslatePipe,
+				RouterModule.forRoot([{path: '**', component: ObMasterLayoutHeaderComponent}]),
+				ObLocalizePipe,
+				TranslateModule,
+			],
 			declarations: [ObMasterLayoutHeaderComponent],
 			providers: [
 				provideObliqueTestingConfiguration(),

@@ -15,7 +15,7 @@ import {ObServiceNavigationComponent} from './service-navigation.component';
 import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObEPamsEnvironment, ObLoginState} from './service-navigation.model';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 @Component({
@@ -82,7 +82,7 @@ describe('ObServiceNavigationComponent', () => {
 		TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockServiceNavigationService});
 		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe, CustomControlsTestComponent],
-			imports: [RouterTestingModule, HttpClientTestingModule],
+			imports: [RouterModule, HttpClientTestingModule],
 		}).compileComponents();
 	});
 

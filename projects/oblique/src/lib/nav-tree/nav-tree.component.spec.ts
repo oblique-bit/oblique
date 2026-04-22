@@ -1,7 +1,7 @@
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {ObNavTreeItemModel} from './nav-tree-item.model';
 import {ObNavTreeComponent} from './nav-tree.component';
@@ -98,7 +98,7 @@ describe(ObNavTreeComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObNavTreeComponent, RouterTestingModule],
+			imports: [ObNavTreeComponent, RouterModule.forRoot([])],
 			declarations: [TestComponent, TestComponentDefault],
 			providers: [provideObliqueTestingConfiguration()],
 			schemas: [NO_ERRORS_SCHEMA],

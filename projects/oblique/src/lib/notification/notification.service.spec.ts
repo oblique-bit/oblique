@@ -1,9 +1,9 @@
-import {RouterTestingModule} from '@angular/router/testing';
 import {TestBed, inject} from '@angular/core/testing';
 import {first, take} from 'rxjs/operators';
 import {ObNotificationService} from './notification.service';
 import {ObENotificationType, ObINotification} from './notification.model';
 import {ObNotificationConfig} from './notification.config';
+import {RouterModule} from '@angular/router';
 
 describe('NotificationService', () => {
 	let notificationConfig: ObNotificationConfig;
@@ -14,7 +14,7 @@ describe('NotificationService', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
+			imports: [RouterModule],
 			providers: [ObNotificationConfig, ObNotificationService],
 		});
 	});
