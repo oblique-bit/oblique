@@ -5,11 +5,11 @@ import {JsonPipe} from '@angular/common';
 import {MatHint} from '@angular/material/form-field';
 
 @Component({
-	selector: 'app-autocomplete-example-hints',
+	selector: 'app-autocomplete-example-form',
 	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe, MatHint],
-	templateUrl: './autocomplete-example-hints.component.html',
+	templateUrl: './autocomplete-example-form.component.html',
 })
-export class AutocompleteExampleHintsComponent implements AfterViewInit {
+export class AutocompleteExampleFormComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;
 	formGroup = new FormGroup({
 		control: new FormControl('', Validators.required),
