@@ -171,7 +171,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_flipped}",
                   "$description": "Background for pressed state emphasis-low interactive element. Inverse surface."
                 }
               },

@@ -787,8 +787,8 @@
       "ob.s1.color.navigation.border_base.brand": "7c612ea29978b69c5ddd69f1578dbb3ecbf770fe",
       "ob.s1.color.navigation.border_base.subtle": "8131168915d32a30bff47a02f2e5cac00557a169",
       "ob.s1.color.navigation.border_base.disabled": "095775d97fa9d118a83873df3379465fc7226ef5",
-      "ob.s1.color.interaction.emphasis_low.bg_base.contrast_low_alpha.inversity_normal": "226899d022ddc83d21a1fd4e239b3b5387ba9b9e",
-      "ob.s1.color.interaction.emphasis_low.bg_base.contrast_low_alpha.inversity_flipped": "cc0ba7803f64463f1b2cfa2938342b30f58c1c36"
+      "ob.s1.color.interaction.emphasis_low.bg_base.contrast_low_alpha.inversity_normal": "128834324baf9bc71b85af0782974498b20d8dc1",
+      "ob.s1.color.interaction.emphasis_low.bg_base.contrast_low_alpha.inversity_flipped": "78ad8a10a7e9250b522b6b3e888033d3fdb19cdb"
     },
     "group": "s1_lightness"
   },
