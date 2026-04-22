@@ -6,7 +6,6 @@ import {ObIUploadEvent} from '../file-upload.model';
  */
 @Component({
 	selector: 'ob-file-upload',
-	standalone: true,
 	template: '',
 	host: {class: 'ob-file-upload'},
 	exportAs: 'obFileUpload',

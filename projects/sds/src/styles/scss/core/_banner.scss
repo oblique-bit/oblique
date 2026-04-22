@@ -5,49 +5,28 @@ These styles are exclusively used for content from Directus in the Banner API
 
 .banner {
 	padding: variables.$ob-spacing-default;
-	border-radius: 1rem;
+	border-radius: variables.$ob-border-radius-base;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 7rem;
-
-	h6 {
-		margin: 0;
-		font-weight: bolder;
-	}
 
 	&.local {
-		background-color: #00813a;
+		background-color: variables.$ob-env-local;
 	}
 
 	&.dev {
-		background-color: #ffd700;
+		background-color: variables.$ob-env-dev;
 	}
 
 	&.ref {
-		background-color: #e75e00;
+		background-color: variables.$ob-env-ref;
 	}
 
 	&.test {
-		background-color: #006699;
+		background-color: variables.$ob-env-test;
 	}
 
 	&.abn {
-		background-color: #b00020;
-	}
-
-	&.dev,
-	&.ref {
-		h6 {
-			color: #171717;
-		}
-	}
-
-	&.local,
-	&.test,
-	&.abn {
-		h6 {
-			color: #ffffff;
-		}
+		background-color: variables.$ob-env-abn;
 	}
 }

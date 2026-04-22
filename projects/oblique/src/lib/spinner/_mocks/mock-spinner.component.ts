@@ -5,7 +5,6 @@ import {Component, Input} from '@angular/core';
  */
 @Component({
 	selector: 'ob-spinner',
-	standalone: true,
 	template: '',
 	exportAs: 'obSpinner',
 })

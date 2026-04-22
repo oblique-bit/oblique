@@ -6,7 +6,6 @@ import {Observable} from 'rxjs';
  */
 @Directive({
 	selector: '[obParentFormDirective]',
-	standalone: true,
 	host: {class: 'ob-parent-form-directive'},
 	exportAs: 'obParentFormDirective',
 })

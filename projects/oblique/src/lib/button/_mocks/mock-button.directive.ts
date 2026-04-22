@@ -5,7 +5,6 @@ import {Directive, Input} from '@angular/core';
  */
 @Directive({
 	selector: '[obButton]',
-	standalone: true,
 	exportAs: 'obButton',
 })
 export class ObMockButtonDirective {

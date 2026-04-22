@@ -3,7 +3,6 @@ import {ObIconButtonDirective} from './icon-button.directive';
 
 @Directive({
 	selector: '[obButton]',
-	standalone: true,
 	host: {
 		'[class.ob-button-primary]': 'primaryClass',
 		'[class.ob-button-secondary]': 'secondaryClass',

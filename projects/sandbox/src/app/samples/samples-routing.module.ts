@@ -36,6 +36,7 @@ import {ServiceNavigationSampleComponent} from './service-navigation/service-nav
 import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component';
 import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
+import {FormSampleCombinationsComponent} from './form-combinations/form-sample-combinations.component';
 
 const samplesRoutes: Routes = [
 	{path: 'alert', component: AlertSampleComponent},
@@ -141,6 +142,7 @@ const samplesRoutes: Routes = [
 	{path: 'focus-invalid', component: FocusInvalidSampleComponent},
 	{path: 'focus-with-outline', component: FocusSampleComponent},
 	{path: 'form', component: FormSampleComponent},
+	{path: 'form-combinations', component: FormSampleCombinationsComponent},
 	{path: 'form/1', component: FormSampleComponent},
 	{path: 'global-events', component: GlobalEventsSampleComponent},
 	{path: 'horizontal-forms', component: HorizontalFormsSampleComponent},

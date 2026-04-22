@@ -7,6 +7,7 @@ import {Subject} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
+import {ObAlertComponent} from '../alert/alert.component';
 import {ObNotificationComponent} from './notification.component';
 import {ObNotificationConfig} from './notification.config';
 import {ObNotificationService} from './notification.service';
@@ -16,6 +17,7 @@ import {ObMockNotificationService} from './_mocks/mock-notification.service';
 import {ObMockAlertComponent} from '../alert/_mocks/mock-alert.component';
 import {WINDOW} from '../utilities';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('NotificationComponent', () => {
 	let component: ObNotificationComponent;
@@ -27,9 +29,19 @@ describe('NotificationComponent', () => {
 	const title = 'myTitle';
 
 	beforeEach(async () => {
+		TestBed.overrideComponent(ObNotificationComponent, {
+			remove: {imports: [ObAlertComponent, TranslateModule]},
+			add: {imports: [ObMockAlertComponent, ObMockTranslatePipe]},
+		});
 		await TestBed.configureTestingModule({
-			declarations: [ObNotificationComponent],
-			imports: [ObMockAlertComponent, ObMockTranslatePipe, ObTranslateParamsModule, CommonModule, RouterTestingModule],
+			imports: [
+				CommonModule,
+				ObMockAlertComponent,
+				ObMockTranslatePipe,
+				ObNotificationComponent,
+				ObTranslateParamsModule,
+				RouterTestingModule,
+			],
 			providers: [
 				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},
 				{provide: ObNotificationService, useClass: ObMockNotificationService},

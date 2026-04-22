@@ -152,8 +152,8 @@ export class TranslationsService {
 		return translations;
 	}
 
-	private parseRawLinks(links: unknown): ObILink[] {
-		const parsedLinks: unknown = typeof links === 'string' ? JSON.parse(links || '[]') : [];
+	private parseRawLinks(links: string): ObILink[] {
+		const parsedLinks: unknown = JSON.parse(links);
 		return Array.isArray(parsedLinks) ? parsedLinks : [];
 	}
 }

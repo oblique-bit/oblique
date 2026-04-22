@@ -7,7 +7,6 @@ import {Observable} from 'rxjs';
  */
 @Directive({
 	selector: '[obErrorMessages]',
-	standalone: true,
 	exportAs: 'obErrorMessages',
 })
 export class ObMockErrorMessagesDirective {

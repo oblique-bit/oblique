@@ -50,7 +50,7 @@ class Release extends StaticScript {
 
 	private static updatePubliccode(version: string): void {
 		// ignores preversions
-		if (/^\d+\.\d+\.\d+\$/u.test(version)) {
+		if (/^\d+\.\d+\.\d+$/u.test(version)) {
 			Log.info('Update publiccode release version and date');
 			const today = new Date().toISOString().split('T')[0];
 			Files.overwrite('publiccode.yml', content =>

@@ -5,7 +5,6 @@ import {Component, Input} from '@angular/core';
  */
 @Component({
 	selector: 'ob-alert',
-	standalone: true,
 	template: '<ng-content />',
 	exportAs: 'obAlert',
 })

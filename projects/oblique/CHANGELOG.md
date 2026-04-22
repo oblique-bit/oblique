@@ -1,3 +1,11 @@
+# [15.2.2](https://github.com/oblique-bit/oblique/compare/15.2.1...15.2.2) (2026-04-22)
+
+## Bug Fixes
+
+- **master-layout:** ensure `focusElement` adds `tabindex` as needed in prod mode ([f0332e50](https://github.com/oblique-bit/oblique/commit/f0332e50a038b5aad7d87aa625476f2af6f9a2a5), OUI-4365)
+- **master-layout:** clarify info message when `focusElement` targets a non-focusable element ([e09af0e1](https://github.com/oblique-bit/oblique/commit/e09af0e194efbff0a2840bfb24d69345e7068c38), OUI-4365)
+- **master-layout:** back-to-top works with sticky layout when no h1 is present ([91db7c79](https://github.com/oblique-bit/oblique/commit/91db7c79564a9233e7e2a258380519618cc181b2), OUI-4365)
+
 # [15.2.1](https://github.com/oblique-bit/oblique/compare/15.2.0...15.2.1) (2026-04-13)
 
 ## Bug Fixes

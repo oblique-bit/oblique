@@ -5,7 +5,6 @@ import {Component} from '@angular/core';
  */
 @Component({
 	selector: 'ob-unknown-route',
-	standalone: true,
 	template: '',
 	exportAs: 'obUnknownRoute',
 })

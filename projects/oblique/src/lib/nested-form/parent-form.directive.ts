@@ -3,7 +3,6 @@ import {Observable, Subject} from 'rxjs';
 
 @Directive({
 	selector: '[obParentFormDirective]',
-	standalone: true,
 	host: {
 		'(reset)': 'reset()',
 		'(submit)': 'submit()',

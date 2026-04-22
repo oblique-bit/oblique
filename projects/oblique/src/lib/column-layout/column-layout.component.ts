@@ -1,3 +1,5 @@
+import {AsyncPipe} from '@angular/common';
+import {CdkScrollableModule} from '@angular/cdk/scrolling';
 import {
 	AfterViewInit,
 	ChangeDetectorRef,
@@ -14,15 +16,25 @@ import {
 	ViewEncapsulation,
 	inject,
 } from '@angular/core';
+import {MatIconModule} from '@angular/material/icon';
+import {TranslateModule} from '@ngx-translate/core';
 import {combineLatestWith, delay, distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
+import {ObColumnToggleDirective} from './column-toggle.directive';
 import {WINDOW} from '../utilities';
 import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.model';
 
 @Component({
 	selector: 'ob-column-layout',
-	standalone: false,
+	imports: [
+		AsyncPipe,
+		CdkScrollableModule,
+		MatIconModule,
+		ObColumnPanelDirective,
+		ObColumnToggleDirective,
+		TranslateModule,
+	],
 	templateUrl: './column-layout.component.html',
 	styleUrls: ['./column-layout.component.scss'],
 	encapsulation: ViewEncapsulation.None,

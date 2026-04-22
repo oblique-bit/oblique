@@ -14,7 +14,6 @@ import {
  */
 @Component({
 	selector: 'ob-nested-form',
-	standalone: true,
 	template: '',
 	providers: [
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObMockNestedFormComponent},

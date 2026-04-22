@@ -8,7 +8,6 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 	selector: 'app-code-example-<%= dasherizedName %>',
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	standalone: true,
 	imports: [CommonModule, IdPipe, CodeExampleComponent]
 })
 export class <%=classifiedName%>CodeExamplesComponent extends CodeExamples {

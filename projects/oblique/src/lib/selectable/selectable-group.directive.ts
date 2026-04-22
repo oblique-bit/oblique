@@ -6,7 +6,6 @@ import {ObSelectableDirective} from './selectable.directive';
 
 @Directive({
 	selector: '[obSelectableGroup]',
-	standalone: true,
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,

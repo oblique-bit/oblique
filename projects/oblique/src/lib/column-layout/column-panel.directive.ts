@@ -3,7 +3,6 @@ import {ObTColumnState} from './column-layout.model';
 
 @Directive({
 	selector: '[obColumnPanel]',
-	standalone: false,
 	host: {
 		class: 'ob-column-panel',
 		'[class.ob-collapsed]': 'collapsed',

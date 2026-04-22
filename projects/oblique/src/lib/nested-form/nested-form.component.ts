@@ -13,7 +13,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ob-nested-form',
-	standalone: true,
 	templateUrl: './nested-form.component.html',
 	providers: [
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObNestedFormComponent},

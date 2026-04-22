@@ -4,7 +4,6 @@ import {ObUnsavedChangesService} from './unsaved-changes.service';
 
 @Directive({
 	selector: '[obUnsavedChanges]',
-	standalone: true,
 	host: {class: 'ob-unsaved-changes'},
 	exportAs: 'obUnsavedChanges',
 })

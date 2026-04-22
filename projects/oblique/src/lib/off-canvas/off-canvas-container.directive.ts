@@ -7,7 +7,6 @@ import {Subject} from 'rxjs';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: '.ob-off-canvas, ob-master-layout',
-	standalone: true,
 	host: {
 		'[class.ob-off-canvas-in]': 'open',
 	},

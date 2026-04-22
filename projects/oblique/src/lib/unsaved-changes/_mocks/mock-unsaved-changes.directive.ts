@@ -5,7 +5,6 @@ import {Directive, Input} from '@angular/core';
  */
 @Directive({
 	selector: '[obUnsavedChanges]',
-	standalone: true,
 	exportAs: 'obUnsavedChanges',
 })
 export class ObMockUnsavedChangesDirective {

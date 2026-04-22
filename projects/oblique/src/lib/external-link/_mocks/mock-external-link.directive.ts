@@ -7,7 +7,6 @@ import {ObEExternalLinkIcon} from '../external-link.model';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'a[href]',
-	standalone: true,
 })
 export class ObMockExternalLinkDirective {
 	isExternal = false;

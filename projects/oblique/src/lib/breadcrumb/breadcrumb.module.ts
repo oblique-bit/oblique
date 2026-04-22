@@ -1,28 +1,12 @@
-import {CommonModule} from '@angular/common';
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {RouterModule} from '@angular/router';
-import {TranslateModule} from '@ngx-translate/core';
-import {ObLocalizePipe} from '../router/ob-localize.pipe';
 import {ObBreadcrumbComponent} from '../breadcrumb/breadcrumb.component';
 import {ObBreadcrumbConfig, ObTBreadcrumbConfig, defaultBreadcrumbConfig} from './breadcrumb.model';
-import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
 
 export {ObBreadcrumbConfig, ObTBreadcrumbConfig} from './breadcrumb.model';
 export {ObBreadcrumbComponent} from './breadcrumb.component';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		MatIconModule,
-		MatTooltipModule,
-		RouterModule,
-		TranslateModule,
-		ObEllipsisTooltipDirective,
-		ObLocalizePipe,
-	],
-	declarations: [ObBreadcrumbComponent],
+	imports: [ObBreadcrumbComponent],
 	exports: [ObBreadcrumbComponent],
 })
 export class ObBreadcrumbModule {

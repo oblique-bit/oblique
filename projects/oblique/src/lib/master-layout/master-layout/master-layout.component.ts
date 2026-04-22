@@ -183,16 +183,36 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 			console.error(`${elementId} does not correspond to an existing DOM element.`);
 			return;
 		}
-
-		element.scrollIntoView({behavior: 'smooth'});
+		if (this.isMainFocusedInStickyLayout(element.id)) {
+			// Here the target is the already fully visible main container. The content of the container is being scrolled to the top.
+			element.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			});
+		} else {
+			// Here the whole page is scrolled to the target element.
+			element.scrollIntoView({behavior: 'smooth'});
+		}
 		element.focus({preventScroll: true});
-		if (document.activeElement !== element && isDevMode()) {
+		if (document.activeElement !== element) {
 			element.setAttribute('tabindex', '-1');
 			element.focus({preventScroll: true});
-			console.info(
-				`The element with the id: ${elementId} is not focusable. Oblique added a tabindex in order to make it focusable.`
-			);
+			if (isDevMode()) {
+				console.info(
+					`The element: ${this.createElementDescription(element)} is not focusable. Oblique added a tabindex in order to make it focusable.`
+				);
+			}
 		}
+	}
+
+	private isMainFocusedInStickyLayout(id: string): boolean {
+		return id === this.contentId && this.isFooterSticky && this.isHeaderSticky;
+	}
+
+	private createElementDescription(element: Element): string {
+		const id = element.id ? `#${element.id}` : '';
+		const classes = element.classList.length ? `.${Array.from(element.classList).join('.')}` : '';
+		return `${element.tagName.toLowerCase()}${id}${classes}`;
 	}
 
 	private setup(): void {

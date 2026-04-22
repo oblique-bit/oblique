@@ -3,7 +3,6 @@ import {TranslateService} from '@ngx-translate/core';
 
 @Pipe({
 	name: 'obTranslateParams',
-	standalone: true,
 	// eslint-disable-next-line @angular-eslint/no-pipe-impure
 	pure: false,
 })

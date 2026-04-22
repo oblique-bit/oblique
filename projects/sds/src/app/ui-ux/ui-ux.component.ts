@@ -9,7 +9,6 @@ import {NgOptimizedImage} from '@angular/common';
 @Component({
 	selector: 'app-ui-ux',
 	imports: [SafeHtmlPipe, RouterLink, RelatedLinkPipe, ObExternalLinkDirective, NgOptimizedImage],
-	standalone: true,
 	templateUrl: './ui-ux.component.html',
 	styleUrl: './ui-ux.component.scss',
 })

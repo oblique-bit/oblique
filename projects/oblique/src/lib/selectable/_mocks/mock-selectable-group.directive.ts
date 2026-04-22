@@ -7,7 +7,6 @@ import {of} from 'rxjs';
  */
 @Directive({
 	selector: '[obSelectableGroup]',
-	standalone: true,
 	exportAs: 'obSelectableGroup',
 })
 export class ObMockSelectableGroupDirective<T = any> {

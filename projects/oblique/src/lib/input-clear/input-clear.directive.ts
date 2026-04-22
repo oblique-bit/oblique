@@ -7,7 +7,6 @@ import {fromEvent, startWith} from 'rxjs';
 
 @Directive({
 	selector: '[obInputClear]',
-	standalone: true,
 	host: {
 		'(click)': 'onClick($event)',
 		'[class.ob-text-control-clear]': 'cssClass',

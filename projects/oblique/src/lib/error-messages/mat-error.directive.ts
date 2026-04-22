@@ -10,7 +10,6 @@ import {OB_MAT_ERROR_PREFIX} from '../utilities';
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'mat-error',
-	standalone: true,
 })
 export class ObMatErrorDirective implements OnInit, OnDestroy {
 	private readonly control = inject(ObErrorMessagesDirective, {optional: true});

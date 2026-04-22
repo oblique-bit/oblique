@@ -5,7 +5,6 @@ import {mockCustomDeleteURL, mockGetUploadedFilesURL, mockUploadURL} from '../..
 @Component({
 	selector: 'app-file-upload-fully-functioning-with-custom-delete-preview',
 	imports: [ObFileUploadModule],
-	standalone: true,
 	templateUrl: './file-upload-fully-functioning-with-custom-delete-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
 })

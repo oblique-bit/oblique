@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Delete RHOS tags for SDS remote
-        run: /usr/bin/git tag -l 'sds*' | xargs git push --delete origin
+        run: /usr/bin/git tag -l 'sds*' | xargs -r git push --delete origin
 
       - name: Delete RHOS tags for Sandbox remote
-        run: /usr/bin/git tag -l 'sandbox*' | xargs git push --delete origin
+        run: /usr/bin/git tag -l 'sandbox*' | xargs -r git push --delete origin

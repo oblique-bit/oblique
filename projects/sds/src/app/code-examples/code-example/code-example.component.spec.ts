@@ -13,7 +13,6 @@ import type {PreviewComponent} from '../code-examples.model';
 
 @Component({
 	selector: 'app-preview',
-	standalone: true,
 	template: '',
 })
 class MockPreviewComponent {}

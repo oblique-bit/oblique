@@ -1,3 +1,9 @@
+# [15.2.2](https://github.com/oblique-bit/oblique/compare/15.2.1...15.2.2) (2026-04-22)
+
+## Features
+
+- **sandbox:** add form elements variants ([94a1550b](https://github.com/oblique-bit/oblique/commit/94a1550bb61ab305e4f0f226d27a68ec56b2c7d8), OUI-4356)
+
 # [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
 
 ## Features
