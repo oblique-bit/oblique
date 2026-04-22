@@ -33,11 +33,13 @@ describe(AccordionLinksComponent.name, () => {
 		await accordionLinksBeforeEach([
 			{
 				id: 'Component',
+				minVersion: 1,
 				links: [],
 				title: 'Components',
 			},
 			{
 				id: 'Guideline',
+				minVersion: 1,
 				links: [
 					{
 						id: 2,
@@ -50,6 +52,7 @@ describe(AccordionLinksComponent.name, () => {
 			},
 			{
 				id: 'Introduction',
+				minVersion: 1,
 				links: [
 					{
 						id: 1,
