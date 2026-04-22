@@ -3,13 +3,13 @@ import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {BasicCardComponent} from './previews/basic-card/basic-card.component';
 import {CardWithMultipleSectionsComponent} from './previews/card-with-multiple-sections/card-with-multiple-sections.component';
 import {ClickableCardsComponent} from './previews/clickable-cards/clickable-cards.component';
-import {CommonModule} from '@angular/common';
+
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
 	selector: 'app-card-code-examples',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

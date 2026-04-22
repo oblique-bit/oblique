@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
-import {CommonModule} from '@angular/common';
+
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {CustomChannelPreviewComponent} from './previews/custom-channel/custom-channel-preview.component';
@@ -8,7 +8,7 @@ import {MultipleActivationsPreviewComponent} from './previews/multiple-activatio
 
 @Component({
 	selector: 'app-spinner-code-examples',
-	imports: [CodeExampleComponent, CommonModule, IdPipe],
+	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
-import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {TooltipExamplePositionPreviewComponent} from './previews/position/tooltip-example-position-preview.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
@@ -8,7 +7,7 @@ import {TooltipExampleBasicPreviewComponent} from './previews/basic/tooltip-exam
 
 @Component({
 	selector: 'app-code-example-tooltip',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

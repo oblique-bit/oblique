@@ -1,5 +1,4 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {SelectableCodeExamplesComponent} from './selectable-code-examples.component';
@@ -12,7 +11,7 @@ describe(SelectableCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [SelectableCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
+			imports: [SelectableCodeExamplesComponent, IdPipe, CodeExampleComponent],
 			providers: [{provide: WINDOW, useValue: window}],
 		}).compileComponents();
 

@@ -6,13 +6,13 @@ import {SlugToIdService} from '../shared/slug-to-id/slug-to-id.service';
 import {urlConst} from '../shared/url/url.const';
 import {CmsDataService} from '../cms/cms-data.service';
 import {IdPipe} from '../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redirector';
 
 @Component({
 	selector: 'app-text-page',
-	imports: [CommonModule, IdPipe],
+	imports: [IdPipe, AsyncPipe],
 	templateUrl: './text-page.component.html',
 	styleUrl: './text-page.component.scss',
 	host: {

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {NumberFormatExampleDefaultWithTemplateFromPreviewComponent} from '../number-format/previews/default-with-template-from/number-format-example-default-with-template-from-preview.component';
 import {NumberFormatExampleDefaultWithReactiveFormPreviewComponent} from '../number-format/previews/default-with-reactive-form/number-format-example-default-with-reactive-form-preview.component';
@@ -9,7 +9,7 @@ import {NumberFormatExampleOtherOptionsPreviewComponent} from '../number-format/
 
 @Component({
 	selector: 'app-code-example-number-format',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

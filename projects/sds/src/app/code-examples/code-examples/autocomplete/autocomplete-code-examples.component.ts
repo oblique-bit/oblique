@@ -3,7 +3,6 @@ import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {AutocompleteExampleDefaultComponent} from './previews/default/autocomplete-example-default.component';
 import {AutocompleteExampleIconPositionStartComponent} from './previews/icon-position-start/autocomplete-example-icon-position-start.component';
 import {AutocompleteExampleIconOptionsGroupComponent} from './previews/options-group/autocomplete-example-options-group.component';
-import {CommonModule} from '@angular/common';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {AutocompleteExampleHintsComponent} from './previews/hints/autocomplete-example-hints.component';
@@ -12,7 +11,7 @@ import {AutocompleteExampleAriaLabelComponent} from './previews/aria-label/autoc
 
 @Component({
 	selector: 'app-autocomplete-code-examples',
-	imports: [CommonModule, CodeExampleComponent, IdPipe],
+	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
 })
 export class AutocompleteCodeExamplesComponent extends CodeExamples {

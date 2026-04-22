@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FileUploadBasicOptionsPreviewComponent} from './previews/basic-options/file-upload-basic-options-preview.component';
 import {FileUploadUploadEventPreviewComponent} from './previews/upload-event/file-upload-upload-event-preview.component';
@@ -12,7 +12,7 @@ import {FileUploadFullyFunctioningWithCustomDeletePreviewComponent} from './prev
 
 @Component({
 	selector: 'app-code-example-file-upload',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

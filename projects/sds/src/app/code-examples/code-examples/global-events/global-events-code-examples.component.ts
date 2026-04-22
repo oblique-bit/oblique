@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {GlobalEventsExamplePropertiesPreviewComponent} from '../global-events/previews/properties/global-events-example-properties-preview.component';
 import {GlobalEventsExampleObOutsideFilterPreviewComponent} from '../global-events/previews/ob-outside-filter/global-events-example-ob-outside-filter-preview.component';
 
 @Component({
 	selector: 'app-code-example-global-events',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -16,7 +16,7 @@ import {CmsDataService} from '../../cms/cms-data.service';
 import type {Version} from '../../cms/models/version.model';
 import {type Observable, filter, first, map, switchMap, tap} from 'rxjs';
 import {IdPipe} from '../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {latest} from '../../../obliqueVersion';
 import type {VersionOption} from './version.model';
 import {urlConst} from '../../shared/url/url.const';
@@ -24,7 +24,7 @@ import {VersionService} from '../../shared/version/version.service';
 
 @Component({
 	selector: 'app-version',
-	imports: [ReactiveFormsModule, CommonModule, IdPipe, MatFormField, MatSelect, MatOption, MatLabel, MatTooltip],
+	imports: [ReactiveFormsModule, IdPipe, MatFormField, MatSelect, MatOption, MatLabel, MatTooltip, AsyncPipe],
 	templateUrl: './version.component.html',
 	styleUrl: './version.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

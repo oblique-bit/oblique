@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
@@ -7,7 +7,7 @@ import {FocusWithOutlineExampleDefaultPreviewComponent} from './previews/default
 
 @Component({
 	selector: 'app-code-example-focus-with-outline',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
