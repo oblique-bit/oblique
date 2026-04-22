@@ -3,8 +3,8 @@ name: Oblique
 applicationSuite: Oblique
 url: https://github.com/oblique-bit/oblique.git
 landingURL: https://github.com/oblique-bit/oblique
-softwareVersion: 14.1.0
-releaseDate: 2025-11-03
+softwareVersion: 15.2.2
+releaseDate: 2026-04-22
 logo: https://avatars.githubusercontent.com/u/58680335#ext=.svg
 platforms:
   - web
