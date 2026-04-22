@@ -44,7 +44,7 @@
 	<div class="gallery-container">
 		@for (icons of filteredIcons; track icons; let idx = $index) {
 			@if (icons.length > 0) {
-				<section [ngClass]="{ 'icons-set': true, deprecated: idx === 1 }">
+				<section [class]="{ 'icons-set': true, deprecated: idx === 1 }">
 					@if (idx === 1) {
 						<h3>Deprecated icons</h3>
 					}
