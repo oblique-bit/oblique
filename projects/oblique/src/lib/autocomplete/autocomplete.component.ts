@@ -1,20 +1,30 @@
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
+	AfterViewInit,
 	Component,
 	ElementRef,
 	EventEmitter,
+	Injector,
 	Input,
 	OnChanges,
 	OnDestroy,
 	Output,
 	Signal,
 	ViewEncapsulation,
+	booleanAttribute,
 	computed,
 	contentChildren,
 	inject,
 	input,
 } from '@angular/core';
-import {ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {
+	ControlValueAccessor,
+	FormControl,
+	FormsModule,
+	NG_VALUE_ACCESSOR,
+	NgControl,
+	ReactiveFormsModule,
+} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatOptionModule} from '@angular/material/core';
 import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
@@ -28,6 +38,8 @@ import {
 	ObIAutocompleteInputOptionGroup,
 	OptionLabelIconPosition,
 } from '../autocomplete/autocomplete.model';
+import {ObMatErrorDirective} from '../error-messages/mat-error.directive';
+import {ObErrorMessagesDirective} from '../error-messages/error-messages.directive';
 import {ObInputClearDirective} from '../input-clear/input-clear.directive';
 import {ObAutocompleteTextToFindService} from './autocomplete-text-to-find.service';
 import {ObHighlightTextPipe} from './highlight-text/highlight-text.pipe';
@@ -49,6 +61,8 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 		AsyncPipe,
 		ObHighlightTextPipe,
 		TranslateModule,
+		ObErrorMessagesDirective,
+		ObMatErrorDirective,
 	],
 	templateUrl: './autocomplete.component.html',
 	styleUrls: ['./autocomplete.component.scss'],
@@ -62,7 +76,8 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-autocomplete'},
 })
-export class ObAutocompleteComponent<T = string> implements OnChanges, ControlValueAccessor, OnDestroy {
+export class ObAutocompleteComponent<T = string> implements OnChanges, ControlValueAccessor, OnDestroy, AfterViewInit {
+	withErrorMessages = input(false, {transform: booleanAttribute});
 	@Input() inputLabelKey = 'i18n.oblique.search.title';
 	@Input() noResultKey = 'i18n.oblique.search.no-results';
 	@Input() autocompleteOptions: (ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[] = [];
@@ -88,6 +103,7 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 	private readonly unsubscribe = new Subject<void>();
 	private readonly unsubscribeOptions = new Subject<void>();
 	private readonly obAutocompleteTextToFindService = inject(ObAutocompleteTextToFindService);
+	private readonly injector = inject(Injector);
 
 	constructor() {
 		// MatHint cannot be projected into MatFormField because MatFormField’s content
@@ -104,6 +120,18 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 
 	ngOnChanges(): void {
 		this.setupOptionsFilter();
+	}
+
+	ngAfterViewInit(): void {
+		if (this.withErrorMessages()) {
+			const ngControl = this.injector.get(NgControl, null, {self: true, optional: true});
+			this.autocompleteInputControl.setValidators(ngControl.control.validator);
+			// tell Angular that this control now has new validators
+			this.autocompleteInputControl.updateValueAndValidity();
+			// cancel dirty and touched states set by updateValueAndValidity
+			this.autocompleteInputControl.markAsPristine();
+			this.autocompleteInputControl.markAsUntouched();
+		}
 	}
 
 	ngOnDestroy(): void {

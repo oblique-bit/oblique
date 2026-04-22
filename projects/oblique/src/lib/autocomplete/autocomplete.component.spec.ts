@@ -10,6 +10,7 @@ import {
 	FormsModule,
 	NG_VALUE_ACCESSOR,
 	ReactiveFormsModule,
+	Validators,
 } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatAutocompleteHarness} from '@angular/material/autocomplete/testing';
@@ -36,7 +37,7 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 	template: ``,
 })
 class TestParentComponent {
-	model = new FormControl('');
+	model = new FormControl('', Validators.required);
 	autocompleteOptions: (ObIAutocompleteInputOption<unknown> | ObIAutocompleteInputOptionGroup<unknown>)[] = [
 		{label: 'c 5', disabled: false},
 	];
@@ -562,5 +563,33 @@ describe(ObAutocompleteComponent.name, () => {
 				expect(foundOptions.length).toBe(expectedOptions.length);
 			})
 		);
+	});
+
+	describe('With error messages', () => {
+		beforeEach(() => {
+			parentFixture = TestBed.overrideComponent(TestParentComponent, {
+				set: {
+					template: `<form [formGroup]="parentFormControl"><ob-autocomplete formControlName="model" withErrorMessages="true"></ob-autocomplete></form>`,
+				},
+			}).createComponent(TestParentComponent);
+			parentComponent = parentFixture.componentInstance;
+			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+			parentFixture.detectChanges();
+		});
+
+		test('input is invalid', () => {
+			const input = parentFixture.debugElement.query(By.css('input'));
+			expect(input.classes['ng-invalid']).toBe(true);
+		});
+
+		test('error is shown on blur', () => {
+			const input = parentFixture.debugElement.query(By.css('input'));
+
+			input.nativeElement.focus();
+			input.nativeElement.blur();
+			parentFixture.detectChanges();
+
+			expect(parentFixture.debugElement.query(By.css('mat-error'))).toBeTruthy();
+		});
 	});
 });
