@@ -1,11 +1,12 @@
 <h2>Autocomplete</h2>
 <ob-column-layout left="NONE" right="OPENED">
-	<section column-main-content>
+	<section column-main-content [formGroup]="formGroup">
 		@if (isFromControl) {
 			<ob-autocomplete
 				filterRegexFlag="gi"
+				formControlName="control"
+				withErrorMessages="true"
 				[autocompleteOptions]="visibleOptionList"
-				[formControl]="formControl"
 				[optionIconPosition]="optionIconPosition"
 				(selectedOptionChange)="showSelection($event)"
 			>
