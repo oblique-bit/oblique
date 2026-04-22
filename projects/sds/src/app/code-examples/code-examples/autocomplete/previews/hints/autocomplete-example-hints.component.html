@@ -1,12 +1,15 @@
 <!--This if is a workaround for an Angular bug, see the TS file for more information -->
 @if (show) {
-	<ob-autocomplete
-		[autocompleteOptions]="optionList"
-		[formControl]="formControl"
-		(selectedOptionChange)="showSelection($event)"
-	>
-		<mat-hint>Both Material "start" ...</mat-hint>
-		<mat-hint align="end">... and "end" hints are supported</mat-hint>
-	</ob-autocomplete>
+	<form [formGroup]="formGroup">
+		<ob-autocomplete
+			formControlName="control"
+			withErrorMessages="true"
+			[autocompleteOptions]="optionList"
+			(selectedOptionChange)="showSelection($event)"
+		>
+			<mat-hint>This field is required</mat-hint>
+			<mat-hint align="end">The error is shown after the field loses focus while remaining empty</mat-hint>
+		</ob-autocomplete>
+	</form>
 	<p>selectedOption: {{ selectedOption | json }}</p>
 }

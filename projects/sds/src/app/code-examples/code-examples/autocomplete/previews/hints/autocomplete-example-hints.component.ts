@@ -1,6 +1,6 @@
 import {ObAutocompleteModule, ObEIcon, type ObIAutocompleteInputOption} from '@oblique/oblique';
 import {type AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
 import {MatHint} from '@angular/material/form-field';
 
@@ -11,7 +11,9 @@ import {MatHint} from '@angular/material/form-field';
 })
 export class AutocompleteExampleHintsComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;
-	formControl = new FormControl('');
+	formGroup = new FormGroup({
+		control: new FormControl('', Validators.required),
+	});
 	optionList: ObIAutocompleteInputOption[] = [
 		{
 			label: ' Graceling realm',
