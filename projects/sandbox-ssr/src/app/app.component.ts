@@ -5,10 +5,17 @@ import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-to
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {filter} from 'rxjs';
-
+import {ModeSelectorComponent} from './mode-selectors/mode-selectors.component';
 @Component({
 	selector: 'ssr-root',
-	imports: [RouterOutlet, RouterLink, MatButtonToggleGroup, MatButtonToggle, ReactiveFormsModule],
+	imports: [
+		RouterOutlet,
+		RouterLink,
+		MatButtonToggleGroup,
+		MatButtonToggle,
+		ReactiveFormsModule,
+		ModeSelectorComponent,
+	],
 	templateUrl: './app.component.html',
 	styleUrl: 'app.component.scss',
 })
