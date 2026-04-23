@@ -2,6 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {ObDatePipe} from './date.pipe';
 import {ObLanguageService} from './language.service';
 import {of} from 'rxjs';
+import {ObDateFormat, ObTimeFormat} from './date-adapter/date.model';
 
 describe('DatePipe', () => {
 	let pipe: ObDatePipe;
@@ -25,25 +26,30 @@ describe('DatePipe', () => {
 
 	describe('transform', () => {
 		test('illegal value', () => {
-			expect(() => pipe.transform('a')).toThrow();
+			expect(pipe.transform('a', 'fullDate')).toBeNull();
 		});
 
-		test('default format', () => {
-			// Jenkins is in UTC, therefore a timezone has to be given
-			expect(pipe.transform(0, undefined, '+1')).toBe('1/1/70 1:00:00 AM');
+		test.each([undefined, null])('default format (%s)', format => {
+			expect(pipe.transform(0, format)).toBe('01.01.1970');
 		});
 
 		test.each([
-			{format: 'shortDate', expected: '1/1/70'},
-			{format: 'mediumDate', expected: 'Jan 1, 1970'},
-			{format: 'longDate', expected: 'January 1, 1970'},
-			{format: 'fullDate', expected: 'Thursday, January 1, 1970'},
-		])('format: $format', ({format, expected}) => {
-			expect(pipe.transform(0, format)).toBe(expected);
-		});
-
-		test('timezone', () => {
-			expect(pipe.transform(0, 'shortTime', '+2')).toBe('2:00 AM');
-		});
+			{format: 'shortDate', timeFormat: null, expected: '01.01.1970'},
+			{format: 'mediumDate', timeFormat: null, expected: '1 Jan 1970'},
+			{format: 'longDate', timeFormat: null, expected: '1 January 1970'},
+			{format: 'fullDate', timeFormat: null, expected: 'Thursday, 1 January 1970'},
+			{format: 'shortDate', timeFormat: 'shortTime', expected: '01.01.1970, 01:00'},
+			{format: 'mediumDate', timeFormat: 'mediumTime', expected: '1 Jan 1970, 01:00:00'},
+			{format: 'longDate', timeFormat: 'longTime', expected: '1 January 1970 at 01:00:00.000'},
+			{format: 'fullDate', timeFormat: 'shortTime', expected: 'Thursday, 1 January 1970 at 01:00'},
+			{format: 'shortTime', timeFormat: null, expected: '01:00'},
+			{format: 'mediumTime', timeFormat: null, expected: '01:00:00'},
+			{format: 'longTime', timeFormat: null, expected: '01:00:00.000'},
+		] as {format: ObDateFormat; timeFormat?: ObTimeFormat; expected: string}[])(
+			`format: $format, timeFormat: $timeFormat`,
+			({format, timeFormat, expected}) => {
+				expect(pipe.transform(0, format, timeFormat)).toBe(expected);
+			}
+		);
 	});
 });
