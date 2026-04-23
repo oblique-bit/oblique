@@ -1,89 +1,43 @@
 <h2 class="page-header">Language</h2>
 <ob-column-layout left="NONE" right="OPENED">
 	<div column-main-content>
-		{{ 0 | obDate: format : timezone }}
-		<mat-form-field class="ms-fix">
+		<mat-form-field>
 			<mat-label>Datepicker</mat-label>
-			<input matInput [matDatepicker]="picker" [value]="today" />
+			<input matInput [matDatepicker]="picker" [(ngModel)]="date" />
 			<mat-datepicker-toggle matSuffix [for]="picker" />
 			<mat-datepicker #picker />
 		</mat-form-field>
+
+		<dl class="ob-horizontal">
+			<dt>ObDatePipe</dt>
+			<dd>{{ date | obDate: formatPipe : timezone }}</dd>
+			<dt>ObDateComponent</dt>
+			<dd><ob-date [date]="date" [format]="formatComponent" /></dd>
+		</dl>
 	</div>
+
 	<div column-right-content>
 		<h2>Controls</h2>
-		<input [(ngModel)]="format" />
-		<input [(ngModel)]="timezone" />
+		<mat-form-field>
+			<mat-label>Pipe format</mat-label>
+			<mat-select [(ngModel)]="formatPipe">
+				@for (format of formatsPipe; track format) {
+					<mat-option [value]="format">{{ format }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Component format</mat-label>
+			<mat-select [(ngModel)]="formatComponent">
+				@for (format of formatsComponent; track format) {
+					<mat-option [value]="format">{{ format }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Timezone</mat-label>
+			<input matInput [(ngModel)]="timezone" />
+			<mat-hint>+1 winter time / +2 summer time</mat-hint>
+		</mat-form-field>
 	</div>
 </ob-column-layout>
-
-<h2 class="page-header">ObDateComponent</h2>
-<table class="ob-table">
-	<caption>
-		Examples of the ObDateComponent showing different inputs and formats.
-	</caption>
-	<thead>
-		<tr>
-			<th scope="col">Format</th>
-			<th scope="col">Input</th>
-			<th scope="col">Example</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<th scope="row" data-title="FORMAT">shortDate</th>
-			<td data-title="INPUT">2025-05-12</td>
-			<td data-title="EXAMPLE">
-				<ob-date date="2025-05-12" format="shortDate" />
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" data-title="FORMAT">mediumDate</th>
-			<td data-title="INPUT">2025-05-12</td>
-			<td data-title="EXAMPLE">
-				<ob-date date="2025-05-12" format="mediumDate" />
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" data-title="FORMAT">longDate</th>
-			<td data-title="INPUT">2025-05-12</td>
-			<td data-title="EXAMPLE">
-				<ob-date date="2025-05-12" format="longDate" />
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" data-title="FORMAT">fullDate</th>
-			<td data-title="INPUT">2025-05-12</td>
-			<td data-title="EXAMPLE">
-				<ob-date date="2025-05-12" format="fullDate" />
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" data-title="FORMAT">yyyy-MM-dd</th>
-			<td data-title="INPUT">2025-05-12</td>
-			<td data-title="EXAMPLE">
-				<ob-date date="2025-05-12" format="yyyy-MM-dd" />
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" data-title="FORMAT">isoDate</th>
-			<td data-title="INPUT">2025-05-12</td>
-			<td data-title="EXAMPLE">
-				<ob-date date="2025-05-12" format="isoDate" />
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" data-title="FORMAT">default</th>
-			<td data-title="INPUT">new Date('2025-05-12')</td>
-			<td data-title="EXAMPLE">
-				<ob-date [date]="exampleDate" />
-			</td>
-		</tr>
-		<tr>
-			<th scope="row" data-title="FORMAT">default</th>
-			<td data-title="INPUT">31.12.2025</td>
-			<td data-title="EXAMPLE">
-				<ob-date date="31.12.2025" />
-			</td>
-		</tr>
-	</tbody>
-</table>
