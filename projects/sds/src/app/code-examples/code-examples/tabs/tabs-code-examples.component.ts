@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {TabsExampleBasicPreviewComponent} from './previews/basic/tabs-example-basic-preview.component';
 import {TabsExampleVariationsPreviewComponent} from './previews/variations/tabs-example-variations-preview.component';
@@ -9,7 +9,7 @@ import {TabsExampleStretchedPreviewComponent} from './previews/stretched/tabs-ex
 
 @Component({
 	selector: 'app-code-example-tabs',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

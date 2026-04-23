@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {HtmlTableExampleDefaultPreviewComponent} from './previews/default/html-table-example-default-preview.component';
 import {HtmlTableExampleSizesPreviewComponent} from './previews/sizes/html-table-example-sizes-preview.component';
@@ -10,7 +10,7 @@ import {HtmlTableExampleCollapsePreviewComponent} from './previews/collapse/html
 
 @Component({
 	selector: 'app-code-example-html-table',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,8 +1,7 @@
 import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {Router} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
@@ -69,7 +68,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			imports: [
 				ObMasterLayoutNavigationGoToChildrenComponent,
 				TranslateModule,
-				RouterTestingModule.withRoutes([
+				RouterModule.forRoot([
 					{path: 'defaultPathMatch', component: DummyDefaultPathComponent},
 					{path: 'prefix/1/users', component: DummyPrefixPathComponent},
 					{path: 'prefix/:id/users', component: DummyPrefixPathComponent},

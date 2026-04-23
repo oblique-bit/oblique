@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FormExampleSizesPreviewComponent} from '../form/previews/sizes/form-example-sizes-preview.component';
 import {FormExampleStatesPreviewComponent} from './previews/states/form-example-states-preview.component';
@@ -12,7 +12,7 @@ import {DatepickerExampleOtherOptionsPreviewComponent} from './previews/other-op
 
 @Component({
 	selector: 'app-code-example-form',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

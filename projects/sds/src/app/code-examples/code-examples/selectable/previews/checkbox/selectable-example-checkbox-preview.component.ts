@@ -1,10 +1,10 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {ObSelectableModule} from '@oblique/oblique';
 
 @Component({
 	selector: 'app-selectable-example-checkbox-preview',
-	imports: [CommonModule, ObSelectableModule],
+	imports: [ObSelectableModule, AsyncPipe],
 	templateUrl: './selectable-example-checkbox-preview.component.html',
 	styleUrl: '../selectable-example-preview.component.scss',
 })

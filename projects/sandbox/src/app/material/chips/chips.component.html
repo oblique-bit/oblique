@@ -6,16 +6,16 @@
 				<mat-list-item>
 					<mat-chip-listbox class="mdc-evolution-chip-set" [class.mat-mdc-chip-set-stacked]="stacked">
 						@if (type === "mat-chip-row") {
-							<mat-chip-row [ngClass]="variant" [disabled]="disabled">Chip 1</mat-chip-row>
-							<mat-chip-row [ngClass]="variant" [disabled]="disabled">Chip 2</mat-chip-row>
+							<mat-chip-row [class]="variant" [disabled]="disabled">Chip 1</mat-chip-row>
+							<mat-chip-row [class]="variant" [disabled]="disabled">Chip 2</mat-chip-row>
 						}
 						@if (type === "mat-chip-option") {
-							<mat-chip-option [ngClass]="variant" [disabled]="disabled">Chip 1</mat-chip-option>
-							<mat-chip-option [ngClass]="variant" [disabled]="disabled">Chip 2</mat-chip-option>
+							<mat-chip-option [class]="variant" [disabled]="disabled">Chip 1</mat-chip-option>
+							<mat-chip-option [class]="variant" [disabled]="disabled">Chip 2</mat-chip-option>
 						}
 						@if (type === "mat-chip") {
-							<mat-chip [ngClass]="variant" [disabled]="disabled">Chip 1</mat-chip>
-							<mat-chip [ngClass]="variant" [disabled]="disabled">Chip 2</mat-chip>
+							<mat-chip [class]="variant" [disabled]="disabled">Chip 1</mat-chip>
+							<mat-chip [class]="variant" [disabled]="disabled">Chip 2</mat-chip>
 						}
 					</mat-chip-listbox>
 				</mat-list-item>
@@ -27,7 +27,7 @@
 				<mat-chip-grid #matChipGrid aria-label="Tag selection" [disabled]="disabled">
 					@if (type === "mat-chip-row") {
 						@for (tag of tags; track tag) {
-							<mat-chip-row [ngClass]="variant" (removed)="remove(tag)">
+							<mat-chip-row [class]="variant" (removed)="remove(tag)">
 								{{ tag }}
 								<button type="button" matChipRemove>
 									<mat-icon svgIcon="xmark_circle" />
@@ -37,7 +37,7 @@
 					}
 					@if (type === "mat-chip-option") {
 						@for (tag of tags; track tag) {
-							<mat-chip-option [ngClass]="variant" (removed)="remove(tag)">
+							<mat-chip-option [class]="variant" (removed)="remove(tag)">
 								{{ tag }}
 								<button type="button" matChipRemove>
 									<mat-icon svgIcon="xmark_circle" />
@@ -47,7 +47,7 @@
 					}
 					@if (type === "mat-chip") {
 						@for (tag of tags; track tag) {
-							<mat-chip [ngClass]="variant" (removed)="remove(tag)">
+							<mat-chip [class]="variant" (removed)="remove(tag)">
 								{{ tag }}
 								<button type="button" matChipRemove>
 									<mat-icon svgIcon="xmark_circle" />

@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ObSpinnerModule} from '@oblique/oblique';
 import {RouterOutlet} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
@@ -10,7 +10,7 @@ import {BannerComponent} from './banner/banner.component';
 
 @Component({
 	selector: 'app-root',
-	imports: [CommonModule, RouterOutlet, ObSpinnerModule, SideNavigationComponent, BannerComponent],
+	imports: [RouterOutlet, ObSpinnerModule, SideNavigationComponent, BannerComponent, AsyncPipe],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 	host: {

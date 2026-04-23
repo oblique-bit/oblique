@@ -2,14 +2,14 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {CommonModule} from '@angular/common';
+
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {TranslationsExampleStaticStackblitzLinkPreviewComponent} from './previews/stackblitz-link/translations-example-static-stackblitz-link-preview.component';
 import {TranslationsExampleDynamicStackblitzLinkPreviewComponent} from './previews/stackblitz-link/translations-example-dynamic-stackblitz-link-preview.component';
 
 @Component({
 	selector: 'app-code-example-translations',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

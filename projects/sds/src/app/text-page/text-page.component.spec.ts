@@ -1,6 +1,6 @@
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {TextPageComponent} from './text-page.component';
 import {IdPipe} from '../shared/id/id.pipe';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
@@ -13,7 +13,12 @@ describe(TextPageComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, IdPipe, RouterTestingModule, TextPageComponent],
+			imports: [
+				HttpClientTestingModule,
+				IdPipe,
+				RouterModule.forRoot([{path: '**', component: TextPageComponent}]),
+				TextPageComponent,
+			],
 			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 

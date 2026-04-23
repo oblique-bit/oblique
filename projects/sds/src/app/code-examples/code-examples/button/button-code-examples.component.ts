@@ -4,11 +4,10 @@ import {ButtonExampleColorsComponent} from './previews/colors/button-example-col
 import {ButtonExampleOtherOptionsComponent} from './previews/other-options/button-example-other-options.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {CommonModule} from '@angular/common';
 
 @Component({
 	selector: 'app-button-code-examples',
-	imports: [CodeExampleComponent, IdPipe, CommonModule],
+	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

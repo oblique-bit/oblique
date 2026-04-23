@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {GridSystemExampleGridPreviewComponent} from './previews/grid/grid-system-example-grid-preview.component';
 import {GridSystemExampleFlexPreviewComponent} from './previews/flex/grid-system-example-flex-preview.component';
 
 @Component({
 	selector: 'app-code-example-grid-system',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -4,11 +4,11 @@ import {FormBuilder, type FormGroup, FormsModule, ReactiveFormsModule} from '@an
 import {ObNumberFormatModule} from '@oblique/oblique';
 import {Component, inject} from '@angular/core';
 import type {Observable} from 'rxjs';
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
 	selector: 'app-number-format-example-default-with-reactive-form-preview',
-	imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule, ReactiveFormsModule],
+	imports: [FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule, ReactiveFormsModule, AsyncPipe],
 	templateUrl: './number-format-example-default-with-reactive-form-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
 })

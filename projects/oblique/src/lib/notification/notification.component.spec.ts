@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {DebugElement} from '@angular/core';
 import {Subject} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
@@ -40,7 +40,7 @@ describe('NotificationComponent', () => {
 				ObMockTranslatePipe,
 				ObNotificationComponent,
 				ObTranslateParamsModule,
-				RouterTestingModule,
+				RouterModule.forRoot([]),
 			],
 			providers: [
 				{provide: ObNotificationConfig, useClass: ObMockNotificationConfig},

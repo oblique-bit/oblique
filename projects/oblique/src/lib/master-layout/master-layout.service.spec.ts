@@ -1,6 +1,5 @@
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {RouterTestingModule} from '@angular/router/testing';
 import {Observable} from 'rxjs';
 import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
@@ -13,13 +12,14 @@ import {ObMockMasterLayoutHeaderService} from './_mocks/mock-master-layout-heade
 import {ObMockMasterLayoutFooterService} from './_mocks/mock-master-layout-footer.service';
 import {ObMockMasterLayoutNavigationService} from './_mocks/mock-master-layout-navigation.service';
 import {ObMockMasterLayoutComponentService} from './_mocks/mock-master-layout.component.service';
+import {RouterModule} from '@angular/router';
 
 describe('ObMasterLayoutService', () => {
 	let masterLayoutService: ObMasterLayoutService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
+			imports: [RouterModule.forRoot([])],
 			providers: [
 				ObMasterLayoutService,
 				{provide: TranslateService, useClass: ObMockTranslateService},

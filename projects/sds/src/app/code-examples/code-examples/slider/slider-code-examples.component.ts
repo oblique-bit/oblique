@@ -3,13 +3,13 @@ import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {BasicSliderComponent} from './previews/basic-slider/basic-slider.component';
 import {RangeSliderComponent} from './previews/range-slider/range-slider.component';
 import {SliderOptionsComponent} from './previews/slider-options/slider-options.component';
-import {CommonModule} from '@angular/common';
+
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
 	selector: 'app-slider-code-examples',
-	imports: [CodeExampleComponent, CommonModule, IdPipe],
+	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

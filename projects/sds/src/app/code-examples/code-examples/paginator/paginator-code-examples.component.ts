@@ -3,12 +3,12 @@ import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {PaginatorExampleCommonOptionsPreviewComponent} from './previews/common-options/paginator-example-common-options-preview.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {CommonModule} from '@angular/common';
+
 import {PaginatorExampleOtherOptionsPreviewComponent} from './previews/other-options/paginator-example-other-options-preview.component';
 
 @Component({
 	selector: 'app-paginator-code-examples',
-	imports: [CommonModule, CodeExampleComponent, IdPipe],
+	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -6,19 +6,19 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type Observable, map, startWith} from 'rxjs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {MatListModule} from '@angular/material/list';
 
 @Component({
 	selector: 'app-chips-example-autocomplete-preview',
 	imports: [
-		CommonModule,
 		MatChipsModule,
 		MatAutocompleteModule,
 		MatIconModule,
 		MatFormFieldModule,
 		ReactiveFormsModule,
 		MatListModule,
+		AsyncPipe,
 	],
 	templateUrl: './chips-example-autocomplete-preview.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,

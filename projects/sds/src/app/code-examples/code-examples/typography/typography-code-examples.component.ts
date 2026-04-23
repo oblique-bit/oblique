@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {TypographyExampleInlineElementsPreviewComponent} from './previews/inline-elements/typography-example-inline-elements-preview.component';
 import {TypographyExampleHeadingsPreviewComponent} from './previews/headings/typography-example-headings-preview.component';
@@ -11,7 +11,7 @@ import {TypographyExampleListsPreviewComponent} from '../typography/previews/lis
 
 @Component({
 	selector: 'app-code-example-typography',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

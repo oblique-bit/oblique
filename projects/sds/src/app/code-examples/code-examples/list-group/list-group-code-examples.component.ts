@@ -6,12 +6,12 @@ import {ListGroupExampleAvatarSubheaderComponent} from './previews/avatar-subhea
 import {ListGroupExampleIconCheckboxComponent} from './previews/icon-checkbox/list-group-example-icon-checkbox.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {CommonModule} from '@angular/common';
+
 import {ListGroupExampleImagePreviewComponent} from './previews/image/list-group-example-image-preview.component';
 
 @Component({
 	selector: 'app-list-group-code-examples',
-	imports: [CommonModule, CodeExampleComponent, IdPipe],
+	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
 })
 export class ListGroupCodeExamplesComponent extends CodeExamples {

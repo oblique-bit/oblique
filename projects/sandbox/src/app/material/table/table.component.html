@@ -1,7 +1,7 @@
 <h2 class="page-header">Table</h2>
 <ob-column-layout left="NONE">
 	<div column-main-content [class.ob-table-scrollable]="isScrollable$ | async">
-		<form [formGroup]="tableManager.editForm" [ngClass]="collapsedStyles$ | async">
+		<form [formGroup]="tableManager.editForm" [class]="collapsedStyles$ | async">
 			<div class="actions-header">
 				<ng-container
 					[ngTemplateOutlet]="actionsHeader"
@@ -15,7 +15,7 @@
 					matSortActive="position"
 					matSortDirection="asc"
 					[dataSource]="tableManager.dataSource"
-					[ngClass]="tableStyles$ | async"
+					[class]="tableStyles$ | async"
 				>
 					@if (hasCaption$ | async) {
 						<caption>
@@ -81,7 +81,7 @@
 					matSortActive="position"
 					matSortDirection="asc"
 					[dataSource]="tableManager.dataSource"
-					[ngClass]="tableStyles$ | async"
+					[class]="tableStyles$ | async"
 				>
 					<ng-container [cdkColumnDef]="COLUMN_NAME_SELECT">
 						<mat-cell *cdkHeaderCellDef>

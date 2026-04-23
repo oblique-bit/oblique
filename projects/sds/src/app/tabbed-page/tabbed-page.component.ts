@@ -10,7 +10,7 @@ import {urlConst} from '../shared/url/url.const';
 import {IdPipe} from '../shared/id/id.pipe';
 import {TabComponent} from '../shared/tabs/tab/tab.component';
 import {TabsComponent} from '../shared/tabs/tabs.component';
-import {CommonModule, Location} from '@angular/common';
+import {AsyncPipe, Location} from '@angular/common';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
 import type {CmsData, TabbedPageComplete, UiUxData, UiUxEntry} from '../cms/models/tabbed-page.model';
 import {getTabNameFromUrlParam, getUrlParamForTabName} from './utils/tab-name-mapper';
@@ -28,11 +28,11 @@ import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redir
 		TabComponent,
 		UiUxComponent,
 		CodeExampleDirective,
-		CommonModule,
 		IdPipe,
 		SafeHtmlPipe,
 		MatChipsModule,
 		IconsExampleIconsGalleryPreviewComponent,
+		AsyncPipe,
 	],
 	templateUrl: './tabbed-page.component.html',
 	styleUrl: './tabbed-page.component.scss',
