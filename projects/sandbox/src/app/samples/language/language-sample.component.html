@@ -17,7 +17,7 @@
 
 		<dl class="ob-horizontal">
 			<dt>ObDatePipe</dt>
-			<dd>{{ date | obDate: formatPipe : timezone }}</dd>
+			<dd>{{ date | obDate: dateFormat : timeFormat }}</dd>
 			<dt>ObDateComponent</dt>
 			<dd><ob-date [date]="date" [format]="dateFormat" [timeFormat]="timeFormat" /></dd>
 		</dl>
@@ -25,14 +25,6 @@
 
 	<div column-right-content>
 		<h2>Controls</h2>
-		<mat-form-field>
-			<mat-label>Pipe format</mat-label>
-			<mat-select [(ngModel)]="formatPipe">
-				@for (format of formatsPipe; track format) {
-					<mat-option [value]="format">{{ format }}</mat-option>
-				}
-			</mat-select>
-		</mat-form-field>
 		<mat-form-field>
 			<mat-label>Date format</mat-label>
 			<mat-select [(ngModel)]="dateFormat">
@@ -48,11 +40,6 @@
 					<mat-option [value]="format">{{ format }}</mat-option>
 				}
 			</mat-select>
-		</mat-form-field>
-		<mat-form-field>
-			<mat-label>Timezone</mat-label>
-			<input matInput [(ngModel)]="timezone" />
-			<mat-hint>+1 winter time / +2 summer time</mat-hint>
 		</mat-form-field>
 	</div>
 </ob-column-layout>
