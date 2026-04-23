@@ -36,6 +36,7 @@ import {
 	defaultTranslationConfig,
 	provideObliqueTranslations,
 } from './translation/translation.providers';
+import {obProvideDate} from './language/date.provider';
 
 export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
@@ -115,6 +116,7 @@ function getDefaultObliqueProviders(
 		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
 		provideAccessibilityStatement(mergedConfig.accessibilityStatement),
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: mergedConfig.hasLanguageInUrl},
+		obProvideDate(),
 		provideMaterial(mergedConfig.material),
 	];
 }
@@ -149,6 +151,7 @@ export function provideObliqueTestingConfiguration(config: ObIObliqueTestingConf
 			},
 		},
 		...getDefaultObliqueProviders(mergedConfig),
+		obProvideDate(),
 	]);
 }
 

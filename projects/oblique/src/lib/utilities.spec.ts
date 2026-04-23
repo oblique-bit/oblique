@@ -6,6 +6,7 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {
 	TranslateCompiler,
@@ -37,6 +38,8 @@ import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/
 import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from './accessibility-statement/accessibility-statement.provider';
 import {WINDOW} from './window/window.provider';
 import {OB_TRANSLATION_CONFIGURATION, provideObliqueTranslations} from './translation/translation.providers';
+import {ObDateAdapter} from './language/date-adapter/date-adapter';
+
 const translations: any = {};
 const accessibilityStatement: ObIAccessibilityStatementConfiguration = {
 	applicationName: 'appName',
@@ -236,6 +239,29 @@ describe('utilities', () => {
 					const historyState = TestBed.inject(OB_HISTORY_STATE);
 
 					expect(historyState).toEqual({initialLength: window.history.length});
+				});
+			});
+
+			describe('Date adapter', () => {
+				it('should be an instance of DateAdapter', () => {
+					expect(TestBed.inject(DateAdapter) instanceof ObDateAdapter).toBe(true);
+				});
+			});
+
+			describe('MAT_DATE_FORMATS', () => {
+				it('should create MAT_DATE_FORMATS', () => {
+					expect(TestBed.inject(MAT_DATE_FORMATS)).toEqual({
+						parse: {timeInput: 'shortTime'},
+						display: {
+							dateInput: 'shortDate',
+							monthLabel: 'longMonth',
+							monthYearLabel: 'mediumMonthYear',
+							dateA11yLabel: 'longDate',
+							monthYearA11yLabel: 'longMonthYear',
+							timeInput: 'shortTime',
+							timeOptionLabel: 'shortTime',
+						},
+					});
 				});
 			});
 		});
@@ -566,6 +592,29 @@ describe('utilities', () => {
 
 				expect(translationConfiguration).toEqual({flatten: true});
 				expect(TestBed.inject(TranslateService).currentLoader).toBeInstanceOf(TranslateNoOpLoader);
+			});
+
+			describe('Date adapter', () => {
+				it('should be an instance of DateAdapter', () => {
+					expect(TestBed.inject(DateAdapter) instanceof ObDateAdapter).toBe(true);
+				});
+			});
+
+			describe('MAT_DATE_FORMATS', () => {
+				it('should create MAT_DATE_FORMATS', () => {
+					expect(TestBed.inject(MAT_DATE_FORMATS)).toEqual({
+						parse: {timeInput: 'shortTime'},
+						display: {
+							dateInput: 'shortDate',
+							monthLabel: 'longMonth',
+							monthYearLabel: 'mediumMonthYear',
+							dateA11yLabel: 'longDate',
+							monthYearA11yLabel: 'longMonthYear',
+							timeInput: 'shortTime',
+							timeOptionLabel: 'shortTime',
+						},
+					});
+				});
 			});
 		});
 	});
