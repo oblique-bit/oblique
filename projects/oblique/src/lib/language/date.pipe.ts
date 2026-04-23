@@ -1,6 +1,7 @@
 import {Pipe, PipeTransform, inject} from '@angular/core';
-import {formatDate} from '@angular/common';
 import {ObLanguageService} from './language.service';
+import {obFormatDatetime} from './date-adapter/date-formatters';
+import {ObDateTimeFormat, ObDateValue, ObFormat, ObTimeFormat} from './date-adapter/date.model';
 
 @Pipe({
 	name: 'obDate',
@@ -8,6 +9,7 @@ import {ObLanguageService} from './language.service';
 	pure: false,
 })
 export class ObDatePipe implements PipeTransform {
+	private readonly timeFormats: ObTimeFormat[] = ['shortTime', 'mediumTime', 'longTime'] as const;
 	private locale: string;
 
 	constructor() {
@@ -16,9 +18,18 @@ export class ObDatePipe implements PipeTransform {
 		});
 	}
 
-	transform(value: string | number | Date, format = 'datetime', timezone?: string): string {
-		return format === 'datetime'
-			? `${formatDate(value, 'shortDate', this.locale, timezone)} ${formatDate(value, 'mediumTime', this.locale, timezone)}`
-			: formatDate(value, format, this.locale, timezone);
+	transform(value: ObDateValue, dateFormat: ObDateTimeFormat, timeFormat?: ObTimeFormat): string {
+		return obFormatDatetime(value, this.locale, this.buildFormat(dateFormat, timeFormat));
+	}
+
+	private buildFormat(dateFormat: ObDateTimeFormat, timeFormat?: ObTimeFormat): ObFormat {
+		if (this.isTimeFormat(dateFormat)) {
+			return {time: dateFormat};
+		}
+		return {date: dateFormat, time: timeFormat};
+	}
+
+	private isTimeFormat(displayFormat: ObDateTimeFormat): displayFormat is ObTimeFormat {
+		return this.timeFormats.includes(displayFormat as ObTimeFormat);
 	}
 }
