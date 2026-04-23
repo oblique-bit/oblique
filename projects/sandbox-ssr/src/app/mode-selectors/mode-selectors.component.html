@@ -1,0 +1,43 @@
+<form class="mode-controls" [formGroup]="form">
+	<mat-button-toggle-group
+		[attr.aria-label]="'mode-controls.lightness' | translate"
+		[formControl]="form.controls.lightnessDark"
+	>
+		<mat-button-toggle value="">none</mat-button-toggle>
+		<mat-button-toggle value="ob-lightness-dark">ob-lightness-dark</mat-button-toggle>
+	</mat-button-toggle-group>
+
+	<mat-button-toggle-group
+		[attr.aria-label]="'mode-controls.component-size' | translate"
+		[formControl]="form.controls.componentSize"
+	>
+		<mat-button-toggle value="">none</mat-button-toggle>
+		<mat-button-toggle value="ob-component-size-sm">ob-component-size-sm</mat-button-toggle>
+		<mat-button-toggle value="ob-component-size-lg">ob-component-size-lg</mat-button-toggle>
+	</mat-button-toggle-group>
+
+	<mat-button-toggle-group
+		[attr.aria-label]="'mode-controls.density' | translate"
+		[formControl]="form.controls.density"
+	>
+		<mat-button-toggle value="">none</mat-button-toggle>
+		<mat-button-toggle value="ob-density-compact">ob-density-compact</mat-button-toggle>
+		<mat-button-toggle value="ob-density-spacious">ob-density-spacious</mat-button-toggle>
+	</mat-button-toggle-group>
+
+	<mat-button-toggle-group
+		[attr.aria-label]="'mode-controls.typography-context-prose' | translate"
+		[formControl]="form.controls.typographyContextProse"
+	>
+		<mat-button-toggle value="">none</mat-button-toggle>
+		<mat-button-toggle value="ob-typography-context-prose">ob-typography-context-prose</mat-button-toggle>
+	</mat-button-toggle-group>
+
+	<mat-button-toggle-group
+		[attr.aria-label]="'mode-controls.motion-disabled' | translate"
+		[formControl]="form.controls.motionDisabled"
+	>
+		<mat-button-toggle value="">none</mat-button-toggle>
+		<mat-button-toggle value="ob-motion-disabled">ob-motion-disabled</mat-button-toggle>
+	</mat-button-toggle-group>
+</form>
