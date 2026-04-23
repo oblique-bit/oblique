@@ -19,10 +19,7 @@ export class LanguageSampleComponent {
 		'longMonth',
 	] as const;
 	readonly timeFormats: ObTimeFormat[] = [null, 'longTime', 'mediumTime', 'shortTime'] as const;
-	readonly formatsPipe = ['datetime', 'shortDate', 'mediumDate', 'longDate', 'fullDate'] as const;
 	date = new Date();
-	formatPipe: (typeof this.formatsPipe)[number] = 'datetime';
 	dateFormat: ObDateFormat = 'shortDate';
 	timeFormat: ObTimeFormat = 'shortTime';
-	timezone: string;
 }
