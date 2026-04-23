@@ -8,7 +8,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {
@@ -92,7 +91,6 @@ registerLocaleData(localeDE);
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
 		{provide: OB_MAT_ERROR_PREFIX, useValue: 'i18n.custom-token-prefix.'},
-		provideMomentDateAdapter(),
 		provideHttpClient(withInterceptorsFromDi()),
 		provideObliqueConfiguration({
 			accessibilityStatement: {
