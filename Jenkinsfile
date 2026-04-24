@@ -8,17 +8,23 @@ nodejsPipelineTemplate {
 		'npmCredentialId': 'npmDeploymentTokenOblique'
 	]
 	branches = [
-		'*': [
-			'lint': 'npm run lint',
-			'test': 'npm run test-ci --workspaces',
-			'build': 'npm run build --workspaces'
-		],
+
 		master: [
 			'publish': [
 				'@oblique/oblique',
 				'@oblique/cli',
 				'@oblique/service-navigation-web-component',
 				'@oblique/toolchain'
+			],
+			'gitPush': [
+				'credentialId': 'githubObliqueCredentials',
+				'repository': 'https://github.com/oblique-bit/oblique.git',
+			]
+		],
+		'feature/OUI-4470-push-to-github-with-jenkins': [
+			'gitPush': [
+				'credentialId': 'githubObliqueCredentials',
+				'repository': 'https://github.com/oblique-bit/oblique.git',
 			]
 		]
 	]
