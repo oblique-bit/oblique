@@ -1,0 +1,15 @@
+<!--This if is a workaround for an Angular bug, see the TS file for more information -->
+@if (show) {
+	<form [formGroup]="formGroup">
+		<ob-autocomplete
+			formControlName="control"
+			withErrorMessages="true"
+			[autocompleteOptions]="optionList"
+			(selectedOptionChange)="showSelection($event)"
+		>
+			<mat-hint>This field is required</mat-hint>
+			<mat-hint align="end">The error is shown after the field loses focus while remaining empty</mat-hint>
+		</ob-autocomplete>
+	</form>
+	<p>selectedOption: {{ selectedOption | json }}</p>
+}

@@ -5,7 +5,7 @@ import {AutocompleteExampleIconPositionStartComponent} from './previews/icon-pos
 import {AutocompleteExampleIconOptionsGroupComponent} from './previews/options-group/autocomplete-example-options-group.component';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {AutocompleteExampleHintsComponent} from './previews/hints/autocomplete-example-hints.component';
+import {AutocompleteExampleFormComponent} from './previews/form/autocomplete-example-form.component';
 import {AutocompleteExampleDisplayWithComponent} from './previews/display-with/autocomplete-example-display-with.component';
 import {AutocompleteExampleAriaLabelComponent} from './previews/aria-label/autocomplete-example-aria-label.component';
 
@@ -52,12 +52,12 @@ export class AutocompleteCodeExamplesComponent extends CodeExamples {
 			],
 		},
 		{
-			component: AutocompleteExampleHintsComponent,
-			idParts: ['autocomplete', 'hints'],
-			title: 'Autocomplete hints',
+			component: AutocompleteExampleFormComponent,
+			idParts: ['autocomplete', 'form'],
+			title: 'Autocomplete in a form',
 			snippets: [
-				this.getSnippet('autocomplete', 'hints/autocomplete-example-hints.component.html', 'HTML'),
-				this.getSnippet('autocomplete', 'hints/autocomplete-example-hints.component.ts', 'TS'),
+				this.getSnippet('autocomplete', 'form/autocomplete-example-form.component.html', 'HTML'),
+				this.getSnippet('autocomplete', 'form/autocomplete-example-form.component.ts', 'TS'),
 			],
 		},
 		{
