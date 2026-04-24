@@ -21,7 +21,6 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 
 	constructor() {
 		const translate = inject(TranslateService);
-		// yay
 
 		if (this.control) {
 			this.pipe = new ObTranslateParamsPipe();
