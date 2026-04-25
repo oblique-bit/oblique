@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTimepickerModule} from '@angular/material/timepicker';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
@@ -109,6 +110,7 @@ import {ObLocalizePipe} from './../../../../oblique/src/lib/router/ob-localize.p
 		MatRadioModule,
 		MatSelectModule,
 		MatSlideToggleModule,
+		MatTimepickerModule,
 		MatTooltipModule,
 		ObAlertModule,
 		ObBreadcrumbModule.forRoot({}),
