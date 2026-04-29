@@ -55,6 +55,7 @@
 		></ob-service-navigation-web-component>
 
 		<script>
+			document.querySelector("ob-service-navigation-web-component").returnUrl = window.location.href;
 			document.querySelector("#showLanguages").addEventListener("change", (event) => {
 				document
 					.querySelector("ob-service-navigation-web-component")
