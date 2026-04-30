@@ -1,11 +1,7 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {FormsModule, type NgForm, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {RouterModule} from '@angular/router';
-import {MatMomentDateModule} from '@angular/material-moment-adapter';
-import {TranslateService} from '@ngx-translate/core';
-import {ObDatepickerModule, ObMockTranslatePipe, ObMockTranslateService, ObNotificationService} from '@oblique/oblique';
+import {TranslatePipe} from '@ngx-translate/core';
+import {provideObliqueTestingConfiguration, ObNotificationService} from '@oblique/oblique';
 import {SchemaValidationSampleComponent} from './schema-validation-sample.component';
 
 describe(SchemaValidationSampleComponent.name, () => {
@@ -14,18 +10,9 @@ describe(SchemaValidationSampleComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [
-				ObMockTranslatePipe,
-				FormsModule,
-				ReactiveFormsModule,
-				HttpClientTestingModule,
-				RouterModule,
-				ObDatepickerModule,
-				MatMomentDateModule,
-			],
+			imports: [TranslatePipe, FormsModule, ReactiveFormsModule],
 			declarations: [SchemaValidationSampleComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 	});
 
