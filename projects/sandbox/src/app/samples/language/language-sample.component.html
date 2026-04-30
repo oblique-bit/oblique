@@ -19,7 +19,7 @@
 			<dt>ObDatePipe</dt>
 			<dd>{{ date | obDate: formatPipe : timezone }}</dd>
 			<dt>ObDateComponent</dt>
-			<dd><ob-date [date]="date" [format]="formatComponent" /></dd>
+			<dd><ob-date [date]="date" [format]="dateFormat" [timeFormat]="timeFormat" /></dd>
 		</dl>
 	</div>
 
@@ -34,9 +34,17 @@
 			</mat-select>
 		</mat-form-field>
 		<mat-form-field>
-			<mat-label>Component format</mat-label>
-			<mat-select [(ngModel)]="formatComponent">
-				@for (format of formatsComponent; track format) {
+			<mat-label>Date format</mat-label>
+			<mat-select [(ngModel)]="dateFormat">
+				@for (format of dateFormats; track format) {
+					<mat-option [value]="format">{{ format }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Time format</mat-label>
+			<mat-select [(ngModel)]="timeFormat">
+				@for (format of timeFormats; track format) {
 					<mat-option [value]="format">{{ format }}</mat-option>
 				}
 			</mat-select>
