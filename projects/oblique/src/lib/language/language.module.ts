@@ -3,8 +3,8 @@ import {ObDatePipe} from './date.pipe';
 import {ObDateComponent} from './date/date.component';
 
 export {ObDatePipe} from './date.pipe';
-export {ObDateFormat} from './date/date.model';
 export {ObDateComponent} from './date/date.component';
+export {ObDateFormat, ObTimeFormat} from './date-adapter/date.model';
 export {ObILocale, ObILocaleObject} from './language.model';
 
 @NgModule({

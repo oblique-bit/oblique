@@ -41,16 +41,17 @@ describe('DateComponent', () => {
 		fixture.componentRef.setInput('date', '2025-12-31');
 		fixture.detectChanges();
 		const element = fixture.debugElement.query(By.css('time'));
-		expect(element.nativeElement.textContent).toBe('December 31, 2025');
+		expect(element.nativeElement.textContent).toBe('31 December 2025');
 		expect(element.attributes.datetime).toBe('2025-12-31');
 	});
 
 	test('invalid date', () => {
-		fixture.componentRef.setInput('date', '31-12-2025');
+		fixture.componentRef.setInput('date', '32-12-2025');
 		fixture.componentRef.setInput('format', 'longDate');
-		expect(component.formattedDate).toThrow(
-			"Invalid date string received: 31-12-2025. Accepted date strings use one of the following formats: 'dd.MM.yyyy' or 'yyyy-MM-dd'"
-		);
+		fixture.detectChanges();
+		const element = fixture.debugElement.query(By.css('time'));
+		expect(element.nativeElement.textContent).toBe('');
+		expect(element.attributes.datetime).toBeUndefined();
 	});
 
 	test('locale changes', () => {
@@ -62,23 +63,52 @@ describe('DateComponent', () => {
 		expect(element.attributes.datetime).toBe('2025-12-31');
 	});
 
-	describe.each(['2025-12-31', '31.12.2025', new Date('2025-12-31')])('with date: %s', input => {
+	describe.each(['2025-12-31', '31.12.2025', new Date('2025-12-30T23:00:00Z')])('with date: %s', input => {
 		test.each([
-			{format: `shortDate`, expectedFormat: '12/31/25'},
-			{format: `mediumDate`, expectedFormat: 'Dec 31, 2025'},
-			{format: `longDate`, expectedFormat: 'December 31, 2025'},
-			{format: `fullDate`, expectedFormat: 'Wednesday, December 31, 2025'},
-			{format: `yyyy-MM-dd`, expectedFormat: '2025-12-31'},
+			{format: `shortDate`, expectedFormat: '31.12.2025'},
+			{format: `mediumDate`, expectedFormat: '31 Dec 2025'},
+			{format: `longDate`, expectedFormat: '31 December 2025'},
+			{format: `fullDate`, expectedFormat: 'Wednesday, 31 December 2025'},
 			{format: `isoDate`, expectedFormat: '2025-12-31'},
-			{format: `longDate`, expectedFormat: 'December 31, 2025'},
-		])('with format: $format', ({format, expectedFormat}) => {
+			{
+				format: `shortDate`,
+				timeFormat: 'shortTime',
+				expectedFormat: '31.12.2025, 00:00',
+				expectedIso: '2025-12-31T00:00',
+			},
+			{
+				format: `mediumDate`,
+				timeFormat: 'mediumTime',
+				expectedFormat: '31 Dec 2025, 00:00:00',
+				expectedIso: '2025-12-31T00:00:00',
+			},
+			{
+				format: `longDate`,
+				timeFormat: 'longTime',
+				expectedFormat: '31 December 2025 at 00:00:00.000',
+				expectedIso: '2025-12-31T00:00:00.000',
+			},
+			{
+				format: `fullDate`,
+				timeFormat: 'shortTime',
+				expectedFormat: 'Wednesday, 31 December 2025 at 00:00',
+				expectedIso: '2025-12-31T00:00',
+			},
+			{
+				format: `isoDate`,
+				timeFormat: 'mediumTime',
+				expectedFormat: '2025-12-31T00:00:00',
+				expectedIso: '2025-12-31T00:00:00',
+			},
+		])('with format: $format, timeFormat: $timeFormat', ({format, timeFormat, expectedFormat, expectedIso}) => {
 			fixture.componentRef.setInput('date', input);
 			fixture.componentRef.setInput('format', format);
+			fixture.componentRef.setInput('timeFormat', timeFormat);
 			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.css('time'));
 			expect(element).toBeTruthy();
 			expect(element.nativeElement.textContent).toBe(expectedFormat);
-			expect(element.attributes.datetime).toBe('2025-12-31');
+			expect(element.attributes.datetime).toBe(expectedIso ?? '2025-12-31');
 		});
 	});
 });
