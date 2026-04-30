@@ -72,7 +72,13 @@ export {
 } from './lib/http-api-interceptor/index';
 export {ObIconService} from './lib/icon/icon.service';
 export {ObIconConfig, ObEIcon} from './lib/icon/icon.model';
-export {ObLanguageModule, ObDatePipe, ObDateComponent, ObDateFormat} from './lib/language/language.module';
+export {
+	ObLanguageModule,
+	ObDatePipe,
+	ObDateComponent,
+	ObDateFormat,
+	ObTimeFormat,
+} from './lib/language/language.module';
 export {
 	ObMasterLayoutComponent,
 	ObMasterLayoutComponentService,
