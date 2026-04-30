@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject} from 'rxjs';
 import {ObLanguageService} from './language.service';
 import {ObILocale} from '../master-layout/master-layout.model';
+import {WINDOW} from '../utilities';
 
 describe('LanguageService', () => {
 	let service: ObLanguageService;
@@ -20,7 +21,11 @@ describe('LanguageService', () => {
 
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				providers: [ObLanguageService, {provide: TranslateService, useValue: mock}],
+				providers: [
+					ObLanguageService,
+					{provide: TranslateService, useValue: mock},
+					{provide: WINDOW, useValue: window},
+				],
 			});
 			service = TestBed.inject(ObLanguageService);
 		});
@@ -56,7 +61,10 @@ describe('LanguageService', () => {
 			jest.spyOn(console, 'warn');
 
 			TestBed.configureTestingModule({
-				providers: [{provide: TranslateService, useValue: mock}],
+				providers: [
+					{provide: TranslateService, useValue: mock},
+					{provide: WINDOW, useValue: window},
+				],
 			});
 
 			service = TestBed.inject(ObLanguageService);
@@ -112,7 +120,10 @@ describe('LanguageService', () => {
 			};
 
 			TestBed.configureTestingModule({
-				providers: [{provide: TranslateService, useValue: mock}],
+				providers: [
+					{provide: TranslateService, useValue: mock},
+					{provide: WINDOW, useValue: window},
+				],
 			});
 
 			service = TestBed.inject(ObLanguageService);
@@ -152,6 +163,7 @@ describe('LanguageService', () => {
 				providers: [
 					{provide: DateAdapter, useValue: dateAdapterMock},
 					{provide: TranslateService, useValue: mock},
+					{provide: WINDOW, useValue: window},
 				],
 			});
 
@@ -190,7 +202,10 @@ describe('LanguageService', () => {
 			};
 
 			TestBed.configureTestingModule({
-				providers: [{provide: TranslateService, useValue: mock}],
+				providers: [
+					{provide: TranslateService, useValue: mock},
+					{provide: WINDOW, useValue: window},
+				],
 			});
 
 			service = TestBed.inject(ObLanguageService);
@@ -224,7 +239,10 @@ describe('LanguageService', () => {
 			};
 
 			TestBed.configureTestingModule({
-				providers: [{provide: TranslateService, useValue: mock}],
+				providers: [
+					{provide: TranslateService, useValue: mock},
+					{provide: WINDOW, useValue: window},
+				],
 			});
 
 			service = TestBed.inject(ObLanguageService);

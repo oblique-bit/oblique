@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutFooterComponent} from './master-layout-footer.component';
 import {OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../../utilities';
@@ -18,7 +18,11 @@ describe('ObMasterLayoutFooterComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [RouterTestingModule, ObLocalizePipe, TranslateModule],
+			imports: [
+				RouterModule.forRoot([{path: '**', component: ObMasterLayoutFooterComponent}]),
+				ObLocalizePipe,
+				TranslateModule,
+			],
 			declarations: [ObMasterLayoutFooterComponent],
 			providers: [
 				provideObliqueTestingConfiguration(),

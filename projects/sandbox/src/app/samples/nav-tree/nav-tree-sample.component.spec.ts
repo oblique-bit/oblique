@@ -1,9 +1,8 @@
 import {type ComponentFixture, TestBed, inject} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, RouterModule} from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {of} from 'rxjs';
@@ -22,7 +21,7 @@ describe(NavTreeSampleComponent.name, () => {
 			imports: [
 				CommonModule,
 				FormsModule,
-				RouterTestingModule,
+				RouterModule.forRoot([]),
 				MatRadioModule,
 				MatCheckboxModule,
 				MatSlideToggleModule,

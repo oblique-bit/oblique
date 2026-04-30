@@ -3,6 +3,7 @@ import {Observable, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {WINDOW} from '../../utilities';
+import {ObWindow} from '../../utilities.model';
 import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
 import {
 	ObIServiceNavigationApplicationIdentifier,
@@ -14,7 +15,7 @@ import {
 })
 export class ObServiceNavigationApplicationsStoreService {
 	private readonly applicationInfoService = inject(ObServiceNavigationApplicationsApiService);
-	private readonly window = inject<Window>(WINDOW, {optional: true});
+	private readonly window = inject<ObWindow>(WINDOW, {optional: true});
 	private readonly localStorageKey = 'ObliqueHeaderWidgetApplications';
 	private cachedApplications = this.loadApplications();
 

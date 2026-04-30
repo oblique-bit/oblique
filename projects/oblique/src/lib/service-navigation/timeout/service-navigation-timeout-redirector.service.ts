@@ -1,5 +1,6 @@
 import {Injectable, SecurityContext, inject} from '@angular/core';
 import {WINDOW} from '../../utilities';
+import {ObWindow} from '../../utilities.model';
 import {ObServiceNavigationTimeoutCookieService} from './service-navigation-timeout-cookie.service';
 import {Observable, ReplaySubject} from 'rxjs';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -12,7 +13,7 @@ export class ObServiceNavigationTimeoutRedirectorService {
 	public readonly logoutTrigger$: Observable<string>;
 	private emitOnlyOnceFlag = true;
 	private isLogoutClicked = false;
-	private readonly window: Window = inject(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly cookieService = inject(ObServiceNavigationTimeoutCookieService);
 	private readonly domSanitizer = inject(DomSanitizer);
 	private readonly logoutTriggeredSubject = new ReplaySubject<string>(1);

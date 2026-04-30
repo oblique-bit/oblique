@@ -1,8 +1,7 @@
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
-import {Router} from '@angular/router';
-import {RouterTestingModule} from '@angular/router/testing';
+import {Router, RouterModule, provideRouter} from '@angular/router';
 import {IdPipe} from '../shared/id/id.pipe';
 import {getDebugElementById} from '../../test-helpers/unit-test-helpers/unit-test-helpers';
 import {AccordionLinksComponent} from './accordion-links/accordion-links.component';
@@ -66,7 +65,7 @@ describe(SideNavigationComponent.name, () => {
 		await TestBed.configureTestingModule({
 			imports: [
 				ReactiveFormsModule,
-				RouterTestingModule,
+				RouterModule,
 				HttpClientTestingModule,
 				AccordionLinksComponent,
 				IdPipe,
@@ -75,6 +74,7 @@ describe(SideNavigationComponent.name, () => {
 				VersionComponent,
 			],
 			providers: [
+				provideRouter([{path: '**', component: SideNavigationComponent}]),
 				{provide: WINDOW, useValue: window},
 				{provide: CmsDataService, useValue: cmsDataServiceMock},
 				{provide: VersionService, useValue: versionServiceMock},

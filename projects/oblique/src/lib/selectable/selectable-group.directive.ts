@@ -2,6 +2,7 @@ import {BehaviorSubject} from 'rxjs';
 import {AfterContentInit, Directive, EventEmitter, Input, Output, booleanAttribute, inject} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {WINDOW} from './../utilities';
+import {ObWindow} from './../utilities.model';
 import {ObSelectableDirective} from './selectable.directive';
 
 @Directive({
@@ -47,7 +48,7 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	private prevFocused: number;
 	private startFocused: number;
 	private initialSelection: T[] = [];
-	private readonly window: Window = inject(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly modeToggle = {
 		checkbox: this.checkboxSelect.bind(this),
 		radio: this.radioSelect.bind(this),

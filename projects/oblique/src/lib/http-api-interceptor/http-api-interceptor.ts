@@ -5,6 +5,7 @@ import {Observable, throwError} from 'rxjs';
 import {catchError, finalize, map} from 'rxjs/operators';
 
 import {WINDOW} from '../utilities';
+import {ObWindow} from '../utilities.model';
 import {ObNotificationService} from '../notification/notification.module';
 import {ObSpinnerService} from '../spinner/spinner.module';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
@@ -15,6 +16,12 @@ import {
 	ObIObliqueHttpErrorResponse,
 } from './http-api-interceptor.model';
 
+/**
+ * HTTP interceptor for Oblique API calls.
+ *
+ * It can activate the spinner for matching API requests and route that spinner to a specific channel.
+ * The channel is configured through `ObHttpApiInterceptorConfig.api.spinnerChannel` and defaults to ObSpinnerService.CHANNEL.
+ */
 @Injectable({providedIn: 'root'})
 export class ObHttpApiInterceptor implements HttpInterceptor {
 	private readonly config = inject(ObHttpApiInterceptorConfig);
@@ -22,13 +29,13 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 	private readonly spinner = inject(ObSpinnerService);
 	private readonly notificationService = inject(ObNotificationService);
 	private readonly translate = inject(TranslateService);
-	private readonly activeRequestUrls: string[] = [];
-	private readonly window = inject<Window>(WINDOW);
+	private readonly activeRequestUrlsByChannel = new Map<string, string[]>();
+	private readonly window = inject<ObWindow>(WINDOW);
 
 	intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 		const obliqueRequest = this.broadcast();
 		const timer = this.setTimer();
-		this.activateSpinner(obliqueRequest.spinner, request.url);
+		this.activateSpinner(obliqueRequest.spinner, obliqueRequest.spinnerChannel, request.url);
 
 		return next.handle(this.setupHeader(request)).pipe(
 			catchError(error => throwError(() => ({error, handled: false}))),
@@ -38,7 +45,7 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 			catchError(error => throwError(() => error.error)),
 			finalize(() => {
 				clearTimeout(timer);
-				this.deactivateSpinner(obliqueRequest.spinner, request.url);
+				this.deactivateSpinner(obliqueRequest.spinner, obliqueRequest.spinnerChannel, request.url);
 			})
 		);
 	}
@@ -84,29 +91,36 @@ export class ObHttpApiInterceptor implements HttpInterceptor {
 
 	private broadcast(): ObIHttpApiRequest {
 		const evt: ObIHttpApiRequest = {
-			notification: this.config.api.notification,
+			notification: {...this.config.api.notification},
 			spinner: this.config.api.spinner,
+			spinnerChannel: this.config.api.spinnerChannel,
 		};
 		this.interceptorEvents.requestIntercept(evt);
 
 		return evt;
 	}
 
-	private activateSpinner(isSpinnerActive: boolean, url: string): void {
+	private activateSpinner(isSpinnerActive: boolean, spinnerChannel: string, url: string): void {
 		if (isSpinnerActive && this.isApiCall(url)) {
-			this.activeRequestUrls.push(url);
-			this.spinner.activate();
+			const activeRequestUrls = this.activeRequestUrlsByChannel.get(spinnerChannel) ?? [];
+			activeRequestUrls.push(url);
+			this.activeRequestUrlsByChannel.set(spinnerChannel, activeRequestUrls);
+			this.spinner.activate(spinnerChannel);
 		}
 	}
 
-	private deactivateSpinner(isSpinnerActive: boolean, url: string): void {
+	private deactivateSpinner(isSpinnerActive: boolean, spinnerChannel: string, url: string): void {
 		if (isSpinnerActive && this.isApiCall(url)) {
-			const request = this.activeRequestUrls.filter(activeRequestUrl => activeRequestUrl === url).pop();
-			if (request) {
-				this.activeRequestUrls.splice(this.activeRequestUrls.indexOf(request), 1);
+			const activeRequestUrls = this.activeRequestUrlsByChannel.get(spinnerChannel);
+			const activeRequestUrlIndex = activeRequestUrls?.findIndex(activeRequestUrl => activeRequestUrl === url);
+
+			if (activeRequestUrlIndex >= 0) {
+				activeRequestUrls.splice(activeRequestUrlIndex, 1);
 			}
-			if (!this.activeRequestUrls.length) {
-				this.spinner.forceDeactivate();
+
+			if (!activeRequestUrls?.length) {
+				this.activeRequestUrlsByChannel.delete(spinnerChannel);
+				this.spinner.forceDeactivate(spinnerChannel);
 			}
 		}
 	}

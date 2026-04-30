@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {IconsExampleDefaultPreviewComponent} from './previews/default/icons-example-default-preview.component';
 import {IconsExampleFontSizePreviewComponent} from './previews/font-size/icons-example-font-size-preview.component';
@@ -9,7 +9,7 @@ import {IconsExampleTextPreviewComponent} from './previews/text/icons-example-te
 
 @Component({
 	selector: 'app-code-example-icons',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

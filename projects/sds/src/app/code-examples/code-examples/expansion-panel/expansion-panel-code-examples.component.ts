@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {ExpansionPanelExampleTogglePreviewComponent} from './previews/toggle/expansion-panel-example-toggle-preview.component';
 import {ExpansionPanelExampleBasicPreviewComponent} from './previews/basic/expansion-panel-example-basic-preview.component';
@@ -9,7 +9,7 @@ import {ExpansionPanelExampleOtherOptionsPreviewComponent} from './previews/othe
 
 @Component({
 	selector: 'app-code-example-expansion-panel',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {SelectableExampleCheckboxPreviewComponent} from '../selectable/previews/checkbox/selectable-example-checkbox-preview.component';
 import {SelectableExampleRadioPreviewComponent} from '../selectable/previews/radio/selectable-example-radio-preview.component';
@@ -11,7 +11,7 @@ import {SelectableExampleInAFormPreviewComponent} from './previews/in-a-form/sel
 
 @Component({
 	selector: 'app-code-example-selectable',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

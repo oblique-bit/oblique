@@ -5,6 +5,7 @@ import {delay, filter} from 'rxjs/operators';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObEMasterLayoutEventValues, ObEScrollMode, ObIMasterLayoutEvent} from '../master-layout.model';
 import {WINDOW} from '../../utilities';
+import {ObWindow} from '../../utilities.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
@@ -23,7 +24,7 @@ export class ObMasterLayoutNavigationService {
 	private isFullWidthInternal = this.config.navigation.isFullWidth;
 	private scrollModeInternal = this.config.navigation.scrollMode;
 	private readonly globalEventsService = inject(ObGlobalEventsService);
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 
 	constructor() {
 		const layoutService = inject(ObMasterLayoutComponentService);

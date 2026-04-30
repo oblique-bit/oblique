@@ -3,12 +3,12 @@ import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {DialogExampleDefaultComponent} from './previews/default/dialog-example-default.component';
 import {DialogExampleSpinnerComponent} from './previews/spinner/dialog-example-spinner.component';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
-import {CommonModule} from '@angular/common';
+
 import {IdPipe} from '../../../shared/id/id.pipe';
 
 @Component({
 	selector: 'app-dialog-code-example',
-	imports: [CodeExampleComponent, CommonModule, IdPipe],
+	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

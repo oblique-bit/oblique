@@ -19,7 +19,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {OB_BANNER, OB_PAMS_CONFIGURATION} from '../../utilities';
-import {ObIBanner, ObIPamsConfiguration} from '../../utilities.model';
+import {ObIBanner, ObIPamsConfiguration, ObTBanner} from '../../utilities.model';
 import {
 	ObEEnvironment,
 	ObEMasterLayoutEventValues,
@@ -121,20 +121,22 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 			});
 	}
 
-	private initializeBanner(bannerToken): ObIBanner {
-		switch (bannerToken?.text) {
+	private initializeBanner(bannerToken: ObTBanner): ObIBanner {
+		const obIBanner: ObIBanner = typeof bannerToken === 'string' ? {text: bannerToken} : bannerToken;
+
+		switch (obIBanner?.text as ObEEnvironment) {
 			case ObEEnvironment.LOCAL:
-				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...bannerToken};
+				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...obIBanner};
 			case ObEEnvironment.DEV:
-				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_DEV, ...bannerToken};
+				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_DEV, ...obIBanner};
 			case ObEEnvironment.REF:
-				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_REF, ...bannerToken};
+				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_REF, ...obIBanner};
 			case ObEEnvironment.TEST:
-				return {color: '#fff', bgColor: ObEColor.ENV_TEST, ...bannerToken};
+				return {color: '#fff', bgColor: ObEColor.ENV_TEST, ...obIBanner};
 			case ObEEnvironment.ABN:
-				return {color: '#fff', bgColor: ObEColor.ENV_ABN, ...bannerToken};
+				return {color: '#fff', bgColor: ObEColor.ENV_ABN, ...obIBanner};
 			default:
-				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...bannerToken};
+				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...obIBanner};
 		}
 	}
 }

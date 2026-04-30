@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
@@ -7,7 +6,7 @@ import {VersionExampleDefaultPreviewComponent} from './previews/default/version-
 
 @Component({
 	selector: 'app-code-example-version',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

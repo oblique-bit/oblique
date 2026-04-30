@@ -5,6 +5,7 @@ import {
 	ObHttpApiInterceptorEvents,
 	type ObIHttpApiRequest,
 	ObNotificationService,
+	ObSpinnerService,
 } from '@oblique/oblique';
 import {delay, mergeMap, take, tap} from 'rxjs/operators';
 import {type Observable, from} from 'rxjs';
@@ -16,9 +17,15 @@ let requestId = 0;
 	selector: 'sb-http-api-interceptor-sample',
 	standalone: false,
 	templateUrl: './http-interceptor-sample.component.html',
+	styleUrl: './http-interceptor-sample.component.scss',
 })
 export class HttpInterceptorSampleComponent {
 	static readonly API_URL = 'https://jsonplaceholder.typicode.com';
+	readonly defaultSpinnerChannel = ObSpinnerService.CHANNEL;
+	readonly customSpinnerChannel = 'demo';
+	readonly spinnerChannels = [undefined, this.defaultSpinnerChannel, this.customSpinnerChannel];
+	spinnerChannel: string | undefined;
+
 	logs = [];
 	notification = {
 		active: true,
@@ -78,6 +85,7 @@ export class HttpInterceptorSampleComponent {
 
 	private configInterceptor(number = 1): void {
 		this.interceptorEvents.requestIntercepted.pipe(take(number)).subscribe((evt: ObIHttpApiRequest) => {
+			evt.spinnerChannel = this.spinnerChannel;
 			evt.notification.active = this.notification.active;
 			evt.notification.severity = this.notification.severity;
 			evt.notification.title = this.notification.title;

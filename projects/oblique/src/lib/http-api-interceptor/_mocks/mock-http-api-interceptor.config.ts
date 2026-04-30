@@ -9,6 +9,7 @@ export class ObMockHttpApiInterceptorConfig {
 	api = {
 		url: '',
 		spinner: true,
+		spinnerChannel: 'default',
 		notification: {
 			active: true,
 			severity: ObENotificationType.ERROR,

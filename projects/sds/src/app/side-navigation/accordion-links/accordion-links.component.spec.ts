@@ -1,5 +1,5 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {IdPipe} from '../../shared/id/id.pipe';
 import {AccordionLinksComponent} from './accordion-links.component';
 import type {Accordion} from './accordion-links.model';
@@ -15,7 +15,11 @@ describe(AccordionLinksComponent.name, () => {
 
 	const accordionLinksBeforeEach = async (accordions: Accordion[]): Promise<any> => {
 		await TestBed.configureTestingModule({
-			imports: [RouterTestingModule, AccordionLinksComponent, IdPipe],
+			imports: [
+				RouterModule.forRoot([{path: '**', component: AccordionLinksComponent}]),
+				AccordionLinksComponent,
+				IdPipe,
+			],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(AccordionLinksComponent);
@@ -33,11 +37,13 @@ describe(AccordionLinksComponent.name, () => {
 		await accordionLinksBeforeEach([
 			{
 				id: 'Component',
+				minVersion: 1,
 				links: [],
 				title: 'Components',
 			},
 			{
 				id: 'Guideline',
+				minVersion: 1,
 				links: [
 					{
 						id: 2,
@@ -50,6 +56,7 @@ describe(AccordionLinksComponent.name, () => {
 			},
 			{
 				id: 'Introduction',
+				minVersion: 1,
 				links: [
 					{
 						id: 1,

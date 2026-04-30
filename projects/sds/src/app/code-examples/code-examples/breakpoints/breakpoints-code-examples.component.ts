@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {BreakpointsExampleUpPreviewComponent} from './previews/breakpoints/up/breakpoints-example-up-preview.component';
 import {BreakpointsExampleDownPreviewComponent} from './previews/breakpoints/down/breakpoints-example-down-preview.component';
 
 @Component({
 	selector: 'app-code-example-breakpoints',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

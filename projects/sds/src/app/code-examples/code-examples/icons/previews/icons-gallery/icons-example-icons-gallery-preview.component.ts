@@ -12,7 +12,7 @@ import {
 } from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, KeyValuePipe} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
@@ -35,7 +35,6 @@ import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 	selector: 'app-icons-example-icons-gallery-preview',
 	imports: [
 		MarkifyPipe,
-		CommonModule,
 		MatIconModule,
 		MatButtonModule,
 		ObButtonModule,
@@ -53,6 +52,8 @@ import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 		ObInputClearModule,
 		ObAlertModule,
 		MatDivider,
+		AsyncPipe,
+		KeyValuePipe,
 	],
 	templateUrl: './icons-example-icons-gallery-preview.component.html',
 	styleUrl: './icons-example-icons-gallery-preview.component.scss',
@@ -74,7 +75,7 @@ export class IconsExampleIconsGalleryPreviewComponent {
 	private readonly notificationService = inject(ObNotificationService);
 	private readonly translateService = inject(TranslateService);
 	private readonly dialog = inject(MatDialog);
-	private readonly window: Window = inject(WINDOW);
+	private readonly window = inject(WINDOW);
 
 	constructor() {
 		this.filteredIcons$ = this.setUpIconsFilter();

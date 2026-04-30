@@ -2,7 +2,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {TranslateService} from '@ngx-translate/core';
 import {ObDatepickerModule, ObMockTranslatePipe, ObMockTranslateService} from '@oblique/oblique';
@@ -19,7 +19,7 @@ describe(SchemaValidationSampleComponent.name, () => {
 				FormsModule,
 				ReactiveFormsModule,
 				HttpClientTestingModule,
-				RouterTestingModule,
+				RouterModule,
 				ObDatepickerModule,
 				MatMomentDateModule,
 			],

@@ -27,6 +27,7 @@ import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../utilities';
+import {ObWindow} from '../../utilities.model';
 import {
 	ObEMasterLayoutEventValues,
 	ObICollapseBreakpoints,
@@ -102,7 +103,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 	private readonly offCanvasService = inject(ObOffCanvasService);
 	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly document = inject(DOCUMENT);
-	private readonly window = inject<Window>(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly masterLayout = inject(ObMasterLayoutService);
 	private readonly config = inject(ObMasterLayoutConfig);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
@@ -230,7 +231,7 @@ export class ObMasterLayoutComponent implements OnInit, DoCheck, OnDestroy, OnCh
 	private handleLayoutMode(): void {
 		this.unsubscribeMediaQuery.next();
 		const mediaQuery = this.window.matchMedia(`(min-width: ${this.gridBreakpoints[this.collapseBreakpoint]}px)`);
-		fromEvent(mediaQuery, 'change')
+		fromEvent(mediaQuery as MediaQueryList, 'change')
 			.pipe(
 				map((event: MediaQueryListEvent) => event.matches),
 				startWith(mediaQuery.matches),

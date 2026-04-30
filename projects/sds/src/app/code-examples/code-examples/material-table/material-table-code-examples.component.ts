@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {IdPipe} from '../../../shared/id/id.pipe';
-import {CommonModule} from '@angular/common';
+
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {MaterialTableExampleDefaultPreviewComponent} from './previews/default/material-table-example-default-preview.component';
 import {MaterialTableExampleStylesPreviewComponent} from './previews/styles/material-table-example-styles-preview.component';
@@ -12,7 +12,7 @@ import {MaterialTableExampleSortablePreviewComponent} from './previews/sortable/
 
 @Component({
 	selector: 'app-code-example-material-table',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

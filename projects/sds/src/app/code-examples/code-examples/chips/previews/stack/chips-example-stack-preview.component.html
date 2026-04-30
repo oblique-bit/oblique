@@ -1,7 +1,7 @@
 <h3>mat-chip-listbox</h3>
 <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
 	@for (chip of availableColors; track chip) {
-		<mat-chip-option [ngClass]="chip.color">
+		<mat-chip-option [class]="chip.color">
 			{{ chip.name }}
 		</mat-chip-option>
 	}
@@ -11,7 +11,7 @@
 <div class="container">
 	<mat-chip-set class="mat-mdc-chip-set-stacked" aria-label="Color selection">
 		@for (chip of availableColors; track chip) {
-			<mat-chip [ngClass]="chip.color">
+			<mat-chip [class]="chip.color">
 				{{ chip.name }}
 			</mat-chip>
 		}

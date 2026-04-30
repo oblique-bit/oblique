@@ -4,7 +4,7 @@ import type {
 	ObIAutocompleteInputOptionGroup,
 	OptionLabelIconPosition,
 } from '@oblique/oblique';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-autocomplete-sample',
@@ -52,7 +52,10 @@ export class AutocompleteSampleComponent implements OnInit {
 	searchText: string;
 	visibleOptionList: ObIAutocompleteInputOption[] | ObIAutocompleteInputOptionGroup[];
 	isFromControl = true;
-	formControl = new FormControl('');
+	formControl = new FormControl('', [Validators.required]);
+	formGroup = new FormGroup({
+		control: this.formControl,
+	});
 	formControlDisplayWith = new FormControl('');
 
 	reactiveFormSnippet = `

@@ -1,10 +1,11 @@
 import {Injectable, inject} from '@angular/core';
 import Cookies from 'js-cookie';
 import {WINDOW} from '../../utilities';
+import {ObWindow} from '../../utilities.model';
 
 @Injectable()
 export class ObServiceNavigationTimeoutCookieService {
-	private readonly window: Window = inject(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly expirationIn1Hour = 3600;
 	private readonly shortCookieLifeSpan = 5;
 

@@ -39,6 +39,10 @@
 		list-style: none;
 		background-color: variables.$ob-white;
 
+		.ob-master-layout-navigation-item:first-child {
+			transition: margin-left variables.$ob-duration-fast ease-in-out;
+		}
+
 		&:not(.ob-has-opened-menu) {
 			.ob-layout-expanded & {
 				overflow: hidden; // prevents horizontal scrollbar with sticky footer and non sticky header

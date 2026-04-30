@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {BadgeExampleColorsComponent} from './previews/colors/badge-example-colors.component';
 import {BadgeExampleOtherOptionsComponent} from './previews/other-options/badge-example-other-options.component';
@@ -8,7 +8,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
 	selector: 'app-badge-code-examples',
-	imports: [CommonModule, CodeExampleComponent, IdPipe],
+	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
 })
 export class BadgeCodeExamplesComponent extends CodeExamples {

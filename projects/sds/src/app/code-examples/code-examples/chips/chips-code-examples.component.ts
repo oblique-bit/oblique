@@ -3,13 +3,13 @@ import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {ChipsExampleColorPreviewComponent} from './previews/color/chips-example-color-preview.component';
 import {ChipsExampleAutocompletePreviewComponent} from './previews/autocomplete/chips-example-autocomplete-preview.component';
 import {ChipsExampleStackPreviewComponent} from './previews/stack/chips-example-stack-preview.component';
-import {CommonModule} from '@angular/common';
+
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 
 @Component({
 	selector: 'app-chip-code-examples',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

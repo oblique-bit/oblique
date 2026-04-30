@@ -22,6 +22,24 @@
 			</mat-form-field>
 		</fieldset>
 		<mat-slide-toggle [(ngModel)]="spinner">show spinner</mat-slide-toggle>
+		<mat-form-field>
+			<mat-label>Spinner channel</mat-label>
+			<mat-select [(ngModel)]="spinnerChannel">
+				@for (channel of spinnerChannels; track channel) {
+					<mat-option [value]="channel">{{ channel ?? "undefined" }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+		<p>The interceptor activates the spinner in the area whose <code>ob-spinner</code> channel matches this value.</p>
+		<div>
+			<div class="spinner-channel" [class.spinner-channel-active]="spinnerChannel === customSpinnerChannel">
+				<h4>Channel: {{ customSpinnerChannel }}</h4>
+				<p class="spinner-placeholder">
+					Select <code>{{ customSpinnerChannel }}</code> to display the interceptor spinner only in this area.
+				</p>
+				<ob-spinner [channel]="customSpinnerChannel" />
+			</div>
+		</div>
 		<mat-slide-toggle [(ngModel)]="notification.active">show notification on error</mat-slide-toggle>
 		<fieldset>
 			<legend>Customize default notification</legend>

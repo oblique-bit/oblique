@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
@@ -7,7 +6,7 @@ import {RxjsOperatorsExampleDefaultPreviewComponent} from './previews/default/rx
 
 @Component({
 	selector: 'app-code-example-rxjs-operators',
-	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	imports: [IdPipe, CodeExampleComponent],
 	templateUrl: '../../code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

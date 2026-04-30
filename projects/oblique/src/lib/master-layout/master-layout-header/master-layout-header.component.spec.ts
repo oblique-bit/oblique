@@ -1,5 +1,4 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
@@ -17,6 +16,7 @@ import {
 import {By} from '@angular/platform-browser';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {TranslateModule} from '@ngx-translate/core';
+import {RouterModule} from '@angular/router';
 
 describe('ObMasterLayoutHeaderComponent', () => {
 	let component: ObMasterLayoutHeaderComponent;
@@ -36,7 +36,12 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, RouterTestingModule, ObLocalizePipe, TranslateModule],
+			imports: [
+				ObMockTranslatePipe,
+				RouterModule.forRoot([{path: '**', component: ObMasterLayoutHeaderComponent}]),
+				ObLocalizePipe,
+				TranslateModule,
+			],
 			declarations: [ObMasterLayoutHeaderComponent],
 			providers: [
 				provideObliqueTestingConfiguration(),
@@ -215,6 +220,25 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 			it('should have correct color', () => {
 				expect(banner.styles.color).toBe('rgb(17, 34, 51)');
+			});
+		});
+		describe('With OB_BANNER as string', () => {
+			beforeEach(() => {
+				TestBed.overrideProvider(OB_BANNER, {useValue: 'DEV'});
+				globalSetup();
+				banner = fixture.debugElement.query(By.css('aside'));
+			});
+
+			it('should handle string bannerToken correctly (text)', () => {
+				expect(banner.nativeElement.textContent.trim()).toBe('DEV');
+			});
+
+			it('should handle string bannerToken correctly (background-color)', () => {
+				expect(banner.styles['background-color']).toBe(backgroundColors.DEV);
+			});
+
+			it('should handle string bannerToken correctly (color)', () => {
+				expect(banner.styles.color).toBe(colors.DEV);
 			});
 		});
 	});

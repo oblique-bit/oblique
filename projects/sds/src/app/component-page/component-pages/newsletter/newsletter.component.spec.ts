@@ -1,7 +1,7 @@
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {NewsletterComponent} from './newsletter.component';
 
@@ -11,7 +11,12 @@ describe(NewsletterComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, RouterTestingModule, NewsletterComponent, ReactiveFormsModule],
+			imports: [
+				HttpClientTestingModule,
+				RouterModule.forRoot([{path: '**', component: NewsletterComponent}]),
+				NewsletterComponent,
+				ReactiveFormsModule,
+			],
 			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 

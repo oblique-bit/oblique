@@ -1,3 +1,4 @@
+import type {InjectionToken} from '@angular/core';
 import {MatFormFieldDefaultOptions} from '@angular/material/form-field';
 import {MatCheckboxDefaultOptions} from '@angular/material/checkbox';
 import {MatRadioDefaultOptions} from '@angular/material/radio';
@@ -11,7 +12,7 @@ import {ObILocale} from './master-layout/master-layout.model';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 
 export interface ObIBanner {
-	text: string;
+	text?: string;
 	color?: string;
 	bgColor?: string;
 }
@@ -20,6 +21,8 @@ export interface ObIPamsConfiguration {
 	environment: ObEPamsEnvironment;
 	rootUrl?: string;
 }
+
+export type ObTBanner = string | ObIBanner | undefined;
 
 export interface ObIMaterialConfig {
 	MAT_FORM_FIELD_DEFAULT_OPTIONS?: MatFormFieldDefaultOptions;
@@ -37,6 +40,38 @@ export interface ObIObliqueConfiguration {
 	translate?: ObITranslateConfig;
 	hasLanguageInUrl?: boolean;
 }
+
+export interface ObIHistoryState {
+	initialLength: number;
+}
+
+export type ObIObliqueTestingConfiguration = Omit<ObIObliqueConfiguration, 'accessibilityStatement'> & {
+	accessibilityStatement?: ObIAccessibilityStatementConfiguration;
+};
+
+export type ObMaterialProvider = keyof Required<ObIMaterialConfig>;
+
+export interface ObIMaterialProviderConfiguration<Type> {
+	provide: InjectionToken<Type>;
+	useValue: Type;
+}
+
+export type ObIMaterialProviders = {
+	[Property in ObMaterialProvider]: ObIMaterialProviderConfiguration<Required<ObIMaterialConfig>[Property]>;
+};
+
+export type ObIObliqueConfigurationWithDefaults = Omit<
+	ObIObliqueConfiguration,
+	'accessibilityStatement' | 'material' | 'icon' | 'translate' | 'hasLanguageInUrl'
+> & {
+	accessibilityStatement: ObIAccessibilityStatementConfiguration;
+	material: Required<NonNullable<ObIObliqueConfiguration['material']>>;
+	icon: NonNullable<ObIObliqueConfiguration['icon']>;
+	translate: NonNullable<ObIObliqueConfiguration['translate']>;
+	hasLanguageInUrl: NonNullable<ObIObliqueConfiguration['hasLanguageInUrl']>;
+};
+
+export type DeepPartial<Type> = Type extends object ? {[Property in keyof Type]?: DeepPartial<Type[Property]>} : Type;
 
 export interface ObITranslateConfig {
 	flatten?: boolean;
@@ -101,3 +136,17 @@ interface ObContactUrl extends ObContactInfoBase {
 }
 
 export type ObContactData = ObContactPhone | ObContactEmail | ObContactUrl;
+
+export interface ObWindow {
+	confirm: (message: string) => boolean;
+	history: Pick<History, 'length'>;
+	innerHeight: number;
+	innerWidth: number;
+	localStorage: Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
+	location: Pick<Location, 'href' | 'host'>;
+	matchMedia: (query: string) => Pick<MediaQueryList, 'matches'>;
+	open: (url?: string, target?: string, features?: string) => Window | null;
+	pageYOffset: number;
+	setInterval: (handler: TimerHandler, timeout?: number, ...args: unknown[]) => number;
+	setTimeout: (handler: TimerHandler, timeout?: number, ...args: unknown[]) => number;
+}

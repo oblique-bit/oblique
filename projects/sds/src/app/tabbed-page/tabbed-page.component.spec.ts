@@ -1,7 +1,6 @@
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {ActivatedRoute, convertToParamMap} from '@angular/router';
-import {RouterTestingModule} from '@angular/router/testing';
+import {ActivatedRoute, RouterModule, convertToParamMap} from '@angular/router';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {TabbedPageComponent} from './tabbed-page.component';
 import {firstValueFrom, of} from 'rxjs';
@@ -49,7 +48,14 @@ describe(TabbedPageComponent.name, () => {
 		currentSlug = 'icons-14';
 
 		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, IdPipe, RouterTestingModule, TabbedPageComponent, TabsComponent, TabComponent],
+			imports: [
+				HttpClientTestingModule,
+				IdPipe,
+				RouterModule.forRoot([{path: '**', component: TabbedPageComponent}]),
+				TabbedPageComponent,
+				TabsComponent,
+				TabComponent,
+			],
 			providers: [
 				{provide: ActivatedRoute, useValue: activatedRouteMock},
 				{provide: CmsDataService, useValue: cmsDataServiceMock},

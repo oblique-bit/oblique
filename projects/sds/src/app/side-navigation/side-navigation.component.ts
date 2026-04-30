@@ -24,7 +24,7 @@ import {urlConst} from '../shared/url/url.const';
 import type {Accordion, Link} from './accordion-links/accordion-links.model';
 import {composeAccordions} from './utils/accordion-composer';
 import {IdPipe} from '../shared/id/id.pipe';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {AsyncPipe, NgOptimizedImage} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonDirective, WINDOW} from '@oblique/oblique';
 import {AccordionLinksComponent} from './accordion-links/accordion-links.component';
@@ -43,7 +43,6 @@ import type {CMSPages} from '../cms/models/cms-page.model';
 		FormsModule,
 		ReactiveFormsModule,
 		AccordionLinksComponent,
-		CommonModule,
 		IdPipe,
 		MatFormField,
 		MatLabel,
@@ -54,6 +53,7 @@ import type {CMSPages} from '../cms/models/cms-page.model';
 		ObButtonDirective,
 		NgOptimizedImage,
 		FeedbackTriggerDirective,
+		AsyncPipe,
 	],
 	templateUrl: './side-navigation.component.html',
 	styleUrl: './side-navigation.component.scss',

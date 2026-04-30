@@ -1,25 +1,51 @@
-<mat-form-field>
-	<mat-icon svgIcon="search" matPrefix />
-	@if (inputLabelKey?.length > 0) {
-		<mat-label>{{ inputLabelKey | translate }}</mat-label>
-	}
-	<input
-		(blur)="onModelTouched()"
-		[formControl]="autocompleteInputControl"
-		[matAutocomplete]="autocomplete"
-		matInput
-		type="text"
-	/>
-	@for (hint of hints(); track hint) {
-		<mat-hint [align]="hint.align" [innerHTML]="hint.template" />
-	}
-	<ng-content select="[matPrefix]" />
-	<button [obInputClear]="autocompleteInputControl" type="button">
-		<mat-icon svgIcon="xmark_circle" />
-		<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
-	</button>
-	<ng-content select="[matSuffix]" />
-</mat-form-field>
+@if (withErrorMessages()) {
+	<mat-form-field obErrorMessages>
+		<mat-icon svgIcon="search" matPrefix />
+		@if (inputLabelKey?.length > 0) {
+			<mat-label>{{ inputLabelKey | translate }}</mat-label>
+		}
+		<input
+			(blur)="onModelTouched()"
+			[formControl]="autocompleteInputControl"
+			[matAutocomplete]="autocomplete"
+			matInput
+			type="text"
+		/>
+		@for (hint of hints(); track hint) {
+			<mat-hint [align]="hint.align" [innerHTML]="hint.template" />
+		}
+		<mat-error />
+		<ng-content select="[matPrefix]" />
+		<button [obInputClear]="autocompleteInputControl" type="button">
+			<mat-icon svgIcon="xmark_circle" />
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+		<ng-content select="[matSuffix]" />
+	</mat-form-field>
+} @else {
+	<mat-form-field>
+		<mat-icon svgIcon="search" matPrefix />
+		@if (inputLabelKey?.length > 0) {
+			<mat-label>{{ inputLabelKey | translate }}</mat-label>
+		}
+		<input
+			(blur)="onModelTouched()"
+			[formControl]="autocompleteInputControl"
+			[matAutocomplete]="autocomplete"
+			matInput
+			type="text"
+		/>
+		@for (hint of hints(); track hint) {
+			<mat-hint [align]="hint.align" [innerHTML]="hint.template" />
+		}
+		<ng-content select="[matPrefix]" />
+		<button [obInputClear]="autocompleteInputControl" type="button">
+			<mat-icon svgIcon="xmark_circle" />
+			<span class="ob-screen-reader-only">{{ "i18n.common.clear" | translate }}</span>
+		</button>
+		<ng-content select="[matSuffix]" />
+	</mat-form-field>
+}
 
 <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]="displayWith()" class="ob-autocomplete-panel">
 	<ng-container

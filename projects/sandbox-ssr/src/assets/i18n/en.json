@@ -1,3 +1,8 @@
 {
-  "text": "English text"
+  "text": "English text",
+  "mode-controls.lightness": "Lightness",
+  "mode-controls.component-size": "Component size",
+  "mode-controls.density": "Density",
+  "mode-controls.typography-context-prose": "Typography context prose",
+  "mode-controls.motion-disabled": "Motion disabled"
 }

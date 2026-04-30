@@ -16,6 +16,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {ObButtonDirective} from '../../button/button.directive';
 import {WINDOW} from '../../utilities';
+import {ObWindow} from '../../utilities.model';
 import {ObEUploadEventType, ObIFile, ObIFileList, ObIUploadEvent} from '../file-upload.model';
 import {ObFileUploadService} from '../file-upload.service';
 
@@ -37,7 +38,7 @@ export class ObProgressComponent implements OnDestroy {
 	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 	private readonly fileUploadService = inject(ObFileUploadService);
 	private readonly translate = inject(TranslateService);
-	private readonly window = inject(WINDOW);
+	private readonly window = inject<ObWindow>(WINDOW);
 
 	@Input() set files(files: File[]) {
 		// let some time for the other inputs to be processed

@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {By} from '@angular/platform-browser';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Pipe, PipeTransform} from '@angular/core';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
@@ -82,6 +82,7 @@ describe('ObBreadcrumbComponent', () => {
 			});
 			await TestBed.configureTestingModule({
 				imports: [
+					RouterModule.forRoot([{path: '**', component: ObBreadcrumbComponent}]),
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
 					RouterTestingModule,
@@ -296,7 +297,7 @@ describe('ObBreadcrumbComponent', () => {
 				imports: [
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
-					RouterTestingModule,
+					RouterModule.forRoot([{path: '**', component: ObBreadcrumbComponent}]),
 					ObMockIconModule,
 					MatIconTestingModule,
 					MatTooltipModule,
@@ -368,7 +369,7 @@ describe('ObBreadcrumbComponent', () => {
 				imports: [
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
-					RouterTestingModule,
+					RouterModule,
 					ObMockIconModule,
 					MatIconTestingModule,
 					MatTooltipModule,

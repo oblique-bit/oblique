@@ -1,12 +1,12 @@
 import {TestBed, inject} from '@angular/core/testing';
-import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 import {ObDocumentMetaService} from './document-meta.service';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 describe('DocumentMetaService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [RouterTestingModule],
+			imports: [RouterModule.forRoot([])],
 			providers: [ObDocumentMetaService, provideObliqueTestingConfiguration()],
 		});
 	});
