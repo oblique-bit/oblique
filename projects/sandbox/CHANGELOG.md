@@ -1,3 +1,11 @@
+# [15.3.0](https://github.com/oblique-bit/oblique/compare/15.2.2...15.3.0) (2026-04-30)
+
+## Features
+
+- **autocomplete:** add `required` validator ([d8a5622a](https://github.com/oblique-bit/oblique/commit/d8a5622ac7ca9e217f7fc862965623e1609bccd2), OUI-4131)
+- **http-interceptor:** demonstrate configurable spinner channel ([b59d1ac9](https://github.com/oblique-bit/oblique/commit/b59d1ac96bdb1666ef0cbe387e9c6fa02ee4a47e), OUI-4379)
+- **master-layout:** use ObTBanner type in Sandbox ([2dc3d83e](https://github.com/oblique-bit/oblique/commit/2dc3d83efa8a4ea57f442cf168cfb4878d75535a), OUI-4325)
+
 # [15.2.2](https://github.com/oblique-bit/oblique/compare/15.2.1...15.2.2) (2026-04-22)
 
 ## Features

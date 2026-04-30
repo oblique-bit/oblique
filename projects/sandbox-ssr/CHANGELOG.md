@@ -1,3 +1,9 @@
+# [15.3.0](https://github.com/oblique-bit/oblique/compare/15.2.2...15.3.0) (2026-04-30)
+
+## Features
+
+- **app:** add modes demonstration ([f9f063f0](https://github.com/oblique-bit/oblique/commit/f9f063f08f60b2daad27109943e535036e4c14d0), OUI-3833)
+
 # [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
 
 ## Features

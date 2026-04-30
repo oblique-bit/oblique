@@ -1,3 +1,10 @@
+# [15.3.0](https://github.com/oblique-bit/oblique/compare/15.2.2...15.3.0) (2026-04-30)
+
+## Features
+
+- **autocomplete:** rename hints example into form ([e755be44](https://github.com/oblique-bit/oblique/commit/e755be44da82eaf8a1f7c62fafe8efda9bbe7f96), OUI-4131)
+- **autocomplete:** add error to hint example ([30f25f1d](https://github.com/oblique-bit/oblique/commit/30f25f1d44d1b08f7fdaaf71d3460edc68c99fef), OUI-4131)
+
 # [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
 
 ## Bug Fixes

@@ -1,3 +1,21 @@
+# [15.3.0](https://github.com/oblique-bit/oblique/compare/15.2.2...15.3.0) (2026-04-30)
+
+## Bug Fixes
+
+- **master-layout:** use correct padding on main navigation ([21aed9fa](https://github.com/oblique-bit/oblique/commit/21aed9fae83eaf7d6f74018095323923ddc06200), OUI-4246)
+- **oblique:** provide mock `window` for SSR compatibility ([adbbc8dc](https://github.com/oblique-bit/oblique/commit/adbbc8dcd9e076f616496895d0a37ab5bd1803af), OUI-4359)
+- **utilities:** fix utilities.spec.ts to adhere to type signature ([8aa80884](https://github.com/oblique-bit/oblique/commit/8aa80884331d2e1b2008d973de80e397aab07dff), OUI-4466)
+
+## Features
+
+- **accessibility-statement:** clarify page content ([ba6312b8](https://github.com/oblique-bit/oblique/commit/ba6312b82502f1afc60f1d6c2ae72f3b9d3bb4b2), OUI-4393)
+- **autocomplete:** add `withErrorMessages` input to show error messages ([ba2ddb92](https://github.com/oblique-bit/oblique/commit/ba2ddb9263dd2e3f75b0802f416d785900bfb7c6), OUI-4131)
+- **http-interceptor:** add an optional channel for the spinner to ObliqueHttpInterceptor ([9be92b00](https://github.com/oblique-bit/oblique/commit/9be92b007d790a19641f43e6dac5bf71686c687c), OUI-4379)
+- **master-layout:** animate main navigation scroll ([99521784](https://github.com/oblique-bit/oblique/commit/99521784df1ca7f2e6f2130af9a5884ad1208c09), OUI-4246)
+- **master-layout:** scroll active main navigation item into view ([3ef6d882](https://github.com/oblique-bit/oblique/commit/3ef6d882040e471db60b2934ed75f9fba39629f2), OUI-4246)
+- **master-layout:** add string support to `OB_BANNER` injection token ([778e2bd5](https://github.com/oblique-bit/oblique/commit/778e2bd56932368501334b98ae862e432f74026b), OUI-4325)
+- **utilities:** allow partial configs with default values ([d0c3a1f7](https://github.com/oblique-bit/oblique/commit/d0c3a1f711b60c2201b3b656923f26d2060881ca), OUI-4372)
+
 # [15.2.2](https://github.com/oblique-bit/oblique/compare/15.2.1...15.2.2) (2026-04-22)
 
 ## Bug Fixes
