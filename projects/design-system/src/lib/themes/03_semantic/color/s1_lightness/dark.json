@@ -633,312 +633,6 @@
               }
             }
           },
-          "pending": {
-            "bg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.900}",
-                  "$description": "Highest contrast pending status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast pending status background. Inverse surface."
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.700}",
-                  "$description": "High contrast pending status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.400}",
-                  "$description": "High contrast pending status background. Inverse surface."
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.800}",
-                  "$description": "Medium contrast pending status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.300}",
-                  "$description": "Medium contrast pending status background. Inverse surface."
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.900}",
-                  "$description": "Low contrast pending status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.200}",
-                  "$description": "Low contrast pending status background. Inverse surface."
-                }
-              }
-            },
-            "fg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast pending status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Highest contrast pending status foreground. Inverse surface."
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.orange.200}",
-                  "$description": "High contrast pending status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.700}",
-                  "$description": "High contrast pending status foreground. Inverse surface."
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.300}",
-                  "$description": "Medium contrast pending status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.800}",
-                  "$description": "Medium contrast pending status foreground. Inverse surface."
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.400}",
-                  "$description": "Low contrast pending status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.yellow.900}",
-                  "$description": "Low contrast pending status foreground. Inverse surface."
-                }
-              }
-            }
-          },
-          "confirmed": {
-            "bg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.900}",
-                  "$description": "Highest contrast confirmed status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast confirmed status background. Inverse surface."
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.700}",
-                  "$description": "High contrast confirmed status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.400}",
-                  "$description": "High contrast confirmed status background. Inverse surface."
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.800}",
-                  "$description": "Medium contrast confirmed status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.300}",
-                  "$description": "Medium contrast confirmed status background. Inverse surface."
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.900}",
-                  "$description": "Low contrast confirmed status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.200}",
-                  "$description": "Low contrast confirmed status background. Inverse surface."
-                }
-              }
-            },
-            "fg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast confirmed status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Highest contrast confirmed status foreground. Inverse surface."
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.200}",
-                  "$description": "High contrast confirmed status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.700}",
-                  "$description": "High contrast confirmed status foreground. Inverse surface."
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.300}",
-                  "$description": "Medium contrast confirmed status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.800}",
-                  "$description": "Medium contrast confirmed status foreground. Inverse surface."
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.400}",
-                  "$description": "Low contrast confirmed status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.teal.900}",
-                  "$description": "Low contrast confirmed status foreground. Inverse surface."
-                }
-              }
-            }
-          },
-          "progress": {
-            "bg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.900}",
-                  "$description": "Highest contrast in-progress status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast in-progress status background. Inverse surface."
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.700}",
-                  "$description": "High contrast in-progress status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.400}",
-                  "$description": "High contrast in-progress status background. Inverse surface."
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.800}",
-                  "$description": "Medium contrast in-progress status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.300}",
-                  "$description": "Medium contrast in-progress status background. Inverse surface."
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.900}",
-                  "$description": "Low contrast in-progress status background. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.200}",
-                  "$description": "Low contrast in-progress status background. Inverse surface."
-                }
-              }
-            },
-            "fg": {
-              "contrast_highest": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast in-progress status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Highest contrast in-progress status foreground. Inverse surface."
-                }
-              },
-              "contrast_high": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.200}",
-                  "$description": "High contrast in-progress status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.700}",
-                  "$description": "High contrast in-progress status foreground. Inverse surface."
-                }
-              },
-              "contrast_medium": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.300}",
-                  "$description": "Medium contrast in-progress status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.800}",
-                  "$description": "Medium contrast in-progress status foreground. Inverse surface."
-                }
-              },
-              "contrast_low": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.400}",
-                  "$description": "Low contrast in-progress status foreground. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.indigo.900}",
-                  "$description": "Low contrast in-progress status foreground. Inverse surface."
-                }
-              }
-            }
-          },
           "scheduled": {
             "bg": {
               "contrast_highest": {
@@ -1040,8 +734,316 @@
                 }
               }
             }
+          }
+        },
+        "free": {
+          "yellow": {
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.900}",
+                  "$description": "Highest contrast pending status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Highest contrast pending status background. Inverse surface."
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.700}",
+                  "$description": "High contrast pending status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.400}",
+                  "$description": "High contrast pending status background. Inverse surface."
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.800}",
+                  "$description": "Medium contrast pending status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.300}",
+                  "$description": "Medium contrast pending status background. Inverse surface."
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.900}",
+                  "$description": "Low contrast pending status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.200}",
+                  "$description": "Low contrast pending status background. Inverse surface."
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Highest contrast pending status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Highest contrast pending status foreground. Inverse surface."
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.orange.200}",
+                  "$description": "High contrast pending status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.700}",
+                  "$description": "High contrast pending status foreground. Inverse surface."
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.300}",
+                  "$description": "Medium contrast pending status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.800}",
+                  "$description": "Medium contrast pending status foreground. Inverse surface."
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.400}",
+                  "$description": "Low contrast pending status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.yellow.900}",
+                  "$description": "Low contrast pending status foreground. Inverse surface."
+                }
+              }
+            }
           },
-          "critical": {
+          "teal": {
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.900}",
+                  "$description": "Highest contrast confirmed status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Highest contrast confirmed status background. Inverse surface."
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.700}",
+                  "$description": "High contrast confirmed status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.400}",
+                  "$description": "High contrast confirmed status background. Inverse surface."
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.800}",
+                  "$description": "Medium contrast confirmed status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.300}",
+                  "$description": "Medium contrast confirmed status background. Inverse surface."
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.900}",
+                  "$description": "Low contrast confirmed status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.200}",
+                  "$description": "Low contrast confirmed status background. Inverse surface."
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Highest contrast confirmed status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Highest contrast confirmed status foreground. Inverse surface."
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.200}",
+                  "$description": "High contrast confirmed status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.700}",
+                  "$description": "High contrast confirmed status foreground. Inverse surface."
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.300}",
+                  "$description": "Medium contrast confirmed status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.800}",
+                  "$description": "Medium contrast confirmed status foreground. Inverse surface."
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.400}",
+                  "$description": "Low contrast confirmed status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.teal.900}",
+                  "$description": "Low contrast confirmed status foreground. Inverse surface."
+                }
+              }
+            }
+          },
+          "indigo": {
+            "bg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.900}",
+                  "$description": "Highest contrast in-progress status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Highest contrast in-progress status background. Inverse surface."
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.700}",
+                  "$description": "High contrast in-progress status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.400}",
+                  "$description": "High contrast in-progress status background. Inverse surface."
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.800}",
+                  "$description": "Medium contrast in-progress status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.300}",
+                  "$description": "Medium contrast in-progress status background. Inverse surface."
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.900}",
+                  "$description": "Low contrast in-progress status background. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.200}",
+                  "$description": "Low contrast in-progress status background. Inverse surface."
+                }
+              }
+            },
+            "fg": {
+              "contrast_highest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}",
+                  "$description": "Highest contrast in-progress status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Highest contrast in-progress status foreground. Inverse surface."
+                }
+              },
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.200}",
+                  "$description": "High contrast in-progress status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.700}",
+                  "$description": "High contrast in-progress status foreground. Inverse surface."
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.300}",
+                  "$description": "Medium contrast in-progress status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.800}",
+                  "$description": "Medium contrast in-progress status foreground. Inverse surface."
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.400}",
+                  "$description": "Low contrast in-progress status foreground. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.indigo.900}",
+                  "$description": "Low contrast in-progress status foreground. Inverse surface."
+                }
+              }
+            }
+          },
+          "pink": {
             "bg": {
               "contrast_highest": {
                 "inversity_normal": {
@@ -1143,7 +1145,7 @@
               }
             }
           },
-          "closed": {
+          "cobalt": {
             "bg": {
               "contrast_highest": {
                 "inversity_normal": {
