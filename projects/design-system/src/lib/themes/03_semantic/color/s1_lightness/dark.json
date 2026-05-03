@@ -633,54 +633,54 @@
               }
             }
           },
-          "scheduled": {
+          "critical": {
             "bg": {
               "contrast_highest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.900}",
-                  "$description": "Highest contrast scheduled status background. Standard surface."
+                  "$value": "{ob.p.color.cobalt.900}",
+                  "$description": "Highest contrast critical status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast scheduled status background. Inverse surface."
+                  "$description": "Highest contrast critical status background. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.700}",
-                  "$description": "High contrast scheduled status background. Standard surface."
+                  "$value": "{ob.p.color.red.700}",
+                  "$description": "High contrast critical status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.400}",
-                  "$description": "High contrast scheduled status background. Inverse surface."
+                  "$value": "{ob.p.color.red.400}",
+                  "$description": "High contrast critical status background. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.800}",
-                  "$description": "Medium contrast scheduled status background. Standard surface."
+                  "$value": "{ob.p.color.red.800}",
+                  "$description": "Medium contrast critical status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.300}",
-                  "$description": "Medium contrast scheduled status background. Inverse surface."
+                  "$value": "{ob.p.color.red.300}",
+                  "$description": "Medium contrast critical status background. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.900}",
-                  "$description": "Low contrast scheduled status background. Standard surface."
+                  "$value": "{ob.p.color.red.900}",
+                  "$description": "Low contrast critical status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.200}",
-                  "$description": "Low contrast scheduled status background. Inverse surface."
+                  "$value": "{ob.p.color.red.200}",
+                  "$description": "Low contrast critical status background. Inverse surface."
                 }
               }
             },
@@ -689,48 +689,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast scheduled status foreground. Standard surface."
+                  "$description": "Highest contrast critical status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Highest contrast scheduled status foreground. Inverse surface."
+                  "$description": "Highest contrast critical status foreground. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.200}",
-                  "$description": "High contrast scheduled status foreground. Standard surface."
+                  "$value": "{ob.p.color.red.100}",
+                  "$description": "High contrast critical status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.700}",
-                  "$description": "High contrast scheduled status foreground. Inverse surface."
+                  "$value": "{ob.p.color.red.900}",
+                  "$description": "High contrast critical status foreground. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.300}",
-                  "$description": "Medium contrast scheduled status foreground. Standard surface."
+                  "$value": "{ob.p.color.red.200}",
+                  "$description": "Medium contrast critical status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.800}",
-                  "$description": "Medium contrast scheduled status foreground. Inverse surface."
+                  "$value": "{ob.p.color.red.800}",
+                  "$description": "Medium contrast critical status foreground. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.400}",
-                  "$description": "Low contrast scheduled status foreground. Standard surface."
+                  "$value": "{ob.p.color.red.300}",
+                  "$description": "Low contrast critical status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.pink.900}",
-                  "$description": "Low contrast scheduled status foreground. Inverse surface."
+                  "$value": "{ob.p.color.red.700}",
+                  "$description": "Low contrast critical status foreground. Inverse surface."
                 }
               }
             }
@@ -1048,49 +1048,49 @@
               "contrast_highest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Highest contrast critical status background. Standard surface."
+                  "$value": "{ob.p.color.pink.900}",
+                  "$description": "Highest contrast scheduled status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast critical status background. Inverse surface."
+                  "$description": "Highest contrast scheduled status background. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.700}",
-                  "$description": "High contrast critical status background. Standard surface."
+                  "$value": "{ob.p.color.pink.700}",
+                  "$description": "High contrast scheduled status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.400}",
-                  "$description": "High contrast critical status background. Inverse surface."
+                  "$value": "{ob.p.color.pink.400}",
+                  "$description": "High contrast scheduled status background. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.800}",
-                  "$description": "Medium contrast critical status background. Standard surface."
+                  "$value": "{ob.p.color.pink.800}",
+                  "$description": "Medium contrast scheduled status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.300}",
-                  "$description": "Medium contrast critical status background. Inverse surface."
+                  "$value": "{ob.p.color.pink.300}",
+                  "$description": "Medium contrast scheduled status background. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.900}",
-                  "$description": "Low contrast critical status background. Standard surface."
+                  "$value": "{ob.p.color.pink.900}",
+                  "$description": "Low contrast scheduled status background. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.200}",
-                  "$description": "Low contrast critical status background. Inverse surface."
+                  "$value": "{ob.p.color.pink.200}",
+                  "$description": "Low contrast scheduled status background. Inverse surface."
                 }
               }
             },
@@ -1099,48 +1099,48 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
-                  "$description": "Highest contrast critical status foreground. Standard surface."
+                  "$description": "Highest contrast scheduled status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "Highest contrast critical status foreground. Inverse surface."
+                  "$description": "Highest contrast scheduled status foreground. Inverse surface."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.100}",
-                  "$description": "High contrast critical status foreground. Standard surface."
+                  "$value": "{ob.p.color.pink.200}",
+                  "$description": "High contrast scheduled status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.900}",
-                  "$description": "High contrast critical status foreground. Inverse surface."
+                  "$value": "{ob.p.color.pink.700}",
+                  "$description": "High contrast scheduled status foreground. Inverse surface."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.200}",
-                  "$description": "Medium contrast critical status foreground. Standard surface."
+                  "$value": "{ob.p.color.pink.300}",
+                  "$description": "Medium contrast scheduled status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.800}",
-                  "$description": "Medium contrast critical status foreground. Inverse surface."
+                  "$value": "{ob.p.color.pink.800}",
+                  "$description": "Medium contrast scheduled status foreground. Inverse surface."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.300}",
-                  "$description": "Low contrast critical status foreground. Standard surface."
+                  "$value": "{ob.p.color.pink.400}",
+                  "$description": "Low contrast scheduled status foreground. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.red.700}",
-                  "$description": "Low contrast critical status foreground. Inverse surface."
+                  "$value": "{ob.p.color.pink.900}",
+                  "$description": "Low contrast scheduled status foreground. Inverse surface."
                 }
               }
             }

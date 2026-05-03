@@ -745,48 +745,48 @@
               "contrast_highest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_highest.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_highest.inversity_normal}",
                   "$description": "Background for Critical status. Highest contrast: Use for large status surfaces, prominent critical areas; avoid when instant color hue recognition is critical — highest contrast reduces chroma and weakens the categorical status signal."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_highest.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_highest.inversity_flipped}",
                   "$description": "Background for Critical status. Highest contrast: Use for large status surfaces, prominent critical areas; avoid when instant color hue recognition is critical — highest contrast reduces chroma and weakens the categorical status signal."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_high.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_high.inversity_normal}",
                   "$description": "Background for Critical status. High contrast: Use for status containers, highlighted critical surfaces."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_high.inversity_flipped}",
                   "$description": "Background for Critical status. High contrast: Use for status containers, highlighted critical surfaces."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_medium.inversity_normal}",
                   "$description": "Background for Critical status. Medium contrast: Use for subtle critical surfaces, secondary status areas."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_medium.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_medium.inversity_flipped}",
                   "$description": "Background for Critical status. Medium contrast: Use for subtle critical surfaces, secondary status areas."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_low.inversity_normal}",
                   "$description": "Background for Critical status. Low contrast: Use for compact status elements, small surfaces; avoid surfaces with extended text — high saturation compensates for lower contrast."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_low.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_low.inversity_flipped}",
                   "$description": "Background for Critical status. Low contrast: Use for compact status elements, small surfaces; avoid surfaces with extended text — high saturation compensates for lower contrast. Flipped inversity: use on elements that must visually stick out."
                 }
               }
@@ -795,48 +795,48 @@
               "contrast_highest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_highest.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_highest.inversity_normal}",
                   "$description": "Foreground for Critical status. Highest contrast: Use for primary text and icons on Critical status surfaces."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_highest.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_highest.inversity_flipped}",
                   "$description": "Foreground for Critical status. Highest contrast: Use for primary text and icons on Critical status surfaces."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_high.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_high.inversity_normal}",
                   "$description": "Foreground for Critical status. High contrast: Use for labels, headings, and icons on Critical status surfaces."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_high.inversity_flipped}",
                   "$description": "Foreground for Critical status. High contrast: Use for labels, headings, and icons on Critical status surfaces."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_medium.inversity_normal}",
                   "$description": "Foreground for Critical status. Medium contrast: Use for secondary labels and supporting text on Critical status surfaces."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_medium.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_medium.inversity_flipped}",
                   "$description": "Foreground for Critical status. Medium contrast: Use for secondary labels and supporting text on Critical status surfaces."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_low.inversity_normal}",
                   "$description": "Foreground for Critical status. Low contrast: Use for non-essential text or icons on Critical status surfaces; avoid if highest readability for extended text is required."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_low.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_low.inversity_flipped}",
                   "$description": "Foreground for Critical status. Low contrast: Use for non-essential text or icons on Critical status surfaces; avoid if highest readability for extended text is required."
                 }
               }
@@ -1581,48 +1581,48 @@
               "contrast_highest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_highest.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_highest.inversity_normal}",
                   "$description": "Background for Free – Pink. Highest contrast: Use on surfaces communicating scheduled or upcoming state; avoid when instant hue recognition is critical — highest contrast reduces chroma."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_highest.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_highest.inversity_flipped}",
                   "$description": "Background for Free – Pink. Highest contrast: Use on surfaces communicating scheduled or upcoming state; avoid when instant hue recognition is critical — highest contrast reduces chroma."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_high.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_high.inversity_normal}",
                   "$description": "Background for Free – Pink. High contrast: Use on containers and areas communicating scheduled or upcoming state."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_high.inversity_flipped}",
                   "$description": "Background for Free – Pink. High contrast: Use on containers and areas communicating scheduled or upcoming state."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_medium.inversity_normal}",
                   "$description": "Background for Free – Pink. Medium contrast: Use on subtle surfaces communicating scheduled or upcoming state."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_medium.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_medium.inversity_flipped}",
                   "$description": "Background for Free – Pink. Medium contrast: Use on subtle surfaces communicating scheduled or upcoming state."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_low.inversity_normal}",
                   "$description": "Background for Free – Pink. Low contrast: Use on compact elements communicating scheduled or upcoming state; avoid surfaces with extended text — high saturation compensates for lower contrast."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.bg.contrast_low.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.bg.contrast_low.inversity_flipped}",
                   "$description": "Background for Free – Pink. Low contrast: Use on compact elements communicating scheduled or upcoming state; avoid surfaces with extended text — high saturation compensates for lower contrast. Flipped inversity: use on elements that must visually stick out."
                 }
               }
@@ -1631,48 +1631,48 @@
               "contrast_highest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_highest.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_highest.inversity_normal}",
                   "$description": "Foreground for Free – Pink. Highest contrast: Use for primary text and icons communicating scheduled or upcoming state."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_highest.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_highest.inversity_flipped}",
                   "$description": "Foreground for Free – Pink. Highest contrast: Use for primary text and icons communicating scheduled or upcoming state."
                 }
               },
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_high.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_high.inversity_normal}",
                   "$description": "Foreground for Free – Pink. High contrast: Use for labels and icons communicating scheduled or upcoming state."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_high.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_high.inversity_flipped}",
                   "$description": "Foreground for Free – Pink. High contrast: Use for labels and icons communicating scheduled or upcoming state."
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_medium.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_medium.inversity_normal}",
                   "$description": "Foreground for Free – Pink. Medium contrast: Use for secondary text communicating scheduled or upcoming state."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_medium.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_medium.inversity_flipped}",
                   "$description": "Foreground for Free – Pink. Medium contrast: Use for secondary text communicating scheduled or upcoming state."
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_low.inversity_normal}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_low.inversity_normal}",
                   "$description": "Foreground for Free – Pink. Low contrast: Use for non-essential text or icons communicating scheduled or upcoming state; avoid if highest readability for extended text is required."
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.free.pink.fg.contrast_low.inversity_flipped}",
+                  "$value": "{ob.s1.color.status.critical.fg.contrast_low.inversity_flipped}",
                   "$description": "Foreground for Free – Pink. Low contrast: Use for non-essential text or icons communicating scheduled or upcoming state; avoid if highest readability for extended text is required."
                 }
               }
