@@ -2,22 +2,10 @@
   "ob": {
     "p": {
       "color": {
-        "token_family_docs": {
-          "$description": {
-            "$type": "other",
+        "_docs": {
+          "token_family_info": {
+            "$type": "string",
             "$value": "Scales provided by Bundeskanzlei Design System and additional Oblique custom primitive colors."
-          },
-          "$extensions": {
-            "oblique": {
-              "kind": {
-                "$type": "other",
-                "$value": "token_family_docs"
-              },
-              "export": {
-                "$type": "other",
-                "$value": "false"
-              }
-            }
           }
         },
         "red": {

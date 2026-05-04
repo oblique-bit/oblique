@@ -2,42 +2,24 @@
   "ob": {
     "s2": {
       "color": {
+        "_docs": {
+          "token_family_info": {
+            "$type": "string",
+            "$value": "State-based color mapping for interaction elements. Interactive state colors for components. Both Lightness (Light/Dark) and Emphasis (High/Low) modes affect resolved values across all 4 columns. Do: Reference when authoring compiled interaction tokens that require emphasis resolution. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+          }
+        },
         "interaction": {
-          "token_family_docs": {
-            "$description": {
-              "$type": "other",
+          "_docs": {
+            "token_family_info": {
+              "$type": "string",
               "$value": "Reduced-saturation emphasis for interactive elements in passive layout zones — headers, footers, and sidebars where actions should not draw attention away from primary content. Colors appear near-neutral while remaining interactive. Organized into standard_states (predefined interaction states) and contrast_levels (raw contrast steps for custom compositions). Do: Use for navigation links, header and footer actions, and any interactive element in a zone where monochromatic appearance is preferred over a visible call-to-action color. Avoid: Do not use as the default for primary form actions or submission buttons — those require High emphasis to communicate their role clearly."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "standard_states": {
-            "token_family_docs": {
-              "$description": {
-                "$type": "other",
+            "_docs": {
+              "token_family_info": {
+                "$type": "string",
                 "$value": "Predefined interaction state colors for emphasis-low components — enabled, hover, focus, pressed, selected, visited, and disabled. Lightness mode is pre-resolved; Emphasis Low is fixed. Use: Authoring compiled standard_states tokens for passive layout zone interactive components. Avoid: Custom contrast compositions — use the contrast_levels group instead."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             },
             "fg": {
@@ -214,22 +196,10 @@
             }
           },
           "contrast_levels": {
-            "token_family_docs": {
-              "$description": {
-                "$type": "other",
+            "_docs": {
+              "token_family_info": {
+                "$type": "string",
                 "$value": "Raw contrast-level colors for emphasis-low interaction — near-neutral appearance. Provides fg, bg, and border at three contrast steps without state semantics. Use: Custom interaction compositions in passive layout zones requiring direct contrast control not covered by the predefined states. Avoid: Named interaction states such as hover and focus — use the standard-states tokens instead."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             },
             "fg": {

@@ -2,25 +2,19 @@
   "ob": {
     "s1": {
       "color": {
-        "token_family_docs": {
-          "$description": {
-            "$type": "other",
+        "_docs": {
+          "token_family_info": {
+            "$type": "string",
             "$value": "Source file for S1 color tokens in the Dark theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, and Free."
-          },
-          "$extensions": {
-            "oblique": {
-              "kind": {
-                "$type": "other",
-                "$value": "token_family_docs"
-              },
-              "export": {
-                "$type": "other",
-                "$value": "false"
-              }
-            }
           }
         },
         "neutral": {
+          "_docs": {
+            "token_family_info": {
+              "$type": "string",
+              "$value": "Lightness-resolved neutral colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled semantic tokens that resolve to neutral foreground, background, border, or shadow values. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+            }
+          },
           "bg": {
             "contrast_highest": {
               "inversity_normal": {
@@ -225,6 +219,12 @@
           }
         },
         "status": {
+          "_docs": {
+            "token_family_info": {
+              "$type": "string",
+              "$value": "Lightness-resolved status colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled tokens that resolve to status colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+            }
+          },
           "info": {
             "bg": {
               "contrast_highest": {
@@ -1249,6 +1249,12 @@
           }
         },
         "interaction": {
+          "_docs": {
+            "token_family_info": {
+              "$type": "string",
+              "$value": "Lightness-resolved interaction colors. Only Light/Dark modes apply. References Primitives, referenced by S2. Do: Reference when authoring S2 or compiled tokens that resolve to interaction state colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+            }
+          },
           "emphasis_high": {
             "bg_base": {
               "contrast_high": {
@@ -1681,22 +1687,10 @@
           }
         },
         "navigation": {
-          "token_family_docs": {
-            "$description": {
-              "$type": "other",
+          "_docs": {
+            "token_family_info": {
+              "$type": "string",
               "$value": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect — navigation items use a single color scale based on the brand red palette."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "fg_base": {
