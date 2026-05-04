@@ -24,6 +24,8 @@
 		<input type="checkbox" id="languageSynchronization" checked /><label for="languageSynchronization"
 			>activate language synchronization</label
 		><br />
+		<button type="button" id="navigate">navigate url</button> to test the login button href update
+		<br />
 		<hr />
 		<select id="languageSelect">
 			<option value="en">EN</option>
@@ -56,6 +58,18 @@
 
 		<script>
 			document.querySelector("ob-service-navigation-web-component").returnUrl = window.location.href;
+			document.querySelector("#navigate").addEventListener("click", (event) => {
+				const randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+				window.history.pushState(randomChar, randomChar, "/" + randomChar);
+
+				setTimeout(() => {
+					const href = document
+						.querySelector("#ob-service-navigation-authentication-link-to-login")
+						.getAttribute("href");
+
+					console.log("New login url: " + href);
+				});
+			});
 			document.querySelector("#showLanguages").addEventListener("change", (event) => {
 				document
 					.querySelector("ob-service-navigation-web-component")
