@@ -49,6 +49,15 @@ the latest is reached
 | `npx @oblique/cli@latest new <projectName>` | The name of the project to create | Creates a new Oblique project                              |
 | `npx @oblique/cli@latest update`            | N/A                               | Updates the Oblique project in which the command is called |
 
+For internal projects on the federal network, create the project with `--npmrc` so the generated setup uses Nexus:
+
+```shell
+npx @oblique/cli@latest new <projectName> --npmrc
+```
+
+For external projects, use `--no-npmrc` to skip the Nexus configuration. If neither `--npmrc` nor `--no-npmrc`
+is set, the CLI prompts you to choose during the Oblique setup.
+
 The `update` command performs the following actions:
 
 - Migrate all Angular packages and their dependencies to the versions compatible with the latest Oblique version

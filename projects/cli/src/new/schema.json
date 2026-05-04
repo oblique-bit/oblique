@@ -82,7 +82,6 @@
     },
     "npmrc": {
       "type": "boolean",
-      "defaultValue": true,
       "description": "Create .npmrc: If you use this flag, it adds an .npmrc file, suitable for projects located within confederation/federal network."
     },
     "eslint": {
