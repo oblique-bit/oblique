@@ -1,8 +1,8 @@
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
+import {ChangeDetectorRef, DebugElement} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {DebugElement} from '@angular/core';
 import {Subject} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
@@ -24,6 +24,7 @@ describe('NotificationComponent', () => {
 	let fixture: ComponentFixture<ObNotificationComponent>;
 	let notificationConfig: ObNotificationConfig;
 	let notificationService: ObNotificationService;
+	let changeDetectorRef: ChangeDetectorRef;
 
 	const message = 'myMessage';
 	const title = 'myTitle';
@@ -56,17 +57,22 @@ describe('NotificationComponent', () => {
 		component = fixture.componentInstance;
 		notificationConfig = fixture.debugElement.injector.get(ObNotificationConfig);
 		notificationService = fixture.debugElement.injector.get(ObNotificationService);
+		changeDetectorRef = fixture.componentRef.injector.get(ChangeDetectorRef);
 		jest.spyOn(component, 'close');
-		fixture.detectChanges();
+		detectChanges();
+	});
+
+	afterEach(() => {
+		jest.useRealTimers();
 	});
 
 	describe('should display notifications via NotificationService', () => {
 		let htmlNotifications: DebugElement[];
 
-		beforeEach(() => {
+		beforeEach(async () => {
 			component.open({message: 'Notification 1', type: ObENotificationType.INFO});
 			component.open({message: 'Notification 2', title: 'Title 2', type: ObENotificationType.SUCCESS});
-			fixture.detectChanges();
+			await render();
 
 			// Retrieve notifications form the component template view:
 			htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
@@ -98,9 +104,9 @@ describe('NotificationComponent', () => {
 
 	describe('close button', () => {
 		let closeButton: DebugElement;
-		beforeEach(() => {
+		beforeEach(async () => {
 			component.open({message, title, sticky: true});
-			fixture.detectChanges();
+			await render();
 			closeButton = fixture.debugElement.query(By.css('button.ob-close'));
 		});
 
@@ -114,45 +120,46 @@ describe('NotificationComponent', () => {
 			);
 		});
 
-		it('should close a notification when clicked', fakeAsync(() => {
+		it('should close a notification when clicked', async () => {
+			jest.useFakeTimers();
 			closeButton.triggerEventHandler('click', null);
 
 			// Wait for animation completion:
-			tick(ObNotificationComponent.REMOVE_DELAY);
+			await advanceTimersAndDetectChanges(ObNotificationComponent.REMOVE_DELAY);
 
 			expect(component.close).toHaveBeenCalled();
 			expect(component.notifications.length).toBe(0);
-		}));
+		});
 	});
 
-	it('should clear all notification', fakeAsync(() => {
+	it('should clear all notification', async () => {
+		jest.useFakeTimers();
 		// Send multiple notifications:
 		component.open({message: 'message 1'});
 		component.open({message: 'message 2'});
 		component.open({message: 'message 3'});
-		fixture.detectChanges();
+		detectChanges();
 
 		expect(component.notifications.length).toBe(3);
 		let htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(3);
 
 		component.clear();
-		tick(ObNotificationComponent.REMOVE_DELAY);
-		fixture.detectChanges();
+		await advanceTimersAndDetectChanges(ObNotificationComponent.REMOVE_DELAY);
 
 		expect(component.notifications.length).toBe(0);
 
 		htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(0);
-	}));
+	});
 
-	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', () => {
+	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', async () => {
 		jest.useFakeTimers();
 		// Send multiple notifications:
 		component.open({message, groupSimilar: true});
 		component.open({message, groupSimilar: true});
 		component.open({message, groupSimilar: true});
-		fixture.detectChanges();
+		detectChanges();
 
 		expect(component.notifications.length).toBe(1);
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
@@ -160,31 +167,30 @@ describe('NotificationComponent', () => {
 		// Ensure that the timers responsible for closing notifications are executed before ending the test,
 		// so the corresponding branch (if) is covered. This became necessary after switching from
 		// "waitForAsync" to "async/await" to preserve equivalent test coverage.
-		jest.runAllTimers();
-		jest.useRealTimers();
+		await advanceTimersAndDetectChanges();
 	});
 
-	it('should have multiple messages if same message is send multiple times with groupSimilar disabled', () => {
+	it('should have multiple messages if same message is send multiple times with groupSimilar disabled', async () => {
 		// Send multiple notifications:
 		component.open({message, groupSimilar: false});
 		component.open({message, groupSimilar: false});
 		component.open({message, groupSimilar: false});
-		fixture.detectChanges();
+		await render();
 
 		expect(component.notifications.length).toBe(3);
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(3);
 	});
 
-	it('should close a _non-sticky_ notification after `timeout` is reached', fakeAsync(() => {
+	it('should close a _non-sticky_ notification after `timeout` is reached', async () => {
+		jest.useFakeTimers();
 		const notification = {
 			message,
 			title,
 			sticky: false,
 		};
 		component.open(notification);
-		tick(2 * notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
-		fixture.detectChanges();
+		await advanceTimersAndDetectChanges(2 * notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
 
 		expect(component.close).toHaveBeenCalled();
 		expect(component.close).toHaveBeenCalledWith(notification);
@@ -192,25 +198,25 @@ describe('NotificationComponent', () => {
 
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(0);
-	}));
+	});
 
-	it('should *not* close a _sticky_ notification after `timeout` is reached', fakeAsync(() => {
+	it('should *not* close a _sticky_ notification after `timeout` is reached', async () => {
+		jest.useFakeTimers();
 		component.open({
 			message,
 			title,
 			sticky: true,
 		});
-		tick(notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
-		fixture.detectChanges();
+		await advanceTimersAndDetectChanges(notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
 
 		expect(component.close).not.toHaveBeenCalled();
 		expect(component.notifications.length).toBe(1);
 
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(1);
-	}));
+	});
 
-	it('should display notifications from a custom channel', () => {
+	it('should display notifications from a custom channel', async () => {
 		component.channel = 'myChannel';
 
 		// Send multiple notifications to different channels:
@@ -219,20 +225,40 @@ describe('NotificationComponent', () => {
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 3', channel: 'anotherChanel'});
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 4', channel: 'myChannel'});
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 5', channel: 'appChannel'});
-		fixture.detectChanges();
+		await render();
 
 		expect(component.notifications.length).toBe(2);
 	});
 
-	it('should *not* display a notification from a different channel', () => {
+	it('should *not* display a notification from a different channel', async () => {
 		// Send multiple notifications to different channels:
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 1', channel: 'testChannel'});
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 2', channel: 'myChannel'});
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 3', channel: 'anotherChanel'});
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 4', channel: 'oblique'});
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 5', channel: 'appChannel'});
-		fixture.detectChanges();
+		await render();
 
 		expect(component.notifications.length).toBe(1);
 	});
+
+	async function render(): Promise<void> {
+		changeDetectorRef.detectChanges();
+		fixture.detectChanges();
+		await fixture.whenStable();
+	}
+
+	function detectChanges(): void {
+		changeDetectorRef.detectChanges();
+		fixture.detectChanges();
+	}
+
+	async function advanceTimersAndDetectChanges(delay?: number): Promise<void> {
+		if (delay === undefined) {
+			await jest.runAllTimersAsync();
+		} else {
+			await jest.advanceTimersByTimeAsync(delay);
+		}
+		detectChanges();
+	}
 });

@@ -1,6 +1,6 @@
 import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTooltipHarness} from '@angular/material/tooltip/testing';
@@ -61,16 +61,14 @@ describe('ObServiceNavigationProfileComponent', () => {
 			{name: '', header: 'i18n.oblique.service-navigation.profile.guest'},
 			{name: 'John Doe', header: 'John Doe'},
 		])('set to "$name"', ({name, header}) => {
-			it(`should show "${header}" as header`, fakeAsync(async () => {
+			it(`should show "${header}" as header`, async () => {
 				component.userName = name;
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				const section = fixture.debugElement.query(
 					By.directive(ObServiceNavigationPopoverSectionComponent)
 				).componentInstance;
 				expect(section.header).toBe(header);
-			}));
+			});
 		});
 	});
 
@@ -83,16 +81,14 @@ describe('ObServiceNavigationProfileComponent', () => {
 			{url: '', label: ''},
 			{url: 'Http://settings-url', label: 'settings url', isInternalLink: true},
 		])('set to "%s"', url => {
-			it(`should show "${url.url}" as link`, fakeAsync(async () => {
+			it(`should show "${url.url}" as link`, async () => {
 				component.profileUrls = [url];
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				const section = fixture.debugElement.query(
 					By.directive(ObServiceNavigationPopoverSectionComponent)
 				).componentInstance;
 				expect(section.links[0].url).toBe(url.url);
-			}));
+			});
 		});
 	});
 
@@ -141,28 +137,24 @@ describe('ObServiceNavigationProfileComponent', () => {
 		});
 
 		describe('without additional links', () => {
-			it('should have 1 section', fakeAsync(async () => {
+			it('should have 1 section', async () => {
 				component.links = [];
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				const sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				expect(sections.length).toBe(1);
-			}));
+			});
 		});
 
 		describe('with additional links', () => {
 			let sections: DebugElement[];
-			beforeEach(fakeAsync(async () => {
+			beforeEach(async () => {
 				component.links = [
 					{url: 'url_1', label: 'URL 1'},
 					{url: 'url_2', label: 'URL 2'},
 				];
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
-			}));
+			});
 
 			it('should have 2 sections', () => {
 				expect(sections.length).toBe(2);
@@ -249,13 +241,12 @@ describe('ObServiceNavigationProfileComponent', () => {
 				{url: 'http://fakeUrl2.url', label: 'url2'},
 			];
 
-			beforeEach(fakeAsync(async () => {
-				fixture.detectChanges();
-				await harness.openPopover();
+			beforeEach(async () => {
+				await openPopover();
 				component.profileUrls = fakeProfileUrls;
-				fixture.detectChanges();
-				tick();
-			}));
+				fixture.componentRef.changeDetectorRef.detectChanges();
+				await fixture.whenStable();
+			});
 
 			it(`should exist`, async () => {
 				expect(await harness.getPopoverHarness()).toBeTruthy();
@@ -300,4 +291,10 @@ describe('ObServiceNavigationProfileComponent', () => {
 			});
 		});
 	});
+
+	async function openPopover(): Promise<void> {
+		await harness.openPopover();
+		fixture.componentRef.changeDetectorRef.detectChanges();
+		await fixture.whenStable();
+	}
 });

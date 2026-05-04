@@ -93,7 +93,7 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 					{code: 'it', label: 'Italiano'},
 					{code: 'en', label: 'English'},
 				];
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
 			beforeEach(async () => {
@@ -111,7 +111,7 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 					if (language) {
 						component.language = language;
 					}
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 
 				describe.each([

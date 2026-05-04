@@ -40,8 +40,7 @@ describe(ObMasterLayoutNavigationSubMenuItemComponent.name, () => {
 		fixture = TestBed.createComponent(ObMasterLayoutNavigationSubMenuItemComponent);
 		component = fixture.componentInstance;
 		harness = await TestbedHarnessEnvironment.harnessForFixture(fixture, ObMasterLayoutNavigationSubMenuItemHarness);
-		fixture.autoDetectChanges();
-		await fixture.whenStable();
+		fixture.detectChanges();
 	});
 
 	test('that creation works', () => {
@@ -104,6 +103,7 @@ describe(ObMasterLayoutNavigationSubMenuItemComponent.name, () => {
 				component.link = link;
 				component.showChildren = showChildren;
 				component.ngOnChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				await fixture.whenStable();
 			});
 

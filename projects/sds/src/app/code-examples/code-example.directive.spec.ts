@@ -1,5 +1,5 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
+import {Component, provideZonelessChangeDetection} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {CodeExampleDirective} from './code-example.directive';
 
@@ -18,28 +18,34 @@ class CodeExampleDirectiveTestComponent {
 
 describe(CodeExampleDirective.name, () => {
 	let fixture: ComponentFixture<CodeExampleDirectiveTestComponent>;
-
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
+			providers: [provideZonelessChangeDetection()],
 			imports: [CodeExampleDirectiveTestComponent, CodeExampleDirective, DummyComponent],
 		}).compileComponents();
 	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(CodeExampleDirectiveTestComponent);
-		fixture.detectChanges();
+		fixture = TestBed.createComponent(CodeExampleDirectiveTestComponent, {});
 	});
 
 	describe('codeExampleComponent', () => {
-		it('should inject the component passed as a parameter', () => {
+		it('should inject the component passed as a parameter', async () => {
+			fixture.detectChanges();
+			await fixture.whenStable();
+
 			const element = fixture.debugElement.query(By.directive(DummyComponent));
+
 			expect(element).toBeTruthy();
 		});
 
-		it('should remove the component when no ', () => {
-			fixture.componentInstance.component = null;
+		it('should remove the component when no ', async () => {
+			const emptyFixture = TestBed.createComponent(CodeExampleDirectiveTestComponent);
+			emptyFixture.componentInstance.component = null;
 			fixture.detectChanges();
-			const element = fixture.debugElement.query(By.directive(DummyComponent));
+			await fixture.whenStable();
+
+			const element = emptyFixture.debugElement.query(By.directive(DummyComponent));
 
 			expect(element).toBeFalsy();
 		});

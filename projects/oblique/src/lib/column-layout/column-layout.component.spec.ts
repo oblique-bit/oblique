@@ -1,15 +1,15 @@
 import {By} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement, Directive, EventEmitter, Output, inject} from '@angular/core';
 import {skip} from 'rxjs/operators';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
-import {TranslateModule} from '@ngx-translate/core';
 import {ObColumnToggleDirective as ObRealColumnToggleDirective} from './column-toggle.directive';
 import {ObColumnPanelDirective as ObRealColumnPanelDirective} from './column-panel.directive';
+import {TranslateModule} from '@ngx-translate/core';
 
-let resizerCallback;
+let resizerCallback: (entries: {contentRect: {height: number}}[]) => void;
 class ResizeObserver {
 	constructor(public callback) {
 		resizerCallback = callback;
@@ -47,12 +47,16 @@ class ObColumnToggleDirective {
 
 @Component({
 	standalone: false,
-	template: `<ob-column-layout [left]="NONE" [right]="NONE" />`,
+	template: `<ob-column-layout left="NONE" right="NONE" />`,
 })
 class TestComponent {}
 
 describe(ObColumnLayoutComponent.name, () => {
 	let component: ObColumnLayoutComponent;
+
+	afterEach(() => {
+		jest.useRealTimers();
+	});
 
 	describe('with default inputs', () => {
 		let fixture: ComponentFixture<ObColumnLayoutComponent>;
@@ -70,9 +74,11 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		beforeEach(() => {
+			jest.useFakeTimers();
 			fixture = TestBed.createComponent(ObColumnLayoutComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
+			jest.runOnlyPendingTimers();
 			panels = fixture.debugElement
 				.queryAll(By.directive(ObColumnPanelDirective))
 				.map(element => element.injector.get(ObColumnPanelDirective));
@@ -95,13 +101,13 @@ describe(ObColumnLayoutComponent.name, () => {
 			});
 
 			test(`that "${className}" class is added when true`, () => {
-				component[property] = true;
+				fixture.componentRef.setInput(property, true);
 				fixture.detectChanges();
 				expect(fixture.debugElement.nativeElement.classList).toContain(className);
 			});
 
 			test(`that "${className}" class is removed when false`, () => {
-				component[property] = false;
+				fixture.componentRef.setInput(property, false);
 				fixture.detectChanges();
 				expect(fixture.debugElement.nativeElement.classList).not.toContain(className);
 			});
@@ -115,19 +121,19 @@ describe(ObColumnLayoutComponent.name, () => {
 				expect(component[property] instanceof Observable).toBe(true);
 			});
 
-			test(`that it initially emits "${initialValue}"`, done => {
-				component[property].subscribe(value => {
-					expect(value).toBe(initialValue);
-					done();
-				});
+			test(`that it initially emits "${initialValue}"`, () => {
+				const values: string[] = [];
+				component[property].subscribe(value => values.push(value));
+				jest.runOnlyPendingTimers();
+				expect(values).toEqual([initialValue]);
 			});
 
-			test(`that it emits "${toggledValue}" after toggle has been toggled`, done => {
-				component[property].pipe(skip(1)).subscribe(value => {
-					expect(value).toBe(toggledValue);
-					done();
-				});
+			test(`that it emits "${toggledValue}" after toggle has been toggled`, () => {
+				const values: string[] = [];
+				component[property].pipe(skip(1)).subscribe(value => values.push(value));
 				panels[index].toggle();
+				jest.runOnlyPendingTimers();
+				expect(values).toEqual([toggledValue]);
 			});
 		});
 
@@ -142,7 +148,7 @@ describe(ObColumnLayoutComponent.name, () => {
 			});
 
 			test('that it does not toggle the panel when panel is removed', () => {
-				component[panel] = 'NONE';
+				fixture.componentRef.setInput(panel, 'NONE');
 				fixture.detectChanges();
 				jest.spyOn(panels[index], 'toggle');
 				component[method]();
@@ -153,12 +159,10 @@ describe(ObColumnLayoutComponent.name, () => {
 		describe.each(['left', 'right'])('%s toggle "top" property', toggleName => {
 			let element: DebugElement;
 
-			beforeEach(done => {
-				component.toggleLeftIcon$.subscribe(() => {
-					fixture.detectChanges();
-					element = fixture.debugElement.query(By.css(`.ob-column-toggle-${toggleName}`));
-					done();
-				});
+			beforeEach(() => {
+				jest.runOnlyPendingTimers();
+				fixture.detectChanges();
+				element = fixture.debugElement.query(By.css(`.ob-column-toggle-${toggleName}`));
 			});
 
 			test('that it is empty per default', () => {
@@ -173,9 +177,7 @@ describe(ObColumnLayoutComponent.name, () => {
 					{description: 'half the height with a height equal to window height', height: 768, top: '384px'},
 					{description: 'half the window height with a height bigger than window height', height: 769, top: '384px'},
 				])('that it is $description', ({height, top}) => {
-					jest
-						.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect')
-						.mockReturnValue({top: 0, height, windowHeight: 768});
+					jest.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect').mockReturnValue({top: 0, height});
 					component.ngDoCheck();
 					fixture.detectChanges();
 					expect(element.nativeElement.style.top).toBe(top);
@@ -194,9 +196,7 @@ describe(ObColumnLayoutComponent.name, () => {
 						top: '379px',
 					},
 				])('that it is $description', ({height, top}) => {
-					jest
-						.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect')
-						.mockReturnValue({top: 10, height, windowHeight: 768});
+					jest.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect').mockReturnValue({top: 10, height});
 					component.ngDoCheck();
 					fixture.detectChanges();
 					expect(element.nativeElement.style.top).toBe(top);
@@ -222,14 +222,14 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		beforeEach(() => {
+			jest.useFakeTimers();
 			fixture = TestBed.createComponent(TestComponent);
 			testComponent = fixture.componentInstance;
 			component = fixture.debugElement
 				.query(By.directive(ObColumnLayoutComponent))
 				.injector.get(ObColumnLayoutComponent);
-			component.left = 'NONE';
-			component.right = 'NONE';
 			fixture.detectChanges();
+			jest.runOnlyPendingTimers();
 		});
 
 		test('that the test component is created', () => {
@@ -252,42 +252,42 @@ describe(ObColumnLayoutComponent.name, () => {
 		])('property $property changed back', ({property, initialValue, toggledValue, index}) => {
 			let panels: ObColumnPanelDirective[];
 
-			beforeEach(fakeAsync(() => {
+			beforeEach(() => {
 				component.left = 'OPENED';
 				component.right = 'OPENED';
 				component.ngOnChanges();
 				fixture.detectChanges();
-				tick();
+				jest.runOnlyPendingTimers();
 
 				panels = fixture.debugElement
 					.queryAll(By.directive(ObColumnPanelDirective))
 					.map(element => element.injector.get(ObColumnPanelDirective));
-			}));
+			});
 
 			test('that it is an observable', () => {
 				expect(component[property] instanceof Observable).toBe(true);
 			});
 
-			test(`that it initially emits "${initialValue}"`, done => {
-				component[property].subscribe(value => {
-					expect(value).toBe(initialValue);
-					done();
-				});
+			test(`that it initially emits "${initialValue}"`, () => {
+				const values: string[] = [];
+				component[property].subscribe(value => values.push(value));
+				jest.runOnlyPendingTimers();
+				expect(values).toEqual([initialValue]);
 			});
 
-			test(`that it emits "${toggledValue}" after toggle has been toggled`, done => {
-				component[property].pipe(skip(1)).subscribe(value => {
-					expect(value).toBe(toggledValue);
-					done();
-				});
+			test(`that it emits "${toggledValue}" after toggle has been toggled`, () => {
+				const values: string[] = [];
+				component[property].pipe(skip(1)).subscribe(value => values.push(value));
 				panels[index].toggle();
+				jest.runOnlyPendingTimers();
+				expect(values).toEqual([toggledValue]);
 			});
 		});
 	});
 
 	describe('with change to the header height', () => {
-		let element: DebugElement;
 		let fixture: ComponentFixture<TestComponent>;
+		let element: DebugElement;
 
 		beforeEach(async () => {
 			TestBed.overrideComponent(ObColumnLayoutComponent, {
@@ -302,6 +302,7 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		beforeEach(() => {
+			jest.useFakeTimers();
 			TestBed.overrideTemplate(
 				TestComponent,
 				`<ob-master-layout><div class="ob-master-layout-header"></div><ob-column-layout></ob-column-layout></ob-master-layout>`
@@ -311,15 +312,14 @@ describe(ObColumnLayoutComponent.name, () => {
 				.query(By.directive(ObColumnLayoutComponent))
 				.injector.get(ObColumnLayoutComponent);
 			fixture.detectChanges();
+			jest.runOnlyPendingTimers();
 		});
 
 		describe('property top', () => {
-			beforeEach(done => {
-				component.toggleLeftIcon$.subscribe(() => {
-					fixture.detectChanges();
-					element = fixture.debugElement.query(By.css(`.ob-column-toggle-left`));
-					done();
-				});
+			beforeEach(() => {
+				jest.runOnlyPendingTimers();
+				fixture.detectChanges();
+				element = fixture.debugElement.query(By.css('.ob-column-toggle-left'));
 			});
 
 			test.each([
@@ -334,8 +334,12 @@ describe(ObColumnLayoutComponent.name, () => {
 				resizerCallback([{contentRect: {height}}]);
 				jest
 					.spyOn(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement, 'getBoundingClientRect')
-					.mockReturnValue({top: 0, height: 50, windowHeight: 768});
+					.mockReturnValue({
+						top: 0,
+						height: 50,
+					});
 				component.ngDoCheck();
+				fixture.detectChanges();
 				expect(element.nativeElement.style.top).toBe(top);
 			});
 		});

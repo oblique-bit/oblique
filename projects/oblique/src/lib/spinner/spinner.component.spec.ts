@@ -1,5 +1,5 @@
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {Component, DebugElement} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ChangeDetectorRef, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {Observable, Subject} from 'rxjs';
@@ -25,6 +25,7 @@ describe('ObSpinnerComponent', () => {
 	let spinnerElement: DebugElement;
 	let fixture: ComponentFixture<MockComponent>;
 	let mockObSpinnerService;
+	let spinnerChangeDetector: ChangeDetectorRef;
 
 	beforeEach(async () => {
 		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
@@ -38,6 +39,7 @@ describe('ObSpinnerComponent', () => {
 		fixture = TestBed.createComponent(MockComponent);
 		spinnerElement = fixture.debugElement.query(By.directive(ObSpinnerComponent));
 		component = spinnerElement.componentInstance;
+		spinnerChangeDetector = spinnerElement.injector.get(ChangeDetectorRef);
 		fixture.detectChanges();
 	});
 
@@ -70,7 +72,7 @@ describe('ObSpinnerComponent', () => {
 			{description: 'should remove "ob-overlay-fixed" class when not provided', state: undefined, result: undefined},
 		])('$description', ({state, result}) => {
 			component.fixed = state;
-			fixture.detectChanges();
+			spinnerChangeDetector.detectChanges();
 			expect(spinnerElement.query(By.css('.ob-overlay')).classes['ob-overlay-fixed']).toBe(result);
 		});
 	});
@@ -80,22 +82,20 @@ describe('ObSpinnerComponent', () => {
 			expect(component.isActive$ instanceof Observable).toBe(true);
 		});
 
-		it('should initially emit nothing', fakeAsync(() => {
+		it('should initially emit nothing', () => {
 			component.isActive$.subscribe(() => {
 				fail('Should not emit anything');
 			});
-			tick();
-		}));
+		});
 
-		it('should not emit when an ObISpinnerEvent is emitted in another channel', fakeAsync(() => {
+		it('should not emit when an ObISpinnerEvent is emitted in another channel', () => {
 			let emitted = false;
 			component.isActive$.subscribe(() => {
 				emitted = true;
 			});
 			mockObSpinnerService.events$.next({active: true, channel: 'alt'});
-			tick();
 			expect(emitted).toBe(false);
-		}));
+		});
 
 		describe.each([
 			{

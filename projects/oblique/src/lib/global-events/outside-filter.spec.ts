@@ -1,5 +1,4 @@
 import {fromEvent} from 'rxjs';
-import {fakeAsync, tick} from '@angular/core/testing';
 import {obOutsideFilter} from './outside-filter';
 
 describe('obOutsideFilter', () => {
@@ -25,23 +24,21 @@ describe('obOutsideFilter', () => {
 		document.querySelector('body').click();
 	});
 
-	it('should not emit on excluded element click', fakeAsync(() => {
+	it('should not emit on excluded element click', () => {
 		let emitted = false;
 		clickEvent.pipe(obOutsideFilter(div1, div2)).subscribe(() => {
 			emitted = true;
 		});
 		div1.click();
-		tick(1000);
 		expect(emitted).toBe(false);
-	}));
+	});
 
-	it("should not emit on excluded element's child click", fakeAsync(() => {
+	it("should not emit on excluded element's child click", () => {
 		let emitted = false;
 		clickEvent.pipe(obOutsideFilter(div1, div2)).subscribe(() => {
 			emitted = true;
 		});
 		span.click();
-		tick(1000);
 		expect(emitted).toBe(false);
-	}));
+	});
 });

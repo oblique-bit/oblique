@@ -13,7 +13,6 @@ import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
 import {ObServiceNavigationMessageHarness} from './service-navigation-message.harness';
 import {ObServiceNavigationMessageComponent} from './service-navigation-message.component';
-import {SimpleChange} from '@angular/core';
 
 describe('ObServiceNavigationMessageComponent', () => {
 	let component: ObServiceNavigationMessageComponent;
@@ -51,7 +50,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 		it('should be the target of the link', async () => {
 			component.linkHref = '/foo';
-			fixture.detectChanges();
+			fixture.componentRef.changeDetectorRef.detectChanges();
 			const link = await harness.getLink();
 			expect(await link.getProperty('href')).toBe('http://localhost/foo');
 		});
@@ -65,7 +64,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 		describe.each([0, 1])('with %s message', count => {
 			beforeEach(() => {
 				component.count = count;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
 			describe('badge', () => {
@@ -96,7 +95,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 		describe('with 0 message', () => {
 			beforeEach(() => {
 				component.count = 0;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
 			describe('badge', () => {
@@ -115,7 +114,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 		describe('with 1 message', () => {
 			beforeEach(() => {
 				component.count = 1;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
 			describe('badge', () => {
@@ -134,7 +133,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 		describe('with 100 message', () => {
 			beforeEach(() => {
 				component.count = 100;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
 			describe('badge', () => {
@@ -147,7 +146,8 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 				describe('ngOnchange count 100', () => {
 					beforeEach(() => {
-						component.ngOnChanges({count: new SimpleChange(0, 100, true)});
+						fixture.componentRef.setInput('count', 100);
+						fixture.componentRef.changeDetectorRef.detectChanges();
 					});
 
 					it(`should display 99+ after input changed`, async () => {

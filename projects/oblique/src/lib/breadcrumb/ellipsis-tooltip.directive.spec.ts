@@ -1,14 +1,14 @@
 import {Component, DebugElement, input} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {DOCUMENT} from '@angular/common';
 import {WINDOW} from '../utilities';
 import {By} from '@angular/platform-browser';
-import {HarnessLoader} from '@angular/cdk/testing';
-import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 
 function setElementWidths(element: HTMLElement, offset: number, scroll: number): void {
 	Object.defineProperty(element, 'offsetWidth', {value: offset});
@@ -33,7 +33,7 @@ describe('ObEllipsisTooltipDirective', () => {
 
 	async function triggerResize(): Promise<void> {
 		windowMock.dispatchEvent(new UIEvent('resize'));
-		fixture.detectChanges();
+		fixture.componentRef.changeDetectorRef.detectChanges();
 		await fixture.whenStable();
 	}
 

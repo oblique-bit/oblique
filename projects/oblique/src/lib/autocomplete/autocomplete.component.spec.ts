@@ -1,8 +1,8 @@
 import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {CommonModule} from '@angular/common';
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ChangeDetectorRef, Component} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {
 	ControlValueAccessor,
 	FormControl,
@@ -14,6 +14,7 @@ import {
 } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatAutocompleteHarness} from '@angular/material/autocomplete/testing';
+import {MatOptionHarness} from '@angular/material/core/testing';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatFormFieldHarness} from '@angular/material/form-field/testing';
 import {MatIconModule} from '@angular/material/icon';
@@ -58,9 +59,14 @@ describe(ObAutocompleteComponent.name, () => {
 	let component: ObAutocompleteComponent;
 	let parentFixture: ComponentFixture<TestParentComponent>;
 	let parentComponent: TestParentComponent;
+	let autocompleteChangeDetectorRef: ChangeDetectorRef;
 	let loader: HarnessLoader;
 	let obAutocompleteHarness: ObAutocompleteHarness;
 	let valueAccessor: readonly ControlValueAccessor[];
+
+	afterEach(() => {
+		jest.useRealTimers();
+	});
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
@@ -242,13 +248,15 @@ describe(ObAutocompleteComponent.name, () => {
 			}).createComponent(TestParentComponent);
 			parentComponent = parentFixture.componentInstance;
 			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+			autocompleteChangeDetectorRef = parentFixture.debugElement
+				.query(By.directive(ObAutocompleteComponent))
+				.injector.get(ChangeDetectorRef);
 			jest.spyOn(component, 'registerOnChange');
 			jest.spyOn(component, 'registerOnTouched');
 			jest.spyOn(component, 'setDisabledState');
 			jest.spyOn(component, 'writeValue');
 			loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
 			obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
-			parentFixture.detectChanges();
 			parentComponent.model = new FormControl<string>('have the same value as FormControl in parent');
 			parentComponent.searchText = 'have the same value as FormControl in parent';
 			parentFixture.detectChanges();
@@ -300,11 +308,12 @@ describe(ObAutocompleteComponent.name, () => {
 		// ensures the ControlValueAccessor is correct implemented and used
 		describe('onModelTouched', () => {
 			it('should called onModelTouched by blur', async () => {
-				jest.spyOn(component, 'onModelTouched');
+				const onModelTouched = jest.fn();
+				component.registerOnTouched(onModelTouched);
 				obAutocompleteHarness = await loader.getHarnessOrNull(ObAutocompleteHarness);
 				const inputElement = await obAutocompleteHarness.getInputElement();
 				await inputElement.blur();
-				expect(component.onModelTouched).toHaveBeenCalled();
+				expect(onModelTouched).toHaveBeenCalled();
 			});
 		});
 
@@ -316,69 +325,75 @@ describe(ObAutocompleteComponent.name, () => {
 
 		// ensures the ControlValueAccessor is correct implemented and used
 		describe('setDisabledState', () => {
-			it('should called setDisabledState with true', fakeAsync(() => {
+			it('should called setDisabledState with true', async () => {
 				parentComponent.model.enable();
 				parentComponent.isDisabled = false;
-				parentFixture.detectChanges();
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 
 				parentComponent.model.disable();
 				parentComponent.isDisabled = true;
-				parentFixture.detectChanges();
-				tick();
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 				expect(component.setDisabledState).toHaveBeenCalledWith(true);
-			}));
+			});
 
-			it('should called setDisabledState with false', fakeAsync(() => {
+			it('should called setDisabledState with false', async () => {
 				parentComponent.model.disable();
 				parentComponent.isDisabled = true;
-				parentFixture.detectChanges();
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 
 				parentComponent.model.enable();
 				parentComponent.isDisabled = false;
-				parentFixture.detectChanges();
-				tick();
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 				expect(component.setDisabledState).toHaveBeenCalledWith(false);
-			}));
+			});
 		});
 
 		describe('status of autocompleteInputControl', () => {
-			it('should changed to VALID', fakeAsync(() => {
+			it('should changed to VALID', async () => {
 				parentComponent.model.disable();
 				parentComponent.isDisabled = true;
-				parentFixture.detectChanges();
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 
 				parentComponent.model.enable();
 				parentComponent.isDisabled = false;
-				parentFixture.detectChanges();
-				tick();
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 				expect(component.autocompleteInputControl.status).toBe('VALID');
-			}));
+			});
 
-			it('should changed to DISABLED', fakeAsync(() => {
+			it('should changed to DISABLED', async () => {
 				parentComponent.model.enable();
 				parentComponent.isDisabled = false;
-				parentFixture.detectChanges();
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 
 				parentComponent.model.disable();
 				parentComponent.isDisabled = true;
-				parentFixture.detectChanges();
-				tick();
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 				expect(component.autocompleteInputControl.status).toBe('DISABLED');
-			}));
+			});
 		});
 
 		describe('by setting or changing inputLabelKey', () => {
 			it("should have an label with inputLabelKey='i18n.oblique.search.title'", async () => {
-				parentComponent.inputLabel = 'i18n.oblique.search.title';
-				parentFixture.detectChanges();
+				component.inputLabelKey = 'i18n.oblique.search.title';
+				autocompleteChangeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 				obAutocompleteHarness = await loader.getHarnessOrNull(ObAutocompleteHarness);
 				const label = await obAutocompleteHarness.getFormLabel();
 				expect(label).toBe('i18n.oblique.search.title');
 			});
 
 			it("should not have an label if inputLabelKey = ''", async () => {
-				parentComponent.inputLabel = '';
-				parentFixture.detectChanges();
+				component.inputLabelKey = '';
+				autocompleteChangeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
 				obAutocompleteHarness = await loader.getHarnessOrNull(ObAutocompleteHarness);
 				const label = await obAutocompleteHarness.getFormLabel();
 				expect(label).toBeNull();
@@ -387,65 +402,128 @@ describe(ObAutocompleteComponent.name, () => {
 
 		describe('by setting or changing noResultKey', () => {
 			it("should have an mat-option with option label = 'i18n.oblique.search.no-results' if autocomplete is visible and filtered options list is empty", async () => {
-				parentComponent.noResultKey = 'i18n.oblique.search.no-results';
-				parentComponent.autocompleteOptions = [];
-				parentFixture.detectChanges();
-				const options = await obAutocompleteHarness.openPanelAndGetAllOptions();
-				expect(await options[0].text()).toBe('i18n.oblique.search.no-results');
+				component.noResultKey = 'i18n.oblique.search.no-results';
+				component.autocompleteOptions = [];
+				component.autocompleteInputControl.setValue('');
+				component.ngOnChanges();
+				autocompleteChangeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
+				await obAutocompleteHarness.openAutocompletePanel();
+				autocompleteChangeDetectorRef.detectChanges();
+				const options = await loader.getAllHarnesses(MatOptionHarness);
+				expect(await options[0].getText()).toBe('i18n.oblique.search.no-results');
 			});
 
 			it("should not have an no-result mat-option if noResultKey = '' input is focused and filtered options list is empty", async () => {
-				parentComponent.noResultKey = '';
-				parentComponent.autocompleteOptions = [];
-				parentFixture.detectChanges();
-				const options = await obAutocompleteHarness.openPanelAndGetAllOptions();
+				component.noResultKey = '';
+				component.autocompleteOptions = [];
+				component.autocompleteInputControl.setValue('');
+				component.ngOnChanges();
+				autocompleteChangeDetectorRef.detectChanges();
+				await parentFixture.whenStable();
+				await obAutocompleteHarness.openAutocompletePanel();
+				autocompleteChangeDetectorRef.detectChanges();
+				const options = await loader.getAllHarnesses(MatOptionHarness);
 				expect(options.length).toBe(0);
 			});
 
 			it('should not have an mat-option with text of noResultKey if input is focused and filtered options list has options', async () => {
+				parentFixture = TestBed.createComponent(TestParentComponent);
+				parentComponent = parentFixture.componentInstance;
+				parentComponent.model = new FormControl<string>('');
+				parentComponent.parentFormControl = new FormGroup({model: parentComponent.model});
+				parentComponent.searchText = '';
 				parentComponent.autocompleteOptions = firstTestOptionList;
+				component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+				loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
+				obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
 				parentFixture.detectChanges();
-				const options = await obAutocompleteHarness.openPanelAndGetAllOptions();
-				expect(await options[options.length - 1].text()).toBe('fat unicorn c 4');
+				await parentFixture.whenStable();
+				await obAutocompleteHarness.openAutocompletePanel();
+				parentFixture.detectChanges();
+				const options = await loader.getAllHarnesses(MatOptionHarness);
+				expect(await options[options.length - 1].getText()).toBe('fat unicorn c 4');
 			});
 		});
 
 		describe('by setting or changing autocompleteOptions', () => {
 			it('should show all options if input empty', async () => {
-				parentComponent.autocompleteOptions = firstTestOptionList;
+				parentFixture = TestBed.createComponent(TestParentComponent);
+				parentComponent = parentFixture.componentInstance;
+				parentComponent.model = new FormControl<string>('');
+				parentComponent.parentFormControl = new FormGroup({model: parentComponent.model});
 				parentComponent.searchText = '';
-				parentComponent.model.setValue('');
+				parentComponent.autocompleteOptions = firstTestOptionList;
+				component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+				loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
+				obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
 				parentFixture.detectChanges();
-				const optionLabelPromise = [];
-				const visibleOptions = await obAutocompleteHarness.openPanelAndGetAllOptions();
-				for (const item of visibleOptions) {
-					optionLabelPromise.push(item.text());
+				await parentFixture.whenStable();
+				await obAutocompleteHarness.openAutocompletePanel();
+				parentFixture.detectChanges();
+				const optionLabelPromises: Promise<string>[] = [];
+				const visibleOptions = await loader.getAllHarnesses(MatOptionHarness);
+				for (const option of visibleOptions) {
+					optionLabelPromises.push(option.getText());
 				}
-				const visibleOptionLabels = await Promise.all(optionLabelPromise);
+				const visibleOptionLabels = await Promise.all(optionLabelPromises);
 				expect(visibleOptionLabels).toEqual(firstTestOptionList.map(value => value.label));
 			});
 
 			it('should have option groups', async () => {
+				parentFixture = TestBed.createComponent(TestParentComponent);
+				parentComponent = parentFixture.componentInstance;
+				parentComponent.model = new FormControl<string>('');
+				parentComponent.parentFormControl = new FormGroup({model: parentComponent.model});
+				parentComponent.searchText = '';
 				parentComponent.autocompleteOptions = optionGroups;
+				component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+				loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
+				obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
+				parentFixture.detectChanges();
+				await parentFixture.whenStable();
+				await obAutocompleteHarness.openAutocompletePanel();
 				parentFixture.detectChanges();
 				const groups = await obAutocompleteHarness.openPanelAndGetAllOptionGroups();
 				expect(groups.length).toBe(2);
 			});
 
 			it('should have disabled second option', async () => {
+				parentFixture = TestBed.createComponent(TestParentComponent);
+				parentComponent = parentFixture.componentInstance;
+				parentComponent.model = new FormControl<string>('');
+				parentComponent.parentFormControl = new FormGroup({model: parentComponent.model});
+				parentComponent.searchText = '';
 				parentComponent.autocompleteOptions = firstTestOptionList;
 				parentComponent.autocompleteOptions[1].disabled = true;
-
-				const option = await obAutocompleteHarness.openPanelAndGetAllOptions();
-				expect(await option[1].getAttribute('aria-disabled')).toBe('true');
+				component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+				loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
+				obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
+				parentFixture.detectChanges();
+				await parentFixture.whenStable();
+				await obAutocompleteHarness.openAutocompletePanel();
+				parentFixture.detectChanges();
+				const options = await loader.getAllHarnesses(MatOptionHarness);
+				expect(await options[1].isDisabled()).toBe(true);
 			});
 
 			it('should have disabled second optionGroup', async () => {
+				parentFixture = TestBed.createComponent(TestParentComponent);
+				parentComponent = parentFixture.componentInstance;
+				parentComponent.model = new FormControl<string>('');
+				parentComponent.parentFormControl = new FormGroup({model: parentComponent.model});
+				parentComponent.searchText = '';
 				parentComponent.autocompleteOptions = optionGroups;
 				parentComponent.autocompleteOptions[1].disabled = true;
+				component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+				loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
+				obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
 				parentFixture.detectChanges();
-				const group = await obAutocompleteHarness.openPanelAndGetAllOptionGroups();
-				expect(await group[1].getAttribute('aria-disabled')).toBe('true');
+				await parentFixture.whenStable();
+				await obAutocompleteHarness.openAutocompletePanel();
+				parentFixture.detectChanges();
+				const groups = await obAutocompleteHarness.openPanelAndGetAllOptionGroups();
+				expect(await groups[1].getAttribute('aria-disabled')).toBe('true');
 			});
 		});
 	});
@@ -468,8 +546,14 @@ describe(ObAutocompleteComponent.name, () => {
 
 		it('modifies the display of the selected option using the displayWith method', async () => {
 			parentComponent.autocompleteOptions = [{label: {name: 'hello'}}];
-			obAutocompleteHarness = await loader.getHarnessOrNull(ObAutocompleteHarness);
-			const options = await obAutocompleteHarness.openPanelAndGetAllOptions();
+			parentFixture.componentRef.changeDetectorRef.detectChanges();
+			await parentFixture.whenStable();
+			await obAutocompleteHarness.openAutocompletePanel();
+			await new Promise(resolve => {
+				setTimeout(resolve, 250);
+			});
+			parentFixture.detectChanges();
+			const options = await loader.getAllHarnesses(MatOptionHarness);
 			await options[0].click();
 			parentFixture.detectChanges();
 
@@ -513,6 +597,24 @@ describe(ObAutocompleteComponent.name, () => {
 			],
 			['.', [{label: 'fat.dragon 1'}, {label: 'fat dragon 2'}], [{label: 'fat.dragon 1'}]],
 		];
+		const groupedOptions: ObIAutocompleteInputOptionGroup[] = [
+			{
+				groupLabel: 'group 1',
+				disabled: false,
+				groupOptions: [
+					{label: 'unicorn a 1', disabled: false},
+					{label: 'fat unicorn b 2', disabled: false},
+				],
+			},
+			{
+				groupLabel: 'group 2',
+				disabled: false,
+				groupOptions: [
+					{label: 'rolling unicorn', disabled: false},
+					{label: 'fat unicorn c 4', disabled: false},
+				],
+			},
+		];
 
 		beforeEach(() => {
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
@@ -530,7 +632,8 @@ describe(ObAutocompleteComponent.name, () => {
 
 		it.each(testData)(
 			'should filter for %i',
-			fakeAsync((searchTerm: string, options: {label: string}[], expectedOptions: {label: string}[]) => {
+			(searchTerm: string, options: {label: string}[], expectedOptions: {label: string}[]) => {
+				jest.useFakeTimers();
 				parentComponent.autocompleteOptions = options;
 
 				let foundOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [];
@@ -540,15 +643,16 @@ describe(ObAutocompleteComponent.name, () => {
 
 				component.autocompleteInputControl.setValue(searchTerm);
 				parentFixture.detectChanges();
-				tick(300);
+				jest.advanceTimersByTime(300);
 
 				expect(foundOptions).toStrictEqual(expectedOptions);
-			})
+			}
 		);
 
 		it.each(testData)(
 			'should show expected amount of results',
-			fakeAsync((searchTerm: string, options: {label: string}[], expectedOptions: {label: string}[]) => {
+			(searchTerm: string, options: {label: string}[], expectedOptions: {label: string}[]) => {
+				jest.useFakeTimers();
 				parentComponent.autocompleteOptions = options;
 
 				let foundOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [];
@@ -558,11 +662,33 @@ describe(ObAutocompleteComponent.name, () => {
 
 				component.autocompleteInputControl.setValue(searchTerm);
 				parentFixture.detectChanges();
-				tick(300);
+				jest.advanceTimersByTime(300);
 
 				expect(foundOptions.length).toBe(expectedOptions.length);
-			})
+			}
 		);
+
+		it('should filter grouped options and remove empty groups', () => {
+			jest.useFakeTimers();
+			parentComponent.autocompleteOptions = groupedOptions;
+
+			let foundOptions: (ObIAutocompleteInputOption | ObIAutocompleteInputOptionGroup)[] = [];
+			component.filteredOptions$.subscribe(filteredOptions => {
+				foundOptions = filteredOptions;
+			});
+
+			component.autocompleteInputControl.setValue('rolling');
+			parentFixture.detectChanges();
+			jest.advanceTimersByTime(300);
+
+			expect(foundOptions).toStrictEqual([
+				{
+					groupLabel: 'group 2',
+					disabled: false,
+					groupOptions: [{label: 'rolling unicorn', disabled: false}],
+				},
+			]);
+		});
 	});
 
 	describe('With error messages', () => {
