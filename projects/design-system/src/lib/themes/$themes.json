@@ -116,7 +116,7 @@
       "ob.h.button.color.border.tertiary.inversity_flipped.disabled": "S:482db6b7e7dfa2f65d9b5a3607bf15803fac4270,"
     },
     "selectedTokenSets": {
-      "02_primitive/color": "source",
+      "02_primitive/color": "enabled",
       "02_primitive/typography": "source",
       "02_primitive/motion": "source",
       "02_primitive/dimension": "source",
