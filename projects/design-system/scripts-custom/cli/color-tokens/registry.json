@@ -1,0 +1,192 @@
+{
+  "page": "🎨 Colors – Tokens",
+  "tableWidths": {
+    "primitive": 1000,
+    "s1": 1500,
+    "s2": 1500,
+    "s3": 1530
+  },
+  "componentNames": {
+    "rowSet": {
+      "2-mode":   "_Color Token Row / 2-Mode",
+      "4-mode":   "_Color Token Row / 4-Mode",
+      "rowLow":   "_Color Token Row / 4-Mode-Low",
+      "primitive": "_Primitive Color Row"
+    },
+    "headerSet": {
+      "2-mode":   "_Header Row / 2-Mode",
+      "4-mode":   "_Header Row / 4-Mode",
+      "primitive": "_Header Row / Primitive"
+    },
+    "groupHeaderSet": "_Color Token Group Header",
+    "separatorComponent": "_Separator: Emphasis-partial",
+    "setHeadingComponent": "_Set Heading",
+    "swatchSet": "_Swatch"
+  },
+  "tables": [
+    {
+      "id": "p-set1",
+      "title": "Primitive: Set 1",
+      "tier": "primitive",
+      "rowComponent": "primitive",
+      "source": "primitive-json",
+      "primitiveFamilies": ["cobalt", "red", "orange", "yellow", "green", "teal", "blue", "indigo", "purple", "pink"],
+      "wrapperName": "Token Set: ob.p.color",
+      "tableFrameName": "Token Table: p-set1"
+    },
+    {
+      "id": "p-set2",
+      "title": "Primitive: Set 2",
+      "tier": "primitive",
+      "rowComponent": "primitive",
+      "source": "primitive-json",
+      "primitiveFamilies": ["steelblue", "basic", "cobalt_alpha", "white_alpha"],
+      "wrapperName": "Token Set: ob.p.color",
+      "tableFrameName": "Token Table: p-set2"
+    },
+    {
+      "id": "s1-neutral",
+      "title": "S1 Color: Neutral",
+      "tier": "s1",
+      "rowComponent": "2-mode",
+      "showRoleColumn": false,
+      "source": "figma-vars",
+      "matches": "^ob/s1/color/neutral/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s1.color.neutral",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s1-interaction",
+      "title": "S1 Color: Interaction",
+      "tier": "s1",
+      "rowComponent": "2-mode",
+      "showRoleColumn": true,
+      "source": "figma-vars",
+      "matches": "^ob/s1/color/interaction/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s1.color.interaction",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s1-status",
+      "title": "S1 Color: Status",
+      "tier": "s1",
+      "rowComponent": "2-mode",
+      "showRoleColumn": true,
+      "source": "figma-vars",
+      "matches": "^ob/s1/color/status/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s1.color.status",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s1-free",
+      "title": "S1 Color: Free",
+      "tier": "s1",
+      "rowComponent": "2-mode",
+      "showRoleColumn": true,
+      "source": "figma-vars",
+      "matches": "^ob/s1/color/free/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s1.color.free",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s1-navigation",
+      "title": "S1 Color: Navigation",
+      "tier": "s1",
+      "rowComponent": "2-mode",
+      "showRoleColumn": false,
+      "source": "figma-vars",
+      "matches": "^ob/s1/color/navigation/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s1.color.navigation",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s2-interaction",
+      "title": "S2 Color: Interaction",
+      "tier": "s2",
+      "rowComponent": "4-mode",
+      "showRoleColumn": false,
+      "source": "figma-vars",
+      "matches": "^ob/s2/color/interaction/",
+      "modeCollections": ["s1-lightness", "s2-emphasis"],
+      "wrapperName": "Token Set: ob.s2.color.interaction.state",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s3-neutral",
+      "title": "S3 Color: Neutral",
+      "tier": "s3",
+      "rowComponent": "2-mode",
+      "showRoleColumn": false,
+      "source": "figma-vars",
+      "matches": "^ob/s/color/neutral/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s.color.neutral",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s3-interaction",
+      "title": "S3 Color: Interaction",
+      "tier": "s3",
+      "rowComponent": "4-mode",
+      "showRoleColumn": true,
+      "source": "figma-vars",
+      "matches": "^ob/s/color/interaction/",
+      "modeCollections": ["s1-lightness", "s2-emphasis"],
+      "wrapperName": "Token Set: ob.s.color.interaction",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s3-status",
+      "title": "S3 Color: Status",
+      "tier": "s3",
+      "rowComponent": "2-mode",
+      "showRoleColumn": true,
+      "source": "figma-vars",
+      "matches": "^ob/s/color/status/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s.color.status",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s3-free",
+      "title": "S3 Color: Free",
+      "tier": "s3",
+      "rowComponent": "2-mode",
+      "showRoleColumn": true,
+      "source": "figma-vars",
+      "matches": "^ob/s/color/free/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s.color.free",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s3-brand",
+      "title": "S3 Color: Brand",
+      "tier": "s3",
+      "rowComponent": "2-mode",
+      "showRoleColumn": false,
+      "source": "figma-vars",
+      "matches": "^ob/s/color/brand/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s.color.brand",
+      "tableFrameName": "Token Table"
+    },
+    {
+      "id": "s3-navigation",
+      "title": "S3 Color: Navigation",
+      "tier": "s3",
+      "rowComponent": "2-mode",
+      "showRoleColumn": false,
+      "source": "figma-vars",
+      "matches": "^ob/s/color/navigation/",
+      "modeCollection": "s1-lightness",
+      "wrapperName": "Token Set: ob.s.color.navigation",
+      "tableFrameName": "Token Table"
+    }
+  ]
+}

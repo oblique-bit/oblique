@@ -4,7 +4,7 @@
       "color": {
         "_docs": {
           "token_family_info": {
-            "$type": "string",
+            "$type": "text",
             "$value": "Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial."
           }
         },
@@ -21,7 +21,7 @@
           },
           "_docs": {
             "token_family_info": {
-              "$type": "string",
+              "$type": "text",
               "$value": "Official federal identity color (Bundesrot). Light/Dark modes apply — no emphasis modes. Use: Primary brand accent in navigation active states and official federal identity elements. Avoid: Interactive states or status feedback — use the interaction or status scale instead."
             }
           }
@@ -29,7 +29,7 @@
         "neutral": {
           "_docs": {
             "token_family_info": {
-              "$type": "string",
+              "$type": "text",
               "$value": "Foundational colors for backgrounds, text, borders, and surfaces. Light/Dark modes apply — no emphasis modes. Use: Text, background, border, and shadow roles in standard UI components. Avoid: Interactive state feedback — use the interaction scale. Status communication — use the status scale."
             }
           },
@@ -216,14 +216,14 @@
         "interaction": {
           "_docs": {
             "token_family_info": {
-              "$type": "string",
+              "$type": "text",
               "$value": "Interactive state colors for components. Light/Dark and High/Low emphasis modes apply — all 4 mode combinations resolve to distinct values. No border token — fg covers text, border, and icon color as a single unified value per state. Use: Interactive component states — buttons, links, form controls, and focusable elements. Avoid: Static decorative elements. Status communication — use the status scale instead."
             }
           },
           "standard_states": {
             "_docs": {
               "token_family_info": {
-                "$type": "string",
+                "$type": "text",
                 "$value": "Predefined interaction state colors for components — enabled, hover, focus, pressed, and disabled. Lightness and Emphasis modes are pre-resolved. Use: Assigning interactive state colors to component tokens (ob.c.*). Avoid: Compositions requiring direct contrast control — use the contrast_levels group instead."
               }
             },
@@ -415,7 +415,7 @@
           "contrast_levels": {
             "_docs": {
               "token_family_info": {
-                "$type": "string",
+                "$type": "text",
                 "$value": "Primitive building blocks for custom interaction color compositions. Exposes fg, bg, and border at high, medium, and low contrast steps without tying them to named interaction states. Lightness and Emphasis modes are pre-resolved. Use: Composing custom interactive elements requiring direct contrast control not covered by the predefined standard-states. Avoid: Components that have a corresponding standard-states token — those already encode the correct contrast level."
               }
             },
@@ -550,7 +550,7 @@
         "status": {
           "_docs": {
             "token_family_info": {
-              "$type": "string",
+              "$type": "text",
               "$value": "Status communication colors. Contrast levels (e.g. contrast_highest) are available. Light/Dark modes apply — no emphasis modes. Use: Alerts, badges, and any element that communicates system or process state. Avoid: Decoration or branding — status colors carry fixed semantic meaning. Interactive states — use the interaction scale."
             }
           },
@@ -1068,7 +1068,7 @@
         "free": {
           "_docs": {
             "token_family_info": {
-              "$type": "string",
+              "$type": "text",
               "$value": "Free colors — no predefined semantic role. Contrast levels (e.g. contrast_highest) are available. Light/Dark modes apply — no emphasis modes. Use: Tags, badges, and contextual color accents. Suitable for categorical distinction. Avoid: Substituting for status or interaction colors — free tokens carry no fixed semantic meaning."
             }
           },
@@ -1586,7 +1586,7 @@
         "navigation": {
           "_docs": {
             "token_family_info": {
-              "$type": "string",
+              "$type": "text",
               "$value": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect — navigation items use a single color scale based on the brand red palette."
             }
           },

@@ -4,7 +4,7 @@
       "color": {
         "_docs": {
           "token_family_info": {
-            "$type": "string",
+            "$type": "text",
             "$value": "Scales provided by Bundeskanzlei Design System and additional Oblique custom primitive colors."
           }
         },
