@@ -149,6 +149,13 @@ function addMasterLayout(tree: Tree, title: string, applicationOperator: string)
 				.replace(/_APPLICATION_OPERATOR_/, applicationOperator)
 		);
 	}
+
+	const appComponentPath = `src/app/${angularAppFilesNames.appComponent}`;
+	if (tree.exists(appComponentPath)) {
+		const appComponentContent = readFile(tree, appComponentPath);
+		const titleRegex = /protected\sreadonly\stitle.*/u;
+		tree.overwrite(appComponentPath, appComponentContent.replace(titleRegex, ''));
+	}
 }
 
 function addComment(tree: Tree): void {
