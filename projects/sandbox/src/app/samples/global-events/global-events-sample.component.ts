@@ -1,7 +1,8 @@
 import {type AfterViewInit, Component, ElementRef, inject, viewChild} from '@angular/core';
-import {ObGlobalEventsService, obOutsideFilter} from '@oblique/oblique';
+import {ObGlobalEventsService, WINDOW, obOutsideFilter} from '@oblique/oblique';
 import {map, scan} from 'rxjs/operators';
 import type {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'sb-utilities-sample',
@@ -10,6 +11,8 @@ import type {Observable} from 'rxjs';
 })
 export class GlobalEventsSampleComponent implements AfterViewInit {
 	readonly globalEvents = inject(ObGlobalEventsService);
+	readonly router = inject(Router);
+	readonly window = inject(WINDOW);
 
 	readonly button = viewChild('outsideClick', {read: ElementRef});
 	events$: Observable<EventTarget[]>;
@@ -20,5 +23,10 @@ export class GlobalEventsSampleComponent implements AfterViewInit {
 			map(event => event.target),
 			scan<EventTarget, EventTarget[]>((list, event) => [...list, event], [])
 		);
+	}
+
+	navigate(): void {
+		const randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+		void this.router.navigate([this.window.location.pathname], {queryParams: {navigate: randomChar}});
 	}
 }
