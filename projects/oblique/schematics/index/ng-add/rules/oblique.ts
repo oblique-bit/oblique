@@ -145,7 +145,6 @@ function addMasterLayout(tree: Tree, title: string, applicationOperator: string)
 			path,
 			getTemplate(tree, 'default-master-layout.html')
 				.replace(/_APP_TITLE_PLACEHOLDER_/, title)
-				.replace(/_APP_CURRENT_YEAR_/, new Date().getFullYear().toString())
 				.replace(/_APPLICATION_OPERATOR_/, applicationOperator)
 		);
 	}
@@ -154,7 +153,9 @@ function addMasterLayout(tree: Tree, title: string, applicationOperator: string)
 	if (tree.exists(appComponentPath)) {
 		const appComponentContent = readFile(tree, appComponentPath);
 		const titleRegex = /protected\sreadonly\stitle.*/u;
-		tree.overwrite(appComponentPath, appComponentContent.replace(titleRegex, ''));
+		const appRegex = /App\s\{/u;
+		const yearString = 'App {\nreadonly year = signal(new Date().getFullYear());';
+		tree.overwrite(appComponentPath, appComponentContent.replace(titleRegex, '').replace(appRegex, yearString));
 	}
 }
 
