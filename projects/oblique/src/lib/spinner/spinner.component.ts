@@ -1,11 +1,22 @@
 import {AsyncPipe} from '@angular/common';
-import {Component, DOCUMENT, ElementRef, Input, OnInit, Renderer2, ViewEncapsulation, inject} from '@angular/core';
+import {
+	Component,
+	DOCUMENT,
+	DestroyRef,
+	ElementRef,
+	Input,
+	OnInit,
+	Renderer2,
+	ViewEncapsulation,
+	inject,
+} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable} from 'rxjs';
 import {delay, filter, map, tap} from 'rxjs/operators';
 import {ObSpinnerService} from './spinner.service';
+import {ObSpinnerRegistry} from './spinner.registry';
 
 @Component({
 	selector: 'ob-spinner',
@@ -24,7 +35,9 @@ export class ObSpinnerComponent implements OnInit {
 	elementOutsideInertArea: HTMLElement;
 
 	private readonly renderer = inject(Renderer2);
+	private readonly destroyRef = inject(DestroyRef);
 	private readonly spinnerService = inject(ObSpinnerService);
+	private readonly spinnerRegistry = inject(ObSpinnerRegistry);
 	private readonly element = inject(ElementRef);
 	private readonly document = inject(DOCUMENT);
 	private readonly liveAnnouncer = inject(LiveAnnouncer);
@@ -34,6 +47,10 @@ export class ObSpinnerComponent implements OnInit {
 	ngOnInit(): void {
 		this.element.nativeElement.parentElement.classList.add('ob-has-overlay');
 		this.elementOutsideInertArea = this.createFocusableElement();
+		this.spinnerRegistry.register(this);
+		this.destroyRef.onDestroy(() => {
+			this.spinnerRegistry.unregister(this);
+		});
 		this.isActive$ = this.spinnerService.events$.pipe(
 			filter(event => event.channel === this.channel),
 			map(event => event.active),

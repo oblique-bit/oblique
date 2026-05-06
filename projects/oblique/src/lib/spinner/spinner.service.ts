@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
+import {Injectable, inject} from '@angular/core';
 import {ObISpinnerEvent} from './spinner.model';
 import {Observable, Subject} from 'rxjs';
+import {ObSpinnerRegistry} from './spinner.registry';
 
 /**
  * SpinnerService (TODO: Rethink this concept)
@@ -17,12 +18,17 @@ export class ObSpinnerService {
 
 	private calls: Record<string, number> = {};
 	private readonly events: Subject<ObISpinnerEvent> = new Subject<ObISpinnerEvent>();
+	private readonly spinnerRegistry = inject(ObSpinnerRegistry);
 
 	constructor() {
 		this.events$ = this.events.asObservable();
 	}
 
 	public activate(channel = ObSpinnerService.CHANNEL): void {
+		if (!this.spinnerRegistry.hasChannel(channel)) {
+			console.warn('Attempt to activate a channel that does not exist:', channel);
+		}
+
 		if (this.increase(channel) === 1) {
 			this.broadcast({
 				active: true,
@@ -32,6 +38,10 @@ export class ObSpinnerService {
 	}
 
 	public deactivate(channel = ObSpinnerService.CHANNEL): void {
+		if (!this.spinnerRegistry.hasChannel(channel)) {
+			console.warn('Attempt to deactivate a channel that does not exist:', channel);
+		}
+
 		if (this.decrease(channel) === 0) {
 			this.broadcast({
 				active: false,

@@ -2,15 +2,23 @@ import {TestBed} from '@angular/core/testing';
 import {first} from 'rxjs/operators';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerService} from './spinner.service';
+import {ObSpinnerComponent} from './spinner.component';
+import {ObSpinnerRegistry} from './spinner.registry';
 
 describe(ObSpinnerService.name, () => {
 	let service: ObSpinnerService;
+	let registry: ObSpinnerRegistry;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObSpinnerService],
+			providers: [ObSpinnerService, ObSpinnerRegistry],
 		});
 		service = TestBed.inject(ObSpinnerService);
+		registry = TestBed.inject(ObSpinnerRegistry);
+	});
+
+	afterEach(() => {
+		jest.restoreAllMocks();
 	});
 
 	it('should emit a SpinnerEvent if activated', done => {
@@ -19,6 +27,36 @@ describe(ObSpinnerService.name, () => {
 			done();
 		});
 		service.activate();
+	});
+
+	it('should log a warning if activated with a non-registered channel', () => {
+		jest.spyOn(console, 'warn');
+
+		service.activate('foobarbaz');
+		expect(console.warn).toHaveBeenCalledWith('Attempt to activate a channel that does not exist:', 'foobarbaz');
+	});
+
+	it('should log a warning if deactivated with a non-registered channel', () => {
+		jest.spyOn(console, 'warn');
+
+		service.deactivate('foobarbaz');
+		expect(console.warn).toHaveBeenCalledWith('Attempt to deactivate a channel that does not exist:', 'foobarbaz');
+	});
+
+	it('should not log a warning if activated with a registered channel', () => {
+		jest.spyOn(console, 'warn');
+		const spinner = {channel: 'registered'} as ObSpinnerComponent;
+		registry.register(spinner);
+		service.activate('registered');
+		expect(console.warn).not.toHaveBeenCalled();
+	});
+
+	it('should not log a warning if deactivated with a registered channel', () => {
+		jest.spyOn(console, 'warn');
+		const spinner = {channel: 'registered'} as ObSpinnerComponent;
+		registry.register(spinner);
+		service.deactivate('registered');
+		expect(console.warn).not.toHaveBeenCalled();
 	});
 
 	it('should emit a SpinnerEvent on a custom channel if activated', done => {
