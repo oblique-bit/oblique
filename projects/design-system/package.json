@@ -13,18 +13,16 @@
     "extract-tokens": "node scripts/extract-tokens.mjs"
   },
   "peerDependencies": {
-    "@angular/cdk": "^20.0.0 || ^21.0.0",
-    "@angular/common": "^20.0.0 || ^21.0.0",
-    "@angular/core": "^20.0.0 || ^21.0.0",
-    "@angular/material": "^20.0.0 || ^21.0.0",
-    "@ngx-translate/core": "^17.0.0"
+    "lit": "^3.3.3"
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",
     "@vitest/browser-playwright": "^4.1.11",
     "@vitest/coverage-v8": "^4.1.11",
+    "lit": "^3.3.3",
     "vite": "^7.3.6",
-    "vite-plugin-dts": "^5.0.3"
+    "vite-plugin-dts": "^5.0.3",
+    "vitest-browser-lit": "^1.0.1"
   },
   "sideEffects": false,
   "exports": {
