@@ -7,7 +7,7 @@
     "format": "tsx scripts/lint.ts --fix",
     "test": "cd ../.. && ng test design-system",
     "test-ci": "cd ../.. && ng run design-system:test:ci",
-    "build": "ng build design-system && tsx scripts/post-build.ts",
+    "build": "vite build && tsx scripts/post-build.ts",
     "release": "tsx scripts/release.ts",
     "extract-tokens": "node scripts/extract-tokens.mjs"
   },
@@ -20,10 +20,19 @@
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",
-    "ng-packagr": "^21.2.3"
+    "vite": "^7.3.5",
+    "vite-plugin-dts": "^5.0.2"
   },
   "sideEffects": false,
   "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./lib/*": {
+      "import": "./lib/*/index.js",
+      "types": "./lib/*/index.d.ts"
+    },
     "./oblique.css": {
       "style": "./css/oblique.css"
     },
