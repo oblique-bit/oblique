@@ -519,21 +519,6 @@
       "sourceRoot": "projects/design-system/src",
       "prefix": "ds",
       "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/design-system/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/design-system/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/design-system/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
