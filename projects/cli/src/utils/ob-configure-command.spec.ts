@@ -1,7 +1,7 @@
 import {Command, type Option} from '@commander-js/extra-typings';
 import type {OptionValues} from 'commander';
-import {type ObNewOptions, type ObNewSchemaOption, schema} from '../new/ob-new.model';
-import type {ObCliSchema} from './ob-cli.model';
+import {type ObNewOptions, schema} from '../new/ob-new.model';
+import type {ObCliSchema, ObSchemaOption} from './ob-cli.model';
 import {addObNewCommandOptions, configureOption, convertOptionPropertyNames} from './ob-configure-command';
 
 jest.mock('../new/ob-new.model');
@@ -64,13 +64,13 @@ describe('ob-configure-command', () => {
 				},
 			],
 		])('%s', ({cliSchema, expectedCalls}) => {
-			addObNewCommandOptions(cliSchema as ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>>, command);
+			addObNewCommandOptions(cliSchema as ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>>, command);
 
 			expect(addOptionSpy).toHaveBeenCalledTimes(expectedCalls);
 		});
 
 		test('returns same command instance', () => {
-			const cliSchema: ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>> = {
+			const cliSchema: ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>> = {
 				properties: {
 					title: {
 						type: 'string',
@@ -86,13 +86,13 @@ describe('ob-configure-command', () => {
 		});
 
 		test('throws when schema has no properties', () => {
-			const cliSchema = {} as ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>>;
+			const cliSchema = {} as ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>>;
 
 			expect(() => addObNewCommandOptions(cliSchema, command)).toThrow('Schema for command ob ob not found!');
 		});
 		describe('configureOption', () => {
 			test('throws error when shortFlag and longFlag are missing', () => {
-				const invalidConfig: ObNewSchemaOption = {
+				const invalidConfig: ObSchemaOption = {
 					type: 'string',
 					description: 'Invalid option',
 				};
@@ -104,13 +104,13 @@ describe('ob-configure-command', () => {
 				const brokenConfig = {
 					description: 'No flags here',
 					flagValuePlaceholder: 'value',
-				} as ObNewSchemaOption;
+				} as ObSchemaOption;
 
 				expect(() => configureOption(brokenConfig, '')).toThrow('Either a shortFlag or a longFlag must be provided.');
 			});
 
 			test('should trim options', () => {
-				const invalidConfig: ObNewSchemaOption = {
+				const invalidConfig: ObSchemaOption = {
 					type: 'string',
 					description: 'Invalid option',
 				};
@@ -222,7 +222,7 @@ describe('ob-configure-command', () => {
 			addOptionSpy = jest.spyOn(command, 'addOption');
 		});
 
-		const cliSchema: ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>> = {
+		const cliSchema: ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>> = {
 			properties: {
 				interactive: {
 					type: 'boolean',

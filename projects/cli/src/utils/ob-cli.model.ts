@@ -6,6 +6,18 @@ export interface ObCliSchema<Type> {
 }
 export type ObOptions = Record<string, string | boolean>;
 
+export interface ObSchemaOption {
+	type: string;
+	description: string;
+	shortFlag?: string;
+	defaultValue?: boolean | string;
+	flagValuePlaceholder?: string;
+	defaultValueDescription?: string;
+	choices?: string[];
+	mandatory?: boolean;
+	resources?: string[];
+}
+
 export type ObCommandConfig =
 	| ObNgNewCommandConfig
 	| ObNgAddCommandConfig

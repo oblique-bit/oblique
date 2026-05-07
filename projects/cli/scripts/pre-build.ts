@@ -30,7 +30,7 @@ function addSchemaData(): void {
 	const schema = Files.readJson(getAbsolutePath('projects/cli/src/new/schema.json')) as {properties: object};
 	Files.overwrite(getAbsolutePath('projects/cli/src/new/ob-new.model.ts'), content =>
 		content.replace(
-			/(?<=const schema = ).*(?= as \{properties: ObNewOptions<ObNewSchemaOption>\})/u,
+			/(?<=const schema = ).*(?= as \{properties: ObNewOptions<ObSchemaOption>\})/u,
 			JSON.stringify(schema)
 		)
 	);
