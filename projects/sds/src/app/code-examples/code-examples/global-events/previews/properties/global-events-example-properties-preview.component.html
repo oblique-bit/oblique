@@ -39,3 +39,12 @@
 		<small>Height: {{ box.height }}</small>
 	}
 </div>
+<div class="container">
+	<h3><code>navigate$</code></h3>
+	<p>Last 5 navigation urls:</p>
+	<ul>
+		@for (url of navigationHistory.history(); track url) {
+			<li>{{ url }}</li>
+		}
+	</ul>
+</div>
