@@ -1,1 +1,1 @@
-export {DemoComponent} from './demo';
+export {ObDemo} from './demo';

@@ -1,1 +1,1 @@
-export * from './demo.component';
+export * from './ob-demo';
