@@ -512,30 +512,6 @@
           "defaultConfiguration": "default"
         }
       }
-    },
-    "design-system": {
-      "projectType": "library",
-      "root": "projects/design-system",
-      "sourceRoot": "projects/design-system/src",
-      "prefix": "ds",
-      "architect": {
-        "test": {
-          "builder": "@angular-builders/jest:run",
-          "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
-          },
-          "configurations": {
-            "default": {
-              "config": "jest.config.js"
-            },
-            "ci": {
-              "config": "jest.config.ci.js"
-            }
-          },
-          "defaultConfiguration": "default"
-        }
-      }
     }
   },
   "schematics": {
