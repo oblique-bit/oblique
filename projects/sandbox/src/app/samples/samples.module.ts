@@ -70,7 +70,6 @@ import {
 } from '@oblique/oblique';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
-import {MultiTranslateLoaderSampleComponent} from './multi-translate-loader/multi-translate-loader-sample.component';
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
 import {SelectableFormSampleComponent} from './selectable-form/selectable-form-sample.component';
 import {SpinnerSampleComponent} from './spinner-sample/spinner-sample.component';
@@ -165,7 +164,6 @@ import {ObLocalizePipe} from './../../../../oblique/src/lib/router/ob-localize.p
 		InputClearSampleComponent,
 		LanguageSampleComponent,
 		MasterLayoutSampleComponent,
-		MultiTranslateLoaderSampleComponent,
 		NavTreeDetailSampleComponent,
 		NavTreeSampleComponent,
 		NestedFormChildSampleComponent,
