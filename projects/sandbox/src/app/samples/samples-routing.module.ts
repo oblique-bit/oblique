@@ -18,7 +18,6 @@ import {HttpInterceptorSampleComponent} from './http-interceptor/http-intercepto
 import {InputClearSampleComponent} from './input-clear/input-clear.component';
 import {LanguageSampleComponent} from './language/language-sample.component';
 import {MasterLayoutSampleComponent} from './master-layout/master-layout-sample.component';
-import {MultiTranslateLoaderSampleComponent} from './multi-translate-loader/multi-translate-loader-sample.component';
 import {NavTreeSampleComponent} from './nav-tree/nav-tree-sample.component';
 import {NavTreeDetailSampleComponent} from './nav-tree/nav-tree-detail-sample.component';
 import {NestedFormSampleComponent} from './nested-form/nested-form-sample.component';
@@ -150,7 +149,6 @@ const samplesRoutes: Routes = [
 	{path: 'input-clear', component: InputClearSampleComponent},
 	{path: 'language', component: LanguageSampleComponent},
 	{path: 'master-layout', component: MasterLayoutSampleComponent},
-	{path: 'multi-translate-loader', component: MultiTranslateLoaderSampleComponent},
 	{
 		path: 'nav-tree',
 		component: NavTreeSampleComponent,
