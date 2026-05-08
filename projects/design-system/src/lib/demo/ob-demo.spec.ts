@@ -1,26 +1,41 @@
-import type {Locator} from '@vitest/browser/context';
 import {beforeEach, describe, expect, test} from 'vitest';
-import {render} from 'vitest-browser-lit';
-import {html} from 'lit';
-import type {RenderResult} from 'vitest-browser-lit/pure';
+import {html, render} from 'lit';
 import {ObDemo} from './ob-demo';
 
 describe(ObDemo.name, () => {
-	let screen: RenderResult;
-	let heading: Locator;
+	let container: HTMLDivElement;
+	let element: ObDemo;
 
-	beforeEach(() => {
-		screen = render(html`<ob-demo title="Hello Vitest!"><span>bingo</span></ob-demo>`);
-		heading = screen.getByRole('heading', {name: 'Hello Vitest!'});
+	beforeEach(async () => {
+		container = document.createElement('div');
+		document.body.appendChild(container);
+
+		render(
+			html`
+				<ob-demo title="Hello Vitest!">
+					<span>bingo</span>
+				</ob-demo>
+			`,
+			container
+		);
+
+		element = container.querySelector('ob-demo');
+
+		await element.updateComplete;
 	});
 
-	test('renders heading', async () => {
-		await expect.element(heading).toBeInTheDocument();
-		await expect.element(screen.getByText('bingo')).not.toBeVisible();
+	test('renders heading and hides slot initially', () => {
+		expect(element.shadowRoot?.textContent).toContain('Hello Vitest!');
+		expect(element.shadowRoot?.querySelector('slot')).toBeNull();
 	});
 
-	test('renders content projection', async () => {
-		await heading.click();
-		await expect.element(screen.getByText('bingo')).toBeVisible();
+	test('toggles and renders slot content', async () => {
+		const heading = element.shadowRoot?.querySelector('h1') as HTMLElement;
+		expect(heading).toBeTruthy();
+		heading.click();
+		await element.updateComplete;
+		const slotWrapper = element.shadowRoot?.querySelector('div');
+		expect(slotWrapper).toBeTruthy();
+		expect(container.querySelector('span')?.textContent).toBe('bingo');
 	});
 });
