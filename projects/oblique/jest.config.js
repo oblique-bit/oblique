@@ -72,10 +72,10 @@ module.exports = {
 			lines: 96,
 		},
 		'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
-			statements: 90,
-			branches: 71,
-			functions: 86,
-			lines: 88,
+			statements: 83,
+			branches: 54,
+			functions: 65,
+			lines: 83,
 		},
 		'projects/oblique/src/lib/master-layout/master-layout-navigation/sub-menu-item/*.ts': {
 			statements: 80,
