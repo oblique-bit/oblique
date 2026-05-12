@@ -63,13 +63,13 @@ import {
 	ObNotificationModule,
 	ObNumberFormatModule,
 	ObPopoverModule,
-	ObSchemaValidationModule,
 	ObSelectableModule,
 	ObServiceNavigationModule,
 	ObSpinnerModule,
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule,
 } from '@oblique/oblique';
+import {ObSchemaValidationModule} from '@oblique/oblique/schema-validation';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
