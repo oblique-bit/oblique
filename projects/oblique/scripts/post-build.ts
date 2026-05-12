@@ -7,6 +7,7 @@ import {Banner} from '../../../scripts/shared/banner';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
 import {Files} from '../../../scripts/shared/files';
+import {rmSync} from 'fs';
 
 class PostBuild extends StaticScript {
 	static perform(): void {
@@ -14,6 +15,7 @@ class PostBuild extends StaticScript {
 		PostBuild.copyDistFiles();
 		PostBuild.renameDistribution();
 		PostBuild.adaptPackageJson();
+		PostBuild.removeSecondaryPackageJson();
 		PostBuild.adaptSchematicsPackageJson();
 		PostBuild.keepSchematicsPackageJsonInTarball();
 		PostBuild.updateBackgroundImagePath();
@@ -69,8 +71,14 @@ class PostBuild extends StaticScript {
 				...PostBuild.getExportEntriesForSCSS(),
 				'./assets/images/cover-background.jpg': './assets/images/cover-background.jpg', // used by oblique-components.css
 			})
+			.adaptSecondaryEntryPointsExports()
 			.write()
 			.finalize();
+	}
+
+	private static removeSecondaryPackageJson(): void {
+		Log.info('Remove secondary package.json');
+		rmSync(getAbsolutePath('dist/oblique/src'), {recursive: true, force: true});
 	}
 
 	private static adaptSchematicsPackageJson(): void {

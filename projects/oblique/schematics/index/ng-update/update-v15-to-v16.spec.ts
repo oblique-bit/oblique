@@ -1,6 +1,15 @@
 import {removeMasterLayoutConfigLocaleReferences, removeObIconModuleReferences} from './update-v15-to-v16';
+import {UpdateV15toV16} from './update-v15-to-v16';
 
 describe('UpdateV15toV16', () => {
+	const migration = new UpdateV15toV16();
+	const rewriteSchemaValidationImports = (content: string): string =>
+		(
+			migration as unknown as {
+				rewriteSchemaValidationImports: (fileContent: string) => string;
+			}
+		).rewriteSchemaValidationImports(content);
+
 	describe('removeObIconModuleReferences', () => {
 		it('should remove ObIconModule from imports and providers', () => {
 			const content = `@NgModule({
@@ -101,5 +110,37 @@ export class AppModule {}`;
 			expect(result).toContain("homePageRoute: '/home'");
 			expect(result).toContain('header: {isSmall: true}');
 		});
+	});
+
+	test('should move schema validation imports to the secondary entry point', () => {
+		const content = `import {ObSchemaValidationModule, ObButtonModule} from '@oblique/oblique';\n`;
+
+		expect(rewriteSchemaValidationImports(content)).toBe(
+			`import {ObButtonModule} from '@oblique/oblique';\nimport {ObSchemaValidationModule} from '@oblique/oblique/schema-validation';\n\n`
+		);
+	});
+
+	test('should not overmatch previous named imports when moving schema validation imports', () => {
+		const content = `import {\n  NgModule,\n  provideBrowserGlobalErrorListeners,\n  provideZoneChangeDetection,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { ObSchemaValidationModule } from '@oblique/oblique';\nimport { AppRoutingModule } from './app-routing-module';\nimport { App } from './app';\n`;
+
+		expect(rewriteSchemaValidationImports(content)).toBe(
+			`import {\n  NgModule,\n  provideBrowserGlobalErrorListeners,\n  provideZoneChangeDetection,\n} from '@angular/core';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing-module';\nimport { App } from './app';\nimport {ObSchemaValidationModule} from '@oblique/oblique/schema-validation';\n\n`
+		);
+	});
+
+	test('should merge schema validation imports with an existing secondary entry point import', () => {
+		const content = `import {ObSchemaValidationModule} from '@oblique/oblique/schema-validation';\nimport {ObButtonModule, ObSchemaValidateDirective} from '@oblique/oblique';\n`;
+
+		expect(rewriteSchemaValidationImports(content)).toBe(
+			`import {ObSchemaValidationModule, ObSchemaValidateDirective} from '@oblique/oblique/schema-validation';\nimport {ObButtonModule} from '@oblique/oblique';\n`
+		);
+	});
+
+	test('should preserve type and aliased schema validation imports', () => {
+		const content = `import type {ObSchemaValidatorInstance as Validator} from '@oblique/oblique';\nimport {type ObSchemaValidationService, ObButtonModule} from '@oblique/oblique';\n`;
+
+		expect(rewriteSchemaValidationImports(content)).toBe(
+			`import {ObButtonModule} from '@oblique/oblique';\nimport {type ObSchemaValidationService, type ObSchemaValidatorInstance as Validator} from '@oblique/oblique/schema-validation';\n\n`
+		);
 	});
 });

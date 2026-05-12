@@ -21,7 +21,6 @@ import {ObMockNumberFormatModule} from './number-format/_mocks/mock-number-forma
 import {ObMockHttpApiInterceptorModule} from './http-api-interceptor/_mocks/mock-http-api-interceptor.module';
 import {ObMockOffCanvasModule} from './off-canvas/_mocks/mock-off-canvas.module';
 import {ObMockPopoverModule} from './popover/_mocks/mock-popover.module';
-import {ObMockSchemaValidationModule} from './schema-validation/_mocks/mock-schema-validation.module';
 import {ObMockObSelectableModule} from './selectable/_mocks/mock-selectable.module';
 import {ObMockScrollingModule} from './scrolling/_mocks/mock-scrolling.module';
 import {ObMockSpinnerModule} from './spinner/_mocks/mock-spinner.module';
@@ -109,13 +108,6 @@ export {
 	ObMockOffCanvasToggleDirective,
 } from './off-canvas/_mocks/mock-off-canvas.module';
 export {
-	ObMockSchemaValidationModule,
-	ObMockSchemaRequiredDirective,
-	ObMockSchemaValidateDirective,
-	ObMockSchemaValidationDirective,
-	ObMockSchemaValidationService,
-} from './schema-validation/_mocks/mock-schema-validation.module';
-export {
 	ObMockSelectableDirective,
 	ObMockSelectableGroupDirective,
 	ObMockObSelectableModule,
@@ -158,7 +150,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockNumberFormatModule,
 	ObMockOffCanvasModule,
 	ObMockPopoverModule,
-	ObMockSchemaValidationModule,
 	ObMockScrollingModule,
 	ObMockObSelectableModule,
 	ObMockSpinnerModule,

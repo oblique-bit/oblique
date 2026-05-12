@@ -10,7 +10,6 @@ import {ObNavTreeModule} from './nav-tree/nav-tree.module';
 import {ObNestedFormModule} from './nested-form/nested-form.module';
 import {ObNotificationModule} from './notification/notification.module';
 import {ObPopoverModule} from './popover/popover.module';
-import {ObSchemaValidationModule} from './schema-validation/schema-validation.module';
 import {ObScrollingModule} from './scrolling/scrolling.module';
 import {ObSpinnerModule} from './spinner/spinner.module';
 import {ObSelectableModule} from './selectable/selectable.module';
@@ -43,7 +42,6 @@ const OBLIQUE_MODULES = [
 	ObNumberFormatModule,
 	ObOffCanvasModule,
 	ObPopoverModule,
-	ObSchemaValidationModule,
 	ObScrollingModule,
 	ObServiceNavigationModule,
 	ObSelectableModule,

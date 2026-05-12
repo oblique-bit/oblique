@@ -302,35 +302,24 @@ export function addInterface(tree: Tree, fileName: string, name: string): void {
 
 export function addImport(tree: Tree, fileName: string, name: string, pkg: string): void {
 	const content = readFile(tree, fileName);
-	if (!hasImport(content, name, pkg)) {
-		tree.overwrite(
-			fileName,
-			new RegExp(`import\\s*{.*}\\s*from\\s*['"]${pkg}['"]`, 's').test(content)
-				? content.replace(
-						new RegExp(`import\\s*{(?<package>.*)}\\s*from\\s*['"]${pkg}['"]`, 's'),
-						`import {$<package>, ${name}} from '${pkg}'`
-					)
-				: `import {${name}} from '${pkg}';\n${content}`
-		);
+	const updatedContent = updateImportSpecifiers(content, pkg, specifiers => ({
+		affectedSpecifiers: [],
+		specifiers: addImportSpecifier(specifiers, name),
+	})).content;
+	if (updatedContent !== content) {
+		tree.overwrite(fileName, updatedContent);
 	}
 }
 
-export function removeImport(tree: Tree, fileName: string, name: string, pkg: string): void {
+export function removeImport(tree: Tree, fileName: string, name: string, pkg: string): string[] {
 	const content = readFile(tree, fileName);
-	if (hasImport(content, name, pkg)) {
-		tree.overwrite(
-			fileName,
-			new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]`, 'm').test(content)
-				? content.replace(new RegExp(`import\\s*{\\s*${name}\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*`), '')
-				: content
-						.replace(
-							new RegExp(`(import\\s*{\\s*.*)${name}(?:,\\s*)?(.*\\s*}\\s*from\\s*['"]${pkg}['"]\\s*;\\s*)`, 's'),
-							'$1$2'
-						)
-						.replace(/,\s*}/, '}')
-						.replace(/,\s*,/, ',\n')
-		);
+	const {affectedSpecifiers, content: updatedContent} = updateImportSpecifiers(content, pkg, specifiers =>
+		removeImportSpecifier(specifiers, name)
+	);
+	if (updatedContent !== content) {
+		tree.overwrite(fileName, updatedContent);
 	}
+	return affectedSpecifiers;
 }
 
 export function getIndexPaths(tree: Tree): string[] {
@@ -534,8 +523,182 @@ function addRelativePath(filePath: string, directory: string): string {
 	return /^\./m.test(filePath) ? filePath.replace('.', directory) : filePath;
 }
 
-function hasImport(content: string, name: string, pkg: string): boolean {
-	return new RegExp(`import\\s*{\\s*.*${name}.*from\\s*['"]${pkg}['"]`, 'ms').test(content);
+function updateImportSpecifiers(
+	content: string,
+	pkg: string,
+	updateSpecifiers: (specifiers: string[]) => {affectedSpecifiers: string[]; specifiers: string[]}
+): {affectedSpecifiers: string[]; content: string} {
+	const importRegex = createNamedImportRegex(pkg);
+	const existingSpecifiers: string[] = [];
+	let hasMatchingImport = false;
+	let insertedPlaceholder = false;
+
+	const updatedContent = content.replace(importRegex, (match, ...args) => {
+		const groups = args.at(-1) as {importType?: string; specifiers: string};
+		hasMatchingImport = true;
+		existingSpecifiers.push(...parseNamedImportSpecifiers(groups.specifiers, groups.importType ?? ''));
+
+		if (insertedPlaceholder) {
+			return '';
+		}
+
+		insertedPlaceholder = true;
+		return '__OBLIQUE_IMPORT_PLACEHOLDER__';
+	});
+
+	const {affectedSpecifiers, specifiers} = updateSpecifiers(existingSpecifiers);
+	const normalizedExistingSpecifiers = deduplicateImportSpecifiers(existingSpecifiers);
+	const normalizedNextSpecifiers = deduplicateImportSpecifiers(specifiers);
+	if (!hasMatchingImport && !specifiers.length && !affectedSpecifiers.length) {
+		return {affectedSpecifiers, content};
+	}
+	if (
+		!affectedSpecifiers.length &&
+		normalizedExistingSpecifiers.length === normalizedNextSpecifiers.length &&
+		normalizedExistingSpecifiers.every((specifier, index) => specifier === normalizedNextSpecifiers[index])
+	) {
+		return {affectedSpecifiers, content};
+	}
+
+	const importDeclaration = normalizedNextSpecifiers.length
+		? createImportDeclaration(normalizedNextSpecifiers, pkg)
+		: '';
+	let contentWithUpdatedImport = updatedContent;
+	if (insertedPlaceholder) {
+		contentWithUpdatedImport = updatedContent.replace('__OBLIQUE_IMPORT_PLACEHOLDER__', importDeclaration);
+	} else if (importDeclaration) {
+		contentWithUpdatedImport = insertImportDeclaration(updatedContent, importDeclaration);
+	}
+
+	return {
+		affectedSpecifiers,
+		content: normalizeImportWhitespace(contentWithUpdatedImport),
+	};
+}
+
+function parseNamedImportSpecifiers(specifiers: string, importType: string): string[] {
+	const parsedSpecifiers = specifiers
+		.split(',')
+		.map(specifier => specifier.trim())
+		.filter(Boolean);
+
+	if (importType) {
+		return parsedSpecifiers.map(specifier => (specifier.startsWith('type ') ? specifier : `type ${specifier}`));
+	}
+
+	return parsedSpecifiers;
+}
+
+function addImportSpecifier(specifiers: string[], name: string): string[] {
+	const normalizedName = normalizeImportSpecifier(name);
+	const matchingSpecifier = specifiers.find(specifier => isSameImportBinding(specifier, normalizedName));
+	if (specifiers.some(specifier => normalizeImportSpecifier(specifier) === normalizedName)) {
+		return specifiers;
+	}
+
+	if (matchingSpecifier) {
+		return !isTypeOnlyImportSpecifier(normalizedName) && isTypeOnlyImportSpecifier(matchingSpecifier)
+			? specifiers.map(specifier =>
+					isSameImportBinding(specifier, normalizedName) ? removeTypeFromImportSpecifier(normalizedName) : specifier
+				)
+			: specifiers;
+	}
+
+	return !hasImportAlias(normalizedName) &&
+		specifiers.some(specifier => getImportedSpecifierName(specifier) === getImportedSpecifierName(normalizedName))
+		? specifiers
+		: [...specifiers, normalizedName];
+}
+
+function getImportedSpecifierName(specifier: string): string {
+	return removeTypeFromImportSpecifier(specifier)
+		.split(/\s+as\s+/u)[0]
+		.trim();
+}
+
+function getLocalSpecifierName(specifier: string): string {
+	return (
+		removeTypeFromImportSpecifier(specifier)
+			.split(/\s+as\s+/u)[1]
+			?.trim() ?? getImportedSpecifierName(specifier)
+	);
+}
+
+function removeImportSpecifier(
+	specifiers: string[],
+	name: string
+): {affectedSpecifiers: string[]; specifiers: string[]} {
+	const normalizedName = normalizeImportSpecifier(name);
+	const affectedSpecifiers = specifiers.filter(
+		specifier =>
+			normalizeImportSpecifier(specifier) === normalizedName ||
+			isSameImportBinding(specifier, normalizedName) ||
+			(!hasImportAlias(normalizedName) &&
+				getImportedSpecifierName(specifier) === getImportedSpecifierName(normalizedName))
+	);
+
+	return {
+		affectedSpecifiers: affectedSpecifiers.map(normalizeImportSpecifier),
+		specifiers: specifiers.filter(specifier => !affectedSpecifiers.includes(normalizeImportSpecifier(specifier))),
+	};
+}
+
+function deduplicateImportSpecifiers(specifiers: string[]): string[] {
+	return [...new Set(specifiers.map(normalizeImportSpecifier))];
+}
+
+function createImportDeclaration(specifiers: string[], pkg: string): string {
+	return `import {${specifiers.join(', ')}} from '${pkg}';`;
+}
+
+function insertImportDeclaration(content: string, importDeclaration: string): string {
+	const declaration = `${importDeclaration}\n`;
+	const allImports = [...content.matchAll(/import[\s\S]*?from\s*['"][^'"]+['"]\s*;?/g)];
+	if (allImports.length) {
+		const lastImport = allImports.at(-1);
+		const insertionIndex = (lastImport?.index ?? 0) + (lastImport?.[0].length ?? 0);
+		return `${content.slice(0, insertionIndex)}\n${declaration}${content.slice(insertionIndex)}`;
+	}
+
+	return `${declaration}${content}`;
+}
+
+function createNamedImportRegex(pkg: string): RegExp {
+	return new RegExp(
+		`import(?<importType>\\s+type)?\\s*{(?<specifiers>[^}]*)}\\s*from\\s*['"]${escapeRegExp(pkg)}['"]\\s*;?`,
+		'g'
+	);
+}
+
+function normalizeImportSpecifier(specifier: string): string {
+	return specifier.replace(/\s+/g, ' ').trim();
+}
+
+function isSameImportBinding(firstSpecifier: string, secondSpecifier: string): boolean {
+	return (
+		getImportedSpecifierName(firstSpecifier) === getImportedSpecifierName(secondSpecifier) &&
+		getLocalSpecifierName(firstSpecifier) === getLocalSpecifierName(secondSpecifier)
+	);
+}
+
+function hasImportAlias(specifier: string): boolean {
+	return getImportedSpecifierName(specifier) !== getLocalSpecifierName(specifier);
+}
+
+function isTypeOnlyImportSpecifier(specifier: string): boolean {
+	return normalizeImportSpecifier(specifier).startsWith('type ');
+}
+
+function removeTypeFromImportSpecifier(specifier: string): string {
+	return normalizeImportSpecifier(specifier).replace(/^type\s+/u, '');
+}
+
+function normalizeImportWhitespace(content: string): string {
+	return content.replace(/^\n+/u, '').replace(/\n{3,}/g, '\n\n');
+}
+
+function escapeRegExp(value: string): string {
+	return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function getJsonProperty(json: any, propertyPath: string): string {
