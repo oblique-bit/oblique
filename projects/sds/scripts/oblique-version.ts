@@ -1,11 +1,12 @@
 import {version as currentVersion} from '../../../package.json';
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Files} from '../../../scripts/shared/files';
+import {getAbsolutePath} from '../../../scripts/shared/root';
 
 export class ObliqueVersion extends StaticScript {
 	static updateObliqueVersion(): void {
 		const latest = ObliqueVersion.getLatestNonPreReleaseVersion();
-		Files.write('src/obliqueVersion.ts', `export const latest = '${latest}';\n`);
+		Files.write(getAbsolutePath('projects/sds/src/obliqueVersion.ts'), `export const latest = '${latest}';\n`);
 	}
 
 	private static getLatestNonPreReleaseVersion(): string {

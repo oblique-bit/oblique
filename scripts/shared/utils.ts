@@ -1,6 +1,7 @@
 import {ExecSyncOptions, execSync} from 'child_process';
 import {Log} from './log';
 import {Files} from './files';
+import {getAbsolutePath} from './root';
 
 export function executeCommand(command: string, options?: ExecSyncOptions): void {
 	execSync(command, options);
@@ -32,16 +33,18 @@ export function camelToKebabCase(key: string): string {
 	return key.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`);
 }
 
-export function updatePackageJsonVersion(version: string): void {
+export function updatePackageJsonVersion(projectName: string, version: string): void {
 	Log.info(`Update package.json version to ${version}.`);
-	const fileContent = Files.readJson('package.json') as Record<'version', string>;
+
+	const packageJsonPath = getAbsolutePath(`projects/${projectName}/package.json`);
+	const fileContent = Files.readJson(packageJsonPath) as Record<'version', string>;
 	fileContent.version = version;
-	Files.writeJson('package.json', fileContent);
+	Files.writeJson(packageJsonPath, fileContent);
 }
 
 export function adaptReadmeLinks(project: string): void {
 	Log.info('Update links in the distributed README.md');
-	const filePath = `../../dist/${project}/README.md`;
+	const filePath = getAbsolutePath(`dist/${project}/README.md`);
 	Files.overwrite(filePath, content =>
 		content
 			.replace('../../README.md)', 'https://github.com/oblique-bit/oblique/blob/master/README.md) on GitHub')

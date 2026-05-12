@@ -1,11 +1,11 @@
 import {Files} from './shared/files';
 import {Log} from './shared/log';
+import {getAbsolutePath} from './shared/root';
 
-const projectsPath = Files.buildOSSafePath(__dirname, '/../projects/');
-const filePath = Files.buildOSSafePath(__dirname, '/../projects/package.json');
+const projectsPath = getAbsolutePath('projects');
+const filePath = getAbsolutePath('projects/package.json');
 
-const getProjectPackagePath = (projectName: string): string =>
-	Files.buildOSSafePath(__dirname, '/../projects/', projectName, 'package.json');
+const getProjectPackagePath = (projectName: string): string => getAbsolutePath(`projects/${projectName}/package.json`);
 
 const config: Record<string, string[]> = {};
 

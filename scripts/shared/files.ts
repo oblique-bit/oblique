@@ -83,8 +83,19 @@ export class Files {
 	}
 
 	static buildOSSafePath(...filePaths: string[]): string {
-		return path.join(
+		const osSafePath = path.join(
 			...filePaths.map(filePath => filePath.replace('/', path.sep).replace(`${path.sep}${path.sep}`, path.sep))
 		);
+
+		// Only accept absolute path and throw an exception if a relative path is detected
+		if (!this.isPathAbsolute(osSafePath)) {
+			throw new Error(`Files requires absolute path. The received path is relative: ${osSafePath}`);
+		}
+
+		return osSafePath;
+	}
+
+	private static isPathAbsolute(osSafePath: string): boolean {
+		return osSafePath.startsWith(path.sep) || /^[A-Za-z]:/.test(osSafePath);
 	}
 }

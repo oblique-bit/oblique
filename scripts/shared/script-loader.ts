@@ -2,6 +2,7 @@ import {StaticScript} from './static-script';
 import {Files} from './files';
 import {createHash} from 'crypto';
 import {Log} from './log';
+import {getAbsolutePath} from './root';
 
 interface Script {
 	src: string;
@@ -10,8 +11,8 @@ interface Script {
 }
 
 export class AddScriptloader extends StaticScript {
-	private readonly pathToScriptLoader = '../../scripts/shared/scriptLoaderTemplate.txt';
-	private readonly pathToOnLoadTemplate = '../../scripts/shared/onLoadTemplate.txt';
+	private readonly pathToScriptLoader = getAbsolutePath('scripts/shared/scriptLoaderTemplate.txt');
+	private readonly pathToOnLoadTemplate = getAbsolutePath('scripts/shared/onLoadTemplate.txt');
 
 	static initialize(): AddScriptloader {
 		StaticScript.instance = new AddScriptloader();

@@ -1,6 +1,7 @@
 import {Git} from '../shared/git';
 import {Log} from '../shared/log';
 import {fatal} from '../shared/utils';
+import {getAbsolutePath} from '../shared/root';
 import {Files} from '../shared/files';
 
 interface Header {
@@ -17,7 +18,7 @@ class HookCommitRules {
 		Log.start('Validate commit message');
 		Log.info('Read commit message');
 
-		const message: string[] = Files.read('.git/COMMIT_EDITMSG')
+		const message: string[] = Files.read(getAbsolutePath('.git/COMMIT_EDITMSG'))
 			.split('\n')
 			.filter(line => !line.startsWith('#'));
 		HookCommitRules.checkLineLength(message, HookCommitRules.maxLineLength);
@@ -48,7 +49,7 @@ class HookCommitRules {
 
 	private static checkHeader(header: string): void {
 		HookCommitRules.checkHeaderFormat(header);
-		const contributing: string = Files.read('CONTRIBUTING.md');
+		const contributing: string = Files.read(getAbsolutePath('CONTRIBUTING.md'));
 		const {type, pkg, scope, subject} = HookCommitRules.extractHeaderParts(header, contributing);
 		HookCommitRules.checkType(type, HookCommitRules.extractList(contributing, 'Type'));
 		HookCommitRules.checkPackage(pkg, HookCommitRules.extractList(contributing, 'Package'));
@@ -158,7 +159,9 @@ class HookCommitRules {
 		if (HookCommitRules.hasTypeScopes(contributing, type)) {
 			return HookCommitRules.extractList(contributing, type);
 		}
-		const packageContributing = Files.read(`projects/${HookCommitRules.getFolderName(pkg)}/CONTRIBUTING.md`);
+		const packageContributing = Files.read(
+			getAbsolutePath(`projects/${HookCommitRules.getFolderName(pkg)}/CONTRIBUTING.md`)
+		);
 		return HookCommitRules.extractList(packageContributing, 'Scope');
 	}
 

@@ -5,5 +5,5 @@ import {Log} from '../../../scripts/shared/log';
 
 Log.start(`Release Sandbox ${version}`);
 Changelog.addRelease(version, 'sandbox');
-updatePackageJsonVersion(version);
+updatePackageJsonVersion('sandbox', version);
 Log.success();
