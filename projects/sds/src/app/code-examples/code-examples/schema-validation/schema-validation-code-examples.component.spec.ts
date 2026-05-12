@@ -49,4 +49,13 @@ describe(SchemaValidationCodeExamplesComponent.name, () => {
 			fixture.debugElement.queryAll(By.directive(SchemaValidationExampleTemplateDrivenFormPreviewComponent)).length
 		).toBe(1);
 	});
+
+	test('that the secondary entry point note is displayed', () => {
+		const textContent = (fixture.nativeElement as HTMLElement).textContent ?? '';
+
+		expect(textContent).toContain('@oblique/oblique/schema-validation');
+		expect(textContent).toContain('ajv-formats');
+		expect(textContent).toContain('unsafe-eval');
+		expect(textContent).toContain('16.0.0');
+	});
 });

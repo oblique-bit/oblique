@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import {ObErrorMessagesModule, ObSchemaValidationModule} from '@oblique/oblique';
+import {ObErrorMessagesModule} from '@oblique/oblique';
+// Since Oblique 16.0.0, schema validation is a secondary entry point because AJV requires `unsafe-eval`.
+import {ObSchemaValidationModule} from '@oblique/oblique/schema-validation';
 
 @Component({
 	selector: 'app-schema-validation-example-template-driven-form-preview',
