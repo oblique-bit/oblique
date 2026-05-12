@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {IdPipe} from '../../../shared/id/id.pipe';
 
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
@@ -8,8 +9,8 @@ import {SchemaValidationExampleTemplateDrivenFormPreviewComponent} from './previ
 
 @Component({
 	selector: 'app-code-example-schema-validation',
-	imports: [IdPipe, CodeExampleComponent],
-	templateUrl: '../../code-examples.component.html',
+	imports: [CommonModule, IdPipe, CodeExampleComponent],
+	templateUrl: './schema-validation-code-examples.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SchemaValidationCodeExamplesComponent extends CodeExamples {

@@ -15,6 +15,7 @@ export default {
 		'^shared(.*)$': '<rootDir>/src/app/shared$1',
 		'^side-navigation(.*)$': '<rootDir>/src/app/side-navigation$1',
 		'^test-helpers(.*)$': '<rootDir>/src/test-helpers$1',
+		'@oblique/oblique/schema-validation': '<rootDir>/projects/oblique/src/lib/schema-validation/public_api.ts',
 		'@oblique/oblique': '<rootDir>/projects/oblique/src/public_api.ts',
 	},
 	testPathIgnorePatterns: [
