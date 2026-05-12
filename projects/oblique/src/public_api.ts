@@ -132,15 +132,6 @@ export {
 	ObEToggleType,
 } from './lib/popover/popover.module';
 export {obPauseWhenPageHidden} from './lib/rxjs-operators';
-export {
-	draft07Convert,
-	ObSchemaRequiredDirective,
-	ObSchemaValidateDirective,
-	ObSchemaValidationDirective,
-	ObSchemaValidationModule,
-	ObSchemaValidationService,
-	ObSchemaValidatorInstance,
-} from './lib/schema-validation/schema-validation.module';
 export {ObScrollingModule, ObTopControlComponent} from './lib/scrolling/scrolling.module';
 export {
 	ObSelectableDirective,

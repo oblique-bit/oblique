@@ -35,8 +35,6 @@
     "@angular/router": "^21.0.0",
     "@ngx-translate/core": "^17.0.0",
     "@popperjs/core": "^2.0.0",
-    "ajv": "^8.0.0",
-    "ajv-formats": "^3.0.1",
     "angular-oauth2-oidc": "^20.0.0",
     "js-cookie": "^3.0.5",
     "rxjs": "^7.0.0"
