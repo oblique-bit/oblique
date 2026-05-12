@@ -7,7 +7,8 @@ import {
 	type ValidationErrors,
 	type ValidatorFn,
 } from '@angular/forms';
-import {ObNotificationService, ObSchemaValidationService} from '@oblique/oblique';
+import {ObNotificationService} from '@oblique/oblique';
+import {ObSchemaValidationService} from '@oblique/oblique/schema-validation';
 import {of} from 'rxjs';
 
 @Component({
