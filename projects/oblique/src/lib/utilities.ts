@@ -4,6 +4,7 @@ import {
 	DOCUMENT,
 	EnvironmentProviders,
 	InjectionToken,
+	Provider,
 	inject,
 	makeEnvironmentProviders,
 	provideAppInitializer,
@@ -158,18 +159,20 @@ function mergeWithDefaultObliqueConfiguration(
 	return mergeDeep(defaultObliqueConfiguration, {...config});
 }
 
-export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
-	const mergedConfig = mergeWithDefaultObliqueConfiguration(config);
+function getAppInitializer(mergedConfig: ObIObliqueConfigurationWithDefaults): () => void {
+	return () => {
+		const localesConfiguration = getLocalesConfiguration(mergedConfig);
+		inject(ObIconService).registerOnAppInit(mergedConfig.icon);
+		inject(ObLanguageService).initialize(localesConfiguration);
+		inject(ObRouterService).initialize();
+		inject(OB_HISTORY_STATE).initialLength = inject<ObWindow>(WINDOW).history.length;
+	};
+}
 
-	return makeEnvironmentProviders([
-		provideAppInitializer(() => {
-			const localesConfiguration = getLocalesConfiguration(mergedConfig);
-			inject(ObIconService).registerOnAppInit(mergedConfig.icon);
-			inject(ObLanguageService).initialize(localesConfiguration);
-			inject(ObRouterService).initialize();
-			inject(OB_HISTORY_STATE).initialLength = inject<ObWindow>(WINDOW).history.length;
-		}),
-		provideObliqueTranslations(mergedConfig.translate),
+function getDefaultObliqueProviders(
+	mergedConfig: ObIObliqueConfigurationWithDefaults
+): (Provider | EnvironmentProviders)[] {
+	return [
 		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
 		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
@@ -183,20 +186,24 @@ export function provideObliqueConfiguration(config: ObIObliqueConfiguration): En
 				useValue: mergedConfig.material[provider],
 			})
 		),
+	];
+}
+
+export function provideObliqueConfiguration(config: ObIObliqueConfiguration): EnvironmentProviders {
+	const mergedConfig = mergeWithDefaultObliqueConfiguration(config);
+
+	return makeEnvironmentProviders([
+		provideAppInitializer(getAppInitializer(mergedConfig)),
+		provideObliqueTranslations(mergedConfig.translate),
+		...getDefaultObliqueProviders(mergedConfig),
 	]);
 }
-/* eslint-disable max-lines-per-function */
+
 export function provideObliqueTestingConfiguration(config: ObIObliqueTestingConfiguration = {}): EnvironmentProviders {
 	const mergedConfig = mergeWithDefaultObliqueConfiguration(config);
 
 	return makeEnvironmentProviders([
-		provideAppInitializer(() => {
-			const localesConfiguration = getLocalesConfiguration(mergedConfig);
-			inject(ObIconService).registerOnAppInit(mergedConfig.icon);
-			inject(ObLanguageService).initialize(localesConfiguration);
-			inject(ObRouterService).initialize();
-			inject(OB_HISTORY_STATE).initialLength = inject<ObWindow>(WINDOW).history.length;
-		}),
+		provideAppInitializer(getAppInitializer(mergedConfig)),
 		provideTranslateService({
 			...mergedConfig.translate,
 			loader: {
@@ -211,19 +218,7 @@ export function provideObliqueTestingConfiguration(config: ObIObliqueTestingConf
 				flatten: mergedConfig.translate.flatten,
 			},
 		},
-		{provide: WINDOW, useValue: window},
-		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
-		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
-		{provide: MatStepperIntl, useClass: ObStepperIntlService},
-		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
-		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: mergedConfig.accessibilityStatement},
-		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: mergedConfig.hasLanguageInUrl},
-		(Object.entries(materialProviders) as [ObMaterialProvider, ObIMaterialProviders[ObMaterialProvider]][]).map(
-			([provider, token]) => ({
-				provide: token.provide,
-				useValue: mergedConfig.material[provider],
-			})
-		),
+		...getDefaultObliqueProviders(mergedConfig),
 	]);
 }
 
