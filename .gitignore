@@ -9,6 +9,8 @@
 !projects/design-system/documentation/**
 !projects/design-system/src/
 !projects/design-system/src/**
+!projects/design-system/scripts-custom/
+!projects/design-system/scripts-custom/**
 
 # Track this .gitignore
 !.gitignore
