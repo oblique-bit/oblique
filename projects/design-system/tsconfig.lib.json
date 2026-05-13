@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "src/lib",
+    "rootDir": "src",
     "outDir": "../../dist/design-system",
     "declaration": true,
     "declarationMap": true,
