@@ -57,13 +57,14 @@
 - [**Primitive Tokens**](./01-types/02-primitive-tokens.md) - Foundation values and architecture
 - [**Semantic Tokens**](./01-types/03-semantic-tokens.md) - S1/S2/S3 semantic layer system
 - [**Semantic Typography**](./01-types/04-semantic-typography-tokens.md) - Text styling and hierarchy
-- [**Typography Foundation**](./01-types/05-typography-foundation.md) - Typography system foundation
-- [**Component Tokens**](./01-types/06-component-tokens.md) - Component-specific token patterns
-- [**Colors**](./01-types/07-color-tokens/) - Complete color system documentation
-  - [Colors Overview](./01-types/07-color-tokens/00-colors-overview.md)
-  - [Primitive Colors](./01-types/07-color-tokens/01-colors-primitive.md) 
-  - [Semantic Colors](./01-types/07-color-tokens/03-colors-semantic.md)
-  - [Brand](./01-types/07-color-tokens/05-colors-semantic-brand.md) | [Neutral](./01-types/07-color-tokens/04-colors-semantic-neutral.md) | [Interaction](./01-types/07-color-tokens/06-colors-semantic-interaction.md) | [Status](./01-types/07-color-tokens/07-colors-semantic-status.md)
+- [**Semantic Elevation**](./01-types/05-semantic-elevation-tokens.md) - Surface stacking and shadow tokens
+- [**Typography Foundation**](./01-types/06-typography-foundation.md) - Typography system foundation
+- [**Component Tokens**](./01-types/07-component-tokens.md) - Component-specific token patterns
+- [**Colors**](./01-types/08-color-tokens/) - Complete color system documentation
+  - [Colors Overview](./01-types/08-color-tokens/00-colors-overview.md)
+  - [Primitive Colors](./01-types/08-color-tokens/01-colors-primitive.md) 
+  - [Semantic Colors](./01-types/08-color-tokens/03-colors-semantic.md)
+  - [Brand](./01-types/08-color-tokens/05-colors-semantic-brand.md) | [Neutral](./01-types/08-color-tokens/04-colors-semantic-neutral.md) | [Interaction](./01-types/08-color-tokens/06-colors-semantic-interaction.md) | [Status](./01-types/08-color-tokens/07-colors-semantic-status.md)
 
 ### **🌓 Modes**
 - **Modes Overview** - Complete mode system documentation
@@ -90,7 +91,7 @@
 | **Which token do I use?** | [Token Usage Guide](./05-token-usage-guide.md) | Decision trees for color, dimension, typography |
 | **Apply tokens in Figma** | Designer Workflow | Use Tokens Studio plugin, never Figma right panel |
 | **Implement tokens in code** | Token Assignment Guidelines | Use S3 semantic tokens for components |
-| **Understand color hierarchy** | [Colors Overview](./01-types/07-color-tokens/00-colors-overview.md) | Check S1→S2→S3 semantic chain |
+| **Understand color hierarchy** | [Colors Overview](./01-types/08-color-tokens/00-colors-overview.md) | Check S1→S2→S3 semantic chain |
 | **Fix broken token references** | [Architecture](./02-architecture.md) | Verify S1/S2/S3 layer structure |
 | **Understand naming patterns** | [Token Naming](./03-naming.md) | Review compound units and conventions |
 | **Create new tokens** | [Tokenization Process](./99-workflows/tokenization-process.md) | Ensure Figma compatibility first |

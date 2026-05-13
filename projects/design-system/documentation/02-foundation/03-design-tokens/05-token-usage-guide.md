@@ -2,7 +2,7 @@
 
 **Purpose**: Practical guide for choosing the right token when building or styling a component  
 **Audience**: System consumers (designers, developers) and system contributors  
-**Related**: [Architecture](./02-architecture.md) | [Token Naming](./03-naming.md) | [Token Types](./04-token-types.md) | [Color Tokens](./01-types/07-color-tokens/00-colors-overview.md)
+**Related**: [Architecture](./02-architecture.md) | [Token Naming](./03-naming.md) | [Token Types](./04-token-types.md) | [Color Tokens](./01-types/08-color-tokens/00-colors-overview.md)
 
 ---
 
@@ -71,11 +71,11 @@ Before reaching for a semantic token, check if an `ob.c.*` (component-level) tok
 | Decorative / project-specific | **Free** | Tags, categories, data visualization — no built-in semantic meaning |
 
 **Detailed documentation per family:**
-- [Neutral](./01-types/07-color-tokens/04-colors-semantic-neutral.md)
-- [Interaction](./01-types/07-color-tokens/06-colors-semantic-interaction.md)
-- [Status](./01-types/07-color-tokens/07-colors-semantic-status.md)
-- [Brand](./01-types/07-color-tokens/05-colors-semantic-brand.md)
-- [Free](./01-types/07-color-tokens/08-colors-semantic-free.md)
+- [Neutral](./01-types/08-color-tokens/04-colors-semantic-neutral.md)
+- [Interaction](./01-types/08-color-tokens/06-colors-semantic-interaction.md)
+- [Status](./01-types/08-color-tokens/07-colors-semantic-status.md)
+- [Brand](./01-types/08-color-tokens/05-colors-semantic-brand.md)
+- [Free](./01-types/08-color-tokens/08-colors-semantic-free.md)
 
 ### Step 4: Which Property?
 
