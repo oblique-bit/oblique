@@ -60,6 +60,12 @@ export class PackageJson extends StaticScript {
 		return PackageJson.instance as PackageJson;
 	}
 
+	addMain(main: string): PackageJson {
+		Log.info(`Add main property to the distributed package.json`);
+		this.content.main = main;
+		return PackageJson.instance as PackageJson;
+	}
+
 	removeDependencies(dependencyType: 'devDependencies' | 'dependencies', ...dependencyNames: string[]): PackageJson {
 		Log.info(`Remove ${humanizeList(dependencyNames)} ${dependencyType} from the distributed package.json`);
 		dependencyNames.forEach(dependencyName => {
