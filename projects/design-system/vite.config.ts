@@ -36,7 +36,7 @@ export default defineConfig({
 		dts({
 			entryRoot: 'src',
 			tsconfigPath: 'tsconfig.lib.json',
-			include: ['src/lib/**/*.ts'],
+			include: ['src/lib', 'vite-env.d.ts'],
 			exclude: ['src/lib/**/*.spec.ts'],
 		}),
 	],

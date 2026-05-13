@@ -6,7 +6,8 @@
     "declaration": true,
     "declarationMap": true,
     "module": "esnext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "types": ["vite/client"]
   },
   "include": ["src/lib/**/*.ts"],
   "exclude": ["**/*.spec.ts"]
