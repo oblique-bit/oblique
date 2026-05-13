@@ -447,7 +447,6 @@
                 "output": "/assets/fonts"
               }
             ],
-            "styles": ["projects/sandbox-ssr/src/styles.scss"],
             "scripts": ["projects/oblique/src/ob-features.js"],
             "server": "projects/sandbox-ssr/src/main.server.ts",
             "prerender": true,

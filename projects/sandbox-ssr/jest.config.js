@@ -10,7 +10,7 @@ export default {
 	},
 	moduleNameMapper: {
 		'@oblique/oblique': '<rootDir>/projects/oblique/src/public_api.ts',
-		'@oblique/design-system': '<rootDir>/projects/design-system/src/public-api',
+		'@oblique/design-system': '<rootDir>/dist/design-system/index.js',
 	},
 	coverageDirectory: '<rootDir>/coverage/sandbox-ssr',
 	coveragePathIgnorePatterns: ['<rootDir>/projects/oblique'],
