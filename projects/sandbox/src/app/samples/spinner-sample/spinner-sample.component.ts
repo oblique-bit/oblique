@@ -8,24 +8,31 @@ import {ObSpinnerService} from '@oblique/oblique';
 	styleUrl: './spinner-sample.component.scss',
 })
 export class SpinnerSampleComponent {
-	spinnerVisible = false;
 	channel = 'demo';
 	private readonly window: Window;
 	private readonly spinnerService = inject(ObSpinnerService);
+	private isSpinnerActive = {
+		demo: false,
+		default: false,
+		nonExistent: false,
+	};
 
 	constructor() {
 		this.window = window; // because AoT don't accept interfaces as DI
 	}
 
 	toggleSpinner(): void {
-		if (this.spinnerVisible) {
+		if (this.isSpinnerActive[this.channel]) {
 			this.spinnerService.deactivate(this.channel);
 		} else {
 			this.spinnerService.activate(this.channel);
 		}
 		if (this.channel === 'default') {
-			this.window.setTimeout(() => this.spinnerService.deactivate(this.channel), 5000);
+			this.window.setTimeout(() => {
+				this.spinnerService.deactivate(this.channel);
+				this.isSpinnerActive.default = false;
+			}, 5000);
 		}
-		this.spinnerVisible = !this.spinnerVisible;
+		this.isSpinnerActive[this.channel] = !this.isSpinnerActive[this.channel];
 	}
 }
