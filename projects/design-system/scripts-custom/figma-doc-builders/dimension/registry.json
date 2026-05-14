@@ -1,0 +1,73 @@
+{
+  "schema": "ob.dimension.registry.v1",
+  "page": "📐 Dimension: Spacing & Sizing",
+  "allowedFiles": ["DesignSystem@Tokens V9.7"],
+  "componentNames": {
+    "sectionBar":     "_docs/dimension/section_bar",
+    "headerRow":      "_docs/dimension/header_row",
+    "row":            "_docs/dimension/row",
+    "headerRow2mode": "_docs/dimension/header_row_2mode",
+    "row2mode":       "_docs/dimension/row_2mode",
+    "headerRow3mode": "_docs/dimension/header_row_3mode",
+    "row3mode":       "_docs/dimension/row_3mode"
+  },
+  "tables": [
+    {
+      "id": "typography_context-static",
+      "sectionName": "Typography Context — Static",
+      "tableName": "Table: typography_context/static",
+      "section": { "tier": "S", "title": "Typography Context — Static", "purpose": "Typography spacing for static-context (mode-collapsed) typography tokens.", "guideline": "Use for static layout decisions that do not vary by interface/prose context." },
+      "kind": "static",
+      "collection": "semantic",
+      "prefix": "ob/s/dimension/static/typography_context/"
+    },
+    {
+      "id": "density-static",
+      "sectionName": "Density — Static",
+      "tableName": "Table: density/static",
+      "section": { "tier": "S", "title": "Density — Static", "purpose": "Spacing tokens for static-density layouts.", "guideline": "Used when density does not vary by mode." },
+      "kind": "static",
+      "collection": "semantic",
+      "prefix": "ob/s/dimension/static/density/"
+    },
+    {
+      "id": "ui_scale-static",
+      "sectionName": "UI Scale — Static",
+      "tableName": "Table: ui_scale/static",
+      "section": { "tier": "S", "title": "UI Scale — Static", "purpose": "Sizing tokens for static-scale UI elements.", "guideline": "Use for UI sizing when scale does not vary by mode." },
+      "kind": "static",
+      "collection": "semantic",
+      "prefix": "ob/s/dimension/static/ui_scale/"
+    },
+    {
+      "id": "typography_context-dynamic",
+      "sectionName": "Typography Context — Dynamic",
+      "tableName": "Table: typography_context/dynamic",
+      "section": { "tier": "S", "title": "Typography Context — Dynamic", "purpose": "Mode-aware typography spacing tokens (interface vs prose).", "guideline": "Pick by typography context — interface for app UI, prose for long-form text." },
+      "kind": "dynamic",
+      "collection": "typography_context",
+      "prefix": "ob/s/dimension/dynamic/typography_context/",
+      "modes": ["interface", "prose"]
+    },
+    {
+      "id": "density-dynamic",
+      "sectionName": "Density — Dynamic",
+      "tableName": "Table: density/dynamic",
+      "section": { "tier": "S", "title": "Density — Dynamic", "purpose": "Mode-aware spacing tokens (standard / compact / spacious).", "guideline": "Density mode is selected at the layout level." },
+      "kind": "dynamic",
+      "collection": "density",
+      "prefix": "ob/s/dimension/dynamic/density/",
+      "modes": ["standard", "compact", "spacious"]
+    },
+    {
+      "id": "ui_scale-dynamic",
+      "sectionName": "UI Scale — Dynamic",
+      "tableName": "Table: ui_scale/dynamic",
+      "section": { "tier": "S", "title": "UI Scale — Dynamic", "purpose": "Mode-aware sizing tokens (sm / md / lg).", "guideline": "UI scale is selected at the layout level." },
+      "kind": "dynamic",
+      "collection": "ui_scale",
+      "prefix": "ob/s/dimension/dynamic/ui_scale/",
+      "modes": ["sm", "md", "lg"]
+    }
+  ]
+}

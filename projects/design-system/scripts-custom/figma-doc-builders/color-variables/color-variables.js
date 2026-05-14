@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 /**
- * build_sli_v2.js — Color documentation builder, Figma-variables-only.
+ * color-variables.js — Color documentation builder, Figma-variables-only.
  *
- * v2 successor to build_sli_v1.js_. Drops the JSON-source dependency: every
- * color token (primitive, s1, s2, s3) and every family-doc string is read
+ * Reads every color token (primitive, s1, s2, s3) and every family-doc string
  * from Figma variables in a single eval. Eval payload contains only the
- * registry (~5 KB) instead of v1's ~232 KB JSON snapshot.
+ * registry (~5 KB) — no JSON-source dependency.
  *
  * Source-of-truth contract:
  *   - Primitives: `static` Figma collection, vars matching `^ob/p/color/...`
@@ -18,12 +17,15 @@
  *                  filters out any var path containing `/_docs/`.
  *   - Per-leaf descriptions: `variable.description`.
  *
- * Usage (mirrors v1):
- *   node build_sli_v2.js                 # build all tables
- *   node build_sli_v2.js --table <id>    # build one table (e.g. --table s1-status)
- *   node build_sli_v2.js --tier <name>   # build all tables in a tier (s1|s2|s3|primitive)
- *   node build_sli_v2.js --page <name>   # override target Figma page
- *   node build_sli_v2.js --validate      # build nothing, only run validation pass
+ * Usage:
+ *   node color-variables.js                 # build all tables
+ *   node color-variables.js --table <id>    # build one table (e.g. --table s1-status)
+ *   node color-variables.js --tier <name>   # build all tables in a tier (s1|s2|s3|primitive)
+ *   node color-variables.js --page <name>   # override target Figma page
+ *   node color-variables.js --validate      # read existing page, run checks, no writes (exit 1 on errors)
+ *
+ * Validation runs automatically at the end of every regular build. Use --validate
+ * to run checks against the current page without rebuilding.
  */
 'use strict';
 
@@ -84,11 +86,11 @@ function extractJson(stdout) {
 }
 
 // ─── In-Figma plugin code (assembled as a string) ───────────────────────────
-// PAYLOAD = { registry, tableFilter, validateOnly, pageOverride }
+// PAYLOAD = { registry, tableFilter, pageOverride, validateOnly }
 // Everything else (docs, primitives, descriptions) is read from Figma variables.
 
 const PLUGIN_CODE = `
-const { registry, tableFilter, validateOnly, pageOverride } = PAYLOAD;
+const { registry, tableFilter, pageOverride, validateOnly } = PAYLOAD;
 const log = [];
 const results = [];
 
@@ -120,7 +122,7 @@ async function discoverComponents() {
     cn.rowSet['2-mode'], cn.rowSet['4-mode'], cn.rowSet.rowLow, cn.rowSet.primitive,
     cn.headerSet['2-mode'], cn.headerSet['4-mode'], cn.headerSet.primitive,
     cn.groupHeaderSet, cn.separatorComponent, cn.setHeadingComponent, cn.swatchSet,
-    '_Section Bar'
+    '_docs/color-variables/section_bar'
   ].filter(Boolean);
   const targetSet = new Set(targetNames);
   const found = {};
@@ -164,7 +166,7 @@ async function discoverComponents() {
     separator:       setOrComp(cn.separatorComponent),
     setHeading:      setOrComp(cn.setHeadingComponent),
     swatchSet:       setOrComp(cn.swatchSet),
-    sectionBar: setOrComp('_Section Bar')
+    sectionBar: setOrComp('_docs/color-variables/section_bar')
   };
 }
 
@@ -439,7 +441,15 @@ function deriveReadableName(wrapperName) {
 }
 
 function ensureSetHeading(wrapper, components, tierWidth, info) {
-  let heading = wrapper.children.find(c => c.type === 'INSTANCE' && c.name === '_Set Heading');
+  const expectedName = components.setHeading ? components.setHeading.name : null;
+  // Look for an existing instance by current expected name OR the legacy name to
+  // catch instances created before any rename. Anything else is a stray duplicate.
+  const matches = wrapper.children.filter(c =>
+    c.type === 'INSTANCE' && (c.name === expectedName || c.name === '_Set Heading')
+  );
+  let heading = matches[0] || null;
+  // Drop any extra duplicates beyond the first (created by prior runs after a rename).
+  for (let i = 1; i < matches.length; i++) { try { matches[i].remove(); } catch {} }
   if (!heading && components.setHeading) {
     heading = components.setHeading.createInstance();
     wrapper.insertChild(0, heading);
@@ -480,9 +490,25 @@ function findAllByType(node, type) {
   w(node);
   return out;
 }
+const _pendingTextWrites = [];
 function setText(textNode, value) {
   if (!textNode || textNode.type !== 'TEXT') return false;
-  try { textNode.characters = String(value == null ? '' : value); return true; } catch { return false; }
+  const p = (async () => {
+    try {
+      if (textNode.fontName && textNode.fontName !== figma.mixed) {
+        await figma.loadFontAsync(textNode.fontName);
+      }
+      textNode.characters = String(value == null ? '' : value);
+      return true;
+    } catch { return false; }
+  })();
+  _pendingTextWrites.push(p);
+  return p;
+}
+async function flushTextWrites() {
+  if (_pendingTextWrites.length === 0) return;
+  await Promise.all(_pendingTextWrites);
+  _pendingTextWrites.length = 0;
 }
 
 async function bindSwatchToVariable(rect, variable) {
@@ -1043,6 +1069,100 @@ function validateTableFrame(frame, tierWidth) {
   return { errors, warnings, repaired };
 }
 
+// ── validation ─────────────────────────────────────────────────────────────
+const DEFAULT_PLACEHOLDERS = ['Tier title', 'Group Title', 'Group description', 'Purpose: Description text', 'Guideline: Description text', '{token reference}'];
+
+async function validatePage(targetPage, varMap, components) {
+  const errors = [];
+  const warnings = [];
+  const stats = { totalRows: 0, byTable: {} };
+  const sbName = components.sectionBar ? components.sectionBar.name : '_docs/color-variables/section_bar';
+  const shName = components.setHeading ? components.setHeading.name : '_docs/color-variables/set_heading';
+
+  const containers = targetPage.children.filter(c => c.type === 'FRAME' && c.name === 'Color Tokens');
+  if (containers.length !== 1) {
+    errors.push({ code: 'DUP', msg: 'expected 1 Color Tokens container, got ' + containers.length });
+    return { errors, warnings, stats };
+  }
+  const container = containers[0];
+
+  for (const section of container.children) {
+    if (section.type !== 'FRAME' || !/^Section:/.test(section.name)) continue;
+    // Section bar instances are renamed by the script to 'Section Bar: Tier P' etc.,
+    // so we accept both the renamed pattern and the component-name fallback.
+    const bars = section.findAll(n => n.type === 'INSTANCE' && (/^Section Bar:/.test(n.name) || n.name === sbName));
+    if (bars.length !== 1) errors.push({ code: 'DUP', section: section.name, msg: 'expected 1 section bar, got ' + bars.length });
+    if (bars[0]) {
+      const sb = bars[0];
+      for (const tn of ['__sectionTitle', '$description']) {
+        const node = sb.findOne(n => n.type === 'TEXT' && n.name === tn);
+        const txt = node ? String(node.characters || '').trim() : '';
+        if (!txt) errors.push({ code: 'SECTBAR', section: section.name, msg: tn + ' empty' });
+        else if (DEFAULT_PLACEHOLDERS.indexOf(txt) >= 0) errors.push({ code: 'SECTBAR', section: section.name, msg: tn + ' is default placeholder: "' + txt + '"' });
+      }
+    }
+    for (const setFrame of section.findAll(n => n.type === 'FRAME' && /^Token Set:/.test(n.name))) {
+      const heads = setFrame.children.filter(c => c.type === 'INSTANCE' && (c.name === shName || c.name === '_Set Heading'));
+      if (heads.length !== 1) errors.push({ code: 'DUP', set: setFrame.name, msg: 'expected 1 set heading, got ' + heads.length });
+    }
+  }
+
+  // Per-table row validation: token name + description match variable
+  function findText(node, name) {
+    if (!node) return null;
+    if (node.type === 'TEXT' && node.name === name) return node;
+    if (node.children) for (const c of node.children) { const f = findText(c, name); if (f) return f; }
+    return null;
+  }
+  function firstText(node) {
+    if (!node) return null;
+    if (node.type === 'TEXT') return node;
+    if (node.children) for (const c of node.children) { const f = firstText(c); if (f) return f; }
+    return null;
+  }
+  function findCell(row, names) {
+    for (const n of names) {
+      const c = row.children && row.children.find(x => x.name === n);
+      if (c) return c;
+    }
+    return null;
+  }
+  // Strict anchored match — must NOT match 'header_row_*' or similar.
+  const rowMatch = /^(_Color Token Row \\/ (?:2-Mode|4-Mode|4-Mode-Low)|_Primitive Color Row|_docs\\/color-variables\\/row_(?:2mode|4mode|4mode_low|primitive))$/;
+  const tableFrames = container.findAll(n => n.type === 'FRAME' && /^Token Table/.test(n.name));
+  for (const table of tableFrames) {
+    const wrapper = table.parent;
+    const wrapperName = wrapper && wrapper.name && /^Token Set:/.test(wrapper.name) ? wrapper.name.replace(/^Token Set: /, '') : null;
+    const rows = table.findAll(n => n.type === 'INSTANCE' && rowMatch.test(n.name));
+    stats.byTable[wrapperName || table.id] = { rows: rows.length };
+    stats.totalRows += rows.length;
+    for (const row of rows) {
+      const nameCell = findCell(row, ['Cell: Name', 'Cell: Token Name']);
+      const descCell = findCell(row, ['Cell: $description', 'Cell: Description']);
+      const nameNode = firstText(nameCell);
+      const descNode = firstText(descCell);
+      const nameText = nameNode ? String(nameNode.characters || '').trim() : '';
+      const descText = descNode ? String(descNode.characters || '').trim() : '';
+      // Continuation rows (e.g. 4-Mode-Low emphasis-low) intentionally leave the
+      // name cell empty — they inherit from the row above. Skip them.
+      if (!nameText) continue;
+      // Look up variable by dotted token name
+      const varName = nameText.replace(/\\./g, '/');
+      const v = (varMap.byName && varMap.byName[varName]) || varMap.list.find(x => x.name === varName);
+      if (!v) {
+        warnings.push({ code: 'TOKEN', set: wrapperName, msg: 'token "' + nameText + '" not found in varMap' });
+        continue;
+      }
+      const expectedDesc = v.description || '';
+      if (descCell && descText !== expectedDesc) {
+        errors.push({ code: 'DESC', set: wrapperName, token: nameText, msg: 'description text mismatch (page: "' + descText.slice(0, 50) + '" vs var: "' + expectedDesc.slice(0, 50) + '")' });
+      }
+    }
+  }
+
+  return { errors, warnings, stats };
+}
+
 async function main() {
   const phases = {};
   let t = Date.now();
@@ -1055,6 +1175,14 @@ async function main() {
   const req = [['rowSet 2-mode', components.rowSet['2-mode']], ['headerSet 2-mode', components.headerSet['2-mode']]];
   const missing = req.filter(([_, c]) => !c).map(([n]) => n);
   if (missing.length) return { error: 'missing components: ' + missing.join(', ') };
+
+  // Validate-only mode skips the build entirely.
+  if (validateOnly) {
+    const targetPage = figma.root.children.find(p => p.name === (pageOverride || registry.page));
+    if (!targetPage) return { error: 'target page not found: ' + (pageOverride || registry.page) };
+    const validate = await validatePage(targetPage, varMap, components);
+    return { validate, log, mode: 'validate' };
+  }
 
   const targetPage = await ensurePage(pageOverride || registry.page);
   ctx.structure = await ensurePageStructure(targetPage, components, varMap);
@@ -1071,6 +1199,11 @@ async function main() {
   }
   phases.buildAllTables = Date.now() - t;
 
+  // Wait for any in-flight setText calls (which load fonts on demand) before validating.
+  await flushTextWrites();
+
+  const validate = await validatePage(targetPage, varMap, components);
+
   return {
     components: Object.fromEntries(Object.entries(components).map(([k, v]) => [k, v ? (Array.isArray(v) ? v.length : (v.id || '?')) : null])),
     collections: Object.keys(collections.aliases).filter(k => collections.aliases[k]),
@@ -1080,6 +1213,7 @@ async function main() {
     cacheStats: { aliasName: aliasNameCache.size, aliasVar: aliasVarCache.size, coll: collCache.size },
     phases,
     results,
+    validate,
     log
   };
 }
@@ -1092,16 +1226,16 @@ return await main();
 async function main() {
   const args = process.argv.slice(2);
   let tableFilter = null;
-  let validateOnly = false;
   let pageOverride = null;
   let useCache = true;
+  let validateOnly = false;
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     if (a === '--table' || a === '-t') tableFilter = [args[++i]];
     else if (a === '--tier') tableFilter = [args[++i]];
-    else if (a === '--validate') validateOnly = true;
     else if (a === '--page' || a === '-p') pageOverride = args[++i];
     else if (a === '--no-cache') useCache = false;
+    else if (a === '--validate') validateOnly = true;
   }
 
   console.log(`\n  Loading registry...`);
@@ -1111,7 +1245,7 @@ async function main() {
   if (cachedComponentIds) console.log(`  Discovery cache: ${Object.keys(cachedComponentIds).length} component ids`);
   console.log(`  ${registry.tables.length} tables. (No JSON theme load — sourcing from Figma vars.)`);
 
-  const payload = { registry, tableFilter, validateOnly, pageOverride };
+  const payload = { registry, tableFilter, pageOverride, validateOnly };
   if (pageOverride) console.log(`  Page override: ${pageOverride}`);
   const script = `(async () => {
 const PAYLOAD = ${JSON.stringify(payload)};
@@ -1137,10 +1271,11 @@ ${PLUGIN_CODE}
     process.exit(1);
   }
 
-  console.log(`\n  Build complete in ${(elapsed / 1000).toFixed(1)}s.\n`);
-  console.log(`  Components found:    ${Object.values(data.components).filter(Boolean).length}/${Object.keys(data.components).length}`);
-  console.log(`  Collections:         ${data.collections.join(', ')}`);
-  console.log(`  Color vars:          ${data.variableCount}`);
+  console.log(`\n  ${data.mode === 'validate' ? 'Validate' : 'Build'} complete in ${(elapsed / 1000).toFixed(1)}s.\n`);
+  if (data.mode !== 'validate') {
+    console.log(`  Components found:    ${Object.values(data.components).filter(Boolean).length}/${Object.keys(data.components).length}`);
+    console.log(`  Collections:         ${data.collections.join(', ')}`);
+    console.log(`  Color vars:          ${data.variableCount}`);
   console.log(`  String vars:         ${data.stringVarCount}`);
   console.log(`  Family docs found:   ${data.docCount}`);
   if (data.phases) {
@@ -1151,9 +1286,10 @@ ${PLUGIN_CODE}
     console.log(`  Cache hits:          aliasName=${data.cacheStats.aliasName}  aliasVar=${data.cacheStats.aliasVar}  coll=${data.cacheStats.coll}`);
   }
   console.log('');
+  } // end of build-mode-only summary block
 
   let okCount = 0, failCount = 0, warnCount = 0;
-  for (const r of data.results) {
+  for (const r of (data.results || [])) {
     const status = r.ok ? '✓' : (r.error ? '✗' : '!');
     const counts = r.info ? `${r.info.tokenCount || 0} tokens, ${r.info.bindCount || 0} binds, ${r.info.bindFail || 0} fail` : '';
     const elap = r.info?.elapsedMs ? `, ${r.info.elapsedMs}ms` : '';
@@ -1170,10 +1306,45 @@ ${PLUGIN_CODE}
     else warnCount++;
   }
 
-  console.log('\n' + '─'.repeat(60));
-  console.log(`  ${okCount} ok, ${warnCount} with warnings, ${failCount} failed (of ${data.results.length})`);
-  console.log('─'.repeat(60) + '\n');
-  if (failCount > 0) process.exit(1);
+  if (data.mode !== 'validate') {
+    console.log('\n' + '─'.repeat(60));
+    console.log(`  ${okCount} ok, ${warnCount} with warnings, ${failCount} failed (of ${data.results?.length || 0})`);
+    console.log('─'.repeat(60) + '\n');
+  }
+
+  // Page-level validation (DUP / SECTBAR / DESC / TOKEN)
+  let validateFailed = false;
+  if (data.validate) {
+    const v = data.validate;
+    const errCount  = v.errors  ? v.errors.length  : 0;
+    const warnCount = v.warnings ? v.warnings.length : 0;
+    console.log('Validation:');
+    if (v.stats?.byTable) {
+      const entries = Object.entries(v.stats.byTable);
+      for (const [name, s] of entries) console.log(`  ${name.padEnd(28)} ${s.rows} rows`);
+    }
+    console.log(`  Errors:   ${errCount}`);
+    console.log(`  Warnings: ${warnCount}`);
+    const cap = 25;
+    if (errCount) {
+      console.log('\n  -- errors (first ' + Math.min(errCount, cap) + ') --');
+      for (const e of v.errors.slice(0, cap)) {
+        const scope = e.set || e.section || '';
+        console.log('  [' + (e.code || '?') + '] ' + scope + (e.token ? ' / ' + e.token : '') + ': ' + e.msg);
+      }
+    }
+    if (warnCount) {
+      console.log('\n  -- warnings (first ' + Math.min(warnCount, cap) + ') --');
+      for (const w of v.warnings.slice(0, cap)) {
+        const scope = w.set || w.section || '';
+        console.log('  [' + (w.code || '?') + '] ' + scope + (w.token ? ' / ' + w.token : '') + ': ' + w.msg);
+      }
+    }
+    if (errCount === 0) console.log('\n  Validation OK.\n');
+    else { console.error('\nFAIL: ' + errCount + ' validation error(s)\n'); validateFailed = true; }
+  }
+
+  if (failCount > 0 || validateFailed) process.exit(1);
 }
 
 main().catch(err => { console.error('Fatal:', err); process.exit(1); });

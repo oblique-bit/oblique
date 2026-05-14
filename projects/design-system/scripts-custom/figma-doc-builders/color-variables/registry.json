@@ -8,20 +8,20 @@
   },
   "componentNames": {
     "rowSet": {
-      "2-mode":   "_Color Token Row / 2-Mode",
-      "4-mode":   "_Color Token Row / 4-Mode",
-      "rowLow":   "_Color Token Row / 4-Mode-Low",
-      "primitive": "_Primitive Color Row"
+      "2-mode":   "_docs/color-variables/row_2mode",
+      "4-mode":   "_docs/color-variables/row_4mode",
+      "rowLow":   "_docs/color-variables/row_4mode_low",
+      "primitive": "_docs/color-variables/row_primitive"
     },
     "headerSet": {
-      "2-mode":   "_Header Row / 2-Mode",
-      "4-mode":   "_Header Row / 4-Mode",
-      "primitive": "_Header Row / Primitive"
+      "2-mode":   "_docs/color-variables/header_row_2mode",
+      "4-mode":   "_docs/color-variables/header_row_4mode",
+      "primitive": "_docs/color-variables/header_row_primitive"
     },
-    "groupHeaderSet": "_Color Token Group Header",
-    "separatorComponent": "_Separator: Emphasis-partial",
-    "setHeadingComponent": "_Set Heading",
-    "swatchSet": "_Swatch"
+    "groupHeaderSet": "_docs/shared/group_header",
+    "separatorComponent": "_docs/color-variables/separator_emphasis_partial",
+    "setHeadingComponent": "_docs/color-variables/set_heading",
+    "swatchSet": "_docs/color-variables/swatch"
   },
   "tables": [
     {

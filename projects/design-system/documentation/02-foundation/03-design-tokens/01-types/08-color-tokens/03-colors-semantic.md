@@ -227,6 +227,30 @@ ob.s.color.brand → {ob.p.color.basic.bundesrot} → #ff0000
 
 ---
 
+## **Accessibility & Contrast Pairings**
+
+WCAG contrast data for every fg/bg pairing in the semantic palette is generated from the live Figma variables by the [color-pairings builder](../../../../../scripts-custom/figma-doc-builders/color-pairings/_readme.md). Two consumer-facing artifacts are emitted on every build:
+
+- [`src/lib/accessible-pairings.md`](../../../../../src/lib/accessible-pairings.md) — human / AI readable. One table per category with full token paths, contrast ratios, AA-normal / AA-large / AAA pass flags, and recommended content + component specs.
+- [`src/lib/contrast-pairings.json`](../../../../../src/lib/contrast-pairings.json) — machine readable. Load in consumer projects to validate fg / bg combinations against the design system's accessibility contract.
+
+Example consumer check:
+
+```js
+import pairings from '@oblique/design-system/contrast-pairings.json';
+const ok = pairings.categories.status.find(p =>
+  p.fg === myFg && p.bg === myBg && p.wcag.aaa
+);
+```
+
+Regenerate both files plus the corresponding Figma docs page (**🎨  Colors – Contrast Pairings cli**, in Tokens V9.7):
+
+```bash
+node scripts-custom/figma-doc-builders/color-pairings/color-pairings.js
+```
+
+---
+
 ## **Related Documentation**
 
 - Color Tokens Overview - Complete color system documentation

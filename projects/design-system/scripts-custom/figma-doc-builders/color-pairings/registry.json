@@ -1,0 +1,143 @@
+{
+  "schema": "ob.color-pairing.registry.v1",
+  "version": "1.0.0",
+  "sourceCollection": "semantic",
+  "varPathPrefix": "ob/s/color",
+  "targetPageName": "🎨  Colors – Contrast Pairings cli",
+  "rootFrameName": "color-pairing-build",
+  "componentNames": {
+    "swatch": "_docs/color-pairings/contrast_swatch",
+    "sectionBar": "_docs/color-pairings/section_bar",
+    "groupHeader": "_docs/shared/group_header",
+    "pillSet": "_docs/color-pairings/wcag_pill",
+    "recommendationBadgeSet": "_docs/color-pairings/wcag_recommendation_badge"
+  },
+  "wcag": {
+    "AA_normal": 4.5,
+    "AA_large": 3.0,
+    "AAA": 7.0
+  },
+  "categories": {
+    "neutral": {
+      "section": {
+        "tier": "S",
+        "title": "Neutral",
+        "purpose": "Foreground / background pairings for neutral surfaces and text.",
+        "guideline": "Use the highest-contrast fg on the lowest-contrast bg for primary text. Reduce fg contrast for hierarchy."
+      },
+      "blocks": [
+        {
+          "type": "grid",
+          "rowAxis": "fg",
+          "fgPath": "neutral/fg/contrast_{fg}/inversity_normal",
+          "bgPath": "neutral/bg/contrast_{bg}/inversity_normal",
+          "fgLevels": ["highest", "high", "medium", "low", "lowest"],
+          "bgLevels": ["highest", "high", "medium", "low", "lowest"]
+        },
+        {
+          "type": "textlink-row",
+          "fgPath": "ob/h/link/color/default",
+          "bgPath": "neutral/bg/contrast_{bg}/inversity_normal",
+          "bgLevels": ["highest", "high", "medium", "low", "lowest"]
+        }
+      ]
+    },
+    "interaction": {
+      "section": {
+        "tier": "S",
+        "title": "Interaction",
+        "purpose": "State pairings for interactive elements (buttons, controls).",
+        "guideline": "Every state (hover/focus/pressed/etc.) must remain at least AA-compliant against its bg."
+      },
+      "blocks": [
+        {
+          "type": "states-row",
+          "states": ["enabled", "hover", "focus", "pressed", "selected", "disabled"],
+          "fgPath": "interaction/standard_states/fg/{state}/inversity_normal",
+          "bgPath": "interaction/standard_states/bg/{state}/inversity_normal"
+        }
+      ]
+    },
+    "status": {
+      "section": {
+        "tier": "S",
+        "title": "Status",
+        "purpose": "Pairings for status messages (info, success, warning, error, fatal).",
+        "guideline": "Status saturated bg requires emphasis_low text for compliant readability."
+      },
+      "groups": ["info", "critical", "resolved", "attention", "fatal"],
+      "groupHeaders": {
+        "info":      { "title": "Info",      "description": "Informational messages, neutral tone." },
+        "critical":  { "title": "Critical",  "description": "Critical errors requiring user action." },
+        "resolved":  { "title": "Resolved",  "description": "Success / completion confirmations." },
+        "attention": { "title": "Attention", "description": "Non-critical warnings that need user attention." },
+        "fatal":     { "title": "Fatal",     "description": "Unrecoverable errors / system failures." }
+      },
+      "perGroup": {
+        "type": "grid",
+        "rowAxis": "bg",
+        "fgPath": "status/{group}/fg/contrast_{fg}/inversity_normal",
+        "bgPath": "status/{group}/bg/contrast_{bg}/inversity_normal",
+        "fgLevels": ["highest", "high", "medium", "low"],
+        "bgLevels": ["highest", "high", "medium", "low"]
+      },
+      "textLink": {
+        "type": "textlink-row",
+        "fgPath": "ob/h/link/color/default",
+        "bgPath": "status/{group}/bg/contrast_{bg}/inversity_normal",
+        "bgLevels": ["highest", "high", "medium", "low"]
+      }
+    },
+    "navigation": {
+      "section": {
+        "tier": "S",
+        "title": "Navigation",
+        "purpose": "State pairings for navigation links and active items.",
+        "guideline": "Selected / active states should retain AA contrast at minimum."
+      },
+      "blocks": [
+        {
+          "type": "states-row",
+          "states": ["enabled", "hover", "focus", "pressed", "selected", "disabled"],
+          "fgPath": "navigation/fg/{state}",
+          "bgPath": "navigation/bg/{state}"
+        }
+      ]
+    },
+    "free": {
+      "section": {
+        "tier": "S",
+        "title": "Free hues",
+        "purpose": "Decorative / accent pairings outside the semantic palette (cobalt, teal, indigo, pink, yellow).",
+        "guideline": "Use sparingly; verify pairing meets WCAG for any text overlaid on accent bg."
+      },
+      "groups": ["cobalt", "teal", "indigo", "pink", "yellow"],
+      "groupHeaders": {
+        "cobalt": { "title": "Cobalt", "description": "Cool accent." },
+        "teal":   { "title": "Teal",   "description": "Cool accent." },
+        "indigo": { "title": "Indigo", "description": "Cool accent (includes alpha variants)." },
+        "pink":   { "title": "Pink",   "description": "Warm accent." },
+        "yellow": { "title": "Yellow", "description": "Warm accent." }
+      },
+      "perGroup": {
+        "type": "grid",
+        "rowAxis": "bg",
+        "fgPath": "free/{group}/fg/contrast_{fg}/inversity_normal",
+        "bgPath": "free/{group}/bg/contrast_{bg}/inversity_normal",
+        "fgLevels": ["highest", "high", "medium", "low"],
+        "bgLevels": ["highest", "high", "medium", "low"]
+      }
+    },
+    "brand": {
+      "section": {
+        "tier": "S",
+        "title": "Brand",
+        "purpose": "Brand primary color (single token, displayed for reference only — no pairings).",
+        "guideline": "Brand color is not used for body text or interactive states."
+      },
+      "blocks": [
+        { "type": "single", "path": "brand/1" }
+      ]
+    }
+  }
+}
