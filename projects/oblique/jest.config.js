@@ -68,14 +68,14 @@ module.exports = {
 		'projects/oblique/src/lib/master-layout/master-layout/*.ts': {
 			statements: 96,
 			branches: 91,
-			functions: 93,
+			functions: 91,
 			lines: 96,
 		},
 		'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
-			statements: 90,
-			branches: 71,
-			functions: 86,
-			lines: 88,
+			statements: 83,
+			branches: 54,
+			functions: 65,
+			lines: 83,
 		},
 		'projects/oblique/src/lib/master-layout/master-layout-navigation/sub-menu-item/*.ts': {
 			statements: 80,

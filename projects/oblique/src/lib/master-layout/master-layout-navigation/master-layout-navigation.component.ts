@@ -1,38 +1,26 @@
-/* eslint-disable max-lines */
 import {
 	AfterViewInit,
 	Component,
-	ElementRef,
 	EventEmitter,
 	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
 	Output,
-	Renderer2,
 	ViewEncapsulation,
 	inject,
 } from '@angular/core';
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, map, takeUntil} from 'rxjs/operators';
 
-import {BehaviorSubject, Observable, Subject, combineLatestWith} from 'rxjs';
-import {ObGlobalEventsService} from '../../global-events/global-events.service';
-import {ObMasterLayoutConfig} from '../master-layout.config';
-import {
-	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
-	ObEMasterLayoutEventValues,
-	ObEScrollMode,
-	ObIMasterLayoutEvent,
-	ObINavigationLink,
-} from '../master-layout.model';
-import {ObMasterLayoutService} from '../master-layout.service';
+import {BehaviorSubject, Observable, combineLatestWith} from 'rxjs';
+import {OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, ObINavigationLink} from '../master-layout.model';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 import {ObNavigationLink} from './navigation-link.model';
 import {TranslateService} from '@ngx-translate/core';
 import {OB_HAS_LANGUAGE_IN_URL} from '../../utilities';
 import {getScrollIntoViewDelta} from './scroll-delta';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {MasterLayoutNavigationComponentBase} from './master-layout-navigation-component-base';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
@@ -46,35 +34,26 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 		class: 'ob-master-layout-navigation',
 	},
 })
-export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
-	isFullWidth: boolean;
-	activeClass: string;
-	currentScroll = 0;
-
+export class ObMasterLayoutNavigationComponent
+	extends MasterLayoutNavigationComponentBase
+	implements OnChanges, OnInit, AfterViewInit, OnDestroy
+{
 	currentGrandparentLink: ObNavigationLink = new ObNavigationLink();
 	currentParentLink: ObNavigationLink = new ObNavigationLink();
 	currentParentRouterLinkBase$: Observable<string>;
 	initializedLinks: ObNavigationLink[] = [];
 	isCurrentParentLinkExactMatch = false;
-	maxScroll = 0;
 	hasOpenedMenu = false;
 	hideExternalLinks = true;
 	@Input() links: ObINavigationLink[] = [];
 	@Output() readonly linksChanged = new EventEmitter<ObINavigationLink[]>();
-	isScrollable: boolean;
 	routerLinkActiveOptions: IsActiveMatchOptions = {
 		paths: 'subset',
 		queryParams: 'subset',
 		fragment: 'ignored',
 		matrixParams: 'ignored',
 	};
-	private static readonly buttonWidth = 40; // $ob-navigation-scrollable-padding
 	private readonly router = inject(Router);
-	private readonly masterLayout = inject(ObMasterLayoutService);
-	private readonly config = inject(ObMasterLayoutConfig);
-	private readonly renderer = inject(Renderer2);
-	private readonly el = inject<ElementRef<HTMLElement>>(ElementRef);
-	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly translate = inject(TranslateService);
 	private readonly currentParentAncestors: BehaviorSubject<ObNavigationLink[]> = new BehaviorSubject<
 		ObNavigationLink[]
@@ -84,19 +63,13 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 	);
 	private readonly currentParentRouterLinkBase: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	private readonly currentUrl: BehaviorSubject<string> = new BehaviorSubject<string>('');
-	private readonly unsubscribe: Subject<void> = new Subject<void>();
 	private readonly hasLanguageInUrl = inject(OB_HAS_LANGUAGE_IN_URL);
 
 	constructor() {
-		this.isFullWidth = this.masterLayout.navigation.isFullWidth;
-		this.activeClass = this.config.navigation.activeClass;
+		super();
 		const hideExternalLinks = inject(OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, {optional: true});
 		this.hideExternalLinks = hideExternalLinks ?? true;
-		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
 		this.currentParentRouterLinkBase$ = this.currentParentRouterLinkBase.asObservable();
-		this.scrollModeChange();
-		this.fullWidthChange();
-		this.preventBrowserFocusOnLastItem();
 	}
 
 	ngOnChanges(): void {
@@ -154,18 +127,6 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		this.onSubMenuExpandedChanges(obMasterLayoutNavigationItem, link);
 	}
 
-	close(): void {
-		this.masterLayout.layout.isMenuOpened = false;
-	}
-
-	scrollLeft(): void {
-		this.masterLayout.navigation.scrollLeft();
-	}
-
-	scrollRight(): void {
-		this.masterLayout.navigation.scrollRight();
-	}
-
 	toggleSubMenu(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, link: ObNavigationLink): void {
 		obMasterLayoutNavigationItem.toggleSubMenu();
 		this.onSubMenuExpandedChanges(obMasterLayoutNavigationItem, link);
@@ -213,63 +174,6 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 				`parentIndex is: ${parentIndex} in ${ObMasterLayoutNavigationComponent.name}.${ObMasterLayoutNavigationComponent.prototype.backUpSubMenu.name}`
 			);
 		}
-	}
-
-	private scrollModeChange(): void {
-		this.masterLayout.navigation.configEvents$
-			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(() => this.masterLayout.navigation.refresh());
-	}
-
-	private fullWidthChange(): void {
-		this.masterLayout.navigation.configEvents$
-			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(event => {
-				this.isFullWidth = event.value;
-			});
-	}
-
-	/**
-	 * Prevents the browser from automatically scrolling the last navigation item into view
-	 * when focus moves back from an element after the navigation using Shift+Tab.
-	 *
-	 * By default, the browser pulls the last item into view, breaking the scrollable
-	 * navigation's position. This function prevents the default browser behavior, and manually focuses
-	 * the last navigation item without triggering any native scroll.
-	 *
-	 * The actual scroll animation is triggered separately by `toggleFocus`
-	 */
-	private preventBrowserFocusOnLastItem(): void {
-		inject(ObGlobalEventsService)
-			.keyDown$.pipe(
-				takeUntilDestroyed(),
-				filter(
-					event =>
-						event.code === 'Tab' &&
-						event.shiftKey === true &&
-						(event.target as HTMLElement).id === 'ob-navigation-scrollable-control-right'
-				)
-			)
-			.subscribe(event => {
-				event.preventDefault();
-				// If there is no nav or the nav is empty, then no event is triggered
-				(this.getNav().lastElementChild.firstElementChild as HTMLElement).focus({preventScroll: true});
-			});
-	}
-
-	private closeOnEscape(): void {
-		this.globalEventsService.keyUp$
-			.pipe(
-				filter(event => event.key === 'Escape'),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(() => this.close());
 	}
 
 	private getCurrentGrandparentLink(parentIndex: number = this.getParentIndex()): ObNavigationLink {
@@ -364,41 +268,11 @@ export class ObMasterLayoutNavigationComponent implements OnChanges, OnInit, Aft
 		}
 	}
 
-	private refresh(): void {
-		const nav = this.getNav();
-		if (nav) {
-			const {scrollMode} = this.masterLayout.navigation;
-			if (scrollMode === ObEScrollMode.DISABLED) {
-				this.isScrollable = false;
-			} else {
-				const childWidth = Array.from(nav.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
-				this.maxScroll = Math.max(
-					0,
-					-(nav.clientWidth - childWidth - 2 * ObMasterLayoutNavigationComponent.buttonWidth)
-				);
-				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > nav.clientWidth;
-			}
-			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
-		}
-	}
-
 	private resetCurrentAncestorRelatedProps(): void {
 		this.currentParentAncestors.next([]);
 		this.currentParentRouterLinkBase.next('');
 		this.currentParentLinkSource.next(new ObNavigationLink());
 		this.currentGrandparentLink = new ObNavigationLink();
 		this.isCurrentParentLinkExactMatch = false;
-	}
-
-	private updateScroll(delta: number): void {
-		const nav = this.getNav();
-		this.currentScroll += delta;
-		this.currentScroll = Math.max(0, this.currentScroll);
-		this.currentScroll = Math.min(this.currentScroll, this.maxScroll);
-		this.renderer.setStyle(nav.children[0], 'margin-left', `-${this.currentScroll}px`);
-	}
-
-	private getNav(): Element {
-		return this.el.nativeElement.querySelector('.ob-main-nav:not(.ob-sub-nav)');
 	}
 }
