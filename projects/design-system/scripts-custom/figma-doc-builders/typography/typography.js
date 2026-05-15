@@ -289,7 +289,7 @@ async function ensurePage() {
   return p;
 }
 
-const TABLE_WIDTH = 1580;
+const TABLE_WIDTH = 1980;
 const WRAPPER_NAME = 'Typography Tables';
 const WRAPPER_GAP  = 96;
 const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
