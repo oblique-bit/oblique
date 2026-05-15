@@ -1,0 +1,99 @@
+{
+  "schema": "ob.typography.registry.v1",
+  "page": "🔤 Typography – Styles & Specimens",
+  "allowedFiles": ["DesignSystem@Tokens V9.7"],
+  "componentNames": {
+    "sectionBar":    "_docs/typography/section_bar",
+    "headerRow":     "_docs/typography/header_row",
+    "row":           "_docs/typography/row",
+    "groupHeader":   "_docs/shared/group_header",
+    "foundationBar": "_building_blocks/shared/foundation_bar"
+  },
+  "foundationName": "Typography",
+  "tables": [
+    {
+      "id": "grouped-static",
+      "sectionName": "Grouped Composites — Static",
+      "tableName": "Table: typography/grouped-static",
+      "section": {
+        "tier": "S",
+        "title": "Grouped Composites — Static",
+        "purpose": "T-shirt sized composite text styles (font-family + weight + size + line-height + letter-spacing + paragraph-spacing) that do NOT change with the ui_scale mode.",
+        "guideline": "Use for any text whose typographic dimensions must remain constant across ui_scale (sm / md / lg). Pair with the dimension foundation when laying out static layouts."
+      },
+      "stylePrefix": "s/typography/grouped/static/",
+      "subtitle": "s.typography.grouped.static",
+      "grouping": "size_class"
+    },
+    {
+      "id": "grouped-dynamic",
+      "sectionName": "Grouped Composites — Dynamic",
+      "tableName": "Table: typography/grouped-dynamic",
+      "section": {
+        "tier": "S",
+        "title": "Grouped Composites — Dynamic",
+        "purpose": "T-shirt sized composite text styles that scale with the active ui_scale mode. Previewed at the page default (md). Switch the ui_scale mode on the containing frame to inspect sm or lg.",
+        "guideline": "Use as the default body and label styles. Renders at the active ui_scale mode wherever applied."
+      },
+      "stylePrefix": "s/typography/grouped/dynamic/",
+      "subtitle": "s.typography.grouped.dynamic",
+      "grouping": "size_class"
+    },
+    {
+      "id": "html-heading",
+      "sectionName": "HTML — Headings",
+      "tableName": "Table: typography/html-heading",
+      "section": {
+        "tier": "H",
+        "title": "HTML — Headings",
+        "purpose": "Heading text styles (H1–H6) for HTML document contexts. Switches between `interface` and `prose` typography contexts.",
+        "guideline": "Pair semantically with HTML <h1>…<h6> elements. Heading scale comes from typography_context — set the parent's context mode to switch interface ↔ prose."
+      },
+      "stylePrefix": "h/typography/style/heading/",
+      "subtitle": "h.typography.style.heading",
+      "grouping": "none"
+    },
+    {
+      "id": "html-body",
+      "sectionName": "HTML — Body",
+      "tableName": "Table: typography/html-body",
+      "section": {
+        "tier": "H",
+        "title": "HTML — Body",
+        "purpose": "Body / paragraph / link text styles used in HTML document contexts (interface and prose).",
+        "guideline": "Default body style is `normal`; `strong` matches <strong>/<b>; `lead` is for opening paragraphs; `link` covers inline links."
+      },
+      "stylePrefix": "h/typography/style/body/",
+      "subtitle": "h.typography.style.body",
+      "grouping": "none"
+    },
+    {
+      "id": "html-link-state",
+      "sectionName": "HTML — Link States",
+      "tableName": "Table: typography/html-link-state",
+      "section": {
+        "tier": "H",
+        "title": "HTML — Link States",
+        "purpose": "Text styles for the six interaction states of an inline text link.",
+        "guideline": "Match the interaction state to its real-world trigger. Pressed wins over hover; disabled wins over everything else."
+      },
+      "stylePrefix": "h/link/",
+      "subtitle": "h.link",
+      "grouping": "none"
+    },
+    {
+      "id": "component",
+      "sectionName": "Component-specific",
+      "tableName": "Table: typography/component",
+      "section": {
+        "tier": "C",
+        "title": "Component-specific Styles",
+        "purpose": "Text styles owned by individual components (badge, infobox, popover, tooltip). Each binds to a higher-level role on that component.",
+        "guideline": "Component-local styles never leak outside their owning component. Add new entries here when introducing a new component-only role."
+      },
+      "stylePrefix": "c/",
+      "subtitle": "c.<component>.typography",
+      "grouping": "component"
+    }
+  ]
+}

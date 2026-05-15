@@ -21,6 +21,24 @@
           }
         },
         "font_size": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Dynamic font-size scale — values scale with the active ui_scale mode (sm/md/lg) via the typography multiplier."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
+              }
+            }
+          },
           "xs": {
             "$type": "fontSizes",
             "$value": "{ob.p.font_size_rem.100} * {ob.g.multiplier.typography.sm}"
@@ -63,6 +81,24 @@
           }
         },
         "line_height": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Dynamic line-height scale — paired with the dynamic font-size scale. Scales with ui_scale (sm/md/lg)."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
+              }
+            }
+          },
           "xs": {
             "$type": "lineHeights",
             "$value": "{ob.p.line_height_rem.300} * {ob.g.multiplier.typography.sm}"
@@ -97,6 +133,24 @@
           }
         },
         "paragraph_spacing": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Dynamic paragraph-spacing scale — half the matching dynamic line-height, so paragraph rhythm scales with ui_scale."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
+              }
+            }
+          },
           "xs": {
             "$type": "paragraphSpacing",
             "$value": "({ob.s.dynamic.line_height.xs} * {ob.g.multiplier.typography.sm}) / 2"
@@ -155,6 +209,24 @@
           }
         },
         "font_weight": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Dynamic font weight tokens — identical numeric mapping to the static set, exposed in the ui_scale collection for parity."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
+              }
+            }
+          },
           "regular": {
             "$type": "fontWeights",
             "$value": "{ob.p.font_weight.400}"
@@ -177,6 +249,24 @@
           }
         },
         "text_decoration": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Dynamic text-decoration tokens — primarily for links. Mirrors the static set."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
+              }
+            }
+          },
           "link": {
             "emphasis_high": {
               "$type": "textDecoration",
@@ -191,6 +281,24 @@
           }
         },
         "letter_spacing_rem": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Dynamic letter spacing (rem) — tracking values authored in rem in the ui_scale collection."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
+              }
+            }
+          },
           "superNarrow": {
             "$type": "letterSpacing",
             "$value": "-0.03rem",
@@ -218,6 +326,24 @@
           }
         },
         "letter_spacing_px": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Dynamic letter spacing (px) — tracking values authored in px in the ui_scale collection."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
+              }
+            }
+          },
           "superNarrow": {
             "$type": "letterSpacing",
             "$value": "{ob.p.letter_spacing_px.neg_150}",

@@ -1,6 +1,26 @@
 {
   "ob": {
     "s": {
+      "typography": {
+        "token_family_docs": {
+          "$description": {
+            "$type": "other",
+            "$value": "Typography foundation — every text-related token in the system. Covers font families, font weights, font sizes, line heights, paragraph spacing, letter spacing and text-decoration / text-case / text-align. Composite text styles (Figma styles) are built by combining tokens from these sub-families."
+          },
+          "$extensions": {
+            "oblique": {
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
+            }
+          }
+        }
+      },
       "static": {
         "token_family_docs": {
           "$description": {
@@ -21,6 +41,18 @@
           }
         },
         "font_size": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Static font-size scale (xs → 5xl + base) — single-mode font sizes that do not change with ui_scale."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "xs": {
             "$type": "fontSizes",
             "$value": "{ob.p.font_size_rem.100}"
@@ -63,6 +95,18 @@
           }
         },
         "line_height": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Static line-height scale paired with the static font-size scale — single-mode line heights for body and heading sizes."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "xs": {
             "$type": "lineHeights",
             "$value": "{ob.p.line_height_rem.300}"
@@ -97,6 +141,18 @@
           }
         },
         "paragraph_spacing": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Static paragraph-spacing scale — vertical gap between paragraphs in static contexts. Derived as half the matching line-height."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "none": {
             "$type": "paragraphSpacing",
             "$value": "{ob.p.paragraph_spacing_rem.0}"
@@ -159,6 +215,18 @@
           }
         },
         "font_family": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Font family tokens — semantic roles (body, heading, code) mapped to primitive font families. Switch the primitive to rebrand without touching every consumer."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "body": {
             "$type": "fontFamilies",
             "$value": "{ob.p.font_family.sans}",
@@ -176,6 +244,18 @@
           }
         },
         "font_weight": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Font weight tokens — semantic names (regular, medium, semiBold, bold, extraBold) mapped to numeric weights (400 / 500 / 600 / 700 / 800)."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "regular": {
             "$type": "fontWeights",
             "$value": "{ob.p.font_weight.400}"
@@ -198,6 +278,18 @@
           }
         },
         "text_decoration": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Text decoration tokens — primarily for links. Default has an underline; low-emphasis variants drop the underline."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "link": {
             "emphasis_high": {
               "$type": "textDecoration",
@@ -212,6 +304,18 @@
           }
         },
         "text_case": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Text case tokens — controls letter casing transforms (none, uppercase, lowercase, capitalize). Use for label semantics; respect content casing for prose."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "none": {
             "$type": "textCase",
             "$value": "{ob.p.text_case.none}",
@@ -234,6 +338,18 @@
           }
         },
         "letter_spacing_rem": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Letter spacing (rem) — tracking values authored in rem. Rem-based tracking scales with root font-size."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "superNarrow": {
             "$type": "letterSpacing",
             "$value": "-0.03rem",
@@ -261,6 +377,18 @@
           }
         },
         "letter_spacing_px": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Letter spacing (px) — tracking values authored in px. Use where absolute tracking matters (e.g. small caps, all-caps labels)."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "superNarrow": {
             "$type": "letterSpacing",
             "$value": "{ob.p.letter_spacing_px.neg_150}",
@@ -288,6 +416,18 @@
           }
         },
         "text_align": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Text alignment tokens — left / center / right. Drives the horizontal alignment of text within its containing block."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": { "$type": "other", "$value": "token_family_docs" },
+                "export": { "$type": "other", "$value": "false" }
+              }
+            }
+          },
           "left": {
             "$type": "textAlign",
             "$value": "left",
