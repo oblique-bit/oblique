@@ -405,37 +405,36 @@ function configureColumn(col) {
   col.opacity = 1;
 }
 
-// Provenance header: small text bar above the 2-column wrapper. Records when
-// the page was generated, by which script@SHA, the source Figma file, and a
-// build-health summary (rows / errors / duration). Wraps the existing wrapper
-// in an outer VERTICAL frame so the header sits cleanly above.
+// Foundation bar: instance of _building_blocks/shared/foundation_bar pinned
+// at the top of the build page. Holds the page identity (foundation name) +
+// per-page description + the provenance meta string ($build_generation_meta).
+// Replaces the older standalone __build_header TEXT.
 const OUTER_NAME = 'Dimension Output';
-const HEADER_NAME = '__build_header';
-const HEADER_STYLE = 's/typography/grouped/static/xs/normal'; // 12px Noto Sans Medium / 16
+const FOUNDATION_BAR_INSTANCE_NAME = '__foundation_bar';
+const FOUNDATION_NAME = 'Dimension';
 
-async function applyHeaderStyle(textNode) {
-  try {
-    const styles = await figma.getLocalTextStylesAsync();
-    const xs = styles.find(s => s.name === HEADER_STYLE);
-    if (xs) {
-      await figma.loadFontAsync(xs.fontName);
-      await textNode.setTextStyleIdAsync(xs.id);
-      return true;
-    }
-  } catch (e) { L('header style apply failed: ' + e.message); }
-  // Fallback: hard-coded 12px Noto Sans Medium
-  try {
-    const fn = { family: 'Noto Sans', style: 'Medium' };
-    await figma.loadFontAsync(fn);
-    textNode.fontName = fn;
-    textNode.fontSize = 12;
-    textNode.lineHeight = { unit: 'PIXELS', value: 16 };
-  } catch (e) { L('header fallback font failed: ' + e.message); }
-  return false;
+// Foundation description comes from PAYLOAD.foundationDescription (read
+// Node-side from density/static.json's token_family_docs umbrella, since that
+// node has export:false and isn't pushed to Figma variables by Tokens Studio).
+function getFoundationDescription() {
+  return (typeof PAYLOAD !== 'undefined' && PAYLOAD.foundationDescription) || null;
 }
 
-async function ensureHeaderAndOuter(page, wrapper, headerText) {
-  // Outer VERTICAL frame that hosts [header, wrapper] as siblings.
+// Find the SemiBold-styled __sectionTitle (the "Name of Foundation" slot —
+// the ExtraLight one carries the fixed 'Oblique Foundations' branding).
+function findFoundationNameNode(inst) {
+  if (!inst) return null;
+  const titles = inst.findAll(n => n.type === 'TEXT' && n.name === '__sectionTitle');
+  for (const t of titles) {
+    const fn = t.fontName;
+    if (fn && fn !== figma.mixed && /SemiBold/i.test(fn.style)) return t;
+  }
+  // Fallback: take the last __sectionTitle if styles aren't introspectable.
+  return titles.length ? titles[titles.length - 1] : null;
+}
+
+async function ensureHeaderAndOuter(page, wrapper, metaText) {
+  // Outer VERTICAL frame that hosts [foundation_bar, wrapper] as siblings.
   let outer = page.children.find(c => c.type === 'FRAME' && c.name === OUTER_NAME);
   if (!outer) {
     outer = figma.createFrame();
@@ -456,17 +455,37 @@ async function ensureHeaderAndOuter(page, wrapper, headerText) {
   // Move the HORIZONTAL wrapper inside outer (skip if already child of outer).
   if (wrapper && wrapper.parent !== outer) { try { outer.appendChild(wrapper); } catch {} }
 
-  // Header TEXT: find existing or create.
-  let header = outer.children.find(c => c.type === 'TEXT' && c.name === HEADER_NAME);
-  if (!header) {
-    header = figma.createText();
-    header.name = HEADER_NAME;
-    outer.insertChild(0, header);
-  } else {
-    try { outer.insertChild(0, header); } catch {}
+  // Drop the legacy standalone __build_header TEXT node from prior runs.
+  for (const c of [...outer.children]) {
+    if (c.type === 'TEXT' && c.name === '__build_header') { try { c.remove(); } catch {} }
   }
-  await applyHeaderStyle(header);
-  try { header.characters = headerText; } catch (e) { L('header characters set failed: ' + e.message); }
+
+  // Foundation bar instance: find existing or create.
+  let bar = outer.children.find(c => c.type === 'INSTANCE' && c.name === FOUNDATION_BAR_INSTANCE_NAME);
+  if (!bar) {
+    if (!components.foundationBar) { L('foundationBar component missing — skipping header'); return outer; }
+    try { bar = components.foundationBar.createInstance(); }
+    catch (e) { L('foundationBar createInstance failed: ' + e.message); return outer; }
+    bar.name = FOUNDATION_BAR_INSTANCE_NAME;
+    outer.insertChild(0, bar);
+  } else {
+    try { outer.insertChild(0, bar); } catch {}
+  }
+  // Always fill the page width.
+  try { bar.layoutSizingHorizontal = 'FILL'; } catch (e) { L('foundation_bar FILL failed: ' + e.message); }
+  try { bar.layoutAlign = 'STRETCH'; } catch {}
+
+  // Populate the SemiBold __sectionTitle ("Name of Foundation" slot), the
+  // $foundation_description (umbrella family-doc description from JSON), and
+  // $build_generation_meta. ExtraLight __sectionTitle ("Oblique Foundations")
+  // stays at master default.
+  const nameNode = findFoundationNameNode(bar);
+  if (nameNode) await setText(nameNode, FOUNDATION_NAME);
+  const descNode = bar.findOne(n => n.type === 'TEXT' && n.name === '$foundation_description');
+  const descText = getFoundationDescription();
+  if (descNode && descText) await setText(descNode, descText);
+  const metaNode = bar.findOne(n => n.type === 'TEXT' && n.name === '$build_generation_meta');
+  if (metaNode) await setText(metaNode, metaText);
   return outer;
 }
 
@@ -1063,7 +1082,23 @@ function main() {
   const pageTs = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
   const scriptRel = 'scripts-custom/figma-doc-builders/dimension/dimension.js';
 
-  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'dimension.js' } };
+  // Foundation description — umbrella family-doc text from
+  // src/lib/themes/03_semantic/dimension/density/static.json. Tokens Studio
+  // doesn't push family-docs to Figma variables (export:false), so we read the
+  // JSON directly and pass the string in PAYLOAD.
+  let foundationDescription = null;
+  try {
+    const repoRoot = path.resolve(HERE, '..', '..', '..');
+    const tokJson = path.join(repoRoot, 'src', 'lib', 'themes', '03_semantic', 'dimension', 'density', 'static.json');
+    const tokens = JSON.parse(fs.readFileSync(tokJson, 'utf8'));
+    const desc = tokens && tokens.ob && tokens.ob.s && tokens.ob.s.dimension
+      && tokens.ob.s.dimension.token_family_docs
+      && tokens.ob.s.dimension.token_family_docs.$description
+      && tokens.ob.s.dimension.token_family_docs.$description.$value;
+    if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
+  } catch (e) { /* leave null — bar keeps master default */ }
+
+  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'dimension.js' } };
   const script = `(async () => {\nconst PAYLOAD = ${JSON.stringify(payload)};\n${PLUGIN_CODE}\n})()`;
 
   const t0 = Date.now();

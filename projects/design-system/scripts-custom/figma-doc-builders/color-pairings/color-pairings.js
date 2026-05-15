@@ -291,7 +291,7 @@ async function buildSwatchRecord(pair, varMap) {
 }
 
 // ── visual builders (only when WRITE) ─────────────────────────────────────
-let swatchComp, sectionBarComp, groupHeaderComp, pillSetComp, recommendationBadgeSetComp;
+let swatchComp, sectionBarComp, groupHeaderComp, pillSetComp, recommendationBadgeSetComp, foundationBarComp;
 
 async function loadComponents() {
   // Figma now requires explicit page loading before accessing children of
@@ -308,7 +308,8 @@ async function loadComponents() {
   groupHeaderComp           = found[registry.componentNames.groupHeader] || null;
   pillSetComp               = found[registry.componentNames.pillSet] || null;
   recommendationBadgeSetComp = found[registry.componentNames.recommendationBadgeSet] || null;
-  L('components: swatch=' + !!swatchComp + ' sectionBar=' + !!sectionBarComp + ' groupHeader=' + !!groupHeaderComp + ' pillSet=' + !!pillSetComp + ' recommendationBadgeSet=' + !!recommendationBadgeSetComp);
+  foundationBarComp         = found[registry.componentNames.foundationBar] || null;
+  L('components: swatch=' + !!swatchComp + ' sectionBar=' + !!sectionBarComp + ' groupHeader=' + !!groupHeaderComp + ' pillSet=' + !!pillSetComp + ' recommendationBadgeSet=' + !!recommendationBadgeSetComp + ' foundationBar=' + !!foundationBarComp);
 }
 
 function findPillVariant(level, passed) {
@@ -659,32 +660,24 @@ async function validateSectionBar(sb, catName, catCfg) {
   return issues;
 }
 
-// Provenance header above the root output frame. Wraps the existing root
-// in an outer VERTICAL frame so the header sits above it.
-const _CP_OUTER_NAME  = 'Color Pairings Output';
-const _CP_HEADER_NAME = '__build_header';
-const _CP_HEADER_STYLE = 's/typography/grouped/static/xs/normal';
+// Foundation bar: instance of _building_blocks/shared/foundation_bar pinned
+// at the top of the build page. Replaces the older standalone __build_header
+// TEXT. Carries the foundation name + per-page description + provenance meta.
+const _CP_OUTER_NAME          = 'Color Pairings Output';
+const _CP_FOUNDATION_BAR_NAME = '__foundation_bar';
+const _CP_FOUNDATION_NAME     = 'Colors – Contrast Pairings';
 
-async function _cpApplyHeaderStyle(textNode) {
-  try {
-    const styles = await figma.getLocalTextStylesAsync();
-    const xs = styles.find(s => s.name === _CP_HEADER_STYLE);
-    if (xs) {
-      await figma.loadFontAsync(xs.fontName);
-      await textNode.setTextStyleIdAsync(xs.id);
-      return true;
-    }
-  } catch (e) { L('header style apply failed: ' + e.message); }
-  try {
-    const fn = { family: 'Noto Sans', style: 'Medium' };
-    await figma.loadFontAsync(fn);
-    textNode.fontName = fn; textNode.fontSize = 12;
-    textNode.lineHeight = { unit: 'PIXELS', value: 16 };
-  } catch (e) { L('header fallback font failed: ' + e.message); }
-  return false;
+function _cpFindFoundationNameNode(inst) {
+  if (!inst) return null;
+  const titles = inst.findAll(n => n.type === 'TEXT' && n.name === '__sectionTitle');
+  for (const t of titles) {
+    const fn = t.fontName;
+    if (fn && fn !== figma.mixed && /SemiBold/i.test(fn.style)) return t;
+  }
+  return titles.length ? titles[titles.length - 1] : null;
 }
 
-async function ensureCpHeaderAndOuter(page, root, headerText) {
+async function ensureCpHeaderAndOuter(page, root, metaText) {
   let outer = page.children.find(c => c.type === 'FRAME' && c.name === _CP_OUTER_NAME);
   if (!outer) {
     outer = figma.createFrame();
@@ -704,16 +697,36 @@ async function ensureCpHeaderAndOuter(page, root, headerText) {
 
   if (root && root.parent !== outer) { try { outer.appendChild(root); } catch {} }
 
-  let header = outer.children.find(c => c.type === 'TEXT' && c.name === _CP_HEADER_NAME);
-  if (!header) {
-    header = figma.createText();
-    header.name = _CP_HEADER_NAME;
-    outer.insertChild(0, header);
-  } else {
-    try { outer.insertChild(0, header); } catch {}
+  // Drop legacy __build_header TEXT node from prior runs.
+  for (const c of [...outer.children]) {
+    if (c.type === 'TEXT' && c.name === '__build_header') { try { c.remove(); } catch {} }
   }
-  await _cpApplyHeaderStyle(header);
-  try { header.characters = headerText; } catch (e) { L('header characters set failed: ' + e.message); }
+
+  // Foundation bar instance: find or create. foundationBarComp is loaded by
+  // loadComponents().
+  let bar = outer.children.find(c => c.type === 'INSTANCE' && c.name === _CP_FOUNDATION_BAR_NAME);
+  if (!bar) {
+    if (!foundationBarComp) { L('foundationBar component missing — skipping header'); return outer; }
+    try { bar = foundationBarComp.createInstance(); }
+    catch (e) { L('foundationBar createInstance failed: ' + e.message); return outer; }
+    bar.name = _CP_FOUNDATION_BAR_NAME;
+    outer.insertChild(0, bar);
+  } else {
+    try { outer.insertChild(0, bar); } catch {}
+  }
+  try { bar.layoutSizingHorizontal = 'FILL'; } catch (e) { L('foundation_bar FILL failed: ' + e.message); }
+  try { bar.layoutAlign = 'STRETCH'; } catch {}
+
+  const nameNode = _cpFindFoundationNameNode(bar);
+  if (nameNode) await setText(nameNode, _CP_FOUNDATION_NAME);
+  // $foundation_description ← registry.foundationDescription (pairings is
+  // derivative — no semantic JSON family, so we keep the description string in
+  // the builder registry rather than a token family-doc).
+  const descNode = bar.findOne(n => n.type === 'TEXT' && n.name === '$foundation_description');
+  const descText = (registry && registry.foundationDescription) || null;
+  if (descNode && descText) await setText(descNode, descText);
+  const metaNode = bar.findOne(n => n.type === 'TEXT' && n.name === '$build_generation_meta');
+  if (metaNode) await setText(metaNode, metaText);
   return outer;
 }
 

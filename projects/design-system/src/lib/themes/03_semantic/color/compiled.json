@@ -2,6 +2,24 @@
   "ob": {
     "s": {
       "color": {
+        "token_family_docs": {
+          "$description": {
+            "$type": "other",
+            "$value": "Semantic color tokens — neutral, interaction, status, free, and brand. Light/Dark and emphasis modes are pre-resolved; component and HTML tokens consume these directly without further mode handling. Do not consume primitive colors in components."
+          },
+          "$extensions": {
+            "oblique": {
+              "kind": {
+                "$type": "other",
+                "$value": "token_family_docs"
+              },
+              "export": {
+                "$type": "other",
+                "$value": "false"
+              }
+            }
+          }
+        },
         "_docs": {
           "token_family_info": {
             "$type": "text",

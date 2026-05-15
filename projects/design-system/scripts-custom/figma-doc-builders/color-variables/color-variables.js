@@ -125,6 +125,7 @@ async function discoverComponents() {
     cn.rowSet['2-mode'], cn.rowSet['4-mode'], cn.rowSet.rowLow, cn.rowSet.primitive,
     cn.headerSet['2-mode'], cn.headerSet['4-mode'], cn.headerSet.primitive,
     cn.groupHeaderSet, cn.separatorComponent, cn.setHeadingComponent, cn.swatchSet,
+    cn.foundationBar,
     '_docs/color-variables/section_bar'
   ].filter(Boolean);
   const targetSet = new Set(targetNames);
@@ -169,6 +170,7 @@ async function discoverComponents() {
     separator:       setOrComp(cn.separatorComponent),
     setHeading:      setOrComp(cn.setHeadingComponent),
     swatchSet:       setOrComp(cn.swatchSet),
+    foundationBar:   setOrComp(cn.foundationBar),
     sectionBar: setOrComp('_docs/color-variables/section_bar')
   };
 }
@@ -1093,32 +1095,34 @@ function validateTableFrame(frame, tierWidth) {
 // ── validation ─────────────────────────────────────────────────────────────
 const DEFAULT_PLACEHOLDERS = ['Tier title', 'Group Title', 'Group description', 'Purpose: Description text', 'Guideline: Description text', '{token reference}'];
 
-// Provenance header above the Color Tokens output. Wraps the existing 'Color
-// Tokens' container in an outer VERTICAL frame so the header sits above it.
-const _CV_OUTER_NAME  = 'Color Variables Output';
-const _CV_HEADER_NAME = '__build_header';
-const _CV_HEADER_STYLE = 's/typography/grouped/static/xs/normal';
+// Foundation bar: instance of _building_blocks/shared/foundation_bar pinned
+// at the top of the build page. Holds the page identity (foundation name) +
+// per-page description + the provenance meta string ($build_generation_meta).
+// Replaces the older standalone __build_header TEXT.
+const _CV_OUTER_NAME              = 'Color Variables Output';
+const _CV_FOUNDATION_BAR_NAME     = '__foundation_bar';
+const _CV_FOUNDATION_NAME         = 'Colors – Variables';
 
-async function _cvApplyHeaderStyle(textNode) {
-  try {
-    const styles = await figma.getLocalTextStylesAsync();
-    const xs = styles.find(s => s.name === _CV_HEADER_STYLE);
-    if (xs) {
-      await figma.loadFontAsync(xs.fontName);
-      await textNode.setTextStyleIdAsync(xs.id);
-      return true;
-    }
-  } catch (e) { L('header style apply failed: ' + e.message); }
-  try {
-    const fn = { family: 'Noto Sans', style: 'Medium' };
-    await figma.loadFontAsync(fn);
-    textNode.fontName = fn; textNode.fontSize = 12;
-    textNode.lineHeight = { unit: 'PIXELS', value: 16 };
-  } catch (e) { L('header fallback font failed: ' + e.message); }
-  return false;
+// Foundation description comes from PAYLOAD.foundationDescription (read
+// Node-side from compiled.json's token_family_docs umbrella; export:false on
+// that node means Tokens Studio doesn't push it to Figma variables).
+function _cvGetFoundationDescription() {
+  return (typeof PAYLOAD !== 'undefined' && PAYLOAD.foundationDescription) || null;
 }
 
-async function ensureCvHeaderAndOuter(page, container, headerText) {
+// SemiBold __sectionTitle = "Name of Foundation" slot; ExtraLight one is the
+// fixed 'Oblique Foundations' branding.
+function _cvFindFoundationNameNode(inst) {
+  if (!inst) return null;
+  const titles = inst.findAll(n => n.type === 'TEXT' && n.name === '__sectionTitle');
+  for (const t of titles) {
+    const fn = t.fontName;
+    if (fn && fn !== figma.mixed && /SemiBold/i.test(fn.style)) return t;
+  }
+  return titles.length ? titles[titles.length - 1] : null;
+}
+
+async function ensureCvHeaderAndOuter(page, container, metaText, components) {
   let outer = page.children.find(c => c.type === 'FRAME' && c.name === _CV_OUTER_NAME);
   if (!outer) {
     outer = figma.createFrame();
@@ -1138,16 +1142,35 @@ async function ensureCvHeaderAndOuter(page, container, headerText) {
 
   if (container && container.parent !== outer) { try { outer.appendChild(container); } catch {} }
 
-  let header = outer.children.find(c => c.type === 'TEXT' && c.name === _CV_HEADER_NAME);
-  if (!header) {
-    header = figma.createText();
-    header.name = _CV_HEADER_NAME;
-    outer.insertChild(0, header);
-  } else {
-    try { outer.insertChild(0, header); } catch {}
+  // Drop legacy __build_header TEXT node from prior runs.
+  for (const c of [...outer.children]) {
+    if (c.type === 'TEXT' && c.name === '__build_header') { try { c.remove(); } catch {} }
   }
-  await _cvApplyHeaderStyle(header);
-  try { header.characters = headerText; } catch (e) { L('header characters set failed: ' + e.message); }
+
+  // Foundation bar instance: find existing or create.
+  let bar = outer.children.find(c => c.type === 'INSTANCE' && c.name === _CV_FOUNDATION_BAR_NAME);
+  if (!bar) {
+    if (!components || !components.foundationBar) { L('foundationBar component missing — skipping header'); return outer; }
+    try { bar = components.foundationBar.createInstance(); }
+    catch (e) { L('foundationBar createInstance failed: ' + e.message); return outer; }
+    bar.name = _CV_FOUNDATION_BAR_NAME;
+    outer.insertChild(0, bar);
+  } else {
+    try { outer.insertChild(0, bar); } catch {}
+  }
+  try { bar.layoutSizingHorizontal = 'FILL'; } catch (e) { L('foundation_bar FILL failed: ' + e.message); }
+  try { bar.layoutAlign = 'STRETCH'; } catch {}
+
+  // SemiBold __sectionTitle ← foundation name; $foundation_description ←
+  // family-doc umbrella from JSON (via PAYLOAD); $build_generation_meta ←
+  // meta. ExtraLight __sectionTitle (branding) stays at master default.
+  const nameNode = _cvFindFoundationNameNode(bar);
+  if (nameNode) await setText(nameNode, _CV_FOUNDATION_NAME);
+  const descNode = bar.findOne(n => n.type === 'TEXT' && n.name === '$foundation_description');
+  const descText = _cvGetFoundationDescription();
+  if (descNode && descText) await setText(descNode, descText);
+  const metaNode = bar.findOne(n => n.type === 'TEXT' && n.name === '$build_generation_meta');
+  if (metaNode) await setText(metaNode, metaText);
   return outer;
 }
 
@@ -1310,7 +1333,7 @@ async function main() {
     parts.push(errCount + ' error' + (errCount === 1 ? '' : 's'));
     parts.push(durSec + 's');
     const headerText = parts.join(' · ');
-    const outer = await ensureCvHeaderAndOuter(targetPage, outputContainer, headerText);
+    const outer = await ensureCvHeaderAndOuter(targetPage, outputContainer, headerText, components);
     try { outer.x = 0; outer.y = 0; } catch {}
   }
 
@@ -1368,7 +1391,22 @@ async function main() {
   const generatedAt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}${tzPart ? ' ' + tzPart.value : ''}`;
   const pageTs = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
-  const payload = { registry, tableFilter, pageOverride, validateOnly, provenance: { gitSha, generatedAt, pageTs, scriptName: 'color-variables.js' } };
+  // Foundation description from compiled.json's token_family_docs umbrella.
+  // Tokens Studio doesn't push family-docs to Figma variables (export:false),
+  // so we read JSON directly and pass the string in PAYLOAD.
+  let foundationDescription = null;
+  try {
+    const repoRoot = path.resolve(__dirname, '..', '..', '..');
+    const tokJson = path.join(repoRoot, 'src', 'lib', 'themes', '03_semantic', 'color', 'compiled.json');
+    const tokens = JSON.parse(fs.readFileSync(tokJson, 'utf8'));
+    const desc = tokens && tokens.ob && tokens.ob.s && tokens.ob.s.color
+      && tokens.ob.s.color.token_family_docs
+      && tokens.ob.s.color.token_family_docs.$description
+      && tokens.ob.s.color.token_family_docs.$description.$value;
+    if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
+  } catch {}
+
+  const payload = { registry, tableFilter, pageOverride, validateOnly, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptName: 'color-variables.js' } };
   if (pageOverride) console.log(`  Page override: ${pageOverride}`);
   const script = `(async () => {
 const PAYLOAD = ${JSON.stringify(payload)};

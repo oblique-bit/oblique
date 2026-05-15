@@ -11,7 +11,8 @@
     "headerRow3mode": "_docs/dimension/header_row_3mode",
     "row3mode":       "_docs/dimension/row_3mode",
     "previewBar":     "_docs/dimension/preview_bar",
-    "groupHeader":    "_docs/shared/group_header"
+    "groupHeader":    "_docs/shared/group_header",
+    "foundationBar":  "_building_blocks/shared/foundation_bar"
   },
   "tables": [
     {

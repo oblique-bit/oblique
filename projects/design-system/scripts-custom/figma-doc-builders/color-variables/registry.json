@@ -21,7 +21,8 @@
     "groupHeaderSet": "_docs/shared/group_header",
     "separatorComponent": "_docs/color-variables/separator_emphasis_partial",
     "setHeadingComponent": "_docs/color-variables/set_heading",
-    "swatchSet": "_docs/color-variables/swatch"
+    "swatchSet": "_docs/color-variables/swatch",
+    "foundationBar": "_building_blocks/shared/foundation_bar"
   },
   "tables": [
     {
