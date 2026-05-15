@@ -1,6 +1,6 @@
 {
   "schema": "ob.contrast-pairings.v1",
-  "generatedAt": "2026-05-14T11:56:53.491Z",
+  "generatedAt": "2026-05-15T13:20:18.686Z",
   "categories": {
     "neutral": [
       {
@@ -686,16 +686,16 @@
         "isSingle": false,
         "fgVarId": "VariableID:10144:53542",
         "bgVarId": "VariableID:10144:53556",
-        "ratio": 7.85,
+        "ratio": 6.34,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
           "aaaLarge": true,
-          "aaaNormal": true,
-          "aaa": true
+          "aaaNormal": false,
+          "aaa": false
         },
-        "cs": "AA large + AA normal + AAA",
-        "cmps": "all sizes/weights, body text, headings, fine print",
+        "cs": "AA large + AA normal",
+        "cmps": "all sizes/weights, body text, headings",
         "emph": null
       },
       {
@@ -728,16 +728,16 @@
         "isSingle": false,
         "fgVarId": "VariableID:10144:53546",
         "bgVarId": "VariableID:10144:53560",
-        "ratio": 3.55,
+        "ratio": 2.83,
         "wcag": {
-          "aaLarge": true,
+          "aaLarge": false,
           "aaNormal": false,
           "aaaLarge": false,
           "aaaNormal": false,
           "aaa": false
         },
-        "cs": "AA large",
-        "cmps": "large text / headings only (≥18px regular or ≥14px bold)",
+        "cs": "fails WCAG AA",
+        "cmps": "decorative only — do not use for readable text",
         "emph": null
       },
       {
@@ -749,7 +749,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:10144:53548",
         "bgVarId": "VariableID:10144:53564",
-        "ratio": 2.51,
+        "ratio": 1,
         "wcag": {
           "aaLarge": false,
           "aaNormal": false,

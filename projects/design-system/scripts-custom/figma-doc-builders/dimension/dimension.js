@@ -133,6 +133,77 @@ async function discoverVariables() {
   L('vars: ' + allVars.length);
 }
 
+// Size-rank for the t-shirt scale used across dimension tokens. Base sizes get
+// ranks 0..4; numeric N-xl sizes get rank 4+N (so 2xl=6, 11xl=15). 'none' is
+// special — placed at the very end (rank 999) since it represents a deliberate
+// no-spacing token, not a step in the scale.
+const _BASE_SIZE_RANKS = { xs: 0, sm: 1, md: 2, lg: 3, xl: 4 };
+function rankSize(size) {
+  if (size == null) return 999;
+  if (size === 'none') return 998;
+  if (_BASE_SIZE_RANKS[size] != null) return _BASE_SIZE_RANKS[size];
+  const m = /^(\\d+)xl$/.exec(size);
+  if (m) return 4 + Number(m[1]);
+  return 997;
+}
+
+// Parse a token name into { category, size, unit } regardless of which family
+// it belongs to. Token paths vary by table:
+//   density:            .../density/<size>/<unit>
+//   ui_scale flat:      .../ui_scale/<size>/<unit>            (e.g. none/px)
+//   ui_scale category:  .../ui_scale/<category>/<size>/<unit>
+//   typography_context: .../typography_context/<size>         (no unit segment)
+function parseTokenName(varName, prefix) {
+  const rest = varName.slice(prefix.length); // drop the table prefix
+  const parts = rest.split('/').filter(Boolean);
+  const last = parts[parts.length - 1];
+  const hasUnit = last === 'px' || last === 'rem';
+  if (hasUnit) {
+    const unit = last;
+    if (parts.length >= 3) return { category: parts[0], size: parts[parts.length - 2], unit };
+    return { category: null, size: parts[parts.length - 2], unit };
+  }
+  return { category: null, size: last, unit: '' };
+}
+
+// Category ranks for ui_scale, derived from actual token px-ranges in the file:
+// micro 1-3 < element 4-12 < spacing 16-32 < container 36-64 < layout 80-192
+// < macro 256+. Top-level tokens (null category, size='none', 0px) come first.
+// Unknown categories fall through to alphabetical at the end so the build
+// never silently drops a category that gets added later.
+const _CATEGORY_RANK = {
+  micro:     1,
+  element:   2,
+  spacing:   3,
+  container: 4,
+  layout:    5,
+  macro:     6
+};
+
+// Sort comparator: by category rank (null first → micro → … → macro), then
+// size-rank, then unit (px before rem). Keeps related tokens grouped and
+// ordered by real magnitude rather than alphabetically.
+function compareTokens(a, b, prefix) {
+  const ka = parseTokenName(a.name, prefix);
+  const kb = parseTokenName(b.name, prefix);
+  if (ka.category !== kb.category) {
+    if (ka.category == null) return -1;
+    if (kb.category == null) return 1;
+    const rca = _CATEGORY_RANK[ka.category];
+    const rcb = _CATEGORY_RANK[kb.category];
+    if (rca != null && rcb != null) return rca - rcb;
+    if (rca != null) return -1; // known categories come before unknowns
+    if (rcb != null) return 1;
+    return ka.category.localeCompare(kb.category);
+  }
+  const ra = rankSize(ka.size), rb = rankSize(kb.size);
+  if (ra !== rb) return ra - rb;
+  const ua = ka.unit === 'px' ? 0 : 1;
+  const ub = kb.unit === 'px' ? 0 : 1;
+  if (ua !== ub) return ua - ub;
+  return a.name.localeCompare(b.name);
+}
+
 function varsForTable(spec) {
   if (!allVars) return [];
   const col = Object.values(collMap).find(c => c.name === spec.collection);
@@ -140,7 +211,35 @@ function varsForTable(spec) {
   return allVars
     .filter(v => v.variableCollectionId === col.id && v.name.startsWith(spec.prefix))
     .filter(v => !/\\/_docs\\//.test(v.name)) // skip family-doc vars
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .sort((a, b) => compareTokens(a, b, spec.prefix));
+}
+
+// Group key for a token, per the table's declared 'grouping' scheme.
+//   'size_class' → 'base' (xs..xl) or 'extended' (Nxl). 'none' goes 'extended'.
+//   'category'   → the category segment from the path, or 'direct' if absent.
+//   'none' / undefined → null (no grouping).
+function groupKeyForToken(v, spec) {
+  const scheme = spec.grouping || 'none';
+  if (scheme === 'none') return null;
+  const k = parseTokenName(v.name, spec.prefix);
+  if (scheme === 'size_class') {
+    return rankSize(k.size) < 5 ? 'base' : 'extended';
+  }
+  if (scheme === 'category') {
+    return k.category || 'direct';
+  }
+  return null;
+}
+
+const _GROUP_LABELS = {
+  base:     { title: 'Base scale',     description: 'T-shirt sizes (xs → xl)' },
+  extended: { title: 'Extended scale', description: 'Numeric sizes (2xl → 11xl)' },
+  direct:   { title: 'None',           description: 'Top-level tokens (size = none)' }
+};
+function groupLabel(key) {
+  if (_GROUP_LABELS[key]) return _GROUP_LABELS[key];
+  // Category names: capitalize first letter for the title.
+  return { title: key.charAt(0).toUpperCase() + key.slice(1), description: '' };
 }
 
 function modeIdFor(col, modeName) {
@@ -631,6 +730,47 @@ async function detachAndSizePreview(rowBuilt, isMode) {
   return node;
 }
 
+// Group header instance for a given key ('base' | 'extended' | category name).
+// Reuses the shared _docs/shared/group_header COMPONENT_SET (variants H3, H4)
+// by setting the Size variant to H4 and the title/description TEXT props.
+async function buildGroupHeader(key) {
+  if (!components.groupHeader) return null;
+  // group_header is a COMPONENT_SET (variants Size=H3 | Size=H4). createInstance
+  // only lives on individual COMPONENT variants — pick the default (or first).
+  const comp = components.groupHeader;
+  let inst;
+  try {
+    if (comp.type === 'COMPONENT_SET') {
+      const variant = comp.defaultVariant || (comp.children || []).find(c => c.type === 'COMPONENT');
+      if (!variant) { L('groupHeader: COMPONENT_SET has no variants'); return null; }
+      inst = variant.createInstance();
+    } else {
+      inst = comp.createInstance();
+    }
+  } catch (e) { L('groupHeader createInstance failed: ' + e.message); return null; }
+  const lbl = groupLabel(key);
+  const want = { Size: 'H4', groupTitle: lbl.title, groupDescription: lbl.description };
+  const props = inst.componentProperties || {};
+  const updates = {};
+  for (const [bare, val] of Object.entries(want)) {
+    const k = Object.keys(props).find(pk => pk === bare || pk.split('#')[0] === bare);
+    if (k) updates[k] = String(val);
+  }
+  if (Object.keys(updates).length) {
+    try { inst.setProperties(updates); } catch (e) { L('groupHeader setProperties failed: ' + e.message); }
+  }
+  // Fallback: write TEXT contents directly for any field without a prop binding.
+  const fallback = { groupTitle: lbl.title, groupDescription: lbl.description };
+  for (const [bare, val] of Object.entries(fallback)) {
+    const k = Object.keys(props).find(pk => pk === bare || pk.split('#')[0] === bare);
+    if (k) continue;
+    const node = inst.findOne(n => n.type === 'TEXT' && n.name === bare);
+    if (node) await setText(node, val);
+  }
+  inst.name = '__group_' + key;
+  return inst;
+}
+
 // ── build one table ────────────────────────────────────────────────────────
 // Additive: don't nuke existing rows. Read what's already in the table, dedupe
 // the section bar/header, and only build rows for tokens not yet present
@@ -685,7 +825,10 @@ async function buildTable(page, spec) {
   }
   result.info.rowsKept = existing.size;
 
-  // Only build rows for tokens we don't already have
+  // Only build rows for tokens we don't already have. Track the resulting
+  // table-child node per tokenPath so the reorder step at the end can look
+  // them up in sorted order regardless of when they were added.
+  const rowByPath = new Map(existing);
   let rowsBuilt = 0;
   for (const v of tokens) {
     const tokenPath = v.name.replace(/\\//g, '.');
@@ -697,10 +840,68 @@ async function buildTable(page, spec) {
       await flushTextWrites(); // ensure text writes settle before detach
       const detached = await detachAndSizePreview(r, spec.kind !== 'static');
       stretch(detached);
+      rowByPath.set(tokenPath, detached);
       rowsBuilt++;
     }
   }
   result.info.rowsBuilt = rowsBuilt;
+
+  // Bucket sorted tokens by their group key. tokens is already in compareTokens
+  // order, so each group's rows come out in the desired order.
+  const groupOrder = []; // unique groupKeys in first-seen order
+  const groupRows = new Map(); // groupKey → row nodes (in sorted order)
+  for (const v of tokens) {
+    const key = groupKeyForToken(v, spec);
+    const tokenPath = v.name.replace(/\\//g, '.');
+    const row = rowByPath.get(tokenPath);
+    if (!row) continue;
+    const bucket = key == null ? '__nogroup__' : key;
+    if (!groupRows.has(bucket)) { groupRows.set(bucket, []); groupOrder.push(bucket); }
+    groupRows.get(bucket).push(row);
+  }
+
+  // Decide whether to render group headers:
+  //   - spec.grouping === 'none' → never
+  //   - 1 group → skip (single header above all rows is redundant)
+  //   - 2+ groups → render one header per group
+  const showHeaders = spec.grouping && spec.grouping !== 'none' && groupOrder.length >= 2;
+
+  // Ensure / dedupe per-group header instances. Headers we no longer need (group
+  // empty, or grouping turned off) get removed so the table doesn't leak stale
+  // headers from prior runs with a different grouping scheme.
+  const wantedHeaderNames = new Set();
+  if (showHeaders) for (const key of groupOrder) wantedHeaderNames.add('__group_' + key);
+  for (const c of [...table.children]) {
+    if (c.type !== 'INSTANCE') continue;
+    if (!/^__group_/.test(c.name)) continue;
+    if (!wantedHeaderNames.has(c.name)) { try { c.remove(); } catch {} }
+  }
+  const headerByKey = new Map();
+  if (showHeaders) {
+    for (const key of groupOrder) {
+      const wanted = '__group_' + key;
+      let gh = table.children.find(c => c.type === 'INSTANCE' && c.name === wanted);
+      if (!gh) {
+        gh = await buildGroupHeader(key);
+        if (gh) table.appendChild(gh);
+      }
+      if (gh) { stretch(gh); headerByKey.set(key, gh); }
+    }
+  }
+
+  // Final reorder: [sectionBar, headerRow, (groupHeader, ...rows)+]
+  await flushTextWrites();
+  const ordered = [];
+  if (sb) ordered.push(sb);
+  if (header) ordered.push(header);
+  for (const key of groupOrder) {
+    if (showHeaders && headerByKey.has(key)) ordered.push(headerByKey.get(key));
+    for (const r of groupRows.get(key) || []) ordered.push(r);
+  }
+  for (let i = 0; i < ordered.length; i++) {
+    try { table.insertChild(i, ordered[i]); } catch (e) { L('reorder fail at ' + i + ': ' + e.message); }
+  }
+
   return result;
 }
 

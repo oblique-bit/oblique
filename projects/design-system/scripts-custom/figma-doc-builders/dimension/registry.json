@@ -10,7 +10,8 @@
     "row2mode":       "_docs/dimension/row_2mode",
     "headerRow3mode": "_docs/dimension/header_row_3mode",
     "row3mode":       "_docs/dimension/row_3mode",
-    "previewBar":     "_docs/dimension/preview_bar"
+    "previewBar":     "_docs/dimension/preview_bar",
+    "groupHeader":    "_docs/shared/group_header"
   },
   "tables": [
     {
@@ -20,7 +21,8 @@
       "section": { "tier": "S", "title": "Typography Context — Static", "purpose": "Typography spacing for static-context (mode-collapsed) typography tokens.", "guideline": "Use for static layout decisions that do not vary by interface/prose context." },
       "kind": "static",
       "collection": "semantic",
-      "prefix": "ob/s/dimension/static/typography_context/"
+      "prefix": "ob/s/dimension/static/typography_context/",
+      "grouping": "none"
     },
     {
       "id": "density-static",
@@ -29,7 +31,8 @@
       "section": { "tier": "S", "title": "Density — Static", "purpose": "Spacing tokens for static-density layouts.", "guideline": "Used when density does not vary by mode." },
       "kind": "static",
       "collection": "semantic",
-      "prefix": "ob/s/dimension/static/density/"
+      "prefix": "ob/s/dimension/static/density/",
+      "grouping": "size_class"
     },
     {
       "id": "ui_scale-static",
@@ -38,7 +41,8 @@
       "section": { "tier": "S", "title": "UI Scale — Static", "purpose": "Sizing tokens for static-scale UI elements.", "guideline": "Use for UI sizing when scale does not vary by mode." },
       "kind": "static",
       "collection": "semantic",
-      "prefix": "ob/s/dimension/static/ui_scale/"
+      "prefix": "ob/s/dimension/static/ui_scale/",
+      "grouping": "category"
     },
     {
       "id": "typography_context-dynamic",
@@ -48,7 +52,8 @@
       "kind": "dynamic",
       "collection": "typography_context",
       "prefix": "ob/s/dimension/dynamic/typography_context/",
-      "modes": ["interface", "prose"]
+      "modes": ["interface", "prose"],
+      "grouping": "none"
     },
     {
       "id": "density-dynamic",
@@ -58,7 +63,8 @@
       "kind": "dynamic",
       "collection": "density",
       "prefix": "ob/s/dimension/dynamic/density/",
-      "modes": ["standard", "compact", "spacious"]
+      "modes": ["standard", "compact", "spacious"],
+      "grouping": "size_class"
     },
     {
       "id": "ui_scale-dynamic",
@@ -68,7 +74,8 @@
       "kind": "dynamic",
       "collection": "ui_scale",
       "prefix": "ob/s/dimension/dynamic/ui_scale/",
-      "modes": ["sm", "md", "lg"]
+      "modes": ["sm", "md", "lg"],
+      "grouping": "category"
     }
   ]
 }
