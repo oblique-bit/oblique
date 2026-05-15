@@ -29,7 +29,9 @@
  */
 'use strict';
 
-process.env.FIG_EVAL_TIMEOUT_MS = process.env.FIG_EVAL_TIMEOUT_MS || '600000';
+// 30-min eval ceiling — color-variables builds 14 tables and can exceed
+// 10 min on the first run against a fresh timestamped page.
+process.env.FIG_EVAL_TIMEOUT_MS = process.env.FIG_EVAL_TIMEOUT_MS || '1800000';
 
 const fs            = require('fs');
 const os            = require('os');
@@ -90,9 +92,10 @@ function extractJson(stdout) {
 // Everything else (docs, primitives, descriptions) is read from Figma variables.
 
 const PLUGIN_CODE = `
-const { registry, tableFilter, pageOverride, validateOnly } = PAYLOAD;
+const { registry, tableFilter, pageOverride, validateOnly, provenance } = PAYLOAD;
 const log = [];
 const results = [];
+const _startTime = Date.now();
 
 function L(msg) { log.push(msg); }
 function titleCase(s) { return s.replace(/(^|_)([a-z])/g, (_, p, c) => (p ? ' ' : '') + c.toUpperCase()); }
@@ -222,11 +225,26 @@ async function discoverVariables(collections) {
 function descAt(p, varMap) { return (varMap.docMap && varMap.docMap[p]) || ''; }
 
 // ─── Page + structure (unchanged from v1) ──────────────────────────────────
+// Canvas (page background) color for newly-created builder output pages.
+// Hex F0F4F7 = light cool-grey.
+const _PAGE_BG = { type: 'SOLID', color: { r: 0xF0/255, g: 0xF4/255, b: 0xF7/255 } };
+
+// Resolved page name: pageOverride wins; otherwise '<base> YYYY-MM-DD HH:MM'.
+// Computed once per run (provenance.pageTs is fixed at Node-side launch) so
+// every call sites land on the same page, even if a minute boundary is
+// crossed mid-build.
+function resolvedPageName() {
+  if (pageOverride) return pageOverride;
+  const ts = (provenance && provenance.pageTs) ? provenance.pageTs : '';
+  return ts ? (registry.page + ' ' + ts) : registry.page;
+}
+
 async function ensurePage(name) {
   let page = figma.root.children.find(p => p.name === name);
   if (page) { await page.loadAsync(); return page; }
   page = figma.createPage();
   page.name = name;
+  try { page.backgrounds = [_PAGE_BG]; } catch (e) { log.push('canvas bg set failed: ' + e.message); }
   return page;
 }
 
@@ -294,12 +312,15 @@ async function ensurePageStructure(page, components, varMap) {
   for (const c of [...page.children]) {
     if (c.type !== 'FRAME') continue;
     if (c.name === 'Color Tokens') continue;
+    if (c.name === 'Color Variables Output') continue;
     if (/^Token Set:/.test(c.name) || /^Section: /.test(c.name) || /^Token Table/.test(c.name)) {
       c.remove();
     }
   }
 
-  let container = page.children.find(c => c.type === 'FRAME' && c.name === 'Color Tokens');
+  // findOne (not children.find) so the container is located even when nested
+  // inside the outer 'Color Variables Output' frame from a prior run.
+  let container = page.findOne(c => c.type === 'FRAME' && c.name === 'Color Tokens');
   if (!container) {
     container = figma.createFrame();
     container.name = 'Color Tokens';
@@ -872,7 +893,7 @@ async function buildTable(spec, ctx) {
   const t0 = Date.now();
   const out = { id: spec.id, ok: false, info: {}, issues: [] };
 
-  const page = await ensurePage(pageOverride || registry.page);
+  const page = await ensurePage(resolvedPageName());
   const tierWidth = registry.tableWidths[spec.tier] || 1500;
   const tablesContainer = ctx.structure.tablesContainers[spec.tier] || page;
   const { wrapper } = ensureWrapper(tablesContainer, spec.wrapperName, spec.tier, ctx.varMap);
@@ -1072,6 +1093,64 @@ function validateTableFrame(frame, tierWidth) {
 // ── validation ─────────────────────────────────────────────────────────────
 const DEFAULT_PLACEHOLDERS = ['Tier title', 'Group Title', 'Group description', 'Purpose: Description text', 'Guideline: Description text', '{token reference}'];
 
+// Provenance header above the Color Tokens output. Wraps the existing 'Color
+// Tokens' container in an outer VERTICAL frame so the header sits above it.
+const _CV_OUTER_NAME  = 'Color Variables Output';
+const _CV_HEADER_NAME = '__build_header';
+const _CV_HEADER_STYLE = 's/typography/grouped/static/xs/normal';
+
+async function _cvApplyHeaderStyle(textNode) {
+  try {
+    const styles = await figma.getLocalTextStylesAsync();
+    const xs = styles.find(s => s.name === _CV_HEADER_STYLE);
+    if (xs) {
+      await figma.loadFontAsync(xs.fontName);
+      await textNode.setTextStyleIdAsync(xs.id);
+      return true;
+    }
+  } catch (e) { L('header style apply failed: ' + e.message); }
+  try {
+    const fn = { family: 'Noto Sans', style: 'Medium' };
+    await figma.loadFontAsync(fn);
+    textNode.fontName = fn; textNode.fontSize = 12;
+    textNode.lineHeight = { unit: 'PIXELS', value: 16 };
+  } catch (e) { L('header fallback font failed: ' + e.message); }
+  return false;
+}
+
+async function ensureCvHeaderAndOuter(page, container, headerText) {
+  let outer = page.children.find(c => c.type === 'FRAME' && c.name === _CV_OUTER_NAME);
+  if (!outer) {
+    outer = figma.createFrame();
+    outer.name = _CV_OUTER_NAME;
+    page.appendChild(outer);
+  }
+  outer.layoutMode = 'VERTICAL';
+  outer.itemSpacing = 24;
+  outer.primaryAxisSizingMode = 'AUTO';
+  outer.counterAxisSizingMode = 'AUTO';
+  outer.primaryAxisAlignItems = 'MIN';
+  outer.counterAxisAlignItems = 'MIN';
+  outer.paddingLeft = outer.paddingRight = outer.paddingTop = outer.paddingBottom = 0;
+  outer.fills = [];
+  outer.opacity = 1;
+  try { outer.x = 0; outer.y = 0; } catch {}
+
+  if (container && container.parent !== outer) { try { outer.appendChild(container); } catch {} }
+
+  let header = outer.children.find(c => c.type === 'TEXT' && c.name === _CV_HEADER_NAME);
+  if (!header) {
+    header = figma.createText();
+    header.name = _CV_HEADER_NAME;
+    outer.insertChild(0, header);
+  } else {
+    try { outer.insertChild(0, header); } catch {}
+  }
+  await _cvApplyHeaderStyle(header);
+  try { header.characters = headerText; } catch (e) { L('header characters set failed: ' + e.message); }
+  return outer;
+}
+
 async function validatePage(targetPage, varMap, components) {
   const errors = [];
   const warnings = [];
@@ -1079,7 +1158,9 @@ async function validatePage(targetPage, varMap, components) {
   const sbName = components.sectionBar ? components.sectionBar.name : '_docs/color-variables/section_bar';
   const shName = components.setHeading ? components.setHeading.name : '_docs/color-variables/set_heading';
 
-  const containers = targetPage.children.filter(c => c.type === 'FRAME' && c.name === 'Color Tokens');
+  // findAll so the container is located even when wrapped in the outer
+  // 'Color Variables Output' frame (which hosts the build-info header).
+  const containers = targetPage.findAll(c => c.type === 'FRAME' && c.name === 'Color Tokens');
   if (containers.length !== 1) {
     errors.push({ code: 'DUP', msg: 'expected 1 Color Tokens container, got ' + containers.length });
     return { errors, warnings, stats };
@@ -1176,15 +1257,23 @@ async function main() {
   const missing = req.filter(([_, c]) => !c).map(([n]) => n);
   if (missing.length) return { error: 'missing components: ' + missing.join(', ') };
 
-  // Validate-only mode skips the build entirely.
+  // Validate-only mode skips the build entirely. Match the most-recent
+  // timestamped page if no explicit override is given.
   if (validateOnly) {
-    const targetPage = figma.root.children.find(p => p.name === (pageOverride || registry.page));
-    if (!targetPage) return { error: 'target page not found: ' + (pageOverride || registry.page) };
+    const want = resolvedPageName();
+    let targetPage = figma.root.children.find(p => p.name === want);
+    if (!targetPage && !pageOverride) {
+      // Fallback: most-recent page that starts with the base name (e.g. when
+      // validating a build from earlier today / yesterday).
+      const candidates = figma.root.children.filter(p => p.type === 'PAGE' && (p.name === registry.page || p.name.startsWith(registry.page + ' ')));
+      if (candidates.length) targetPage = candidates.sort((a, b) => a.name.localeCompare(b.name)).pop();
+    }
+    if (!targetPage) return { error: 'target page not found: ' + want };
     const validate = await validatePage(targetPage, varMap, components);
     return { validate, log, mode: 'validate' };
   }
 
-  const targetPage = await ensurePage(pageOverride || registry.page);
+  const targetPage = await ensurePage(resolvedPageName());
   ctx.structure = await ensurePageStructure(targetPage, components, varMap);
   phases.ensureStructure = Date.now() - t; t = Date.now();
 
@@ -1203,6 +1292,27 @@ async function main() {
   await flushTextWrites();
 
   const validate = await validatePage(targetPage, varMap, components);
+
+  // Provenance header + outer VERTICAL wrap. Header records: date, script@SHA,
+  // source Figma file, total token rows, error count, duration.
+  const outputContainer = targetPage.findOne(c => c.type === 'FRAME' && c.name === 'Color Tokens');
+  if (outputContainer) {
+    const totalRows = (validate && validate.stats && typeof validate.stats.totalRows === 'number') ? validate.stats.totalRows : 0;
+    const errCount  = (validate && validate.errors) ? validate.errors.length : 0;
+    const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
+    const prov      = provenance || {};
+    const scriptTag = prov.scriptName + (prov.gitSha ? '@' + prov.gitSha : '');
+    const parts = [];
+    if (prov.generatedAt) parts.push('Generated ' + prov.generatedAt);
+    parts.push(scriptTag);
+    parts.push('Source: ' + figma.root.name);
+    parts.push(totalRows + ' rows');
+    parts.push(errCount + ' error' + (errCount === 1 ? '' : 's'));
+    parts.push(durSec + 's');
+    const headerText = parts.join(' · ');
+    const outer = await ensureCvHeaderAndOuter(targetPage, outputContainer, headerText);
+    try { outer.x = 0; outer.y = 0; } catch {}
+  }
 
   return {
     components: Object.fromEntries(Object.entries(components).map(([k, v]) => [k, v ? (Array.isArray(v) ? v.length : (v.id || '?')) : null])),
@@ -1245,7 +1355,20 @@ async function main() {
   if (cachedComponentIds) console.log(`  Discovery cache: ${Object.keys(cachedComponentIds).length} component ids`);
   console.log(`  ${registry.tables.length} tables. (No JSON theme load — sourcing from Figma vars.)`);
 
-  const payload = { registry, tableFilter, pageOverride, validateOnly };
+  // Provenance for the page header — git SHA, ISO-ish timestamp, script
+  // relative to repo root. Soft failures: header still renders without SHA
+  // if not in a repo.
+  let gitSha = null;
+  try {
+    gitSha = require('child_process').execSync('git rev-parse --short HEAD', { cwd: __dirname, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+  } catch {}
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const tzPart = new Intl.DateTimeFormat('en', { timeZoneName: 'short' }).formatToParts(now).find(p => p.type === 'timeZoneName');
+  const generatedAt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}${tzPart ? ' ' + tzPart.value : ''}`;
+  const pageTs = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+  const payload = { registry, tableFilter, pageOverride, validateOnly, provenance: { gitSha, generatedAt, pageTs, scriptName: 'color-variables.js' } };
   if (pageOverride) console.log(`  Page override: ${pageOverride}`);
   const script = `(async () => {
 const PAYLOAD = ${JSON.stringify(payload)};

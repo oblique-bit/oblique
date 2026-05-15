@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "sourceCollection": "semantic",
   "varPathPrefix": "ob/s/color",
-  "targetPageName": "🎨  Colors – Contrast Pairings cli",
+  "targetPageName": "🎨  Colors – Contrast Pairing",
   "rootFrameName": "color-pairing-build",
   "componentNames": {
     "swatch": "_docs/color-pairings/contrast_swatch",

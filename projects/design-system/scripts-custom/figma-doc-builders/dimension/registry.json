@@ -1,6 +1,6 @@
 {
   "schema": "ob.dimension.registry.v1",
-  "page": "📐 Dimension: Spacing & Sizing",
+  "page": "📐 Dimension – Spacing & Sizing",
   "allowedFiles": ["DesignSystem@Tokens V9.7"],
   "componentNames": {
     "sectionBar":     "_docs/dimension/section_bar",
@@ -9,7 +9,8 @@
     "headerRow2mode": "_docs/dimension/header_row_2mode",
     "row2mode":       "_docs/dimension/row_2mode",
     "headerRow3mode": "_docs/dimension/header_row_3mode",
-    "row3mode":       "_docs/dimension/row_3mode"
+    "row3mode":       "_docs/dimension/row_3mode",
+    "previewBar":     "_docs/dimension/preview_bar"
   },
   "tables": [
     {

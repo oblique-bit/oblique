@@ -8,8 +8,8 @@
  *
  * Writes (depending on --mode):
  *   - Figma page "🎨  Colors – Contrast Pairings cli" (mode: all | figma)
- *   - src/lib/contrast-pairings.json                  (mode: all | export)
- *   - src/lib/accessible-pairings.md                  (mode: all | export)
+ *   - ./contrast-pairings.json                        (mode: all | export)
+ *   - ./accessible-pairings.md                        (mode: all | export)
  *
  * Usage:
  *   node color-pairings.js                       # build everything (Figma + JSON + MD + validate)
@@ -25,7 +25,9 @@
  */
 'use strict';
 
-process.env.FIG_EVAL_TIMEOUT_MS = process.env.FIG_EVAL_TIMEOUT_MS || '600000';
+// 30-min eval ceiling — color-pairings does a full rebuild every run and can
+// exceed 10 min on a fresh timestamped page.
+process.env.FIG_EVAL_TIMEOUT_MS = process.env.FIG_EVAL_TIMEOUT_MS || '1800000';
 
 const fs = require('fs');
 const os = require('os');
@@ -36,9 +38,8 @@ const CLI         = process.env.FIG_CLI || 'figma-ds-cli';
 const HERE        = __dirname;
 const REGISTRY    = path.join(HERE, 'registry.json');
 const REPO_ROOT   = path.resolve(HERE, '..', '..', '..');
-const SRC_LIB     = path.join(REPO_ROOT, 'src', 'lib');
-const JSON_OUT    = path.join(SRC_LIB, 'contrast-pairings.json');
-const MD_OUT      = path.join(SRC_LIB, 'accessible-pairings.md');
+const JSON_OUT    = path.join(HERE, 'contrast-pairings.json');
+const MD_OUT      = path.join(HERE, 'accessible-pairings.md');
 const FIG_CLI_DIR = process.env.FIG_CLI_DIR || path.join(process.env.HOME || '', 'figma-cli');
 
 // ── CLI args ───────────────────────────────────────────────────────────────
@@ -118,11 +119,12 @@ function renderMd(out) {
 
 // ── PLUGIN_CODE: runs inside Figma ─────────────────────────────────────────
 const PLUGIN_CODE = `
-const { registry, mode, onlyCategory } = PAYLOAD;
+const { registry, mode, onlyCategory, provenance } = PAYLOAD;
 const log = [];
 function L(msg) { log.push(String(msg)); }
 const PREFIX = registry.varPathPrefix;
 const WRITE = mode !== 'export';
+const _startTime = Date.now();
 
 // ── helpers ────────────────────────────────────────────────────────────────
 function pathToToken(p) { return p.replace(/\\//g, '.'); }
@@ -292,6 +294,9 @@ async function buildSwatchRecord(pair, varMap) {
 let swatchComp, sectionBarComp, groupHeaderComp, pillSetComp, recommendationBadgeSetComp;
 
 async function loadComponents() {
+  // Figma now requires explicit page loading before accessing children of
+  // non-current pages. loadAllPagesAsync() is the documented one-shot.
+  try { await figma.loadAllPagesAsync(); } catch (e) { L('loadAllPagesAsync failed: ' + e.message); }
   const wanted = new Set(Object.values(registry.componentNames));
   const found = {};
   (function walk(n) {
@@ -312,9 +317,31 @@ function findPillVariant(level, passed) {
   return pillSetComp.children.find(c => c.name === 'contrast=' + want) || null;
 }
 
+// Canvas (page background) color for newly-created builder output pages.
+// Hex F0F4F7 = light cool-grey.
+const _PAGE_BG = { type: 'SOLID', color: { r: 0xF0/255, g: 0xF4/255, b: 0xF7/255 } };
+
+// Resolved page name: '<base> YYYY-MM-DD HH:MM'. Computed once per run
+// (provenance.pageTs is fixed at Node-side launch) so every call site lands
+// on the same page even across minute boundaries.
+function _cpResolvedPageName() {
+  const ts = (provenance && provenance.pageTs) ? provenance.pageTs : '';
+  return ts ? (registry.targetPageName + ' ' + ts) : registry.targetPageName;
+}
+
+async function _cpEnsureTargetPage() {
+  const want = _cpResolvedPageName();
+  let p = figma.root.children.find(x => x.name === want);
+  if (!p) {
+    p = figma.createPage();
+    p.name = want;
+    try { p.backgrounds = [_PAGE_BG]; } catch (e) { L('canvas bg set failed: ' + e.message); }
+  }
+  return p;
+}
+
 async function ensureRootFrame() {
-  const targetPage = figma.root.children.find(p => p.name === registry.targetPageName);
-  if (!targetPage) throw new Error('target page not found: ' + registry.targetPageName);
+  const targetPage = await _cpEnsureTargetPage();
   await figma.setCurrentPageAsync(targetPage);
   let root = targetPage.findOne(n => n.name === registry.rootFrameName && n.type === 'FRAME');
   if (root) root.remove();
@@ -632,12 +659,78 @@ async function validateSectionBar(sb, catName, catCfg) {
   return issues;
 }
 
+// Provenance header above the root output frame. Wraps the existing root
+// in an outer VERTICAL frame so the header sits above it.
+const _CP_OUTER_NAME  = 'Color Pairings Output';
+const _CP_HEADER_NAME = '__build_header';
+const _CP_HEADER_STYLE = 's/typography/grouped/static/xs/normal';
+
+async function _cpApplyHeaderStyle(textNode) {
+  try {
+    const styles = await figma.getLocalTextStylesAsync();
+    const xs = styles.find(s => s.name === _CP_HEADER_STYLE);
+    if (xs) {
+      await figma.loadFontAsync(xs.fontName);
+      await textNode.setTextStyleIdAsync(xs.id);
+      return true;
+    }
+  } catch (e) { L('header style apply failed: ' + e.message); }
+  try {
+    const fn = { family: 'Noto Sans', style: 'Medium' };
+    await figma.loadFontAsync(fn);
+    textNode.fontName = fn; textNode.fontSize = 12;
+    textNode.lineHeight = { unit: 'PIXELS', value: 16 };
+  } catch (e) { L('header fallback font failed: ' + e.message); }
+  return false;
+}
+
+async function ensureCpHeaderAndOuter(page, root, headerText) {
+  let outer = page.children.find(c => c.type === 'FRAME' && c.name === _CP_OUTER_NAME);
+  if (!outer) {
+    outer = figma.createFrame();
+    outer.name = _CP_OUTER_NAME;
+    page.appendChild(outer);
+  }
+  outer.layoutMode = 'VERTICAL';
+  outer.itemSpacing = 24;
+  outer.primaryAxisSizingMode = 'AUTO';
+  outer.counterAxisSizingMode = 'AUTO';
+  outer.primaryAxisAlignItems = 'MIN';
+  outer.counterAxisAlignItems = 'MIN';
+  outer.paddingLeft = outer.paddingRight = outer.paddingTop = outer.paddingBottom = 0;
+  outer.fills = [];
+  outer.opacity = 1;
+  try { outer.x = 0; outer.y = 0; } catch {}
+
+  if (root && root.parent !== outer) { try { outer.appendChild(root); } catch {} }
+
+  let header = outer.children.find(c => c.type === 'TEXT' && c.name === _CP_HEADER_NAME);
+  if (!header) {
+    header = figma.createText();
+    header.name = _CP_HEADER_NAME;
+    outer.insertChild(0, header);
+  } else {
+    try { outer.insertChild(0, header); } catch {}
+  }
+  await _cpApplyHeaderStyle(header);
+  try { header.characters = headerText; } catch (e) { L('header characters set failed: ' + e.message); }
+  return outer;
+}
+
 async function validatePage() {
   const errors = [];
   const warnings = [];
   const stats = { totalSwatches: 0, byCategory: {} };
-  const targetPage = figma.root.children.find(p => p.name === registry.targetPageName);
-  if (!targetPage) { errors.push({ severity: 'error', code: 'PAGE', msg: 'target page not found: ' + registry.targetPageName }); return { errors, warnings, stats }; }
+  // Resolve to the timestamped page for this run. If not present, fall back
+  // to the most-recent build page that matches the base name (useful when
+  // running --mode validate against a build from earlier).
+  const want = _cpResolvedPageName();
+  let targetPage = figma.root.children.find(p => p.name === want);
+  if (!targetPage) {
+    const candidates = figma.root.children.filter(p => p.type === 'PAGE' && (p.name === registry.targetPageName || p.name.startsWith(registry.targetPageName + ' ')));
+    if (candidates.length) targetPage = candidates.sort((a, b) => a.name.localeCompare(b.name)).pop();
+  }
+  if (!targetPage) { errors.push({ severity: 'error', code: 'PAGE', msg: 'target page not found: ' + want }); return { errors, warnings, stats }; }
   const root = targetPage.findOne(n => n.name === registry.rootFrameName && n.type === 'FRAME');
   if (!root) { errors.push({ severity: 'error', code: 'ROOT', msg: 'root frame not found: ' + registry.rootFrameName }); return { errors, warnings, stats }; }
 
@@ -770,6 +863,30 @@ try {
   // Validate the page we just built (no extra round-trip; we still hold figma context).
   // Skip in export mode — no Figma writes happened, so there's nothing fresh to validate.
   const validate = WRITE ? await validatePage() : null;
+
+  // Provenance header + outer VERTICAL wrap. Header records: date, script@SHA,
+  // source Figma file, total swatch rows, error count, duration.
+  if (WRITE && root) {
+    const targetPage = figma.root.children.find(p => p.name === _cpResolvedPageName());
+    if (targetPage) {
+      const totalRows = (validate && validate.stats && typeof validate.stats.totalRows === 'number') ? validate.stats.totalRows : null;
+      const errCount  = (validate && validate.errors) ? validate.errors.filter(e => e.severity !== 'warning').length : 0;
+      const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
+      const prov      = provenance || {};
+      const scriptTag = prov.scriptName + (prov.gitSha ? '@' + prov.gitSha : '');
+      const parts = [];
+      if (prov.generatedAt) parts.push('Generated ' + prov.generatedAt);
+      parts.push(scriptTag);
+      parts.push('Source: ' + figma.root.name);
+      if (totalRows != null) parts.push(totalRows + ' rows');
+      parts.push(errCount + ' error' + (errCount === 1 ? '' : 's'));
+      parts.push(durSec + 's');
+      const headerText = parts.join(' · ');
+      const outer = await ensureCpHeaderAndOuter(targetPage, root, headerText);
+      try { outer.x = 0; outer.y = 0; } catch {}
+    }
+  }
+
   return { result: out, validate, log };
 } catch (e) {
   return { error: e.message, stack: e.stack, log };
@@ -778,7 +895,19 @@ try {
 
 // ── Run ────────────────────────────────────────────────────────────────────
 const registry = JSON.parse(fs.readFileSync(REGISTRY, 'utf8'));
-const payload = { registry, mode: MODE, onlyCategory: ONLY_CATEGORY };
+// Provenance for the page header — git SHA, ISO-ish timestamp, script name.
+// Soft failures: header still renders without SHA if not in a repo.
+let gitSha = null;
+try {
+  gitSha = require('child_process').execSync('git rev-parse --short HEAD', { cwd: __dirname, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+} catch {}
+const now = new Date();
+const pad = n => String(n).padStart(2, '0');
+const tzPart = new Intl.DateTimeFormat('en', { timeZoneName: 'short' }).formatToParts(now).find(p => p.type === 'timeZoneName');
+const generatedAt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}${tzPart ? ' ' + tzPart.value : ''}`;
+const pageTs = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+const payload = { registry, mode: MODE, onlyCategory: ONLY_CATEGORY, provenance: { gitSha, generatedAt, pageTs, scriptName: 'color-pairings.js' } };
 const script = `(async () => {
   const PAYLOAD = ${JSON.stringify(payload)};
   ${PLUGIN_CODE}
@@ -807,7 +936,6 @@ if (parsed.result) {
   const totals = Object.fromEntries(Object.entries(out.categories).map(([k, v]) => [k, v.length + (v.some(s => s.missing) ? ' (' + v.filter(s => s.missing).length + ' missing)' : '')]));
   console.log('Built: ' + JSON.stringify(totals));
   if (MODE !== 'figma' && MODE !== 'validate') {
-    fs.mkdirSync(SRC_LIB, { recursive: true });
     fs.writeFileSync(JSON_OUT, JSON.stringify(out, null, 2));
     console.log('Wrote ' + path.relative(REPO_ROOT, JSON_OUT));
     fs.writeFileSync(MD_OUT, renderMd(out));

@@ -19,7 +19,11 @@
  */
 'use strict';
 
-process.env.FIG_EVAL_TIMEOUT_MS = process.env.FIG_EVAL_TIMEOUT_MS || '600000';
+// 30-minute eval ceiling. Full-build dimension runs on a fresh timestamped
+// page can take >10 min because each row is detached + has its preview bar
+// swapped, and there are 180 rows. The previous 10-min cap was leaving
+// partial pages whenever a from-scratch build was triggered.
+process.env.FIG_EVAL_TIMEOUT_MS = process.env.FIG_EVAL_TIMEOUT_MS || '1800000';
 
 const fs            = require('fs');
 const os            = require('os');
@@ -67,9 +71,10 @@ function extractResult(stdout) {
 }
 
 const PLUGIN_CODE = `
-const { registry, tableFilter, pageOverride, validateOnly } = PAYLOAD;
+const { registry, tableFilter, pageOverride, validateOnly, provenance } = PAYLOAD;
 const log = [];
 function L(msg) { log.push(String(msg)); }
+const _startTime = Date.now();
 
 // ── helpers (font-aware setText, find utils) ───────────────────────────────
 const _pendingTextWrites = [];
@@ -103,6 +108,9 @@ function findFirstText(node) {
 // ── component discovery (by name from registry) ────────────────────────────
 const components = {};
 async function discoverComponents() {
+  // Figma now requires explicit page loading before accessing children of
+  // non-current pages. loadAllPagesAsync() is the documented one-shot.
+  try { await figma.loadAllPagesAsync(); } catch (e) { L('loadAllPagesAsync failed: ' + e.message); }
   const wanted = new Set(Object.values(registry.componentNames));
   (function walk(n) {
     if ((n.type === 'COMPONENT' || n.type === 'COMPONENT_SET') && wanted.has(n.name)) {
@@ -177,10 +185,37 @@ function setPreviewBar(cell, pxValue) {
   const bar = cell.findOne(n => n.type === 'RECTANGLE' && /preview/i.test(n.name));
   if (!bar) return;
   const w = Math.max(1, Math.min(PREVIEW_BAR_MAX, Math.round(pxValue)));
-  // The rectangle inherits auto-layout sizing from the master (likely FILL).
-  // Force FIXED width before resize, otherwise the resize is silently overridden.
   try { bar.layoutSizingHorizontal = 'FIXED'; } catch {}
   try { bar.resize(w, bar.height || 4); } catch (e) { L('preview resize failed: ' + e.message); }
+}
+
+// Replace any RECTANGLE bar in the cell with an INSTANCE of the centralised
+// preview_bar component (so color/corner styling is editable in one place).
+// Only call after the row has been detached — the cell must be writable.
+function swapToPreviewBarComponent(cell, pxValue) {
+  if (!cell || !components.previewBar || !cell.findOne) return;
+  const w = Math.max(1, Math.min(PREVIEW_BAR_MAX, Math.round(pxValue)));
+  const existingBar = cell.findOne(n => (n.type === 'RECTANGLE' || n.type === 'INSTANCE') && /preview/i.test(n.name));
+  // If there's already an INSTANCE of our component, just resize it.
+  if (existingBar && existingBar.type === 'INSTANCE') {
+    try { existingBar.layoutSizingHorizontal = 'FIXED'; } catch {}
+    try { existingBar.resize(w, existingBar.height || 4); } catch (e) { L('preview inst resize failed: ' + e.message); }
+    return;
+  }
+  // Otherwise replace the rectangle with a fresh instance.
+  const inst = components.previewBar.createInstance();
+  // Always use the literal name — preserves master-default unless the existing
+  // bar has a usable string name. Coerce defensively because Figma can hand
+  // back figma.mixed (symbol) for some node properties.
+  const existingName = existingBar && typeof existingBar.name === 'string' ? existingBar.name : null;
+  inst.name = existingName || 'preview_bar';
+  // Position in same slot — find the index of the existing bar to preserve layout order.
+  const parentChildren = cell.children || [];
+  const idx = existingBar ? parentChildren.indexOf(existingBar) : parentChildren.length;
+  if (existingBar) { try { existingBar.remove(); } catch {} }
+  cell.insertChild(idx < 0 ? parentChildren.length : idx, inst);
+  try { inst.layoutSizingHorizontal = 'FIXED'; } catch {}
+  try { inst.resize(w, inst.height || 4); } catch (e) { L('preview inst resize failed: ' + e.message); }
 }
 
 async function resolveDim(variable, modeName) {
@@ -202,53 +237,270 @@ async function resolveDim(variable, modeName) {
 }
 
 // ── page + section management ──────────────────────────────────────────────
+// Canvas (page background) color for newly-created builder output pages.
+// Hex F0F4F7 = light cool-grey — matches the user's design choice.
+const _PAGE_BG = { type: 'SOLID', color: { r: 0xF0/255, g: 0xF4/255, b: 0xF7/255 } };
+
 async function ensurePage() {
-  const name = pageOverride || registry.page;
+  // Explicit --page override wins and skips the timestamp/create flow.
+  if (pageOverride) {
+    const p = figma.root.children.find(x => x.name === pageOverride);
+    if (!p) throw new Error('target page not found: ' + pageOverride);
+    await figma.setCurrentPageAsync(p);
+    return p;
+  }
+  // Otherwise: target page name = '<base> YYYY-MM-DD HH:MM' (timestamp from
+  // provenance, so it matches the header). Reuse if a page with the exact
+  // name exists (idempotent within a minute); create new otherwise. New
+  // pages get the canvas color set.
+  const ts = (provenance && provenance.pageTs) ? provenance.pageTs : '';
+  const name = ts ? (registry.page + ' ' + ts) : registry.page;
   let p = figma.root.children.find(x => x.name === name);
-  if (!p) throw new Error('target page not found: ' + name);
+  if (!p) {
+    p = figma.createPage();
+    p.name = name;
+    try { p.backgrounds = [_PAGE_BG]; } catch (e) { L('canvas bg set failed: ' + e.message); }
+  }
   await figma.setCurrentPageAsync(p);
   return p;
 }
 
-function findSection(page, sectionName) {
-  return page.children.find(c => c.name === sectionName && (c.type === 'SECTION' || c.type === 'FRAME')) || null;
+const TABLE_WIDTH = 1580; // matches the section bar / row natural width
+const WRAPPER_NAME = 'Dimension Tables';
+const WRAPPER_GAP  = 96;
+const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
+
+let _bgVar = undefined; // undefined = not searched yet, null = searched + missing
+function getBgVar() {
+  if (_bgVar !== undefined) return _bgVar;
+  _bgVar = allVars.find(v => v.name === BG_VAR_NAME) || null;
+  if (!_bgVar) L('warn: bg variable not found: ' + BG_VAR_NAME);
+  return _bgVar;
 }
 
-const TABLE_WIDTH = 1580; // matches the section bar / row natural width
+function whiteBgFill() {
+  const v = getBgVar();
+  let fill = { type: 'SOLID', color: { r: 1, g: 1, b: 1 } };
+  if (v) {
+    try { fill = figma.variables.setBoundVariableForPaint(fill, 'color', v); }
+    catch (e) { L('bind bg var failed: ' + e.message); }
+  }
+  return fill;
+}
 
-async function ensureTableFrame(section, tableName) {
-  // SAFETY: only manage the Table frame we own. Never touch other section
-  // children — the user may have manual content alongside the script-owned
-  // table, and bulk-deletion violates the "never wipe Figma pages" memory rule.
-  let table = section.children && section.children.find(c => c.name === tableName && c.type === 'FRAME');
+// Horizontal-autolayout wrapper with two vertical sub-columns. Static tables go
+// in the Left column, dynamic tables in the Right column — matches the manual
+// layout the user arranged in the V9.7 file.
+const COL_LEFT_NAME  = 'Tables Wrapper Left';
+const COL_RIGHT_NAME = 'Tables Wrapper Right';
+
+function configureColumn(col) {
+  col.layoutMode = 'VERTICAL';
+  col.itemSpacing = WRAPPER_GAP;
+  col.primaryAxisSizingMode = 'AUTO';
+  col.counterAxisSizingMode = 'AUTO';
+  col.primaryAxisAlignItems = 'MIN';
+  col.counterAxisAlignItems = 'MIN';
+  col.paddingLeft = col.paddingRight = col.paddingTop = col.paddingBottom = 0;
+  col.fills = [];
+  col.opacity = 1;
+}
+
+// Provenance header: small text bar above the 2-column wrapper. Records when
+// the page was generated, by which script@SHA, the source Figma file, and a
+// build-health summary (rows / errors / duration). Wraps the existing wrapper
+// in an outer VERTICAL frame so the header sits cleanly above.
+const OUTER_NAME = 'Dimension Output';
+const HEADER_NAME = '__build_header';
+const HEADER_STYLE = 's/typography/grouped/static/xs/normal'; // 12px Noto Sans Medium / 16
+
+async function applyHeaderStyle(textNode) {
+  try {
+    const styles = await figma.getLocalTextStylesAsync();
+    const xs = styles.find(s => s.name === HEADER_STYLE);
+    if (xs) {
+      await figma.loadFontAsync(xs.fontName);
+      await textNode.setTextStyleIdAsync(xs.id);
+      return true;
+    }
+  } catch (e) { L('header style apply failed: ' + e.message); }
+  // Fallback: hard-coded 12px Noto Sans Medium
+  try {
+    const fn = { family: 'Noto Sans', style: 'Medium' };
+    await figma.loadFontAsync(fn);
+    textNode.fontName = fn;
+    textNode.fontSize = 12;
+    textNode.lineHeight = { unit: 'PIXELS', value: 16 };
+  } catch (e) { L('header fallback font failed: ' + e.message); }
+  return false;
+}
+
+async function ensureHeaderAndOuter(page, wrapper, headerText) {
+  // Outer VERTICAL frame that hosts [header, wrapper] as siblings.
+  let outer = page.children.find(c => c.type === 'FRAME' && c.name === OUTER_NAME);
+  if (!outer) {
+    outer = figma.createFrame();
+    outer.name = OUTER_NAME;
+    page.appendChild(outer);
+  }
+  outer.layoutMode = 'VERTICAL';
+  outer.itemSpacing = 24;
+  outer.primaryAxisSizingMode = 'AUTO';
+  outer.counterAxisSizingMode = 'AUTO';
+  outer.primaryAxisAlignItems = 'MIN';
+  outer.counterAxisAlignItems = 'MIN';
+  outer.paddingLeft = outer.paddingRight = outer.paddingTop = outer.paddingBottom = 0;
+  outer.fills = [];
+  outer.opacity = 1;
+  try { outer.x = 0; outer.y = 0; } catch {}
+
+  // Move the HORIZONTAL wrapper inside outer (skip if already child of outer).
+  if (wrapper && wrapper.parent !== outer) { try { outer.appendChild(wrapper); } catch {} }
+
+  // Header TEXT: find existing or create.
+  let header = outer.children.find(c => c.type === 'TEXT' && c.name === HEADER_NAME);
+  if (!header) {
+    header = figma.createText();
+    header.name = HEADER_NAME;
+    outer.insertChild(0, header);
+  } else {
+    try { outer.insertChild(0, header); } catch {}
+  }
+  await applyHeaderStyle(header);
+  try { header.characters = headerText; } catch (e) { L('header characters set failed: ' + e.message); }
+  return outer;
+}
+
+async function ensureWrapper(page) {
+  // findOne (not children.find) so the wrapper is located even when it's
+  // already nested inside the outer 'Dimension Output' frame from a prior run.
+  let wrapper = page.findOne(c => c.type === 'FRAME' && c.name === WRAPPER_NAME);
+  if (!wrapper) {
+    wrapper = figma.createFrame();
+    wrapper.name = WRAPPER_NAME;
+    page.appendChild(wrapper);
+  }
+  wrapper.layoutMode          = 'HORIZONTAL';
+  wrapper.itemSpacing         = WRAPPER_GAP;
+  wrapper.primaryAxisSizingMode = 'AUTO';
+  wrapper.counterAxisSizingMode = 'AUTO';
+  wrapper.primaryAxisAlignItems = 'MIN';
+  wrapper.counterAxisAlignItems = 'MIN';
+  wrapper.paddingLeft = wrapper.paddingRight = wrapper.paddingTop = wrapper.paddingBottom = 0;
+  wrapper.fills = [];
+  wrapper.opacity = 1;
+  try { wrapper.x = 0; wrapper.y = 0; } catch {}
+
+  // Find/create the two sub-columns inside the wrapper. Look anywhere on the
+  // page first (in case prior builds left them at page level), then move them
+  // into the wrapper.
+  function ensureColumn(name) {
+    let col = page.findOne(n => n.type === 'FRAME' && n.name === name);
+    if (col && col.parent !== wrapper) { try { wrapper.appendChild(col); } catch {} }
+    if (!col) {
+      col = figma.createFrame();
+      col.name = name;
+      wrapper.appendChild(col);
+    }
+    configureColumn(col);
+    return col;
+  }
+  const left  = ensureColumn(COL_LEFT_NAME);
+  const right = ensureColumn(COL_RIGHT_NAME);
+  // Enforce order: Left then Right
+  try { wrapper.insertChild(0, left); } catch {}
+  try { wrapper.insertChild(1, right); } catch {}
+  return { wrapper, left, right };
+}
+
+// Tables live at PAGE level during the build (NOT inside the wrapper) — putting
+// them inside the HORIZONTAL autolayout wrapper while building causes Figma to
+// reflow every sibling on each row append, which slows the build ~10×. Tables
+// are batch-migrated into the wrapper at the end of main().
+// Each table gets a white bg fill bound to the variable
+// ob/s1/color/neutral/bg/contrast_highest/inversity_normal.
+async function ensureTableFrame(page, tableName) {
+  let table = page.findOne(n => n.type === 'FRAME' && n.name === tableName);
+  if (table && table.parent !== page) {
+    const oldParent = table.parent;
+    page.appendChild(table);
+    if (oldParent && oldParent.type === 'SECTION' && (!oldParent.children || oldParent.children.length === 0)) {
+      try { oldParent.remove(); } catch {}
+    }
+  }
   if (!table) {
     table = figma.createFrame();
     table.name = tableName;
-    section.appendChild(table);
+    page.appendChild(table);
   }
   table.layoutMode = 'VERTICAL';
   table.itemSpacing = 0;
   table.primaryAxisSizingMode = 'AUTO';
   table.counterAxisSizingMode = 'FIXED';
-  table.fills = [];
+  table.opacity = 1; // reset any stale washed-out state
+  table.fills = [whiteBgFill()];
   try { table.resize(TABLE_WIDTH, table.height || 100); } catch {}
-  // Clear stale children
-  for (const c of [...table.children]) { try { c.remove(); } catch {} }
   return table;
 }
 
+// Reduce existing duplicates inside the table to a single canonical instance.
+// Used to make rebuilds idempotent without nuking working rows on crash.
+function dedupeBy(table, predicate) {
+  const found = table.children.filter(predicate);
+  if (found.length <= 1) return found[0] || null;
+  for (let i = 1; i < found.length; i++) { try { found[i].remove(); } catch {} }
+  return found[0];
+}
+
 function stretch(node) {
-  try { node.layoutSizingHorizontal = 'FILL'; } catch {}
+  if (!node) return;
+  // Two APIs, two failure modes — try both. Modern: layoutSizingHorizontal=FILL.
+  // Legacy: layoutAlign=STRETCH. Some component instances accept only one of
+  // them depending on master config, and Figma silently no-ops the other.
+  let setFill = false, setStretch = false;
+  try { node.layoutSizingHorizontal = 'FILL'; setFill = true; } catch (e) { L('stretch FILL failed on ' + node.name + ': ' + e.message); }
+  try { node.layoutAlign = 'STRETCH'; setStretch = true; } catch (e) { L('stretch STRETCH failed on ' + node.name + ': ' + e.message); }
+  if (!setFill && !setStretch) L('stretch: both APIs failed on ' + node.name);
 }
 
 async function buildSectionBar(spec) {
   if (!components.sectionBar) return null;
   const inst = components.sectionBar.createInstance();
   inst.name = '_docs/dimension/section_bar';
-  // setProperties for each TEXT prop, fallback to direct text writes
+  await applySectionBarContent(inst, spec);
+  return inst;
+}
+
+// Set / re-set the title, subtitle (variable prefix), purpose, guideline, and
+// hide the tier letter. Safe to call on both freshly-created and existing
+// section_bar instances — idempotent.
+async function applySectionBarContent(inst, spec) {
+  if (!inst) return;
+  // Hide the giant tier letter on every build. Dimension page is all-semantic;
+  // the 'S' adds visual noise without information. Tier-letter boolean prop
+  // exists in the master but isn't wired to visibility, so override the node.
+  const tier = inst.findOne(n => n.type === 'TEXT' && n.name === 'tierLetter');
+  if (tier) { try { tier.visible = false; } catch {} }
+
+  // Force the inner layout chain to FILL so the section bar's content fills
+  // the full table width. The master's 'Layout' frame is FIXED at 794px;
+  // without overrides each instance would render at that fixed width and
+  // leave the right side blank.
+  for (const name of ['Section Content', 'Layout', 'Content', 'Title Row', 'Section Info', 'Description Group']) {
+    const node = inst.findOne(n => (n.type === 'FRAME' || n.type === 'INSTANCE') && n.name === name);
+    if (!node) continue;
+    try { node.layoutSizingHorizontal = 'FILL'; } catch (e) { L('FILL failed on ' + name + ': ' + e.message); }
+    try { node.layoutAlign = 'STRETCH'; } catch {}
+  }
+
+  // Variable prefix as dotted path for the subtitle line:
+  // "ob/s/dimension/static/density/" → "ob.s.dimension.static.density"
+  const variablePrefix = (spec.prefix || '').replace(/\\//g, '.').replace(/\\.+$/, '');
+
   const want = {
     tierLetter: spec.section.tier || 'S',
     title: spec.section.title,
+    subtitle: variablePrefix,
     purpose: spec.section.purpose || '',
     guideline: spec.section.guideline || ''
   };
@@ -259,23 +511,26 @@ async function buildSectionBar(spec) {
     if (key) updates[key] = String(val);
   }
   if (Object.keys(updates).length) { try { inst.setProperties(updates); } catch (e) { L('section bar setProperties failed: ' + e.message); } }
-  // Fallback text writes for fields without a property binding
+
+  // Fallback text writes for fields without a property binding. The subtitle
+  // node (__sectionSubTitle) was added to the master manually and isn't yet
+  // wired to a TEXT prop, so it always falls through here.
   const map = {
     tierLetter: ['tierLetter'],
     title: ['__sectionTitle', 'title'],
+    subtitle: ['__sectionSubTitle', 'subtitle'],
     purpose: ['description', 'purpose'],
     guideline: ['guideline']
   };
   for (const [bare, val] of Object.entries(want)) {
     const key = Object.keys(props).find(k => k === bare || k.split('#')[0] === bare);
     if (key) continue;
-    if (!val) continue;
+    if (val === undefined || val === null || val === '') continue;
     for (const nodeName of map[bare]) {
       const node = inst.findOne(n => n.type === 'TEXT' && n.name === nodeName);
       if (node) { await setText(node, bare === 'purpose' ? 'Purpose: ' + val : String(val)); break; }
     }
   }
-  return inst;
 }
 
 async function buildStaticHeader() {
@@ -349,8 +604,10 @@ async function buildModeRow(v, spec) {
   return { instance: inst, v, tokenPath, values, modes: spec.modes };
 }
 
-// After append + populate, detach the row so we can resize the preview rectangles
-// (instance-internal RECTANGLE widths are read-only in Figma).
+// After append + populate, detach the row so we can swap each preview rectangle
+// for an instance of the centralised _docs/dimension/preview_bar component
+// (instance-internal RECTANGLE widths are read-only in Figma; once detached, the
+// cell is writable and we can drop in a top-level instance whose width we own).
 async function detachAndSizePreview(rowBuilt, isMode) {
   const inst = rowBuilt.instance;
   let node = inst;
@@ -358,40 +615,85 @@ async function detachAndSizePreview(rowBuilt, isMode) {
   catch (e) { L('detach failed: ' + e.message); }
   if (!isMode) {
     const cell = findChild(node, 'Cell: Preview');
-    setPreviewBar(cell, pxFromValue(rowBuilt.v, rowBuilt.value));
+    // Static row master has Cell: Preview at 192px while the header at 352px —
+    // align by widening the cell so columns line up under the header.
+    if (cell) { try { cell.layoutSizingHorizontal = 'FIXED'; cell.resize(352, cell.height); } catch {} }
+    swapToPreviewBarComponent(cell, pxFromValue(rowBuilt.v, rowBuilt.value));
   } else {
     for (let i = 0; i < rowBuilt.modes.length; i++) {
       const m = rowBuilt.modes[i];
       const cell = findChild(node, 'Cell: Mode ' + (i + 1))
                 || findChild(node, 'Cell: ' + m)
                 || findChild(node, 'mode_cell_' + (i + 1));
-      if (cell) setPreviewBar(cell, pxFromValue(rowBuilt.v, rowBuilt.values[m]));
+      if (cell) swapToPreviewBarComponent(cell, pxFromValue(rowBuilt.v, rowBuilt.values[m]));
     }
   }
   return node;
 }
 
 // ── build one table ────────────────────────────────────────────────────────
+// Additive: don't nuke existing rows. Read what's already in the table, dedupe
+// the section bar/header, and only build rows for tokens not yet present
+// (matched by token-name TEXT content). Makes rebuilds safe to interrupt —
+// partial state is preserved between runs.
 async function buildTable(page, spec) {
-  const section = findSection(page, spec.sectionName);
-  if (!section) return { id: spec.id, ok: false, error: 'section not found: ' + spec.sectionName };
-  const table = await ensureTableFrame(section, spec.tableName);
+  const table = await ensureTableFrame(page, spec.tableName);
   const tokens = varsForTable(spec);
+  const result = { id: spec.id, ok: true, info: { tokenCount: tokens.length, rowsBuilt: 0, rowsKept: 0 } };
+
+  // Section bar: keep canonical or build a new one. Always re-apply content so
+  // existing section bars pick up new overrides (hide tier letter, multi-line
+  // title with variable prefix, etc.).
+  let sb = dedupeBy(table, c => c.type === 'INSTANCE' && /section_bar$/.test(c.name));
+  if (!sb) {
+    sb = await buildSectionBar(spec);
+    if (sb) { table.insertChild(0, sb); stretch(sb); }
+  } else {
+    await applySectionBarContent(sb, spec);
+    try { table.insertChild(0, sb); } catch {}
+    stretch(sb);
+  }
+
+  // Header row: keep canonical or build a new one
+  let header = dedupeBy(table, c => c.type === 'INSTANCE' && /header_row(_2mode|_3mode)?$/.test(c.name));
+  if (!header) {
+    header = spec.kind === 'static'
+      ? await buildStaticHeader()
+      : await buildModeHeader(spec.modes);
+    if (header) { table.insertChild(1, header); stretch(header); }
+  } else {
+    try { table.insertChild(1, header); } catch {}
+    stretch(header);
+  }
+
+  // Map token-name → existing row node (by reading the name TEXT content).
+  // Anything that looks like a row but has no name is a stale half-built leftover
+  // from a crashed run — drop it.
+  const existing = new Map();
+  for (const c of [...table.children]) {
+    if (c === sb || c === header) continue;
+    // Slash prefix excludes header_row — its component name is _docs/dimension/header_row,
+    // which ends with "/header_row", not "/row".
+    if (!/\\/row(_2mode|_3mode)?$/.test(c.name)) continue;
+    const nameNode = findRowNameNode(c);
+    const txt = nameNode ? String(nameNode.characters || '').trim() : '';
+    // Skip the master-default placeholder string the build leaves on unset rows
+    // and any row that hasn't had its name written yet — both are stale.
+    if (!txt || txt === '$token.name') { try { c.remove(); } catch {} continue; }
+    if (existing.has(txt)) { try { c.remove(); } catch {} continue; } // dedupe by token name
+    existing.set(txt, c);
+  }
+  result.info.rowsKept = existing.size;
+
+  // Only build rows for tokens we don't already have
   let rowsBuilt = 0;
-  const result = { id: spec.id, ok: true, info: { tokenCount: tokens.length, rowsBuilt: 0 } };
-  const sb = await buildSectionBar(spec);
-  if (sb) { table.appendChild(sb); stretch(sb); }
-  const header = spec.kind === 'static'
-    ? await buildStaticHeader()
-    : await buildModeHeader(spec.modes);
-  if (header) { table.appendChild(header); stretch(header); }
   for (const v of tokens) {
+    const tokenPath = v.name.replace(/\\//g, '.');
+    if (existing.has(tokenPath)) continue;
     const r = spec.kind === 'static' ? await buildStaticRow(v) : await buildModeRow(v, spec);
     if (r && r.instance) {
       table.appendChild(r.instance);
       stretch(r.instance);
-      // Detach to gain control over internal RECTANGLE widths (preview bars),
-      // then size each preview rectangle to the px-equivalent of its value.
       await flushTextWrites(); // ensure text writes settle before detach
       const detached = await detachAndSizePreview(r, spec.kind !== 'static');
       stretch(detached);
@@ -411,11 +713,12 @@ async function validatePage(page) {
   const stats = { totalRows: 0, byTable: {} };
   for (const spec of registry.tables) {
     if (tableFilter && tableFilter !== spec.id) continue;
-    const section = findSection(page, spec.sectionName);
-    if (!section) { errors.push({ code: 'STRUCT', id: spec.id, msg: 'section not found' }); continue; }
-    const tableFrames = section.children.filter(c => c.name === spec.tableName && c.type === 'FRAME');
+    // Tables live inside the HORIZONTAL wrapper frame on the page; findAll
+    // tolerates either nesting state (wrapper-child or page-child) and the
+    // count check still catches duplication.
+    const tableFrames = page.findAll(c => c.name === spec.tableName && c.type === 'FRAME');
     if (tableFrames.length !== 1) {
-      errors.push({ code: 'DUP', id: spec.id, msg: 'expected 1 table frame, got ' + tableFrames.length });
+      errors.push({ code: 'DUP', id: spec.id, msg: 'expected 1 table frame on page, got ' + tableFrames.length });
       continue;
     }
     const table = tableFrames[0];
@@ -476,14 +779,59 @@ async function main() {
     return { mode: 'validate', validate, log };
   }
 
+  // Move tables out of the wrapper / columns before building so row appends
+  // don't trigger autolayout reflow on every sibling. Tables are batch-
+  // migrated back into the two columns at the end of main().
+  for (const colName of [WRAPPER_NAME, COL_LEFT_NAME, COL_RIGHT_NAME]) {
+    const ex = page.findOne(c => c.type === 'FRAME' && c.name === colName);
+    if (!ex) continue;
+    for (const c of [...ex.children]) {
+      if (c.type === 'FRAME' && /^Table: /.test(c.name)) page.appendChild(c);
+    }
+  }
+
   const results = [];
   for (const spec of registry.tables) {
     if (tableFilter && tableFilter !== spec.id) continue;
-    try { results.push(await buildTable(page, spec)); }
-    catch (e) { results.push({ id: spec.id, ok: false, error: e.message }); }
+    try {
+      const res = await buildTable(page, spec);
+      results.push(res);
+    } catch (e) { results.push({ id: spec.id, ok: false, error: e.message }); }
   }
   await flushTextWrites();
+
+  // After build: create/configure wrapper + 2 columns, then migrate each table
+  // into the correct column based on spec.kind (static → Left, dynamic → Right)
+  // in registry order. Done once at the end to avoid per-row reflow.
+  const { wrapper, left, right } = await ensureWrapper(page);
+  for (const spec of registry.tables) {
+    const t = page.findOne(c => c.type === 'FRAME' && c.name === spec.tableName);
+    if (!t) continue;
+    const target = spec.kind === 'static' ? left : right;
+    try { target.appendChild(t); } catch {}
+  }
+
   const validate = await validatePage(page);
+
+  // Build the provenance header text and wrap [header, wrapper] in an outer
+  // VERTICAL frame. Records date, script@sha, source file, totals, duration.
+  const totalRows = (validate && validate.stats && typeof validate.stats.totalRows === 'number') ? validate.stats.totalRows : 0;
+  const errCount  = (validate && validate.errors) ? validate.errors.length : 0;
+  const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
+  const prov      = provenance || {};
+  const scriptTag = prov.scriptName + (prov.gitSha ? '@' + prov.gitSha : '');
+  const parts = [];
+  if (prov.generatedAt) parts.push('Generated ' + prov.generatedAt);
+  parts.push(scriptTag);
+  parts.push('Source: ' + figma.root.name);
+  parts.push(totalRows + ' rows');
+  parts.push(errCount + ' error' + (errCount === 1 ? '' : 's'));
+  parts.push(durSec + 's');
+  const headerText = parts.join(' · ');
+  const outer = await ensureHeaderAndOuter(page, wrapper, headerText);
+  // Pin the outer frame at origin (replaces the previous wrapper pin).
+  try { outer.x = 0; outer.y = 0; } catch {}
+
   return { results, validate, log };
 }
 
@@ -498,7 +846,23 @@ function main() {
   if (TABLE_FILTER) console.log(`  Filtering to: ${TABLE_FILTER}`);
   if (VALIDATE_ONLY) console.log('  Mode: validate (no writes)');
 
-  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY };
+  // Provenance for the page header — git SHA, ISO-ish timestamp w/ TZ, script
+  // relative to repo root. Soft failures: header still renders without git
+  // info if not in a repo.
+  let gitSha = null;
+  try {
+    gitSha = require('child_process').execSync('git rev-parse --short HEAD', { cwd: __dirname, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+  } catch {}
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const tzPart = new Intl.DateTimeFormat('en', { timeZoneName: 'short' }).formatToParts(now).find(p => p.type === 'timeZoneName');
+  const generatedAt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}${tzPart ? ' ' + tzPart.value : ''}`;
+  // Same minute-precision timestamp used to suffix the build page name. No TZ
+  // marker here — keeps Figma page names short.
+  const pageTs = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  const scriptRel = 'scripts-custom/figma-doc-builders/dimension/dimension.js';
+
+  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'dimension.js' } };
   const script = `(async () => {\nconst PAYLOAD = ${JSON.stringify(payload)};\n${PLUGIN_CODE}\n})()`;
 
   const t0 = Date.now();
