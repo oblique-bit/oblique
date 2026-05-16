@@ -22,244 +22,244 @@
         },
         "px": {
           "0": {
-            "$type": "dimension",
-            "$value": "0px"
+            "$type": "number",
+            "$value": "0"
           },
           "1": {
-            "$type": "dimension",
-            "$value": "1px"
+            "$type": "number",
+            "$value": "1"
           },
           "2": {
-            "$type": "dimension",
-            "$value": "2px"
+            "$type": "number",
+            "$value": "2"
           },
           "3": {
-            "$type": "dimension",
-            "$value": "3px"
+            "$type": "number",
+            "$value": "3"
           },
           "4": {
-            "$type": "dimension",
-            "$value": "4px"
+            "$type": "number",
+            "$value": "4"
           },
           "6": {
-            "$type": "dimension",
-            "$value": "6px"
+            "$type": "number",
+            "$value": "6"
           },
           "8": {
-            "$type": "dimension",
-            "$value": "8px"
+            "$type": "number",
+            "$value": "8"
           },
           "10": {
-            "$type": "dimension",
-            "$value": "10px"
+            "$type": "number",
+            "$value": "10"
           },
           "12": {
-            "$type": "dimension",
-            "$value": "12px"
+            "$type": "number",
+            "$value": "12"
           },
           "16": {
-            "$type": "dimension",
-            "$value": "16px"
+            "$type": "number",
+            "$value": "16"
           },
           "20": {
-            "$type": "dimension",
-            "$value": "20px"
+            "$type": "number",
+            "$value": "20"
           },
           "24": {
-            "$type": "dimension",
-            "$value": "24px"
+            "$type": "number",
+            "$value": "24"
           },
           "28": {
-            "$type": "dimension",
-            "$value": "28px"
+            "$type": "number",
+            "$value": "28"
           },
           "32": {
-            "$type": "dimension",
-            "$value": "32px"
+            "$type": "number",
+            "$value": "32"
           },
           "36": {
-            "$type": "dimension",
-            "$value": "36px"
+            "$type": "number",
+            "$value": "36"
           },
           "40": {
-            "$type": "dimension",
-            "$value": "40px"
+            "$type": "number",
+            "$value": "40"
           },
           "48": {
-            "$type": "dimension",
-            "$value": "48px"
+            "$type": "number",
+            "$value": "48"
           },
           "56": {
-            "$type": "dimension",
-            "$value": "56px"
+            "$type": "number",
+            "$value": "56"
           },
           "64": {
-            "$type": "dimension",
-            "$value": "64px"
+            "$type": "number",
+            "$value": "64"
           },
           "80": {
-            "$type": "dimension",
-            "$value": "80px"
+            "$type": "number",
+            "$value": "80"
           },
           "96": {
-            "$type": "dimension",
-            "$value": "96px"
+            "$type": "number",
+            "$value": "96"
           },
           "128": {
-            "$type": "dimension",
-            "$value": "128px"
+            "$type": "number",
+            "$value": "128"
           },
           "160": {
-            "$type": "dimension",
-            "$value": "160px"
+            "$type": "number",
+            "$value": "160"
           },
           "192": {
-            "$type": "dimension",
-            "$value": "192px"
+            "$type": "number",
+            "$value": "192"
           },
           "256": {
-            "$type": "dimension",
-            "$value": "256px"
+            "$type": "number",
+            "$value": "256"
           },
           "320": {
-            "$type": "dimension",
-            "$value": "320px"
+            "$type": "number",
+            "$value": "320"
           },
           "9999": {
-            "$type": "dimension",
-            "$value": "999px",
+            "$type": "number",
+            "$value": "999",
             "$description": "Maximum value for full rounding"
           }
         },
         "rem": {
           "0": {
-            "$type": "dimension",
-            "$value": "0rem",
+            "$type": "number",
+            "$value": "0",
             "$description": "0px equivalent"
           },
           "100": {
-            "$type": "dimension",
-            "$value": "0.0625rem",
+            "$type": "number",
+            "$value": "0.0625",
             "$description": "1px equivalent"
           },
           "200": {
-            "$type": "dimension",
-            "$value": "0.125rem",
+            "$type": "number",
+            "$value": "0.125",
             "$description": "2px equivalent"
           },
           "300": {
-            "$type": "dimension",
-            "$value": "0.1875rem",
+            "$type": "number",
+            "$value": "0.1875",
             "$description": "3px equivalent"
           },
           "400": {
-            "$type": "dimension",
-            "$value": "0.25rem",
+            "$type": "number",
+            "$value": "0.25",
             "$description": "4px equivalent"
           },
           "500": {
-            "$type": "dimension",
-            "$value": "0.375rem",
+            "$type": "number",
+            "$value": "0.375",
             "$description": "6px equivalent"
           },
           "600": {
-            "$type": "dimension",
-            "$value": "0.5rem",
+            "$type": "number",
+            "$value": "0.5",
             "$description": "8px equivalent"
           },
           "700": {
-            "$type": "dimension",
-            "$value": "0.625rem",
+            "$type": "number",
+            "$value": "0.625",
             "$description": "10px equivalent"
           },
           "800": {
-            "$type": "dimension",
-            "$value": "0.75rem",
+            "$type": "number",
+            "$value": "0.75",
             "$description": "12px equivalent"
           },
           "900": {
-            "$type": "dimension",
-            "$value": "1rem",
+            "$type": "number",
+            "$value": "1",
             "$description": "16px equivalent"
           },
           "1000": {
-            "$type": "dimension",
-            "$value": "1.25rem",
+            "$type": "number",
+            "$value": "1.25",
             "$description": "20px equivalent"
           },
           "1100": {
-            "$type": "dimension",
-            "$value": "1.5rem",
+            "$type": "number",
+            "$value": "1.5",
             "$description": "24px equivalent"
           },
           "1200": {
-            "$type": "dimension",
-            "$value": "1.75rem",
+            "$type": "number",
+            "$value": "1.75",
             "$description": "28px equivalent"
           },
           "1300": {
-            "$type": "dimension",
-            "$value": "2rem",
+            "$type": "number",
+            "$value": "2",
             "$description": "32px equivalent"
           },
           "1400": {
-            "$type": "dimension",
-            "$value": "2.25rem",
+            "$type": "number",
+            "$value": "2.25",
             "$description": "36px equivalent"
           },
           "1500": {
-            "$type": "dimension",
-            "$value": "2.5rem",
+            "$type": "number",
+            "$value": "2.5",
             "$description": "40px equivalent"
           },
           "1600": {
-            "$type": "dimension",
-            "$value": "3rem",
+            "$type": "number",
+            "$value": "3",
             "$description": "48px equivalent"
           },
           "1700": {
-            "$type": "dimension",
-            "$value": "3.5rem",
+            "$type": "number",
+            "$value": "3.5",
             "$description": "56px equivalent"
           },
           "1800": {
-            "$type": "dimension",
-            "$value": "4rem",
+            "$type": "number",
+            "$value": "4",
             "$description": "64px equivalent"
           },
           "1900": {
-            "$type": "dimension",
-            "$value": "5rem",
+            "$type": "number",
+            "$value": "5",
             "$description": "80px equivalent"
           },
           "2000": {
-            "$type": "dimension",
-            "$value": "6rem",
+            "$type": "number",
+            "$value": "6",
             "$description": "96px equivalent"
           },
           "2100": {
-            "$type": "dimension",
-            "$value": "8rem",
+            "$type": "number",
+            "$value": "8",
             "$description": "128px equivalent"
           },
           "2200": {
-            "$type": "dimension",
-            "$value": "10rem",
+            "$type": "number",
+            "$value": "10",
             "$description": "160px equivalent"
           },
           "2300": {
-            "$type": "dimension",
-            "$value": "12rem",
+            "$type": "number",
+            "$value": "12",
             "$description": "192px equivalent"
           },
           "2400": {
-            "$type": "dimension",
-            "$value": "16rem",
+            "$type": "number",
+            "$value": "16",
             "$description": "256px equivalent"
           },
           "2500": {
-            "$type": "dimension",
-            "$value": "20rem",
+            "$type": "number",
+            "$value": "20",
             "$description": "320px equivalent"
           }
         }

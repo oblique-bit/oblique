@@ -10,9 +10,26 @@
     "foundationBar": "_building_blocks/shared/foundation_bar"
   },
   "foundationName": "Typography",
+  "subgroups": {
+    "scales": {
+      "tierLetter": "Scales",
+      "title": "Styles",
+      "subtitle": "s.typography.grouped",
+      "purpose": "Composite text styles used mainly in component build process. Static does not react to variable modes; dynamic scales with the ui_scale mode (sm / md / lg).",
+      "guideline": "Pair Static with hard-coded layouts; pair Dynamic with anything that should scale across density tiers."
+    },
+    "html": {
+      "tierLetter": "HTML",
+      "title": "Styles",
+      "subtitle": "h.typography.style  ·  h.link",
+      "purpose": "Text styles for common page content: headings, body / paragraph styles, and link interaction states. All consume the typography_context variable — set the frame's mode to switch interface ↔ prose.",
+      "guideline": "Pair semantically with HTML elements (h1–h6, p, a). To compare interface vs prose, set the typography_context mode on each table frame manually in Figma."
+    }
+  },
   "tables": [
     {
       "id": "grouped-static",
+      "subgroup": "scales",
       "sectionName": "Grouped Composites — Static",
       "tableName": "Table: typography/grouped-static",
       "section": {
@@ -27,6 +44,7 @@
     },
     {
       "id": "grouped-dynamic",
+      "subgroup": "scales",
       "sectionName": "Grouped Composites — Dynamic",
       "tableName": "Table: typography/grouped-dynamic",
       "section": {
@@ -41,6 +59,7 @@
     },
     {
       "id": "html-heading",
+      "subgroup": "html",
       "sectionName": "HTML — Headings",
       "tableName": "Table: typography/html-heading",
       "section": {
@@ -55,6 +74,7 @@
     },
     {
       "id": "html-body",
+      "subgroup": "html",
       "sectionName": "HTML — Body",
       "tableName": "Table: typography/html-body",
       "section": {
@@ -69,6 +89,7 @@
     },
     {
       "id": "html-link-state",
+      "subgroup": "html",
       "sectionName": "HTML — Link States",
       "tableName": "Table: typography/html-link-state",
       "section": {

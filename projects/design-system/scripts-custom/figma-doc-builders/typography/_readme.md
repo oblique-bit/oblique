@@ -42,14 +42,31 @@ shows:
 Tables are filtered by `stylePrefix` (registry). Anything matching a deeper
 `/_docs/` path segment is skipped.
 
-| Table | stylePrefix | Grouping |
-|---|---|---|
-| grouped-static     | `s/typography/grouped/static/`  | size_class (base xs–xl / extended 2xl–4xl) |
-| grouped-dynamic    | `s/typography/grouped/dynamic/` | size_class |
-| html-heading       | `h/typography/style/heading/`   | none |
-| html-body          | `h/typography/style/body/`      | none |
-| html-link-state    | `h/link/`                       | none |
-| component          | `c/`                            | component |
+| Table | subgroup | stylePrefix | Grouping |
+|---|---|---|---|
+| grouped-static     | scales | `s/typography/grouped/static/`  | size_class (base xs–xl / extended 2xl–4xl) |
+| grouped-dynamic    | scales | `s/typography/grouped/dynamic/` | size_class |
+| html-heading       | html   | `h/typography/style/heading/`   | none |
+| html-body          | html   | `h/typography/style/body/`      | none |
+| html-link-state    | html   | `h/link/`                       | none |
+| component          | —      | `c/`                            | component |
+
+The `subgroup` field drives a mid-tier wrapper that mirrors the
+Tokens-Preview reference (`51tJjbxBSBmjAmKjQmhsz3`, 🔤 Typography page):
+each subgroup becomes a VERTICAL `__subgroup_container_<id>` frame holding
+a subgroup section bar (an instance of `_docs/typography/section_bar` —
+subgroup name in the small `tierLetter` slot, "Styles" in the prominent
+title — stretched to row width) above a HORIZONTAL `__subgroup_row_<id>`
+frame containing that subgroup's tables side-by-side. Subgroup metadata
+(tierLetter / title / subtitle / purpose / guideline) lives under
+`registry.subgroups`. Tables without a `subgroup` are appended directly
+to the outer wrapper as standalone columns.
+
+Setting a typography_context variable mode on the html tables (for an
+interface-vs-prose side-by-side comparison) was attempted via
+`setExplicitVariableModeForCollection` and hung the plugin; the html
+tables therefore render in the file's default mode. To compare modes,
+set the typography_context mode manually on each table frame in Figma.
 
 ## Usage
 

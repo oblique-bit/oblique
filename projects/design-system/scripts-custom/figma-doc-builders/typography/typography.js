@@ -412,6 +412,7 @@ async function ensureTableFrame(page, tableName) {
   return table;
 }
 
+
 function dedupeBy(table, predicate) {
   const found = table.children.filter(predicate);
   if (found.length <= 1) return found[0] || null;
@@ -791,13 +792,156 @@ async function main() {
   }
   await flushTextWrites();
 
-  // Wrapper + migrate tables into it
-  const wrapper = await ensureWrapper(page);
-  for (const spec of registry.tables) {
-    const t = page.findOne(c => c.type === 'FRAME' && c.name === spec.tableName);
-    if (!t) continue;
-    try { wrapper.appendChild(t); } catch {}
+  // Sweep stale "Table: typography/<id>" frames from prior registries (e.g.
+  // html-heading / html-body / html-link-state after the html re-bucketing).
+  // Skipped under --table filter so a partial run doesn't nuke siblings.
+  if (!tableFilter) {
+    const wantedTableNames = new Set(registry.tables.map(t => t.tableName));
+    const stale = page.findAll(c => c.type === 'FRAME' && /^Table: typography\\//.test(c.name) && !wantedTableNames.has(c.name));
+    for (const s of stale) { try { s.remove(); } catch {} }
+    if (stale.length) L('removed ' + stale.length + ' stale tables');
   }
+
+  // Wrapper + migrate tables into it, grouped by subgroup (Scales / HTML).
+  // Each subgroup is a VERTICAL container frame holding a subgroup bar
+  // (the typography section_bar — "Scales"/"HTML" in tierLetter, "Styles"
+  // in title) stretched across the top, and a HORIZONTAL row of that
+  // subgroup's tables underneath. Tables without a subgroup are appended
+  // directly to the wrapper as standalone columns.
+  const wrapper = await ensureWrapper(page);
+  const subgroups = (registry.subgroups && typeof registry.subgroups === 'object') ? registry.subgroups : {};
+  const SUBGROUP_INNER_GAP = 24;
+  const SUBGROUP_TABLE_GAP = 32;
+
+  async function buildSubgroupBar(id, meta) {
+    // Reuse the typography section_bar component (same as per-table bars) so
+    // the subgroup label sits in the small "tierLetter" slot and the visual
+    // emphasis is on the "Styles" title — matches the Tokens-Preview ref.
+    if (!components.sectionBar) return null;
+    let inst;
+    try { inst = components.sectionBar.createInstance(); }
+    catch (e) { L('subgroup sectionBar createInstance failed: ' + e.message); return null; }
+    const subSpec = {
+      section: {
+        tier: meta.tierLetter || id,
+        title: meta.title || 'Styles',
+        purpose: meta.purpose || '',
+        guideline: meta.guideline || ''
+      },
+      subtitle: meta.subtitle || ''
+    };
+    await applySectionBarContent(inst, subSpec);
+    inst.name = '__subgroup_' + id;
+    return inst;
+  }
+
+  // Group tables by subgroup, preserving registry order.
+  const subgroupOrder = [];
+  const tablesBySubgroup = new Map();
+  const standaloneTables = [];
+  for (const spec of registry.tables) {
+    const t = page.findOne(c => c.type === 'FRAME' && c.name === spec.tableName)
+          || wrapper.findOne(c => c.type === 'FRAME' && c.name === spec.tableName);
+    if (!t) continue;
+    const sg = spec.subgroup;
+    if (sg && subgroups[sg]) {
+      if (!tablesBySubgroup.has(sg)) { tablesBySubgroup.set(sg, []); subgroupOrder.push(sg); }
+      tablesBySubgroup.get(sg).push(t);
+    } else {
+      standaloneTables.push(t);
+    }
+  }
+
+  const wantedContainerNames = new Set();
+  const wantedRowNames = new Set();
+  const wantedBarNames = new Set();
+  for (const sg of subgroupOrder) {
+    wantedContainerNames.add('__subgroup_container_' + sg);
+    wantedRowNames.add('__subgroup_row_' + sg);
+    wantedBarNames.add('__subgroup_' + sg);
+  }
+
+  // Assemble each subgroup container.
+  const orderedContainers = [];
+  for (const sg of subgroupOrder) {
+    const containerName = '__subgroup_container_' + sg;
+    const rowName = '__subgroup_row_' + sg;
+    const barName = '__subgroup_' + sg;
+
+    let container = page.findOne(c => c.type === 'FRAME' && c.name === containerName)
+                 || wrapper.findOne(c => c.type === 'FRAME' && c.name === containerName);
+    if (!container) {
+      container = figma.createFrame();
+      container.name = containerName;
+      page.appendChild(container);
+    }
+    container.layoutMode = 'VERTICAL';
+    container.itemSpacing = SUBGROUP_INNER_GAP;
+    container.primaryAxisSizingMode = 'AUTO';
+    container.counterAxisSizingMode = 'AUTO';
+    container.primaryAxisAlignItems = 'MIN';
+    container.counterAxisAlignItems = 'MIN';
+    container.paddingLeft = container.paddingRight = container.paddingTop = container.paddingBottom = 0;
+    container.fills = [];
+    container.opacity = 1;
+
+    // Bar: always rebuild so subgroup-bar component swaps and content edits
+    // both take effect on subsequent runs. Cheap to recreate.
+    const existingBars = page.findAll(c => c.type === 'INSTANCE' && c.name === barName);
+    for (const b of existingBars) { try { b.remove(); } catch {} }
+    let bar = await buildSubgroupBar(sg, subgroups[sg]);
+    if (bar) {
+      try { container.appendChild(bar); } catch { page.appendChild(bar); }
+    }
+
+    // Row: HORIZONTAL frame; reuse if present.
+    let row = page.findOne(c => c.type === 'FRAME' && c.name === rowName)
+           || container.children.find(c => c.type === 'FRAME' && c.name === rowName);
+    if (!row) {
+      row = figma.createFrame();
+      row.name = rowName;
+      container.appendChild(row);
+    } else {
+      try { container.appendChild(row); } catch {}
+    }
+    row.layoutMode = 'HORIZONTAL';
+    row.itemSpacing = SUBGROUP_TABLE_GAP;
+    row.primaryAxisSizingMode = 'AUTO';
+    row.counterAxisSizingMode = 'AUTO';
+    row.primaryAxisAlignItems = 'MIN';
+    row.counterAxisAlignItems = 'MIN';
+    row.paddingLeft = row.paddingRight = row.paddingTop = row.paddingBottom = 0;
+    row.fills = [];
+    row.opacity = 1;
+
+    // Move each subgroup table into the row, in registry order.
+    for (const t of tablesBySubgroup.get(sg)) {
+      try { row.appendChild(t); } catch {}
+      // Tables keep their fixed counter-axis width; do not stretch.
+      try { t.layoutAlign = 'INHERIT'; } catch {}
+    }
+
+    // Stretch bar to row width so the H3 bar spans the table pair.
+    if (bar) stretch(bar);
+
+    orderedContainers.push(container);
+  }
+
+  // Reorder wrapper: subgroup containers first (in subgroupOrder), then
+  // standalone tables (in registry order). Sweep stale subgroup artifacts.
+  for (const c of [...wrapper.children, ...page.children]) {
+    if (c.type === 'FRAME' && /^__subgroup_container_/.test(c.name) && !wantedContainerNames.has(c.name)) {
+      try { c.remove(); } catch {}
+    } else if (c.type === 'FRAME' && /^__subgroup_row_/.test(c.name) && !wantedRowNames.has(c.name)) {
+      try { c.remove(); } catch {}
+    } else if (c.type === 'INSTANCE' && /^__subgroup_/.test(c.name) && !/^__subgroup_(container|row)_/.test(c.name) && !wantedBarNames.has(c.name)) {
+      try { c.remove(); } catch {}
+    }
+  }
+
+  // Append in order to wrapper.
+  for (const cont of orderedContainers) { try { wrapper.appendChild(cont); } catch {} }
+  for (const t of standaloneTables)     { try { wrapper.appendChild(t); } catch {} }
 
   const validate = await validatePage(page);
 
