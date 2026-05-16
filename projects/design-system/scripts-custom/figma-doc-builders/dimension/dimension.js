@@ -104,25 +104,21 @@ function findFirstText(node) {
   if (node.children) for (const c of node.children) { const t = findFirstText(c); if (t) return t; }
   return null;
 }
-// Force a text node onto a single line — hugs its content so a short value
-// like '0.063rem' never wraps the unit onto a second line. Use for cells that
-// hold only the value (static rows), where hugging does not move other nodes.
-function noWrapText(textNode) {
-  if (!textNode || textNode.type !== 'TEXT') return;
-  try { textNode.textAutoResize = 'WIDTH_AND_HEIGHT'; } catch {}
-}
-
-// Mode-row value text shares its cell with the preview bar, so it must keep a
-// FIXED width — a hugging width would shift the bar's start x per row. 60px
-// clears the widest value ('0.063rem' ≈ 54px at 12px font) without wrapping.
-const MODE_VALUE_W = 60;
-function fixModeValueWidth(textNode) {
+// Mode-row value text ('$value_N') shares its cell with the preview bar. The
+// component master sizes it 50px — too narrow for '0.063rem' (~54px), which
+// wrapped the unit onto a second line. Widen to a FIXED 60px so it never wraps
+// and the bar keeps a constant start x. Must run AFTER the row is detached —
+// instance-internal node widths are read-only, so a pre-detach resize is a
+// silent no-op. (Static rows keep the master's 72px FILL value cell, which
+// already clears the widest value.)
+const VALUE_W = 60;
+function fixValueWidth(textNode) {
   if (!textNode || textNode.type !== 'TEXT') return;
   try {
     textNode.textAutoResize = 'HEIGHT';
     textNode.layoutSizingHorizontal = 'FIXED';
-    textNode.resize(MODE_VALUE_W, textNode.height);
-  } catch {}
+    textNode.resize(VALUE_W, textNode.height);
+  } catch (e) { L('fixValueWidth failed: ' + e.message); }
 }
 
 // ── component discovery (by name from registry) ────────────────────────────
@@ -731,7 +727,6 @@ async function buildStaticRow(v) {
   setText(descNode, v.description || '');
   const val = await resolveDim(v);
   setText(valNode, formatValue(v, val));
-  noWrapText(valNode);
   return { instance: inst, v, tokenPath, value: val };
 }
 
@@ -752,7 +747,7 @@ async function buildModeRow(v, spec) {
               || findChild(inst, 'mode_cell_' + (i + 1));
     if (cell) {
       const t = findFirstText(cell);
-      if (t) { setText(t, formatValue(v, val)); fixModeValueWidth(t); }
+      if (t) setText(t, formatValue(v, val));
     }
   }
   return { instance: inst, v, tokenPath, values, modes: spec.modes };
@@ -900,6 +895,17 @@ async function buildTable(page, spec) {
     }
   }
   result.info.rowsBuilt = rowsBuilt;
+
+  // The incremental build above skips rows that already exist on the page, so
+  // a per-row style fix in detachAndSizePreview never reaches them. Re-apply
+  // the value-text width to every mode row each run so the fix is idempotent.
+  if (spec.kind !== 'static') {
+    for (const row of rowByPath.values()) {
+      for (const cell of (row && row.children) || []) {
+        if (/^Cell: Mode |^mode_cell_/.test(cell.name)) fixValueWidth(findFirstText(cell));
+      }
+    }
+  }
 
   // Bucket sorted tokens by their group key. tokens is already in compareTokens
   // order, so each group's rows come out in the desired order.
