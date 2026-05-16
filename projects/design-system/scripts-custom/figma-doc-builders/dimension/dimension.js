@@ -105,10 +105,24 @@ function findFirstText(node) {
   return null;
 }
 // Force a text node onto a single line — hugs its content so a short value
-// like '0.063rem' never wraps the unit onto a second line.
+// like '0.063rem' never wraps the unit onto a second line. Use for cells that
+// hold only the value (static rows), where hugging does not move other nodes.
 function noWrapText(textNode) {
   if (!textNode || textNode.type !== 'TEXT') return;
   try { textNode.textAutoResize = 'WIDTH_AND_HEIGHT'; } catch {}
+}
+
+// Mode-row value text shares its cell with the preview bar, so it must keep a
+// FIXED width — a hugging width would shift the bar's start x per row. 60px
+// clears the widest value ('0.063rem' ≈ 54px at 12px font) without wrapping.
+const MODE_VALUE_W = 60;
+function fixModeValueWidth(textNode) {
+  if (!textNode || textNode.type !== 'TEXT') return;
+  try {
+    textNode.textAutoResize = 'HEIGHT';
+    textNode.layoutSizingHorizontal = 'FIXED';
+    textNode.resize(MODE_VALUE_W, textNode.height);
+  } catch {}
 }
 
 // ── component discovery (by name from registry) ────────────────────────────
@@ -738,7 +752,7 @@ async function buildModeRow(v, spec) {
               || findChild(inst, 'mode_cell_' + (i + 1));
     if (cell) {
       const t = findFirstText(cell);
-      if (t) { setText(t, formatValue(v, val)); noWrapText(t); }
+      if (t) { setText(t, formatValue(v, val)); fixModeValueWidth(t); }
     }
   }
   return { instance: inst, v, tokenPath, values, modes: spec.modes };
