@@ -289,7 +289,7 @@ async function ensurePage() {
   return p;
 }
 
-const TABLE_WIDTH = 1980;
+const TABLE_WIDTH = 2280;
 const WRAPPER_NAME = 'Typography Tables';
 const WRAPPER_GAP  = 96;
 const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
@@ -439,8 +439,8 @@ async function applySectionBarContent(inst, spec) {
   if (!inst) return;
   const tier = inst.findOne(n => n.type === 'TEXT' && n.name === 'tierLetter');
   if (tier) {
-    // Show the tier letter — Typography tables span S, H, C tiers, so leave visible.
-    try { tier.visible = true; } catch {}
+    // Hide the tier letter — typography pages carry no tier letter.
+    try { tier.visible = false; } catch {}
   }
   for (const name of ['Section Content', 'Layout', 'Content', 'Title Row', 'Section Info', 'Description Group']) {
     const node = inst.findOne(n => (n.type === 'FRAME' || n.type === 'INSTANCE') && n.name === name);
@@ -478,6 +478,43 @@ async function applySectionBarContent(inst, spec) {
       if (node) { await setText(node, bare === 'purpose' ? 'Purpose: ' + val : String(val)); break; }
     }
   }
+
+  // Mode badge — shown + labelled with the variable mode the table renders in
+  // (spec.mode, e.g. "md"); hidden when the table has no mode. Columned
+  // subgroups (html) override it per column via applyTableModeBadge.
+  await applyModeBadge(inst, spec.mode || '');
+}
+
+// The mode badge inside a _docs/typography/section_bar instance — the Badge
+// instance that wraps the __mode TEXT node.
+function findModeBadge(sbInst) {
+  if (!sbInst) return { badge: null, text: null };
+  const text = sbInst.findOne(n => n.type === 'TEXT' && n.name === '__mode');
+  if (!text) return { badge: null, text: null };
+  let badge = text.parent;
+  while (badge && badge !== sbInst && badge.type !== 'INSTANCE') badge = badge.parent;
+  if (!badge || badge === sbInst) badge = null;
+  return { badge, text };
+}
+
+// Show + label the mode badge on a section bar with the mode the table
+// renders in (md / interface / prose …); pass a falsy mode to hide it.
+async function applyModeBadge(sbInst, modeName) {
+  const mb = findModeBadge(sbInst);
+  if (!mb.badge && !mb.text) return;
+  if (modeName) {
+    if (mb.badge) { try { mb.badge.visible = true; } catch {} }
+    if (mb.text)  await setText(mb.text, String(modeName));
+  } else if (mb.badge) {
+    try { mb.badge.visible = false; } catch {}
+  }
+}
+
+// Set (or hide) the mode badge on a table frame's section bar.
+async function applyTableModeBadge(tableFrame, modeName) {
+  if (!tableFrame) return;
+  const sb = (tableFrame.children || []).find(c => c.type === 'INSTANCE' && /section_bar$/.test(c.name));
+  if (sb) await applyModeBadge(sb, modeName);
 }
 
 async function buildHeader() {
@@ -702,6 +739,18 @@ async function buildTable(page, spec) {
   for (let i = 0; i < ordered.length; i++) {
     try { table.insertChild(i, ordered[i]); } catch (e) { L('reorder fail at ' + i + ': ' + e.message); }
   }
+
+  // Fixed data-row height (registry spec.rowHeight). Used by the headings
+  // table so its interface-mode and prose-mode copies align row-for-row even
+  // though prose specimens render taller.
+  if (spec.rowHeight) {
+    for (const c of table.children) {
+      if (c === sb || c === header) continue;
+      if (!/\\/row$/.test(c.name)) continue;
+      try { c.layoutSizingVertical = 'FIXED'; } catch (e) { L('rowHeight sizing fail: ' + e.message); }
+      try { c.resize(c.width, spec.rowHeight); } catch (e) { L('rowHeight resize fail: ' + e.message); }
+    }
+  }
   return result;
 }
 
@@ -714,43 +763,51 @@ async function validatePage(page) {
   const stats = { totalRows: 0, byTable: {} };
   for (const spec of registry.tables) {
     if (tableFilter && tableFilter !== spec.id) continue;
+    // A subgroup with a 'columns' list renders each of its tables once per
+    // column (interface / prose), so multiple frames share the table name.
+    const sgMeta = (spec.subgroup && registry.subgroups) ? registry.subgroups[spec.subgroup] : null;
+    const expectedFrames = (sgMeta && Array.isArray(sgMeta.columns) && sgMeta.columns.length) ? sgMeta.columns.length : 1;
     const tableFrames = page.findAll(c => c.name === spec.tableName && c.type === 'FRAME');
-    if (tableFrames.length !== 1) {
-      errors.push({ code: 'DUP', id: spec.id, msg: 'expected 1 table frame on page, got ' + tableFrames.length });
+    if (tableFrames.length !== expectedFrames) {
+      errors.push({ code: 'DUP', id: spec.id, msg: 'expected ' + expectedFrames + ' table frame(s) on page, got ' + tableFrames.length });
       continue;
     }
-    const table = tableFrames[0];
-    const sectionBars = table.children.filter(c => c.type === 'INSTANCE' && /section_bar$/.test(c.name));
-    if (sectionBars.length !== 1) errors.push({ code: 'DUP', id: spec.id, msg: 'expected 1 section bar, got ' + sectionBars.length });
-    if (sectionBars[0]) {
-      const sb = sectionBars[0];
-      for (const tn of ['__sectionTitle', 'description']) {
-        const node = sb.findOne(n => n.type === 'TEXT' && n.name === tn);
-        const txt = node ? String(node.characters || '').trim() : '';
-        if (!txt) errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' empty' });
-        else if (DEFAULTS.indexOf(txt) >= 0) errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' is default placeholder' });
+    const expectedRows = stylesForTable(spec).length;
+    let frameIdx = 0;
+    for (const table of tableFrames) {
+      frameIdx++;
+      const tag = expectedFrames > 1 ? (spec.id + '#' + frameIdx) : spec.id;
+      const sectionBars = table.children.filter(c => c.type === 'INSTANCE' && /section_bar$/.test(c.name));
+      if (sectionBars.length !== 1) errors.push({ code: 'DUP', id: tag, msg: 'expected 1 section bar, got ' + sectionBars.length });
+      if (sectionBars[0]) {
+        const sb = sectionBars[0];
+        for (const tn of ['__sectionTitle', 'description']) {
+          const node = sb.findOne(n => n.type === 'TEXT' && n.name === tn);
+          const txt = node ? String(node.characters || '').trim() : '';
+          if (!txt) errors.push({ code: 'SECTBAR', id: tag, msg: tn + ' empty' });
+          else if (DEFAULTS.indexOf(txt) >= 0) errors.push({ code: 'SECTBAR', id: tag, msg: tn + ' is default placeholder' });
+        }
       }
-    }
-    const expected = stylesForTable(spec).length;
-    const rowInstances = table.children.filter(c =>
-      (c.type === 'INSTANCE' || c.type === 'FRAME') &&
-      /\\/row$/.test(c.name)
-    );
-    stats.byTable[spec.id] = { rows: rowInstances.length, expected };
-    stats.totalRows += rowInstances.length;
-    if (rowInstances.length !== expected) errors.push({ code: 'COUNT', id: spec.id, msg: 'rows: got ' + rowInstances.length + ', expected ' + expected });
-    for (const row of rowInstances) {
-      const nameNode = findFirstText(findChild(row, 'Cell: Token Name'));
-      const descCell = findChild(row, 'Cell: Description');
-      const descNode = findFirstText(descCell);
-      const nameText = nameNode ? String(nameNode.characters || '').trim() : '';
-      const descText = descNode ? String(descNode.characters || '').trim() : '';
-      if (!nameText) { errors.push({ code: 'EMPTY', id: spec.id, msg: 'row token name empty' }); continue; }
-      const styleName = nameText.replace(/\\./g, '/');
-      const s = allStyles.find(x => x.name === styleName);
-      if (!s) { warnings.push({ code: 'STYLE', id: spec.id, token: nameText, msg: 'no matching text style' }); continue; }
-      if (descCell && descText !== (s.description || '')) {
-        errors.push({ code: 'DESC', id: spec.id, token: nameText, msg: 'description mismatch (row: "' + descText.slice(0, 40) + '" vs style: "' + (s.description || '').slice(0, 40) + '")' });
+      const rowInstances = table.children.filter(c =>
+        (c.type === 'INSTANCE' || c.type === 'FRAME') &&
+        /\\/row$/.test(c.name)
+      );
+      stats.byTable[tag] = { rows: rowInstances.length, expected: expectedRows };
+      stats.totalRows += rowInstances.length;
+      if (rowInstances.length !== expectedRows) errors.push({ code: 'COUNT', id: tag, msg: 'rows: got ' + rowInstances.length + ', expected ' + expectedRows });
+      for (const row of rowInstances) {
+        const nameNode = findFirstText(findChild(row, 'Cell: Token Name'));
+        const descCell = findChild(row, 'Cell: Description');
+        const descNode = findFirstText(descCell);
+        const nameText = nameNode ? String(nameNode.characters || '').trim() : '';
+        const descText = descNode ? String(descNode.characters || '').trim() : '';
+        if (!nameText) { errors.push({ code: 'EMPTY', id: tag, msg: 'row token name empty' }); continue; }
+        const styleName = nameText.replace(/\\./g, '/');
+        const s = allStyles.find(x => x.name === styleName);
+        if (!s) { warnings.push({ code: 'STYLE', id: tag, token: nameText, msg: 'no matching text style' }); continue; }
+        if (descCell && descText !== (s.description || '')) {
+          errors.push({ code: 'DESC', id: tag, token: nameText, msg: 'description mismatch (row: "' + descText.slice(0, 40) + '" vs style: "' + (s.description || '').slice(0, 40) + '")' });
+        }
       }
     }
   }
@@ -804,33 +861,98 @@ async function main() {
 
   // Wrapper + migrate tables into it, grouped by subgroup (Scales / HTML).
   // Each subgroup is a VERTICAL container frame holding a subgroup bar
-  // (the typography section_bar — "Scales"/"HTML" in tierLetter, "Styles"
-  // in title) stretched across the top, and a HORIZONTAL row of that
-  // subgroup's tables underneath. Tables without a subgroup are appended
-  // directly to the wrapper as standalone columns.
+  // (the shared section_bar) stretched across the top, and the subgroup's
+  // tables underneath. A subgroup without a 'columns' list lays its tables
+  // out in a single HORIZONTAL __subgroup_row_<id> (Scales). A subgroup with
+  // a 'columns' list (HTML: interface / prose) instead gets a HORIZONTAL
+  // __subgroup_cols_<id> frame holding one VERTICAL __subgroup_col_<id>_<mode>
+  // stack of the tables per column — each column pinned to its
+  // typography_context mode. Tables without a subgroup are appended to the
+  // wrapper as standalone columns.
   const wrapper = await ensureWrapper(page);
   const subgroups = (registry.subgroups && typeof registry.subgroups === 'object') ? registry.subgroups : {};
   const SUBGROUP_INNER_GAP = 24;
   const SUBGROUP_TABLE_GAP = 32;
 
+  // Maps registry meta.badges tokens → the Badge instance node names inside
+  // the shared section_bar.
+  const SUBGROUP_BADGE_NODES = {
+    maintainer:    'Badge: Maintainer',
+    consumer:      'Badge: Consumer',
+    bundeskanzlei: 'Badge: Bundeskanzlei'
+  };
+
   async function buildSubgroupBar(id, meta) {
-    // Reuse the typography section_bar component (same as per-table bars) so
-    // the subgroup label sits in the small "tierLetter" slot and the visual
-    // emphasis is on the "Styles" title — matches the Tokens-Preview ref.
-    if (!components.sectionBar) return null;
+    // Subgroup bars use the shared section_bar component — the same
+    // badge-based guidance bar as the color-variables docs — so the two
+    // top-level typography groups (Scales / HTML) read as distinct, guided
+    // sections. The group name (meta.tierLetter — "HTML" / "Scales") is
+    // written straight onto the __sectionTitle node (it is baked per variant,
+    // not bound to the title property). The color-specific breadcrumb and
+    // the tier-letter badge are hidden — typography pages carry no tier
+    // letter. Guidance badges are toggled per-subgroup from registry
+    // meta.badges by setting Badge instance visibility directly (the
+    // showBadge* component properties are not reliably wired across variants).
+    const comp = components.sharedSectionBar;
+    if (!comp) { L('sharedSectionBar component missing — skipping subgroup bar ' + id); return null; }
     let inst;
-    try { inst = components.sectionBar.createInstance(); }
-    catch (e) { L('subgroup sectionBar createInstance failed: ' + e.message); return null; }
-    const subSpec = {
-      section: {
-        tier: meta.tierLetter || id,
-        title: meta.title || 'Styles',
-        purpose: meta.purpose || '',
-        guideline: meta.guideline || ''
-      },
-      subtitle: meta.subtitle || ''
+    try {
+      let variant = comp;
+      if (comp.type === 'COMPONENT_SET') {
+        // Variant per subgroup (registry meta.variant) — each tier carries its
+        // own colour theme (tier=p is the red theme). Note tier=p and tier=s1
+        // lack the Consumer badge, so a subgroup needing Consumer must use
+        // tier=s / tier=s2.
+        const variantName = 'tier=' + (meta.variant || 's');
+        variant = (comp.children || []).find(c => c.type === 'COMPONENT' && c.name === variantName)
+               || comp.defaultVariant
+               || (comp.children || []).find(c => c.type === 'COMPONENT');
+        if (!variant) { L('sharedSectionBar COMPONENT_SET has no variants'); return null; }
+      }
+      inst = variant.createInstance();
+    } catch (e) { L('subgroup sharedSectionBar createInstance failed: ' + e.message); return null; }
+
+    // Text component properties wired to visible nodes ($description).
+    const want = {
+      purpose:   meta.purpose   ? ('Purpose: ' + meta.purpose)     : '',
+      guideline: meta.guideline ? ('Guideline: ' + meta.guideline) : ''
     };
-    await applySectionBarContent(inst, subSpec);
+    const props = inst.componentProperties || {};
+    const updates = {};
+    for (const [bare, val] of Object.entries(want)) {
+      const key = Object.keys(props).find(k => k === bare || k.split('#')[0] === bare);
+      if (key) updates[key] = String(val);
+    }
+    if (Object.keys(updates).length) {
+      try { inst.setProperties(updates); }
+      catch (e) { L('subgroup bar setProperties failed: ' + e.message); }
+    }
+
+    // Group name → __sectionTitle (baked per variant, so written directly).
+    const titleNode = inst.findOne(n => n.type === 'TEXT' && n.name === '__sectionTitle');
+    if (titleNode) await setText(titleNode, meta.tierLetter || meta.title || id);
+
+    // Hide the color-specific breadcrumb — no typography equivalent.
+    try {
+      const crumbs = inst.findAll(n => /section_breadcrumb/.test(n.name));
+      for (const c of crumbs) { try { c.visible = false; } catch {} }
+    } catch (e) { L('subgroup breadcrumb hide failed: ' + e.message); }
+
+    // Hide the tier-letter badge — typography pages have no tier letter; the
+    // group name lives in __sectionTitle instead.
+    try {
+      const letters = inst.findAll(n => n.name === 'tierLetter');
+      for (const n of letters) { try { n.visible = false; } catch {} }
+    } catch (e) { L('subgroup tierLetter hide failed: ' + e.message); }
+
+    // Guidance badges: show only those named in registry meta.badges.
+    try {
+      const badges = Array.isArray(meta.badges) ? meta.badges.map(b => String(b).toLowerCase()) : [];
+      const wantNodes = new Set(badges.map(b => SUBGROUP_BADGE_NODES[b]).filter(Boolean));
+      const badgeInsts = inst.findAll(n => /^Badge:/.test(n.name));
+      for (const b of badgeInsts) { try { b.visible = wantNodes.has(b.name); } catch (e) { L('badge toggle ' + b.name + ': ' + e.message); } }
+    } catch (e) { L('subgroup badge toggle failed: ' + e.message); }
+
     inst.name = '__subgroup_' + id;
     return inst;
   }
@@ -852,89 +974,119 @@ async function main() {
     }
   }
 
-  const wantedContainerNames = new Set();
-  const wantedRowNames = new Set();
-  const wantedBarNames = new Set();
-  for (const sg of subgroupOrder) {
-    wantedContainerNames.add('__subgroup_container_' + sg);
-    wantedRowNames.add('__subgroup_row_' + sg);
-    wantedBarNames.add('__subgroup_' + sg);
+  // typography_context collection — used to pin each html column to a mode
+  // (interface / prose) so the two table stacks render side-by-side.
+  let _typoCtxCol = null;
+  try {
+    const _cols = await figma.variables.getLocalVariableCollectionsAsync();
+    _typoCtxCol = _cols.find(c => c.name === 'typography_context') || null;
+    if (!_typoCtxCol) L('typography_context collection not found');
+  } catch (e) { L('typography_context lookup failed: ' + e.message); }
+  function setColumnMode(frame, modeName) {
+    if (!_typoCtxCol || !frame || !modeName) return;
+    const mode = _typoCtxCol.modes.find(m => m.name === modeName);
+    if (!mode) { L('typography_context mode missing: ' + modeName); return; }
+    try { frame.setExplicitVariableModeForCollection(_typoCtxCol, mode.modeId); }
+    catch (e1) {
+      try { frame.setExplicitVariableModeForCollection(_typoCtxCol.id, mode.modeId); }
+      catch (e2) { L('set typography_context=' + modeName + ' failed: ' + e1.message); }
+    }
   }
+
+  // Configure a frame as an auto-layout container (no padding, no fill).
+  function layoutFrame(frame, mode, gap) {
+    frame.layoutMode = mode;
+    frame.itemSpacing = gap;
+    frame.primaryAxisSizingMode = 'AUTO';
+    frame.counterAxisSizingMode = 'AUTO';
+    frame.primaryAxisAlignItems = 'MIN';
+    frame.counterAxisAlignItems = 'MIN';
+    frame.paddingLeft = frame.paddingRight = frame.paddingTop = frame.paddingBottom = 0;
+    frame.fills = [];
+    frame.opacity = 1;
+  }
+  function ensureNamedFrame(name) {
+    let f = page.findOne(c => c.type === 'FRAME' && c.name === name)
+         || wrapper.findOne(c => c.type === 'FRAME' && c.name === name);
+    if (!f) { f = figma.createFrame(); f.name = name; page.appendChild(f); }
+    return f;
+  }
+
+  // Frame / bar names this build expects to keep — others matching the
+  // subgroup patterns are swept at the end.
+  const wantedFrameNames = new Set();
+  const wantedBarNames = new Set();
 
   // Assemble each subgroup container.
   const orderedContainers = [];
   for (const sg of subgroupOrder) {
+    const meta = subgroups[sg];
     const containerName = '__subgroup_container_' + sg;
-    const rowName = '__subgroup_row_' + sg;
     const barName = '__subgroup_' + sg;
+    wantedFrameNames.add(containerName);
+    wantedBarNames.add(barName);
 
-    let container = page.findOne(c => c.type === 'FRAME' && c.name === containerName)
-                 || wrapper.findOne(c => c.type === 'FRAME' && c.name === containerName);
-    if (!container) {
-      container = figma.createFrame();
-      container.name = containerName;
-      page.appendChild(container);
-    }
-    container.layoutMode = 'VERTICAL';
-    container.itemSpacing = SUBGROUP_INNER_GAP;
-    container.primaryAxisSizingMode = 'AUTO';
-    container.counterAxisSizingMode = 'AUTO';
-    container.primaryAxisAlignItems = 'MIN';
-    container.counterAxisAlignItems = 'MIN';
-    container.paddingLeft = container.paddingRight = container.paddingTop = container.paddingBottom = 0;
-    container.fills = [];
-    container.opacity = 1;
+    const container = ensureNamedFrame(containerName);
+    layoutFrame(container, 'VERTICAL', SUBGROUP_INNER_GAP);
 
-    // Bar: always rebuild so subgroup-bar component swaps and content edits
-    // both take effect on subsequent runs. Cheap to recreate.
-    const existingBars = page.findAll(c => c.type === 'INSTANCE' && c.name === barName);
-    for (const b of existingBars) { try { b.remove(); } catch {} }
-    let bar = await buildSubgroupBar(sg, subgroups[sg]);
-    if (bar) {
-      try { container.appendChild(bar); } catch { page.appendChild(bar); }
-    }
+    // Bar: always rebuilt so component swaps + content edits both take effect.
+    for (const b of page.findAll(c => c.type === 'INSTANCE' && c.name === barName)) { try { b.remove(); } catch {} }
+    const bar = await buildSubgroupBar(sg, meta);
+    if (bar) { try { container.appendChild(bar); } catch { page.appendChild(bar); } }
 
-    // Row: HORIZONTAL frame; reuse if present.
-    let row = page.findOne(c => c.type === 'FRAME' && c.name === rowName)
-           || container.children.find(c => c.type === 'FRAME' && c.name === rowName);
-    if (!row) {
-      row = figma.createFrame();
-      row.name = rowName;
-      container.appendChild(row);
+    const tables = tablesBySubgroup.get(sg) || [];
+    const columns = Array.isArray(meta.columns) ? meta.columns : null;
+
+    if (columns && columns.length) {
+      // Multi-column: a HORIZONTAL frame holding one VERTICAL stack of the
+      // subgroup's tables per typography_context mode. The first column gets
+      // the original table frames; the rest get deep clones.
+      const colsName = '__subgroup_cols_' + sg;
+      wantedFrameNames.add(colsName);
+      const colsFrame = ensureNamedFrame(colsName);
+      layoutFrame(colsFrame, 'HORIZONTAL', SUBGROUP_INNER_GAP);
+      try { container.appendChild(colsFrame); } catch {}
+
+      for (let ci = 0; ci < columns.length; ci++) {
+        const modeName = columns[ci];
+        const colName = '__subgroup_col_' + sg + '_' + modeName;
+        wantedFrameNames.add(colName);
+        const colFrame = ensureNamedFrame(colName);
+        layoutFrame(colFrame, 'VERTICAL', SUBGROUP_TABLE_GAP);
+        try { colsFrame.appendChild(colFrame); } catch {}
+        for (const t of tables) {
+          const tableNode = ci === 0 ? t : t.clone();
+          try { colFrame.appendChild(tableNode); } catch {}
+          try { tableNode.layoutAlign = 'INHERIT'; } catch {}
+          // Label this table's mode badge with the column's mode.
+          await applyTableModeBadge(tableNode, modeName);
+        }
+        setColumnMode(colFrame, modeName);
+      }
     } else {
+      // Single HORIZONTAL row of the subgroup's tables (Scales).
+      const rowName = '__subgroup_row_' + sg;
+      wantedFrameNames.add(rowName);
+      const row = ensureNamedFrame(rowName);
+      layoutFrame(row, 'HORIZONTAL', SUBGROUP_TABLE_GAP);
       try { container.appendChild(row); } catch {}
-    }
-    row.layoutMode = 'HORIZONTAL';
-    row.itemSpacing = SUBGROUP_TABLE_GAP;
-    row.primaryAxisSizingMode = 'AUTO';
-    row.counterAxisSizingMode = 'AUTO';
-    row.primaryAxisAlignItems = 'MIN';
-    row.counterAxisAlignItems = 'MIN';
-    row.paddingLeft = row.paddingRight = row.paddingTop = row.paddingBottom = 0;
-    row.fills = [];
-    row.opacity = 1;
-
-    // Move each subgroup table into the row, in registry order.
-    for (const t of tablesBySubgroup.get(sg)) {
-      try { row.appendChild(t); } catch {}
-      // Tables keep their fixed counter-axis width; do not stretch.
-      try { t.layoutAlign = 'INHERIT'; } catch {}
+      for (const t of tables) {
+        try { row.appendChild(t); } catch {}
+        // Tables keep their fixed counter-axis width; do not stretch.
+        try { t.layoutAlign = 'INHERIT'; } catch {}
+      }
     }
 
-    // Stretch bar to row width so the H3 bar spans the table pair.
+    // Stretch bar to the container width so it spans the tables below.
     if (bar) stretch(bar);
-
     orderedContainers.push(container);
   }
 
-  // Reorder wrapper: subgroup containers first (in subgroupOrder), then
-  // standalone tables (in registry order). Sweep stale subgroup artifacts.
+  // Sweep stale subgroup artifacts (frames + bars not part of this build).
   for (const c of [...wrapper.children, ...page.children]) {
-    if (c.type === 'FRAME' && /^__subgroup_container_/.test(c.name) && !wantedContainerNames.has(c.name)) {
+    if (c.type === 'FRAME' && /^__subgroup_(container|cols|col|row)_/.test(c.name) && !wantedFrameNames.has(c.name)) {
       try { c.remove(); } catch {}
-    } else if (c.type === 'FRAME' && /^__subgroup_row_/.test(c.name) && !wantedRowNames.has(c.name)) {
-      try { c.remove(); } catch {}
-    } else if (c.type === 'INSTANCE' && /^__subgroup_/.test(c.name) && !/^__subgroup_(container|row)_/.test(c.name) && !wantedBarNames.has(c.name)) {
+    } else if (c.type === 'INSTANCE' && /^__subgroup_/.test(c.name) && !/^__subgroup_(container|cols|col|row)_/.test(c.name) && !wantedBarNames.has(c.name)) {
       try { c.remove(); } catch {}
     }
   }

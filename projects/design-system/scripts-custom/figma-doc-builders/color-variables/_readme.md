@@ -117,9 +117,9 @@ Each table entry declares its tier, category, header variant, row variant, and w
 
 ## Components used
 
-All inside `_docs/color-variables/*` (under the Building Blocks frame on the cli page), plus `_docs/shared/group_header`:
+All inside `_docs/color-variables/*` (under the Building Blocks frame on the cli page), plus `_docs/shared/group_header` and `_docs/shared/section_bar`:
 
-- `section_bar` — tier-letter, title, purpose, guideline, breadcrumb, badges (variants: tier=p|s1|s2|s).
+- `_docs/shared/section_bar` — shared badge-based guidance bar (COMPONENT_SET in the `_building_blocks/shared` section): tier-letter, title, purpose, guideline, breadcrumb, badges (variants: tier=p|s1|s2|s). Also used by the typography docs builder.
 - `header_row_2mode` / `header_row_4mode` / `header_row_primitive` — column headers, with/without Description.
 - `row_2mode` / `row_4mode` / `row_4mode_low` / `row_primitive` — data rows for each table variant.
 - `swatch` — color swatch with Alpha=None|Light|Dark variants.

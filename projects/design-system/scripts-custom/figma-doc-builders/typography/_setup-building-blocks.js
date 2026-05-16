@@ -77,10 +77,10 @@ const PLUGIN_CODE = `
     textNode.fills = [fill];
   }
 
-  // Columns layout (total = 1980)
+  // Columns layout (total = 2280)
   const COLS = [
     { name: 'Token Name',     width: 260, fg: 'highest' },
-    { name: 'Specimen',       width: 760, fg: 'highest', wrap: true },
+    { name: 'Specimen',       width: 960, fg: 'highest', wrap: true },
     { name: 'Family',         width: 110, fg: 'high'    },
     { name: 'Weight',         width: 100, fg: 'high'    },
     { name: 'Size',           width: 70,  fg: 'high'    },
@@ -179,7 +179,7 @@ const PLUGIN_CODE = `
     cell.appendChild(t);
     header.appendChild(cell);
   }
-  header.resizeWithoutConstraints(1980, header.height);
+  header.resizeWithoutConstraints(2280, header.height);
   section.appendChild(header);
   header.x = 0;
   header.y = 360;
@@ -190,6 +190,9 @@ const PLUGIN_CODE = `
   row.layoutMode = 'HORIZONTAL';
   row.primaryAxisSizingMode = 'FIXED';
   row.counterAxisSizingMode = 'AUTO';
+  // Do not clip: prose-context specimens render taller than the row's
+  // natural height; clipping would trim them.
+  row.clipsContent = false;
   row.itemSpacing = 0;
   row.paddingTop = 12;
   row.paddingBottom = 12;
@@ -210,6 +213,7 @@ const PLUGIN_CODE = `
     cell.paddingLeft = 12;
     cell.paddingRight = 12;
     cell.fills = [];
+    cell.clipsContent = false;
     cell.itemSpacing = 4;
     cell.resizeWithoutConstraints(col.width, 32);
     cell.counterAxisAlignItems = 'MIN';
@@ -249,7 +253,7 @@ const PLUGIN_CODE = `
     row.appendChild(cell);
   }
 
-  row.resizeWithoutConstraints(1980, row.height);
+  row.resizeWithoutConstraints(2280, row.height);
   section.appendChild(row);
   row.x = 0;
   row.y = 420;

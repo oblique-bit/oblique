@@ -3,30 +3,67 @@
   "page": "🔤 Typography – Styles & Specimens",
   "allowedFiles": ["DesignSystem@Tokens V9.7"],
   "componentNames": {
-    "sectionBar":    "_docs/typography/section_bar",
-    "headerRow":     "_docs/typography/header_row",
-    "row":           "_docs/typography/row",
-    "groupHeader":   "_docs/shared/group_header",
-    "foundationBar": "_building_blocks/shared/foundation_bar"
+    "sectionBar":       "_docs/typography/section_bar",
+    "sharedSectionBar": "_docs/shared/section_bar",
+    "headerRow":        "_docs/typography/header_row",
+    "row":              "_docs/typography/row",
+    "groupHeader":      "_docs/shared/group_header",
+    "foundationBar":    "_building_blocks/shared/foundation_bar"
   },
   "foundationName": "Typography",
   "subgroups": {
+    "html": {
+      "tierLetter": "HTML",
+      "title": "Styles",
+      "subtitle": "h.typography.style",
+      "variant": "s",
+      "badges": ["consumer"],
+      "columns": ["interface", "prose"],
+      "purpose": "Text styles for common page content: headings and body / paragraph styles. All consume the typography_context variable — set the frame's mode to switch interface ↔ prose.",
+      "guideline": "Pair semantically with HTML elements (h1–h6, p, a). To compare interface vs prose, set the typography_context mode on each table frame manually in Figma."
+    },
     "scales": {
       "tierLetter": "Scales",
       "title": "Styles",
       "subtitle": "s.typography.grouped",
+      "variant": "p",
+      "badges": ["maintainer"],
       "purpose": "Composite text styles used mainly in component build process. Static does not react to variable modes; dynamic scales with the ui_scale mode (sm / md / lg).",
       "guideline": "Pair Static with hard-coded layouts; pair Dynamic with anything that should scale across density tiers."
-    },
-    "html": {
-      "tierLetter": "HTML",
-      "title": "Styles",
-      "subtitle": "h.typography.style  ·  h.link",
-      "purpose": "Text styles for common page content: headings, body / paragraph styles, and link interaction states. All consume the typography_context variable — set the frame's mode to switch interface ↔ prose.",
-      "guideline": "Pair semantically with HTML elements (h1–h6, p, a). To compare interface vs prose, set the typography_context mode on each table frame manually in Figma."
     }
   },
   "tables": [
+    {
+      "id": "html-heading",
+      "subgroup": "html",
+      "sectionName": "Headings",
+      "tableName": "Table: typography/html-heading",
+      "rowHeight": 80,
+      "section": {
+        "tier": "H",
+        "title": "Headings",
+        "purpose": "Heading text styles (H1–H6) for HTML document contexts. Switches between `interface` and `prose` typography contexts.",
+        "guideline": "Pair semantically with HTML <h1>…<h6> elements. Heading scale comes from typography_context — set the parent's context mode to switch interface ↔ prose."
+      },
+      "stylePrefix": "h/typography/style/heading/",
+      "subtitle": "h.typography.style.heading",
+      "grouping": "none"
+    },
+    {
+      "id": "html-body",
+      "subgroup": "html",
+      "sectionName": "Body",
+      "tableName": "Table: typography/html-body",
+      "section": {
+        "tier": "H",
+        "title": "Body",
+        "purpose": "Body / paragraph / link text styles used in HTML document contexts (interface and prose).",
+        "guideline": "Default body style is `normal`; `strong` matches <strong>/<b>; `lead` is for opening paragraphs; `link` covers inline links."
+      },
+      "stylePrefix": "h/typography/style/body/",
+      "subtitle": "h.typography.style.body",
+      "grouping": "none"
+    },
     {
       "id": "grouped-static",
       "subgroup": "scales",
@@ -47,6 +84,7 @@
       "subgroup": "scales",
       "sectionName": "Grouped Composites — Dynamic",
       "tableName": "Table: typography/grouped-dynamic",
+      "mode": "md",
       "section": {
         "tier": "S",
         "title": "Grouped Composites — Dynamic",
@@ -56,65 +94,6 @@
       "stylePrefix": "s/typography/grouped/dynamic/",
       "subtitle": "s.typography.grouped.dynamic",
       "grouping": "size_class"
-    },
-    {
-      "id": "html-heading",
-      "subgroup": "html",
-      "sectionName": "HTML — Headings",
-      "tableName": "Table: typography/html-heading",
-      "section": {
-        "tier": "H",
-        "title": "HTML — Headings",
-        "purpose": "Heading text styles (H1–H6) for HTML document contexts. Switches between `interface` and `prose` typography contexts.",
-        "guideline": "Pair semantically with HTML <h1>…<h6> elements. Heading scale comes from typography_context — set the parent's context mode to switch interface ↔ prose."
-      },
-      "stylePrefix": "h/typography/style/heading/",
-      "subtitle": "h.typography.style.heading",
-      "grouping": "none"
-    },
-    {
-      "id": "html-body",
-      "subgroup": "html",
-      "sectionName": "HTML — Body",
-      "tableName": "Table: typography/html-body",
-      "section": {
-        "tier": "H",
-        "title": "HTML — Body",
-        "purpose": "Body / paragraph / link text styles used in HTML document contexts (interface and prose).",
-        "guideline": "Default body style is `normal`; `strong` matches <strong>/<b>; `lead` is for opening paragraphs; `link` covers inline links."
-      },
-      "stylePrefix": "h/typography/style/body/",
-      "subtitle": "h.typography.style.body",
-      "grouping": "none"
-    },
-    {
-      "id": "html-link-state",
-      "subgroup": "html",
-      "sectionName": "HTML — Link States",
-      "tableName": "Table: typography/html-link-state",
-      "section": {
-        "tier": "H",
-        "title": "HTML — Link States",
-        "purpose": "Text styles for the six interaction states of an inline text link.",
-        "guideline": "Match the interaction state to its real-world trigger. Pressed wins over hover; disabled wins over everything else."
-      },
-      "stylePrefix": "h/link/",
-      "subtitle": "h.link",
-      "grouping": "none"
-    },
-    {
-      "id": "component",
-      "sectionName": "Component-specific",
-      "tableName": "Table: typography/component",
-      "section": {
-        "tier": "C",
-        "title": "Component-specific Styles",
-        "purpose": "Text styles owned by individual components (badge, infobox, popover, tooltip). Each binds to a higher-level role on that component.",
-        "guideline": "Component-local styles never leak outside their owning component. Add new entries here when introducing a new component-only role."
-      },
-      "stylePrefix": "c/",
-      "subtitle": "c.<component>.typography",
-      "grouping": "component"
     }
   ]
 }

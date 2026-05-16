@@ -44,29 +44,50 @@ Tables are filtered by `stylePrefix` (registry). Anything matching a deeper
 
 | Table | subgroup | stylePrefix | Grouping |
 |---|---|---|---|
-| grouped-static     | scales | `s/typography/grouped/static/`  | size_class (base xs–xl / extended 2xl–4xl) |
-| grouped-dynamic    | scales | `s/typography/grouped/dynamic/` | size_class |
 | html-heading       | html   | `h/typography/style/heading/`   | none |
 | html-body          | html   | `h/typography/style/body/`      | none |
-| html-link-state    | html   | `h/link/`                       | none |
-| component          | —      | `c/`                            | component |
+| grouped-static     | scales | `s/typography/grouped/static/`  | size_class (base xs–xl / extended 2xl–4xl) |
+| grouped-dynamic    | scales | `s/typography/grouped/dynamic/` | size_class |
 
-The `subgroup` field drives a mid-tier wrapper that mirrors the
-Tokens-Preview reference (`51tJjbxBSBmjAmKjQmhsz3`, 🔤 Typography page):
-each subgroup becomes a VERTICAL `__subgroup_container_<id>` frame holding
-a subgroup section bar (an instance of `_docs/typography/section_bar` —
-subgroup name in the small `tierLetter` slot, "Styles" in the prominent
-title — stretched to row width) above a HORIZONTAL `__subgroup_row_<id>`
-frame containing that subgroup's tables side-by-side. Subgroup metadata
-(tierLetter / title / subtitle / purpose / guideline) lives under
-`registry.subgroups`. Tables without a `subgroup` are appended directly
-to the outer wrapper as standalone columns.
+Registry / table order is the on-page order: **HTML subgroup on top,
+Scales subgroup below.**
 
-Setting a typography_context variable mode on the html tables (for an
-interface-vs-prose side-by-side comparison) was attempted via
-`setExplicitVariableModeForCollection` and hung the plugin; the html
-tables therefore render in the file's default mode. To compare modes,
-set the typography_context mode manually on each table frame in Figma.
+`html-heading` carries `"rowHeight": 80` — its data rows are forced to a
+fixed 80px height so the interface-mode and prose-mode copies of the table
+align row-for-row.
+
+Each per-table section bar carries a **mode badge** (the `__mode` text inside
+a Badge instance). It is shown + labelled with the variable mode the table
+renders in, and hidden when the table has none:
+
+- `grouped-static` — no mode → badge hidden.
+- `grouped-dynamic` — `"mode": "md"` in the registry → badge reads `md`.
+- `html-*` — no registry `mode`; the badge is set per column to the
+  column's `typography_context` mode (`interface` / `prose`).
+
+The `subgroup` field drives a mid-tier wrapper: each subgroup becomes a
+VERTICAL `__subgroup_container_<id>` frame holding a subgroup section bar
+(an instance of the shared `_docs/shared/section_bar` — the badge-based
+guidance bar from the color-variables docs — with the group name in the
+prominent `__sectionTitle`, guidance badges per `meta.badges`, the variant
+colour theme per `meta.variant`, and the breadcrumb + tier-letter hidden)
+above the subgroup's tables.
+
+How the tables are laid out depends on `meta.columns`:
+
+- **No `columns`** (Scales) — a single HORIZONTAL `__subgroup_row_<id>`
+  frame with the subgroup's tables side-by-side.
+- **`columns` list** (HTML: `["interface", "prose"]`) — a HORIZONTAL
+  `__subgroup_cols_<id>` frame holding one VERTICAL
+  `__subgroup_col_<id>_<mode>` stack of the tables per column. The first
+  column reuses the built table frames; later columns get deep clones.
+  Each column frame is pinned to its `typography_context` mode via
+  `setExplicitVariableModeForCollection`, so the stacks render interface
+  vs prose side-by-side with no manual mode-switching.
+
+Subgroup metadata (tierLetter / title / subtitle / variant / badges /
+columns / purpose / guideline) lives under `registry.subgroups`. Tables
+without a `subgroup` are appended directly to the outer wrapper.
 
 ## Usage
 
@@ -104,10 +125,12 @@ node scripts-custom/figma-doc-builders/typography/typography.js
 All inside `_building_blocks/typography` (id `12184:1919821`) on the
 `🔧 Utilities` page, plus the shared foundation_bar / group_header:
 
-- `_docs/typography/section_bar` — page-section header with tier letter,
-   title, subtitle, purpose, guideline.
+- `_docs/typography/section_bar` — per-table section header with tier
+   letter, title, subtitle, purpose, guideline.
 - `_docs/typography/header_row`  — header (8 columns).
 - `_docs/typography/row`         — data row matching the header columns.
+- `_docs/shared/section_bar`     — shared badge-based guidance bar (COMPONENT_SET,
+   in `_building_blocks/shared`) used for the Scales / HTML subgroup bars.
 - `_docs/shared/group_header`    — H4 group title above grouped rows.
 - `_building_blocks/shared/foundation_bar` — page-level foundation header.
 
@@ -119,7 +142,7 @@ checks without rebuilding. Per check:
 | Code | Check |
 |---|---|
 | `STRUCT`   | Per registry-listed section name: section exists on the page |
-| `DUP`      | Per Table frame: exactly 1, with exactly 1 section bar instance inside |
+| `DUP`      | Per registry table: the expected number of frames (1, or one per `columns` entry for a multi-column subgroup), each with exactly 1 section bar |
 | `SECTBAR`  | Section bar `__sectionTitle` and `description` populated, not master defaults |
 | `COUNT`    | Per table: row count matches style count from prefix filter |
 | `EMPTY`    | Token-name text on each row is non-empty |

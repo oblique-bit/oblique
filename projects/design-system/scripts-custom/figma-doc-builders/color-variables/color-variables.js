@@ -126,7 +126,7 @@ async function discoverComponents() {
     cn.headerSet['2-mode'], cn.headerSet['4-mode'], cn.headerSet.primitive,
     cn.groupHeaderSet, cn.separatorComponent, cn.setHeadingComponent, cn.swatchSet,
     cn.foundationBar,
-    '_docs/color-variables/section_bar'
+    '_docs/shared/section_bar'
   ].filter(Boolean);
   const targetSet = new Set(targetNames);
   const found = {};
@@ -171,7 +171,7 @@ async function discoverComponents() {
     setHeading:      setOrComp(cn.setHeadingComponent),
     swatchSet:       setOrComp(cn.swatchSet),
     foundationBar:   setOrComp(cn.foundationBar),
-    sectionBar: setOrComp('_docs/color-variables/section_bar')
+    sectionBar: setOrComp('_docs/shared/section_bar')
   };
 }
 
@@ -1178,7 +1178,7 @@ async function validatePage(targetPage, varMap, components) {
   const errors = [];
   const warnings = [];
   const stats = { totalRows: 0, byTable: {} };
-  const sbName = components.sectionBar ? components.sectionBar.name : '_docs/color-variables/section_bar';
+  const sbName = components.sectionBar ? components.sectionBar.name : '_docs/shared/section_bar';
   const shName = components.setHeading ? components.setHeading.name : '_docs/color-variables/set_heading';
 
   // findAll so the container is located even when wrapped in the outer
