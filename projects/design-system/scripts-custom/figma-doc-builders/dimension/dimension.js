@@ -104,6 +104,12 @@ function findFirstText(node) {
   if (node.children) for (const c of node.children) { const t = findFirstText(c); if (t) return t; }
   return null;
 }
+// Force a text node onto a single line — hugs its content so a short value
+// like '0.063rem' never wraps the unit onto a second line.
+function noWrapText(textNode) {
+  if (!textNode || textNode.type !== 'TEXT') return;
+  try { textNode.textAutoResize = 'WIDTH_AND_HEIGHT'; } catch {}
+}
 
 // ── component discovery (by name from registry) ────────────────────────────
 const components = {};
@@ -133,14 +139,14 @@ async function discoverVariables() {
   L('vars: ' + allVars.length);
 }
 
-// Size-rank for the t-shirt scale used across dimension tokens. Base sizes get
-// ranks 0..4; numeric N-xl sizes get rank 4+N (so 2xl=6, 11xl=15). 'none' is
-// special — placed at the very end (rank 999) since it represents a deliberate
-// no-spacing token, not a step in the scale.
+// Size-rank for the t-shirt scale used across dimension tokens. 'none' ranks
+// first (-1) — it is the zero of the scale and must lead a low→high order.
+// Base sizes get ranks 0..4; numeric N-xl sizes get rank 4+N (so 2xl=6,
+// 11xl=15). A missing size segment (null) falls to the very end.
 const _BASE_SIZE_RANKS = { xs: 0, sm: 1, md: 2, lg: 3, xl: 4 };
 function rankSize(size) {
   if (size == null) return 999;
-  if (size === 'none') return 998;
+  if (size === 'none') return -1;
   if (_BASE_SIZE_RANKS[size] != null) return _BASE_SIZE_RANKS[size];
   const m = /^(\\d+)xl$/.exec(size);
   if (m) return 4 + Number(m[1]);
@@ -215,7 +221,7 @@ function varsForTable(spec) {
 }
 
 // Group key for a token, per the table's declared 'grouping' scheme.
-//   'size_class' → 'base' (xs..xl) or 'extended' (Nxl). 'none' goes 'extended'.
+//   'size_class' → 'base' (none, xs..xl) or 'extended' (Nxl).
 //   'category'   → the category segment from the path, or 'direct' if absent.
 //   'none' / undefined → null (no grouping).
 function groupKeyForToken(v, spec) {
@@ -279,13 +285,26 @@ function pxFromValue(v, val) {
   return isRemVariable(v) ? num * 16 : num;
 }
 
-const PREVIEW_BAR_MAX = 240; // visual cap so big tokens don't overflow the cell
+const PREVIEW_BAR_MAX = 240; // fallback cap when the cell width can't be read
+
+// The preview bar represents the token's px value 1:1. Cap it only at the
+// cell's own inner width so it never overflows the cell — and never below the
+// value itself, which previously clipped macro tokens (256/320) at 240.
+function previewCap(cell) {
+  try {
+    if (cell && typeof cell.width === 'number' && cell.width > 0) {
+      const padL = cell.paddingLeft || 0, padR = cell.paddingRight || 0;
+      return Math.max(1, Math.round(cell.width - padL - padR));
+    }
+  } catch {}
+  return PREVIEW_BAR_MAX;
+}
 
 function setPreviewBar(cell, pxValue) {
   if (!cell || !cell.findOne) return;
   const bar = cell.findOne(n => n.type === 'RECTANGLE' && /preview/i.test(n.name));
   if (!bar) return;
-  const w = Math.max(1, Math.min(PREVIEW_BAR_MAX, Math.round(pxValue)));
+  const w = Math.max(1, Math.min(previewCap(cell), Math.round(pxValue)));
   try { bar.layoutSizingHorizontal = 'FIXED'; } catch {}
   try { bar.resize(w, bar.height || 4); } catch (e) { L('preview resize failed: ' + e.message); }
 }
@@ -295,7 +314,7 @@ function setPreviewBar(cell, pxValue) {
 // Only call after the row has been detached — the cell must be writable.
 function swapToPreviewBarComponent(cell, pxValue) {
   if (!cell || !components.previewBar || !cell.findOne) return;
-  const w = Math.max(1, Math.min(PREVIEW_BAR_MAX, Math.round(pxValue)));
+  const w = Math.max(1, Math.min(previewCap(cell), Math.round(pxValue)));
   const existingBar = cell.findOne(n => (n.type === 'RECTANGLE' || n.type === 'INSTANCE') && /preview/i.test(n.name));
   // If there's already an INSTANCE of our component, just resize it.
   if (existingBar && existingBar.type === 'INSTANCE') {
@@ -698,6 +717,7 @@ async function buildStaticRow(v) {
   setText(descNode, v.description || '');
   const val = await resolveDim(v);
   setText(valNode, formatValue(v, val));
+  noWrapText(valNode);
   return { instance: inst, v, tokenPath, value: val };
 }
 
@@ -718,7 +738,7 @@ async function buildModeRow(v, spec) {
               || findChild(inst, 'mode_cell_' + (i + 1));
     if (cell) {
       const t = findFirstText(cell);
-      if (t) setText(t, formatValue(v, val));
+      if (t) { setText(t, formatValue(v, val)); noWrapText(t); }
     }
   }
   return { instance: inst, v, tokenPath, values, modes: spec.modes };
