@@ -258,23 +258,25 @@ function formatNumber(num) {
   return String(rounded);
 }
 
-// Convention in this design system: both .px and .rem variants of a token
-// store the same numeric value (the px-equivalent). For .rem display we divide
-// by 16; the underlying px stays the same.
+// Convention in this design system: a .px variant stores a px number and a
+// .rem variant stores its own rem number (e.g. 0.31). Each variant is shown
+// in its own unit, no conversion.
 function formatValue(v, val) {
   if (val == null) return '';
   if (typeof val === 'object' && val.type === 'VARIABLE_ALIAS') return '<alias>';
   const num = (typeof val === 'number') ? val : (val && typeof val.value === 'number' ? val.value : null);
   if (num == null) return String(val);
-  if (isRemVariable(v)) return formatNumber(num / 16) + 'rem';
+  if (isRemVariable(v)) return formatNumber(num) + 'rem';
   return formatNumber(num) + 'px';
 }
 
-// Px-equivalent for preview-bar sizing — same for both .px and .rem variants.
+// Px-equivalent for preview-bar sizing. A .rem variant stores rem, so multiply
+// by the 16px root font size; a .px variant is already px.
 function pxFromValue(v, val) {
   if (val == null) return 0;
   const num = (typeof val === 'number') ? val : (val && typeof val.value === 'number' ? val.value : null);
-  return num == null ? 0 : num;
+  if (num == null) return 0;
+  return isRemVariable(v) ? num * 16 : num;
 }
 
 const PREVIEW_BAR_MAX = 240; // visual cap so big tokens don't overflow the cell
