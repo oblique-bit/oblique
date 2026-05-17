@@ -2919,5 +2919,41 @@
     "$figmaModeId": "",
     "$figmaVariableReferences": {},
     "group": "motion"
+  },
+  {
+    "id": "vd1-interaction-default",
+    "name": "default",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/interaction/default": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_interaction"
+  },
+  {
+    "id": "vd1-interaction-hover",
+    "name": "hover",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/interaction/hover": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_interaction"
+  },
+  {
+    "id": "vd1-interaction-active",
+    "name": "active",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/interaction/active": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_interaction"
   }
 ]

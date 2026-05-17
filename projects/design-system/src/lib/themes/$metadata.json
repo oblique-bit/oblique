@@ -56,6 +56,9 @@
     "05_html/button/05_viewport/desktop",
     "05_html/button/05_viewport/mobile",
     "05_html/button/06_motion",
-    "05_html/button/07_reference_only"
+    "05_html/button/07_reference_only",
+    "05_html/button_vd1/interaction/default",
+    "05_html/button_vd1/interaction/hover",
+    "05_html/button_vd1/interaction/active"
   ]
 }

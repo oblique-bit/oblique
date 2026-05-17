@@ -1,0 +1,25 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "#155a9e",
+            "$description": "button_vd1 background — interaction mode: hover"
+          },
+          "fg": {
+            "$type": "color",
+            "$value": "#ffffff",
+            "$description": "button_vd1 foreground — interaction mode: hover"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "#155a9e",
+            "$description": "button_vd1 border — interaction mode: hover"
+          }
+        }
+      }
+    }
+  }
+}
