@@ -1,7 +1,7 @@
 {
   "schema": "ob.dimension.registry.v1",
   "page": "📐 Dimension – Spacing & Sizing",
-  "allowedFiles": ["DesignSystem@Tokens V9.7"],
+  "allowedFiles": [],
   "componentNames": {
     "sectionBar":     "_docs/dimension/section_bar",
     "headerRow":      "_docs/dimension/header_row",

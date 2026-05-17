@@ -2,13 +2,13 @@
 
 Generates the **🎨 Colors – Tokens** Figma docs page (or any page passed via `--page`) from the live Figma color variables. Renders 14 tables across 4 tiers (primitive, s1, s2, s3) — one table per `<tier>-<category>` combination — with header rows, group headers, swatches, and per-token descriptions.
 
-Mirrors the architecture of `../color-pairings/color-pairings.js`: a single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string + a `registry.json` that lists the 14 tables and the components used. Source of truth = Figma variables; the script reads them and the family-doc STRING vars (`_docs/token_family_info`) in one eval, no JSON-token dependency.
+Mirrors the architecture of `../color-pairings/build-color-pairings.js`: a single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string + a `registry.json` that lists the 14 tables and the components used. Source of truth = Figma variables; the script reads them and the family-doc STRING vars (`_docs/token_family_info`) in one eval, no JSON-token dependency.
 
 ## Files
 
 ```
 color-variables/
-  color-variables.js   Node orchestrator + embedded PLUGIN_CODE (Figma side)
+  build-color-variables.js   Node orchestrator + embedded PLUGIN_CODE (Figma side)
   registry.json        Table list, table widths, component-name lookups
   _readme.md           This file
 ```
@@ -25,20 +25,20 @@ The script does not emit local files — the Figma page is the only artifact. Pe
 
 ```bash
 # Build all 14 tables on the default page
-node color-variables.js
+node build-color-variables.js
 
 # Build a single table
-node color-variables.js --table s1-status
+node build-color-variables.js --table s1-status
 
 # Build all tables in a tier
-node color-variables.js --tier s3
+node build-color-variables.js --tier s3
 
 # Build on a different page (e.g. the cli sandbox)
-node color-variables.js --page "🎨 Color - Variables docs cli"
+node build-color-variables.js --page "🎨 Color - Variables docs cli"
 
 # Validate the current page only — no writes anywhere.
 # Exits 1 if any errors (CI-friendly).
-node color-variables.js --validate
+node build-color-variables.js --validate
 ```
 
 ### Validation
@@ -57,7 +57,7 @@ Exit policy: any `error` → exit 1. Warnings print but don't block.
 
 Or from the design-system root:
 ```bash
-node scripts-custom/figma-doc-builders/color-variables/color-variables.js
+node scripts-custom/figma-doc-builders/color-variables/build-color-variables.js
 ```
 
 ## Source-of-truth contract
@@ -74,16 +74,16 @@ node scripts-custom/figma-doc-builders/color-variables/color-variables.js
 
 ## Prerequisites
 
-1. Figma Desktop running with **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`).
+1. Figma Desktop running, with the file you want to build into open and active — typically **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`), but the builder runs against whatever file is active.
 2. `figma-ds-cli` connected — `figma-ds-cli connect` (Yolo) or `figma-ds-cli connect --safe`.
 3. The target page must exist (default: `🎨 Colors – Tokens`; or whatever `--page` says).
 
 ## How it works
 
-1. **Node side** (`color-variables.js`):
+1. **Node side** (`build-color-variables.js`):
    - Reads `registry.json`.
    - Composes a `(async () => { … })()` IIFE with `PAYLOAD = { registry, tableFilter, validateOnly, pageOverride }` injected as a literal and the `PLUGIN_CODE` body inlined.
-   - Hands the IIFE to `figma-ds-cli run` via a tmp file (same wrapper pattern as `color-pairings.js`).
+   - Hands the IIFE to `figma-ds-cli run` via a tmp file (same wrapper pattern as `build-color-pairings.js`).
    - Receives the IIFE's return value (JSON) and prints a per-table summary + cache stats.
 
 2. **In-Figma side** (`PLUGIN_CODE`):
@@ -117,7 +117,7 @@ Each table entry declares its tier, category, header variant, row variant, and w
 
 ## Components used
 
-All inside `_docs/color-variables/*` (under the Building Blocks frame on the cli page), plus `_docs/shared/group_header` and `_docs/shared/section_bar`:
+All inside `_docs/color-variables/*` (under the Building Blocks frame on the cli page), plus the shared components `_docs/shared/group_header`, `_docs/shared/section_bar`, `_docs/shared/temp_pill`, `_docs/shared/section_breadcrumb`, and `_docs/shared/section_breadcrumb_building_blocks`:
 
 - `_docs/shared/section_bar` — shared badge-based guidance bar (COMPONENT_SET in the `_building_blocks/shared` section): tier-letter, title, purpose, guideline, breadcrumb, badges (variants: tier=p|s1|s2|s). Also used by the typography docs builder.
 - `header_row_2mode` / `header_row_4mode` / `header_row_primitive` — column headers, with/without Description.
@@ -125,8 +125,8 @@ All inside `_docs/color-variables/*` (under the Building Blocks frame on the cli
 - `swatch` — color swatch with Alpha=None|Light|Dark variants.
 - `set_heading` — primitive "Set N" labels.
 - `separator_emphasis_partial` — row separator for s2 4-mode tables.
-- `section_breadcrumb` / `section_breadcrumb_building_blocks` — breadcrumb building blocks.
-- `temp_pill` — legacy / scratch (kept for reference; not used by current build).
+- `_docs/shared/section_breadcrumb` / `_docs/shared/section_breadcrumb_building_blocks` — breadcrumb building blocks (shared, in `_building_blocks/shared`).
+- `_docs/shared/temp_pill` — badge pill; the section_bar role badges are instances of it (shared, in `_building_blocks/shared`).
 - `_docs/shared/group_header` — shared with color-pairings (Size=H3|H4 variants, groupTitle + groupDescription text properties).
 
 ## Troubleshooting

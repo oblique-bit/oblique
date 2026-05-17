@@ -2,13 +2,13 @@
 
 Generates the **📐 Dimension: Spacing & Sizing** Figma docs page from the live dimension variables. Renders 6 tables (3 categories × static|dynamic): Typography Context, Density, UI Scale.
 
-Mirrors the architecture of `../color-variables/color-variables.js` and `../color-pairings/color-pairings.js`: a single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string + a `registry.json` that lists the 6 tables and the components used.
+Mirrors the architecture of `../color-variables/build-color-variables.js` and `../color-pairings/build-color-pairings.js`: a single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string + a `registry.json` that lists the 6 tables and the components used.
 
 ## Files
 
 ```
 dimension/
-  dimension.js     Node orchestrator + embedded PLUGIN_CODE (Figma side)
+  build-dimension.js     Node orchestrator + embedded PLUGIN_CODE (Figma side)
   registry.json    Per-table mapping: section name → collection + var prefix + modes
   _readme.md       This file
 ```
@@ -38,27 +38,27 @@ Per-leaf description comes from `variable.description`. Family-doc variables (pa
 
 ```bash
 # Build everything (default): 6 tables + validate
-node dimension.js
+node build-dimension.js
 
 # Build a single table
-node dimension.js --table density-dynamic
+node build-dimension.js --table density-dynamic
 
 # Build on a different page
-node dimension.js --page "📐 Dimension: Spacing & Sizing"
+node build-dimension.js --page "📐 Dimension: Spacing & Sizing"
 
 # Validate the current page only — no writes anywhere.
 # Exits 1 if any errors (CI-friendly).
-node dimension.js --validate
+node build-dimension.js --validate
 ```
 
 Or from the design-system root:
 ```bash
-node scripts-custom/figma-doc-builders/dimension/dimension.js
+node scripts-custom/figma-doc-builders/dimension/build-dimension.js
 ```
 
 ## Prerequisites
 
-1. Figma Desktop running with **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`).
+1. Figma Desktop running, with the file you want to build into open and active — typically **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`), but the builder runs against whatever file is active.
 2. `figma-ds-cli` connected — `figma-ds-cli connect` (Yolo) or `figma-ds-cli connect --safe`.
 3. The target page **📐 Dimension: Spacing & Sizing** must exist.
 

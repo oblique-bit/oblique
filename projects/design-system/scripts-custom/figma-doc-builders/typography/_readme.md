@@ -2,7 +2,7 @@
 
 Generates the **🔤 Typography – Styles & Specimens** Figma docs page from the
 live local **text styles** (not variables). Mirrors the architecture of
-`../dimension/dimension.js` and `../color-variables/color-variables.js`:
+`../dimension/build-dimension.js` and `../color-variables/build-color-variables.js`:
 single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string plus a
 `registry.json` listing the tables and the components used.
 
@@ -10,7 +10,7 @@ single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string plus a
 
 ```
 typography/
-  typography.js    Node orchestrator + embedded PLUGIN_CODE (Figma side)
+  build-typography.js    Node orchestrator + embedded PLUGIN_CODE (Figma side)
   registry.json    Per-table: section meta + stylePrefix + grouping
   _readme.md       This file
 ```
@@ -93,26 +93,26 @@ without a `subgroup` are appended directly to the outer wrapper.
 
 ```bash
 # Build everything (default): all tables + validate
-node typography.js
+node build-typography.js
 
 # Build a single table
-node typography.js --table html-heading
+node build-typography.js --table html-heading
 
 # Build on a specific page (skips the timestamped page name)
-node typography.js --page "🔤 Typography – Styles & Specimens"
+node build-typography.js --page "🔤 Typography – Styles & Specimens"
 
 # Validate only — no writes (CI-friendly; exit 1 on errors)
-node typography.js --validate
+node build-typography.js --validate
 ```
 
 Or from the design-system root:
 ```bash
-node scripts-custom/figma-doc-builders/typography/typography.js
+node scripts-custom/figma-doc-builders/typography/build-typography.js
 ```
 
 ## Prerequisites
 
-1. Figma Desktop running with **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`).
+1. Figma Desktop running, with the file you want to build into open and active — typically **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`), but the builder runs against whatever file is active.
 2. `figma-ds-cli` connected — `figma-ds-cli connect` (Yolo) or `--safe`.
 3. Text styles authored in Figma (typically via Tokens Studio push of the
    `s/typography/grouped/...`, `h/typography/...`, `c/.../typography/...`

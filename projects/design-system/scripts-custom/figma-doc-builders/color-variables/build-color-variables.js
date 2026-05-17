@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * color-variables.js — Color documentation builder, Figma-variables-only.
+ * build-color-variables.js — Color documentation builder, Figma-variables-only.
  *
  * Reads every color token (primitive, s1, s2, s3) and every family-doc string
  * from Figma variables in a single eval. Eval payload contains only the
@@ -18,11 +18,11 @@
  *   - Per-leaf descriptions: `variable.description`.
  *
  * Usage:
- *   node color-variables.js                 # build all tables
- *   node color-variables.js --table <id>    # build one table (e.g. --table s1-status)
- *   node color-variables.js --tier <name>   # build all tables in a tier (s1|s2|s3|primitive)
- *   node color-variables.js --page <name>   # override target Figma page
- *   node color-variables.js --validate      # read existing page, run checks, no writes (exit 1 on errors)
+ *   node build-color-variables.js                 # build all tables
+ *   node build-color-variables.js --table <id>    # build one table (e.g. --table s1-status)
+ *   node build-color-variables.js --tier <name>   # build all tables in a tier (s1|s2|s3|primitive)
+ *   node build-color-variables.js --page <name>   # override target Figma page
+ *   node build-color-variables.js --validate      # read existing page, run checks, no writes (exit 1 on errors)
  *
  * Validation runs automatically at the end of every regular build. Use --validate
  * to run checks against the current page without rebuilding.
@@ -329,7 +329,7 @@ async function ensurePageStructure(page, components, varMap) {
     container.layoutMode = 'HORIZONTAL';
     container.itemSpacing = 256;
     container.paddingTop = 32; container.paddingBottom = 32;
-    container.paddingLeft = 32; container.paddingRight = 32;
+    container.paddingLeft = 0; container.paddingRight = 0;
     container.layoutSizingHorizontal = 'HUG';
     container.layoutSizingVertical = 'HUG';
     container.fills = [];
@@ -1406,7 +1406,7 @@ async function main() {
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch {}
 
-  const payload = { registry, tableFilter, pageOverride, validateOnly, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptName: 'color-variables.js' } };
+  const payload = { registry, tableFilter, pageOverride, validateOnly, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-variables.js' } };
   if (pageOverride) console.log(`  Page override: ${pageOverride}`);
   const script = `(async () => {
 const PAYLOAD = ${JSON.stringify(payload)};

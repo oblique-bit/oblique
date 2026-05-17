@@ -19,6 +19,37 @@
     "AA_large": 3.0,
     "AAA": 7.0
   },
+  "usage": {
+    "_comment": "Maps a contrast result to real design-system use cases for the swatch 'Recommended for' / 'Not recommended for' frames. WCAG pass/fail itself is shown ONLY on the AA/AAA pills — never as a recommendation. Tier is picked by ratio: aaa >= 7, aaNormal >= 4.5, aaLarge >= 3, else fail.",
+    "aaa": {
+      "range": "ratio >= 7:1",
+      "recContent": "H1–H6, body, lead, strong",
+      "recComponent": "xs, sm, md, lg, xl, 2xl, 3xl, 4xl, all weights",
+      "notContent": "n/A",
+      "notComponent": "n/A"
+    },
+    "aaNormal": {
+      "range": "4.5:1 <= ratio < 7:1",
+      "recContent": "H1–H6, body, lead, strong",
+      "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+      "notContent": "n/A",
+      "notComponent": "xs, sm"
+    },
+    "aaLarge": {
+      "range": "3:1 <= ratio < 4.5:1",
+      "recContent": "H1–H4, bold body, lead",
+      "recComponent": "lg, xl, 2xl, 3xl, 4xl (bold below xl)",
+      "notContent": "body, strong",
+      "notComponent": "xs, sm, md"
+    },
+    "fail": {
+      "range": "ratio < 3:1",
+      "recContent": "decorative only",
+      "recComponent": "n/A",
+      "notContent": "all semantic text",
+      "notComponent": "all sizes"
+    }
+  },
   "categories": {
     "neutral": {
       "section": {

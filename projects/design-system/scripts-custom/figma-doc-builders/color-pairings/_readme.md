@@ -2,13 +2,13 @@
 
 Generates the **🎨 Colors – Contrast Pairings cli** Figma docs page **and** two consumer-facing artifacts (`contrast-pairings.json`, `accessible-pairings.md`) from the semantic color variables in the live Figma file.
 
-Mirrors the architecture of `../color-variables/color-variables.js`: a single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string + a tiny `registry.json` for layout rules. No JSON dumps to maintain — colors and pairings come from Figma variables, content/component specs (`cs` / `cmps`) and `emph` annotations are computed at build time.
+Mirrors the architecture of `../color-variables/build-color-variables.js`: a single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string + a tiny `registry.json` for layout rules. No JSON dumps to maintain — colors and pairings come from Figma variables, the per-swatch `usage` recommendation (real design-system use cases, from `registry.usage`) and `emph` annotations are computed at build time.
 
 ## Files
 
 ```
 color-pairings/
-  color-pairings.js   Node orchestrator + embedded PLUGIN_CODE (Figma side)
+  build-color-pairings.js   Node orchestrator + embedded PLUGIN_CODE (Figma side)
   registry.json       Layout rules per category + section/group header text
   _readme.md          This file
 ```
@@ -17,7 +17,7 @@ color-pairings/
 
 | Output | Path | Purpose |
 |---|---|---|
-| Figma docs page | `🎨  Colors – Contrast Pairings cli` (page id `12056:43407`) | Visual reference inside Tokens V9.7 |
+| Figma docs page | `🎨  Colors – Contrast Pairings cli` (page id `12056:43407`) | Visual reference inside the active Figma file |
 | JSON | `src/lib/contrast-pairings.json` | Machine-readable, for code consumers and validators |
 | Markdown | `src/lib/accessible-pairings.md` | Human/AI-readable, table per category |
 
@@ -27,21 +27,21 @@ The same build produces all three. They are always in sync (single source of tru
 
 ```bash
 # Build everything (default): Figma docs + JSON + MD + validate
-node color-pairings.js
+node build-color-pairings.js
 
 # Just rebuild Figma docs + validate (skip writing local files)
-node color-pairings.js --mode figma
+node build-color-pairings.js --mode figma
 
 # Just rewrite local JSON + MD (read-only Figma access, no validation)
-node color-pairings.js --mode export
+node build-color-pairings.js --mode export
 
 # Validate the current Figma page only — no writes anywhere.
 # Exits 1 if any errors (CI-friendly).
-node color-pairings.js --mode validate
+node build-color-pairings.js --mode validate
 
 # Restrict to a single category (for fast iteration during development)
-node color-pairings.js --category neutral
-node color-pairings.js --mode figma --category status
+node build-color-pairings.js --category neutral
+node build-color-pairings.js --mode figma --category status
 ```
 
 ### Validation
@@ -64,21 +64,21 @@ Single-token swatches (e.g. `brand`) skip bg-related checks automatically.
 
 Or from the design-system root:
 ```bash
-node scripts-custom/figma-doc-builders/color-pairings/color-pairings.js
+node scripts-custom/figma-doc-builders/color-pairings/build-color-pairings.js
 ```
 
 ## Prerequisites
 
-1. Figma Desktop running with **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`).
+1. Figma Desktop running, with the file you want to build into open and active — typically **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`), but the builder runs against whatever file is active.
 2. `figma-ds-cli` connected — `figma-ds-cli connect` (Yolo) or `figma-ds-cli connect --safe`.
 3. The target page **🎨  Colors – Contrast Pairings cli** must exist (the build refuses to run otherwise).
 
 ## How it works
 
-1. **Node side** (`color-pairings.js`):
+1. **Node side** (`build-color-pairings.js`):
    - Reads `registry.json`.
    - Composes a `(async () => { … })()` IIFE with `PAYLOAD = { registry, mode, onlyCategory }` injected as a literal, and the `PLUGIN_CODE` body inlined.
-   - Hands the IIFE to `figma-ds-cli run` via a tmp file (same wrapper pattern as `color-variables.js`).
+   - Hands the IIFE to `figma-ds-cli run` via a tmp file (same wrapper pattern as `build-color-variables.js`).
    - Receives the IIFE's return value (JSON), writes the local artifacts.
 
 2. **In-Figma side** (`PLUGIN_CODE`):
@@ -86,7 +86,7 @@ node scripts-custom/figma-doc-builders/color-pairings/color-pairings.js
    - For each category in `registry.categories`:
      - Either iterates explicit `blocks`, or expands `groups × perGroup` (+ optional `textLink` block) when the category is templated.
      - For every block, expands to fg/bg pairs by filling path placeholders (`{fg}`, `{bg}`, `{state}`, `{group}`).
-     - Resolves each variable to a concrete RGBA (following aliases, max depth 8), computes the WCAG ratio, derives `cs` / `cmps` text, flags `emph` for known patterns (text-link on saturated status bg).
+     - Resolves each variable to a concrete RGBA (following aliases, max depth 8), computes the WCAG contrast ratio, picks the `usage` recommendation tier from `registry.usage` (contrast tier → real use cases — never a WCAG label), flags `emph` for known patterns (text-link on saturated status bg).
    - If `mode != 'export'`, also builds the visual hierarchy on the target page:
      - Root frame `color-pairing-build` (any prior copy is removed, nothing else on the page is touched).
      - One `category-<name>` frame per category, with `_Section Bar` header.
@@ -101,6 +101,9 @@ node scripts-custom/figma-doc-builders/color-pairings/color-pairings.js
   "rootFrameName": "color-pairing-build",
   "componentNames": { … },
   "wcag": { "AA_normal": 4.5, "AA_large": 3.0, "AAA": 7.0 },
+  "usage": {                  // contrast tier → use-case recommendation text
+    "<tier>": { "recContent", "recComponent", "notContent", "notComponent" }
+  },
   "categories": {
     "<name>": {
       "section": { "tier", "title", "purpose", "guideline" },

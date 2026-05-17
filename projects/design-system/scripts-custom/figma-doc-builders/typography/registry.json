@@ -1,7 +1,7 @@
 {
   "schema": "ob.typography.registry.v1",
   "page": "🔤 Typography – Styles & Specimens",
-  "allowedFiles": ["DesignSystem@Tokens V9.7"],
+  "allowedFiles": [],
   "componentNames": {
     "sectionBar":       "_docs/typography/section_bar",
     "sharedSectionBar": "_docs/shared/section_bar",

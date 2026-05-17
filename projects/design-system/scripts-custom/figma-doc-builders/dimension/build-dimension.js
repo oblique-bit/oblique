@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * dimension.js — Dimension docs builder, Figma-variables-only.
+ * build-dimension.js — Dimension docs builder, Figma-variables-only.
  *
  * Reads dimension variables from the live Figma file and rebuilds the 6 tables
  * on the "📐 Dimension: Spacing & Sizing" page (3 categories × static|dynamic).
@@ -12,10 +12,10 @@
  *   - Per-token description: `variable.description`
  *
  * Usage:
- *   node dimension.js                       # build everything + validate
- *   node dimension.js --table <id>          # one table only (e.g. --table density-static)
- *   node dimension.js --page <name>         # override target Figma page
- *   node dimension.js --validate            # validate only, no writes (exit 1 on errors)
+ *   node build-dimension.js                       # build everything + validate
+ *   node build-dimension.js --table <id>          # one table only (e.g. --table density-static)
+ *   node build-dimension.js --page <name>         # override target Figma page
+ *   node build-dimension.js --validate            # validate only, no writes (exit 1 on errors)
  */
 'use strict';
 
@@ -1122,7 +1122,7 @@ function main() {
   // Same minute-precision timestamp used to suffix the build page name. No TZ
   // marker here — keeps Figma page names short.
   const pageTs = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
-  const scriptRel = 'scripts-custom/figma-doc-builders/dimension/dimension.js';
+  const scriptRel = 'scripts-custom/figma-doc-builders/dimension/build-dimension.js';
 
   // Foundation description — umbrella family-doc text from
   // src/lib/themes/03_semantic/dimension/density/static.json. Tokens Studio
@@ -1140,7 +1140,7 @@ function main() {
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch (e) { /* leave null — bar keeps master default */ }
 
-  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'dimension.js' } };
+  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'build-dimension.js' } };
   const script = `(async () => {\nconst PAYLOAD = ${JSON.stringify(payload)};\n${PLUGIN_CODE}\n})()`;
 
   const t0 = Date.now();

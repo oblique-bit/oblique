@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * typography.js — Typography docs builder, Figma-text-styles-only.
+ * build-typography.js — Typography docs builder, Figma-text-styles-only.
  *
  * Reads every local text style from the connected Figma file and rebuilds
  * the tables on the "🔤 Typography – Styles & Specimens" page. One row per
@@ -16,10 +16,10 @@
  * by `stylePrefix` and optionally groups by `size_class` or `component`.
  *
  * Usage:
- *   node typography.js                       # build everything + validate
- *   node typography.js --table <id>          # one table only (e.g. --table html-heading)
- *   node typography.js --page <name>         # override target Figma page
- *   node typography.js --validate            # validate only, no writes (exit 1 on errors)
+ *   node build-typography.js                       # build everything + validate
+ *   node build-typography.js --table <id>          # one table only (e.g. --table html-heading)
+ *   node build-typography.js --page <name>         # override target Figma page
+ *   node build-typography.js --validate            # validate only, no writes (exit 1 on errors)
  */
 'use strict';
 
@@ -312,7 +312,7 @@ async function whiteBgFill() {
   return fill;
 }
 
-// Foundation bar (shared component) — same pattern as dimension.js
+// Foundation bar (shared component) — same pattern as build-dimension.js
 const OUTER_NAME = 'Typography Output';
 const FOUNDATION_BAR_INSTANCE_NAME = '__foundation_bar';
 
@@ -1136,7 +1136,7 @@ function main() {
   const tzPart = new Intl.DateTimeFormat('en', { timeZoneName: 'short' }).formatToParts(now).find(p => p.type === 'timeZoneName');
   const generatedAt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}${tzPart ? ' ' + tzPart.value : ''}`;
   const pageTs = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
-  const scriptRel = 'scripts-custom/figma-doc-builders/typography/typography.js';
+  const scriptRel = 'scripts-custom/figma-doc-builders/typography/build-typography.js';
 
   // Foundation description — read from the typography JSON's umbrella.
   let foundationDescription = null;
@@ -1151,7 +1151,7 @@ function main() {
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch (e) { /* leave null */ }
 
-  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'typography.js' } };
+  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'build-typography.js' } };
   const script = `(async () => {\nconst PAYLOAD = ${JSON.stringify(payload)};\n${PLUGIN_CODE}\n})()`;
 
   const t0 = Date.now();
