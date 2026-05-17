@@ -3,13 +3,29 @@
     "g": {
       "modes": {
         "viewport": {
-          "mobile": {
-            "$type": "other",
-            "$value": ".ob-viewport-mobile"
-          },
-          "desktop": {
+          "xs": {
             "$type": "other",
             "$value": "default"
+          },
+          "sm": {
+            "$type": "other",
+            "$value": ".ob-viewport-sm"
+          },
+          "md": {
+            "$type": "other",
+            "$value": ".ob-viewport-md"
+          },
+          "lg": {
+            "$type": "other",
+            "$value": ".ob-viewport-lg"
+          },
+          "xl": {
+            "$type": "other",
+            "$value": ".ob-viewport-xl"
+          },
+          "2xl": {
+            "$type": "other",
+            "$value": ".ob-viewport-2xl"
           }
         },
         "s1_lightness": {
