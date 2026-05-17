@@ -1,0 +1,25 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "{ob.h.button_vd1._chain.focus.bg}",
+            "$description": "button_vd1 bg - display:enabled (component binds this leaf)"
+          },
+          "fg": {
+            "$type": "color",
+            "$value": "{ob.h.button_vd1._chain.focus.fg}",
+            "$description": "button_vd1 fg - display:enabled (component binds this leaf)"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{ob.h.button_vd1._chain.focus.border}",
+            "$description": "button_vd1 border - display:enabled (component binds this leaf)"
+          }
+        }
+      }
+    }
+  }
+}

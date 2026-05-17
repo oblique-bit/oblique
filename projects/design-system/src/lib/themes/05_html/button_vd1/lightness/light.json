@@ -1,0 +1,171 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_chain": {
+          "lightness": {
+            "bg": {
+              "primary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "#1b6ec2",
+                  "$description": "button_vd1 bg raw - lightness:light intent:primary interaction:default"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "#155a9e",
+                  "$description": "button_vd1 bg raw - lightness:light intent:primary interaction:hover"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "#0f4576",
+                  "$description": "button_vd1 bg raw - lightness:light intent:primary interaction:active"
+                }
+              },
+              "secondary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "#5a6573",
+                  "$description": "button_vd1 bg raw - lightness:light intent:secondary interaction:default"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "#474f5c",
+                  "$description": "button_vd1 bg raw - lightness:light intent:secondary interaction:hover"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "#343a44",
+                  "$description": "button_vd1 bg raw - lightness:light intent:secondary interaction:active"
+                }
+              },
+              "tertiary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "#0e7c7b",
+                  "$description": "button_vd1 bg raw - lightness:light intent:tertiary interaction:default"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "#0a615f",
+                  "$description": "button_vd1 bg raw - lightness:light intent:tertiary interaction:hover"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "#064544",
+                  "$description": "button_vd1 bg raw - lightness:light intent:tertiary interaction:active"
+                }
+              }
+            },
+            "fg": {
+              "primary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "#ffffff",
+                  "$description": "button_vd1 fg raw - lightness:light intent:primary interaction:default"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "#ffffff",
+                  "$description": "button_vd1 fg raw - lightness:light intent:primary interaction:hover"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "#ffffff",
+                  "$description": "button_vd1 fg raw - lightness:light intent:primary interaction:active"
+                }
+              },
+              "secondary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "#ffffff",
+                  "$description": "button_vd1 fg raw - lightness:light intent:secondary interaction:default"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "#ffffff",
+                  "$description": "button_vd1 fg raw - lightness:light intent:secondary interaction:hover"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "#ffffff",
+                  "$description": "button_vd1 fg raw - lightness:light intent:secondary interaction:active"
+                }
+              },
+              "tertiary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "#ffffff",
+                  "$description": "button_vd1 fg raw - lightness:light intent:tertiary interaction:default"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "#ffffff",
+                  "$description": "button_vd1 fg raw - lightness:light intent:tertiary interaction:hover"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "#ffffff",
+                  "$description": "button_vd1 fg raw - lightness:light intent:tertiary interaction:active"
+                }
+              }
+            },
+            "border": {
+              "primary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "#1b6ec2",
+                  "$description": "button_vd1 border raw - lightness:light intent:primary interaction:default"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "#155a9e",
+                  "$description": "button_vd1 border raw - lightness:light intent:primary interaction:hover"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "#0f4576",
+                  "$description": "button_vd1 border raw - lightness:light intent:primary interaction:active"
+                }
+              },
+              "secondary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "#5a6573",
+                  "$description": "button_vd1 border raw - lightness:light intent:secondary interaction:default"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "#474f5c",
+                  "$description": "button_vd1 border raw - lightness:light intent:secondary interaction:hover"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "#343a44",
+                  "$description": "button_vd1 border raw - lightness:light intent:secondary interaction:active"
+                }
+              },
+              "tertiary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "#0e7c7b",
+                  "$description": "button_vd1 border raw - lightness:light intent:tertiary interaction:default"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "#0a615f",
+                  "$description": "button_vd1 border raw - lightness:light intent:tertiary interaction:hover"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "#064544",
+                  "$description": "button_vd1 border raw - lightness:light intent:tertiary interaction:active"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

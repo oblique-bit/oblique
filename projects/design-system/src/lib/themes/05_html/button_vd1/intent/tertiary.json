@@ -5,19 +5,55 @@
         "_chain": {
           "intent": {
             "bg": {
-              "default": { "$type": "color", "$value": "#0e7c7b", "$description": "button_vd1 bg — intent:tertiary · interaction:default" },
-              "hover":   { "$type": "color", "$value": "#0a615f", "$description": "button_vd1 bg — intent:tertiary · interaction:hover" },
-              "active":  { "$type": "color", "$value": "#064544", "$description": "button_vd1 bg — intent:tertiary · interaction:active" }
+              "default": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.surface.bg.tertiary.default}",
+                "$description": "button_vd1 bg - intent:tertiary interaction:default"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.surface.bg.tertiary.hover}",
+                "$description": "button_vd1 bg - intent:tertiary interaction:hover"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.surface.bg.tertiary.active}",
+                "$description": "button_vd1 bg - intent:tertiary interaction:active"
+              }
             },
             "fg": {
-              "default": { "$type": "color", "$value": "#ffffff", "$description": "button_vd1 fg — intent:tertiary · interaction:default" },
-              "hover":   { "$type": "color", "$value": "#ffffff", "$description": "button_vd1 fg — intent:tertiary · interaction:hover" },
-              "active":  { "$type": "color", "$value": "#ffffff", "$description": "button_vd1 fg — intent:tertiary · interaction:active" }
+              "default": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.surface.fg.tertiary.default}",
+                "$description": "button_vd1 fg - intent:tertiary interaction:default"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.surface.fg.tertiary.hover}",
+                "$description": "button_vd1 fg - intent:tertiary interaction:hover"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.surface.fg.tertiary.active}",
+                "$description": "button_vd1 fg - intent:tertiary interaction:active"
+              }
             },
             "border": {
-              "default": { "$type": "color", "$value": "#0e7c7b", "$description": "button_vd1 border — intent:tertiary · interaction:default" },
-              "hover":   { "$type": "color", "$value": "#0a615f", "$description": "button_vd1 border — intent:tertiary · interaction:hover" },
-              "active":  { "$type": "color", "$value": "#064544", "$description": "button_vd1 border — intent:tertiary · interaction:active" }
+              "default": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.surface.border.tertiary.default}",
+                "$description": "button_vd1 border - intent:tertiary interaction:default"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.surface.border.tertiary.hover}",
+                "$description": "button_vd1 border - intent:tertiary interaction:hover"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.surface.border.tertiary.active}",
+                "$description": "button_vd1 border - intent:tertiary interaction:active"
+              }
             }
           }
         }

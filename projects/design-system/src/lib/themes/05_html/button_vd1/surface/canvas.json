@@ -1,0 +1,171 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_chain": {
+          "surface": {
+            "bg": {
+              "primary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.bg.primary.default}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.bg.primary.hover}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.bg.primary.active}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                }
+              },
+              "secondary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.bg.secondary.default}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.bg.secondary.hover}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.bg.secondary.active}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                }
+              },
+              "tertiary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.bg.tertiary.default}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.bg.tertiary.hover}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.bg.tertiary.active}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                }
+              }
+            },
+            "fg": {
+              "primary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.fg.primary.default}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.fg.primary.hover}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.fg.primary.active}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                }
+              },
+              "secondary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.fg.secondary.default}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.fg.secondary.hover}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.fg.secondary.active}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                }
+              },
+              "tertiary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.fg.tertiary.default}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.fg.tertiary.hover}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.fg.tertiary.active}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                }
+              }
+            },
+            "border": {
+              "primary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.border.primary.default}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.border.primary.hover}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.border.primary.active}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                }
+              },
+              "secondary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.border.secondary.default}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.border.secondary.hover}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.border.secondary.active}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                }
+              },
+              "tertiary": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.border.tertiary.default}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.border.tertiary.hover}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button_vd1._chain.emphasis.border.tertiary.active}",
+                  "$description": "button_vd1 - surface layer (pass-through)"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

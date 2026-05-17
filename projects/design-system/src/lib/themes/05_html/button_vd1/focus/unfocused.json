@@ -1,0 +1,27 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_chain": {
+          "focus": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.h.button_vd1._chain.interaction.bg}",
+              "$description": "button_vd1 - focus layer (pass-through)"
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "{ob.h.button_vd1._chain.interaction.fg}",
+              "$description": "button_vd1 - focus layer (pass-through)"
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.h.button_vd1._chain.interaction.border}",
+              "$description": "button_vd1 - focus layer (pass-through)"
+            }
+          }
+        }
+      }
+    }
+  }
+}

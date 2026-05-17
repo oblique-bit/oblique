@@ -1,0 +1,63 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_chain": {
+          "system": {
+            "bg": {
+              "default": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.bg.default}",
+                "$description": "button_vd1 - system layer (pass-through)"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.bg.hover}",
+                "$description": "button_vd1 - system layer (pass-through)"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.bg.active}",
+                "$description": "button_vd1 - system layer (pass-through)"
+              }
+            },
+            "fg": {
+              "default": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.fg.default}",
+                "$description": "button_vd1 - system layer (pass-through)"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.fg.hover}",
+                "$description": "button_vd1 - system layer (pass-through)"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.fg.active}",
+                "$description": "button_vd1 - system layer (pass-through)"
+              }
+            },
+            "border": {
+              "default": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.border.default}",
+                "$description": "button_vd1 - system layer (pass-through)"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.border.hover}",
+                "$description": "button_vd1 - system layer (pass-through)"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.border.active}",
+                "$description": "button_vd1 - system layer (pass-through)"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "#cfd3d9",
+            "$description": "button_vd1 bg - display:disabled (flattened)"
+          },
+          "fg": {
+            "$type": "color",
+            "$value": "#9aa0a9",
+            "$description": "button_vd1 fg - display:disabled (flattened)"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "#cfd3d9",
+            "$description": "button_vd1 border - display:disabled (flattened)"
+          }
+        }
+      }
+    }
+  }
+}

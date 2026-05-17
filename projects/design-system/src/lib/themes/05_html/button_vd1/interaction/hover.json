@@ -2,21 +2,23 @@
   "ob": {
     "h": {
       "button_vd1": {
-        "color": {
-          "bg": {
-            "$type": "color",
-            "$value": "{ob.h.button_vd1._chain.intent.bg.hover}",
-            "$description": "button_vd1 background — interaction:hover (aliases the intent layer)"
-          },
-          "fg": {
-            "$type": "color",
-            "$value": "{ob.h.button_vd1._chain.intent.fg.hover}",
-            "$description": "button_vd1 foreground — interaction:hover (aliases the intent layer)"
-          },
-          "border": {
-            "$type": "color",
-            "$value": "{ob.h.button_vd1._chain.intent.border.hover}",
-            "$description": "button_vd1 border — interaction:hover (aliases the intent layer)"
+        "_chain": {
+          "interaction": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.h.button_vd1._chain.system.bg.hover}",
+              "$description": "button_vd1 bg - interaction:hover"
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "{ob.h.button_vd1._chain.system.fg.hover}",
+              "$description": "button_vd1 fg - interaction:hover"
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.h.button_vd1._chain.system.border.hover}",
+              "$description": "button_vd1 border - interaction:hover"
+            }
           }
         }
       }
