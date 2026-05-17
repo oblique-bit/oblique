@@ -5,18 +5,18 @@
         "color": {
           "bg": {
             "$type": "color",
-            "$value": "#0f4576",
-            "$description": "button_vd1 background — interaction mode: active"
+            "$value": "{ob.h.button_vd1._chain.intent.bg.active}",
+            "$description": "button_vd1 background — interaction:active (aliases the intent layer)"
           },
           "fg": {
             "$type": "color",
-            "$value": "#ffffff",
-            "$description": "button_vd1 foreground — interaction mode: active"
+            "$value": "{ob.h.button_vd1._chain.intent.fg.active}",
+            "$description": "button_vd1 foreground — interaction:active (aliases the intent layer)"
           },
           "border": {
             "$type": "color",
-            "$value": "#0f4576",
-            "$description": "button_vd1 border — interaction mode: active"
+            "$value": "{ob.h.button_vd1._chain.intent.border.active}",
+            "$description": "button_vd1 border — interaction:active (aliases the intent layer)"
           }
         }
       }

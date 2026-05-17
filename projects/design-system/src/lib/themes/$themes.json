@@ -2925,7 +2925,10 @@
     "name": "default",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "05_html/button_vd1/interaction/default": "enabled"
+      "05_html/button_vd1/interaction/default": "enabled",
+      "05_html/button_vd1/intent/primary": "source",
+      "05_html/button_vd1/intent/secondary": "source",
+      "05_html/button_vd1/intent/tertiary": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2937,7 +2940,10 @@
     "name": "hover",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "05_html/button_vd1/interaction/hover": "enabled"
+      "05_html/button_vd1/interaction/hover": "enabled",
+      "05_html/button_vd1/intent/primary": "source",
+      "05_html/button_vd1/intent/secondary": "source",
+      "05_html/button_vd1/intent/tertiary": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2949,11 +2955,50 @@
     "name": "active",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "05_html/button_vd1/interaction/active": "enabled"
+      "05_html/button_vd1/interaction/active": "enabled",
+      "05_html/button_vd1/intent/primary": "source",
+      "05_html/button_vd1/intent/secondary": "source",
+      "05_html/button_vd1/intent/tertiary": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
     "$figmaVariableReferences": {},
     "group": "vd1_interaction"
+  },
+  {
+    "id": "vd1-intent-primary",
+    "name": "primary",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/intent/primary": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_intent"
+  },
+  {
+    "id": "vd1-intent-secondary",
+    "name": "secondary",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/intent/secondary": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_intent"
+  },
+  {
+    "id": "vd1-intent-tertiary",
+    "name": "tertiary",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/intent/tertiary": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_intent"
   }
 ]

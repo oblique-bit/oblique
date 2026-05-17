@@ -5,18 +5,18 @@
         "color": {
           "bg": {
             "$type": "color",
-            "$value": "#155a9e",
-            "$description": "button_vd1 background — interaction mode: hover"
+            "$value": "{ob.h.button_vd1._chain.intent.bg.hover}",
+            "$description": "button_vd1 background — interaction:hover (aliases the intent layer)"
           },
           "fg": {
             "$type": "color",
-            "$value": "#ffffff",
-            "$description": "button_vd1 foreground — interaction mode: hover"
+            "$value": "{ob.h.button_vd1._chain.intent.fg.hover}",
+            "$description": "button_vd1 foreground — interaction:hover (aliases the intent layer)"
           },
           "border": {
             "$type": "color",
-            "$value": "#155a9e",
-            "$description": "button_vd1 border — interaction mode: hover"
+            "$value": "{ob.h.button_vd1._chain.intent.border.hover}",
+            "$description": "button_vd1 border — interaction:hover (aliases the intent layer)"
           }
         }
       }
