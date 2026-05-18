@@ -18,6 +18,13 @@
             "$value": "{ob.h.button_vd1._chain.focus.border}",
             "$description": "button_vd1 border - display:enabled (component binds this leaf)"
           }
+        },
+        "focus_ring": {
+          "visible": {
+            "$type": "boolean",
+            "$value": "{ob.h.button_vd1._chain.focus.focus_ring_visible}",
+            "$description": "button_vd1 focus ring visibility - display:enabled (pass-through to the focus state; component binds this leaf)"
+          }
         }
       }
     }

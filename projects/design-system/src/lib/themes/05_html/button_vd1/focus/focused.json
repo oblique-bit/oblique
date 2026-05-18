@@ -18,14 +18,12 @@
               "$type": "color",
               "$value": "{ob.h.button_vd1._chain.interaction.border}",
               "$description": "button_vd1 border - focus:focused (pass-through; focus is shown by the focus_ring layer, not a colour change)"
+            },
+            "focus_ring_visible": {
+              "$type": "boolean",
+              "$value": "true",
+              "$description": "button_vd1 - focus ring requested by focus state - focus:focused (the display layer flattens this off when disabled)"
             }
-          }
-        },
-        "focus_ring": {
-          "visible": {
-            "$type": "boolean",
-            "$value": "true",
-            "$description": "button_vd1 - focus ring layer shown - focus:focused"
           }
         }
       }

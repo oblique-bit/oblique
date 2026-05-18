@@ -18,6 +18,13 @@
             "$value": "#cfd3d9",
             "$description": "button_vd1 border - display:disabled (flattened)"
           }
+        },
+        "focus_ring": {
+          "visible": {
+            "$type": "boolean",
+            "$value": "false",
+            "$description": "button_vd1 focus ring visibility - display:disabled (flattened off: a natively-disabled button is not focusable, so disabled + focused cannot occur)"
+          }
         }
       }
     }
