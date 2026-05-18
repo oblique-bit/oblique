@@ -30,10 +30,10 @@
                 "$value": "Envoi",
                 "$description": "button_vd1 label - language:fr system:submitting"
               },
-              "empty": {
+              "idle": {
                 "$type": "text",
-                "$value": "Vide",
-                "$description": "button_vd1 label - language:fr system:empty"
+                "$value": "Pret",
+                "$description": "button_vd1 label - language:fr system:idle"
               }
             }
           }

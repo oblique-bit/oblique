@@ -30,10 +30,10 @@
                 "$value": "Wird gesendet",
                 "$description": "button_vd1 label - language:de system:submitting"
               },
-              "empty": {
+              "idle": {
                 "$type": "text",
-                "$value": "Leer",
-                "$description": "button_vd1 label - language:de system:empty"
+                "$value": "Bereit",
+                "$description": "button_vd1 label - language:de system:idle"
               }
             }
           }

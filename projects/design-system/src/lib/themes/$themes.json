@@ -3220,11 +3220,11 @@
     "group": "vd1_system"
   },
   {
-    "id": "vd1-system-empty",
-    "name": "empty",
+    "id": "vd1-system-idle",
+    "name": "idle",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "05_html/button_vd1/system/empty": "enabled",
+      "05_html/button_vd1/system/idle": "enabled",
       "05_html/button_vd1/intent/primary": "source",
       "05_html/button_vd1/intent/secondary": "source",
       "05_html/button_vd1/intent/tertiary": "source",
@@ -3250,7 +3250,7 @@
       "05_html/button_vd1/system/processing": "source",
       "05_html/button_vd1/system/saving": "source",
       "05_html/button_vd1/system/submitting": "source",
-      "05_html/button_vd1/system/empty": "source"
+      "05_html/button_vd1/system/idle": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3268,7 +3268,7 @@
       "05_html/button_vd1/system/processing": "source",
       "05_html/button_vd1/system/saving": "source",
       "05_html/button_vd1/system/submitting": "source",
-      "05_html/button_vd1/system/empty": "source"
+      "05_html/button_vd1/system/idle": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3286,7 +3286,7 @@
       "05_html/button_vd1/system/processing": "source",
       "05_html/button_vd1/system/saving": "source",
       "05_html/button_vd1/system/submitting": "source",
-      "05_html/button_vd1/system/empty": "source"
+      "05_html/button_vd1/system/idle": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",

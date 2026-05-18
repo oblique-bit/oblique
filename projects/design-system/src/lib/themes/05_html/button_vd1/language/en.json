@@ -30,10 +30,10 @@
                 "$value": "Submitting",
                 "$description": "button_vd1 label - language:en system:submitting"
               },
-              "empty": {
+              "idle": {
                 "$type": "text",
-                "$value": "Empty",
-                "$description": "button_vd1 label - language:en system:empty"
+                "$value": "Idle",
+                "$description": "button_vd1 label - language:en system:idle"
               }
             }
           }

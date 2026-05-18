@@ -60,12 +60,24 @@
         "opacity": {
           "$type": "number",
           "$value": 100,
-          "$description": "button_vd1 opacity percent - system:empty (node opacity binds 0-100, not 0-1)"
+          "$description": "button_vd1 opacity percent - system:idle (node opacity binds 0-100)"
         },
         "label": {
           "$type": "text",
-          "$value": "{ob.h.button_vd1._chain.language.label.empty}",
-          "$description": "button_vd1 label - system:empty (aliases the language layer)"
+          "$value": "{ob.h.button_vd1._chain.language.label.idle}",
+          "$description": "button_vd1 system label - system:idle (aliases the language layer)"
+        },
+        "show": {
+          "system_label": {
+            "$type": "boolean",
+            "$value": false,
+            "$description": "button_vd1 - show the system label layer - system:idle"
+          },
+          "designer_label": {
+            "$type": "boolean",
+            "$value": true,
+            "$description": "button_vd1 - show the designer label layer - system:idle"
+          }
         }
       }
     }

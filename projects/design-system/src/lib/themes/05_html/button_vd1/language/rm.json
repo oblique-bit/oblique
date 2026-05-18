@@ -30,10 +30,10 @@
                 "$value": "Trametter",
                 "$description": "button_vd1 label - language:rm system:submitting"
               },
-              "empty": {
+              "idle": {
                 "$type": "text",
-                "$value": "Vid",
-                "$description": "button_vd1 label - language:rm system:empty"
+                "$value": "Pront",
+                "$description": "button_vd1 label - language:rm system:idle"
               }
             }
           }
