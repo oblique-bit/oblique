@@ -2921,6 +2921,23 @@
     "group": "motion"
   },
   {
+    "id": "vd1-base-static",
+    "name": "static",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/base/static": "enabled",
+      "03_semantic/typography/single/static": "source",
+      "03_semantic/dimension/ui_scale/static": "source",
+      "03_semantic/border": "source",
+      "03_semantic/motion/static": "source",
+      "03_semantic/motion/mode/enabled": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_base"
+  },
+  {
     "id": "vd1-lightness-light",
     "name": "light",
     "$figmaStyleReferences": {},

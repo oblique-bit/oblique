@@ -1,0 +1,88 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "typography": {
+          "text_label": {
+            "font_family": {
+              "$type": "fontFamilies",
+              "$value": "{ob.s.static.font_family.body}",
+              "$description": "button_vd1 label font family (replicates ob.h.button typography.text_label.font_family - static, no scale modes)"
+            },
+            "font_size": {
+              "$type": "fontSizes",
+              "$value": "{ob.s.static.font_size.md}",
+              "$description": "button_vd1 label font size (replicates ob.h.button - static md, no ui_scale modes)"
+            },
+            "font_weight": {
+              "$type": "fontWeights",
+              "$value": "{ob.s.static.font_weight.medium}",
+              "$description": "button_vd1 label font weight (replicates ob.h.button)"
+            },
+            "line_height": {
+              "$type": "lineHeights",
+              "$value": "{ob.s.static.line_height.xs}",
+              "$description": "button_vd1 label line height (replicates ob.h.button - static, no scale modes)"
+            },
+            "letter_spacing": {
+              "$type": "letterSpacing",
+              "$value": "{ob.s.static.letter_spacing_px.normal}",
+              "$description": "button_vd1 label letter spacing (replicates ob.h.button)"
+            },
+            "text_decoration": {
+              "$type": "textDecoration",
+              "$value": "{ob.s.static.text_decoration.link.emphasis_low}",
+              "$description": "button_vd1 label - no underline (replicates ob.h.button)"
+            },
+            "text_transform": {
+              "$type": "textCase",
+              "$value": "{ob.s.static.text_case.none}",
+              "$description": "button_vd1 label - no case transform (replicates ob.h.button)"
+            }
+          }
+        },
+        "layout": {
+          "padding": {
+            "vertical": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.static.ui_scale.element.sm.rem}",
+              "$description": "button_vd1 vertical padding (replicates ob.h.button label_icon - static, no ui_scale modes)"
+            },
+            "horizontal": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.static.ui_scale.element.xl.rem}",
+              "$description": "button_vd1 horizontal padding (replicates ob.h.button label_icon - static, no ui_scale modes)"
+            }
+          },
+          "min_height": {
+            "$type": "sizing",
+            "$value": "{ob.s.dimension.static.ui_scale.spacing.lg.px}",
+            "$description": "button_vd1 min height (replicates ob.h.button label_icon container - static)"
+          },
+          "border_radius": {
+            "$type": "borderRadius",
+            "$value": "{ob.s.border_radius.md}",
+            "$description": "button_vd1 corner radius (replicates ob.h.button border_radius)"
+          },
+          "border_width": {
+            "$type": "borderWidth",
+            "$value": "{ob.s.border_width.xs}",
+            "$description": "button_vd1 border width (replicates ob.h.button border_width)"
+          }
+        },
+        "motion": {
+          "duration": {
+            "$type": "duration",
+            "$value": "{ob.s.motion.duration.smooth}",
+            "$description": "button_vd1 transition duration (replicates ob.h.button motion.duration)"
+          },
+          "easing": {
+            "$type": "cubicBezier",
+            "$value": "{ob.s.motion.easing.standard}",
+            "$description": "button_vd1 transition easing (replicates ob.h.button motion.easing)"
+          }
+        }
+      }
+    }
+  }
+}
