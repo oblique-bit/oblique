@@ -22,15 +22,49 @@
           }
         },
         "shadow": {
-          "blur": {
-            "$type": "number",
-            "$value": 4,
-            "$description": "button_vd1 shadow blur - interaction:active"
+          "layer_1": {
+            "x": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L1 x-offset - interaction:active (no shadow, replicates ob.s.shadow.none / button pressed)"
+            },
+            "y": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L1 y-offset - interaction:active (no shadow, replicates ob.s.shadow.none / button pressed)"
+            },
+            "blur": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L1 blur - interaction:active (no shadow, replicates ob.s.shadow.none / button pressed)"
+            },
+            "spread": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L1 spread - interaction:active (no shadow, replicates ob.s.shadow.none / button pressed)"
+            }
           },
-          "y": {
-            "$type": "number",
-            "$value": 2,
-            "$description": "button_vd1 shadow y-offset - interaction:active"
+          "layer_2": {
+            "x": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L2 x-offset - interaction:active (no shadow, replicates ob.s.shadow.none / button pressed)"
+            },
+            "y": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L2 y-offset - interaction:active (no shadow, replicates ob.s.shadow.none / button pressed)"
+            },
+            "blur": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L2 blur - interaction:active (no shadow, replicates ob.s.shadow.none / button pressed)"
+            },
+            "spread": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L2 spread - interaction:active (no shadow, replicates ob.s.shadow.none / button pressed)"
+            }
           }
         }
       }

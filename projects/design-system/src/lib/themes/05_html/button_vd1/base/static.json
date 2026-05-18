@@ -81,6 +81,22 @@
             "$value": "{ob.s.motion.easing.standard}",
             "$description": "button_vd1 transition easing (replicates ob.h.button motion.easing)"
           }
+        },
+        "shadow": {
+          "layer_1": {
+            "color": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.50}",
+              "$description": "button_vd1 drop-shadow layer 1 colour - constant (replicates ob.s.shadow.xl first layer, cobalt.900 @ 5%). Geometry is interaction-driven."
+            }
+          },
+          "layer_2": {
+            "color": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.100}",
+              "$description": "button_vd1 drop-shadow layer 2 colour - constant (replicates ob.s.shadow.xl second layer, cobalt.900 @ 10%). Geometry is interaction-driven."
+            }
+          }
         }
       }
     }

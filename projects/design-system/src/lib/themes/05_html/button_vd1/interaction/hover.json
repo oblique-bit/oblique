@@ -22,15 +22,49 @@
           }
         },
         "shadow": {
-          "blur": {
-            "$type": "number",
-            "$value": 14,
-            "$description": "button_vd1 shadow blur - interaction:hover"
+          "layer_1": {
+            "x": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L1 x-offset - interaction:hover (replicates ob.s.shadow.xl first layer)"
+            },
+            "y": {
+              "$type": "number",
+              "$value": 6,
+              "$description": "button_vd1 shadow L1 y-offset - interaction:hover (replicates ob.s.shadow.xl first layer)"
+            },
+            "blur": {
+              "$type": "number",
+              "$value": 10,
+              "$description": "button_vd1 shadow L1 blur - interaction:hover (replicates ob.s.shadow.xl first layer)"
+            },
+            "spread": {
+              "$type": "number",
+              "$value": -5,
+              "$description": "button_vd1 shadow L1 spread - interaction:hover (replicates ob.s.shadow.xl first layer)"
+            }
           },
-          "y": {
-            "$type": "number",
-            "$value": 5,
-            "$description": "button_vd1 shadow y-offset - interaction:hover"
+          "layer_2": {
+            "x": {
+              "$type": "number",
+              "$value": 0,
+              "$description": "button_vd1 shadow L2 x-offset - interaction:hover (replicates ob.s.shadow.xl second layer)"
+            },
+            "y": {
+              "$type": "number",
+              "$value": 15,
+              "$description": "button_vd1 shadow L2 y-offset - interaction:hover (replicates ob.s.shadow.xl second layer)"
+            },
+            "blur": {
+              "$type": "number",
+              "$value": 25,
+              "$description": "button_vd1 shadow L2 blur - interaction:hover (replicates ob.s.shadow.xl second layer)"
+            },
+            "spread": {
+              "$type": "number",
+              "$value": -3,
+              "$description": "button_vd1 shadow L2 spread - interaction:hover (replicates ob.s.shadow.xl second layer)"
+            }
           }
         }
       }
