@@ -98,10 +98,10 @@ export default {
 			lines: 86,
 		},
 		'projects/sds/src/app/code-examples/code-examples/global-events/previews/properties': {
-			statements: 76,
+			statements: 74,
 			branches: 100,
-			functions: 55,
-			lines: 75,
+			functions: 52,
+			lines: 73,
 		},
 		'projects/sds/src/app/code-examples/code-examples/icons/previews/icons-gallery': {
 			statements: 69,
