@@ -5,6 +5,7 @@
 	<mat-select [(value)]="this.channel">
 		<mat-option value="demo">Demo</mat-option>
 		<mat-option value="default">Default</mat-option>
+		<mat-option value="nonExistent">Non existent (triggers a warning in the console)</mat-option>
 	</mat-select>
 </mat-form-field>
 <button type="button" class="block" mat-flat-button color="primary" (click)="toggleSpinner()">Toggle Spinner</button>

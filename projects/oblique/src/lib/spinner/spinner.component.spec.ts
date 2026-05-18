@@ -6,6 +6,7 @@ import {Observable, Subject} from 'rxjs';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerService} from './spinner.service';
+import {ObSpinnerRegistry} from './spinner.registry';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
@@ -26,11 +27,20 @@ describe('ObSpinnerComponent', () => {
 	let fixture: ComponentFixture<MockComponent>;
 	let mockObSpinnerService;
 	let spinnerChangeDetector: ChangeDetectorRef;
+	const mockSpinnerRegistry = {
+		register: jest.fn(),
+		unregister: jest.fn(),
+	} as unknown as ObSpinnerRegistry;
 
 	beforeEach(async () => {
-		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()};
+		mockObSpinnerService = {events$: new Subject<ObISpinnerEvent>()} as unknown as ObSpinnerService;
+
 		await TestBed.configureTestingModule({
-			providers: [{provide: ObSpinnerService, useValue: mockObSpinnerService}, provideObliqueTestingConfiguration()],
+			providers: [
+				{provide: ObSpinnerService, useValue: mockObSpinnerService},
+				{provide: ObSpinnerRegistry, useValue: mockSpinnerRegistry},
+				provideObliqueTestingConfiguration(),
+			],
 			imports: [MockComponent],
 		}).compileComponents();
 	});
@@ -53,6 +63,18 @@ describe('ObSpinnerComponent', () => {
 
 	it('should have "aria-hidden" attribute', () => {
 		expect(spinnerElement.attributes['aria-hidden']).toBe('true');
+	});
+
+	describe('registration to the spinner service', () => {
+		it('should register itself on init', () => {
+			expect(mockSpinnerRegistry.register).toHaveBeenCalledWith(component);
+		});
+
+		it('should unregister itself on destroy', () => {
+			fixture.destroy();
+
+			expect(mockSpinnerRegistry.unregister).toHaveBeenCalledWith(component);
+		});
 	});
 
 	describe('property "channel"', () => {
