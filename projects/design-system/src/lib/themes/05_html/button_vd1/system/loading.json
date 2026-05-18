@@ -70,12 +70,12 @@
         "show": {
           "system_label": {
             "$type": "boolean",
-            "$value": true,
+            "$value": "true",
             "$description": "button_vd1 - show the system label layer - system:loading"
           },
           "designer_label": {
             "$type": "boolean",
-            "$value": false,
+            "$value": "false",
             "$description": "button_vd1 - show the designer label layer - system:loading"
           }
         }
