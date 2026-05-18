@@ -56,8 +56,8 @@
           },
           "min_height": {
             "$type": "sizing",
-            "$value": "{ob.s.dimension.static.ui_scale.spacing.lg.px}",
-            "$description": "button_vd1 min height (replicates ob.h.button label_icon container - static)"
+            "$value": "{ob.s.dimension.dynamic.ui_scale.container.xs.px}",
+            "$description": "button_vd1 min height (replicates ob.h.button label_icon container - dynamic ui_scale, scales with the ui_scale collection alongside padding; .px variant for Figma binding)"
           },
           "border_radius": {
             "$type": "borderRadius",
