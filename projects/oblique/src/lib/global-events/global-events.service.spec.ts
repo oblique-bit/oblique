@@ -4,6 +4,7 @@ import {ObGlobalEventsService} from './global-events.service';
 
 describe('ObGlobalEventsService', () => {
 	let service: ObGlobalEventsService;
+	let mockNavigation: EventTarget;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -130,6 +131,44 @@ describe('ObGlobalEventsService', () => {
 				done();
 			});
 			window.dispatchEvent(new UIEvent('resize'));
+		});
+	});
+
+	describe('navigate$', () => {
+		describe('when window.navigation is available', () => {
+			beforeAll(() => {
+				mockNavigation = new EventTarget();
+				Object.defineProperty(window, 'navigation', {value: mockNavigation, configurable: true});
+			});
+
+			it('should be defined', () => {
+				expect(service.navigate$).toBeTruthy();
+			});
+
+			it('should emit a NavigateEvent', done => {
+				service.navigate$.subscribe(event => {
+					expect(event.destination.url).toBe('https://example.com');
+					done();
+				});
+				mockNavigation.dispatchEvent(Object.assign(new Event('navigate'), {destination: {url: 'https://example.com'}}));
+			});
+		});
+
+		describe('when window.navigation is not available', () => {
+			it('should be defined', () => {
+				expect(service.navigate$).toBeTruthy();
+			});
+
+			it('should not emit', done => {
+				let emitted = false;
+				service.navigate$.subscribe(() => {
+					emitted = true;
+				});
+				setTimeout(() => {
+					expect(emitted).toBe(false);
+					done();
+				}, 0);
+			});
 		});
 	});
 });

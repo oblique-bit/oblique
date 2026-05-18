@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {Injectable, inject} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject, combineLatest, of, share, switchMap, throwError} from 'rxjs';
@@ -22,6 +23,8 @@ import {ObNotificationService} from '../notification/notification.service';
 import {ObHttpApiInterceptorEvents} from '../http-api-interceptor/http-api-interceptor.events';
 import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
+import {WINDOW} from '../utilities';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
 
 @Injectable()
 export class ObServiceNavigationService {
@@ -83,6 +86,12 @@ export class ObServiceNavigationService {
 	private readonly languageSynchronizationService = inject(ObServiceNavigationLanguageSynchronizationService);
 	private readonly notification = inject(ObNotificationService);
 	private readonly httpApiInterceptorEvents = inject(ObHttpApiInterceptorEvents);
+	private readonly window = inject(WINDOW);
+	private readonly globalEvents = inject(ObGlobalEventsService);
+	private readonly navigationChanged$ = this.globalEvents.navigate$.pipe(
+		map(navigate => navigate.destination.url),
+		startWith(this.window.location.href)
+	);
 
 	private readonly state$ = this.pollingService.state$.pipe(
 		tap(state => {
@@ -132,8 +141,8 @@ export class ObServiceNavigationService {
 		return this.config$.pipe(
 			map(config => config.login),
 			map(loginData => loginData.url + loginData.params),
-			combineLatestWith(this.returnUrl$),
-			map(([loginUrl, returnUrl]) => loginUrl.replace('<yourReturnURL>', returnUrl)),
+			combineLatestWith(this.returnUrl$, this.navigationChanged$),
+			map(([loginUrl, returnUrl, navigateUrl]) => loginUrl.replace('<yourReturnURL>', returnUrl ?? navigateUrl)),
 			this.combineWithLanguage<string>(),
 			map(([url, lang]) => url.replace('<yourLanguageID>', lang)),
 			combineLatestWith(this.pamsAppId$),

@@ -14,6 +14,9 @@ import {provideHttpClient} from '@angular/common/http';
 import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 import {ObNotificationService} from '../notification/notification.service';
 import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
+import {WINDOW} from '../utilities';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
+import {NavigateEvent} from '../global-events/global-events.model';
 
 describe('ObServiceNavigationService', () => {
 	let service: ObServiceNavigationService;
@@ -36,6 +39,8 @@ describe('ObServiceNavigationService', () => {
 		inboxMail: {url: 'http://inboxMail'},
 		allServices: {url: 'http://applications'},
 	};
+	let mockNavigate$: Subject<NavigateEvent>;
+	const mockWindowHref = 'http://window-location-href';
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
 	const mockApplications = [{name: {en: 'name', fr: 'nom', de: 'Name', it: 'nome'}}];
@@ -47,6 +52,7 @@ describe('ObServiceNavigationService', () => {
 	const mockLanguageSynchronizationSetLanguage = jest.fn();
 
 	beforeEach(() => {
+		mockNavigate$ = new Subject<NavigateEvent>();
 		TestBed.configureTestingModule({
 			providers: [
 				provideHttpClient(),
@@ -80,6 +86,8 @@ describe('ObServiceNavigationService', () => {
 						loginLevel: 'SA',
 					},
 				},
+				{provide: ObGlobalEventsService, useValue: {navigate$: mockNavigate$.asObservable()}},
+				{provide: WINDOW, useValue: {location: {href: mockWindowHref}}},
 				{
 					provide: TranslateService,
 					useValue: {
@@ -593,6 +601,45 @@ describe('ObServiceNavigationService', () => {
 			mockStateChange.next({loginState: loginLevel, profile: {}} as ObIServiceNavigationState);
 
 			expect(languageSynchronizationService.loginLevel).toBe(loginLevel);
+		});
+	});
+
+	describe('getLoginUrl$ and navigationChanged$', () => {
+		const appId = 'appId';
+
+		beforeEach(() => {
+			service = TestBed.inject(ObServiceNavigationService);
+			service.setUpRootUrls(ObEPamsEnvironment.DEV, 'http://root-url/');
+			service.setFavoriteApplicationsCount(1);
+			service.setPamsAppId(appId);
+			service.setReturnUrl(null as unknown as string);
+		});
+
+		it('should use window.location.href as the initial navigateUrl before any navigation event', async () => {
+			await expect(firstValueFrom(service.getLoginUrl$())).resolves.toBe(
+				`http://login?returnURL=${mockWindowHref}&language=en&appid=${appId}`
+			);
+		});
+
+		it('should use the navigateUrl emitted by navigate$ when returnUrl is not set', async () => {
+			const navigatedUrl = 'http://navigated-url';
+			const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
+			mockNavigate$.next({destination: {url: navigatedUrl}});
+			await expect(promise).resolves.toBe(`http://login?returnURL=${navigatedUrl}&language=en&appid=${appId}`);
+		});
+
+		it('should re-emit getLoginUrl$ each time navigate$ emits a new value', () => {
+			const secondUrl = 'http://second-url';
+			const emittedUrls: string[] = [];
+			service.getLoginUrl$().subscribe(url => emittedUrls.push(url));
+
+			expect(emittedUrls).toHaveLength(1);
+
+			mockNavigate$.next({destination: {url: 'http://first-url'}});
+			mockNavigate$.next({destination: {url: secondUrl}});
+
+			expect(emittedUrls).toHaveLength(3);
+			expect(emittedUrls[2]).toContain(secondUrl);
 		});
 	});
 
