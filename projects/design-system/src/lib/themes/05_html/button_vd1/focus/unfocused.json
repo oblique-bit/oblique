@@ -20,6 +20,13 @@
               "$description": "button_vd1 border - focus:unfocused"
             }
           }
+        },
+        "focus_ring": {
+          "visible": {
+            "$type": "boolean",
+            "$value": "false",
+            "$description": "button_vd1 - focus ring layer hidden - focus:unfocused"
+          }
         }
       }
     }

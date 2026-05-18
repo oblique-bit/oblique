@@ -97,6 +97,23 @@
               "$description": "button_vd1 drop-shadow layer 2 colour - constant (replicates ob.s.shadow.xl second layer, cobalt.900 @ 10%). Geometry is interaction-driven."
             }
           }
+        },
+        "focus_ring": {
+          "color": {
+            "$type": "color",
+            "$value": "{ob.s.color.interaction.focus_ring.inversity_normal}",
+            "$description": "button_vd1 focus ring stroke colour - constant (the DS focus-ring colour; visibility is focus-mode-driven)"
+          },
+          "width": {
+            "$type": "borderWidth",
+            "$value": "{ob.s.border_width.md}",
+            "$description": "button_vd1 focus ring stroke width - constant (replicates ob.h.button focus ring)"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{ob.s.border_radius.md}",
+            "$description": "button_vd1 focus ring corner radius - constant (replicates ob.h.button focus ring)"
+          }
         }
       }
     }
