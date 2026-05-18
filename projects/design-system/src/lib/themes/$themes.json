@@ -2939,67 +2939,12 @@
     "group": "vd1_base"
   },
   {
-    "id": "vd1-lightness-light",
-    "name": "light",
-    "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "05_html/button_vd1/lightness/light": "enabled",
-      "05_html/button/01_color": "source"
-    },
-    "$figmaCollectionId": "",
-    "$figmaModeId": "",
-    "$figmaVariableReferences": {},
-    "group": "vd1_lightness"
-  },
-  {
-    "id": "vd1-lightness-dark",
-    "name": "dark",
-    "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "05_html/button_vd1/lightness/dark": "enabled",
-      "05_html/button/01_color": "source"
-    },
-    "$figmaCollectionId": "",
-    "$figmaModeId": "",
-    "$figmaVariableReferences": {},
-    "group": "vd1_lightness"
-  },
-  {
-    "id": "vd1-emphasis-high",
-    "name": "high",
-    "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "05_html/button_vd1/emphasis/high": "enabled",
-      "05_html/button_vd1/lightness/light": "source",
-      "05_html/button_vd1/lightness/dark": "source"
-    },
-    "$figmaCollectionId": "",
-    "$figmaModeId": "",
-    "$figmaVariableReferences": {},
-    "group": "vd1_emphasis"
-  },
-  {
-    "id": "vd1-emphasis-low",
-    "name": "low",
-    "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "05_html/button_vd1/emphasis/low": "enabled",
-      "05_html/button_vd1/lightness/light": "source",
-      "05_html/button_vd1/lightness/dark": "source"
-    },
-    "$figmaCollectionId": "",
-    "$figmaModeId": "",
-    "$figmaVariableReferences": {},
-    "group": "vd1_emphasis"
-  },
-  {
     "id": "vd1-surface-canvas",
     "name": "canvas",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "05_html/button_vd1/surface/canvas": "enabled",
-      "05_html/button_vd1/emphasis/high": "source",
-      "05_html/button_vd1/emphasis/low": "source"
+      "05_html/button/01_color": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3012,8 +2957,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "05_html/button_vd1/surface/sunken_1": "enabled",
-      "05_html/button_vd1/emphasis/high": "source",
-      "05_html/button_vd1/emphasis/low": "source"
+      "05_html/button/01_color": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3026,8 +2970,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "05_html/button_vd1/surface/sunken_2": "enabled",
-      "05_html/button_vd1/emphasis/high": "source",
-      "05_html/button_vd1/emphasis/low": "source"
+      "05_html/button/01_color": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
