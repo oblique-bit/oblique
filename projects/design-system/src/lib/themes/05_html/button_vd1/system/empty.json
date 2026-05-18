@@ -56,6 +56,11 @@
               }
             }
           }
+        },
+        "opacity": {
+          "$type": "number",
+          "$value": 1,
+          "$description": "button_vd1 opacity - system:empty"
         }
       }
     }

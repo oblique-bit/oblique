@@ -4,162 +4,325 @@
       "button_vd1": {
         "_chain": {
           "lightness": {
-            "bg": {
-              "primary": {
-                "default": {
-                  "$type": "color",
-                  "$value": "#5b9bd6",
-                  "$description": "button_vd1 bg raw - lightness:dark intent:primary interaction:default"
+            "high": {
+              "bg": {
+                "primary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#5b9bd6",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:high intent:primary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#4a86c0",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:high intent:primary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#3a6fa3",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:high intent:primary interaction:active"
+                  }
                 },
-                "hover": {
-                  "$type": "color",
-                  "$value": "#4a86c0",
-                  "$description": "button_vd1 bg raw - lightness:dark intent:primary interaction:hover"
+                "secondary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#9aa3b0",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:high intent:secondary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#858e9b",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:high intent:secondary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#707986",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:high intent:secondary interaction:active"
+                  }
                 },
-                "active": {
-                  "$type": "color",
-                  "$value": "#3a6fa3",
-                  "$description": "button_vd1 bg raw - lightness:dark intent:primary interaction:active"
+                "tertiary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#3fa8a6",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:high intent:tertiary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#339290",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:high intent:tertiary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#277b79",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:high intent:tertiary interaction:active"
+                  }
                 }
               },
-              "secondary": {
-                "default": {
-                  "$type": "color",
-                  "$value": "#9aa3b0",
-                  "$description": "button_vd1 bg raw - lightness:dark intent:secondary interaction:default"
+              "fg": {
+                "primary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#ffffff",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:high intent:primary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#ffffff",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:high intent:primary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#ffffff",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:high intent:primary interaction:active"
+                  }
                 },
-                "hover": {
-                  "$type": "color",
-                  "$value": "#858e9b",
-                  "$description": "button_vd1 bg raw - lightness:dark intent:secondary interaction:hover"
+                "secondary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#ffffff",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:high intent:secondary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#ffffff",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:high intent:secondary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#ffffff",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:high intent:secondary interaction:active"
+                  }
                 },
-                "active": {
-                  "$type": "color",
-                  "$value": "#707986",
-                  "$description": "button_vd1 bg raw - lightness:dark intent:secondary interaction:active"
+                "tertiary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#ffffff",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:high intent:tertiary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#ffffff",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:high intent:tertiary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#ffffff",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:high intent:tertiary interaction:active"
+                  }
                 }
               },
-              "tertiary": {
-                "default": {
-                  "$type": "color",
-                  "$value": "#3fa8a6",
-                  "$description": "button_vd1 bg raw - lightness:dark intent:tertiary interaction:default"
+              "border": {
+                "primary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#5b9bd6",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:high intent:primary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#4a86c0",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:high intent:primary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#3a6fa3",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:high intent:primary interaction:active"
+                  }
                 },
-                "hover": {
-                  "$type": "color",
-                  "$value": "#339290",
-                  "$description": "button_vd1 bg raw - lightness:dark intent:tertiary interaction:hover"
+                "secondary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#9aa3b0",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:high intent:secondary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#858e9b",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:high intent:secondary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#707986",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:high intent:secondary interaction:active"
+                  }
                 },
-                "active": {
-                  "$type": "color",
-                  "$value": "#277b79",
-                  "$description": "button_vd1 bg raw - lightness:dark intent:tertiary interaction:active"
+                "tertiary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#3fa8a6",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:high intent:tertiary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#339290",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:high intent:tertiary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#277b79",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:high intent:tertiary interaction:active"
+                  }
                 }
               }
             },
-            "fg": {
-              "primary": {
-                "default": {
-                  "$type": "color",
-                  "$value": "#ffffff",
-                  "$description": "button_vd1 fg raw - lightness:dark intent:primary interaction:default"
+            "low": {
+              "bg": {
+                "primary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#496a8a",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:low intent:primary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#426080",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:low intent:primary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#3b5673",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:low intent:primary interaction:active"
+                  }
                 },
-                "hover": {
-                  "$type": "color",
-                  "$value": "#ffffff",
-                  "$description": "button_vd1 fg raw - lightness:dark intent:primary interaction:hover"
+                "secondary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#666d79",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:low intent:secondary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#5c6470",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:low intent:secondary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#535a66",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:low intent:secondary interaction:active"
+                  }
                 },
-                "active": {
-                  "$type": "color",
-                  "$value": "#ffffff",
-                  "$description": "button_vd1 fg raw - lightness:dark intent:primary interaction:active"
+                "tertiary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#3d6f74",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:low intent:tertiary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#37656b",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:low intent:tertiary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#325b60",
+                    "$description": "button_vd1 bg raw - lightness:dark emphasis:low intent:tertiary interaction:active"
+                  }
                 }
               },
-              "secondary": {
-                "default": {
-                  "$type": "color",
-                  "$value": "#ffffff",
-                  "$description": "button_vd1 fg raw - lightness:dark intent:secondary interaction:default"
+              "fg": {
+                "primary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#e8eaed",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:low intent:primary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#e8eaed",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:low intent:primary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#e8eaed",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:low intent:primary interaction:active"
+                  }
                 },
-                "hover": {
-                  "$type": "color",
-                  "$value": "#ffffff",
-                  "$description": "button_vd1 fg raw - lightness:dark intent:secondary interaction:hover"
+                "secondary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#e8eaed",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:low intent:secondary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#e8eaed",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:low intent:secondary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#e8eaed",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:low intent:secondary interaction:active"
+                  }
                 },
-                "active": {
-                  "$type": "color",
-                  "$value": "#ffffff",
-                  "$description": "button_vd1 fg raw - lightness:dark intent:secondary interaction:active"
+                "tertiary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#e8eaed",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:low intent:tertiary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#e8eaed",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:low intent:tertiary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#e8eaed",
+                    "$description": "button_vd1 fg raw - lightness:dark emphasis:low intent:tertiary interaction:active"
+                  }
                 }
               },
-              "tertiary": {
-                "default": {
-                  "$type": "color",
-                  "$value": "#ffffff",
-                  "$description": "button_vd1 fg raw - lightness:dark intent:tertiary interaction:default"
+              "border": {
+                "primary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#496a8a",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:low intent:primary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#426080",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:low intent:primary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#3b5673",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:low intent:primary interaction:active"
+                  }
                 },
-                "hover": {
-                  "$type": "color",
-                  "$value": "#ffffff",
-                  "$description": "button_vd1 fg raw - lightness:dark intent:tertiary interaction:hover"
+                "secondary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#666d79",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:low intent:secondary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#5c6470",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:low intent:secondary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#535a66",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:low intent:secondary interaction:active"
+                  }
                 },
-                "active": {
-                  "$type": "color",
-                  "$value": "#ffffff",
-                  "$description": "button_vd1 fg raw - lightness:dark intent:tertiary interaction:active"
-                }
-              }
-            },
-            "border": {
-              "primary": {
-                "default": {
-                  "$type": "color",
-                  "$value": "#5b9bd6",
-                  "$description": "button_vd1 border raw - lightness:dark intent:primary interaction:default"
-                },
-                "hover": {
-                  "$type": "color",
-                  "$value": "#4a86c0",
-                  "$description": "button_vd1 border raw - lightness:dark intent:primary interaction:hover"
-                },
-                "active": {
-                  "$type": "color",
-                  "$value": "#3a6fa3",
-                  "$description": "button_vd1 border raw - lightness:dark intent:primary interaction:active"
-                }
-              },
-              "secondary": {
-                "default": {
-                  "$type": "color",
-                  "$value": "#9aa3b0",
-                  "$description": "button_vd1 border raw - lightness:dark intent:secondary interaction:default"
-                },
-                "hover": {
-                  "$type": "color",
-                  "$value": "#858e9b",
-                  "$description": "button_vd1 border raw - lightness:dark intent:secondary interaction:hover"
-                },
-                "active": {
-                  "$type": "color",
-                  "$value": "#707986",
-                  "$description": "button_vd1 border raw - lightness:dark intent:secondary interaction:active"
-                }
-              },
-              "tertiary": {
-                "default": {
-                  "$type": "color",
-                  "$value": "#3fa8a6",
-                  "$description": "button_vd1 border raw - lightness:dark intent:tertiary interaction:default"
-                },
-                "hover": {
-                  "$type": "color",
-                  "$value": "#339290",
-                  "$description": "button_vd1 border raw - lightness:dark intent:tertiary interaction:hover"
-                },
-                "active": {
-                  "$type": "color",
-                  "$value": "#277b79",
-                  "$description": "button_vd1 border raw - lightness:dark intent:tertiary interaction:active"
+                "tertiary": {
+                  "default": {
+                    "$type": "color",
+                    "$value": "#3d6f74",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:low intent:tertiary interaction:default"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "#37656b",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:low intent:tertiary interaction:hover"
+                  },
+                  "active": {
+                    "$type": "color",
+                    "$value": "#325b60",
+                    "$description": "button_vd1 border raw - lightness:dark emphasis:low intent:tertiary interaction:active"
+                  }
                 }
               }
             }

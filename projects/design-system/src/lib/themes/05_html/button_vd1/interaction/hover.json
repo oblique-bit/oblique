@@ -20,6 +20,18 @@
               "$description": "button_vd1 border - interaction:hover"
             }
           }
+        },
+        "shadow": {
+          "blur": {
+            "$type": "number",
+            "$value": 14,
+            "$description": "button_vd1 shadow blur - interaction:hover"
+          },
+          "y": {
+            "$type": "number",
+            "$value": 5,
+            "$description": "button_vd1 shadow y-offset - interaction:hover"
+          }
         }
       }
     }

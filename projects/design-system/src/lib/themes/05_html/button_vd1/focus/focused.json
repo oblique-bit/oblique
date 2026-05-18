@@ -7,17 +7,17 @@
             "bg": {
               "$type": "color",
               "$value": "{ob.h.button_vd1._chain.interaction.bg}",
-              "$description": "button_vd1 - focus layer (pass-through)"
+              "$description": "button_vd1 bg - focus:focused"
             },
             "fg": {
               "$type": "color",
               "$value": "{ob.h.button_vd1._chain.interaction.fg}",
-              "$description": "button_vd1 - focus layer (pass-through)"
+              "$description": "button_vd1 fg - focus:focused"
             },
             "border": {
               "$type": "color",
-              "$value": "{ob.h.button_vd1._chain.interaction.border}",
-              "$description": "button_vd1 - focus layer (pass-through)"
+              "$value": "#3b82f6",
+              "$description": "button_vd1 border - focus:focused (focus ring)"
             }
           }
         }

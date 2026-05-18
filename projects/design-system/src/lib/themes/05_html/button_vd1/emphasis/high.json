@@ -8,52 +8,52 @@
               "primary": {
                 "default": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.bg.primary.default}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.bg.primary.default}",
+                  "$description": "button_vd1 bg - emphasis:high"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.bg.primary.hover}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.bg.primary.hover}",
+                  "$description": "button_vd1 bg - emphasis:high"
                 },
                 "active": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.bg.primary.active}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.bg.primary.active}",
+                  "$description": "button_vd1 bg - emphasis:high"
                 }
               },
               "secondary": {
                 "default": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.bg.secondary.default}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.bg.secondary.default}",
+                  "$description": "button_vd1 bg - emphasis:high"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.bg.secondary.hover}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.bg.secondary.hover}",
+                  "$description": "button_vd1 bg - emphasis:high"
                 },
                 "active": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.bg.secondary.active}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.bg.secondary.active}",
+                  "$description": "button_vd1 bg - emphasis:high"
                 }
               },
               "tertiary": {
                 "default": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.bg.tertiary.default}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.bg.tertiary.default}",
+                  "$description": "button_vd1 bg - emphasis:high"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.bg.tertiary.hover}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.bg.tertiary.hover}",
+                  "$description": "button_vd1 bg - emphasis:high"
                 },
                 "active": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.bg.tertiary.active}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.bg.tertiary.active}",
+                  "$description": "button_vd1 bg - emphasis:high"
                 }
               }
             },
@@ -61,52 +61,52 @@
               "primary": {
                 "default": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.fg.primary.default}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.fg.primary.default}",
+                  "$description": "button_vd1 fg - emphasis:high"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.fg.primary.hover}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.fg.primary.hover}",
+                  "$description": "button_vd1 fg - emphasis:high"
                 },
                 "active": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.fg.primary.active}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.fg.primary.active}",
+                  "$description": "button_vd1 fg - emphasis:high"
                 }
               },
               "secondary": {
                 "default": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.fg.secondary.default}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.fg.secondary.default}",
+                  "$description": "button_vd1 fg - emphasis:high"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.fg.secondary.hover}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.fg.secondary.hover}",
+                  "$description": "button_vd1 fg - emphasis:high"
                 },
                 "active": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.fg.secondary.active}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.fg.secondary.active}",
+                  "$description": "button_vd1 fg - emphasis:high"
                 }
               },
               "tertiary": {
                 "default": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.fg.tertiary.default}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.fg.tertiary.default}",
+                  "$description": "button_vd1 fg - emphasis:high"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.fg.tertiary.hover}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.fg.tertiary.hover}",
+                  "$description": "button_vd1 fg - emphasis:high"
                 },
                 "active": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.fg.tertiary.active}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.fg.tertiary.active}",
+                  "$description": "button_vd1 fg - emphasis:high"
                 }
               }
             },
@@ -114,52 +114,52 @@
               "primary": {
                 "default": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.border.primary.default}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.border.primary.default}",
+                  "$description": "button_vd1 border - emphasis:high"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.border.primary.hover}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.border.primary.hover}",
+                  "$description": "button_vd1 border - emphasis:high"
                 },
                 "active": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.border.primary.active}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.border.primary.active}",
+                  "$description": "button_vd1 border - emphasis:high"
                 }
               },
               "secondary": {
                 "default": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.border.secondary.default}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.border.secondary.default}",
+                  "$description": "button_vd1 border - emphasis:high"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.border.secondary.hover}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.border.secondary.hover}",
+                  "$description": "button_vd1 border - emphasis:high"
                 },
                 "active": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.border.secondary.active}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.border.secondary.active}",
+                  "$description": "button_vd1 border - emphasis:high"
                 }
               },
               "tertiary": {
                 "default": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.border.tertiary.default}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.border.tertiary.default}",
+                  "$description": "button_vd1 border - emphasis:high"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.border.tertiary.hover}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.border.tertiary.hover}",
+                  "$description": "button_vd1 border - emphasis:high"
                 },
                 "active": {
                   "$type": "color",
-                  "$value": "{ob.h.button_vd1._chain.lightness.border.tertiary.active}",
-                  "$description": "button_vd1 - emphasis layer (pass-through)"
+                  "$value": "{ob.h.button_vd1._chain.lightness.high.border.tertiary.active}",
+                  "$description": "button_vd1 border - emphasis:high"
                 }
               }
             }
