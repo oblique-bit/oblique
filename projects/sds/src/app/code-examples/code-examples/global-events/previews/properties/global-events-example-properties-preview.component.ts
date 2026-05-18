@@ -2,6 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {Component, type OnDestroy, type OnInit, inject} from '@angular/core';
 import {ObGlobalEventsService, WINDOW} from '@oblique/oblique';
 import {type Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
+import {NavigationHistory} from './navigation-history';
 
 @Component({
 	selector: 'app-global-events-example-properties-preview',
@@ -18,6 +19,7 @@ export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, On
 	scroll$: Observable<number>;
 	resize$: Observable<{height: number; width: number}>;
 	beforeUnload$: Observable<number>;
+	readonly navigationHistory = inject(NavigationHistory);
 	private readonly events = inject(ObGlobalEventsService);
 	private readonly window = inject<Window>(WINDOW);
 	private readonly unsubscribe = new Subject<void>();

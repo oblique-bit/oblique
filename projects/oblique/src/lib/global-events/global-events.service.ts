@@ -1,7 +1,8 @@
 import {DOCUMENT, Injectable, inject} from '@angular/core';
-import {Observable, fromEvent} from 'rxjs';
+import {EMPTY, Observable, fromEvent} from 'rxjs';
 import {share} from 'rxjs/operators';
 import {WINDOW} from '../utilities';
+import {NavigateEvent} from './global-events.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -16,6 +17,8 @@ export class ObGlobalEventsService {
 	public readonly scroll$: Observable<Event>;
 	public readonly wheel$: Observable<Event>;
 	public readonly resize$: Observable<UIEvent>;
+	public readonly navigate$: Observable<NavigateEvent>;
+	private readonly window = inject(WINDOW);
 
 	constructor() {
 		const document = inject<Document>(DOCUMENT);
@@ -30,6 +33,10 @@ export class ObGlobalEventsService {
 		this.scroll$ = this.buildObservable<Event>(window, 'scroll');
 		this.wheel$ = this.buildObservable<Event>(window, 'wheel');
 		this.resize$ = this.buildObservable<UIEvent>(window, 'resize');
+		// The casting is a workaround, once the project use typescript 6.0 we should be able to remove the workaround
+		const navigation = (this.window as Window & {navigation: Window}).navigation;
+		// The ternary avoid errors in browsers not supporting the Navigation API
+		this.navigate$ = navigation ? this.buildObservable<NavigateEvent>(navigation, 'navigate') : EMPTY;
 	}
 
 	private buildObservable<T>(target: Window | Document, event: string): Observable<T> {
