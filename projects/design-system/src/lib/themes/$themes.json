@@ -3060,6 +3060,66 @@
     "group": "vd1_intent"
   },
   {
+    "id": "vd1-language-de",
+    "name": "de",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/language/de": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_language"
+  },
+  {
+    "id": "vd1-language-fr",
+    "name": "fr",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/language/fr": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_language"
+  },
+  {
+    "id": "vd1-language-it",
+    "name": "it",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/language/it": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_language"
+  },
+  {
+    "id": "vd1-language-rm",
+    "name": "rm",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/language/rm": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_language"
+  },
+  {
+    "id": "vd1-language-en",
+    "name": "en",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/language/en": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "vd1_language"
+  },
+  {
     "id": "vd1-system-loading",
     "name": "loading",
     "$figmaStyleReferences": {},
@@ -3067,7 +3127,12 @@
       "05_html/button_vd1/system/loading": "enabled",
       "05_html/button_vd1/intent/primary": "source",
       "05_html/button_vd1/intent/secondary": "source",
-      "05_html/button_vd1/intent/tertiary": "source"
+      "05_html/button_vd1/intent/tertiary": "source",
+      "05_html/button_vd1/language/de": "source",
+      "05_html/button_vd1/language/fr": "source",
+      "05_html/button_vd1/language/it": "source",
+      "05_html/button_vd1/language/rm": "source",
+      "05_html/button_vd1/language/en": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3082,7 +3147,12 @@
       "05_html/button_vd1/system/loaded": "enabled",
       "05_html/button_vd1/intent/primary": "source",
       "05_html/button_vd1/intent/secondary": "source",
-      "05_html/button_vd1/intent/tertiary": "source"
+      "05_html/button_vd1/intent/tertiary": "source",
+      "05_html/button_vd1/language/de": "source",
+      "05_html/button_vd1/language/fr": "source",
+      "05_html/button_vd1/language/it": "source",
+      "05_html/button_vd1/language/rm": "source",
+      "05_html/button_vd1/language/en": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3097,7 +3167,12 @@
       "05_html/button_vd1/system/processing": "enabled",
       "05_html/button_vd1/intent/primary": "source",
       "05_html/button_vd1/intent/secondary": "source",
-      "05_html/button_vd1/intent/tertiary": "source"
+      "05_html/button_vd1/intent/tertiary": "source",
+      "05_html/button_vd1/language/de": "source",
+      "05_html/button_vd1/language/fr": "source",
+      "05_html/button_vd1/language/it": "source",
+      "05_html/button_vd1/language/rm": "source",
+      "05_html/button_vd1/language/en": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3112,7 +3187,12 @@
       "05_html/button_vd1/system/saving": "enabled",
       "05_html/button_vd1/intent/primary": "source",
       "05_html/button_vd1/intent/secondary": "source",
-      "05_html/button_vd1/intent/tertiary": "source"
+      "05_html/button_vd1/intent/tertiary": "source",
+      "05_html/button_vd1/language/de": "source",
+      "05_html/button_vd1/language/fr": "source",
+      "05_html/button_vd1/language/it": "source",
+      "05_html/button_vd1/language/rm": "source",
+      "05_html/button_vd1/language/en": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3127,7 +3207,12 @@
       "05_html/button_vd1/system/submitting": "enabled",
       "05_html/button_vd1/intent/primary": "source",
       "05_html/button_vd1/intent/secondary": "source",
-      "05_html/button_vd1/intent/tertiary": "source"
+      "05_html/button_vd1/intent/tertiary": "source",
+      "05_html/button_vd1/language/de": "source",
+      "05_html/button_vd1/language/fr": "source",
+      "05_html/button_vd1/language/it": "source",
+      "05_html/button_vd1/language/rm": "source",
+      "05_html/button_vd1/language/en": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3142,7 +3227,12 @@
       "05_html/button_vd1/system/empty": "enabled",
       "05_html/button_vd1/intent/primary": "source",
       "05_html/button_vd1/intent/secondary": "source",
-      "05_html/button_vd1/intent/tertiary": "source"
+      "05_html/button_vd1/intent/tertiary": "source",
+      "05_html/button_vd1/language/de": "source",
+      "05_html/button_vd1/language/fr": "source",
+      "05_html/button_vd1/language/it": "source",
+      "05_html/button_vd1/language/rm": "source",
+      "05_html/button_vd1/language/en": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",

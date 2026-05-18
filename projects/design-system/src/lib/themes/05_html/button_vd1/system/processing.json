@@ -61,6 +61,11 @@
           "$type": "number",
           "$value": 0.5,
           "$description": "button_vd1 opacity - system:processing"
+        },
+        "label": {
+          "$type": "text",
+          "$value": "{ob.h.button_vd1._chain.language.label.processing}",
+          "$description": "button_vd1 label - system:processing (aliases the language layer)"
         }
       }
     }

@@ -1,0 +1,44 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_chain": {
+          "language": {
+            "label": {
+              "loading": {
+                "$type": "text",
+                "$value": "Caricamento",
+                "$description": "button_vd1 label - language:it system:loading"
+              },
+              "loaded": {
+                "$type": "text",
+                "$value": "Caricato",
+                "$description": "button_vd1 label - language:it system:loaded"
+              },
+              "processing": {
+                "$type": "text",
+                "$value": "Elaborazione",
+                "$description": "button_vd1 label - language:it system:processing"
+              },
+              "saving": {
+                "$type": "text",
+                "$value": "Salvataggio",
+                "$description": "button_vd1 label - language:it system:saving"
+              },
+              "submitting": {
+                "$type": "text",
+                "$value": "Invio",
+                "$description": "button_vd1 label - language:it system:submitting"
+              },
+              "empty": {
+                "$type": "text",
+                "$value": "Vuoto",
+                "$description": "button_vd1 label - language:it system:empty"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

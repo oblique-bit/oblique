@@ -1,0 +1,44 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_chain": {
+          "language": {
+            "label": {
+              "loading": {
+                "$type": "text",
+                "$value": "Wird geladen",
+                "$description": "button_vd1 label - language:de system:loading"
+              },
+              "loaded": {
+                "$type": "text",
+                "$value": "Geladen",
+                "$description": "button_vd1 label - language:de system:loaded"
+              },
+              "processing": {
+                "$type": "text",
+                "$value": "Wird verarbeitet",
+                "$description": "button_vd1 label - language:de system:processing"
+              },
+              "saving": {
+                "$type": "text",
+                "$value": "Wird gespeichert",
+                "$description": "button_vd1 label - language:de system:saving"
+              },
+              "submitting": {
+                "$type": "text",
+                "$value": "Wird gesendet",
+                "$description": "button_vd1 label - language:de system:submitting"
+              },
+              "empty": {
+                "$type": "text",
+                "$value": "Leer",
+                "$description": "button_vd1 label - language:de system:empty"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

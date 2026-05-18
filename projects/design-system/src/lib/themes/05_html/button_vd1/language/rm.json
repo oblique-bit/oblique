@@ -1,0 +1,44 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_chain": {
+          "language": {
+            "label": {
+              "loading": {
+                "$type": "text",
+                "$value": "Chargiar",
+                "$description": "button_vd1 label - language:rm system:loading"
+              },
+              "loaded": {
+                "$type": "text",
+                "$value": "Chargia",
+                "$description": "button_vd1 label - language:rm system:loaded"
+              },
+              "processing": {
+                "$type": "text",
+                "$value": "Elavurar",
+                "$description": "button_vd1 label - language:rm system:processing"
+              },
+              "saving": {
+                "$type": "text",
+                "$value": "Memorisar",
+                "$description": "button_vd1 label - language:rm system:saving"
+              },
+              "submitting": {
+                "$type": "text",
+                "$value": "Trametter",
+                "$description": "button_vd1 label - language:rm system:submitting"
+              },
+              "empty": {
+                "$type": "text",
+                "$value": "Vid",
+                "$description": "button_vd1 label - language:rm system:empty"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -61,6 +61,11 @@
           "$type": "number",
           "$value": 1,
           "$description": "button_vd1 opacity - system:loaded"
+        },
+        "label": {
+          "$type": "text",
+          "$value": "{ob.h.button_vd1._chain.language.label.loaded}",
+          "$description": "button_vd1 label - system:loaded (aliases the language layer)"
         }
       }
     }
