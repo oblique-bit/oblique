@@ -2931,7 +2931,10 @@
       "03_semantic/border": "source",
       "03_semantic/motion/static": "source",
       "03_semantic/motion/mode/enabled": "source",
-      "02_primitive/color": "source"
+      "02_primitive/color": "source",
+      "03_semantic/dimension/ui_scale/md": "source",
+      "03_semantic/dimension/ui_scale/sm": "source",
+      "03_semantic/dimension/ui_scale/lg": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
