@@ -9,52 +9,52 @@
                 "primary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#1b6ec2",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:high intent:primary interaction:default"
+                    "$value": "{ob.h.button.color.bg.primary.inversity_normal.enabled}",
+                    "$description": "button_vd1 bg - intent:primary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#155a9e",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:high intent:primary interaction:hover"
+                    "$value": "{ob.h.button.color.bg.primary.inversity_normal.hover}",
+                    "$description": "button_vd1 bg - intent:primary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#0f4576",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:high intent:primary interaction:active"
+                    "$value": "{ob.h.button.color.bg.primary.inversity_normal.pressed}",
+                    "$description": "button_vd1 bg - intent:primary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "secondary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#5a6573",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:high intent:secondary interaction:default"
+                    "$value": "{ob.h.button.color.bg.secondary.inversity_normal.enabled}",
+                    "$description": "button_vd1 bg - intent:secondary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#474f5c",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:high intent:secondary interaction:hover"
+                    "$value": "{ob.h.button.color.bg.secondary.inversity_normal.hover}",
+                    "$description": "button_vd1 bg - intent:secondary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#343a44",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:high intent:secondary interaction:active"
+                    "$value": "{ob.h.button.color.bg.secondary.inversity_normal.pressed}",
+                    "$description": "button_vd1 bg - intent:secondary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "tertiary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#0e7c7b",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:high intent:tertiary interaction:default"
+                    "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.enabled}",
+                    "$description": "button_vd1 bg - intent:tertiary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#0a615f",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:high intent:tertiary interaction:hover"
+                    "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.hover}",
+                    "$description": "button_vd1 bg - intent:tertiary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#064544",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:high intent:tertiary interaction:active"
+                    "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.pressed}",
+                    "$description": "button_vd1 bg - intent:tertiary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 }
               },
@@ -62,52 +62,52 @@
                 "primary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#ffffff",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:high intent:primary interaction:default"
+                    "$value": "{ob.h.button.color.fg.primary.inversity_normal.enabled}",
+                    "$description": "button_vd1 fg - intent:primary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#ffffff",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:high intent:primary interaction:hover"
+                    "$value": "{ob.h.button.color.fg.primary.inversity_normal.hover}",
+                    "$description": "button_vd1 fg - intent:primary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#ffffff",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:high intent:primary interaction:active"
+                    "$value": "{ob.h.button.color.fg.primary.inversity_normal.pressed}",
+                    "$description": "button_vd1 fg - intent:primary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "secondary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#ffffff",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:high intent:secondary interaction:default"
+                    "$value": "{ob.h.button.color.fg.secondary.inversity_normal.enabled}",
+                    "$description": "button_vd1 fg - intent:secondary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#ffffff",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:high intent:secondary interaction:hover"
+                    "$value": "{ob.h.button.color.fg.secondary.inversity_normal.hover}",
+                    "$description": "button_vd1 fg - intent:secondary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#ffffff",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:high intent:secondary interaction:active"
+                    "$value": "{ob.h.button.color.fg.secondary.inversity_normal.pressed}",
+                    "$description": "button_vd1 fg - intent:secondary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "tertiary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#ffffff",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:high intent:tertiary interaction:default"
+                    "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.enabled}",
+                    "$description": "button_vd1 fg - intent:tertiary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#ffffff",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:high intent:tertiary interaction:hover"
+                    "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.hover}",
+                    "$description": "button_vd1 fg - intent:tertiary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#ffffff",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:high intent:tertiary interaction:active"
+                    "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.pressed}",
+                    "$description": "button_vd1 fg - intent:tertiary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 }
               },
@@ -115,52 +115,52 @@
                 "primary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#1b6ec2",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:high intent:primary interaction:default"
+                    "$value": "{ob.h.button.color.border.primary.inversity_normal.enabled}",
+                    "$description": "button_vd1 border - intent:primary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#155a9e",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:high intent:primary interaction:hover"
+                    "$value": "{ob.h.button.color.border.primary.inversity_normal.hover}",
+                    "$description": "button_vd1 border - intent:primary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#0f4576",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:high intent:primary interaction:active"
+                    "$value": "{ob.h.button.color.border.primary.inversity_normal.pressed}",
+                    "$description": "button_vd1 border - intent:primary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "secondary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#5a6573",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:high intent:secondary interaction:default"
+                    "$value": "{ob.h.button.color.border.secondary.inversity_normal.enabled}",
+                    "$description": "button_vd1 border - intent:secondary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#474f5c",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:high intent:secondary interaction:hover"
+                    "$value": "{ob.h.button.color.border.secondary.inversity_normal.hover}",
+                    "$description": "button_vd1 border - intent:secondary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#343a44",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:high intent:secondary interaction:active"
+                    "$value": "{ob.h.button.color.border.secondary.inversity_normal.pressed}",
+                    "$description": "button_vd1 border - intent:secondary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "tertiary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#0e7c7b",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:high intent:tertiary interaction:default"
+                    "$value": "{ob.h.button.color.border.tertiary.inversity_normal.enabled}",
+                    "$description": "button_vd1 border - intent:tertiary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#0a615f",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:high intent:tertiary interaction:hover"
+                    "$value": "{ob.h.button.color.border.tertiary.inversity_normal.hover}",
+                    "$description": "button_vd1 border - intent:tertiary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#064544",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:high intent:tertiary interaction:active"
+                    "$value": "{ob.h.button.color.border.tertiary.inversity_normal.pressed}",
+                    "$description": "button_vd1 border - intent:tertiary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 }
               }
@@ -170,52 +170,52 @@
                 "primary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#9cbbda",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:low intent:primary interaction:default"
+                    "$value": "{ob.h.button.color.bg.primary.inversity_normal.enabled}",
+                    "$description": "button_vd1 bg - intent:primary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#9ab4ce",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:low intent:primary interaction:hover"
+                    "$value": "{ob.h.button.color.bg.primary.inversity_normal.hover}",
+                    "$description": "button_vd1 bg - intent:primary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#98adc0",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:low intent:primary interaction:active"
+                    "$value": "{ob.h.button.color.bg.primary.inversity_normal.pressed}",
+                    "$description": "button_vd1 bg - intent:primary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "secondary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#b2b8bf",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:low intent:secondary interaction:default"
+                    "$value": "{ob.h.button.color.bg.secondary.inversity_normal.enabled}",
+                    "$description": "button_vd1 bg - intent:secondary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#abb0b7",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:low intent:secondary interaction:hover"
+                    "$value": "{ob.h.button.color.bg.secondary.inversity_normal.hover}",
+                    "$description": "button_vd1 bg - intent:secondary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#a5a9af",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:low intent:secondary interaction:active"
+                    "$value": "{ob.h.button.color.bg.secondary.inversity_normal.pressed}",
+                    "$description": "button_vd1 bg - intent:secondary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "tertiary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#98bfc2",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:low intent:tertiary interaction:default"
+                    "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.enabled}",
+                    "$description": "button_vd1 bg - intent:tertiary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#97b6b8",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:low intent:tertiary interaction:hover"
+                    "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.hover}",
+                    "$description": "button_vd1 bg - intent:tertiary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#95adaf",
-                    "$description": "button_vd1 bg raw - lightness:light emphasis:low intent:tertiary interaction:active"
+                    "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.pressed}",
+                    "$description": "button_vd1 bg - intent:tertiary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 }
               },
@@ -223,52 +223,52 @@
                 "primary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#232a36",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:low intent:primary interaction:default"
+                    "$value": "{ob.h.button.color.fg.primary.inversity_normal.enabled}",
+                    "$description": "button_vd1 fg - intent:primary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#232a36",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:low intent:primary interaction:hover"
+                    "$value": "{ob.h.button.color.fg.primary.inversity_normal.hover}",
+                    "$description": "button_vd1 fg - intent:primary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#232a36",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:low intent:primary interaction:active"
+                    "$value": "{ob.h.button.color.fg.primary.inversity_normal.pressed}",
+                    "$description": "button_vd1 fg - intent:primary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "secondary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#232a36",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:low intent:secondary interaction:default"
+                    "$value": "{ob.h.button.color.fg.secondary.inversity_normal.enabled}",
+                    "$description": "button_vd1 fg - intent:secondary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#232a36",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:low intent:secondary interaction:hover"
+                    "$value": "{ob.h.button.color.fg.secondary.inversity_normal.hover}",
+                    "$description": "button_vd1 fg - intent:secondary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#232a36",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:low intent:secondary interaction:active"
+                    "$value": "{ob.h.button.color.fg.secondary.inversity_normal.pressed}",
+                    "$description": "button_vd1 fg - intent:secondary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "tertiary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#232a36",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:low intent:tertiary interaction:default"
+                    "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.enabled}",
+                    "$description": "button_vd1 fg - intent:tertiary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#232a36",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:low intent:tertiary interaction:hover"
+                    "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.hover}",
+                    "$description": "button_vd1 fg - intent:tertiary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#232a36",
-                    "$description": "button_vd1 fg raw - lightness:light emphasis:low intent:tertiary interaction:active"
+                    "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.pressed}",
+                    "$description": "button_vd1 fg - intent:tertiary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 }
               },
@@ -276,52 +276,52 @@
                 "primary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#9cbbda",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:low intent:primary interaction:default"
+                    "$value": "{ob.h.button.color.border.primary.inversity_normal.enabled}",
+                    "$description": "button_vd1 border - intent:primary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#9ab4ce",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:low intent:primary interaction:hover"
+                    "$value": "{ob.h.button.color.border.primary.inversity_normal.hover}",
+                    "$description": "button_vd1 border - intent:primary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#98adc0",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:low intent:primary interaction:active"
+                    "$value": "{ob.h.button.color.border.primary.inversity_normal.pressed}",
+                    "$description": "button_vd1 border - intent:primary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "secondary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#b2b8bf",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:low intent:secondary interaction:default"
+                    "$value": "{ob.h.button.color.border.secondary.inversity_normal.enabled}",
+                    "$description": "button_vd1 border - intent:secondary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#abb0b7",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:low intent:secondary interaction:hover"
+                    "$value": "{ob.h.button.color.border.secondary.inversity_normal.hover}",
+                    "$description": "button_vd1 border - intent:secondary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#a5a9af",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:low intent:secondary interaction:active"
+                    "$value": "{ob.h.button.color.border.secondary.inversity_normal.pressed}",
+                    "$description": "button_vd1 border - intent:secondary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 },
                 "tertiary": {
                   "default": {
                     "$type": "color",
-                    "$value": "#98bfc2",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:low intent:tertiary interaction:default"
+                    "$value": "{ob.h.button.color.border.tertiary.inversity_normal.enabled}",
+                    "$description": "button_vd1 border - intent:tertiary interaction:default (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "#97b6b8",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:low intent:tertiary interaction:hover"
+                    "$value": "{ob.h.button.color.border.tertiary.inversity_normal.hover}",
+                    "$description": "button_vd1 border - intent:tertiary interaction:hover (references the existing button token; theme/emphasis resolved upstream)"
                   },
                   "active": {
                     "$type": "color",
-                    "$value": "#95adaf",
-                    "$description": "button_vd1 border raw - lightness:light emphasis:low intent:tertiary interaction:active"
+                    "$value": "{ob.h.button.color.border.tertiary.inversity_normal.pressed}",
+                    "$description": "button_vd1 border - intent:tertiary interaction:active (references the existing button token; theme/emphasis resolved upstream)"
                   }
                 }
               }

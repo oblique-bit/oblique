@@ -2925,7 +2925,8 @@
     "name": "light",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "05_html/button_vd1/lightness/light": "enabled"
+      "05_html/button_vd1/lightness/light": "enabled",
+      "05_html/button/01_color": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2937,7 +2938,8 @@
     "name": "dark",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "05_html/button_vd1/lightness/dark": "enabled"
+      "05_html/button_vd1/lightness/dark": "enabled",
+      "05_html/button/01_color": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
