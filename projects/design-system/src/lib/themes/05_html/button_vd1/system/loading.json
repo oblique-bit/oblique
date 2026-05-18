@@ -59,8 +59,8 @@
         },
         "opacity": {
           "$type": "number",
-          "$value": 0.5,
-          "$description": "button_vd1 opacity - system:loading"
+          "$value": 50,
+          "$description": "button_vd1 opacity percent - system:loading (node opacity binds 0-100, not 0-1)"
         },
         "label": {
           "$type": "text",
