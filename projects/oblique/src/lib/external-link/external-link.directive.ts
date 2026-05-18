@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, Renderer2, inject} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, Renderer2, inject, input} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, switchMap} from 'rxjs';
@@ -17,6 +17,7 @@ import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 	},
 })
 export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
+	readonly href = input<string>();
 	@Input() rel: string;
 	@Input() target: string;
 	@Input() isExternalLink: boolean | 'auto' = 'auto';
@@ -56,7 +57,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 				tap(svg => {
 					this.iconElement = this.createIconElement(svg);
 				}),
-				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isUrlExternal(this.host.href)))),
+				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isUrlExternal(this.href())))),
 				tap(isLinkExternal => {
 					this.isLinkExternal = isLinkExternal;
 				})
@@ -67,7 +68,8 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnChanges(): void {
-		this.isLinkExternal$.next(this.isUrlExternal(this.host.href));
+		this.isLinkExternal$.next(this.isUrlExternal(this.href()));
+		this.host.href = this.href();
 	}
 
 	ngOnDestroy(): void {
