@@ -54,6 +54,11 @@
               "$description": "button_vd1 horizontal padding (replicates ob.h.button label_icon - dynamic ui_scale, scales with the ui_scale collection; .px variant so Figma binds pixels not rem)"
             }
           },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px}",
+            "$description": "button_vd1 gap between icon and label (replicates ob.h.button label_icon gap - dynamic ui_scale; .px variant for Figma binding)"
+          },
           "min_height": {
             "$type": "sizing",
             "$value": "{ob.s.dimension.dynamic.ui_scale.container.xs.px}",
