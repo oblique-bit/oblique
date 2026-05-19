@@ -6,7 +6,7 @@
           "token_family_docs": {
             "$description": {
               "$type": "other",
-              "$value": "Page-container min/max width for the lg (large) viewport. Mode-scoped: resolves to the lg range when the lg viewport mode is active."
+              "$value": "Min/max width for the page-container component in the Figma library, at the lg (large) viewport. Mode-scoped: resolves to the lg range when the lg viewport mode is active."
             },
             "$extensions": {
               "oblique": {
