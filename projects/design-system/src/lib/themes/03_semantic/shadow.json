@@ -1,0 +1,49 @@
+{
+  "ob": {
+    "s": {
+      "shadow": {
+        "none": {
+          "$type": "boxShadow",
+          "$value": "none",
+          "$description": "No shadow — CSS none. Flat, non-elevated surfaces and resting interactive states."
+        },
+        "sm": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0px",
+            "y": "1px",
+            "blur": "2px",
+            "spread": "0px",
+            "color": "{ob.p.color.cobalt_alpha.50}",
+            "type": "dropShadow"
+          },
+          "$description": "Small elevation shadow. Single drop-shadow. PLACEHOLDER geometry — align with BK reference, see AI task."
+        },
+        "md": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0px",
+            "y": "2px",
+            "blur": "4px",
+            "spread": "0px",
+            "color": "{ob.p.color.cobalt_alpha.50}",
+            "type": "dropShadow"
+          },
+          "$description": "Medium elevation shadow. Single drop-shadow. PLACEHOLDER geometry — align with BK reference, see AI task."
+        },
+        "lg": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0px",
+            "y": "4px",
+            "blur": "8px",
+            "spread": "0px",
+            "color": "{ob.p.color.cobalt_alpha.50}",
+            "type": "dropShadow"
+          },
+          "$description": "Large elevation shadow. Single drop-shadow. PLACEHOLDER geometry — align with BK reference, see AI task."
+        }
+      }
+    }
+  }
+}

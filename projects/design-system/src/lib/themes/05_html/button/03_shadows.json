@@ -28,7 +28,7 @@
           },
           "hover": {
             "$type": "boxShadow",
-            "$value": "{ob.s.shadow.xl}",
+            "$value": "{ob.s.shadow.md}",
             "$description": "Elevation effect on hover"
           },
           "focus": {

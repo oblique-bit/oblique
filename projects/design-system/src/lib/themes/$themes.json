@@ -1678,6 +1678,7 @@
     },
     "selectedTokenSets": {
       "03_semantic/border": "enabled",
+      "03_semantic/shadow": "enabled",
       "03_semantic/motion/static": "enabled",
       "03_semantic/typography/single/static": "enabled",
       "03_semantic/typography/grouped/static": "enabled",
