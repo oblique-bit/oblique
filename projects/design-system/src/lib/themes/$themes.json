@@ -2924,7 +2924,8 @@
     "name": "xl",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/dimension/viewport/xl": "enabled"
+      "03_semantic/dimension/viewport/xl": "enabled",
+      "01_global/modes": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2936,7 +2937,8 @@
     "name": "xs",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/dimension/viewport/xs": "enabled"
+      "03_semantic/dimension/viewport/xs": "enabled",
+      "01_global/modes": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2948,7 +2950,8 @@
     "name": "sm",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/dimension/viewport/sm": "enabled"
+      "03_semantic/dimension/viewport/sm": "enabled",
+      "01_global/modes": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2960,7 +2963,8 @@
     "name": "md",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/dimension/viewport/md": "enabled"
+      "03_semantic/dimension/viewport/md": "enabled",
+      "01_global/modes": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2972,7 +2976,8 @@
     "name": "lg",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/dimension/viewport/lg": "enabled"
+      "03_semantic/dimension/viewport/lg": "enabled",
+      "01_global/modes": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2984,7 +2989,8 @@
     "name": "2xl",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/dimension/viewport/2xl": "enabled"
+      "03_semantic/dimension/viewport/2xl": "enabled",
+      "01_global/modes": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
