@@ -2,30 +2,135 @@
   "ob": {
     "g": {
       "modes": {
-        "viewport": {
+        "breakpoints": {
           "xs": {
-            "$type": "other",
-            "$value": "default"
+            "$type": "dimension",
+            "$value": "0px",
+            "$description": "Lower boundary of the xs (extra-small) viewport range."
           },
           "sm": {
-            "$type": "other",
-            "$value": ".ob-viewport-sm"
+            "$type": "dimension",
+            "$value": "480px",
+            "$description": "Lower boundary of the sm (small) viewport range."
           },
           "md": {
-            "$type": "other",
-            "$value": ".ob-viewport-md"
+            "$type": "dimension",
+            "$value": "768px",
+            "$description": "Lower boundary of the md (medium) viewport range."
           },
           "lg": {
-            "$type": "other",
-            "$value": ".ob-viewport-lg"
+            "$type": "dimension",
+            "$value": "1024px",
+            "$description": "Lower boundary of the lg (large) viewport range."
           },
           "xl": {
-            "$type": "other",
-            "$value": ".ob-viewport-xl"
+            "$type": "dimension",
+            "$value": "1440px",
+            "$description": "Lower boundary of the xl (extra-large) viewport range."
           },
           "2xl": {
-            "$type": "other",
-            "$value": ".ob-viewport-2xl"
+            "$type": "dimension",
+            "$value": "1920px",
+            "$description": "Lower boundary of the 2xl (extra-extra-large) viewport range."
+          }
+        },
+        "viewports": {
+          "xs": {
+            "name": {
+              "$type": "other",
+              "$value": "ob-viewport-xs",
+              "$description": "Body class applied when the xs viewport is active."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.modes.breakpoints.xs}",
+              "$description": "xs range start, inclusive: 0px."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "479px",
+              "$description": "xs range end, inclusive: 479px (sm breakpoint minus 1px, so ranges do not overlap)."
+            }
+          },
+          "sm": {
+            "name": {
+              "$type": "other",
+              "$value": "ob-viewport-sm",
+              "$description": "Body class applied when the sm viewport is active."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.modes.breakpoints.sm}",
+              "$description": "sm range start, inclusive: 480px."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "767px",
+              "$description": "sm range end, inclusive: 767px (md breakpoint minus 1px, so ranges do not overlap)."
+            }
+          },
+          "md": {
+            "name": {
+              "$type": "other",
+              "$value": "ob-viewport-md",
+              "$description": "Body class applied when the md viewport is active."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.modes.breakpoints.md}",
+              "$description": "md range start, inclusive: 768px."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "1023px",
+              "$description": "md range end, inclusive: 1023px (lg breakpoint minus 1px, so ranges do not overlap)."
+            }
+          },
+          "lg": {
+            "name": {
+              "$type": "other",
+              "$value": "ob-viewport-lg",
+              "$description": "Body class applied when the lg viewport is active."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.modes.breakpoints.lg}",
+              "$description": "lg range start, inclusive: 1024px."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "1439px",
+              "$description": "lg range end, inclusive: 1439px (xl breakpoint minus 1px, so ranges do not overlap)."
+            }
+          },
+          "xl": {
+            "name": {
+              "$type": "other",
+              "$value": "default",
+              "$description": "xl is the base viewport: no body class is applied. It is the first-paint default."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.modes.breakpoints.xl}",
+              "$description": "xl range start, inclusive: 1440px."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "1919px",
+              "$description": "xl range end, inclusive: 1919px (2xl breakpoint minus 1px, so ranges do not overlap)."
+            }
+          },
+          "2xl": {
+            "name": {
+              "$type": "other",
+              "$value": "ob-viewport-2xl",
+              "$description": "Body class applied when the 2xl viewport is active."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.modes.breakpoints.2xl}",
+              "$description": "2xl range start, inclusive: 1920px. Open-ended — no upper boundary."
+            }
           }
         },
         "s1_lightness": {

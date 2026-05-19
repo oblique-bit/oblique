@@ -130,8 +130,7 @@
       "05_html/link/link": "enabled",
       "05_html/button/06_motion": "enabled",
       "01_global/themes_scoped/static": "source",
-      "01_global/themes_user/lightness/static": "source",
-      "01_global/viewport": "source"
+      "01_global/themes_user/lightness/static": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
