@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {ObSpinnerService} from '@oblique/oblique';
+import {ObSpinnerService, WINDOW} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-spinner-sample',
@@ -8,8 +8,8 @@ import {ObSpinnerService} from '@oblique/oblique';
 	styleUrl: './spinner-sample.component.scss',
 })
 export class SpinnerSampleComponent {
-	channel = 'demo';
-	private readonly window: Window;
+	readonly demoChannel = 'demo';
+	private readonly window = inject(WINDOW);
 	private readonly spinnerService = inject(ObSpinnerService);
 	private isSpinnerActive = {
 		demo: false,
@@ -17,22 +17,18 @@ export class SpinnerSampleComponent {
 		nonExistent: false,
 	};
 
-	constructor() {
-		this.window = window; // because AoT don't accept interfaces as DI
-	}
-
-	toggleSpinner(): void {
-		if (this.isSpinnerActive[this.channel]) {
-			this.spinnerService.deactivate(this.channel);
+	toggleSpinner(channel = 'default'): void {
+		if (this.isSpinnerActive[channel]) {
+			this.spinnerService.deactivate(channel);
 		} else {
-			this.spinnerService.activate(this.channel);
+			this.spinnerService.activate(channel);
 		}
-		if (this.channel === 'default') {
+		if (channel === 'default') {
 			this.window.setTimeout(() => {
-				this.spinnerService.deactivate(this.channel);
+				this.spinnerService.deactivate(channel);
 				this.isSpinnerActive.default = false;
 			}, 5000);
 		}
-		this.isSpinnerActive[this.channel] = !this.isSpinnerActive[this.channel];
+		this.isSpinnerActive[channel] = !this.isSpinnerActive[channel];
 	}
 }

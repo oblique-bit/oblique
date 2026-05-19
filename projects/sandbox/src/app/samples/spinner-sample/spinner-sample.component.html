@@ -1,14 +1,23 @@
 <h1>Spinner</h1>
-<mat-label />
-<mat-form-field style="width: fit-content">
-	<mat-label>Channel</mat-label>
-	<mat-select [(value)]="this.channel">
-		<mat-option value="demo">Demo</mat-option>
-		<mat-option value="default">Default</mat-option>
-		<mat-option value="nonExistent">Non existent (triggers a warning in the console)</mat-option>
-	</mat-select>
-</mat-form-field>
-<button type="button" class="block" mat-flat-button color="primary" (click)="toggleSpinner()">Toggle Spinner</button>
+
+<section>
+	<button type="button" mat-flat-button color="primary" (click)="toggleSpinner()">Default channel</button>
+	<p>The spinner covers the entire viewport and automatically disappears after 5 seconds.</p>
+</section>
+<section>
+	<button type="button" mat-flat-button color="primary" (click)="toggleSpinner(demoChannel)">Demo channel</button>
+	<p>The spinner covers only the content section below. Click again to dismiss it.</p>
+</section>
+<section>
+	<button type="button" mat-flat-button color="primary" (click)="toggleSpinner('nonExistent')">
+		Non existent channel
+	</button>
+	<p>
+		This channel does not correspond to an existing spinner component, so no spinner is displayed. A warning is logged
+		to the console to demonstrate error handling.
+	</p>
+</section>
+
 <div class="spinner-channel">
 	<h3>Demo Channel</h3>
 	<p>
@@ -20,5 +29,5 @@
 		Johanna Müllauer aus Ingolstadt verheiratet.
 	</p>
 	<p>source: Wikipedia.random()</p>
-	<ob-spinner channel="demo" />
+	<ob-spinner [channel]="demoChannel" />
 </div>
