@@ -2925,7 +2925,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/xl": "enabled",
-      "01_global/modes": "source"
+      "01_global/mode_collections": "source",
+      "01_global/breakpoints": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2938,7 +2939,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/xs": "enabled",
-      "01_global/modes": "source"
+      "01_global/mode_collections": "source",
+      "01_global/breakpoints": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2951,7 +2953,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/sm": "enabled",
-      "01_global/modes": "source"
+      "01_global/mode_collections": "source",
+      "01_global/breakpoints": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2964,7 +2967,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/md": "enabled",
-      "01_global/modes": "source"
+      "01_global/mode_collections": "source",
+      "01_global/breakpoints": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2977,7 +2981,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/lg": "enabled",
-      "01_global/modes": "source"
+      "01_global/mode_collections": "source",
+      "01_global/breakpoints": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2990,7 +2995,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/2xl": "enabled",
-      "01_global/modes": "source"
+      "01_global/mode_collections": "source",
+      "01_global/breakpoints": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",

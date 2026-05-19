@@ -1,39 +1,7 @@
 {
   "ob": {
     "g": {
-      "modes": {
-        "breakpoints": {
-          "xs": {
-            "$type": "dimension",
-            "$value": "0px",
-            "$description": "Lower boundary of the xs (extra-small) viewport range."
-          },
-          "sm": {
-            "$type": "dimension",
-            "$value": "480px",
-            "$description": "Lower boundary of the sm (small) viewport range."
-          },
-          "md": {
-            "$type": "dimension",
-            "$value": "768px",
-            "$description": "Lower boundary of the md (medium) viewport range."
-          },
-          "lg": {
-            "$type": "dimension",
-            "$value": "1024px",
-            "$description": "Lower boundary of the lg (large) viewport range."
-          },
-          "xl": {
-            "$type": "dimension",
-            "$value": "1440px",
-            "$description": "Lower boundary of the xl (extra-large) viewport range."
-          },
-          "2xl": {
-            "$type": "dimension",
-            "$value": "1920px",
-            "$description": "Lower boundary of the 2xl (extra-extra-large) viewport range."
-          }
-        },
+      "mode_collections": {
         "viewports": {
           "xs": {
             "name": {
@@ -43,12 +11,12 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.xs}",
+              "$value": "{ob.g.breakpoints.xs}",
               "$description": "xs range start, inclusive — the xs breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.sm} - 1",
+              "$value": "{ob.g.breakpoints.sm} - 1",
               "$description": "xs range end, inclusive — one pixel below the sm breakpoint, so adjacent ranges do not overlap."
             }
           },
@@ -60,12 +28,12 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.sm}",
+              "$value": "{ob.g.breakpoints.sm}",
               "$description": "sm range start, inclusive — the sm breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.md} - 1",
+              "$value": "{ob.g.breakpoints.md} - 1",
               "$description": "sm range end, inclusive — one pixel below the md breakpoint, so adjacent ranges do not overlap."
             }
           },
@@ -77,12 +45,12 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.md}",
+              "$value": "{ob.g.breakpoints.md}",
               "$description": "md range start, inclusive — the md breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.lg} - 1",
+              "$value": "{ob.g.breakpoints.lg} - 1",
               "$description": "md range end, inclusive — one pixel below the lg breakpoint, so adjacent ranges do not overlap."
             }
           },
@@ -94,12 +62,12 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.lg}",
+              "$value": "{ob.g.breakpoints.lg}",
               "$description": "lg range start, inclusive — the lg breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.xl} - 1",
+              "$value": "{ob.g.breakpoints.xl} - 1",
               "$description": "lg range end, inclusive — one pixel below the xl breakpoint, so adjacent ranges do not overlap."
             }
           },
@@ -111,12 +79,12 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.xl}",
+              "$value": "{ob.g.breakpoints.xl}",
               "$description": "xl range start, inclusive — the xl breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.2xl} - 1",
+              "$value": "{ob.g.breakpoints.2xl} - 1",
               "$description": "xl range end, inclusive — one pixel below the 2xl breakpoint, so adjacent ranges do not overlap."
             }
           },
@@ -128,7 +96,7 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.modes.breakpoints.2xl}",
+              "$value": "{ob.g.breakpoints.2xl}",
               "$description": "2xl range start, inclusive — the 2xl breakpoint. Open-ended, no upper boundary."
             }
           }
@@ -200,15 +168,6 @@
             "$type": "other",
             "$value": ".ob-motion-disabled"
           }
-        },
-        "static": {
-          "$type": "other",
-          "$value": "default",
-          "$description": "refactor(design-system/tokens): update ob.g.modes.core to ob.g.modes.static to reflect the updated collection name.\n\nOUI-4364"
-        },
-        "semantic": {
-          "$type": "other",
-          "$value": "default"
         }
       }
     }
