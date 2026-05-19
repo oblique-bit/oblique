@@ -30,6 +30,8 @@
   "i18n.routes.auth.register.submit": "Enregistrer",
   "i18n.routes.samples.title": "Examples",
   "i18n.routes.samples.column-layout.title": "Column Layout",
+  "i18n.routes.samples.external-link.mdn": "https://developer.mozilla.org/fr-CH/",
+  "i18n.routes.samples.external-link.localhost": "http://localhost:3001/fr",
   "i18n.routes.samples.http-interceptor.title": "HTTP Interceptor",
   "i18n.routes.samples.master-layout.title": "Master Layout",
   "i18n.routes.samples.nav-tree.title": "Navigation Tree",

@@ -12,7 +12,9 @@ import {EXTERNAL_LINK} from './external-link.model';
 	standalone: false,
 	template: `<a href="http://www.google.ch">External Link</a>`,
 })
-class TestComponent {}
+class TestComponent {
+	href = '';
+}
 
 @Component({
 	imports: [ObExternalLinkDirective],
@@ -339,6 +341,24 @@ describe(ObExternalLinkDirective.name, () => {
 
 		it('should not have an icon', () => {
 			expect(element.children.length).toBe(0);
+		});
+	});
+
+	describe('with dynamic link', () => {
+		beforeEach(() => {
+			TestBed.overrideComponent(TestComponent, {set: {template: `<a [href]="href">Dynamic Link</a>`}});
+			fixture = TestBed.createComponent(TestComponent);
+		});
+
+		test.each([
+			{case: 'internal link', href: 'http://localhost:3001/', isExternal: false},
+			{case: 'external link', href: 'http://www.google.ch/', isExternal: true},
+		])('$case', ({href, isExternal}) => {
+			(fixture.componentInstance as TestComponent).href = href;
+			const debugElement = fixture.debugElement.query(By.css('a'));
+			element = debugElement.nativeElement;
+			fixture.detectChanges();
+			expect(element.classList.contains('ob-external-link')).toBe(isExternal);
 		});
 	});
 
