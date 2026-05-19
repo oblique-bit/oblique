@@ -31,7 +31,7 @@ class PostBuild extends StaticScript {
 		const src = getAbsolutePath(`projects/${PostBuild.projectName}/src/lib`);
 		CopyFiles.initialize(PostBuild.projectName)
 			.copyRootFiles('LICENSE')
-			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
+			.copyProjectRootFiles('README.md', 'CHANGELOG.md', 'package.json')
 			.copyProjectFiles(src, ...Files.list(PostBuild.cssFolder).map(file => path.relative(src, file)))
 			.finalize();
 	}
@@ -49,6 +49,7 @@ class PostBuild extends StaticScript {
 				'license',
 				'bugs'
 			)
+			.removeScripts()
 			.write()
 			.finalize();
 	}

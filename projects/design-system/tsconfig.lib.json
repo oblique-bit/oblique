@@ -1,8 +1,13 @@
 {
-  "extends": "../../tsconfig.angular.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "rootDir": "src/lib",
+    "outDir": "../../dist/design-system",
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
+  "include": ["src/lib/**/*.ts"],
   "exclude": ["**/*.spec.ts"]
 }
