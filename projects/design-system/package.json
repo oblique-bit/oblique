@@ -5,25 +5,34 @@
   "scripts": {
     "lint": "tsx scripts/lint.ts",
     "format": "tsx scripts/lint.ts --fix",
-    "test": "cd ../.. && ng test design-system",
-    "test-ci": "cd ../.. && ng run design-system:test:ci",
-    "build": "ng build design-system && tsx scripts/post-build.ts",
+    "test": "vitest",
+    "test-browser": "vitest --browser.headless=false",
+    "test-ci": "vitest run --config vitest.config.ci.ts",
+    "build": "vite build && tsx scripts/post-build.ts",
     "release": "tsx scripts/release.ts",
     "extract-tokens": "node scripts/extract-tokens.mjs"
   },
   "peerDependencies": {
-    "@angular/cdk": "^20.0.0 || ^21.0.0",
-    "@angular/common": "^20.0.0 || ^21.0.0",
-    "@angular/core": "^20.0.0 || ^21.0.0",
-    "@angular/material": "^20.0.0 || ^21.0.0",
-    "@ngx-translate/core": "^17.0.0"
+    "lit": "^3.3.3"
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",
-    "ng-packagr": "^21.2.7"
+    "@vitest/browser-playwright": "^4.1.11",
+    "@vitest/coverage-v8": "^4.1.11",
+    "lit": "^3.3.3",
+    "vite": "^7.3.6",
+    "vite-plugin-dts": "^5.0.3"
   },
   "sideEffects": false,
   "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./lib/*": {
+      "import": "./lib/*/index.js",
+      "types": "./lib/*/index.d.ts"
+    },
     "./oblique.css": {
       "style": "./css/oblique.css"
     },
