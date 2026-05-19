@@ -15,6 +15,7 @@ try {
 }
 addVersionNumber();
 addSchemaData();
+addUpdateSchemaData();
 Log.success();
 
 function addVersionNumber(): void {
@@ -31,6 +32,17 @@ function addSchemaData(): void {
 	Files.overwrite(getAbsolutePath('projects/cli/src/new/ob-new.model.ts'), content =>
 		content.replace(
 			/(?<=const schema = ).*(?= as \{properties: ObNewOptions<ObSchemaOption>\})/u,
+			JSON.stringify(schema)
+		)
+	);
+}
+
+function addUpdateSchemaData(): void {
+	Log.info('Add schema data to "ob-update.model.ts"');
+	const schema = Files.readJson('src/update/schema.json') as {properties: object};
+	Files.overwrite('./src/update/ob-update.model.ts', content =>
+		content.replace(
+			/(?<=const schema = ).*(?= as \{properties: ObUpdateOptions<ObSchemaOption>\})/u,
 			JSON.stringify(schema)
 		)
 	);

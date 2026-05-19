@@ -2,7 +2,13 @@ import {Command, type Option} from '@commander-js/extra-typings';
 import type {OptionValues} from 'commander';
 import {type ObNewOptions, schema} from '../new/ob-new.model';
 import type {ObCliSchema, ObSchemaOption} from './ob-cli.model';
-import {addObNewCommandOptions, configureOption, convertOptionPropertyNames} from './ob-configure-command';
+import {
+	addObNewCommandOptions,
+	addObUpdateCommandOptions,
+	configureOption,
+	convertOptionPropertyNames,
+} from './ob-configure-command';
+import type {ObUpdateOptions} from '../update/ob-update.model';
 
 jest.mock('../new/ob-new.model');
 jest.mock('./ob-cli.model');
@@ -212,6 +218,40 @@ describe('ob-configure-command', () => {
 					expect(option.flags).toContain(expected);
 				});
 			});
+		});
+	});
+
+	describe('addObUpdateCommandOptions', () => {
+		test('returns same command instance', () => {
+			const cliSchema: ObCliSchema<Partial<ObUpdateOptions<ObSchemaOption>>> = {
+				properties: {
+					verbose: {
+						type: 'boolean',
+						defaultValue: false,
+						description: 'value1',
+					},
+					force: {
+						type: 'boolean',
+						defaultValue: true,
+						description: 'value2',
+					},
+					'allow-dirty': {
+						type: 'boolean',
+						defaultValue: true,
+						description: 'value3',
+					},
+				},
+			};
+
+			const result = addObUpdateCommandOptions(cliSchema, command);
+
+			expect(result).toBe(command);
+		});
+
+		test('throws when schema has no properties', () => {
+			const cliSchema = {} as ObCliSchema<Partial<ObUpdateOptions<ObSchemaOption>>>;
+
+			expect(() => addObUpdateCommandOptions(cliSchema, command)).toThrow('Schema for command ob ob not found!');
 		});
 	});
 

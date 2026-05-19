@@ -151,7 +151,7 @@ export function execute(config: ObCommandConfig): void {
 		case 'ngUpdate':
 			return executeNgCommand(
 				`update ${buildNgUpdateDependencyArgs(config.dependencies, config.angularDependencies)}`,
-				{'allow-dirty': true, ...config.options},
+				{...config.options},
 				config.execSyncOptions
 			);
 		case 'npmInstall':

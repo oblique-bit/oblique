@@ -1,6 +1,7 @@
 import {type Command, Option, type OptionValues} from '@commander-js/extra-typings';
 import type {ObNewOptions, OptionKeys} from '../new/ob-new.model';
 import type {ObCliSchema, ObSchemaOption} from './ob-cli.model';
+import type {ObUpdateOptions} from '../update/ob-update.model';
 const flagPrefixLength = 2;
 
 //this is needed because commander sometimes converts the option to firstUpperCase
@@ -27,6 +28,23 @@ export function addObNewCommandOptions(
 		}
 	} else {
 		throw new Error(`Schema for command ob ${command.name()} not found!`);
+	}
+	return command;
+}
+
+export function addObUpdateCommandOptions(
+	schema: ObCliSchema<Partial<ObUpdateOptions<ObSchemaOption>>>,
+	command: Command<[string], OptionValues>
+): Command<[string], OptionValues> {
+	if (!Object.hasOwn(schema, 'properties')) {
+		throw new Error(`Schema for command ob ${command.name()} not found!`);
+	}
+	for (const [key, value] of Object.entries(schema.properties)) {
+		value.description = createOptionDescription(value.description, value.resources);
+		const options = configureOption(value, key);
+		for (const option of options) {
+			command.addOption(option);
+		}
 	}
 	return command;
 }
