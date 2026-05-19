@@ -89,7 +89,6 @@
             "outputPath": "dist/sandbox",
             "index": "projects/sandbox/src/index.html",
             "main": "projects/sandbox/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/sandbox/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
