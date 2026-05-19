@@ -1,0 +1,38 @@
+{
+  "ob": {
+    "s": {
+      "dimension": {
+        "viewport": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Page-container min/max width for the xl (extra-large) viewport, the base viewport. Mode-scoped: resolves to the xl range when the xl viewport mode is active."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
+              }
+            }
+          },
+          "min_width": {
+            "$type": "dimension",
+            "$value": "{ob.g.modes.viewports.xl.from}",
+            "$description": "Minimum width of a page container in the xl viewport."
+          },
+          "max_width": {
+            "$type": "dimension",
+            "$value": "{ob.g.modes.viewports.xl.to}",
+            "$description": "Maximum width of a page container in the xl viewport."
+          }
+        }
+      }
+    }
+  }
+}

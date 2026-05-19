@@ -2918,5 +2918,77 @@
     "$figmaModeId": "",
     "$figmaVariableReferences": {},
     "group": "motion"
+  },
+  {
+    "id": "viewport-xl",
+    "name": "xl",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/dimension/viewport/xl": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "viewport"
+  },
+  {
+    "id": "viewport-xs",
+    "name": "xs",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/dimension/viewport/xs": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "viewport"
+  },
+  {
+    "id": "viewport-sm",
+    "name": "sm",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/dimension/viewport/sm": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "viewport"
+  },
+  {
+    "id": "viewport-md",
+    "name": "md",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/dimension/viewport/md": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "viewport"
+  },
+  {
+    "id": "viewport-lg",
+    "name": "lg",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/dimension/viewport/lg": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "viewport"
+  },
+  {
+    "id": "viewport-2xl",
+    "name": "2xl",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/dimension/viewport/2xl": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "viewport"
   }
 ]

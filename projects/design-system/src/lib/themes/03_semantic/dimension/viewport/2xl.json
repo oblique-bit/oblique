@@ -1,0 +1,38 @@
+{
+  "ob": {
+    "s": {
+      "dimension": {
+        "viewport": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Page-container min/max width for the 2xl (extra-extra-large) viewport. Mode-scoped: resolves to the 2xl range when the 2xl viewport mode is active."
+            },
+            "$extensions": {
+              "oblique": {
+                "kind": {
+                  "$type": "other",
+                  "$value": "token_family_docs"
+                },
+                "export": {
+                  "$type": "other",
+                  "$value": "false"
+                }
+              }
+            }
+          },
+          "min_width": {
+            "$type": "dimension",
+            "$value": "{ob.g.modes.viewports.2xl.from}",
+            "$description": "Minimum width of a page container in the 2xl viewport."
+          },
+          "max_width": {
+            "$type": "dimension",
+            "$value": "99999px",
+            "$description": "Maximum width of a page container in the 2xl viewport. The 2xl range is open-ended; 99999px is an open-ended sentinel, not a real breakpoint."
+          }
+        }
+      }
+    }
+  }
+}
