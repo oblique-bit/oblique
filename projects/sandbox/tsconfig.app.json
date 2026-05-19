@@ -8,8 +8,7 @@
     "baseUrl": "../../",
     "paths": {
       "@oblique/oblique": ["./projects/oblique/src/public_api"],
-      "@oblique/*": ["./projects/oblique/src/lib/*"],
-      "@oblique/design-system": ["./projects/design-system/src/public-api"]
+      "@oblique/*": ["./projects/oblique/src/lib/*"]
     }
   },
   "angularCompilerOptions": {

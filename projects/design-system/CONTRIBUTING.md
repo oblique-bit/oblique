@@ -9,9 +9,10 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for details about how to contribute
 
 ### <a name="scope"></a> Scope
 
-| Scope      | Description                      |
-| ---------- | -------------------------------- |
-| **styles** | For changes in the global styles |
+| Scope      | Description                       |
+| ---------- | --------------------------------- |
+| **styles** | For changes in the global styles  |
+| **demo**   | For changes to the demo component |
 
 ## <a name="scripts"></a> Scripts
 

@@ -41,6 +41,9 @@ testem.log
 .eslintcache
 .stylelintcache
 .prettiercache
+.vitecache
+.vitest-attachments
+__screenshots__
 
 # e2e
 /e2e/*.js

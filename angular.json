@@ -512,45 +512,6 @@
           "defaultConfiguration": "default"
         }
       }
-    },
-    "design-system": {
-      "projectType": "library",
-      "root": "projects/design-system",
-      "sourceRoot": "projects/design-system/src",
-      "prefix": "ds",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/design-system/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/design-system/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/design-system/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-builders/jest:run",
-          "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
-          },
-          "configurations": {
-            "default": {
-              "config": "jest.config.js"
-            },
-            "ci": {
-              "config": "jest.config.ci.js"
-            }
-          },
-          "defaultConfiguration": "default"
-        }
-      }
     }
   },
   "schematics": {

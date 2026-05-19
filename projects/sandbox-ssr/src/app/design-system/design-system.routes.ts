@@ -1,7 +1,7 @@
 import type {Routes} from '@angular/router';
-import {TestComponent} from './test/test.component';
+import {Demo} from './demo/demo';
 
 export const routes: Routes = [
-	{path: 'test', component: TestComponent},
+	{path: 'demo', component: Demo},
 	{path: '', pathMatch: 'full', redirectTo: 'test'},
 ];
