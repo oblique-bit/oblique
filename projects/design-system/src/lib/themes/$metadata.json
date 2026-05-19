@@ -50,12 +50,6 @@
     "03_semantic/dimension/viewport/2xl",
     "04_component/atom/icon/01_color",
     "04_component/atom/icon/02_layout",
-    "04_component/section/_pseudo_header/xl",
-    "04_component/section/_pseudo_header/xs",
-    "04_component/section/_pseudo_header/sm",
-    "04_component/section/_pseudo_header/md",
-    "04_component/section/_pseudo_header/lg",
-    "04_component/section/_pseudo_header/2xl",
     "05_html/typography/context/interface",
     "05_html/typography/context/prose",
     "05_html/typography/style",
@@ -69,6 +63,12 @@
     "05_html/button/05_viewport/desktop",
     "05_html/button/05_viewport/mobile",
     "05_html/button/06_motion",
-    "05_html/button/07_reference_only"
+    "05_html/button/07_reference_only",
+    "99_figma_only/_pseudo_header/xl",
+    "99_figma_only/_pseudo_header/xs",
+    "99_figma_only/_pseudo_header/sm",
+    "99_figma_only/_pseudo_header/md",
+    "99_figma_only/_pseudo_header/lg",
+    "99_figma_only/_pseudo_header/2xl"
   ]
 }
