@@ -1,8 +1,8 @@
 # Semantic Elevation Tokens
 
-**Version:** 0.2 (draft)
-**Date:** 2026-05-08
-**Status:** In stakeholder review
+**Version:** 0.3 (draft)
+**Date:** 2026-05-18
+**Status:** In stakeholder review — realigned to the modes model
 
 ---
 
@@ -10,12 +10,14 @@
 
 The semantic elevation tokens describe the visual depth of a surface relative to the page. They answer: *how high above the canvas does this thing sit?*
 
-Elevation is implemented through two coordinated, parallel token groups:
+Each elevation level is a **paired token set**:
 
-- **`ob.s.color.elevation.surface.*`** — the background color of the elevated area
-- **`ob.s.shadow.elevation.*`** — the drop shadow that visually lifts the surface
+- **`ob.s.color.elevation.surface.*`** — the background colour of the level
+- **`ob.s.shadow.elevation.*`** — the drop shadow that visually lifts it
 
-Both groups live under the `elevation` namespace and are designed to be paired per level. Z-index (logical stacking order) is a separate concern handled by stack-order tokens — see [What elevation is not](#what-elevation-is-not).
+Background and shadow are separate tokens — Figma / Tokens Studio cannot hold both in one variable (`$type: color` vs `$type: boxShadow`). A "level" is therefore a *named pairing* of the two, not a single token.
+
+**Elevation is not a mode.** It is not an axis a designer flips. A component does not "set elevation" — its own per-state tokens *alias* an elevation level where applicable. The substrate a component rests on is carried separately, by the `surface` mode collection. See [Mode collections & resolution chain](../02-modes/98-collections-and-resolution-chain.md).
 
 ---
 
@@ -28,42 +30,20 @@ Both groups live under the `elevation` namespace and are designed to be paired p
 
 ---
 
-## Token Groups
+## How components consume elevation
 
-The semantic elevation tokens are organized into two top-level groups under the `elevation` namespace:
-
-### Surface (`ob.s.color.elevation.surface.*`)
-
-Background color tokens for the four elevation levels plus the backdrop. Each surface aliases the existing `ob.s.color.neutral.bg.contrast_*` scale.
+Elevation tokens are **stateless named values**. A component's interaction-state tokens decide which level applies in which state — the state lives on the component, the elevation token it points to is plain.
 
 ```
-ob.s.color.elevation.surface.sunken
-ob.s.color.elevation.surface.canvas
-ob.s.color.elevation.surface.canvas_hovered
-ob.s.color.elevation.surface.canvas_pressed
-ob.s.color.elevation.surface.raised
-ob.s.color.elevation.surface.raised_hovered
-ob.s.color.elevation.surface.raised_pressed
-ob.s.color.elevation.surface.overlay
-ob.s.color.elevation.surface.overlay_hovered
-ob.s.color.elevation.surface.overlay_pressed
-ob.s.color.elevation.surface.backdrop
+card.bg     @ regular  → canvas
+card.bg     @ hover    → raised
+tooltip.bg  @ regular  → overlay
+menu.bg                → overlay
 ```
 
-Each surface token carries `inversity_normal` and `inversity_flipped` mode variants, e.g. `ob.s.color.elevation.surface.canvas.inversity_normal`.
+There are no `*_hovered` / `*_pressed` elevation tokens. State is a mode of the component (the `interaction` collection); a component maps each of its states to whichever elevation level it should show. Some components stay on one level (a tooltip is always `overlay`); others change level by state (an interactive card is `canvas` at rest, `raised` on hover).
 
-### Shadow (`ob.s.shadow.elevation.*`)
-
-Drop-shadow tokens that pair with the lifting surfaces. Each shadow aliases the existing `ob.s.shadow.*` scale.
-
-```
-ob.s.shadow.elevation.raised
-ob.s.shadow.elevation.overlay
-ob.s.shadow.elevation.overflow.spread
-ob.s.shadow.elevation.overflow.perimeter
-```
-
-Surface and shadow live in separate type namespaces (`color` vs `shadow`) per the [token naming](../03-naming.md) rule that the type segment must immediately follow the layer prefix. The `elevation` umbrella name appears in both paths to mark the design intent.
+Any further background *tint* within a single level (e.g. a hovered row inside a menu) is the component's own colour tokens — not elevation.
 
 ---
 
@@ -103,21 +83,7 @@ A card on a dashboard passes all three in the *raised* direction. A tooltip fail
 | `surface.overlay` | `shadow.elevation.overlay` | Required pairing. Add `surface.backdrop` for modal-class overlays. |
 | `surface.backdrop` | — | No shadow. Alpha dim only. |
 
-The pairing is enforced as a system rule: a raised surface uses the raised shadow, an overlay surface uses the overlay shadow. Off-diagonal combinations are not part of the system. If a designer wants "shadow without lift", the answer is one of: use a border, move up to `raised`, or rethink the design intent.
-
----
-
-## State Variants
-
-`canvas`, `raised`, and `overlay` each ship with `_hovered` and `_pressed` variants for interactive surfaces.
-
-| Token suffix | Maps to | Use |
-|---|---|---|
-| (rest) | `bg.contrast_lowest` | Default state |
-| `_hovered` | `bg.contrast_low` | Hover state — subtle bg shift, paired shadow unchanged |
-| `_pressed` | `bg.contrast_medium` | Pressed / active state — deeper bg shift, paired shadow unchanged |
-
-Sunken and backdrop don't have state variants. Sunken is a passive backdrop region; backdrop is a non-interactive alpha dim.
+The pairing is a system rule: a raised surface uses the raised shadow, an overlay surface uses the overlay shadow. Off-diagonal combinations are not part of the system. If a designer wants "shadow without lift", the answer is one of: use a border, move up to `raised`, or rethink the design intent.
 
 ---
 
@@ -129,14 +95,8 @@ The complete token-to-value-to-component reference.
 |---|---|---|
 | `ob.s.color.elevation.surface.sunken` | `bg.contrast_low` | Wells, dashboard regions where cards sit, kanban column backdrops |
 | `ob.s.color.elevation.surface.canvas` | `bg.contrast_lowest` | Page background, content area, body, flat cards (with border) |
-| `ob.s.color.elevation.surface.canvas_hovered` | `bg.contrast_low` | Canvas-level interactive surface on hover |
-| `ob.s.color.elevation.surface.canvas_pressed` | `bg.contrast_medium` | Canvas-level interactive surface on press |
 | `ob.s.color.elevation.surface.raised` | `bg.contrast_lowest` + `shadow.elevation.raised` | Cards, expansion panels, sticky header / footer, nav tree, movable kanban cards, in-flow notifications, tables when elevated, drag-active state |
-| `ob.s.color.elevation.surface.raised_hovered` | `bg.contrast_low` + `shadow.elevation.raised` | Card / panel on hover |
-| `ob.s.color.elevation.surface.raised_pressed` | `bg.contrast_medium` + `shadow.elevation.raised` | Card / panel on press |
 | `ob.s.color.elevation.surface.overlay` | `bg.contrast_lowest` + `shadow.elevation.overlay` | Modal, dialog, dropdown, menu, tooltip, popover, datepicker, FAB, floating toolbar, bottom sheet |
-| `ob.s.color.elevation.surface.overlay_hovered` | `bg.contrast_low` + `shadow.elevation.overlay` | Overlay item on hover (e.g., dropdown row) |
-| `ob.s.color.elevation.surface.overlay_pressed` | `bg.contrast_medium` + `shadow.elevation.overlay` | Overlay item on press |
 | `ob.s.color.elevation.surface.backdrop` | `ob.p.color.cobalt_alpha.700` | Modal / dialog scrim — alpha dim only, not a content surface |
 | `ob.s.shadow.elevation.raised` | `ob.s.shadow.md` | Pair with `surface.raised` |
 | `ob.s.shadow.elevation.overlay` | `ob.s.shadow.lg` | Pair with `surface.overlay` |
@@ -153,7 +113,7 @@ overlay   ── same bg as canvas, + bigger shadow (out of layout)
 backdrop  ── alpha dim, only for dialog (not a content surface)
 ```
 
-In light mode, `canvas`, `raised`, and `overlay` share the same surface color (`bg.contrast_lowest`). The visual hierarchy comes entirely from the shadow + position, not from a tonal shift on the surface itself. Sunken is the only surface that visibly differs from canvas in light mode.
+In light mode, `canvas`, `raised`, and `overlay` share the same surface colour (`bg.contrast_lowest`). The visual hierarchy comes entirely from the shadow + position, not from a tonal shift on the surface itself. Sunken is the only surface that visibly differs from canvas in light mode.
 
 ---
 
@@ -163,8 +123,8 @@ All elevation tokens follow Oblique's naming and architecture conventions:
 
 - **Type segment present** — every path includes `color` or `shadow` immediately after the layer prefix (`ob.s.color.*`, `ob.s.shadow.*`). See [Token Types §R1](../04-token-types.md#r1--type-must-appear-in-the-token-path).
 - **`$type` field correct** — surface tokens use `$type: color`; shadow tokens use `$type: boxShadow` (Tokens Studio convention required for Figma Effect Style export). See [Token Types §R2](../04-token-types.md#r2--path-segment-and-type-must-correspond).
-- **Reference hierarchy** — semantic elevation tokens reference primitive bg-color and shadow tokens. No semantic-to-semantic skipping. See [Token Naming](../03-naming.md#valid-reference-hierarchy).
-- **Compound identifiers** — state-variant tokens use lowercase + underscore (`canvas_hovered`, `raised_pressed`).
+- **Reference hierarchy** — semantic elevation tokens reference primitive bg-colour and shadow tokens. They are the **last public semantic level for background and shadow**: component tokens (`ob.h.*`, `ob.c.*`) alias elevation tokens, never the underlying neutral primitives directly.
+- **Elevation tokens are stateless** — no `_hovered` / `_pressed` suffixes. State is expressed as a component mode; see [How components consume elevation](#how-components-consume-elevation).
 
 ---
 
@@ -193,19 +153,28 @@ These are shadow-only; there is no paired surface. Values are provisional and su
 
 ### Light mode
 
-`sunken` is darker than `canvas`. `raised` and `overlay` use the same surface color as `canvas` and rely on shadow for visual lift.
+`sunken` is darker than `canvas`. `raised` and `overlay` use the same surface colour as `canvas` and rely on shadow for visual lift.
 
 ### Dark mode
 
-Surface tokens carry `inversity_normal` and `inversity_flipped` variants for mode switching. Dark-mode tonal lift — where raised / overlay surfaces become *lighter* than canvas to compensate for shadow rendering — is deferred to a later phase. The current surface aliases use the same neutral bg scale in both modes.
+Dark-mode tonal lift — where raised / overlay surfaces become *lighter* than canvas to compensate for shadow rendering — is deferred to a later phase. The current surface aliases use the same neutral bg scale in both modes.
 
 ---
 
 ## What elevation is not
 
+- **Not a mode.** Elevation is a set of stateless semantic tokens, not a mode collection. The inherited substrate *is* a mode (`surface`); the rise above it is not — it lives in component state tokens. See [Mode collections & resolution chain](../02-modes/98-collections-and-resolution-chain.md).
 - **Not z-index.** Elevation describes visual depth (design intent). Stack order describes which element wins overlap conflicts (CSS implementation). The two are coordinated but separate token systems.
-- **Not a numeric scale.** Elevation tokens are named by purpose (`sunken / canvas / raised / overlay`), not by number. A "level 3" component must declare what it *is* (raised? overlay?), not just where it sits.
+- **Not a numeric scale.** Elevation tokens are named by purpose (`sunken / canvas / raised / overlay`), not by number. A component must declare what it *is* (raised? overlay?), not just where it sits.
 - **Not unbounded.** The system caps at four content levels. If a layout requires five nested surfaces, the design needs revisiting before a fifth level is added.
+
+---
+
+## Open items
+
+- Naming clash: the bg tokens use a `surface` path segment (`ob.s.color.elevation.surface.*`) while `surface` is also a mode collection. Decide whether to rename the segment.
+- Dark-mode tonal lift for `raised` / `overlay`.
+- Overflow-shadow values pending production scroll-container UI.
 
 ---
 

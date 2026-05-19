@@ -181,7 +181,7 @@ Building blocks (the row / section_bar / preview_bar masters consumed by the scr
 
 - [`02-primitive-tokens.md`](./02-primitive-tokens.md) — Primitive layer architecture (covers the `px`/`rem` parallel-scale rule)
 - [`03-semantic-tokens.md`](./03-semantic-tokens.md) — Semantic layer architecture
-- [`../02-modes/00-modes-overview.md`](../02-modes/00-modes-overview.md) — How modes interact
+- [`../02-modes/00-overview.md`](../02-modes/00-overview.md) — How modes interact
 - [`../02-modes/03-ui-scale.md`](../02-modes/03-ui-scale.md) — UI Scale mode
 - [`../02-modes/04-typography-context.md`](../02-modes/04-typography-context.md) — Typography context mode
 - [`../02-modes/05-density.md`](../02-modes/05-density.md) — Density mode

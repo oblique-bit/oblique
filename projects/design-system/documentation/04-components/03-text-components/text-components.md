@@ -134,7 +134,7 @@ Not a Figma component — just a combination of:
 
 No spacing tokens needed; link inherits from surrounding text context.
 
-**Interaction states:** See [States Concept](../../02-foundation/04-states.md)
+**Interaction states:** See [Mode collections & resolution chain](../../02-foundation/03-design-tokens/02-modes/98-collections-and-resolution-chain.md)
 
 Focus exists on a separate layer and can be combined with other states (e.g., enabled, visited). Focus has no dedicated typographic properties — it is always "enabled + focused", "visited + focused", etc.
 
@@ -176,7 +176,7 @@ Phone number, Email, PDF — developer specifies via attribute, if specified in 
 
 A Figma component for displaying multiple links vertically.
 
-**Interaction states:** See [States Concept](../../02-foundation/04-states.md)
+**Interaction states:** See [Mode collections & resolution chain](../../02-foundation/03-design-tokens/02-modes/98-collections-and-resolution-chain.md)
 
 **Icons:**
 
