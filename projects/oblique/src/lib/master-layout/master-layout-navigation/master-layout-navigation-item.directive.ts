@@ -6,7 +6,7 @@ import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {obOutsideFilter} from '../../global-events/outsideFilter';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
-import {obMasterLayoutNavigationSubMenuFilter} from './masterLayoutNavigationSubMenuFilter';
+import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation-sub-menu-filter';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',

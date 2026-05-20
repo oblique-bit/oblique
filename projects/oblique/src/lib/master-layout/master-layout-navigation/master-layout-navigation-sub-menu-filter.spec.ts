@@ -1,6 +1,6 @@
 import {fromEvent} from 'rxjs';
 import {fakeAsync, tick} from '@angular/core/testing';
-import {obMasterLayoutNavigationSubMenuFilter} from './masterLayoutNavigationSubMenuFilter';
+import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation-sub-menu-filter';
 
 describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 	test('that a MouseEvent is emitted on document click', done => {
