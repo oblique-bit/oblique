@@ -50,15 +50,19 @@ The systematic approach to color contrast management in the Oblique Design Syste
 - `inversity_flipped` - Inverted contrast relationships
 - Stored flat in color tokens, not as variable modes
 
-### **Mode (Figma Context)**
-A set of values for variables in a collection that represents a specific design context. Modes allow switching between different contexts (sizes, themes, languages) without recreating components.
+### **Mode**
+A single value within a mode collection — `light`, `dark`, `sm`, `md`, `lg`, `compact`, `standard`, `spacious`, `xs`, `2xl`, and so on. Switching a mode swaps one collection's active value; tokens scoped to that collection re-resolve accordingly.
 
 **Examples:**
-- ui_scale modes: `sm/md/lg`
-- lightness modes: `light/dark`
+- in the `lightness` collection: `light`, `dark`
+- in the `ui_scale` collection: `sm`, `md`, `lg`
+- in the `viewport` collection: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`
 
-### **Collection (Figma Context)**
-A group of related variables and their modes. Collections organize variables by purpose or domain (e.g., ui_scale, density) and can contain multiple modes.
+### **Mode collection**
+An axis along which the design system varies — a named group of mutually exclusive modes that the user, the device, or the application switches between. The Oblique Design System has seven mode collections: `lightness`, `emphasis`, `ui_scale`, `density`, `typography_context`, `motion`, `viewport`. In Figma, each mode collection surfaces as a Figma variable collection with one Figma mode per Oblique mode.
+
+### **Collection (Figma context)**
+A Figma-specific term — a group of related variables and their modes. Every Oblique mode collection surfaces as a Figma variable collection, but "collection" by itself in Figma can also describe non-mode groupings.
 
 
 ---
@@ -83,21 +87,24 @@ A component property where the identity and intent remain the same, but the attr
 ## Token Structure
 
 ### **Token Naming Convention**
-The systematic naming pattern used throughout the Oblique Design System:
+The naming pattern used across the Oblique Design System:
 ```
-ob.{category}.{component}.{property}.{variant}.{state}.{inversity}
+ob.{tier}.{category}.{...path}
 ```
+
+The `{tier}` segment identifies the token's layer; the rest of the path varies by token kind. See `../02-foundation/03-design-tokens/03-naming.md` for the full conventions.
 
 **Examples:**
 - `ob.c.tag.color.bg.enabled.inversity_normal`
-- `ob.c.button.remove.size.sm`
-- `ob.s.spacing.component.sm`
+- `ob.s.color.primary.bg`
+- `ob.g.mode_collection.viewport.xs.selector`
 
-### **Token Categories**
-- **`c`** - Component tokens
-- **`s`** - System/03_semantic tokens  
-- **`g`** - Global/02_primitive tokens
-- **`t`** - Typography tokens
+### **Token Tiers**
+- **`g`** — Global (`ob.g.*`) — system-wide configuration: mode collections, multipliers, component-level mode overrides.
+- **`p`** — Primitive (`ob.p.*`) — atomic, context-agnostic values: colour scales, dimension scales, motion, typography primitives.
+- **`s`** — Semantic (`ob.s.*`, `ob.s1.*`, `ob.s2.*`) — mode-aware, role-based tokens.
+- **`c`** — Component (`ob.c.*`) — tokens owned by Oblique-specific components.
+- **`h`** — HTML element (`ob.h.*`) — tokens for HTML elements (button, link, typography).
 
 ---
 
