@@ -2,6 +2,15 @@
   "ob": {
     "g": {
       "theme_configuration": {
+        "token_family_docs": {
+          "$description": "String enum identifiers for mode values. Used by other globals (and downstream consumers) to refer to a specific mode value by name without repeating its literal class string. Today: emphasis (high/low) and lightness (light/dark).",
+          "$extensions": {
+            "oblique": {
+              "kind": "family_docs",
+              "export": false
+            }
+          }
+        },
         "emphasis": {
           "high": {
             "$type": "other",

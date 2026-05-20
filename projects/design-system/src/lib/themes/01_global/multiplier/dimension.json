@@ -2,6 +2,15 @@
   "ob": {
     "g": {
       "multiplier": {
+        "token_family_docs": {
+          "$description": "Numeric scale factors that modes apply to base dimension or typography values. Path shape is ob.g.multiplier.<foundation>.<mode>.<value>; the foundation segment names what is scaled, the mode segment names what drives the scaling.",
+          "$extensions": {
+            "oblique": {
+              "kind": "family_docs",
+              "export": false
+            }
+          }
+        },
         "dimension": {
           "ui_scale": {
             "sm": {

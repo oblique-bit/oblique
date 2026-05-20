@@ -1,0 +1,26 @@
+{
+  "ob": {
+    "g": {
+      "component_configuration": {
+        "token_family_docs": {
+          "$description": "Per-component, per-mode overrides applied at the global tier. Each entry forces a specific component to ignore the active mode value and resolve to a fixed value instead (e.g. the footer stays dark regardless of the active lightness mode). Sub-grouped by the driving mode.",
+          "$extensions": {
+            "oblique": {
+              "kind": "family_docs",
+              "export": false
+            }
+          }
+        },
+        "footer": {
+          "theme": {
+            "lightness": {
+              "$type": "other",
+              "$value": "{ob.g.theme_configuration.lightness.dark}",
+              "$description": "defines exception so the footer remains dark in dark mode"
+            }
+          }
+        }
+      }
+    }
+  }
+}
