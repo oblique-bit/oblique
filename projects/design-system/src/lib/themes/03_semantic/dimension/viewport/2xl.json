@@ -23,7 +23,7 @@
           },
           "min_width": {
             "$type": "dimension",
-            "$value": "{ob.g.mode_collection.viewport.2xl.from}",
+            "$value": "{ob.g.mode_collection.viewport.2xl.range.from}",
             "$description": "Minimum width of a page container in the 2xl viewport."
           },
           "max_width": {
