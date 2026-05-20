@@ -23,12 +23,12 @@
           },
           "min_width": {
             "$type": "dimension",
-            "$value": "{ob.g.mode_collection.viewport.xs.range.from}",
+            "$value": "{ob.g.mode_collection.viewport.range.xs.from}",
             "$description": "Minimum width of a page container in the xs viewport."
           },
           "max_width": {
             "$type": "dimension",
-            "$value": "{ob.g.mode_collection.viewport.xs.range.to}",
+            "$value": "{ob.g.mode_collection.viewport.range.xs.to}",
             "$description": "Maximum width of a page container in the xs viewport."
           }
         }
