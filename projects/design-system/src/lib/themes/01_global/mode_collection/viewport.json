@@ -1,10 +1,10 @@
 {
   "ob": {
     "g": {
-      "mode": {
+      "mode_collection": {
         "viewport": {
           "token_family_docs": {
-            "$description": "Viewport mode — six responsive ranges (xs / sm / md / lg / xl / 2xl). Holds the base breakpoint primitives (the source of truth for every viewport-related px value) plus, per range, the CSS class string the application adds to <body> to activate that viewport ('default' for xl, the base) and the from/to bounds. Range bounds derive from the breakpoint primitives; the upper bound is the next breakpoint minus one pixel so adjacent ranges do not overlap. 2xl is open-ended and has no upper bound.",
+            "$description": "Viewport mode collection \u2014 six responsive ranges. Modes: xs, sm, md, lg, xl (the base \u2014 no class is applied), 2xl. Each mode carries the CSS class string the application adds to <body> to activate it plus the range bounds (from / to). The collection also holds the breakpoint primitives that the range bounds reference; the upper bound of each range is the next breakpoint minus one pixel so adjacent ranges do not overlap; 2xl is open-ended and has no upper bound.",
             "$extensions": {
               "oblique": {
                 "kind": "family_docs",
@@ -52,13 +52,13 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.xs}",
-              "$description": "xs range start, inclusive — the xs breakpoint."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.xs}",
+              "$description": "xs range start, inclusive \u2014 the xs breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.sm} - 1",
-              "$description": "xs range end, inclusive — one pixel below the sm breakpoint, so adjacent ranges do not overlap."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.sm} - 1",
+              "$description": "xs range end, inclusive \u2014 one pixel below the sm breakpoint, so adjacent ranges do not overlap."
             }
           },
           "sm": {
@@ -69,13 +69,13 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.sm}",
-              "$description": "sm range start, inclusive — the sm breakpoint."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.sm}",
+              "$description": "sm range start, inclusive \u2014 the sm breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.md} - 1",
-              "$description": "sm range end, inclusive — one pixel below the md breakpoint, so adjacent ranges do not overlap."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.md} - 1",
+              "$description": "sm range end, inclusive \u2014 one pixel below the md breakpoint, so adjacent ranges do not overlap."
             }
           },
           "md": {
@@ -86,13 +86,13 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.md}",
-              "$description": "md range start, inclusive — the md breakpoint."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.md}",
+              "$description": "md range start, inclusive \u2014 the md breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.lg} - 1",
-              "$description": "md range end, inclusive — one pixel below the lg breakpoint, so adjacent ranges do not overlap."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.lg} - 1",
+              "$description": "md range end, inclusive \u2014 one pixel below the lg breakpoint, so adjacent ranges do not overlap."
             }
           },
           "lg": {
@@ -103,13 +103,13 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.lg}",
-              "$description": "lg range start, inclusive — the lg breakpoint."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.lg}",
+              "$description": "lg range start, inclusive \u2014 the lg breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.xl} - 1",
-              "$description": "lg range end, inclusive — one pixel below the xl breakpoint, so adjacent ranges do not overlap."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.xl} - 1",
+              "$description": "lg range end, inclusive \u2014 one pixel below the xl breakpoint, so adjacent ranges do not overlap."
             }
           },
           "xl": {
@@ -120,13 +120,13 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.xl}",
-              "$description": "xl range start, inclusive — the xl breakpoint."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.xl}",
+              "$description": "xl range start, inclusive \u2014 the xl breakpoint."
             },
             "to": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.2xl} - 1",
-              "$description": "xl range end, inclusive — one pixel below the 2xl breakpoint, so adjacent ranges do not overlap."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.2xl} - 1",
+              "$description": "xl range end, inclusive \u2014 one pixel below the 2xl breakpoint, so adjacent ranges do not overlap."
             }
           },
           "2xl": {
@@ -137,8 +137,8 @@
             },
             "from": {
               "$type": "dimension",
-              "$value": "{ob.g.mode.viewport.breakpoint.2xl}",
-              "$description": "2xl range start, inclusive — the 2xl breakpoint. Open-ended, no upper boundary."
+              "$value": "{ob.g.mode_collection.viewport.breakpoint.2xl}",
+              "$description": "2xl range start, inclusive \u2014 the 2xl breakpoint. Open-ended, no upper boundary."
             }
           }
         }

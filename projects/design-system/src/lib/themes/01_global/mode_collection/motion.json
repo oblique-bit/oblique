@@ -1,10 +1,10 @@
 {
   "ob": {
     "g": {
-      "mode": {
+      "mode_collection": {
         "motion": {
           "token_family_docs": {
-            "$description": "Motion mode — animation preference (enabled / disabled). Each value carries the CSS class string the application adds to <body>. enabled is the base.",
+            "$description": "Motion mode collection \u2014 animation preference. Modes: enabled (the base \u2014 no class is applied), disabled (.ob-motion-disabled). Each mode carries the CSS class string the application adds to <body> to activate it.",
             "$extensions": {
               "oblique": {
                 "kind": "family_docs",
@@ -16,7 +16,7 @@
             "selector": {
               "$type": "other",
               "$value": "default",
-              "$description": "enabled is the base motion mode — no class is applied. It is the first-paint default."
+              "$description": "enabled is the base motion mode \u2014 no class is applied. It is the first-paint default."
             }
           },
           "disabled": {

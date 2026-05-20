@@ -1,10 +1,10 @@
 {
   "ob": {
     "g": {
-      "mode": {
+      "mode_collection": {
         "lightness": {
           "token_family_docs": {
-            "$description": "Lightness mode — user theme preference (light / dark). Each value carries the CSS class string the application adds to <body> to activate that mode value. 'default' means the value is the base and needs no class.",
+            "$description": "Lightness mode collection \u2014 user theme preference. Modes: light (the base \u2014 no class is applied), dark (.ob-lightness-dark). Each mode carries the CSS class string the application adds to <body> to activate it.",
             "$extensions": {
               "oblique": {
                 "kind": "family_docs",
@@ -16,7 +16,7 @@
             "selector": {
               "$type": "other",
               "$value": "default",
-              "$description": "Light is the base lightness mode — no class is applied to <body>. It is the first-paint default; dark overrides it via .ob-lightness-dark."
+              "$description": "Light is the base lightness mode \u2014 no class is applied to <body>. It is the first-paint default; dark overrides it via .ob-lightness-dark."
             }
           },
           "dark": {

@@ -1,10 +1,10 @@
 {
   "ob": {
     "g": {
-      "mode": {
+      "mode_collection": {
         "density": {
           "token_family_docs": {
-            "$description": "Density mode — spacing and layout density of containers (compact / standard / spacious). Each value carries the CSS class string the application adds to a container to activate that density. standard is the base. Density also drives the dimension multiplier held alongside the mode values.",
+            "$description": "Density mode collection \u2014 spacing and layout density of containers. Modes: compact (.ob-density-compact), standard (the base \u2014 no class is applied), spacious (.ob-density-spacious). Each mode carries the CSS class string the application adds to a container to activate it. The collection also holds the dimension multiplier that the active mode applies to base values.",
             "$extensions": {
               "oblique": {
                 "kind": "family_docs",
@@ -23,7 +23,7 @@
             "selector": {
               "$type": "other",
               "$value": "default",
-              "$description": "standard is the base density mode — no class is applied. It is the first-paint default."
+              "$description": "standard is the base density mode \u2014 no class is applied. It is the first-paint default."
             }
           },
           "spacious": {
@@ -38,7 +38,7 @@
               "compact": {
                 "$type": "number",
                 "$value": "0.75",
-                "$description": "Compact layout density multiplier — optimized for 4px grid alignment."
+                "$description": "Compact layout density multiplier \u2014 optimized for 4px grid alignment."
               },
               "standard": {
                 "$type": "number",
@@ -48,7 +48,7 @@
               "spacious": {
                 "$type": "number",
                 "$value": "1.5",
-                "$description": "Spacious layout density multiplier — optimized for 4px grid alignment."
+                "$description": "Spacious layout density multiplier \u2014 optimized for 4px grid alignment."
               }
             }
           }

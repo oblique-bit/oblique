@@ -1,10 +1,10 @@
 {
   "ob": {
     "g": {
-      "mode": {
+      "mode_collection": {
         "ui_scale": {
           "token_family_docs": {
-            "$description": "UI Scale mode — per-component size variation (sm / md / lg). Each value carries the CSS class string the application adds to a container to activate that component size. md is the base. UI Scale also drives the dimension and typography multipliers held alongside the mode values.",
+            "$description": "UI Scale mode collection \u2014 per-component size variation. Modes: sm (.ob-component-size-sm), md (the base \u2014 no class is applied), lg (.ob-component-size-lg). Each mode carries the CSS class string the application adds to a container to activate it. The collection also holds the dimension and typography multipliers that the active mode applies to base values.",
             "$extensions": {
               "oblique": {
                 "kind": "family_docs",
@@ -23,7 +23,7 @@
             "selector": {
               "$type": "other",
               "$value": "default",
-              "$description": "md is the base ui_scale mode — no class is applied. It is the first-paint default."
+              "$description": "md is the base ui_scale mode \u2014 no class is applied. It is the first-paint default."
             }
           },
           "lg": {

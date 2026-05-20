@@ -1,10 +1,10 @@
 {
   "ob": {
     "g": {
-      "mode": {
+      "mode_collection": {
         "emphasis": {
           "token_family_docs": {
-            "$description": "Emphasis mode — design-hierarchy intensity (high / low). Each value carries the CSS class string the application adds to a container to activate that mode value. 'default' means the value is the base and needs no class.",
+            "$description": "Emphasis mode collection \u2014 design-hierarchy intensity. Modes: high (the base \u2014 no class is applied), low (.ob-emphasis-low). Each mode carries the CSS class string the application adds to a container to activate it.",
             "$extensions": {
               "oblique": {
                 "kind": "family_docs",
@@ -16,7 +16,7 @@
             "selector": {
               "$type": "other",
               "$value": "default",
-              "$description": "High is the base emphasis mode — no class is applied. It is the first-paint default; low overrides it via .ob-emphasis-low."
+              "$description": "High is the base emphasis mode \u2014 no class is applied. It is the first-paint default; low overrides it via .ob-emphasis-low."
             }
           },
           "low": {

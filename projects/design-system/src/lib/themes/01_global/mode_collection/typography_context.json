@@ -1,10 +1,10 @@
 {
   "ob": {
     "g": {
-      "mode": {
+      "mode_collection": {
         "typography_context": {
           "token_family_docs": {
-            "$description": "Typography-context mode — text rendering for UI versus reading content (interface / prose). Each value carries the CSS class string the application adds to a container. interface is the base.",
+            "$description": "Typography-context mode collection \u2014 text rendering for UI versus reading content. Modes: interface (the base \u2014 no class is applied), prose (.ob-typography-context-prose). Each mode carries the CSS class string the application adds to a container to activate it.",
             "$extensions": {
               "oblique": {
                 "kind": "family_docs",
@@ -16,7 +16,7 @@
             "selector": {
               "$type": "other",
               "$value": "default",
-              "$description": "interface is the base typography-context mode — no class is applied. It is the first-paint default."
+              "$description": "interface is the base typography-context mode \u2014 no class is applied. It is the first-paint default."
             }
           },
           "prose": {
