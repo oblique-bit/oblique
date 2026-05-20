@@ -1,0 +1,16 @@
+{
+  "ob": {
+    "g": {
+      "configuration": {
+        "component": {
+          "footer": {
+            "lightness": {
+              "$type": "other",
+              "$value": "dark"
+            }
+          }
+        }
+      }
+    }
+  }
+}

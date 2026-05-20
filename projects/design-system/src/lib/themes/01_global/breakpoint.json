@@ -3,7 +3,7 @@
     "g": {
       "breakpoint": {
         "token_family_docs": {
-          "$description": "Base viewport breakpoint primitives. Source of truth for every viewport-related px value in the system; the only place literal breakpoint values live. Referenced by ob.g.mode_collection.viewport ranges and from there into the semantic and component layers.",
+          "$description": "Base viewport breakpoint primitives. Source of truth for every viewport-related px value in the system; the only place literal breakpoint values live. Referenced by ob.g.configuration.mode.viewport ranges and from there into the semantic and component layers.",
           "$extensions": {
             "oblique": {
               "kind": "family_docs",

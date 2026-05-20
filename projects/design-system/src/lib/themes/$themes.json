@@ -129,9 +129,14 @@
       "04_component/atom/icon/01_color": "enabled",
       "05_html/link/link": "enabled",
       "05_html/button/06_motion": "enabled",
-      "01_global/theme_configuration/emphasis": "source",
-      "01_global/theme_configuration/lightness": "source",
-      "01_global/component_configuration/lightness/static": "source"
+      "01_global/configuration/mode/emphasis": "source",
+      "01_global/configuration/mode/lightness": "source",
+      "01_global/configuration/component/lightness/static": "source",
+      "01_global/configuration/mode/viewport": "source",
+      "01_global/configuration/mode/ui_scale": "source",
+      "01_global/configuration/mode/density": "source",
+      "01_global/configuration/mode/typography_context": "source",
+      "01_global/configuration/mode/motion": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -440,7 +445,7 @@
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "01_global/component_configuration/lightness/dynamic/light": "enabled",
+      "01_global/configuration/component/lightness/dynamic/light": "enabled",
       "03_semantic/color/s1_lightness/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
@@ -695,7 +700,7 @@
       "ob.s1.color.free.yellow.fg.contrast_low.inversity_normal": "b85c71cc83f78d60fece284aceb7400e911a049e",
       "ob.s1.color.free.yellow.fg.contrast_low.inversity_flipped": "bff9a5ea1d5620e4a9604a621b5b55caa29f77e0"
     },
-    "group": "s1_lightness"
+    "group": "lightness"
   },
   {
     "id": "ce28bc429f67b042f21d44ea8744f4a9409b2c77",
@@ -886,7 +891,7 @@
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "01_global/component_configuration/lightness/dynamic/dark": "enabled",
+      "01_global/configuration/component/lightness/dynamic/dark": "enabled",
       "03_semantic/color/s1_lightness/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
@@ -1139,7 +1144,7 @@
       "ob.s1.color.free.yellow.fg.contrast_low.inversity_normal": "b85c71cc83f78d60fece284aceb7400e911a049e",
       "ob.s1.color.free.yellow.fg.contrast_low.inversity_flipped": "bff9a5ea1d5620e4a9604a621b5b55caa29f77e0"
     },
-    "group": "s1_lightness"
+    "group": "lightness"
   },
   {
     "id": "f2d909efb2ab1aae1de104db99d4e047d72ccf0f",
@@ -1245,7 +1250,7 @@
     },
     "$figmaCollectionId": "VariableCollectionId:1:5",
     "$figmaModeId": "1:5",
-    "group": "s2_emphasis"
+    "group": "emphasis"
   },
   {
     "id": "daee0049718efa9352d42c884e67716c9ae0401e",
@@ -1351,7 +1356,7 @@
     },
     "$figmaCollectionId": "VariableCollectionId:1:5",
     "$figmaModeId": "1:6",
-    "group": "s2_emphasis"
+    "group": "emphasis"
   },
   {
     "id": "37307e838ca95928b073a5079fb37b5cd84d5762",
@@ -2928,7 +2933,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/xl": "enabled",
       "99_figma_only/_pseudo_header/xl": "enabled",
-      "01_global/mode_collection": "source",
+      "01_global/configuration/mode/viewport": "source",
       "01_global/breakpoint": "source"
     },
     "$figmaCollectionId": "",
@@ -2943,7 +2948,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/xs": "enabled",
       "99_figma_only/_pseudo_header/xs": "enabled",
-      "01_global/mode_collection": "source",
+      "01_global/configuration/mode/viewport": "source",
       "01_global/breakpoint": "source"
     },
     "$figmaCollectionId": "",
@@ -2958,7 +2963,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/sm": "enabled",
       "99_figma_only/_pseudo_header/sm": "enabled",
-      "01_global/mode_collection": "source",
+      "01_global/configuration/mode/viewport": "source",
       "01_global/breakpoint": "source"
     },
     "$figmaCollectionId": "",
@@ -2973,7 +2978,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/md": "enabled",
       "99_figma_only/_pseudo_header/md": "enabled",
-      "01_global/mode_collection": "source",
+      "01_global/configuration/mode/viewport": "source",
       "01_global/breakpoint": "source"
     },
     "$figmaCollectionId": "",
@@ -2988,7 +2993,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/lg": "enabled",
       "99_figma_only/_pseudo_header/lg": "enabled",
-      "01_global/mode_collection": "source",
+      "01_global/configuration/mode/viewport": "source",
       "01_global/breakpoint": "source"
     },
     "$figmaCollectionId": "",
@@ -3003,7 +3008,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/2xl": "enabled",
       "99_figma_only/_pseudo_header/2xl": "enabled",
-      "01_global/mode_collection": "source",
+      "01_global/configuration/mode/viewport": "source",
       "01_global/breakpoint": "source"
     },
     "$figmaCollectionId": "",
