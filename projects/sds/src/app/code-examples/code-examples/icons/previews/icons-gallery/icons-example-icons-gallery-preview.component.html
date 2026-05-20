@@ -33,15 +33,12 @@
 	</div>
 </div>
 <h3 class="ob-screen-reader-only">Current icon collection</h3>
-
-@let filteredIcons = filteredIcons$ | async;
-
-@if (filteredIcons[0].length === 0 && filteredIcons[1].length === 0) {
-	<ob-alert>No results found. Refine your search and try again.</ob-alert>
-}
-
 <div class="container">
 	<div class="gallery-container">
+		@let filteredIcons = filteredIcons$ | async;
+		@if (filteredIcons[0].length === 0 && filteredIcons[1].length === 0) {
+			<ob-alert>No results found. Refine your search and try again.</ob-alert>
+		}
 		@for (icons of filteredIcons; track icons; let idx = $index) {
 			@if (icons.length > 0) {
 				<section [class]="{ 'icons-set': true, deprecated: idx === 1 }">
