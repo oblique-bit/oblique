@@ -12,7 +12,6 @@
     "01_global/configuration/component/lightness/dynamic/light",
     "01_global/configuration/component/lightness/dynamic/dark",
     "01_global/configuration/component/lightness/static",
-    "01_global/breakpoint",
     "02_primitive/color",
     "02_primitive/typography",
     "02_primitive/motion",

@@ -2933,8 +2933,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/xl": "enabled",
       "99_figma_only/_pseudo_header/xl": "enabled",
-      "01_global/configuration/mode/viewport": "source",
-      "01_global/breakpoint": "source"
+      "01_global/configuration/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2948,8 +2947,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/xs": "enabled",
       "99_figma_only/_pseudo_header/xs": "enabled",
-      "01_global/configuration/mode/viewport": "source",
-      "01_global/breakpoint": "source"
+      "01_global/configuration/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2963,8 +2961,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/sm": "enabled",
       "99_figma_only/_pseudo_header/sm": "enabled",
-      "01_global/configuration/mode/viewport": "source",
-      "01_global/breakpoint": "source"
+      "01_global/configuration/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2978,8 +2975,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/md": "enabled",
       "99_figma_only/_pseudo_header/md": "enabled",
-      "01_global/configuration/mode/viewport": "source",
-      "01_global/breakpoint": "source"
+      "01_global/configuration/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2993,8 +2989,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/lg": "enabled",
       "99_figma_only/_pseudo_header/lg": "enabled",
-      "01_global/configuration/mode/viewport": "source",
-      "01_global/breakpoint": "source"
+      "01_global/configuration/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3008,8 +3003,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/2xl": "enabled",
       "99_figma_only/_pseudo_header/2xl": "enabled",
-      "01_global/configuration/mode/viewport": "source",
-      "01_global/breakpoint": "source"
+      "01_global/configuration/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
