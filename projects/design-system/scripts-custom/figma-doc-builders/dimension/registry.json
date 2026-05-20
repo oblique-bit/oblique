@@ -3,7 +3,7 @@
   "page": "📐 Dimension – Spacing & Sizing",
   "allowedFiles": [],
   "componentNames": {
-    "sectionBar":     "_docs/dimension/section_bar",
+    "sectionBar":     "_docs/shared/section_bar",
     "headerRow":      "_docs/dimension/header_row",
     "row":            "_docs/dimension/row",
     "headerRow2mode": "_docs/dimension/header_row_2mode",

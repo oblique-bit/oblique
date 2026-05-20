@@ -3,8 +3,7 @@
   "page": "🔤 Typography – Styles & Specimens",
   "allowedFiles": [],
   "componentNames": {
-    "sectionBar":       "_docs/typography/section_bar",
-    "sharedSectionBar": "_docs/shared/section_bar",
+    "sectionBar":       "_docs/shared/section_bar",
     "headerRow":        "_docs/typography/header_row",
     "row":              "_docs/typography/row",
     "groupHeader":      "_docs/shared/group_header",

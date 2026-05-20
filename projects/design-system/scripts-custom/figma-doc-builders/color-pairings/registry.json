@@ -8,7 +8,7 @@
   "foundationDescription": "Accessible color pairings derived from semantic color tokens — every foreground × background combination with WCAG 2.1 contrast ratios and AA/AAA pass/fail flags. Source for component contrast decisions.",
   "componentNames": {
     "swatch": "_docs/color-pairings/contrast_swatch",
-    "sectionBar": "_docs/color-pairings/section_bar",
+    "sectionBar": "_docs/shared/section_bar",
     "groupHeader": "_docs/shared/group_header",
     "pillSet": "_docs/color-pairings/wcag_pill",
     "recommendationBadgeSet": "_docs/color-pairings/wcag_recommendation_badge",
