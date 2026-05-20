@@ -129,14 +129,14 @@
       "04_component/atom/icon/01_color": "enabled",
       "05_html/link/link": "enabled",
       "05_html/button/06_motion": "enabled",
-      "01_global/configuration/mode/emphasis": "source",
-      "01_global/configuration/mode/lightness": "source",
-      "01_global/configuration/component/lightness/static": "source",
-      "01_global/configuration/mode/viewport": "source",
-      "01_global/configuration/mode/ui_scale": "source",
-      "01_global/configuration/mode/density": "source",
-      "01_global/configuration/mode/typography_context": "source",
-      "01_global/configuration/mode/motion": "source"
+      "01_global/mode/emphasis": "source",
+      "01_global/mode/lightness": "source",
+      "01_global/component/lightness/static": "source",
+      "01_global/mode/viewport": "source",
+      "01_global/mode/ui_scale": "source",
+      "01_global/mode/density": "source",
+      "01_global/mode/typography_context": "source",
+      "01_global/mode/motion": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -445,7 +445,7 @@
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "01_global/configuration/component/lightness/dynamic/light": "enabled",
+      "01_global/component/lightness/dynamic/light": "enabled",
       "03_semantic/color/s1_lightness/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
@@ -891,7 +891,7 @@
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "01_global/configuration/component/lightness/dynamic/dark": "enabled",
+      "01_global/component/lightness/dynamic/dark": "enabled",
       "03_semantic/color/s1_lightness/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:4",
@@ -1688,13 +1688,13 @@
       "03_semantic/motion/static": "enabled",
       "03_semantic/typography/single/static": "enabled",
       "03_semantic/typography/grouped/static": "enabled",
-      "01_global/multiplier/typography": "source",
-      "01_global/multiplier/dimension": "source",
       "05_html/typography/style": "enabled",
       "03_semantic/dimension/ui_scale/static": "enabled",
       "03_semantic/dimension/density/static": "enabled",
       "03_semantic/dimension/typography_context/static": "enabled",
-      "03_semantic/color/compiled": "enabled"
+      "03_semantic/color/compiled": "enabled",
+      "01_global/mode/ui_scale": "source",
+      "01_global/mode/density": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1:6",
     "$figmaModeId": "1:7",
@@ -2933,7 +2933,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/xl": "enabled",
       "99_figma_only/_pseudo_header/xl": "enabled",
-      "01_global/configuration/mode/viewport": "source"
+      "01_global/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2947,7 +2947,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/xs": "enabled",
       "99_figma_only/_pseudo_header/xs": "enabled",
-      "01_global/configuration/mode/viewport": "source"
+      "01_global/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2961,7 +2961,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/sm": "enabled",
       "99_figma_only/_pseudo_header/sm": "enabled",
-      "01_global/configuration/mode/viewport": "source"
+      "01_global/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2975,7 +2975,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/md": "enabled",
       "99_figma_only/_pseudo_header/md": "enabled",
-      "01_global/configuration/mode/viewport": "source"
+      "01_global/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -2989,7 +2989,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/lg": "enabled",
       "99_figma_only/_pseudo_header/lg": "enabled",
-      "01_global/configuration/mode/viewport": "source"
+      "01_global/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3003,7 +3003,7 @@
     "selectedTokenSets": {
       "03_semantic/dimension/viewport/2xl": "enabled",
       "99_figma_only/_pseudo_header/2xl": "enabled",
-      "01_global/configuration/mode/viewport": "source"
+      "01_global/mode/viewport": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",

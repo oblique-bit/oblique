@@ -1,0 +1,76 @@
+{
+  "ob": {
+    "g": {
+      "mode": {
+        "ui_scale": {
+          "token_family_docs": {
+            "$description": "UI Scale mode — per-component size variation (sm / md / lg). Each value carries the CSS class string the application adds to a container to activate that component size. md is the base. UI Scale also drives the dimension and typography multipliers held alongside the mode values.",
+            "$extensions": {
+              "oblique": {
+                "kind": "family_docs",
+                "export": false
+              }
+            }
+          },
+          "sm": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-component-size-sm",
+              "$description": "Developer-facing class. The application adds it to a container to activate the small component size."
+            }
+          },
+          "md": {
+            "selector": {
+              "$type": "other",
+              "$value": "default",
+              "$description": "md is the base ui_scale mode — no class is applied. It is the first-paint default."
+            }
+          },
+          "lg": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-component-size-lg",
+              "$description": "Developer-facing class. The application adds it to a container to activate the large component size."
+            }
+          },
+          "multiplier": {
+            "dimension": {
+              "sm": {
+                "$type": "number",
+                "$value": "0.8",
+                "$description": "Small component size dimension multiplier."
+              },
+              "md": {
+                "$type": "number",
+                "$value": "1",
+                "$description": "Medium (default) component size dimension multiplier."
+              },
+              "lg": {
+                "$type": "number",
+                "$value": "1.25",
+                "$description": "Large component size dimension multiplier."
+              }
+            },
+            "typography": {
+              "sm": {
+                "$type": "number",
+                "$value": "0.875",
+                "$description": "Compact text sizing for dense UIs."
+              },
+              "md": {
+                "$type": "number",
+                "$value": "1",
+                "$description": "Default, base reference for all text."
+              },
+              "lg": {
+                "$type": "number",
+                "$value": "1.125",
+                "$description": "Enhanced text sizing for readability."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

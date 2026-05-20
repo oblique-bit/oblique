@@ -1,0 +1,148 @@
+{
+  "ob": {
+    "g": {
+      "mode": {
+        "viewport": {
+          "token_family_docs": {
+            "$description": "Viewport mode — six responsive ranges (xs / sm / md / lg / xl / 2xl). Holds the base breakpoint primitives (the source of truth for every viewport-related px value) plus, per range, the CSS class string the application adds to <body> to activate that viewport ('default' for xl, the base) and the from/to bounds. Range bounds derive from the breakpoint primitives; the upper bound is the next breakpoint minus one pixel so adjacent ranges do not overlap. 2xl is open-ended and has no upper bound.",
+            "$extensions": {
+              "oblique": {
+                "kind": "family_docs",
+                "export": false
+              }
+            }
+          },
+          "breakpoint": {
+            "xs": {
+              "$type": "dimension",
+              "$value": "0px",
+              "$description": "Lower boundary of the xs (extra-small) viewport range."
+            },
+            "sm": {
+              "$type": "dimension",
+              "$value": "480px",
+              "$description": "Lower boundary of the sm (small) viewport range."
+            },
+            "md": {
+              "$type": "dimension",
+              "$value": "768px",
+              "$description": "Lower boundary of the md (medium) viewport range."
+            },
+            "lg": {
+              "$type": "dimension",
+              "$value": "1024px",
+              "$description": "Lower boundary of the lg (large) viewport range."
+            },
+            "xl": {
+              "$type": "dimension",
+              "$value": "1440px",
+              "$description": "Lower boundary of the xl (extra-large) viewport range."
+            },
+            "2xl": {
+              "$type": "dimension",
+              "$value": "1920px",
+              "$description": "Lower boundary of the 2xl (extra-extra-large) viewport range."
+            }
+          },
+          "xs": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-viewport-xs",
+              "$description": "Developer-facing class. The application adds it to <body> to activate the xs viewport mode, overriding the xl base. Scopes which viewport-dependent token values resolve."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.xs}",
+              "$description": "xs range start, inclusive — the xs breakpoint."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.sm} - 1",
+              "$description": "xs range end, inclusive — one pixel below the sm breakpoint, so adjacent ranges do not overlap."
+            }
+          },
+          "sm": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-viewport-sm",
+              "$description": "Developer-facing class. The application adds it to <body> to activate the sm viewport mode, overriding the xl base. Scopes which viewport-dependent token values resolve."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.sm}",
+              "$description": "sm range start, inclusive — the sm breakpoint."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.md} - 1",
+              "$description": "sm range end, inclusive — one pixel below the md breakpoint, so adjacent ranges do not overlap."
+            }
+          },
+          "md": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-viewport-md",
+              "$description": "Developer-facing class. The application adds it to <body> to activate the md viewport mode, overriding the xl base. Scopes which viewport-dependent token values resolve."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.md}",
+              "$description": "md range start, inclusive — the md breakpoint."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.lg} - 1",
+              "$description": "md range end, inclusive — one pixel below the lg breakpoint, so adjacent ranges do not overlap."
+            }
+          },
+          "lg": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-viewport-lg",
+              "$description": "Developer-facing class. The application adds it to <body> to activate the lg viewport mode, overriding the xl base. Scopes which viewport-dependent token values resolve."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.lg}",
+              "$description": "lg range start, inclusive — the lg breakpoint."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.xl} - 1",
+              "$description": "lg range end, inclusive — one pixel below the xl breakpoint, so adjacent ranges do not overlap."
+            }
+          },
+          "xl": {
+            "selector": {
+              "$type": "other",
+              "$value": "default",
+              "$description": "xl is the base viewport: no class is applied to <body>. It is the first-paint default, rendered before any viewport class is set; other viewports override it via their .ob-viewport-* class."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.xl}",
+              "$description": "xl range start, inclusive — the xl breakpoint."
+            },
+            "to": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.2xl} - 1",
+              "$description": "xl range end, inclusive — one pixel below the 2xl breakpoint, so adjacent ranges do not overlap."
+            }
+          },
+          "2xl": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-viewport-2xl",
+              "$description": "Developer-facing class. The application adds it to <body> to activate the 2xl viewport mode, overriding the xl base. Scopes which viewport-dependent token values resolve."
+            },
+            "from": {
+              "$type": "dimension",
+              "$value": "{ob.g.mode.viewport.breakpoint.2xl}",
+              "$description": "2xl range start, inclusive — the 2xl breakpoint. Open-ended, no upper boundary."
+            }
+          }
+        }
+      }
+    }
+  }
+}

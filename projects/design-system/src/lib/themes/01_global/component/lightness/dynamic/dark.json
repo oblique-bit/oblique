@@ -1,0 +1,14 @@
+{
+  "ob": {
+    "g": {
+      "component": {
+        "footer": {
+          "lightness": {
+            "$type": "other",
+            "$value": "dark"
+          }
+        }
+      }
+    }
+  }
+}
