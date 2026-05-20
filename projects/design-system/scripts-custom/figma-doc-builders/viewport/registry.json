@@ -46,7 +46,7 @@
       },
       "section": {
         "tier": "G",
-        "title": "Ranges",
+        "title": "Viewport Ranges",
         "subtitle": "ob.g.mode_collection.viewport.range.<tier>.{from,to}",
         "purpose": "Range bounds per tier. `from` is inclusive and equals the tier's breakpoint; `to` is inclusive and is one pixel below the next breakpoint. 2xl is open-ended and has no `to`.",
         "guideline": "Use the resolved value column for inclusive media-query bounds. Never overlap adjacent ranges."
@@ -65,7 +65,7 @@
       },
       "section": {
         "tier": "G",
-        "title": "CSS Selectors",
+        "title": "Viewport – CSS-Selectors",
         "subtitle": "ob.g.mode_collection.viewport.css_selector.<tier>",
         "purpose": "Per-tier developer-facing CSS class. xl is the base — no class applied. Other tiers add .ob-viewport-<tier> to <body>.",
         "guideline": "Read in the dev's runtime viewport-detection layer; toggle on <body> to activate non-base tiers."
