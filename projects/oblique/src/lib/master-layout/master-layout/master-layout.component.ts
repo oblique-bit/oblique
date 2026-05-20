@@ -1,4 +1,5 @@
 import {
+	ChangeDetectorRef,
 	Component,
 	ContentChild,
 	ContentChildren,
@@ -96,6 +97,7 @@ export class ObMasterLayoutComponent
 	private readonly document = inject(DOCUMENT);
 	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 	private readonly defaultCollapseBreakpoint = 'md';
 	private readonly gridBreakpoints = {
 		xs: 0,
@@ -231,6 +233,7 @@ export class ObMasterLayoutComponent
 			.subscribe(isLayoutExpanded => {
 				this.isLayoutExpanded = isLayoutExpanded;
 				this.isLayoutCollapsed = !isLayoutExpanded;
+				this.changeDetectorRef.markForCheck();
 			});
 	}
 
