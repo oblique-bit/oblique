@@ -26,7 +26,7 @@
       },
       "section": {
         "tier": "G",
-        "title": "Breakpoints",
+        "title": "Viewport Breakpoints",
         "subtitle": "ob.g.mode_collection.viewport.breakpoint.<tier>",
         "purpose": "Lower boundary of each viewport range — the breakpoint primitives the range bounds reference.",
         "guideline": "Source of truth for the viewport tier boundaries. Use these primitives when authoring custom media queries."
@@ -86,7 +86,7 @@
       },
       "section": {
         "tier": "S",
-        "title": "Page Container Widths",
+        "title": "Viewport – Page Container Widths",
         "subtitle": "ob.s.dimension.viewport.{min_width, max_width}",
         "purpose": "Mode-scoped page-container min / max widths — the Figma-bindable layer consumed by frames.",
         "guideline": "Bind to the page container frame. Resolves per active viewport mode."
@@ -107,7 +107,7 @@
       },
       "section": {
         "tier": "C",
-        "title": "Header Variant",
+        "title": "Viewport – Header Variant",
         "subtitle": "ob.c.header.variant",
         "purpose": "[FIGMA-ONLY] Temporary token used only for Figma documentation. Selects the _pseudo_header component variant per viewport mode — mobile below lg, desktop from lg up.",
         "guideline": "Delete this token (and the _pseudo_header) when the real header component ships."
