@@ -1,6 +1,6 @@
 import {fromEvent} from 'rxjs';
 import {fakeAsync, tick} from '@angular/core/testing';
-import {obOutsideFilter} from './outsideFilter';
+import {obOutsideFilter} from './outside-filter';
 
 describe('obOutsideFilter', () => {
 	let div1: HTMLDivElement;

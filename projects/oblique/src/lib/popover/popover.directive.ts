@@ -19,7 +19,7 @@ import {race} from 'rxjs';
 import {filter, first} from 'rxjs/operators';
 import {ObEToggleType, defaultConfig} from './popover.model';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
-import {obOutsideFilter} from '../global-events/outsideFilter';
+import {obOutsideFilter} from '../global-events/outside-filter';
 import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 import {ObWindow} from '../utilities.model';
 

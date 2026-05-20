@@ -168,7 +168,7 @@ export {
 export {ObEColor} from './lib/style/colors.model';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
-export {obOutsideFilter} from './lib/global-events/outsideFilter';
+export {obOutsideFilter} from './lib/global-events/outside-filter';
 export {ObliqueModule} from './lib/oblique.module';
 export * from './lib/oblique-testing.module';
 export {ObMockMatElement, ObMockModule} from './lib/_mocks/mock-module';
