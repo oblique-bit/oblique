@@ -1,0 +1,117 @@
+{
+  "schema": "ob.viewport.registry.v1",
+  "page": "📱 Responsiveness",
+  "wrapperName": "Viewport Tables",
+  "outerName": "Viewport Output",
+  "allowedFiles": [],
+  "componentNames": {
+    "sectionBar":   "_docs/shared/section_bar",
+    "headerRow":    "_docs/viewport/header_row",
+    "row":          "_docs/viewport/row",
+    "groupHeader":  "_docs/shared/group_header"
+  },
+  "foundationName": "Responsiveness",
+  "tierOrder": ["xl", "xs", "sm", "md", "lg", "2xl"],
+  "tables": [
+    {
+      "id": "breakpoints",
+      "tableName": "Table: breakpoints",
+      "kind": "single",
+      "source": {
+        "type": "json-tree",
+        "file": "src/lib/themes/01_global/mode_collection/viewport.json",
+        "rootPath": "ob.g.mode_collection.viewport.breakpoint",
+        "tierKeys": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "tokenNameTemplate": "ob.g.mode_collection.viewport.breakpoint.<tier>"
+      },
+      "section": {
+        "tier": "G",
+        "title": "Breakpoints",
+        "subtitle": "ob.g.mode_collection.viewport.breakpoint.<tier>",
+        "purpose": "Lower boundary of each viewport range — the breakpoint primitives the range bounds reference.",
+        "guideline": "Source of truth for the viewport tier boundaries. Use these primitives when authoring custom media queries."
+      }
+    },
+    {
+      "id": "ranges",
+      "tableName": "Table: ranges",
+      "kind": "single",
+      "source": {
+        "type": "json-tree-leaves",
+        "file": "src/lib/themes/01_global/mode_collection/viewport.json",
+        "rootPath": "ob.g.mode_collection.viewport.range",
+        "tierKeys": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "leafKeys": ["from", "to"],
+        "tokenNameTemplate": "ob.g.mode_collection.viewport.range.<tier>.<leaf>"
+      },
+      "section": {
+        "tier": "G",
+        "title": "Ranges",
+        "subtitle": "ob.g.mode_collection.viewport.range.<tier>.{from,to}",
+        "purpose": "Range bounds per tier. `from` is inclusive and equals the tier's breakpoint; `to` is inclusive and is one pixel below the next breakpoint. 2xl is open-ended and has no `to`.",
+        "guideline": "Use the resolved value column for inclusive media-query bounds. Never overlap adjacent ranges."
+      }
+    },
+    {
+      "id": "css_selectors",
+      "tableName": "Table: css_selectors",
+      "kind": "single",
+      "source": {
+        "type": "json-tree",
+        "file": "src/lib/themes/01_global/mode_collection/viewport.json",
+        "rootPath": "ob.g.mode_collection.viewport.css_selector",
+        "tierKeys": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "tokenNameTemplate": "ob.g.mode_collection.viewport.css_selector.<tier>"
+      },
+      "section": {
+        "tier": "G",
+        "title": "CSS Selectors",
+        "subtitle": "ob.g.mode_collection.viewport.css_selector.<tier>",
+        "purpose": "Per-tier developer-facing CSS class. xl is the base — no class applied. Other tiers add .ob-viewport-<tier> to <body>.",
+        "guideline": "Read in the dev's runtime viewport-detection layer; toggle on <body> to activate non-base tiers."
+      }
+    },
+    {
+      "id": "page_container",
+      "tableName": "Table: page_container",
+      "kind": "multi",
+      "source": {
+        "type": "json-per-mode",
+        "dir": "src/lib/themes/03_semantic/dimension/viewport",
+        "rootPath": "ob.s.dimension.viewport",
+        "leafKeys": ["min_width", "max_width"],
+        "modeFiles": { "xl": "xl.json", "xs": "xs.json", "sm": "sm.json", "md": "md.json", "lg": "lg.json", "2xl": "2xl.json" },
+        "modeOrder": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "tokenNameTemplate": "ob.s.dimension.viewport.<leaf>"
+      },
+      "section": {
+        "tier": "S",
+        "title": "Page Container Widths",
+        "subtitle": "ob.s.dimension.viewport.{min_width, max_width}",
+        "purpose": "Mode-scoped page-container min / max widths — the Figma-bindable layer consumed by frames.",
+        "guideline": "Bind to the page container frame. Resolves per active viewport mode."
+      }
+    },
+    {
+      "id": "header_variant",
+      "tableName": "Table: header_variant",
+      "kind": "multi",
+      "source": {
+        "type": "json-per-mode",
+        "dir": "src/lib/themes/04_component/molecule/header",
+        "rootPath": "ob.c.header",
+        "leafKeys": ["variant"],
+        "modeFiles": { "xl": "xl.json", "xs": "xs.json", "sm": "sm.json", "md": "md.json", "lg": "lg.json", "2xl": "2xl.json" },
+        "modeOrder": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "tokenNameTemplate": "ob.c.header.<leaf>"
+      },
+      "section": {
+        "tier": "C",
+        "title": "Header Variant",
+        "subtitle": "ob.c.header.variant",
+        "purpose": "[FIGMA-ONLY] Temporary token used only for Figma documentation. Selects the _pseudo_header component variant per viewport mode — mobile below lg, desktop from lg up.",
+        "guideline": "Delete this token (and the _pseudo_header) when the real header component ships."
+      }
+    }
+  ]
+}
