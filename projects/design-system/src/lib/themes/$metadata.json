@@ -66,11 +66,11 @@
     "05_html/button/05_viewport/mobile",
     "05_html/button/06_motion",
     "05_html/button/07_reference_only",
-    "99_figma_only/_pseudo_header/xl",
-    "99_figma_only/_pseudo_header/xs",
-    "99_figma_only/_pseudo_header/sm",
-    "99_figma_only/_pseudo_header/md",
-    "99_figma_only/_pseudo_header/lg",
-    "99_figma_only/_pseudo_header/2xl"
+    "04_component/molecule/header/xl",
+    "04_component/molecule/header/xs",
+    "04_component/molecule/header/sm",
+    "04_component/molecule/header/md",
+    "04_component/molecule/header/lg",
+    "04_component/molecule/header/2xl"
   ]
 }

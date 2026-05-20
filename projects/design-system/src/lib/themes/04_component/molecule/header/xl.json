@@ -1,7 +1,7 @@
 {
   "ob": {
-    "figma_only": {
-      "_pseudo_header": {
+    "c": {
+      "header": {
         "variant": {
           "$type": "text",
           "$value": "desktop",
