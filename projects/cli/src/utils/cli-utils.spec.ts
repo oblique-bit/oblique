@@ -364,6 +364,60 @@ Examples of use:
 			});
 		});
 
+		describe('ngGenerate', () => {
+			test.each([
+				{text: 'without', options: undefined},
+				{text: 'with empty', options: {}},
+			])('%text options object', ({options}) => {
+				execute({name: 'ngGenerate', schematic: '@oblique/toolchain:add-oblique', options});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 generate @oblique/toolchain:add-oblique',
+					{
+						stdio: 'inherit',
+					}
+				);
+			});
+
+			test('with filled options object', () => {
+				execute({
+					name: 'ngGenerate',
+					schematic: '@oblique/toolchain:add-oblique',
+					options: {dryRun: true, force: false},
+				});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 generate @oblique/toolchain:add-oblique --dryRun --no-force',
+					{stdio: 'inherit'}
+				);
+			});
+
+			test('with an additional execSyncOptions', () => {
+				execute({
+					name: 'ngGenerate',
+					schematic: '@oblique/toolchain:add-oblique',
+					execSyncOptions: {cwd: 'test'},
+				});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 generate @oblique/toolchain:add-oblique',
+					{
+						stdio: 'inherit',
+						cwd: 'test',
+					}
+				);
+			});
+
+			test('with an overwriting execSyncOptions', () => {
+				execute({
+					name: 'ngGenerate',
+					schematic: '@oblique/toolchain:add-oblique',
+					execSyncOptions: {stdio: 'pipe'},
+				});
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
+					'npx @angular/cli@^21 generate @oblique/toolchain:add-oblique',
+					{stdio: 'pipe'}
+				);
+			});
+		});
+
 		describe('ngUpdate', () => {
 			test('with a single dependency', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], angularDependencies: ['@angular/cli']});
