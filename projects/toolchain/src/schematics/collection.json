@@ -1,6 +1,10 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "add-oblique": {
+      "description": "Embeds Oblique favicon into index.html",
+      "factory": "./add-oblique/index#addOblique"
+    },
     "ng-add": {
       "description": "Adds @oblique/toolchain dependency to the project",
       "factory": "./ng-add/index#toolchain",
