@@ -97,7 +97,7 @@ The `{tier}` segment identifies the token's layer; the rest of the path varies b
 **Examples:**
 - `ob.c.tag.color.bg.enabled.inversity_normal`
 - `ob.s.color.primary.bg`
-- `ob.g.mode_collection.viewport.xs.selector`
+- `ob.g.mode_collection.viewport.css_selector.xs`
 
 ### **Token Tiers**
 - **`g`** — Global (`ob.g.*`) — system-wide configuration: mode collections, multipliers, component-level mode overrides.
