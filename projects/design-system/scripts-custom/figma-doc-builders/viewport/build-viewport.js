@@ -297,7 +297,11 @@ async function ensurePage() {
 }
 
 const TABLE_WIDTH = 1580;
-const WRAPPER_GAP = 60;
+// Horizontal gap between tier columns / single-table tiers; also the vertical
+// gap between the tier-header bar and tables inside a column. Matches the
+// hand-built "reference for build" layout.
+const WRAPPER_GAP = 64;
+const COLUMN_GAP  = 64;
 const BG_VAR_NAME = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
 
 let _bgVar = undefined;
@@ -320,15 +324,48 @@ async function whiteBgFill() {
   return fill;
 }
 
+// The builder owns an outer "Viewport Output" frame (a direct page child) that
+// holds the "Viewport Tables" wrapper. The wrapper is looked up ONLY inside that
+// outer frame, so it can never collide with a "Viewport Tables" frame in a
+// hand-built reference elsewhere on the page.
 async function ensureWrapper(page) {
-  const name = registry.wrapperName;
-  let wrapper = page.findOne(c => c.type === 'FRAME' && c.name === name);
+  const outerName   = registry.outerName || 'Viewport Output';
+  const wrapperName = registry.wrapperName;
+
+  let outer = page.children.find(c => c.type === 'FRAME' && c.name === outerName);
+  const outerIsNew = !outer;
+  if (!outer) {
+    outer = figma.createFrame();
+    outer.name = outerName;
+    page.appendChild(outer);
+  }
+  outer.layoutMode = 'VERTICAL';
+  outer.itemSpacing = 0;
+  outer.primaryAxisSizingMode = 'AUTO';
+  outer.counterAxisSizingMode = 'AUTO';
+  outer.paddingLeft = outer.paddingRight = outer.paddingTop = outer.paddingBottom = 0;
+  outer.fills = [];
+  if (outerIsNew) {
+    // Place a fresh output area below all existing top-level page content,
+    // so it never overlaps a hand-built reference frame.
+    let maxBottom = 0;
+    for (const c of page.children) {
+      if (c === outer) continue;
+      if (typeof c.y === 'number' && typeof c.height === 'number') {
+        maxBottom = Math.max(maxBottom, c.y + c.height);
+      }
+    }
+    try { outer.x = 0; outer.y = maxBottom + 200; } catch {}
+  }
+
+  let wrapper = outer.children.find(c => c.type === 'FRAME' && c.name === wrapperName);
   if (!wrapper) {
     wrapper = figma.createFrame();
-    wrapper.name = name;
-    page.appendChild(wrapper);
+    wrapper.name = wrapperName;
+    outer.appendChild(wrapper);
   }
-  wrapper.layoutMode          = 'VERTICAL';
+  // Horizontal: tier columns + single-table tiers sit side by side, top-aligned.
+  wrapper.layoutMode          = 'HORIZONTAL';
   wrapper.itemSpacing         = WRAPPER_GAP;
   wrapper.primaryAxisSizingMode = 'AUTO';
   wrapper.counterAxisSizingMode = 'AUTO';
@@ -337,13 +374,15 @@ async function ensureWrapper(page) {
   wrapper.paddingLeft = wrapper.paddingRight = wrapper.paddingTop = wrapper.paddingBottom = 0;
   wrapper.fills = [];
   wrapper.opacity = 1;
-  try { wrapper.x = 0; wrapper.y = 0; } catch {}
   return wrapper;
 }
 
 // ── section bar ──────────────────────────────────────────────────────────────
-async function applySectionBarContent(inst, spec) {
+// opts.suppressTier — hide the big tier letter. Used for per-table bars inside a
+// tier column, where the column header already carries the letter.
+async function applySectionBarContent(inst, spec, opts) {
   if (!inst) return;
+  opts = opts || {};
   // Force inner layout chain to FILL so content reaches full table width.
   for (const fname of ['Section Content', 'Layout', 'Content', 'Title Row', 'Section Header', 'Section Info', 'Description Group']) {
     const node = inst.findOne(n => (n.type === 'FRAME' || n.type === 'INSTANCE') && n.name === fname);
@@ -372,21 +411,24 @@ async function applySectionBarContent(inst, spec) {
   };
   for (const [nodeName, value] of Object.entries(want)) {
     const node = inst.findOne(n => n.type === 'TEXT' && n.name === nodeName);
-    if (node) {
-      try { node.visible = true; } catch {}
-      setText(node, value);
+    if (!node) continue;
+    if (nodeName === 'tierLetter' && opts.suppressTier) {
+      try { node.visible = false; } catch {}
+      continue;
     }
+    try { node.visible = true; } catch {}
+    setText(node, value);
   }
 }
 
-async function buildSectionBar(spec) {
+async function buildSectionBar(spec, opts) {
   if (!components.sectionBar) return null;
   const main = components.sectionBar.type === 'COMPONENT_SET'
     ? (components.sectionBar.defaultVariant || components.sectionBar.children[0])
     : components.sectionBar;
   const inst = main.createInstance();
   inst.name = registry.componentNames.sectionBar;
-  await applySectionBarContent(inst, spec);
+  await applySectionBarContent(inst, spec, opts);
   return inst;
 }
 
@@ -448,9 +490,10 @@ async function buildMultiRow(row) {
 // ── per-table build ──────────────────────────────────────────────────────────
 const BOX_OUTER_W = 1628;
 
-async function buildTableBox(wrapper, spec, materialized) {
+async function buildTableBox(wrapper, spec, materialized, opts) {
   // One outer box-frame per table: white bg, no border, no radius, padding 22/0/24/0.
   // Children: section_bar (1580 wide), then inner table frame containing header + rows.
+  // opts.suppressTier — hide the section bar's tier letter (table is inside a column).
   const box = figma.createFrame();
   box.name = spec.tableName;
   box.layoutMode = 'VERTICAL';
@@ -467,7 +510,7 @@ async function buildTableBox(wrapper, spec, materialized) {
   wrapper.appendChild(box);
 
   // Section bar on top.
-  const sb = await buildSectionBar(spec);
+  const sb = await buildSectionBar(spec, opts);
   if (sb) {
     box.appendChild(sb);
     try { sb.resize(TABLE_WIDTH, sb.height); } catch {}
@@ -496,18 +539,88 @@ async function buildTableBox(wrapper, spec, materialized) {
   return box;
 }
 
-// Replace an existing box in the wrapper if present (by name), otherwise append.
-async function replaceOrAppendBox(wrapper, spec, materialized) {
-  const existing = wrapper.children.find(c => c.name === spec.tableName);
-  if (existing) {
-    const idx = wrapper.children.indexOf(existing);
-    try { existing.remove(); } catch {}
-    const fresh = await buildTableBox(wrapper, spec, materialized);
-    // Move fresh into the original slot.
-    try { wrapper.insertChild(idx, fresh); } catch {}
-    return fresh;
+// ── tier grouping ────────────────────────────────────────────────────────────
+// Tables are grouped by section.tier. A tier with more than one table becomes a
+// vertical column: a tier-header bar on top, then each table box. A tier with a
+// single table needs no column — the box sits directly in the wrapper and its
+// own section bar carries the tier letter. Reproduces the hand-built
+// "reference for build" layout (G column of 3 tables, S and C standalone).
+const TIER_SEQUENCE = ['G', 'S', 'C'];
+const TIER_SUBTITLE = { G: 'Global Tokens', S: 'Semantic Tokens', C: 'Component Tokens' };
+
+async function buildTierColumn(wrapper, tier, specs) {
+  const col = figma.createFrame();
+  col.name = 'Column: ' + tier;
+  col.layoutMode = 'VERTICAL';
+  col.itemSpacing = COLUMN_GAP;
+  col.primaryAxisSizingMode = 'AUTO';
+  col.counterAxisSizingMode = 'FIXED';
+  col.primaryAxisAlignItems = 'MIN';
+  col.counterAxisAlignItems = 'MIN';
+  col.paddingLeft = col.paddingRight = col.paddingTop = col.paddingBottom = 0;
+  col.fills = [];
+  wrapper.appendChild(col);
+  try { col.resize(BOX_OUTER_W, col.height); } catch {}
+
+  // Tier-header bar — full column width, not wrapped in a table box.
+  const headerBar = await buildSectionBar({
+    section: {
+      tier,
+      title:    registry.foundationName || '',
+      subtitle: TIER_SUBTITLE[tier] || '',
+      purpose:  ''
+    }
+  });
+  if (headerBar) {
+    col.appendChild(headerBar);
+    try { headerBar.resize(BOX_OUTER_W, headerBar.height); } catch {}
   }
-  return await buildTableBox(wrapper, spec, materialized);
+
+  for (const spec of specs) {
+    // Per-table bars inside a column omit the tier letter — the column header has it.
+    await buildTableBox(col, spec, spec._materialized, { suppressTier: true });
+  }
+  return col;
+}
+
+// Full rebuild: clear the wrapper, then lay tiers out G → S → C. Multi-table
+// tiers become columns; single-table tiers sit directly in the wrapper.
+async function buildAllTiers(wrapper, specs) {
+  for (const ch of [...wrapper.children]) { try { ch.remove(); } catch {} }
+  const byTier = {};
+  for (const spec of specs) {
+    const tier = String((spec.section && spec.section.tier) || 'G').toUpperCase();
+    (byTier[tier] = byTier[tier] || []).push(spec);
+  }
+  const order = [...TIER_SEQUENCE, ...Object.keys(byTier).filter(t => !TIER_SEQUENCE.includes(t))];
+  const built = [];
+  const seen = new Set();
+  for (const tier of order) {
+    const group = byTier[tier];
+    if (!group || !group.length || seen.has(tier)) continue;
+    seen.add(tier);
+    try {
+      if (group.length > 1) await buildTierColumn(wrapper, tier, group);
+      else                  await buildTableBox(wrapper, group[0], group[0]._materialized);
+      for (const s of group) built.push({ id: s.id, ok: true, rows: s._materialized.rows.length });
+    } catch (e) {
+      for (const s of group) built.push({ id: s.id, ok: false, err: e.message });
+    }
+  }
+  return built;
+}
+
+// Single-table refresh (--table <id>): replace just that box in place, wherever
+// it sits — directly in the wrapper or inside a tier column.
+async function replaceOneTable(wrapper, spec) {
+  const existing = wrapper.findOne(c => c.name === spec.tableName);
+  const parent = existing ? existing.parent : wrapper;
+  const idx = existing ? parent.children.indexOf(existing) : -1;
+  const inColumn = !!(parent && /^Column:/.test(parent.name || ''));
+  if (existing) { try { existing.remove(); } catch {} }
+  const fresh = await buildTableBox(parent, spec, spec._materialized, { suppressTier: inColumn });
+  if (idx >= 0) { try { parent.insertChild(idx, fresh); } catch {} }
+  return fresh;
 }
 
 // ── validation ───────────────────────────────────────────────────────────────
@@ -517,7 +630,7 @@ function validatePage(page, wrapper) {
 
   for (const spec of tables) {
     if (tableFilter && spec.id !== tableFilter) continue;
-    const box = wrapper.children.find(c => c.name === spec.tableName);
+    const box = wrapper.findOne(c => c.name === spec.tableName);
     if (!box) { errors.push({ code: 'STRUCT', id: spec.id, msg: 'box missing: ' + spec.tableName }); continue; }
 
     // Exactly one section bar
@@ -567,15 +680,23 @@ if (validateOnly) {
   const v = validatePage(page, wrapper);
   result = { ok: v.errors.length === 0, errors: v.errors, warns: v.warns, log };
 } else {
-  const built = [];
-  for (const spec of tables) {
-    if (tableFilter && spec.id !== tableFilter) continue;
-    try {
-      await replaceOrAppendBox(wrapper, spec, spec._materialized);
-      built.push({ id: spec.id, ok: true, rows: spec._materialized.rows.length });
-    } catch (e) {
-      built.push({ id: spec.id, ok: false, err: e.message });
+  let built;
+  if (tableFilter) {
+    // Single-table refresh — leave the rest of the tier layout intact.
+    const spec = tables.find(s => s.id === tableFilter);
+    if (!spec) {
+      built = [{ id: tableFilter, ok: false, err: 'unknown table id' }];
+    } else {
+      try {
+        await replaceOneTable(wrapper, spec);
+        built = [{ id: spec.id, ok: true, rows: spec._materialized.rows.length }];
+      } catch (e) {
+        built = [{ id: spec.id, ok: false, err: e.message }];
+      }
     }
+  } else {
+    // Full rebuild — tier-grouped layout (G column, S and C standalone).
+    built = await buildAllTiers(wrapper, tables);
   }
   await flushTextWrites();
   const v = validatePage(page, wrapper);

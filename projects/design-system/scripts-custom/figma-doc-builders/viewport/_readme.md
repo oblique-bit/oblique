@@ -8,7 +8,7 @@ Generates the **📱 Responsiveness** Figma docs page from `src/lib/themes/` JSO
 4. **Page Container Widths** — `ob.s.dimension.viewport.{min_width,max_width}` (2 rows, multi-value × 6 modes)
 5. **Header Variant** — `ob.c.header.variant` (1 row, multi-value × 6 modes)
 
-Reference visual: section `12380:53968` ("Iteration 03") in file V9.7. The builder reproduces that layout.
+Reference visual: the hand-built "reference for build" frame on the **📱 Responsiveness** page. The builder reproduces its tier-grouped layout.
 
 ## Why JSON (not Figma variables)
 
@@ -74,19 +74,28 @@ The single-value variants are used for tables 1–3; multi-value for tables 4–
 
 ## Page layout
 
+The builder owns an outer **Viewport Output** frame (a direct page child) so it
+never collides with a hand-built reference frame. Tables are grouped by tier: a
+tier with more than one table becomes a column with its own tier-header bar; a
+single-table tier sits directly in the wrapper.
+
 ```
 📱 Responsiveness  (page)
-└─ Viewport Tables (wrapper, VERTICAL auto-layout, gap=60)
-   ├─ Table: breakpoints       (box, white bg bound to bg.contrast_highest, no border, no radius)
-   │  ├─ _docs/shared/section_bar
-   │  └─ Table  (header_row + 6 single-value rows)
-   ├─ Table: ranges            (same shape, 11 rows)
-   ├─ Table: css_selectors     (same shape, 6 rows)
-   ├─ Table: page_container    (multi-value: 2 rows × 6 modes)
-   └─ Table: header_variant    (multi-value: 1 row × 6 modes)
+└─ Viewport Output            (outer frame, direct page child)
+   └─ Viewport Tables         (wrapper, HORIZONTAL auto-layout, gap=64)
+      ├─ Column: G            (VERTICAL, gap=64)
+      │  ├─ _docs/shared/section_bar   (tier-G header — full 1628 width)
+      │  ├─ Table: breakpoints         (box; section_bar tier letter hidden)
+      │  ├─ Table: ranges
+      │  └─ Table: css_selectors
+      ├─ Table: page_container (S — standalone box, section_bar keeps tier letter)
+      └─ Table: header_variant (C — standalone box)
 ```
 
-Each box is `1628px` wide; inner section_bar and table are `1580px` wide; row vertical rhythm is `42px`.
+Each table box is `1628px` wide; inner section_bar and table are `1580px` wide. A
+single-table tier has no column and no separate tier-header bar — its own
+section bar carries the tier letter. A multi-table tier gets a column with a
+tier-header bar, and the per-table bars inside hide their tier letter.
 
 ## Validation
 
@@ -104,7 +113,7 @@ Exit policy: any error → exit 1. Warnings print but don't block.
 
 ## Idempotency
 
-Re-running the builder removes each `Table: <id>` box and rebuilds it in place. The wrapper frame and page are kept. Manual edits inside a box (e.g. row reordering) are not preserved — registry.json is the source of truth.
+A full build (`node build-viewport.js`, no `--table`) clears the **Viewport Tables** wrapper and rebuilds every tier from scratch. The outer **Viewport Output** frame and the page are kept. `--table <id>` replaces just that one table box in place, wherever it sits (directly in the wrapper or inside a tier column). Manual edits inside the wrapper are not preserved — registry.json is the source of truth.
 
 ## Adding a table
 

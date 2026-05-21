@@ -11,7 +11,7 @@
     "groupHeader":  "_docs/shared/group_header"
   },
   "foundationName": "Responsiveness",
-  "tierOrder": ["xl", "xs", "sm", "md", "lg", "2xl"],
+  "tierOrder": ["xs", "sm", "md", "lg", "xl", "2xl"],
   "tables": [
     {
       "id": "breakpoints",
@@ -21,7 +21,7 @@
         "type": "json-tree",
         "file": "src/lib/themes/01_global/mode_collection/viewport.json",
         "rootPath": "ob.g.mode_collection.viewport.breakpoint",
-        "tierKeys": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "tierKeys": ["xs", "sm", "md", "lg", "xl", "2xl"],
         "tokenNameTemplate": "ob.g.mode_collection.viewport.breakpoint.<tier>"
       },
       "section": {
@@ -40,7 +40,7 @@
         "type": "json-tree-leaves",
         "file": "src/lib/themes/01_global/mode_collection/viewport.json",
         "rootPath": "ob.g.mode_collection.viewport.range",
-        "tierKeys": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "tierKeys": ["xs", "sm", "md", "lg", "xl", "2xl"],
         "leafKeys": ["from", "to"],
         "tokenNameTemplate": "ob.g.mode_collection.viewport.range.<tier>.<leaf>"
       },
@@ -60,7 +60,7 @@
         "type": "json-tree",
         "file": "src/lib/themes/01_global/mode_collection/viewport.json",
         "rootPath": "ob.g.mode_collection.viewport.css_selector",
-        "tierKeys": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "tierKeys": ["xs", "sm", "md", "lg", "xl", "2xl"],
         "tokenNameTemplate": "ob.g.mode_collection.viewport.css_selector.<tier>"
       },
       "section": {
@@ -81,7 +81,7 @@
         "rootPath": "ob.s.dimension.viewport",
         "leafKeys": ["min_width", "max_width"],
         "modeFiles": { "xl": "xl.json", "xs": "xs.json", "sm": "sm.json", "md": "md.json", "lg": "lg.json", "2xl": "2xl.json" },
-        "modeOrder": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "modeOrder": ["xs", "sm", "md", "lg", "xl", "2xl"],
         "tokenNameTemplate": "ob.s.dimension.viewport.<leaf>"
       },
       "section": {
@@ -102,7 +102,7 @@
         "rootPath": "ob.c.header",
         "leafKeys": ["variant"],
         "modeFiles": { "xl": "xl.json", "xs": "xs.json", "sm": "sm.json", "md": "md.json", "lg": "lg.json", "2xl": "2xl.json" },
-        "modeOrder": ["xl", "xs", "sm", "md", "lg", "2xl"],
+        "modeOrder": ["xs", "sm", "md", "lg", "xl", "2xl"],
         "tokenNameTemplate": "ob.c.header.<leaf>"
       },
       "section": {
