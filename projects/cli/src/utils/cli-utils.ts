@@ -148,6 +148,8 @@ export function execute(config: ObCommandConfig): void {
 				config.options,
 				config.spawnSyncOptions
 			);
+		case 'ngGenerate':
+			return executeNgCommand(`generate ${config.schematic}`, config.options, config.execSyncOptions);
 		case 'ngUpdate':
 			return executeNgCommand(
 				['update', ...buildNgUpdateDependencyArgs(config.dependencies, config.angularDependencies)],
