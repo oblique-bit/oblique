@@ -16,7 +16,6 @@ import {addLocales} from './locales';
 export function oblique(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, context: SchematicContext) =>
 		chain([
-			addFavIcon(),
 			embedMasterLayout(options.title, options.applicationOperator),
 			addAdditionalModules(),
 			addFeatureDetection(),
@@ -27,21 +26,6 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addLocales(options.locales.split(' ')),
 			raiseBuildBudget(),
 		])(tree, context);
-}
-
-function addFavIcon(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Oblique: Embedding favicon');
-		getIndexPaths(tree).forEach((indexPath: string) =>
-			overwriteIndexFile(
-				indexPath,
-				tree,
-				'<link rel="icon" type="image/x-icon" href="favicon.ico">',
-				'<link href="assets/images/favicon.png" rel="shortcut icon"/>'
-			)
-		);
-		return tree;
-	});
 }
 
 function embedMasterLayout(title: string, applicationOperator: string): Rule {
