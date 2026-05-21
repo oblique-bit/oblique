@@ -236,10 +236,18 @@ describe('Ob new command', () => {
 				});
 
 				test(`should call npx ${projectName} with default parameter`, () => {
-					expect(execSync).toHaveBeenNthCalledWith(4, buildDefaultNgAddCommand(), {
+					expect(execSync).toHaveBeenNthCalledWith(5, buildDefaultNgAddCommand(), {
 						cwd: `${process.cwd()}/${projectName}`,
 						stdio: 'inherit',
 					});
+				});
+
+				test(`should call ng generate @oblique/toolchain:add-oblique`, () => {
+					expect(execSync).toHaveBeenNthCalledWith(
+						4,
+						`npx @angular/cli@${currentVersions['@angular/cli']} generate @oblique/toolchain:add-oblique`,
+						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'}
+					);
 				});
 			});
 		});
@@ -321,7 +329,7 @@ describe('Ob new command', () => {
 
 			test(`should call npx ${options.join(', ')}`, () => {
 				const expected = options.includes('--interactive') ? buildNgAddCommand() : buildDefaultNgAddCommand();
-				expect(execSync).toHaveBeenNthCalledWith(4, expected, {
+				expect(execSync).toHaveBeenNthCalledWith(5, expected, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 				});
@@ -353,7 +361,7 @@ describe('Ob new command', () => {
 			});
 
 			test('should pass the npmrc option to ng add', () => {
-				expect(execSync).toHaveBeenNthCalledWith(4, buildDefaultNgAddCommand(expectedOption), {
+				expect(execSync).toHaveBeenNthCalledWith(5, buildDefaultNgAddCommand(expectedOption), {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 				});
