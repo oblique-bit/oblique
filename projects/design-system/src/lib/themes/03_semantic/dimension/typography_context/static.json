@@ -8,18 +8,6 @@
               "$description": {
                 "$type": "other",
                 "$value": "Fixed vertical spacing for HTML typography elements — padding-top and padding-bottom values for headings and paragraphs. Static because this surrounding spacing remains constant regardless of typography context mode (interface vs prose)."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             },
             "none": {

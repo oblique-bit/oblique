@@ -7,18 +7,6 @@
             "$description": {
               "$type": "other",
               "$value": "Min/max width for the page-container component in the Figma library, at the xl (extra-large) viewport — the base viewport. Mode-scoped: resolves to the xl range when the xl viewport mode is active."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "min_width": {

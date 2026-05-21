@@ -6,18 +6,6 @@
           "$description": {
             "$type": "other",
             "$value": "Tokens for the HTML button element — color, typography, shadow, layout, and motion."
-          },
-          "$extensions": {
-            "oblique": {
-              "kind": {
-                "$type": "other",
-                "$value": "token_family_docs"
-              },
-              "export": {
-                "$type": "other",
-                "$value": "false"
-              }
-            }
           }
         },
         "dynamic": {

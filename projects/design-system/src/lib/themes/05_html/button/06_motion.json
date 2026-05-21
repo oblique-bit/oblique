@@ -7,18 +7,6 @@
             "$description": {
               "$type": "other",
               "$value": "Motion tokens for the HTML button element — transition duration and easing."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "duration": {

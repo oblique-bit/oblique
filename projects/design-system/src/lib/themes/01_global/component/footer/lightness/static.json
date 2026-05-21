@@ -3,13 +3,7 @@
     "g": {
       "component": {
         "token_family_docs": {
-          "$description": "Per-component, per-mode overrides applied at the global tier. Each entry forces a specific component to ignore the active mode value and resolve to a fixed value instead (e.g. the footer stays dark regardless of the active lightness mode). Sub-grouped by the driving mode.",
-          "$extensions": {
-            "oblique": {
-              "kind": "family_docs",
-              "export": false
-            }
-          }
+          "$description": "Per-component, per-mode overrides applied at the global tier. Each entry forces a specific component to ignore the active mode value and resolve to a fixed value instead (e.g. the footer stays dark regardless of the active lightness mode). Sub-grouped by the driving mode."
         },
         "footer": {
           "lightness": {

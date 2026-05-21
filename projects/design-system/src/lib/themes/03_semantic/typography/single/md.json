@@ -6,18 +6,6 @@
           "$description": {
             "$type": "other",
             "$value": "Individual typography tokens for the Medium component size mode."
-          },
-          "$extensions": {
-            "oblique": {
-              "kind": {
-                "$type": "other",
-                "$value": "token_family_docs"
-              },
-              "export": {
-                "$type": "other",
-                "$value": "false"
-              }
-            }
           }
         },
         "font_size": {
@@ -25,18 +13,6 @@
             "$description": {
               "$type": "other",
               "$value": "Dynamic font-size scale — values scale with the active ui_scale mode (sm/md/lg) via the typography multiplier."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "xs": {
@@ -85,18 +61,6 @@
             "$description": {
               "$type": "other",
               "$value": "Dynamic line-height scale — paired with the dynamic font-size scale. Scales with ui_scale (sm/md/lg)."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "xs": {
@@ -137,18 +101,6 @@
             "$description": {
               "$type": "other",
               "$value": "Dynamic paragraph-spacing scale — half the matching dynamic line-height, so paragraph rhythm scales with ui_scale."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "xs": {
@@ -213,18 +165,6 @@
             "$description": {
               "$type": "other",
               "$value": "Dynamic font weight tokens — identical numeric mapping to the static set, exposed in the ui_scale collection for parity."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "regular": {
@@ -253,18 +193,6 @@
             "$description": {
               "$type": "other",
               "$value": "Dynamic text-decoration tokens — primarily for links. Mirrors the static set."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "link": {
@@ -285,18 +213,6 @@
             "$description": {
               "$type": "other",
               "$value": "Dynamic letter spacing (rem) — tracking values authored in rem in the ui_scale collection."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "superNarrow": {
@@ -330,18 +246,6 @@
             "$description": {
               "$type": "other",
               "$value": "Dynamic letter spacing (px) — tracking values authored in px in the ui_scale collection."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "superNarrow": {

@@ -6,18 +6,6 @@
           "$description": {
             "$type": "other",
             "$value": "Base dimension primitives in px and rem. Named by pixel step (px) or index (rem). rem descriptions show the pixel equivalent for quick reference. Not for direct use — consumed by semantic tokens."
-          },
-          "$extensions": {
-            "oblique": {
-              "kind": {
-                "$type": "other",
-                "$value": "token_family_docs"
-              },
-              "export": {
-                "$type": "other",
-                "$value": "false"
-              }
-            }
           }
         },
         "px": {

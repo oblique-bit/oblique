@@ -7,18 +7,6 @@
             "$description": {
               "$type": "other",
               "$value": "Link icon tokens for the Interface typography context."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "size": {

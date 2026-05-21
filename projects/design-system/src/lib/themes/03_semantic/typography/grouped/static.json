@@ -8,18 +8,6 @@
               "$description": {
                 "$type": "other",
                 "$value": "Grouped typography tokens independent of component size mode."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             }
           }

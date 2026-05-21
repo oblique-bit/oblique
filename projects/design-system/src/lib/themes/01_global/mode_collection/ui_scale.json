@@ -4,13 +4,7 @@
       "mode_collection": {
         "ui_scale": {
           "token_family_docs": {
-            "$description": "UI Scale mode collection \u2014 per-component size variation. Modes: sm (.ob-component-size-sm), md (the base \u2014 no class is applied), lg (.ob-component-size-lg). Each mode carries the CSS class string the application adds to a container to activate it. The collection also holds the dimension and typography multipliers that the active mode applies to base values.",
-            "$extensions": {
-              "oblique": {
-                "kind": "family_docs",
-                "export": false
-              }
-            }
+            "$description": "UI Scale mode collection \u2014 per-component size variation. Modes: sm (.ob-component-size-sm), md (the base \u2014 no class is applied), lg (.ob-component-size-lg). Each mode carries the CSS class string the application adds to a container to activate it. The collection also holds the dimension and typography multipliers that the active mode applies to base values."
           },
           "sm": {
             "selector": {

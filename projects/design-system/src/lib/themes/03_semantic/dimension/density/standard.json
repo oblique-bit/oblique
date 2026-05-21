@@ -8,18 +8,6 @@
               "$description": {
                 "$type": "other",
                 "$value": "Semantic spacing tokens for the Standard density mode — balanced spacing for general-purpose layouts."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             },
             "xs": {

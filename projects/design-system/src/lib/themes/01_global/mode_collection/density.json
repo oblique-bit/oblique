@@ -4,13 +4,7 @@
       "mode_collection": {
         "density": {
           "token_family_docs": {
-            "$description": "Density mode collection \u2014 spacing and layout density of containers. Modes: compact (.ob-density-compact), standard (the base \u2014 no class is applied), spacious (.ob-density-spacious). Each mode carries the CSS class string the application adds to a container to activate it. The collection also holds the dimension multiplier that the active mode applies to base values.",
-            "$extensions": {
-              "oblique": {
-                "kind": "family_docs",
-                "export": false
-              }
-            }
+            "$description": "Density mode collection \u2014 spacing and layout density of containers. Modes: compact (.ob-density-compact), standard (the base \u2014 no class is applied), spacious (.ob-density-spacious). Each mode carries the CSS class string the application adds to a container to activate it. The collection also holds the dimension multiplier that the active mode applies to base values."
           },
           "compact": {
             "selector": {

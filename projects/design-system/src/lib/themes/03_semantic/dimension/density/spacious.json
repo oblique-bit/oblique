@@ -8,18 +8,6 @@
               "$description": {
                 "$type": "other",
                 "$value": "Spacing tokens for the Spacious density mode — increased whitespace for comfortable reading and interaction. Values derived from base primitives × spacious multiplier with corrector offsets where needed."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             },
             "xs": {

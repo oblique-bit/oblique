@@ -6,18 +6,6 @@
           "$description": {
             "$type": "other",
             "$value": "Semantic border tokens — border-radius, border-width, outline-offset, and border shorthand. Referenced by component and HTML token files."
-          },
-          "$extensions": {
-            "oblique": {
-              "kind": {
-                "$type": "other",
-                "$value": "token_family_docs"
-              },
-              "export": {
-                "$type": "other",
-                "$value": "false"
-              }
-            }
           }
         },
         "none": {

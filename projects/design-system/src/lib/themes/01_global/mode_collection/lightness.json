@@ -3,23 +3,11 @@
     "g": {
       "mode_collection": {
         "token_family_docs": {
-          "$description": "Mode collections \u2014 the seven axes along which the design system varies: lightness, emphasis, ui_scale, density, typography_context, motion, viewport. Each collection holds its modes (single values like light / dark / sm / md / xs) and the CSS class string the application adds to activate each mode (the selector). The ui_scale and density collections also carry the multipliers that the active mode applies to base values. The viewport collection also carries the breakpoint primitives and per-range bounds (from / to). In Figma, each mode collection surfaces as a variable collection with one Figma mode per Oblique mode.",
-          "$extensions": {
-            "oblique": {
-              "kind": "family_docs",
-              "export": false
-            }
-          }
+          "$description": "Mode collections \u2014 the seven axes along which the design system varies: lightness, emphasis, ui_scale, density, typography_context, motion, viewport. Each collection holds its modes (single values like light / dark / sm / md / xs) and the CSS class string the application adds to activate each mode (the selector). The ui_scale and density collections also carry the multipliers that the active mode applies to base values. The viewport collection also carries the breakpoint primitives and per-range bounds (from / to). In Figma, each mode collection surfaces as a variable collection with one Figma mode per Oblique mode."
         },
         "lightness": {
           "token_family_docs": {
-            "$description": "Lightness mode collection \u2014 user theme preference. Modes: light (the base \u2014 no class is applied), dark (.ob-lightness-dark). Each mode carries the CSS class string the application adds to <body> to activate it.",
-            "$extensions": {
-              "oblique": {
-                "kind": "family_docs",
-                "export": false
-              }
-            }
+            "$description": "Lightness mode collection \u2014 user theme preference. Modes: light (the base \u2014 no class is applied), dark (.ob-lightness-dark). Each mode carries the CSS class string the application adds to <body> to activate it."
           },
           "light": {
             "selector": {

@@ -8,18 +8,6 @@
               "$description": {
                 "$type": "other",
                 "$value": "Grouped typography token sets for the Large component size mode — bundled font-size, line-height, and spacing."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             }
           }

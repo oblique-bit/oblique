@@ -6,18 +6,6 @@
           "$description": {
             "$type": "other",
             "$value": "Unitless numeric primitives — percentage, line-height ratios, letter-spacing values, and infinity. Referenced by semantic typography tokens."
-          },
-          "$extensions": {
-            "oblique": {
-              "kind": {
-                "$type": "other",
-                "$value": "token_family_docs"
-              },
-              "export": {
-                "$type": "other",
-                "$value": "false"
-              }
-            }
           }
         },
         "percentage": {

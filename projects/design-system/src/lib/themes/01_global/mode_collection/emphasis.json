@@ -4,13 +4,7 @@
       "mode_collection": {
         "emphasis": {
           "token_family_docs": {
-            "$description": "Emphasis mode collection \u2014 design-hierarchy intensity. Modes: high (the base \u2014 no class is applied), low (.ob-emphasis-low). Each mode carries the CSS class string the application adds to a container to activate it.",
-            "$extensions": {
-              "oblique": {
-                "kind": "family_docs",
-                "export": false
-              }
-            }
+            "$description": "Emphasis mode collection \u2014 design-hierarchy intensity. Modes: high (the base \u2014 no class is applied), low (.ob-emphasis-low). Each mode carries the CSS class string the application adds to a container to activate it."
           },
           "high": {
             "selector": {

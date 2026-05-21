@@ -7,18 +7,6 @@
             "$description": {
               "$type": "other",
               "$value": "Motion tokens for the Disabled motion mode — all durations set to zero for reduced-motion accessibility."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "instant": {

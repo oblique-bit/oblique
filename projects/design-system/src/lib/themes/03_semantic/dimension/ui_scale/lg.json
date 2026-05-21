@@ -8,18 +8,6 @@
               "$description": {
                 "$type": "other",
                 "$value": "Component dimensions for the Large UI Scale mode — values derived from base primitives × lg multiplier. Dynamic tokens: scale automatically when the Large mode is active."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             },
             "none": {

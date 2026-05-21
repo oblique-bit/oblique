@@ -4,13 +4,7 @@
       "mode_collection": {
         "viewport": {
           "token_family_docs": {
-            "$description": "Viewport mode collection — six responsive ranges. Modes: xs, sm, md, lg, xl (the base — no class is applied), 2xl. Each mode carries the CSS class string the application adds to <body> to activate it plus the range bounds (from / to). The collection also holds the breakpoint primitives that the range bounds reference; the upper bound of each range is the next breakpoint minus one pixel so adjacent ranges do not overlap; 2xl is open-ended and has no upper bound. The collection also defines the minimum page width the system supports — the floor for the xs page container, since the xs range itself starts at 0px.",
-            "$extensions": {
-              "oblique": {
-                "kind": "family_docs",
-                "export": false
-              }
-            }
+            "$description": "Viewport mode collection — six responsive ranges. Modes: xs, sm, md, lg, xl (the base — no class is applied), 2xl. Each mode carries the CSS class string the application adds to <body> to activate it plus the range bounds (from / to). The collection also holds the breakpoint primitives that the range bounds reference; the upper bound of each range is the next breakpoint minus one pixel so adjacent ranges do not overlap; 2xl is open-ended and has no upper bound. The collection also defines the minimum page width the system supports — the floor for the xs page container, since the xs range itself starts at 0px."
           },
           "breakpoint": {
             "xs": {

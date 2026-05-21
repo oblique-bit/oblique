@@ -8,18 +8,6 @@
               "$description": {
                 "$type": "other",
                 "$value": "Typography dimensions for the Prose context — generous spacing optimized for readable body text and long-form content."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             },
             "xs": {

@@ -8,18 +8,6 @@
               "$description": {
                 "$type": "other",
                 "$value": "Fixed component dimensions (UI Scale) — values that remain constant across all size modes. Use: for dimensions that must not scale between size modes. Avoid: for dimensions that should respond to UI Scale changes."
-              },
-              "$extensions": {
-                "oblique": {
-                  "kind": {
-                    "$type": "other",
-                    "$value": "token_family_docs"
-                  },
-                  "export": {
-                    "$type": "other",
-                    "$value": "false"
-                  }
-                }
               }
             },
             "none": {

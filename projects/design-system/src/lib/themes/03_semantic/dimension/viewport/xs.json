@@ -7,18 +7,6 @@
             "$description": {
               "$type": "other",
               "$value": "Min/max width for the page-container component in the Figma library, at the xs (extra-small) viewport. Mode-scoped: applies when the xs viewport mode is active. max_width is the xs range end; min_width is the minimum page width the system supports — the xs range starts at 0px, below the supported floor."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "min_width": {

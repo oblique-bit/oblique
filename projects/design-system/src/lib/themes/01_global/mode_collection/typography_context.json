@@ -4,13 +4,7 @@
       "mode_collection": {
         "typography_context": {
           "token_family_docs": {
-            "$description": "Typography-context mode collection \u2014 text rendering for UI versus reading content. Modes: interface (the base \u2014 no class is applied), prose (.ob-typography-context-prose). Each mode carries the CSS class string the application adds to a container to activate it.",
-            "$extensions": {
-              "oblique": {
-                "kind": "family_docs",
-                "export": false
-              }
-            }
+            "$description": "Typography-context mode collection \u2014 text rendering for UI versus reading content. Modes: interface (the base \u2014 no class is applied), prose (.ob-typography-context-prose). Each mode carries the CSS class string the application adds to a container to activate it."
           },
           "interface": {
             "selector": {

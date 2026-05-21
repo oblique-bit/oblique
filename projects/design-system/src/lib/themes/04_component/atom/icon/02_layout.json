@@ -6,18 +6,6 @@
           "$description": {
             "$type": "other",
             "$value": "Layout and size tokens for the Icon atom — static, component, and inline-text size variants."
-          },
-          "$extensions": {
-            "oblique": {
-              "kind": {
-                "$type": "other",
-                "$value": "token_family_docs"
-              },
-              "export": {
-                "$type": "other",
-                "$value": "false"
-              }
-            }
           }
         },
         "static": {
