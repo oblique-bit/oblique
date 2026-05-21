@@ -96,6 +96,26 @@
             "$value": ".ob-motion-disabled"
           }
         },
+        "channel": {
+          "app": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "marketing": {
+            "$type": "other",
+            "$value": ".ob-channel-marketing"
+          }
+        },
+        "canton": {
+          "confederation": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "zurich": {
+            "$type": "other",
+            "$value": ".ob-canton-zurich"
+          }
+        },
         "static": {
           "$type": "other",
           "$value": "default",

@@ -26,20 +26,20 @@
               "inversity_normal": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.enabled.inversity_flipped}",
-                  "$description": "Primary button-aug foreground - normal inversity (uses flipped semantic for conceptual inversion)"
+                  "$value": "{ob.s.color.channel.action.fg.enabled}",
+                  "$description": "Primary button foreground - normal inversity. Routed through the channel mode collection (multi-brand PoC)."
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_flipped}"
+                  "$value": "{ob.s.color.channel.action.fg.hover}"
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.pressed.inversity_flipped}"
+                  "$value": "{ob.s.color.channel.action.fg.pressed}"
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.fg.disabled.inversity_flipped}"
+                  "$value": "{ob.s.color.channel.action.fg.disabled}"
                 }
               },
               "inversity_flipped": {
@@ -149,20 +149,20 @@
               "inversity_normal": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.bg.enabled.inversity_flipped}",
-                  "$description": "Primary button-aug background - normal inversity (uses flipped semantic for conceptual inversion)"
+                  "$value": "{ob.s.color.channel.action.bg.enabled}",
+                  "$description": "Primary button background - normal inversity. Routed through the channel mode collection (multi-brand PoC)."
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.bg.hover.inversity_flipped}"
+                  "$value": "{ob.s.color.channel.action.bg.hover}"
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.bg.pressed.inversity_flipped}"
+                  "$value": "{ob.s.color.channel.action.bg.pressed}"
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.interaction.standard_states.bg.disabled.inversity_flipped}"
+                  "$value": "{ob.s.color.channel.action.bg.disabled}"
                 }
               },
               "inversity_flipped": {

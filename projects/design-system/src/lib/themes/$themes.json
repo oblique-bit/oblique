@@ -3316,5 +3316,57 @@
     "$figmaModeId": "",
     "$figmaVariableReferences": {},
     "group": "vd1_display"
+  },
+  {
+    "id": "channel-app",
+    "name": "app",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/color/channel/app": "enabled",
+      "02_primitive/color": "source",
+      "02_primitive/canton/confederation": "source",
+      "02_primitive/canton/zurich": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "channel"
+  },
+  {
+    "id": "channel-marketing",
+    "name": "marketing",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/color/channel/marketing": "enabled",
+      "02_primitive/color": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "channel"
+  },
+  {
+    "id": "canton-confederation",
+    "name": "confederation",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/confederation": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "canton"
+  },
+  {
+    "id": "canton-zurich",
+    "name": "zurich",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/zurich": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "canton"
   }
 ]

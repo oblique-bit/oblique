@@ -1,0 +1,78 @@
+{
+  "ob": {
+    "s": {
+      "color": {
+        "channel": {
+          "action": {
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.600}",
+                "$description": "Channel app — primary action background, enabled. Resolves through the canton brand ramp."
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.700}",
+                "$description": "Channel app — primary action background, hover."
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.800}",
+                "$description": "Channel app — primary action background, pressed."
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.100}",
+                "$description": "Channel app — primary action background, disabled."
+              }
+            },
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.50}",
+                "$description": "Channel app — primary action label, enabled."
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.50}",
+                "$description": "Channel app — primary action label, hover."
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.50}",
+                "$description": "Channel app — primary action label, pressed."
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.300}",
+                "$description": "Channel app — primary action label, disabled."
+              }
+            }
+          },
+          "link": {
+            "enabled": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.700}",
+              "$description": "Channel app — link text, enabled."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.800}",
+              "$description": "Channel app — link text, hover."
+            },
+            "visited": {
+              "$type": "color",
+              "$value": "{ob.p.color.indigo.700}",
+              "$description": "Channel app — link text, visited."
+            },
+            "active": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.900}",
+              "$description": "Channel app — link text, active."
+            }
+          }
+        }
+      }
+    }
+  }
+}

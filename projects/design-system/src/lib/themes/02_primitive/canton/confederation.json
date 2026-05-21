@@ -1,0 +1,60 @@
+{
+  "ob": {
+    "p": {
+      "color": {
+        "brand": {
+          "50": {
+            "$type": "color",
+            "$value": "#F3F4F5",
+            "$description": "Canton brand ramp — Confederation (federal) default. Multi-brand PoC: the canton mode collection swaps this ramp per canton. Confederation mirrors the current steelblue brand values."
+          },
+          "100": {
+            "$type": "color",
+            "$value": "#D3DEE9",
+            "$description": "Canton brand ramp — Confederation default."
+          },
+          "200": {
+            "$type": "color",
+            "$value": "#AACAE6",
+            "$description": "Canton brand ramp — Confederation default."
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#6EB8E9",
+            "$description": "Canton brand ramp — Confederation default."
+          },
+          "400": {
+            "$type": "color",
+            "$value": "#48A4D7",
+            "$description": "Canton brand ramp — Confederation default."
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#2E8FBF",
+            "$description": "Canton brand ramp — Confederation default."
+          },
+          "600": {
+            "$type": "color",
+            "$value": "#2379A4",
+            "$description": "Canton brand ramp — Confederation default. Primary action background."
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#236487",
+            "$description": "Canton brand ramp — Confederation default."
+          },
+          "800": {
+            "$type": "color",
+            "$value": "#255069",
+            "$description": "Canton brand ramp — Confederation default."
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#233C4D",
+            "$description": "Canton brand ramp — Confederation default."
+          }
+        }
+      }
+    }
+  }
+}

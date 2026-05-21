@@ -71,22 +71,22 @@
         "color": {
           "default": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.standard_states.fg.enabled.inversity_normal}",
-            "$description": "Default color of unvisited links."
+            "$value": "{ob.s.color.channel.link.enabled}",
+            "$description": "Default color of unvisited links. Routed through the channel mode collection (multi-brand PoC)."
           },
           "visited": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.standard_states.fg.visited.inversity_normal}",
+            "$value": "{ob.s.color.channel.link.visited}",
             "$description": "Color of links the user has already visited."
           },
           "hover": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.standard_states.fg.hover.inversity_normal}",
+            "$value": "{ob.s.color.channel.link.hover}",
             "$description": "Color of link when hovered with the mouse."
           },
           "active": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.standard_states.fg.pressed.inversity_normal}",
+            "$value": "{ob.s.color.channel.link.active}",
             "$description": "Color of link during click interaction."
           }
         },

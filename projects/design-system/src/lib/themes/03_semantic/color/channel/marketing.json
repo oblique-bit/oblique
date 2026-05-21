@@ -1,0 +1,78 @@
+{
+  "ob": {
+    "s": {
+      "color": {
+        "channel": {
+          "action": {
+            "bg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.600}",
+                "$description": "Channel marketing — primary action background, enabled. BK/Swiss DS red. PoC: reuses the status-critical red ramp; a dedicated brand-red primitive is iteration 1."
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.700}",
+                "$description": "Channel marketing — primary action background, hover."
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.800}",
+                "$description": "Channel marketing — primary action background, pressed."
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.200}",
+                "$description": "Channel marketing — primary action background, disabled."
+              }
+            },
+            "fg": {
+              "enabled": {
+                "$type": "color",
+                "$value": "{ob.p.color.basic.white}",
+                "$description": "Channel marketing — primary action label, enabled."
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.p.color.basic.white}",
+                "$description": "Channel marketing — primary action label, hover."
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.p.color.basic.white}",
+                "$description": "Channel marketing — primary action label, pressed."
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.500}",
+                "$description": "Channel marketing — primary action label, disabled."
+              }
+            }
+          },
+          "link": {
+            "enabled": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.700}",
+              "$description": "Channel marketing — link text, enabled. BK/Swiss DS blue links. PoC: reuses the status-info blue ramp; a dedicated brand-blue primitive is iteration 1."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.800}",
+              "$description": "Channel marketing — link text, hover."
+            },
+            "visited": {
+              "$type": "color",
+              "$value": "{ob.p.color.indigo.700}",
+              "$description": "Channel marketing — link text, visited."
+            },
+            "active": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.900}",
+              "$description": "Channel marketing — link text, active."
+            }
+          }
+        }
+      }
+    }
+  }
+}

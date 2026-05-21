@@ -1,0 +1,60 @@
+{
+  "ob": {
+    "p": {
+      "color": {
+        "brand": {
+          "50": {
+            "$type": "color",
+            "$value": "#EAF1FB",
+            "$description": "Canton brand ramp — Zürich. PoC stub: placeholder Zürich blue, pending the official Kanton Zürich brand values."
+          },
+          "100": {
+            "$type": "color",
+            "$value": "#CBDDF5",
+            "$description": "Canton brand ramp — Zürich (PoC stub)."
+          },
+          "200": {
+            "$type": "color",
+            "$value": "#9CBFEC",
+            "$description": "Canton brand ramp — Zürich (PoC stub)."
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#6B9FE2",
+            "$description": "Canton brand ramp — Zürich (PoC stub)."
+          },
+          "400": {
+            "$type": "color",
+            "$value": "#3D80D6",
+            "$description": "Canton brand ramp — Zürich (PoC stub)."
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#1F66C4",
+            "$description": "Canton brand ramp — Zürich (PoC stub)."
+          },
+          "600": {
+            "$type": "color",
+            "$value": "#0F52A8",
+            "$description": "Canton brand ramp — Zürich (PoC stub). Primary action background."
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#0C4488",
+            "$description": "Canton brand ramp — Zürich (PoC stub)."
+          },
+          "800": {
+            "$type": "color",
+            "$value": "#0B3568",
+            "$description": "Canton brand ramp — Zürich (PoC stub)."
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#0A2747",
+            "$description": "Canton brand ramp — Zürich (PoC stub)."
+          }
+        }
+      }
+    }
+  }
+}
