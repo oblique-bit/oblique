@@ -103,6 +103,7 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 	const filteredOptions = filterValidOptions(commandOptions);
 
 	execute({name: 'ngAdd', dependency: '@oblique/toolchain', spawnSyncOptions: {cwd: workingDirectory}});
+	execute({name: 'ngGenerate', schematic: '@oblique/toolchain:add-oblique', spawnSyncOptions: {cwd: workingDirectory}});
 	execute({
 		name: 'ngAdd',
 		dependency: '@oblique/oblique',
