@@ -196,13 +196,13 @@
 				}
 			}
 		}
+	}
 
-		.ob-fixed-layout &.ob-full-height {
-			height: 100%;
+	.ob-layout-expanded .ob-fixed-layout &.ob-full-height {
+		height: 100%;
 
-			.ob-column-content {
-				overflow: hidden auto;
-			}
+		.ob-column-content {
+			overflow: hidden auto;
 		}
 	}
 }
