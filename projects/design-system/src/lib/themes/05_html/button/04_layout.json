@@ -5,7 +5,7 @@
         "token_family_docs": {
           "$description": {
             "$type": "other",
-            "$value": "Layout tokens for the HTML button element — spacing, size, and border-radius."
+            "$value": "Tokens for the HTML button element — color, typography, shadow, layout, and motion."
           },
           "$extensions": {
             "oblique": {
