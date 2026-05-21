@@ -24,7 +24,8 @@
     "schematics"
   ],
   "dependencies": {
-    "chalk": "^4.1.2"
+    "chalk": "^4.1.2",
+    "jsonc-parser": "^3.3.1"
   },
   "exports": {
     "./eslint-config": "./linting/eslint-config-oblique.mjs",
