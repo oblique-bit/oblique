@@ -280,6 +280,14 @@ describe('Ob new command', () => {
 						shell: isWindows(),
 					});
 				});
+
+				test(`should call ng generate @oblique/toolchain:add-oblique`, () => {
+					expect(execSync).toHaveBeenNthCalledWith(
+						4,
+						`npx @angular/cli@${currentVersions['@angular/cli']} generate @oblique/toolchain:add-oblique`,
+						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit'}
+					);
+				});
 			});
 		});
 
