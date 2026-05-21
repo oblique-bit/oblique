@@ -6,7 +6,7 @@
           "token_family_docs": {
             "$description": {
               "$type": "other",
-              "$value": "Min/max width for the page-container component in the Figma library, at the xs (extra-small) viewport. Mode-scoped: resolves to the xs range when the xs viewport mode is active."
+              "$value": "Min/max width for the page-container component in the Figma library, at the xs (extra-small) viewport. Mode-scoped: applies when the xs viewport mode is active. max_width is the xs range end; min_width is the minimum page width the system supports — the xs range starts at 0px, below the supported floor."
             },
             "$extensions": {
               "oblique": {
@@ -23,8 +23,8 @@
           },
           "min_width": {
             "$type": "dimension",
-            "$value": "{ob.g.mode_collection.viewport.range.xs.from}",
-            "$description": "Minimum width of a page container in the xs viewport."
+            "$value": "{ob.g.mode_collection.viewport.min_supported_width}",
+            "$description": "Minimum width of a page container in the xs viewport — the minimum page width the system supports. Does not reference the xs range start, which is 0px."
           },
           "max_width": {
             "$type": "dimension",

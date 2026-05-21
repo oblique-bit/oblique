@@ -4,7 +4,7 @@
       "mode_collection": {
         "viewport": {
           "token_family_docs": {
-            "$description": "Viewport mode collection — six responsive ranges. Modes: xs, sm, md, lg, xl (the base — no class is applied), 2xl. Each mode carries the CSS class string the application adds to <body> to activate it plus the range bounds (from / to). The collection also holds the breakpoint primitives that the range bounds reference; the upper bound of each range is the next breakpoint minus one pixel so adjacent ranges do not overlap; 2xl is open-ended and has no upper bound.",
+            "$description": "Viewport mode collection — six responsive ranges. Modes: xs, sm, md, lg, xl (the base — no class is applied), 2xl. Each mode carries the CSS class string the application adds to <body> to activate it plus the range bounds (from / to). The collection also holds the breakpoint primitives that the range bounds reference; the upper bound of each range is the next breakpoint minus one pixel so adjacent ranges do not overlap; 2xl is open-ended and has no upper bound. The collection also defines the minimum page width the system supports — the floor for the xs page container, since the xs range itself starts at 0px.",
             "$extensions": {
               "oblique": {
                 "kind": "family_docs",
@@ -44,6 +44,11 @@
               "$description": "Lower boundary of the 2xl (extra-extra-large) viewport range."
             }
           },
+          "min_supported_width": {
+            "$type": "dimension",
+            "$value": "320px",
+            "$description": "Minimum page width the system supports. The xs viewport range starts at 0px, but layouts are not designed below this width — the xs page container uses this value as its floor."
+          },
           "css_selector": {
             "xs": {
               "$type": "other",
@@ -68,7 +73,7 @@
             "xl": {
               "$type": "other",
               "$value": "default",
-              "$description": "xl is the base viewport: no class is applied to <body>. It is the first-paint default, rendered before any viewport class is set; other viewports override it via their .ob-viewport-* class."
+              "$description": "xl is the base viewport: no class is applied to <body>. It is the first-paint default, rendered before any viewport class is set; other viewports override it via their .ob-viewport-* class. This token is for completeness and consistency; it is not used in code since the absence of a viewport class on <body> indicates the xl viewport mode. Scopes which viewport-dependent token values resolve."
             },
             "2xl": {
               "$type": "other",
