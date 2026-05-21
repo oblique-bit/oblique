@@ -1292,18 +1292,6 @@
                   "$value": "{ob.p.color.steelblue.100}",
                   "$description": "Low contrast background for emphasis-high interactive elements. Inverse surface."
                 }
-              },
-              "contrast_low_alpha": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.steelblue.600}",
-                  "$description": "Low contrast background for emphasis-high interactive elements. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.steelblue.200}",
-                  "$description": "Low contrast background for emphasis-high interactive elements. Inverse surface."
-                }
               }
             },
             "fg_base": {
