@@ -216,136 +216,64 @@ All naming conventions, patterns, and guidelines are documented in [Token Naming
 
 ---
 
-## **`$extensions` Convention**
 
-The W3C Design Token Community Group specification reserves the `$extensions` key for non-standard, tooling-specific metadata. In this system, `$extensions` is used **only for documentation purposes**  — it has no effect on token resolution, Style Dictionary output, or the compiled token values consumed by components.
+## **Token Classification**
 
-### **Namespace naming rule**
+Most tokens are ordinary, consumable design values. A few are "special" — documentation nodes, or values that one environment uses and the other does not. There is no hidden flag system: a token's role is readable from three visible signals — its name, its tier, and its description.
 
-The namespace key must be a plain string that identifies the system, **not** a dot-separated token path. The `ob.` prefix is exclusively reserved for token names (`ob.p.*`, `ob.s1.*`, etc.) and must never appear as a JSON key in `$extensions`.
+### **Signal 1 — Name: token vs documentation**
 
-All Oblique-internal extensions use the namespace `"oblique"`.
+A node named `token_family_docs` is a documentation node, **not a token**. It carries the family-level `$description` shown as the heading in the Figma living-documentation tables. It has no `$value`, so the build and the resolver treat it as a non-token automatically, and pipelines locate it by its key name. Every other node is a real token. See *Documentation Nodes* below.
 
-### **Properties in use**
+### **Signal 2 — Folder / tier: who consumes it**
 
-Both purposes share the single `"oblique"` namespace and are distinguished by which properties are present.
+The tier a token lives in says whether it is for direct use:
 
----
+- **Primitive (`ob.p.*`)** — raw material; never consumed directly (see the Reference Hierarchy Rules above).
+- **Semantic (`ob.s`, `ob.s1`, `ob.s2`), component (`ob.c.*`), HTML (`ob.h.*`)** — the working tokens consumers use.
 
-#### `semanticAssigned` — Color role assignment status
+### **Signal 3 — Description: consumption labels**
 
-Used on leaf color tokens (tokens that have a `$value`).
+A token's `$description` may begin with **at most one** label. The label lives in the description because the description is the only field that publishes through to Figma, where designers can read it.
 
-| Property | Type | Meaning |
-|---|---|---|
-| `semanticAssigned` | `boolean` | `true` — this token has a fixed semantic role; system consumers must not repurpose or reassign this color. `false` — token is defined but its semantic assignment is still pending a design decision. |
+| Label | Meaning |
+|---|---|
+| *(none)* | Normal — used in both Figma and code. |
+| `[FIGMA-ONLY]` | Figma applies it automatically; developers can ignore it. |
+| `[NO-FIGMA]` | Not in Figma; developers apply it in code. |
+| `[NO-CODE]` | Exists only to complete a set — used by neither Figma nor code. |
 
-**Purpose**: Consumer protection signal. Documents which colors are already claimed for a specific role in the system (e.g. cobalt/indigo/purple are reserved for the focus ring accessibility requirement). Surfaced in both Figma living documentation and web documentation so consumers know which colors are off-limits for arbitrary use.
+`[NO-CODE]` is **not** the same as `[FIGMA-ONLY]`: `[FIGMA-ONLY]` means Figma actively applies the token; `[NO-CODE]` means the token is used nowhere and exists only so a set is structurally complete.
 
-**Example**:
-```json
-"focus_ring": {
-  "inversity_normal": {
-    "$extensions": {
-      "oblique": {
-        "semanticAssigned": true
-      }
-    },
-    "$type": "color",
-    "$value": "{ob.s1.color.interaction.focus_ring.inversity_normal}"
-  }
-}
-```
+### **`$extensions`**
+
+The W3C Design Token Community Group specification reserves the `$extensions` key for non-standard, tooling-specific metadata. **Oblique does not use `$extensions` to classify or mark tokens** — classification uses the three signals above. `$extensions` carries no Oblique metadata and is not read by the build, the resolver, or Figma.
+
+Tokens Studio writes its own `$extensions` entry on some tokens (for example a colour modifier). That belongs to Tokens Studio and is not an Oblique marker.
 
 ---
 
-#### `kind` + `export` — Token family documentation node
+## **Documentation Nodes (`token_family_docs`)**
 
-Used on `token_family_docs` nodes exclusively. A `token_family_docs` node is not a real token — it has no `$value` and must never be exported or resolved. It exists at the root of each token family to carry the family-level `$description` that appears as the table heading in documentation.
+Each token family carries one `token_family_docs` node holding the family's human-readable description for the Figma living-documentation tables.
 
-| Property | Type | Meaning |
-|---|---|---|
-| `kind` | `"family_docs"` | Marks this node as a family documentation entry, not a consumable token. |
-| `export` | `false` | Instructs the build pipeline to skip this node entirely. |
+### **Purpose and location**
 
-**Example**:
-```json
-"neutral": {
-  "token_family_docs": {
-    "$description": "Foundational colors for backgrounds, text, borders, and surfaces.",
-    "$extensions": {
-      "oblique": {
-        "kind": "family_docs",
-        "export": false
-      }
-    }
-  },
-  "fg": { ... }
-}
-```
+- The node lives **inside the token file that owns the family**, at the family's namespace root. For `ob.s.color.neutral` the node is `ob.s.color.neutral.token_family_docs` inside `03_semantic/color/compiled.json`; for `ob.p.color` it is inside `02_primitive/color.json`. It is **not** a separate file or folder.
+- It is identified by its **key name**, `token_family_docs`.
+- It holds only a `$description`. It has **no `$value`** — so it is not a token, and the build, resolver and exporters skip it automatically. It carries **no `$extensions`**.
 
----
-
-### **Rules**
-
-1. **Documentation only** — `$extensions` values are never read by Style Dictionary transforms or token resolution logic.
-2. **Single namespace** — All Oblique internal metadata uses the `"oblique"` key. Do not create dot-separated variants such as `"ob.figma"` or `"ob.build"`.
-3. **No ad-hoc additions** — Do not add new properties to the `"oblique"` namespace or any other without updating this section first.
-4. **`family_docs` nodes are invisible to consumers** — They must be filtered out in every export, build, and documentation pipeline.
-
----
-
-## **Doc Token Nodes (`token_family_docs`)**
-
-### **Purpose**
-
-Each token family carries a `token_family_docs` node that holds human-readable documentation (description, usage guidance) for Figma Living Documentation tables. These nodes live **inside the token file that owns the family** — they are not separate files and not in a separate subfolder.
-
-### **File Location Rule**
-
-> **Documentation nodes are embedded in their respective token files. They do not live in a separate folder.**
-
-A `token_family_docs` node belongs to the namespace of the family it documents. For `ob.s.color.neutral`, the node lives at `ob.s.color.neutral.token_family_docs` inside `03_semantic/color/compiled.json`. For `ob.p.color`, it lives inside `02_primitive/color.json`.
-
-**Correct:**
-```
-src/lib/themes/03_semantic/color/compiled.json
-  → ob.s.color.neutral.token_family_docs
-
-src/lib/themes/02_primitive/color.json
-  → ob.p.color.token_family_docs
-```
-
-**Wrong:**
-```
-src/lib/themes/doc/03_semantic/color/neutral.json   ← separate detached folder
-scripts-custom/figma-builders/per-table-data/*.json  ← outside src/lib/themes/ entirely
-```
-
-### **Node Format**
+### **Node format**
 
 ```json
 "token_family_docs": {
-  "$description": "Foundational colors for backgrounds, text, borders, and surfaces. Light/Dark modes apply. Use: text, background, border, shadow roles. Avoid: interactive state feedback or status communication.",
-  "$extensions": {
-    "oblique": {
-      "kind": "token_family_docs",
-      "export": false
-    }
+  "$description": {
+    "$type": "other",
+    "$value": "Foundational colors for backgrounds, text, borders, and surfaces."
   }
 }
 ```
 
-`$description` contains the full documentation text. `export: false` ensures build pipelines skip this node entirely.
+### **Separation of concerns**
 
-### **Separation of Concerns**
-
-Builder configuration files under `scripts-custom/figma-builders/color-tokens/per-table-data/` contain **structural data only** (tier, component type, role, token groups). They must never contain text content such as page introductions or usage guidelines. Text content belongs in the `token_family_docs` node inside the relevant token file.
-
-| Location | Contains |
-|---|---|
-| `src/lib/themes/…/tokenfile.json` → `token_family_docs` | Description, usage guidance |
-| `scripts-custom/…/per-table-data/` | tier, component, role, groups (build config only) |
-
----
-
+Builder configuration for the Figma documentation tables holds **structural data only** — tier, component type, role, token groups. Text content — descriptions and usage guidance — belongs in the `token_family_docs` node inside the token file, never in builder configuration.
