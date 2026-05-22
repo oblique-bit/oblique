@@ -1,85 +1,93 @@
 # Style Dictionary — token build workflow
 
-How design tokens become CSS, and who does what. Written for the
-non-developer side of this work — kept deliberately simple.
+How design tokens become CSS, and the responsibilities of the system designer
+and the system developer across the handoff.
+
+## Roles
+
+- **System designer** — owns the token JSON. Works on `tokens-dev`, edits and
+  validates the tokens, and adapts the local resolver when the token structure
+  changes.
+- **System developer** — owns the official Style Dictionary build on `master`.
+  Consumes the tokens from `tokens-main` and produces the CSS the components
+  use.
 
 ## Branches
 
 ```
 tokens-dev   ──►   tokens-main   ──►   master
-(you work         (handoff — you      (the dev moves
- here, always)     push your JSON      it here manually)
-                   for the dev)
 ```
 
-- **tokens-dev** — your working branch. All token editing happens here.
-- **tokens-main** — the meeting point. You push your token JSON here so the
-  dev can build from it.
-- **master** — the dev's. His official Style Dictionary build lives here. It
-  reads the JSON from `tokens-main` and extracts the CSS the components use.
+- **tokens-dev** — the system designer's working branch. All token editing
+  happens here.
+- **tokens-main** — the handoff point. The system designer pushes the token
+  JSON here for the system developer to build from.
+- **master** — the system developer's branch. The official Style Dictionary
+  build lives here. It reads the JSON from `tokens-main` and extracts the CSS
+  the components use.
 
-## Two builds — same engine, different jobs
+## Two builds — same engine, different roles
 
-|                | Whose                | Reads tokens from        | Job                                      |
-| -------------- | -------------------- | ------------------------ | ---------------------------------------- |
-| Official build | Dev's, on `master`   | `tokens-main`            | Produces the real CSS for the components |
-| Your resolver  | Yours, this folder   | your local `tokens-dev`  | Pre-validate + see real resolved values  |
+|                | Owner            | Reads tokens from   | Purpose                                 |
+| -------------- | ---------------- | ------------------- | --------------------------------------- |
+| Official build | System developer | `tokens-main`       | Produces the CSS the components use     |
+| Local resolver | System designer  | local `tokens-dev`  | Pre-validation and real resolved values |
 
-Your resolver (`oblique-resolver/`) is a copy of the dev's build, adapted
-only so it runs on `tokens-dev`. The output format is identical — what you
-see is what the dev will get.
+The resolver (`oblique-resolver/`) is a copy of the official build, adapted
+only so it runs on `tokens-dev`. The output format is identical — resolver
+output matches what the official build produces.
 
-## Day to day — run your resolver whenever you need a real value
+## Daily workflow
+
+The system designer runs the resolver whenever a real resolved value is
+needed — Figma work, `.md` documentation, validator scripts, prototypes:
 
 ```sh
 cd oblique-resolver && node extract-tokens.adapted.mjs
 ```
 
-Use it instead of guessing a resolved token value — Figma work, writing
-`.md` docs, running validator scripts, building prototypes later.
+## Before the handoff
 
-## Before handing tokens to the dev
+1. **Run the resolver as a check.** Broken references or errors are fixed on
+   `tokens-dev` first, before they reach the system developer.
+2. **Push the token JSON to `tokens-main`.** This is the handoff; the official
+   build runs from there.
 
-1. **Run the resolver as a check.** If it reports broken references or
-   errors, fix them on `tokens-dev` first. This catches problems before they
-   reach the dev.
-2. **Push your JSON to `tokens-main`.** That is the handoff — the dev builds
-   from there.
+## When the token structure changes
 
-## When you change token STRUCTURE (not just values)
+Renaming token files or restructuring global settings breaks the official
+build, because the developer's script expects the previous structure.
 
-Renaming token files or restructuring global settings breaks the dev's
-build, because his script expects the old structure.
+In that case:
 
-When that happens:
+1. **The system designer adapts the resolver** — normally only `themes.mjs`,
+   the mode-discovery file. The designer knows what changed in the JSON; the
+   developer does not.
+2. **The change reaches the developer as a Pull Request** against `master`, so
+   the official script learns the new structure.
+3. **The structural JSON and the script update land together** — the JSON on
+   `tokens-main` and the script update on `master` — or the official build
+   breaks.
 
-1. **Adapt your resolver** — normally just `themes.mjs` (the mode-discovery
-   file). You know what changed in the JSON; the dev does not.
-2. **Send the dev a Pull Request** against `master` with that change, so his
-   script learns the new structure. (Claude prepares the PR for you.)
-3. **Land them together** — the structural JSON on `tokens-main` and the
-   script update on `master` must arrive together, or the dev's build breaks.
+## Rules
 
-## Rules that keep this from getting complicated
-
-- **Never edit the 5 verbatim files** — `style-dictionary-formats.mjs`,
+- **The five verbatim files are never edited** — `style-dictionary-formats.mjs`,
   `style-dictionary-formats-token-store.mjs`, `style-dictionary-transforms.mjs`,
   `style-dictionary-preprocessors.mjs`, `style-dictionary-preprocessors-typography.mjs`.
-  They are the dev's, copied as-is.
-- **The file you adapt is `themes.mjs`** — and only when token structure
-  changes. That is normally the only one.
-- **`extract-tokens.adapted.mjs` is your entry script** — it stays different
-  from the dev's on purpose (his fetches from `tokens-main` and deletes the
-  folder after; yours reads local files and keeps them). Never PR it.
-- **Keep dependencies matching the dev's** — the Style Dictionary and
-  sd-transforms versions in `package.json` should track his. When he bumps,
-  you bump. You are aligned today.
+  They are the developer's, copied as-is.
+- **Only `themes.mjs` is adapted** — and only when the token structure changes.
+- **`extract-tokens.adapted.mjs` is the designer's entry script** — it stays
+  different from the developer's on purpose (the developer's fetches from
+  `tokens-main` and deletes the folder afterwards; the designer's reads local
+  files and keeps them). It is never part of a Pull Request.
+- **Dependencies track the developer's** — the Style Dictionary and
+  sd-transforms versions in `package.json` match the official build.
 - **Generated folders are never committed** — `node_modules/`, `build/` and
   `oblique-resolver/output/` are git-ignored.
 
-## The two tools here
+## Tools in this folder
 
-- **`oblique-resolver/`** — the real build. CSS + pre-validation. Use this.
-- **`build.js`** — quick flat "token → resolved value" lookup. Secondary.
+- **`oblique-resolver/`** — the resolver: CSS output and pre-validation.
+- **`build.js`** — a flat "token → resolved value" lookup. Secondary.
 
 Tool detail: see `README.md`.
