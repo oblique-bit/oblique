@@ -39,6 +39,30 @@ The resolver is not a copy of the official build — it *is* the official build.
 with a two-file overlay applied for the `tokens-dev` token structure. Same
 script, same engine — the output is the developer's exact format.
 
+## What the build does — the Style Dictionary pipeline
+
+*Developer detail. The sections above are enough to run the workflow; this is the engine underneath.*
+
+"The resolver" and "the official build" are both a **Style Dictionary build** — `resolver` is the team's name for the local one. (In Style Dictionary's own terms the whole thing is a *build*; "resolve" is only one of its steps.) Every build runs the same fixed pipeline:
+
+```
+parse config → find + parse the token JSON → deep-merge into one tree
+  → preprocessors → transforms → resolve references → format → write CSS
+```
+
+Each Oblique build file plugs into one stage of that pipeline:
+
+| Build file | Style Dictionary role |
+| --- | --- |
+| `extract-tokens.mjs` | entry script — wires the hooks below and runs the build |
+| `style-dictionary.mjs` | builds the config, drives the API (`new StyleDictionary(…)`) |
+| `style-dictionary-preprocessors*.mjs` | **preprocessors** — whole-tree changes, before transforms |
+| `style-dictionary-transforms.mjs` | **transforms** — per-token value / name changes |
+| `style-dictionary-formats*.mjs` | **formats** — how the token tree is written to a file |
+| `themes.mjs` | Oblique-specific — discovers the mode combinations to build (not an SD hook) |
+
+`@tokens-studio/sd-transforms` supplies the Token Studio transform preset on top of Style Dictionary's built-ins. Full reference: the official Style Dictionary v5 documentation (styledictionary.com).
+
 ## Setup (once)
 
 `resolve.mjs` needs the `oblique-build` worktree — a second working directory
@@ -67,7 +91,7 @@ npm run resolve
 
 It writes `src/lib/css/layers/tokens.css`.
 
-## Before the handoff
+## The handoff
 
 1. **Run the resolver as a check.** Broken references or errors are fixed on
    `tokens-dev` first, before they reach the system developer.
