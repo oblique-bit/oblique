@@ -11,11 +11,11 @@ developer's pinned versions.
 ### `oblique-resolver/` — the real build  ←  use this
 
 Runs the developer's official build on your local `tokens-dev` tokens.
-`oblique-resolver/` holds only the two files that differ from his — the
-overlay — plus a driver, `resolve.mjs`, that applies the overlay in the
-`oblique-build` worktree and runs his real, unmodified `extract-tokens.mjs`
-there. Output is his exact format — layered `tokens.css` (`:root` plus
-`.ob-lightness-dark`, `.ob-density-*`, … mode blocks).
+`oblique-resolver/` holds only the one file that differs from his — the
+overlay (`themes.mjs`) — plus a driver, `resolve.mjs`, that applies the
+overlay in the `oblique-build` worktree and runs his real, unmodified
+`extract-tokens.mjs` there. Output is his exact format — layered `tokens.css`
+(`:root` plus `.ob-lightness-dark`, `.ob-density-*`, … mode blocks).
 
 ```sh
 npm run resolve

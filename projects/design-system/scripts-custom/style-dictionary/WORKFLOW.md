@@ -36,7 +36,7 @@ tokens-dev   ──►   tokens-main   ──►   master
 The resolver is not a copy of the official build — it *is* the official build.
 `oblique-resolver/resolve.mjs` runs the developer's real, unmodified
 `extract-tokens.mjs` in the `oblique-build` worktree (a checkout of `master`),
-with a two-file overlay applied for the `tokens-dev` token structure. Same
+with a single-file overlay applied for the `tokens-dev` token structure. Same
 script, same engine — the output is the developer's exact format.
 
 ## What the build does — the Style Dictionary pipeline
@@ -131,18 +131,16 @@ Per structural change, in `../oblique-build`:
    token JSON pushed to `tokens-main`.
 
 The PR branch keeps the `tokens-` prefix, like every branch here. Only
-`themes.mjs` crosses over — `style-dictionary.mjs`, `resolve.mjs` and the rest
-of `oblique-resolver/` stay on `tokens-dev`, never part of the PR.
+`themes.mjs` crosses over — `resolve.mjs` and the rest of `oblique-resolver/`
+stay on `tokens-dev`, never part of the PR.
 
 ## Rules
 
 - **The developer's build is used, not copied.** `extract-tokens.mjs` and
   every file in `scripts/tokens/` run unedited from the worktree — except the
   two the overlay replaces.
-- **The overlay is two files.** `themes.mjs` — the structural adaptation, the
-  one file PR'd to `master`. `style-dictionary.mjs` — a temporary tweak (broken
-  references warn instead of aborting), never PR'd, gone once `tokens-dev`'s
-  dangling `ob.s.shadow.*` references are defined.
+- **The overlay is one file.** `themes.mjs` — the structural adaptation, the
+  one file PR'd to `master`.
 - **`resolve.mjs` drives, never adapts.** It applies the overlay and runs the
   developer's script; it is never part of a Pull Request.
 - **Dependencies track the developer's** — Style Dictionary `5.4.0` and

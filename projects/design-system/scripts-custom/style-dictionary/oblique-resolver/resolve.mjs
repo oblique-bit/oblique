@@ -3,12 +3,9 @@
  *
  * This does NOT re-implement the build. It drives the system developer's real,
  * unmodified `extract-tokens.mjs` inside the `oblique-build` worktree (a
- * checkout of `master`), with this folder's two overlay files applied first:
+ * checkout of `master`), with one overlay file applied first:
  *
- *   themes.mjs            mode discovery, rewritten for the tokens-dev
- *                         token structure
- *   style-dictionary.mjs  broken references downgraded to warnings — temporary,
- *                         while tokens-dev has undefined ob.s.shadow.* refs
+ *   themes.mjs  mode discovery, rewritten for the tokens-dev token structure
  *
  * Output is the developer's exact format, verified byte-identical to his
  * official build. One-time setup is described in ../WORKFLOW.md.
@@ -16,7 +13,7 @@
  * Run:  node resolve.mjs
  */
 import {execSync} from 'node:child_process';
-import {cpSync, rmSync, existsSync, mkdirSync, readFileSync} from 'node:fs';
+import {cpSync, rmSync, existsSync, mkdirSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {dirname, join, resolve} from 'node:path';
 
@@ -52,9 +49,7 @@ if (!existsSync(join(wtDs, 'node_modules', 'style-dictionary'))) {
 }
 
 // 1. apply the overlay onto the developer's verbatim files
-for (const file of ['themes.mjs', 'style-dictionary.mjs']) {
-	cpSync(join(here, file), join(wtDs, 'scripts', 'tokens', file));
-}
+cpSync(join(here, 'themes.mjs'), join(wtDs, 'scripts', 'tokens', 'themes.mjs'));
 
 // 2. copy the local tokens in — the developer's script reads src/lib/themes
 const wtThemes = join(wtDs, 'src', 'lib', 'themes');
@@ -79,32 +74,12 @@ cpSync(join(wtDs, cssRelative), cssOut);
 // 5. leave the worktree pristine
 restoreWorktree();
 
-// success summary — the caveat text is pulled live from this folder's README
-let known = '';
-try {
-	const lines = readFileSync(join(here, 'README.md'), 'utf8').split('\n');
-	const start = lines.findIndex(l => l.startsWith('## Known'));
-	if (start !== -1) {
-		let end = lines.length;
-		for (let i = start + 1; i < lines.length; i++) {
-			if (lines[i].startsWith('## ')) { end = i; break; }
-		}
-		known = lines.slice(start + 1, end).join('\n').trim().replace(/`/g, '');
-	}
-} catch { /* README is optional */ }
-
 console.log(`
   ✓ Resolved — ran the developer’s official build in the oblique-build worktree.
 
   CSS written to  projects/design-system/${cssRelative}
-                  :root + mode blocks (.ob-lightness-dark, .ob-density-*, …)`);
+                  :root + mode blocks (.ob-lightness-dark, .ob-density-*, …)
 
-if (known) {
-	console.log('\n  Note — from oblique-resolver/README.md:');
-	for (const line of known.split('\n')) console.log('  ' + line);
-}
-
-console.log(`
   Next: the handoff — push the token JSON to tokens-main.
   Full workflow → scripts-custom/style-dictionary/WORKFLOW.md
 `);

@@ -10,19 +10,17 @@ driver.
 
 ## The overlay
 
-The only two files that differ from the developer's:
+The only file that differs from the developer's:
 
 - **`themes.mjs`** — mode discovery, rewritten for the `tokens-dev` token
-  structure: `mode_collections.json` (not `modes.json`), viewport selectors
-  nested at `<mode>.name.$value`, group-aware lookup (`ui_scale` and `viewport`
-  both carry `sm`/`md`/`lg`). This is also the file a structural change is PR'd
-  from — see `../WORKFLOW.md`.
-- **`style-dictionary.mjs`** — one change: broken references log as warnings
-  (`brokenReferences: 'console'`) instead of aborting the build. Temporary,
-  only while `tokens-dev` has undefined `ob.s.shadow.*` references. Never PR'd.
+  structure: per-axis `01_global/mode_collection/<axis>.json` (not the original
+  `modes.json`), local working copy (no remote git-checkout), group-aware
+  lookup (`ui_scale` and `viewport` both carry `sm`/`md`/`lg`). This is also
+  the file a structural change is PR'd from — see `../WORKFLOW.md`.
 
-The developer's other five files — formats, transforms, preprocessors — are
-used unedited from the worktree; they are not copied here.
+The developer's other build files — `style-dictionary.mjs`, formats,
+transforms, preprocessors — are used unedited from the worktree; they are not
+copied here.
 
 ## `resolve.mjs` — the driver
 
@@ -41,10 +39,3 @@ Resolved CSS is written to `src/lib/css/layers/tokens.css`.
 `resolve.mjs` needs the `oblique-build` worktree and its build dependencies —
 see `../WORKFLOW.md`. If either is missing, `resolve.mjs` prints the exact
 command to run.
-
-## Known: dangling references on `tokens-dev`
-
-`tokens-dev` references undefined `ob.s.shadow.*` tokens (shadow / elevation
-work in progress) from `05_html/button/03_shadows.json`. Those tokens are
-skipped; everything else resolves. A token-data gap on the branch, not a build
-problem — and the reason `style-dictionary.mjs` is in the overlay.
