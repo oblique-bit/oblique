@@ -9,6 +9,11 @@
       "description": "Adds @oblique/toolchain dependency to the project",
       "factory": "./ng-add/index#toolchain",
       "schema": "./ng-add/schema.json"
+    },
+    "linting": {
+      "description": "Configures project linting",
+      "factory": "./linting/index#linting",
+      "schema": "./linting/schema.json"
     }
   }
 }
