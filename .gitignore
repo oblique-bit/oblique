@@ -15,7 +15,6 @@
 # Style Dictionary tooling — generated folders, keep out of git
 projects/design-system/scripts-custom/style-dictionary/node_modules/
 projects/design-system/scripts-custom/style-dictionary/build/
-projects/design-system/scripts-custom/style-dictionary/oblique-resolver/output/
 
 # Track this .gitignore
 !.gitignore

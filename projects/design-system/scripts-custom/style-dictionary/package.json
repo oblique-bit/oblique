@@ -8,7 +8,7 @@
     "build": "node build.js"
   },
   "dependencies": {
-    "style-dictionary": "5.4.1",
+    "style-dictionary": "5.4.0",
     "@tokens-studio/sd-transforms": "2.0.3"
   }
 }
