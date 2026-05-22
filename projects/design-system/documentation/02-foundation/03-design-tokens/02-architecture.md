@@ -217,6 +217,26 @@ All naming conventions, patterns, and guidelines are documented in [Token Naming
 ---
 
 
+## **Configuration & documentation tokens**
+
+Most tokens resolve to a CSS custom property — the styling output the components consume. A distinct group does **not**: the resolver never emits them as CSS. They exist to *configure* the build and Figma, or to *document* the token families. Three groups, all carrying `$type: "other"`:
+
+### **Mode-collection config — `ob.g.mode_collection.*`**
+
+Defines the seven mode axes: lightness, emphasis, ui_scale, density, typography_context, motion, viewport. Per mode it holds the `selector` — the CSS class the application adds to activate the mode (`.ob-lightness-dark`). The `ui_scale` and `density` collections also carry the multipliers; the `viewport` collection carries the breakpoints and per-range bounds. The build reads these to discover the modes and to name the CSS mode blocks; in Figma each collection becomes a variable collection. The tokens are not themselves emitted as custom properties.
+
+### **Component settings — `ob.g.component.*`**
+
+Per-component, per-mode overrides applied at the global tier. Each entry pins a component to a fixed mode regardless of the active one — for example `ob.g.component.footer.lightness` holds `"dark"`, keeping the footer dark whatever the active lightness mode.
+
+### **Documentation nodes — `token_family_docs`**
+
+One per token family, holding the family's `$description`. Documentation, not a styling value. See *Documentation Nodes* below for the format and rules.
+
+`$type: "other"` is the correct type for all three — there is no styling type for a CSS-class selector, a fixed-mode setting, or a family description. See [Token Types](./04-token-types.md).
+
+---
+
 ## **Token Classification**
 
 Most tokens are ordinary, consumable design values. A few are "special" — documentation nodes, or values that one environment uses and the other does not. There is no hidden flag system: a token's role is readable from three visible signals — its name, its tier, and its description.

@@ -102,7 +102,7 @@ Defined mappings:
 
 > **`$type` values are immutable — do not rename them.** These identifiers are Tokens Studio's internal conventions. Renaming any `$type` value (e.g. `boxShadow` → `box_shadow`) causes Tokens Studio to fall back to `other`, silently dropping the token from all Figma export pipelines. The path segment (left column) follows Oblique's snake\_case rule; the `$type` value (right column) follows Tokens Studio's camelCase convention. Both are intentional and coexist by design. See [Tokens Studio `$type` Exceptions](./03-naming.md#tokens-studio-type-exceptions) in the naming reference.
 
-> **Note on `other`**: The `other` type (currently 172 tokens) does not map to any path segment. Tokens using `$type: other` must be audited and reassigned to a specific type with a corresponding path segment.
+> **Note on `other`**: `other` is the correct type for a token or node that carries no styling value — the mode selectors, the component settings, and the `token_family_docs` descriptions (the *Configuration & documentation tokens* category — see [Architecture](./02-architecture.md)). These are intentionally `other` and need no `{type}` path segment: rule R1 exists so consumers can read a *styling* type from the path, which does not apply here. `other` is a problem only when used as a lazy catch-all on a token that does hold a styling value — audit for that case, not for `other` as a whole.
 
 Per the W3C DTCG spec, type must not be inferred from the file or folder an object is stored in. The `$type` annotation is authoritative. The `{type}` path segment and `$type` must independently convey the type — neither replaces the other.
 
@@ -206,7 +206,7 @@ Path segments and `$type` values are separate concerns. The inconsistency to fix
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | In Oblique | Notes |
 |-----------------|----------|---------------|-----------------|------------|-------|
 | `composition` | Not specified | Unofficial (composite) | Not exported | 78 tokens | Tokens Studio–specific composite type that bundles multiple layer properties (fill, border, shadow) into one token. No Figma Variable or Style is created. The plugin applies the bundled values directly to a selected Figma layer when used interactively. Deprecated in Tokens Studio v2+ — migration to individual typed tokens is queued. |
-| `other` | Not specified | Unofficial | Not supported | 172 tokens | Generic catch-all in Tokens Studio. Not in W3C spec. Use specific types where possible. Should be audited and replaced with appropriate types. |
+| `other` | Not specified | Unofficial | Not supported | 172 tokens | Tokens Studio's type for values with no styling meaning. Correct for the *Configuration & documentation tokens* — mode selectors, component settings, `token_family_docs`. A problem only when used as a lazy catch-all on a token that has a real styling value. |
 | `text` | (§ JSON string) | Unofficial → `string` | **String** | 7 tokens | Tokens Studio label for string/text tokens. |
 | `asset` | Not specified | Unofficial | Not supported | 13 tokens | URL-based asset references. Not in W3C spec. No Figma variable binding. |
 | `boolean` | (§ JSON boolean) | Native | **Boolean** | 0 tokens | Used for Figma layer visibility and variant props. W3C treats as basic JSON type. |
@@ -253,7 +253,7 @@ The spec explicitly states that tools **must not** use groups to infer type — 
 | Issue | Affected types | Status |
 |-------|---------------|--------|
 | `.size.` vs `.sizing.` path segment inconsistency | `dimension`, `sizing` | Queued for fix — standardize to `dimension` |
-| `other` type used for 172 tokens — too generic | `other` | Audit needed |
+| `other` used as a lazy catch-all on a styling token | `other` | Spot-audit only — most `other` is legitimate (config / documentation) |
 | `composition` is deprecated in Tokens Studio | `composition` | Migration needed to individual types |
 | Figma has no variable type for `duration`, `cubicBezier`, `gradient`, `transition` | motion tokens | Applied code-only; no Figma binding possible |
 | Typography composite `$type` cannot bind to Figma variables as a whole | `typography` | Uses Figma Text Styles instead; no variable-level composite |
