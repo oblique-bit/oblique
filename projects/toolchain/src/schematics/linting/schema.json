@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "LintingSchema",
+  "title": "Generate linting setup",
+  "type": "object",
+  "properties": {
+    "silent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disable schematic logging"
+    },
+    "prefix": {
+      "type": "string",
+      "default": "app",
+      "description": "Prefix for selector of Angular components and directives"
+    }
+  }
+}
