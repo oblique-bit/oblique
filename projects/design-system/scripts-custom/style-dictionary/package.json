@@ -1,0 +1,14 @@
+{
+  "name": "oblique-style-dictionary",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local Style Dictionary build for Oblique design tokens — deterministic token-value resolution (no AI guessing).",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "style-dictionary": "5.4.1",
+    "@tokens-studio/sd-transforms": "2.0.3"
+  }
+}
