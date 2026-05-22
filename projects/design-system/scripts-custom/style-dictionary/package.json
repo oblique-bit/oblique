@@ -5,6 +5,7 @@
   "description": "Local Style Dictionary build for Oblique design tokens — deterministic token-value resolution (no AI guessing).",
   "type": "module",
   "scripts": {
+    "resolve": "node oblique-resolver/resolve.mjs",
     "build": "node build.js"
   },
   "dependencies": {

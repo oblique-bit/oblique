@@ -18,7 +18,7 @@ there. Output is his exact format — layered `tokens.css` (`:root` plus
 `.ob-lightness-dark`, `.ob-density-*`, … mode blocks).
 
 ```sh
-node oblique-resolver/resolve.mjs
+npm run resolve
 ```
 
 First run needs a one-time worktree setup — see `WORKFLOW.md`. Detail on the

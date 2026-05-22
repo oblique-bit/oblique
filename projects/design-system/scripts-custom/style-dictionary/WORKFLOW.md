@@ -62,7 +62,7 @@ The system designer runs the resolver whenever a real resolved value is
 needed — Figma work, `.md` documentation, validator scripts, prototypes:
 
 ```sh
-node oblique-resolver/resolve.mjs
+npm run resolve
 ```
 
 It writes `src/lib/css/layers/tokens.css`.

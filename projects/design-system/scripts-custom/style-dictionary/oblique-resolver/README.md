@@ -31,7 +31,7 @@ runs the developer's real, unmodified `extract-tokens.mjs` there. The output is
 his build's actual output — same script, same format.
 
 ```sh
-node resolve.mjs
+npm run resolve
 ```
 
 Resolved CSS is written to `src/lib/css/layers/tokens.css`.
