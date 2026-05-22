@@ -5,10 +5,12 @@
   "outerName": "Viewport Output",
   "allowedFiles": [],
   "componentNames": {
-    "sectionBar":   "_docs/shared/section_bar",
-    "headerRow":    "_docs/viewport/header_row",
-    "row":          "_docs/viewport/row",
-    "groupHeader":  "_docs/shared/group_header"
+    "sectionBar":           "_docs/shared/section_bar",
+    "headerRow":            "_docs/viewport/header_row",
+    "row":                  "_docs/viewport/row",
+    "groupHeader":          "_docs/shared/group_header",
+    "foundationBar":        "_building_blocks/shared/foundation_bar",
+    "appliedViewportModes": "_docs/viewport/applied_viewport_modes"
   },
   "foundationName": "Responsiveness",
   "tierOrder": ["xs", "sm", "md", "lg", "xl", "2xl"],

@@ -3,8 +3,14 @@
  * build-viewport.js — Responsiveness / Viewport docs builder.
  *
  * Reads viewport tokens from src/lib/themes/ JSON files (ob.g.* globals don't
- * land in Figma variables, so we go to the source) and rebuilds the 5 tables
- * on the "📱 Responsiveness" page:
+ * land in Figma variables, so we go to the source) and rebuilds the ENTIRE
+ * "📱 Responsiveness" page inside one builder-owned "Viewport Output" frame:
+ *
+ *   [0] __foundation_bar         — instance of _building_blocks/shared/foundation_bar
+ *   [1] Viewport Tables          — the 5 tables below
+ *   [2] __applied_viewport_modes — instance of _docs/viewport/applied_viewport_modes
+ *
+ * The 5 tables:
  *
  *   1. Breakpoints                  (ob.g.mode_collection.viewport.breakpoint.<tier>)
  *   2. Ranges                       (ob.g.mode_collection.viewport.range.<tier>.{from,to})
@@ -212,7 +218,8 @@ function extractResult(stdout) {
 // ── plugin code (runs inside Figma) ───────────────────────────────────────────
 
 const PLUGIN_CODE = `
-const { registry, tables, tableFilter, pageOverride, validateOnly } = PAYLOAD;
+const { registry, tables, tableFilter, pageOverride, validateOnly, foundationDescription, provenance } = PAYLOAD;
+const _startTime = Date.now();
 const log = [];
 function L(m) { log.push(String(m)); }
 
@@ -302,7 +309,14 @@ const TABLE_WIDTH = 1580;
 // hand-built "reference for build" layout.
 const WRAPPER_GAP = 64;
 const COLUMN_GAP  = 64;
+// Vertical gap inside the outer frame between [foundation_bar, tables, applied].
+const OUTER_GAP   = 64;
 const BG_VAR_NAME = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
+
+// Builder-managed instance names — the two page-chrome instances the outer
+// frame owns alongside the "Viewport Tables" wrapper.
+const FOUNDATION_BAR_NAME = '__foundation_bar';
+const APPLIED_MODES_NAME  = '__applied_viewport_modes';
 
 let _bgVar = undefined;
 async function getBgVar() {
@@ -324,40 +338,39 @@ async function whiteBgFill() {
   return fill;
 }
 
-// The builder owns an outer "Viewport Output" frame (a direct page child) that
-// holds the "Viewport Tables" wrapper. The wrapper is looked up ONLY inside that
-// outer frame, so it can never collide with a "Viewport Tables" frame in a
-// hand-built reference elsewhere on the page.
-async function ensureWrapper(page) {
-  const outerName   = registry.outerName || 'Viewport Output';
-  const wrapperName = registry.wrapperName;
-
+// The builder owns the whole page through one outer "Viewport Output" frame
+// (a direct page child). It is a VERTICAL stack of three builder-managed
+// children, in order:
+//   [0] __foundation_bar          — instance of _building_blocks/shared/foundation_bar
+//   [1] Viewport Tables           — the HORIZONTAL wrapper of tier columns
+//   [2] __applied_viewport_modes  — instance of _docs/viewport/applied_viewport_modes
+// Nothing on the page lives outside this frame, so the page is fully
+// reproducible from a single 'node build-viewport.js' run.
+async function ensureOuter(page) {
+  const outerName = registry.outerName || 'Viewport Output';
   let outer = page.children.find(c => c.type === 'FRAME' && c.name === outerName);
-  const outerIsNew = !outer;
   if (!outer) {
     outer = figma.createFrame();
     outer.name = outerName;
     page.appendChild(outer);
   }
   outer.layoutMode = 'VERTICAL';
-  outer.itemSpacing = 0;
+  outer.itemSpacing = OUTER_GAP;
   outer.primaryAxisSizingMode = 'AUTO';
   outer.counterAxisSizingMode = 'AUTO';
+  outer.primaryAxisAlignItems = 'MIN';
+  outer.counterAxisAlignItems = 'MIN';
   outer.paddingLeft = outer.paddingRight = outer.paddingTop = outer.paddingBottom = 0;
   outer.fills = [];
-  if (outerIsNew) {
-    // Place a fresh output area below all existing top-level page content,
-    // so it never overlaps a hand-built reference frame.
-    let maxBottom = 0;
-    for (const c of page.children) {
-      if (c === outer) continue;
-      if (typeof c.y === 'number' && typeof c.height === 'number') {
-        maxBottom = Math.max(maxBottom, c.y + c.height);
-      }
-    }
-    try { outer.x = 0; outer.y = maxBottom + 200; } catch {}
-  }
+  outer.opacity = 1;
+  try { outer.x = 0; outer.y = 0; } catch {}
+  return outer;
+}
 
+// The "Viewport Tables" wrapper — looked up ONLY inside the outer frame, so it
+// can never collide with a stray "Viewport Tables" frame elsewhere on the page.
+async function ensureWrapper(outer) {
+  const wrapperName = registry.wrapperName;
   let wrapper = outer.children.find(c => c.type === 'FRAME' && c.name === wrapperName);
   if (!wrapper) {
     wrapper = figma.createFrame();
@@ -375,6 +388,70 @@ async function ensureWrapper(page) {
   wrapper.fills = [];
   wrapper.opacity = 1;
   return wrapper;
+}
+
+// Foundation bar — instance of _building_blocks/shared/foundation_bar pinned at
+// the top of the outer frame. Carries the page identity (foundation name), the
+// per-foundation description (umbrella family-doc text from viewport.json), and
+// the $build_generation_meta provenance string. Same shared master the
+// dimension / typography / colour builders populate.
+async function ensureFoundationBar(outer, metaText) {
+  let bar = outer.children.find(c => c.type === 'INSTANCE' && c.name === FOUNDATION_BAR_NAME);
+  if (!bar) {
+    if (!components.foundationBar) { L('foundationBar component missing — skipping header'); return null; }
+    try { bar = components.foundationBar.createInstance(); }
+    catch (e) { L('foundationBar createInstance failed: ' + e.message); return null; }
+    bar.name = FOUNDATION_BAR_NAME;
+    outer.insertChild(0, bar);
+  }
+  // Always fill the outer-frame width.
+  try { bar.layoutSizingHorizontal = 'FILL'; } catch (e) { L('foundation_bar FILL failed: ' + e.message); }
+  try { bar.layoutAlign = 'STRETCH'; } catch {}
+
+  // Two __sectionTitle nodes: the ExtraLight one carries fixed 'Oblique
+  // Foundations' branding; the SemiBold one is the foundation-name slot.
+  const titles = bar.findAll(n => n.type === 'TEXT' && n.name === '__sectionTitle');
+  let nameNode = null;
+  for (const t of titles) {
+    const fn = t.fontName;
+    if (fn && fn !== figma.mixed && /SemiBold/i.test(fn.style)) { nameNode = t; break; }
+  }
+  if (!nameNode && titles.length) nameNode = titles[titles.length - 1];
+  if (nameNode) setText(nameNode, registry.foundationName || 'Responsiveness');
+
+  const descNode = bar.findOne(n => n.type === 'TEXT' && n.name === '$foundation_description');
+  if (descNode && foundationDescription) setText(descNode, foundationDescription);
+
+  const metaNode = bar.findOne(n => n.type === 'TEXT' && n.name === '$build_generation_meta');
+  if (metaNode) setText(metaNode, metaText);
+  return bar;
+}
+
+// Applied Viewport Modes — instance of the _docs/viewport/applied_viewport_modes
+// component (the hand-built responsiveness illustration, componentised onto the
+// Utilities page). The builder only places the instance; the artwork itself
+// lives in the master.
+async function ensureAppliedViewportModes(outer) {
+  let inst = outer.children.find(c => c.type === 'INSTANCE' && c.name === APPLIED_MODES_NAME);
+  if (!inst) {
+    if (!components.appliedViewportModes) { L('appliedViewportModes component missing — skipping'); return null; }
+    try { inst = components.appliedViewportModes.createInstance(); }
+    catch (e) { L('appliedViewportModes createInstance failed: ' + e.message); return null; }
+    inst.name = APPLIED_MODES_NAME;
+  }
+  try { outer.appendChild(inst); } catch {} // append → last child
+  return inst;
+}
+
+// Enforce the [foundation_bar, tables, applied] child order in the outer frame.
+function enforceOuterOrder(outer) {
+  const bar     = outer.children.find(c => c.type === 'INSTANCE' && c.name === FOUNDATION_BAR_NAME);
+  const wrapper = outer.children.find(c => c.type === 'FRAME'    && c.name === registry.wrapperName);
+  const applied = outer.children.find(c => c.type === 'INSTANCE' && c.name === APPLIED_MODES_NAME);
+  let i = 0;
+  if (bar)     { try { outer.insertChild(i++, bar); } catch {} }
+  if (wrapper) { try { outer.insertChild(i++, wrapper); } catch {} }
+  if (applied) { try { outer.insertChild(i++, applied); } catch {} }
 }
 
 // ── section bar ──────────────────────────────────────────────────────────────
@@ -666,41 +743,101 @@ function validatePage(page, wrapper) {
   return { errors, warns };
 }
 
+// Page-chrome checks: the outer frame must own exactly one foundation bar, one
+// tables wrapper and one applied-modes instance. Kept out of validatePage() so
+// it does not feed the provenance row-count meta.
+function validateStructure(outer) {
+  const errors = [];
+  const warns  = [];
+  const bars = (outer.children || []).filter(c => c.type === 'INSTANCE' && c.name === FOUNDATION_BAR_NAME);
+  if (bars.length !== 1) {
+    errors.push({ code: 'FBAR', id: 'page', msg: 'expected 1 ' + FOUNDATION_BAR_NAME + ', found ' + bars.length });
+  } else {
+    const meta = bars[0].findOne(n => n.type === 'TEXT' && n.name === '$build_generation_meta');
+    if (!meta || !String(meta.characters || '').trim()) {
+      warns.push({ code: 'FBAR', id: 'page', msg: '$build_generation_meta empty' });
+    }
+  }
+  const applied = (outer.children || []).filter(c => c.type === 'INSTANCE' && c.name === APPLIED_MODES_NAME);
+  if (applied.length !== 1) {
+    errors.push({ code: 'APPLIED', id: 'page', msg: 'expected 1 ' + APPLIED_MODES_NAME + ', found ' + applied.length });
+  }
+  const wraps = (outer.children || []).filter(c => c.type === 'FRAME' && c.name === registry.wrapperName);
+  if (wraps.length !== 1) {
+    errors.push({ code: 'WRAP', id: 'page', msg: 'expected 1 ' + registry.wrapperName + ', found ' + wraps.length });
+  }
+  return { errors, warns };
+}
+
+// Provenance string for the foundation bar's $build_generation_meta slot.
+// Format matches the sibling builders:
+//   Generated <ts> · build-viewport.js@<sha> · Source: <file> · N rows · M errors · Xs
+function buildMetaText(built, v) {
+  const prov = provenance || {};
+  const scriptTag = (prov.scriptName || 'build-viewport.js') + (prov.gitSha ? '@' + prov.gitSha : '');
+  const totalRows = (built || []).reduce((s, b) => s + (b && b.ok && b.rows ? b.rows : 0), 0);
+  const errCount  = (v && v.errors) ? v.errors.length : 0;
+  const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
+  const parts = [];
+  if (prov.generatedAt) parts.push('Generated ' + prov.generatedAt);
+  parts.push(scriptTag);
+  parts.push('Source: ' + figma.root.name);
+  parts.push(totalRows + ' rows');
+  parts.push(errCount + ' error' + (errCount === 1 ? '' : 's'));
+  parts.push(durSec + 's');
+  return parts.join(' · ');
+}
+
 // ── orchestrate ──────────────────────────────────────────────────────────────
 await discoverComponents();
 try { await figma.loadFontAsync({ family: 'Noto Sans', style: 'ExtraBold' }); } catch (e) {}
 try { await figma.loadFontAsync({ family: 'Noto Sans', style: 'Medium' }); } catch (e) {}
 try { await figma.loadFontAsync({ family: 'Noto Sans', style: 'Regular' }); } catch (e) {}
 
-const page = await ensurePage();
-const wrapper = await ensureWrapper(page);
+const page    = await ensurePage();
+const outer   = await ensureOuter(page);
+const wrapper = await ensureWrapper(outer);
 
 let result;
 if (validateOnly) {
   const v = validatePage(page, wrapper);
-  result = { ok: v.errors.length === 0, errors: v.errors, warns: v.warns, log };
-} else {
+  const s = validateStructure(outer);
+  const errors = v.errors.concat(s.errors);
+  const warns  = v.warns.concat(s.warns);
+  result = { ok: errors.length === 0, errors, warns, log };
+} else if (tableFilter) {
+  // Single-table refresh — replace just that box, leave page chrome intact.
   let built;
-  if (tableFilter) {
-    // Single-table refresh — leave the rest of the tier layout intact.
-    const spec = tables.find(s => s.id === tableFilter);
-    if (!spec) {
-      built = [{ id: tableFilter, ok: false, err: 'unknown table id' }];
-    } else {
-      try {
-        await replaceOneTable(wrapper, spec);
-        built = [{ id: spec.id, ok: true, rows: spec._materialized.rows.length }];
-      } catch (e) {
-        built = [{ id: spec.id, ok: false, err: e.message }];
-      }
-    }
+  const spec = tables.find(s => s.id === tableFilter);
+  if (!spec) {
+    built = [{ id: tableFilter, ok: false, err: 'unknown table id' }];
   } else {
-    // Full rebuild — tier-grouped layout (G column, S and C standalone).
-    built = await buildAllTiers(wrapper, tables);
+    try {
+      await replaceOneTable(wrapper, spec);
+      built = [{ id: spec.id, ok: true, rows: spec._materialized.rows.length }];
+    } catch (e) {
+      built = [{ id: spec.id, ok: false, err: e.message }];
+    }
   }
   await flushTextWrites();
   const v = validatePage(page, wrapper);
   result = { ok: built.every(b => b.ok) && v.errors.length === 0, built, errors: v.errors, warns: v.warns, log };
+} else {
+  // Full rebuild — the builder owns the whole page: foundation bar, the
+  // tier-grouped tables (G column, S and C standalone), and the applied-modes
+  // illustration instance.
+  const built = await buildAllTiers(wrapper, tables);
+  await flushTextWrites();
+  const v = validatePage(page, wrapper);
+  const metaText = buildMetaText(built, v);
+  await ensureFoundationBar(outer, metaText);
+  await ensureAppliedViewportModes(outer);
+  enforceOuterOrder(outer);
+  await flushTextWrites();
+  const s = validateStructure(outer);
+  const errors = v.errors.concat(s.errors);
+  const warns  = v.warns.concat(s.warns);
+  result = { ok: built.every(b => b.ok) && errors.length === 0, built, errors, warns, log };
 }
 return JSON.stringify(result);
 `;
@@ -725,12 +862,38 @@ function main() {
     }
   }
 
+  // Foundation description — umbrella family-doc text from viewport.json. Token
+  // Studio doesn't push family-docs to Figma variables (export:false on
+  // kind:family_docs), so we read the JSON directly and pass the string in.
+  let foundationDescription = null;
+  try {
+    const vp = loadJson('src/lib/themes/01_global/mode_collection/viewport.json');
+    const d = vp && vp.ob && vp.ob.g && vp.ob.g.mode_collection && vp.ob.g.mode_collection.viewport
+      && vp.ob.g.mode_collection.viewport.token_family_docs
+      && vp.ob.g.mode_collection.viewport.token_family_docs.$description;
+    if (typeof d === 'string' && d.trim()) foundationDescription = d.trim();
+  } catch (e) { /* leave null — bar keeps master default */ }
+
+  // Provenance for the foundation bar's $build_generation_meta — git SHA +
+  // ISO-ish timestamp with TZ. Soft failures: meta still renders without git
+  // info if not in a repo.
+  let gitSha = null;
+  try {
+    gitSha = require('child_process').execSync('git rev-parse --short HEAD', { cwd: HERE, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+  } catch {}
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const tzPart = new Intl.DateTimeFormat('en', { timeZoneName: 'short' }).formatToParts(now).find(p => p.type === 'timeZoneName');
+  const generatedAt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}${tzPart ? ' ' + tzPart.value : ''}`;
+
   const payload = {
     registry,
     tables,
     tableFilter: TABLE_FILTER,
     pageOverride: PAGE_OVER,
-    validateOnly: VALIDATE_ONLY
+    validateOnly: VALIDATE_ONLY,
+    foundationDescription,
+    provenance: { gitSha, generatedAt, scriptName: 'build-viewport.js' }
   };
   const script = '(async () => {\nconst PAYLOAD = ' + JSON.stringify(payload) + ';\n' + PLUGIN_CODE + '\n})()';
   const r = runEval(script);
