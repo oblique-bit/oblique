@@ -5,10 +5,10 @@
         "_chain": {
           "intent": {
             "bg": {
-              "default": {
+              "rest": {
                 "$type": "color",
-                "$value": "{ob.h.button_vd1._chain.surface.bg.tertiary.default}",
-                "$description": "button_vd1 bg - intent:tertiary interaction:default"
+                "$value": "{ob.h.button_vd1._chain.surface.bg.tertiary.rest}",
+                "$description": "button_vd1 bg - intent:tertiary interaction:rest"
               },
               "hover": {
                 "$type": "color",
@@ -22,10 +22,10 @@
               }
             },
             "fg": {
-              "default": {
+              "rest": {
                 "$type": "color",
-                "$value": "{ob.h.button_vd1._chain.surface.fg.tertiary.default}",
-                "$description": "button_vd1 fg - intent:tertiary interaction:default"
+                "$value": "{ob.h.button_vd1._chain.surface.fg.tertiary.rest}",
+                "$description": "button_vd1 fg - intent:tertiary interaction:rest"
               },
               "hover": {
                 "$type": "color",
@@ -39,10 +39,10 @@
               }
             },
             "border": {
-              "default": {
+              "rest": {
                 "$type": "color",
-                "$value": "{ob.h.button_vd1._chain.surface.border.tertiary.default}",
-                "$description": "button_vd1 border - intent:tertiary interaction:default"
+                "$value": "{ob.h.button_vd1._chain.surface.border.tertiary.rest}",
+                "$description": "button_vd1 border - intent:tertiary interaction:rest"
               },
               "hover": {
                 "$type": "color",

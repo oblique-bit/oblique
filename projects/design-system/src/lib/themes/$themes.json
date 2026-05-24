@@ -3206,11 +3206,11 @@
     "group": "vd1_system"
   },
   {
-    "id": "vd1-interaction-default",
-    "name": "default",
+    "id": "vd1-interaction-rest",
+    "name": "rest",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "05_html/button_vd1/interaction/default": "enabled",
+      "05_html/button_vd1/interaction/rest": "enabled",
       "05_html/button_vd1/system/loading": "source",
       "05_html/button_vd1/system/loaded": "source",
       "05_html/button_vd1/system/processing": "source",
@@ -3265,7 +3265,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "05_html/button_vd1/focus/unfocused": "enabled",
-      "05_html/button_vd1/interaction/default": "source",
+      "05_html/button_vd1/interaction/rest": "source",
       "05_html/button_vd1/interaction/hover": "source",
       "05_html/button_vd1/interaction/active": "source"
     },
@@ -3280,7 +3280,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "05_html/button_vd1/focus/focused": "enabled",
-      "05_html/button_vd1/interaction/default": "source",
+      "05_html/button_vd1/interaction/rest": "source",
       "05_html/button_vd1/interaction/hover": "source",
       "05_html/button_vd1/interaction/active": "source"
     },

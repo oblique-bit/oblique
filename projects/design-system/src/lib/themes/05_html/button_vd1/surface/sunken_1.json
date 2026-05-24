@@ -6,10 +6,10 @@
           "surface": {
             "bg": {
               "primary": {
-                "default": {
+                "rest": {
                   "$type": "color",
                   "$value": "{ob.h.button.color.bg.primary.inversity_normal.enabled}",
-                  "$description": "button_vd1 bg - intent:primary interaction:default (references the existing button token; surface/theme/emphasis resolved upstream)"
+                  "$description": "button_vd1 bg - intent:primary interaction:rest (references the existing button token; surface/theme/emphasis resolved upstream)"
                 },
                 "hover": {
                   "$type": "color",
@@ -23,10 +23,10 @@
                 }
               },
               "secondary": {
-                "default": {
+                "rest": {
                   "$type": "color",
                   "$value": "{ob.h.button.color.bg.secondary.inversity_normal.enabled}",
-                  "$description": "button_vd1 bg - intent:secondary interaction:default (references the existing button token; surface/theme/emphasis resolved upstream)"
+                  "$description": "button_vd1 bg - intent:secondary interaction:rest (references the existing button token; surface/theme/emphasis resolved upstream)"
                 },
                 "hover": {
                   "$type": "color",
@@ -40,10 +40,10 @@
                 }
               },
               "tertiary": {
-                "default": {
+                "rest": {
                   "$type": "color",
                   "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.enabled}",
-                  "$description": "button_vd1 bg - intent:tertiary interaction:default (references the existing button token; surface/theme/emphasis resolved upstream)"
+                  "$description": "button_vd1 bg - intent:tertiary interaction:rest (references the existing button token; surface/theme/emphasis resolved upstream)"
                 },
                 "hover": {
                   "$type": "color",
@@ -59,10 +59,10 @@
             },
             "fg": {
               "primary": {
-                "default": {
+                "rest": {
                   "$type": "color",
                   "$value": "{ob.h.button.color.fg.primary.inversity_normal.enabled}",
-                  "$description": "button_vd1 fg - intent:primary interaction:default (references the existing button token; surface/theme/emphasis resolved upstream)"
+                  "$description": "button_vd1 fg - intent:primary interaction:rest (references the existing button token; surface/theme/emphasis resolved upstream)"
                 },
                 "hover": {
                   "$type": "color",
@@ -76,10 +76,10 @@
                 }
               },
               "secondary": {
-                "default": {
+                "rest": {
                   "$type": "color",
                   "$value": "{ob.h.button.color.fg.secondary.inversity_normal.enabled}",
-                  "$description": "button_vd1 fg - intent:secondary interaction:default (references the existing button token; surface/theme/emphasis resolved upstream)"
+                  "$description": "button_vd1 fg - intent:secondary interaction:rest (references the existing button token; surface/theme/emphasis resolved upstream)"
                 },
                 "hover": {
                   "$type": "color",
@@ -93,10 +93,10 @@
                 }
               },
               "tertiary": {
-                "default": {
+                "rest": {
                   "$type": "color",
                   "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.enabled}",
-                  "$description": "button_vd1 fg - intent:tertiary interaction:default (references the existing button token; surface/theme/emphasis resolved upstream)"
+                  "$description": "button_vd1 fg - intent:tertiary interaction:rest (references the existing button token; surface/theme/emphasis resolved upstream)"
                 },
                 "hover": {
                   "$type": "color",
@@ -112,10 +112,10 @@
             },
             "border": {
               "primary": {
-                "default": {
+                "rest": {
                   "$type": "color",
                   "$value": "{ob.h.button.color.border.primary.inversity_normal.enabled}",
-                  "$description": "button_vd1 border - intent:primary interaction:default (references the existing button token; surface/theme/emphasis resolved upstream)"
+                  "$description": "button_vd1 border - intent:primary interaction:rest (references the existing button token; surface/theme/emphasis resolved upstream)"
                 },
                 "hover": {
                   "$type": "color",
@@ -129,10 +129,10 @@
                 }
               },
               "secondary": {
-                "default": {
+                "rest": {
                   "$type": "color",
                   "$value": "{ob.h.button.color.border.secondary.inversity_normal.enabled}",
-                  "$description": "button_vd1 border - intent:secondary interaction:default (references the existing button token; surface/theme/emphasis resolved upstream)"
+                  "$description": "button_vd1 border - intent:secondary interaction:rest (references the existing button token; surface/theme/emphasis resolved upstream)"
                 },
                 "hover": {
                   "$type": "color",
@@ -146,10 +146,10 @@
                 }
               },
               "tertiary": {
-                "default": {
+                "rest": {
                   "$type": "color",
                   "$value": "{ob.h.button.color.border.tertiary.inversity_normal.enabled}",
-                  "$description": "button_vd1 border - intent:tertiary interaction:default (references the existing button token; surface/theme/emphasis resolved upstream)"
+                  "$description": "button_vd1 border - intent:tertiary interaction:rest (references the existing button token; surface/theme/emphasis resolved upstream)"
                 },
                 "hover": {
                   "$type": "color",
