@@ -31,11 +31,13 @@ copied here.
 ## The dev proposal — separate branch
 
 The canonical proposal of `scripts/tokens/themes.mjs` for the developer's
-build lives on its own branch off `master`:
+build lives on its own branch off `master`, following the team convention
+(`feature/OUI-<ticket>-<slug>`):
 
-- Branch: `tokens-pr-themes-mjs`
+- Branch: `feature/OUI-4507-resolver-should-work-with-token-paths`
+- Jira ticket: OUI-4507 — Resolver should work with token paths
 - Path on that branch: `projects/design-system/scripts/tokens/themes.mjs`
-- Open the PR: https://github.com/oblique-bit/oblique/pull/new/tokens-pr-themes-mjs
+- Open the PR: https://github.com/oblique-bit/oblique/pull/new/feature/OUI-4507-resolver-should-work-with-token-paths
 
 Same parser as `themes.mjs` here, plus the `checkoutThemeFiles(themesPath)`
 wrapper so the developer's existing remote-checkout build workflow is
