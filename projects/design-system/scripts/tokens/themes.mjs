@@ -4,18 +4,22 @@
  * Reads $themes.json, $metadata.json, and per-axis mode metadata from
  * 01_global/mode_collection/<axis>.json (root ob.g.mode_collection.<axis>).
  * Returns one build descriptor per mode:
- *  - { mode: 'static', tokenSets } — every group at its default mode.
- *  - { name, group, selector, tokenSets } — one per non-default mode of
- *    each real axis.
+ *  - { mode: 'static', tokenSets } — base themes + every axis at its default
+ *    mode.
+ *  - { name, group, selector, tokenSets } — one per mode of each real axis.
  *
- * Uniform "default" rule: every $themes.json group has a matching
- * mode_collection/<axis>.json file (including base groups static and
- * semantic). Inside each file, exactly one mode carries
- * selector.$value === 'default'. That default mode's token sets contribute
- * to the always-on base. Single-mode base groups (static, semantic)
- * contribute their tokens to every build and produce no per-mode build of
- * their own. Real axes (lightness, density, …) contribute their default
- * mode and produce one per-mode build per non-default mode.
+ * Base-theme detection: Token Studio's single-mode groups in $themes.json
+ * (static, semantic) are always-on by virtue of being single-mode. The
+ * parser identifies them as the set-difference: $themes.json groups that
+ * have no matching mode_collection/<axis>.json file. Their token sets are
+ * prepended to every build's tokenSets list.
+ *
+ * Real axes (lightness, density, emphasis, motion, typography_context,
+ * ui_scale, viewport) each have a mode_collection file. Inside each file,
+ * exactly one mode carries selector.$value === 'default' — that mode is
+ * always-on (no class applied) and contributes to the default build. Every
+ * other mode produces a per-mode build named for the mode, with the
+ * mode's selector string.
  *
  * viewport modes live one level deeper, under
  * ob.g.mode_collection.viewport.range, peer to the breakpoint primitives.
@@ -25,8 +29,6 @@
 
 import {readdirSync, readFileSync} from 'node:fs';
 import {checkoutThemeFiles} from './git.mjs';
-
-const isBaseGroup = g => g.modes.length === 1 && g.modes[0].isDefault;
 
 export function listModes(themesPath) {
 	checkoutThemeFiles(themesPath);
@@ -38,17 +40,23 @@ function buildModes(themesFolder) {
 	const tokenSetOrder = readTokenSetOrder(themesFolder);
 	const modeGroups = readModeGroups(themesFolder);
 
-	const switchableModes = modeGroups
-		.filter(g => !isBaseGroup(g))
-		.flatMap(g => g.modes.map(m => ({...m, group: g.group})));
+	// $themes.json groups with no mode_collection file are always-on base
+	// themes (static, semantic). Token Studio's single-mode-group semantics
+	// already imply this; the set-difference reads it back out for the build.
+	const modeGroupNames = new Set(modeGroups.map(g => g.group));
+	const baseTokenSets = themes
+		.filter(theme => !modeGroupNames.has(theme.group))
+		.flatMap(theme => Object.keys(theme.selectedTokenSets));
+
+	const allModes = modeGroups.flatMap(g => g.modes.map(m => ({...m, group: g.group})));
 
 	const builds = [
-		{mode: 'static', tokenSets: defaultTokenSets(modeGroups, themes)},
-		...switchableModes.map(mode => ({
+		{mode: 'static', tokenSets: [...baseTokenSets, ...defaultTokenSets(modeGroups, themes)]},
+		...allModes.map(mode => ({
 			name: mode.name,
 			group: mode.group,
 			selector: mode.selector,
-			tokenSets: modeTokenSets(mode, modeGroups, themes),
+			tokenSets: [...baseTokenSets, ...modeTokenSets(mode, modeGroups, themes)],
 		})),
 	];
 
