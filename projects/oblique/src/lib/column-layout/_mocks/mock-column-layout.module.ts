@@ -6,7 +6,7 @@ import {ObMockColumnToggleDirective} from './mock-column-toggle.directive';
 export {ObMockColumnLayoutComponent} from './mock-column-layout.component';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @NgModule({
 	imports: [ObMockColumnLayoutComponent, ObMockColumnPanelDirective, ObMockColumnToggleDirective],
