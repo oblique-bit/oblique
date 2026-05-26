@@ -3,6 +3,8 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterModule} from '@angular/router';
 import {BreadcrumbSampleComponent} from './breadcrumb.component';
+import {ObLocalizePipe} from './../../../../../oblique/src/lib/router/ob-localize.pipe';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
 describe(BreadcrumbSampleComponent.name, () => {
 	let component: BreadcrumbSampleComponent;
@@ -10,9 +12,14 @@ describe(BreadcrumbSampleComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [HttpClientTestingModule, RouterModule.forRoot([{path: '**', component: BreadcrumbSampleComponent}])],
+			imports: [
+				HttpClientTestingModule,
+				RouterModule.forRoot([{path: '**', component: BreadcrumbSampleComponent}]),
+				ObLocalizePipe,
+			],
 			declarations: [BreadcrumbSampleComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
+			providers: [provideObliqueTestingConfiguration({hasLanguageInUrl: true})],
 		}).compileComponents();
 	});
 
