@@ -28,15 +28,19 @@ The developer's other build files — `style-dictionary.mjs`, formats,
 transforms, preprocessors — are used unedited from the worktree; they are not
 copied here.
 
-## The dev proposal
+## The dev proposal — separate branch
 
-- **`themes.dev-proposal.mjs`** — the same parser shaped as a drop-in
-  replacement for the developer's `scripts/tokens/themes.mjs` on `master`.
-  Keeps his existing entry-point contract: `listModes(themesPath)` first calls
-  `checkoutThemeFiles(themesPath)` (so the remote-checkout workflow is
-  preserved), then runs the new parser. He drops this file over his own
-  `scripts/tokens/themes.mjs`; the rest of his pipeline stays untouched.
-  Header comment lists every behavioral difference the dev needs to know.
+The canonical proposal of `scripts/tokens/themes.mjs` for the developer's
+build lives on its own branch off `master`:
+
+- Branch: `tokens-pr-themes-mjs`
+- Path on that branch: `projects/design-system/scripts/tokens/themes.mjs`
+- Open the PR: https://github.com/oblique-bit/oblique/pull/new/tokens-pr-themes-mjs
+
+Same parser as `themes.mjs` here, plus the `checkoutThemeFiles(themesPath)`
+wrapper so the developer's existing remote-checkout build workflow is
+preserved. Branched off `master` so a normal PR diff lands exactly where his
+file lives and can be reverted cleanly.
 
 ## `resolve.mjs` — the driver
 
