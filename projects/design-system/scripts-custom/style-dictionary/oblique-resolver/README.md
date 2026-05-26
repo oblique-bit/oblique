@@ -28,6 +28,16 @@ The developer's other build files — `style-dictionary.mjs`, formats,
 transforms, preprocessors — are used unedited from the worktree; they are not
 copied here.
 
+## The dev proposal
+
+- **`themes.dev-proposal.mjs`** — the same parser shaped as a drop-in
+  replacement for the developer's `scripts/tokens/themes.mjs` on `master`.
+  Keeps his existing entry-point contract: `listModes(themesPath)` first calls
+  `checkoutThemeFiles(themesPath)` (so the remote-checkout workflow is
+  preserved), then runs the new parser. He drops this file over his own
+  `scripts/tokens/themes.mjs`; the rest of his pipeline stays untouched.
+  Header comment lists every behavioral difference the dev needs to know.
+
 ## `resolve.mjs` — the driver
 
 Copies the overlay and the local tokens into the `oblique-build` worktree, then
