@@ -34,10 +34,10 @@ The canonical proposal of `scripts/tokens/themes.mjs` for the developer's
 build lives on its own branch off `master`, following the team convention
 (`feature/OUI-<ticket>-<slug>`):
 
-- Branch: `feature/OUI-4507-resolver-should-work-with-token-paths`
+- Branch: `feature/OUI-4507-fix-resolver-for-per-axis-mode-collection`
 - Jira ticket: OUI-4507 — Resolver should work with token paths
 - Path on that branch: `projects/design-system/scripts/tokens/themes.mjs`
-- Open the PR: https://github.com/oblique-bit/oblique/pull/new/feature/OUI-4507-resolver-should-work-with-token-paths
+- Open the PR: https://github.com/oblique-bit/oblique/pull/new/feature/OUI-4507-fix-resolver-for-per-axis-mode-collection
 
 Same parser as `themes.mjs` here, plus the `checkoutThemeFiles(themesPath)`
 wrapper so the developer's existing remote-checkout build workflow is
