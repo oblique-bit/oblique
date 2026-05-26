@@ -223,7 +223,9 @@ Most tokens resolve to a CSS custom property — the styling output the componen
 
 ### **Mode-collection config — `ob.g.mode_collection.*`**
 
-Defines the seven mode axes — lightness, emphasis, ui_scale, density, typography_context, motion, viewport — plus two single-mode base groups, `static` and `semantic`, that the build pipeline treats with the same machinery. Per mode it holds the `selector` — the CSS class the application adds to activate the mode (`.ob-lightness-dark`). Exactly one mode per group carries `selector.$value === "default"`: that mode is always-on (no class applied) and its tokens are part of the default build. For real axes, the non-default modes each produce a per-mode CSS block. For `static` and `semantic` the single mode is the default one, so they contribute to every build's default token set and produce no per-mode block. The `ui_scale` and `density` collections also carry the multipliers; the `viewport` collection carries the breakpoints and per-range bounds. The build reads these to discover the modes and to name the CSS mode blocks; in Figma each collection becomes a variable collection. The tokens are not themselves emitted as custom properties.
+Defines the seven mode axes: lightness, emphasis, ui_scale, density, typography_context, motion, viewport. Per mode it holds the `selector` — the CSS class the application adds to activate the mode (`.ob-lightness-dark`). The `ui_scale` and `density` collections also carry the multipliers; the `viewport` collection carries the breakpoints and per-range bounds. The build reads these to discover the modes and to name the CSS mode blocks; in Figma each collection becomes a variable collection. The tokens are not themselves emitted as custom properties.
+
+The single-mode base groups `static` and `semantic` do **not** have files under `mode_collection/`. Token Studio's single-mode-group semantics already encode them as always-on, and the build pipeline identifies them via set-difference: `$themes.json` groups with no matching `mode_collection/<axis>.json` file are always-on base themes.
 
 ### **Component settings — `ob.g.component.*`**
 

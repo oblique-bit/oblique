@@ -15,14 +15,14 @@ The only file that differs from the developer's:
 - **`themes.mjs`** — mode discovery, rewritten for the `tokens-dev` token
   structure: per-axis `01_global/mode_collection/<axis>.json` (not the original
   `modes.json`), local working copy (no remote git-checkout), group-aware
-  lookup (`ui_scale` and `viewport` both carry `sm`/`md`/`lg`). Uses a uniform
-  `default` rule: every group — including `static` and `semantic` — has a
-  `mode_collection/<axis>.json` file with exactly one mode whose
-  `selector.$value === "default"`. That default mode contributes to the
-  always-on base; non-default modes produce per-mode builds. Single-mode
-  base groups (`static`, `semantic`) contribute their tokens to every build's
-  default set and generate no per-mode build of their own. This is also
-  the file a structural change is PR'd from — see `../WORKFLOW.md`.
+  lookup (`ui_scale` and `viewport` both carry `sm`/`md`/`lg`). Identifies
+  the always-on base themes (`static`, `semantic`) as the set-difference:
+  `$themes.json` groups that have no matching `mode_collection/<axis>.json`
+  file. Token Studio's single-mode-group semantics already encode this — the
+  set-difference reads it back out for the build. Real axes contribute their
+  default mode (the one with `selector.$value === "default"`); every other
+  mode of an axis produces a per-mode build. This is also the file a
+  structural change is PR'd from — see `../WORKFLOW.md`.
 
 The developer's other build files — `style-dictionary.mjs`, formats,
 transforms, preprocessors — are used unedited from the worktree; they are not
