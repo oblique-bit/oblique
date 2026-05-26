@@ -8,7 +8,7 @@ import {
 } from '../master-layout.model';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Injectable({providedIn: 'root'})
 export class ObMockMasterLayoutConfig {

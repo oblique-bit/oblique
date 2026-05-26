@@ -3,7 +3,7 @@ import {RouterLinkActive} from '@angular/router';
 import {ObNavTreeItemModel} from '../nav-tree-item.model';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Component({
 	selector: 'ob-nav-tree',
