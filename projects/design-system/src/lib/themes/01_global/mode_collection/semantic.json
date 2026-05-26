@@ -1,0 +1,20 @@
+{
+  "ob": {
+    "g": {
+      "mode_collection": {
+        "semantic": {
+          "token_family_docs": {
+            "$description": "Semantic mode collection — tokens that never react to a mode switch. Single always-on mode (semantic) carries selector \"default\", so the build pipeline reads it the same way it reads the default mode of any other axis (lightness.light, density.standard, …). No CSS class is applied; semantic tokens are part of the default build."
+          },
+          "semantic": {
+            "selector": {
+              "$type": "other",
+              "$value": "default",
+              "$description": "Always-on. No CSS class is applied; semantic tokens are always part of the default build. Marked \"default\" so the resolver picks it up via the uniform per-axis default rule (no special base-theme branch)."
+            }
+          }
+        }
+      }
+    }
+  }
+}

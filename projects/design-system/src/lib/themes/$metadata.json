@@ -7,6 +7,8 @@
     "01_global/mode_collection/typography_context",
     "01_global/mode_collection/motion",
     "01_global/mode_collection/viewport",
+    "01_global/mode_collection/static",
+    "01_global/mode_collection/semantic",
     "01_global/component/footer/lightness/dynamic/light",
     "01_global/component/footer/lightness/dynamic/dark",
     "01_global/component/footer/lightness/static",
