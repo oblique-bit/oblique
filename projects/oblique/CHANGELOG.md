@@ -1,3 +1,10 @@
+# [15.3.1](https://github.com/oblique-bit/oblique/compare/15.3.0...15.3.1) (2026-05-27)
+
+## Bug Fixes
+
+- **column-layout:** restore independent panel scrolling in fixed layout ([cfdf6882](https://github.com/oblique-bit/oblique/commit/cfdf6882ecfa24a3de63f8d23b346c839e283f87), OUI-4481)
+- **schematics:** use line number instead of filename in error messages ([ce4cce38](https://github.com/oblique-bit/oblique/commit/ce4cce387c8f41e4220374faf7ad599b61fa6eef), OUI-4475)
+
 # [15.3.0](https://github.com/oblique-bit/oblique/compare/15.2.2...15.3.0) (2026-04-30)
 
 ## Bug Fixes

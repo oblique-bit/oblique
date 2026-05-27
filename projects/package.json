@@ -7,6 +7,6 @@
     "start-ssr:sandbox-ssr": "npm run start-ssr --prefix ./sandbox-ssr",
     "start:sds": "npm run start --prefix ./sds",
     "start:service-navigation-web-component": "npm run start --prefix ./service-navigation-web-component",
-    "generate-scripts": "ts-node ../scripts/generate-projects-scripts"
+    "generate-scripts": "tsx ../scripts/generate-projects-scripts"
   }
 }

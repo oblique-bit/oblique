@@ -2,6 +2,7 @@ import {executeCommand, executeCommandWithLog, fatal, getResultFromCommand} from
 import {StaticScript} from '../../../scripts/shared/static-script';
 import {Log} from '../../../scripts/shared/log';
 import {Files} from '../../../scripts/shared/files';
+import {getAbsolutePath} from '../../../scripts/shared/root';
 
 class Tarball extends StaticScript {
 	static perform(targetProjects: string[]): void {
@@ -14,7 +15,7 @@ class Tarball extends StaticScript {
 	private static buildTarball(): string {
 		executeCommandWithLog('npm run build', 'Build Oblique');
 		Log.info('Pack Oblique');
-		const data = getResultFromCommand('npm pack', {cwd: Files.buildOSSafePath('../../dist/oblique')});
+		const data = getResultFromCommand('npm pack', {cwd: getAbsolutePath('dist/oblique')});
 		return /oblique-oblique-\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.\d+)?\.tgz/.exec(data)[0];
 	}
 
@@ -22,7 +23,7 @@ class Tarball extends StaticScript {
 		const destination = Files.buildOSSafePath(process.cwd(), targetProject);
 		this.validateProject(destination);
 		Log.info(`Copy ${tarball} into ${destination}`);
-		Files.copy(`../../dist/oblique/${tarball}`, `${destination}/${tarball}`);
+		Files.copy(getAbsolutePath(`dist/oblique/${tarball}`), `${destination}/${tarball}`);
 		Log.info(`Install ${tarball} in ${destination}`);
 		executeCommand(`npm install ${tarball}`, {cwd: destination});
 	}

@@ -5,5 +5,5 @@ import {Log} from '../../../scripts/shared/log';
 
 Log.start(`Release Sandbox SSR ${version}`);
 Changelog.addRelease(version, 'sandbox-ssr');
-updatePackageJsonVersion(version);
+updatePackageJsonVersion('sandbox-ssr', version);
 Log.success();

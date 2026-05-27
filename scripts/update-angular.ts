@@ -1,4 +1,5 @@
 import {executeCommandWithLog} from './shared/utils';
+import {getAbsolutePath} from './shared/root';
 import {StaticScript} from './shared/static-script';
 import {Log} from './shared/log';
 import {Files} from './shared/files';
@@ -12,7 +13,7 @@ interface Dependencies {
 }
 
 class UpdateAngular extends StaticScript {
-	private static readonly packageJsonPath = 'package.json';
+	private static readonly packageJsonPath = getAbsolutePath('package.json');
 
 	static perform(): void {
 		Log.start('Update Angular and related dependencies');
@@ -39,7 +40,7 @@ class UpdateAngular extends StaticScript {
 	}
 
 	private static listProjects(): string[] {
-		return Files.listDirectories('projects')
+		return Files.listDirectories(getAbsolutePath('projects'))
 			.map(directory => `${directory}/package.json`)
 			.filter(path => Files.exists(path));
 	}
@@ -97,12 +98,13 @@ class UpdateAngular extends StaticScript {
 	}
 
 	private static updateAngularMaterial(): void {
+		const tsconfigSpecPath = getAbsolutePath('tsconfig.spec.json');
 		// Angular Material update schematics need a root tsconfig.spec.json file
 		Log.info('Create temporary tsconfig.spec.json file');
-		Files.write('tsconfig.spec.json', '{}');
+		Files.write(tsconfigSpecPath, '{}');
 		executeCommandWithLog('ng update @angular/material --allow-dirty', 'Update Angular Material');
 		Log.info('Remove temporary tsconfig.spec.ts file');
-		Files.remove('tsconfig.spec.json');
+		Files.remove(tsconfigSpecPath);
 		UpdateAngular.updateAngularCDKVersion();
 		Git.commit('build(dependencies): update Angular Material');
 	}
@@ -137,7 +139,7 @@ class UpdateAngular extends StaticScript {
 		Log.info('Cleanup dependencies');
 		executeCommandWithLog('npm dedupe --audit false --fund false', 'Execute:');
 		executeCommandWithLog('npm prune --audit false --fund false', 'Execute:');
-		Files.listDirectories('projects')
+		Files.listDirectories(getAbsolutePath('projects'))
 			.map(project => `${project}/node_modules`)
 			.filter(project => Files.exists(project))
 			.forEach(project => Files.remove(project));

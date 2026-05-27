@@ -3,10 +3,10 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 import {Subject, merge} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
-import {obOutsideFilter} from '../../global-events/outsideFilter';
+import {obOutsideFilter} from '../../global-events/outside-filter';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
-import {obMasterLayoutNavigationSubMenuFilter} from './masterLayoutNavigationSubMenuFilter';
+import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation-sub-menu-filter';
 
 @Directive({
 	selector: '[obMasterLayoutNavigationItem]',

@@ -60,7 +60,7 @@ export function createSafeRule(callback: (tree: Tree, context: SchematicContext)
 			const {message, file, line} = getErrorInfo(thrownError);
 			warn(
 				context,
-				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${message}${file ? `\n\tfile: "${file}"` : ''}${line ? `\n\tline: "${file}"` : ''}`
+				`The previous task failed and the change needs to be done manually.\nPlease inform the Oblique team (oblique@bit.admin.ch) of the following error:\n\t${message}${file ? `\n\tfile: "${file}"` : ''}${line ? `\n\tline: "${line}"` : ''}`
 			);
 			return tree;
 		}

@@ -7,5 +7,5 @@ import {Log} from '../../../scripts/shared/log';
 Log.start(`Release SDS ${version}`);
 ObliqueVersion.updateObliqueVersion();
 Changelog.addRelease(version, 'sds');
-updatePackageJsonVersion(version);
+updatePackageJsonVersion('sds', version);
 Log.success();

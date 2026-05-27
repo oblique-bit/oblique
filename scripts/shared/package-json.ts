@@ -1,4 +1,5 @@
 import {humanizeList} from './utils';
+import {getAbsolutePath} from './root';
 import {StaticScript} from './static-script';
 import {Log} from './log';
 import {Files} from './files';
@@ -13,7 +14,7 @@ export class PackageJson extends StaticScript {
 	static initialize(projectName: string, folder?: string): PackageJson {
 		PackageJson.instance = new PackageJson();
 		const subPath = folder ? `${projectName}/${folder}` : projectName;
-		(PackageJson.instance as PackageJson).path = `../../dist/${subPath}/package.json`;
+		(PackageJson.instance as PackageJson).path = getAbsolutePath(`dist/${subPath}/package.json`);
 		(PackageJson.instance as PackageJson).content = Files.readJson(
 			(PackageJson.instance as PackageJson).path
 		) as PackageJsonContent;
@@ -87,6 +88,6 @@ export class PackageJson extends StaticScript {
 	}
 
 	private static readRootPackageJson(): PackageJsonContent {
-		return Files.readJson('../../package.json') as PackageJsonContent;
+		return Files.readJson(getAbsolutePath('package.json')) as PackageJsonContent;
 	}
 }

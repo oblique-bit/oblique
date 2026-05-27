@@ -1,5 +1,6 @@
 import {PackageJson} from '../../../scripts/shared/package-json';
 import {adaptReadmeLinks, humanizeList} from '../../../scripts/shared/utils';
+import {getAbsolutePath} from '../../../scripts/shared/root';
 import {Banner} from '../../../scripts/shared/banner';
 import {CopyFiles} from '../../../scripts/shared/copy-files';
 import {StaticScript} from '../../../scripts/shared/static-script';
@@ -26,7 +27,7 @@ export class PostDist extends StaticScript {
 	}
 
 	private static pack(): void {
-		const directory = '../../dist/service-navigation-web-component';
+		const directory = getAbsolutePath('dist/service-navigation-web-component');
 		const fileName = 'service-navigation-web-component.js';
 		PostDist.packJsFiles(directory, fileName);
 		PostDist.removeUnwantedFiles(directory, fileName);

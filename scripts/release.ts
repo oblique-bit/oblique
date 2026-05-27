@@ -1,4 +1,5 @@
 import {executeCommandWithLog} from './shared/utils';
+import {getAbsolutePath} from './shared/root';
 import {StaticScript} from './shared/static-script';
 import {Git} from './shared/git';
 import {Log} from './shared/log';
@@ -32,14 +33,16 @@ class Release extends StaticScript {
 
 	private static updateCopyrightDate(): void {
 		Log.info(`Update copyright date in LICENSE`);
-		Files.overwrite('LICENSE', content => content.replace(/(?!2020-)\d{4}/, new Date().getFullYear().toString()));
+		Files.overwrite(getAbsolutePath('LICENSE'), content =>
+			content.replace(/(?!2020-)\d{4}/, new Date().getFullYear().toString())
+		);
 	}
 
 	private static updateJenkinsFile(version: string): void {
 		if (version.includes('-')) {
 			Log.info('Adding publish instruction to JenkinsFile');
 			const branchName = Git.getCurrentBranchName();
-			Files.overwrite('Jenkinsfile', content =>
+			Files.overwrite(getAbsolutePath('Jenkinsfile'), content =>
 				content.replace(
 					/^\s*master\s*:\s*\[(?:[^[\]]|\[(?:[^[\]]|\[[^[\]]*\])*\])*\]/mu,
 					match => `${match.replace('master', `'${branchName}'`)},\n${match}`
@@ -53,7 +56,7 @@ class Release extends StaticScript {
 		if (/^\d+\.\d+\.\d+$/u.test(version)) {
 			Log.info('Update publiccode release version and date');
 			const today = new Date().toISOString().split('T')[0];
-			Files.overwrite('publiccode.yml', content =>
+			Files.overwrite(getAbsolutePath('publiccode.yml'), content =>
 				content
 					.replace(/(?<=softwareVersion:\s)\d+\.\d+\.\d+/u, version)
 					.replace(/(?<=releaseDate:\s)\d{4}-\d{2}-\d{2}/, today)

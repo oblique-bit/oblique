@@ -1,10 +1,9 @@
 import fs from 'fs';
-import path from 'path';
 import {Log} from '../../../scripts/shared/log';
 import {checkRules} from './check-lint-rules';
+import {getAbsolutePath} from '../../../scripts/shared/root';
 
-const workingDir: string = process.cwd();
-const cliDistDir: string = path.resolve(workingDir, '../../dist/toolchain');
+const cliDistDir: string = getAbsolutePath('dist/toolchain');
 
 Log.start('Initialize build');
 try {

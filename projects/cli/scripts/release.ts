@@ -5,5 +5,5 @@ import {Log} from '../../../scripts/shared/log';
 
 Log.start(`Release CLI@${version}`);
 Changelog.addRelease(version, 'cli');
-updatePackageJsonVersion(version);
+updatePackageJsonVersion('cli', version);
 Log.success();

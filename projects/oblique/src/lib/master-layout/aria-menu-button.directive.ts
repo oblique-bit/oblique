@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Input, OnInit, inject} from '@angular/core';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
-import {obOutsideFilter} from '../global-events/outsideFilter';
-import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation/masterLayoutNavigationSubMenuFilter';
+import {obOutsideFilter} from '../global-events/outside-filter';
+import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation/master-layout-navigation-sub-menu-filter';
 import {isNotKeyboardEventOnButton} from '../utilities';
 
 @Directive({

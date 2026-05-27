@@ -1,3 +1,9 @@
+# [15.3.1](https://github.com/oblique-bit/oblique/compare/15.3.0...15.3.1) (2026-05-27)
+
+## Bug Fixes
+
+- **icon:** prevent overflow of alerts outside of gallery container ([67a132f9](https://github.com/oblique-bit/oblique/commit/67a132f99d6e201e0558f8d8191e4083bebb5ad2), OUI-4064)
+
 # [15.3.0](https://github.com/oblique-bit/oblique/compare/15.2.2...15.3.0) (2026-04-30)
 
 ## Features

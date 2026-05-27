@@ -96,7 +96,7 @@ export const appNavigation: ObINavigationLink[] = [
 			{url: 'master-layout', label: 'i18n.routes.samples.master-layout.title'},
 			{url: 'multi-translate-loader', label: 'Multi translate loader'},
 			{url: 'nav-tree', label: 'i18n.routes.samples.nav-tree.title'},
-			{url: 'nested-form', label: 'Nested froms'},
+			{url: 'nested-form', label: 'Nested forms'},
 			{url: 'notification', label: 'i18n.routes.samples.notification.title'},
 			{url: 'number-format', label: 'i18n.routes.samples.number-format.title'},
 			{url: 'popover', label: 'Popover'},

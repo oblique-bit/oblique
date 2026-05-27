@@ -5,5 +5,5 @@ import {Log} from '../../../scripts/shared/log';
 
 Log.start(`Release Toolchain ${version}`);
 Changelog.addRelease(version, 'toolchain');
-updatePackageJsonVersion(version);
+updatePackageJsonVersion('toolchain', version);
 Log.success();

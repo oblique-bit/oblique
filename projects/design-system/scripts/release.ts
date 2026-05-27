@@ -5,5 +5,5 @@ import {Log} from '../../../scripts/shared/log';
 
 Log.start(`Release Design System ${version}`);
 Changelog.addRelease(version, 'design-system');
-updatePackageJsonVersion(version);
+updatePackageJsonVersion('design-system', version);
 Log.success();
