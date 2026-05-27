@@ -39,8 +39,8 @@ function addSchemaData(): void {
 
 function addUpdateSchemaData(): void {
 	Log.info('Add schema data to "ob-update.model.ts"');
-	const schema = Files.readJson('src/update/schema.json') as {properties: object};
-	Files.overwrite('./src/update/ob-update.model.ts', content =>
+	const schema = Files.readJson(getAbsolutePath('projects/cli/src/update/schema.json')) as {properties: object};
+	Files.overwrite(getAbsolutePath('projects/cli/src/update/ob-update.model.ts'), content =>
 		content.replace(
 			/(?<=const schema = ).*(?= as \{properties: ObUpdateOptions<ObSchemaOption>\})/u,
 			JSON.stringify(schema)
