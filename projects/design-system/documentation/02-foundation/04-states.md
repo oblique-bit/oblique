@@ -1,5 +1,7 @@
 # States Concept
 
+> **Status: Provisional — under active review.** Several naming and structural decisions in this concept are still open. This overview will be revised once the next round of decisions is approved.
+
 **Purpose**: Structural overview of state categories used across components  
 **Audience**: Design system maintainers, UX designers, developers  
 **Related**: Component tokens, interaction patterns
