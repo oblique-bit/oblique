@@ -23,6 +23,7 @@ export default [
 					style: 'kebab-case',
 				},
 			],
+			'no-console': 'error',
 
 			'@angular-eslint/use-component-view-encapsulation': 'off',
 			'@angular-eslint/use-injectable-provided-in': 'off',
@@ -103,6 +104,12 @@ export default [
 			'@typescript-eslint/no-unused-vars': 'off',
 			'@typescript-eslint/no-empty-function': 'off',
 			'@typescript-eslint/no-unused-private-class-members': 'off',
+		},
+	},
+	{
+		files: ['projects/oblique/src/lib/console/ob-console.*.ts'],
+		rules: {
+			'no-console': ['error', {allow: ['info', 'warn', 'error']}],
 		},
 	},
 	{
