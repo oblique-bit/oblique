@@ -1,3 +1,13 @@
+# [15.3.1](https://github.com/oblique-bit/oblique/compare/15.3.0...15.3.1) (2026-05-27)
+
+## Bug Fixes
+
+- **breadcrumb:** add ´ObLocalizePipe´ ([5da4e62a](https://github.com/oblique-bit/oblique/commit/5da4e62a387ddd428a140a0b5787226ce40eef22), OUI-4003)
+
+## Features
+
+- **app:** fix typo on navigation link ([62942c72](https://github.com/oblique-bit/oblique/commit/62942c72363e2b37d0ef6911cb188b3fdfb8a49d), OUI-4456)
+
 # [15.3.0](https://github.com/oblique-bit/oblique/compare/15.2.2...15.3.0) (2026-04-30)
 
 ## Features
