@@ -3914,7 +3914,7 @@
       "ob.s.dimension.static.typography_context.2xl": "f3c2eeb7ca1d0e99568b677fc74067d71a80e026",
       "ob.s.dimension.static.typography_context.3xl": "47df4a5d0c3d1cbfe4b2d1489f94eeb11c6267f9"
     },
-    "group": "semantic"
+    "group": "static"
   },
   {
     "id": "vd1-base-static",
