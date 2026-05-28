@@ -1,0 +1,171 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_chain": {
+          "surface": {
+            "bg": {
+              "primary": {
+                "rest": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.bg.primary.inversity_normal.enabled}",
+                  "$description": "button_vd1 bg - intent:primary interaction:rest (surface:overlay — placeholder; same as canvas until overlay-specific values are defined)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.bg.primary.inversity_normal.hover}",
+                  "$description": "button_vd1 bg - intent:primary interaction:hover (surface:overlay — placeholder)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.bg.primary.inversity_normal.pressed}",
+                  "$description": "button_vd1 bg - intent:primary interaction:active (surface:overlay — placeholder)"
+                }
+              },
+              "secondary": {
+                "rest": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.bg.secondary.inversity_normal.enabled}",
+                  "$description": "button_vd1 bg - intent:secondary interaction:rest (surface:overlay — placeholder)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.bg.secondary.inversity_normal.hover}",
+                  "$description": "button_vd1 bg - intent:secondary interaction:hover (surface:overlay — placeholder)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.bg.secondary.inversity_normal.pressed}",
+                  "$description": "button_vd1 bg - intent:secondary interaction:active (surface:overlay — placeholder)"
+                }
+              },
+              "tertiary": {
+                "rest": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.enabled}",
+                  "$description": "button_vd1 bg - intent:tertiary interaction:rest (surface:overlay — placeholder)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.hover}",
+                  "$description": "button_vd1 bg - intent:tertiary interaction:hover (surface:overlay — placeholder)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.bg.tertiary.inversity_normal.pressed}",
+                  "$description": "button_vd1 bg - intent:tertiary interaction:active (surface:overlay — placeholder)"
+                }
+              }
+            },
+            "fg": {
+              "primary": {
+                "rest": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.fg.primary.inversity_normal.enabled}",
+                  "$description": "button_vd1 fg - intent:primary interaction:rest (surface:overlay — placeholder)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.fg.primary.inversity_normal.hover}",
+                  "$description": "button_vd1 fg - intent:primary interaction:hover (surface:overlay — placeholder)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.fg.primary.inversity_normal.pressed}",
+                  "$description": "button_vd1 fg - intent:primary interaction:active (surface:overlay — placeholder)"
+                }
+              },
+              "secondary": {
+                "rest": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.fg.secondary.inversity_normal.enabled}",
+                  "$description": "button_vd1 fg - intent:secondary interaction:rest (surface:overlay — placeholder)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.fg.secondary.inversity_normal.hover}",
+                  "$description": "button_vd1 fg - intent:secondary interaction:hover (surface:overlay — placeholder)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.fg.secondary.inversity_normal.pressed}",
+                  "$description": "button_vd1 fg - intent:secondary interaction:active (surface:overlay — placeholder)"
+                }
+              },
+              "tertiary": {
+                "rest": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.enabled}",
+                  "$description": "button_vd1 fg - intent:tertiary interaction:rest (surface:overlay — placeholder)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.hover}",
+                  "$description": "button_vd1 fg - intent:tertiary interaction:hover (surface:overlay — placeholder)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.fg.tertiary.inversity_normal.pressed}",
+                  "$description": "button_vd1 fg - intent:tertiary interaction:active (surface:overlay — placeholder)"
+                }
+              }
+            },
+            "border": {
+              "primary": {
+                "rest": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.border.primary.inversity_normal.enabled}",
+                  "$description": "button_vd1 border - intent:primary interaction:rest (surface:overlay — placeholder)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.border.primary.inversity_normal.hover}",
+                  "$description": "button_vd1 border - intent:primary interaction:hover (surface:overlay — placeholder)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.border.primary.inversity_normal.pressed}",
+                  "$description": "button_vd1 border - intent:primary interaction:active (surface:overlay — placeholder)"
+                }
+              },
+              "secondary": {
+                "rest": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.border.secondary.inversity_normal.enabled}",
+                  "$description": "button_vd1 border - intent:secondary interaction:rest (surface:overlay — placeholder)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.border.secondary.inversity_normal.hover}",
+                  "$description": "button_vd1 border - intent:secondary interaction:hover (surface:overlay — placeholder)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.border.secondary.inversity_normal.pressed}",
+                  "$description": "button_vd1 border - intent:secondary interaction:active (surface:overlay — placeholder)"
+                }
+              },
+              "tertiary": {
+                "rest": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.border.tertiary.inversity_normal.enabled}",
+                  "$description": "button_vd1 border - intent:tertiary interaction:rest (surface:overlay — placeholder)"
+                },
+                "hover": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.border.tertiary.inversity_normal.hover}",
+                  "$description": "button_vd1 border - intent:tertiary interaction:hover (surface:overlay — placeholder)"
+                },
+                "active": {
+                  "$type": "color",
+                  "$value": "{ob.h.button.color.border.tertiary.inversity_normal.pressed}",
+                  "$description": "button_vd1 border - intent:tertiary interaction:active (surface:overlay — placeholder)"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

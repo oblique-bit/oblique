@@ -65,6 +65,8 @@
     "05_html/button_vd1/surface/canvas",
     "05_html/button_vd1/surface/sunken_1",
     "05_html/button_vd1/surface/sunken_2",
+    "05_html/button_vd1/surface/raised",
+    "05_html/button_vd1/surface/overlay",
     "05_html/button_vd1/CMP_button/primary",
     "05_html/button_vd1/CMP_button/secondary",
     "05_html/button_vd1/CMP_button/tertiary",
