@@ -27,7 +27,7 @@ Collections resolve **top → down**: top = most foundational (global theme), bo
 | # | Collection | Modes |
 |---|---|---|
 | 1 | `COR_brand` | app · marketing |
-| 2 | `COR_canton` | confederation · zurich |
+| 2 | `COR_canton` | confederation · ZH · BE · LU · UR · SZ · OW · NW · GL · ZG · FR · SO · BS · BL · SH · AR · AI · SG · GR · AG · TG · TI · VD · VS · NE · GE · JU |
 | 3 | `COR_lightness` | light · dark |
 | 4 | `COR_surface` | canvas · sunken_1 · sunken_2 · raised · overlay |
 | 5 | `COR_emphasis` | high · low |
@@ -77,8 +77,33 @@ One-line definition of every mode.
 
 | Mode | Definition |
 |---|---|
-| confederation | Swiss Confederation identity — the federal brand palette. |
-| zurich | Canton of Zurich identity — the cantonal brand palette. |
+| confederation | Swiss Confederation identity — the federal brand palette. Default. |
+| ZH | Canton of Zürich — cantonal brand palette. |
+| BE | Canton of Bern / Berne — cantonal brand palette. |
+| LU | Canton of Luzern — cantonal brand palette. |
+| UR | Canton of Uri — cantonal brand palette. |
+| SZ | Canton of Schwyz — cantonal brand palette. |
+| OW | Canton of Obwalden — cantonal brand palette. |
+| NW | Canton of Nidwalden — cantonal brand palette. |
+| GL | Canton of Glarus — cantonal brand palette. |
+| ZG | Canton of Zug — cantonal brand palette. |
+| FR | Canton of Fribourg / Freiburg — cantonal brand palette. |
+| SO | Canton of Solothurn — cantonal brand palette. |
+| BS | Canton of Basel-Stadt — cantonal brand palette. |
+| BL | Canton of Basel-Landschaft — cantonal brand palette. |
+| SH | Canton of Schaffhausen — cantonal brand palette. |
+| AR | Canton of Appenzell Ausserrhoden — cantonal brand palette. |
+| AI | Canton of Appenzell Innerrhoden — cantonal brand palette. |
+| SG | Canton of St. Gallen — cantonal brand palette. |
+| GR | Canton of Graubünden / Grigioni / Grischun — cantonal brand palette. |
+| AG | Canton of Aargau — cantonal brand palette. |
+| TG | Canton of Thurgau — cantonal brand palette. |
+| TI | Canton of Ticino — cantonal brand palette. |
+| VD | Canton of Vaud — cantonal brand palette. |
+| VS | Canton of Valais / Wallis — cantonal brand palette. |
+| NE | Canton of Neuchâtel — cantonal brand palette. |
+| GE | Canton of Genève — cantonal brand palette. |
+| JU | Canton of Jura — cantonal brand palette. |
 
 ### `COR_lightness`
 

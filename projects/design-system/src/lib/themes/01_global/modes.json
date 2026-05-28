@@ -133,9 +133,109 @@
             "$type": "other",
             "$value": "default"
           },
-          "zurich": {
+          "ZH": {
             "$type": "other",
-            "$value": ".ob-canton-zurich"
+            "$value": ".ob-canton-ZH"
+          },
+          "BE": {
+            "$type": "other",
+            "$value": ".ob-canton-BE"
+          },
+          "LU": {
+            "$type": "other",
+            "$value": ".ob-canton-LU"
+          },
+          "UR": {
+            "$type": "other",
+            "$value": ".ob-canton-UR"
+          },
+          "SZ": {
+            "$type": "other",
+            "$value": ".ob-canton-SZ"
+          },
+          "OW": {
+            "$type": "other",
+            "$value": ".ob-canton-OW"
+          },
+          "NW": {
+            "$type": "other",
+            "$value": ".ob-canton-NW"
+          },
+          "GL": {
+            "$type": "other",
+            "$value": ".ob-canton-GL"
+          },
+          "ZG": {
+            "$type": "other",
+            "$value": ".ob-canton-ZG"
+          },
+          "FR": {
+            "$type": "other",
+            "$value": ".ob-canton-FR"
+          },
+          "SO": {
+            "$type": "other",
+            "$value": ".ob-canton-SO"
+          },
+          "BS": {
+            "$type": "other",
+            "$value": ".ob-canton-BS"
+          },
+          "BL": {
+            "$type": "other",
+            "$value": ".ob-canton-BL"
+          },
+          "SH": {
+            "$type": "other",
+            "$value": ".ob-canton-SH"
+          },
+          "AR": {
+            "$type": "other",
+            "$value": ".ob-canton-AR"
+          },
+          "AI": {
+            "$type": "other",
+            "$value": ".ob-canton-AI"
+          },
+          "SG": {
+            "$type": "other",
+            "$value": ".ob-canton-SG"
+          },
+          "GR": {
+            "$type": "other",
+            "$value": ".ob-canton-GR"
+          },
+          "AG": {
+            "$type": "other",
+            "$value": ".ob-canton-AG"
+          },
+          "TG": {
+            "$type": "other",
+            "$value": ".ob-canton-TG"
+          },
+          "TI": {
+            "$type": "other",
+            "$value": ".ob-canton-TI"
+          },
+          "VD": {
+            "$type": "other",
+            "$value": ".ob-canton-VD"
+          },
+          "VS": {
+            "$type": "other",
+            "$value": ".ob-canton-VS"
+          },
+          "NE": {
+            "$type": "other",
+            "$value": ".ob-canton-NE"
+          },
+          "GE": {
+            "$type": "other",
+            "$value": ".ob-canton-GE"
+          },
+          "JU": {
+            "$type": "other",
+            "$value": ".ob-canton-JU"
           }
         },
         "static": {
