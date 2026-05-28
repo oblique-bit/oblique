@@ -193,7 +193,6 @@ describe('InputClear', () => {
 				input.dispatchEvent(new Event('input'));
 				fixture.detectChanges();
 				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
-				console.error(parentElement);
 				expect(parentElement).toBeTruthy();
 			});
 
