@@ -1,6 +1,6 @@
 # Mode collections & resolution chain
 
-**Status:** DRAFT — naming updated 2026-05-28; collection names carry category prefixes (COR_ / STS_ / CMP_).
+**Status:** DRAFT — taxonomy complete 2026-05-28; collection names carry category prefixes (COR_ / STS_ / CMP_).
 **Purpose:** single source of truth for every mode collection — the resolution chain, per-mode definitions, and which component uses which.
 **Related:** the States concept (`documentation/02-foundation/04-states.md`).
 
@@ -27,13 +27,14 @@ Collections resolve **top → down**: top = most foundational (global theme), bo
 | # | Collection | Modes |
 |---|---|---|
 | 1 | `COR_brand` | app · marketing |
-| 2 | `COR_lightness` | light · dark |
-| 3 | `COR_emphasis` | high · low |
-| 4 | `COR_viewport` | xs · sm · md · lg · xl · 2xl |
-| 5 | `COR_scale` | sm · md · lg |
-| 6 | `COR_density` | compact · standard · spacious |
-| 7 | `COR_motion` | on · off |
-| 8 | `COR_typography` | interface · prose |
+| 2 | `COR_canton` | confederation · zurich |
+| 3 | `COR_lightness` | light · dark |
+| 4 | `COR_emphasis` | high · low |
+| 5 | `COR_viewport` | xs · sm · md · lg · xl · 2xl |
+| 6 | `COR_scale` | sm · md · lg |
+| 7 | `COR_density` | compact · standard · spacious |
+| 8 | `COR_motion` | on · off |
+| 9 | `COR_typography` | interface · prose |
 
 ### State collections
 
@@ -70,6 +71,13 @@ One-line definition of every mode.
 |---|---|
 | app | Application context — standard product UI. |
 | marketing | Marketing context — landing pages, campaigns, promotional surfaces. |
+
+### `COR_canton`
+
+| Mode | Definition |
+|---|---|
+| confederation | Swiss Confederation identity — the federal brand palette. |
+| zurich | Canton of Zurich identity — the cantonal brand palette. |
 
 ### `COR_lightness`
 
