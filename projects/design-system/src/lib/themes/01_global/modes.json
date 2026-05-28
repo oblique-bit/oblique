@@ -38,6 +38,16 @@
             "$value": ".ob-lightness-dark"
           }
         },
+        "contrast": {
+          "standard": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "high": {
+            "$type": "other",
+            "$value": ".ob-contrast-high"
+          }
+        },
         "surface": {
           "canvas": {
             "$type": "other",
@@ -96,6 +106,28 @@
           "spacious": {
             "$type": "other",
             "$value": ".ob-density-spacious"
+          }
+        },
+        "language": {
+          "DE": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "FR": {
+            "$type": "other",
+            "$value": ".ob-language-FR"
+          },
+          "IT": {
+            "$type": "other",
+            "$value": ".ob-language-IT"
+          },
+          "EN": {
+            "$type": "other",
+            "$value": ".ob-language-EN"
+          },
+          "RM": {
+            "$type": "other",
+            "$value": ".ob-language-RM"
           }
         },
         "typography_context": {

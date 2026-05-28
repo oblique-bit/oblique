@@ -2921,6 +2921,90 @@
     "group": "COR_motion"
   },
   {
+    "id": "cor-contrast-standard",
+    "name": "standard",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "01_global/contrast/standard": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_contrast"
+  },
+  {
+    "id": "cor-contrast-high",
+    "name": "high",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "01_global/contrast/high": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_contrast"
+  },
+  {
+    "id": "cor-language-DE",
+    "name": "DE",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "01_global/language/DE": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_language"
+  },
+  {
+    "id": "cor-language-FR",
+    "name": "FR",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "01_global/language/FR": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_language"
+  },
+  {
+    "id": "cor-language-IT",
+    "name": "IT",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "01_global/language/IT": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_language"
+  },
+  {
+    "id": "cor-language-EN",
+    "name": "EN",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "01_global/language/EN": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_language"
+  },
+  {
+    "id": "cor-language-RM",
+    "name": "RM",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "01_global/language/RM": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_language"
+  },
+  {
     "id": "vd1-base-static",
     "name": "static",
     "$figmaStyleReferences": {},

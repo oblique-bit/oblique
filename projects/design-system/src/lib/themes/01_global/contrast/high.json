@@ -1,0 +1,13 @@
+{
+  "ob": {
+    "g": {
+      "contrast": {
+        "mode": {
+          "$type": "other",
+          "$value": "high",
+          "$description": "COR_contrast mode identifier — high. PoC stub."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "ob": {
+    "g": {
+      "language": {
+        "mode": {
+          "$type": "other",
+          "$value": "IT",
+          "$description": "COR_language mode identifier — IT. PoC stub."
+        }
+      }
+    }
+  }
+}

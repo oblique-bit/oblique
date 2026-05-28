@@ -29,24 +29,26 @@ Collections resolve **top → down**: top = most foundational (global theme), bo
 | 1 | `COR_brand` | app · marketing |
 | 2 | `COR_canton` | confederation · ZH · BE · LU · UR · SZ · OW · NW · GL · ZG · FR · SO · BS · BL · SH · AR · AI · SG · GR · AG · TG · TI · VD · VS · NE · GE · JU |
 | 3 | `COR_lightness` | light · dark |
-| 4 | `COR_surface` | canvas · sunken_1 · sunken_2 · raised · overlay |
-| 5 | `COR_emphasis` | high · low |
-| 6 | `COR_viewport` | xs · sm · md · lg · xl · 2xl |
-| 7 | `COR_scale` | sm · md · lg |
-| 8 | `COR_density` | compact · standard · spacious |
-| 9 | `COR_motion` | on · off |
-| 10 | `COR_typography` | interface · prose |
+| 4 | `COR_contrast` | standard · high |
+| 5 | `COR_surface` | canvas · sunken_1 · sunken_2 · raised · overlay |
+| 6 | `COR_emphasis` | high · low |
+| 7 | `COR_viewport` | xs · sm · md · lg · xl · 2xl |
+| 8 | `COR_scale` | sm · md · lg |
+| 9 | `COR_density` | compact · standard · spacious |
+| 10 | `COR_motion` | on · off |
+| 11 | `COR_typography` | interface · prose |
+| 12 | `COR_language` | DE · FR · IT · EN · RM |
 
 ### State collections
 
 | # | Collection | Modes |
 |---|---|---|
-| 11 | `STS_availability` | enabled · disabled · read_only |
-| 12 | `STS_interaction` | rest · active · hover · drag |
-| 13 | `STS_selection` | selected · unselected · indeterminate |
-| 14 | `STS_focus` | focused · unfocused |
-| 15 | `STS_feedback` | info · resolved · critical · attention · fatal |
-| 16 | `STS_process` | loaded · loading · empty · failed |
+| 13 | `STS_availability` | enabled · disabled · read_only |
+| 14 | `STS_interaction` | rest · active · hover · drag |
+| 15 | `STS_selection` | selected · unselected · indeterminate |
+| 16 | `STS_focus` | focused · unfocused |
+| 17 | `STS_feedback` | info · resolved · critical · attention · fatal |
+| 18 | `STS_process` | loaded · loading · empty · failed |
 
 ### Component collections
 
@@ -112,6 +114,13 @@ One-line definition of every mode.
 | light | Light theme — bright surfaces, dark text; for well-lit environments. |
 | dark | Dark theme — dark surfaces, light text; eases eye strain in low light. |
 
+### `COR_contrast`
+
+| Mode | Definition |
+|---|---|
+| standard | Standard contrast — default colour intensity; meets WCAG AA. |
+| high | High contrast — increased colour intensity for users who need stronger visual differentiation; targets WCAG AAA. |
+
 ### `COR_surface`
 
 | Mode | Definition |
@@ -171,6 +180,16 @@ One-line definition of every mode.
 |---|---|
 | interface | Compact typography for UI elements — navigation, forms, controls. |
 | prose | Generous typography for reading content — articles, documentation, marketing. |
+
+### `COR_language`
+
+| Mode | Definition |
+|---|---|
+| DE | German — default language. |
+| FR | French. |
+| IT | Italian. |
+| EN | English. |
+| RM | Romansh. |
 
 ### `STS_availability`
 
