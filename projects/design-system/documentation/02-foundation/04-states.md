@@ -4,93 +4,110 @@
 
 **Purpose**: Structural overview of state categories used across components  
 **Audience**: Design system maintainers, UX designers, developers  
-**Related**: Component tokens, interaction patterns
+**Related**: Component tokens, interaction patterns, [Mode collections & resolution chain](./03-design-tokens/02-modes/98-collections-and-resolution-chain.md)
 
 ---
 
 ## Overview
 
-States are organized into categories that can be combined. Focus exists on a separate layer and is combinable with other states (e.g., enabled + focused, visited + focused).
+States are implemented as mode collections (`STS_` prefix). Each category below corresponds to one mode collection; multiple collections can be active simultaneously on a component (e.g. `STS_availability = enabled` + `STS_focus = focused`).
 
 ---
 
-## 1. Component States
+## 1. STS_availability
 
-- enabled
-- read-only
-- disabled
-- hidden
+Availability of the component for interaction.
 
----
-
-## 2. Interactive States
-
-- default
-- hover
-- active (formerly "pressed"; renaming based on research, requires approval)
-- active + focus (combined state, relevant for components like text input: field is focused, cursor is inside, component is in active state while typing)
-- drag
+- `enabled` — focusable and editable; available for interaction
+- `disabled` — not focusable and not editable
+- `read_only` — focusable but not editable
 
 ---
 
-## 3. Focus State
+## 2. STS_interaction
 
-- unfocused
-- focused (in Figma: boolean property, naming TBD: "Focus" or "Focused")
+Pointer and keyboard interaction feedback.
+
+- `rest` — resting state; no interaction feedback
+- `hover` — pointer is over an enabled element; not reachable by keyboard or touch
+- `active` — transient state while the element is pressed (a.k.a. pressed / down)
+- `drag` — the element is being dragged
+
+---
+
+## 3. STS_focus
+
+Input focus state.
+
+- `focused` — element holds input focus; triggered by mouse, touch or keyboard
+- `unfocused` — element does not hold input focus
 
 **Text inputs** have two focus indicators:
-- **default** — for keyboard navigation (including typing after keyboard focus, ensures accessibility)
-- **subtle** — for mouse navigation (including typing)
+- **default** — for keyboard navigation (including typing after keyboard focus)
+- **subtle** — for mouse navigation (including typing after mouse click)
 
 ---
 
-## 4. Selection States
+## 4. STS_selection
 
-- unselected
-- selected
-- indeterminate
+Persistent selection state.
+
+- `selected` — persistent choice; element stays chosen or its associated view is active
+- `unselected` — element is not chosen
+- `indeterminate` — mixed / partial selection (e.g. a checkbox group); announced to screen readers as "partially checked"
 
 ---
 
-## 5. Status States
+## 5. STS_feedback
 
-### a. Basic (system) status states
-- Information
-- Error
-- Warning
-- Success
-- Fatal (used only for Infobox)
-- None (useful for describing flows and UI behavior)
+Semantic feedback signal — used by components that communicate a system outcome (Infobox, Badge, Pill). Components with no feedback signal do not consume this collection.
 
-### b. Business-specific statuses
-e.g., used in Pill component
+- `info` — neutral, informational meaning
+- `resolved` — positive outcome (e.g. validation passed)
+- `attention` — cautionary meaning; not used for validation errors
+- `critical` — negative outcome (an error)
+- `fatal` — most severe meaning (e.g. Infobox-level failure)
 
-### c. Input-specific info states
-- Required unfilled
-- Prefilled
-- Autofilled
-- AI-generated
+### Business-specific statuses
+e.g. used in Pill component — additional values documented with the component.
+
+---
+
+## 6. STS_process
+
+Async lifecycle state — is the operation in progress?
+
+- `loaded` — operation completed and content is present; resting state
+- `loading` — async operation in progress; interaction suppressed
+- `empty` — operation completed but returned no content
+- `failed` — operation did not complete (e.g. network or data error)
+
+**Note on orthogonality:** `STS_feedback` and `STS_process` are orthogonal — a component can be `loading` and `critical` at the same time. They must remain separate collections (one collection = one active mode at a time).
+
+---
+
+## Component-specific states (`CMP_`)
+
+Some states are scoped to a single component type and are not cascading:
+
+| Collection | Modes | Component |
+|---|---|---|
+| `CMP_input` | required · autofilled · aifilled | Input fields |
+| `CMP_link` | standard · visited | Link |
+| `CMP_button` | primary · secondary · tertiary | Button |
 
 ---
 
 ## Notes
 
-**Visited state** is link-specific and currently not covered by this states concept.
+**Visited state** is link-specific — `CMP_link · visited`.
 
-**System process states** (can be included in the next iteration):
-- Idle
-- Loading
-- Processing
-- Saving
-- Submitting
-- Empty
-- Error
+**Collapsed/expanded** is component-level (Accordion, Dropdown, Menu) — documented with each component, not as a core state collection.
 
 ---
 
 ## Decisions
 
-- [ ] Naming: "active" vs "pressed"
-- [ ] Naming: "Focus" vs "Focused" (Figma boolean property)
-- [ ] Include visited state in this concept or keep link-specific
-- [ ] Include system process states
+- [ ] Naming: `active` vs `pressed` (`STS_interaction`)
+- [ ] Naming: "Focus" vs "Focused" (Figma boolean property name)
+- [ ] `COR_viewport` exact px breakpoint values

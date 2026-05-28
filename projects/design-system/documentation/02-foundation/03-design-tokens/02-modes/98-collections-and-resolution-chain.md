@@ -1,81 +1,177 @@
 # Mode collections & resolution chain
 
-**Status:** DRAFT — state model not finalized; naming and the token refactor are in progress.
-**Purpose:** single source of truth for every mode collection — the colour/state resolution chain, the dimension/typography modes, per-mode definitions, and which button uses which.
-**Related:** the States concept (Confluence "States concept" page).
+**Status:** DRAFT — naming updated 2026-05-28; collection names carry category prefixes (COR_ / STS_ / CMP_).
+**Purpose:** single source of truth for every mode collection — the resolution chain, per-mode definitions, and which component uses which.
+**Related:** the States concept (`documentation/02-foundation/04-states.md`).
+
+---
+
+## Category prefixes
+
+The prefix on every collection name signals which category it belongs to. Categories are invisible in tokens and in Figma — only the prefixed collection names appear.
+
+| Prefix | Category | What it covers |
+|---|---|---|
+| `COR_` | core | Environment, dimensions, typography — set globally or per section; cascades down |
+| `STS_` | states | Interactive behaviour — availability, interaction, selection, focus, feedback, process; cascades down |
+| `CMP_` | component | Component-specific axes — not cascading; scoped to one component type |
 
 ---
 
 ## Resolution chain
 
-Collections resolve **top → down**: top = theme (deepest), bottom wins (binds to the component). Each is one variable-mode collection (one mode axis); a mode set on a frame cascades to children, and a downstream collection overrides an upstream one by aliasing past it. The order is **global** — every component uses the order below, or a subset of it, never a reorder.
+Collections resolve **top → down**: top = most foundational (global theme), bottom wins (most specific, binds to the component). Each collection is one variable-mode axis; a mode set on a frame cascades to children, and a downstream collection overrides an upstream one by aliasing past it. The order is **global** — every component uses the order below, or a subset of it, never a reorder.
 
-| # | Collection | Type | Modes |
-|---|---|---|---|
-| 1 | lightness | theme | light · dark |
-| 2 | emphasis | theme | high · low |
-| 3 | surface | context | canvas · sunken_1 · sunken_2 · raised · overlay · backdrop |
-| 4 | intent |  | primary · secondary · tertiary |
-| 5 | process | state | loaded · loading · empty · failed |
-| 6 | status | state | none · info · success · warning · critical · fatal |
-| 7 | selection | state | unselected · selected · indeterminate |
-| 8 | interaction | state | regular · hover · active |
-| 9 | focus | state | unfocused · focused |
-| 10 | display | state | enabled · disabled · read_only |
+### Core collections
 
-**Naming note:** `display` = Confluence "Component state". `process` (*is async work happening?*) and `status` (*what is the semantic outcome?*) are Confluence's "System-process" and "Status" levels — two collections, not one, because they are orthogonal: a component can be in both at once (`loading` + `info`, `loaded` + `critical`) and one collection allows only one active mode. `empty` (process) and `none` (status) both read as "nothing" but are distinct: `empty` = a completed operation returned no data; `none` = no status signal active. `lightness`/`emphasis`/`surface`/`intent` are not states — listed only because they share the chain. Their `Type` cells use `theme` / `context`; `intent` is left blank — it is an author-chosen, user-centred axis that does not fit theme/context/state. "Variant" is deliberately avoided as a category name — it is reserved for Figma's component-variant feature.
+| # | Collection | Modes |
+|---|---|---|
+| 1 | `COR_brand` | app · marketing |
+| 2 | `COR_lightness` | light · dark |
+| 3 | `COR_emphasis` | high · low |
+| 4 | `COR_viewport` | xs · sm · md · lg · xl · 2xl |
+| 5 | `COR_scale` | sm · md · lg |
+| 6 | `COR_density` | compact · standard · spacious |
+| 7 | `COR_motion` | on · off |
+| 8 | `COR_typography` | interface · prose |
 
-**Surface — and why there is no `elevation` collection:** `surface` is the single depth collection — the substrate a component rests on, inherited from the parent and cascading to its children. Elevation (a component lifting *itself* — Card, Menu, Modal) is **not** a mode. A self-elevating component does not flip an `elevation` mode; its own per-state tokens alias the elevation tokens (`raised`, `overlay` — each a paired background + shadow) directly. For example `card.bg @ hover → raised`, `tooltip.bg @ idle → overlay`. A plain button reads `surface` only and never elevates itself. See [Semantic Elevation Tokens](../01-types/05-semantic-elevation-tokens.md).
+### State collections
 
----
+| # | Collection | Modes |
+|---|---|---|
+| 9 | `STS_availability` | enabled · disabled · read_only |
+| 10 | `STS_interaction` | rest · active · hover · drag |
+| 11 | `STS_selection` | selected · unselected · indeterminate |
+| 12 | `STS_focus` | focused · unfocused |
+| 13 | `STS_feedback` | info · resolved · critical · attention · fatal |
+| 14 | `STS_process` | loaded · loading · empty · failed |
 
-## Dimension & typography modes
+### Component collections
 
-Four further mode collections control **size, spacing and text** rather than colour and state. Unlike the resolution chain above, they have **no fixed resolution order** — they are deliberately independent axes; any combination is valid (e.g. `compact` density + `lg` size). Each affects a different component category. See [Modes interplay](./99-modes-interplay.md).
+Component collections are **not cascading** — they are scoped to one component type. A mode set on a parent frame does not propagate to child components of a different type. Mode values are drawn from the central taxonomy; components do not invent new values.
 
-| # | Collection | Modes | Affects |
-|---|---|---|---|
-| 1 | ui_scale | sm · md · lg | component dimensions — molecules (button, input, tag, pill, icon); default `md` |
-| 2 | density | compact · standard · spacious | layout / outer spacing — organisms (table, list, form, card); default `standard` |
-| 3 | typography-context | interface · prose | text rendering — text components; build-time choice |
-| 4 | viewport | desktop · mobile | viewport-driven scaling — `mobile` (< 768px) applies a 1.25× multiplier |
+| Collection | Modes |
+|---|---|
+| `CMP_button` | primary · secondary · tertiary |
+| `CMP_link` | standard · visited |
+| `CMP_input` | required · autofilled · aifilled |
+
+**Note on `STS_process` and `STS_feedback`:** these two are orthogonal — a component can be `loading` and `critical` at the same time. One collection = one active mode, so they must remain separate. `STS_feedback` has no `none` mode — components that carry no feedback signal simply do not consume this collection.
 
 ---
 
 ## Mode reference
 
-One-line definition of every mode. Meta-terms (*mode*, *collection*, *variable*) are defined in the [glossary](../../../01-introduction/glossary.md) — not repeated here. State definitions follow the Confluence "States concept"; `lightness` / `emphasis` follow their mode docs. Definitions marked *(provisional)* have no authoritative source yet.
+One-line definition of every mode.
 
-### lightness · theme
+### `COR_brand`
+
+| Mode | Definition |
+|---|---|
+| app | Application context — standard product UI. |
+| marketing | Marketing context — landing pages, campaigns, promotional surfaces. |
+
+### `COR_lightness`
+
 | Mode | Definition |
 |---|---|
 | light | Light theme — bright surfaces, dark text; for well-lit environments. |
 | dark | Dark theme — dark surfaces, light text; eases eye strain in low light. |
 
-### emphasis · theme
+### `COR_emphasis`
+
 | Mode | Definition |
 |---|---|
 | high | High emphasis — full-intensity colour, for primary actions, critical information and focal elements. |
 | low | Low emphasis — reduced-intensity colour, for secondary actions, supporting content and background elements. |
 
-### surface · context *(provisional)*
+### `COR_viewport`
+
 | Mode | Definition |
 |---|---|
-| canvas | The base substrate — the default page surface a component rests on. |
-| sunken_1 | A surface recessed one step below the canvas. |
-| sunken_2 | A surface recessed two steps below the canvas. |
-| raised | A surface lifted above the canvas. |
-| overlay | A floating surface above the page content — menus, popovers, dialogs. |
-| backdrop | The scrim layer behind an overlay that dims the content beneath. |
+| xs | Extra-small viewport — narrowest breakpoint. |
+| sm | Small viewport. |
+| md | Medium viewport — default. |
+| lg | Large viewport. |
+| xl | Extra-large viewport. |
+| 2xl | Double extra-large viewport — widest breakpoint. |
 
-### intent
+### `COR_scale`
+
 | Mode | Definition |
 |---|---|
-| primary | The main action — highest prominence in the action hierarchy. |
-| secondary | A supporting action — medium prominence. |
-| tertiary | The lowest-prominence action. |
+| sm | Small — compact component dimensions, for data-heavy interfaces. |
+| md | Medium — the default component size. |
+| lg | Large — generous component dimensions, for accessibility and marketing contexts. |
 
-### process · state
+### `COR_density`
+
+| Mode | Definition |
+|---|---|
+| compact | Minimal outer spacing — maximum information density (multiplier 0.75). |
+| standard | Balanced outer spacing — the default (multiplier 1.0). |
+| spacious | Generous outer spacing — breathing room for focus-intensive tasks (multiplier 1.5). |
+
+### `COR_motion`
+
+| Mode | Definition |
+|---|---|
+| on | Standard motion — transitions and animations play at full speed. |
+| off | Reduced motion — transitions suppressed or minimised; honours `prefers-reduced-motion: reduce`. |
+
+### `COR_typography`
+
+| Mode | Definition |
+|---|---|
+| interface | Compact typography for UI elements — navigation, forms, controls. |
+| prose | Generous typography for reading content — articles, documentation, marketing. |
+
+### `STS_availability`
+
+| Mode | Definition |
+|---|---|
+| enabled | Focusable and editable — available for interaction. |
+| disabled | Not focusable and not editable; text may or may not be copyable. |
+| read_only | Focusable but not editable; text may or may not be copyable. |
+
+### `STS_interaction`
+
+| Mode | Definition |
+|---|---|
+| rest | The resting state — no interaction feedback. |
+| active | The transient state while the element is pressed — between hover and release (a.k.a. pressed / down). |
+| hover | The pointer is over an enabled element, signalling it is interactive; not reachable by keyboard or touch. |
+| drag | The element is being dragged. |
+
+### `STS_selection`
+
+| Mode | Definition |
+|---|---|
+| selected | A persistent choice — the element stays chosen, or its associated view is active. |
+| unselected | The element is not chosen. |
+| indeterminate | A mixed / partial selection (e.g. a checkbox group); announced to screen readers as "partially checked". |
+
+### `STS_focus`
+
+| Mode | Definition |
+|---|---|
+| focused | The element holds input focus and is ready to receive input; triggered by mouse, touch or keyboard. |
+| unfocused | The element does not hold input focus. |
+
+### `STS_feedback`
+
+| Mode | Definition |
+|---|---|
+| info | Neutral, informational meaning. |
+| resolved | A positive outcome — e.g. validation passed. |
+| critical | A negative outcome — an error. |
+| attention | A cautionary meaning; not used for validation errors. |
+| fatal | The most severe negative meaning — e.g. an Infobox-level failure. |
+
+Used by components that carry a semantic feedback signal: Infobox, Badge, Pill. Components that carry no feedback signal (e.g. Button) do not consume this collection.
+
+### `STS_process`
+
 | Mode | Definition |
 |---|---|
 | loaded | The operation completed and content is present — the resting state. |
@@ -83,92 +179,52 @@ One-line definition of every mode. Meta-terms (*mode*, *collection*, *variable*)
 | empty | The operation completed successfully but returned no content. |
 | failed | The operation did not complete — it errored (e.g. network or data error). |
 
-### status · state
-| Mode | Definition |
-|---|---|
-| none | No status signal active — the element carries no semantic meaning. |
-| info | Neutral, informational meaning. |
-| success | A positive outcome — e.g. validation passed. |
-| warning | A cautionary meaning; not used for validation errors. |
-| critical | A negative outcome — an error. |
-| fatal | The most severe negative meaning — e.g. an Infobox-level failure. |
+### `CMP_button`
 
-### selection · state
 | Mode | Definition |
 |---|---|
-| unselected | The element is not chosen. |
-| selected | A persistent choice — the element stays chosen, or its associated view is active. |
-| indeterminate | A mixed / partial selection (e.g. a checkbox group); announced to screen readers as "partially checked". |
+| primary | The main action — highest prominence in the action hierarchy. |
+| secondary | A supporting action — medium prominence. |
+| tertiary | The lowest-prominence action. |
 
-### interaction · state
-| Mode | Definition |
-|---|---|
-| regular | The resting state — no interaction feedback. |
-| hover | The pointer is over an enabled element, signalling it is interactive; not reachable by keyboard or touch. |
-| active | The transient state while the element is pressed — between hover and release (a.k.a. pressed / down). |
+### `CMP_link`
 
-### focus · state
 | Mode | Definition |
 |---|---|
-| unfocused | The element does not hold input focus. |
-| focused | The element holds input focus and is ready to receive input; triggered by mouse, touch or keyboard. |
+| standard | An unvisited link. |
+| visited | A link the user has already followed; colour-coded to aid navigation history. |
 
-### display · state
-| Mode | Definition |
-|---|---|
-| enabled | Focusable and editable — available for interaction. |
-| disabled | Not focusable and not editable; text may or may not be copyable. |
-| read_only | Focusable but not editable; text may or may not be copyable. |
+### `CMP_input`
 
-### ui_scale · dimension
 | Mode | Definition |
 |---|---|
-| sm | Small — compact component dimensions, for data-heavy interfaces. |
-| md | Medium — the default component size. |
-| lg | Large — generous component dimensions, for accessibility and marketing contexts. |
-
-### density · dimension
-| Mode | Definition |
-|---|---|
-| compact | Minimal outer spacing — maximum information density (multiplier 0.75). |
-| standard | Balanced outer spacing — the default (multiplier 1.0). |
-| spacious | Generous outer spacing — breathing room for focus-intensive tasks (multiplier 1.5). |
-
-### typography-context · typography
-| Mode | Definition |
-|---|---|
-| interface | Compact typography for UI elements — navigation, forms, controls. |
-| prose | Generous typography for reading content — articles, documentation, marketing. |
-
-### viewport · environment
-| Mode | Definition |
-|---|---|
-| desktop | Viewport ≥ 768px — standard scaling. |
-| mobile | Viewport < 768px — applies a 1.25× scaling multiplier for touch. |
+| required | The field must be filled before the form can be submitted. |
+| autofilled | The value was populated automatically by the browser or operating system. |
+| aifilled | The value was populated or suggested by an AI assistant. |
 
 ---
 
 ## Component × collection matrix (Button example)
 
-| Button type | lightness | emphasis | surface | intent | process | status | selection | interaction | focus | display |
+| Button type | COR_lightness | COR_emphasis | COR_scale | STS_availability | STS_interaction | STS_focus | STS_process | STS_feedback | STS_selection | CMP_button |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| button_icon_label | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ |
-| button_icon | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ |
-| button_teenage | ✓ | ✓ | ✓ | ~ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ |
-| button_navigation | ✓ | ✓ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ |
-| button_segmented | ✓ | ✓ | ✓ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ |
-| button_toggle | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ |
-| button_split | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ |
+| button_icon_label | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
+| button_icon | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
+| button_teenage | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✗ | ~ |
+| button_navigation | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✗ |
+| button_segmented | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✗ |
+| button_toggle | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ |
+| button_split | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
 
-✓ uses · ✗ not used · ~ limited. No button uses `status` (buttons carry no status). A button is flat — it reads `surface`, never elevates itself. Per-type detail: each button's `modes.md` under `04-components/01-button/`.
+✓ uses · ✗ not used · ~ limited. No button uses `STS_feedback` (buttons carry no feedback signal — `STS_process` only). `STS_availability` excludes `read_only` for all buttons (inputs only). Per-type detail: each button's `modes.md` under `04-components/01-button/`.
 
 ---
 
 ## Rules
 
-- Every button: `status` unused (buttons carry no status — `process` only); `display` excludes `read_only` (inputs only).
-- `button_navigation` references **static** dimension tokens — the master-layout must not be size-modable.
-- `button_split`'s dropdown has an expanded/collapsed state — per Confluence documented with the component, not as a core state level.
+- Every button: `STS_feedback` unused; `STS_availability` excludes `read_only` (inputs only).
+- `button_navigation` references **static** dimension tokens — must not be scale-modable (`COR_scale` excluded).
+- `button_split`'s dropdown has an expanded/collapsed state — documented with the component, not as a core state level.
 
 ---
 
@@ -194,18 +250,19 @@ WCAG does **not** forbid focusable disabled elements — it requires visible foc
 | Menu / tab / listbox / tree item | sometimes | `aria-disabled="true"` if discoverability is needed |
 | Custom component | depends | `aria-disabled="true"` only if it should stay focusable |
 
-**Consequence:** all `button_*` are standard controls → native `disabled` → not focusable, so `display = disabled` **excludes** `focus`.
+**Consequence:** all `button_*` are standard controls → native `disabled` → not focusable, so `STS_availability = disabled` **excludes** `STS_focus = focused`.
 
-Composite-widget items are the exception. A disabled item inside a menu, tab list, listbox or tree is marked `aria-disabled="true"` (not the native attribute), so it **stays in the keyboard path** — arrow keys still land on it, letting the user reach it and hear that it is unavailable. For such an item `focus` keeps resolving even while `display = disabled`. Example: a disabled item in a dropdown menu can be `disabled` **and** `focused` at the same time — it shows a focus indicator while the user arrows past it, but pressing Enter does nothing.
+Composite-widget items are the exception. A disabled item inside a menu, tab list, listbox or tree is marked `aria-disabled="true"` — it stays in the keyboard path so the user can reach it and hear that it is unavailable. Such an item can be `disabled` **and** `focused` at the same time.
 
 ---
 
 ## Open decisions
 
-- [ ] Naming: `active` vs `pressed`
+- [ ] Naming: `active` vs `pressed` (`STS_interaction`)
 - [ ] Naming: Figma focus boolean — "Focus" vs "Focused"
-- [ ] `surface` mode names — `sunken_1` / `sunken_2`
-- [ ] Does `button_navigation` / `button_segmented` need `intent`?
-- [ ] `visited` state — link-specific; in the concept or link-only?
-- [x] ~~`system` merge~~ — resolved: split into `process` + `status` (orthogonal axes)
-- [x] ~~numeric `elevation` collection~~ — resolved: dropped. Elevation lives in component state tokens that alias `raised` / `overlay`, not in a mode.
+- [ ] `COR_viewport` — exact px breakpoint values for xs · sm · md · lg · xl · 2xl
+- [ ] Does `button_navigation` / `button_segmented` need `CMP_button`?
+- [x] ~~`visited` state~~ — resolved: `CMP_link · standard · visited`
+- [x] ~~`drag` mode~~ — resolved: included in `STS_interaction`
+- [x] ~~`system` merge~~ — resolved: split into `STS_process` + `STS_feedback` (orthogonal axes)
+- [x] ~~numeric `elevation` collection~~ — resolved: dropped; elevation lives in component state tokens that alias raised / overlay, not in a mode

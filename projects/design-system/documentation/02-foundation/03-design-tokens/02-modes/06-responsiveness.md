@@ -1,4 +1,4 @@
-# Responsive Tokens Documentation
+# COR_viewport · xs / sm / md / lg / xl / 2xl
 
 **Status:** Updated for current token architecture
 
@@ -8,16 +8,28 @@
 
 **Scope:** Tokenized Design System only. Pre Design System releases like Oblique R13 are not affected.
 
-**Viewport Strategy:** The tokenized system currently supports two viewports: desktop and mobile.
+**Viewport Strategy:** The tokenized system supports six breakpoints: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`.
+
+## Breakpoint modes
+
+`COR_viewport` defines six modes. Exact pixel thresholds are TBD — pending breakpoint decision.
+
+| Mode | Breakpoint | Notes |
+|---|---|---|
+| `xs` | TBD | Narrowest — smallest phones |
+| `sm` | TBD | Small phones |
+| `md` | TBD | Default — most phones landscape / small tablets |
+| `lg` | TBD | Tablets / large phones |
+| `xl` | TBD | Tablets landscape / small desktops |
+| `2xl` | TBD | Wide desktop |
+
+**Previous strategy (two viewports):** The old `desktop` / `mobile` split used a single 768px threshold. The new six-breakpoint model aligns with standard responsive conventions (Bootstrap, Tailwind). Exact thresholds require a team decision before implementation.
 
 ## Global Breakpoint Primitives
 
 ### `ob.g.viewport.breakpoint.*`
 
-The supported breakpoint primitive values defined in `src/lib/themes/01_global/themes-scoped/static.json`:
-
-- `ob.g.viewport.breakpoint.min` - 0px (base for mobile viewports)
-- `ob.g.viewport.breakpoint.max` - 768px (desktop threshold)
+Breakpoint primitive values defined in `src/lib/themes/01_global/themes-scoped/static.json`. Will expand from min/max to six values once thresholds are decided.
 
 **Note:** These are raw breakpoint values. Use the global responsive tokens below for actual development.
 
@@ -25,31 +37,11 @@ The supported breakpoint primitive values defined in `src/lib/themes/01_global/t
 
 ### `ob.g.modes.viewport`
 
-The primary token for media queries, defined in `src/lib/themes/01_global/themes-user/viewport/`:
-
-| Theme | Token | References | Resolved Value | Description |
-|-------|-------|------------|----------------|-------------|
-| Desktop | `ob.g.modes.viewport.desktop` | `{ob.g.viewport.breakpoint.max}` | `768px` | Applies when viewport is 768px and larger |
-| Mobile | `ob.g.modes.viewport.mobile` | `{ob.g.viewport.breakpoint.min}` | `0px` | No media query needed; applies to all viewports |
-
-### `ob.g.modes.viewport`
-
-Used primarily as a variable in Figma. Enables component variants to respond to the active viewport:
-
-- **Desktop theme:** `"desktop"`
-- **Mobile theme:** `"mobile"`
-
-**Usage example:**
-- Figma component "button/container"
-- Component variant: `viewport=mobile, buttons-order=primary-first, buttons=3, size=md, has-primary=true`
-- Effect: Enforces vertical stacking and full-width layout for buttons on mobile viewport only
+The primary token for media queries, defined in `src/lib/themes/01_global/themes-user/viewport/`. Token files will expand from `desktop.json` / `mobile.json` to `xs.json` through `2xl.json` once thresholds are finalised.
 
 ### `ob.g.viewport.multiplier`
 
-Responsive scaling multiplier that adjusts based on viewport:
-
-- **Desktop theme:** `4` (standard scale)
-- **Mobile theme:** `5` (1.25x larger for touch accessibility)
+Responsive scaling multiplier — currently two values (desktop: `4`, mobile: `5`). Will be extended per breakpoint once the six-mode model is adopted.
 
 ## Token File Structure
 

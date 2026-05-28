@@ -1,4 +1,4 @@
-# Lightness Mode (Light/Dark)
+# COR_lightness · light / dark
 
 **User preference mode switching between light and dark themes**
 

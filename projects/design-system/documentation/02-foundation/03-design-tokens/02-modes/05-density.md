@@ -1,4 +1,4 @@
-# Density System Specification
+# COR_density · compact / standard / spacious
 **Date:** November 3, 2025  
 **Version:** v2.0
 **Status:** Implementation Ready
@@ -16,19 +16,19 @@ This concept is based on  [spacing and density research](https://confluence.bit.
 
 Density mode works independently alongside other modes. For complete understanding of how density interacts with ui_scale and typography-context modes, see [Modes Interplay](./99-modes-interplay.md).
 
-## Scope & Distinction: Density vs UI Scale modes
+## Scope & Distinction: COR_density vs COR_scale
 
 ### **Clear mode Boundaries**
 To avoid confusion about what impacts component sizing, we establish clear **responsibility patterns** between our two primary scaling systems:
 
-**UI Scale mode controls** individual component dimensions and affects primarily **Molecules** (following Atomic Design principles):
+**COR_scale controls** individual component dimensions and affects primarily **Molecules** (following Atomic Design principles):
 - **Button**, **Pills**, **Tags**, **Inputs** - individual component sizing (sm/md/lg)
 - **Control**: System consumer can override the default component size based on contextual importance
 
-**Density mode controls** spacing and layout density, primarily affecting **Data components and some Organisms**:
+**COR_density controls** spacing and layout density, primarily affecting **Data components and some Organisms**:
 - **Tables**, **Lists**, **Forms** - container spacing and layout density
 - **Purpose**: Information efficiency and screen real estate optimization  
-- **Control**: System mode defined by product designer to match product needs (compact/comfortable/spacious). Unlike Lightness modes (light/dark), density is not offered as an end-user switch, though products may optionally add this in application settings for specific use cases. In practice, product designers select the appropriate density **variable mode** in Figma's right panel when designing their interfaces.
+- **Control**: System mode defined by product designer to match product needs (compact/comfortable/spacious). Unlike `COR_lightness` (light/dark), density is not offered as an end-user switch, though products may optionally add this in application settings for specific use cases. In practice, product designers select the appropriate density **variable mode** in Figma's right panel when designing their interfaces.
 
 ### **What Density Controls vs What It Doesn't**
 **✅ Density Controls:**
@@ -40,7 +40,7 @@ To avoid confusion about what impacts component sizing, we establish clear **res
 - **Specific areas**: Section spacing, card gaps, component margins
 
 **❌ Density Does NOT Control:**
-- **Typography density** - this is controlled by typography-context mode (interface/prose)
+- **Typography density** - this is controlled by `COR_typography` (interface/prose)
 - **Internal component padding** or inset spacing within individual components
 
 ### **Density-Specific Component Behavior**

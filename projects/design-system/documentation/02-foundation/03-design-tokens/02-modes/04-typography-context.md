@@ -1,4 +1,4 @@
-# Typography-Context Mode
+# COR_typography · interface / prose
 
 Typography contexts for interface vs. prose content.
 

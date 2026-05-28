@@ -1,4 +1,4 @@
-# Emphasis Mode (High/Low)
+# COR_emphasis · high / low
 
 **Design context mode for managing emphasis levels in interface elements**
 

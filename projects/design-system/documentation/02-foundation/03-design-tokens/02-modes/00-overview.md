@@ -4,20 +4,23 @@ Navigation hub for the mode documentation in this folder.
 
 ## Master reference
 
-**[Mode collections & resolution chain](./98-collections-and-resolution-chain.md)** — the single source of truth: every mode collection, how the colour/state chain resolves, the dimension/typography modes, per-mode definitions, and which component uses which.
+**[Mode collections & resolution chain](./98-collections-and-resolution-chain.md)** — the single source of truth: every mode collection (COR_ / STS_ / CMP_), the full resolution chain, per-mode definitions, and which component uses which.
 
 ## Per-mode docs
 
-- [Lightness](./01-lightness.md) — light / dark theme
-- [Emphasis](./02-emphasis.md) — high / low emphasis
-- [UI Scale](./03-ui-scale.md) — sm / md / lg component sizing
-- [Typography-Context](./04-typography-context.md) — interface / prose text
-- [Density](./05-density.md) — compact / standard / spacious spacing
-- [Responsiveness](./06-responsiveness.md) — desktop / mobile viewport
+### Core (`COR_`)
+- [COR_lightness](./01-lightness.md) — light · dark
+- [COR_emphasis](./02-emphasis.md) — high · low
+- [COR_scale](./03-ui-scale.md) — sm · md · lg component sizing
+- [COR_typography](./04-typography-context.md) — interface · prose text
+- [COR_density](./05-density.md) — compact · standard · spacious spacing
+- [COR_viewport](./06-responsiveness.md) — xs · sm · md · lg · xl · 2xl
+
+### Modes interplay
 - [Modes interplay](./99-modes-interplay.md) — how modes interact
 
 ## How modes work
 
-**Mode switching:** user modes (light/dark) switch at the S1 layer through file selection; components consume `ob.s` semantic tokens that reference different S1 files based on the active mode.
+**Mode switching:** a mode set on a parent frame cascades to all descendant components that consume that collection. `COR_` and `STS_` collections cascade; `CMP_` collections are component-scoped and do not cascade.
 
-**Mode resolution:** when multiple files define the same token, the last file loaded wins ("last wins").
+**Mode resolution:** when multiple collections define an alias for the same token, the collection closest to the component (furthest down the chain) wins ("last wins").

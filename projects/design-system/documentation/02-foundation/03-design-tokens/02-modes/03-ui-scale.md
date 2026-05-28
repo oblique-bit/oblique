@@ -1,4 +1,4 @@
-# UI Scale Mode
+# COR_scale · sm / md / lg
 **Date:** September 17, 2025  
 **Version:** v1.0 - Extracted from combined density-size concept  
 **Status:** Done in https://github.com/oblique-bit/oblique/tree/tokens-develop-02.05
@@ -45,9 +45,9 @@ This document outlines the **UI Scale** mode system for component scaling throug
 - **Determines size of components** (primarily when grouped, in relation and context)
 
 ### **Implementation**
-- **Figma**: Variable collection with modes `sm`, `md`, `lg`
+- **Figma**: Variable collection `COR_scale` with modes `sm`, `md`, `lg`
 - **Tokens Studio**: Theme group with themes `sm`, `md`, `lg`
-- **Current naming**: Uses `ui_scale` theme group in `$themes.json` (located at `/src/lib/themes/`)
+- **Current naming**: Uses `COR_scale` theme group in `$themes.json` (located at `/src/lib/themes/`)
 
 ### **Shared component sizes philosophy**
 Shared sizes are beneficial for:
