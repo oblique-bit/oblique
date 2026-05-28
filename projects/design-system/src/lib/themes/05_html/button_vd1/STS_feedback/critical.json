@@ -1,0 +1,68 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_chain": {
+          "system": {
+            "bg": {
+              "rest": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.bg.rest}",
+                "$description": "button_vd1 - system layer (pass-through) - STS_feedback:critical"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.bg.hover}",
+                "$description": "button_vd1 - system layer (pass-through) - STS_feedback:critical"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.bg.active}",
+                "$description": "button_vd1 - system layer (pass-through) - STS_feedback:critical"
+              }
+            },
+            "fg": {
+              "rest": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.fg.rest}",
+                "$description": "button_vd1 - system layer (pass-through) - STS_feedback:critical"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.fg.hover}",
+                "$description": "button_vd1 - system layer (pass-through) - STS_feedback:critical"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.fg.active}",
+                "$description": "button_vd1 - system layer (pass-through) - STS_feedback:critical"
+              }
+            },
+            "border": {
+              "rest": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.border.rest}",
+                "$description": "button_vd1 - system layer (pass-through) - STS_feedback:critical"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.border.hover}",
+                "$description": "button_vd1 - system layer (pass-through) - STS_feedback:critical"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.h.button_vd1._chain.intent.border.active}",
+                "$description": "button_vd1 - system layer (pass-through) - STS_feedback:critical"
+              }
+            }
+          }
+        },
+        "opacity": {
+          "$type": "number",
+          "$value": 100,
+          "$description": "button_vd1 opacity percent - STS_feedback:critical"
+        }
+      }
+    }
+  }
+}

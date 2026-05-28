@@ -1,0 +1,13 @@
+{
+  "ob": {
+    "h": {
+      "link": {
+        "_stub": {
+          "$type": "boolean",
+          "$value": true,
+          "$description": "CMP_link:visited \u2014 stub pending link_vd1 implementation"
+        }
+      }
+    }
+  }
+}

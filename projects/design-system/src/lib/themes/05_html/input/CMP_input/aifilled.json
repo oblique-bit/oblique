@@ -1,0 +1,13 @@
+{
+  "ob": {
+    "h": {
+      "input": {
+        "_stub": {
+          "$type": "boolean",
+          "$value": true,
+          "$description": "CMP_input:aifilled \u2014 stub pending input_vd1 implementation"
+        }
+      }
+    }
+  }
+}

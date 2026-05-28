@@ -3141,7 +3141,8 @@
       "05_html/button_vd1/STS_focus/unfocused": "enabled",
       "05_html/button_vd1/STS_interaction/rest": "source",
       "05_html/button_vd1/STS_interaction/hover": "source",
-      "05_html/button_vd1/STS_interaction/active": "source"
+      "05_html/button_vd1/STS_interaction/active": "source",
+      "05_html/button_vd1/STS_interaction/drag": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3156,7 +3157,8 @@
       "05_html/button_vd1/STS_focus/focused": "enabled",
       "05_html/button_vd1/STS_interaction/rest": "source",
       "05_html/button_vd1/STS_interaction/hover": "source",
-      "05_html/button_vd1/STS_interaction/active": "source"
+      "05_html/button_vd1/STS_interaction/active": "source",
+      "05_html/button_vd1/STS_interaction/drag": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3229,7 +3231,7 @@
     "$figmaCollectionId": "",
     "$figmaModeId": "",
     "$figmaVariableReferences": {},
-    "group": "canton"
+    "group": "COR_canton"
   },
   {
     "id": "canton-zurich",
@@ -3241,6 +3243,282 @@
     "$figmaCollectionId": "",
     "$figmaModeId": "",
     "$figmaVariableReferences": {},
-    "group": "canton"
+    "group": "COR_canton"
+  },
+  {
+    "id": "vd1-display-read_only",
+    "name": "read_only",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_availability/read_only": "enabled",
+      "05_html/button_vd1/STS_focus/unfocused": "source",
+      "05_html/button_vd1/STS_focus/focused": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_availability"
+  },
+  {
+    "id": "vd1-interaction-drag",
+    "name": "drag",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_interaction/drag": "enabled",
+      "05_html/button_vd1/STS_process/loading": "source",
+      "05_html/button_vd1/STS_process/loaded": "source",
+      "05_html/button_vd1/STS_process/empty": "source",
+      "05_html/button_vd1/STS_process/failed": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_interaction"
+  },
+  {
+    "id": "vd1-selection-selected",
+    "name": "selected",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_selection/selected": "enabled",
+      "05_html/button_vd1/STS_interaction/rest": "source",
+      "05_html/button_vd1/STS_interaction/hover": "source",
+      "05_html/button_vd1/STS_interaction/active": "source",
+      "05_html/button_vd1/STS_interaction/drag": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_selection"
+  },
+  {
+    "id": "vd1-selection-unselected",
+    "name": "unselected",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_selection/unselected": "enabled",
+      "05_html/button_vd1/STS_interaction/rest": "source",
+      "05_html/button_vd1/STS_interaction/hover": "source",
+      "05_html/button_vd1/STS_interaction/active": "source",
+      "05_html/button_vd1/STS_interaction/drag": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_selection"
+  },
+  {
+    "id": "vd1-selection-indeterminate",
+    "name": "indeterminate",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_selection/indeterminate": "enabled",
+      "05_html/button_vd1/STS_interaction/rest": "source",
+      "05_html/button_vd1/STS_interaction/hover": "source",
+      "05_html/button_vd1/STS_interaction/active": "source",
+      "05_html/button_vd1/STS_interaction/drag": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_selection"
+  },
+  {
+    "id": "vd1-feedback-info",
+    "name": "info",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_feedback/info": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_feedback"
+  },
+  {
+    "id": "vd1-feedback-resolved",
+    "name": "resolved",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_feedback/resolved": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_feedback"
+  },
+  {
+    "id": "vd1-feedback-critical",
+    "name": "critical",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_feedback/critical": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_feedback"
+  },
+  {
+    "id": "vd1-feedback-attention",
+    "name": "attention",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_feedback/attention": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_feedback"
+  },
+  {
+    "id": "vd1-feedback-fatal",
+    "name": "fatal",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/STS_feedback/fatal": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "STS_feedback"
+  },
+  {
+    "id": "cmp-link-standard",
+    "name": "standard",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/link/CMP_link/standard": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "CMP_link"
+  },
+  {
+    "id": "cmp-link-visited",
+    "name": "visited",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/link/CMP_link/visited": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "CMP_link"
+  },
+  {
+    "id": "cmp-input-required",
+    "name": "required",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/input/CMP_input/required": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "CMP_input"
+  },
+  {
+    "id": "cmp-input-autofilled",
+    "name": "autofilled",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/input/CMP_input/autofilled": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "CMP_input"
+  },
+  {
+    "id": "cmp-input-aifilled",
+    "name": "aifilled",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/input/CMP_input/aifilled": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "CMP_input"
+  },
+  {
+    "id": "cor-viewport-xs",
+    "name": "xs",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/COR_viewport/xs": "enabled",
+      "01_global/viewport": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_viewport"
+  },
+  {
+    "id": "cor-viewport-sm",
+    "name": "sm",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/COR_viewport/sm": "enabled",
+      "01_global/viewport": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_viewport"
+  },
+  {
+    "id": "cor-viewport-md",
+    "name": "md",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/COR_viewport/md": "enabled",
+      "01_global/viewport": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_viewport"
+  },
+  {
+    "id": "cor-viewport-lg",
+    "name": "lg",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/COR_viewport/lg": "enabled",
+      "01_global/viewport": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_viewport"
+  },
+  {
+    "id": "cor-viewport-xl",
+    "name": "xl",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/COR_viewport/xl": "enabled",
+      "01_global/viewport": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_viewport"
+  },
+  {
+    "id": "cor-viewport-2xl",
+    "name": "2xl",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "05_html/button_vd1/COR_viewport/2xl": "enabled",
+      "01_global/viewport": "source"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_viewport"
   }
 ]

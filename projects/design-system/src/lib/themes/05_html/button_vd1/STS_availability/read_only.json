@@ -1,0 +1,32 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "{ob.h.button_vd1._chain.focus.bg}",
+            "$description": "button_vd1 bg - availability:read_only (pass-through; component binds this leaf)"
+          },
+          "fg": {
+            "$type": "color",
+            "$value": "{ob.h.button_vd1._chain.focus.fg}",
+            "$description": "button_vd1 fg - availability:read_only (pass-through; component binds this leaf)"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{ob.h.button_vd1._chain.focus.border}",
+            "$description": "button_vd1 border - availability:read_only (pass-through; component binds this leaf)"
+          }
+        },
+        "focus_ring": {
+          "visible": {
+            "$type": "boolean",
+            "$value": "false",
+            "$description": "button_vd1 focus ring visibility - availability:read_only (read-only is not interactively focusable)"
+          }
+        }
+      }
+    }
+  }
+}

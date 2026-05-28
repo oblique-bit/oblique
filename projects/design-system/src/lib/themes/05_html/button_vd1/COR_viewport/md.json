@@ -1,0 +1,13 @@
+{
+  "ob": {
+    "h": {
+      "button_vd1": {
+        "_stub": {
+          "$type": "boolean",
+          "$value": true,
+          "$description": "COR_viewport:md \u2014 stub pending button_vd1 responsive token implementation"
+        }
+      }
+    }
+  }
+}
