@@ -38,6 +38,28 @@
             "$value": ".ob-lightness-dark"
           }
         },
+        "surface": {
+          "canvas": {
+            "$type": "other",
+            "$value": "default"
+          },
+          "sunken_1": {
+            "$type": "other",
+            "$value": ".ob-surface-sunken-1"
+          },
+          "sunken_2": {
+            "$type": "other",
+            "$value": ".ob-surface-sunken-2"
+          },
+          "raised": {
+            "$type": "other",
+            "$value": ".ob-surface-raised"
+          },
+          "overlay": {
+            "$type": "other",
+            "$value": ".ob-surface-overlay"
+          }
+        },
         "s2_emphasis": {
           "high": {
             "$type": "other",

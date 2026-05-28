@@ -29,23 +29,24 @@ Collections resolve **top → down**: top = most foundational (global theme), bo
 | 1 | `COR_brand` | app · marketing |
 | 2 | `COR_canton` | confederation · zurich |
 | 3 | `COR_lightness` | light · dark |
-| 4 | `COR_emphasis` | high · low |
-| 5 | `COR_viewport` | xs · sm · md · lg · xl · 2xl |
-| 6 | `COR_scale` | sm · md · lg |
-| 7 | `COR_density` | compact · standard · spacious |
-| 8 | `COR_motion` | on · off |
-| 9 | `COR_typography` | interface · prose |
+| 4 | `COR_surface` | canvas · sunken_1 · sunken_2 · raised · overlay |
+| 5 | `COR_emphasis` | high · low |
+| 6 | `COR_viewport` | xs · sm · md · lg · xl · 2xl |
+| 7 | `COR_scale` | sm · md · lg |
+| 8 | `COR_density` | compact · standard · spacious |
+| 9 | `COR_motion` | on · off |
+| 10 | `COR_typography` | interface · prose |
 
 ### State collections
 
 | # | Collection | Modes |
 |---|---|---|
-| 9 | `STS_availability` | enabled · disabled · read_only |
-| 10 | `STS_interaction` | rest · active · hover · drag |
-| 11 | `STS_selection` | selected · unselected · indeterminate |
-| 12 | `STS_focus` | focused · unfocused |
-| 13 | `STS_feedback` | info · resolved · critical · attention · fatal |
-| 14 | `STS_process` | loaded · loading · empty · failed |
+| 11 | `STS_availability` | enabled · disabled · read_only |
+| 12 | `STS_interaction` | rest · active · hover · drag |
+| 13 | `STS_selection` | selected · unselected · indeterminate |
+| 14 | `STS_focus` | focused · unfocused |
+| 15 | `STS_feedback` | info · resolved · critical · attention · fatal |
+| 16 | `STS_process` | loaded · loading · empty · failed |
 
 ### Component collections
 
@@ -85,6 +86,18 @@ One-line definition of every mode.
 |---|---|
 | light | Light theme — bright surfaces, dark text; for well-lit environments. |
 | dark | Dark theme — dark surfaces, light text; eases eye strain in low light. |
+
+### `COR_surface`
+
+| Mode | Definition |
+|---|---|
+| canvas | The page itself — baseline content surface. Default. Components here carry shadow to lift above it. |
+| sunken_1 | Recessed region (light gray). Shadow weakens; components use a smaller shadow. |
+| sunken_2 | Deep recess (mid-gray). Shadow cannot carry lift; components switch to border instead. |
+| raised | In-layout elevated surface. A component on a raised parent uses its own tokens to lift above it. |
+| overlay | Out-of-layout floating surface. Component tokens are context-independent; `COR_surface` is not consumed. |
+
+**Rule:** `COR_surface` is available in the resolution chain and cascades from container frames to children. Whether a component's tokens vary by it is a per-component decision made at token-authoring time — the system offers the axis, the component designer decides whether to consume it.
 
 ### `COR_emphasis`
 
