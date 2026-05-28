@@ -1,13 +1,19 @@
 import {plugin, parser} from 'typescript-eslint';
 import {processInlineTemplates, templatePlugin, tsPlugin, templateParser} from 'angular-eslint';
 
-export default [
+export const eslintObliquePlugins = {
+	'@typescript-eslint': plugin,
+	'@angular-eslint': tsPlugin,
+};
+
+export const eslintObliqueTemplatePlugins = {
+	'@angular-eslint/template': templatePlugin,
+};
+
+export const eslintConfigOblique = [
 	{
 		files: ['**/*.ts'],
-		plugins: {
-			'@typescript-eslint': plugin,
-			'@angular-eslint': tsPlugin,
-		},
+		plugins: eslintObliquePlugins,
 		processor: processInlineTemplates,
 		languageOptions: {
 			parser,
@@ -765,9 +771,8 @@ export default [
 	{
 		files: ['**/*.spec.ts'],
 		plugins: {
-			'@typescript-eslint': plugin,
-			'@angular-eslint': tsPlugin,
-			'@angular-eslint/template': templatePlugin, // because tests can have inline template
+			...eslintObliquePlugins,
+			...eslintObliqueTemplatePlugins, // because tests can have inline template
 		},
 		rules: {
 			/**
@@ -867,9 +872,7 @@ export default [
 	},
 	{
 		files: ['**/*.html'],
-		plugins: {
-			'@angular-eslint/template': templatePlugin,
-		},
+		plugins: eslintObliqueTemplatePlugins,
 		languageOptions: {
 			parser: templateParser,
 		},
