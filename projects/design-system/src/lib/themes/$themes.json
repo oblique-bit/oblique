@@ -3233,7 +3233,7 @@
       "03_semantic/color/channel/app": "enabled",
       "02_primitive/color": "source",
       "02_primitive/canton/confederation": "source",
-      "02_primitive/canton/zurich": "source"
+      "02_primitive/canton/ZH": "source"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
@@ -3266,11 +3266,311 @@
     "group": "COR_canton"
   },
   {
-    "id": "canton-zurich",
-    "name": "zurich",
+    "id": "canton-ZH",
+    "name": "ZH",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "02_primitive/canton/zurich": "enabled"
+      "02_primitive/canton/ZH": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-BE",
+    "name": "BE",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/BE": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-LU",
+    "name": "LU",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/LU": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-UR",
+    "name": "UR",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/UR": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-SZ",
+    "name": "SZ",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/SZ": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-OW",
+    "name": "OW",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/OW": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-NW",
+    "name": "NW",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/NW": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-GL",
+    "name": "GL",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/GL": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-ZG",
+    "name": "ZG",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/ZG": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-FR",
+    "name": "FR",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/FR": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-SO",
+    "name": "SO",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/SO": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-BS",
+    "name": "BS",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/BS": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-BL",
+    "name": "BL",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/BL": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-SH",
+    "name": "SH",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/SH": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-AR",
+    "name": "AR",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/AR": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-AI",
+    "name": "AI",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/AI": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-SG",
+    "name": "SG",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/SG": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-GR",
+    "name": "GR",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/GR": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-AG",
+    "name": "AG",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/AG": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-TG",
+    "name": "TG",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/TG": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-TI",
+    "name": "TI",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/TI": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-VD",
+    "name": "VD",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/VD": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-VS",
+    "name": "VS",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/VS": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-NE",
+    "name": "NE",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/NE": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-GE",
+    "name": "GE",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/GE": "enabled"
+    },
+    "$figmaCollectionId": "",
+    "$figmaModeId": "",
+    "$figmaVariableReferences": {},
+    "group": "COR_canton"
+  },
+  {
+    "id": "canton-JU",
+    "name": "JU",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/canton/JU": "enabled"
     },
     "$figmaCollectionId": "",
     "$figmaModeId": "",
