@@ -39,9 +39,7 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			addProxy(options.proxy),
 			addJest(options.jest),
 			updateEditorConfig(options.eslint),
-			addEslint(options.eslint),
 			addPrettier(options.eslint),
-			overwriteEslintRC(options.eslint, options.prefix),
 			addHusky(options.husky),
 			addEnvironmentFiles(options.environments, options.banner),
 			excludeEnvironmentFiles(),
@@ -192,29 +190,6 @@ function updateEditorConfig(eslint: boolean): Rule {
 	});
 }
 
-function addEslint(eslint: boolean): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (eslint) {
-			infoMigration(context, 'Toolchain: Adding "eslint"');
-			[
-				'@angular-eslint/eslint-plugin',
-				'@angular-eslint/eslint-plugin-template',
-				'@angular-eslint/template-parser',
-				'@angular-eslint/utils',
-				'@typescript-eslint/eslint-plugin',
-				'@typescript-eslint/parser',
-				'angular-eslint',
-				'eslint',
-			].forEach(dependency => {
-				addDevDependency(tree, dependency);
-			});
-			addScript(tree, 'lint', 'ng lint');
-			addLinting(tree);
-		}
-		return tree;
-	});
-}
-
 function addPrettier(eslint: boolean): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (eslint) {
@@ -228,34 +203,6 @@ function addPrettier(eslint: boolean): Rule {
 		}
 		return tree;
 	});
-}
-
-function addLinting(tree: Tree): void {
-	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'builder'], '@angular-eslint/builder:lint');
-	setOrCreateAngularProjectsConfig(
-		tree,
-		['architect', 'lint', 'options', 'lintFilePatterns'],
-		['src/**/*.ts', 'src/**/*.html']
-	);
-	addFile(tree, 'tsconfig.lint.json', getTemplate(tree, 'default-tsconfig.lint.json'));
-}
-
-function overwriteEslintRC(eslint: boolean, prefix: string): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (eslint) {
-			infoMigration(context, 'Toolchain: overwrite "eslint.config.mjs"');
-			deleteFile(tree, 'eslint.config.js');
-			writeFile(tree, 'eslint.config.mjs', formatEsLintRC(tree, prefix));
-		}
-		return tree;
-	});
-}
-
-function formatEsLintRC(tree: Tree, prefix: string): string {
-	const eslintFile = getTemplate(tree, 'default-eslint.config.mjs.config');
-	return prefix
-		? eslintFile.replace(/APP_PREFIX/g, prefix)
-		: eslintFile.replace(/\s*"@angular-eslint\/(?:component|directive)-selector": \[.*?],/gs, '');
 }
 
 function addHusky(husky: boolean): Rule {
