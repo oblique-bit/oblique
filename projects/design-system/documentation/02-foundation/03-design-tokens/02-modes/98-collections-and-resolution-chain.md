@@ -1,6 +1,6 @@
 # Mode collections & resolution chain
 
-**Status:** DRAFT — taxonomy complete 2026-05-28; collection names carry category prefixes (COR_ / STS_ / CMP_).
+**Status:** DRAFT — taxonomy complete 2026-05-28; STS_ split into STS_ (user-driven) + SYS_ (system-driven) preliminary 2026-05-29; collection names carry category prefixes (COR_ / STS_ / SYS_ / CMP_).
 **Purpose:** single source of truth for every mode collection — the resolution chain, per-mode definitions, and which component uses which.
 **Related:** the States concept (`documentation/02-foundation/04-states.md`).
 
@@ -13,7 +13,8 @@ The prefix on every collection name signals which category it belongs to. Catego
 | Prefix | Category | What it covers |
 |---|---|---|
 | `COR_` | core | Environment, dimensions, typography — set globally or per section; cascades down |
-| `STS_` | states | Interactive behaviour — availability, interaction, selection, focus, feedback, process; cascades down |
+| `STS_` | states | **User-driven** interactive states — interaction, selection, focus; cascades down |
+| `SYS_` | system | **System / app-driven** signals — access, process, feedback; cascades down |
 | `CMP_` | component | Component-specific axes — not cascading; scoped to one component type |
 
 ---
@@ -39,16 +40,21 @@ Collections resolve **top → down**: top = most foundational (global theme), bo
 | 11 | `COR_typography` | interface · prose |
 | 12 | `COR_language` | DE · FR · IT · EN · RM |
 
-### State collections
+### State collections (user-driven)
 
 | # | Collection | Modes |
 |---|---|---|
-| 13 | `STS_availability` | enabled · disabled · read_only |
-| 14 | `STS_interaction` | rest · active · hover · drag |
-| 15 | `STS_selection` | selected · unselected · indeterminate |
-| 16 | `STS_focus` | focused · unfocused |
-| 17 | `STS_feedback` | info · resolved · critical · attention · fatal |
-| 18 | `STS_process` | loaded · loading · empty · failed |
+| 13 | `STS_interaction` | rest · active · hover · drag |
+| 14 | `STS_selection` | selected · unselected · indeterminate |
+| 15 | `STS_focus` | focused · unfocused |
+
+### System collections (system / app-driven)
+
+| # | Collection | Modes |
+|---|---|---|
+| 16 | `SYS_access` | enabled · disabled · read_only |
+| 17 | `SYS_process` | loaded · loading · empty · failed |
+| 18 | `SYS_feedback` | info · resolved · critical · attention · fatal |
 
 ### Component collections
 
@@ -60,7 +66,7 @@ Component collections are **not cascading** — they are scoped to one component
 | `CMP_link` | standard · visited |
 | `CMP_input` | required · autofilled · aifilled |
 
-**Note on `STS_process` and `STS_feedback`:** these two are orthogonal — a component can be `loading` and `critical` at the same time. One collection = one active mode, so they must remain separate. `STS_feedback` has no `none` mode — components that carry no feedback signal simply do not consume this collection.
+**Note on `SYS_process` and `SYS_feedback`:** these two are orthogonal — a component can be `loading` and `critical` at the same time. One collection = one active mode, so they must remain separate. `SYS_feedback` has no `none` mode — components that carry no feedback signal simply do not consume this collection.
 
 ---
 
@@ -191,7 +197,7 @@ One-line definition of every mode.
 | EN | English. |
 | RM | Romansh. |
 
-### `STS_availability`
+### `SYS_access`
 
 | Mode | Definition |
 |---|---|
@@ -223,7 +229,7 @@ One-line definition of every mode.
 | focused | The element holds input focus and is ready to receive input; triggered by mouse, touch or keyboard. |
 | unfocused | The element does not hold input focus. |
 
-### `STS_feedback`
+### `SYS_feedback`
 
 | Mode | Definition |
 |---|---|
@@ -235,7 +241,7 @@ One-line definition of every mode.
 
 Used by components that carry a semantic feedback signal: Infobox, Badge, Pill. Components that carry no feedback signal (e.g. Button) do not consume this collection.
 
-### `STS_process`
+### `SYS_process`
 
 | Mode | Definition |
 |---|---|
@@ -271,7 +277,7 @@ Used by components that carry a semantic feedback signal: Infobox, Badge, Pill. 
 
 ## Component × collection matrix (Button example)
 
-| Button type | COR_lightness | COR_emphasis | COR_scale | STS_availability | STS_interaction | STS_focus | STS_process | STS_feedback | STS_selection | CMP_button |
+| Button type | COR_lightness | COR_emphasis | COR_scale | SYS_access | STS_interaction | STS_focus | SYS_process | SYS_feedback | STS_selection | CMP_button |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | button_icon_label | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
 | button_icon | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
@@ -281,13 +287,13 @@ Used by components that carry a semantic feedback signal: Infobox, Badge, Pill. 
 | button_toggle | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ |
 | button_split | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
 
-✓ uses · ✗ not used · ~ limited. No button uses `STS_feedback` (buttons carry no feedback signal — `STS_process` only). `STS_availability` excludes `read_only` for all buttons (inputs only). Per-type detail: each button's `modes.md` under `04-components/01-button/`.
+✓ uses · ✗ not used · ~ limited. No button uses `SYS_feedback` (buttons carry no feedback signal — `SYS_process` only). `SYS_access` excludes `read_only` for all buttons (inputs only). Per-type detail: each button's `modes.md` under `04-components/01-button/`.
 
 ---
 
 ## Rules
 
-- Every button: `STS_feedback` unused; `STS_availability` excludes `read_only` (inputs only).
+- Every button: `SYS_feedback` unused; `SYS_access` excludes `read_only` (inputs only).
 - `button_navigation` references **static** dimension tokens — must not be scale-modable (`COR_scale` excluded).
 - `button_split`'s dropdown has an expanded/collapsed state — documented with the component, not as a core state level.
 
@@ -315,7 +321,7 @@ WCAG does **not** forbid focusable disabled elements — it requires visible foc
 | Menu / tab / listbox / tree item | sometimes | `aria-disabled="true"` if discoverability is needed |
 | Custom component | depends | `aria-disabled="true"` only if it should stay focusable |
 
-**Consequence:** all `button_*` are standard controls → native `disabled` → not focusable, so `STS_availability = disabled` **excludes** `STS_focus = focused`.
+**Consequence:** all `button_*` are standard controls → native `disabled` → not focusable, so `SYS_access = disabled` **excludes** `STS_focus = focused`.
 
 Composite-widget items are the exception. A disabled item inside a menu, tab list, listbox or tree is marked `aria-disabled="true"` — it stays in the keyboard path so the user can reach it and hear that it is unavailable. Such an item can be `disabled` **and** `focused` at the same time.
 
@@ -327,7 +333,9 @@ Composite-widget items are the exception. A disabled item inside a menu, tab lis
 - [ ] Naming: Figma focus boolean — "Focus" vs "Focused"
 - [ ] `COR_viewport` — exact px breakpoint values for xs · sm · md · lg · xl · 2xl
 - [ ] Does `button_navigation` / `button_segmented` need `CMP_button`?
+- [x] ~~`STS_availability` collection name~~ — resolved: `SYS_access` (10 chars vs 16; `STS_availability` parked as 2nd alt; `STS_display` rejected — CSS collision)
+- [x] ~~`STS_` umbrella for both user-driven and system-driven~~ — resolved (preliminary, 2026-05-29): split into `STS_` (user-driven: interaction, selection, focus) + `SYS_` (system / app-driven: access, process, feedback). Word "status" still does not appear in any name.
 - [x] ~~`visited` state~~ — resolved: `CMP_link · standard · visited`
 - [x] ~~`drag` mode~~ — resolved: included in `STS_interaction`
-- [x] ~~`system` merge~~ — resolved: split into `STS_process` + `STS_feedback` (orthogonal axes)
+- [x] ~~`system` merge~~ — resolved: split into `SYS_process` + `SYS_feedback` (orthogonal axes)
 - [x] ~~numeric `elevation` collection~~ — resolved: dropped; elevation lives in component state tokens that alias raised / overlay, not in a mode

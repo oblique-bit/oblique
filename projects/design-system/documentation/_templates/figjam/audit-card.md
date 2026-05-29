@@ -1,158 +1,255 @@
 # FigJam Audit Card — DR v2 Format
 
-Format spec for the naming-audit cards on the **States — Concept** board (file key `7k7SeWlhTycijN1TFo8SbI`, page `02 Audit – DR_V2`).
+Format spec for all naming-audit cards on the **States — Concept** board.
+
+**Board**: `7k7SeWlhTycijN1TFo8SbI`, page `02 Audit – DR_V2`
+
+**Template nodes** (live in `_templates` section):
+- `280:182` — Audit Card Template 0 – Overview
+- `214:402` — Audit Card Template 1.2 – Approved _(1.1 Proposed = same structure, amber badge)_
 
 ---
 
-## FigJam node structure
+## Two card types
 
-```
-SECTION  (card shell — grey fill, rounded, 1-column in outer section)
-├── SHAPE_WITH_TEXT  (badge — top-right corner, green or amber)
-└── TEXT             (all card content — single node, mixed styling)
-```
+| | Template 0 – Overview | Template 1 – Detail |
+|---|---|---|
+| **Purpose** | One per mode collection; axis-level summary | One per mode value or naming decision |
+| **ORTHOGONAL / COMBINES** | `ORTHOGONAL WITH` | `COMBINES WITH` |
+| **Last section** | `PURPOSE` | `DECISION INDEPENDENT` |
+| **COLLISION NOTE** | — | Optional — only when a naming clash must be called out |
+| **DS names** | Inter Bold blue, hyperlinked | Inter Bold blue, hyperlinked |
+| **Example** | `STS_access` axis card | `active` interaction-value card |
 
-Section shell:
-- `fills`: `rgb(245, 245, 245)` — `{r:0.96, g:0.96, b:0.96}`
-- `strokes`: `rgb(200, 188, 188)` — `{r:0.784, g:0.736, b:0.736}`
-- `cornerRadius`: 12
-
-Text node placement:
-- `x`: 40, `y`: 70
-- `width`: 596 (fixed), height auto-resizes
-- `lineHeight`: 150%
-
-Section height = `text.y + text.height + 40` (40 px bottom padding).
+Both types share the same shell, badge system, font scheme, and divider.
 
 ---
 
-## Required sections — in order
+## Shell
 
 ```
-<name>              Inter Bold 40   dark
-
-STATUS              Inter Bold 16   dark
-🟢 / 🟡 / ⏸  ...  Inter Regular 16 dark
-
-WHY                 Inter Bold 16   dark
-✓ …                Inter Bold 16   green  (bullet)
-  prose             Inter Regular 16 dark
-
-SOURCE              Inter Bold 16   dark
-  prose / DS names  Inter Regular 16 / Inter Bold 16 blue
-
-REJECTED ALTERNATIVES   Inter Bold 16   dark
-⊗ …                Inter Bold 16   red    (bullet)
-  mono name         Roboto Mono Regular 16 dark
-  —  prose          Inter Regular 16 dark
-
-COMBINES WITH  |  ORTHOGONAL WITH    Inter Bold 16  dark
-  (see below)
-
- ____…____          Inter Regular 16 dark   (divider)
-
-DECISION INDEPENDENT    Inter Bold 16  dark
-CSS  :pseudo            Inter Bold 16 blue + Roboto Mono Regular 16 blue
-What: prose             Inter Bold 16 dark  +  Inter Regular 16 dark
- ____…____
+SECTION  (card shell)
+├── SHAPE_WITH_TEXT  (status badge — top-right)
+└── TEXT             (all content — single node, mixed styling)
 ```
 
-**COMBINES WITH** — for individual state value cards (rest, hover, active…).  
-**ORTHOGONAL WITH** — for axis overview cards (availability, interaction…).
+| Property | Value | Figma API |
+|---|---|---|
+| Fill | white | `{ r:1, g:1, b:1 }` |
+| Stroke | light gray | `{ r:0.902, g:0.902, b:0.902 }` |
+| Corner radius | 12 | `cornerRadius: 12` |
+| Width | 668 | — |
+| Height | auto-fit | `maxBottom(children) + 58` |
+
+---
+
+## Text node
+
+| Property | Value |
+|---|---|
+| `x` | 40 |
+| `y` | 70 |
+| `width` | 596 (fixed) |
+| `height` | auto (`textAutoResize: 'HEIGHT'`) |
+| `lineHeight` | 150% (`{ unit: 'PERCENT', value: 150 }`) |
+
+Section height formula: `Math.ceil(max(c.y + c.height for c in children) + 58)`
 
 ---
 
 ## Font scheme
 
-| Segment type      | Family        | Style   | Size | Color  |
-|-------------------|---------------|---------|------|--------|
-| Card title        | Inter         | Bold    | 40   | dark   |
-| Section header    | Inter         | Bold    | 16   | dark   |
-| Body prose        | Inter         | Regular | 16   | dark   |
-| Technical name    | Roboto Mono   | Regular | 16   | dark   |
-| DS name (linked)  | Inter         | Bold    | 16   | blue   |
-| CSS pseudo (linked) | Roboto Mono | Regular | 16   | blue   |
-| ✓ bullet          | Inter         | Bold    | 16   | green  |
-| ⊗ bullet          | Inter         | Bold    | 16   | red    |
-| Divider           | Inter         | Regular | 16   | dark   |
+_Canonical as of 2026-05-28. "Simple" = Inter Medium; "Technical" = Roboto Mono Medium._
+
+| Segment | Family | Style | Size | Color |
+|---|---|---|---|---|
+| Card title | Inter | **Bold** | 40 | dark, **underlined** |
+| Section header | Inter | **Bold** | 16 | dark |
+| Body prose | Inter | **Medium** | 16 | dark |
+| Technical term | Roboto Mono | **Medium** | 16 | dark |
+| DS name (SOURCE) | Inter | **Bold** | 16 | blue, hyperlinked |
+| ✓ bullet | Inter | **Medium** | 16 | green |
+| ⊗ bullet | Inter | **Medium** | 16 | red |
+| Divider | Inter | **Medium** | 16 | gray |
+
+Card title always carries a hyperlink to the matching detail card, and **must be underlined** (`textDecoration: 'UNDERLINE'`). The underline is the visual signal that the title is a link. Apply it as a separate `setRangeTextDecoration` call _after_ the `setRangeTextDecoration(0, newLen, 'NONE')` braces step — not before, or the braces step will wipe it.
 
 ---
 
-## Color values (Figma plugin API)
+## Color values
 
 ```js
-DARK  = { r:0.12, g:0.12, b:0.12 }   // #1f1f1f — text
-BLUE  = { r:0.00, g:0.30, b:0.85 }   // #004dd9 — DS names, CSS pseudos
-GREEN = { r:0.20, g:0.65, b:0.30 }   // #33a64d — ✓ bullets
-RED   = { r:0.85, g:0.20, b:0.20 }   // #d93333 — ⊗ bullets
+DARK  = { r:0.12, g:0.12, b:0.12 }   // #1f1f1f  — text
+GRAY  = { r:0.70, g:0.70, b:0.70 }   // #b3b3b3  — divider line
+BLUE  = { r:0.00, g:0.30, b:0.85 }   // #004dd9  — DS names
+GREEN = { r:0.20, g:0.65, b:0.30 }   // #33a64d  — ✓ bullets
+RED   = { r:0.85, g:0.20, b:0.20 }   // #d93333  — ⊗ bullets
 ```
 
 ---
 
-## Status / badge system
+## Status badge (SHAPE_WITH_TEXT)
 
-| Status       | Emoji | Badge text         | Badge fill                      |
-|--------------|-------|--------------------|---------------------------------|
-| Approved     | 🟢    | `APPROVED BY D.R.` | `{r:0.549, g:0.859, b:0.588}`   |
-| Open         | 🟡    | `OPEN (Sn)`        | `{r:1.0, g:0.92, b:0.50}`      |
-| On hold      | ⏸     | `ON HOLD (Dn)`     | `{r:1.0, g:0.92, b:0.50}`      |
+Position: `x = section.width − badge.width − 20`, `y = 16`  
+Dimensions: 220 × 54
 
-Badge (SHAPE_WITH_TEXT) position: `x = section.width − badge.width − 20`, `y = 16`.
+| Status | Emoji in text | Badge text | Badge fill |
+|---|---|---|---|
+| Approved | 🟢 | `APPROVED BY D.R.` | `{ r:0.549, g:0.859, b:0.588 }` — green |
+| Proposed | 🟡 | `PROPOSED BY D.R.` | `{ r:1.000, g:0.920, b:0.500 }` — amber |
+| On hold | ⏸ | `ON HOLD (Dn)` | `{ r:1.000, g:0.920, b:0.500 }` — amber |
+
+Template 1.1 shows the **Proposed** badge variant.  
+Template 1.2 shows the **Approved** badge variant.
 
 ---
 
-## Divider string
+## Divider
 
 ```
- ________________________________________________________________________ 
+{prev text} \n DIVIDER \n\n
 ```
-1 leading space + 72 underscores + 1 trailing space = 74 characters.
 
-> Calibrated for a 596px-wide text node at Inter Regular 16px (underscore = 8px, space = 5px → 72×8 + 2×5 = 586px, 10px safety margin). Do not increase — 84 underscores wraps to a second line.
+The divider segment is a run of `_` characters at `GRAY` fill, Inter Medium 16.  
+Calibrated to fill 596px width without wrapping — use ~70 underscores.
 
----
+```js
+const DIV = ' ' + '_'.repeat(70) + ' ';
+// Inter Medium 16, GRAY fill
+```
 
-## DS name → URL mapping
-
-All Inter Bold Blue DS names in cards link to the DS's states/color documentation.
-
-| Name            | URL                                                               |
-|-----------------|-------------------------------------------------------------------|
-| M3              | https://m3.material.io/foundations/interaction/states/overview    |
-| Carbon          | https://carbondesignsystem.com/elements/color/tokens/             |
-| Spectrum        | https://spectrum.adobe.com/page/using-color/                      |
-| Atlassian / ADS | https://atlassian.design/foundations/color-new                    |
-| Primer          | https://primer.style/foundations/color/overview                   |
-| Fluent          | https://fluent2.microsoft.design/                                 |
-| USWDS           | https://designsystem.digital.gov/                                 |
-| Polaris         | https://polaris.shopify.com/                                      |
-| Canada          | https://design.canada.ca/en/                                      |
-| Ant             | https://ant.design/components/result                              |
-| Bootstrap       | https://getbootstrap.com/                                         |
-| Chakra          | https://chakra-ui.com/                                            |
-| Innovaccer      | (no public DS docs — blue label, no link)                         |
-
-*Status-card context: M3 should link to `https://m3.material.io/foundations/feedback` instead.*
+> Exact count is width-sensitive. Verify after any font or width change — the line must not wrap.
 
 ---
 
-## JavaScript segment builder (figma-ds-cli eval script)
+## Section structure — Template 0 (Overview)
+
+```
+{name}                      ← Inter Bold 40, DARK, hyperlinked
+
+STATUS
+
+{emoji} {status text}       ← Inter Medium 16
+
+WHY
+
+✓ {reason}                  ← ✓ Inter Medium GREEN; prose Inter Medium DARK
+...
+
+SOURCE
+
+{source prose}              ← Inter Medium 16; DS names Inter Bold BLUE linked
+
+REJECTED ALTERNATIVES
+
+⊗ {term} — {reason}        ← ⊗ Inter Medium RED; prose Inter Medium DARK
+...
+
+ORTHOGONAL WITH
+
+{collection list}. {sentence about interaction.}
+                            ← collection names Roboto Mono Medium; prose Inter Medium
+
+{divider — gray}
+
+PURPOSE
+
+{one-sentence description}
+```
+
+---
+
+## Section structure — Template 1 (Detail)
+
+```
+{name}                      ← Inter Bold 40, DARK, hyperlinked
+
+STATUS
+
+{emoji} {status text}
+
+WHY
+
+✓ {reason}
+...
+
+SOURCE
+
+{DS name}, {DS name}, …     ← each DS name: Inter Bold BLUE, hyperlinked
+{prose around names}        ← Inter Medium DARK
+
+[COLLISION NOTE]            ← optional — only if a term collision must be surfaced
+{prose}
+
+REJECTED ALTERNATIVES
+
+⊗ {term}: {reason}
+...
+
+COMBINES WITH
+
+✓ {value}                   ← green, positive combinations
+⊗ {value}                   ← red, incompatible combinations (if any)
+
+{divider — gray}
+
+DECISION INDEPENDENT
+
+CSS {pseudo}                ← Roboto Mono Medium for the pseudo
+What: {definition sentence}
+```
+
+**COMBINES WITH** vs **ORTHOGONAL WITH**: use `COMBINES WITH` for cards about individual state values (rest, hover, active, enabled, focused…). Use `ORTHOGONAL WITH` for axis overview cards (STS_access, STS_interaction…).
+
+**COLLISION NOTE** is optional. Use it when the chosen term could be confused with a term from another DS or Oblique namespace — e.g. M3 uses `activated` (persistent) where Oblique uses `active` (transient). One paragraph max.
+
+---
+
+## Spacing between sections
+
+All sections are separated by two blank lines (`\n\n\n` = end of section line + blank + blank before next header). Bullets within a section are single-spaced (`\n`).
+
+```
+WHY\n
+\n
+✓ first reason\n
+✓ second reason\n
+\n
+\n
+SOURCE\n
+```
+
+---
+
+## JavaScript segment builder
 
 ```js
 (async () => {
-  await figma.loadFontAsync({ family: 'Inter', style: 'Bold' });
-  await figma.loadFontAsync({ family: 'Inter', style: 'Regular' });
-  await figma.loadFontAsync({ family: 'Roboto Mono', style: 'Regular' });
+  await figma.loadFontAsync({ family: 'Inter',       style: 'Bold'    });
+  await figma.loadFontAsync({ family: 'Inter',       style: 'Medium'  });
+  await figma.loadFontAsync({ family: 'Roboto Mono', style: 'Medium'  });
 
-  const DARK  = [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:{r:0.12,g:0.12,b:0.12} }];
-  const GREEN = [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:{r:0.20,g:0.65,b:0.30} }];
-  const RED   = [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:{r:0.85,g:0.20,b:0.20} }];
-  const BLUE  = [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:{r:0.00,g:0.30,b:0.85} }];
-  const CARD_FILL   = [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:{r:0.96,g:0.96,b:0.96} }];
-  const CARD_STROKE = [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:{r:0.784,g:0.736,b:0.736} }];
-  const BADGE_GREEN = [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:{r:0.549,g:0.859,b:0.588} }];
-  const BADGE_AMBER = [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:{r:1.0,g:0.92,b:0.50} }];
+  // Color fills (Figma solid fill objects)
+  const solid = c => [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:c }];
+  const DARK  = solid({ r:0.12, g:0.12, b:0.12 });
+  const GRAY  = solid({ r:0.70, g:0.70, b:0.70 });
+  const BLUE  = solid({ r:0.00, g:0.30, b:0.85 });
+  const GREEN = solid({ r:0.20, g:0.65, b:0.30 });
+  const RED   = solid({ r:0.85, g:0.20, b:0.20 });
 
+  // Segment constructors
+  const mk = (txt, font, size, fill, url) => ({ txt, font, size, fill, url: url || null });
+  const TITLE = (t, url)  => mk(t, { family:'Inter',       style:'Bold'   }, 40, DARK, url);
+  const HDR   = (t)       => mk(t, { family:'Inter',       style:'Bold'   }, 16, DARK);
+  const BODY  = (t)       => mk(t, { family:'Inter',       style:'Medium' }, 16, DARK);
+  const TECH  = (t)       => mk(t, { family:'Roboto Mono', style:'Medium' }, 16, DARK);
+  const DS    = (t)       => mk(t, { family:'Inter',       style:'Bold'   }, 16, BLUE, DS_URLS[t] ?? null);
+  const DIV   = ()        => mk(' ' + '_'.repeat(70) + ' ', { family:'Inter', style:'Medium' }, 16, GRAY);
+  const CHK   = ()        => mk('✓', { family:'Inter',      style:'Medium' }, 16, GREEN);
+  const CRS   = ()        => mk('⊗', { family:'Inter',      style:'Medium' }, 16, RED);
+  const NL    = (n = 1)   => BODY('\n'.repeat(n));
+
+  // DS name → documentation URL
   const DS_URLS = {
     'M3':         'https://m3.material.io/foundations/interaction/states/overview',
     'Carbon':     'https://carbondesignsystem.com/elements/color/tokens/',
@@ -164,72 +261,111 @@ All Inter Bold Blue DS names in cards link to the DS's states/color documentatio
     'USWDS':      'https://designsystem.digital.gov/',
     'Polaris':    'https://polaris.shopify.com/',
     'Canada':     'https://design.canada.ca/en/',
-    'Ant':        'https://ant.design/components/result',
+    'Ant':        'https://ant.design/',
     'Bootstrap':  'https://getbootstrap.com/',
     'Chakra':     'https://chakra-ui.com/',
     'Innovaccer': null,
   };
 
-  const mk    = (txt, font, size, fill, url) => ({ txt, font, size, fill, url: url || null });
-  const TITLE = (t)      => mk(t, {family:'Inter',style:'Bold'}, 40, DARK);
-  const NL    = (n)      => mk('\n'.repeat(n), {family:'Inter',style:'Regular'}, 16, DARK);
-  const HDR   = (t)      => mk(t, {family:'Inter',style:'Bold'}, 16, DARK);
-  const REG   = (t)      => mk(t, {family:'Inter',style:'Regular'}, 16, DARK);
-  const MONO  = (t)      => mk(t, {family:'Roboto Mono',style:'Regular'}, 16, DARK);
-  const MONO_B= (t, url) => mk(t, {family:'Roboto Mono',style:'Regular'}, 16, BLUE, url);
-  const BLUE_B= (t)      => mk(t, {family:'Inter',style:'Bold'}, 16, BLUE, DS_URLS[t] || null);
-  const GBUL  = ()       => mk('✓', {family:'Inter',style:'Bold'}, 16, GREEN);
-  const RBUL  = ()       => mk('⊗', {family:'Inter',style:'Bold'}, 16, RED);
-  const DIV   = ()       => mk(' ________________________________________________________________________ ', {family:'Inter',style:'Regular'}, 16, DARK);
+  // Segment array → apply to text node
+  async function applyCard(textNodeId, sectionNodeId, badgeNodeId, segs, badgeText, badgeFill) {
+    const tn  = await figma.getNodeByIdAsync(textNodeId);
+    const sec = await figma.getNodeByIdAsync(sectionNodeId);
+    if (!tn || !sec) return;
 
-  // Process loop
-  for (const card of cards) {
-    const t     = await figma.getNodeByIdAsync(card.textId);
-    const sec   = await figma.getNodeByIdAsync(card.secId);
-    const badge = await figma.getNodeByIdAsync(card.badgeId);
-    if (!t || !sec) continue;
-
-    sec.fills = CARD_FILL; sec.strokes = CARD_STROKE;
-    try { sec.cornerRadius = 12; } catch(e) {}
-
-    if (badge) {
-      try {
-        const fn = badge.text.fontName;
-        if (fn !== figma.mixed) await figma.loadFontAsync(fn);
-        badge.text.characters = card.badgeText;
-        badge.fills = card.badgeFill
-          ? [{ type:'SOLID', visible:true, opacity:1, blendMode:'NORMAL', color:card.badgeFill }]
-          : BADGE_GREEN;
-      } catch(e) {}
+    // Badge
+    if (badgeNodeId) {
+      const badge = await figma.getNodeByIdAsync(badgeNodeId);
+      if (badge?.text) {
+        try { await figma.loadFontAsync(badge.text.fontName); } catch(e) {}
+        badge.text.characters = badgeText;
+        if (badgeFill) badge.fills = [{ type:'SOLID', color:badgeFill }];
+      }
     }
 
-    let combined = ''; const rangeList = [];
-    for (const sg of card.segs) {
+    // Build combined string + style ranges
+    let combined = ''; const ranges = [];
+    for (const sg of segs) {
       const start = combined.length;
       combined += sg.txt;
       const end = combined.length;
-      if (end > start) rangeList.push({ start, end, font:sg.font, size:sg.size, fill:sg.fill, url:sg.url });
+      if (end > start) ranges.push({ start, end, font:sg.font, size:sg.size, fill:sg.fill, url:sg.url });
     }
 
-    t.x = 40; t.y = 70;
-    t.textAutoResize = 'HEIGHT';
-    t.resize(596, 100);
-    t.lineHeight = { unit:'PERCENT', value:150 };
-    t.fontName = { family:'Inter', style:'Regular' };
-    t.fontSize = 16;
-    t.characters = combined;
+    // ── HYPERLINK + UNDERLINE BUG PREVENTION (3-layer) ───────────────
+    // FigJam stores hyperlinks and textDecoration as separate character-level
+    // properties. Setting tn.characters re-inherits BOTH from the node's
+    // internal buffer — clearing hyperlinks alone leaves underlines intact.
+    //
+    // Belt       — clear hyperlinks BEFORE setting characters
+    // Suspenders — clear hyperlinks AFTER setting characters
+    // Braces     — clear textDecoration AFTER setting characters
+    const oldLen = tn.characters.length;
+    try { tn.setRangeHyperlink(0, oldLen, null); } catch(e) {}
 
-    for (const r of rangeList) {
-      t.setRangeFontName(r.start, r.end, r.font);
-      t.setRangeFontSize(r.start, r.end, r.size);
-      t.setRangeFills(r.start, r.end, r.fill);
-      if (r.url) t.setRangeHyperlink(r.start, r.end, { type:'URL', value:r.url });
+    tn.x = 40; tn.y = 70;
+    tn.textAutoResize = 'HEIGHT';
+    tn.resize(596, 100);
+    tn.lineHeight = { unit:'PERCENT', value:150 };
+    tn.fontName = { family:'Inter', style:'Medium' };
+    tn.fontSize = 16;
+    tn.characters = combined;
+    const newLen = combined.length;
+
+    try { tn.setRangeHyperlink(0, newLen, null); } catch(e) {}      // suspenders
+    try { tn.setRangeTextDecoration(0, newLen, 'NONE'); } catch(e) {} // braces
+    // ─────────────────────────────────────────────────────────────────
+
+    for (const r of ranges) {
+      tn.setRangeFontName(r.start, r.end, r.font);
+      tn.setRangeFontSize(r.start, r.end, r.size);
+      tn.setRangeFills(r.start, r.end, r.fill);
     }
 
+    // Set hyperlinks LAST (after all font/colour work)
+    for (const r of ranges) {
+      if (r.url) tn.setRangeHyperlink(r.start, r.end, { type:'URL', value:r.url });
+    }
+
+    // Title underline — MUST come after the braces step that cleared all decorations.
+    // titleEnd+1 because Figma groups the trailing \n into the title segment.
+    tn.setRangeTextDecoration(0, titleEnd + 1, 'UNDERLINE');
+
+    // Verify: remove any leaking hyperlinks beyond the intended range
+    let pos = 0;
+    for (const vs of tn.getStyledTextSegments(['hyperlink'])) {
+      const end = pos + vs.characters.length;
+      if (vs.hyperlink && pos >= titleEnd) {
+        try { tn.setRangeHyperlink(pos, end, null); } catch(e) {}
+      }
+      pos = end;
+    }
+
+    // Re-fit section
     const maxBottom = Math.max(...Array.from(sec.children).map(c => c.y + c.height));
-    sec.resizeWithoutConstraints(sec.width, Math.ceil(maxBottom + 40));
+    sec.resizeWithoutConstraints(sec.width, Math.ceil(maxBottom + 58));
   }
 })()
 ```
 
-Key: `BLUE_B(name)` auto-looks up `DS_URLS[name]` and stores it on the segment. `MONO_B(text, url)` takes an explicit URL. Both apply `setRangeHyperlink` in the processing loop.
+---
+
+## DS name → URL mapping
+
+| Name | URL |
+|---|---|
+| M3 | https://m3.material.io/foundations/interaction/states/overview |
+| Carbon | https://carbondesignsystem.com/elements/color/tokens/ |
+| Spectrum | https://spectrum.adobe.com/page/using-color/ |
+| Atlassian / ADS | https://atlassian.design/foundations/color-new |
+| Primer | https://primer.style/foundations/color/overview |
+| Fluent | https://fluent2.microsoft.design/ |
+| USWDS | https://designsystem.digital.gov/ |
+| Polaris | https://polaris.shopify.com/ |
+| Canada | https://design.canada.ca/en/ |
+| Ant | https://ant.design/ |
+| Bootstrap | https://getbootstrap.com/ |
+| Chakra | https://chakra-ui.com/ |
+| Innovaccer | _(no public DS docs — blue label, no link)_ |
+
+_Status-card context: M3 links to `https://m3.material.io/foundations/feedback` instead of the states overview._
