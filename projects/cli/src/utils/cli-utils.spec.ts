@@ -557,6 +557,30 @@ Examples of use:
 			});
 		});
 
+		describe('ngGenerate', () => {
+			test('without options', () => {
+				execute({name: 'ngGenerate', schematic: 'my-lib:toto'});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^21', 'generate', 'my-lib:toto'],
+					{
+						encoding: 'utf8',
+						shell: isWindows(),
+						stdio: 'inherit',
+					}
+				);
+			});
+
+			test('with a single option', () => {
+				execute({name: 'ngGenerate', schematic: 'my-lib:toto', options: {prefix: 'app'}});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^21', 'generate', 'my-lib:toto', '--prefix=app'],
+					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+				);
+			});
+		});
+
 		describe('npmInstall', () => {
 			test('with one dependency', () => {
 				execute({name: 'npmInstall', dependencies: ['jest']});
