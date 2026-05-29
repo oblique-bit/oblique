@@ -15,11 +15,10 @@ Format spec for all naming-audit cards on the **States — Concept** board.
 | | Template 0 – Overview | Template 1 – Detail |
 |---|---|---|
 | **Purpose** | One per mode collection; axis-level summary | One per mode value or naming decision |
-| **ORTHOGONAL / COMBINES** | `ORTHOGONAL WITH` | `COMBINES WITH` |
 | **Last section** | `PURPOSE` | `DECISION INDEPENDENT` |
 | **COLLISION NOTE** | — | Optional — only when a naming clash must be called out |
 | **DS names** | Inter Bold blue, hyperlinked | Inter Bold blue, hyperlinked |
-| **Example** | `STS_access` axis card | `active` interaction-value card |
+| **Example** | `access` axis card | `active` interaction-value card |
 
 Both types share the same shell, badge system, font scheme, and divider.
 
@@ -145,11 +144,6 @@ REJECTED ALTERNATIVES
 ⊗ {term} — {reason}        ← ⊗ Inter Medium RED; prose Inter Medium DARK
 ...
 
-ORTHOGONAL WITH
-
-{collection list}. {sentence about interaction.}
-                            ← collection names Roboto Mono Medium; prose Inter Medium
-
 {divider — gray}
 
 PURPOSE
@@ -186,11 +180,6 @@ REJECTED ALTERNATIVES
 ⊗ {term}: {reason}
 ...
 
-COMBINES WITH
-
-✓ {value}                   ← green, positive combinations
-⊗ {value}                   ← red, incompatible combinations (if any)
-
 {divider — gray}
 
 DECISION INDEPENDENT
@@ -198,8 +187,6 @@ DECISION INDEPENDENT
 CSS {pseudo}                ← Roboto Mono Medium for the pseudo
 What: {definition sentence}
 ```
-
-**COMBINES WITH** vs **ORTHOGONAL WITH**: use `COMBINES WITH` for cards about individual state values (rest, hover, active, enabled, focused…). Use `ORTHOGONAL WITH` for axis overview cards (STS_access, STS_interaction…).
 
 **COLLISION NOTE** is optional. Use it when the chosen term could be confused with a term from another DS or Oblique namespace — e.g. M3 uses `activated` (persistent) where Oblique uses `active` (transient). One paragraph max.
 
