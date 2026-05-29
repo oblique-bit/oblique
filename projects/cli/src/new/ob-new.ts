@@ -104,6 +104,14 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 
 	execute({name: 'ngAdd', dependency: '@oblique/toolchain', spawnSyncOptions: {cwd: workingDirectory}});
 	execute({name: 'ngGenerate', schematic: '@oblique/toolchain:add-oblique', spawnSyncOptions: {cwd: workingDirectory}});
+	if (options.eslint) {
+		execute({
+			name: 'ngGenerate',
+			schematic: '@oblique/toolchain:linting',
+			options: {prefix: filteredOptions['prefix']},
+			spawnSyncOptions: {cwd: workingDirectory},
+		});
+	}
 	execute({
 		name: 'ngAdd',
 		dependency: '@oblique/oblique',

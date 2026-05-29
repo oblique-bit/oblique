@@ -271,6 +271,17 @@ describe('Ob new command', () => {
 					);
 				});
 
+				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} generate @oblique/toolchain:linting`, () => {
+					expect(execSync).toHaveBeenNthCalledWith(
+						5,
+						`npx @angular/cli@${currentVersions['@angular/cli']} generate @oblique/toolchain:linting --prefix="app"`,
+						{
+							cwd: `${process.cwd()}/${projectName}`,
+							stdio: 'inherit',
+						}
+					);
+				});
+
 				test(`should call npx ${projectName} with default parameter`, () => {
 					const expected = buildDefaultNgAddCommand();
 					expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
