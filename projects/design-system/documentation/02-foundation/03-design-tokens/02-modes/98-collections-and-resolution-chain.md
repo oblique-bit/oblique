@@ -1,6 +1,6 @@
 # Mode collections & resolution chain
 
-**Status:** DRAFT — taxonomy complete 2026-05-28; all collection-name prefixes (COR_ / STS_ / SYS_ / CMP_) dropped 2026-05-29. No prefixes on any collection name. Category grouping (core / states / system / component) survives as section headers only.
+**Status:** DRAFT — taxonomy 2026-05-29. Prefix scheme: `sys_` (six environment-driven) · bare word (eleven shared designer) · `component_aspect` (component). Category structure: 01 Shared (01.01 `sys_` · 01.02 Design) / 02 Component — internal taxonomy concepts, not Figma collection names.
 **Purpose:** single source of truth for every mode collection — the resolution chain, per-mode definitions, and which component uses which.
 **Related:** the States concept (`documentation/02-foundation/04-states.md`).
 
@@ -8,50 +8,52 @@
 
 ## Resolution chain
 
-Collections resolve **top → down**: top = most foundational (global theme), bottom wins (most specific, binds to the component). Each collection is one variable-mode axis; a mode set on a frame cascades to children, and a downstream collection overrides an upstream one by aliasing past it. The order is **global** — every component uses the order below, or a subset of it, never a reorder.
+### Shared collections
 
-### Core collections
+**01 Shared** (internal category — not a Figma collection name). "Shared" names the mechanism: these collections **cascade top → down** through the frame tree — a mode set on an ancestor frame propagates to all descendant components. Most foundational first; most specific wins. Each collection is one variable-mode axis; the order is global — every component uses the order below, or a subset of it, never a reorder.
+
+#### 01.01 System — `sys_`
+
+Driven by enduser or environment context (brand/tenant, theme, device, locale, a11y preferences). Values are not set by the designer in Figma.
 
 | # | Collection | Modes |
 |---|---|---|
-| 1 | `brand` | app · marketing |
-| 2 | `canton` | confederation · ZH · BE · LU · UR · SZ · OW · NW · GL · ZG · FR · SO · BS · BL · SH · AR · AI · SG · GR · AG · TG · TI · VD · VS · NE · GE · JU |
-| 3 | `lightness` | light · dark |
-| 4 | `contrast` | standard · high |
-| 5 | `surface` | canvas · sunken_1 · sunken_2 · raised · overlay |
-| 6 | `emphasis` | high · low |
-| 7 | `viewport` | xs · sm · md · lg · xl · 2xl |
-| 8 | `scale` | sm · md · lg |
-| 9 | `density` | compact · standard · spacious |
-| 10 | `motion` | on · off |
+| 1 | `sys_brand` | oblique · bk · ZH · BE · LU · UR · SZ · OW · NW · GL · ZG · FR · SO · BS · BL · SH · AR · AI · SG · GR · AG · TG · TI · VD · VS · NE · GE · JU |
+| 2 | `sys_lightness` | light · dark |
+| 3 | `sys_contrast` | standard · high |
+| 4 | `sys_viewport` | xs · sm · md · lg · xl · 2xl |
+| 5 | `sys_motion` | on · off |
+| 6 | `sys_language` | DE · FR · IT · EN · RM |
+
+#### 01.02 Design
+
+Designer-authored decisions set in Figma — surface context, emphasis, scale, interaction state axes, and more.
+
+| # | Collection | Modes |
+|---|---|---|
+| 7 | `surface` | canvas · sunken_1 · sunken_2 · raised · overlay |
+| 8 | `emphasis` | high · low |
+| 9 | `scale` | sm · md · lg |
+| 10 | `density` | compact · standard · spacious |
 | 11 | `typography` | interface · prose |
-| 12 | `language` | DE · FR · IT · EN · RM |
-
-### State collections (user-driven)
-
-| # | Collection | Modes |
-|---|---|---|
-| 13 | `interaction` | rest · active · hover · drag |
-| 14 | `selection` | selected · unselected · indeterminate |
-| 15 | `focus` | focused · unfocused |
-
-### System collections (system / app-driven)
-
-| # | Collection | Modes |
-|---|---|---|
-| 16 | `access` | enabled · disabled · read_only |
-| 17 | `process` | loaded · loading · empty · failed |
-| 18 | `feedback` | info · resolved · critical · attention · fatal |
+| 12 | `interaction` | rest · pressed · hover · drag |
+| 13 | `selection` | selected · unselected · indeterminate |
+| 14 | `focus` | focused · unfocused |
+| 15 | `access` | enabled · disabled · read_only |
+| 16 | `process` | loaded · loading · empty · failed |
+| 17 | `feedback` | info · resolved · critical · attention · fatal |
 
 ### Component collections
 
-Component collections are **not cascading** — they are scoped to one component type. A mode set on a parent frame does not propagate to child components of a different type. Mode values are drawn from the central taxonomy; components do not invent new values.
+**02 Component** (internal category — not a Figma collection name). The defining split from 01 Shared: component collections **do not cascade**. A mode set on a parent frame does not propagate to child components of a different type — the component consumes its collection locally. Mode values are drawn from the central taxonomy; components do not invent new values. Component collections follow the `component_aspect` naming pattern (e.g. `button_intent`, `link_visit`, `input_fill`).
 
 | Collection | Modes |
 |---|---|
-| `button` | primary · secondary · tertiary |
-| `link` | standard · visited |
-| `input` | required · autofilled · aifilled |
+| `button_intent` | primary · secondary · tertiary |
+| `link_visit` | standard · visited |
+| `input_fill` | required · autofilled · aifilled |
+
+> **Validation needed:** The cascading vs non-cascading split is a theoretical model. Whether Figma variable mode inheritance actually behaves this way across component boundaries must be confirmed in a PoC prototype before this taxonomy is treated as settled.
 
 **Note on `process` and `feedback`:** these two are orthogonal — a component can be `loading` and `critical` at the same time. One collection = one active mode, so they must remain separate. `feedback` has no `none` mode — components that carry no feedback signal simply do not consume this collection.
 
@@ -61,18 +63,12 @@ Component collections are **not cascading** — they are scoped to one component
 
 One-line definition of every mode.
 
-### `brand`
+### `sys_brand`
 
 | Mode | Definition |
 |---|---|
-| app | Application context — standard product UI. |
-| marketing | Marketing context — landing pages, campaigns, promotional surfaces. |
-
-### `canton`
-
-| Mode | Definition |
-|---|---|
-| confederation | Swiss Confederation identity — the federal brand palette. Default. |
+| oblique | Application context — standard product UI. |
+| bk | Marketing context — landing pages, campaigns, promotional surfaces. |
 | ZH | Canton of Zürich — cantonal brand palette. |
 | BE | Canton of Bern / Berne — cantonal brand palette. |
 | LU | Canton of Luzern — cantonal brand palette. |
@@ -100,14 +96,14 @@ One-line definition of every mode.
 | GE | Canton of Genève — cantonal brand palette. |
 | JU | Canton of Jura — cantonal brand palette. |
 
-### `lightness`
+### `sys_lightness`
 
 | Mode | Definition |
 |---|---|
 | light | Light theme — bright surfaces, dark text; for well-lit environments. |
 | dark | Dark theme — dark surfaces, light text; eases eye strain in low light. |
 
-### `contrast`
+### `sys_contrast`
 
 | Mode | Definition |
 |---|---|
@@ -133,7 +129,7 @@ One-line definition of every mode.
 | high | High emphasis — full-intensity colour, for primary actions, critical information and focal elements. |
 | low | Low emphasis — reduced-intensity colour, for secondary actions, supporting content and background elements. |
 
-### `viewport`
+### `sys_viewport`
 
 | Mode | Definition |
 |---|---|
@@ -160,7 +156,7 @@ One-line definition of every mode.
 | standard | Balanced outer spacing — the default (multiplier 1.0). |
 | spacious | Generous outer spacing — breathing room for focus-intensive tasks (multiplier 1.5). |
 
-### `motion`
+### `sys_motion`
 
 | Mode | Definition |
 |---|---|
@@ -174,7 +170,7 @@ One-line definition of every mode.
 | interface | Compact typography for UI elements — navigation, forms, controls. |
 | prose | Generous typography for reading content — articles, documentation, marketing. |
 
-### `language`
+### `sys_language`
 
 | Mode | Definition |
 |---|---|
@@ -197,7 +193,7 @@ One-line definition of every mode.
 | Mode | Definition |
 |---|---|
 | rest | The resting state — no interaction feedback. |
-| active | The transient state while the element is pressed — between hover and release (a.k.a. pressed / down). |
+| pressed | The transient state while the element is pressed — between pointer-down and release (a.k.a. active / down). |
 | hover | The pointer is over an enabled element, signalling it is interactive; not reachable by keyboard or touch. |
 | drag | The element is being dragged. |
 
@@ -226,7 +222,7 @@ One-line definition of every mode.
 | attention | A cautionary meaning; not used for validation errors. |
 | fatal | The most severe negative meaning — e.g. an Infobox-level failure. |
 
-Used by components that carry a semantic feedback signal: Infobox, Badge, Pill. Components that carry no feedback signal (e.g. Button) do not consume this collection.
+Used by components that carry a semantic feedback signal — e.g. `infobox`, `badge`, `pill`, `progress_bar`, `stepper`, and probably others. Components that carry no feedback signal (e.g. `button`) do not consume this collection.
 
 ### `process`
 
@@ -237,7 +233,7 @@ Used by components that carry a semantic feedback signal: Infobox, Badge, Pill. 
 | empty | The operation completed successfully but returned no content. |
 | failed | The operation did not complete — it errored (e.g. network or data error). |
 
-### `button`
+### `button_intent`
 
 | Mode | Definition |
 |---|---|
@@ -245,14 +241,14 @@ Used by components that carry a semantic feedback signal: Infobox, Badge, Pill. 
 | secondary | A supporting action — medium prominence. |
 | tertiary | The lowest-prominence action. |
 
-### `link`
+### `link_visit`
 
 | Mode | Definition |
 |---|---|
 | standard | An unvisited link. |
 | visited | A link the user has already followed; colour-coded to aid navigation history. |
 
-### `input`
+### `input_fill`
 
 | Mode | Definition |
 |---|---|
@@ -264,7 +260,7 @@ Used by components that carry a semantic feedback signal: Infobox, Badge, Pill. 
 
 ## Component × collection matrix (Button example)
 
-| Button type | lightness | emphasis | scale | access | interaction | focus | process | feedback | selection | button |
+| Button type | sys_lightness | emphasis | scale | access | interaction | focus | process | feedback | selection | button_intent |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | button_icon_label | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
 | button_icon | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
@@ -316,13 +312,13 @@ Composite-widget items are the exception. A disabled item inside a menu, tab lis
 
 ## Open decisions
 
-- [ ] Naming: `active` vs `pressed` (`interaction`)
-- [ ] Naming: Figma focus boolean — "Focus" vs "Focused"
-- [ ] `viewport` — exact px breakpoint values for xs · sm · md · lg · xl · 2xl
-- [ ] Does `button_navigation` / `button_segmented` need `button`?
+- [x] ~~Naming: `active` vs `pressed` (`interaction`)~~ — resolved: `pressed`
+- [x] ~~Naming: Figma focus boolean — "Focus" vs "Focused"~~ — resolved: `focused` (adjective pattern: `focused` · `selected` · `disabled`)
+- [ ] `sys_viewport` — exact px breakpoint values for xs · sm · md · lg · xl · 2xl
+- [x] ~~Does `button_navigation` / `button_segmented` need `button_intent`?~~ — resolved: no; selection state covered by `selection`
 - [x] ~~`availability` collection name~~ — resolved: `access` (10 chars vs 16; `availability` parked as 2nd alt; `display` rejected — CSS collision)
-- [x] ~~single-prefix category scheme~~ — resolved (2026-05-29): all prefixes dropped; states (user-driven: interaction, selection, focus) + system (app-driven: access, process, feedback). Word "status" does not appear in any name.
-- [x] ~~`visited` state~~ — resolved: `link · standard · visited`
+- [x] ~~prefix scheme~~ — resolved: `sys_` (six environment-driven) · bare word (eleven shared designer) · `component_aspect` (component). Categories 01 Shared / 02 Component are internal taxonomy concepts.
+- [x] ~~`visited` state~~ — resolved: `link_visit · standard · visited`
 - [x] ~~`drag` mode~~ — resolved: included in `interaction`
 - [x] ~~`system` merge~~ — resolved: split into `process` + `feedback` (orthogonal axes)
 - [x] ~~numeric `elevation` collection~~ — resolved: dropped; elevation lives in component state tokens that alias raised / overlay, not in a mode
