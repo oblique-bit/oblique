@@ -105,13 +105,13 @@ Use these validation scripts to ensure token integrity:
 
 ```bash
 # Complete validation (recommended)
-node scripts-custom/validate-all.js
+node scripts-custom/validation/validate-all.js
 
 # Component token validation  
-node scripts-custom/validate-all-components.js
+node scripts-custom/validation/validate-all-components.js
 
 # Semantic layer structure validation
-node scripts-custom/validate-semantic-mirroring.js
+node scripts-custom/validation/validate-semantic-mirroring.js
 
 # Token reference tracing
 npm run trace-token "ob.c.button.primary.bg"

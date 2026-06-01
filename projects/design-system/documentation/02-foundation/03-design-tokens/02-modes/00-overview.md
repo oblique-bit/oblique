@@ -19,6 +19,10 @@ Navigation hub for the mode documentation in this folder.
 ### Modes interplay
 - [Modes interplay](./99-modes-interplay.md) — how modes interact
 
+## Troubleshooting
+
+- [Ghost variables & ghost collections](./97-ghost-variables.md) — why foreign library collections appear in the mode picker, how to find them, and how to remove them at the source
+
 ## How modes work
 
 **Mode switching:** a mode set on a parent frame cascades to all descendant components that consume that collection. `COR_` and `STS_` collections cascade; `CMP_` collections are component-scoped and do not cascade.

@@ -846,7 +846,7 @@ When migrating from legacy systems:
 - Update documentation when patterns change
 
 **Quality Assurance:**
-- Use validation scripts: `node scripts-custom/validate-all-components.js`
+- Use validation scripts: `node scripts-custom/validation/validate-all-components.js`
 - Test theming scenarios: emphasis and inversity variations
 - Verify state coverage: all interaction states defined
 - Check 03_semantic alignment: component purpose matches token type

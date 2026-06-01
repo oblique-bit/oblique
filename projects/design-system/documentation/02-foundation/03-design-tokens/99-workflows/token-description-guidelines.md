@@ -275,4 +275,4 @@ Any script that writes to token JSON files must follow these rules:
 4. **Preserve `$type`**: never drop or overwrite an existing `$type` key.
 5. **Do not overwrite existing `$description`**: if a description already exists, a script must skip that token (or flag it for human review), not silently replace it.
 6. **Do not add `$extensions.ob.guidelines` to primitive tokens**: the coverage table defines where each field applies — scripts must respect it.
-7. **Validate output**: after writing, run `node scripts-custom/validate-all-components.js` to confirm no references were broken.
+8. **Validate output**: after writing, run `node scripts-custom/validation/validate-all-components.js` to confirm no references were broken.
