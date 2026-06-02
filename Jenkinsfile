@@ -1,6 +1,6 @@
 @Library('jeap-pipelinelibrary@feature/oblique9') _
 nodejsPipelineTemplate {
-	nodeJsVersion = 22
+	nodeJsVersion = 24
 	npmRepository = [
 		'repository': 'registry.npmjs.com',
 		'email': 'oblique@bit.admin.ch',
