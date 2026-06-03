@@ -124,6 +124,7 @@ registerLocaleData(localeDE);
 				},
 			},
 			hasLanguageInUrl: true,
+			consoleConfiguration: {silencedLabels: new Set()},
 		}),
 	],
 	bootstrap: [AppComponent],
