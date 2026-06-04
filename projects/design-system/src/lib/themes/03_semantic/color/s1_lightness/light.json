@@ -1746,6 +1746,140 @@
               "$description": "Navigation border — disabled. Muted border using the cobalt_alpha disabled scale."
             }
           }
+        },
+        "state_layer": {
+          "emphasis_high": {
+            "secondary": {
+              "base": {
+                "$extensions": {
+                  "com.figma.hiddenFromPublishing": false,
+                  "com.figma.scopes": [
+                    "ALL_FILLS",
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ]
+                },
+                "$type": "color",
+                "$value": "{ob.p.color.steelblue.600}"
+              },
+              "rest": {
+                "$extensions": {
+                  "com.figma.hiddenFromPublishing": false,
+                  "com.figma.scopes": [
+                    "ALL_FILLS",
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ]
+                },
+                "$type": "color",
+                "$value": "{ob.p.color.basic.transparent}"
+              },
+              "hover": {
+                "$extensions": {
+                  "com.figma.hiddenFromPublishing": false,
+                  "com.figma.scopes": [
+                    "ALL_FILLS",
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.1",
+                      "space": "hsl"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.state_layer.emphasis_high.secondary.base}"
+              },
+              "active": {
+                "$extensions": {
+                  "com.figma.hiddenFromPublishing": false,
+                  "com.figma.scopes": [
+                    "ALL_FILLS",
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.15",
+                      "space": "hsl"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.state_layer.emphasis_high.secondary.base}"
+              }
+            }
+          },
+          "emphasis_low": {
+            "secondary": {
+              "base": {
+                "$extensions": {
+                  "com.figma.hiddenFromPublishing": false,
+                  "com.figma.scopes": [
+                    "ALL_FILLS",
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ]
+                },
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.600}"
+              },
+              "rest": {
+                "$extensions": {
+                  "com.figma.hiddenFromPublishing": false,
+                  "com.figma.scopes": [
+                    "ALL_FILLS",
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ]
+                },
+                "$type": "color",
+                "$value": "{ob.p.color.basic.transparent}"
+              },
+              "hover": {
+                "$extensions": {
+                  "com.figma.hiddenFromPublishing": false,
+                  "com.figma.scopes": [
+                    "ALL_FILLS",
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.1",
+                      "space": "hsl"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.state_layer.emphasis_low.secondary.base}"
+              },
+              "active": {
+                "$extensions": {
+                  "com.figma.hiddenFromPublishing": false,
+                  "com.figma.scopes": [
+                    "ALL_FILLS",
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "0.15",
+                      "space": "hsl"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.state_layer.emphasis_low.secondary.base}"
+              }
+            }
+          }
         }
       }
     }

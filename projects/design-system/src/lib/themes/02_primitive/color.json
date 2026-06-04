@@ -1014,6 +1014,14 @@
             "$description": "Role: Exclusive. Reserved for informational status. Do not use in other semantic contexts."
           }
         }
+      },
+      "color_hsla": {
+        "cobalt": {
+          "hover": {
+            "$type": "color",
+            "$value": "hsla(209 20.9% 34.7% / 0.1)"
+          }
+        }
       }
     }
   }
