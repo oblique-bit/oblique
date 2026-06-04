@@ -794,7 +794,15 @@
       "ob.s1.color.state_layer.emphasis_low.secondary.base": "S:cd8cfb5afef2ade3c69fe982107862a0b222135a,",
       "ob.s1.color.state_layer.emphasis_low.secondary.rest": "S:9c259cd72daa9d3e7c8face004ee58d1b60938fb,",
       "ob.s1.color.state_layer.emphasis_low.secondary.hover": "S:dd7f47b1539b494b464647bc3d20cac1e31bdd8e,",
-      "ob.s1.color.state_layer.emphasis_low.secondary.active": "S:70f421115dc1fc39302eb25a343134f7c36fd8a2,"
+      "ob.s1.color.state_layer.emphasis_low.secondary.active": "S:70f421115dc1fc39302eb25a343134f7c36fd8a2,",
+      "ob.s1.color.state_layer.emphasis_high.primary.base": "S:65ea099a6d26fa38450b3ec95dd95ecb3b88e332,",
+      "ob.s1.color.state_layer.emphasis_high.primary.rest": "S:84120d1bf7356013d889c0d78b17401692c4ce78,",
+      "ob.s1.color.state_layer.emphasis_high.primary.hover": "S:1ca88af3a3b03273be9bd9eabcebe8daa2e4a2f7,",
+      "ob.s1.color.state_layer.emphasis_high.primary.active": "S:39e8d17564d809d53b8087b6a500beeffe2dfb68,",
+      "ob.s1.color.state_layer.emphasis_low.primary.base": "S:73600fcdb6d30218a8c821eea93031f0061a7bb6,",
+      "ob.s1.color.state_layer.emphasis_low.primary.rest": "S:d9583e47f1af5d2fec26266e018102e5845707be,",
+      "ob.s1.color.state_layer.emphasis_low.primary.hover": "S:2e05b608da3359a8d9b59717387e1f527dd10b59,",
+      "ob.s1.color.state_layer.emphasis_low.primary.active": "S:dc497baab2eea7d64051e85e2a3c89802f8edb95,"
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
@@ -1076,7 +1084,15 @@
       "ob.s1.color.state_layer.emphasis_low.secondary.base": "b029d9fc75a8b2c841cd4c4b2918fbac791d4260",
       "ob.s1.color.state_layer.emphasis_low.secondary.rest": "89c6ec692a0b1ac457a3356b9fae5f9f36f8c56e",
       "ob.s1.color.state_layer.emphasis_low.secondary.hover": "0f41efb38c40bc9a62698cba82a5a19275f5c425",
-      "ob.s1.color.state_layer.emphasis_low.secondary.active": "c651facea07bd59b554e6cc5ce82d1c5e09b983d"
+      "ob.s1.color.state_layer.emphasis_low.secondary.active": "c651facea07bd59b554e6cc5ce82d1c5e09b983d",
+      "ob.s1.color.state_layer.emphasis_high.primary.base": "54b2353115103f30c356b9b3ce941cac1b5d3315",
+      "ob.s1.color.state_layer.emphasis_high.primary.rest": "272f0a5212355bea376db29d585403d614d32ffe",
+      "ob.s1.color.state_layer.emphasis_high.primary.hover": "3d325d85b7ed31e8d9e3b26369d0850231a091c2",
+      "ob.s1.color.state_layer.emphasis_high.primary.active": "46273ceb4063e29e0a37744eb8124f300cf1369a",
+      "ob.s1.color.state_layer.emphasis_low.primary.base": "55a7fab9dbc9b9404afd3c6405718a5a1e8fd5a6",
+      "ob.s1.color.state_layer.emphasis_low.primary.rest": "481d97130251ff62b5205e869fff80409d2ce1e6",
+      "ob.s1.color.state_layer.emphasis_low.primary.hover": "c387f4849c56143749d12377b98de1156fa10ae3",
+      "ob.s1.color.state_layer.emphasis_low.primary.active": "8cd7d9683a89b7f055b80287c9174a1946072a62"
     },
     "group": "lightness"
   },
@@ -1351,7 +1367,15 @@
       "ob.s1.color.state_layer.emphasis_low.secondary.base": "S:cd8cfb5afef2ade3c69fe982107862a0b222135a,",
       "ob.s1.color.state_layer.emphasis_low.secondary.rest": "S:9c259cd72daa9d3e7c8face004ee58d1b60938fb,",
       "ob.s1.color.state_layer.emphasis_low.secondary.hover": "S:dd7f47b1539b494b464647bc3d20cac1e31bdd8e,",
-      "ob.s1.color.state_layer.emphasis_low.secondary.active": "S:70f421115dc1fc39302eb25a343134f7c36fd8a2,"
+      "ob.s1.color.state_layer.emphasis_low.secondary.active": "S:70f421115dc1fc39302eb25a343134f7c36fd8a2,",
+      "ob.s1.color.state_layer.emphasis_low.primary.base": "S:73600fcdb6d30218a8c821eea93031f0061a7bb6,",
+      "ob.s1.color.state_layer.emphasis_low.primary.rest": "S:d9583e47f1af5d2fec26266e018102e5845707be,",
+      "ob.s1.color.state_layer.emphasis_low.primary.hover": "S:2e05b608da3359a8d9b59717387e1f527dd10b59,",
+      "ob.s1.color.state_layer.emphasis_low.primary.active": "S:dc497baab2eea7d64051e85e2a3c89802f8edb95,",
+      "ob.s1.color.state_layer.emphasis_high.primary.base": "S:65ea099a6d26fa38450b3ec95dd95ecb3b88e332,",
+      "ob.s1.color.state_layer.emphasis_high.primary.rest": "S:84120d1bf7356013d889c0d78b17401692c4ce78,",
+      "ob.s1.color.state_layer.emphasis_high.primary.hover": "S:1ca88af3a3b03273be9bd9eabcebe8daa2e4a2f7,",
+      "ob.s1.color.state_layer.emphasis_high.primary.active": "S:39e8d17564d809d53b8087b6a500beeffe2dfb68,"
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
@@ -1633,7 +1657,15 @@
       "ob.s1.color.state_layer.emphasis_low.secondary.base": "b029d9fc75a8b2c841cd4c4b2918fbac791d4260",
       "ob.s1.color.state_layer.emphasis_low.secondary.rest": "89c6ec692a0b1ac457a3356b9fae5f9f36f8c56e",
       "ob.s1.color.state_layer.emphasis_low.secondary.hover": "0f41efb38c40bc9a62698cba82a5a19275f5c425",
-      "ob.s1.color.state_layer.emphasis_low.secondary.active": "c651facea07bd59b554e6cc5ce82d1c5e09b983d"
+      "ob.s1.color.state_layer.emphasis_low.secondary.active": "c651facea07bd59b554e6cc5ce82d1c5e09b983d",
+      "ob.s1.color.state_layer.emphasis_low.primary.base": "55a7fab9dbc9b9404afd3c6405718a5a1e8fd5a6",
+      "ob.s1.color.state_layer.emphasis_low.primary.rest": "481d97130251ff62b5205e869fff80409d2ce1e6",
+      "ob.s1.color.state_layer.emphasis_low.primary.hover": "c387f4849c56143749d12377b98de1156fa10ae3",
+      "ob.s1.color.state_layer.emphasis_low.primary.active": "8cd7d9683a89b7f055b80287c9174a1946072a62",
+      "ob.s1.color.state_layer.emphasis_high.primary.base": "54b2353115103f30c356b9b3ce941cac1b5d3315",
+      "ob.s1.color.state_layer.emphasis_high.primary.rest": "272f0a5212355bea376db29d585403d614d32ffe",
+      "ob.s1.color.state_layer.emphasis_high.primary.hover": "3d325d85b7ed31e8d9e3b26369d0850231a091c2",
+      "ob.s1.color.state_layer.emphasis_high.primary.active": "46273ceb4063e29e0a37744eb8124f300cf1369a"
     },
     "group": "lightness"
   },

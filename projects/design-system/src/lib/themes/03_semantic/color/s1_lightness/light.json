@@ -1893,7 +1893,7 @@
                   ]
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.600}"
+                "$value": "{ob.p.color.cobalt.800}"
               },
               "rest": {
                 "$extensions": {
@@ -1957,7 +1957,7 @@
                   ]
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.cobalt_alpha.500}"
               },
               "rest": {
                 "$extensions": {
@@ -2001,7 +2001,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "0.15",
+                      "value": "0.25",
                       "space": "hsl"
                     }
                   }
