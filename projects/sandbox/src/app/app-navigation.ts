@@ -94,7 +94,6 @@ export const appNavigation: ObINavigationLink[] = [
 			{url: 'input-clear', label: 'Input clear'},
 			{url: 'language', label: 'Language'},
 			{url: 'master-layout', label: 'i18n.routes.samples.master-layout.title'},
-			{url: 'multi-translate-loader', label: 'Multi translate loader'},
 			{url: 'nav-tree', label: 'i18n.routes.samples.nav-tree.title'},
 			{url: 'nested-form', label: 'Nested forms'},
 			{url: 'notification', label: 'i18n.routes.samples.notification.title'},

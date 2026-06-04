@@ -1,6 +1,6 @@
 {
   "name": "@oblique/design-system",
-  "version": "15.3.1",
+  "version": "15.4.0",
   "scripts": {
     "lint": "ts-node scripts/lint.ts",
     "format": "ts-node scripts/lint.ts --fix",
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",
-    "ng-packagr": "^21.2.2"
+    "ng-packagr": "^21.2.3"
   },
   "sideEffects": false,
   "exports": {

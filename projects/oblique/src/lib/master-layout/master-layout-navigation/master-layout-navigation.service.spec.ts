@@ -1,4 +1,4 @@
-import {TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 
@@ -19,7 +19,8 @@ describe('MasterLayoutNavigationService', () => {
 	const mockMasterLayout = {
 		navigation: {},
 	};
-	beforeEach(() =>
+	beforeEach(() => {
+		jest.useFakeTimers();
 		TestBed.configureTestingModule({
 			providers: [
 				ObMasterLayoutNavigationService,
@@ -30,43 +31,48 @@ describe('MasterLayoutNavigationService', () => {
 				{provide: ObGlobalEventsService, useValue: ObMockGlobalEventsService},
 				{provide: WINDOW, useValue: window},
 			],
-		})
-	);
+		});
+	});
+
+	afterEach(() => {
+		jest.clearAllTimers();
+		jest.useRealTimers();
+	});
 
 	it('should be created', () => {
 		service = TestBed.inject(ObMasterLayoutNavigationService);
 		expect(service).toBeTruthy();
 	});
 
-	it('should emit scrolledLeft on scrollLeft call', fakeAsync(() => {
+	it('should emit scrolledLeft on scrollLeft call', () => {
 		let emitted = false;
 		service.scrolled.subscribe(() => {
 			emitted = true;
 		});
 		service.scrollLeft();
-		tick(0);
+		jest.runOnlyPendingTimers();
 		expect(emitted).toBe(true);
-	}));
+	});
 
-	it('should emit scrolledRight on scrollRight call', fakeAsync(() => {
+	it('should emit scrolledRight on scrollRight call', () => {
 		let emitted = false;
 		service.scrolled.subscribe(() => {
 			emitted = true;
 		});
 		service.scrollRight();
-		tick(0);
+		jest.runOnlyPendingTimers();
 		expect(emitted).toBe(true);
-	}));
+	});
 
-	it('should emit refreshed on refresh call', fakeAsync(() => {
+	it('should emit refreshed on refresh call', () => {
 		let emitted = false;
 		service.refreshed.subscribe(() => {
 			emitted = true;
 		});
 		service.refresh();
-		tick(0);
+		jest.runOnlyPendingTimers();
 		expect(emitted).toBe(true);
-	}));
+	});
 
 	describe('refresh', () => {
 		it('should emit a refreshed event', () => {

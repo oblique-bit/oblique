@@ -1,4 +1,4 @@
-import {TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject, firstValueFrom, of, throwError} from 'rxjs';
 import {map, skip} from 'rxjs/operators';
@@ -224,20 +224,18 @@ describe('ObServiceNavigationService', () => {
 						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
 					});
 
-					it('should not emit', fakeAsync(() => {
+					it('should not emit', () => {
 						let hasEmitted = false;
 						service[method]().subscribe(() => {
 							hasEmitted = true;
 						});
-						tick(1000);
 						expect(hasEmitted).toBe(false);
-					}));
+					});
 
-					it('should not call "ObServiceNavigationConfigApiService.fetchUrls()"', fakeAsync(() => {
+					it('should not call "ObServiceNavigationConfigApiService.fetchUrls()"', () => {
 						service.getLoginUrl$().subscribe();
-						tick(1000);
 						expect(configService.fetchUrls).not.toHaveBeenCalled();
-					}));
+					});
 				});
 
 				describe('getLoginState$', () => {
@@ -245,14 +243,13 @@ describe('ObServiceNavigationService', () => {
 						expect(service.getLoginState$() instanceof Observable).toBe(true);
 					});
 
-					it('should not emit', fakeAsync(() => {
+					it('should not emit', () => {
 						let hasEmitted = false;
 						service.getLoginState$().subscribe(() => {
 							hasEmitted = true;
 						});
-						tick(1000);
 						expect(hasEmitted).toBe(false);
-					}));
+					});
 
 					describe('ObServiceNavigationConfigService.fetchUrls', () => {
 						it('should not have been called', () => {

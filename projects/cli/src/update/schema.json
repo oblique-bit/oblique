@@ -1,0 +1,21 @@
+{
+  "$id": "oblique-cli-ob-update-schema",
+  "title": "Oblique CLI ob update schema",
+  "properties": {
+    "verbose": {
+      "type": "boolean",
+      "defaultValue": false,
+      "description": "Enables verbose mode for the Oblique's \"update\" Schematic."
+    },
+    "force": {
+      "type": "boolean",
+      "defaultValue": true,
+      "description": "Enables force mode for the Oblique's \"update\" Schematic."
+    },
+    "allow-dirty": {
+      "type": "boolean",
+      "defaultValue": true,
+      "description": "Enables allow-dirty mode for the Oblique's \"update\" Schematic."
+    }
+  }
+}

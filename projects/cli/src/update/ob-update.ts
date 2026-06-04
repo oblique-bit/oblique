@@ -10,13 +10,22 @@ import {
 	nonUpdatableDependencies,
 	startObCommand,
 } from '../utils/cli-utils';
-import {type PackageDependencies, updateDescriptions} from './ob-update.model';
+import {
+	type HandleObUpdateActionOptions,
+	type ObUpdateOptions,
+	type PackageDependencies,
+	schema,
+	updateDescriptions,
+} from './ob-update.model';
 import chalk from 'chalk';
 import {execSync} from 'child_process';
+import {addObUpdateCommandOptions} from '../utils/ob-configure-command';
+import type {ObOptions} from '../utils/ob-cli.model';
 
 export function createObUpdateCommand(): Command<[string], OptionValues> {
 	const command = new Command<[string], OptionValues>();
-	return initializeCommand(command);
+	const initializedCommand: Command<[string], OptionValues> = initializeCommand(command);
+	return configureCommandOptions(initializedCommand);
 }
 
 export function initializeCommand(command: Command<[string], OptionValues>): Command<[string], OptionValues> {
@@ -25,25 +34,26 @@ export function initializeCommand(command: Command<[string], OptionValues>): Com
 		.helpOption('-h, --help', getHelpText('ob update'))
 		.usage(commandUsageText('update', ' '))
 		.summary(updateDescriptions.summaryText)
-		.action(() => handleAction())
+		.action(() => handleAction({command}))
 		.showSuggestionAfterError(true)
 		.showHelpAfterError(true);
 	return command;
 }
 
-function handleAction(): void {
+function handleAction(options: HandleObUpdateActionOptions): void {
 	startObCommand(
-		handleObUpdateActions as (options: undefined) => void,
+		handleObUpdateActions as (options: HandleObUpdateActionOptions) => void,
 		'Oblique CLI ob update completed in',
-		undefined
+		options
 	);
 }
 
-export function handleObUpdateActions(): void {
+export function handleObUpdateActions(options: HandleObUpdateActionOptions): void {
+	const cmdOptions = options.command.opts() as ObUpdateOptions<string | boolean>;
 	try {
 		checkNeededDependencies();
 		addSchematicsAngular();
-		runUpdateDependencies();
+		runUpdateDependencies(cmdOptions);
 		runUpdateSave();
 		runNpmDedupe();
 		runNpmPrune();
@@ -81,7 +91,7 @@ export function addSchematicsAngular(): void {
 	}
 }
 
-export function runUpdateDependencies(): void {
+export function runUpdateDependencies(cmdOptions: ObUpdateOptions<string | boolean>): void {
 	try {
 		const dependencies = Object.entries(currentVersions)
 			.map(([dependency]) => dependency as keyof typeof currentVersions)
@@ -89,12 +99,19 @@ export function runUpdateDependencies(): void {
 		const angularDependencies = getAngularDependenciesFromPackage().filter(
 			dependency => !skipDependencyUpdate(dependency)
 		);
+		const validatedOptions = returnTruthyOptions(cmdOptions);
+
+		// commanderjs changes the key any kebab case option which turns it invalid as an angular param
+		if (validatedOptions['allowDirty']) {
+			validatedOptions['allow-dirty'] = validatedOptions['allowDirty'];
+			delete validatedOptions['allowDirty'];
+		}
 
 		execute({
 			name: 'ngUpdate',
 			dependencies,
 			angularDependencies,
-			options: {force: true},
+			options: validatedOptions,
 		});
 	} catch (error) {
 		console.error(error);
@@ -175,4 +192,20 @@ function getAngularDependenciesFromPackage(): string[] {
 
 function skipDependencyUpdate(dependency: string): boolean {
 	return nonUpdatableDependencies.includes(dependency);
+}
+
+function configureCommandOptions(updateCommand: Command<[string], OptionValues>): Command<[string], OptionValues> {
+	return addObUpdateCommandOptions(schema, updateCommand);
+}
+
+//to avoid adding invalid options like --no-force to the ng update command
+function returnTruthyOptions(cmdOptions: ObUpdateOptions<string | boolean>): ObOptions {
+	const trueValues = new Set([true, 'true']);
+	const validatedOptions: ObOptions = {};
+	Object.entries(cmdOptions)
+		.filter(([, value]) => trueValues.has(value))
+		.forEach(([key, value]) => {
+			validatedOptions[key] = value;
+		});
+	return validatedOptions;
 }

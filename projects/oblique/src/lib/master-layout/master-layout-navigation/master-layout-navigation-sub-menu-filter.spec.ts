@@ -1,5 +1,4 @@
 import {fromEvent} from 'rxjs';
-import {fakeAsync, tick} from '@angular/core/testing';
 import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation-sub-menu-filter';
 
 describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
@@ -23,7 +22,7 @@ describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 		{elementTag: 'button', classes: ['ob-fake-button'], expected: true},
 	])(
 		'that a click of $elementTag element with class(es): $classes will result in emitted being $expected',
-		fakeAsync(({elementTag, classes, expected}) => {
+		({elementTag, classes, expected}) => {
 			const element: HTMLElement = document.createElement(elementTag);
 			element.classList.add(classes);
 			document.querySelector('body').appendChild(element);
@@ -34,9 +33,8 @@ describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 					emitted = true;
 				});
 			element.click();
-			tick(1000);
 			expect(emitted).toBe(expected);
-		})
+		}
 	);
 
 	test.each<{elementTag: keyof HTMLElementTagNameMap; classes: string[]; expected: boolean}>([
@@ -49,7 +47,7 @@ describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 		{elementTag: 'button', classes: ['ob-master-layout-navigation-link', 'ob-main-nav-link'], expected: false},
 	])(
 		'that a click of $elementTag element with class(es): $classes within: div.ob-sub-menu will result in emitted being $expected',
-		fakeAsync(({elementTag, classes, expected}) => {
+		({elementTag, classes, expected}) => {
 			const obSubMenu: HTMLDivElement = document.createElement('div');
 			obSubMenu.classList.add('ob-sub-menu');
 			const element: HTMLElement = document.createElement(elementTag);
@@ -63,8 +61,7 @@ describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 					emitted = true;
 				});
 			element.click();
-			tick(1000);
 			expect(emitted).toBe(expected);
-		})
+		}
 	);
 });

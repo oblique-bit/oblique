@@ -2,6 +2,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTooltip} from '@angular/material/tooltip';
 import {By} from '@angular/platform-browser';
 import {ActivatedRoute, RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -12,9 +13,6 @@ import {ObMockIconModule} from '../icon/_mocks/mock-icon.module';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
-import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {MatTooltipHarness} from '@angular/material/tooltip/testing';
-import {HarnessLoader} from '@angular/cdk/testing';
 import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
 import {WINDOW} from '../utilities';
 import {ObLocalizePipe} from '../router/ob-localize.pipe';
@@ -417,20 +415,16 @@ describe('ObBreadcrumbComponent', () => {
 		});
 
 		describe('ellipsis tooltip usage', () => {
-			let loader: HarnessLoader;
-
 			const getLabelElements = (): HTMLElement[] => {
 				return fixture.debugElement.queryAll(By.css('.ob-breadcrumb-label')).map(de => de.nativeElement as HTMLElement);
 			};
 
-			beforeEach(() => {
-				fixture.detectChanges();
-				loader = TestbedHarnessEnvironment.loader(fixture);
-			});
+			const getTooltips = (): MatTooltip[] =>
+				fixture.debugElement.queryAll(By.directive(ObEllipsisTooltipDirective)).map(de => de.injector.get(MatTooltip));
 
-			it('should attach one tooltip to each breadcrumb label', async () => {
+			it('should attach one tooltip to each breadcrumb label', () => {
 				const labels = getLabelElements();
-				const tooltips = await loader.getAllHarnesses(MatTooltipHarness);
+				const tooltips = getTooltips();
 
 				expect(tooltips.length).toBe(labels.length);
 			});
@@ -448,11 +442,10 @@ describe('ObBreadcrumbComponent', () => {
 					}
 
 					window.dispatchEvent(new Event('resize'));
-					fixture.detectChanges();
-					await fixture.whenRenderingDone();
+					fixture.componentRef.changeDetectorRef.detectChanges();
+					await fixture.whenStable();
 
-					const tooltips = await loader.getAllHarnesses(MatTooltipHarness);
-					const disabledStates = await Promise.all(tooltips.map(tooltip => tooltip.isDisabled()));
+					const disabledStates = getTooltips().map(tooltip => tooltip.disabled);
 
 					expect(disabledStates.every(state => state === expectedDisabled)).toBe(true);
 				});
@@ -468,11 +461,10 @@ describe('ObBreadcrumbComponent', () => {
 				}
 
 				window.dispatchEvent(new Event('resize'));
-				fixture.detectChanges();
-				await fixture.whenRenderingDone();
+				fixture.componentRef.changeDetectorRef.detectChanges();
+				await fixture.whenStable();
 
-				const tooltips = await loader.getAllHarnesses(MatTooltipHarness);
-				const disabledStates = await Promise.all(tooltips.map(tooltip => tooltip.isDisabled()));
+				const disabledStates = getTooltips().map(tooltip => tooltip.disabled);
 
 				// all enabled when ellipsed
 				expect(disabledStates.every(state => state === false)).toBe(true);
@@ -487,11 +479,10 @@ describe('ObBreadcrumbComponent', () => {
 				}
 
 				window.dispatchEvent(new Event('resize'));
-				fixture.detectChanges();
-				await fixture.whenRenderingDone();
+				fixture.componentRef.changeDetectorRef.detectChanges();
+				await fixture.whenStable();
 
-				const tooltips = await loader.getAllHarnesses(MatTooltipHarness);
-				const disabledStates = await Promise.all(tooltips.map(tooltip => tooltip.isDisabled()));
+				const disabledStates = getTooltips().map(tooltip => tooltip.disabled);
 
 				expect(disabledStates.every(state => state === true)).toBe(true);
 			});

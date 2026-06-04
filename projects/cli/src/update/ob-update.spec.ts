@@ -78,8 +78,8 @@ describe('ObUpdateCommand Tests', () => {
 
 				describe('with help settings', () => {
 					test('with help Information to be usage text', () => {
-						expect(command.helpInformation()).toBe(
-							`Usage: update  \n\nOptions:\n  -h, --help  Shows a help message for the "ob update" command in the console\n`
+						expect(cleanOutput(command.helpInformation())).toBe(
+							`Usage: update Options: --verbose [boolean] Enables verbose mode for the Oblique's "update" Schematic. (default: false) --force [boolean] Enables force mode for the Oblique's "update" Schematic. (default: true) --allow-dirty [boolean] Enables allow-dirty mode for the Oblique's "update" Schematic. (default: true) -h, --help Shows a help message for the "ob update" command in the console`
 						);
 					});
 				});
@@ -144,7 +144,7 @@ describe('ObUpdateCommand Tests', () => {
 						dependencies: {jest: '29.0.0'},
 					});
 
-					obUpdate.runUpdateDependencies();
+					obUpdate.runUpdateDependencies({force: true, verbose: false, 'allow-dirty': true});
 				});
 
 				test('calls execute', () => {
@@ -166,7 +166,7 @@ describe('ObUpdateCommand Tests', () => {
 				test('passes force option', () => {
 					expect(execute).toHaveBeenCalledWith(
 						expect.objectContaining({
-							options: {force: true},
+							options: {'allow-dirty': true, force: true},
 						})
 					);
 				});
@@ -186,7 +186,7 @@ describe('ObUpdateCommand Tests', () => {
 						dependencies: {},
 					});
 					jest.spyOn(console, 'error').mockImplementation(() => {});
-					obUpdate.runUpdateDependencies();
+					obUpdate.runUpdateDependencies({force: true, verbose: false, 'allow-dirty': true});
 				});
 
 				test('uses ngUpdate command', () => {
@@ -214,7 +214,7 @@ describe('ObUpdateCommand Tests', () => {
 				);
 				jest.spyOn(obUpdate, 'isDependencyInPackage').mockImplementation(() => false);
 
-				obUpdate.runUpdateDependencies();
+				obUpdate.runUpdateDependencies({force: true, verbose: false, 'allow-dirty': true});
 
 				expect(execute).toHaveBeenCalledWith(
 					expect.objectContaining({
@@ -236,7 +236,7 @@ describe('ObUpdateCommand Tests', () => {
 						throw new Error('boom');
 					});
 
-					obUpdate.runUpdateDependencies();
+					obUpdate.runUpdateDependencies({force: true, verbose: false, 'allow-dirty': true});
 				});
 
 				test('logs error to console', () => {
@@ -245,4 +245,8 @@ describe('ObUpdateCommand Tests', () => {
 			});
 		});
 	});
+
+	function cleanOutput(output: string): string {
+		return output.replace(/\s+/gu, ' ').trim();
+	}
 });

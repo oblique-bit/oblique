@@ -1,3 +1,17 @@
+# [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
+
+## Bug Fixes
+
+- **spinner:** use `WINDOW` injection token instead of `window` ([c2d15a60](https://github.com/oblique-bit/oblique/commit/c2d15a60de92b732500563388d43d2cc767b8b54), OUI-4434)
+- **spinner:** decouple channels ([c51498ff](https://github.com/oblique-bit/oblique/commit/c51498ffecb42f1cc9244f27ec6a180d11500263), OUI-4434)
+
+## Features
+
+- **external-link:** add dynamic `href` example ([defa35f2](https://github.com/oblique-bit/oblique/commit/defa35f20456e183093e6b37f85b8c3ab3291633), OUI-4423)
+- **sandbox:** remove multi-translate loader ([7e0c1f6c](https://github.com/oblique-bit/oblique/commit/7e0c1f6c67fa946988624a20032f3d5849ba515e), OUI-4467)
+- **spinner:** decouple channels and add explaining text ([34bf6776](https://github.com/oblique-bit/oblique/commit/34bf677675a455ce752100f205fa23303beabc68), OUI-4434)
+- **spinner:** add non-existent channel ([eb7b2905](https://github.com/oblique-bit/oblique/commit/eb7b2905a8fbe084a20b0dc98b5c541d8bf36618), OUI-4434)
+
 # [15.3.1](https://github.com/oblique-bit/oblique/compare/15.3.0...15.3.1) (2026-05-27)
 
 ## Bug Fixes

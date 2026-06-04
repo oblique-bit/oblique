@@ -33,7 +33,10 @@ export class ObAutocompleteHarness extends ContentContainerComponentHarness {
 
 	async openAutocompletePanel(): Promise<void> {
 		const inputHarness = await this.getHarness(MatInputHarness);
-		return inputHarness.focus();
+		await inputHarness.focus();
+		return new Promise(resolve => {
+			setTimeout(resolve, 200);
+		});
 	}
 
 	async closeAutocompletePanel(): Promise<void> {

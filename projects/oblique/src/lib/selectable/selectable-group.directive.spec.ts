@@ -1,5 +1,5 @@
 import {Component, DebugElement} from '@angular/core';
-import {ComponentFixture, TestBed, fakeAsync, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {first, skip} from 'rxjs/operators';
 import {WINDOW} from '../utilities';
@@ -28,19 +28,20 @@ describe(ObSelectableGroupDirective.name, () => {
 	let element: DebugElement;
 	const items = [];
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
 			imports: [ObSelectableGroupDirective, ObMockSelectableDirective, ReactiveFormsModule],
 			providers: [{provide: WINDOW, useValue: window}],
 			declarations: [TestComponent],
-		});
-	}));
+		}).compileComponents();
+	});
 
 	describe('default', () => {
-		beforeEach(() => {
+		beforeEach(async () => {
 			fixture = TestBed.createComponent(TestComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
+			await fixture.whenStable();
 			element = fixture.debugElement.query(By.directive(ObSelectableGroupDirective));
 			directive = element.injector.get(ObSelectableGroupDirective);
 			items.length = 0;
@@ -248,14 +249,14 @@ describe(ObSelectableGroupDirective.name, () => {
 					expect(directive.role).toBe('radiogroup');
 				});
 				it('should be defined as attribute', () => {
-					fixture.detectChanges();
+					fixture.componentRef.changeDetectorRef.detectChanges();
 					expect(element.nativeElement.getAttribute('role')).toBe('radiogroup');
 				});
 			});
 
 			describe('toggle function', () => {
 				it('should check only check last called item', done => {
-					directive.selected$.subscribe(selection => {
+					directive.selected$.pipe(first()).subscribe(selection => {
 						expect(selection).toEqual([items[3]]);
 						done();
 					});
@@ -264,15 +265,14 @@ describe(ObSelectableGroupDirective.name, () => {
 			});
 
 			describe('selectAll function', () => {
-				it('should do nothing', fakeAsync(() => {
+				it('should do nothing', () => {
 					let data;
 					directive.selected$.subscribe(selection => {
 						data = selection;
 					});
 					directive.selectAll();
-					skip(1000);
 					expect(data).toBeUndefined();
-				}));
+				});
 			});
 
 			describe('deselectAll function', () => {
@@ -282,7 +282,6 @@ describe(ObSelectableGroupDirective.name, () => {
 						data = selection;
 					});
 					directive.deselectAll();
-					skip(1000);
 					expect(data).toBeUndefined();
 				});
 			});
@@ -514,7 +513,7 @@ describe(ObSelectableGroupDirective.name, () => {
 	});
 
 	describe('disabled group', () => {
-		beforeEach(() => {
+		beforeEach(async () => {
 			fixture = TestBed.overrideComponent(TestComponent, {
 				set: {
 					template: `<div obSelectableGroup disabled>
@@ -527,6 +526,7 @@ describe(ObSelectableGroupDirective.name, () => {
 			component = fixture.componentInstance;
 			component = fixture.debugElement.query(By.directive(ObSelectableGroupDirective)).componentInstance;
 			fixture.detectChanges();
+			await fixture.whenStable();
 			element = fixture.debugElement.query(By.directive(ObSelectableGroupDirective));
 			directive = element.injector.get(ObSelectableGroupDirective);
 		});
@@ -554,7 +554,7 @@ describe(ObSelectableGroupDirective.name, () => {
 			{value: 1} as ObSelectableDirective<number>,
 			{value: 2} as ObSelectableDirective<number>,
 		];
-		beforeEach(() => {
+		beforeEach(async () => {
 			fixture = TestBed.overrideComponent(TestComponent, {
 				set: {
 					template: `<div obSelectableGroup [formControl]="selectableGroup">
@@ -565,6 +565,7 @@ describe(ObSelectableGroupDirective.name, () => {
 			}).createComponent(TestComponent);
 			component = fixture.debugElement.query(By.directive(ObSelectableGroupDirective)).componentInstance;
 			fixture.detectChanges();
+			await fixture.whenStable();
 			element = fixture.debugElement.query(By.directive(ObSelectableGroupDirective));
 			directive = element.injector.get(ObSelectableGroupDirective);
 			selectableDirectives.forEach(selectableDirective => directive.register(selectableDirective));

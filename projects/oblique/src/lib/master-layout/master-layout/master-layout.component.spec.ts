@@ -70,6 +70,8 @@ describe('ObMasterLayoutComponent', () => {
 	});
 
 	beforeEach(() => {
+		mockMasterLayoutService.header.isSticky = false;
+		mockMasterLayoutService.footer.isSticky = false;
 		fixture = TestBed.createComponent(ObMasterLayoutComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
@@ -183,7 +185,7 @@ describe('ObMasterLayoutComponent', () => {
 					describe('when the navigation is set', () => {
 						beforeEach(() => {
 							component.navigation = [{label: 'test', url: ''}];
-							fixture.detectChanges();
+							fixture.componentRef.changeDetectorRef.detectChanges();
 						});
 						it('should add accessKey 2', () => {
 							expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 2}]);
@@ -294,15 +296,22 @@ describe('ObMasterLayoutComponent', () => {
 		let element: HTMLElement;
 		let content: HTMLElement;
 
+		const recreateComponentWithStickyState = (isFooterSticky: boolean, isHeaderSticky: boolean): void => {
+			fixture.destroy();
+			mockMasterLayoutService.footer.isSticky = isFooterSticky;
+			mockMasterLayoutService.header.isSticky = isHeaderSticky;
+			fixture = TestBed.createComponent(ObMasterLayoutComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+		};
+
 		describe.each([
 			{desc: 'neither header nor footer is sticky', isFooterSticky: false, isHeaderSticky: false},
 			{desc: 'only footer is sticky', isFooterSticky: true, isHeaderSticky: false},
 			{desc: 'only header is sticky', isFooterSticky: false, isHeaderSticky: true},
 		])('targeting the id "content" when there is no h1 in the page and $desc', ({isFooterSticky, isHeaderSticky}) => {
 			beforeEach(() => {
-				component.isFooterSticky = isFooterSticky;
-				component.isHeaderSticky = isHeaderSticky;
-				fixture.detectChanges();
+				recreateComponentWithStickyState(isFooterSticky, isHeaderSticky);
 				element = document.getElementById('content');
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
@@ -318,9 +327,7 @@ describe('ObMasterLayoutComponent', () => {
 
 		describe('targeting the id "content" when there is no h1 in the page and both the header and footer are sticky', () => {
 			beforeEach(() => {
-				component.isFooterSticky = true;
-				component.isHeaderSticky = true;
-				fixture.detectChanges();
+				recreateComponentWithStickyState(true, true);
 
 				element = document.getElementById('content');
 				// scrollTo is not defined in jsdom
@@ -347,9 +354,7 @@ describe('ObMasterLayoutComponent', () => {
 			{desc: 'both header and footer are sticky', isFooterSticky: true, isHeaderSticky: true},
 		])('targeting the id "content" when there is a h1 in the page and $desc', ({isFooterSticky, isHeaderSticky}) => {
 			beforeEach(() => {
-				component.isFooterSticky = isFooterSticky;
-				component.isHeaderSticky = isHeaderSticky;
-				fixture.detectChanges();
+				recreateComponentWithStickyState(isFooterSticky, isHeaderSticky);
 				content = document.getElementById('content');
 				content.prepend(document.createElement('h1'));
 				element = content.querySelector('h1');

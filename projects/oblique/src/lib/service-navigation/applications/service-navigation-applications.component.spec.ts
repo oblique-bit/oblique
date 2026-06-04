@@ -1,6 +1,6 @@
 import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
@@ -76,7 +76,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 		describe('when there is no last-used applications', () => {
 			beforeEach(async () => {
 				component.isLoggedIn = true;
-				await harness.openPopover();
+				await openPopover();
 			});
 
 			it('should find first h4 with "i18n.oblique.service-navigation.applications.last-used.header"', () => {
@@ -99,16 +99,14 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 		});
 
 		describe('with some applications and while loggedIn', () => {
-			beforeEach(fakeAsync(async () => {
+			beforeEach(async () => {
 				component.isLoggedIn = true;
 				component.lastUsedApplications = [
 					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
 					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'},
 				];
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
-			}));
+				await openPopover();
+			});
 
 			describe('ob-service-navigation-applications-popover-content', () => {
 				it.each(['cdkTrapFocus', 'cdkTrapFocusAutoCapture'])('should have attribute `%s`', async attribute => {
@@ -349,7 +347,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 		describe('when there is no favorite applications', () => {
 			beforeEach(async () => {
 				component.isLoggedIn = true;
-				await harness.openPopover();
+				await openPopover();
 			});
 
 			it('should find second h4 with "i18n.oblique.service-navigation.applications.favorite.header"', () => {
@@ -372,16 +370,14 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 		});
 
 		describe('with some applications and while loggedIn', () => {
-			beforeEach(fakeAsync(async () => {
+			beforeEach(async () => {
 				component.isLoggedIn = true;
 				component.favoriteApplications = [
 					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
 					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'},
 				];
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
-			}));
+				await openPopover();
+			});
 
 			describe('Show all favorite anchor', () => {
 				let button: TestElement;
@@ -644,6 +640,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 		it('should be mapped to the link "href" property', async () => {
 			component.applicationsUrl = 'applications-url';
+			fixture.componentRef.changeDetectorRef.detectChanges();
 			const trigger = await harness.getTrigger();
 			expect(await trigger.getAttribute('href')).toBe('applications-url');
 		});
@@ -658,7 +655,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			let trigger: TestElement;
 			beforeEach(async () => {
 				component.isLoggedIn = isLoggedIn;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				trigger = await harness.getTrigger();
 			});
 
@@ -700,7 +697,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			let trigger: TestElement;
 			beforeEach(async () => {
 				component.isLoggedIn = false;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				trigger = await harness.getTrigger();
 			});
 
@@ -736,7 +733,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
 					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'},
 				];
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				trigger = await harness.getTrigger();
 			});
 
@@ -753,12 +750,9 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			});
 
 			describe('popover', () => {
-				beforeEach(fakeAsync(async () => {
-					fixture.detectChanges();
-					await harness.openPopover();
-					fixture.detectChanges();
-					tick();
-				}));
+				beforeEach(async () => {
+					await openPopover();
+				});
 
 				it(`should exist`, async () => {
 					expect(await harness.getPopoverHarness()).toBeTruthy();
@@ -808,4 +802,11 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			});
 		});
 	});
+
+	async function openPopover(): Promise<void> {
+		fixture.componentRef.changeDetectorRef.detectChanges();
+		await harness.openPopover();
+		fixture.componentRef.changeDetectorRef.detectChanges();
+		await fixture.whenStable();
+	}
 });

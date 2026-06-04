@@ -1,7 +1,7 @@
 import {TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {DebugElement} from '@angular/core';
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -53,28 +53,24 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 		});
 
 		describe('without additional links', () => {
-			it('should have 0 section', fakeAsync(async () => {
+			it('should have 0 section', async () => {
 				component.links = [];
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				const sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				expect(sections.length).toBe(0);
-			}));
+			});
 		});
 
 		describe('with additional links', () => {
 			let sections: DebugElement[];
-			beforeEach(fakeAsync(async () => {
+			beforeEach(async () => {
 				component.links = [
 					{url: 'url_1', label: 'URL 1'},
 					{url: 'url_2', label: 'URL 2'},
 				];
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
-			}));
+			});
 
 			it('should have 1 section', () => {
 				expect(sections.length).toBe(1);
@@ -119,25 +115,21 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 		});
 
 		describe('without contact', () => {
-			it('should have 0 section', fakeAsync(async () => {
+			it('should have 0 section', async () => {
 				component.links = [];
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				const sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				expect(sections.length).toBe(0);
-			}));
+			});
 		});
 
 		describe('with contact property only', () => {
 			let sections: DebugElement[];
-			beforeEach(fakeAsync(async () => {
+			beforeEach(async () => {
 				component.contact = {formUrl: 'https://example.com/'};
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
-			}));
+			});
 
 			it('should have 1 section', () => {
 				expect(sections.length).toBe(1);
@@ -183,13 +175,11 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 		describe('with phone property only', () => {
 			let sections: DebugElement[];
-			beforeEach(fakeAsync(async () => {
+			beforeEach(async () => {
 				component.contact = {phone: '123'};
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
-			}));
+			});
 
 			it('should have 1 section', () => {
 				expect(sections.length).toBe(1);
@@ -235,13 +225,11 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 		describe('with email property only', () => {
 			let sections: DebugElement[];
-			beforeEach(fakeAsync(async () => {
+			beforeEach(async () => {
 				component.contact = {email: 'text@test.com'};
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
-			}));
+			});
 
 			it('should have 1 section', () => {
 				expect(sections.length).toBe(1);
@@ -287,7 +275,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 		describe('with email, phone and contact properties', () => {
 			let sections: DebugElement[];
-			beforeEach(fakeAsync(async () => {
+			beforeEach(async () => {
 				component.contact = {
 					email: 'text@test.com',
 					emailText: 'email text',
@@ -296,11 +284,9 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 					formUrl: 'https://example.com/',
 					formUrlText: 'form url text',
 				};
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
+				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
-			}));
+			});
 
 			it('should have 1 section', () => {
 				expect(sections.length).toBe(1);
@@ -440,16 +426,19 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 		});
 
 		describe('popover', () => {
-			beforeEach(fakeAsync(async () => {
-				fixture.detectChanges();
-				await harness.openPopover();
-				fixture.detectChanges();
-				tick();
-			}));
+			beforeEach(async () => {
+				await openPopover();
+			});
 
 			it(`should exist`, async () => {
 				expect(await harness.getPopoverHarness()).toBeTruthy();
 			});
 		});
 	});
+
+	async function openPopover(): Promise<void> {
+		await harness.openPopover();
+		fixture.componentRef.changeDetectorRef.detectChanges();
+		await fixture.whenStable();
+	}
 });

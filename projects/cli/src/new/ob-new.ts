@@ -130,11 +130,13 @@ function formatCode(workingDirectory: string): void {
 	}
 }
 
-// filter out option 'interactive' or 'no-interactive'
-function filterValidOptions(commandOptions: Record<string, string | boolean>): Record<string, string | boolean> {
+// filter out option 'interactive' / 'no-interactive' and options without an explicit value
+function filterValidOptions(
+	commandOptions: Record<string, string | boolean | undefined>
+): Record<string, string | boolean> {
 	return Object.entries(commandOptions)
 		.map(([key, option]) => ({key, value: option}))
-		.filter(({key}) => !key.includes('interactive'))
+		.filter(({key, value}) => !key.includes('interactive') && value !== undefined)
 		.reduce((options, option) => ({...options, [option.key]: option.value}), {});
 }
 

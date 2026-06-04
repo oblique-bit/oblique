@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, Component, DebugElement} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {ObIAlertType} from '@oblique/oblique';
 import {provideObliqueTestingConfiguration} from '../utilities';
@@ -39,6 +39,7 @@ describe('ObAlertComponent', () => {
 	let fixture: ComponentFixture<DefaultTestComponent | AlertRoleTestComponent>;
 	let testComponent: DefaultTestComponent;
 	let debugElement: DebugElement;
+	let hostChangeDetector: ChangeDetectorRef;
 
 	describe('with default inputs', () => {
 		beforeEach(async () => {
@@ -56,6 +57,7 @@ describe('ObAlertComponent', () => {
 			fixture.detectChanges();
 			debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 			obAlertComponent = debugElement.injector.get(ObAlertComponent);
+			hostChangeDetector = fixture.componentRef.changeDetectorRef;
 		});
 
 		it('should create', () => {
@@ -86,7 +88,7 @@ describe('ObAlertComponent', () => {
 			describe.each(['info', 'warning', 'error', 'success'])('with "%s" type', type => {
 				beforeEach(() => {
 					obAlertComponent.type = type as ObIAlertType;
-					fixture.detectChanges();
+					hostChangeDetector.detectChanges();
 				});
 				it(`should have "alert:${type}" icon`, () => {
 					expect(obAlertComponent.icon).toBe(`alert:${type}`);
@@ -98,7 +100,7 @@ describe('ObAlertComponent', () => {
 			describe('with illegal type', () => {
 				beforeEach(() => {
 					obAlertComponent.type = null;
-					fixture.detectChanges();
+					hostChangeDetector.detectChanges();
 				});
 				it('should have "alert:null" as icon', () => {
 					expect(obAlertComponent.icon).toBe('alert:null');
@@ -126,6 +128,7 @@ describe('ObAlertComponent', () => {
 			fixture.detectChanges();
 			debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 			obAlertComponent = debugElement.componentInstance;
+			hostChangeDetector = fixture.componentRef.changeDetectorRef;
 		});
 
 		it('should create', () => {
@@ -167,6 +170,7 @@ describe('ObAlertComponent', () => {
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
+				hostChangeDetector = fixture.componentRef.changeDetectorRef;
 			});
 
 			afterEach(() => {
@@ -185,15 +189,14 @@ describe('ObAlertComponent', () => {
 
 			it('should alert value in HostBinding is undefined if hasRoleAlert is false', () => {
 				obAlertComponent.hasRoleAlert = false;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(obAlertComponent.role).toBe(undefined);
 			});
 
 			it('should remove role-attribute if hasRoleAlert is false', () => {
 				obAlertComponent.hasRoleAlert = false;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(false);
 			});
@@ -216,6 +219,7 @@ describe('ObAlertComponent', () => {
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
+				hostChangeDetector = fixture.componentRef.changeDetectorRef;
 			});
 
 			afterEach(() => {
@@ -225,8 +229,7 @@ describe('ObAlertComponent', () => {
 			it('should not remove role-attribute if hasRoleAlert is false but has already a role that has not type alert', () => {
 				debugElement.nativeElement.setAttribute('role', 'log');
 				obAlertComponent.hasRoleAlert = false;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.getAttribute('role')).toBe('log');
 			});
@@ -234,8 +237,7 @@ describe('ObAlertComponent', () => {
 			it('should not remove role-attribute if hasRoleAlert is undefined but already has a role that has no type alert', () => {
 				debugElement.nativeElement.setAttribute('role', 'log');
 				obAlertComponent.hasRoleAlert = undefined;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.getAttribute('role')).toBe('log');
 			});
@@ -243,61 +245,57 @@ describe('ObAlertComponent', () => {
 			it('should change role-attribute if hasRoleAlert is true and initial doesn\'t have role="alert"', () => {
 				debugElement.nativeElement.setAttribute('role', 'log');
 				obAlertComponent.hasRoleAlert = true;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.getAttribute('role')).toBe('alert');
 			});
 
 			it('should have the  value alert in HostBinding if hasRoleAlert true', () => {
 				obAlertComponent.hasRoleAlert = true;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(obAlertComponent.role).toBe('alert');
 			});
 
 			it('should alert value in HostBinding is undefined if hasRoleAlert false', () => {
 				obAlertComponent.hasRoleAlert = false;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(obAlertComponent.role).toBe(undefined);
 			});
 
 			it('should have a role-attribute if hasRoleAlert is true', () => {
 				obAlertComponent.hasRoleAlert = true;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(true);
 			});
 
 			it('should have a role with value alert if hasRoleAlert is true', () => {
 				obAlertComponent.hasRoleAlert = true;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.getAttribute('role')).toBe('alert');
 			});
 
 			it('should not have an alert role if hasRoleAlert was set as undefined', () => {
 				obAlertComponent.hasRoleAlert = undefined;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(false);
 			});
 
 			it('should still have hasRoleAlert equals undefined by default config', () => {
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(obAlertComponent.hasRoleAlert).toBe(undefined);
 			});
 
 			it('should not have a role-attribute if config Input() changed to undefined', () => {
 				obAlertComponent.hasRoleAlert = true;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 				obAlertComponent.hasRoleAlert = undefined;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(false);
 			});
@@ -320,6 +318,7 @@ describe('ObAlertComponent', () => {
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
+				hostChangeDetector = fixture.componentRef.changeDetectorRef;
 				fixture.detectChanges();
 			});
 
@@ -329,7 +328,7 @@ describe('ObAlertComponent', () => {
 
 			it('should alert value in HostBinding is undefined if hasRoleAlert false', () => {
 				obAlertComponent.hasRoleAlert = false;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(obAlertComponent.role).toBe(undefined);
 			});
@@ -340,16 +339,14 @@ describe('ObAlertComponent', () => {
 
 			it('should have a role-attribute with config Input() is true', () => {
 				obAlertComponent.hasRoleAlert = true;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(true);
 			});
 
 			it("shouldn't have a role-attribute with config Input() is false", () => {
 				obAlertComponent.hasRoleAlert = false;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(false);
 			});
@@ -360,8 +357,7 @@ describe('ObAlertComponent', () => {
 
 			it('should have a role-attribute with config Input() was set as undefined', () => {
 				obAlertComponent.hasRoleAlert = undefined;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(true);
 			});
@@ -384,6 +380,7 @@ describe('ObAlertComponent', () => {
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
+				hostChangeDetector = fixture.componentRef.changeDetectorRef;
 				fixture.detectChanges();
 			});
 
@@ -393,32 +390,30 @@ describe('ObAlertComponent', () => {
 
 			it('should alert value in HostBinding is undefined if hasRoleAlert false', () => {
 				obAlertComponent.hasRoleAlert = false;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(obAlertComponent.role).toBe(undefined);
 			});
 
 			it('should have a role-attribute with config Input() was set as true', () => {
 				obAlertComponent.hasRoleAlert = true;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(true);
 			});
 
 			it('should not have a role-attribute with config Input() was set as false', () => {
 				obAlertComponent.hasRoleAlert = false;
-
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(false);
 			});
 
 			it('should not have a role-attribute if config Input() changed to undefined', () => {
 				obAlertComponent.hasRoleAlert = true;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 				obAlertComponent.hasRoleAlert = undefined;
-				fixture.detectChanges();
+				hostChangeDetector.detectChanges();
 
 				expect(debugElement.nativeElement.hasAttribute('role')).toBe(false);
 			});

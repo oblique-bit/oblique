@@ -1,6 +1,7 @@
 import {type Command, Option, type OptionValues} from '@commander-js/extra-typings';
-import type {ObNewOptions, ObNewSchemaOption, OptionKeys} from '../new/ob-new.model';
-import type {ObCliSchema} from './ob-cli.model';
+import type {ObNewOptions, OptionKeys} from '../new/ob-new.model';
+import type {ObCliSchema, ObSchemaOption} from './ob-cli.model';
+import type {ObUpdateOptions} from '../update/ob-update.model';
 const flagPrefixLength = 2;
 
 //this is needed because commander sometimes converts the option to firstUpperCase
@@ -14,7 +15,7 @@ export function convertOptionPropertyNames(options: ObNewOptions<string | boolea
 }
 
 export function addObNewCommandOptions(
-	schema: ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>>,
+	schema: ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>>,
 	command: Command<[string], OptionValues>
 ): Command<[string], OptionValues> {
 	if (Object.prototype.hasOwnProperty.call(schema, 'properties')) {
@@ -31,7 +32,24 @@ export function addObNewCommandOptions(
 	return command;
 }
 
-export function configureOption(config: ObNewSchemaOption, longFlag: string): Option[] {
+export function addObUpdateCommandOptions(
+	schema: ObCliSchema<Partial<ObUpdateOptions<ObSchemaOption>>>,
+	command: Command<[string], OptionValues>
+): Command<[string], OptionValues> {
+	if (!Object.hasOwn(schema, 'properties')) {
+		throw new Error(`Schema for command ob ${command.name()} not found!`);
+	}
+	for (const [key, value] of Object.entries(schema.properties)) {
+		value.description = createOptionDescription(value.description, value.resources);
+		const options = configureOption(value, key);
+		for (const option of options) {
+			command.addOption(option);
+		}
+	}
+	return command;
+}
+
+export function configureOption(config: ObSchemaOption, longFlag: string): Option[] {
 	validateFlags(config, longFlag);
 	const flags = buildFlags(config.shortFlag, longFlag);
 	const options = createCommanderOption(config, flags);
@@ -41,7 +59,7 @@ export function configureOption(config: ObNewSchemaOption, longFlag: string): Op
 		.map(option => addChoices(option, config.choices));
 }
 
-function validateFlags(config: ObNewSchemaOption, longFlag: string): void {
+function validateFlags(config: ObSchemaOption, longFlag: string): void {
 	if (isBlank(config.shortFlag) && isBlank(longFlag)) {
 		throw new Error('Either a shortFlag or a longFlag must be provided.');
 	}
@@ -60,7 +78,7 @@ function buildFlags(shortFlag?: string, longFlag?: string): string {
 		.join(', ');
 }
 
-function createCommanderOption(config: ObNewSchemaOption, longFlag: string): Option[] {
+function createCommanderOption(config: ObSchemaOption, longFlag: string): Option[] {
 	if (config.type === 'boolean') {
 		return [...createBooleanCommanderOptions(config, longFlag.slice(flagPrefixLength))];
 	}
@@ -68,14 +86,14 @@ function createCommanderOption(config: ObNewSchemaOption, longFlag: string): Opt
 	return [createValueCommanderOption(config, longFlag)];
 }
 
-function createBooleanCommanderOptions(config: ObNewSchemaOption, flag: string): Option[] {
+function createBooleanCommanderOptions(config: ObSchemaOption, flag: string): Option[] {
 	return [
 		new Option(`--${flag} [boolean]`, config.description).conflicts(`--no-${flag}`),
 		new Option(`--no-${flag}`, config.description).hideHelp(true).conflicts(`--${flag}`),
 	];
 }
 
-function createValueCommanderOption(config: ObNewSchemaOption, flags: string): Option {
+function createValueCommanderOption(config: ObSchemaOption, flags: string): Option {
 	return new Option(`${flags} ${config.flagValuePlaceholder}`.trim(), config.description);
 }
 

@@ -88,7 +88,7 @@ describe('obDisableLinkDirective', () => {
 				component.disableLink = true;
 				fixture.detectChanges();
 				component.disableLink = false;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 
 				element = fixture.nativeElement.querySelector(`#${component.standardId}`);
 				expect(element.hasAttribute('role')).toBe(false);
@@ -100,7 +100,7 @@ describe('obDisableLinkDirective', () => {
 				component.disableLink = false;
 				fixture.detectChanges();
 				component.disableLink = true;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 
 				element = fixture.nativeElement.querySelector(`#${component.standardId}`);
 				expect(element.hasAttribute('role')).toBe(true);

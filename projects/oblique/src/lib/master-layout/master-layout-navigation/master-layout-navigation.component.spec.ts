@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Router, RouterModule} from '@angular/router';
@@ -168,15 +168,15 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			{linkIndex: 3, childIndex: 1},
 			{linkIndex: 3, childIndex: 2},
 		])('with children link index: $linkIndex & child index: $childIndex', ({linkIndex, childIndex}) => {
-			beforeEach(fakeAsync(async () => {
+			beforeEach(async () => {
 				component.links = mockLinksWithChildren;
 				component.ngOnChanges();
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				await fixture.whenStable();
 				expandMainNavItem(linkIndex);
 				component.changeCurrentParentLink(component.initializedLinks[linkIndex]);
-				fixture.detectChanges();
-			}));
+				fixture.componentRef.changeDetectorRef.detectChanges();
+			});
 
 			test(`that ${ObMasterLayoutNavigationComponent.prototype.changeCurrentParentLink.name} is called after clicking go to children button`, () => {
 				jest.spyOn(component, 'changeCurrentParentLink');
@@ -186,25 +186,25 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				);
 			});
 
-			test(`that ${ObMasterLayoutNavigationComponent.prototype.backUpOrCloseSubMenu.name} is called after clicking go to children button & then back button `, fakeAsync(() => {
+			test(`that ${ObMasterLayoutNavigationComponent.prototype.backUpOrCloseSubMenu.name} is called after clicking go to children button & then back button `, () => {
 				jest.spyOn(component, 'backUpOrCloseSubMenu');
 				clickGoToChildrenButton(linkIndex, childIndex);
 				clickBackButton(linkIndex);
 				expect(component.backUpOrCloseSubMenu).toHaveBeenCalledTimes(1);
-			}));
+			});
 
-			test(`that ${ObMasterLayoutNavigationComponent.prototype.closeSubMenu.name} is called after clicking go to children button & then close button `, fakeAsync(() => {
+			test(`that ${ObMasterLayoutNavigationComponent.prototype.closeSubMenu.name} is called after clicking go to children button & then close button `, () => {
 				jest.spyOn(component, 'closeSubMenu');
 				clickGoToChildrenButton(linkIndex, childIndex);
 				clickCloseButton(linkIndex);
 				expect(component.closeSubMenu).toHaveBeenCalledTimes(1);
-			}));
+			});
 
 			test(`that ${
 				(ObMasterLayoutNavigationComponent.prototype as unknown as {isLinkInCurrentParentAncestors: {name: string}})
 					.isLinkInCurrentParentAncestors.name
 			} is called with correct link after clicking go to children button when child is not in currentParentAncestors`, () => {
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				jest.spyOn(
 					component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void},
 					'isLinkInCurrentParentAncestors'
@@ -223,7 +223,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor(
 					component.initializedLinks[linkIndex].children[childIndex]
 				);
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				jest.spyOn(
 					component as unknown as {isLinkInCurrentParentAncestors: (link: ObNavigationLink) => void},
 					'isLinkInCurrentParentAncestors'
@@ -242,7 +242,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				(component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void}).addCurrentParentAncestor(
 					component.initializedLinks[linkIndex].children[childIndex]
 				);
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				jest.spyOn(
 					component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void},
 					'addCurrentParentAncestor'
@@ -258,7 +258,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				(ObMasterLayoutNavigationComponent.prototype as unknown as {addCurrentParentAncestor: {name: string}})
 					.addCurrentParentAncestor.name
 			} is called with correct link after clicking go to children button when child is not in currentParentAncestors`, () => {
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				jest.spyOn(
 					component as unknown as {addCurrentParentAncestor: (link: ObNavigationLink) => void},
 					'addCurrentParentAncestor'
@@ -303,12 +303,12 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			test('click on right scroll button', () => {
 				component.isScrollable = true;
 				component.maxScroll = 100;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 
 				jest.useFakeTimers();
 				fixture.debugElement.query(By.css('#ob-navigation-scrollable-control-right')).nativeElement.click();
 				jest.runAllTimers();
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				expect(component.currentScroll).toBe(95);
 				jest.useRealTimers();
 			});
@@ -317,12 +317,12 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				component.isScrollable = true;
 				component.currentScroll = 15;
 				component.maxScroll = 100;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 
 				jest.useFakeTimers();
 				fixture.debugElement.query(By.css('#ob-navigation-scrollable-control-left')).nativeElement.click();
 				jest.runAllTimers();
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				expect(component.currentScroll).toBe(0);
 				jest.useRealTimers();
 			});
@@ -330,7 +330,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			test('focusing an element scrolls it into view', () => {
 				component.isScrollable = true;
 				component.maxScroll = 100;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				jest.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
 				component.focusIn('ob-main-nav-item-', 'full');
 				expect(component.currentScroll).toBe(42);
@@ -339,7 +339,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			test("focusing out of an element doesn't scroll it", () => {
 				component.isScrollable = true;
 				component.maxScroll = 100;
-				fixture.detectChanges();
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				jest.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
 				component.focusOut('ob-main-nav-item-', 'full');
 				expect(component.currentScroll).toBe(0);

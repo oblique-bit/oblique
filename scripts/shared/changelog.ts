@@ -22,8 +22,19 @@ interface Commit {
 	issues: string;
 }
 
+interface ProjectScopeAndFolder {
+	scope: string;
+	folder: string;
+}
+
 export class Changelog extends StaticScript {
-	static addRelease(version: string, projectName: string, additionalPackageWithScope?: string): void {
+	static addRelease(
+		version: string,
+		project: string | ProjectScopeAndFolder,
+		additionalPackageWithScope?: string
+	): void {
+		const projectScope = typeof project === 'string' ? project : project.scope;
+		const projectFolder = typeof project === 'string' ? project : project.folder;
 		Log.info(`Add version ${version} to CHANGELOG.md`);
 		if (additionalPackageWithScope && !additionalPackageWithScope.includes('/')) {
 			fatal(
@@ -32,8 +43,8 @@ export class Changelog extends StaticScript {
 		}
 		const previousTag = Git.getLatestVersionTag();
 		Changelog.prependRelease(
-			projectName,
-			Changelog.getCommits(previousTag, 'HEAD', projectName, additionalPackageWithScope),
+			projectFolder,
+			Changelog.getCommits(previousTag, 'HEAD', projectScope, additionalPackageWithScope),
 			previousTag,
 			version
 		);

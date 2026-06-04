@@ -1,6 +1,6 @@
 @Library('jeap-pipelinelibrary@feature/oblique9') _
 nodejsPipelineTemplate {
-	nodeJsVersion = 22
+	nodeJsVersion = 24
 	npmRepository = [
 		'repository': 'registry.npmjs.com',
 		'email': 'oblique@bit.admin.ch',
@@ -19,11 +19,11 @@ nodejsPipelineTemplate {
 				'@oblique/cli',
 				'@oblique/service-navigation-web-component',
 				'@oblique/toolchain'
+			],
+			'gitPush': [
+				'credentialId': 'githubObliqueCredentials',
+				'repository': 'https://github.com/oblique-bit/oblique.git',
 			]
-		],
-		'gitPush': [
-			'credentialId': 'githubObliqueCredentials',
-			'repository': 'https://github.com/oblique-bit/oblique.git',
 		]
 	]
 }

@@ -1,3 +1,9 @@
+# [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
+
+## Features
+
+- **sample:** add `returnUrl` to example ([6446ecc1](https://github.com/oblique-bit/oblique/commit/6446ecc1cac8ced17852b6a5d8edda0958159e79), OUI-4419)
+
 # [15.0.3](https://github.com/oblique-bit/oblique/compare/15.0.2...15.0.3) (2026-03-03)
 
 ## Bug Fixes

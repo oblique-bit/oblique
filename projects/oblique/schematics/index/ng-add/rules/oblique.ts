@@ -17,7 +17,7 @@ export function oblique(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, context: SchematicContext) =>
 		chain([
 			addFavIcon(),
-			embedMasterLayout(options.title),
+			embedMasterLayout(options.title, options.applicationOperator),
 			addAdditionalModules(),
 			addFeatureDetection(),
 			addMainCSS(),
@@ -44,15 +44,12 @@ function addFavIcon(): Rule {
 	});
 }
 
-function embedMasterLayout(title: string): Rule {
+function embedMasterLayout(title: string, applicationOperator: string): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, 'Oblique: Embedding Master Layout');
 		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
-		addMasterLayout(tree, title);
-		infoMigration(
-			context,
-			"MasterLayout integrated. Please don’t forget to update the 'application operator' placeholder in the footer with your actual operator."
-		);
+		addMasterLayout(tree, title, applicationOperator);
+		infoMigration(context, 'MasterLayout integrated.');
 		return tree;
 	});
 }
@@ -141,16 +138,24 @@ function addFontFiles(): Rule {
 	});
 }
 
-function addMasterLayout(tree: Tree, title: string): void {
+function addMasterLayout(tree: Tree, title: string, applicationOperator: string): void {
 	const path = `src/app/${angularAppFilesNames.appTemplate}`;
 	if (tree.exists(path)) {
 		tree.overwrite(
 			path,
 			getTemplate(tree, 'default-master-layout.html')
 				.replace(/_APP_TITLE_PLACEHOLDER_/, title)
-				.replace(/_APP_CURRENT_YEAR_/, new Date().getFullYear().toString())
-				.replace(/_APPLICATION_OPERATOR_/, 'application operator')
+				.replace(/_APPLICATION_OPERATOR_/, applicationOperator)
 		);
+	}
+
+	const appComponentPath = `src/app/${angularAppFilesNames.appComponent}`;
+	if (tree.exists(appComponentPath)) {
+		const appComponentContent = readFile(tree, appComponentPath);
+		const titleRegex = /protected\sreadonly\stitle.*/u;
+		const appRegex = /App\s\{/u;
+		const yearString = 'App {\nreadonly year = signal(new Date().getFullYear());';
+		tree.overwrite(appComponentPath, appComponentContent.replace(titleRegex, '').replace(appRegex, yearString));
 	}
 }
 

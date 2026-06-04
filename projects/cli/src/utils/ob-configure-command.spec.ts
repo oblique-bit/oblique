@@ -1,8 +1,14 @@
 import {Command, type Option} from '@commander-js/extra-typings';
 import type {OptionValues} from 'commander';
-import {type ObNewOptions, type ObNewSchemaOption, schema} from '../new/ob-new.model';
-import type {ObCliSchema} from './ob-cli.model';
-import {addObNewCommandOptions, configureOption, convertOptionPropertyNames} from './ob-configure-command';
+import {type ObNewOptions, schema} from '../new/ob-new.model';
+import type {ObCliSchema, ObSchemaOption} from './ob-cli.model';
+import {
+	addObNewCommandOptions,
+	addObUpdateCommandOptions,
+	configureOption,
+	convertOptionPropertyNames,
+} from './ob-configure-command';
+import type {ObUpdateOptions} from '../update/ob-update.model';
 
 jest.mock('../new/ob-new.model');
 jest.mock('./ob-cli.model');
@@ -64,13 +70,13 @@ describe('ob-configure-command', () => {
 				},
 			],
 		])('%s', ({cliSchema, expectedCalls}) => {
-			addObNewCommandOptions(cliSchema as ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>>, command);
+			addObNewCommandOptions(cliSchema as ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>>, command);
 
 			expect(addOptionSpy).toHaveBeenCalledTimes(expectedCalls);
 		});
 
 		test('returns same command instance', () => {
-			const cliSchema: ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>> = {
+			const cliSchema: ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>> = {
 				properties: {
 					title: {
 						type: 'string',
@@ -86,13 +92,13 @@ describe('ob-configure-command', () => {
 		});
 
 		test('throws when schema has no properties', () => {
-			const cliSchema = {} as ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>>;
+			const cliSchema = {} as ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>>;
 
 			expect(() => addObNewCommandOptions(cliSchema, command)).toThrow('Schema for command ob ob not found!');
 		});
 		describe('configureOption', () => {
 			test('throws error when shortFlag and longFlag are missing', () => {
-				const invalidConfig: ObNewSchemaOption = {
+				const invalidConfig: ObSchemaOption = {
 					type: 'string',
 					description: 'Invalid option',
 				};
@@ -104,13 +110,13 @@ describe('ob-configure-command', () => {
 				const brokenConfig = {
 					description: 'No flags here',
 					flagValuePlaceholder: 'value',
-				} as ObNewSchemaOption;
+				} as ObSchemaOption;
 
 				expect(() => configureOption(brokenConfig, '')).toThrow('Either a shortFlag or a longFlag must be provided.');
 			});
 
 			test('should trim options', () => {
-				const invalidConfig: ObNewSchemaOption = {
+				const invalidConfig: ObSchemaOption = {
 					type: 'string',
 					description: 'Invalid option',
 				};
@@ -215,6 +221,40 @@ describe('ob-configure-command', () => {
 		});
 	});
 
+	describe('addObUpdateCommandOptions', () => {
+		test('returns same command instance', () => {
+			const cliSchema: ObCliSchema<Partial<ObUpdateOptions<ObSchemaOption>>> = {
+				properties: {
+					verbose: {
+						type: 'boolean',
+						defaultValue: false,
+						description: 'value1',
+					},
+					force: {
+						type: 'boolean',
+						defaultValue: true,
+						description: 'value2',
+					},
+					'allow-dirty': {
+						type: 'boolean',
+						defaultValue: true,
+						description: 'value3',
+					},
+				},
+			};
+
+			const result = addObUpdateCommandOptions(cliSchema, command);
+
+			expect(result).toBe(command);
+		});
+
+		test('throws when schema has no properties', () => {
+			const cliSchema = {} as ObCliSchema<Partial<ObUpdateOptions<ObSchemaOption>>>;
+
+			expect(() => addObUpdateCommandOptions(cliSchema, command)).toThrow('Schema for command ob ob not found!');
+		});
+	});
+
 	describe('boolean options via addObNewCommandOptions', () => {
 		let addOptionSpy: jest.SpyInstance;
 
@@ -222,7 +262,7 @@ describe('ob-configure-command', () => {
 			addOptionSpy = jest.spyOn(command, 'addOption');
 		});
 
-		const cliSchema: ObCliSchema<Partial<ObNewOptions<ObNewSchemaOption>>> = {
+		const cliSchema: ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>> = {
 			properties: {
 				interactive: {
 					type: 'boolean',

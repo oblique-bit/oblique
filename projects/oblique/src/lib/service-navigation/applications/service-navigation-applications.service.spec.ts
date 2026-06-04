@@ -1,4 +1,4 @@
-import {TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {count, from, of} from 'rxjs';
 import {ObServiceNavigationApplicationsStoreService} from './service-navigation-applications-store.service';
 import {ObServiceNavigationApplicationsService} from './service-navigation-applications.service';
@@ -56,16 +56,15 @@ describe('ObServiceNavigationApplicationsService', () => {
 			{description: 'no application list', value: null},
 			{description: 'an empty application list', value: []},
 		])('with $description application as input', ({value}) => {
-			it('should not emit', fakeAsync(() => {
+			it('should not emit', () => {
 				let emitted = false;
 				of(value)
 					.pipe(service.getApplications('http:/rootUrl/'))
 					.subscribe(() => {
 						emitted = true;
 					});
-				tick();
 				expect(emitted).toBe(false);
-			}));
+			});
 		});
 
 		describe('with 4 applications as input', () => {

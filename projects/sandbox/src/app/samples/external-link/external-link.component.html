@@ -68,6 +68,13 @@
 			<a mat-icon-button matTooltip="user" href="http://www.google.ch"><mat-icon svgIcon="person" /></a> An example of
 			an icon button link. The external-link icon should not be shown
 		</p>
+		<section>
+			<h3>Dynamic href</h3>
+			<p>
+				An example of an external link to <a [href]="dynamicHref() | translate">MDN</a> where the <code>href</code> uses
+				the translate pipe.
+			</p>
+		</section>
 	</ng-container>
 
 	<ng-container column-right-content>
@@ -86,6 +93,10 @@
 					<mat-radio-button [value]="variantIsExternal.value">{{ variantIsExternal.viewValue }}</mat-radio-button>
 				}
 			</mat-radio-group>
+		</fieldset>
+		<fieldset>
+			<legend>Is dynamic href external</legend>
+			<mat-slide-toggle checked="true" (change)="toggleExternal($event)">is external</mat-slide-toggle>
 		</fieldset>
 	</ng-container>
 </ob-column-layout>

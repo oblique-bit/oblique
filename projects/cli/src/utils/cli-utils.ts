@@ -3,7 +3,7 @@ import {type ExecSyncOptions, execSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '15.3.1';
+export const version = '15.4.0';
 /* End of generated content */
 
 export const currentVersions = {
@@ -151,7 +151,7 @@ export function execute(config: ObCommandConfig): void {
 		case 'ngUpdate':
 			return executeNgCommand(
 				`update ${buildNgUpdateDependencyArgs(config.dependencies, config.angularDependencies)}`,
-				{'allow-dirty': true, ...config.options},
+				{...config.options},
 				config.execSyncOptions
 			);
 		case 'npmInstall':
