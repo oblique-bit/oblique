@@ -180,4 +180,5 @@ export {
 	ObIAutocompleteInputOptionGroup,
 	OptionLabelIconPosition,
 } from './lib/autocomplete/autocomplete.module';
+export {ObLocalizePipe} from './lib/router/ob-localize.pipe';
 export {appVersion} from './lib/version';
