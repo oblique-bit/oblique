@@ -43,3 +43,24 @@
 		</mat-form-field>
 	</div>
 </ob-column-layout>
+<h2 class="page-header">ObLocalizePipe</h2>
+<table class="ob-table">
+	<caption>
+		ObLocalizePipe handles localization of URLs based on the current language. If hasLanguageInUrl is true, the pipe
+		will include the language code in the URL.
+	</caption>
+	<thead>
+		<tr>
+			<th>Input URL</th>
+			<th>Localized URL</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (input of localizedPipeInputs; track $index) {
+			<tr>
+				<td>{{ input }}</td>
+				<td>{{ input | obLocalize }}</td>
+			</tr>
+		}
+	</tbody>
+</table>

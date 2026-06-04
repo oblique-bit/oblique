@@ -22,4 +22,18 @@ export class LanguageSampleComponent {
 	date = new Date();
 	dateFormat: ObDateFormat = 'shortDate';
 	timeFormat: ObTimeFormat = 'shortTime';
+	localizedPipeInputs = [
+		'/samples/alert',
+		'/en/samples/alert',
+		'/fr/samples/alert',
+		'',
+		'/',
+		'../',
+		'../alert',
+		'../../',
+		'../../alert',
+		'../../../',
+		'../../../alert',
+		'alert',
+	];
 }
