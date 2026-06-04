@@ -1,3 +1,14 @@
+# [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
+
+## Bug Fixes
+
+- **update:** fix path ([b67c7673](https://github.com/oblique-bit/oblique/commit/b67c7673b9217ee84705def1d7fb849e6eb40cf0), OUI-3685)
+
+## Features
+
+- **new:** let ng-add prompt for npmrc ([64e5ad46](https://github.com/oblique-bit/oblique/commit/64e5ad46e388018ce3621f0e1084fa8205b44e10), OUI-4402)
+- **update:** add support for angular parameters ([c0ec9b11](https://github.com/oblique-bit/oblique/commit/c0ec9b113141550a385163c4661aec7d2d855de6), OUI-3685)
+
 # [15.1.2](https://github.com/oblique-bit/oblique/compare/15.1.1...15.1.2) (2026-03-19)
 
 ## Bug Fixes

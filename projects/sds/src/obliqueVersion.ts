@@ -1,1 +1,1 @@
-export const latest = '15.3.1';
+export const latest = '15.4.0';

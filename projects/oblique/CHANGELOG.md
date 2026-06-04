@@ -1,3 +1,19 @@
+# [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
+
+## Bug Fixes
+
+- **external-link:** support dynamic `href` changes ([4a56c5f0](https://github.com/oblique-bit/oblique/commit/4a56c5f0941a4e549b572a7ff6cc582eb0a1c3ed), OUI-4423)
+
+## Features
+
+- **http-interceptor:** expose `ObIObliqueHttpErrorResponse` ([9ff56365](https://github.com/oblique-bit/oblique/commit/9ff56365c2c92a0aaa37336c935daf2dac0af1d9), OUI-4421)
+- **http-interceptor:** expose `ObIHttpApiRequestNotification` ([00594942](https://github.com/oblique-bit/oblique/commit/00594942dbdda4f71fffe7b85345d2a30cd9601e), OUI-4421)
+- **schematics:** add dynamic year in footer in `ng-add` ([1390f4bd](https://github.com/oblique-bit/oblique/commit/1390f4bd673022de6fcc7c5b03fac3cf0d5d6a49), OUI-4332)
+- **schematics:** remove unused title in `ng-add` ([2f9ad040](https://github.com/oblique-bit/oblique/commit/2f9ad0409cab70758515e6fc766bfefb554bea8a), OUI-4332)
+- **schematics:** add app operator in footer in `ng-add` ([78c33e97](https://github.com/oblique-bit/oblique/commit/78c33e97d71a4a09fe6a106eea748bf4a71f6706), OUI-4332)
+- **schematics:** `ng-add` add home button to main nav ([9d7f8ec5](https://github.com/oblique-bit/oblique/commit/9d7f8ec593577440e07e85fbace83f3a955a5ce3), OUI-4432)
+- **spinner:** log warning when `activate` or `deactivate` is called with non-existent channel ([11231bc4](https://github.com/oblique-bit/oblique/commit/11231bc4e3e095c80b432ed8cd1011f00f329efd), OUI-4434)
+
 # [15.3.1](https://github.com/oblique-bit/oblique/compare/15.3.0...15.3.1) (2026-05-27)
 
 ## Bug Fixes
