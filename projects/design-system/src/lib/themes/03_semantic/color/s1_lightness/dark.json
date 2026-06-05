@@ -1789,7 +1789,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "0.15",
+                      "value": "0.17",
                       "space": "hsl"
                     }
                   },
@@ -1807,7 +1807,7 @@
             "primary": {
               "base": {
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.cobalt.900}"
               },
               "rest": {
                 "$extensions": {
@@ -1826,7 +1826,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "0.1",
+                      "value": "0.25",
                       "space": "hsl"
                     }
                   },
@@ -1845,7 +1845,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "0.15",
+                      "value": "0.50",
                       "space": "hsl"
                     }
                   },
@@ -1917,7 +1917,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "0.15",
+                      "value": "0.17",
                       "space": "hsl"
                     }
                   }
@@ -1929,7 +1929,7 @@
             "primary": {
               "base": {
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.cobalt.900}"
               },
               "rest": {
                 "$extensions": {
@@ -1948,7 +1948,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "0.1",
+                      "value": "0.25",
                       "space": "hsl"
                     }
                   },
@@ -1967,7 +1967,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "0.15",
+                      "value": "0.50",
                       "space": "hsl"
                     }
                   },
