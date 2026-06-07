@@ -1751,7 +1751,7 @@
                   ]
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.600}"
+                "$value": "{ob.p.color.steelblue.500}"
               },
               "rest": {
                 "$extensions": {
@@ -1917,7 +1917,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "0.17",
+                      "value": "0.18",
                       "space": "hsl"
                     }
                   }
