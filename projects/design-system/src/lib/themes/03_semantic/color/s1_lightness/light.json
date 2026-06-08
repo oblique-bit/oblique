@@ -1807,7 +1807,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "0.20",
+                      "value": "0.28",
                       "space": "hsl"
                     }
                   }
@@ -1893,7 +1893,7 @@
                   ]
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.700}"
+                "$value": "{ob.p.color.cobalt.500}"
               },
               "rest": {
                 "$extensions": {
