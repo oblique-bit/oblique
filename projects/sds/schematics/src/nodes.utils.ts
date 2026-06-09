@@ -9,7 +9,7 @@ import {changeInsertLeft, changeInsertRight, replaceUpdate, showAlreadyExistsMes
 import {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
 
 export function checkPropertyLiteralExists(
-	nodes: Node[],
+	nodes: readonly Node[],
 	toFindConfig: {identifierName: string; propertyName: string; className: string}
 ): boolean {
 	const syntaxList = findNodes(
@@ -24,11 +24,11 @@ export function checkPropertyLiteralExists(
 	return syntaxList.length > 0;
 }
 
-export function findIdentifierNode(nodes: Node[], identifierName: string): Node {
+export function findIdentifierNode(nodes: readonly Node[], identifierName: string): Node {
 	const foundNode = nodes.find(node => node.kind === SyntaxKind.Identifier && node.getText() === identifierName);
 	if (!foundNode?.parent) {
 		throw new SchematicsException(
-			`Error: Expected variable ${identifierName} not found in ${nodes.pop().parent.getText()}.`
+			`Error: Expected variable ${identifierName} not found in ${nodes.at(-1)?.parent?.getText() ?? 'the source file'}.`
 		);
 	}
 	return foundNode;
@@ -118,7 +118,7 @@ function getSortedText(syntaxList: Node, kind: SyntaxKind, toAddText: string): s
 }
 
 function findSyntaxList(
-	nodes: Node[],
+	nodes: readonly Node[],
 	identifierName: string,
 	kind: SyntaxKind.ArrayLiteralExpression | SyntaxKind.ObjectLiteralExpression
 ): Node {
@@ -134,7 +134,7 @@ function getTextToAddWithComma(syntaxList: Node, textToAdd: string): string {
 	return hasComma || lastSign === undefined ? `\n\t\t${textToAdd},\n` : `,\n\t\t${textToAdd},\n`;
 }
 
-function findByTextAndKind(nodes: Node[], toFind: {kind: SyntaxKind; text: string}, childIndex = 0): Node {
+function findByTextAndKind(nodes: readonly Node[], toFind: {kind: SyntaxKind; text: string}, childIndex = 0): Node {
 	return nodes.find(node => {
 		if (node.kind === toFind.kind && node.getText().includes(toFind.text)) {
 			return node;
