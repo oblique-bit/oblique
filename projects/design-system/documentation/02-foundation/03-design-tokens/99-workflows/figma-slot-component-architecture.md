@@ -293,8 +293,6 @@ Examples:
 **Document Maintainers:** Design System Team  
 **Review Schedule:** Quarterly  
 **Next Review:** December 2025  
-**Related Tickets:** OUI-3966 (Component Migration), OUI-4019 (Token Architecture)
-
 ---
 
 *This slot 04_component architecture provides a scalable foundation for flexible 04_component design while maintaining the integrity and consistency of the Oblique Design System.*

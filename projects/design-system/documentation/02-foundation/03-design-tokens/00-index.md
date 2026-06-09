@@ -122,13 +122,13 @@ npm run search-tokens "button disabled"
 
 ## **📋 Current Status**
 
-**Token Structure**: Post-OUI-4001 S1/S2/S3 hierarchy implemented  
+**Token Structure**: S1/S2/S3 hierarchy implemented  
 **Documentation**: Reorganized by user role and workflow  
 **Tooling Priority**: Figma > Code > Tokens Studio > W3C standards  
 **Validation**: Automated scripts ensure reference integrity  
 
 **Last Updated**: October 30, 2025  
-**Architecture Version**: Post-OUI-4001  
+**Architecture Version**: S1/S2/S3 hierarchy  
 **Status**: Production Ready  
 
 ---

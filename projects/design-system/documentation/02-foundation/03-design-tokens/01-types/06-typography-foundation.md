@@ -77,4 +77,4 @@
 
 ---
 
-*This document reflects architectural decisions made during OUI-4066 typography system implementation.*
+*This document reflects architectural decisions made during the typography system implementation.*

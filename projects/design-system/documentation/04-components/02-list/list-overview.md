@@ -28,7 +28,7 @@ Layout outside the list (the surrounding container, page rhythm, paragraph spaci
 
 ## Component Architecture
 
-The List is one container plus one item primitive. Different *use cases* are different **variants** of the item, because their anatomy differs. Different *appearances* (hover, selected, disabled, compact, dark…) are **modes**, not variants — per [OUI-4436](../../02-foundation/04-states.md).
+The List is one container plus one item primitive. Different *use cases* are different **variants** of the item, because their anatomy differs. Different *appearances* (hover, selected, disabled, compact, dark…) are **modes**, not variants — see [states as modes](../../02-foundation/04-states.md).
 
 ### Structure Mapping
 
@@ -140,7 +140,7 @@ list/list_item_selection
 
 **Modes that apply:** all `action` modes plus `selected`. Combinations such as `selected + hover`, `selected + focused`, `selected + disabled` resolve through the standard mode resolution chain — there are no compound-segment tokens like `color.bg.selected.hovered`.
 
-> **Why is `selected` a mode and not a segment?** See [states-as-modes](../../02-foundation/04-states.md) and [OUI-4436](../../02-foundation/04-states.md). Any visual difference that can stack with other states (hover-while-selected, focused-while-selected, disabled-while-selected) must be a mode, or we get a combinatorial explosion of compound segments and lose orthogonality.
+> **Why is `selected` a mode and not a segment?** See [states as modes](../../02-foundation/04-states.md). Any visual difference that can stack with other states (hover-while-selected, focused-while-selected, disabled-while-selected) must be a mode, or we get a combinatorial explosion of compound segments and lose orthogonality.
 
 ---
 
@@ -207,7 +207,7 @@ list/list_item_disclosure
 - `ob.h.list.item.color.bg`
 - `ob.h.list.item.color.border`
 
-> **Token path note.** The same `ob.h.list.item.color.bg` token resolves to different values when the `hover`, `focused`, `pressed`, `selected`, or `disabled` mode collection is switched on. There is intentionally no `ob.h.list.item.color.bg.hover` or `ob.h.list.item.color.bg.selected.hovered` token — that is the anti-pattern OUI-4436 retires.
+> **Token path note.** The same `ob.h.list.item.color.bg` token resolves to different values when the `hover`, `focused`, `pressed`, `selected`, or `disabled` mode collection is switched on. There is intentionally no `ob.h.list.item.color.bg.hover` or `ob.h.list.item.color.bg.selected.hovered` token — that is the anti-pattern the states-as-modes model retires.
 
 ### Selection-only tokens
 

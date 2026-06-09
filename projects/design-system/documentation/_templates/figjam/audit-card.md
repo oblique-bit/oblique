@@ -2,7 +2,7 @@
 
 Format spec for all naming-audit cards on the **States — Concept** board.
 
-**Board**: `7k7SeWlhTycijN1TFo8SbI`, page `02 Audit – DR_V2`
+**Board**: `7k7SeWlhTycijN1TFo8SbI`, page `02 Audit – DR`
 
 **Template nodes** (live in `_templates` section):
 - `280:182` — Audit Card Template 0 – Overview

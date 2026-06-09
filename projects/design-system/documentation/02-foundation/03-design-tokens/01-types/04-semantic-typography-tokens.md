@@ -80,6 +80,3 @@ This dual approach balances Figma workflow efficiency with CSS implementation fl
 - Static tokens maintain consistent values across all contexts
 - All token references properly resolve through the dynamic/static segment structure
 - Typography architecture intentionally uses different patterns based on use case and Figma integration needs
-
----
-*Resolved: OUI-4035*

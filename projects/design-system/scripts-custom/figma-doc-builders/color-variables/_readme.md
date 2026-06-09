@@ -87,7 +87,7 @@ node scripts-custom/figma-doc-builders/color-variables/build-color-variables.js
    - Receives the IIFE's return value (JSON) and prints a per-table summary + cache stats.
 
 2. **In-Figma side** (`PLUGIN_CODE`):
-   - Discovers all required components by name (`_docs/color-variables/*` + `_docs/shared/group_header`), caches them per Figma file in `_private/.cache/v2-discovery.json` to skip the slow walk on subsequent runs.
+   - Discovers all required components by name (`_docs/color-variables/*` + `_docs/shared/group_header`), caches them per Figma file (discovery cache) to skip the slow walk on subsequent runs.
    - Reads every color variable + every family-doc STRING variable.
    - Builds / refreshes the page structure: container `Color Tokens` → tier sections → section bars → tables.
    - For each table: ensures structure, places header row, group headers, then one row per token; binds each swatch's fills to the token's variable; writes the Description cell from `variable.description`.
@@ -134,7 +134,7 @@ All inside `_docs/color-variables/*` (under the Building Blocks frame on the cli
 - **`Components found: N/7` with N < 7** — at least one expected component is missing or renamed. Check `registry.json → componentNames` vs the live Figma component names.
 - **`Family docs found: 0`** — the family-doc STRING vars under `_docs/token_family_info` don't exist in the current file yet. Section Bar `$description` will fall back to a default placeholder. Export them via Tokens Studio first.
 - **A table has no Description column** — no variable in that table has `variable.description` set. Either add descriptions to those variables (via Tokens Studio sync from `src/lib/themes/03_semantic/color/**/*.json` `$description` fields), or accept the slimmer header variant.
-- **Slow first run** — discovery cache is cold. First run walks the document; subsequent runs hydrate from `_private/.cache/v2-discovery.json`.
+- **Slow first run** — discovery cache is cold. First run walks the document; subsequent runs hydrate from the discovery cache.
 
 ## See also
 

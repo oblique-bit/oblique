@@ -282,7 +282,7 @@ For each cleaned component, document:
 - Any remaining known variables (if intentional)
 
 #### **Workflow Integration**
-This method integrates with the overall OUI-3966 component migration:
+This method integrates with the overall component migration:
 1. Use this workflow for each component before V6→V7 migration
 2. Apply to Badge, Button, Link, Infobox, Pill, Popover, Spinner, Tooltip
 3. Combine with S1/S2/ob.s token application after cleanup

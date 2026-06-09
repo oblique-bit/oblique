@@ -349,9 +349,7 @@ The token architecture is designed to help components meet [Web Content Accessib
 
 The design system is required to be **WCAG 2.1 AA compliant**. This means **no foreground/background color pairing that falls below the AA contrast ratio (4.5:1 for normal text, 3:1 for large text and UI components) is allowed in any component**.
 
-To enforce this, documented **contrast pairing tables** are maintained in Figma:
-
-> [Tokens Preview — Contrast Pairing Tables](https://www.figma.com/design/51tJjbxBSBmjAmKjQmhsz3/Tokens-Preview?node-id=9559-21413)
+To enforce this, documented **contrast pairing tables** are maintained in Figma.
 
 These tables show which fg/bg token combinations meet the AA threshold and which do not. They are the source of truth for valid pairings.
 
