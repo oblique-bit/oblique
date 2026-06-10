@@ -1,7 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {
 	ClassProvider,
-	DOCUMENT,
 	EnvironmentProviders,
 	InjectionToken,
 	Provider,
@@ -37,7 +36,6 @@ import {
 	ObITranslateConfigInternal,
 	ObMaterialProvider,
 	ObTBanner,
-	ObWindow,
 } from './utilities.model';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {MatPaginatorIntl} from '@angular/material/paginator';
@@ -56,8 +54,9 @@ import {
 	defaultAccessibilityStatement,
 	provideAccessibilityStatement,
 } from './accessibility-statement/accessibility-statement.provider';
+import {ObWindow} from './window/window.provider.model';
+import {WINDOW, provideWindow} from './window/window.provider';
 
-export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
 export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfigInternal>('Translation configuration');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
@@ -69,32 +68,6 @@ export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
 );
 export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
-
-function noop(): void {
-	/* noop */
-}
-
-const mockWindow: ObWindow = {
-	confirm: () => false,
-	history: {length: 0},
-	innerHeight: 700,
-	innerWidth: 700,
-	localStorage: {
-		getItem: () => '',
-		setItem: noop,
-		removeItem: noop,
-	},
-	location: {href: '', host: ''},
-	matchMedia: () => ({matches: false}),
-	open: () => null,
-	pageYOffset: 42,
-	setInterval: () => 1,
-	setTimeout: () => 1,
-} as const;
-
-export function windowProvider(doc: Document): Window | ObWindow {
-	return doc.defaultView ?? mockWindow;
-}
 
 const materialProviders: ObIMaterialProviders = {
 	MAT_FORM_FIELD_DEFAULT_OPTIONS: {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
@@ -168,7 +141,7 @@ function getDefaultObliqueProviders(
 	mergedConfig: ObIObliqueConfigurationWithDefaults
 ): (Provider | EnvironmentProviders)[] {
 	return [
-		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
+		provideWindow(),
 		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},

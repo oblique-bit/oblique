@@ -1,7 +1,7 @@
 import {DOCUMENT, Injectable, inject} from '@angular/core';
 import {EMPTY, Observable, fromEvent} from 'rxjs';
 import {share} from 'rxjs/operators';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {NavigateEvent} from './global-events.model';
 
 @Injectable({

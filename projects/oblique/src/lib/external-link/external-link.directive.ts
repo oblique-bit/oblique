@@ -3,8 +3,8 @@ import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, switchMap} from 'rxjs';
 import {first, startWith, takeUntil, tap} from 'rxjs/operators';
-import {WINDOW} from './../utilities';
-import {ObWindow} from './../utilities.model';
+import {WINDOW} from './../window/window.provider';
+import {ObWindow} from './../window/window.provider.model';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 
 @Directive({

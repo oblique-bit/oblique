@@ -1,8 +1,8 @@
 import {DestroyRef, Directive, ElementRef, EventEmitter, Input, OnInit, Output, inject} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
-import {WINDOW} from '../utilities';
-import {ObWindow} from '../utilities.model';
+import {WINDOW} from '../window/window.provider';
+import {ObWindow} from '../window/window.provider.model';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {fromEvent, startWith} from 'rxjs';
 

@@ -52,6 +52,7 @@ must use the **service-navigation** package and one of the following scopes:
 | **schematics**              | for changes to the schematics that are not directly linked to a feature   |
 | **translation**             | for changes to the translations that are not directly linked to a feature |
 | **utilities**               | for changes to `utilities.ts`                                             |
+| **window**                  | for changes to the window providers                                       |
 
 ## <a name="scripts"></a> Scripts
 
