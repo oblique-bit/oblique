@@ -37,7 +37,8 @@ must use the **service-navigation** package and one of the following scopes:
 | **off-canvas**              | For changes to the off-canvas feature                                     |
 | **paginator**               | For changes to the paginator feature                                      |
 | **popover**                 | For changes to the popover feature                                        |
-| **router**                  | For changes to the router feature                                         |
+| **popover**                 | For changes to the popover feature                                        |
+| **provider**                | For changes to the provider feature                                       |
 | **rxjs-operators**          | For changes to the rxjs-operators feature                                 |
 | **schema-validation**       | For changes to the schema-validation feature                              |
 | **scrolling**               | For changes to the scrolling feature                                      |
