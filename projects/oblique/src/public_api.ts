@@ -96,6 +96,7 @@ export {
 	ObOutlineDirective,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 } from './lib/master-layout/master-layout.module';
+export {ObIMaterialConfig} from './lib/material';
 export {ObNavTreeComponent, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
 export {ObNestedFormModule, ObNestedFormComponent, ObParentFormDirective} from './lib/nested-form/nested-form.module';
 export {
@@ -160,7 +161,7 @@ export {
 	provideObliqueTranslations,
 	obFocusWithOutline,
 } from './lib/utilities';
-export {ObIBanner, ObTBanner, ObIMaterialConfig, ObIObliqueConfiguration} from './lib/utilities.model';
+export {ObIBanner, ObTBanner, ObIObliqueConfiguration} from './lib/utilities.model';
 export {WINDOW} from './lib/window/window.provider';
 export {ObEColor} from './lib/style/colors.model';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';

@@ -18,33 +18,20 @@ import {
 	provideTranslateService,
 } from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
-import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
-import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+
 import {
 	DeepPartial,
 	ObIBanner,
 	ObIHistoryState,
-	ObIMaterialProviders,
 	ObIObliqueConfiguration,
 	ObIObliqueConfigurationWithDefaults,
 	ObIObliqueTestingConfiguration,
 	ObIPamsConfiguration,
 	ObITranslateConfig,
 	ObITranslateConfigInternal,
-	ObMaterialProvider,
 	ObTBanner,
 } from './utilities.model';
-import {MAT_TABS_CONFIG} from '@angular/material/tabs';
-import {MatPaginatorIntl} from '@angular/material/paginator';
-import {ObPaginatorService} from './paginator/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
-import {MatStepperIntl} from '@angular/material/stepper';
-import {ObStepperIntlService} from './stepper/ob-stepper.service';
-import {MatDatepickerIntl} from '@angular/material/datepicker';
-import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
 import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
@@ -56,6 +43,7 @@ import {
 } from './accessibility-statement/accessibility-statement.provider';
 import {ObWindow} from './window/window.provider.model';
 import {WINDOW, provideWindow} from './window/window.provider';
+import {defaultMaterialProviders, provideMaterial} from './material/material.providers';
 
 export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
 export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfigInternal>('Translation configuration');
@@ -68,15 +56,6 @@ export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
 );
 export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
-
-const materialProviders: ObIMaterialProviders = {
-	MAT_FORM_FIELD_DEFAULT_OPTIONS: {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-	STEPPER_GLOBAL_OPTIONS: {provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
-	MAT_CHECKBOX_OPTIONS: {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-	MAT_RADIO_OPTIONS: {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-	MAT_SLIDE_TOGGLE_OPTIONS: {provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-	MAT_TABS_CONFIG: {provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}},
-};
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
 	if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -108,14 +87,7 @@ export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
 
 const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
 	accessibilityStatement: defaultAccessibilityStatement,
-	material: {
-		MAT_FORM_FIELD_DEFAULT_OPTIONS: materialProviders.MAT_FORM_FIELD_DEFAULT_OPTIONS.useValue,
-		STEPPER_GLOBAL_OPTIONS: materialProviders.STEPPER_GLOBAL_OPTIONS.useValue,
-		MAT_CHECKBOX_OPTIONS: materialProviders.MAT_CHECKBOX_OPTIONS.useValue,
-		MAT_RADIO_OPTIONS: materialProviders.MAT_RADIO_OPTIONS.useValue,
-		MAT_SLIDE_TOGGLE_OPTIONS: materialProviders.MAT_SLIDE_TOGGLE_OPTIONS.useValue,
-		MAT_TABS_CONFIG: materialProviders.MAT_TABS_CONFIG.useValue,
-	},
+	material: defaultMaterialProviders,
 	icon: {registerObliqueIcons: true},
 	translate: {flatten: true},
 	hasLanguageInUrl: false,
@@ -143,17 +115,9 @@ function getDefaultObliqueProviders(
 	return [
 		provideWindow(),
 		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
-		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
-		{provide: MatStepperIntl, useClass: ObStepperIntlService},
-		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
 		provideAccessibilityStatement(mergedConfig.accessibilityStatement),
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: mergedConfig.hasLanguageInUrl},
-		(Object.entries(materialProviders) as [ObMaterialProvider, ObIMaterialProviders[ObMaterialProvider]][]).map(
-			([provider, token]) => ({
-				provide: token.provide,
-				useValue: mergedConfig.material[provider],
-			})
-		),
+		provideMaterial(mergedConfig.material),
 	];
 }
 
