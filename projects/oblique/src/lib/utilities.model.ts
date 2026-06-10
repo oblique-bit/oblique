@@ -10,6 +10,7 @@ import {TranslateModuleConfig} from '@ngx-translate/core';
 import {ObIconConfig} from './icon/icon.model';
 import {ObILocale} from './master-layout/master-layout.model';
 import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
+import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
 
 export interface ObIBanner {
 	text?: string;
@@ -86,55 +87,6 @@ export interface ObITranslateConfigInternal {
 }
 
 export type NonEmptyArray<Type> = [Type, ...Type[]];
-
-export type ObConformity = ObConformityPartial | ObConformityNonPartial;
-
-export type ObIAccessibilityStatementConfiguration =
-	ObIAccessibilityStatementConfigurationPartial | ObIAccessibilityStatementConfigurationNonPartial;
-
-type ObConformityPartial = 'partial';
-type ObConformityNonPartial = 'none' | 'full';
-
-interface ObIAccessibilityStatementConfigurationBase {
-	applicationName: string;
-	createdOn: Date;
-	reviewedOn?: Date;
-	applicationOperator: string;
-	contact: NonEmptyArray<ObContactData>;
-}
-
-interface ObIAccessibilityStatementConfigurationPartial extends ObIAccessibilityStatementConfigurationBase {
-	exceptions: NonEmptyArray<string>;
-	conformity: ObConformityPartial;
-}
-
-interface ObIAccessibilityStatementConfigurationNonPartial extends ObIAccessibilityStatementConfigurationBase {
-	conformity: ObConformityNonPartial;
-}
-
-interface ObContactInfoBase {
-	context?: string;
-}
-
-interface ObContactEmail extends ObContactInfoBase {
-	email: string;
-	phone?: never;
-	url?: never;
-}
-
-interface ObContactPhone extends ObContactInfoBase {
-	email?: never;
-	phone: string;
-	url?: never;
-}
-
-interface ObContactUrl extends ObContactInfoBase {
-	email?: never;
-	phone?: never;
-	url: string;
-}
-
-export type ObContactData = ObContactPhone | ObContactEmail | ObContactUrl;
 
 export interface ObWindow {
 	confirm: (message: string) => boolean;

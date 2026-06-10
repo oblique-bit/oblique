@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Location} from '@angular/common';
 import {provideHttpClient} from '@angular/common/http';
 import {TranslateModule} from '@ngx-translate/core';
-import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, WINDOW, provideObliqueTestingConfiguration} from '../utilities';
+import {WINDOW, provideObliqueTestingConfiguration} from '../utilities';
 import {AccessibilityStatementComponent} from './accessibility-statement.component';
 import {registerLocaleData} from '@angular/common';
 import localeDE from '@angular/common/locales/de-CH';
@@ -10,6 +10,7 @@ import {By} from '@angular/platform-browser';
 import {Router, provideRouter} from '@angular/router';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 import {ObMasterLayoutService} from '../master-layout/master-layout.service';
+import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from './accessibility-statement.provider';
 
 registerLocaleData(localeDE);
 
