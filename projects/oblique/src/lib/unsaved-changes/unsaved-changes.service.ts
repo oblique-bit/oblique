@@ -2,8 +2,8 @@ import {Injectable, inject} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
-import {WINDOW} from '../utilities';
-import {ObWindow} from '../utilities.model';
+import {WINDOW} from '../window/window.provider';
+import {ObWindow} from '../window/window.provider.model';
 
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesService {

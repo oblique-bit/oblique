@@ -15,8 +15,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {ObButtonDirective} from '../../button/button.directive';
-import {WINDOW} from '../../utilities';
-import {ObWindow} from '../../utilities.model';
+import {WINDOW} from '../../window/window.provider';
+import {ObWindow} from '../../window/window.provider.model';
 import {ObEUploadEventType, ObIFile, ObIFileList, ObIUploadEvent} from '../file-upload.model';
 import {ObFileUploadService} from '../file-upload.service';
 

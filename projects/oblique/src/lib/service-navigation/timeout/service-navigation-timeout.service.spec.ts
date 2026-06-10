@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ObServiceNavigationTimeoutService} from './service-navigation-timeout.service';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
 import {ObServiceNavigationService} from '../service-navigation.service';
-import {WINDOW} from '../../utilities';
+import {WINDOW} from '../../window/window.provider';
 import {BehaviorSubject, of} from 'rxjs';
 import Cookies from 'js-cookie';
 import {ObServiceNavigationTimeoutCookieActivityService} from './service-navigation-timeout-cookie-activity.service';

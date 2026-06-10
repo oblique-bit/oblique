@@ -14,7 +14,7 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
 import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObLocalizePipe} from '../router/ob-localize.pipe';
 
 @Pipe({
