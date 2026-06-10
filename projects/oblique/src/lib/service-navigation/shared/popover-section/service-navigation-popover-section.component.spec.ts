@@ -8,7 +8,7 @@ import {NgOptimizedImage} from '@angular/common';
 import {ObMockTranslatePipe} from './../../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationPopOverSectionHarness} from './service-navigation-popover-section.harness';
 import {ObServiceNavigationPopoverSectionComponent} from './service-navigation-popover-section.component';
-import {WINDOW} from '../../../utilities';
+import {WINDOW} from '../../../window/window.provider';
 import {ObIsCurrentUrlPipe} from './is-current-url.pipe';
 
 @Component({

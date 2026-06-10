@@ -159,9 +159,9 @@ export {
 	provideObliqueTestingConfiguration,
 	provideObliqueTranslations,
 	obFocusWithOutline,
-	WINDOW,
 } from './lib/utilities';
 export {ObIBanner, ObTBanner, ObIMaterialConfig, ObIObliqueConfiguration} from './lib/utilities.model';
+export {WINDOW} from './lib/window/window.provider';
 export {ObEColor} from './lib/style/colors.model';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';

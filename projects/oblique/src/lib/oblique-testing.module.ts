@@ -28,7 +28,7 @@ import {ObMockInputClearModule} from './input-clear/_mocks/mock-input-clear.modu
 import {ObMockTranslateParamsModule} from './translate-params/_mocks/mock-translate-params.module';
 import {ObMockUnknownRouteModule} from './unknown-route/_mocks/mock-unknown-route.module';
 import {ObMockUnsavedChangesModule} from './unsaved-changes/_mocks/mock-unsaved-changes.module';
-import {WINDOW} from './utilities';
+import {WINDOW} from './window/window.provider';
 import {ObMockButtonModule} from './button/_mocks/mock-button.module';
 import {ObMockAlertModule} from './alert/_mocks/mock-alert.module';
 import {ObMockBreadcrumbModule} from './breadcrumb/_mocks/mock-breadcrumb.module';

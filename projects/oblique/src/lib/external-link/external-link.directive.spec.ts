@@ -4,7 +4,7 @@ import {MatIconRegistry} from '@angular/material/icon';
 import {By} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, of} from 'rxjs';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObExternalLinkDirective} from './external-link.directive';
 import {EXTERNAL_LINK} from './external-link.model';
 
