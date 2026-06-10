@@ -2,6 +2,7 @@
  * Public API Surface of oblique
  */
 
+export {ObIAccessibilityStatementConfiguration} from './lib/accessibility-statement/accessibility-statement.model';
 export {
 	ObAuthenticationModule,
 	ObAuthenticationService,
@@ -160,13 +161,7 @@ export {
 	obFocusWithOutline,
 	WINDOW,
 } from './lib/utilities';
-export {
-	ObIBanner,
-	ObTBanner,
-	ObIMaterialConfig,
-	ObIObliqueConfiguration,
-	ObIAccessibilityStatementConfiguration,
-} from './lib/utilities.model';
+export {ObIBanner, ObTBanner, ObIMaterialConfig, ObIObliqueConfiguration} from './lib/utilities.model';
 export {ObEColor} from './lib/style/colors.model';
 export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
