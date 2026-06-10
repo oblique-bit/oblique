@@ -26,7 +26,6 @@ import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {
 	DeepPartial,
-	ObIAccessibilityStatementConfiguration,
 	ObIBanner,
 	ObIHistoryState,
 	ObIMaterialProviders,
@@ -53,6 +52,10 @@ import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
 import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
 import {ObILocale} from './master-layout/master-layout.model';
+import {
+	defaultAccessibilityStatement,
+	provideAccessibilityStatement,
+} from './accessibility-statement/accessibility-statement.provider';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
@@ -60,9 +63,7 @@ export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfi
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 	'Provides the mandatory PAMS environment as well as an optional root url.'
 );
-export const OB_ACCESSIBILITY_STATEMENT_CONFIGURATION = new InjectionToken<ObIAccessibilityStatementConfiguration>(
-	'AccessibilityStatementConfiguration'
-);
+
 export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current language in URL');
 export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
@@ -133,13 +134,7 @@ export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
 }
 
 const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
-	accessibilityStatement: {
-		applicationName: 'Test application',
-		createdOn: new Date('2025-01-01'),
-		conformity: 'none',
-		applicationOperator: 'Test operator',
-		contact: [{email: 'test@example.com'}],
-	},
+	accessibilityStatement: defaultAccessibilityStatement,
 	material: {
 		MAT_FORM_FIELD_DEFAULT_OPTIONS: materialProviders.MAT_FORM_FIELD_DEFAULT_OPTIONS.useValue,
 		STEPPER_GLOBAL_OPTIONS: materialProviders.STEPPER_GLOBAL_OPTIONS.useValue,
@@ -178,7 +173,7 @@ function getDefaultObliqueProviders(
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
-		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: mergedConfig.accessibilityStatement},
+		provideAccessibilityStatement(mergedConfig.accessibilityStatement),
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: mergedConfig.hasLanguageInUrl},
 		(Object.entries(materialProviders) as [ObMaterialProvider, ObIMaterialProviders[ObMaterialProvider]][]).map(
 			([provider, token]) => ({

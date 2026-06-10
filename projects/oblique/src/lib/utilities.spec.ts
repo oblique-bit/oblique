@@ -16,7 +16,6 @@ import {
 } from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
 import {
-	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_HAS_LANGUAGE_IN_URL,
 	OB_HISTORY_STATE,
 	OB_TRANSLATION_CONFIGURATION,
@@ -37,12 +36,10 @@ import {ObIconService} from './icon/icon.service';
 import {Observable, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
 import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
-import {
-	ObIAccessibilityStatementConfiguration,
-	ObIObliqueConfiguration,
-	ObIObliqueConfigurationWithDefaults,
-} from './utilities.model';
+import {ObIObliqueConfiguration, ObIObliqueConfigurationWithDefaults} from './utilities.model';
 
+import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
+import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from './accessibility-statement/accessibility-statement.provider';
 import {ObWindow} from './utilities.model';
 
 const translations: any = {};
