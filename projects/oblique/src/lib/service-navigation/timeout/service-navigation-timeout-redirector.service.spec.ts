@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {WINDOW} from '../../utilities';
+import {WINDOW} from '../../window/window.provider';
 import {ObServiceNavigationTimeoutRedirectorService} from './service-navigation-timeout-redirector.service';
 import {ObServiceNavigationService} from '../service-navigation.service';
 import {ObServiceNavigationTimeoutCookieService} from './service-navigation-timeout-cookie.service';

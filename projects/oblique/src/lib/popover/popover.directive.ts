@@ -20,8 +20,9 @@ import {filter, first} from 'rxjs/operators';
 import {ObEToggleType, defaultConfig} from './popover.model';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outside-filter';
-import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
-import {ObWindow} from '../utilities.model';
+import {isNotKeyboardEventOnButton} from '../utilities';
+import {WINDOW} from '../window/window.provider';
+import {ObWindow} from '../window/window.provider.model';
 
 export const OBLIQUE_POPOVER_TOGGLE_HANDLE = new InjectionToken<ObEToggleType>(
 	'Define the toggle handle for all Oblique popover'
