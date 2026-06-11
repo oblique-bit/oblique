@@ -8,7 +8,7 @@ import {
 	TranslateParser,
 	provideTranslateService,
 } from '@ngx-translate/core';
-import {ObMultiTranslateLoader} from '../multi-translate-loader/multi-translate-loader';
+import {ObMultiTranslateLoader} from './multi-translate-loader';
 import {ObITranslateConfig, ObITranslateConfigInternal} from './translation.model';
 
 export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfigInternal>('Translation configuration');

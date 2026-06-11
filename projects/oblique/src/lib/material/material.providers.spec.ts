@@ -10,7 +10,7 @@ import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {provideMaterial} from './material.providers';
 import {ObIMaterialConfig} from './material.model';
-import {provideObliqueTranslations} from '../utilities';
+import {provideObliqueTranslations} from '../translation/translation.providers';
 import {ObDatepickerIntlService} from './ob-datepicker.service';
 import {ObPaginatorService} from './ob-paginator.service';
 import {ObStepperIntlService} from './ob-stepper.service';
