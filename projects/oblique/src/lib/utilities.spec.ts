@@ -29,7 +29,7 @@ import {
 	provideObliqueTranslations,
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
-import {ObPaginatorService} from './paginator/ob-paginator.service';
+import {ObPaginatorService} from './material/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
 import {Observable, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';

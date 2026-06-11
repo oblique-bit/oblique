@@ -8,9 +8,9 @@ import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {MatStepperIntl} from '@angular/material/stepper';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {ObStepperIntlService} from '../stepper/ob-stepper.service';
-import {ObDatepickerIntlService} from '../datepicker/ob-datepicker.service';
-import {ObPaginatorService} from '../paginator/ob-paginator.service';
+import {ObDatepickerIntlService} from './ob-datepicker.service';
+import {ObPaginatorService} from './ob-paginator.service';
+import {ObStepperIntlService} from './ob-stepper.service';
 import {ObIMaterialConfig, ObIMaterialProviders, ObMaterialProvider} from './material.model';
 
 const materialProviders: ObIMaterialProviders = {
