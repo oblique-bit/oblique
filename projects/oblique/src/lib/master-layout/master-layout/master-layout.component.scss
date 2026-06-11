@@ -2,6 +2,7 @@
 @use "sass:map";
 @use "../../../styles/scss/core/variables";
 @use "../../../styles/scss/core/mixins/shadow";
+@use "../../../styles/scss/core/mixins/layout";
 
 .ob-master-layout {
 	*:not(input, textarea, mat-select, select) {
@@ -88,11 +89,9 @@
 
 	@at-root #{selector.append(".ob-layout-expanded", &)} {
 		&.ob-has-max-width .ob-main-layout {
-			display: flex;
-			justify-content: center;
-
-			> :not(ob-accessibility-statement) {
-				max-width: map.get(variables.$ob-grid-breakpoints, xl);
+			@include layout.ob-media-breakpoint-up(xl) {
+				width: map.get(variables.$ob-grid-breakpoints, xl);
+				margin: 0 auto;
 			}
 		}
 	}
