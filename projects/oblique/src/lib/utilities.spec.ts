@@ -14,13 +14,10 @@ import {
 	TranslateNoOpLoader,
 	TranslateService,
 } from '@ngx-translate/core';
-import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
+import {ObMultiTranslateLoader} from './translation/multi-translate-loader';
 import {
-	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
 	OB_HAS_LANGUAGE_IN_URL,
 	OB_HISTORY_STATE,
-	OB_TRANSLATION_CONFIGURATION,
-	WINDOW,
 	getLocalesConfiguration,
 	getRootRoute,
 	isNotKeyboardEventOnButton,
@@ -28,22 +25,19 @@ import {
 	obFocusWithOutline,
 	provideObliqueConfiguration,
 	provideObliqueTestingConfiguration,
-	provideObliqueTranslations,
-	windowProvider,
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
-import {ObPaginatorService} from './paginator/ob-paginator.service';
+import {ObPaginatorService} from './material/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
 import {Observable, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
 import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
-import {
-	ObIAccessibilityStatementConfiguration,
-	ObIObliqueConfiguration,
-	ObIObliqueConfigurationWithDefaults,
-} from './utilities.model';
+import {ObIObliqueConfiguration, ObIObliqueConfigurationWithDefaults} from './utilities.model';
 
-import {ObWindow} from './utilities.model';
+import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
+import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from './accessibility-statement/accessibility-statement.provider';
+import {WINDOW} from './window/window.provider';
+import {OB_TRANSLATION_CONFIGURATION, provideObliqueTranslations} from './translation/translation.providers';
 
 const translations: any = {};
 const accessibilityStatement: ObIAccessibilityStatementConfiguration = {
@@ -74,77 +68,6 @@ describe('utilities', () => {
 		icon: {registerObliqueIcons: true},
 		translate: {flatten: true},
 		hasLanguageInUrl: false,
-	});
-
-	describe('windowProvider', () => {
-		it('should return Window if provided with document', () => {
-			const actualWindowProvider = windowProvider(document);
-			expect(actualWindowProvider).toEqual(window);
-		});
-
-		describe('without window', () => {
-			let win: ObWindow;
-
-			beforeEach(() => {
-				win = windowProvider({} as Document) as ObWindow;
-			});
-
-			it('should have a confirm function that returns a boolean', () => {
-				expect(typeof win.confirm('')).toBe('boolean');
-			});
-
-			it('should have a history.length property', () => {
-				expect(typeof win.history.length).toBe('number');
-			});
-
-			it('should have an innerHeight property', () => {
-				expect(typeof win.innerHeight).toBe('number');
-			});
-
-			it('should have an innerWidth property', () => {
-				expect(typeof win.innerWidth).toBe('number');
-			});
-
-			it('should have a localStorage.getItem function that returns a string', () => {
-				expect(typeof win.localStorage.getItem('key')).toBe('string');
-			});
-
-			it('should have a localStorage.setItem function', () => {
-				expect(() => win.localStorage.setItem('key', '')).not.toThrow();
-			});
-
-			it('should have a localStorage.removeItem function', () => {
-				expect(() => win.localStorage.removeItem('key')).not.toThrow();
-			});
-
-			it('should have a location.href property', () => {
-				expect(typeof win.location.href).toBe('string');
-			});
-
-			it('should have a location.host property', () => {
-				expect(typeof win.location.host).toBe('string');
-			});
-
-			it('should have a matchMedia function that returns an object with a matches property', () => {
-				expect(typeof win.matchMedia('(min-width: 600px)').matches).toBe('boolean');
-			});
-
-			it('should have an open function', () => {
-				expect(() => win.open('https://example.com', '_blank')).not.toThrow();
-			});
-
-			it('should have a pageYOffset property', () => {
-				expect(typeof win.pageYOffset).toBe('number');
-			});
-
-			it('should have a setTimeout function that returns a number', () => {
-				expect(typeof win.setTimeout(() => {})).toBe('number');
-			});
-
-			it('should have a setInterval function that returns a number', () => {
-				expect(typeof win.setInterval(() => {})).toBe('number');
-			});
-		});
 	});
 
 	describe('mergeDeep', () => {

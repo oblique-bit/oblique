@@ -1,8 +1,8 @@
 import {BehaviorSubject} from 'rxjs';
 import {AfterContentInit, Directive, EventEmitter, Input, Output, booleanAttribute, inject} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {WINDOW} from './../utilities';
-import {ObWindow} from './../utilities.model';
+import {WINDOW} from './../window/window.provider';
+import {ObWindow} from './../window/window.provider.model';
 import {ObSelectableDirective} from './selectable.directive';
 
 @Directive({

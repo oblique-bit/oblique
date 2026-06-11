@@ -1,9 +1,9 @@
 import {createApplication} from '@angular/platform-browser';
 import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {createCustomElement} from '@angular/elements';
-import {WINDOW, windowProvider} from '../../oblique/src/lib/utilities';
+import {provideWindow} from '../../oblique/src/lib/window/window.provider';
 import {ObServiceNavigationWebComponentComponent} from './app/service-navigation-web-component.component';
-import {DOCUMENT, importProvidersFrom, inject, provideAppInitializer} from '@angular/core';
+import {importProvidersFrom, inject, provideAppInitializer} from '@angular/core';
 import {ObIconService, ObServiceNavigationModule, provideObliqueTranslations} from '@oblique/oblique';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
@@ -13,7 +13,7 @@ createApplication({
 		importProvidersFrom(ObServiceNavigationModule),
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
 		provideObliqueTranslations(),
-		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
+		provideWindow(),
 		{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 	],
 })

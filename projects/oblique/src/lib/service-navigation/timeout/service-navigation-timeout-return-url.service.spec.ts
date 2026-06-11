@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {WINDOW} from '../../utilities';
+import {WINDOW} from '../../window/window.provider';
 import Cookies from 'js-cookie';
 import {CookiesMock} from './mocks/js-cookie.mock';
 import {ObServiceNavigationTimeoutReturnUrlService} from './service-navigation-timeout-return-url.service';

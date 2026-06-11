@@ -2,7 +2,7 @@ import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {first, skip} from 'rxjs/operators';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 import {ObMockSelectableDirective} from './_mocks/mock-selectable.directive';
 import {firstValueFrom} from 'rxjs';

@@ -1,7 +1,7 @@
 import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {
 	OBLIQUE_POPOVER_APPEND_TO_BODY,
 	OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE,

@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {OBLIQUE_COLLAPSE_ACTIVE, OBLIQUE_COLLAPSE_ICON_POSITION, ObCollapseComponent} from './collapse.component';
 
