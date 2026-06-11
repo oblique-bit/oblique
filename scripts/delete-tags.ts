@@ -4,11 +4,10 @@ import {Git} from './shared/git';
 
 class DeleteTags {
 	static perform(): void {
-		Log.start('Delete sds and sandbox tags created by RHOS');
-		const sandboxTags = Git.getTagsByPattern('sandbox*').replace(/\n/gmu, ' ');
-		const sdsTags = Git.getTagsByPattern('sds*').replace(/\n/gmu, ' ');
-		executeCommandWithLog(`git tag -d ${sdsTags}`, 'Remove tags for sds');
-		executeCommandWithLog(`git tag -d ${sandboxTags}`, 'Remove tags for sandbox');
+		Log.start('Delete invalid tags');
+		const allTags = Git.listExistingTags().replace(/\n/gmu, ' ').concat(' ');
+		const tagsToRemove = allTags.replace(/v?\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.\d+(?:-\d+)?)?\s/giu, '');
+		executeCommandWithLog(`git tag -d ${tagsToRemove}`, 'Remove invalid tags');
 		Log.success();
 	}
 }
