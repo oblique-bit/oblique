@@ -14,7 +14,7 @@ import {
 	TranslateNoOpLoader,
 	TranslateService,
 } from '@ngx-translate/core';
-import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
+import {ObMultiTranslateLoader} from './translation/multi-translate-loader';
 import {
 	OB_HAS_LANGUAGE_IN_URL,
 	OB_HISTORY_STATE,
