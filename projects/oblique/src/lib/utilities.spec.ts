@@ -18,7 +18,6 @@ import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-l
 import {
 	OB_HAS_LANGUAGE_IN_URL,
 	OB_HISTORY_STATE,
-	OB_TRANSLATION_CONFIGURATION,
 	getLocalesConfiguration,
 	getRootRoute,
 	isNotKeyboardEventOnButton,
@@ -26,7 +25,6 @@ import {
 	obFocusWithOutline,
 	provideObliqueConfiguration,
 	provideObliqueTestingConfiguration,
-	provideObliqueTranslations,
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './material/ob-paginator.service';
@@ -39,6 +37,7 @@ import {ObIObliqueConfiguration, ObIObliqueConfigurationWithDefaults} from './ut
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
 import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from './accessibility-statement/accessibility-statement.provider';
 import {WINDOW} from './window/window.provider';
+import {OB_TRANSLATION_CONFIGURATION, provideObliqueTranslations} from './translation/translation.providers';
 
 const translations: any = {};
 const accessibilityStatement: ObIAccessibilityStatementConfiguration = {

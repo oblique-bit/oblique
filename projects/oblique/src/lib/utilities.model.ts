@@ -1,10 +1,8 @@
 import {ObEPamsEnvironment} from './service-navigation/service-navigation.model';
-import {TranslateModuleConfig} from '@ngx-translate/core';
 import {ObIconConfig} from './icon/icon.model';
-import {ObILocale} from './master-layout/master-layout.model';
-import {ObITranslationFile} from './multi-translate-loader/multi-translate-loader.model';
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
 import {ObIMaterialConfig} from './material/material.model';
+import {ObITranslateConfig} from './translation/translation.model';
 
 export interface ObIBanner {
 	text?: string;
@@ -47,17 +45,5 @@ export type ObIObliqueConfigurationWithDefaults = Omit<
 };
 
 export type DeepPartial<Type> = Type extends object ? {[Property in keyof Type]?: DeepPartial<Type[Property]>} : Type;
-
-export interface ObITranslateConfig {
-	flatten?: boolean;
-	config?: TranslateModuleConfig;
-	additionalFiles?: ObITranslationFile[];
-	locales?: ObILocale;
-}
-
-export interface ObITranslateConfigInternal {
-	flatten: boolean;
-	additionalFiles?: ObITranslationFile[];
-}
 
 export type NonEmptyArray<Type> = [Type, ...Type[]];

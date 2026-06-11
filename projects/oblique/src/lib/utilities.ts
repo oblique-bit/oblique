@@ -1,6 +1,4 @@
-import {HttpClient} from '@angular/common/http';
 import {
-	ClassProvider,
 	EnvironmentProviders,
 	InjectionToken,
 	Provider,
@@ -9,15 +7,7 @@ import {
 	provideAppInitializer,
 } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {
-	MissingTranslationHandler,
-	TranslateCompiler,
-	TranslateLoader,
-	TranslateModuleConfig,
-	TranslateParser,
-	provideTranslateService,
-} from '@ngx-translate/core';
-import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
+import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
 
 import {
 	DeepPartial,
@@ -27,8 +17,6 @@ import {
 	ObIObliqueConfigurationWithDefaults,
 	ObIObliqueTestingConfiguration,
 	ObIPamsConfiguration,
-	ObITranslateConfig,
-	ObITranslateConfigInternal,
 	ObTBanner,
 } from './utilities.model';
 import {ObIconService} from './icon/icon.service';
@@ -44,9 +32,13 @@ import {
 import {ObWindow} from './window/window.provider.model';
 import {WINDOW, provideWindow} from './window/window.provider';
 import {defaultMaterialProviders, provideMaterial} from './material/material.providers';
+import {
+	OB_TRANSLATION_CONFIGURATION,
+	defaultTranslationConfig,
+	provideObliqueTranslations,
+} from './translation/translation.providers';
 
 export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
-export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfigInternal>('Translation configuration');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 	'Provides the mandatory PAMS environment as well as an optional root url.'
 );
@@ -89,7 +81,7 @@ const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
 	accessibilityStatement: defaultAccessibilityStatement,
 	material: defaultMaterialProviders,
 	icon: {registerObliqueIcons: true},
-	translate: {flatten: true},
+	translate: defaultTranslationConfig,
 	hasLanguageInUrl: false,
 } as const;
 
@@ -157,53 +149,6 @@ export function provideObliqueTestingConfiguration(config: ObIObliqueTestingConf
 export function getLocalesConfiguration(config: ObIObliqueConfigurationWithDefaults): ObILocale {
 	const masterLayoutConfig = inject(ObMasterLayoutConfig);
 	return config.translate?.locales ?? masterLayoutConfig.locale;
-}
-
-export function provideObliqueTranslations(configuration: ObITranslateConfig = {}): EnvironmentProviders {
-	const {config, flatten, additionalFiles} = configuration;
-	return makeEnvironmentProviders([
-		provideTranslateService({
-			loader: {
-				provide: TranslateLoader,
-				useFactory: getTranslateLoader,
-				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION],
-			},
-			...addProviders(config),
-		}),
-		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}},
-	]);
-}
-
-function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal): ObMultiTranslateLoader {
-	const {additionalFiles, flatten} = config;
-	return new ObMultiTranslateLoader(
-		http,
-		[
-			{
-				prefix: './assets/i18n/oblique-',
-				suffix: '.json',
-			},
-			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}]),
-		],
-		flatten
-	);
-}
-
-function addProviders(config: TranslateModuleConfig = {}): TranslateModuleConfig {
-	const providers = {
-		compiler: TranslateCompiler,
-		loader: TranslateLoader,
-		parser: TranslateParser,
-		missingTranslationHandler: MissingTranslationHandler,
-	} as const;
-	const configWithProviders = {};
-	Object.keys(config).forEach(option => {
-		configWithProviders[option] =
-			providers[option] && config[option] instanceof Function
-				? ({provide: providers[option], useClass: config[option]} as ClassProvider)
-				: config[option];
-	});
-	return configWithProviders;
 }
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once
