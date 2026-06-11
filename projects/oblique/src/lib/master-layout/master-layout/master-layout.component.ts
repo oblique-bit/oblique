@@ -23,8 +23,8 @@ import {NavigationEnd, Params, Router} from '@angular/router';
 import {delay, filter, map, skip, takeUntil, tap} from 'rxjs/operators';
 
 import {appVersion} from '../../version';
-import {WINDOW} from '../../utilities';
-import {ObWindow} from '../../utilities.model';
+import {WINDOW} from '../../window/window.provider';
+import {ObWindow} from '../../window/window.provider.model';
 import {
 	ObEMasterLayoutEventValues,
 	ObICollapseBreakpoints,

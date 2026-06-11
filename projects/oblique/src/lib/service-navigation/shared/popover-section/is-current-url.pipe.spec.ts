@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {WINDOW} from '../../../utilities';
+import {WINDOW} from '../../../window/window.provider';
 import {ObIsCurrentUrlPipe} from './is-current-url.pipe';
 
 describe('IsCurrentUrlPipe', () => {
