@@ -142,7 +142,7 @@ export {
 	ObSelectableGroupDirective,
 } from './lib/selectable/selectable.module';
 export {ObISpinnerEvent, ObSpinnerComponent, ObSpinnerModule, ObSpinnerService} from './lib/spinner/spinner.module';
-export {provideObliqueTranslations} from './lib/translation';
+export {provideObliqueTranslations, ObITranslationFile} from './lib/translation';
 export {ObInputClearDirective, ObInputClearModule} from './lib/input-clear/input-clear.module';
 export {ObTranslateParamsModule, ObTranslateParamsPipe} from './lib/translate-params/translate-params.module';
 export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route/unknown-route.module';
@@ -162,7 +162,6 @@ export {
 export {ObIBanner, ObTBanner, ObIObliqueConfiguration} from './lib/utilities.model';
 export {WINDOW} from './lib/window/window.provider';
 export {ObEColor} from './lib/style/colors.model';
-export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
 export {obOutsideFilter} from './lib/global-events/outside-filter';
 export {ObliqueModule} from './lib/oblique.module';
