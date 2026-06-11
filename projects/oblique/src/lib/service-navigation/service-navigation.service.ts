@@ -23,7 +23,7 @@ import {ObNotificationService} from '../notification/notification.service';
 import {ObHttpApiInterceptorEvents} from '../http-api-interceptor/http-api-interceptor.events';
 import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 
 @Injectable()

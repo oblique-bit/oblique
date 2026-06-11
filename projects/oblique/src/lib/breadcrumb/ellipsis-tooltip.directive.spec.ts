@@ -7,7 +7,7 @@ import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {DOCUMENT} from '@angular/common';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {By} from '@angular/platform-browser';
 
 function setElementWidths(element: HTMLElement, offset: number, scroll: number): void {

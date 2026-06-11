@@ -4,8 +4,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ObILocale, ObILocaleObject} from '../master-layout/master-layout.model';
-import {WINDOW} from '../utilities';
-import {ObWindow} from '../utilities.model';
+import {WINDOW} from '../window/window.provider';
+import {ObWindow} from '../window/window.provider.model';
 
 @Injectable({
 	providedIn: 'root',

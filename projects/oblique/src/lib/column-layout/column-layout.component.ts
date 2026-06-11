@@ -22,8 +22,8 @@ import {combineLatestWith, delay, distinctUntilChanged, map, startWith, takeUnti
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
 import {ObColumnToggleDirective} from './column-toggle.directive';
-import {WINDOW} from '../utilities';
-import {ObWindow} from '../utilities.model';
+import {WINDOW} from '../window/window.provider';
+import {ObWindow} from '../window/window.provider.model';
 import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.model';
 
 @Component({

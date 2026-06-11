@@ -1,7 +1,7 @@
 import {Injectable, inject} from '@angular/core';
 import Cookies from 'js-cookie';
-import {WINDOW} from '../../utilities';
-import {ObWindow} from '../../utilities.model';
+import {WINDOW} from '../../window/window.provider';
+import {ObWindow} from '../../window/window.provider.model';
 
 @Injectable()
 export class ObServiceNavigationTimeoutCookieService {
