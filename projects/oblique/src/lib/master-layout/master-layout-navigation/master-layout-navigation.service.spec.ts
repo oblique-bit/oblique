@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
 
-import {WINDOW} from '../../utilities';
+import {WINDOW} from '../../window/window.provider';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';

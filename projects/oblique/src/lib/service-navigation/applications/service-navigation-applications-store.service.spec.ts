@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {Subject, of} from 'rxjs';
-import {WINDOW} from '../../utilities';
+import {WINDOW} from '../../window/window.provider';
 import {ObIServiceNavigationApplicationInfo} from '../api/service-navigation.api.model';
 import {ObServiceNavigationApplicationsStoreService} from './service-navigation-applications-store.service';
 import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';

@@ -1,8 +1,8 @@
 import {AfterViewInit, Directive, Injector, inject} from '@angular/core';
 import {NG_VALIDATORS, NgControl, UntypedFormControl, ValidationErrors, Validator} from '@angular/forms';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
-import {WINDOW} from '../utilities';
-import {ObWindow} from '../utilities.model';
+import {WINDOW} from '../window/window.provider';
+import {ObWindow} from '../window/window.provider.model';
 
 @Directive({
 	selector: '[obSchemaValidate][ngModel],[obSchemaValidate][formControlName]',

@@ -14,7 +14,7 @@ import {provideHttpClient} from '@angular/common/http';
 import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 import {ObNotificationService} from '../notification/notification.service';
 import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {NavigateEvent} from '../global-events/global-events.model';
 

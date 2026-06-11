@@ -15,7 +15,7 @@ import {ObENotificationType, ObINotification} from './notification.model';
 import {ObMockNotificationConfig} from './_mocks/mock-notification.config';
 import {ObMockNotificationService} from './_mocks/mock-notification.service';
 import {ObMockAlertComponent} from '../alert/_mocks/mock-alert.component';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
 import {TranslateModule} from '@ngx-translate/core';
 
