@@ -142,6 +142,7 @@ export {
 	ObSelectableGroupDirective,
 } from './lib/selectable/selectable.module';
 export {ObISpinnerEvent, ObSpinnerComponent, ObSpinnerModule, ObSpinnerService} from './lib/spinner/spinner.module';
+export {provideObliqueTranslations} from './lib/translation';
 export {ObInputClearDirective, ObInputClearModule} from './lib/input-clear/input-clear.module';
 export {ObTranslateParamsModule, ObTranslateParamsPipe} from './lib/translate-params/translate-params.module';
 export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route/unknown-route.module';
@@ -156,7 +157,6 @@ export {
 	OB_PAMS_CONFIGURATION,
 	provideObliqueConfiguration,
 	provideObliqueTestingConfiguration,
-	provideObliqueTranslations,
 	obFocusWithOutline,
 } from './lib/utilities';
 export {ObIBanner, ObTBanner, ObIObliqueConfiguration} from './lib/utilities.model';
