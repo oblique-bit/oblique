@@ -35,7 +35,6 @@ must use the **service-navigation** package and one of the following scopes:
 | **notification**            | For changes to the notification feature                                   |
 | **number-format**           | For changes to the number-format feature                                  |
 | **off-canvas**              | For changes to the off-canvas feature                                     |
-| **paginator**               | For changes to the paginator feature                                      |
 | **popover**                 | For changes to the popover feature                                        |
 | **popover**                 | For changes to the popover feature                                        |
 | **provider**                | For changes to the provider feature                                       |

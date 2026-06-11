@@ -11,9 +11,9 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {provideMaterial} from './material.providers';
 import {ObIMaterialConfig} from './material.model';
 import {provideObliqueTranslations} from '../utilities';
-import {ObDatepickerIntlService} from '../datepicker/ob-datepicker.service';
-import {ObPaginatorService} from '../paginator/ob-paginator.service';
-import {ObStepperIntlService} from '../stepper/ob-stepper.service';
+import {ObDatepickerIntlService} from './ob-datepicker.service';
+import {ObPaginatorService} from './ob-paginator.service';
+import {ObStepperIntlService} from './ob-stepper.service';
 
 describe('material.provider', () => {
 	const config: Required<NonNullable<ObIMaterialConfig>> = {

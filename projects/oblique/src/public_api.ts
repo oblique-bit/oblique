@@ -44,7 +44,6 @@ export {
 	ObIExternalLink,
 	ObEExternalLinkIcon,
 } from './lib/external-link/external-link.module';
-export {ObDatepickerModule} from './lib/datepicker/ob-datepicker.module';
 export {
 	ObDropZoneComponent,
 	ObEUploadEventType,
@@ -64,7 +63,6 @@ export {
 	ObIServiceNavigationContact,
 	ObLoginState,
 } from './lib/service-navigation';
-export {ObStepperIntlService} from './lib/stepper/ob-stepper.service';
 export {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
@@ -96,7 +94,7 @@ export {
 	ObOutlineDirective,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 } from './lib/master-layout/master-layout.module';
-export {ObIMaterialConfig} from './lib/material';
+export {ObIMaterialConfig, ObPaginatorService, ObDatepickerModule, ObStepperIntlService} from './lib/material';
 export {ObNavTreeComponent, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
 export {ObNestedFormModule, ObNestedFormComponent, ObParentFormDirective} from './lib/nested-form/nested-form.module';
 export {
@@ -177,5 +175,4 @@ export {
 	ObIAutocompleteInputOptionGroup,
 	OptionLabelIconPosition,
 } from './lib/autocomplete/autocomplete.module';
-export {ObPaginatorService} from './lib/paginator/ob-paginator.service';
 export {appVersion} from './lib/version';
