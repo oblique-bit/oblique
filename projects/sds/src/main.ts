@@ -7,7 +7,8 @@ import {LOCALE_ID, provideZoneChangeDetection} from '@angular/core';
 import {PreloadAllModules, provideRouter, withPreloading} from '@angular/router';
 import {appRoutes} from './app.routes';
 import {UploadInterceptor} from './app/code-examples/code-examples/file-upload/file-upload-simulate-interceptor';
-import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
+// provideDate is not public and not meant to be, but still necessary in SDS because provideObliqueConfiguration can't be used
+import {obProvideDate} from '../../oblique/src/lib/language/date.provider';
 
 export const uploadInterceptor = new UploadInterceptor();
 
@@ -15,17 +16,7 @@ bootstrapApplication(AppComponent, {
 	providers: [
 		provideZoneChangeDetection(),
 		{provide: LOCALE_ID, useValue: 'en-CH'},
-		provideMomentDateAdapter({
-			parse: {
-				dateInput: 'DD.MM.YYYY',
-			},
-			display: {
-				dateInput: 'DD.MM.YYYY',
-				monthYearLabel: 'MMM YYYY',
-				dateA11yLabel: 'LL',
-				monthYearA11yLabel: 'MMMM YYYY',
-			},
-		}),
+		obProvideDate(),
 		{
 			provide: HTTP_INTERCEPTORS,
 			useValue: uploadInterceptor,
