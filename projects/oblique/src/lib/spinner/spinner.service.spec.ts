@@ -18,7 +18,7 @@ describe(ObSpinnerService.name, () => {
 	});
 
 	afterEach(() => {
-		jest.restoreAllMocks();
+		jest.resetAllMocks();
 	});
 
 	it('should emit a SpinnerEvent if activated', done => {
@@ -30,21 +30,16 @@ describe(ObSpinnerService.name, () => {
 	});
 
 	it('should log a warning if activated with a non-registered channel', () => {
-		jest.spyOn(console, 'warn');
-
 		service.activate('foobarbaz');
 		expect(console.warn).toHaveBeenCalledWith('Attempt to activate a channel that does not exist:', 'foobarbaz');
 	});
 
 	it('should log a warning if deactivated with a non-registered channel', () => {
-		jest.spyOn(console, 'warn');
-
 		service.deactivate('foobarbaz');
 		expect(console.warn).toHaveBeenCalledWith('Attempt to deactivate a channel that does not exist:', 'foobarbaz');
 	});
 
 	it('should not log a warning if activated with a registered channel', () => {
-		jest.spyOn(console, 'warn');
 		const spinner = {channel: 'registered'} as ObSpinnerComponent;
 		registry.register(spinner);
 		service.activate('registered');
@@ -52,7 +47,6 @@ describe(ObSpinnerService.name, () => {
 	});
 
 	it('should not log a warning if deactivated with a registered channel', () => {
-		jest.spyOn(console, 'warn');
 		const spinner = {channel: 'registered'} as ObSpinnerComponent;
 		registry.register(spinner);
 		service.deactivate('registered');
