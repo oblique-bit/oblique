@@ -4,7 +4,6 @@ import {ObMockMatErrorDirective} from './mock-mat-error.directive';
 import {ObMockErrorMessagesComponent} from './mock-error-messages.component';
 import {ObMockErrorMessagesDirective} from './mock-error-messages.directive';
 import {ObMockErrorMessagesService} from './mock-error-messages.service';
-import {ObErrorMessagesService} from '../error-messages.service';
 
 export {ObMockMatErrorDirective} from './mock-mat-error.directive';
 export {ObMockErrorMessagesComponent} from './mock-error-messages.component';
@@ -16,7 +15,7 @@ export {ObMockErrorMessagesService} from './mock-error-messages.service';
  */
 @NgModule({
 	imports: [ObMockErrorMessagesComponent, ObMockErrorMessagesDirective, ObMockMatErrorDirective],
-	providers: [{provide: ObErrorMessagesService, useClass: ObMockErrorMessagesService}],
+	providers: [ObMockErrorMessagesService],
 	exports: [ObMockErrorMessagesComponent, ObMockErrorMessagesDirective, ObMockMatErrorDirective],
 })
 export class ObMockErrorMessagesModule {}
