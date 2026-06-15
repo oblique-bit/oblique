@@ -3,7 +3,7 @@
   "version": "15.4.0",
   "type": "module",
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "start": "ng serve",

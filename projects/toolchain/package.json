@@ -2,7 +2,7 @@
   "name": "@oblique/toolchain",
   "version": "15.4.0",
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "description": "Toolchain utilities for the Oblique ecosystem, including project configuration schematics, ESLint plugins, and supporting build scripts",
   "scripts": {
