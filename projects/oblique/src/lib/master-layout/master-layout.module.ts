@@ -20,7 +20,6 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {ObOutlineDirective} from './outline.directive';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
-import {ObIconModule} from '../icon/icon.module';
 import {ObButtonModule} from '../button/button.module';
 import {ObServiceNavigationModule} from '../service-navigation/service-navigation.module';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
@@ -58,7 +57,6 @@ export {ObOutlineDirective} from './outline.directive';
 		NgOptimizedImage,
 		ObButtonModule,
 		ObExternalLinkModule,
-		ObIconModule,
 		ObMasterLayoutNavigationGoToChildrenComponent,
 		ObNotificationModule,
 		ObOffCanvasModule,
