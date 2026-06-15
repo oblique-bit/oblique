@@ -4,6 +4,7 @@ import {
 	ContentContainerComponentHarness,
 	HarnessPredicate,
 	TestElement,
+	TestKey,
 } from '@angular/cdk/testing';
 import {MatInputHarness} from '@angular/material/input/testing';
 import {MatFormFieldHarness} from '@angular/material/form-field/testing';
@@ -34,9 +35,13 @@ export class ObAutocompleteHarness extends ContentContainerComponentHarness {
 	async openAutocompletePanel(): Promise<void> {
 		const inputHarness = await this.getHarness(MatInputHarness);
 		await inputHarness.focus();
-		return new Promise(resolve => {
-			setTimeout(resolve, 200);
+		await (await inputHarness.host()).sendKeys(TestKey.DOWN_ARROW);
+		await this.forceStabilize();
+		await this.waitForTasksOutsideAngular();
+		await new Promise(resolve => {
+			setTimeout(resolve, 300);
 		});
+		await this.forceStabilize();
 	}
 
 	async closeAutocompletePanel(): Promise<void> {
