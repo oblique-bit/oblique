@@ -23,7 +23,6 @@ import {ObIconService} from './icon/icon.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
 import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
-import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
 import {ObILocale} from './language/language.model';
 import {
 	defaultAccessibilityStatement,
@@ -48,6 +47,13 @@ export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
 );
 export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
+
+const defaultLocalesConfiguration: ObILocale = {
+	locales: ['de-CH', 'fr-CH', 'it-CH'],
+	defaultLanguage: 'de',
+	disabled: false,
+	languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano', en: 'English'},
+};
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
 	if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -147,8 +153,7 @@ export function provideObliqueTestingConfiguration(config: ObIObliqueTestingConf
 }
 
 export function getLocalesConfiguration(config: ObIObliqueConfigurationWithDefaults): ObILocale {
-	const masterLayoutConfig = inject(ObMasterLayoutConfig);
-	return config.translate?.locales ?? masterLayoutConfig.locale;
+	return config.translate?.locales ?? defaultLocalesConfiguration;
 }
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once
