@@ -1,3 +1,10 @@
+# [16.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/15.4.0...16.0.0-alpha.1) (2026-06-15)
+
+## Features
+
+- **global-events:** add navigate to global-events sample ([d1dc482d](https://github.com/oblique-bit/oblique/commit/d1dc482d60f18161db83803bb2e9d0142932ea2b), TPEFD-10735)
+- **sandbox:** remove design-system module ([d68ca316](https://github.com/oblique-bit/oblique/commit/d68ca316036726084b70c84513ee590c18ae5212), OUI-4439)
+
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 
 ## Bug Fixes

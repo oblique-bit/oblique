@@ -1,3 +1,16 @@
+# [16.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/15.4.0...16.0.0-alpha.1) (2026-06-15)
+
+## Features
+
+- **sample:** add navigation button ([6baf8146](https://github.com/oblique-bit/oblique/commit/6baf81465b3fc8c34a588542a5056bc55c3daefd), TPEFD-10735)
+- **service-navigation:** use current URL if no `returnUrl` is provided ([724ca28c](https://github.com/oblique-bit/oblique/commit/724ca28c5b0688edb51b072cbd8620eeffe27374), TPEFD-10735)
+
+## BREAKING CHANGES
+
+- **service-navigation:** If `returnUrl` is not provided, the current URL is now used by default. Projects that previously
+  relied on the implicit redirection to ePortal must now explicitly set the
+  ePortal URL as `returnUrl`.
+
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 
 ## Features

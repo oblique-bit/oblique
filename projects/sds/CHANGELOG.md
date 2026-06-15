@@ -1,3 +1,9 @@
+# [16.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/15.4.0...16.0.0-alpha.1) (2026-06-15)
+
+## Features
+
+- **global-events:** add navigate example ([4576bfb7](https://github.com/oblique-bit/oblique/commit/4576bfb79cc2e5aac1252f271a5f2202b9951f5d), TPEFD-10735)
+
 # [15.3.1](https://github.com/oblique-bit/oblique/compare/15.3.0...15.3.1) (2026-05-27)
 
 ## Bug Fixes

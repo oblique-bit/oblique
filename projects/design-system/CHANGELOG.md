@@ -1,3 +1,9 @@
+# [16.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/15.4.0...16.0.0-alpha.1) (2026-06-15)
+
+## Features
+
+- **demo:** add demo component using Lit ([03bd0070](https://github.com/oblique-bit/oblique/commit/03bd0070bc70f0d5fa6a423ee9e8e4482f7a9136), OUI-4439)
+
 # [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
 
 ## Features

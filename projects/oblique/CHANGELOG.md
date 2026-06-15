@@ -1,3 +1,29 @@
+# [16.0.0-alpha.1](https://github.com/oblique-bit/oblique/compare/15.4.0...16.0.0-alpha.1) (2026-06-15)
+
+## Bug Fixes
+
+- **master-layout:** honor config when hiding the main navigation ([ac738b83](https://github.com/oblique-bit/oblique/commit/ac738b83992abe85463ee4afc91221ae2cb3974e), OUI-4333)
+
+## Features
+
+- **global-events:** add navigate global event ([88c494f4](https://github.com/oblique-bit/oblique/commit/88c494f46142a5eab36310774a70607f6333d069), TPEFD-10735)
+- **master-layout:** rework `scrollIntoView` behavior ([ac4c51e7](https://github.com/oblique-bit/oblique/commit/ac4c51e7c63495c593271731da09c16c4d5abf01), OUI-4261)
+- **master-layout:** respect `prefers-reduced-motion` when scrolling ([1ce01255](https://github.com/oblique-bit/oblique/commit/1ce01255422ca1531f21992a835159c4039e904c), OUI-4261)
+- **master-layout:** rename `focusElement` into `focusElementById` ([ca186bec](https://github.com/oblique-bit/oblique/commit/ca186bec343d158dd5a5fe77ebaedc58d329b6c2), OUI-4261)
+- **material:** deprecated `ObDatepickerModule` ([525fc7de](https://github.com/oblique-bit/oblique/commit/525fc7de74e79edaf349f6fa536c92e8c614de4c), OUI-4518)
+- **schematics:** add migration Schematics to Oblique 16 ([c7f4195e](https://github.com/oblique-bit/oblique/commit/c7f4195ee676ce30fcbdb1bd69d5dce5f79eb734), OUI-4261)
+- **service-navigation:** use current URL if no `returnUrl` is provided ([724ca28c](https://github.com/oblique-bit/oblique/commit/724ca28c5b0688edb51b072cbd8620eeffe27374), TPEFD-10735)
+
+## BREAKING CHANGES
+
+- **master-layout:**
+- **master-layout:** `focusElementById` always focus `main` and not the first `H1` inside `main` anymore
+- **master-layout:** `main` is focused after each navigation past the first one
+- **master-layout:** `focusElement` has been renamed into `focusElementById` (Solved with Schematics)
+- **service-navigation:** If `returnUrl` is not provided, the current URL is now used by default. Projects that previously
+  relied on the implicit redirection to ePortal must now explicitly set the
+  ePortal URL as `returnUrl`.
+
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 
 ## Bug Fixes
