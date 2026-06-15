@@ -70,7 +70,8 @@ export {
 	ObIHttpApiRequestNotification,
 	ObIObliqueHttpErrorResponse,
 } from './lib/http-api-interceptor/index';
-export {ObIconModule, ObIconService, ObIconConfig, ObEIcon} from './lib/icon/icon.module';
+export {ObIconService} from './lib/icon/icon.service';
+export {ObIconConfig, ObEIcon} from './lib/icon/icon.model';
 export {ObLanguageModule, ObDatePipe, ObDateComponent, ObDateFormat} from './lib/language/language.module';
 export {
 	ObMasterLayoutComponent,
