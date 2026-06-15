@@ -3,7 +3,7 @@ import {DateAdapter} from '@angular/material/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, ReplaySubject} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {ObILocale, ObILocaleObject} from '../master-layout/master-layout.model';
+import {ObILocale, ObILocaleObject} from './language.model';
 import {WINDOW} from '../window/window.provider';
 import {ObWindow} from '../window/window.provider.model';
 

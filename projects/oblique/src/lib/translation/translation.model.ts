@@ -1,5 +1,5 @@
 import {TranslateModuleConfig} from '@ngx-translate/core';
-import {ObILocale} from '../master-layout/master-layout.model';
+import {ObILocale} from '../language/language.model';
 
 export interface ObITranslateConfigInternal {
 	flatten: boolean;

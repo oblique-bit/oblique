@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {
 	ObEScrollMode,
-	ObILocale,
 	ObIMasterLayoutFooter,
 	ObIMasterLayoutHeader,
 	ObIMasterLayoutNavigation,
 } from './master-layout.model';
+import {ObILocale} from '../language/language.model';
 
 /**
  * Configuration service for the Master Layout component.
