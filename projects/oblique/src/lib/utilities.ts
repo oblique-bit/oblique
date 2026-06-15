@@ -24,7 +24,7 @@ import {ObRouterService} from '../lib/router/ob-router.service';
 import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
 import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
-import {ObILocale} from './master-layout/master-layout.model';
+import {ObILocale} from './language/language.model';
 import {
 	defaultAccessibilityStatement,
 	provideAccessibilityStatement,
