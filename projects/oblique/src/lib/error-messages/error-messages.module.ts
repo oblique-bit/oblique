@@ -4,7 +4,6 @@ import {ObMatErrorDirective} from './mat-error.directive';
 import {ObErrorMessagesDirective} from './error-messages.directive';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 
-export {ObErrorMessagesService} from './error-messages.service';
 export {ObMatErrorDirective} from './mat-error.directive';
 export {ObErrorMessagesDirective} from './error-messages.directive';
 

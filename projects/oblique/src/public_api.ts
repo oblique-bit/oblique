@@ -35,7 +35,6 @@ export {
 	ObMatErrorDirective,
 	ObErrorMessagesDirective,
 	ObErrorMessagesModule,
-	ObErrorMessagesService,
 } from './lib/error-messages/error-messages.module';
 export {
 	ObExternalLinkModule,
