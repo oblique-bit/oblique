@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sandbox-ssr",
-  "version": "16.0.0-alpha.1",
+  "version": "16.0.0-alpha.2",
   "type": "module",
   "scripts": {
     "start": "npm run prebuild && ng serve",

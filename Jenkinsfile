@@ -25,6 +25,12 @@ nodejsPipelineTemplate {
 				'repository': 'https://github.com/oblique-bit/oblique.git',
 			]
 		],
+		'feature/OUI-4515-publish-from-github': [
+			'gitPush': [
+				'credentialId': 'githubObliqueCredentials',
+				'repository': 'https://github.com/oblique-bit/oblique.git',
+			]
+		],
 		master: [
 			'gitPush': [
 				'credentialId': 'githubObliqueCredentials',
