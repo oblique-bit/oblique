@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import {program} from '@commander-js/extra-typings';
-import * as cliPackage from '../package.json';
-import {createObNewCommand} from './new/ob-new';
+import cliPackage from '../package.json' with {type: 'json'};
+import {createObNewCommand} from './new/ob-new.js';
 import {
 	commandUsageText,
 	createAdditionalHelpText,
@@ -13,8 +13,8 @@ import {
 	runObCommand,
 	startObCommand,
 	titleText,
-} from './utils/cli-utils';
-import {createObUpdateCommand} from './update/ob-update';
+} from './utils/cli-utils.js';
+import {createObUpdateCommand} from './update/ob-update.js';
 
 program
 	.name('ob')
