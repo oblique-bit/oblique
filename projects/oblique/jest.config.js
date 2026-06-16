@@ -134,8 +134,5 @@ module.exports = {
 		'projects/oblique/src/lib/service-navigation/timeout/service-navigation-timeout.service.ts': {
 			branches: 95,
 		},
-		'projects/oblique/src/lib/unsaved-changes/unsaved-changes.directive.ts': {
-			branches: 83,
-		},
 	},
 };
