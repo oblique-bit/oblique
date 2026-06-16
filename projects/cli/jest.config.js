@@ -10,7 +10,10 @@ export default {
 	 * the 'transform' property has to be manually set
 	 */
 	transform: {
-		'^.+\\.ts$': 'ts-jest',
+		'^.+\\.ts$': ['ts-jest', {tsconfig: '<rootDir>/tsconfig.spec.json'}],
+	},
+	moduleNameMapper: {
+		'^(\\.{1,2}/.*)\\.js$': '$1',
 	},
 	...coverageConfig,
 	coverageDirectory: '../../coverage/cli',

@@ -1,7 +1,7 @@
 import {type Command, Option, type OptionValues} from '@commander-js/extra-typings';
-import type {ObNewOptions, OptionKeys} from '../new/ob-new.model';
-import type {ObCliSchema, ObSchemaOption} from './ob-cli.model';
-import type {ObUpdateOptions} from '../update/ob-update.model';
+import type {ObNewOptions, OptionKeys} from '../new/ob-new.model.js';
+import type {ObCliSchema, ObSchemaOption} from './ob-cli.model.js';
+import type {ObUpdateOptions} from '../update/ob-update.model.js';
 const flagPrefixLength = 2;
 
 //this is needed because commander sometimes converts the option to firstUpperCase
