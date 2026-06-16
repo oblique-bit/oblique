@@ -25,6 +25,7 @@ export class PostBuild extends StaticScript {
 		CopyFiles.initialize(PostBuild.projectName)
 			.copyRootFiles('LICENSE')
 			.copyProjectRootFiles('README.md', 'CHANGELOG.md', 'package.json')
+			.copyFile('package.json', 'src/schematics', 'schematics')
 			.copyFile('collection.json', 'src/schematics', 'schematics')
 			.copyFile('schema.json', 'src/schematics/ng-add', 'schematics/ng-add')
 			.copyFile('eslint-config-oblique.mjs', 'src/linting/', 'linting')
@@ -35,6 +36,7 @@ export class PostBuild extends StaticScript {
 				)
 			)
 			.finalize();
+		Files.writeJson(getAbsolutePath(`dist/${PostBuild.projectName}/logger/package.json`), {type: 'commonjs'});
 	}
 
 	private static adaptPackageJson(): void {

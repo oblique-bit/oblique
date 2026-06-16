@@ -1,8 +1,8 @@
-import * as loggerModule from '../';
-import type {ObGroupLogger, ObLogger} from '../';
-import type {ObMockLogger} from './types';
+import * as loggerModule from '../index.js';
+import type {ObGroupLogger, ObLogger} from '../index.js';
+import type {ObMockLogger} from './types.js';
 
-jest.mock('../'); // mock the logger tool
+jest.mock('../index.js'); // mock the logger tool
 
 const loggerGroups: jest.Mocked<ObGroupLogger>[] = [];
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function -- signature must match the real implementation
