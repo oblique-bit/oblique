@@ -15,6 +15,7 @@ export default {
 		'^.+\\.ts$': 'ts-jest',
 	},
 	moduleNameMapper: {
+		'^(\\.{1,2}/.*)\\.js$': '$1',
 		'^(ora)$': '<rootDir>/__mocks__/ora.js',
 	},
 	...coverageConfig,

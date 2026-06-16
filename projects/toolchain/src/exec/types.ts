@@ -1,5 +1,5 @@
 import type {ExecSyncOptionsWithStringEncoding} from 'child_process';
-import type {ObGroupLogger} from '../logger';
+import type {ObGroupLogger} from '../logger/index.js';
 
 export type ObExecOptions = ObExecOptionsFatal | ObExecOptionsNonFatal;
 

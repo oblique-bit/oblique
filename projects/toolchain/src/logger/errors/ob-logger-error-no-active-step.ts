@@ -1,4 +1,4 @@
-import {ObLoggerError} from './ob-logger-error';
+import {ObLoggerError} from './ob-logger-error.js';
 
 /**
  * Error thrown when a method that depends on an active step is called
