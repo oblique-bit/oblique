@@ -18,7 +18,7 @@ import {
 	runObCommand,
 	startObCommand,
 	titleText,
-} from './cli-utils';
+} from './cli-utils.js';
 import {lt} from 'semver';
 
 function getMinimumRecommendedVersion(): string {
