@@ -1,4 +1,4 @@
-import type {ObGroupLogger, ObLogger} from '../logger.types';
+import type {ObGroupLogger, ObLogger} from '../logger.types.js';
 
 /**
  * Represents a fully mocked logger environment for testing.

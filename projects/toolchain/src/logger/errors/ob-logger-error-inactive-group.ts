@@ -1,4 +1,4 @@
-import {ObLoggerError} from './ob-logger-error';
+import {ObLoggerError} from './ob-logger-error.js';
 
 /**
  * Error thrown when a method is called on an {@link ObGroupLogger} after {@link ObGroupLogger#end|end()} has been called.
