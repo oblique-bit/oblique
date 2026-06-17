@@ -2,8 +2,12 @@
   "name": "@oblique/oblique",
   "version": "15.4.1",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oblique-bit/oblique.git"
+  },
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "lint": "tsx scripts/lint.ts",
