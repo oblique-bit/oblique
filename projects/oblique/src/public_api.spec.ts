@@ -1,7 +1,7 @@
 import {appVersion} from './public_api';
 
 describe('public_api', () => {
-	const genericSemVerRegex = /^\d+\.\d+\.\d+$/;
+	const genericSemVerRegex = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$/;
 
 	it('should validate against correct regex', () => {
 		expect('111.0.1').toMatch(genericSemVerRegex);
