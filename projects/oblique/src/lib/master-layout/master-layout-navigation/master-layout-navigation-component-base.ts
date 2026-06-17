@@ -1,4 +1,4 @@
-import {ElementRef, Renderer2, inject} from '@angular/core';
+import {ChangeDetectorRef, ElementRef, Renderer2, inject} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 import {ObEMasterLayoutEventValues, ObEScrollMode, ObIMasterLayoutEvent} from '../master-layout.model';
 import {ObMasterLayoutService} from '../master-layout.service';
@@ -23,6 +23,7 @@ export class MasterLayoutNavigationComponentBase {
 	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly config = inject(ObMasterLayoutConfig);
 	private readonly renderer = inject(Renderer2);
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
 	constructor() {
 		this.isFullWidth = this.masterLayout.navigation.isFullWidth;
@@ -101,6 +102,7 @@ export class MasterLayoutNavigationComponentBase {
 				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > nav.clientWidth;
 			}
 			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
+			this.changeDetectorRef.markForCheck();
 		}
 	}
 
