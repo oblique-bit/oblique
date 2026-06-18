@@ -2,7 +2,7 @@ import {Directive, EventEmitter, Input, Output} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Directive({
 	selector: '[obInputClear]',

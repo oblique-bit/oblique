@@ -11,7 +11,8 @@ import {ObMockDocumentMetaModule} from './document-meta/_mocks/mock-document-met
 import {ObMockErrorMessagesModule} from './error-messages/_mocks/mock-error-messages.module';
 import {ObMockExternalLinkModule} from './external-link/_mocks/mock-external-link.module';
 import {ObMockFileUploadModule} from './file-upload/_mocks/mock-file-upload.module';
-import {ObMockIconModule} from './icon/_mocks/mock-icon.module';
+import {ObMockIconComponent} from './icon/_mocks/mock-icon.component';
+import {ObMockIconService} from './icon/_mocks/mock-icon.service';
 import {ObMockMasterLayoutModule} from './master-layout/_mocks/mock-master-layout.module';
 import {ObMockNavTreeModule} from './nav-tree/_mocks/mock-nav-tree.module';
 import {ObMockNestedFormModule} from './nested-form/_mocks/mock-nested-form.module';
@@ -59,7 +60,8 @@ export {
 	ObMockDropZoneComponent,
 } from './file-upload/_mocks/mock-file-upload.module';
 export {ObMockDatePipe, ObMockLanguageModule} from './language/_mocks/mock-language.module';
-export {ObMockIconModule, ObMockIconService, ObMockIconComponent} from './icon/_mocks/mock-icon.module';
+export {ObMockIconComponent} from './icon/_mocks/mock-icon.component';
+export {ObMockIconService} from './icon/_mocks/mock-icon.service';
 export {ObMockInputClearModule, ObMockInputClearDirective} from './input-clear/_mocks/mock-input-clear.module';
 export {
 	ObMockMasterLayoutModule,
@@ -148,7 +150,7 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockExternalLinkModule,
 	ObMockFileUploadModule,
 	ObMockHttpApiInterceptorModule,
-	ObMockIconModule,
+	ObMockIconComponent,
 	ObMockMasterLayoutModule,
 	ObMockNavTreeModule,
 	ObMockNestedFormModule,
@@ -167,12 +169,13 @@ const MOCK_OBLIQUE_MODULES = [
 ];
 
 /**
- * @deprecated since version 9.0.0. It will be removed with Oblique 12. Real implementation of Oblique Modules should be used instead.
+ * @deprecated since version 9.0.0. No removal version is planned. Real implementation of Oblique Modules should be used instead.
  */
 @NgModule({
 	imports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],
 	providers: [
 		{provide: TranslateService, useClass: ObMockTranslateService},
+		{provide: ObMockIconService, useClass: ObMockIconService},
 		{provide: WINDOW, useValue: window},
 	],
 	exports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],

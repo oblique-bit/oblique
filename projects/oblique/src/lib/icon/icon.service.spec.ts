@@ -2,7 +2,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {TestBed} from '@angular/core/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatIconRegistry} from '@angular/material/icon';
-import {ObIconModule, ObIconService} from './icon.module';
+import {ObIconService} from './icon.service';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 interface ObIconServicePrivate {
@@ -36,7 +36,7 @@ describe('IconService', () => {
 	describe('without config', () => {
 		beforeEach(() => {
 			TestBed.configureTestingModule({
-				imports: [ObIconModule, HttpClientModule, MatIconTestingModule],
+				imports: [HttpClientModule, MatIconTestingModule],
 				providers: [
 					{provide: ObIconService, useClass: ObIconService},
 					{provide: MatIconRegistry, useClass: MatIconRegistry},
