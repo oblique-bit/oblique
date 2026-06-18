@@ -93,6 +93,14 @@ describe('ServiceNavigationTimeout', () => {
 			expect(service).toBeTruthy();
 		});
 
+		it('should initialize only once', () => {
+			const activityCookieService = TestBed.inject(ObServiceNavigationTimeoutCookieActivityService);
+
+			service.initialize(ObEPamsEnvironment.DEV);
+
+			expect(activityCookieService.initialize).toHaveBeenCalledTimes(1);
+		});
+
 		describe('User not logged in', () => {
 			beforeEach(() => {
 				service.loginState = 'SA';

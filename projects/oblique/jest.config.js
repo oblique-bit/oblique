@@ -131,8 +131,5 @@ module.exports = {
 		'projects/oblique/src/lib/selectable/selectable-group.directive.ts': {
 			branches: 96,
 		},
-		'projects/oblique/src/lib/service-navigation/timeout/service-navigation-timeout.service.ts': {
-			branches: 95,
-		},
 	},
 };
