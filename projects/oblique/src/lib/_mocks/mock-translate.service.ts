@@ -3,7 +3,7 @@ import {FallbackLangChangeEvent, LangChangeEvent, TranslationChangeEvent} from '
 import {EMPTY, Observable, of} from 'rxjs';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Injectable()
 export class ObMockTranslateService {

@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {
 	ObEScrollMode,
-	ObILocale,
 	ObIMasterLayoutFooter,
 	ObIMasterLayoutHeader,
 	ObIMasterLayoutNavigation,
 } from '../master-layout.model';
+import {ObILocale} from '../../language/language.model';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Injectable({providedIn: 'root'})
 export class ObMockMasterLayoutConfig {

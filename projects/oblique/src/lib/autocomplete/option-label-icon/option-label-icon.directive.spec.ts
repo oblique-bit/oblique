@@ -4,7 +4,8 @@ import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {By} from '@angular/platform-browser';
 
 import {ObOptionLabelIconDirective} from './option-label-icon.directive';
-import {ObEIcon, ObIconService} from '../../icon/icon.module';
+import {ObEIcon} from '../../icon/icon.model';
+import {ObIconService} from '../../icon/icon.service';
 import {CommonModule} from '@angular/common';
 import {OptionLabelIconPosition} from './../autocomplete.model';
 import {provideObliqueTestingConfiguration} from '../../utilities';
