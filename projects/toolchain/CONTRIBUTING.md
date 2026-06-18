@@ -47,3 +47,11 @@ From the monorepo root
   npx @angular-devkit/schematics-cli dist/toolchain/:ng-add
   ```
   st the path if your project structure differs.
+
+## <a name="script-types"></a> Types of Scripts
+
+This project distinguishes between two types of scripts: those triggered via `package.json`, and those used internally by other scripts.
+
+**Pipeline scripts** are the ones triggered via `package.json`. Each has a corresponding file under `scripts/pipelines`. Pipeline scripts are entry points: they don't export anything and are executed directly via `tsx`. Their responsibility is minimal. They orchestrate execution by calling functions from other scripts, without containing core logic themselves.
+
+**Action scripts** encapsulate reusable logic and are located under `scripts/actions`. They only export functions and properties, and perform no work when executed directly via `tsx`.
