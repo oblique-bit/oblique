@@ -122,12 +122,6 @@ module.exports = {
 			functions: 75,
 			lines: 100,
 		},
-		'projects/oblique/src/lib/scrolling/*.ts': {
-			statements: 33,
-			branches: 83,
-			functions: 0,
-			lines: 27,
-		},
 		'projects/oblique/src/lib/selectable/selectable-group.directive.ts': {
 			branches: 96,
 		},
