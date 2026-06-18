@@ -1,7 +1,7 @@
 import fs from 'fs';
-import {Log} from '../../../scripts/shared/log';
-import {checkRules} from './check-lint-rules';
-import {getAbsolutePath} from '../../../scripts/shared/root';
+import {Log} from '../../../../scripts/shared/log';
+import {checkRules} from '../actions/check-lint-rules';
+import {getAbsolutePath} from '../../../../scripts/shared/root';
 
 const cliDistDir: string = getAbsolutePath('dist/toolchain');
 
