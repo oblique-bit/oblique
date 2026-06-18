@@ -3,7 +3,7 @@ import {DateAdapter} from '@angular/material/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject} from 'rxjs';
 import {ObLanguageService} from './language.service';
-import {ObILocale} from '../master-layout/master-layout.model';
+import {ObILocale} from './language.model';
 import {WINDOW} from '../window/window.provider';
 
 describe('LanguageService', () => {

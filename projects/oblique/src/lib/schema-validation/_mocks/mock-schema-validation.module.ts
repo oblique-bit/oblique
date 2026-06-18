@@ -12,7 +12,7 @@ export {ObMockSchemaValidateDirective} from './mock-schema-validator';
 export {ObMockSchemaValidationService} from './mock-schema-validation.service';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @NgModule({
 	imports: [ObMockSchemaRequiredDirective, ObMockSchemaValidateDirective, ObMockSchemaValidationDirective],
