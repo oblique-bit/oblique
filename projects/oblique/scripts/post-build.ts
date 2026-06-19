@@ -15,6 +15,7 @@ class PostBuild extends StaticScript {
 		PostBuild.renameDistribution();
 		PostBuild.adaptPackageJson();
 		PostBuild.adaptSchematicsPackageJson();
+		PostBuild.keepSchematicsPackageJsonInTarball();
 		PostBuild.updateBackgroundImagePath();
 		PostBuild.updateFontPath();
 		PostBuild.distributeObFeatures();
@@ -54,6 +55,7 @@ class PostBuild extends StaticScript {
 		PackageJson.initialize('oblique')
 			.addFieldsFromRoot(
 				'version',
+				'type',
 				'description',
 				'keywords',
 				'author',
@@ -67,7 +69,6 @@ class PostBuild extends StaticScript {
 				...PostBuild.getExportEntriesForSCSS(),
 				'./assets/images/cover-background.jpg': './assets/images/cover-background.jpg', // used by oblique-components.css
 			})
-			.removeFields('type')
 			.write()
 			.finalize();
 	}
@@ -78,6 +79,19 @@ class PostBuild extends StaticScript {
 			.removeScripts()
 			.write()
 			.finalize();
+	}
+
+	private static keepSchematicsPackageJsonInTarball(): void {
+		const npmIgnorePath = getAbsolutePath('dist/oblique/.npmignore');
+		const schematicsPackageJsonException = '!schematics/package.json';
+		Log.info('Keep schematics/package.json in the distributed package.');
+		if (Files.exists(npmIgnorePath)) {
+			Files.overwrite(npmIgnorePath, content =>
+				content.includes(schematicsPackageJsonException)
+					? content
+					: `${content.trimEnd()}\n${schematicsPackageJsonException}\n`
+			);
+		}
 	}
 
 	private static updateBackgroundImagePath(): void {

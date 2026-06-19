@@ -1,11 +1,11 @@
 import {Command, type OptionValues} from '@commander-js/extra-typings';
 import path from 'node:path';
 import fs from 'node:fs';
-import type {PackageDependencies} from './ob-update.model';
-import * as obUpdate from './ob-update';
-import {execute} from '../utils/cli-utils';
-jest.mock('../utils/cli-utils', () => ({
-	...jest.requireActual<typeof import('../utils/cli-utils')>('../utils/cli-utils'),
+import type {PackageDependencies} from './ob-update.model.js';
+import * as obUpdate from './ob-update.js';
+import {execute} from '../utils/cli-utils.js';
+jest.mock('../utils/cli-utils.js', () => ({
+	...jest.requireActual<typeof import('../utils/cli-utils.js')>('../utils/cli-utils.js'),
 	execute: jest.fn(),
 }));
 
@@ -37,7 +37,7 @@ describe('ObUpdateCommand Tests', () => {
 
 		describe('createObUpdateCommand', () => {
 			beforeAll(() => {
-				const obCliUtils: typeof import('../utils/cli-utils') = jest.requireActual('../utils/cli-utils');
+				const obCliUtils: typeof import('../utils/cli-utils.js') = jest.requireActual('../utils/cli-utils.js');
 				jest.spyOn(obCliUtils, 'commandUsageText').mockReturnValue('update');
 				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => '');
 				const cmd = obUpdate.createObUpdateCommand();

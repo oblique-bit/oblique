@@ -2,9 +2,9 @@ import type {Command, OptionValues} from '@commander-js/extra-typings';
 import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {execSync} from 'child_process';
-import {obNewConfig} from './ob-new.model';
-import {currentVersions, version} from '../utils/cli-utils';
-import {createObNewCommand} from './ob-new';
+import {obNewConfig} from './ob-new.model.js';
+import {currentVersions, version} from '../utils/cli-utils.js';
+import {createObNewCommand} from './ob-new.js';
 
 const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
 

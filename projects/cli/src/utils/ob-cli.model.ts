@@ -1,5 +1,5 @@
 import type {ExecSyncOptions} from 'child_process';
-import type {currentVersions} from './cli-utils';
+import type {currentVersions} from './cli-utils.js';
 
 export interface ObCliSchema<Type> {
 	properties: Type;

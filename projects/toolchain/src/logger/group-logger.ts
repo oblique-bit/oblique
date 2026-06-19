@@ -1,8 +1,8 @@
-import type {LogLevel, LoggerOptions, MethodKeys, Writer} from './types';
-import {BaseLogger} from './base-logger';
-import type {ObGroupLogger, ObLogger} from './logger.types';
-import {ObLoggerInactiveGroupError} from './errors/ob-logger-error-inactive-group';
-import {ObLoggerNoActiveStepError} from './errors/ob-logger-error-no-active-step';
+import type {LogLevel, LoggerOptions, MethodKeys, Writer} from './types.js';
+import {BaseLogger} from './base-logger.js';
+import type {ObGroupLogger, ObLogger} from './logger.types.js';
+import {ObLoggerInactiveGroupError} from './errors/ob-logger-error-inactive-group.js';
+import {ObLoggerNoActiveStepError} from './errors/ob-logger-error-no-active-step.js';
 
 export class GroupLogger extends BaseLogger implements ObGroupLogger {
 	private static readonly millisecondsPerSecond = 1000;
