@@ -1,0 +1,11 @@
+import {Component} from '@angular/core';
+import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
+import {MatButtonModule} from '@angular/material/button';
+
+@Component({
+	selector: 'app-column-layout-example-stackblitz-link-full-height-preview',
+	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
+	templateUrl: './column-layout-example-stackblitz-link-full-height-preview.component.html',
+	styleUrl: '../../../../stackblitz-link.scss',
+})
+export class ColumnLayoutExampleStackblitzLinkFullHeightPreviewComponent {}
