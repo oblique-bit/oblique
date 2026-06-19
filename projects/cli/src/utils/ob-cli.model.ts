@@ -21,6 +21,7 @@ export interface ObSchemaOption {
 export type ObCommandConfig =
 	| ObNgNewCommandConfig
 	| ObNgAddCommandConfig
+	| ObNgGenerateCommandConfig
 	| ObNpmInstallCommandConfig
 	| ObNpmUpdateCommandConfig
 	| ObNgUpdateCommandConfig
@@ -45,6 +46,11 @@ export interface ObNgNewCommandConfig extends ObBaseCommandConfig, ObOptionsComm
 export interface ObNgAddCommandConfig extends ObBaseCommandConfig, ObOptionsCommandConfig {
 	name: 'ngAdd';
 	dependency: keyof typeof currentVersions;
+}
+
+export interface ObNgGenerateCommandConfig extends ObBaseCommandConfig, ObOptionsCommandConfig {
+	name: 'ngGenerate';
+	schematic: string;
 }
 
 export interface ObNpmInstallCommandConfig extends ObBaseCommandConfig {
