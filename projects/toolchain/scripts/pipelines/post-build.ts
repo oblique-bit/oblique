@@ -1,12 +1,12 @@
 import path from 'path';
-import {PackageJson} from '../../../scripts/shared/package-json';
-import {Banner} from '../../../scripts/shared/banner';
-import {CopyFiles} from '../../../scripts/shared/copy-files';
-import {StaticScript} from '../../../scripts/shared/static-script';
-import {adaptReadmeLinks} from '../../../scripts/shared/utils';
-import {getAbsolutePath} from '../../../scripts/shared/root';
-import {Log} from '../../../scripts/shared/log';
-import {Files} from '../../../scripts/shared/files';
+import {PackageJson} from '../../../../scripts/shared/package-json';
+import {Banner} from '../../../../scripts/shared/banner';
+import {CopyFiles} from '../../../../scripts/shared/copy-files';
+import {StaticScript} from '../../../../scripts/shared/static-script';
+import {adaptReadmeLinks} from '../../../../scripts/shared/utils';
+import {getAbsolutePath} from '../../../../scripts/shared/root';
+import {Log} from '../../../../scripts/shared/log';
+import {Files} from '../../../../scripts/shared/files';
 
 export class PostBuild extends StaticScript {
 	private static readonly projectName = 'toolchain';

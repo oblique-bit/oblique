@@ -3,8 +3,8 @@ import path from 'path';
 import eslint from '@eslint/js';
 import tsEslint from 'typescript-eslint';
 import ngEslint from '@angular-eslint/eslint-plugin';
-import eslintConfigOblique from '../src/linting/eslint-config-oblique.mjs';
-import {Log} from '../../../scripts/shared/log';
+import eslintConfigOblique from '../../src/linting/eslint-config-oblique.mjs';
+import {Log} from '../../../../scripts/shared/log';
 
 Log.start('Checking linting rules');
 checkRules();
