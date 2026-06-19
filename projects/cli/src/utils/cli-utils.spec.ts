@@ -392,6 +392,68 @@ Examples of use:
 			});
 		});
 
+		describe('ngGenerate', () => {
+			test.each([
+				{text: 'without', options: undefined},
+				{text: 'with empty', options: {}},
+			])('%text options object', ({options}) => {
+				execute({name: 'ngGenerate', schematic: '@oblique/toolchain:add-oblique', options});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^21', 'generate', '@oblique/toolchain:add-oblique'],
+					{
+						encoding: 'utf8',
+						shell: isWindows(),
+						stdio: 'inherit',
+					}
+				);
+			});
+
+			test('with filled options object', () => {
+				execute({
+					name: 'ngGenerate',
+					schematic: '@oblique/toolchain:add-oblique',
+					options: {dryRun: true, force: false},
+				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^21', 'generate', '@oblique/toolchain:add-oblique', '--dryRun', '--no-force'],
+					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+				);
+			});
+
+			test('with an additional spawnSyncOptions', () => {
+				execute({
+					name: 'ngGenerate',
+					schematic: '@oblique/toolchain:add-oblique',
+					spawnSyncOptions: {cwd: 'test'},
+				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^21', 'generate', '@oblique/toolchain:add-oblique'],
+					{
+						encoding: 'utf8',
+						shell: isWindows(),
+						stdio: 'inherit',
+						cwd: 'test',
+					}
+				);
+			});
+
+			test('with an overwriting spawnSyncOptions', () => {
+				execute({
+					name: 'ngGenerate',
+					schematic: '@oblique/toolchain:add-oblique',
+					spawnSyncOptions: {stdio: 'pipe'},
+				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^21', 'generate', '@oblique/toolchain:add-oblique'],
+					{encoding: 'utf8', shell: isWindows(), stdio: 'pipe'}
+				);
+			});
+		});
+
 		describe('ngUpdate', () => {
 			test('with a single dependency', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], angularDependencies: ['@angular/cli']});

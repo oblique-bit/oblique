@@ -273,12 +273,21 @@ describe('Ob new command', () => {
 
 				test(`should call npx ${projectName} with default parameter`, () => {
 					const expected = buildDefaultNgAddCommand();
-					expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
+					expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
 						cwd: `${process.cwd()}/${projectName}`,
 						stdio: 'inherit',
 						encoding: 'utf8',
 						shell: isWindows(),
 					});
+				});
+
+				test(`should call ng generate @oblique/toolchain:add-oblique`, () => {
+					expect(spawnSync).toHaveBeenNthCalledWith(
+						4,
+						'npx',
+						[`@angular/cli@${currentVersions['@angular/cli']}`, 'generate', '@oblique/toolchain:add-oblique'],
+						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit', encoding: 'utf8', shell: isWindows()}
+					);
 				});
 			});
 		});
@@ -396,7 +405,7 @@ describe('Ob new command', () => {
 
 			test(`should call npx ${options.join(', ')}`, () => {
 				const expected = options.includes('--interactive') ? buildNgAddCommand() : buildDefaultNgAddCommand();
-				expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
+				expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -440,7 +449,7 @@ describe('Ob new command', () => {
 
 			test('should pass the npmrc option to ng add', () => {
 				const expected = buildDefaultNgAddCommand(expectedOption);
-				expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
+				expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',

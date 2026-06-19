@@ -138,6 +138,7 @@ export function buildOption(key: string, value: string | boolean): string {
 	return `${key}=${value}`;
 }
 
+// eslint-disable-next-line max-lines-per-function
 export function execute(config: ObCommandConfig): void {
 	switch (config.name) {
 		case 'ngNew':
@@ -148,6 +149,8 @@ export function execute(config: ObCommandConfig): void {
 				config.options,
 				config.spawnSyncOptions
 			);
+		case 'ngGenerate':
+			return executeNgCommand(['generate', config.schematic], config.options, config.spawnSyncOptions);
 		case 'ngUpdate':
 			return executeNgCommand(
 				['update', ...buildNgUpdateDependencyArgs(config.dependencies, config.angularDependencies)],
