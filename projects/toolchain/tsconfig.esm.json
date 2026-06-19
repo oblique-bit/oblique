@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "../../dist/toolchain/esm"
+  },
+  "include": ["src/logger/**/*.ts", "src/exec/**/*.ts"],
+  "exclude": ["src/**/*.spec.ts"]
+}

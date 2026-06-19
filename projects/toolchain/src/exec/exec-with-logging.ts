@@ -1,7 +1,7 @@
 import {constants} from 'os';
 import {type ExecSyncOptionsWithStringEncoding, execSync} from 'child_process';
-import type {ObGroupLogger} from '../logger';
-import type {ObExecOptions, ObExecOptionsFatal, ObExecOptionsNonFatal} from './types';
+import type {ObGroupLogger} from '../logger/index.js';
+import type {ObExecOptions, ObExecOptionsFatal, ObExecOptionsNonFatal} from './types.js';
 
 const defaultExecOptions = {
 	encoding: 'utf-8',

@@ -1,1 +1,1 @@
-export {obExecWithLogging, obExecWithLoggingOrExit} from './exec-with-logging';
+export {obExecWithLogging, obExecWithLoggingOrExit} from './exec-with-logging.js';

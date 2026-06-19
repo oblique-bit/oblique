@@ -1,17 +1,17 @@
 import {Command, type Option} from '@commander-js/extra-typings';
 import type {OptionValues} from 'commander';
-import {type ObNewOptions, schema} from '../new/ob-new.model';
-import type {ObCliSchema, ObSchemaOption} from './ob-cli.model';
+import {type ObNewOptions, schema} from '../new/ob-new.model.js';
+import type {ObCliSchema, ObSchemaOption} from './ob-cli.model.js';
 import {
 	addObNewCommandOptions,
 	addObUpdateCommandOptions,
 	configureOption,
 	convertOptionPropertyNames,
-} from './ob-configure-command';
-import type {ObUpdateOptions} from '../update/ob-update.model';
+} from './ob-configure-command.js';
+import type {ObUpdateOptions} from '../update/ob-update.model.js';
 
-jest.mock('../new/ob-new.model');
-jest.mock('./ob-cli.model');
+jest.mock('../new/ob-new.model.js');
+jest.mock('./ob-cli.model.js');
 
 describe('ob-configure-command', () => {
 	let command: Command<[string], OptionValues>;
