@@ -7,8 +7,8 @@ import {
 	projectNamePlaceholder,
 	startObCommand,
 	version,
-} from '../utils/cli-utils';
-import {addObNewCommandOptions, convertOptionPropertyNames} from '../utils/ob-configure-command';
+} from '../utils/cli-utils.js';
+import {addObNewCommandOptions, convertOptionPropertyNames} from '../utils/ob-configure-command.js';
 import {
 	type HandleObNewActionOptions,
 	type ObNewOptions,
@@ -16,7 +16,7 @@ import {
 	immutableOptions,
 	obNewConfig,
 	schema,
-} from './ob-new.model';
+} from './ob-new.model.js';
 
 export function createObNewCommand(): Command<[string], OptionValues> {
 	const command = new Command<[string], OptionValues>();

@@ -1,6 +1,7 @@
 {
   "name": "@oblique/toolchain",
   "version": "15.4.2",
+  "type": "module",
   "publishConfig": {
     "registry": "https://registry.npmjs.com/"
   },
@@ -11,7 +12,7 @@
     "format": "npm run lint -- --fix",
     "test": "jest",
     "test-ci": "jest --config=jest.config.ci.js",
-    "build": "tsx scripts/pre-build.ts && tsc -p tsconfig.lib.json && tsx scripts/post-build.ts",
+    "build": "tsx scripts/pre-build.ts && tsc -p tsconfig.lib.json && tsc -p tsconfig.esm.json && tsx scripts/post-build.ts",
     "release": "tsx scripts/release.ts",
     "npm-publish": "tsx scripts/publish.ts"
   },
@@ -25,16 +26,16 @@
     "./eslint-config": "./linting/eslint-config-oblique.mjs",
     "./package.json": "./package.json",
     "./logger": {
-      "types": "./logger/index.d.ts",
-      "default": "./logger/index.js"
+      "types": "./esm/logger/index.d.ts",
+      "default": "./esm/logger/index.js"
     },
     "./logger/mock": {
-      "types": "./logger/mock/index.d.ts",
-      "default": "./logger/mock/index.js"
+      "types": "./esm/logger/mock/index.d.ts",
+      "default": "./esm/logger/mock/index.js"
     },
     "./exec": {
-      "types": "./process/index.d.ts",
-      "default": "./process/index.js"
+      "types": "./esm/exec/index.d.ts",
+      "default": "./esm/exec/index.js"
     }
   },
   "schematics": "./schematics/collection.json",

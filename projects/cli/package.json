@@ -1,6 +1,7 @@
 {
   "name": "@oblique/cli",
   "version": "15.4.2",
+  "type": "module",
   "description": "Command Line Interface to manage Oblique projects",
   "keywords": [
     "ob",

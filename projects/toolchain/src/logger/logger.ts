@@ -1,6 +1,6 @@
-import {BaseLogger} from './base-logger';
-import type {ObGroupLogger, ObLogger} from './logger.types';
-import {GroupLogger} from './group-logger';
+import {BaseLogger} from './base-logger.js';
+import type {ObGroupLogger, ObLogger} from './logger.types.js';
+import {GroupLogger} from './group-logger.js';
 
 export class Logger extends BaseLogger implements ObLogger {
 	override group(message: string): ObGroupLogger {
