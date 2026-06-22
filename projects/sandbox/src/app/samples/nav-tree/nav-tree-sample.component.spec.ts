@@ -33,7 +33,16 @@ describe(NavTreeSampleComponent.name, () => {
 	});
 
 	beforeEach(inject([ActivatedRoute], (activatedRoute: ActivatedRoute) => {
-		activatedRoute.data = of({sample: {navTree: {items: []}}});
+		activatedRoute.data = of({
+			sample: {
+				navTree: {
+					items: [
+						{label: 'First item', url: '/first'},
+						{label: 'Second item', url: '/second', disabled: true},
+					],
+				},
+			},
+		});
 		fixture = TestBed.createComponent(NavTreeSampleComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
@@ -41,5 +50,23 @@ describe(NavTreeSampleComponent.name, () => {
 
 	it('should create', () => {
 		expect(component).toBeTruthy();
+	});
+
+	it('should clear the filter pattern', () => {
+		component.filter.pattern = 'query';
+
+		component.filter.clear();
+
+		expect(component.filter.pattern).toBeNull();
+	});
+
+	it('should toggle the disabled state of a tree item', () => {
+		component.setDisabled(0);
+
+		expect(component.items()[0].disabled).toBe(true);
+
+		component.setDisabled(0);
+
+		expect(component.items()[0].disabled).toBe(false);
 	});
 });

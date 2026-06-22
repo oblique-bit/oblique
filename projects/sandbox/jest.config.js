@@ -22,12 +22,6 @@ module.exports = {
 			functions: 60,
 			lines: 64,
 		},
-		'projects/sandbox/src/app/samples/nav-tree/*.ts': {
-			statements: 80,
-			branches: 100,
-			functions: 40,
-			lines: 83,
-		},
 		'projects/sandbox/src/app/samples/number-format/*.ts': {
 			statements: 81,
 			branches: 100,
