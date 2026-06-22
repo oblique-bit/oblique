@@ -48,6 +48,36 @@
           "$type": "number",
           "$value": "9999",
           "$description": "A large number used to create a 'pill' or 'circular' shape with border-radius."
+        },
+        "opacity_ratio": {
+          "0_08": {
+            "$type": "number",
+            "$value": "0.08"
+          },
+          "0_10": {
+            "$type": "number",
+            "$value": "0.1"
+          },
+          "0_15": {
+            "$type": "number",
+            "$value": "0.15"
+          },
+          "0_18": {
+            "$type": "number",
+            "$value": "0.18"
+          },
+          "0_25": {
+            "$type": "number",
+            "$value": "0.25"
+          },
+          "0_35": {
+            "$type": "number",
+            "$value": "0.35"
+          },
+          "0_50": {
+            "$type": "number",
+            "$value": "0.5"
+          }
         }
       }
     }

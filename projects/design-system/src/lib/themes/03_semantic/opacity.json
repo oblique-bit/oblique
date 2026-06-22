@@ -1,0 +1,38 @@
+{
+  "ob": {
+    "s": {
+      "opacity": {
+        "subtle": {
+          "hover": {
+            "$type": "other",
+            "$value": "0.08"
+          },
+          "active": {
+            "$type": "other",
+            "$value": "0.18"
+          }
+        },
+        "soft": {
+          "hover": {
+            "$type": "other",
+            "$value": "0.15"
+          },
+          "active": {
+            "$type": "other",
+            "$value": "0.25"
+          }
+        },
+        "strong": {
+          "hover": {
+            "$type": "other",
+            "$value": "0.35"
+          },
+          "active": {
+            "$type": "other",
+            "$value": "0.50"
+          }
+        }
+      }
+    }
+  }
+}

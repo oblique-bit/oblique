@@ -22,6 +22,7 @@
     "03_semantic/color/compiled",
     "03_semantic/border",
     "03_semantic/shadow",
+    "03_semantic/opacity",
     "03_semantic/motion/static",
     "03_semantic/motion/mode/enabled",
     "03_semantic/motion/mode/disabled",
