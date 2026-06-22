@@ -7,6 +7,7 @@ describe('NestedFormComponent', () => {
 	let component: ObNestedFormComponent;
 	let fixture: ComponentFixture<ObNestedFormComponent>;
 	let nestedForm: UntypedFormGroup;
+	let parentForm: ObParentFormDirective;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
@@ -15,6 +16,7 @@ describe('NestedFormComponent', () => {
 		}).compileComponents();
 		fixture = TestBed.createComponent(ObNestedFormComponent);
 		component = fixture.componentInstance;
+		parentForm = TestBed.inject(ObParentFormDirective);
 		nestedForm = new UntypedFormGroup({
 			email: new UntypedFormControl('', Validators.required),
 			name: new UntypedFormControl('', Validators.required),
@@ -34,6 +36,43 @@ describe('NestedFormComponent', () => {
 			component.registerOnChange(null);
 
 			expect(nestedForm.valueChanges.subscribe).toHaveBeenCalledTimes(1);
+		});
+
+		it('should call the registered callback when the nested form changes', () => {
+			const callback = jest.fn();
+			component.registerOnChange(callback);
+
+			nestedForm.get('email').setValue('test@example.org');
+
+			expect(callback).toHaveBeenCalledWith({email: 'test@example.org', name: ''});
+		});
+	});
+
+	describe('Method registerOnTouched', () => {
+		it('should call the registered callback on blur', () => {
+			const callback = jest.fn();
+			component.registerOnTouched(callback);
+
+			component.onBlur();
+
+			expect(callback).toHaveBeenCalled();
+		});
+	});
+
+	describe('Parent form events', () => {
+		it('should mark all controls as touched on submit', () => {
+			parentForm.submit();
+
+			expect(nestedForm.get('email').touched).toBe(true);
+			expect(nestedForm.get('name').touched).toBe(true);
+		});
+
+		it('should reset the nested form on reset', () => {
+			nestedForm.setValue({email: 'test@example.org', name: 'Test'});
+
+			parentForm.reset();
+
+			expect(nestedForm.value).toEqual({email: null, name: null});
 		});
 	});
 
