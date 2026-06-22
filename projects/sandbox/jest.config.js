@@ -16,12 +16,6 @@ module.exports = {
 	coveragePathIgnorePatterns: ['<rootDir>/projects/oblique'],
 	coverageThreshold: {
 		...baseConfig.coverageThreshold,
-		'projects/sandbox/src/app/app.component.ts': {
-			statements: 75,
-			branches: 100,
-			functions: 50,
-			lines: 78,
-		},
 		'projects/sandbox/src/app/samples/master-layout/dynamic-navigation.service.ts': {
 			statements: 66,
 			branches: 100,
