@@ -19,7 +19,7 @@
           },
           "active": {
             "$type": "other",
-            "$value": "0.25"
+            "$value": "0.28"
           }
         },
         "strong": {
