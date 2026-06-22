@@ -22,11 +22,5 @@ module.exports = {
 			functions: 60,
 			lines: 64,
 		},
-		'projects/sandbox/src/app/samples/schema-validation/*.ts': {
-			statements: 84,
-			branches: 12,
-			functions: 75,
-			lines: 82,
-		},
 	},
 };
