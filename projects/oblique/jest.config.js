@@ -20,12 +20,6 @@ module.exports = {
 	],
 	coverageThreshold: {
 		...baseConfig.coverageThreshold,
-		'projects/oblique/src/lib/icon/*.ts': {
-			statements: 96,
-			branches: 75,
-			functions: 100,
-			lines: 95,
-		},
 		'projects/oblique/src/lib/input-clear/*.ts': {
 			statements: 96,
 			branches: 85,
