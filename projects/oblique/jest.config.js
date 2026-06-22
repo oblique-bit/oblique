@@ -23,9 +23,6 @@ module.exports = {
 		'projects/oblique/src/lib/language/language.service.ts': {
 			branches: 95,
 		},
-		'projects/oblique/src/lib/popover/popover.directive.ts': {
-			branches: 98,
-		},
 		'projects/oblique/src/lib/schema-validation/*.ts': {
 			statements: 92,
 			branches: 66,
