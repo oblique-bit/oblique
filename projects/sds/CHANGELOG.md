@@ -1,3 +1,13 @@
+# [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
+
+## Bug Fixes
+
+- **schematics:** restore schematics build ([af186b3a](https://github.com/oblique-bit/oblique/commit/af186b3a5e6e2180302147219a0a8113d58f3729), OUI-4500)
+
+## Features
+
+- **column-layout:** add Full Height example ([8425da01](https://github.com/oblique-bit/oblique/commit/8425da011d41788fd5abc04268028efd797b272f), OUI-4502)
+
 # [15.4.1](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.3...15.4.1) (2026-07-08)
 
 ## Bug Fixes

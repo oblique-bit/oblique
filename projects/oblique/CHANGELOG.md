@@ -1,3 +1,38 @@
+# [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
+
+## Bug Fixes
+
+- **master-layout:** ensure main nav scroll buttons react to changes in zoneless apps ([e5a01090](https://github.com/oblique-bit/oblique/commit/e5a01090af7a8c31886e496493e11257de3f78eb), OUI-4487)
+- **master-layout:** ensure sub menu closes in zoneless apps ([0719dc1b](https://github.com/oblique-bit/oblique/commit/0719dc1b7fae4d3d6a9b66fb63c8dcdf2785ed06), OUI-4487)
+- **master-layout:** ensure collapsed layout reacts to changes in zoneless apps ([94385dcc](https://github.com/oblique-bit/oblique/commit/94385dcc2b6461e5a056300ba95fa3a189bdcd65), OUI-4487)
+
+## Features
+
+- **error-messages:** remove ObErrorMessagesService ([8b7ea2aa](https://github.com/oblique-bit/oblique/commit/8b7ea2aa62fc52e601866d5513ee43266a63a0c8), OUI-4499)
+- **icon:** remove ObIconModule ([60cb3b1d](https://github.com/oblique-bit/oblique/commit/60cb3b1d9a0263a065f545e9c93ef3b41d12f3ea), OUI-4499)
+- **language:** split date and time formats for `obDate` ([de2d3840](https://github.com/oblique-bit/oblique/commit/de2d3840c9ec2d1e60978866d178047f435bc946), OUI-4472)
+- **language:** split date and time formats in `ObDate` ([e9a12af8](https://github.com/oblique-bit/oblique/commit/e9a12af85f1667ecd3a5dbd6fb6ec6d8f8974572), OUI-4472)
+- **master-layout:** remove locale configuration ([cfd49c34](https://github.com/oblique-bit/oblique/commit/cfd49c34f339c62b3107d45e5e1ab2332f0d9c93), OUI-4499)
+- **oblique:** distribute as ESM ([2f741cac](https://github.com/oblique-bit/oblique/commit/2f741cacd325c1614d2bc2db1a88bcc407360167), OUI-4500)
+- **schematics:** remove addFavIcon in favor of schematic logic with same outcome ([d1b8a147](https://github.com/oblique-bit/oblique/commit/d1b8a1475c89609f03c50f2b84391539c30f7b20), OUI-4488)
+- **utilities:** provide a custom `DateAdapter` in `provideObliqueConfiguration` ([2156b357](https://github.com/oblique-bit/oblique/commit/2156b357527c59349dd9a248f29dc16421ce525e), OUI-4472)
+
+## BREAKING CHANGES
+
+- **error-messages:** ObErrorMessagesService has been removed without replacement
+- **icon:** ObIconModule has been removed without replacement (solved with Schematics)
+- **icon:** ObMockIconModule has been removed without replacement
+- **language:** `datetime` format has been removed, use `shortDate` and `mediumTime` instead
+- **language:** `timezone` input has been removed, use `date` pipe if you need it
+- **language:** `format` parameter of `ObDatePipe` now only accepts date formats (`ObDateFormat`). Time formatting
+  has been moved to a new `timeFormat` parameter.
+- **language:** `ObDateComponent.format` now only accepts date formats (`ObDateFormat`). Time formatting has
+  been moved to a new `timeFormat` input.
+- **master-layout:** `ObMasterLayoutConfig.locale` is removed in favor of `translate.locales` (solved with Schematics)
+- **oblique:** `@oblique` no longer supports CommonJs, use `import` instead of `require()`
+- **utilities:** The Datepicker always parses and formats dates using the Swiss format, regardless of the selected
+  locale. A locale-based date adapter can still be used, but it must be provided after `provideObliqueConfiguration`.
+
 # [15.4.1](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.3...15.4.1) (2026-07-08)
 
 ## Bug Fixes
