@@ -2023,7 +2023,7 @@
             "canvas": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt_alpha.800}"
+                "$value": "{ob.p.color.cobalt.800}"
               },
               "hover": {
                 "$extensions": {
@@ -2161,7 +2161,7 @@
             "canvas": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt_alpha.800}"
+                "$value": "{ob.p.color.cobalt.800}"
               },
               "hover": {
                 "$extensions": {
@@ -2184,7 +2184,7 @@
                       "type": "mix",
                       "value": "{ob.s.opacity.subtle.active} ",
                       "space": "srgb",
-                      "color": "{ob.p.color.cobalt.900} "
+                      "color": "{ob.p.color.basic.white}"
                     }
                   }
                 },
@@ -2204,7 +2204,7 @@
                       "type": "mix",
                       "value": "{ob.s.opacity.subtle.hover} ",
                       "space": "srgb",
-                      "color": "{ob.p.color.cobalt.900} "
+                      "color": "{ob.p.color.basic.white}"
                     }
                   }
                 },
@@ -2218,7 +2218,7 @@
                       "type": "mix",
                       "value": "{ob.s.opacity.subtle.active} ",
                       "space": "srgb",
-                      "color": "{ob.p.color.cobalt.900} "
+                      "color": "{ob.p.color.basic.white}"
                     }
                   }
                 },
