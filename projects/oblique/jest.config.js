@@ -20,12 +20,6 @@ module.exports = {
 	],
 	coverageThreshold: {
 		...baseConfig.coverageThreshold,
-		'projects/oblique/src/lib/breadcrumb/*.ts': {
-			statements: 98,
-			branches: 78,
-			functions: 95,
-			lines: 97,
-		},
 		'projects/oblique/src/lib/column-layout/column-layout.component.ts': {
 			branches: 94,
 		},
