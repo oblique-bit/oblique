@@ -5,6 +5,16 @@
 - **sds:** ensure links with sub elements are properly handled ([c65c689c](https://github.com/oblique-bit/oblique/commit/c65c689c7ac914a19c911581838722333b6b4d22), OUI-4601)
 - **sds:** don't duplicate origin on external links ([6f7c75d2](https://github.com/oblique-bit/oblique/commit/6f7c75d24af683792acb98e203e6c038ad2b4b23), OUI-4599)
 
+# [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
+
+## Bug Fixes
+
+- **schematics:** restore schematics build ([af186b3a](https://github.com/oblique-bit/oblique/commit/af186b3a5e6e2180302147219a0a8113d58f3729), OUI-4500)
+
+## Features
+
+- **column-layout:** add Full Height example ([8425da01](https://github.com/oblique-bit/oblique/commit/8425da011d41788fd5abc04268028efd797b272f), OUI-4502)
+
 # [15.4.1](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.3...15.4.1) (2026-07-08)
 
 ## Bug Fixes

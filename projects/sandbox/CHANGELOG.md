@@ -1,3 +1,16 @@
+# [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
+
+## Bug Fixes
+
+- **material:** fix no value accessor error for progress-bar ([1bb1c731](https://github.com/oblique-bit/oblique/commit/1bb1c731c83ee67deb45868bb8a345043e6295f0), OUI-4487)
+
+## Features
+
+- **column-layout:** ensure toggling of layout setting on destroy ([4649020a](https://github.com/oblique-bit/oblique/commit/4649020a56acf66dcdf642c31176db3fa6fb64c5), OUI-4502)
+- **column-layout:** add requirements for full-height mode ([9092645e](https://github.com/oblique-bit/oblique/commit/9092645eca1a3cdc5edcbc56823dbb47e9101b8a), OUI-4502)
+- **language:** add time picker sample ([9eb5e818](https://github.com/oblique-bit/oblique/commit/9eb5e8185c085f6f8f53929129a4001f8de1879c), OUI-4472)
+- **sandbox:** make sandbox zoneless ([9159e938](https://github.com/oblique-bit/oblique/commit/9159e938baccb54a1e55d3c2a3c69e0be79e3a34), OUI-4487)
+
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 
 ## Bug Fixes
