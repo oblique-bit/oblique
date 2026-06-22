@@ -1,3 +1,14 @@
+# [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
+
+## Features
+
+- **schematics:** add add-oblique schematic ([3c88dd8a](https://github.com/oblique-bit/oblique/commit/3c88dd8a0e4c7e039eb7b95ac9536a82467789fb), OUI-4488)
+- **toolchain:** distribute as ESM ([8e1ad4de](https://github.com/oblique-bit/oblique/commit/8e1ad4de61e4df380b7a584d18457b0ff0d6bcef), OUI-4500)
+
+## BREAKING CHANGES
+
+- **toolchain:** `@oblique/toolchain` no longer supports CommonJs, use `import` instead of `require()`
+
 # [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
 
 ## Bug Fixes

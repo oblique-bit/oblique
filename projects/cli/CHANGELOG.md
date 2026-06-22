@@ -1,3 +1,15 @@
+# [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
+
+## Features
+
+- **cli:** distribute as ESM ([9b5c1b03](https://github.com/oblique-bit/oblique/commit/9b5c1b039523e82583b42d97de74828176e5f28d), OUI-4500)
+- **new:** run add-oblique schematic during project setup ([dde4cc63](https://github.com/oblique-bit/oblique/commit/dde4cc6383af126e850b8ab475b57a1a992beda6), OUI-4488)
+- **utils:** support ng generate execution ([c32f5ed5](https://github.com/oblique-bit/oblique/commit/c32f5ed518751fccbc7b0c199bd67c86b1926e15), OUI-4488)
+
+## BREAKING CHANGES
+
+- **cli:** `@oblique/cli` no longer supports CommonJs, use `import` instead of `require()`
+
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 
 ## Bug Fixes
