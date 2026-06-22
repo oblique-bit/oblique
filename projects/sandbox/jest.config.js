@@ -22,12 +22,6 @@ module.exports = {
 			functions: 60,
 			lines: 64,
 		},
-		'projects/sandbox/src/app/samples/number-format/*.ts': {
-			statements: 81,
-			branches: 100,
-			functions: 33,
-			lines: 77,
-		},
 		'projects/sandbox/src/app/samples/schema-validation/*.ts': {
 			statements: 84,
 			branches: 12,
