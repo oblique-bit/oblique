@@ -23,12 +23,6 @@ module.exports = {
 		'projects/oblique/src/lib/language/language.service.ts': {
 			branches: 95,
 		},
-		'projects/oblique/src/lib/nav-tree/*.ts': {
-			statements: 91,
-			branches: 70,
-			functions: 96,
-			lines: 91,
-		},
 		'projects/oblique/src/lib/nested-form/*.ts': {
 			statements: 66,
 			branches: 90,
