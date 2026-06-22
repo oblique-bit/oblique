@@ -23,12 +23,6 @@ module.exports = {
 		'projects/oblique/src/lib/language/language.service.ts': {
 			branches: 95,
 		},
-		'projects/oblique/src/lib/schema-validation/*.ts': {
-			statements: 92,
-			branches: 66,
-			functions: 75,
-			lines: 100,
-		},
 		'projects/oblique/src/lib/selectable/selectable-group.directive.ts': {
 			branches: 96,
 		},

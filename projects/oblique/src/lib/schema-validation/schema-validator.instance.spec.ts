@@ -48,8 +48,38 @@ describe(ObSchemaValidatorInstance.name, () => {
 			{property: 'required', path: ['nested'], result: true},
 			{property: 'optional', path: ['nested'], result: false},
 			{property: 'nonexistent', path: ['nested'], result: false},
+			{property: 'optional', path: ['missing'], result: false},
 		])('"$property" property with "$path" path returns "$result"', ({property, path, result}) => {
 			expect(validator.isRequired(property, path)).toBe(result);
+		});
+
+		test('returns false when the schema has no required properties', () => {
+			const optionalValidator = new ObSchemaValidatorInstance({
+				title: 'Optional',
+				type: 'object',
+				properties: {optional: {type: 'string'}},
+			});
+
+			expect(optionalValidator.isRequired('optional', [])).toBe(false);
+		});
+
+		test('uses an existing schema path while checking required properties', () => {
+			expect(validator.isRequired('optional', ['nested'])).toBe(false);
+		});
+
+		test('throws when a required path is checked without a schema', () => {
+			const emptyValidator = new ObSchemaValidatorInstance({title: 'Empty', type: 'object'});
+			Object.defineProperty(emptyValidator, 'schema', {value: null});
+
+			expect(() => emptyValidator.isRequired('missing', ['missing'])).toThrow();
+		});
+	});
+
+	describe('empty schema', () => {
+		test('validates without properties', () => {
+			const emptyValidator = new ObSchemaValidatorInstance({title: 'Empty', type: 'object'});
+
+			expect(emptyValidator.validate('missing', 'value')).toBeNull();
 		});
 	});
 
@@ -57,6 +87,12 @@ describe(ObSchemaValidatorInstance.name, () => {
 		test('returns a function', () => {
 			const func = validator.getValidator('text');
 			expect(func instanceof Function).toBe(true);
+		});
+
+		test('returns validation errors from the property validator', () => {
+			const func = validator.getValidator('minLength');
+
+			expect(func({value: 'min'})).toEqual({'ajv.minLength': {limit: 5}});
 		});
 	});
 });
