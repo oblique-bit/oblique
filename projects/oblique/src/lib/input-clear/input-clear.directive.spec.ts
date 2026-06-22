@@ -17,6 +17,12 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObInputClearDirective} from './input-clear.directive';
 import {TranslateModule} from '@ngx-translate/core';
 
+interface ObInputClearDirectivePrivate {
+	setFocus: () => void;
+	addParentClass: (cssClassName: string) => void;
+	removeParentClass: (cssClassName: string) => void;
+}
+
 @Component({
 	standalone: false,
 	template: ` <div [formGroup]="testForm">
@@ -92,6 +98,22 @@ class TemplateDrivenFormTestComponent {
 	</div>`,
 })
 class HtmlInputTestComponent {}
+
+@Component({
+	standalone: false,
+	template: ` <div>
+		<mat-form-field>
+			<mat-label>Mandatory</mat-label>
+			<input type="text" matInput placeholder="Mandatory" required #control />
+			<button type="button" [obInputClear]="control" [datePickerRef]="datePicker">
+				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
+			</button>
+		</mat-form-field>
+	</div>`,
+})
+class HtmlInputWithDatePickerTestComponent {
+	datePicker = {select: jest.fn()};
+}
 
 @Component({
 	standalone: false,
@@ -377,6 +399,68 @@ describe('InputClear', () => {
 				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
 				expect(parentElement).toBeNull();
 			});
+
+			test('that it focuses the input after clearing', () => {
+				input = fixture.nativeElement.querySelector('input');
+				jest.spyOn(input, 'focus');
+
+				fixture.nativeElement.querySelector('button').click();
+
+				expect(input.focus).toHaveBeenCalled();
+			});
+
+			test('that it does not focus the input after clearing when focusOnClear is false', () => {
+				input = fixture.nativeElement.querySelector('input');
+				directive.focusOnClear = false;
+				jest.spyOn(input, 'focus');
+				const directivePrivate = directive as unknown as ObInputClearDirectivePrivate;
+
+				Reflect.apply(directivePrivate.setFocus, directive, []);
+
+				expect(input.focus).not.toHaveBeenCalled();
+			});
+
+			test('that it does not throw when the parent element is missing', () => {
+				fixture.nativeElement.querySelector('button').remove();
+				const directivePrivate = directive as unknown as ObInputClearDirectivePrivate;
+
+				expect(() => {
+					Reflect.apply(directivePrivate.addParentClass, directive, ['missing-parent']);
+					Reflect.apply(directivePrivate.removeParentClass, directive, ['missing-parent']);
+				}).not.toThrow();
+			});
+		});
+	});
+
+	describe('with html input and datepicker', () => {
+		let fixture: ComponentFixture<HtmlInputWithDatePickerTestComponent>;
+		let component: HtmlInputWithDatePickerTestComponent;
+
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				declarations: [HtmlInputWithDatePickerTestComponent],
+				imports: [
+					ObMockTranslatePipe,
+					ObInputClearDirective,
+					FormsModule,
+					MatFormFieldModule,
+					MatInputModule,
+					TranslateModule,
+				],
+				providers: [provideObliqueTestingConfiguration()],
+			}).compileComponents();
+		});
+
+		beforeEach(() => {
+			fixture = TestBed.createComponent(HtmlInputWithDatePickerTestComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+		});
+
+		test('that it clears the datepicker', () => {
+			fixture.nativeElement.querySelector('button').click();
+
+			expect(component.datePicker.select).toHaveBeenCalledWith(undefined);
 		});
 	});
 
