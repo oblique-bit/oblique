@@ -2099,13 +2099,13 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.ghost.rest}"
+                "$value": "{ob.p.color.steelblue.500}"
               },
               "active": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
-                      "type": "mix",
+                      "type": "alpha",
                       "value": "{ob.s.opacity.soft.active} ",
                       "space": "srgb",
                       "color": "{ob.p.color.steelblue.500} "
@@ -2113,7 +2113,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.ghost.rest}"
+                "$value": "{ob.p.color.steelblue.500}"
               }
             },
             "selected": {
