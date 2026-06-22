@@ -1,4 +1,4 @@
-import {fromEvent} from 'rxjs';
+import {Subject, fromEvent, of} from 'rxjs';
 import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation-sub-menu-filter';
 
 describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
@@ -10,6 +10,42 @@ describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 				done();
 			});
 		document.querySelector('body').click();
+	});
+
+	test('that an event without a DOM target is emitted', () => {
+		let emitted = false;
+
+		of({} as Event)
+			.pipe(obMasterLayoutNavigationSubMenuFilter())
+			.subscribe(() => {
+				emitted = true;
+			});
+
+		expect(emitted).toBe(true);
+	});
+
+	test('that an undefined event is emitted', () => {
+		let emitted = false;
+		const source$ = new Subject<Event>();
+
+		source$.pipe(obMasterLayoutNavigationSubMenuFilter()).subscribe(() => {
+			emitted = true;
+		});
+		Reflect.apply(source$.next, source$, [undefined]);
+
+		expect(emitted).toBe(true);
+	});
+
+	test('that an event with a target that cannot match submenu selectors is emitted', () => {
+		let emitted = false;
+
+		of({target: {}} as unknown as Event)
+			.pipe(obMasterLayoutNavigationSubMenuFilter())
+			.subscribe(() => {
+				emitted = true;
+			});
+
+		expect(emitted).toBe(true);
 	});
 
 	test.each<{elementTag: keyof HTMLElementTagNameMap; classes: string[]; expected: boolean}>([

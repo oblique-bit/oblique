@@ -73,6 +73,14 @@ describe(ObAriaMenuButtonDirective.name, () => {
 			expect(directive.active).toBe(false);
 		});
 
+		it('should close on escape', () => {
+			directive.active = true;
+
+			directive.onEscape();
+
+			expect(directive.active).toBeUndefined();
+		});
+
 		describe('should toggle active on click', () => {
 			beforeEach(() => {
 				directive.active = false;
@@ -91,6 +99,16 @@ describe(ObAriaMenuButtonDirective.name, () => {
 			it('should set active to undefined with an outside click', () => {
 				mock.click$.next({});
 				fixture.detectChanges();
+				expect(directive.active).toBe(false);
+			});
+
+			it('should ignore keyboard events from a button', () => {
+				const event = new KeyboardEvent('keyup', {key: 'Enter'});
+				Object.defineProperty(event, 'target', {value: document.createElement('button')});
+				directive.active = false;
+
+				directive.onClick(event);
+
 				expect(directive.active).toBe(false);
 			});
 		});

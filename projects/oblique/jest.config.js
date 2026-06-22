@@ -23,30 +23,6 @@ module.exports = {
 		'projects/oblique/src/lib/language/language.service.ts': {
 			branches: 95,
 		},
-		'projects/oblique/src/lib/master-layout/*.ts': {
-			statements: 93,
-			branches: 50,
-			functions: 80,
-			lines: 91,
-		},
-		'projects/oblique/src/lib/master-layout/master-layout/*.ts': {
-			statements: 96,
-			branches: 91,
-			functions: 91,
-			lines: 96,
-		},
-		'projects/oblique/src/lib/master-layout/master-layout-navigation/*.ts': {
-			statements: 83,
-			branches: 54,
-			functions: 65,
-			lines: 83,
-		},
-		'projects/oblique/src/lib/master-layout/master-layout-navigation/sub-menu-item/*.ts': {
-			statements: 80,
-			branches: 88,
-			functions: 90,
-			lines: 80,
-		},
 		'projects/oblique/src/lib/nav-tree/*.ts': {
 			statements: 91,
 			branches: 70,
