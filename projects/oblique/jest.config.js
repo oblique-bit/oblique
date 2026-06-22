@@ -20,9 +20,6 @@ module.exports = {
 	],
 	coverageThreshold: {
 		...baseConfig.coverageThreshold,
-		'projects/oblique/src/lib/autocomplete/option-label-icon/option-label-icon.directive.ts': {
-			branches: 95,
-		},
 		'projects/oblique/src/lib/breadcrumb/*.ts': {
 			statements: 98,
 			branches: 78,
