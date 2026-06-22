@@ -18,10 +18,4 @@ module.exports = {
 		// the following files have no spec files and therefore have a 0 coverage. Tests will be written later
 		'!**/off-canvas-container.directive.ts',
 	],
-	coverageThreshold: {
-		...baseConfig.coverageThreshold,
-		'projects/oblique/src/lib/language/language.service.ts': {
-			branches: 95,
-		},
-	},
 };
