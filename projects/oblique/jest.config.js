@@ -23,12 +23,6 @@ module.exports = {
 		'projects/oblique/src/lib/language/language.service.ts': {
 			branches: 95,
 		},
-		'projects/oblique/src/lib/off-canvas/*.ts': {
-			statements: 70,
-			branches: 77,
-			functions: 33,
-			lines: 66,
-		},
 		'projects/oblique/src/lib/popover/popover.directive.ts': {
 			branches: 98,
 		},
