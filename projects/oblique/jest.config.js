@@ -23,12 +23,6 @@ module.exports = {
 		'projects/oblique/src/lib/language/language.service.ts': {
 			branches: 95,
 		},
-		'projects/oblique/src/lib/notification/*.ts': {
-			statements: 90,
-			branches: 77,
-			functions: 78,
-			lines: 89,
-		},
 		'projects/oblique/src/lib/number-format/*.ts': {
 			statements: 82,
 			branches: 76,
