@@ -9,6 +9,12 @@ import {firstValueFrom} from 'rxjs';
 import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {ObSelectableDirective} from '@oblique/oblique';
 
+interface ObSelectableGroupDirectivePrivate<T> {
+	selectables: ObSelectableDirective<T>[];
+	focused: number;
+	prevFocused: number;
+}
+
 @Component({
 	standalone: false,
 	template: `<div obSelectableGroup>
@@ -95,8 +101,7 @@ describe(ObSelectableGroupDirective.name, () => {
 
 		describe('register function', () => {
 			it('should store registered directives', () => {
-				// @ts-expect-error
-				expect(directive.selectables).toEqual(items);
+				expect((directive as unknown as ObSelectableGroupDirectivePrivate<number>).selectables).toEqual(items);
 			});
 		});
 
@@ -106,12 +111,10 @@ describe(ObSelectableGroupDirective.name, () => {
 				directive.focus(items[1]);
 			});
 			it('should store last focused item', () => {
-				// @ts-expect-error
-				expect(directive.focused).toBe(1);
+				expect((directive as unknown as ObSelectableGroupDirectivePrivate<number>).focused).toBe(1);
 			});
 			it('should store previous focused item', () => {
-				// @ts-expect-error
-				expect(directive.prevFocused).toBe(0);
+				expect((directive as unknown as ObSelectableGroupDirectivePrivate<number>).prevFocused).toBe(0);
 			});
 		});
 
@@ -176,8 +179,7 @@ describe(ObSelectableGroupDirective.name, () => {
 			describe('sort function', () => {
 				it('should sort directives', () => {
 					directive.sort((firstElement, secondElement) => secondElement.value - firstElement.value);
-					// @ts-expect-error
-					expect(directive.selectables[0].value).toBe(4);
+					expect((directive as unknown as ObSelectableGroupDirectivePrivate<number>).selectables[0].value).toBe(4);
 				});
 			});
 
@@ -471,6 +473,17 @@ describe(ObSelectableGroupDirective.name, () => {
 					directive.onShiftArrowUp(event);
 				});
 
+				it('onShiftArrowUp should not change the selection before the first item', () => {
+					directive.focus(items[0]);
+					jest.spyOn(items[0], 'focus');
+					jest.spyOn(directive.selected$, 'emit');
+
+					directive.onShiftArrowUp(event);
+
+					expect(items[0].focus).not.toHaveBeenCalled();
+					expect(directive.selected$.emit).not.toHaveBeenCalled();
+				});
+
 				it('onShiftArrowDown should preventDefault', () => {
 					directive.onShiftArrowDown(event);
 					expect(event.preventDefault).toHaveBeenCalled();
@@ -489,14 +502,43 @@ describe(ObSelectableGroupDirective.name, () => {
 					directive.focus(items[3]);
 				});
 
+				it('onShiftArrowDown should not change the selection after the last item', () => {
+					directive.focus(items[4]);
+					jest.spyOn(items[4], 'focus');
+					jest.spyOn(directive.selected$, 'emit');
+
+					directive.onShiftArrowDown(event);
+
+					expect(items[4].focus).not.toHaveBeenCalled();
+					expect(directive.selected$.emit).not.toHaveBeenCalled();
+				});
+
 				it('onCtrlArrowUp should preventDefault', () => {
 					directive.onCtrlArrowUp(event);
 					expect(event.preventDefault).toHaveBeenCalled();
 				});
 
+				it('onCtrlArrowUp should not focus before the first item', () => {
+					directive.focus(items[0]);
+					jest.spyOn(items[0], 'focus');
+
+					directive.onCtrlArrowUp(event);
+
+					expect(items[0].focus).not.toHaveBeenCalled();
+				});
+
 				it('onCtrlArrowDown should preventDefault', () => {
 					directive.onCtrlArrowDown(event);
 					expect(event.preventDefault).toHaveBeenCalled();
+				});
+
+				it('onCtrlArrowDown should not focus after the last item', () => {
+					directive.focus(items[4]);
+					jest.spyOn(items[4], 'focus');
+
+					directive.onCtrlArrowDown(event);
+
+					expect(items[4].focus).not.toHaveBeenCalled();
 				});
 			});
 		});
@@ -571,7 +613,7 @@ describe(ObSelectableGroupDirective.name, () => {
 			selectableDirectives.forEach(selectableDirective => directive.register(selectableDirective));
 			// reset state before each test case
 			selectableDirectives.forEach(selectableDirective => {
-				(selectableDirective as any).selected = false;
+				selectableDirective.selected = false;
 			});
 		});
 

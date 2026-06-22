@@ -23,8 +23,5 @@ module.exports = {
 		'projects/oblique/src/lib/language/language.service.ts': {
 			branches: 95,
 		},
-		'projects/oblique/src/lib/selectable/selectable-group.directive.ts': {
-			branches: 96,
-		},
 	},
 };
