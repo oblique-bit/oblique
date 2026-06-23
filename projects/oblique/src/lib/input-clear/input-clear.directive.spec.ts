@@ -16,6 +16,7 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObInputClearDirective} from './input-clear.directive';
 import {TranslateModule} from '@ngx-translate/core';
+import {ObConsoleService} from '../console/ob-console.service';
 
 interface ObInputClearDirectivePrivate {
 	setFocus: () => void;
@@ -473,6 +474,7 @@ describe('InputClear', () => {
 	describe('with wrong configuration', () => {
 		let fixture: ComponentFixture<WrongConfigurationTestComponent>;
 		let input: HTMLInputElement;
+		let obConsoleService: ObConsoleService;
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
@@ -490,7 +492,8 @@ describe('InputClear', () => {
 		});
 
 		beforeEach(() => {
-			jest.spyOn(console, 'warn');
+			obConsoleService = TestBed.inject(ObConsoleService);
+			jest.spyOn(obConsoleService, 'warn');
 			fixture = TestBed.createComponent(WrongConfigurationTestComponent);
 			fixture.detectChanges();
 		});
@@ -508,7 +511,8 @@ describe('InputClear', () => {
 			});
 
 			test('that it writes a warning message in the console', () => {
-				expect(console.warn).toHaveBeenCalledWith(
+				expect(obConsoleService.warn).toHaveBeenCalledWith(
+					'ObInputClearDirective checkControlType()',
 					`${ObInputClearDirective.name}: illegal value for obInputClear Input, please use one of the following: [${AbstractControl.name}, ${HTMLInputElement.name}, ${NgModel.name}].`
 				);
 			});

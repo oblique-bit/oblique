@@ -4,6 +4,7 @@ import {firstValueFrom, of, throwError} from 'rxjs';
 
 import {ObMultiTranslateLoader} from './multi-translate-loader';
 import {ObITranslationFile} from './multi-translate-loader.model';
+import {ObConsoleService} from '../console/ob-console.service';
 
 describe(ObMultiTranslateLoader.name, () => {
 	let http: HttpClient;
@@ -17,6 +18,7 @@ describe(ObMultiTranslateLoader.name, () => {
 		{prefix: projectPrefix, suffix},
 	];
 	const englishLanguage = 'en';
+	let obConsoleService: ObConsoleService;
 
 	describe('getTranslation"', () => {
 		describe.each([
@@ -67,7 +69,8 @@ describe(ObMultiTranslateLoader.name, () => {
 		])(`$description`, ({shouldFlattenFiles, expectedResult, language}) => {
 			beforeEach(async () => {
 				http = TestBed.inject(HttpClient);
-				loader = new ObMultiTranslateLoader(http, defaultResources, shouldFlattenFiles);
+				obConsoleService = TestBed.inject(ObConsoleService);
+				loader = new ObMultiTranslateLoader(http, defaultResources, shouldFlattenFiles, obConsoleService);
 
 				jest.spyOn(http, 'get').mockImplementation((url: string) => {
 					const files: Record<string, unknown> = {
@@ -122,10 +125,10 @@ describe(ObMultiTranslateLoader.name, () => {
 			},
 		])('with missing $description', ({description, filePrefix, expectedWarning}) => {
 			beforeEach(async () => {
-				loader = new ObMultiTranslateLoader(http, [{prefix: filePrefix, suffix: '.json'}], false);
-
+				obConsoleService = TestBed.inject(ObConsoleService);
+				jest.spyOn(obConsoleService, 'warn').mockImplementation();
+				loader = new ObMultiTranslateLoader(http, [{prefix: filePrefix, suffix: '.json'}], false, obConsoleService);
 				jest.spyOn(http, 'get').mockReturnValue(throwError(() => new Error('404')));
-				jest.spyOn(console, 'warn').mockImplementation();
 				result = await firstValueFrom(loader.getTranslation(englishLanguage));
 			});
 
@@ -138,7 +141,10 @@ describe(ObMultiTranslateLoader.name, () => {
 			});
 
 			test(`should log a warning mentioning missing ${description}`, () => {
-				expect(console.warn).toHaveBeenCalledWith(expect.stringContaining(expectedWarning));
+				expect(obConsoleService.warn).toHaveBeenCalledWith(
+					'ObMultiTranslateLoader handleError()',
+					expect.stringContaining(expectedWarning)
+				);
 			});
 		});
 	});

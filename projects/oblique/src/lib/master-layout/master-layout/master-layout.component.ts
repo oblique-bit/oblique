@@ -39,6 +39,7 @@ import {Subject, fromEvent, startWith} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 import {MasterLayoutComponentBase} from './master-layout-component-base';
+import {ObConsoleService} from '../../console/ob-console.service';
 
 @Component({
 	selector: 'ob-master-layout',
@@ -108,6 +109,7 @@ export class ObMasterLayoutComponent
 		lg: 1240,
 		xl: 1440,
 	} as const;
+	private readonly obConsole = inject(ObConsoleService);
 
 	constructor() {
 		super();
@@ -171,7 +173,10 @@ export class ObMasterLayoutComponent
 		const elementToFocus = this.getElement(elementId);
 		if (!elementToFocus) {
 			if (isDevMode()) {
-				console.error(`${elementId} does not correspond to an existing DOM element.`);
+				this.obConsole.error(
+					'ObMasterLayoutComponent focusElementById() !(element instanceof Element)',
+					`${elementId} does not correspond to an existing DOM element.`
+				);
 			}
 			return;
 		}
@@ -191,7 +196,8 @@ export class ObMasterLayoutComponent
 			elementToFocus.setAttribute('tabindex', '-1');
 			elementToFocus.focus({preventScroll: true});
 			if (isDevMode()) {
-				console.info(
+				this.obConsole.info(
+					'ObMasterLayoutComponent focusElementById() (document.activeElement !== element)',
 					`The element: ${this.createElementDescription(elementToFocus)} is not focusable. Oblique added a tabindex in order to make it focusable.`
 				);
 			}

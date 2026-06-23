@@ -5,6 +5,7 @@ import {By} from '@angular/platform-browser';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import {MatTooltip} from '@angular/material/tooltip';
 import {ObIconButtonDirective} from './icon-button.directive';
+import {ObConsoleService} from '../console/ob-console.service';
 
 @Directive({
 	selector: '[obButton]',
@@ -36,6 +37,7 @@ describe(ObIconButtonDirective.name, () => {
 	let directive: ObIconButtonDirective;
 	let fixture: ComponentFixture<ButtonTestComponent>;
 	let button: DebugElement;
+	let obConsoleService: ObConsoleService;
 
 	describe.each([
 		{mode: 'dev', isDevMode: true, warning: 'presence'},
@@ -47,7 +49,6 @@ describe(ObIconButtonDirective.name, () => {
 			await TestBed.configureTestingModule({
 				imports: [MatButtonModule, ButtonTestComponent, MatIconModule],
 			}).compileComponents();
-			jest.spyOn(console, 'warn');
 		});
 
 		afterEach(() => {
@@ -61,6 +62,8 @@ describe(ObIconButtonDirective.name, () => {
 				}).createComponent(ButtonTestComponent);
 				button = fixture.debugElement.query(By.directive(ObIconButtonDirective));
 				directive = button.injector.get(ObIconButtonDirective);
+				obConsoleService = TestBed.inject(ObConsoleService);
+				jest.spyOn(obConsoleService, 'warn');
 				fixture.detectChanges();
 			});
 
@@ -70,12 +73,13 @@ describe(ObIconButtonDirective.name, () => {
 
 			test(`missing tooltip warning ${warning}`, () => {
 				if (isDevMode) {
-					expect(console.warn).toHaveBeenCalledWith(
+					expect(obConsoleService.warn).toHaveBeenCalledWith(
+						'ObIconButtonDirective ensureVisibleText()',
 						'The following button lacks visible text. For improved usability and accessibility, consider adding a tooltip to clarify its purpose.',
 						button.nativeElement
 					);
 				} else {
-					expect(console.warn).not.toHaveBeenCalled();
+					expect(obConsoleService.warn).not.toHaveBeenCalled();
 				}
 			});
 		});
@@ -93,7 +97,7 @@ describe(ObIconButtonDirective.name, () => {
 			});
 
 			test('no missing tooltip warning', () => {
-				expect(console.warn).not.toHaveBeenCalled();
+				expect(obConsoleService.warn).not.toHaveBeenCalled();
 			});
 
 			test('aria-labelledby value', () => {
@@ -123,7 +127,7 @@ describe(ObIconButtonDirective.name, () => {
 			});
 
 			test('no missing tooltip warning', () => {
-				expect(console.warn).not.toHaveBeenCalled();
+				expect(obConsoleService.warn).not.toHaveBeenCalled();
 			});
 
 			test('aria-labelledby value', () => {

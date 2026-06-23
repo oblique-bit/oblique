@@ -5,6 +5,7 @@ import {WINDOW} from '../window/window.provider';
 import {ObWindow} from '../window/window.provider.model';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {fromEvent, startWith} from 'rxjs';
+import {ObConsoleService} from '../console/ob-console.service';
 
 @Directive({
 	selector: '[obInputClear]',
@@ -27,6 +28,7 @@ export class ObInputClearDirective implements OnInit {
 	private readonly validControlTypes = [AbstractControl, HTMLInputElement, NgModel];
 	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly destroyRef = inject(DestroyRef);
+	private readonly obConsole = inject(ObConsoleService);
 
 	constructor() {
 		// ensure matInput got resolved beforehand
@@ -52,7 +54,8 @@ export class ObInputClearDirective implements OnInit {
 			const inputTypes = this.validControlTypes
 				.map(validControlType => validControlType.name)
 				.reduce((previous, current) => `${previous}, ${current}`);
-			console.warn(
+			this.obConsole.warn(
+				'ObInputClearDirective checkControlType()',
 				`${ObInputClearDirective.name}: illegal value for obInputClear Input, please use one of the following: [${inputTypes}].`
 			);
 		}

@@ -5,12 +5,14 @@ import {ObSpinnerService} from './spinner.service';
 import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerRegistry} from './spinner.registry';
 import {provideObliqueTestingConfiguration} from '../utilities';
+import {ObConsoleService} from '../console/ob-console.service';
 
 describe(ObSpinnerService.name, () => {
 	let fixture: ComponentFixture<ObSpinnerComponent>;
 	let spinner: ObSpinnerComponent;
 	let service: ObSpinnerService;
 	let registry: ObSpinnerRegistry;
+	let obConsoleService: ObConsoleService;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
@@ -22,6 +24,8 @@ describe(ObSpinnerService.name, () => {
 
 		fixture = TestBed.createComponent(ObSpinnerComponent);
 		spinner = fixture.componentInstance;
+		obConsoleService = TestBed.inject(ObConsoleService);
+		jest.spyOn(obConsoleService, 'warn');
 		fixture.detectChanges();
 	});
 
@@ -39,26 +43,36 @@ describe(ObSpinnerService.name, () => {
 
 	it('should log a warning if activated with a non-registered channel', () => {
 		service.activate('foobarbaz');
-		expect(console.warn).toHaveBeenCalledWith('Attempt to activate a channel that does not exist:', 'foobarbaz');
+		expect(obConsoleService.warn).toHaveBeenCalledWith(
+			'ObSpinnerService activate()',
+			'Attempt to activate a channel that does not exist:',
+			'foobarbaz'
+		);
 	});
 
 	it('should log a warning if deactivated with a non-registered channel', () => {
 		service.deactivate('foobarbaz');
-		expect(console.warn).toHaveBeenCalledWith('Attempt to deactivate a channel that does not exist:', 'foobarbaz');
+		expect(obConsoleService.warn).toHaveBeenCalledWith(
+			'ObSpinnerService deactivate()',
+			'Attempt to deactivate a channel that does not exist:',
+			'foobarbaz'
+		);
 	});
 
 	it('should not log a warning if activated with a registered channel', () => {
 		fixture.componentRef.setInput('channel', 'registered');
+		spinner = {channel: 'registered'} as unknown as ObSpinnerComponent;
 		registry.register(spinner);
 		service.activate('registered');
-		expect(console.warn).not.toHaveBeenCalled();
+		expect(obConsoleService.warn).not.toHaveBeenCalled();
 	});
 
 	it('should not log a warning if deactivated with a registered channel', () => {
 		fixture.componentRef.setInput('channel', 'registered');
+		spinner = {channel: 'registered'} as unknown as ObSpinnerComponent;
 		registry.register(spinner);
 		service.deactivate('registered');
-		expect(console.warn).not.toHaveBeenCalled();
+		expect(obConsoleService.warn).not.toHaveBeenCalled();
 	});
 
 	it('should emit a SpinnerEvent on a custom channel if activated', done => {

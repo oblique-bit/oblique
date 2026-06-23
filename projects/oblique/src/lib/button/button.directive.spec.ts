@@ -3,6 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonDirective} from './button.directive';
+import {ObConsoleService} from '../console/ob-console.service';
 
 @Component({
 	standalone: false,
@@ -27,6 +28,7 @@ describe(ObButtonDirective.name, () => {
 	let component: ButtonDirectiveTestComponent;
 	let fixture: ComponentFixture<ButtonDirectiveTestComponent>;
 	let hostChangeDetector: ChangeDetectorRef;
+	let obConsoleService: ObConsoleService;
 
 	beforeEach(async () => {
 		TestBed.resetTestingModule();
@@ -243,12 +245,13 @@ describe(ObButtonDirective.name, () => {
 
 	describe('error button', () => {
 		beforeEach(() => {
-			jest.spyOn(console, 'error');
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
 					template: '<button mat-raised-button obButton="primary">Raised button</button>',
 				},
 			}).createComponent(ButtonDirectiveTestComponent);
+			obConsoleService = TestBed.inject(ObConsoleService);
+			jest.spyOn(obConsoleService, 'error');
 			component = fixture.componentInstance;
 			fixture.detectChanges();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
@@ -265,13 +268,14 @@ describe(ObButtonDirective.name, () => {
 		});
 
 		it('should output an error message', () => {
-			expect(console.error).toHaveBeenCalledWith(
+			expect(obConsoleService.error).toHaveBeenCalledWith(
+				'ObButtonDirective validateButtonVariant()',
 				'The obButton directive is meant to be used with mat-button or mat-icon-button exclusively. An instance of mat-raised-button, which can lead to unexpected effects, has been detected, please change it to one of the supported variant.'
 			);
 		});
 
 		it('should output an error once', () => {
-			expect(console.error).toHaveBeenCalledTimes(1);
+			expect(obConsoleService.error).toHaveBeenCalledTimes(1);
 		});
 
 		it('should create an instance', () => {

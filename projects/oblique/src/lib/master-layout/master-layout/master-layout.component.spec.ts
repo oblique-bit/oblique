@@ -14,6 +14,7 @@ import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {appVersion} from '../../version';
+import {ObConsoleService} from '../../console/ob-console.service';
 
 @Component({
 	standalone: false,
@@ -55,6 +56,7 @@ describe('ObMasterLayoutComponent', () => {
 		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
 		navigation: {refresh: jest.fn()},
 	};
+	let obConsoleService: ObConsoleService;
 
 	beforeEach(async () => {
 		offCanvasOpened$ = new Subject<boolean>();
@@ -459,7 +461,8 @@ describe('ObMasterLayoutComponent', () => {
 				element = document.getElementById('content');
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
-				jest.spyOn(global.console, 'error');
+				obConsoleService = TestBed.inject(ObConsoleService);
+				jest.spyOn(obConsoleService, 'error');
 				component.focusElementById('not_existing_element');
 			});
 			it('should not scroll to the element', () => {
@@ -469,7 +472,8 @@ describe('ObMasterLayoutComponent', () => {
 				expect(element.focus).not.toHaveBeenCalled();
 			});
 			it('should console.error that the targeted element does not correspond to an existing dom element', () => {
-				expect(console.error).toHaveBeenCalledWith(
+				expect(obConsoleService.error).toHaveBeenCalledWith(
+					'ObMasterLayoutComponent focusElementById() !(element instanceof Element)',
 					'not_existing_element does not correspond to an existing DOM element.'
 				);
 			});
@@ -484,7 +488,8 @@ describe('ObMasterLayoutComponent', () => {
 				element = document.getElementById('not_focusable_element');
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
-				jest.spyOn(global.console, 'info');
+				obConsoleService = TestBed.inject(ObConsoleService);
+				jest.spyOn(obConsoleService, 'info');
 				content.focus();
 			});
 			it('should be first focused on the content element', () => {
@@ -497,7 +502,8 @@ describe('ObMasterLayoutComponent', () => {
 
 			it('should console.info that the targetted element is not focusable', () => {
 				component.focusElementById('not_focusable_element');
-				expect(console.info).toHaveBeenCalledWith(
+				expect(obConsoleService.info).toHaveBeenCalledWith(
+					'ObMasterLayoutComponent focusElementById() (document.activeElement !== element)',
 					'The element: input#not_focusable_element.foo.bar is not focusable. Oblique added a tabindex in order to make it focusable.'
 				);
 			});
