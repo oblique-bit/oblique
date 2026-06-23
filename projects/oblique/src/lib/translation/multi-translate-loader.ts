@@ -3,12 +3,14 @@ import {TranslateLoader} from '@ngx-translate/core';
 import {catchError, map} from 'rxjs/operators';
 import {Observable, forkJoin, of} from 'rxjs';
 import {DeepString, ObITranslationFile} from './translation.model';
+import {ObConsoleService} from '../console/ob-console.service';
 
 export class ObMultiTranslateLoader implements TranslateLoader {
 	constructor(
 		private readonly http: HttpClient,
 		private readonly resources: ObITranslationFile[],
-		private readonly shouldFlattenFiles: boolean
+		private readonly shouldFlattenFiles: boolean,
+		private readonly obConsole: ObConsoleService
 	) {}
 
 	public getTranslation(language: string): Observable<Record<string, string>> {
@@ -16,7 +18,7 @@ export class ObMultiTranslateLoader implements TranslateLoader {
 			.map(resource => `${resource.prefix}${language}${resource.suffix}`)
 			.map(url =>
 				this.getTranslationFile(url, this.shouldFlattenFiles).pipe(
-					catchError(() => ObMultiTranslateLoader.handleError(url))
+					catchError(() => ObMultiTranslateLoader.handleError(url, this.obConsole))
 				)
 			);
 		return forkJoin(requests).pipe(
@@ -46,14 +48,14 @@ export class ObMultiTranslateLoader implements TranslateLoader {
 			);
 	}
 
-	private static handleError(url: string): Observable<Record<string, string>> {
+	private static handleError(url: string, obConsole: ObConsoleService): Observable<Record<string, string>> {
 		const language: string = /\w\w(?=\.json$)/.exec(url)[0];
 		const text = `The "${language.toUpperCase()}" language has been selected but ${
 			/oblique-\w\w\.json$/.test(url)
 				? `Oblique doesn't provide a translation file for that language. The file "oblique-${language}.json" needs to be created in the project's "assets/i18n" directory. Each project is responsible for providing the files to enable Oblique's translation of additional languages.`
 				: `the project does not provide a translation file for that language. Please make sure that the "${language}.json" file exists in the project's "assets/i18n" directory. Each project is responsible for its own translations`
 		}`;
-		console.warn(text);
+		obConsole.warn('ObMultiTranslateLoader handleError()', text);
 		return of({});
 	}
 }

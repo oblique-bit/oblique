@@ -1,5 +1,6 @@
 import {Directive, ElementRef, Input, OnChanges, OnInit, inject} from '@angular/core';
 import {ObIconButtonDirective} from './icon-button.directive';
+import {ObConsoleService} from '../console/ob-console.service';
 
 @Directive({
 	selector: '[obButton]',
@@ -25,6 +26,7 @@ export class ObButtonDirective implements OnInit, OnChanges {
 		'mat-flat-button',
 	];
 	private readonly element = inject(ElementRef);
+	private readonly obConsole = inject(ObConsoleService);
 
 	ngOnInit(): void {
 		this.validateButtonVariant();
@@ -45,7 +47,8 @@ export class ObButtonDirective implements OnInit, OnChanges {
 	private validateButtonVariant(): void {
 		const attribute = ObButtonDirective.forbidden.find(variant => this.element.nativeElement.hasAttribute(variant));
 		if (attribute) {
-			console.error(
+			this.obConsole.error(
+				'ObButtonDirective validateButtonVariant()',
 				`The obButton directive is meant to be used with mat-button or mat-icon-button exclusively. An instance of ${attribute}, which can lead to unexpected effects, has been detected, please change it to one of the supported variant.`
 			);
 		}

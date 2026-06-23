@@ -10,6 +10,7 @@ import {
 } from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader';
 import {ObITranslateConfig, ObITranslateConfigInternal} from './translation.model';
+import {ObConsoleService} from '../console/ob-console.service';
 
 export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfigInternal>('Translation configuration');
 
@@ -22,7 +23,7 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 			loader: {
 				provide: TranslateLoader,
 				useFactory: getTranslateLoader,
-				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION],
+				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION, ObConsoleService],
 			},
 			...addProviders(config),
 		}),
@@ -30,7 +31,11 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 	]);
 }
 
-function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal): ObMultiTranslateLoader {
+function getTranslateLoader(
+	http: HttpClient,
+	config: ObITranslateConfigInternal,
+	obConsole: ObConsoleService
+): ObMultiTranslateLoader {
 	const {additionalFiles, flatten} = config;
 	return new ObMultiTranslateLoader(
 		http,
@@ -41,7 +46,8 @@ function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal
 			},
 			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}]),
 		],
-		flatten
+		flatten,
+		obConsole
 	);
 }
 

@@ -1,6 +1,7 @@
 import {Directive, ElementRef, Renderer2, effect, inject, isDevMode} from '@angular/core';
 import {MatIconButton} from '@angular/material/button';
 import {MatTooltip} from '@angular/material/tooltip';
+import {ObConsoleService} from '../console/ob-console.service';
 
 @Directive({})
 export class ObIconButtonDirective {
@@ -8,6 +9,7 @@ export class ObIconButtonDirective {
 	private readonly hasTooltip = Boolean(inject(MatTooltip, {optional: true}));
 	private readonly renderer = inject(Renderer2);
 	private readonly element = inject(ElementRef<HTMLButtonElement>);
+	private readonly obConsole = inject(ObConsoleService);
 
 	constructor() {
 		if (this.isIconButton) {
@@ -20,7 +22,8 @@ export class ObIconButtonDirective {
 			this.observeAriaDescribedbyChange(button);
 		} else if (isDevMode()) {
 			effect(() => {
-				console.warn(
+				this.obConsole.warn(
+					'ObIconButtonDirective ensureVisibleText()',
 					'The following button lacks visible text. For improved usability and accessibility, consider adding a tooltip to clarify its purpose.',
 					button
 				);
