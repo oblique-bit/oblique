@@ -39,6 +39,7 @@ import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from './accessibility-statemen
 import {WINDOW} from './window/window.provider';
 import {OB_TRANSLATION_CONFIGURATION, provideObliqueTranslations} from './translation/translation.providers';
 import {ObDateAdapter} from './language/date-adapter/date-adapter';
+import {OB_CONSOLE_CONFIGURATION} from './console/ob-console.provider';
 
 const translations: any = {};
 const accessibilityStatement: ObIAccessibilityStatementConfiguration = {
@@ -69,6 +70,7 @@ describe('utilities', () => {
 		icon: {registerObliqueIcons: true},
 		translate: {flatten: true},
 		hasLanguageInUrl: false,
+		consoleConfiguration: {},
 	});
 
 	describe('mergeDeep', () => {
@@ -234,6 +236,14 @@ describe('utilities', () => {
 				});
 			});
 
+			describe('console configuration', () => {
+				it('should provide OB_CONSOLE_CONFIGURATION', () => {
+					const consoleConfiguration = TestBed.inject(OB_CONSOLE_CONFIGURATION);
+
+					expect(consoleConfiguration).toEqual({silencedLabels: new Set()});
+				});
+			});
+
 			describe('history state', () => {
 				it('should capture the initial browser history length', () => {
 					const historyState = TestBed.inject(OB_HISTORY_STATE);
@@ -298,6 +308,7 @@ describe('utilities', () => {
 								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
 							},
 							hasLanguageInUrl: true,
+							consoleConfiguration: {silencedLabels: new Set(['foo', 'bar'])},
 						}),
 					],
 				});
@@ -365,6 +376,14 @@ describe('utilities', () => {
 					const hasLanguageInUrl = TestBed.inject(OB_HAS_LANGUAGE_IN_URL);
 
 					expect(hasLanguageInUrl).toBe(true);
+				});
+			});
+
+			describe('console configuration', () => {
+				it('should provide OB_CONSOLE_CONFIGURATION as true', () => {
+					const hasLanguageInUrl = TestBed.inject(OB_CONSOLE_CONFIGURATION);
+
+					expect(hasLanguageInUrl).toEqual({silencedLabels: new Set(['foo', 'bar'])});
 				});
 			});
 

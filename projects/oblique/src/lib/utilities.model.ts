@@ -3,6 +3,7 @@ import {ObIconConfig} from './icon/icon.model';
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
 import {ObIMaterialConfig} from './material/material.model';
 import {ObITranslateConfig} from './translation/translation.model';
+import {ObConsoleConfiguration} from './console/ob-console.model';
 
 export interface ObIBanner {
 	text?: string;
@@ -23,6 +24,7 @@ export interface ObIObliqueConfiguration {
 	icon?: ObIconConfig;
 	translate?: ObITranslateConfig;
 	hasLanguageInUrl?: boolean;
+	consoleConfiguration?: ObConsoleConfiguration;
 }
 
 export interface ObIHistoryState {
@@ -42,6 +44,7 @@ export type ObIObliqueConfigurationWithDefaults = Omit<
 	icon: NonNullable<ObIObliqueConfiguration['icon']>;
 	translate: NonNullable<ObIObliqueConfiguration['translate']>;
 	hasLanguageInUrl: NonNullable<ObIObliqueConfiguration['hasLanguageInUrl']>;
+	consoleConfiguration: ObConsoleConfiguration;
 };
 
 export type DeepPartial<Type> = Type extends object ? {[Property in keyof Type]?: DeepPartial<Type[Property]>} : Type;

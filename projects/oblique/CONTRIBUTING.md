@@ -18,6 +18,7 @@ must use the **service-navigation** package and one of the following scopes:
 | **breakpoints**             | For changes to the breakpoints feature                                    |
 | **collapse**                | For changes to the collapse feature                                       |
 | **column-layout**           | For changes to the column-layout feature                                  |
+| **console**                 | For changes to the console feature                                        |
 | **document-meta**           | For changes to the document-meta feature                                  |
 | **error-messages**          | For changes to the error-messages feature                                 |
 | **external-link**           | For changes to the external-link feature                                  |

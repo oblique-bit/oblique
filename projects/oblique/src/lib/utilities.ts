@@ -37,6 +37,7 @@ import {
 	provideObliqueTranslations,
 } from './translation/translation.providers';
 import {obProvideDate} from './language/date.provider';
+import {obDefaultConsoleConfiguration, obProvideConsole} from './console/ob-console.provider';
 
 export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
@@ -90,6 +91,7 @@ const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
 	icon: {registerObliqueIcons: true},
 	translate: defaultTranslationConfig,
 	hasLanguageInUrl: false,
+	consoleConfiguration: obDefaultConsoleConfiguration,
 } as const;
 
 function mergeWithDefaultObliqueConfiguration(
@@ -117,6 +119,7 @@ function getDefaultObliqueProviders(
 		provideAccessibilityStatement(mergedConfig.accessibilityStatement),
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: mergedConfig.hasLanguageInUrl},
 		obProvideDate(),
+		obProvideConsole(mergedConfig.consoleConfiguration),
 		provideMaterial(mergedConfig.material),
 	];
 }
