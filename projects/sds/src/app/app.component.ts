@@ -1,8 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {AsyncPipe} from '@angular/common';
 import {ObSpinnerModule} from '@oblique/oblique';
-import {RouterOutlet} from '@angular/router';
-import {TranslateService} from '@ngx-translate/core';
+import {Router, RouterOutlet} from '@angular/router';
 import {type Observable, filter, map, tap} from 'rxjs';
 import {CmsDataService} from './cms/cms-data.service';
 import {SideNavigationComponent} from './side-navigation/side-navigation.component';
@@ -24,10 +23,8 @@ export class AppComponent {
 	readonly bannerData$: Observable<string> = this.getBannerData(inject(CmsDataService));
 
 	constructor() {
-		const translate = inject(TranslateService);
-		translate.addLangs(['en']);
-		translate.setFallbackLang('en');
-		translate.use('en');
+		// remove the accessibility statement route that Oblique adds automatically and is not meaningful in SDS
+		inject(Router).config.shift();
 	}
 
 	doShowMobileNavigation(event: boolean): void {
