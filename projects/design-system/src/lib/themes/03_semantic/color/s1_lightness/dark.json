@@ -2054,7 +2054,7 @@
                 "$value": "{ob.s1.color.state_hybrid.emphasis_high.canvas.rest}"
               }
             },
-            "ghost": {
+            "transparent": {
               "rest": {
                 "$type": "color",
                 "$value": "{ob.p.color.basic.transparent}"
@@ -2192,7 +2192,7 @@
                 "$value": "{ob.s1.color.state_hybrid.emphasis_high.canvas.rest}"
               }
             },
-            "ghost": {
+            "transparent": {
               "rest": {
                 "$type": "color",
                 "$value": "{ob.p.color.basic.transparent}"
