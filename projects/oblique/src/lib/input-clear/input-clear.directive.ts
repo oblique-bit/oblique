@@ -1,4 +1,4 @@
-import {DestroyRef, Directive, ElementRef, EventEmitter, Input, OnInit, Output, inject} from '@angular/core';
+import {DestroyRef, Directive, ElementRef, OnInit, inject, input, output} from '@angular/core';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {AbstractControl, NgModel} from '@angular/forms';
 import {WINDOW} from '../window/window.provider';
@@ -16,11 +16,11 @@ import {fromEvent, startWith} from 'rxjs';
 	exportAs: 'obInputClear',
 })
 export class ObInputClearDirective implements OnInit {
-	@Input('obInputClear') control: AbstractControl | HTMLInputElement | NgModel;
-	@Input() focusOnClear = true;
-	@Input() datePickerRef: MatDatepicker<unknown>;
+	readonly control = input<AbstractControl | HTMLInputElement | NgModel>(undefined, {alias: 'obInputClear'});
+	readonly focusOnClear = input(true);
+	readonly datePickerRef = input<MatDatepicker<unknown>>(undefined);
 	// eslint-disable-next-line @angular-eslint/no-output-on-prefix
-	@Output() readonly onClear = new EventEmitter<MouseEvent>();
+	readonly onClear = output<MouseEvent>();
 	cssClass = true;
 
 	private readonly element = inject(ElementRef);
@@ -44,7 +44,7 @@ export class ObInputClearDirective implements OnInit {
 		this.clearDatePicker();
 		this.clearInputField();
 		this.setFocus();
-		this.onClear.next($event);
+		this.onClear.emit($event);
 	}
 
 	private checkControlType(): void {
@@ -59,32 +59,32 @@ export class ObInputClearDirective implements OnInit {
 	}
 
 	private clearDatePicker(): void {
-		if (this.datePickerRef) {
-			this.datePickerRef.select(undefined);
+		const datePickerRef = this.datePickerRef();
+		if (datePickerRef) {
+			datePickerRef.select(undefined);
 		}
 	}
 
 	private subscribeToInputValueChange(): void {
-		if (this.control instanceof AbstractControl) {
-			this.control.valueChanges
-				.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value))
+		const control = this.control();
+		if (control instanceof AbstractControl) {
+			control.valueChanges.pipe(takeUntilDestroyed(this.destroyRef), startWith(control.value)).subscribe(value => {
+				this.handleParentClass(value);
+			});
+		}
+
+		if (control instanceof NgModel) {
+			control.control.valueChanges
+				.pipe(takeUntilDestroyed(this.destroyRef), startWith(control.value))
 				.subscribe(value => {
 					this.handleParentClass(value);
 				});
 		}
 
-		if (this.control instanceof NgModel) {
-			this.control.control.valueChanges
-				.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value))
-				.subscribe(value => {
-					this.handleParentClass(value);
-				});
-		}
-
-		if (this.control instanceof HTMLInputElement) {
-			fromEvent(this.control, 'keyup')
-				.pipe(takeUntilDestroyed(this.destroyRef), startWith(this.control.value))
-				.subscribe(() => this.handleParentClass(this.control.value));
+		if (control instanceof HTMLInputElement) {
+			fromEvent(control, 'keyup')
+				.pipe(takeUntilDestroyed(this.destroyRef), startWith(control.value))
+				.subscribe(() => this.handleParentClass(this.control().value));
 		}
 	}
 
@@ -95,32 +95,36 @@ export class ObInputClearDirective implements OnInit {
 	}
 
 	private clearReactiveForm(): void {
-		if (this.control instanceof AbstractControl) {
-			this.control.patchValue(null);
+		const control = this.control();
+		if (control instanceof AbstractControl) {
+			control.patchValue(null);
 		}
 	}
 
 	private clearTemplateDrivenForm(): void {
-		if (this.control instanceof NgModel) {
-			this.control.control.patchValue(null);
+		const control = this.control();
+		if (control instanceof NgModel) {
+			control.control.patchValue(null);
 		}
 	}
 
 	private clearHtmlInput(): void {
-		if (this.control instanceof HTMLInputElement) {
-			this.control.value = '';
+		const control = this.control();
+		if (control instanceof HTMLInputElement) {
+			control.value = '';
 		}
 	}
 
 	private isInvalidControlType(): boolean {
 		return this.validControlTypes
-			.map(validControlType => !(this.control instanceof validControlType))
+			.map(validControlType => !(this.control() instanceof validControlType))
 			.reduce((previous, current) => previous && current);
 	}
 
 	private setFocus(): void {
-		if (this.control instanceof HTMLInputElement && this.focusOnClear) {
-			this.control.focus();
+		const control = this.control();
+		if (control instanceof HTMLInputElement && this.focusOnClear()) {
+			control.focus();
 		}
 	}
 
