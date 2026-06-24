@@ -3,12 +3,10 @@ import {
 	AfterViewInit,
 	Component,
 	ElementRef,
-	EventEmitter,
 	Injector,
 	Input,
 	OnChanges,
 	OnDestroy,
-	Output,
 	Signal,
 	ViewEncapsulation,
 	booleanAttribute,
@@ -16,6 +14,7 @@ import {
 	contentChildren,
 	inject,
 	input,
+	output,
 } from '@angular/core';
 import {
 	ControlValueAccessor,
@@ -80,15 +79,13 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 	withErrorMessages = input(false, {transform: booleanAttribute});
 	@Input() inputLabelKey = 'i18n.oblique.search.title';
 	@Input() noResultKey = 'i18n.oblique.search.no-results';
-	@Input() autocompleteOptions: (ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[] = [];
-	@Input() filterRegexFlag = 'gi';
-	@Input() highlightCssClass = 'ob-highlight-text';
-	@Input() optionIconPosition: OptionLabelIconPosition = 'end';
+	readonly autocompleteOptions = input<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>([]);
+	readonly filterRegexFlag = input('gi');
+	readonly highlightCssClass = input('ob-highlight-text');
+	readonly optionIconPosition = input<OptionLabelIconPosition>('end');
 	displayWith = input<(value: any) => string>(value => value);
 
-	@Output() readonly selectedOptionChange: EventEmitter<ObIAutocompleteInputOption<T>> = new EventEmitter<
-		ObIAutocompleteInputOption<T>
-	>();
+	readonly selectedOptionChange = output<ObIAutocompleteInputOption<T>>();
 	autocompleteInputControl = new FormControl<T | string>('', {updateOn: 'change'});
 	filteredOptions$: Observable<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>;
 	hasGroupOptions = false;
@@ -193,8 +190,8 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 			debounceTime(200),
 			map(searchValue => this.getStringValue(searchValue)),
 			map((searchValue: string) => {
-				if (this.autocompleteOptions.length > 0) {
-					const toFilter = JSON.parse(JSON.stringify(this.autocompleteOptions));
+				if (this.autocompleteOptions().length > 0) {
+					const toFilter = JSON.parse(JSON.stringify(this.autocompleteOptions()));
 					return this.filterAutocomplete(searchValue || '', toFilter);
 				}
 				return [];
@@ -209,7 +206,7 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 		this.hasGroupOptions = this.isGroupOption(optionsToFilter[0]);
 		const searchText = filterValue.toLowerCase();
 		if (this.autocompleteInputControl.value === '') {
-			return this.autocompleteOptions;
+			return this.autocompleteOptions();
 		}
 		return this.hasGroupOptions
 			? this.filterGroups(optionsToFilter as ObIAutocompleteInputOptionGroup<T>[], searchText)
@@ -228,7 +225,7 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 	private filterOptions(options: ObIAutocompleteInputOption<T>[], searchText: string): ObIAutocompleteInputOption<T>[] {
 		const escapedSearchText = this.obAutocompleteTextToFindService.escapeRegexCharacter(searchText);
 		return options.filter((option: ObIAutocompleteInputOption<T>) =>
-			new RegExp(escapedSearchText, this.filterRegexFlag).test(this.getStringValue(option.label))
+			new RegExp(escapedSearchText, this.filterRegexFlag()).test(this.getStringValue(option.label))
 		);
 	}
 
