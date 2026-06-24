@@ -9,12 +9,12 @@ import {
 	Input,
 	OnChanges,
 	OnDestroy,
-	QueryList,
 	Renderer2,
-	ViewChild,
-	ViewChildren,
 	ViewEncapsulation,
 	inject,
+	input,
+	viewChild,
+	viewChildren,
 } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
@@ -40,8 +40,8 @@ import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.
 	styleUrls: ['./column-layout.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {
-		'[class.ob-no-layout]': 'noLayout',
-		'[class.ob-wider-columns]': 'wider',
+		'[class.ob-no-layout]': 'noLayout()',
+		'[class.ob-wider-columns]': 'wider()',
 		class: 'ob-column-layout',
 	},
 	exportAs: 'obColumnLayout',
@@ -51,13 +51,13 @@ import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.
 export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy, OnChanges {
 	@Input() left: ObTColumnState = 'OPENED';
 	@Input() right: ObTColumnState = 'OPENED';
-	@Input() wider = false;
-	@Input() noLayout = false;
+	readonly wider = input(false);
+	readonly noLayout = input(false);
 	toggleLeftIcon$: Observable<ObIToggleDirection>;
 	toggleRightIcon$: Observable<ObIToggleDirection>;
-	@ViewChild('columnLeft') private readonly columnLeft: ObColumnPanelDirective;
-	@ViewChild('columnRight') private readonly columnRight: ObColumnPanelDirective;
-	@ViewChildren('columnToggle') private readonly toggles: QueryList<ElementRef>;
+	private readonly columnLeft = viewChild<ObColumnPanelDirective>('columnLeft');
+	private readonly columnRight = viewChild<ObColumnPanelDirective>('columnRight');
+	private readonly toggles = viewChildren<ElementRef>('columnToggle');
 	private readonly el = inject<ElementRef<HTMLElement>>(ElementRef);
 	private readonly renderer = inject(Renderer2);
 	private readonly changeDetectorRef = inject(ChangeDetectorRef);
@@ -91,19 +91,21 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 	}
 
 	setupToggleIcons(): void {
-		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft, 'left', 'right');
-		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight, 'right', 'left');
+		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft(), 'left', 'right');
+		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight(), 'right', 'left');
 	}
 
 	toggleLeft(): void {
-		if (this.columnLeft) {
-			this.columnLeft.toggle();
+		const columnLeft = this.columnLeft();
+		if (columnLeft) {
+			columnLeft.toggle();
 		}
 	}
 
 	toggleRight(): void {
-		if (this.columnRight) {
-			this.columnRight.toggle();
+		const columnRight = this.columnRight();
+		if (columnRight) {
+			columnRight.toggle();
 		}
 	}
 
@@ -158,7 +160,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		const top = Math.min(Math.max(0, dimension.headerHeight - dimension.top), dimension.windowHeight - dimension.top);
 		const bottom = Math.min(dimension.windowHeight - dimension.top, dimension.height);
 		if (bottom > top) {
-			this.toggles.forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', `${(bottom + top) / 2}px`));
+			this.toggles().forEach(toggle => this.renderer.setStyle(toggle.nativeElement, 'top', `${(bottom + top) / 2}px`));
 		}
 	}
 }
