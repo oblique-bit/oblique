@@ -1,8 +1,7 @@
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, OutputEmitterRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObTopControlComponent} from './top-control.component';
-import {Observable} from 'rxjs';
 
 describe('ObTopControlComponent', () => {
 	let fixture: ComponentFixture<ObTopControlComponent>;
@@ -32,7 +31,7 @@ describe('ObTopControlComponent', () => {
 
 	describe('scrollToTop', () => {
 		it('should be an observable', () => {
-			expect(topControlComponent.scrollToTop instanceof Observable).toBe(true);
+			expect(topControlComponent.scrollToTop instanceof OutputEmitterRef).toBe(true);
 		});
 		it('should emit when scrollTop is called', () => {
 			jest.spyOn(topControlComponent.scrollToTop, 'emit');

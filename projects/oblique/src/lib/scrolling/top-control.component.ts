@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, output} from '@angular/core';
 import {TranslateModule} from '@ngx-translate/core';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -11,7 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 	host: {class: 'ob-top-control'},
 })
 export class ObTopControlComponent {
-	@Output() readonly scrollToTop = new EventEmitter<void>();
+	readonly scrollToTop = output();
 
 	public scrollTop(): void {
 		this.scrollToTop.emit();
