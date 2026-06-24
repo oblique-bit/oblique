@@ -1,4 +1,4 @@
-import {Directive, Input, OnChanges} from '@angular/core';
+import {Directive, Input, OnChanges, input} from '@angular/core';
 
 @Directive({
 	selector: '[obDisableLink]',
@@ -14,8 +14,7 @@ export class ObDisableLinkDirective implements OnChanges {
 			this.condition = condition;
 		}
 	}
-	@Input()
-	href: string;
+	readonly href = input<string>(undefined);
 
 	protected disabled: string;
 	protected role: string;
@@ -25,7 +24,7 @@ export class ObDisableLinkDirective implements OnChanges {
 	private condition = true;
 
 	ngOnChanges(): void {
-		this.originalHref ??= this.href;
+		this.originalHref ??= this.href();
 
 		if (this.condition) {
 			this.disabled = 'true';

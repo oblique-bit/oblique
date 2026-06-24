@@ -1,5 +1,5 @@
 @if (loginUrl) {
-	@if (!isLoggedIn) {
+	@if (!isLoggedIn()) {
 		<a
 			[href]="loginUrl"
 			id="ob-service-navigation-authentication-link-to-login"
@@ -14,7 +14,7 @@
 		</a>
 	}
 
-	@if (isLoggedIn) {
+	@if (isLoggedIn()) {
 		<button
 			type="button"
 			role="link"

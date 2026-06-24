@@ -1,13 +1,13 @@
 import {
 	Component,
-	ContentChildren,
 	Input,
 	OnInit,
 	Output,
-	QueryList,
 	TemplateRef,
 	ViewEncapsulation,
+	contentChildren,
 	inject,
+	input,
 } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationService} from './service-navigation.service';
@@ -48,27 +48,27 @@ import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.mode
 	host: {class: 'ob-service-navigation'},
 })
 export class ObServiceNavigationComponent implements OnInit {
-	@Input() profileLinks: ObIServiceNavigationLink[] = [];
-	@Input() infoDescription: string;
-	@Input() infoHelpText: string;
-	@Input() infoLinks: ObIServiceNavigationLink[] = [];
-	@Input() infoContactText: string;
-	@Input() infoContact: ObIServiceNavigationContact;
-	@Input() maxFavoriteApplications = 8;
-	@Input() environment: ObEPamsEnvironment;
-	@Input() rootUrl: string;
+	readonly profileLinks = input<ObIServiceNavigationLink[]>([]);
+	readonly infoDescription = input<string>(undefined);
+	readonly infoHelpText = input<string>(undefined);
+	readonly infoLinks = input<ObIServiceNavigationLink[]>([]);
+	readonly infoContactText = input<string>(undefined);
+	readonly infoContact = input<ObIServiceNavigationContact>(undefined);
+	readonly maxFavoriteApplications = input(8);
+	readonly environment = input<ObEPamsEnvironment>(undefined);
+	readonly rootUrl = input<string>(undefined);
 	@Input()
 	set returnUrl(newReturnUrl) {
 		this.headerControlsService.setReturnUrl(newReturnUrl);
 	}
-	@Input() pamsAppId: string | undefined = undefined;
-	@Input() displayMessage = false;
-	@Input() useInfoBackend = false;
-	@Input() displayInfo = false;
-	@Input() displayApplications = false;
-	@Input() displayProfile = false;
-	@Input() displayAuthentication = false;
-	@Input() displayLanguages = true;
+	readonly pamsAppId = input<string | undefined>(undefined);
+	readonly displayMessage = input(false);
+	readonly useInfoBackend = input(false);
+	readonly displayInfo = input(false);
+	readonly displayApplications = input(false);
+	readonly displayProfile = input(false);
+	readonly displayAuthentication = input(false);
+	readonly displayLanguages = input(true);
 	@Input()
 	set handleLogout(newHandleLogout: boolean) {
 		this.headerControlsService.setHandleLogout(newHandleLogout);
@@ -80,7 +80,7 @@ export class ObServiceNavigationComponent implements OnInit {
 	@Output()
 	readonly loginState: Observable<ObLoginState>;
 	@Output() readonly logoutTriggered;
-	@ContentChildren('customWidgetTemplate') customWidgetTemplate: QueryList<TemplateRef<unknown>>;
+	readonly customWidgetTemplate = contentChildren<TemplateRef<unknown>>('customWidgetTemplate');
 	readonly loginUrl$: Observable<string>;
 	readonly loginState$: Observable<ObLoginState>;
 	readonly userName$: Observable<string>;
@@ -113,9 +113,9 @@ export class ObServiceNavigationComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.headerControlsService.setUpRootUrls(this.environment, this.rootUrl);
-		this.headerControlsService.setPamsAppId(this.pamsAppId);
-		this.headerControlsService.setFavoriteApplicationsCount(this.maxFavoriteApplications);
+		this.headerControlsService.setUpRootUrls(this.environment(), this.rootUrl());
+		this.headerControlsService.setPamsAppId(this.pamsAppId());
+		this.headerControlsService.setFavoriteApplicationsCount(this.maxFavoriteApplications());
 	}
 
 	changeLanguage(language: string): void {

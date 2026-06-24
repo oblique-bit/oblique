@@ -2,7 +2,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
 import {Component} from '@angular/core';
-import {By} from '@angular/platform-browser';
 import {BehaviorSubject, Observable, firstValueFrom, of} from 'rxjs';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationProfileHarness} from './profile/service-navigation-profile.harness';
@@ -20,7 +19,14 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 @Component({
 	standalone: false,
-	template: `<ob-service-navigation>
+	template: `<ob-service-navigation
+		[displayApplications]="displayApplications"
+		[displayInfo]="displayInfo"
+		[displayProfile]="displayProfile"
+		[displayMessage]="displayMessage"
+		[displayAuthentication]="displayAuthentication"
+		[displayLanguages]="displayLanguages"
+	>
 		<ng-template #customWidgetTemplate>
 			<button type="button">first button</button>
 		</ng-template>
@@ -29,7 +35,14 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 		</ng-template>
 	</ob-service-navigation>`,
 })
-class CustomControlsTestComponent {}
+class CustomControlsTestComponent {
+	displayApplications = true;
+	displayInfo = true;
+	displayProfile = true;
+	displayMessage = true;
+	displayAuthentication = true;
+	displayLanguages = true;
+}
 
 describe('ObServiceNavigationComponent', () => {
 	let component: ObServiceNavigationComponent;
@@ -118,12 +131,13 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('rootUrl', () => {
 			it('should be initialized to undefined', () => {
-				expect(component.rootUrl).toBeUndefined();
+				expect(component.rootUrl()).toBeUndefined();
 			});
 
 			describe('with "http://root-url/"', () => {
 				beforeEach(() => {
-					component.rootUrl = 'http://root-url/';
+					fixture.componentRef.setInput('rootUrl', 'http://root-url/');
+					fixture.componentRef.changeDetectorRef.detectChanges();
 					component.ngOnInit();
 				});
 
@@ -139,12 +153,13 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('environment', () => {
 			it('should be initialized to undefined', () => {
-				expect(component.environment).toBeUndefined();
+				expect(component.environment()).toBeUndefined();
 			});
 
 			describe('with "ObEPamsEnvironment.TEST"', () => {
 				beforeEach(() => {
-					component.environment = ObEPamsEnvironment.TEST;
+					fixture.componentRef.setInput('environment', ObEPamsEnvironment.TEST);
+					fixture.componentRef.changeDetectorRef.detectChanges();
 					component.ngOnInit();
 				});
 
@@ -180,25 +195,25 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('profileLinks', () => {
 			it('should be initialized to an empty array', () => {
-				expect(component.profileLinks).toEqual([]);
+				expect(component.profileLinks()).toEqual([]);
 			});
 		});
 
 		describe('infoLinks', () => {
 			it('should be initialized to an empty array', () => {
-				expect(component.infoLinks).toEqual([]);
+				expect(component.infoLinks()).toEqual([]);
 			});
 		});
 
 		describe('useInfoBackend', () => {
 			it('should be initialized to false', () => {
-				expect(component.useInfoBackend).toEqual(false);
+				expect(component.useInfoBackend()).toEqual(false);
 			});
 		});
 
 		describe('infoContact', () => {
 			it('should be initialized to undefined', () => {
-				expect(component.infoContact).toBeUndefined();
+				expect(component.infoContact()).toBeUndefined();
 			});
 		});
 
@@ -221,7 +236,8 @@ describe('ObServiceNavigationComponent', () => {
 		describe('setPamsAppId setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = 'randomAppId';
-				component.pamsAppId = expectedResult;
+				fixture.componentRef.setInput('pamsAppId', expectedResult);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				component.ngOnInit();
 				expect(mockServiceNavigationService.setPamsAppId).toHaveBeenCalledWith(expectedResult);
 			});
@@ -230,7 +246,8 @@ describe('ObServiceNavigationComponent', () => {
 		describe('setFavoriteApplicationsCount setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = 7;
-				component.maxFavoriteApplications = expectedResult;
+				fixture.componentRef.setInput('maxFavoriteApplications', expectedResult);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				component.ngOnInit();
 				expect(mockServiceNavigationService.setFavoriteApplicationsCount).toHaveBeenCalledWith(expectedResult);
 			});
@@ -238,7 +255,7 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('maxFavoriteApplications', () => {
 			it('should be initialized to 8', () => {
-				expect(component.maxFavoriteApplications).toBe(8);
+				expect(component.maxFavoriteApplications()).toBe(8);
 			});
 		});
 
@@ -351,7 +368,7 @@ describe('ObServiceNavigationComponent', () => {
 				{property: 'displayLanguages', value: true},
 			])('$property', ({property, value}) => {
 				it(`should be initialized to "${value}"`, () => {
-					expect(component[property]).toEqual(value);
+					expect(component[property]()).toEqual(value);
 				});
 			});
 
@@ -365,12 +382,12 @@ describe('ObServiceNavigationComponent', () => {
 			])('loginState "$loginState" and all widgets', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
-					component.displayMessage = true;
-					component.displayProfile = true;
-					component.displayInfo = true;
-					component.displayApplications = true;
-					component.displayAuthentication = true;
-					component.displayLanguages = true;
+					fixture.componentRef.setInput('displayMessage', true);
+					fixture.componentRef.setInput('displayProfile', true);
+					fixture.componentRef.setInput('displayInfo', true);
+					fixture.componentRef.setInput('displayApplications', true);
+					fixture.componentRef.setInput('displayAuthentication', true);
+					fixture.componentRef.setInput('displayLanguages', true);
 					mockLoginState.next(loginState as ObLoginState);
 					fixture.detectChanges();
 					children = await harness.getListItemElements();
@@ -418,15 +435,6 @@ describe('ObServiceNavigationComponent', () => {
 			])('loginState "$loginState" and all widgets', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
-					const customComponent = customControlFixture.debugElement.query(
-						By.directive(ObServiceNavigationComponent)
-					).componentInstance;
-					customComponent.displayApplications = true;
-					customComponent.displayInfo = true;
-					customComponent.displayProfile = true;
-					customComponent.displayMessage = true;
-					customComponent.displayAuthentication = true;
-					customComponent.displayLanguages = true;
 					mockLoginState.next(loginState as ObLoginState);
 					fixture.detectChanges();
 					children = await harness.getListItemElements();
@@ -487,8 +495,8 @@ describe('ObServiceNavigationComponent', () => {
 				let infoElement: TestElement;
 
 				beforeEach(async () => {
-					component.useInfoBackend = true;
-					component.displayInfo = true;
+					fixture.componentRef.setInput('useInfoBackend', true);
+					fixture.componentRef.setInput('displayInfo', true);
 					fixture.componentRef.changeDetectorRef.detectChanges();
 					infoElement = await harness.getInfoElement();
 				});
@@ -520,13 +528,17 @@ describe('ObServiceNavigationComponent', () => {
 				let infoElement: TestElement;
 
 				beforeEach(async () => {
-					component.useInfoBackend = false;
-					component.displayInfo = true;
-					component.infoDescription = 'input description text';
-					component.infoContactText = 'input contact text';
-					component.infoHelpText = 'input help text';
-					component.infoLinks = [{url: 'input url link1', label: 'input label link1'}];
-					component.infoContact = {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'};
+					fixture.componentRef.setInput('useInfoBackend', false);
+					fixture.componentRef.setInput('displayInfo', true);
+					fixture.componentRef.setInput('infoDescription', 'input description text');
+					fixture.componentRef.setInput('infoContactText', 'input contact text');
+					fixture.componentRef.setInput('infoHelpText', 'input help text');
+					fixture.componentRef.setInput('infoLinks', [{url: 'input url link1', label: 'input label link1'}]);
+					fixture.componentRef.setInput('infoContact', {
+						formUrl: 'input contactUrl',
+						email: 'input email',
+						phone: 'input phone',
+					});
 					fixture.componentRef.changeDetectorRef.detectChanges();
 					infoElement = await harness.getInfoElement();
 				});
@@ -612,12 +624,12 @@ describe('ObServiceNavigationComponent', () => {
 			])('loginState "$loginState"', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
-					component.displayApplications = true;
-					component.displayInfo = true;
-					component.displayProfile = true;
-					component.displayMessage = true;
-					component.displayAuthentication = true;
-					component.displayLanguages = true;
+					fixture.componentRef.setInput('displayApplications', true);
+					fixture.componentRef.setInput('displayInfo', true);
+					fixture.componentRef.setInput('displayProfile', true);
+					fixture.componentRef.setInput('displayMessage', true);
+					fixture.componentRef.setInput('displayAuthentication', true);
+					fixture.componentRef.setInput('displayLanguages', true);
 					mockLoginState.next(loginState as ObLoginState);
 					fixture.detectChanges();
 					children = await harness.getListItemElements();

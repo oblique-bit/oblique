@@ -74,7 +74,7 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 		});
 
 		test('that it is initialized to an empty array', () => {
-			expect(component.languages).toEqual([]);
+			expect(component.languages()).toEqual([]);
 		});
 
 		test('that it has 0 buttons', () => {
@@ -87,12 +87,12 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 
 		describe('With some languages', () => {
 			beforeEach(() => {
-				component.languages = [
+				fixture.componentRef.setInput('languages', [
 					{code: 'de', label: 'Deutsch'},
 					{code: 'fr', label: 'Français'},
 					{code: 'it', label: 'Italiano'},
 					{code: 'en', label: 'English'},
-				];
+				]);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
@@ -109,9 +109,9 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 			describe.each(['', 'de', 'fr', 'it', 'en'])('with "%s" as language', language => {
 				beforeEach(() => {
 					if (language) {
-						component.language = language;
+						fixture.componentRef.setInput('language', language);
+						fixture.componentRef.changeDetectorRef.detectChanges();
 					}
-					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 
 				describe.each([

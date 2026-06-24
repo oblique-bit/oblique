@@ -83,7 +83,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.header');
 				});
 
 				describe('links', () => {
@@ -142,7 +142,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.contact.header');
 				});
 
 				describe('links', () => {
@@ -192,7 +192,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.contact.header');
 				});
 
 				describe('links', () => {
@@ -242,7 +242,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.contact.header');
 				});
 
 				describe('links', () => {
@@ -299,7 +299,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.contact.header');
 				});
 
 				describe('links', () => {

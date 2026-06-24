@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewEncapsulation, input, output} from '@angular/core';
 
 @Component({
 	selector: 'ob-service-navigation-authentication',
@@ -10,8 +10,8 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 })
 export class ObServiceNavigationAuthenticationComponent {
 	@Input() loginUrl = '';
-	@Input() isLoggedIn = false;
-	@Output() readonly logoutClicked = new EventEmitter();
+	readonly isLoggedIn = input(false);
+	readonly logoutClicked = output();
 
 	logoutClick(): void {
 		this.logoutClicked.emit();

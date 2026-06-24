@@ -54,7 +54,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 	describe('userName', () => {
 		it('should be initialized to an empty string', () => {
-			expect(component.userName).toBe('');
+			expect(component.userName()).toBe('');
 		});
 
 		describe.each([
@@ -62,12 +62,13 @@ describe('ObServiceNavigationProfileComponent', () => {
 			{name: 'John Doe', header: 'John Doe'},
 		])('set to "$name"', ({name, header}) => {
 			it(`should show "${header}" as header`, async () => {
-				component.userName = name;
+				fixture.componentRef.setInput('userName', name);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				await openPopover();
 				const section = fixture.debugElement.query(
 					By.directive(ObServiceNavigationPopoverSectionComponent)
 				).componentInstance;
-				expect(section.header).toBe(header);
+				expect(section.header()).toBe(header);
 			});
 		});
 	});
@@ -82,7 +83,8 @@ describe('ObServiceNavigationProfileComponent', () => {
 			{url: 'Http://settings-url', label: 'settings url', isInternalLink: true},
 		])('set to "%s"', url => {
 			it(`should show "${url.url}" as link`, async () => {
-				component.profileUrls = [url];
+				fixture.componentRef.setInput('profileUrls', [url]);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				await openPopover();
 				const section = fixture.debugElement.query(
 					By.directive(ObServiceNavigationPopoverSectionComponent)
@@ -167,7 +169,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.profile.links.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.profile.links.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.profile.links.header');
 				});
 
 				describe('links', () => {
@@ -243,7 +245,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 			beforeEach(async () => {
 				await openPopover();
-				component.profileUrls = fakeProfileUrls;
+				fixture.componentRef.setInput('profileUrls', fakeProfileUrls);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				await fixture.whenStable();
 			});
@@ -278,7 +280,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 					describe('header', () => {
 						it('should have "i18n.oblique.service-navigation.profile.guest" as text', () => {
-							expect(section.header).toBe('i18n.oblique.service-navigation.profile.guest');
+							expect(section.header()).toBe('i18n.oblique.service-navigation.profile.guest');
 						});
 					});
 

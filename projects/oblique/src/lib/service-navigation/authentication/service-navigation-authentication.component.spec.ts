@@ -46,12 +46,12 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 
 		describe('isLoggedIn', () => {
 			it('should be initialized to "false"', () => {
-				expect(component.isLoggedIn).toBe(false);
+				expect(component.isLoggedIn()).toBe(false);
 			});
 
 			describe('set to "true"', () => {
 				beforeEach(() => {
-					component.isLoggedIn = true;
+					fixture.componentRef.setInput('isLoggedIn', true);
 					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 
@@ -119,7 +119,7 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 
 			describe('set to "false"', () => {
 				beforeEach(() => {
-					component.isLoggedIn = false;
+					fixture.componentRef.setInput('isLoggedIn', false);
 					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 
