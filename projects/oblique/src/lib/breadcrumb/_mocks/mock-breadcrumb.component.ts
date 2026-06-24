@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {ObBreadcrumbConfig, ObIBreadcrumb} from '../breadcrumb.model';
@@ -17,13 +17,13 @@ export class ObMockBreadcrumbComponent {
 	};
 
 	/* eslint-disable @angular-eslint/no-input-rename	*/
-	@Input('maxWidth') maxWidthInput?: string;
-	@Input('parameterSeparator') separatorInput?: string;
-	@Input('beautifyUrls') beautifyUrlsInput?: boolean;
+	readonly maxWidthInput = input<string>(undefined, {alias: 'maxWidth'});
+	readonly separatorInput = input<string>(undefined, {alias: 'parameterSeparator'});
+	readonly beautifyUrlsInput = input<boolean>(undefined, {alias: 'beautifyUrls'});
 	/* eslint-enable @angular-eslint/no-input-rename	*/
 
 	get maxWidth(): string {
-		return this.maxWidthInput ?? ObMockBreadcrumbComponent.DEFAULTS.maxWidth;
+		return this.maxWidthInput() ?? ObMockBreadcrumbComponent.DEFAULTS.maxWidth;
 	}
 
 	showTooltip(event: HTMLElement): boolean {
