@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, DestroyRef, Input, inject} from '@angular/core';
+import {AfterViewInit, Component, DestroyRef, inject, input} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -25,7 +25,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 	exportAs: 'obNestedForm',
 })
 export class ObNestedFormComponent implements ControlValueAccessor, Validator, AfterViewInit {
-	@Input() nestedForm: UntypedFormGroup;
+	readonly nestedForm = input<UntypedFormGroup>(undefined);
 	private onTouched: () => void;
 	private readonly parent = inject(ObParentFormDirective);
 	private readonly destroyRef = inject(DestroyRef);
@@ -35,12 +35,14 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 	}
 
 	ngAfterViewInit(): void {
-		this.parent.submit$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.nestedForm.markAllAsTouched());
-		this.parent.reset$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.nestedForm.reset());
+		this.parent.submit$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.nestedForm().markAllAsTouched());
+		this.parent.reset$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.nestedForm().reset());
 	}
 
 	registerOnChange(fn: (value: unknown) => void): void {
-		this.nestedForm.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(val => fn(val));
+		this.nestedForm()
+			.valueChanges.pipe(takeUntilDestroyed(this.destroyRef))
+			.subscribe(val => fn(val));
 	}
 
 	registerOnTouched(fn: () => void): void {
@@ -49,23 +51,24 @@ export class ObNestedFormComponent implements ControlValueAccessor, Validator, A
 
 	setDisabledState(isDisabled: boolean): void {
 		if (isDisabled) {
-			this.nestedForm.disable({emitEvent: false});
+			this.nestedForm().disable({emitEvent: false});
 		} else {
-			this.nestedForm.enable({emitEvent: false});
+			this.nestedForm().enable({emitEvent: false});
 		}
 	}
 
 	writeValue(obj: {field1?: string; field2?: string}): void {
 		if (obj) {
-			this.nestedForm.patchValue(obj, {emitEvent: false});
+			this.nestedForm().patchValue(obj, {emitEvent: false});
 		} else {
-			this.nestedForm.reset();
+			this.nestedForm().reset();
 		}
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	validate(control: AbstractControl): ValidationErrors | null {
-		return this.nestedForm.valid ? null : this.formatErrors(this.nestedForm);
+		const nestedForm = this.nestedForm();
+		return nestedForm.valid ? null : this.formatErrors(nestedForm);
 	}
 
 	private formatErrors(form: UntypedFormGroup): ValidationErrors {

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -23,7 +23,7 @@ import {
 	exportAs: 'obNestedForm',
 })
 export class ObMockNestedFormComponent implements ControlValueAccessor, Validator {
-	@Input() nestedForm: UntypedFormGroup;
+	readonly nestedForm = input<UntypedFormGroup>(undefined);
 
 	registerOnChange(fn: any): void {}
 
