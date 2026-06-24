@@ -163,18 +163,19 @@ describe('ObMasterLayoutComponent', () => {
 		});
 
 		it('should have a navigation property', () => {
-			expect(component.navigation).toEqual([]);
+			expect(component.navigation()).toEqual([]);
 		});
 
 		describe('skiplinks', () => {
 			it('should defaults to empty array', () => {
-				expect(component.skipLinks).toEqual([]);
+				expect(component.skipLinks()).toEqual([]);
 			});
 
 			describe('with a custom skip link', () => {
 				beforeEach(() => {
-					component.skipLinks = [{label: 'test', url: ''}];
-					component.navigation = [];
+					fixture.componentRef.setInput('skipLinks', [{label: 'test', url: ''}]);
+					fixture.componentRef.setInput('navigation', []);
+					fixture.detectChanges();
 				});
 
 				it('should add accessKey 1 if there is no navigation', () => {
@@ -192,19 +193,19 @@ describe('ObMasterLayoutComponent', () => {
 						{text: 'null', value: null},
 						{text: 'undefined', value: undefined},
 					])('should add accessKey 1 with an $text navigation', ({value}) => {
-						component.navigation = value;
+						fixture.componentRef.setInput('navigation', value);
 						component.ngOnInit();
 						expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 1}]);
 					});
 					it('should add accessKey 2 with non-empty navigation', () => {
-						component.navigation = [{label: 'test', url: ''}];
+						fixture.componentRef.setInput('navigation', [{label: 'test', url: ''}]);
 						component.ngOnInit();
 						expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 2}]);
 					});
 
 					describe('when the navigation is set', () => {
 						beforeEach(() => {
-							component.navigation = [{label: 'test', url: ''}];
+							fixture.componentRef.setInput('navigation', [{label: 'test', url: ''}]);
 							fixture.componentRef.changeDetectorRef.detectChanges();
 						});
 						it('should add accessKey 2', () => {

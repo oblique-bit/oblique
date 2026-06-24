@@ -3,14 +3,14 @@
 		@if (child.isExternal) {
 			<a
 				class="ob-master-layout-navigation-link"
-				[icon]="hideExternalLinks ? 'none' : 'right'"
+				[icon]="hideExternalLinks() ? 'none' : 'right'"
 				[id]="child.id"
 				[href]="child.url"
 				[target]="child.sameTarget ? '' : undefined"
 				[isExternalLink]="child.isExternal"
 				[rel]="child.sameTarget ? '' : undefined"
 				[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
-				(click)="obMasterLayoutNavigationItem.closeSubMenu()"
+				(click)="obMasterLayoutNavigationItem().closeSubMenu()"
 				(focus)="toggleFocus(child.id)"
 				(focusout)="toggleFocus(child.id)"
 			>
@@ -23,15 +23,15 @@
 			<a
 				class="ob-master-layout-navigation-link"
 				[id]="child.id"
-				[routerLink]="routerLinkBase + '/' + child.url | obLocalize"
-				[routerLinkActive]="activeClass"
+				[routerLink]="routerLinkBase() + '/' + child.url | obLocalize"
+				[routerLinkActive]="activeClass()"
 				[fragment]="child.fragment"
 				[isExternalLink]="child.isExternal"
-				[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
+				[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions()"
 				[queryParams]="child.queryParams"
 				[attr.aria-current]="link.active ? 'page' : undefined"
 				[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
-				(click)="obMasterLayoutNavigationItem.closeSubMenu()"
+				(click)="obMasterLayoutNavigationItem().closeSubMenu()"
 				(focus)="toggleFocus(child.id)"
 				(focusout)="toggleFocus(child.id)"
 			>
@@ -57,18 +57,18 @@
 		/>
 	}
 } @else {
-	@if (child.children && showChildren) {
+	@if (child.children && showChildren()) {
 		@for (grandchild of child.children; track grandchild) {
 			<ob-master-layout-navigation-sub-menu-item
 				class="descendants"
-				[activeClass]="activeClass"
+				[activeClass]="activeClass()"
 				[child]="grandchild"
 				[currentParent]="currentParent"
 				[id]="'ob-descendants-' + link.id"
 				[link]="child"
-				[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
-				[routerLinkActiveOptions]="routerLinkActiveOptions"
-				[routerLinkBase]="routerLinkBase + '/' + child.url"
+				[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem()"
+				[routerLinkActiveOptions]="routerLinkActiveOptions()"
+				[routerLinkBase]="routerLinkBase() + '/' + child.url"
 				(changeCurrentParent)="goToChildren($event)"
 			/>
 		}

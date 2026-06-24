@@ -1,4 +1,4 @@
-import {Component, QueryList, TemplateRef} from '@angular/core';
+import {Component, TemplateRef, contentChildren} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -12,5 +12,5 @@ import {Component, QueryList, TemplateRef} from '@angular/core';
 export class ObMockMasterLayoutFooterComponent {
 	home = '';
 	isCustom = true;
-	readonly templates: QueryList<TemplateRef<any>>;
+	readonly templates = contentChildren<TemplateRef<HTMLLinkElement>>('obFooterLink');
 }

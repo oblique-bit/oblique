@@ -5,7 +5,7 @@
 	<footer>
 		<div class="ob-footer-links">
 			<ul class="ob-footer-item ob-footer-item-links" [attr.aria-label]="'i18n.oblique.footer.links.title' | translate">
-				@for (template of templates; track template) {
+				@for (template of templates(); track template) {
 					<li>
 						<ng-container [ngTemplateOutlet]="template" />
 					</li>

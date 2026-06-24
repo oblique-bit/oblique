@@ -66,7 +66,7 @@ describe(ObAriaMenuButtonDirective.name, () => {
 		});
 
 		it('should have a target property', () => {
-			expect(directive.target).toBe('test');
+			expect(directive.target()).toBe('test');
 		});
 
 		it('should have an active property', () => {

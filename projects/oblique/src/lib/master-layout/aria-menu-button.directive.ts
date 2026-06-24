@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnInit, inject} from '@angular/core';
+import {Directive, ElementRef, OnInit, inject, input} from '@angular/core';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {obOutsideFilter} from '../global-events/outside-filter';
 import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation/master-layout-navigation-sub-menu-filter';
@@ -11,13 +11,13 @@ import {isNotKeyboardEventOnButton} from '../utilities';
 		'(click)': 'onClick($event)',
 		'(keyup.enter)': 'onClick($event)',
 		'(keyup.escape)': 'onEscape()',
-		'[attr.aria-controls]': 'target',
+		'[attr.aria-controls]': 'target()',
 		'[attr.aria-expanded]': 'active',
 	},
 	exportAs: 'obAriaMenuButton',
 })
 export class ObAriaMenuButtonDirective implements OnInit {
-	@Input('obAriaMenuButton') target: string;
+	readonly target = input<string>(undefined, {alias: 'obAriaMenuButton'});
 	active = false;
 	private readonly globalEvents = inject(ObGlobalEventsService);
 	private readonly element = inject(ElementRef);

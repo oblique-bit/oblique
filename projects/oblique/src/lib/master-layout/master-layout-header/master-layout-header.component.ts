@@ -1,17 +1,15 @@
 import {
 	Component,
-	ContentChild,
-	ContentChildren,
 	ElementRef,
-	EventEmitter,
-	Input,
 	OnDestroy,
-	Output,
-	QueryList,
 	TemplateRef,
-	ViewChildren,
 	ViewEncapsulation,
+	contentChild,
+	contentChildren,
 	inject,
+	input,
+	output,
+	viewChildren,
 } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {filter, map, takeUntil} from 'rxjs/operators';
@@ -48,14 +46,14 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 	banner: ObIBanner;
 	serviceNavigationConfig: ObIServiceNavigationConfig;
 	hasMainNavigation: boolean;
-	@Input() navigation: ObINavigationLink[];
-	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
+	readonly navigation = input<ObINavigationLink[]>(undefined);
+	readonly navigationChanged = output<ObINavigationLink[]>();
 	isSmall: boolean;
-	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
-	@ContentChildren('obHeaderControl') readonly templates: QueryList<TemplateRef<unknown>>;
-	@ContentChildren('obHeaderMobileControl') readonly mobileTemplates: QueryList<TemplateRef<unknown>>;
-	@ViewChildren('headerControl') readonly headerControl: QueryList<ElementRef>;
-	@ViewChildren('headerMobileControl') readonly headerMobileControl: QueryList<ElementRef>;
+	readonly obLogo = contentChild<TemplateRef<unknown>>('obHeaderLogo');
+	readonly templates = contentChildren<TemplateRef<unknown>>('obHeaderControl');
+	readonly mobileTemplates = contentChildren<TemplateRef<unknown>>('obHeaderMobileControl');
+	readonly headerControl = viewChildren<ElementRef>('headerControl');
+	readonly headerMobileControl = viewChildren<ElementRef>('headerMobileControl');
 	readonly pamsConfiguration = inject<ObIPamsConfiguration>(OB_PAMS_CONFIGURATION, {optional: true});
 	private readonly unsubscribe = new Subject<void>();
 	private readonly masterLayout = inject(ObMasterLayoutService);

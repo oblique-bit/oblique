@@ -1,28 +1,28 @@
 @if (!hide) {
-	@if (isChildWithoutUrl) {
+	@if (isChildWithoutUrl()) {
 		<button
-			[id]="'ob-master-layout-navigation-go-to-children-button-' + link.id"
+			[id]="'ob-master-layout-navigation-go-to-children-button-' + link().id"
 			type="button"
 			mat-button
 			obButton="tertiary"
-			[disableRipple]="disableRipple"
+			[disableRipple]="disableRipple()"
 			class="ob-master-layout-navigation-go-to-children-button ob-master-layout-navigation-go-to-children-button-without-url"
 			(click)="goToChildren()"
 		>
 			<mat-icon iconPositionEnd matSuffix svgIcon="arrow_right" />
-			<span>{{ link.label | translate }}</span>
+			<span>{{ link().label | translate }}</span>
 		</button>
 	} @else {
 		<button
-			[id]="'ob-master-layout-navigation-go-to-children-button-' + link.id"
+			[id]="'ob-master-layout-navigation-go-to-children-button-' + link().id"
 			type="button"
 			mat-icon-button
 			[matTooltip]="
 				'i18n.oblique.master-layout.navigation.link.go-to-children'
-					| translate: { parentLabel: (link.label | translate) }
+					| translate: { parentLabel: (link().label | translate) }
 			"
 			obButton="tertiary"
-			[disableRipple]="disableRipple"
+			[disableRipple]="disableRipple()"
 			class="ob-master-layout-navigation-go-to-children-button"
 			(click)="goToChildren()"
 		>

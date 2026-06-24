@@ -1,13 +1,4 @@
-import {
-	Component,
-	ContentChildren,
-	Input,
-	OnDestroy,
-	QueryList,
-	TemplateRef,
-	ViewEncapsulation,
-	inject,
-} from '@angular/core';
+import {Component, Input, OnDestroy, TemplateRef, ViewEncapsulation, contentChildren, inject} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutService} from '../master-layout.service';
@@ -26,7 +17,7 @@ export class ObMasterLayoutFooterComponent implements OnDestroy {
 	home: string;
 	isCustom: boolean;
 
-	@ContentChildren('obFooterLink') readonly templates: QueryList<TemplateRef<HTMLLinkElement>>;
+	readonly templates = contentChildren<TemplateRef<HTMLLinkElement>>('obFooterLink');
 	@Input() version?: string;
 
 	private readonly masterLayout = inject(ObMasterLayoutService);
