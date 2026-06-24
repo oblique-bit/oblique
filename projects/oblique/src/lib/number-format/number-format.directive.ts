@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnInit, inject} from '@angular/core';
+import {Directive, ElementRef, OnInit, inject, input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {distinctUntilChanged} from 'rxjs/operators';
 
@@ -12,8 +12,8 @@ import {distinctUntilChanged} from 'rxjs/operators';
 	exportAs: 'obNumberFormat',
 })
 export class ObNumberFormatDirective implements OnInit {
-	@Input() decimals = 2;
-	@Input() persistent = true;
+	readonly decimals = input(2);
+	readonly persistent = input(true);
 	private changed = false;
 	private focused = false;
 	private readonly ngControl = inject(NgControl);
@@ -21,8 +21,8 @@ export class ObNumberFormatDirective implements OnInit {
 
 	onBlur(): void {
 		this.focused = false;
-		const value = ObNumberFormatDirective.toFixedNumber(this.ngControl.value, this.decimals);
-		if (this.persistent) {
+		const value = ObNumberFormatDirective.toFixedNumber(this.ngControl.value, this.decimals());
+		if (this.persistent()) {
 			this.changed = true;
 			this.ngControl.control.setValue(value);
 		} else {
@@ -32,7 +32,7 @@ export class ObNumberFormatDirective implements OnInit {
 
 	onFocus(): void {
 		this.focused = true;
-		if (!this.persistent) {
+		if (!this.persistent()) {
 			this.ngControl.reset(this.ngControl.value);
 		}
 	}
@@ -57,8 +57,8 @@ export class ObNumberFormatDirective implements OnInit {
 	}
 
 	private setValue(value: number): void {
-		const fixedValue = ObNumberFormatDirective.toFixedNumber(value, this.decimals);
-		if (this.persistent) {
+		const fixedValue = ObNumberFormatDirective.toFixedNumber(value, this.decimals());
+		if (this.persistent()) {
 			this.changed = true;
 			this.ngControl.reset(fixedValue);
 		} else {

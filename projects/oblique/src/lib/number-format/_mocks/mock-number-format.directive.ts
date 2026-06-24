@@ -1,4 +1,4 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -8,8 +8,8 @@ import {Directive, Input} from '@angular/core';
 	exportAs: 'obNumberFormat',
 })
 export class ObMockNumberFormatDirective {
-	@Input() decimals = 2;
-	@Input() persistent = true;
+	readonly decimals = input(2);
+	readonly persistent = input(true);
 
 	onBlur(): void {}
 
