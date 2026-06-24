@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, output} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -9,5 +9,6 @@ import {Component} from '@angular/core';
 	exportAs: 'obTopControl',
 })
 export class ObMockTopControlComponent {
+	readonly scrollToTop = output();
 	public scrollTop(): void {}
 }
