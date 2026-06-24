@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {Component, Input, OnInit, inject} from '@angular/core';
+import {Component, OnInit, inject, input} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ActivatedRoute, NavigationEnd, Router, RouterModule} from '@angular/router';
@@ -27,23 +27,23 @@ import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcru
 })
 export class ObBreadcrumbComponent implements OnInit {
 	/* eslint-disable @angular-eslint/no-input-rename */
-	@Input('maxWidth') maxWidthInput?: string;
-	@Input('parameterSeparator') separatorInput?: string;
-	@Input('beautifyUrls') beautifyUrlsInput?: boolean;
+	readonly maxWidthInput = input<string>(undefined, {alias: 'maxWidth'});
+	readonly separatorInput = input<string>(undefined, {alias: 'parameterSeparator'});
+	readonly beautifyUrlsInput = input<boolean>(undefined, {alias: 'beautifyUrls'});
 	/* eslint-enable @angular-eslint/no-input-rename */
 
 	breadcrumbs$: Observable<ObIBreadcrumb[]>;
 
 	get maxWidth(): string | undefined {
-		return this.maxWidthInput ?? this.config?.maxWidth;
+		return this.maxWidthInput() ?? this.config?.maxWidth;
 	}
 
 	private get separator(): string {
-		return this.separatorInput ?? this.config?.parameterSeparator ?? '';
+		return this.separatorInput() ?? this.config?.parameterSeparator ?? '';
 	}
 
 	private get beautifyUrls(): boolean {
-		return this.beautifyUrlsInput ?? this.config?.beautifyUrls ?? false;
+		return this.beautifyUrlsInput() ?? this.config?.beautifyUrls ?? false;
 	}
 	private readonly router = inject(Router);
 	private readonly route = inject(ActivatedRoute);
