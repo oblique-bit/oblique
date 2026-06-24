@@ -1,4 +1,4 @@
-import {AfterViewInit, ContentChild, Directive, Input, OnDestroy, inject} from '@angular/core';
+import {AfterViewInit, ContentChild, Directive, OnDestroy, inject, input} from '@angular/core';
 import {MatInput} from '@angular/material/input';
 import {FormGroupDirective, NgForm, ValidationErrors} from '@angular/forms';
 import {MatSelect} from '@angular/material/select';
@@ -12,7 +12,7 @@ import {takeUntil} from 'rxjs/operators';
 export class ObErrorMessagesDirective implements AfterViewInit, OnDestroy {
 	@ContentChild(MatInput) matInput;
 	@ContentChild(MatSelect) matSelect;
-	@Input() prefix?: string;
+	readonly prefix = input<string>(undefined);
 	readonly errors$: Observable<ValidationErrors>;
 	private readonly errors = new Subject<ValidationErrors>();
 	private readonly form: NgForm | FormGroupDirective;
