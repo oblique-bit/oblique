@@ -1,16 +1,6 @@
 import {SelectionModel} from '@angular/cdk/collections';
 
-import {
-	Component,
-	EventEmitter,
-	Input,
-	OnDestroy,
-	OnInit,
-	Output,
-	ViewChild,
-	ViewEncapsulation,
-	inject,
-} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject, output} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
@@ -48,7 +38,7 @@ import {ObFileUploadService} from '../file-upload.service';
 	exportAs: 'obFileInfo',
 })
 export class ObFileInfoComponent implements OnInit, OnDestroy {
-	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
+	readonly uploadEvent = output<ObIUploadEvent>();
 	@Input() deleteUrl: string;
 	@Input() getUploadedFilesUrl: string;
 	@ViewChild(MatSort) set sorting(sort: MatSort) {

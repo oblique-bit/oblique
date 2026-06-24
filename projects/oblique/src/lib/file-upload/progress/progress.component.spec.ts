@@ -65,7 +65,8 @@ describe('ObProgressComponent', () => {
 
 	describe('without singleRequest', () => {
 		beforeEach(() => {
-			component.singleRequest = false;
+			fixture.componentRef.setInput('singleRequest', false);
+			fixture.componentRef.changeDetectorRef.detectChanges();
 		});
 
 		describe('files', () => {
@@ -170,7 +171,8 @@ describe('ObProgressComponent', () => {
 
 					describe('with cancelConfirmation set to true', () => {
 						beforeEach(() => {
-							component.cancelConfirmation = true;
+							fixture.componentRef.setInput('cancelConfirmation', true);
+							fixture.detectChanges();
 						});
 
 						it('should ask for confirmation', () => {
@@ -256,7 +258,8 @@ describe('ObProgressComponent', () => {
 
 					describe('with cancelConfirmation set to false', () => {
 						beforeEach(() => {
-							component.cancelConfirmation = false;
+							fixture.componentRef.setInput('cancelConfirmation', false);
+							fixture.detectChanges();
 						});
 
 						it('should not ask for confirmation', () => {
@@ -463,7 +466,8 @@ describe('ObProgressComponent', () => {
 
 	describe('with combine progressbar', () => {
 		beforeEach(() => {
-			component.singleRequest = true;
+			fixture.componentRef.setInput('singleRequest', true);
+			fixture.componentRef.changeDetectorRef.detectChanges();
 		});
 
 		describe('files', () => {

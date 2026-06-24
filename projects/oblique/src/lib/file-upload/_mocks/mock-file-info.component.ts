@@ -1,5 +1,5 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewChild, ViewEncapsulation, output} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
@@ -16,7 +16,7 @@ import {ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 	exportAs: 'obFileInfo',
 })
 export class ObMockFileInfoComponent {
-	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
+	readonly uploadEvent = output<ObIUploadEvent>();
 	@Input() allowTableInfo = true;
 	@Input() getUploadedFilesUrl: string;
 	@Input() deleteUrl: string;

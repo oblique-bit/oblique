@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {ObIUploadEvent} from '../file-upload.model';
 
 /**
@@ -11,12 +11,12 @@ import {ObIUploadEvent} from '../file-upload.model';
 	exportAs: 'obFileUpload',
 })
 export class ObMockFileUploadComponent {
-	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
-	@Input() accept: string[];
-	@Input() multiple = true;
-	@Input() singleRequest = true;
-	@Input() uploadUrl: string;
-	@Input() maxFileSize = 5;
+	readonly uploadEvent = output<ObIUploadEvent>();
+	readonly accept = input<string[]>(undefined);
+	readonly multiple = input(true);
+	readonly singleRequest = input(true);
+	readonly uploadUrl = input<string>(undefined);
+	readonly maxFileSize = input(5);
 	showLoadingBox = false;
 	files: File[];
 
