@@ -60,7 +60,7 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 	private getErrorTranslation(key: string, errors: ValidationErrors): string {
 		const obliqueKey = `i18n.validation.${key}`;
 		const obliqueTranslation = this.pipe.transform(obliqueKey, errors[key]);
-		const customPrefix = this.control.prefix ?? this.obMatErrorPrefix ?? null;
+		const customPrefix = this.control.prefix() ?? this.obMatErrorPrefix ?? null;
 		return customPrefix === null || obliqueTranslation !== obliqueKey
 			? obliqueTranslation
 			: this.pipe.transform(`${customPrefix}${key}`, errors[key]);
