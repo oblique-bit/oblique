@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Directive, EventEmitter, OnInit, Output, input} from '@angular/core';
 import {ObTColumnState} from './column-layout.model';
 
 @Directive({
@@ -10,12 +10,12 @@ import {ObTColumnState} from './column-layout.model';
 	exportAs: 'obColumnPanel',
 })
 export class ObColumnPanelDirective implements OnInit {
-	@Input() initialState: ObTColumnState;
-	public collapsed = false;
+	readonly initialState = input<ObTColumnState>(undefined);
+	public collapsed = this.initialState() === 'CLOSED';
 	@Output() readonly toggled = new EventEmitter<boolean>();
 
 	ngOnInit(): void {
-		this.collapsed = this.initialState === 'CLOSED';
+		this.collapsed = this.initialState() === 'CLOSED';
 	}
 
 	toggle(): void {

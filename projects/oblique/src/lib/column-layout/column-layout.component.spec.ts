@@ -103,7 +103,7 @@ describe(ObColumnLayoutComponent.name, () => {
 			{property: 'noLayout', className: 'ob-no-layout'},
 		])('property $property', ({property, className}) => {
 			test('that it initializes to false', () => {
-				expect(component[property]).toBe(false);
+				expect(component[property]()).toBe(false);
 			});
 
 			test(`that "${className}" class is added when true`, () => {

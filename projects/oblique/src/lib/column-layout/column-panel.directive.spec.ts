@@ -1,10 +1,14 @@
+import {TestBed} from '@angular/core/testing';
 import {ObColumnPanelDirective} from './column-panel.directive';
 
 describe('ObColumnPanelDirective', () => {
 	let directive: ObColumnPanelDirective;
 
 	beforeEach(() => {
-		directive = new ObColumnPanelDirective();
+		TestBed.configureTestingModule({
+			providers: [ObColumnPanelDirective],
+		});
+		directive = TestBed.inject(ObColumnPanelDirective);
 	});
 
 	it('should create an instance', () => {
