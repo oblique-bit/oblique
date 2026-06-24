@@ -1,20 +1,28 @@
-import {TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {first} from 'rxjs/operators';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerService} from './spinner.service';
 import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerRegistry} from './spinner.registry';
+import {provideObliqueTestingConfiguration} from '../utilities';
 
 describe(ObSpinnerService.name, () => {
+	let fixture: ComponentFixture<ObSpinnerComponent>;
+	let spinner: ObSpinnerComponent;
 	let service: ObSpinnerService;
 	let registry: ObSpinnerRegistry;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [ObSpinnerService, ObSpinnerRegistry],
+			imports: [ObSpinnerComponent],
+			providers: [ObSpinnerService, ObSpinnerRegistry, provideObliqueTestingConfiguration()],
 		});
 		service = TestBed.inject(ObSpinnerService);
 		registry = TestBed.inject(ObSpinnerRegistry);
+
+		fixture = TestBed.createComponent(ObSpinnerComponent);
+		spinner = fixture.componentInstance;
+		fixture.detectChanges();
 	});
 
 	afterEach(() => {
@@ -40,14 +48,14 @@ describe(ObSpinnerService.name, () => {
 	});
 
 	it('should not log a warning if activated with a registered channel', () => {
-		const spinner = {channel: 'registered'} as ObSpinnerComponent;
+		fixture.componentRef.setInput('channel', 'registered');
 		registry.register(spinner);
 		service.activate('registered');
 		expect(console.warn).not.toHaveBeenCalled();
 	});
 
 	it('should not log a warning if deactivated with a registered channel', () => {
-		const spinner = {channel: 'registered'} as ObSpinnerComponent;
+		fixture.componentRef.setInput('channel', 'registered');
 		registry.register(spinner);
 		service.deactivate('registered');
 		expect(console.warn).not.toHaveBeenCalled();

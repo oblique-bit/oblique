@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -9,7 +9,7 @@ import {Component, Input} from '@angular/core';
 	exportAs: 'obSpinner',
 })
 export class ObMockSpinnerComponent {
-	@Input() channel = '';
-	@Input() fixed = false;
+	readonly channel = input('');
+	readonly fixed = input(false);
 	$state = 'out';
 }
