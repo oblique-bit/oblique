@@ -1,4 +1,4 @@
-@if (isLoggedIn) {
+@if (isLoggedIn()) {
 	<!-- eslint-disable @angular-eslint/template/prefer-ngsrc -->
 	<button
 		type="button"
@@ -14,7 +14,7 @@
 	</button>
 } @else {
 	<a
-		[href]="applicationsUrl"
+		[href]="applicationsUrl()"
 		[isExternalLink]="false"
 		id="service-navigation-applications-link"
 		class="ob-widget"
@@ -61,7 +61,7 @@
 				obButton="secondary"
 				class="ob-all-services"
 				obContent
-				[href]="applicationsUrl + '?favoritesOnly=false'"
+				[href]="applicationsUrl() + '?favoritesOnly=false'"
 				[isExternalLink]="false"
 				>{{ "i18n.oblique.service-navigation.applications.link.label" | translate }}
 			</a>
@@ -99,7 +99,7 @@
 				obButton="secondary"
 				class="ob-all-services"
 				obContent
-				[href]="applicationsUrl + '?favoritesOnly=true'"
+				[href]="applicationsUrl() + '?favoritesOnly=true'"
 				[isExternalLink]="false"
 			>
 				{{ "i18n.oblique.service-navigation.applications.favorite.button" | translate }}

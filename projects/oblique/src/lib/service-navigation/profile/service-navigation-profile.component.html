@@ -15,8 +15,8 @@
 	<div id="ob-service-navigation-profile-popover-content" cdkTrapFocus cdkTrapFocusAutoCapture>
 		<h3 class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.profile.button" | translate }}</h3>
 		<ob-service-navigation-popover-section
-			[header]="userName || 'i18n.oblique.service-navigation.profile.guest' | translate"
-			[links]="profileUrls"
+			[header]="userName() || 'i18n.oblique.service-navigation.profile.guest' | translate"
+			[links]="profileUrls()"
 		/>
 		@if (links?.length > 0) {
 			<ob-service-navigation-popover-section

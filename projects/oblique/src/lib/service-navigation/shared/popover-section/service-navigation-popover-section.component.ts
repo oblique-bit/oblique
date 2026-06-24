@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewEncapsulation, input} from '@angular/core';
 import {ObISectionLink} from '../../service-navigation.model';
 
 @Component({
@@ -10,7 +10,7 @@ import {ObISectionLink} from '../../service-navigation.model';
 	host: {class: 'ob-service-navigation-popover-section'},
 })
 export class ObServiceNavigationPopoverSectionComponent {
-	@Input() header = '';
+	readonly header = input('');
 	@Input() links: ObISectionLink[] = [];
 	@Input() text = '';
 }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Output, ViewEncapsulation, input} from '@angular/core';
 import {ObILanguage} from '../service-navigation.model';
 
 @Component({
@@ -10,8 +10,8 @@ import {ObILanguage} from '../service-navigation.model';
 	host: {class: 'ob-service-navigation-languages'},
 })
 export class ObServiceNavigationLanguagesComponent {
-	@Input() language: string;
-	@Input() languages: ObILanguage[] = [];
+	readonly language = input<string>(undefined);
+	readonly languages = input<ObILanguage[]>([]);
 	@Output() readonly languageChange = new EventEmitter<string>();
 
 	chevron: 'chevron_down' | 'chevron_up' = 'chevron_down';

@@ -21,14 +21,14 @@
 		@if (links?.length > 0) {
 			<ob-service-navigation-popover-section
 				header="i18n.oblique.service-navigation.info.header"
-				[text]="helpText"
+				[text]="helpText()"
 				[links]="links"
 			/>
 		}
 		@if (contact?.email || contact?.phone || contact?.formUrl) {
 			<ob-service-navigation-popover-section
 				header="i18n.oblique.service-navigation.info.contact.header"
-				[text]="contactText"
+				[text]="contactText()"
 			>
 				<ul class="ob-service-navigation-info-links" obContent>
 					@for (link of contact | obContactToLinks; track $index) {

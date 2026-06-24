@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewEncapsulation, input} from '@angular/core';
 import {ObISectionLink, ObIServiceNavigationLink} from '../service-navigation.model';
 
 @Component({
@@ -10,7 +10,7 @@ import {ObISectionLink, ObIServiceNavigationLink} from '../service-navigation.mo
 	host: {class: 'ob-service-navigation-profile'},
 })
 export class ObServiceNavigationProfileComponent {
-	@Input() userName = '';
-	@Input() profileUrls: ObISectionLink[] = [];
+	readonly userName = input('');
+	readonly profileUrls = input<ObISectionLink[]>([]);
 	@Input() links: ObIServiceNavigationLink[] = [];
 }

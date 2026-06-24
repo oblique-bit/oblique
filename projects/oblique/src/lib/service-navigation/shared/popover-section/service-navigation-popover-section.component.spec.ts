@@ -59,7 +59,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 			});
 
 			it('should contain the header attribute', async () => {
-				component.header = 'Section title';
+				fixture.componentRef.setInput('header', 'Section title');
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				expect(await header.text()).toBe('Section title');
 			});

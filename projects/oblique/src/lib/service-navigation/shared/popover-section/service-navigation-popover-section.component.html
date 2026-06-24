@@ -2,7 +2,7 @@
 	<header class="ob-popover-header">
 		<ng-content select="[obHeaderPrefix]" />
 		<h4>
-			{{ header | translate }}
+			{{ header() | translate }}
 		</h4>
 	</header>
 	@if (text) {
