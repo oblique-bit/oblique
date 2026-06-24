@@ -2,17 +2,16 @@ import {
 	DOCUMENT,
 	Directive,
 	ElementRef,
-	EventEmitter,
 	InjectionToken,
 	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
-	Output,
 	Renderer2,
 	TemplateRef,
 	ViewContainerRef,
 	inject,
+	output,
 } from '@angular/core';
 import {Instance, Options, Placement, createPopper} from '@popperjs/core';
 import {race} from 'rxjs';
@@ -58,7 +57,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	@Input() toggleHandle: ObEToggleType;
 	@Input() closeOnlyOnToggle: boolean;
 	@Input() appendToBody = false;
-	@Output() readonly visibilityChange = new EventEmitter<boolean>();
+	readonly visibilityChange = output<boolean>();
 	idContent: string;
 	isExpanded = false;
 
