@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import {Directive, input} from '@angular/core';
 import {ValidationErrors} from '@angular/forms';
 
 /**
@@ -9,6 +9,8 @@ import {ValidationErrors} from '@angular/forms';
 	exportAs: 'obSchemaValidation',
 })
 export class ObMockSchemaValidationDirective {
+	readonly schema = input<any>(undefined, {alias: 'obSchemaValidation'});
+
 	isRequired(propertyName: string, path: string[]): boolean {
 		return true;
 	}
