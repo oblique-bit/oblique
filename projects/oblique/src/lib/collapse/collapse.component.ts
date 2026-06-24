@@ -3,14 +3,14 @@ import {
 	AfterViewInit,
 	Component,
 	ElementRef,
-	EventEmitter,
 	InjectionToken,
 	Input,
 	OnDestroy,
-	Output,
-	ViewChild,
 	ViewEncapsulation,
 	inject,
+	input,
+	output,
+	viewChild,
 } from '@angular/core';
 import {Subject, filter, fromEvent, merge, tap} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -36,12 +36,12 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterContentChecked {
 	static index = 0;
 	contentHeight = 0;
-	@ViewChild('collapseForToggle') collapseToggle: ElementRef<HTMLDivElement>;
-	@ViewChild('collapseContent') collapseContent!: ElementRef<HTMLDivElement>;
-	@Input() id = `collapse-${ObCollapseComponent.index}`;
+	readonly collapseToggle = viewChild<ElementRef<HTMLDivElement>>('collapseForToggle');
+	readonly collapseContent = viewChild.required<ElementRef<HTMLDivElement>>('collapseContent');
+	readonly id = input(`collapse-${ObCollapseComponent.index}`);
 	time: number;
 	@Input() iconPosition: 'left' | 'right' | 'justified' | 'none' = 'left';
-	@Output() readonly activeChange = new EventEmitter<boolean>();
+	readonly activeChange = output<boolean>();
 	private isActive = inject(OBLIQUE_COLLAPSE_ACTIVE, {optional: true});
 	private readonly unsubscribe = new Subject<void>();
 
@@ -79,8 +79,10 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterConte
 
 	ngAfterViewInit(): void {
 		merge(
-			fromEvent<KeyboardEvent>(this.collapseToggle.nativeElement, 'keyup').pipe(filter(event => event.key === 'Enter')),
-			fromEvent<KeyboardEvent>(this.collapseToggle.nativeElement, 'keydown').pipe(
+			fromEvent<KeyboardEvent>(this.collapseToggle().nativeElement, 'keyup').pipe(
+				filter(event => event.key === 'Enter')
+			),
+			fromEvent<KeyboardEvent>(this.collapseToggle().nativeElement, 'keydown').pipe(
 				filter(event => event.code === 'Space'),
 				tap(event => event.preventDefault()),
 				filter(event => !event.repeat)
@@ -111,7 +113,7 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterConte
 	private updateContentHeight(): void {
 		// collapseContent always has 1 child, because that's the content being projected. We actually need the scrollHeight of
 		// the projected content, not its wrapper
-		const scrollHeight = this.collapseContent?.nativeElement?.querySelector(':first-child')?.scrollHeight ?? 0;
+		const scrollHeight = this.collapseContent().nativeElement.querySelector(':first-child')?.scrollHeight ?? 0;
 		const height = this.isActive ? scrollHeight : 0;
 		if (this.contentHeight !== height) {
 			this.contentHeight = height;

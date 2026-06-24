@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input, input, output} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -11,8 +11,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class ObMockCollapseComponent {
 	static index = 0;
 	@Input() active: false;
-	@Input() id = `collapse-${ObMockCollapseComponent.index}`;
+	readonly id = input(`collapse-${ObMockCollapseComponent.index}`);
 	@Input() duration: 'slow' | 'fast' | number = 'slow';
 	@Input() iconPosition: 'left' | 'right' | 'justified' | 'none' = 'left';
-	@Output() readonly activeChange = new EventEmitter<boolean>();
+	readonly activeChange = output<boolean>();
 }
