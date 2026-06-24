@@ -1,4 +1,14 @@
-import {Component, Input, OnChanges, OnDestroy, SimpleChanges, ViewEncapsulation, inject, signal} from '@angular/core';
+import {
+	Component,
+	Input,
+	OnChanges,
+	OnDestroy,
+	SimpleChanges,
+	ViewEncapsulation,
+	inject,
+	input,
+	signal,
+} from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
@@ -38,13 +48,13 @@ export class ObNavTreeComponent implements OnChanges, OnDestroy {
 
 	formatter = signal<(item: ObNavTreeItemModel, filterPattern?: string) => string>(undefined);
 	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
-	@Input() items: ObNavTreeItemModel[] = [];
+	readonly items = input<ObNavTreeItemModel[]>([]);
 	@Input() prefix = 'nav-tree';
-	@Input() hasFilter = false;
+	readonly hasFilter = input(false);
 	@Input() filterPattern: string;
-	@Input() labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string;
-	@Input() treeAriaLabelledBy: string;
-	@Input() treeAriaLabel: string;
+	readonly labelFormatter = input<(item: ObNavTreeItemModel, filterPattern?: string) => string>(undefined);
+	readonly treeAriaLabelledBy = input<string>(undefined);
+	readonly treeAriaLabel = input<string>(undefined);
 	private readonly unsubscribe = new Subject<void>();
 	private readonly route = inject(ActivatedRoute);
 	private readonly translate = inject(TranslateService);
@@ -59,7 +69,7 @@ export class ObNavTreeComponent implements OnChanges, OnDestroy {
 
 	ngOnChanges(changes: SimpleChanges<ObNavTreeComponent>): void {
 		if (changes.labelFormatter) {
-			this.formatter.set(this.labelFormatter);
+			this.formatter.set(this.labelFormatter());
 		}
 	}
 
@@ -111,11 +121,11 @@ export class ObNavTreeComponent implements OnChanges, OnDestroy {
 
 	// Public API:
 	public collapseAll(): void {
-		this.changeCollapsed(this.items, true, true);
+		this.changeCollapsed(this.items(), true, true);
 	}
 
 	public expandAll(): void {
-		this.changeCollapsed(this.items, false, true);
+		this.changeCollapsed(this.items(), false, true);
 	}
 }
 

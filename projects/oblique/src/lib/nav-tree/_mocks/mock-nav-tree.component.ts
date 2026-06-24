@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, input} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {ObNavTreeItemModel} from '../nav-tree-item.model';
 
@@ -18,10 +18,13 @@ export class ObMockNavTreeComponent {
 		LABEL_FORMATTER: {},
 	};
 
-	@Input() items: ObNavTreeItemModel[] = [];
+	readonly items = input<ObNavTreeItemModel[]>([]);
 	@Input() prefix = 'nav-tree';
+	readonly hasFilter = input(false);
 	@Input() filterPattern: string;
-	@Input() labelFormatter: any;
+	readonly labelFormatter = input<(item: ObNavTreeItemModel, filterPattern?: string) => string>(undefined);
+	readonly treeAriaLabelledBy = input<string>(undefined);
+	readonly treeAriaLabel = input<string>(undefined);
 
 	@Input() patternMatcher(item: ObNavTreeItemModel, pattern = ''): boolean {
 		return true;

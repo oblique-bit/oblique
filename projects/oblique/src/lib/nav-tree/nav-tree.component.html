@@ -1,4 +1,4 @@
-@if (hasFilter) {
+@if (hasFilter()) {
 	<mat-form-field>
 		<mat-label>{{ "i18n.oblique.nav-tree.label.filter" | translate }}</mat-label>
 		<input type="text" matInput [(ngModel)]="filterPattern" />
@@ -113,8 +113,8 @@
 	#root
 	class="ob-nav-tree ob-nav-indent ob-nav-toggle ob-expanded"
 	role="tree"
-	[attr.aria-labelledby]="treeAriaLabelledBy"
-	[attr.aria-label]="treeAriaLabel"
+	[attr.aria-labelledby]="treeAriaLabelledBy()"
+	[attr.aria-label]="treeAriaLabel()"
 >
-	<ng-container *ngTemplateOutlet="itemList; context: { $implicit: items, isParentCollapsed: false }" />
+	<ng-container *ngTemplateOutlet="itemList; context: { $implicit: items(), isParentCollapsed: false }" />
 </ul>
