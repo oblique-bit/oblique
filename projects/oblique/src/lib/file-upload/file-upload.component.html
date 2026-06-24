@@ -1,17 +1,17 @@
 @if (!showLoadingBox) {
 	<ob-drop-zone
-		[accept]="accept"
-		[maxFileSize]="maxFileSize"
-		[maxFileAmount]="maxFileAmount"
-		[multiple]="multiple"
+		[accept]="accept()"
+		[maxFileSize]="maxFileSize()"
+		[maxFileAmount]="maxFileAmount()"
+		[multiple]="multiple()"
 		(uploadEvent)="processEvent($event)"
 	/>
 } @else {
 	<ob-progress
 		[files]="files"
-		[singleRequest]="singleRequest"
-		[uploadUrl]="uploadUrl"
-		[cancelConfirmation]="cancelConfirmation"
+		[singleRequest]="singleRequest()"
+		[uploadUrl]="uploadUrl()"
+		[cancelConfirmation]="cancelConfirmation()"
 		(uploadEvent)="processEvent($event)"
 	/>
 }

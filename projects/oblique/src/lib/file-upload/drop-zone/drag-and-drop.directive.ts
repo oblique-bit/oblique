@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, Output} from '@angular/core';
+import {Directive, output} from '@angular/core';
 
 @Directive({
 	selector: '[obDragDrop]',
@@ -10,7 +10,7 @@ import {Directive, EventEmitter, Output} from '@angular/core';
 	},
 })
 export class ObDragDropDirective {
-	@Output() readonly fileDropped = new EventEmitter<FileList>();
+	readonly fileDropped = output<FileList>();
 	protected isDragging = false;
 
 	public onDragOver(event: DragEvent): void {

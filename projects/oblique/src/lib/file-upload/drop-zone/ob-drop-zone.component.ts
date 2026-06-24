@@ -1,4 +1,14 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation, inject} from '@angular/core';
+import {
+	Component,
+	ElementRef,
+	EventEmitter,
+	Input,
+	Output,
+	ViewEncapsulation,
+	inject,
+	input,
+	viewChild,
+} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObEUploadEventType, ObIUploadEvent} from '../file-upload.model';
@@ -19,10 +29,10 @@ import {ObValidationService} from './validation.service';
 export class ObDropZoneComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() accept = ['*'];
-	@Input() maxFileSize = 5;
-	@Input() maxFileAmount = 0;
-	@Input() multiple = true;
-	@ViewChild('fileInput') private readonly fileInput: ElementRef<HTMLInputElement>;
+	readonly maxFileSize = input(5);
+	readonly maxFileAmount = input(0);
+	readonly multiple = input(true);
+	private readonly fileInput = viewChild<ElementRef<HTMLInputElement>>('fileInput');
 
 	private readonly validationService = inject(ObValidationService);
 
@@ -31,9 +41,9 @@ export class ObDropZoneComponent {
 		const files: File[] = this.validationService.filterInvalidFiles({
 			files: fileArray,
 			accept: this.accept,
-			maxSize: this.maxFileSize,
-			maxAmount: this.maxFileAmount,
-			multiple: this.multiple,
+			maxSize: this.maxFileSize(),
+			maxAmount: this.maxFileAmount(),
+			multiple: this.multiple(),
 		});
 		if (files.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.CHOSEN, files});
@@ -41,6 +51,6 @@ export class ObDropZoneComponent {
 		if (files.length !== fileArray.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileArray.filter(file => !files.includes(file))});
 		}
-		this.fileInput.nativeElement.value = null;
+		this.fileInput().nativeElement.value = null;
 	}
 }

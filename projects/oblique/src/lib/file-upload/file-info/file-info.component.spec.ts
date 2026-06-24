@@ -1,5 +1,5 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, OutputEmitterRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {By} from '@angular/platform-browser';
@@ -46,7 +46,7 @@ describe('ObFileInfoComponent', () => {
 	});
 
 	it('should have a uploadEvent EventEmitter', () => {
-		expect(component.uploadEvent instanceof EventEmitter).toBe(true);
+		expect(component.uploadEvent instanceof OutputEmitterRef).toBe(true);
 	});
 
 	it('should have a dataSource', () => {

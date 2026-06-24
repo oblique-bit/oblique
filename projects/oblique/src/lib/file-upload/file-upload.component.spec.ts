@@ -1,4 +1,4 @@
-import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, NO_ERRORS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, OutputEmitterRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObFileUploadComponent} from './file-upload.component';
 import {ObEUploadEventType, ObIUploadEvent} from './file-upload.model';
@@ -42,7 +42,7 @@ describe('ObFileUploadComponent', () => {
 	});
 
 	it('should have a uploadEvent EventEmitter', () => {
-		expect(component.uploadEvent instanceof EventEmitter).toBe(true);
+		expect(component.uploadEvent instanceof OutputEmitterRef).toBe(true);
 	});
 
 	describe('processEvent', () => {
@@ -52,7 +52,7 @@ describe('ObFileUploadComponent', () => {
 			describe('with no uploadUrl', () => {
 				let event: ObIUploadEvent;
 				beforeEach(done => {
-					component.uploadUrl = undefined;
+					fixture.componentRef.setInput('uploadUrl', undefined);
 					component.uploadEvent.subscribe(evt => {
 						event = evt;
 						done();
@@ -76,7 +76,7 @@ describe('ObFileUploadComponent', () => {
 			describe('with an uploadUrl', () => {
 				let event: ObIUploadEvent;
 				beforeEach(done => {
-					component.uploadUrl = 'some/path';
+					fixture.componentRef.setInput('uploadUrl', 'some/path');
 					component.uploadEvent.subscribe(evt => {
 						event = evt;
 						done();

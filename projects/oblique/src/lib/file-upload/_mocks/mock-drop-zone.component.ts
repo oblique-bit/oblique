@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, input} from '@angular/core';
 import {ObIUploadEvent} from '../file-upload.model';
 
 /**
@@ -13,8 +13,9 @@ import {ObIUploadEvent} from '../file-upload.model';
 export class ObMockDropZoneComponent {
 	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
 	@Input() accept = ['*'];
-	@Input() maxFileSize = 5;
-	@Input() multiple = true;
+	readonly maxFileSize = input(5);
+	readonly maxFileAmount = input(0);
+	readonly multiple = input(true);
 
 	addFiles(fileList: FileList): void {}
 }
