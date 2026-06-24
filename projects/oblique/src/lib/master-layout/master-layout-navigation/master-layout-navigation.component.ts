@@ -1,14 +1,13 @@
 import {
 	AfterViewInit,
 	Component,
-	EventEmitter,
 	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
-	Output,
 	ViewEncapsulation,
 	inject,
+	output,
 } from '@angular/core';
 import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
 import {filter, map, takeUntil} from 'rxjs/operators';
@@ -46,7 +45,7 @@ export class ObMasterLayoutNavigationComponent
 	hasOpenedMenu = false;
 	hideExternalLinks = true;
 	@Input() links: ObINavigationLink[] = [];
-	@Output() readonly linksChanged = new EventEmitter<ObINavigationLink[]>();
+	readonly linksChanged = output<ObINavigationLink[]>();
 	routerLinkActiveOptions: IsActiveMatchOptions = {
 		paths: 'subset',
 		queryParams: 'subset',

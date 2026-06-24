@@ -1,4 +1,14 @@
-import {Component, ElementRef, Input, QueryList, TemplateRef} from '@angular/core';
+import {
+	Component,
+	ElementRef,
+	QueryList,
+	TemplateRef,
+	contentChild,
+	contentChildren,
+	input,
+	output,
+	viewChild,
+} from '@angular/core';
 import {ObIDynamicSkipLink, ObINavigationLink, ObISkipLink} from '../master-layout.model';
 
 /**
@@ -13,8 +23,17 @@ import {ObIDynamicSkipLink, ObINavigationLink, ObISkipLink} from '../master-layo
 export class ObMockMasterLayoutComponent {
 	home = '';
 	url: string;
-	@Input() navigation: ObINavigationLink[] = [];
-	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
+	readonly navigation = input<ObINavigationLink[]>([]);
+	readonly skipLinks = input<ObISkipLink[] | ObIDynamicSkipLink[]>([]);
+	readonly version = input<string>(undefined);
+	readonly navigationChanged = output<ObINavigationLink[]>();
+	readonly obLogo = contentChild<TemplateRef<unknown>>('obHeaderLogo');
+	readonly headerControlTemplates = contentChildren<TemplateRef<unknown>>('obHeaderControl');
+	readonly headerMobileControlTemplates = contentChildren<TemplateRef<unknown>>('obHeaderMobileControl');
+	readonly footerLinkTemplates = contentChildren<TemplateRef<HTMLLinkElement>>('obFooterLink');
+	readonly offCanvasClose = viewChild('offCanvasClose', {read: ElementRef});
+	readonly main = viewChild<ElementRef<HTMLElement>>('main');
+	readonly wrapper = viewChild<ElementRef<HTMLElement>>('wrapper');
 	hasCover = true;
 	hasLayout = true;
 	isMenuOpened = true;
@@ -22,7 +41,4 @@ export class ObMockMasterLayoutComponent {
 	hasOffCanvas = true;
 	isScrolling = false;
 	isFooterSticky = false;
-	readonly headerControlTemplates: QueryList<TemplateRef<any>>;
-	readonly footerLinkTemplates: QueryList<TemplateRef<any>>;
-	readonly offCanvasClose: ElementRef<HTMLElement>;
 }

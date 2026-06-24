@@ -16,7 +16,7 @@
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
 		</li>
-		@if (!noNavigation && navigation?.length) {
+		@if (!noNavigation && navigation()?.length) {
 			<li>
 				<a
 					class="ob-accessible"
@@ -86,32 +86,32 @@
 	}
 
 	<ng-template #header>
-		<ob-master-layout-header [navigation]="navigation" (navigationChanged)="emitNavigation($event)">
+		<ob-master-layout-header [navigation]="navigation()" (navigationChanged)="emitNavigation($event)">
 			<ng-content select="[obHeader]" obHeader />
 			<ng-content select="[obHeaderAction]" obHeaderAction />
 			<ng-content select="[obHeaderTitle]" obHeaderTitle />
 			<ng-content select="[obNavigation]" obNavigation />
-			@for (template of headerControlTemplates; track template) {
+			@for (template of headerControlTemplates(); track template) {
 				<ng-template #obHeaderControl>
 					<ng-container [ngTemplateOutlet]="template" />
 				</ng-template>
 			}
-			@for (template of headerMobileControlTemplates; track template) {
+			@for (template of headerMobileControlTemplates(); track template) {
 				<ng-template #obHeaderMobileControl>
 					<ng-container [ngTemplateOutlet]="template" />
 				</ng-template>
 			}
 			<ng-template #obHeaderLogo>
-				<ng-container [ngTemplateOutlet]="obLogo || logo" />
+				<ng-container [ngTemplateOutlet]="obLogo() || logo" />
 			</ng-template>
 		</ob-master-layout-header>
 	</ng-template>
 
 	<ng-template #footer>
-		<ob-master-layout-footer [version]="version">
+		<ob-master-layout-footer [version]="version()">
 			<ng-content select="[obFooter]" obFooter />
 			<ng-content select="[obFooterInfo]" obFooterInfo />
-			@for (template of footerLinkTemplates; track template) {
+			@for (template of footerLinkTemplates(); track template) {
 				<ng-template #obFooterLink>
 					<ng-container [ngTemplateOutlet]="template" />
 				</ng-template>

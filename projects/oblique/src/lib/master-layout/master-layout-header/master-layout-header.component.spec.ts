@@ -265,6 +265,10 @@ describe('ObMasterLayoutHeaderComponent', () => {
 	});
 
 	describe('emitNavigation', () => {
+		beforeEach(() => {
+			globalSetup();
+		});
+
 		let emittedValue: ObINavigationLink[];
 		beforeEach(done => {
 			component.navigationChanged.subscribe(list => {

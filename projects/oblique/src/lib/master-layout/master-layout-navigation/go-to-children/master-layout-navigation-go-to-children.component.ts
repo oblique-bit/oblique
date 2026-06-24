@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation} from '@angular/core';
+import {Component, OnChanges, ViewEncapsulation, input, output} from '@angular/core';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -20,18 +20,18 @@ import {TranslateModule} from '@ngx-translate/core';
 })
 export class ObMasterLayoutNavigationGoToChildrenComponent implements OnChanges {
 	hide = false;
-	@Input() disableRipple = false;
-	@Input() isCurrentParent = false;
-	@Input() isChildWithoutUrl = false;
-	@Input() link: ObNavigationLink = new ObNavigationLink();
-	@Input() showChildren = true;
-	@Output() readonly changeCurrentParent: EventEmitter<ObNavigationLink> = new EventEmitter<ObNavigationLink>();
+	readonly disableRipple = input(false);
+	readonly isCurrentParent = input(false);
+	readonly isChildWithoutUrl = input(false);
+	readonly link = input<ObNavigationLink>(new ObNavigationLink());
+	readonly showChildren = input(true);
+	readonly changeCurrentParent = output<ObNavigationLink>();
 
 	goToChildren(): void {
-		this.changeCurrentParent.emit(this.link);
+		this.changeCurrentParent.emit(this.link());
 	}
 
 	ngOnChanges(): void {
-		this.hide = this.isCurrentParent || !this.link.children || !this.showChildren;
+		this.hide = this.isCurrentParent() || !this.link().children || !this.showChildren();
 	}
 }

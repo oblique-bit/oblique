@@ -127,7 +127,7 @@ describe(ObMasterLayoutNavigationSubMenuItemComponent.name, () => {
 				component.child = child;
 				component.currentParent = currentParent;
 				component.link = link;
-				component.showChildren = showChildren;
+				fixture.componentRef.setInput('showChildren', showChildren);
 				component.ngOnChanges();
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				await fixture.whenStable();

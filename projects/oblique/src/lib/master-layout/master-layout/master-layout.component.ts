@@ -1,24 +1,23 @@
 import {
 	ChangeDetectorRef,
 	Component,
-	ContentChild,
-	ContentChildren,
 	DOCUMENT,
 	DoCheck,
 	ElementRef,
-	EventEmitter,
 	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
-	Output,
-	QueryList,
 	SimpleChanges,
 	TemplateRef,
-	ViewChild,
 	ViewEncapsulation,
+	contentChild,
+	contentChildren,
 	inject,
+	input,
 	isDevMode,
+	output,
+	viewChild,
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
 import {delay, filter, map, skip, takeUntil, tap} from 'rxjs/operators';
@@ -72,22 +71,22 @@ export class ObMasterLayoutComponent
 	route = {path: '', params: undefined};
 	hasHighContrast = false;
 	readonly contentId = 'content';
-	@Input() navigation: ObINavigationLink[] = [];
-	@Input() skipLinks: ObISkipLink[] | ObIDynamicSkipLink[] = [];
+	readonly navigation = input<ObINavigationLink[]>([]);
+	readonly skipLinks = input<ObISkipLink[] | ObIDynamicSkipLink[]>([]);
 	@Input() collapseBreakpoint: ObICollapseBreakpoints;
-	@Input() version?: string;
-	@Output() readonly navigationChanged = new EventEmitter<ObINavigationLink[]>();
+	readonly version = input<string>(undefined);
+	readonly navigationChanged = output<ObINavigationLink[]>();
 	isLayoutCollapsed = false;
 	isLayoutExpanded = true;
 	isScrolling = false;
 	prefersReducedMotion = false;
-	@ContentChild('obHeaderLogo') readonly obLogo: TemplateRef<unknown>;
-	@ContentChildren('obHeaderControl') readonly headerControlTemplates: QueryList<TemplateRef<unknown>>;
-	@ContentChildren('obHeaderMobileControl') readonly headerMobileControlTemplates: QueryList<TemplateRef<unknown>>;
-	@ContentChildren('obFooterLink') readonly footerLinkTemplates: QueryList<TemplateRef<HTMLLinkElement>>;
-	@ViewChild('offCanvasClose', {read: ElementRef}) readonly offCanvasClose: ElementRef<HTMLElement>;
-	@ViewChild('main') readonly main: ElementRef<HTMLElement>;
-	@ViewChild('wrapper') readonly wrapper: ElementRef<HTMLElement>;
+	readonly obLogo = contentChild<TemplateRef<unknown>>('obHeaderLogo');
+	readonly headerControlTemplates = contentChildren<TemplateRef<unknown>>('obHeaderControl');
+	readonly headerMobileControlTemplates = contentChildren<TemplateRef<unknown>>('obHeaderMobileControl');
+	readonly footerLinkTemplates = contentChildren<TemplateRef<HTMLLinkElement>>('obFooterLink');
+	readonly offCanvasClose = viewChild('offCanvasClose', {read: ElementRef});
+	readonly main = viewChild<ElementRef<HTMLElement>>('main');
+	readonly wrapper = viewChild<ElementRef<HTMLElement>>('wrapper');
 	skipLinksInternal: ObIDynamicSkipLink[];
 	private readonly unsubscribeMediaQuery = new Subject<void>();
 	private navigationLength: number;
@@ -137,8 +136,9 @@ export class ObMasterLayoutComponent
 	}
 
 	ngDoCheck(): void {
-		if (this.navigation?.length !== this.navigationLength) {
-			this.navigationLength = this.navigation.length;
+		const navigation = this.navigation();
+		if (navigation?.length !== this.navigationLength) {
+			this.navigationLength = navigation.length;
 			this.masterLayout.navigation.refresh();
 			this.updateSkipLinks(!this.noNavigation);
 		}
@@ -243,8 +243,8 @@ export class ObMasterLayoutComponent
 	}
 
 	private updateSkipLinks(hasNavigation: boolean): void {
-		const staticSkipLinks = hasNavigation && this.navigation?.length ? 2 : 1;
-		this.skipLinksInternal = this.skipLinks.map((skipLink, index: number) => ({
+		const staticSkipLinks = hasNavigation && this.navigation()?.length ? 2 : 1;
+		this.skipLinksInternal = this.skipLinks().map((skipLink, index: number) => ({
 			...skipLink,
 			accessKey: index + staticSkipLinks,
 		}));
@@ -289,7 +289,9 @@ export class ObMasterLayoutComponent
 				filter(value => value),
 				delay(600) // duration of the open animation
 			)
-			.subscribe(() => this.offCanvasClose.nativeElement.focus());
+			.subscribe(() => {
+				this.offCanvasClose().nativeElement.focus();
+			});
 	}
 
 	private getElement(elementId: string): HTMLElement | null {

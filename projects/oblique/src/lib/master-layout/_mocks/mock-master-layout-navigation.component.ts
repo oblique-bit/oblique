@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, output} from '@angular/core';
 import {ObINavigationLink} from '../master-layout.module';
 
 /**
@@ -16,6 +16,7 @@ export class ObMockMasterLayoutNavigationComponent {
 	currentScroll = 0;
 	maxScroll = 0;
 	@Input() links: ObINavigationLink[] = [];
+	readonly linksChanged = output<ObINavigationLink[]>();
 	isScrollable = true;
 
 	isActive(url: string): boolean {

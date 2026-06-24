@@ -14,7 +14,7 @@
 					</aside>
 				}
 				<a class="ob-master-layout-logo" [routerLink]="home$ | async | obLocalize" tabindex="-1">
-					<ng-container [ngTemplateOutlet]="obLogo" />
+					<ng-container [ngTemplateOutlet]="obLogo()" />
 				</a>
 				<span class="ob-master-layout-brand-app-title">
 					<a [routerLink]="home$ | async | obLocalize" class="ob-master-layout-brand-link"
@@ -23,7 +23,7 @@
 				</span>
 			</div>
 			<ul class="ob-collapsed-layout">
-				@for (template of mobileTemplates; track template) {
+				@for (template of mobileTemplates(); track template) {
 					<li #headerMobileControl>
 						<ng-container [ngTemplateOutlet]="template" />
 					</li>
@@ -71,7 +71,7 @@
 			(loginState)="emitLoginState($event)"
 			(logoutTriggered)="emitLogoutUrl($event)"
 		>
-			@for (template of templates; track template) {
+			@for (template of templates(); track template) {
 				<ng-template #customWidgetTemplate>
 					<ng-container [ngTemplateOutlet]="template" />
 				</ng-template>
@@ -80,7 +80,7 @@
 	}
 </header>
 @if (hasMainNavigation) {
-	<ob-master-layout-navigation [links]="navigation" (linksChanged)="emitNavigation($event)">
+	<ob-master-layout-navigation [links]="navigation()" (linksChanged)="emitNavigation($event)">
 		<ng-content select="[obNavigation]" />
 	</ob-master-layout-navigation>
 }

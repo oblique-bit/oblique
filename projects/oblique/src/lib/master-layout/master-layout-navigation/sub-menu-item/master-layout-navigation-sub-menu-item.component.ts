@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, inject} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, ViewEncapsulation, inject, input, output} from '@angular/core';
 import {ObMasterLayoutNavigationItemDirective} from '../master-layout-navigation-item.directive';
 import {IsActiveMatchOptions} from '@angular/router';
 import {ObNavigationLink} from '../navigation-link.model';
@@ -18,16 +18,16 @@ import {ObNavigationLink} from '../navigation-link.model';
 export class ObMasterLayoutNavigationSubMenuItemComponent implements OnChanges {
 	@Input() column = false;
 	hasFocusedChild = false;
-	@Input() activeClass = '';
+	readonly activeClass = input('');
 	@Input() child: ObNavigationLink = new ObNavigationLink();
 	@Input() currentParent: ObNavigationLink = new ObNavigationLink();
-	@Input() hideExternalLinks = true;
+	readonly hideExternalLinks = input(true);
 	@Input() link: ObNavigationLink = new ObNavigationLink();
-	@Input() obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective;
-	@Input() routerLinkActiveOptions: IsActiveMatchOptions;
-	@Input() routerLinkBase: string;
-	@Input() showChildren = true;
-	@Output() readonly changeCurrentParent: EventEmitter<ObNavigationLink> = new EventEmitter<ObNavigationLink>();
+	readonly obMasterLayoutNavigationItem = input<ObMasterLayoutNavigationItemDirective>(undefined);
+	readonly routerLinkActiveOptions = input<IsActiveMatchOptions>(undefined);
+	readonly routerLinkBase = input<string>(undefined);
+	readonly showChildren = input(true);
+	readonly changeCurrentParent = output<ObNavigationLink>();
 
 	private readonly el = inject(ElementRef);
 
