@@ -123,19 +123,19 @@ describe(ObAutocompleteComponent.name, () => {
 			});
 
 			it('should have autocompleteOptions to be empty', () => {
-				expect(component.autocompleteOptions.length).toBe(0);
+				expect(component.autocompleteOptions().length).toBe(0);
 			});
 
 			it("should have filterRegex.flags to be 'gi'", () => {
-				expect(component.filterRegexFlag).toBe('gi');
+				expect(component.filterRegexFlag()).toBe('gi');
 			});
 
 			it("should highlightCssClass to be 'ob-highlight-text'", () => {
-				expect(component.highlightCssClass).toBe('ob-highlight-text');
+				expect(component.highlightCssClass()).toBe('ob-highlight-text');
 			});
 
 			it("should have optionIconPosition to be 'end'", () => {
-				expect(component.optionIconPosition).toBe('end');
+				expect(component.optionIconPosition()).toBe('end');
 			});
 
 			it("should have control with value ''", () => {
@@ -403,12 +403,13 @@ describe(ObAutocompleteComponent.name, () => {
 		describe('by setting or changing noResultKey', () => {
 			it("should have an mat-option with option label = 'i18n.oblique.search.no-results' if autocomplete is visible and filtered options list is empty", async () => {
 				component.noResultKey = 'i18n.oblique.search.no-results';
-				component.autocompleteOptions = [];
+				parentComponent.autocompleteOptions = [];
 				component.autocompleteInputControl.setValue('');
 				component.ngOnChanges();
 				autocompleteChangeDetectorRef.detectChanges();
 				await parentFixture.whenStable();
 				await obAutocompleteHarness.openAutocompletePanel();
+				parentFixture.detectChanges();
 				autocompleteChangeDetectorRef.detectChanges();
 				const options = await loader.getAllHarnesses(MatOptionHarness);
 				expect(await options[0].getText()).toBe('i18n.oblique.search.no-results');
@@ -416,7 +417,7 @@ describe(ObAutocompleteComponent.name, () => {
 
 			it("should not have an no-result mat-option if noResultKey = '' input is focused and filtered options list is empty", async () => {
 				component.noResultKey = '';
-				component.autocompleteOptions = [];
+				parentComponent.autocompleteOptions = [];
 				component.autocompleteInputControl.setValue('');
 				component.ngOnChanges();
 				autocompleteChangeDetectorRef.detectChanges();

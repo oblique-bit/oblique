@@ -75,13 +75,13 @@
 				<span
 					obOptionLabelIcon
 					[iconName]="option['iconName'] || ''"
-					[iconPosition]="optionIconPosition"
+					[iconPosition]="optionIconPosition()"
 					[ariaLabel]="option.ariaLabel"
 				>
 					<span
 						[innerHTML]="
 							displayWith()(option.label)
-								| obHighlightTextPipe: (searchText$ | async) : highlightCssClass : filterRegexFlag
+								| obHighlightTextPipe: (searchText$ | async) : highlightCssClass() : filterRegexFlag()
 						"
 					></span>
 				</span>
