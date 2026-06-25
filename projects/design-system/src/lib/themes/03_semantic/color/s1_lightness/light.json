@@ -2085,7 +2085,7 @@
             "transparent": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.basic.transparent}"
+                "$value": "#2E8FBF00"
               },
               "hover": {
                 "$extensions": {
