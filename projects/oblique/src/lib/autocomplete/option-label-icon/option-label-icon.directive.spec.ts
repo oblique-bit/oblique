@@ -9,6 +9,10 @@ import {CommonModule} from '@angular/common';
 import {OptionLabelIconPosition} from './../autocomplete.model';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 
+interface ObOptionLabelIconDirectivePrivate {
+	addIcon: (iconName: string, iconSpan: HTMLSpanElement, host: HTMLElement, position: OptionLabelIconPosition) => void;
+}
+
 @Component({
 	standalone: false,
 	template: '',
@@ -155,6 +159,14 @@ describe(ObOptionLabelIconDirective.name, () => {
 			directive.iconPosition = 'none';
 			directive.ngOnChanges();
 			fixture.detectChanges();
+			expect(directiveNode.nativeNode.innerHTML).toBe('Text');
+		});
+
+		it('should leave the host unchanged when addIcon receives no icon element', () => {
+			const directivePrivate = directive as unknown as ObOptionLabelIconDirectivePrivate;
+
+			Reflect.apply(directivePrivate.addIcon, directive, [ObEIcon.INFO, undefined, directiveNode.nativeNode, 'end']);
+
 			expect(directiveNode.nativeNode.innerHTML).toBe('Text');
 		});
 	});

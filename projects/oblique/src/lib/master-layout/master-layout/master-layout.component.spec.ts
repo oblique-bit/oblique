@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component, Pipe, PipeTransform} from '@angular/core';
 import {Router, provideRouter} from '@angular/router';
+import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 import {TranslateModule} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {provideObliqueTestingConfiguration} from '../../utilities';
@@ -8,7 +9,6 @@ import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-
 import {ObMasterLayoutComponent} from './master-layout.component';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
-import {ObMockOffCanvasService} from '../../off-canvas/_mocks/mock-off-canvas.service';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
@@ -39,11 +39,13 @@ export class ObMockLocalizePipe implements PipeTransform {
 describe('ObMasterLayoutComponent', () => {
 	let component: ObMasterLayoutComponent;
 	let fixture: ComponentFixture<ObMasterLayoutComponent>;
+	let offCanvasOpened$: Subject<boolean>;
 	const mockMasterLayoutService = {
 		layout: {
 			configEvents$: new Subject<ObIMasterLayoutEvent>(),
 			hasCover: false,
 			hasLayout: false,
+			hasMaxWidth: false,
 			isMenuOpened: false,
 			hasMainNavigation: false,
 			hasOffCanvas: false,
@@ -54,6 +56,7 @@ describe('ObMasterLayoutComponent', () => {
 	};
 
 	beforeEach(async () => {
+		offCanvasOpened$ = new Subject<boolean>();
 		await TestBed.configureTestingModule({
 			imports: [TranslateModule, ObMockLocalizePipe],
 			declarations: [ObMasterLayoutComponent],
@@ -62,7 +65,7 @@ describe('ObMasterLayoutComponent', () => {
 				provideRouter([{path: 'some/path', component: MockComponent}]),
 				{provide: ObMasterLayoutService, useValue: mockMasterLayoutService},
 				{provide: ObMasterLayoutConfig, useClass: ObMockMasterLayoutConfig},
-				{provide: ObOffCanvasService, useClass: ObMockOffCanvasService},
+				{provide: ObOffCanvasService, useValue: {opened$: offCanvasOpened$}},
 				{provide: ObGlobalEventsService, useClass: ObMockGlobalEventsService},
 			],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -201,6 +204,7 @@ describe('ObMasterLayoutComponent', () => {
 
 		testLayoutProperty('hasCover', 'LAYOUT_HAS_COVER');
 		testLayoutProperty('hasLayout', 'LAYOUT_HAS_DEFAULT_LAYOUT');
+		testLayoutProperty('hasMaxWidth', 'LAYOUT_HAS_MAX_WIDTH');
 		testLayoutProperty('isMenuOpened', 'IS_MENU_OPENED');
 		testLayoutProperty('hasOffCanvas', 'LAYOUT_HAS_OFF_CANVAS');
 
@@ -258,6 +262,22 @@ describe('ObMasterLayoutComponent', () => {
 		it('should have a isScrolling property', () => {
 			expect(component.isScrolling).toBe(false);
 		});
+
+		it('should ignore unchanged navigation length', () => {
+			component.navigation = [];
+			component.ngDoCheck();
+			jest.clearAllMocks();
+
+			component.ngDoCheck();
+
+			expect(mockMasterLayoutService.navigation.refresh).not.toHaveBeenCalled();
+		});
+
+		it('should handle missing navigation', () => {
+			Object.defineProperty(component, 'navigation', {configurable: true, value: undefined});
+
+			expect(() => component.ngDoCheck()).toThrow();
+		});
 	});
 
 	describe('scrollTop', () => {
@@ -289,6 +309,58 @@ describe('ObMasterLayoutComponent', () => {
 			it('should not set isScrolling', () => {
 				expect(component.isScrolling).toBe(false);
 			});
+		});
+
+		describe.each([
+			{
+				property: 'pageYOffset',
+				setup: () => Object.defineProperty(window, 'pageYOffset', {configurable: true, value: 15}),
+			},
+			{
+				property: 'documentElement.scrollTop',
+				setup: () => {
+					Object.defineProperty(window, 'pageYOffset', {configurable: true, value: 0});
+					Object.defineProperty(document.documentElement, 'scrollTop', {configurable: true, value: 15});
+				},
+			},
+			{
+				property: 'body.scrollTop',
+				setup: () => {
+					Object.defineProperty(window, 'pageYOffset', {configurable: true, value: 0});
+					Object.defineProperty(document.documentElement, 'scrollTop', {configurable: true, value: 0});
+					Object.defineProperty(document.body, 'scrollTop', {configurable: true, value: 15});
+				},
+			},
+		])('with $property', ({setup}) => {
+			beforeEach(() => {
+				setup();
+				component.scrollTop();
+			});
+
+			afterEach(() => {
+				Object.defineProperty(window, 'pageYOffset', {configurable: true, value: 0});
+				Object.defineProperty(document.documentElement, 'scrollTop', {configurable: true, value: 0});
+				Object.defineProperty(document.body, 'scrollTop', {configurable: true, value: 0});
+			});
+
+			it('should set isScrolling', () => {
+				expect(component.isScrolling).toBe(true);
+			});
+		});
+	});
+
+	describe('high contrast mode', () => {
+		it('should detect white on black mode', () => {
+			fixture.destroy();
+			jest
+				.spyOn(TestBed.inject(HighContrastModeDetector), 'getHighContrastMode')
+				.mockReturnValue(HighContrastMode.WHITE_ON_BLACK);
+			fixture = TestBed.createComponent(ObMasterLayoutComponent);
+			component = fixture.componentInstance;
+
+			fixture.detectChanges();
+
+			expect(component.hasHighContrast).toBe(true);
 		});
 	});
 
@@ -426,8 +498,67 @@ describe('ObMasterLayoutComponent', () => {
 			});
 		});
 
+		describe('targeting a non-focusable element outside dev mode', () => {
+			let previousNgDevMode: unknown;
+
+			beforeEach(() => {
+				previousNgDevMode = (globalThis as unknown as {ngDevMode?: unknown}).ngDevMode;
+				(globalThis as unknown as {ngDevMode?: unknown}).ngDevMode = false;
+				content = document.getElementById('content');
+				content.innerHTML = '<input id="not_focusable_without_dev_mode" disabled />';
+				element = document.getElementById('not_focusable_without_dev_mode');
+				jest.spyOn(element, 'scrollIntoView');
+				jest.spyOn(element, 'focus');
+				jest.spyOn(global.console, 'info');
+			});
+
+			afterEach(() => {
+				(globalThis as unknown as {ngDevMode?: unknown}).ngDevMode = previousNgDevMode;
+			});
+
+			it('should not log focusability information', () => {
+				component.focusElement('not_focusable_without_dev_mode');
+
+				expect(console.info).not.toHaveBeenCalled();
+			});
+		});
+
 		afterEach(() => {
 			jest.clearAllMocks();
+		});
+	});
+
+	describe('route helpers', () => {
+		it('should extract an empty path from an empty url', () => {
+			expect(
+				(component as unknown as {extractUrlPart: (url: string, regex: RegExp) => string}).extractUrlPart(
+					'',
+					/^[^?&#]*/
+				)
+			).toBe('');
+		});
+
+		it('should return undefined query parameters without parameters', () => {
+			expect(
+				(component as unknown as {formatQueryParameters: (parameters: string) => unknown}).formatQueryParameters(
+					undefined
+				)
+			).toBeUndefined();
+		});
+
+		it('should fall back to an undefined path without a route match', async () => {
+			const originalExec = RegExp.prototype.exec;
+			const exec = jest.spyOn(RegExp.prototype, 'exec').mockImplementation(function (url: string) {
+				return this.source === '^[^?&#]*' ? null : originalExec.call(this, url);
+			});
+
+			try {
+				await TestBed.inject(Router).navigate(['some/path']);
+
+				expect(component.route.path).toBeUndefined();
+			} finally {
+				exec.mockRestore();
+			}
 		});
 	});
 
@@ -460,6 +591,35 @@ describe('ObMasterLayoutComponent', () => {
 			expect(component[property]).toBe(expected);
 		});
 
+		it('should react to media query changes', () => {
+			let changeHandler: (event: MediaQueryListEvent) => void;
+			Object.defineProperty(window, 'matchMedia', {
+				value: jest.fn(() => ({
+					matches: false,
+					onchange: null,
+					addListener: jest.fn(),
+					addEventListener: jest.fn((type: string, handler: (event: MediaQueryListEvent) => void) => {
+						expect(type).toBe('change');
+						changeHandler = handler;
+					}),
+					removeEventListener: jest.fn(),
+				})),
+			});
+
+			component.ngOnChanges({
+				collapseBreakpoint: {
+					previousValue: undefined,
+					currentValue: 'md',
+					firstChange: false,
+					isFirstChange: () => false,
+				},
+			});
+			changeHandler({matches: true} as MediaQueryListEvent);
+
+			expect(component.isLayoutExpanded).toBe(true);
+			expect(component.isLayoutCollapsed).toBe(false);
+		});
+
 		it.each([
 			{property: 'isLayoutExpanded', expected: true},
 			{property: 'isLayoutCollapsed', expected: false},
@@ -482,6 +642,57 @@ describe('ObMasterLayoutComponent', () => {
 				},
 			});
 			expect(component[property]).toBe(expected);
+		});
+
+		it('should ignore changes without collapseBreakpoint', () => {
+			expect(() => component.ngOnChanges({})).not.toThrow();
+		});
+
+		it('should keep an explicitly configured collapseBreakpoint on init', () => {
+			fixture.destroy();
+			fixture = TestBed.createComponent(ObMasterLayoutComponent);
+			component = fixture.componentInstance;
+			component.collapseBreakpoint = 'lg';
+
+			fixture.detectChanges();
+
+			expect(component.collapseBreakpoint).toBe('lg');
+		});
+	});
+
+	describe('off canvas close button', () => {
+		afterEach(() => {
+			jest.useRealTimers();
+		});
+
+		it('should focus the close button when the off canvas opens', () => {
+			jest.useFakeTimers();
+			fixture.destroy();
+			fixture = TestBed.createComponent(ObMasterLayoutComponent);
+			component = fixture.componentInstance;
+			component.hasOffCanvas = true;
+			fixture.detectChanges();
+			const focus = jest.spyOn(component.offCanvasClose.nativeElement, 'focus');
+
+			offCanvasOpened$.next(true);
+			jest.advanceTimersByTime(600);
+
+			expect(focus).toHaveBeenCalled();
+		});
+
+		it('should not focus the close button when the off canvas closes', () => {
+			jest.useFakeTimers();
+			fixture.destroy();
+			fixture = TestBed.createComponent(ObMasterLayoutComponent);
+			component = fixture.componentInstance;
+			component.hasOffCanvas = true;
+			fixture.detectChanges();
+			const focus = jest.spyOn(component.offCanvasClose.nativeElement, 'focus');
+
+			offCanvasOpened$.next(false);
+			jest.advanceTimersByTime(600);
+
+			expect(focus).not.toHaveBeenCalled();
 		});
 	});
 

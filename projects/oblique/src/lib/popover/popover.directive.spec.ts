@@ -89,6 +89,16 @@ describe(ObPopoverDirective.name, () => {
 						toggle.click();
 						expect(directive.close).toHaveBeenCalled();
 					});
+
+					it('should ignore keyboard events from a button', () => {
+						const event = new KeyboardEvent('keyup', {key: 'Enter'});
+						Object.defineProperty(event, 'target', {value: toggle});
+						jest.spyOn(directive, 'open');
+
+						directive.toggle(event);
+
+						expect(directive.open).not.toHaveBeenCalled();
+					});
 				});
 
 				describe('with toggleHandle input set to click', () => {

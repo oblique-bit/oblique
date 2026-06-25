@@ -11,7 +11,7 @@ import {ObAlertComponent} from '../alert/alert.component';
 import {ObNotificationComponent} from './notification.component';
 import {ObNotificationConfig} from './notification.config';
 import {ObNotificationService} from './notification.service';
-import {ObENotificationType, ObINotification} from './notification.model';
+import {ObENotificationPlacement, ObENotificationType, ObINotification} from './notification.model';
 import {ObMockNotificationConfig} from './_mocks/mock-notification.config';
 import {ObMockNotificationService} from './_mocks/mock-notification.service';
 import {ObMockAlertComponent} from '../alert/_mocks/mock-alert.component';
@@ -153,6 +153,22 @@ describe('NotificationComponent', () => {
 		expect(htmlNotifications.length).toBe(0);
 	});
 
+	it('should clear notifications when a clear event is emitted for the channel', () => {
+		component.open({message: 'message 1', channel: 'oblique'});
+
+		(notificationService.events as Subject<ObINotification>).next({channel: 'oblique'});
+
+		expect(component.close).toHaveBeenCalledWith(component.notifications[0]);
+	});
+
+	it('should clear notifications when a clear-all event is emitted', () => {
+		component.open({message: 'message 1', channel: 'oblique'});
+
+		(notificationService.events as Subject<ObINotification>).next(null);
+
+		expect(component.close).toHaveBeenCalledWith(component.notifications[0]);
+	});
+
 	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', async () => {
 		jest.useFakeTimers();
 		// Send multiple notifications:
@@ -180,6 +196,24 @@ describe('NotificationComponent', () => {
 		expect(component.notifications.length).toBe(3);
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(3);
+	});
+
+	it('should open notifications on the left side when placement is left', () => {
+		notificationService.placement = ObENotificationPlacement.BOTTOM_LEFT;
+		component.notifications = [];
+
+		component.open({message: 'message 1'});
+		component.open({message: 'message 2'});
+
+		expect(component.notifications[1].$state).toBe('in-left');
+		expect(component.notifications[0].$state).toBe('in-left');
+	});
+
+	it('should create first notification state for an empty left-side list', () => {
+		notificationService.placement = ObENotificationPlacement.BOTTOM_LEFT;
+		component.notifications = [];
+
+		expect((component as unknown as {getOpenState: () => string}).getOpenState()).toBe('in-first-left');
 	});
 
 	it('should close a _non-sticky_ notification after `timeout` is reached', async () => {

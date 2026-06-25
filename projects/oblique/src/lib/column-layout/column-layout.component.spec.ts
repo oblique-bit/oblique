@@ -88,6 +88,12 @@ describe(ObColumnLayoutComponent.name, () => {
 			expect(component).toBeTruthy();
 		});
 
+		test('that it can be destroyed before the view is initialized', () => {
+			const uninitializedFixture = TestBed.createComponent(ObColumnLayoutComponent);
+
+			expect(() => uninitializedFixture.componentInstance.ngOnDestroy()).not.toThrow();
+		});
+
 		test('that it contains columnLayout class', () => {
 			expect(fixture.debugElement.nativeElement.classList).toContain('ob-column-layout');
 		});
