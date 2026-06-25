@@ -2054,7 +2054,7 @@
                 "$value": "{ob.s1.color.state_hybrid.emphasis_high.canvas.rest}"
               }
             },
-            "transparent": {
+            "transparent-mix": {
               "rest": {
                 "$type": "color",
                 "$value": "{ob.p.color.basic.transparent}"
@@ -2071,7 +2071,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent.rest}"
+                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent-mix.rest}"
               },
               "active": {
                 "$extensions": {
@@ -2085,7 +2085,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent.rest}"
+                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent-mix.rest}"
               }
             },
             "selected": {
@@ -2120,6 +2120,40 @@
                 },
                 "$type": "color",
                 "$value": "{ob.s1.color.state_hybrid.emphasis_high.selected.rest}"
+              }
+            },
+            "transparent-alpha": {
+              "rest": {
+                "$type": "color",
+                "$value": "{ob.p.color.basic.transparent}"
+              },
+              "hover": {
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "{ob.s.opacity.soft.hover} ",
+                      "space": "srgb",
+                      "color": "{ob.p.color.steelblue.500}"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent-mix.rest}"
+              },
+              "active": {
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "{ob.s.opacity.soft.active} ",
+                      "space": "srgb",
+                      "color": "{ob.p.color.steelblue.500}"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent-mix.rest}"
               }
             }
           },
@@ -2192,7 +2226,7 @@
                 "$value": "{ob.s1.color.state_hybrid.emphasis_high.canvas.rest}"
               }
             },
-            "transparent": {
+            "transparent-mix": {
               "rest": {
                 "$type": "color",
                 "$value": "{ob.p.color.basic.transparent}"
@@ -2209,7 +2243,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent.rest}"
+                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent-mix.rest}"
               },
               "active": {
                 "$extensions": {
@@ -2223,7 +2257,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent.rest}"
+                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent-mix.rest}"
               }
             },
             "selected": {
@@ -2258,6 +2292,40 @@
                 },
                 "$type": "color",
                 "$value": "{ob.s1.color.state_hybrid.emphasis_high.selected.rest}"
+              }
+            },
+            "transparent-alpha": {
+              "rest": {
+                "$type": "color",
+                "$value": "{ob.p.color.basic.transparent}"
+              },
+              "hover": {
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "{ob.s.opacity.subtle.hover} ",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent-mix.rest}"
+              },
+              "active": {
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "{ob.s.opacity.subtle.active} ",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent-mix.rest}"
               }
             }
           }
