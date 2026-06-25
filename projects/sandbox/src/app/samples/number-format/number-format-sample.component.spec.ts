@@ -27,4 +27,16 @@ describe(NumberFormatSampleComponent.name, () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
+
+	it('should update the form field number5', () => {
+		component.setNumber5();
+
+		expect(component.formData.value.number5).toBe(6.2356487);
+	});
+
+	it('should update number6', () => {
+		component.setNumber6();
+
+		expect(component.formData.value.number6).toBe(6.2356487);
+	});
 });

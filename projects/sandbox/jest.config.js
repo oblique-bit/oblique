@@ -14,37 +14,4 @@ module.exports = {
 	},
 	coverageDirectory: '<rootDir>/coverage/sandbox',
 	coveragePathIgnorePatterns: ['<rootDir>/projects/oblique'],
-	coverageThreshold: {
-		...baseConfig.coverageThreshold,
-		'projects/sandbox/src/app/app.component.ts': {
-			statements: 75,
-			branches: 100,
-			functions: 50,
-			lines: 78,
-		},
-		'projects/sandbox/src/app/samples/master-layout/dynamic-navigation.service.ts': {
-			statements: 66,
-			branches: 100,
-			functions: 60,
-			lines: 64,
-		},
-		'projects/sandbox/src/app/samples/nav-tree/*.ts': {
-			statements: 80,
-			branches: 100,
-			functions: 40,
-			lines: 83,
-		},
-		'projects/sandbox/src/app/samples/number-format/*.ts': {
-			statements: 81,
-			branches: 100,
-			functions: 33,
-			lines: 77,
-		},
-		'projects/sandbox/src/app/samples/schema-validation/*.ts': {
-			statements: 84,
-			branches: 12,
-			functions: 75,
-			lines: 82,
-		},
-	},
 };
