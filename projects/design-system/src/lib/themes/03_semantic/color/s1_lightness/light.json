@@ -2091,7 +2091,7 @@
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
-                      "type": "alpha",
+                      "type": "mix",
                       "value": "{ob.s.opacity.soft.hover} ",
                       "space": "srgb",
                       "color": "{ob.p.color.steelblue.500} "
@@ -2099,13 +2099,13 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.500}"
+                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent.rest}"
               },
               "active": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
-                      "type": "alpha",
+                      "type": "mix",
                       "value": "{ob.s.opacity.soft.active} ",
                       "space": "srgb",
                       "color": "{ob.p.color.steelblue.500} "
@@ -2113,7 +2113,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.500}"
+                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent.rest}"
               }
             },
             "selected": {
