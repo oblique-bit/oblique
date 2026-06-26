@@ -2349,78 +2349,6 @@
                   "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_flipped}"
                 }
               }
-            },
-            "bg_transp_alpha": {
-              "rest": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "#2E8FBF00"
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "#2E8FBF00"
-                }
-              },
-              "hover": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "mix",
-                        "value": "{ob.s.opacity.soft.hover} ",
-                        "space": "srgb",
-                        "color": "{ob.p.color.steelblue.500} "
-                      }
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_alpha.rest.inversity_normal}"
-                },
-                "inversity_flipped": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "mix",
-                        "value": "{ob.s.opacity.soft.hover} ",
-                        "space": "srgb",
-                        "color": "{ob.p.color.steelblue.500} "
-                      }
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_alpha.rest.inversity_flipped}"
-                }
-              },
-              "active": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "mix",
-                        "value": "{ob.s.opacity.soft.active} ",
-                        "space": "srgb",
-                        "color": "{ob.p.color.steelblue.500} "
-                      }
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_alpha.rest.inversity_normal}"
-                },
-                "inversity_normal-copy": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "mix",
-                        "value": "{ob.s.opacity.soft.active} ",
-                        "space": "srgb",
-                        "color": "{ob.p.color.steelblue.500} "
-                      }
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_alpha.rest.inversity_flipped}"
-                }
-              }
             }
           },
           "emphasis_low": {
@@ -2493,6 +2421,36 @@
                   },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.rest.inversity_flipped}"
+                }
+              },
+              "ripple": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "{ob.s.opacity.strong.ripple} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900} "
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "{ob.s.opacity.strong.ripple} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900} "
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}"
                 }
               }
             },
@@ -2727,46 +2685,6 @@
                   },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_flipped}"
-                }
-              }
-            },
-            "bg_transp_alpha": {
-              "rest": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.basic.transparent}"
-                }
-              },
-              "hover": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "mix",
-                        "value": "{ob.s.opacity.subtle.hover}",
-                        "space": "srgb",
-                        "color": "{ob.p.color.cobalt.900} "
-                      }
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp.rest.inversity_normal}"
-                }
-              },
-              "active": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
-                        "space": "srgb",
-                        "color": "{ob.p.color.cobalt.900} "
-                      }
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp.rest.inversity_normal}"
                 }
               }
             }

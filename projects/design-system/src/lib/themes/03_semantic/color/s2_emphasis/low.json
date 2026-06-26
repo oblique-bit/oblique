@@ -350,6 +350,16 @@
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.active.inversity_flipped}"
                 }
+              },
+              "ripple": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.ripple.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.ripple.inversity_flipped}"
+                }
               }
             },
             "bg_canvas": {
