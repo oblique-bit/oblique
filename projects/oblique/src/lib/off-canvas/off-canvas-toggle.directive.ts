@@ -1,4 +1,4 @@
-import {Directive, inject} from '@angular/core';
+import {ChangeDetectorRef, Directive, inject} from '@angular/core';
 import {ObOffCanvasService} from './off-canvas.service';
 import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
 import {ObWindow} from '../utilities.model';
@@ -13,13 +13,17 @@ import {ObWindow} from '../utilities.model';
 	exportAs: 'obOffCanvasToggle',
 })
 export class ObOffCanvasToggleDirective {
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly offCanvas = inject(ObOffCanvasService);
 
 	toggle(event?: KeyboardEvent | MouseEvent): void {
 		if (isNotKeyboardEventOnButton(event)) {
 			// delay the toggle so that any other feature that relies on click has time to update its status
-			this.window.setTimeout(() => (this.offCanvas.open = !this.offCanvas.open));
+			this.window.setTimeout(() => {
+				this.offCanvas.open = !this.offCanvas.open;
+				this.changeDetectorRef.detectChanges();
+			});
 		}
 	}
 }
