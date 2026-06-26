@@ -1990,7 +1990,7 @@
               "rest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.600}"
+                  "$value": "{ob.p.color.steelblue.500}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
@@ -2352,7 +2352,7 @@
               "rest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.500}"
+                  "$value": "{ob.p.color.cobalt.400}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
@@ -2428,7 +2428,7 @@
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.p.color.cobalt.800}"
+                  "$value": "{ob.p.color.basic.white}"
                 }
               },
               "hover": {
@@ -2453,7 +2453,7 @@
                         "type": "mix",
                         "value": "{ob.s.opacity.subtle.hover} ",
                         "space": "srgb",
-                        "color": "{ob.p.color.basic.white}"
+                        "color": "{ob.p.color.cobalt.900}"
                       }
                     }
                   },
@@ -2483,7 +2483,7 @@
                         "type": "mix",
                         "value": "{ob.s.opacity.subtle.active} ",
                         "space": "srgb",
-                        "color": "{ob.p.color.basic.white}"
+                        "color": "{ob.p.color.cobalt.900}"
                       }
                     }
                   },

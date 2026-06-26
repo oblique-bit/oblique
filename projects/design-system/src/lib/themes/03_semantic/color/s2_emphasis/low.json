@@ -317,6 +317,74 @@
               }
             }
           }
+        },
+        "interaction_mix": {
+          "standard_states": {
+            "bg_primary": {
+              "rest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.rest.inversity_flipped}"
+                }
+              },
+              "hover": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.hover.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.hover.inversity_flipped}"
+                }
+              },
+              "active": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.active.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.active.inversity_flipped}"
+                }
+              }
+            },
+            "bg_canvas": {
+              "rest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_flipped}"
+                }
+              },
+              "hover": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.hover.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.hover.inversity_flipped}"
+                }
+              },
+              "active": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.active.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.active.inversity_flipped}"
+                }
+              }
+            }
+          }
         }
       }
     }

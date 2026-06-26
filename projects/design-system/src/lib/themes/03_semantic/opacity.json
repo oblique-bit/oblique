@@ -13,7 +13,7 @@
           },
           "ripple": {
             "$type": "other",
-            "$value": "0.8"
+            "$value": "0.08"
           }
         },
         "soft": {
