@@ -8,7 +8,7 @@ export const appRoutes: Routes = [
 	{
 		loadChildren: async () => import('./app/component-page/component-pages.routes'),
 		matcher: (url: UrlSegment[]): UrlMatchResult =>
-			['newsletter'].includes(url[1].toString())
+			['newsletter', 'ob-accessibility-statement'].includes(url[1].toString())
 				? {consumed: [url[0]], posParams: {[urlConst.urlParams.selectedSlug]: url[1]}}
 				: null,
 	},
