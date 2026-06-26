@@ -202,6 +202,27 @@ describe(CmsRouteRedirector.name, () => {
 				expect(mockWindow.open).not.toHaveBeenCalledWith();
 			});
 
+			test('internal url with hash', async () => {
+				service.navigate('http://localhost', '/category/regular/tab#hash');
+				await firstValueFrom(router.events.pipe(filter(event => event instanceof NavigationEnd)));
+				expect(router.url).toBe('/category/regular/tab#hash');
+				expect(mockWindow.open).not.toHaveBeenCalledWith();
+			});
+
+			test('internal url with query parameters', async () => {
+				service.navigate('http://localhost', '/category/regular/tab?version=15');
+				await firstValueFrom(router.events.pipe(filter(event => event instanceof NavigationEnd)));
+				expect(router.url).toBe('/category/regular/tab?version=15');
+				expect(mockWindow.open).not.toHaveBeenCalledWith();
+			});
+
+			test('internal url with query parameters & hash', async () => {
+				service.navigate('http://localhost', '/category/regular/tab?version=15#hash');
+				await firstValueFrom(router.events.pipe(filter(event => event instanceof NavigationEnd)));
+				expect(router.url).toBe('/category/regular/tab?version=15#hash');
+				expect(mockWindow.open).not.toHaveBeenCalledWith();
+			});
+
 			test('external url', () => {
 				service.navigate('http://external', '/path');
 				expect(router.navigate).not.toHaveBeenCalled();
