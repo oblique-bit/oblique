@@ -1984,348 +1984,728 @@
             }
           }
         },
-        "state_hybrid": {
+        "interaction_mix": {
           "emphasis_high": {
-            "primary": {
+            "bg_primary": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.steelblue.600}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.600}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.600}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.strong.hover}",
-                      "space": "srgb",
-                      "color": "{ob.p.color.cobalt.900}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.strong.hover}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_primary.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.primary.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.strong.hover}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_primary.rest.inversity_flipped}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.strong.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.cobalt.900}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.strong.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_primary.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.primary.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.strong.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_primary.rest.inversity_flipped}"
+                }
               }
             },
-            "canvas": {
+            "bg_canvas": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.cobalt.800}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.800}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.soft.hover} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.steelblue.500}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.canvas.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_flipped}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.soft.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.steelblue.500}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.canvas.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_flipped}"
+                }
               }
             },
-            "transparent-mix": {
+            "bg_transp_mix": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.basic.transparent}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.soft.hover} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.steelblue.500}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent-mix.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_flipped}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.soft.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.steelblue.500}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent-mix.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_flipped}"
+                }
               }
             },
-            "selected": {
+            "bg_selected": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.steelblue.900}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.900}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.900}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.hover} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.selected.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.rest.inversity_flipped}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white} "
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white} "
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.selected.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white} "
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.rest.inversity_flipped}"
+                }
               }
             },
-            "transparent-alpha": {
+            "bg_transp_alpha": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.basic.transparent}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.soft.hover} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.steelblue.500}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent-mix.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_normal}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.soft.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.steelblue.500}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.transparent-mix.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_normal}"
+                }
               }
             }
           },
           "emphasis_low": {
-            "primary": {
+            "bg_primary": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.cobalt.500}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.500}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.500}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.strong.hover}",
-                      "space": "srgb",
-                      "color": "{ob.p.color.cobalt.900}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.strong.hover}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.primary.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.strong.hover}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.rest.inversity_flipped}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.strong.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.cobalt.900}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.strong.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.primary.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.strong.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.cobalt.900}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_primary.rest.inversity_flipped}"
+                }
               }
             },
-            "canvas": {
+            "bg_canvas": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.cobalt.800}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.800}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.800}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.hover} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.canvas.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_flipped}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.canvas.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_flipped}"
+                }
               }
             },
-            "transparent-mix": {
+            "bg_transp_mix": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.basic.transparent}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.hover} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent-mix.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_flipped}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent-mix.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_flipped}"
+                }
               }
             },
-            "selected": {
+            "bg_selected": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.cobalt.600}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.600}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.600}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.hover} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.selected.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_flipped}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white} "
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white} "
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_high.selected.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white} "
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.rest.inversity_flipped}"
+                }
               }
             },
-            "transparent-alpha": {
+            "bg_transp_alpha": {
               "rest": {
-                "$type": "color",
-                "$value": "{ob.p.color.basic.transparent}"
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.transparent}"
+                }
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.hover} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent-mix.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
+                }
               },
               "active": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.opacity.subtle.active} ",
-                      "space": "srgb",
-                      "color": "{ob.p.color.basic.white}"
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
                     }
-                  }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
                 },
-                "$type": "color",
-                "$value": "{ob.s1.color.state_hybrid.emphasis_low.transparent-mix.rest}"
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
+                }
               }
             }
           }

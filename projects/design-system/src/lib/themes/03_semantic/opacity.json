@@ -10,6 +10,10 @@
           "active": {
             "$type": "other",
             "$value": "0.18"
+          },
+          "ripple": {
+            "$type": "other",
+            "$value": "0.8"
           }
         },
         "soft": {
@@ -20,6 +24,10 @@
           "active": {
             "$type": "other",
             "$value": "0.28"
+          },
+          "ripple": {
+            "$type": "other",
+            "$value": "0.15"
           }
         },
         "strong": {
@@ -30,6 +38,10 @@
           "active": {
             "$type": "other",
             "$value": "0.50"
+          },
+          "ripple": {
+            "$type": "other",
+            "$value": "0.15"
           }
         }
       }
