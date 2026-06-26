@@ -2188,15 +2188,33 @@
                 }
               }
             },
-            "bg_transp_mix": {
+            "bg_transp": {
               "rest": {
                 "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0",
+                        "space": "srgb"
+                      }
+                    }
+                  },
                   "$type": "color",
-                  "$value": "#2E8FBF00"
+                  "$value": "{ob.p.color.steelblue.500}"
                 },
                 "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0",
+                        "space": "srgb"
+                      }
+                    }
+                  },
                   "$type": "color",
-                  "$value": "#2E8FBF00"
+                  "$value": "{ob.p.color.steelblue.500}"
                 }
               },
               "hover": {
@@ -2212,7 +2230,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.rest.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2226,7 +2244,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.rest.inversity_flipped}"
                 }
               },
               "active": {
@@ -2242,7 +2260,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.rest.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2256,7 +2274,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_mix.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.rest.inversity_normal}"
                 }
               }
             },
@@ -2285,6 +2303,20 @@
                   },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_flipped}"
                 }
               },
               "active": {
@@ -2301,6 +2333,20 @@
                   },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "white"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_flipped}"
                 }
               }
             },
@@ -2522,11 +2568,33 @@
                 }
               }
             },
-            "bg_transp_mix": {
+            "bg_transp": {
               "rest": {
                 "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0",
+                        "space": "srgb"
+                      }
+                    }
+                  },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.transparent}"
+                  "$value": "{ob.p.color.cobalt.900}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0",
+                        "space": "srgb"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.900}"
                 }
               },
               "hover": {
@@ -2542,7 +2610,21 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp.rest.inversity_flipped}"
                 }
               },
               "active": {
@@ -2558,7 +2640,21 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp.rest.inversity_flipped}"
                 }
               }
             },
@@ -2567,6 +2663,10 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.100}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.600}"
                 }
               },
               "hover": {
@@ -2583,6 +2683,20 @@
                   },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.hover}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_flipped}"
                 }
               },
               "active": {
@@ -2593,12 +2707,26 @@
                         "type": "mix",
                         "value": "{ob.s.opacity.subtle.active} ",
                         "space": "srgb",
-                        "color": "{ob.p.color.cobalt.900} "
+                        "color": "{ob.p.color.cobalt.900}"
                       }
                     }
                   },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_normal}"
+                },
+                "inversity_flipped-copy": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.subtle.active} ",
+                        "space": "srgb",
+                        "color": "{ob.p.color.basic.white}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_flipped}"
                 }
               }
             },
@@ -2622,7 +2750,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp.rest.inversity_normal}"
                 }
               },
               "active": {
@@ -2638,7 +2766,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_mix.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp.rest.inversity_normal}"
                 }
               }
             }

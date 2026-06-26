@@ -383,6 +383,38 @@
                   "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.active.inversity_flipped}"
                 }
               }
+            },
+            "bg_transp": {
+              "rest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.rest.inversity_flipped}"
+                }
+              },
+              "hover": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.hover.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.hover.inversity_flipped}"
+                }
+              },
+              "active": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.active.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.active.inversity_flipped}"
+                }
+              }
             }
           }
         }
