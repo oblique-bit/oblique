@@ -2354,7 +2354,7 @@
               "high_contrast": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}"
+                  "$value": "{ob.p.color.steelblue.100}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
