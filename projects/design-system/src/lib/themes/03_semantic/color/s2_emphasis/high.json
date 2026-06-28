@@ -425,6 +425,104 @@
                   "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.active.inversity_flipped}"
                 }
               }
+            },
+            "bg_transp_inverted": {
+              "rest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.rest.inversity_flipped}"
+                }
+              },
+              "hover": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.hover.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.hover.inversity_flipped}"
+                }
+              },
+              "active": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.active.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp.active.inversity_flipped}"
+                }
+              }
+            },
+            "on_primary": {
+              "high_contrast": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.on_primary.high_contrast.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.on_primary.high_contrast.inversity_flipped}"
+                }
+              }
+            },
+            "on_canvas": {
+              "highest_contrast": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.on_canvas.highest_contrast.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.on_canvas.highest_contrast.inversity_flipped}"
+                }
+              },
+              "high_contrast": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.on_canvas.high_contrast.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.on_canvas.high_contrast.inversity_flipped}"
+                }
+              }
+            },
+            "bg_selected": {
+              "rest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_flipped}"
+                }
+              },
+              "hover": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.hover.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.hover.inversity_flipped}"
+                }
+              },
+              "active": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.active.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.active.inversity_flipped}"
+                }
+              }
             }
           }
         }

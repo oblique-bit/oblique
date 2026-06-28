@@ -43,6 +43,20 @@
             "$type": "other",
             "$value": "0.15"
           }
+        },
+        "inverted": {
+          "hover": {
+            "$type": "other",
+            "$value": "0.45"
+          },
+          "active": {
+            "$type": "other",
+            "$value": "0.75"
+          },
+          "ripple": {
+            "$type": "other",
+            "$value": "0.3"
+          }
         }
       }
     }

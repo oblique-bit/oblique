@@ -425,6 +425,62 @@
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp.active.inversity_flipped}"
                 }
               }
+            },
+            "bg_selected": {
+              "rest": {
+                "inverisity_normal": {
+                  "$type": "color",
+                  "$value": "#"
+                }
+              }
+            },
+            "bg_transp_inverted": {
+              "rest": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_inverted.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_inverted.rest.inversity_flipped}"
+                }
+              },
+              "hover": {
+                "inversity_normal-copy": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_inverted.hover.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_inverted.hover.inversity_flipped}"
+                }
+              },
+              "active": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_inverted.active.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_transp_inverted.active.inversity_flipped}"
+                }
+              }
+            },
+            "on_primary": {
+              "high_contrast": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "#"
+                }
+              }
+            },
+            "on_canvas": {
+              "high_contrast": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "#"
+                }
+              }
             }
           }
         }
