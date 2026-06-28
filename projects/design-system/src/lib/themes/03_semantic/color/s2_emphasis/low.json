@@ -475,10 +475,16 @@
               }
             },
             "on_canvas": {
+              "highest_contrast": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.on_canvas.highest_contrast.inversity_normal}"
+                }
+              },
               "high_contrast": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "#"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.on_canvas.high_contrast.inversity_normal}"
                 }
               }
             }
