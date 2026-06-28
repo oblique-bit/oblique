@@ -499,7 +499,7 @@
               "rest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.rest.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
@@ -509,7 +509,7 @@
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.hover.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.hover.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
@@ -519,7 +519,7 @@
               "active": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.active.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.active.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
