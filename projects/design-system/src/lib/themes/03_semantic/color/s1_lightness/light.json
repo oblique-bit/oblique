@@ -2325,14 +2325,14 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
+                        "value": "{ob.s.opacity.soft.active} ",
                         "space": "srgb",
                         "color": "{ob.p.color.steelblue.500} "
                       }
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_selected.rest.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
