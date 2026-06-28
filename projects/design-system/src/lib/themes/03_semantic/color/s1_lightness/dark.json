@@ -2333,6 +2333,10 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}"
                 }
               }
             },
@@ -2341,10 +2345,18 @@
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}"
+                },
+                "inversity_flipped-copy": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}"
                 }
               },
               "high_contrast": {
                 "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}"
+                },
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}"
                 }

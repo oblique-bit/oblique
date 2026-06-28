@@ -2455,8 +2455,15 @@
             "on_canvas": {
               "highest_contrast": {
                 "inversity_normal": {
+                  "$extensions": {
+                    "com.figma.hiddenFromPublishing": false,
+                    "com.figma.scopes": [
+                      "ALL_FILLS",
+                      "STROKE_COLOR"
+                    ]
+                  },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}"
+                  "$value": "{ob.p.color.steelblue.800}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
@@ -2465,8 +2472,15 @@
               },
               "high_contrast": {
                 "inversity_normal": {
+                  "$extensions": {
+                    "com.figma.hiddenFromPublishing": false,
+                    "com.figma.scopes": [
+                      "ALL_FILLS",
+                      "STROKE_COLOR"
+                    ]
+                  },
                   "$type": "color",
-                  "$value": "{ob.p.color.basic.white}"
+                  "$value": "{ob.p.color.steelblue.700}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
