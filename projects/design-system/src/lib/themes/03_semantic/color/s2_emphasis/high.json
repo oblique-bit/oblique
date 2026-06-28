@@ -483,6 +483,9 @@
               },
               "high_contrast": {
                 "inversity_normal": {
+                  "$extensions": {
+                    "com.figma.hiddenFromPublishing": false
+                  },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_high.on_canvas.high_contrast.inversity_normal}"
                 },
@@ -496,17 +499,17 @@
               "rest": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.rest.inversity_flipped}"
                 }
               },
               "hover": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.hover.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.hover.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
@@ -516,7 +519,7 @@
               "active": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.active.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_canvas.active.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
