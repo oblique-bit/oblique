@@ -430,19 +430,19 @@
               "rest": {
                 "inverisity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.rest.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_normal}"
                 }
               },
               "hover": {
                 "inverisity_normal-copy": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.hover.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.hover.inversity_normal}"
                 }
               },
               "active": {
                 "inverisity_normal-copy-copy": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_canvas.active.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.active.inversity_normal}"
                 }
               }
             },
