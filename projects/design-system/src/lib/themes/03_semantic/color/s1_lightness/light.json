@@ -2938,6 +2938,16 @@
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}"
                 }
+              },
+              "high_contrast": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.700}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.basic.white}"
+                }
               }
             }
           }
