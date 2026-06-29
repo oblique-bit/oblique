@@ -60,7 +60,7 @@ describe(TextPageComponent.name, () => {
 				expect(event.preventDefault).toHaveBeenCalled();
 			});
 			it('should navigate', () => {
-				expect(service.navigate).toHaveBeenCalledWith(anchor.origin, anchor.pathname);
+				expect(service.navigate).toHaveBeenCalledWith(anchor.origin, anchor.href);
 			});
 		});
 	});
