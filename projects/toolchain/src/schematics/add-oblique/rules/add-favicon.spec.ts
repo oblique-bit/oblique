@@ -62,7 +62,7 @@ describe(addFavicon.name, () => {
 	});
 
 	test('falls back to src/index.html when no index config is present', async () => {
-		inputTree.create('angular.json', JSON.stringify({projects: {app: {architect: {}}}}));
+		inputTree.create('angular.json', JSON.stringify({version: 1, projects: {app: {root: '', architect: {}}}}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
 		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
@@ -71,7 +71,7 @@ describe(addFavicon.name, () => {
 	});
 
 	test('falls back to src/index.html when projects are missing in angular.json', async () => {
-		inputTree.create('angular.json', JSON.stringify({defaultProject: 'app'}));
+		inputTree.create('angular.json', JSON.stringify({version: 1}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
 		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
@@ -113,7 +113,15 @@ describe(addFavicon.name, () => {
 	});
 
 	test('falls back to src/index.html when architect config is missing', async () => {
-		inputTree.create('angular.json', JSON.stringify({projects: {app: {}}}));
+		inputTree.create(
+			'angular.json',
+			JSON.stringify({
+				version: 1,
+				projects: {
+					app: {},
+				},
+			})
+		);
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
 		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
@@ -122,7 +130,17 @@ describe(addFavicon.name, () => {
 	});
 
 	test('falls back to src/index.html when build config is missing', async () => {
-		inputTree.create('angular.json', JSON.stringify({projects: {app: {architect: {}}}}));
+		inputTree.create(
+			'angular.json',
+			JSON.stringify({
+				version: 1,
+				projects: {
+					app: {
+						architect: {},
+					},
+				},
+			})
+		);
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
 		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
@@ -131,7 +149,19 @@ describe(addFavicon.name, () => {
 	});
 
 	test('falls back to src/index.html when options config is missing', async () => {
-		inputTree.create('angular.json', JSON.stringify({projects: {app: {architect: {build: {}}}}}));
+		inputTree.create(
+			'angular.json',
+			JSON.stringify({
+				projects: {
+					version: 1,
+					app: {
+						architect: {
+							build: {},
+						},
+					},
+				},
+			})
+		);
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
 		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
@@ -166,10 +196,10 @@ describe(addFavicon.name, () => {
 });
 
 function buildAngularJson(options: JsonValue, app2Options?: JsonValue): string {
-	const projects: JsonObject = {app: {architect: {build: {options}}}};
+	const projects: JsonObject = {app: {root: '', architect: {build: {options}}}};
 	if (app2Options) {
-		projects.app2 = {architect: {build: {options: app2Options}}};
+		projects.app2 = {root: '', architect: {build: {options: app2Options}}};
 	}
 
-	return JSON.stringify({projects});
+	return JSON.stringify({version: 1, projects});
 }
