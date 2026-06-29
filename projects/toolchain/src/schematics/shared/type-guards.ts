@@ -15,3 +15,7 @@ export function isStringMap(value: JsonValue): value is Record<string, string> {
 export function isOptionalStringMap(value: JsonValue | undefined): value is Record<string, string> | undefined {
 	return value === undefined || value === null || isStringMap(value);
 }
+
+export function isPlainObject(value: unknown): value is Record<string, unknown> {
+	return typeof value === 'object' && value !== null && !Array.isArray(value);
+}

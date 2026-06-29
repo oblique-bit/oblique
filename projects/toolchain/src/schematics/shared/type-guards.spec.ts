@@ -1,4 +1,4 @@
-import {isOptionalString, isOptionalStringMap, isString, isStringMap} from './type-guards';
+import {isOptionalString, isOptionalStringMap, isPlainObject, isString, isStringMap} from './type-guards';
 
 describe('type-guards', () => {
 	describe(isString.name, () => {
@@ -41,6 +41,16 @@ describe('type-guards', () => {
 
 		test.each(['string', true, 42, NaN, {boolean: true}, {number: 43}, {null: null}])(`Invalid input (%s)`, input => {
 			expect(isOptionalStringMap(input)).toBe(false);
+		});
+	});
+
+	describe(isPlainObject.name, () => {
+		test.each([{}, {string: 'bar'}, {parent: {child: ''}}])(`Valid input (%s)`, input => {
+			expect(isPlainObject(input)).toBe(true);
+		});
+
+		test.each(['string', true, 42, NaN, null, undefined, []])(`Invalid input (%s)`, input => {
+			expect(isPlainObject(input)).toBe(false);
 		});
 	});
 });
