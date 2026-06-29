@@ -1,68 +1,40 @@
-import {HostTree} from '@angular-devkit/schematics';
-import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {HostTree, type Tree} from '@angular-devkit/schematics';
+import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
 import * as fs from 'fs';
-import {runRule} from '../../test-utils';
+import {firstValueFrom} from 'rxjs';
+import {obMockLogger} from '../../../logger/mock';
+import {mockCreateFromTemplate} from '../../test-utils';
 import {addBrowserslistrc} from './add-browserslistrc.rule';
-import {obCreateLogger} from '../../../logger';
 
-describe('addBrowserslistrc', () => {
+describe(addBrowserslistrc.name, () => {
 	const templateContent = fs.readFileSync(join(__dirname, '../templates/.browserslistrc'), 'utf8');
 	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
-	const logger = obCreateLogger(true).group('logger');
-	let inputTree: UnitTestTree;
+	const {logger, loggerGroups} = obMockLogger();
+	let inputTree: Tree;
 
 	beforeEach(() => {
-		inputTree = new UnitTestTree(new HostTree());
-		inputTree.create('/package.json', JSON.stringify({devDependencies: {}}));
-		jest.spyOn(logger, 'step');
+		inputTree = new HostTree();
+		mockCreateFromTemplate('ng-add');
 	});
 
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
-	describe(`.browserslistrc is absent`, () => {
-		test(`creates .browserslistrc`, async () => {
-			const resultTree: UnitTestTree = await runRule(runner, addBrowserslistrc(logger), inputTree);
+	test('without .browserslistrc', async () => {
+		const resultTree = await firstValueFrom(runner.callRule(addBrowserslistrc(logger.group('A')), inputTree));
 
-			expect(resultTree.exists('.browserslistrc')).toBe(true);
-		});
-
-		test(`creates .browserslistrc with template content`, async () => {
-			const resultTree = await runRule(runner, addBrowserslistrc(logger), inputTree);
-
-			expect(resultTree.readContent('.browserslistrc')).toBe(templateContent);
-		});
-
-		test('call logger.step', async () => {
-			await runRule(runner, addBrowserslistrc(logger), inputTree);
-
-			expect(logger.step).toHaveBeenCalledWith('Create ".browserslistrc" file');
-		});
+		expect(resultTree.readText('.browserslistrc')).toBe(templateContent);
+		expect(loggerGroups[0].step).toHaveBeenCalledWith('Create ".browserslistrc" file');
 	});
 
-	describe(`.browserslistrc is present`, () => {
-		beforeEach(() => {
-			inputTree.create('.browserslistrc', 'existing content');
-		});
+	test('with .browserslistrc', async () => {
+		inputTree.create('.browserslistrc', 'existing content');
 
-		test(`does not overwrite existing .browserslistrc`, async () => {
-			const resultTree = await runRule(runner, addBrowserslistrc(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addBrowserslistrc(logger.group('A')), inputTree));
 
-			expect(resultTree.readContent('.browserslistrc')).toBe('existing content');
-		});
-
-		test(`leaves existing .browserslistrc untouched`, async () => {
-			const resultTree = await runRule(runner, addBrowserslistrc(logger), inputTree);
-
-			expect(resultTree.readContent('.browserslistrc')).not.toBe(templateContent);
-		});
-
-		test("don't call logger.step", async () => {
-			await runRule(runner, addBrowserslistrc(logger), inputTree);
-
-			expect(logger.step).not.toHaveBeenCalled();
-		});
+		expect(resultTree.readText('.browserslistrc')).toBe('existing content');
+		expect(loggerGroups[0].step).not.toHaveBeenCalled();
 	});
 });
