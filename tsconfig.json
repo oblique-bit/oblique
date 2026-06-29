@@ -14,6 +14,7 @@
     "useUnknownInCatchVariables": true,
     "paths": {
       "@oblique/oblique": ["projects/oblique/src/public_api"],
+      "@oblique/oblique/schema-validation": ["projects/oblique/src/lib/schema-validation/public_api"],
       "@oblique/*": ["projects/oblique/src/lib/*"],
       "@oblique/design-system": ["projects/design-system/src/public-api"]
     },
