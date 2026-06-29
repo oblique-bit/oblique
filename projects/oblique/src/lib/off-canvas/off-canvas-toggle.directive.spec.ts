@@ -2,6 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {ObOffCanvasToggleDirective} from './off-canvas-toggle.directive';
 import {ObOffCanvasService} from './off-canvas.service';
 import {WINDOW} from '../utilities';
+import {ChangeDetectorRef} from '@angular/core';
 
 describe('ObOffCanvasToggleDirective', () => {
 	let directive: ObOffCanvasToggleDirective;
@@ -14,6 +15,12 @@ describe('ObOffCanvasToggleDirective', () => {
 				ObOffCanvasToggleDirective,
 				{provide: ObOffCanvasService, useValue: service},
 				{provide: WINDOW, useValue: window},
+				{
+					provide: ChangeDetectorRef,
+					useValue: {
+						detectChanges: () => {},
+					},
+				},
 			],
 		});
 		directive = TestBed.inject(ObOffCanvasToggleDirective);
