@@ -10,7 +10,7 @@ describe(addFavicon.name, () => {
 	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
 	const logger = obCreateLogger(true).group('logger');
 	const defaultFavicon = '<link rel="icon" type="image/x-icon" href="favicon.ico">';
-	const obliqueFavicon = '<link href="assets/images/favicon.png" rel="shortcut icon"/>';
+	const obliqueFavicon = '<link rel="icon" type="image/png" href="assets/images/favicon.png"/>';
 	let inputTree: Tree;
 
 	beforeEach(() => {
