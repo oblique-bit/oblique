@@ -1,45 +1,22 @@
-import {HostTree, type Rule} from '@angular-devkit/schematics';
-import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {HostTree} from '@angular-devkit/schematics';
+import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
 import {obMockLogger} from '../../logger/mock';
-import * as addFaviconRules from './rules/add-favicon.rule';
-import {addOblique} from './index';
 import {addFavicon} from './rules/add-favicon.rule';
+import * as addFaviconRules from './rules/add-favicon.rule';
 
-const testRunner = new SchematicTestRunner('schematics', join(__dirname, '../collection.json'));
-const {logger, loggerGroups, clearGroups} = obMockLogger();
+describe('addOblique schematics', () => {
+	const testRunner = new SchematicTestRunner('schematics', join(__dirname, '../collection.json'));
+	const {logger, loggerGroups} = obMockLogger();
 
-async function executeRule(runner: SchematicTestRunner, rule: Rule, initialTree: UnitTestTree): Promise<UnitTestTree> {
-	return new Promise((resolve, reject) => {
-		runner.callRule(rule, initialTree).subscribe({
-			next: resultingTree => resolve(resultingTree as UnitTestTree),
-			error: reject,
-		});
-	});
-}
-
-describe('addOblique', () => {
-	beforeEach(async () => {
-		const inputTree = new UnitTestTree(new HostTree());
+	test('orchestration', async () => {
+		const inputTree = new HostTree();
 		jest.spyOn(addFaviconRules, 'addFavicon');
 
-		await executeRule(testRunner, addOblique(), inputTree);
-	});
+		await testRunner.runSchematic('add-oblique', {}, inputTree);
 
-	afterEach(() => {
-		jest.clearAllMocks();
-		clearGroups();
-	});
-
-	test('calls addFavicon', () => {
-		expect(addFavicon).toHaveBeenCalledTimes(1);
-	});
-
-	test('creates a logger', () => {
 		expect(logger.group).toHaveBeenCalledWith('Generate @oblique/toolchain:add-oblique');
-	});
-
-	test('closes the logger group', () => {
+		expect(addFavicon).toHaveBeenCalledTimes(1);
 		expect(loggerGroups[0].end).toHaveBeenCalled();
 	});
 });

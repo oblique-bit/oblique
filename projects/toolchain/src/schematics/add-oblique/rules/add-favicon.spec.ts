@@ -1,20 +1,20 @@
-import {HostTree} from '@angular-devkit/schematics';
-import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {HostTree, type Tree} from '@angular-devkit/schematics';
+import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
+import type {JsonObject, JsonValue} from '@angular-devkit/core';
 import {join} from 'node:path';
-import {runRule} from '../../test-utils';
-import {addFavicon} from './add-favicon.rule';
+import {firstValueFrom} from 'rxjs';
 import {obCreateLogger} from '../../../logger';
+import {addFavicon} from './add-favicon.rule';
 
-const defaultFavicon = '<link rel="icon" type="image/x-icon" href="favicon.ico">';
-const obliqueFavicon = '<link href="assets/images/favicon.png" rel="shortcut icon"/>';
-
-describe('addFavicon', () => {
+describe(addFavicon.name, () => {
 	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
 	const logger = obCreateLogger(true).group('logger');
-	let inputTree: UnitTestTree;
+	const defaultFavicon = '<link rel="icon" type="image/x-icon" href="favicon.ico">';
+	const obliqueFavicon = '<link href="assets/images/favicon.png" rel="shortcut icon"/>';
+	let inputTree: Tree;
 
 	beforeEach(() => {
-		inputTree = new UnitTestTree(new HostTree());
+		inputTree = new HostTree();
 		jest.spyOn(logger, 'step');
 	});
 
@@ -23,153 +23,78 @@ describe('addFavicon', () => {
 	});
 
 	test('replaces favicon in default project index from angular.json', async () => {
-		inputTree.create(
-			'angular.json',
-			JSON.stringify({
-				defaultProject: 'app',
-				projects: {
-					app: {
-						architect: {
-							build: {
-								options: {
-									index: 'src/index.html',
-								},
-							},
-						},
-					},
-				},
-			})
-		);
+		inputTree.create('angular.json', buildAngularJson({index: 'src/index.html'}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
-		expect(resultTree.readContent('src/index.html')).not.toContain(defaultFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).not.toContain(defaultFavicon);
 	});
 
 	test('replaces favicon in default project index configured as an object', async () => {
-		inputTree.create(
-			'angular.json',
-			JSON.stringify({
-				defaultProject: 'app',
-				projects: {
-					app: {
-						architect: {
-							build: {
-								options: {
-									index: {
-										input: 'src/index.html',
-										output: 'index.html',
-									},
-								},
-							},
-						},
-					},
-				},
-			})
-		);
+		inputTree.create('angular.json', buildAngularJson({index: {input: 'src/index.html', output: 'index.html'}}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
-		expect(resultTree.readContent('src/index.html')).not.toContain(defaultFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).not.toContain(defaultFavicon);
 	});
 
 	test('replaces favicon in all project indexes if no default project is set', async () => {
-		inputTree.create(
-			'angular.json',
-			JSON.stringify({
-				projects: {
-					app1: {
-						architect: {
-							build: {
-								options: {
-									index: 'src/app1-index.html',
-								},
-							},
-						},
-					},
-					app2: {
-						architect: {
-							build: {
-								options: {
-									index: 'src/app2-index.html',
-								},
-							},
-						},
-					},
-				},
-			})
-		);
+		inputTree.create('angular.json', buildAngularJson({index: 'src/app1-index.html'}, {index: 'src/app2-index.html'}));
 		inputTree.create('src/app1-index.html', `<head>${defaultFavicon}</head>`);
 		inputTree.create('src/app2-index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/app1-index.html')).toContain(obliqueFavicon);
-		expect(resultTree.readContent('src/app2-index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/app1-index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/app2-index.html')).toContain(obliqueFavicon);
 	});
 
 	test('falls back to src/index.html when angular.json is missing', async () => {
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
 	});
 
 	test('falls back to src/index.html when no index config is present', async () => {
 		inputTree.create('angular.json', JSON.stringify({projects: {app: {architect: {}}}}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
 	});
 
 	test('falls back to src/index.html when projects are missing in angular.json', async () => {
 		inputTree.create('angular.json', JSON.stringify({defaultProject: 'app'}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
 	});
 
 	test('skips file when index.html exists but has empty content', async () => {
-		inputTree.create(
-			'angular.json',
-			JSON.stringify({
-				defaultProject: 'app',
-				projects: {
-					app: {
-						architect: {
-							build: {
-								options: {
-									index: 'src/index.html',
-								},
-							},
-						},
-					},
-				},
-			})
-		);
+		inputTree.create('angular.json', buildAngularJson({index: 'src/index.html'}));
 		inputTree.create('src/index.html', '');
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toBe('');
+		expect(resultTree.readText('src/index.html')).toBe('');
 	});
 
 	test('falls back to src/index.html when angular.json is not an object', async () => {
 		inputTree.create('angular.json', '123');
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
 	});
 
 	test('falls back to "{}" when angular.json exists but cannot be read', async () => {
@@ -182,110 +107,51 @@ describe('addFavicon', () => {
 			return inputTree.get(path)?.content ?? null;
 		});
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
 	});
 
 	test('falls back to src/index.html when architect config is missing', async () => {
-		inputTree.create(
-			'angular.json',
-			JSON.stringify({
-				projects: {
-					app: {},
-				},
-			})
-		);
+		inputTree.create('angular.json', JSON.stringify({projects: {app: {}}}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
 	});
 
 	test('falls back to src/index.html when build config is missing', async () => {
-		inputTree.create(
-			'angular.json',
-			JSON.stringify({
-				projects: {
-					app: {
-						architect: {},
-					},
-				},
-			})
-		);
+		inputTree.create('angular.json', JSON.stringify({projects: {app: {architect: {}}}}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
 	});
 
 	test('falls back to src/index.html when options config is missing', async () => {
-		inputTree.create(
-			'angular.json',
-			JSON.stringify({
-				projects: {
-					app: {
-						architect: {
-							build: {},
-						},
-					},
-				},
-			})
-		);
+		inputTree.create('angular.json', JSON.stringify({projects: {app: {architect: {build: {}}}}}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
 	});
 
 	test('falls back to src/index.html when index exists but is not a string', async () => {
-		inputTree.create(
-			'angular.json',
-			JSON.stringify({
-				defaultProject: 'app',
-				projects: {
-					app: {
-						architect: {
-							build: {
-								options: {
-									index: 123,
-								},
-							},
-						},
-					},
-				},
-			})
-		);
+		inputTree.create('angular.json', buildAngularJson({index: 123}));
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readContent('src/index.html')).toContain(obliqueFavicon);
+		expect(resultTree.readText('src/index.html')).toContain(obliqueFavicon);
 	});
 
 	test('skips missing index file without failing', async () => {
-		inputTree.create(
-			'angular.json',
-			JSON.stringify({
-				defaultProject: 'app',
-				projects: {
-					app: {
-						architect: {
-							build: {
-								options: {
-									index: 'src/index.html',
-								},
-							},
-						},
-					},
-				},
-			})
-		);
+		inputTree.create('angular.json', buildAngularJson({index: 'src/index.html'}));
 
-		const resultTree = await runRule(runner, addFavicon(logger), inputTree);
+		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
 		expect(resultTree.exists('src/index.html')).toBe(false);
 	});
@@ -293,8 +159,17 @@ describe('addFavicon', () => {
 	test('calls logger.step', async () => {
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
-		await runRule(runner, addFavicon(logger), inputTree);
+		await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
 		expect(logger.step).toHaveBeenCalledWith('Embed Oblique favicon');
 	});
 });
+
+function buildAngularJson(options: JsonValue, app2Options?: JsonValue): string {
+	const projects: JsonObject = {app: {architect: {build: {options}}}};
+	if (app2Options) {
+		projects.app2 = {architect: {build: {options: app2Options}}};
+	}
+
+	return JSON.stringify({projects});
+}
