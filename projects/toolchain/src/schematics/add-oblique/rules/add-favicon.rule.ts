@@ -4,7 +4,7 @@ import type {ObGroupLogger} from '../../../logger';
 import {isPlainObject, isString} from '../../shared/type-guards';
 
 const sourceFavicon = '<link rel="icon" type="image/x-icon" href="favicon.ico">';
-const targetFavicon = '<link href="assets/images/favicon.png" rel="shortcut icon"/>';
+const targetFavicon = '<link rel="icon" type="image/png" href="assets/images/favicon.png"/>';
 
 export function addFavicon(logger: ObGroupLogger): Rule {
 	return async (tree: Tree) => {
