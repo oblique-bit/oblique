@@ -11,7 +11,10 @@ export function addFavicon(logger: ObGroupLogger): Rule {
 		logger.step('Embed Oblique favicon');
 		(await getIndexPaths(tree)).forEach(indexPath => {
 			const content = tree.readText(indexPath);
-			tree.overwrite(indexPath, content.replace(sourceFavicon, targetFavicon));
+			const updated = content.replace(sourceFavicon, targetFavicon);
+			if (content !== updated) {
+				tree.overwrite(indexPath, updated);
+			}
 		});
 		return tree;
 	};

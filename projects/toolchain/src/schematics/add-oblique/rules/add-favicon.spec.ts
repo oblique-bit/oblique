@@ -186,6 +186,16 @@ describe(addFavicon.name, () => {
 		expect(resultTree.exists('src/index.html')).toBe(false);
 	});
 
+	test('skip unchanged file', async () => {
+		inputTree.create('angular.json', buildAngularJson({index: 'src/index.html'}));
+		inputTree.create('src/index.html', `<head>${obliqueFavicon}</head>`);
+		jest.spyOn(inputTree, 'overwrite');
+
+		await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
+
+		expect(inputTree.overwrite).not.toHaveBeenCalled();
+	});
+
 	test('calls logger.step', async () => {
 		inputTree.create('src/index.html', `<head>${defaultFavicon}</head>`);
 
