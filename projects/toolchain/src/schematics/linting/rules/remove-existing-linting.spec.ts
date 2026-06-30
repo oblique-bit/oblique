@@ -1,26 +1,25 @@
 import {HostTree, type Tree} from '@angular-devkit/schematics';
-import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
-import {removeExistingLinting} from './remove-existing-linting';
 import {firstValueFrom} from 'rxjs';
+import {removeExistingLinting} from './remove-existing-linting';
 import {obMockLogger} from '../../../logger/mock';
 
-const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
-const {logger} = obMockLogger();
-
 describe(removeExistingLinting.name, () => {
-	let inputTree: UnitTestTree;
+	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
+	const {logger} = obMockLogger();
+	let inputTree: Tree;
 
 	beforeEach(() => {
-		inputTree = new UnitTestTree(new HostTree());
+		inputTree = new HostTree();
 	});
 
 	test('package.json property removal', async () => {
 		inputTree.create('/package.json', '{"eslintConfig": {}, "keep": {}, "scripts": {"lint": ""}}');
-		const resultTree = (await firstValueFrom(
-			runner.callRule(removeExistingLinting(logger.group('A')), inputTree)
-		)) as UnitTestTree;
-		expect(resultTree.readContent('./package.json')).toEqual('{"keep": {}, "scripts": {}}');
+
+		const resultTree = await firstValueFrom(runner.callRule(removeExistingLinting(logger.group('A')), inputTree));
+
+		expect(resultTree.readText('./package.json')).toEqual('{"keep": {}, "scripts": {}}');
 	});
 
 	describe('dependencies removal', () => {
@@ -48,8 +47,8 @@ describe(removeExistingLinting.name, () => {
 				},
 			};
 			inputTree.create('/package.json', JSON.stringify(pkg));
-			const result = await firstValueFrom(runner.callRule(removeExistingLinting(logger.group('A')), inputTree));
-			resultPkg = result.readJson('package.json') as {devDependencies: Record<string, string>};
+			const resultTree = await firstValueFrom(runner.callRule(removeExistingLinting(logger.group('A')), inputTree));
+			resultPkg = resultTree.readJson('package.json') as {devDependencies: Record<string, string>};
 		});
 
 		test.each(devDependencies)('removes "%s" dependency', dep => {
