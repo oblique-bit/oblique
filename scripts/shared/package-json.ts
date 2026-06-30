@@ -43,6 +43,14 @@ export class PackageJson extends StaticScript {
 		return PackageJson.instance as PackageJson;
 	}
 
+	adaptSecondaryEntryPointsExports(): PackageJson {
+		Log.info('Correct path to secondary entry points');
+		this.content.exports = Object.fromEntries(
+			Object.entries(this.content.exports).map(([key, value]) => [key.replace('src/lib/', ''), value])
+		);
+		return PackageJson.instance as PackageJson;
+	}
+
 	addExports(fields: ExportEntries): PackageJson {
 		Log.info(`Add export property to the distributed package.json`);
 		this.content.exports = {
