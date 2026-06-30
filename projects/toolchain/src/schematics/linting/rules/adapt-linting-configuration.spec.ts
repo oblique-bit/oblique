@@ -1,20 +1,19 @@
-import {HostTree} from '@angular-devkit/schematics';
-import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {HostTree, type Tree} from '@angular-devkit/schematics';
+import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
 import {firstValueFrom} from 'rxjs';
 import {obMockLogger} from '../../../logger/mock';
-import {adaptLintingConfiguration} from './adapt-linting-configuration';
 import {mockCreateFromTemplate} from '../../test-utils';
-
-const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
-const {logger} = obMockLogger();
+import {adaptLintingConfiguration} from './adapt-linting-configuration';
 
 describe(adaptLintingConfiguration.name, () => {
 	const packageJson = 'package.json';
-	let inputTree: UnitTestTree;
+	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
+	const {logger} = obMockLogger();
+	let inputTree: Tree;
 
 	beforeEach(() => {
-		inputTree = new UnitTestTree(new HostTree());
+		inputTree = new HostTree();
 		mockCreateFromTemplate('linting');
 	});
 
@@ -41,26 +40,29 @@ describe(adaptLintingConfiguration.name, () => {
 			});
 
 			test('package.json property addition', async () => {
-				const resultTree = (await firstValueFrom(
+				const resultTree = await firstValueFrom(
 					runner.callRule(adaptLintingConfiguration(logger.group('A'), 'app'), inputTree)
-				)) as UnitTestTree;
-				expect(resultTree.readContent(packageJson)).toEqual(
+				);
+
+				expect(resultTree.readText(packageJson)).toEqual(
 					'{"keep": {}, "scripts": {"lint": "","format": "npm run lint -- --fix"}}'
 				);
 			});
 
 			test('configuration file addition', async () => {
-				const resultTree = (await firstValueFrom(
+				const resultTree = await firstValueFrom(
 					runner.callRule(adaptLintingConfiguration(logger.group('A'), 'app'), inputTree)
-				)) as UnitTestTree;
+				);
+
 				expect(resultTree.exists('eslint.config.mjs')).toBe(true);
 			});
 
 			test('references addition', async () => {
-				const resultTree = (await firstValueFrom(
+				const resultTree = await firstValueFrom(
 					runner.callRule(adaptLintingConfiguration(logger.group('A'), 'app'), inputTree)
-				)) as UnitTestTree;
-				expect(resultTree.readContent('tsconfig.json')).toBe('{"references": [{"path":"tsconfig.eslint.json"}]}');
+				);
+
+				expect(resultTree.readText('tsconfig.json')).toBe('{"references": [{"path":"tsconfig.eslint.json"}]}');
 			});
 		});
 
@@ -71,10 +73,12 @@ describe(adaptLintingConfiguration.name, () => {
 
 			test('references addition', async () => {
 				const loggerGroup = logger.group('A');
-				const resultTree = (await firstValueFrom(
+
+				const resultTree = await firstValueFrom(
 					runner.callRule(adaptLintingConfiguration(loggerGroup, 'app'), inputTree)
-				)) as UnitTestTree;
-				expect(resultTree.readContent('tsconfig.json')).toBe('{"references": true}');
+				);
+
+				expect(resultTree.readText('tsconfig.json')).toBe('{"references": true}');
 			});
 		});
 	});
