@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 
-import {ObSchemaValidationService} from '../schema-validation.module';
+import {ObSchemaValidationService} from '../schema-validation.service';
 import {ObMockSchemaValidationDirective} from './mock-schema-validation.directive';
 import {ObMockSchemaRequiredDirective} from './mock-schema-required.directive';
 import {ObMockSchemaValidateDirective} from './mock-schema-validator';

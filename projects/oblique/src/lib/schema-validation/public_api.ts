@@ -1,12 +1,9 @@
-export {
-	draft07Convert,
-	ObSchemaRequiredDirective,
-	ObSchemaValidateDirective,
-	ObSchemaValidationDirective,
-	ObSchemaValidationModule,
-	ObSchemaValidationService,
-	ObSchemaValidatorInstance,
-} from './schema-validation.module';
+export {ObSchemaValidationModule} from './schema-validation.module';
+export {ObSchemaValidationService} from './schema-validation.service';
+export {ObSchemaValidateDirective} from './schema-validator';
+export {ObSchemaValidationDirective} from './schema-validation.directive';
+export {ObSchemaRequiredDirective} from './schema-required.directive';
+export {draft07Convert} from './draft07-converter.decorator';
 export {ObMockSchemaRequiredDirective} from './_mocks/mock-schema-required.directive';
 export {ObMockSchemaValidateDirective} from './_mocks/mock-schema-validator';
 export {ObMockSchemaValidationDirective} from './_mocks/mock-schema-validation.directive';
