@@ -26,7 +26,8 @@
   "dependencies": {
     "angular-eslint": "^21.0.0",
     "chalk": "^4.1.2",
-    "jsonc-parser": "^3.3.1"
+    "jsonc-parser": "^3.3.1",
+    "parse5": "^7.2.1"
   },
   "exports": {
     "./eslint-config": "./linting/eslint-config-oblique.mjs",
