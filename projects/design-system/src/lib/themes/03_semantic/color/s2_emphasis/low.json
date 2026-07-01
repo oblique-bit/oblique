@@ -431,18 +431,30 @@
                 "inverisity_normal": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_flipped}"
                 }
               },
               "hover": {
                 "inverisity_normal-copy": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.hover.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.hover.inversity_flipped}"
                 }
               },
               "active": {
                 "inverisity_normal-copy-copy": {
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.active.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.active.inversity_flipped}"
                 }
               }
             },
