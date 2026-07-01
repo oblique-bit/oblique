@@ -1,4 +1,4 @@
-import {Component, Input, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, input} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -6,6 +6,7 @@ import {Component, Input, input} from '@angular/core';
 @Component({
 	selector: 'ob-column-layout',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obColumnLayout',
 })
 export class ObMockColumnLayoutComponent {

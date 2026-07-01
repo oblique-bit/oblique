@@ -1,5 +1,5 @@
 import {createApplication} from '@angular/platform-browser';
-import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {provideHttpClient, withInterceptorsFromDi, withXhr} from '@angular/common/http';
 import {createCustomElement} from '@angular/elements';
 import {provideWindow} from '../../oblique/src/lib/window/window.provider';
 import {ObServiceNavigationWebComponentComponent} from './app/service-navigation-web-component.component';
@@ -9,7 +9,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 createApplication({
 	providers: [
-		provideHttpClient(withInterceptorsFromDi()),
+		provideHttpClient(withXhr(), withInterceptorsFromDi()),
 		importProvidersFrom(ObServiceNavigationModule),
 		provideAppInitializer(() => inject(ObIconService).registerOnAppInit()),
 		provideObliqueTranslations(),

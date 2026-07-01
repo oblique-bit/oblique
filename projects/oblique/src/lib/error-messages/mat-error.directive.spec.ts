@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -18,6 +18,7 @@ import {ObErrorMessagesDirective} from './error-messages.directive';
 			<mat-error />
 		</mat-form-field>
 	</form>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class HostComponent {
 	readonly form = inject(FormBuilder).group({control: ['', [Validators.required, this.customValidator()]]});

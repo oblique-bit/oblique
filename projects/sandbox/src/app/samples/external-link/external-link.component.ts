@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import type {ObEExternalLinkIcon} from '@oblique/oblique';
 import type {MatSlideToggleChange} from '@angular/material/slide-toggle';
 
@@ -17,6 +17,7 @@ interface IsLinkExternalState {
 	standalone: false,
 	templateUrl: './external-link.component.html',
 	styleUrl: './external-link.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExternalLinkComponent {
 	iconPosition: ObEExternalLinkIcon = 'left';

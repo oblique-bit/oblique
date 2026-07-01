@@ -1,4 +1,4 @@
-import {Component, DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ObDragDropDirective} from './drag-and-drop.directive';
@@ -6,6 +6,7 @@ import {ObDragDropDirective} from './drag-and-drop.directive';
 @Component({
 	standalone: false,
 	template: `<input obDragDrop (fileDropped)="saveFiles($event)" />`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestDropDirectiveComponent {
 	files;

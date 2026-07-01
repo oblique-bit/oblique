@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconRegistry} from '@angular/material/icon';
 import {By} from '@angular/platform-browser';
@@ -11,6 +11,7 @@ import {EXTERNAL_LINK} from './external-link.model';
 @Component({
 	standalone: false,
 	template: `<a href="http://www.google.ch">External Link</a>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {
 	href = '';
@@ -20,6 +21,7 @@ class TestComponent {
 	imports: [ObExternalLinkDirective],
 	standalone: true,
 	template: `<a href="http://www.google.ch" [rel]="rel" [target]="target">External Link</a>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class BoundAttributeTestComponent {
 	@Input() rel: string | null | undefined;

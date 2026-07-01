@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {
 	type AbstractControl,
 	FormControl,
@@ -14,6 +14,7 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 	selector: 'app-error-messages-example-custom-error-message-preview',
 	imports: [MatFormFieldModule, MatInputModule, ObErrorMessagesModule, ReactiveFormsModule],
 	templateUrl: './error-messages-example-custom-error-message-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ErrorMessagesExampleCustomErrorMessagePreviewComponent {
 	form: FormGroup = new FormGroup({

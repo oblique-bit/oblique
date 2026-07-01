@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ThemePalette} from '@angular/material/core';
 
 @Component({
@@ -6,6 +6,7 @@ import type {ThemePalette} from '@angular/material/core';
 	standalone: false,
 	templateUrl: './progress-bar.component.html',
 	styleUrl: './progress-bar.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ProgressBarComponent {
 	color: ThemePalette;

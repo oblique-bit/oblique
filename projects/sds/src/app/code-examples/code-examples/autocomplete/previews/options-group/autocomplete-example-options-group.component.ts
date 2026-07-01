@@ -4,7 +4,7 @@ import {
 	type ObIAutocompleteInputOption,
 	type ObIAutocompleteInputOptionGroup,
 } from '@oblique/oblique';
-import {type AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
 
@@ -12,6 +12,7 @@ import {JsonPipe} from '@angular/common';
 	selector: 'app-autocomplete-example-options-group',
 	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
 	templateUrl: './autocomplete-example-options-group.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AutocompleteExampleIconOptionsGroupComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;

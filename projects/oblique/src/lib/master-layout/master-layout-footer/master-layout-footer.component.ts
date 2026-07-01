@@ -1,4 +1,13 @@
-import {Component, Input, OnDestroy, TemplateRef, ViewEncapsulation, contentChildren, inject} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	Input,
+	OnDestroy,
+	TemplateRef,
+	ViewEncapsulation,
+	contentChildren,
+	inject,
+} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutService} from '../master-layout.service';
@@ -10,6 +19,7 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 	standalone: false,
 	templateUrl: './master-layout-footer.component.html',
 	styleUrls: ['./master-layout-footer.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout-footer'},
 })

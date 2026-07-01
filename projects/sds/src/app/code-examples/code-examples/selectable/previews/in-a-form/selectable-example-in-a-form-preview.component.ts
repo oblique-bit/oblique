@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {FormBuilder, type FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ObSelectableModule} from '@oblique/oblique';
 import {JsonPipe} from '@angular/common';
@@ -8,6 +8,7 @@ import {JsonPipe} from '@angular/common';
 	imports: [ObSelectableModule, ReactiveFormsModule, JsonPipe],
 	templateUrl: './selectable-example-in-a-form-preview.component.html',
 	styleUrl: '../selectable-example-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SelectableExampleInAFormPreviewComponent implements OnInit {
 	sampleForm: FormGroup;

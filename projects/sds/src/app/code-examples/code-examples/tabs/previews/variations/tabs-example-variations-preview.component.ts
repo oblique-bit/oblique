@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -7,5 +7,6 @@ import {MatIconModule} from '@angular/material/icon';
 	imports: [MatTabsModule, MatIconModule],
 	templateUrl: './tabs-example-variations-preview.component.html',
 	styleUrl: './tabs-example-variations-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TabsExampleVariationsPreviewComponent {}

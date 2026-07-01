@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ObMasterLayoutService} from '@oblique/oblique';
 import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 	imports: [MatCardModule, MatSlideToggleModule, FormsModule],
 	templateUrl: './master-layout-header-sample.component.html',
 	styleUrl: './master-layout-header-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MasterLayoutHeaderSampleComponent {
 	private readonly masterLayout = inject(ObMasterLayoutService);

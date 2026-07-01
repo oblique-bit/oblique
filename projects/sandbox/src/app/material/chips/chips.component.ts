@@ -1,4 +1,4 @@
-import {Component, type ElementRef, type OnInit, viewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type ElementRef, type OnInit, viewChild} from '@angular/core';
 import {COMMA, ENTER, SEMICOLON} from '@angular/cdk/keycodes';
 import {UntypedFormControl} from '@angular/forms';
 import type {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
@@ -11,6 +11,7 @@ import {map} from 'rxjs/operators';
 	standalone: false,
 	templateUrl: './chips.component.html',
 	styleUrl: './chips.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ChipsComponent implements OnInit {
 	disabled = false;

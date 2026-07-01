@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {NavigationEnd, Router, provideRouter} from '@angular/router';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterTestingHarness} from '@angular/router/testing';
 import {WINDOW} from '@oblique/oblique';
 import {type Observable, Subject, firstValueFrom, of} from 'rxjs';
@@ -10,6 +10,7 @@ import {CmsRouteRedirector} from './cms-route-redirector';
 
 @Component({
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyComponent {}
 

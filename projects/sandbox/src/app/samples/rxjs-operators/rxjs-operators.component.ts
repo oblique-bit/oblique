@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {timer} from 'rxjs';
 import {obPauseWhenPageHidden} from '@oblique/oblique';
@@ -7,6 +7,7 @@ import {obPauseWhenPageHidden} from '@oblique/oblique';
 	selector: 'sb-rxjs-operators',
 	standalone: false,
 	templateUrl: './rxjs-operators.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class RxjsOperatorsComponent {
 	readonly interval = timer(0, 1000).pipe(takeUntilDestroyed(), obPauseWhenPageHidden());

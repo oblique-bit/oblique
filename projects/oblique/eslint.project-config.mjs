@@ -34,6 +34,7 @@ export default [
 			'@angular-eslint/prefer-output-emitter-ref': 'off',
 			'@angular-eslint/prefer-signals': 'off',
 			'@angular-eslint/prefer-standalone': 'off',
+			'@angular-eslint/no-implicit-take-until-destroyed': 'off',
 			'@typescript-eslint/consistent-type-exports': 'off',
 			'@typescript-eslint/consistent-type-imports': 'off',
 			'@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -79,6 +80,9 @@ export default [
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/promise-function-async': 'off',
 			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-non-null-assertion': 'off',
+			'@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+			'@typescript-eslint/no-unnecessary-type-assertion': 'off',
 			'accessor-pairs': 'off',
 			'func-names': 'off',
 			'no-duplicate-imports': 'off',

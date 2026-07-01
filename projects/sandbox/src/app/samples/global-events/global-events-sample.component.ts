@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, ElementRef, inject, viewChild} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, viewChild} from '@angular/core';
 import {ObGlobalEventsService, WINDOW, obOutsideFilter} from '@oblique/oblique';
 import {map, scan} from 'rxjs/operators';
 import type {Observable} from 'rxjs';
@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 	selector: 'sb-utilities-sample',
 	standalone: false,
 	templateUrl: './global-events-sample.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class GlobalEventsSampleComponent implements AfterViewInit {
 	readonly globalEvents = inject(ObGlobalEventsService);

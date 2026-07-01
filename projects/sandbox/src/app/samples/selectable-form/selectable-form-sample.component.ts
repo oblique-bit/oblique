@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {FormBuilder, type FormControl, type FormGroup} from '@angular/forms';
 
 @Component({
@@ -6,6 +6,7 @@ import {FormBuilder, type FormControl, type FormGroup} from '@angular/forms';
 	standalone: false,
 	templateUrl: './selectable-form-sample.component.html',
 	styleUrl: './selectable-form-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SelectableFormSampleComponent implements OnInit {
 	mode = 'checkbox';

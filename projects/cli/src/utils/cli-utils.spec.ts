@@ -399,7 +399,7 @@ Examples of use:
 			])('%text options object', ({options}) => {
 				execute({name: 'ngGenerate', schematic: '@oblique/toolchain:add-oblique', options});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^21 generate @oblique/toolchain:add-oblique',
+					'npx @angular/cli@^22 generate @oblique/toolchain:add-oblique',
 					{
 						stdio: 'inherit',
 					}
@@ -413,7 +413,7 @@ Examples of use:
 					options: {dryRun: true, force: false},
 				});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^21 generate @oblique/toolchain:add-oblique --dryRun --no-force',
+					'npx @angular/cli@^22 generate @oblique/toolchain:add-oblique --dryRun --no-force',
 					{stdio: 'inherit'}
 				);
 			});
@@ -422,10 +422,10 @@ Examples of use:
 				execute({
 					name: 'ngGenerate',
 					schematic: '@oblique/toolchain:add-oblique',
-					execSyncOptions: {cwd: 'test'},
+					spawnSyncOptions: {cwd: 'test'},
 				});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^21 generate @oblique/toolchain:add-oblique',
+					'npx @angular/cli@^22 generate @oblique/toolchain:add-oblique',
 					{
 						stdio: 'inherit',
 						cwd: 'test',
@@ -437,10 +437,10 @@ Examples of use:
 				execute({
 					name: 'ngGenerate',
 					schematic: '@oblique/toolchain:add-oblique',
-					execSyncOptions: {stdio: 'pipe'},
+					spawnSyncOptions: {stdio: 'pipe'},
 				});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^21 generate @oblique/toolchain:add-oblique',
+					'npx @angular/cli@^22 generate @oblique/toolchain:add-oblique',
 					{stdio: 'pipe'}
 				);
 			});
@@ -552,7 +552,7 @@ Examples of use:
 		describe('ngGenerate', () => {
 			test('without options', () => {
 				execute({name: 'ngGenerate', schematic: 'my-lib:toto'});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^21 generate my-lib:toto', {
+				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^22 generate my-lib:toto', {
 					stdio: 'inherit',
 				});
 			});
@@ -560,7 +560,7 @@ Examples of use:
 			test('with a single option', () => {
 				execute({name: 'ngGenerate', schematic: 'my-lib:toto', options: {prefix: 'app'}});
 				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^21 generate my-lib:toto --prefix="app"',
+					'npx @angular/cli@^22 generate my-lib:toto --prefix="app"',
 					{
 						stdio: 'inherit',
 					}

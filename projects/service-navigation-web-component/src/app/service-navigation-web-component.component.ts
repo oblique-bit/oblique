@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	Component,
 	DOCUMENT,
 	type OnChanges,
@@ -48,6 +49,7 @@ import {outputFromObservable} from '@angular/core/rxjs-interop';
 		'../../../oblique/src/styles/scss/core/components/_external-link.scss',
 	],
 	providers: [TranslationsService],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'(window:keydown)': 'removeOutline()',

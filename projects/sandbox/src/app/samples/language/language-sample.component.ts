@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ObDateFormat, ObTimeFormat} from '@oblique/language/date-adapter/date.model';
 
 @Component({
 	selector: 'sb-language-sample',
 	standalone: false,
 	templateUrl: './language-sample.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class LanguageSampleComponent {
 	readonly dateFormats: ObDateFormat[] = [

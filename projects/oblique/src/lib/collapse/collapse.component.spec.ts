@@ -1,5 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Component, DebugElement} from '@angular/core';
+import {
+	CUSTOM_ELEMENTS_SCHEMA,
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	DebugElement,
+} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {WINDOW} from '../window/window.provider';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
@@ -12,6 +18,7 @@ import {OBLIQUE_COLLAPSE_ACTIVE, OBLIQUE_COLLAPSE_ICON_POSITION, ObCollapseCompo
 		<ob-collapse id="my-custom-id-for-test" />
 		<ob-collapse />
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestCollapseComponent {}
 

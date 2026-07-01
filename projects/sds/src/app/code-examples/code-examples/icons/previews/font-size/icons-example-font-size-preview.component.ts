@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 
 @Component({
@@ -6,5 +6,6 @@ import {MatIconModule} from '@angular/material/icon';
 	imports: [MatIconModule],
 	templateUrl: './icons-example-font-size-preview.component.html',
 	styleUrl: './icons-example-font-size-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class IconsExampleFontSizePreviewComponent {}

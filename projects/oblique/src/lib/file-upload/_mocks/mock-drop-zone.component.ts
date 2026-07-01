@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, input} from '@angular/core';
 import {ObIUploadEvent} from '../file-upload.model';
 
 /**
@@ -7,6 +7,7 @@ import {ObIUploadEvent} from '../file-upload.model';
 @Component({
 	selector: 'ob-drop-zone',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'ob-drop-zone'},
 	exportAs: 'obDropZone',
 })

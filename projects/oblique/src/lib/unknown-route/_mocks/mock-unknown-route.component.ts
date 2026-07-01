@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
 @Component({
 	selector: 'ob-unknown-route',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obUnknownRoute',
 })
 export class ObMockUnknownRouteComponent {

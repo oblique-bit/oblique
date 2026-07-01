@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {Component, OnInit, inject, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, inject, input} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ActivatedRoute, NavigationEnd, Router, RouterModule} from '@angular/router';
@@ -23,6 +23,7 @@ import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcru
 	],
 	templateUrl: './breadcrumb.component.html',
 	styleUrls: ['./breadcrumb.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obBreadcrumb',
 })
 export class ObBreadcrumbComponent implements OnInit {

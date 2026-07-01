@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, DebugElement, Directive} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement, Directive} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {BehaviorSubject} from 'rxjs';
 import {ObSelectableDirective} from './selectable.directive';
@@ -8,6 +8,7 @@ import {ObSelectableGroupDirective} from './selectable-group.directive';
 @Component({
 	standalone: false,
 	template: ` <div obSelectable value="test"></div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class FaultyTestComponent {}
 
@@ -16,6 +17,7 @@ class FaultyTestComponent {}
 	template: ` <div obSelectableGroup>
 		<div obSelectable value="test"></div>
 	</div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 

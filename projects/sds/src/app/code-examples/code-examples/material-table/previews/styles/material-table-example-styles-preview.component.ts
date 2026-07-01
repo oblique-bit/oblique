@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 
 @Component({
 	selector: 'app-material-table-example-styles-preview',
 	imports: [MatTableModule],
 	templateUrl: './material-table-example-styles-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MaterialTableExampleStylesPreviewComponent {
 	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

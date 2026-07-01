@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, UrlSerializer} from '@angular/router';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {CmsDataService} from '../cms/cms-data.service';
@@ -36,6 +36,7 @@ import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redir
 	],
 	templateUrl: './tabbed-page.component.html',
 	styleUrl: './tabbed-page.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {
 		'(click)': 'onClick($event)',
 		class: 'content-page',

@@ -1,4 +1,4 @@
-import {Component, Input, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, input} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {ObNavTreeItemModel} from '../nav-tree-item.model';
 
@@ -8,6 +8,7 @@ import {ObNavTreeItemModel} from '../nav-tree-item.model';
 @Component({
 	selector: 'ob-nav-tree',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'ob-nav-tree'},
 	exportAs: 'obNavTree',
 })

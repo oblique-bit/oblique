@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, DestroyRef, inject, input} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, DestroyRef, inject, input} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -18,6 +18,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObNestedFormComponent},
 		{provide: NG_VALIDATORS, multi: true, useExisting: ObNestedFormComponent},
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {
 		'(focusout)': 'onBlur()',
 		class: 'ob-nested-form',

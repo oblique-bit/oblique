@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 
 /**
@@ -7,6 +7,7 @@ import {NgControl} from '@angular/forms';
 @Component({
 	selector: 'ob-error-messages',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obErrorMessages',
 })
 export class ObMockErrorMessagesComponent {

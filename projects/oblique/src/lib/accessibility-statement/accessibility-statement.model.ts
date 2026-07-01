@@ -12,8 +12,7 @@ export interface ObIAccessibilityStatementContactInfo {
 }
 
 export type ObIAccessibilityStatementConfiguration =
-	| ObIAccessibilityStatementConfigurationPartial
-	| ObIAccessibilityStatementConfigurationNonPartial;
+	ObIAccessibilityStatementConfigurationPartial | ObIAccessibilityStatementConfigurationNonPartial;
 
 interface ObIAccessibilityStatementConfigurationPartial extends ObIAccessibilityStatementConfigurationBase {
 	exceptions: NonEmptyArray<string>;

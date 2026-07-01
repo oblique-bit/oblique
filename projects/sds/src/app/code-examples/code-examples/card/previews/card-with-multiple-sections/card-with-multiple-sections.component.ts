@@ -1,5 +1,5 @@
 import {NgOptimizedImage} from '@angular/common';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {ObAlertModule, ObButtonModule} from '@oblique/oblique';
@@ -9,5 +9,6 @@ import {ObAlertModule, ObButtonModule} from '@oblique/oblique';
 	imports: [MatButtonModule, MatCardModule, NgOptimizedImage, ObAlertModule, ObButtonModule],
 	templateUrl: './card-with-multiple-sections.component.html',
 	styleUrl: './card-with-multiple-sections.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class CardWithMultipleSectionsComponent {}

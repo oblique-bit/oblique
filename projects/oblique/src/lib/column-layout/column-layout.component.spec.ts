@@ -1,7 +1,7 @@
 import {By} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, DebugElement, Directive, EventEmitter, Output, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement, Directive, EventEmitter, Output, inject} from '@angular/core';
 import {skip} from 'rxjs/operators';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
@@ -48,6 +48,7 @@ class ObColumnToggleDirective {
 @Component({
 	standalone: false,
 	template: `<ob-column-layout left="NONE" right="NONE" />`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 

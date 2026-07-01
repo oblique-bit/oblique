@@ -1,10 +1,11 @@
-import {Component, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@angular/core';
 
 @Component({
 	selector: 'ob-service-navigation-message',
 	standalone: false,
 	templateUrl: './service-navigation-message.component.html',
 	styleUrls: ['./service-navigation-message.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-message'},
 })

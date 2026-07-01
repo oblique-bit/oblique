@@ -1,4 +1,4 @@
-import {Component, TemplateRef, contentChildren} from '@angular/core';
+import {ChangeDetectionStrategy, Component, TemplateRef, contentChildren} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -7,6 +7,7 @@ import {Component, TemplateRef, contentChildren} from '@angular/core';
 	selector: 'ob-master-layout-footer',
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obMasterLayoutFooter',
 })
 export class ObMockMasterLayoutFooterComponent {

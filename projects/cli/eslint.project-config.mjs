@@ -18,6 +18,8 @@ export default [
 			'@typescript-eslint/no-unnecessary-condition': 'off', // needs strictNullChecks
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-unsafe-argument': 'off',
+			'@typescript-eslint/no-unsafe-return': 'off',
 		},
 	},
 	{

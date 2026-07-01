@@ -1,4 +1,4 @@
-import {Component, DebugElement, Directive} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement, Directive} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatButtonModule} from '@angular/material/button';
 import {By} from '@angular/platform-browser';
@@ -14,6 +14,7 @@ export class ButtonTestDirective {}
 @Component({
 	imports: [MatButtonModule, ButtonTestDirective, MatIcon, MatTooltip],
 	template: '<button type="button" obButton mat-icon-button matTooltip="tooltip"><mat-icon svgIcon="help" /></button>',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class ButtonTestComponent {}
 
@@ -21,6 +22,7 @@ class ButtonTestComponent {}
 	imports: [MatButtonModule, ButtonTestDirective, MatIcon, MatTooltip],
 	template:
 		'<button type="button" obButton mat-icon-button matTooltip="tooltip" [matTooltipDisabled]="true"><mat-icon svgIcon="help" /></button>',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class ButtonWithDisabledTooltipComponent {}
 

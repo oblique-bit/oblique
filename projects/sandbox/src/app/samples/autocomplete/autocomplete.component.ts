@@ -1,4 +1,4 @@
-import {Component, type OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit} from '@angular/core';
 import type {
 	ObIAutocompleteInputOption,
 	ObIAutocompleteInputOptionGroup,
@@ -12,6 +12,7 @@ import {BehaviorSubject, EMPTY, interval, switchMap} from 'rxjs';
 	standalone: false,
 	templateUrl: './autocomplete.component.html',
 	styleUrl: './autocomplete.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AutocompleteSampleComponent implements OnInit {
 	contentShiftEnabled = true;

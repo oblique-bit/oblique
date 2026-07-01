@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ObNavTreeItemModel} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-nav-page',
 	standalone: false,
 	templateUrl: './nav-page.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NavPageComponent {
 	items: ObNavTreeItemModel[] = [

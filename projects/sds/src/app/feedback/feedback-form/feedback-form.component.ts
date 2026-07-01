@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {type AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -22,6 +22,7 @@ import {ObButtonModule} from '@oblique/oblique';
 	],
 	templateUrl: './feedback-form.component.html',
 	styleUrl: './feedback-form.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FeedbackFormComponent {
 	readonly formGroup = new FormGroup({});

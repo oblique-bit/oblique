@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ObINotification} from '../notification.model';
 
 /**
@@ -7,6 +7,7 @@ import {ObINotification} from '../notification.model';
 @Component({
 	selector: 'ob-notification',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obNotification',
 })
 export class ObMockNotificationComponent {

@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObSelectableModule} from '@oblique/oblique';
 
 @Component({
@@ -7,5 +7,6 @@ import {ObSelectableModule} from '@oblique/oblique';
 	imports: [ObSelectableModule, AsyncPipe],
 	templateUrl: './selectable-example-windows-preview.component.html',
 	styleUrl: '../selectable-example-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SelectableExampleWindowsPreviewComponent {}

@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	Component,
 	Input,
 	OnInit,
@@ -44,6 +45,7 @@ import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.mode
 		ObServiceNavigationTimeoutCookieActivityService,
 		ObServiceNavigationTimeoutReturnUrlService,
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation'},
 })

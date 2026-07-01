@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {ObBreadcrumbConfig, ObIBreadcrumb} from '../breadcrumb.model';
@@ -9,6 +9,7 @@ import {ObBreadcrumbConfig, ObIBreadcrumb} from '../breadcrumb.model';
 @Component({
 	selector: 'ob-breadcrumb',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obBreadcrumb',
 })
 export class ObMockBreadcrumbComponent {

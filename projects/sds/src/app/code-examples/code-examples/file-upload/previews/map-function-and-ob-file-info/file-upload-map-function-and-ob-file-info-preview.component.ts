@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObFileUploadModule, type ObIFileDescription} from '@oblique/oblique';
 import {mockCustomDeleteURL, mockGetUploadedFilesURL, mockUploadURL} from '../../file-upload-simulate-interceptor';
 
@@ -7,6 +7,7 @@ import {mockCustomDeleteURL, mockGetUploadedFilesURL, mockUploadURL} from '../..
 	imports: [ObFileUploadModule],
 	templateUrl: './file-upload-map-function-and-ob-file-info-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FileUploadMapFunctionAndObFileInfoPreviewComponent {
 	readonly uploadURL = `${mockUploadURL}/map`;

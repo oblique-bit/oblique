@@ -1,4 +1,4 @@
-import {Component, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {ObIUploadEvent} from '../file-upload.model';
 
 /**
@@ -7,6 +7,7 @@ import {ObIUploadEvent} from '../file-upload.model';
 @Component({
 	selector: 'ob-file-upload',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'ob-file-upload'},
 	exportAs: 'obFileUpload',
 })

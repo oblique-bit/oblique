@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ObMasterLayoutService} from '@oblique/oblique';
 import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 	imports: [MatCard, MatCardContent, MatCardTitle, MatSlideToggle, FormsModule],
 	templateUrl: './master-layout-footer-sample.component.html',
 	styleUrl: './master-layout-footer-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MasterLayoutFooterSampleComponent {
 	private readonly masterLayout = inject(ObMasterLayoutService);

@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
 	selector: 'sb-form',
 	standalone: false,
 	templateUrl: './form.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FormComponent {
 	size = '';

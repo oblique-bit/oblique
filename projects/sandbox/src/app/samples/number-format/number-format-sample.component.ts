@@ -1,10 +1,11 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 
 @Component({
 	selector: 'sb-number-format',
 	standalone: false,
 	templateUrl: './number-format-sample.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NumberFormatSampleComponent {
 	number1 = 5.236548;

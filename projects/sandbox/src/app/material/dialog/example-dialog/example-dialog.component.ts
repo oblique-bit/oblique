@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, type OnDestroy, inject} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, Component, type OnDestroy, inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ObSpinnerService} from '@oblique/oblique';
 import type {ObIDialogData} from '../dialog.model';
@@ -7,6 +7,7 @@ import type {ObIDialogData} from '../dialog.model';
 	selector: 'sb-example-dialog',
 	standalone: false,
 	templateUrl: './example-dialog.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExampleDialogComponent implements AfterViewInit, OnDestroy {
 	sampleChannel = 'demo';

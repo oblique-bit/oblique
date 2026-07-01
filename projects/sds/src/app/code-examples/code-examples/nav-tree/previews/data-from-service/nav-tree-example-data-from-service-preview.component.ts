@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 import {MatButtonModule} from '@angular/material/button';
 
@@ -6,5 +6,6 @@ import {MatButtonModule} from '@angular/material/button';
 	selector: 'app-nav-tree-example-data-from-service-preview',
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
 	templateUrl: './nav-tree-example-data-from-service-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NavTreeExampleDataFromServicePreviewComponent {}

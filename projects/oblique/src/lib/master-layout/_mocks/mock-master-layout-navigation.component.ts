@@ -1,4 +1,4 @@
-import {Component, Input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, output} from '@angular/core';
 import {ObINavigationLink} from '../master-layout.module';
 
 /**
@@ -8,6 +8,7 @@ import {ObINavigationLink} from '../master-layout.module';
 	selector: 'ob-master-layout-navigation',
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obMasterLayoutNavigation',
 })
 export class ObMockMasterLayoutNavigationComponent {

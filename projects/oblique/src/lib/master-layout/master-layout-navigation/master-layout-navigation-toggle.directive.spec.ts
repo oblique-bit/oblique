@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation-toggle.directive';
@@ -7,6 +7,7 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-
 @Component({
 	standalone: false,
 	template: '<span obMasterLayoutNavigationToggle> test </span>',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 

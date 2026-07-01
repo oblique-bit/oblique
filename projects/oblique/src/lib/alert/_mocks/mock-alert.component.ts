@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -6,6 +6,7 @@ import {Component, Input} from '@angular/core';
 @Component({
 	selector: 'ob-alert',
 	template: '<ng-content />',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obAlert',
 })
 export class ObMockAlertComponent {

@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {DatePipe, Location} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
 import {MatButton} from '@angular/material/button';
@@ -30,6 +30,7 @@ import {ObMasterLayoutService} from '../master-layout/master-layout.service';
 	],
 	templateUrl: './accessibility-statement.component.html',
 	styleUrl: './accessibility-statement.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AccessibilityStatementComponent {
 	readonly parameters = inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION);

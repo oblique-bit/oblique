@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {ObErrorMessagesModule} from '@oblique/oblique';
@@ -9,6 +9,7 @@ import {ObSchemaValidationModule} from '@oblique/oblique/schema-validation';
 	selector: 'app-schema-validation-example-template-driven-form-preview',
 	imports: [MatInputModule, ObSchemaValidationModule, ObErrorMessagesModule, FormsModule],
 	templateUrl: './schema-validation-example-template-driven-form-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SchemaValidationExampleTemplateDrivenFormPreviewComponent {
 	firstName = '';

@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
 	QueryList,
@@ -18,6 +19,7 @@ import {ObIDynamicSkipLink, ObINavigationLink, ObISkipLink} from '../master-layo
 	selector: 'ob-master-layout',
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obMasterLayout',
 })
 export class ObMockMasterLayoutComponent {

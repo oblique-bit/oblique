@@ -6,5 +6,5 @@
     "outDir": "../../dist/toolchain/esm"
   },
   "include": ["src/logger/**/*.ts", "src/exec/**/*.ts"],
-  "exclude": ["src/**/*.spec.ts"]
+  "exclude": ["src/**/*.spec.ts", "src/**/mock/*", "src/schematics/test-utils.ts"]
 }

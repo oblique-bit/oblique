@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
 import type {Duration, IconPosition} from './collapse-sample.model';
 
@@ -6,6 +6,7 @@ import type {Duration, IconPosition} from './collapse-sample.model';
 	selector: 'sb-collapse-sample',
 	standalone: false,
 	templateUrl: './collapse-sample.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class CollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';

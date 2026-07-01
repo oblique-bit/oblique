@@ -1,4 +1,14 @@
-import {Component, ElementRef, Input, OnChanges, ViewEncapsulation, inject, input, output} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	ElementRef,
+	Input,
+	OnChanges,
+	ViewEncapsulation,
+	inject,
+	input,
+	output,
+} from '@angular/core';
 import {ObMasterLayoutNavigationItemDirective} from '../master-layout-navigation-item.directive';
 import {IsActiveMatchOptions} from '@angular/router';
 import {ObNavigationLink} from '../navigation-link.model';
@@ -8,6 +18,7 @@ import {ObNavigationLink} from '../navigation-link.model';
 	standalone: false,
 	templateUrl: './master-layout-navigation-sub-menu-item.component.html',
 	styleUrls: ['./master-layout-navigation-sub-menu-item.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'[class.column]': 'column',

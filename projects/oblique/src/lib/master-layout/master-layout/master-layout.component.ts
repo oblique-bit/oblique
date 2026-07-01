@@ -1,4 +1,6 @@
+/* eslint-disable max-lines */
 import {
+	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
 	DOCUMENT,
@@ -48,6 +50,7 @@ import {MasterLayoutComponentBase} from './master-layout-component-base';
 		'./master-layout-offcanvas.component.scss',
 		'./master-layout-accessibility.component.scss',
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'[class.ob-layout-collapsed]': 'isLayoutCollapsed',

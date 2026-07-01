@@ -5,9 +5,10 @@
     "declaration": true,
     "declarationMap": true,
     "rootDir": "src/",
+    "types": ["node"],
     "outDir": "../../dist/toolchain",
     "esModuleInterop": true
   },
   "include": ["src/**/*"],
-  "exclude": ["src/**/*.spec.ts"]
+  "exclude": ["src/**/*.spec.ts", "src/**/mock/*", "src/schematics/test-utils.ts"]
 }

@@ -1,12 +1,5 @@
 export type ObDateFormat =
-	| 'isoDate'
-	| 'fullDate'
-	| 'longDate'
-	| 'mediumDate'
-	| 'shortDate'
-	| 'longMonthYear'
-	| 'mediumMonthYear'
-	| 'longMonth';
+	'isoDate' | 'fullDate' | 'longDate' | 'mediumDate' | 'shortDate' | 'longMonthYear' | 'mediumMonthYear' | 'longMonth';
 export type ObTimeFormat = 'longTime' | 'mediumTime' | 'shortTime';
 export type ObDateTimeFormat = ObDateFormat | ObTimeFormat;
 export type ObDateValue = Date | number | string | null | undefined;

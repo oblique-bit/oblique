@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObFileUploadModule} from '@oblique/oblique';
 import {mockDeleteURL, mockGetUploadedFilesURL, mockUploadURL} from '../../file-upload-simulate-interceptor';
 
@@ -7,6 +7,7 @@ import {mockDeleteURL, mockGetUploadedFilesURL, mockUploadURL} from '../../file-
 	imports: [ObFileUploadModule],
 	templateUrl: './file-upload-fully-functioning-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FileUploadFullyFunctioningPreviewComponent {
 	readonly uploadURL = `${mockUploadURL}/fully-functioning`;

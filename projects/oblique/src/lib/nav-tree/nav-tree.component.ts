@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	Component,
 	Input,
 	OnChanges,
@@ -37,6 +38,7 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 	],
 	templateUrl: './nav-tree.component.html',
 	styleUrls: ['./nav-tree.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	exportAs: 'obNavTree',
 })

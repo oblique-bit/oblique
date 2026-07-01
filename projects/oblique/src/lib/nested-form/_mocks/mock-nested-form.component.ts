@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -19,6 +19,7 @@ import {
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObMockNestedFormComponent},
 		{provide: NG_VALIDATORS, multi: true, useExisting: ObMockNestedFormComponent},
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'ob-nested-form'},
 	exportAs: 'obNestedForm',
 })

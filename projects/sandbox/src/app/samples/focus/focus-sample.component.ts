@@ -1,4 +1,12 @@
-import {type AfterViewInit, Component, DOCUMENT, ElementRef, inject, viewChild} from '@angular/core';
+import {
+	type AfterViewInit,
+	ChangeDetectionStrategy,
+	Component,
+	DOCUMENT,
+	ElementRef,
+	inject,
+	viewChild,
+} from '@angular/core';
 import {obFocusWithOutline} from '@oblique/oblique';
 
 @Component({
@@ -6,6 +14,7 @@ import {obFocusWithOutline} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './focus-sample.component.html',
 	styleUrl: './focus-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FocusSampleComponent implements AfterViewInit {
 	readonly card = viewChild.required('card', {read: ElementRef});

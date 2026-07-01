@@ -1,5 +1,5 @@
 import type {HttpErrorResponse} from '@angular/common/http';
-import {Component, type OnInit, SecurityContext, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, SecurityContext, inject} from '@angular/core';
 import {FormBuilder, type FormControl, type FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -22,6 +22,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 	],
 	templateUrl: './newsletter.component.html',
 	styleUrl: './newsletter.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NewsletterComponent implements OnInit {
 	formGroup: FormGroup<{email: FormControl<string>}>;

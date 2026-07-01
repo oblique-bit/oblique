@@ -1,4 +1,4 @@
-import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ChangeDetectionStrategy, Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {WINDOW} from '../window/window.provider';
@@ -18,6 +18,7 @@ import {ObEToggleType} from './popover.model';
 			<p>Hello World</p>
 		</ng-template>
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestPopoverComponent {}
 

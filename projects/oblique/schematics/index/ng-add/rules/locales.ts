@@ -51,7 +51,7 @@ function registerLocales(locales: string[]): Rule {
 		const replacement = locales
 			.filter(locale => filterLocale(tree, locale))
 			.map(locale => `registerLocaleData(${getLocaleVariable(locale)});`)
-			.reduce((rep, locale) => [...rep, locale], [])
+			.reduce((rep: string[], locale) => [...rep, locale], [])
 			.concat('\n@NgModule')
 			.join('\n');
 		tree.overwrite(appModulePath, readFile(tree, appModulePath).replace('@NgModule', replacement));

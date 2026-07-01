@@ -1,6 +1,15 @@
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
-import {Component, HostAttributeToken, InjectionToken, Input, OnInit, ViewEncapsulation, inject} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	HostAttributeToken,
+	InjectionToken,
+	Input,
+	OnInit,
+	ViewEncapsulation,
+	inject,
+} from '@angular/core';
 import {ObIAlertType} from './alert.model';
 import {alertIcons} from './alert-icons';
 import {TranslateModule} from '@ngx-translate/core';
@@ -14,6 +23,7 @@ export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 	imports: [MatIconModule, TranslateModule],
 	templateUrl: './alert.component.html',
 	styleUrls: ['./alert.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'[attr.role]': `role`,

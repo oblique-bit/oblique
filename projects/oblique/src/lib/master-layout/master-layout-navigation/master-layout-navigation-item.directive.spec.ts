@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Subject} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
@@ -11,6 +11,7 @@ import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-
 @Component({
 	standalone: false,
 	template: '<li role="presentation" obMasterLayoutNavigationItem> test </li>',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 

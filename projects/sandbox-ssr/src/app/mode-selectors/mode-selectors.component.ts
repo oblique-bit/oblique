@@ -1,4 +1,4 @@
-import {Component, DOCUMENT, type OnInit, Renderer2, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DOCUMENT, type OnInit, Renderer2, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NonNullableFormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
@@ -8,6 +8,7 @@ import {TranslateModule} from '@ngx-translate/core';
 	imports: [ReactiveFormsModule, MatButtonToggleModule, TranslateModule],
 	templateUrl: './mode-selectors.component.html',
 	styleUrl: 'mode-selectors.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ModeSelectorComponent implements OnInit {
 	readonly formBuilder = inject(NonNullableFormBuilder);

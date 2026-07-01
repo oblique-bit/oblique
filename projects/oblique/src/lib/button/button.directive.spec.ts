@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {MatButtonModule} from '@angular/material/button';
@@ -7,6 +7,7 @@ import {ObButtonDirective} from './button.directive';
 @Component({
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class ButtonDirectiveTestComponent {
 	obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';

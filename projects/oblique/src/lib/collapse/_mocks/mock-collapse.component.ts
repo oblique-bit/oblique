@@ -1,4 +1,4 @@
-import {Component, Input, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, input, output} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -6,6 +6,7 @@ import {Component, Input, input, output} from '@angular/core';
 @Component({
 	selector: 'ob-collapse',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obCollapse',
 })
 export class ObMockCollapseComponent {

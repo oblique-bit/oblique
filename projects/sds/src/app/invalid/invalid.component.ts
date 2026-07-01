@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 
 @Component({
@@ -6,6 +6,7 @@ import {RouterLink} from '@angular/router';
 	imports: [RouterLink],
 	templateUrl: './invalid.component.html',
 	styleUrl: './invalid.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'content-page'},
 })
 export class InvalidComponent {}

@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {
 	type AbstractControl,
 	FormBuilder,
@@ -18,6 +18,7 @@ import {ObInputClearModule} from '@oblique/oblique';
 	imports: [MatFormFieldModule, MatIconModule, MatInputModule, ObInputClearModule, ReactiveFormsModule],
 	templateUrl: './form-example-input-clear-preview.component.html',
 	styleUrl: './form-example-input-clear-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FormExampleInputClearPreviewComponent implements OnInit {
 	stronglyTypedForm: FormGroup<{stronglyTypedFormField: FormControl<string>}>;

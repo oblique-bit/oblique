@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
@@ -20,6 +20,7 @@ import type {PeriodicElement} from './mock-backend.service';
 		ObButtonModule,
 	],
 	templateUrl: './material-table-editable-dialog.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AppMaterialTableExampleEditableDialogComponent {
 	editForm: UntypedFormGroup;

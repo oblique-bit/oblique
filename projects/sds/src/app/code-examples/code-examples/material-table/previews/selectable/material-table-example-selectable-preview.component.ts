@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ObIPeriodicElement} from './table.model';
 import {TableManager} from './table-manager';
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
@@ -23,6 +23,7 @@ import {MatTooltip} from '@angular/material/tooltip';
 	],
 	templateUrl: './material-table-example-selectable-preview.component.html',
 	styleUrl: './material-table-example-selectable-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MaterialTableExampleSelectablePreviewComponent {
 	readonly displayedColumns = ['select', 'position', 'name', 'weight', 'symbol', 'actions'];

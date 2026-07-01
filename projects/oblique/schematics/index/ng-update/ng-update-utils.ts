@@ -82,7 +82,7 @@ function checkDependency(tree: Tree, context: SchematicContext, dependency: stri
 		? ''
 		: `"${dependency}" at version ${versions
 				.filter(version => version > 0)
-				.reduce((supportedVersions, version) => [...supportedVersions, version], [])
+				.reduce((supportedVersions: number[], version) => [...supportedVersions, version], [])
 				.join(' or ')}`;
 }
 

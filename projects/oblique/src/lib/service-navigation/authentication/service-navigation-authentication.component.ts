@@ -1,10 +1,11 @@
-import {Component, Input, ViewEncapsulation, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation, input, output} from '@angular/core';
 
 @Component({
 	selector: 'ob-service-navigation-authentication',
 	standalone: false,
 	templateUrl: './service-navigation-authentication.component.html',
 	styleUrls: ['./service-navigation-authentication.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-authentication'},
 })

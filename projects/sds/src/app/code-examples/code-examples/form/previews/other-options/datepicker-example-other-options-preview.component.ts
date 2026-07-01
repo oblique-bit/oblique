@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import type {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -10,6 +10,7 @@ import {ObDatepickerModule} from '@oblique/oblique';
 	selector: 'app-datepicker-example-other-options-preview',
 	imports: [DatePipe, MatFormFieldModule, MatInputModule, ObDatepickerModule, ReactiveFormsModule],
 	templateUrl: './datepicker-example-other-options-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DatepickerExampleOtherOptionsPreviewComponent {
 	readonly august1st1891 = new Date(1891, 7, 1);

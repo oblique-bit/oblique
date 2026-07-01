@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, type ElementRef, input, viewChild} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, Component, type ElementRef, input, viewChild} from '@angular/core';
 import hljs from 'highlight.js';
 import {IdPipe} from '../../../shared/id/id.pipe';
 
@@ -7,6 +7,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 	imports: [IdPipe],
 	templateUrl: './highlighted-code.component.html',
 	styleUrl: './highlighted-code.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class HighlightedCodeComponent implements AfterViewInit {
 	readonly idPrefix = input('');

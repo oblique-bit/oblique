@@ -1,4 +1,4 @@
-import {Component, DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {first, skip} from 'rxjs/operators';
@@ -22,6 +22,7 @@ interface ObSelectableGroupDirectivePrivate<T> {
 		<div obSelectable [value]="2"></div>
 		<div obSelectable [value]="3"></div>
 	</div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {
 	selectableGroup = new FormControl([1]);
