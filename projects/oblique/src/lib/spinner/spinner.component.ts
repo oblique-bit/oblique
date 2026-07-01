@@ -1,5 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {
+	ChangeDetectionStrategy,
 	Component,
 	DOCUMENT,
 	DestroyRef,
@@ -23,6 +24,7 @@ import {ObSpinnerRegistry} from './spinner.registry';
 	imports: [AsyncPipe, MatIconModule],
 	templateUrl: './spinner.component.html',
 	styleUrls: ['./spinner.component.scss', './spinner-animations.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-spinner', '[attr.aria-hidden]': 'true'},
 	exportAs: 'obSpinner',

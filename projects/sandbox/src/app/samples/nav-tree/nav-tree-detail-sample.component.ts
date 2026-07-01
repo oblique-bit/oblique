@@ -1,4 +1,4 @@
-import {Component, type Signal, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type Signal, inject} from '@angular/core';
 import {ActivatedRoute, type Params} from '@angular/router';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {type Observable, filter, map} from 'rxjs';
@@ -7,6 +7,7 @@ import {type Observable, filter, map} from 'rxjs';
 	selector: 'sb-nav-tree-detail-sample',
 	standalone: false,
 	templateUrl: './nav-tree-detail-sample.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NavTreeDetailSampleComponent {
 	readonly url: Signal<{param: string; value: string}[]>;

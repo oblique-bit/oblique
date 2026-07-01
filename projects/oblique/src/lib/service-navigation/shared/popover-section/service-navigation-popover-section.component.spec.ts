@@ -3,7 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
 import {ObMockTranslatePipe} from './../../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationPopOverSectionHarness} from './service-navigation-popover-section.harness';
@@ -14,6 +14,7 @@ import {ObIsCurrentUrlPipe} from './is-current-url.pipe';
 @Component({
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 
@@ -154,11 +155,11 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 						link = links[index];
 					});
 
-					it(`should have "${sampleLinks[index].label as string}" as content`, async () => {
+					it(`should have "${sampleLinks[index].label}" as content`, async () => {
 						expect(await link.text()).toBe(sampleLinks[index].label);
 					});
 
-					it(`should have "${sampleLinks[index].url as string}" as href attribute`, async () => {
+					it(`should have "${sampleLinks[index].url}" as href attribute`, async () => {
 						expect(await link.getAttribute('href')).toBe(sampleLinks[index].url);
 					});
 
@@ -166,7 +167,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 						expect(await link.getProperty('isExternalLink')).toBe(!sampleLinks[index].isInternalLink);
 					});
 
-					it(`should have "${(sampleLinks[index].ariaLabel?.text as string) ?? null}" as aria-label attribute`, async () => {
+					it(`should have "${sampleLinks[index].ariaLabel?.text! ?? null}" as aria-label attribute`, async () => {
 						expect(await link.getAttribute('aria-label')).toBe(sampleLinks[index].ariaLabel?.text ?? null);
 					});
 

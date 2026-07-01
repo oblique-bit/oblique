@@ -39,6 +39,7 @@ export default defineConfig(
 			'@typescript-eslint/no-unnecessary-condition': 'off',
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'@typescript-eslint/strict-boolean-expressions': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'no-implicit-coercion': 'off',
 			'require-unicode-regexp': 'off',
 		},
@@ -56,6 +57,8 @@ export default defineConfig(
 			'@typescript-eslint/no-dynamic-delete': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off', //TODO ask René about new rules
+			'@typescript-eslint/no-unsafe-call': 'off', //TODO ask René about new rules
 			'func-names': 'off',
 		},
 	},

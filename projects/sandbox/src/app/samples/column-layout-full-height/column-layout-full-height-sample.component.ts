@@ -1,10 +1,11 @@
-import {Component, type OnDestroy, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnDestroy, type OnInit, inject} from '@angular/core';
 import {ObMasterLayoutService} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-column-layout-full-height-sample',
 	standalone: false,
 	templateUrl: './column-layout-full-height-sample.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ColumnLayoutFullHeightSampleComponent implements OnInit, OnDestroy {
 	left = 'OPENED';

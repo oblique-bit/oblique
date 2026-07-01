@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
 import {ObMasterLayoutService} from '@oblique/oblique';
 
@@ -7,6 +7,7 @@ import {ObMasterLayoutService} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './screen-reader-only.component.html',
 	styleUrl: './screen-reader-only.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ScreenReaderOnlyComponent implements OnInit {
 	layout: UntypedFormControl;

@@ -1,4 +1,4 @@
-import {Component, inject, viewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {FormGroupDirective, NgForm, UntypedFormBuilder, Validators} from '@angular/forms';
 import {ObNotificationService} from '@oblique/oblique';
 
@@ -7,6 +7,7 @@ import {ObNotificationService} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './nested-form-sample.component.html',
 	styleUrl: './mandatory.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NestedFormSampleComponent {
 	parentForm = inject(UntypedFormBuilder).group({

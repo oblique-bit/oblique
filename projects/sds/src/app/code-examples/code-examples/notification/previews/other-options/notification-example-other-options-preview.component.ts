@@ -7,7 +7,7 @@ import {
 	ObNotificationModule,
 	ObNotificationService,
 } from '@oblique/oblique';
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
@@ -18,6 +18,7 @@ import {TranslateModule} from '@ngx-translate/core';
 		'./notification-example-other-options-preview.component.scss',
 		'../../../../code-example-flex-layout.scss',
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NotificationExampleOtherOptionsPreviewComponent {
 	public types = ObENotificationType;

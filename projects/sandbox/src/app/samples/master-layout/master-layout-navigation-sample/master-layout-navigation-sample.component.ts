@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {AsyncPipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
@@ -35,6 +35,7 @@ import {map} from 'rxjs/operators';
 	],
 	templateUrl: './master-layout-navigation-sample.component.html',
 	styleUrl: './master-layout-navigation-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MasterLayoutNavigationSampleComponent {
 	loginState$: Observable<ObLoginState>;

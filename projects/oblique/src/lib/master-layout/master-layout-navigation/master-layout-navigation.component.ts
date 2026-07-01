@@ -1,5 +1,6 @@
 import {
 	AfterViewInit,
+	ChangeDetectionStrategy,
 	Component,
 	Input,
 	OnChanges,
@@ -26,6 +27,7 @@ import {MasterLayoutNavigationComponentBase} from './master-layout-navigation-co
 	standalone: false,
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation-scrollable.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'[class.navigation-scrollable]': 'isScrollable',

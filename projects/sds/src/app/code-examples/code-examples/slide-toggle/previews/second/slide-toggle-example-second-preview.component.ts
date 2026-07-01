@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @Component({
@@ -6,6 +6,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 	imports: [MatSlideToggleModule],
 	templateUrl: './slide-toggle-example-second-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'layout-breakpoint-lg'},
 })
 export class SlideToggleExampleSecondPreviewComponent {

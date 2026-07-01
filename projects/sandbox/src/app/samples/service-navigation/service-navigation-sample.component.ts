@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, type OnInit, inject, viewChild} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, Component, type OnInit, inject, viewChild} from '@angular/core';
 import {
 	type ObIServiceNavigationContact,
 	type ObIServiceNavigationLink,
@@ -15,6 +15,7 @@ import {environment} from '../../../environments/environment';
 	standalone: false,
 	templateUrl: './service-navigation-sample.component.html',
 	styleUrl: './service-navigation-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	returnUrl: string;

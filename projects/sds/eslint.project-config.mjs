@@ -33,6 +33,13 @@ export default [
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
 			'accessor-pairs': 'off',
+			'@typescript-eslint/no-unsafe-argument': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-unsafe-member-access': 'off',
+			'@typescript-eslint/no-unsafe-call': 'off',
+			'@typescript-eslint/no-redundant-type-constituents': 'off',
+			'@typescript-eslint/no-unsafe-return': 'off',
+			'@typescript-eslint/switch-exhaustiveness-check': 'off',
 		},
 	},
 	{

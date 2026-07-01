@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
 	EventEmitter,
@@ -22,6 +23,7 @@ import {ObValidationService} from './validation.service';
 	templateUrl: './ob-drop-zone.component.html',
 	styleUrls: ['./ob-drop-zone.component.scss'],
 	providers: [ObValidationService],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-drop-zone'},
 	exportAs: 'obDropZone',

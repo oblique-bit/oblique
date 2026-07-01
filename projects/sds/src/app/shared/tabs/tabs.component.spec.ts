@@ -1,4 +1,4 @@
-import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ChangeDetectionStrategy, Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TabComponent} from './tab/tab.component';
 import {TabsComponent} from './tabs.component';
@@ -30,6 +30,7 @@ import {
 			<p [id]="componentId | id: ['tab-2-content']">test-tab-2-p</p></app-tab
 		>
 	</app-tabs>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TabsWrapperComponent {
 	readonly componentId = 'tabs-wrapper';

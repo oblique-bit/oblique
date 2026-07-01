@@ -1,4 +1,4 @@
-import {Component, type OnDestroy, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnDestroy, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
@@ -20,6 +20,7 @@ import {appNavigation} from './app-navigation';
 	standalone: false,
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AppComponent implements OnDestroy {
 	version = appVersion;

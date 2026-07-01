@@ -78,7 +78,9 @@ function getAllRules(): {all: string[]; disabled: string[]} {
 	const typescriptRules = getTypescriptRules();
 	// exclude component-selector and directive-selector as they are very specific to the project and thus not imposed by Oblique
 	const exceptions = ['@angular-eslint/component-selector', '@angular-eslint/directive-selector'];
-	const angularRules = Object.keys(ngEslint.configs.all.rules).filter(rule => !exceptions.includes(rule));
+	const angularRules = Object.keys(ngEslint.rules)
+		.map(rule => `@angular-eslint/${rule}`)
+		.filter(rule => !exceptions.includes(rule));
 	return {
 		all: [...eslintRules, ...angularRules, ...typescriptRules.all],
 		disabled: typescriptRules.disabled,

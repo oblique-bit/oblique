@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ObIFileDescription, ObIUploadEvent} from '@oblique/oblique';
 
 @Component({
@@ -6,6 +6,7 @@ import type {ObIFileDescription, ObIUploadEvent} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './file-upload-sample.component.html',
 	styleUrl: './file-upload-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FileUploadSampleComponent {
 	uploadUrl: string;

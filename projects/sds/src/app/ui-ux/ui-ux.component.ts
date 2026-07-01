@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {ObExternalLinkDirective} from '@oblique/oblique';
 import {SafeHtmlPipe} from '../shared/safeHtml/safeHtml.pipe';
@@ -11,6 +11,7 @@ import {NgOptimizedImage} from '@angular/common';
 	imports: [SafeHtmlPipe, RouterLink, RelatedLinkPipe, ObExternalLinkDirective, NgOptimizedImage],
 	templateUrl: './ui-ux.component.html',
 	styleUrl: './ui-ux.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class UiUxComponent {
 	readonly uiUx = input<UiUxData>(undefined);

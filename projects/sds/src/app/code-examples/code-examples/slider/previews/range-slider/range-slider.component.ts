@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatSliderModule} from '@angular/material/slider';
 
 @Component({
@@ -6,5 +6,6 @@ import {MatSliderModule} from '@angular/material/slider';
 	imports: [MatSliderModule],
 	templateUrl: './range-slider.component.html',
 	styleUrl: './range-slider.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class RangeSliderComponent {}

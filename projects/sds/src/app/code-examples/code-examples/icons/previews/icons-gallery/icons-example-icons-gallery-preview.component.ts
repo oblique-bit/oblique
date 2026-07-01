@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
 	ObAlertModule,
 	ObButtonModule,
@@ -57,6 +57,7 @@ import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 	],
 	templateUrl: './icons-example-icons-gallery-preview.component.html',
 	styleUrl: './icons-example-icons-gallery-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');

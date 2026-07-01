@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
@@ -6,5 +6,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 	selector: 'app-nav-tree-example-expand-collapse-preview',
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
 	templateUrl: './nav-tree-example-expand-collapse-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NavTreeExampleExpandCollapsePreviewComponent {}

@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
@@ -25,6 +25,7 @@ import type {IconMetadata} from '../icons.model';
 	],
 	templateUrl: './icon-dialog.component.html',
 	styleUrl: './icon-dialog.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class IconDialogComponent {
 	selectedIconMetaData = inject<IconMetadata>(MAT_DIALOG_DATA);

@@ -1,11 +1,12 @@
 import {ObOutlineDirective} from './outline.directive';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
 @Component({
 	standalone: false,
 	template: `<ob-master-layout />`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class OutLineDirectiveTestComponent {}
 

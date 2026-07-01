@@ -1,5 +1,5 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {CollectorService} from '../shared/collector/collector.service';
 import {FeedbackTriggerDirective} from './feedback-trigger.directive';
@@ -7,6 +7,7 @@ import {FeedbackTriggerDirective} from './feedback-trigger.directive';
 @Component({
 	imports: [FeedbackTriggerDirective],
 	template: `<button type="button" appFeedbackTrigger>btn</button>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TestComponentComponent {}
 

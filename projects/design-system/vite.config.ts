@@ -35,6 +35,7 @@ export default defineConfig({
 	plugins: [
 		dts({
 			entryRoot: 'src',
+			tsconfigPath: 'tsconfig.lib.json',
 			include: ['src/lib/**/*.ts'],
 			exclude: ['src/lib/**/*.spec.ts'],
 		}),

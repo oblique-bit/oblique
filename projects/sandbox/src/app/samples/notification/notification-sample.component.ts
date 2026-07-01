@@ -1,10 +1,11 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ObENotificationPlacement, ObENotificationType, ObNotificationService} from '@oblique/oblique';
 
 @Component({
 	selector: 'sb-notification-sample',
 	standalone: false,
 	templateUrl: './notification-sample.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NotificationSampleComponent {
 	messageWithParams = false;

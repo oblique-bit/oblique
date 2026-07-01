@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {ExampleDialogComponent} from './example-dialog/example-dialog.component';
 
@@ -6,6 +6,7 @@ import {ExampleDialogComponent} from './example-dialog/example-dialog.component'
 	selector: 'sb-dialog',
 	standalone: false,
 	templateUrl: './dialog.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DialogComponent {
 	dialog = inject(MatDialog);

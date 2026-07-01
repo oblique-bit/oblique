@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.angular.json",
   "compilerOptions": {
     "baseUrl": "../../",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@oblique/design-system": ["./projects/design-system/src/public-api"]
     }

@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, WINDOW} from '@oblique/oblique';
@@ -13,6 +13,7 @@ import {AppMaterialTableExampleEditableDialogComponent} from './material-table-e
 	imports: [MatTableModule, MatButtonModule, ObButtonModule, MatIconModule, MatDialogModule, MatTooltip],
 	templateUrl: './material-table-example-editable-preview.component.html',
 	styleUrl: './material-table-example-editable-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MaterialTableExampleEditablePreviewComponent implements OnInit {
 	public displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'actions'];

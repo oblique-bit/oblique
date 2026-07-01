@@ -1,5 +1,5 @@
 import {NgComponentOutlet} from '@angular/common';
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import type {ComponentPage} from './component-page';
 import {getComponentPageComponent} from './component-page.mapper';
@@ -9,6 +9,7 @@ import {getComponentPageComponent} from './component-page.mapper';
 	imports: [NgComponentOutlet],
 	templateUrl: './component-page.component.html',
 	styleUrl: './component-page.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'content-page'},
 })
 export class ComponentPageComponent implements OnInit {

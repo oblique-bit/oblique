@@ -1,6 +1,7 @@
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
 	AfterViewInit,
+	ChangeDetectionStrategy,
 	Component,
 	DoCheck,
 	ElementRef,
@@ -74,6 +75,7 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 			multi: true,
 		},
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-autocomplete'},
 })

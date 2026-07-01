@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ObEUploadEventType, ObFileUploadModule, type ObIUploadEvent} from '@oblique/oblique';
 import {mockUploadURL} from '../../file-upload-simulate-interceptor';
 
@@ -7,6 +7,7 @@ import {mockUploadURL} from '../../file-upload-simulate-interceptor';
 	imports: [ObFileUploadModule],
 	templateUrl: './file-upload-upload-event-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FileUploadUploadEventPreviewComponent {
 	readonly uploadURL = `${mockUploadURL}/events`;

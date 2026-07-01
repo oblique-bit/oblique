@@ -1,8 +1,10 @@
 {
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
+    "rootDir": ".",
     "module": "commonjs",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src/**/*.spec.ts"]
 }

@@ -1,4 +1,13 @@
-import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation, inject} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	Input,
+	OnDestroy,
+	OnInit,
+	ViewEncapsulation,
+	inject,
+} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObAlertComponent} from '../alert/alert.component';
@@ -14,6 +23,7 @@ import {Subject, takeUntil} from 'rxjs';
 	imports: [MatTooltipModule, ObAlertComponent, ObTranslateParamsPipe, TranslateModule],
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss', './notification-animations.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'[class.ob-custom]': 'customChannel',

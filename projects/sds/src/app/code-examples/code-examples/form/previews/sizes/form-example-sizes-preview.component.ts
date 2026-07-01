@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -18,5 +18,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 	],
 	templateUrl: './form-example-sizes-preview.component.html',
 	styleUrl: './form-example-sizes-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FormExampleSizesPreviewComponent {}

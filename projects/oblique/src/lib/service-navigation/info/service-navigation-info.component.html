@@ -40,7 +40,8 @@
 								[attr.aria-label]="
 									typeof link.ariaLabel === 'string'
 										? (link.ariaLabel | translate)
-										: (link.ariaLabel?.text | translate: link.ariaLabel?.parameters)
+										: ($safeNavigationMigration(link.ariaLabel?.text)
+											| translate: $safeNavigationMigration(link.ariaLabel?.parameters))
 								"
 							>
 								@if (link.icon) {

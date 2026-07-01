@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {JsonPipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -30,6 +30,7 @@ import {MatButtonModule} from '@angular/material/button';
 	],
 	templateUrl: './nested-form-example-template-driven-preview.component.html',
 	styleUrl: '../nested-form-example-preview.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NestedFormExampleTemplateDrivenPreviewComponent {
 	readonly channel = 'template-driven-channel';

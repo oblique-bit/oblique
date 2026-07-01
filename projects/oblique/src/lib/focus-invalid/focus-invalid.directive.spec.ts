@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, inject} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -51,6 +51,7 @@ import {ObFocusInvalidDirective} from './focus-invalid.directive';
 			<button type="submit">submit</button>
 		</form>
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class UntypedReactiveFormTestComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;

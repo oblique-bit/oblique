@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation, inject} from '@angular/core';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 import {TranslateModule} from '@ngx-translate/core';
 import {RouterLink} from '@angular/router';
@@ -9,6 +9,7 @@ import {ObLocalizePipe} from '../router/ob-localize.pipe';
 	imports: [RouterLink, TranslateModule, ObLocalizePipe],
 	templateUrl: './unknown-route.component.html',
 	styleUrls: ['./unknown-route.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-unknown-route'},
 })

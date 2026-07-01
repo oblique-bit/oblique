@@ -1,5 +1,6 @@
 import {HttpEvent, HttpEventType} from '@angular/common/http';
 import {
+	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
 	EventEmitter,
@@ -26,6 +27,7 @@ import {ObFileUploadService} from '../file-upload.service';
 	imports: [MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslateModule],
 	templateUrl: './progress.component.html',
 	styleUrls: ['./progress.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-progress'},
 })

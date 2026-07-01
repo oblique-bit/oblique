@@ -1,5 +1,5 @@
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -28,6 +28,7 @@ import {TranslateModule} from '@ngx-translate/core';
 			useValue: {showError: true},
 		},
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class StepperExampleErrorPreviewComponent {
 	firstFormGroup: UntypedFormGroup;

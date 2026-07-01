@@ -1,6 +1,6 @@
 <div mat-dialog-title>
 	<div class="image-container">
-		<mat-icon class="icon" [svgIcon]="selectedIconMetaData?.name" />
+		<mat-icon class="icon" [svgIcon]="$safeNavigationMigration(selectedIconMetaData?.name)" />
 	</div>
 
 	<button
@@ -10,7 +10,7 @@
 		type="button"
 		matTooltipPosition="above"
 		[matTooltip]="'i18n.icons.copy-icon-name' | translate"
-		(click)="copy(selectedIconMetaData?.name)"
+		(click)="copy($safeNavigationMigration(selectedIconMetaData?.name))"
 	>
 		<h3 [attr.aria-label]="'i18n.icons.screen-reader-title-description' | translate: { selectedIconName }">
 			{{ selectedIconMetaData?.name }}

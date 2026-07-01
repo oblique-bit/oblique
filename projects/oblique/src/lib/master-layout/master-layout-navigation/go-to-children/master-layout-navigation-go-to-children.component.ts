@@ -1,4 +1,4 @@
-import {Component, OnChanges, ViewEncapsulation, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnChanges, ViewEncapsulation, input, output} from '@angular/core';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -12,6 +12,7 @@ import {TranslateModule} from '@ngx-translate/core';
 	imports: [MatButtonModule, MatIconModule, ObButtonModule, MatTooltipModule, TranslateModule],
 	templateUrl: './master-layout-navigation-go-to-children.component.html',
 	styleUrls: ['./master-layout-navigation-go-to-children.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'[class.hide]': 'hide',

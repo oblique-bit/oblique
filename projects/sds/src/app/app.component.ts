@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {AsyncPipe} from '@angular/common';
 import {ObSpinnerModule} from '@oblique/oblique';
 import {Router, RouterOutlet} from '@angular/router';
@@ -12,6 +12,7 @@ import {BannerComponent} from './banner/banner.component';
 	imports: [RouterOutlet, ObSpinnerModule, SideNavigationComponent, BannerComponent, AsyncPipe],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {
 		'[class.has-opened-mobile-navigation]': 'showMobileNavigation',
 		'[class.has-banner]': 'hasBanner',

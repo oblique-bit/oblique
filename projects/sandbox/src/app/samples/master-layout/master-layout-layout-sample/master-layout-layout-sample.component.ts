@@ -1,4 +1,4 @@
-import {Component, inject, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
 import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {FormsModule} from '@angular/forms';
@@ -23,6 +23,7 @@ import {DynamicNavigationService} from '../dynamic-navigation.service';
 	],
 	templateUrl: './master-layout-layout-sample.component.html',
 	styleUrl: './master-layout-layout-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MasterLayoutLayoutSampleComponent {
 	readonly coverLayout = output<boolean>();

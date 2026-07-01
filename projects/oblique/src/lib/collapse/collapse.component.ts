@@ -1,6 +1,7 @@
 import {
 	AfterContentChecked,
 	AfterViewInit,
+	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
 	InjectionToken,
@@ -29,6 +30,7 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 	imports: [MatIconModule],
 	templateUrl: './collapse.component.html',
 	styleUrls: ['./collapse.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-collapse'},
 	exportAs: 'obCollapse',

@@ -182,7 +182,7 @@ export function getAngularConfigs(tree: Tree, path: string[]): {project: string;
 export function getAngularProjectsWithConfigs(tree: Tree, path: string[]): {project: string; config: any}[] {
 	const json = getJson(tree, angularJsonConfigPath);
 	return Object.keys(getJsonProperty(json, 'projects')).reduce(
-		(config, project) => [
+		(config: {project: string; config: string}[], project) => [
 			...config,
 			{
 				project,

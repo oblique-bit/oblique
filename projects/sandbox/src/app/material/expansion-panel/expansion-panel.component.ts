@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {MatAccordionDisplayMode, MatAccordionTogglePosition} from '@angular/material/expansion';
 
 @Component({
 	selector: 'sb-expansion-panel',
 	standalone: false,
 	templateUrl: './expansion-panel.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExpansionPanelComponent {
 	panelOpenState = false;

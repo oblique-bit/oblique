@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule} from '@oblique/oblique';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -7,5 +7,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 	selector: 'app-tooltip-example-basic-preview',
 	imports: [MatButtonModule, ObButtonModule, MatTooltipModule],
 	templateUrl: './tooltip-example-basic-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TooltipExampleBasicPreviewComponent {}

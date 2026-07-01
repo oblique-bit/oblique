@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type AbstractControl, UntypedFormControl, UntypedFormGroup, type ValidatorFn, Validators} from '@angular/forms';
 
 @Component({
@@ -6,6 +6,7 @@ import {type AbstractControl, UntypedFormControl, UntypedFormGroup, type Validat
 	standalone: false,
 	templateUrl: './error-messages-sample.component.html',
 	styleUrl: './error-messages-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ErrorMessagesSampleComponent {
 	select = new UntypedFormControl('', [Validators.required]);

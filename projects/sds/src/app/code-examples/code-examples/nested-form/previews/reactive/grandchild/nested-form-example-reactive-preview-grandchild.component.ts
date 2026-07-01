@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -9,6 +9,7 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 	imports: [MatInputModule, MatFormFieldModule, ObErrorMessagesModule, ReactiveFormsModule],
 	templateUrl: './nested-form-example-reactive-preview-grandchild.component.html',
 	styleUrl: '../../nested-form-example-preview.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'grandchild',
 })
 export class NestedFormExampleReactivePreviewGrandchildComponent {

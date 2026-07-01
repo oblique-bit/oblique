@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObAlertComponent, ObFileUploadModule} from '@oblique/oblique';
 import {mockUploadURL} from '../../file-upload-simulate-interceptor';
 
@@ -7,6 +7,7 @@ import {mockUploadURL} from '../../file-upload-simulate-interceptor';
 	imports: [ObFileUploadModule, ObAlertComponent],
 	templateUrl: './file-upload-cancel-upload-preview.component.html',
 	styleUrl: './file-upload-cancel-upload-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FileUploadCancelUploadPreviewComponent {
 	readonly uploadURL = `${mockUploadURL}/cancel-upload`;

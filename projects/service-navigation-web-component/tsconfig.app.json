@@ -9,6 +9,7 @@
     "declarationMap": true,
     "esModuleInterop": true,
     "baseUrl": "../../",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@oblique/oblique": ["./projects/oblique/src/public_api"]
     }

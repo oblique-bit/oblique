@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObEToggleType} from '@oblique/oblique';
 import type {Placement} from '@popperjs/core';
 
@@ -7,6 +7,7 @@ import type {Placement} from '@popperjs/core';
 	standalone: false,
 	templateUrl: './popover.component.html',
 	styleUrl: './popover.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class PopoverComponent {
 	param = 'This is a param.';

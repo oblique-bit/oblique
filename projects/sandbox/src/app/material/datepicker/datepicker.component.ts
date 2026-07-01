@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import type {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -18,6 +18,7 @@ import {ObDatepickerModule, ObErrorMessagesModule} from '@oblique/oblique';
 		ObErrorMessagesModule,
 	],
 	templateUrl: './datepicker.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DatepickerComponent implements OnInit {
 	untypedForm: UntypedFormGroup;

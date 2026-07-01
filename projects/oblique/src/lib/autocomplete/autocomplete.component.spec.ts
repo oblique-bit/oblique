@@ -1,7 +1,7 @@
 import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {CommonModule} from '@angular/common';
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {
 	ControlValueAccessor,
@@ -36,6 +36,7 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 @Component({
 	standalone: false,
 	template: ``,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestParentComponent {
 	model = new FormControl('', Validators.required);

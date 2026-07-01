@@ -12,11 +12,12 @@ export default {
 	 * the 'transform' property has to be manually set
 	 */
 	transform: {
-		'^.+\\.ts$': 'ts-jest',
+		'^.+\\.ts$': ['ts-jest', {tsconfig: '<rootDir>/tsconfig.spec.json'}],
 	},
 	moduleNameMapper: {
 		'^(\\.{1,2}/.*)\\.js$': '$1',
 		'^(ora)$': '<rootDir>/__mocks__/ora.js',
+		'^(magic-string)$': '<rootDir>/__mocks__/magic-string.js',
 	},
 	...coverageConfig,
 	coverageDirectory: '../../coverage/toolchain',

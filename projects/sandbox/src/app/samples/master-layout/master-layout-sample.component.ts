@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObEScrollMode} from '@oblique/oblique';
 
 @Component({
@@ -6,6 +6,7 @@ import {ObEScrollMode} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './master-layout-sample.component.html',
 	styleUrl: './master-layout-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MasterLayoutSampleComponent {
 	scrollMode = ObEScrollMode;

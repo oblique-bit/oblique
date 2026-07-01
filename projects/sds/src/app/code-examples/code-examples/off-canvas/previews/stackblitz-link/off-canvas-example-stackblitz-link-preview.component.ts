@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
@@ -7,5 +7,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
 	templateUrl: './off-canvas-example-stackblitz-link-preview.component.html',
 	styleUrl: '../../../../stackblitz-link.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class OffCanvasExampleStackblitzLinkPreviewComponent {}

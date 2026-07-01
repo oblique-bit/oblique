@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Router, RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
@@ -23,18 +23,21 @@ import {ObMasterLayoutService} from '../master-layout.service';
 @Component({
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyFullPathComponent {}
 
 @Component({
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyPrefixPathComponent {}
 
 @Component({
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyDefaultPathComponent {}
 
@@ -48,6 +51,7 @@ class DummyDefaultPathComponent {}
 			</ul>
 		</ob-master-layout-navigation>
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class CustomNavigationHostComponent {}
 

@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {
 	type AbstractControl,
 	type NgForm,
@@ -16,6 +16,7 @@ import {of} from 'rxjs';
 	standalone: false,
 	templateUrl: './schema-validation-sample.component.html',
 	styleUrl: './schema-validation-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SchemaValidationSampleComponent implements OnInit {
 	text: string;

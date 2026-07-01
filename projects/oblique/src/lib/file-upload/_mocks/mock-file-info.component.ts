@@ -1,5 +1,5 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component, Input, ViewChild, ViewEncapsulation, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewChild, ViewEncapsulation, output} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
@@ -11,6 +11,7 @@ import {ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 @Component({
 	selector: 'ob-file-info',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-file-info'},
 	exportAs: 'obFileInfo',

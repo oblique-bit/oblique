@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
 	type OnChanges,
@@ -13,6 +14,7 @@ import {
 	imports: [],
 	templateUrl: './tab.component.html',
 	styleUrl: './tab.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TabComponent implements OnChanges {
 	readonly hidden = input(false);

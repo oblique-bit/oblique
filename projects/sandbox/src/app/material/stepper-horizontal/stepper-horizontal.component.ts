@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -6,6 +6,7 @@ import {UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/fo
 	standalone: false,
 	templateUrl: './stepper-horizontal.component.html',
 	styleUrl: './stepper-horizontal.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class StepperHorizontalComponent implements OnInit {
 	firstFormGroup: UntypedFormGroup;

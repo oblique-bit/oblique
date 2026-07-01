@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
 	TemplateRef,
@@ -19,6 +20,7 @@ import {ObLoginState} from '../../service-navigation/service-navigation.model';
 	selector: 'ob-master-layout-header',
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obMasterLayoutHeader',
 })
 export class ObMockMasterLayoutHeaderComponent {

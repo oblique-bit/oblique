@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
-import {Component, Type} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Type} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
@@ -10,12 +10,14 @@ import {By} from '@angular/platform-browser';
 @Component({
 	standalone: false,
 	template: ` <form obUnsavedChanges></form>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class FaultyTestComponent {}
 
 @Component({
 	standalone: false,
 	template: ` <form id="test" [isActive]="true" obUnsavedChanges></form>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 

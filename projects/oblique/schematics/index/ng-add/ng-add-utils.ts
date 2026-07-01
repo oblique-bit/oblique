@@ -9,10 +9,7 @@ import {
 } from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {error, getJson, infoMigration, packageJsonConfigPath, readFile} from '../utils';
-import {
-	ScriptTarget,
-	createSourceFile,
-} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {ScriptTarget, createSourceFile} from 'typescript';
 import {ObIVersion} from './ng-add.model';
 
 export const angularAppFilesNames = {
@@ -36,19 +33,19 @@ const versions: Record<string, string | versionFunc> = {
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
 	'@angular-devkit/build-angular': version => `^${version}.0.0`,
-	'@angular-eslint/eslint-plugin': '^21.0.0',
-	'@angular-eslint/eslint-plugin-template': '^21.0.0',
-	'@angular-eslint/template-parser': '^21.0.0',
-	'@angular-eslint/utils': '^21.0.0',
+	'@angular-eslint/eslint-plugin': '^22.0.0',
+	'@angular-eslint/eslint-plugin-template': '^22.0.0',
+	'@angular-eslint/template-parser': '^22.0.0',
+	'@angular-eslint/utils': '^22.0.0',
 	'@ngx-translate/core': '^17.0.0',
 	'@popperjs/core': '^2.0.0',
-	'@typescript-eslint/eslint-plugin': '^8.30.1',
-	'@typescript-eslint/parser': '^8.30.1',
+	'@typescript-eslint/eslint-plugin': '^8.58.2',
+	'@typescript-eslint/parser': '^8.58.2',
 	'@types/jest': '^30.0.0',
 	ajv: '^8.0.0',
 	'ajv-formats': '^3.0.0',
-	'angular-eslint': '^21.0.0',
-	'angular-oauth2-oidc': '^20.0.0',
+	'angular-eslint': '^22.0.0',
+	'angular-oauth2-oidc': '^22.0.0',
 	eslint: '^9.0.0',
 	'eslint-config-prettier': '^9.0.0',
 	'eslint-plugin-prettier': '^5.0.0',

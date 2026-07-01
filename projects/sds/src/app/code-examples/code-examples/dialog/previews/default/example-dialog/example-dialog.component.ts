@@ -1,5 +1,5 @@
 import {ObButtonModule} from '@oblique/oblique';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 
@@ -7,5 +7,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 	selector: 'sb-example-dialog',
 	imports: [MatButtonModule, MatDialogModule, ObButtonModule],
 	templateUrl: './example-dialog.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExampleDialogComponent {}

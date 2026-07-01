@@ -1,4 +1,4 @@
-import {type AfterViewChecked, Component, inject} from '@angular/core';
+import {type AfterViewChecked, ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {type Observable, concatWith, filter, first, map, partition, switchMap} from 'rxjs';
@@ -15,6 +15,7 @@ import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redir
 	imports: [IdPipe, AsyncPipe],
 	templateUrl: './text-page.component.html',
 	styleUrl: './text-page.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {
 		'(click)': 'onClick($event)',
 		class: 'content-page',

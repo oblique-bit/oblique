@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectorRef, Component, DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {Observable, Subject} from 'rxjs';
@@ -18,6 +18,7 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 			<ob-spinner [fixed]="fixed" />
 		</div>
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class MockComponent {
 	fixed = false;

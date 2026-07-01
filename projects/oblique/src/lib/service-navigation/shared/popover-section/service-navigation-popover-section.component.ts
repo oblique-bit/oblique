@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation, input} from '@angular/core';
 import {ObISectionLink} from '../../service-navigation.model';
 
 @Component({
@@ -6,6 +6,7 @@ import {ObISectionLink} from '../../service-navigation.model';
 	standalone: false,
 	templateUrl: './service-navigation-popover-section.component.html',
 	styleUrls: ['./service-navigation-popover-section.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-popover-section'},
 })

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {Colors} from './palette.model';
 import {ObEColor} from '@oblique/oblique';
 
@@ -7,6 +7,7 @@ import {ObEColor} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './palette.component.html',
 	styleUrl: './palette.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class PaletteComponent {
 	colorGroups: Colors[] = [

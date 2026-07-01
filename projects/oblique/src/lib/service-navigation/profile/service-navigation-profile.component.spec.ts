@@ -75,7 +75,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 	describe('profileUrls', () => {
 		it('should be initialized to an empty array', () => {
-			expect(component.profileUrls.length).toBe(0);
+			expect(component.profileUrls().length).toBe(0);
 		});
 
 		describe.each([

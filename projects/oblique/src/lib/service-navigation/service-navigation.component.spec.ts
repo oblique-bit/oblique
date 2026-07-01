@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {BehaviorSubject, Observable, firstValueFrom, of} from 'rxjs';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationProfileHarness} from './profile/service-navigation-profile.harness';
@@ -34,6 +34,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 			<button type="button">second button</button>
 		</ng-template>
 	</ob-service-navigation>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class CustomControlsTestComponent {
 	displayApplications = true;

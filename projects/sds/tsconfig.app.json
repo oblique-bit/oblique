@@ -10,6 +10,8 @@
     "useDefineForClassFields": false,
     "resolveJsonModule": true,
     "baseUrl": "../../",
+    "types": ["node"],
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@oblique/oblique": ["./projects/oblique/src/public_api"],
       "@oblique/oblique/schema-validation": ["./projects/oblique/src/lib/schema-validation/public_api"]

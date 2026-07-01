@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "../../../dist/oblique/schematics/index",
     "baseUrl": "tsconfig",
+    "ignoreDeprecations": "6.0",
     "lib": ["es2018", "dom"],
     "declaration": false,
     "module": "commonjs",

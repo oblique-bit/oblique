@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation, input} from '@angular/core';
 import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-navigation.model';
 
 @Component({
@@ -6,6 +6,7 @@ import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-
 	standalone: false,
 	templateUrl: './service-navigation-info.component.html',
 	styleUrls: ['./service-navigation-info.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-info'},
 })

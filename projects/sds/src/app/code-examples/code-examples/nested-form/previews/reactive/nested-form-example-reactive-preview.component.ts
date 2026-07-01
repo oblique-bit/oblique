@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {
 	ObButtonModule,
@@ -29,6 +29,7 @@ import {MatButtonModule} from '@angular/material/button';
 	],
 	templateUrl: './nested-form-example-reactive-preview.component.html',
 	styleUrl: '../nested-form-example-preview.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NestedFormExampleReactivePreviewComponent {
 	readonly channel = 'reactive-channel';

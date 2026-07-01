@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormBuilder, type FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ObErrorMessagesModule} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -8,6 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 	selector: 'app-error-messages-example-reactive-form-preview',
 	imports: [ReactiveFormsModule, ObErrorMessagesModule, MatFormFieldModule, MatInputModule],
 	templateUrl: './error-messages-example-reactive-form-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ErrorMessagesExampleReactiveFormPreviewComponent {
 	form: FormGroup;

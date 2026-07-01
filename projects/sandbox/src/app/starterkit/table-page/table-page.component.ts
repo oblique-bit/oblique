@@ -1,5 +1,5 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ObNavTreeItemModel} from '@oblique/oblique';
 
 @Component({
@@ -7,6 +7,7 @@ import type {ObNavTreeItemModel} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './table-page.component.html',
 	styleUrl: './table-page.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TablePageComponent {
 	selection = new SelectionModel<unknown>(true, []);

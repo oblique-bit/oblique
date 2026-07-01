@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {Router, Routes, provideRouter} from '@angular/router';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ObRouterService} from './ob-router.service';
 import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
@@ -13,6 +13,7 @@ import {firstValueFrom} from 'rxjs';
 @Component({
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MockComponent {}
 

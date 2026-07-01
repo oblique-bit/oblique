@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, ViewEncapsulation, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output, ViewEncapsulation, input} from '@angular/core';
 import {ObILanguage} from '../service-navigation.model';
 
 @Component({
@@ -6,6 +6,7 @@ import {ObILanguage} from '../service-navigation.model';
 	standalone: false,
 	templateUrl: './service-navigation-languages.component.html',
 	styleUrls: ['./service-navigation-languages.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-languages'},
 })

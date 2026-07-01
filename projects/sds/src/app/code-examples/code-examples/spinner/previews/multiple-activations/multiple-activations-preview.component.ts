@@ -1,4 +1,4 @@
-import {Component, type OnDestroy, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnDestroy, inject} from '@angular/core';
 import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/oblique';
 import {MatButtonModule} from '@angular/material/button';
 
@@ -7,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 	imports: [ObSpinnerModule, ObButtonModule, MatButtonModule],
 	templateUrl: './multiple-activations-preview.component.html',
 	styleUrl: './multiple-activations-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MultipleActivationsPreviewComponent implements OnDestroy {
 	counter = 0;

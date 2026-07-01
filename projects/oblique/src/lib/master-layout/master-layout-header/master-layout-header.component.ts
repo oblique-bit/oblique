@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
 	OnDestroy,
@@ -34,6 +35,7 @@ import {ObMasterLayoutComponentService} from '../master-layout/master-layout.com
 	standalone: false,
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header-controls.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'[class.ob-master-layout-header-small]': 'isSmall',

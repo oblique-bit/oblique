@@ -2,6 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {CdkScrollableModule} from '@angular/cdk/scrolling';
 import {
 	AfterViewInit,
+	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
 	DoCheck,
@@ -38,6 +39,7 @@ import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.
 	],
 	templateUrl: './column-layout.component.html',
 	styleUrls: ['./column-layout.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'[class.ob-no-layout]': 'noLayout()',

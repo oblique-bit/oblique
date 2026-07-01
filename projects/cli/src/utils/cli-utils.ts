@@ -8,18 +8,18 @@ export const version = '15.4.4';
 
 export const currentVersions = {
 	'@oblique/oblique': version,
-	'@angular/cli': '^21',
-	'@angular/material': '21',
+	'@angular/cli': '^22',
+	'@angular/material': '22',
 	'@oblique/toolchain': version,
-	'@angular/core': '21',
-	'@angular/cdk': '21',
-	'@angular-devkit/build-angular': '21',
-	'@angular-eslint/schematics': '21',
-	'angular-eslint': '21',
+	'@angular/core': '22',
+	'@angular/cdk': '22',
+	'@angular-devkit/build-angular': '22',
+	'@angular-eslint/schematics': '22',
+	'angular-eslint': '22',
 	'@types/jest': '30',
-	'@angular-builders/jest': '21',
-	'@schematics/angular': '21',
-	'angular-oauth2-oidc': '20',
+	'@angular-builders/jest': '22',
+	'@schematics/angular': '22',
+	'angular-oauth2-oidc': '22',
 	jest: '30',
 } as const;
 
@@ -64,7 +64,7 @@ export const runObCommand = (): void => {
 export const obTitle = `Oblique Cli`;
 
 export const recommendedVersion = 22;
-export const minimumSupportedVersion = '22.12.0';
+export const minimumSupportedVersion = '22.22.3';
 
 export function getHelpText(command: 'ob' | 'ob new' | 'ob update'): string {
 	return `Shows a help message for the "${command}" command in the console`;

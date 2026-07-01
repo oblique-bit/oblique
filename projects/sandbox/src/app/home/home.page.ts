@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {appVersion} from '@oblique/oblique';
 
 @Component({
@@ -6,6 +6,7 @@ import {appVersion} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './home.page.html',
 	styleUrl: './home.page.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class HomePageComponent {
 	version = appVersion;

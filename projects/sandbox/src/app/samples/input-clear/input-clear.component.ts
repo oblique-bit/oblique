@@ -1,10 +1,11 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {type FormControl, type FormGroup, UntypedFormBuilder, type UntypedFormGroup} from '@angular/forms';
 
 @Component({
 	selector: 'sb-input-clear',
 	standalone: false,
 	templateUrl: './input-clear.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class InputClearSampleComponent implements OnInit {
 	mandatoryModel: string;

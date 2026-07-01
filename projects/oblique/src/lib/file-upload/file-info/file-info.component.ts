@@ -1,6 +1,16 @@
 import {SelectionModel} from '@angular/cdk/collections';
 
-import {Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject, output} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	Input,
+	OnDestroy,
+	OnInit,
+	ViewChild,
+	ViewEncapsulation,
+	inject,
+	output,
+} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
@@ -33,6 +43,7 @@ import {ObFileUploadService} from '../file-upload.service';
 	],
 	templateUrl: './file-info.component.html',
 	styleUrls: ['./file-info.component.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-file-info'},
 	exportAs: 'obFileInfo',

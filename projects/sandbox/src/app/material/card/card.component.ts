@@ -1,4 +1,4 @@
-import {Component, viewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {ObSelectableGroupDirective} from '@oblique/oblique';
 
 @Component({
@@ -6,6 +6,7 @@ import {ObSelectableGroupDirective} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './card.component.html',
 	styleUrl: './card.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class CardComponent {
 	readonly selectableGroup = viewChild(ObSelectableGroupDirective);

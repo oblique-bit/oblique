@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {ExampleDialogSpinnerComponent} from './example-dialog-spinner/example-dialog-spinner.component';
 import {ObButtonModule} from '@oblique/oblique';
@@ -8,6 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
 	selector: 'app-dialog-example-spinner',
 	imports: [MatButtonModule, MatDialogModule, ObButtonModule],
 	templateUrl: './dialog-example-spinner.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class DialogExampleSpinnerComponent {
 	private readonly dialog = inject(MatDialog);

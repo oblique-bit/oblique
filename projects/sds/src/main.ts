@@ -2,7 +2,7 @@ import {AppComponent} from './app/app.component';
 import {provideObliqueConfiguration} from '@oblique/oblique';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {HttpApiInterceptor} from './app/shared/http-api-interceptor/http-api-interceptor';
-import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withXhr} from '@angular/common/http';
 import {LOCALE_ID, provideZoneChangeDetection} from '@angular/core';
 import {PreloadAllModules, provideRouter, withPreloading} from '@angular/router';
 import {appRoutes} from './app.routes';
@@ -28,7 +28,7 @@ bootstrapApplication(AppComponent, {
 			multi: true,
 		},
 		provideRouter(appRoutes, withPreloading(PreloadAllModules)),
-		provideHttpClient(withInterceptorsFromDi()),
+		provideHttpClient(withXhr(), withInterceptorsFromDi()),
 		provideObliqueConfiguration({
 			accessibilityStatement: {
 				applicationName: 'SDS',

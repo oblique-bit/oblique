@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ObSpinnerService, WINDOW} from '@oblique/oblique';
 
 @Component({
@@ -6,6 +6,7 @@ import {ObSpinnerService, WINDOW} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './spinner-sample.component.html',
 	styleUrl: './spinner-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SpinnerSampleComponent {
 	readonly demoChannel = 'demo';
