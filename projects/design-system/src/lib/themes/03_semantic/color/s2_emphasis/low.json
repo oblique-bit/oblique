@@ -428,7 +428,13 @@
             },
             "bg_selected": {
               "rest": {
-                "inverisity_normal": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "com.figma.hiddenFromPublishing": false,
+                    "com.figma.scopes": [
+                      "ALL_FILLS"
+                    ]
+                  },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.rest.inversity_normal}"
                 },
@@ -439,6 +445,12 @@
               },
               "hover": {
                 "inverisity_normal-copy": {
+                  "$extensions": {
+                    "com.figma.hiddenFromPublishing": false,
+                    "com.figma.scopes": [
+                      "ALL_FILLS"
+                    ]
+                  },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.hover.inversity_normal}"
                 },
@@ -449,6 +461,12 @@
               },
               "active": {
                 "inverisity_normal-copy-copy": {
+                  "$extensions": {
+                    "com.figma.hiddenFromPublishing": false,
+                    "com.figma.scopes": [
+                      "ALL_FILLS"
+                    ]
+                  },
                   "$type": "color",
                   "$value": "{ob.s1.color.interaction_mix.emphasis_low.bg_selected.active.inversity_normal}"
                 },
