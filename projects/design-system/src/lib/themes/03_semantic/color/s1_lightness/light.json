@@ -384,6 +384,9 @@
             "fg": {
               "contrast_high": {
                 "inversity_normal": {
+                  "$extensions": {
+                    "com.figma.hiddenFromPublishing": false
+                  },
                   "$type": "color",
                   "$value": "{ob.p.color.green.800}",
                   "$description": "High contrast resolved status foreground. Standard surface."
@@ -2363,7 +2366,7 @@
                     }
                   },
                   "$type": "color",
-                  "$value": "{ob.p.color.steelblue.500}"
+                  "$value": "{ob.p.color.steelblue.300}"
                 },
                 "inversity_flipped": {
                   "$extensions": {
@@ -2385,9 +2388,9 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.hover} ",
+                        "value": "{ob.s.opacity.inverted.hover} ",
                         "space": "srgb",
-                        "color": "{ob.p.color.steelblue.500} "
+                        "color": "{ob.p.color.steelblue.300}"
                       }
                     }
                   },
@@ -2415,9 +2418,9 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.active} ",
+                        "value": "{ob.s.opacity.inverted.active} ",
                         "space": "srgb",
-                        "color": "{ob.p.color.steelblue.500} "
+                        "color": "{ob.p.color.steelblue.300} "
                       }
                     }
                   },
