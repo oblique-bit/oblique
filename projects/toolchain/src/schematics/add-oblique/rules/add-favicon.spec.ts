@@ -10,7 +10,7 @@ describe(addFavicon.name, () => {
 	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
 	const logger = obCreateLogger(true).group('logger');
 	const defaultFavicon = '<link rel="icon" type="image/x-icon" href="favicon.ico">';
-	const obliqueFavicon = '<link rel="icon" type="image/png" href="assets/images/favicon.png"/>';
+	const obliqueFavicon = '<link rel="icon" type="image/png" href="assets/images/favicon.png">';
 	let inputTree: Tree;
 
 	beforeEach(() => {
@@ -85,7 +85,7 @@ describe(addFavicon.name, () => {
 
 		const resultTree = await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));
 
-		expect(resultTree.readText('src/index.html')).toBe('');
+		expect(resultTree.readText('src/index.html')).toBe('<html><head></head><body></body></html>');
 	});
 
 	test('falls back to src/index.html when angular.json is not an object', async () => {
@@ -188,7 +188,7 @@ describe(addFavicon.name, () => {
 
 	test('skip unchanged file', async () => {
 		inputTree.create('angular.json', buildAngularJson({index: 'src/index.html'}));
-		inputTree.create('src/index.html', `<head>${obliqueFavicon}</head>`);
+		inputTree.create('src/index.html', `<html><head>${obliqueFavicon}</head><body></body></html>`);
 		jest.spyOn(inputTree, 'overwrite');
 
 		await firstValueFrom(runner.callRule(addFavicon(logger), inputTree));

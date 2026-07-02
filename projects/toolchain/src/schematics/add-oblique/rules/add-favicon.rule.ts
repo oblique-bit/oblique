@@ -2,16 +2,14 @@ import type {Rule, Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import type {ObGroupLogger} from '../../../logger';
 import {isPlainObject, isString} from '../../shared/type-guards';
-
-const sourceFavicon = '<link rel="icon" type="image/x-icon" href="favicon.ico">';
-const targetFavicon = '<link rel="icon" type="image/png" href="assets/images/favicon.png"/>';
+import {findElement, getAttribute, setAttribute, transformDocument} from '../../shared/ast';
 
 export function addFavicon(logger: ObGroupLogger): Rule {
 	return async (tree: Tree) => {
 		logger.step('Embed Oblique favicon');
 		(await getIndexPaths(tree)).forEach(indexPath => {
 			const content = tree.readText(indexPath);
-			const updated = content.replace(sourceFavicon, targetFavicon);
+			const updated = replaceFavicon(content);
 			if (content !== updated) {
 				tree.overwrite(indexPath, updated);
 			}
@@ -40,4 +38,16 @@ function getDefaultIndex(tree: Tree): string[] {
 
 function isIndexObject(entry: unknown): entry is {input: string; output: string} {
 	return isPlainObject(entry) && 'input' in entry && 'output' in entry;
+}
+
+function replaceFavicon(content: string): string {
+	return transformDocument(content, document => {
+		const head = findElement(document, 'head');
+		const favicon = findElement(head, element => element.tagName === 'link' && getAttribute(element, 'rel') === 'icon');
+		if (!favicon) {
+			return;
+		}
+		setAttribute(favicon, 'type', 'image/png');
+		setAttribute(favicon, 'href', 'assets/images/favicon.png');
+	});
 }
