@@ -1,7 +1,7 @@
 import {type Rule, type SchematicContext, type Tree, chain} from '@angular-devkit/schematics';
 import {obCreateSchematicsLogger} from '../../logger';
 import {closeLogger} from '../shared/logger-close';
-import {addBrowserslistrc} from './rules/add-browserslistrc.rule';
+import {addBrowserslistrc} from './rules/add-browserslistrc';
 
 export function toolchain(): Rule {
 	return (tree: Tree, context: SchematicContext) => {

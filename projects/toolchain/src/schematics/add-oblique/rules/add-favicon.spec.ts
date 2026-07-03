@@ -4,7 +4,7 @@ import type {JsonObject, JsonValue} from '@angular-devkit/core';
 import {join} from 'node:path';
 import {firstValueFrom} from 'rxjs';
 import {obCreateLogger} from '../../../logger';
-import {addFavicon} from './add-favicon.rule';
+import {addFavicon} from './add-favicon';
 
 describe(addFavicon.name, () => {
 	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
