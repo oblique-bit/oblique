@@ -1,7 +1,7 @@
 import {type Rule, type SchematicContext, type Tree, chain} from '@angular-devkit/schematics';
 import {obCreateSchematicsLogger} from '../../logger';
 import {closeLogger} from '../shared/logger-close';
-import {addFavicon} from './rules/add-favicon.rule';
+import {addFavicon} from './rules/add-favicon';
 
 export function addOblique(): Rule {
 	return (tree: Tree, context: SchematicContext) => {

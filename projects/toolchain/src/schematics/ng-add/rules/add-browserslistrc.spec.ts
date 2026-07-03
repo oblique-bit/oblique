@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import {firstValueFrom} from 'rxjs';
 import {obMockLogger} from '../../../logger/mock';
 import {mockCreateFromTemplate} from '../../test-utils';
-import {addBrowserslistrc} from './add-browserslistrc.rule';
+import {addBrowserslistrc} from './add-browserslistrc';
 
 describe(addBrowserslistrc.name, () => {
 	const templateContent = fs.readFileSync(join(__dirname, '../templates/add-browserslistrc/.browserslistrc'), 'utf8');
