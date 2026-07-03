@@ -527,6 +527,32 @@ describe(ObAutocompleteComponent.name, () => {
 				expect(await groups[1].getAttribute('aria-disabled')).toBe('true');
 			});
 		});
+
+		describe('ngDoCheck', () => {
+			it('should not call updatePosition on the first check after opening', async () => {
+				await obAutocompleteHarness.openAutocompletePanel();
+				parentFixture.detectChanges();
+				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger, 'updatePosition');
+
+				component.ngDoCheck();
+
+				expect(updatePositionSpy).not.toHaveBeenCalled();
+			});
+
+			it('should call updatePosition when the position changes while the panel stays open', async () => {
+				await obAutocompleteHarness.openAutocompletePanel();
+				parentFixture.detectChanges();
+				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger, 'updatePosition');
+				const rectSpy = jest.spyOn(component.elementRef.nativeElement, 'getBoundingClientRect');
+
+				rectSpy.mockReturnValueOnce({top: 0, left: 0} as DOMRect);
+				component.ngDoCheck();
+				rectSpy.mockReturnValueOnce({top: 50, left: 0} as DOMRect);
+				component.ngDoCheck();
+
+				expect(updatePositionSpy).toHaveBeenCalledTimes(1);
+			});
+		});
 	});
 
 	describe('displayWith', () => {
