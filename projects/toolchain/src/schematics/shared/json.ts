@@ -33,10 +33,35 @@ export function readJson(tree: Tree, filepath: string): JsonObject {
 	return json;
 }
 
+/**
+ * Adds or updates a property in a JSON file.
+ *
+ * The property key supports dot notation to modify nested properties (for
+ * example, `scripts.build`).
+ *
+ * @param tree - The schematics tree containing the file.
+ * @param filepath - The path to the JSON file.
+ * @param property - The property to add or update.
+ * @throws {ObFileNotFoundError} If the file does not exist.
+ * @throws {ObInvalidJsonError} If the file does not contain valid JSON.
+ */
 export function addPropertyToJsonFile(tree: Tree, filepath: string, property: ObJsonProperty): void {
 	editProperty(tree, filepath, property);
 }
 
+/**
+ * Removes a property from a JSON file.
+ *
+ * The property key supports dot notation to remove nested properties (for
+ * example, `scripts.build`). If the property does not exist, no changes are
+ * made.
+ *
+ * @param tree - The schematics tree containing the file.
+ * @param filepath - The path to the JSON file.
+ * @param property - The property to remove.
+ * @throws {ObFileNotFoundError} If the file does not exist.
+ * @throws {ObInvalidJsonError} If the file does not contain valid JSON.
+ */
 export function deletePropertyFromJsonFile(tree: Tree, filepath: string, property: string): void {
 	editProperty(tree, filepath, {key: property, value: undefined});
 }
