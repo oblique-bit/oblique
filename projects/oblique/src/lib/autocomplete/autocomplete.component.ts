@@ -2,12 +2,14 @@ import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
 	AfterViewInit,
 	Component,
+	DoCheck,
 	ElementRef,
 	Injector,
 	Input,
 	OnChanges,
 	OnDestroy,
 	Signal,
+	ViewChild,
 	ViewEncapsulation,
 	booleanAttribute,
 	computed,
@@ -24,7 +26,7 @@ import {
 	NgControl,
 	ReactiveFormsModule,
 } from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatAutocompleteModule, MatAutocompleteTrigger} from '@angular/material/autocomplete';
 import {MatOptionModule} from '@angular/material/core';
 import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -75,7 +77,9 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-autocomplete'},
 })
-export class ObAutocompleteComponent<T = string> implements OnChanges, ControlValueAccessor, OnDestroy, AfterViewInit {
+export class ObAutocompleteComponent<T = string>
+	implements OnChanges, ControlValueAccessor, OnDestroy, AfterViewInit, DoCheck
+{
 	withErrorMessages = input(false, {transform: booleanAttribute});
 	@Input() inputLabelKey = 'i18n.oblique.search.title';
 	@Input() noResultKey = 'i18n.oblique.search.no-results';
@@ -95,12 +99,15 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 	);
 	onModelTouched: () => void;
 	readonly hints: Signal<{align: 'start' | 'end'; template: string}[]>;
+	@ViewChild(MatAutocompleteTrigger) private readonly autocompleteTrigger?: MatAutocompleteTrigger;
 	private readonly matHints = contentChildren(MatHint);
 	private readonly matHintsElementRefs = contentChildren(MatHint, {read: ElementRef<HTMLElement>});
 	private readonly unsubscribe = new Subject<void>();
 	private readonly unsubscribeOptions = new Subject<void>();
 	private readonly obAutocompleteTextToFindService = inject(ObAutocompleteTextToFindService);
 	private readonly injector = inject(Injector);
+	private readonly elementRef = inject(ElementRef<HTMLElement>);
+	private lastRect?: DOMRect;
 
 	constructor() {
 		// MatHint cannot be projected into MatFormField because MatFormField’s content
@@ -117,6 +124,18 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 
 	ngOnChanges(): void {
 		this.setupOptionsFilter();
+	}
+
+	ngDoCheck(): void {
+		if (!this.autocompleteTrigger?.panelOpen) {
+			this.lastRect = undefined;
+			return;
+		}
+		const rect = this.elementRef.nativeElement.getBoundingClientRect();
+		if (this.lastRect && (rect.top !== this.lastRect.top || rect.left !== this.lastRect.left)) {
+			this.autocompleteTrigger.updatePosition();
+		}
+		this.lastRect = rect;
 	}
 
 	ngAfterViewInit(): void {
