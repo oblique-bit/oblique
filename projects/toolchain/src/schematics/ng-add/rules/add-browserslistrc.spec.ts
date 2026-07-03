@@ -8,7 +8,7 @@ import {mockCreateFromTemplate} from '../../test-utils';
 import {addBrowserslistrc} from './add-browserslistrc.rule';
 
 describe(addBrowserslistrc.name, () => {
-	const templateContent = fs.readFileSync(join(__dirname, '../templates/.browserslistrc'), 'utf8');
+	const templateContent = fs.readFileSync(join(__dirname, '../templates/add-browserslistrc/.browserslistrc'), 'utf8');
 	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
 	const {logger, loggerGroups} = obMockLogger();
 	let inputTree: Tree;

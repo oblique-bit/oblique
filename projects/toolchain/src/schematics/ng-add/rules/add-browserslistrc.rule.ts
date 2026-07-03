@@ -10,6 +10,6 @@ export function addBrowserslistrc(logger: ObGroupLogger): Rule {
 		}
 
 		logger.step(`Create "${browserslistrcFileName}" file`);
-		return createFromTemplate('./templates', [template({})]);
+		return createFromTemplate('./templates/add-browserslistrc', [template({})]);
 	};
 }
