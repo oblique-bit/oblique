@@ -37,6 +37,6 @@ function addConfigurationFiles(logger: ObGroupLogger, prefix: string): Rule {
 					'Lint script might report additional errors about environment files'
 			);
 		}
-		return createFromTemplate('./templates', [template({prefix})]);
+		return createFromTemplate('./templates/adapt-linting-configuration', [template({prefix})]);
 	};
 }
