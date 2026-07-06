@@ -2033,7 +2033,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.strong.active} ",
+                        "value": "{ob.s.opacity.strong.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.cobalt.900}"
                       }
@@ -2047,7 +2047,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.strong.active} ",
+                        "value": "{ob.s.opacity.strong.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.cobalt.900}"
                       }
@@ -2063,7 +2063,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "alpha",
-                        "value": "{ob.s.opacity.strong.ripple} ",
+                        "value": "{ob.s.opacity.strong.ripple}",
                         "space": "srgb"
                       }
                     }
@@ -2076,7 +2076,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "alpha",
-                        "value": "{ob.s.opacity.strong.ripple} ",
+                        "value": "{ob.s.opacity.strong.ripple}",
                         "space": "srgb"
                       }
                     }
@@ -2103,7 +2103,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.hover} ",
+                        "value": "{ob.s.opacity.soft.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.steelblue.500}"
                       }
@@ -2117,7 +2117,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.hover} ",
+                        "value": "{ob.s.opacity.soft.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.steelblue.500}"
                       }
@@ -2133,7 +2133,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.active} ",
+                        "value": "{ob.s.opacity.soft.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.steelblue.500}"
                       }
@@ -2147,7 +2147,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.active} ",
+                        "value": "{ob.s.opacity.soft.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.steelblue.500}"
                       }
@@ -2193,7 +2193,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.hover} ",
+                        "value": "{ob.s.opacity.soft.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.steelblue.500}"
                       }
@@ -2207,7 +2207,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.hover} ",
+                        "value": "{ob.s.opacity.soft.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.steelblue.500}"
                       }
@@ -2223,7 +2223,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.active} ",
+                        "value": "{ob.s.opacity.soft.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.steelblue.500}"
                       }
@@ -2237,7 +2237,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.soft.active} ",
+                        "value": "{ob.s.opacity.soft.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.steelblue.500}"
                       }
@@ -2265,7 +2265,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "value": "{ob.s.opacity.subtle.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2279,7 +2279,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "value": "{ob.s.opacity.subtle.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2295,9 +2295,9 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
+                        "value": "{ob.s.opacity.subtle.active}",
                         "space": "srgb",
-                        "color": "{ob.p.color.basic.white} "
+                        "color": "{ob.p.color.basic.white}"
                       }
                     }
                   },
@@ -2309,9 +2309,9 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
+                        "value": "{ob.s.opacity.subtle.active}",
                         "space": "srgb",
-                        "color": "{ob.p.color.basic.white} "
+                        "color": "{ob.p.color.basic.white}"
                       }
                     }
                   },
@@ -2323,8 +2323,90 @@
             "bg_transp_inverted": {
               "rest": {
                 "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0",
+                        "space": "srgb"
+                      }
+                    }
+                  },
                   "$type": "color",
-                  "$value": "#"
+                  "$value": "{ob.p.color.steelblue.300}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0",
+                        "space": "srgb"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.steelblue.500}"
+                }
+              },
+              "hover": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.inverted.hover}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.300}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_inverted.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.hover}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_inverted.rest.inversity_flipped}"
+                }
+              },
+              "active": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.inverted.active}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.300}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_inverted.rest.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "mix",
+                        "value": "{ob.s.opacity.soft.active}",
+                        "space": "srgb",
+                        "color": "{ob.p.color.steelblue.500}"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction_mix.emphasis_high.bg_transp_inverted.rest.inversity_normal}"
                 }
               }
             },
@@ -2346,7 +2428,7 @@
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}"
                 },
-                "inversity_flipped-copy": {
+                "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}"
                 }
@@ -2411,7 +2493,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.strong.active} ",
+                        "value": "{ob.s.opacity.strong.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.cobalt.900}"
                       }
@@ -2425,7 +2507,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.strong.active} ",
+                        "value": "{ob.s.opacity.strong.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.cobalt.900}"
                       }
@@ -2453,7 +2535,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "value": "{ob.s.opacity.subtle.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2467,7 +2549,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "value": "{ob.s.opacity.subtle.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.cobalt.900}"
                       }
@@ -2483,7 +2565,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
+                        "value": "{ob.s.opacity.subtle.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2497,7 +2579,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
+                        "value": "{ob.s.opacity.subtle.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.cobalt.900}"
                       }
@@ -2534,7 +2616,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "value": "{ob.s.opacity.subtle.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2548,7 +2630,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "value": "{ob.s.opacity.subtle.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2564,7 +2646,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
+                        "value": "{ob.s.opacity.subtle.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2578,7 +2660,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
+                        "value": "{ob.s.opacity.subtle.active}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2606,7 +2688,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "value": "{ob.s.opacity.subtle.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2620,7 +2702,7 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.hover} ",
+                        "value": "{ob.s.opacity.subtle.hover}",
                         "space": "srgb",
                         "color": "{ob.p.color.basic.white}"
                       }
@@ -2636,9 +2718,9 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
+                        "value": "{ob.s.opacity.subtle.active}",
                         "space": "srgb",
-                        "color": "{ob.p.color.basic.white} "
+                        "color": "{ob.p.color.basic.white}"
                       }
                     }
                   },
@@ -2650,9 +2732,9 @@
                     "studio.tokens": {
                       "modify": {
                         "type": "mix",
-                        "value": "{ob.s.opacity.subtle.active} ",
+                        "value": "{ob.s.opacity.subtle.active}",
                         "space": "srgb",
-                        "color": "{ob.p.color.basic.white} "
+                        "color": "{ob.p.color.basic.white}"
                       }
                     }
                   },
