@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
 import {Observable, firstValueFrom, of} from 'rxjs';
@@ -52,6 +52,17 @@ describe('ObServiceNavigationStateApiService', () => {
 					params: {lastUsedLimit: 4, favoriteLimit},
 				});
 			});
+		});
+
+		it('should throw a 500 error when the response contains an errorCode', async () => {
+			jest.spyOn(httpClient, 'get').mockReturnValue(of({...mockData, errorCode: 500}));
+
+			const responsePromise = firstValueFrom(service.get('http://rootUrl/', 1));
+
+			await expect(responsePromise).rejects.toMatchObject({
+				status: 500,
+			});
+			await expect(responsePromise).rejects.toBeInstanceOf(HttpErrorResponse);
 		});
 	});
 });
