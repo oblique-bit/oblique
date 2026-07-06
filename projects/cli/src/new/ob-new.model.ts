@@ -2,29 +2,38 @@ import type {Command, OptionValues} from '@commander-js/extra-typings';
 import {projectNamePlaceholder} from '../utils/cli-utils.js';
 import type {ObSchemaOption} from '../utils/ob-cli.model.js';
 
-export type ObNewOptions<ValueType> = Record<OptionKeys, ValueType>;
+export type ObOptionValueType = string | boolean;
 
 export interface HandleObNewActionOptions {
 	projectName: string;
 	command: Command<[string], OptionValues>;
 }
 
-export type OptionKeys =
-	| 'interactive'
-	| 'title'
-	| 'locales'
-	| 'ajv'
-	| 'unknownRoute'
-	| 'httpInterceptors'
-	| 'banner'
-	| 'environments'
-	| 'externalLink'
-	| 'prefix'
-	| 'jest'
-	| 'npmrc'
-	| 'proxy'
-	| 'eslint'
-	| 'husky';
+export const toolchainOptionKeys = ['npmrc', 'proxy'] as const;
+
+export const obliqueOptionKeys = [
+	'interactive',
+	'title',
+	'locales',
+	'environments',
+	'prefix',
+	'ajv',
+	'unknownRoute',
+	'httpInterceptors',
+	'banner',
+	'externalLink',
+	'jest',
+	'eslint',
+	'husky',
+] as const;
+
+export type ToolchainOptionKeys = (typeof toolchainOptionKeys)[number];
+export type ObliqueOptionKeys = (typeof obliqueOptionKeys)[number];
+export type OptionKeys = ObliqueOptionKeys | ToolchainOptionKeys;
+
+export type ObNewOptions<ValueType = ObOptionValueType> = Partial<Record<OptionKeys, ValueType>>;
+export type ObliqueOptions<ValueType = ObOptionValueType> = Partial<Record<ObliqueOptionKeys, ValueType>>;
+export type ObToolchainOptions<ValueType = ObOptionValueType> = Partial<Record<ToolchainOptionKeys, ValueType>>;
 
 export type ImmutableOptionsType = 'standalone' | 'ssr' | 'style' | 'zoneless' | 'ai-config';
 
