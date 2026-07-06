@@ -11,9 +11,7 @@ export interface ObIOptionsSchema {
 	jest: boolean;
 	locales: string;
 	mandatory: boolean;
-	npmrc: boolean;
 	prefix: string;
-	proxy: string;
 	title: string;
 	unknownRoute: boolean;
 	hasLanguageInUrl: boolean;
