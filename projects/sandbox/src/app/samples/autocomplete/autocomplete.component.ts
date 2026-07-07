@@ -5,6 +5,7 @@ import type {
 	OptionLabelIconPosition,
 } from '@oblique/oblique';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {BehaviorSubject, EMPTY, interval, switchMap} from 'rxjs';
 
 @Component({
 	selector: 'sb-autocomplete-sample',
@@ -13,6 +14,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 	styleUrl: './autocomplete.component.scss',
 })
 export class AutocompleteSampleComponent implements OnInit {
+	contentShiftEnabled = true;
 	isDisabled = false;
 	areDisabled = false;
 	optionGroupList: ObIAutocompleteInputOptionGroup[];
@@ -60,30 +62,54 @@ export class AutocompleteSampleComponent implements OnInit {
 
 	reactiveFormSnippet = `
 // *.component.html
-	<ob-autocomplete
-		(selectedOptionChange)="showSelection($event)"
-		[autocompleteOptions]="options"
-		[optionIconPosition]="optionIconPosition"
-		[formControl]="formControl"
-		[filterRegexFlag]="'gi'"
-		>
-	</ob-autocomplete>
+  <ob-autocomplete
+    (selectedOptionChange)="showSelection($event)"
+    [autocompleteOptions]="options"
+    [optionIconPosition]="optionIconPosition"
+    [formControl]="formControl"
+    [filterRegexFlag]="'gi'"
+    >
+  </ob-autocomplete>
 
 // *.component.ts
 formControl = new FormControl('');
 ` as string;
 	ngModelSnippet = `
-	<ob-autocomplete
-		(selectedOptionChange)="showSelection($event)"
-		[(ngModel)]="searchText"
-		[autocompleteOptions]="options"
-		[optionIconPosition]="optionIconPosition"
-		[filterRegexFlag]="'gi'"
-		>
-	</ob-autocomplete>` as string;
+  <ob-autocomplete
+    (selectedOptionChange)="showSelection($event)"
+    [(ngModel)]="searchText"
+    [autocompleteOptions]="options"
+    [optionIconPosition]="optionIconPosition"
+    [filterRegexFlag]="'gi'"
+    >
+  </ob-autocomplete>` as string;
 	pattern = 'textToFind';
 	patternControl = new FormControl(this.pattern);
 	replacedPattern: string;
+
+	counter$;
+
+	private readonly running$ = new BehaviorSubject(false);
+	private readonly counterSubject = new BehaviorSubject(0);
+
+	constructor() {
+		this.counter$ = this.counterSubject.asObservable();
+		this.running$.pipe(switchMap(running => (running ? interval(1000) : EMPTY))).subscribe(() => {
+			this.counterSubject.next(this.counterSubject.value + 1);
+		});
+	}
+
+	startContentShift(): void {
+		this.running$.next(true);
+	}
+
+	stopContentShift(): void {
+		this.running$.next(false);
+	}
+
+	resetContentShift(): void {
+		this.counterSubject.next(0);
+	}
 
 	ngOnInit(): void {
 		this.patternControl.valueChanges.subscribe(value => {
