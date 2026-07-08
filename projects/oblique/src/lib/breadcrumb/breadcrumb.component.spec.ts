@@ -4,11 +4,11 @@ import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTooltip} from '@angular/material/tooltip';
 import {By} from '@angular/platform-browser';
-import {ActivatedRoute, RouterModule} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Pipe, PipeTransform} from '@angular/core';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {isObservable, of} from 'rxjs';
+import {Observable, Subject, isObservable, of} from 'rxjs';
 import {ObMockIconModule} from '../icon/_mocks/mock-icon.module';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
@@ -153,6 +153,91 @@ describe('ObBreadcrumbComponent', () => {
 			component.ngOnInit();
 
 			expect(component.breadcrumbs$).toBeTruthy();
+		});
+
+		it('should prefer explicit inputs over config values', () => {
+			component.maxWidthInput = '8ch';
+			component.separatorInput = ' / ';
+			component.beautifyUrlsInput = false;
+
+			expect(component.maxWidth).toBe('8ch');
+			expect((component as unknown as {separator: string}).separator).toBe(' / ');
+			expect((component as unknown as {beautifyUrls: boolean}).beautifyUrls).toBe(false);
+		});
+
+		it('should use config values without explicit inputs', () => {
+			expect(component.maxWidth).toBe(mockBreadcrumbConfig.maxWidth);
+			expect((component as unknown as {separator: string}).separator).toBe(mockBreadcrumbConfig.parameterSeparator);
+			expect((component as unknown as {beautifyUrls: boolean}).beautifyUrls).toBe(mockBreadcrumbConfig.beautifyUrls);
+		});
+
+		it('should handle route data without a route config', () => {
+			expect(
+				(
+					component as unknown as {
+						getBreadcrumbData: (route: ActivatedRoute) => {path: string; breadCrumbLabel: string};
+					}
+				).getBreadcrumbData({} as ActivatedRoute)
+			).toEqual({path: undefined, breadCrumbLabel: undefined});
+		});
+
+		it('should handle missing route data', () => {
+			expect(
+				(
+					component as unknown as {
+						getBreadcrumbData: (route: ActivatedRoute) => {path: string; breadCrumbLabel: string};
+					}
+				).getBreadcrumbData(undefined)
+			).toEqual({path: undefined, breadCrumbLabel: undefined});
+		});
+
+		it('should handle a route config without breadcrumb data', () => {
+			expect(
+				(
+					component as unknown as {
+						getBreadcrumbData: (route: ActivatedRoute) => {path: string; breadCrumbLabel: string};
+					}
+				).getBreadcrumbData({routeConfig: {path: 'path'}} as ActivatedRoute)
+			).toEqual({path: 'path', breadCrumbLabel: undefined});
+		});
+
+		it('should skip breadcrumbs without a label', done => {
+			(
+				component as unknown as {
+					createNextBreadcrumb: (
+						route: ActivatedRoute,
+						next: (parameters: ObIBreadcrumb) => Observable<ObIBreadcrumb[]>,
+						url: string,
+						label: string,
+						pathSplitter: string[]
+					) => Observable<ObIBreadcrumb[]>;
+				}
+			)
+				.createNextBreadcrumb(
+					{firstChild: null} as ActivatedRoute,
+					({label}) => of(label ? [{label, url: ''}] : []),
+					'',
+					'',
+					['']
+				)
+				.subscribe(crumbs => {
+					expect(crumbs).toEqual([]);
+					done();
+				});
+		});
+
+		it('should keep existing crumbs when a parameter has no label value', done => {
+			component
+				.getCrumbs(
+					createRoute({
+						path: ':empty',
+						params: {empty: ''},
+					})
+				)
+				.subscribe(crumbs => {
+					expect(crumbs).toEqual([]);
+					done();
+				});
 		});
 
 		it.each([[[]], [[{label: 'label', url: 'url'} as ObIBreadcrumb]]])(
@@ -486,6 +571,56 @@ describe('ObBreadcrumbComponent', () => {
 
 				expect(disabledStates.every(state => state === true)).toBe(true);
 			});
+		});
+	});
+
+	describe('router events', () => {
+		let routerEvents: Subject<unknown>;
+
+		beforeEach(async () => {
+			routerEvents = new Subject<unknown>();
+			TestBed.overrideComponent(ObBreadcrumbComponent, {
+				remove: {imports: [ObLocalizePipe, TranslateModule]},
+				add: {imports: [ObMockLocalizePipe, ObMockTranslatePipe]},
+			});
+			await TestBed.configureTestingModule({
+				imports: [ObBreadcrumbComponent, ObMockTranslatePipe, ObMockLocalizePipe],
+				providers: [
+					{provide: TranslateService, useValue: {...translateServiceMock, onLangChange: new Subject()}},
+					{provide: ActivatedRoute, useValue: {root: null}},
+					{provide: Router, useValue: {events: routerEvents}},
+					{provide: WINDOW, useValue: window},
+				],
+				schemas: [CUSTOM_ELEMENTS_SCHEMA],
+			}).compileComponents();
+			fixture = TestBed.createComponent(ObBreadcrumbComponent);
+			component = fixture.componentInstance;
+		});
+
+		it('should ignore router events that are not NavigationEnd events', () => {
+			const observer = jest.fn();
+			component.ngOnInit();
+			component.breadcrumbs$.subscribe(observer);
+
+			routerEvents.next({});
+
+			expect(observer).toHaveBeenCalledTimes(1);
+		});
+
+		it('should have no config fallbacks without breadcrumb config', () => {
+			expect(component.maxWidth).toBeUndefined();
+			expect((component as unknown as {separator: string}).separator).toBe('');
+			expect((component as unknown as {beautifyUrls: boolean}).beautifyUrls).toBe(false);
+		});
+
+		it('should react to NavigationEnd events', () => {
+			const observer = jest.fn();
+			component.ngOnInit();
+			component.breadcrumbs$.subscribe(observer);
+
+			routerEvents.next(new NavigationEnd(1, '/test', '/test'));
+
+			expect(observer).toHaveBeenCalledTimes(2);
 		});
 	});
 });

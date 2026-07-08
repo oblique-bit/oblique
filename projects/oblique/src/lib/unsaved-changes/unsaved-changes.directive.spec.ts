@@ -80,6 +80,17 @@ describe(ObUnsavedChangesDirective.name, () => {
 			directive.ngOnChanges();
 			expect(directive.isActive).toBeFalsy();
 		});
+
+		it('should ignore changes without id', () => {
+			jest.clearAllMocks();
+			directive.id = undefined;
+
+			directive.ngOnChanges();
+
+			expect(unsavedChangesServiceMock.watch).not.toHaveBeenCalled();
+			expect(unsavedChangesServiceMock.unWatch).not.toHaveBeenCalled();
+		});
+
 		it(' should default have truthy  isActive value', () => {
 			expect(directive.isActive).toBeTruthy();
 		});

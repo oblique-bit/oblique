@@ -1,3 +1,9 @@
+# [15.4.1](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.3...15.4.1) (2026-07-08)
+
+## Bug Fixes
+
+- **sds:** preserve hash and query parameters on internal routes ([0ba6887e](https://github.com/oblique-bit/oblique/commit/0ba6887edf9b801c0902a8caccbb8f308ec19b59), OUI-4529)
+
 # [15.3.1](https://github.com/oblique-bit/oblique/compare/15.3.0...15.3.1) (2026-05-27)
 
 ## Bug Fixes

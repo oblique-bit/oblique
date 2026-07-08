@@ -71,7 +71,7 @@ export class TabbedPageComponent {
 			return;
 		}
 		event.preventDefault();
-		this.cmsRouteRedirector.navigate(target.origin, target.pathname);
+		this.cmsRouteRedirector.navigate(target.origin, target.href);
 	}
 
 	handleTabChanged(tabName: string): void {

@@ -129,7 +129,7 @@ describe(TabbedPageComponent.name, () => {
 				expect(event.preventDefault).toHaveBeenCalled();
 			});
 			it('should navigate internally', () => {
-				expect(service.navigate).toHaveBeenCalledWith(anchor.origin, anchor.pathname);
+				expect(service.navigate).toHaveBeenCalledWith(anchor.origin, anchor.href);
 			});
 		});
 	});

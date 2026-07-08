@@ -1,37 +1,45 @@
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {of} from 'rxjs';
+import {Subject} from 'rxjs';
 
 import {WINDOW} from '../../utilities';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
-import {ObMockMasterLayoutComponentService} from '../_mocks/mock-master-layout.component.service';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
+import {ObEMasterLayoutEventValues, ObEScrollMode} from '../master-layout.model';
 
 describe('MasterLayoutNavigationService', () => {
 	let service: ObMasterLayoutNavigationService;
+	let onLangChange$: Subject<void>;
+	let opened$: Subject<boolean>;
+	let resize$: Subject<UIEvent>;
 	const translateMock = {
-		onLangChange: of(),
+		get onLangChange() {
+			return onLangChange$;
+		},
 	};
 	const mockMasterLayout = {
-		navigation: {},
+		navigation: {isFullWidth: false, scrollDelta: 95, scrollMode: ObEScrollMode.AUTO},
 	};
 	beforeEach(() => {
 		jest.useFakeTimers();
+		onLangChange$ = new Subject<void>();
+		opened$ = new Subject<boolean>();
+		resize$ = new Subject<UIEvent>();
 		TestBed.configureTestingModule({
 			providers: [
 				ObMasterLayoutNavigationService,
 				{provide: TranslateService, useValue: translateMock},
 				{provide: ObMasterLayoutConfig, useValue: mockMasterLayout},
-				{provide: ObMasterLayoutComponentService, useValue: ObMockMasterLayoutComponentService},
-				{provide: ObOffCanvasService, useValue: {opened$: of(true)}},
-				{provide: ObGlobalEventsService, useValue: ObMockGlobalEventsService},
+				{provide: ObMasterLayoutComponentService, useValue: {hasMainNavigation: true}},
+				{provide: ObOffCanvasService, useValue: {opened$}},
+				{provide: ObGlobalEventsService, useValue: {resize$}},
 				{provide: WINDOW, useValue: window},
 			],
 		});
+		service = TestBed.inject(ObMasterLayoutNavigationService);
 	});
 
 	afterEach(() => {
@@ -40,7 +48,6 @@ describe('MasterLayoutNavigationService', () => {
 	});
 
 	it('should be created', () => {
-		service = TestBed.inject(ObMasterLayoutNavigationService);
 		expect(service).toBeTruthy();
 	});
 
@@ -81,5 +88,77 @@ describe('MasterLayoutNavigationService', () => {
 			});
 			service.refresh();
 		});
+	});
+
+	it('should emit isFullWidth configuration changes', () => {
+		const observer = jest.fn();
+		service.configEvents$.subscribe(observer);
+
+		service.isFullWidth = true;
+
+		expect(observer).toHaveBeenCalledWith({name: ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH, value: true});
+	});
+
+	it('should emit scrollMode configuration changes', () => {
+		const observer = jest.fn();
+		service.configEvents$.subscribe(observer);
+
+		service.scrollMode = ObEScrollMode.ENABLED;
+
+		expect(observer).toHaveBeenCalledWith({
+			name: ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE,
+			mode: ObEScrollMode.ENABLED,
+		});
+	});
+
+	it('should use the configured offset when scrolling left', () => {
+		const observer = jest.fn();
+		service.scrolled.subscribe(observer);
+
+		service.scrollLeft(42);
+		jest.runOnlyPendingTimers();
+
+		expect(observer).toHaveBeenCalledWith(-42);
+	});
+
+	it('should use the configured offset when scrolling right', () => {
+		const observer = jest.fn();
+		service.scrolled.subscribe(observer);
+
+		service.scrollRight(42);
+		jest.runOnlyPendingTimers();
+
+		expect(observer).toHaveBeenCalledWith(42);
+	});
+
+	it('should refresh on language changes', () => {
+		const observer = jest.fn();
+		service.refreshed.subscribe(observer);
+
+		onLangChange$.next();
+		jest.runOnlyPendingTimers();
+
+		expect(observer).toHaveBeenCalled();
+	});
+
+	it('should refresh after the off canvas opens', () => {
+		const observer = jest.fn();
+		service.refreshed.subscribe(observer);
+
+		opened$.next(true);
+		jest.advanceTimersByTime(600);
+		jest.runOnlyPendingTimers();
+
+		expect(observer).toHaveBeenCalled();
+	});
+
+	it('should refresh on resize', () => {
+		const observer = jest.fn();
+		service.refreshed.subscribe(observer);
+
+		resize$.next(new UIEvent('resize'));
+		jest.runOnlyPendingTimers();
+
+		expect(observer).toHaveBeenCalled();
 	});
 });

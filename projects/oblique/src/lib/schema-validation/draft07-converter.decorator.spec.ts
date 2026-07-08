@@ -44,5 +44,20 @@ describe('draft07Convert', () => {
 				},
 			});
 		});
+
+		test('schema without properties gets an empty required array', () => {
+			descriptor.value({
+				title: 'SampleSchemaValidation',
+				id: 'id',
+				type: 'object',
+			});
+
+			expect(resultSchema).toEqual({
+				title: 'SampleSchemaValidation',
+				$id: 'id',
+				type: 'object',
+				required: [],
+			});
+		});
 	});
 });

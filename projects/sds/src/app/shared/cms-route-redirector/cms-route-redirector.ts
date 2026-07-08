@@ -1,5 +1,5 @@
 import {Injectable, inject} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, type Params, Router} from '@angular/router';
 import {WINDOW} from '@oblique/oblique';
 import {type Observable, Subject, map, merge, withLatestFrom} from 'rxjs';
 import {filter} from 'rxjs/operators';
@@ -30,11 +30,14 @@ export class CmsRouteRedirector {
 				map(([route, pages, version]) => ({route, version, pages}))
 			)
 		)
-			.pipe(map(({route, version, pages}) => this.createRouteSegments(route, version, pages)))
-			.subscribe(routeSegments => {
+			.pipe(map(({route, version, pages}) => this.buildRouteParts(route, version, pages)))
+			.subscribe(({routeSegments, fragment, queryParams}) => {
+				// use provided fragment and/or query parameters for the new route or preserve existing ones from the old route
 				void this.router.navigate(routeSegments, {
-					queryParamsHandling: 'preserve',
-					preserveFragment: true,
+					fragment,
+					queryParams,
+					queryParamsHandling: Object.keys(queryParams).length > 0 ? undefined : 'preserve',
+					preserveFragment: fragment === '',
 				});
 			});
 	}
@@ -45,6 +48,20 @@ export class CmsRouteRedirector {
 		} else {
 			this.window.open(`${origin}${route}`, '_blank', 'noopener,noreferrer');
 		}
+	}
+
+	private buildRouteParts(
+		route: string,
+		version: number,
+		pages: CMSPageShort[]
+	): {routeSegments: string[]; fragment: string; queryParams: Params} {
+		const origin = route.startsWith('http') ? undefined : this.window.location.origin;
+		const {pathname, hash, searchParams} = new URL(route, origin);
+		return {
+			routeSegments: this.createRouteSegments(pathname, version, pages),
+			fragment: hash.replace('#', ''),
+			queryParams: Object.fromEntries(searchParams.entries()),
+		};
 	}
 
 	private mapToPageShort(pages$: Observable<CMSPages>): Observable<CMSPageShort[]> {
@@ -61,17 +78,13 @@ export class CmsRouteRedirector {
 		);
 	}
 
-	private createRouteSegments(route: string, version: number, pages: CMSPageShort[]): string[] {
-		const [category, slug, tab] = this.stripHashAndQueryParams(route).split('/').filter(Boolean);
+	private createRouteSegments(pathname: string, version: number, pages: CMSPageShort[]): string[] {
+		const [category, slug, tab] = pathname.split('/').filter(Boolean);
 		if (!category) {
 			return ['/'];
 		}
 		const newSlug = this.resolveSlugForVersion(version, pages, slug);
 		return [`/${category}`, newSlug, tab].filter(Boolean);
-	}
-
-	private stripHashAndQueryParams(route: string): string {
-		return route.replace(/[#|?].*$/u, '');
 	}
 
 	private resolveSlugForVersion(currentVersion: number, pages: CMSPageShort[], currentSlug: string): string {

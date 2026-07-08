@@ -26,6 +26,7 @@ describe(ObNumberFormatDirective.name, () => {
 	let testComponent: TestDefaultComponent | TestNonPersistentComponent;
 	let fixture: ComponentFixture<TestDefaultComponent>;
 	let element: DebugElement;
+	let directive: ObNumberFormatDirective;
 
 	function createFixture(
 		component: Type<TestDefaultComponent | TestNonPersistentComponent>,
@@ -36,6 +37,7 @@ describe(ObNumberFormatDirective.name, () => {
 		testComponent.number = initialValue;
 		fixture.detectChanges();
 		element = fixture.debugElement.query(By.directive(ObNumberFormatDirective));
+		directive = element.injector.get(ObNumberFormatDirective);
 	}
 
 	beforeEach(() => {
@@ -49,6 +51,24 @@ describe(ObNumberFormatDirective.name, () => {
 		it('should have both model and display value rounded to 2 digits', async () => {
 			createFixture(TestDefaultComponent, 5.235689);
 			await fixture.whenStable();
+			expect(testComponent.number).toEqual(5.24);
+			expect(element.nativeElement.value).toEqual('5.24');
+		});
+		it('should keep rounded model and display values on blur', async () => {
+			createFixture(TestDefaultComponent, 5.235689);
+			await fixture.whenStable();
+
+			directive.onBlur();
+
+			expect(testComponent.number).toEqual(5.24);
+			expect(element.nativeElement.value).toEqual('5.24');
+		});
+		it('should keep display value on focus', async () => {
+			createFixture(TestDefaultComponent, 5.235689);
+			await fixture.whenStable();
+
+			directive.onFocus();
+
 			expect(testComponent.number).toEqual(5.24);
 			expect(element.nativeElement.value).toEqual('5.24');
 		});
@@ -88,21 +108,30 @@ describe(ObNumberFormatDirective.name, () => {
 		it('should display full value on focus', async () => {
 			createFixture(TestNonPersistentComponent, 5.235689);
 			await fixture.whenStable();
-			element.nativeElement.focus();
+			directive.onFocus();
 			expect(testComponent.number).toEqual(5.235689);
 			expect(element.nativeElement.value).toEqual('5.235689');
+		});
+		it('should display rounded value on blur', async () => {
+			createFixture(TestNonPersistentComponent, 5.235689);
+			await fixture.whenStable();
+
+			directive.onBlur();
+
+			expect(testComponent.number).toEqual(5.235689);
+			expect(element.nativeElement.value).toEqual('5.236');
 		});
 		it('should display no value on focus', async () => {
 			createFixture(TestNonPersistentComponent, null);
 			await fixture.whenStable();
-			element.nativeElement.focus();
+			directive.onFocus();
 			expect(testComponent.number).toEqual(null);
 			expect(element.nativeElement.value).toEqual('');
 		});
 		it('should display "0" value on focus', async () => {
 			createFixture(TestNonPersistentComponent, 0);
 			await fixture.whenStable();
-			element.nativeElement.focus();
+			directive.onFocus();
 			expect(testComponent.number).toEqual(0);
 			expect(element.nativeElement.value).toEqual('0');
 		});

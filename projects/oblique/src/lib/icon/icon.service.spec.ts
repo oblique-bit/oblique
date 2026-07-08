@@ -5,6 +5,10 @@ import {MatIconRegistry} from '@angular/material/icon';
 import {ObIconModule, ObIconService} from './icon.module';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
+interface ObIconServicePrivate {
+	getIconSets: () => string[];
+}
+
 describe('IconService', () => {
 	let registry: MatIconRegistry;
 	let iconService: ObIconService;
@@ -98,6 +102,56 @@ describe('IconService', () => {
 				jest.spyOn(registry, 'addSvgIcon');
 				iconService.registerIconsAsync({name: 'test', url: 'url'});
 				expect(registry.addSvgIcon).toHaveBeenCalled();
+			});
+		});
+
+		describe('registerOnAppInit', () => {
+			it('should register the Oblique icon set with the default config', () => {
+				jest.spyOn(registry, 'addSvgIconSetLiteral');
+
+				iconService.registerOnAppInit();
+
+				expect(registry.addSvgIconSetLiteral).toHaveBeenCalled();
+			});
+
+			it('should register Oblique and additional icon sets', () => {
+				jest.spyOn(registry, 'addSvgIconSetLiteral');
+
+				iconService.registerOnAppInit({registerObliqueIcons: true, additionalIcons: [iconSet1]});
+
+				expect(registry.addSvgIconSetLiteral).toHaveBeenCalledTimes(2);
+			});
+
+			it('should skip icon set registration when Oblique and additional icons are disabled', () => {
+				jest.spyOn(registry, 'addSvgIconSetLiteral');
+
+				iconService.registerOnAppInit({registerObliqueIcons: false});
+
+				expect(registry.addSvgIconSetLiteral).not.toHaveBeenCalled();
+			});
+
+			it('should register a custom font class', () => {
+				jest.spyOn(registry, 'setDefaultFontSetClass');
+
+				iconService.registerOnAppInit({registerObliqueIcons: false, fontClass: 'custom-icons'});
+
+				expect(registry.setDefaultFontSetClass).toHaveBeenCalledWith('custom-icons');
+			});
+
+			it('should skip font class registration without an app init config', () => {
+				const iconServicePrivate = iconService as unknown as ObIconServicePrivate;
+				const getIconSets = iconServicePrivate.getIconSets;
+				Object.defineProperty(iconService, 'getIconSets', {configurable: true, value: () => []});
+				jest.spyOn(registry, 'setDefaultFontSetClass');
+
+				Reflect.apply(iconService.registerOnAppInit, iconService, [null]);
+
+				expect(registry.setDefaultFontSetClass).not.toHaveBeenCalled();
+				Object.defineProperty(iconService, 'getIconSets', {configurable: true, value: getIconSets});
+			});
+
+			it('should reject a null app init config', () => {
+				expect(() => Reflect.apply(iconService.registerOnAppInit, iconService, [null])).toThrow();
 			});
 		});
 	});

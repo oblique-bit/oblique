@@ -47,6 +47,32 @@ describe(ObMasterLayoutNavigationSubMenuItemComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
+	describe('toggleFocus', () => {
+		let child: HTMLAnchorElement;
+
+		beforeEach(() => {
+			child = document.createElement('a');
+			child.id = 'child';
+			fixture.nativeElement.appendChild(child);
+		});
+
+		it('should set hasFocusedChild to true when the child is keyboard-focused', () => {
+			child.classList.add('cdk-keyboard-focused');
+
+			component.toggleFocus('child');
+
+			expect(component.hasFocusedChild).toBe(true);
+		});
+
+		it('should set hasFocusedChild to false when the child is not keyboard-focused', () => {
+			component.hasFocusedChild = true;
+
+			component.toggleFocus('child');
+
+			expect(component.hasFocusedChild).toBe(false);
+		});
+	});
+
 	describe.each<{
 		child: ObNavigationLink;
 		currentParent: ObNavigationLink;

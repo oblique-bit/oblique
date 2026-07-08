@@ -49,7 +49,7 @@ export class TextPageComponent implements AfterViewChecked {
 			return;
 		}
 		event.preventDefault();
-		this.cmsRouteRedirector.navigate(target.origin, target.pathname);
+		this.cmsRouteRedirector.navigate(target.origin, target.href);
 	}
 
 	private buildPageIdObservables(): [Observable<number>, Observable<number>] {
