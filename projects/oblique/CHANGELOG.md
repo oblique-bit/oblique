@@ -1,3 +1,10 @@
+# [15.4.1](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.3...15.4.1) (2026-07-08)
+
+## Bug Fixes
+
+- **master-layout:** prevent layout shifts when content updates on wide screens ([ec196dc5](https://github.com/oblique-bit/oblique/commit/ec196dc5dd5fc4485cb38049dc54154d2649cdd3), OIU-4480)
+- **off-canvas:** support `onPush` change detection ([b60a37d0](https://github.com/oblique-bit/oblique/commit/b60a37d053123b12b3ff3bcbab4e3058c346d0d2), OUI-4532)
+
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 
 ## Bug Fixes
