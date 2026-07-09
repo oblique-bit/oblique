@@ -24,6 +24,8 @@
     "schematics"
   ],
   "dependencies": {
+    "@angular/cdk": "^22.0.0",
+    "@schematics/angular": "^22.0.0",
     "angular-eslint": "^22.0.0",
     "chalk": "^4.1.2",
     "jsonc-parser": "^3.3.1",

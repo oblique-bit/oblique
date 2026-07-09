@@ -29,6 +29,8 @@ export class PostBuild extends StaticScript {
 			.copyFile('collection.json', 'src/schematics', 'schematics')
 			.copyFile('schema.json', 'src/schematics/ng-add', 'schematics/ng-add')
 			.copyFile('schema.json', 'src/schematics/linting', 'schematics/linting')
+			.copyFile('schema.json', 'src/schematics/add-oblique', 'schematics/add-oblique')
+			.copyFile('schema.json', 'src/schematics/i18n', 'schematics/i18n')
 			.copyFile('eslint-config-oblique.mjs', 'src/linting/', 'linting')
 			.copyProjectFiles(
 				src,
