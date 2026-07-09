@@ -267,10 +267,7 @@
       "01_global/mode_collection/ui_scale": "source",
       "01_global/mode_collection/density": "source",
       "01_global/mode_collection/typography_context": "source",
-      "01_global/mode_collection/motion": "source",
-      "05_html/button/01_color_lean/light_low_cntx-none": "enabled",
-      "02_primitive/modifier": "source",
-      "03_semantic/state-layer": "source"
+      "01_global/mode_collection/motion": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
@@ -1733,10 +1730,7 @@
       "ob.s2.color.interaction.contrast_levels.border.low.inversity_flipped": "S:8276f7e95d0059fe22d90327e774ec16f35767a2,"
     },
     "selectedTokenSets": {
-      "03_semantic/color/s2_emphasis/low": "enabled",
-      "05_html/button/01_color_lean/light_low_cntx-none": "enabled",
-      "03_semantic/state-layer": "source",
-      "02_primitive/modifier": "source"
+      "03_semantic/color/s2_emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color._docs.token_family_info": "38879f1c8cfa33a45c3f2e8f1d9662bf14e9d351",
