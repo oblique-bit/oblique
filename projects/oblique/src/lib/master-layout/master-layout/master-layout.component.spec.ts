@@ -282,7 +282,7 @@ describe('ObMasterLayoutComponent', () => {
 		});
 
 		it('should ignore unchanged navigation length', () => {
-			component.navigation = [];
+			fixture.componentRef.setInput('navigation', []);
 			component.ngDoCheck();
 			jest.clearAllMocks();
 
@@ -525,7 +525,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 
 			it('should not log focusability information', () => {
-				component.focusElement('not_focusable_without_dev_mode');
+				component.focusElementById('not_focusable_without_dev_mode');
 
 				expect(console.info).not.toHaveBeenCalled();
 			});
@@ -680,7 +680,7 @@ describe('ObMasterLayoutComponent', () => {
 			component = fixture.componentInstance;
 			component.hasOffCanvas = true;
 			fixture.detectChanges();
-			const focus = jest.spyOn(component.offCanvasClose.nativeElement, 'focus');
+			const focus = jest.spyOn(component.offCanvasClose().nativeElement, 'focus');
 
 			offCanvasOpened$.next(true);
 			jest.advanceTimersByTime(600);
@@ -695,7 +695,7 @@ describe('ObMasterLayoutComponent', () => {
 			component = fixture.componentInstance;
 			component.hasOffCanvas = true;
 			fixture.detectChanges();
-			const focus = jest.spyOn(component.offCanvasClose.nativeElement, 'focus');
+			const focus = jest.spyOn(component.offCanvasClose().nativeElement, 'focus');
 
 			offCanvasOpened$.next(false);
 			jest.advanceTimersByTime(600);

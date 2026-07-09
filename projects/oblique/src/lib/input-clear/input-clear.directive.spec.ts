@@ -91,13 +91,15 @@ class TemplateDrivenFormTestComponent {
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required #control />
-			<button type="button" [obInputClear]="control">
+			<button type="button" [obInputClear]="control" [focusOnClear]="focusOnClear">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
 	</div>`,
 })
-class HtmlInputTestComponent {}
+class HtmlInputTestComponent {
+	focusOnClear: boolean;
+}
 
 @Component({
 	standalone: false,
@@ -411,7 +413,7 @@ describe('InputClear', () => {
 
 			test('that it does not focus the input after clearing when focusOnClear is false', () => {
 				input = fixture.nativeElement.querySelector('input');
-				directive.focusOnClear = false;
+				fixture.componentRef.instance.focusOnClear = false;
 				jest.spyOn(input, 'focus');
 				const directivePrivate = directive as unknown as ObInputClearDirectivePrivate;
 

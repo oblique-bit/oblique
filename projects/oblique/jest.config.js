@@ -23,4 +23,10 @@ export default {
 		// the following files have no spec files and therefore have a 0 coverage. Tests will be written later
 		'!**/off-canvas-container.directive.ts',
 	],
+	coverageThreshold: {
+		...baseConfig.coverageThreshold,
+		'projects/oblique/src/lib/master-layout/master-layout/master-layout.component.ts': {
+			branches: 90,
+		},
+	},
 };
