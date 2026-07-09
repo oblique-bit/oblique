@@ -6,6 +6,16 @@
           "primary": {
             "fg": {
               "rest": {
+                "$extensions": {
+                  "com.figma.hiddenFromPublishing": false,
+                  "com.figma.scopes": [
+                    "ALL_FILLS",
+                    "TEXT_FILL",
+                    "SHAPE_FILL",
+                    "FRAME_FILL",
+                    "STROKE_COLOR"
+                  ]
+                },
                 "$type": "color",
                 "$value": "{ob.p.color.basic.white}"
               },
