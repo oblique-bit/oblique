@@ -1,0 +1,48 @@
+{
+  "ob": {
+    "s": {
+      "state-layer": {
+        "subtle": {
+          "hover": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.80}"
+          },
+          "active": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.180}"
+          }
+        },
+        "soft": {
+          "hover": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.150}"
+          },
+          "active": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.280}"
+          }
+        },
+        "strong": {
+          "hover": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.350}"
+          },
+          "active": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.500}"
+          }
+        },
+        "inverted": {
+          "hover": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.500}"
+          },
+          "active": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.750}"
+          }
+        }
+      }
+    }
+  }
+}
