@@ -156,9 +156,10 @@ describe('ObBreadcrumbComponent', () => {
 		});
 
 		it('should prefer explicit inputs over config values', () => {
-			component.maxWidthInput = '8ch';
-			component.separatorInput = ' / ';
-			component.beautifyUrlsInput = false;
+			fixture.componentRef.setInput('maxWidth', '8ch');
+			fixture.componentRef.setInput('parameterSeparator', ' / ');
+			fixture.componentRef.setInput('beautifyUrls', false);
+			fixture.componentRef.changeDetectorRef.detectChanges();
 
 			expect(component.maxWidth).toBe('8ch');
 			expect((component as unknown as {separator: string}).separator).toBe(' / ');
