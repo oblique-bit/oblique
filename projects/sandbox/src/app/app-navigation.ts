@@ -50,6 +50,7 @@ export const appNavigation: ObINavigationLink[] = [
 				],
 			},
 			{url: 'autocomplete', label: 'Autocomplete'},
+			{url: 'autocomplete-validator', label: 'Autocomplete with custom validator'},
 			{url: 'breadcrumb', label: 'Breadcrumb'},
 			{url: 'button', label: 'Buttons'},
 			{

@@ -36,6 +36,7 @@ import {RxjsOperatorsComponent} from './rxjs-operators/rxjs-operators.component'
 import {FocusSampleComponent} from './focus/focus-sample.component';
 import {FocusInvalidSampleComponent} from './focus-invalid/focus-invalid-sample.component';
 import {FormSampleCombinationsComponent} from './form-combinations/form-sample-combinations.component';
+import {AutocompleteCustomValidatorSampleComponent} from './autocomplete-custom-validator/autocomplete.component';
 
 const samplesRoutes: Routes = [
 	{path: 'alert', component: AlertSampleComponent},
@@ -52,6 +53,7 @@ const samplesRoutes: Routes = [
 	{path: 'alert/2', component: AlertSampleComponent},
 	{path: 'alert/3', component: AlertSampleComponent},
 	{path: 'autocomplete', component: AutocompleteSampleComponent},
+	{path: 'autocomplete-validator', component: AutocompleteCustomValidatorSampleComponent},
 	{
 		path: 'breadcrumb',
 		component: BreadcrumbSampleComponent,

@@ -91,6 +91,7 @@ import {MasterLayoutFooterSampleComponent} from './master-layout/master-layout-f
 import {MasterLayoutLayoutSampleComponent} from './master-layout/master-layout-layout-sample/master-layout-layout-sample.component';
 import {MasterLayoutNavigationSampleComponent} from './master-layout/master-layout-navigation-sample/master-layout-navigation-sample.component';
 import {FormSampleCombinationsComponent} from './form-combinations/form-sample-combinations.component';
+import {AutocompleteCustomValidatorSampleComponent} from './autocomplete-custom-validator/autocomplete.component';
 
 @NgModule({
 	imports: [
@@ -149,6 +150,7 @@ import {FormSampleCombinationsComponent} from './form-combinations/form-sample-c
 	declarations: [
 		AlertSampleComponent,
 		AutocompleteSampleComponent,
+		AutocompleteCustomValidatorSampleComponent,
 		BreadcrumbSampleComponent,
 		ButtonSampleComponent,
 		CollapseSampleComponent,
