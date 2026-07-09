@@ -1,7 +1,7 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule, type NgForm, ReactiveFormsModule} from '@angular/forms';
 import {TranslatePipe} from '@ngx-translate/core';
-import {provideObliqueTestingConfiguration, ObNotificationService} from '@oblique/oblique';
+import {ObNotificationService, provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {SchemaValidationSampleComponent} from './schema-validation-sample.component';
 
 describe(SchemaValidationSampleComponent.name, () => {
