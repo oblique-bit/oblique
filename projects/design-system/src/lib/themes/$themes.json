@@ -120,7 +120,6 @@
       "02_primitive/typography": "source",
       "02_primitive/motion": "source",
       "02_primitive/dimension": "source",
-      "05_html/button/01_color": "enabled",
       "05_html/button/02_typography": "source",
       "05_html/button/03_shadows": "source",
       "05_html/button/04_layout": "enabled",
@@ -136,7 +135,8 @@
       "01_global/mode_collection/ui_scale": "source",
       "01_global/mode_collection/density": "source",
       "01_global/mode_collection/typography_context": "source",
-      "01_global/mode_collection/motion": "source"
+      "01_global/mode_collection/motion": "source",
+      "05_html/button/01_color-depr": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
