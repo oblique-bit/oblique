@@ -14,6 +14,7 @@
     "02_primitive/typography",
     "02_primitive/motion",
     "02_primitive/dimension",
+    "02_primitive/modifier",
     "02_primitive/number",
     "03_semantic/color/s1_lightness/dark",
     "03_semantic/color/s1_lightness/light",
