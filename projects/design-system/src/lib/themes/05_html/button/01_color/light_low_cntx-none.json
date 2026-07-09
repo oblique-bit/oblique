@@ -102,6 +102,56 @@
                 "$value": "{ob.p.color.cobalt.900}"
               }
             }
+          },
+          "tertiary": {
+            "fg": {
+              "rest": {
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.700}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.700}"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.700}"
+              }
+            },
+            "bg": {
+              "rest": {
+                "$type": "color",
+                "$value": "{ob.p.color.basic.transparent}"
+              },
+              "hover": {
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "{ob.s.state-layer.subtle.hover}",
+                      "space": "srgb",
+                      "color": "{ob.p.color.cobalt.900}"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.900}"
+              },
+              "active": {
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "alpha",
+                      "value": "{ob.s.state-layer.subtle.active}",
+                      "space": "srgb",
+                      "color": "{ob.p.color.cobalt.900}"
+                    }
+                  }
+                },
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.900}"
+              }
+            }
           }
         }
       }
