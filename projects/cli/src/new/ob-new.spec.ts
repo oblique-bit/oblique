@@ -39,7 +39,6 @@ describe('Ob new command', () => {
 	function buildDefaultNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return buildNgAddCommand([
 			`--title=${projectName}`,
-			'--locales=de-CH fr-CH it-CH',
 			'--environments=local dev ref test abn prod',
 			'--prefix=app',
 			'--ajv',
@@ -284,7 +283,7 @@ describe('Ob new command', () => {
 
 				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} generate @oblique/toolchain:linting`, () => {
 					expect(spawnSync).toHaveBeenNthCalledWith(
-						5,
+						4,
 						'npx',
 						[
 							`@angular/cli@${currentVersions['@angular/cli']}`,
@@ -313,21 +312,12 @@ describe('Ob new command', () => {
 
 				test(`should call npx add @oblique/oblique with default parameters`, () => {
 					const expected = buildDefaultNgAddCommand();
-					expect(spawnSync).toHaveBeenNthCalledWith(6, expected.command, expected.args, {
+					expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
 						cwd: `${process.cwd()}/${projectName}`,
 						stdio: 'inherit',
 						encoding: 'utf8',
 						shell: isWindows(),
 					});
-				});
-
-				test(`should call ng generate @oblique/toolchain:add-oblique`, () => {
-					expect(spawnSync).toHaveBeenNthCalledWith(
-						4,
-						'npx',
-						[`@angular/cli@${currentVersions['@angular/cli']}`, 'generate', '@oblique/toolchain:add-oblique'],
-						{cwd: `${process.cwd()}/${projectName}`, stdio: 'inherit', encoding: 'utf8', shell: isWindows()}
-					);
 				});
 			});
 		});
@@ -445,7 +435,10 @@ describe('Ob new command', () => {
 
 			test(`should call npx ${options.join(', ')}`, () => {
 				const expected = options.includes('--interactive') ? buildNgAddCommand() : buildDefaultNgAddCommand();
-				expect(spawnSync).toHaveBeenNthCalledWith(6, expected.command, expected.args, {
+				// eslint-disable-next-line no-warning-comments
+				// FIXME: Use one call index once interactive prefix handling is fixed. For now, --interactive skips the eslinting and husky calls, so the index is different.
+				const obliqueAddCall = options.includes('--interactive') ? 4 : 5;
+				expect(spawnSync).toHaveBeenNthCalledWith(obliqueAddCall, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -509,7 +502,7 @@ describe('Ob new command', () => {
 
 			test('should not pass the npmrc option to Oblique ng add', () => {
 				const expected = buildDefaultNgAddCommand();
-				expect(spawnSync).toHaveBeenNthCalledWith(6, expected.command, expected.args, {
+				expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -560,7 +553,78 @@ describe('Ob new command', () => {
 
 			test('should not pass the proxy option to Oblique ng add', () => {
 				const expected = buildDefaultNgAddCommand();
-				expect(spawnSync).toHaveBeenNthCalledWith(6, expected.command, expected.args, {
+				expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe.each([
+			{
+				description: 'with default locales',
+				args: [projectName],
+				expectedValue: 'de-CH fr-CH it-CH',
+				expectedAddObliqueOptions: '--locale=de-CH fr-CH it-CH',
+			},
+			{
+				description: 'with custom locales',
+				args: [projectName, '--locales', 'en-US fr-FR'],
+				expectedValue: 'en-US fr-FR',
+				expectedAddObliqueOptions: '--locale=en-US fr-FR',
+			},
+			{
+				description: 'with blank locales',
+				args: [projectName, '--locales', ' '],
+				expectedValue: ' ',
+				expectedAddObliqueOptions: '',
+			},
+		])('locales handling $description', ({args, expectedValue, expectedAddObliqueOptions}) => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse(args, {from: 'user'});
+			});
+
+			test('should parse the locales option', () => {
+				expect(parsedObNewCommand.opts().locales).toBe(expectedValue);
+			});
+
+			test('should pass the locales option to ng generate @oblique/toolchain:add-oblique', () => {
+				const expectedArgs = expectedAddObliqueOptions
+					? [
+							`@angular/cli@${currentVersions['@angular/cli']}`,
+							'generate',
+							'@oblique/toolchain:add-oblique',
+							expectedAddObliqueOptions,
+						]
+					: [`@angular/cli@${currentVersions['@angular/cli']}`, 'generate', '@oblique/toolchain:add-oblique'];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('should not pass the locales option to Oblique ng add', () => {
+				const expected = buildDefaultNgAddCommand();
+				expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',

@@ -9,12 +9,11 @@ export interface HandleObNewActionOptions {
 	command: Command<[string], OptionValues>;
 }
 
-export const toolchainOptionKeys = ['npmrc', 'proxy'] as const;
+export const toolchainOptionKeys = ['npmrc', 'proxy', 'locales'] as const;
 
 export const obliqueOptionKeys = [
 	'interactive',
 	'title',
-	'locales',
 	'environments',
 	'prefix',
 	'ajv',
