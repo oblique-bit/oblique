@@ -766,6 +766,8 @@ export const eslintConfigOblique = [
 			'@angular-eslint/use-injectable-provided-in': 'error',
 			'@angular-eslint/use-lifecycle-interface': 'error',
 			'@angular-eslint/use-pipe-transform-interface': 'error',
+			'@angular-eslint/computed-must-return': 'error',
+			'@angular-eslint/no-implicit-take-until-destroyed': 'error',
 		},
 	},
 	{
