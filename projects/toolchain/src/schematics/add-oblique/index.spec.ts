@@ -1,22 +1,50 @@
-import {HostTree} from '@angular-devkit/schematics';
-import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
+import {Tree} from '@angular-devkit/schematics';
+import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
 import {obMockLogger} from '../../logger/mock';
-import {addFavicon} from './rules/add-favicon';
 import * as addFaviconRules from './rules/add-favicon';
+import {addFavicon} from './rules/add-favicon';
 
 describe('addOblique schematics', () => {
 	const testRunner = new SchematicTestRunner('schematics', join(__dirname, '../collection.json'));
 	const {logger, loggerGroups} = obMockLogger();
 
+	function createInputTree(): UnitTestTree {
+		const tree = new UnitTestTree(Tree.empty());
+		tree.create(
+			'package.json',
+			JSON.stringify({
+				name: 'test-app',
+				version: '0.0.0',
+				dependencies: {'@angular/core': '^18.0.0', '@angular/common': '^18.0.0', '@oblique/oblique': '^16.0.0'},
+			})
+		);
+		tree.create(
+			'src/app/app-module.ts',
+			`import { NgModule } from '@angular/core';\n@NgModule({})\nexport class AppModule {}`
+		);
+		return tree;
+	}
+
 	test('orchestration', async () => {
-		const inputTree = new HostTree();
+		const inputTree = createInputTree();
 		jest.spyOn(addFaviconRules, 'addFavicon');
 
-		await testRunner.runSchematic('add-oblique', {}, inputTree);
+		await testRunner.runSchematic('add-oblique', {locale: 'de-CH fr-CH'}, inputTree);
 
 		expect(logger.group).toHaveBeenCalledWith('Generate @oblique/toolchain:add-oblique');
 		expect(addFavicon).toHaveBeenCalledTimes(1);
 		expect(loggerGroups[0].end).toHaveBeenCalled();
+	});
+
+	test('calls i18n schematic with locales', async () => {
+		const inputTree = createInputTree();
+
+		const resultTree = await testRunner.runSchematic('add-oblique', {locale: 'de-CH fr-CH'}, inputTree);
+
+		expect(resultTree.exists('src/assets/i18n/de.json')).toBe(true);
+		expect(resultTree.exists('src/assets/i18n/fr.json')).toBe(true);
+		expect(resultTree.readContent('src/assets/i18n/de.json')).toBe('{}');
+		expect(resultTree.readContent('src/assets/i18n/fr.json')).toBe('{}');
 	});
 });

@@ -3,7 +3,8 @@
   "schematics": {
     "add-oblique": {
       "description": "Embeds Oblique favicon into index.html",
-      "factory": "./add-oblique/index#addOblique"
+      "factory": "./add-oblique/index#addOblique",
+      "schema": "./add-oblique/schema.json"
     },
     "ng-add": {
       "description": "Adds @oblique/toolchain dependency to the project",
