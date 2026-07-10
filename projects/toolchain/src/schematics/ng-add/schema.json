@@ -3,5 +3,12 @@
   "$id": "ng-add-schematic",
   "title": "ng add Schema",
   "type": "object",
-  "properties": {}
+  "properties": {
+    "npmrc": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to create a bit-specific .npmrc file in the project root.",
+      "x-prompt": "Is the project located within a confederation / federal network? It will add an .npmrc file."
+    }
+  }
 }
