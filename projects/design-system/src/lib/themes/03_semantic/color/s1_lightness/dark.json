@@ -1737,6 +1737,62 @@
               "$description": "Navigation border — disabled. Muted border using the cobalt_alpha disabled scale."
             }
           }
+        },
+        "backgound": {
+          "canvas": {
+            "$type": "color",
+            "$value": "{ob.p.color.cobalt.800}"
+          },
+          "sunken": {
+            "$type": "color",
+            "$value": "{ob.p.color.cobalt.700}"
+          },
+          "selected-neutral": {
+            "$type": "color",
+            "$value": "{ob.p.color.cobalt.600}"
+          },
+          "selected-emphasis": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "mix",
+                  "value": "0.5",
+                  "space": "srgb",
+                  "color": "{ob.p.color.cobalt.900}"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{ob.p.color.blue.500}"
+          },
+          "info": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "mix",
+                  "value": "0.3",
+                  "space": "srgb",
+                  "color": "{ob.s1.color.backgound.canvas} "
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{ob.p.color.blue.900}"
+          },
+          "error": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "mix",
+                  "value": "0.3",
+                  "space": "srgb",
+                  "color": "{ob.s1.color.backgound.canvas}"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{ob.p.color.red.900}"
+          }
         }
       }
     }

@@ -1746,6 +1746,32 @@
               "$description": "Navigation border — disabled. Muted border using the cobalt_alpha disabled scale."
             }
           }
+        },
+        "backgound": {
+          "canvas": {
+            "$type": "color",
+            "$value": "{ob.p.color.basic.white}"
+          },
+          "sunken": {
+            "$type": "color",
+            "$value": "{ob.p.color.cobalt.50}"
+          },
+          "selected-neutral": {
+            "$type": "color",
+            "$value": "{ob.p.color.cobalt.100}"
+          },
+          "selected-emphasis": {
+            "$type": "color",
+            "$value": "{ob.p.color.blue.100}"
+          },
+          "info": {
+            "$type": "color",
+            "$value": "{ob.p.color.blue.100}"
+          },
+          "error": {
+            "$type": "color",
+            "$value": "{ob.p.color.red.100}"
+          }
         }
       }
     }
