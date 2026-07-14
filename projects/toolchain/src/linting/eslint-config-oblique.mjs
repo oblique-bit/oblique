@@ -724,6 +724,11 @@ export const eslintConfigOblique = [
 			'@angular-eslint/contextual-decorator': 'error',
 			'@angular-eslint/contextual-lifecycle': 'error',
 			'@angular-eslint/directive-class-suffix': 'error',
+			/**
+			 * Rule: @angular-eslint/inject-at-top (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/inject-at-top.md)
+			 * Reason for disabling: Existing code declares inject() calls after other class members.
+			 */
+			'@angular-eslint/inject-at-top': 'off',
 			'@angular-eslint/no-async-lifecycle-method': 'error',
 			'@angular-eslint/no-attribute-decorator': 'error',
 			'@angular-eslint/no-developer-preview': 'error',
@@ -754,6 +759,11 @@ export const eslintConfigOblique = [
 			'@angular-eslint/prefer-output-readonly': 'error',
 			'@angular-eslint/prefer-signal-model': 'error',
 			'@angular-eslint/prefer-signals': 'error',
+			/**
+			 * Rule: @angular-eslint/prefer-service-decorator (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-service-decorator.md)
+			 * Reason for disabling: Keep using @Injectable({providedIn: 'root'}) for root services.
+			 */
+			'@angular-eslint/prefer-service-decorator': 'off',
 			'@angular-eslint/prefer-standalone': 'error',
 			'@angular-eslint/relative-url-prefix': 'error',
 			'@angular-eslint/require-lifecycle-on-prototype': 'error',
