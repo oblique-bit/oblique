@@ -310,7 +310,7 @@ Examples of use:
 				{text: 'with empty', options: {}},
 			])('%text options object', ({options}) => {
 				execute({name: 'ngNew', projectName: 'project', options});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'new', 'project'], {
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^22', 'new', 'project'], {
 					encoding: 'utf8',
 					shell: isWindows(),
 					stdio: 'inherit',
@@ -325,14 +325,14 @@ Examples of use:
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^21', 'new', 'project', '--truthyFlag', '--no-falsyFlag', '--option=value'],
+					['@angular/cli@^22', 'new', 'project', '--truthyFlag', '--no-falsyFlag', '--option=value'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
 
 			test('with an additional spawnSyncOptions', () => {
 				execute({name: 'ngNew', projectName: 'project', spawnSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'new', 'project'], {
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^22', 'new', 'project'], {
 					cwd: 'test',
 					encoding: 'utf8',
 					shell: isWindows(),
@@ -342,7 +342,7 @@ Examples of use:
 
 			test('with an overwriting spawnSyncOptions', () => {
 				execute({name: 'ngNew', projectName: 'project', spawnSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'new', 'project'], {
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^22', 'new', 'project'], {
 					encoding: 'utf8',
 					shell: isWindows(),
 					stdio: 'pipe',
@@ -356,7 +356,7 @@ Examples of use:
 				{text: 'with empty', options: {}},
 			])('%text options object', ({options}) => {
 				execute({name: 'ngAdd', dependency: 'jest', options});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'add', 'jest@30'], {
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^22', 'add', 'jest@30'], {
 					encoding: 'utf8',
 					shell: isWindows(),
 					stdio: 'inherit',
@@ -367,14 +367,14 @@ Examples of use:
 				execute({name: 'ngAdd', dependency: 'jest', options: {truthyFlag: true, falsyFlag: false, option: 'value'}});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^21', 'add', 'jest@30', '--truthyFlag', '--no-falsyFlag', '--option=value'],
+					['@angular/cli@^22', 'add', 'jest@30', '--truthyFlag', '--no-falsyFlag', '--option=value'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
 
 			test('with an additional spawnSyncOptions', () => {
 				execute({name: 'ngAdd', dependency: 'jest', spawnSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'add', 'jest@30'], {
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^22', 'add', 'jest@30'], {
 					cwd: 'test',
 					encoding: 'utf8',
 					shell: isWindows(),
@@ -384,7 +384,7 @@ Examples of use:
 
 			test('with an overwriting spawnSyncOptions', () => {
 				execute({name: 'ngAdd', dependency: 'jest', spawnSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'add', 'jest@30'], {
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^22', 'add', 'jest@30'], {
 					encoding: 'utf8',
 					shell: isWindows(),
 					stdio: 'pipe',
@@ -398,11 +398,10 @@ Examples of use:
 				{text: 'with empty', options: {}},
 			])('%text options object', ({options}) => {
 				execute({name: 'ngGenerate', schematic: '@oblique/toolchain:add-oblique', options});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^22 generate @oblique/toolchain:add-oblique',
-					{
-						stdio: 'inherit',
-					}
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^22', 'generate', '@oblique/toolchain:add-oblique'],
+					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
 
@@ -412,36 +411,36 @@ Examples of use:
 					schematic: '@oblique/toolchain:add-oblique',
 					options: {dryRun: true, force: false},
 				});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^22 generate @oblique/toolchain:add-oblique --dryRun --no-force',
-					{stdio: 'inherit'}
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^22', 'generate', '@oblique/toolchain:add-oblique', '--dryRun', '--no-force'],
+					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
 
-			test('with an additional execSyncOptions', () => {
+			test('with additional spawnSyncOptions', () => {
 				execute({
 					name: 'ngGenerate',
 					schematic: '@oblique/toolchain:add-oblique',
 					spawnSyncOptions: {cwd: 'test'},
 				});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^22 generate @oblique/toolchain:add-oblique',
-					{
-						stdio: 'inherit',
-						cwd: 'test',
-					}
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^22', 'generate', '@oblique/toolchain:add-oblique'],
+					{cwd: 'test', encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
 
-			test('with an overwriting execSyncOptions', () => {
+			test('with overwriting spawnSyncOptions', () => {
 				execute({
 					name: 'ngGenerate',
 					schematic: '@oblique/toolchain:add-oblique',
 					spawnSyncOptions: {stdio: 'pipe'},
 				});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^22 generate @oblique/toolchain:add-oblique',
-					{stdio: 'pipe'}
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^22', 'generate', '@oblique/toolchain:add-oblique'],
+					{encoding: 'utf8', shell: isWindows(), stdio: 'pipe'}
 				);
 			});
 		});
@@ -451,13 +450,13 @@ Examples of use:
 				execute({name: 'ngUpdate', dependencies: ['jest'], angularDependencies: ['@angular/cli']});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@21'],
+					['@angular/cli@^22', 'update', 'jest@30', '@angular/cli@22'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
 			test('with a single dependency', () => {
 				execute({name: 'ngUpdate', dependencies: [], angularDependencies: ['jest']});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'update', 'jest'], {
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^22', 'update', 'jest'], {
 					encoding: 'utf8',
 					shell: isWindows(),
 					stdio: 'inherit',
@@ -465,7 +464,7 @@ Examples of use:
 			});
 			test('with a single dependency', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], angularDependencies: ['jest']});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'update', 'jest@30'], {
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^22', 'update', 'jest@30'], {
 					encoding: 'utf8',
 					shell: isWindows(),
 					stdio: 'inherit',
@@ -475,7 +474,7 @@ Examples of use:
 				execute({name: 'ngUpdate', dependencies: ['jest', '@angular/cli'], angularDependencies: []});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@^21'],
+					['@angular/cli@^22', 'update', 'jest@30', '@angular/cli@^22'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
@@ -487,7 +486,7 @@ Examples of use:
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@types/jest@30', '@angular/cdk@21'],
+					['@angular/cli@^22', 'update', 'jest@30', '@types/jest@30', '@angular/cdk@22'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
@@ -501,7 +500,7 @@ Examples of use:
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@21', '@angular/core@21', '--force'],
+					['@angular/cli@^22', 'update', 'jest@30', '@angular/cli@22', '@angular/core@22', '--force'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
@@ -515,7 +514,7 @@ Examples of use:
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@21', '--no-allow-dirty'],
+					['@angular/cli@^22', 'update', 'jest@30', '@angular/cli@22', '--no-allow-dirty'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
@@ -529,7 +528,7 @@ Examples of use:
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@^21', '@angular/common@21'],
+					['@angular/cli@^22', 'update', 'jest@30', '@angular/cli@^22', '@angular/common@22'],
 					{cwd: 'test', encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
@@ -543,7 +542,7 @@ Examples of use:
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@21'],
+					['@angular/cli@^22', 'update', 'jest@30', '@angular/cli@22'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'pipe'}
 				);
 			});
@@ -552,18 +551,19 @@ Examples of use:
 		describe('ngGenerate', () => {
 			test('without options', () => {
 				execute({name: 'ngGenerate', schematic: 'my-lib:toto'});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith('npx @angular/cli@^22 generate my-lib:toto', {
-					stdio: 'inherit',
-				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^22', 'generate', 'my-lib:toto'],
+					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+				);
 			});
 
 			test('with a single option', () => {
 				execute({name: 'ngGenerate', schematic: 'my-lib:toto', options: {prefix: 'app'}});
-				expect(nodeChildProcess.execSync).toHaveBeenCalledWith(
-					'npx @angular/cli@^22 generate my-lib:toto --prefix="app"',
-					{
-						stdio: 'inherit',
-					}
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npx',
+					['@angular/cli@^22', 'generate', 'my-lib:toto', '--prefix=app'],
+					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
 		});

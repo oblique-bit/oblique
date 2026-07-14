@@ -1,4 +1,4 @@
-import type {ObCommandConfig, ObOptions} from './ob-cli.model';
+import type {ObCommandConfig, ObOptions} from './ob-cli.model.js';
 import {type SpawnSyncOptions, spawnSync} from 'child_process';
 import {gte, major} from 'semver';
 
