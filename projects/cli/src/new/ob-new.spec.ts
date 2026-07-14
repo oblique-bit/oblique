@@ -1,9 +1,9 @@
 import type {Command, OptionValues} from '@commander-js/extra-typings';
 import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
-import {execSync} from 'child_process';
+import {spawnSync} from 'child_process';
 import {obNewConfig} from './ob-new.model';
-import {currentVersions, version} from '../utils/cli-utils';
+import {currentVersions, isWindows, version} from '../utils/cli-utils';
 import {createObNewCommand} from './ob-new';
 
 const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
@@ -12,20 +12,25 @@ describe('Ob new command', () => {
 	const projectName = 'SuperduperProject';
 	let parsedObNewCommand: Command<[string], OptionValues>;
 
-	function buildNgAddCommand(options: string[] = []): string {
-		return [
-			`npx @angular/cli@${currentVersions['@angular/cli']} add @oblique/oblique@${currentVersions['@oblique/oblique']}`,
-			...options,
-		].join(' ');
+	function buildNgAddCommand(options: string[] = []): {command: string; args: string[]} {
+		return {
+			command: 'npx',
+			args: [
+				`@angular/cli@${currentVersions['@angular/cli']}`,
+				'add',
+				`@oblique/oblique@${currentVersions['@oblique/oblique']}`,
+				...options,
+			],
+		};
 	}
 
-	function buildDefaultNgAddCommand(options: string[] = []): string {
+	function buildDefaultNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return buildNgAddCommand([
-			`--title="${projectName}"`,
-			'--locales="de-CH fr-CH it-CH"',
-			'--environments="local dev ref test abn prod"',
-			'--prefix="app"',
-			'--proxy=" "',
+			`--title=${projectName}`,
+			'--locales=de-CH fr-CH it-CH',
+			'--environments=local dev ref test abn prod',
+			'--prefix=app',
+			'--proxy= ',
 			'--ajv',
 			'--unknownRoute',
 			'--httpInterceptors',
@@ -48,7 +53,18 @@ describe('Ob new command', () => {
 	describe('after createObNewCommand', () => {
 		describe('without error', () => {
 			beforeAll(() => {
-				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
 				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
 			});
@@ -215,30 +231,53 @@ describe('Ob new command', () => {
 				});
 			});
 
-			describe('handleObNewActions execSync calls', () => {
+			describe('handleObNewActions spawnSync calls', () => {
 				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`, () => {
-					expect(execSync).toHaveBeenNthCalledWith(
+					expect(spawnSync).toHaveBeenNthCalledWith(
 						1,
-						`npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`,
-						{stdio: 'inherit'}
+						'npx',
+						[
+							`@angular/cli@${currentVersions['@angular/cli']}`,
+							'new',
+							projectName,
+							'--no-standalone',
+							'--no-ssr',
+							'--no-zoneless',
+							'--ai-config=none',
+							'--style=scss',
+							'--prefix=app',
+						],
+						{stdio: 'inherit', encoding: 'utf8', shell: isWindows()}
 					);
 				});
 
 				test(`should call npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']}`, () => {
-					expect(execSync).toHaveBeenNthCalledWith(
+					expect(spawnSync).toHaveBeenNthCalledWith(
 						2,
-						`npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']} --audit false --fund false`,
+						'npm',
+						[
+							'install',
+							`@angular/material@${currentVersions['@angular/material']}`,
+							`@angular/cdk@${currentVersions['@angular/cdk']}`,
+							'--audit=false',
+							'--fund=false',
+						],
 						{
 							cwd: `${process.cwd()}/${projectName}`,
 							stdio: 'inherit',
+							encoding: 'utf8',
+							shell: isWindows(),
 						}
 					);
 				});
 
 				test(`should call npx ${projectName} with default parameter`, () => {
-					expect(execSync).toHaveBeenNthCalledWith(4, buildDefaultNgAddCommand(), {
+					const expected = buildDefaultNgAddCommand();
+					expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
 						cwd: `${process.cwd()}/${projectName}`,
 						stdio: 'inherit',
+						encoding: 'utf8',
+						shell: isWindows(),
 					});
 				});
 			});
@@ -246,7 +285,16 @@ describe('Ob new command', () => {
 
 		describe('interactive', () => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
 				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse([projectName, '--interactive'], {from: 'user'});
 			});
@@ -261,7 +309,16 @@ describe('Ob new command', () => {
 
 		describe('no-interactive', () => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
 				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
 			});
@@ -291,7 +348,16 @@ describe('Ob new command', () => {
 			{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'},
 		])('calls console ', ({index, message, type}) => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
 				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse([projectName, '--interactive'], {from: 'user'});
 			});
@@ -308,7 +374,16 @@ describe('Ob new command', () => {
 			let options: string[] = useCase === 'interactive mode' ? [projectName, '--interactive'] : [projectName];
 
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
 				options = useCase === 'interactive mode' ? [projectName, '--interactive'] : [projectName];
 				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse(options, {from: 'user'});
@@ -321,9 +396,11 @@ describe('Ob new command', () => {
 
 			test(`should call npx ${options.join(', ')}`, () => {
 				const expected = options.includes('--interactive') ? buildNgAddCommand() : buildDefaultNgAddCommand();
-				expect(execSync).toHaveBeenNthCalledWith(4, expected, {
+				expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
 				});
 			});
 
@@ -343,7 +420,16 @@ describe('Ob new command', () => {
 			},
 		])('npmrc handling $description', ({args, expectedValue, expectedOption}) => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'execSync').mockImplementation(() => 'ok');
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
 				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse(args, {from: 'user'});
 			});
@@ -353,9 +439,12 @@ describe('Ob new command', () => {
 			});
 
 			test('should pass the npmrc option to ng add', () => {
-				expect(execSync).toHaveBeenNthCalledWith(4, buildDefaultNgAddCommand(expectedOption), {
+				const expected = buildDefaultNgAddCommand(expectedOption);
+				expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
 				});
 			});
 
@@ -367,18 +456,39 @@ describe('Ob new command', () => {
 		describe('with error in ', () => {
 			const errorMessage = 'bad bad error';
 			beforeAll(() => {
+				jest.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
 				jest
-					.spyOn(nodeChildProcess, 'execSync')
+					.spyOn(nodeChildProcess, 'spawnSync')
 					.mockImplementationOnce(() => {
-						throw new Error(errorMessage);
+						return {
+							pid: 1,
+							output: [''],
+							stderr: null,
+							signal: null,
+							stdout: 'ok',
+							status: 0,
+							error: new Error(errorMessage),
+						};
 					})
-					.mockImplementation(() => 'ok');
+					.mockImplementation(() => {
+						return {
+							pid: 1,
+							output: [''],
+							stderr: null,
+							signal: null,
+							stdout: 'ok',
+							status: 0,
+						};
+					});
 				const obNewCommand = createObNewCommand();
 				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
 			});
 
 			test(`should throw error`, () => {
-				expect(console.error).toHaveBeenCalledWith('Installation failed: ', Error(errorMessage));
+				expect(console.error).toHaveBeenCalledWith(
+					'Installation failed: ',
+					Error(`Failed to execute 'npx': ${errorMessage}`)
+				);
 			});
 		});
 	});
