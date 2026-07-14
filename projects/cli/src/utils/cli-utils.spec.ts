@@ -401,11 +401,7 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
 					['@angular/cli@^22', 'generate', '@oblique/toolchain:add-oblique'],
-					{
-						encoding: 'utf8',
-						shell: isWindows(),
-						stdio: 'inherit',
-					}
+					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
 
@@ -422,7 +418,7 @@ Examples of use:
 				);
 			});
 
-			test('with an additional spawnSyncOptions', () => {
+			test('with additional spawnSyncOptions', () => {
 				execute({
 					name: 'ngGenerate',
 					schematic: '@oblique/toolchain:add-oblique',
@@ -440,7 +436,7 @@ Examples of use:
 				);
 			});
 
-			test('with an overwriting spawnSyncOptions', () => {
+			test('with overwriting spawnSyncOptions', () => {
 				execute({
 					name: 'ngGenerate',
 					schematic: '@oblique/toolchain:add-oblique',
@@ -563,11 +559,7 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
 					['@angular/cli@^22', 'generate', 'my-lib:toto'],
-					{
-						encoding: 'utf8',
-						shell: isWindows(),
-						stdio: 'inherit',
-					}
+					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
 
