@@ -89,7 +89,7 @@ function runAddMaterial(dir: string): void {
 	execute({
 		name: 'npmInstall',
 		dependencies: ['@angular/material', '@angular/cdk'],
-		execSyncOptions: {cwd: dir},
+		spawnSyncOptions: {cwd: dir},
 	});
 }
 
@@ -102,20 +102,20 @@ function runAddOblique(options: ObNewOptions<string | boolean>, projectName: str
 	}
 	const filteredOptions = filterValidOptions(commandOptions);
 
-	execute({name: 'ngAdd', dependency: '@oblique/toolchain', execSyncOptions: {cwd: workingDirectory}});
+	execute({name: 'ngAdd', dependency: '@oblique/toolchain', spawnSyncOptions: {cwd: workingDirectory}});
 	execute({
 		name: 'ngAdd',
 		dependency: '@oblique/oblique',
 		options: filteredOptions,
-		execSyncOptions: {cwd: workingDirectory},
+		spawnSyncOptions: {cwd: workingDirectory},
 	});
 }
 
 function cleanupDependencies(workingDirectory: string): void {
 	console.info(`[Info]: Runs npm dedupe and prune`);
 	try {
-		execute({name: 'npmDedupe', execSyncOptions: {cwd: workingDirectory}});
-		execute({name: 'npmPrune', execSyncOptions: {cwd: workingDirectory}});
+		execute({name: 'npmDedupe', spawnSyncOptions: {cwd: workingDirectory}});
+		execute({name: 'npmPrune', spawnSyncOptions: {cwd: workingDirectory}});
 	} catch (error) {
 		console.info(error);
 	}
@@ -124,7 +124,7 @@ function cleanupDependencies(workingDirectory: string): void {
 function formatCode(workingDirectory: string): void {
 	console.info(`[Info]: Runs npm format`);
 	try {
-		execute({name: 'npmFormat', execSyncOptions: {cwd: workingDirectory}});
+		execute({name: 'npmFormat', spawnSyncOptions: {cwd: workingDirectory}});
 	} catch (error) {
 		console.info(error);
 	}

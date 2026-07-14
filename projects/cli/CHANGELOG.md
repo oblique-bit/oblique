@@ -1,3 +1,9 @@
+# [15.4.2](https://github.com/oblique-bit/oblique/compare/15.4.1...15.4.2) (2026-07-14)
+
+## Bug Fixes
+
+- **utils:** switch to spawnSync in order to avoid command execution vulnerability ([460c9baf](https://github.com/oblique-bit/oblique/commit/460c9baf2c32e03da521fac42a42605c7f26f210), OUI-4537)
+
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 
 ## Bug Fixes

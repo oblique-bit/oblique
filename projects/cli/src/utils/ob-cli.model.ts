@@ -1,4 +1,4 @@
-import type {ExecSyncOptions} from 'child_process';
+import type {SpawnSyncOptions} from 'child_process';
 import type {currentVersions} from './cli-utils';
 
 export interface ObCliSchema<Type> {
@@ -30,7 +30,7 @@ export type ObCommandConfig =
 	| ObNpmFormatCommandConfig;
 
 export interface ObBaseCommandConfig {
-	execSyncOptions?: ExecSyncOptions;
+	spawnSyncOptions?: SpawnSyncOptions;
 }
 
 export interface ObOptionsCommandConfig {

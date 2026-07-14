@@ -1,9 +1,9 @@
 import type {ObCommandConfig, ObOptions} from './ob-cli.model';
-import {type ExecSyncOptions, execSync} from 'child_process';
+import {type SpawnSyncOptions, spawnSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '15.4.1';
+export const version = '15.4.2';
 /* End of generated content */
 
 export const currentVersions = {
@@ -135,40 +135,41 @@ export function buildOption(key: string, value: string | boolean): string {
 	if (value === false || value === 'false') {
 		return `no-${key}`;
 	}
-	return `${key}="${value}"`;
+	return `${key}=${value}`;
 }
 
 export function execute(config: ObCommandConfig): void {
 	switch (config.name) {
 		case 'ngNew':
-			return executeNgCommand(`new ${config.projectName}`, config.options, config.execSyncOptions);
+			return executeNgCommand(['new', config.projectName], config.options, config.spawnSyncOptions);
 		case 'ngAdd':
 			return executeNgCommand(
-				`add ${getVersionedDependency(config.dependency)}`,
+				['add', getVersionedDependency(config.dependency)],
 				config.options,
-				config.execSyncOptions
+				config.spawnSyncOptions
 			);
 		case 'ngUpdate':
 			return executeNgCommand(
-				`update ${buildNgUpdateDependencyArgs(config.dependencies, config.angularDependencies)}`,
+				['update', ...buildNgUpdateDependencyArgs(config.dependencies, config.angularDependencies)],
 				{...config.options},
-				config.execSyncOptions
+				config.spawnSyncOptions
 			);
 		case 'npmInstall':
 			return executeCommand(
-				`npm install ${versionDependencies(config.dependencies).join(' ')} --audit false --fund false`,
-				config.execSyncOptions
+				'npm',
+				['install', ...versionDependencies(config.dependencies), '--audit=false', '--fund=false'],
+				config.spawnSyncOptions
 			);
 		case 'npmUpdate':
-			return executeCommand('npm update --save --audit false --fund false', config.execSyncOptions);
+			return executeCommand('npm', ['update', '--save', '--audit=false', '--fund=false'], config.spawnSyncOptions);
 		case 'npmDedupe':
-			return executeCommand(`npm dedupe --audit false --fund false`, config.execSyncOptions);
+			return executeCommand('npm', ['dedupe', '--audit=false', '--fund=false'], config.spawnSyncOptions);
 		case 'npmPrune':
-			return executeCommand('npm prune --audit false --fund false', config.execSyncOptions);
+			return executeCommand('npm', ['prune', '--audit=false', '--fund=false'], config.spawnSyncOptions);
 		case 'npmFormat':
-			return executeCommand('npm run lint -- --fix', config.execSyncOptions);
+			return executeCommand('npm', ['run', 'lint', '--', '--fix'], config.spawnSyncOptions);
 		case 'npmOutdated':
-			return executeCommand('npm outdated', config.execSyncOptions);
+			return executeCommand('npm', ['outdated'], config.spawnSyncOptions);
 	}
 }
 
@@ -188,24 +189,26 @@ export function parseCommandArguments(): {
 	};
 }
 
+export function isWindows(): boolean {
+	return process.platform === 'win32';
+}
+
 function buildNgUpdateDependencyArgs(
 	dependencies: (keyof typeof currentVersions)[],
 	angularDependencies: string[]
-): string {
+): string[] {
 	const versioned = versionDependencies(dependencies);
 	const additionalAngular = angularDependencies.filter(
 		dep => !versioned.some(versionedDep => new RegExp(`^${dep}(?:@.+)?$`, 'u').test(versionedDep))
 	);
-	const angular = additionalAngular
-		.map(dep => {
-			if (dep.startsWith('@angular')) {
-				return `${dep}@${currentVersions['@angular/core']}`;
-			}
-			return dep;
-		})
-		.join(' ');
+	const angular = additionalAngular.map(dep => {
+		if (dep.startsWith('@angular')) {
+			return `${dep}@${currentVersions['@angular/core']}`;
+		}
+		return dep;
+	});
 
-	return [...versioned, angular].join(' ').trim();
+	return [...versioned, ...angular];
 }
 
 function isNodeVersionRecommended(recommendedNodeMajorVersion: number): boolean {
@@ -218,13 +221,16 @@ function isNodeVersionSupported(minimumSupportedNodeVersion: string): boolean {
 	return gte(currentNodeVersion, minimumSupportedNodeVersion);
 }
 
-function executeNgCommand(command: string, options: ObOptions = {}, execSyncOptions: ExecSyncOptions = {}): void {
+function executeNgCommand(args: string[], options: ObOptions = {}, spawnSyncOptions: SpawnSyncOptions = {}): void {
 	const parsedOptions = Object.entries<string | boolean>(options).map(([key, value]) => `--${buildOption(key, value)}`);
-	executeCommand(['npx', getVersionedDependency('@angular/cli'), command, ...parsedOptions].join(' '), execSyncOptions);
+	executeCommand('npx', [getVersionedDependency('@angular/cli'), ...args, ...parsedOptions], spawnSyncOptions);
 }
 
-function executeCommand(command: string, execSyncOptions: ExecSyncOptions = {}): void {
-	execSync(command, {stdio: 'inherit', ...execSyncOptions});
+function executeCommand(command: string, args: string[], spawnSyncOptions: SpawnSyncOptions = {}): void {
+	spawnCommand(command, args, {
+		stdio: 'inherit',
+		...spawnSyncOptions,
+	});
 }
 
 function versionDependencies(dependencies: (keyof typeof currentVersions)[]): string[] {
@@ -233,4 +239,44 @@ function versionDependencies(dependencies: (keyof typeof currentVersions)[]): st
 
 function printCliVersion(): string {
 	return `v${version}`;
+}
+
+function buildOSSafeCommand(command: string): string {
+	return isWindows() ? `${command}.cmd` : command;
+}
+
+/**
+ * This method wraps the spawnSync command with meaningful error management.
+ *
+ * @param command The name of the command to execute, for example `npm`
+ * @param args The arguments of the command, for example ["install"]
+ * @param options AN object
+ * @returns Teh stdout of the command if everything went well, throws an exception that
+ * can be caught otherwise.
+ */
+function spawnCommand(command: string, args: string[], options: SpawnSyncOptions): string {
+	const osSafeCommand = buildOSSafeCommand(command);
+
+	const result = spawnSync(osSafeCommand, args, {
+		encoding: 'utf8',
+		shell: isWindows(),
+		...options,
+	});
+
+	// Failed to spawn the process
+	if (result.error) {
+		throw new Error(`Failed to execute '${command}': ${result.error.message}`);
+	}
+
+	// Process terminated by a signal
+	if (result.signal) {
+		throw new Error(`Process was terminated by signal ${result.signal}`);
+	}
+
+	// Process exited with a non-zero status
+	if (result.status !== 0) {
+		throw new Error(`Command failed with exit code ${result.status}\nstderr:\n${result.stderr as string}`);
+	}
+
+	return result.stdout as string;
 }
