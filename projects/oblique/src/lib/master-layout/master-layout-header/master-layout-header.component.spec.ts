@@ -2,17 +2,13 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {OB_BANNER, provideObliqueTestingConfiguration} from '../../utilities';
+import {provideObliqueTestingConfiguration} from '../../utilities';
+import {OB_BANNER, ObEEnvironment} from '../../banner';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMasterLayoutService} from '../master-layout.service';
-import {
-	ObEEnvironment,
-	ObEMasterLayoutEventValues,
-	ObIMasterLayoutEvent,
-	ObINavigationLink,
-} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {By} from '@angular/platform-browser';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {TranslateModule} from '@ngx-translate/core';

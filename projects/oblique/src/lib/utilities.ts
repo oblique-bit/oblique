@@ -11,12 +11,10 @@ import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
 
 import {
 	DeepPartial,
-	ObIBanner,
 	ObIObliqueConfiguration,
 	ObIObliqueConfigurationWithDefaults,
 	ObIObliqueTestingConfiguration,
 	ObIPamsConfiguration,
-	ObTBanner,
 } from './utilities.model';
 import {ObIconService} from './icon/icon.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
@@ -41,7 +39,6 @@ import {obDefaultConsoleConfiguration, obProvideConsole} from './console/ob-cons
 import {OB_HISTORY_STATE} from './accessibility-statement/accessibility-statement.provider';
 import {obDefaultLanguageInUrl, obProvideLanguageConfiguration} from './language/language.provider';
 
-export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 	'Provides the mandatory PAMS environment as well as an optional root url.'
 );

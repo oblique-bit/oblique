@@ -13,6 +13,7 @@ must use the **service-navigation** package and one of the following scopes:
 | **accessibility-statement** | For changes to the accessibility-statement feature                        |
 | **authentication**          | For changes to the authentication feature                                 |
 | **autocomplete**            | For changes to the autocomplete feature                                   |
+| **banner**                  | For changes to the banner feature                                         |
 | **button**                  | For changes to the button feature                                         |
 | **breadcrumb**              | For changes to the breadcrumb feature                                     |
 | **breakpoints**             | For changes to the breakpoints feature                                    |

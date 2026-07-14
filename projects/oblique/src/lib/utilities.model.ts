@@ -5,18 +5,10 @@ import {ObIMaterialConfig} from './material/material.model';
 import {ObITranslateConfig} from './translation/translation.model';
 import {ObConsoleConfiguration} from './console/ob-console.model';
 
-export interface ObIBanner {
-	text?: string;
-	color?: string;
-	bgColor?: string;
-}
-
 export interface ObIPamsConfiguration {
 	environment: ObEPamsEnvironment;
 	rootUrl?: string;
 }
-
-export type ObTBanner = string | ObIBanner | undefined;
 
 export interface ObIObliqueConfiguration {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;
