@@ -1,3 +1,10 @@
+# [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
+
+## Features
+
+- **demo:** add documentation ([cdd215bd](https://github.com/oblique-bit/oblique/commit/cdd215bd4f3c07e280530c347473a4748f367829), OUI-4439)
+- **sandbox-ssr:** remove test component ([aaf8dcde](https://github.com/oblique-bit/oblique/commit/aaf8dcdeeadcbe46730817bfc61ae2e791c713cc), OUI-4439)
+
 # [15.3.0](https://github.com/oblique-bit/oblique/compare/15.2.2...15.3.0) (2026-04-30)
 
 ## Features

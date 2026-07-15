@@ -1,3 +1,23 @@
+# [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
+
+## Bug Fixes
+
+- **autocomplete:** template-driven from show model snippet ([5fbfd5f3](https://github.com/oblique-bit/oblique/commit/5fbfd5f3e0c7f9eba14c5749e1464864a51b47e3), OUI-4519)
+- **material:** fix no value accessor error for progress-bar ([39e5009e](https://github.com/oblique-bit/oblique/commit/39e5009e7890982a3385a97aafef7b4c6c0248b8), OUI-4487)
+
+## Features
+
+- **app:** add empty config for ObConsoleService ([04f92d19](https://github.com/oblique-bit/oblique/commit/04f92d192d9fef2bbf89b284fc98fe002bc10cdf), OUI-4422)
+- **autocomplete:** add sample with custom validator ([6511647a](https://github.com/oblique-bit/oblique/commit/6511647aacfd781f3e452356129164c3699975b8), OUI-4536)
+- **autocomplete:** add content shift controls in autocomplete example ([1ba3c03b](https://github.com/oblique-bit/oblique/commit/1ba3c03b33842fbc9608c19ea08da7350bc0b83e), OUI-4519)
+- **column-layout:** ensure toggling of layout setting on destroy ([0496ff55](https://github.com/oblique-bit/oblique/commit/0496ff55c0ec5ed30c67eb224658d2ec99eb2ebe), OUI-4502)
+- **column-layout:** add requirements for full-height mode ([88523cc5](https://github.com/oblique-bit/oblique/commit/88523cc52f23844a66e491355d09fdb75a8ae6e0), OUI-4502)
+- **global-events:** add navigate to global-events sample ([4306dc34](https://github.com/oblique-bit/oblique/commit/4306dc34fd67873c77c83f9d12c3ccaf426ed47e), TPEFD-10735)
+- **language:** demonstrate `ObLocalizePipe` ([c85f9648](https://github.com/oblique-bit/oblique/commit/c85f9648d1fd4a67fba98354390652036046ff50), OUI-4498)
+- **language:** add time picker sample ([8310ee09](https://github.com/oblique-bit/oblique/commit/8310ee09a7aeb49f365c2fe5d9c5261af1ad2e26), OUI-4472)
+- **sandbox:** make sandbox zoneless ([acb24d7c](https://github.com/oblique-bit/oblique/commit/acb24d7c55b2db8370c45482e24fb9aa669ad58b), OUI-4487)
+- **sandbox:** remove design-system module ([9fe315f5](https://github.com/oblique-bit/oblique/commit/9fe315f53072553ea97d96d5a5eb64c085bb159f), OUI-4439)
+
 # [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
 
 ## Bug Fixes

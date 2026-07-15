@@ -1,3 +1,20 @@
+# [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
+
+## Bug Fixes
+
+- **cli:** use ESM extensions for type imports ([449f07f7](https://github.com/oblique-bit/oblique/commit/449f07f7db2af925bfbcfe9dda88870a1ba86fb2), OUI-4500)
+
+## Features
+
+- **cli:** distribute as ESM ([2d500163](https://github.com/oblique-bit/oblique/commit/2d50016344b220fd28c50a19f3d28053fdb817b9), OUI-4500)
+- **new:** call `linting` schematics from `@oblique/toolchain` ([d389c2a6](https://github.com/oblique-bit/oblique/commit/d389c2a6ded70839114c823a14c44317b06d8460), OUI-4058)
+- **new:** run add-oblique schematic during project setup ([b9640275](https://github.com/oblique-bit/oblique/commit/b96402751493e72bcddf3b953e981cc6a87a8833), OUI-4488)
+- **utils:** support ng generate execution ([8930c9d2](https://github.com/oblique-bit/oblique/commit/8930c9d220bdceb853b065af930a4efedf1c161f), OUI-4488)
+
+## BREAKING CHANGES
+
+- **cli:** `@oblique/cli` no longer supports CommonJs, use `import` instead of `require()`
+
 # [15.4.4](https://github.com/oblique-bit/oblique/compare/15.4.3...15.4.4) (2026-08-18)
 
 ## Dependencies
