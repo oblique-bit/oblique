@@ -1,3 +1,28 @@
+# [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
+
+## Bug Fixes
+
+- **toolchain:** define Angular ESLint rules ([62ee6372](https://github.com/oblique-bit/oblique/commit/62ee6372861c11013d2199c28a0c8e79bc680f1b), OUI-4516)
+
+## Features
+
+- **linting:** activate new eslint rules ([c052896b](https://github.com/oblique-bit/oblique/commit/c052896b3fab8e9d0d95b5f2642704d229278de6), OUI-4516)
+- **linting:** export plugin configuration as well as EsLint config ([c53307fa](https://github.com/oblique-bit/oblique/commit/c53307fa1ed3f10567415ff4a4b79c00af046ec3), OUI-4058)
+- **schematics:** `add-oblique` only write files that have changed ([8c0859ab](https://github.com/oblique-bit/oblique/commit/8c0859ab7c477125daf53cb5edbe81afdbf2e8b4), OUI-4159)
+- **schematics:** `add-oblique` use modern favicon definition ([c010b92b](https://github.com/oblique-bit/oblique/commit/c010b92ba8f21004ef9e40611055cee0b2e326ed), OUI-4159)
+- **schematics:** create `linting` schematics ([5af1ce0d](https://github.com/oblique-bit/oblique/commit/5af1ce0d87aad96e1abcbc0676df449973506b03), OUI-4058)
+- **schematics:** add add-oblique schematic ([1e081363](https://github.com/oblique-bit/oblique/commit/1e081363268c69fda4a03a4fefdec05f7ed91247), OUI-4488)
+- **toolchain:** distribute as ESM ([d7d881a3](https://github.com/oblique-bit/oblique/commit/d7d881a3761d6ef13a088a3e18efa151af8ab4c1), OUI-4500)
+
+## BREAKING CHANGES
+
+- **linting:** rule `@angular-eslint/computed-must-return` is now active
+- **linting:** rule `@angular-eslint/no-implicit-take-until-destroyed` is now active
+- **linting:** The EsLint configuration is now a named export, meaning it must now be imported with
+  `import {eslintConfigOblique} from "@oblique/toolchain/eslint-config"` instead of
+  import eslintConfigOblique from "@oblique/toolchain/eslint-config"
+- **toolchain:** `@oblique/toolchain` no longer supports CommonJs, use `import` instead of `require()`
+
 # [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
 
 ## Features
