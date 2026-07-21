@@ -24,7 +24,7 @@ import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
 import {ObILocale} from './language/language.model';
 import {
-	defaultAccessibilityStatement,
+	obDefaultAccessibilityStatement,
 	obDefaultHistoryState,
 	obProvideAccessibilityStatement,
 } from './accessibility-statement/accessibility-statement.provider';
@@ -86,7 +86,7 @@ export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
 }
 
 const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
-	accessibilityStatement: defaultAccessibilityStatement,
+	accessibilityStatement: obDefaultAccessibilityStatement,
 	historyState: obDefaultHistoryState,
 	material: defaultMaterialProviders,
 	icon: {registerObliqueIcons: true},

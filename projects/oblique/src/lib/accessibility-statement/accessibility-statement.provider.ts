@@ -18,7 +18,7 @@ export function obProvideAccessibilityStatement(
 	];
 }
 
-export const defaultAccessibilityStatement: ObIAccessibilityStatementConfiguration = {
+export const obDefaultAccessibilityStatement: ObIAccessibilityStatementConfiguration = {
 	applicationName: 'Test application',
 	createdOn: new Date('2025-01-01'),
 	conformity: 'none',
