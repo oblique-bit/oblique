@@ -8,7 +8,7 @@ export const OB_ACCESSIBILITY_STATEMENT_CONFIGURATION = new InjectionToken<ObIAc
 
 export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
 
-export function provideAccessibilityStatement(
+export function obProvideAccessibilityStatement(
 	configAccessibilityStatement: ObIAccessibilityStatementConfiguration,
 	configHistoryState: ObIHistoryState
 ): Provider[] {

@@ -26,7 +26,7 @@ import {ObILocale} from './language/language.model';
 import {
 	defaultAccessibilityStatement,
 	obDefaultHistoryState,
-	provideAccessibilityStatement,
+	obProvideAccessibilityStatement,
 } from './accessibility-statement/accessibility-statement.provider';
 import {ObWindow} from './window/window.provider.model';
 import {WINDOW, provideWindow} from './window/window.provider';
@@ -116,7 +116,7 @@ function getDefaultObliqueProviders(
 ): (Provider | EnvironmentProviders)[] {
 	return [
 		provideWindow(),
-		provideAccessibilityStatement(mergedConfig.accessibilityStatement, mergedConfig.historyState),
+		obProvideAccessibilityStatement(mergedConfig.accessibilityStatement, mergedConfig.historyState),
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: mergedConfig.hasLanguageInUrl},
 		obProvideDate(),
 		obProvideConsole(mergedConfig.consoleConfiguration),

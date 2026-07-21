@@ -1,6 +1,6 @@
 import {
 	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
-	provideAccessibilityStatement,
+	obProvideAccessibilityStatement,
 } from './accessibility-statement.provider';
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement.model';
 import {TestBed} from '@angular/core/testing';
@@ -14,10 +14,10 @@ describe('accessibility-statement.provider', () => {
 		contact: [{email: 'oblique@bit.admin.ch'}],
 	};
 	beforeEach(() => {
-		TestBed.configureTestingModule({providers: [provideAccessibilityStatement(config)]});
+		TestBed.configureTestingModule({providers: [obProvideAccessibilityStatement(config)]});
 	});
 
-	test(provideAccessibilityStatement.name, () => {
+	test(obProvideAccessibilityStatement.name, () => {
 		expect(TestBed.inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION)).toEqual(config);
 	});
 });
