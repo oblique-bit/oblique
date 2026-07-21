@@ -12,7 +12,6 @@ import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
 import {
 	DeepPartial,
 	ObIBanner,
-	ObIHistoryState,
 	ObIObliqueConfiguration,
 	ObIObliqueConfigurationWithDefaults,
 	ObIObliqueTestingConfiguration,
@@ -26,6 +25,7 @@ import {of} from 'rxjs';
 import {ObILocale} from './language/language.model';
 import {
 	defaultAccessibilityStatement,
+	obDefaultHistoryState,
 	provideAccessibilityStatement,
 } from './accessibility-statement/accessibility-statement.provider';
 import {ObWindow} from './window/window.provider.model';
@@ -38,6 +38,7 @@ import {
 } from './translation/translation.providers';
 import {obProvideDate} from './language/date.provider';
 import {obDefaultConsoleConfiguration, obProvideConsole} from './console/ob-console.provider';
+import {OB_HISTORY_STATE} from './accessibility-statement/accessibility-statement.provider';
 
 export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
@@ -48,7 +49,6 @@ export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current l
 export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
 );
-export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
 
 const defaultLocalesConfiguration: ObILocale = {
 	locales: ['de-CH', 'fr-CH', 'it-CH'],
@@ -87,6 +87,7 @@ export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
 
 const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
 	accessibilityStatement: defaultAccessibilityStatement,
+	historyState: obDefaultHistoryState,
 	material: defaultMaterialProviders,
 	icon: {registerObliqueIcons: true},
 	translate: defaultTranslationConfig,
@@ -115,8 +116,7 @@ function getDefaultObliqueProviders(
 ): (Provider | EnvironmentProviders)[] {
 	return [
 		provideWindow(),
-		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
-		provideAccessibilityStatement(mergedConfig.accessibilityStatement),
+		provideAccessibilityStatement(mergedConfig.accessibilityStatement, mergedConfig.historyState),
 		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: mergedConfig.hasLanguageInUrl},
 		obProvideDate(),
 		obProvideConsole(mergedConfig.consoleConfiguration),

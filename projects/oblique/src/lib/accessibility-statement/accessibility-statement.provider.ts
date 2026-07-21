@@ -1,12 +1,21 @@
 import {InjectionToken, Provider} from '@angular/core';
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement.model';
+import {ObIHistoryState} from '../utilities.model';
 
 export const OB_ACCESSIBILITY_STATEMENT_CONFIGURATION = new InjectionToken<ObIAccessibilityStatementConfiguration>(
 	'AccessibilityStatementConfiguration'
 );
 
-export function provideAccessibilityStatement(config: ObIAccessibilityStatementConfiguration): Provider[] {
-	return [{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: config}];
+export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
+
+export function provideAccessibilityStatement(
+	configAccessibilityStatement: ObIAccessibilityStatementConfiguration,
+	configHistoryState: ObIHistoryState
+): Provider[] {
+	return [
+		{provide: OB_HISTORY_STATE, useValue: configHistoryState},
+		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: configAccessibilityStatement},
+	];
 }
 
 export const defaultAccessibilityStatement: ObIAccessibilityStatementConfiguration = {
@@ -15,4 +24,8 @@ export const defaultAccessibilityStatement: ObIAccessibilityStatementConfigurati
 	conformity: 'none',
 	applicationOperator: 'Test operator',
 	contact: [{email: 'test@example.com'}],
+};
+
+export const obDefaultHistoryState: ObIHistoryState = {
+	initialLength: 0,
 };

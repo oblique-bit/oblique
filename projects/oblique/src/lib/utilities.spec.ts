@@ -18,7 +18,6 @@ import {
 import {ObMultiTranslateLoader} from './translation/multi-translate-loader';
 import {
 	OB_HAS_LANGUAGE_IN_URL,
-	OB_HISTORY_STATE,
 	getLocalesConfiguration,
 	getRootRoute,
 	isNotKeyboardEventOnButton,
@@ -33,9 +32,11 @@ import {ObIconService} from './icon/icon.service';
 import {Observable, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
 import {ObIObliqueConfiguration, ObIObliqueConfigurationWithDefaults} from './utilities.model';
-
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
-import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from './accessibility-statement/accessibility-statement.provider';
+import {
+	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
+	OB_HISTORY_STATE,
+} from './accessibility-statement/accessibility-statement.provider';
 import {WINDOW} from './window/window.provider';
 import {OB_TRANSLATION_CONFIGURATION, provideObliqueTranslations} from './translation/translation.providers';
 import {ObDateAdapter} from './language/date-adapter/date-adapter';
