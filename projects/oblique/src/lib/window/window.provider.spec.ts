@@ -1,13 +1,13 @@
 import {TestBed} from '@angular/core/testing';
 import {DOCUMENT} from '@angular/core';
-import {WINDOW, provideWindow} from './window.provider';
+import {WINDOW, obProvideWindow} from './window.provider';
 import {ObWindow} from './window.provider.model';
 
 describe('window', () => {
-	describe(provideWindow.name, () => {
+	describe(obProvideWindow.name, () => {
 		describe('with window', () => {
 			beforeEach(() => {
-				TestBed.configureTestingModule({providers: [{provide: DOCUMENT, useValue: document}, provideWindow()]});
+				TestBed.configureTestingModule({providers: [{provide: DOCUMENT, useValue: document}, obProvideWindow()]});
 			});
 
 			test('provides WINDOW', () => {
@@ -19,7 +19,7 @@ describe('window', () => {
 			let win: ObWindow;
 
 			beforeEach(() => {
-				TestBed.configureTestingModule({providers: [{provide: DOCUMENT, useValue: {}}, provideWindow()]});
+				TestBed.configureTestingModule({providers: [{provide: DOCUMENT, useValue: {}}, obProvideWindow()]});
 				win = TestBed.inject(WINDOW);
 			});
 
