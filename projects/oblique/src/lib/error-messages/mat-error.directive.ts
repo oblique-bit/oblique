@@ -5,7 +5,7 @@ import {filter, takeUntil, tap} from 'rxjs/operators';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.module';
 import {ObErrorMessagesDirective} from './error-messages.directive';
 import {Subject} from 'rxjs';
-import {OB_MAT_ERROR_PREFIX} from '../utilities';
+import {OB_MAT_ERROR_PREFIX} from '../material/material.providers';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector

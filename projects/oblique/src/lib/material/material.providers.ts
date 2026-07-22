@@ -1,4 +1,4 @@
-import {Provider} from '@angular/core';
+import {InjectionToken, Provider} from '@angular/core';
 import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MatDatepickerIntl} from '@angular/material/datepicker';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
@@ -12,6 +12,10 @@ import {ObDatepickerIntlService} from './ob-datepicker.service';
 import {ObPaginatorService} from './ob-paginator.service';
 import {ObStepperIntlService} from './ob-stepper.service';
 import {ObIMaterialConfig, ObIMaterialProviders, ObMaterialProvider} from './material.model';
+
+export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
+	'Prefix for the translation keys of custom error messages.'
+);
 
 const materialProviders: ObIMaterialProviders = {
 	MAT_FORM_FIELD_DEFAULT_OPTIONS: {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},

@@ -5,7 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {AbstractControl, FormBuilder, ReactiveFormsModule, ValidatorFn, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {provideObliqueTestingConfiguration} from '../../public_api';
-import {OB_MAT_ERROR_PREFIX} from '../utilities';
+import {OB_MAT_ERROR_PREFIX} from '../material/material.providers';
 import {ObMatErrorDirective} from './mat-error.directive';
 import {ObErrorMessagesDirective} from './error-messages.directive';
 

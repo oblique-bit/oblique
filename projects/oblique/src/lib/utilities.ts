@@ -40,10 +40,6 @@ import {obDefaultLanguageInUrl, obProvideLanguageConfiguration} from './language
 import {obDefaultBannerConfiguration, obProvideBanner} from './banner';
 import {obProvideServiceNavigation} from './service-navigation/service-navigation.provider';
 
-export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
-	'Prefix for the translation keys of custom error messages.'
-);
-
 const defaultLocalesConfiguration: ObILocale = {
 	locales: ['de-CH', 'fr-CH', 'it-CH'],
 	defaultLanguage: 'de',
