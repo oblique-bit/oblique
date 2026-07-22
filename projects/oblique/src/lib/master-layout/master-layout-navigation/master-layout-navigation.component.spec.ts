@@ -6,7 +6,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
-import {OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../../utilities';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockMasterLayoutNavigationItemDirective} from '../_mocks/mock-master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './sub-menu-item/master-layout-navigation-sub-menu-item.component';
 import {mockLinksWithChildren} from './master-layout-navigation.component.spec-mock-links-with-data';
@@ -19,6 +19,7 @@ import {ObEScrollMode} from '../master-layout.model';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
 import * as scrollDelta from './scroll-delta';
 import {ObMasterLayoutService} from '../master-layout.service';
+import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
 
 @Component({
 	standalone: false,

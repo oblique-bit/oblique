@@ -17,7 +17,6 @@ import {
 } from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './translation/multi-translate-loader';
 import {
-	OB_HAS_LANGUAGE_IN_URL,
 	getLocalesConfiguration,
 	getRootRoute,
 	isNotKeyboardEventOnButton,
@@ -41,6 +40,7 @@ import {WINDOW} from './window/window.provider';
 import {OB_TRANSLATION_CONFIGURATION, provideObliqueTranslations} from './translation/translation.providers';
 import {ObDateAdapter} from './language/date-adapter/date-adapter';
 import {OB_CONSOLE_CONFIGURATION} from './console/ob-console.provider';
+import {OB_HAS_LANGUAGE_IN_URL} from './language/language.provider';
 
 const translations: any = {};
 const accessibilityStatement: ObIAccessibilityStatementConfiguration = {

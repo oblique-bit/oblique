@@ -18,9 +18,9 @@ import {OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, ObINavigationLink} from '../m
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 import {ObNavigationLink} from './navigation-link.model';
 import {TranslateService} from '@ngx-translate/core';
-import {OB_HAS_LANGUAGE_IN_URL} from '../../utilities';
 import {getScrollIntoViewDelta} from './scroll-delta';
 import {MasterLayoutNavigationComponentBase} from './master-layout-navigation-component-base';
+import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
 
 @Component({
 	selector: 'ob-master-layout-navigation',

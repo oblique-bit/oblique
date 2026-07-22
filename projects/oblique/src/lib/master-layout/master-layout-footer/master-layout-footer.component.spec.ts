@@ -2,12 +2,13 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterModule} from '@angular/router';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutFooterComponent} from './master-layout-footer.component';
-import {OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../../utilities';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {TranslateModule} from '@ngx-translate/core';
+import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
 
 describe('ObMasterLayoutFooterComponent', () => {
 	let component: ObMasterLayoutFooterComponent;

@@ -39,13 +39,13 @@ import {
 import {obProvideDate} from './language/date.provider';
 import {obDefaultConsoleConfiguration, obProvideConsole} from './console/ob-console.provider';
 import {OB_HISTORY_STATE} from './accessibility-statement/accessibility-statement.provider';
+import {obDefaultLanguageInUrl, obProvideLanguageConfiguration} from './language/language.provider';
 
 export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
 export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
 	'Provides the mandatory PAMS environment as well as an optional root url.'
 );
 
-export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current language in URL');
 export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
 );
@@ -91,7 +91,7 @@ const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
 	material: defaultMaterialProviders,
 	icon: {registerObliqueIcons: true},
 	translate: defaultTranslationConfig,
-	hasLanguageInUrl: false,
+	hasLanguageInUrl: obDefaultLanguageInUrl,
 	consoleConfiguration: obDefaultConsoleConfiguration,
 } as const;
 
@@ -117,7 +117,7 @@ function getDefaultObliqueProviders(
 	return [
 		provideWindow(),
 		obProvideAccessibilityStatement(mergedConfig.accessibilityStatement, mergedConfig.historyState),
-		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: mergedConfig.hasLanguageInUrl},
+		obProvideLanguageConfiguration(mergedConfig.hasLanguageInUrl),
 		obProvideDate(),
 		obProvideConsole(mergedConfig.consoleConfiguration),
 		provideMaterial(mergedConfig.material),
