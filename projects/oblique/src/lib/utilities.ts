@@ -30,7 +30,7 @@ import {
 } from './accessibility-statement/accessibility-statement.provider';
 import {ObWindow} from './window/window.provider.model';
 import {WINDOW, obProvideWindow} from './window/window.provider';
-import {defaultMaterialProviders, provideMaterial} from './material/material.providers';
+import {defaultMaterialProviders, obProvideMaterial} from './material/material.providers';
 import {
 	OB_TRANSLATION_CONFIGURATION,
 	defaultTranslationConfig,
@@ -120,7 +120,7 @@ function getDefaultObliqueProviders(
 		obProvideLanguageConfiguration(mergedConfig.hasLanguageInUrl),
 		obProvideDate(),
 		obProvideConsole(mergedConfig.consoleConfiguration),
-		provideMaterial(mergedConfig.material),
+		obProvideMaterial(mergedConfig.material),
 	];
 }
 

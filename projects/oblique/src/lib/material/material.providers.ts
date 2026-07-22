@@ -22,7 +22,7 @@ const materialProviders: ObIMaterialProviders = {
 	MAT_TABS_CONFIG: {provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}},
 };
 
-export function provideMaterial(config: Required<NonNullable<ObIMaterialConfig>>): Provider[] {
+export function obProvideMaterial(config: Required<NonNullable<ObIMaterialConfig>>): Provider[] {
 	return [
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
