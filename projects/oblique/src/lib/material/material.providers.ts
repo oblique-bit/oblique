@@ -36,7 +36,7 @@ export function obProvideMaterial(config: Required<NonNullable<ObIMaterialConfig
 	];
 }
 
-export const defaultMaterialProviders = {
+export const obDefaultMaterialProviders = {
 	MAT_FORM_FIELD_DEFAULT_OPTIONS: materialProviders.MAT_FORM_FIELD_DEFAULT_OPTIONS.useValue,
 	STEPPER_GLOBAL_OPTIONS: materialProviders.STEPPER_GLOBAL_OPTIONS.useValue,
 	MAT_CHECKBOX_OPTIONS: materialProviders.MAT_CHECKBOX_OPTIONS.useValue,

@@ -30,7 +30,7 @@ import {
 } from './accessibility-statement/accessibility-statement.provider';
 import {ObWindow} from './window/window.provider.model';
 import {WINDOW, obProvideWindow} from './window/window.provider';
-import {defaultMaterialProviders, obProvideMaterial} from './material/material.providers';
+import {obDefaultMaterialProviders, obProvideMaterial} from './material/material.providers';
 import {
 	OB_TRANSLATION_CONFIGURATION,
 	defaultTranslationConfig,
@@ -88,7 +88,7 @@ export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
 const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
 	accessibilityStatement: obDefaultAccessibilityStatement,
 	historyState: obDefaultHistoryState,
-	material: defaultMaterialProviders,
+	material: obDefaultMaterialProviders,
 	icon: {registerObliqueIcons: true},
 	translate: defaultTranslationConfig,
 	hasLanguageInUrl: obDefaultLanguageInUrl,
