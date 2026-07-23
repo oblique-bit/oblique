@@ -18,6 +18,7 @@ export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 );
 
 const materialProviders: ObIMaterialProviders = {
+	OB_MAT_ERROR_PREFIX: {provide: OB_MAT_ERROR_PREFIX, useValue: null},
 	MAT_FORM_FIELD_DEFAULT_OPTIONS: {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
 	STEPPER_GLOBAL_OPTIONS: {provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
 	MAT_CHECKBOX_OPTIONS: {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
@@ -41,6 +42,7 @@ export function obProvideMaterial(config: Required<NonNullable<ObIMaterialConfig
 }
 
 export const obDefaultMaterialProviders = {
+	OB_MAT_ERROR_PREFIX: materialProviders.OB_MAT_ERROR_PREFIX.useValue,
 	MAT_FORM_FIELD_DEFAULT_OPTIONS: materialProviders.MAT_FORM_FIELD_DEFAULT_OPTIONS.useValue,
 	STEPPER_GLOBAL_OPTIONS: materialProviders.STEPPER_GLOBAL_OPTIONS.useValue,
 	MAT_CHECKBOX_OPTIONS: materialProviders.MAT_CHECKBOX_OPTIONS.useValue,

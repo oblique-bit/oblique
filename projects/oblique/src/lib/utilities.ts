@@ -1,11 +1,4 @@
-import {
-	EnvironmentProviders,
-	InjectionToken,
-	Provider,
-	inject,
-	makeEnvironmentProviders,
-	provideAppInitializer,
-} from '@angular/core';
+import {EnvironmentProviders, Provider, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
 

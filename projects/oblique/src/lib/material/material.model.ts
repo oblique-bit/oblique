@@ -18,6 +18,7 @@ export type ObIMaterialProviders = {
 };
 
 export interface ObIMaterialConfig {
+	OB_MAT_ERROR_PREFIX?: string | null;
 	MAT_FORM_FIELD_DEFAULT_OPTIONS?: MatFormFieldDefaultOptions;
 	STEPPER_GLOBAL_OPTIONS?: StepperOptions;
 	MAT_CHECKBOX_OPTIONS?: MatCheckboxDefaultOptions;
