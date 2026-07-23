@@ -33,6 +33,11 @@ export default [
 				// rules that are not respected
 				{selector: 'property', format: ['camelCase', 'snake_case']},
 				{selector: 'classProperty', format: ['camelCase', 'UPPER_CASE']},
+				{
+					selector: 'objectLiteralProperty',
+					format: ['UPPER_CASE'],
+					filter: '^OB_',
+				},
 			],
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
