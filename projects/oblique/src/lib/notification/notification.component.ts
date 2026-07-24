@@ -1,20 +1,11 @@
-import {
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	Input,
-	OnDestroy,
-	OnInit,
-	ViewEncapsulation,
-	inject,
-} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation, computed, inject, input, signal} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObAlertComponent} from '../alert/alert.component';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {WINDOW} from '../window/window.provider';
 import {ObWindow} from '../window/window.provider.model';
-import {ObENotificationPlacement, ObINotificationPrivate} from './notification.model';
+import {ObENotificationPlacement, ObINotification, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
 import {Subject, takeUntil} from 'rxjs';
 
@@ -23,10 +14,9 @@ import {Subject, takeUntil} from 'rxjs';
 	imports: [MatTooltipModule, ObAlertComponent, ObTranslateParamsPipe, TranslateModule],
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss', './notification-animations.scss'],
-	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
-		'[class.ob-custom]': 'customChannel',
+		'[class.ob-custom]': 'customChannel()',
 		'[class]': 'getPlacement',
 		class: 'ob-notification-container',
 	},
@@ -34,27 +24,25 @@ import {Subject, takeUntil} from 'rxjs';
 })
 export class ObNotificationComponent implements OnInit, OnDestroy {
 	public static REMOVE_DELAY = 350;
-	@Input() channel: string;
-	customChannel = false;
+	readonly channel = input<string>();
+	readonly currentChannel = computed(() => this.channel() ?? this.notificationService.config.channel);
+	readonly customChannel = computed(() => this.currentChannel() !== 'oblique');
+	readonly notifications = signal<ObINotificationPrivate[]>([]);
+
 	get getPlacement(): ObENotificationPlacement {
 		return this.notificationService.placement;
 	}
-	public notifications: ObINotificationPrivate[] = [];
 	public variant: Record<string, string> = {};
 
 	private readonly unsubscribe = new Subject<void>();
 	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly notificationService = inject(ObNotificationService);
-	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
 	ngOnInit(): void {
-		this.channel ||= this.notificationService.config.channel;
-		this.customChannel = this.channel !== 'oblique';
-
 		this.notificationService.events.pipe(takeUntil(this.unsubscribe)).subscribe(notification => {
-			if (!notification || (!notification.message && notification.channel === this.channel)) {
+			if (!notification || (!notification.message && notification.channel === this.currentChannel())) {
 				this.clear();
-			} else if (notification.channel === this.channel) {
+			} else if (notification.channel === this.currentChannel()) {
 				this.open(notification);
 			}
 		});
@@ -68,16 +56,15 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 	/**
 	 * Adds & opens the specified notification.
 	 */
-	public open(notification: ObINotificationPrivate): void {
-		notification.occurrences = 1;
-		const existingNotification = this.notifications.find(notif => notif.idPrefix === notification.idPrefix);
+	public open(notification: ObINotification): void {
+		const existingNotification = this.notifications().find(notif => notif.idPrefix === notification.idPrefix);
 		if (existingNotification && notification.groupSimilar) {
-			existingNotification.occurrences++;
+			existingNotification.occurrences.update(occurrences => occurrences + 1);
 		} else {
-			notification.$state = this.getOpenState();
-			this.notifications.unshift(notification);
-			if (!notification.sticky) {
-				this.selfClose(notification);
+			const extendedNotification = this.extendNotification(notification);
+			this.notifications.update(notifs => [extendedNotification, ...notifs]);
+			if (!extendedNotification.sticky) {
+				this.selfClose(extendedNotification);
 			}
 		}
 	}
@@ -88,7 +75,7 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 	 * @see remove
 	 */
 	public close(notification: ObINotificationPrivate): void {
-		notification.$state = 'out';
+		notification.$state.set('out');
 		clearTimeout(notification.timer);
 		this.window.setTimeout(() => this.remove(notification), ObNotificationComponent.REMOVE_DELAY);
 	}
@@ -98,21 +85,24 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 	 */
 	public remove(notification: ObINotificationPrivate): void {
 		// don't use idPrefix, because multiple notifications could share the same one
-		notification.$state = 'remove';
-		this.notifications = this.notifications.filter(notif => notif.$state !== 'remove');
-		this.changeDetectorRef.detectChanges();
+		notification.$state.set('remove');
+		this.notifications.update(notifs => notifs.filter(notif => notif.$state() !== 'remove'));
 	}
 
 	/**
 	 * Closes all notifications in the current subscribed channel.
 	 */
 	public clear(): void {
-		this.notifications.forEach(notification => this.close(notification));
+		this.notifications().forEach(notification => this.close(notification));
+	}
+
+	private extendNotification(notification: ObINotification): ObINotificationPrivate {
+		return {...notification, occurrences: signal(1), $state: signal(this.getOpenState())};
 	}
 
 	private getOpenState(): string {
 		const postfix = this.isPlacementOnLeft() ? '-left' : '';
-		return this.notifications.length ? `in${postfix}` : `in-first${postfix}`;
+		return this.notifications().length ? `in${postfix}` : `in-first${postfix}`;
 	}
 
 	private isPlacementOnLeft(): boolean {
@@ -123,8 +113,8 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 
 	private selfClose(notification: ObINotificationPrivate): void {
 		notification.timer = this.window.setTimeout(() => {
-			notification.occurrences = Math.max(0, notification.occurrences - 1);
-			if (notification.occurrences) {
+			notification.occurrences.update(occurrences => Math.max(0, occurrences - 1));
+			if (notification.occurrences() > 0) {
 				this.selfClose(notification);
 			} else {
 				this.close(notification);

@@ -1,3 +1,5 @@
+import {WritableSignal} from '@angular/core';
+
 export interface ObINotification {
 	idPrefix?: string;
 	type?: ObENotificationType;
@@ -12,8 +14,8 @@ export interface ObINotification {
 }
 
 export interface ObINotificationPrivate extends ObINotification {
-	$state?: string;
-	occurrences?: number;
+	$state: WritableSignal<string>;
+	occurrences: WritableSignal<number>;
 	timer?: number;
 }
 
