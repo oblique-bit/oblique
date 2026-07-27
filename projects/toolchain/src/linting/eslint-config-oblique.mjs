@@ -720,6 +720,7 @@ export const eslintConfigOblique = [
 			 * Reason for {template: 0, styles: 0, animations: 0}: Templates, styles and animations should be external
 			 */
 			'@angular-eslint/component-max-inline-declarations': ['error', {template: 0, styles: 0, animations: 0}],
+			'@angular-eslint/computed-must-return': 'error',
 			'@angular-eslint/consistent-component-styles': 'error',
 			'@angular-eslint/contextual-decorator': 'error',
 			'@angular-eslint/contextual-lifecycle': 'error',
@@ -737,6 +738,7 @@ export const eslintConfigOblique = [
 			'@angular-eslint/no-empty-lifecycle-method': 'error',
 			'@angular-eslint/no-experimental': 'error',
 			'@angular-eslint/no-forward-ref': 'error',
+			'@angular-eslint/no-implicit-take-until-destroyed': 'error',
 			'@angular-eslint/no-input-prefix': 'error',
 			'@angular-eslint/no-input-rename': 'error',
 			'@angular-eslint/no-inputs-metadata-property': 'error',
@@ -777,8 +779,6 @@ export const eslintConfigOblique = [
 			'@angular-eslint/use-injectable-provided-in': 'error',
 			'@angular-eslint/use-lifecycle-interface': 'error',
 			'@angular-eslint/use-pipe-transform-interface': 'error',
-			'@angular-eslint/computed-must-return': 'error',
-			'@angular-eslint/no-implicit-take-until-destroyed': 'error',
 		},
 	},
 	{
