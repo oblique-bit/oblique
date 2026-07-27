@@ -396,12 +396,19 @@ describe('ObServiceNavigationService', () => {
 							});
 						});
 
-						describe.each([
-							{method: 'getInboxMailUrl$', url: 'http://inboxMail'},
-							{method: 'getApplicationsUrl$', url: 'http://applications'},
-						])('$method', ({method, url}) => {
-							it(`should emit "${JSON.stringify(url)}"`, async () => {
-								await expect(firstValueFrom(service[method]())).resolves.toBe(url);
+						const fakePamsAppId = '1';
+						describe('getInboxMailUrl$', () => {
+							it(`should emit "http://inboxMail?returnApplicationId=${fakePamsAppId}"`, async () => {
+								service.setPamsAppId(fakePamsAppId);
+								await expect(firstValueFrom(service.getInboxMailUrl$())).resolves.toBe(
+									`http://inboxMail?returnApplicationId=${fakePamsAppId}`
+								);
+							});
+						});
+
+						describe('getApplicationsUrl$', () => {
+							it(`should emit "http://applications"`, async () => {
+								await expect(firstValueFrom(service.getApplicationsUrl$())).resolves.toBe('http://applications');
 							});
 						});
 
@@ -409,31 +416,32 @@ describe('ObServiceNavigationService', () => {
 							describe.each([
 								{
 									index: 0,
-									url: `http://applications/profile/details`,
+									url: `http://applications/profile/details?returnApplicationId=${fakePamsAppId}`,
 									label: 'i18n.oblique.service-navigation.profile.my-profile',
 									isInternalLink: true,
 								},
 								{
 									index: 1,
-									url: `http://applications/profile/permissions`,
+									url: `http://applications/profile/permissions?returnApplicationId=${fakePamsAppId}`,
 									label: 'i18n.oblique.service-navigation.profile.my-permissions',
 									isInternalLink: true,
 								},
 								{
 									index: 2,
-									url: `http://applications/profile/push-notifications`,
+									url: `http://applications/profile/push-notifications?returnApplicationId=${fakePamsAppId}`,
 									label: 'i18n.oblique.service-navigation.profile.my-email-sms-notifications',
 									isInternalLink: true,
 								},
 								{
 									index: 3,
-									url: `http://applications/redeem`,
+									url: `http://applications/redeem?returnApplicationId=${fakePamsAppId}`,
 									label: 'i18n.oblique.service-navigation.profile.redeem-code',
 									isInternalLink: true,
 								},
 							])('Url number $index', expectedUrl => {
 								let urls: ObISectionLink[];
 								beforeEach(async () => {
+									service.setPamsAppId(fakePamsAppId);
 									const profileUrls = firstValueFrom(service.getProfileUrls$());
 									mockStateChange.next({loginState: 'S3+OK', profile: {}} as ObIServiceNavigationState);
 									urls = await profileUrls;
@@ -454,6 +462,7 @@ describe('ObServiceNavigationService', () => {
 
 							describe.each(['SA', 'S1'])('no enough rights with %s', rightLevel => {
 								it(`should return empty array`, async () => {
+									service.setPamsAppId(fakePamsAppId);
 									const profileUrls = firstValueFrom(service.getProfileUrls$());
 									mockStateChange.next({loginState: rightLevel, profile: {}} as ObIServiceNavigationState);
 									const urls = await profileUrls;
