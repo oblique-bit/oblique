@@ -21,7 +21,7 @@
 
 ## Bug Fixes
 
-- **utils:** switch to spawnSync in order to avoid command execution vulnerability ([460c9baf](https://github.com/oblique-bit/oblique/commit/460c9baf2c32e03da521fac42a42605c7f26f210), OUI-4537, CVE-2026-16022)
+- **utils:** prevent code injection in command execution ([460c9baf](https://github.com/oblique-bit/oblique/commit/460c9baf2c32e03da521fac42a42605c7f26f210), OUI-4537, [CVE-2026-16022](https://www.cve.org/CVERecord?id=CVE-2026-16022))
 
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 
