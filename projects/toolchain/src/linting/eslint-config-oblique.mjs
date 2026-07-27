@@ -726,7 +726,8 @@ export const eslintConfigOblique = [
 			'@angular-eslint/directive-class-suffix': 'error',
 			/**
 			 * Rule: @angular-eslint/inject-at-top (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/inject-at-top.md)
-			 * Reason for disabling: Existing code declares inject() calls after other class members.
+			 * Reason for disabling: Conflicts with @typescript-eslint/member-ordering. Injected services are ofter private,
+			 * declaring them first would move private members before public ones, which would contradict the defined order.
 			 */
 			'@angular-eslint/inject-at-top': 'off',
 			'@angular-eslint/no-async-lifecycle-method': 'error',
