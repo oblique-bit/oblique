@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {OB_BANNER, OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../../utilities';
+import {OB_BANNER, provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
@@ -18,6 +18,7 @@ import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {RouterModule} from '@angular/router';
+import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
 
 describe('ObMasterLayoutHeaderComponent', () => {
 	let component: ObMasterLayoutHeaderComponent;

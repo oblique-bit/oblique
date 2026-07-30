@@ -2,10 +2,11 @@ import {TestBed} from '@angular/core/testing';
 import {RouterOutlet, Routes, provideRouter} from '@angular/router';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterTestingHarness} from '@angular/router/testing';
-import {OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../utilities';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObLocalizePipe} from './ob-localize.pipe';
 import {TranslateLoader, TranslateService, provideTranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
+import {OB_HAS_LANGUAGE_IN_URL} from '../language/language.provider';
 
 @Component({
 	template: ``,
