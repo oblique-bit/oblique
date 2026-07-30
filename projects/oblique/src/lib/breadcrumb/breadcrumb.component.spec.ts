@@ -9,7 +9,6 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {Pipe, PipeTransform} from '@angular/core';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {Observable, Subject, isObservable, of} from 'rxjs';
-import {ObMockIconComponent} from '../icon/_mocks/mock-icon.component';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
@@ -84,7 +83,6 @@ describe('ObBreadcrumbComponent', () => {
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
 					RouterTestingModule,
-					ObMockIconComponent,
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObMockLocalizePipe,
@@ -287,7 +285,6 @@ describe('ObBreadcrumbComponent', () => {
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
 					RouterTestingModule,
-					ObMockIconComponent,
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObMockLocalizePipe,
@@ -382,7 +379,6 @@ describe('ObBreadcrumbComponent', () => {
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
 					RouterModule.forRoot([{path: '**', component: ObBreadcrumbComponent}]),
-					ObMockIconComponent,
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObEllipsisTooltipDirective,
@@ -454,7 +450,6 @@ describe('ObBreadcrumbComponent', () => {
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
 					RouterModule,
-					ObMockIconComponent,
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObEllipsisTooltipDirective,
