@@ -720,13 +720,15 @@ export const eslintConfigOblique = [
 			 * Reason for {template: 0, styles: 0, animations: 0}: Templates, styles and animations should be external
 			 */
 			'@angular-eslint/component-max-inline-declarations': ['error', {template: 0, styles: 0, animations: 0}],
+			'@angular-eslint/computed-must-return': 'error',
 			'@angular-eslint/consistent-component-styles': 'error',
 			'@angular-eslint/contextual-decorator': 'error',
 			'@angular-eslint/contextual-lifecycle': 'error',
 			'@angular-eslint/directive-class-suffix': 'error',
 			/**
 			 * Rule: @angular-eslint/inject-at-top (https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/docs/rules/inject-at-top.md)
-			 * Reason for disabling: Existing code declares inject() calls after other class members.
+			 * Reason for disabling: Conflicts with @typescript-eslint/member-ordering. Injected services are ofter private,
+			 * declaring them first would move private members before public ones, which would contradict the defined order.
 			 */
 			'@angular-eslint/inject-at-top': 'off',
 			'@angular-eslint/no-async-lifecycle-method': 'error',
@@ -736,6 +738,7 @@ export const eslintConfigOblique = [
 			'@angular-eslint/no-empty-lifecycle-method': 'error',
 			'@angular-eslint/no-experimental': 'error',
 			'@angular-eslint/no-forward-ref': 'error',
+			'@angular-eslint/no-implicit-take-until-destroyed': 'error',
 			'@angular-eslint/no-input-prefix': 'error',
 			'@angular-eslint/no-input-rename': 'error',
 			'@angular-eslint/no-inputs-metadata-property': 'error',
@@ -776,8 +779,6 @@ export const eslintConfigOblique = [
 			'@angular-eslint/use-injectable-provided-in': 'error',
 			'@angular-eslint/use-lifecycle-interface': 'error',
 			'@angular-eslint/use-pipe-transform-interface': 'error',
-			'@angular-eslint/computed-must-return': 'error',
-			'@angular-eslint/no-implicit-take-until-destroyed': 'error',
 		},
 	},
 	{

@@ -1,9 +1,5 @@
 # [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
 
-## Bug Fixes
-
-- **cli:** use ESM extensions for type imports ([449f07f7](https://github.com/oblique-bit/oblique/commit/449f07f7db2af925bfbcfe9dda88870a1ba86fb2), OUI-4500)
-
 ## Features
 
 - **cli:** distribute as ESM ([2d500163](https://github.com/oblique-bit/oblique/commit/2d50016344b220fd28c50a19f3d28053fdb817b9), OUI-4500)
@@ -25,7 +21,7 @@
 
 ## Bug Fixes
 
-- **utils:** switch to spawnSync in order to avoid command execution vulnerability ([460c9baf](https://github.com/oblique-bit/oblique/commit/460c9baf2c32e03da521fac42a42605c7f26f210), OUI-4537, CVE-2026-16022)
+- **utils:** prevent code injection in command execution ([460c9baf](https://github.com/oblique-bit/oblique/commit/460c9baf2c32e03da521fac42a42605c7f26f210), OUI-4537, [CVE-2026-16022](https://www.cve.org/CVERecord?id=CVE-2026-16022))
 
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 

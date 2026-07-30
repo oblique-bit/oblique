@@ -51,7 +51,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for details about how to contribute
 | **version**            | For changes to the version documentation            |
 | **material**           | For changes to the material documentation           |
 | **banner**             | For changes to the banner documentation             |
-| **cms**                | For changes to the ASDF documentation               |
+| **cms**                | For changes to the related to the CMS or its access |
 | **code-examples**      | For changes to the code-examples                    |
 | **feedback**           | For changes to the feedback feature                 |
 | **schematics**         | For changes to the SDS schematics                   |
