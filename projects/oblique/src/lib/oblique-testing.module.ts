@@ -45,7 +45,6 @@ export {ObMockDocumentMetaModule, ObDocumentMetaService} from './document-meta/_
 export {
 	ObMockErrorMessagesModule,
 	ObMockErrorMessagesService,
-	ObMockErrorMessagesComponent,
 	ObMockErrorMessagesDirective,
 	ObMockMatErrorDirective,
 } from './error-messages/_mocks/mock-error-messages.module';
