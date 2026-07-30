@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 
 /**
@@ -6,7 +6,7 @@ import {ControlContainer} from '@angular/forms';
  */
 @Injectable()
 export class ObMockUnsavedChangesService {
-	public isActive = true;
+	public readonly isActive = signal(true);
 
 	watch(formId: string, form: ControlContainer): void {}
 
@@ -16,7 +16,7 @@ export class ObMockUnsavedChangesService {
 		return true;
 	}
 
-	ignoreChanges(formIds: string[]): boolean {
+	ignoreChanges(formIds?: string[]): boolean {
 		return true;
 	}
 }

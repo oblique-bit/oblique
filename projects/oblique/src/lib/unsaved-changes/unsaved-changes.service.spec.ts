@@ -1,9 +1,9 @@
 import {TestBed, inject} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
-import {ObUnsavedChangesService} from './unsaved-changes.service';
-import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {Subject} from 'rxjs';
+import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {provideObliqueTestingConfiguration} from '../utilities';
+import {ObUnsavedChangesService} from './unsaved-changes.service';
 
 describe('UnsavedChangesService', () => {
 	let unsavedChangesService: ObUnsavedChangesService;
@@ -136,7 +136,7 @@ describe('UnsavedChangesService', () => {
 	describe('dirty form', () => {
 		describe('with isActive = false', () => {
 			beforeEach(() => {
-				unsavedChangesService.isActive = false;
+				unsavedChangesService.isActive.set(false);
 				const form: ControlContainer = {dirty: true} as ControlContainer;
 				unsavedChangesService.watch('tab_1', form);
 			});
@@ -147,7 +147,7 @@ describe('UnsavedChangesService', () => {
 		});
 		describe('with isActive = true', () => {
 			beforeEach(() => {
-				unsavedChangesService.isActive = true;
+				unsavedChangesService.isActive.set(true);
 				const form: ControlContainer = {dirty: true} as ControlContainer;
 				unsavedChangesService.watch('tab_1', form);
 			});
@@ -156,6 +156,68 @@ describe('UnsavedChangesService', () => {
 				jest.spyOn(window, 'confirm').mockImplementation(() => false);
 				expect(unsavedChangesService.ignoreChanges()).toBe(false);
 			});
+		});
+	});
+
+	describe('with explicit formIds parameter', () => {
+		beforeEach(() => {
+			unsavedChangesService.unWatch('tab_1');
+			unsavedChangesService.unWatch('tab_2');
+			unsavedChangesService.isActive.set(true);
+			const form1: ControlContainer = {dirty: true} as ControlContainer;
+			const form2: ControlContainer = {dirty: false} as ControlContainer;
+			unsavedChangesService.watch('tab_1', form1);
+			unsavedChangesService.watch('tab_2', form2);
+			jest.clearAllMocks();
+		});
+
+		it('ignoreChanges with specific dirty formId should call confirm', () => {
+			jest.spyOn(window, 'confirm').mockImplementation(() => true);
+			unsavedChangesService.ignoreChanges(['tab_1']);
+			expect(window.confirm).toHaveBeenCalled();
+		});
+
+		it('ignoreChanges with specific clean formId should not call confirm', () => {
+			jest.spyOn(window, 'confirm').mockImplementation(() => true);
+			unsavedChangesService.ignoreChanges(['tab_2']);
+			expect(window.confirm).not.toHaveBeenCalled();
+		});
+
+		it('hasPendingChangesFor with explicit ids should check only those forms', () => {
+			unsavedChangesService.isActive.set(true);
+			unsavedChangesService.unWatch('tab_1');
+			unsavedChangesService.unWatch('tab_2');
+			const form1: ControlContainer = {dirty: true} as ControlContainer;
+			const form2: ControlContainer = {dirty: false} as ControlContainer;
+			unsavedChangesService.watch('tab_1', form1);
+			unsavedChangesService.watch('tab_2', form2);
+			// @ts-ignore - testing private method for coverage
+			expect(unsavedChangesService.hasPendingChangesFor(['tab_1'])).toBe(true);
+			// @ts-ignore - testing private method for coverage
+			expect(unsavedChangesService.hasPendingChangesFor(['tab_2'])).toBe(false);
+			// @ts-ignore - testing private method for coverage
+			expect(unsavedChangesService.hasPendingChangesFor(['tab_1', 'tab_2'])).toBe(true);
+		});
+
+		it('hasPendingChangesFor without ids should check all forms', () => {
+			unsavedChangesService.isActive.set(true);
+			unsavedChangesService.unWatch('tab_1');
+			unsavedChangesService.unWatch('tab_2');
+			const form1: ControlContainer = {dirty: true} as ControlContainer;
+			const form2: ControlContainer = {dirty: false} as ControlContainer;
+			unsavedChangesService.watch('tab_1', form1);
+			unsavedChangesService.watch('tab_2', form2);
+			// @ts-ignore - testing private method for coverage (tests fallback to Object.keys)
+			expect(unsavedChangesService.hasPendingChangesFor()).toBe(true);
+		});
+
+		it('hasPendingChangesFor with undefined ids should use Object.keys fallback', () => {
+			unsavedChangesService.isActive.set(true);
+			unsavedChangesService.unWatch('tab_1');
+			const form1: ControlContainer = {dirty: true} as ControlContainer;
+			unsavedChangesService.watch('tab_1', form1);
+			// @ts-ignore - testing private method for coverage (tests explicit undefined fallback to Object.keys)
+			expect(unsavedChangesService.hasPendingChangesFor(undefined)).toBe(true);
 		});
 	});
 });

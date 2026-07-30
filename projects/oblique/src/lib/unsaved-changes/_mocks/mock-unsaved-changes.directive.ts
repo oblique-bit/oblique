@@ -1,4 +1,4 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -8,6 +8,6 @@ import {Directive, Input} from '@angular/core';
 	exportAs: 'obUnsavedChanges',
 })
 export class ObMockUnsavedChangesDirective {
-	@Input() id;
-	@Input() isActive = true;
+	readonly id = input.required<string>();
+	readonly isActive = input(true);
 }
