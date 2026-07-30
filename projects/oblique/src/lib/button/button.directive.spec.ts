@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {MatButtonModule} from '@angular/material/button';
@@ -11,7 +11,7 @@ import {ObConsoleService} from '../console/ob-console.service';
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class ButtonDirectiveTestComponent {
-	obButton: 'primary' | 'secondary' | 'tertiary' = 'primary';
+	obButton = signal<'primary' | 'secondary' | 'tertiary'>('primary');
 }
 
 interface ButtonDirectiveTestParameter {
@@ -27,7 +27,6 @@ describe(ObButtonDirective.name, () => {
 	let directive: ObButtonDirective;
 	let component: ButtonDirectiveTestComponent;
 	let fixture: ComponentFixture<ButtonDirectiveTestComponent>;
-	let hostChangeDetector: ChangeDetectorRef;
 	let obConsoleService: ObConsoleService;
 
 	beforeEach(async () => {
@@ -46,7 +45,7 @@ describe(ObButtonDirective.name, () => {
 				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
-			fixture.detectChanges();
+			TestBed.tick();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
 			directive = element.injector.get(ObButtonDirective);
 		});
@@ -62,7 +61,7 @@ describe(ObButtonDirective.name, () => {
 		});
 
 		it('should be default obButton', () => {
-			expect(directive.obButton).toBe('primary');
+			expect(directive.obButton()).toBe('primary');
 		});
 
 		it('should have `.mat-primary` class', () => {
@@ -84,7 +83,7 @@ describe(ObButtonDirective.name, () => {
 				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
-			fixture.detectChanges();
+			TestBed.tick();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
 			directive = element.injector.get(ObButtonDirective);
 		});
@@ -100,7 +99,7 @@ describe(ObButtonDirective.name, () => {
 		});
 
 		it('should be secondary obButton', () => {
-			expect(directive.obButton).toBe('secondary');
+			expect(directive.obButton()).toBe('secondary');
 		});
 
 		it('should have `.mat-primary` class', () => {
@@ -122,7 +121,7 @@ describe(ObButtonDirective.name, () => {
 				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
-			fixture.detectChanges();
+			TestBed.tick();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
 			directive = element.injector.get(ObButtonDirective);
 		});
@@ -138,7 +137,7 @@ describe(ObButtonDirective.name, () => {
 		});
 
 		it('should be tertiary obButton', () => {
-			expect(directive.obButton).toBe('tertiary');
+			expect(directive.obButton()).toBe('tertiary');
 		});
 
 		it('should have `.mat-primary` class', () => {
@@ -166,11 +165,11 @@ describe(ObButtonDirective.name, () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
-					template: '<button mat-button obButton>Undefined</button>',
+					template: '<button mat-button obButton>Default</button>',
 				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
-			fixture.detectChanges();
+			TestBed.tick();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
 			directive = element.injector.get(ObButtonDirective);
 		});
@@ -186,7 +185,7 @@ describe(ObButtonDirective.name, () => {
 		});
 
 		it('should be default obButton', () => {
-			expect(directive.obButton).toBe('primary');
+			expect(directive.obButton()).toBe('primary');
 		});
 
 		it('should have `.mat-primary` class', () => {
@@ -208,7 +207,7 @@ describe(ObButtonDirective.name, () => {
 				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
-			fixture.detectChanges();
+			TestBed.tick();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
 			directive = element.injector.get(ObButtonDirective);
 		});
@@ -224,7 +223,7 @@ describe(ObButtonDirective.name, () => {
 		});
 
 		it('should be illegal obButton', () => {
-			expect(directive.obButton).toBe('illegal');
+			expect(directive.obButton()).toBe('illegal');
 		});
 
 		it('should have `.mat-primary` class', () => {
@@ -253,7 +252,7 @@ describe(ObButtonDirective.name, () => {
 			obConsoleService = TestBed.inject(ObConsoleService);
 			jest.spyOn(obConsoleService, 'error');
 			component = fixture.componentInstance;
-			fixture.detectChanges();
+			TestBed.tick();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
 			directive = element.injector.get(ObButtonDirective);
 		});
@@ -284,7 +283,7 @@ describe(ObButtonDirective.name, () => {
 		});
 
 		it('should be primary obButton', () => {
-			expect(directive.obButton).toBe('primary');
+			expect(directive.obButton()).toBe('primary');
 		});
 
 		it('should have `.mat-primary` class', () => {
@@ -441,13 +440,12 @@ describe(ObButtonDirective.name, () => {
 		beforeEach(() => {
 			fixture = TestBed.overrideComponent(ButtonDirectiveTestComponent, {
 				set: {
-					template: '<button mat-button [obButton]="obButton">Dynamic</button>',
+					template: '<button mat-button [obButton]="obButton()">Dynamic</button>',
 				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			component = fixture.componentInstance;
-			component.obButton = parameter.obButtonBeforeChange;
-			hostChangeDetector = fixture.componentRef.changeDetectorRef;
-			fixture.detectChanges();
+			component.obButton.set(parameter.obButtonBeforeChange || 'primary');
+			TestBed.tick();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
 			directive = element.injector.get(ObButtonDirective);
 		});
@@ -464,7 +462,7 @@ describe(ObButtonDirective.name, () => {
 			});
 
 			it(`should be ${parameter.expectedButtonBeforeChange} obButton`, () => {
-				expect(directive.obButton).toBe(parameter.expectedButtonBeforeChange);
+				expect(directive.obButton()).toBe(parameter.expectedButtonBeforeChange);
 			});
 
 			it(`should ${parameter.expectedButtonClassBeforeChange.primary ? 'have ' : 'not have '} \`.mat-primary\` class`, () => {
@@ -488,8 +486,8 @@ describe(ObButtonDirective.name, () => {
 
 		describe('after change', () => {
 			beforeEach(() => {
-				component.obButton = parameter.obButtonAfterChange;
-				hostChangeDetector.detectChanges();
+				component.obButton.set(parameter.obButtonAfterChange || 'primary');
+				TestBed.tick();
 			});
 
 			it('should create an instance', () => {
@@ -498,7 +496,7 @@ describe(ObButtonDirective.name, () => {
 			});
 
 			it(`should be ${parameter.expectedButtonAfterChange} obButton`, () => {
-				expect(directive.obButton).toBe(parameter.expectedButtonAfterChange);
+				expect(directive.obButton()).toBe(parameter.expectedButtonAfterChange);
 			});
 
 			it(`should ${parameter.expectedButtonClassAfterChange.primary ? 'have ' : 'not have '} \`.mat-primary\` class`, () => {

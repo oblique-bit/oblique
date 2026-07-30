@@ -1,4 +1,4 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -8,5 +8,5 @@ import {Directive, Input} from '@angular/core';
 	exportAs: 'obButton',
 })
 export class ObMockButtonDirective {
-	@Input() obButton = 'primary';
+	readonly obButton = input('primary');
 }
