@@ -20,6 +20,7 @@ export type ObTBanner = string | ObIBanner | undefined;
 
 export interface ObIObliqueConfiguration {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;
+	historyState?: ObIHistoryState;
 	material?: ObIMaterialConfig;
 	icon?: ObIconConfig;
 	translate?: ObITranslateConfig;
@@ -40,6 +41,7 @@ export type ObIObliqueConfigurationWithDefaults = Omit<
 	'accessibilityStatement' | 'material' | 'icon' | 'translate' | 'hasLanguageInUrl'
 > & {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;
+	historyState: ObIHistoryState;
 	material: Required<NonNullable<ObIObliqueConfiguration['material']>>;
 	icon: NonNullable<ObIObliqueConfiguration['icon']>;
 	translate: NonNullable<ObIObliqueConfiguration['translate']>;
