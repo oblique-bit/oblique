@@ -22,7 +22,7 @@ const materialProviders: ObIMaterialProviders = {
 	MAT_TABS_CONFIG: {provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}},
 };
 
-export function provideMaterial(config: Required<NonNullable<ObIMaterialConfig>>): Provider[] {
+export function obProvideMaterial(config: Required<NonNullable<ObIMaterialConfig>>): Provider[] {
 	return [
 		{provide: MatStepperIntl, useClass: ObStepperIntlService},
 		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
@@ -36,7 +36,7 @@ export function provideMaterial(config: Required<NonNullable<ObIMaterialConfig>>
 	];
 }
 
-export const defaultMaterialProviders = {
+export const obDefaultMaterialProviders = {
 	MAT_FORM_FIELD_DEFAULT_OPTIONS: materialProviders.MAT_FORM_FIELD_DEFAULT_OPTIONS.useValue,
 	STEPPER_GLOBAL_OPTIONS: materialProviders.STEPPER_GLOBAL_OPTIONS.useValue,
 	MAT_CHECKBOX_OPTIONS: materialProviders.MAT_CHECKBOX_OPTIONS.useValue,

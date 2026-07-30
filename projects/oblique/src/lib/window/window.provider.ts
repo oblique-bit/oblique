@@ -3,7 +3,7 @@ import {ObWindow} from './window.provider.model';
 
 export const WINDOW = new InjectionToken<Window>('Window');
 
-export function provideWindow(): Provider[] {
+export function obProvideWindow(): Provider[] {
 	return [{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]}];
 }
 

@@ -29,8 +29,8 @@ import {
 	obProvideAccessibilityStatement,
 } from './accessibility-statement/accessibility-statement.provider';
 import {ObWindow} from './window/window.provider.model';
-import {WINDOW, provideWindow} from './window/window.provider';
-import {defaultMaterialProviders, provideMaterial} from './material/material.providers';
+import {WINDOW, obProvideWindow} from './window/window.provider';
+import {obDefaultMaterialProviders, obProvideMaterial} from './material/material.providers';
 import {
 	OB_TRANSLATION_CONFIGURATION,
 	defaultTranslationConfig,
@@ -88,7 +88,7 @@ export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
 const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
 	accessibilityStatement: obDefaultAccessibilityStatement,
 	historyState: obDefaultHistoryState,
-	material: defaultMaterialProviders,
+	material: obDefaultMaterialProviders,
 	icon: {registerObliqueIcons: true},
 	translate: defaultTranslationConfig,
 	hasLanguageInUrl: obDefaultLanguageInUrl,
@@ -115,12 +115,12 @@ function getDefaultObliqueProviders(
 	mergedConfig: ObIObliqueConfigurationWithDefaults
 ): (Provider | EnvironmentProviders)[] {
 	return [
-		provideWindow(),
+		obProvideWindow(),
 		obProvideAccessibilityStatement(mergedConfig.accessibilityStatement, mergedConfig.historyState),
 		obProvideLanguageConfiguration(mergedConfig.hasLanguageInUrl),
 		obProvideDate(),
 		obProvideConsole(mergedConfig.consoleConfiguration),
-		provideMaterial(mergedConfig.material),
+		obProvideMaterial(mergedConfig.material),
 	];
 }
 

@@ -8,7 +8,7 @@ import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {MatStepperIntl} from '@angular/material/stepper';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {provideMaterial} from './material.providers';
+import {obProvideMaterial} from './material.providers';
 import {ObIMaterialConfig} from './material.model';
 import {provideObliqueTranslations} from '../translation/translation.providers';
 import {ObDatepickerIntlService} from './ob-datepicker.service';
@@ -27,7 +27,7 @@ describe('material.provider', () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			providers: [provideMaterial(config), provideObliqueTranslations()],
+			providers: [obProvideMaterial(config), provideObliqueTranslations()],
 		});
 	});
 
