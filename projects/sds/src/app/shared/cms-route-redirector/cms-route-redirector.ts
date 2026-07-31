@@ -46,7 +46,7 @@ export class CmsRouteRedirector {
 		if (origin === this.window.location.origin) {
 			this.navigation$.next(route);
 		} else {
-			this.window.open(`${origin}${route}`, '_blank', 'noopener,noreferrer');
+			this.window.open(route, '_blank', 'noopener,noreferrer');
 		}
 	}
 

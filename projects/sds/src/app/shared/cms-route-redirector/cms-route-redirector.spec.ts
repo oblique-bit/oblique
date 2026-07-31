@@ -224,7 +224,7 @@ describe(CmsRouteRedirector.name, () => {
 			});
 
 			test('external url', () => {
-				service.navigate('http://external', '/path');
+				service.navigate('http://external', 'http://external/path');
 				expect(router.navigate).not.toHaveBeenCalled();
 				expect(mockWindow.open).toHaveBeenCalledWith('http://external/path', '_blank', 'noopener,noreferrer');
 			});
