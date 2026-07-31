@@ -11,7 +11,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslateModule} from '@ngx-translate/core';
 
 import {
-	OB_BANNER,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 	OB_PAMS_CONFIGURATION,
 	ObAlertModule,
@@ -83,7 +82,6 @@ registerLocaleData(localeDE);
 	],
 	declarations: [AppComponent, HomePageComponent],
 	providers: [
-		{provide: OB_BANNER, useValue: environment.banner},
 		{provide: OB_PAMS_CONFIGURATION, useValue: environment.pams},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
@@ -125,6 +123,7 @@ registerLocaleData(localeDE);
 			},
 			hasLanguageInUrl: true,
 			consoleConfiguration: {silencedLabels: new Set()},
+			banner: environment.banner,
 		}),
 	],
 	bootstrap: [AppComponent],
