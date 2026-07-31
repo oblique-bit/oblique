@@ -11,7 +11,6 @@ import {ObMockDocumentMetaModule} from './document-meta/_mocks/mock-document-met
 import {ObMockErrorMessagesModule} from './error-messages/_mocks/mock-error-messages.module';
 import {ObMockExternalLinkModule} from './external-link/_mocks/mock-external-link.module';
 import {ObMockFileUploadModule} from './file-upload/_mocks/mock-file-upload.module';
-import {ObMockIconComponent} from './icon/_mocks/mock-icon.component';
 import {ObMockIconService} from './icon/_mocks/mock-icon.service';
 import {ObMockMasterLayoutModule} from './master-layout/_mocks/mock-master-layout.module';
 import {ObMockNavTreeModule} from './nav-tree/_mocks/mock-nav-tree.module';
@@ -46,7 +45,6 @@ export {ObMockDocumentMetaModule, ObDocumentMetaService} from './document-meta/_
 export {
 	ObMockErrorMessagesModule,
 	ObMockErrorMessagesService,
-	ObMockErrorMessagesComponent,
 	ObMockErrorMessagesDirective,
 	ObMockMatErrorDirective,
 } from './error-messages/_mocks/mock-error-messages.module';
@@ -59,7 +57,6 @@ export {
 	ObMockDropZoneComponent,
 } from './file-upload/_mocks/mock-file-upload.module';
 export {ObMockDatePipe, ObMockLanguageModule} from './language/_mocks/mock-language.module';
-export {ObMockIconComponent} from './icon/_mocks/mock-icon.component';
 export {ObMockIconService} from './icon/_mocks/mock-icon.service';
 export {ObMockInputClearModule, ObMockInputClearDirective} from './input-clear/_mocks/mock-input-clear.module';
 export {
@@ -142,7 +139,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockExternalLinkModule,
 	ObMockFileUploadModule,
 	ObMockHttpApiInterceptorModule,
-	ObMockIconComponent,
 	ObMockMasterLayoutModule,
 	ObMockNavTreeModule,
 	ObMockNestedFormModule,
