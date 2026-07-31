@@ -37,6 +37,9 @@ export class ObServiceNavigationService {
 	private readonly rootUrl$ = new ReplaySubject<string>(1);
 	private readonly returnUrl$ = new ReplaySubject<string>(1);
 	private readonly pamsAppId$ = new ReplaySubject<string>(1);
+	private readonly returnAppIdUrlParameter$ = this.pamsAppId$.pipe(
+		map(pamsAppId => `?returnApplicationId=${pamsAppId}`)
+	);
 	private readonly favoriteApplicationsCount$ = new ReplaySubject<number>(1);
 
 	private readonly config$ = this.rootUrl$.pipe(
@@ -152,31 +155,32 @@ export class ObServiceNavigationService {
 
 	getProfileUrls$(): Observable<ObISectionLink[]> {
 		return this.config$.pipe(
-			combineLatestWith(this.state$),
-			map(([config, state]): ObISectionLink[] => {
+			combineLatestWith(this.state$, this.returnAppIdUrlParameter$),
+			map(([config, state, returnAppId]): ObISectionLink[] => {
 				if (state.loginState === 'SA' || state.loginState === 'S1') {
 					return [];
 				}
 
 				const base = config.allServices.url;
+
 				return [
 					{
-						url: `${base}/profile/details`,
+						url: `${base}/profile/details${returnAppId}`,
 						label: 'i18n.oblique.service-navigation.profile.my-profile',
 						isInternalLink: true,
 					},
 					{
-						url: `${base}/profile/permissions`,
+						url: `${base}/profile/permissions${returnAppId}`,
 						label: 'i18n.oblique.service-navigation.profile.my-permissions',
 						isInternalLink: true,
 					},
 					{
-						url: `${base}/profile/push-notifications`,
+						url: `${base}/profile/push-notifications${returnAppId}`,
 						label: 'i18n.oblique.service-navigation.profile.my-email-sms-notifications',
 						isInternalLink: true,
 					},
 					{
-						url: `${base}/redeem`,
+						url: `${base}/redeem${returnAppId}`,
 						label: 'i18n.oblique.service-navigation.profile.redeem-code',
 						isInternalLink: true,
 					},
@@ -186,7 +190,10 @@ export class ObServiceNavigationService {
 	}
 
 	getInboxMailUrl$(): Observable<string> {
-		return this.config$.pipe(map(config => config.inboxMail.url));
+		return this.config$.pipe(
+			combineLatestWith(this.returnAppIdUrlParameter$),
+			map(([config, returnAppId]) => `${config.inboxMail.url}${returnAppId}`)
+		);
 	}
 
 	getApplicationsUrl$(): Observable<string> {
