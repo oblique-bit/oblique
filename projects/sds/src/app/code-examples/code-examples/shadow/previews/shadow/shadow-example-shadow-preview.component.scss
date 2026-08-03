@@ -13,10 +13,6 @@
 	@include shadow.ob-tab-focus-border();
 }
 
-.ob-inner-bottom-shadow {
-	@include shadow.ob-inner-bottom-shadow();
-}
-
 .ob-shadow-sm {
 	@include shadow.ob-shadow-sm();
 }
