@@ -1,5 +1,6 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation, computed, inject, input, signal} from '@angular/core';
+import {Component, ViewEncapsulation, computed, inject, input, signal} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TranslateModule} from '@ngx-translate/core';
 import {ObAlertComponent} from '../alert/alert.component';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
@@ -7,7 +8,6 @@ import {WINDOW} from '../window/window.provider';
 import {ObWindow} from '../window/window.provider.model';
 import {ObENotificationPlacement, ObINotification, ObINotificationPrivate} from './notification.model';
 import {ObNotificationService} from './notification.service';
-import {Subject, takeUntil} from 'rxjs';
 
 @Component({
 	selector: 'ob-notification',
@@ -22,7 +22,7 @@ import {Subject, takeUntil} from 'rxjs';
 	},
 	exportAs: 'obNotification',
 })
-export class ObNotificationComponent implements OnInit, OnDestroy {
+export class ObNotificationComponent {
 	public static REMOVE_DELAY = 350;
 	readonly channel = input<string>();
 	readonly currentChannel = computed(() => this.channel() ?? this.notificationService.config.channel);
@@ -34,23 +34,17 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 	}
 	public variant: Record<string, string> = {};
 
-	private readonly unsubscribe = new Subject<void>();
 	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly notificationService = inject(ObNotificationService);
 
-	ngOnInit(): void {
-		this.notificationService.events.pipe(takeUntil(this.unsubscribe)).subscribe(notification => {
+	constructor() {
+		this.notificationService.events.pipe(takeUntilDestroyed()).subscribe(notification => {
 			if (!notification || (!notification.message && notification.channel === this.currentChannel())) {
 				this.clear();
 			} else if (notification.channel === this.currentChannel()) {
 				this.open(notification);
 			}
 		});
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
 	}
 
 	/**
