@@ -24,15 +24,6 @@ $tab-focus-width: 3px;
 	outline: none;
 }
 
-/*
-* @deprecated since Oblique 14.1.0, will be removed without replacement with the next major version
-*/
-@mixin ob-focus-visible-tab-focus-box-shadow($tab-focus-box-shadow-color: $tab-focus-color) {
-	&:focus-visible {
-		@include ob-tab-focus-box-shadow($tab-focus-box-shadow-color);
-	}
-}
-
 @mixin ob-tab-focus-border() {
 	border: $tab-focus-width solid $tab-focus-color;
 	box-shadow: none;
