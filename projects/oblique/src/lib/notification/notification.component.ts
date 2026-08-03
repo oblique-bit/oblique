@@ -74,8 +74,8 @@ export class ObNotificationComponent implements OnInit, OnDestroy {
 		if (existingNotification && notification.groupSimilar) {
 			existingNotification.occurrences++;
 		} else {
-			this.notifications.unshift(notification);
 			notification.$state = this.getOpenState();
+			this.notifications.unshift(notification);
 			if (!notification.sticky) {
 				this.selfClose(notification);
 			}
