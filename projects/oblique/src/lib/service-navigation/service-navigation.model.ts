@@ -49,3 +49,8 @@ export interface ObILanguage {
 	code: string;
 	label: string;
 }
+
+export interface ObIPamsConfiguration {
+	environment: ObEPamsEnvironment;
+	rootUrl?: string;
+}

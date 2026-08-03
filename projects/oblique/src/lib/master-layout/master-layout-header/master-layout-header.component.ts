@@ -17,8 +17,6 @@ import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {OB_PAMS_CONFIGURATION} from '../../utilities';
-import {ObIPamsConfiguration} from '../../utilities.model';
 import {OB_BANNER, ObIBanner, buildBannerObject} from '../../banner';
 import {
 	ObEMasterLayoutEventValues,
@@ -26,8 +24,9 @@ import {
 	ObINavigationLink,
 	ObIServiceNavigationConfig,
 } from '../master-layout.model';
-import {ObLoginState} from '../../service-navigation/service-navigation.model';
+import {ObIPamsConfiguration, ObLoginState} from '../../service-navigation/service-navigation.model';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
+import {OB_PAMS_CONFIGURATION} from '../../service-navigation/service-navigation.provider';
 
 @Component({
 	selector: 'ob-master-layout-header',

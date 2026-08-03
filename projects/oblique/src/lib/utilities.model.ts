@@ -1,15 +1,9 @@
-import {ObEPamsEnvironment} from './service-navigation/service-navigation.model';
 import {ObIconConfig} from './icon/icon.model';
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
 import {ObIMaterialConfig} from './material/material.model';
 import {ObITranslateConfig} from './translation/translation.model';
 import {ObConsoleConfiguration} from './console/ob-console.model';
 import {ObTBanner} from './banner/banner.model';
-
-export interface ObIPamsConfiguration {
-	environment: ObEPamsEnvironment;
-	rootUrl?: string;
-}
 
 export interface ObIObliqueConfiguration {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;

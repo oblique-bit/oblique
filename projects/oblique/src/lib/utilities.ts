@@ -14,7 +14,6 @@ import {
 	ObIObliqueConfiguration,
 	ObIObliqueConfigurationWithDefaults,
 	ObIObliqueTestingConfiguration,
-	ObIPamsConfiguration,
 } from './utilities.model';
 import {ObIconService} from './icon/icon.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
@@ -39,10 +38,6 @@ import {obDefaultConsoleConfiguration, obProvideConsole} from './console/ob-cons
 import {OB_HISTORY_STATE} from './accessibility-statement/accessibility-statement.provider';
 import {obDefaultLanguageInUrl, obProvideLanguageConfiguration} from './language/language.provider';
 import {obDefaultBannerConfiguration, obProvideBanner} from './banner';
-
-export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
-	'Provides the mandatory PAMS environment as well as an optional root url.'
-);
 
 export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
