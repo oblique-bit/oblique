@@ -12,7 +12,6 @@ import {TranslatePipe} from '@ngx-translate/core';
 
 import {
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
-	OB_PAMS_CONFIGURATION,
 	ObAlertModule,
 	ObAutocompleteModule,
 	ObButtonModule,
@@ -82,7 +81,6 @@ registerLocaleData(localeDE);
 	],
 	declarations: [AppComponent, HomePageComponent],
 	providers: [
-		{provide: OB_PAMS_CONFIGURATION, useValue: environment.pams},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
@@ -124,6 +122,7 @@ registerLocaleData(localeDE);
 			hasLanguageInUrl: true,
 			consoleConfiguration: {silencedLabels: new Set()},
 			banner: environment.banner,
+			pams: environment.pams,
 		}),
 	],
 	bootstrap: [AppComponent],
