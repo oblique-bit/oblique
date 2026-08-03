@@ -1,3 +1,4 @@
+import {ObIPamsConfiguration} from './service-navigation/service-navigation.model';
 import {ObIconConfig} from './icon/icon.model';
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
 import {ObIMaterialConfig} from './material/material.model';
@@ -14,6 +15,7 @@ export interface ObIObliqueConfiguration {
 	translate?: ObITranslateConfig;
 	hasLanguageInUrl?: boolean;
 	consoleConfiguration?: ObConsoleConfiguration;
+	pams?: ObIPamsConfiguration;
 }
 
 export interface ObIHistoryState {

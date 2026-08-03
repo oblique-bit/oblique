@@ -38,6 +38,7 @@ import {obDefaultConsoleConfiguration, obProvideConsole} from './console/ob-cons
 import {OB_HISTORY_STATE} from './accessibility-statement/accessibility-statement.provider';
 import {obDefaultLanguageInUrl, obProvideLanguageConfiguration} from './language/language.provider';
 import {obDefaultBannerConfiguration, obProvideBanner} from './banner';
+import {obProvideServiceNavigation} from './service-navigation/service-navigation.provider';
 
 export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
 	'Prefix for the translation keys of custom error messages.'
@@ -116,6 +117,7 @@ function getDefaultObliqueProviders(
 		obProvideDate(),
 		obProvideConsole(mergedConfig.consoleConfiguration),
 		obProvideMaterial(mergedConfig.material),
+		obProvideServiceNavigation(mergedConfig.pams),
 	];
 }
 
