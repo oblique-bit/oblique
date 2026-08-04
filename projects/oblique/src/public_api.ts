@@ -150,13 +150,13 @@ export {
 	ObUnsavedChangesService,
 } from './lib/unsaved-changes/unsaved-changes.module';
 export {
-	OB_BANNER,
 	OB_PAMS_CONFIGURATION,
 	provideObliqueConfiguration,
 	provideObliqueTestingConfiguration,
 	obFocusWithOutline,
 } from './lib/utilities';
-export {ObIBanner, ObTBanner, ObIObliqueConfiguration} from './lib/utilities.model';
+export {OB_BANNER, ObIBanner, ObTBanner} from './lib/banner';
+export {ObIObliqueConfiguration} from './lib/utilities.model';
 export {WINDOW} from './lib/window/window.provider';
 export {ObEColor} from './lib/style/colors.model';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';

@@ -127,14 +127,6 @@ export enum ObEMasterLayoutEventValues {
 	SERVICE_NAVIGATION_CONFIGURATION,
 }
 
-export enum ObEEnvironment {
-	LOCAL = 'LOCAL',
-	DEV = 'DEV',
-	REF = 'REF',
-	TEST = 'TEST',
-	ABN = 'ABN',
-}
-
 export const OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION = new InjectionToken<boolean>(
 	'Are external links icons hidden in the main navigation'
 );

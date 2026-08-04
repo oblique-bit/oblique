@@ -17,16 +17,15 @@ import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {OB_BANNER, OB_PAMS_CONFIGURATION} from '../../utilities';
-import {ObIBanner, ObIPamsConfiguration, ObTBanner} from '../../utilities.model';
+import {OB_PAMS_CONFIGURATION} from '../../utilities';
+import {ObIPamsConfiguration} from '../../utilities.model';
+import {OB_BANNER, ObIBanner, buildBannerObject} from '../../banner';
 import {
-	ObEEnvironment,
 	ObEMasterLayoutEventValues,
 	ObIMasterLayoutEvent,
 	ObINavigationLink,
 	ObIServiceNavigationConfig,
 } from '../master-layout.model';
-import {ObEColor} from '../../style/colors.model';
 import {ObLoginState} from '../../service-navigation/service-navigation.model';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 
@@ -68,7 +67,7 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 		this.customChange();
 		this.smallChange();
 		this.serviceNavigationConfiguration();
-		this.banner = this.initializeBanner(bannerToken);
+		this.banner = buildBannerObject(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
 		this.serviceNavigationConfig = this.config.header.serviceNavigation;
 		this.hasMainNavigation = this.config.layout.hasMainNavigation;
@@ -132,24 +131,5 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 			.subscribe(event => {
 				this.serviceNavigationConfig = event.config;
 			});
-	}
-
-	private initializeBanner(bannerToken: ObTBanner): ObIBanner {
-		const obIBanner: ObIBanner = typeof bannerToken === 'string' ? {text: bannerToken} : bannerToken;
-
-		switch (obIBanner?.text as ObEEnvironment) {
-			case ObEEnvironment.LOCAL:
-				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...obIBanner};
-			case ObEEnvironment.DEV:
-				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_DEV, ...obIBanner};
-			case ObEEnvironment.REF:
-				return {color: ObEColor.DEFAULT, bgColor: ObEColor.ENV_REF, ...obIBanner};
-			case ObEEnvironment.TEST:
-				return {color: '#fff', bgColor: ObEColor.ENV_TEST, ...obIBanner};
-			case ObEEnvironment.ABN:
-				return {color: '#fff', bgColor: ObEColor.ENV_ABN, ...obIBanner};
-			default:
-				return {color: '#fff', bgColor: ObEColor.ENV_LOCAL, ...obIBanner};
-		}
 	}
 }

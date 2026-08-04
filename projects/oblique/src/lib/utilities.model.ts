@@ -4,23 +4,17 @@ import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/
 import {ObIMaterialConfig} from './material/material.model';
 import {ObITranslateConfig} from './translation/translation.model';
 import {ObConsoleConfiguration} from './console/ob-console.model';
-
-export interface ObIBanner {
-	text?: string;
-	color?: string;
-	bgColor?: string;
-}
+import {ObTBanner} from './banner/banner.model';
 
 export interface ObIPamsConfiguration {
 	environment: ObEPamsEnvironment;
 	rootUrl?: string;
 }
 
-export type ObTBanner = string | ObIBanner | undefined;
-
 export interface ObIObliqueConfiguration {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;
 	historyState?: ObIHistoryState;
+	banner?: ObTBanner;
 	material?: ObIMaterialConfig;
 	icon?: ObIconConfig;
 	translate?: ObITranslateConfig;
@@ -42,6 +36,7 @@ export type ObIObliqueConfigurationWithDefaults = Omit<
 > & {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;
 	historyState: ObIHistoryState;
+	banner: ObTBanner;
 	material: Required<NonNullable<ObIObliqueConfiguration['material']>>;
 	icon: NonNullable<ObIObliqueConfiguration['icon']>;
 	translate: NonNullable<ObIObliqueConfiguration['translate']>;
