@@ -9,16 +9,8 @@
 	@include shadow.ob-tab-focus-box-shadow();
 }
 
-.ob-focus-visible-tab-focus-box-shadow:focus-visible {
-	@include shadow.ob-tab-focus-box-shadow();
-}
-
 .ob-tab-focus-border {
 	@include shadow.ob-tab-focus-border();
-}
-
-.ob-inner-bottom-shadow {
-	@include shadow.ob-inner-bottom-shadow();
 }
 
 .ob-shadow-sm {
