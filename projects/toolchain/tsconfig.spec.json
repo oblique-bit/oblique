@@ -1,7 +1,9 @@
 {
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "6.0",
+    "types": ["jest", "node"]
   },
-  "include": ["src/**/*.spec.ts"]
+  "include": ["src/**/*.spec.ts"],
+  "exclude": []
 }

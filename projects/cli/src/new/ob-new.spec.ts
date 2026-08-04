@@ -24,13 +24,24 @@ describe('Ob new command', () => {
 		};
 	}
 
+	function buildToolchainNgAddCommand(options: string[] = []): {command: string; args: string[]} {
+		return {
+			command: 'npx',
+			args: [
+				`@angular/cli@${currentVersions['@angular/cli']}`,
+				'add',
+				`@oblique/toolchain@${currentVersions['@oblique/toolchain']}`,
+				...options,
+			],
+		};
+	}
+
 	function buildDefaultNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return buildNgAddCommand([
 			`--title=${projectName}`,
 			'--locales=de-CH fr-CH it-CH',
 			'--environments=local dev ref test abn prod',
 			'--prefix=app',
-			'--proxy= ',
 			'--ajv',
 			'--unknownRoute',
 			'--httpInterceptors',
@@ -174,7 +185,7 @@ describe('Ob new command', () => {
 					{
 						description: 'Option to configure a proxy server',
 						expected:
-							'--proxy <port> Proxy configuration: Defines the port for the proxy configuration for server connection. (default: " ")',
+							'--proxy <port> Proxy configuration: Defines the port for the proxy configuration for server connection.',
 					},
 					{
 						description: 'Option to add Ajv dependency for form validation',
@@ -290,7 +301,17 @@ describe('Ob new command', () => {
 					);
 				});
 
-				test(`should call npx ${projectName} with default parameter`, () => {
+				test(`should call npx add @oblique/toolchain`, () => {
+					const expected = buildToolchainNgAddCommand();
+					expect(spawnSync).toHaveBeenNthCalledWith(3, expected.command, expected.args, {
+						cwd: `${process.cwd()}/${projectName}`,
+						stdio: 'inherit',
+						encoding: 'utf8',
+						shell: isWindows(),
+					});
+				});
+
+				test(`should call npx add @oblique/oblique with default parameters`, () => {
 					const expected = buildDefaultNgAddCommand();
 					expect(spawnSync).toHaveBeenNthCalledWith(6, expected.command, expected.args, {
 						cwd: `${process.cwd()}/${projectName}`,
@@ -438,15 +459,25 @@ describe('Ob new command', () => {
 		});
 
 		describe.each([
-			{description: 'without npmrc flag', args: [projectName], expectedValue: undefined, expectedOption: []},
-			{description: 'with --npmrc', args: [projectName, '--npmrc'], expectedValue: true, expectedOption: ['--npmrc']},
+			{
+				description: 'without npmrc flag',
+				args: [projectName],
+				expectedValue: undefined,
+				expectedToolchainOptions: [],
+			},
+			{
+				description: 'with --npmrc',
+				args: [projectName, '--npmrc'],
+				expectedValue: true,
+				expectedToolchainOptions: ['--npmrc'],
+			},
 			{
 				description: 'with --no-npmrc',
 				args: [projectName, '--no-npmrc'],
 				expectedValue: false,
-				expectedOption: ['--no-npmrc'],
+				expectedToolchainOptions: ['--no-npmrc'],
 			},
-		])('npmrc handling $description', ({args, expectedValue, expectedOption}) => {
+		])('npmrc handling $description', ({args, expectedValue, expectedToolchainOptions}) => {
 			beforeEach(() => {
 				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
@@ -467,7 +498,68 @@ describe('Ob new command', () => {
 			});
 
 			test('should pass the npmrc option to ng add', () => {
-				const expected = buildDefaultNgAddCommand(expectedOption);
+				const expected = buildToolchainNgAddCommand(expectedToolchainOptions);
+				expect(spawnSync).toHaveBeenNthCalledWith(3, expected.command, expected.args, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('should not pass the npmrc option to Oblique ng add', () => {
+				const expected = buildDefaultNgAddCommand();
+				expect(spawnSync).toHaveBeenNthCalledWith(6, expected.command, expected.args, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe.each([
+			{
+				description: 'with custom proxy port',
+				args: [projectName, '--proxy', '1234'],
+				expectedValue: '1234',
+				expectedToolchainOptions: ['--proxy=1234'],
+			},
+			{
+				description: 'with blank proxy port',
+				args: [projectName, '--proxy', ' '],
+				expectedValue: ' ',
+				expectedToolchainOptions: [],
+			},
+		])('proxy handling $description', ({args, expectedValue, expectedToolchainOptions}) => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {pid: 1, output: [''], stderr: null, signal: null, stdout: 'ok', status: 0};
+				});
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse(args, {from: 'user'});
+			});
+
+			test('should parse the proxy option', () => {
+				expect(parsedObNewCommand.opts().proxy).toBe(expectedValue);
+			});
+
+			test('should pass the proxy option to ng add @oblique/toolchain', () => {
+				const expected = buildToolchainNgAddCommand(expectedToolchainOptions);
+				expect(spawnSync).toHaveBeenNthCalledWith(3, expected.command, expected.args, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('should not pass the proxy option to Oblique ng add', () => {
+				const expected = buildDefaultNgAddCommand();
 				expect(spawnSync).toHaveBeenNthCalledWith(6, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',

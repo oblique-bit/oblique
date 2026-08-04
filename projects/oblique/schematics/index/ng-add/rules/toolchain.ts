@@ -20,7 +20,6 @@ import {
 	replaceInFile,
 	setAngularConfig,
 	setAngularProjectsConfig,
-	setOrCreateAngularProjectsConfig,
 	setRootAngularConfig,
 	writeFile,
 } from '../../utils';
@@ -31,12 +30,10 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 		chain([
 			setBuilder(),
 			moveStyles(),
-			addNpmrc(options.npmrc),
 			removeFavicon(),
 			removeUnusedScripts(),
 			addPrefix(options.prefix),
 			updateExistingPrefixes(options.prefix),
-			addProxy(options.proxy),
 			addJest(options.jest),
 			updateEditorConfig(options.eslint),
 			addPrettier(options.eslint),
@@ -113,16 +110,6 @@ function moveStyles(): Rule {
 	});
 }
 
-function addNpmrc(add: boolean): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (add) {
-			infoMigration(context, 'Toolchain: Adding .npmrc');
-			addFile(tree, '.npmrc', getTemplate(tree, 'default-npmrc.config'));
-		}
-		return tree;
-	});
-}
-
 function removeFavicon(): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, "Toolchain: Removing Angular's favicon");
@@ -165,17 +152,6 @@ function updateExistingPrefixes(prefix: string): Rule {
 	return createSafeRule((tree: Tree) => {
 		replaceInFile(tree, 'src/index.html', /<app-root><\/app-root>/g, `<${prefix}-root></${prefix}-root>`);
 		replaceInFile(tree, `src/app/${angularAppFilesNames.appComponent}`, /app-root/g, `${prefix}-root`);
-		return tree;
-	});
-}
-
-function addProxy(port: string): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (/^\d+$/.test(port) && !tree.exists('proxy.conf.json')) {
-			infoMigration(context, 'Toolchain: Adding proxy configuration');
-			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
-			setOrCreateAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
-		}
 		return tree;
 	});
 }
