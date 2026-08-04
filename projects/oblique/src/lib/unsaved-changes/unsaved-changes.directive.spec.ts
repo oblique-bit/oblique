@@ -1,32 +1,38 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Type} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
+import {By} from '@angular/platform-browser';
+import {ObMockUnsavedChangesService} from './_mocks/mock-unsaved-changes.service';
 import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
-import {ObMockUnsavedChangesService} from './_mocks/mock-unsaved-changes.service';
-import {By} from '@angular/platform-browser';
 
 @Component({
 	standalone: false,
-	template: ` <form obUnsavedChanges></form>`,
+	template: `<form [isActive]="isActive()" [id]="formId()" obUnsavedChanges></form>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
-class FaultyTestComponent {}
+class TestComponent {
+	isActive = signal(true);
+	formId = signal('test-form');
+}
 
 @Component({
 	standalone: false,
-	template: ` <form id="test" [isActive]="true" obUnsavedChanges></form>`,
+	template: `<form [isActive]="isActive()" [id]="emptyId()" obUnsavedChanges></form>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
-class TestComponent {}
+class TestComponentWithEmptyId {
+	isActive = signal(true);
+	emptyId = signal('');
+}
 
 describe(ObUnsavedChangesDirective.name, () => {
-	let fixture: ComponentFixture<FaultyTestComponent | TestComponent>;
+	let fixture: ComponentFixture<TestComponent>;
 	let directive: ObUnsavedChangesDirective;
 	let unsavedChangesServiceMock: ObMockUnsavedChangesService;
-	const initFixture = (component: Type<FaultyTestComponent | TestComponent>): void => {
-		fixture = TestBed.createComponent(component);
+	const initFixture = (): void => {
+		fixture = TestBed.createComponent(TestComponent);
 		fixture.detectChanges();
 		directive = fixture.debugElement
 			.query(By.directive(ObUnsavedChangesDirective))
@@ -35,7 +41,6 @@ describe(ObUnsavedChangesDirective.name, () => {
 
 	beforeEach(async () => {
 		unsavedChangesServiceMock = {
-			isActive: true,
 			watch: jest.fn() as () => void,
 			unWatch: jest.fn() as () => void,
 			canDeactivate: jest.fn(),
@@ -43,58 +48,80 @@ describe(ObUnsavedChangesDirective.name, () => {
 		};
 
 		await TestBed.configureTestingModule({
-			declarations: [FaultyTestComponent, TestComponent],
+			declarations: [TestComponent, TestComponentWithEmptyId],
 			providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
 			imports: [ObUnsavedChangesDirective, CommonModule],
 		}).compileComponents();
 	});
 
-	it('with neither id nor ngbTab should throw an error', () => {
-		expect(() => initFixture(FaultyTestComponent)).toThrow();
+	beforeEach(() => {
+		initFixture();
 	});
 
-	describe('with id', () => {
+	it('should be created', () => {
+		expect(directive).toBeTruthy();
+	});
+
+	it('should call watch on init', () => {
+		expect(unsavedChangesServiceMock.watch).toHaveBeenCalled();
+	});
+
+	it('should have isActive true on init', () => {
+		expect(directive.isActive()).toBeTruthy();
+	});
+
+	it('should call unwatch on destroy', () => {
+		directive.ngOnDestroy();
+		expect(unsavedChangesServiceMock.unWatch).toHaveBeenCalled();
+	});
+
+	it('should call unWatch on Angular destroy', () => {
+		fixture.destroy();
+		expect(unsavedChangesServiceMock.unWatch).toHaveBeenCalled();
+	});
+
+	it('should call unWatch when isActive becomes false', () => {
+		fixture.componentInstance.isActive.set(false);
+		fixture.detectChanges();
+		directive.ngOnChanges();
+		expect(unsavedChangesServiceMock.unWatch).toHaveBeenCalled();
+	});
+
+	it('component should have a new isActive value', () => {
+		fixture.componentInstance.isActive.set(false);
+		fixture.detectChanges();
+		directive.ngOnChanges();
+		expect(directive.isActive()).toBeFalsy();
+	});
+
+	it('should default have truthy isActive value', () => {
+		expect(directive.isActive()).toBeTruthy();
+	});
+
+	describe('with empty id', () => {
+		let fixtureWithEmptyId: ComponentFixture<TestComponentWithEmptyId>;
+		let directiveWithEmptyId: ObUnsavedChangesDirective;
+
 		beforeEach(() => {
-			initFixture(TestComponent);
+			fixtureWithEmptyId = TestBed.createComponent(TestComponentWithEmptyId);
+			fixtureWithEmptyId.detectChanges();
+			directiveWithEmptyId = fixtureWithEmptyId.debugElement
+				.query(By.directive(ObUnsavedChangesDirective))
+				.injector.get(ObUnsavedChangesDirective);
+			// Clear mock calls from previous tests
+			unsavedChangesServiceMock.watch.mockClear();
+			unsavedChangesServiceMock.unWatch.mockClear();
 		});
 
-		it('should be created', () => {
-			expect(directive).toBeTruthy();
-		});
-
-		it('should call watch on init', () => {
-			directive.ngOnInit();
-			expect(unsavedChangesServiceMock.watch).toHaveBeenCalled();
-		});
-
-		it('should have isActive true on init', () => {
-			directive.ngOnInit();
-			expect(unsavedChangesServiceMock.isActive).toBeTruthy();
-		});
-
-		it('should call unwatch on destroy', () => {
-			directive.ngOnDestroy();
-			expect(unsavedChangesServiceMock.unWatch).toHaveBeenCalled();
-		});
-
-		it('component should have a new  isActive value', () => {
-			directive.isActive = false;
-			directive.ngOnChanges();
-			expect(directive.isActive).toBeFalsy();
-		});
-
-		it('should ignore changes without id', () => {
-			jest.clearAllMocks();
-			directive.id = undefined;
-
-			directive.ngOnChanges();
-
+		it('should not call watch or unWatch when id is empty', () => {
+			directiveWithEmptyId.ngOnChanges();
 			expect(unsavedChangesServiceMock.watch).not.toHaveBeenCalled();
 			expect(unsavedChangesServiceMock.unWatch).not.toHaveBeenCalled();
 		});
 
-		it(' should default have truthy  isActive value', () => {
-			expect(directive.isActive).toBeTruthy();
+		it('should not call unWatch on destroy when id is empty', () => {
+			directiveWithEmptyId.ngOnDestroy();
+			expect(unsavedChangesServiceMock.unWatch).not.toHaveBeenCalled();
 		});
 	});
 });

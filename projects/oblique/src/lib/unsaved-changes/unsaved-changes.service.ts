@@ -1,4 +1,4 @@
-import {Injectable, inject} from '@angular/core';
+import {Injectable, computed, inject, signal} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
@@ -7,8 +7,12 @@ import {ObWindow} from '../window/window.provider.model';
 
 @Injectable({providedIn: 'root'})
 export class ObUnsavedChangesService {
-	public isActive = true;
-	private readonly controlContainer: Record<string, ControlContainer> = {};
+	public readonly isActive = signal(true);
+
+	private readonly forms = signal<Record<string, ControlContainer>>({});
+	private readonly hasPendingChanges = computed(
+		() => this.isActive() && Object.values(this.forms()).some(form => form.dirty)
+	);
 	private readonly translateService = inject(TranslateService);
 	private readonly window = inject<ObWindow>(WINDOW);
 
@@ -21,11 +25,15 @@ export class ObUnsavedChangesService {
 	}
 
 	watch(formId: string, form: ControlContainer): void {
-		this.controlContainer[formId] = form;
+		this.forms.update(current => ({...current, [formId]: form}));
 	}
 
 	unWatch(formId: string): void {
-		delete this.controlContainer[formId];
+		this.forms.update(current => {
+			const next = {...current};
+			delete next[formId];
+			return next;
+		});
 	}
 
 	// Todo: remove. because: ignoreChanges has the same job
@@ -36,7 +44,7 @@ export class ObUnsavedChangesService {
 	// Todo: (because of return type of boolean) rename method e.g is...() has...() to predicate as a question or use
 	//  the predicate as an assertion. @see also https://dev.to/michi/tips-on-naming-boolean-variables-cleaner-code-35ig
 	ignoreChanges(formIds?: string[]): boolean {
-		return this.hasPendingChanges(formIds) ? this.window.confirm(this.message()) : true;
+		return this.hasPendingChangesFor(formIds) ? this.window.confirm(this.message()) : true;
 	}
 
 	private onUnload(event: BeforeUnloadEvent): string | null {
@@ -48,11 +56,10 @@ export class ObUnsavedChangesService {
 		return null;
 	}
 
-	private hasPendingChanges(ids: string[] = Object.keys(this.controlContainer)): boolean {
-		const includesPendingChanges =
-			Object.keys(this.controlContainer).filter(formId => ids.includes(formId) && this.controlContainer[formId].dirty)
-				.length > 0;
-		return this.isActive && includesPendingChanges;
+	private hasPendingChangesFor(ids?: string[]): boolean {
+		const forms = this.forms();
+		const targetForms = ids ? ids.filter(id => id in forms).map(id => forms[id]) : Object.values(forms);
+		return this.isActive() && targetForms.some(form => form.dirty);
 	}
 
 	private message(): string {
