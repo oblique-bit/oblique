@@ -1,7 +1,7 @@
 {
   "title": "Oblique",
   "name": "oblique",
-  "version": "15.4.2",
+  "version": "15.4.3",
   "license": "MIT",
   "organization": {
     "name": "Federal Office of Information Technology, Systems and Telecommunication FOITT",
@@ -34,7 +34,7 @@
     "postinstall": "ts-node scripts/sanitize-package-lock.ts",
     "hook-pre-commit": "npx lint-staged",
     "hook-commit-msg": "ts-node scripts/husky/hook.commit-rules.ts",
-    "hook-post-checkout": "ts-node scripts/husky/install-dependencies.ts && ts-node scripts/delete-tags.ts",
+    "hook-post-checkout": "npx ts-node scripts/husky/install-dependencies.ts && ts-node scripts/delete-tags.ts",
     "prepare": "husky",
     "release": "ts-node scripts/release.ts"
   },

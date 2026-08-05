@@ -104,8 +104,12 @@ describe(TabbedPageComponent.name, () => {
 	);
 
 	describe('onClick', () => {
-		describe('target is not an anchor', () => {
-			const event = {target: document.createElement('div'), preventDefault: jest.fn()} as unknown as PointerEvent;
+		describe.each([
+			{name: 'document', node: document},
+			{name: 'window', node: window},
+			{name: 'div', node: document.createElement('div')},
+		])('target is not an anchor ($name)', ({node}) => {
+			const event = {target: node, preventDefault: jest.fn()} as unknown as PointerEvent;
 			beforeEach(() => {
 				component.onClick(event);
 			});
@@ -117,19 +121,31 @@ describe(TabbedPageComponent.name, () => {
 			});
 		});
 
-		describe('target is a link', () => {
+		describe('target is within an anchor', () => {
 			let event: PointerEvent;
 			const anchor = document.createElement('a');
-			beforeEach(() => {
-				event = {target: anchor, preventDefault: jest.fn()} as unknown as PointerEvent;
-				anchor.href = 'http://localhost/about';
-				component.onClick(event);
-			});
-			it('should prevent default', () => {
-				expect(event.preventDefault).toHaveBeenCalled();
-			});
-			it('should navigate internally', () => {
-				expect(service.navigate).toHaveBeenCalledWith(anchor.origin, anchor.href);
+			const span = document.createElement('span');
+			const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+			describe.each([
+				{name: 'anchor', element: anchor},
+				{name: 'span', element: span},
+				{name: 'svg', element: svg},
+			])('target is within an anchor ($name)', ({element}) => {
+				beforeEach(() => {
+					anchor.appendChild(span);
+					anchor.appendChild(svg);
+					anchor.href = 'http://localhost/about';
+					event = {target: element, preventDefault: jest.fn()} as unknown as PointerEvent;
+					component.onClick(event);
+				});
+
+				it('should prevent default', () => {
+					expect(event.preventDefault).toHaveBeenCalled();
+				});
+				it('should navigate', () => {
+					expect(service.navigate).toHaveBeenCalledWith(anchor.origin, anchor.href);
+				});
 			});
 		});
 	});

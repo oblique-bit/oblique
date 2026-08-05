@@ -45,11 +45,12 @@ export class TextPageComponent implements AfterViewChecked {
 
 	onClick(event: PointerEvent): void {
 		const {target} = event;
-		if (!(target instanceof HTMLAnchorElement)) {
+		const anchor = target instanceof Element ? target.closest('a') : null;
+		if (!anchor) {
 			return;
 		}
 		event.preventDefault();
-		this.cmsRouteRedirector.navigate(target.origin, target.href);
+		this.cmsRouteRedirector.navigate(anchor.origin, anchor.href);
 	}
 
 	private buildPageIdObservables(): [Observable<number>, Observable<number>] {

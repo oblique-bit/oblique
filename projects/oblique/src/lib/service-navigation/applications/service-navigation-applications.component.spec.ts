@@ -785,7 +785,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					it.each([
 						{
 							property: 'href',
-							value: `http://localhost/`,
+							value: `http://localhost/?favoritesOnly=false`,
 						},
 						{
 							property: 'isExternalLink',

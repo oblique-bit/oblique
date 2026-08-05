@@ -1,3 +1,10 @@
+# [15.4.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.4...15.4.3) (2026-08-05)
+
+## Bug Fixes
+
+- **sds:** ensure links with sub elements are properly handled ([c65c689c](https://github.com/oblique-bit/oblique/commit/c65c689c7ac914a19c911581838722333b6b4d22), OUI-4601)
+- **sds:** don't duplicate origin on external links ([6f7c75d2](https://github.com/oblique-bit/oblique/commit/6f7c75d24af683792acb98e203e6c038ad2b4b23), OUI-4599)
+
 # [15.4.1](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.3...15.4.1) (2026-07-08)
 
 ## Bug Fixes

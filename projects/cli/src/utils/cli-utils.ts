@@ -3,7 +3,7 @@ import {type SpawnSyncOptions, spawnSync} from 'child_process';
 import {gte, major} from 'semver';
 
 /* Generated content, do not edit */
-export const version = '15.4.2';
+export const version = '15.4.3';
 /* End of generated content */
 
 export const currentVersions = {
