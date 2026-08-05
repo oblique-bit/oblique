@@ -1,3 +1,9 @@
+# [15.4.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.4...15.4.3) (2026-08-05)
+
+## Bug Fixes
+
+- **service-navigation:** add explicit parameter for all services url ([b3b9ce9c](https://github.com/oblique-bit/oblique/commit/b3b9ce9cab16c5027df52c188acb5d5b454dd35d), TPEFD-11017)
+
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 
 ## Features
