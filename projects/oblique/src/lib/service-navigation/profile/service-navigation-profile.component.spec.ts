@@ -8,7 +8,7 @@ import {By} from '@angular/platform-browser';
 import {MatIconModule} from '@angular/material/icon';
 import {DebugElement} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObMockExternalLinkModule} from '../../external-link/_mocks/mock-external-link.module';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
@@ -31,7 +31,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 				MatTooltipModule,
 				NgOptimizedImage,
 				ObIsCurrentUrlPipe,
-				TranslateModule,
+				TranslatePipe,
 			],
 			declarations: [ObServiceNavigationProfileComponent, ObServiceNavigationPopoverSectionComponent],
 			providers: [provideObliqueTestingConfiguration()],

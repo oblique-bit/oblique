@@ -1,13 +1,6 @@
-import {ClassProvider, EnvironmentProviders, InjectionToken, makeEnvironmentProviders} from '@angular/core';
+import {EnvironmentProviders, InjectionToken, inject, makeEnvironmentProviders} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {
-	MissingTranslationHandler,
-	TranslateCompiler,
-	TranslateLoader,
-	TranslateModuleConfig,
-	TranslateParser,
-	provideTranslateService,
-} from '@ngx-translate/core';
+import {provideTranslateLoader, provideTranslateService} from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader';
 import {ObITranslateConfig, ObITranslateConfigInternal} from './translation.model';
 import {ObConsoleService} from '../console/ob-console.service';
@@ -20,22 +13,17 @@ export function provideObliqueTranslations(configuration: ObITranslateConfig = {
 	const {config, flatten, additionalFiles} = configuration;
 	return makeEnvironmentProviders([
 		provideTranslateService({
-			loader: {
-				provide: TranslateLoader,
-				useFactory: getTranslateLoader,
-				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION, ObConsoleService],
-			},
-			...addProviders(config),
+			loader: provideTranslateLoader(getTranslateLoader),
+			...config,
 		}),
 		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}},
 	]);
 }
 
-function getTranslateLoader(
-	http: HttpClient,
-	config: ObITranslateConfigInternal,
-	obConsole: ObConsoleService
-): ObMultiTranslateLoader {
+function getTranslateLoader(): ObMultiTranslateLoader {
+	const http = inject(HttpClient);
+	const config = inject(OB_TRANSLATION_CONFIGURATION);
+	const obConsole = inject(ObConsoleService);
 	const {additionalFiles, flatten} = config;
 	return new ObMultiTranslateLoader(
 		http,
@@ -49,21 +37,4 @@ function getTranslateLoader(
 		flatten,
 		obConsole
 	);
-}
-
-function addProviders(config: TranslateModuleConfig = {}): TranslateModuleConfig {
-	const providers = {
-		compiler: TranslateCompiler,
-		loader: TranslateLoader,
-		parser: TranslateParser,
-		missingTranslationHandler: MissingTranslationHandler,
-	} as const;
-	const configWithProviders = {};
-	Object.keys(config).forEach(option => {
-		configWithProviders[option] =
-			providers[option] && config[option] instanceof Function
-				? ({provide: providers[option], useClass: config[option]} as ClassProvider)
-				: config[option];
-	});
-	return configWithProviders;
 }

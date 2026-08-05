@@ -7,7 +7,7 @@ import {MatIconHarness} from '@angular/material/icon/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
@@ -43,7 +43,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				ObDisableLinkDirective,
 				MatTooltipModule,
 				ObIsCurrentUrlPipe,
-				TranslateModule,
+				TranslatePipe,
 			],
 			declarations: [
 				ObServiceNavigationApplicationsComponent,

@@ -2,7 +2,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ModeSelectorComponent} from './mode-selectors.component';
 import {DOCUMENT} from '@angular/core';
 import {MatButtonToggle} from '@angular/material/button-toggle';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe, provideTranslateService} from '@ngx-translate/core';
 
 describe(ModeSelectorComponent.name, () => {
 	let fixture: ComponentFixture<ModeSelectorComponent>;
@@ -10,7 +10,8 @@ describe(ModeSelectorComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ModeSelectorComponent, TranslateModule.forRoot(), MatButtonToggle],
+			imports: [ModeSelectorComponent, TranslatePipe, MatButtonToggle],
+			providers: [provideTranslateService()],
 		}).compileComponents();
 		fixture = TestBed.createComponent(ModeSelectorComponent);
 		fixture.detectChanges();

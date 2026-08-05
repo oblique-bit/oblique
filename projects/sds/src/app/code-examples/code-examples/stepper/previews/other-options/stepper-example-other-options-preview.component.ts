@@ -6,7 +6,7 @@ import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validato
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-stepper-example-other-options-preview',
@@ -18,7 +18,7 @@ import {TranslateModule} from '@ngx-translate/core';
 		MatStepperModule,
 		ObButtonModule,
 		ReactiveFormsModule,
-		TranslateModule,
+		TranslatePipe,
 	],
 	templateUrl: './stepper-example-other-options-preview.component.html',
 	styleUrl: './stepper-example-other-options-preview.component.scss',

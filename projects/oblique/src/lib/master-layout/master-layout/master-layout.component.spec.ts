@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, Pipe, PipeTransform} from '@angular/core';
 import {Router, provideRouter} from '@angular/router';
 import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
@@ -61,7 +61,7 @@ describe('ObMasterLayoutComponent', () => {
 	beforeEach(async () => {
 		offCanvasOpened$ = new Subject<boolean>();
 		await TestBed.configureTestingModule({
-			imports: [TranslateModule, ObMockLocalizePipe],
+			imports: [TranslatePipe, ObMockLocalizePipe],
 			declarations: [ObMasterLayoutComponent],
 			providers: [
 				provideObliqueTestingConfiguration(),

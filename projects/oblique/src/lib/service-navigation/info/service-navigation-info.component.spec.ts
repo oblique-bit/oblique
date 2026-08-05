@@ -14,7 +14,7 @@ import {ObServiceNavigationInfoComponent} from './service-navigation-info.compon
 import {ObContactToLinksPipe} from './contact-to-links.pipe';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 describe(ObServiceNavigationInfoComponent.name, () => {
 	let component: ObServiceNavigationInfoComponent;
@@ -23,7 +23,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe, TranslateModule],
+			imports: [MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe, TranslatePipe],
 			declarations: [
 				ObServiceNavigationInfoComponent,
 				ObServiceNavigationPopoverSectionComponent,

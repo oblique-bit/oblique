@@ -7,7 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatStepperModule} from '@angular/material/stepper';
 import {ObButtonModule} from '@oblique/oblique';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-stepper-example-error-preview',
@@ -19,7 +19,7 @@ import {TranslateModule} from '@ngx-translate/core';
 		MatStepperModule,
 		ObButtonModule,
 		ReactiveFormsModule,
-		TranslateModule,
+		TranslatePipe,
 	],
 	templateUrl: './stepper-example-error-preview.component.html',
 	providers: [

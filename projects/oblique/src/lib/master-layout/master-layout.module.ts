@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObNotificationModule} from '../notification/notification.module';
 import {ObSpinnerModule} from '../spinner/spinner.module';
@@ -65,7 +65,7 @@ export {ObOutlineDirective} from './outline.directive';
 		ObSpinnerModule,
 		RouterModule,
 		ScrollingModule,
-		TranslateModule,
+		TranslatePipe,
 		ObLocalizePipe,
 	],
 	declarations: [

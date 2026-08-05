@@ -2,7 +2,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {HomePageComponent} from './home.page';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 describe(HomePageComponent.name, () => {
 	let component: HomePageComponent;
@@ -10,7 +10,7 @@ describe(HomePageComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [TranslateModule],
+			imports: [TranslatePipe],
 			declarations: [HomePageComponent],
 			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();

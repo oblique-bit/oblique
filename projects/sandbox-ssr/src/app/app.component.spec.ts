@@ -1,6 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideRouter} from '@angular/router';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService, provideTranslateService} from '@ngx-translate/core';
 import {AppComponent} from './app.component';
 import {routes} from './app.routes';
 import {MatButtonToggle} from '@angular/material/button-toggle';
@@ -13,8 +13,8 @@ describe(AppComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [AppComponent, TranslateModule.forRoot(), MatButtonToggle],
-			providers: [provideRouter(routes)],
+			imports: [AppComponent, TranslatePipe, MatButtonToggle],
+			providers: [provideTranslateService(), provideRouter(routes)],
 		}).compileComponents();
 		fixture = TestBed.createComponent(AppComponent);
 		fixture.detectChanges();

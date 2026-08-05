@@ -8,11 +8,10 @@ import {
 	ObNotificationService,
 } from '@oblique/oblique';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-notification-example-other-options-preview',
-	imports: [ObNotificationModule, ObButtonModule, MatButtonModule, TranslateModule, MatSlideToggleModule],
+	imports: [ObNotificationModule, ObButtonModule, MatButtonModule, MatSlideToggleModule],
 	templateUrl: './notification-example-other-options-preview.component.html',
 	styleUrls: [
 		'./notification-example-other-options-preview.component.scss',

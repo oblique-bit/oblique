@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {DatePipe, Location} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
 import {MatButton} from '@angular/material/button';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObWindow} from '../window/window.provider.model';
@@ -19,7 +19,7 @@ import {ObMasterLayoutService} from '../master-layout/master-layout.service';
 	selector: 'ob-accessibility-statement',
 	imports: [
 		ObExternalLinkModule,
-		TranslateModule,
+		TranslatePipe,
 		ObTranslateParamsPipe,
 		ObDatePipe,
 		DatePipe,

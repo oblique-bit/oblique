@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {ChangeDetectorRef, DebugElement} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {Subject} from 'rxjs';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObAlertComponent} from '../alert/alert.component';
@@ -17,7 +17,6 @@ import {ObMockNotificationService} from './_mocks/mock-notification.service';
 import {ObMockAlertComponent} from '../alert/_mocks/mock-alert.component';
 import {WINDOW} from '../window/window.provider';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
-import {TranslateModule} from '@ngx-translate/core';
 
 describe('NotificationComponent', () => {
 	let component: ObNotificationComponent;
@@ -31,7 +30,7 @@ describe('NotificationComponent', () => {
 
 	beforeEach(async () => {
 		TestBed.overrideComponent(ObNotificationComponent, {
-			remove: {imports: [ObAlertComponent, TranslateModule]},
+			remove: {imports: [ObAlertComponent, TranslatePipe]},
 			add: {imports: [ObMockAlertComponent, ObMockTranslatePipe]},
 		});
 		await TestBed.configureTestingModule({

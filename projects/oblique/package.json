@@ -33,7 +33,7 @@
     "@angular/material": "^22.0.0",
     "@angular/platform-browser": "^22.0.0",
     "@angular/router": "^22.0.0",
-    "@ngx-translate/core": "^17.0.0",
+    "@ngx-translate/core": "^18.0.0",
     "@popperjs/core": "^2.0.0",
     "angular-oauth2-oidc": "^22.0.0",
     "js-cookie": "^3.0.5",

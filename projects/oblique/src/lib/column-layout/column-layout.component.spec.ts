@@ -7,7 +7,7 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
 import {ObColumnToggleDirective as ObRealColumnToggleDirective} from './column-toggle.directive';
 import {ObColumnPanelDirective as ObRealColumnPanelDirective} from './column-panel.directive';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 let resizerCallback: (entries: {contentRect: {height: number}}[]) => void;
 class ResizeObserver {
@@ -69,7 +69,7 @@ describe(ObColumnLayoutComponent.name, () => {
 				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
 			});
 			await TestBed.configureTestingModule({
-				imports: [ObColumnLayoutComponent, TranslateModule],
+				imports: [ObColumnLayoutComponent, TranslatePipe],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -222,7 +222,7 @@ describe(ObColumnLayoutComponent.name, () => {
 				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
 			});
 			await TestBed.configureTestingModule({
-				imports: [ObColumnLayoutComponent, TranslateModule],
+				imports: [ObColumnLayoutComponent, TranslatePipe],
 				declarations: [TestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
@@ -302,7 +302,7 @@ describe(ObColumnLayoutComponent.name, () => {
 				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
 			});
 			await TestBed.configureTestingModule({
-				imports: [ObColumnLayoutComponent, TranslateModule],
+				imports: [ObColumnLayoutComponent, TranslatePipe],
 				declarations: [TestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();

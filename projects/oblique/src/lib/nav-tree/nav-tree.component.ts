@@ -11,7 +11,7 @@ import {
 	signal,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {takeUntil} from 'rxjs/operators';
 
 import {NgTemplateOutlet} from '@angular/common';
@@ -33,7 +33,7 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 		MatIconModule,
 		MatInputModule,
 		RouterModule,
-		TranslateModule,
+		TranslatePipe,
 		ObLocalizePipe,
 	],
 	templateUrl: './nav-tree.component.html',

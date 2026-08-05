@@ -16,7 +16,7 @@ export class ObServiceNavigationLanguageSynchronizationApiService {
 			.put(
 				environmentUrl + this.resourceUrl,
 				{
-					languageCode: this.translate.currentLang,
+					languageCode: this.translate.currentLang(),
 					applicationID: eportalId,
 				},
 				{

@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation, output} from '@angular/core';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatIconModule} from '@angular/material/icon';
 
 @Component({
 	selector: 'ob-top-control',
-	imports: [MatIconModule, TranslateModule],
+	imports: [MatIconModule, TranslatePipe],
 	templateUrl: './top-control.component.html',
 	styleUrls: ['./top-control.component.scss'],
 	changeDetection: ChangeDetectionStrategy.Eager,

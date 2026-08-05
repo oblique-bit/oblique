@@ -1,6 +1,6 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
 import {insertImport} from '@angular/cdk/schematics';
-import {addImportToModule, addProviderToModule} from '@schematics/angular/utility/ast-utils';
+import {addProviderToModule} from '@schematics/angular/utility/ast-utils';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {
 	adaptInsertChange,
@@ -90,19 +90,8 @@ function addTranslation(locales: string[]): Rule {
 		locales
 			.map(locale => locale.split('-')[0])
 			.forEach((lang: string) => addFile(tree, `src/assets/i18n/${lang}.json`, '{}'));
-		addTranslationToImports(tree);
 		return tree;
 	});
-}
-
-function addTranslationToImports(tree: Tree): Tree {
-	const translateSource = '@ngx-translate/core';
-	const sourceFile = createSrcFile(tree, appModulePath);
-	const changes = addImportToModule(sourceFile, appModulePath, 'TranslateModule', translateSource).filter(
-		(change: Change) => change instanceof InsertChange
-	);
-
-	return applyChanges(tree, appModulePath, changes);
 }
 
 function getLocaleVariable(locale: string): string {

@@ -2,10 +2,10 @@ import {ChangeDetectionStrategy, Component, DOCUMENT, type OnInit, Renderer2, in
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NonNullableFormBuilder, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 @Component({
 	selector: 'ssr-mode-selectors',
-	imports: [ReactiveFormsModule, MatButtonToggleModule, TranslateModule],
+	imports: [ReactiveFormsModule, MatButtonToggleModule, TranslatePipe],
 	templateUrl: './mode-selectors.component.html',
 	styleUrl: 'mode-selectors.component.scss',
 	changeDetection: ChangeDetectionStrategy.Eager,

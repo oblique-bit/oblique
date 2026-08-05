@@ -233,7 +233,7 @@ export class ObServiceNavigationService {
 
 	getInfoBackend$(): Observable<ObIServiceNavigationBackendInfo> {
 		const onLanguageChange$ = this.translateService.onLangChange.pipe(
-			startWith({lang: this.translateService.currentLang})
+			startWith({lang: this.translateService.currentLang()})
 		);
 		return combineLatest([this.rootUrl$, this.pamsAppId$, onLanguageChange$]).pipe(
 			switchMap(([rootUrl, pamsId, onLangChange]) => {
@@ -246,7 +246,7 @@ export class ObServiceNavigationService {
 	getLanguage$(): Observable<string> {
 		return this.translateService.onLangChange.pipe(
 			map(event => event.lang),
-			startWith(this.translateService.currentLang),
+			startWith(this.translateService.currentLang()),
 			share({connector: () => new ReplaySubject(1)})
 		);
 	}
@@ -291,7 +291,7 @@ export class ObServiceNavigationService {
 				combineLatestWith(
 					this.translateService.onLangChange.pipe(
 						map(event => event.lang),
-						startWith(this.translateService.currentLang)
+						startWith(this.translateService.currentLang())
 					)
 				)
 			);

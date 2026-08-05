@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChangeDetectionStrategy, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Router, RouterModule} from '@angular/router';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
@@ -13,9 +13,8 @@ import {mockLinksWithChildren} from './master-layout-navigation.component.spec-m
 import {basicMockLinks} from './master-layout-navigation.component.spec-basic-mocks-links';
 import {ObNavigationLink} from './navigation-link.model';
 import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/master-layout-navigation-go-to-children.component';
-import {OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, ObINavigationLink} from '../master-layout.model';
+import {OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, ObEScrollMode, ObINavigationLink} from '../master-layout.model';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
-import {ObEScrollMode} from '../master-layout.model';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
 import * as scrollDelta from './scroll-delta';
 import {ObMasterLayoutService} from '../master-layout.service';
@@ -80,7 +79,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			],
 			imports: [
 				ObMasterLayoutNavigationGoToChildrenComponent,
-				TranslateModule,
+				TranslatePipe,
 				RouterModule.forRoot([
 					{path: 'defaultPathMatch', component: DummyDefaultPathComponent},
 					{path: 'prefix/1/users', component: DummyPrefixPathComponent},

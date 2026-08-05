@@ -37,7 +37,7 @@ const versions: Record<string, string | versionFunc> = {
 	'@angular-eslint/eslint-plugin-template': '^22.0.0',
 	'@angular-eslint/template-parser': '^22.0.0',
 	'@angular-eslint/utils': '^22.0.0',
-	'@ngx-translate/core': '^17.0.0',
+	'@ngx-translate/core': '^18.0.0',
 	'@popperjs/core': '^2.0.0',
 	'@typescript-eslint/eslint-plugin': '^8.58.2',
 	'@typescript-eslint/parser': '^8.58.2',
