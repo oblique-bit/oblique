@@ -5,12 +5,13 @@ import {
 	Component,
 	ElementRef,
 	InjectionToken,
-	Input,
 	OnDestroy,
 	ViewEncapsulation,
+	computed,
 	inject,
 	input,
-	output,
+	model,
+	signal,
 	viewChild,
 } from '@angular/core';
 import {Subject, filter, fromEvent, merge, tap} from 'rxjs';
@@ -30,42 +31,26 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 	imports: [MatIconModule],
 	templateUrl: './collapse.component.html',
 	styleUrls: ['./collapse.component.scss'],
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-collapse'},
 	exportAs: 'obCollapse',
 })
 export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterContentChecked {
 	static index = 0;
-	contentHeight = 0;
-	readonly collapseToggle = viewChild<ElementRef<HTMLDivElement>>('collapseForToggle');
+	readonly contentHeight = signal(0);
+	readonly collapseToggle = viewChild.required<ElementRef<HTMLDivElement>>('collapseForToggle');
 	readonly collapseContent = viewChild.required<ElementRef<HTMLDivElement>>('collapseContent');
 	readonly id = input(`collapse-${ObCollapseComponent.index}`);
-	time: number;
-	@Input() iconPosition: 'left' | 'right' | 'justified' | 'none' = 'left';
-	readonly activeChange = output<boolean>();
-	private isActive = inject(OBLIQUE_COLLAPSE_ACTIVE, {optional: true});
+	readonly iconPosition = input<'left' | 'right' | 'justified' | 'none'>(
+		inject(OBLIQUE_COLLAPSE_ICON_POSITION, {optional: true}) ?? 'left'
+	);
+	readonly active = model<boolean>(!!inject(OBLIQUE_COLLAPSE_ACTIVE, {optional: true}));
+	readonly duration = input<'slow' | 'fast' | number | null>(inject(OBLIQUE_COLLAPSE_DURATION, {optional: true}));
+	readonly time = computed(() => ObCollapseComponent.getDuration(this.duration() || 'slow'));
 	private readonly unsubscribe = new Subject<void>();
 
-	get active(): boolean {
-		return this.isActive;
-	}
-
-	@Input() set active(active: boolean) {
-		this.isActive = active;
-		this.activeChange.emit(active);
-	}
-
-	@Input() set duration(duration: 'slow' | 'fast' | number) {
-		this.time = ObCollapseComponent.getDuration(duration || 'slow');
-	}
-
 	constructor() {
-		const iconPos = inject(OBLIQUE_COLLAPSE_ICON_POSITION, {optional: true});
-		const animationSpeed = inject(OBLIQUE_COLLAPSE_DURATION, {optional: true});
-		this.isActive = !!this.isActive;
-		this.iconPosition = iconPos ?? this.iconPosition;
-		this.time = ObCollapseComponent.getDuration(animationSpeed || 'slow');
 		ObCollapseComponent.index++;
 
 		inject(ObGlobalEventsService)
@@ -92,13 +77,17 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterConte
 		)
 			.pipe(takeUntil(this.unsubscribe))
 			.subscribe(() => {
-				this.active = !this.active;
+				this.toggleActive();
 			});
 	}
 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
+	}
+
+	toggleActive(): void {
+		this.active.update(active => !active);
 	}
 
 	private static getDuration(duration: 'slow' | 'fast' | number): number {
@@ -116,9 +105,9 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterConte
 		// collapseContent always has 1 child, because that's the content being projected. We actually need the scrollHeight of
 		// the projected content, not its wrapper
 		const scrollHeight = this.collapseContent().nativeElement.querySelector(':first-child')?.scrollHeight ?? 0;
-		const height = this.isActive ? scrollHeight : 0;
-		if (this.contentHeight !== height) {
-			this.contentHeight = height;
+		const height = this.active() ? scrollHeight : 0;
+		if (this.contentHeight() !== height) {
+			this.contentHeight.set(height);
 		}
 	}
 }

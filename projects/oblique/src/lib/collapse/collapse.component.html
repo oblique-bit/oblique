@@ -3,22 +3,22 @@
 	class="ob-collapse-toggle"
 	role="button"
 	tabindex="0"
-	[class.ob-toggle-justified]="iconPosition === 'justified'"
-	(click)="active = !active"
-	[attr.aria-expanded]="active"
+	[class.ob-toggle-justified]="iconPosition() === 'justified'"
+	(click)="toggleActive()"
+	[attr.aria-expanded]="active()"
 	[attr.aria-controls]="id() + '-content'"
 	[id]="id() + '-toggle'"
 >
-	@if (iconPosition === "left") {
-		@if (active) {
+	@if (iconPosition() === "left") {
+		@if (active()) {
 			<mat-icon svgIcon="chevron_up" />
 		} @else {
 			<mat-icon svgIcon="chevron_down" />
 		}
 	}
 	<ng-content select="[obCollapseHeader]" />
-	@if (iconPosition === "right" || iconPosition === "justified") {
-		@if (active) {
+	@if (iconPosition() === "right" || iconPosition() === "justified") {
+		@if (active()) {
 			<mat-icon svgIcon="chevron_up" />
 		} @else {
 			<mat-icon svgIcon="chevron_down" />
@@ -29,8 +29,8 @@
 	#collapseContent
 	[id]="id() + '-content'"
 	class="ob-collapse-content"
-	[style.height.px]="contentHeight"
-	[style.transitionDuration.ms]="time"
+	[style.height.px]="contentHeight()"
+	[style.transitionDuration.ms]="time()"
 >
 	<ng-content select="[obCollapseMain]" />
 </div>
