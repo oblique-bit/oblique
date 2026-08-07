@@ -6,6 +6,7 @@
 			[duration]="duration.value"
 			[iconPosition]="iconPosition.value"
 			[(active)]="active"
+			(activeChange)="recordActiveChange($event)"
 		>
 			<span obCollapseHeader [id]="collapseTitle + '_title'">
 				{{ collapseTitle }}
@@ -45,8 +46,16 @@
 			</mat-form-field>
 
 			<div mat-dialog-actions>
-				<button type="button" mat-button (click)="active = !active"><mat-icon svgIcon="collapse" /> collapse</button>
+				<button type="button" mat-button (click)="toggleActive()"><mat-icon svgIcon="collapse" /> collapse</button>
 			</div>
 		</div>
 	</ob-column-layout>
+	<div
+		data-test="collapse-active-change"
+		aria-live="polite"
+		[attr.data-active]="lastActiveChange"
+		[attr.data-count]="activeChangeCount"
+	>
+		activeChange: {{ lastActiveChange }} ({{ activeChangeCount }})
+	</div>
 </div>

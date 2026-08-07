@@ -25,4 +25,25 @@ describe(CollapseSampleComponent.name, () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
+
+	it('should display activeChange events', () => {
+		component.recordActiveChange(true);
+		fixture.detectChanges();
+
+		const eventDisplay = fixture.nativeElement.querySelector('[data-test="collapse-active-change"]');
+
+		expect(eventDisplay.getAttribute('data-active')).toBe('true');
+		expect(eventDisplay.getAttribute('data-count')).toBe('1');
+		expect(eventDisplay.textContent).toContain('activeChange: true');
+	});
+
+	it('should toggle the active signal', () => {
+		expect(component.active()).toBeFalsy();
+
+		component.toggleActive();
+		expect(component.active()).toBeTruthy();
+
+		component.toggleActive();
+		expect(component.active()).toBeFalsy();
+	});
 });

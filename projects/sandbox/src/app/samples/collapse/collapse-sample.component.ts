@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
 import type {Duration, IconPosition} from './collapse-sample.model';
 
@@ -12,7 +12,9 @@ export class CollapseSampleComponent {
 	collapseTitle = 'Collapse title here ';
 	duration = new UntypedFormControl('fast');
 	iconPosition = new UntypedFormControl('left');
-	active = false;
+	readonly active = signal(false);
+	activeChangeCount = 0;
+	lastActiveChange = false;
 
 	durations: Duration[] = [
 		{value: 'slow', viewValue: 'Slow'},
@@ -30,4 +32,13 @@ export class CollapseSampleComponent {
 		{value: 'justified', viewValue: 'Justify the icon to the right'},
 		{value: 'none', viewValue: 'Do not show the icon'},
 	];
+
+	recordActiveChange(active: boolean): void {
+		this.lastActiveChange = active;
+		this.activeChangeCount++;
+	}
+
+	toggleActive(): void {
+		this.active.update(active => !active);
+	}
 }
