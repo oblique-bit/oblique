@@ -5,6 +5,8 @@
 	tabindex="0"
 	[class.ob-toggle-justified]="iconPosition() === 'justified'"
 	(click)="toggleActive()"
+	(keydown.space)="onSpaceKeydown($event)"
+	(keyup.enter)="toggleActive()"
 	[attr.aria-expanded]="active()"
 	[attr.aria-controls]="id() + '-content'"
 	[id]="id() + '-toggle'"

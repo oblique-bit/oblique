@@ -1,10 +1,8 @@
 import {
-	AfterViewInit,
 	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
 	InjectionToken,
-	OnDestroy,
 	ViewEncapsulation,
 	afterRenderEffect,
 	computed,
@@ -14,8 +12,6 @@ import {
 	signal,
 	viewChild,
 } from '@angular/core';
-import {Subject, filter, fromEvent, merge, tap} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 import {MatIconModule} from '@angular/material/icon';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -36,7 +32,7 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 	host: {class: 'ob-collapse'},
 	exportAs: 'obCollapse',
 })
-export class ObCollapseComponent implements AfterViewInit, OnDestroy {
+export class ObCollapseComponent {
 	static index = 0;
 	readonly contentHeight = signal(0);
 	readonly collapseToggle = viewChild.required<ElementRef<HTMLDivElement>>('collapseForToggle');
@@ -48,7 +44,6 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy {
 	readonly active = model<boolean>(!!inject(OBLIQUE_COLLAPSE_ACTIVE, {optional: true}));
 	readonly duration = input<'slow' | 'fast' | number | null>(inject(OBLIQUE_COLLAPSE_DURATION, {optional: true}));
 	readonly time = computed(() => ObCollapseComponent.getDuration(this.duration() || 'slow'));
-	private readonly unsubscribe = new Subject<void>();
 
 	constructor() {
 		ObCollapseComponent.index++;
@@ -69,26 +64,12 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy {
 			});
 	}
 
-	ngAfterViewInit(): void {
-		merge(
-			fromEvent<KeyboardEvent>(this.collapseToggle().nativeElement, 'keyup').pipe(
-				filter(event => event.key === 'Enter')
-			),
-			fromEvent<KeyboardEvent>(this.collapseToggle().nativeElement, 'keydown').pipe(
-				filter(event => event.code === 'Space'),
-				tap(event => event.preventDefault()),
-				filter(event => !event.repeat)
-			)
-		)
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(() => {
-				this.toggleActive();
-			});
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
+	onSpaceKeydown(event: Event): void {
+		event.preventDefault();
+		if (event instanceof KeyboardEvent && event.repeat) {
+			return;
+		}
+		this.toggleActive();
 	}
 
 	toggleActive(): void {

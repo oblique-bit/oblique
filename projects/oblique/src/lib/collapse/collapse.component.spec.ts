@@ -88,9 +88,15 @@ describe(ObCollapseComponent.name, () => {
 		});
 
 		it('should change to active false on keydown with space', () => {
-			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}));
+			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space'}));
 
 			expect(obCollapseComponent.active()).toBe(false);
+		});
+
+		it("doesn't toggle active on keydown with space when event is repeated", () => {
+			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space', repeat: true}));
+
+			expect(obCollapseComponent.active()).toBe(true);
 		});
 
 		it('should have a true aria-expanded attribute', () => {
@@ -172,7 +178,7 @@ describe(ObCollapseComponent.name, () => {
 		});
 
 		it('should change aria-expended to true on keydown with space', async () => {
-			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}));
+			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space'}));
 			fixture.componentRef.setInput('active', obCollapseComponent.active());
 			await stabilize();
 
@@ -220,13 +226,13 @@ describe(ObCollapseComponent.name, () => {
 			});
 
 			it('should change to true on keydown with enter', () => {
-				toggleElement.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}));
+				toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space'}));
 
 				expect(obCollapseComponent.active()).toBe(true);
 			});
 
 			it('should change to true on keydown with space', () => {
-				toggleElement.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}));
+				toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space'}));
 
 				expect(obCollapseComponent.active()).toBe(true);
 			});
