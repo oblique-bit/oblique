@@ -1,5 +1,4 @@
 import {
-	AfterContentChecked,
 	AfterViewInit,
 	ChangeDetectionStrategy,
 	Component,
@@ -7,6 +6,7 @@ import {
 	InjectionToken,
 	OnDestroy,
 	ViewEncapsulation,
+	afterRenderEffect,
 	computed,
 	inject,
 	input,
@@ -36,7 +36,7 @@ export const OBLIQUE_COLLAPSE_DURATION = new InjectionToken<'slow' | 'fast' | nu
 	host: {class: 'ob-collapse'},
 	exportAs: 'obCollapse',
 })
-export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterContentChecked {
+export class ObCollapseComponent implements AfterViewInit, OnDestroy {
 	static index = 0;
 	readonly contentHeight = signal(0);
 	readonly collapseToggle = viewChild.required<ElementRef<HTMLDivElement>>('collapseForToggle');
@@ -53,15 +53,20 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterConte
 	constructor() {
 		ObCollapseComponent.index++;
 
+		afterRenderEffect({
+			earlyRead: () => {
+				return this.getContentHeight();
+			},
+			write: heightSignal => {
+				this.contentHeight.set(heightSignal());
+			},
+		});
+
 		inject(ObGlobalEventsService)
 			.resize$.pipe(takeUntilDestroyed())
 			.subscribe(() => {
-				this.updateContentHeight(); // here
+				this.updateContentHeight();
 			});
-	}
-
-	ngAfterContentChecked(): void {
-		this.updateContentHeight();
 	}
 
 	ngAfterViewInit(): void {
