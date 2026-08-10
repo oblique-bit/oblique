@@ -15,7 +15,7 @@ import {By} from '@angular/platform-browser';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObInputClearDirective} from './input-clear.directive';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObConsoleService} from '../console/ob-console.service';
 
 interface ObInputClearDirectivePrivate {
@@ -150,7 +150,7 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [UntypedReactiveFormTestComponent],
-				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
+				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -217,7 +217,7 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [StronglyTypedReactiveFormTestComponent],
-				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
+				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -284,7 +284,7 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [TemplateDrivenFormTestComponent],
-				imports: [ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
+				imports: [ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -357,7 +357,7 @@ describe('InputClear', () => {
 					FormsModule,
 					MatFormFieldModule,
 					MatInputModule,
-					TranslateModule,
+					TranslatePipe,
 				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
@@ -452,7 +452,7 @@ describe('InputClear', () => {
 					FormsModule,
 					MatFormFieldModule,
 					MatInputModule,
-					TranslateModule,
+					TranslatePipe,
 				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
@@ -485,7 +485,7 @@ describe('InputClear', () => {
 					FormsModule,
 					MatFormFieldModule,
 					MatInputModule,
-					TranslateModule,
+					TranslatePipe,
 				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();

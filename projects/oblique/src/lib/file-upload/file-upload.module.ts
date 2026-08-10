@@ -7,7 +7,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObAlertModule} from '../alert/alert.module';
 import {ObButtonModule} from '../button/button.module';
 import {ObNotificationModule} from '../notification/notification.module';
@@ -43,7 +43,7 @@ export {ObFileUploadService} from './file-upload.service';
 		ObFileUploadComponent,
 		ObNotificationModule,
 		ObProgressComponent,
-		TranslateModule,
+		TranslatePipe,
 	],
 	exports: [ObDropZoneComponent, ObFileInfoComponent, ObFileUploadComponent],
 })

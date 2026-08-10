@@ -1,4 +1,4 @@
-import {TranslateModuleConfig} from '@ngx-translate/core';
+import {RootTranslateServiceConfig} from '@ngx-translate/core';
 import {ObILocale} from '../language/language.model';
 
 export interface ObITranslateConfigInternal {
@@ -8,7 +8,7 @@ export interface ObITranslateConfigInternal {
 
 export interface ObITranslateConfig {
 	flatten?: boolean;
-	config?: TranslateModuleConfig;
+	config?: RootTranslateServiceConfig;
 	additionalFiles?: ObITranslationFile[];
 	locales?: ObILocale;
 }

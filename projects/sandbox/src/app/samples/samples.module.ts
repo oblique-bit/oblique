@@ -17,7 +17,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTimepickerModule} from '@angular/material/timepicker';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
@@ -139,7 +139,7 @@ import {AutocompleteCustomValidatorSampleComponent} from './autocomplete-custom-
 		ReactiveFormsModule,
 		RouterModule,
 		SamplesRoutingModule,
-		TranslateModule,
+		TranslatePipe,
 		MasterLayoutHeaderSampleComponent,
 		MasterLayoutFooterSampleComponent,
 		MasterLayoutLayoutSampleComponent,

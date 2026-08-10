@@ -9,7 +9,7 @@ import {
 	WINDOW,
 	provideObliqueTestingConfiguration,
 } from '@oblique/oblique';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 
 describe('AppComponent', () => {
@@ -25,7 +25,7 @@ describe('AppComponent', () => {
 		};
 		await TestBed.configureTestingModule({
 			declarations: [AppComponent],
-			imports: [TranslateModule],
+			imports: [TranslatePipe],
 			providers: [
 				provideNativeDateAdapter(),
 				provideObliqueTestingConfiguration(),

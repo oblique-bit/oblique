@@ -1,7 +1,7 @@
 import {Component, ViewEncapsulation, computed, inject, input, signal} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObAlertComponent} from '../alert/alert.component';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {WINDOW} from '../window/window.provider';
@@ -11,7 +11,7 @@ import {ObNotificationService} from './notification.service';
 
 @Component({
 	selector: 'ob-notification',
-	imports: [MatTooltipModule, ObAlertComponent, ObTranslateParamsPipe, TranslateModule],
+	imports: [MatTooltipModule, ObAlertComponent, ObTranslateParamsPipe, TranslatePipe],
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.scss', './notification-animations.scss'],
 	encapsulation: ViewEncapsulation.None,

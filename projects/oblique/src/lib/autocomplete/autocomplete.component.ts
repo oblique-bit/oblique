@@ -32,7 +32,7 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {Observable, Subject, debounceTime, shareReplay} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
 import {
@@ -62,7 +62,7 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 		ObOptionLabelIconDirective,
 		AsyncPipe,
 		ObHighlightTextPipe,
-		TranslateModule,
+		TranslatePipe,
 		ObErrorMessagesDirective,
 		ObMatErrorDirective,
 	],

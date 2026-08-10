@@ -11,7 +11,7 @@ import {ObMasterLayoutService} from '../master-layout.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
 import {By} from '@angular/platform-browser';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {RouterModule} from '@angular/router';
 import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
@@ -38,7 +38,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 				ObMockTranslatePipe,
 				RouterModule.forRoot([{path: '**', component: ObMasterLayoutHeaderComponent}]),
 				ObLocalizePipe,
-				TranslateModule,
+				TranslatePipe,
 			],
 			declarations: [ObMasterLayoutHeaderComponent],
 			providers: [

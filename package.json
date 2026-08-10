@@ -51,7 +51,7 @@
     "@angular/material": "^22.0.0",
     "@angular/platform-browser": "^22.0.0",
     "@angular/router": "^22.0.0",
-    "@ngx-translate/core": "^17.0.0",
+    "@ngx-translate/core": "^18.0.0",
     "@popperjs/core": "^2.11.8",
     "@schematics/angular": "^22.0.0",
     "ajv": "^8.20.0",

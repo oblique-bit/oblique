@@ -1,5 +1,5 @@
 <div [class.ob-cover-header]="coverLayout">
-	<h1 translate>i18n.routes.samples.master-layout.title</h1>
+	<h1>{{ "i18n.routes.samples.master-layout.title" | translate }}</h1>
 </div>
 <div class="card-wrapper">
 	<sb-master-layout-layout (coverLayout)="setLayout($event)" />

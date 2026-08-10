@@ -11,7 +11,7 @@ import {
 	viewChild,
 } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObEUploadEventType, ObIUploadEvent} from '../file-upload.model';
 import {ObAcceptAllPipe} from './accept-all.pipe';
 import {ObDragDropDirective} from './drag-and-drop.directive';
@@ -19,7 +19,7 @@ import {ObValidationService} from './validation.service';
 
 @Component({
 	selector: 'ob-drop-zone',
-	imports: [ObDragDropDirective, MatIconModule, TranslateModule, ObAcceptAllPipe],
+	imports: [ObDragDropDirective, MatIconModule, TranslatePipe, ObAcceptAllPipe],
 	templateUrl: './ob-drop-zone.component.html',
 	styleUrls: ['./ob-drop-zone.component.scss'],
 	providers: [ObValidationService],

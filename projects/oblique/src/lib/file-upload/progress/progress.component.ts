@@ -15,7 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ObButtonDirective} from '../../button/button.directive';
 import {WINDOW} from '../../window/window.provider';
 import {ObWindow} from '../../window/window.provider.model';
@@ -24,7 +24,7 @@ import {ObFileUploadService} from '../file-upload.service';
 
 @Component({
 	selector: 'ob-progress',
-	imports: [MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslateModule],
+	imports: [MatProgressBarModule, MatButtonModule, ObButtonDirective, MatTooltipModule, MatIconModule, TranslatePipe],
 	templateUrl: './progress.component.html',
 	styleUrls: ['./progress.component.scss'],
 	changeDetection: ChangeDetectionStrategy.Eager,

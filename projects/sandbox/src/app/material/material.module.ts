@@ -61,7 +61,7 @@ import {SlideToggleComponent} from './slide-toggle/slide-toggle.component';
 import {MenuComponent} from './menu/menu.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 const appRoutes: Routes = [
@@ -130,7 +130,7 @@ const appRoutes: Routes = [
 		ObSelectableModule,
 		ObSpinnerModule,
 		ReactiveFormsModule,
-		TranslateModule,
+		TranslatePipe,
 		RouterModule.forChild(appRoutes),
 	],
 	declarations: [

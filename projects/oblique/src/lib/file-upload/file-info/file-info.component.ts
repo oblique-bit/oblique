@@ -18,7 +18,7 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {Subject, merge} from 'rxjs';
 import {map, takeUntil, tap} from 'rxjs/operators';
 import {WINDOW} from '../../window/window.provider';
@@ -39,7 +39,7 @@ import {ObFileUploadService} from '../file-upload.service';
 		MatTooltipModule,
 		MatIconModule,
 		ObAlertComponent,
-		TranslateModule,
+		TranslatePipe,
 	],
 	templateUrl: './file-info.component.html',
 	styleUrls: ['./file-info.component.scss'],

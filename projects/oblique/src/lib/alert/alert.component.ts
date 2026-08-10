@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {ObIAlertType} from './alert.model';
 import {alertIcons} from './alert-icons';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 	'Flag to globally add role="alert" per default on all ob-alert components'
@@ -20,7 +20,7 @@ export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 
 @Component({
 	selector: 'ob-alert',
-	imports: [MatIconModule, TranslateModule],
+	imports: [MatIconModule, TranslatePipe],
 	templateUrl: './alert.component.html',
 	styleUrls: ['./alert.component.scss'],
 	changeDetection: ChangeDetectionStrategy.Eager,

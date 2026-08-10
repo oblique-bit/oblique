@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
-import {TranslateLoader, type TranslateModuleConfig} from '@ngx-translate/core';
+import {type RootTranslateServiceConfig, provideTranslateLoader} from '@ngx-translate/core';
 import {ObMultiTranslateLoader} from './multi-translate-loader';
+import {inject} from '@angular/core';
 
 /**
  * Since Sandbox-SSR enforces stricter TypeScript rules than the Oblique library, it cannot import anything directly
@@ -9,8 +10,8 @@ import {ObMultiTranslateLoader} from './multi-translate-loader';
  * Therefore, the translation handling code must be duplicated within Sandbox-SSR to avoid these issues.
  */
 
-function getTranslateLoader(http: HttpClient): ObMultiTranslateLoader {
-	return new ObMultiTranslateLoader(http, [
+function getTranslateLoader(): ObMultiTranslateLoader {
+	return new ObMultiTranslateLoader(inject(HttpClient), [
 		{
 			prefix: './assets/i18n/oblique-',
 			suffix: '.json',
@@ -19,13 +20,9 @@ function getTranslateLoader(http: HttpClient): ObMultiTranslateLoader {
 	]);
 }
 
-export function multiTranslateLoader(config: TranslateModuleConfig = {}): TranslateModuleConfig {
+export function multiTranslateLoader(config: RootTranslateServiceConfig = {}): RootTranslateServiceConfig {
 	return {
 		...config,
-		loader: {
-			provide: TranslateLoader,
-			useFactory: getTranslateLoader,
-			deps: [HttpClient],
-		},
+		loader: provideTranslateLoader(getTranslateLoader),
 	};
 }

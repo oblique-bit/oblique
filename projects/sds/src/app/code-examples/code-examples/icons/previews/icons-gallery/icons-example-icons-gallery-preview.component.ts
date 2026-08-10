@@ -15,7 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {AsyncPipe, KeyValuePipe} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -42,7 +42,7 @@ import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 		MatExpansionModule,
 		MatSelectModule,
 		ObPopoverModule,
-		TranslateModule,
+		TranslatePipe,
 		MatTooltipModule,
 		MatChipsModule,
 		ObNotificationModule,

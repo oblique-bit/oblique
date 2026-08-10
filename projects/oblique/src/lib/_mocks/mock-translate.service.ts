@@ -1,5 +1,5 @@
-import {EventEmitter, Injectable} from '@angular/core';
-import {FallbackLangChangeEvent, LangChangeEvent, TranslationChangeEvent} from '@ngx-translate/core';
+import {EventEmitter, Injectable, signal} from '@angular/core';
+import {FallbackLangChangeEvent, LangChangeEvent, Language, TranslationChangeEvent} from '@ngx-translate/core';
 import {EMPTY, Observable, of} from 'rxjs';
 
 /**
@@ -11,9 +11,9 @@ export class ObMockTranslateService {
 	onLangChange = new EventEmitter<LangChangeEvent>();
 	onTranslationChange = new EventEmitter<TranslationChangeEvent>();
 	onFallbackLangChange = new EventEmitter<FallbackLangChangeEvent>();
-	fallbackLang = 'en';
-	langs = ['en'];
-	currentLang = 'en';
+	fallbackLang = signal<Language | null>('en');
+	currentLang = signal<Language | null>('en');
+	private langs = ['en'];
 
 	setTranslation(lang: string, translations: object, shouldMerge = false): void {}
 
@@ -40,7 +40,12 @@ export class ObMockTranslateService {
 	}
 
 	use(lang: string): Observable<any> {
+		this.currentLang.set(lang);
 		return of('');
+	}
+
+	translate(key: string | string[], interpolateParams?: object, lang?: string): string | any {
+		return signal(typeof key === 'string' ? key : key.map(str => ({[str]: str})));
 	}
 
 	instant(string: string): string {

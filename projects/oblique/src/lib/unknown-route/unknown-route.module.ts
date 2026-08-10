@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import {ObUnknownRouteComponent} from './unknown-route.component';
 
@@ -15,7 +15,7 @@ export {ObUnknownRouteComponent} from './unknown-route.component';
 			// TODO uncomment once https://github.com/angular/angular/issues/12648 is fixed
 			// {path: '**', redirectTo: 'unknown-route'}
 		]),
-		TranslateModule,
+		TranslatePipe,
 	],
 	exports: [ObUnknownRouteComponent],
 })

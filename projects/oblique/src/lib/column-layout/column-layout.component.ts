@@ -18,7 +18,7 @@ import {
 	viewChildren,
 } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {combineLatestWith, delay, distinctUntilChanged, map, startWith, takeUntil} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ObColumnPanelDirective} from './column-panel.directive';
@@ -35,7 +35,7 @@ import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.
 		MatIconModule,
 		ObColumnPanelDirective,
 		ObColumnToggleDirective,
-		TranslateModule,
+		TranslatePipe,
 	],
 	templateUrl: './column-layout.component.html',
 	styleUrls: ['./column-layout.component.scss'],

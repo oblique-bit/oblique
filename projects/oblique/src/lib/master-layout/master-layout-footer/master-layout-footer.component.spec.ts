@@ -7,7 +7,7 @@ import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
 
 describe('ObMasterLayoutFooterComponent', () => {
@@ -22,7 +22,7 @@ describe('ObMasterLayoutFooterComponent', () => {
 			imports: [
 				RouterModule.forRoot([{path: '**', component: ObMasterLayoutFooterComponent}]),
 				ObLocalizePipe,
-				TranslateModule,
+				TranslatePipe,
 			],
 			declarations: [ObMasterLayoutFooterComponent],
 			providers: [

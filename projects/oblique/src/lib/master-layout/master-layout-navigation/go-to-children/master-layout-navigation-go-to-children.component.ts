@@ -5,11 +5,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {ObButtonModule} from '../../../button/button.module';
 import {ObNavigationLink} from '../navigation-link.model';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
 	selector: 'ob-master-layout-navigation-go-to-children',
-	imports: [MatButtonModule, MatIconModule, ObButtonModule, MatTooltipModule, TranslateModule],
+	imports: [MatButtonModule, MatIconModule, ObButtonModule, MatTooltipModule, TranslatePipe],
 	templateUrl: './master-layout-navigation-go-to-children.component.html',
 	styleUrls: ['./master-layout-navigation-go-to-children.component.scss'],
 	changeDetection: ChangeDetectionStrategy.Eager,

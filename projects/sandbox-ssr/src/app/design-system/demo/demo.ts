@@ -1,10 +1,9 @@
 import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, PLATFORM_ID, inject} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
 	selector: 'ssr-demo',
-	imports: [TranslateModule],
+	imports: [],
 	templateUrl: './demo.html',
 	changeDetection: ChangeDetectionStrategy.Eager,
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],

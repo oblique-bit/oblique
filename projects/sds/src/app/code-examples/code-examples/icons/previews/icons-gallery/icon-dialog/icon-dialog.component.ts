@@ -5,7 +5,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ObButtonModule, ObNotificationModule, ObNotificationService, ObPopoverModule} from '@oblique/oblique';
 import type {IconMetadata} from '../icons.model';
 
@@ -21,7 +21,7 @@ import type {IconMetadata} from '../icons.model';
 		MatCardModule,
 		MatTooltipModule,
 		MatChipsModule,
-		TranslateModule,
+		TranslatePipe,
 	],
 	templateUrl: './icon-dialog.component.html',
 	styleUrl: './icon-dialog.component.scss',

@@ -17,6 +17,7 @@ import {ObServiceNavigationLanguageSynchronizationService} from './language-sync
 import {WINDOW} from '../window/window.provider';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {NavigateEvent} from '../global-events/global-events.model';
+import {signal} from '@angular/core';
 
 describe('ObServiceNavigationService', () => {
 	let service: ObServiceNavigationService;
@@ -92,7 +93,7 @@ describe('ObServiceNavigationService', () => {
 					provide: TranslateService,
 					useValue: {
 						onLangChange: mockLangChange.asObservable(),
-						currentLang: 'en',
+						currentLang: signal('en'),
 						getLangs: jest.fn().mockReturnValue(['en', 'de', 'fr', 'it']),
 						use: jest.fn(),
 					},
