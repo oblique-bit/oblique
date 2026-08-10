@@ -375,7 +375,7 @@ describe('ObServiceNavigationComponent', () => {
 
 			describe.each([
 				{loginState: 'SA', widgets: [selectors.info, selectors.applications, selectors.auth]},
-				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.profile, selectors.auth]},
+				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.auth]},
 				{loginState: 'S2OK', widgets: allWidgets},
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},
@@ -425,10 +425,7 @@ describe('ObServiceNavigationComponent', () => {
 
 			describe.each([
 				{loginState: 'SA', widgets: ['button', 'button', selectors.info, selectors.applications, selectors.auth]},
-				{
-					loginState: 'S1',
-					widgets: ['button', 'button', selectors.info, selectors.applications, selectors.profile, selectors.auth],
-				},
+				{loginState: 'S1', widgets: ['button', 'button', selectors.info, selectors.applications, selectors.auth]},
 				{loginState: 'S2OK', widgets: allWidgets},
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},
@@ -614,10 +611,7 @@ describe('ObServiceNavigationComponent', () => {
 
 			describe.each([
 				{loginState: 'SA', widgets: [selectors.info, selectors.applications, selectors.auth, selectors.languages]},
-				{
-					loginState: 'S1',
-					widgets: [selectors.info, selectors.applications, selectors.profile, selectors.auth, selectors.languages],
-				},
+				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.auth, selectors.languages]},
 				{loginState: 'S2OK', widgets: allWidgets},
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},

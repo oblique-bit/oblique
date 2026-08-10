@@ -57,19 +57,15 @@ describe('ObServiceNavigationProfileComponent', () => {
 			expect(component.userName()).toBe('');
 		});
 
-		describe.each([
-			{name: '', header: 'i18n.oblique.service-navigation.profile.guest'},
-			{name: 'John Doe', header: 'John Doe'},
-		])('set to "$name"', ({name, header}) => {
-			it(`should show "${header}" as header`, async () => {
-				fixture.componentRef.setInput('userName', name);
-				fixture.componentRef.changeDetectorRef.detectChanges();
-				await openPopover();
-				const section = fixture.debugElement.query(
-					By.directive(ObServiceNavigationPopoverSectionComponent)
-				).componentInstance;
-				expect(section.header()).toBe(header);
-			});
+		it(`should show "John Doe" as header`, async () => {
+			const name = 'John Doe';
+			fixture.componentRef.setInput('userName', name);
+			fixture.componentRef.changeDetectorRef.detectChanges();
+			await openPopover();
+			const section = fixture.debugElement.query(
+				By.directive(ObServiceNavigationPopoverSectionComponent)
+			).componentInstance;
+			expect(section.header()).toBe(name);
 		});
 	});
 
@@ -276,12 +272,6 @@ describe('ObServiceNavigationProfileComponent', () => {
 					let section: ObServiceNavigationPopoverSectionComponent;
 					beforeEach(() => {
 						section = sections[0].componentInstance;
-					});
-
-					describe('header', () => {
-						it('should have "i18n.oblique.service-navigation.profile.guest" as text', () => {
-							expect(section.header()).toBe('i18n.oblique.service-navigation.profile.guest');
-						});
 					});
 
 					describe('links', () => {

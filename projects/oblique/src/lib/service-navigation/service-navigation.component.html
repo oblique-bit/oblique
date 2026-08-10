@@ -4,7 +4,7 @@
 			<ng-container *ngTemplateOutlet="customControl" />
 		</li>
 	}
-	@if ((loginState$ | async | obIsUserLoggedIn: false) && displayMessage()) {
+	@if ((loginState$ | async | obIsUserLoggedIn) && displayMessage()) {
 		<li>
 			<ob-service-navigation-message [linkHref]="inboxMailUrl$ | async" [count]="messageCount$ | async" />
 		</li>
@@ -25,13 +25,13 @@
 		<li>
 			<ob-service-navigation-applications
 				[applicationsUrl]="applicationsUrl$ | async"
-				[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: false"
+				[isLoggedIn]="loginState$ | async | obIsUserLoggedIn"
 				[lastUsedApplications]="lastUsedApplications$ | async"
 				[favoriteApplications]="favoriteApplications$ | async"
 			/>
 		</li>
 	}
-	@if ((loginState$ | async | obIsUserLoggedIn: true) && displayProfile()) {
+	@if ((loginState$ | async | obIsUserLoggedIn) && displayProfile()) {
 		<li>
 			<ob-service-navigation-profile
 				[userName]="userName$ | async"
@@ -44,7 +44,7 @@
 		<li>
 			<ob-service-navigation-authentication
 				[loginUrl]="loginUrl$ | async"
-				[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: true"
+				[isLoggedIn]="loginState$ | async | obIsUserLoggedIn"
 				(logoutClicked)="logoutClick()"
 			/>
 		</li>

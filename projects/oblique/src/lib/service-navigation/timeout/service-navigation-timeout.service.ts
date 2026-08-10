@@ -67,7 +67,7 @@ export class ObServiceNavigationTimeoutService {
 			this.window.setInterval(() => {
 				const logoutCheck = Cookies.get(this.redirectorService.logoutCookieName) !== undefined;
 				const logoutCookieAppears = !doesLogoutCookieExist && logoutCheck;
-				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
+				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState);
 				if (logoutCookieAppears && isUserLoggedIn && this.redirectorService.shouldRedirect()) {
 					this.redirectorService.redirectOrEmit(this.returnUrlService.getRedirectUrl('logout', this.eportalUrl));
 				}
@@ -94,7 +94,7 @@ export class ObServiceNavigationTimeoutService {
 
 		this.ngZone.runOutsideAngular(() => {
 			this.window.setInterval(() => {
-				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
+				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState);
 				if (!isUserLoggedIn) {
 					return;
 				}
