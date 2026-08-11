@@ -52,11 +52,11 @@ export default [
 				{
 					selector: 'objectLiteralProperty',
 					format: ['UPPER_CASE'],
-					filter: '^(?:MAT|STEPPER|OB)|^(?:ABN|TEST|DEV|REF|LOCAL)$',
+					filter: '^(?:MAT|STEPPER|OB)_|^(?:ABN|TEST|DEV|REF|LOCAL)$',
 				},
 				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:LABEL_FORMATTER|HIGHLIGHT|VARIANT)'},
 				{selector: 'objectLiteralMethod', format: null, modifiers: ['requiresQuotes']},
-				{selector: 'typeProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER|OB)'},
+				{selector: 'typeProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER|OB)_'},
 				{selector: 'typeAlias', format: ['camelCase'], filter: '^versionFunc$'},
 				{selector: 'parameter', format: ['PascalCase'], filter: '^CookiesMock$'},
 				{selector: 'classProperty', format: ['camelCase', 'UPPER_CASE']},
