@@ -61,6 +61,7 @@ export {
 	ObIServiceNavigationLink,
 	ObIServiceNavigationContact,
 	ObLoginState,
+	OB_PAMS_CONFIGURATION,
 } from './lib/service-navigation';
 export {
 	ObHttpApiInterceptor,
@@ -149,12 +150,7 @@ export {
 	ObUnsavedChangesModule,
 	ObUnsavedChangesService,
 } from './lib/unsaved-changes/unsaved-changes.module';
-export {
-	OB_PAMS_CONFIGURATION,
-	provideObliqueConfiguration,
-	provideObliqueTestingConfiguration,
-	obFocusWithOutline,
-} from './lib/utilities';
+export {provideObliqueConfiguration, provideObliqueTestingConfiguration, obFocusWithOutline} from './lib/utilities';
 export {OB_BANNER, ObIBanner, ObTBanner} from './lib/banner';
 export {ObIObliqueConfiguration} from './lib/utilities.model';
 export {WINDOW} from './lib/window/window.provider';
