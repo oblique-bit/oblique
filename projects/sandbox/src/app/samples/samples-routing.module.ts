@@ -152,6 +152,15 @@ const samplesRoutes: Routes = [
 	{path: 'language', component: LanguageSampleComponent},
 	{path: 'master-layout', component: MasterLayoutSampleComponent},
 	{
+		path: 'master-layout-route-config',
+		component: MasterLayoutSampleComponent,
+		data: {
+			masterLayout: {
+				homePageRoute: '/en/samples/master-layout-route-config',
+			},
+		},
+	},
+	{
 		path: 'nav-tree',
 		component: NavTreeSampleComponent,
 		resolve: {

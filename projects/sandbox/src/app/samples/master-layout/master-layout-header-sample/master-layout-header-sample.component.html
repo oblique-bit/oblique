@@ -1,8 +1,20 @@
 <mat-card>
 	<mat-card-title>Header</mat-card-title>
 	<mat-card-content>
-		<mat-slide-toggle [(ngModel)]="isSticky">is sticky</mat-slide-toggle>
-		<mat-slide-toggle [(ngModel)]="isSmall">is small</mat-slide-toggle>
-		<mat-slide-toggle [(ngModel)]="isCustom">is custom</mat-slide-toggle>
+		<mat-slide-toggle data-test="header-is-sticky" [(ngModel)]="isSticky">is sticky</mat-slide-toggle>
+		<mat-slide-toggle data-test="header-is-small" [(ngModel)]="isSmall">is small</mat-slide-toggle>
+		<mat-slide-toggle data-test="header-is-custom" [(ngModel)]="isCustom">is custom</mat-slide-toggle>
+		<mat-slide-toggle
+			data-test="sample-has-custom-header"
+			[ngModel]="showCustomHeader()"
+			(ngModelChange)="setShowCustomHeader($event)"
+			>has custom header content</mat-slide-toggle
+		>
+		<mat-slide-toggle
+			data-test="sample-has-custom-header-logo"
+			[ngModel]="showCustomHeaderLogo()"
+			(ngModelChange)="showCustomHeaderLogo.set($event)"
+			>has custom header logo</mat-slide-toggle
+		>
 	</mat-card-content>
 </mat-card>

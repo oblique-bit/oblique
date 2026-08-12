@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, output, signal} from '@angular/core';
 import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {FormsModule} from '@angular/forms';
@@ -27,6 +27,8 @@ import {DynamicNavigationService} from '../dynamic-navigation.service';
 })
 export class MasterLayoutLayoutSampleComponent {
 	readonly coverLayout = output<boolean>();
+	readonly scrollFixture = output<boolean>();
+	readonly showScrollFixture = signal(false);
 	breakpointOptions = ['xs', 'sm', 'md', 'lg', 'xl'];
 	private readonly masterLayout = inject(ObMasterLayoutService);
 	private readonly dynamicNavigationService = inject(DynamicNavigationService);

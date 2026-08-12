@@ -48,6 +48,7 @@ export class MasterLayoutNavigationSampleComponent {
 	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
 	private readonly profileLinks = [...this.masterLayout.header.serviceNavigationConfiguration.profileLinks];
 	private useCustomNavigationInternal = false;
+	private dynamicItemIndex = 0;
 	constructor() {
 		this.loginState$ = this.masterLayout.header.loginState$;
 		this.logoutUrl$ = this.masterLayout.header.logoutUrl$;
@@ -224,9 +225,10 @@ export class MasterLayoutNavigationSampleComponent {
 	}
 
 	addItem(): void {
+		this.dynamicItemIndex += 1;
 		this.dynamicNavigationService.addLink({
-			id: `id${crypto.randomUUID()}`,
-			label: 'test',
+			id: `master-layout-dynamic-${this.dynamicItemIndex}`,
+			label: `Dynamic test item ${this.dynamicItemIndex}`,
 			url: 'urlTest',
 		});
 	}
