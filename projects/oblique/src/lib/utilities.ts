@@ -1,11 +1,4 @@
-import {
-	EnvironmentProviders,
-	InjectionToken,
-	Provider,
-	inject,
-	makeEnvironmentProviders,
-	provideAppInitializer,
-} from '@angular/core';
+import {EnvironmentProviders, Provider, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
 
@@ -39,10 +32,6 @@ import {OB_HISTORY_STATE} from './accessibility-statement/accessibility-statemen
 import {obDefaultLanguageInUrl, obProvideLanguageConfiguration} from './language/language.provider';
 import {obDefaultBannerConfiguration, obProvideBanner} from './banner';
 import {obProvideServiceNavigation} from './service-navigation/service-navigation.provider';
-
-export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
-	'Prefix for the translation keys of custom error messages.'
-);
 
 const defaultLocalesConfiguration: ObILocale = {
 	locales: ['de-CH', 'fr-CH', 'it-CH'],

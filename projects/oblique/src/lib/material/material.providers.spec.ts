@@ -8,7 +8,7 @@ import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {MatStepperIntl} from '@angular/material/stepper';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {obProvideMaterial} from './material.providers';
+import {OB_MAT_ERROR_PREFIX, obProvideMaterial} from './material.providers';
 import {ObIMaterialConfig} from './material.model';
 import {provideObliqueTranslations} from '../translation/translation.providers';
 import {ObDatepickerIntlService} from './ob-datepicker.service';
@@ -23,6 +23,7 @@ describe('material.provider', () => {
 		MAT_RADIO_OPTIONS: {color: 'primary'},
 		MAT_SLIDE_TOGGLE_OPTIONS: {color: 'primary'},
 		MAT_TABS_CONFIG: {stretchTabs: false},
+		OB_MAT_ERROR_PREFIX: 'prefix',
 	};
 
 	beforeEach(() => {
@@ -38,6 +39,7 @@ describe('material.provider', () => {
 		{token: MAT_RADIO_DEFAULT_OPTIONS, name: 'MAT_RADIO_OPTIONS'},
 		{token: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, name: 'MAT_SLIDE_TOGGLE_OPTIONS'},
 		{token: MAT_TABS_CONFIG, name: 'MAT_TABS_CONFIG'},
+		{token: OB_MAT_ERROR_PREFIX, name: 'OB_MAT_ERROR_PREFIX'},
 	])('should create $token injection token', ({token, name}) => {
 		expect(TestBed.inject(token)).toEqual(config[name]);
 	});
