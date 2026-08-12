@@ -7,7 +7,7 @@ import type {AddObliqueOptions} from './types';
 
 export function addOblique(options: AddObliqueOptions): Rule {
 	return (tree: Tree, context: SchematicContext) => {
-		const logger = obCreateSchematicsLogger(context).group('Generate @oblique/toolchain:add-oblique');
+		const logger = obCreateSchematicsLogger(context, options.silent).group('Generate @oblique/toolchain:add-oblique');
 		const locales = options.locale.trim().split(/\s+/u).filter(Boolean);
 		return chain([addFavicon(logger), i18n({locales, silent: options.silent}), closeLogger(logger)])(tree, context);
 	};
