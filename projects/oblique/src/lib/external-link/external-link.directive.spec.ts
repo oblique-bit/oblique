@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconRegistry} from '@angular/material/icon';
 import {By} from '@angular/platform-browser';
@@ -10,22 +10,24 @@ import {EXTERNAL_LINK} from './external-link.model';
 
 @Component({
 	standalone: false,
-	template: `<a href="http://www.google.ch">External Link</a>`,
+	template: `<a href="http://www.google.ch" [icon]="icon()">External Link</a>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {
-	href = '';
+	href = signal('');
 }
 
 @Component({
 	imports: [ObExternalLinkDirective],
 	standalone: true,
-	template: `<a href="http://www.google.ch" [rel]="rel" [target]="target">External Link</a>`,
+	template: `<a href="http://www.google.ch" [icon]="icon()" [rel]="rel()" [target]="target()">External Link</a>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class BoundAttributeTestComponent {
-	@Input() rel: string | null | undefined;
-	@Input() target: string | null | undefined;
+	icon = signal<string | null | undefined>(undefined);
+	rel = signal<string | null | undefined>(undefined);
+	target = signal<string | null | undefined>(undefined);
+	isExternalLink = signal<boolean | 'auto'>(false);
 }
 
 describe(ObExternalLinkDirective.name, () => {
@@ -60,7 +62,7 @@ describe(ObExternalLinkDirective.name, () => {
 
 	describe('With default configuration', () => {
 		beforeEach(() => {
-			globalSetup();
+			globalSetupBoundAttributeTestComponent();
 			subject.next('Opens in new tab');
 			translate = TestBed.inject(TranslateService);
 		});
@@ -107,22 +109,22 @@ describe(ObExternalLinkDirective.name, () => {
 			});
 
 			it('should be noopener noreferrer when undefined', () => {
-				fixture.componentRef.setInput('rel', undefined);
+				(fixture.componentInstance as BoundAttributeTestComponent).rel.set(undefined);
 				fixture.detectChanges();
 				expect(element.getAttribute('rel')).toBe('noopener noreferrer');
 			});
 			it('should be noopener noreferrer when null', () => {
-				fixture.componentRef.setInput('rel', null);
+				(fixture.componentInstance as BoundAttributeTestComponent).rel.set(null);
 				fixture.detectChanges();
 				expect(element.getAttribute('rel')).toBe('noopener noreferrer');
 			});
 			it('should not be present if empty', () => {
-				fixture.componentRef.setInput('rel', '');
+				(fixture.componentInstance as BoundAttributeTestComponent).rel.set('');
 				fixture.detectChanges();
 				expect(element.getAttribute('rel')).toBe(null);
 			});
 			it('should be the given value', () => {
-				fixture.componentRef.setInput('rel', 'test');
+				(fixture.componentInstance as BoundAttributeTestComponent).rel.set('test');
 				fixture.detectChanges();
 				expect(element.getAttribute('rel')).toBe('test');
 			});
@@ -137,41 +139,45 @@ describe(ObExternalLinkDirective.name, () => {
 			});
 
 			it('should be _blank when undefined', () => {
-				fixture.componentRef.setInput('target', undefined);
+				(fixture.componentInstance as BoundAttributeTestComponent).target.set(undefined);
 				fixture.detectChanges();
 				expect(element.getAttribute('target')).toBe('_blank');
 			});
 			it('should be _blank when null', () => {
-				fixture.componentRef.setInput('target', null);
+				(fixture.componentInstance as BoundAttributeTestComponent).target.set(null);
 				fixture.detectChanges();
 				expect(element.getAttribute('target')).toBe('_blank');
 			});
 			it('should not be present if empty', () => {
-				fixture.componentRef.setInput('target', '');
+				(fixture.componentInstance as BoundAttributeTestComponent).target.set('');
 				fixture.detectChanges();
 				expect(element.getAttribute('target')).toBe(null);
 			});
 			it('should be the given value', () => {
-				fixture.componentRef.setInput('target', 'test');
+				(fixture.componentInstance as BoundAttributeTestComponent).target.set('test');
 				fixture.detectChanges();
 				expect(element.getAttribute('target')).toBe('test');
 			});
 		});
 
 		describe('icon', () => {
-			it('should not be added if none', () => {
-				directive.icon = 'none';
-				directive.ngOnChanges();
-				fixture.detectChanges();
-				expect(fixture.debugElement.query(By.css('.mat-icon'))).toBeFalsy();
+			describe('none', () => {
+				it('should not be added if none', () => {
+					fixture = TestBed.createComponent(BoundAttributeTestComponent);
+					(fixture.componentInstance as BoundAttributeTestComponent).icon.set('none');
+					fixture.detectChanges();
+					expect(fixture.debugElement.query(By.css('.mat-icon'))).toBeFalsy();
+				});
 			});
 
 			describe('left', () => {
 				let span: HTMLSpanElement;
 				beforeEach(() => {
-					directive.icon = 'left';
-					directive.ngOnChanges();
+					fixture = TestBed.createComponent(BoundAttributeTestComponent);
+					(fixture.componentInstance as BoundAttributeTestComponent).icon.set('left');
 					fixture.detectChanges();
+					const debugElement = fixture.debugElement.query(By.css('a'));
+					element = debugElement.nativeElement;
 					span = fixture.debugElement.query(By.css('.mat-icon')).nativeElement;
 				});
 
@@ -186,10 +192,13 @@ describe(ObExternalLinkDirective.name, () => {
 
 			describe('right', () => {
 				let span: HTMLSpanElement;
+
 				beforeEach(() => {
-					directive.icon = 'right';
-					directive.ngOnChanges();
+					fixture = TestBed.createComponent(BoundAttributeTestComponent);
+					(fixture.componentInstance as BoundAttributeTestComponent).icon.set('right');
 					fixture.detectChanges();
+					const debugElement = fixture.debugElement.query(By.css('a'));
+					element = debugElement.nativeElement;
 					span = fixture.debugElement.query(By.css('.mat-icon')).nativeElement;
 				});
 
@@ -204,8 +213,8 @@ describe(ObExternalLinkDirective.name, () => {
 
 			describe('remove', () => {
 				it('should not br present in the dom', () => {
-					directive.icon = 'none';
-					directive.ngOnChanges();
+					fixture = TestBed.createComponent(BoundAttributeTestComponent);
+					(fixture.componentInstance as BoundAttributeTestComponent).icon.set('none');
 					fixture.detectChanges();
 					expect(fixture.debugElement.query(By.css('.mat-icon'))).toBeFalsy();
 				});
@@ -234,9 +243,11 @@ describe(ObExternalLinkDirective.name, () => {
 
 		describe('markup with left icon', () => {
 			beforeEach(() => {
-				directive.icon = 'left';
-				directive.ngOnChanges();
+				fixture = TestBed.createComponent(BoundAttributeTestComponent);
+				(fixture.componentInstance as BoundAttributeTestComponent).icon.set('left');
 				fixture.detectChanges();
+				const debugElement = fixture.debugElement.query(By.css('a'));
+				element = debugElement.nativeElement;
 			});
 
 			it('should contain 3 nodes', () => {
@@ -258,8 +269,8 @@ describe(ObExternalLinkDirective.name, () => {
 
 		describe('markup with right icon', () => {
 			beforeEach(() => {
-				directive.icon = 'right';
-				directive.ngOnChanges();
+				fixture = TestBed.createComponent(BoundAttributeTestComponent);
+				(fixture.componentInstance as BoundAttributeTestComponent).icon.set('right');
 				fixture.detectChanges();
 			});
 
@@ -364,12 +375,46 @@ describe(ObExternalLinkDirective.name, () => {
 		});
 	});
 
+	describe('with isExternalLink', () => {
+		beforeEach(() => {
+			TestBed.overrideComponent(BoundAttributeTestComponent, {
+				set: {template: `<a href="http://www.google.ch" [isExternalLink]="isExternalLink()">External Link</a>`},
+			});
+			fixture = TestBed.createComponent(BoundAttributeTestComponent);
+			fixture.detectChanges();
+			const debugElement = fixture.debugElement.query(By.css('a'));
+			element = debugElement.nativeElement;
+			directive = debugElement.injector.get(ObExternalLinkDirective);
+		});
+
+		it('isLinkExternal should be true when isExternalLink is true', () => {
+			(fixture.componentInstance as BoundAttributeTestComponent).isExternalLink.set(true);
+			fixture.detectChanges();
+			expect(directive.isLinkExternal).toBe(true);
+		});
+
+		it('isLinkExternal should be false when isExternalLink is false', () => {
+			(fixture.componentInstance as BoundAttributeTestComponent).isExternalLink.set(false);
+			fixture.detectChanges();
+			expect(directive.isLinkExternal).toBe(false);
+		});
+	});
+
 	function globalSetup(): void {
 		fixture = TestBed.createComponent(TestComponent);
 		fixture.detectChanges();
 		const debugElement = fixture.debugElement.query(By.css('a'));
 		element = debugElement.nativeElement;
-		directive = debugElement.injector.get(ObExternalLinkDirective, null);
+		directive = debugElement.injector.get(ObExternalLinkDirective);
+		translate = TestBed.inject(TranslateService);
+	}
+
+	function globalSetupBoundAttributeTestComponent(): void {
+		fixture = TestBed.createComponent(BoundAttributeTestComponent);
+		fixture.detectChanges();
+		const debugElement = fixture.debugElement.query(By.css('a'));
+		element = debugElement.nativeElement;
+		directive = debugElement.injector.get(ObExternalLinkDirective);
 		translate = TestBed.inject(TranslateService);
 	}
 });
