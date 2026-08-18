@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ChangeDetectionStrategy, Component, NO_ERRORS_SCHEMA, signal} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {WINDOW} from '../window/window.provider';
@@ -13,14 +13,28 @@ import {ObEToggleType} from './popover.model';
 @Component({
 	standalone: false,
 	template: `
-		<button type="button" [obPopover]="myPopover">Open Popover</button>
+		<button
+			type="button"
+			[id]="id()"
+			[obPopover]="myPopover"
+			[toggleHandle]="toggleHandle()"
+			[closeOnlyOnToggle]="closeOnlyOnToggle()"
+			[panelContentId]="panelContentId()"
+		>
+			Open Popover
+		</button>
 		<ng-template #myPopover>
 			<p>Hello World</p>
 		</ng-template>
 	`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
-class TestPopoverComponent {}
+class TestPopoverComponent {
+	toggleHandle = signal<ObEToggleType | undefined>(undefined);
+	closeOnlyOnToggle = signal<boolean>(false);
+	panelContentId = signal<string>('');
+	id = signal<string | undefined>('popover-1');
+}
 
 describe(ObPopoverDirective.name, () => {
 	let fixture: ComponentFixture<TestPopoverComponent>;
@@ -104,7 +118,8 @@ describe(ObPopoverDirective.name, () => {
 
 				describe('with toggleHandle input set to click', () => {
 					beforeEach(() => {
-						directive.toggleHandle = ObEToggleType.CLICK;
+						fixture.componentInstance.toggleHandle.set(ObEToggleType.CLICK);
+						fixture.detectChanges();
 						directive.ngOnChanges();
 					});
 
@@ -125,7 +140,8 @@ describe(ObPopoverDirective.name, () => {
 
 				describe('with toggleHandle input set to hover', () => {
 					beforeEach(() => {
-						directive.toggleHandle = ObEToggleType.HOVER;
+						fixture.componentInstance.toggleHandle.set(ObEToggleType.HOVER);
+						fixture.detectChanges();
 						directive.ngOnChanges();
 					});
 
@@ -194,7 +210,6 @@ describe(ObPopoverDirective.name, () => {
 					directive.open();
 					runPendingOpenTimers();
 					directive.close();
-					// fixture.detectChanges();
 					popover = document.querySelector('.ob-popover-content');
 					expect(popover).toBeNull();
 				});
@@ -223,7 +238,8 @@ describe(ObPopoverDirective.name, () => {
 
 				describe('with toggleHandle input set to click', () => {
 					beforeEach(() => {
-						directive.toggleHandle = ObEToggleType.CLICK;
+						fixture.componentInstance.toggleHandle.set(ObEToggleType.CLICK);
+						fixture.detectChanges();
 						toggleWithMouseEnter();
 					});
 
@@ -234,7 +250,8 @@ describe(ObPopoverDirective.name, () => {
 
 				describe('with toggleHandle input set to hover', () => {
 					beforeEach(() => {
-						directive.toggleHandle = ObEToggleType.HOVER;
+						fixture.componentInstance.toggleHandle.set(ObEToggleType.HOVER);
+						fixture.detectChanges();
 						toggleWithMouseEnter();
 					});
 
@@ -276,7 +293,8 @@ describe(ObPopoverDirective.name, () => {
 
 				describe('with toggleHandle input set to click', () => {
 					beforeEach(() => {
-						directive.toggleHandle = ObEToggleType.CLICK;
+						fixture.componentInstance.toggleHandle.set(ObEToggleType.CLICK);
+						fixture.detectChanges();
 						directive.ngOnChanges();
 					});
 
@@ -298,7 +316,8 @@ describe(ObPopoverDirective.name, () => {
 
 				describe('with toggleHandle input set to hover', () => {
 					beforeEach(() => {
-						directive.toggleHandle = ObEToggleType.HOVER;
+						fixture.componentInstance.toggleHandle.set(ObEToggleType.HOVER);
+						fixture.detectChanges();
 						directive.ngOnChanges();
 					});
 
@@ -359,7 +378,8 @@ describe(ObPopoverDirective.name, () => {
 
 				describe('with closeOnlyOnToggle input set to false', () => {
 					beforeEach(() => {
-						directive.closeOnlyOnToggle = false;
+						fixture.componentInstance.closeOnlyOnToggle.set(false);
+						fixture.detectChanges();
 						directive.ngOnChanges();
 						jest.spyOn(directive, 'close');
 						directive.open();
@@ -390,7 +410,8 @@ describe(ObPopoverDirective.name, () => {
 
 				describe('with closeOnlyOnToggle input set to true', () => {
 					beforeEach(() => {
-						directive.closeOnlyOnToggle = true;
+						fixture.componentInstance.closeOnlyOnToggle.set(true);
+						fixture.detectChanges();
 						directive.ngOnChanges();
 
 						jest.spyOn(directive, 'close');
@@ -423,7 +444,9 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with a custom id', () => {
 				it('should add the same id', () => {
-					directive.id = 'popover';
+					globalSetup();
+					fixture.componentInstance.id.set('popover');
+					fixture.detectChanges();
 					directive.ngOnInit();
 					directive.open();
 					runPendingOpenTimers();
@@ -434,13 +457,55 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with a custom panelContentId', () => {
 				it('should add the given panelContentId', () => {
-					directive.panelContentId = 'custom-panel';
+					fixture.componentInstance.panelContentId.set('custom-panel');
+					fixture.detectChanges();
 					directive.ngOnInit();
 					directive.open();
 					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
 					expect(popover.getAttribute('id')).toBe('custom-panel');
 				});
+			});
+		});
+
+		describe('with multiple popovers', () => {
+			const popovers: Element[] = [];
+			const directives: ObPopoverDirective[] = [];
+			beforeEach(() => {
+				TestBed.overrideTemplate(
+					TestPopoverComponent,
+					`
+				<button type="button" [obPopover]="myPopover">Open Popover</button>
+				<ng-template #myPopover>
+					<p>Hello World</p>
+				</ng-template>
+				<button type="button" [obPopover]="myPopover2">Open Popover</button>
+				<ng-template #myPopover2 class="test-nina">
+					<p>Hello World</p>
+				</ng-template>
+			`
+				);
+
+				fixture = TestBed.createComponent(TestPopoverComponent);
+				fixture.detectChanges();
+				const elements = fixture.debugElement.queryAll(By.directive(ObPopoverDirective));
+				elements.forEach(element => directives.push(element.injector.get(ObPopoverDirective)));
+				elements.forEach(element => element.nativeElement.click());
+				document.querySelectorAll('.ob-popover-content').forEach(element => popovers.push(element));
+			});
+
+			it('should insert 2 popovers', () => {
+				expect(directives).toHaveLength(2);
+			});
+
+			it('should have generated ids for both', () => {
+				popovers.forEach(element => expect(/popover-\d+-content/.test(element.getAttribute('id'))).toBe(true));
+			});
+
+			it('should not generate the same id for both', () => {
+				const ids: string[] = [];
+				popovers.forEach(element => ids.push(element.getAttribute('id')));
+				expect(ids[0]).not.toBe(ids[1]);
 			});
 		});
 
@@ -526,7 +591,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to click', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.CLICK;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.CLICK);
+					fixture.detectChanges();
 					directive.ngOnChanges();
 				});
 
@@ -547,7 +613,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to hover', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.HOVER;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.HOVER);
+					fixture.detectChanges();
 					directive.ngOnChanges();
 				});
 
@@ -580,7 +647,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to click', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.CLICK;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.CLICK);
+					fixture.detectChanges();
 					toggleWithMouseEnter();
 				});
 
@@ -591,7 +659,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to hover', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.HOVER;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.HOVER);
+					fixture.detectChanges();
 					toggleWithMouseEnter();
 				});
 
@@ -633,7 +702,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to click', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.CLICK;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.CLICK);
+					fixture.detectChanges();
 					directive.ngOnChanges();
 				});
 
@@ -655,7 +725,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to hover', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.HOVER;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.HOVER);
+					fixture.detectChanges();
 					directive.ngOnChanges();
 				});
 
@@ -703,7 +774,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to click', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.CLICK;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.CLICK);
+					fixture.detectChanges();
 					directive.ngOnChanges();
 				});
 
@@ -724,7 +796,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to hover', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.HOVER;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.HOVER);
+					fixture.detectChanges();
 					directive.ngOnChanges();
 				});
 
@@ -769,7 +842,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to click', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.CLICK;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.CLICK);
+					fixture.detectChanges();
 					toggleWithMouseEnter();
 				});
 
@@ -780,7 +854,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to hover', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.HOVER;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.HOVER);
+					fixture.detectChanges();
 					toggleWithMouseEnter();
 				});
 
@@ -822,7 +897,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to click', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.CLICK;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.CLICK);
+					fixture.detectChanges();
 					directive.ngOnChanges();
 				});
 
@@ -844,7 +920,8 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('with toggleHandle input set to hover', () => {
 				beforeEach(() => {
-					directive.toggleHandle = ObEToggleType.HOVER;
+					fixture.componentInstance.toggleHandle.set(ObEToggleType.HOVER);
+					fixture.detectChanges();
 					directive.ngOnChanges();
 				});
 
@@ -906,7 +983,8 @@ describe(ObPopoverDirective.name, () => {
 
 		describe('with closeOnlyOnToggle input set to false', () => {
 			beforeEach(() => {
-				directive.closeOnlyOnToggle = false;
+				fixture.componentInstance.closeOnlyOnToggle.set(false);
+				fixture.detectChanges();
 				directive.ngOnChanges();
 			});
 
@@ -942,7 +1020,8 @@ describe(ObPopoverDirective.name, () => {
 
 		describe('with closeOnlyOnToggle input set to true', () => {
 			beforeEach(() => {
-				directive.closeOnlyOnToggle = true;
+				fixture.componentInstance.closeOnlyOnToggle.set(true);
+				fixture.detectChanges();
 				directive.ngOnChanges();
 			});
 
@@ -978,13 +1057,28 @@ describe(ObPopoverDirective.name, () => {
 	});
 
 	describe('with OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE set to true', () => {
-		beforeEach(() => {
-			TestBed.overrideProvider(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, {useValue: true});
-
-			globalSetup();
-		});
-
 		describe('with closeOnlyOnToggle input not set', () => {
+			beforeEach(() => {
+				TestBed.overrideProvider(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, {useValue: true});
+				TestBed.overrideComponent(TestPopoverComponent, {
+					set: {
+						template: `<button
+								type="button"
+								[id]="id()"
+								[obPopover]="myPopover"
+								[toggleHandle]="toggleHandle()"
+								[panelContentId]="panelContentId()"
+							>
+								Open Popover
+							</button>
+							<ng-template #myPopover>
+								<p>Hello World</p>
+							</ng-template>`,
+					},
+				});
+				globalSetup();
+			});
+
 			describe('events', () => {
 				beforeEach(() => {
 					jest.spyOn(directive, 'close');
@@ -1017,7 +1111,9 @@ describe(ObPopoverDirective.name, () => {
 
 		describe('with closeOnlyOnToggle input set to false', () => {
 			beforeEach(() => {
-				directive.closeOnlyOnToggle = false;
+				globalSetup();
+				fixture.componentInstance.closeOnlyOnToggle.set(false);
+				fixture.detectChanges();
 				directive.ngOnChanges();
 			});
 
@@ -1053,7 +1149,9 @@ describe(ObPopoverDirective.name, () => {
 
 		describe('with closeOnlyOnToggle input set to true', () => {
 			beforeEach(() => {
-				directive.closeOnlyOnToggle = true;
+				globalSetup();
+				fixture.componentInstance.closeOnlyOnToggle.set(true);
+				fixture.detectChanges();
 				directive.ngOnChanges();
 			});
 
