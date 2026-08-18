@@ -90,8 +90,7 @@ export type NonEmptyArray<Type> = [Type, ...Type[]];
 export type ObConformity = ObConformityPartial | ObConformityNonPartial;
 
 export type ObIAccessibilityStatementConfiguration =
-	| ObIAccessibilityStatementConfigurationPartial
-	| ObIAccessibilityStatementConfigurationNonPartial;
+	ObIAccessibilityStatementConfigurationPartial | ObIAccessibilityStatementConfigurationNonPartial;
 
 type ObConformityPartial = 'partial';
 type ObConformityNonPartial = 'none' | 'full';

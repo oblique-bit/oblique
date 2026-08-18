@@ -15,9 +15,10 @@ export class ObServiceNavigationInfoApiService {
 		const url = `${rootUrl}api/applications/${appId}/helpinformation`;
 
 		return this.httpClient
-			.get<
-				ObIServiceNavigationResponse<ObISeriviceNavigationHelpResponse>
-			>(url, {params: {lang: language}, withCredentials: true})
+			.get<ObIServiceNavigationResponse<ObISeriviceNavigationHelpResponse>>(url, {
+				params: {lang: language},
+				withCredentials: true,
+			})
 			.pipe(
 				tap(info => this.errorManagement(info, url)),
 				map(info => this.formatData(info))
