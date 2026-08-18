@@ -1,3 +1,9 @@
+# [15.4.4](https://github.com/oblique-bit/oblique/compare/15.4.3...15.4.4) (2026-08-18)
+
+## Dependencies
+
+- **@angular/core:** update dependencies to solve CVE-2026-52725, CVE-2026-50557, CVE-2026-54267 ([00152443c](https://github.com/oblique-bit/oblique/commit/00152443c37a4d04d9db50bc3b7485c7d2387c2c), OUI-4623, [GitHub-10](https://github.com/oblique-bit/oblique/issues/10))
+
 # [15.2.0](https://github.com/oblique-bit/oblique/compare/15.1.3...15.2.0) (2026-04-02)
 
 ## Bug Fixes

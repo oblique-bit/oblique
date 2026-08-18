@@ -1,6 +1,6 @@
 {
   "name": "@oblique/cli",
-  "version": "15.4.3",
+  "version": "15.4.4",
   "description": "Command Line Interface to manage Oblique projects",
   "keywords": [
     "ob",
@@ -28,6 +28,6 @@
     "semver": "^7.7.1"
   },
   "devDependencies": {
-    "@types/semver": "^7.7.1"
+    "@types/semver": "^7.8.0"
   }
 }

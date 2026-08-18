@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sds",
-  "version": "15.4.3",
+  "version": "15.4.4",
   "scripts": {
     "start": "ng serve",
     "lint": "ts-node scripts/lint.ts",
@@ -14,7 +14,7 @@
     "release": "ts-node scripts/release.ts"
   },
   "dependencies": {
-    "highlight.js": "^11.11.1",
+    "highlight.js": "^11.12.0",
     "jquery": "^3.7.1",
     "raw-loader": "^4.0.2"
   },
