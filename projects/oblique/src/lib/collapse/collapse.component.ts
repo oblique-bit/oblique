@@ -102,12 +102,17 @@ export class ObCollapseComponent implements AfterViewInit, OnDestroy, AfterConte
 	}
 
 	private updateContentHeight(): void {
-		// collapseContent always has 1 child, because that's the content being projected. We actually need the scrollHeight of
-		// the projected content, not its wrapper
-		const scrollHeight = this.collapseContent().nativeElement.querySelector(':first-child')?.scrollHeight ?? 0;
-		const height = this.active() ? scrollHeight : 0;
+		const height = this.getContentHeight();
 		if (this.contentHeight() !== height) {
 			this.contentHeight.set(height);
 		}
+	}
+
+	private getContentHeight(): number {
+		// collapseContent always has 1 child, because that's the content being projected. We actually need the scrollHeight of
+		// the projected content, not its wrapper
+		const scrollHeight =
+			this.collapseContent().nativeElement.querySelector<HTMLElement>(':first-child')?.scrollHeight ?? 0;
+		return this.active() ? scrollHeight : 0;
 	}
 }
