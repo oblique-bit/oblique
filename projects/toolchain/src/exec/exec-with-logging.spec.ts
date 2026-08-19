@@ -1,18 +1,18 @@
-// execSync needs to be mocked before it imported. since any other import statement may also import execSync, the mock
+// spawnSync needs to be mocked before it imported. since any other import statement may also import spawnSync, the mock
 // need to be the first thing in this file
 
 jest.mock('child_process', () => ({
-	execSync: jest.fn(),
+	spawnSync: jest.fn(),
 }));
 
-import {execSync} from 'child_process';
+import {spawnSync} from 'child_process';
 import {type ObGroupLogger, type ObLogger, obCreateLogger} from '../logger';
 import {obExecWithLogging, obExecWithLoggingOrExit} from './exec-with-logging';
 
 describe('exec-with-logging', () => {
 	let logger: ObLogger;
 	let loggerGroup: ObGroupLogger;
-	let result: string;
+	let result: string | undefined;
 	const command = 'my-command';
 
 	beforeEach(() => {
@@ -26,9 +26,16 @@ describe('exec-with-logging', () => {
 
 	describe.each([{cmd: obExecWithLogging}, {cmd: obExecWithLoggingOrExit}])('$cmd.name success', ({cmd}) => {
 		beforeEach(() => {
-			(execSync as jest.Mock).mockReturnValueOnce('hello');
+			(spawnSync as jest.Mock).mockReturnValueOnce({
+				pid: 1,
+				output: [''],
+				stderr: null,
+				signal: null,
+				stdout: 'ok',
+				status: 0,
+			});
 
-			result = cmd(loggerGroup, command);
+			result = cmd({logger: loggerGroup, command});
 		});
 
 		test('logs the step', () => {
@@ -36,11 +43,11 @@ describe('exec-with-logging', () => {
 		});
 
 		test('logs the command output', () => {
-			expect(loggerGroup.logRawOutput).toHaveBeenCalledWith('hello');
+			expect(loggerGroup.logRawOutput).toHaveBeenCalledWith('ok');
 		});
 
 		test('returns the command output', () => {
-			expect(result).toBe('hello');
+			expect(result).toBe('ok');
 		});
 	});
 
@@ -168,10 +175,10 @@ describe('exec-with-logging', () => {
 			},
 		])('with $desc', ({throws, error, exitCode}) => {
 			beforeEach(() => {
-				(execSync as jest.Mock).mockImplementationOnce(() => {
+				(spawnSync as jest.Mock).mockImplementationOnce(() => {
 					throw throws;
 				});
-				result = cmd(loggerGroup, command);
+				result = cmd({logger: loggerGroup, command});
 			});
 
 			afterEach(() => {
