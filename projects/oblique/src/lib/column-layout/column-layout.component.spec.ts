@@ -1,10 +1,13 @@
 import {By} from '@angular/platform-browser';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, DebugElement, Directive, inject, isSignal, output, signal} from '@angular/core';
+import {Component, DebugElement, isSignal, signal} from '@angular/core';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
-import {ObColumnToggleDirective as ObRealColumnToggleDirective} from './column-toggle.directive';
-import {ObColumnPanelDirective as ObRealColumnPanelDirective} from './column-panel.directive';
+import {
+	ObColumnToggleDirective,
+	ObColumnToggleDirective as ObRealColumnToggleDirective,
+} from './column-toggle.directive';
+import {ObColumnPanelDirective, ObColumnPanelDirective as ObRealColumnPanelDirective} from './column-panel.directive';
 import {TranslatePipe} from '@ngx-translate/core';
 
 let resizerCallback: (entries: {contentRect: {height: number}}[]) => void;
@@ -17,31 +20,6 @@ class ResizeObserver {
 	disconnect(): void {}
 }
 window.ResizeObserver = ResizeObserver;
-
-@Directive({
-	selector: '[obColumnPanel]',
-	exportAs: 'obColumnPanel',
-})
-class ObColumnPanelDirective {
-	collapsed = false;
-	readonly toggled = output<boolean>();
-
-	toggle(): void {
-		this.collapsed = !this.collapsed;
-		this.toggled.emit(this.collapsed);
-	}
-}
-
-@Directive({
-	selector: '[obColumnToggle]',
-})
-class ObColumnToggleDirective {
-	private readonly parent = inject(ObColumnPanelDirective);
-
-	onclick(): void {
-		this.parent.toggle();
-	}
-}
 
 @Component({
 	standalone: false,
@@ -64,10 +42,6 @@ describe(ObColumnLayoutComponent.name, () => {
 		let panels: ObColumnPanelDirective[];
 
 		beforeEach(async () => {
-			TestBed.overrideComponent(ObColumnLayoutComponent, {
-				remove: {imports: [ObRealColumnPanelDirective, ObRealColumnToggleDirective]},
-				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
-			});
 			await TestBed.configureTestingModule({
 				imports: [ObColumnLayoutComponent, TranslatePipe],
 				providers: [provideObliqueTestingConfiguration()],
@@ -121,8 +95,8 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		describe.each([
-			{property: 'toggleLeftIcon', initialValue: 'left', toggledValue: 'right', index: 0},
-			{property: 'toggleRightIcon', initialValue: 'right', toggledValue: 'left', index: 1},
+			{property: 'leftCollapsed', initialValue: false, toggledValue: true, index: 0},
+			{property: 'rightCollapsed', initialValue: false, toggledValue: true, index: 1},
 		])('property $property', ({property, initialValue, toggledValue, index}) => {
 			test('that it is an signal', () => {
 				expect(isSignal(component[property])).toBe(true);
@@ -144,10 +118,11 @@ describe(ObColumnLayoutComponent.name, () => {
 			{method: 'toggleLeft', index: 0, panel: 'left'},
 			{method: 'toggleRight', index: 1, panel: 'right'},
 		])('method $method', ({method, index, panel}) => {
-			test('that it toggles the panel', () => {
+			test('that it updates panel collapsed', () => {
 				jest.spyOn(panels[index], 'toggle');
 				component[method]();
-				expect(panels[index].toggle).toHaveBeenCalled();
+				fixture.changeDetectorRef.detectChanges();
+				expect(panels[index].collapsed()).toEqual(true);
 			});
 
 			test('that it does not toggle the panel when panel is removed', () => {
@@ -250,15 +225,14 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		describe.each([
-			{property: 'toggleLeftIcon', initialValue: 'left', toggledValue: 'right', index: 0},
-			{property: 'toggleRightIcon', initialValue: 'right', toggledValue: 'left', index: 1},
+			{property: 'leftCollapsed', initialValue: false, toggledValue: true, index: 0},
+			{property: 'rightCollapsed', initialValue: false, toggledValue: true, index: 1},
 		])('property $property changed back', ({property, initialValue, toggledValue, index}) => {
 			let panels: ObColumnPanelDirective[];
 
 			beforeEach(() => {
 				testComponent.left.set('OPENED');
 				testComponent.right.set('OPENED');
-				component.ngOnChanges();
 				fixture.detectChanges();
 				jest.runOnlyPendingTimers();
 
