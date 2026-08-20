@@ -1,8 +1,6 @@
 import {By} from '@angular/platform-browser';
-import {Observable} from 'rxjs';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectionStrategy, Component, DebugElement, Directive, EventEmitter, Output, inject} from '@angular/core';
-import {skip} from 'rxjs/operators';
+import {Component, DebugElement, Directive, inject, isSignal, output, signal} from '@angular/core';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
 import {ObColumnToggleDirective as ObRealColumnToggleDirective} from './column-toggle.directive';
@@ -26,7 +24,7 @@ window.ResizeObserver = ResizeObserver;
 })
 class ObColumnPanelDirective {
 	collapsed = false;
-	@Output() readonly toggled = new EventEmitter<boolean>();
+	readonly toggled = output<boolean>();
 
 	toggle(): void {
 		this.collapsed = !this.collapsed;
@@ -47,10 +45,12 @@ class ObColumnToggleDirective {
 
 @Component({
 	standalone: false,
-	template: `<ob-column-layout left="NONE" right="NONE" />`,
-	changeDetection: ChangeDetectionStrategy.Eager,
+	template: `<ob-column-layout [left]="left()" [right]="right()" />`,
 })
-class TestComponent {}
+class TestComponent {
+	left = signal('NONE');
+	right = signal('NONE');
+}
 
 describe(ObColumnLayoutComponent.name, () => {
 	let component: ObColumnLayoutComponent;
@@ -121,26 +121,22 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		describe.each([
-			{property: 'toggleLeftIcon$', initialValue: 'left', toggledValue: 'right', index: 0},
-			{property: 'toggleRightIcon$', initialValue: 'right', toggledValue: 'left', index: 1},
+			{property: 'toggleLeftIcon', initialValue: 'left', toggledValue: 'right', index: 0},
+			{property: 'toggleRightIcon', initialValue: 'right', toggledValue: 'left', index: 1},
 		])('property $property', ({property, initialValue, toggledValue, index}) => {
-			test('that it is an observable', () => {
-				expect(component[property] instanceof Observable).toBe(true);
+			test('that it is an signal', () => {
+				expect(isSignal(component[property])).toBe(true);
 			});
 
 			test(`that it initially emits "${initialValue}"`, () => {
-				const values: string[] = [];
-				component[property].subscribe(value => values.push(value));
 				jest.runOnlyPendingTimers();
-				expect(values).toEqual([initialValue]);
+				expect(component[property]()).toEqual(initialValue);
 			});
 
 			test(`that it emits "${toggledValue}" after toggle has been toggled`, () => {
-				const values: string[] = [];
-				component[property].pipe(skip(1)).subscribe(value => values.push(value));
 				panels[index].toggle();
 				jest.runOnlyPendingTimers();
-				expect(values).toEqual([toggledValue]);
+				expect(component[property]()).toEqual(toggledValue);
 			});
 		});
 
@@ -254,14 +250,14 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		describe.each([
-			{property: 'toggleLeftIcon$', initialValue: 'left', toggledValue: 'right', index: 0},
-			{property: 'toggleRightIcon$', initialValue: 'right', toggledValue: 'left', index: 1},
+			{property: 'toggleLeftIcon', initialValue: 'left', toggledValue: 'right', index: 0},
+			{property: 'toggleRightIcon', initialValue: 'right', toggledValue: 'left', index: 1},
 		])('property $property changed back', ({property, initialValue, toggledValue, index}) => {
 			let panels: ObColumnPanelDirective[];
 
 			beforeEach(() => {
-				component.left = 'OPENED';
-				component.right = 'OPENED';
+				testComponent.left.set('OPENED');
+				testComponent.right.set('OPENED');
 				component.ngOnChanges();
 				fixture.detectChanges();
 				jest.runOnlyPendingTimers();
@@ -271,23 +267,19 @@ describe(ObColumnLayoutComponent.name, () => {
 					.map(element => element.injector.get(ObColumnPanelDirective));
 			});
 
-			test('that it is an observable', () => {
-				expect(component[property] instanceof Observable).toBe(true);
+			test('that it is a signal', () => {
+				expect(isSignal(component[property])).toBe(true);
 			});
 
 			test(`that it initially emits "${initialValue}"`, () => {
-				const values: string[] = [];
-				component[property].subscribe(value => values.push(value));
 				jest.runOnlyPendingTimers();
-				expect(values).toEqual([initialValue]);
+				expect(component[property]()).toEqual(initialValue);
 			});
 
 			test(`that it emits "${toggledValue}" after toggle has been toggled`, () => {
-				const values: string[] = [];
-				component[property].pipe(skip(1)).subscribe(value => values.push(value));
 				panels[index].toggle();
 				jest.runOnlyPendingTimers();
-				expect(values).toEqual([toggledValue]);
+				expect(component[property]()).toEqual(toggledValue);
 			});
 		});
 	});

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -10,8 +10,8 @@ import {ChangeDetectionStrategy, Component, Input, input} from '@angular/core';
 	exportAs: 'obColumnLayout',
 })
 export class ObMockColumnLayoutComponent {
-	@Input() left = true;
-	@Input() right = true;
+	readonly left = input(true);
+	readonly right = input(true);
 	readonly noLayout = input(false);
 	readonly wider = input(false);
 

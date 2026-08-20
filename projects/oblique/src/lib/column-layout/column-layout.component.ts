@@ -1,19 +1,17 @@
-import {AsyncPipe} from '@angular/common';
 import {CdkScrollableModule} from '@angular/cdk/scrolling';
 import {
 	AfterViewInit,
-	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
 	DoCheck,
 	ElementRef,
-	Input,
 	OnChanges,
 	OnDestroy,
 	Renderer2,
 	ViewEncapsulation,
 	inject,
 	input,
+	signal,
 	viewChild,
 	viewChildren,
 } from '@angular/core';
@@ -26,20 +24,13 @@ import {ObColumnToggleDirective} from './column-toggle.directive';
 import {WINDOW} from '../window/window.provider';
 import {ObWindow} from '../window/window.provider.model';
 import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.model';
+import {outputToObservable} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ob-column-layout',
-	imports: [
-		AsyncPipe,
-		CdkScrollableModule,
-		MatIconModule,
-		ObColumnPanelDirective,
-		ObColumnToggleDirective,
-		TranslatePipe,
-	],
+	imports: [CdkScrollableModule, MatIconModule, ObColumnPanelDirective, ObColumnToggleDirective, TranslatePipe],
 	templateUrl: './column-layout.component.html',
 	styleUrls: ['./column-layout.component.scss'],
-	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		'[class.ob-no-layout]': 'noLayout()',
@@ -51,12 +42,12 @@ import {ObIDimension, ObIToggleDirection, ObTColumnState} from './column-layout.
 /* A warning is given by eslint when using both DoCheck and OnChanges to prevent checking @Input changes in the DoCheck hook.
 	As long as the OnChanges lifecycle exclusively deals with @Input changes this warning isn't necessary. */
 export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestroy, OnChanges {
-	@Input() left: ObTColumnState = 'OPENED';
-	@Input() right: ObTColumnState = 'OPENED';
+	readonly left = input<ObTColumnState>('OPENED');
+	readonly right = input<ObTColumnState>('OPENED');
 	readonly wider = input(false);
 	readonly noLayout = input(false);
-	toggleLeftIcon$: Observable<ObIToggleDirection>;
-	toggleRightIcon$: Observable<ObIToggleDirection>;
+	toggleLeftIcon = signal<ObIToggleDirection>('right');
+	toggleRightIcon = signal<ObIToggleDirection>('left');
 	private readonly columnLeft = viewChild<ObColumnPanelDirective>('columnLeft');
 	private readonly columnRight = viewChild<ObColumnPanelDirective>('columnRight');
 	private readonly toggles = viewChildren<ElementRef>('columnToggle');
@@ -91,10 +82,16 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		this.dimensionChange.complete();
 		this.observer?.disconnect();
 	}
-
 	setupToggleIcons(): void {
-		this.toggleLeftIcon$ = this.getToggleDirection(this.columnLeft(), 'left', 'right');
-		this.toggleRightIcon$ = this.getToggleDirection(this.columnRight(), 'right', 'left');
+		const columnLeft = this.columnLeft();
+		if (columnLeft) {
+			this.getToggleDirection(columnLeft, 'left', 'right').subscribe(direction => this.toggleLeftIcon.set(direction));
+		}
+
+		const columnRight = this.columnRight();
+		if (columnRight) {
+			this.getToggleDirection(columnRight, 'right', 'left').subscribe(direction => this.toggleRightIcon.set(direction));
+		}
 	}
 
 	toggleLeft(): void {
@@ -130,7 +127,7 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 		expandedDirection: ObIToggleDirection,
 		collapsedDirection: ObIToggleDirection
 	): Observable<ObIToggleDirection> {
-		return column?.toggled.pipe(
+		return outputToObservable(column.toggled).pipe(
 			startWith(column.collapsed),
 			delay(0),
 			map(collapsed => (collapsed ? collapsedDirection : expandedDirection))
