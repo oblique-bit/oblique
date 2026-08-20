@@ -7,6 +7,7 @@ export default {
 	},
 	preset: 'ts-jest',
 	testEnvironment: 'node',
+	roots: ['src/logger', 'src/schematics'],
 	/*
 	 * As this is not an angular app, 'jest-preset-angular' is not used, meaning
 	 * the 'transform' property has to be manually set
