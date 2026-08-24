@@ -73,7 +73,10 @@ export class MasterLayoutNavigationComponentBase {
 
 	private scrollModeChange(): void {
 		this.masterLayout.navigation.configEvents$
-			.pipe(filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE))
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE),
+				takeUntilDestroyed(this.destroyRef)
+			)
 			.subscribe(() => this.masterLayout.navigation.refresh());
 	}
 
@@ -81,7 +84,7 @@ export class MasterLayoutNavigationComponentBase {
 		this.masterLayout.navigation.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH),
-				takeUntilDestroyed()
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe(event => {
 				if (event.value !== undefined) {
