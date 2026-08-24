@@ -90,7 +90,7 @@
 	.ob-off-canvas-backdrop {
 		display: none;
 
-		@at-root #{selector.append(".ob-off-canvas-in.ob-layout-collapse", &)} {
+		@at-root #{selector.append(".ob-off-canvas-in.ob-layout-collapsed", &)} {
 			display: block;
 			position: fixed;
 			top: 0;
