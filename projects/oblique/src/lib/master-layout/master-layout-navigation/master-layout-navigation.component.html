@@ -1,43 +1,47 @@
-@if (initializedLinks.length) {
+@let links = navigationLinks();
+@let active = activeLinks();
+@let currentParent = currentParentLink();
+@let grandparent = currentGrandparentLink();
+@if (links.length) {
 	<h2 id="ob-navigationlabel" class="ob-screen-reader-only">
 		{{ "i18n.oblique.header.navigation.title" | translate }}
 	</h2>
 }
-@if (isScrollable) {
+@if (isScrollable()) {
 	<button
 		class="ob-navigation-scrollable-control ob-navigation-scrollable-control-left"
 		type="button"
 		(click)="scrollLeft()"
-		[disabled]="!currentScroll"
+		[disabled]="!currentScroll()"
 		id="ob-navigation-scrollable-control-left"
 		[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-left' | translate"
 	>
 		<span class="ob-icon-wrapper"><mat-icon svgIcon="chevron_left" /></span>
 	</button>
 }
-@if (!initializedLinks.length) {
+@if (!links.length) {
 	<ng-content />
 }
-@if (initializedLinks.length) {
+@if (links.length) {
 	<nav aria-labelledby="ob-navigationlabel">
 		<ul
 			aria-labelledby="ob-navigationlabel"
 			id="navigation"
 			class="ob-main-nav"
-			[class.ob-navigation-scrollable-content]="isScrollable"
-			[class.ob-main-nav-fw]="isFullWidth"
+			[class.ob-navigation-scrollable-content]="isScrollable()"
+			[class.ob-main-nav-fw]="isFullWidth()"
 			tabindex="-1"
 			obMasterLayoutNavigationMenu
 		>
-			@for (link of initializedLinks; track link) {
+			@for (link of links; track link) {
 				<li
 					class="ob-main-nav-item"
 					obMasterLayoutNavigationItem
 					#obMasterLayoutNavigationItem="obMasterLayoutNavigationItem"
 					[class.ob-start-of-right-side-links]="link.startOfRightSideLinks"
 					[class.ob-expandable]="link.children?.length"
-					[class.ob-just-close]="currentParentLink.id === link.id"
-					[class.ob-has-grandparent]="!!currentGrandparentLink?.label"
+					[class.ob-just-close]="currentParent.id === link.id"
+					[class.ob-has-grandparent]="!!grandparent?.label"
 					[class.ob-is-removable]="link.removable"
 					[id]="'ob-main-nav-item-' + link.id"
 				>
@@ -80,7 +84,7 @@
 								[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions"
 								[fragment]="link.fragment"
 								[queryParams]="link.queryParams"
-								[attr.aria-current]="link.active ? 'page' : undefined"
+								[attr.aria-current]="active.has(link) ? 'page' : undefined"
 								[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 								(click)="close()"
 								(focus)="focusIn('ob-main-nav-item-', link.id)"
@@ -107,8 +111,8 @@
 							type="button"
 							class="ob-master-layout-navigation-link ob-main-nav-link ob-master-layout-navigation-toggle"
 							[id]="link.id"
-							[class.active]="link.active"
-							[attr.aria-current]="link.active ? 'page' : undefined"
+							[class.active]="active.has(link)"
+							[attr.aria-current]="active.has(link) ? 'page' : undefined"
 							[matTooltip]="link.iconOnly ? (link.label | translate) : undefined"
 							(click)="toggleSubMenu(obMasterLayoutNavigationItem, link)"
 							(focus)="focusIn('ob-main-nav-item-', link.id)"
@@ -126,10 +130,10 @@
 								><mat-icon svgIcon="chevron_up" class="ob-nav-toggle"
 							/></span>
 						</button>
-						@if (!currentGrandparentLink?.label) {
+						@if (!grandparent?.label) {
 							<ob-master-layout-navigation-go-to-children
 								[disableRipple]="true"
-								[isCurrentParent]="currentParentLink.id === link.id"
+								[isCurrentParent]="currentParent.id === link.id"
 								[link]="link"
 								(changeCurrentParent)="toggleSubMenu(obMasterLayoutNavigationItem, $event)"
 							/>
@@ -138,22 +142,22 @@
 							class="ob-sub-menu"
 							[id]="'ob-menu-' + link.id"
 							[class.ob-parent-link-has-icon-and-label]="!!link.icon && !link.iconOnly"
-							[class.ob-has-current-parent-link]="currentParentLink.id !== link.id"
+							[class.ob-has-current-parent-link]="currentParent.id !== link.id"
 						>
-							<div class="ob-sub-menu-back-close-container" [class.ob-just-close]="currentParentLink.id === link.id">
+							<div class="ob-sub-menu-back-close-container" [class.ob-just-close]="currentParent.id === link.id">
 								<button
 									type="button"
 									mat-button
 									obButton="tertiary"
 									class="ob-sub-menu-back-button"
-									[class.hide-md-up]="currentParentLink.id === link.id"
-									[class.ob-just-sub-menu-back-button-home-icon]="!currentGrandparentLink?.label"
+									[class.hide-md-up]="currentParent.id === link.id"
+									[class.ob-just-sub-menu-back-button-home-icon]="!grandparent?.label"
 									[id]="'ob-sub-menu-back-button-' + link.id"
 									(click)="backUpOrCloseSubMenu(link, obMasterLayoutNavigationItem)"
 								>
 									<mat-icon svgIcon="arrow_left" />
-									@if (!!currentGrandparentLink?.label) {
-										{{ currentGrandparentLink.label | translate }}
+									@if (!!grandparent?.label) {
+										{{ grandparent?.label | translate }}
 									} @else {
 										<mat-icon class="ob-sub-menu-back-button-home-icon" svgIcon="home" />
 									}
@@ -169,19 +173,20 @@
 									{{ "i18n.common.close" | translate }} <mat-icon svgIcon="xmark" />
 								</button>
 							</div>
-							@if (currentParentLink.id !== link.id) {
+							@if (currentParent.id !== link.id) {
 								<ob-master-layout-navigation-sub-menu-item
 									[activeClass]="activeClass"
-									[child]="currentParentLink"
-									[currentParent]="currentParentLink"
+									[activeLinks]="active"
+									[child]="currentParent"
+									[currentParent]="currentParent"
 									[hideExternalLinks]="hideExternalLinks"
-									[link]="currentParentLink"
+									[link]="currentParent"
 									[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
 									[routerLinkActiveOptions]="routerLinkActiveOptions"
-									[routerLinkBase]="currentParentRouterLinkBase$ | async"
+									[routerLinkBase]="currentParentRouterLinkBase()"
 									[showChildren]="false"
 									class="ob-sub-menu-parent-link"
-									[class.is-exact-match]="isCurrentParentLinkExactMatch"
+									[class.is-exact-match]="isCurrentParentLinkExactMatch()"
 								/>
 							}
 							<ul class="ob-main-nav ob-sub-nav">
@@ -189,8 +194,9 @@
 									<li>
 										<ob-master-layout-navigation-sub-menu-item
 											[activeClass]="activeClass"
+											[activeLinks]="active"
 											[child]="child"
-											[currentParent]="currentParentLink"
+											[currentParent]="currentParentLink()"
 											[hideExternalLinks]="hideExternalLinks"
 											[link]="link"
 											[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem"
@@ -208,12 +214,12 @@
 		</ul>
 	</nav>
 }
-@if (isScrollable) {
+@if (isScrollable()) {
 	<button
 		class="ob-navigation-scrollable-control ob-navigation-scrollable-control-right"
 		(click)="scrollRight()"
 		type="button"
-		[disabled]="currentScroll === maxScroll"
+		[disabled]="currentScroll() === maxScroll()"
 		id="ob-navigation-scrollable-control-right"
 		[matTooltip]="'i18n.oblique.master-layout.master-layout-navigation.scroll-right' | translate"
 	>

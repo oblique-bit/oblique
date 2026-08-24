@@ -2,18 +2,18 @@ import {
 	AfterViewInit,
 	ChangeDetectionStrategy,
 	Component,
-	Input,
-	OnChanges,
-	OnDestroy,
 	OnInit,
 	ViewEncapsulation,
+	computed,
 	inject,
+	linkedSignal,
+	model,
 	output,
 } from '@angular/core';
-import {IsActiveMatchOptions, NavigationEnd, Router} from '@angular/router';
-import {filter, map, takeUntil} from 'rxjs/operators';
+import {IsActiveMatchOptions, NavigationEnd, Router, isActive} from '@angular/router';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {filter} from 'rxjs/operators';
 
-import {BehaviorSubject, Observable, combineLatestWith} from 'rxjs';
 import {OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, ObINavigationLink} from '../master-layout.model';
 import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 import {ObNavigationLink} from './navigation-link.model';
@@ -21,33 +21,64 @@ import {TranslateService} from '@ngx-translate/core';
 import {getScrollIntoViewDelta} from './scroll-delta';
 import {MasterLayoutNavigationComponentBase} from './master-layout-navigation-component-base';
 import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
+import {NavigationMenuStateSource} from './master-layout-navigation-state.model';
 
 @Component({
 	selector: 'ob-master-layout-navigation',
 	standalone: false,
 	templateUrl: './master-layout-navigation.component.html',
 	styleUrls: ['./master-layout-navigation.component.scss', './master-layout-navigation-scrollable.component.scss'],
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	host: {
-		'[class.navigation-scrollable]': 'isScrollable',
-		'[class.navigation-scrollable-active]': 'isScrollable',
+		'[class.navigation-scrollable]': 'isScrollable()',
+		'[class.navigation-scrollable-active]': 'isScrollable()',
 		class: 'ob-master-layout-navigation',
 	},
 })
 export class ObMasterLayoutNavigationComponent
 	extends MasterLayoutNavigationComponentBase
-	implements OnChanges, OnInit, AfterViewInit, OnDestroy
+	implements OnInit, AfterViewInit
 {
-	currentGrandparentLink: ObNavigationLink = new ObNavigationLink();
-	currentParentLink: ObNavigationLink = new ObNavigationLink();
-	currentParentRouterLinkBase$: Observable<string>;
-	initializedLinks: ObNavigationLink[] = [];
-	isCurrentParentLinkExactMatch = false;
-	hasOpenedMenu = false;
+	readonly currentGrandparentLink = computed(() => this.parentStack().at(-2));
+	readonly currentParentLink = computed(() => this.parentStack().at(-1) ?? this.emptyNavigationLink);
+	readonly currentParentRouterLinkBase = computed(() =>
+		this.parentStack()
+			.slice(0, -1)
+			.map(link => link.url)
+			.reduce((previous, current) => `${previous}/${current}`, '')
+	);
+	readonly isCurrentParentLinkExactMatch = computed(() => {
+		const parent = this.currentParentLink();
+		const url = this.joinUrls(this.currentParentRouterLinkBase(), parent.url);
+		const isActiveSignal = isActive(this.localizeUrl(url), this.router, {
+			paths: 'exact',
+			queryParams: 'ignored',
+			fragment: 'ignored',
+			matrixParams: 'ignored',
+		});
+
+		return !!parent.url && isActiveSignal();
+	});
 	hideExternalLinks = true;
-	@Input() links: ObINavigationLink[] = [];
+	readonly links = model<ObINavigationLink[]>([]);
+	/** @deprecated since Oblique 16. Will be removed in Oblique 17. Use `linksChange` instead. */
 	readonly linksChanged = output<ObINavigationLink[]>();
+	readonly navigationLinks = computed(() => this.links()?.map(link => new ObNavigationLink(link)) ?? []);
+	readonly activeLinks = computed(() => {
+		const states = this.flattenLinks(this.navigationLinks()).map(({link, url}) => {
+			const activeSignal = isActive(
+				this.localizeUrl(url),
+				this.router,
+				link.routerLinkActiveOptions ?? this.routerLinkActiveOptions
+			);
+
+			return {link, activeSignal};
+		});
+
+		return new Set(states.filter(state => state.activeSignal()).map(state => state.link));
+	});
+
 	routerLinkActiveOptions: IsActiveMatchOptions = {
 		paths: 'subset',
 		queryParams: 'subset',
@@ -56,45 +87,34 @@ export class ObMasterLayoutNavigationComponent
 	};
 	private readonly router = inject(Router);
 	private readonly translate = inject(TranslateService);
-	private readonly currentParentAncestors: BehaviorSubject<ObNavigationLink[]> = new BehaviorSubject<
-		ObNavigationLink[]
-	>([]);
-	private readonly currentParentLinkSource: BehaviorSubject<ObNavigationLink> = new BehaviorSubject<ObNavigationLink>(
-		new ObNavigationLink()
-	);
-	private readonly currentParentRouterLinkBase: BehaviorSubject<string> = new BehaviorSubject<string>('');
-	private readonly currentUrl: BehaviorSubject<string> = new BehaviorSubject<string>('');
 	private readonly hasLanguageInUrl = inject(OB_HAS_LANGUAGE_IN_URL);
+	private readonly emptyNavigationLink = new ObNavigationLink();
+	private readonly navigationEnd = toSignal(
+		this.router.events.pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+	);
+	private readonly navigationResetSource = computed<NavigationMenuStateSource>(() => ({
+		navigationId: this.navigationEnd()?.id ?? 0,
+		links: this.navigationLinks(),
+	}));
+	private readonly parentStack = linkedSignal<NavigationMenuStateSource, ObNavigationLink[]>({
+		source: this.navigationResetSource,
+		computation: () => [],
+	});
 
 	constructor() {
 		super();
 		const hideExternalLinks = inject(OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, {optional: true});
 		this.hideExternalLinks = hideExternalLinks ?? true;
-		this.currentParentRouterLinkBase$ = this.currentParentRouterLinkBase.asObservable();
-	}
-
-	ngOnChanges(): void {
-		this.initializedLinks = this.links?.map(link => new ObNavigationLink(link)) ?? [];
 	}
 
 	ngOnInit(): void {
 		this.closeOnEscape();
-		this.markActiveLink();
-		this.monitorForIsCurrentParentLinkExactMatchChanges();
-		this.monitorForCurrentParentAncestorChanges();
-		this.monitorForCurrentParentLinkChanges();
-		this.monitorForNavigationEndEvents();
 	}
 
 	ngAfterViewInit(): void {
 		this.masterLayout.navigation.scrolled
-			.pipe(takeUntil(this.unsubscribe))
+			.pipe(takeUntilDestroyed(this.destroyRef))
 			.subscribe(offset => this.updateScroll(offset));
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
 	}
 
 	focusIn(prefix: string, linkId: string): void {
@@ -109,7 +129,7 @@ export class ObMasterLayoutNavigationComponent
 		link: ObNavigationLink,
 		obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective
 	): void {
-		if (this.currentParentLink.id === link.id) {
+		if (this.currentParentLink().id === link.id) {
 			this.closeSubMenu(obMasterLayoutNavigationItem, link);
 		} else {
 			this.backUpSubMenu();
@@ -117,10 +137,11 @@ export class ObMasterLayoutNavigationComponent
 	}
 
 	changeCurrentParentLink(link: ObNavigationLink): void {
-		this.currentParentLinkSource.next(link);
-		if (!this.isLinkInCurrentParentAncestors(link)) {
-			this.addCurrentParentAncestor(link);
-		}
+		this.parentStack.update(stack => {
+			const existingIndex = stack.indexOf(link);
+
+			return existingIndex === -1 ? [...stack, link] : stack.slice(0, existingIndex + 1);
+		});
 	}
 
 	closeSubMenu(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, link: ObNavigationLink): void {
@@ -135,19 +156,25 @@ export class ObMasterLayoutNavigationComponent
 
 	removeMenuItem(item: ObINavigationLink, mouseEvent: MouseEvent): void {
 		mouseEvent.preventDefault();
-		this.initializedLinks = this.initializedLinks.filter(initializedLink => initializedLink.id !== item.id);
-		this.links = this.links.filter(link => link.id !== item.id);
-		this.linksChanged.emit(this.links);
+		const links = this.links()?.filter(link => link.id !== item.id) ?? [];
+		this.links.set(links);
+		this.linksChanged.emit(links);
 	}
 
 	private handleNavItemFocusChange(prefix: string, linkId: string, isFocused: boolean): void {
-		const focusedEl: HTMLElement = this.el.nativeElement.querySelector(
+		const focusedEl = this.el.nativeElement.querySelector<HTMLElement>(
 			`.ob-master-layout-navigation-link.ob-main-nav-link#${linkId}`
 		);
 		const idOfNavItem = `#${prefix}${linkId}`;
-		const navItem: HTMLElement = this.el.nativeElement.querySelector(idOfNavItem);
+		const navItem = this.el.nativeElement.querySelector<HTMLElement>(idOfNavItem);
+		if (!focusedEl || !navItem) {
+			return;
+		}
 		if (isFocused) {
-			this.updateScroll(getScrollIntoViewDelta(this.getNav(), navItem));
+			const nav = this.getNav();
+			if (nav) {
+				this.updateScroll(getScrollIntoViewDelta(nav, navItem));
+			}
 		}
 		if (focusedEl.classList.contains('cdk-keyboard-focused')) {
 			navItem.classList.add('ob-has-keyboard-focused-child');
@@ -156,19 +183,10 @@ export class ObMasterLayoutNavigationComponent
 		}
 	}
 
-	private addCurrentParentAncestor(link: ObNavigationLink): void {
-		const currentParentAncestors = this.currentParentAncestors.value;
-		currentParentAncestors.push(link);
-		this.currentParentAncestors.next(currentParentAncestors);
-	}
-
 	private backUpSubMenu(): void {
 		const parentIndex = this.getParentIndex();
 		if (parentIndex > -1) {
-			this.currentParentLinkSource.next(this.getCurrentGrandparentLink(parentIndex));
-			const currentParentAncestors = this.currentParentAncestors.value;
-			currentParentAncestors.length = parentIndex;
-			this.currentParentAncestors.next(currentParentAncestors);
+			this.parentStack.update(stack => stack.slice(0, parentIndex));
 		} else {
 			this.resetCurrentAncestorRelatedProps();
 			throw Error(
@@ -177,85 +195,16 @@ export class ObMasterLayoutNavigationComponent
 		}
 	}
 
-	private getCurrentGrandparentLink(parentIndex: number = this.getParentIndex()): ObNavigationLink {
-		return this.currentParentAncestors.value[parentIndex - 1];
-	}
+	private flattenLinks(links: readonly ObNavigationLink[], parentUrl = ''): {link: ObNavigationLink; url: string}[] {
+		return links.flatMap(link => {
+			const url = this.joinUrls(parentUrl, link.url);
 
-	private getParentIndex(): number {
-		return this.currentParentAncestors.value.indexOf(this.currentParentLinkSource.value);
-	}
-
-	private isLinkInCurrentParentAncestors(link: ObNavigationLink): boolean {
-		return this.currentParentAncestors.value.includes(link);
-	}
-
-	private isLinkActive(link: ObNavigationLink): boolean {
-		if (this.hasLanguageInUrl) {
-			const language = this.translate.getCurrentLang();
-			const urlWithLanguage = `/${language}/${link.url}`;
-			return this.router.isActive(urlWithLanguage, link.routerLinkActiveOptions || this.routerLinkActiveOptions);
-		}
-		return this.router.isActive(link.url, link.routerLinkActiveOptions || this.routerLinkActiveOptions);
-	}
-
-	private markActiveLink(): void {
-		this.router.events
-			.pipe(
-				takeUntil(this.unsubscribe),
-				filter(evt => evt instanceof NavigationEnd)
-			)
-			.subscribe(() => {
-				// do not use map so that the reference to the initializedLinks array remains the same. This allows the navigation to be dynamic
-				this.initializedLinks.forEach(link => {
-					link.active = this.isLinkActive(link);
-				});
-			});
-	}
-
-	private monitorForCurrentParentAncestorChanges(): void {
-		this.currentParentAncestors
-			.pipe(takeUntil(this.unsubscribe))
-			.subscribe(() => this.onCurrentParentAncestorsChange());
-	}
-
-	private monitorForIsCurrentParentLinkExactMatchChanges(): void {
-		this.currentUrl
-			.pipe(
-				combineLatestWith(this.currentParentRouterLinkBase, this.currentParentLinkSource),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(([url, currentParentRouterLinkBase, currentParentLink]) => {
-				this.isCurrentParentLinkExactMatch = url.endsWith(`${currentParentRouterLinkBase}/${currentParentLink.url}`);
-			});
-	}
-
-	private monitorForCurrentParentLinkChanges(): void {
-		this.currentParentLinkSource.pipe(takeUntil(this.unsubscribe)).subscribe(currentParentLink => {
-			this.currentParentLink = currentParentLink;
+			return [{link, url}, ...this.flattenLinks(link.children ?? [], url)];
 		});
 	}
 
-	private monitorForNavigationEndEvents(): void {
-		this.router.events
-			.pipe(
-				filter(routerEvent => routerEvent instanceof NavigationEnd),
-				map(routerEvent => routerEvent.url),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(url => {
-				this.currentUrl.next(url);
-				this.resetCurrentAncestorRelatedProps();
-			});
-	}
-
-	private onCurrentParentAncestorsChange(): void {
-		this.currentParentRouterLinkBase.next(
-			this.currentParentAncestors.value
-				.slice(0, -1)
-				.map(link => link.url)
-				.reduce((previous, current) => `${previous}/${current}`, '')
-		);
-		this.currentGrandparentLink = this.getCurrentGrandparentLink();
+	private getParentIndex(): number {
+		return this.parentStack().indexOf(this.currentParentLink());
 	}
 
 	private onSubMenuExpandedChanges(
@@ -269,11 +218,22 @@ export class ObMasterLayoutNavigationComponent
 		}
 	}
 
+	private localizeUrl(url: string): string {
+		const currentLang = this.translate.currentLang();
+
+		if (!this.hasLanguageInUrl || !currentLang) {
+			return url;
+		}
+
+		const normalizedUrl = url.replace(/^\/+/u, '');
+		return normalizedUrl ? `/${currentLang}/${normalizedUrl}` : `/${currentLang}`;
+	}
+
+	private joinUrls(parentUrl: string, childUrl: string): string {
+		return [parentUrl, childUrl].filter(Boolean).join('/');
+	}
+
 	private resetCurrentAncestorRelatedProps(): void {
-		this.currentParentAncestors.next([]);
-		this.currentParentRouterLinkBase.next('');
-		this.currentParentLinkSource.next(new ObNavigationLink());
-		this.currentGrandparentLink = new ObNavigationLink();
-		this.isCurrentParentLinkExactMatch = false;
+		this.parentStack.set([]);
 	}
 }

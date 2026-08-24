@@ -28,11 +28,14 @@ describe(ObMasterLayoutNavigationGoToChildrenComponent.name, () => {
 	});
 
 	test('that button is shown by default', async () => {
+		fixture.componentRef.setInput('isCurrentParent', false);
+		fixture.componentRef.setInput('link', {children: [{id: 'child1'}]} as any);
+		fixture.componentRef.setInput('showChildren', true);
 		await expect(harness.getButton()).resolves.toBeTruthy();
 	});
 
 	test('that button is hidden when hide is set to true', async () => {
-		component.hide = true;
+		fixture.componentRef.setInput('isCurrentParent', true);
 		await expect(harness.getButton()).rejects.toBeTruthy();
 	});
 });

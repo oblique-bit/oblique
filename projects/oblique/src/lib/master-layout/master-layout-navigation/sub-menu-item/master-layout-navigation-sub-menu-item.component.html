@@ -1,74 +1,75 @@
-@if (currentParent.id === link.id) {
-	@if (child.url) {
-		@if (child.isExternal) {
+@if (currentParent().id === link().id) {
+	@if (child().url) {
+		@if (child().isExternal) {
 			<a
 				class="ob-master-layout-navigation-link"
 				[icon]="hideExternalLinks() ? 'none' : 'right'"
-				[id]="child.id"
-				[href]="child.url"
-				[target]="child.sameTarget ? '' : undefined"
-				[isExternalLink]="child.isExternal"
-				[rel]="child.sameTarget ? '' : undefined"
-				[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
+				[id]="child().id"
+				[href]="child().url"
+				[target]="child().sameTarget ? '' : undefined"
+				[isExternalLink]="child().isExternal"
+				[rel]="child().sameTarget ? '' : undefined"
+				[matTooltip]="child().iconOnly ? (child().label | translate) : undefined"
 				(click)="obMasterLayoutNavigationItem().closeSubMenu()"
-				(focus)="toggleFocus(child.id)"
-				(focusout)="toggleFocus(child.id)"
+				(focus)="toggleFocus(child().id)"
+				(focusout)="toggleFocus(child().id)"
 			>
-				@if (child.icon) {
-					<span class="ob-icon-wrapper"><mat-icon [svgIcon]="child.icon" /></span>
+				@if (child().icon) {
+					<span class="ob-icon-wrapper"><mat-icon [svgIcon]="child().icon" /></span>
 				}
-				<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
+				<span [class.ob-screen-reader-only]="child().icon && child().iconOnly">{{ child().label | translate }}</span>
 			</a>
 		} @else {
 			<a
 				class="ob-master-layout-navigation-link"
-				[id]="child.id"
-				[routerLink]="routerLinkBase() + '/' + child.url | obLocalize"
+				[id]="child().id"
+				[routerLink]="routerLinkBase() + '/' + child().url | obLocalize"
 				[routerLinkActive]="activeClass()"
-				[fragment]="child.fragment"
-				[isExternalLink]="child.isExternal"
-				[routerLinkActiveOptions]="link.routerLinkActiveOptions || this.routerLinkActiveOptions()"
-				[queryParams]="child.queryParams"
-				[attr.aria-current]="link.active ? 'page' : undefined"
-				[matTooltip]="child.iconOnly ? (child.label | translate) : undefined"
+				[fragment]="child().fragment"
+				[isExternalLink]="child().isExternal"
+				[routerLinkActiveOptions]="link().routerLinkActiveOptions || this.routerLinkActiveOptions()"
+				[queryParams]="child().queryParams"
+				[attr.aria-current]="activeLinks().has(child()) ? 'page' : undefined"
+				[matTooltip]="child().iconOnly ? (child().label | translate) : undefined"
 				(click)="obMasterLayoutNavigationItem().closeSubMenu()"
-				(focus)="toggleFocus(child.id)"
-				(focusout)="toggleFocus(child.id)"
+				(focus)="toggleFocus(child().id)"
+				(focusout)="toggleFocus(child().id)"
 			>
-				@if (child.icon) {
-					<span class="ob-icon-wrapper"><mat-icon [svgIcon]="child.icon" /></span>
+				@if (child().icon) {
+					<span class="ob-icon-wrapper"><mat-icon [svgIcon]="child().icon" /></span>
 				}
-				<span [class.ob-screen-reader-only]="child.icon && child.iconOnly">{{ child.label | translate }}</span>
+				<span [class.ob-screen-reader-only]="child().icon && child().iconOnly">{{ child().label | translate }}</span>
 			</a>
 		}
 		<ob-master-layout-navigation-go-to-children
-			[isCurrentParent]="child.label === currentParent.label"
-			[link]="child"
+			[isCurrentParent]="child().label === currentParent().label"
+			[link]="child()"
 			[isChildWithoutUrl]="false"
 			(changeCurrentParent)="goToChildren($event)"
 		/>
 	} @else {
 		<ob-master-layout-navigation-go-to-children
 			class="ob-master-layout-navigation-go-to-children-without-url"
-			[isCurrentParent]="child.label === currentParent.label"
+			[isCurrentParent]="child().label === currentParent().label"
 			[isChildWithoutUrl]="true"
-			[link]="child"
+			[link]="child()"
 			(changeCurrentParent)="goToChildren($event)"
 		/>
 	}
 } @else {
-	@if (child.children && showChildren()) {
-		@for (grandchild of child.children; track grandchild) {
+	@if (child().children && showChildren()) {
+		@for (grandchild of child().children; track grandchild) {
 			<ob-master-layout-navigation-sub-menu-item
 				class="descendants"
 				[activeClass]="activeClass()"
+				[activeLinks]="activeLinks()"
 				[child]="grandchild"
-				[currentParent]="currentParent"
-				[id]="'ob-descendants-' + link.id"
-				[link]="child"
+				[currentParent]="currentParent()"
+				[id]="'ob-descendants-' + link().id"
+				[link]="child()"
 				[obMasterLayoutNavigationItem]="obMasterLayoutNavigationItem()"
 				[routerLinkActiveOptions]="routerLinkActiveOptions()"
-				[routerLinkBase]="routerLinkBase() + '/' + child.url"
+				[routerLinkBase]="routerLinkBase() + '/' + child().url"
 				(changeCurrentParent)="goToChildren($event)"
 			/>
 		}
