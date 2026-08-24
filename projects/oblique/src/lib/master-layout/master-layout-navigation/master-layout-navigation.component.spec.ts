@@ -548,6 +548,18 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				expect(lastNavigationLink.focus).toHaveBeenCalledWith({preventScroll: true});
 			});
 
+			test('shift-tab from the right control tolerates an empty navigation', () => {
+				const emptyFixture = TestBed.createComponent(ObMasterLayoutNavigationComponent);
+				emptyFixture.detectChanges();
+				const event = new KeyboardEvent('keydown', {code: 'Tab', shiftKey: true});
+				Object.defineProperty(event, 'target', {value: {id: 'ob-navigation-scrollable-control-right'}});
+				jest.spyOn(event, 'preventDefault');
+
+				keyDown$.next(event);
+
+				expect(event.preventDefault).toHaveBeenCalled();
+			});
+
 			test('refresh should reset the current scroll when scrolling is disabled', () => {
 				jest.useFakeTimers();
 				const navigationService = TestBed.inject(ObMasterLayoutNavigationService);

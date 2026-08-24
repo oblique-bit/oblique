@@ -135,7 +135,10 @@ export class MasterLayoutNavigationComponentBase {
 			.subscribe(event => {
 				event.preventDefault();
 				// If there is no nav or the nav is empty, then no event is triggered
-				this.getNav()?.lastElementChild?.firstElementChild?.focus({preventScroll: true});
+				const lastNavigationLink = this.getNav()?.lastElementChild?.firstElementChild;
+				if (lastNavigationLink instanceof HTMLElement) {
+					lastNavigationLink.focus({preventScroll: true});
+				}
 			});
 	}
 }
