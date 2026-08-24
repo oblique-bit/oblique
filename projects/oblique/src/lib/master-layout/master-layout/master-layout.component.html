@@ -8,21 +8,21 @@
 			<a
 				class="ob-accessible"
 				accesskey="0"
-				[routerLink]="route.path | obLocalize"
-				[queryParams]="route.params"
-				[fragment]="contentId"
+				[routerLink]="route().path | obLocalize"
+				[queryParams]="route().params"
+				[fragment]="contentId()"
 			>
 				<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
 				{{ "i18n.oblique.master-layout.accesskey.main-content" | translate }}
 			</a>
 		</li>
-		@if (!noNavigation && navigation()?.length) {
+		@if (!noNavigation() && navigation()?.length) {
 			<li>
 				<a
 					class="ob-accessible"
 					accesskey="1"
-					[routerLink]="route.path | obLocalize"
-					[queryParams]="route.params"
+					[routerLink]="route().path | obLocalize"
+					[queryParams]="route().params"
 					fragment="navigation"
 				>
 					<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
@@ -30,13 +30,13 @@
 				</a>
 			</li>
 		}
-		@for (skipLink of skipLinksInternal; track skipLink) {
+		@for (skipLink of skipLinksInternal(); track skipLink) {
 			<li>
 				<a
 					class="ob-accessible"
 					[attr.accesskey]="skipLink.accessKey"
-					[routerLink]="skipLink.url === 'current' ? route.path : (skipLink.url | obLocalize)"
-					[queryParams]="route.params"
+					[routerLink]="skipLink.url === 'current' ? route().path : (skipLink.url | obLocalize)"
+					[queryParams]="route().params"
 					[fragment]="skipLink.fragment"
 				>
 					<span class="ob-icon-wrapper"><mat-icon svgIcon="accessibility" /></span>
@@ -48,18 +48,18 @@
 </nav>
 <div
 	class="ob-viewport"
-	[class.ob-fixed-layout]="isFooterSticky && isHeaderSticky"
-	[class.ob-continuous-layout]="!isFooterSticky && !isHeaderSticky"
-	[class.ob-off-canvas-main]="hasOffCanvas"
+	[class.ob-fixed-layout]="isFooterSticky() && isHeaderSticky()"
+	[class.ob-continuous-layout]="!isFooterSticky() && !isHeaderSticky()"
+	[class.ob-off-canvas-main]="hasOffCanvas()"
 >
-	@if (isHeaderSticky && !isFooterSticky) {
+	@if (isHeaderSticky() && !isFooterSticky()) {
 		<ng-container [ngTemplateOutlet]="header" />
 	}
 	<div class="ob-master-layout-wrapper" cdkScrollable (scroll)="scrollTop(wrapper)" #wrapper>
-		@if (!isHeaderSticky || isFooterSticky) {
+		@if (!isHeaderSticky() || isFooterSticky()) {
 			<ng-container [ngTemplateOutlet]="header" />
 		}
-		@if (hasCover) {
+		@if (hasCover()) {
 			<div class="ob-cover-layout">
 				<div class="ob-cover-viewport">
 					<ng-container *ngTemplateOutlet="normalLayout" />
@@ -77,16 +77,16 @@
 				<router-outlet />
 			</main>
 		</ng-template>
-		@if (!isFooterSticky || isHeaderSticky) {
+		@if (!isFooterSticky() || isHeaderSticky()) {
 			<ng-container [ngTemplateOutlet]="footer" />
 		}
 	</div>
-	@if (isFooterSticky && !isHeaderSticky) {
+	@if (isFooterSticky() && !isHeaderSticky()) {
 		<ng-container [ngTemplateOutlet]="footer" />
 	}
 
 	<ng-template #header>
-		<ob-master-layout-header [navigation]="navigation()" (navigationChanged)="emitNavigation($event)">
+		<ob-master-layout-header [(navigation)]="navigation" (navigationChange)="emitNavigation($event)">
 			<ng-content select="[obHeader]" obHeader />
 			<ng-content select="[obHeaderAction]" obHeaderAction />
 			<ng-content select="[obHeaderTitle]" obHeaderTitle />
@@ -119,8 +119,8 @@
 		</ob-master-layout-footer>
 	</ng-template>
 </div>
-<ob-top-control (scrollToTop)="focusElementById(this.contentId)" />
-@if (hasOffCanvas) {
+<ob-top-control (scrollToTop)="focusElementById(this.contentId())" />
+@if (hasOffCanvas()) {
 	<div class="ob-off-canvas-sidebar">
 		<header class="ob-off-canvas-header">
 			<h2>
@@ -143,12 +143,12 @@
 		</div>
 	</div>
 }
-@if (hasOffCanvas) {
+@if (hasOffCanvas()) {
 	<div class="ob-off-canvas-backdrop"></div>
 }
 <ob-spinner [fixed]="true" />
 <ng-template #logo>
-	@if (hasHighContrast) {
+	@if (hasHighContrast()) {
 		<img
 			[alt]="'i18n.oblique.header.logo' | translate"
 			ngSrc="assets/images/logo-white.svg"
