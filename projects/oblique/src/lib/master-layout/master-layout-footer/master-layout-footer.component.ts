@@ -1,15 +1,15 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
-	Input,
-	OnDestroy,
+	Signal,
 	TemplateRef,
 	ViewEncapsulation,
 	contentChildren,
 	inject,
+	input,
 } from '@angular/core';
-import {filter, takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {filter, map} from 'rxjs/operators';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
@@ -19,40 +19,27 @@ import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout
 	standalone: false,
 	templateUrl: './master-layout-footer.component.html',
 	styleUrls: ['./master-layout-footer.component.scss'],
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-master-layout-footer'},
 })
-export class ObMasterLayoutFooterComponent implements OnDestroy {
-	home: string;
-	isCustom: boolean;
-
+export class ObMasterLayoutFooterComponent {
 	readonly templates = contentChildren<TemplateRef<HTMLLinkElement>>('obFooterLink');
-	@Input() version?: string;
+	readonly version = input<string>();
+	readonly isCustom: Signal<boolean>;
 
 	private readonly masterLayout = inject(ObMasterLayoutService);
 	private readonly config = inject(ObMasterLayoutConfig);
-	private readonly unsubscribe = new Subject<void>();
 
 	constructor() {
-		this.home = this.config.homePageRoute;
-		this.isCustom = this.config.footer.isCustom;
-		this.customChange();
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
-	}
-
-	private customChange(): void {
-		this.masterLayout.footer.configEvents$
-			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(event => {
-				this.isCustom = event.value;
-			});
+		this.isCustom = toSignal(
+			this.masterLayout.footer.configEvents$.pipe(
+				filter((event: ObIMasterLayoutEvent) => event.name === ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM),
+				map(event => !!event.value)
+			),
+			{
+				initialValue: this.config.footer.isCustom,
+			}
+		);
 	}
 }
