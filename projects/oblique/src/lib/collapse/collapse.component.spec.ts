@@ -1,15 +1,15 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {
-	CUSTOM_ELEMENTS_SCHEMA,
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	DebugElement,
-} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, DebugElement, signal} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {WINDOW} from '../window/window.provider';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
-import {OBLIQUE_COLLAPSE_ACTIVE, OBLIQUE_COLLAPSE_ICON_POSITION, ObCollapseComponent} from './collapse.component';
+import {
+	OBLIQUE_COLLAPSE_ACTIVE,
+	OBLIQUE_COLLAPSE_DURATION,
+	OBLIQUE_COLLAPSE_ICON_POSITION,
+	ObCollapseComponent,
+} from './collapse.component';
+import {MatIconTestingModule} from '@angular/material/icon/testing';
 
 @Component({
 	standalone: false,
@@ -21,6 +21,15 @@ import {OBLIQUE_COLLAPSE_ACTIVE, OBLIQUE_COLLAPSE_ICON_POSITION, ObCollapseCompo
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestCollapseComponent {}
+
+@Component({
+	standalone: false,
+	template: '<ob-collapse [(active)]="active" (activeChange)="activeChanges.push($event)" />',
+})
+class TestCollapseBindingComponent {
+	readonly active = signal(false);
+	activeChanges: boolean[] = [];
+}
 
 describe(ObCollapseComponent.name, () => {
 	let fixture: ComponentFixture<ObCollapseComponent>;
@@ -36,10 +45,11 @@ describe(ObCollapseComponent.name, () => {
 	describe('with token set to something truthy', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObCollapseComponent],
+				imports: [ObCollapseComponent, MatIconTestingModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [
 					{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: 'yes'},
+					{provide: OBLIQUE_COLLAPSE_DURATION, useValue: 'fast'},
 					{provide: OBLIQUE_COLLAPSE_ICON_POSITION, useValue: 'right'},
 					{provide: WINDOW, useValue: window},
 					ObGlobalEventsService,
@@ -59,24 +69,34 @@ describe(ObCollapseComponent.name, () => {
 			expect(obCollapseComponent).toBeTruthy();
 		});
 
-		it('should have a true active property', () => {
-			expect(obCollapseComponent.active).toBe(true);
+		it('should have a true active signal', () => {
+			expect(obCollapseComponent.active()).toBe(true);
 		});
 
 		it('should have iconPosition property set to "right"', () => {
-			expect(obCollapseComponent.iconPosition).toBe('right');
+			expect(obCollapseComponent.iconPosition()).toBe('right');
+		});
+
+		it('should use the duration token', () => {
+			expect(obCollapseComponent.time()).toBe(250);
 		});
 
 		it('should change to active false on keydown with enter', () => {
 			toggleElement.dispatchEvent(new KeyboardEvent('keyup', {key: 'Enter'}));
 
-			expect(obCollapseComponent.active).toBe(false);
+			expect(obCollapseComponent.active()).toBe(false);
 		});
 
 		it('should change to active false on keydown with space', () => {
-			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}));
+			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space'}));
 
-			expect(obCollapseComponent.active).toBe(false);
+			expect(obCollapseComponent.active()).toBe(false);
+		});
+
+		it("doesn't toggle active on keydown with space when event is repeated", () => {
+			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space', repeat: true}));
+
+			expect(obCollapseComponent.active()).toBe(true);
 		});
 
 		it('should have a true aria-expanded attribute', () => {
@@ -87,7 +107,7 @@ describe(ObCollapseComponent.name, () => {
 	describe('with token set to something falsy', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObCollapseComponent],
+				imports: [ObCollapseComponent, MatIconTestingModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [
 					{provide: OBLIQUE_COLLAPSE_ACTIVE, useValue: false},
@@ -108,12 +128,12 @@ describe(ObCollapseComponent.name, () => {
 			expect(obCollapseComponent).toBeTruthy();
 		});
 
-		it('should have a false active property ', () => {
-			expect(obCollapseComponent.active).toBe(false);
+		it('should have a false active signal', () => {
+			expect(obCollapseComponent.active()).toBe(false);
 		});
 
 		it('should have iconPosition property set to "left"', () => {
-			expect(obCollapseComponent.iconPosition).toBe('left');
+			expect(obCollapseComponent.iconPosition()).toBe('left');
 		});
 
 		it('should have a false aria-expanded property ', () => {
@@ -124,7 +144,8 @@ describe(ObCollapseComponent.name, () => {
 	describe('without token', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObCollapseComponent],
+				imports: [ObCollapseComponent, MatIconTestingModule],
+				declarations: [TestCollapseBindingComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 			}).compileComponents();
@@ -157,8 +178,8 @@ describe(ObCollapseComponent.name, () => {
 		});
 
 		it('should change aria-expended to true on keydown with space', async () => {
-			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}));
-			fixture.componentRef.setInput('active', obCollapseComponent.active);
+			toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space'}));
+			fixture.componentRef.setInput('active', obCollapseComponent.active());
 			await stabilize();
 
 			expect(toggleElement.getAttribute('aria-expanded')).toBe('true');
@@ -166,34 +187,54 @@ describe(ObCollapseComponent.name, () => {
 
 		it('should change aria-expended to true on keydown with enter', async () => {
 			toggleElement.dispatchEvent(new KeyboardEvent('keyup', {key: 'Enter'}));
-			fixture.componentRef.setInput('active', obCollapseComponent.active);
+			fixture.componentRef.setInput('active', obCollapseComponent.active());
 			await stabilize();
 
 			expect(toggleElement.getAttribute('aria-expanded')).toBe('true');
 		});
 
 		describe('active', () => {
-			it('should emit ', () => {
-				obCollapseComponent.active = true;
-				obCollapseComponent.activeChange.subscribe(val => {
-					expect(val).toBe(true);
-				});
+			it('should bind active two ways and emit activeChange', () => {
+				const bindingFixture = TestBed.createComponent(TestCollapseBindingComponent);
+				const bindingComponent = bindingFixture.componentInstance;
+
+				bindingFixture.detectChanges();
+				const bindingCollapse = bindingFixture.debugElement.query(By.directive(ObCollapseComponent));
+				bindingCollapse.componentInstance.toggleActive();
+				bindingFixture.detectChanges();
+
+				expect(bindingComponent.active()).toBe(true);
+				expect(bindingComponent.activeChanges).toEqual([true]);
+
+				bindingComponent.active.set(false);
+				bindingFixture.detectChanges();
+
+				expect(bindingCollapse.componentInstance.active()).toBe(false);
+				expect(bindingComponent.activeChanges).toEqual([true]);
 			});
 
 			it('should be false ', () => {
-				expect(obCollapseComponent.active).toBe(false);
+				expect(obCollapseComponent.active()).toBe(false);
+			});
+
+			it('should toggle active', () => {
+				obCollapseComponent.toggleActive();
+				expect(obCollapseComponent.active()).toBe(true);
+
+				obCollapseComponent.toggleActive();
+				expect(obCollapseComponent.active()).toBe(false);
 			});
 
 			it('should change to true on keydown with enter', () => {
-				toggleElement.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}));
+				toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space'}));
 
-				expect(obCollapseComponent.active).toBe(true);
+				expect(obCollapseComponent.active()).toBe(true);
 			});
 
 			it('should change to true on keydown with space', () => {
-				toggleElement.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}));
+				toggleElement.dispatchEvent(new KeyboardEvent('keydown', {key: ' ', code: 'Space'}));
 
-				expect(obCollapseComponent.active).toBe(true);
+				expect(obCollapseComponent.active()).toBe(true);
 			});
 		});
 
@@ -217,34 +258,41 @@ describe(ObCollapseComponent.name, () => {
 		});
 
 		it('should set t', () => {
-			expect(obCollapseComponent.active).toBe(false);
+			expect(obCollapseComponent.active()).toBe(false);
 		});
 
 		describe('duration', () => {
-			it('keep default duration', () => {
-				obCollapseComponent.duration = undefined;
-				expect(obCollapseComponent.time).toBe(600);
+			it('keep default duration', async () => {
+				fixture.componentRef.setInput('duration', undefined);
+				await stabilize();
+				expect(obCollapseComponent.time()).toBe(600);
 			});
-			it('set slow duration', () => {
-				obCollapseComponent.duration = 'slow';
-				expect(obCollapseComponent.time).toBe(600);
+			it('uses the default duration for zero', async () => {
+				fixture.componentRef.setInput('duration', 0);
+				await stabilize();
+
+				expect(obCollapseComponent.time()).toBe(600);
 			});
-			it('set fast duration', () => {
-				obCollapseComponent.duration = 'fast';
-				expect(obCollapseComponent.time).toBe(250);
+			it('set slow duration', async () => {
+				fixture.componentRef.setInput('duration', 'slow');
+				await stabilize();
+				expect(obCollapseComponent.time()).toBe(600);
 			});
-			it('set custom duration', () => {
-				obCollapseComponent.duration = 120;
-				expect(obCollapseComponent.time).toBe(120);
+			it('set fast duration', async () => {
+				fixture.componentRef.setInput('duration', 'fast');
+				await stabilize();
+				expect(obCollapseComponent.time()).toBe(250);
+			});
+			it('set custom duration', async () => {
+				fixture.componentRef.setInput('duration', 120);
+				await stabilize();
+				expect(obCollapseComponent.time()).toBe(120);
 			});
 		});
 
-		it('should set active to false', () => {
-			const spy = jest.spyOn(obCollapseComponent, 'active', 'set');
-			obCollapseComponent.active = true;
-			expect(spy).toHaveBeenCalled();
-			expect(obCollapseComponent.active).toBeTruthy();
-			spy.mockRestore();
+		it('should set active to true', () => {
+			obCollapseComponent.active.set(true);
+			expect(obCollapseComponent.active()).toBe(true);
 		});
 	});
 
@@ -254,7 +302,7 @@ describe(ObCollapseComponent.name, () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [TestCollapseComponent],
-				imports: [ObCollapseComponent],
+				imports: [ObCollapseComponent, MatIconTestingModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 			}).compileComponents();
@@ -297,12 +345,11 @@ describe(ObCollapseComponent.name, () => {
 	describe('with actual content', () => {
 		let fixtureTestComponent: ComponentFixture<TestCollapseComponent>;
 		let element: HTMLDivElement;
-		let collapseChangeDetector: ChangeDetectorRef;
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [TestCollapseComponent],
-				imports: [ObCollapseComponent],
+				imports: [ObCollapseComponent, MatIconTestingModule],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 			})
@@ -315,33 +362,44 @@ describe(ObCollapseComponent.name, () => {
 			fixtureTestComponent = TestBed.createComponent(TestCollapseComponent);
 			const collapseDebugElement = fixtureTestComponent.debugElement.query(By.directive(ObCollapseComponent));
 			obCollapseComponent = collapseDebugElement.componentInstance;
-			collapseChangeDetector = collapseDebugElement.injector.get(ChangeDetectorRef);
 			element = fixtureTestComponent.debugElement.query(By.css('[obCollapseMain]')).nativeElement;
 			Object.defineProperty(element, 'scrollHeight', {value: 42, configurable: true}); // necessary because jsdom ignores scrollHeight
 			fixtureTestComponent.detectChanges();
 		});
 
 		it('should set contentHeight to 0 when inactive', () => {
-			obCollapseComponent.active = false;
+			obCollapseComponent.active.set(false);
 			fixtureTestComponent.detectChanges();
-			expect(obCollapseComponent.contentHeight).toBe(0);
+			expect(obCollapseComponent.contentHeight()).toBe(0);
 		});
 
-		it('should set contentHeight to 42 when active', () => {
-			obCollapseComponent.active = true;
-			collapseChangeDetector.detectChanges();
-			obCollapseComponent.ngAfterContentChecked();
-			expect(obCollapseComponent.contentHeight).toBe(42);
+		it('should set contentHeight to 42 when active', async () => {
+			obCollapseComponent.active.set(true);
+			fixtureTestComponent.detectChanges();
+			await fixtureTestComponent.whenStable();
+			expect(obCollapseComponent.contentHeight()).toBe(42);
 		});
 
-		it('shout recompute the height when the viewport is resized', () => {
-			obCollapseComponent.active = true;
-			collapseChangeDetector.detectChanges();
-			obCollapseComponent.ngAfterContentChecked();
+		it('should recompute the height when the viewport is resized', async () => {
+			obCollapseComponent.active.set(true);
+			fixtureTestComponent.detectChanges();
+			await fixtureTestComponent.whenStable();
 			Object.defineProperty(element, 'scrollHeight', {value: 420, configurable: true});
 			window.dispatchEvent(new Event('resize'));
-			obCollapseComponent.ngAfterContentChecked();
-			expect(obCollapseComponent.contentHeight).toBe(420);
+			await fixtureTestComponent.whenStable();
+			expect(obCollapseComponent.contentHeight()).toBe(420);
+		});
+
+		it('should keep contentHeight when the viewport resize does not change it', async () => {
+			obCollapseComponent.active.set(true);
+			fixtureTestComponent.detectChanges();
+			await fixtureTestComponent.whenStable();
+
+			Object.defineProperty(element, 'scrollHeight', {value: 42, configurable: true});
+			window.dispatchEvent(new Event('resize'));
+			await fixtureTestComponent.whenStable();
+
+			expect(obCollapseComponent.contentHeight()).toBe(42);
 		});
 	});
 });
