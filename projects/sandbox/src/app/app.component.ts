@@ -58,7 +58,7 @@ export class AppComponent implements OnDestroy {
 			this.navigation = links;
 		});
 		this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-			header.serviceNavigationConfiguration.returnUrl = window.location.href;
+			header.updateServiceNavigationConfiguration({returnUrl: window.location.href});
 		});
 	}
 

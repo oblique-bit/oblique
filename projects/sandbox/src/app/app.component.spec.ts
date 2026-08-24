@@ -69,7 +69,7 @@ describe('AppComponent', () => {
 
 		routerEvents.next(new NavigationEnd(1, '/current', '/current'));
 
-		expect(header.serviceNavigationConfiguration.returnUrl).toBe(window.location.href);
+		expect(header.serviceNavigationConfiguration().returnUrl).toBe(window.location.href);
 	});
 
 	it('should expose translated autocomplete items', done => {
