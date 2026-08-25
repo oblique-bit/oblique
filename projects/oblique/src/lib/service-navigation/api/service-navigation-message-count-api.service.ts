@@ -1,7 +1,8 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable, inject} from '@angular/core';
-import {Observable, map} from 'rxjs';
+import {Observable} from 'rxjs';
 import {ObIServiceNavigationResponse} from './service-navigation.api.model';
+import {obGetDataOrThrowStatus500} from './service-navigation.api.utils';
 
 @Injectable({providedIn: 'root'})
 export class ObServiceNavigationCountApiService {
@@ -11,6 +12,6 @@ export class ObServiceNavigationCountApiService {
 	get(environmentUrl: string): Observable<number> {
 		return this.httpClient
 			.get<ObIServiceNavigationResponse<number>>(environmentUrl + this.resourceUrl, {withCredentials: true})
-			.pipe(map(res => res.data));
+			.pipe(obGetDataOrThrowStatus500());
 	}
 }
