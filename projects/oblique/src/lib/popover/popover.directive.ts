@@ -3,7 +3,6 @@ import {
 	Directive,
 	ElementRef,
 	InjectionToken,
-	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
@@ -11,6 +10,7 @@ import {
 	TemplateRef,
 	ViewContainerRef,
 	inject,
+	input,
 	output,
 } from '@angular/core';
 import {Instance, Options, Placement, createPopper} from '@popperjs/core';
@@ -40,6 +40,7 @@ export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>(
 		'(keyup.enter)': 'toggle($event)',
 		'(mouseenter)': 'handleMouseEnter()',
 		'(mouseleave)': 'handleMouseLeave()',
+		'[attr.id]': 'id()',
 		'[attr.aria-controls]': 'idContent',
 		'[attr.aria-describedby]': 'idContent',
 		'[attr.aria-expanded]': 'isExpanded',
@@ -49,14 +50,14 @@ export const OBLIQUE_POPOVER_APPEND_TO_BODY = new InjectionToken<boolean>(
 	exportAs: 'obPopover',
 })
 export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
-	@Input('obPopover') target: TemplateRef<HTMLElement>;
-	@Input() placement: Placement = 'auto';
-	@Input() popperOptions: Options = {} as Options;
-	@Input() id: string;
-	@Input() panelContentId: string;
-	@Input() toggleHandle: ObEToggleType;
-	@Input() closeOnlyOnToggle: boolean;
-	@Input() appendToBody = false;
+	readonly target = input<TemplateRef<HTMLElement>>(undefined, {alias: 'obPopover'});
+	readonly placement = input<Placement>('auto');
+	readonly popperOptions = input<Options>({} as Options);
+	readonly id = input<string>(`popover-${ObPopoverDirective.idCount++}`);
+	readonly panelContentId = input<string>();
+	readonly toggleHandle = input<ObEToggleType>();
+	readonly closeOnlyOnToggle = input<boolean>();
+	readonly appendToBody = input(inject(OBLIQUE_POPOVER_APPEND_TO_BODY, {optional: true}) ?? false);
 	readonly visibilityChange = output<boolean>();
 	idContent: string;
 	isExpanded = false;
@@ -64,8 +65,8 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private static idCount = 0;
 	private readonly body: HTMLElement;
 	private readonly host: HTMLElement;
-	private instance: Instance;
-	private popover: HTMLDivElement;
+	private instance: Instance | undefined;
+	private popover: HTMLDivElement | undefined;
 	private isMouseHoverConfigured: boolean;
 	private isCloseOnlyOnToggleConfigured: boolean;
 	private readonly globalEventsService = inject(ObGlobalEventsService);
@@ -73,7 +74,6 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	private readonly renderer = inject(Renderer2);
 	private readonly globalToggleHandle = inject<ObEToggleType>(OBLIQUE_POPOVER_TOGGLE_HANDLE, {optional: true});
 	private readonly globalCloseOnlyOnToggle = inject(OBLIQUE_POPOVER_CLOSE_ONLY_ON_TOGGLE, {optional: true});
-	private readonly globalAppendToBody = inject(OBLIQUE_POPOVER_APPEND_TO_BODY, {optional: true});
 	private readonly window = inject<ObWindow>(WINDOW);
 
 	constructor() {
@@ -84,9 +84,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		this.id ||= `popover-${ObPopoverDirective.idCount++}`;
-		this.idContent = this.panelContentId || `${this.id}-content`;
-		this.appendToBody = this.globalAppendToBody ?? this.appendToBody;
+		this.idContent = this.panelContentId() || `${this.id()}-content`;
 		this.updateToggleMethod();
 		this.updateCloseOnlyOnToggle();
 	}
@@ -143,8 +141,8 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 			this.listenForCloseEvent();
 		}
 
-		const parent = this.appendToBody ? this.body : this.host.parentNode;
-		const referenceNode = this.appendToBody ? null : this.host.nextSibling;
+		const parent = this.appendToBody() ? this.body : this.host.parentNode;
+		const referenceNode = this.appendToBody() ? null : this.host.nextSibling;
 		this.renderer.insertBefore(parent, this.popover, referenceNode);
 		this.instance = createPopper(this.host, this.popover, defaultConfig);
 		// without the setTimeout, the options aren't applied
@@ -160,15 +158,15 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	private getToggleMethod(): ObEToggleType {
-		return this.toggleHandle ?? this.globalToggleHandle ?? ObEToggleType.CLICK;
+		return this.toggleHandle() ?? this.globalToggleHandle ?? ObEToggleType.CLICK;
 	}
 
 	private updateCloseOnlyOnToggle(): void {
-		this.isCloseOnlyOnToggleConfigured = this.closeOnlyOnToggle ?? this.globalCloseOnlyOnToggle ?? false;
+		this.isCloseOnlyOnToggleConfigured = this.closeOnlyOnToggle() ?? this.globalCloseOnlyOnToggle ?? false;
 	}
 
 	private setPopperOptionsAndUpdate(): void {
-		void this.instance?.setOptions({...this.popperOptions, placement: this.placement});
+		void this.instance?.setOptions({...this.popperOptions(), placement: this.placement()});
 		void this.instance?.update();
 		if (this.popover) {
 			this.renderer.removeClass(this.popover, 'ob-popover-is-hidden');
@@ -179,7 +177,7 @@ export class ObPopoverDirective implements OnInit, OnChanges, OnDestroy {
 		const popover = this.renderer.createElement('div');
 		const contentWrapper = this.renderer.createElement('div');
 		this.renderer.addClass(contentWrapper, 'ob-popover-content-wrapper');
-		this.viewContainerRef.createEmbeddedView<HTMLElement>(this.target).rootNodes.forEach(node => {
+		this.viewContainerRef.createEmbeddedView<HTMLElement>(this.target()).rootNodes.forEach(node => {
 			this.renderer.appendChild(contentWrapper, node);
 		});
 		this.renderer.appendChild(popover, contentWrapper);
