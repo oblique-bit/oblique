@@ -54,3 +54,6 @@ Thumbs.db
 
 #nx
 .nx/cache/*
+
+#mcp
+/projects/mcp/dist/

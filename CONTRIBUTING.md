@@ -145,6 +145,7 @@ The package is required and must be one of the following:
 | ---------------------- | ----------------------------------------------------------------------------------------- |
 | **cli**                | Changes in the CLI library                                                                |
 | **design-system**      | Changes in the Design System library                                                      |
+| **mcp**                | Changes in the Model Context Protocol server                                              |
 | **oblique**            | Changes in the Oblique library, including the changes to the service-navigation component |
 | **sandbox**            | Changes in the Sandbox project                                                            |
 | **sandbox-ssr**        | Changes in the Sandbox-SSR project                                                        |

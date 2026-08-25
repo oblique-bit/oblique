@@ -19,6 +19,7 @@
   "workspaces": [
     "projects/cli",
     "projects/design-system",
+    "projects/mcp",
     "projects/oblique",
     "projects/sds",
     "projects/sandbox",

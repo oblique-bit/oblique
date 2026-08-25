@@ -1,0 +1,21 @@
+{
+  "name": "@oblique/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Model Context Protocol server for the Oblique ecosystem",
+  "type": "module",
+  "bin": {
+    "oblique-mcp": "./dist/server.js"
+  },
+  "scripts": {
+    "start": "node dist/server.js",
+    "lint": "eslint \"src/**/*.{ts,js,mjs,cjs}\" && prettier --check \"src/**/*.{ts,js,mjs,cjs,json,yml,md}\" README.md package.json tsconfig*.json jest.config.cjs eslint.project-config.mjs",
+    "format": "eslint --fix \"src/**/*.{ts,js,mjs,cjs}\" && prettier --write \"src/**/*.{ts,js,mjs,cjs,json,yml,md}\" README.md package.json tsconfig*.json jest.config.cjs eslint.project-config.mjs",
+    "test": "jest",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "zod": "^4.0.0"
+  }
+}
