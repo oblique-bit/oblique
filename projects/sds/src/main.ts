@@ -32,10 +32,12 @@ bootstrapApplication(AppComponent, {
 		provideObliqueConfiguration({
 			accessibilityStatement: {
 				applicationName: 'SDS',
-				applicationOperator: 'Federal Office of Information Technology, Systems and Telecommunication FOITT',
-				conformity: 'full',
+				applicationOperator:
+					'Federal Office of Information Technology, Systems and Telecommunication FOITT<br>Meielen Campus<br>Eichenweg 3<br>CH-3003 Bern',
+				conformity: 'partial',
+				exceptions: ['This application has not yet been reviewed for accessibility, as it is considered temporary.'],
 				contact: [{url: 'https://oblique.bit.admin.ch'}],
-				createdOn: new Date(),
+				createdOn: new Date(2025, 2, 6),
 			},
 			translate: {
 				locales: {

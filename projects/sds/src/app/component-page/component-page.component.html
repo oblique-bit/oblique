@@ -1,4 +1,6 @@
-<div class="title-container">
-	<h1>{{ componentToLoad?.title }}</h1>
-</div>
+@if (componentToLoad?.title) {
+	<div class="title-container">
+		<h1>{{ componentToLoad?.title }}</h1>
+	</div>
+}
 <ng-template *ngComponentOutlet="$safeNavigationMigration(componentToLoad?.component)" />

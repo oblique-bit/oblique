@@ -1,0 +1,4 @@
+// this component,  provided by Oblique, has a default max-width that is not compatible with SDS and thus needs to be removed
+ob-accessibility-statement {
+	max-width: unset !important;
+}
