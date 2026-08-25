@@ -43,5 +43,11 @@ Configure an MCP client to execute `node projects/mcp/dist/server.js` with the r
 - `search_oblique` finds compatible tabbed and text documentation pages by name or slug, for example
   `{ "query": "notification" }`.
 - `get_oblique_examples` returns SDS source snippets for a component, for example `{ "component": "button" }`.
+- `get_oblique_api` returns a public TypeScript API symbol, for example
+  `{ "symbol": "ObNotificationService" }`.
+
+`projects/oblique/src/public_api.ts` is the authoritative boundary for APIs consumable from
+`@oblique/oblique`. `get_oblique_api` only returns symbols reachable from that entry point; it does not expose
+internal library source APIs.
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.

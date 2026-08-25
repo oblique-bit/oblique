@@ -1,0 +1,17 @@
+/*
+ * AI GENERATED CODE
+ * Model: GPT-5
+ * Prompt: Oblique MCP Phase 3 public API reader test fixture
+ */
+
+export class NamedPublicClass {
+	public exposedMethod(value: string): string {
+		return value;
+	}
+
+	private hiddenImplementation(): string {
+		return 'must not be exposed';
+	}
+}
+
+export class InternalOnlyClass {}

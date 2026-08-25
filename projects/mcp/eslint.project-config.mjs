@@ -7,14 +7,15 @@
 // @ts-check
 import {fileURLToPath} from 'node:url';
 
-const eslintTsconfigPath = fileURLToPath(new URL('./tsconfig.eslint.json', import.meta.url));
+const sourceEslintTsconfigPath = fileURLToPath(new URL('./tsconfig.eslint.json', import.meta.url));
+const fixtureEslintTsconfigPath = fileURLToPath(new URL('./tsconfig.fixtures.json', import.meta.url));
 
 export default [
 	{
-		files: ['projects/mcp/**/*.ts'],
+		files: ['projects/mcp/src/**/*.ts'],
 		languageOptions: {
 			parserOptions: {
-				project: eslintTsconfigPath,
+				project: sourceEslintTsconfigPath,
 				projectService: false,
 			},
 		},
@@ -36,6 +37,31 @@ export default [
 		},
 	},
 	{
+		files: ['projects/mcp/fixtures/**/*.ts'],
+		languageOptions: {
+			parserOptions: {
+				project: fixtureEslintTsconfigPath,
+				projectService: false,
+			},
+		},
+		rules: {
+			// Fixtures deliberately model public export names, duplicate re-export declarations and deprecated APIs.
+			'@typescript-eslint/naming-convention': 'off',
+			'@typescript-eslint/consistent-type-definitions': 'off',
+			'@typescript-eslint/consistent-type-exports': 'off',
+			'@typescript-eslint/no-deprecated': 'off',
+			'@typescript-eslint/no-empty-object-type': 'off',
+			'@typescript-eslint/no-extraneous-class': 'off',
+			'@typescript-eslint/no-namespace': 'off',
+			'@typescript-eslint/no-unsafe-function-type': 'off',
+			'@typescript-eslint/no-unused-vars': 'off',
+			'@typescript-eslint/no-unused-private-class-members': 'off',
+			'max-classes-per-file': 'off',
+			'no-duplicate-imports': 'off',
+			'prefer-const': 'off',
+		},
+	},
+	{
 		files: ['projects/mcp/**/*.spec.ts'],
 		rules: {
 			'@typescript-eslint/naming-convention': 'off',
@@ -45,7 +71,11 @@ export default [
 		},
 	},
 	{
-		files: ['projects/mcp/src/sources/sds/sds-examples.reader.ts', 'projects/mcp/src/tools/search-oblique.ts'],
+		files: [
+			'projects/mcp/src/sources/oblique/public-api.reader.ts',
+			'projects/mcp/src/sources/sds/sds-examples.reader.ts',
+			'projects/mcp/src/tools/search-oblique.ts',
+		],
 		rules: {
 			'@typescript-eslint/max-params': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
@@ -55,6 +85,7 @@ export default [
 			'max-lines-per-function': 'off',
 			'max-statements': 'off',
 			'prefer-named-capture-group': 'off',
+			'no-bitwise': 'off',
 		},
 	},
 ];

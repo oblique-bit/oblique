@@ -10,6 +10,11 @@ import {McpServer} from '@modelcontextprotocol/server';
 import {serveStdio} from '@modelcontextprotocol/server/stdio';
 import {z as schema} from 'zod/v4';
 import {type DirectusClient, ObliqueDirectusClient} from './sources/directus/directus.client.js';
+import {
+	type ObliqueApiSymbol,
+	ObliquePublicApiReader,
+	isTypeScriptIdentifier,
+} from './sources/oblique/public-api.reader.js';
 import {type ObliqueExamples, SdsExamplesReader} from './sources/sds/sds-examples.reader.js';
 import {getObliqueComponent} from './tools/get-oblique-component.js';
 import {type SdsExamplesClient, getObliqueExamples} from './tools/get-oblique-examples.js';
@@ -32,6 +37,10 @@ const searchSchema = schema.object({
 
 const examplesSchema = schema.object({
 	component: schema.string().trim().min(1),
+});
+
+const publicApiSchema = schema.object({
+	symbol: schema.string().trim().min(1).refine(isTypeScriptIdentifier, 'Expected a TypeScript symbol name.'),
 });
 
 const versionResultSchema = schema.object({
@@ -85,6 +94,32 @@ const examplesResultSchema = schema.object({
 	),
 });
 
+const publicApiResultSchema = schema.object({
+	symbol: schema.string(),
+	kind: schema.enum([
+		'class',
+		'interface',
+		'type',
+		'enum',
+		'function',
+		'const',
+		'directive',
+		'component',
+		'service',
+		'module',
+		'pipe',
+		'guard',
+		'other',
+	]),
+	public: schema.literal(true),
+	packageImport: schema.literal('@oblique/oblique'),
+	exportedFrom: schema.string(),
+	declaredIn: schema.string(),
+	signature: schema.string(),
+	documentation: schema.string().nullable(),
+	deprecated: schema.boolean(),
+});
+
 const packageMetadataSchema = schema.object({
 	version: schema.string(),
 	engines: schema.object({node: schema.string()}),
@@ -95,19 +130,35 @@ const packageMetadataSchema = schema.object({
 interface CreateServerOptions {
 	directusClient?: DirectusClient;
 	examplesClient?: SdsExamplesClient;
+	publicApiReader?: ObliquePublicApiReader;
 	readPackageMetadata?: () => Promise<PackageMetadata>;
 }
 
 export function createObliqueMcpServer(options: CreateServerOptions = {}): McpServer {
 	const directusClient = options.directusClient ?? new ObliqueDirectusClient();
 	const examplesClient = options.examplesClient ?? new SdsExamplesReader();
+	const publicApiReader = options.publicApiReader ?? new ObliquePublicApiReader();
 	const packageMetadataReader = options.readPackageMetadata ?? readPackageMetadata;
 	const server = new McpServer({name: 'oblique-mcp', version: '0.1.0'});
 	registerVersionTool(server, packageMetadataReader);
 	registerComponentTool(server, directusClient, packageMetadataReader);
 	registerSearchTool(server, directusClient, packageMetadataReader);
 	registerExamplesTool(server, examplesClient);
+	registerPublicApiTool(server, publicApiReader);
 	return server;
+}
+
+function registerPublicApiTool(server: McpServer, publicApiReader: ObliquePublicApiReader): void {
+	server.registerTool(
+		'get_oblique_api',
+		{
+			description:
+				'Get a public TypeScript API symbol exported by @oblique/oblique from its authoritative public_api.ts entry point.',
+			inputSchema: publicApiSchema,
+			outputSchema: publicApiResultSchema,
+		},
+		({symbol}) => getPublicApiResponse(publicApiReader.getApi(symbol), symbol)
+	);
 }
 
 function registerSearchTool(
@@ -193,6 +244,19 @@ function getExamplesResponse(
 	return examples === undefined
 		? {content: [{type: 'text', text: `No Oblique examples found for "${component}".`}], isError: true}
 		: {content: [{type: 'text', text: JSON.stringify(examples)}], structuredContent: examples};
+}
+
+function getPublicApiResponse(
+	api: ObliqueApiSymbol | undefined,
+	symbol: string
+): {
+	content: {type: 'text'; text: string}[];
+	structuredContent?: ObliqueApiSymbol;
+	isError?: true;
+} {
+	return api === undefined
+		? {content: [{type: 'text', text: `No public Oblique API symbol found for "${symbol}".`}], isError: true}
+		: {content: [{type: 'text', text: JSON.stringify(api)}], structuredContent: api};
 }
 
 async function getCurrentMajorVersion(packageMetadataReader: () => Promise<PackageMetadata>): Promise<number> {
