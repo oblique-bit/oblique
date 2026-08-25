@@ -15,9 +15,11 @@ import {
 	ObliquePublicApiReader,
 	isTypeScriptIdentifier,
 } from './sources/oblique/public-api.reader.js';
+import {ObliqueMigrationReader} from './sources/oblique/migration.reader.js';
 import {type ObliqueExamples, SdsExamplesReader} from './sources/sds/sds-examples.reader.js';
 import {getObliqueComponent} from './tools/get-oblique-component.js';
 import {type SdsExamplesClient, getObliqueExamples} from './tools/get-oblique-examples.js';
+import {getMigrationResponse, migrationResultSchema, migrationSchema} from './tools/get-oblique-migration.js';
 import {type PackageMetadata, getObliqueMajorVersion, getObliqueVersion} from './tools/get-oblique-version.js';
 import {searchOblique} from './tools/search-oblique.js';
 
@@ -131,6 +133,7 @@ interface CreateServerOptions {
 	directusClient?: DirectusClient;
 	examplesClient?: SdsExamplesClient;
 	publicApiReader?: ObliquePublicApiReader;
+	migrationReader?: ObliqueMigrationReader;
 	readPackageMetadata?: () => Promise<PackageMetadata>;
 }
 
@@ -138,6 +141,7 @@ export function createObliqueMcpServer(options: CreateServerOptions = {}): McpSe
 	const directusClient = options.directusClient ?? new ObliqueDirectusClient();
 	const examplesClient = options.examplesClient ?? new SdsExamplesReader();
 	const publicApiReader = options.publicApiReader ?? new ObliquePublicApiReader();
+	const migrationReader = options.migrationReader ?? new ObliqueMigrationReader();
 	const packageMetadataReader = options.readPackageMetadata ?? readPackageMetadata;
 	const server = new McpServer({name: 'oblique-mcp', version: '0.1.0'});
 	registerVersionTool(server, packageMetadataReader);
@@ -145,7 +149,28 @@ export function createObliqueMcpServer(options: CreateServerOptions = {}): McpSe
 	registerSearchTool(server, directusClient, packageMetadataReader);
 	registerExamplesTool(server, examplesClient);
 	registerPublicApiTool(server, publicApiReader);
+	registerMigrationTool(server, migrationReader, packageMetadataReader);
 	return server;
+}
+
+function registerMigrationTool(
+	server: McpServer,
+	migrationReader: ObliqueMigrationReader,
+	packageMetadataReader: () => Promise<PackageMetadata>
+): void {
+	server.registerTool(
+		'get_oblique_migration',
+		{
+			description:
+				'Get read-only official Oblique upgrade migration information derived from the checked-out ng-update schematics.',
+			inputSchema: migrationSchema,
+			outputSchema: migrationResultSchema,
+		},
+		async ({fromVersion, toVersion}) => {
+			const selectedTargetVersion = toVersion ?? (await getCurrentMajorVersion(packageMetadataReader));
+			return getMigrationResponse(migrationReader, fromVersion, selectedTargetVersion);
+		}
+	);
 }
 
 function registerPublicApiTool(server: McpServer, publicApiReader: ObliquePublicApiReader): void {

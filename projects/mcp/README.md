@@ -45,9 +45,15 @@ Configure an MCP client to execute `node projects/mcp/dist/server.js` with the r
 - `get_oblique_examples` returns SDS source snippets for a component, for example `{ "component": "button" }`.
 - `get_oblique_api` returns a public TypeScript API symbol, for example
   `{ "symbol": "ObNotificationService" }`.
+- `get_oblique_migration` returns the official read-only upgrade path, for example
+  `{ "fromVersion": 14, "toVersion": 15 }`.
 
 `projects/oblique/src/public_api.ts` is the authoritative boundary for APIs consumable from
 `@oblique/oblique`. `get_oblique_api` only returns symbols reachable from that entry point; it does not expose
 internal library source APIs.
+
+`get_oblique_migration` derives its information from the checked-out official ng-update schematics under
+`projects/oblique/schematics/index/ng-update/`. It reports their declared migration tasks and dependency requirements;
+it never executes a migration or modifies a project.
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.

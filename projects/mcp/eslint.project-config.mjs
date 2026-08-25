@@ -53,6 +53,7 @@ export default [
 			'@typescript-eslint/no-empty-object-type': 'off',
 			'@typescript-eslint/no-extraneous-class': 'off',
 			'@typescript-eslint/no-namespace': 'off',
+			'@typescript-eslint/no-magic-numbers': 'off',
 			'@typescript-eslint/no-unsafe-function-type': 'off',
 			'@typescript-eslint/no-unused-vars': 'off',
 			'@typescript-eslint/no-unused-private-class-members': 'off',
@@ -72,6 +73,7 @@ export default [
 	},
 	{
 		files: [
+			'projects/mcp/src/sources/oblique/migration.reader.ts',
 			'projects/mcp/src/sources/oblique/public-api.reader.ts',
 			'projects/mcp/src/sources/sds/sds-examples.reader.ts',
 			'projects/mcp/src/tools/search-oblique.ts',
