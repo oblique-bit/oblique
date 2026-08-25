@@ -11,7 +11,7 @@ export interface ObIServiceNavigationLink {
 	label: string;
 }
 
-interface ContactInfoBase {
+export interface ObIServiceNavigationContactBase {
 	email?: string;
 	emailText?: string;
 	phone?: string;
@@ -20,7 +20,7 @@ interface ContactInfoBase {
 	formUrlText?: string;
 }
 
-export type ObIServiceNavigationContact = ContactInfoBase &
+export type ObIServiceNavigationContact = ObIServiceNavigationContactBase &
 	({emailText?: never} | {emailText: string; email: string}) &
 	({phoneText?: never} | {phoneText: string; phone: string}) &
 	({formUrlText?: never} | {formUrlText: string; formUrl: string});
