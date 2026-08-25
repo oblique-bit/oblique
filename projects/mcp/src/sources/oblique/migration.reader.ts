@@ -6,6 +6,7 @@
 
 import {basename, relative, resolve} from 'node:path';
 import * as typescript from 'typescript';
+import {isPathInside} from '../../utils/path.js';
 
 const migrationIndexRelativePath = 'projects/oblique/schematics/index/ng-update/index.ts';
 const migrationDirectoryRelativePath = 'projects/oblique/schematics/index/ng-update';
@@ -367,7 +368,7 @@ function parseMajorVersion(version: string): number | undefined {
 
 function assertContainedMigrationSource(sourcePath: string, migrationDirectoryPath: string): void {
 	const sourceRelativePath = relative(migrationDirectoryPath, sourcePath);
-	if (sourceRelativePath === '' || sourceRelativePath.startsWith('../')) {
+	if (sourceRelativePath === '' || !isPathInside(migrationDirectoryPath, sourcePath)) {
 		throw new ObliqueMigrationSourceError('Resolved a migration source outside the official ng-update directory.');
 	}
 }

@@ -5,8 +5,9 @@
  */
 
 import {readFile} from 'node:fs/promises';
-import {dirname, extname, isAbsolute, relative, resolve} from 'node:path';
+import {dirname, extname, relative, resolve} from 'node:path';
 import * as typescript from 'typescript';
+import {isPathInside} from '../../utils/path.js';
 
 const codeExamplesRelativePath = 'projects/sds/src/app/code-examples';
 const mapperFileName = 'code-examples.mapper.ts';
@@ -302,8 +303,7 @@ function getStringValue(expression: typescript.Expression): string | undefined {
 }
 
 function assertPathInside(basePath: string, targetPath: string): string {
-	const relativePath = relative(basePath, targetPath);
-	if (isAbsolute(relativePath) || relativePath.startsWith('../') || relativePath === '..') {
+	if (!isPathInside(basePath, targetPath)) {
 		throw new Error('SDS example source path escapes the code examples directory.');
 	}
 	return targetPath;
