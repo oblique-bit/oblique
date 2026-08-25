@@ -20,6 +20,15 @@ describe('ObliqueDirectusClient', () => {
 					JSON.stringify({data: [{id: 2, name: 'Button', slug: 'button', min_version: null, max_version: null}]})
 				)
 			)
+			.mockResolvedValueOnce(
+				new Response(
+					JSON.stringify({
+						data: [
+							{id: 3, name: 'Introduction', slug: 'introduction', category: 1, min_version: null, max_version: null},
+						],
+					})
+				)
+			)
 			.mockResolvedValueOnce(new Response(JSON.stringify({data: {id: 2, name: 'Button', slug: 'button'}})));
 		const client = new ObliqueDirectusClient(fetchFn);
 
@@ -27,10 +36,14 @@ describe('ObliqueDirectusClient', () => {
 		await expect(client.getTabbedPages()).resolves.toEqual([
 			{id: 2, name: 'Button', slug: 'button', min_version: null, max_version: null},
 		]);
+		await expect(client.getTextPages()).resolves.toEqual([
+			{id: 3, name: 'Introduction', slug: 'introduction', category: 1, min_version: null, max_version: null},
+		]);
 		await expect(client.getTabbedPage(2)).resolves.toEqual({id: 2, name: 'Button', slug: 'button'});
 		expect(fetchFn.mock.calls.map(([url]) => url.toString())).toEqual([
 			'https://oblique.directus.app/items/Version',
 			'https://oblique.directus.app/items/TabbedPage?fields=id,name,slug,min_version,max_version&sort=order,name',
+			'https://oblique.directus.app/items/TextPage?fields=id,name,slug,category,min_version,max_version&sort=order,name',
 			'https://oblique.directus.app/items/TabbedPage/2/?fields=*.*',
 		]);
 	});

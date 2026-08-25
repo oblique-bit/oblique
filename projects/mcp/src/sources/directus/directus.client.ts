@@ -4,7 +4,7 @@
  * Prompt: Oblique MCP Phase 1 initial server
  */
 
-import type {DirectusResponse, TabbedPage, TabbedPageSummary, Version} from './directus.models.js';
+import type {DirectusResponse, TabbedPage, TabbedPageSummary, TextPageSummary, Version} from './directus.models.js';
 
 const directusBaseUrl = 'https://oblique.directus.app/';
 const defaultTimeoutMs = 10_000;
@@ -19,6 +19,7 @@ export class DirectusClientError extends Error {
 export interface DirectusClient {
 	getVersions: () => Promise<Version[]>;
 	getTabbedPages: () => Promise<TabbedPageSummary[]>;
+	getTextPages: () => Promise<TextPageSummary[]>;
 	getTabbedPage: (id: number) => Promise<TabbedPage>;
 }
 
@@ -38,6 +39,12 @@ export class ObliqueDirectusClient implements DirectusClient {
 	async getTabbedPages(): Promise<TabbedPageSummary[]> {
 		return this.getCollection<TabbedPageSummary>(
 			'items/TabbedPage?fields=id,name,slug,min_version,max_version&sort=order,name'
+		);
+	}
+
+	async getTextPages(): Promise<TextPageSummary[]> {
+		return this.getCollection<TextPageSummary>(
+			'items/TextPage?fields=id,name,slug,category,min_version,max_version&sort=order,name'
 		);
 	}
 

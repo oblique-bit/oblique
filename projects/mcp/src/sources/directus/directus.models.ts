@@ -16,6 +16,15 @@ export interface TabbedPageSummary {
 	max_version: number | null;
 }
 
+export interface TextPageSummary {
+	id: number;
+	name: string;
+	slug: string;
+	category: number;
+	min_version: number | null;
+	max_version: number | null;
+}
+
 export interface UiUxEntry {
 	id: number;
 	text: string;

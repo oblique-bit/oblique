@@ -44,4 +44,17 @@ export default [
 			'@typescript-eslint/require-await': 'off',
 		},
 	},
+	{
+		files: ['projects/mcp/src/sources/sds/sds-examples.reader.ts', 'projects/mcp/src/tools/search-oblique.ts'],
+		rules: {
+			'@typescript-eslint/max-params': 'off',
+			'@typescript-eslint/no-magic-numbers': 'off',
+			'@typescript-eslint/prefer-regexp-exec': 'off',
+			'@typescript-eslint/promise-function-async': 'off',
+			'max-lines': 'off',
+			'max-lines-per-function': 'off',
+			'max-statements': 'off',
+			'prefer-named-capture-group': 'off',
+		},
+	},
 ];

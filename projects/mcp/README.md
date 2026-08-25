@@ -3,8 +3,9 @@
 Initial Model Context Protocol (MCP) server for the Oblique ecosystem. It makes Oblique repository metadata and
 official documentation available to MCP-compatible clients such as Codex, Claude Code and VS Code.
 
-The server reads version metadata from the checked-out repository's root `package.json`. Component documentation is
-retrieved from the official Oblique Directus CMS used by the Swiss Design System (SDS), not scraped from the website.
+The server reads version metadata from the checked-out repository's root `package.json`. Documentation and search data
+come from the official Oblique Directus CMS used by the Swiss Design System (SDS), not scraped from the website. Code
+examples come from `projects/sds/src/app/code-examples` in this repository.
 
 ## Install dependencies
 
@@ -39,6 +40,8 @@ Configure an MCP client to execute `node projects/mcp/dist/server.js` with the r
 
 - `get_oblique_version` returns the version, Angular compatibility, Node.js requirement and repository name.
 - `get_oblique_component` resolves a component by case-insensitive slug or name and returns official Directus data.
+- `search_oblique` finds compatible tabbed and text documentation pages by name or slug, for example
+  `{ "query": "notification" }`.
+- `get_oblique_examples` returns SDS source snippets for a component, for example `{ "component": "button" }`.
 
-This is the initial Phase 1 implementation. It intentionally exposes no MCP resources, prompts, HTTP transport or
-additional search and recommendation tools.
+The server intentionally exposes no MCP resources, prompts or HTTP transport.

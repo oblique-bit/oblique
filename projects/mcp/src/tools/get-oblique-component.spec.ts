@@ -57,6 +57,7 @@ function createClient(tabbedPages = pages): jest.Mocked<DirectusClient> {
 	return {
 		getVersions: jest.fn(),
 		getTabbedPages: jest.fn().mockResolvedValue(summaries),
+		getTextPages: jest.fn(),
 		getTabbedPage: jest.fn().mockImplementation(async (id: number) => {
 			const page = pageById.get(id);
 			if (page === undefined) {
