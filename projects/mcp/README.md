@@ -36,6 +36,10 @@ npm run start -w @oblique/mcp
 
 Configure an MCP client to execute `node projects/mcp/dist/server.js` with the repository root as its working directory.
 
+## Installation and MCP client configuration
+
+The current development version runs from an Oblique checkout. For prerequisites, checkout-based `cwd` requirements, proxy mode, and Codex, VS Code, Cursor, Claude Code, and Claude Desktop examples, see [INSTALLATION.md](INSTALLATION.md).
+
 ## Available tools
 
 - `get_oblique_version` returns the version, Angular compatibility, Node.js requirement and repository name.
