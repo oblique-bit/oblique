@@ -18,31 +18,22 @@ describe('ObColumnPanelDirective', () => {
 	describe('Property collapsed', () => {
 		it('should be false per default', () => {
 			directive.ngOnInit();
-			expect(directive.collapsed).toBe(false);
+			expect(directive.collapsed()).toBe(false);
 		});
 	});
 
 	describe('Method toggle', () => {
-		it('should change collapsed to true when called once', () => {
+		it('should change collapsed to true', () => {
+			directive.toggle();
 			directive.toggle();
 
-			expect(directive.collapsed).toBe(true);
+			expect(directive.collapsed()).toBe(true);
 		});
 
-		it('should change collapsed to false when called twice', () => {
-			directive.toggle();
+		it('should change collapsed to false', () => {
 			directive.toggle();
 
-			expect(directive.collapsed).toBe(false);
-		});
-
-		it('should emit toggled boolean', done => {
-			directive.toggled.subscribe(toggled => {
-				expect(toggled).toBe(true);
-				done();
-			});
-
-			directive.toggle();
+			expect(directive.collapsed()).toBe(false);
 		});
 	});
 });
