@@ -5,23 +5,34 @@
  */
 
 import {
+	BindingType,
 	CssSelector,
 	type ParseError,
 	SelectorMatcher,
 	type TmplAstBoundAttribute,
+	type TmplAstBoundEvent,
 	type TmplAstElement,
 	type TmplAstNode,
 	type TmplAstTemplate,
 	type TmplAstTextAttribute,
 	parseTemplate,
 } from '@angular/compiler';
-import type {ObliqueAngularTemplateApi} from '../sources/oblique/public-api.reader.js';
+import type {
+	ObliqueAngularTemplateApi,
+	ObliqueAngularTemplateInput,
+	ObliqueAngularTemplateOutput,
+} from '../sources/oblique/public-api.reader.js';
 
 const obliqueElementPrefix = 'ob-';
 const severityOrder: Record<ObliqueTemplateFindingSeverity, number> = {error: 0, warning: 1, info: 2};
 
 export type ObliqueTemplateFindingRule =
-	'OBLIQUE_DEPRECATED_TEMPLATE_API' | 'OBLIQUE_UNKNOWN_COMPONENT_SELECTOR' | 'TEMPLATE_SYNTAX_ERROR';
+	| 'OBLIQUE_DEPRECATED_TEMPLATE_API'
+	| 'OBLIQUE_DEPRECATED_TEMPLATE_BINDING'
+	| 'OBLIQUE_MISSING_REQUIRED_INPUT'
+	| 'OBLIQUE_UNKNOWN_COMPONENT_SELECTOR'
+	| 'OBLIQUE_UNRECOGNIZED_INPUT_BINDING'
+	| 'TEMPLATE_SYNTAX_ERROR';
 export type ObliqueTemplateFindingSeverity = 'error' | 'warning' | 'info';
 
 export interface ObliqueTemplateLocation {
@@ -36,6 +47,8 @@ export interface ObliqueTemplateFinding {
 	location: ObliqueTemplateLocation;
 	selector?: string;
 	symbol?: string;
+	binding?: string;
+	bindingKind?: 'input' | 'output' | 'two-way';
 	recommendation: string;
 }
 
@@ -50,6 +63,8 @@ export interface ObliqueTemplateAnalysis {
 	summary: ObliqueTemplateSummary;
 	findings: ObliqueTemplateFinding[];
 }
+
+export type ObliqueTemplateBindingDiagnostics = 'safe' | 'verbose';
 
 export interface ObliqueTemplatePublicApiReader {
 	getAngularTemplateApis: () => readonly ObliqueAngularTemplateApi[];
@@ -76,12 +91,17 @@ export class ObliqueTemplateAnalyzer {
 		this.templateParser = templateParser;
 	}
 
-	analyze(code: string): ObliqueTemplateAnalysis {
+	analyze(code: string, bindingDiagnostics: ObliqueTemplateBindingDiagnostics = 'safe'): ObliqueTemplateAnalysis {
 		const parsedTemplate = this.templateParser(code, 'submitted.html');
 		const syntaxFindings = getSyntaxFindings(code, parsedTemplate.errors);
 		const findings =
 			syntaxFindings.length === 0
-				? getTemplateFindings(code, parsedTemplate.nodes, this.publicApiReader.getAngularTemplateApis())
+				? getTemplateFindings(
+						code,
+						parsedTemplate.nodes,
+						this.publicApiReader.getAngularTemplateApis(),
+						bindingDiagnostics
+					)
 				: syntaxFindings;
 		const sortedFindings = findings.sort(compareFindings);
 		const summary = getSummary(sortedFindings);
@@ -115,7 +135,8 @@ function getSyntaxFindings(code: string, errors: ParseError[] | null): Positione
 function getTemplateFindings(
 	code: string,
 	nodes: readonly TmplAstNode[],
-	publicTemplateApis: readonly ObliqueAngularTemplateApi[]
+	publicTemplateApis: readonly ObliqueAngularTemplateApi[],
+	bindingDiagnostics: ObliqueTemplateBindingDiagnostics
 ): PositionedFinding[] {
 	const matcher = createSelectorMatcher(publicTemplateApis);
 	const componentSelectors = new Set(
@@ -130,7 +151,9 @@ function getTemplateFindings(
 		if (isElementNode(node)) {
 			findings.push(...getUnknownComponentFindings(code, node, componentSelectors));
 		}
-		findings.push(...getDeprecatedTemplateApiFindings(code, node, matcher));
+		const matchedTemplateApis = getMatchedTemplateApis(node, matcher);
+		findings.push(...getDeprecatedTemplateApiFindings(code, node, matchedTemplateApis));
+		findings.push(...getBindingFindings(code, node, matchedTemplateApis, bindingDiagnostics));
 	}
 	return findings;
 }
@@ -222,22 +245,27 @@ function getUnknownComponentFindings(
 		: [];
 }
 
+function getMatchedTemplateApis(
+	node: TmplAstElement | TmplAstTemplate,
+	matcher: SelectorMatcher<ObliqueAngularTemplateApi>
+): readonly ObliqueAngularTemplateApi[] {
+	const matches = new Map<string, ObliqueAngularTemplateApi>();
+	matcher.match(createNodeSelector(node), (selector, templateApi) => {
+		void selector;
+		matches.set(`${templateApi.symbol}\u0000${templateApi.selector}`, templateApi);
+	});
+	return [...matches.values()];
+}
+
 function getDeprecatedTemplateApiFindings(
 	code: string,
 	node: TmplAstElement | TmplAstTemplate,
-	matcher: SelectorMatcher<ObliqueAngularTemplateApi>
+	matchedTemplateApis: readonly ObliqueAngularTemplateApi[]
 ): PositionedFinding[] {
-	const matchedTemplateApis = new Map<string, ObliqueAngularTemplateApi>();
-	matcher.match(createNodeSelector(node), (selector, templateApi) => {
-		void selector;
-		matchedTemplateApis.set(`${templateApi.symbol}\u0000${templateApi.selector}`, templateApi);
-	});
 	const nonDeprecatedSelectors = new Set(
-		[...matchedTemplateApis.values()]
-			.filter(templateApi => !templateApi.deprecated)
-			.map(templateApi => templateApi.selector)
+		matchedTemplateApis.filter(templateApi => !templateApi.deprecated).map(templateApi => templateApi.selector)
 	);
-	return [...matchedTemplateApis.values()]
+	return matchedTemplateApis
 		.filter(templateApi => templateApi.deprecated && !nonDeprecatedSelectors.has(templateApi.selector))
 		.sort(compareTemplateApis)
 		.map(templateApi =>
@@ -250,6 +278,123 @@ function getDeprecatedTemplateApiFindings(
 				recommendation: getDeprecatedRecommendation(templateApi),
 			})
 		);
+}
+
+function getBindingFindings(
+	code: string,
+	node: TmplAstElement | TmplAstTemplate,
+	matchedTemplateApis: readonly ObliqueAngularTemplateApi[],
+	bindingDiagnostics: ObliqueTemplateBindingDiagnostics
+): PositionedFinding[] {
+	if (matchedTemplateApis.length === 0) {
+		return [];
+	}
+	const inputs = getEffectiveBindings(matchedTemplateApis, api => api.inputs ?? []);
+	const outputs = getEffectiveBindings(matchedTemplateApis, api => api.outputs ?? []);
+	const providedInputs = new Set(
+		[...getStaticAttributes(node), ...getBoundAttributes(node)].map(attribute => attribute.name)
+	);
+	const findings: PositionedFinding[] = [];
+	for (const input of inputs.values()) {
+		if (input.required && !providedInputs.has(input.name)) {
+			findings.push(
+				createFinding(code, node.startSourceSpan.start.offset + 1, {
+					rule: 'OBLIQUE_MISSING_REQUIRED_INPUT',
+					severity: 'error',
+					binding: input.name,
+					bindingKind: 'input',
+					symbol: input.symbol,
+					selector: input.selector,
+					message: `"${input.name}" is a required public Oblique input of "${input.symbol}".`,
+					recommendation: `Provide the required "${input.name}" input.`,
+				})
+			);
+		}
+	}
+	for (const attribute of getBoundAttributes(node)) {
+		if (attribute.type !== BindingType.Property && attribute.type !== BindingType.TwoWay) {
+			continue;
+		}
+		const input = inputs.get(attribute.name);
+		if (input?.deprecated && !hasCurrentBinding(inputs, attribute.name)) {
+			findings.push(createDeprecatedBindingFinding(code, attribute, input, 'input'));
+		} else if (
+			bindingDiagnostics === 'verbose' &&
+			isObliqueComponentElement(node, matchedTemplateApis) &&
+			input === undefined
+		) {
+			findings.push(
+				createFinding(code, attribute.sourceSpan.start.offset, {
+					rule: 'OBLIQUE_UNRECOGNIZED_INPUT_BINDING',
+					severity: 'info',
+					binding: attribute.name,
+					bindingKind: attribute.type === BindingType.TwoWay ? 'two-way' : 'input',
+					message: `"${attribute.name}" is not exposed by the matched public Oblique APIs and may belong to another directive.`,
+					recommendation: 'Confirm the binding against the owning directive or component API.',
+				})
+			);
+		}
+	}
+	for (const event of getBoundEvents(node)) {
+		const output = outputs.get(event.name);
+		if (output?.deprecated && !hasCurrentBinding(outputs, event.name)) {
+			findings.push(createDeprecatedBindingFinding(code, event, output, 'output'));
+		}
+	}
+	return findings;
+}
+
+type EffectiveBinding<T extends ObliqueAngularTemplateInput | ObliqueAngularTemplateOutput> = T & {
+	symbol: string;
+	selector: string;
+};
+
+function getEffectiveBindings<T extends ObliqueAngularTemplateInput | ObliqueAngularTemplateOutput>(
+	apis: readonly ObliqueAngularTemplateApi[],
+	getBindings: (api: ObliqueAngularTemplateApi) => readonly T[]
+): ReadonlyMap<string, EffectiveBinding<T>> {
+	const bindings = new Map<string, EffectiveBinding<T>>();
+	for (const api of apis) {
+		for (const binding of getBindings(api)) {
+			const existing = bindings.get(binding.name);
+			// istanbul ignore next
+			if (existing === undefined || (existing.deprecated && !binding.deprecated)) {
+				bindings.set(binding.name, {...binding, symbol: api.symbol, selector: api.selector});
+			}
+		}
+	}
+	return bindings;
+}
+
+function hasCurrentBinding<T extends {deprecated: boolean}>(bindings: ReadonlyMap<string, T>, name: string): boolean {
+	return bindings.get(name)?.deprecated === false;
+}
+
+function isObliqueComponentElement(
+	node: TmplAstElement | TmplAstTemplate,
+	apis: readonly ObliqueAngularTemplateApi[]
+): boolean {
+	return (
+		isElementNode(node) && node.name.startsWith(obliqueElementPrefix) && apis.some(api => api.kind === 'component')
+	);
+}
+
+function createDeprecatedBindingFinding(
+	code: string,
+	attribute: TmplAstBoundAttribute | TmplAstBoundEvent,
+	binding: EffectiveBinding<ObliqueAngularTemplateInput | ObliqueAngularTemplateOutput>,
+	bindingKind: 'input' | 'output'
+): PositionedFinding {
+	return createFinding(code, attribute.sourceSpan.start.offset, {
+		rule: 'OBLIQUE_DEPRECATED_TEMPLATE_BINDING',
+		severity: 'warning',
+		binding: binding.name,
+		bindingKind,
+		symbol: binding.symbol,
+		selector: binding.selector,
+		message: `"${binding.name}" is a deprecated public Oblique ${bindingKind} of "${binding.symbol}".${binding.documentation === null ? '' : ` ${binding.documentation}`}`,
+		recommendation: 'Review the public API documentation for deprecation guidance.',
+	});
 }
 
 function createNodeSelector(node: TmplAstElement | TmplAstTemplate): CssSelector {
@@ -275,6 +420,10 @@ function getStaticAttributes(node: TmplAstElement | TmplAstTemplate): readonly T
 
 function getBoundAttributes(node: TmplAstElement | TmplAstTemplate): readonly TmplAstBoundAttribute[] {
 	return isTemplateNode(node) ? [...node.inputs, ...node.templateAttrs.filter(isBoundAttribute)] : node.inputs;
+}
+
+function getBoundEvents(node: TmplAstElement | TmplAstTemplate): readonly TmplAstBoundEvent[] {
+	return node.outputs;
 }
 
 function isTextAttribute(attribute: TmplAstTextAttribute | TmplAstBoundAttribute): attribute is TmplAstTextAttribute {

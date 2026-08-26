@@ -64,6 +64,25 @@ export interface ObliqueAngularTemplateApi {
 	documentation: string | null;
 	declaredIn: string;
 	public: true;
+	inputs?: readonly ObliqueAngularTemplateInput[];
+	outputs?: readonly ObliqueAngularTemplateOutput[];
+}
+
+export interface ObliqueAngularTemplateInput {
+	name: string;
+	propertyName: string;
+	required: boolean;
+	deprecated: boolean;
+	documentation: string | null;
+	declaredIn: string;
+}
+
+export interface ObliqueAngularTemplateOutput {
+	name: string;
+	propertyName: string;
+	deprecated: boolean;
+	documentation: string | null;
+	declaredIn: string;
 }
 
 export type PublicApiProgramFactory = (publicApiPath: string) => typescript.Program;
@@ -125,6 +144,12 @@ interface ApiIndexContext {
 	typeChecker: typescript.TypeChecker;
 	repositoryRoot: string;
 	publicApiPath: string;
+	classBindings: Map<typescript.ClassDeclaration, ClassBindings>;
+}
+
+interface ClassBindings {
+	inputs: readonly ObliqueAngularTemplateInput[];
+	outputs: readonly ObliqueAngularTemplateOutput[];
 }
 
 interface PublicApiIndex {
@@ -132,21 +157,25 @@ interface PublicApiIndex {
 	angularTemplateApis: readonly ObliqueAngularTemplateApi[];
 }
 
-function createApiIndex(context: ApiIndexContext, moduleSymbol: typescript.Symbol): PublicApiIndex {
+function createApiIndex(
+	context: Omit<ApiIndexContext, 'classBindings'>,
+	moduleSymbol: typescript.Symbol
+): PublicApiIndex {
+	const bindingContext: ApiIndexContext = {...context, classBindings: new Map()};
 	const angularTemplateApis: ObliqueAngularTemplateApi[] = [];
 	const symbols = context.typeChecker
 		.getExportsOfModule(moduleSymbol)
 		.sort(compareSymbols)
 		.flatMap(exportedSymbol => {
 			const symbol = resolveAliasedSymbol(context.typeChecker, exportedSymbol);
-			const apiSymbol = createApiSymbol(context, exportedSymbol, symbol);
+			const apiSymbol = createApiSymbol(bindingContext, exportedSymbol, symbol);
 			if (apiSymbol === undefined) {
 				return [];
 			}
 			const declaration = getDeclaration(symbol);
 			const angularTemplateApi =
 				declaration !== undefined && typescript.isClassDeclaration(declaration)
-					? createAngularTemplateApi(context, apiSymbol, declaration)
+					? createAngularTemplateApi(bindingContext, apiSymbol, declaration)
 					: undefined;
 			if (angularTemplateApi !== undefined) {
 				angularTemplateApis.push(angularTemplateApi);
@@ -228,6 +257,7 @@ function createAngularTemplateApi(
 				documentation: apiSymbol.documentation,
 				declaredIn: apiSymbol.declaredIn,
 				public: true,
+				...getClassBindings(context, declaration),
 			};
 }
 
@@ -309,6 +339,347 @@ function getStaticSelectorProperty(metadata: typescript.ObjectLiteralExpression)
 		}
 	}
 	return undefined;
+}
+
+function getClassBindings(context: ApiIndexContext, declaration: typescript.ClassDeclaration): ClassBindings {
+	const cached = context.classBindings.get(declaration);
+	if (cached !== undefined) {
+		return cached;
+	}
+	// Store a placeholder before traversing heritage clauses to make malformed cycles harmless.
+	context.classBindings.set(declaration, {inputs: [], outputs: []});
+	const inherited = getBaseClassDeclaration(context.typeChecker, declaration);
+	const inheritedBindings = inherited === undefined ? {inputs: [], outputs: []} : getClassBindings(context, inherited);
+	const ownBindings = getOwnClassBindings(context, declaration);
+	const bindings = {
+		inputs: mergeBindings(inheritedBindings.inputs, ownBindings.inputs),
+		outputs: mergeBindings(inheritedBindings.outputs, ownBindings.outputs),
+	};
+	context.classBindings.set(declaration, bindings);
+	return bindings;
+}
+
+function getBaseClassDeclaration(
+	typeChecker: typescript.TypeChecker,
+	declaration: typescript.ClassDeclaration
+): typescript.ClassDeclaration | undefined {
+	const extendsClause = declaration.heritageClauses?.find(
+		clause => clause.token === typescript.SyntaxKind.ExtendsKeyword
+	);
+	const type = extendsClause?.types[0];
+	if (type === undefined) {
+		return undefined;
+	}
+	const symbol = typeChecker.getSymbolAtLocation(type.expression);
+	// istanbul ignore next — resolveAliasedSymbol call only with resolved base class symbols
+	const base = symbol === undefined ? undefined : resolveAliasedSymbol(typeChecker, symbol);
+	return base?.declarations?.find(typescript.isClassDeclaration);
+}
+
+function mergeBindings<T extends ObliqueAngularTemplateInput | ObliqueAngularTemplateOutput>(
+	inherited: readonly T[],
+	owned: readonly T[]
+): readonly T[] {
+	const bindings = new Map(inherited.map(binding => [binding.name, binding]));
+	for (const binding of owned) {
+		bindings.set(binding.name, binding);
+	}
+	return [...bindings.values()].sort((first, second) => first.name.localeCompare(second.name, 'en'));
+}
+
+function getOwnClassBindings(context: ApiIndexContext, declaration: typescript.ClassDeclaration): ClassBindings {
+	const inputs: ObliqueAngularTemplateInput[] = [];
+	const outputs: ObliqueAngularTemplateOutput[] = [];
+	for (const member of declaration.members) {
+		const propertyName = getMemberName(member);
+		if (propertyName === undefined) {
+			continue;
+		}
+		const bindingMetadata = getDecoratorBinding(context, member, propertyName);
+		if (bindingMetadata !== undefined) {
+			(bindingMetadata.kind === 'input' ? inputs : outputs).push(bindingMetadata.binding);
+			continue;
+		}
+		const signalBinding = getSignalBinding(context, member, propertyName);
+		if (signalBinding !== undefined) {
+			inputs.push(...signalBinding.inputs);
+			outputs.push(...signalBinding.outputs);
+		}
+	}
+	const hostBindings = getExplicitHostDirectiveBindings(context, declaration);
+	return {inputs: mergeBindings(inputs, hostBindings.inputs), outputs: mergeBindings(outputs, hostBindings.outputs)};
+}
+
+function getExplicitHostDirectiveBindings(
+	context: ApiIndexContext,
+	declaration: typescript.ClassDeclaration
+): ClassBindings {
+	const decorator = (typescript.getDecorators(declaration) ?? []).find(candidate => {
+		const name = getAngularCoreDecoratorName(context.typeChecker, candidate);
+		return name === 'Component' || name === 'Directive';
+	});
+	if (decorator === undefined || !typescript.isCallExpression(decorator.expression)) {
+		return {inputs: [], outputs: []};
+	}
+	const metadata = decorator.expression.arguments[0];
+	if (metadata === undefined || !typescript.isObjectLiteralExpression(metadata)) {
+		return {inputs: [], outputs: []};
+	}
+	const hostDirectives = getObjectArrayProperty(metadata, 'hostDirectives');
+	if (hostDirectives === undefined) {
+		return {inputs: [], outputs: []};
+	}
+	const inputs: ObliqueAngularTemplateInput[] = [];
+	const outputs: ObliqueAngularTemplateOutput[] = [];
+	for (const hostDirective of hostDirectives.elements) {
+		if (!typescript.isObjectLiteralExpression(hostDirective)) {
+			continue;
+		}
+		const directiveExpression = getObjectExpressionProperty(hostDirective, 'directive');
+		if (directiveExpression === undefined) {
+			continue;
+		}
+		const symbol = context.typeChecker.getSymbolAtLocation(directiveExpression);
+		const hostClass =
+			symbol === undefined
+				? undefined
+				: resolveAliasedSymbol(context.typeChecker, symbol).declarations?.find(typescript.isClassDeclaration);
+		if (hostClass === undefined) {
+			continue;
+		}
+		const hostBindings = getClassBindings(context, hostClass);
+		inputs.push(...getExposedHostBindings(hostBindings.inputs, getObjectStringArrayProperty(hostDirective, 'inputs')));
+		outputs.push(
+			...getExposedHostBindings(hostBindings.outputs, getObjectStringArrayProperty(hostDirective, 'outputs'))
+		);
+	}
+	return {inputs, outputs};
+}
+
+function getExposedHostBindings<T extends ObliqueAngularTemplateInput | ObliqueAngularTemplateOutput>(
+	bindings: readonly T[],
+	exposures: readonly string[] | undefined
+): readonly T[] {
+	if (exposures === undefined) {
+		return [];
+	}
+	return exposures.flatMap(exposure => {
+		const [propertyName, alias] = exposure.split(':').map(part => part.trim());
+		const binding = bindings.find(candidate => candidate.name === propertyName);
+		return binding === undefined || propertyName === undefined ? [] : [{...binding, name: alias || binding.name}];
+	});
+}
+
+function getObjectArrayProperty(
+	metadata: typescript.ObjectLiteralExpression,
+	propertyName: string
+): typescript.ArrayLiteralExpression | undefined {
+	const expression = getObjectExpressionProperty(metadata, propertyName);
+	return expression !== undefined && typescript.isArrayLiteralExpression(expression) ? expression : undefined;
+}
+
+function getObjectStringArrayProperty(
+	metadata: typescript.ObjectLiteralExpression,
+	propertyName: string
+): readonly string[] | undefined {
+	const array = getObjectArrayProperty(metadata, propertyName);
+	if (array === undefined || !array.elements.every(typescript.isStringLiteral)) {
+		return undefined;
+	}
+	// istanbul ignore next — unreachable; all elements confirmed to be string literals by guard above
+	return array.elements.flatMap(element => (typescript.isStringLiteral(element) ? [element.text] : []));
+}
+
+function getObjectExpressionProperty(
+	metadata: typescript.ObjectLiteralExpression,
+	propertyName: string
+): typescript.Expression | undefined {
+	const property = metadata.properties.find(
+		(candidate): candidate is typescript.PropertyAssignment =>
+			typescript.isPropertyAssignment(candidate) && getPropertyName(candidate.name) === propertyName
+	);
+	return property?.initializer;
+}
+
+function getMemberName(member: typescript.ClassElement): string | undefined {
+	return 'name' in member && member.name !== undefined ? getPropertyName(member.name) : undefined;
+}
+
+function getDecoratorBinding(
+	context: ApiIndexContext,
+	member: typescript.ClassElement,
+	propertyName: string
+): {kind: 'input' | 'output'; binding: ObliqueAngularTemplateInput | ObliqueAngularTemplateOutput} | undefined {
+	// istanbul ignore next — canHaveDecorators defensive check; getDecorators type guards prevent falsy decorators
+	for (const decorator of (typescript.canHaveDecorators(member) ? typescript.getDecorators(member) : undefined) ?? []) {
+		const decoratorName = getAngularCoreDecoratorName(context.typeChecker, decorator);
+		if (decoratorName !== 'Input' && decoratorName !== 'Output') {
+			continue;
+		}
+		const options = getDecoratorOptions(decorator);
+		if (options === undefined) {
+			continue;
+		}
+		const name = options.alias ?? propertyName;
+		const details = getMemberDetails(context, member);
+		return decoratorName === 'Input'
+			? {kind: 'input', binding: {name, propertyName, required: options.required, ...details}}
+			: {kind: 'output', binding: {name, propertyName, ...details}};
+	}
+	return undefined;
+}
+
+function getDecoratorOptions(decorator: typescript.Decorator): {alias?: string; required: boolean} | undefined {
+	if (!typescript.isCallExpression(decorator.expression)) {
+		return undefined;
+	}
+	const [argument] = decorator.expression.arguments;
+	if (argument === undefined) {
+		return {required: false};
+	}
+	if (typescript.isStringLiteral(argument)) {
+		return {alias: argument.text, required: false};
+	}
+	if (!typescript.isObjectLiteralExpression(argument)) {
+		return undefined;
+	}
+	return {
+		alias: getStaticStringProperty(argument, 'alias'),
+		required: getStaticBooleanProperty(argument, 'required') ?? false,
+	};
+}
+
+function getSignalBinding(
+	context: ApiIndexContext,
+	member: typescript.ClassElement,
+	propertyName: string
+): ClassBindings | undefined {
+	if (
+		!typescript.isPropertyDeclaration(member) ||
+		member.initializer === undefined ||
+		!typescript.isCallExpression(member.initializer)
+	) {
+		return undefined;
+	}
+	const signalName = getAngularCoreCallName(context.typeChecker, member.initializer.expression);
+	if (signalName !== 'input' && signalName !== 'output' && signalName !== 'model') {
+		return undefined;
+	}
+	const required =
+		typescript.isPropertyAccessExpression(member.initializer.expression) &&
+		member.initializer.expression.name.text === 'required';
+	const options = getSignalOptions(member.initializer, signalName, required);
+	if (options === undefined) {
+		return undefined;
+	}
+	const name = options.alias ?? propertyName;
+	const details = getMemberDetails(context, member);
+	if (signalName === 'input') {
+		return {inputs: [{name, propertyName, required, ...details}], outputs: []};
+	}
+	if (signalName === 'output') {
+		return {inputs: [], outputs: [{name, propertyName, ...details}]};
+	}
+	return {
+		inputs: [{name, propertyName, required, ...details}],
+		outputs: [{name: `${name}Change`, propertyName: `${propertyName}Change`, ...details}],
+	};
+}
+
+function getSignalOptions(
+	call: typescript.CallExpression,
+	signalName: 'input' | 'output' | 'model',
+	required: boolean
+): {alias?: string} | undefined {
+	const optionsIndex = signalName === 'output' || required ? 0 : 1;
+	const options = call.arguments[optionsIndex];
+	if (options === undefined) {
+		return {};
+	}
+	if (!typescript.isObjectLiteralExpression(options)) {
+		return undefined;
+	}
+	const alias = getStaticStringProperty(options, 'alias');
+	return alias === undefined && hasProperty(options, 'alias') ? undefined : {alias};
+}
+
+function getMemberDetails(
+	context: ApiIndexContext,
+	member: typescript.ClassElement
+): {
+	deprecated: boolean;
+	documentation: string | null;
+	declaredIn: string;
+} {
+	// istanbul ignore next — defensive member name guard; all analyzed class members have names
+	const symbol =
+		'name' in member && member.name !== undefined ? context.typeChecker.getSymbolAtLocation(member.name) : undefined;
+	return {
+		deprecated:
+			// istanbul ignore next — defensive undefined symbol handling
+			symbol?.getJsDocTags(context.typeChecker).some(tag => tag.name === 'deprecated') ?? false,
+		documentation:
+			// istanbul ignore next — defensive symbol undefined check; all analyzed members have symbols
+			symbol === undefined ? null : getDocumentation(context.typeChecker, symbol),
+		declaredIn: getRepositoryRelativePath(context.repositoryRoot, member.getSourceFile().fileName),
+	};
+}
+
+function getAngularCoreCallName(
+	typeChecker: typescript.TypeChecker,
+	expression: typescript.Expression
+): string | undefined {
+	if (typescript.isPropertyAccessExpression(expression)) {
+		const baseSymbol = typeChecker.getSymbolAtLocation(expression.expression);
+		if (
+			baseSymbol !== undefined &&
+			isAngularCoreDecoratorImport(typeChecker, expression.expression, baseSymbol) &&
+			['input', 'model'].includes(resolveAliasedSymbol(typeChecker, baseSymbol).getName())
+		) {
+			return resolveAliasedSymbol(typeChecker, baseSymbol).getName();
+		}
+	}
+	const target = typescript.isPropertyAccessExpression(expression) ? expression.name : expression;
+	const symbol = typeChecker.getSymbolAtLocation(target);
+	return symbol !== undefined && isAngularCoreDecoratorImport(typeChecker, expression, symbol)
+		? resolveAliasedSymbol(typeChecker, symbol).getName()
+		: undefined;
+}
+
+function getStaticStringProperty(
+	metadata: typescript.ObjectLiteralExpression,
+	propertyName: string
+): string | undefined {
+	const property = metadata.properties.find(
+		(candidate): candidate is typescript.PropertyAssignment =>
+			typescript.isPropertyAssignment(candidate) && getPropertyName(candidate.name) === propertyName
+	);
+	return property !== undefined && typescript.isStringLiteral(property.initializer)
+		? property.initializer.text
+		: undefined;
+}
+
+function getStaticBooleanProperty(
+	metadata: typescript.ObjectLiteralExpression,
+	propertyName: string
+): boolean | undefined {
+	const property = metadata.properties.find(
+		(candidate): candidate is typescript.PropertyAssignment =>
+			typescript.isPropertyAssignment(candidate) && getPropertyName(candidate.name) === propertyName
+	);
+	if (property?.initializer.kind === typescript.SyntaxKind.TrueKeyword) {
+		return true;
+	}
+	if (property?.initializer.kind === typescript.SyntaxKind.FalseKeyword) {
+		return false;
+	}
+	return undefined;
+}
+
+function hasProperty(metadata: typescript.ObjectLiteralExpression, propertyName: string): boolean {
+	return metadata.properties.some(
+		candidate => typescript.isPropertyAssignment(candidate) && getPropertyName(candidate.name) === propertyName
+	);
 }
 
 function getPropertyName(name: typescript.PropertyName): string | undefined {

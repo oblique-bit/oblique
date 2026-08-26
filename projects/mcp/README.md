@@ -89,8 +89,12 @@ make the submitted code invalid, and the tool never applies an autofix.
 source in memory with the Angular template parser and never executes expressions, reads project files, or applies an
 autofix. The checked-out `projects/oblique/src/public_api.ts` boundary determines public Oblique components and
 directives: public `ob-*` component selectors are checked, known public directives are recognized, and deprecated
-public template APIs can be reported. Unknown directive-like attributes are intentionally not reported, because this
-tool does not claim ownership of arbitrary application attributes. Arbitrary input and output validation is also not
-implemented yet.
+public template APIs can be reported. It also understands classic and signal inputs/outputs, aliases, required inputs,
+inheritance, models and explicitly exposed host-directive bindings. `bindingDiagnostics` defaults to `safe`, which only
+reports proven missing required and deprecated Oblique bindings. `verbose` can additionally report bindings not exposed
+by matched public Oblique APIs; those informational findings do not state that Angular itself is invalid, because another
+directive may own the binding. The tool does not type-check expressions, load a consumer directive registry or apply an
+autofix. Unknown directive-like attributes are intentionally not reported, because this tool does not claim ownership
+of arbitrary application attributes.
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.

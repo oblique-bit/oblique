@@ -27,7 +27,14 @@ const publicApiReader: ObliqueTemplatePublicApiReader = {getAngularTemplateApis:
 
 describe('check_oblique_template tool', () => {
 	it('uses strict non-whitespace bounded input and structured output schemas', () => {
-		expect(checkObliqueTemplateSchema.parse({code: '<div></div>'})).toEqual({code: '<div></div>'});
+		expect(checkObliqueTemplateSchema.parse({code: '<div></div>'})).toEqual({
+			code: '<div></div>',
+			bindingDiagnostics: 'safe',
+		});
+		expect(checkObliqueTemplateSchema.parse({code: '<div></div>', bindingDiagnostics: 'verbose'})).toEqual({
+			code: '<div></div>',
+			bindingDiagnostics: 'verbose',
+		});
 		expect(checkObliqueTemplateSchema.safeParse({code: ''}).success).toBe(false);
 		expect(checkObliqueTemplateSchema.safeParse({code: ' \n\t '}).success).toBe(false);
 		expect(checkObliqueTemplateSchema.safeParse({code: 'x'.repeat(maximumObliqueTemplateCodeLength)}).success).toBe(
@@ -89,7 +96,7 @@ describe('check_oblique_template tool', () => {
 	it('provides a synchronous direct analysis helper without filesystem metadata', () => {
 		const analyzer = new ObliqueTemplateAnalyzer(publicApiReader);
 
-		expect(getObliqueTemplateCheck(analyzer, '<div></div>', packageMetadata)).toEqual({
+		expect(getObliqueTemplateCheck(analyzer, {code: '<div></div>'}, packageMetadata)).toEqual({
 			obliqueVersion: '15.4.4',
 			valid: true,
 			summary: {errors: 0, warnings: 0, info: 0},

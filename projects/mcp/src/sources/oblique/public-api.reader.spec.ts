@@ -148,26 +148,28 @@ describe('ObliquePublicApiReader', () => {
 	it('indexes statically-known public Angular component and directive selectors only', () => {
 		const reader = createFixtureReader();
 
-		expect(reader.getAngularTemplateApis()).toEqual([
-			expect.objectContaining({
-				symbol: 'PublicFixtureDirective',
-				kind: 'directive',
-				selector: '[obPublicFixture]',
-				public: true,
-			}),
-			expect.objectContaining({
-				symbol: 'PublicFixtureComponent',
-				kind: 'component',
-				selector: 'ob-public-fixture',
-				public: true,
-			}),
-			expect.objectContaining({
-				symbol: 'StringKeySelectorFixtureComponent',
-				kind: 'component',
-				selector: 'ob-string-key-fixture',
-				public: true,
-			}),
-		]);
+		expect(reader.getAngularTemplateApis()).toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({
+					symbol: 'PublicFixtureDirective',
+					kind: 'directive',
+					selector: '[obPublicFixture]',
+					public: true,
+				}),
+				expect.objectContaining({
+					symbol: 'PublicFixtureComponent',
+					kind: 'component',
+					selector: 'ob-public-fixture',
+					public: true,
+				}),
+				expect.objectContaining({
+					symbol: 'StringKeySelectorFixtureComponent',
+					kind: 'component',
+					selector: 'ob-string-key-fixture',
+					public: true,
+				}),
+			])
+		);
 		expect(reader.getAngularTemplateApis()).not.toEqual(
 			expect.arrayContaining([
 				expect.objectContaining({symbol: 'ComputedMetadataFixtureComponent'}),
@@ -202,6 +204,83 @@ describe('ObliquePublicApiReader', () => {
 		);
 	});
 
+	it('extracts public classic, signal, inherited and explicitly exposed host-directive bindings', () => {
+		const api = createFixtureReader()
+			.getAngularTemplateApis()
+			.find(candidate => candidate.symbol === 'BindingFixtureComponent');
+
+		expect(api).toMatchObject({selector: 'ob-binding-fixture'});
+		expect(api?.inputs).toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({name: 'aliasInput', propertyName: 'aliasedInput'}),
+				expect.objectContaining({name: 'requiredInput', required: true}),
+				expect.objectContaining({name: 'transformedInput', propertyName: 'transformedInput'}),
+				expect.objectContaining({name: 'date', required: true}),
+				expect.objectContaining({name: 'publicFormat', propertyName: 'format'}),
+				expect.objectContaining({name: 'baseSignal'}),
+				expect.objectContaining({name: 'hostInput', propertyName: 'exposedInput'}),
+				expect.objectContaining({name: 'oldInput', deprecated: true}),
+			])
+		);
+		expect(api?.inputs).not.toEqual(expect.arrayContaining([expect.objectContaining({name: 'hiddenInput'})]));
+		expect(api?.outputs).toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({name: 'aliasOutput', propertyName: 'aliasedOutput'}),
+				expect.objectContaining({name: 'baseOutput'}),
+				expect.objectContaining({name: 'hostOutput', propertyName: 'exposedOutput'}),
+				expect.objectContaining({name: 'publicClosed', propertyName: 'closed'}),
+				expect.objectContaining({name: 'oldOutput', deprecated: true}),
+			])
+		);
+		expect(api?.outputs).not.toEqual(expect.arrayContaining([expect.objectContaining({name: 'hiddenOutput'})]));
+		expect(
+			createFixtureReader()
+				.getAngularTemplateApis()
+				.find(candidate => candidate.symbol === 'LocalBindingFixtureComponent')
+		).toMatchObject({
+			inputs: [],
+			outputs: [],
+		});
+	});
+
+	it('covers static binding variants and skips dynamic binding or host metadata conservatively', () => {
+		const api = createFixtureReader()
+			.getAngularTemplateApis()
+			.find(candidate => candidate.symbol === 'BindingCoverageFixtureComponent');
+
+		expect(api?.inputs).toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({name: 'configuredAlias', required: true}),
+				expect.objectContaining({name: 'explicitlyOptionalInput', required: false}),
+				expect.objectContaining({name: 'plainSignal'}),
+				expect.objectContaining({name: 'requiredSignal', required: true}),
+				expect.objectContaining({name: 'value'}),
+				expect.objectContaining({name: 'requiredValue', required: true}),
+				expect.objectContaining({name: 'publicValue'}),
+				expect.objectContaining({name: 'exposedInput'}),
+			])
+		);
+		expect(api?.inputs).not.toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({name: 'dynamicInput'}),
+				expect.objectContaining({name: 'dynamicDecoratorInput'}),
+				expect.objectContaining({name: 'dynamicSignal'}),
+			])
+		);
+		expect(api?.outputs).toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({name: 'plainOutput'}),
+				expect.objectContaining({name: 'outputAlias'}),
+				expect.objectContaining({name: 'signalOutput'}),
+				expect.objectContaining({name: 'valueChange'}),
+				expect.objectContaining({name: 'requiredValueChange'}),
+				expect.objectContaining({name: 'publicValueChange'}),
+				expect.objectContaining({name: 'exposedOutput'}),
+			])
+		);
+		expect(api?.outputs).not.toEqual(expect.arrayContaining([expect.objectContaining({name: 'dynamicSignalOutput'})]));
+	});
+
 	it('does not expose an internal symbol, unknown symbol or a case-variant', () => {
 		const reader = createFixtureReader();
 
@@ -230,7 +309,7 @@ describe('ObliquePublicApiReader', () => {
 
 		expect(firstResult).toEqual(secondResult);
 		expect(unsafeLookup).toBeUndefined();
-		expect(selectors).toHaveLength(3);
+		expect(selectors).toHaveLength(11);
 		expect(programFactory).toHaveBeenCalledTimes(1);
 		expect(programFactory).toHaveBeenCalledWith(fixturePublicApiPath);
 	});
@@ -373,5 +452,62 @@ describe('ObliquePublicApiReader', () => {
 
 	it('rejects a real internal Oblique class that is not exported from public_api.ts', () => {
 		expect(new ObliquePublicApiReader(repositoryRoot).getApi('MasterLayoutComponentBase')).toBeUndefined();
+	});
+
+	it('extracts public bindings from accessor members (getters and setters)', () => {
+		const api = createFixtureReader()
+			.getAngularTemplateApis()
+			.find(candidate => candidate.symbol === 'AccessorFixtureComponent');
+
+		expect(api).toMatchObject({
+			selector: 'ob-accessor-fixture',
+		});
+		expect(api?.inputs).toEqual(expect.arrayContaining([expect.objectContaining({name: 'value'})]));
+		expect(api?.outputs).toEqual(expect.arrayContaining([expect.objectContaining({name: 'valueChanged'})]));
+	});
+
+	it('prefers non-deprecated bindings when they override deprecated inherited bindings', () => {
+		const api = createFixtureReader()
+			.getAngularTemplateApis()
+			.find(candidate => candidate.symbol === 'OverrideDeprecatedFixtureComponent');
+
+		expect(api?.inputs).toEqual(expect.arrayContaining([expect.objectContaining({name: 'deprecatedValue'})]));
+	});
+
+	it('handles signal inputs with edge-case alias configurations conservatively', () => {
+		const api = createFixtureReader()
+			.getAngularTemplateApis()
+			.find(candidate => candidate.symbol === 'SignalEdgeCasesComponent');
+
+		expect(api?.inputs).toEqual([]);
+	});
+
+	it('extracts bindings from components that inherit from exported base components', () => {
+		const api = createFixtureReader()
+			.getAngularTemplateApis()
+			.find(candidate => candidate.symbol === 'InheritedFromExportedComponent');
+
+		expect(api?.inputs).toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({name: 'baseInput'}),
+				expect.objectContaining({name: 'childInput'}),
+			])
+		);
+		expect(api?.outputs).toEqual(expect.arrayContaining([expect.objectContaining({name: 'baseOutput'})]));
+	});
+
+	it('handles hostDirectives with non-string array elements conservatively', () => {
+		const api = createFixtureReader()
+			.getAngularTemplateApis()
+			.find(candidate => candidate.symbol === 'InheritedFromExportedComponent');
+
+		expect(api?.inputs).not.toEqual(expect.arrayContaining([expect.objectContaining({name: 'hostEdgeInput'})]));
+	});
+
+	it('indexes the exported base component', () => {
+		const api = createFixtureReader().getApi('ExportedBaseComponent');
+		expect(api).toMatchObject({
+			kind: 'component',
+		});
 	});
 });

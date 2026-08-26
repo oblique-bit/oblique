@@ -20,19 +20,27 @@ export * from './lib/loop-a';
 export {DeprecatedPublicType} from './lib/deprecated-public-type';
 export {
 	AngularNonTemplateDecoratorFixture,
+	AccessorFixtureComponent,
+	BindingFixtureComponent,
+	BindingCoverageFixtureComponent,
 	ComputedMetadataFixtureComponent,
 	DynamicFixtureComponent,
 	EmptySelectorFixtureComponent,
+	ExportedBaseComponent,
+	InheritedFromExportedComponent,
 	LocalComponentDecoratorFixture,
 	LocalDirectiveDecoratorFixture,
 	LocalInjectableDecoratorFixture,
 	LocalNgModuleDecoratorFixture,
 	LocalPipeDecoratorFixture,
+	LocalBindingFixtureComponent,
 	MissingMetadataFixtureComponent,
 	NonCallDecoratorFixtureComponent,
 	NumericKeySelectorFixtureComponent,
+	OverrideDeprecatedFixtureComponent,
 	PublicFixtureComponent,
 	PublicFixtureDirective,
+	SignalEdgeCasesComponent,
 	StringKeySelectorFixtureComponent,
 } from './lib/angular-template-apis';
 export const DirectPublicConstant = 1;

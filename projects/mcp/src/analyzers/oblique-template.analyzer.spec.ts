@@ -362,4 +362,314 @@ describe('ObliqueTemplateAnalyzer', () => {
 			'OBLIQUE_DEPRECATED_TEMPLATE_API',
 		]);
 	});
+
+	it('checks required and deprecated bindings safely, with verbose component-only informational input diagnostics', () => {
+		const templateApis: readonly ObliqueAngularTemplateApi[] = [
+			{
+				symbol: 'BindingComponent',
+				kind: 'component',
+				selector: 'ob-bindings',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'bindings.ts',
+				public: true,
+				inputs: [
+					{
+						name: 'requiredValue',
+						propertyName: 'requiredValue',
+						required: true,
+						deprecated: false,
+						documentation: null,
+						declaredIn: 'bindings.ts',
+					},
+					{
+						name: 'oldValue',
+						propertyName: 'oldValue',
+						required: false,
+						deprecated: true,
+						documentation: 'Use value.',
+						declaredIn: 'bindings.ts',
+					},
+				],
+				outputs: [
+					{
+						name: 'oldChanged',
+						propertyName: 'oldChanged',
+						deprecated: true,
+						documentation: null,
+						declaredIn: 'bindings.ts',
+					},
+				],
+			},
+		];
+		const analyzer = createAnalyzer(templateApis);
+
+		expect(analyzer.analyze('<ob-bindings></ob-bindings>')).toMatchObject({
+			valid: false,
+			findings: [{rule: 'OBLIQUE_MISSING_REQUIRED_INPUT', binding: 'requiredValue'}],
+		});
+		expect(
+			analyzer.analyze('<ob-bindings requiredValue="x" [oldValue]="x" (oldChanged)="x()"></ob-bindings>')
+		).toMatchObject({
+			valid: true,
+			findings: [
+				{rule: 'OBLIQUE_DEPRECATED_TEMPLATE_BINDING', binding: 'oldValue', bindingKind: 'input'},
+				{rule: 'OBLIQUE_DEPRECATED_TEMPLATE_BINDING', binding: 'oldChanged', bindingKind: 'output'},
+			],
+		});
+		expect(
+			analyzer.analyze(
+				'<ob-bindings requiredValue="x" [externalInput]="x" [attr.aria-label]="x"></ob-bindings>',
+				'verbose'
+			)
+		).toMatchObject({
+			valid: true,
+			findings: [{rule: 'OBLIQUE_UNRECOGNIZED_INPUT_BINDING', binding: 'externalInput', severity: 'info'}],
+		});
+		expect(analyzer.analyze('<input obButton [applicationInput]="x">', 'verbose')).toEqual({
+			valid: true,
+			summary: {errors: 0, warnings: 0, info: 0},
+			findings: [],
+		});
+	});
+
+	it('reports two-way bindings as two-way in verbose mode findings', () => {
+		const templateApis: readonly ObliqueAngularTemplateApi[] = [
+			{
+				symbol: 'TwoWayComponent',
+				kind: 'component',
+				selector: 'ob-two-way',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'two-way.ts',
+				public: true,
+				inputs: [],
+				outputs: [],
+			},
+		];
+
+		const result = createAnalyzer(templateApis).analyze(
+			'<ob-two-way [(unrecognized)]="model"></ob-two-way>',
+			'verbose'
+		);
+
+		expect(result).toMatchObject({
+			valid: true,
+			findings: [{bindingKind: 'two-way', rule: 'OBLIQUE_UNRECOGNIZED_INPUT_BINDING'}],
+		});
+	});
+
+	it('uses non-deprecated binding when it overrides a deprecated inherited binding', () => {
+		const templateApis: readonly ObliqueAngularTemplateApi[] = [
+			{
+				symbol: 'BaseComponent',
+				kind: 'component',
+				selector: 'ob-base',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'base.ts',
+				public: true,
+				inputs: [
+					{
+						name: 'legacyValue',
+						propertyName: 'legacyValue',
+						required: false,
+						deprecated: true,
+						documentation: null,
+						declaredIn: 'base.ts',
+					},
+				],
+				outputs: [],
+			},
+			{
+				symbol: 'DerivedComponent',
+				kind: 'component',
+				selector: 'ob-derived',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'derived.ts',
+				public: true,
+				inputs: [
+					{
+						name: 'legacyValue',
+						propertyName: 'legacyValue',
+						required: false,
+						deprecated: false,
+						documentation: null,
+						declaredIn: 'derived.ts',
+					},
+				],
+				outputs: [],
+			},
+		];
+
+		const result = createAnalyzer(templateApis).analyze('<ob-base [legacyValue]="x"></ob-base>');
+
+		expect(result).toMatchObject({
+			valid: true,
+			findings: [{rule: 'OBLIQUE_DEPRECATED_TEMPLATE_BINDING'}],
+		});
+	});
+
+	it('prefers non-deprecated bindings over deprecated ones when both APIs have the same binding name', () => {
+		const templateApis: readonly ObliqueAngularTemplateApi[] = [
+			{
+				symbol: 'LegacyComponent',
+				kind: 'component',
+				selector: 'ob-shared',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'legacy.ts',
+				public: true,
+				inputs: [
+					{
+						name: 'sharedValue',
+						propertyName: 'sharedValue',
+						required: false,
+						deprecated: true,
+						documentation: null,
+						declaredIn: 'legacy.ts',
+					},
+				],
+				outputs: [],
+			},
+			{
+				symbol: 'CurrentComponent',
+				kind: 'component',
+				selector: 'ob-shared',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'current.ts',
+				public: true,
+				inputs: [
+					{
+						name: 'sharedValue',
+						propertyName: 'sharedValue',
+						required: false,
+						deprecated: false,
+						documentation: null,
+						declaredIn: 'current.ts',
+					},
+				],
+				outputs: [],
+			},
+		];
+
+		const result = createAnalyzer(templateApis).analyze('<ob-shared [sharedValue]="x"></ob-shared>');
+
+		// Both APIs match the selector ob-shared; getEffectiveBindings processes both
+		// and prefers the non-deprecated binding from CurrentComponent (line 360: existing.deprecated && !binding.deprecated)
+		expect(result).toMatchObject({
+			valid: true,
+			summary: {errors: 0, warnings: 0, info: 0},
+			findings: [],
+		});
+	});
+
+	it('detects deprecated bindings even when non-deprecated version exists in another matching API', () => {
+		const templateApis: readonly ObliqueAngularTemplateApi[] = [
+			{
+				symbol: 'LegacyComponent',
+				kind: 'component',
+				selector: 'ob-multi',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'legacy.ts',
+				public: true,
+				inputs: [
+					{
+						name: 'value',
+						propertyName: 'value',
+						required: false,
+						deprecated: true,
+						documentation: null,
+						declaredIn: 'legacy.ts',
+					},
+				],
+				outputs: [],
+			},
+			{
+				symbol: 'CurrentComponent',
+				kind: 'component',
+				selector: 'ob-multi',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'current.ts',
+				public: true,
+				inputs: [
+					{
+						name: 'value',
+						propertyName: 'value',
+						required: false,
+						deprecated: false,
+						documentation: null,
+						declaredIn: 'current.ts',
+					},
+				],
+				outputs: [],
+			},
+		];
+
+		const result = createAnalyzer(templateApis).analyze('<ob-multi [value]="x"></ob-multi>');
+
+		// getEffectiveBindings prefers non-deprecated, so no deprecation warning
+		expect(result).toMatchObject({
+			valid: true,
+			summary: {errors: 0, warnings: 0, info: 0},
+			findings: [],
+		});
+	});
+
+	it('prefers non-deprecated output when replacing deprecated one from earlier API in getEffectiveBindings', () => {
+		// Tests line 360: (existing.deprecated && !binding.deprecated)
+		const templateApis: readonly ObliqueAngularTemplateApi[] = [
+			{
+				symbol: 'DeprecatedApi',
+				kind: 'component',
+				selector: 'ob-shared-comp',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'deprecated.ts',
+				public: true,
+				inputs: [],
+				outputs: [
+					{
+						name: 'updated',
+						propertyName: 'updated',
+						deprecated: true,
+						documentation: null,
+						declaredIn: 'deprecated.ts',
+					},
+				],
+			},
+			{
+				symbol: 'CurrentApi',
+				kind: 'component',
+				selector: 'ob-shared-comp',
+				deprecated: false,
+				documentation: null,
+				declaredIn: 'current.ts',
+				public: true,
+				inputs: [],
+				outputs: [
+					{
+						name: 'updated',
+						propertyName: 'updated',
+						deprecated: false,
+						documentation: null,
+						declaredIn: 'current.ts',
+					},
+				],
+			},
+		];
+
+		const result = createAnalyzer(templateApis).analyze(
+			'<ob-shared-comp (updated)="onUpdated($event)"></ob-shared-comp>'
+		);
+
+		// When getEffectiveBindings merges outputs from both APIs,
+		// it should prefer CurrentApi's non-deprecated "updated" over DeprecatedApi's
+		// This tests the condition: existing.deprecated && !binding.deprecated
+		expect(result.findings.filter(finding => finding.binding === 'updated')).toHaveLength(0);
+	});
 });

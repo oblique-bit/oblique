@@ -21,6 +21,7 @@ export const checkObliqueTemplateSchema = schema
 			.string()
 			.refine(code => code.trim().length > 0, 'Expected a non-empty Angular template.')
 			.max(maximumObliqueTemplateCodeLength),
+		bindingDiagnostics: schema.enum(['safe', 'verbose']).default('safe'),
 	})
 	.strict();
 
@@ -32,13 +33,18 @@ export const checkObliqueTemplateResultSchema = schema.object({
 		schema.object({
 			rule: schema.enum([
 				'OBLIQUE_DEPRECATED_TEMPLATE_API',
+				'OBLIQUE_DEPRECATED_TEMPLATE_BINDING',
+				'OBLIQUE_MISSING_REQUIRED_INPUT',
 				'OBLIQUE_UNKNOWN_COMPONENT_SELECTOR',
+				'OBLIQUE_UNRECOGNIZED_INPUT_BINDING',
 				'TEMPLATE_SYNTAX_ERROR',
 			]),
 			severity: schema.enum(['error', 'warning', 'info']),
 			message: schema.string(),
 			selector: schema.string().optional(),
 			symbol: schema.string().optional(),
+			binding: schema.string().optional(),
+			bindingKind: schema.enum(['input', 'output', 'two-way']).optional(),
 			location: schema.object({line: schema.number(), column: schema.number()}),
 			recommendation: schema.string(),
 		})
@@ -63,8 +69,8 @@ export function registerObliqueTemplateTool(
 			inputSchema: checkObliqueTemplateSchema,
 			outputSchema: checkObliqueTemplateResultSchema,
 		},
-		async ({code}) => {
-			const result = getObliqueTemplateCheck(analyzer, code, await readPackageMetadata());
+		async ({code, bindingDiagnostics}) => {
+			const result = getObliqueTemplateCheck(analyzer, {code, bindingDiagnostics}, await readPackageMetadata());
 			return {content: [{type: 'text', text: JSON.stringify(result)}], structuredContent: result};
 		}
 	);
@@ -72,8 +78,11 @@ export function registerObliqueTemplateTool(
 
 export function getObliqueTemplateCheck(
 	analyzer: ObliqueTemplateAnalyzer,
-	code: string,
+	request: {code: string; bindingDiagnostics?: 'safe' | 'verbose'},
 	packageMetadata: PackageMetadata
 ): ObliqueTemplateCheck {
-	return {obliqueVersion: getObliqueVersion(packageMetadata).obliqueVersion, ...analyzer.analyze(code)};
+	return {
+		obliqueVersion: getObliqueVersion(packageMetadata).obliqueVersion,
+		...analyzer.analyze(request.code, request.bindingDiagnostics),
+	};
 }
