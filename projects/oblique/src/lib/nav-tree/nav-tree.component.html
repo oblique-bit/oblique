@@ -61,10 +61,11 @@
 					(ob.navTree.item.toggleCollapsed)="item.collapsed = !item.collapsed"
 					[attr.id]="item.id ? (prefix ? prefix + '-' : '') + item.id : null"
 				>
+					<!-- eslint-disable @angular-eslint/template/role-has-required-aria -->
 					<a
 						class="ob-nav-link"
 						role="treeitem"
-						aria-selected="false"
+						[attr.aria-current]="isLinkActive(rla, item) ? 'page' : null"
 						[routerLink]="item.routes | obLocalize"
 						#rla="routerLinkActive"
 						routerLinkActive
