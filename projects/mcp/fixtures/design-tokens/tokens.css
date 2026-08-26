@@ -1,0 +1,23 @@
+/* Generated fixture: comments must not become tokens. */
+:root {
+	--ob-s-color-example: #ffffff;
+	--ob-s-spacing-example: 1rem;
+	--ob-s-shadow-example: 0 1px 2px rgba(0, 0, 0, 20%);
+	--ob-s-multiline-example: var(
+		--ob-s-color-example,
+		linear-gradient(to right, #000000 0%, #ffffff 50%, #123456 100%, #abcdef 150%, #fedcba 200%)
+	);
+	--ob-h-button-example: var(--ob-s-color-example);
+	--ob-c-button-example: var(--ob-s-spacing-example);
+	--custom-example: 2px;
+}
+
+.ob-dark {
+	--ob-s-color-example: var(--ob-s-shadow-example);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--ob-s-spacing-example: 0;
+	}
+}

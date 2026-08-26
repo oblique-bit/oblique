@@ -20,6 +20,7 @@ import {type ObliqueExamples, SdsExamplesReader} from './sources/sds/sds-example
 import {getObliqueComponent} from './tools/get-oblique-component.js';
 import {type SdsExamplesClient, getObliqueExamples} from './tools/get-oblique-examples.js';
 import {registerObliqueCodeTool} from './tools/check-oblique-code.js';
+import {registerDesignTokenSearchTool} from './tools/search-oblique-design-tokens.js';
 import {getMigrationResponse, migrationResultSchema, migrationSchema} from './tools/get-oblique-migration.js';
 import {type PackageMetadata, getObliqueMajorVersion, getObliqueVersion} from './tools/get-oblique-version.js';
 import {searchOblique} from './tools/search-oblique.js';
@@ -152,6 +153,7 @@ export function createObliqueMcpServer(options: CreateServerOptions = {}): McpSe
 	registerPublicApiTool(server, publicApiReader);
 	registerMigrationTool(server, migrationReader, packageMetadataReader);
 	registerObliqueCodeTool(server, publicApiReader, packageMetadataReader);
+	registerDesignTokenSearchTool(server);
 	return server;
 }
 

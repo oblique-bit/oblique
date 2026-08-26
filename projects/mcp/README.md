@@ -49,6 +49,8 @@ Configure an MCP client to execute `node projects/mcp/dist/server.js` with the r
   `{ "fromVersion": 14, "toVersion": 15 }`.
 - `check_oblique_code` performs read-only TypeScript API checks, for example
   `{ "code": "import {ObNotificationService} from '@oblique/oblique';" }`.
+- `search_oblique_design_tokens` finds checked-out Design System tokens, for example
+  `{ "query": "color interaction" }`.
 
 `projects/oblique/src/public_api.ts` is the authoritative boundary for APIs consumable from
 `@oblique/oblique`. `get_oblique_api` only returns symbols reachable from that entry point; it does not expose
@@ -67,5 +69,10 @@ For TypeScript API usage, `@oblique/oblique` is the supported package entry poin
 `@oblique/oblique/styles/css/*.css` assets are permitted; other Oblique subpaths are reported as internal imports.
 For namespace imports, direct properties and static string-literal element accesses are checked; dynamic element
 accesses are intentionally ignored.
+
+`search_oblique_design_tokens` reads the checked-out generated
+`projects/design-system/src/lib/css/layers/tokens.css` artifact; it does not contact Figma. By default it returns only
+project-usable semantic tokens. HTML and component tokens are internal implementation details and appear only with
+`{ "scope": "all" }`, clearly marked as unusable by projects. `total` is the number of matches before the result limit.
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.
