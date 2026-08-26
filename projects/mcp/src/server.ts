@@ -20,6 +20,7 @@ import {type ObliqueExamples, SdsExamplesReader} from './sources/sds/sds-example
 import {ObliqueDesignTokenReader} from './sources/design-system/design-token.reader.js';
 import {registerObliqueStylesTool} from './tools/check-oblique-styles.js';
 import {registerObliqueTemplateTool} from './tools/check-oblique-template.js';
+import {registerObliqueTemplateApiTool} from './tools/get-oblique-template-api.js';
 import {getObliqueComponent} from './tools/get-oblique-component.js';
 import {type SdsExamplesClient, getObliqueExamples} from './tools/get-oblique-examples.js';
 import {registerObliqueCodeTool} from './tools/check-oblique-code.js';
@@ -161,6 +162,7 @@ export function createObliqueMcpServer(options: CreateServerOptions = {}): McpSe
 	registerDesignTokenSearchTool(server, designTokenReader);
 	registerObliqueStylesTool(server, designTokenReader);
 	registerObliqueTemplateTool(server, publicApiReader, packageMetadataReader);
+	registerObliqueTemplateApiTool(server, publicApiReader, packageMetadataReader);
 	return server;
 }
 

@@ -55,6 +55,8 @@ Configure an MCP client to execute `node projects/mcp/dist/server.js` with the r
   `{ "language": "scss", "code": ".card { color: var(--ob-s3-color-text-default); }" }`.
 - `check_oblique_template` performs read-only Angular template API checks, for example
   `{ "code": "<ob-alert></ob-alert>" }`.
+- `get_oblique_template_api` returns the effective public Angular template contract, for example
+  `{ "symbol": "ObDateComponent" }` or `{ "selector": "[obInputClear]" }`.
 
 `projects/oblique/src/public_api.ts` is the authoritative boundary for APIs consumable from
 `@oblique/oblique`. `get_oblique_api` only returns symbols reachable from that entry point; it does not expose
@@ -96,5 +98,10 @@ by matched public Oblique APIs; those informational findings do not state that A
 directive may own the binding. The tool does not type-check expressions, load a consumer directive registry or apply an
 autofix. Unknown directive-like attributes are intentionally not reported, because this tool does not claim ownership
 of arbitrary application attributes.
+
+`get_oblique_template_api` reads the same checked-out public API index without executing Angular code or inspecting a
+consumer project. It exposes effective public component and directive selectors, consumer-visible input/output aliases,
+required and inherited bindings, and explicitly exposed host-directive bindings. Deprecated APIs and bindings remain in
+the result so clients can avoid them. Only symbols reachable from `projects/oblique/src/public_api.ts` are returned.
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.

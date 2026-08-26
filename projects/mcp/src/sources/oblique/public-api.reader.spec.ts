@@ -8,6 +8,7 @@ import {resolve} from 'node:path';
 import * as typescript from 'typescript';
 import {ObliqueCodeAnalyzer} from '../../analyzers/oblique-code.analyzer.js';
 import {ObliqueTemplateAnalyzer} from '../../analyzers/oblique-template.analyzer.js';
+import {getObliqueTemplateApi} from '../../tools/get-oblique-template-api.js';
 import {ObliquePublicApiReader, isTypeScriptIdentifier} from './public-api.reader.js';
 
 const fixtureRepositoryRoot = resolve(__dirname, '../../../fixtures/oblique-public-api');
@@ -326,6 +327,12 @@ describe('ObliquePublicApiReader', () => {
 			})
 		);
 		const reader = new ObliquePublicApiReader(fixtureRepositoryRoot, programFactory);
+		const packageMetadata = {
+			version: '15.4.4',
+			engines: {node: '>=22.12.0'},
+			dependencies: {},
+			repository: {url: 'https://example.test/oblique'},
+		};
 
 		expect(reader.getApi('PublicFixtureComponent')).toBeDefined();
 		expect(
@@ -333,6 +340,12 @@ describe('ObliquePublicApiReader', () => {
 		).toBe(true);
 		expect(new ObliqueTemplateAnalyzer(reader).analyze('<ob-public-fixture></ob-public-fixture>').valid).toBe(true);
 		expect(new ObliqueTemplateAnalyzer(reader).analyze('<ob-public-fixture></ob-public-fixture>').valid).toBe(true);
+		expect(getObliqueTemplateApi(reader, {symbol: 'PublicFixtureComponent'}, packageMetadata)).toMatchObject({
+			matches: [expect.objectContaining({symbol: 'PublicFixtureComponent'})],
+		});
+		expect(getObliqueTemplateApi(reader, {selector: 'ob-public-fixture'}, packageMetadata)).toMatchObject({
+			matches: [expect.objectContaining({symbol: 'PublicFixtureComponent'})],
+		});
 		expect(programFactory).toHaveBeenCalledTimes(1);
 	});
 
