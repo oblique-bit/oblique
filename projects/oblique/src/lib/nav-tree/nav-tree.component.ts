@@ -133,9 +133,9 @@ export class ObNavTreeComponent implements OnChanges, OnDestroy {
 
 export function defaultLabelFormatterFactory(
 	translate: TranslateService
-): (item: ObNavTreeItemModel, filterPattern: string) => string {
+): (item: ObNavTreeItemModel, filterPattern?: string) => string {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
-	const formatter = (item: ObNavTreeItemModel, filterPattern: string): string => {
+	const formatter = (item: ObNavTreeItemModel, filterPattern?: string): string => {
 		const pattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label: string = translate.instant(item.label, item.labelParams);
 		return pattern
