@@ -73,6 +73,7 @@ export default [
 	},
 	{
 		files: [
+			'projects/mcp/src/analyzers/oblique-code.analyzer.ts',
 			'projects/mcp/src/sources/oblique/migration.reader.ts',
 			'projects/mcp/src/sources/oblique/public-api.reader.ts',
 			'projects/mcp/src/sources/sds/sds-examples.reader.ts',

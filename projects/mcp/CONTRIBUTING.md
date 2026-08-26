@@ -12,3 +12,4 @@ Commits affecting the MCP package must use the **mcp** package and one of the fo
 | **search**    | Oblique documentation search, SDS example discovery and knowledge retrieval              |
 | **api**       | Oblique public API discovery and indexing                                                |
 | **migration** | Oblique upgrade migration discovery and guidance                                         |
+| **analysis**  | Oblique TypeScript static analysis                                                       |
