@@ -18,4 +18,21 @@ export {
 export * from './lib/barrel';
 export * from './lib/loop-a';
 export {DeprecatedPublicType} from './lib/deprecated-public-type';
+export {
+	AngularNonTemplateDecoratorFixture,
+	ComputedMetadataFixtureComponent,
+	DynamicFixtureComponent,
+	EmptySelectorFixtureComponent,
+	LocalComponentDecoratorFixture,
+	LocalDirectiveDecoratorFixture,
+	LocalInjectableDecoratorFixture,
+	LocalNgModuleDecoratorFixture,
+	LocalPipeDecoratorFixture,
+	MissingMetadataFixtureComponent,
+	NonCallDecoratorFixtureComponent,
+	NumericKeySelectorFixtureComponent,
+	PublicFixtureComponent,
+	PublicFixtureDirective,
+	StringKeySelectorFixtureComponent,
+} from './lib/angular-template-apis';
 export const DirectPublicConstant = 1;

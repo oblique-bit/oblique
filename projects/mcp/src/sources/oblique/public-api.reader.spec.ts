@@ -6,6 +6,8 @@
 
 import {resolve} from 'node:path';
 import * as typescript from 'typescript';
+import {ObliqueCodeAnalyzer} from '../../analyzers/oblique-code.analyzer.js';
+import {ObliqueTemplateAnalyzer} from '../../analyzers/oblique-template.analyzer.js';
 import {ObliquePublicApiReader, isTypeScriptIdentifier} from './public-api.reader.js';
 
 const fixtureRepositoryRoot = resolve(__dirname, '../../../fixtures/oblique-public-api');
@@ -143,6 +145,63 @@ describe('ObliquePublicApiReader', () => {
 		});
 	});
 
+	it('indexes statically-known public Angular component and directive selectors only', () => {
+		const reader = createFixtureReader();
+
+		expect(reader.getAngularTemplateApis()).toEqual([
+			expect.objectContaining({
+				symbol: 'PublicFixtureDirective',
+				kind: 'directive',
+				selector: '[obPublicFixture]',
+				public: true,
+			}),
+			expect.objectContaining({
+				symbol: 'PublicFixtureComponent',
+				kind: 'component',
+				selector: 'ob-public-fixture',
+				public: true,
+			}),
+			expect.objectContaining({
+				symbol: 'StringKeySelectorFixtureComponent',
+				kind: 'component',
+				selector: 'ob-string-key-fixture',
+				public: true,
+			}),
+		]);
+		expect(reader.getAngularTemplateApis()).not.toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({symbol: 'ComputedMetadataFixtureComponent'}),
+				expect.objectContaining({symbol: 'DynamicFixtureComponent'}),
+				expect.objectContaining({symbol: 'EmptySelectorFixtureComponent'}),
+				expect.objectContaining({symbol: 'MissingMetadataFixtureComponent'}),
+				expect.objectContaining({symbol: 'NonCallDecoratorFixtureComponent'}),
+				expect.objectContaining({symbol: 'NumericKeySelectorFixtureComponent'}),
+				expect.objectContaining({symbol: 'InternalFixtureComponent'}),
+				expect.objectContaining({symbol: 'InternalFixtureDirective'}),
+				expect.objectContaining({symbol: 'LocalComponentDecoratorFixture'}),
+				expect.objectContaining({symbol: 'LocalDirectiveDecoratorFixture'}),
+			])
+		);
+	});
+
+	it('requires @angular/core decorator provenance for Angular class kinds and selectors', () => {
+		const reader = createFixtureReader();
+
+		expect(reader.getApi('PublicFixtureComponent')).toMatchObject({kind: 'component'});
+		expect(reader.getApi('PublicFixtureDirective')).toMatchObject({kind: 'directive'});
+		expect(reader.getApi('LocalComponentDecoratorFixture')).toMatchObject({kind: 'class'});
+		expect(reader.getApi('LocalDirectiveDecoratorFixture')).toMatchObject({kind: 'class'});
+		expect(reader.getApi('LocalInjectableDecoratorFixture')).toMatchObject({kind: 'class'});
+		expect(reader.getApi('LocalNgModuleDecoratorFixture')).toMatchObject({kind: 'class'});
+		expect(reader.getApi('LocalPipeDecoratorFixture')).toMatchObject({kind: 'class'});
+		expect(reader.getAngularTemplateApis()).not.toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({selector: 'ob-fake'}),
+				expect.objectContaining({selector: '[obFake]'}),
+			])
+		);
+	});
+
 	it('does not expose an internal symbol, unknown symbol or a case-variant', () => {
 		const reader = createFixtureReader();
 
@@ -166,12 +225,36 @@ describe('ObliquePublicApiReader', () => {
 
 		const firstResult = reader.getApi('PublicEnum');
 		const secondResult = reader.getApi('PublicEnum');
+		const selectors = reader.getAngularTemplateApis();
 		const unsafeLookup = reader.getApi('../../outside-the-repository');
 
 		expect(firstResult).toEqual(secondResult);
 		expect(unsafeLookup).toBeUndefined();
+		expect(selectors).toHaveLength(3);
 		expect(programFactory).toHaveBeenCalledTimes(1);
 		expect(programFactory).toHaveBeenCalledWith(fixturePublicApiPath);
+	});
+
+	it('shares one public API Program between API, code and template analysis', () => {
+		const programFactory = jest.fn(publicApiPath =>
+			typescript.createProgram([publicApiPath], {
+				experimentalDecorators: true,
+				module: typescript.ModuleKind.ESNext,
+				moduleResolution: typescript.ModuleResolutionKind.Bundler,
+				noEmit: true,
+				skipLibCheck: true,
+				target: typescript.ScriptTarget.ES2022,
+			})
+		);
+		const reader = new ObliquePublicApiReader(fixtureRepositoryRoot, programFactory);
+
+		expect(reader.getApi('PublicFixtureComponent')).toBeDefined();
+		expect(
+			new ObliqueCodeAnalyzer(reader).analyze("import {PublicFixtureComponent} from '@oblique/oblique';").valid
+		).toBe(true);
+		expect(new ObliqueTemplateAnalyzer(reader).analyze('<ob-public-fixture></ob-public-fixture>').valid).toBe(true);
+		expect(new ObliqueTemplateAnalyzer(reader).analyze('<ob-public-fixture></ob-public-fixture>').valid).toBe(true);
+		expect(programFactory).toHaveBeenCalledTimes(1);
 	});
 
 	it('reports an unreadable public API entry point', () => {
@@ -272,6 +355,20 @@ describe('ObliquePublicApiReader', () => {
 			kind: 'enum',
 			declaredIn: 'projects/oblique/src/lib/notification/notification.model.ts',
 		});
+	});
+
+	it('extracts real public Oblique template selectors without exposing internal decorated classes', () => {
+		const reader = new ObliquePublicApiReader(repositoryRoot);
+		const selectors = reader.getAngularTemplateApis();
+
+		expect(selectors).toEqual(
+			expect.arrayContaining([
+				expect.objectContaining({symbol: 'ObAlertComponent', kind: 'component', selector: 'ob-alert'}),
+				expect.objectContaining({symbol: 'ObButtonDirective', kind: 'directive', selector: '[obButton]'}),
+			])
+		);
+		expect(selectors).not.toEqual(expect.arrayContaining([expect.objectContaining({symbol: 'ObProgressComponent'})]));
+		expect(reader.getApi('ObProgressComponent')).toBeUndefined();
 	});
 
 	it('rejects a real internal Oblique class that is not exported from public_api.ts', () => {

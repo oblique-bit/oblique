@@ -9,7 +9,18 @@ import * as typescript from 'typescript';
 
 const publicApiRelativePath = 'projects/oblique/src/public_api.ts';
 const obliquePackageImport = '@oblique/oblique';
+const angularCoreModuleSpecifier = '@angular/core';
 const angularRouterModuleSpecifier = '@angular/router';
+const angularClassKinds = new Map<
+	string,
+	Extract<ObliqueApiSymbolKind, 'component' | 'directive' | 'service' | 'module' | 'pipe'>
+>([
+	['Component', 'component'],
+	['Directive', 'directive'],
+	['Injectable', 'service'],
+	['NgModule', 'module'],
+	['Pipe', 'pipe'],
+]);
 const angularRouterGuardTypeNames = new Set([
 	'CanActivate',
 	'CanActivateChild',
@@ -45,6 +56,16 @@ export interface ObliqueApiSymbol {
 	deprecated: boolean;
 }
 
+export interface ObliqueAngularTemplateApi {
+	symbol: string;
+	kind: Extract<ObliqueApiSymbolKind, 'component' | 'directive'>;
+	selector: string;
+	deprecated: boolean;
+	documentation: string | null;
+	declaredIn: string;
+	public: true;
+}
+
 export type PublicApiProgramFactory = (publicApiPath: string) => typescript.Program;
 
 export function isTypeScriptIdentifier(symbol: string): boolean {
@@ -63,7 +84,7 @@ export function isTypeScriptIdentifier(symbol: string): boolean {
 export class ObliquePublicApiReader {
 	private readonly repositoryRoot: string;
 	private readonly programFactory: PublicApiProgramFactory;
-	private index: ReadonlyMap<string, ObliqueApiSymbol> | undefined;
+	private index: PublicApiIndex | undefined;
 
 	constructor(repositoryRoot = process.cwd(), programFactory: PublicApiProgramFactory = createPublicApiProgram) {
 		this.repositoryRoot = repositoryRoot;
@@ -71,15 +92,20 @@ export class ObliquePublicApiReader {
 	}
 
 	getApi(symbol: string): ObliqueApiSymbol | undefined {
-		return this.getIndex().get(symbol);
+		return this.getIndex().symbols.get(symbol);
 	}
 
-	private getIndex(): ReadonlyMap<string, ObliqueApiSymbol> {
+	/** Gets statically-known selectors belonging to public Oblique components and directives only. */
+	getAngularTemplateApis(): readonly ObliqueAngularTemplateApi[] {
+		return this.getIndex().angularTemplateApis;
+	}
+
+	private getIndex(): PublicApiIndex {
 		this.index ??= this.createIndex();
 		return this.index;
 	}
 
-	private createIndex(): ReadonlyMap<string, ObliqueApiSymbol> {
+	private createIndex(): PublicApiIndex {
 		const publicApiPath = resolve(this.repositoryRoot, publicApiRelativePath);
 		const program = this.programFactory(publicApiPath);
 		const publicApiSourceFile = program.getSourceFile(publicApiPath);
@@ -101,23 +127,40 @@ interface ApiIndexContext {
 	publicApiPath: string;
 }
 
-function createApiIndex(
-	context: ApiIndexContext,
-	moduleSymbol: typescript.Symbol
-): ReadonlyMap<string, ObliqueApiSymbol> {
-	return new Map(
-		context.typeChecker
-			.getExportsOfModule(moduleSymbol)
-			.sort(compareSymbols)
-			.flatMap(exportedSymbol => {
-				const apiSymbol = createApiSymbol(
-					context,
-					exportedSymbol,
-					resolveAliasedSymbol(context.typeChecker, exportedSymbol)
-				);
-				return apiSymbol === undefined ? [] : [[exportedSymbol.getName(), apiSymbol] as const];
-			})
-	);
+interface PublicApiIndex {
+	symbols: ReadonlyMap<string, ObliqueApiSymbol>;
+	angularTemplateApis: readonly ObliqueAngularTemplateApi[];
+}
+
+function createApiIndex(context: ApiIndexContext, moduleSymbol: typescript.Symbol): PublicApiIndex {
+	const angularTemplateApis: ObliqueAngularTemplateApi[] = [];
+	const symbols = context.typeChecker
+		.getExportsOfModule(moduleSymbol)
+		.sort(compareSymbols)
+		.flatMap(exportedSymbol => {
+			const symbol = resolveAliasedSymbol(context.typeChecker, exportedSymbol);
+			const apiSymbol = createApiSymbol(context, exportedSymbol, symbol);
+			if (apiSymbol === undefined) {
+				return [];
+			}
+			const declaration = getDeclaration(symbol);
+			const angularTemplateApi =
+				declaration !== undefined && typescript.isClassDeclaration(declaration)
+					? createAngularTemplateApi(context, apiSymbol, declaration)
+					: undefined;
+			if (angularTemplateApi !== undefined) {
+				angularTemplateApis.push(angularTemplateApi);
+			}
+			return [[exportedSymbol.getName(), apiSymbol] as const];
+		});
+	return {
+		symbols: new Map(symbols),
+		angularTemplateApis: angularTemplateApis.sort(compareAngularTemplateApis),
+	};
+}
+
+function compareAngularTemplateApis(first: ObliqueAngularTemplateApi, second: ObliqueAngularTemplateApi): number {
+	return first.selector.localeCompare(second.selector, 'en') || first.symbol.localeCompare(second.symbol, 'en');
 }
 
 function createPublicApiProgram(publicApiPath: string): typescript.Program {
@@ -166,6 +209,28 @@ function createApiSymbol(
 	};
 }
 
+function createAngularTemplateApi(
+	context: ApiIndexContext,
+	apiSymbol: ObliqueApiSymbol,
+	declaration: typescript.ClassDeclaration
+): ObliqueAngularTemplateApi | undefined {
+	if (apiSymbol.kind !== 'component' && apiSymbol.kind !== 'directive') {
+		return undefined;
+	}
+	const selector = getAngularSelector(context.typeChecker, declaration, apiSymbol.kind);
+	return selector === undefined
+		? undefined
+		: {
+				symbol: apiSymbol.symbol,
+				kind: apiSymbol.kind,
+				selector,
+				deprecated: apiSymbol.deprecated,
+				documentation: apiSymbol.documentation,
+				declaredIn: apiSymbol.declaredIn,
+				public: true,
+			};
+}
+
 function getSymbolKind(typeChecker: typescript.TypeChecker, declaration: typescript.Declaration): ObliqueApiSymbolKind {
 	if (typescript.isClassDeclaration(declaration)) {
 		return getGuardKind(typeChecker, declaration) ?? getAngularClassKind(typeChecker, declaration) ?? 'class';
@@ -194,34 +259,101 @@ function getAngularClassKind(
 ): Extract<ObliqueApiSymbolKind, 'component' | 'directive' | 'service' | 'module' | 'pipe'> | undefined {
 	const decorators = typescript.getDecorators(declaration) ?? [];
 	for (const decorator of decorators) {
-		const decoratorName = getDecoratorName(typeChecker, decorator);
-		switch (decoratorName) {
-			case 'Component':
-				return 'component';
-			case 'Directive':
-				return 'directive';
-			case 'Injectable':
-				return 'service';
-			case 'NgModule':
-				return 'module';
-			case 'Pipe':
-				return 'pipe';
-			case undefined:
-				return undefined;
-			default:
-				break;
+		const decoratorName = getAngularCoreDecoratorName(typeChecker, decorator);
+		if (decoratorName !== undefined) {
+			const angularClassKind = angularClassKinds.get(decoratorName);
+			if (angularClassKind !== undefined) {
+				return angularClassKind;
+			}
 		}
 	}
 	return undefined;
 }
 
-function getDecoratorName(typeChecker: typescript.TypeChecker, decorator: typescript.Decorator): string | undefined {
+function getAngularSelector(
+	typeChecker: typescript.TypeChecker,
+	declaration: typescript.ClassDeclaration,
+	kind: Extract<ObliqueApiSymbolKind, 'component' | 'directive'>
+): string | undefined {
+	const expectedDecoratorName = kind === 'component' ? 'Component' : 'Directive';
+	const decorators = typescript.getDecorators(declaration);
+	/* istanbul ignore next -- `kind` was derived from this same decorator list. */
+	if (decorators === undefined) {
+		return undefined;
+	}
+	const decorator = decorators.find(
+		candidate => getAngularCoreDecoratorName(typeChecker, candidate) === expectedDecoratorName
+	);
+	/* istanbul ignore next -- `kind` was derived from this same decorator list. */
+	if (decorator === undefined) {
+		return undefined;
+	}
+	if (!typescript.isCallExpression(decorator.expression)) {
+		return undefined;
+	}
+	const [metadata] = decorator.expression.arguments;
+	if (metadata === undefined || !typescript.isObjectLiteralExpression(metadata)) {
+		return undefined;
+	}
+	return getStaticSelectorProperty(metadata);
+}
+
+function getStaticSelectorProperty(metadata: typescript.ObjectLiteralExpression): string | undefined {
+	for (const property of metadata.properties) {
+		if (
+			typescript.isPropertyAssignment(property) &&
+			getPropertyName(property.name) === 'selector' &&
+			isStaticSelectorValue(property.initializer)
+		) {
+			return property.initializer.text.trim() || undefined;
+		}
+	}
+	return undefined;
+}
+
+function getPropertyName(name: typescript.PropertyName): string | undefined {
+	return typescript.isIdentifier(name) || typescript.isStringLiteral(name) ? name.text : undefined;
+}
+
+function isStaticSelectorValue(expression: typescript.Expression): expression is typescript.StringLiteral {
+	return typescript.isStringLiteral(expression);
+}
+
+function getAngularCoreDecoratorName(
+	typeChecker: typescript.TypeChecker,
+	decorator: typescript.Decorator
+): string | undefined {
 	const expression = typescript.isCallExpression(decorator.expression)
 		? decorator.expression.expression
 		: decorator.expression;
 	const name = typescript.isPropertyAccessExpression(expression) ? expression.name : expression;
 	const symbol = typeChecker.getSymbolAtLocation(name);
-	return symbol === undefined ? undefined : resolveAliasedSymbol(typeChecker, symbol).getName();
+	if (symbol === undefined || !isAngularCoreDecoratorImport(typeChecker, expression, symbol)) {
+		return undefined;
+	}
+	return resolveAliasedSymbol(typeChecker, symbol).getName();
+}
+
+function isAngularCoreDecoratorImport(
+	typeChecker: typescript.TypeChecker,
+	expression: typescript.Expression,
+	symbol: typescript.Symbol
+): boolean {
+	if (isSymbolImportedFrom(symbol, angularCoreModuleSpecifier)) {
+		return true;
+	}
+	return (
+		typescript.isPropertyAccessExpression(expression) &&
+		isNamespaceImportedFromAngularCore(typeChecker, expression.expression)
+	);
+}
+
+function isNamespaceImportedFromAngularCore(
+	typeChecker: typescript.TypeChecker,
+	expression: typescript.Expression
+): boolean {
+	const namespaceSymbol = typeChecker.getSymbolAtLocation(expression);
+	return namespaceSymbol !== undefined && isSymbolImportedFrom(namespaceSymbol, angularCoreModuleSpecifier);
 }
 
 function getGuardKind(

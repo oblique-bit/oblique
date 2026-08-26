@@ -15,6 +15,7 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
+    "@angular/compiler": "^21.0.0",
     "@modelcontextprotocol/server": "^2.0.0",
     "postcss": "^8.5.26",
     "postcss-scss": "^4.0.9",

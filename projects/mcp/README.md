@@ -53,6 +53,8 @@ Configure an MCP client to execute `node projects/mcp/dist/server.js` with the r
   `{ "query": "color interaction" }`.
 - `check_oblique_styles` performs read-only CSS/SCSS Design System token checks, for example
   `{ "language": "scss", "code": ".card { color: var(--ob-s3-color-text-default); }" }`.
+- `check_oblique_template` performs read-only Angular template API checks, for example
+  `{ "code": "<ob-alert></ob-alert>" }`.
 
 `projects/oblique/src/public_api.ts` is the authoritative boundary for APIs consumable from
 `@oblique/oblique`. `get_oblique_api` only returns symbols reachable from that entry point; it does not expose
@@ -82,5 +84,13 @@ never compiles Sass, resolves filesystem imports, executes source, or modifies f
 projects; HTML and component tokens are Oblique implementation details. Its exact-value candidates only prove that a
 semantic token has the same checked-out base value, not that it is the intended semantic replacement. Warnings do not
 make the submitted code invalid, and the tool never applies an autofix.
+
+`check_oblique_template` accepts Angular template source text only (up to 100,000 characters). It parses submitted
+source in memory with the Angular template parser and never executes expressions, reads project files, or applies an
+autofix. The checked-out `projects/oblique/src/public_api.ts` boundary determines public Oblique components and
+directives: public `ob-*` component selectors are checked, known public directives are recognized, and deprecated
+public template APIs can be reported. Unknown directive-like attributes are intentionally not reported, because this
+tool does not claim ownership of arbitrary application attributes. Arbitrary input and output validation is also not
+implemented yet.
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.
