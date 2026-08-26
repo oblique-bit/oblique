@@ -109,7 +109,7 @@ describe('ObMasterLayoutComponent', () => {
 				expect(component.focusElementById).not.toHaveBeenCalled();
 
 				await router.navigate(['some/path2']);
-				expect(component.focusElementById).toHaveBeenCalledWith(component.contentId);
+				expect(component.focusElementById).toHaveBeenCalledWith(component.contentId());
 			});
 		});
 
@@ -122,11 +122,11 @@ describe('ObMasterLayoutComponent', () => {
 			});
 
 			it('should store the current route', () => {
-				expect(component.route.path).toBe('/some/path');
+				expect(component.route().path).toBe('/some/path');
 			});
 
 			it('should store the current parameters', () => {
-				expect(component.route.params).toEqual({param: 'someParam'});
+				expect(component.route().params).toEqual({param: 'someParam'});
 			});
 
 			it('should call focusElementById with "someFragment"', () => {
@@ -143,11 +143,11 @@ describe('ObMasterLayoutComponent', () => {
 			});
 
 			it('should store the current route', () => {
-				expect(component.route.path).toBe('/some/path');
+				expect(component.route().path).toBe('/some/path');
 			});
 
 			it('should store the current parameters', () => {
-				expect(component.route.params).toEqual({param: 'someParam'});
+				expect(component.route().params).toEqual({param: 'someParam'});
 			});
 
 			it('should not call focusElementById', () => {
@@ -162,7 +162,7 @@ describe('ObMasterLayoutComponent', () => {
 		});
 
 		it('should have a route property', () => {
-			expect(component.route).toEqual({path: '', params: undefined});
+			expect(component.route()).toEqual({path: '', params: undefined});
 		});
 
 		it('should have a navigation property', () => {
@@ -182,14 +182,19 @@ describe('ObMasterLayoutComponent', () => {
 				});
 
 				it('should add accessKey 1 if there is no navigation', () => {
-					component.noNavigation = true;
-					component.ngOnInit();
-					expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 1}]);
+					mockMasterLayoutService.layout.configEvents$.next({
+						name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION,
+						value: false,
+					});
+					expect(component.skipLinksInternal()).toEqual([{label: 'test', url: '', accessKey: 1}]);
 				});
 
 				describe('with navigation', () => {
 					beforeEach(() => {
-						component.noNavigation = false;
+						mockMasterLayoutService.layout.configEvents$.next({
+							name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION,
+							value: true,
+						});
 					});
 					it.each([
 						{text: 'empty', value: []},
@@ -198,12 +203,12 @@ describe('ObMasterLayoutComponent', () => {
 					])('should add accessKey 1 with an $text navigation', ({value}) => {
 						fixture.componentRef.setInput('navigation', value);
 						component.ngOnInit();
-						expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 1}]);
+						expect(component.skipLinksInternal()).toEqual([{label: 'test', url: '', accessKey: 1}]);
 					});
 					it('should add accessKey 2 with non-empty navigation', () => {
 						fixture.componentRef.setInput('navigation', [{label: 'test', url: ''}]);
 						component.ngOnInit();
-						expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 2}]);
+						expect(component.skipLinksInternal()).toEqual([{label: 'test', url: '', accessKey: 2}]);
 					});
 
 					describe('when the navigation is set', () => {
@@ -212,7 +217,7 @@ describe('ObMasterLayoutComponent', () => {
 							fixture.componentRef.changeDetectorRef.detectChanges();
 						});
 						it('should add accessKey 2', () => {
-							expect(component.skipLinksInternal).toEqual([{label: 'test', url: '', accessKey: 2}]);
+							expect(component.skipLinksInternal()).toEqual([{label: 'test', url: '', accessKey: 2}]);
 						});
 
 						it('should refresh the navigation service', () => {
@@ -232,56 +237,56 @@ describe('ObMasterLayoutComponent', () => {
 		function testLayoutProperty(property: string, enumName: string): void {
 			describe(property, () => {
 				it('should be defined', () => {
-					expect(component[property]).toBe(mockMasterLayoutService.layout[property]);
+					expect(component[property]()).toBe(mockMasterLayoutService.layout[property]);
 				});
 				it('should be updated with the service', () => {
 					mockMasterLayoutService.layout.configEvents$.next({name: ObEMasterLayoutEventValues[enumName], value: true});
-					expect(component[property]).toBe(true);
+					expect(component[property]()).toBe(true);
 				});
 			});
 		}
 
 		describe('isHeaderSticky', () => {
 			it('should be defined', () => {
-				expect(component.isHeaderSticky).toBe(mockMasterLayoutService.header.isSticky);
+				expect(component.isHeaderSticky()).toBe(mockMasterLayoutService.header.isSticky);
 			});
 			it('should be updated with the service', () => {
 				mockMasterLayoutService.header.configEvents$.next({
 					name: ObEMasterLayoutEventValues.HEADER_IS_STICKY,
 					value: true,
 				});
-				expect(component.isHeaderSticky).toBe(true);
+				expect(component.isHeaderSticky()).toBe(true);
 			});
 		});
 
 		describe('isFooterSticky', () => {
 			it('should be defined', () => {
-				expect(component.isFooterSticky).toBe(mockMasterLayoutService.footer.isSticky);
+				expect(component.isFooterSticky()).toBe(mockMasterLayoutService.footer.isSticky);
 			});
 			it('should be updated with the service', () => {
 				mockMasterLayoutService.footer.configEvents$.next({
 					name: ObEMasterLayoutEventValues.FOOTER_IS_STICKY,
 					value: true,
 				});
-				expect(component.isFooterSticky).toBe(true);
+				expect(component.isFooterSticky()).toBe(true);
 			});
 		});
 
 		describe('noNavigation', () => {
 			it('should be defined', () => {
-				expect(component.noNavigation).toBe(true);
+				expect(component.noNavigation()).toBe(true);
 			});
 			it('should be updated with the service', () => {
 				mockMasterLayoutService.layout.configEvents$.next({
 					name: ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION,
 					value: true,
 				});
-				expect(component.noNavigation).toBe(false);
+				expect(component.noNavigation()).toBe(false);
 			});
 		});
 
 		it('should have a isScrolling property', () => {
-			expect(component.isScrolling).toBe(false);
+			expect(component.isScrolling()).toBe(false);
 		});
 
 		it('should ignore unchanged navigation length', () => {
@@ -308,7 +313,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 
 			it('should set isScrolling', () => {
-				expect(component.isScrolling).toBe(true);
+				expect(component.isScrolling()).toBe(true);
 			});
 		});
 
@@ -318,7 +323,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 
 			it('should not set isScrolling', () => {
-				expect(component.isScrolling).toBe(false);
+				expect(component.isScrolling()).toBe(false);
 			});
 		});
 
@@ -328,7 +333,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 
 			it('should not set isScrolling', () => {
-				expect(component.isScrolling).toBe(false);
+				expect(component.isScrolling()).toBe(false);
 			});
 		});
 
@@ -365,7 +370,7 @@ describe('ObMasterLayoutComponent', () => {
 			});
 
 			it('should set isScrolling', () => {
-				expect(component.isScrolling).toBe(true);
+				expect(component.isScrolling()).toBe(true);
 			});
 		});
 	});
@@ -381,7 +386,7 @@ describe('ObMasterLayoutComponent', () => {
 
 			fixture.detectChanges();
 
-			expect(component.hasHighContrast).toBe(true);
+			expect(component.hasHighContrast()).toBe(true);
 		});
 	});
 
@@ -445,7 +450,7 @@ describe('ObMasterLayoutComponent', () => {
 				element = document.getElementById('content');
 				jest.spyOn(element, 'scrollIntoView');
 				jest.spyOn(element, 'focus');
-				component.prefersReducedMotion = false;
+				component.prefersReducedMotion.set(false);
 				component.focusElementById('content');
 			});
 
@@ -570,7 +575,7 @@ describe('ObMasterLayoutComponent', () => {
 			try {
 				await TestBed.inject(Router).navigate(['some/path']);
 
-				expect(component.route.path).toBeUndefined();
+				expect(component.route().path).toBeUndefined();
 			} finally {
 				exec.mockRestore();
 			}
@@ -579,7 +584,7 @@ describe('ObMasterLayoutComponent', () => {
 
 	describe('collapse breakpoints', () => {
 		it('should have "md" as default collapseBreakpoint', () => {
-			expect(component.collapseBreakpoint).toBe('md');
+			expect(component.collapseBreakpoint()).toBe('md');
 		});
 
 		it.each([
@@ -603,7 +608,7 @@ describe('ObMasterLayoutComponent', () => {
 					isFirstChange: () => true,
 				},
 			});
-			expect(component[property]).toBe(expected);
+			expect(component[property]()).toBe(expected);
 		});
 
 		it('should react to media query changes', () => {
@@ -631,8 +636,8 @@ describe('ObMasterLayoutComponent', () => {
 			});
 			changeHandler({matches: true} as MediaQueryListEvent);
 
-			expect(component.isLayoutExpanded).toBe(true);
-			expect(component.isLayoutCollapsed).toBe(false);
+			expect(component.isLayoutExpanded()).toBe(true);
+			expect(component.isLayoutCollapsed()).toBe(false);
 		});
 
 		it.each([
@@ -656,7 +661,7 @@ describe('ObMasterLayoutComponent', () => {
 					isFirstChange: () => true,
 				},
 			});
-			expect(component[property]).toBe(expected);
+			expect(component[property]()).toBe(expected);
 		});
 
 		it('should ignore changes without collapseBreakpoint', () => {
@@ -667,11 +672,11 @@ describe('ObMasterLayoutComponent', () => {
 			fixture.destroy();
 			fixture = TestBed.createComponent(ObMasterLayoutComponent);
 			component = fixture.componentInstance;
-			component.collapseBreakpoint = 'lg';
+			fixture.componentRef.setInput('collapseBreakpoint', 'lg');
 
 			fixture.detectChanges();
 
-			expect(component.collapseBreakpoint).toBe('lg');
+			expect(component.collapseBreakpoint()).toBe('lg');
 		});
 	});
 
@@ -685,7 +690,10 @@ describe('ObMasterLayoutComponent', () => {
 			fixture.destroy();
 			fixture = TestBed.createComponent(ObMasterLayoutComponent);
 			component = fixture.componentInstance;
-			component.hasOffCanvas = true;
+			mockMasterLayoutService.layout.configEvents$.next({
+				name: ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS,
+				value: true,
+			});
 			fixture.detectChanges();
 			const focus = jest.spyOn(component.offCanvasClose().nativeElement, 'focus');
 
@@ -700,7 +708,10 @@ describe('ObMasterLayoutComponent', () => {
 			fixture.destroy();
 			fixture = TestBed.createComponent(ObMasterLayoutComponent);
 			component = fixture.componentInstance;
-			component.hasOffCanvas = true;
+			mockMasterLayoutService.layout.configEvents$.next({
+				name: ObEMasterLayoutEventValues.LAYOUT_HAS_OFF_CANVAS,
+				value: true,
+			});
 			fixture.detectChanges();
 			const focus = jest.spyOn(component.offCanvasClose().nativeElement, 'focus');
 
@@ -711,7 +722,7 @@ describe('ObMasterLayoutComponent', () => {
 		});
 	});
 
-	describe('emitNavigation', () => {
+	describe('emitNavigation (legacy)', () => {
 		let emittedValue: ObINavigationLink[];
 		beforeEach(done => {
 			component.navigationChanged.subscribe(list => {
@@ -722,6 +733,21 @@ describe('ObMasterLayoutComponent', () => {
 		});
 
 		test('navigationChanged emits the given parameter', () => {
+			expect(emittedValue).toEqual([{id: 'id', url: 'url', label: 'label'}]);
+		});
+	});
+
+	describe('emitNavigation', () => {
+		let emittedValue: ObINavigationLink[];
+		beforeEach(done => {
+			component.navigation.subscribe(list => {
+				emittedValue = list;
+				done();
+			});
+			component.navigation.set([{id: 'id', url: 'url', label: 'label'}]);
+		});
+
+		test('navigationChange emits the given parameter', () => {
 			expect(emittedValue).toEqual([{id: 'id', url: 'url', label: 'label'}]);
 		});
 	});

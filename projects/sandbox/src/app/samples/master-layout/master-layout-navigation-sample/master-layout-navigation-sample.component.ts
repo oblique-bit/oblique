@@ -7,7 +7,13 @@ import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {MatTooltip} from '@angular/material/tooltip';
-import {ObButtonDirective, ObEScrollMode, type ObLoginState, ObMasterLayoutService} from '@oblique/oblique';
+import {
+	ObButtonDirective,
+	ObEScrollMode,
+	type ObIServiceNavigationContact,
+	type ObLoginState,
+	ObMasterLayoutService,
+} from '@oblique/oblique';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DynamicNavigationService} from '../dynamic-navigation.service';
 import {type Observable, share} from 'rxjs';
@@ -44,10 +50,14 @@ export class MasterLayoutNavigationSampleComponent {
 	protected readonly scrollMode = ObEScrollMode;
 	private readonly masterLayout = inject(ObMasterLayoutService);
 	private readonly dynamicNavigationService = inject(DynamicNavigationService);
-	private readonly infoLinks = [...this.masterLayout.header.serviceNavigationConfiguration.infoLinks];
-	private readonly infoContact = {...this.masterLayout.header.serviceNavigationConfiguration.infoContact};
-	private readonly profileLinks = [...this.masterLayout.header.serviceNavigationConfiguration.profileLinks];
+	private readonly serviceNavigationConfiguration = this.masterLayout.header.serviceNavigationConfiguration;
+	private readonly infoLinks = [...(this.serviceNavigationConfiguration().infoLinks ?? [])];
+	private readonly infoContact: ObIServiceNavigationContact = {
+		...(this.serviceNavigationConfiguration().infoContact ?? {}),
+	};
+	private readonly profileLinks = [...(this.serviceNavigationConfiguration().profileLinks ?? [])];
 	private useCustomNavigationInternal = false;
+	private dynamicItemIndex = 0;
 	constructor() {
 		this.loginState$ = this.masterLayout.header.loginState$;
 		this.logoutUrl$ = this.masterLayout.header.logoutUrl$;
@@ -74,144 +84,144 @@ export class MasterLayoutNavigationSampleComponent {
 	}
 
 	get hasApplicationsWidget(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.displayApplications;
+		return this.serviceNavigationConfiguration().displayApplications ?? false;
 	}
 
 	set hasApplicationsWidget(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.displayApplications = value;
+		this.masterLayout.header.updateServiceNavigationConfiguration({displayApplications: value});
 	}
 
 	get hasAuthenticationWidget(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.displayAuthentication;
+		return this.serviceNavigationConfiguration().displayAuthentication ?? false;
 	}
 
 	set hasAuthenticationWidget(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.displayAuthentication = value;
+		this.masterLayout.header.updateServiceNavigationConfiguration({displayAuthentication: value});
 	}
 
 	get hasInfoWidget(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.displayInfo;
+		return this.serviceNavigationConfiguration().displayInfo ?? false;
 	}
 
 	set hasInfoWidget(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.displayInfo = value;
+		this.masterLayout.header.updateServiceNavigationConfiguration({displayInfo: value});
 	}
 
 	get hasLanguagesWidget(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.displayLanguages;
+		return this.serviceNavigationConfiguration().displayLanguages ?? false;
 	}
 
 	set hasLanguagesWidget(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.displayLanguages = value;
+		this.masterLayout.header.updateServiceNavigationConfiguration({displayLanguages: value});
 	}
 
 	get hasMessageWidget(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.displayMessage;
+		return this.serviceNavigationConfiguration().displayMessage ?? false;
 	}
 
 	set hasMessageWidget(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.displayMessage = value;
+		this.masterLayout.header.updateServiceNavigationConfiguration({displayMessage: value});
 	}
 
 	get hasProfileWidget(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.displayProfile;
+		return this.serviceNavigationConfiguration().displayProfile ?? false;
 	}
 
 	set hasProfileWidget(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.displayProfile = value;
+		this.masterLayout.header.updateServiceNavigationConfiguration({displayProfile: value});
 	}
 
 	get hasEportalLanguageSynchronization(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.eportalLanguageSynchronization;
+		return this.serviceNavigationConfiguration().eportalLanguageSynchronization ?? false;
 	}
 
 	set hasEportalLanguageSynchronization(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.eportalLanguageSynchronization = value;
+		this.masterLayout.header.updateServiceNavigationConfiguration({eportalLanguageSynchronization: value});
 	}
 
 	get hasInfoLinks(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.infoLinks?.length > 0;
+		return (this.serviceNavigationConfiguration().infoLinks?.length ?? 0) > 0;
 	}
 
 	set hasInfoLinks(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoLinks = value ? this.infoLinks : [];
+		this.masterLayout.header.updateServiceNavigationConfiguration({infoLinks: value ? this.infoLinks : []});
 	}
 
 	get hasInfoBackend(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.useInfoBackend ?? false;
+		return this.serviceNavigationConfiguration().useInfoBackend ?? false;
 	}
 	set hasInfoBackend(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.useInfoBackend = value;
+		this.masterLayout.header.updateServiceNavigationConfiguration({useInfoBackend: value});
 	}
 
 	get hasContactForm(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl?.length > 0;
+		return (this.serviceNavigationConfiguration().infoContact?.formUrl?.length ?? 0) > 0;
 	}
 	set hasContactForm(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrl = value
-			? this.infoContact.formUrl
-			: undefined;
+		this.masterLayout.header.updateServiceNavigationConfiguration({
+			infoContact: {formUrl: value ? this.infoContact.formUrl : undefined},
+		});
 	}
 
 	get hasContactFormText(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrlText?.length > 0;
+		return (this.serviceNavigationConfiguration().infoContact?.formUrlText?.length ?? 0) > 0;
 	}
 	set hasContactFormText(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.formUrlText = value
-			? this.infoContact.formUrlText
-			: undefined;
+		this.masterLayout.header.updateServiceNavigationConfiguration({
+			infoContact: {formUrlText: value ? this.infoContact.formUrlText : undefined},
+		});
 	}
 
 	get hasContactEmail(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.email?.length > 0;
+		return (this.serviceNavigationConfiguration().infoContact?.email?.length ?? 0) > 0;
 	}
 	set hasContactEmail(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.email = value
-			? this.infoContact.email
-			: undefined;
+		this.masterLayout.header.updateServiceNavigationConfiguration({
+			infoContact: {email: value ? this.infoContact.email : undefined},
+		});
 	}
 
 	get hasContactEmailText(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.emailText?.length > 0;
+		return (this.serviceNavigationConfiguration().infoContact?.emailText?.length ?? 0) > 0;
 	}
 	set hasContactEmailText(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.emailText = value
-			? this.infoContact.emailText
-			: undefined;
+		this.masterLayout.header.updateServiceNavigationConfiguration({
+			infoContact: {emailText: value ? this.infoContact.emailText : undefined},
+		});
 	}
 
 	get hasContactPhone(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.phone?.length > 0;
+		return (this.serviceNavigationConfiguration().infoContact?.phone?.length ?? 0) > 0;
 	}
 	set hasContactPhone(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.phone = value
-			? this.infoContact.phone
-			: undefined;
+		this.masterLayout.header.updateServiceNavigationConfiguration({
+			infoContact: {phone: value ? this.infoContact.phone : undefined},
+		});
 	}
 
 	get hasContactPhoneText(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.infoContact.phoneText?.length > 0;
+		return (this.serviceNavigationConfiguration().infoContact?.phoneText?.length ?? 0) > 0;
 	}
 	set hasContactPhoneText(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.infoContact.phoneText = value
-			? this.infoContact.phoneText
-			: undefined;
+		this.masterLayout.header.updateServiceNavigationConfiguration({
+			infoContact: {phoneText: value ? this.infoContact.phoneText : undefined},
+		});
 	}
 
 	get hasProfileLinks(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.profileLinks?.length > 0;
+		return (this.serviceNavigationConfiguration().profileLinks?.length ?? 0) > 0;
 	}
 
 	set hasProfileLinks(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.profileLinks = value ? this.profileLinks : [];
+		this.masterLayout.header.updateServiceNavigationConfiguration({profileLinks: value ? this.profileLinks : []});
 	}
 
 	get handleLogout(): boolean {
-		return this.masterLayout.header.serviceNavigationConfiguration.handleLogout;
+		return this.serviceNavigationConfiguration().handleLogout ?? false;
 	}
 
 	set handleLogout(value: boolean) {
-		this.masterLayout.header.serviceNavigationConfiguration.handleLogout = value;
+		this.masterLayout.header.updateServiceNavigationConfiguration({handleLogout: value});
 	}
 
 	get useCustomNavigation(): boolean {
@@ -224,9 +234,10 @@ export class MasterLayoutNavigationSampleComponent {
 	}
 
 	addItem(): void {
+		this.dynamicItemIndex += 1;
 		this.dynamicNavigationService.addLink({
-			id: `id${crypto.randomUUID()}`,
-			label: 'test',
+			id: `master-layout-dynamic-${this.dynamicItemIndex}`,
+			label: `Dynamic test item ${this.dynamicItemIndex}`,
 			url: 'urlTest',
 		});
 	}

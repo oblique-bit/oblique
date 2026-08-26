@@ -12,6 +12,7 @@ import {
 } from '@oblique/oblique';
 import {type Observable, Subject} from 'rxjs';
 import {delay, filter, map, startWith, takeUntil} from 'rxjs/operators';
+import {AppStateService} from './app-state.service';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
 import {appNavigation} from './app-navigation';
 
@@ -42,6 +43,7 @@ export class AppComponent implements OnDestroy {
 	];
 	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
 	readonly nav = inject(DynamicNavigationService);
+	readonly appState = inject(AppStateService);
 	private readonly unsubscribe = new Subject<void>();
 	private readonly router = inject(Router);
 	private readonly translate = inject(TranslateService);
@@ -56,7 +58,7 @@ export class AppComponent implements OnDestroy {
 			this.navigation = links;
 		});
 		this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-			header.serviceNavigationConfiguration.returnUrl = window.location.href;
+			header.updateServiceNavigationConfiguration({returnUrl: window.location.href});
 		});
 	}
 

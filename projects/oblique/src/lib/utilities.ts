@@ -48,7 +48,31 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
 	return prototype === Object.prototype || prototype === null;
 }
 
-export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
+/**
+ * Options controlling how {@link mergeDeep} applies override values.
+ */
+export interface ObMergeDeepOptions {
+	/**
+	 * Whether undefined override values should be ignored. Defaults to true.
+	 * Set to false to explicitly clear existing properties.
+	 */
+	ignoreUndefined?: boolean;
+}
+
+/**
+ * Recursively merges plain object properties from an override into a base object.
+ *
+ * Existing properties are preserved when the override does not provide a value.
+ * By default, undefined override values are ignored; pass `{ignoreUndefined: false}`
+ * when undefined should replace an existing property.
+ *
+ * Arrays and non-plain objects are replaced by the override value.
+ */
+export function mergeDeep<Type>(
+	base: Type,
+	override: DeepPartial<Type>,
+	{ignoreUndefined = true}: ObMergeDeepOptions = {}
+): Type {
 	if (!isPlainObject(base) || !isPlainObject(override)) {
 		return override as Type;
 	}
@@ -56,13 +80,15 @@ export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
 	const merged = {...base} as Record<string, unknown>;
 	Object.keys(override).forEach(key => {
 		const overrideValue = override[key];
-		if (overrideValue === undefined) {
+		if (overrideValue === undefined && ignoreUndefined) {
 			return;
 		}
 
 		const baseValue = merged[key];
 		merged[key] =
-			isPlainObject(baseValue) && isPlainObject(overrideValue) ? mergeDeep(baseValue, overrideValue) : overrideValue;
+			isPlainObject(baseValue) && isPlainObject(overrideValue)
+				? mergeDeep(baseValue, overrideValue, {ignoreUndefined})
+				: overrideValue;
 	});
 
 	return merged as Type;

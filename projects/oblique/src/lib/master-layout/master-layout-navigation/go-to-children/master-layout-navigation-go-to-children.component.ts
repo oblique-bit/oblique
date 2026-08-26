@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnChanges, ViewEncapsulation, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation, computed, input, output} from '@angular/core';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -12,15 +12,15 @@ import {TranslatePipe} from '@ngx-translate/core';
 	imports: [MatButtonModule, MatIconModule, ObButtonModule, MatTooltipModule, TranslatePipe],
 	templateUrl: './master-layout-navigation-go-to-children.component.html',
 	styleUrls: ['./master-layout-navigation-go-to-children.component.scss'],
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	host: {
-		'[class.hide]': 'hide',
+		'[class.hide]': 'hide()',
 		class: 'ob-master-layout-navigation-go-to-children',
 	},
 })
-export class ObMasterLayoutNavigationGoToChildrenComponent implements OnChanges {
-	hide = false;
+export class ObMasterLayoutNavigationGoToChildrenComponent {
+	readonly hide = computed(() => this.isCurrentParent() || !this.link().children || !this.showChildren());
 	readonly disableRipple = input(false);
 	readonly isCurrentParent = input(false);
 	readonly isChildWithoutUrl = input(false);
@@ -30,9 +30,5 @@ export class ObMasterLayoutNavigationGoToChildrenComponent implements OnChanges 
 
 	goToChildren(): void {
 		this.changeCurrentParent.emit(this.link());
-	}
-
-	ngOnChanges(): void {
-		this.hide = this.isCurrentParent() || !this.link().children || !this.showChildren();
 	}
 }

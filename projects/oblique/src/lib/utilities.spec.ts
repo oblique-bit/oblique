@@ -108,6 +108,19 @@ describe('utilities', () => {
 				},
 			});
 		});
+
+		it('should ignore undefined values by default', () => {
+			expect(mergeDeep({value: 'base'}, {value: undefined})).toEqual({value: 'base'});
+		});
+
+		it('should apply undefined values when configured', () => {
+			const baseConfig = {outer: {value: 'base', keep: true}};
+			const configOverride = {outer: {value: undefined}};
+
+			expect(mergeDeep(baseConfig, configOverride, {ignoreUndefined: false})).toEqual({
+				outer: {value: undefined, keep: true},
+			});
+		});
 	});
 
 	describe('provideObliqueConfiguration', () => {

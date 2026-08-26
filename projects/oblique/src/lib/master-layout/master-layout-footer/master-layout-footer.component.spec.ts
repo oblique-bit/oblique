@@ -51,13 +51,9 @@ describe('ObMasterLayoutFooterComponent', () => {
 		expect(fixture.debugElement.nativeElement.classList.contains('ob-master-layout-footer')).toBe(true);
 	});
 
-	it('should have a home property', () => {
-		expect(component.home).toBe('home');
-	});
-
 	describe('isCustom', () => {
 		it('should be defined', () => {
-			expect(component.isCustom).toBe(false);
+			expect(component.isCustom()).toBe(false);
 		});
 
 		it('should be updated with the service', () => {
@@ -65,7 +61,7 @@ describe('ObMasterLayoutFooterComponent', () => {
 				name: ObEMasterLayoutEventValues.FOOTER_IS_CUSTOM,
 				value: true,
 			});
-			expect(component.isCustom).toBe(true);
+			expect(component.isCustom()).toBe(true);
 		});
 	});
 });

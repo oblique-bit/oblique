@@ -1,5 +1,18 @@
-import {ChangeDetectionStrategy, Component, Input, output} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	Input,
+	ModelSignal,
+	Signal,
+	computed,
+	model,
+	output,
+	signal,
+} from '@angular/core';
 import {ObINavigationLink} from '../master-layout.module';
+import {ObNavigationLink} from '../master-layout-navigation/navigation-link.model';
+import {IsActiveMatchOptions} from '@angular/router';
+import {ObMasterLayoutNavigationItemDirective} from '../master-layout-navigation/master-layout-navigation-item.directive';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -8,27 +21,41 @@ import {ObINavigationLink} from '../master-layout.module';
 	selector: 'ob-master-layout-navigation',
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	exportAs: 'obMasterLayoutNavigation',
 })
 export class ObMockMasterLayoutNavigationComponent {
-	isFullWidth = true;
-	activeClass = '';
-	currentScroll = 0;
-	maxScroll = 0;
-	@Input() links: ObINavigationLink[] = [];
+	readonly currentGrandparentLink: Signal<ObINavigationLink | undefined> = signal(undefined);
+	readonly currentParentLink: Signal<ObINavigationLink> = signal(new ObNavigationLink());
+	readonly currentParentRouterLinkBase: Signal<string> = signal('');
+	readonly isCurrentParentLinkExactMatch: Signal<boolean> = signal(true);
+	hideExternalLinks = true;
+	readonly links: ModelSignal<ObINavigationLink[] | null> = model<ObINavigationLink[] | null>([]);
+	/** @deprecated since Oblique 16. Will be removed in Oblique 17. Use `linksChange` instead. */
 	readonly linksChanged = output<ObINavigationLink[]>();
-	isScrollable = true;
+	readonly navigationLinks: Signal<ObNavigationLink[]> = signal([]);
+	readonly activeLinks: Signal<Set<ObNavigationLink>> = signal(new Set<ObNavigationLink>());
+	routerLinkActiveOptions: IsActiveMatchOptions = {
+		paths: 'subset',
+		queryParams: 'subset',
+		fragment: 'ignored',
+		matrixParams: 'ignored',
+	};
 
-	isActive(url: string): boolean {
-		return true;
-	}
+	focusIn(prefix: string, linkId: string): void {}
 
-	onResize(): void {}
+	focusOut(prefix: string, linkId: string): void {}
 
-	close(): void {}
+	backUpOrCloseSubMenu(
+		link: ObNavigationLink,
+		obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective
+	): void {}
 
-	scrollLeft(): void {}
+	changeCurrentParentLink(link: ObNavigationLink): void {}
 
-	scrollRight(): void {}
+	closeSubMenu(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, link: ObNavigationLink): void {}
+
+	toggleSubMenu(obMasterLayoutNavigationItem: ObMasterLayoutNavigationItemDirective, link: ObNavigationLink): void {}
+
+	removeMenuItem(item: ObINavigationLink, mouseEvent: MouseEvent): void {}
 }

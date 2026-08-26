@@ -1,21 +1,29 @@
 <mat-card>
 	<mat-card-title>Navigation</mat-card-title>
 	<mat-card-content>
-		<mat-slide-toggle [(ngModel)]="isNavigationFullWidth">is full width</mat-slide-toggle>
-		<mat-slide-toggle [(ngModel)]="useCustomNavigation">Use custom navigation</mat-slide-toggle>
+		<mat-slide-toggle data-test="navigation-is-full-width" [(ngModel)]="isNavigationFullWidth"
+			>is full width</mat-slide-toggle
+		>
+		<mat-slide-toggle data-test="navigation-use-custom" [(ngModel)]="useCustomNavigation"
+			>Use custom navigation</mat-slide-toggle
+		>
 		<div class="form-element">
 			<label for="sandbox-samples-master-layout-scroll-mode" class="button-group-label">scroll mode</label>
-			<mat-button-toggle-group id="sandbox-samples-master-layout-scroll-mode" [(ngModel)]="navigationScrollMode">
+			<mat-button-toggle-group
+				data-test="navigation-scroll-mode"
+				id="sandbox-samples-master-layout-scroll-mode"
+				[(ngModel)]="navigationScrollMode"
+			>
 				<mat-button-toggle [value]="scrollMode.AUTO">Auto</mat-button-toggle>
 				<mat-button-toggle [value]="scrollMode.ENABLED">Enabled</mat-button-toggle>
 				<mat-button-toggle [value]="scrollMode.DISABLED">Disabled</mat-button-toggle>
 			</mat-button-toggle-group>
 		</div>
-		<button type="button" mat-button obButton="primary" (click)="addItem()">
+		<button data-test="navigation-add-item" type="button" mat-button obButton="primary" (click)="addItem()">
 			<mat-icon obIcon svgIcon="plus" />
 			Add a main navigation item
 		</button>
-		<button type="button" mat-button obButton="primary" (click)="removeItem()">
+		<button data-test="navigation-remove-item" type="button" mat-button obButton="primary" (click)="removeItem()">
 			<mat-icon obIcon svgIcon="minus" />
 			Remove the last navigation item
 		</button>

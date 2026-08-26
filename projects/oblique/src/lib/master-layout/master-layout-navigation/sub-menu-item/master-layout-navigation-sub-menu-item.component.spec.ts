@@ -124,11 +124,10 @@ describe(ObMasterLayoutNavigationSubMenuItemComponent.name, () => {
 		'display of child link vs. #descendants',
 		({child, currentParent, description, getElement, link, promiseResultType, showChildren}) => {
 			beforeEach(async () => {
-				component.child = child;
-				component.currentParent = currentParent;
-				component.link = link;
+				fixture.componentRef.setInput('child', child);
+				fixture.componentRef.setInput('currentParent', currentParent);
+				fixture.componentRef.setInput('link', link);
 				fixture.componentRef.setInput('showChildren', showChildren);
-				component.ngOnChanges();
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				await fixture.whenStable();
 			});

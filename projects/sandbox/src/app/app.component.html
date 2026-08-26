@@ -6,6 +6,16 @@
 	(navigationChanged)="updateNavigation($event)"
 >
 	<ng-container obHeaderTitle>Oblique</ng-container>
+	@if (appState.showCustomHeader()) {
+		<ng-container obHeader>
+			<div data-test="custom-header-content">Custom header content</div>
+		</ng-container>
+	}
+	@if (appState.showCustomHeaderLogo()) {
+		<ng-template #obHeaderLogo>
+			<span data-test="custom-header-logo">Custom logo</span>
+		</ng-template>
+	}
 	<nav obNavigation>
 		<ul id="navigation" class="ob-main-nav ob-navigation-scrollable-content" tabindex="-1">
 			<li class="ob-master-layout-navigation-item ob-main-nav-item"><a href="dwwer.de">Navigation item 1</a></li>
@@ -41,6 +51,7 @@
 		<button
 			type="button"
 			obOffCanvasToggle
+			data-test="off-canvas-toggle"
 			matTooltip="Toggle Off-Canvas"
 			tabindex="0"
 			mat-icon-button
@@ -93,10 +104,13 @@
 	<ng-template #obFooterLink>
 		<a id="link-to-blick-ch" href="http://www.blick.ch">Blick</a>
 	</ng-template>
+	<ng-container obFooter>
+		<footer data-test="custom-footer-content">Custom footer content</footer>
+	</ng-container>
 
 	<ng-container obFooterInfo>
 		<p>&copy; {{ year }} {{ "i18n.application.organization.name" | translate }}</p>
 	</ng-container>
-	<ng-container obOffCanvasTitle>Hello world title</ng-container>
-	<ng-container obOffCanvasContent>Hello world content</ng-container>
+	<ng-container obOffCanvasTitle><span data-test="off-canvas-title">Hello world title</span></ng-container>
+	<ng-container obOffCanvasContent><span data-test="off-canvas-content">Hello world content</span></ng-container>
 </ob-master-layout>

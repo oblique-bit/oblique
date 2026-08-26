@@ -1,20 +1,27 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement, signal} from '@angular/core';
 import {EMPTY, Observable, Subject} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {provideObliqueTestingConfiguration} from '../../utilities';
+import {OB_PAMS_CONFIGURATION} from '../../service-navigation/service-navigation.provider';
 import {OB_BANNER, ObEEnvironment} from '../../banner';
 import {ObMasterLayoutHeaderComponent} from './master-layout-header.component';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMockMasterLayoutConfig} from '../_mocks/mock-master-layout.config';
 import {ObMasterLayoutService} from '../master-layout.service';
-import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObINavigationLink} from '../master-layout.model';
+import {
+	ObEMasterLayoutEventValues,
+	ObIMasterLayoutEvent,
+	ObINavigationLink,
+	ObIServiceNavigationConfig,
+} from '../master-layout.model';
 import {By} from '@angular/platform-browser';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {RouterModule} from '@angular/router';
 import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
+import {ObEPamsEnvironment} from '../../service-navigation/service-navigation.model';
 
 describe('ObMasterLayoutHeaderComponent', () => {
 	let component: ObMasterLayoutHeaderComponent;
@@ -25,7 +32,10 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			configEvents$: new Subject<ObIMasterLayoutEvent>(),
 			isCustom: false,
 			isSmall: false,
-			serviceNavigation: {},
+			serviceNavigationConfiguration: signal<ObIServiceNavigationConfig>({}),
+			updateServiceNavigationConfiguration(configuration: Partial<ObIServiceNavigationConfig>): void {
+				this.serviceNavigationConfiguration.update(current => ({...current, ...configuration}));
+			},
 			emitLoginState: jest.fn(),
 			emitLogoutUrl: jest.fn(),
 		},
@@ -66,7 +76,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 		describe('properties', () => {
 			it('should have hasMainNavigation enabled by default', () => {
-				expect(component.hasMainNavigation).toBe(true);
+				expect(component.hasMainNavigation()).toBe(true);
 			});
 
 			it('should have a home$ property', () => {
@@ -75,7 +85,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 			describe('isCustom', () => {
 				it('should be defined', () => {
-					expect(component.isCustom).toBe(mockMasterLayoutService.header.isCustom);
+					expect(component.isCustom()).toBe(mockMasterLayoutService.header.isCustom);
 				});
 
 				it('should be updated with the service', () => {
@@ -83,13 +93,13 @@ describe('ObMasterLayoutHeaderComponent', () => {
 						name: ObEMasterLayoutEventValues.HEADER_IS_CUSTOM,
 						value: true,
 					});
-					expect(component.isCustom).toBe(true);
+					expect(component.isCustom()).toBe(true);
 				});
 			});
 
 			describe('isSmall', () => {
 				it('should be defined', () => {
-					expect(component.isSmall).toBe(mockMasterLayoutService.header.isSmall);
+					expect(component.isSmall()).toBe(mockMasterLayoutService.header.isSmall);
 				});
 
 				it('should be updated with the service', () => {
@@ -97,21 +107,58 @@ describe('ObMasterLayoutHeaderComponent', () => {
 						name: ObEMasterLayoutEventValues.HEADER_IS_SMALL,
 						value: true,
 					});
-					expect(component.isSmall).toBe(true);
+					expect(component.isSmall()).toBe(true);
 				});
 			});
 
 			describe('serviceNavigationConfig', () => {
 				it('should be defined', () => {
-					expect(component.serviceNavigationConfig).toEqual({});
+					expect(component.serviceNavigationConfig()).toEqual({environment: '', rootUrl: ''});
 				});
 
-				it('should be set to the value emitted by the ObMasterLayoutService', () => {
+				it('should be set to the value held by the ObMasterLayoutService', () => {
+					mockMasterLayoutService.header.updateServiceNavigationConfiguration({displayApplications: true});
+					expect(component.serviceNavigationConfig()).toEqual({
+						displayApplications: true,
+						environment: ObEPamsEnvironment.PROD,
+						rootUrl: '',
+					});
+				});
+
+				it('should preserve configured service navigation values', () => {
+					const config = {
+						profileLinks: [{url: '/profile', label: 'Profile'}],
+						infoHelpText: 'Help',
+						infoLinks: [{url: '/info', label: 'Info'}],
+						infoContactText: 'Contact',
+						infoDescription: 'Description',
+						infoContact: {email: 'info@example.com'},
+						useInfoBackend: true,
+						maxFavoriteApplications: 3,
+						returnUrl: '/return',
+						pamsAppId: 'pams-app',
+						displayApplications: true,
+						displayAuthentication: true,
+						displayInfo: true,
+						displayLanguages: false,
+						displayMessage: true,
+						displayProfile: true,
+						eportalLanguageSynchronization: true,
+						handleLogout: false,
+					};
+					mockMasterLayoutService.header.updateServiceNavigationConfiguration(config);
+
+					expect(component.serviceNavigationConfig()).toMatchObject(config);
+				});
+
+				it('should keep the current configuration when another config event is emitted', () => {
+					const currentConfig = component.serviceNavigationConfig();
 					mockMasterLayoutService.header.configEvents$.next({
 						name: ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION,
-						config: {displayApplications: true},
+						config: undefined,
 					});
-					expect(component.serviceNavigationConfig).toEqual({displayApplications: true});
+
+					expect(component.serviceNavigationConfig()).toStrictEqual(currentConfig);
 				});
 			});
 		});
@@ -122,13 +169,13 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			});
 
 			it('should use the main navigation flag from the config', () => {
-				expect(component.hasMainNavigation).toBe(true);
+				expect(component.hasMainNavigation()).toBe(true);
 			});
 
 			it('should react to a change of config via ObMasterLayoutService', () => {
 				TestBed.inject(ObMasterLayoutComponentService).hasMainNavigation = false;
 
-				expect(component.hasMainNavigation).toBe(false);
+				expect(component.hasMainNavigation()).toBe(false);
 			});
 		});
 
@@ -261,7 +308,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		});
 	});
 
-	describe('emitNavigation', () => {
+	describe('emitNavigation (legacy)', () => {
 		beforeEach(() => {
 			globalSetup();
 		});
@@ -280,6 +327,41 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		});
 	});
 
+	describe('emitNavigation', () => {
+		beforeEach(() => {
+			globalSetup();
+		});
+
+		let emittedValue: ObINavigationLink[];
+		beforeEach(done => {
+			component.navigation.subscribe(list => {
+				emittedValue = list;
+				done();
+			});
+			component.navigation.set([{id: 'id', url: 'url', label: 'label'}]);
+		});
+
+		test('navigationChange emits the given parameter', () => {
+			expect(emittedValue).toEqual([{id: 'id', url: 'url', label: 'label'}]);
+		});
+	});
+
+	describe('With OB_PAMS_CONFIGURATION injectionToken', () => {
+		beforeEach(() => {
+			TestBed.overrideProvider(OB_PAMS_CONFIGURATION, {
+				useValue: {environment: ObEPamsEnvironment.DEV, rootUrl: '/pams'},
+			});
+			globalSetup();
+		});
+
+		it('should use the configured PAMS environment and root URL', () => {
+			expect(component.serviceNavigationConfig()).toMatchObject({
+				environment: ObEPamsEnvironment.DEV,
+				rootUrl: '/pams',
+			});
+		});
+	});
+
 	describe('with main navigation disabled in the config', () => {
 		beforeEach(() => {
 			const masterLayoutConfig = new ObMockMasterLayoutConfig();
@@ -289,7 +371,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		});
 
 		it('should remove the main navigation from the DOM', () => {
-			expect(component.hasMainNavigation).toBe(false);
+			expect(component.hasMainNavigation()).toBe(false);
 			expect(fixture.nativeElement.querySelector('ob-master-layout-navigation')).toBeFalsy();
 		});
 	});

@@ -2,18 +2,19 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
-	OnDestroy,
+	Signal,
 	TemplateRef,
 	ViewEncapsulation,
+	computed,
 	contentChild,
 	contentChildren,
 	inject,
-	input,
+	model,
 	output,
 	viewChildren,
 } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {filter, map, takeUntil} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
 import {ObMasterLayoutService} from '../master-layout.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
@@ -24,67 +25,78 @@ import {
 	ObINavigationLink,
 	ObIServiceNavigationConfig,
 } from '../master-layout.model';
-import {ObIPamsConfiguration, ObLoginState} from '../../service-navigation/service-navigation.model';
-import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
+import {
+	ObEPamsEnvironment,
+	ObIPamsConfiguration,
+	ObLoginState,
+} from '../../service-navigation/service-navigation.model';
 import {OB_PAMS_CONFIGURATION} from '../../service-navigation/service-navigation.provider';
+import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
+import {toSignal} from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'ob-master-layout-header',
 	standalone: false,
 	templateUrl: './master-layout-header.component.html',
 	styleUrls: ['./master-layout-header.component.scss', './master-layout-header-controls.component.scss'],
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	host: {
-		'[class.ob-master-layout-header-small]': 'isSmall',
+		'[class.ob-master-layout-header-small]': 'isSmall()',
 		class: 'ob-master-layout-header',
 	},
 })
-export class ObMasterLayoutHeaderComponent implements OnDestroy {
+export class ObMasterLayoutHeaderComponent {
 	home$: Observable<string>;
-	isCustom: boolean;
 	banner: ObIBanner;
-	serviceNavigationConfig: ObIServiceNavigationConfig;
-	hasMainNavigation: boolean;
-	readonly navigation = input<ObINavigationLink[]>(undefined);
+	readonly navigation = model<ObINavigationLink[]>([]);
+	/** @deprecated since Oblique 16. Will be removed in Oblique 17. Use `navigationChange` instead. */
 	readonly navigationChanged = output<ObINavigationLink[]>();
-	isSmall: boolean;
+	readonly serviceNavigationConfig: Signal<
+		ObIServiceNavigationConfig & {environment: ObEPamsEnvironment; rootUrl: string}
+	>;
 	readonly obLogo = contentChild<TemplateRef<unknown>>('obHeaderLogo');
 	readonly templates = contentChildren<TemplateRef<unknown>>('obHeaderControl');
 	readonly mobileTemplates = contentChildren<TemplateRef<unknown>>('obHeaderMobileControl');
+	readonly hasMainNavigation: Signal<boolean>;
 	readonly headerControl = viewChildren<ElementRef>('headerControl');
 	readonly headerMobileControl = viewChildren<ElementRef>('headerMobileControl');
+	readonly isCustom: Signal<boolean>;
+	readonly isSmall: Signal<boolean>;
 	readonly pamsConfiguration = inject<ObIPamsConfiguration>(OB_PAMS_CONFIGURATION, {optional: true});
-	private readonly unsubscribe = new Subject<void>();
 	private readonly masterLayout = inject(ObMasterLayoutService);
 	private readonly config = inject(ObMasterLayoutConfig);
 
 	constructor() {
-		this.isCustom = this.masterLayout.header.isCustom;
-		this.isSmall = this.masterLayout.header.isSmall;
 		const bannerToken = inject<ObIBanner>(OB_BANNER, {optional: true});
-		this.customChange();
-		this.smallChange();
-		this.serviceNavigationConfiguration();
+		this.isCustom = toSignal(
+			this.masterLayout.header.configEvents$.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_CUSTOM),
+				map((event: ObIMasterLayoutEvent) => !!event.value)
+			),
+			{initialValue: this.masterLayout.header.isCustom}
+		);
+		this.isSmall = toSignal(
+			this.masterLayout.header.configEvents$.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_SMALL),
+				map((event: ObIMasterLayoutEvent) => !!event.value)
+			),
+			{initialValue: this.masterLayout.header.isSmall}
+		);
 		this.banner = buildBannerObject(bannerToken);
 		this.home$ = this.masterLayout.homePageRouteChange$;
-		this.serviceNavigationConfig = this.config.header.serviceNavigation;
-		this.hasMainNavigation = this.config.layout.hasMainNavigation;
-
-		inject(ObMasterLayoutComponentService)
-			.configEvents$.pipe(
-				takeUntil(this.unsubscribe),
+		this.serviceNavigationConfig = computed(() => ({
+			...this.masterLayout.header.serviceNavigationConfiguration(),
+			environment: this.pamsConfiguration?.environment ?? ObEPamsEnvironment.PROD,
+			rootUrl: this.pamsConfiguration?.rootUrl ?? '',
+		}));
+		this.hasMainNavigation = toSignal(
+			inject(ObMasterLayoutComponentService).configEvents$.pipe(
 				filter(events => events.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION),
-				map(event => event.value)
-			)
-			.subscribe(hasMainNavigation => {
-				this.hasMainNavigation = hasMainNavigation;
-			});
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
+				map(event => !!event.value)
+			),
+			{initialValue: this.config.layout.hasMainNavigation}
+		);
 	}
 
 	emitLoginState(loginState: ObLoginState): void {
@@ -95,40 +107,12 @@ export class ObMasterLayoutHeaderComponent implements OnDestroy {
 		this.masterLayout.header.emitLogoutUrl(logoutUrl);
 	}
 
+	/** @deprecated since Oblique 16. Will be removed in Oblique 17.
+	 *
+	 * Use the `navigation` model with `[(navigation)]`
+	 * or update it with `navigation.set(...)` instead.
+	 */
 	emitNavigation(navigation: ObINavigationLink[]): void {
 		this.navigationChanged.emit(navigation);
-	}
-
-	private customChange(): void {
-		this.masterLayout.header.configEvents$
-			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_CUSTOM),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(event => {
-				this.isCustom = event.value;
-			});
-	}
-
-	private smallChange(): void {
-		this.masterLayout.header.configEvents$
-			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.HEADER_IS_SMALL),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(event => {
-				this.isSmall = event.value;
-			});
-	}
-
-	private serviceNavigationConfiguration(): void {
-		this.masterLayout.header.configEvents$
-			.pipe(
-				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION),
-				takeUntil(this.unsubscribe)
-			)
-			.subscribe(event => {
-				this.serviceNavigationConfig = event.config;
-			});
 	}
 }

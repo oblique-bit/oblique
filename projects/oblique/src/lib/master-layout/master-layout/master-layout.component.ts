@@ -6,19 +6,22 @@ import {
 	DOCUMENT,
 	DoCheck,
 	ElementRef,
-	Input,
 	OnChanges,
 	OnDestroy,
 	OnInit,
 	SimpleChanges,
 	TemplateRef,
 	ViewEncapsulation,
+	WritableSignal,
+	computed,
 	contentChild,
 	contentChildren,
 	inject,
 	input,
 	isDevMode,
+	model,
 	output,
+	signal,
 	viewChild,
 } from '@angular/core';
 import {NavigationEnd, Params, Router} from '@angular/router';
@@ -27,19 +30,15 @@ import {delay, filter, map, skip, takeUntil, tap} from 'rxjs/operators';
 import {appVersion} from '../../version';
 import {WINDOW} from '../../window/window.provider';
 import {ObWindow} from '../../window/window.provider.model';
-import {
-	ObEMasterLayoutEventValues,
-	ObICollapseBreakpoints,
-	ObIDynamicSkipLink,
-	ObINavigationLink,
-	ObISkipLink,
-} from '../master-layout.model';
+import {ObICollapseBreakpoints, ObIDynamicSkipLink, ObINavigationLink, ObISkipLink} from '../master-layout.model';
 import {ObOffCanvasService} from '../../off-canvas/off-canvas.service';
 import {Subject, fromEvent, startWith} from 'rxjs';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 import {MasterLayoutComponentBase} from './master-layout-component-base';
 import {ObConsoleService} from '../../console/ob-console.service';
+
+const defaultCollapseBreakpoint = 'md';
 
 @Component({
 	selector: 'ob-master-layout',
@@ -51,18 +50,18 @@ import {ObConsoleService} from '../../console/ob-console.service';
 		'./master-layout-offcanvas.component.scss',
 		'./master-layout-accessibility.component.scss',
 	],
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	host: {
-		'[class.ob-layout-collapsed]': 'isLayoutCollapsed',
-		'[class.ob-layout-expanded]': 'isLayoutExpanded',
-		'[class.ob-has-cover]': 'hasCover',
-		'[class.ob-has-layout]': 'hasLayout',
-		'[class.ob-has-max-width]': 'hasMaxWidth',
-		'[class.ob-header-expanded]': 'isMenuOpened',
-		'[class.ob-no-navigation]': 'noNavigation',
-		'[class.ob-off-canvas]': 'hasOffCanvas',
-		'[class.ob-master-layout-scrolling]': 'isScrolling',
+		'[class.ob-layout-collapsed]': 'isLayoutCollapsed()',
+		'[class.ob-layout-expanded]': 'isLayoutExpanded()',
+		'[class.ob-has-cover]': 'hasCover()',
+		'[class.ob-has-layout]': 'hasLayout()',
+		'[class.ob-has-max-width]': 'hasMaxWidth()',
+		'[class.ob-header-expanded]': 'isMenuOpened()',
+		'[class.ob-no-navigation]': 'noNavigation()',
+		'[class.ob-off-canvas]': 'hasOffCanvas()',
+		'[class.ob-master-layout-scrolling]': 'isScrolling()',
 		class: 'ob-master-layout',
 		'ob-version': appVersion,
 	},
@@ -72,18 +71,22 @@ export class ObMasterLayoutComponent
 	extends MasterLayoutComponentBase
 	implements OnInit, DoCheck, OnDestroy, OnChanges
 {
-	route = {path: '', params: undefined};
-	hasHighContrast = false;
-	readonly contentId = 'content';
-	readonly navigation = input<ObINavigationLink[]>([]);
-	readonly skipLinks = input<ObISkipLink[] | ObIDynamicSkipLink[]>([]);
-	@Input() collapseBreakpoint: ObICollapseBreakpoints;
-	readonly version = input<string>(undefined);
+	readonly contentId = signal('content');
+	readonly route: WritableSignal<{
+		path: string | undefined;
+		params: Params | undefined;
+	}> = signal({path: '', params: undefined});
+	readonly hasHighContrast = signal(false);
+	readonly navigation = model<ObINavigationLink[]>([]);
+	/** @deprecated since Oblique 16. Will be removed in Oblique 17. Use `navigationChange` instead. */
 	readonly navigationChanged = output<ObINavigationLink[]>();
-	isLayoutCollapsed = false;
-	isLayoutExpanded = true;
-	isScrolling = false;
-	prefersReducedMotion = false;
+	readonly skipLinks = input<ObISkipLink[] | ObIDynamicSkipLink[]>([]);
+	readonly collapseBreakpoint = input<ObICollapseBreakpoints>(defaultCollapseBreakpoint);
+	readonly version = input<string>();
+	readonly isLayoutCollapsed = signal(false);
+	readonly isLayoutExpanded = signal(true);
+	readonly isScrolling = signal(false);
+	readonly prefersReducedMotion = signal(false);
 	readonly obLogo = contentChild<TemplateRef<unknown>>('obHeaderLogo');
 	readonly headerControlTemplates = contentChildren<TemplateRef<unknown>>('obHeaderControl');
 	readonly headerMobileControlTemplates = contentChildren<TemplateRef<unknown>>('obHeaderMobileControl');
@@ -91,9 +94,14 @@ export class ObMasterLayoutComponent
 	readonly offCanvasClose = viewChild('offCanvasClose', {read: ElementRef});
 	readonly main = viewChild<ElementRef<HTMLElement>>('main');
 	readonly wrapper = viewChild<ElementRef<HTMLElement>>('wrapper');
-	skipLinksInternal: ObIDynamicSkipLink[];
+	readonly skipLinksInternal = computed(() =>
+		this.skipLinks().map((skipLink, index: number) => ({...skipLink, accessKey: index + this.staticSkipLinks()}))
+	);
 	private readonly unsubscribeMediaQuery = new Subject<void>();
 	private navigationLength: number;
+
+	private readonly staticSkipLinks = computed(() => (!this.noNavigation() && this.navigation()?.length ? 2 : 1));
+
 	private readonly router = inject(Router);
 	private readonly offCanvasService = inject(ObOffCanvasService);
 	private readonly globalEventsService = inject(ObGlobalEventsService);
@@ -101,7 +109,6 @@ export class ObMasterLayoutComponent
 	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly highContrastModeDetector = inject(HighContrastModeDetector);
 	private readonly changeDetectorRef = inject(ChangeDetectorRef);
-	private readonly defaultCollapseBreakpoint = 'md';
 	private readonly gridBreakpoints = {
 		xs: 0,
 		sm: 600,
@@ -127,17 +134,10 @@ export class ObMasterLayoutComponent
 
 	ngOnInit(): void {
 		this.globalEventsService.scroll$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.scrollTop());
-		this.masterLayout.layout.configEvents$
-			.pipe(filter(evt => evt.name === ObEMasterLayoutEventValues.LAYOUT_HAS_MAIN_NAVIGATION))
-			.subscribe(evt => this.updateSkipLinks(evt.value));
-		this.updateSkipLinks(!this.noNavigation);
-		this.hasHighContrast = this.isInHighContrastMode();
+		this.hasHighContrast.set(this.isInHighContrastMode());
 		// this avoids re-executing handleLayoutMode if it has already been done in ngOnChanges
-		if (!this.collapseBreakpoint) {
-			this.collapseBreakpoint = this.defaultCollapseBreakpoint;
-			this.handleLayoutMode();
-		}
-		this.prefersReducedMotion = this.window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+		this.handleLayoutMode();
+		this.prefersReducedMotion.set(this.window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true);
 	}
 
 	ngDoCheck(): void {
@@ -145,7 +145,6 @@ export class ObMasterLayoutComponent
 		if (navigation?.length !== this.navigationLength) {
 			this.navigationLength = navigation.length;
 			this.masterLayout.navigation.refresh();
-			this.updateSkipLinks(!this.noNavigation);
 		}
 	}
 
@@ -156,6 +155,11 @@ export class ObMasterLayoutComponent
 		this.unsubscribeMediaQuery.complete();
 	}
 
+	/** @deprecated since Oblique 16. Will be removed in Oblique 17.
+	 *
+	 * Use the `navigation` model with `[(navigation)]`
+	 * or update it with `navigation.set(...)` instead.
+	 */
 	emitNavigation(navigation: ObINavigationLink[]): void {
 		this.navigationChanged.emit(navigation);
 	}
@@ -164,8 +168,8 @@ export class ObMasterLayoutComponent
 		const scrollTop =
 			element?.scrollTop ??
 			(this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0);
-		if (this.isScrolling !== scrollTop > 0) {
-			this.isScrolling = scrollTop > 0;
+		if (this.isScrolling() !== scrollTop > 0) {
+			this.isScrolling.set(scrollTop > 0);
 		}
 	}
 
@@ -180,7 +184,7 @@ export class ObMasterLayoutComponent
 			}
 			return;
 		}
-		const behavior = this.prefersReducedMotion ? 'instant' : 'smooth';
+		const behavior = this.prefersReducedMotion() ? 'instant' : 'smooth';
 		if (this.isMainFocusedInStickyLayout(elementToFocus.id)) {
 			// Here the target is the already fully visible main container. The content of the container is being scrolled to the top.
 			elementToFocus.scrollTo({
@@ -205,7 +209,7 @@ export class ObMasterLayoutComponent
 	}
 
 	private isMainFocusedInStickyLayout(id: string): boolean {
-		return id === this.contentId && this.isFooterSticky && this.isHeaderSticky;
+		return id === this.contentId() && this.isFooterSticky() && this.isHeaderSticky();
 	}
 
 	private createElementDescription(element: Element): string {
@@ -227,12 +231,12 @@ export class ObMasterLayoutComponent
 	}
 
 	private focusMainAfterNavigation(): void {
-		this.focusElementById(this.contentId);
+		this.focusElementById(this.contentId());
 	}
 
 	private handleLayoutMode(): void {
 		this.unsubscribeMediaQuery.next();
-		const mediaQuery = this.window.matchMedia(`(min-width: ${this.gridBreakpoints[this.collapseBreakpoint]}px)`);
+		const mediaQuery = this.window.matchMedia(`(min-width: ${this.gridBreakpoints[this.collapseBreakpoint()]}px)`);
 		fromEvent(mediaQuery as MediaQueryList, 'change')
 			.pipe(
 				map((event: MediaQueryListEvent) => event.matches),
@@ -240,8 +244,8 @@ export class ObMasterLayoutComponent
 				takeUntil(this.unsubscribeMediaQuery)
 			)
 			.subscribe(isLayoutExpanded => {
-				this.isLayoutExpanded = isLayoutExpanded;
-				this.isLayoutCollapsed = !isLayoutExpanded;
+				this.isLayoutExpanded.set(isLayoutExpanded);
+				this.isLayoutCollapsed.set(!isLayoutExpanded);
 				this.changeDetectorRef.markForCheck();
 			});
 	}
@@ -251,24 +255,16 @@ export class ObMasterLayoutComponent
 		return currentHighContrastMode === HighContrastMode.WHITE_ON_BLACK;
 	}
 
-	private updateSkipLinks(hasNavigation: boolean): void {
-		const staticSkipLinks = hasNavigation && this.navigation()?.length ? 2 : 1;
-		this.skipLinksInternal = this.skipLinks().map((skipLink, index: number) => ({
-			...skipLink,
-			accessKey: index + staticSkipLinks,
-		}));
-	}
-
 	private focusFragment(): void {
 		this.router.events
 			.pipe(
 				filter(evt => evt instanceof NavigationEnd),
 				map((evt: NavigationEnd) => evt.url),
 				tap(url => {
-					this.route.path = (/^[^?&#]*/.exec(url) || [])[0];
-				}),
-				tap(url => {
-					this.route.params = this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/));
+					this.route.set({
+						path: (/^[^?&#]*/.exec(url) || [])[0],
+						params: this.formatQueryParameters(this.extractUrlPart(url, /[?&][^#]*/)),
+					});
 				}),
 				map(url => this.extractUrlPart(url, /#[^?&]*/)),
 				filter(fragment => !!fragment)
@@ -294,7 +290,7 @@ export class ObMasterLayoutComponent
 		this.offCanvasService.opened$
 			.pipe(
 				takeUntil(this.unsubscribe),
-				filter(() => this.hasOffCanvas),
+				filter(() => this.hasOffCanvas()),
 				filter(value => value),
 				delay(600) // duration of the open animation
 			)

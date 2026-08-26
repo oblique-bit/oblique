@@ -1,7 +1,6 @@
-@if (isCustom) {
+@if (isCustom()) {
 	<ng-content select="[obFooter]" />
-}
-@if (!isCustom) {
+} @else {
 	<footer>
 		<div class="ob-footer-links">
 			<ul class="ob-footer-item ob-footer-item-links" [attr.aria-label]="'i18n.oblique.footer.links.title' | translate">
@@ -17,9 +16,9 @@
 				</li>
 			</ul>
 		</div>
-		@if (version) {
+		@if (version()) {
 			<div class="ob-footer-version">
-				<p>{{ version }}</p>
+				<p>{{ version() }}</p>
 			</div>
 		}
 		<div class="ob-footer-info">

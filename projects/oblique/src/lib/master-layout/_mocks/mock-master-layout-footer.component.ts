@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, TemplateRef, contentChildren} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Signal, TemplateRef, contentChildren, input, signal} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -7,11 +7,11 @@ import {ChangeDetectionStrategy, Component, TemplateRef, contentChildren} from '
 	selector: 'ob-master-layout-footer',
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	exportAs: 'obMasterLayoutFooter',
 })
 export class ObMockMasterLayoutFooterComponent {
-	home = '';
-	isCustom = true;
 	readonly templates = contentChildren<TemplateRef<HTMLLinkElement>>('obFooterLink');
+	version = input<string>();
+	isCustom: Signal<boolean> = signal(true);
 }

@@ -1,8 +1,7 @@
 <header class="ob-header">
-	@if (isCustom) {
+	@if (isCustom()) {
 		<ng-content select="[obHeader]" />
-	}
-	@if (!isCustom) {
+	} @else {
 		<div class="ob-master-layout-header-action">
 			<ng-content select="[obHeaderAction]" />
 		</div>
@@ -47,42 +46,43 @@
 			</ul>
 		</div>
 		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
-		<ob-service-navigation
-			[infoContact]="$safeNavigationMigration(serviceNavigationConfig?.infoContact)"
-			[infoLinks]="$safeNavigationMigration(serviceNavigationConfig?.infoLinks)"
-			[infoContactText]="$safeNavigationMigration(serviceNavigationConfig?.infoContactText)"
-			[infoHelpText]="$safeNavigationMigration(serviceNavigationConfig?.infoHelpText)"
-			[infoDescription]="$safeNavigationMigration(serviceNavigationConfig?.infoDescription)"
-			[useInfoBackend]="$safeNavigationMigration(serviceNavigationConfig?.useInfoBackend)"
-			[maxFavoriteApplications]="$safeNavigationMigration(serviceNavigationConfig?.maxFavoriteApplications)"
-			[profileLinks]="$safeNavigationMigration(serviceNavigationConfig?.profileLinks)"
-			[returnUrl]="$safeNavigationMigration(serviceNavigationConfig?.returnUrl)"
-			[pamsAppId]="$safeNavigationMigration(serviceNavigationConfig?.pamsAppId)"
-			[displayApplications]="$safeNavigationMigration(serviceNavigationConfig?.displayApplications)"
-			[displayAuthentication]="$safeNavigationMigration(serviceNavigationConfig?.displayAuthentication)"
-			[displayInfo]="$safeNavigationMigration(serviceNavigationConfig?.displayInfo)"
-			[displayLanguages]="$safeNavigationMigration(serviceNavigationConfig?.displayLanguages)"
-			[displayMessage]="$safeNavigationMigration(serviceNavigationConfig?.displayMessage)"
-			[displayProfile]="$safeNavigationMigration(serviceNavigationConfig?.displayProfile)"
-			[eportalLanguageSynchronization]="
-				$safeNavigationMigration(serviceNavigationConfig?.eportalLanguageSynchronization)
-			"
-			[handleLogout]="$safeNavigationMigration(serviceNavigationConfig?.handleLogout)"
-			[environment]="$safeNavigationMigration(pamsConfiguration?.environment)"
-			[rootUrl]="$safeNavigationMigration(pamsConfiguration?.rootUrl)"
-			(loginState)="emitLoginState($event)"
-			(logoutTriggered)="emitLogoutUrl($event)"
-		>
-			@for (template of templates(); track template) {
-				<ng-template #customWidgetTemplate>
-					<ng-container [ngTemplateOutlet]="template" />
-				</ng-template>
-			}
-		</ob-service-navigation>
+		@let config = serviceNavigationConfig();
+		@if (config) {
+			<ob-service-navigation
+				[infoContact]="config.infoContact"
+				[infoLinks]="config.infoLinks"
+				[infoContactText]="config.infoContactText"
+				[infoHelpText]="config.infoHelpText"
+				[infoDescription]="config.infoDescription"
+				[useInfoBackend]="config.useInfoBackend"
+				[maxFavoriteApplications]="config.maxFavoriteApplications"
+				[profileLinks]="config.profileLinks"
+				[returnUrl]="config.returnUrl"
+				[pamsAppId]="config.pamsAppId"
+				[displayApplications]="config.displayApplications"
+				[displayAuthentication]="config.displayAuthentication"
+				[displayInfo]="config.displayInfo"
+				[displayLanguages]="config.displayLanguages"
+				[displayMessage]="config.displayMessage"
+				[displayProfile]="config.displayProfile"
+				[eportalLanguageSynchronization]="config.eportalLanguageSynchronization"
+				[handleLogout]="config.handleLogout"
+				[environment]="pamsConfiguration?.environment"
+				[rootUrl]="pamsConfiguration?.rootUrl"
+				(loginState)="emitLoginState($event)"
+				(logoutTriggered)="emitLogoutUrl($event)"
+			>
+				@for (template of templates(); track template) {
+					<ng-template #customWidgetTemplate>
+						<ng-container [ngTemplateOutlet]="template" />
+					</ng-template>
+				}
+			</ob-service-navigation>
+		}
 	}
 </header>
-@if (hasMainNavigation) {
-	<ob-master-layout-navigation [links]="navigation()" (linksChanged)="emitNavigation($event)">
+@if (hasMainNavigation()) {
+	<ob-master-layout-navigation [(links)]="navigation" (linksChange)="emitNavigation($event)">
 		<ng-content select="[obNavigation]" />
 	</ob-master-layout-navigation>
 }

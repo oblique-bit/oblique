@@ -1,23 +1,22 @@
-import {ChangeDetectorRef, ElementRef, Renderer2, inject} from '@angular/core';
-import {filter, takeUntil} from 'rxjs/operators';
+import {ChangeDetectorRef, DestroyRef, ElementRef, Renderer2, WritableSignal, inject, signal} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {filter} from 'rxjs/operators';
 import {ObEMasterLayoutEventValues, ObEScrollMode, ObIMasterLayoutEvent} from '../master-layout.model';
 import {ObMasterLayoutService} from '../master-layout.service';
-import {Subject} from 'rxjs';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 export class MasterLayoutNavigationComponentBase {
-	isFullWidth: boolean;
+	readonly isFullWidth: WritableSignal<boolean>;
 	activeClass: string;
 
 	protected readonly masterLayout = inject(ObMasterLayoutService);
-	protected readonly unsubscribe: Subject<void> = new Subject<void>();
-	protected isScrollable: boolean;
+	protected readonly destroyRef = inject(DestroyRef);
+	protected readonly isScrollable = signal(false);
 	protected readonly el = inject<ElementRef<HTMLElement>>(ElementRef);
 
-	protected currentScroll = 0;
-	protected maxScroll = 0;
+	protected readonly currentScroll = signal(0);
+	protected readonly maxScroll = signal(0);
 
 	private static readonly buttonWidth = 40; // $ob-navigation-scrollable-padding
 	private readonly globalEventsService = inject(ObGlobalEventsService);
@@ -26,10 +25,10 @@ export class MasterLayoutNavigationComponentBase {
 	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
 	constructor() {
-		this.isFullWidth = this.masterLayout.navigation.isFullWidth;
+		this.isFullWidth = signal(this.masterLayout.navigation.isFullWidth);
 		this.activeClass = this.config.navigation.activeClass;
 
-		this.masterLayout.navigation.refreshed.pipe(takeUntil(this.unsubscribe)).subscribe(this.refresh.bind(this));
+		this.masterLayout.navigation.refreshed.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(this.refresh.bind(this));
 
 		this.scrollModeChange();
 		this.fullWidthChange();
@@ -53,26 +52,31 @@ export class MasterLayoutNavigationComponentBase {
 		this.globalEventsService.keyUp$
 			.pipe(
 				filter(event => event.key === 'Escape'),
-				takeUntil(this.unsubscribe)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe(() => this.close());
 	}
 
-	protected getNav(): Element {
-		return this.el.nativeElement.querySelector('.ob-main-nav:not(.ob-sub-nav)');
+	protected getNav(): HTMLElement | null {
+		return this.el.nativeElement.querySelector<HTMLElement>('.ob-main-nav:not(.ob-sub-nav)');
 	}
 
 	protected updateScroll(delta: number): void {
 		const nav = this.getNav();
-		this.currentScroll += delta;
-		this.currentScroll = Math.max(0, this.currentScroll);
-		this.currentScroll = Math.min(this.currentScroll, this.maxScroll);
-		this.renderer.setStyle(nav.children[0], 'margin-left', `-${this.currentScroll}px`);
+		const firstChild = nav?.firstElementChild;
+		if (!firstChild) {
+			return;
+		}
+		this.currentScroll.update(scroll => Math.min(Math.max(0, scroll + delta), this.maxScroll()));
+		this.renderer.setStyle(firstChild, 'margin-left', `-${this.currentScroll()}px`);
 	}
 
 	private scrollModeChange(): void {
 		this.masterLayout.navigation.configEvents$
-			.pipe(filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE))
+			.pipe(
+				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_SCROLL_MODE),
+				takeUntilDestroyed(this.destroyRef)
+			)
 			.subscribe(() => this.masterLayout.navigation.refresh());
 	}
 
@@ -80,10 +84,12 @@ export class MasterLayoutNavigationComponentBase {
 		this.masterLayout.navigation.configEvents$
 			.pipe(
 				filter((evt: ObIMasterLayoutEvent) => evt.name === ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH),
-				takeUntil(this.unsubscribe)
+				takeUntilDestroyed(this.destroyRef)
 			)
 			.subscribe(event => {
-				this.isFullWidth = event.value;
+				if (event.value !== undefined) {
+					this.isFullWidth.set(event.value);
+				}
 			});
 	}
 
@@ -92,16 +98,18 @@ export class MasterLayoutNavigationComponentBase {
 		if (nav) {
 			const {scrollMode} = this.masterLayout.navigation;
 			if (scrollMode === ObEScrollMode.DISABLED) {
-				this.isScrollable = false;
+				this.isScrollable.set(false);
 			} else {
-				const childWidth = Array.from(nav.children).reduce((total, el: HTMLElement) => total + el.clientWidth, 0);
-				this.maxScroll = Math.max(
-					0,
-					-(nav.clientWidth - childWidth - 2 * MasterLayoutNavigationComponentBase.buttonWidth)
+				const childWidth = Array.from(nav.children).reduce(
+					(total, element) => total + (element as HTMLElement).clientWidth,
+					0
 				);
-				this.isScrollable = scrollMode === ObEScrollMode.ENABLED ? true : childWidth > nav.clientWidth;
+				this.maxScroll.set(
+					Math.max(0, -(nav.clientWidth - childWidth - 2 * MasterLayoutNavigationComponentBase.buttonWidth))
+				);
+				this.isScrollable.set(scrollMode === ObEScrollMode.ENABLED ? true : childWidth > nav.clientWidth);
 			}
-			this.updateScroll(this.isScrollable ? 0 : -this.currentScroll);
+			this.updateScroll(this.isScrollable() ? 0 : -this.currentScroll());
 			this.changeDetectorRef.markForCheck();
 		}
 	}
@@ -119,7 +127,7 @@ export class MasterLayoutNavigationComponentBase {
 	private preventBrowserFocusOnLastItem(): void {
 		inject(ObGlobalEventsService)
 			.keyDown$.pipe(
-				takeUntilDestroyed(),
+				takeUntilDestroyed(this.destroyRef),
 				filter(
 					event =>
 						event.code === 'Tab' &&
@@ -130,7 +138,10 @@ export class MasterLayoutNavigationComponentBase {
 			.subscribe(event => {
 				event.preventDefault();
 				// If there is no nav or the nav is empty, then no event is triggered
-				(this.getNav().lastElementChild.firstElementChild as HTMLElement).focus({preventScroll: true});
+				const lastNavigationLink = this.getNav()?.lastElementChild?.firstElementChild;
+				if (lastNavigationLink instanceof HTMLElement) {
+					lastNavigationLink.focus({preventScroll: true});
+				}
 			});
 	}
 }

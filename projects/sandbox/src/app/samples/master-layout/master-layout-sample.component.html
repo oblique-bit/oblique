@@ -2,8 +2,23 @@
 	<h1>{{ "i18n.routes.samples.master-layout.title" | translate }}</h1>
 </div>
 <div class="card-wrapper">
-	<sb-master-layout-layout (coverLayout)="setLayout($event)" />
+	<sb-master-layout-layout (coverLayout)="setLayout($event)" (scrollFixture)="showScrollFixture.set($event)" />
 	<sb-master-layout-header-sample />
 	<sb-master-layout-footer-sample />
 	<sb-master-layout-navigation-sample />
 </div>
+@if (showScrollFixture()) {
+	<section id="master-layout-scroll-fixture" data-test="scroll-fixture">
+		<h2 id="fragment">Scroll fixture</h2>
+		<p>Master layout content used to verify scrolling, sticky regions, and fragment focus.</p>
+		<p>Additional content keeps the fixture taller than the viewport at narrow and wide sizes.</p>
+		<p>Additional content keeps the fixture taller than the viewport at narrow and wide sizes.</p>
+		<p>Additional content keeps the fixture taller than the viewport at narrow and wide sizes.</p>
+		<p>Additional content keeps the fixture taller than the viewport at narrow and wide sizes.</p>
+		<p>Additional content keeps the fixture taller than the viewport at narrow and wide sizes.</p>
+		<p>Additional content keeps the fixture taller than the viewport at narrow and wide sizes.</p>
+		<p>Additional content keeps the fixture taller than the viewport at narrow and wide sizes.</p>
+		<p>Additional content keeps the fixture taller than the viewport at narrow and wide sizes.</p>
+		<p>Additional content keeps the fixture taller than the viewport at narrow and wide sizes.</p>
+	</section>
+}
