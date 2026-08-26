@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, model} from '@angular/core';
 import {RouterLinkActive} from '@angular/router';
 import {ObNavTreeItemModel} from '../nav-tree-item.model';
 
@@ -20,23 +20,20 @@ export class ObMockNavTreeComponent {
 	};
 
 	readonly items = input<ObNavTreeItemModel[]>([]);
-	@Input() prefix = 'nav-tree';
+	readonly prefix = input('nav-tree');
 	readonly hasFilter = input(false);
-	@Input() filterPattern: string;
-	readonly labelFormatter = input<(item: ObNavTreeItemModel, filterPattern?: string) => string>(undefined);
-	readonly treeAriaLabelledBy = input<string>(undefined);
-	readonly treeAriaLabel = input<string>(undefined);
-
-	@Input() patternMatcher(item: ObNavTreeItemModel, pattern = ''): boolean {
-		return true;
-	}
+	readonly filterPattern = model<string>();
+	readonly labelFormatter = input<(item: ObNavTreeItemModel, filterPattern?: string) => string>();
+	readonly treeAriaLabelledBy = input<string>();
+	readonly treeAriaLabel = input<string>();
+	readonly patternMatcher = input<(item: ObNavTreeItemModel, pattern?: string) => boolean>();
 
 	visible(item: ObNavTreeItemModel): boolean {
 		return true;
 	}
 
 	itemKey(item: ObNavTreeItemModel): string {
-		return `${this.prefix}-${item.id}`;
+		return `${this.prefix()}-${item.id}`;
 	}
 
 	isLinkActive(rla: RouterLinkActive, item: ObNavTreeItemModel): boolean {

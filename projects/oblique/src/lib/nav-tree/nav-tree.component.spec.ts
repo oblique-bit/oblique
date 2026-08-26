@@ -1,10 +1,11 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {RouterLinkActive, RouterModule} from '@angular/router';
+import {ActivatedRoute, RouterLinkActive, RouterModule} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {BehaviorSubject} from 'rxjs';
 import {ObNavTreeItemModel} from './nav-tree-item.model';
-import {ObNavTreeComponent} from './nav-tree.component';
+import {ObNavTreeComponent, defaultPatternMatcherFactory} from './nav-tree.component';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
@@ -12,8 +13,10 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 	template: ` <ob-nav-tree
 		[items]="items"
 		[prefix]="prefix"
+		[hasFilter]="hasFilter"
 		[filterPattern]="filterPattern"
 		[labelFormatter]="labelFormatter"
+		[patternMatcher]="patternMatcher"
 	/>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
@@ -49,9 +52,11 @@ class TestComponent {
 	];
 
 	prefix = 'nav-tree-test';
+	hasFilter = true;
 	filterPattern: string;
 
 	labelFormatter: (item: ObNavTreeItemModel, filterPattern?: string) => string;
+	patternMatcher: (item: ObNavTreeItemModel, pattern?: string) => boolean;
 }
 
 @Component({
@@ -114,6 +119,7 @@ describe(ObNavTreeComponent.name, () => {
 			fixture = TestBed.createComponent(TestComponent);
 			testComponent = fixture.componentInstance;
 			testComponent.labelFormatter = (item: ObNavTreeItemModel) => `${item.label} - Default}`;
+			testComponent.patternMatcher = defaultPatternMatcherFactory(TestBed.inject(TranslateService));
 			fixture.detectChanges();
 			element = fixture.debugElement.query(By.directive(ObNavTreeComponent));
 			component = element.injector.get(ObNavTreeComponent);
@@ -137,7 +143,7 @@ describe(ObNavTreeComponent.name, () => {
 		});
 
 		it('should detect changes if another `NavTreeItemModel is added`', () => {
-			testComponent.items.push(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}));
+			testComponent.items = [...testComponent.items, new ObNavTreeItemModel({id: 'X', label: 'X - Label'})];
 			hostChangeDetector.detectChanges();
 
 			const navItems = fixture.debugElement.queryAll(By.css('li'));
@@ -171,9 +177,21 @@ describe(ObNavTreeComponent.name, () => {
 		});
 
 		it('should filter navigation items', () => {
-			component.filterPattern = '2'; // Filter on '2' pattern
+			component.filterPattern.set('2'); // Filter on '2' pattern
 			hostChangeDetector.detectChanges();
 
+			// All items containing the string '2' and their respective parents should be visible:
+			const navItems = fixture.debugElement.queryAll(By.css('li'));
+			expect(navItems.length).toBe(7);
+		});
+
+		it('should update the filter pattern on input', () => {
+			const input = fixture.debugElement.query(By.css('input')).nativeElement as HTMLInputElement;
+			input.value = '2';
+			input.dispatchEvent(new Event('input'));
+			hostChangeDetector.detectChanges();
+
+			expect(component.filterPattern()).toBe('2');
 			// All items containing the string '2' and their respective parents should be visible:
 			const navItems = fixture.debugElement.queryAll(By.css('li'));
 			expect(navItems.length).toBe(7);
@@ -183,7 +201,7 @@ describe(ObNavTreeComponent.name, () => {
 			// Restore default label formatter:
 			const translate = TestBed.inject(TranslateService);
 			testComponent.labelFormatter = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(translate);
-			component.filterPattern = 'C'; // Filter on 'C' pattern
+			component.filterPattern.set('C'); // Filter on 'C' pattern
 			hostChangeDetector.detectChanges();
 
 			// All items containing the string 'C' and their respective parents should be visible:
@@ -215,11 +233,11 @@ describe(ObNavTreeComponent.name, () => {
 		});
 
 		it('should not match an item without matching text or children', () => {
-			expect(component.patternMatcher(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}), 'missing')).toBe(false);
+			expect(component.patternMatcher()!(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}), 'missing')).toBe(false);
 		});
 
 		it('should use an empty pattern by default', () => {
-			expect(component.patternMatcher(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}))).toBe(true);
+			expect(component.patternMatcher()!(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}))).toBe(true);
 		});
 
 		it('should make a parent visible when a child matches the filter pattern', () => {
@@ -230,24 +248,24 @@ describe(ObNavTreeComponent.name, () => {
 				items: [new ObNavTreeItemModel({id: 'child', label: 'Matching child'})],
 			});
 
-			expect(component.patternMatcher(item, 'Matching')).toBe(true);
+			expect(component.patternMatcher()!(item, 'Matching')).toBe(true);
 			expect(item.collapsed).toBe(false);
 		});
 
 		it('should show all items without a filter pattern', () => {
-			component.filterPattern = '';
+			component.filterPattern.set('');
 
 			expect(component.visible(new ObNavTreeItemModel({id: 'X', label: 'X - Label'}))).toBe(true);
 		});
 
 		it('should check active links with matching fragments', () => {
-			component.activeFragment = 'fragment';
+			component.activeFragment.set('fragment');
 
 			expect(component.isLinkActive(activeRouterLink, testComponent.items[0])).toBe(true);
 		});
 
 		it('should reject active links with different fragments', () => {
-			component.activeFragment = 'other-fragment';
+			component.activeFragment.set('other-fragment');
 
 			expect(component.isLinkActive(activeRouterLink, testComponent.items[0])).toBe(false);
 		});
@@ -284,8 +302,42 @@ describe(ObNavTreeComponent.name, () => {
 			expect(firstNavItem.nativeElement.innerHTML).toContain(formattedLabel);
 		});
 
-		it('should clean up fragment subscriptions on destroy', () => {
-			expect(() => component.ngOnDestroy()).not.toThrow();
+		it('should use the default pattern matcher when no custom matcher is provided', () => {
+			component.filterPattern.set('B.2');
+			fixtureDefault.detectChanges();
+
+			// Item B contains 'B.2' in its subtree, so the default matcher should match it:
+			expect(component.visible(fixtureDefault.componentInstance.items[1])).toBe(true);
+			// Item A does not contain 'B.2':
+			expect(component.visible(fixtureDefault.componentInstance.items[0])).toBe(false);
+		});
+	});
+
+	describe('NavTree fragment subscription cleanup', () => {
+		let fragment$: BehaviorSubject<string | null>;
+
+		beforeEach(async () => {
+			fragment$ = new BehaviorSubject<string | null>(null);
+			await TestBed.configureTestingModule({
+				imports: [ObNavTreeComponent, RouterModule.forRoot([])],
+				declarations: [TestComponentDefault],
+				providers: [provideObliqueTestingConfiguration(), {provide: ActivatedRoute, useValue: {fragment: fragment$}}],
+				schemas: [NO_ERRORS_SCHEMA],
+			}).compileComponents();
+		});
+
+		it('should stop updating the active fragment after destroy', () => {
+			const cleanupFixture = TestBed.createComponent(TestComponentDefault);
+			const cleanupElement = cleanupFixture.debugElement.query(By.directive(ObNavTreeComponent));
+			const cleanupComponent = cleanupElement.injector.get(ObNavTreeComponent);
+
+			cleanupFixture.detectChanges();
+			fragment$.next('fragment');
+			expect(cleanupComponent.activeFragment()).toBe('fragment');
+
+			cleanupFixture.destroy();
+			fragment$.next('other-fragment');
+			expect(cleanupComponent.activeFragment()).toBe('fragment');
 		});
 	});
 });
