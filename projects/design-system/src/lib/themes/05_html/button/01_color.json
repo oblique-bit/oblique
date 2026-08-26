@@ -177,7 +177,7 @@
               "inversity_normal": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}",
+                  "$value": "{ob.s.color.static.transparent}",
                   "$description": "Secondary button-aug background - normal inversity (transparent - normal by nature)"
                 },
                 "hover": {
@@ -190,13 +190,13 @@
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 }
               },
               "inversity_flipped": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}",
+                  "$value": "{ob.s.color.static.transparent}",
                   "$description": "Secondary button-aug background - flipped inversity (transparent - for use in flipped contexts)"
                 },
                 "hover": {
@@ -209,7 +209,7 @@
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 }
               }
             },
@@ -217,7 +217,7 @@
               "inversity_normal": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}",
+                  "$value": "{ob.s.color.static.transparent}",
                   "$description": "Tertiary button-aug background - normal inversity (transparent - normal by nature)"
                 },
                 "hover": {
@@ -230,13 +230,13 @@
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 }
               },
               "inversity_flipped": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}",
+                  "$value": "{ob.s.color.static.transparent}",
                   "$description": "Tertiary button-aug background - flipped inversity (transparent - for use in flipped contexts)"
                 },
                 "hover": {
@@ -249,7 +249,7 @@
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 }
               }
             }
@@ -259,39 +259,39 @@
               "inversity_normal": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}",
+                  "$value": "{ob.s.color.static.transparent}",
                   "$description": "Primary button-aug border - normal inversity (no border - for use in flipped contexts)"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 }
               },
               "inversity_flipped": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}",
+                  "$value": "{ob.s.color.static.transparent}",
                   "$description": "Primary button-aug border - flipped inversity (no border - standard primary appearance)"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 }
               }
             },
@@ -339,39 +339,39 @@
               "inversity_normal": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}",
+                  "$value": "{ob.s.color.static.transparent}",
                   "$description": "Tertiary button-aug border - normal inversity (no border - normal by nature)"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 }
               },
               "inversity_flipped": {
                 "enabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}",
+                  "$value": "{ob.s.color.static.transparent}",
                   "$description": "Tertiary button-aug border - flipped inversity (no border - for use in flipped contexts)"
                 },
                 "hover": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 },
                 "disabled": {
                   "$type": "color",
-                  "$value": "{ob.s.color.neutral.no_color}"
+                  "$value": "{ob.s.color.static.transparent}"
                 }
               }
             }

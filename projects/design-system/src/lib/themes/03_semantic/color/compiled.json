@@ -14,22 +14,45 @@
             "$value": "Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial."
           }
         },
-        "brand": {
-          "1": {
-            "$type": "color",
-            "$value": "{ob.p.color.basic.federal_red}",
-            "$description": "Federal identity color. Use for Bundesrot brand accent in navigation active states and primary brand elements. Numbering starts at 1 to support scalable multi-brand setups."
-          },
-          "2": {
-            "$type": "color",
-            "$value": "{ob.p.color.basic.white}",
-            "$description": "Federal second color is white. Because we don't want a black cross in darkmode."
-          },
+        "static": {
           "_docs": {
             "token_family_info": {
               "$type": "text",
-              "$value": "Official federal identity color (Bundesrot). Light/Dark modes apply — no emphasis modes. Use: Primary brand accent in navigation active states and official federal identity elements. Avoid: Interactive states or status feedback — use the interaction or status scale instead."
+              "$value": "Static colors — a single value that holds across every mode collection. No modes apply. The list is closed: adding an entry is a decision, not a commit. Naming: abstract where the value can change while the token stays the same (brand varies per brand), literal where the value is the identity. A bare \"static\" means static against every mode collection; a token static against only one axis names that axis instead, following ob.s.dimension.static.ui_scale. Use: brand identity, the fixed white and dark needed where a surface must not follow the lightness mode, and the absence of fill. Avoid: as a shortcut past the semantic tier for any color that should follow a mode."
             }
+          },
+          "brand": {
+            "1": {
+              "$type": "color",
+              "$value": "{ob.p.color.basic.federal_red}",
+              "$description": "Federal identity color. Use for Bundesrot brand accent in navigation active states and primary brand elements. Numbering starts at 1 to support scalable multi-brand setups."
+            },
+            "2": {
+              "$type": "color",
+              "$value": "{ob.p.color.basic.white}",
+              "$description": "Federal second color is white. Because we don't want a black cross in darkmode."
+            },
+            "_docs": {
+              "token_family_info": {
+                "$type": "text",
+                "$value": "Official federal identity color (Bundesrot). Light/Dark modes apply — no emphasis modes. Use: Primary brand accent in navigation active states and official federal identity elements. Avoid: Interactive states or status feedback — use the interaction or status scale instead."
+              }
+            }
+          },
+          "white": {
+            "$type": "color",
+            "$value": "{ob.p.color.basic.white}",
+            "$description": "Static white. Holds in both lightness modes. Use where a surface or mark must stay white regardless of the active mode."
+          },
+          "black": {
+            "$type": "color",
+            "$value": "{ob.p.color.cobalt.900}",
+            "$description": "Static dark. Resolves to cobalt.900 (#131b22), not pure black: Oblique has no pure black primitive. Use for marks and text on surfaces that stay light in both lightness modes."
+          },
+          "transparent": {
+            "$type": "color",
+            "$value": "{ob.p.color.basic.transparent}",
+            "$description": "Static value when no color, respectively 0% opacity, is needed."
           }
         },
         "neutral": {
@@ -38,11 +61,6 @@
               "$type": "text",
               "$value": "Foundational colors for backgrounds, text, borders, and surfaces. Light/Dark modes apply — no emphasis modes. Use: Text, background, border, and shadow roles in standard UI components. Avoid: Interactive state feedback — use the interaction scale. Status communication — use the status scale."
             }
-          },
-          "no_color": {
-            "$type": "color",
-            "$value": "{ob.p.color.basic.transparent}",
-            "$description": "Static value when no color respectively 0% opacity is needed."
           },
           "fg": {
             "contrast_lowest": {
@@ -1663,7 +1681,7 @@
           "border": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.no_color}",
+              "$value": "{ob.s.color.static.transparent}",
               "$description": "Border for Navigation. Enabled state: Transparent — no visible border on navigation items in the default rest state."
             },
             "hover": {
