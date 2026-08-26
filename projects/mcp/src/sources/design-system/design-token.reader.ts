@@ -91,6 +91,22 @@ export class ObliqueDesignTokenReader {
 		});
 	}
 
+	/** Gets one token by its exact CSS custom-property name. */
+	async getToken(name: string): Promise<ObliqueDesignToken | undefined> {
+		return (await this.getIndex()).find(token => token.name === name);
+	}
+
+	/**
+	 * Finds project-usable semantic tokens whose base value exactly matches the supplied CSS value.
+	 * Selector-specific overrides are intentionally excluded because they are not global replacements.
+	 */
+	async findProjectTokensByValue(value: string): Promise<readonly ObliqueDesignToken[]> {
+		const normalizedValue = normalizeCssValue(value);
+		return (await this.getIndex())
+			.filter(token => token.usableByProjects && normalizeCssValue(token.value) === normalizedValue)
+			.sort((first, second) => first.name.localeCompare(second.name, 'en'));
+	}
+
 	private getIndex(): Promise<readonly ObliqueDesignToken[]> {
 		this.index ??= this.createIndex();
 		return this.index;
@@ -175,6 +191,11 @@ function normalizeQuery(query: string): string[] {
 		.toLocaleLowerCase()
 		.split(/[\s_-]+/u)
 		.filter(Boolean);
+}
+
+function normalizeCssValue(value: string): string {
+	const trimmedValue = value.trim();
+	return /^#[\dA-F]{3,8}$/iu.test(trimmedValue) ? trimmedValue.toLocaleLowerCase() : trimmedValue;
 }
 
 function getSearchRank(name: string, query: string, queryTerms: readonly string[]): number | undefined {

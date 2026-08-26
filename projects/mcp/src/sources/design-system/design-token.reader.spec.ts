@@ -11,6 +11,7 @@ import {
 	ObliqueDesignTokenReader,
 	ObliqueDesignTokenSourceError,
 } from './design-token.reader.js';
+import {ObliqueStylesAnalyzer} from '../../analyzers/oblique-styles.analyzer.js';
 
 const fixturePath = resolve(__dirname, '../../../fixtures/design-tokens/tokens.css');
 const tokenSourceRelativePath = 'projects/design-system/src/lib/css/layers/tokens.css';
@@ -140,6 +141,42 @@ describe('ObliqueDesignTokenReader', () => {
 
 		expect(readTokenSource).toHaveBeenCalledTimes(1);
 		expect(readTokenSource).toHaveBeenCalledWith(resolve('/repository', tokenSourceRelativePath));
+	});
+
+	it('gets exact tokens and finds only semantic base-value matches deterministically', async () => {
+		const reader = createReader(
+			async () => `:root {
+				--ob-s-spacing-b: 1rem;
+				--ob-s-spacing-a: 1rem;
+				--ob-s-color-example: #ffffff;
+				--ob-h-spacing-example: 1rem;
+			}`
+		);
+
+		expect(await reader.getToken('--ob-s-spacing-a')).toMatchObject({
+			name: '--ob-s-spacing-a',
+			usableByProjects: true,
+		});
+		expect(await reader.getToken('--ob-s-does-not-exist')).toBeUndefined();
+		expect(await reader.findProjectTokensByValue(' 1rem ')).toEqual([
+			expect.objectContaining({name: '--ob-s-spacing-a'}),
+			expect.objectContaining({name: '--ob-s-spacing-b'}),
+		]);
+		expect(await reader.findProjectTokensByValue('#FFFFFF')).toEqual([
+			expect.objectContaining({name: '--ob-s-color-example'}),
+		]);
+	});
+
+	it('reuses one cached index across design-token search and style analysis', async () => {
+		const readTokenSource = jest.fn(async () => readFixture());
+		const reader = createReader(readTokenSource);
+		const analyzer = new ObliqueStylesAnalyzer(reader);
+
+		await reader.search('color', 'project', 20);
+		await analyzer.analyze('.card { color: var(--ob-s-color-example); }', 'css');
+		await analyzer.analyze('.card { padding: 1rem; }', 'scss');
+
+		expect(readTokenSource).toHaveBeenCalledTimes(1);
 	});
 
 	it('fails predictably for malformed or unreadable generated CSS', async () => {

@@ -17,6 +17,8 @@ import {
 } from './sources/oblique/public-api.reader.js';
 import {ObliqueMigrationReader} from './sources/oblique/migration.reader.js';
 import {type ObliqueExamples, SdsExamplesReader} from './sources/sds/sds-examples.reader.js';
+import {ObliqueDesignTokenReader} from './sources/design-system/design-token.reader.js';
+import {registerObliqueStylesTool} from './tools/check-oblique-styles.js';
 import {getObliqueComponent} from './tools/get-oblique-component.js';
 import {type SdsExamplesClient, getObliqueExamples} from './tools/get-oblique-examples.js';
 import {registerObliqueCodeTool} from './tools/check-oblique-code.js';
@@ -136,6 +138,7 @@ interface CreateServerOptions {
 	examplesClient?: SdsExamplesClient;
 	publicApiReader?: ObliquePublicApiReader;
 	migrationReader?: ObliqueMigrationReader;
+	designTokenReader?: ObliqueDesignTokenReader;
 	readPackageMetadata?: () => Promise<PackageMetadata>;
 }
 
@@ -144,6 +147,7 @@ export function createObliqueMcpServer(options: CreateServerOptions = {}): McpSe
 	const examplesClient = options.examplesClient ?? new SdsExamplesReader();
 	const publicApiReader = options.publicApiReader ?? new ObliquePublicApiReader();
 	const migrationReader = options.migrationReader ?? new ObliqueMigrationReader();
+	const designTokenReader = options.designTokenReader ?? new ObliqueDesignTokenReader();
 	const packageMetadataReader = options.readPackageMetadata ?? readPackageMetadata;
 	const server = new McpServer({name: 'oblique-mcp', version: '0.1.0'});
 	registerVersionTool(server, packageMetadataReader);
@@ -153,7 +157,8 @@ export function createObliqueMcpServer(options: CreateServerOptions = {}): McpSe
 	registerPublicApiTool(server, publicApiReader);
 	registerMigrationTool(server, migrationReader, packageMetadataReader);
 	registerObliqueCodeTool(server, publicApiReader, packageMetadataReader);
-	registerDesignTokenSearchTool(server);
+	registerDesignTokenSearchTool(server, designTokenReader);
+	registerObliqueStylesTool(server, designTokenReader);
 	return server;
 }
 

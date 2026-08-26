@@ -51,6 +51,8 @@ Configure an MCP client to execute `node projects/mcp/dist/server.js` with the r
   `{ "code": "import {ObNotificationService} from '@oblique/oblique';" }`.
 - `search_oblique_design_tokens` finds checked-out Design System tokens, for example
   `{ "query": "color interaction" }`.
+- `check_oblique_styles` performs read-only CSS/SCSS Design System token checks, for example
+  `{ "language": "scss", "code": ".card { color: var(--ob-s3-color-text-default); }" }`.
 
 `projects/oblique/src/public_api.ts` is the authoritative boundary for APIs consumable from
 `@oblique/oblique`. `get_oblique_api` only returns symbols reachable from that entry point; it does not expose
@@ -74,5 +76,11 @@ accesses are intentionally ignored.
 `projects/design-system/src/lib/css/layers/tokens.css` artifact; it does not contact Figma. By default it returns only
 project-usable semantic tokens. HTML and component tokens are internal implementation details and appear only with
 `{ "scope": "all" }`, clearly marked as unusable by projects. `total` is the number of matches before the result limit.
+
+`check_oblique_styles` accepts CSS or SCSS source text only (up to 100,000 characters). It parses source in memory and
+never compiles Sass, resolves filesystem imports, executes source, or modifies files. Semantic tokens are supported for
+projects; HTML and component tokens are Oblique implementation details. Its exact-value candidates only prove that a
+semantic token has the same checked-out base value, not that it is the intended semantic replacement. Warnings do not
+make the submitted code invalid, and the tool never applies an autofix.
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.

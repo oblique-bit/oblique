@@ -81,6 +81,7 @@ export default [
 	{
 		files: [
 			'projects/mcp/src/analyzers/oblique-code.analyzer.ts',
+			'projects/mcp/src/analyzers/oblique-styles.analyzer.ts',
 			'projects/mcp/src/sources/design-system/design-token.reader.ts',
 			'projects/mcp/src/sources/oblique/migration.reader.ts',
 			'projects/mcp/src/sources/oblique/public-api.reader.ts',
@@ -103,6 +104,13 @@ export default [
 			'no-continue': 'off',
 			'prefer-named-capture-group': 'off',
 			'no-bitwise': 'off',
+		},
+	},
+	{
+		files: ['projects/mcp/src/analyzers/oblique-styles.analyzer.ts'],
+		rules: {
+			'@typescript-eslint/no-non-null-assertion': 'off',
+			'no-await-in-loop': 'off',
 		},
 	},
 ];
