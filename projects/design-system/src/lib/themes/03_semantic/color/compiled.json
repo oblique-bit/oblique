@@ -558,6 +558,184 @@
               }
             }
           },
+          "emphasis_none": {
+            "_docs": {
+              "token_family_info": {
+                "$type": "text",
+                "$value": "Interaction colours that do not carry an emphasis level. Peer of emphasis_high and emphasis_low, resolved straight into the compiled tier with no entry in s2, so the emphasis mode never reaches it. For elements that need hover and active feedback but no emphasis: cards, table rows, menu items, tags. Values start as a copy of emphasis_low and are independent of it from here on. Use: interactive surfaces that must stay neutral whatever the emphasis mode. Avoid: anything that should follow the emphasis mode."
+              }
+            },
+            "bg_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_high.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_high.inversity_flipped}"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_medium.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_medium.inversity_flipped}"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_low.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_low.inversity_flipped}"
+                }
+              }
+            },
+            "fg_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_high.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_high.inversity_flipped}"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_medium.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_medium.inversity_flipped}"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_low.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_low.inversity_flipped}"
+                }
+              }
+            },
+            "border_base": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_high.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_high.inversity_flipped}"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_medium.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_medium.inversity_flipped}"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_low.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_low.inversity_flipped}"
+                }
+              }
+            },
+            "fg_disabled": {
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_disabled.contrast_low.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_disabled.contrast_low.inversity_flipped}"
+                }
+              }
+            },
+            "bg_disabled": {
+              "solid": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_disabled.solid.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_disabled.solid.inversity_flipped}"
+                }
+              },
+              "opacity": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_disabled.opacity.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_disabled.opacity.inversity_flipped}"
+                }
+              }
+            }
+          },
+          "visited": {
+            "_docs": {
+              "token_family_info": {
+                "$type": "text",
+                "$value": "Visited link colour. A resting colour, not a computed state: a visited link is a different colour, not a modifier applied to the unvisited one. Emphasis does not apply, visitedness does not change with it. Peer of the emphasis branches and resolved straight into the compiled tier. Use: the visited condition on links. Avoid: anywhere the colour is derived from a resting colour rather than replacing it."
+              }
+            },
+            "fg": {
+              "contrast_high": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.visited.fg.contrast_high.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.visited.fg.contrast_high.inversity_flipped}"
+                }
+              },
+              "contrast_medium": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.visited.fg.contrast_medium.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.visited.fg.contrast_medium.inversity_flipped}"
+                }
+              },
+              "contrast_low": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.visited.fg.contrast_low.inversity_normal}"
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s1.color.interaction.visited.fg.contrast_low.inversity_flipped}"
+                }
+              }
+            }
+          },
           "focus_ring": {
             "inversity_normal": {
               "$type": "color",
