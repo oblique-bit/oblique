@@ -1781,55 +1781,6 @@
                   "$description": "Low contrast border for emphasis-low interactive elements. Inverse surface."
                 }
               }
-            },
-            "fg_disabled": {
-              "contrast_low": {
-                "inversity_normal": {
-                  "$extensions": {
-                    "studio.tokens": {
-                      "modify": {
-                        "type": "alpha",
-                        "value": "0.4",
-                        "space": "srgb"
-                      }
-                    }
-                  },
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt_alpha.900}",
-                  "$description": "Disabled foreground for emphasis-low interactive elements. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.50}",
-                  "$description": "Disabled foreground for emphasis-low interactive elements. Inverse surface."
-                }
-              }
-            },
-            "bg_disabled": {
-              "solid": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt_alpha.100}",
-                  "$description": "Solid disabled background for emphasis-low interactive elements. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt.200}",
-                  "$description": "Solid disabled background for emphasis-low interactive elements. Inverse surface."
-                }
-              },
-              "opacity": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt_alpha.100}",
-                  "$description": "Opacity-based disabled background for emphasis-low interactive elements. Standard surface."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.p.color.cobalt_alpha.300}",
-                  "$description": "Opacity-based disabled background for emphasis-low interactive elements. Inverse surface."
-                }
-              }
             }
           },
           "visited": {
@@ -1876,6 +1827,79 @@
                   "$description": "Low contrast visited link foreground for emphasis-high interactive elements. Inverse surface."
                 }
               }
+            }
+          },
+          "disabled": {
+            "_docs": {
+              "token_family_info": {
+                "$type": "text",
+                "$value": "Disabled colours. A resting condition with its own colour, not a state computed from a resting one. Emphasis does not apply: a disabled control should not carry an emphasis level. Peer of the emphasis branches, resolved straight into the compiled tier. Values follow the emphasis_high branch, the only one that carried correct dark-mode values. Use: the disabled condition on interactive elements. Avoid: deriving it from a resting colour with a modifier."
+              }
+            },
+            "fg": {
+              "contrast_low": {
+                "inversity_normal": {
+                  "$extensions": {
+                    "studio.tokens": {
+                      "modify": {
+                        "type": "alpha",
+                        "value": "0.4",
+                        "space": "srgb"
+                      }
+                    }
+                  },
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt_alpha.900}",
+                  "$description": "Disabled foreground for emphasis-high interactive elements. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.white_alpha.400}",
+                  "$description": "Disabled foreground for emphasis-high interactive elements. Inverse surface."
+                }
+              }
+            },
+            "bg": {
+              "solid": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt_alpha.100}",
+                  "$description": "Solid disabled background for emphasis-high interactive elements. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt.200}",
+                  "$description": "Solid disabled background for emphasis-high interactive elements. Inverse surface."
+                }
+              },
+              "opacity": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.white_alpha.400}",
+                  "$description": "Opacity-based disabled background for emphasis-high interactive elements. Standard surface."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.p.color.cobalt_alpha.300}",
+                  "$description": "Opacity-based disabled background for emphasis-high interactive elements. Inverse surface."
+                }
+              }
+            }
+          },
+          "overlay": {
+            "_docs": {
+              "token_family_info": {
+                "$type": "text",
+                "$value": "The colour an interaction state is composited with: mixed into a solid base, or laid over a transparent one. Carries the direction of the feedback and nothing else. inversity_normal darkens on a light ground and lightens on a dark one, so it follows the lightness mode; inversity_flipped is for surfaces that run against the mode. The amount is not here, it comes from ob.s.modifier. Use: as the ink in a component's modify configuration. Avoid: as a fill or a foreground colour in its own right."
+              }
+            },
+            "inversity_normal": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.900}"
+            },
+            "inversity_flipped": {
+              "$type": "color",
+              "$value": "{ob.p.color.basic.white}"
             }
           },
           "focus_ring": {
