@@ -582,6 +582,60 @@ describe('ObServiceNavigationComponent', () => {
 					}
 				);
 			});
+
+			describe('when the backend has not loaded yet', () => {
+				beforeEach(() => {
+					mockServiceNavigationService.infoBackend.set({});
+					fixture.componentRef.setInput('useInfoBackend', true);
+					fixture.componentRef.setInput('infoDescription', 'input description text');
+					fixture.componentRef.setInput('infoContactText', 'input contact text');
+					fixture.componentRef.setInput('infoHelpText', 'input help text');
+					fixture.componentRef.setInput('infoLinks', [{url: 'input url link1', label: 'input label link1'}]);
+					fixture.componentRef.setInput('infoContact', {
+						formUrl: 'input contactUrl',
+						email: 'input email',
+						phone: 'input phone',
+					});
+					fixture.componentRef.changeDetectorRef.detectChanges();
+				});
+
+				it('should fall back to the configured inputs for every field', () => {
+					expect(component.effectiveInfo()).toEqual({
+						description: 'input description text',
+						contactText: 'input contact text',
+						helpText: 'input help text',
+						links: [{url: 'input url link1', label: 'input label link1'}],
+						contact: {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'},
+					});
+				});
+			});
+
+			describe('when the backend is partially loaded', () => {
+				beforeEach(() => {
+					mockServiceNavigationService.infoBackend.set({description: 'backend description text'});
+					fixture.componentRef.setInput('useInfoBackend', true);
+					fixture.componentRef.setInput('infoDescription', 'input description text');
+					fixture.componentRef.setInput('infoContactText', 'input contact text');
+					fixture.componentRef.setInput('infoHelpText', 'input help text');
+					fixture.componentRef.setInput('infoLinks', [{url: 'input url link1', label: 'input label link1'}]);
+					fixture.componentRef.setInput('infoContact', {
+						formUrl: 'input contactUrl',
+						email: 'input email',
+						phone: 'input phone',
+					});
+					fixture.componentRef.changeDetectorRef.detectChanges();
+				});
+
+				it('should use the backend field where defined and fall back to the input otherwise', () => {
+					expect(component.effectiveInfo()).toEqual({
+						description: 'backend description text',
+						contactText: 'input contact text',
+						helpText: 'input help text',
+						links: [{url: 'input url link1', label: 'input label link1'}],
+						contact: {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'},
+					});
+				});
+			});
 		});
 	});
 

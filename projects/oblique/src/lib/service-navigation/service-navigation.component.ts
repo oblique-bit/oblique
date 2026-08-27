@@ -3,11 +3,12 @@ import {
 	OnInit,
 	TemplateRef,
 	ViewEncapsulation,
+	computed,
 	contentChildren,
 	inject,
 	input,
 } from '@angular/core';
-import {outputFromObservable, takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
+import {outputFromObservable, takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {
@@ -81,8 +82,23 @@ export class ObServiceNavigationComponent implements OnInit {
 	readonly favoriteApplications$: Observable<ObIServiceNavigationApplication[]>;
 	readonly language$: Observable<string>;
 	readonly languages: ObILanguage[];
-	readonly infoBackend$: Observable<ObIServiceNavigationBackendInfo>;
+	/** The effective info content, from the backend if `useInfoBackend` is set `true` or from the configured inputs. */
+	readonly effectiveInfo = computed<ObIServiceNavigationBackendInfo>(() => ({
+		...this.info(),
+		...(this.useInfoBackend() ? this.infoBackendSignal() : {}),
+	}));
 	private readonly headerControlsService = inject(ObServiceNavigationService);
+	private readonly infoBackend$ = this.headerControlsService.getInfoBackend$();
+	private readonly infoBackendSignal = toSignal(this.infoBackend$, {
+		initialValue: {} as ObIServiceNavigationBackendInfo,
+	});
+	private readonly info = computed<ObIServiceNavigationBackendInfo>(() => ({
+		links: this.infoLinks(),
+		contact: this.infoContact(),
+		helpText: this.infoHelpText(),
+		contactText: this.infoContactText(),
+		description: this.infoDescription(),
+	}));
 
 	constructor() {
 		toObservable(this.returnUrl)
@@ -105,7 +121,6 @@ export class ObServiceNavigationComponent implements OnInit {
 		this.favoriteApplications$ = this.headerControlsService.getFavoriteApplications$();
 		this.language$ = this.headerControlsService.getLanguage$();
 		this.languages = this.headerControlsService.getLanguages();
-		this.infoBackend$ = this.headerControlsService.getInfoBackend$();
 	}
 
 	ngOnInit(): void {

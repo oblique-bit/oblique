@@ -11,13 +11,13 @@
 	}
 	@if (displayInfo()) {
 		<li>
-			@let infoBackend = useInfoBackend() ? (infoBackend$ | async) : {};
+			@let info = effectiveInfo();
 			<ob-service-navigation-info
-				[links]="infoBackend.links ? infoBackend.links : infoLinks()"
-				[contact]="infoBackend.contact ? infoBackend.contact : infoContact()"
-				[helpText]="infoBackend.helpText ? infoBackend.helpText : infoHelpText()"
-				[contactText]="infoBackend.contactText ? infoBackend.contactText : infoContactText()"
-				[description]="infoBackend.description ? infoBackend.description : infoDescription()"
+				[links]="info.links"
+				[contact]="info.contact"
+				[helpText]="info.helpText"
+				[contactText]="info.contactText"
+				[description]="info.description"
 			/>
 		</li>
 	}
