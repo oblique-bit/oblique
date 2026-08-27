@@ -58,7 +58,7 @@ export function registerObliqueCodeTool(
 		'check_oblique_code',
 		{
 			description:
-				'Parse submitted TypeScript without executing it and check Oblique public API imports against the checked-out repository.',
+				'Parse submitted TypeScript without executing it and check Oblique public API imports against the embedded snapshot.',
 			inputSchema: checkObliqueCodeSchema,
 			outputSchema: checkObliqueCodeResultSchema,
 		},

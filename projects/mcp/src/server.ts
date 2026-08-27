@@ -1,11 +1,12 @@
+#!/usr/bin/env node
 /*
  * AI GENERATED CODE
  * Model: GPT-5
  * Prompt: Oblique MCP Phase 1 initial server
  */
 
-import {readFile} from 'node:fs/promises';
-import {resolve} from 'node:path';
+import {realpathSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
 import {McpServer} from '@modelcontextprotocol/server';
 import {serveStdio} from '@modelcontextprotocol/server/stdio';
 import {z as schema} from 'zod/v4';
@@ -28,6 +29,7 @@ import {registerDesignTokenSearchTool} from './tools/search-oblique-design-token
 import {getMigrationResponse, migrationResultSchema, migrationSchema} from './tools/get-oblique-migration.js';
 import {type PackageMetadata, getObliqueMajorVersion, getObliqueVersion} from './tools/get-oblique-version.js';
 import {searchOblique} from './tools/search-oblique.js';
+import {getRuntimeDataRoot, readPackageMetadata} from './runtime-data.js';
 
 const componentSchema = schema.object({
 	name: schema.string().trim().min(1),
@@ -128,13 +130,6 @@ const publicApiResultSchema = schema.object({
 	deprecated: schema.boolean(),
 });
 
-const packageMetadataSchema = schema.object({
-	version: schema.string(),
-	engines: schema.object({node: schema.string()}),
-	dependencies: schema.record(schema.string(), schema.string()),
-	repository: schema.object({url: schema.string()}),
-});
-
 interface CreateServerOptions {
 	directusClient?: DirectusClient;
 	examplesClient?: SdsExamplesClient;
@@ -144,13 +139,33 @@ interface CreateServerOptions {
 	readPackageMetadata?: () => Promise<PackageMetadata>;
 }
 
+export interface RuntimeDataReaders {
+	examplesClient: SdsExamplesReader;
+	publicApiReader: ObliquePublicApiReader;
+	migrationReader: ObliqueMigrationReader;
+	designTokenReader: ObliqueDesignTokenReader;
+	readPackageMetadata: () => Promise<PackageMetadata>;
+}
+
+/** Creates all repository-backed readers with one internal, packaged source root. */
+export function createRuntimeDataReaders(runtimeDataRoot = getRuntimeDataRoot()): RuntimeDataReaders {
+	return {
+		examplesClient: new SdsExamplesReader(runtimeDataRoot),
+		publicApiReader: new ObliquePublicApiReader(runtimeDataRoot),
+		migrationReader: new ObliqueMigrationReader(runtimeDataRoot),
+		designTokenReader: new ObliqueDesignTokenReader(runtimeDataRoot),
+		readPackageMetadata: async () => readPackageMetadata(runtimeDataRoot),
+	};
+}
+
 export function createObliqueMcpServer(options: CreateServerOptions = {}): McpServer {
 	const directusClient = options.directusClient ?? new ObliqueDirectusClient();
-	const examplesClient = options.examplesClient ?? new SdsExamplesReader();
-	const publicApiReader = options.publicApiReader ?? new ObliquePublicApiReader();
-	const migrationReader = options.migrationReader ?? new ObliqueMigrationReader();
-	const designTokenReader = options.designTokenReader ?? new ObliqueDesignTokenReader();
-	const packageMetadataReader = options.readPackageMetadata ?? readPackageMetadata;
+	const runtimeDataReaders = createRuntimeDataReaders();
+	const examplesClient = options.examplesClient ?? runtimeDataReaders.examplesClient;
+	const publicApiReader = options.publicApiReader ?? runtimeDataReaders.publicApiReader;
+	const migrationReader = options.migrationReader ?? runtimeDataReaders.migrationReader;
+	const designTokenReader = options.designTokenReader ?? runtimeDataReaders.designTokenReader;
+	const packageMetadataReader = options.readPackageMetadata ?? runtimeDataReaders.readPackageMetadata;
 	const server = new McpServer({name: 'oblique-mcp', version: '0.1.0'});
 	registerVersionTool(server, packageMetadataReader);
 	registerComponentTool(server, directusClient, packageMetadataReader);
@@ -175,7 +190,7 @@ function registerMigrationTool(
 		'get_oblique_migration',
 		{
 			description:
-				'Get read-only official Oblique upgrade migration information derived from the checked-out ng-update schematics.',
+				'Get read-only official Oblique upgrade migration information derived from the embedded ng-update schematics.',
 			inputSchema: migrationSchema,
 			outputSchema: migrationResultSchema,
 		},
@@ -235,7 +250,7 @@ function registerVersionTool(server: McpServer, packageMetadataReader: () => Pro
 	server.registerTool(
 		'get_oblique_version',
 		{
-			description: 'Get version and compatibility metadata from the checked-out Oblique repository.',
+			description: 'Get version and compatibility metadata from the embedded official Oblique snapshot.',
 			outputSchema: versionResultSchema,
 		},
 		async () => {
@@ -301,9 +316,10 @@ async function getCurrentMajorVersion(packageMetadataReader: () => Promise<Packa
 	return getObliqueMajorVersion(await packageMetadataReader());
 }
 
-async function readPackageMetadata(): Promise<PackageMetadata> {
-	const packageJsonPath = resolve(process.cwd(), 'package.json');
-	return packageMetadataSchema.parse(JSON.parse(await readFile(packageJsonPath, 'utf8')));
+if (isExecutableEntryPoint()) {
+	serveStdio(() => createObliqueMcpServer());
 }
 
-serveStdio(() => createObliqueMcpServer());
+function isExecutableEntryPoint(): boolean {
+	return process.argv[1] !== undefined && realpathSync(process.argv[1]) === fileURLToPath(import.meta.url);
+}

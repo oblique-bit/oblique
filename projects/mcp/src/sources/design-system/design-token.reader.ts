@@ -50,7 +50,7 @@ export type DesignTokenSourceReader = (path: string) => Promise<string>;
 export class ObliqueDesignTokenSourceError extends Error {}
 
 /**
- * Lazily reads the checked-out generated token stylesheet and indexes its CSS custom properties.
+ * Lazily reads the embedded generated token stylesheet and indexes its CSS custom properties.
  */
 export class ObliqueDesignTokenReader {
 	private readonly repositoryRoot: string;

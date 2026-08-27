@@ -4,21 +4,34 @@
   "private": true,
   "description": "Model Context Protocol server for the Oblique ecosystem",
   "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "files": [
+    "dist/**",
+    "README.md",
+    "INSTALLATION.md"
+  ],
   "bin": {
     "oblique-mcp": "./dist/server.js"
   },
   "scripts": {
     "start": "node dist/server.js",
-    "lint": "eslint \"src/**/*.{ts,js,mjs,cjs}\" && prettier --check \"src/**/*.{ts,js,mjs,cjs,json,yml,md}\" README.md package.json tsconfig*.json jest.config.cjs eslint.project-config.mjs",
-    "format": "eslint --fix \"src/**/*.{ts,js,mjs,cjs}\" && prettier --write \"src/**/*.{ts,js,mjs,cjs,json,yml,md}\" README.md package.json tsconfig*.json jest.config.cjs eslint.project-config.mjs",
+    "lint": "eslint \"{src,scripts}/**/*.{ts,js,mjs,cjs}\" && prettier --check \"{src,scripts}/**/*.{ts,js,mjs,cjs,json,yml,md}\" README.md INSTALLATION.md package.json tsconfig*.json jest.config.cjs eslint.project-config.mjs",
+    "format": "eslint --fix \"{src,scripts}/**/*.{ts,js,mjs,cjs}\" && prettier --write \"{src,scripts}/**/*.{ts,js,mjs,cjs,json,yml,md}\" README.md INSTALLATION.md package.json tsconfig*.json jest.config.cjs eslint.project-config.mjs",
     "test": "jest",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json && node scripts/prepare-runtime-data.mjs",
+    "prepack": "npm run build"
   },
   "dependencies": {
-    "@angular/compiler": "^21.0.0",
+    "@angular/compiler": "^21.2.20",
+    "@angular/core": "^21.0.8",
+    "@angular/router": "^21.2.20",
     "@modelcontextprotocol/server": "^2.0.0",
     "postcss": "^8.5.26",
     "postcss-scss": "^4.0.9",
+    "typescript": "~5.9.3",
     "zod": "^4.0.0"
   }
 }

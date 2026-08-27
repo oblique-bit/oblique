@@ -23,5 +23,7 @@ module.exports = {
 	},
 	...coverageConfig,
 	coverageDirectory: "../../coverage/mcp",
-	collectCoverageFrom: ["src/**/*.ts", "!src/server.ts"],
+	collectCoverageFrom: ["src/**/*.ts", "!src/server.ts", "!src/runtime-data.ts"],
+	testPathIgnorePatterns: ["<rootDir>/dist/"],
+	modulePathIgnorePatterns: ["<rootDir>/dist/"],
 };

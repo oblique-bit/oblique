@@ -51,7 +51,7 @@ export function registerDesignTokenSearchTool(
 		'search_oblique_design_tokens',
 		{
 			description:
-				'Search checked-out Oblique Design System CSS tokens. Project scope returns only supported semantic tokens.',
+				'Search embedded Oblique Design System CSS tokens. Project scope returns only supported semantic tokens.',
 			inputSchema: designTokenSearchSchema,
 			outputSchema: designTokenSearchResultSchema,
 		},

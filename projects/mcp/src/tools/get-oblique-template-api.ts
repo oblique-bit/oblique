@@ -117,7 +117,7 @@ export function registerObliqueTemplateApiTool(
 		'get_oblique_template_api',
 		{
 			description:
-				'Get the effective public Angular template inputs and outputs of a checked-out Oblique component or directive.',
+				'Get the effective public Angular template inputs and outputs of an embedded Oblique component or directive.',
 			inputSchema: getObliqueTemplateApiSchema,
 			outputSchema: getObliqueTemplateApiResultSchema,
 		},

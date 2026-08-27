@@ -51,7 +51,7 @@ export function registerObliqueStylesTool(server: McpServer, designTokenReader: 
 		'check_oblique_styles',
 		{
 			description:
-				'Parse submitted CSS or SCSS without executing it and check Oblique Design System token usage against the checked-out repository.',
+				'Parse submitted CSS or SCSS without executing it and check Oblique Design System token usage against the embedded snapshot.',
 			inputSchema: checkObliqueStylesSchema,
 			outputSchema: checkObliqueStylesResultSchema,
 		},
