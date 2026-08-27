@@ -56,7 +56,6 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 		},
 	];
 	hasProfileLinks = true;
-	hasInfoLinks = true;
 	infoLinks: ObIServiceNavigationLink[] = [
 		{
 			url: 'i18n.service-navigation.info.link.user-documentation.url',
@@ -85,6 +84,15 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	hasCustomWidgets = true;
 	readonly rootUrl = environment.pams?.rootUrl;
 	readonly environment = environment.pams?.environment;
+
+	private readonly infoLinksBackup = [...this.infoLinks];
+
+	get hasInfoLinks(): boolean {
+		return this.infoLinks.length > 0;
+	}
+	set hasInfoLinks(value: boolean) {
+		this.infoLinks = value ? [...this.infoLinksBackup] : [];
+	}
 
 	private readonly contactInfo: ObIServiceNavigationContact = {
 		email: 'support@bit.admin.ch',
