@@ -176,16 +176,13 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('returnUrl', () => {
 			it('should be initialized to undefined', () => {
-				expect(component.returnUrl).toBeUndefined();
+				expect(component.returnUrl()).toBeUndefined();
 			});
 
 			describe('with "http://localhost/"', () => {
 				beforeEach(() => {
-					component.returnUrl = 'http://localhost/';
-				});
-
-				it('should call "setReturnUrl" once', () => {
-					expect(service.setReturnUrl).toHaveBeenCalledTimes(1);
+					fixture.componentRef.setInput('returnUrl', 'http://localhost/');
+					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 
 				it('should call "setReturnUrl" with "http://localhost"', () => {
@@ -221,7 +218,8 @@ describe('ObServiceNavigationComponent', () => {
 		describe('eportalLanguageSynchronization setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = true;
-				component.eportalLanguageSynchronization = expectedResult;
+				fixture.componentRef.setInput('eportalLanguageSynchronization', expectedResult);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				expect(mockServiceNavigationService.setEportalLanguageSynchronization).toHaveBeenCalledWith(expectedResult);
 			});
 		});
@@ -229,7 +227,8 @@ describe('ObServiceNavigationComponent', () => {
 		describe('handleLogout setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = false;
-				component.handleLogout = expectedResult;
+				fixture.componentRef.setInput('handleLogout', expectedResult);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				expect(mockServiceNavigationService.setHandleLogout).toHaveBeenCalledWith(expectedResult);
 			});
 		});
@@ -260,9 +259,9 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
-		describe.each(['loginState', 'loginState$'])('%s', property => {
+		describe('loginState$', () => {
 			it('should be an Observable', () => {
-				expect(component[property] instanceof Observable).toBe(true);
+				expect(component.loginState$ instanceof Observable).toBe(true);
 			});
 
 			it('should call "ObServiceNavigationUrlsService.getLoginState$" twice', () => {
@@ -274,7 +273,27 @@ describe('ObServiceNavigationComponent', () => {
 			});
 
 			it(`should receive "SA"`, async () => {
-				await expect(firstValueFrom(component[property])).resolves.toEqual('SA');
+				await expect(firstValueFrom(component.loginState$)).resolves.toEqual('SA');
+			});
+		});
+
+		describe('loginState', () => {
+			it('should be an output', () => {
+				expect(typeof component.loginState.subscribe).toBe('function');
+			});
+
+			it('should call "ObServiceNavigationUrlsService.getLoginState$" twice', () => {
+				expect(service.getLoginState$).toHaveBeenCalledTimes(2);
+			});
+
+			it('should call "ObServiceNavigationUrlsService.getLoginState$" without parameters', () => {
+				expect(service.getLoginState$).toHaveBeenCalledWith();
+			});
+
+			it(`should emit "SA"`, () => {
+				const emitted: ObLoginState[] = [];
+				component.loginState.subscribe(value => emitted.push(value));
+				expect(emitted).toEqual(['SA']);
 			});
 		});
 

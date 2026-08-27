@@ -1,15 +1,13 @@
 import {
-	ChangeDetectionStrategy,
 	Component,
-	Input,
 	OnInit,
-	Output,
 	TemplateRef,
 	ViewEncapsulation,
 	contentChildren,
 	inject,
 	input,
 } from '@angular/core';
+import {outputFromObservable, takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {Observable} from 'rxjs';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {
@@ -45,25 +43,21 @@ import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.mode
 		ObServiceNavigationTimeoutCookieActivityService,
 		ObServiceNavigationTimeoutReturnUrlService,
 	],
-	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation'},
 })
 export class ObServiceNavigationComponent implements OnInit {
 	readonly profileLinks = input<ObIServiceNavigationLink[]>([]);
-	readonly infoDescription = input<string>(undefined);
-	readonly infoHelpText = input<string>(undefined);
+	readonly infoDescription = input<string>();
+	readonly infoHelpText = input<string>();
 	readonly infoLinks = input<ObIServiceNavigationLink[]>([]);
-	readonly infoContactText = input<string>(undefined);
-	readonly infoContact = input<ObIServiceNavigationContact>(undefined);
+	readonly infoContactText = input<string>();
+	readonly infoContact = input<ObIServiceNavigationContact>();
 	readonly maxFavoriteApplications = input(8);
-	readonly environment = input<ObEPamsEnvironment>(undefined);
-	readonly rootUrl = input<string>(undefined);
-	@Input()
-	set returnUrl(newReturnUrl) {
-		this.headerControlsService.setReturnUrl(newReturnUrl);
-	}
-	readonly pamsAppId = input<string | undefined>(undefined);
+	readonly environment = input<ObEPamsEnvironment>();
+	readonly rootUrl = input<string>();
+	readonly returnUrl = input<string>();
+	readonly pamsAppId = input<string>();
 	readonly displayMessage = input(false);
 	readonly useInfoBackend = input(false);
 	readonly displayInfo = input(false);
@@ -71,17 +65,10 @@ export class ObServiceNavigationComponent implements OnInit {
 	readonly displayProfile = input(false);
 	readonly displayAuthentication = input(false);
 	readonly displayLanguages = input(true);
-	@Input()
-	set handleLogout(newHandleLogout: boolean) {
-		this.headerControlsService.setHandleLogout(newHandleLogout);
-	}
-	@Input()
-	set eportalLanguageSynchronization(synchronization: boolean) {
-		this.headerControlsService.setEportalLanguageSynchronization(synchronization);
-	}
-	@Output()
-	readonly loginState: Observable<ObLoginState>;
-	@Output() readonly logoutTriggered;
+	readonly handleLogout = input(false);
+	readonly eportalLanguageSynchronization = input(false);
+	readonly loginState = outputFromObservable<ObLoginState>(inject(ObServiceNavigationService).getLoginState$());
+	readonly logoutTriggered = outputFromObservable<string>(inject(ObServiceNavigationService).getLogoutTrigger$());
 	readonly customWidgetTemplate = contentChildren<TemplateRef<unknown>>('customWidgetTemplate');
 	readonly loginUrl$: Observable<string>;
 	readonly loginState$: Observable<ObLoginState>;
@@ -98,8 +85,15 @@ export class ObServiceNavigationComponent implements OnInit {
 	private readonly headerControlsService = inject(ObServiceNavigationService);
 
 	constructor() {
-		this.loginState = this.headerControlsService.getLoginState$();
-		this.logoutTriggered = this.headerControlsService.getLogoutTrigger$();
+		toObservable(this.returnUrl)
+			.pipe(takeUntilDestroyed())
+			.subscribe(returnUrl => this.headerControlsService.setReturnUrl(returnUrl));
+		toObservable(this.handleLogout)
+			.pipe(takeUntilDestroyed())
+			.subscribe(handleLogout => this.headerControlsService.setHandleLogout(handleLogout));
+		toObservable(this.eportalLanguageSynchronization)
+			.pipe(takeUntilDestroyed())
+			.subscribe(synchronization => this.headerControlsService.setEportalLanguageSynchronization(synchronization));
 		this.loginUrl$ = this.headerControlsService.getLoginUrl$();
 		this.loginState$ = this.headerControlsService.getLoginState$();
 		this.userName$ = this.headerControlsService.getUserName$();
