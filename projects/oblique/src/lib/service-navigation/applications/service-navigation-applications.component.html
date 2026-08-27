@@ -30,9 +30,9 @@
 	<div id="ob-service-navigation-applications-popover-content" cdkTrapFocus cdkTrapFocusAutoCapture="true">
 		<h3 class="ob-screen-reader-only">{{ "i18n.oblique.service-navigation.applications.button.label" | translate }}</h3>
 		<ob-service-navigation-popover-section header="i18n.oblique.service-navigation.applications.last-used.header">
-			@if (lastUsedApplications?.length > 0) {
+			@if (lastUsedApplications().length > 0) {
 				<ul class="ob-applications" obContent>
-					@for (application of lastUsedApplications; track application.name) {
+					@for (application of lastUsedApplications(); track application.name) {
 						<li>
 							<a
 								class="ob-application"
@@ -68,9 +68,9 @@
 		</ob-service-navigation-popover-section>
 
 		<ob-service-navigation-popover-section header="i18n.oblique.service-navigation.applications.favorite.header">
-			@if (favoriteApplications?.length > 0) {
+			@if (favoriteApplications().length > 0) {
 				<ul class="ob-applications" obContent>
-					@for (application of favoriteApplications; track application.name) {
+					@for (application of favoriteApplications(); track application.name) {
 						<li>
 							<a
 								class="ob-application"
