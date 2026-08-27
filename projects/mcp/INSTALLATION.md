@@ -230,7 +230,7 @@ No `cwd` setting or shell wrapper is required for the embedded runtime data. No 
 
 ## Verify the connection
 
-A successful `tools/list` currently exposes exactly these 11 tools:
+A successful `tools/list` currently exposes exactly these 12 tools:
 
 1. `get_oblique_version`
 2. `get_oblique_component`
@@ -243,12 +243,19 @@ A successful `tools/list` currently exposes exactly these 11 tools:
 9. `check_oblique_styles`
 10. `check_oblique_template`
 11. `get_oblique_template_api`
+12. `prepare_oblique_project`
 
 These client-agnostic prompts describe expected diagnostic behavior; a model might choose a different tool or ask a clarifying question.
 
 - “Use Oblique MCP to report the embedded Oblique version.” Expected tool: `get_oblique_version`.
 - “Show the public template API for ObDateComponent.” Expected tool: `get_oblique_template_api`.
 - “Validate this template: `<ob-date [date]=\"date\"></ob-date>`.” Expected tool: `check_oblique_template`.
+- “Prepare a new `employee-portal` project in `/workspace`.” Expected tool: `prepare_oblique_project`. The result is
+  a read-only plan that requires confirmation and does not execute the displayed command. For example, an invalid
+  `Employee Portal` name is blocked with `INVALID_PROJECT_NAME`. Phase 14 will add controlled execution only after an
+  explicit developer confirmation. The optional `obliqueVersion` must equal the embedded Oblique version; other
+  semantic versions are blocked with `UNSUPPORTED_OBLIQUE_VERSION` and an `oblique-version` failed check because their
+  compatibility metadata is unavailable.
 
 ## Troubleshooting
 

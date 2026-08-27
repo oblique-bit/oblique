@@ -61,6 +61,11 @@ Cursor, Claude Code, and Claude Desktop examples, see [INSTALLATION.md](INSTALLA
   `{ "code": "<ob-alert></ob-alert>" }`.
 - `get_oblique_template_api` returns the effective public Angular template contract, for example
   `{ "symbol": "ObDateComponent" }` or `{ "selector": "[obInputClear]" }`.
+- `prepare_oblique_project` prepares, but never executes, an Oblique CLI project creation plan. For example,
+  `{ "projectName": "employee-portal", "parentDirectory": "/workspace" }` returns a confirmation-required
+  `npx --yes @oblique/cli@15.4.4 new employee-portal` argument plan after validating the directory, destination,
+  pinned version, and current Node.js version. A request such as `{ "projectName": "Employee Portal" }` is blocked
+  with `INVALID_PROJECT_NAME`. Phase 14 will add controlled execution only after explicit developer confirmation.
 
 `projects/oblique/src/public_api.ts` is the authoritative boundary for APIs consumable from
 `@oblique/oblique`. `get_oblique_api` only returns symbols reachable from that entry point; it does not expose
@@ -109,3 +114,12 @@ required and inherited bindings, and explicitly exposed host-directive bindings.
 the result so clients can avoid them. Only symbols reachable from `projects/oblique/src/public_api.ts` are returned.
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.
+
+`prepare_oblique_project` accepts `projectName`, optional `parentDirectory`, and optional `obliqueVersion`. It only
+reads the selected parent directory and destination to create a plan; it never starts `npx`, the Oblique CLI, Angular
+CLI, or another subprocess, and never creates or modifies a project. The canonical command is an argument array, not
+a shell command. It rejects unsafe project names, existing destinations, unsupported Node.js versions, invalid version
+aliases/ranges, and known unsafe CLI versions `15.4.0` and `15.4.1`. Compatibility metadata is embedded only for the
+installed Oblique version, so an explicit `obliqueVersion` must equal that version; other valid semantic versions are
+blocked with `UNSUPPORTED_OBLIQUE_VERSION` and an `oblique-version` failed check. The result is a preflight only: it does not reserve the destination, and a
+future controlled execution phase must revalidate it immediately before creating anything.
