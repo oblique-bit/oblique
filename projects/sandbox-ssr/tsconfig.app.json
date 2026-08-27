@@ -4,7 +4,7 @@
     "baseUrl": "../../",
     "ignoreDeprecations": "6.0",
     "paths": {
-      "@oblique/design-system": ["./projects/design-system/src/public-api"]
+      "@oblique/design-system": ["./dist/design-system/"]
     }
   },
   "files": ["src/main.ts", "src/main.server.ts", "server.ts"]

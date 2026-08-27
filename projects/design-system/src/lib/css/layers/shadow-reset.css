@@ -1,0 +1,16 @@
+/**
+* This CSS file has the same purpose of the `reset.css` file with the difference that
+* it needs to be manually added to all shadow DOMs elements.
+*
+* Only **inherited** CSS properties propagates into shadow DOM. Non-inherited properties
+* (like for example `box-sizing`) are not propagated and therefore they need to be
+* added manually to each component that uses shadow DOM.
+*
+* Note that the rules in this file are also applied to the main document.
+*/
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
