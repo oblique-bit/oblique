@@ -5,12 +5,12 @@
 			{{ header() | translate }}
 		</h4>
 	</header>
-	@if (text) {
-		<p>{{ text | translate }}</p>
+	@if (text()) {
+		<p>{{ text() | translate }}</p>
 	}
-	@if (links?.length > 0) {
+	@if (links().length > 0) {
 		<ul class="ob-popover-list">
-			@for (link of links; track link) {
+			@for (link of links(); track link) {
 				<li>
 					<a
 						[id]="link.label + '-ob-popover-link'"
