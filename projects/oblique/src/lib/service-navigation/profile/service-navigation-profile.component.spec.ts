@@ -85,7 +85,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 				const section = fixture.debugElement.query(
 					By.directive(ObServiceNavigationPopoverSectionComponent)
 				).componentInstance;
-				expect(section.links[0].url).toBe(url.url);
+				expect(section.links()[0].url).toBe(url.url);
 			});
 		});
 	});
@@ -131,12 +131,12 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 	describe('links', () => {
 		it('should be initialized to an empty array', () => {
-			expect(component.links).toEqual([]);
+			expect(component.links()).toEqual([]);
 		});
 
 		describe('without additional links', () => {
 			it('should have 1 section', async () => {
-				component.links = [];
+				fixture.componentRef.setInput('links', []);
 				await openPopover();
 				const sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				expect(sections.length).toBe(1);
@@ -146,10 +146,10 @@ describe('ObServiceNavigationProfileComponent', () => {
 		describe('with additional links', () => {
 			let sections: DebugElement[];
 			beforeEach(async () => {
-				component.links = [
+				fixture.componentRef.setInput('links', [
 					{url: 'url_1', label: 'URL 1'},
 					{url: 'url_2', label: 'URL 2'},
-				];
+				]);
 				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 			});
@@ -170,21 +170,21 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 				describe('links', () => {
 					it('should have 2', () => {
-						expect(section.links.length).toBe(2);
+						expect(section.links().length).toBe(2);
 					});
 
 					it.each([
 						{property: 'url', value: 'url_1'},
 						{property: 'label', value: 'URL 1'},
 					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-						expect(section.links[0][property]).toBe(value);
+						expect(section.links()[0][property]).toBe(value);
 					});
 
 					it.each([
 						{property: 'url', value: 'url_2'},
 						{property: 'label', value: 'URL 2'},
 					])('should have "$value" as "$property" property on the second link', ({property, value}) => {
-						expect(section.links[1][property]).toBe(value);
+						expect(section.links()[1][property]).toBe(value);
 					});
 				});
 			});
@@ -276,7 +276,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 					describe('links', () => {
 						it('should have 2', () => {
-							expect(section.links.length).toBe(2);
+							expect(section.links().length).toBe(2);
 						});
 					});
 				});
