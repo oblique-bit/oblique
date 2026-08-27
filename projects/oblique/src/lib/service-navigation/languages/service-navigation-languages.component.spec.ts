@@ -1,15 +1,23 @@
 import {HarnessLoader, TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {EventEmitter} from '@angular/core';
+import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationLanguagesHarness} from './service-navigation-languages.harness';
 import {ObServiceNavigationLanguagesComponent} from './service-navigation-languages.component';
-import {firstValueFrom} from 'rxjs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatOptionHarness} from '@angular/material/core/testing';
 import {MatSelectHarness} from '@angular/material/select/testing';
+
+@Component({
+	standalone: false,
+	template: '<ob-service-navigation-languages (languageChange)="languageChanges.push($event)" />',
+})
+class TestHostComponent {
+	languageChanges: string[] = [];
+}
 
 describe('ObServiceNavigationLanguagesComponent', () => {
 	let component: ObServiceNavigationLanguagesComponent;
@@ -19,7 +27,7 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ObServiceNavigationLanguagesComponent],
+			declarations: [ObServiceNavigationLanguagesComponent, TestHostComponent],
 			imports: [ObMockTranslatePipe, MatFormFieldModule, MatSelectModule],
 		}).compileComponents();
 
@@ -39,9 +47,9 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 	])(
 		`that chevron is changed from: $chevronBefore, to: $chevronAfter after calling ${ObServiceNavigationLanguagesComponent.prototype.changeChevron.name}`,
 		({chevronBefore, chevronAfter}) => {
-			component.chevron = chevronBefore;
+			component.chevron.set(chevronBefore);
 			component.changeChevron();
-			expect(component.chevron).toBe(chevronAfter);
+			expect(component.chevron()).toBe(chevronAfter);
 		}
 	);
 
@@ -51,14 +59,13 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 	});
 
 	describe('languageChange', () => {
-		test('that it is an EventEmitter', () => {
-			expect(component.languageChange instanceof EventEmitter).toBe(true);
-		});
-
-		test('that it emits', async () => {
-			const promise = firstValueFrom(component.languageChange);
-			component.changeLanguage('de');
-			await expect(promise).resolves.toBe('de');
+		test('that it emits', () => {
+			const hostFixture = TestBed.createComponent(TestHostComponent);
+			const hostComponent = hostFixture.componentInstance;
+			const languagesComponent = hostFixture.debugElement.query(By.directive(ObServiceNavigationLanguagesComponent))
+				.componentInstance as ObServiceNavigationLanguagesComponent;
+			languagesComponent.changeLanguage('de');
+			expect(hostComponent.languageChanges).toEqual(['de']);
 		});
 	});
 
