@@ -1,0 +1,43 @@
+{
+  "ob": {
+    "p": {
+      "modifier": {
+        "80": {
+          "$type": "number",
+          "$value": "0.08",
+          "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
+        },
+        "150": {
+          "$type": "number",
+          "$value": "0.15",
+          "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
+        },
+        "180": {
+          "$type": "number",
+          "$value": "0.18",
+          "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
+        },
+        "280": {
+          "$type": "number",
+          "$value": "0.28",
+          "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
+        },
+        "350": {
+          "$type": "number",
+          "$value": "0.35",
+          "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
+        },
+        "500": {
+          "$type": "number",
+          "$value": "0.5",
+          "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
+        },
+        "750": {
+          "$type": "number",
+          "$value": "0.75",
+          "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
+        }
+      }
+    }
+  }
+}

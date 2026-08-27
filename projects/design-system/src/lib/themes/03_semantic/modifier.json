@@ -1,0 +1,68 @@
+{
+  "ob": {
+    "s": {
+      "modifier": {
+        "token_family_docs": {
+          "$description": {
+            "$type": "other",
+            "$value": "Interaction modifier ratios — the amount by which a resting colour is shifted to express a state. Two operations, kept apart because their magnitudes are not comparable: alpha lays a translucent veil over an unknown surface, mix blends a known solid base into a new opaque colour. Direction is not carried here: it is chosen by the ink the component mixes or overlays with, ob.s.color.static.black to darken or ob.s.color.static.white to lighten. Use: inside a component's modify configuration. Avoid: as a freely pickable opacity in the semantic layer."
+          }
+        },
+        "alpha": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Ratios for a translucent overlay on a surface the component does not own. Monotone: subtle < medium < strong."
+            }
+          },
+          "subtle": {
+            "hover": {
+              "$type": "number",
+              "$value": "{ob.p.modifier.80}"
+            },
+            "active": {
+              "$type": "number",
+              "$value": "{ob.p.modifier.180}"
+            }
+          },
+          "medium": {
+            "hover": {
+              "$type": "number",
+              "$value": "{ob.p.modifier.150}"
+            },
+            "active": {
+              "$type": "number",
+              "$value": "{ob.p.modifier.280}"
+            }
+          },
+          "strong": {
+            "hover": {
+              "$type": "number",
+              "$value": "{ob.p.modifier.500}"
+            },
+            "active": {
+              "$type": "number",
+              "$value": "{ob.p.modifier.750}"
+            }
+          }
+        },
+        "mix": {
+          "token_family_docs": {
+            "$description": {
+              "$type": "other",
+              "$value": "Ratio for blending a known solid base with an ink. The result is opaque. Not on the alpha ladder: a mix ratio and an alpha ratio of the same number produce different amounts of change."
+            }
+          },
+          "hover": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.350}"
+          },
+          "active": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.500}"
+          }
+        }
+      }
+    }
+  }
+}

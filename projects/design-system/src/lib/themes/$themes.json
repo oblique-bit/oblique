@@ -136,7 +136,9 @@
       "01_global/mode_collection/ui_scale": "source",
       "01_global/mode_collection/density": "source",
       "01_global/mode_collection/typography_context": "source",
-      "01_global/mode_collection/motion": "source"
+      "01_global/mode_collection/motion": "source",
+      "02_primitive/modifier": "source",
+      "03_semantic/modifier": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
