@@ -9,7 +9,6 @@ export interface ObIOptionsSchema {
 	httpInterceptors: boolean;
 	husky: boolean;
 	jest: boolean;
-	locales: string;
 	mandatory: boolean;
 	prefix: string;
 	title: string;

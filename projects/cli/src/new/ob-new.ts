@@ -9,6 +9,7 @@ import {
 	version,
 } from '../utils/cli-utils.js';
 import {addObNewCommandOptions, convertOptionPropertyNames} from '../utils/ob-configure-command.js';
+import type {ObOptions} from '../utils/ob-cli.model.js';
 import {
 	type HandleObNewActionOptions,
 	type ObNewOptions,
@@ -103,18 +104,51 @@ function runAddOblique(options: ObNewOptions, projectName: string, workingDirect
 	const toolchainOptions = filterOptionsByKeys(filteredOptions, toolchainOptionKeys, true);
 	const obliqueOptions = filterOptionsByKeys(filteredOptions, obliqueOptionKeys);
 
+	const toolchainAddOptions = getToolchainAddOptions(toolchainOptions);
+	executeNgAddToolchain(toolchainAddOptions, workingDirectory);
+	runAddLinting(options.eslint, filteredOptions, workingDirectory);
+	executeNgAddOblique(obliqueOptions, workingDirectory);
+	executeAddObliqueSchematic(getAddObliqueLocalesOptions(toolchainOptions), workingDirectory);
+}
+
+function getToolchainAddOptions(toolchainOptions: ObOptions): ObOptions {
+	const options = {...toolchainOptions};
+	delete options['locales'];
+	return options;
+}
+
+function getAddObliqueLocalesOptions(toolchainOptions: ObOptions): ObOptions {
+	const locales = toolchainOptions['locales'];
+	const addObliqueOptions: ObOptions = {};
+	if (locales && (locales as string).trim() !== '') {
+		addObliqueOptions['locale'] = (locales as string).trim();
+	}
+	return addObliqueOptions;
+}
+
+function executeNgAddToolchain(options: ObOptions, workingDirectory: string): void {
 	execute({
 		name: 'ngAdd',
 		dependency: '@oblique/toolchain',
-		options: toolchainOptions,
+		options,
 		spawnSyncOptions: {cwd: workingDirectory},
 	});
-	execute({name: 'ngGenerate', schematic: '@oblique/toolchain:add-oblique', spawnSyncOptions: {cwd: workingDirectory}});
-	runAddLinting(options.eslint, filteredOptions, workingDirectory);
+}
+
+function executeAddObliqueSchematic(options: ObOptions, workingDirectory: string): void {
+	execute({
+		name: 'ngGenerate',
+		schematic: '@oblique/toolchain:add-oblique',
+		options,
+		spawnSyncOptions: {cwd: workingDirectory},
+	});
+}
+
+function executeNgAddOblique(options: ObOptions, workingDirectory: string): void {
 	execute({
 		name: 'ngAdd',
 		dependency: '@oblique/oblique',
-		options: obliqueOptions,
+		options,
 		spawnSyncOptions: {cwd: workingDirectory},
 	});
 }

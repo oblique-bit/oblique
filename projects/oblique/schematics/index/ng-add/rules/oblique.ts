@@ -11,7 +11,6 @@ import {
 	readFile,
 	setAngularProjectsConfig,
 } from '../../utils';
-import {addLocales} from './locales';
 
 export function oblique(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, context: SchematicContext) =>
@@ -23,7 +22,6 @@ export function oblique(options: ObIOptionsSchema): Rule {
 			addLocalAssets(),
 			addObliqueAssets(),
 			addFontFiles(),
-			addLocales(options.locales.split(' ')),
 			raiseBuildBudget(),
 		])(tree, context);
 }

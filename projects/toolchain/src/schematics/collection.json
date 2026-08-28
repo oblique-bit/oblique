@@ -3,7 +3,8 @@
   "schematics": {
     "add-oblique": {
       "description": "Embeds Oblique favicon into index.html",
-      "factory": "./add-oblique/index#addOblique"
+      "factory": "./add-oblique/index#addOblique",
+      "schema": "./add-oblique/schema.json"
     },
     "ng-add": {
       "description": "Adds @oblique/toolchain dependency to the project",
@@ -14,6 +15,11 @@
       "description": "Configures project linting",
       "factory": "./linting/index#linting",
       "schema": "./linting/schema.json"
+    },
+    "i18n": {
+      "description": "Configures project internationalization",
+      "factory": "./i18n/index#i18n",
+      "schema": "./i18n/schema.json"
     }
   }
 }

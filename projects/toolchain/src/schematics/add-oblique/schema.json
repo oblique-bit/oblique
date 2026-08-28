@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "AddObliqueSchema",
+  "title": "Add Oblique schematic",
+  "type": "object",
+  "required": ["locale"],
+  "properties": {
+    "silent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Disable schematic logging"
+    },
+    "locale": {
+      "type": "string",
+      "default": "de-CH fr-CH it-CH",
+      "description": "Supported locales: Use a whitespace separated list.",
+      "x-prompt": "Choose the supported locales (whitespace separated, e.g. de-CH fr-CH it-CH)"
+    }
+  }
+}
