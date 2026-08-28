@@ -65,8 +65,8 @@
 		</td>
 	</ng-container>
 
-	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-	<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+	<tr mat-header-row *matHeaderRowDef="displayedColumns()"></tr>
+	<tr mat-row *matRowDef="let row; columns: displayedColumns()"></tr>
 </table>
 @if (!dataSource.data.length) {
 	<ob-alert>{{ "i18n.oblique.file-upload.empty" | translate }}</ob-alert>

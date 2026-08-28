@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {ObIUploadEvent} from '../file-upload.model';
 
 /**
@@ -7,13 +7,12 @@ import {ObIUploadEvent} from '../file-upload.model';
 @Component({
 	selector: 'ob-drop-zone',
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'ob-drop-zone'},
 	exportAs: 'obDropZone',
 })
 export class ObMockDropZoneComponent {
-	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
-	@Input() accept = ['*'];
+	readonly uploadEvent = output<ObIUploadEvent>();
+	readonly accept = input(['*']);
 	readonly maxFileSize = input(5);
 	readonly maxFileAmount = input(0);
 	readonly multiple = input(true);

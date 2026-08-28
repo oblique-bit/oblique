@@ -34,7 +34,7 @@ describe('ObFileInfoComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ObFileInfoComponent);
 		component = fixture.componentInstance;
-		component.getUploadedFilesUrl = 'test-url';
+		fixture.componentRef.setInput('getUploadedFilesUrl', 'test-url');
 	});
 
 	it('should create', () => {
@@ -65,16 +65,51 @@ describe('ObFileInfoComponent', () => {
 		expect(component.COLUMN_ACTION).toBe('action');
 	});
 
+	describe('sorting', () => {
+		beforeEach(async () => {
+			await TestBed.resetTestingModule()
+				.configureTestingModule({
+					imports: [MatTableModule, ObFileInfoComponent],
+					schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+					providers: [
+						{
+							provide: ObFileUploadService,
+							useValue: {
+								uploadComplete$: uploadComplete.asObservable(),
+								getUploadedFiles: () => of(files),
+								delete: () => of(),
+							},
+						},
+						provideObliqueTestingConfiguration(),
+					],
+				})
+				.overrideComponent(ObFileInfoComponent, {
+					set: {template: ''},
+				})
+				.compileComponents();
+		});
+
+		it('should not set the data source sort when there is no sort', () => {
+			fixture = TestBed.createComponent(ObFileInfoComponent);
+			component = fixture.componentInstance;
+			TestBed.tick();
+			expect(component.sorting()).toBeUndefined();
+			expect(component.dataSource.sort).toBeUndefined();
+		});
+	});
+
 	describe('mapFunction', () => {
 		it('should return the given array', () => {
-			expect(component.mapFunction(files)).toEqual(files);
+			expect(component.mapFunction()(files)).toEqual(files);
 		});
 	});
 
 	describe('with custom mapFunction', () => {
 		beforeEach(() => {
-			component.mapFunction = (filesToMap: ObIFileDescription[]) =>
-				filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
+			const custom = (filesToMap: ObIFileDescription[]): ObIFileDescription[] => {
+				return filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
+			};
+			fixture.componentRef.setInput('mapFunction', custom);
 			fixture.detectChanges();
 		});
 
@@ -92,15 +127,17 @@ describe('ObFileInfoComponent', () => {
 			it('should reload files on uploadComplete', () => {
 				jest.spyOn(uploadService, 'getUploadedFiles');
 				uploadComplete.next();
+				TestBed.tick();
 				expect(uploadService.getUploadedFiles).toHaveBeenCalled();
 			});
 
 			it.each([null, undefined, ''])(
 				"should not reload files on uploadComplete when there's no getUploadedFilesUrl (½s)",
 				value => {
-					component.getUploadedFilesUrl = value;
+					fixture.componentRef.setInput('getUploadedFilesUrl', value);
 					jest.spyOn(uploadService, 'getUploadedFiles');
 					uploadComplete.next();
+					TestBed.tick();
 					expect(uploadService.getUploadedFiles).not.toHaveBeenCalled();
 				}
 			);
@@ -111,6 +148,7 @@ describe('ObFileInfoComponent', () => {
 					jest.spyOn(component.selection, 'clear');
 					jest.spyOn(component.selection, 'select');
 					uploadComplete.next();
+					TestBed.tick();
 				});
 
 				it('should clear the selection', () => {
@@ -154,14 +192,14 @@ describe('ObFileInfoComponent', () => {
 
 			describe('should populate displayedColumns array', () => {
 				it('should have 3 columns without an deleteUrl', () => {
-					expect(component.displayedColumns).toEqual(['select', 'name', 'extension']);
+					expect(component.displayedColumns()).toEqual(['select', 'name', 'extension']);
 				});
 
 				it('should have 4 columns with an deleteUrl', () => {
-					component.deleteUrl = 'some/path';
+					fixture.componentRef.setInput('deleteUrl', 'some/path');
 					component.ngOnInit();
 					fixture.detectChanges();
-					expect(component.displayedColumns).toEqual(['select', 'name', 'extension', 'action']);
+					expect(component.displayedColumns()).toEqual(['select', 'name', 'extension', 'action']);
 				});
 			});
 
@@ -185,9 +223,11 @@ describe('ObFileInfoComponent', () => {
 						fixture.destroy();
 						fixture = TestBed.createComponent(ObFileInfoComponent);
 						component = fixture.componentInstance;
-						component.getUploadedFilesUrl = 'test-url';
-						component.mapFunction = (filesToMap: ObIFileDescription[]) =>
-							filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
+						fixture.componentRef.setInput('getUploadedFilesUrl', 'test-url');
+						const custom = (filesToMap: ObIFileDescription[]): ObIFileDescription[] => {
+							return filesToMap.map(file => ({...file, extension: file.name.split('.')[1]}));
+						};
+						fixture.componentRef.setInput('mapFunction', custom);
 						fixture.detectChanges();
 					});
 					it('should show an infobox', () => {
@@ -275,14 +315,14 @@ describe('ObFileInfoComponent', () => {
 		});
 
 		it('should ask for confirmation', () => {
-			component.deleteUrl = 'url';
+			fixture.componentRef.setInput('deleteUrl', 'url');
 			jest.spyOn(window, 'confirm');
 			component.delete([files[0]]);
 			expect(window.confirm).toHaveBeenCalled();
 		});
 
 		it('should do nothing if not confirmed', () => {
-			component.deleteUrl = 'url';
+			fixture.componentRef.setInput('deleteUrl', 'url');
 			jest.spyOn(window, 'confirm').mockReturnValue(false);
 			jest.spyOn(uploadService, 'delete');
 			component.delete([files[0]]);
@@ -290,7 +330,7 @@ describe('ObFileInfoComponent', () => {
 		});
 
 		it('should do nothing if confirmed without deleteUrl', () => {
-			component.deleteUrl = undefined;
+			fixture.componentRef.setInput('deleteUrl', undefined);
 			jest.spyOn(window, 'confirm').mockReturnValue(true);
 			jest.spyOn(uploadService, 'delete').mockReturnValue(of());
 			component.delete([files[0]]);
@@ -299,23 +339,24 @@ describe('ObFileInfoComponent', () => {
 
 		describe('if confirmed with deleteUrl', () => {
 			beforeEach(() => {
-				component.deleteUrl = 'url';
+				fixture.componentRef.setInput('deleteUrl', 'url');
 				jest.spyOn(window, 'confirm').mockReturnValue(true);
 			});
 
 			describe.each([
 				{case: 'default', mapper: undefined, fileId: 'WyJmaWxlLnR4dCJd'},
 				{
-					case: 'default',
-					mapper: (filesDesc: ObIFileDescription[]) => filesDesc.map(file => file.name.split('.')[0]).join('-'),
+					case: 'custom',
+					mapper: jest.fn((filesDesc: ObIFileDescription[]) =>
+						filesDesc.map(file => file.name.split('.')[0]).join('-')
+					),
 					fileId: 'file',
 				},
 			])('with %case mapFilesToDeleteUrlFunction', ({mapper, fileId}) => {
 				beforeEach(() => {
 					if (mapper) {
-						component.mapFilesToDeleteUrlFunction = mapper;
+						fixture.componentRef.setInput('mapFilesToDeleteUrlFunction', mapper);
 					}
-					jest.spyOn(component, 'mapFilesToDeleteUrlFunction');
 					jest.spyOn(uploadService, 'delete').mockReturnValue(of({}));
 					component.selection.select(files[0]);
 					component.selection.select(files[1]);
@@ -324,7 +365,9 @@ describe('ObFileInfoComponent', () => {
 				});
 
 				it('should call "mapFilesToDeleteUrlFunction" with param', () => {
-					expect(component.mapFilesToDeleteUrlFunction).toHaveBeenCalledWith([{name: 'file.txt'}]);
+					if (mapper) {
+						expect(mapper).toHaveBeenCalledWith([{name: 'file.txt'}]);
+					}
 				});
 
 				it('should call uploadService.delete with param', () => {

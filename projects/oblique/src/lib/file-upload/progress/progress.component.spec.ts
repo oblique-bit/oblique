@@ -9,6 +9,7 @@ import {ObMockFileUploadService} from '../_mocks/mock-file-upload.sevice';
 import {ObFileUploadService} from '../file-upload.service';
 import {ObEUploadEventType, ObIFile, ObIUploadEvent, ObTEventType} from '../file-upload.model';
 import {ObProgressComponent} from './progress.component';
+import {outputToObservable} from '@angular/core/rxjs-interop';
 
 interface ObProgressComponentPrivate {
 	uploadSingleFile: (file: ObIFile) => void;
@@ -73,7 +74,8 @@ describe('ObProgressComponent', () => {
 			beforeEach(() => {
 				jest.useFakeTimers();
 				jest.spyOn(uploadService, 'upload').mockReturnValue(of(uploadProgressEvent));
-				component.files = files;
+				fixture.componentRef.setInput('files', files);
+				fixture.detectChanges();
 				jest.advanceTimersByTime(1);
 			});
 
@@ -311,14 +313,12 @@ describe('ObProgressComponent', () => {
 							});
 						});
 
-						it('should cancel a file that is missing from the current upload list', done => {
+						it('should cancel a file that is missing from the current upload list', () => {
 							const file = {...component.uploadedFiles.files[0], index: component.uploadedFiles.files.length + 1};
-							component.uploadEvent.pipe(first()).subscribe(evt => {
-								expect(evt).toEqual({type: ObEUploadEventType.CANCELED, files: [file.binary]});
-								done();
-							});
-
+							let event: ObIUploadEvent;
+							component.uploadEvent.subscribe(evt => (event = evt));
 							component.cancelUpload(file);
+							expect(event).toEqual({type: ObEUploadEventType.CANCELED, files: [file.binary]});
 						});
 					});
 				});
@@ -381,11 +381,23 @@ describe('ObProgressComponent', () => {
 			});
 		});
 
+		describe('empty files', () => {
+			it('should not upload files', () => {
+				jest.useFakeTimers();
+				jest.spyOn(uploadService, 'upload');
+				fixture.componentRef.setInput('files', []);
+				fixture.detectChanges();
+				jest.runAllTimers();
+				expect(uploadService.upload).not.toHaveBeenCalled();
+			});
+		});
+
 		describe('progress', () => {
 			beforeEach(() => {
 				jest.useFakeTimers();
 				jest.spyOn(uploadService, 'upload').mockReturnValue(of(uploadProgressEvent));
-				component.files = files;
+				fixture.componentRef.setInput('files', files);
+				fixture.detectChanges();
 				jest.advanceTimersByTime(1);
 			});
 
@@ -403,7 +415,8 @@ describe('ObProgressComponent', () => {
 				component.uploadEvent.subscribe(evt => {
 					event = evt;
 				});
-				component.files = files;
+				fixture.componentRef.setInput('files', files);
+				fixture.detectChanges();
 				jest.advanceTimersByTime(1001);
 			});
 
@@ -438,10 +451,11 @@ describe('ObProgressComponent', () => {
 			beforeEach(() => {
 				jest.useFakeTimers();
 				jest.spyOn(uploadService, 'upload').mockReturnValue(of({type: HttpEventType.User, files}));
-				component.uploadEvent.pipe(first()).subscribe(evt => {
+				component.uploadEvent.subscribe(evt => {
 					event = evt;
 				});
-				component.files = files;
+				fixture.componentRef.setInput('files', files);
+				fixture.detectChanges();
 				jest.advanceTimersByTime(1);
 				file = component.uploadedFiles.files[0];
 			});
@@ -474,7 +488,8 @@ describe('ObProgressComponent', () => {
 			beforeEach(() => {
 				jest.useFakeTimers();
 				jest.spyOn(uploadService, 'multiUpload').mockReturnValue(of(uploadProgressEvent));
-				component.files = files;
+				fixture.componentRef.setInput('files', files);
+				fixture.detectChanges();
 				jest.advanceTimersByTime(1);
 			});
 
@@ -493,10 +508,12 @@ describe('ObProgressComponent', () => {
 					beforeEach(done => {
 						file = component.uploadedFiles.files[0];
 						jest.spyOn(file.subscription, 'unsubscribe');
-						component.uploadEvent.pipe(first()).subscribe(evt => {
-							event = evt;
-							done();
-						});
+						outputToObservable(component.uploadEvent)
+							.pipe(first())
+							.subscribe(evt => {
+								event = evt;
+								done();
+							});
 						component.cancelUpload(file);
 					});
 
@@ -587,11 +604,23 @@ describe('ObProgressComponent', () => {
 			});
 		});
 
+		describe('empty files', () => {
+			it('should not upload files', () => {
+				jest.useFakeTimers();
+				jest.spyOn(uploadService, 'upload');
+				fixture.componentRef.setInput('files', []);
+				fixture.detectChanges();
+				jest.runAllTimers();
+				expect(uploadService.upload).not.toHaveBeenCalled();
+			});
+		});
+
 		describe('progress', () => {
 			beforeEach(() => {
 				jest.useFakeTimers();
 				jest.spyOn(uploadService, 'multiUpload').mockReturnValue(of(uploadProgressEvent));
-				component.files = files;
+				fixture.componentRef.setInput('files', files);
+				fixture.detectChanges();
 				jest.advanceTimersByTime(1);
 			});
 
@@ -609,7 +638,8 @@ describe('ObProgressComponent', () => {
 				component.uploadEvent.subscribe(evt => {
 					event = evt;
 				});
-				component.files = files;
+				fixture.componentRef.setInput('files', files);
+				fixture.detectChanges();
 				jest.advanceTimersByTime(1001);
 			});
 
@@ -644,10 +674,11 @@ describe('ObProgressComponent', () => {
 			beforeEach(() => {
 				jest.useFakeTimers();
 				jest.spyOn(uploadService, 'multiUpload').mockReturnValue(of({type: HttpEventType.User, files}));
-				component.uploadEvent.pipe(first()).subscribe(evt => {
+				component.uploadEvent.subscribe(evt => {
 					event = evt;
 				});
-				component.files = files;
+				fixture.componentRef.setInput('files', files);
+				fixture.detectChanges();
 				jest.advanceTimersByTime(1);
 				file = component.uploadedFiles.files[0];
 			});

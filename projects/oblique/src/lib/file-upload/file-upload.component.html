@@ -1,4 +1,4 @@
-@if (!showLoadingBox) {
+@if (!showLoadingBox()) {
 	<ob-drop-zone
 		[accept]="accept()"
 		[maxFileSize]="maxFileSize()"
@@ -8,7 +8,7 @@
 	/>
 } @else {
 	<ob-progress
-		[files]="files"
+		[files]="files()"
 		[singleRequest]="singleRequest()"
 		[uploadUrl]="uploadUrl()"
 		[cancelConfirmation]="cancelConfirmation()"
