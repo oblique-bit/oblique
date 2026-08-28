@@ -7,7 +7,6 @@ import {ObIUploadEvent} from '../file-upload.model';
 @Component({
 	selector: 'ob-file-upload',
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'ob-file-upload'},
 	exportAs: 'obFileUpload',
 })

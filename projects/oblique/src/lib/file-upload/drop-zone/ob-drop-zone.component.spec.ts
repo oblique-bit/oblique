@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Pipe, PipeTransform} from '@angular/core';
-import {first, skip} from 'rxjs/operators';
+import {CUSTOM_ELEMENTS_SCHEMA, OutputEmitterRef, Pipe, PipeTransform} from '@angular/core';
+import {outputToObservable} from '@angular/core/rxjs-interop';
+import {first, skip} from 'rxjs';
 import {ObIUploadEvent} from '../file-upload.model';
 import {ObDropZoneComponent} from './ob-drop-zone.component';
 import {ObValidationService} from './validation.service';
@@ -50,8 +51,8 @@ describe('DropZoneComponent', () => {
 		expect(fixture.debugElement.nativeElement.classList.contains('ob-drop-zone')).toBe(true);
 	});
 
-	it('should have a uploadEvent EventEmitter', () => {
-		expect(component.uploadEvent instanceof EventEmitter).toBe(true);
+	it('should have a uploadEvent OutputEmitterRef', () => {
+		expect(component.uploadEvent instanceof OutputEmitterRef).toBe(true);
 	});
 
 	describe('addFiles', () => {
@@ -65,7 +66,7 @@ describe('DropZoneComponent', () => {
 			let event: ObIUploadEvent;
 			beforeEach(done => {
 				jest.spyOn(service, 'filterInvalidFiles').mockReturnValue(Array.from(files));
-				component.uploadEvent.subscribe(evt => {
+				outputToObservable(component.uploadEvent).subscribe(evt => {
 					event = evt;
 					done();
 				});
@@ -93,7 +94,7 @@ describe('DropZoneComponent', () => {
 			let event: ObIUploadEvent;
 			beforeEach(done => {
 				jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([]);
-				component.uploadEvent.subscribe(evt => {
+				outputToObservable(component.uploadEvent).subscribe(evt => {
 					event = evt;
 					done();
 				});
@@ -111,6 +112,7 @@ describe('DropZoneComponent', () => {
 			it('should emit an ObIUploadEvent with all files', () => {
 				expect(event.files).toEqual(files);
 			});
+
 			it('should reset fileinput', () => {
 				const fileInput = fixture.debugElement.query(By.css('input[type=file]'));
 				expect(fileInput.properties.value).toEqual('');
@@ -125,10 +127,12 @@ describe('DropZoneComponent', () => {
 			describe('chosen event', () => {
 				let event: ObIUploadEvent;
 				beforeEach(done => {
-					component.uploadEvent.pipe(first()).subscribe(evt => {
-						event = evt;
-						done();
-					});
+					outputToObservable(component.uploadEvent)
+						.pipe(first())
+						.subscribe(evt => {
+							event = evt;
+							done();
+						});
 					component.addFiles(files);
 				});
 
@@ -139,10 +143,10 @@ describe('DropZoneComponent', () => {
 				it('should emit an ObIUploadEvent of type chosen', () => {
 					expect(event.type).toBe('chosen');
 				});
-
 				it('should emit an ObIUploadEvent with valid files', () => {
 					expect(event.files).toEqual([files[0]]);
 				});
+
 				it('should reset fileinput', () => {
 					const fileInput = fixture.debugElement.query(By.css('input[type=file]'));
 					expect(fileInput.properties.value).toEqual('');
@@ -151,11 +155,14 @@ describe('DropZoneComponent', () => {
 
 			describe('errored event', () => {
 				let event: ObIUploadEvent;
+
 				beforeEach(done => {
-					component.uploadEvent.pipe(skip(1)).subscribe(evt => {
-						event = evt;
-						done();
-					});
+					outputToObservable(component.uploadEvent)
+						.pipe(skip(1))
+						.subscribe(evt => {
+							event = evt;
+							done();
+						});
 					component.addFiles(files);
 				});
 
@@ -164,12 +171,13 @@ describe('DropZoneComponent', () => {
 				});
 
 				it('should emit an ObIUploadEvent of type errored', () => {
-					expect(event.type).toBe('errored');
+					expect(event.type).toEqual('errored');
 				});
 
 				it('should emit an ObIUploadEvent with valid files', () => {
 					expect(event.files).toEqual([files[1]]);
 				});
+
 				it('should reset fileinput', () => {
 					const fileInput = fixture.debugElement.query(By.css('input[type=file]'));
 					expect(fileInput.properties.value).toEqual('');

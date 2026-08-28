@@ -1,5 +1,5 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {ChangeDetectionStrategy, Component, Input, ViewChild, ViewEncapsulation, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation, input, output, viewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
@@ -11,16 +11,16 @@ import {ObIFileDescription, ObIUploadEvent, ObTSelectionStatus} from '../file-up
 @Component({
 	selector: 'ob-file-info',
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-file-info'},
 	exportAs: 'obFileInfo',
 })
 export class ObMockFileInfoComponent {
 	readonly uploadEvent = output<ObIUploadEvent>();
-	@Input() deleteUrl: string;
-	@Input() getUploadedFilesUrl: string;
-	@ViewChild(MatSort, {static: true}) sort: MatSort;
+	readonly deleteUrl = input<string>();
+	readonly getUploadedFilesUrl = input<string>();
+	readonly sort = viewChild(MatSort);
+
 	dataSource = new MatTableDataSource<ObIFileDescription, MatPaginator>([]);
 	displayedColumns: string[];
 	fields: string[];
@@ -29,9 +29,10 @@ export class ObMockFileInfoComponent {
 	readonly COLUMN_SELECT = 'select';
 	readonly COLUMN_ACTION = 'action';
 
-	@Input() mapFunction = (files: ObIFileDescription[]): ObIFileDescription[] => files;
-	@Input() mapFilesToDeleteUrlFunction: (files: ObIFileDescription[]) => string = files =>
-		btoa(JSON.stringify(files.map(file => file.name)));
+	readonly mapFunction = input((files: ObIFileDescription[]): ObIFileDescription[] => files);
+	readonly mapFilesToDeleteUrlFunction = input<(files: ObIFileDescription[]) => string>(files =>
+		btoa(JSON.stringify(files.map(file => file.name)))
+	);
 
 	selectOrUnselectAllItems(): void {}
 

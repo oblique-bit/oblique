@@ -1,4 +1,4 @@
-import {Directive, output} from '@angular/core';
+import {Directive, output, signal} from '@angular/core';
 
 @Directive({
 	selector: '[obDragDrop]',
@@ -6,23 +6,23 @@ import {Directive, output} from '@angular/core';
 		'(dragleave)': 'onDragLeave($event)',
 		'(dragover)': 'onDragOver($event)',
 		'(drop)': 'ondrop($event)',
-		'[class.ob-dragging]': 'isDragging',
+		'[class.ob-dragging]': 'isDragging()',
 	},
 })
 export class ObDragDropDirective {
 	readonly fileDropped = output<FileList>();
-	protected isDragging = false;
+	protected readonly isDragging = signal(false);
 
 	public onDragOver(event: DragEvent): void {
 		event.preventDefault();
 		event.stopPropagation();
-		this.isDragging = true;
+		this.isDragging.set(true);
 	}
 
 	public onDragLeave(event: DragEvent): void {
 		event.preventDefault();
 		event.stopPropagation();
-		this.isDragging = false;
+		this.isDragging.set(false);
 	}
 
 	public ondrop(event: DragEvent): void {
@@ -31,7 +31,7 @@ export class ObDragDropDirective {
 		const {files} = event.dataTransfer;
 		if (files.length) {
 			this.fileDropped.emit(files);
-			this.isDragging = false;
+			this.isDragging.set(false);
 		}
 	}
 }

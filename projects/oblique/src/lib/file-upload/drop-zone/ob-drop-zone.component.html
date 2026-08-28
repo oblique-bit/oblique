@@ -12,7 +12,7 @@
 			type="file"
 			aria-labelledby="ob-file-upload-caption"
 			[multiple]="multiple()"
-			[accept]="accept"
+			[accept]="accept()"
 			(change)="addFiles($event.target.files)"
 			#fileInput
 		/>
