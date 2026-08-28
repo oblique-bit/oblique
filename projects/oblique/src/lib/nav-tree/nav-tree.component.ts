@@ -1,24 +1,22 @@
 import {
 	ChangeDetectionStrategy,
+	ChangeDetectorRef,
 	Component,
-	Input,
-	OnChanges,
-	OnDestroy,
-	SimpleChanges,
 	ViewEncapsulation,
+	computed,
 	inject,
 	input,
+	model,
 	signal,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, RouterLink, RouterLinkActive, RouterModule} from '@angular/router';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {takeUntil} from 'rxjs/operators';
 
 import {NgTemplateOutlet} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {Subject} from 'rxjs';
 import {ObLocalizePipe} from '../router/ob-localize.pipe';
 import {ObNavTreeItemModel} from './nav-tree-item.model';
 
@@ -38,76 +36,54 @@ import {ObNavTreeItemModel} from './nav-tree-item.model';
 	],
 	templateUrl: './nav-tree.component.html',
 	styleUrls: ['./nav-tree.component.scss'],
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	exportAs: 'obNavTree',
 })
-export class ObNavTreeComponent implements OnChanges, OnDestroy {
+export class ObNavTreeComponent {
 	static DEFAULTS = {
 		HIGHLIGHT: 'ob-pattern-highlight',
 		LABEL_FORMATTER: defaultLabelFormatterFactory,
 	};
 
-	formatter = signal<(item: ObNavTreeItemModel, filterPattern?: string) => string>(undefined);
-	activeFragment: string; // TODO: remove when https://github.com/angular/angular/issues/13205
+	readonly formatter = computed<(item: ObNavTreeItemModel, filterPattern?: string) => string>(
+		() => this.labelFormatter() ?? this.defaultFormatter
+	);
+	readonly activeFragment = signal<string | undefined>(undefined); // TODO: remove when https://github.com/angular/angular/issues/13205
 	readonly items = input<ObNavTreeItemModel[]>([]);
-	@Input() prefix = 'nav-tree';
+	readonly prefix = input('nav-tree');
 	readonly hasFilter = input(false);
-	@Input() filterPattern: string;
-	readonly labelFormatter = input<(item: ObNavTreeItemModel, filterPattern?: string) => string>(undefined);
-	readonly treeAriaLabelledBy = input<string>(undefined);
-	readonly treeAriaLabel = input<string>(undefined);
-	private readonly unsubscribe = new Subject<void>();
+	readonly filterPattern = model<string>();
+	readonly labelFormatter = input<(item: ObNavTreeItemModel, filterPattern?: string) => string>();
+	readonly treeAriaLabelledBy = input<string>();
+	readonly treeAriaLabel = input<string>();
+	readonly patternMatcher = input<(item: ObNavTreeItemModel, pattern?: string) => boolean>();
+	private readonly changeDetector = inject(ChangeDetectorRef);
 	private readonly route = inject(ActivatedRoute);
 	private readonly translate = inject(TranslateService);
+	private readonly defaultFormatter = ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate);
+	private readonly defaultPatternMatcher = defaultPatternMatcherFactory(this.translate);
+	private readonly effectivePatternMatcher = computed(() => this.patternMatcher() ?? this.defaultPatternMatcher);
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	constructor() {
-		this.route.fragment.pipe(takeUntil(this.unsubscribe)).subscribe(fragment => {
-			this.activeFragment = fragment;
+		this.route.fragment.pipe(takeUntilDestroyed()).subscribe(fragment => {
+			this.activeFragment.set(fragment ?? undefined);
 		});
-		this.formatter.set(ObNavTreeComponent.DEFAULTS.LABEL_FORMATTER(this.translate));
-	}
-
-	ngOnChanges(changes: SimpleChanges<ObNavTreeComponent>): void {
-		if (changes.labelFormatter) {
-			this.formatter.set(this.labelFormatter());
-		}
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
-	}
-
-	@Input()
-	patternMatcher(item: ObNavTreeItemModel, pattern = ''): boolean {
-		const text = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
-		const label = this.translate.instant(item.label, item.labelParams);
-		const match = new RegExp(text, 'gi').test(label);
-		const childMatch = (item.items || []).some(subItem => {
-			const subMatch = this.patternMatcher(subItem, text.replace(/\\/g, ''));
-			if (subMatch) {
-				// Ensure parent item is not collapsed:
-				item.collapsed = false;
-			}
-			return subMatch;
-		});
-		return match || childMatch;
 	}
 
 	visible(item: ObNavTreeItemModel): boolean {
-		return !this.filterPattern || this.patternMatcher(item, this.filterPattern);
+		return !this.filterPattern() || this.effectivePatternMatcher()(item, this.filterPattern());
 	}
 
 	itemKey(item: ObNavTreeItemModel): string {
-		return `${this.prefix}-${item.id}`;
+		return `${this.prefix()}-${item.id}`;
 	}
 
 	// TODO: remove when https://github.com/angular/angular/issues/13205
 	isLinkActive(rla: RouterLinkActive, item: ObNavTreeItemModel): boolean {
 		const isLinkActive = rla.isActive;
-		return item.fragment ? isLinkActive && this.activeFragment === item.fragment : isLinkActive;
+		return item.fragment ? isLinkActive && this.activeFragment() === item.fragment : isLinkActive;
 	}
 
 	changeCollapsed(items: ObNavTreeItemModel[], collapsed: boolean, all = false): void {
@@ -124,18 +100,40 @@ export class ObNavTreeComponent implements OnChanges, OnDestroy {
 	// Public API:
 	public collapseAll(): void {
 		this.changeCollapsed(this.items(), true, true);
+		this.changeDetector.markForCheck();
 	}
 
 	public expandAll(): void {
 		this.changeCollapsed(this.items(), false, true);
+		this.changeDetector.markForCheck();
 	}
+}
+
+export function defaultPatternMatcherFactory(
+	translate: TranslateService
+): (item: ObNavTreeItemModel, pattern?: string) => boolean {
+	const matcher = (item: ObNavTreeItemModel, pattern = ''): boolean => {
+		const text = pattern.replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
+		const label = translate.instant(item.label, item.labelParams);
+		const match = new RegExp(text, 'gi').test(label);
+		const childMatch = (item.items || []).some(subItem => {
+			const subMatch = matcher(subItem, text.replace(/\\/g, ''));
+			if (subMatch) {
+				// Ensure parent item is not collapsed:
+				item.collapsed = false;
+			}
+			return subMatch;
+		});
+		return match || childMatch;
+	};
+	return matcher;
 }
 
 export function defaultLabelFormatterFactory(
 	translate: TranslateService
-): (item: ObNavTreeItemModel, filterPattern: string) => string {
+): (item: ObNavTreeItemModel, filterPattern?: string) => string {
 	// noinspection UnnecessaryLocalVariableJS because this will result in a build error
-	const formatter = (item: ObNavTreeItemModel, filterPattern: string): string => {
+	const formatter = (item: ObNavTreeItemModel, filterPattern?: string): string => {
 		const pattern = (filterPattern || '').replace(/[.*+?^@${}()|[\]\\]/g, '\\$&');
 		const label: string = translate.instant(item.label, item.labelParams);
 		return pattern
