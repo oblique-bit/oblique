@@ -167,6 +167,11 @@ describe('Ob new command', () => {
 							"--title <project-name> Add the specified application's title: The title will be visible in the header of your application. (default: project name.)",
 					},
 					{
+						description: "Option to specify the application's operator",
+						expected:
+							'--applicationOperator <application-operator> Add the specified application operator: The operator will be visible in the footer of your application.',
+					},
+					{
 						description: 'Option to specify supported locales',
 						expected:
 							'--locales <locales> Supported locales: Use a whitespace separated list. (default: "de-CH fr-CH it-CH")',
@@ -612,8 +617,14 @@ describe('Ob new command', () => {
 							'generate',
 							'@oblique/toolchain:add-oblique',
 							expectedAddObliqueOptions,
+							`--title=${projectName}`,
 						]
-					: [`@angular/cli@${currentVersions['@angular/cli']}`, 'generate', '@oblique/toolchain:add-oblique'];
+					: [
+							`@angular/cli@${currentVersions['@angular/cli']}`,
+							'generate',
+							'@oblique/toolchain:add-oblique',
+							`--title=${projectName}`,
+						];
 				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
@@ -625,6 +636,66 @@ describe('Ob new command', () => {
 			test('should not pass the locales option to Oblique ng add', () => {
 				const expected = buildDefaultNgAddCommand();
 				expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe.each([
+			{
+				description: 'with default title and applicationOperator',
+				args: [projectName],
+				expectedAddObliqueOptions: ['--locale=de-CH fr-CH it-CH', `--title=${projectName}`],
+			},
+			{
+				description: 'with custom title and applicationOperator',
+				args: [projectName, '--title', 'My App', '--applicationOperator', 'My Operator'],
+				expectedAddObliqueOptions: [
+					'--locale=de-CH fr-CH it-CH',
+					'--title=My App',
+					'--applicationOperator=My Operator',
+				],
+			},
+			{
+				description: 'with custom applicationOperator only',
+				args: [projectName, '--applicationOperator', 'My Operator'],
+				expectedAddObliqueOptions: [
+					'--locale=de-CH fr-CH it-CH',
+					`--title=${projectName}`,
+					'--applicationOperator=My Operator',
+				],
+			},
+		])('title and applicationOperator handling $description', ({args, expectedAddObliqueOptions}) => {
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse(args, {from: 'user'});
+			});
+
+			test('should pass title and applicationOperator to ng generate @oblique/toolchain:add-oblique', () => {
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					...expectedAddObliqueOptions,
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',

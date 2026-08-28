@@ -108,7 +108,7 @@ function runAddOblique(options: ObNewOptions, projectName: string, workingDirect
 	executeNgAddToolchain(toolchainAddOptions, workingDirectory);
 	runAddLinting(options.eslint, filteredOptions, workingDirectory);
 	executeNgAddOblique(obliqueOptions, workingDirectory);
-	executeAddObliqueSchematic(getAddObliqueLocalesOptions(toolchainOptions), workingDirectory);
+	executeAddObliqueSchematic(getAddObliqueOptions(toolchainOptions, obliqueOptions), workingDirectory);
 }
 
 function getToolchainAddOptions(toolchainOptions: ObOptions): ObOptions {
@@ -117,11 +117,17 @@ function getToolchainAddOptions(toolchainOptions: ObOptions): ObOptions {
 	return options;
 }
 
-function getAddObliqueLocalesOptions(toolchainOptions: ObOptions): ObOptions {
+function getAddObliqueOptions(toolchainOptions: ObOptions, obliqueOptions: ObOptions): ObOptions {
 	const locales = toolchainOptions['locales'];
 	const addObliqueOptions: ObOptions = {};
 	if (locales && (locales as string).trim() !== '') {
 		addObliqueOptions['locale'] = (locales as string).trim();
+	}
+	if (obliqueOptions['title']) {
+		addObliqueOptions['title'] = obliqueOptions['title'] as string;
+	}
+	if (obliqueOptions['applicationOperator']) {
+		addObliqueOptions['applicationOperator'] = obliqueOptions['applicationOperator'] as string;
 	}
 	return addObliqueOptions;
 }
