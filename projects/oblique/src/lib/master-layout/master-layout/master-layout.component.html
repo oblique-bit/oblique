@@ -66,10 +66,7 @@
 				</div>
 			</div>
 		} @else {
-			<main id="content" class="ob-main-layout" tabindex="-1" cdkScrollable (scroll)="scrollTop(main)" #main>
-				<ob-notification channel="oblique" />
-				<router-outlet />
-			</main>
+			<ng-container *ngTemplateOutlet="normalLayout" />
 		}
 		<ng-template #normalLayout>
 			<main id="content" class="ob-main-layout" tabindex="-1" cdkScrollable (scroll)="scrollTop(main)" #main>
