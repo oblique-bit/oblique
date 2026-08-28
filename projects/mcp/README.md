@@ -61,11 +61,13 @@ Cursor, Claude Code, and Claude Desktop examples, see [INSTALLATION.md](INSTALLA
   `{ "code": "<ob-alert></ob-alert>" }`.
 - `get_oblique_template_api` returns the effective public Angular template contract, for example
   `{ "symbol": "ObDateComponent" }` or `{ "selector": "[obInputClear]" }`.
-- `prepare_oblique_project` prepares, but never executes, an Oblique CLI project creation plan. For example,
-  `{ "projectName": "employee-portal", "parentDirectory": "/workspace" }` returns a confirmation-required
-  `npx --yes @oblique/cli@15.4.4 new employee-portal` argument plan after validating the directory, destination,
-  pinned version, and current Node.js version. A request such as `{ "projectName": "Employee Portal" }` is blocked
-  with `INVALID_PROJECT_NAME`. Phase 14 will add controlled execution only after explicit developer confirmation.
+- `prepare_oblique_project` creates a fresh short-lived, single-use plan but never executes it. Each successful call
+  has a new opaque plan ID, so this read-only preparation is intentionally non-idempotent. It requires
+  `projectName` and `npmrcMode: "federal" | "external"`; federal produces `--npmrc`, external produces
+  `--no-npmrc`. A ready result contains an opaque `planId` and exact `confirmationPhrase`.
+- `create_oblique_project` creates a project only from a ready plan and an exact, case- and whitespace-sensitive
+  confirmation such as `CREATE employee-portal`. It downloads and executes the pinned Oblique CLI, may access the
+  network, writes files, refuses existing destinations, and can leave a partial project for the developer to inspect.
 
 `projects/oblique/src/public_api.ts` is the authoritative boundary for APIs consumable from
 `@oblique/oblique`. `get_oblique_api` only returns symbols reachable from that entry point; it does not expose
@@ -115,11 +117,45 @@ the result so clients can avoid them. Only symbols reachable from `projects/obli
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.
 
-`prepare_oblique_project` accepts `projectName`, optional `parentDirectory`, and optional `obliqueVersion`. It only
-reads the selected parent directory and destination to create a plan; it never starts `npx`, the Oblique CLI, Angular
-CLI, or another subprocess, and never creates or modifies a project. The canonical command is an argument array, not
-a shell command. It rejects unsafe project names, existing destinations, unsupported Node.js versions, invalid version
-aliases/ranges, and known unsafe CLI versions `15.4.0` and `15.4.1`. Compatibility metadata is embedded only for the
-installed Oblique version, so an explicit `obliqueVersion` must equal that version; other valid semantic versions are
-blocked with `UNSUPPORTED_OBLIQUE_VERSION` and an `oblique-version` failed check. The result is a preflight only: it does not reserve the destination, and a
-future controlled execution phase must revalidate it immediately before creating anything.
+`prepare_oblique_project` accepts `projectName`, required `npmrcMode`, optional `parentDirectory`, and optional
+`obliqueVersion`. It only reads the selected parent directory and destination to create a plan; it never starts
+`npx`, the Oblique CLI, Angular CLI, or another subprocess, and never creates or modifies a project. The canonical
+command is an argument array, not a shell command. It rejects unsafe project names, existing destinations, unsupported
+Node.js versions, invalid version aliases/ranges, missing npmrc mode, and known unsafe CLI versions `15.4.0` and
+`15.4.1`. Compatibility metadata is embedded only for the installed Oblique version, so an explicit
+`obliqueVersion` must equal that version; other valid semantic versions are blocked with
+`UNSUPPORTED_OBLIQUE_VERSION` and an `oblique-version` failed check.
+The in-memory store holds at most 100 live plans and unexpired consumed-plan tombstones. It purges expired entries
+before admitting a new plan and returns `PLAN_STORE_FULL` rather than evicting a live plan. A plan remains replayable
+only when another request temporarily holds its destination lock; a correct confirmation is not consumed in that case.
+
+`create_oblique_project` accepts only the opaque `planId` and the exact `confirmation` from a ready plan. Plans expire
+after roughly ten minutes and are consumed before execution, so retrying requires a new preparation and confirmation.
+The server revalidates the pinned versions, Node requirement, canonical parent directory, destination confinement and
+destination absence immediately before invoking `npx` (or `npx.cmd` on Windows) with `shell: false`. It captures a
+bounded, redacted output tail, has a fixed fifteen-minute timeout, and attempts graceful cancellation before forced
+termination. A zero exit code is not enough: the created directory must be a non-symlink Angular workspace with
+compatible `@oblique/oblique` and `@angular/core` dependencies. The tool never removes a partial project; on failure
+the developer must inspect or remove that directory manually. Enable this destructive tool only for trusted developers.
+On Windows, terminating `npx.cmd` cannot safely guarantee termination of every descendant it may start; the server
+does not use a shell or process-tree-killing wrapper to claim otherwise.
+An external process can still alter the parent or destination after the final revalidation and before `npx` opens it;
+that unavoidable filesystem TOCTOU window is reduced by canonical-path checks and post-creation validation, not removed.
+
+Internally, this headless Node.js server uses RxJS for the revalidation, process, timeout, cancellation, and
+post-validation pipeline. Angular Signals, Angular dependency injection, and Angular runtime APIs are intentionally not
+used. The public MCP contract is unchanged: the MCP SDK handler performs the single `firstValueFrom` conversion required
+by its Promise-compatible boundary. Observable teardown releases the destination lock and removes child-process listeners,
+AbortSignal listeners, and timers; cancellation requests graceful termination, with timed execution allowed to escalate to
+forced termination if the child remains open.
+
+The normal workflow is:
+
+```json
+{ "projectName": "employee-portal", "parentDirectory": "/workspace", "npmrcMode": "federal" }
+```
+
+This returns a ready plan with `confirmationPhrase: "CREATE employee-portal"`. Call
+`create_oblique_project` only with that plan ID and exact phrase. A lower-case `create employee-portal` response is
+blocked with `CONFIRMATION_REQUIRED`; if the CLI creates files but fails, the result is `failed` with
+`partialProject: true` and `cleanupRequired: true`.

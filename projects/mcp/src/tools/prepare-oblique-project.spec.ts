@@ -9,10 +9,12 @@ import {tmpdir} from 'node:os';
 import {resolve} from 'node:path';
 import type {McpServer} from '@modelcontextprotocol/server';
 import type {PackageMetadata} from './get-oblique-version.js';
+import {ObliqueProjectPlanStore} from './oblique-project-plan.store.js';
 import {
+	type PrepareObliqueProjectInput,
 	type ProjectPreparationEnvironment,
 	type ProjectPreparationFileSystem,
-	prepareObliqueProject,
+	prepareObliqueProject as prepareObliqueProjectImplementation,
 	prepareObliqueProjectResultSchema,
 	prepareObliqueProjectSchema,
 	registerPrepareObliqueProjectTool,
@@ -26,6 +28,18 @@ const packageMetadata: PackageMetadata = {
 	repository: {url: 'https://github.com/oblique-bit/oblique.git'},
 };
 const temporaryDirectories: string[] = [];
+
+function prepareObliqueProject(
+	input: PrepareObliqueProjectInput,
+	packageMetadata_: PackageMetadata,
+	environment?: ProjectPreparationEnvironment
+): ReturnType<typeof prepareObliqueProjectImplementation> {
+	return prepareObliqueProjectImplementation(
+		{...input, npmrcMode: input.npmrcMode ?? 'federal'},
+		packageMetadata_,
+		environment
+	);
+}
 
 afterEach(async () => {
 	await Promise.all(temporaryDirectories.splice(0).map(directory => rm(directory, {recursive: true, force: true})));
@@ -50,8 +64,8 @@ describe('prepare_oblique_project tool', () => {
 			},
 			command: {
 				executable: 'npx',
-				args: ['--yes', '@oblique/cli@15.4.4', 'new', projectName],
-				display: `npx --yes @oblique/cli@15.4.4 new ${projectName}`,
+				args: ['--yes', '@oblique/cli@15.4.4', 'new', projectName, '--npmrc'],
+				display: `npx --yes @oblique/cli@15.4.4 new ${projectName} --npmrc`,
 			},
 			requiresConfirmation: true,
 			executionPerformed: false,
@@ -71,6 +85,35 @@ describe('prepare_oblique_project tool', () => {
 			parentDirectory,
 			destinationPath: resolve(parentDirectory, 'employee-portal'),
 		});
+	});
+
+	it('requires an explicit npmrc mode and supports the external mode', async () => {
+		const environment = createEnvironment(['/workspace']);
+		const missing = await prepareObliqueProjectImplementation(
+			{projectName: 'employee-portal'},
+			packageMetadata,
+			environment
+		);
+		const external = await prepareObliqueProjectImplementation(
+			{projectName: 'employee-portal', npmrcMode: 'external'},
+			packageMetadata,
+			environment
+		);
+		const invalid = await prepareObliqueProjectImplementation(
+			{projectName: 'employee-portal', npmrcMode: 'custom'},
+			packageMetadata,
+			environment
+		);
+
+		expect(missing).toMatchObject({status: 'blocked', code: 'NPMRC_MODE_REQUIRED', failedCheck: 'npmrc-mode'});
+		expect(invalid).toMatchObject({status: 'blocked', code: 'NPMRC_MODE_REQUIRED', failedCheck: 'npmrc-mode'});
+		expect(external).toMatchObject({
+			status: 'ready',
+			command: {args: ['--yes', '@oblique/cli@15.4.4', 'new', 'employee-portal', '--no-npmrc']},
+		});
+		if (external.status === 'ready') {
+			expect(external.checks).toContainEqual({name: 'npmrc-mode', status: 'passed'});
+		}
 	});
 
 	it('resolves a relative parent directory against the MCP working directory', async () => {
@@ -206,7 +249,7 @@ describe('prepare_oblique_project tool', () => {
 		expect(result).toMatchObject({
 			status: 'ready',
 			versions: {oblique: '15.4.4', obliqueCli: '15.4.4'},
-			command: {args: ['--yes', '@oblique/cli@15.4.4', 'new', 'employee-portal']},
+			command: {args: ['--yes', '@oblique/cli@15.4.4', 'new', 'employee-portal', '--npmrc']},
 		});
 	});
 
@@ -227,6 +270,7 @@ describe('prepare_oblique_project tool', () => {
 			expect(result).toMatchObject({
 				checks: [
 					{name: 'project-name', status: 'passed'},
+					{name: 'npmrc-mode', status: 'passed'},
 					{name: 'oblique-version', status: 'failed'},
 				],
 			});
@@ -325,7 +369,7 @@ describe('prepare_oblique_project tool', () => {
 		expect(JSON.stringify(result)).not.toContain('Denied');
 	});
 
-	it('returns deterministic plans for identical inputs and performs only stat reads', async () => {
+	it('returns distinct opaque plans for identical inputs and performs only stat reads', async () => {
 		const fileSystem = createFileSystem(['/workspace']);
 		const environment: ProjectPreparationEnvironment = {
 			workingDirectory: '/workspace',
@@ -334,10 +378,30 @@ describe('prepare_oblique_project tool', () => {
 		};
 		const input = {projectName: 'employee-portal'};
 
-		await expect(prepareObliqueProject(input, packageMetadata, environment)).resolves.toEqual(
-			await prepareObliqueProject(input, packageMetadata, environment)
-		);
+		const first = await prepareObliqueProject(input, packageMetadata, environment);
+		const second = await prepareObliqueProject(input, packageMetadata, environment);
+
+		if (first.status === 'ready' && second.status === 'ready') {
+			expect(first.planId).not.toBe(second.planId);
+			expect(first.planId).toMatch(/^[0-9a-f-]{36}$/iu);
+			expect({...first, planId: undefined}).toEqual({...second, planId: undefined});
+		} else {
+			fail('Expected both preparations to be ready.');
+		}
 		expect(fileSystem.stat).toHaveBeenCalledTimes(4);
+	});
+
+	it('returns a stable blocking result when the bounded plan store is full', async () => {
+		const result = await prepareObliqueProjectImplementation(
+			{projectName: 'employee-portal', npmrcMode: 'federal'},
+			packageMetadata,
+			{
+				...createEnvironment(['/workspace']),
+				planStore: new ObliqueProjectPlanStore({now: () => 0, ttlMilliseconds: 1_000, maximumPlans: 0}),
+			}
+		);
+
+		expect(result).toMatchObject({status: 'blocked', code: 'PLAN_STORE_FULL', failedCheck: 'plan-store'});
 	});
 
 	it('contains no subprocess or filesystem write API in production planning modules', async () => {
@@ -353,7 +417,7 @@ describe('prepare_oblique_project tool', () => {
 		}
 	});
 
-	it('registers a read-only MCP tool with explicit non-execution annotations', async () => {
+	it('registers a read-only but non-idempotent MCP tool', async () => {
 		const registerTool = jest.fn();
 		registerPrepareObliqueProjectTool({registerTool} as unknown as McpServer, async () => packageMetadata);
 		registerPrepareObliqueProjectTool(
@@ -370,17 +434,20 @@ describe('prepare_oblique_project tool', () => {
 				annotations: {
 					readOnlyHint: true,
 					destructiveHint: false,
-					idempotentHint: true,
+					idempotentHint: false,
 					openWorldHint: false,
 				},
 			}),
 			expect.any(Function)
 		);
-		const callback = registerTool.mock.calls[1]?.[2] as (input: {projectName: string}) => Promise<unknown>;
-		await expect(callback({projectName: 'employee-portal'})).resolves.toMatchObject({
+		const callback = registerTool.mock.calls[1]?.[2] as (input: {
+			projectName: string;
+			npmrcMode: 'federal';
+		}) => Promise<unknown>;
+		await expect(callback({projectName: 'employee-portal', npmrcMode: 'federal'})).resolves.toMatchObject({
 			structuredContent: {status: 'ready', executionPerformed: false},
 		});
-		await expect(callback({projectName: 'Employee Portal'})).resolves.toMatchObject({
+		await expect(callback({projectName: 'Employee Portal', npmrcMode: 'federal'})).resolves.toMatchObject({
 			isError: true,
 			structuredContent: {status: 'blocked', code: 'INVALID_PROJECT_NAME'},
 		});

@@ -23,6 +23,8 @@ import {registerObliqueStylesTool} from './tools/check-oblique-styles.js';
 import {registerObliqueTemplateTool} from './tools/check-oblique-template.js';
 import {registerObliqueTemplateApiTool} from './tools/get-oblique-template-api.js';
 import {registerPrepareObliqueProjectTool} from './tools/prepare-oblique-project.js';
+import {registerCreateObliqueProjectTool} from './tools/create-oblique-project.js';
+import {ObliqueProjectPlanStore} from './tools/oblique-project-plan.store.js';
 import {getObliqueComponent} from './tools/get-oblique-component.js';
 import {type SdsExamplesClient, getObliqueExamples} from './tools/get-oblique-examples.js';
 import {registerObliqueCodeTool} from './tools/check-oblique-code.js';
@@ -167,6 +169,7 @@ export function createObliqueMcpServer(options: CreateServerOptions = {}): McpSe
 	const migrationReader = options.migrationReader ?? runtimeDataReaders.migrationReader;
 	const designTokenReader = options.designTokenReader ?? runtimeDataReaders.designTokenReader;
 	const packageMetadataReader = options.readPackageMetadata ?? runtimeDataReaders.readPackageMetadata;
+	const projectPlanStore = new ObliqueProjectPlanStore();
 	const server = new McpServer({name: 'oblique-mcp', version: '0.1.0'});
 	registerVersionTool(server, packageMetadataReader);
 	registerComponentTool(server, directusClient, packageMetadataReader);
@@ -179,7 +182,8 @@ export function createObliqueMcpServer(options: CreateServerOptions = {}): McpSe
 	registerObliqueStylesTool(server, designTokenReader);
 	registerObliqueTemplateTool(server, publicApiReader, packageMetadataReader);
 	registerObliqueTemplateApiTool(server, publicApiReader, packageMetadataReader);
-	registerPrepareObliqueProjectTool(server, packageMetadataReader);
+	registerPrepareObliqueProjectTool(server, packageMetadataReader, {planStore: projectPlanStore});
+	registerCreateObliqueProjectTool(server, packageMetadataReader, {planStore: projectPlanStore});
 	return server;
 }
 

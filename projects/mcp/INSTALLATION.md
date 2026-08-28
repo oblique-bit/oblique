@@ -230,7 +230,7 @@ No `cwd` setting or shell wrapper is required for the embedded runtime data. No 
 
 ## Verify the connection
 
-A successful `tools/list` currently exposes exactly these 12 tools:
+A successful `tools/list` currently exposes exactly these 13 tools:
 
 1. `get_oblique_version`
 2. `get_oblique_component`
@@ -244,18 +244,28 @@ A successful `tools/list` currently exposes exactly these 12 tools:
 10. `check_oblique_template`
 11. `get_oblique_template_api`
 12. `prepare_oblique_project`
+13. `create_oblique_project`
 
 These client-agnostic prompts describe expected diagnostic behavior; a model might choose a different tool or ask a clarifying question.
 
 - “Use Oblique MCP to report the embedded Oblique version.” Expected tool: `get_oblique_version`.
 - “Show the public template API for ObDateComponent.” Expected tool: `get_oblique_template_api`.
 - “Validate this template: `<ob-date [date]=\"date\"></ob-date>`.” Expected tool: `check_oblique_template`.
-- “Prepare a new `employee-portal` project in `/workspace`.” Expected tool: `prepare_oblique_project`. The result is
-  a read-only plan that requires confirmation and does not execute the displayed command. For example, an invalid
-  `Employee Portal` name is blocked with `INVALID_PROJECT_NAME`. Phase 14 will add controlled execution only after an
-  explicit developer confirmation. The optional `obliqueVersion` must equal the embedded Oblique version; other
-  semantic versions are blocked with `UNSUPPORTED_OBLIQUE_VERSION` and an `oblique-version` failed check because their
-  compatibility metadata is unavailable.
+- “Prepare a new federal `employee-portal` project in `/workspace`.” Expected tool:
+  `prepare_oblique_project` with `{ "projectName": "employee-portal", "parentDirectory": "/workspace", "npmrcMode":
+"federal" }`. It returns a fresh opaque plan ID, `CREATE employee-portal` confirmation phrase, and a canonical argument array
+  ending in `--npmrc`; use `"external"` for `--no-npmrc`. Missing the mode is blocked with `NPMRC_MODE_REQUIRED`.
+- “Create the prepared project.” Expected tool: `create_oblique_project` with only the plan ID and the exact
+  `CREATE employee-portal` confirmation. It creates files and downloads the pinned CLI package, so enable it only for
+  trusted developers. Plans are single-use and expire after roughly ten minutes; the tool refuses an existing
+  destination, applies a fifteen-minute timeout, and never automatically deletes a partial project. A destination
+  lock blocks a concurrent request without consuming its plan, so it can be retried after the active creation ends.
+
+The implementation uses RxJS internally to coordinate revalidation, child-process completion, cancellation, timeout, and
+cleanup. It deliberately does not use Angular Signals, Angular dependency injection, or Angular runtime APIs: this is a
+headless Node.js MCP server. The external MCP request and response contract is unchanged; only the SDK handler converts
+the final Observable to its required Promise-compatible result. Teardown always releases the destination lock and removes
+the process, timer, and abort listeners.
 
 ## Troubleshooting
 
@@ -270,6 +280,15 @@ These client-agnostic prompts describe expected diagnostic behavior; a model mig
 
 ## Security
 
-Oblique MCP is read-only. It reads embedded official Oblique metadata, queries official Oblique Directus documentation, and accepts submitted source text for static analysis. It does not modify a consumer project, execute submitted Angular/TypeScript/template/style code, expose an HTTP listener, provide shell tools, or scan the working directory through MCP tools.
+Most Oblique MCP tools are read-only: they read embedded official Oblique metadata, query official Oblique Directus
+documentation, or analyze submitted source text. `create_oblique_project` is the explicit exception: it creates files
+only from a validated, unexpired prepared plan and exact confirmation. It executes a pinned CLI without a shell using a
+minimal child environment allowlist for Node/npm, temporary directories, certificates, proxies, and platform path
+resolution; unrelated server secrets are not forwarded or returned. It can download packages and may leave partial
+files, so restrict it to trusted developers. No tool exposes an HTTP listener or scans arbitrary directories.
+On Windows, stopping `npx.cmd` cannot guarantee that every descendant process has stopped; the server deliberately
+does not use a shell or unsafe process-tree wrapper to overstate this guarantee.
+Likewise, another operating-system process can change a path after the final pre-spawn check; canonical-path checks and
+post-creation validation reduce this unavoidable TOCTOU race but cannot eliminate it without platform-specific isolation.
 
 The Node process still runs with the operating-system permissions of the user who launches it. This guide does not make additional sandboxing guarantees.

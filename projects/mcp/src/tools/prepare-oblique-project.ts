@@ -22,13 +22,9 @@ import {
 	getCanonicalDirectory,
 	pathExists,
 } from './prepare-oblique-project.filesystem.js';
-import {
-	getAngularMajor,
-	getVersionFailure,
-	normalizeNodeVersion,
-	supportsNodeVersion,
-	unsafeObliqueCliVersions,
-} from './prepare-oblique-project.version.js';
+import {type NpmrcMode, ObliqueProjectPlanStore} from './oblique-project-plan.store.js';
+import {blocked, getNodeValidatedPlan, passed} from './prepare-oblique-project.result.js';
+import {getVersionFailure, unsafeObliqueCliVersions} from './prepare-oblique-project.version.js';
 
 export {
 	type PrepareObliqueProjectInput,
@@ -48,6 +44,7 @@ export interface ProjectPreparationEnvironment {
 	currentNodeVersion?: string;
 	fileSystem?: ProjectPreparationFileSystem;
 	pathIsInside?: (basePath: string, targetPath: string) => boolean;
+	planStore?: ObliqueProjectPlanStore;
 }
 
 interface PreparedLocation {
@@ -63,16 +60,14 @@ interface DestinationContext {
 	checks: ProjectPreparationCheck[];
 }
 
-interface PlanContext {
-	input: PrepareObliqueProjectInput;
-	obliqueVersion: string;
+interface InputContext {
+	npmrcMode: NpmrcMode;
 	versionInfo: ReturnType<typeof getObliqueVersion>;
-	location: PreparedLocation;
-	checks: ProjectPreparationCheck[];
-	currentNodeVersion: string | undefined;
+	obliqueVersion: string;
 }
 
 const hostFileSystem: ProjectPreparationFileSystem = {stat, realpath};
+const defaultProjectPlanStore = new ObliqueProjectPlanStore();
 
 /** Validates a future project destination and returns an inert CLI plan. It never executes the plan. */
 export async function prepareObliqueProject(
@@ -81,9 +76,38 @@ export async function prepareObliqueProject(
 	environment: ProjectPreparationEnvironment = {}
 ): Promise<PrepareObliqueProjectResult> {
 	const checks: ProjectPreparationCheck[] = [];
+	const validatedInput = getInputContext(input, packageMetadata, checks);
+	if ('status' in validatedInput) {
+		return validatedInput;
+	}
+	const location = await getPreparedLocation(input, environment, checks);
+	if ('status' in location) {
+		return location;
+	}
+	return getNodeValidatedPlan({
+		input,
+		obliqueVersion: validatedInput.obliqueVersion,
+		versionInfo: validatedInput.versionInfo,
+		location,
+		checks,
+		currentNodeVersion: environment.currentNodeVersion,
+		npmrcMode: validatedInput.npmrcMode,
+		planStore: environment.planStore ?? defaultProjectPlanStore,
+	});
+}
+
+function getInputContext(
+	input: PrepareObliqueProjectInput,
+	packageMetadata: PackageMetadata,
+	checks: ProjectPreparationCheck[]
+): InputContext | BlockedProjectPreparation {
 	const nameFailure = getProjectNameFailure(input.projectName, checks);
 	if (nameFailure !== undefined) {
 		return nameFailure;
+	}
+	const npmrcMode = getNpmrcMode(input.npmrcMode, checks);
+	if (typeof npmrcMode !== 'string') {
+		return npmrcMode;
 	}
 	const versionInfo = getObliqueVersion(packageMetadata);
 	const obliqueVersion = input.obliqueVersion ?? versionInfo.obliqueVersion;
@@ -92,18 +116,7 @@ export async function prepareObliqueProject(
 		return blocked({...versionFailure, checks});
 	}
 	checks.push(passed('oblique-version'));
-	const location = await getPreparedLocation(input, environment, checks);
-	if ('status' in location) {
-		return location;
-	}
-	return getNodeValidatedPlan({
-		input,
-		obliqueVersion,
-		versionInfo,
-		location,
-		checks,
-		currentNodeVersion: environment.currentNodeVersion,
-	});
+	return {npmrcMode, versionInfo, obliqueVersion};
 }
 
 export function registerPrepareObliqueProjectTool(
@@ -115,13 +128,13 @@ export function registerPrepareObliqueProjectTool(
 		'prepare_oblique_project',
 		{
 			description:
-				'Prepare a read-only, confirmation-required Oblique CLI project plan. It validates the destination and versions but never creates or modifies a project.',
+				'Prepare a read-only, confirmation-required Oblique CLI project plan. Each successful call creates a fresh short-lived plan but never creates or modifies a project.',
 			inputSchema: prepareObliqueProjectSchema,
 			outputSchema: prepareObliqueProjectResultSchema,
 			annotations: {
 				readOnlyHint: true,
 				destructiveHint: false,
-				idempotentHint: true,
+				idempotentHint: false,
 				openWorldHint: false,
 			},
 		},
@@ -146,6 +159,22 @@ function getProjectNameFailure(
 		code: 'INVALID_PROJECT_NAME',
 		failedCheck: 'project-name',
 		message: 'Project names must use lowercase kebab-case and be at most 64 characters long.',
+		checks,
+	});
+}
+
+function getNpmrcMode(
+	npmrcMode: PrepareObliqueProjectInput['npmrcMode'],
+	checks: ProjectPreparationCheck[]
+): NpmrcMode | BlockedProjectPreparation {
+	if (npmrcMode === 'federal' || npmrcMode === 'external') {
+		checks.push(passed('npmrc-mode'));
+		return npmrcMode;
+	}
+	return blocked({
+		code: 'NPMRC_MODE_REQUIRED',
+		failedCheck: 'npmrc-mode',
+		message: 'Select either the federal or external npmrc mode before preparing a project.',
 		checks,
 	});
 }
@@ -204,47 +233,6 @@ async function getDestination({
 	return {parentDirectory, destinationPath};
 }
 
-function getNodeValidatedPlan({
-	input,
-	obliqueVersion,
-	versionInfo,
-	location,
-	checks,
-	currentNodeVersion,
-}: PlanContext): PrepareObliqueProjectResult {
-	const currentNode = normalizeNodeVersion(currentNodeVersion ?? process.version);
-	if (!supportsNodeVersion(currentNode, versionInfo.nodeRequirement)) {
-		return blocked({
-			code: 'UNSUPPORTED_NODE_VERSION',
-			failedCheck: 'node-version',
-			message: `Node.js ${currentNode} does not meet the Oblique requirement ${versionInfo.nodeRequirement}.`,
-			checks,
-		});
-	}
-	checks.push(passed('node-version'), passed('cli-security'));
-	return ready({input, obliqueVersion, versionInfo, location, checks, currentNodeVersion: currentNode});
-}
-
-function ready(context: PlanContext & {currentNodeVersion: string}): PrepareObliqueProjectResult {
-	const args = ['--yes', `@oblique/cli@${context.obliqueVersion}`, 'new', context.input.projectName];
-	return {
-		status: 'ready',
-		projectName: context.input.projectName,
-		...context.location,
-		versions: {
-			oblique: context.obliqueVersion,
-			obliqueCli: context.obliqueVersion,
-			angular: getAngularMajor(context.versionInfo.angularVersion),
-			nodeRequirement: context.versionInfo.nodeRequirement,
-			currentNode: context.currentNodeVersion,
-		},
-		command: {executable: 'npx', args, display: `npx ${args.join(' ')}`},
-		checks: context.checks,
-		requiresConfirmation: true,
-		executionPerformed: false,
-	};
-}
-
 function getProjectPreparationResponse(result: PrepareObliqueProjectResult): {
 	content: {type: 'text'; text: string}[];
 	structuredContent: PrepareObliqueProjectResult;
@@ -254,31 +242,5 @@ function getProjectPreparationResponse(result: PrepareObliqueProjectResult): {
 		content: [{type: 'text', text: JSON.stringify(result)}],
 		structuredContent: result,
 		...(result.status === 'blocked' ? {isError: true} : {}),
-	};
-}
-
-function passed(name: ProjectPreparationCheck['name']): ProjectPreparationCheck {
-	return {name, status: 'passed'};
-}
-
-function blocked({
-	code,
-	failedCheck,
-	message,
-	checks,
-}: {
-	code: BlockedProjectPreparation['code'];
-	failedCheck: BlockedProjectPreparation['failedCheck'];
-	message: string;
-	checks: ProjectPreparationCheck[];
-}): BlockedProjectPreparation {
-	return {
-		status: 'blocked',
-		code,
-		message,
-		failedCheck,
-		checks: [...checks, {name: failedCheck, status: 'failed'}],
-		requiresConfirmation: false,
-		executionPerformed: false,
 	};
 }

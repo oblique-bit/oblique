@@ -47,7 +47,7 @@ describe('packaged runtime data', () => {
 		expect(examples).not.toContain(undefined);
 	});
 
-	it('keeps the twelve registered MCP tools', () => {
+	it('keeps the thirteen registered MCP tools', () => {
 		const serverSource = readFile(resolve(repositoryRoot, 'projects/mcp/src/server.ts'), 'utf8');
 
 		return expect(serverSource).resolves.toMatch(/registerTool\(/gu);
@@ -68,9 +68,10 @@ describe('packaged runtime data', () => {
 			'registerObliqueTemplateTool',
 			'registerObliqueTemplateApiTool',
 			'registerPrepareObliqueProjectTool',
+			'registerCreateObliqueProjectTool',
 		];
 
-		expect(toolRegistrationCalls).toHaveLength(12);
+		expect(toolRegistrationCalls).toHaveLength(13);
 		for (const toolRegistrationCall of toolRegistrationCalls) {
 			expect(serverSource).toContain(`${toolRegistrationCall}(server`);
 		}

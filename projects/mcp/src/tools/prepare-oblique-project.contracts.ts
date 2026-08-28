@@ -11,6 +11,7 @@ export const prepareObliqueProjectSchema = schema
 		projectName: schema.string(),
 		parentDirectory: schema.string().optional(),
 		obliqueVersion: schema.string().optional(),
+		npmrcMode: schema.string().optional(),
 	})
 	.strict();
 
@@ -22,6 +23,8 @@ const checkSchema = schema.object({
 		'destination',
 		'node-version',
 		'cli-security',
+		'npmrc-mode',
+		'plan-store',
 	]),
 	status: schema.enum(['passed', 'failed']),
 });
@@ -49,6 +52,9 @@ export const prepareObliqueProjectResultSchema = schema.union([
 		versions: versionsSchema,
 		command: commandSchema,
 		checks: schema.array(checkSchema),
+		planId: schema.string(),
+		expiresInSeconds: schema.number().int().positive(),
+		confirmationPhrase: schema.string(),
 		requiresConfirmation: schema.literal(true),
 		executionPerformed: schema.literal(false),
 	}),
@@ -63,6 +69,8 @@ export const prepareObliqueProjectResultSchema = schema.union([
 			'UNSAFE_CLI_VERSION',
 			'UNSUPPORTED_OBLIQUE_VERSION',
 			'PATH_OUTSIDE_ALLOWED_DIRECTORY',
+			'NPMRC_MODE_REQUIRED',
+			'PLAN_STORE_FULL',
 		]),
 		message: schema.string(),
 		failedCheck: schema.enum([
@@ -72,6 +80,8 @@ export const prepareObliqueProjectResultSchema = schema.union([
 			'destination',
 			'node-version',
 			'cli-security',
+			'npmrc-mode',
+			'plan-store',
 		]),
 		checks: schema.array(checkSchema),
 		requiresConfirmation: schema.literal(false),
