@@ -44,6 +44,12 @@ export class PostBuild extends StaticScript {
 					path.relative(src, file)
 				)
 			)
+			.copyProjectFiles(
+				src,
+				...Files.list(getAbsolutePath(`projects/${PostBuild.projectName}/src/schematics/add-oblique/templates`)).map(
+					file => path.relative(src, file)
+				)
+			)
 			.finalize();
 		Files.writeJson(getAbsolutePath(`dist/${PostBuild.projectName}/logger/package.json`), {type: 'commonjs'});
 	}
