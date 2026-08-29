@@ -144,7 +144,7 @@ export function execute(config: ObCommandConfig): void {
 			return executeNgCommand(['new', config.projectName], config.options, config.spawnSyncOptions);
 		case 'ngAdd':
 			return executeNgCommand(
-				['add', getVersionedDependency(config.dependency)],
+				['add', getVersionedDependency(config.dependency), '--skip-confirmation'],
 				config.options,
 				config.spawnSyncOptions
 			);
@@ -223,7 +223,11 @@ function isNodeVersionSupported(minimumSupportedNodeVersion: string): boolean {
 
 function executeNgCommand(args: string[], options: ObOptions = {}, spawnSyncOptions: SpawnSyncOptions = {}): void {
 	const parsedOptions = Object.entries<string | boolean>(options).map(([key, value]) => `--${buildOption(key, value)}`);
-	executeCommand('npx', [getVersionedDependency('@angular/cli'), ...args, ...parsedOptions], spawnSyncOptions);
+	executeCommand(
+		'npm',
+		['exec', '--yes', '--package', getVersionedDependency('@angular/cli'), '--', 'ng', ...args, ...parsedOptions],
+		spawnSyncOptions
+	);
 }
 
 function executeCommand(command: string, args: string[], spawnSyncOptions: SpawnSyncOptions = {}): void {
@@ -256,11 +260,13 @@ function buildOSSafeCommand(command: string): string {
  */
 function spawnCommand(command: string, args: string[], options: SpawnSyncOptions): string {
 	const osSafeCommand = buildOSSafeCommand(command);
+	const safeOptions = {...options};
+	delete safeOptions.shell;
 
 	const result = spawnSync(osSafeCommand, args, {
 		encoding: 'utf8',
-		shell: isWindows(),
-		...options,
+		...safeOptions,
+		shell: false,
 	});
 
 	// Failed to spawn the process

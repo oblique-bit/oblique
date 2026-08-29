@@ -18,7 +18,15 @@ import {
 
 const request: ProjectExecutionRequest = {
 	executable: 'npx',
-	args: ['--yes', '@oblique/cli@15.4.4', 'new', 'employee-portal', '--npmrc'],
+	args: [
+		'--yes',
+		'@oblique/cli@15.4.4',
+		'new',
+		'employee-portal',
+		'--applicationOperator=Federal Test Office',
+		'--contact=accessibility@example.test',
+		'--npmrc',
+	],
 	cwd: '/workspace',
 	environment: {PATH: '/bin'},
 };

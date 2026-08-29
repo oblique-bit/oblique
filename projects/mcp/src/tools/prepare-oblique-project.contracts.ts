@@ -9,6 +9,8 @@ import {z as schema} from 'zod/v4';
 export const prepareObliqueProjectSchema = schema
 	.object({
 		projectName: schema.string(),
+		applicationOperator: schema.string().min(1),
+		contact: schema.string().min(1),
 		parentDirectory: schema.string().optional(),
 		obliqueVersion: schema.string().optional(),
 		npmrcMode: schema.string().optional(),
@@ -47,6 +49,8 @@ export const prepareObliqueProjectResultSchema = schema.union([
 	schema.object({
 		status: schema.literal('ready'),
 		projectName: schema.string(),
+		applicationOperator: schema.string(),
+		contact: schema.string(),
 		parentDirectory: schema.string(),
 		destinationPath: schema.string(),
 		versions: versionsSchema,

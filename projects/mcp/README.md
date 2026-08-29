@@ -117,8 +117,9 @@ the result so clients can avoid them. Only symbols reachable from `projects/obli
 
 The server intentionally exposes no MCP resources, prompts or HTTP transport.
 
-`prepare_oblique_project` accepts `projectName`, required `npmrcMode`, optional `parentDirectory`, and optional
-`obliqueVersion`. It only reads the selected parent directory and destination to create a plan; it never starts
+`prepare_oblique_project` accepts `projectName`, required `applicationOperator`, required `contact`, required
+`npmrcMode`, optional `parentDirectory`, and optional `obliqueVersion`. It only reads the selected parent directory and
+destination to create a plan; it never starts
 `npx`, the Oblique CLI, Angular CLI, or another subprocess, and never creates or modifies a project. The canonical
 command is an argument array, not a shell command. It rejects unsafe project names, existing destinations, unsupported
 Node.js versions, invalid version aliases/ranges, missing npmrc mode, and known unsafe CLI versions `15.4.0` and

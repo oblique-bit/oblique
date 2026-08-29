@@ -9,7 +9,6 @@ import {
 	execute,
 	getHelpText,
 	getVersionedDependency,
-	isWindows,
 	minimumSupportedVersion,
 	obExamples,
 	optionDescriptions,
@@ -310,11 +309,11 @@ Examples of use:
 				{text: 'with empty', options: {}},
 			])('%text options object', ({options}) => {
 				execute({name: 'ngNew', projectName: 'project', options});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'new', 'project'], {
-					encoding: 'utf8',
-					shell: isWindows(),
-					stdio: 'inherit',
-				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'new', 'project'],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
+				);
 			});
 
 			test('with filled options object', () => {
@@ -324,29 +323,40 @@ Examples of use:
 					options: {truthyFlag: true, falsyFlag: false, option: 'value'},
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
-					'npx',
-					['@angular/cli@^21', 'new', 'project', '--truthyFlag', '--no-falsyFlag', '--option=value'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					'npm',
+					[
+						'exec',
+						'--yes',
+						'--package',
+						'@angular/cli@^21',
+						'--',
+						'ng',
+						'new',
+						'project',
+						'--truthyFlag',
+						'--no-falsyFlag',
+						'--option=value',
+					],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
 			test('with an additional spawnSyncOptions', () => {
 				execute({name: 'ngNew', projectName: 'project', spawnSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'new', 'project'], {
-					cwd: 'test',
-					encoding: 'utf8',
-					shell: isWindows(),
-					stdio: 'inherit',
-				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'new', 'project'],
+					{cwd: 'test', encoding: 'utf8', shell: false, stdio: 'inherit'}
+				);
 			});
 
 			test('with an overwriting spawnSyncOptions', () => {
 				execute({name: 'ngNew', projectName: 'project', spawnSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'new', 'project'], {
-					encoding: 'utf8',
-					shell: isWindows(),
-					stdio: 'pipe',
-				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'new', 'project'],
+					{encoding: 'utf8', shell: false, stdio: 'pipe'}
+				);
 			});
 		});
 
@@ -356,39 +366,86 @@ Examples of use:
 				{text: 'with empty', options: {}},
 			])('%text options object', ({options}) => {
 				execute({name: 'ngAdd', dependency: 'jest', options});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'add', 'jest@30'], {
-					encoding: 'utf8',
-					shell: isWindows(),
-					stdio: 'inherit',
-				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'add', 'jest@30', '--skip-confirmation'],
+					{
+						encoding: 'utf8',
+						shell: false,
+						stdio: 'inherit',
+					}
+				);
 			});
 
 			test('with filled options object', () => {
 				execute({name: 'ngAdd', dependency: 'jest', options: {truthyFlag: true, falsyFlag: false, option: 'value'}});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
-					'npx',
-					['@angular/cli@^21', 'add', 'jest@30', '--truthyFlag', '--no-falsyFlag', '--option=value'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					'npm',
+					[
+						'exec',
+						'--yes',
+						'--package',
+						'@angular/cli@^21',
+						'--',
+						'ng',
+						'add',
+						'jest@30',
+						'--skip-confirmation',
+						'--truthyFlag',
+						'--no-falsyFlag',
+						'--option=value',
+					],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
+				);
+			});
+
+			test('keeps shell metacharacters inside one argument', () => {
+				const specialValue = 'Federal Test Office; echo hacked && $(touch injected)';
+				execute({name: 'ngAdd', dependency: 'jest', options: {applicationOperator: specialValue}});
+
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					[
+						'exec',
+						'--yes',
+						'--package',
+						'@angular/cli@^21',
+						'--',
+						'ng',
+						'add',
+						'jest@30',
+						'--skip-confirmation',
+						`--applicationOperator=${specialValue}`,
+					],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
 			test('with an additional spawnSyncOptions', () => {
 				execute({name: 'ngAdd', dependency: 'jest', spawnSyncOptions: {cwd: 'test'}});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'add', 'jest@30'], {
-					cwd: 'test',
-					encoding: 'utf8',
-					shell: isWindows(),
-					stdio: 'inherit',
-				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'add', 'jest@30', '--skip-confirmation'],
+					{
+						cwd: 'test',
+						encoding: 'utf8',
+						shell: false,
+						stdio: 'inherit',
+					}
+				);
 			});
 
 			test('with an overwriting spawnSyncOptions', () => {
 				execute({name: 'ngAdd', dependency: 'jest', spawnSyncOptions: {stdio: 'pipe'}});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'add', 'jest@30'], {
-					encoding: 'utf8',
-					shell: isWindows(),
-					stdio: 'pipe',
-				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'add', 'jest@30', '--skip-confirmation'],
+					{
+						encoding: 'utf8',
+						shell: false,
+						stdio: 'pipe',
+					}
+				);
 			});
 		});
 
@@ -396,33 +453,33 @@ Examples of use:
 			test('with a single dependency', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], angularDependencies: ['@angular/cli']});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
-					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@21'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'update', 'jest@30', '@angular/cli@21'],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 			test('with a single dependency', () => {
 				execute({name: 'ngUpdate', dependencies: [], angularDependencies: ['jest']});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'update', 'jest'], {
-					encoding: 'utf8',
-					shell: isWindows(),
-					stdio: 'inherit',
-				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'update', 'jest'],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
+				);
 			});
 			test('with a single dependency', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest'], angularDependencies: ['jest']});
-				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npx', ['@angular/cli@^21', 'update', 'jest@30'], {
-					encoding: 'utf8',
-					shell: isWindows(),
-					stdio: 'inherit',
-				});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'update', 'jest@30'],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
+				);
 			});
 			test('without angularDependenciy in angularDependencies ', () => {
 				execute({name: 'ngUpdate', dependencies: ['jest', '@angular/cli'], angularDependencies: []});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
-					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@^21'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'update', 'jest@30', '@angular/cli@^21'],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 			test('with multiple dependencies', () => {
@@ -432,9 +489,20 @@ Examples of use:
 					angularDependencies: ['@angular/cdk'],
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
-					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@types/jest@30', '@angular/cdk@21'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					'npm',
+					[
+						'exec',
+						'--yes',
+						'--package',
+						'@angular/cli@^21',
+						'--',
+						'ng',
+						'update',
+						'jest@30',
+						'@types/jest@30',
+						'@angular/cdk@21',
+					],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
@@ -446,9 +514,21 @@ Examples of use:
 					options: {force: true},
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
-					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@21', '@angular/core@21', '--force'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					'npm',
+					[
+						'exec',
+						'--yes',
+						'--package',
+						'@angular/cli@^21',
+						'--',
+						'ng',
+						'update',
+						'jest@30',
+						'@angular/cli@21',
+						'@angular/core@21',
+						'--force',
+					],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
@@ -460,9 +540,20 @@ Examples of use:
 					options: {'allow-dirty': false},
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
-					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@21', '--no-allow-dirty'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					'npm',
+					[
+						'exec',
+						'--yes',
+						'--package',
+						'@angular/cli@^21',
+						'--',
+						'ng',
+						'update',
+						'jest@30',
+						'@angular/cli@21',
+						'--no-allow-dirty',
+					],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
@@ -474,9 +565,20 @@ Examples of use:
 					spawnSyncOptions: {cwd: 'test'},
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
-					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@^21', '@angular/common@21'],
-					{cwd: 'test', encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					'npm',
+					[
+						'exec',
+						'--yes',
+						'--package',
+						'@angular/cli@^21',
+						'--',
+						'ng',
+						'update',
+						'jest@30',
+						'@angular/cli@^21',
+						'@angular/common@21',
+					],
+					{cwd: 'test', encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
@@ -488,9 +590,9 @@ Examples of use:
 					spawnSyncOptions: {stdio: 'pipe'},
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
-					'npx',
-					['@angular/cli@^21', 'update', 'jest@30', '@angular/cli@21'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'pipe'}
+					'npm',
+					['exec', '--yes', '--package', '@angular/cli@^21', '--', 'ng', 'update', 'jest@30', '@angular/cli@21'],
+					{encoding: 'utf8', shell: false, stdio: 'pipe'}
 				);
 			});
 		});
@@ -501,7 +603,7 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npm',
 					['install', 'jest@30', '--audit=false', '--fund=false'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
@@ -510,7 +612,7 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npm',
 					['install', 'jest@30', '@types/jest@30', '--audit=false', '--fund=false'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
@@ -519,7 +621,7 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npm',
 					['install', 'jest@30', '--audit=false', '--fund=false'],
-					{cwd: 'test', encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					{cwd: 'test', encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
@@ -528,7 +630,16 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npm',
 					['install', 'jest@30', '--audit=false', '--fund=false'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'pipe'}
+					{encoding: 'utf8', shell: false, stdio: 'pipe'}
+				);
+			});
+
+			test('does not allow spawnSyncOptions to enable shell execution', () => {
+				execute({name: 'npmInstall', dependencies: ['jest'], spawnSyncOptions: {shell: true}});
+				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
+					'npm',
+					['install', 'jest@30', '--audit=false', '--fund=false'],
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 		});
@@ -539,7 +650,7 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npm',
 					['update', '--save', '--audit=false', '--fund=false'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					{encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
@@ -548,7 +659,7 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npm',
 					['update', '--save', '--audit=false', '--fund=false'],
-					{cwd: 'test', encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
+					{cwd: 'test', encoding: 'utf8', shell: false, stdio: 'inherit'}
 				);
 			});
 
@@ -557,7 +668,7 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npm',
 					['update', '--save', '--audit=false', '--fund=false'],
-					{encoding: 'utf8', shell: isWindows(), stdio: 'pipe'}
+					{encoding: 'utf8', shell: false, stdio: 'pipe'}
 				);
 			});
 		});
@@ -567,7 +678,7 @@ Examples of use:
 				execute({name: 'npmOutdated'});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npm', ['outdated'], {
 					encoding: 'utf8',
-					shell: isWindows(),
+					shell: false,
 					stdio: 'inherit',
 				});
 			});
@@ -577,7 +688,7 @@ Examples of use:
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npm', ['outdated'], {
 					cwd: 'test',
 					encoding: 'utf8',
-					shell: isWindows(),
+					shell: false,
 					stdio: 'inherit',
 				});
 			});
@@ -586,7 +697,7 @@ Examples of use:
 				execute({name: 'npmOutdated', spawnSyncOptions: {stdio: 'pipe'}});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith('npm', ['outdated'], {
 					encoding: 'utf8',
-					shell: isWindows(),
+					shell: false,
 					stdio: 'pipe',
 				});
 			});

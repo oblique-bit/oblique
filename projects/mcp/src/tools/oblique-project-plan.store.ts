@@ -18,6 +18,8 @@ export type NpmrcMode = 'federal' | 'external';
 
 export interface ObliqueProjectPlan {
 	projectName: string;
+	applicationOperator: string;
+	contact: string;
 	parentDirectory: string;
 	destinationPath: string;
 	obliqueVersion: string;

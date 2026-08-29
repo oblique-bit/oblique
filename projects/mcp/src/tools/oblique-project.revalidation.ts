@@ -104,6 +104,8 @@ function getExpectedArgs(plan: ObliqueProjectPlan): string[] {
 		`@oblique/cli@${plan.obliqueVersion}`,
 		'new',
 		plan.projectName,
+		`--applicationOperator=${plan.applicationOperator}`,
+		`--contact=${plan.contact}`,
 		plan.npmrcMode === 'federal' ? '--npmrc' : '--no-npmrc',
 	];
 }

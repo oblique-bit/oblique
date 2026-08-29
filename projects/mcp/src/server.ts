@@ -41,6 +41,7 @@ const componentSchema = schema.object({
 
 const defaultSearchLimit = 10;
 const maximumSearchLimit = 50;
+const executableStdioKeepAliveMs = 2_147_483_647;
 
 const searchSchema = schema.object({
 	query: schema.string().trim().min(1),
@@ -323,7 +324,15 @@ async function getCurrentMajorVersion(packageMetadataReader: () => Promise<Packa
 }
 
 if (isExecutableEntryPoint()) {
-	serveStdio(() => createObliqueMcpServer());
+	const stdioHandle = serveStdio(() => createObliqueMcpServer());
+	const keepAlive = setInterval(() => undefined, executableStdioKeepAliveMs);
+	const close = (): void => {
+		clearInterval(keepAlive);
+		void stdioHandle.close();
+	};
+	process.stdin.once('end', close);
+	process.stdin.once('close', close);
+	process.stdin.resume();
 }
 
 function isExecutableEntryPoint(): boolean {

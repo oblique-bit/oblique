@@ -10,6 +10,8 @@ import type {ObliqueProjectPlan} from './oblique-project-plan.store.js';
 
 const plan: ObliqueProjectPlan = {
 	projectName: 'employee-portal',
+	applicationOperator: 'Federal Test Office',
+	contact: 'accessibility@example.test',
 	parentDirectory: '/workspace',
 	destinationPath: '/workspace/employee-portal',
 	obliqueVersion: '15.4.4',
@@ -18,7 +20,15 @@ const plan: ObliqueProjectPlan = {
 	nodeRequirement: '>=22.12.0',
 	npmrcMode: 'external',
 	executable: 'npx',
-	args: ['--yes', '@oblique/cli@15.4.4', 'new', 'employee-portal', '--no-npmrc'],
+	args: [
+		'--yes',
+		'@oblique/cli@15.4.4',
+		'new',
+		'employee-portal',
+		'--applicationOperator=Federal Test Office',
+		'--contact=accessibility@example.test',
+		'--no-npmrc',
+	],
 };
 
 describe('validateCreatedObliqueProject', () => {

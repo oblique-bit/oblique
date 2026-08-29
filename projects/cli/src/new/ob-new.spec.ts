@@ -3,7 +3,7 @@ import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {spawnSync} from 'child_process';
 import {obNewConfig} from './ob-new.model';
-import {currentVersions, isWindows, version} from '../utils/cli-utils';
+import {currentVersions, version} from '../utils/cli-utils';
 import {createObNewCommand} from './ob-new';
 
 const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
@@ -14,11 +14,17 @@ describe('Ob new command', () => {
 
 	function buildNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return {
-			command: 'npx',
+			command: 'npm',
 			args: [
+				'exec',
+				'--yes',
+				'--package',
 				`@angular/cli@${currentVersions['@angular/cli']}`,
+				'--',
+				'ng',
 				'add',
 				`@oblique/oblique@${currentVersions['@oblique/oblique']}`,
+				'--skip-confirmation',
 				...options,
 			],
 		};
@@ -27,6 +33,7 @@ describe('Ob new command', () => {
 	function buildDefaultNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return buildNgAddCommand([
 			`--title=${projectName}`,
+			'--no-hasLanguageInUrl',
 			'--locales=de-CH fr-CH it-CH',
 			'--environments=local dev ref test abn prod',
 			'--prefix=app',
@@ -232,12 +239,17 @@ describe('Ob new command', () => {
 			});
 
 			describe('handleObNewActions spawnSync calls', () => {
-				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`, () => {
+				test(`should call npm exec @angular/cli@${currentVersions['@angular/cli']} ng new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`, () => {
 					expect(spawnSync).toHaveBeenNthCalledWith(
 						1,
-						'npx',
+						'npm',
 						[
+							'exec',
+							'--yes',
+							'--package',
 							`@angular/cli@${currentVersions['@angular/cli']}`,
+							'--',
+							'ng',
 							'new',
 							projectName,
 							'--no-standalone',
@@ -247,7 +259,7 @@ describe('Ob new command', () => {
 							'--style=scss',
 							'--prefix=app',
 						],
-						{stdio: 'inherit', encoding: 'utf8', shell: isWindows()}
+						{stdio: 'inherit', encoding: 'utf8', shell: false}
 					);
 				});
 
@@ -266,7 +278,7 @@ describe('Ob new command', () => {
 							cwd: `${process.cwd()}/${projectName}`,
 							stdio: 'inherit',
 							encoding: 'utf8',
-							shell: isWindows(),
+							shell: false,
 						}
 					);
 				});
@@ -277,7 +289,7 @@ describe('Ob new command', () => {
 						cwd: `${process.cwd()}/${projectName}`,
 						stdio: 'inherit',
 						encoding: 'utf8',
-						shell: isWindows(),
+						shell: false,
 					});
 				});
 			});
@@ -400,7 +412,7 @@ describe('Ob new command', () => {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
-					shell: isWindows(),
+					shell: false,
 				});
 			});
 
@@ -444,7 +456,7 @@ describe('Ob new command', () => {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
-					shell: isWindows(),
+					shell: false,
 				});
 			});
 
@@ -456,7 +468,9 @@ describe('Ob new command', () => {
 		describe('with error in ', () => {
 			const errorMessage = 'bad bad error';
 			beforeAll(() => {
-				jest.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
+				jest.spyOn(process, 'exit').mockImplementation((() => {
+					throw new Error('process.exit called');
+				}) as unknown as (code?: number) => never);
 				jest
 					.spyOn(nodeChildProcess, 'spawnSync')
 					.mockImplementationOnce(() => {
@@ -481,14 +495,22 @@ describe('Ob new command', () => {
 						};
 					});
 				const obNewCommand = createObNewCommand();
-				parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
+				try {
+					parsedObNewCommand = obNewCommand.parse([projectName], {from: 'user'});
+				} catch {
+					// expected: process.exit is mocked to throw
+				}
 			});
 
 			test(`should throw error`, () => {
 				expect(console.error).toHaveBeenCalledWith(
 					'Installation failed: ',
-					Error(`Failed to execute 'npx': ${errorMessage}`)
+					Error(`Failed to execute 'npm': ${errorMessage}`)
 				);
+			});
+
+			test('should exit with an error code', () => {
+				expect(process.exit).toHaveBeenCalledWith(1);
 			});
 		});
 	});

@@ -80,6 +80,8 @@ function ready(context: PlanContext & {currentNodeVersion: string}): PrepareObli
 	return {
 		status: 'ready',
 		projectName: context.input.projectName,
+		applicationOperator: context.input.applicationOperator,
+		contact: context.input.contact,
 		...context.location,
 		versions: {
 			oblique: context.obliqueVersion,
@@ -101,6 +103,8 @@ function ready(context: PlanContext & {currentNodeVersion: string}): PrepareObli
 function storePlan(context: PlanContext, args: string[]): PlanPutResult {
 	return context.planStore.put({
 		projectName: context.input.projectName,
+		applicationOperator: context.input.applicationOperator,
+		contact: context.input.contact,
 		parentDirectory: context.location.parentDirectory,
 		destinationPath: context.location.destinationPath,
 		obliqueVersion: context.obliqueVersion,
@@ -119,6 +123,8 @@ function getArguments(context: PlanContext): string[] {
 		`@oblique/cli@${context.obliqueVersion}`,
 		'new',
 		context.input.projectName,
+		`--applicationOperator=${context.input.applicationOperator}`,
+		`--contact=${context.input.contact}`,
 		context.npmrcMode === 'federal' ? '--npmrc' : '--no-npmrc',
 	];
 }

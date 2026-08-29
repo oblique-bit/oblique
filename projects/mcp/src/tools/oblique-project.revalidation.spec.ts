@@ -90,6 +90,8 @@ function getPlan(
 ): ObliqueProjectPlan {
 	return {
 		projectName,
+		applicationOperator: 'Federal Test Office',
+		contact: 'accessibility@example.test',
 		parentDirectory,
 		destinationPath,
 		obliqueVersion: '15.4.4',
@@ -98,6 +100,14 @@ function getPlan(
 		nodeRequirement: '>=22.12.0',
 		npmrcMode: 'federal',
 		executable: 'npx',
-		args: ['--yes', '@oblique/cli@15.4.4', 'new', projectName, '--npmrc'],
+		args: [
+			'--yes',
+			'@oblique/cli@15.4.4',
+			'new',
+			projectName,
+			'--applicationOperator=Federal Test Office',
+			'--contact=accessibility@example.test',
+			'--npmrc',
+		],
 	};
 }

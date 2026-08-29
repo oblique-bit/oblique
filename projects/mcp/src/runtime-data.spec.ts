@@ -53,6 +53,16 @@ describe('packaged runtime data', () => {
 		return expect(serverSource).resolves.toMatch(/registerTool\(/gu);
 	});
 
+	it('keeps the executable stdio server alive after attaching the transport', async () => {
+		const serverSource = await readFile(resolve(repositoryRoot, 'projects/mcp/src/server.ts'), 'utf8');
+
+		expect(serverSource).toContain('const stdioHandle = serveStdio(() => createObliqueMcpServer());');
+		expect(serverSource).toContain('const keepAlive = setInterval(() => undefined, executableStdioKeepAliveMs);');
+		expect(serverSource).toContain("process.stdin.once('end', close);");
+		expect(serverSource).toContain("process.stdin.once('close', close);");
+		expect(serverSource).toContain('process.stdin.resume();');
+	});
+
 	it('wires the server defaults to one runtime-data reader factory without a cwd root', async () => {
 		const serverSource = await readFile(resolve(repositoryRoot, 'projects/mcp/src/server.ts'), 'utf8');
 		const toolRegistrationCalls = [

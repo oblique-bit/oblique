@@ -252,9 +252,10 @@ These client-agnostic prompts describe expected diagnostic behavior; a model mig
 - “Show the public template API for ObDateComponent.” Expected tool: `get_oblique_template_api`.
 - “Validate this template: `<ob-date [date]=\"date\"></ob-date>`.” Expected tool: `check_oblique_template`.
 - “Prepare a new federal `employee-portal` project in `/workspace`.” Expected tool:
-  `prepare_oblique_project` with `{ "projectName": "employee-portal", "parentDirectory": "/workspace", "npmrcMode":
-"federal" }`. It returns a fresh opaque plan ID, `CREATE employee-portal` confirmation phrase, and a canonical argument array
-  ending in `--npmrc`; use `"external"` for `--no-npmrc`. Missing the mode is blocked with `NPMRC_MODE_REQUIRED`.
+  `prepare_oblique_project` with `{ "projectName": "employee-portal", "applicationOperator": "Federal Test Office",
+"contact": "accessibility@example.test", "parentDirectory": "/workspace", "npmrcMode": "federal" }`. It returns a
+  fresh opaque plan ID, `CREATE employee-portal` confirmation phrase, and a canonical argument array ending in
+  `--npmrc`; use `"external"` for `--no-npmrc`. Missing the mode is blocked with `NPMRC_MODE_REQUIRED`.
 - “Create the prepared project.” Expected tool: `create_oblique_project` with only the plan ID and the exact
   `CREATE employee-portal` confirmation. It creates files and downloads the pinned CLI package, so enable it only for
   trusted developers. Plans are single-use and expire after roughly ten minutes; the tool refuses an existing

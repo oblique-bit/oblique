@@ -128,7 +128,7 @@ export function registerPrepareObliqueProjectTool(
 		'prepare_oblique_project',
 		{
 			description:
-				'Prepare a read-only, confirmation-required Oblique CLI project plan. Each successful call creates a fresh short-lived plan but never creates or modifies a project.',
+				'Prepare a read-only, confirmation-required Oblique CLI project plan with the required application operator and contact metadata. Each successful call creates a fresh short-lived plan but never creates or modifies a project.',
 			inputSchema: prepareObliqueProjectSchema,
 			outputSchema: prepareObliqueProjectResultSchema,
 			annotations: {

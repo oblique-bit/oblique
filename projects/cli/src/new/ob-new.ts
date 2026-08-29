@@ -68,6 +68,7 @@ function handleObNewActions(options: HandleObNewActionOptions): void {
 		formatCode(workingDirectory);
 	} catch (error) {
 		console.error('Installation failed: ', error);
+		process.exit(1);
 	}
 }
 

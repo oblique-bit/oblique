@@ -16,6 +16,23 @@
       "mandatory": true,
       "flagValuePlaceholder": "<project-name>"
     },
+    "applicationOperator": {
+      "type": "string",
+      "description": "Name and address of the federal office or other entity that operates the application.",
+      "minLength": 1,
+      "flagValuePlaceholder": "<application-operator>"
+    },
+    "contact": {
+      "type": "string",
+      "description": "One or more email address(es) and phone number(s) of the operator, comma-separated.",
+      "minLength": 1,
+      "flagValuePlaceholder": "<contact>"
+    },
+    "hasLanguageInUrl": {
+      "type": "boolean",
+      "defaultValue": false,
+      "description": "Use a language path parameter."
+    },
     "locales": {
       "type": "string",
       "flagValuePlaceholder": "<locales>",
