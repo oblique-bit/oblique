@@ -2,6 +2,7 @@ import type {Command, OptionValues} from '@commander-js/extra-typings';
 import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {spawnSync} from 'child_process';
+import fs from 'node:fs';
 import {obNewConfig} from './ob-new.model';
 import {currentVersions, isWindows, version} from '../utils/cli-utils';
 import {createObNewCommand} from './ob-new';
@@ -704,6 +705,131 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
+				jest.resetAllMocks();
+			});
+		});
+
+		describe('bridging applicationOperator and title from the oblique ng-add app module', () => {
+			const appModuleContent = `import {provideObliqueConfiguration} from '@oblique/oblique';
+@NgModule({})
+export class AppModule {
+	providers: [provideObliqueConfiguration({accessibilityStatement: {
+		applicationName: 'Bridged App',
+		conformity: 'none',
+		createdOn: new Date('2026-08-31'),
+		applicationOperator: 'Bridged Operator',
+		contact: []
+	}, hasLanguageInUrl: false})]
+}`;
+			let readFileSyncSpy: jest.SpyInstance;
+
+			beforeEach(() => {
+				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
+				readFileSyncSpy = jest.spyOn(fs, 'readFileSync');
+			});
+
+			test('forwards applicationOperator and title read from the app module to the add-oblique schematic', () => {
+				readFileSyncSpy.mockReturnValue(appModuleContent);
+				const obNewCommand = createObNewCommand();
+				obNewCommand.parse([projectName], {from: 'user'});
+
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					'--locale=de-CH fr-CH it-CH',
+					`--title=${projectName}`,
+					'--applicationOperator=Bridged Operator',
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('recovers the full applicationOperator when it contains an apostrophe', () => {
+				// The oblique ng-add writes the operator without escaping, so an apostrophe
+				// produces an unterminated string literal. The reader must still recover the
+				// full value instead of truncating at the apostrophe.
+				readFileSyncSpy.mockReturnValue(
+					`provideObliqueConfiguration({accessibilityStatement: {applicationName: 'Bridged App', applicationOperator: 'Office fédéral de l'Informatique, 1234', contact: []}})`
+				);
+				const obNewCommand = createObNewCommand();
+				obNewCommand.parse([projectName], {from: 'user'});
+
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					'--locale=de-CH fr-CH it-CH',
+					`--title=${projectName}`,
+					"--application-operator=Office fédéral de l'Informatique, 1234",
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('does not forward applicationOperator when the app module is missing', () => {
+				readFileSyncSpy.mockImplementation(() => {
+					throw new Error('ENOENT');
+				});
+				const obNewCommand = createObNewCommand();
+				obNewCommand.parse([projectName], {from: 'user'});
+
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					'--locale=de-CH fr-CH it-CH',
+					`--title=${projectName}`,
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('does not forward applicationOperator when the app module does not contain it', () => {
+				readFileSyncSpy.mockReturnValue(
+					`provideObliqueConfiguration({accessibilityStatement: {applicationName: 'Bridged App'}})`
+				);
+				const obNewCommand = createObNewCommand();
+				obNewCommand.parse([projectName], {from: 'user'});
+
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					'--locale=de-CH fr-CH it-CH',
+					`--title=${projectName}`,
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			afterEach(() => {
+				readFileSyncSpy.mockRestore();
 				jest.resetAllMocks();
 			});
 		});
