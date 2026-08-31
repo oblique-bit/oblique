@@ -1,18 +1,19 @@
-import type {ExecSyncOptionsWithStringEncoding} from 'child_process';
+import type {SpawnSyncOptionsWithStringEncoding} from 'child_process';
 import type {ObGroupLogger} from '../logger/index.js';
 
 export type ObExecOptions = ObExecOptionsFatal | ObExecOptionsNonFatal;
 
-export interface ObExecOptionsFatal {
-	logger: ObGroupLogger;
-	command: string;
+export type ObExecOptionsFatal = ObExecParams & {
 	isFatal: true;
-	options?: ExecSyncOptionsWithStringEncoding;
-}
+};
 
-export interface ObExecOptionsNonFatal {
+export type ObExecOptionsNonFatal = ObExecParams & {
+	isFatal: false;
+};
+
+export interface ObExecParams {
 	logger: ObGroupLogger;
 	command: string;
-	isFatal: false;
-	options?: ExecSyncOptionsWithStringEncoding;
+	args?: string[];
+	options?: SpawnSyncOptionsWithStringEncoding;
 }

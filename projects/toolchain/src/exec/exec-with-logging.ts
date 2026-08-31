@@ -1,7 +1,6 @@
 import {constants} from 'os';
-import {type ExecSyncOptionsWithStringEncoding, execSync} from 'child_process';
-import type {ObGroupLogger} from '../logger/index.js';
-import type {ObExecOptions, ObExecOptionsFatal, ObExecOptionsNonFatal} from './types.js';
+import type {ObExecOptions, ObExecOptionsFatal, ObExecOptionsNonFatal, ObExecParams} from './types.js';
+import {obSpawnCommand} from './spawn-command.js';
 
 const defaultExecOptions = {
 	encoding: 'utf-8',
@@ -21,7 +20,7 @@ const exitCode = {
 /**
  * Executes a shell command synchronously and logs its execution within a logger step.
  *
- * The command is executed using {@link execSync}. If the command succeeds:
+ * The command is executed using {@link spawnSync}. If the command succeeds:
  * - The step is started via {@link ObGroupLogger#step|step()}.
  * - The command output is logged using {@link ObGroupLogger#logRawOutput|logRawOutput()}.
  * - The trimmed output is returned.
@@ -39,9 +38,10 @@ const exitCode = {
  * group.end();
  * ```
  *
- * @param logger - The active {@link ObGroupLogger} used to log the command execution.
- * @param command - The shell command to execute.
- *  @param options - Optional {@link execSync} options. These are **merged with the defaults**, with properties
+ * @param params - Parameters of the command
+ * @param params.logger - The active {@link ObGroupLogger} used to log the command execution.
+ * @param params.command - The shell command to execute.
+ * @param params.options - Optional {@link spawnSync} options. These are **merged with the defaults**, with properties
  *  in `options` taking priority over the default values. Default options:
  *    - `encoding: 'utf-8'` — ensures the output is returned as a string
  *    - `stdio: 'pipe'` — captures stdout/stderr for logging
@@ -51,12 +51,8 @@ const exitCode = {
  * @throws {ObLoggerInactiveGroupError} If the provided logger group has already ended.
  * @returns The trimmed command output if execution succeeds; otherwise `undefined`.
  */
-export function obExecWithLogging(
-	logger: ObGroupLogger,
-	command: string,
-	options?: ExecSyncOptionsWithStringEncoding
-): string | undefined {
-	return exec({logger, command, isFatal: false, options});
+export function obExecWithLogging({logger, command, args, options}: ObExecParams): string | undefined {
+	return exec({logger, command, args, isFatal: false, options});
 }
 
 /**
@@ -80,9 +76,10 @@ export function obExecWithLogging(
  * group.end();
  * ```
  *
- * @param logger - The active {@link ObGroupLogger} used to log the command execution.
- * @param command - The shell command to execute.
- * @param options - The options passed to {@link execSync}, defaults to
+ * @param params - Parameters of the command
+ * @param params.logger - The active {@link ObGroupLogger} used to log the command execution.
+ * @param params.command - The shell command to execute.
+ * @param params.options - The options passed to {@link execSync}, defaults to
  * - encoding: 'utf-8'
  * - stdio: 'pipe'
  * - timeout: 60_000
@@ -90,12 +87,8 @@ export function obExecWithLogging(
  * @throws {ObLoggerInactiveGroupError} If the provided logger group has already ended.
  * @returns The trimmed command output if execution succeeds.
  */
-export function obExecWithLoggingOrExit(
-	logger: ObGroupLogger,
-	command: string,
-	options?: ExecSyncOptionsWithStringEncoding
-): string {
-	return exec({logger, command, isFatal: true, options});
+export function obExecWithLoggingOrExit({logger, command, args, options}: ObExecParams): string {
+	return exec({logger, command, args, isFatal: true, options});
 }
 
 /**
@@ -103,11 +96,11 @@ export function obExecWithLoggingOrExit(
  */
 function exec(options: ObExecOptionsFatal): string;
 function exec(options: ObExecOptionsNonFatal): string | undefined;
-function exec({logger, command, isFatal, options}: ObExecOptions): string | undefined {
+function exec({logger, command, args, isFatal, options}: ObExecOptions): string | undefined {
 	logger.step(`Execute: ${command}`);
 
 	try {
-		const output = execSync(command, {
+		const output = obSpawnCommand(command, args || [], {
 			...defaultExecOptions,
 			...(options ?? {}),
 		}).trim();

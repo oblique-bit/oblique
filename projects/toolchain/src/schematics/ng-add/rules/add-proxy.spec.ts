@@ -43,7 +43,7 @@ describe('addProxy', () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
 			const resultTree = await runner.runSchematic('ng-add', {}, inputTree);
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
 			const angularJson = JSON.parse(resultTree.readContent('/angular.json')) as AngularJson;
 			expect(angularJson.projects.app.architect.serve.options.proxyConfig).toBeUndefined();
 		});
@@ -63,7 +63,7 @@ describe('addProxy', () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
 			const resultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
 			const angularJson = JSON.parse(resultTree.readContent('/angular.json')) as AngularJson;
 			expect(angularJson.projects.app.architect.serve.options.proxyConfig).toBe('proxy.conf.json');
 		});
@@ -96,7 +96,6 @@ describe('addProxy', () => {
 			expect(firstResultTree.readContent('./proxy.conf.json')).toEqual(expectedContent);
 			expect(secondResultTree.readContent('./proxy.conf.json')).toEqual(expectedContent);
 
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			const angularJson = JSON.parse(secondResultTree.readContent('/angular.json')) as AngularJson;
 			expect(angularJson.projects.app.architect.serve.options.proxyConfig).toBe('proxy.conf.json');
 		});
@@ -116,7 +115,7 @@ describe('addProxy', () => {
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
 			inputTree.create('proxy.conf.json', 'existing content');
 			const resultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
 			const angularJson = JSON.parse(resultTree.readContent('/angular.json')) as AngularJson;
 			expect(angularJson.projects.app.architect.serve.options.proxyConfig).toBeUndefined();
 		});
@@ -133,7 +132,7 @@ describe('addProxy', () => {
 				})
 			);
 			const resultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
 			const angularJson = JSON.parse(resultTree.readContent('/angular.json')) as AngularJson;
 			expect(angularJson.projects.app1.architect.serve.options.proxyConfig).toBe('proxy.conf.json');
 			expect(angularJson.projects.app2.architect.serve.options.proxyConfig).toBe('proxy.conf.json');
