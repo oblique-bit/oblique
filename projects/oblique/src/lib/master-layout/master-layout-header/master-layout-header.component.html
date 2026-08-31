@@ -69,7 +69,7 @@
 				[handleLogout]="config.handleLogout"
 				[environment]="pamsConfiguration?.environment"
 				[rootUrl]="pamsConfiguration?.rootUrl"
-				(loginState)="emitLoginState($event)"
+				(loginStateChange)="emitLoginState($event)"
 				(logoutTriggered)="emitLogoutUrl($event)"
 			>
 				@for (template of templates(); track template) {

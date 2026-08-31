@@ -8,14 +8,11 @@ import {
 	inject,
 	input,
 } from '@angular/core';
-import {outputFromObservable, takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {Observable} from 'rxjs';
+import {outputFromObservable, takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {ObServiceNavigationService} from './service-navigation.service';
+import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
 import {
 	ObEPamsEnvironment,
-	ObILanguage,
-	ObISectionLink,
-	ObIServiceNavigationApplication,
 	ObIServiceNavigationContact,
 	ObIServiceNavigationLink,
 	ObLoginState,
@@ -27,7 +24,6 @@ import {ObServiceNavigationTimeoutCookieActivityService} from './timeout/service
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navigation-timeout-return-url.service';
 import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
-import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
 
 @Component({
 	selector: 'ob-service-navigation',
@@ -68,30 +64,29 @@ export class ObServiceNavigationComponent implements OnInit {
 	readonly displayLanguages = input(true);
 	readonly handleLogout = input(false);
 	readonly eportalLanguageSynchronization = input(false);
-	readonly loginState = outputFromObservable<ObLoginState>(inject(ObServiceNavigationService).getLoginState$());
+	readonly loginStateChange = outputFromObservable<ObLoginState | undefined>(
+		toObservable(inject(ObServiceNavigationService).loginState)
+	);
 	readonly logoutTriggered = outputFromObservable<string>(inject(ObServiceNavigationService).getLogoutTrigger$());
 	readonly customWidgetTemplate = contentChildren<TemplateRef<unknown>>('customWidgetTemplate');
-	readonly loginUrl$: Observable<string>;
-	readonly loginState$: Observable<ObLoginState>;
-	readonly userName$: Observable<string>;
-	readonly profileUrls$: Observable<ObISectionLink[]>;
-	readonly inboxMailUrl$: Observable<string>;
-	readonly messageCount$: Observable<number>;
-	readonly applicationsUrl$: Observable<string>;
-	readonly lastUsedApplications$: Observable<ObIServiceNavigationApplication[]>;
-	readonly favoriteApplications$: Observable<ObIServiceNavigationApplication[]>;
-	readonly language$: Observable<string>;
-	readonly languages: ObILanguage[];
+	readonly loginUrl = inject(ObServiceNavigationService).loginUrl;
+	readonly loginState = inject(ObServiceNavigationService).loginState;
+	readonly userName = inject(ObServiceNavigationService).userName;
+	readonly profileUrls = inject(ObServiceNavigationService).profileUrls;
+	readonly inboxMailUrl = inject(ObServiceNavigationService).inboxMailUrl;
+	readonly messageCount = inject(ObServiceNavigationService).messageCount;
+	readonly applicationsUrl = inject(ObServiceNavigationService).applicationsUrl;
+	readonly lastUsedApplications = inject(ObServiceNavigationService).lastUsedApplications;
+	readonly favoriteApplications = inject(ObServiceNavigationService).favoriteApplications;
+	readonly language = inject(ObServiceNavigationService).language;
+	readonly languages = inject(ObServiceNavigationService).languages;
+	readonly infoBackend = inject(ObServiceNavigationService).infoBackend;
 	/** The effective info content, from the backend if `useInfoBackend` is set `true` or from the configured inputs. */
 	readonly effectiveInfo = computed<ObIServiceNavigationBackendInfo>(() => ({
 		...this.info(),
-		...(this.useInfoBackend() ? this.infoBackendSignal() : {}),
+		...(this.useInfoBackend() ? this.infoBackend() : {}),
 	}));
 	private readonly headerControlsService = inject(ObServiceNavigationService);
-	private readonly infoBackend$ = this.headerControlsService.getInfoBackend$();
-	private readonly infoBackendSignal = toSignal(this.infoBackend$, {
-		initialValue: {} as ObIServiceNavigationBackendInfo,
-	});
 	private readonly info = computed<ObIServiceNavigationBackendInfo>(() => ({
 		links: this.infoLinks(),
 		contact: this.infoContact(),
@@ -101,26 +96,19 @@ export class ObServiceNavigationComponent implements OnInit {
 	}));
 
 	constructor() {
-		toObservable(this.returnUrl)
-			.pipe(takeUntilDestroyed())
-			.subscribe(returnUrl => this.headerControlsService.setReturnUrl(returnUrl));
+		this.headerControlsService.connectReturnUrl(this.returnUrl);
+		// These inputs are synced to the service via toObservable().subscribe() because the service
+		// exposes imperative setters (setHandleLogout / setEportalLanguageSynchronization) that write to
+		// plain properties on downstream services (redirectorService.handleLogout and
+		// languageSynchronizationService.shouldSynchronize), which are not signals yet. Once those
+		// downstream services expose writable signals, these subscriptions can be replaced by passing
+		// the signal references directly to the service, as done for returnUrl via connectReturnUrl().
 		toObservable(this.handleLogout)
 			.pipe(takeUntilDestroyed())
 			.subscribe(handleLogout => this.headerControlsService.setHandleLogout(handleLogout));
 		toObservable(this.eportalLanguageSynchronization)
 			.pipe(takeUntilDestroyed())
 			.subscribe(synchronization => this.headerControlsService.setEportalLanguageSynchronization(synchronization));
-		this.loginUrl$ = this.headerControlsService.getLoginUrl$();
-		this.loginState$ = this.headerControlsService.getLoginState$();
-		this.userName$ = this.headerControlsService.getUserName$();
-		this.profileUrls$ = this.headerControlsService.getProfileUrls$();
-		this.inboxMailUrl$ = this.headerControlsService.getInboxMailUrl$();
-		this.messageCount$ = this.headerControlsService.getMessageCount$();
-		this.applicationsUrl$ = this.headerControlsService.getApplicationsUrl$();
-		this.lastUsedApplications$ = this.headerControlsService.getLastUsedApplications$();
-		this.favoriteApplications$ = this.headerControlsService.getFavoriteApplications$();
-		this.language$ = this.headerControlsService.getLanguage$();
-		this.languages = this.headerControlsService.getLanguages();
 	}
 
 	ngOnInit(): void {
