@@ -1,20 +1,15 @@
 import type {Rule, Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import type {ObGroupLogger} from '../../../logger';
+import {rewriteFiles} from '../../shared/rewrite-files';
 import {isPlainObject, isString} from '../../shared/type-guards';
 import {findElement, getAttribute, setAttribute, transformDocument} from '../../shared/ast/html';
 
 export function addFavicon(logger: ObGroupLogger): Rule {
 	return async (tree: Tree) => {
 		logger.step('Embed Oblique favicon');
-		(await getIndexPaths(tree)).forEach(indexPath => {
-			const content = tree.readText(indexPath);
-			const updated = replaceFavicon(content);
-			if (content !== updated) {
-				tree.overwrite(indexPath, updated);
-			}
-		});
-		return tree;
+		const indexPaths = await getIndexPaths(tree);
+		return rewriteFiles(tree, path => isIndexPath(path, indexPaths), replaceFavicon);
 	};
 }
 
@@ -34,6 +29,15 @@ async function getIndexPaths(tree: Tree): Promise<string[]> {
 
 function getDefaultIndex(tree: Tree): string[] {
 	return tree.exists('src/index.html') ? ['src/index.html'] : [];
+}
+
+/**
+ * Checks whether a visited tree path corresponds to one of the configured index paths. The visited
+ * path starts with a slash (`/src/index.html`) while the workspace stores it without (`src/index.html`),
+ * so the leading slash is stripped before comparing.
+ */
+function isIndexPath(path: string, indexPaths: string[]): boolean {
+	return indexPaths.includes(path.replace(/^\//u, ''));
 }
 
 function isIndexObject(entry: unknown): entry is {input: string; output: string} {
