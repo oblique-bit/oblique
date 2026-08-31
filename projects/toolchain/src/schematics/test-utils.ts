@@ -1,9 +1,6 @@
-import {join} from 'node:path';
-import {readFileSync, readdirSync} from 'fs';
 import {type Rule, type SchematicContext, type Tree, callRule} from '@angular-devkit/schematics';
 import {type SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {firstValueFrom, of} from 'rxjs';
-import * as template from './shared/template/template';
 
 /**
  * Runs a {@link Rule} with a {@link SchematicContext} and returns the resulting tree.
@@ -29,21 +26,4 @@ export function runRule(
 	>[0];
 	const context: SchematicContext = runner.engine.createContext(schematic, undefined);
 	return firstValueFrom(callRule(rule, of(options.tree), context)).then(tree => new UnitTestTree(tree));
-}
-
-/**
- * In tests based on {@link callRule}, the SchematicContext do not contain the template directory, meaning that
- * {@link createFromTemplate} throws an error. To circumvent this problem, `mockCreateFromTemplate` manually
- * creates the files
- */
-export function mockCreateFromTemplate(collection: string): void {
-	vi.spyOn(template, 'createFromTemplate').mockImplementation((templateDir: string) => (tree: Tree) => {
-		const dir = join(__dirname, `/${collection}/${templateDir}`);
-		readdirSync(dir).forEach(file => {
-			const content = readFileSync(`${dir}/${file}`);
-			tree.create(`/${file}`, content);
-		});
-
-		return tree;
-	});
 }

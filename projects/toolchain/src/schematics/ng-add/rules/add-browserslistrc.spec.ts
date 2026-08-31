@@ -3,7 +3,7 @@ import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
 import * as fs from 'fs';
 import {obMockLogger} from '../../../logger/mock';
-import {mockCreateFromTemplate, runRule} from '../../test-utils';
+import {runRule} from '../../test-utils';
 import {addBrowserslistrc} from './add-browserslistrc';
 
 describe(addBrowserslistrc.name, () => {
@@ -14,7 +14,6 @@ describe(addBrowserslistrc.name, () => {
 
 	beforeEach(() => {
 		inputTree = new HostTree();
-		mockCreateFromTemplate('ng-add');
 	});
 
 	afterEach(() => {
@@ -22,7 +21,10 @@ describe(addBrowserslistrc.name, () => {
 	});
 
 	test('without .browserslistrc', async () => {
-		const resultTree = await runRule(runner, addBrowserslistrc(logger.group('A')), {tree: inputTree});
+		const resultTree = await runRule(runner, addBrowserslistrc(logger.group('A')), {
+			tree: inputTree,
+			path: join(__dirname, '..'),
+		});
 
 		expect(resultTree.readText('.browserslistrc')).toBe(templateContent);
 		expect(loggerGroups[0].step).toHaveBeenCalledWith('Create ".browserslistrc" file');
@@ -31,7 +33,10 @@ describe(addBrowserslistrc.name, () => {
 	test('with .browserslistrc', async () => {
 		inputTree.create('.browserslistrc', 'existing content');
 
-		const resultTree = await runRule(runner, addBrowserslistrc(logger.group('A')), {tree: inputTree});
+		const resultTree = await runRule(runner, addBrowserslistrc(logger.group('A')), {
+			tree: inputTree,
+			path: join(__dirname, '..'),
+		});
 
 		expect(resultTree.readText('.browserslistrc')).toBe('existing content');
 		expect(loggerGroups[0].step).not.toHaveBeenCalled();
