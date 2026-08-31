@@ -1,4 +1,4 @@
-import {findElement, getAttribute, setAttribute, transformDocument, transformFragment} from './ast';
+import {findElement, getAttribute, setAttribute, transformDocument, transformFragment} from './html';
 import {parse} from 'parse5';
 
 describe('ast', () => {

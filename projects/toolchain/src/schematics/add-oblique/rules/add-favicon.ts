@@ -2,7 +2,7 @@ import type {Rule, Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import type {ObGroupLogger} from '../../../logger';
 import {isPlainObject, isString} from '../../shared/type-guards';
-import {findElement, getAttribute, setAttribute, transformDocument} from '../../shared/ast';
+import {findElement, getAttribute, setAttribute, transformDocument} from '../../shared/ast/html';
 
 export function addFavicon(logger: ObGroupLogger): Rule {
 	return async (tree: Tree) => {
