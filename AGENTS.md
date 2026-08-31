@@ -11,8 +11,8 @@ Node.js 22.12+. Install from repository root.
 - `npm run lint` — lint all workspaces.
 - `npm run format` — fix ESLint/Prettier issues.
 - `npm run build -w @oblique/toolchain` — build package; replace package name as needed.
-- `npm run test -w @oblique/toolchain` — run Toolchain Jest plus coverage.
-- `npm run start -w @oblique/sandbox` — serve sandbox.
+- `npm run test -w @oblique/toolchain` — run package test with coverage; replace package name as needed.
+- `npm run start -w @oblique/sandbox` — serve package; replace package name as needed.
 
 ## Style
 
@@ -24,7 +24,7 @@ Keep change minimal, request-bound. No unrelated edits. Before scope growth, pub
 
 ## Tests
 
-Jest: `toolchain`, `cli`. Vitest: `design-system`. Angular tooling: Angular packages. Add behavior regression tests. Toolchain coverage: 100% statements, branches, functions, lines. Exercise new helpers and fixtures.
+Jest: `cli`, `oblique`, `sandbox`, `sandbox-ssr`, `sds`, `service-navigation-web-component`, `toolchain`. Vitest: `design-system`. Angular tooling: Angular packages. Add behavior regression tests. Toolchain coverage: 100% statements, branches, functions, lines. Exercise new helpers and fixtures.
 
 ## Commits and PRs
 
