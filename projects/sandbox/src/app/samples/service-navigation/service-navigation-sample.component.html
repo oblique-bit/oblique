@@ -22,7 +22,7 @@
 			[displayLanguages]="displayLanguages"
 			[eportalLanguageSynchronization]="eportalLanguageSynchronization"
 			[handleLogout]="handleLogout"
-			(loginState)="loginState = $event"
+			(loginStateChange)="loginState = $event"
 			(logoutTriggered)="logoutURL = $event"
 		>
 			@if (hasCustomWidgets) {

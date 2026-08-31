@@ -1,4 +1,4 @@
-import {type AfterViewInit, ChangeDetectionStrategy, Component, type OnInit, inject, viewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, computed, inject, viewChild} from '@angular/core';
 import {
 	type ObIServiceNavigationContact,
 	type ObIServiceNavigationLink,
@@ -6,8 +6,6 @@ import {
 	ObServiceNavigationComponent,
 	WINDOW,
 } from '@oblique/oblique';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 
 @Component({
@@ -17,12 +15,12 @@ import {environment} from '../../../environments/environment';
 	styleUrl: './service-navigation-sample.component.scss',
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
-export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
+export class ServiceNavigationSampleComponent implements OnInit {
 	returnUrl: string;
 	readonly eportalAppId = '48';
 	maxFavoriteApplications = 8;
-	lastUsedApplicationsLength$: Observable<number>;
-	favoriteApplicationsLength$: Observable<number>;
+	readonly lastUsedApplicationsLength = computed(() => this.headerControlsComponent().lastUsedApplications().length);
+	readonly favoriteApplicationsLength = computed(() => this.headerControlsComponent().favoriteApplications().length);
 	displayMessage = true;
 	displayInfo = true;
 	displayApplications = true;
@@ -56,6 +54,7 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 		},
 	];
 	hasProfileLinks = true;
+	hasInfoLinks = true;
 	infoLinks: ObIServiceNavigationLink[] = [
 		{
 			url: 'i18n.service-navigation.info.link.user-documentation.url',
@@ -85,15 +84,6 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 	readonly rootUrl = environment.pams?.rootUrl;
 	readonly environment = environment.pams?.environment;
 
-	private readonly infoLinksBackup = [...this.infoLinks];
-
-	get hasInfoLinks(): boolean {
-		return this.infoLinks.length > 0;
-	}
-	set hasInfoLinks(value: boolean) {
-		this.infoLinks = value ? [...this.infoLinksBackup] : [];
-	}
-
 	private readonly contactInfo: ObIServiceNavigationContact = {
 		email: 'support@bit.admin.ch',
 		emailText: 'email detailed text',
@@ -107,15 +97,6 @@ export class ServiceNavigationSampleComponent implements OnInit, AfterViewInit {
 
 	ngOnInit(): void {
 		this.returnUrl = this.window.location.href;
-	}
-
-	ngAfterViewInit(): void {
-		this.lastUsedApplicationsLength$ = this.headerControlsComponent().lastUsedApplications$.pipe(
-			map(applications => applications.length)
-		);
-		this.favoriteApplicationsLength$ = this.headerControlsComponent().favoriteApplications$.pipe(
-			map(applications => applications.length)
-		);
 	}
 
 	handleContactInfo(): void {
