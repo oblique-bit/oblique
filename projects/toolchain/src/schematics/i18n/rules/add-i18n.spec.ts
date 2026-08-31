@@ -1,8 +1,9 @@
 import {Tree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
-import {firstValueFrom} from 'rxjs';
 import type {ObGroupLogger} from '../../../logger';
+import {runRule} from '../../test-utils';
+import {i18n} from '../index';
 import {addI18n} from './add-i18n';
 import {
 	appModuleWithExistingTranslations,
@@ -24,7 +25,7 @@ describe('i18n schematic', () => {
 		tree = new UnitTestTree(Tree.empty());
 		tree.create('src/app/app-module.ts', basicAppModule());
 		tree.create('package.json', basicPackageJson());
-		resultTree = await runner.runSchematic('i18n', {locales}, tree);
+		resultTree = await runRule(runner, i18n({silent: false, locales}), {tree, path: __dirname});
 	});
 
 	describe('LOCALE_ID', () => {
@@ -43,7 +44,10 @@ describe('i18n schematic', () => {
 		appModuleTree.create('src/app/app-module.ts', basicAppModule());
 		appModuleTree.create('package.json', basicPackageJson());
 
-		const appModuleResult = await runner.runSchematic('i18n', {locales: ['de-CH']}, appModuleTree);
+		const appModuleResult = await runRule(runner, i18n({silent: false, locales: ['de-CH']}), {
+			tree: appModuleTree,
+			path: __dirname,
+		});
 
 		expect(appModuleResult.readContent('src/app/app-module.ts')).toContain("{provide: LOCALE_ID, useValue: 'de-CH'}");
 	});
@@ -98,7 +102,7 @@ describe('i18n schematic', () => {
 	describe('idempotent', () => {
 		let idempotentTree: UnitTestTree;
 		beforeAll(async () => {
-			idempotentTree = await runner.runSchematic('i18n', {locales}, resultTree);
+			idempotentTree = await runRule(runner, i18n({silent: false, locales}), {tree: resultTree, path: __dirname});
 		});
 		test('no duplicate providers/imports/calls/files', () => {
 			const idempotentContent = idempotentTree.readContent('src/app/app-module.ts');
@@ -122,7 +126,10 @@ describe('i18n schematic', () => {
 			const preExistingTree = new UnitTestTree(Tree.empty());
 			preExistingTree.create('src/app/app-module.ts', appModuleWithObliqueConfig());
 			preExistingTree.create('package.json', basicPackageJson());
-			preExistingResultTree = await runner.runSchematic('i18n', {locales}, preExistingTree);
+			preExistingResultTree = await runRule(runner, i18n({silent: false, locales}), {
+				tree: preExistingTree,
+				path: __dirname,
+			});
 		});
 		test('config merged with all locales', () => {
 			expect(preExistingResultTree.readContent('src/app/app-module.ts')).toContain(
@@ -137,7 +144,10 @@ describe('i18n schematic', () => {
 			const singleLocaleTree = new UnitTestTree(Tree.empty());
 			singleLocaleTree.create('src/app/app-module.ts', basicAppModule());
 			singleLocaleTree.create('package.json', basicPackageJson());
-			singleLocaleResultTree = await runner.runSchematic('i18n', {locales: ['en-US']}, singleLocaleTree);
+			singleLocaleResultTree = await runRule(runner, i18n({silent: false, locales: ['en-US']}), {
+				tree: singleLocaleTree,
+				path: __dirname,
+			});
 		});
 		test('uses that locale for LOCALE_ID', () => {
 			expect(singleLocaleResultTree.readContent('src/app/app-module.ts')).toContain(
@@ -161,7 +171,7 @@ describe('i18n schematic', () => {
 			const emptyTree = new UnitTestTree(Tree.empty());
 			emptyTree.create('src/app/app-module.ts', basicAppModule());
 			emptyTree.create('package.json', basicPackageJson());
-			emptyResultTree = await runner.runSchematic('i18n', {locales: []}, emptyTree);
+			emptyResultTree = await runRule(runner, i18n({silent: false, locales: []}), {tree: emptyTree, path: __dirname});
 		});
 		test('does not add LOCALE_ID provider', () => {
 			expect(emptyResultTree.readContent('src/app/app-module.ts')).not.toContain('LOCALE_ID');
@@ -184,7 +194,10 @@ describe('i18n schematic', () => {
 			const existingLocaleTree = new UnitTestTree(Tree.empty());
 			existingLocaleTree.create('src/app/app-module.ts', appModuleWithLocaleId());
 			existingLocaleTree.create('package.json', basicPackageJson());
-			existingLocaleResultTree = await runner.runSchematic('i18n', {locales}, existingLocaleTree);
+			existingLocaleResultTree = await runRule(runner, i18n({silent: false, locales}), {
+				tree: existingLocaleTree,
+				path: __dirname,
+			});
 		});
 		test('does not duplicate LOCALE_ID provider', () => {
 			const existingLocaleContent = existingLocaleResultTree.readContent('src/app/app-module.ts');
@@ -205,7 +218,10 @@ describe('i18n schematic', () => {
 			const registeredTree = new UnitTestTree(Tree.empty());
 			registeredTree.create('src/app/app-module.ts', appModuleWithRegisteredLocales());
 			registeredTree.create('package.json', basicPackageJson());
-			registeredResultTree = await runner.runSchematic('i18n', {locales}, registeredTree);
+			registeredResultTree = await runRule(runner, i18n({silent: false, locales}), {
+				tree: registeredTree,
+				path: __dirname,
+			});
 		});
 		test('skips already-registered locales', () => {
 			const registeredContent = registeredResultTree.readContent('src/app/app-module.ts');
@@ -225,7 +241,10 @@ describe('i18n schematic', () => {
 			existingFilesTree.create('src/app/app-module.ts', basicAppModule());
 			existingFilesTree.create('package.json', basicPackageJson());
 			existingFilesTree.create('src/assets/i18n/de.json', '{"existing": "value"}');
-			existingFilesResultTree = await runner.runSchematic('i18n', {locales}, existingFilesTree);
+			existingFilesResultTree = await runRule(runner, i18n({silent: false, locales}), {
+				tree: existingFilesTree,
+				path: __dirname,
+			});
 		});
 		test('does not overwrite existing translation files', () => {
 			expect(existingFilesResultTree.readContent('src/assets/i18n/de.json')).toBe('{"existing": "value"}');
@@ -240,10 +259,10 @@ describe('i18n schematic', () => {
 			const defensiveTree = new UnitTestTree(Tree.empty());
 			defensiveTree.create('src/app/app-module.ts', appModuleWithExistingTranslations());
 			defensiveTree.create('package.json', basicPackageJson());
-			jest.spyOn(defensiveTree, 'read').mockImplementationOnce(() => null);
-			const logger = {step: jest.fn()} as unknown as ObGroupLogger;
+			vi.spyOn(defensiveTree, 'read').mockImplementationOnce(() => null);
+			const logger = {step: vi.fn()} as unknown as ObGroupLogger;
 
-			await firstValueFrom(runner.callRule(addI18n(logger, ['de-CH']), defensiveTree));
+			await runRule(runner, addI18n(logger, ['de-CH']), {tree: defensiveTree, path: __dirname});
 
 			expect(logger.step).toHaveBeenCalledWith('Adding locale management & translations');
 		});
@@ -256,7 +275,10 @@ describe('i18n schematic', () => {
 			);
 			localeImportTree.create('package.json', basicPackageJson());
 
-			const localeImportResultTree = await runner.runSchematic('i18n', {locales: ['de-CH']}, localeImportTree);
+			const localeImportResultTree = await runRule(runner, i18n({silent: false, locales: ['de-CH']}), {
+				tree: localeImportTree,
+				path: __dirname,
+			});
 			const content = localeImportResultTree.readContent('src/app/app-module.ts');
 			const imports = content.match(/from '@angular\/common\/locales\/de-CH';/gu);
 
@@ -268,9 +290,9 @@ describe('i18n schematic', () => {
 			const missingAppModuleTree = new UnitTestTree(Tree.empty());
 			missingAppModuleTree.create('package.json', basicPackageJson());
 
-			const logger = {step: jest.fn()} as unknown as ObGroupLogger;
+			const logger = {step: vi.fn()} as unknown as ObGroupLogger;
 
-			await firstValueFrom(runner.callRule(addI18n(logger, ['de-CH']), missingAppModuleTree));
+			await runRule(runner, addI18n(logger, ['de-CH']), {tree: missingAppModuleTree, path: __dirname});
 
 			expect(logger.step).toHaveBeenCalledWith(
 				expect.stringMatching(/^App module not found at .*skipping i18n configuration$/u)

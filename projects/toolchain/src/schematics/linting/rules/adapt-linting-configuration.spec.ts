@@ -1,9 +1,8 @@
 import {HostTree, type Tree} from '@angular-devkit/schematics';
 import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
-import {firstValueFrom} from 'rxjs';
 import {obMockLogger} from '../../../logger/mock';
-import {mockCreateFromTemplate} from '../../test-utils';
+import {mockCreateFromTemplate, runRule} from '../../test-utils';
 import {adaptLintingConfiguration} from './adapt-linting-configuration';
 
 describe(adaptLintingConfiguration.name, () => {
@@ -19,7 +18,7 @@ describe(adaptLintingConfiguration.name, () => {
 
 	test('without package.json', async () => {
 		await expect(
-			firstValueFrom(runner.callRule(adaptLintingConfiguration(logger.group('A'), 'app'), inputTree))
+			runRule(runner, adaptLintingConfiguration(logger.group('A'), 'app'), {tree: inputTree})
 		).rejects.toThrow('ObSchematicsError - Path "package.json" does not exist');
 	});
 
@@ -30,7 +29,7 @@ describe(adaptLintingConfiguration.name, () => {
 
 		test('without tslint.json', async () => {
 			await expect(
-				firstValueFrom(runner.callRule(adaptLintingConfiguration(logger.group('A'), 'app'), inputTree))
+				runRule(runner, adaptLintingConfiguration(logger.group('A'), 'app'), {tree: inputTree})
 			).rejects.toThrow('ObSchematicsError - Path "tsconfig.json" does not exist');
 		});
 
@@ -40,9 +39,9 @@ describe(adaptLintingConfiguration.name, () => {
 			});
 
 			test('package.json property addition', async () => {
-				const resultTree = await firstValueFrom(
-					runner.callRule(adaptLintingConfiguration(logger.group('A'), 'app'), inputTree)
-				);
+				const resultTree = await runRule(runner, adaptLintingConfiguration(logger.group('A'), 'app'), {
+					tree: inputTree,
+				});
 
 				expect(resultTree.readText(packageJson)).toEqual(
 					'{"keep": {}, "scripts": {"lint": "","format": "npm run lint -- --fix"}}'
@@ -50,17 +49,17 @@ describe(adaptLintingConfiguration.name, () => {
 			});
 
 			test('configuration file addition', async () => {
-				const resultTree = await firstValueFrom(
-					runner.callRule(adaptLintingConfiguration(logger.group('A'), 'app'), inputTree)
-				);
+				const resultTree = await runRule(runner, adaptLintingConfiguration(logger.group('A'), 'app'), {
+					tree: inputTree,
+				});
 
 				expect(resultTree.exists('eslint.config.mjs')).toBe(true);
 			});
 
 			test('references addition', async () => {
-				const resultTree = await firstValueFrom(
-					runner.callRule(adaptLintingConfiguration(logger.group('A'), 'app'), inputTree)
-				);
+				const resultTree = await runRule(runner, adaptLintingConfiguration(logger.group('A'), 'app'), {
+					tree: inputTree,
+				});
 
 				expect(resultTree.readText('tsconfig.json')).toBe('{"references": [{"path":"tsconfig.eslint.json"}]}');
 			});
@@ -74,9 +73,7 @@ describe(adaptLintingConfiguration.name, () => {
 			test('references addition', async () => {
 				const loggerGroup = logger.group('A');
 
-				const resultTree = await firstValueFrom(
-					runner.callRule(adaptLintingConfiguration(loggerGroup, 'app'), inputTree)
-				);
+				const resultTree = await runRule(runner, adaptLintingConfiguration(loggerGroup, 'app'), {tree: inputTree});
 
 				expect(resultTree.readText('tsconfig.json')).toBe('{"references": true}');
 			});

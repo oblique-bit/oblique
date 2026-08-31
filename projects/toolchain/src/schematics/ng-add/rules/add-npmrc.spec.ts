@@ -4,8 +4,7 @@ import {join} from 'node:path';
 import addNpmrc from './add-npmrc';
 import fs from 'fs';
 import {obMockLogger} from '../../../logger/mock';
-import {firstValueFrom} from 'rxjs';
-import {mockCreateFromTemplate} from '../../test-utils';
+import {mockCreateFromTemplate, runRule} from '../../test-utils';
 
 const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
 const {logger} = obMockLogger();
@@ -19,25 +18,19 @@ describe('addNpmrc', () => {
 	});
 
 	test('does not create .npmrc when shouldAdd is falsy', async () => {
-		const resultTree = (await firstValueFrom(
-			runner.callRule(addNpmrc(logger.group('A'), undefined), inputTree)
-		)) as UnitTestTree;
+		const resultTree = await runRule(runner, addNpmrc(logger.group('A'), undefined), {tree: inputTree});
 		expect(resultTree.exists('.npmrc')).toBeFalsy();
 	});
 
 	describe('when .npmrc does not exist', () => {
 		test('does not create .npmrc when shouldAdd is false', async () => {
-			const resultTree = (await firstValueFrom(
-				runner.callRule(addNpmrc(logger.group('A'), false), inputTree)
-			)) as UnitTestTree;
+			const resultTree = await runRule(runner, addNpmrc(logger.group('A'), false), {tree: inputTree});
 			expect(resultTree.exists('.npmrc')).toBeFalsy();
 		});
 
 		test('creates a new .npmrc file', async () => {
 			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-npmrc/npmrc'), 'utf8');
-			const resultTree = (await firstValueFrom(
-				runner.callRule(addNpmrc(logger.group('A'), true), inputTree)
-			)) as UnitTestTree;
+			const resultTree = await runRule(runner, addNpmrc(logger.group('A'), true), {tree: inputTree});
 			expect(resultTree.readContent('./.npmrc')).toEqual(templateContent);
 		});
 
@@ -46,7 +39,7 @@ describe('addNpmrc', () => {
 			const rule = addNpmrc(groupLogger, true);
 			expect(groupLogger.step).not.toHaveBeenCalled();
 
-			await firstValueFrom(runner.callRule(rule, inputTree));
+			await runRule(runner, rule, {tree: inputTree});
 			expect(groupLogger.step).toHaveBeenCalledWith('Create .npmrc file at project root');
 		});
 
@@ -55,10 +48,10 @@ describe('addNpmrc', () => {
 			const rule = addNpmrc(groupLogger, true);
 			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-npmrc/npmrc'), 'utf8');
 
-			let resultTree = (await firstValueFrom(runner.callRule(rule, inputTree))) as UnitTestTree;
+			let resultTree = await runRule(runner, rule, {tree: inputTree});
 			expect(resultTree.readContent('.npmrc')).toEqual(templateContent);
 
-			resultTree = (await firstValueFrom(runner.callRule(rule, resultTree))) as UnitTestTree;
+			resultTree = await runRule(runner, rule, {tree: resultTree});
 			expect(resultTree.readContent('.npmrc')).toEqual(templateContent);
 		});
 	});
@@ -70,15 +63,13 @@ describe('addNpmrc', () => {
 
 		test('keeps existing .npmrc as it was', async () => {
 			const testContent = 'existing content';
-			const resultTree = (await firstValueFrom(
-				runner.callRule(addNpmrc(logger.group('A'), true), inputTree)
-			)) as UnitTestTree;
+			const resultTree = await runRule(runner, addNpmrc(logger.group('A'), true), {tree: inputTree});
 			expect(resultTree.readContent('./.npmrc')).toEqual(testContent);
 		});
 
 		test('does not call logger when file exists', async () => {
 			const groupLogger = logger.group('A');
-			await firstValueFrom(runner.callRule(addNpmrc(groupLogger, true), inputTree));
+			await runRule(runner, addNpmrc(groupLogger, true), {tree: inputTree});
 			expect(groupLogger.step).not.toHaveBeenCalled();
 		});
 	});

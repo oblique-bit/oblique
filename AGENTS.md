@@ -24,7 +24,7 @@ Keep change minimal, request-bound. No unrelated edits. Before scope growth, pub
 
 ## Tests
 
-Jest: `cli`, `oblique`, `sandbox`, `sandbox-ssr`, `sds`, `service-navigation-web-component`, `toolchain`. Vitest: `design-system`, `toolchain`. Angular tooling: Angular packages. Add behavior regression tests. Toolchain coverage: 100% statements, branches, functions, lines. Exercise new helpers and fixtures.
+Jest: `cli`, `oblique`, `sandbox`, `sandbox-ssr`, `sds`, `service-navigation-web-component`. Vitest: `design-system`, `toolchain`. Angular tooling: Angular packages. Add behavior regression tests. Toolchain coverage: 100% statements, branches, functions, lines. Exercise new helpers and fixtures.
 
 ## Commits and PRs
 

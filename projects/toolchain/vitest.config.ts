@@ -6,7 +6,6 @@ export default defineConfig({
 	test: {
 		watch: false,
 		include: ['src/**/*.spec.ts'],
-		exclude: ['src/logger/**/*.spec.ts', 'src/schematics/**/*.spec.ts'],
 		globals: true,
 		coverage: {
 			enabled: true,
@@ -18,7 +17,7 @@ export default defineConfig({
 				'**/*.spec.ts',
 				'**/index.ts',
 				'**/types.ts',
-				'src/schematics/**/*.ts',
+				'src/schematics/test-utils.ts',
 				'src/logger/**/*.ts',
 				'src/**/mock/*',
 			],

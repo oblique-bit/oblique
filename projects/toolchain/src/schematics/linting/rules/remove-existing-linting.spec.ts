@@ -1,7 +1,7 @@
 import {HostTree, type Tree} from '@angular-devkit/schematics';
 import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
-import {firstValueFrom} from 'rxjs';
+import {runRule} from '../../test-utils';
 import {removeExistingLinting} from './remove-existing-linting';
 import {obMockLogger} from '../../../logger/mock';
 
@@ -17,7 +17,7 @@ describe(removeExistingLinting.name, () => {
 	test('package.json property removal', async () => {
 		inputTree.create('/package.json', '{"eslintConfig": {}, "keep": {}, "scripts": {"lint": ""}}');
 
-		const resultTree = await firstValueFrom(runner.callRule(removeExistingLinting(logger.group('A')), inputTree));
+		const resultTree = await runRule(runner, removeExistingLinting(logger.group('A')), {tree: inputTree});
 
 		expect(resultTree.readText('./package.json')).toEqual('{"keep": {}, "scripts": {}}');
 	});
@@ -47,7 +47,7 @@ describe(removeExistingLinting.name, () => {
 				},
 			};
 			inputTree.create('/package.json', JSON.stringify(pkg));
-			const resultTree = await firstValueFrom(runner.callRule(removeExistingLinting(logger.group('A')), inputTree));
+			const resultTree = await runRule(runner, removeExistingLinting(logger.group('A')), {tree: inputTree});
 			resultPkg = resultTree.readJson('package.json') as {devDependencies: Record<string, string>};
 		});
 
@@ -78,7 +78,7 @@ describe(removeExistingLinting.name, () => {
 			});
 			inputTree.create('/keep.txt', 'keep');
 			inputTree.create('/package.json', '{}');
-			resultTree = await firstValueFrom(runner.callRule(removeExistingLinting(logger.group('A')), inputTree));
+			resultTree = await runRule(runner, removeExistingLinting(logger.group('A')), {tree: inputTree});
 		});
 
 		test.each(filesToRemove)('removes "%s" config files', file => {
