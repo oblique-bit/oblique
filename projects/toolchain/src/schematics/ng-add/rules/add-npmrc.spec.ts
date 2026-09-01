@@ -2,12 +2,12 @@ import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/test
 import {Tree} from '@angular-devkit/schematics';
 import {join} from 'node:path';
 import addNpmrc from './add-npmrc';
-import fs from 'fs';
 import {obMockLogger} from '../../../logger/mock';
-import {runRule} from '../../test-utils';
+import {readFileWithSystemEol, runRule} from '../../test-utils';
 
 const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
 const {logger} = obMockLogger();
+const templatesDir = join(__dirname, '../templates');
 
 describe('addNpmrc', () => {
 	let inputTree: UnitTestTree;
@@ -34,7 +34,7 @@ describe('addNpmrc', () => {
 		});
 
 		test('creates a new .npmrc file', async () => {
-			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-npmrc/npmrc'), 'utf8');
+			const templateContent = readFileWithSystemEol(templatesDir, 'add-npmrc/npmrc');
 			const resultTree = await runRule(runner, addNpmrc(logger.group('A'), true), {
 				tree: inputTree,
 				path: join(__dirname, '..'),
@@ -54,7 +54,7 @@ describe('addNpmrc', () => {
 		test('is idempotent - multiple executions produce same result', async () => {
 			const groupLogger = logger.group('A');
 			const rule = addNpmrc(groupLogger, true);
-			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-npmrc/npmrc'), 'utf8');
+			const templateContent = readFileWithSystemEol(templatesDir, 'add-npmrc/npmrc');
 
 			let resultTree = await runRule(runner, rule, {tree: inputTree, path: join(__dirname, '..')});
 			expect(resultTree.readContent('.npmrc')).toEqual(templateContent);

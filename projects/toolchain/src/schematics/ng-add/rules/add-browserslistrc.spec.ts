@@ -1,13 +1,13 @@
 import {HostTree, type Tree} from '@angular-devkit/schematics';
 import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
-import * as fs from 'fs';
 import {obMockLogger} from '../../../logger/mock';
-import {runRule} from '../../test-utils';
+import {readFileWithSystemEol, runRule} from '../../test-utils';
 import {addBrowserslistrc} from './add-browserslistrc';
 
 describe(addBrowserslistrc.name, () => {
-	const templateContent = fs.readFileSync(join(__dirname, '../templates/add-browserslistrc/.browserslistrc'), 'utf8');
+	const templatesDir = join(__dirname, '../templates');
+	const templateContent = readFileWithSystemEol(templatesDir, 'add-browserslistrc/.browserslistrc');
 	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
 	const {logger, loggerGroups} = obMockLogger();
 	let inputTree: Tree;

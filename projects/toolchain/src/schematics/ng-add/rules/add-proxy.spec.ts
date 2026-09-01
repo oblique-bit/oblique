@@ -1,13 +1,13 @@
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
-import fs from 'fs';
 import {join} from 'node:path';
 import {obMockLogger} from '../../../logger/mock';
-import {runRule} from '../../test-utils';
+import {readFileWithSystemEol, runRule} from '../../test-utils';
 import {toolchain} from '../index';
 
 const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
 const {loggerGroups, clearGroups} = obMockLogger();
+const templatesDir = join(__dirname, '../templates');
 
 interface AngularJson {
 	version: number;
@@ -61,7 +61,7 @@ describe('addProxy', () => {
 		test('creates a new proxy.conf.json file', async () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
-			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-proxy/proxy.conf.json'), 'utf8');
+			const templateContent = readFileWithSystemEol(templatesDir, 'add-proxy/proxy.conf.json');
 			const resultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
 				tree: inputTree,
 				path: join(__dirname, '..'),
@@ -101,7 +101,7 @@ describe('addProxy', () => {
 		test('is idempotent - multiple executions produce same result', async () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
-			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-proxy/proxy.conf.json'), 'utf8');
+			const templateContent = readFileWithSystemEol(templatesDir, 'add-proxy/proxy.conf.json');
 			const expectedContent = templateContent.replace('<%= port %>', '4200');
 
 			const firstResultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
@@ -171,7 +171,7 @@ describe('addProxy', () => {
 	describe('without angular.json', () => {
 		test('creates proxy.conf.json without error', async () => {
 			const inputTree = createBaseTree();
-			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-proxy/proxy.conf.json'), 'utf8');
+			const templateContent = readFileWithSystemEol(templatesDir, 'add-proxy/proxy.conf.json');
 			const resultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
 				tree: inputTree,
 				path: join(__dirname, '..'),

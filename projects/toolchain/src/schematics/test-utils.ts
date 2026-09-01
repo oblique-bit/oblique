@@ -1,5 +1,8 @@
 import {type Rule, type SchematicContext, type Tree, callRule} from '@angular-devkit/schematics';
 import {type SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
+import {readFileSync} from 'node:fs';
+import {EOL} from 'node:os';
+import {join} from 'node:path';
 import {firstValueFrom, of} from 'rxjs';
 
 /**
@@ -26,4 +29,18 @@ export function runRule(
 	>[0];
 	const context: SchematicContext = runner.engine.createContext(schematic, undefined);
 	return firstValueFrom(callRule(rule, of(options.tree), context)).then(tree => new UnitTestTree(tree));
+}
+
+/**
+ * Reads a file and normalizes its line endings to the platform's default ({@link EOL}).
+ *
+ * Schematics templates are committed with LF line endings while the trees produced by DevKit contain the platform
+ * default line endings, so comparing both directly would fail on Windows.
+ *
+ * @param baseDir Directory the relative path is resolved against.
+ * @param relativePath Path to the file to read, relative to {@link baseDir}.
+ * @returns The file content with normalized line endings.
+ */
+export function readFileWithSystemEol(baseDir: string, relativePath: string): string {
+	return readFileSync(join(baseDir, relativePath), 'utf8').replace(/\r?\n/gu, EOL);
 }
