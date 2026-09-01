@@ -130,6 +130,7 @@ class HookCommitRules {
 							'angular.json',
 							'CONTRIBUTING.md',
 							'README.md',
+							'AGENTS.md',
 							'.gitignore',
 							'projects/stylesBuilder/oblique-components.scss',
 						].includes(filePath)
