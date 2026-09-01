@@ -34,10 +34,6 @@ describe(ObErrorMessagesDirective.name, () => {
 			directive = TestBed.inject(ObErrorMessagesDirective);
 		});
 
-		afterEach(() => {
-			directive.ngOnDestroy();
-		});
-
 		it('should not emit', () => {
 			const spy = jest.fn();
 
@@ -63,10 +59,6 @@ describe(ObErrorMessagesDirective.name, () => {
 			});
 			directive = TestBed.inject(ObErrorMessagesDirective);
 			directive[control] = signal({ngControl: {errors, statusChanges: mockStatusChange}});
-		});
-
-		afterEach(() => {
-			directive.ngOnDestroy();
 		});
 
 		it('should emit initial errors', async () => {
@@ -107,10 +99,6 @@ describe(ObErrorMessagesDirective.name, () => {
 			});
 			directive = TestBed.inject(ObErrorMessagesDirective);
 			directive[control] = signal({ngControl: {errors, statusChanges: mockStatusChange}});
-		});
-
-		afterEach(() => {
-			directive.ngOnDestroy();
 		});
 
 		it('should emit initial errors', async () => {
