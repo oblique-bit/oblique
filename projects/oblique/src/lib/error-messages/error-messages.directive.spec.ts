@@ -1,5 +1,5 @@
 import {FormGroupDirective, NgForm} from '@angular/forms';
-import {EventEmitter} from '@angular/core';
+import {EventEmitter, signal} from '@angular/core';
 import {Subject, firstValueFrom} from 'rxjs';
 import {ObErrorMessagesDirective} from './error-messages.directive';
 import {TestBed} from '@angular/core/testing';
@@ -62,7 +62,7 @@ describe(ObErrorMessagesDirective.name, () => {
 				providers: [ObErrorMessagesDirective, {provide: NgForm, useValue: {ngSubmit: mockSubmit}}],
 			});
 			directive = TestBed.inject(ObErrorMessagesDirective);
-			directive[control] = {ngControl: {errors, statusChanges: mockStatusChange}};
+			directive[control] = signal({ngControl: {errors, statusChanges: mockStatusChange}});
 		});
 
 		afterEach(() => {
@@ -106,7 +106,7 @@ describe(ObErrorMessagesDirective.name, () => {
 				providers: [ObErrorMessagesDirective, {provide: FormGroupDirective, useValue: {ngSubmit: mockSubmit}}],
 			});
 			directive = TestBed.inject(ObErrorMessagesDirective);
-			directive[control] = {ngControl: {errors, statusChanges: mockStatusChange}};
+			directive[control] = signal({ngControl: {errors, statusChanges: mockStatusChange}});
 		});
 
 		afterEach(() => {

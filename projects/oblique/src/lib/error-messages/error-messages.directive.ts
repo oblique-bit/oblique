@@ -1,4 +1,4 @@
-import {AfterViewInit, ContentChild, Directive, OnDestroy, inject, input} from '@angular/core';
+import {AfterViewInit, Directive, OnDestroy, contentChild, inject, input} from '@angular/core';
 import {MatInput} from '@angular/material/input';
 import {FormGroupDirective, NgForm, ValidationErrors} from '@angular/forms';
 import {MatSelect} from '@angular/material/select';
@@ -10,8 +10,8 @@ import {takeUntil} from 'rxjs/operators';
 	exportAs: 'obErrorMessages',
 })
 export class ObErrorMessagesDirective implements AfterViewInit, OnDestroy {
-	@ContentChild(MatInput) matInput;
-	@ContentChild(MatSelect) matSelect;
+	readonly matInput = contentChild(MatInput);
+	readonly matSelect = contentChild(MatSelect);
 	readonly prefix = input<string>(undefined);
 	readonly errors$: Observable<ValidationErrors>;
 	private readonly errors = new Subject<ValidationErrors>();
@@ -31,7 +31,7 @@ export class ObErrorMessagesDirective implements AfterViewInit, OnDestroy {
 	}
 
 	ngAfterViewInit(): void {
-		const ctrl = this.matInput?.ngControl || this.matSelect?.ngControl;
+		const ctrl = this.matInput()?.ngControl || this.matSelect()?.ngControl;
 		if (ctrl) {
 			this.errors.next(ctrl.errors); // because 1st statusChange occurs before ngAfterViewInit
 			merge(this.form.ngSubmit, ctrl.statusChanges)
