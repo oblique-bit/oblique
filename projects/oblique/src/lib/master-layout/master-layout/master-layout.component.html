@@ -66,16 +66,24 @@
 				</div>
 			</div>
 		} @else {
-			<main id="content" class="ob-main-layout" tabindex="-1" cdkScrollable (scroll)="scrollTop(main)" #main>
-				<ob-notification channel="oblique" />
-				<router-outlet />
-			</main>
+			<ng-container *ngTemplateOutlet="normalLayout" />
 		}
 		<ng-template #normalLayout>
-			<main id="content" class="ob-main-layout" tabindex="-1" cdkScrollable (scroll)="scrollTop(main)" #main>
-				<ob-notification channel="oblique" />
-				<router-outlet />
-			</main>
+			@if (isFooterSticky() && isHeaderSticky()) {
+				<div class="ob-fixed-scroll-wrapper" cdkScrollable (scroll)="scrollTop(main)" #main>
+					<main id="content" class="ob-main-layout" tabindex="-1">
+						<ng-container *ngTemplateOutlet="mainContent" />
+					</main>
+				</div>
+			} @else {
+				<main id="content" class="ob-main-layout" tabindex="-1" cdkScrollable (scroll)="scrollTop(main)" #main>
+					<ng-container *ngTemplateOutlet="mainContent" />
+				</main>
+			}
+		</ng-template>
+		<ng-template #mainContent>
+			<ob-notification channel="oblique" />
+			<router-outlet />
 		</ng-template>
 		@if (!isFooterSticky() || isHeaderSticky()) {
 			<ng-container [ngTemplateOutlet]="footer" />
