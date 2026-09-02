@@ -43,10 +43,10 @@ describe('Ob new command', () => {
 			'--environments=local dev ref test abn prod',
 			'--prefix=app',
 			'--ajv',
-			'--unknownRoute',
-			'--httpInterceptors',
+			'--unknown-route',
+			'--http-interceptors',
 			'--no-banner',
-			'--externalLink',
+			'--external-link',
 			'--jest',
 			'--eslint',
 			'--husky',
@@ -661,7 +661,7 @@ describe('Ob new command', () => {
 				expectedAddObliqueOptions: [
 					'--locale=de-CH fr-CH it-CH',
 					'--title=My App',
-					'--applicationOperator=My Operator',
+					'--application-operator=My Operator',
 				],
 			},
 			{
@@ -670,7 +670,7 @@ describe('Ob new command', () => {
 				expectedAddObliqueOptions: [
 					'--locale=de-CH fr-CH it-CH',
 					`--title=${projectName}`,
-					'--applicationOperator=My Operator',
+					'--application-operator=My Operator',
 				],
 			},
 		])('title and applicationOperator handling $description', ({args, expectedAddObliqueOptions}) => {
@@ -748,7 +748,7 @@ export class AppModule {
 					'@oblique/toolchain:add-oblique',
 					'--locale=de-CH fr-CH it-CH',
 					`--title=${projectName}`,
-					'--applicationOperator=Bridged Operator',
+					'--application-operator=Bridged Operator',
 				];
 				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
