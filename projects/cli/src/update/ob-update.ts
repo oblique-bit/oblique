@@ -101,12 +101,6 @@ export function runUpdateDependencies(cmdOptions: ObUpdateOptions<string | boole
 		);
 		const validatedOptions = returnTruthyOptions(cmdOptions);
 
-		// commanderjs changes the key any kebab case option which turns it invalid as an angular param
-		if (validatedOptions['allowDirty']) {
-			validatedOptions['allow-dirty'] = validatedOptions['allowDirty'];
-			delete validatedOptions['allowDirty'];
-		}
-
 		execute({
 			name: 'ngUpdate',
 			dependencies,
