@@ -59,7 +59,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 				tap(svg => {
 					this.iconElement = this.createIconElement(svg);
 				}),
-				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isUrlExternal(this.href())))),
+				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isLinkOriginExternal()))),
 				tap(isLinkExternal => {
 					this.isLinkExternal = isLinkExternal;
 				})
@@ -70,7 +70,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnChanges(): void {
-		this.isLinkExternal$.next(this.isUrlExternal(this.href()));
+		this.isLinkExternal$.next(this.isLinkOriginExternal());
 		this.host.href = this.href();
 	}
 
@@ -79,10 +79,10 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 		this.unsubscribe.complete();
 	}
 
-	private isUrlExternal(url: string | undefined): boolean {
+	private isLinkOriginExternal(): boolean {
 		const isExternalLink = this.isExternalLink();
 		if (isExternalLink === 'auto') {
-			return url ? !url.includes(this.window.location.host) : false;
+			return this.host.origin ? this.host.origin !== this.window.location.origin : false;
 		}
 		return isExternalLink;
 	}
