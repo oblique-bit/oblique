@@ -63,7 +63,7 @@ export const runObCommand = (): void => {
 
 export const obTitle = `Oblique Cli`;
 
-export const recommendedVersion = 22;
+export const recommendedVersion = 24;
 export const minimumSupportedVersion = '22.22.3';
 
 export function getHelpText(command: 'ob' | 'ob new' | 'ob update'): string {
