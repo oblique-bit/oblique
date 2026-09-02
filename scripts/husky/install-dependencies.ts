@@ -4,17 +4,21 @@ import {Log} from '../shared/log';
 
 class InstallDependencies {
 	static perform(): void {
+		Log.start('Check git Oblique config');
+		if (!Git.getGlobalConfig('oblique.hooks.npm-ci')) {
+			Log.info('Oblique npm-ci hook is disabled, skipping automatic dependencies installation check.');
+			Log.success();
+			return;
+		}
+		Log.success();
+
 		Log.start('Check for changes in the dependencies');
 		// Disabled on windows because npm ci is too slow
-		if (!InstallDependencies.isWindows() && InstallDependencies.hasDependenciesChanges()) {
+		if (InstallDependencies.hasDependenciesChanges()) {
 			Log.info('Changes detected to the dependencies, reinstalling');
 			executeCommandWithLog('npm ci  --audit false --fund false', 'Install dependencies');
 		}
 		Log.success();
-	}
-
-	static isWindows(): boolean {
-		return process.platform === 'win32';
 	}
 
 	static hasDependenciesChanges(): boolean {
