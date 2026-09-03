@@ -16,7 +16,7 @@
             },
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.font_size.2xl}"
+              "$value": "{ob.s.static.font_size.3xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
@@ -24,7 +24,7 @@
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.line_height.xl}"
+              "$value": "{ob.s.static.line_height.2xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
@@ -60,7 +60,7 @@
             },
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.font_size.xl}"
+              "$value": "{ob.s.static.font_size.2xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
@@ -104,7 +104,8 @@
             },
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.font_size.lg}"
+              "$value": "{ob.s.static.font_size.xl}",
+              "$description": "20px — aligned with the current active/production H3 size, distinct from H4-H6."
             },
             "font_weight": {
               "$type": "fontWeights",
@@ -371,7 +372,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraph_spacing.2xl}"
+              "$value": "{ob.s.static.paragraph_spacing.3xl}"
             }
           },
           "p": {
