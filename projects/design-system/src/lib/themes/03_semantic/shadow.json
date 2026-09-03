@@ -4,8 +4,15 @@
       "shadow": {
         "none": {
           "$type": "boxShadow",
-          "$value": "none",
-          "$description": "No shadow — CSS none. Flat, non-elevated surfaces and resting interactive states."
+          "$value": {
+            "x": "0px",
+            "y": "0px",
+            "blur": "0px",
+            "spread": "0px",
+            "color": "{ob.p.color.basic.transparent}",
+            "type": "dropShadow"
+          },
+          "$description": "No shadow. Single drop-shadow with zero geometry and a transparent colour, so it renders nothing. Flat, non-elevated surfaces and resting interactive states."
         },
         "sm": {
           "$type": "boxShadow",
