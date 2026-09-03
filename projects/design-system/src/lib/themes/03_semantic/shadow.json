@@ -17,7 +17,7 @@
             "color": "{ob.p.color.cobalt_alpha.50}",
             "type": "dropShadow"
           },
-          "$description": "Small elevation shadow. Single drop-shadow. PLACEHOLDER geometry — align with BK reference, see AI task."
+          "$description": "Small elevation shadow. Single drop-shadow. Surfaces that sit just above the page, such as cards and raised panels."
         },
         "md": {
           "$type": "boxShadow",
@@ -29,7 +29,7 @@
             "color": "{ob.p.color.cobalt_alpha.50}",
             "type": "dropShadow"
           },
-          "$description": "Medium elevation shadow. Single drop-shadow. PLACEHOLDER geometry — align with BK reference, see AI task."
+          "$description": "Medium elevation shadow. Single drop-shadow. Surfaces lifted on interaction or layered over content, such as hovered controls and dropdowns."
         },
         "lg": {
           "$type": "boxShadow",
@@ -41,7 +41,7 @@
             "color": "{ob.p.color.cobalt_alpha.50}",
             "type": "dropShadow"
           },
-          "$description": "Large elevation shadow. Single drop-shadow. PLACEHOLDER geometry — align with BK reference, see AI task."
+          "$description": "Large elevation shadow. Single drop-shadow. Surfaces that float above the whole page, such as dialogs and modals."
         }
       }
     }
