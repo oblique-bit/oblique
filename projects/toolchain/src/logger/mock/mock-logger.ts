@@ -1,40 +1,41 @@
+import type {Mocked} from 'vitest';
 import * as loggerModule from '../index.js';
 import type {ObGroupLogger, ObLogger} from '../index.js';
 import type {ObMockLogger} from './types.js';
 
-jest.mock('../index.js'); // mock the logger tool
+vi.mock('../index.js'); // mock the logger tool
 
-const loggerGroups: jest.Mocked<ObGroupLogger>[] = [];
+const loggerGroups: Mocked<ObGroupLogger>[] = [];
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function -- signature must match the real implementation
 const voidFn = (message: string): void => {};
 // eslint-disable-next-line @typescript-eslint/no-unused-vars -- signature must match the real implementation
 const groupFn = (message: string): ObGroupLogger => createMockLoggerGroup();
 
-const logger: jest.Mocked<ObLogger> = {
-	info: jest.fn(voidFn),
-	success: jest.fn(voidFn),
-	warn: jest.fn(voidFn),
-	error: jest.fn(voidFn),
-	raw: jest.fn(voidFn),
-	group: jest.fn(groupFn),
+const logger: Mocked<ObLogger> = {
+	info: vi.fn(voidFn),
+	success: vi.fn(voidFn),
+	warn: vi.fn(voidFn),
+	error: vi.fn(voidFn),
+	raw: vi.fn(voidFn),
+	group: vi.fn(groupFn),
 };
 
 function clearGroups(): void {
 	loggerGroups.length = 0;
 }
 
-function createMockLoggerGroup(): jest.Mocked<ObGroupLogger> {
+function createMockLoggerGroup(): Mocked<ObGroupLogger> {
 	const group = {
-		info: jest.fn(voidFn),
-		success: jest.fn(voidFn),
-		warn: jest.fn(voidFn),
-		error: jest.fn(voidFn),
-		raw: jest.fn(voidFn),
-		step: jest.fn(),
-		stepError: jest.fn(),
-		logRawOutput: jest.fn(),
-		end: jest.fn(),
-		group: jest.fn(groupFn),
+		info: vi.fn(voidFn),
+		success: vi.fn(voidFn),
+		warn: vi.fn(voidFn),
+		error: vi.fn(voidFn),
+		raw: vi.fn(voidFn),
+		step: vi.fn(),
+		stepError: vi.fn(),
+		logRawOutput: vi.fn(),
+		end: vi.fn(),
+		group: vi.fn(groupFn),
 	};
 	loggerGroups.push(group);
 	return group;
@@ -72,7 +73,7 @@ function createMockLoggerGroup(): jest.Mocked<ObGroupLogger> {
  * - {@link ObMockLogger#clearGroups|clearGroups()}: a function to clear {@link ObMockLogger#loggerGroups|loggerGroups} between tests
  */
 export function obMockLogger(): ObMockLogger {
-	const mockedModule = jest.mocked(loggerModule);
+	const mockedModule = vi.mocked(loggerModule);
 	mockedModule.obCreateSchematicsLogger.mockImplementation(() => logger);
 	mockedModule.obCreateLogger.mockImplementation(() => logger);
 

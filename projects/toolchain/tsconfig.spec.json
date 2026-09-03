@@ -2,7 +2,7 @@
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
     "ignoreDeprecations": "6.0",
-    "types": ["jest", "node"]
+    "types": ["vitest/globals", "node"]
   },
   "include": ["src/**/*.spec.ts"],
   "exclude": []

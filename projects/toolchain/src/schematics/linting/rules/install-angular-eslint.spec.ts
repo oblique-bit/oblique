@@ -1,8 +1,8 @@
 import {HostTree, type Tree} from '@angular-devkit/schematics';
 import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
-import {firstValueFrom} from 'rxjs';
 import {obMockLogger} from '../../../logger/mock';
+import {runRule} from '../../test-utils';
 import {callExternalSchematics} from '../../shared/external-schematics';
 import * as externalSchematicsRule from '../../shared/external-schematics';
 import {installAngularEslint} from './install-angular-eslint';
@@ -14,7 +14,7 @@ describe(installAngularEslint.name, () => {
 
 	beforeEach(() => {
 		inputTree = new HostTree();
-		jest.spyOn(externalSchematicsRule, 'callExternalSchematics').mockImplementation(() => {
+		vi.spyOn(externalSchematicsRule, 'callExternalSchematics').mockImplementation(() => {
 			inputTree.create('/eslint.config.js', '{}');
 			return () => inputTree;
 		});
@@ -24,7 +24,7 @@ describe(installAngularEslint.name, () => {
 		inputTree.create('/package.json', '{}');
 		inputTree.create('/angular.json', '{}');
 
-		await firstValueFrom(runner.callRule(installAngularEslint(logger.group('A')), inputTree));
+		await runRule(runner, installAngularEslint(logger.group('A')), {tree: inputTree});
 
 		expect(callExternalSchematics).toHaveBeenCalledWith(loggerGroups[1], 'angular-eslint', 'ng-add');
 	});
@@ -34,7 +34,7 @@ describe(installAngularEslint.name, () => {
 		inputTree.create('/angular.json', '{}');
 		inputTree.create('/keep.txt', 'keep');
 
-		const resultTree = await firstValueFrom(runner.callRule(installAngularEslint(logger.group('A')), inputTree));
+		const resultTree = await runRule(runner, installAngularEslint(logger.group('A')), {tree: inputTree});
 
 		expect(resultTree.exists('/eslint.config.js')).toBe(false);
 		expect(resultTree.exists('/keep.txt')).toBe(true);
@@ -46,7 +46,7 @@ describe(installAngularEslint.name, () => {
 		inputTree.create('/keep.txt', 'keep');
 		inputTree.create('/package.json', '{}');
 
-		const resultTree = await firstValueFrom(runner.callRule(installAngularEslint(logger.group('A')), inputTree));
+		const resultTree = await runRule(runner, installAngularEslint(logger.group('A')), {tree: inputTree});
 
 		expect(resultTree.exists('/keep.txt')).toBe(true);
 		expect(loggerGroups[1].step).not.toHaveBeenCalledWith('Remove "eslint.config.js" configuration file');

@@ -2,6 +2,8 @@ import {Tree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 import {join} from 'node:path';
 import {obMockLogger} from '../../logger/mock';
+import {runRule} from '../test-utils';
+import {addOblique} from './index';
 import * as addFaviconRules from './rules/add-favicon';
 import {addFavicon} from './rules/add-favicon';
 
@@ -28,9 +30,12 @@ describe('addOblique schematics', () => {
 
 	test('orchestration', async () => {
 		const inputTree = createInputTree();
-		jest.spyOn(addFaviconRules, 'addFavicon');
+		vi.spyOn(addFaviconRules, 'addFavicon');
 
-		await testRunner.runSchematic('add-oblique', {locale: 'de-CH fr-CH'}, inputTree);
+		await runRule(testRunner, addOblique({locale: 'de-CH fr-CH', silent: false}), {
+			tree: inputTree,
+			path: __dirname,
+		});
 
 		expect(logger.group).toHaveBeenCalledWith('Generate @oblique/toolchain:add-oblique');
 		expect(addFavicon).toHaveBeenCalledTimes(1);
@@ -40,7 +45,10 @@ describe('addOblique schematics', () => {
 	test('calls i18n schematic with locales', async () => {
 		const inputTree = createInputTree();
 
-		const resultTree = await testRunner.runSchematic('add-oblique', {locale: 'de-CH fr-CH'}, inputTree);
+		const resultTree = await runRule(testRunner, addOblique({locale: 'de-CH fr-CH', silent: false}), {
+			tree: inputTree,
+			path: __dirname,
+		});
 
 		expect(resultTree.exists('src/assets/i18n/de.json')).toBe(true);
 		expect(resultTree.exists('src/assets/i18n/fr.json')).toBe(true);

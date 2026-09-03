@@ -1,3 +1,4 @@
+import type {Mocked} from 'vitest';
 import {Logger} from './logger';
 import type {Writer} from './types';
 import {BaseLogger} from './base-logger';
@@ -5,16 +6,16 @@ import {GroupLogger} from './group-logger';
 import chalk from 'chalk';
 
 describe(Logger.name, () => {
-	let writer: jest.Mocked<Writer>;
+	let writer: Mocked<Writer>;
 	let logger: Logger;
 
 	beforeEach(() => {
 		writer = {
-			info: jest.fn(),
-			success: jest.fn(),
-			warn: jest.fn(),
-			error: jest.fn(),
-			raw: jest.fn(),
+			info: vi.fn(),
+			success: vi.fn(),
+			warn: vi.fn(),
+			error: vi.fn(),
+			raw: vi.fn(),
 		};
 
 		logger = new Logger(writer);

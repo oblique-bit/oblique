@@ -8,14 +8,14 @@ describe('logger-factory', () => {
 		let logger: ObLogger;
 		describe('not silent', () => {
 			beforeEach(() => {
-				jest.spyOn(console, 'info').mockImplementation(() => {});
-				jest.spyOn(console, 'warn').mockImplementation(() => {});
-				jest.spyOn(console, 'error').mockImplementation(() => {});
+				vi.spyOn(console, 'info').mockImplementation(() => {});
+				vi.spyOn(console, 'warn').mockImplementation(() => {});
+				vi.spyOn(console, 'error').mockImplementation(() => {});
 				logger = obCreateLogger();
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 
 			test('instance of Logger', () => {
@@ -60,14 +60,14 @@ describe('logger-factory', () => {
 
 		describe('silent', () => {
 			beforeEach(() => {
-				jest.spyOn(console, 'info').mockImplementation(() => {});
-				jest.spyOn(console, 'warn').mockImplementation(() => {});
-				jest.spyOn(console, 'error').mockImplementation(() => {});
+				vi.spyOn(console, 'info').mockImplementation(() => {});
+				vi.spyOn(console, 'warn').mockImplementation(() => {});
+				vi.spyOn(console, 'error').mockImplementation(() => {});
 				logger = obCreateLogger(true);
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 
 			test('instance of Logger', () => {
@@ -89,7 +89,7 @@ describe('logger-factory', () => {
 	});
 
 	describe(obCreateSchematicsLogger.name, () => {
-		const context = {info: jest.fn(), success: jest.fn(), warn: jest.fn(), error: jest.fn()};
+		const context = {info: vi.fn(), success: vi.fn(), warn: vi.fn(), error: vi.fn()};
 		let logger: ObLogger;
 
 		describe('not silent', () => {
@@ -98,7 +98,7 @@ describe('logger-factory', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 
 			test('instance of Logger', () => {
@@ -147,7 +147,7 @@ describe('logger-factory', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 
 			test('instance of Logger', () => {

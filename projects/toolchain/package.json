@@ -14,8 +14,8 @@
     "link": "npm run build && cd ../../dist/toolchain && npm link",
     "lint": "tsx scripts/pipelines/lint.ts",
     "format": "npm run lint -- --fix",
-    "test": "jest",
-    "test-ci": "jest --config=jest.config.ci.js",
+    "test": "vitest",
+    "test-ci": "vitest run --config vitest.config.ci.ts",
     "build": "tsx scripts/pipelines/pre-build.ts && tsc -p tsconfig.lib.json && tsc -p tsconfig.esm.json && tsx scripts/pipelines/post-build.ts",
     "release": "tsx scripts/pipelines/release.ts",
     "npm-publish": "tsx scripts/pipelines/publish.ts"
@@ -50,5 +50,8 @@
   "schematics": "./schematics/collection.json",
   "ng-add": {
     "save": "devDependencies"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.10"
   }
 }

@@ -1,8 +1,8 @@
 // spawnSync needs to be mocked before it imported. since any other import statement may also import spawnSync, the mock
 // need to be the first thing in this file
 
-jest.mock('child_process', () => ({
-	spawnSync: jest.fn(),
+vi.mock('child_process', () => ({
+	spawnSync: vi.fn(),
 }));
 
 import {spawnSync} from 'child_process';
@@ -18,15 +18,15 @@ describe('exec-with-logging', () => {
 	beforeEach(() => {
 		logger = obCreateLogger(true);
 		loggerGroup = logger.group('command');
-		jest.spyOn(loggerGroup, 'step').mockImplementation(() => {});
-		jest.spyOn(loggerGroup, 'logRawOutput').mockImplementation(() => {});
-		jest.spyOn(loggerGroup, 'stepError').mockImplementation(() => {});
-		jest.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
+		vi.spyOn(loggerGroup, 'step').mockImplementation(() => {});
+		vi.spyOn(loggerGroup, 'logRawOutput').mockImplementation(() => {});
+		vi.spyOn(loggerGroup, 'stepError').mockImplementation(() => {});
+		vi.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
 	});
 
 	describe.each([{cmd: obExecWithLogging}, {cmd: obExecWithLoggingOrExit}])('$cmd.name success', ({cmd}) => {
 		beforeEach(() => {
-			(spawnSync as jest.Mock).mockReturnValueOnce({
+			(spawnSync as vi.Mock).mockReturnValueOnce({
 				pid: 1,
 				output: [''],
 				stderr: null,
@@ -175,14 +175,14 @@ describe('exec-with-logging', () => {
 			},
 		])('with $desc', ({throws, error, exitCode}) => {
 			beforeEach(() => {
-				(spawnSync as jest.Mock).mockImplementationOnce(() => {
+				(spawnSync as vi.Mock).mockImplementationOnce(() => {
 					throw throws;
 				});
 				result = cmd({logger: loggerGroup, command});
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 
 			test('logs the step', () => {

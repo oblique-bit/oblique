@@ -1,11 +1,13 @@
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
-import fs from 'fs';
 import {join} from 'node:path';
 import {obMockLogger} from '../../../logger/mock';
+import {readFileWithSystemEol, runRule} from '../../test-utils';
+import {toolchain} from '../index';
 
 const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
 const {loggerGroups, clearGroups} = obMockLogger();
+const templatesDir = join(__dirname, '../templates');
 
 interface AngularJson {
 	version: number;
@@ -27,7 +29,7 @@ function createBaseTree(): HostTree {
 
 describe('addProxy', () => {
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 		clearGroups();
 	});
 
@@ -35,14 +37,20 @@ describe('addProxy', () => {
 		test('does not create proxy.conf.json', async () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
-			const resultTree = await runner.runSchematic('ng-add', {}, inputTree);
+			const resultTree = await runRule(runner, toolchain({npmrc: true}), {
+				tree: inputTree,
+				path: join(__dirname, '..'),
+			});
 			expect(resultTree.exists('./proxy.conf.json')).toBe(false);
 		});
 
 		test('does not update angular.json', async () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
-			const resultTree = await runner.runSchematic('ng-add', {}, inputTree);
+			const resultTree = await runRule(runner, toolchain({npmrc: true}), {
+				tree: inputTree,
+				path: join(__dirname, '..'),
+			});
 
 			const angularJson = JSON.parse(resultTree.readContent('/angular.json')) as AngularJson;
 			expect(angularJson.projects.app.architect.serve.options.proxyConfig).toBeUndefined();
@@ -53,8 +61,11 @@ describe('addProxy', () => {
 		test('creates a new proxy.conf.json file', async () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
-			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-proxy/proxy.conf.json'), 'utf8');
-			const resultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
+			const templateContent = readFileWithSystemEol(templatesDir, 'add-proxy/proxy.conf.json');
+			const resultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
+				tree: inputTree,
+				path: join(__dirname, '..'),
+			});
 
 			expect(resultTree.readContent('./proxy.conf.json')).toEqual(templateContent.replace('<%= port %>', '4200'));
 		});
@@ -62,7 +73,10 @@ describe('addProxy', () => {
 		test('updates angular.json with proxyConfig for default project', async () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
-			const resultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
+			const resultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
+				tree: inputTree,
+				path: join(__dirname, '..'),
+			});
 
 			const angularJson = JSON.parse(resultTree.readContent('/angular.json')) as AngularJson;
 			expect(angularJson.projects.app.architect.serve.options.proxyConfig).toBe('proxy.conf.json');
@@ -73,25 +87,31 @@ describe('addProxy', () => {
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
 			expect(loggerGroups[0]).toBeUndefined();
 
-			await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
+			await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {tree: inputTree, path: join(__dirname, '..')});
 			expect(loggerGroups[0].step).toHaveBeenCalledWith('Create proxy.conf.json file at project root');
 		});
 
 		test('logs angular.json update', async () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
-			await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
+			await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {tree: inputTree, path: join(__dirname, '..')});
 			expect(loggerGroups[0].step).toHaveBeenCalledWith('Update angular.json to use proxy configuration');
 		});
 
 		test('is idempotent - multiple executions produce same result', async () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
-			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-proxy/proxy.conf.json'), 'utf8');
+			const templateContent = readFileWithSystemEol(templatesDir, 'add-proxy/proxy.conf.json');
 			const expectedContent = templateContent.replace('<%= port %>', '4200');
 
-			const firstResultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
-			const secondResultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, firstResultTree);
+			const firstResultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
+				tree: inputTree,
+				path: join(__dirname, '..'),
+			});
+			const secondResultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
+				tree: firstResultTree,
+				path: join(__dirname, '..'),
+			});
 
 			expect(firstResultTree.readContent('./proxy.conf.json')).toEqual(expectedContent);
 			expect(secondResultTree.readContent('./proxy.conf.json')).toEqual(expectedContent);
@@ -106,7 +126,10 @@ describe('addProxy', () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
 			inputTree.create('proxy.conf.json', 'existing content');
-			const resultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
+			const resultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
+				tree: inputTree,
+				path: join(__dirname, '..'),
+			});
 			expect(resultTree.readContent('./proxy.conf.json')).toEqual('existing content');
 		});
 
@@ -114,7 +137,10 @@ describe('addProxy', () => {
 			const inputTree = createBaseTree();
 			inputTree.create('/angular.json', createAngularJson({app: {root: '', architect: {serve: {options: {}}}}}));
 			inputTree.create('proxy.conf.json', 'existing content');
-			const resultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
+			const resultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
+				tree: inputTree,
+				path: join(__dirname, '..'),
+			});
 
 			const angularJson = JSON.parse(resultTree.readContent('/angular.json')) as AngularJson;
 			expect(angularJson.projects.app.architect.serve.options.proxyConfig).toBeUndefined();
@@ -131,7 +157,10 @@ describe('addProxy', () => {
 					app2: {root: '', architect: {serve: {options: {}}}},
 				})
 			);
-			const resultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
+			const resultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
+				tree: inputTree,
+				path: join(__dirname, '..'),
+			});
 
 			const angularJson = JSON.parse(resultTree.readContent('/angular.json')) as AngularJson;
 			expect(angularJson.projects.app1.architect.serve.options.proxyConfig).toBe('proxy.conf.json');
@@ -142,8 +171,11 @@ describe('addProxy', () => {
 	describe('without angular.json', () => {
 		test('creates proxy.conf.json without error', async () => {
 			const inputTree = createBaseTree();
-			const templateContent = fs.readFileSync(join(__dirname, '../templates/add-proxy/proxy.conf.json'), 'utf8');
-			const resultTree = await runner.runSchematic('ng-add', {proxy: '4200'}, inputTree);
+			const templateContent = readFileWithSystemEol(templatesDir, 'add-proxy/proxy.conf.json');
+			const resultTree = await runRule(runner, toolchain({npmrc: true, proxy: '4200'}), {
+				tree: inputTree,
+				path: join(__dirname, '..'),
+			});
 			expect(resultTree.readContent('./proxy.conf.json')).toEqual(templateContent.replace('<%= port %>', '4200'));
 		});
 	});

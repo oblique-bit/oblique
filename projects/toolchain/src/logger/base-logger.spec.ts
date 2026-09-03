@@ -1,26 +1,27 @@
+import type {Mocked} from 'vitest';
 import {Logger} from './logger';
 import type {Writer} from './types';
 import chalk from 'chalk';
 
 describe(Logger.name, () => {
 	const message = 'Test message';
-	let writer: jest.Mocked<Writer>;
+	let writer: Mocked<Writer>;
 	let logger: Logger;
 
 	beforeEach(() => {
 		writer = {
-			info: jest.fn(),
-			success: jest.fn(),
-			warn: jest.fn(),
-			error: jest.fn(),
-			raw: jest.fn(),
+			info: vi.fn(),
+			success: vi.fn(),
+			warn: vi.fn(),
+			error: vi.fn(),
+			raw: vi.fn(),
 		};
 
 		logger = new Logger(writer);
 	});
 
 	afterEach(() => {
-		jest.resetAllMocks();
+		vi.resetAllMocks();
 	});
 
 	test('creation', () => {
