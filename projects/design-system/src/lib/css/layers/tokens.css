@@ -1546,6 +1546,11 @@
 		--ob-s-color-navigation-border-focus: #e53940;
 		--ob-s-color-navigation-border-hover: #e53940;
 		--ob-s-color-navigation-fg-disabled: #f0f4f7;
+		--ob-s-color-navigation-fg-enabled: #ffffff;
+		--ob-s-color-navigation-fg-focus: #ffffff;
+		--ob-s-color-navigation-fg-hover: #ffffff;
+		--ob-s-color-navigation-fg-pressed: #ffffff;
+		--ob-s-color-navigation-fg-selected: #ffffff;
 		--ob-s-color-neutral-bg-contrast_high-inversity_flipped: #f0f4f7;
 		--ob-s-color-neutral-bg-contrast_high-inversity_normal: #263645;
 		--ob-s-color-neutral-bg-contrast_highest-inversity_flipped: #ffffff;
@@ -1815,6 +1820,7 @@
 		--ob-s1-color-navigation-bg_disabled-opacity: rgb(100% 100% 100% / 0.3);
 		--ob-s1-color-navigation-bg_disabled-solid: rgb(100% 100% 100% / 0.3);
 		--ob-s1-color-navigation-border_base-subtle: #e53940;
+		--ob-s1-color-navigation-fg_base: #ffffff;
 		--ob-s1-color-navigation-fg_disabled: #f0f4f7;
 		--ob-s1-color-neutral-bg-contrast_high-inversity_flipped: #f0f4f7;
 		--ob-s1-color-neutral-bg-contrast_high-inversity_normal: #263645;
