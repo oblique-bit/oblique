@@ -1,5 +1,5 @@
 import {FormGroupDirective, NgForm} from '@angular/forms';
-import {EventEmitter} from '@angular/core';
+import {EventEmitter, signal} from '@angular/core';
 import {Subject, firstValueFrom} from 'rxjs';
 import {ObErrorMessagesDirective} from './error-messages.directive';
 import {TestBed} from '@angular/core/testing';
@@ -34,10 +34,6 @@ describe(ObErrorMessagesDirective.name, () => {
 			directive = TestBed.inject(ObErrorMessagesDirective);
 		});
 
-		afterEach(() => {
-			directive.ngOnDestroy();
-		});
-
 		it('should not emit', () => {
 			const spy = jest.fn();
 
@@ -62,11 +58,7 @@ describe(ObErrorMessagesDirective.name, () => {
 				providers: [ObErrorMessagesDirective, {provide: NgForm, useValue: {ngSubmit: mockSubmit}}],
 			});
 			directive = TestBed.inject(ObErrorMessagesDirective);
-			directive[control] = {ngControl: {errors, statusChanges: mockStatusChange}};
-		});
-
-		afterEach(() => {
-			directive.ngOnDestroy();
+			directive[control] = signal({ngControl: {errors, statusChanges: mockStatusChange}});
 		});
 
 		it('should emit initial errors', async () => {
@@ -106,11 +98,7 @@ describe(ObErrorMessagesDirective.name, () => {
 				providers: [ObErrorMessagesDirective, {provide: FormGroupDirective, useValue: {ngSubmit: mockSubmit}}],
 			});
 			directive = TestBed.inject(ObErrorMessagesDirective);
-			directive[control] = {ngControl: {errors, statusChanges: mockStatusChange}};
-		});
-
-		afterEach(() => {
-			directive.ngOnDestroy();
+			directive[control] = signal({ngControl: {errors, statusChanges: mockStatusChange}});
 		});
 
 		it('should emit initial errors', async () => {
