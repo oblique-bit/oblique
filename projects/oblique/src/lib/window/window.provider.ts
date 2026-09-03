@@ -17,7 +17,7 @@ const mockWindow: ObWindow = {
 		setItem: noop,
 		removeItem: noop,
 	},
-	location: {href: '', host: ''},
+	location: {href: '', host: '', origin: ''},
 	matchMedia: () => ({matches: false}),
 	open: () => null,
 	pageYOffset: 42,
