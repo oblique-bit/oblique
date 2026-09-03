@@ -123,6 +123,11 @@ export class ObServiceNavigationService {
 		shareReplay({bufferSize: 1, refCount: true})
 	);
 
+	/**
+	 * Initializes the root URL from the given environment and optional explicit root URL.
+	 * @param environment the ePortal environment to use; when undefined, the root URL is left untouched
+	 * @param rootUrl an optional explicit root URL that overrides the environment-derived one
+	 */
 	setUpRootUrls(environment: ObEPamsEnvironment | undefined, rootUrl?: string): void {
 		// can't use !environment as ObEPamsEnvironment.PROD is an empty string
 		if (environment !== null && environment !== undefined) {
@@ -131,38 +136,70 @@ export class ObServiceNavigationService {
 		}
 	}
 
+	/**
+	 * Connects the return URL signal so the login URL can substitute the user's return address.
+	 * @param source the signal providing the current return URL
+	 */
 	connectReturnUrl(source: Signal<string | undefined>): void {
 		this.returnUrlSource.set(source);
 	}
 
+	/**
+	 * Sets the ePortal application id used to build the login URL.
+	 * @param appId the ePortal application id
+	 */
 	setPamsAppId(appId: string | undefined): void {
 		this.pamsAppId.set(appId);
 	}
 
+	/**
+	 * Sets the maximum number of favorite applications to display.
+	 * @param count the maximum number of favorite applications
+	 */
 	setFavoriteApplicationsCount(count: number): void {
 		this.favoriteApplicationsCount.set(count);
 	}
 
+	/**
+	 * Sets whether logout should be handled by the service navigation.
+	 * @param handleLogout whether logout is handled by the service navigation
+	 */
 	setHandleLogout(handleLogout: boolean): void {
 		this.redirectorService.handleLogout = handleLogout;
 	}
 
+	/**
+	 * Returns an observable that emits whenever a logout is triggered.
+	 * @returns an observable emitting the logout URL
+	 */
 	getLogoutTrigger$(): Observable<string> {
 		return this.redirectorService.logoutTrigger$;
 	}
 
+	/**
+	 * Sets whether the language should be synchronized with ePortal.
+	 * @param synchronization whether the language is synchronized with ePortal
+	 */
 	setEportalLanguageSynchronization(synchronization: boolean): void {
 		this.languageSynchronizationService.shouldSynchronize = synchronization;
 	}
 
+	/**
+	 * Sets the current language.
+	 * @param language the language code to switch to
+	 */
 	setLanguage(language: string): void {
 		this.translateService.use(language);
 	}
 
+	/**
+	 * Triggers a logout through the service navigation.
+	 */
 	logout(): void {
 		this.redirectorService.logout();
 	}
 
+	/** The login URL for the current user, including the return URL and language placeholders. */
 	readonly loginUrl = this.toSignalWithFallback(
 		this.config$.pipe(
 			map(config => config.login),
@@ -185,6 +222,7 @@ export class ObServiceNavigationService {
 		),
 		''
 	);
+	/** The profile section links for the current user. */
 	readonly profileUrls = this.toSignalWithFallback(
 		this.config$.pipe(
 			combineLatestWith(this.state$, this.returnAppIdUrlParameter$),
@@ -221,6 +259,7 @@ export class ObServiceNavigationService {
 		),
 		[]
 	);
+	/** The inbox mail URL for the current user. */
 	readonly inboxMailUrl = this.toSignalWithFallback(
 		this.config$.pipe(
 			combineLatestWith(this.returnAppIdUrlParameter$),
@@ -228,7 +267,9 @@ export class ObServiceNavigationService {
 		),
 		''
 	);
+	/** The URL of the applications overview page. */
 	readonly applicationsUrl = this.toSignalWithFallback(this.config$.pipe(map(config => config.allServices.url)), '');
+	/** The current login state of the user. */
 	readonly loginState = toSignal(
 		this.config$.pipe(
 			switchMap(() => this.state$),
@@ -238,6 +279,7 @@ export class ObServiceNavigationService {
 		),
 		{initialValue: undefined}
 	);
+	/** The full name of the current user. */
 	readonly userName = this.toSignalWithFallback(
 		this.state$.pipe(
 			map(state => state.profile.fullname),
@@ -245,6 +287,7 @@ export class ObServiceNavigationService {
 		),
 		''
 	);
+	/** The number of unread messages of the current user. */
 	readonly messageCount = this.toSignalWithFallback(
 		this.state$.pipe(
 			map(state => state.messageCount),
@@ -252,9 +295,13 @@ export class ObServiceNavigationService {
 		),
 		0
 	);
+	/** The applications the current user used last. */
 	readonly lastUsedApplications = this.toSignalWithFallback(this.getApplications$('lastUsedApps'), []);
+	/** The favorite applications of the current user. */
 	readonly favoriteApplications = this.toSignalWithFallback(this.getApplications$('favoriteApps'), []);
+	/** The info content provided by the backend. */
 	readonly infoBackend = this.toSignalWithFallback(this.getInfoBackend$(), {} as ObIServiceNavigationBackendInfo);
+	/** The current language code. */
 	readonly language = toSignal(
 		this.translateService.onLangChange.pipe(
 			map(event => event.lang),
@@ -262,6 +309,7 @@ export class ObServiceNavigationService {
 		),
 		{initialValue: this.translateService.currentLang()}
 	);
+	/** The available languages with their display labels. */
 	readonly languages = computed(() =>
 		this.translateService
 			.getLangs()
