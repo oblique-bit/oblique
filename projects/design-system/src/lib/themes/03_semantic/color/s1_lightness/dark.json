@@ -1900,8 +1900,8 @@
           },
           "fg_base": {
             "$type": "color",
-            "$value": "{ob.p.color.cobalt.900}",
-            "$description": "Navigation foreground — text. Always uses the highest contrast cobalt value; navigation text is black regardless of lightness mode."
+            "$value": "{ob.p.color.basic.white}",
+            "$description": "Navigation foreground — text. Highest contrast against the dark navigation surface."
           },
           "fg_disabled": {
             "$type": "color",
