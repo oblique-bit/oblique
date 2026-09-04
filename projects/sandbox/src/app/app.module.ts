@@ -109,8 +109,6 @@ registerLocaleData(localeDE);
 			translate: {
 				locales: {
 					locales: ['en-us', 'fr-CH'],
-					defaultLanguage: 'en',
-					disabled: false,
 				},
 			},
 			language: {hasLanguageInUrl: true},
