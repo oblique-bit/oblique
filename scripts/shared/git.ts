@@ -65,4 +65,30 @@ export class Git {
 		const fullFormat = format.map(item => Git.format[item]).join(separator);
 		return getResultFromCommand(`git log --pretty=format:"${fullFormat}${commitSeparator}" ${from}..${to}`);
 	}
+
+	/**
+	 * Reads the value of a given global git configuration key.
+	 * @param config the name of the global git configuration key to read, e.g. `user.name`
+	 * @returns the configuration value parsed as a boolean, number or string
+	 */
+	static getGlobalConfig(config: string): number | boolean | string {
+		const value = getResultFromCommand(`git config --global ${config}`);
+		return Git.parseValue(value);
+	}
+
+	/**
+	 * Parses a raw string value into its typed equivalent: `'true'`/`'false'` become booleans,
+	 * numeric-looking strings become numbers and everything else is returned unchanged.
+	 * @param value the raw string value to parse
+	 * @returns the value as a boolean, number or string
+	 */
+	private static parseValue(value: string): boolean | number | string {
+		if (value === 'true' || value === 'false') {
+			return value === 'true';
+		}
+		if (value.trim() !== '' && !Number.isNaN(Number(value))) {
+			return Number(value);
+		}
+		return value;
+	}
 }
