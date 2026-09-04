@@ -1,7 +1,5 @@
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {DestroyRef, Directive, ElementRef, Input, OnInit, inject} from '@angular/core';
+import {Directive, ElementRef, computed, effect, inject, input, model} from '@angular/core';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
-import {startWith} from 'rxjs';
 
 @Directive({
 	selector: '[obSelectable]',
@@ -11,22 +9,26 @@ import {startWith} from 'rxjs';
 		'(keydown.control.space)': 'onClick($event)',
 		'(keydown.shift.space)': 'onClick($event)',
 		'(keydown.space)': 'onClick($event)',
-		'[attr.aria-checked]': 'selected',
-		'[attr.role]': 'role',
-		'[attr.tabindex]': 'tabindex',
+		'[attr.aria-checked]': 'selected()',
+		'[attr.role]': 'role()',
+		'[attr.tabindex]': 'tabindex()',
 		'[class.ob-selectable]': 'selectable',
-		'[class.ob-selected]': 'selected',
+		'[class.ob-selected]': 'selected()',
 		class: 'ob-selectable',
 	},
 	exportAs: 'obSelectable',
 })
-export class ObSelectableDirective<T = any> implements OnInit {
-	@Input() value: T;
-	@Input() selected = false;
+export class ObSelectableDirective<T = any> {
+	readonly value = input<T>();
+	readonly selected = model(false);
 	readonly selectable = true;
-	@Input() tabindex = 0;
-	role = 'checkbox';
-	private readonly destroyRef = inject(DestroyRef);
+	readonly tabindex = model(0);
+
+	readonly role = computed(() => {
+		const mode = this.group.effectiveMode();
+		return mode === 'windows' ? undefined : mode;
+	});
+
 	private disabled = false;
 	private readonly initialTabindex: number;
 	private readonly element = inject(ElementRef);
@@ -38,16 +40,12 @@ export class ObSelectableDirective<T = any> implements OnInit {
 				'ObSelectableDirective need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more information'
 			);
 		}
-	}
 
-	ngOnInit(): void {
-		this.initialTabindex = this.tabindex;
+		this.initialTabindex = this.tabindex();
 		this.group.register(this);
-		this.group.mode$.pipe(startWith(this.group.mode), takeUntilDestroyed(this.destroyRef)).subscribe(mode => {
-			this.role = mode === 'windows' ? undefined : mode;
-		});
-		this.group.disabled$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(disabled => {
-			this.toggleDisabled(disabled);
+
+		effect(() => {
+			this.toggleDisabled(this.group.disabled());
 		});
 	}
 
@@ -68,6 +66,6 @@ export class ObSelectableDirective<T = any> implements OnInit {
 
 	private toggleDisabled(state: boolean): void {
 		this.disabled = state;
-		this.tabindex = state ? -1 : this.initialTabindex;
+		this.tabindex.set(state ? -1 : this.initialTabindex);
 	}
 }

@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import {Directive, model, signal} from '@angular/core';
 import {ObSelectableDirective} from '../selectable.directive';
 import {of} from 'rxjs';
 
@@ -10,10 +10,9 @@ import {of} from 'rxjs';
 	exportAs: 'obSelectableGroup',
 })
 export class ObMockSelectableGroupDirective<T = any> {
-	role = 'group';
-	selected$ = of([] as ObSelectableDirective<T>[]);
-	mode$ = of('checkbox');
-	mode = 'checkbox';
+	readonly role = signal('group');
+	readonly selected = model<ObSelectableDirective<T>[]>([]);
+	readonly mode = model<'checkbox' | 'radio' | 'windows'>('checkbox');
 
 	register(directive: ObSelectableDirective<T>): void {}
 

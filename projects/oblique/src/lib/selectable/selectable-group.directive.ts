@@ -1,8 +1,14 @@
-import {BehaviorSubject} from 'rxjs';
-import {AfterContentInit, Directive, EventEmitter, Input, Output, booleanAttribute, inject} from '@angular/core';
+import {
+	AfterContentInit,
+	Directive,
+	booleanAttribute,
+	computed,
+	effect,
+	input,
+	linkedSignal,
+	model,
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {WINDOW} from './../window/window.provider';
-import {ObWindow} from './../window/window.provider.model';
 import {ObSelectableDirective} from './selectable.directive';
 
 @Directive({
@@ -15,8 +21,8 @@ import {ObSelectableDirective} from './selectable.directive';
 		},
 	],
 	host: {
-		'[attr.disabled]': 'isDisabled',
-		'[attr.role]': 'role',
+		'[attr.disabled]': 'effectiveDisabled() ? "" : null',
+		'[attr.role]': 'role()',
 		'(keydown.arrowDown)': 'onArrowDown($event)',
 		'(keydown.arrowRight)': 'onArrowDown($event)',
 		'(keydown.arrowUp)': 'onArrowUp($event)',
@@ -35,20 +41,20 @@ import {ObSelectableDirective} from './selectable.directive';
 	exportAs: 'obSelectableGroup',
 })
 export class ObSelectableGroupDirective<T = any> implements AfterContentInit, ControlValueAccessor {
-	isDisabled = undefined;
-	role = 'group';
+	readonly role = computed(() => (this.mode() === 'radio' ? 'radiogroup' : 'group'));
 	readonly selectable = true;
-	@Output() readonly selected$ = new EventEmitter<ObSelectableDirective<T>[]>();
-	@Output() readonly mode$ = new EventEmitter<'checkbox' | 'radio' | 'windows'>();
+	readonly selected = model<ObSelectableDirective<T>[]>([]);
+	readonly mode = model<'checkbox' | 'radio' | 'windows'>('checkbox');
+	readonly effectiveMode = computed(() => this.mode() ?? 'checkbox');
 
-	public readonly disabled$ = new BehaviorSubject<boolean>(false);
+	readonly disabled = input(false, {transform: booleanAttribute});
+	readonly effectiveDisabled = linkedSignal(() => this.disabled());
+
 	private readonly selectables: ObSelectableDirective<T>[] = [];
-	private modeValue: 'checkbox' | 'radio' | 'windows' = 'checkbox';
 	private focused: number;
 	private prevFocused: number;
 	private startFocused: number;
 	private initialSelection: T[] = [];
-	private readonly window = inject<ObWindow>(WINDOW);
 	private readonly modeToggle = {
 		checkbox: this.checkboxSelect.bind(this),
 		radio: this.radioSelect.bind(this),
@@ -56,41 +62,20 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	};
 
 	constructor() {
-		this.mode$.subscribe(mode => {
-			this.role = mode === 'radio' ? 'radiogroup' : 'group';
+		effect(() => {
+			const mode = this.effectiveMode();
 			if (mode === 'radio') {
 				this.getSelected()
 					.slice(1)
-					.forEach(item => {
-						item.selected = false;
-					});
+					.forEach(item => item.selected.set(false));
+
 				this.updateSelection();
 			}
 		});
-		this.updateSelection();
 	}
 
 	ngAfterContentInit(): void {
-		// because we don't want every consumer to pipe defer to avoid an ExpressionChangedAfterItHasBeenCheckedError
-		this.window.setTimeout(() => this.updateSelection());
-	}
-
-	get mode(): 'checkbox' | 'radio' | 'windows' {
-		return this.modeValue;
-	}
-
-	@Input() set mode(mode: 'checkbox' | 'radio' | 'windows') {
-		this.modeValue = mode || 'checkbox';
-		this.mode$.emit(this.modeValue);
-	}
-
-	get disabled(): boolean {
-		return this.disabled$.getValue();
-	}
-
-	@Input({transform: booleanAttribute}) set disabled(state: boolean) {
-		this.isDisabled = state ? '' : undefined;
-		this.disabled$.next(state);
+		this.updateSelection();
 	}
 
 	registerOnChange(fn: (value: T[]) => void): void {
@@ -104,26 +89,24 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	writeValue(selection: T[]): void {
 		this.initialSelection = selection ?? []; // because the first call to writeValue happens before register
 		this.selectables.forEach(selectable => {
-			selectable.selected = selection?.includes(selectable.value);
+			selectable.selected.set(selection?.includes(selectable.value() as T) ?? false);
 		});
 	}
 
 	setDisabledState(isDisabled: boolean): void {
-		this.isDisabled = isDisabled;
-		this.isDisabled = isDisabled ? '' : undefined;
-		this.disabled$.next(isDisabled);
+		this.effectiveDisabled.set(isDisabled);
 	}
 
 	register(directive: ObSelectableDirective<T>): void {
 		this.selectables.push(directive);
 		// because writeValue have already been called once
-		if (this.initialSelection.includes(directive.value)) {
-			directive.selected = true;
+		if (this.initialSelection.includes(directive.value() as T)) {
+			directive.selected.set(true);
 		}
 	}
 
 	toggle(directive: ObSelectableDirective<T>, ctrl = false, shift = false): void {
-		this.modeToggle[this.mode](directive, ctrl, shift);
+		this.modeToggle[this.effectiveMode()](directive, ctrl, shift);
 		this.updateSelection();
 		this.onTouched();
 	}
@@ -134,18 +117,18 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	}
 
 	selectAll(): void {
-		if (this.mode !== 'radio') {
+		if (this.effectiveMode() !== 'radio') {
 			this.selectables.forEach(item => {
-				item.selected = true;
+				item.selected.set(true);
 			});
 			this.updateSelection();
 		}
 	}
 
 	deselectAll(): void {
-		if (this.mode !== 'radio') {
+		if (this.effectiveMode() !== 'radio') {
 			this.selectables.forEach(item => {
-				item.selected = false;
+				item.selected.set(false);
 			});
 			this.updateSelection();
 		}
@@ -180,14 +163,14 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	}
 
 	private add(direction: number, $event: KeyboardEvent): void {
-		if (this.mode === 'windows') {
+		if (this.effectiveMode() === 'windows') {
 			$event.preventDefault();
 			const index = this.focused + direction;
 			if (index > -1 && index < this.selectables.length) {
-				if (this.selectables[index].selected) {
-					this.selectables[this.focused].selected = false;
+				if (this.selectables[index].selected()) {
+					this.selectables[this.focused].selected.set(false);
 				} else {
-					this.selectables[index].selected = true;
+					this.selectables[index].selected.set(true);
 				}
 				this.selectables[index].focus();
 				this.updateSelection();
@@ -196,7 +179,7 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	}
 
 	private move(direction: number, $event: KeyboardEvent): void {
-		if (this.mode === 'windows') {
+		if (this.effectiveMode() === 'windows') {
 			$event.preventDefault();
 			const index = this.focused + direction;
 			if (index > -1 && index < this.selectables.length) {
@@ -206,10 +189,10 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	}
 
 	private next(direction: number, $event: KeyboardEvent): void {
-		if (this.mode !== 'checkbox') {
+		if (this.effectiveMode() !== 'checkbox') {
 			$event.preventDefault();
 			const index =
-				this.mode === 'radio'
+				this.effectiveMode() === 'radio'
 					? (this.focused + this.selectables.length + direction) % this.selectables.length
 					: Math.max(0, Math.min(this.selectables.length - 1, this.focused + direction));
 			this.toggle(this.selectables[index]);
@@ -219,21 +202,21 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	}
 
 	private checkboxSelect(directive: ObSelectableDirective<T>): void {
-		directive.selected = !directive.selected;
+		directive.selected.set(!directive.selected());
 	}
 
 	private radioSelect(directive: ObSelectableDirective<T>): void {
 		this.selectables.forEach(item => {
-			item.selected = false;
+			item.selected.set(false);
 		});
-		directive.selected = true;
+		directive.selected.set(true);
 	}
 
 	private windowsSelect(directive: ObSelectableDirective<T>, ctrl: boolean, shift: boolean): void {
 		if (ctrl) {
 			this.startFocused = undefined;
-			if (this.getSelected().length > 1 || !directive.selected) {
-				directive.selected = !directive.selected;
+			if (this.getSelected().length > 1 || !directive.selected()) {
+				directive.selected.set(!directive.selected());
 			}
 		} else if (shift) {
 			this.startFocused ??= this.prevFocused;
@@ -241,25 +224,25 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 			const start = Math.min(this.startFocused, endFocused);
 			const end = Math.max(this.startFocused, endFocused);
 			this.selectables.forEach((item, index) => {
-				item.selected = !(index < start || index > end);
+				item.selected.set(!(index < start || index > end));
 			});
 		} else {
 			this.startFocused = undefined;
 			this.selectables.forEach(item => {
-				item.selected = false;
+				item.selected.set(false);
 			});
-			directive.selected = true;
+			directive.selected.set(true);
 		}
 	}
 
 	private updateSelection(): void {
 		const selection = this.getSelected();
-		this.selected$.emit(selection);
-		this.onChange(selection.map(item => item.value));
+		this.selected.set(selection);
+		this.onChange(selection.map(item => item.value() as T));
 	}
 
 	private getSelected(): ObSelectableDirective<T>[] {
-		return this.selectables.filter(item => item.selected);
+		return this.selectables.filter(item => item.selected());
 	}
 
 	private onChange: (value: T[]) => void = () => {
