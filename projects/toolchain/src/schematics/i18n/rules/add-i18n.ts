@@ -75,12 +75,7 @@ function getLocaleChanges(tree: Tree, locales: string[]): Change[] {
 function getTranslateConfiguration(locales: string[]): string {
 	const localesArray = `['${locales.join("', '")}']`;
 	const defaultLanguage = locales[0].split('-')[0];
-	const languageNames = locales
-		.map(locale => locale.split('-')[0])
-		.filter((language, index, languages) => languages.indexOf(language) === index)
-		.map(language => `${language}: '${language.toUpperCase()}'`)
-		.join(', ');
-	return `{locales: {locales: ${localesArray}, defaultLanguage: '${defaultLanguage}', disabled: false, languages: {${languageNames}}}}`;
+	return `{locales: {locales: ${localesArray}, defaultLanguage: '${defaultLanguage}', disabled: false}}`;
 }
 
 function mergeTranslateConfiguration(tree: Tree, translateConfiguration: string): boolean {
