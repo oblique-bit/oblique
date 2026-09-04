@@ -111,10 +111,6 @@ registerLocaleData(localeDE);
 					locales: ['en-us', 'fr-CH'],
 					defaultLanguage: 'en',
 					disabled: false,
-					languages: {
-						en: 'English',
-						fr: 'Français',
-					},
 				},
 			},
 			hasLanguageInUrl: true,
