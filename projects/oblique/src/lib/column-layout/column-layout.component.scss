@@ -20,6 +20,23 @@
 		order: 1;
 	}
 
+	/**
+    * This CSS rule targets an element that is the last child of its parent and whose last direct
+    * child contains a descendant with a class name ending in touch-target. In fact, when the last
+    * element of the last child in a container contains a `touch-target` element (i.e.
+    * an element positioned absolutely with a bigger size in order to ensure a11y), the container will
+    * overflow creating a unwanted scrollbar. This CSS rule will add a small bottom padding to the
+    * element so that it contains completely the `touch-target` element and therefore preventing
+    * the scrollbar.
+    */
+	.ob-column-content > :last-child:has(> :last-child [class$="touch-target"]) {
+		/**
+	 * The value of 12x was discovered by manually testing the issue
+	 * on different browsers and OSs.
+	 */
+		padding-bottom: 12px;
+	}
+
 	.ob-layout-expanded &.ob-wider-columns {
 		.ob-column-left,
 		.ob-column-right {
