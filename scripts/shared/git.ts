@@ -71,9 +71,13 @@ export class Git {
 	 * @param config the name of the global git configuration key to read, e.g. `user.name`
 	 * @returns the configuration value parsed as a boolean, number or string
 	 */
-	static getGlobalConfig(config: string): number | boolean | string {
-		const value = getResultFromCommand(`git config --global ${config}`);
-		return Git.parseValue(value);
+	static getGlobalConfig(config: string): number | boolean | string | null {
+		try {
+			const value = getResultFromCommand(`git config --global ${config}`);
+			return Git.parseValue(value);
+		} catch {
+			return null;
+		}
 	}
 
 	/**
