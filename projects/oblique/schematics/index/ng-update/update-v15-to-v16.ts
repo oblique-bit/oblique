@@ -84,6 +84,7 @@ export class UpdateV15toV16 implements ObIMigrations {
 				this.renameFocusElement(),
 				this.removeObIconModule(),
 				this.removeMasterLayoutConfigLocales(),
+				this.removeLocalesConfigurationLanguages(),
 				this.moveSchemaValidationImports(),
 				this.warnAboutSchemaValidationOnObliqueModule(),
 				this.warnAboutSchemaValidationOnObliqueTestingModule(),
@@ -126,6 +127,20 @@ export class UpdateV15toV16 implements ObIMigrations {
 				tree.overwrite(filePath, removeMasterLayoutConfigLocaleReferences(content));
 			};
 			return applyInTree(tree, toApply, filePatterns.ts);
+		});
+	}
+
+	private removeLocalesConfigurationLanguages(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Remove languages from the locales configuration');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (!content.includes('languages')) {
+					return;
+				}
+				tree.overwrite(filePath, content.replace(/languages\s*:\s*{[^}]+},?/, ''));
+			};
+			return applyInTree(tree, toApply, filePatterns.appModule);
 		});
 	}
 

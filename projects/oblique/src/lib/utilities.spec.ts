@@ -415,7 +415,6 @@ describe('utilities', () => {
 				locales: ['de-CH', 'fr-CH', 'it-CH'],
 				defaultLanguage: 'de',
 				disabled: false,
-				languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 			};
 
 			beforeEach(() => {
@@ -658,7 +657,6 @@ describe('utilities', () => {
 				locales: ['de-CH', 'fr-CH', 'it-CH'],
 				defaultLanguage: 'de',
 				disabled: false,
-				languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano', en: 'English'},
 			};
 
 			beforeEach(() => {
@@ -864,13 +862,11 @@ describe('utilities', () => {
 			locales: ['de-CH', 'fr-CH', 'it-CH'],
 			defaultLanguage: 'de',
 			disabled: false,
-			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 		};
 		const defaultLocale = {
 			locales: ['de-CH', 'fr-CH', 'it-CH'],
 			defaultLanguage: 'de',
 			disabled: false,
-			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano', en: 'English'},
 		};
 
 		it('should initialize language with locales from translate configuration when provided', () => {
@@ -941,7 +937,6 @@ describe('utilities', () => {
 			locales: ['de-CH', 'fr-CH', 'it-CH'],
 			defaultLanguage: 'de',
 			disabled: false,
-			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano', en: 'English'},
 		};
 
 		it('should return translate locales when they are provided', () => {
@@ -949,7 +944,6 @@ describe('utilities', () => {
 				locales: ['de-CH', 'fr-CH', 'it-CH'],
 				defaultLanguage: 'de',
 				disabled: false,
-				languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 			};
 
 			const locales = TestBed.runInInjectionContext(() =>
