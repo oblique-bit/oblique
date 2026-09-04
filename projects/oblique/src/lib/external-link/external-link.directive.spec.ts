@@ -364,8 +364,13 @@ describe(ObExternalLinkDirective.name, () => {
 		});
 
 		test.each([
-			{case: 'internal link', href: 'http://localhost:3001/', isExternal: false},
+			{case: 'internal link', href: 'http://localhost:3001', isExternal: true},
+			{case: 'internal link', href: 'http://localhost', isExternal: false},
 			{case: 'external link', href: 'http://www.google.ch/', isExternal: true},
+			{case: 'internal link with href internal', href: 'internal', isExternal: false},
+			{case: 'internal link with href /', href: '/', isExternal: false},
+			{case: 'internal link without href', href: '', isExternal: false},
+			{case: 'internal link with href /internal', href: '/internal', isExternal: false},
 		])('$case', ({href, isExternal}) => {
 			(fixture.componentInstance as TestComponent).href = href;
 			const debugElement = fixture.debugElement.query(By.css('a'));

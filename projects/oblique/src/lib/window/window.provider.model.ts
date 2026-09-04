@@ -4,7 +4,7 @@ export interface ObWindow {
 	innerHeight: number;
 	innerWidth: number;
 	localStorage: Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
-	location: Pick<Location, 'href' | 'host'>;
+	location: Pick<Location, 'href' | 'host' | 'origin'>;
 	matchMedia: (query: string) => Pick<MediaQueryList, 'matches'>;
 	open: (url?: string, target?: string, features?: string) => Window | null;
 	pageYOffset: number;

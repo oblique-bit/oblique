@@ -1,11 +1,12 @@
-import {Directive, ElementRef, OnChanges, OnDestroy, OnInit, Renderer2, inject, input, signal} from '@angular/core';
+import {DestroyRef, Directive, ElementRef, OnChanges, OnInit, Renderer2, inject, input, signal} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, switchMap} from 'rxjs';
-import {first, startWith, takeUntil, tap} from 'rxjs/operators';
+import {first, startWith, tap} from 'rxjs/operators';
 import {WINDOW} from './../window/window.provider';
 import {ObWindow} from './../window/window.provider.model';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
@@ -16,7 +17,7 @@ import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 		'[class.ob-external-link]': 'isLinkExternal',
 	},
 })
-export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
+export class ObExternalLinkDirective implements OnInit, OnChanges {
 	readonly href = input<string>();
 	readonly rel = input<string>();
 	readonly target = input<string>();
@@ -28,7 +29,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	readonly internalRel = signal<string | undefined>(undefined);
 	readonly internalTarget = signal<string | undefined>(undefined);
 
-	private readonly unsubscribe = new Subject<void>();
+	private readonly destroyRef = inject(DestroyRef);
 	private iconElement: HTMLSpanElement;
 	private readonly host: HTMLAnchorElement;
 	private hasIcon = false;
@@ -59,7 +60,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 				tap(svg => {
 					this.iconElement = this.createIconElement(svg);
 				}),
-				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isUrlExternal(this.href())))),
+				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isLinkOriginExternal()))),
 				tap(isLinkExternal => {
 					this.isLinkExternal = isLinkExternal;
 				})
@@ -70,19 +71,14 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnChanges(): void {
-		this.isLinkExternal$.next(this.isUrlExternal(this.href()));
+		this.isLinkExternal$.next(this.isLinkOriginExternal());
 		this.host.href = this.href();
 	}
 
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
-	}
-
-	private isUrlExternal(url: string | undefined): boolean {
+	private isLinkOriginExternal(): boolean {
 		const isExternalLink = this.isExternalLink();
 		if (isExternalLink === 'auto') {
-			return url ? !url.includes(this.window.location.host) : false;
+			return this.host.origin ? this.host.origin !== this.window.location.origin : false;
 		}
 		return isExternalLink;
 	}
@@ -119,7 +115,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private translateScreenReaderOnlyText(): void {
 		this.translate
 			.stream('i18n.oblique.external')
-			.pipe(takeUntil(this.unsubscribe))
+			.pipe(takeUntilDestroyed(this.destroyRef))
 			.subscribe((text: string) => {
 				this.renderer.setProperty(this.screenReaderOnlyTextElement, 'textContent', ` - ${text}`);
 			});
