@@ -85,6 +85,7 @@ export class UpdateV15toV16 implements ObIMigrations {
 				this.removeObIconModule(),
 				this.removeMasterLayoutConfigLocales(),
 				this.removeLocalesConfigurationLanguages(),
+				this.updateObliqueLanguageConfiguration(),
 				this.moveSchemaValidationImports(),
 				this.warnAboutSchemaValidationOnObliqueModule(),
 				this.warnAboutSchemaValidationOnObliqueTestingModule(),
@@ -139,6 +140,23 @@ export class UpdateV15toV16 implements ObIMigrations {
 					return;
 				}
 				tree.overwrite(filePath, content.replace(/languages\s*:\s*{[^}]+},?/, ''));
+			};
+			return applyInTree(tree, toApply, filePatterns.appModule);
+		});
+	}
+
+	private updateObliqueLanguageConfiguration(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Move hasLanguageInUrl into the language configuration');
+			const toApply = (filePath: string): void => {
+				const content = readFile(tree, filePath);
+				if (!content.includes('hasLanguageInUrl')) {
+					return;
+				}
+				tree.overwrite(
+					filePath,
+					content.replace(/hasLanguageInUrl\s*:\s*(?<value>[^,\n}]+)/, 'language: {hasLanguageInUrl: $<value>}')
+				);
 			};
 			return applyInTree(tree, toApply, filePatterns.appModule);
 		});

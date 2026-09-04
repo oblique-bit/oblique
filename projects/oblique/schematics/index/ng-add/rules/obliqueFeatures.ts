@@ -312,5 +312,5 @@ function buildAccessibilityConfig(
 }
 
 function buildHasLanguageInUrlConfig(hasLanguageInUrl: boolean): string {
-	return `hasLanguageInUrl: ${hasLanguageInUrl}`;
+	return `language: {hasLanguageInUrl: ${hasLanguageInUrl}}`;
 }

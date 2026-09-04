@@ -80,6 +80,7 @@ export {
 	ObDateFormat,
 	ObTimeFormat,
 } from './lib/language/language.module';
+export {ObLanguageConfig} from './lib/language/language.model';
 export {
 	ObMasterLayoutComponent,
 	ObMasterLayoutComponentService,
