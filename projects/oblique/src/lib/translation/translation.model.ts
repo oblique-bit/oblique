@@ -10,7 +10,7 @@ export interface ObITranslateConfig {
 	flatten?: boolean;
 	config?: RootTranslateServiceConfig;
 	additionalFiles?: ObITranslationFile[];
-	locales?: ObILocale;
+	locales?: Partial<ObILocale>;
 }
 
 export interface ObITranslationFile {

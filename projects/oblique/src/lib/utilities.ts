@@ -170,7 +170,7 @@ export function provideObliqueTestingConfiguration(config: ObIObliqueTestingConf
 }
 
 export function getLocalesConfiguration(config: ObIObliqueConfigurationWithDefaults): ObILocale {
-	return config.translate?.locales ?? defaultLocalesConfiguration;
+	return {...defaultLocalesConfiguration, ...config.translate?.locales};
 }
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once
