@@ -137,7 +137,8 @@ export class Changelog extends StaticScript {
 
 	private static parseCommit(commit: string, separator: string): Commit {
 		const {type, scope, subject, breakingChanges, hash, issues} = new RegExp(
-			String.raw`(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>[^${separator}]*)${separator}(?:[\s\S]*?\n\n)?(?<issues>\w+-\d+(?:,\s?\w+-\d+)*)?(?:\nBREAKING CHANGE:(?<breakingChanges>[^${separator}]*))?\n${separator}(?<hash>\w*)`
+			String.raw`(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>.*?)${separator}(?:.*?\n\n)?(?<issues>\w+-\d+(?:,\s?\w+-\d+)*)?(?:\nBREAKING CHANGE:\n(?<breakingChanges>.*?))?\n?${separator}(?<hash>\w*)`,
+			'su'
 		).exec(commit).groups;
 		return {type, scope, subject, breakingChanges, hash, issues} as Commit;
 	}
