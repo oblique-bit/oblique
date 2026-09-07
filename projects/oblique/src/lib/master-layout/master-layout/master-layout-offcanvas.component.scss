@@ -68,6 +68,8 @@
 			@include button.ob-link-btn();
 			padding: 0;
 			color: variables.$ob-default;
+			height: variables.$ob-button-height;
+			width: variables.$ob-button-height;
 
 			&.mat-mdc-button-base.ob-button {
 				&:focus {
