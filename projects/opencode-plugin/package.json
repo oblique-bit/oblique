@@ -1,0 +1,34 @@
+{
+  "name": "@oblique/opencode-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Thin OpenCode integration layer for Oblique projects",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "eslint \"src/**/*.ts\" && prettier --check \"{src,tests}/**/*.{ts,js,json,md}\" README.md package.json tsconfig*.json jest.config.cjs eslint.project-config.mjs",
+    "format": "eslint \"src/**/*.ts\" --fix && prettier --write \"{src,tests}/**/*.{ts,js,json,md}\" README.md package.json tsconfig*.json jest.config.cjs eslint.project-config.mjs",
+    "test": "jest --config=jest.config.cjs --runInBand",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.spec.json --noEmit"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.18.29",
+    "@opencode-ai/sdk": "^1.18.29"
+  }
+}
