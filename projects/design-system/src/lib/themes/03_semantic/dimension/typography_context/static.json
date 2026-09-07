@@ -48,7 +48,12 @@
             "3xl": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.32}",
-              "$description": "Maximum vertical spacing step in the typography padding scale."
+              "$description": "3XL vertical spacing step in the typography padding scale."
+            },
+            "4xl": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.40}",
+              "$description": "Maximum vertical spacing step in the typography padding scale. Not yet referenced by any heading or paragraph token."
             }
           }
         }
