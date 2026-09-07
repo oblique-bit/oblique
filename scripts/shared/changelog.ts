@@ -144,10 +144,15 @@ export class Changelog extends StaticScript {
 	}
 
 	private static parseCommit(commit: string, separator: string): Commit {
-		const {type, scope, subject, breakingChanges, hash, issues} = new RegExp(
+		const regexp = new RegExp(
 			String.raw`(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>.*?)${separator}(?:.*?\n\n)?(?<issues>\w+-\d+(?:,\s?\w+-\d+)*)?(?:\nBREAKING CHANGE:\n(?<breakingChanges>.*?))?\n?${separator}(?<hash>\w*)`,
 			'su'
-		).exec(commit).groups;
+		);
+		const results = regexp.exec(commit);
+		if (!results) {
+			throw new Error(`Uncovered commit:\n${commit}\n\nRegexp: ${regexp}`);
+		}
+		const {type, scope, subject, breakingChanges, hash, issues} = results.groups;
 		return {type, scope, subject, breakingChanges, hash, issues} as Commit;
 	}
 
