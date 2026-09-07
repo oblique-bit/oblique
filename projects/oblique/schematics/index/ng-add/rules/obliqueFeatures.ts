@@ -116,7 +116,7 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 					addProviderToModule(
 						sourceFile,
 						appModulePath,
-						'provideHttpClient(withInterceptorsFromDi())',
+						'provideHttpClient(withXhr(), withInterceptorsFromDi())',
 						'@angular/common/http'
 					)
 				)
@@ -128,16 +128,23 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 					adaptInsertChange(
 						tree,
 						change,
-						'provideHttpClient(withInterceptorsFromDi())',
-						'provideHttpClient, HTTP_INTERCEPTORS, withInterceptorsFromDi'
+						'provideHttpClient(withXhr(), withInterceptorsFromDi())',
+						'provideHttpClient, HTTP_INTERCEPTORS, withInterceptorsFromDi, withXhr'
 					)
 				);
 			tree = applyChanges(tree, appModulePath, changes);
 		} else {
 			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes = addProviderToModule(sourceFile, appModulePath, 'provideHttpClient()', '@angular/common/http')
+			const changes = addProviderToModule(
+				sourceFile,
+				appModulePath,
+				'provideHttpClient(withXhr())',
+				'@angular/common/http'
+			)
 				.filter((change: Change) => change instanceof InsertChange)
-				.map((change: InsertChange) => adaptInsertChange(tree, change, 'provideHttpClient()', 'provideHttpClient'));
+				.map((change: InsertChange) =>
+					adaptInsertChange(tree, change, 'provideHttpClient(withXhr())', 'provideHttpClient, withXhr')
+				);
 			tree = applyChanges(tree, appModulePath, changes);
 		}
 		return tree;

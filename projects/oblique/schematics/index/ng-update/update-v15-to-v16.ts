@@ -87,6 +87,7 @@ export class UpdateV15toV16 implements ObIMigrations {
 				this.moveSchemaValidationImports(),
 				this.warnAboutSchemaValidationOnObliqueModule(),
 				this.warnAboutSchemaValidationOnObliqueTestingModule(),
+				this.addXhrToHttpClientProvider(),
 			])(tree, context);
 	}
 
@@ -215,6 +216,26 @@ export class UpdateV15toV16 implements ObIMigrations {
 			}
 
 			return tree;
+		});
+	}
+
+	private addXhrToHttpClientProvider(): Rule {
+		return createSafeRule((tree: Tree, context: SchematicContext) => {
+			infoMigration(context, 'Add withXhr() to provideHttpClient()');
+			const toApply = (filePath: string): void => {
+				const providerOptions = /(?:provideHttpClient\()(?<options>[^\r\n]*)/u.exec(readFile(tree, filePath))?.groups
+					?.options;
+				if (providerOptions && !providerOptions.includes('withXhr()')) {
+					addImport(tree, filePath, 'withXhr', '@angular/common/http');
+					replaceInFile(
+						tree,
+						filePath,
+						`provideHttpClient(${providerOptions}`,
+						`provideHttpClient(withXhr(), ${providerOptions}`
+					);
+				}
+			};
+			return applyInTree(tree, toApply, '*.ts');
 		});
 	}
 }
