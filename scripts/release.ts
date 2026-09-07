@@ -13,6 +13,7 @@ class Release extends StaticScript {
 		Release.updateCopyrightDate();
 		if (Release.isPreVersion(version)) {
 			Release.updateJenkinsFile();
+			Release.updateGitHubActions();
 		} else {
 			Release.updatePubliccode(version);
 		}
@@ -49,6 +50,14 @@ class Release extends StaticScript {
 				/^\s*master\s*:\s*\[(?:[^[\]]|\[(?:[^[\]]|\[[^[\]]*\])*\])*\]/mu,
 				match => `${match.replace('master', `'${branchName}'`)},\n${match}`
 			)
+		);
+	}
+
+	private static updateGitHubActions(): void {
+		Log.info('Adding publish instruction to GitHub actions');
+		const branchName = Git.getCurrentBranchName();
+		Files.overwrite(getAbsolutePath('.github/workflows/main.yml'), content =>
+			content.replace(/(?<=branches: \[master)/u, `, ${branchName}`)
 		);
 	}
 
