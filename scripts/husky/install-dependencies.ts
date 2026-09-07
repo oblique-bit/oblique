@@ -5,7 +5,8 @@ import {Log} from '../shared/log';
 class InstallDependencies {
 	static perform(): void {
 		Log.start('Check git Oblique config');
-		if (!Git.getGlobalConfig('oblique.hooks.npm-ci')) {
+		const npmCi = Git.getGlobalConfig('oblique.hooks.npm-ci');
+		if (npmCi !== null && !npmCi) {
 			Log.info('Oblique npm-ci hook is disabled, skipping automatic dependencies installation check.');
 			Log.success();
 			return;
