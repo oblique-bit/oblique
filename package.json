@@ -20,6 +20,7 @@
     "projects/cli",
     "projects/design-system",
     "projects/mcp",
+    "projects/opencode-plugin",
     "projects/oblique",
     "projects/sds",
     "projects/sandbox",

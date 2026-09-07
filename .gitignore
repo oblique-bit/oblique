@@ -57,3 +57,6 @@ Thumbs.db
 
 #mcp
 /projects/mcp/dist/
+
+# OpenCode plugin
+/projects/opencode-plugin/dist/
