@@ -74,9 +74,17 @@ export class Changelog extends StaticScript {
 			)
 			.map(commit => commit.replace(`${projectName}/`, ''))
 			.map(commit => commit.replace(additionalPackageWithScope, additionalPackageWithScope.split('/').pop()))
+			.map(commit => Changelog.removeComments(commit))
 			.map(commit => Changelog.formatCommit(commit, separator))
 			.sort((first, second) => first.scope.localeCompare(second.scope))
 			.reduce<Commits>(Changelog.groupCommitsByType, {fix: [], feat: [], breakingChanges: []});
+	}
+
+	private static removeComments(commit: string): string {
+		return commit
+			.split('\n')
+			.filter(line => !line.startsWith('#'))
+			.join('\n');
 	}
 
 	private static formatCommit(
