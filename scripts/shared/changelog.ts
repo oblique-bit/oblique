@@ -144,16 +144,22 @@ export class Changelog extends StaticScript {
 	}
 
 	private static parseCommit(commit: string, separator: string): Commit {
-		const regexp = new RegExp(
-			String.raw`(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>.*?)${separator}(?:.*?\n\n)?(?<issues>\w+-\d+(?:,\s?\w+-\d+)*)?(?:\nBREAKING CHANGE:\n(?<breakingChanges>.*?))?\n?${separator}(?<hash>\w*)`,
-			'su'
+		const [header, body, hash] = commit.split(separator);
+		const {type, scope, subject} = Changelog.extractData(/(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>.*)/u, header);
+		const {breakingChanges, issues} = Changelog.extractData(
+			/(?:.*?\n\n)?(?<issues>\w+-\d+(?:,\s?\w+-\d+)*)?(?:\nBREAKING CHANGE:\n(?<breakingChanges>.*))?/su,
+			body
 		);
-		const results = regexp.exec(commit);
-		if (!results) {
-			throw new Error(`Uncovered commit:\n${commit}\n\nRegexp: ${regexp}`);
-		}
-		const {type, scope, subject, breakingChanges, hash, issues} = results.groups;
+
 		return {type, scope, subject, breakingChanges, hash, issues} as Commit;
+	}
+
+	private static extractData(regexp: RegExp, input: string): Record<string, string> {
+		const results = regexp.exec(input);
+		if (!results) {
+			throw new Error(`Uncovered commit part:\n${input}\n\nRegexp: ${regexp}`);
+		}
+		return results.groups ?? {};
 	}
 
 	private static parseBreakingChanges(breakingChanges: string, scope: string): string[] {
