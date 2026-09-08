@@ -74,9 +74,17 @@ export class Changelog extends StaticScript {
 			)
 			.map(commit => commit.replace(`${projectName}/`, ''))
 			.map(commit => commit.replace(additionalPackageWithScope, additionalPackageWithScope.split('/').pop()))
+			.map(commit => Changelog.removeComments(commit))
 			.map(commit => Changelog.formatCommit(commit, separator))
 			.sort((first, second) => first.scope.localeCompare(second.scope))
 			.reduce<Commits>(Changelog.groupCommitsByType, {fix: [], feat: [], breakingChanges: []});
+	}
+
+	private static removeComments(commit: string): string {
+		return commit
+			.split('\n')
+			.filter(line => !line.startsWith('#'))
+			.join('\n');
 	}
 
 	private static formatCommit(
@@ -136,17 +144,29 @@ export class Changelog extends StaticScript {
 	}
 
 	private static parseCommit(commit: string, separator: string): Commit {
-		const {type, scope, subject, breakingChanges, hash, issues} = new RegExp(
-			String.raw`(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>[^${separator}]*)${separator}(?:[\s\S]*?\n\n)?(?<issues>\w+-\d+(?:,\s?\w+-\d+)*)?(?:\nBREAKING CHANGE:(?<breakingChanges>[^${separator}]*))?\n${separator}(?<hash>\w*)`
-		).exec(commit).groups;
+		const [header, body, hash] = commit.split(separator);
+		const {type, scope, subject} = Changelog.extractData(/(?<type>\w+)\((?<scope>[\w-]+)\): (?<subject>.*)/u, header);
+		const {breakingChanges, issues} = Changelog.extractData(
+			/(?:.*?\n\n)?(?<issues>\w+-\d+(?:,\s?\w+-\d+)*)?(?:\nBREAKING CHANGE:\n(?<breakingChanges>.*))?/su,
+			body
+		);
+
 		return {type, scope, subject, breakingChanges, hash, issues} as Commit;
+	}
+
+	private static extractData(regexp: RegExp, input: string): Record<string, string> {
+		const results = regexp.exec(input);
+		if (!results) {
+			throw new Error(`Uncovered commit part:\n${input}\n\nRegexp: ${regexp}`);
+		}
+		return results.groups ?? {};
 	}
 
 	private static parseBreakingChanges(breakingChanges: string, scope: string): string[] {
 		return breakingChanges
 			? breakingChanges
 					.replace(/\*\*/g, '\n  -')
-					.split('*')
+					.split(/^[*-]/m)
 					.filter(change => !!change)
 					.map(change => `- **${scope}:** ${change.trim()}`)
 			: [];
