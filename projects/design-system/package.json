@@ -1,6 +1,6 @@
 {
   "name": "@oblique/design-system",
-  "version": "16.0.0-alpha.4",
+  "version": "16.0.0-rc.1",
   "type": "module",
   "scripts": {
     "lint": "tsx scripts/lint.ts",

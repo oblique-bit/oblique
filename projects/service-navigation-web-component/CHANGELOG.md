@@ -1,3 +1,23 @@
+# [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
+
+## Features
+
+- **sample:** add navigation button ([296bd323](https://github.com/oblique-bit/oblique/commit/296bd323e419ab5993aa5535cec9bb3da8f3bd30), TPEFD-10735)
+- **service-navigation:** remove guest login concepts ([c1a8050d](https://github.com/oblique-bit/oblique/commit/c1a8050d57f0edbff4fd621719378a54d59373b9), TPEFD-11072)
+- **service-navigation:** deprecate `OB_PAMS_CONFIGURATION` ([5b6f2929](https://github.com/oblique-bit/oblique/commit/5b6f2929a91cc2238713306d1116c3f45a05e45e), OUI-4575)
+- **service-navigation:** add `parentApplicationId` ([9cd2d854](https://github.com/oblique-bit/oblique/commit/9cd2d854370cc07eaf8e6cfd2adc3fe9020f7d9d), TPEFD-11021)
+- **service-navigation:** migrate to signals ([667de350](https://github.com/oblique-bit/oblique/commit/667de35071b87fc8b482c25c0f85f277feee67fb), OUI-4357)
+- **service-navigation:** use current URL if no `returnUrl` is provided ([879c40b3](https://github.com/oblique-bit/oblique/commit/879c40b3fab4d7466d1ba77db7cb053a856c546d), TPEFD-10735)
+
+## BREAKING CHANGES
+
+- **service-navigation:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **service-navigation:** if `returnUrl` is not provided, the current URL is now used by default. Projects that previously
+  relied on the implicit redirection to ePortal must now explicitly set the ePortal URL as `returnUrl`.
+
 # [15.4.4](https://github.com/oblique-bit/oblique/compare/15.4.3...15.4.4) (2026-08-18)
 
 ## Dependencies

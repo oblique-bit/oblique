@@ -1,3 +1,9 @@
+# [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
+
+## Features
+
+- **styles:** install Oblique core styles automatically ([3e6b69b2](https://github.com/oblique-bit/oblique/commit/3e6b69b29db1625ce38400bedeb05498a1b2d363), OUI-4463)
+
 # [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
 
 ## Features

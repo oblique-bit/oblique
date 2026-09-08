@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sds",
-  "version": "16.0.0-alpha.4",
+  "version": "16.0.0-rc.1",
   "type": "module",
   "scripts": {
     "start": "ng serve",

@@ -1,3 +1,262 @@
+# [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
+
+## Bug Fixes
+
+- **autocomplete:** stick autocomplete options to the input ([e1e7e5cb](https://github.com/oblique-bit/oblique/commit/e1e7e5cb5a15ae0a20f70608ed2a0ce51c588066), OUI-4519)
+- **external-link:** use a link's origin to determine if it's external ([25b068d9](https://github.com/oblique-bit/oblique/commit/25b068d9b8b8610862b859a1221834423fbd6057), OUI-4625)
+- **master-layout:** ignore `has-max-width` with cover layout ([4939ecd3](https://github.com/oblique-bit/oblique/commit/4939ecd334e915f8adfb88b3c9009369be88008c), OUI-4636)
+- **master-layout:** keep main element scrollbar on the right edge ([3d9014fd](https://github.com/oblique-bit/oblique/commit/3d9014fda6dd6d678d5305fac747c23e394e80f3), OUI-4636)
+- **master-layout:** tolerate empty navigation on shift-tab focus ([d9855cd4](https://github.com/oblique-bit/oblique/commit/d9855cd4a9e195208f34db9c2d20376c26ec1a3a), OUI-4554)
+- **master-layout:** ensure main nav scroll buttons react to changes in zoneless apps ([610c28e9](https://github.com/oblique-bit/oblique/commit/610c28e9362b3690539b7f32260be62be0a0a5c6), OUI-4487)
+- **master-layout:** ensure sub menu closes in zoneless apps ([cf6c1949](https://github.com/oblique-bit/oblique/commit/cf6c1949f641f4d5e5752030f0e738687cc74503), OUI-4487)
+- **master-layout:** ensure collapsed layout reacts to changes in zoneless apps ([e3790848](https://github.com/oblique-bit/oblique/commit/e379084897805eac9220ea6590dcfa744cdc3d27), OUI-4487)
+- **master-layout:** honor config when hiding the main navigation ([00a3cf78](https://github.com/oblique-bit/oblique/commit/00a3cf78a6e2a2eb9fc10e49b6b8300a1250f919), OUI-4333)
+- **material:** remove additional red border in required fields ([5c449429](https://github.com/oblique-bit/oblique/commit/5c44942910514d3944ca304f28a0a9bc4d29eb29), OUI-4587)
+- **material:** months and days are uppercased on the date-picker ([9fba5d53](https://github.com/oblique-bit/oblique/commit/9fba5d53213fe36457e4a7aed5738b6f94c5004f), OUI-4629)
+- **nav-tree:** make `filterPattern` optional in `defaultLabelFormatterFactory` ([d3fe15be](https://github.com/oblique-bit/oblique/commit/d3fe15be9066196383c73bafd5f837e1997e7539), OUI-4555)
+- **nav-tree:** announce the selected link ([ff22226e](https://github.com/oblique-bit/oblique/commit/ff22226e50c781f0cd1936b24b03699e4b662796), OUI-4620)
+- **notification:** use correct animation for the first notification coming from the left ([84d96230](https://github.com/oblique-bit/oblique/commit/84d962306a2743ac7f136eca0226c09164f203c2), OUI-4556)
+- **oblique:** add missing glob dependency to Oblique package ([a771bd05](https://github.com/oblique-bit/oblique/commit/a771bd055330bcaf63f52fc09f872e4e538284df), OUI-4608)
+- **off-canvas:** show backdrop in mobile mode ([8c16220b](https://github.com/oblique-bit/oblique/commit/8c16220bc62b9612766306b20c0205f6537ff8ae), OUI-4621)
+- **schematics:** support both `app-module.ts` and `app.module.ts` ([c4509c0c](https://github.com/oblique-bit/oblique/commit/c4509c0cf2a01a5777d0beee58ff037d71a9f323), OUI-4674)
+- **translation:** prefer `ss` over `ß` in German translation ([ce9a2175](https://github.com/oblique-bit/oblique/commit/ce9a2175c03de868e1c4d3e410a7fe697860962c), OUI-4611)
+
+## Features
+
+- **accessibility-statement:** use `mediumDate` format for created and updated dates ([cc0d58da](https://github.com/oblique-bit/oblique/commit/cc0d58dac65539e8c5c62d26b5fe0e1d0a0a9e8c), OUI-4544)
+- **autocomplete:** migrate to signals ([b1b2c645](https://github.com/oblique-bit/oblique/commit/b1b2c645dc9ad9541d56c1aabe99ffe6af700452), OUI-4357)
+- **breadcrumb:** migrate to signals ([7ee071d9](https://github.com/oblique-bit/oblique/commit/7ee071d9ecc38131ffc8a8c892b07e49f142001e), OUI-4357)
+- **collapse:** migrate collapse API to signals ([00bb05ce](https://github.com/oblique-bit/oblique/commit/00bb05cef4af5da6d7768a44adc983dcc9b10923), OUI-4549)
+- **collapse:** migrate to signals ([d89da41e](https://github.com/oblique-bit/oblique/commit/d89da41ef115488e00fa144cdf426d0de7b5c08e), OUI-4357)
+- **column-layout:** migrate to signals ([cb469531](https://github.com/oblique-bit/oblique/commit/cb46953162f3bd9ab57d7c2bd2745f4b6c3b47bd), OUI-4550)
+- **column-layout:** migrate to signals ([6c408cf4](https://github.com/oblique-bit/oblique/commit/6c408cf4983705b5bf25f1c6af93990c60060395), OUI-4357)
+- **error-messages:** migrate to signals ([9f5381fc](https://github.com/oblique-bit/oblique/commit/9f5381fc3c81b951874e5fccc77f5ab772f23637), OUI-4551)
+- **error-messages:** migrate to signals ([7384da80](https://github.com/oblique-bit/oblique/commit/7384da80fedfbb87b8269556849b74c24567e4e1), OUI-4357)
+- **error-messages:** remove ObErrorMessagesService ([44cce4e8](https://github.com/oblique-bit/oblique/commit/44cce4e8556f8852b6098099dba1da95ab3489eb), OUI-4499)
+- **external-link:** migrate to signals ([26af805a](https://github.com/oblique-bit/oblique/commit/26af805abfd3cfce625fcf90f3603da675e94435), OUI-4552)
+- **file-upload:** migrate to signals ([11aadb46](https://github.com/oblique-bit/oblique/commit/11aadb461eb65e03e2ab9f15b6a3f70a1144c1c5), OUI-4357)
+- **focus-invalid:** migrate to signals ([ab969858](https://github.com/oblique-bit/oblique/commit/ab969858bb6bd1b1045d04ef99dafb24e1451ae2), OUI-4357)
+- **global-events:** add navigate global event ([3cb88335](https://github.com/oblique-bit/oblique/commit/3cb883350de841387c520d3ef8d4740d5092328b), TPEFD-10735)
+- **icon:** remove obsolete `ObMockErrorMessagesComponent` ([5c5b96aa](https://github.com/oblique-bit/oblique/commit/5c5b96aaae5fb51e6fd99510fba8837f39ec38cb), OUI-4545)
+- **icon:** remove obsolete `ObMockIconComponent` ([3c877eae](https://github.com/oblique-bit/oblique/commit/3c877eaec66c8f37a4300cd0c9013c23efdba800), OUI-4545)
+- **icon:** remove ObIconModule ([1579ccf4](https://github.com/oblique-bit/oblique/commit/1579ccf44b12a13da7ac56c89e7e96c3ff420a9a), OUI-4499)
+- **input-clear:** migrate to signals ([9413e3f6](https://github.com/oblique-bit/oblique/commit/9413e3f6f3f84df16c1ed0bd39e1bf8ea9d10590), OUI-4357)
+- **language:** turn `hasLanguageInUrl` property into `language` object ([232f54ad](https://github.com/oblique-bit/oblique/commit/232f54adedb89d95352faf8e6b5847556508541c), OUI-4671)
+- **language:** expose `ObLocalizePipe` ([b98cc3e2](https://github.com/oblique-bit/oblique/commit/b98cc3e26b6b0551c9052a29bfa0a276782a6b32), OUI-4498)
+- **language:** split date and time formats for `obDate` ([4496b7fc](https://github.com/oblique-bit/oblique/commit/4496b7fc905d4ac0607d4530f2928d23ac9726a7), OUI-4472)
+- **language:** split date and time formats in `ObDate` ([92864714](https://github.com/oblique-bit/oblique/commit/92864714a5b74862c63f08dbd1d0034000f38486), OUI-4472)
+- **master-layout:** migrate layout to signals ([6328e251](https://github.com/oblique-bit/oblique/commit/6328e251db4c337aa18117ce983cb5d8af875134), OUI-4554)
+- **master-layout:** migrate navigation to signals ([0182f3d4](https://github.com/oblique-bit/oblique/commit/0182f3d46c064bb4955f99253f32912a6ed400cf), OUI-4554)
+- **master-layout:** migrate footer to signals ([ebcdc8d3](https://github.com/oblique-bit/oblique/commit/ebcdc8d3be073b5b7061f947f0763fee9894bc3e), OUI-4554)
+- **master-layout:** expose service navigation config as signal ([ffb0cc07](https://github.com/oblique-bit/oblique/commit/ffb0cc072dd1e6e36f61fa825d6e8b4be8afeefe), OUI-4554)
+- **master-layout:** migrate to signals ([941e58ff](https://github.com/oblique-bit/oblique/commit/941e58ff3dabadde72b2b85e98bba29770a714d0), OUI-4357)
+- **master-layout:** remove `locale` configuration ([2cc57fee](https://github.com/oblique-bit/oblique/commit/2cc57feecfb5e3b0bdb14f764d75d233e915997e), OUI-4499)
+- **master-layout:** rework `scrollIntoView` behavior ([6d1faca3](https://github.com/oblique-bit/oblique/commit/6d1faca3efc0dec4f558ac2de525f47cc9a6e500), OUI-4261)
+- **master-layout:** respect `prefers-reduced-motion` when scrolling ([a68f6c3b](https://github.com/oblique-bit/oblique/commit/a68f6c3b5552011b5144f29c25bae1ddb95cc6d7), OUI-4261)
+- **master-layout:** rename `focusElement` into `focusElementById` ([d9fc6801](https://github.com/oblique-bit/oblique/commit/d9fc680151a204550b01b9cdc5f9d81731fadb4f), OUI-4261)
+- **material:** deprecate `ObDatepickerModule` ([f655c7ac](https://github.com/oblique-bit/oblique/commit/f655c7ac85c6fe47cab2133113ba8bce85b77358), OUI-4518)
+- **nav-tree:** migrate to signals and `OnPush` change detection ([54499424](https://github.com/oblique-bit/oblique/commit/54499424ac5834cdac01f4dada0ce2dd1253cd2b), OUI-4555)
+- **nav-tree:** migrate to signals ([17bbef6d](https://github.com/oblique-bit/oblique/commit/17bbef6d998b9f805065b727a9f9be857c832add), OUI-4357)
+- **nested-form:** migrate to signals ([fe790800](https://github.com/oblique-bit/oblique/commit/fe790800b381169cdfa0c1740457cde1ebc00bff), OUI-4357)
+- **notification:** migrate to signals ([76cf21ac](https://github.com/oblique-bit/oblique/commit/76cf21aca06489c2033732d76dfebb446fb1e3a3), OUI-4556)
+- **number-format:** migrate to signals ([0235cf8a](https://github.com/oblique-bit/oblique/commit/0235cf8a071f49d9309ffd324a32131defb86327), OUI-4357)
+- **oblique:** deprecate `OB_BANNER` ([d95946df](https://github.com/oblique-bit/oblique/commit/d95946df6cd765d35d5193abfd015d6825641c4e), OUI-4574)
+- **oblique:** add `banner` to `provideObliqueConfiguration` ([264d0014](https://github.com/oblique-bit/oblique/commit/264d00142b40b2ef7fc17048f7fa4822b00bc6bf), OUI-4574)
+- **oblique:** make console messages traceable and suppressable ([71bd70e0](https://github.com/oblique-bit/oblique/commit/71bd70e0461a23eaf3e278a334171bc9cc9ac598), OUI-4422)
+- **oblique:** distribute as ESM ([98fcea86](https://github.com/oblique-bit/oblique/commit/98fcea86d4ffd8c8e49ab3fcb300e76901ae63f9), OUI-4500)
+- **popover:** migrate to signals ([b86b2b16](https://github.com/oblique-bit/oblique/commit/b86b2b1647a5bb60ba6851c4b78a445c20c4a1e9), OUI-4557)
+- **popover:** migrate to signals ([e83a944c](https://github.com/oblique-bit/oblique/commit/e83a944cdd2ddf8c7fe549bad763099c8eafb9f4), OUI-4357)
+- **schema-validation:** turn schema validation into a secondary entry point ([c17598c1](https://github.com/oblique-bit/oblique/commit/c17598c1e115096372fedc9300799f0f2dd5c41f), OUI-4420)
+- **schema-validation:** migrate to signals ([ed0e9a88](https://github.com/oblique-bit/oblique/commit/ed0e9a88ee636f03b5ab3028c60cbe4fb3d0abe1), OUI-4357)
+- **schematics:** changes to `AppModule` are applied to `main.ts` as well ([60271dd7](https://github.com/oblique-bit/oblique/commit/60271dd7d769a974582ecb4f14982a2698b86939), OUI-4671)
+- **schematics:** migrate `provideHttpClient` to use `withXhr()` in existing apps ([d83dce1c](https://github.com/oblique-bit/oblique/commit/d83dce1c4f00a7e54c196b43a7776a67f8954b99), OUI-4589)
+- **schematics:** configure `provideHttpClient` with `withXhr()` for new apps ([e9f273c2](https://github.com/oblique-bit/oblique/commit/e9f273c2205be1567c7a90562b8629854449226f), OUI-4589)
+- **schematics:** remove locale handling from `ng-add` ([b0cf9264](https://github.com/oblique-bit/oblique/commit/b0cf9264faa78662329b7e2537ac426fde74ae03))
+- **schematics:** remove npmrc and proxy options from `ng-add` ([b7156952](https://github.com/oblique-bit/oblique/commit/b7156952960ecf909cb17a167306e8e3beac6dcd), OUI-4525)
+- **schematics:** remove eslint configuration from `ng-add` ([796e7d27](https://github.com/oblique-bit/oblique/commit/796e7d27c4231ff909bcf32b55f8d020161ea9cf), OUI-4058)
+- **schematics:** remove addFavIcon in favor of schematic logic with same outcome ([132670da](https://github.com/oblique-bit/oblique/commit/132670da1e1b0d9eae7383f384463ccbc7c0d97b), OUI-4488)
+- **schematics:** add migration Schematics to Oblique 16 ([0f567329](https://github.com/oblique-bit/oblique/commit/0f5673291137b83c8ebb1be1abc45ad4b1defe41), OUI-4261)
+- **scrolling:** migrate to signals ([28922774](https://github.com/oblique-bit/oblique/commit/28922774d599bfa27cec422635c0dd651980c37f), OUI-4357)
+- **service-navigation:** remove guest login concepts ([c1a8050d](https://github.com/oblique-bit/oblique/commit/c1a8050d57f0edbff4fd621719378a54d59373b9), TPEFD-11072)
+- **service-navigation:** deprecate `OB_PAMS_CONFIGURATION` ([5b6f2929](https://github.com/oblique-bit/oblique/commit/5b6f2929a91cc2238713306d1116c3f45a05e45e), OUI-4575)
+- **service-navigation:** add `parentApplicationId` ([9cd2d854](https://github.com/oblique-bit/oblique/commit/9cd2d854370cc07eaf8e6cfd2adc3fe9020f7d9d), TPEFD-11021)
+- **service-navigation:** migrate to signals ([667de350](https://github.com/oblique-bit/oblique/commit/667de35071b87fc8b482c25c0f85f277feee67fb), OUI-4357)
+- **service-navigation:** use current URL if no `returnUrl` is provided ([879c40b3](https://github.com/oblique-bit/oblique/commit/879c40b3fab4d7466d1ba77db7cb053a856c546d), TPEFD-10735)
+- **spinner:** migrate to signals ([23eeb472](https://github.com/oblique-bit/oblique/commit/23eeb472ac1e562f21c3e94a2dfef7f882a79f42), OUI-4357)
+- **styles:** change font-size of h3 ([45456b4e](https://github.com/oblique-bit/oblique/commit/45456b4efb9fee10beb736aeb75ea981b9ee9914), OUI-4615)
+- **styles:** remove deprecated `ob-inner-bottom-shadow` mixin ([e100b925](https://github.com/oblique-bit/oblique/commit/e100b925c9780c19ae4660357577cf5d6f291aa9), OUI-4607)
+- **styles:** remove deprecated `ob-focus-visible-tab-focus-box-shadow` mixin ([e2bd8928](https://github.com/oblique-bit/oblique/commit/e2bd89284208e477091f250efccf1669139f9ce5), OUI-4607)
+- **translation:** remove `languages` from `ObIObliqueConfiguration.translate.locales` ([05b80822](https://github.com/oblique-bit/oblique/commit/05b80822959493d074cff669f6c19cf6b7b8a01f), OUI-4673)
+- **unsaved-changes:** migrate to Angular signals ([bb7427a7](https://github.com/oblique-bit/oblique/commit/bb7427a78ca6f3e2eb52636bfb2ad7cbdb44a853), OUI-4560)
+- **utilities:** add `OB_MAT_ERROR_PREFIX` option to `provideObliqueConfiguration` ([3b793eef](https://github.com/oblique-bit/oblique/commit/3b793eeffcf020fdc365dc3a10cb898fc2651f84), OUI-4579)
+- **utilities:** add `pams` property to `provideObliqueConfiguration` ([cb023c0d](https://github.com/oblique-bit/oblique/commit/cb023c0d4d26ebbb56e1ac044ec69a2e33d5c959), OUI-4575)
+- **utilities:** provide a custom `DateAdapter` in `provideObliqueConfiguration` ([d0a81be3](https://github.com/oblique-bit/oblique/commit/d0a81be300f97dab932059ff131ae58ed11e78bc), OUI-4472)
+
+## BREAKING CHANGES
+
+- **autocomplete:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren` have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **breadcrumb:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren` have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **collapse:** plain-value access to active, iconPosition, duration, time, and
+  contentHeight is removed in favor of signal reads with () and writable
+  updates with set() or update()
+- **collapse:** the decorator-based active input and explicit activeChange EventEmitter
+  are replaced by the active model signal, with [(active)] or active.set()
+  and active.update() as the replacement
+- **collapse:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **column-layout:** `left` input is now a signal
+- **column-layout:** `right` input is now a signal
+- **column-layout:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **error-messages:** `matInput` contentChild is now a signal
+- **error-messages:** `matSelect` contentChild is now a signal
+- **error-messages:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **error-messages:** `ObErrorMessagesService` has been removed without replacement
+- **external-link:** `rel` input is now a signal
+- **external-link:** `target` property is now a signal
+- **external-link:** `isExternalLink` property is now a signal
+- **external-link:** `icon` property is now a signal
+- **file-upload:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **focus-invalid:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **icon:** `ObMockErrorMessagesComponent` has been removed without replacement. It mocked a component that
+  no longer exists and can safely be removed
+- **icon:** `ObMockIconComponent` has been removed without replacement. It mocked a component that no longer
+  exists and can safely be removed
+- **icon:** `ObIconModule` has been removed without replacement (solved with Schematics)
+- **icon:** `ObMockIconModule` has been removed without replacement
+- **input-clear:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **language:** `hasLanguageInUrl` property have been renamed into `languageConfiguration` and expect an object
+  of type `ObLanguageConfig` instead of a boolean. (Solved with Schematics)
+- **language:** `datetime` format has been removed, use `shortDate` and `mediumTime` instead
+- **language:** `timezone` input has been removed, use `date` pipe if you need it
+- **language:** `format` parameter of `ObDatePipe` now only accepts date formats (`ObDateFormat`). Time formatting
+  has been moved to a new `timeFormat` parameter.
+- **language:** `ObDateComponent.format` now only accepts date formats (`ObDateFormat`). Time formatting has
+  been moved to a new `timeFormat` input.
+- **master-layout:** Master layout component state is now exposed through signal inputs,
+  outputs, and models. Update direct property reads to invoke the signal,
+  and replace in-place mutation with signal/model updates.
+- **master-layout:** `collapseBreakpoint` and `version` are now signal inputs.
+- **master-layout:** `navigation` is now a writable model. Use `[(navigation)]`,
+  `navigation()`, `navigation.set(...)`, or `navigation.update(...)`.
+- **master-layout:** `OnPush` change detection no longer reliably detects in-place array or object
+  mutation; replace values or update the corresponding signals/models.
+- **master-layout:** `links` is now a writable model. Use `[(links)]`, `links()`, `links.set(...)`,
+  or `links.update(...)`.
+- **master-layout:** use `navigationLinks()` instead of `initializedLinks`.
+- **master-layout:** use `currentParentRouterLinkBase()` instead of
+  `currentParentRouterLinkBase$`.
+- **master-layout:** `ObINavigationLink.active` is no longer updated; use `activeLinks()` or
+  router APIs.
+- **master-layout:** navigation state resets when navigation links or the current route changes.
+- **master-layout:** `version` is now a signal input.
+- **master-layout:** `isCustom` is now exposed as a signal and must be read with `isCustom()`.
+- **master-layout:** `serviceNavigationConfiguration` is now a read-only signal. Read it with
+  `serviceNavigationConfiguration()`.
+- **master-layout:** Configuration changes are no longer emitted through `configEvents$`.
+  Use `updateServiceNavigationConfiguration()` instead.
+- **master-layout:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **master-layout:** `ObMasterLayoutConfig.locale` is removed in favor of `translate.locales` (solved with Schematics)
+- **master-layout:** `focusElementById` always focus `main` and not the first `H1` inside `main` anymore
+- **master-layout:** `main` is focused after each navigation past the first one
+- **master-layout:** `focusElement` has been renamed into `focusElementById` (Solved with Schematics)
+- **nav-tree:** `prefix` input is now a signal, read it with `prefix()`
+- **nav-tree:** `filterPattern` input is now a model signal, read it with `filterPattern()`
+  and write it with `filterPattern.set(...)` or `filterPattern.update(...)`
+- **nav-tree:** `patternMatcher` input is now a signal, read it with `patternMatcher()`
+- **nav-tree:** `OnPush` change detection no longer reliably detects in-place array or object
+  mutation; replace the `items` array or update the corresponding signals
+- **nav-tree:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **nested-form:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **notification:** `channel` input is now a signal
+- **notification:** `customChannel` property is now a signal
+- **notification:** `notifications` property is now a signal
+- **number-format:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **oblique:** `OB_BANNER` must be provided after `provideObliqueConfiguration`
+- **oblique:** `@oblique` no longer supports CommonJs, use `import` instead of `require()`
+- **popover:** `target` input is now a signal
+- **popover:** `placement` input is now a signal
+- **popover:** `popperOptions` input is now a signal
+- **popover:** `id` input is now a signal
+- **popover:** `panelContentId` input is now a signal
+- **popover:** `toggleHandle` input is now a signal
+- **popover:** `closeOnlyOnToggle` input is now a signal
+- **popover:** `appendToBody` input is now a signal
+- **popover:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **schema-validation:** schema validation is imported from `@oblique/oblique/schema-validation` (Solved with Schematics)
+- **schema-validation:** `ObliqueModule` and `ObliqueTestingModule` no longer include schema validation feature
+- **schema-validation:** `ajv` and `ajv-formats` are no longer installed explicitly
+- **schema-validation:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **schematics:** `@oblique/oblique:ng-add` no longer supports `npmrc`.
+  Use `@oblique/toolchain:ng-add` instead.
+- **schematics:** `@oblique/oblique:ng-add` no longer supports `proxy`.
+  Use `@oblique/toolchain:ng-add` instead.
+- **schematics:** `ng-add` don't add eslint anymore, use `ng generate @oblique/toolchain:linting` instead
+- **scrolling:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **service-navigation:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **service-navigation:** If `returnUrl` is not provided, the current URL is now used by default. Projects that previously
+  relied on the implicit redirection to ePortal must now explicitly set the
+  ePortal URL as `returnUrl`.
+- **spinner:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **styles:** mixin `ob-inner-bottom-shadow` has been removed with no replacement
+- **styles:** mixin `ob-focus-visible-tab-focus-box-shadow` has been removed with no replacement
+- **translation:** `languages` property have been removed from `ObIObliqueConfiguration.translate.locales` without
+  replacement. It was ignored since version 11. (Solved with Schematics)
+- **unsaved-changes:** `ObUnsavedChangesService.isActive` is replaced by `readonly` signal `isActive()`
+- **unsaved-changes:** directive inputs `id` and `isActive` are replaced by signal inputs read with `id()` and
+  `isActive()`
+- **utilities:** The Datepicker always parses and formats dates using the Swiss format, regardless of the selected
+  locale.
+  A locale-based date adapter can still be used, but it must be provided after
+  `provideObliqueConfiguration`.
+
 # [15.4.4](https://github.com/oblique-bit/oblique/compare/15.4.3...15.4.4) (2026-08-18)
 
 ## Dependencies

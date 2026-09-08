@@ -1,3 +1,12 @@
+# [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
+
+## Features
+
+- **app:** import Oblique core styles programmatically ([d23afe4d](https://github.com/oblique-bit/oblique/commit/d23afe4de9af92d251e9c245a5e23fb45a9bc2d2), OUI-4463)
+- **demo:** update test page for demo component ([67d6d671](https://github.com/oblique-bit/oblique/commit/67d6d671bff83c1ad388891d0dae96be686170dc), OUI-4463)
+- **demo:** add documentation ([9016c35d](https://github.com/oblique-bit/oblique/commit/9016c35dcebf7315422983c1825217eaeb131b0c), OUI-4439)
+- **sandbox-ssr:** remove test component ([96ce0a74](https://github.com/oblique-bit/oblique/commit/96ce0a749e691ec36df5dee9715222be4f1e19a7), OUI-4439)
+
 # [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
 
 ## Features

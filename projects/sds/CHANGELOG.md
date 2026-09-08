@@ -1,3 +1,21 @@
+# [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
+
+## Bug Fixes
+
+- **schematics:** restore schematics build ([f38f16da](https://github.com/oblique-bit/oblique/commit/f38f16dafa4fe9af09526bd784873940b00d26d4), OUI-4500)
+- **sds:** remove `languages` from `provideObliqueConfiguration` ([9ecf4e0d](https://github.com/oblique-bit/oblique/commit/9ecf4e0dd2bb4a36884f45204713fc3aea866fd4), OUI-4673)
+
+## Features
+
+- **code-examples:** remove deprecated `ob-inner-bottom-shadow` mixin ([8b970090](https://github.com/oblique-bit/oblique/commit/8b970090a1fba6e91a4674251e6cedac69af9874), OUI-4607)
+- **code-examples:** remove deprecated `ob-focus-visible-tab-focus-box-shadow` mixin ([3f638af9](https://github.com/oblique-bit/oblique/commit/3f638af968cd7d2290de8b4279fe699e596a57a3), OUI-4607)
+- **column-layout:** add full height example ([05a2b0ea](https://github.com/oblique-bit/oblique/commit/05a2b0eafe9bf2e9bc7b9b0940459448c8633e85), OUI-4502)
+- **component-page:** use `accessibility-statement` component from `@oblique/oblique` ([7e750d7e](https://github.com/oblique-bit/oblique/commit/7e750d7e8bb4b3906496ca1f414b2b6b195b12aa), OUI-4563)
+- **component-page:** make `title` optional ([7b9c6a3b](https://github.com/oblique-bit/oblique/commit/7b9c6a3ba1723b6f7e17fc93edfa7cfd07480e78))
+- **global-events:** add navigate example ([03fae511](https://github.com/oblique-bit/oblique/commit/03fae511d27b4b7a2d68db2304368072e0ce37bb), TPEFD-10735)
+- **schema-validation:** document the secondary entry point ([496e8cb8](https://github.com/oblique-bit/oblique/commit/496e8cb8a2bec42f8ec04f390b8e901810c52c23), OUI-4420)
+- **side-navigation:** improve section label spacing and typography ([69bff4af](https://github.com/oblique-bit/oblique/commit/69bff4afe8ec987296191dc0f7886ff62e7df9a9), OUI-4585)
+
 # [15.4.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.4...15.4.3) (2026-08-05)
 
 ## Bug Fixes

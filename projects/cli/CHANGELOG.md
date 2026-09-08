@@ -1,3 +1,19 @@
+# [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
+
+## Features
+
+- **cli:** pass locales to toolchain's add-oblique schematic instead of oblique ng-add ([4ba1955a](https://github.com/oblique-bit/oblique/commit/4ba1955a96bba71095991eb865d18596a8dd238a))
+- **cli:** distribute as ESM ([579e37d2](https://github.com/oblique-bit/oblique/commit/579e37d20ea8dbe05706baf0fa302eabe2ed6e5d), OUI-4500)
+- **new:** use toolchain to add npmrc and proxy.conf.json ([d8396b3d](https://github.com/oblique-bit/oblique/commit/d8396b3dcabfc92724c077beaf1d43830f69d9f7), OUI-4525)
+- **new:** call `linting` schematics from `@oblique/toolchain` ([6ebd80d0](https://github.com/oblique-bit/oblique/commit/6ebd80d04bd726dad808244fbbf381d0b04dc9b8), OUI-4058)
+- **new:** run add-oblique schematic during project setup ([7d03e651](https://github.com/oblique-bit/oblique/commit/7d03e6517dd3233335743496ba66b32520279155), OUI-4488)
+- **utils:** change recommended node version to 24 ([67cc9b0e](https://github.com/oblique-bit/oblique/commit/67cc9b0e39ab3a14cfaf6b234f1f396d95644a16), OUI-4646)
+- **utils:** support ng generate execution ([b2c5a372](https://github.com/oblique-bit/oblique/commit/b2c5a3723e26c8a23d8ddbf0abb528291bc73ff2), OUI-4488)
+
+## BREAKING CHANGES
+
+- **cli:** `@oblique/cli` no longer supports CommonJs, use `import` instead of `require()`
+
 # [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
 
 ## Features
