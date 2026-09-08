@@ -50,6 +50,7 @@ function getArg(name, def) {
 }
 const MODE          = getArg('--mode', 'all');     // all | figma | export
 const ONLY_CATEGORY = getArg('--category', null);
+const PAGE_OVERRIDE = getArg('--page', null);
 
 if (!['all', 'figma', 'export', 'validate'].includes(MODE)) {
   console.error(`bad --mode: ${MODE} (must be all | figma | export | validate)`);
@@ -120,7 +121,7 @@ function renderMd(out) {
 
 // ── PLUGIN_CODE: runs inside Figma ─────────────────────────────────────────
 const PLUGIN_CODE = `
-const { registry, mode, onlyCategory, provenance } = PAYLOAD;
+const { registry, mode, onlyCategory, pageOverride, provenance } = PAYLOAD;
 const log = [];
 function L(msg) { log.push(String(msg)); }
 const PREFIX = registry.varPathPrefix;
@@ -333,6 +334,7 @@ const _PAGE_BG = { type: 'SOLID', color: { r: 0xF0/255, g: 0xF4/255, b: 0xF7/255
 // (provenance.pageTs is fixed at Node-side launch) so every call site lands
 // on the same page even across minute boundaries.
 function _cpResolvedPageName() {
+  if (pageOverride) return pageOverride;
   const ts = (provenance && provenance.pageTs) ? provenance.pageTs : '';
   return ts ? (registry.targetPageName + ' ' + ts) : registry.targetPageName;
 }
@@ -934,7 +936,8 @@ const tzPart = new Intl.DateTimeFormat('en', { timeZoneName: 'short' }).formatTo
 const generatedAt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}${tzPart ? ' ' + tzPart.value : ''}`;
 const pageTs = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
-const payload = { registry, mode: MODE, onlyCategory: ONLY_CATEGORY, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-pairings.js' } };
+const payload = { registry, mode: MODE, onlyCategory: ONLY_CATEGORY, pageOverride: PAGE_OVERRIDE, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-pairings.js' } };
+if (PAGE_OVERRIDE) console.log('  Page override: ' + PAGE_OVERRIDE);
 const script = `(async () => {
   const PAYLOAD = ${JSON.stringify(payload)};
   ${PLUGIN_CODE}

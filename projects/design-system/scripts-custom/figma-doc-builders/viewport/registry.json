@@ -93,27 +93,6 @@
         "purpose": "Mode-scoped page-container min / max widths — the Figma-bindable layer consumed by frames.",
         "guideline": "Bind to the page container frame. Resolves per active viewport mode."
       }
-    },
-    {
-      "id": "header_variant",
-      "tableName": "Table: header_variant",
-      "kind": "multi",
-      "source": {
-        "type": "json-per-mode",
-        "dir": "src/lib/themes/04_component/molecule/header",
-        "rootPath": "ob.c.header",
-        "leafKeys": ["variant"],
-        "modeFiles": { "xl": "xl.json", "xs": "xs.json", "sm": "sm.json", "md": "md.json", "lg": "lg.json", "2xl": "2xl.json" },
-        "modeOrder": ["xs", "sm", "md", "lg", "xl", "2xl"],
-        "tokenNameTemplate": "ob.c.header.<leaf>"
-      },
-      "section": {
-        "tier": "C",
-        "title": "Viewport – Header Variant",
-        "subtitle": "ob.c.header.variant",
-        "purpose": "[FIGMA-ONLY] Temporary token used only for Figma documentation. Selects the _pseudo_header component variant per viewport mode — mobile below lg, desktop from lg up.",
-        "guideline": "Delete this token (and the _pseudo_header) when the real header component ships."
-      }
     }
   ]
 }

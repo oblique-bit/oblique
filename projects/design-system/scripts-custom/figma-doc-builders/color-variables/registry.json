@@ -124,7 +124,7 @@
       "rowComponent": "2-mode",
       "showRoleColumn": false,
       "source": "figma-vars",
-      "matches": "^ob/s/color/neutral/",
+      "matches": "^color/neutral/",
       "modeCollection": "s1-lightness",
       "wrapperName": "Token Set: ob.s.color.neutral",
       "tableFrameName": "Token Table"
@@ -136,7 +136,7 @@
       "rowComponent": "4-mode",
       "showRoleColumn": true,
       "source": "figma-vars",
-      "matches": "^ob/s/color/interaction/",
+      "matches": "^color/interaction/",
       "modeCollections": ["s1-lightness", "s2-emphasis"],
       "wrapperName": "Token Set: ob.s.color.interaction",
       "tableFrameName": "Token Table"
@@ -148,7 +148,7 @@
       "rowComponent": "2-mode",
       "showRoleColumn": true,
       "source": "figma-vars",
-      "matches": "^ob/s/color/status/",
+      "matches": "^color/status/",
       "modeCollection": "s1-lightness",
       "wrapperName": "Token Set: ob.s.color.status",
       "tableFrameName": "Token Table"
@@ -160,7 +160,7 @@
       "rowComponent": "2-mode",
       "showRoleColumn": true,
       "source": "figma-vars",
-      "matches": "^ob/s/color/free/",
+      "matches": "^color/free/",
       "modeCollection": "s1-lightness",
       "wrapperName": "Token Set: ob.s.color.free",
       "tableFrameName": "Token Table"
@@ -172,7 +172,7 @@
       "rowComponent": "2-mode",
       "showRoleColumn": false,
       "source": "figma-vars",
-      "matches": "^ob/s/color/brand/",
+      "matches": "^color/brand/",
       "modeCollection": "s1-lightness",
       "wrapperName": "Token Set: ob.s.color.brand",
       "tableFrameName": "Token Table"
@@ -184,7 +184,7 @@
       "rowComponent": "2-mode",
       "showRoleColumn": false,
       "source": "figma-vars",
-      "matches": "^ob/s/color/navigation/",
+      "matches": "^color/navigation/",
       "modeCollection": "s1-lightness",
       "wrapperName": "Token Set: ob.s.color.navigation",
       "tableFrameName": "Token Table"

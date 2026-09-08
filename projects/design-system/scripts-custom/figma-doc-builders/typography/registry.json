@@ -4,6 +4,7 @@
   "allowedFiles": [],
   "componentNames": {
     "sectionBar":       "_docs/shared/section_bar",
+    "sharedSectionBar": "_docs/shared/section_bar",
     "headerRow":        "_docs/typography/header_row",
     "row":              "_docs/typography/row",
     "groupHeader":      "_docs/shared/group_header",
@@ -14,7 +15,7 @@
     "html": {
       "tierLetter": "HTML",
       "title": "Styles",
-      "subtitle": "h.typography.style",
+      "subtitle": "ob.html",
       "variant": "s",
       "badges": ["consumer"],
       "columns": ["interface", "prose"],
@@ -24,7 +25,7 @@
     "scales": {
       "tierLetter": "Scales",
       "title": "Styles",
-      "subtitle": "s.typography.grouped",
+      "subtitle": "ob.semantic",
       "variant": "p",
       "badges": ["maintainer"],
       "purpose": "Composite text styles used mainly in component build process. Static does not react to variable modes; dynamic scales with the ui_scale mode (sm / md / lg).",
@@ -44,8 +45,8 @@
         "purpose": "Heading text styles (H1–H6) for HTML document contexts. Switches between `interface` and `prose` typography contexts.",
         "guideline": "Pair semantically with HTML <h1>…<h6> elements. Heading scale comes from typography_context — set the parent's context mode to switch interface ↔ prose."
       },
-      "stylePrefix": "h/typography/style/heading/",
-      "subtitle": "h.typography.style.heading",
+      "stylePrefix": "html/heading/",
+      "subtitle": "ob.html.heading",
       "grouping": "none"
     },
     {
@@ -59,8 +60,8 @@
         "purpose": "Body / paragraph / link text styles used in HTML document contexts (interface and prose).",
         "guideline": "Default body style is `normal`; `strong` matches <strong>/<b>; `lead` is for opening paragraphs; `link` covers inline links."
       },
-      "stylePrefix": "h/typography/style/body/",
-      "subtitle": "h.typography.style.body",
+      "stylePrefix": "html/body/",
+      "subtitle": "ob.html.body",
       "grouping": "none"
     },
     {
@@ -74,8 +75,8 @@
         "purpose": "T-shirt sized composite text styles (font-family + weight + size + line-height + letter-spacing + paragraph-spacing) that do NOT change with the ui_scale mode.",
         "guideline": "Use for any text whose typographic dimensions must remain constant across ui_scale (sm / md / lg). Pair with the dimension foundation when laying out static layouts."
       },
-      "stylePrefix": "s/typography/grouped/static/",
-      "subtitle": "s.typography.grouped.static",
+      "stylePrefix": "semantic/static/",
+      "subtitle": "ob.semantic.static",
       "grouping": "size_class"
     },
     {
@@ -90,8 +91,8 @@
         "purpose": "T-shirt sized composite text styles that scale with the active ui_scale mode. Previewed at the page default (md). Switch the ui_scale mode on the containing frame to inspect sm or lg.",
         "guideline": "Use as the default body and label styles. Renders at the active ui_scale mode wherever applied."
       },
-      "stylePrefix": "s/typography/grouped/dynamic/",
-      "subtitle": "s.typography.grouped.dynamic",
+      "stylePrefix": "semantic/dynamic/",
+      "subtitle": "ob.semantic.dynamic",
       "grouping": "size_class"
     }
   ]
