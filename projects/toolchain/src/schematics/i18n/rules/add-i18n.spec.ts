@@ -78,7 +78,7 @@ describe('i18n schematic', () => {
 				"accessibilityStatement: {\n\tapplicationName: 'Test application'"
 			);
 			expect(resultTree.readContent('src/app/app-module.ts')).toContain(
-				"translate: {locales: {locales: ['de-CH', 'fr-CH', 'it-CH'], defaultLanguage: 'de', disabled: false, languages: {de: 'DE', fr: 'FR', it: 'IT'}}}"
+				"translate: {locales: {locales: ['de-CH', 'fr-CH', 'it-CH'], defaultLanguage: 'de', disabled: false}}"
 			);
 		});
 	});
@@ -115,7 +115,7 @@ describe('i18n schematic', () => {
 			expect(idempotentContent).toContain('registerLocaleData(localeFRCH);');
 			expect(idempotentContent).toContain('registerLocaleData(localeITCH);');
 			expect(idempotentContent).toContain(
-				"translate: {locales: {locales: ['de-CH', 'fr-CH', 'it-CH'], defaultLanguage: 'de', disabled: false, languages: {de: 'DE', fr: 'FR', it: 'IT'}}}"
+				"translate: {locales: {locales: ['de-CH', 'fr-CH', 'it-CH'], defaultLanguage: 'de', disabled: false}}"
 			);
 		});
 	});
@@ -133,7 +133,7 @@ describe('i18n schematic', () => {
 		});
 		test('config merged with all locales', () => {
 			expect(preExistingResultTree.readContent('src/app/app-module.ts')).toContain(
-				"translate: {locales: {locales: ['de-CH', 'fr-CH', 'it-CH'], defaultLanguage: 'de', disabled: false, languages: {de: 'DE', fr: 'FR', it: 'IT'}}}"
+				"translate: {locales: {locales: ['de-CH', 'fr-CH', 'it-CH'], defaultLanguage: 'de', disabled: false}}"
 			);
 		});
 	});

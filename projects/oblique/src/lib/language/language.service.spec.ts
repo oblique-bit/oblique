@@ -16,7 +16,6 @@ describe('LanguageService', () => {
 			locales: [],
 			defaultLanguage: 'de',
 			disabled: false,
-			languages: {},
 		} as unknown as ObILocale;
 
 		beforeEach(() => {
@@ -42,7 +41,6 @@ describe('LanguageService', () => {
 			locales: ['de-CH', 'fr-CH', 'it-CH'],
 			defaultLanguage: 'de',
 			disabled: false,
-			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 		} as ObILocale;
 		let onLangChange: Subject<{lang: string; translations: unknown}>;
 
@@ -105,7 +103,6 @@ describe('LanguageService', () => {
 			locales: ['de-CH', 'fr-CH', 'it-CH'],
 			defaultLanguage: 'de',
 			disabled: true,
-			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 		} as ObILocale;
 
 		it('should return early and not initialize translation', () => {
@@ -141,7 +138,6 @@ describe('LanguageService', () => {
 			locales: ['de-CH', 'fr-CH', 'it-CH'],
 			defaultLanguage: 'de',
 			disabled: false,
-			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 		} as ObILocale;
 
 		beforeEach(() => {
@@ -187,7 +183,6 @@ describe('LanguageService', () => {
 			locales: [{locale: 'de-CH'}, {locale: 'fr-CH'}, {locale: 'it-CH'}],
 			defaultLanguage: 'de',
 			disabled: false,
-			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 		} as ObILocale;
 
 		beforeEach(() => {
@@ -223,7 +218,6 @@ describe('LanguageService', () => {
 			locales: ['de-CH', 'fr-CH'],
 			defaultLanguage: 'it',
 			disabled: false,
-			languages: {de: 'Deutsch', fr: 'Francais'},
 		} as ObILocale;
 
 		beforeEach(() => {

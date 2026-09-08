@@ -37,7 +37,6 @@ const defaultLocalesConfiguration: ObILocale = {
 	locales: ['de-CH', 'fr-CH', 'it-CH'],
 	defaultLanguage: 'de',
 	disabled: false,
-	languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano', en: 'English'},
 };
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
