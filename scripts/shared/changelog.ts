@@ -166,7 +166,7 @@ export class Changelog extends StaticScript {
 		return breakingChanges
 			? breakingChanges
 					.replace(/\*\*/g, '\n  -')
-					.split('*')
+					.split(/^[*-]/m)
 					.filter(change => !!change)
 					.map(change => `- **${scope}:** ${change.trim()}`)
 			: [];
