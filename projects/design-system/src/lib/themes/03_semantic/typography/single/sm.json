@@ -3,14 +3,14 @@
     "s": {
       "dynamic": {
         "token_family_docs": {
-          "$description": {
+          "description": {
             "$type": "other",
             "$value": "Individual typography tokens for the Small component size mode."
           }
         },
         "font_size": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Dynamic font-size scale — values scale with the active ui_scale mode (sm/md/lg) via the typography multiplier."
             }
@@ -63,7 +63,7 @@
         },
         "line_height": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Dynamic line-height scale — paired with the dynamic font-size scale. Scales with ui_scale (sm/md/lg)."
             }
@@ -103,7 +103,7 @@
         },
         "paragraph_spacing": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Dynamic paragraph-spacing scale — half the matching dynamic line-height, so paragraph rhythm scales with ui_scale."
             }
@@ -167,7 +167,7 @@
         },
         "font_weight": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Dynamic font weight tokens — identical numeric mapping to the static set, exposed in the ui_scale collection for parity."
             }
@@ -195,7 +195,7 @@
         },
         "text_decoration": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Dynamic text-decoration tokens — primarily for links. Mirrors the static set."
             }
@@ -215,7 +215,7 @@
         },
         "letter_spacing_rem": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Dynamic letter spacing (rem) — tracking values authored in rem in the ui_scale collection."
             }
@@ -248,7 +248,7 @@
         },
         "letter_spacing_px": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Dynamic letter spacing (px) — tracking values authored in px in the ui_scale collection."
             }

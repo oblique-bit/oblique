@@ -4,7 +4,7 @@
       "link": {
         "icon": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Link icon tokens for the Interface typography context."
             }

@@ -11,7 +11,7 @@
         "static": {
           "density": {
             "token_family_docs": {
-              "$description": {
+              "description": {
                 "$type": "other",
                 "$value": "Density-independent spacing tokens — fixed values not affected by density mode. Use: for spacing that must remain constant regardless of density. Avoid: for spacing that should compress in compact or expand in spacious mode."
               }

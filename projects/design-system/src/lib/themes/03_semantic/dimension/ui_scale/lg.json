@@ -5,7 +5,7 @@
         "dynamic": {
           "ui_scale": {
             "token_family_docs": {
-              "$description": {
+              "description": {
                 "$type": "other",
                 "$value": "Component dimensions for the Large UI Scale mode — values derived from base primitives × lg multiplier. Dynamic tokens: scale automatically when the Large mode is active."
               }

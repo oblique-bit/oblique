@@ -11,14 +11,14 @@
       },
       "static": {
         "token_family_docs": {
-          "$description": {
+          "description": {
             "$type": "other",
             "$value": "Size-mode-independent individual typography tokens."
           }
         },
         "font_size": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Static font-size scale (xs → 5xl + base) — single-mode font sizes that do not change with ui_scale."
             }
@@ -71,7 +71,7 @@
         },
         "line_height": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Static line-height scale paired with the static font-size scale — single-mode line heights for body and heading sizes."
             }
@@ -111,7 +111,7 @@
         },
         "paragraph_spacing": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Static paragraph-spacing scale — vertical gap between paragraphs in static contexts. Derived as half the matching line-height."
             }
@@ -179,7 +179,7 @@
         },
         "font_family": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Font family tokens — semantic roles (body, heading, code) mapped to primitive font families. Switch the primitive to rebrand without touching every consumer."
             }
@@ -202,7 +202,7 @@
         },
         "font_weight": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Font weight tokens — semantic names (regular, medium, semiBold, bold, extraBold) mapped to numeric weights (400 / 500 / 600 / 700 / 800)."
             }
@@ -230,7 +230,7 @@
         },
         "text_decoration": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Text decoration tokens — primarily for links. Default has an underline; low-emphasis variants drop the underline."
             }
@@ -250,7 +250,7 @@
         },
         "text_case": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Text case tokens — controls letter casing transforms (none, uppercase, lowercase, capitalize). Use for label semantics; respect content casing for prose."
             }
@@ -278,7 +278,7 @@
         },
         "letter_spacing_rem": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Letter spacing (rem) — tracking values authored in rem. Rem-based tracking scales with root font-size."
             }
@@ -311,7 +311,7 @@
         },
         "letter_spacing_px": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Letter spacing (px) — tracking values authored in px. Use where absolute tracking matters (e.g. small caps, all-caps labels)."
             }
@@ -344,7 +344,7 @@
         },
         "text_align": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Text alignment tokens — left / center / right. Drives the horizontal alignment of text within its containing block."
             }

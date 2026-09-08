@@ -5,7 +5,7 @@
         "static": {
           "typography_context": {
             "token_family_docs": {
-              "$description": {
+              "description": {
                 "$type": "other",
                 "$value": "Fixed vertical spacing for HTML typography elements — padding-top and padding-bottom values for headings and paragraphs. Static because this surrounding spacing remains constant regardless of typography context mode (interface vs prose)."
               }

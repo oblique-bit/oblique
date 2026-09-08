@@ -4,7 +4,7 @@
       "dimension": {
         "viewport": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Min/max width for the page-container component in the Figma library, at the lg (large) viewport. Mode-scoped: resolves to the lg range when the lg viewport mode is active."
             }

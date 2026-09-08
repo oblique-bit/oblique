@@ -5,7 +5,7 @@
         "dynamic": {
           "density": {
             "token_family_docs": {
-              "$description": {
+              "description": {
                 "$type": "other",
                 "$value": "Spacing tokens for the Spacious density mode — increased whitespace for comfortable reading and interaction. Values derived from base primitives × spacious multiplier with corrector offsets where needed."
               }

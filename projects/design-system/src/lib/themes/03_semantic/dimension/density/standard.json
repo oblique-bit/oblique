@@ -5,7 +5,7 @@
         "dynamic": {
           "density": {
             "token_family_docs": {
-              "$description": {
+              "description": {
                 "$type": "other",
                 "$value": "Semantic spacing tokens for the Standard density mode — balanced spacing for general-purpose layouts."
               }

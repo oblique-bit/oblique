@@ -5,7 +5,7 @@
         "dynamic": {
           "typography_context": {
             "token_family_docs": {
-              "$description": {
+              "description": {
                 "$type": "other",
                 "$value": "Typography dimensions for the Prose context — generous spacing optimized for readable body text and long-form content."
               }

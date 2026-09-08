@@ -4,7 +4,7 @@
       "motion": {
         "duration": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Motion tokens for the Disabled motion mode — all durations set to zero for reduced-motion accessibility."
             }
