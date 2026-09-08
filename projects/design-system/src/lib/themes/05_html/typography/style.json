@@ -4,7 +4,7 @@
       "typography": {
         "style": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Typography style tokens for HTML elements — heading and body style definitions."
             }

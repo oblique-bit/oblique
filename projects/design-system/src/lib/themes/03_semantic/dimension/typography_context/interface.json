@@ -5,7 +5,7 @@
         "dynamic": {
           "typography_context": {
             "token_family_docs": {
-              "$description": {
+              "description": {
                 "$type": "other",
                 "$value": "Typography dimensions for the Interface context — compact spacing tuned for UI controls and labels. Values match the static defaults for this context."
               }

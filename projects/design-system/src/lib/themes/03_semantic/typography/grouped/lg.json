@@ -5,7 +5,7 @@
         "grouped": {
           "dynamic": {
             "token_family_docs": {
-              "$description": {
+              "description": {
                 "$type": "other",
                 "$value": "Grouped typography token sets for the Large component size mode — bundled font-size, line-height, and spacing."
               }

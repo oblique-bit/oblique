@@ -3,7 +3,7 @@
     "h": {
       "link": {
         "token_family_docs": {
-          "$description": {
+          "description": {
             "$type": "other",
             "$value": "Base tokens for the HTML anchor element — spacing, motion, asset, color, and interaction states (enabled, hover, focus, active)."
           }

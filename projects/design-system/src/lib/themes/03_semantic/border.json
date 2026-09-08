@@ -3,7 +3,7 @@
     "s": {
       "border_radius": {
         "token_family_docs": {
-          "$description": {
+          "description": {
             "$type": "other",
             "$value": "Semantic border tokens — border-radius, border-width, outline-offset, and border shorthand. Referenced by component and HTML token files."
           }

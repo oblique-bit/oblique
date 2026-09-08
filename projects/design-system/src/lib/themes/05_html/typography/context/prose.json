@@ -4,7 +4,7 @@
       "typography": {
         "context": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Typography context tokens for the Prose context — font stack, size, and spacing for body text and content."
             }

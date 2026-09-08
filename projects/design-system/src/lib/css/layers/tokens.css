@@ -10,11 +10,11 @@
 	--ob-h-link-focus-text_decoration: var(--ob-s-static-text_decoration-link-emphasis_low);
 	--ob-h-link-hover-text_decoration: var(--ob-s-static-text_decoration-link-emphasis_high);
 	--ob-h-link-icon-size: var(--ob-s-static-font_size-md);
-	--ob-h-link-icon-token_family_docs-$description: Link icon tokens for the Interface typography context.;
+	--ob-h-link-icon-token_family_docs-description: Link icon tokens for the Interface typography context.;
 	--ob-h-link-motion-duration: var(--ob-s-motion-duration-micro);
 	--ob-h-link-motion-easing: var(--ob-s-motion-easing-standard);
 	--ob-h-link-spacing-gap: var(--ob-s-dimension-static-ui_scale-micro-sm-px);
-	--ob-h-link-token_family_docs-$description: Base tokens for the HTML anchor element — spacing, motion, asset, color, and interaction states (enabled, hover, focus, active).;
+	--ob-h-link-token_family_docs-description: Base tokens for the HTML anchor element — spacing, motion, asset, color, and interaction states (enabled, hover, focus, active).;
 	--ob-h-typography-context-body-color-fg: var(--ob-s-color-neutral-fg-contrast_highest-inversity_normal);
 	--ob-h-typography-context-body-lead-font_family: var(--ob-s-static-font_family-body);
 	--ob-h-typography-context-body-lead-font_size: var(--ob-s-static-font_size-md);
@@ -95,7 +95,7 @@
 	--ob-h-typography-context-p-top: var(--ob-s-dimension-static-typography_context-none);
 	--ob-h-typography-context-p_lead-bottom: var(--ob-s-dimension-static-typography_context-2xl);
 	--ob-h-typography-context-p_lead-top: var(--ob-s-dimension-static-typography_context-none);
-	--ob-h-typography-context-token_family_docs-$description: Typography context tokens for the Interface context — font stack, size, and spacing for UI labels and controls.;
+	--ob-h-typography-context-token_family_docs-description: Typography context tokens for the Interface context — font stack, size, and spacing for UI labels and controls.;
 	--ob-html-body-lead-font: 700 1rem/1.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
 	--ob-html-body-lead-letter_spacing: -0.5px;
 	--ob-html-body-lead-paragraph_spacing: 0.75rem;
@@ -138,7 +138,7 @@
 	--ob-s-border_radius-none: 0;
 	--ob-s-border_radius-rounded: 999px;
 	--ob-s-border_radius-sm: 1px;
-	--ob-s-border_radius-token_family_docs-$description: Semantic border tokens — border-radius, border-width, outline-offset, and border shorthand. Referenced by component and HTML token files.;
+	--ob-s-border_radius-token_family_docs-description: Semantic border tokens — border-radius, border-width, outline-offset, and border shorthand. Referenced by component and HTML token files.;
 	--ob-s-border_width-2xl: 12px;
 	--ob-s-border_width-3xl: 16px;
 	--ob-s-border_width-lg: 4px;
@@ -443,7 +443,7 @@
 	--ob-s-dimension-dynamic-density-md-rem: 0.5rem;
 	--ob-s-dimension-dynamic-density-sm-px: 6px;
 	--ob-s-dimension-dynamic-density-sm-rem: 0.375rem;
-	--ob-s-dimension-dynamic-density-token_family_docs-$description: Semantic spacing tokens for the Standard density mode — balanced spacing for general-purpose layouts.;
+	--ob-s-dimension-dynamic-density-token_family_docs-description: Semantic spacing tokens for the Standard density mode — balanced spacing for general-purpose layouts.;
 	--ob-s-dimension-dynamic-density-xl-px: 12px;
 	--ob-s-dimension-dynamic-density-xl-rem: 0.75rem;
 	--ob-s-dimension-dynamic-density-xs-px: 4px;
@@ -454,7 +454,7 @@
 	--ob-s-dimension-dynamic-typography_context-md: 16px;
 	--ob-s-dimension-dynamic-typography_context-none: 0;
 	--ob-s-dimension-dynamic-typography_context-sm: 12px;
-	--ob-s-dimension-dynamic-typography_context-token_family_docs-$description: Typography dimensions for the Interface context — compact spacing tuned for UI controls and labels. Values match the static defaults for this context.;
+	--ob-s-dimension-dynamic-typography_context-token_family_docs-description: Typography dimensions for the Interface context — compact spacing tuned for UI controls and labels. Values match the static defaults for this context.;
 	--ob-s-dimension-dynamic-typography_context-xl: 24px;
 	--ob-s-dimension-dynamic-typography_context-xs: 8px;
 	--ob-s-dimension-dynamic-ui_scale-container-lg-px: 56px;
@@ -509,7 +509,7 @@
 	--ob-s-dimension-dynamic-ui_scale-spacing-xl-rem: 2rem;
 	--ob-s-dimension-dynamic-ui_scale-spacing-xs-px: 16px;
 	--ob-s-dimension-dynamic-ui_scale-spacing-xs-rem: 1rem;
-	--ob-s-dimension-dynamic-ui_scale-token_family_docs-$description: Component dimensions for the Medium UI Scale mode — values derived from base primitives × md multiplier. Dynamic tokens: scale automatically when the Medium mode is active.;
+	--ob-s-dimension-dynamic-ui_scale-token_family_docs-description: Component dimensions for the Medium UI Scale mode — values derived from base primitives × md multiplier. Dynamic tokens: scale automatically when the Medium mode is active.;
 	--ob-s-dimension-static-density-10xl-px: 56px;
 	--ob-s-dimension-static-density-10xl-rem: 3.5rem;
 	--ob-s-dimension-static-density-11xl-px: 64px;
@@ -536,7 +536,7 @@
 	--ob-s-dimension-static-density-md-rem: 0.5rem;
 	--ob-s-dimension-static-density-sm-px: 6px;
 	--ob-s-dimension-static-density-sm-rem: 0.375rem;
-	--ob-s-dimension-static-density-token_family_docs-$description: Density-independent spacing tokens — fixed values not affected by density mode. Use: for spacing that must remain constant regardless of density. Avoid: for spacing that should compress in compact or expand in spacious mode.;
+	--ob-s-dimension-static-density-token_family_docs-description: Density-independent spacing tokens — fixed values not affected by density mode. Use: for spacing that must remain constant regardless of density. Avoid: for spacing that should compress in compact or expand in spacious mode.;
 	--ob-s-dimension-static-density-xl-px: 12px;
 	--ob-s-dimension-static-density-xl-rem: 0.75rem;
 	--ob-s-dimension-static-density-xs-px: 4px;
@@ -548,7 +548,7 @@
 	--ob-s-dimension-static-typography_context-md: 16px;
 	--ob-s-dimension-static-typography_context-none: 0;
 	--ob-s-dimension-static-typography_context-sm: 12px;
-	--ob-s-dimension-static-typography_context-token_family_docs-$description: Fixed vertical spacing for HTML typography elements — padding-top and padding-bottom values for headings and paragraphs. Static because this surrounding spacing remains constant regardless of typography context mode (interface vs prose).;
+	--ob-s-dimension-static-typography_context-token_family_docs-description: Fixed vertical spacing for HTML typography elements — padding-top and padding-bottom values for headings and paragraphs. Static because this surrounding spacing remains constant regardless of typography context mode (interface vs prose).;
 	--ob-s-dimension-static-typography_context-xl: 24px;
 	--ob-s-dimension-static-typography_context-xs: 8px;
 	--ob-s-dimension-static-ui_scale-container-lg-px: 56px;
@@ -603,7 +603,7 @@
 	--ob-s-dimension-static-ui_scale-spacing-xl-rem: 2rem;
 	--ob-s-dimension-static-ui_scale-spacing-xs-px: 16px;
 	--ob-s-dimension-static-ui_scale-spacing-xs-rem: 1rem;
-	--ob-s-dimension-static-ui_scale-token_family_docs-$description: Fixed component dimensions (UI Scale) — values that remain constant across all size modes. Use: for dimensions that must not scale between size modes. Avoid: for dimensions that should respond to UI Scale changes.;
+	--ob-s-dimension-static-ui_scale-token_family_docs-description: Fixed component dimensions (UI Scale) — values that remain constant across all size modes. Use: for dimensions that must not scale between size modes. Avoid: for dimensions that should respond to UI Scale changes.;
 	--ob-s-dimension-token_family_docs-description: Semantic dimension tokens — every length-based value in the system, covering both sizing (the element itself, mainly ui_scale) and spacing (gaps between or around elements, mainly density and typography_context). Surface in CSS with px or rem units preserved.;
 	--ob-s-dynamic-font_size-2xl: 1.4375rem;
 	--ob-s-dynamic-font_size-3xl: 1.75rem;
@@ -614,7 +614,7 @@
 	--ob-s-dynamic-font_size-lg: 1.125rem;
 	--ob-s-dynamic-font_size-md: 1rem;
 	--ob-s-dynamic-font_size-sm: 0.875rem;
-	--ob-s-dynamic-font_size-token_family_docs-$description: Dynamic font-size scale — values scale with the active ui_scale mode (sm/md/lg) via the typography multiplier.;
+	--ob-s-dynamic-font_size-token_family_docs-description: Dynamic font-size scale — values scale with the active ui_scale mode (sm/md/lg) via the typography multiplier.;
 	--ob-s-dynamic-font_size-xl: 1.25rem;
 	--ob-s-dynamic-font_size-xs: 0.75rem;
 	--ob-s-dynamic-font_weight-bold: 700;
@@ -622,18 +622,18 @@
 	--ob-s-dynamic-font_weight-medium: 500;
 	--ob-s-dynamic-font_weight-regular: 400;
 	--ob-s-dynamic-font_weight-semi_bold: 600;
-	--ob-s-dynamic-font_weight-token_family_docs-$description: Dynamic font weight tokens — identical numeric mapping to the static set, exposed in the ui_scale collection for parity.;
+	--ob-s-dynamic-font_weight-token_family_docs-description: Dynamic font weight tokens — identical numeric mapping to the static set, exposed in the ui_scale collection for parity.;
 	--ob-s-dynamic-letter_spacing_px-narrow: -0.5px;
 	--ob-s-dynamic-letter_spacing_px-narrower: -1px;
 	--ob-s-dynamic-letter_spacing_px-normal: auto;
 	--ob-s-dynamic-letter_spacing_px-super_narrow: -1.5px;
-	--ob-s-dynamic-letter_spacing_px-token_family_docs-$description: Dynamic letter spacing (px) — tracking values authored in px in the ui_scale collection.;
+	--ob-s-dynamic-letter_spacing_px-token_family_docs-description: Dynamic letter spacing (px) — tracking values authored in px in the ui_scale collection.;
 	--ob-s-dynamic-letter_spacing_px-wide: 0.5px;
 	--ob-s-dynamic-letter_spacing_rem-narrow: 0.005rem;
 	--ob-s-dynamic-letter_spacing_rem-narrower: -0.01rem;
 	--ob-s-dynamic-letter_spacing_rem-normal: auto;
 	--ob-s-dynamic-letter_spacing_rem-super_narrow: -0.03rem;
-	--ob-s-dynamic-letter_spacing_rem-token_family_docs-$description: Dynamic letter spacing (rem) — tracking values authored in rem in the ui_scale collection.;
+	--ob-s-dynamic-letter_spacing_rem-token_family_docs-description: Dynamic letter spacing (rem) — tracking values authored in rem in the ui_scale collection.;
 	--ob-s-dynamic-letter_spacing_rem-wide: 0.5%;
 	--ob-s-dynamic-line_height-2xl: 2.25rem;
 	--ob-s-dynamic-line_height-3xl: 3rem;
@@ -642,7 +642,7 @@
 	--ob-s-dynamic-line_height-lg: 1.75rem;
 	--ob-s-dynamic-line_height-md: 1.5rem;
 	--ob-s-dynamic-line_height-sm: 1.25rem;
-	--ob-s-dynamic-line_height-token_family_docs-$description: Dynamic line-height scale — paired with the dynamic font-size scale. Scales with ui_scale (sm/md/lg).;
+	--ob-s-dynamic-line_height-token_family_docs-description: Dynamic line-height scale — paired with the dynamic font-size scale. Scales with ui_scale (sm/md/lg).;
 	--ob-s-dynamic-line_height-xs: 1rem;
 	--ob-s-dynamic-paragraph_spacing-2xl: 1.125rem;
 	--ob-s-dynamic-paragraph_spacing-3xl: 1.5rem;
@@ -651,7 +651,7 @@
 	--ob-s-dynamic-paragraph_spacing-lg: 0.875rem;
 	--ob-s-dynamic-paragraph_spacing-md: 0.75rem;
 	--ob-s-dynamic-paragraph_spacing-sm: 0.625rem;
-	--ob-s-dynamic-paragraph_spacing-token_family_docs-$description: Dynamic paragraph-spacing scale — half the matching dynamic line-height, so paragraph rhythm scales with ui_scale.;
+	--ob-s-dynamic-paragraph_spacing-token_family_docs-description: Dynamic paragraph-spacing scale — half the matching dynamic line-height, so paragraph rhythm scales with ui_scale.;
 	--ob-s-dynamic-paragraph_spacing-xs: 0.5rem;
 	--ob-s-dynamic-spacing-heading-bottom: 8px;
 	--ob-s-dynamic-spacing-heading-top: 0px;
@@ -659,19 +659,19 @@
 	--ob-s-dynamic-spacing-paragraph-bottom: 2rem;
 	--ob-s-dynamic-text_decoration-link-emphasis_high: underline;
 	--ob-s-dynamic-text_decoration-link-emphasis_low: none;
-	--ob-s-dynamic-text_decoration-token_family_docs-$description: Dynamic text-decoration tokens — primarily for links. Mirrors the static set.;
-	--ob-s-dynamic-token_family_docs-$description: Individual typography tokens for the Medium component size mode.;
+	--ob-s-dynamic-text_decoration-token_family_docs-description: Dynamic text-decoration tokens — primarily for links. Mirrors the static set.;
+	--ob-s-dynamic-token_family_docs-description: Individual typography tokens for the Medium component size mode.;
 	--ob-s-motion-duration-comfortable: 300ms;
 	--ob-s-motion-duration-instant: 0ms;
 	--ob-s-motion-duration-micro: 100ms;
 	--ob-s-motion-duration-relaxed: 500ms;
 	--ob-s-motion-duration-smooth: 200ms;
-	--ob-s-motion-duration-token_family_docs-$description: Motion tokens for the Enabled motion mode — durations from instant to relaxed for animated UI interactions.;
+	--ob-s-motion-duration-token_family_docs-description: Motion tokens for the Enabled motion mode — durations from instant to relaxed for animated UI interactions.;
 	--ob-s-motion-easing-emphasis: cubic-bezier(0.4, 0, 0.2, 1);
 	--ob-s-motion-easing-entrance: cubic-bezier(0, 0, 0.2, 1);
 	--ob-s-motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
 	--ob-s-motion-easing-standard: cubic-bezier(0, 0, 0.2, 1);
-	--ob-s-motion-easing-token_family_docs-$description: Mode-independent easing curve tokens — standard, entrance, exit, and emphasis. Not affected by motion mode.;
+	--ob-s-motion-easing-token_family_docs-description: Mode-independent easing curve tokens — standard, entrance, exit, and emphasis. Not affected by motion mode.;
 	--ob-s-outline_offset-lg: 4px;
 	--ob-s-outline_offset-md: 3px;
 	--ob-s-outline_offset-none: 0;
@@ -684,7 +684,7 @@
 	--ob-s-static-font_family-body: 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
 	--ob-s-static-font_family-code: 'Noto Sans Mono', ui-monospace, sfmono-regular, consolas, 'Liberation Mono', menlo, monospace;
 	--ob-s-static-font_family-heading: 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
-	--ob-s-static-font_family-token_family_docs-$description: Font family tokens — semantic roles (body, heading, code) mapped to primitive font families. Switch the primitive to rebrand without touching every consumer.;
+	--ob-s-static-font_family-token_family_docs-description: Font family tokens — semantic roles (body, heading, code) mapped to primitive font families. Switch the primitive to rebrand without touching every consumer.;
 	--ob-s-static-font_size-2xl: 1.4375rem;
 	--ob-s-static-font_size-3xl: 1.75rem;
 	--ob-s-static-font_size-4xl: 2.125rem;
@@ -694,7 +694,7 @@
 	--ob-s-static-font_size-lg: 1.125rem;
 	--ob-s-static-font_size-md: 1rem;
 	--ob-s-static-font_size-sm: 0.875rem;
-	--ob-s-static-font_size-token_family_docs-$description: Static font-size scale (xs → 5xl + base) — single-mode font sizes that do not change with ui_scale.;
+	--ob-s-static-font_size-token_family_docs-description: Static font-size scale (xs → 5xl + base) — single-mode font sizes that do not change with ui_scale.;
 	--ob-s-static-font_size-xl: 1.25rem;
 	--ob-s-static-font_size-xs: 0.75rem;
 	--ob-s-static-font_weight-bold: 700;
@@ -702,18 +702,18 @@
 	--ob-s-static-font_weight-medium: 500;
 	--ob-s-static-font_weight-regular: 400;
 	--ob-s-static-font_weight-semi_bold: 600;
-	--ob-s-static-font_weight-token_family_docs-$description: Font weight tokens — semantic names (regular, medium, semiBold, bold, extraBold) mapped to numeric weights (400 / 500 / 600 / 700 / 800).;
+	--ob-s-static-font_weight-token_family_docs-description: Font weight tokens — semantic names (regular, medium, semiBold, bold, extraBold) mapped to numeric weights (400 / 500 / 600 / 700 / 800).;
 	--ob-s-static-letter_spacing_px-narrow: -0.5px;
 	--ob-s-static-letter_spacing_px-narrower: -1px;
 	--ob-s-static-letter_spacing_px-normal: auto;
 	--ob-s-static-letter_spacing_px-super_narrow: -1.5px;
-	--ob-s-static-letter_spacing_px-token_family_docs-$description: Letter spacing (px) — tracking values authored in px. Use where absolute tracking matters (e.g. small caps, all-caps labels).;
+	--ob-s-static-letter_spacing_px-token_family_docs-description: Letter spacing (px) — tracking values authored in px. Use where absolute tracking matters (e.g. small caps, all-caps labels).;
 	--ob-s-static-letter_spacing_px-wide: 0.5px;
 	--ob-s-static-letter_spacing_rem-narrow: 0.005rem;
 	--ob-s-static-letter_spacing_rem-narrower: -0.01rem;
 	--ob-s-static-letter_spacing_rem-normal: auto;
 	--ob-s-static-letter_spacing_rem-super_narrow: -0.03rem;
-	--ob-s-static-letter_spacing_rem-token_family_docs-$description: Letter spacing (rem) — tracking values authored in rem. Rem-based tracking scales with root font-size.;
+	--ob-s-static-letter_spacing_rem-token_family_docs-description: Letter spacing (rem) — tracking values authored in rem. Rem-based tracking scales with root font-size.;
 	--ob-s-static-letter_spacing_rem-wide: 0.5%;
 	--ob-s-static-line_height-2xl: 2.25rem;
 	--ob-s-static-line_height-3xl: 3rem;
@@ -722,7 +722,7 @@
 	--ob-s-static-line_height-lg: 1.75rem;
 	--ob-s-static-line_height-md: 1.5rem;
 	--ob-s-static-line_height-sm: 1.25rem;
-	--ob-s-static-line_height-token_family_docs-$description: Static line-height scale paired with the static font-size scale — single-mode line heights for body and heading sizes.;
+	--ob-s-static-line_height-token_family_docs-description: Static line-height scale paired with the static font-size scale — single-mode line heights for body and heading sizes.;
 	--ob-s-static-line_height-xs: 1rem;
 	--ob-s-static-paragraph_spacing-2xl: 1.125rem;
 	--ob-s-static-paragraph_spacing-3xl: 1.5rem;
@@ -732,7 +732,7 @@
 	--ob-s-static-paragraph_spacing-md: 0.75rem;
 	--ob-s-static-paragraph_spacing-none: 0rem;
 	--ob-s-static-paragraph_spacing-sm: 0.625rem;
-	--ob-s-static-paragraph_spacing-token_family_docs-$description: Static paragraph-spacing scale — vertical gap between paragraphs in static contexts. Derived as half the matching line-height.;
+	--ob-s-static-paragraph_spacing-token_family_docs-description: Static paragraph-spacing scale — vertical gap between paragraphs in static contexts. Derived as half the matching line-height.;
 	--ob-s-static-paragraph_spacing-xs: 0.5rem;
 	--ob-s-static-spacing-heading-bottom: 8px;
 	--ob-s-static-spacing-heading-top: 0px;
@@ -741,18 +741,18 @@
 	--ob-s-static-text_align-center: center;
 	--ob-s-static-text_align-left: left;
 	--ob-s-static-text_align-right: right;
-	--ob-s-static-text_align-token_family_docs-$description: Text alignment tokens — left / center / right. Drives the horizontal alignment of text within its containing block.;
+	--ob-s-static-text_align-token_family_docs-description: Text alignment tokens — left / center / right. Drives the horizontal alignment of text within its containing block.;
 	--ob-s-static-text_case-capitalize: capitalize;
 	--ob-s-static-text_case-lowercase: lowercase;
 	--ob-s-static-text_case-none: none;
-	--ob-s-static-text_case-token_family_docs-$description: Text case tokens — controls letter casing transforms (none, uppercase, lowercase, capitalize). Use for label semantics; respect content casing for prose.;
+	--ob-s-static-text_case-token_family_docs-description: Text case tokens — controls letter casing transforms (none, uppercase, lowercase, capitalize). Use for label semantics; respect content casing for prose.;
 	--ob-s-static-text_case-uppercase: uppercase;
 	--ob-s-static-text_decoration-link-emphasis_high: underline;
 	--ob-s-static-text_decoration-link-emphasis_low: none;
-	--ob-s-static-text_decoration-token_family_docs-$description: Text decoration tokens — primarily for links. Default has an underline; low-emphasis variants drop the underline.;
-	--ob-s-static-token_family_docs-$description: Size-mode-independent individual typography tokens.;
-	--ob-s-typography-grouped-dynamic-token_family_docs-$description: Grouped typography token sets for the Medium component size mode.;
-	--ob-s-typography-grouped-static-token_family_docs-$description: Grouped typography tokens independent of component size mode.;
+	--ob-s-static-text_decoration-token_family_docs-description: Text decoration tokens — primarily for links. Default has an underline; low-emphasis variants drop the underline.;
+	--ob-s-static-token_family_docs-description: Size-mode-independent individual typography tokens.;
+	--ob-s-typography-grouped-dynamic-token_family_docs-description: Grouped typography token sets for the Medium component size mode.;
+	--ob-s-typography-grouped-static-token_family_docs-description: Grouped typography tokens independent of component size mode.;
 	--ob-s-typography-token_family_docs-description: Typography foundation — every text-related token in the system. Covers font families, font weights, font sizes, line heights, paragraph spacing, letter spacing and text-decoration / text-case / text-align. Composite text styles (Figma styles) are built by combining tokens from these sub-families.;
 	--ob-s1-color-_docs-token_family_info: Source file for S1 color tokens in the Light theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, and Free.;
 	--ob-s1-color-free-cobalt-bg-contrast_high-inversity_flipped: #1c2834;
@@ -1196,7 +1196,7 @@
 		--ob-s-dimension-dynamic-density-md-rem: 0.375rem;
 		--ob-s-dimension-dynamic-density-sm-px: 4px;
 		--ob-s-dimension-dynamic-density-sm-rem: 0.25rem;
-		--ob-s-dimension-dynamic-density-token_family_docs-$description: Spacing tokens for the Compact density mode — reduced whitespace for information-dense layouts. Values derived from base primitives × compact multiplier with corrector offsets where needed.;
+		--ob-s-dimension-dynamic-density-token_family_docs-description: Spacing tokens for the Compact density mode — reduced whitespace for information-dense layouts. Values derived from base primitives × compact multiplier with corrector offsets where needed.;
 		--ob-s-dimension-dynamic-density-xl-px: 10px;
 		--ob-s-dimension-dynamic-density-xl-rem: 0.625rem;
 		--ob-s-dimension-dynamic-density-xs-px: 2px;
@@ -1230,7 +1230,7 @@
 		--ob-s-dimension-dynamic-density-md-rem: 0.75rem;
 		--ob-s-dimension-dynamic-density-sm-px: 8px;
 		--ob-s-dimension-dynamic-density-sm-rem: 0.5rem;
-		--ob-s-dimension-dynamic-density-token_family_docs-$description: Spacing tokens for the Spacious density mode — increased whitespace for comfortable reading and interaction. Values derived from base primitives × spacious multiplier with corrector offsets where needed.;
+		--ob-s-dimension-dynamic-density-token_family_docs-description: Spacing tokens for the Spacious density mode — increased whitespace for comfortable reading and interaction. Values derived from base primitives × spacious multiplier with corrector offsets where needed.;
 		--ob-s-dimension-dynamic-density-xl-px: 18px;
 		--ob-s-dimension-dynamic-density-xl-rem: 1.125rem;
 		--ob-s-dimension-dynamic-density-xs-px: 8px;
@@ -1817,12 +1817,12 @@
 		--ob-s-motion-duration-micro: 0ms;
 		--ob-s-motion-duration-relaxed: 0ms;
 		--ob-s-motion-duration-smooth: 0ms;
-		--ob-s-motion-duration-token_family_docs-$description: Motion tokens for the Disabled motion mode — all durations set to zero for reduced-motion accessibility.;
+		--ob-s-motion-duration-token_family_docs-description: Motion tokens for the Disabled motion mode — all durations set to zero for reduced-motion accessibility.;
 	}
 
 	.ob-typography-context-prose {
 		--ob-h-link-icon-size: var(--ob-s-static-font_size-lg);
-		--ob-h-link-icon-token_family_docs-$description: Link icon tokens for the Prose typography context.;
+		--ob-h-link-icon-token_family_docs-description: Link icon tokens for the Prose typography context.;
 		--ob-h-typography-context-body-lead-font_size: var(--ob-s-static-font_size-lg);
 		--ob-h-typography-context-body-link-font_size: var(--ob-s-static-font_size-lg);
 		--ob-h-typography-context-body-link-line_height: var(--ob-s-static-line_height-lg);
@@ -1865,7 +1865,7 @@
 		--ob-h-typography-context-h5-paragraph_spacing: var(--ob-s-static-paragraph_spacing-3xl);
 		--ob-h-typography-context-h5-spacing-top: var(--ob-s-dimension-static-typography_context-md);
 		--ob-h-typography-context-h6-paragraph_spacing: var(--ob-s-static-paragraph_spacing-3xl);
-		--ob-h-typography-context-token_family_docs-$description: Typography context tokens for the Prose context — font stack, size, and spacing for body text and content.;
+		--ob-h-typography-context-token_family_docs-description: Typography context tokens for the Prose context — font stack, size, and spacing for body text and content.;
 		--ob-html-body-lead-font: 700 1.125rem/1.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
 		--ob-html-body-link-font: 500 1.125rem/1.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
 		--ob-html-body-normal-font: 500 1.125rem/1.75rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -1891,7 +1891,7 @@
 		--ob-s-dimension-dynamic-typography_context-lg: 24px;
 		--ob-s-dimension-dynamic-typography_context-md: 20px;
 		--ob-s-dimension-dynamic-typography_context-sm: 16px;
-		--ob-s-dimension-dynamic-typography_context-token_family_docs-$description: Typography dimensions for the Prose context — generous spacing optimized for readable body text and long-form content.;
+		--ob-s-dimension-dynamic-typography_context-token_family_docs-description: Typography dimensions for the Prose context — generous spacing optimized for readable body text and long-form content.;
 		--ob-s-dimension-dynamic-typography_context-xl: 28px;
 		--ob-s-dimension-dynamic-typography_context-xs: 12px;
 	}
@@ -1941,7 +1941,7 @@
 		--ob-s-dimension-dynamic-ui_scale-spacing-xl-rem: 1.6rem;
 		--ob-s-dimension-dynamic-ui_scale-spacing-xs-px: 12.8px;
 		--ob-s-dimension-dynamic-ui_scale-spacing-xs-rem: 0.8rem;
-		--ob-s-dimension-dynamic-ui_scale-token_family_docs-$description: Component dimensions for the Small UI Scale mode — values derived from base primitives × sm multiplier. Dynamic tokens: scale automatically when the Small mode is active.;
+		--ob-s-dimension-dynamic-ui_scale-token_family_docs-description: Component dimensions for the Small UI Scale mode — values derived from base primitives × sm multiplier. Dynamic tokens: scale automatically when the Small mode is active.;
 		--ob-s-dynamic-font_size-2xl: 1.2578rem;
 		--ob-s-dynamic-font_size-3xl: 1.5313rem;
 		--ob-s-dynamic-font_size-4xl: 1.8594rem;
@@ -1969,8 +1969,8 @@
 		--ob-s-dynamic-paragraph_spacing-md: 0.5742rem;
 		--ob-s-dynamic-paragraph_spacing-sm: 0.4785rem;
 		--ob-s-dynamic-paragraph_spacing-xs: 0.3828rem;
-		--ob-s-dynamic-token_family_docs-$description: Individual typography tokens for the Small component size mode.;
-		--ob-s-typography-grouped-dynamic-token_family_docs-$description: Grouped typography token sets for the Small component size mode.;
+		--ob-s-dynamic-token_family_docs-description: Individual typography tokens for the Small component size mode.;
+		--ob-s-typography-grouped-dynamic-token_family_docs-description: Grouped typography token sets for the Small component size mode.;
 		--ob-semantic-dynamic-2xl-normal-font: 400 1.2578rem/1.9688rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
 		--ob-semantic-dynamic-2xl-normal-paragraph_spacing: 0.8614rem;
 		--ob-semantic-dynamic-2xl-strong-font: 800 1.2578rem/1.9688rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -2050,7 +2050,7 @@
 		--ob-s-dimension-dynamic-ui_scale-spacing-xl-rem: 2.5rem;
 		--ob-s-dimension-dynamic-ui_scale-spacing-xs-px: 20px;
 		--ob-s-dimension-dynamic-ui_scale-spacing-xs-rem: 1.25rem;
-		--ob-s-dimension-dynamic-ui_scale-token_family_docs-$description: Component dimensions for the Large UI Scale mode — values derived from base primitives × lg multiplier. Dynamic tokens: scale automatically when the Large mode is active.;
+		--ob-s-dimension-dynamic-ui_scale-token_family_docs-description: Component dimensions for the Large UI Scale mode — values derived from base primitives × lg multiplier. Dynamic tokens: scale automatically when the Large mode is active.;
 		--ob-s-dynamic-font_size-2xl: 1.6172rem;
 		--ob-s-dynamic-font_size-3xl: 1.9688rem;
 		--ob-s-dynamic-font_size-4xl: 2.3906rem;
@@ -2078,8 +2078,8 @@
 		--ob-s-dynamic-paragraph_spacing-md: 0.9492rem;
 		--ob-s-dynamic-paragraph_spacing-sm: 0.791rem;
 		--ob-s-dynamic-paragraph_spacing-xs: 0.6328rem;
-		--ob-s-dynamic-token_family_docs-$description: Individual typography tokens for the Large component size mode — font-size, line-height, paragraph-spacing, and heading spacing.;
-		--ob-s-typography-grouped-dynamic-token_family_docs-$description: Grouped typography token sets for the Large component size mode — bundled font-size, line-height, and spacing.;
+		--ob-s-dynamic-token_family_docs-description: Individual typography tokens for the Large component size mode — font-size, line-height, paragraph-spacing, and heading spacing.;
+		--ob-s-typography-grouped-dynamic-token_family_docs-description: Grouped typography token sets for the Large component size mode — bundled font-size, line-height, and spacing.;
 		--ob-semantic-dynamic-2xl-normal-font: 400 1.6172rem/2.5313rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;
 		--ob-semantic-dynamic-2xl-normal-paragraph_spacing: 1.4239rem;
 		--ob-semantic-dynamic-2xl-strong-font: 800 1.6172rem/2.5313rem 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, 'Helvetica Neue', Arial, sans-serif;

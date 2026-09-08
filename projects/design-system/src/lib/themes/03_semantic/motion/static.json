@@ -4,7 +4,7 @@
       "motion": {
         "easing": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Mode-independent easing curve tokens — standard, entrance, exit, and emphasis. Not affected by motion mode."
             }

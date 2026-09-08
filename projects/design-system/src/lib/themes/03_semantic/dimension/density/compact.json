@@ -5,7 +5,7 @@
         "dynamic": {
           "density": {
             "token_family_docs": {
-              "$description": {
+              "description": {
                 "$type": "other",
                 "$value": "Spacing tokens for the Compact density mode — reduced whitespace for information-dense layouts. Values derived from base primitives × compact multiplier with corrector offsets where needed."
               }
