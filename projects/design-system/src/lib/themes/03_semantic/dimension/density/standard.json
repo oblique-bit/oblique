@@ -15,11 +15,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.4} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "4px - Minimal spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.xs.px} / 16 * 1rem",
-                "$description": "4px equivalent - Minimal spacing (standard density)"
               }
             },
             "sm": {
@@ -27,11 +22,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.6} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "6px - Small spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.sm.px} / 16 * 1rem",
-                "$description": "6px equivalent - Small spacing (standard density)"
               }
             },
             "md": {
@@ -39,11 +29,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.8} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "8px - Medium spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.md.px} / 16 * 1rem",
-                "$description": "8px equivalent - Medium spacing (standard density)"
               }
             },
             "lg": {
@@ -51,11 +36,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.10} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "10px - Large spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.lg.px} / 16 * 1rem",
-                "$description": "10px equivalent - Large spacing (standard density)"
               }
             },
             "xl": {
@@ -63,11 +43,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.12} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "12px - XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.xl.px} / 16 * 1rem",
-                "$description": "12px equivalent - XL spacing (standard density)"
               }
             },
             "2xl": {
@@ -75,11 +50,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.16} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "16px - 2XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.2xl.px} / 16 * 1rem",
-                "$description": "16px equivalent - 2XL spacing (standard density)"
               }
             },
             "3xl": {
@@ -87,11 +57,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.20} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "20px - 3XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.3xl.px} / 16 * 1rem",
-                "$description": "20px equivalent - 3XL spacing (standard density)"
               }
             },
             "4xl": {
@@ -99,11 +64,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.24} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "24px - 4XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.4xl.px} / 16 * 1rem",
-                "$description": "24px equivalent - 4XL spacing (standard density)"
               }
             },
             "5xl": {
@@ -111,11 +71,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.28} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "28px - 5XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.5xl.px} / 16 * 1rem",
-                "$description": "28px equivalent - 5XL spacing (standard density)"
               }
             },
             "6xl": {
@@ -123,11 +78,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.32} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "32px - 6XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.6xl.px} / 16 * 1rem",
-                "$description": "32px equivalent - 6XL spacing (standard density)"
               }
             },
             "7xl": {
@@ -135,11 +85,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.36} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "36px - 7XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.7xl.px} / 16 * 1rem",
-                "$description": "36px equivalent - 7XL spacing (standard density)"
               }
             },
             "8xl": {
@@ -147,11 +92,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.40} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "40px - 8XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.8xl.px} / 16 * 1rem",
-                "$description": "40px equivalent - 8XL spacing (standard density)"
               }
             },
             "9xl": {
@@ -159,11 +99,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.48} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "48px - 9XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.9xl.px} / 16 * 1rem",
-                "$description": "48px equivalent - 9XL spacing (standard density)"
               }
             },
             "10xl": {
@@ -171,11 +106,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.56} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "56px - 10XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.10xl.px} / 16 * 1rem",
-                "$description": "56px equivalent - 10XL spacing (standard density)"
               }
             },
             "11xl": {
@@ -183,11 +113,6 @@
                 "$type": "dimension",
                 "$value": "roundTo(({ob.p.dimension.px.64} * {ob.g.mode_collection.density.multiplier.dimension.standard}), 2) * 1px",
                 "$description": "64px - 11XL spacing (standard density)"
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.s.dimension.dynamic.density.11xl.px} / 16 * 1rem",
-                "$description": "64px equivalent - 11XL spacing (standard density)"
               }
             }
           }

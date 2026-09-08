@@ -15,11 +15,6 @@
                 "$type": "dimension",
                 "$value": "{ob.p.dimension.px.0} * 1px",
                 "$description": "Zero dimension for collapse and reset. Absolute (px) — does not change on mode switch."
-              },
-              "rem": {
-                "$type": "dimension",
-                "$value": "{ob.p.dimension.rem.0} * 1rem",
-                "$description": "Zero dimension for collapse and reset. Fluid (rem) — scales with root font size for accessibility."
               }
             },
             "micro": {
@@ -28,11 +23,6 @@
                   "$type": "dimension",
                   "$value": "{ob.p.dimension.px.1} * 1px",
                   "$description": "Finest hairline dimension. Absolute (px) — does not change on mode switch. Use for 1px borders and sub-pixel rules."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.p.dimension.rem.100} * 1rem",
-                  "$description": "Finest hairline dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable hairlines that adapt to user preferences."
                 }
               },
               "sm": {
@@ -40,11 +30,6 @@
                   "$type": "dimension",
                   "$value": "{ob.p.dimension.px.2} * 1px",
                   "$description": "Thin border dimension. Absolute (px) — does not change on mode switch. Use for subtle dividers, thin outlines, nudge adjustments."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.p.dimension.rem.200} * 1rem",
-                  "$description": "Thin border dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable dividers and outlines that adapt to user preferences."
                 }
               },
               "md": {
@@ -52,11 +37,6 @@
                   "$type": "dimension",
                   "$value": "{ob.p.dimension.px.3} * 1px",
                   "$description": "Visible border dimension. Absolute (px) — does not change on mode switch. Use for prominent outlines and focus indicators."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.p.dimension.rem.300} * 1rem",
-                  "$description": "Visible border dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable outlines and focus indicators."
                 }
               }
             },
@@ -66,11 +46,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.4} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Minimal component-internal dimension. Absolute (px) — does not change on mode switch. Use for tight fixed-size padding and small icon gaps."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.xs.px} / 16 * 1rem",
-                  "$description": "Minimal component-internal dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable padding, icon gaps, accessible element internals."
                 }
               },
               "sm": {
@@ -78,11 +53,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.6} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Small component-internal dimension. Absolute (px) — does not change on mode switch. Use for compact component gaps and fine internal adjustments."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px} / 16 * 1rem",
-                  "$description": "Small component-internal dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable component gaps that adapt to user preferences."
                 }
               },
               "md": {
@@ -90,11 +60,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Standard component-internal dimension. Absolute (px) — does not change on mode switch. Use for typical component padding and grid alignment."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.md.px} / 16 * 1rem",
-                  "$description": "Standard component-internal dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable component padding and accessible layout grids."
                 }
               },
               "lg": {
@@ -102,11 +67,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.10} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Enhanced component-internal dimension. Absolute (px) — does not change on mode switch. Use for comfortable internal spacing and improved legibility."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.lg.px} / 16 * 1rem",
-                  "$description": "Enhanced component-internal dimension. Fluid (rem) — scales with root font size for accessibility. Use for generous scalable spacing that enhances legibility."
                 }
               },
               "xl": {
@@ -114,11 +74,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.12} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Large component-internal dimension. Absolute (px) — does not change on mode switch. Use for spacious component padding and prominent internal gaps."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.xl.px} / 16 * 1rem",
-                  "$description": "Large component-internal dimension. Fluid (rem) — scales with root font size for accessibility. Use for spacious scalable padding in larger components."
                 }
               }
             },
@@ -128,11 +83,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.16} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Small content spacing dimension. Absolute (px) — does not change on mode switch. Use for fixed gaps between sibling elements and standard content separation."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xs.px} / 16 * 1rem",
-                  "$description": "Small content spacing dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable gaps between elements that respect user preferences."
                 }
               },
               "sm": {
@@ -140,11 +90,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.20} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Medium content spacing dimension. Absolute (px) — does not change on mode switch. Use for standard fixed section gaps."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.sm.px} / 16 * 1rem",
-                  "$description": "Medium content spacing dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable section gaps."
                 }
               },
               "md": {
@@ -152,11 +97,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.24} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Large content spacing dimension. Absolute (px) — does not change on mode switch. Use for clear fixed separation between content areas."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.md.px} / 16 * 1rem",
-                  "$description": "Large content spacing dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable separation between content areas."
                 }
               },
               "lg": {
@@ -164,11 +104,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.28} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Enhanced content spacing dimension. Absolute (px) — does not change on mode switch. Use for prominent fixed visual separation."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.lg.px} / 16 * 1rem",
-                  "$description": "Enhanced content spacing dimension. Fluid (rem) — scales with root font size for accessibility. Use for prominent scalable visual separation."
                 }
               },
               "xl": {
@@ -176,11 +111,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.32} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Extra-large content spacing dimension. Absolute (px) — does not change on mode switch. Use for significant fixed visual breaks between sections."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xl.px} / 16 * 1rem",
-                  "$description": "Extra-large content spacing dimension. Fluid (rem) — scales with root font size for accessibility. Use for significant scalable breaks between sections."
                 }
               }
             },
@@ -190,11 +120,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.36} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Small container padding dimension. Absolute (px) — does not change on mode switch. Use for tight fixed container internals."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.container.xs.px} / 16 * 1rem",
-                  "$description": "Small container padding dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable container padding."
                 }
               },
               "sm": {
@@ -202,11 +127,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.40} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Medium container padding dimension. Absolute (px) — does not change on mode switch. Use for standard fixed card and panel padding."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.container.sm.px} / 16 * 1rem",
-                  "$description": "Medium container padding dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable card and panel padding."
                 }
               },
               "md": {
@@ -214,11 +134,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.48} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Large container padding dimension. Absolute (px) — does not change on mode switch. Use for generous fixed container padding."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.container.md.px} / 16 * 1rem",
-                  "$description": "Large container padding dimension. Fluid (rem) — scales with root font size for accessibility. Use for generous scalable container padding."
                 }
               },
               "lg": {
@@ -226,11 +141,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.56} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Enhanced container padding dimension. Absolute (px) — does not change on mode switch. Use for spacious fixed containers and prominent visual areas."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.container.lg.px} / 16 * 1rem",
-                  "$description": "Enhanced container padding dimension. Fluid (rem) — scales with root font size for accessibility. Use for spacious scalable containers."
                 }
               },
               "xl": {
@@ -238,11 +148,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.64} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Extra-large container padding dimension. Absolute (px) — does not change on mode switch. Use for maximum fixed container breathing room."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.container.xl.px} / 16 * 1rem",
-                  "$description": "Extra-large container padding dimension. Fluid (rem) — scales with root font size for accessibility. Use for maximum scalable container spacing."
                 }
               }
             },
@@ -252,11 +157,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.80} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Small layout gap dimension. Absolute (px) — does not change on mode switch. Use for fixed spacing between major page sections."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.layout.xs.px} / 16 * 1rem",
-                  "$description": "Small layout gap dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable spacing between page sections."
                 }
               },
               "sm": {
@@ -264,11 +164,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.96} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Medium layout gap dimension. Absolute (px) — does not change on mode switch. Use for clear fixed separation between independent page areas."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.layout.sm.px} / 16 * 1rem",
-                  "$description": "Medium layout gap dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable separation between page areas."
                 }
               },
               "md": {
@@ -276,11 +171,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.128} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Large layout gap dimension. Absolute (px) — does not change on mode switch. Use for significant fixed gaps between major layout elements."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.layout.md.px} / 16 * 1rem",
-                  "$description": "Large layout gap dimension. Fluid (rem) — scales with root font size for accessibility. Use for significant scalable layout gaps."
                 }
               },
               "lg": {
@@ -288,11 +178,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.160} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Enhanced layout gap dimension. Absolute (px) — does not change on mode switch. Use for generous fixed page-level spacing."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.layout.lg.px} / 16 * 1rem",
-                  "$description": "Enhanced layout gap dimension. Fluid (rem) — scales with root font size for accessibility. Use for generous scalable page-level spacing."
                 }
               },
               "xl": {
@@ -300,11 +185,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.192} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Extra-large layout gap dimension. Absolute (px) — does not change on mode switch. Use for maximum fixed page-level separation."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.layout.xl.px} / 16 * 1rem",
-                  "$description": "Extra-large layout gap dimension. Fluid (rem) — scales with root font size for accessibility. Use for maximum scalable page-level separation."
                 }
               }
             },
@@ -314,11 +194,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.256} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Small page-level dimension. Absolute (px) — does not change on mode switch. Use for hero sections and feature-area spacing."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.macro.xs.px} / 16 * 1rem",
-                  "$description": "Small page-level dimension. Fluid (rem) — scales with root font size for accessibility. Use for scalable hero sections and feature areas."
                 }
               },
               "sm": {
@@ -326,11 +201,6 @@
                   "$type": "dimension",
                   "$value": "roundTo({ob.p.dimension.px.320} * {ob.g.mode_collection.ui_scale.multiplier.dimension.sm}, 2) * 1px",
                   "$description": "Large page-level dimension. Absolute (px) — does not change on mode switch. Use for maximum page-level spacing and full-width features."
-                },
-                "rem": {
-                  "$type": "dimension",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.macro.sm.px} / 16 * 1rem",
-                  "$description": "Large page-level dimension. Fluid (rem) — scales with root font size for accessibility. Use for maximum scalable page-level features."
                 }
               }
             }
