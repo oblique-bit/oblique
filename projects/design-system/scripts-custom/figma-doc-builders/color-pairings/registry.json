@@ -79,15 +79,15 @@
       "section": {
         "tier": "S",
         "title": "Interaction",
-        "purpose": "State pairings for interactive elements (buttons, controls).",
-        "guideline": "Every state (hover/focus/pressed/etc.) must remain at least AA-compliant against its bg."
+        "purpose": "Contrast-level pairings for interactive elements (buttons, controls).",
+        "guideline": "Every contrast level (high/medium/low) must remain at least AA-compliant against its bg."
       },
       "blocks": [
         {
           "type": "states-row",
-          "states": ["enabled", "hover", "focus", "pressed", "selected", "disabled"],
-          "fgPath": "interaction/standard_states/fg/{state}/inversity_normal",
-          "bgPath": "interaction/standard_states/bg/{state}/inversity_normal"
+          "states": ["high", "medium", "low"],
+          "fgPath": "interaction/contrast_levels/fg/{state}/inversity_normal",
+          "bgPath": "interaction/contrast_levels/bg/{state}/inversity_normal"
         }
       ]
     },
