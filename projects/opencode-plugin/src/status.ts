@@ -1,3 +1,6 @@
+import {Client} from '@modelcontextprotocol/sdk/client/index.js';
+import {StreamableHTTPClientTransport} from '@modelcontextprotocol/sdk/client/streamableHttp.js';
+
 import type {ObliqueProjectInfo} from './project-detector.js';
 
 export {createObliqueStatusPrompt, obliqueStatusCommandName, registerObliqueStatusCommand} from './status-command.js';
@@ -37,18 +40,13 @@ export interface ObliqueStatusReport {
 }
 
 export interface ObliqueMcpHealthOptions {
-	fetcher?: (url: string, init?: RequestInit) => Promise<unknown>;
+	fetcher?: typeof fetch;
 	mode?: 'remote' | 'local';
 	endpoint?: string;
-	projectInfo?: ObliqueProjectInfo;
 }
 
 const pluginName = '@oblique/opencode-plugin';
 const pluginVersion = '0.1.0';
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-	return typeof value === 'object' && value !== null && !Array.isArray(value);
-}
 
 export function sanitizeForDisplay(value: string | undefined): string | undefined {
 	if (value === undefined || value.trim() === '') {
@@ -57,16 +55,27 @@ export function sanitizeForDisplay(value: string | undefined): string | undefine
 
 	try {
 		const url = new URL(value);
-		if (url.username || url.password) {
-			url.username = '';
-			url.password = '';
-		}
+		url.username = '';
+		url.password = '';
 		url.search = '';
 		return url.toString();
 	} catch {
 		return value
 			.replace(/(?:https?:\/\/)(?:[^@/]+)@/u, 'https://')
 			.replace(/[?&](?:token|authorization|auth|key|secret)=[^&]+/giu, '');
+	}
+}
+
+function isRemoteUrl(value: string | undefined): value is string {
+	if (value === undefined || value.trim() === '') {
+		return false;
+	}
+
+	try {
+		const url = new URL(value);
+		return url.protocol === 'http:' || url.protocol === 'https:';
+	} catch {
+		return false;
 	}
 }
 
@@ -186,93 +195,85 @@ export function buildObliqueStatusReport(
 	};
 }
 
-function buildMissingEndpointReport(
+function buildRemoteFailureReport(
 	projectInfo: ObliqueProjectInfo,
-	mode: 'remote' | 'local',
-	endpoint: string | undefined
+	endpoint: string | undefined,
+	reason: string
 ): ObliqueStatusReport {
 	return buildObliqueStatusReport(projectInfo, {
 		mcp: {
-			configured: false,
-			mode,
+			configured: endpoint !== undefined,
+			mode: 'remote',
 			endpoint,
 			reachable: false,
 			initialized: false,
 			toolsAvailable: false,
-			reason: 'No Oblique MCP endpoint configured for health check.',
+			reason,
 		},
 	});
 }
 
-function buildFailureReport(report: {
-	projectInfo: ObliqueProjectInfo;
-	mode: 'remote' | 'local';
-	endpoint: string;
-	reason: string;
-}): ObliqueStatusReport {
-	return buildObliqueStatusReport(report.projectInfo, {
+function buildLocalHealthReport(projectInfo: ObliqueProjectInfo): ObliqueStatusReport {
+	return buildObliqueStatusReport(projectInfo, {
 		mcp: {
 			configured: true,
-			mode: report.mode,
-			endpoint: report.endpoint,
+			mode: 'local',
 			reachable: false,
 			initialized: false,
 			toolsAvailable: false,
-			reason: report.reason,
+			reason: 'Local MCP health is managed by OpenCode and cannot be independently verified here.',
 		},
 	});
 }
 
-function extractMcpTools(response: unknown): unknown[] {
-	const payload = isRecord(response) ? response : undefined;
-	const result = isRecord(payload?.['result']) ? payload['result'] : undefined;
-	if (!isRecord(result) || !Array.isArray(result['tools'])) {
-		return [];
+async function checkRemoteMcpHealth(
+	projectInfo: ObliqueProjectInfo,
+	options: {configuredEndpoint: string; endpoint: string | undefined; fetcher: typeof fetch}
+): Promise<ObliqueStatusReport> {
+	const client = new Client({name: pluginName, version: pluginVersion});
+	const transport = new StreamableHTTPClientTransport(new URL(options.configuredEndpoint), {fetch: options.fetcher});
+	try {
+		await client.connect(transport);
+		const result = await client.listTools();
+		return buildObliqueStatusReport(projectInfo, {
+			mcp: {
+				configured: true,
+				mode: 'remote',
+				endpoint: options.endpoint,
+				reachable: true,
+				initialized: true,
+				toolsAvailable: result.tools.length > 0,
+			},
+		});
+	} catch {
+		return buildRemoteFailureReport(projectInfo, options.endpoint, 'MCP initialization or tools/list request failed.');
+	} finally {
+		await client.close().catch(() => undefined);
 	}
-	return result['tools'];
-}
-
-async function performMcpHealthCheck(
-	endpoint: string,
-	fetcher: (url: string, init?: RequestInit) => Promise<unknown>
-): Promise<unknown> {
-	return fetcher(endpoint, {
-		method: 'POST',
-		headers: {'content-type': 'application/json'},
-		body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'tools/list', params: {}}),
-	});
 }
 
 export async function checkObliqueMcpHealth(
 	projectInfo: ObliqueProjectInfo,
 	options: ObliqueMcpHealthOptions = {}
 ): Promise<ObliqueStatusReport> {
-	const fetcher = options.fetcher;
-	const endpoint = sanitizeForDisplay(options.endpoint ?? process.env['OBLIQUE_MCP_URL']);
-	const mode = options.mode ?? (endpoint === undefined ? 'local' : 'remote');
-	if (fetcher === undefined || endpoint === undefined) {
-		return buildMissingEndpointReport(projectInfo, mode, endpoint);
+	const mode = options.mode ?? ((options.endpoint ?? process.env['OBLIQUE_MCP_URL']) ? 'remote' : 'local');
+	const configuredEndpoint = options.endpoint ?? process.env['OBLIQUE_MCP_URL'];
+	const endpoint = sanitizeForDisplay(configuredEndpoint);
+	if (mode === 'local') {
+		return buildLocalHealthReport(projectInfo);
 	}
-	try {
-		const response = await performMcpHealthCheck(endpoint, fetcher);
-		const payload = isRecord(response) ? response : undefined;
-		const error = isRecord(payload?.['error']) ? payload['error'] : undefined;
-		if (error !== undefined) {
-			const message = typeof error['message'] === 'string' ? error['message'] : 'MCP request failed.';
-			return buildFailureReport({projectInfo, mode, endpoint, reason: message});
-		}
-		return buildObliqueStatusReport(projectInfo, {
-			mcp: {
-				configured: true,
-				mode,
-				endpoint,
-				reachable: true,
-				initialized: true,
-				toolsAvailable: extractMcpTools(response).length > 0,
-			},
-		});
-	} catch (error) {
-		const detail = error instanceof Error ? error.message : 'Unknown connection error.';
-		return buildFailureReport({projectInfo, mode, endpoint, reason: detail});
+
+	if (!isRemoteUrl(configuredEndpoint)) {
+		return buildRemoteFailureReport(
+			projectInfo,
+			endpoint,
+			'No valid Oblique MCP endpoint is configured for health check.'
+		);
 	}
+
+	return checkRemoteMcpHealth(projectInfo, {
+		configuredEndpoint,
+		endpoint,
+		fetcher: options.fetcher ?? globalThis.fetch,
+	});
 }

@@ -1,9 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "allowJs": true,
     "rootDir": "."
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"]

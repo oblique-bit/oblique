@@ -1,7 +1,7 @@
 import {existsSync, readFileSync} from 'node:fs';
 import {dirname, resolve} from 'node:path';
 
-export type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'unknown';
+export type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'bun' | 'unknown';
 
 export interface ObliqueProjectInfo {
 	projectRoot: string;
@@ -118,13 +118,16 @@ function collectProjectCandidates(
 }
 
 function detectPackageManagerForDirectory(directory: string, pathExists: (path: string) => boolean): PackageManager {
-	for (const fileName of ['pnpm-lock.yaml', 'yarn.lock', 'package-lock.json', 'bun.lock']) {
+	for (const fileName of ['pnpm-lock.yaml', 'yarn.lock', 'package-lock.json', 'bun.lock', 'bun.lockb']) {
 		if (pathExists(`${directory}/${fileName}`)) {
 			if (fileName === 'pnpm-lock.yaml') {
 				return 'pnpm';
 			}
 			if (fileName === 'yarn.lock') {
 				return 'yarn';
+			}
+			if (fileName === 'bun.lock' || fileName === 'bun.lockb') {
+				return 'bun';
 			}
 			return 'npm';
 		}
@@ -140,7 +143,12 @@ function resolvePackageManager(
 	if (typeof packageJson?.packageManager === 'string') {
 		const value = packageJson.packageManager.trim();
 		const packageManager = value.split('@', 1)[0]?.trim();
-		if (packageManager === 'npm' || packageManager === 'pnpm' || packageManager === 'yarn') {
+		if (
+			packageManager === 'npm' ||
+			packageManager === 'pnpm' ||
+			packageManager === 'yarn' ||
+			packageManager === 'bun'
+		) {
 			return packageManager;
 		}
 	}

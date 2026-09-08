@@ -1,81 +1,113 @@
-import {mkdtempSync, writeFileSync} from 'node:fs';
+import {mkdtempSync, readFileSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
-import {join} from 'node:path';
+import {dirname, join, resolve} from 'node:path';
 
 import {describe, expect, it} from '@jest/globals';
+import type {Config} from '@opencode-ai/plugin';
 
-import obliqueOpenCodePlugin, {obliquePluginRuntimeState, obliqueProjectContext} from '../src/index.js';
+import obliqueOpenCodePlugin from '../src/index.js';
+
+function createObliqueProject(): string {
+	const directory = mkdtempSync(join(tmpdir(), 'oblique-plugin-'));
+	writeFileSync(
+		join(directory, 'package.json'),
+		JSON.stringify({
+			name: 'demo-oblique-app',
+			dependencies: {'@angular/core': '^21.0.0', '@oblique/oblique': '^15.4.4'},
+		}),
+		'utf8'
+	);
+	return directory;
+}
+
+function createPluginInput(directory: string, worktree = directory): Parameters<typeof obliqueOpenCodePlugin>[0] {
+	return {
+		project: {id: 'demo-project', worktree: directory},
+		directory,
+		worktree,
+		client: {},
+		experimental_workspace: {register: (): void => undefined},
+		serverUrl: new URL('http://localhost:4096'),
+		'$': undefined,
+	} as unknown as Parameters<typeof obliqueOpenCodePlugin>[0];
+}
+
+async function createDynamicRuntimeUrl(entrypoint: string): Promise<string> {
+	const importPattern = /from '(?<specifier>\.\/[^']+)'/gu;
+	const source = readFileSync(entrypoint, 'utf8');
+	const replacements = await Promise.all(
+		[...source.matchAll(importPattern)].map(async match => {
+			const specifier = match.groups?.['specifier'];
+			const dependencyUrl =
+				specifier === undefined ? undefined : await createDynamicRuntimeUrl(resolve(dirname(entrypoint), specifier));
+			return {specifier, dependencyUrl};
+		})
+	);
+	const rewritten = replacements.reduce((current, {specifier, dependencyUrl}) => {
+		return specifier === undefined || dependencyUrl === undefined
+			? current
+			: current.replace(`from '${specifier}'`, `from '${dependencyUrl}'`);
+	}, source);
+	return `data:text/javascript,${encodeURIComponent(rewritten).replaceAll("'", '%27')}`;
+}
 
 describe('obliqueOpenCodePlugin', () => {
-	it('exports a valid plugin entry point', () => {
-		expect(typeof obliqueOpenCodePlugin).toBe('function');
-	});
+	it('injects Oblique guidance and registers the agent and commands for Oblique projects', async () => {
+		const directory = createObliqueProject();
+		const previousUrl = process.env['OBLIQUE_MCP_URL'];
+		process.env['OBLIQUE_MCP_URL'] = 'https://example.com/mcp';
+		try {
+			const hooks = await obliqueOpenCodePlugin(createPluginInput(directory, ''));
+			const config: Config = {mcp: {github: {type: 'remote', url: 'https://github.example/mcp'}}};
+			await hooks.config?.(config);
 
-	it('initializes a neutral runtime state and config hook', async () => {
-		const context = {
-			project: {name: 'demo-project'},
-			directory: process.cwd(),
-			worktree: process.cwd(),
-			client: {
-				app: {
-					log: (): void => undefined,
-				},
-			},
-			shellApi: {},
-		} satisfies Partial<Parameters<typeof obliqueOpenCodePlugin>[0]>;
+			expect(config.mcp?.['oblique']).toEqual({type: 'remote', url: 'https://example.com/mcp', enabled: true});
+			expect(config.agent?.['oblique']?.prompt).toContain('Oblique MCP');
+			expect(config.command?.['oblique-review']?.template).toBe('/oblique-review [scope]');
+			expect(config.command?.['oblique-status']?.template).toBe('/oblique-status');
 
-		const hooks = await obliqueOpenCodePlugin(context as Parameters<typeof obliqueOpenCodePlugin>[0]);
-		const configHook = hooks.config;
-
-		expect(typeof configHook).toBe('function');
-		expect(obliqueProjectContext.isObliqueProject).toBe(false);
-		expect(obliquePluginRuntimeState.status.ready).toBe(true);
-		expect(obliquePluginRuntimeState.status.projectDetected).toBe(false);
-
-		if (configHook === undefined) {
-			throw new Error('The OpenCode config hook is missing.');
+			const output = {system: ['base prompt']};
+			await hooks['experimental.chat.system.transform']?.({sessionID: 'session-1', model: {} as never}, output);
+			expect(output.system.at(-1)).toContain('query the Oblique MCP');
+		} finally {
+			if (previousUrl === undefined) {
+				delete process.env['OBLIQUE_MCP_URL'];
+			} else {
+				process.env['OBLIQUE_MCP_URL'] = previousUrl;
+			}
 		}
-
-		const input = {mcp: {}} as Parameters<typeof configHook>[0];
-		await expect(configHook(input)).resolves.toBeUndefined();
 	});
 
-	it('injects Oblique guidance into the chat system prompt when the project uses Oblique', async () => {
-		const tempProjectDir = mkdtempSync(join(tmpdir(), 'oblique-plugin-instructions-'));
-		writeFileSync(
-			join(tempProjectDir, 'package.json'),
-			JSON.stringify(
-				{
-					name: 'demo-oblique-app',
-					dependencies: {
-						'@angular/core': '^21.0.0',
-						'@oblique/oblique': '^15.4.4',
-					},
-				},
-				null,
-				2
-			),
-			'utf8'
-		);
+	it('does not add Oblique-specific configuration to non-Oblique projects', async () => {
+		const directory = mkdtempSync(join(tmpdir(), 'non-oblique-plugin-'));
+		writeFileSync(join(directory, 'package.json'), JSON.stringify({name: 'node-service'}), 'utf8');
+		const hooks = await obliqueOpenCodePlugin(createPluginInput(directory));
+		const config: Config = {};
 
-		const hooks = await obliqueOpenCodePlugin({
-			project: {name: 'demo-project'},
-			directory: tempProjectDir,
-			worktree: tempProjectDir,
-			client: {
-				app: {
-					log: (): void => undefined,
-				},
-			},
-			shellApi: {},
-		} as Parameters<typeof obliqueOpenCodePlugin>[0]);
+		await hooks.config?.(config);
 
-		const transform = hooks['experimental.chat.system.transform'];
-		expect(typeof transform).toBe('function');
+		expect(config).toEqual({});
+	});
+});
 
-		const output = {system: ['base prompt']};
-		await transform?.({sessionID: 'session-1', model: {} as never}, output);
-		expect(output.system.some(item => item.includes('This project uses'))).toBe(true);
-		expect(output.system.at(-1)?.includes('query the Oblique MCP')).toBe(true);
+describe('built runtime entrypoint', () => {
+	it('dynamically loads only the default V1 plugin export accepted by the OpenCode loader', async () => {
+		const entrypoint = join(process.cwd(), 'dist', 'index.js');
+		// ts-jest otherwise rewrites import() to require(), which cannot load the built ESM entrypoint.
+		// eslint-disable-next-line @typescript-eslint/no-implied-eval, no-new-func
+		const dynamicImport = new Function('entry', 'return import(entry);') as (
+			entry: string
+		) => Promise<Record<string, unknown>>;
+		const runtimeModule = await dynamicImport(await createDynamicRuntimeUrl(entrypoint));
+		const plugins = Object.values(runtimeModule).map(exported => {
+			if (typeof exported !== 'function') {
+				throw new TypeError('Plugin export is not a function');
+			}
+			return exported;
+		});
+
+		expect(Object.keys(runtimeModule)).toEqual(['default']);
+		expect(typeof runtimeModule['default']).toBe('function');
+		expect(plugins).toHaveLength(1);
 	});
 });

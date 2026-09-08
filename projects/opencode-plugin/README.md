@@ -4,6 +4,10 @@ The Oblique OpenCode plugin is a thin integration layer between OpenCode and the
 
 It does not replace the MCP. The MCP remains the source of truth for Oblique components, APIs, examples, migrations, project creation, and documentation. The plugin only detects project context, configures MCP access for OpenCode, and injects minimal guidance for the model.
 
+### OpenCode runtime compatibility
+
+The package entrypoint uses the OpenCode 1.18.x V1 plugin function API. This is the API consumed by the installed OpenCode loader: it loads every runtime module export as a plugin function. Therefore `dist/index.js` exports only its default V1 plugin function. Agent and slash-command configuration is registered from that function's `config` hook using OpenCode's native `agent` and `command` configuration fields. V2 plugin objects are not exported or mixed into this runtime module.
+
 ## Purpose
 
 - MCP Oblique provides Oblique knowledge and tools.
@@ -71,7 +75,7 @@ This is an example only. The actual endpoint must be supplied by config or envir
 	"mcp": {
 		"oblique": {
 			"type": "local",
-			"command": ["node", "projects/mcp/dist/index.js"],
+			"command": ["node", "projects/mcp/dist/server.js"],
 			"enabled": true
 		}
 	}
@@ -93,7 +97,7 @@ Optional local-mode variables also supported by the MCP config layer:
 
 ```bash
 export OBLIQUE_MCP_COMMAND=node
-export OBLIQUE_MCP_ARGS="projects/mcp/dist/index.js"
+export OBLIQUE_MCP_ARGS="projects/mcp/dist/server.js"
 ```
 
 Environment variables override defaults, but do not replace explicit OpenCode user configuration.
@@ -107,7 +111,7 @@ It checks, in order:
 - `package.json` for Angular and Oblique dependencies
 - `angular.json`, `workspace.json`, or `project.json` when available
 - ancestor package roots to support workspace/monorepo layouts
-- package manager hints such as `package-lock.json`, `pnpm-lock.yaml`, or `yarn.lock`
+- package manager hints such as `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`, `bun.lock`, or `bun.lockb`
 
 The detector returns a typed structure with:
 
@@ -198,7 +202,7 @@ Plugin: @oblique/opencode-plugin
 Plugin version: x.y.z
 ```
 
-The status command reports useful failure reasons but never exposes credentials or secret values.
+The status command reports useful failure reasons but never exposes credentials or secret values. For a remote MCP it uses the official MCP Streamable HTTP client: it performs `initialize`, sends `notifications/initialized`, and then calls `tools/list`. It only reports initialization after that handshake succeeds. A local MCP is started and managed by OpenCode, so the plugin reports that it cannot independently verify local process health rather than claiming it is initialized.
 
 ### `@oblique`
 
@@ -236,6 +240,17 @@ This is the specialized agent entry point, not a slash command.
 - ensure the plugin is installed/available in the OpenCode environment used for the project
 - verify the workspace loads the plugin package from the monorepo
 - check if the current project is detected as Oblique; non-Oblique projects do not register Oblique-specific features
+
+## Manual OpenCode smoke test
+
+The repository environment includes OpenCode 1.18.29. After building this package, create a minimal Angular + Oblique project with a local `.opencode/opencode.json` that lists the absolute path to `projects/opencode-plugin/dist/index.js` in `plugin`, and set `OBLIQUE_MCP_URL` to a test MCP endpoint. Then run:
+
+```bash
+opencode debug config
+opencode agent list
+```
+
+Verify that the command exits without `Plugin export is not a function`, the resolved configuration contains `mcp.oblique`, `agent.oblique`, `command.oblique-review`, and `command.oblique-status`, and the injected system prompt contains the Oblique MCP guidance. Use a non-Oblique `package.json` as a control case: no Oblique MCP, agent, commands, or instructions should be added. This procedure deliberately does not require a public production endpoint.
 
 ## Development
 

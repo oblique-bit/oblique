@@ -63,7 +63,7 @@ export function resolveObliqueMcpConfiguration(
 		return {
 			mode: localMode,
 			command,
-			environment: options.environment ?? getEnvironmentMap(env),
+			environment: options.environment,
 			enabled: options.enabled ?? true,
 		};
 	}
@@ -98,16 +98,6 @@ function splitCommandArgs(value: string): string[] {
 		.split(/\s+/u)
 		.map(argument => argument.trim())
 		.filter(argument => argument.length > 0);
-}
-
-function getEnvironmentMap(env: Record<string, string | undefined>): Record<string, string> {
-	const output: Record<string, string> = {};
-	for (const [key, value] of Object.entries(env)) {
-		if (typeof value === 'string' && value.trim() !== '') {
-			output[key] = value;
-		}
-	}
-	return output;
 }
 
 export function applyObliqueMcpConfiguration(config: Config, options: ObliqueMcpResolutionOptions = {}): Config {

@@ -143,6 +143,21 @@ describe('detectObliqueProjectInfo', () => {
 		expect(result.obliqueVersion).toBe('15.4.4');
 	});
 
+	it.each(['bun.lock', 'bun.lockb'])('detects Bun from %s', lockFile => {
+		const directory = createTempProject();
+		writePackageJson(directory, {name: 'bun-app'});
+		writeTextFile(directory, lockFile, '');
+
+		expect(detectObliqueProjectInfo(directory).packageManager).toBe('bun');
+	});
+
+	it.each(['npm', 'pnpm', 'yarn', 'bun'] as const)('detects %s from packageManager metadata', packageManager => {
+		const directory = createTempProject();
+		writePackageJson(directory, {name: 'managed-app', packageManager: `${packageManager}@1.0.0`});
+
+		expect(detectObliqueProjectInfo(directory).packageManager).toBe(packageManager);
+	});
+
 	it('considers workspace and monorepo package roots', () => {
 		const workspaceRoot = createTempProject();
 		const childProjectDir = join(workspaceRoot, 'apps', 'portal');
