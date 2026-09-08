@@ -29,12 +29,6 @@
 		color: $color;
 	}
 
-	.mat-mdc-text-field-wrapper.mdc-text-field {
-		[class*="mdc-notched-outline__"] {
-			border-color: $color;
-		}
-	}
-
 	.mdc-floating-label mat-label,
 	.mdc-floating-label .mat-mdc-form-field-required-marker,
 	.mdc-notched-outline {
