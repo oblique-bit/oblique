@@ -1401,8 +1401,8 @@ async function main() {
     const tokens = JSON.parse(fs.readFileSync(tokJson, 'utf8'));
     const desc = tokens && tokens.ob && tokens.ob.s && tokens.ob.s.color
       && tokens.ob.s.color.token_family_docs
-      && tokens.ob.s.color.token_family_docs.$description
-      && tokens.ob.s.color.token_family_docs.$description.$value;
+      && tokens.ob.s.color.token_family_docs.description
+      && tokens.ob.s.color.token_family_docs.description.$value;
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch {}
 
