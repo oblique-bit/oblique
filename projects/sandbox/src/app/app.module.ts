@@ -113,7 +113,7 @@ registerLocaleData(localeDE);
 					disabled: false,
 				},
 			},
-			hasLanguageInUrl: true,
+			language: {hasLanguageInUrl: true},
 			consoleConfiguration: {silencedLabels: new Set()},
 			banner: environment.banner,
 			pams: environment.pams,

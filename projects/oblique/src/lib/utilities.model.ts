@@ -5,6 +5,7 @@ import {ObIMaterialConfig} from './material/material.model';
 import {ObITranslateConfig} from './translation/translation.model';
 import {ObConsoleConfiguration} from './console/ob-console.model';
 import {ObTBanner} from './banner/banner.model';
+import {ObLanguageConfig, ObLanguageConfigWithDefault} from './language/language.model';
 
 export interface ObIObliqueConfiguration {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;
@@ -13,7 +14,7 @@ export interface ObIObliqueConfiguration {
 	material?: ObIMaterialConfig;
 	icon?: ObIconConfig;
 	translate?: ObITranslateConfig;
-	hasLanguageInUrl?: boolean;
+	language?: ObLanguageConfig;
 	consoleConfiguration?: ObConsoleConfiguration;
 	pams?: ObIPamsConfiguration;
 }
@@ -28,7 +29,7 @@ export type ObIObliqueTestingConfiguration = Omit<ObIObliqueConfiguration, 'acce
 
 export type ObIObliqueConfigurationWithDefaults = Omit<
 	ObIObliqueConfiguration,
-	'accessibilityStatement' | 'material' | 'icon' | 'translate' | 'hasLanguageInUrl'
+	'accessibilityStatement' | 'material' | 'icon' | 'translate' | 'language'
 > & {
 	accessibilityStatement: ObIAccessibilityStatementConfiguration;
 	historyState: ObIHistoryState;
@@ -36,7 +37,7 @@ export type ObIObliqueConfigurationWithDefaults = Omit<
 	material: Required<NonNullable<ObIObliqueConfiguration['material']>>;
 	icon: NonNullable<ObIObliqueConfiguration['icon']>;
 	translate: NonNullable<ObIObliqueConfiguration['translate']>;
-	hasLanguageInUrl: NonNullable<ObIObliqueConfiguration['hasLanguageInUrl']>;
+	language: ObLanguageConfigWithDefault;
 	consoleConfiguration: ObConsoleConfiguration;
 };
 

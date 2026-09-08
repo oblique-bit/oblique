@@ -13,7 +13,7 @@ export const filePatterns = {
 	scss: '*.scss',
 	scssAndCss: '*.{css,scss}',
 	tsAndHtml: '*.{ts,html}',
-	appModule: 'app{-,.}module.ts',
+	appModule: '{app{-,.}module,main}.ts',
 } as const;
 
 const angularJsonConfigPath = './angular.json/';

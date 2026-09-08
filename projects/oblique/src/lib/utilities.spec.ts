@@ -70,7 +70,7 @@ describe('utilities', () => {
 		},
 		icon: {registerObliqueIcons: true},
 		translate: {flatten: true},
-		hasLanguageInUrl: false,
+		language: {hasLanguageInUrl: false},
 		consoleConfiguration: {},
 	});
 
@@ -321,7 +321,7 @@ describe('utilities', () => {
 								config: {compiler: TranslateNoOpCompiler},
 								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
 							},
-							hasLanguageInUrl: true,
+							language: {hasLanguageInUrl: true},
 							consoleConfiguration: {silencedLabels: new Set(['foo', 'bar'])},
 						}),
 					],

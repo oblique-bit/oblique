@@ -29,7 +29,7 @@ import {
 import {obProvideDate} from './language/date.provider';
 import {obDefaultConsoleConfiguration, obProvideConsole} from './console/ob-console.provider';
 import {OB_HISTORY_STATE} from './accessibility-statement/accessibility-statement.provider';
-import {obDefaultLanguageInUrl, obProvideLanguageConfiguration} from './language/language.provider';
+import {obDefaultLanguageConfiguration, obProvideLanguageConfiguration} from './language/language.provider';
 import {obDefaultBannerConfiguration, obProvideBanner} from './banner';
 import {obProvideServiceNavigation} from './service-navigation/service-navigation.provider';
 
@@ -100,7 +100,7 @@ const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
 	material: obDefaultMaterialProviders,
 	icon: {registerObliqueIcons: true},
 	translate: defaultTranslationConfig,
-	hasLanguageInUrl: obDefaultLanguageInUrl,
+	language: obDefaultLanguageConfiguration,
 	consoleConfiguration: obDefaultConsoleConfiguration,
 } as const;
 
@@ -126,7 +126,7 @@ function getDefaultObliqueProviders(
 	return [
 		obProvideWindow(),
 		obProvideAccessibilityStatement(mergedConfig.accessibilityStatement, mergedConfig.historyState),
-		obProvideLanguageConfiguration(mergedConfig.hasLanguageInUrl),
+		obProvideLanguageConfiguration(mergedConfig.language),
 		obProvideBanner(mergedConfig.banner),
 		obProvideDate(),
 		obProvideConsole(mergedConfig.consoleConfiguration),

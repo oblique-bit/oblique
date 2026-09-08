@@ -78,7 +78,7 @@ describe(ObRouterService.name, () => {
 				providers: [
 					provideRouter(routes),
 					provideObliqueTestingConfiguration({
-						hasLanguageInUrl: false,
+						language: {hasLanguageInUrl: false},
 					}),
 					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig},
 				],
@@ -131,7 +131,7 @@ describe(ObRouterService.name, () => {
 				providers: [
 					provideRouter(routes),
 					provideObliqueTestingConfiguration({
-						hasLanguageInUrl: true,
+						language: {hasLanguageInUrl: true},
 					}),
 					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig},
 				],
