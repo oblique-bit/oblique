@@ -13,12 +13,6 @@ nodejsPipelineTemplate {
 			'test': 'npm run test-ci --workspaces',
 			'build': 'npm run build --workspaces'
 		],
-		'release/major_16.0.0': [
-			'gitPush': [
-				'credentialId': 'githubObliqueCredentials',
-				'repository': 'https://github.com/oblique-bit/oblique.git',
-			]
-		],
 		master: [
 			'gitPush': [
 				'credentialId': 'githubObliqueCredentials',
