@@ -42,8 +42,6 @@ bootstrapApplication(AppComponent, {
 			translate: {
 				locales: {
 					locales: ['en'],
-					defaultLanguage: 'en',
-					disabled: false,
 				},
 			},
 		}),

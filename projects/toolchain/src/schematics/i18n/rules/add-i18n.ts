@@ -75,7 +75,7 @@ function getLocaleChanges(tree: Tree, locales: string[]): Change[] {
 function getTranslateConfiguration(locales: string[]): string {
 	const localesArray = `['${locales.join("', '")}']`;
 	const defaultLanguage = locales[0].split('-')[0];
-	return `{locales: {locales: ${localesArray}, defaultLanguage: '${defaultLanguage}', disabled: false}}`;
+	return `{locales: {locales: ${localesArray}, defaultLanguage: '${defaultLanguage}'}}`;
 }
 
 function mergeTranslateConfiguration(tree: Tree, translateConfiguration: string): boolean {
