@@ -59,7 +59,7 @@ class HookCommitRules {
 
 	private static checkHeaderFormat(header: string): void {
 		Log.info('Check header format');
-		if (!/^[a-z-]+(?:\([a-z-/]+(?:\/[a-z-]+)?\))?:\s.+$/.test(header)) {
+		if (!/^[a-z-]+(?:\([a-z0-9-/]+(?:\/[a-z-]+)?\))?:\s.+$/.test(header)) {
 			HookCommitRules.fatal(
 				`1st line matches neither the "type(package/scope): subject" nor the "type(package): subject" formats.`
 			);
@@ -67,7 +67,7 @@ class HookCommitRules {
 	}
 
 	private static extractHeaderParts(header: string, contributing: string): Header {
-		const result = /^(?<type>[a-z-]+)(?:\((?<pkg>[a-z-]+)(?:\/(?<scope>[a-z-]+))?\)?)?:\s(?<subject>.+)$/.exec(
+		const result = /^(?<type>[a-z-]+)(?:\((?<pkg>[a-z0-9-]+)(?:\/(?<scope>[a-z-]+))?\)?)?:\s(?<subject>.+)$/.exec(
 			header
 		)?.groups;
 		const hasTypeScopes = HookCommitRules.hasTypeScopes(contributing, result.type);
@@ -224,7 +224,7 @@ class HookCommitRules {
 		return HookCommitRules.extractMarkdownTable(contributing, type)
 			.split('\n')
 			.filter(Boolean)
-			.map(line => /(?<=\*\*)[a-z-]+(?=\*\*)/.exec(line)?.[0] ?? '');
+			.map(line => /(?<=\*\*)[a-z0-9-]+(?=\*\*)/.exec(line)?.[0] ?? '');
 	}
 
 	private static extractMarkdownTable(markdown: string, title: string): string {
