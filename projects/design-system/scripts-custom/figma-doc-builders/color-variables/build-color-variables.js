@@ -1001,10 +1001,15 @@ async function buildTable(spec, ctx) {
     tokenCount: tokens.length
   });
 
-  // Group tokens by the segment after the prefix.
+  // Group tokens by the segment after the prefix. spec.matches counts segments
+  // in the Figma VARIABLE name (e.g. "color/neutral/" = 2); S3 tokens' dotPath
+  // carries the full "ob.s." token prefix that trimmed variable name doesn't,
+  // so it needs 2 extra segments to line up (S1/S2 dotPaths were never
+  // shortened, so no offset there).
   let prefixSegments;
   if (spec.matches) {
     prefixSegments = spec.matches.replace(/^\\^/, '').split('/').length - 1;
+    if (spec.tier === 's3') prefixSegments += 2;
   } else {
     prefixSegments = 3;
   }
