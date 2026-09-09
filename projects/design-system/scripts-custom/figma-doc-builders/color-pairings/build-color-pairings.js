@@ -356,17 +356,23 @@ function findPillVariant(level, passed) {
 // Hex F0F4F7 = light cool-grey.
 const _PAGE_BG = { type: 'SOLID', color: { r: 0xF0/255, g: 0xF4/255, b: 0xF7/255 } };
 
-// Resolved page name: '<base> YYYY-MM-DD HH:MM'. Computed once per run
-// (provenance.pageTs is fixed at Node-side launch) so every call site lands
-// on the same page even across minute boundaries.
-function _cpResolvedPageName() {
-  if (pageOverride) return pageOverride;
+// Light and dark results live on separate pages (each locked to its own
+// lightness mode start to finish), not two sections on one page — a page's
+// own mode is unambiguous, so there is nothing to accidentally switch.
+// Base page name: '<base> Light' / '<base> Dark', then ' YYYY-MM-DD HH:MM'
+// for scratch runs (provenance.pageTs is fixed at Node-side launch, so
+// every call site lands on the same page even across minute boundaries).
+function _cpModeSuffix(modeName) { return modeName === 'dark' ? ' Dark' : ' Light'; }
+function _cpBasePageName(modeName) { return (pageOverride || registry.targetPageName) + _cpModeSuffix(modeName); }
+function _cpResolvedPageName(modeName) {
+  const base = _cpBasePageName(modeName);
+  if (pageOverride) return base;
   const ts = (provenance && provenance.pageTs) ? provenance.pageTs : '';
-  return ts ? (registry.targetPageName + ' ' + ts) : registry.targetPageName;
+  return ts ? (base + ' ' + ts) : base;
 }
 
-async function _cpEnsureTargetPage() {
-  const want = _cpResolvedPageName();
+async function _cpEnsureTargetPage(modeName) {
+  const want = _cpResolvedPageName(modeName);
   let p = figma.root.children.find(x => x.name === want);
   if (!p) {
     p = figma.createPage();
@@ -374,6 +380,18 @@ async function _cpEnsureTargetPage() {
     try { p.backgrounds = [_PAGE_BG]; } catch (e) { L('canvas bg set failed: ' + e.message); }
   }
   return p;
+}
+
+// Resolves the page validatePage should read for a mode when no fresh build
+// just ran: the exact scratch/override name, falling back to the most
+// recent timestamped page for that mode's base name.
+function _cpFindPageForMode(modeName) {
+  const want = _cpResolvedPageName(modeName);
+  let p = figma.root.children.find(x => x.name === want);
+  if (p) return p;
+  const base = _cpBasePageName(modeName);
+  const candidates = figma.root.children.filter(x => x.type === 'PAGE' && (x.name === base || x.name.startsWith(base + ' ')));
+  return candidates.length ? candidates.sort((a, b) => a.name.localeCompare(b.name)).pop() : null;
 }
 
 // After a successful scratch build (no --page override), mark older
@@ -389,27 +407,6 @@ async function deprecateOldScratchPages(basePageName, currentPageId) {
     if (p.name.endsWith('_deprecated')) continue;
     p.name = p.name + '_deprecated';
   }
-}
-
-async function ensureRootFrame() {
-  const targetPage = await _cpEnsureTargetPage();
-  await figma.setCurrentPageAsync(targetPage);
-  let root = targetPage.findOne(n => n.name === registry.rootFrameName && n.type === 'FRAME');
-  if (root) root.remove();
-  root = figma.createFrame();
-  root.name = registry.rootFrameName;
-  // Vertical: stacks the Light mode / Dark mode wrapper frames. Each wrapper
-  // is itself HORIZONTAL, laying its categories out in a row (the pre-split
-  // layout), so the row-of-categories look is unchanged within each mode.
-  root.layoutMode = 'VERTICAL';
-  root.itemSpacing = 64;
-  root.paddingTop = root.paddingBottom = 48;
-  root.paddingLeft = root.paddingRight = 0;
-  root.primaryAxisSizingMode = 'AUTO';
-  root.counterAxisSizingMode = 'AUTO';
-  root.fills = [];
-  targetPage.appendChild(root);
-  return root;
 }
 
 async function setText(node, txt) {
@@ -798,53 +795,42 @@ async function ensureCpHeaderAndOuter(page, root, metaText) {
   return outer;
 }
 
-async function validatePage() {
+// Validates one mode's page. targetPage/modeId are passed in when called
+// right after a build (no extra lookup needed); omit to resolve the most
+// recent page for that mode (used by --mode validate).
+async function validatePage(modeName, targetPage, modeId) {
   const errors = [];
   const warnings = [];
   const stats = { totalSwatches: 0, byCategory: {} };
-  // Resolve to the timestamped page for this run. If not present, fall back
-  // to the most-recent build page that matches the base name (useful when
-  // running --mode validate against a build from earlier).
-  const want = _cpResolvedPageName();
-  let targetPage = figma.root.children.find(p => p.name === want);
-  if (!targetPage) {
-    const candidates = figma.root.children.filter(p => p.type === 'PAGE' && (p.name === registry.targetPageName || p.name.startsWith(registry.targetPageName + ' ')));
-    if (candidates.length) targetPage = candidates.sort((a, b) => a.name.localeCompare(b.name)).pop();
-  }
-  if (!targetPage) { errors.push({ severity: 'error', code: 'PAGE', msg: 'target page not found: ' + want }); return { errors, warnings, stats }; }
+  if (!targetPage) targetPage = _cpFindPageForMode(modeName);
+  if (!targetPage) { errors.push({ severity: 'error', code: 'PAGE', msg: 'target page not found for mode: ' + modeName }); return { errors, warnings, stats }; }
   const root = targetPage.findOne(n => n.name === registry.rootFrameName && n.type === 'FRAME');
   if (!root) { errors.push({ severity: 'error', code: 'ROOT', msg: 'root frame not found: ' + registry.rootFrameName }); return { errors, warnings, stats }; }
 
-  const lightnessCollection = (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'lightness');
-  const modeWraps = [
-    { name: 'light', frame: root.findOne(n => n.type === 'FRAME' && n.name === 'Light mode') },
-    { name: 'dark',  frame: root.findOne(n => n.type === 'FRAME' && n.name === 'Dark mode') }
-  ].filter(w => w.frame);
-  // Fall back to un-wrapped categories directly under root (older pages
-  // built before the light/dark split, or --page runs against them).
-  if (!modeWraps.length) modeWraps.push({ name: 'light', frame: root });
+  if (modeId == null) {
+    const lightnessCollection = (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'lightness');
+    modeId = lightnessCollection ? (lightnessCollection.modes.find(m => m.name === modeName) || {}).modeId : null;
+  }
+  const wrapName = modeName === 'dark' ? 'Dark mode' : 'Light mode';
+  const wrapFrame = root.findOne(n => n.type === 'FRAME' && n.name === wrapName) || root;
 
-  for (const { name: modeName, frame: wrapFrame } of modeWraps) {
-    const modeId = lightnessCollection ? (lightnessCollection.modes.find(m => m.name === modeName) || {}).modeId : null;
-    const catFrames = wrapFrame.children.filter(c => /^category-/.test(c.name));
-    for (const catFrame of catFrames) {
-      const catName = catFrame.name.replace(/^category-/, '');
-      const catCfg = registry.categories[catName];
-      const statKey = catName + ' (' + modeName + ')';
-      if (!catCfg) { warnings.push({ category: statKey, severity: 'warning', code: 'UNKNOWN_CAT', msg: 'category present in build but not in registry: ' + catName }); continue; }
+  const catFrames = wrapFrame.children.filter(c => /^category-/.test(c.name));
+  for (const catFrame of catFrames) {
+    const catName = catFrame.name.replace(/^category-/, '');
+    const catCfg = registry.categories[catName];
+    if (!catCfg) { warnings.push({ category: catName, severity: 'warning', code: 'UNKNOWN_CAT', msg: 'category present in build but not in registry: ' + catName }); continue; }
 
-      const sb = catFrame.children.find(c => c.type === 'INSTANCE' && c.name === registry.componentNames.sectionBar);
-      for (const i of await validateSectionBar(sb, catName, catCfg)) (i.severity === 'warning' ? warnings : errors).push({ category: statKey, ...i });
+    const sb = catFrame.children.find(c => c.type === 'INSTANCE' && c.name === registry.componentNames.sectionBar);
+    for (const i of await validateSectionBar(sb, catName, catCfg)) (i.severity === 'warning' ? warnings : errors).push({ category: catName, ...i });
 
-      const swatches = catFrame.findAll(n => n.type === 'INSTANCE' && n.name === registry.componentNames.swatch);
-      const expected = expectedCountForCategory(catCfg);
-      stats.byCategory[statKey] = { count: swatches.length, expected };
-      stats.totalSwatches += swatches.length;
-      if (swatches.length !== expected) errors.push({ category: statKey, severity: 'error', code: 'COUNT', msg: 'swatch count: got ' + swatches.length + ', expected ' + expected });
+    const swatches = catFrame.findAll(n => n.type === 'INSTANCE' && n.name === registry.componentNames.swatch);
+    const expected = expectedCountForCategory(catCfg);
+    stats.byCategory[catName] = { count: swatches.length, expected };
+    stats.totalSwatches += swatches.length;
+    if (swatches.length !== expected) errors.push({ category: catName, severity: 'error', code: 'COUNT', msg: 'swatch count: got ' + swatches.length + ', expected ' + expected });
 
-      for (const s of swatches) {
-        for (const i of await validateSwatch(s, modeId)) (i.severity === 'warning' ? warnings : errors).push({ category: statKey, swatchId: s.id, ...i });
-      }
+    for (const s of swatches) {
+      for (const i of await validateSwatch(s, modeId)) (i.severity === 'warning' ? warnings : errors).push({ category: catName, swatchId: s.id, ...i });
     }
   }
   return { errors, warnings, stats };
@@ -853,8 +839,9 @@ async function validatePage() {
 // ── main flow ──────────────────────────────────────────────────────────────
 try {
   if (mode === 'validate') {
-    const validate = await validatePage();
-    return { validate, log };
+    const validateLight = await validatePage('light');
+    const validateDark = await validatePage('dark');
+    return { validate: { light: validateLight, dark: validateDark }, log };
   }
   const { map } = await buildVarMap();
   if (WRITE) await loadComponents();
@@ -954,62 +941,62 @@ try {
   }
 
   const out = { schema: 'ob.contrast-pairings.v1', generatedAt: new Date().toISOString(), categories: {} };
-  let root = null;
-  if (WRITE) root = await ensureRootFrame();
-
   const catNames = onlyCategory ? [onlyCategory] : Object.keys(registry.categories);
 
-  // Prototype: light + dark sections, stacked, each pinned to its own
-  // lightness mode so bound swatch colors render correctly regardless of
-  // ambient mode elsewhere in the file.
+  // Light and dark results are built on separate pages, each pinned start to
+  // finish to its own lightness mode (setExplicitVariableModeForCollection),
+  // so bound swatch/text/background fills render correctly regardless of
+  // any ambient mode switch elsewhere in the file.
   const lightnessCollection = WRITE ? (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'lightness') : null;
-  const lightModeId = lightnessCollection ? lightnessCollection.modes.find(m => m.name === 'light').modeId : null;
-  const darkModeId  = lightnessCollection ? lightnessCollection.modes.find(m => m.name === 'dark').modeId  : null;
 
-  let lightWrap = null, darkWrap = null;
-  if (WRITE && lightnessCollection) {
-    lightWrap = figma.createFrame();
-    lightWrap.name = 'Light mode';
-    lightWrap.layoutMode = 'HORIZONTAL';
-    lightWrap.itemSpacing = 64;
-    lightWrap.primaryAxisSizingMode = 'AUTO';
-    lightWrap.counterAxisSizingMode = 'AUTO';
-    lightWrap.fills = [];
-    root.appendChild(lightWrap);
-    lightWrap.setExplicitVariableModeForCollection(lightnessCollection, lightModeId);
+  async function buildModePage(modeName) {
+    const modeId = lightnessCollection ? (lightnessCollection.modes.find(m => m.name === modeName) || {}).modeId : null;
+    let targetPage = null, root = null, wrap = null;
+    if (WRITE) {
+      targetPage = await _cpEnsureTargetPage(modeName);
+      await figma.setCurrentPageAsync(targetPage);
+      // Pin the whole PAGE, not just the swatch wrap below — the foundation
+      // bar and section bars sit outside the wrap frame and need the same
+      // mode to render their bound neutral fills correctly.
+      if (lightnessCollection && modeId) targetPage.setExplicitVariableModeForCollection(lightnessCollection, modeId);
+      root = targetPage.findOne(n => n.name === registry.rootFrameName && n.type === 'FRAME');
+      if (root) root.remove();
+      root = figma.createFrame();
+      root.name = registry.rootFrameName;
+      root.layoutMode = 'VERTICAL';
+      root.primaryAxisSizingMode = 'AUTO';
+      root.counterAxisSizingMode = 'AUTO';
+      root.fills = [];
+      targetPage.appendChild(root);
 
-    darkWrap = figma.createFrame();
-    darkWrap.name = 'Dark mode';
-    darkWrap.layoutMode = 'HORIZONTAL';
-    darkWrap.itemSpacing = 64;
-    darkWrap.primaryAxisSizingMode = 'AUTO';
-    darkWrap.counterAxisSizingMode = 'AUTO';
-    darkWrap.fills = [];
-    root.appendChild(darkWrap);
-    darkWrap.setExplicitVariableModeForCollection(lightnessCollection, darkModeId);
-  }
+      wrap = figma.createFrame();
+      wrap.name = modeName === 'dark' ? 'Dark mode' : 'Light mode';
+      wrap.layoutMode = 'HORIZONTAL';
+      wrap.itemSpacing = 64;
+      wrap.primaryAxisSizingMode = 'AUTO';
+      wrap.counterAxisSizingMode = 'AUTO';
+      wrap.fills = [];
+      root.appendChild(wrap);
+    }
 
-  for (const catName of catNames) {
-    const catCfg = registry.categories[catName];
-    if (!catCfg) { L('skip unknown category: ' + catName); continue; }
-    const lightSwatches = await buildCategoryFrame(catName, catCfg, lightWrap || root, map, lightModeId);
-    out.categories[catName] = lightSwatches;
-    if (darkWrap) await buildCategoryFrame(catName, catCfg, darkWrap, map, darkModeId);
-  }
+    const catSwatches = {};
+    for (const catName of catNames) {
+      const catCfg = registry.categories[catName];
+      if (!catCfg) { L('skip unknown category: ' + catName); continue; }
+      catSwatches[catName] = await buildCategoryFrame(catName, catCfg, wrap || root, map, modeId);
+    }
 
-  // Validate the page we just built (no extra round-trip; we still hold figma context).
-  // Skip in export mode — no Figma writes happened, so there's nothing fresh to validate.
-  const validate = WRITE ? await validatePage() : null;
+    // Validate the page we just built (no extra round-trip; still holding
+    // figma context). Skip in export mode — no Figma writes happened.
+    const validate = WRITE ? await validatePage(modeName, targetPage, modeId) : null;
 
-  // Provenance header + outer VERTICAL wrap. Header records: date, script@SHA,
-  // source Figma file, total swatch rows, error count, duration.
-  if (WRITE && root) {
-    const targetPage = figma.root.children.find(p => p.name === _cpResolvedPageName());
-    if (targetPage) {
+    // Provenance header + outer VERTICAL wrap. Header records: date,
+    // script@SHA, source Figma file, total swatch rows, error count, duration.
+    if (WRITE && root) {
       const totalRows = (validate && validate.stats && typeof validate.stats.totalRows === 'number') ? validate.stats.totalRows : null;
       const errCount  = (validate && validate.errors) ? validate.errors.filter(e => e.severity !== 'warning').length : 0;
       if (!pageOverride && errCount === 0) {
-        await deprecateOldScratchPages(registry.targetPageName, targetPage.id);
+        await deprecateOldScratchPages(_cpBasePageName(modeName), targetPage.id);
       }
       const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
       const prov      = provenance || {};
@@ -1025,7 +1012,15 @@ try {
       const outer = await ensureCpHeaderAndOuter(targetPage, root, headerText);
       try { outer.x = 0; outer.y = 0; } catch {}
     }
+
+    return { catSwatches, validate };
   }
+
+  const lightResult = await buildModePage('light');
+  out.categories = lightResult.catSwatches;
+  const darkResult = WRITE ? await buildModePage('dark') : null;
+
+  const validate = { light: lightResult.validate, dark: darkResult ? darkResult.validate : null };
 
   return { result: out, validate, log };
 } catch (e) {
@@ -1084,39 +1079,45 @@ if (parsed.result) {
   }
 }
 
-// Validation summary + non-zero exit on errors
+// Validation summary + non-zero exit on errors. parsed.validate is
+// { light: {errors, warnings, stats}, dark: {...} } — one page per mode.
 if (parsed.validate) {
-  const v = parsed.validate;
-  const errCount  = v.errors  ? v.errors.length  : 0;
-  const warnCount = v.warnings ? v.warnings.length : 0;
-  console.log('');
-  console.log('Validation:');
-  if (v.stats && v.stats.byCategory) {
-    for (const [cat, s] of Object.entries(v.stats.byCategory)) {
-      const flag = s.count === s.expected ? 'ok' : 'MISMATCH';
-      console.log('  ' + cat.padEnd(14) + s.count + '/' + s.expected + '  ' + flag);
-    }
-  }
-  console.log('  Errors:   ' + errCount);
-  console.log('  Warnings: ' + warnCount);
+  let totalErrCount = 0;
   const cap = 25;
-  if (errCount) {
+  for (const modeName of ['light', 'dark']) {
+    const v = parsed.validate[modeName];
+    if (!v) continue;
+    const errCount  = v.errors  ? v.errors.length  : 0;
+    const warnCount = v.warnings ? v.warnings.length : 0;
+    totalErrCount += errCount;
     console.log('');
-    console.log('  -- errors (first ' + Math.min(errCount, cap) + ') --');
-    for (const e of v.errors.slice(0, cap)) {
-      console.log('  [' + (e.code || '?') + '] ' + (e.category || '?') + (e.swatchId ? ' / ' + e.swatchId : '') + ': ' + e.msg);
+    console.log('Validation (' + modeName + '):');
+    if (v.stats && v.stats.byCategory) {
+      for (const [cat, s] of Object.entries(v.stats.byCategory)) {
+        const flag = s.count === s.expected ? 'ok' : 'MISMATCH';
+        console.log('  ' + cat.padEnd(14) + s.count + '/' + s.expected + '  ' + flag);
+      }
+    }
+    console.log('  Errors:   ' + errCount);
+    console.log('  Warnings: ' + warnCount);
+    if (errCount) {
+      console.log('');
+      console.log('  -- errors (first ' + Math.min(errCount, cap) + ') --');
+      for (const e of v.errors.slice(0, cap)) {
+        console.log('  [' + (e.code || '?') + '] ' + (e.category || '?') + (e.swatchId ? ' / ' + e.swatchId : '') + ': ' + e.msg);
+      }
+    }
+    if (warnCount) {
+      console.log('');
+      console.log('  -- warnings (first ' + Math.min(warnCount, cap) + ') --');
+      for (const w of v.warnings.slice(0, cap)) {
+        console.log('  [' + (w.code || '?') + '] ' + (w.category || '?') + (w.swatchId ? ' / ' + w.swatchId : '') + ': ' + w.msg);
+      }
     }
   }
-  if (warnCount) {
-    console.log('');
-    console.log('  -- warnings (first ' + Math.min(warnCount, cap) + ') --');
-    for (const w of v.warnings.slice(0, cap)) {
-      console.log('  [' + (w.code || '?') + '] ' + (w.category || '?') + (w.swatchId ? ' / ' + w.swatchId : '') + ': ' + w.msg);
-    }
-  }
-  if (errCount) {
+  if (totalErrCount) {
     console.error('');
-    console.error('FAIL: ' + errCount + ' validation error(s)');
+    console.error('FAIL: ' + totalErrCount + ' validation error(s)');
     process.exit(1);
   }
   console.log('');
