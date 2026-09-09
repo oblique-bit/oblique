@@ -5,7 +5,7 @@
         "token_family_docs": {
           "description": {
             "$type": "other",
-            "$value": "Semantic color tokens — neutral, interaction, status, free, and brand. Light/Dark and emphasis modes are pre-resolved; component and HTML tokens consume these directly without further mode handling. Do not consume primitive colors in components."
+            "$value": "Semantic color tokens — neutral, interaction, status, free, and brand. Light/Dark and emphasis modes are pre-resolved; component and HTML tokens consume these directly without further mode handling. Do not consume primitive colors in components. Figma variable names for this tier trim the ob/s/ prefix (e.g. color/neutral/fg/contrast_medium/inversity_normal) for usability in the variables panel; the JSON token keeps the full ob.s.color path."
           }
         },
         "_docs": {
