@@ -395,6 +395,21 @@ async function ensurePage() {
   return p;
 }
 
+// After a successful scratch build (no --page override), mark older
+// timestamped pages for this doc as deprecated so they don't pile up.
+// Never touches the canonical (un-timestamped) page or the page just built.
+async function deprecateOldScratchPages(basePageName, currentPageId) {
+  const prefix = basePageName + ' ';
+  for (const p of figma.root.children) {
+    if (p.type !== 'PAGE') continue;
+    if (p.id === currentPageId) continue;
+    if (p.name === basePageName) continue;
+    if (!p.name.startsWith(prefix)) continue;
+    if (p.name.endsWith('_deprecated')) continue;
+    p.name = p.name + '_deprecated';
+  }
+}
+
 const TABLE_WIDTH = 1580; // matches the section bar / row natural width
 const WRAPPER_NAME = 'Dimension Tables';
 const WRAPPER_GAP  = 96;
@@ -1079,6 +1094,9 @@ async function main() {
   // VERTICAL frame. Records date, script@sha, source file, totals, duration.
   const totalRows = (validate && validate.stats && typeof validate.stats.totalRows === 'number') ? validate.stats.totalRows : 0;
   const errCount  = (validate && validate.errors) ? validate.errors.length : 0;
+  if (!pageOverride && errCount === 0) {
+    await deprecateOldScratchPages(registry.page, page.id);
+  }
   const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
   const prov      = provenance || {};
   const scriptTag = prov.scriptName + (prov.gitSha ? '@' + prov.gitSha : '');

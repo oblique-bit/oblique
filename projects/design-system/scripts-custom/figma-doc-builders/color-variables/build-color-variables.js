@@ -250,6 +250,21 @@ async function ensurePage(name) {
   return page;
 }
 
+// After a successful scratch build (no --page override), mark older
+// timestamped pages for this doc as deprecated so they don't pile up.
+// Never touches the canonical (un-timestamped) page or the page just built.
+async function deprecateOldScratchPages(basePageName, currentPageId) {
+  const prefix = basePageName + ' ';
+  for (const p of figma.root.children) {
+    if (p.type !== 'PAGE') continue;
+    if (p.id === currentPageId) continue;
+    if (p.name === basePageName) continue;
+    if (!p.name.startsWith(prefix)) continue;
+    if (p.name.endsWith('_deprecated')) continue;
+    p.name = p.name + '_deprecated';
+  }
+}
+
 function findFrameByName(parent, name) {
   if (!parent || !parent.children) return null;
   return parent.children.find(c => c.type === 'FRAME' && c.name === name) || null;
@@ -1320,6 +1335,10 @@ async function main() {
   await flushTextWrites();
 
   const validate = await validatePage(targetPage, varMap, components);
+
+  if (!pageOverride && validate && validate.errors && validate.errors.length === 0) {
+    await deprecateOldScratchPages(registry.page, targetPage.id);
+  }
 
   // Provenance header + outer VERTICAL wrap. Header records: date, script@SHA,
   // source Figma file, total token rows, error count, duration.

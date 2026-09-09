@@ -353,6 +353,21 @@ async function _cpEnsureTargetPage() {
   return p;
 }
 
+// After a successful scratch build (no --page override), mark older
+// timestamped pages for this doc as deprecated so they don't pile up.
+// Never touches the canonical (un-timestamped) page or the page just built.
+async function deprecateOldScratchPages(basePageName, currentPageId) {
+  const prefix = basePageName + ' ';
+  for (const p of figma.root.children) {
+    if (p.type !== 'PAGE') continue;
+    if (p.id === currentPageId) continue;
+    if (p.name === basePageName) continue;
+    if (!p.name.startsWith(prefix)) continue;
+    if (p.name.endsWith('_deprecated')) continue;
+    p.name = p.name + '_deprecated';
+  }
+}
+
 async function ensureRootFrame() {
   const targetPage = await _cpEnsureTargetPage();
   await figma.setCurrentPageAsync(targetPage);
@@ -911,6 +926,9 @@ try {
     if (targetPage) {
       const totalRows = (validate && validate.stats && typeof validate.stats.totalRows === 'number') ? validate.stats.totalRows : null;
       const errCount  = (validate && validate.errors) ? validate.errors.filter(e => e.severity !== 'warning').length : 0;
+      if (!pageOverride && errCount === 0) {
+        await deprecateOldScratchPages(registry.targetPageName, targetPage.id);
+      }
       const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
       const prov      = provenance || {};
       const scriptTag = prov.scriptName + (prov.gitSha ? '@' + prov.gitSha : '');
