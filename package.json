@@ -23,6 +23,7 @@
     "projects/oblique",
     "projects/sds",
     "projects/sandbox",
+    "projects/sandbox-e2e",
     "projects/sandbox-ssr",
     "projects/service-navigation-web-component",
     "projects/toolchain"
