@@ -176,6 +176,29 @@ async function resolveColor(v) {
   return null;
 }
 
+// Like resolveColor, but pins the "lightness" collection to a specific mode
+// while walking the alias chain (compiled/S3 tokens route through S1, which
+// is multi-mode) instead of always taking modes[0] (= light).
+async function resolveColorForMode(v, lightnessModeId) {
+  let cur = v;
+  for (let depth = 0; depth < 8; depth++) {
+    const collection = await figma.variables.getVariableCollectionByIdAsync(cur.variableCollectionId);
+    const modeId = (lightnessModeId && collection.name === 'lightness') ? lightnessModeId : collection.modes[0].modeId;
+    const val = cur.valuesByMode[modeId];
+    if (!val) return null;
+    if (val.type === 'VARIABLE_ALIAS') {
+      cur = await figma.variables.getVariableByIdAsync(val.id);
+      if (!cur) return null;
+      continue;
+    }
+    if (typeof val === 'object' && 'r' in val) {
+      return { r: val.r, g: val.g, b: val.b, a: val.a == null ? 1 : val.a };
+    }
+    return null;
+  }
+  return null;
+}
+
 function relLum(c) {
   const k = ch => (ch <= 0.03928 ? ch / 12.92 : Math.pow((ch + 0.055) / 1.055, 2.4));
   return 0.2126 * k(c.r) + 0.7152 * k(c.g) + 0.0722 * k(c.b);
@@ -271,7 +294,7 @@ function expandBlock(block) {
   return pairs;
 }
 
-async function buildSwatchRecord(pair, varMap) {
+async function buildSwatchRecord(pair, varMap, lightnessModeId) {
   const fgVar = varMap.get(pair.fgName);
   const bgVar = pair.bgName ? varMap.get(pair.bgName) : null;
   if (!fgVar || (pair.bgName && !bgVar)) {
@@ -288,8 +311,8 @@ async function buildSwatchRecord(pair, varMap) {
     bgVarId: bgVar ? bgVar.id : null
   };
   if (bgVar) {
-    const fgC = await resolveColor(fgVar);
-    const bgC = await resolveColor(bgVar);
+    const fgC = await resolveColorForMode(fgVar, lightnessModeId);
+    const bgC = await resolveColorForMode(bgVar, lightnessModeId);
     if (fgC && bgC) {
       const r = contrastRatio(fgC, bgC);
       rec.ratio = Math.round(r * 100) / 100;
@@ -375,7 +398,10 @@ async function ensureRootFrame() {
   if (root) root.remove();
   root = figma.createFrame();
   root.name = registry.rootFrameName;
-  root.layoutMode = 'HORIZONTAL';
+  // Vertical: stacks the Light mode / Dark mode wrapper frames. Each wrapper
+  // is itself HORIZONTAL, laying its categories out in a row (the pre-split
+  // layout), so the row-of-categories look is unchanged within each mode.
+  root.layoutMode = 'VERTICAL';
   root.itemSpacing = 64;
   root.paddingTop = root.paddingBottom = 48;
   root.paddingLeft = root.paddingRight = 0;
@@ -573,7 +599,7 @@ function expectedCountForCategory(catCfg) {
 
 const DEFAULT_PLACEHOLDERS = ['Tier title', 'Group Title', 'Group description', 'Purpose: Description text'];
 
-async function validateSwatch(inst) {
+async function validateSwatch(inst, lightnessModeId) {
   const issues = [];
   const previewArea = inst.children && inst.children.find(c => c.name === 'previewArea');
   const metaArea    = inst.children && inst.children.find(c => c.name === 'metaArea');
@@ -645,8 +671,8 @@ async function validateSwatch(inst) {
   if (!isSingle && firstSlBoundId && paBoundId && ratioText) {
     const fgV = await figma.variables.getVariableByIdAsync(firstSlBoundId);
     const bgV = await figma.variables.getVariableByIdAsync(paBoundId);
-    const fgC = fgV ? await resolveColor(fgV) : null;
-    const bgC = bgV ? await resolveColor(bgV) : null;
+    const fgC = fgV ? await resolveColorForMode(fgV, lightnessModeId) : null;
+    const bgC = bgV ? await resolveColorForMode(bgV, lightnessModeId) : null;
     if (fgC && bgC) {
       const r = contrastRatio(fgC, bgC);
       const displayed = parseFloat((ratioText.split(':')[0] || '').trim());
@@ -789,23 +815,36 @@ async function validatePage() {
   const root = targetPage.findOne(n => n.name === registry.rootFrameName && n.type === 'FRAME');
   if (!root) { errors.push({ severity: 'error', code: 'ROOT', msg: 'root frame not found: ' + registry.rootFrameName }); return { errors, warnings, stats }; }
 
-  const catFrames = root.children.filter(c => /^category-/.test(c.name));
-  for (const catFrame of catFrames) {
-    const catName = catFrame.name.replace(/^category-/, '');
-    const catCfg = registry.categories[catName];
-    if (!catCfg) { warnings.push({ category: catName, severity: 'warning', code: 'UNKNOWN_CAT', msg: 'category present in build but not in registry: ' + catName }); continue; }
+  const lightnessCollection = (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'lightness');
+  const modeWraps = [
+    { name: 'light', frame: root.findOne(n => n.type === 'FRAME' && n.name === 'Light mode') },
+    { name: 'dark',  frame: root.findOne(n => n.type === 'FRAME' && n.name === 'Dark mode') }
+  ].filter(w => w.frame);
+  // Fall back to un-wrapped categories directly under root (older pages
+  // built before the light/dark split, or --page runs against them).
+  if (!modeWraps.length) modeWraps.push({ name: 'light', frame: root });
 
-    const sb = catFrame.children.find(c => c.type === 'INSTANCE' && c.name === registry.componentNames.sectionBar);
-    for (const i of await validateSectionBar(sb, catName, catCfg)) (i.severity === 'warning' ? warnings : errors).push({ category: catName, ...i });
+  for (const { name: modeName, frame: wrapFrame } of modeWraps) {
+    const modeId = lightnessCollection ? (lightnessCollection.modes.find(m => m.name === modeName) || {}).modeId : null;
+    const catFrames = wrapFrame.children.filter(c => /^category-/.test(c.name));
+    for (const catFrame of catFrames) {
+      const catName = catFrame.name.replace(/^category-/, '');
+      const catCfg = registry.categories[catName];
+      const statKey = catName + ' (' + modeName + ')';
+      if (!catCfg) { warnings.push({ category: statKey, severity: 'warning', code: 'UNKNOWN_CAT', msg: 'category present in build but not in registry: ' + catName }); continue; }
 
-    const swatches = catFrame.findAll(n => n.type === 'INSTANCE' && n.name === registry.componentNames.swatch);
-    const expected = expectedCountForCategory(catCfg);
-    stats.byCategory[catName] = { count: swatches.length, expected };
-    stats.totalSwatches += swatches.length;
-    if (swatches.length !== expected) errors.push({ category: catName, severity: 'error', code: 'COUNT', msg: 'swatch count: got ' + swatches.length + ', expected ' + expected });
+      const sb = catFrame.children.find(c => c.type === 'INSTANCE' && c.name === registry.componentNames.sectionBar);
+      for (const i of await validateSectionBar(sb, catName, catCfg)) (i.severity === 'warning' ? warnings : errors).push({ category: statKey, ...i });
 
-    for (const s of swatches) {
-      for (const i of await validateSwatch(s)) (i.severity === 'warning' ? warnings : errors).push({ category: catName, swatchId: s.id, ...i });
+      const swatches = catFrame.findAll(n => n.type === 'INSTANCE' && n.name === registry.componentNames.swatch);
+      const expected = expectedCountForCategory(catCfg);
+      stats.byCategory[statKey] = { count: swatches.length, expected };
+      stats.totalSwatches += swatches.length;
+      if (swatches.length !== expected) errors.push({ category: statKey, severity: 'error', code: 'COUNT', msg: 'swatch count: got ' + swatches.length + ', expected ' + expected });
+
+      for (const s of swatches) {
+        for (const i of await validateSwatch(s, modeId)) (i.severity === 'warning' ? warnings : errors).push({ category: statKey, swatchId: s.id, ...i });
+      }
     }
   }
   return { errors, warnings, stats };
@@ -820,14 +859,13 @@ try {
   const { map } = await buildVarMap();
   if (WRITE) await loadComponents();
 
-  const out = { schema: 'ob.contrast-pairings.v1', generatedAt: new Date().toISOString(), categories: {} };
-  let root = null;
-  if (WRITE) root = await ensureRootFrame();
-
-  const catNames = onlyCategory ? [onlyCategory] : Object.keys(registry.categories);
-  for (const catName of catNames) {
-    const catCfg = registry.categories[catName];
-    if (!catCfg) { L('skip unknown category: ' + catName); continue; }
+  // Builds one category's section (bar + groups + rows of swatches) into
+  // container. lightnessModeId, if set, both pins the container's
+  // "lightness" collection resolution (so bound swatch/text fills render
+  // that mode) and feeds the WCAG ratio math, so the displayed numbers
+  // always match what's visually shown regardless of any ambient mode
+  // switch elsewhere in the file.
+  async function buildCategoryFrame(catName, catCfg, container, map, lightnessModeId) {
     const swatches = [];
     let catFrame = null;
     if (WRITE) {
@@ -838,7 +876,7 @@ try {
       catFrame.primaryAxisSizingMode = 'AUTO';
       catFrame.counterAxisSizingMode = 'AUTO';
       catFrame.fills = [];
-      root.appendChild(catFrame);
+      container.appendChild(catFrame);
       const bar = await buildSectionBar(catName, catCfg);
       if (bar) {
         catFrame.appendChild(bar);
@@ -900,7 +938,7 @@ try {
           catFrame.appendChild(rowFrame);
         }
         for (const p of rowPairs) {
-          const rec = await buildSwatchRecord(p, map);
+          const rec = await buildSwatchRecord(p, map, lightnessModeId);
           if (groupKey) rec.group = groupKey;
           swatches.push(rec);
           if (WRITE && !rec.missing) {
@@ -911,8 +949,52 @@ try {
       }
     }
 
-    out.categories[catName] = swatches;
     L('category ' + catName + ': ' + swatches.length + ' swatches (' + swatches.filter(s => s.missing).length + ' missing)');
+    return swatches;
+  }
+
+  const out = { schema: 'ob.contrast-pairings.v1', generatedAt: new Date().toISOString(), categories: {} };
+  let root = null;
+  if (WRITE) root = await ensureRootFrame();
+
+  const catNames = onlyCategory ? [onlyCategory] : Object.keys(registry.categories);
+
+  // Prototype: light + dark sections, stacked, each pinned to its own
+  // lightness mode so bound swatch colors render correctly regardless of
+  // ambient mode elsewhere in the file.
+  const lightnessCollection = WRITE ? (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'lightness') : null;
+  const lightModeId = lightnessCollection ? lightnessCollection.modes.find(m => m.name === 'light').modeId : null;
+  const darkModeId  = lightnessCollection ? lightnessCollection.modes.find(m => m.name === 'dark').modeId  : null;
+
+  let lightWrap = null, darkWrap = null;
+  if (WRITE && lightnessCollection) {
+    lightWrap = figma.createFrame();
+    lightWrap.name = 'Light mode';
+    lightWrap.layoutMode = 'HORIZONTAL';
+    lightWrap.itemSpacing = 64;
+    lightWrap.primaryAxisSizingMode = 'AUTO';
+    lightWrap.counterAxisSizingMode = 'AUTO';
+    lightWrap.fills = [];
+    root.appendChild(lightWrap);
+    lightWrap.setExplicitVariableModeForCollection(lightnessCollection, lightModeId);
+
+    darkWrap = figma.createFrame();
+    darkWrap.name = 'Dark mode';
+    darkWrap.layoutMode = 'HORIZONTAL';
+    darkWrap.itemSpacing = 64;
+    darkWrap.primaryAxisSizingMode = 'AUTO';
+    darkWrap.counterAxisSizingMode = 'AUTO';
+    darkWrap.fills = [];
+    root.appendChild(darkWrap);
+    darkWrap.setExplicitVariableModeForCollection(lightnessCollection, darkModeId);
+  }
+
+  for (const catName of catNames) {
+    const catCfg = registry.categories[catName];
+    if (!catCfg) { L('skip unknown category: ' + catName); continue; }
+    const lightSwatches = await buildCategoryFrame(catName, catCfg, lightWrap || root, map, lightModeId);
+    out.categories[catName] = lightSwatches;
+    if (darkWrap) await buildCategoryFrame(catName, catCfg, darkWrap, map, darkModeId);
   }
 
   // Validate the page we just built (no extra round-trip; we still hold figma context).
