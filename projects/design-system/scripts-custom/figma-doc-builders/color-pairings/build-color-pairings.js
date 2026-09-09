@@ -129,7 +129,10 @@ const WRITE = mode !== 'export';
 const _startTime = Date.now();
 
 // ── helpers ────────────────────────────────────────────────────────────────
-function pathToToken(p) { return p.replace(/\\//g, '.'); }
+// This file only ever addresses compiled-tier (S3) variables, whose Figma
+// name has the "ob/s/" prefix trimmed for panel usability. Display the real
+// JSON token path, not the trimmed variable name.
+function pathToToken(p) { return 'ob.s.' + p.replace(/\\//g, '.'); }
 function fillPattern(template, vars) {
   let out = template;
   for (const [k, val] of Object.entries(vars)) {

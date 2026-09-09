@@ -938,7 +938,10 @@ async function buildTable(spec, ctx) {
     const filterRe = new RegExp(spec.matches);
     for (const v of ctx.varMap.list) {
       if (!filterRe.test(v.name)) continue;
-      const dotPath = v.name.replace(/\\//g, '.');
+      // Compiled-tier (S3) variables are stored in Figma with the "ob/s/"
+      // prefix trimmed for panel usability (see shorten-color.js). The
+      // doc must still show the real JSON token path, so reconstruct it.
+      const dotPath = v.name.startsWith('ob/') ? v.name.replace(/\\//g, '.') : 'ob.s.' + v.name.replace(/\\//g, '.');
       tokens.push({
         kind: 'figma-var',
         varName: v.name,
