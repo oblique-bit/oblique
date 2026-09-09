@@ -147,7 +147,7 @@
 	--ob-s-border_width-sm: 2px;
 	--ob-s-border_width-xl: 8px;
 	--ob-s-border_width-xs: 1px;
-	--ob-s-color-_docs-token_family_info: Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial.;
+	--ob-s-color-_docs-token_family_info: Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial. Figma variable names for this tier trim the ob/s/ prefix (e.g. color/neutral/fg/contrast_medium/inversity_normal) for usability in the variables panel; the JSON token keeps the full ob.s.color path.;
 	--ob-s-color-brand-1: #ff0000;
 	--ob-s-color-brand-2: #ffffff;
 	--ob-s-color-brand-_docs-token_family_info: Official federal identity color (Bundesrot). Light/Dark modes apply — no emphasis modes. Use: Primary brand accent in navigation active states and official federal identity elements. Avoid: Interactive states or status feedback — use the interaction or status scale instead.;
@@ -416,7 +416,7 @@
 	--ob-s-color-status-resolved-fg-contrast_low-inversity_normal: #059669;
 	--ob-s-color-status-resolved-fg-contrast_medium-inversity_flipped: #d1fae5;
 	--ob-s-color-status-resolved-fg-contrast_medium-inversity_normal: #047857;
-	--ob-s-color-token_family_docs-description: Semantic color tokens — neutral, interaction, status, free, and brand. Light/Dark and emphasis modes are pre-resolved; component and HTML tokens consume these directly without further mode handling. Do not consume primitive colors in components. Figma variable names for this tier trim the ob/s/ prefix (e.g. color/neutral/fg/contrast_medium/inversity_normal) for usability in the variables panel; the JSON token keeps the full ob.s.color path.;
+	--ob-s-color-token_family_docs-description: Semantic color tokens — neutral, interaction, status, free, and brand. Light/Dark and emphasis modes are pre-resolved; component and HTML tokens consume these directly without further mode handling. Do not consume primitive colors in components.;
 	--ob-s-dimension-dynamic-density-10xl-px: 56px;
 	--ob-s-dimension-dynamic-density-10xl-rem: 3.5rem;
 	--ob-s-dimension-dynamic-density-11xl-px: 64px;

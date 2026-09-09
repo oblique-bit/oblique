@@ -424,8 +424,12 @@ function setBadgeStatus(badgeInst, level, passed) {
 async function buildSwatchVisual(rec, varMap) {
   if (!swatchComp || rec.missing) return null;
   const inst = swatchComp.createInstance();
-  const fgVar = varMap.get(rec.fg.replace(/\\./g, '/'));
-  const bgVar = rec.bg ? varMap.get(rec.bg.replace(/\\./g, '/')) : null;
+  // rec.fg/rec.bg carry the full ob.s.color token path (pathToToken); the live
+  // Figma variable has that prefix trimmed (see shorten-color.js) — strip it
+  // back off before looking the variable up by name.
+  const tokenToVarName = t => (t.startsWith('ob.s.') ? t.slice(5) : t).replace(/\\./g, '/');
+  const fgVar = varMap.get(tokenToVarName(rec.fg));
+  const bgVar = rec.bg ? varMap.get(tokenToVarName(rec.bg)) : null;
   if (bgVar) {
     const previewArea = findOneByName(inst, 'previewArea');
     if (previewArea) await bindFill(previewArea, bgVar);
@@ -584,7 +588,9 @@ async function validateSwatch(inst) {
       issues.push({ severity: 'error', code: 'BIND', msg: 'previewArea fill not bound to variable' });
     } else {
       const v = await figma.variables.getVariableByIdAsync(paBoundId);
-      const vdot = v ? v.name.replace(/\\//g, '.') : '';
+      // The bound variable's own name has the ob/s/ prefix trimmed (see
+      // shorten-color.js); the swatch text shows the full ob.s.color token.
+      const vdot = v ? 'ob.s.' + v.name.replace(/\\//g, '.') : '';
       if (bgText && vdot !== bgText) issues.push({ severity: 'error', code: 'BIND', msg: 'previewArea bound to ' + vdot + ' but bg text says ' + bgText });
     }
   }
@@ -599,7 +605,9 @@ async function validateSwatch(inst) {
     if (i === 0) firstSlBoundId = id;
     if (i === 0 && fgText) {
       const v = await figma.variables.getVariableByIdAsync(id);
-      const vdot = v ? v.name.replace(/\\//g, '.') : '';
+      // The bound variable's own name has the ob/s/ prefix trimmed (see
+      // shorten-color.js); the swatch text shows the full ob.s.color token.
+      const vdot = v ? 'ob.s.' + v.name.replace(/\\//g, '.') : '';
       if (vdot !== fgText) issues.push({ severity: 'error', code: 'BIND', msg: 'sample-link bound to ' + vdot + ' but fg text says ' + fgText });
     }
   }

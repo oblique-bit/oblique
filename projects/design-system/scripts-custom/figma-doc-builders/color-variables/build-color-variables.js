@@ -1253,8 +1253,10 @@ async function validatePage(targetPage, varMap, components) {
       // Continuation rows (e.g. 4-Mode-Low emphasis-low) intentionally leave the
       // name cell empty — they inherit from the row above. Skip them.
       if (!nameText) continue;
-      // Look up variable by dotted token name
-      const varName = nameText.replace(/\\./g, '/');
+      // Look up variable by dotted token name. Compiled-tier (S3) rows display
+      // the full ob.s.color path but the live Figma variable has that prefix
+      // trimmed (see shorten-color.js) — strip it back off before lookup.
+      const varName = nameText.startsWith('ob.s.') ? nameText.slice(5).replace(/\\./g, '/') : nameText.replace(/\\./g, '/');
       const v = (varMap.byName && varMap.byName[varName]) || varMap.list.find(x => x.name === varName);
       if (!v) {
         warnings.push({ code: 'TOKEN', set: wrapperName, msg: 'token "' + nameText + '" not found in varMap' });
