@@ -4,6 +4,7 @@ import obliqueEslintConfig from './projects/oblique/eslint.project-config.mjs';
 import cliEslintConfig from './projects/cli/eslint.project-config.mjs';
 import designSystemEslintConfig from './projects/design-system/eslint.project-config.mjs';
 import sandboxEslintConfig from './projects/sandbox/eslint.project-config.mjs';
+import sandboxE2eEslintConfig from './projects/sandbox-e2e/eslint.project-config.mjs';
 import sandboxSsrEslintConfig from './projects/sandbox-ssr/eslint.project-config.mjs';
 import sdsEslintConfig from './projects/sds/eslint.project-config.mjs';
 import serviceNavigationWebComponentEslintConfig from './projects/service-navigation-web-component/eslint.project-config.mjs';
@@ -68,6 +69,7 @@ export default defineConfig(
 	...cliEslintConfig,
 	...designSystemEslintConfig,
 	...sandboxEslintConfig,
+	...sandboxE2eEslintConfig,
 	...sandboxSsrEslintConfig,
 	...sdsEslintConfig,
 	...serviceNavigationWebComponentEslintConfig,
