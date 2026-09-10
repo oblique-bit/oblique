@@ -1,6 +1,6 @@
 import {Directive, ElementRef, OnChanges, Renderer2, inject, input} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
-import {first, tap} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 
 import {OptionLabelIconPosition} from '../autocomplete.model';
 import {ObEIcon} from '../../icon/icon.model';
@@ -15,7 +15,7 @@ export class ObOptionLabelIconDirective implements OnChanges {
 	readonly ariaLabel = input<string | undefined>();
 
 	private readonly host: HTMLElement;
-	private iconSpan: HTMLSpanElement;
+	private iconSpan: HTMLSpanElement | undefined = undefined;
 	private readonly renderer = inject(Renderer2);
 	private readonly iconRegistry = inject(MatIconRegistry);
 
@@ -32,17 +32,13 @@ export class ObOptionLabelIconDirective implements OnChanges {
 		this.registerIcon(this.iconName(), this.host, this.iconPosition());
 	}
 
-	private registerIcon(iconName: string, host: HTMLElement, iconPosition: OptionLabelIconPosition): void {
-		if (iconName.length > 0 && host) {
+	private registerIcon(iconName: string | undefined, host: HTMLElement, iconPosition: OptionLabelIconPosition): void {
+		if (typeof iconName === 'string' && iconName.length > 0 && host) {
 			this.iconRegistry
 				.getNamedSvgIcon(iconName)
-				.pipe(
-					first(),
-					tap(svg => {
-						this.iconSpan = this.createIconElement(svg, host, iconPosition, this.ariaLabel());
-					})
-				)
-				.subscribe(() => {
+				.pipe(first())
+				.subscribe(svg => {
+					this.iconSpan = this.createIconElement(svg, host, iconPosition, this.ariaLabel());
 					this.addIcon(iconName, this.iconSpan, host, iconPosition);
 				});
 		}
@@ -60,15 +56,13 @@ export class ObOptionLabelIconDirective implements OnChanges {
 			} else if (position === 'end') {
 				this.renderer.appendChild(host, iconSpan);
 			} else {
-				this.removeIcon(this.iconSpan, this.host);
+				this.removeIcon(iconSpan, host);
 			}
 		}
 	}
 
 	private removeIcon(iconSpanElement: HTMLSpanElement, host: HTMLElement): void {
-		if (iconSpanElement) {
-			this.renderer.removeChild(host, iconSpanElement);
-		}
+		this.renderer.removeChild(host, iconSpanElement);
 	}
 
 	private createIconElement(
@@ -101,7 +95,7 @@ export class ObOptionLabelIconDirective implements OnChanges {
 		if (['start', 'end'].includes(iconPosition)) {
 			this.renderer.setStyle(host, 'display', 'flex');
 		} else {
-			this.removeIcon(this.iconSpan, this.host);
+			this.removeIcon(span, host);
 		}
 	}
 }

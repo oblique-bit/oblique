@@ -108,7 +108,7 @@ export class ObAutocompleteComponent<T = string> implements ControlValueAccessor
 		),
 		{initialValue: ''}
 	);
-	onModelTouched: () => void;
+
 	readonly hints: Signal<{align: 'start' | 'end'; template: string}[]>;
 	private readonly autocompleteTrigger = viewChild(MatAutocompleteTrigger);
 	private readonly matHints = contentChildren(MatHint);
@@ -148,12 +148,14 @@ export class ObAutocompleteComponent<T = string> implements ControlValueAccessor
 	ngAfterViewInit(): void {
 		if (this.withErrorMessages()) {
 			const ngControl = this.injector.get(NgControl, null, {self: true, optional: true});
-			this.autocompleteInputControl.setValidators(ngControl.control.validator);
-			// tell Angular that this control now has new validators
-			this.autocompleteInputControl.updateValueAndValidity();
-			// cancel dirty and touched states set by updateValueAndValidity
-			this.autocompleteInputControl.markAsPristine();
-			this.autocompleteInputControl.markAsUntouched();
+			if (ngControl?.control) {
+				this.autocompleteInputControl.setValidators(ngControl.control.validator);
+				// tell Angular that this control now has new validators
+				this.autocompleteInputControl.updateValueAndValidity();
+				// cancel dirty and touched states set by updateValueAndValidity
+				this.autocompleteInputControl.markAsPristine();
+				this.autocompleteInputControl.markAsUntouched();
+			}
 		}
 	}
 
@@ -197,6 +199,10 @@ export class ObAutocompleteComponent<T = string> implements ControlValueAccessor
 			this.autocompleteInputControl.markAllAsTouched();
 		});
 	}
+
+	onModelTouched: () => void = () => {
+		// actual implementation is provided by registerOnTouched
+	};
 
 	protected selectionChange(option: ObIAutocompleteInputOption<T>, event: MatOptionSelectionChange): void {
 		if (event.source.selected) {

@@ -45,10 +45,10 @@ describe(ObOptionLabelIconDirective.name, () => {
 
 	describe.each([
 		{
-			caseText: 'default iconName and default position',
-			template: '<div obOptionLabelIcon>Text</div>',
+			caseText: 'empty iconName and default position',
+			template: '<div obOptionLabelIcon iconName="">Text</div>',
 			expected: {
-				iconName: undefined,
+				iconName: '',
 				iconPosition: 'end',
 				innerHtml: 'Text',
 			},

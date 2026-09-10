@@ -836,4 +836,27 @@ describe(ObAutocompleteComponent.name, () => {
 			expect(parentFixture.debugElement.query(By.css('mat-error'))).toBeTruthy();
 		});
 	});
+
+	describe('with error messages but no form control', () => {
+		beforeEach(() => {
+			parentFixture = TestBed.overrideComponent(TestParentComponent, {
+				set: {
+					template: `<form [formGroup]="parentFormControl"><ob-autocomplete withErrorMessages="true"></ob-autocomplete></form>`,
+				},
+			}).createComponent(TestParentComponent);
+			parentComponent = parentFixture.componentInstance;
+			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+			parentFixture.detectChanges();
+		});
+
+		test('does not touch nor validate', () => {
+			const input = parentFixture.debugElement.query(By.css('input'));
+
+			input.nativeElement.focus();
+			input.nativeElement.blur();
+			parentFixture.detectChanges();
+
+			expect(parentFixture.debugElement.query(By.css('mat-error'))).toBeFalsy();
+		});
+	});
 });
