@@ -78,7 +78,7 @@
     // TOP of the panel — the opposite of what was wanted. "~" is ASCII 0x7E,
     // above every letter, so it reliably sorts last.
     renames: [
-      { from: 's/authoring/', to: '~authoring/' },
+      { from: 's/typography/authoring/', to: '~authoring/' },
       { from: 'h/heading/', to: 'heading/' },
       { from: 'h/body/', to: 'body/' },
     ],

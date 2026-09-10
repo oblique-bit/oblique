@@ -51,14 +51,18 @@
     // old prefix must match a real style with the new prefix, or it is
     // reported as blocked, not guessed.
     //
-    // Current (2026-09-10): doc-page specimens still point at the bare
-    // "heading/*" / "body/*" styles from the reverted bare-root attempt.
-    // After the next Token Studio push recreates "h/heading/*" / "h/body/*"
-    // (matching the tier-prefixed path these settled on), run this to move
-    // those specimens onto the new ones before deleting the bare leftovers.
+    // Current (2026-09-10): the authoring composite path just gained a
+    // "typography" segment (ob.s.authoring.* -> ob.s.typography.authoring.*).
+    // Doc-page specimens still point at the cosmetically-renamed
+    // "~authoring/*" styles from before that change. After the next Token
+    // Studio push creates fresh "s/typography/authoring/*" styles (verify
+    // the exact prefix against the real panel first), run this to move those
+    // specimens onto the new ones — the old "~authoring/*" then have zero
+    // usage and rename-text-styles.js (with autoResolveCollisions: true) can
+    // delete them as part of applying the cosmetic rename to the new ones.
     prefixPairs: [
-      { oldPrefix: 'heading/', newPrefix: 'h/heading/' },
-      { oldPrefix: 'body/', newPrefix: 'h/body/' },
+      { oldPrefix: '~authoring/static/', newPrefix: 's/typography/authoring/static/' },
+      { oldPrefix: '~authoring/dynamic/', newPrefix: 's/typography/authoring/dynamic/' },
     ],
   };
   // ==========================================================================

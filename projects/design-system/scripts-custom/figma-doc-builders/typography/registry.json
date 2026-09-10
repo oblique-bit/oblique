@@ -25,7 +25,7 @@
     "authoring": {
       "tierLetter": "Authoring Styles for components",
       "title": "Styles",
-      "subtitle": "ob.s.authoring",
+      "subtitle": "ob.s.typography.authoring",
       "variant": "p",
       "badges": ["maintainer"],
       "purpose": "Composite text styles used mainly in component build process. Static does not react to variable modes; dynamic scales with the ui_scale mode (sm / md / lg).",
@@ -76,7 +76,7 @@
         "guideline": "Use for any text whose typographic dimensions must remain constant across ui_scale (sm / md / lg). Pair with the dimension foundation when laying out static layouts."
       },
       "stylePrefix": "~authoring/static/",
-      "subtitle": "ob.s.authoring.static",
+      "subtitle": "ob.s.typography.authoring.static",
       "grouping": "size_class"
     },
     {
@@ -92,7 +92,7 @@
         "guideline": "Use as the default body and label styles. Renders at the active ui_scale mode wherever applied."
       },
       "stylePrefix": "~authoring/dynamic/",
-      "subtitle": "ob.s.authoring.dynamic",
+      "subtitle": "ob.s.typography.authoring.dynamic",
       "grouping": "size_class"
     }
   ]
