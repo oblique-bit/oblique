@@ -10,9 +10,7 @@
             }
           }
         }
-      }
-    },
-    "html": {
+      },
       "heading": {
         "H1": {
           "$type": "typography",
