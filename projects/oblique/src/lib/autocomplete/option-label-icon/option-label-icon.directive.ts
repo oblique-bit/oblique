@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnChanges, Renderer2, inject, input} from '@angular/core';
+import {Directive, ElementRef, OnChanges, Renderer2, inject, input} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {first, tap} from 'rxjs/operators';
 
@@ -10,8 +10,8 @@ import {ObEIcon} from '../../icon/icon.model';
 	host: {class: 'ob-option-label-icon'},
 })
 export class ObOptionLabelIconDirective implements OnChanges {
-	@Input() iconName?: ObEIcon;
-	@Input() iconPosition: OptionLabelIconPosition = 'end';
+	readonly iconName = input<ObEIcon>();
+	readonly iconPosition = input<OptionLabelIconPosition>('end');
 	readonly ariaLabel = input<string | undefined>();
 
 	private readonly host: HTMLElement;
@@ -29,7 +29,7 @@ export class ObOptionLabelIconDirective implements OnChanges {
 		if (this.iconSpan) {
 			this.removeIcon(this.iconSpan, this.host);
 		}
-		this.registerIcon(this.iconName, this.host, this.iconPosition);
+		this.registerIcon(this.iconName(), this.host, this.iconPosition());
 	}
 
 	private registerIcon(iconName: string, host: HTMLElement, iconPosition: OptionLabelIconPosition): void {

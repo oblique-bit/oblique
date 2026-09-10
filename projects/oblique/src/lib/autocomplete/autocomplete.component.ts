@@ -1,12 +1,10 @@
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
 	AfterViewInit,
-	ChangeDetectionStrategy,
 	Component,
 	DoCheck,
 	ElementRef,
 	Injector,
-	Input,
 	OnChanges,
 	OnDestroy,
 	Signal,
@@ -75,7 +73,6 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 			multi: true,
 		},
 	],
-	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-autocomplete'},
 })
@@ -83,8 +80,8 @@ export class ObAutocompleteComponent<T = string>
 	implements OnChanges, ControlValueAccessor, OnDestroy, AfterViewInit, DoCheck
 {
 	readonly withErrorMessages = input(false, {transform: booleanAttribute});
-	@Input() inputLabelKey = 'i18n.oblique.search.title';
-	@Input() noResultKey = 'i18n.oblique.search.no-results';
+	readonly inputLabelKey = input('i18n.oblique.search.title');
+	readonly noResultKey = input('i18n.oblique.search.no-results');
 	readonly autocompleteOptions = input<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>([]);
 	readonly filterRegexFlag = input('gi');
 	readonly highlightCssClass = input('ob-highlight-text');

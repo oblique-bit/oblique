@@ -117,11 +117,11 @@ describe(ObAutocompleteComponent.name, () => {
 
 		describe('Default values', () => {
 			it('should have an inputLabelKey to be i18n.oblique.search.title', () => {
-				expect(component.inputLabelKey).toBe('i18n.oblique.search.title');
+				expect(component.inputLabelKey()).toBe('i18n.oblique.search.title');
 			});
 
 			it('should have property of noResultKey to be i18n.oblique.search.no-results', () => {
-				expect(component.noResultKey).toBe('i18n.oblique.search.no-results');
+				expect(component.noResultKey()).toBe('i18n.oblique.search.no-results');
 			});
 
 			it('should have autocompleteOptions to be empty', () => {
@@ -401,8 +401,8 @@ describe(ObAutocompleteComponent.name, () => {
 
 		describe('by setting or changing inputLabelKey', () => {
 			it("should have an label with inputLabelKey='i18n.oblique.search.title'", async () => {
-				component.inputLabelKey = 'i18n.oblique.search.title';
-				autocompleteChangeDetectorRef.detectChanges();
+				parentComponent.inputLabel = 'i18n.oblique.search.title';
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
 				await parentFixture.whenStable();
 				obAutocompleteHarness = await loader.getHarnessOrNull(ObAutocompleteHarness);
 				const label = await obAutocompleteHarness.getFormLabel();
@@ -410,8 +410,8 @@ describe(ObAutocompleteComponent.name, () => {
 			});
 
 			it("should not have an label if inputLabelKey = ''", async () => {
-				component.inputLabelKey = '';
-				autocompleteChangeDetectorRef.detectChanges();
+				parentComponent.inputLabel = '';
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
 				await parentFixture.whenStable();
 				obAutocompleteHarness = await loader.getHarnessOrNull(ObAutocompleteHarness);
 				const label = await obAutocompleteHarness.getFormLabel();
@@ -421,7 +421,7 @@ describe(ObAutocompleteComponent.name, () => {
 
 		describe('by setting or changing noResultKey', () => {
 			it("should have an mat-option with option label = 'i18n.oblique.search.no-results' if autocomplete is visible and filtered options list is empty", async () => {
-				component.noResultKey = 'i18n.oblique.search.no-results';
+				parentComponent.noResultKey = 'i18n.oblique.search.no-results';
 				parentComponent.autocompleteOptions = [];
 				component.autocompleteInputControl.setValue('');
 				component.ngOnChanges();
@@ -435,7 +435,7 @@ describe(ObAutocompleteComponent.name, () => {
 			});
 
 			it("should not have an no-result mat-option if noResultKey = '' input is focused and filtered options list is empty", async () => {
-				component.noResultKey = '';
+				parentComponent.noResultKey = '';
 				parentComponent.autocompleteOptions = [];
 				component.autocompleteInputControl.setValue('');
 				component.ngOnChanges();

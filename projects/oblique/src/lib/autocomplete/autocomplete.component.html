@@ -1,8 +1,8 @@
 @if (withErrorMessages()) {
 	<mat-form-field obErrorMessages>
 		<mat-icon svgIcon="search" matPrefix />
-		@if (inputLabelKey?.length > 0) {
-			<mat-label>{{ inputLabelKey | translate }}</mat-label>
+		@if (inputLabelKey().length > 0) {
+			<mat-label>{{ inputLabelKey() | translate }}</mat-label>
 		}
 		<input
 			(blur)="onModelTouched()"
@@ -25,8 +25,8 @@
 } @else {
 	<mat-form-field>
 		<mat-icon svgIcon="search" matPrefix />
-		@if (inputLabelKey?.length > 0) {
-			<mat-label>{{ inputLabelKey | translate }}</mat-label>
+		@if (inputLabelKey().length > 0) {
+			<mat-label>{{ inputLabelKey() | translate }}</mat-label>
 		}
 		<input
 			(blur)="onModelTouched()"
@@ -88,9 +88,9 @@
 			</mat-option>
 		}
 	</ng-template>
-	@if (noResultKey?.length > 0) {
+	@if (noResultKey().length > 0) {
 		@if ((filteredOptions$ | async)?.length === 0) {
-			<mat-option>{{ noResultKey | translate }}</mat-option>
+			<mat-option>{{ noResultKey() | translate }}</mat-option>
 		}
 	}
 </mat-autocomplete>

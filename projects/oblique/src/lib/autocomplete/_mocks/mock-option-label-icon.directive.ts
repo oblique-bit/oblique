@@ -1,4 +1,5 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
+import {ObEIcon} from '../../icon/icon.model';
 import {OptionLabelIconPosition} from '../autocomplete.model';
 
 /**
@@ -8,6 +9,6 @@ import {OptionLabelIconPosition} from '../autocomplete.model';
 	selector: '[obOptionLabelIcon]',
 })
 export class ObMockOptionLabelIconDirective {
-	@Input() optionLabelIconName?: string;
-	@Input() iconPosition: OptionLabelIconPosition = 'end';
+	readonly iconName = input<ObEIcon>();
+	readonly iconPosition = input<OptionLabelIconPosition>('end');
 }
