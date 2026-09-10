@@ -1,0 +1,121 @@
+/**
+ * rename-text-styles.js — cosmetic prefix rename for local Figma TEXT STYLES
+ * ----------------------------------------------------------------------------
+ * WHY: Figma text style names come straight from the token path Token Studio
+ * pushed them under (dots -> "/", leading "ob." stripped). Some of those paths
+ * are structurally necessary in the JSON but noisy for a Figma user picking a
+ * style — e.g. the typography "authoring" composites currently push as
+ * "s/typography/grouped/static/..." because that is where the token lives in
+ * src/lib/themes/, not because a designer needs to see "s/typography/grouped".
+ * Same pattern already used for the compiled-tier color variables, which trim
+ * the "ob/s/" prefix for panel usability — this is the text-style equivalent.
+ *
+ * WHAT IT DOES: renames local TEXT STYLES whose name starts with a configured
+ * prefix, replacing that prefix and leaving the rest of the name untouched.
+ * It never touches the underlying token JSON, the CSS build, or variables —
+ * purely a Figma-side display name. Safe to re-run: a style already on its
+ * target name is a no-op.
+ *
+ * HOW TO RUN — two equivalent ways:
+ *
+ *  A) figma-ds-cli:  figma-ds-cli eval -f rename-text-styles.js
+ *  B) By hand: paste into the Desktop Bridge plugin console.
+ *
+ * CONFIGURE the CONFIG block below, then run. Start with mode 'scan'.
+ * ----------------------------------------------------------------------------
+ */
+
+(async () => {
+  // ====================== CONFIG — edit this block ==========================
+  const CONFIG = {
+    // 'scan'   -> report only, change nothing (ALWAYS run this first)
+    // 'rename' -> apply the matched renames
+    mode: 'scan',
+
+    // Safety: refuse to run unless the open file has this key. null = any file.
+    // Read the key from the file URL: figma.com/design/<KEY>/<name>
+    fileKeyGuard: null,
+
+    // Ordered prefix-rename rules. First matching rule wins per style.
+    // Verify the "from" prefix against the real style name in the Figma
+    // panel before running 'rename' — this is a literal string match, not a
+    // token-path guess.
+    renames: [
+      { from: 's/typography/grouped/static/', to: 'authoring/static/' },
+      { from: 's/typography/grouped/dynamic/', to: 'authoring/dynamic/' },
+      // Heading/body "h/" wrapper flatten — confirm the real prefix in the
+      // panel first (may be "h/heading/" / "h/body/" or "html/heading/" /
+      // "html/body/" depending on how Token Studio resolved the path), then
+      // uncomment:
+      // { from: 'h/heading/', to: 'heading/' },
+      // { from: 'h/body/', to: 'body/' },
+    ],
+  };
+  // ==========================================================================
+
+  if (CONFIG.fileKeyGuard && figma.fileKey !== CONFIG.fileKeyGuard) {
+    return JSON.stringify({
+      ok: false,
+      reason: 'FILE KEY GUARD — refusing to run',
+      expected: CONFIG.fileKeyGuard,
+      open: { fileKey: figma.fileKey, name: figma.root.name },
+    }, null, 2);
+  }
+
+  const styles = await figma.getLocalTextStylesAsync();
+  const byName = new Map(styles.map((s) => [s.name, s]));
+
+  const matchRule = (name) => CONFIG.renames.find((r) => name.startsWith(r.from));
+
+  const plan = [];
+  const noop = [];
+  const collisions = [];
+
+  for (const s of styles) {
+    const rule = matchRule(s.name);
+    if (!rule) continue;
+    const newName = rule.to + s.name.slice(rule.from.length);
+    if (newName === s.name) {
+      noop.push(s.name);
+      continue;
+    }
+    const existing = byName.get(newName);
+    if (existing && existing.id !== s.id) {
+      collisions.push({ from: s.name, to: newName, why: 'a style already has the target name' });
+      continue;
+    }
+    plan.push({ id: s.id, from: s.name, to: newName });
+  }
+
+  const report = {
+    ok: true,
+    mode: CONFIG.mode,
+    file: { name: figma.root.name, fileKey: figma.fileKey },
+    localTextStyles: styles.length,
+    planned: plan.length,
+    alreadyOnTarget: noop.length,
+    collisions,
+    plan,
+    renamed: 0,
+    failed: [],
+  };
+
+  // --- apply ---------------------------------------------------------------
+  if (CONFIG.mode === 'rename') {
+    for (const p of plan) {
+      try {
+        const s = await figma.getStyleByIdAsync(p.id);
+        if (!s) { report.failed.push({ ...p, err: 'style vanished mid-run' }); continue; }
+        s.name = p.to;
+        report.renamed++;
+      } catch (e) {
+        report.failed.push({ from: p.from, to: p.to, err: String(e) });
+      }
+    }
+    // Rollback data: every original name, so the run can be reversed.
+    report.rollback = plan.map((p) => ({ id: p.id, restoreTo: p.from }));
+  }
+
+  console.log('[rename-text-styles]', JSON.stringify(report, null, 2));
+  return JSON.stringify(report, null, 2);
+})()

@@ -52,6 +52,25 @@ picker entry disappears.
   `setBoundVariable` throws for paints). Per-range text fills (`figma.mixed`)
   can't be cleared this way — the report counts them as `skippedMixedPaint`.
 
+## rename-text-styles.js — cosmetic prefix rename for local text styles
+
+**The problem.** A Figma text style's name comes straight from the token
+path it was pushed under, dots turned into "/". That path is right for the
+JSON but noisy for a designer picking a style in the panel — folders like
+"s/typography/grouped/" exist for the token tree, not for Figma users.
+
+**The fix.** Run `rename-text-styles.js`:
+
+1. Edit the `CONFIG.renames` array — each rule is `{from, to}`, a literal
+   prefix replacement. Verify the `from` prefix against the real style name
+   in the Figma panel first; this is a string match, not a token-path guess.
+2. Run with `mode: 'scan'` first — reports every planned rename and any name
+   collisions, changes nothing.
+3. Re-run with `mode: 'rename'` to apply.
+
+Never touches the token JSON, the CSS build, or variables — text style names
+only. A style already on its target name is a no-op, so it is safe to re-run.
+
 ## scope-variables.js — set scopes and hiddenFromPublishing in bulk
 
 **The problem.** A variable appears in a picker it should not (e.g. `ob/s1/*`
