@@ -537,11 +537,33 @@ async function buildHeader() {
   return components.headerRow.createInstance();
 }
 
+// The Figma style name is a display name, not the token path — since the
+// authoring/heading/body cosmetic renames, they diverge on purpose (see
+// figma-utils/rename-text-styles.js). Reconstruct the real JSON path from
+// the table's registry spec.stylePrefix (what the style name starts with)
+// and spec.subtitle (the real path prefix that replaces it), same fix
+// already applied to the color docs builders (build-color-variables.js,
+// build-color-pairings.js) for the same reason.
+function realTokenPath(style, spec) {
+  const prefix = (spec && spec.stylePrefix) || '';
+  const rest = style.name.startsWith(prefix) ? style.name.slice(prefix.length) : style.name;
+  return ((spec && spec.subtitle) || '') + '.' + rest.replace(/\\//g, '.');
+}
+
+// Inverse of realTokenPath — given the token path text a row displays,
+// reconstruct the figma style name it should match. Used by validation,
+// which only has the row's displayed text, not the original style object.
+function figmaNameFromTokenPath(tokenPath, spec) {
+  const subtitlePrefix = ((spec && spec.subtitle) || '') + '.';
+  const rest = tokenPath.startsWith(subtitlePrefix) ? tokenPath.slice(subtitlePrefix.length) : tokenPath;
+  return ((spec && spec.stylePrefix) || '') + rest.replace(/\\./g, '/');
+}
+
 // ── row building ───────────────────────────────────────────────────────────
-async function buildRow(style) {
+async function buildRow(style, spec) {
   if (!components.row) return null;
   const inst = components.row.createInstance();
-  const tokenPath = style.name.replace(/\\//g, '.');
+  const tokenPath = realTokenPath(style, spec);
   const nameNode = findFirstText(findChild(inst, 'Cell: Token Name'));
   const familyNode = findFirstText(findChild(inst, 'Cell: Family'));
   const weightNode = findFirstText(findChild(inst, 'Cell: Weight'));
@@ -559,13 +581,15 @@ async function buildRow(style) {
   if (lsNode)     await setText(lsNode, fmtLetterSpacing(style.letterSpacing));
   if (descNode)  await setText(descNode, style.description || '');
 
-  // Specimen: load font, then apply the text style + set sample text = style name
+  // Specimen: load font, then apply the text style + set sample text = the
+  // real token path (not the figma style name — they diverge on purpose,
+  // see the realTokenPath comment above).
   if (specimenNode && style.fontName && style.fontName !== figma.mixed) {
     try {
       await figma.loadFontAsync(style.fontName);
     } catch (e) { L('font load failed for ' + style.name + ': ' + e.message); }
     try {
-      specimenNode.characters = style.name;
+      specimenNode.characters = tokenPath;
       await specimenNode.setTextStyleIdAsync(style.id);
     } catch (e) {
       // Fallback: explicitly mirror the style props onto the specimen
@@ -574,7 +598,7 @@ async function buildRow(style) {
         specimenNode.fontSize = style.fontSize;
         if (style.lineHeight && style.lineHeight !== figma.mixed) specimenNode.lineHeight = style.lineHeight;
         if (style.letterSpacing && style.letterSpacing !== figma.mixed) specimenNode.letterSpacing = style.letterSpacing;
-        specimenNode.characters = style.name;
+        specimenNode.characters = tokenPath;
       } catch (e2) { L('specimen fallback failed for ' + style.name + ': ' + e2.message); }
     }
   }
@@ -660,9 +684,9 @@ async function buildTable(page, spec) {
   const rowByPath = new Map(existing);
   let rowsBuilt = 0;
   for (const s of styles) {
-    const tokenPath = s.name.replace(/\\//g, '.');
+    const tokenPath = realTokenPath(s, spec);
     if (existing.has(tokenPath)) continue;
-    const r = await buildRow(s);
+    const r = await buildRow(s, spec);
     if (r && r.instance) {
       table.appendChild(r.instance);
       stretch(r.instance);
@@ -678,7 +702,7 @@ async function buildTable(page, spec) {
   const groupRows = new Map();
   for (const s of styles) {
     const key = groupKey(s.name, spec);
-    const tokenPath = s.name.replace(/\\//g, '.');
+    const tokenPath = realTokenPath(s, spec);
     const row = rowByPath.get(tokenPath);
     if (!row) continue;
     const bucket = key == null ? '__nogroup__' : key;
@@ -735,7 +759,7 @@ async function buildTable(page, spec) {
   groupOrder.length = 0;
   for (const s of styles) {
     const key = groupKey(s.name, spec);
-    const tokenPath = s.name.replace(/\\//g, '.');
+    const tokenPath = realTokenPath(s, spec);
     const row = rowByPath.get(tokenPath);
     if (!row) continue;
     const bucket = key == null ? '__nogroup__' : key;
@@ -817,7 +841,7 @@ async function validatePage(page) {
         const nameText = nameNode ? String(nameNode.characters || '').trim() : '';
         const descText = descNode ? String(descNode.characters || '').trim() : '';
         if (!nameText) { errors.push({ code: 'EMPTY', id: tag, msg: 'row token name empty' }); continue; }
-        const styleName = nameText.replace(/\\./g, '/');
+        const styleName = figmaNameFromTokenPath(nameText, spec);
         const s = allStyles.find(x => x.name === styleName);
         if (!s) { warnings.push({ code: 'STYLE', id: tag, token: nameText, msg: 'no matching text style' }); continue; }
         if (descCell && descText !== (s.description || '')) {
