@@ -306,7 +306,7 @@ async function deprecateOldScratchPages(basePageName, currentPageId) {
 
 const TABLE_WIDTH = 2280;
 const WRAPPER_NAME = 'Typography Tables';
-const WRAPPER_GAP  = 96;
+const WRAPPER_GAP  = 192;
 const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
 
 let _bgVar = undefined;
