@@ -51,7 +51,10 @@
  * ----------------------------------------------------------------------------
  */
 
-(async () => {
+// Top-level "return" lets `figma-ds-cli run` receive the report. When pasted
+// into the FigCli plugin console by hand, the "return" is silently ignored
+// and the IIFE still runs its side effects and logs via console.log.
+return (async () => {
 	// ====================== CONFIG — edit this block ==========================
 	const CONFIG = {
 		// 'scan'  -> report only, change nothing (ALWAYS run this first)
