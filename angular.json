@@ -392,18 +392,30 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "config": "jest.config.js",
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/service-navigation-web-component/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts"],
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageThresholds": {
+              "perFile": true,
+              "lines": 100,
+              "functions": 100,
+              "branches": 100,
+              "statements": 98
+            },
+            "coverageInclude": ["projects/service-navigation-web-component/src/app/**/*.ts"],
+            "coverageExclude": ["**/*.spec.ts", "projects/service-navigation-web-component/src/app/**/*.model.ts"]
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": false
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/service-navigation-web-component/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"
