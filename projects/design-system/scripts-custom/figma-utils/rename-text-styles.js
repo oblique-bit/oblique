@@ -4,11 +4,21 @@
  * WHY: Figma text style names come straight from the token path Token Studio
  * pushed them under (dots -> "/", leading "ob." stripped). Some of those paths
  * are structurally necessary in the JSON but noisy for a Figma user picking a
- * style — e.g. the typography "authoring" composites currently push as
- * "s/typography/grouped/static/..." because that is where the token lives in
- * src/lib/themes/, not because a designer needs to see "s/typography/grouped".
- * Same pattern already used for the compiled-tier color variables, which trim
- * the "ob/s/" prefix for panel usability — this is the text-style equivalent.
+ * style. Same pattern already used for the compiled-tier color variables,
+ * which trim the "ob/s/" prefix for panel usability — this is the text-style
+ * equivalent.
+ *
+ * CAUTION — this only stays stable across re-exports if the underlying token
+ * PATH does not change again. Token Studio matches styles by name derived
+ * from the current path; the first time this ran against the typography
+ * "authoring" composites (then at "ob.s.typography.grouped.*"), every
+ * re-export from Token Studio silently recreated the old-named style
+ * alongside the renamed one, because the token path itself had just changed
+ * and the ref map no longer matched. The fix there was to shorten the token
+ * path itself (now "ob.s.authoring.*") so no cosmetic rename is needed at
+ * all. Reach for a JSON path rename over this script whenever the token path
+ * was touched in the same round — use this script only for a name that is
+ * purely presentational and the underlying path is otherwise stable.
  *
  * WHAT IT DOES: renames local TEXT STYLES whose name starts with a configured
  * prefix, replacing that prefix and leaving the rest of the name untouched.
@@ -39,15 +49,16 @@
     // Ordered prefix-rename rules. First matching rule wins per style.
     // Verify the "from" prefix against the real style name in the Figma
     // panel before running 'rename' — this is a literal string match, not a
-    // token-path guess. The two rule sets below are both confirmed against
-    // the real panel (2026-09-10): the grouped composites push as
-    // "s/typography/grouped/..." (not "ob.s..." — Token Studio strips "ob."
-    // only), and the html heading/body styles push as "html/heading/..." and
-    // "html/body/..." (not "h/..." — that shorter prefix was the now-removed
-    // "h/link/..." duplicate).
+    // token-path guess.
+    //
+    // The typography "authoring" composites no longer need a rule here — the
+    // token path itself is short now ("ob.s.authoring.*"), so Token Studio
+    // already pushes the right name. The rule below is confirmed against the
+    // real panel (2026-09-10): html heading/body styles push as
+    // "html/heading/..." and "html/body/..." (not "h/..." — that shorter
+    // prefix was the now-removed "h/link/..." duplicate), and that token path
+    // has been stable since, so this cosmetic rename is safe to keep.
     renames: [
-      { from: 's/typography/grouped/static/', to: 'authoring/static/' },
-      { from: 's/typography/grouped/dynamic/', to: 'authoring/dynamic/' },
       { from: 'html/heading/', to: 'heading/' },
       { from: 'html/body/', to: 'body/' },
     ],
