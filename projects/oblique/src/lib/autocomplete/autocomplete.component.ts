@@ -82,14 +82,14 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 export class ObAutocompleteComponent<T = string>
 	implements OnChanges, ControlValueAccessor, OnDestroy, AfterViewInit, DoCheck
 {
-	withErrorMessages = input(false, {transform: booleanAttribute});
+	readonly withErrorMessages = input(false, {transform: booleanAttribute});
 	@Input() inputLabelKey = 'i18n.oblique.search.title';
 	@Input() noResultKey = 'i18n.oblique.search.no-results';
 	readonly autocompleteOptions = input<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>([]);
 	readonly filterRegexFlag = input('gi');
 	readonly highlightCssClass = input('ob-highlight-text');
 	readonly optionIconPosition = input<OptionLabelIconPosition>('end');
-	displayWith = input<(value: any) => string>(value => value);
+	readonly displayWith = input<(value: any) => string>(value => value);
 
 	readonly selectedOptionChange = output<ObIAutocompleteInputOption<T>>();
 	autocompleteInputControl = new FormControl<T | string>('', {updateOn: 'change'});

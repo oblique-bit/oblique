@@ -12,7 +12,7 @@ import {ObEIcon} from '../../icon/icon.model';
 export class ObOptionLabelIconDirective implements OnChanges {
 	@Input() iconName?: ObEIcon;
 	@Input() iconPosition: OptionLabelIconPosition = 'end';
-	ariaLabel = input<string | undefined>();
+	readonly ariaLabel = input<string | undefined>();
 
 	private readonly host: HTMLElement;
 	private iconSpan: HTMLSpanElement;
