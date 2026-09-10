@@ -51,17 +51,15 @@
     // panel before running 'rename' — this is a literal string match, not a
     // token-path guess.
     //
-    // The typography "authoring" composites no longer need a rule here — the
-    // token path itself is short now ("ob.s.authoring.*"), so Token Studio
-    // already pushes the right name. The rule below is confirmed against the
-    // real panel (2026-09-10): html heading/body styles push as
-    // "html/heading/..." and "html/body/..." (not "h/..." — that shorter
-    // prefix was the now-removed "h/link/..." duplicate), and that token path
-    // has been stable since, so this cosmetic rename is safe to keep.
-    renames: [
-      { from: 'html/heading/', to: 'heading/' },
-      { from: 'html/body/', to: 'body/' },
-    ],
+    // Empty for now (2026-09-10) — both known messes (the typography
+    // "authoring" composites and the heading/body styles) were fixed by
+    // shortening the token path itself instead of a cosmetic rename here, so
+    // Token Studio already pushes the names a figma user needs: "s/authoring/
+    // *" and "h/heading/*" / "h/body/*". Add a rule here only for a rename
+    // that is purely presentational, with the underlying token path
+    // otherwise stable — see the CAUTION note above for why that condition
+    // matters.
+    renames: [],
   };
   // ==========================================================================
 
