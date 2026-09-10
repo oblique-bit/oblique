@@ -19,7 +19,7 @@
       "variant": "s",
       "badges": ["consumer"],
       "columns": ["interface", "prose"],
-      "purpose": "Text styles for common page content: headings and body / paragraph styles. All consume the typography_context variable — set the frame's mode to switch interface ↔ prose.",
+      "purpose": "Text styles for common page content: headings and body / paragraph styles. All consume the typography_context variable — set the frame's mode to switch between interface and prose.",
       "guideline": "Pair semantically with HTML elements (h1–h6, p, a). To compare interface vs prose, set the typography_context mode on each table frame manually in Figma."
     },
     "authoring": {
@@ -43,7 +43,7 @@
         "tier": "H",
         "title": "Headings",
         "purpose": "Heading text styles (H1–H6) for HTML document contexts. Switches between `interface` and `prose` typography contexts.",
-        "guideline": "Pair semantically with HTML <h1>…<h6> elements. Heading scale comes from typography_context — set the parent's context mode to switch interface ↔ prose."
+        "guideline": "Pair semantically with HTML <h1>…<h6> elements. Heading scale comes from typography_context — set the parent's context mode to switch between interface and prose."
       },
       "stylePrefix": "heading/",
       "subtitle": "ob.h.heading",
