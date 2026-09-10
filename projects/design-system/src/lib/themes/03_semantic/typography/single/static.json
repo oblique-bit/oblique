@@ -7,362 +7,364 @@
             "$type": "other",
             "$value": "Typography foundation — every text-related token in the system. Covers font families, font weights, font sizes, line heights, paragraph spacing, letter spacing and text-decoration / text-case / text-align. Composite text styles (Figma styles) are built by combining tokens from these sub-families."
           }
-        }
-      },
-      "static": {
-        "token_family_docs": {
-          "description": {
-            "$type": "other",
-            "$value": "Size-mode-independent individual typography tokens."
-          }
         },
-        "font_size": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Static font-size scale (xs → 5xl + base) — single-mode font sizes that do not change with ui_scale."
-            }
-          },
-          "xs": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.100}"
-          },
-          "sm": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.200}"
-          },
-          "md": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.300}"
-          },
-          "lg": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.400}"
-          },
-          "xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.500}",
-            "$description": "Inserted step — aligns H3 (interface context) with the current production font-size. Sits between lg and the renumbered 2xl."
-          },
-          "2xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.600}"
-          },
-          "3xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.700}"
-          },
-          "4xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.800}"
-          },
-          "5xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.900}"
-          },
-          "6xl": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.1000}"
-          },
-          "base": {
-            "$type": "fontSizes",
-            "$value": "{ob.p.font_size_rem.300}"
-          }
-        },
-        "line_height": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Static line-height scale paired with the static font-size scale — single-mode line heights for body and heading sizes."
-            }
-          },
-          "xs": {
-            "$type": "lineHeights",
-            "$value": "{ob.p.line_height_rem.300}"
-          },
-          "sm": {
-            "$type": "lineHeights",
-            "$value": "{ob.p.line_height_rem.400}"
-          },
-          "md": {
-            "$type": "lineHeights",
-            "$value": "{ob.p.line_height_rem.500}"
-          },
-          "lg": {
-            "$type": "lineHeights",
-            "$value": "{ob.p.line_height_rem.600}"
-          },
-          "2xl": {
-            "$type": "lineHeights",
-            "$value": "{ob.p.line_height_rem.800}"
-          },
-          "3xl": {
-            "$type": "lineHeights",
-            "$value": "{ob.p.line_height_rem.1100}"
-          },
-          "4xl": {
-            "$type": "lineHeights",
-            "$value": "{ob.p.line_height_rem.1300}"
-          },
-          "5xl": {
-            "$type": "lineHeights",
-            "$value": "{ob.p.line_height_rem.1400}"
-          }
-        },
-        "paragraph_spacing": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Static paragraph-spacing scale — vertical gap between paragraphs in static contexts. Derived as half the matching line-height."
-            }
-          },
-          "none": {
-            "$type": "paragraphSpacing",
-            "$value": "{ob.p.paragraph_spacing_rem.0}"
-          },
-          "xs": {
-            "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.line_height.xs} / 2"
-          },
-          "sm": {
-            "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.line_height.sm} / 2"
-          },
-          "md": {
-            "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.line_height.md} / 2"
-          },
-          "lg": {
-            "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.line_height.lg} / 2"
-          },
-          "2xl": {
-            "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.line_height.2xl} / 2"
-          },
-          "3xl": {
-            "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.line_height.3xl} / 2"
-          },
-          "4xl": {
-            "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.line_height.4xl} / 2"
-          },
-          "5xl": {
-            "$type": "paragraphSpacing",
-            "$value": "{ob.s.static.line_height.5xl} / 2"
-          }
-        },
-        "spacing": {
-          "heading": {
-            "top": {
-              "$type": "spacing",
-              "$value": "{ob.s.dimension.static.ui_scale.none.px}",
-              "$description": "Standard spacing above H1 is none to use vertical space."
+        "scale": {
+          "static": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Size-mode-independent individual typography tokens."
+              }
             },
-            "top_after_p": {
-              "$type": "spacing",
-              "$value": "{ob.s.dimension.static.ui_scale.container.md.px}",
-              "$description": "SPecial spacing above H1 after a paragraph"
+            "font_size": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Static font-size scale (xs → 5xl + base) — single-mode font sizes that do not change with ui_scale."
+                }
+              },
+              "xs": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.100}"
+              },
+              "sm": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.200}"
+              },
+              "md": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.300}"
+              },
+              "lg": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.400}"
+              },
+              "xl": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.500}",
+                "$description": "Inserted step — aligns H3 (interface context) with the current production font-size. Sits between lg and the renumbered 2xl."
+              },
+              "2xl": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.600}"
+              },
+              "3xl": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.700}"
+              },
+              "4xl": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.800}"
+              },
+              "5xl": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.900}"
+              },
+              "6xl": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.1000}"
+              },
+              "base": {
+                "$type": "fontSizes",
+                "$value": "{ob.p.font_size_rem.300}"
+              }
             },
-            "bottom": {
-              "$type": "spacing",
-              "$value": "{ob.s.dimension.static.ui_scale.element.md.px}"
-            }
-          },
-          "paragraph": {
-            "bottom": {
-              "$type": "spacing",
-              "$value": "{ob.s.dimension.static.ui_scale.spacing.xl.rem}"
-            }
-          }
-        },
-        "font_family": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Font family tokens — semantic roles (body, heading, code) mapped to primitive font families. Switch the primitive to rebrand without touching every consumer."
-            }
-          },
-          "body": {
-            "$type": "fontFamilies",
-            "$value": "{ob.p.font_family.sans}",
-            "$description": "Font of the Oblique Design System"
-          },
-          "heading": {
-            "$type": "fontFamilies",
-            "$value": "{ob.p.font_family.sans}",
-            "$description": "Font of the Oblique Design System"
-          },
-          "code": {
-            "$type": "fontFamilies",
-            "$value": "{ob.p.font_family.mono}",
-            "$description": "For code and design system figma documentation."
-          }
-        },
-        "font_weight": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Font weight tokens — semantic names (regular, medium, semiBold, bold, extraBold) mapped to numeric weights (400 / 500 / 600 / 700 / 800)."
-            }
-          },
-          "regular": {
-            "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.400}"
-          },
-          "medium": {
-            "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.500}"
-          },
-          "semiBold": {
-            "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.600}"
-          },
-          "bold": {
-            "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.700}"
-          },
-          "extraBold": {
-            "$type": "fontWeights",
-            "$value": "{ob.p.font_weight.800}"
-          }
-        },
-        "text_decoration": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Text decoration tokens — primarily for links. Default has an underline; low-emphasis variants drop the underline."
-            }
-          },
-          "link": {
-            "emphasis_high": {
-              "$type": "textDecoration",
-              "$value": "{ob.p.text_decoration.underline}",
-              "$description": "Standard text-link has an underline."
+            "line_height": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Static line-height scale paired with the static font-size scale — single-mode line heights for body and heading sizes."
+                }
+              },
+              "xs": {
+                "$type": "lineHeights",
+                "$value": "{ob.p.line_height_rem.300}"
+              },
+              "sm": {
+                "$type": "lineHeights",
+                "$value": "{ob.p.line_height_rem.400}"
+              },
+              "md": {
+                "$type": "lineHeights",
+                "$value": "{ob.p.line_height_rem.500}"
+              },
+              "lg": {
+                "$type": "lineHeights",
+                "$value": "{ob.p.line_height_rem.600}"
+              },
+              "2xl": {
+                "$type": "lineHeights",
+                "$value": "{ob.p.line_height_rem.800}"
+              },
+              "3xl": {
+                "$type": "lineHeights",
+                "$value": "{ob.p.line_height_rem.1100}"
+              },
+              "4xl": {
+                "$type": "lineHeights",
+                "$value": "{ob.p.line_height_rem.1300}"
+              },
+              "5xl": {
+                "$type": "lineHeights",
+                "$value": "{ob.p.line_height_rem.1400}"
+              }
             },
-            "emphasis_low": {
-              "$type": "textDecoration",
-              "$value": "{ob.p.text_decoration.none}",
-              "$description": "Use where it is obvious that it is link and no need for additional typographical emphasis such as underline."
+            "paragraph_spacing": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Static paragraph-spacing scale — vertical gap between paragraphs in static contexts. Derived as half the matching line-height."
+                }
+              },
+              "none": {
+                "$type": "paragraphSpacing",
+                "$value": "{ob.p.paragraph_spacing_rem.0}"
+              },
+              "xs": {
+                "$type": "paragraphSpacing",
+                "$value": "{ob.s.typography.scale.static.line_height.xs} / 2"
+              },
+              "sm": {
+                "$type": "paragraphSpacing",
+                "$value": "{ob.s.typography.scale.static.line_height.sm} / 2"
+              },
+              "md": {
+                "$type": "paragraphSpacing",
+                "$value": "{ob.s.typography.scale.static.line_height.md} / 2"
+              },
+              "lg": {
+                "$type": "paragraphSpacing",
+                "$value": "{ob.s.typography.scale.static.line_height.lg} / 2"
+              },
+              "2xl": {
+                "$type": "paragraphSpacing",
+                "$value": "{ob.s.typography.scale.static.line_height.2xl} / 2"
+              },
+              "3xl": {
+                "$type": "paragraphSpacing",
+                "$value": "{ob.s.typography.scale.static.line_height.3xl} / 2"
+              },
+              "4xl": {
+                "$type": "paragraphSpacing",
+                "$value": "{ob.s.typography.scale.static.line_height.4xl} / 2"
+              },
+              "5xl": {
+                "$type": "paragraphSpacing",
+                "$value": "{ob.s.typography.scale.static.line_height.5xl} / 2"
+              }
+            },
+            "spacing": {
+              "heading": {
+                "top": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.static.ui_scale.none.px}",
+                  "$description": "Standard spacing above H1 is none to use vertical space."
+                },
+                "top_after_p": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.static.ui_scale.container.md.px}",
+                  "$description": "SPecial spacing above H1 after a paragraph"
+                },
+                "bottom": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.static.ui_scale.element.md.px}"
+                }
+              },
+              "paragraph": {
+                "bottom": {
+                  "$type": "spacing",
+                  "$value": "{ob.s.dimension.static.ui_scale.spacing.xl.rem}"
+                }
+              }
+            },
+            "font_family": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Font family tokens — semantic roles (body, heading, code) mapped to primitive font families. Switch the primitive to rebrand without touching every consumer."
+                }
+              },
+              "body": {
+                "$type": "fontFamilies",
+                "$value": "{ob.p.font_family.sans}",
+                "$description": "Font of the Oblique Design System"
+              },
+              "heading": {
+                "$type": "fontFamilies",
+                "$value": "{ob.p.font_family.sans}",
+                "$description": "Font of the Oblique Design System"
+              },
+              "code": {
+                "$type": "fontFamilies",
+                "$value": "{ob.p.font_family.mono}",
+                "$description": "For code and design system figma documentation."
+              }
+            },
+            "font_weight": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Font weight tokens — semantic names (regular, medium, semiBold, bold, extraBold) mapped to numeric weights (400 / 500 / 600 / 700 / 800)."
+                }
+              },
+              "regular": {
+                "$type": "fontWeights",
+                "$value": "{ob.p.font_weight.400}"
+              },
+              "medium": {
+                "$type": "fontWeights",
+                "$value": "{ob.p.font_weight.500}"
+              },
+              "semiBold": {
+                "$type": "fontWeights",
+                "$value": "{ob.p.font_weight.600}"
+              },
+              "bold": {
+                "$type": "fontWeights",
+                "$value": "{ob.p.font_weight.700}"
+              },
+              "extraBold": {
+                "$type": "fontWeights",
+                "$value": "{ob.p.font_weight.800}"
+              }
+            },
+            "text_decoration": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Text decoration tokens — primarily for links. Default has an underline; low-emphasis variants drop the underline."
+                }
+              },
+              "link": {
+                "emphasis_high": {
+                  "$type": "textDecoration",
+                  "$value": "{ob.p.text_decoration.underline}",
+                  "$description": "Standard text-link has an underline."
+                },
+                "emphasis_low": {
+                  "$type": "textDecoration",
+                  "$value": "{ob.p.text_decoration.none}",
+                  "$description": "Use where it is obvious that it is link and no need for additional typographical emphasis such as underline."
+                }
+              }
+            },
+            "text_case": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Text case tokens — controls letter casing transforms (none, uppercase, lowercase, capitalize). Use for label semantics; respect content casing for prose."
+                }
+              },
+              "none": {
+                "$type": "textCase",
+                "$value": "{ob.p.text_case.none}",
+                "$description": "No text transformation applied."
+              },
+              "uppercase": {
+                "$type": "textCase",
+                "$value": "{ob.p.text_case.uppercase}",
+                "$description": "Transform text to uppercase."
+              },
+              "lowercase": {
+                "$type": "textCase",
+                "$value": "{ob.p.text_case.lowercase}",
+                "$description": "Transform text to lowercase."
+              },
+              "capitalize": {
+                "$type": "textCase",
+                "$value": "{ob.p.text_case.capitalize}",
+                "$description": "Capitalize first letter of each word."
+              }
+            },
+            "letter_spacing_rem": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Letter spacing (rem) — tracking values authored in rem. Rem-based tracking scales with root font-size."
+                }
+              },
+              "superNarrow": {
+                "$type": "letterSpacing",
+                "$value": "-0.03rem",
+                "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+              },
+              "narrower": {
+                "$type": "letterSpacing",
+                "$value": "-0.01rem",
+                "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+              },
+              "narrow": {
+                "$type": "letterSpacing",
+                "$value": "0.005rem",
+                "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+              },
+              "normal": {
+                "$type": "letterSpacing",
+                "$value": "auto",
+                "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+              },
+              "wide": {
+                "$type": "letterSpacing",
+                "$value": "0.5%",
+                "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+              }
+            },
+            "letter_spacing_px": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Letter spacing (px) — tracking values authored in px. Use where absolute tracking matters (e.g. small caps, all-caps labels)."
+                }
+              },
+              "superNarrow": {
+                "$type": "letterSpacing",
+                "$value": "{ob.p.letter_spacing_px.neg_150}",
+                "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
+              },
+              "narrower": {
+                "$type": "letterSpacing",
+                "$value": "{ob.p.letter_spacing_px.neg_100}",
+                "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
+              },
+              "narrow": {
+                "$type": "letterSpacing",
+                "$value": "{ob.p.letter_spacing_px.neg_50}",
+                "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
+              },
+              "normal": {
+                "$type": "letterSpacing",
+                "$value": "{ob.p.letter_spacing_px.0}",
+                "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
+              },
+              "wide": {
+                "$type": "letterSpacing",
+                "$value": "{ob.p.letter_spacing_px.50}",
+                "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
+              }
+            },
+            "text_align": {
+              "token_family_docs": {
+                "description": {
+                  "$type": "other",
+                  "$value": "Text alignment tokens — left / center / right. Drives the horizontal alignment of text within its containing block."
+                }
+              },
+              "left": {
+                "$type": "textAlign",
+                "$value": "left",
+                "$description": "Left text alignment - standard for body text and left-aligned content"
+              },
+              "center": {
+                "$type": "textAlign",
+                "$value": "center",
+                "$description": "Center text alignment - used for buttons, headings, and centered content"
+              },
+              "right": {
+                "$type": "textAlign",
+                "$value": "right",
+                "$description": "Right text alignment - used for numerical values, right-aligned content"
+              }
             }
-          }
-        },
-        "text_case": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Text case tokens — controls letter casing transforms (none, uppercase, lowercase, capitalize). Use for label semantics; respect content casing for prose."
-            }
-          },
-          "none": {
-            "$type": "textCase",
-            "$value": "{ob.p.text_case.none}",
-            "$description": "No text transformation applied."
-          },
-          "uppercase": {
-            "$type": "textCase",
-            "$value": "{ob.p.text_case.uppercase}",
-            "$description": "Transform text to uppercase."
-          },
-          "lowercase": {
-            "$type": "textCase",
-            "$value": "{ob.p.text_case.lowercase}",
-            "$description": "Transform text to lowercase."
-          },
-          "capitalize": {
-            "$type": "textCase",
-            "$value": "{ob.p.text_case.capitalize}",
-            "$description": "Capitalize first letter of each word."
-          }
-        },
-        "letter_spacing_rem": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Letter spacing (rem) — tracking values authored in rem. Rem-based tracking scales with root font-size."
-            }
-          },
-          "superNarrow": {
-            "$type": "letterSpacing",
-            "$value": "-0.03rem",
-            "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-          },
-          "narrower": {
-            "$type": "letterSpacing",
-            "$value": "-0.01rem",
-            "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
-          },
-          "narrow": {
-            "$type": "letterSpacing",
-            "$value": "0.005rem",
-            "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
-          },
-          "normal": {
-            "$type": "letterSpacing",
-            "$value": "auto",
-            "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
-          },
-          "wide": {
-            "$type": "letterSpacing",
-            "$value": "0.5%",
-            "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
-          }
-        },
-        "letter_spacing_px": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Letter spacing (px) — tracking values authored in px. Use where absolute tracking matters (e.g. small caps, all-caps labels)."
-            }
-          },
-          "superNarrow": {
-            "$type": "letterSpacing",
-            "$value": "{ob.p.letter_spacing_px.neg_150}",
-            "$description": "For font sizes 4xl, 5xl, 6xl for a more compact visual appearance. \nHas to be convertered to em!"
-          },
-          "narrower": {
-            "$type": "letterSpacing",
-            "$value": "{ob.p.letter_spacing_px.neg_100}",
-            "$description": "For font size 3x for a more compact visual appearance.\nHas to be convertered to em!"
-          },
-          "narrow": {
-            "$type": "letterSpacing",
-            "$value": "{ob.p.letter_spacing_px.neg_50}",
-            "$description": "For font sizes 2xl for a more compact visual appearance.\nHas to be convertered to em!\n"
-          },
-          "normal": {
-            "$type": "letterSpacing",
-            "$value": "{ob.p.letter_spacing_px.0}",
-            "$description": "Default letter spacing for body and labels.\nHas to be convertered to em!"
-          },
-          "wide": {
-            "$type": "letterSpacing",
-            "$value": "{ob.p.letter_spacing_px.50}",
-            "$description": "For buttons for a more confortable visual appearance\nHas to be convertered to em!"
-          }
-        },
-        "text_align": {
-          "token_family_docs": {
-            "description": {
-              "$type": "other",
-              "$value": "Text alignment tokens — left / center / right. Drives the horizontal alignment of text within its containing block."
-            }
-          },
-          "left": {
-            "$type": "textAlign",
-            "$value": "left",
-            "$description": "Left text alignment - standard for body text and left-aligned content"
-          },
-          "center": {
-            "$type": "textAlign",
-            "$value": "center",
-            "$description": "Center text alignment - used for buttons, headings, and centered content"
-          },
-          "right": {
-            "$type": "textAlign",
-            "$value": "right",
-            "$description": "Right text alignment - used for numerical values, right-aligned content"
           }
         }
       }
