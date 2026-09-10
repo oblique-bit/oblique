@@ -23,7 +23,7 @@
       "guideline": "Pair semantically with HTML elements (h1–h6, p, a). To compare interface vs prose, set the typography_context mode on each table frame manually in Figma."
     },
     "authoring": {
-      "tierLetter": "Authoring",
+      "tierLetter": "Authoring – Styles for components",
       "title": "Styles",
       "subtitle": "ob.s.authoring",
       "variant": "p",
