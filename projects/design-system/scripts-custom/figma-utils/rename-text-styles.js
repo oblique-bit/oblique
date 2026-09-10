@@ -70,12 +70,15 @@
     // token-path guess. Confirmed against the real panel (2026-09-10), both
     // token paths now final (see the tier-letter note in WHY above).
     //
-    // "_authoring" keeps the leading underscore on purpose — it is the
-    // authoring/maintainer-only composite family (see ticket 19), and the
-    // underscore sorts it below "body" / "heading" in the panel instead of
-    // competing with them for attention.
+    // "~authoring" keeps the leading tilde on purpose — it is the
+    // authoring/maintainer-only composite family (see ticket 19), meant to
+    // sort below "body" / "heading" instead of competing with them for
+    // attention. A leading underscore was tried first and rejected: "_" is
+    // ASCII 0x5F, below lowercase letters, so it sorted "_authoring" to the
+    // TOP of the panel — the opposite of what was wanted. "~" is ASCII 0x7E,
+    // above every letter, so it reliably sorts last.
     renames: [
-      { from: 's/authoring/', to: '_authoring/' },
+      { from: 's/authoring/', to: '~authoring/' },
       { from: 'h/heading/', to: 'heading/' },
       { from: 'h/body/', to: 'body/' },
     ],
