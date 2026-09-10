@@ -50,9 +50,15 @@
     // Ordered old-prefix -> new-prefix pairs. A style's remainder after the
     // old prefix must match a real style with the new prefix, or it is
     // reported as blocked, not guessed.
+    //
+    // Current (2026-09-10): doc-page specimens still point at the bare
+    // "heading/*" / "body/*" styles from the reverted bare-root attempt.
+    // After the next Token Studio push recreates "h/heading/*" / "h/body/*"
+    // (matching the tier-prefixed path these settled on), run this to move
+    // those specimens onto the new ones before deleting the bare leftovers.
     prefixPairs: [
-      { oldPrefix: 'semantic/static/', newPrefix: 's/typography/grouped/static/' },
-      { oldPrefix: 'semantic/dynamic/', newPrefix: 's/typography/grouped/dynamic/' },
+      { oldPrefix: 'heading/', newPrefix: 'h/heading/' },
+      { oldPrefix: 'body/', newPrefix: 'h/body/' },
     ],
   };
   // ==========================================================================
