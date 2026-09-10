@@ -13,19 +13,19 @@
   "foundationName": "Typography",
   "subgroups": {
     "html": {
-      "tierLetter": "HTML",
+      "tierLetter": "Heading & Body",
       "title": "Styles",
-      "subtitle": "ob.html",
+      "subtitle": "ob.h",
       "variant": "s",
       "badges": ["consumer"],
       "columns": ["interface", "prose"],
       "purpose": "Text styles for common page content: headings and body / paragraph styles. All consume the typography_context variable — set the frame's mode to switch interface ↔ prose.",
       "guideline": "Pair semantically with HTML elements (h1–h6, p, a). To compare interface vs prose, set the typography_context mode on each table frame manually in Figma."
     },
-    "scales": {
-      "tierLetter": "Scales",
+    "authoring": {
+      "tierLetter": "Authoring",
       "title": "Styles",
-      "subtitle": "ob.semantic",
+      "subtitle": "ob.s.authoring",
       "variant": "p",
       "badges": ["maintainer"],
       "purpose": "Composite text styles used mainly in component build process. Static does not react to variable modes; dynamic scales with the ui_scale mode (sm / md / lg).",
@@ -45,8 +45,8 @@
         "purpose": "Heading text styles (H1–H6) for HTML document contexts. Switches between `interface` and `prose` typography contexts.",
         "guideline": "Pair semantically with HTML <h1>…<h6> elements. Heading scale comes from typography_context — set the parent's context mode to switch interface ↔ prose."
       },
-      "stylePrefix": "html/heading/",
-      "subtitle": "ob.html.heading",
+      "stylePrefix": "heading/",
+      "subtitle": "ob.h.heading",
       "grouping": "none"
     },
     {
@@ -60,39 +60,39 @@
         "purpose": "Body / paragraph / link text styles used in HTML document contexts (interface and prose).",
         "guideline": "Default body style is `normal`; `strong` matches <strong>/<b>; `lead` is for opening paragraphs; `link` covers inline links."
       },
-      "stylePrefix": "html/body/",
-      "subtitle": "ob.html.body",
+      "stylePrefix": "body/",
+      "subtitle": "ob.h.body",
       "grouping": "none"
     },
     {
       "id": "grouped-static",
-      "subgroup": "scales",
-      "sectionName": "Grouped Composites — Static",
+      "subgroup": "authoring",
+      "sectionName": "Authoring Composites — Static",
       "tableName": "Table: typography/grouped-static",
       "section": {
         "tier": "S",
-        "title": "Grouped Composites — Static",
+        "title": "Authoring Composites — Static",
         "purpose": "T-shirt sized composite text styles (font-family + weight + size + line-height + letter-spacing + paragraph-spacing) that do NOT change with the ui_scale mode.",
         "guideline": "Use for any text whose typographic dimensions must remain constant across ui_scale (sm / md / lg). Pair with the dimension foundation when laying out static layouts."
       },
-      "stylePrefix": "semantic/static/",
-      "subtitle": "ob.semantic.static",
+      "stylePrefix": "~authoring/static/",
+      "subtitle": "ob.s.authoring.static",
       "grouping": "size_class"
     },
     {
       "id": "grouped-dynamic",
-      "subgroup": "scales",
-      "sectionName": "Grouped Composites — Dynamic",
+      "subgroup": "authoring",
+      "sectionName": "Authoring Composites — Dynamic",
       "tableName": "Table: typography/grouped-dynamic",
       "mode": "md",
       "section": {
         "tier": "S",
-        "title": "Grouped Composites — Dynamic",
+        "title": "Authoring Composites — Dynamic",
         "purpose": "T-shirt sized composite text styles that scale with the active ui_scale mode. Previewed at the page default (md). Switch the ui_scale mode on the containing frame to inspect sm or lg.",
         "guideline": "Use as the default body and label styles. Renders at the active ui_scale mode wherever applied."
       },
-      "stylePrefix": "semantic/dynamic/",
-      "subtitle": "ob.semantic.dynamic",
+      "stylePrefix": "~authoring/dynamic/",
+      "subtitle": "ob.s.authoring.dynamic",
       "grouping": "size_class"
     }
   ]
