@@ -13,7 +13,6 @@ import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-nav
 import {provideHttpClient} from '@angular/common/http';
 import {ObServiceNavigationInfoApiService} from './api/service-navigation-info-api.service';
 import {ObNotificationService} from '../notification/notification.service';
-import {ObConsoleService} from '../console/ob-console.service';
 import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
 import {WINDOW} from '../window/window.provider';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
@@ -318,27 +317,6 @@ describe('ObServiceNavigationService', () => {
 
 						describe('loginUrl', () => {
 							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
-								describe('Without pamsAppId', () => {
-									it('should fall back to the initial value', () => {
-										service.setPamsAppId(undefined);
-										TestBed.flushEffects();
-										mockLangChange.next({lang: language});
-										expect(service.loginUrl()).toBe('');
-									});
-
-									it('should log an error', () => {
-										const consoleService = TestBed.inject(ObConsoleService);
-										const errorSpy = jest.spyOn(consoleService, 'error');
-										service.setPamsAppId(undefined);
-										TestBed.tick();
-										mockLangChange.next({lang: language});
-										expect(errorSpy).toHaveBeenCalledWith(
-											'ObServiceNavigationService loginUrl()',
-											'Service Navigation requires an appId for step-up logins to work. The appId can be found on the application configuration page on ePortal.'
-										);
-									});
-								});
-
 								describe('With pamsAppId', () => {
 									const randomPamsAppId = 'randomPamsAppId';
 
@@ -592,14 +570,6 @@ describe('ObServiceNavigationService', () => {
 			expect(initialUrl).toContain(mockWindowHref);
 			expect(firstUrl).toContain('http://first-url');
 			expect(finalUrl).toContain(secondUrl);
-		});
-
-		it('should throw an error when addAppId is called without a pamsAppId', () => {
-			expect(() =>
-				(service as unknown as {addAppId: (url: string, pamsAppId?: string) => string}).addAppId('http://login')
-			).toThrow(
-				'Service Navigation requires an appId for step-up logins to work. The appId can be found on the application configuration page on ePortal.'
-			);
 		});
 	});
 

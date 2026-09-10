@@ -365,12 +365,7 @@ export class ObServiceNavigationService {
 			);
 	}
 
-	private addAppId(url: string, pamsAppId?: string): string {
-		if (!pamsAppId) {
-			throw new Error(
-				'Service Navigation requires an appId for step-up logins to work. The appId can be found on the application configuration page on ePortal.'
-			);
-		}
+	private addAppId(url: string, pamsAppId: string): string {
 		return `${url}&appid=${pamsAppId}`;
 	}
 }
