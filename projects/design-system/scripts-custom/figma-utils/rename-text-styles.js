@@ -68,9 +68,14 @@
     // Verify the "from" prefix against the real style name in the Figma
     // panel before running 'rename' — this is a literal string match, not a
     // token-path guess. Confirmed against the real panel (2026-09-10), both
-    // token paths now final (see the tier-letter note in WHY above):
+    // token paths now final (see the tier-letter note in WHY above).
+    //
+    // "_authoring" keeps the leading underscore on purpose — it is the
+    // authoring/maintainer-only composite family (see ticket 19), and the
+    // underscore sorts it below "body" / "heading" in the panel instead of
+    // competing with them for attention.
     renames: [
-      { from: 's/authoring/', to: 'authoring/' },
+      { from: 's/authoring/', to: '_authoring/' },
       { from: 'h/heading/', to: 'heading/' },
       { from: 'h/body/', to: 'body/' },
     ],
