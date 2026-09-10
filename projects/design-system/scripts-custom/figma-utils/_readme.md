@@ -17,6 +17,19 @@ Promise(r => setTimeout(r, 1500))` right before the script returns, after any
 apply loop. `rename-text-styles.js` and `relink-text-style-usage.js` already
 do this — `unbind-variables.js` and `scope-variables.js` do not yet.
 
+**Known issue — a token path cannot drop its tier letter.** The dev CSS
+build (`style-dictionary-formats-token-store.mjs:24`) only emits root-level
+CSS variables matching `/^--ob-[sh]/` — anything else is silently absent from
+the actual CSS, no build error. Confirmed (2026-09-10): a token moved to a
+bare root (`ob.body.*`, `ob.authoring.*`, no tier letter) built without error
+but produced zero matching `--ob-*` lines in the output. A token whose first
+path segment happens to start with the letter "s" or "h" — "heading" was
+tried and looked fine — passes by pure coincidence, not because it is
+actually tier-tagged; do not treat that as proof the bare-root approach
+works. Every token that needs to reach CSS keeps `ob.s.*` or `ob.h.*`. Trim
+that prefix for Figma-panel readability only through a script here, never by
+shortening the JSON path below the tier letter.
+
 ## unbind-variables.js — kill "ghost" variable-mode pickers
 
 **The problem.** A node, frame or text layer keeps showing variable-mode
@@ -68,21 +81,28 @@ picker entry disappears.
 ## rename-text-styles.js — cosmetic prefix rename for local text styles
 
 **The problem.** A Figma text style's name comes straight from the token
-path it was pushed under, dots turned into "/". That path is right for the
-JSON but noisy for a designer picking a style in the panel — folders like
-"s/typography/grouped/" exist for the token tree, not for Figma users.
+path it was pushed under, dots turned into "/". The tier letter in that path
+("s/", "h/") has to stay in the JSON — see the tier-letter known issue above
+— but it is still noise for a designer picking a style in the panel.
 
 **The fix.** Run `rename-text-styles.js`:
 
 1. Edit the `CONFIG.renames` array — each rule is `{from, to}`, a literal
    prefix replacement. Verify the `from` prefix against the real style name
    in the Figma panel first; this is a string match, not a token-path guess.
-2. Run with `mode: 'scan'` first — reports every planned rename and any name
-   collisions, changes nothing.
-3. Re-run with `mode: 'rename'` to apply.
+2. Run with `mode: 'scan'` first — reports every planned rename, any
+   collisions with a leftover style (split into `collisions`, blocked because
+   the leftover still has live node usage, and `autoDeletableCollisions`,
+   zero usage), changes nothing.
+3. Re-run with `mode: 'rename'` to apply. Set `autoResolveCollisions: true`
+   first if you want zero-usage leftovers deleted automatically as part of
+   the run; otherwise clear `collisions` by relinking with
+   `relink-text-style-usage.js` first, or leave them and re-run once cleared.
 
 Never touches the token JSON, the CSS build, or variables — text style names
 only. A style already on its target name is a no-op, so it is safe to re-run.
+Only stays durable if the token path itself does not change again — see the
+CAUTION note in the script header.
 
 ## scope-variables.js — set scopes and hiddenFromPublishing in bulk
 
