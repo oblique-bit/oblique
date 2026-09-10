@@ -48,6 +48,7 @@ export class ObAlertComponent implements OnInit {
 	private readonly initialRole = inject(new HostAttributeToken('role'), {optional: true});
 	private readonly matIconRegistry = inject(MatIconRegistry);
 	private readonly domSanitizer = inject(DomSanitizer);
+
 	constructor() {
 		this.role = computed(() =>
 			(this.hasRoleAlert() ?? this.hasGlobalAlertRole ?? this.initialRole === 'alert') ? 'alert' : undefined
@@ -55,7 +56,7 @@ export class ObAlertComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		['info', 'success', 'warning', 'error'].forEach(type => {
+		(['info', 'success', 'warning', 'error'] as const).forEach(type => {
 			// Sanitation is bypassed because it doesn't allow SVG at all. And since they come from Oblique and not from any user
 			this.matIconRegistry.addSvgIconLiteralInNamespace(
 				'alert',
