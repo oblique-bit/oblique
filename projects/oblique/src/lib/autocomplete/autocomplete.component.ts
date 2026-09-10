@@ -200,7 +200,10 @@ export class ObAutocompleteComponent<T = string>
 		});
 	}
 
-	private getStringValue(value: T | string): string {
+	private getStringValue(value: T | string | null): string {
+		if (value === null) {
+			return '';
+		}
 		return typeof value === 'string' ? value : this.displayWith()(value);
 	}
 

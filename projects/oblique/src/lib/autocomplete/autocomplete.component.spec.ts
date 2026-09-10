@@ -22,6 +22,7 @@ import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatInputModule} from '@angular/material/input';
 import {MatInputHarness} from '@angular/material/input/testing';
 import {By} from '@angular/platform-browser';
+import {firstValueFrom} from 'rxjs';
 
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '../autocomplete/autocomplete.model';
 import {ObOptionLabelIconModule} from '../autocomplete/option-label-icon/option-label-icon.module';
@@ -378,6 +379,23 @@ describe(ObAutocompleteComponent.name, () => {
 				parentFixture.componentRef.changeDetectorRef.detectChanges();
 				await parentFixture.whenStable();
 				expect(component.autocompleteInputControl.status).toBe('DISABLED');
+			});
+		});
+
+		describe('with null as input', () => {
+			it('searchText$ should emit an empty string', async () => {
+				const promise = firstValueFrom(component.searchText$);
+				component.autocompleteInputControl.setValue(null);
+				expect(await promise).toBe('');
+			});
+
+			it('should not change filteredOptions$', async () => {
+				parentComponent.autocompleteOptions = [{label: 'option', disabled: false}];
+				parentFixture.componentRef.changeDetectorRef.detectChanges();
+				component.ngOnChanges();
+				const promise = firstValueFrom(component.filteredOptions$);
+				component.autocompleteInputControl.setValue(null);
+				expect(await promise).toEqual([{label: 'option', disabled: false}]);
 			});
 		});
 
