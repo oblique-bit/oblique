@@ -4,6 +4,19 @@ Standalone Figma-context maintenance scripts. They run against the `figma`
 plugin global — not Node. Run them either via the figma-console MCP
 (`figma_execute`) or by pasting into the Desktop Bridge plugin console.
 
+**Known issue — silent non-persist on a tight synchronous bulk loop.**
+Confirmed via `figma-ds-cli eval -f` (2026-09-10): a loop of purely
+synchronous style mutations (`style.remove()`, `style.name = x`) that returns
+immediately after the loop reports success in its own output, but the change
+does not actually persist — a fresh eval right after shows the pre-mutation
+state. A single mutation with no delay persists fine; loops of `await`-ed
+async calls (`setBoundVariable`, `setTextStyleIdAsync`, …) also seem fine on
+their own, since each `await` yields. It is specifically a same-tick batch of
+sync calls that gets lost before the bridge flushes it. Fix: `await new
+Promise(r => setTimeout(r, 1500))` right before the script returns, after any
+apply loop. `rename-text-styles.js` and `relink-text-style-usage.js` already
+do this — `unbind-variables.js` and `scope-variables.js` do not yet.
+
 ## unbind-variables.js — kill "ghost" variable-mode pickers
 
 **The problem.** A node, frame or text layer keeps showing variable-mode

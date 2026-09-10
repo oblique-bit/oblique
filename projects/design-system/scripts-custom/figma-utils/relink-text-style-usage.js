@@ -157,6 +157,12 @@
     }
     // Rollback data: every original style id, so the run can be reversed.
     report.rollback = plan.map((p) => ({ nodeId: p.nodeId, restoreTo: p.fromStyleId }));
+    // Defensive flush margin before the eval process exits. Not strictly
+    // needed here — each iteration already awaits setTextStyleIdAsync, which
+    // yields enough for the bridge to keep up — but a tight loop of purely
+    // synchronous style mutations (see rename-text-styles.js) was observed to
+    // report success yet silently not persist without one. Cheap insurance.
+    await new Promise((r) => setTimeout(r, 1500));
   }
 
   console.log('[relink-text-style-usage]', JSON.stringify(report, null, 2));

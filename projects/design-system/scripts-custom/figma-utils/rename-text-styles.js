@@ -39,16 +39,17 @@
     // Ordered prefix-rename rules. First matching rule wins per style.
     // Verify the "from" prefix against the real style name in the Figma
     // panel before running 'rename' — this is a literal string match, not a
-    // token-path guess.
+    // token-path guess. The two rule sets below are both confirmed against
+    // the real panel (2026-09-10): the grouped composites push as
+    // "s/typography/grouped/..." (not "ob.s..." — Token Studio strips "ob."
+    // only), and the html heading/body styles push as "html/heading/..." and
+    // "html/body/..." (not "h/..." — that shorter prefix was the now-removed
+    // "h/link/..." duplicate).
     renames: [
       { from: 's/typography/grouped/static/', to: 'authoring/static/' },
       { from: 's/typography/grouped/dynamic/', to: 'authoring/dynamic/' },
-      // Heading/body "h/" wrapper flatten — confirm the real prefix in the
-      // panel first (may be "h/heading/" / "h/body/" or "html/heading/" /
-      // "html/body/" depending on how Token Studio resolved the path), then
-      // uncomment:
-      // { from: 'h/heading/', to: 'heading/' },
-      // { from: 'h/body/', to: 'body/' },
+      { from: 'html/heading/', to: 'heading/' },
+      { from: 'html/body/', to: 'body/' },
     ],
   };
   // ==========================================================================
@@ -114,6 +115,14 @@
     }
     // Rollback data: every original name, so the run can be reversed.
     report.rollback = plan.map((p) => ({ id: p.id, restoreTo: p.from }));
+    // Give the plugin bridge time to flush the batch before the eval process
+    // exits. Confirmed via figma-ds-cli (2026-09-10): a bulk loop of style
+    // mutations (rename or remove) that returns immediately after the loop
+    // reports success but silently does not persist — a re-read in the very
+    // next eval call shows the pre-mutation state. A single mutation with no
+    // delay persists fine; it is specifically a same-tick batch that is lost.
+    // A trailing delay before the process returns reliably fixes it.
+    await new Promise((r) => setTimeout(r, 1500));
   }
 
   console.log('[rename-text-styles]', JSON.stringify(report, null, 2));
