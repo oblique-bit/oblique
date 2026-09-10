@@ -11,7 +11,7 @@
           },
           "size": {
             "$type": "sizing",
-            "$value": "{ob.s.static.font_size.lg}"
+            "$value": "{ob.s.typography.scale.static.font_size.lg}"
           }
         }
       }

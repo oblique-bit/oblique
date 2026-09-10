@@ -91,49 +91,49 @@
         "normal": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontFamily": "{ob.s.typography.scale.static.font_family.body}",
             "fontSize": "{ob.h.typography.context.body.normal.font_size}",
             "fontWeight": "{ob.h.typography.context.body.normal.font_weight}",
             "lineHeight": "{ob.h.typography.context.body.normal.line_height}",
             "letterSpacing": "{ob.h.typography.context.body.normal.letter_spacing}",
-            "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
+            "paragraphSpacing": "{ob.s.typography.scale.static.paragraph_spacing.md}"
           },
           "$description": "Dynamic body text style that adapts between compact and prose contexts via variable modes."
         },
         "link": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontFamily": "{ob.s.typography.scale.static.font_family.body}",
             "fontSize": "{ob.h.typography.context.body.link.font_size}",
             "fontWeight": "{ob.h.typography.context.body.link.font_weight}",
             "lineHeight": "{ob.h.typography.context.body.link.line_height}",
             "letterSpacing": "{ob.h.typography.context.body.link.letter_spacing}",
-            "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}",
-            "textDecoration": "{ob.s.static.text_decoration.link.emphasis_high}"
+            "paragraphSpacing": "{ob.s.typography.scale.static.paragraph_spacing.md}",
+            "textDecoration": "{ob.s.typography.scale.static.text_decoration.link.emphasis_high}"
           },
           "$description": "Dynamic link text style that adapts between compact and prose contexts via variable modes. Adds an underline to the text."
         },
         "strong": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontFamily": "{ob.s.typography.scale.static.font_family.body}",
             "fontSize": "{ob.h.typography.context.body.strong.font_size}",
             "fontWeight": "{ob.h.typography.context.body.strong.font_weight}",
             "lineHeight": "{ob.h.typography.context.body.strong.line_height}",
             "letterSpacing": "{ob.h.typography.context.body.strong.letter_spacing}",
-            "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
+            "paragraphSpacing": "{ob.s.typography.scale.static.paragraph_spacing.md}"
           },
           "$description": "Dynamic strong text style that adapts between compact and prose contexts via variable modes. Emphasized text for important information."
         },
         "lead": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{ob.s.static.font_family.body}",
+            "fontFamily": "{ob.s.typography.scale.static.font_family.body}",
             "fontSize": "{ob.h.typography.context.body.lead.font_size}",
             "fontWeight": "{ob.h.typography.context.body.lead.font_weight}",
             "lineHeight": "{ob.h.typography.context.body.lead.line_height}",
             "letterSpacing": "{ob.h.typography.context.body.lead.letter_spacing}",
-            "paragraphSpacing": "{ob.s.static.paragraph_spacing.md}"
+            "paragraphSpacing": "{ob.s.typography.scale.static.paragraph_spacing.md}"
           },
           "$description": "Dynamic lead text style that adapts between compact and prose contexts via variable modes. Introductory paragraph text."
         }

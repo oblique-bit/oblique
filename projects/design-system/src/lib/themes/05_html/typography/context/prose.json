@@ -12,23 +12,23 @@
           "h1": {
             "font_family": {
               "$type": "fontFamilies",
-              "$value": "{ob.s.static.font_family.heading}"
+              "$value": "{ob.s.typography.scale.static.font_family.heading}"
             },
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.font_size.6xl}"
+              "$value": "{ob.s.typography.scale.static.font_size.6xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.semiBold}"
+              "$value": "{ob.s.typography.scale.static.font_weight.semiBold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.line_height.4xl}"
+              "$value": "{ob.s.typography.scale.static.line_height.4xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.superNarrow}"
+              "$value": "{ob.s.typography.scale.static.letter_spacing_px.superNarrow}"
             },
             "color": {
               "fg": {
@@ -39,7 +39,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraph_spacing.3xl}",
+              "$value": "{ob.s.typography.scale.static.paragraph_spacing.3xl}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -56,23 +56,23 @@
           "h2": {
             "font_family": {
               "$type": "fontFamilies",
-              "$value": "{ob.s.static.font_family.heading}"
+              "$value": "{ob.s.typography.scale.static.font_family.heading}"
             },
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.font_size.5xl}"
+              "$value": "{ob.s.typography.scale.static.font_size.5xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.semiBold}"
+              "$value": "{ob.s.typography.scale.static.font_weight.semiBold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.line_height.3xl}"
+              "$value": "{ob.s.typography.scale.static.line_height.3xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.superNarrow}"
+              "$value": "{ob.s.typography.scale.static.letter_spacing_px.superNarrow}"
             },
             "color": {
               "fg": {
@@ -83,7 +83,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraph_spacing.3xl}",
+              "$value": "{ob.s.typography.scale.static.paragraph_spacing.3xl}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -100,23 +100,23 @@
           "h3": {
             "font_family": {
               "$type": "fontFamilies",
-              "$value": "{ob.s.static.font_family.heading}"
+              "$value": "{ob.s.typography.scale.static.font_family.heading}"
             },
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.font_size.4xl}"
+              "$value": "{ob.s.typography.scale.static.font_size.4xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.semiBold}"
+              "$value": "{ob.s.typography.scale.static.font_weight.semiBold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.line_height.2xl}"
+              "$value": "{ob.s.typography.scale.static.line_height.2xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.superNarrow}"
+              "$value": "{ob.s.typography.scale.static.letter_spacing_px.superNarrow}"
             },
             "color": {
               "fg": {
@@ -127,7 +127,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraph_spacing.3xl}",
+              "$value": "{ob.s.typography.scale.static.paragraph_spacing.3xl}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -144,23 +144,23 @@
           "h4": {
             "font_family": {
               "$type": "fontFamilies",
-              "$value": "{ob.s.static.font_family.heading}"
+              "$value": "{ob.s.typography.scale.static.font_family.heading}"
             },
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.font_size.3xl}"
+              "$value": "{ob.s.typography.scale.static.font_size.3xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.semiBold}"
+              "$value": "{ob.s.typography.scale.static.font_weight.semiBold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.line_height.2xl}"
+              "$value": "{ob.s.typography.scale.static.line_height.2xl}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.narrower}"
+              "$value": "{ob.s.typography.scale.static.letter_spacing_px.narrower}"
             },
             "color": {
               "fg": {
@@ -171,7 +171,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraph_spacing.3xl}",
+              "$value": "{ob.s.typography.scale.static.paragraph_spacing.3xl}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -188,23 +188,23 @@
           "h5": {
             "font_family": {
               "$type": "fontFamilies",
-              "$value": "{ob.s.static.font_family.heading}"
+              "$value": "{ob.s.typography.scale.static.font_family.heading}"
             },
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.font_size.2xl}"
+              "$value": "{ob.s.typography.scale.static.font_size.2xl}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.bold}"
+              "$value": "{ob.s.typography.scale.static.font_weight.bold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.line_height.lg}"
+              "$value": "{ob.s.typography.scale.static.line_height.lg}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.narrow}"
+              "$value": "{ob.s.typography.scale.static.letter_spacing_px.narrow}"
             },
             "color": {
               "fg": {
@@ -215,7 +215,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraph_spacing.3xl}",
+              "$value": "{ob.s.typography.scale.static.paragraph_spacing.3xl}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -232,23 +232,23 @@
           "h6": {
             "font_family": {
               "$type": "fontFamilies",
-              "$value": "{ob.s.static.font_family.heading}"
+              "$value": "{ob.s.typography.scale.static.font_family.heading}"
             },
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.static.font_size.lg}"
+              "$value": "{ob.s.typography.scale.static.font_size.lg}"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.static.font_weight.bold}"
+              "$value": "{ob.s.typography.scale.static.font_weight.bold}"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.static.line_height.md}"
+              "$value": "{ob.s.typography.scale.static.line_height.md}"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.static.letter_spacing_px.normal}"
+              "$value": "{ob.s.typography.scale.static.letter_spacing_px.normal}"
             },
             "color": {
               "fg": {
@@ -259,7 +259,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraph_spacing.3xl}",
+              "$value": "{ob.s.typography.scale.static.paragraph_spacing.3xl}",
               "$description": "[FIGMA-ONLY]\nSpacing after manual line breaks. Not exported to CSS."
             },
             "spacing": {
@@ -277,89 +277,89 @@
             "normal": {
               "font_family": {
                 "$type": "fontFamilies",
-                "$value": "{ob.s.static.font_family.body}"
+                "$value": "{ob.s.typography.scale.static.font_family.body}"
               },
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.static.font_size.lg}"
+                "$value": "{ob.s.typography.scale.static.font_size.lg}"
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.static.font_weight.medium}"
+                "$value": "{ob.s.typography.scale.static.font_weight.medium}"
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.static.line_height.lg}"
+                "$value": "{ob.s.typography.scale.static.line_height.lg}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
-                "$value": "{ob.s.static.letter_spacing_px.normal}"
+                "$value": "{ob.s.typography.scale.static.letter_spacing_px.normal}"
               }
             },
             "link": {
               "font_family": {
                 "$type": "fontFamilies",
-                "$value": "{ob.s.static.font_family.body}"
+                "$value": "{ob.s.typography.scale.static.font_family.body}"
               },
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.static.font_size.lg}"
+                "$value": "{ob.s.typography.scale.static.font_size.lg}"
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.static.font_weight.medium}"
+                "$value": "{ob.s.typography.scale.static.font_weight.medium}"
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.static.line_height.lg}"
+                "$value": "{ob.s.typography.scale.static.line_height.lg}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
-                "$value": "{ob.s.static.letter_spacing_px.normal}"
+                "$value": "{ob.s.typography.scale.static.letter_spacing_px.normal}"
               }
             },
             "strong": {
               "font_family": {
                 "$type": "fontFamilies",
-                "$value": "{ob.s.static.font_family.body}"
+                "$value": "{ob.s.typography.scale.static.font_family.body}"
               },
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.static.font_size.lg}"
+                "$value": "{ob.s.typography.scale.static.font_size.lg}"
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.static.font_weight.bold}"
+                "$value": "{ob.s.typography.scale.static.font_weight.bold}"
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.static.line_height.lg}"
+                "$value": "{ob.s.typography.scale.static.line_height.lg}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
-                "$value": "{ob.s.static.letter_spacing_px.normal}"
+                "$value": "{ob.s.typography.scale.static.letter_spacing_px.normal}"
               }
             },
             "lead": {
               "font_family": {
                 "$type": "fontFamilies",
-                "$value": "{ob.s.static.font_family.body}"
+                "$value": "{ob.s.typography.scale.static.font_family.body}"
               },
               "font_size": {
                 "$type": "fontSizes",
-                "$value": "{ob.s.static.font_size.lg}"
+                "$value": "{ob.s.typography.scale.static.font_size.lg}"
               },
               "font_weight": {
                 "$type": "fontWeights",
-                "$value": "{ob.s.static.font_weight.bold}"
+                "$value": "{ob.s.typography.scale.static.font_weight.bold}"
               },
               "line_height": {
                 "$type": "lineHeights",
-                "$value": "{ob.s.static.line_height.lg}"
+                "$value": "{ob.s.typography.scale.static.line_height.lg}"
               },
               "letter_spacing": {
                 "$type": "letterSpacing",
-                "$value": "{ob.s.static.letter_spacing_px.narrow}"
+                "$value": "{ob.s.typography.scale.static.letter_spacing_px.narrow}"
               }
             },
             "color": {
@@ -371,7 +371,7 @@
             },
             "paragraph_spacing": {
               "$type": "paragraphSpacing",
-              "$value": "{ob.s.static.paragraph_spacing.3xl}"
+              "$value": "{ob.s.typography.scale.static.paragraph_spacing.3xl}"
             }
           },
           "p": {
