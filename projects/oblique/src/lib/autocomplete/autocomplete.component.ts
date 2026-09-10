@@ -8,7 +8,6 @@ import {
 	OnChanges,
 	OnDestroy,
 	Signal,
-	ViewChild,
 	ViewEncapsulation,
 	booleanAttribute,
 	computed,
@@ -16,6 +15,7 @@ import {
 	inject,
 	input,
 	output,
+	viewChild,
 } from '@angular/core';
 import {
 	ControlValueAccessor,
@@ -102,7 +102,7 @@ export class ObAutocompleteComponent<T = string>
 	);
 	onModelTouched: () => void;
 	readonly hints: Signal<{align: 'start' | 'end'; template: string}[]>;
-	@ViewChild(MatAutocompleteTrigger) private readonly autocompleteTrigger?: MatAutocompleteTrigger;
+	private readonly autocompleteTrigger = viewChild(MatAutocompleteTrigger);
 	private readonly matHints = contentChildren(MatHint);
 	private readonly matHintsElementRefs = contentChildren(MatHint, {read: ElementRef<HTMLElement>});
 	private readonly unsubscribe = new Subject<void>();
@@ -130,13 +130,14 @@ export class ObAutocompleteComponent<T = string>
 	}
 
 	ngDoCheck(): void {
-		if (!this.autocompleteTrigger?.panelOpen) {
+		const trigger = this.autocompleteTrigger();
+		if (!trigger?.panelOpen) {
 			this.lastRect = undefined;
 			return;
 		}
 		const rect = this.elementRef.nativeElement.getBoundingClientRect();
 		if (this.lastRect && (rect.top !== this.lastRect.top || rect.left !== this.lastRect.left)) {
-			this.autocompleteTrigger.updatePosition();
+			trigger.updatePosition();
 		}
 		this.lastRect = rect;
 	}

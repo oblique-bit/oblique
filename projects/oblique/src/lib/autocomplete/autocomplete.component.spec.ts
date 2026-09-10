@@ -552,7 +552,7 @@ describe(ObAutocompleteComponent.name, () => {
 			it('should not call updatePosition on the first check after opening', async () => {
 				await obAutocompleteHarness.openAutocompletePanel();
 				parentFixture.detectChanges();
-				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger, 'updatePosition');
+				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger(), 'updatePosition');
 
 				component.ngDoCheck();
 
@@ -562,7 +562,7 @@ describe(ObAutocompleteComponent.name, () => {
 			it('should call updatePosition when the position changes while the panel stays open', async () => {
 				await obAutocompleteHarness.openAutocompletePanel();
 				parentFixture.detectChanges();
-				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger, 'updatePosition');
+				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger(), 'updatePosition');
 				const rectSpy = jest.spyOn(component.elementRef.nativeElement, 'getBoundingClientRect');
 
 				rectSpy.mockReturnValueOnce({top: 0, left: 0} as DOMRect);
