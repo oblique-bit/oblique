@@ -23,7 +23,7 @@
       "guideline": "Pair semantically with HTML elements (h1–h6, p, a). To compare interface vs prose, set the typography_context mode on each table frame manually in Figma."
     },
     "authoring": {
-      "tierLetter": "Authoring – Styles for components",
+      "tierLetter": "Authoring Styles for components",
       "title": "Styles",
       "subtitle": "ob.s.authoring",
       "variant": "p",
@@ -67,11 +67,11 @@
     {
       "id": "grouped-static",
       "subgroup": "authoring",
-      "sectionName": "Authoring Composites — Static",
+      "sectionName": "Authoring Styles — Static",
       "tableName": "Table: typography/grouped-static",
       "section": {
         "tier": "S",
-        "title": "Authoring Composites — Static",
+        "title": "Authoring Styles — Static",
         "purpose": "T-shirt sized composite text styles (font-family + weight + size + line-height + letter-spacing + paragraph-spacing) that do NOT change with the ui_scale mode.",
         "guideline": "Use for any text whose typographic dimensions must remain constant across ui_scale (sm / md / lg). Pair with the dimension foundation when laying out static layouts."
       },
@@ -82,12 +82,12 @@
     {
       "id": "grouped-dynamic",
       "subgroup": "authoring",
-      "sectionName": "Authoring Composites — Dynamic",
+      "sectionName": "Authoring Styles — Dynamic",
       "tableName": "Table: typography/grouped-dynamic",
       "mode": "md",
       "section": {
         "tier": "S",
-        "title": "Authoring Composites — Dynamic",
+        "title": "Authoring Styles — Dynamic",
         "purpose": "T-shirt sized composite text styles that scale with the active ui_scale mode. Previewed at the page default (md). Switch the ui_scale mode on the containing frame to inspect sm or lg.",
         "guideline": "Use as the default body and label styles. Renders at the active ui_scale mode wherever applied."
       },
