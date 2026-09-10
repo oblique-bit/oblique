@@ -582,14 +582,16 @@ async function buildRow(style, spec) {
   if (descNode)  await setText(descNode, style.description || '');
 
   // Specimen: load font, then apply the text style + set sample text = the
-  // real token path (not the figma style name — they diverge on purpose,
-  // see the realTokenPath comment above).
+  // figma style name (not the token path — this cell previews the Figma
+  // Text Style itself, so it shows the name a figma user actually picks
+  // from the panel; "Cell: Token Name" above is the one showing the real
+  // token path).
   if (specimenNode && style.fontName && style.fontName !== figma.mixed) {
     try {
       await figma.loadFontAsync(style.fontName);
     } catch (e) { L('font load failed for ' + style.name + ': ' + e.message); }
     try {
-      specimenNode.characters = tokenPath;
+      specimenNode.characters = style.name;
       await specimenNode.setTextStyleIdAsync(style.id);
     } catch (e) {
       // Fallback: explicitly mirror the style props onto the specimen
@@ -598,7 +600,7 @@ async function buildRow(style, spec) {
         specimenNode.fontSize = style.fontSize;
         if (style.lineHeight && style.lineHeight !== figma.mixed) specimenNode.lineHeight = style.lineHeight;
         if (style.letterSpacing && style.letterSpacing !== figma.mixed) specimenNode.letterSpacing = style.letterSpacing;
-        specimenNode.characters = tokenPath;
+        specimenNode.characters = style.name;
       } catch (e2) { L('specimen fallback failed for ' + style.name + ': ' + e2.message); }
     }
   }
