@@ -84,6 +84,7 @@ export default [
 			'@typescript-eslint/no-non-null-assertion': 'off',
 			'@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
 			'@typescript-eslint/no-unnecessary-type-assertion': 'off',
+			'@typescript-eslint/no-useless-default-assignment': 'off', // needs strictNullChecks
 			'accessor-pairs': 'off',
 			'func-names': 'off',
 			'no-duplicate-imports': 'off',

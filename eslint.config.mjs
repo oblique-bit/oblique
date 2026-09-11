@@ -59,6 +59,7 @@ export default defineConfig(
 			'@typescript-eslint/no-unsafe-member-access': 'off',
 			'@typescript-eslint/no-unsafe-assignment': 'off', //TODO ask René about new rules
 			'@typescript-eslint/no-unsafe-call': 'off', //TODO ask René about new rules
+			'@typescript-eslint/no-useless-default-assignment': 'off', // because setupVitest.ts is imported by a project that disabled strictNullChecks
 			'func-names': 'off',
 		},
 	},

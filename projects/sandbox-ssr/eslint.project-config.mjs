@@ -27,6 +27,7 @@ export default [
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
 			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-useless-default-assignment': 'off', // needs strictNullChecks
 			'@typescript-eslint/no-deprecated': 'off',
 		},
 	},

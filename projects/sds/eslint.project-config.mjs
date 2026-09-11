@@ -37,6 +37,7 @@ export default [
 			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off',
 			'@typescript-eslint/no-unsafe-call': 'off',
+			'@typescript-eslint/no-useless-default-assignment': 'off', // needs strictNullChecks
 			'@typescript-eslint/no-redundant-type-constituents': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
 			'@typescript-eslint/switch-exhaustiveness-check': 'off',
