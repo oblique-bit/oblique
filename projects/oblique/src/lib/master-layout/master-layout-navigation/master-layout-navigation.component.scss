@@ -210,10 +210,6 @@
 					}
 				}
 
-				.ob-sub-menu-back-button-home-icon {
-					margin-bottom: -0.5 * variables.$ob-spacing-xs;
-				}
-
 				.ob-sub-menu-close-button {
 					flex-direction: row-reverse;
 
@@ -233,6 +229,7 @@
 				button {
 					padding: variables.$ob-spacing-sm variables.$ob-spacing-md;
 					width: fit-content;
+					white-space: nowrap;
 
 					.ob-layout-collapsed & {
 						padding: variables.$ob-spacing-md;
