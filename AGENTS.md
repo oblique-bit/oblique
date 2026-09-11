@@ -37,7 +37,7 @@ Use Node.js lts/krypton (v24.*) and install from the repository root.
 - `npm run format` — fix ESLint/Prettier issues.
 - If lint or format commands fail, fix the reported issues before considering the task complete; do not suppress or ignore lint errors without user confirmation.
 - `npm run -w @oblique/toolchain build` — build a package; replace the workspace name as needed. If the specified workspace name is not found, list available workspaces via `npm run -w` or check the `package.json` workspaces field before proceeding.
-- `npm run -w @oblique/toolchain test` — run Toolchain Jest plus coverage.
+- `npm run -w @oblique/toolchain test` — run Toolchain Vitest plus coverage.
 - `npm run -w @oblique/sandbox start` — serve the sandbox.
 
 ## Style And Scope

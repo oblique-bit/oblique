@@ -14,7 +14,7 @@ export interface ObMockLogger {
 	/**
 	 * A fully mocked {@link ObLogger} instance.
 	 *
-	 * All methods are Jest mocks and do not produce real output.
+	 * All methods are Vitest mocks and do not produce real output.
 	 * The {@link ObLogger#group|ObLogger.group()} method returns a mocked {@link ObGroupLogger}
 	 * that is stored in {@link ObMockLogger#loggerGroups|loggerGroups}.
 	 */
