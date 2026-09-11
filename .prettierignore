@@ -2,3 +2,5 @@
 # This means that any ignore rules must be duplicated at the root of the repository in order for Prettier to actually skip those files during pre-commit hooks.
 
 projects/design-system/src/lib/**/*-tokens.css
+
+**/.vitecache/**
