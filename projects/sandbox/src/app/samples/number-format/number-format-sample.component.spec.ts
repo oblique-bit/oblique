@@ -1,6 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 import {NumberFormatSampleComponent} from './number-format-sample.component';
 import {TranslatePipe} from '@ngx-translate/core';
@@ -14,7 +14,7 @@ describe(NumberFormatSampleComponent.name, () => {
 			imports: [FormsModule, ReactiveFormsModule, TranslatePipe],
 			declarations: [NumberFormatSampleComponent],
 			providers: [provideObliqueTestingConfiguration()],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 		}).compileComponents();
 	});
 

@@ -186,17 +186,40 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/sandbox/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts"],
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageInclude": [
+              "projects/sandbox/src/app/app.component.ts",
+              "projects/sandbox/src/app/home/home.page.ts",
+              "projects/sandbox/src/app/samples/breadcrumb/breadcrumb.component.ts",
+              "projects/sandbox/src/app/samples/collapse/collapse-sample.component.ts",
+              "projects/sandbox/src/app/samples/error-messages-sample/error-messages-sample.component.ts",
+              "projects/sandbox/src/app/samples/master-layout/dynamic-navigation.service.ts",
+              "projects/sandbox/src/app/samples/nav-tree/nav-tree-sample.component.ts",
+              "projects/sandbox/src/app/samples/number-format/number-format-sample.component.ts",
+              "projects/sandbox/src/app/samples/schema-validation/schema-validation-sample.component.ts"
+            ],
+            "coverageExclude": ["**/*.spec.ts", "projects/oblique/**"],
+            "coverageThresholds": {
+              "perFile": true,
+              "lines": 100,
+              "functions": 100,
+              "branches": 90,
+              "statements": 100
+            }
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": true
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/sandbox/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"

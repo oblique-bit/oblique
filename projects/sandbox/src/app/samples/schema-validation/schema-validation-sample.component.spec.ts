@@ -1,4 +1,5 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {FormsModule, type NgForm, ReactiveFormsModule} from '@angular/forms';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObNotificationService, provideObliqueTestingConfiguration} from '@oblique/oblique';
@@ -13,6 +14,7 @@ describe(SchemaValidationSampleComponent.name, () => {
 			imports: [TranslatePipe, FormsModule, ReactiveFormsModule],
 			declarations: [SchemaValidationSampleComponent],
 			providers: [provideObliqueTestingConfiguration()],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 		}).compileComponents();
 	});
 
@@ -29,7 +31,7 @@ describe(SchemaValidationSampleComponent.name, () => {
 
 	it('should show a success notification for valid data', () => {
 		const notification = TestBed.inject(ObNotificationService);
-		jest.spyOn(notification, 'success');
+		vi.spyOn(notification, 'success');
 
 		component.check();
 
@@ -38,7 +40,7 @@ describe(SchemaValidationSampleComponent.name, () => {
 
 	it('should show a warning notification for invalid data', () => {
 		const notification = TestBed.inject(ObNotificationService);
-		jest.spyOn(notification, 'warning');
+		vi.spyOn(notification, 'warning');
 		const form = {valid: false} as NgForm;
 
 		component.check(form);
@@ -47,7 +49,7 @@ describe(SchemaValidationSampleComponent.name, () => {
 	});
 
 	it('should reset the form', () => {
-		jest.spyOn(component.formData, 'reset');
+		vi.spyOn(component.formData, 'reset');
 
 		component.reset();
 
@@ -55,7 +57,7 @@ describe(SchemaValidationSampleComponent.name, () => {
 	});
 
 	it('should reset the provided form', () => {
-		const form = {reset: jest.fn()} as unknown as NgForm;
+		const form = {reset: vi.fn()} as unknown as NgForm;
 
 		component.reset(form);
 
