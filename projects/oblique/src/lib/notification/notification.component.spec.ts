@@ -92,11 +92,11 @@ describe('NotificationComponent', () => {
 			});
 
 			it('1st alert should be success', () => {
-				expect(alerts[0].componentInstance.type).toEqual('success');
+				expect(alerts[0].componentInstance.type()).toEqual('success');
 			});
 
 			it('2nd alert should be undefined', () => {
-				expect(alerts[1].componentInstance.type).toEqual('info');
+				expect(alerts[1].componentInstance.type()).toEqual('info');
 			});
 		});
 	});

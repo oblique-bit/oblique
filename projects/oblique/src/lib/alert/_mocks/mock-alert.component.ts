@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -10,11 +10,11 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 	exportAs: 'obAlert',
 })
 export class ObMockAlertComponent {
-	@Input() type = 'info';
+	readonly type = input('info');
 	info = true;
 	success = false;
 	warning = false;
 	error = false;
 
-	@Input() hasRoleAlert: boolean | undefined;
+	readonly hasRoleAlert = input<boolean | undefined>();
 }
