@@ -4,7 +4,7 @@ import * as obNewSchema from './schema.json';
 import {spawnSync} from 'child_process';
 import fs from 'node:fs';
 import {obNewConfig} from './ob-new.model';
-import {currentVersions, isWindows, version} from '../utils/cli-utils';
+import {buildOption, currentVersions, isWindows, version} from '../utils/cli-utils';
 import {createObNewCommand} from './ob-new';
 
 const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
@@ -41,9 +41,9 @@ describe('Ob new command', () => {
 
 	function buildDefaultNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return buildNgAddCommand([
-			`--title=${projectName}`,
-			'--environments=local dev ref test abn prod',
-			'--prefix=app',
+			buildOption('--title', projectName),
+			buildOption('--environments', 'local dev ref test abn prod'),
+			buildOption('--prefix', 'app'),
 			'--ajv',
 			'--unknown-route',
 			'--http-interceptors',
@@ -261,9 +261,9 @@ describe('Ob new command', () => {
 							'--no-standalone',
 							'--no-ssr',
 							'--no-zoneless',
-							'--ai-config=none',
-							'--style=scss',
-							'--prefix=app',
+							buildOption('--ai-config', 'none'),
+							buildOption('--style', 'scss'),
+							buildOption('--prefix', 'app'),
 						],
 						{stdio: 'inherit', encoding: 'utf8', shell: isWindows()}
 					);
@@ -297,7 +297,7 @@ describe('Ob new command', () => {
 							`@angular/cli@${currentVersions['@angular/cli']}`,
 							'generate',
 							'@oblique/toolchain:linting',
-							'--prefix=app',
+							buildOption('--prefix', 'app'),
 						],
 						{
 							cwd: `${process.cwd()}/${projectName}`,
@@ -528,7 +528,7 @@ describe('Ob new command', () => {
 				description: 'with custom proxy port',
 				args: [projectName, '--proxy', '1234'],
 				expectedValue: '1234',
-				expectedToolchainOptions: ['--proxy=1234'],
+				expectedToolchainOptions: [buildOption('--proxy', '1234')],
 			},
 			{
 				description: 'with blank proxy port',
@@ -579,13 +579,13 @@ describe('Ob new command', () => {
 				description: 'with default locales',
 				args: [projectName],
 				expectedValue: 'de-CH fr-CH it-CH',
-				expectedAddObliqueOptions: '--locale=de-CH fr-CH it-CH',
+				expectedAddObliqueOptions: buildOption('--locale', 'de-CH fr-CH it-CH'),
 			},
 			{
 				description: 'with custom locales',
 				args: [projectName, '--locales', 'en-US fr-FR'],
 				expectedValue: 'en-US fr-FR',
-				expectedAddObliqueOptions: '--locale=en-US fr-FR',
+				expectedAddObliqueOptions: buildOption('--locale', 'en-US fr-FR'),
 			},
 			{
 				description: 'with blank locales',
@@ -620,13 +620,13 @@ describe('Ob new command', () => {
 							'generate',
 							'@oblique/toolchain:add-oblique',
 							expectedAddObliqueOptions,
-							`--title=${projectName}`,
+							buildOption(`--title`, projectName),
 						]
 					: [
 							`@angular/cli@${currentVersions['@angular/cli']}`,
 							'generate',
 							'@oblique/toolchain:add-oblique',
-							`--title=${projectName}`,
+							buildOption(`--title`, projectName),
 						];
 				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
@@ -655,24 +655,24 @@ describe('Ob new command', () => {
 			{
 				description: 'with default title and applicationOperator',
 				args: [projectName],
-				expectedAddObliqueOptions: ['--locale=de-CH fr-CH it-CH', `--title=${projectName}`],
+				expectedAddObliqueOptions: [buildOption('--locale', 'de-CH fr-CH it-CH'), buildOption('--title', projectName)],
 			},
 			{
 				description: 'with custom title and applicationOperator',
 				args: [projectName, '--title', 'My App', '--applicationOperator', 'My Operator'],
 				expectedAddObliqueOptions: [
-					'--locale=de-CH fr-CH it-CH',
-					'--title=My App',
-					'--application-operator=My Operator',
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', 'My App'),
+					buildOption('--application-operator', 'My Operator'),
 				],
 			},
 			{
 				description: 'with custom applicationOperator only',
 				args: [projectName, '--applicationOperator', 'My Operator'],
 				expectedAddObliqueOptions: [
-					'--locale=de-CH fr-CH it-CH',
-					`--title=${projectName}`,
-					'--application-operator=My Operator',
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
+					buildOption('--application-operator', 'My Operator'),
 				],
 			},
 		])('title and applicationOperator handling $description', ({args, expectedAddObliqueOptions}) => {
@@ -748,9 +748,9 @@ export class AppModule {
 					`@angular/cli@${currentVersions['@angular/cli']}`,
 					'generate',
 					'@oblique/toolchain:add-oblique',
-					'--locale=de-CH fr-CH it-CH',
-					`--title=${projectName}`,
-					'--application-operator=Bridged Operator',
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
+					buildOption('--application-operator', 'Bridged Operator'),
 				];
 				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
@@ -774,9 +774,9 @@ export class AppModule {
 					`@angular/cli@${currentVersions['@angular/cli']}`,
 					'generate',
 					'@oblique/toolchain:add-oblique',
-					'--locale=de-CH fr-CH it-CH',
-					`--title=${projectName}`,
-					"--application-operator=Office fédéral de l'Informatique, 1234",
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
+					buildOption('--application-operator', "Office fédéral de l'Informatique, 1234"),
 				];
 				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
@@ -797,8 +797,8 @@ export class AppModule {
 					`@angular/cli@${currentVersions['@angular/cli']}`,
 					'generate',
 					'@oblique/toolchain:add-oblique',
-					'--locale=de-CH fr-CH it-CH',
-					`--title=${projectName}`,
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
 				];
 				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
@@ -819,8 +819,8 @@ export class AppModule {
 					`@angular/cli@${currentVersions['@angular/cli']}`,
 					'generate',
 					'@oblique/toolchain:add-oblique',
-					'--locale=de-CH fr-CH it-CH',
-					`--title=${projectName}`,
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
 				];
 				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,

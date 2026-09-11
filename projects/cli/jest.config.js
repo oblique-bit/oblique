@@ -33,7 +33,7 @@ export default {
 		},
 		'src/utils/cli-utils.ts': {
 			statements: 97,
-			branches: 92,
+			branches: 91,
 			functions: 100,
 			lines: 97,
 		},

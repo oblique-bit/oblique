@@ -136,7 +136,7 @@ export function buildOption(key: string, value: string | boolean): string {
 	if (value === false || value === 'false') {
 		return `no-${key}`;
 	}
-	return `${key}=${value}`;
+	return isWindows() ? `${key}="${value}"` : `${key}=${value}`;
 }
 
 // eslint-disable-next-line max-lines-per-function

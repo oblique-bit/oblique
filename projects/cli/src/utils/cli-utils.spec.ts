@@ -276,7 +276,11 @@ Examples of use:
 
 	describe('buildOption', () => {
 		test('should return key="value" with a string value', () => {
-			expect(buildOption('key', 'value')).toEqual('key=value');
+			if (isWindows()) {
+				expect(buildOption('key', 'value')).toEqual('key="value"');
+			} else {
+				expect(buildOption('key', 'value')).toEqual('key=value');
+			}
 		});
 
 		test('should return key with true as value', () => {
@@ -327,7 +331,7 @@ Examples of use:
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					osNpxCommand,
-					['@angular/cli@^22', 'new', 'project', '--truthy-flag', '--no-falsy-flag', '--option=value'],
+					['@angular/cli@^22', 'new', 'project', '--truthy-flag', '--no-falsy-flag', buildOption('--option', 'value')],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
@@ -369,7 +373,7 @@ Examples of use:
 				execute({name: 'ngAdd', dependency: 'jest', options: {truthyFlag: true, falsyFlag: false, option: 'value'}});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					osNpxCommand,
-					['@angular/cli@^22', 'add', 'jest@30', '--truthy-flag', '--no-falsy-flag', '--option=value'],
+					['@angular/cli@^22', 'add', 'jest@30', '--truthy-flag', '--no-falsy-flag', buildOption('--option', 'value')],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
@@ -573,7 +577,7 @@ Examples of use:
 				execute({name: 'ngGenerate', schematic: 'my-lib:toto', options: {prefix: 'app'}});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					osNpxCommand,
-					['@angular/cli@^22', 'generate', 'my-lib:toto', '--prefix=app'],
+					['@angular/cli@^22', 'generate', 'my-lib:toto', buildOption('--prefix', 'app')],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
