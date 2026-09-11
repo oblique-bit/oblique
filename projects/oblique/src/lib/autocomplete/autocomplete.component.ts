@@ -30,8 +30,9 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {TranslatePipe} from '@ngx-translate/core';
-import {Observable, Subject, debounceTime, shareReplay} from 'rxjs';
+import {Observable, Subject, debounceTime} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
 import {
 	ObIAutocompleteInputOption,
@@ -92,9 +93,9 @@ export class ObAutocompleteComponent<T = string>
 	autocompleteInputControl = new FormControl<T | string>('', {updateOn: 'change'});
 	filteredOptions$: Observable<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>;
 	hasGroupOptions = false;
-	readonly searchText$ = this.autocompleteInputControl.valueChanges.pipe(
-		map(value => this.getStringValue(value)),
-		shareReplay()
+	readonly searchText = toSignal(
+		this.autocompleteInputControl.valueChanges.pipe(map(value => this.getStringValue(value))),
+		{initialValue: ''}
 	);
 	onModelTouched: () => void;
 	readonly hints: Signal<{align: 'start' | 'end'; template: string}[]>;

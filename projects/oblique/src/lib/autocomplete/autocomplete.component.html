@@ -80,8 +80,7 @@
 				>
 					<span
 						[innerHTML]="
-							displayWith()(option.label)
-								| obHighlightTextPipe: (searchText$ | async) : highlightCssClass() : filterRegexFlag()
+							displayWith()(option.label) | obHighlightTextPipe: searchText() : highlightCssClass() : filterRegexFlag()
 						"
 					></span>
 				</span>

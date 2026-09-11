@@ -383,10 +383,9 @@ describe(ObAutocompleteComponent.name, () => {
 		});
 
 		describe('with null as input', () => {
-			it('searchText$ should emit an empty string', async () => {
-				const promise = firstValueFrom(component.searchText$);
+			it('searchText should emit an empty string', () => {
 				component.autocompleteInputControl.setValue(null);
-				expect(await promise).toBe('');
+				expect(component.searchText()).toBe('');
 			});
 
 			it('should not change filteredOptions$', async () => {
