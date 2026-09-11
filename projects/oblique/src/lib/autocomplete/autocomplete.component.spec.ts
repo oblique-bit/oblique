@@ -259,7 +259,7 @@ describe(ObAutocompleteComponent.name, () => {
 			jest.spyOn(component, 'writeValue');
 			loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
 			obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
-			parentComponent.model = new FormControl<string>('have the same value as FormControl in parent');
+			parentComponent.model.setValue('have the same value as FormControl in parent');
 			parentComponent.searchText = 'have the same value as FormControl in parent';
 			parentFixture.detectChanges();
 		});
@@ -384,7 +384,9 @@ describe(ObAutocompleteComponent.name, () => {
 
 		describe('with null as input', () => {
 			it('searchText should emit an empty string', () => {
+				jest.useFakeTimers();
 				component.autocompleteInputControl.setValue(null);
+				jest.advanceTimersByTime(250);
 				expect(component.searchText()).toBe('');
 			});
 
@@ -575,6 +577,7 @@ describe(ObAutocompleteComponent.name, () => {
 
 	describe('displayWith', () => {
 		beforeEach(async () => {
+			jest.useFakeTimers();
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
 				set: {
 					template: `<form [formGroup]="parentFormControl">
@@ -584,19 +587,16 @@ describe(ObAutocompleteComponent.name, () => {
 			}).createComponent(TestParentComponent);
 			parentComponent = parentFixture.componentInstance;
 			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+			parentFixture.detectChanges();
 			loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
 			obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
-			parentFixture.detectChanges();
 		});
 
 		it('modifies the display of the selected option using the displayWith method', async () => {
+			jest.useRealTimers();
 			parentComponent.autocompleteOptions = [{label: {name: 'hello'}}];
 			parentFixture.componentRef.changeDetectorRef.detectChanges();
-			await parentFixture.whenStable();
 			await obAutocompleteHarness.openAutocompletePanel();
-			await new Promise(resolve => {
-				setTimeout(resolve, 250);
-			});
 			parentFixture.detectChanges();
 			const options = await loader.getAllHarnesses(MatOptionHarness);
 			await options[0].click();
@@ -604,6 +604,14 @@ describe(ObAutocompleteComponent.name, () => {
 
 			const input = parentFixture.nativeElement.querySelector('input');
 			expect(input.value).toBe('hello');
+		});
+
+		it('handles non-string values through displayWith', async () => {
+			component.autocompleteInputControl.setValue({name: 'hello'});
+			jest.advanceTimersByTime(250);
+			await Promise.resolve();
+			parentFixture.detectChanges();
+			expect(component.searchText()).toBe('hello');
 		});
 	});
 

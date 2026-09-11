@@ -94,7 +94,10 @@ export class ObAutocompleteComponent<T = string>
 	filteredOptions$: Observable<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>;
 	hasGroupOptions = false;
 	readonly searchText = toSignal(
-		this.autocompleteInputControl.valueChanges.pipe(map(value => this.getStringValue(value))),
+		this.autocompleteInputControl.valueChanges.pipe(
+			debounceTime(200),
+			map(value => this.getStringValue(value))
+		),
 		{initialValue: ''}
 	);
 	onModelTouched: () => void;
