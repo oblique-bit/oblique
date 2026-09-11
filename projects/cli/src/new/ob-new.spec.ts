@@ -11,11 +11,13 @@ const nodeChildProcess: typeof import('node:child_process') = jest.requireActual
 
 describe('Ob new command', () => {
 	const projectName = 'SuperduperProject';
+	const osNpxCommand = isWindows() ? 'npx.cmd' : 'npx';
+	const osNpmCommand = isWindows() ? 'npm.cmd' : 'npm';
 	let parsedObNewCommand: Command<[string], OptionValues>;
 
 	function buildNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return {
-			command: 'npx',
+			command: osNpxCommand,
 			args: [
 				`@angular/cli@${currentVersions['@angular/cli']}`,
 				'add',
@@ -27,7 +29,7 @@ describe('Ob new command', () => {
 
 	function buildToolchainNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return {
-			command: 'npx',
+			command: osNpxCommand,
 			args: [
 				`@angular/cli@${currentVersions['@angular/cli']}`,
 				'add',
@@ -251,7 +253,7 @@ describe('Ob new command', () => {
 				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`, () => {
 					expect(spawnSync).toHaveBeenNthCalledWith(
 						1,
-						'npx',
+						osNpxCommand,
 						[
 							`@angular/cli@${currentVersions['@angular/cli']}`,
 							'new',
@@ -270,7 +272,7 @@ describe('Ob new command', () => {
 				test(`should call npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']}`, () => {
 					expect(spawnSync).toHaveBeenNthCalledWith(
 						2,
-						'npm',
+						osNpmCommand,
 						[
 							'install',
 							`@angular/material@${currentVersions['@angular/material']}`,
@@ -290,7 +292,7 @@ describe('Ob new command', () => {
 				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} generate @oblique/toolchain:linting`, () => {
 					expect(spawnSync).toHaveBeenNthCalledWith(
 						4,
-						'npx',
+						osNpxCommand,
 						[
 							`@angular/cli@${currentVersions['@angular/cli']}`,
 							'generate',
@@ -626,7 +628,7 @@ describe('Ob new command', () => {
 							'@oblique/toolchain:add-oblique',
 							`--title=${projectName}`,
 						];
-				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -696,7 +698,7 @@ describe('Ob new command', () => {
 					'@oblique/toolchain:add-oblique',
 					...expectedAddObliqueOptions,
 				];
-				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -750,7 +752,7 @@ export class AppModule {
 					`--title=${projectName}`,
 					'--application-operator=Bridged Operator',
 				];
-				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -776,7 +778,7 @@ export class AppModule {
 					`--title=${projectName}`,
 					"--application-operator=Office fédéral de l'Informatique, 1234",
 				];
-				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -798,7 +800,7 @@ export class AppModule {
 					'--locale=de-CH fr-CH it-CH',
 					`--title=${projectName}`,
 				];
-				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -820,7 +822,7 @@ export class AppModule {
 					'--locale=de-CH fr-CH it-CH',
 					`--title=${projectName}`,
 				];
-				expect(spawnSync).toHaveBeenNthCalledWith(6, 'npx', expectedArgs, {
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
