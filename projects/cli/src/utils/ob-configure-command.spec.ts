@@ -1,5 +1,6 @@
 import {Command, type Option} from '@commander-js/extra-typings';
 import type {OptionValues} from 'commander';
+import type {MockInstance} from 'vitest';
 import {type ObNewOptions, schema} from '../new/ob-new.model.js';
 import type {ObCliSchema, ObSchemaOption} from './ob-cli.model.js';
 import {
@@ -10,8 +11,8 @@ import {
 } from './ob-configure-command.js';
 import type {ObUpdateOptions} from '../update/ob-update.model.js';
 
-jest.mock('../new/ob-new.model.js');
-jest.mock('./ob-cli.model.js');
+vi.mock('../new/ob-new.model.js');
+vi.mock('./ob-cli.model.js');
 
 describe('ob-configure-command', () => {
 	let command: Command<[string], OptionValues>;
@@ -21,7 +22,7 @@ describe('ob-configure-command', () => {
 	});
 
 	afterEach(() => {
-		jest.restoreAllMocks();
+		vi.restoreAllMocks();
 	});
 
 	describe('convertOptionPropertyNames', () => {
@@ -47,10 +48,10 @@ describe('ob-configure-command', () => {
 	});
 
 	describe('addObNewCommandOptions', () => {
-		let addOptionSpy: jest.SpyInstance;
+		let addOptionSpy: MockInstance;
 
 		beforeEach(() => {
-			addOptionSpy = jest.spyOn(command, 'addOption');
+			addOptionSpy = vi.spyOn(command, 'addOption');
 		});
 
 		test.each([
@@ -256,10 +257,10 @@ describe('ob-configure-command', () => {
 	});
 
 	describe('boolean options via addObNewCommandOptions', () => {
-		let addOptionSpy: jest.SpyInstance;
+		let addOptionSpy: MockInstance;
 
 		beforeEach(() => {
-			addOptionSpy = jest.spyOn(command, 'addOption');
+			addOptionSpy = vi.spyOn(command, 'addOption');
 		});
 
 		const cliSchema: ObCliSchema<Partial<ObNewOptions<ObSchemaOption>>> = {
@@ -289,10 +290,10 @@ describe('ob-configure-command', () => {
 	});
 
 	describe('option metadata', () => {
-		let addOptionSpy: jest.SpyInstance;
+		let addOptionSpy: MockInstance;
 
 		beforeEach(() => {
-			addOptionSpy = jest.spyOn(command, 'addOption');
+			addOptionSpy = vi.spyOn(command, 'addOption');
 		});
 
 		test('sets mandatory option', () => {
