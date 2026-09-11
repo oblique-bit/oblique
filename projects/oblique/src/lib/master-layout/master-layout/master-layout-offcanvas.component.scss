@@ -66,9 +66,10 @@
 
 		.ob-close.ob-button {
 			@include button.ob-link-btn();
-			font-size: variables.$ob-font-size-biggest;
 			padding: 0;
 			color: variables.$ob-default;
+			height: variables.$ob-button-height;
+			width: variables.$ob-button-height;
 
 			&.mat-mdc-button-base.ob-button {
 				&:focus {
