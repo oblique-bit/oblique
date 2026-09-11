@@ -16,6 +16,11 @@
       "mandatory": true,
       "flagValuePlaceholder": "<project-name>"
     },
+    "applicationOperator": {
+      "type": "string",
+      "description": "Add the specified application operator: The operator will be visible in the footer of your application.",
+      "flagValuePlaceholder": "<application-operator>"
+    },
     "locales": {
       "type": "string",
       "flagValuePlaceholder": "<locales>",

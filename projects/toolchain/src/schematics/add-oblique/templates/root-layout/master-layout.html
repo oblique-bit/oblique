@@ -1,6 +1,6 @@
 <ob-master-layout [navigation]="[{ url: 'home', label: 'i18n.oblique.header.navigation.home', icon: 'home' }]">
-	<ng-container obHeaderTitle>_APP_TITLE_PLACEHOLDER_</ng-container>
+	<ng-container obHeaderTitle><%= title %></ng-container>
 	<ng-container obFooterInfo>
-		<p>&copy; {{ year() }} _APPLICATION_OPERATOR_</p>
+		<p>&copy; {{ year() }} <%= applicationOperator %></p>
 	</ng-container>
 </ob-master-layout>

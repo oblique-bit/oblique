@@ -10,7 +10,6 @@ import {
 import {
 	adaptInsertChange,
 	addDevDependency,
-	angularAppFilesNames,
 	appModulePath,
 	applyChanges,
 	createSrcFile,
@@ -24,7 +23,6 @@ import {
 	createSafeRule,
 	infoMigration,
 	readFile,
-	replaceInFile,
 	setOrCreateAngularProjectsConfig,
 	writeFile,
 } from '../../utils';
@@ -173,7 +171,6 @@ function addDefaultHomeComponent(prefix: string): Rule {
 		addDefaultComponent(tree, prefix);
 		addDefaultComponentToAppModule(tree);
 		addDefaultComponentRouteToAppRoutingModule(tree);
-		removeTitleTest(tree);
 
 		return tree;
 	});
@@ -220,11 +217,6 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 		}
 		applyChanges(tree, routingModule, changes);
 	}
-}
-
-function removeTitleTest(tree: Tree): void {
-	const appSpecFile = `src/app/${angularAppFilesNames.appComponentSpec}`;
-	replaceInFile(tree, appSpecFile, /\s*it\('should render title', .*?}\);/s, '');
 }
 
 function addExternalLink(externalLink: boolean): Rule {

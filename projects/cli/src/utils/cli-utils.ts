@@ -1,6 +1,7 @@
 import type {ObCommandConfig, ObOptions} from './ob-cli.model.js';
 import {type SpawnSyncOptions, spawnSync} from 'child_process';
 import {gte, major} from 'semver';
+import {dasherize} from './strings.js';
 
 /* Generated content, do not edit */
 export const version = '16.0.0-rc.1';
@@ -225,7 +226,9 @@ function isNodeVersionSupported(minimumSupportedNodeVersion: string): boolean {
 }
 
 function executeNgCommand(args: string[], options: ObOptions = {}, spawnSyncOptions: SpawnSyncOptions = {}): void {
-	const parsedOptions = Object.entries<string | boolean>(options).map(([key, value]) => `--${buildOption(key, value)}`);
+	const parsedOptions = Object.entries<string | boolean>(options).map(
+		([key, value]) => `--${buildOption(dasherize(key), value)}`
+	);
 	executeCommand('npx', [getVersionedDependency('@angular/cli'), ...args, ...parsedOptions], spawnSyncOptions);
 }
 

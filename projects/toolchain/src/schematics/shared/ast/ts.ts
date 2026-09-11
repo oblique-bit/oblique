@@ -1,13 +1,26 @@
+import type {Tree} from '@angular-devkit/schematics';
 import {
+	type Change,
+	InsertChange,
+	NoopChange,
+	RemoveChange,
+	applyToUpdateRecorder,
+} from '@schematics/angular/utility/change';
+import {
+	type ClassDeclaration,
 	type CompilerOptions,
 	type Node,
 	ScriptTarget,
 	type SourceFile,
+	type Statement,
 	type TypeChecker,
 	createCompilerHost,
 	createProgram,
 	createSourceFile,
 	forEachChild,
+	isClassDeclaration,
+	isPropertyDeclaration,
+	isStatement,
 } from 'typescript';
 import type {Edit, TransformSourceConfig, TransformVisitor, TransformVisitorWithTypeChecker} from './types';
 
@@ -120,4 +133,146 @@ export function applyEdits(source: string, edits: readonly Edit[]): string {
 	return [...edits]
 		.sort((left, right) => right.start - left.start)
 		.reduce((result, edit) => result.slice(0, edit.start) + edit.text + result.slice(edit.end), source);
+}
+
+/**
+ * Creates a TypeScript {@link SourceFile} from a file in the tree.
+ *
+ * @param tree - The schematics tree containing the file.
+ * @param filePath - The path to the TypeScript file.
+ * @returns The parsed {@link SourceFile}.
+ */
+export function createSrcFile(tree: Tree, filePath: string): SourceFile {
+	return createSourceFile(filePath, tree.readText(filePath), ScriptTarget.Latest, true);
+}
+
+/**
+ * Applies a list of {@link Change} records to a file in the tree.
+ *
+ * @param tree - The schematics tree to modify.
+ * @param filePath - The path to the file to update.
+ * @param changes - The changes to apply.
+ * @returns The modified tree.
+ */
+export function applyChanges(tree: Tree, filePath: string, changes: Change[]): Tree {
+	const records = tree.beginUpdate(filePath);
+	applyToUpdateRecorder(records, changes);
+	tree.commitUpdate(records);
+	return tree;
+}
+
+/**
+ * Finds the first class declaration with the given name in a source file.
+ *
+ * @param sourceFile - The source file to search.
+ * @param className - The name of the class to find.
+ * @returns The matching {@link ClassDeclaration}, or `undefined` if not found.
+ */
+export function findClassDeclaration(sourceFile: SourceFile, className: string): ClassDeclaration | undefined {
+	const visit = (node: Node): ClassDeclaration | undefined => {
+		if (isClassDeclaration(node) && node.name?.text === className) {
+			return node;
+		}
+		for (const child of node.getChildren(sourceFile)) {
+			const found = visit(child);
+			if (found) {
+				return found;
+			}
+		}
+		return undefined;
+	};
+	return visit(sourceFile);
+}
+
+/**
+ * Removes a property (e.g. a signal) from a class declaration.
+ *
+ * @param sourceFile - The source file containing the class.
+ * @param className - The name of the class.
+ * @param propertyName - The name of the property to remove.
+ * @returns A {@link RemoveChange} that removes the property, or a {@link NoopChange} if it is not found.
+ */
+export function removeClassProperty(sourceFile: SourceFile, className: string, propertyName: string): Change {
+	const classDeclaration = findClassDeclaration(sourceFile, className);
+	if (!classDeclaration) {
+		return new NoopChange();
+	}
+	const property = classDeclaration.members.find(
+		member => isPropertyDeclaration(member) && member.name.getText(sourceFile) === propertyName
+	);
+	if (!property) {
+		return new NoopChange();
+	}
+	return new RemoveChange(sourceFile.fileName, property.getStart(sourceFile), property.getText(sourceFile));
+}
+
+/**
+ * Inserts a property into a class declaration.
+ *
+ * The property is inserted after the class opening brace, before any existing
+ * members.
+ *
+ * @param sourceFile - The source file containing the class.
+ * @param className - The name of the class.
+ * @param propertyText - The text of the property to insert (without trailing newline).
+ * @returns An {@link InsertChange} that inserts the property, or a {@link NoopChange} if the class is not found.
+ */
+export function insertClassProperty(sourceFile: SourceFile, className: string, propertyText: string): Change {
+	const classDeclaration = findClassDeclaration(sourceFile, className);
+	if (!classDeclaration) {
+		return new NoopChange();
+	}
+	const firstMember = classDeclaration.members[0];
+	const insertPos = firstMember ? firstMember.getStart(sourceFile) : classDeclaration.members.pos + 1;
+	const indentation = firstMember ? getLineIndentation(sourceFile, firstMember.getStart(sourceFile)) : '\t';
+	return new InsertChange(sourceFile.fileName, insertPos, `${indentation}${propertyText}\n`);
+}
+
+/**
+ * Removes the first statement matching the given predicate from a source file.
+ *
+ * The search descends into nested blocks (e.g. a `describe` block), so a
+ * predicate matching a nested statement (such as an `it` test) removes only
+ * that statement and leaves its enclosing block intact.
+ *
+ * @param sourceFile - The source file to modify.
+ * @param filePath - The path to the file (used for the returned change).
+ * @param predicate - A predicate that identifies the statement to remove.
+ * @returns A {@link RemoveChange} that removes the statement, or a {@link NoopChange} if none matches.
+ */
+export function removeStatement(
+	sourceFile: SourceFile,
+	filePath: string,
+	predicate: (statement: Statement) => boolean
+): Change {
+	const statement = findStatement(sourceFile, predicate);
+	if (!statement) {
+		return new NoopChange();
+	}
+	return new RemoveChange(filePath, statement.getStart(sourceFile), statement.getText(sourceFile));
+}
+
+function findStatement(sourceFile: SourceFile, predicate: (statement: Statement) => boolean): Statement | undefined {
+	// Depth-first, children-first traversal so the innermost matching statement
+	// is found before its enclosing block (whose text also contains the match).
+	const visit = (node: Node): Statement | undefined => {
+		for (const child of node.getChildren(sourceFile)) {
+			const found = visit(child);
+			if (found) {
+				return found;
+			}
+		}
+		if (isStatement(node) && predicate(node)) {
+			return node;
+		}
+		return undefined;
+	};
+	return visit(sourceFile);
+}
+
+function getLineIndentation(sourceFile: SourceFile, position: number): string {
+	const lineStart = sourceFile.getLineAndCharacterOfPosition(position).character;
+	const line = sourceFile.text.slice(position - lineStart, position);
+	const firstNonWhitespace = line.search(/[^\t ]/u);
+	return firstNonWhitespace === -1 ? line : line.slice(0, firstNonWhitespace);
 }

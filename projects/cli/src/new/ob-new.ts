@@ -1,4 +1,6 @@
 import {Command, type OptionValues} from '@commander-js/extra-typings';
+import * as path from 'node:path';
+import fs from 'node:fs';
 import {
 	buildOption,
 	commandUsageText,
@@ -76,7 +78,6 @@ function runNgNewAngularWorkspace(projectName: string, interactive: boolean, pre
 	const baseOptions = Object.entries(immutableOptions)
 		.map(([key, option]) => ({key, value: option.value}))
 		.reduce((options, option) => ({...options, [option.key]: option.value}), {});
-
 	execute({
 		name: 'ngNew',
 		projectName,
@@ -108,7 +109,16 @@ function runAddOblique(options: ObNewOptions, projectName: string, workingDirect
 	executeNgAddToolchain(toolchainAddOptions, workingDirectory);
 	runAddLinting(options.eslint, filteredOptions, workingDirectory);
 	executeNgAddOblique(obliqueOptions, workingDirectory);
-	executeAddObliqueSchematic(getAddObliqueLocalesOptions(toolchainOptions), workingDirectory);
+	// TEMPORARY PATCH: the oblique ng-add collects `applicationOperator` and `title` (via its
+	// required `x-prompt`s) and writes them into the app module. The toolchain add-oblique
+	// schematic needs those values for the master layout footer, but they are not forwarded by
+	// the CLI. Read them back from the app module until the oblique schematics migrate to the
+	// toolchain. See `readBridgedObliqueValues`.
+	const bridgedObliqueValues = readBridgedObliqueValues(workingDirectory);
+	executeAddObliqueSchematic(
+		getAddObliqueOptions(toolchainOptions, obliqueOptions, bridgedObliqueValues),
+		workingDirectory
+	);
 }
 
 function getToolchainAddOptions(toolchainOptions: ObOptions): ObOptions {
@@ -117,11 +127,62 @@ function getToolchainAddOptions(toolchainOptions: ObOptions): ObOptions {
 	return options;
 }
 
-function getAddObliqueLocalesOptions(toolchainOptions: ObOptions): ObOptions {
+/**
+ * TEMPORARY PATCH: reads the `applicationOperator` and `title` values that the `@oblique/oblique`
+ * ng-add schematic wrote into the app module's `provideObliqueConfiguration(...)` call.
+ *
+ * The oblique ng-add collects these values via its required `x-prompt`s, but the CLI does not
+ * receive them back. The toolchain `add-oblique` schematic needs them for the master layout
+ * footer. Once the oblique schematics migrate to the toolchain, this bridge can be removed.
+ *
+ * @param workingDirectory - The directory of the newly created project.
+ * @returns The bridged values, or `undefined` for any value that could not be read.
+ */
+function readBridgedObliqueValues(workingDirectory: string): {applicationOperator?: string; title?: string} {
+	const appModulePath = path.join(workingDirectory, 'src', 'app', 'app-module.ts');
+	const content = readAppModule(appModulePath);
+	if (content === undefined) {
+		return {};
+	}
+	return {
+		applicationOperator: extractQuotedValue(content, 'applicationOperator'),
+		title: extractQuotedValue(content, 'applicationName'),
+	};
+}
+
+function readAppModule(appModulePath: string): string | undefined {
+	try {
+		return fs.readFileSync(appModulePath, 'utf-8');
+	} catch {
+		return undefined;
+	}
+}
+
+function extractQuotedValue(content: string, propertyName: string): string | undefined {
+	const match = new RegExp(`${propertyName}\\s*:\\s*(?<quote>['"\`])(?<value>.*?)\\k<quote>\\s*[,}]`, 'u').exec(
+		content
+	);
+	return match?.groups?.['value'];
+}
+
+function getAddObliqueOptions(
+	toolchainOptions: ObOptions,
+	obliqueOptions: ObOptions,
+	bridgedObliqueValues: {applicationOperator?: string; title?: string}
+): ObOptions {
 	const locales = toolchainOptions['locales'];
 	const addObliqueOptions: ObOptions = {};
 	if (locales && (locales as string).trim() !== '') {
 		addObliqueOptions['locale'] = (locales as string).trim();
+	}
+	const title = (obliqueOptions['title'] as string) ?? bridgedObliqueValues.title;
+	if (title) {
+		addObliqueOptions['title'] = title;
+	}
+	const applicationOperator =
+		(obliqueOptions['applicationOperator'] as string) ?? bridgedObliqueValues.applicationOperator;
+	if (applicationOperator) {
+		addObliqueOptions['applicationOperator'] = applicationOperator;
 	}
 	return addObliqueOptions;
 }
@@ -230,7 +291,6 @@ function configureCommandOptions(newCommand: Command<[string], OptionValues>): C
 function addImmutableOptionsText(command: Command<[string], OptionValues>): Command<[string], OptionValues> {
 	command.addHelpText('after', '\nThese options are set per default:\n');
 	const padEnd = 36;
-
 	Object.entries(immutableOptions).forEach(([key, flag]) => {
 		const flagValue = buildOption(key, flag.value);
 		const newFlagValue = `  --${flagValue}`.padEnd(padEnd, ' ');

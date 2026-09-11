@@ -325,7 +325,7 @@ Examples of use:
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^22', 'new', 'project', '--truthyFlag', '--no-falsyFlag', '--option=value'],
+					['@angular/cli@^22', 'new', 'project', '--truthy-flag', '--no-falsy-flag', '--option=value'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
@@ -367,7 +367,7 @@ Examples of use:
 				execute({name: 'ngAdd', dependency: 'jest', options: {truthyFlag: true, falsyFlag: false, option: 'value'}});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^22', 'add', 'jest@30', '--truthyFlag', '--no-falsyFlag', '--option=value'],
+					['@angular/cli@^22', 'add', 'jest@30', '--truthy-flag', '--no-falsy-flag', '--option=value'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});
@@ -413,7 +413,7 @@ Examples of use:
 				});
 				expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(
 					'npx',
-					['@angular/cli@^22', 'generate', '@oblique/toolchain:add-oblique', '--dryRun', '--no-force'],
+					['@angular/cli@^22', 'generate', '@oblique/toolchain:add-oblique', '--dry-run', '--no-force'],
 					{encoding: 'utf8', shell: isWindows(), stdio: 'inherit'}
 				);
 			});

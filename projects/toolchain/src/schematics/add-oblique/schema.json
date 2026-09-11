@@ -15,6 +15,24 @@
       "default": "de-CH fr-CH it-CH",
       "description": "Supported locales: Use a whitespace separated list.",
       "x-prompt": "Choose the supported locales (whitespace separated, e.g. de-CH fr-CH it-CH)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Application title for master layout header",
+      "x-prompt": {
+        "type": "input",
+        "message": "What is the title of the application? This is a mandatory information"
+      },
+      "minLength": 1
+    },
+    "applicationOperator": {
+      "type": "string",
+      "description": "Application operator for footer copyright",
+      "x-prompt": {
+        "type": "input",
+        "message": "Enter the name and address of the federal office or other entity that operates the application.\n           It accepts either text or a translation key, both of which support HTML.\n           This information will be wrapped in an <address> tag on the Accessibility Statement page: "
+      },
+      "minLength": 1
     }
   }
 }

@@ -31,7 +31,7 @@ export function addOblique(options: ObIOptionsSchema): Rule {
 			checkForMultiProject(),
 			checkForSSR(),
 			preconditions(),
-			oblique(options),
+			oblique(),
 			obliqueFeatures(options),
 			toolchain(options),
 			installDependencies(),
