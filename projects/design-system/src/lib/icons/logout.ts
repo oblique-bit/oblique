@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const logoutIcon: ObRegistrableIcon = {
+	key: 'logout',
+	svg: '<path d="M1.2507,3.24984h9.72266v1.5H2.7507v14.5h8.22266v1.5H1.2507V3.24984ZM18.03,3.62484l-1.29883.75,3.97119,6.87842-8.70166-.00781-.00195,1.5,8.69989.00781-3.96747,6.87158,1.29883.75,4.83594-8.375-4.83594-8.375Z"/>',
+};

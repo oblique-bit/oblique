@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const xTwitterIcon: ObRegistrableIcon = {
+	key: 'xTwitter',
+	svg: '<path d="M20.90318,21.00014l-7.07214-10.18945,6.69812-7.81055h-1.9762l-5.60571,6.53711-4.54822-6.55371H3.09678l6.91931,9.9707-6.89966,8.0459h1.97607l5.80737-6.77246,4.69946,6.77246h5.30383ZM7.61424,4.48354l10.422,15.0166h-1.65198L5.96348,4.48354h1.65076Z"/>',
+};

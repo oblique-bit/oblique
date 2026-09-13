@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const mobileIcon: ObRegistrableIcon = {
+	key: 'mobile',
+	svg: '<path d="M5.06223,1.24984v21.5h13.87598V1.24984H5.06223ZM17.4382,2.74984v2.51855H6.56223v-2.51855h10.87598ZM17.4382,6.76839v10.47363H6.56223V6.76839h10.87598ZM6.56223,21.24984v-2.50781h10.87598v2.50781H6.56223ZM11.24973,19.24593h1.5v1.5h-1.5v-1.5ZM14.52219,4.75863h-5.04395v-1.5h5.04395v1.5Z"/>',
+};

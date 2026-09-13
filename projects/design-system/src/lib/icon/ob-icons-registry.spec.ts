@@ -1,12 +1,8 @@
 import {beforeEach, describe, expect, test, vi} from 'vitest';
 import type {iconsRegistry as IconsRegistry} from './ob-icons-registry';
+import {accessibilityIcon, accommodationIcon, addressBookIcon} from '../icons';
 
 describe('Icons Registry', () => {
-	const mockIcons = [
-		{key: 'mockIcon', svg: '<svg></svg>'},
-		{key: 'mockIconAlt', svg: '<svg></svg>'},
-		{key: 'mockIconEnd', svg: '<svg></svg>'},
-	];
 	let iconsRegistry: typeof IconsRegistry;
 
 	// ensures that iconRegistry is reset on each test case
@@ -23,19 +19,18 @@ describe('Icons Registry', () => {
 	});
 
 	test('Register one icon to the registry', () => {
-		iconsRegistry.registerIcon(mockIcons[0]);
+		iconsRegistry.registerIcon(accessibilityIcon);
 		const icons = iconsRegistry.getAllIconKeys();
 
-		expect(iconsRegistry.getIcon('mockIcon')).toBe(mockIcons[0]);
-		expect(icons).toEqual([mockIcons[0]]);
+		expect(iconsRegistry.getIcon('accessibility')).toBe(accessibilityIcon);
+		expect(icons).toEqual([accessibilityIcon]);
 	});
 
 	test('Register multiple icons to the registry', () => {
-		iconsRegistry.reset();
-		iconsRegistry.registerIcons(mockIcons);
+		iconsRegistry.registerIcons([accessibilityIcon, accommodationIcon, addressBookIcon]);
 		const icons = iconsRegistry.getAllIconKeys();
 
-		expect(iconsRegistry.getIcon('mockIconAlt')).toBe(mockIcons[1]);
+		expect(iconsRegistry.getIcon('accommodation')).toBe(accommodationIcon);
 		expect(icons.length).toBe(3);
 	});
 });

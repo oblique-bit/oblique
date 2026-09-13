@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const creditCardIcon: ObRegistrableIcon = {
+	key: 'creditCard',
+	svg: '<path d="M1.25049,3.25025v17.5h21.49902V3.25025H1.25049ZM21.24951,19.25025H2.75049v-8.26562h18.49902v8.26562ZM2.75049,6.63208v-1.88184h18.49902v1.88184H2.75049ZM3.50049,17.32837v-1.5h5.74561v1.5H3.50049ZM12.86914,17.32837h-2.87305v-1.5h2.87305v1.5Z"/>',
+};

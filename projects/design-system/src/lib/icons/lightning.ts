@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const lightningIcon: ObRegistrableIcon = {
+	key: 'lightning',
+	svg: '<path d="M17.56396,19.26709l-4.50146,2.59912-4.50146-2.59912.75-1.29883,3.00146,1.73291v-9.63086l-4.10449,4.104.0249-11.17578,1.5.00293-.01709,7.54395,4.09668-4.09619v13.25195l3.00146-1.73291.75,1.29883Z"/>',
+};

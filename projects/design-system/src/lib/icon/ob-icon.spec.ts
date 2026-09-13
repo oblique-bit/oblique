@@ -2,24 +2,20 @@ import {beforeEach, describe, expect, test} from 'vitest';
 import {html, render} from 'lit';
 import {ObIcon} from './ob-icon';
 import {iconsRegistry} from './ob-icons-registry';
+import {accessibilityIcon} from '../icons';
 
 describe(ObIcon.name, () => {
-	const mockIcon = {
-		key: 'mockIcon',
-		svg: '<svg></svg>',
-	};
-
 	describe('Renders semantic icon', () => {
 		let container: HTMLDivElement;
 		let element: ObIcon | null;
 
 		beforeEach(async () => {
-			iconsRegistry.registerIcon(mockIcon);
+			iconsRegistry.registerIcon(accessibilityIcon);
 
 			container = document.createElement('div');
 			document.body.appendChild(container);
 
-			render(html`<ob-icon key="mockIcon" label="Mock icon"></ob-icon>`, container);
+			render(html`<ob-icon key="accessibility" label="Accessibility"></ob-icon>`, container);
 
 			element = container.querySelector<ObIcon>('ob-icon');
 			await element?.updateComplete;
@@ -34,7 +30,7 @@ describe(ObIcon.name, () => {
 			const ariaHidden = svg?.getAttribute('aria-hidden');
 
 			expect(svg).toBeTruthy();
-			expect([id, role, ariaLabel, ariaHidden].filter(attr => attr)).toEqual(['mockIcon', 'img', 'Mock icon']);
+			expect([id, role, ariaLabel, ariaHidden].filter(attr => attr)).toEqual(['accessibility', 'img', 'Accessibility']);
 		});
 	});
 
@@ -43,12 +39,12 @@ describe(ObIcon.name, () => {
 		let element: ObIcon | null;
 
 		beforeEach(async () => {
-			iconsRegistry.registerIcon(mockIcon);
+			iconsRegistry.registerIcon(accessibilityIcon);
 
 			container = document.createElement('div');
 			document.body.appendChild(container);
 
-			render(html`<ob-icon key="mockIcon"></ob-icon>`, container);
+			render(html`<ob-icon key="accessibility"></ob-icon>`, container);
 
 			element = container.querySelector<ObIcon>('ob-icon');
 			await element?.updateComplete;
@@ -63,7 +59,7 @@ describe(ObIcon.name, () => {
 			const ariaHidden = svg?.getAttribute('aria-hidden');
 
 			expect(svg).toBeTruthy();
-			expect([id, role, ariaLabel, ariaHidden].filter(attr => attr)).toEqual(['mockIcon', 'true']);
+			expect([id, role, ariaLabel, ariaHidden].filter(attr => attr)).toEqual(['accessibility', 'true']);
 		});
 	});
 
@@ -72,7 +68,7 @@ describe(ObIcon.name, () => {
 		let element: ObIcon | null;
 
 		beforeEach(async () => {
-			iconsRegistry.registerIcon(mockIcon);
+			iconsRegistry.registerIcon(accessibilityIcon);
 
 			container = document.createElement('div');
 			document.body.appendChild(container);

@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const copyIcon: ObRegistrableIcon = {
+	key: 'copy',
+	svg: '<path d="M21.15967,1.25H6.65967v3.75h-3.81934v17.75h14.5v-3.75h3.81934V1.25ZM15.84033,21.25H4.34033V6.5h11.5v14.75ZM19.65967,17.5h-2.31934V5h-9.18066v-2.25h11.5v14.75Z"/>',
+};
