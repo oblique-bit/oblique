@@ -1176,6 +1176,7 @@
 	--ob-s1-color-neutral-fg-contrast_lowest-inversity_normal: rgb(7.451% 10.588% 13.333% / 0.4);
 	--ob-s1-color-neutral-fg-contrast_medium-inversity_flipped: #dfe4e9;
 	--ob-s1-color-neutral-fg-contrast_medium-inversity_normal: #263645;
+	--ob-s1-color-neutral-no_color: transparent;
 	--ob-s1-color-neutral-shadow-first: rgb(7.451% 10.588% 13.333% / 0.05);
 	--ob-s1-color-neutral-shadow-second: rgb(7.451% 10.588% 13.333% / 0.1);
 	--ob-s1-color-status-attention-bg-contrast_high-inversity_flipped: #9a3412;
