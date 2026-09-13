@@ -1,0 +1,23 @@
+:host {
+	/**
+	 * TODO: Remove the definition of these 3 tokens:
+	 *
+	 * --ob-c-icon-static-size-xs
+	 * --ob-c-icon-inline_text-spacing-vertical-offset
+	 * --ob-c-icon-color-fg
+	 *
+	 * when the `tokens-dev` branch is merged into `tokens-main`.
+	 * Check https://github.com/oblique-bit/oblique/tree/tokens-main
+	 */
+	--ob-c-icon-static-size-xs: 1rem;
+	--ob-c-icon-inline_text-spacing-vertical-offset: 0.125rem;
+	--ob-c-icon-color-fg: #131b22;
+	position: relative;
+	top: var(--ob-c-icon-inline_text-spacing-vertical-offset);
+}
+
+svg {
+	fill: var(--ob-s3-color-neutral-fg-contrast_high-inversity_normal);
+	height: var(--ob-c-icon-static-size-xs);
+	width: var(--ob-c-icon-static-size-xs);
+}

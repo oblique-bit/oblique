@@ -13,6 +13,7 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for details about how to contribute
 | ---------- | --------------------------------- |
 | **styles** | For changes in the global styles  |
 | **demo**   | For changes to the demo component |
+| **icon**   | For changes to the icon component |
 
 ## <a name="scripts"></a> Scripts
 
