@@ -1,0 +1,32 @@
+<section>
+	<h1>Static icons</h1>
+	<ul>
+		<li>Semantic: <ob-icon key="accessibility" label="Accessibility" /></li>
+		<li>Not semantic: <ob-icon key="accessibility" /></li>
+	</ul>
+</section>
+
+<section>
+	<h1>Inline icons</h1>
+	<p>
+		The Oblique documentation is partially conformant with WCAG 2.1, level AA <ob-icon key="accessibility" />. The
+		exceptions are listed below.
+	</p>
+</section>
+
+<section>
+	<h1>Unregistered</h1>
+	<p>
+		This icon doesn't exist in the icons registry (check the warning message in the console):
+		<ob-icon key="unregistered" />
+	</p>
+</section>
+
+<section>
+	<h1>Gallery</h1>
+	<ul class="icons">
+		@for (icon of icons; track icon.key) {
+			<li class="icon"><ob-icon [key]="icon.key" /></li>
+		}
+	</ul>
+</section>
