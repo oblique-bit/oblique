@@ -607,6 +607,56 @@ async function buildRow(style, spec) {
   return { instance: inst, style, tokenPath };
 }
 
+// ── per-mode label re-resolution (columned html subgroup only) ─────────────
+// style.fontSize / style.lineHeight (used above in buildRow) resolve a bare
+// Style object's bound variable via that variable's collection DEFAULT mode
+// only — a Style has no ancestor frame for setExplicitVariableModeForCollection
+// (used later, per column) to apply to. That is fine for the first column
+// (interface, the collection default), but every later column is a plain
+// .clone() of that already-labelled first column, made before its own mode is
+// set — so without this, every column shows identical, interface-only
+// numbers. This walks each row's underlying style's bound font_size /
+// line_height variable explicitly for the target mode (following alias
+// chains, same approach as resolveByModeName in figma-utils/relink-variable-aliases.js)
+// and rewrites just those two label cells.
+async function resolveBoundVariableForMode(boundVar, modeName) {
+  if (!boundVar || !boundVar.id) return null;
+  let v = await figma.variables.getVariableByIdAsync(boundVar.id);
+  let guard = 0;
+  while (v && guard++ < 15) {
+    const col = await figma.variables.getVariableCollectionByIdAsync(v.variableCollectionId);
+    if (!col) return null;
+    const mode = col.modes.find(m => m.name === modeName)
+              || col.modes.find(m => m.modeId === col.defaultModeId)
+              || col.modes[0];
+    if (!mode) return null;
+    const val = v.valuesByMode[mode.modeId];
+    if (val && val.type === 'VARIABLE_ALIAS') { v = await figma.variables.getVariableByIdAsync(val.id); continue; }
+    return val;
+  }
+  return null;
+}
+async function relabelColumnForMode(tableNode, modeName, spec) {
+  const rows = tableNode.children.filter(c => /\\/row$/.test(c.name));
+  for (const row of rows) {
+    const nameNode = findFirstText(findChild(row, 'Cell: Token Name'));
+    const tokenPath = nameNode ? String(nameNode.characters || '').trim() : '';
+    if (!tokenPath) continue;
+    const style = allStyles.find(s => s.name === figmaNameFromTokenPath(tokenPath, spec));
+    if (!style || !style.boundVariables) continue;
+    const sizeNode = findFirstText(findChild(row, 'Cell: Size'));
+    if (sizeNode && style.boundVariables.fontSize) {
+      const px = await resolveBoundVariableForMode(style.boundVariables.fontSize, modeName);
+      if (typeof px === 'number') await setText(sizeNode, fmtFontSize(px));
+    }
+    const lhNode = findFirstText(findChild(row, 'Cell: Line Height'));
+    if (lhNode && style.boundVariables.lineHeight) {
+      const px = await resolveBoundVariableForMode(style.boundVariables.lineHeight, modeName);
+      if (typeof px === 'number') await setText(lhNode, fmtLineHeight({ unit: 'PIXELS', value: px }));
+    }
+  }
+}
+
 // ── group header ───────────────────────────────────────────────────────────
 async function buildGroupHeader(key) {
   if (!components.groupHeader) return null;
@@ -1009,7 +1059,7 @@ async function main() {
     const sg = spec.subgroup;
     if (sg && subgroups[sg]) {
       if (!tablesBySubgroup.has(sg)) { tablesBySubgroup.set(sg, []); subgroupOrder.push(sg); }
-      tablesBySubgroup.get(sg).push(t);
+      tablesBySubgroup.get(sg).push({ frame: t, spec });
     } else {
       standaloneTables.push(t);
     }
@@ -1095,12 +1145,17 @@ async function main() {
         const colFrame = ensureNamedFrame(colName);
         layoutFrame(colFrame, 'VERTICAL', SUBGROUP_TABLE_GAP);
         try { colsFrame.appendChild(colFrame); } catch {}
-        for (const t of tables) {
-          const tableNode = ci === 0 ? t : t.clone();
+        for (const { frame: tf, spec: tSpec } of tables) {
+          const tableNode = ci === 0 ? tf : tf.clone();
           try { colFrame.appendChild(tableNode); } catch {}
           try { tableNode.layoutAlign = 'INHERIT'; } catch {}
           // Label this table's mode badge with the column's mode.
           await applyTableModeBadge(tableNode, modeName);
+          // Columns beyond the first are a clone of the already-baked first
+          // column, made before its own mode exists — re-resolve its
+          // Size/Line-Height labels for THIS column's mode. See the
+          // "per-mode label re-resolution" comment above relabelColumnForMode.
+          if (ci > 0) await relabelColumnForMode(tableNode, modeName, tSpec);
         }
         setColumnMode(colFrame, modeName);
       }
@@ -1111,7 +1166,7 @@ async function main() {
       const row = ensureNamedFrame(rowName);
       layoutFrame(row, 'HORIZONTAL', SUBGROUP_TABLE_GAP);
       try { container.appendChild(row); } catch {}
-      for (const t of tables) {
+      for (const { frame: t } of tables) {
         try { row.appendChild(t); } catch {}
         // Tables keep their fixed counter-axis width; do not stretch.
         try { t.layoutAlign = 'INHERIT'; } catch {}
@@ -1135,6 +1190,9 @@ async function main() {
   // Append in order to wrapper.
   for (const cont of orderedContainers) { try { wrapper.appendChild(cont); } catch {} }
   for (const t of standaloneTables)     { try { wrapper.appendChild(t); } catch {} }
+
+  // Flush relabelColumnForMode's writes before validation reads the labels back.
+  await flushTextWrites();
 
   const validate = await validatePage(page);
 
