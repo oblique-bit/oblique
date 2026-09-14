@@ -45,6 +45,11 @@
               "$value": "{ob.p.dimension.px.36}",
               "$description": "3XL typography spacing. Use for maximum text-related separation and feature-section breaks."
             },
+            "4xl": {
+              "$type": "spacing",
+              "$value": "{ob.p.dimension.px.48}",
+              "$description": "Maximum vertical spacing step in the typography padding scale. Not yet referenced by any heading or paragraph token."
+            },
             "none": {
               "$type": "spacing",
               "$value": "{ob.p.dimension.px.0}",
