@@ -335,3 +335,24 @@ Prep": internal-library cover at `364:13`, Figma Community cover at `372:2`,
 both bound to `03_semantic/color/compiled`'s
 `color/neutral/{bg,fg,border}/...` variables, zero remote bindings left on
 either).
+
+## sort-deprecated-pages.js — keep every "_deprecated" page below the separator
+
+This library keeps a literal `_________________________________`
+(underscores) page as a visual divider — everything named `*_deprecated`
+belongs below it, so the top of the page list stays just the real, current
+pages. Renaming a page to `_deprecated` (by hand, or via a doc-builder's own
+`deprecateOldScratchPages()`) never repositions it, so a page created near
+the top of the list stays there even once deprecated, unless something
+moves it.
+
+Run scan first, always. `apply` moves every `*_deprecated` page found above
+the separator to sit directly below it (in the order found), and leaves
+pages already below it untouched. Never touches page content, only
+position.
+
+As of 2026-09-14, every doc-builder's own `deprecateOldScratchPages()`
+(typography, dimension, color-variables, color-pairings) also does this
+move inline, right after renaming — so this script is now mainly for
+ad-hoc cleanup (e.g. after a manual rename) rather than something you need
+to remember to run after every build.

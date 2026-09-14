@@ -253,15 +253,25 @@ async function ensurePage(name) {
 // After a successful scratch build (no --page override), mark older
 // timestamped pages for this doc as deprecated so they don't pile up.
 // Never touches the canonical (un-timestamped) page or the page just built.
+// Also moves each newly-deprecated page below the "______..." separator
+// page, if one exists, so deprecated pages stay grouped at the bottom of
+// the page list instead of scattered wherever they happened to be created.
 async function deprecateOldScratchPages(basePageName, currentPageId) {
+  const SEPARATOR_NAME = '_________________________________';
   const prefix = basePageName + ' ';
-  for (const p of figma.root.children) {
+  const pages = [...figma.root.children]; // snapshot — we reorder children below
+  for (const p of pages) {
     if (p.type !== 'PAGE') continue;
     if (p.id === currentPageId) continue;
     if (p.name === basePageName) continue;
     if (!p.name.startsWith(prefix)) continue;
     if (p.name.endsWith('_deprecated')) continue;
     p.name = p.name + '_deprecated';
+    const sep = figma.root.children.find((x) => x.name === SEPARATOR_NAME);
+    if (sep) {
+      try { figma.root.insertChild(figma.root.children.indexOf(sep) + 1, p); }
+      catch (e) { L('move below separator failed: ' + e.message); }
+    }
   }
 }
 
