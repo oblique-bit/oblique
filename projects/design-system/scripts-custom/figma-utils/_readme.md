@@ -4,6 +4,14 @@ Standalone Figma-context maintenance scripts. They run against the `figma`
 plugin global — not Node. Run them either via the figma-console MCP
 (`figma_execute`) or by pasting into the Desktop Bridge plugin console.
 
+**Start with `run-cosmetics.js`.** It runs the relink/rename/delete/scope
+scripts below together, in the right order, from one CONFIG block — the
+single step to run after every Token Studio export. The scripts below still
+work standalone (debugging one step, or a one-off task these don't cover),
+but for the normal after-export routine, use `run-cosmetics.js`. See
+`../FIGMA-WORKFLOW.md` for where this step fits in the full pipeline, from a
+token edit to a published library.
+
 **Known issue — silent non-persist on a tight synchronous bulk loop.**
 Confirmed via `figma-ds-cli eval -f` (2026-09-10): a loop of purely
 synchronous style mutations (`style.remove()`, `style.name = x`) that returns
@@ -29,6 +37,32 @@ actually tier-tagged; do not treat that as proof the bare-root approach
 works. Every token that needs to reach CSS keeps `ob.s.*` or `ob.h.*`. Trim
 that prefix for Figma-panel readability only through a script here, never by
 shortening the JSON path below the tier letter.
+
+## run-cosmetics.js — the one script to run after every export
+
+**The problem.** Trim, scoping, and text/effect-style rename+relink used to
+be separate scripts run by hand, in an order that had to be remembered every
+time — relink before rename whenever a rename target is already occupied by
+a leftover with live usage. Forgetting a step, or the order, is how the
+library drifts out of its cosmetic state between exports.
+
+**The fix.** Run `run-cosmetics.js`:
+
+1. Edit the CONFIG block — one section per step (`relink`, `textStyles`,
+   `effectStyles`, `variables`, `scopeVariables`), each independently
+   toggleable via its own `enabled` flag. Defaults are today's known-good
+   rules (heading/body/authoring text style trim, "h/link/\*" deletion,
+   shadow effect style trim); fill in `variables`/`scopeVariables` only when
+   needed.
+2. Run with `mode: 'scan'` first — every step reports its plan, changes
+   nothing.
+3. Re-run with `mode: 'apply'` to run every enabled step for real, in order.
+
+Same collision handling (`autoResolveCollisions`), same flush-delay-before-
+return, same scan-then-apply discipline as the standalone scripts it wraps.
+See `../FIGMA-WORKFLOW.md` for the full pipeline this step fits into, and the
+gotchas that motivated each step's defaults (composite tokens recreating
+regardless of set status, re-export orphaning a cosmetic rename, …).
 
 ## unbind-variables.js — kill "ghost" variable-mode pickers
 
