@@ -107,6 +107,18 @@ available to files that consume this library.
   place, and stripping it (see that script's own header for the one-liner)
   fixed both immediately. Not a backtick issue and not an uncaught
   exception (a full try/catch around the body caught nothing either).
+- **A specific "compute a summary object, then return/console.log it" shape
+  can also produce silent empty output**, independent of the header-comment
+  bug above — confirmed 2026-09-14 building `validate-all.js`'s sweep.
+  Bisected down to: `findings.filter(...)` into `errors`/`warnings` arrays,
+  then returning a `{ ok, errorCount, warningCount, findings, ... }` object
+  built from them. A flat, unfiltered return (`{ pagesChecked, barsChecked,
+  findings }`) with the exact same `findings` array worked every time, at
+  every size tested down to a single finding. Root cause not identified —
+  not comment size, not script length, not an uncaught exception (a
+  try/catch around the whole body caught nothing). Workaround: keep the
+  Figma-side script's return value flat; do any filtering/summarising in
+  the Node-side caller instead.
 - **`figma-ds-cli eval -f` needs to run from the `figma-cli` install
   directory** (`~/figma-cli` by default), not from this repo — otherwise it
   fails to resolve its own `src/figma-client.js` import, because the CLI
@@ -118,6 +130,20 @@ available to files that consume this library.
   next read. Every apply step in `run-cosmetics.js` (and the standalone
   scripts it replaces) ends with a 1.5s delay before the script returns to
   give the plugin bridge time to flush — do not remove it.
+- **`--validate` used to silently create a fresh empty scratch page on every
+  run**, in any builder whose `ensurePage()` computes a timestamped scratch
+  page name (typography, dimension — not color-pairings/color-variables/
+  viewport, which resolve pages differently). It always appended the
+  scratch-build timestamp to the target name, even in validate-only mode,
+  so it never found the real canonical page, silently created an empty one
+  named after the current minute, and then correctly reported every table
+  missing from that empty page — while `--validate`'s own usage comment
+  promised "no writes". Fixed 2026-09-14 in both builders: validate-only
+  now always resolves the bare canonical name and throws instead of
+  creating one if it's missing. If you have old `<canonical> <timestamp>`
+  pages with zero content, they're likely a leftover from this — safe to
+  rename `_deprecated` (never delete, see the memory note this repo
+  follows on that).
 - **Every token that needs to reach CSS keeps a tier letter** ("ob.s.\*" /
   "ob.h.\*") in its path. The dev build's CSS format
   (`style-dictionary-formats-token-store.mjs:24`) only emits root variables
@@ -126,11 +152,40 @@ available to files that consume this library.
   readability only through `run-cosmetics.js`, never by shortening the JSON
   path below the tier letter.
 
+## Health check: `figma-doc-builders/validate-all.js`
+
+Read-only, safe to run anytime (never writes to Figma or a token file).
+Two independent passes:
+
+1. **Structural** — shells out to each of the 5 builders' own `--validate`
+   (or `--mode validate` for color-pairings): row counts, duplicate frames,
+   description mismatches, per that builder's own checks.
+2. **Section-bar sweep** (the check nothing else does) — walks every
+   canonical page and checks every `_docs/shared/section_bar` instance
+   for: bound to the live component (not `_docs/shared/section_bar_deprecated`),
+   correct tier variant, Color Bar strip hidden, the three
+   maintainer/contributor/consumer badges hidden, and non-empty/non-default
+   title + `$description` text. This is the check that would have caught
+   every "wrong variant / stray badges" bug fixed on 2026-09-14 (dimension,
+   color-pairings, viewport — see each builder's own `_readme.md` "Fixed
+   bugs" section) before it ever reached a screenshot.
+
+```bash
+node scripts-custom/figma-doc-builders/validate-all.js                    # both passes
+node scripts-custom/figma-doc-builders/validate-all.js --structural-only
+node scripts-custom/figma-doc-builders/validate-all.js --sweep-only
+```
+
+Run this after rebuilding any doc page, and periodically even when nothing
+changed — a page can drift (e.g. still bound to a component that was later
+marked `_deprecated`) without anyone rebuilding it.
+
 ## Tools in this folder
 
 - **`figma-doc-builders/`** — one subfolder per documentation page
-  (typography, color-variables, color-pairings, dimension, viewport). Each
-  has its own `build-<doc>.js` and `registry.json`.
+  (typography, color-variables, color-pairings, dimension, viewport), plus
+  the cross-page `validate-all.js` above. Each subfolder has its own
+  `build-<doc>.js`, `registry.json`, and `_readme.md`.
 - **`figma-utils/`** — standalone Figma-context maintenance scripts,
   including `run-cosmetics.js`. See `figma-utils/_readme.md` for the full
   list and what each one does.

@@ -1,5 +1,13 @@
 # Viewport / Responsiveness Builder
 
+**Stale as of 2026-09-14 — verify against `registry.json` before trusting counts.**
+This file still describes 5 tables including "Header Variant"
+(`ob.c.header.variant`); `registry.json` only has 4 (`breakpoints`,
+`ranges`, `css_selectors`, `page_container`) — its source directory
+(`04_component/molecule/header`) doesn't exist in release 16. Not fixed as
+part of the 2026-09-14 work below; flagging so this doesn't mislead anyone
+in the meantime.
+
 Generates the **entire 📱 Responsiveness** Figma docs page from `src/lib/themes/` JSON files. One full build owns the whole page inside a single **Viewport Output** frame — the foundation bar, 5 token tables, and the Applied Viewport Modes illustration. No hand-built content is left on the page; `node build-viewport.js` reproduces it end to end.
 
 The 5 tables:
@@ -145,3 +153,25 @@ The builder picks the row component variant from `kind`: `single` or `multi`.
 - Section bar inner `Layout` frame is FIXED at 794px in the master. The build overrides `layoutSizingHorizontal=FILL` on every nested frame in the chain (Section Content → Layout → Content → Title Row → Section Header → Section Info → Description Group) so subtitle text stretches to the table width.
 - Range `from` / `to` math is parsed Node-side: regex `^{<ref>} ([+-]) <n>$`. Anything more complex (parentheses, multiple terms) is not supported — keep `{ref} - 1` style only.
 - The Figma bg color variable `ob/s1/color/neutral/bg/contrast_highest/inversity_normal` is bound on each box's fill. If missing, falls back to literal white and logs a warning.
+
+## Fixed bugs worth knowing about
+
+- **`_docs/shared/section_bar` always rendered the Primitive theme**
+  (fixed 2026-09-14, commit `b08c9a513`) — `buildSectionBar()` never
+  attempted to select by `section.tier` at all, unlike the other builders'
+  pre-fix bug (which at least tried and picked the wrong default). Every
+  section bar on this page — tier-column headers and per-table bars alike
+  — got `tier=p` regardless of what its `tierLetter` text said. Registry
+  declares tiers "G" (breakpoints/ranges/css_selectors) and "S"
+  (page_container) — neither is a real variant option (`p`/`s1`/`s2`/`s`
+  only), so "G" now maps to "s" rather than falling through to Primitive.
+  Also now hides the Color Bar strip and the three
+  maintainer/contributor/consumer badges, never part of this page.
+- **Purpose text silently never got written** — `applySectionBarContent`
+  wrote into a node literally named `"description"`, which doesn't exist
+  on this component (the real node is `"$description"`, and the field is
+  exposed as the `purpose` component property) — the write no-opped every
+  time, so every section bar's description stayed whatever the variant's
+  baked default was. Now prefers `setProperties()` (matching the pattern in
+  `../dimension/build-dimension.js`) with a direct node-write fallback
+  using the real node name.

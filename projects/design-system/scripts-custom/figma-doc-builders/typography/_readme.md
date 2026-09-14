@@ -44,13 +44,20 @@ Tables are filtered by `stylePrefix` (registry). Anything matching a deeper
 
 | Table | subgroup | stylePrefix | Grouping |
 |---|---|---|---|
-| html-heading       | html   | `h/typography/style/heading/`   | none |
-| html-body          | html   | `h/typography/style/body/`      | none |
-| grouped-static     | scales | `s/typography/grouped/static/`  | size_class (base xs–xl / extended 2xl–4xl) |
-| grouped-dynamic    | scales | `s/typography/grouped/dynamic/` | size_class |
+| html-heading       | html      | `heading/`           | none |
+| html-body          | html      | `body/`               | none |
+| grouped-static     | authoring | `~authoring/static/`  | size_class (base xs–xl / extended 2xl–4xl) |
+| grouped-dynamic    | authoring | `~authoring/dynamic/` | size_class |
+
+(`stylePrefix` is the cosmetic, trimmed Figma style name, applied by
+`figma-utils/run-cosmetics.js` after every Token Studio export — not the
+real token path, which keeps its tier letter, e.g. `ob.h.heading.H1` /
+`ob.s.typography.authoring.static.sm.normal`. See
+`figma-utils/_readme.md` for why the trim exists and
+`../../FIGMA-WORKFLOW.md` for where it runs in the pipeline.)
 
 Registry / table order is the on-page order: **HTML subgroup on top,
-Scales subgroup below.**
+Authoring subgroup below.**
 
 `html-heading` carries `"rowHeight": 80` — its data rows are forced to a
 fixed 80px height so the interface-mode and prose-mode copies of the table
@@ -143,7 +150,7 @@ checks without rebuilding. Per check:
 |---|---|
 | `STRUCT`   | Per registry-listed section name: section exists on the page |
 | `DUP`      | Per registry table: the expected number of frames (1, or one per `columns` entry for a multi-column subgroup), each with exactly 1 section bar |
-| `SECTBAR`  | Section bar `__sectionTitle` and `description` populated, not master defaults |
+| `SECTBAR`  | Section bar `__sectionTitle` and `$description` populated, not master defaults |
 | `COUNT`    | Per table: row count matches style count from prefix filter |
 | `EMPTY`    | Token-name text on each row is non-empty |
 | `DESC`     | Row's description cell matches the underlying `style.description` exactly |
@@ -164,3 +171,25 @@ Exit policy: any error → exit 1. Warnings print but don't block.
 - **No preview-bar** — typography doesn't have a 1-D magnitude in the
   way dimension does, so the row component does not include a preview
   rectangle. The specimen itself is the visual preview.
+
+## Fixed bugs worth knowing about
+
+- **Prose-column Size/Line-Height labels showed the interface numbers**
+  (fixed 2026-09-14, commit `4bf62c39b`). `buildRow()` bakes those two
+  cells as plain text from `style.fontSize`/`style.lineHeight` — a bare
+  Style object with no ancestor frame, so it always resolves via its
+  bound variable's collection *default* mode, never the frame-level
+  `setExplicitVariableModeForCollection` used for the column split. Worse,
+  the prose column is a `.clone()` of the already-baked interface column
+  (made *before* its own mode override is even set), so simply making the
+  read mode-aware at the original call site would not have been enough —
+  every column would still get the same baked value. The fix
+  (`relabelColumnForMode`) re-resolves both cells per column, after the
+  clone, by walking the row's underlying style's bound variable through
+  its alias chain for that column's own mode.
+- **`--validate` was silently creating a fresh empty page on every run**
+  (fixed 2026-09-14, same root cause and fix as
+  `../dimension/_readme.md`'s note on this — `ensurePage()` always
+  appended the scratch-build timestamp, even for `--validate`, so it
+  never found the real canonical page and created (and validated) an
+  empty one instead every time.

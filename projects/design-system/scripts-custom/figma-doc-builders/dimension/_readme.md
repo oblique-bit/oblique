@@ -66,7 +66,7 @@ node scripts-custom/figma-doc-builders/dimension/build-dimension.js
 
 All inside the **Dimension Building Blocks** section (`12093:908000`) on the target page:
 
-- `_docs/dimension/section_bar` — page-level section bar component (renamed from `_Section Bar`)
+- `_docs/shared/section_bar` — page-level section bar, a COMPONENT_SET with a `tier` variant (`p`/`s1`/`s2`/`s`) each baking its own accent-colour theme, plus three `showBadge*` boolean properties and a "Color Bar" strip node (both default on). `buildSectionBar()` picks the variant matching each table's `section.tier` (all "S" here) and unconditionally hides the Color Bar + all three badges — neither has ever been part of this page. Picking the wrong variant (`comp.defaultVariant`, always "tier=p") was a real bug here until 2026-09-14 (commit `6307d71d7`): it left the wrong colour theme and stale "Primitive tier" text visible even though every text property read correctly, because the property write landed on the wrong variant instance.
 - `_docs/dimension/header_row` / `_docs/dimension/row` — single-mode (static) header + data row
 - `_docs/dimension/header_row_2mode` / `_docs/dimension/row_2mode` — 2-mode dynamic (e.g. interface/prose)
 - `_docs/dimension/header_row_3mode` / `_docs/dimension/row_3mode` — 3-mode dynamic (e.g. sm/md/lg)
@@ -79,7 +79,7 @@ Every build runs `validatePage()` at the end. `--validate` runs the same checks 
 |---|---|
 | `STRUCT` | Per registry-listed section name: section exists on the page |
 | `DUP` | Per Table frame: exactly 1, with exactly 1 section bar instance inside |
-| `SECTBAR` | Section bar `__sectionTitle` and `description` populated, not master defaults |
+| `SECTBAR` | Section bar `__sectionTitle` and `$description` populated, not master defaults |
 | `COUNT` | Per table: row count matches expected count from variable prefix filter (strict) |
 | `EMPTY` | Token-name text on each row is non-empty |
 | `DESC` | Row's description cell matches the underlying `variable.description` exactly (where the cell exists; 2-mode rows have no description column and are skipped) |
@@ -91,3 +91,17 @@ Exit policy: any error → exit 1. Warnings print but don't block.
 
 - The 2-mode component master uses a different child-naming pattern than the 3-mode master: `$token.name` (TEXT directly) + `mode_cell_N` (FRAME) vs. `Cell: Token Name` (FRAME) + `Cell: Mode N` (FRAME). The script handles both via the `findRowNameNode` helper.
 - Static dimensions (`ob/s/dimension/static/...`) live in the `semantic` collection — same collection that holds compiled color tokens. Filter by name prefix to separate them.
+
+## Fixed bugs worth knowing about
+
+- **`--validate` was silently creating a fresh empty page on every run**
+  (fixed 2026-09-14). `ensurePage()` always appended the scratch-build
+  timestamp suffix to the target page name, even in `--validate` mode —
+  so it always looked for a page named "`<canonical> <right-now>`", which
+  never exists, created it empty, and correctly reported every table
+  missing from that empty page. `--validate` now always resolves the bare
+  canonical name and throws (rather than creates) if that page is missing.
+  If you have old `<canonical> <timestamp>` pages with zero content and a
+  build log you don't recognize, they were probably a phantom from this.
+- **`_docs/shared/section_bar`'s wrong variant** — see "Components used"
+  above; same bug, same fix commit (`6307d71d7`) as the `--validate` one.
