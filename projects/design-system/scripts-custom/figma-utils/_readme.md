@@ -104,6 +104,33 @@ only. A style already on its target name is a no-op, so it is safe to re-run.
 Only stays durable if the token path itself does not change again — see the
 CAUTION note in the script header.
 
+## relink-text-style-usage.js — repoint nodes off a renamed text style onto its twin
+
+**The problem.** A token path rename makes Token Studio push a NEW Figma text
+style under the new path-derived name — it does not rename the old style in
+place, because it matches styles by name on push. The old style survives,
+orphaned, and every node still using it (typically the typography
+documentation page, which applies each style to a sample text node on the
+"Specimen" cell) stays bound to the dead one. Deleting the old style before
+relinking would strip those nodes down to a plain, unlinked local text style.
+
+**The fix.** Run `relink-text-style-usage.js`:
+
+1. Edit `CONFIG.prefixPairs` — `{oldPrefix, newPrefix}` rules. A style's
+   remainder after the old prefix must match a real style under the new
+   prefix, or it is reported as blocked, not guessed.
+2. Set `CONFIG.pageName` to scope the walk to one page — recommended, since
+   the file has more than one page and others may use the same styles for
+   unrelated reasons. `null` walks every page.
+3. Run with `mode: 'scan'` first — reports every node that would move, and
+   which old styles have no matching twin. Changes nothing.
+4. Re-run with `mode: 'relink'` to apply.
+
+Never deletes a style — that stays a separate step (`rename-text-styles.js`
+with `autoResolveCollisions: true`, or by hand) once every node has moved off
+it. Run this before that rename whenever its target name is already occupied
+by a leftover style with live usage.
+
 ## rename-variables.js — cosmetic prefix rename for local variables
 
 **The problem.** Same problem as `rename-text-styles.js`, one Figma primitive
