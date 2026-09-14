@@ -126,6 +126,55 @@ picker entry disappears.
   `setBoundVariable` throws for paints). Per-range text fills (`figma.mixed`)
   can't be cleared this way — the report counts them as `skippedMixedPaint`.
 
+## relink-variable-aliases.js — repoint local variable values off a dead library
+
+**The problem.** `unbind-variables.js` clears one channel that keeps a ghost
+collection alive in the variable-mode picker: a *node* consuming a remote
+variable. This script clears the other channel, where no node is involved at
+all — a **local variable's own value** aliases a variable in a remote
+collection. Figma keeps that collection subscribed and caches its last
+published values inside the file, so it survives even unpublishing or
+deleting the source library. Nothing on the canvas shows it; only the mode
+picker does.
+
+**The fix.** For every local variable value that aliases a remote variable,
+find the local variable with the identical name and repoint the alias there.
+It never drops a reference it cannot replace — a repoint is blocked (and
+reported, not guessed around) when there is no local variable of that exact
+name, the name is ambiguous (more than one local variable shares it), or the
+two variables' `resolvedType` don't match.
+
+1. Run with `mode: 'scan'` first — reports the full plan, every blocked case
+   and why, and (with `reportValueImpact: true`, the default) which relinks
+   would actually change the resolved value versus the frozen remote
+   snapshot.
+2. Re-run with `mode: 'relink'` to apply. The report's `remoteAliasesRemaining`
+   tells you whether any local-variable-value channel is still open; **the
+   ghost collection itself stays cached in the file until it is reopened**,
+   even at 0 remaining references — reopen before judging the picker.
+
+### CONFIG fields
+
+| field | what it does |
+|---|---|
+| `mode` | `'scan'` (report only) or `'relink'` (repoint the matched aliases) |
+| `fileKeyGuard` | refuse to run unless the open file has this key; `null` = any file |
+| `collectionFilter` | array of remote collection names to target; `null` = any |
+| `reportValueImpact` | `true` = also report every relink that would change the resolved value (costs a second pass) |
+
+### Notes
+
+- Covers only channel #2 of three. The report's `otherGhostChannels` tallies
+  the other two (node bindings, node `explicitVariableModes` overrides) so a
+  partial fix here is never mistaken for a fully closed picker — run
+  `unbind-variables.js` for the node-binding channel.
+- A relinked value can visibly change: the remote alias is a frozen snapshot
+  from whenever the library was last published into this file, and the local
+  twin may have since diverged. Always check `valueChanges` in the scan report
+  before relinking.
+- Local variable ids never contain `/`; remote ones do (`VariableID:<40hex>/<node:id>`).
+  That is the pre-filter used to find alias targets worth checking at all.
+
 ## rename-text-styles.js — cosmetic prefix rename for local text styles
 
 **The problem.** A Figma text style's name comes straight from the token
