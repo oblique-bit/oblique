@@ -32,20 +32,8 @@
 	--ob-h-heading-h6-font: var(--ob-h-typography-context-h6-font_weight) var(--ob-h-typography-context-h6-font_size)/var(--ob-h-typography-context-h6-line_height) var(--ob-h-typography-context-h6-font_family);
 	--ob-h-heading-h6-letter_spacing: var(--ob-h-typography-context-h6-letter_spacing);
 	--ob-h-heading-h6-paragraph_spacing: var(--ob-h-typography-context-h6-paragraph_spacing);
-	--ob-h-link-active-text_decoration: var(--ob-s-typography-scale-static-text_decoration-link-emphasis_high);
-	--ob-h-link-color-active: var(--ob-s-color-interaction-contrast_levels-fg-high-inversity_normal);
-	--ob-h-link-color-default: var(--ob-s-color-interaction-contrast_levels-fg-medium-inversity_normal);
-	--ob-h-link-color-hover: var(--ob-s-color-interaction-contrast_levels-fg-low-inversity_normal);
-	--ob-h-link-color-visited: var(--ob-s-color-interaction-visited-fg-contrast_low-inversity_normal);
-	--ob-h-link-enabled-text_decoration: var(--ob-s-typography-scale-static-text_decoration-link-emphasis_high);
-	--ob-h-link-focus-text_decoration: var(--ob-s-typography-scale-static-text_decoration-link-emphasis_low);
-	--ob-h-link-hover-text_decoration: var(--ob-s-typography-scale-static-text_decoration-link-emphasis_high);
 	--ob-h-link-icon-size: var(--ob-s-typography-scale-static-font_size-md);
 	--ob-h-link-icon-token_family_docs-description: Link icon tokens for the Interface typography context.;
-	--ob-h-link-motion-duration: var(--ob-s-motion-duration-micro);
-	--ob-h-link-motion-easing: var(--ob-s-motion-easing-standard);
-	--ob-h-link-spacing-gap: var(--ob-s-dimension-static-ui_scale-micro-sm-px);
-	--ob-h-link-token_family_docs-description: Base tokens for the HTML anchor element — spacing, motion, asset, color, and interaction states (enabled, hover, focus, active).;
 	--ob-h-typography-context-body-color-fg: var(--ob-s-color-neutral-fg-contrast_highest-inversity_normal);
 	--ob-h-typography-context-body-lead-font_family: var(--ob-s-typography-scale-static-font_family-body);
 	--ob-h-typography-context-body-lead-font_size: var(--ob-s-typography-scale-static-font_size-md);
@@ -450,6 +438,7 @@
 	--ob-s-dimension-dynamic-density-xs-rem: 0.25rem;
 	--ob-s-dimension-dynamic-typography_context-2xl: 28px;
 	--ob-s-dimension-dynamic-typography_context-3xl: 32px;
+	--ob-s-dimension-dynamic-typography_context-4xl: 40px;
 	--ob-s-dimension-dynamic-typography_context-lg: 20px;
 	--ob-s-dimension-dynamic-typography_context-md: 16px;
 	--ob-s-dimension-dynamic-typography_context-none: 0;
@@ -1868,6 +1857,7 @@
 		--ob-h-typography-context-token_family_docs-description: Typography context tokens for the Prose context — font stack, size, and spacing for body text and content.;
 		--ob-s-dimension-dynamic-typography_context-2xl: 32px;
 		--ob-s-dimension-dynamic-typography_context-3xl: 36px;
+		--ob-s-dimension-dynamic-typography_context-4xl: 48px;
 		--ob-s-dimension-dynamic-typography_context-lg: 24px;
 		--ob-s-dimension-dynamic-typography_context-md: 20px;
 		--ob-s-dimension-dynamic-typography_context-sm: 16px;
