@@ -23,7 +23,6 @@ import {
 	setRootAngularConfig,
 	writeFile,
 } from '../../utils';
-import {addJest} from './tests';
 
 export function toolchain(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, context: SchematicContext) =>
@@ -34,7 +33,6 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			removeUnusedScripts(),
 			addPrefix(options.prefix),
 			updateExistingPrefixes(options.prefix),
-			addJest(options.jest),
 			updateEditorConfig(options.eslint),
 			addPrettier(options.eslint),
 			addHusky(options.husky),

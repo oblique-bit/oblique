@@ -25,7 +25,6 @@ export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-
 type versionFunc = (version: number) => string;
 
 const versions: Record<string, string | versionFunc> = {
-	'@angular-builders/jest': version => `^${version}.0.0`,
 	'@angular/cdk': version => `^${version}.0.0`,
 	'@angular/core': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
@@ -39,7 +38,6 @@ const versions: Record<string, string | versionFunc> = {
 	'@popperjs/core': '^2.0.0',
 	'@typescript-eslint/eslint-plugin': '^8.58.2',
 	'@typescript-eslint/parser': '^8.58.2',
-	'@types/jest': '^30.0.0',
 	ajv: '^8.0.0',
 	'ajv-formats': '^3.0.0',
 	'angular-eslint': '^22.0.0',
@@ -48,8 +46,6 @@ const versions: Record<string, string | versionFunc> = {
 	'eslint-config-prettier': '^9.0.0',
 	'eslint-plugin-prettier': '^5.0.0',
 	husky: '^9.0.0',
-	jest: '^30.0.0',
-	'jest-environment-jsdom': '^30.0.0',
 	prettier: '^3.0.0',
 };
 
