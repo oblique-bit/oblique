@@ -133,6 +133,22 @@ fix — resolve it by hand. Never touches the token JSON or the CSS build.
 Same tier-letter and re-export-stability caveats as `rename-text-styles.js`
 apply — see the script header.
 
+## rename-effect-styles.js — cosmetic prefix rename for local effect styles
+
+**The problem.** Same problem as `rename-text-styles.js`, one Figma primitive
+over: an effect style's name (shadow, blur) comes straight from its token
+path — "ob.s.shadow.sm" pushes as "s/shadow/sm" — and the tier letter that
+has to stay in the JSON is still noise in the effect styles panel.
+
+**The fix.** Run `rename-effect-styles.js`: same `{from, to}` prefix-rule
+CONFIG, scan-then-rename flow, and collision handling as
+`rename-text-styles.js`. Unlike text styles, checking a collision's usage
+only needs `node.effectStyleId` (no per-range mixed-effect case to worry
+about the way text has `figma.mixed` fills).
+
+Same tier-letter and re-export-stability caveats as `rename-text-styles.js`
+apply — see the script header.
+
 ## scope-variables.js — set scopes and hiddenFromPublishing in bulk
 
 **The problem.** A variable appears in a picker it should not (e.g. `ob/s1/*`
