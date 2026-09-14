@@ -629,7 +629,26 @@ function stretch(node) {
 
 async function buildSectionBar(spec) {
   if (!components.sectionBar) return null;
-  const inst = components.sectionBar.createInstance();
+  // _docs/shared/section_bar is a COMPONENT_SET with a "tier" variant property
+  // (p / s1 / s2 / s) — each variant carries its own baked title/tierLetter
+  // visuals alongside the shared TEXT component properties, so overriding the
+  // properties on the wrong variant (comp.defaultVariant is "tier=p") leaves
+  // stale "Primitive tier" content visible even though the properties
+  // themselves read correctly. Pick the variant matching spec.section.tier.
+  const comp = components.sectionBar;
+  let inst;
+  try {
+    if (comp.type === 'COMPONENT_SET') {
+      const wantTier = String((spec.section && spec.section.tier) || 'S').toLowerCase();
+      const variant = (comp.children || []).find((c) => c.type === 'COMPONENT' && c.name === 'tier=' + wantTier)
+                    || comp.defaultVariant
+                    || (comp.children || []).find((c) => c.type === 'COMPONENT');
+      if (!variant) { L('sectionBar: COMPONENT_SET has no variants'); return null; }
+      inst = variant.createInstance();
+    } else {
+      inst = comp.createInstance();
+    }
+  } catch (e) { L('sectionBar createInstance failed: ' + e.message); return null; }
   inst.name = '_docs/dimension/section_bar';
   await applySectionBarContent(inst, spec);
   return inst;
@@ -645,6 +664,24 @@ async function applySectionBarContent(inst, spec) {
   // exists in the master but isn't wired to visibility, so override the node.
   const tier = inst.findOne(n => n.type === 'TEXT' && n.name === 'tierLetter');
   if (tier) { try { tier.visible = false; } catch {} }
+
+  // Same reasoning for the Color Bar strip and the three maintainer/
+  // contributor/consumer badges: both default on (Color Bar is just a plain
+  // node with no visibility toggle; the three showBadge* booleans default
+  // true in the master). Neither has ever been part of the Dimension page —
+  // it predates this shared section_bar's badge system — so hide all four
+  // unconditionally rather than exposing them as a per-table choice.
+  const colorBar = inst.findOne((n) => n.name === 'Color Bar');
+  if (colorBar) { try { colorBar.visible = false; } catch {} }
+  const badgeProps = inst.componentProperties || {};
+  const badgeUpdates = {};
+  for (const bare of ['showBadgeMaintainer', 'showBadgeConsumer', 'showBadgeBundeskanzlei']) {
+    const key = Object.keys(badgeProps).find((k) => k === bare || k.split('#')[0] === bare);
+    if (key) badgeUpdates[key] = false;
+  }
+  if (Object.keys(badgeUpdates).length) {
+    try { inst.setProperties(badgeUpdates); } catch (e) { L('hide badges failed: ' + e.message); }
+  }
 
   // Force the inner layout chain to FILL so the section bar's content fills
   // the full table width. The master's 'Layout' frame is FIXED at 794px;
@@ -1003,7 +1040,7 @@ async function validatePage(page) {
     if (sectionBars.length !== 1) errors.push({ code: 'DUP', id: spec.id, msg: 'expected 1 section bar, got ' + sectionBars.length });
     if (sectionBars[0]) {
       const sb = sectionBars[0];
-      for (const tn of ['__sectionTitle', 'description']) {
+      for (const tn of ['__sectionTitle', '$description']) {
         const node = sb.findOne(n => n.type === 'TEXT' && n.name === tn);
         const txt = node ? String(node.characters || '').trim() : '';
         if (!txt) errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' empty' });
