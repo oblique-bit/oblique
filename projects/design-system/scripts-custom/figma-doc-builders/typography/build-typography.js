@@ -277,10 +277,18 @@ async function ensurePage() {
     await figma.setCurrentPageAsync(p);
     return p;
   }
-  const ts = (provenance && provenance.pageTs) ? provenance.pageTs : '';
+  // validateOnly must target the real canonical page and never write — the
+  // timestamp suffix below is only for a genuine scratch build. Appending it
+  // unconditionally (fixed 2026-09-14) meant --validate always looked for a
+  // page named "<canonical> <right-now's timestamp>", which never exists,
+  // so it silently created a fresh EMPTY page every single run and then
+  // correctly reported every table missing from it — a phantom page, and a
+  // write despite --validate's own documented "no writes" contract.
+  const ts = (!validateOnly && provenance && provenance.pageTs) ? provenance.pageTs : '';
   const name = ts ? (registry.page + ' ' + ts) : registry.page;
   let p = figma.root.children.find(x => x.name === name);
   if (!p) {
+    if (validateOnly) throw new Error('target page not found: ' + name + ' (validate-only mode never creates one)');
     p = figma.createPage();
     p.name = name;
     try { p.backgrounds = [_PAGE_BG]; } catch (e) { L('canvas bg set failed: ' + e.message); }
