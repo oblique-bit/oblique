@@ -460,6 +460,22 @@ function enforceOuterOrder(outer) {
 async function applySectionBarContent(inst, spec, opts) {
   if (!inst) return;
   opts = opts || {};
+
+  // Hide the Color Bar strip and the three maintainer/contributor/consumer
+  // badges unconditionally. Both default on in the shared component; neither
+  // has ever been part of this page (same reasoning as the dimension fix).
+  const colorBar = inst.findOne((n) => n.name === 'Color Bar');
+  if (colorBar) { try { colorBar.visible = false; } catch {} }
+  const badgeProps = inst.componentProperties || {};
+  const badgeUpdates = {};
+  for (const bare of ['showBadgeMaintainer', 'showBadgeConsumer', 'showBadgeBundeskanzlei']) {
+    const key = Object.keys(badgeProps).find((k) => k === bare || k.split('#')[0] === bare);
+    if (key) badgeUpdates[key] = false;
+  }
+  if (Object.keys(badgeUpdates).length) {
+    try { inst.setProperties(badgeUpdates); } catch (e) { L('hide badges failed: ' + e.message); }
+  }
+
   // Force inner layout chain to FILL so content reaches full table width.
   for (const fname of ['Section Content', 'Layout', 'Content', 'Title Row', 'Section Header', 'Section Info', 'Description Group']) {
     const node = inst.findOne(n => (n.type === 'FRAME' || n.type === 'INSTANCE') && n.name === fname);
@@ -479,30 +495,66 @@ async function applySectionBarContent(inst, spec, opts) {
     try { title.layoutSizingHorizontal = 'FILL'; } catch {}
   }
 
-  // Text content. tierLetter + __sectionTitle + __sectionSubTitle + description.
+  // Text content. tierLetter/title/purpose are typed component properties on
+  // the master (bound to nodes named tierLetter / __sectionTitle /
+  // $description internally — the property name and the node name differ,
+  // so prefer setProperties() and only fall back to a direct node-name write
+  // for fields with no property binding, e.g. __sectionSubTitle).
   const want = {
-    tierLetter:        spec.section.tier || 'G',
-    __sectionTitle:    spec.section.title || '',
-    __sectionSubTitle: spec.section.subtitle || '',
-    description:       spec.section.purpose || ''
+    tierLetter: spec.section.tier || 'G',
+    title:      spec.section.title || '',
+    purpose:    spec.section.purpose || ''
   };
-  for (const [nodeName, value] of Object.entries(want)) {
-    const node = inst.findOne(n => n.type === 'TEXT' && n.name === nodeName);
+  const props = inst.componentProperties || {};
+  const propUpdates = {};
+  for (const [bare, value] of Object.entries(want)) {
+    const key = Object.keys(props).find((k) => k === bare || k.split('#')[0] === bare);
+    if (key) propUpdates[key] = String(value);
+  }
+  if (Object.keys(propUpdates).length) {
+    try { inst.setProperties(propUpdates); } catch (e) { L('section bar setProperties failed: ' + e.message); }
+  }
+
+  const nodeFallback = {
+    tierLetter:        'tierLetter',
+    title:             '__sectionTitle',
+    purpose:           '$description',
+    __sectionSubTitle: '__sectionSubTitle'
+  };
+  const nodeWrites = { ...want, __sectionSubTitle: spec.section.subtitle || '' };
+  for (const [bare, value] of Object.entries(nodeWrites)) {
+    const nodeName = nodeFallback[bare];
+    const node = inst.findOne((n) => n.type === 'TEXT' && n.name === nodeName);
     if (!node) continue;
     if (nodeName === 'tierLetter' && opts.suppressTier) {
       try { node.visible = false; } catch {}
       continue;
     }
     try { node.visible = true; } catch {}
+    // tierLetter/title/purpose already landed via setProperties above when a
+    // property binding exists — writing the same text again is harmless and
+    // covers the case where the master doesn't expose that field as a prop.
     setText(node, value);
   }
 }
 
 async function buildSectionBar(spec, opts) {
   if (!components.sectionBar) return null;
-  const main = components.sectionBar.type === 'COMPONENT_SET'
-    ? (components.sectionBar.defaultVariant || components.sectionBar.children[0])
-    : components.sectionBar;
+  // _docs/shared/section_bar is a COMPONENT_SET with a "tier" variant — real
+  // options are p / s1 / s2 / s, each baking its own accent-colour theme.
+  // registry.json declares "G" (breakpoints/ranges/css_selectors) and "S"
+  // (page_container) — "G" isn't a real option, so it falls back to "s"
+  // (generic Semantic) rather than defaultVariant ("tier=p"), which would
+  // silently render the Primitive theme regardless of what the tierLetter
+  // text says. Same bug class fixed in dimension/build-dimension.js.
+  let main = components.sectionBar;
+  if (main.type === 'COMPONENT_SET') {
+    const rawTier = String((spec.section && spec.section.tier) || 'G').toLowerCase();
+    const wantTier = rawTier === 'g' ? 's' : rawTier;
+    main = (main.children || []).find((c) => c.type === 'COMPONENT' && c.name === 'tier=' + wantTier)
+        || main.defaultVariant
+        || main.children[0];
+  }
   const inst = main.createInstance();
   inst.name = registry.componentNames.sectionBar;
   await applySectionBarContent(inst, spec, opts);
