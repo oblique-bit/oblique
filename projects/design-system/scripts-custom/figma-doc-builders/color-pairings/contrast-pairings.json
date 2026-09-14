@@ -1,11 +1,11 @@
 {
   "schema": "ob.contrast-pairings.v1",
-  "generatedAt": "2026-09-08T18:08:42.488Z",
+  "generatedAt": "2026-09-14T10:20:49.811Z",
   "categories": {
     "neutral": [
       {
-        "fg": "color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -30,8 +30,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -56,8 +56,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -82,8 +82,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -108,8 +108,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
         "rowKey": "highest",
         "colKey": "lowest",
         "isTextLink": false,
@@ -134,8 +134,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -160,8 +160,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -186,8 +186,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -212,8 +212,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -238,8 +238,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
         "rowKey": "high",
         "colKey": "lowest",
         "isTextLink": false,
@@ -264,8 +264,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -290,8 +290,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -316,8 +316,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -342,8 +342,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -368,8 +368,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
         "rowKey": "medium",
         "colKey": "lowest",
         "isTextLink": false,
@@ -394,8 +394,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -420,8 +420,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -446,8 +446,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -472,8 +472,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -498,8 +498,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
         "rowKey": "low",
         "colKey": "lowest",
         "isTextLink": false,
@@ -524,8 +524,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
         "rowKey": "lowest",
         "colKey": "highest",
         "isTextLink": false,
@@ -550,8 +550,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
         "rowKey": "lowest",
         "colKey": "high",
         "isTextLink": false,
@@ -576,8 +576,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
         "rowKey": "lowest",
         "colKey": "medium",
         "isTextLink": false,
@@ -602,8 +602,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
         "rowKey": "lowest",
         "colKey": "low",
         "isTextLink": false,
@@ -628,8 +628,8 @@
         "emph": null
       },
       {
-        "fg": "color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
         "rowKey": "lowest",
         "colKey": "lowest",
         "isTextLink": false,
@@ -654,140 +654,45 @@
         "emph": null
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.neutral.bg.contrast_highest.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/neutral/bg/contrast_highest/inversity_normal",
         "rowKey": "text-link",
-        "colKey": "highest",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:483",
-        "ratio": 6.47,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null
+        "colKey": "highest"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.neutral.bg.contrast_high.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/neutral/bg/contrast_high/inversity_normal",
         "rowKey": "text-link",
-        "colKey": "high",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:485",
-        "ratio": 5.85,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null
+        "colKey": "high"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.neutral.bg.contrast_medium.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/neutral/bg/contrast_medium/inversity_normal",
         "rowKey": "text-link",
-        "colKey": "medium",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:487",
-        "ratio": 5.06,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null
+        "colKey": "medium"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.neutral.bg.contrast_low.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/neutral/bg/contrast_low/inversity_normal",
         "rowKey": "text-link",
-        "colKey": "low",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:489",
-        "ratio": 3.09,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": false,
-          "aaaLarge": false,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaLarge",
-          "recContent": "H1–H4, bold body, lead",
-          "recComponent": "lg, xl, 2xl, 3xl, 4xl (bold below xl)",
-          "notContent": "body, strong",
-          "notComponent": "xs, sm, md"
-        },
-        "emph": null
+        "colKey": "low"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.neutral.bg.contrast_lowest.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/neutral/bg/contrast_lowest/inversity_normal",
         "rowKey": "text-link",
-        "colKey": "lowest",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:481",
-        "ratio": 1.94,
-        "wcag": {
-          "aaLarge": false,
-          "aaNormal": false,
-          "aaaLarge": false,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "fail",
-          "recContent": "decorative only",
-          "recComponent": "n/A",
-          "notContent": "all semantic text",
-          "notComponent": "all sizes"
-        },
-        "emph": null
+        "colKey": "lowest"
       }
     ],
     "interaction": [
       {
-        "fg": "color.interaction.contrast_levels.fg.high.inversity_normal",
-        "bg": "color.interaction.contrast_levels.bg.high.inversity_normal",
+        "fg": "ob.s.color.interaction.contrast_levels.fg.high.inversity_normal",
+        "bg": "ob.s.color.interaction.contrast_levels.bg.high.inversity_normal",
         "rowKey": "states",
         "colKey": "high",
         "isTextLink": false,
@@ -812,8 +717,8 @@
         "emph": null
       },
       {
-        "fg": "color.interaction.contrast_levels.fg.medium.inversity_normal",
-        "bg": "color.interaction.contrast_levels.bg.medium.inversity_normal",
+        "fg": "ob.s.color.interaction.contrast_levels.fg.medium.inversity_normal",
+        "bg": "ob.s.color.interaction.contrast_levels.bg.medium.inversity_normal",
         "rowKey": "states",
         "colKey": "medium",
         "isTextLink": false,
@@ -838,8 +743,8 @@
         "emph": null
       },
       {
-        "fg": "color.interaction.contrast_levels.fg.low.inversity_normal",
-        "bg": "color.interaction.contrast_levels.bg.low.inversity_normal",
+        "fg": "ob.s.color.interaction.contrast_levels.fg.low.inversity_normal",
+        "bg": "ob.s.color.interaction.contrast_levels.bg.low.inversity_normal",
         "rowKey": "states",
         "colKey": "low",
         "isTextLink": false,
@@ -866,8 +771,8 @@
     ],
     "status": [
       {
-        "fg": "color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -893,8 +798,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -920,8 +825,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -947,8 +852,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -974,8 +879,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -1001,8 +906,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -1028,8 +933,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -1055,8 +960,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -1082,8 +987,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -1109,8 +1014,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -1136,8 +1041,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -1163,8 +1068,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -1190,8 +1095,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -1217,8 +1122,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -1244,8 +1149,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -1271,8 +1176,8 @@
         "group": "info"
       },
       {
-        "fg": "color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -1298,116 +1203,40 @@
         "group": "info"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.info.bg.contrast_highest.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/info/bg/contrast_highest/inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:553",
-        "ratio": 6.47,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.info.bg.contrast_high.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/info/bg/contrast_high/inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:555",
-        "ratio": 5.95,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.info.bg.contrast_medium.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/info/bg/contrast_medium/inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:557",
-        "ratio": 5.31,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.info.bg.contrast_low.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/info/bg/contrast_low/inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:559",
-        "ratio": 4.56,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "info (text-link)"
       },
       {
-        "fg": "color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -1433,8 +1262,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -1460,8 +1289,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -1487,8 +1316,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -1514,8 +1343,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -1541,8 +1370,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -1568,8 +1397,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -1595,8 +1424,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -1622,8 +1451,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -1649,8 +1478,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -1676,8 +1505,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -1703,8 +1532,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -1730,8 +1559,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -1757,8 +1586,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -1784,8 +1613,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -1811,8 +1640,8 @@
         "group": "critical"
       },
       {
-        "fg": "color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -1838,116 +1667,40 @@
         "group": "critical"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.critical.bg.contrast_highest.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/critical/bg/contrast_highest/inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:569",
-        "ratio": 6.47,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.critical.bg.contrast_high.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/critical/bg/contrast_high/inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:571",
-        "ratio": 5.73,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.critical.bg.contrast_medium.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/critical/bg/contrast_medium/inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:573",
-        "ratio": 5.22,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.critical.bg.contrast_low.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/critical/bg/contrast_low/inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:575",
-        "ratio": 4.56,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "critical (text-link)"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -1973,8 +1726,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -2000,8 +1753,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -2027,8 +1780,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -2054,8 +1807,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -2081,8 +1834,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -2108,8 +1861,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -2135,8 +1888,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -2162,8 +1915,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -2189,8 +1942,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -2216,8 +1969,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -2243,8 +1996,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -2270,8 +2023,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -2297,8 +2050,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -2324,8 +2077,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -2351,8 +2104,8 @@
         "group": "resolved"
       },
       {
-        "fg": "color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -2378,116 +2131,40 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.resolved.bg.contrast_highest.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/resolved/bg/contrast_highest/inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:585",
-        "ratio": 6.47,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.resolved.bg.contrast_high.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/resolved/bg/contrast_high/inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:587",
-        "ratio": 6.14,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.resolved.bg.contrast_medium.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/resolved/bg/contrast_medium/inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:589",
-        "ratio": 5.71,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.resolved.bg.contrast_low.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/resolved/bg/contrast_low/inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:591",
-        "ratio": 5.05,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "resolved (text-link)"
       },
       {
-        "fg": "color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -2513,8 +2190,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -2540,8 +2217,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -2567,8 +2244,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -2594,8 +2271,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -2621,8 +2298,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -2648,8 +2325,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -2675,8 +2352,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -2702,8 +2379,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -2729,8 +2406,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -2756,8 +2433,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -2783,8 +2460,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -2810,8 +2487,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -2837,8 +2514,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -2864,8 +2541,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -2891,8 +2568,8 @@
         "group": "attention"
       },
       {
-        "fg": "color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -2918,116 +2595,40 @@
         "group": "attention"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.attention.bg.contrast_highest.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/attention/bg/contrast_highest/inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:601",
-        "ratio": 6.47,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.attention.bg.contrast_high.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/attention/bg/contrast_high/inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:603",
-        "ratio": 6.1,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.attention.bg.contrast_medium.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/attention/bg/contrast_medium/inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:605",
-        "ratio": 5.65,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.attention.bg.contrast_low.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/attention/bg/contrast_low/inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:607",
-        "ratio": 4.78,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "attention (text-link)"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -3053,8 +2654,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -3080,8 +2681,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -3107,8 +2708,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -3134,8 +2735,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -3161,8 +2762,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -3188,8 +2789,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -3215,8 +2816,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -3242,8 +2843,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -3269,8 +2870,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -3296,8 +2897,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -3323,8 +2924,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -3350,8 +2951,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -3377,8 +2978,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -3404,8 +3005,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -3431,8 +3032,8 @@
         "group": "fatal"
       },
       {
-        "fg": "color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -3458,118 +3059,42 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.fatal.bg.contrast_highest.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/fatal/bg/contrast_highest/inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:617",
-        "ratio": 6.47,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "fatal (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.fatal.bg.contrast_high.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/fatal/bg/contrast_high/inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:619",
-        "ratio": 5.73,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "fatal (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.fatal.bg.contrast_medium.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/fatal/bg/contrast_medium/inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:621",
-        "ratio": 5.22,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "fatal (text-link)"
       },
       {
-        "fg": "ob.h.link.color.default",
-        "bg": "color.status.fatal.bg.contrast_low.inversity_normal",
+        "missing": true,
+        "fgName": "ob/h/link/color/default",
+        "bgName": "ob/s/color/status/fatal/bg/contrast_low/inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
-        "isTextLink": true,
-        "isSingle": false,
-        "fgVarId": "VariableID:8:146",
-        "bgVarId": "VariableID:8:623",
-        "ratio": 4.56,
-        "wcag": {
-          "aaLarge": true,
-          "aaNormal": true,
-          "aaaLarge": true,
-          "aaaNormal": false,
-          "aaa": false
-        },
-        "usage": {
-          "tier": "aaNormal",
-          "recContent": "H1–H6, body, lead, strong",
-          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
-          "notContent": "n/A",
-          "notComponent": "xs, sm"
-        },
-        "emph": null,
         "group": "fatal (text-link)"
       }
     ],
     "navigation": [
       {
-        "fg": "color.navigation.fg.enabled",
-        "bg": "color.navigation.bg.enabled",
+        "fg": "ob.s.color.navigation.fg.enabled",
+        "bg": "ob.s.color.navigation.bg.enabled",
         "rowKey": "states",
         "colKey": "enabled",
         "isTextLink": false,
@@ -3594,8 +3119,8 @@
         "emph": null
       },
       {
-        "fg": "color.navigation.fg.hover",
-        "bg": "color.navigation.bg.hover",
+        "fg": "ob.s.color.navigation.fg.hover",
+        "bg": "ob.s.color.navigation.bg.hover",
         "rowKey": "states",
         "colKey": "hover",
         "isTextLink": false,
@@ -3620,8 +3145,8 @@
         "emph": null
       },
       {
-        "fg": "color.navigation.fg.focus",
-        "bg": "color.navigation.bg.focus",
+        "fg": "ob.s.color.navigation.fg.focus",
+        "bg": "ob.s.color.navigation.bg.focus",
         "rowKey": "states",
         "colKey": "focus",
         "isTextLink": false,
@@ -3646,8 +3171,8 @@
         "emph": null
       },
       {
-        "fg": "color.navigation.fg.pressed",
-        "bg": "color.navigation.bg.pressed",
+        "fg": "ob.s.color.navigation.fg.pressed",
+        "bg": "ob.s.color.navigation.bg.pressed",
         "rowKey": "states",
         "colKey": "pressed",
         "isTextLink": false,
@@ -3672,8 +3197,8 @@
         "emph": null
       },
       {
-        "fg": "color.navigation.fg.selected",
-        "bg": "color.navigation.bg.selected",
+        "fg": "ob.s.color.navigation.fg.selected",
+        "bg": "ob.s.color.navigation.bg.selected",
         "rowKey": "states",
         "colKey": "selected",
         "isTextLink": false,
@@ -3698,8 +3223,8 @@
         "emph": null
       },
       {
-        "fg": "color.navigation.fg.disabled",
-        "bg": "color.navigation.bg.disabled",
+        "fg": "ob.s.color.navigation.fg.disabled",
+        "bg": "ob.s.color.navigation.bg.disabled",
         "rowKey": "states",
         "colKey": "disabled",
         "isTextLink": false,
@@ -3726,8 +3251,8 @@
     ],
     "free": [
       {
-        "fg": "color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -3753,8 +3278,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -3780,8 +3305,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -3807,8 +3332,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -3834,8 +3359,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -3861,8 +3386,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -3888,8 +3413,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -3915,8 +3440,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -3942,8 +3467,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -3969,8 +3494,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -3996,8 +3521,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -4023,8 +3548,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -4050,8 +3575,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -4077,8 +3602,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -4104,8 +3629,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -4131,8 +3656,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -4158,8 +3683,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -4185,8 +3710,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -4212,8 +3737,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -4239,8 +3764,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -4266,8 +3791,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -4293,8 +3818,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -4320,8 +3845,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -4347,8 +3872,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -4374,8 +3899,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -4401,8 +3926,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -4428,8 +3953,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -4455,8 +3980,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -4482,8 +4007,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -4509,8 +4034,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -4536,8 +4061,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -4563,8 +4088,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -4590,8 +4115,8 @@
         "group": "teal"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -4617,8 +4142,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -4644,8 +4169,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -4671,8 +4196,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -4698,8 +4223,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -4725,8 +4250,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -4752,8 +4277,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -4779,8 +4304,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -4806,8 +4331,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -4833,8 +4358,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -4860,8 +4385,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -4887,8 +4412,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -4914,8 +4439,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -4941,8 +4466,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -4968,8 +4493,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -4995,8 +4520,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -5022,8 +4547,8 @@
         "group": "indigo"
       },
       {
-        "fg": "color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -5049,8 +4574,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -5076,8 +4601,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -5103,8 +4628,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -5130,8 +4655,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -5157,8 +4682,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -5184,8 +4709,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -5211,8 +4736,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -5238,8 +4763,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -5265,8 +4790,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -5292,8 +4817,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -5319,8 +4844,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -5346,8 +4871,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -5373,8 +4898,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -5400,8 +4925,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -5427,8 +4952,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -5454,8 +4979,8 @@
         "group": "pink"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -5481,8 +5006,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -5508,8 +5033,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -5535,8 +5060,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -5562,8 +5087,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -5589,8 +5114,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -5616,8 +5141,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -5643,8 +5168,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -5670,8 +5195,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -5697,8 +5222,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -5724,8 +5249,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -5751,8 +5276,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -5778,8 +5303,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -5805,8 +5330,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -5832,8 +5357,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -5859,8 +5384,8 @@
         "group": "yellow"
       },
       {
-        "fg": "color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -5888,7 +5413,7 @@
     ],
     "brand": [
       {
-        "fg": "color.brand.1",
+        "fg": "ob.s.color.brand.1",
         "bg": null,
         "rowKey": "single",
         "colKey": "single",

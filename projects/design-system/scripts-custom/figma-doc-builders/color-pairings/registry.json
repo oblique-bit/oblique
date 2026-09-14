@@ -2,7 +2,7 @@
   "schema": "ob.color-pairing.registry.v1",
   "version": "1.0.0",
   "sourceCollection": "semantic",
-  "varPathPrefix": "color",
+  "varPathPrefix": "ob/s/color",
   "targetPageName": "🎨  Colors – Contrast Pairing",
   "rootFrameName": "color-pairing-build",
   "foundationDescription": "Accessible color pairings derived from semantic color tokens — every foreground × background combination with WCAG 2.1 contrast ratios and AA/AAA pass/fail flags. Source for component contrast decisions. This page is locked to its own color mode — do not switch it manually. See the companion Light/Dark page for the other mode.",

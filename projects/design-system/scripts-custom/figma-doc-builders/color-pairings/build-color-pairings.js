@@ -132,7 +132,7 @@ const _startTime = Date.now();
 // This file only ever addresses compiled-tier (S3) variables, whose Figma
 // name has the "ob/s/" prefix trimmed for panel usability. Display the real
 // JSON token path, not the trimmed variable name.
-function pathToToken(p) { return 'ob.s.' + p.replace(/\\//g, '.'); }
+function pathToToken(p) { return (/^ob\\//.test(p) ? p : 'ob/s/' + p).replace(/\\//g, '.'); }
 function fillPattern(template, vars) {
   let out = template;
   for (const [k, val] of Object.entries(vars)) {
@@ -462,10 +462,12 @@ function setBadgeStatus(badgeInst, level, passed) {
 async function buildSwatchVisual(rec, varMap) {
   if (!swatchComp || rec.missing) return null;
   const inst = swatchComp.createInstance();
-  // rec.fg/rec.bg carry the full ob.s.color token path (pathToToken); the live
-  // Figma variable has that prefix trimmed (see shorten-color.js) — strip it
-  // back off before looking the variable up by name.
-  const tokenToVarName = t => (t.startsWith('ob.s.') ? t.slice(5) : t).replace(/\\./g, '/');
+  // rec.fg/rec.bg carry the full ob.s.color token path (pathToToken); the
+  // live Figma variable name uses the same full path with '/' instead of
+  // '.' (confirmed 2026-09-14 — the 2026-09-08 manual "ob/s/" trim never
+  // survived a re-export, see figma-utils/rename-variables.js's CAUTION
+  // note), so no stripping is needed, just the separator swap.
+  const tokenToVarName = t => t.replace(/\\./g, '/');
   const fgVar = varMap.get(tokenToVarName(rec.fg));
   const bgVar = rec.bg ? varMap.get(tokenToVarName(rec.bg)) : null;
   if (bgVar) {
@@ -524,9 +526,36 @@ async function buildSwatchVisual(rec, varMap) {
 
 async function buildSectionBar(catName, catCfg) {
   if (!sectionBarComp) return null;
+  // _docs/shared/section_bar is a COMPONENT_SET with a "tier" variant (p / s1
+  // / s2 / s) — each variant bakes its own accent-color theme, so picking
+  // defaultVariant ("tier=p") regardless of catCfg.section.tier leaves the
+  // wrong tier's colour strip visible even though the text properties
+  // (tierLetter, title, ...) read correctly. Same bug class fixed in
+  // dimension/build-dimension.js — see that commit's message.
   let comp = sectionBarComp;
-  if (comp.type === 'COMPONENT_SET') comp = comp.defaultVariant || comp.children[0];
+  if (comp.type === 'COMPONENT_SET') {
+    const wantTier = String((catCfg.section && catCfg.section.tier) || 'S').toLowerCase();
+    comp = (comp.children || []).find((c) => c.type === 'COMPONENT' && c.name === 'tier=' + wantTier)
+        || comp.defaultVariant
+        || comp.children[0];
+  }
   const inst = comp.createInstance();
+
+  // Hide the Color Bar strip and the three maintainer/contributor/consumer
+  // badges unconditionally. Both default on in the shared component; neither
+  // has ever been part of this page (same reasoning as the dimension fix).
+  const colorBar = inst.findOne((n) => n.name === 'Color Bar');
+  if (colorBar) { try { colorBar.visible = false; } catch {} }
+  const badgeProps = inst.componentProperties || {};
+  const badgeUpdates = {};
+  for (const bare of ['showBadgeMaintainer', 'showBadgeConsumer', 'showBadgeBundeskanzlei']) {
+    const key = Object.keys(badgeProps).find((k) => k === bare || k.split('#')[0] === bare);
+    if (key) badgeUpdates[key] = false;
+  }
+  if (Object.keys(badgeUpdates).length) {
+    try { inst.setProperties(badgeUpdates); } catch (e) { L('hide badges failed: ' + e.message); }
+  }
+
   const want = {
     tierLetter: catCfg.section.tier || 'S',
     title: catCfg.section.title || catName,
@@ -547,11 +576,17 @@ async function buildSectionBar(catName, catCfg) {
   const fallback = {
     tierLetter: ['tierLetter'],
     title:      ['__sectionTitle', 'sectionTitle', 'title'],
-    purpose:    ['description', 'purpose'],
+    purpose:    ['$description', 'description', 'purpose'],
     guideline:  ['guideline']
   };
+  // Always also write the node directly, even when a component property
+  // exists and was just set above: on this component, setProperties()
+  // updates the property's stored value (confirmed via
+  // inst.componentProperties) but does not reliably refresh the bound TEXT
+  // node's rendered characters — observed 2026-09-14, "tier=s" section bars
+  // kept showing the variant's baked default title/purpose text after a
+  // correct setProperties() call. Direct writes are cheap and idempotent.
   for (const [bare, value] of Object.entries(want)) {
-    if (findInstancePropertyKey(inst, bare)) continue;
     if (!value) continue;
     for (const nodeName of fallback[bare]) {
       const node = findOneByName(inst, nodeName);
@@ -626,9 +661,10 @@ async function validateSwatch(inst, lightnessModeId) {
       issues.push({ severity: 'error', code: 'BIND', msg: 'previewArea fill not bound to variable' });
     } else {
       const v = await figma.variables.getVariableByIdAsync(paBoundId);
-      // The bound variable's own name has the ob/s/ prefix trimmed (see
-      // shorten-color.js); the swatch text shows the full ob.s.color token.
-      const vdot = v ? 'ob.s.' + v.name.replace(/\\//g, '.') : '';
+      // The bound variable's name already carries the full ob/s/color path
+      // (see pathToToken's 2026-09-14 note) — reuse the same conversion so
+      // this never drifts from how rec.fg/rec.bg were produced.
+      const vdot = v ? pathToToken(v.name) : '';
       if (bgText && vdot !== bgText) issues.push({ severity: 'error', code: 'BIND', msg: 'previewArea bound to ' + vdot + ' but bg text says ' + bgText });
     }
   }
@@ -643,9 +679,10 @@ async function validateSwatch(inst, lightnessModeId) {
     if (i === 0) firstSlBoundId = id;
     if (i === 0 && fgText) {
       const v = await figma.variables.getVariableByIdAsync(id);
-      // The bound variable's own name has the ob/s/ prefix trimmed (see
-      // shorten-color.js); the swatch text shows the full ob.s.color token.
-      const vdot = v ? 'ob.s.' + v.name.replace(/\\//g, '.') : '';
+      // The bound variable's name already carries the full ob/s/color path
+      // (see pathToToken's 2026-09-14 note) — reuse the same conversion so
+      // this never drifts from how rec.fg/rec.bg were produced.
+      const vdot = v ? pathToToken(v.name) : '';
       if (vdot !== fgText) issues.push({ severity: 'error', code: 'BIND', msg: 'sample-link bound to ' + vdot + ' but fg text says ' + fgText });
     }
   }
@@ -713,7 +750,7 @@ async function validateSectionBar(sb, catName, catCfg) {
   const issues = [];
   if (!sb) return [{ severity: 'error', code: 'SECTBAR', msg: 'no section bar in category ' + catName }];
   const title = sb.findOne(n => n.type === 'TEXT' && n.name === '__sectionTitle');
-  const desc  = sb.findOne(n => n.type === 'TEXT' && n.name === 'description');
+  const desc  = sb.findOne(n => n.type === 'TEXT' && n.name === '$description');
   const titleText = title ? String(title.characters || '').trim() : '';
   const descText  = desc  ? String(desc.characters  || '').trim() : '';
   if (!titleText || DEFAULT_PLACEHOLDERS.indexOf(titleText) >= 0) issues.push({ severity: 'error', code: 'SECTBAR', msg: 'section bar title is empty/default in ' + catName + ' (got: ' + titleText + ')' });
