@@ -104,6 +104,35 @@ only. A style already on its target name is a no-op, so it is safe to re-run.
 Only stays durable if the token path itself does not change again — see the
 CAUTION note in the script header.
 
+## rename-variables.js — cosmetic prefix rename for local variables
+
+**The problem.** Same problem as `rename-text-styles.js`, one Figma primitive
+over: a variable's name comes straight from its token path, and the tier
+letter that has to stay in the JSON is still noise in the variables panel.
+This is the one already done once by hand — the "ob/s/" trim on compiled-tier
+(S3) color variables that `build-color-variables.js` / `build-color-pairings.js`
+already expect and reconstruct the real token path around — but it was never
+captured as a script until now.
+
+**The fix.** Run `rename-variables.js`:
+
+1. Edit `CONFIG.renames` — same `{from, to}` prefix-rule shape as
+   `rename-text-styles.js`. Set `CONFIG.collectionName` to scope the rename to
+   one variable collection, recommended so an accidental prefix match in
+   another collection is not renamed too.
+2. Run with `mode: 'scan'` first — reports every planned rename and any
+   collisions, changes nothing.
+3. Re-run with `mode: 'rename'` to apply.
+
+Unlike text styles, a variable rename **never needs a relink pass first**:
+Figma bindings reference a variable by id, not name, so renaming in place
+(same id) never orphans an existing fill/stroke/sizing binding. A blocked
+collision here means a second variable object genuinely still in use under
+that target name, not something `relink-text-style-usage.js`'s pattern would
+fix — resolve it by hand. Never touches the token JSON or the CSS build.
+Same tier-letter and re-export-stability caveats as `rename-text-styles.js`
+apply — see the script header.
+
 ## scope-variables.js — set scopes and hiddenFromPublishing in bulk
 
 **The problem.** A variable appears in a picker it should not (e.g. `ob/s1/*`
