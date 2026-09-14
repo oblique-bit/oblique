@@ -3,26 +3,26 @@
 		| obTranslateParams
 			: {
 					messagePluralizationKey:
-						count > 1
+						count() > 1
 							? "i18n.oblique.service-navigation.message.plural"
 							: "i18n.oblique.service-navigation.message.singular",
-					count: count === 0 ? "i18n.oblique.service-navigation.message.count.zero" : count,
+					count: count() === 0 ? "i18n.oblique.service-navigation.message.count.zero" : count(),
 			  };
 <a
 	id="my-notifications-link"
-	[href]="linkHref"
+	[href]="linkHref()"
 	[isExternalLink]="false"
 	mat-icon-button
 	obButton="tertiary"
 	class="ob-widget"
 	[matTooltip]="translatedButton"
-	[class.ob-longer-badge]="tooManyCount"
+	[class.ob-longer-badge]="tooManyCount()"
 	matBadgeOverlap="true"
 	matBadgeColor="warn"
-	[matBadgeHidden]="!count"
+	[matBadgeHidden]="!count()"
 	matBadgePosition="above after"
 	matBadgeSize="medium"
-	[matBadge]="tooManyCount ? '99+' : count"
+	[matBadge]="tooManyCount() ? '99+' : count()"
 >
 	<mat-icon svgIcon="inbox" />
 </a>

@@ -70,7 +70,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 	describe('lastUsedApplications', () => {
 		it('should be initialized to an empty array', () => {
-			expect(component.lastUsedApplications).toEqual([]);
+			expect(component.lastUsedApplications()).toEqual([]);
 		});
 
 		describe('when there is no last-used applications', () => {
@@ -102,10 +102,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 		describe('with some applications and while loggedIn', () => {
 			beforeEach(async () => {
 				fixture.componentRef.setInput('isLoggedIn', true);
-				component.lastUsedApplications = [
+				fixture.componentRef.setInput('lastUsedApplications', [
 					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
 					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'},
-				];
+				]);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				await openPopover();
 			});
@@ -343,7 +343,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 
 	describe('favoriteApplications', () => {
 		it('should be initialized to an empty array', () => {
-			expect(component.favoriteApplications).toEqual([]);
+			expect(component.favoriteApplications()).toEqual([]);
 		});
 
 		describe('when there is no favorite applications', () => {
@@ -375,10 +375,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 		describe('with some applications and while loggedIn', () => {
 			beforeEach(async () => {
 				fixture.componentRef.setInput('isLoggedIn', true);
-				component.favoriteApplications = [
+				fixture.componentRef.setInput('favoriteApplications', [
 					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
 					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'},
-				];
+				]);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				await openPopover();
 			});
@@ -733,10 +733,10 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 			let trigger: TestElement;
 			beforeEach(async () => {
 				fixture.componentRef.setInput('isLoggedIn', true);
-				component.lastUsedApplications = [
+				fixture.componentRef.setInput('lastUsedApplications', [
 					{name: 'applicationName1', url: 'http://app-url1', image: 'applicationImage1', status: 'online'},
 					{name: 'applicationName2', url: 'http://app-url2', image: 'applicationImage2', status: 'offline'},
-				];
+				]);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				trigger = await harness.getTrigger();
 			});

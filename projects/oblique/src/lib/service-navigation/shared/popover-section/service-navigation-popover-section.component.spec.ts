@@ -83,7 +83,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 
 		describe('text', () => {
 			it('should be initialized to an empty string', () => {
-				expect(component.text).toBe('');
+				expect(component.text()).toBe('');
 			});
 
 			describe('without value', () => {
@@ -95,7 +95,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 			describe('with a value', () => {
 				let paragraph: TestElement;
 				beforeEach(async () => {
-					component.text = 'Section text';
+					fixture.componentRef.setInput('text', 'Section text');
 					fixture.componentRef.changeDetectorRef.detectChanges();
 					paragraph = await harness.getParagraph();
 				});
@@ -131,7 +131,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 				];
 				let links: TestElement[];
 				beforeEach(async () => {
-					component.links = sampleLinks;
+					fixture.componentRef.setInput('links', sampleLinks);
 					fixture.componentRef.changeDetectorRef.detectChanges();
 					list = await harness.getLinkList();
 					links = await harness.getLinks();

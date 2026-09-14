@@ -45,11 +45,11 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 	describe('linkHref', () => {
 		it('should be initialized to an empty string', () => {
-			expect(component.linkHref).toBe('');
+			expect(component.linkHref()).toBe('');
 		});
 
 		it('should be the target of the link', async () => {
-			component.linkHref = '/foo';
+			fixture.componentRef.setInput('linkHref', '/foo');
 			fixture.componentRef.changeDetectorRef.detectChanges();
 			const link = await harness.getLink();
 			expect(await link.getProperty('href')).toBe('http://localhost/foo');
@@ -58,12 +58,12 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 	describe('count', () => {
 		it('should be initialized to 0', () => {
-			expect(component.count).toBe(0);
+			expect(component.count()).toBe(0);
 		});
 
 		describe.each([0, 1])('with %s message', count => {
 			beforeEach(() => {
-				component.count = count;
+				fixture.componentRef.setInput('count', count);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
@@ -94,7 +94,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 		describe('with 0 message', () => {
 			beforeEach(() => {
-				component.count = 0;
+				fixture.componentRef.setInput('count', 0);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
@@ -113,7 +113,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 		describe('with 1 message', () => {
 			beforeEach(() => {
-				component.count = 1;
+				fixture.componentRef.setInput('count', 1);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
@@ -132,7 +132,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 
 		describe('with 100 message', () => {
 			beforeEach(() => {
-				component.count = 100;
+				fixture.componentRef.setInput('count', 100);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 			});
 
@@ -157,13 +157,6 @@ describe('ObServiceNavigationMessageComponent', () => {
 					it(`should have class ob-longer-badge`, async () => {
 						const host = await badge.host();
 						expect(await host.hasClass('ob-longer-badge')).toBe(true);
-					});
-				});
-
-				describe('ngOnchange without any count change', () => {
-					it(`should do nothing `, async () => {
-						component.ngOnChanges({});
-						expect(await badge.getText()).toContain(component.count.toString());
 					});
 				});
 			});

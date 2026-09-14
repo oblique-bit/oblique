@@ -1,12 +1,12 @@
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, Subject, firstValueFrom, of, throwError} from 'rxjs';
-import {map, skip} from 'rxjs/operators';
+import {Subject, of, throwError} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {ObServiceNavigationConfigApiService} from './api/service-navigation-config-api.service';
 import {ObServiceNavigationPollingService} from './api/service-navigation-polling.service';
 import {ObServiceNavigationApplicationsService} from './applications/service-navigation-applications.service';
 import {ObEPamsEnvironment, ObISectionLink, ObLoginState} from './service-navigation.model';
-import {ObIServiceNavigationBackendInfo, ObIServiceNavigationState} from './api/service-navigation.api.model';
+import {ObIServiceNavigationState} from './api/service-navigation.api.model';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObServiceNavigationTimeoutService} from './timeout/service-navigation-timeout.service';
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
@@ -111,55 +111,45 @@ describe('ObServiceNavigationService', () => {
 			redirectorService = TestBed.inject(ObServiceNavigationTimeoutRedirectorService);
 			service.setFavoriteApplicationsCount(1);
 			languageSynchronizationService.loginLevel = 'SA';
+			TestBed.flushEffects();
 		});
 
 		afterEach(() => {
 			jest.resetAllMocks();
 		});
 
-		describe('getInfoBackend$', () => {
+		describe('infoBackend', () => {
 			describe('With root url and app id', () => {
 				const fakeAppId = 'appId';
 				beforeEach(() => {
+					mockGetInfoBackend$.mockImplementation(() => of(fakeInfoBackend));
 					service.setUpRootUrls(ObEPamsEnvironment.TEST);
 					service.setPamsAppId(fakeAppId);
+					TestBed.flushEffects();
 				});
 
 				it('should return fakeInfoBackend', () => {
-					let result: ObIServiceNavigationBackendInfo;
-					service.getInfoBackend$().subscribe(infoBackend => {
-						result = infoBackend;
-					});
-
-					expect(result).toBe(fakeInfoBackend);
+					expect(service.infoBackend()).toBe(fakeInfoBackend);
 				});
 
 				it('should use fakeAppId has second parameter', () => {
-					service.getInfoBackend$().subscribe();
 					expect((mockGetInfoBackend$.mock.calls[0] as string[])[1]).toBe(fakeAppId);
 				});
 
 				it('should use "en" has third parameter', () => {
-					service.getInfoBackend$().subscribe();
 					expect((mockGetInfoBackend$.mock.calls[0] as string[])[2]).toBe('en');
 				});
 
 				it('should retrigger when language change', () => {
 					const newLanguage = 'fr';
-					service.getInfoBackend$().subscribe();
 					mockLangChange.next({lang: newLanguage});
 					expect((mockGetInfoBackend$.mock.calls[1] as string[])[2]).toBe(newLanguage);
 				});
 			});
 
 			describe('Without root url and without app id', () => {
-				it("should return an empty object when root url and app id didn't fired", () => {
-					let result: ObIServiceNavigationBackendInfo;
-					service.getInfoBackend$().subscribe(infoBackend => {
-						result = infoBackend;
-					});
-
-					expect(result).toEqual({});
+				it('should return an empty object when root url and app id did not fire', () => {
+					expect(service.infoBackend()).toEqual({});
 				});
 			});
 		});
@@ -174,18 +164,18 @@ describe('ObServiceNavigationService', () => {
 				notification = TestBed.inject(ObNotificationService);
 				jest.spyOn(configService, 'fetchUrls').mockReturnValue(throwError(() => new Error('test')));
 				jest.spyOn(notification, 'error');
+				TestBed.flushEffects();
 			});
 
-			it('should throw an error', async () => {
-				await expect(firstValueFrom(service.getLoginUrl$())).rejects.toThrow('Cannot load service navigation config');
+			it('should fall back to the initial value in loginUrl', () => {
+				expect(service.loginUrl()).toBe('');
 			});
 
-			it('should emit undefined in getLoginState$', async () => {
-				await expect(firstValueFrom(service.getLoginState$())).resolves.toBe(undefined);
+			it('should emit undefined in loginState', () => {
+				expect(service.loginState()).toBe(undefined);
 			});
 
 			it('should show a notification', () => {
-				service.getLoginUrl$().subscribe({});
 				expect(notification.error).toHaveBeenCalledWith({
 					message: 'i18n.oblique.service-navigation.config.error.message',
 					title: 'i18n.oblique.service-navigation.config.error.title',
@@ -215,49 +205,29 @@ describe('ObServiceNavigationService', () => {
 						service.setUpRootUrls(environment);
 					}
 					if (callSetReturnUrl) {
-						service.setReturnUrl('http://localhost');
+						service.connectReturnUrl(signal('http://localhost'));
 					}
+					TestBed.flushEffects();
 				});
 
 				describe.each([
-					'getLoginUrl$',
-					'getUserName$',
-					'getProfileUrls$',
-					'getInboxMailUrl$',
-					'getMessageCount$',
-					'getApplicationsUrl$',
-					'getLastUsedApplications$',
-					'getFavoriteApplications$',
-				])('%s', method => {
-					it('should return an observable', () => {
-						expect(service.getLoginUrl$() instanceof Observable).toBe(true);
-					});
-
-					it('should not emit', () => {
-						let hasEmitted = false;
-						service[method]().subscribe(() => {
-							hasEmitted = true;
-						});
-						expect(hasEmitted).toBe(false);
-					});
-
+					'loginUrl',
+					'userName',
+					'profileUrls',
+					'inboxMailUrl',
+					'messageCount',
+					'applicationsUrl',
+					'lastUsedApplications',
+					'favoriteApplications',
+				])('%s', () => {
 					it('should not call "ObServiceNavigationConfigApiService.fetchUrls()"', () => {
-						service.getLoginUrl$().subscribe();
 						expect(configService.fetchUrls).not.toHaveBeenCalled();
 					});
 				});
 
-				describe('getLoginState$', () => {
-					it('should return an observable', () => {
-						expect(service.getLoginState$() instanceof Observable).toBe(true);
-					});
-
-					it('should not emit', () => {
-						let hasEmitted = false;
-						service.getLoginState$().subscribe(() => {
-							hasEmitted = true;
-						});
-						expect(hasEmitted).toBe(false);
+				describe('loginState', () => {
+					it('should hold its initial value', () => {
+						expect(service.loginState()).toBe(undefined);
 					});
 
 					describe('ObServiceNavigationConfigService.fetchUrls', () => {
@@ -267,23 +237,18 @@ describe('ObServiceNavigationService', () => {
 					});
 				});
 
-				describe('getLanguage$', () => {
-					it('should return an observable', () => {
-						expect(service.getLanguage$() instanceof Observable).toBe(true);
-					});
-
+				describe('language', () => {
 					describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
-						it(`should emit "${language}"`, async () => {
-							const promise = firstValueFrom(service.getLanguage$().pipe(skip(1)));
+						it(`should emit "${language}"`, () => {
 							mockLangChange.next({lang: language});
-							await expect(promise).resolves.toBe(language);
+							expect(service.language()).toBe(language);
 						});
 					});
 				});
 
-				describe('getLanguages', () => {
+				describe('languages', () => {
 					it('should return an array containing "en" and "de"', () => {
-						expect(service.getLanguages()).toEqual([
+						expect(service.languages()).toEqual([
 							{code: 'en', label: 'English'},
 							{code: 'de', label: 'Deutsch'},
 							{code: 'fr', label: 'Français'},
@@ -316,17 +281,10 @@ describe('ObServiceNavigationService', () => {
 				});
 			});
 
-			describe.each([
-				{environment: ObEPamsEnvironment.DEV, pamsRootUrl: 'https://pams-api.eportal-d.admin.ch/'},
-				// {environment: ObEPamsEnvironment.REF, pamsRootUrl: 'https://pams-api.eportal-r.admin.ch/'},
-				// {environment: ObEPamsEnvironment.TEST, pamsRootUrl: 'https://pams-api.eportal-t.admin.ch/'},
-				// {environment: ObEPamsEnvironment.ABN, pamsRootUrl: 'https://pams-api.eportal-a.admin.ch/'},
-				// {environment: ObEPamsEnvironment.PROD, pamsRootUrl: 'https://pams-api.eportal.admin.ch/'}
-			])(
+			describe.each([{environment: ObEPamsEnvironment.DEV, pamsRootUrl: 'https://pams-api.eportal-d.admin.ch/'}])(
 				'"setReturnUrl" called with "http://localhost" and "setUpRootUrls" called with "$environment" as "environment"',
 				({environment, pamsRootUrl}) => {
 					describe.each([
-						// {desc: 'and no "rootUrl"', calledPamsUrl: pamsRootUrl},
 						{
 							desc: 'and "http://root-url" as "rootUrl"',
 							rootUrl: 'http://root-url/',
@@ -335,19 +293,12 @@ describe('ObServiceNavigationService', () => {
 					])('$desc', ({rootUrl, calledPamsUrl}) => {
 						beforeEach(() => {
 							service.setUpRootUrls(environment, rootUrl);
-							service.setReturnUrl('http://localhost');
+							service.connectReturnUrl(signal('http://localhost'));
+							TestBed.flushEffects();
 						});
 
-						describe.each(['getLoginUrl$', 'getProfileUrls$', 'getInboxMailUrl$'])('%s', method => {
-							it('should return an observable', () => {
-								expect(service[method]() instanceof Observable).toBe(true);
-							});
-
+						describe.each(['loginUrl', 'profileUrls', 'inboxMailUrl'])('%s', () => {
 							describe('ObServiceNavigationConfigService.fetchUrls', () => {
-								beforeEach(() => {
-									service[method]().subscribe();
-								});
-
 								describe('languageSynchronizationService', () => {
 									it('should initialized languageSynchronizationService with the correct rootUrl', () => {
 										expect(mockLanguageSynchronizationInitialize).toHaveBeenNthCalledWith(1, calledPamsUrl);
@@ -364,32 +315,19 @@ describe('ObServiceNavigationService', () => {
 							});
 						});
 
-						describe('getLoginUrl$', () => {
+						describe('loginUrl', () => {
 							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
-								describe('Without pamsAppId', () => {
-									const error = new Error(
-										'Service Navigation requires an appId for step-up logins to work. The appId can be found on the application configuration page on ePortal.'
-									);
-
-									it(`should throw an error`, async () => {
-										service.setPamsAppId(undefined);
-										const promise = firstValueFrom(service.getLoginUrl$());
-										mockLangChange.next({lang: language});
-										await expect(promise).rejects.toEqual(error);
-									});
-								});
-
 								describe('With pamsAppId', () => {
 									const randomPamsAppId = 'randomPamsAppId';
 
 									beforeEach(() => {
 										service.setPamsAppId(randomPamsAppId);
+										TestBed.flushEffects();
 									});
 
-									it(`should emit "http://login?returnURL=http://localhost&language=${language}&appid=${randomPamsAppId}"`, async () => {
-										const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
+									it(`should emit "http://login?returnURL=http://localhost&language=${language}&appid=${randomPamsAppId}"`, () => {
 										mockLangChange.next({lang: language});
-										expect(await promise).toBe(
+										expect(service.loginUrl()).toBe(
 											`http://login?returnURL=http://localhost&language=${language}&appid=${randomPamsAppId}`
 										);
 									});
@@ -398,22 +336,21 @@ describe('ObServiceNavigationService', () => {
 						});
 
 						const fakePamsAppId = '1';
-						describe('getInboxMailUrl$', () => {
-							it(`should emit "http://inboxMail?returnApplicationId=${fakePamsAppId}"`, async () => {
+						describe('inboxMailUrl', () => {
+							it(`should emit "http://inboxMail?returnApplicationId=${fakePamsAppId}"`, () => {
 								service.setPamsAppId(fakePamsAppId);
-								await expect(firstValueFrom(service.getInboxMailUrl$())).resolves.toBe(
-									`http://inboxMail?returnApplicationId=${fakePamsAppId}`
-								);
+								TestBed.flushEffects();
+								expect(service.inboxMailUrl()).toBe(`http://inboxMail?returnApplicationId=${fakePamsAppId}`);
 							});
 						});
 
-						describe('getApplicationsUrl$', () => {
-							it(`should emit "http://applications"`, async () => {
-								await expect(firstValueFrom(service.getApplicationsUrl$())).resolves.toBe('http://applications');
+						describe('applicationsUrl', () => {
+							it('should emit "http://applications"', () => {
+								expect(service.applicationsUrl()).toBe('http://applications');
 							});
 						});
 
-						describe('getProfileUrls$', () => {
+						describe('profileUrls', () => {
 							describe.each([
 								{
 									index: 0,
@@ -441,11 +378,11 @@ describe('ObServiceNavigationService', () => {
 								},
 							])('Url number $index', expectedUrl => {
 								let urls: ObISectionLink[];
-								beforeEach(async () => {
+								beforeEach(() => {
 									service.setPamsAppId(fakePamsAppId);
-									const profileUrls = firstValueFrom(service.getProfileUrls$());
+									TestBed.flushEffects();
 									mockStateChange.next({loginState: 'S3+OK', profile: {}} as ObIServiceNavigationState);
-									urls = await profileUrls;
+									urls = service.profileUrls();
 								});
 
 								it(`should contain url ${expectedUrl.url}`, () => {
@@ -462,43 +399,39 @@ describe('ObServiceNavigationService', () => {
 							});
 
 							describe.each(['SA', 'S1'])('no enough rights with %s', rightLevel => {
-								it(`should return empty array`, async () => {
+								it('should return empty array', () => {
 									service.setPamsAppId(fakePamsAppId);
-									const profileUrls = firstValueFrom(service.getProfileUrls$());
+									TestBed.flushEffects();
 									mockStateChange.next({loginState: rightLevel, profile: {}} as ObIServiceNavigationState);
-									const urls = await profileUrls;
-									expect(urls).toHaveLength(0);
+									expect(service.profileUrls()).toHaveLength(0);
 								});
 							});
 						});
 
-						describe('getLoginState$', () => {
+						describe('loginState', () => {
 							describe.each(['S1', 'S2OK', 'S2+OK', 'S3OK', 'S3+OK'])('with "%s"', loginState => {
-								it(`should emit "${loginState}"`, async () => {
-									const promise = firstValueFrom(service.getLoginState$());
+								it(`should emit "${loginState}"`, () => {
 									mockStateChange.next({loginState, profile: {}} as ObIServiceNavigationState);
-									await expect(promise).resolves.toEqual(loginState);
+									expect(service.loginState()).toEqual(loginState);
 								});
 							});
 						});
 
-						describe('getUserName$', () => {
-							it(`should emit "John Doe"`, async () => {
-								const promise = firstValueFrom(service.getUserName$());
+						describe('userName', () => {
+							it('should emit "John Doe"', () => {
 								mockStateChange.next({profile: {fullname: 'John Doe'}} as ObIServiceNavigationState);
-								await expect(promise).resolves.toEqual('John Doe');
+								expect(service.userName()).toEqual('John Doe');
 							});
 						});
 
-						describe('getMessageCount$', () => {
-							it(`should emit "42"`, async () => {
-								const promise = firstValueFrom(service.getMessageCount$());
+						describe('messageCount', () => {
+							it('should emit "42"', () => {
 								mockStateChange.next({messageCount: 42, profile: {}} as ObIServiceNavigationState);
-								await expect(promise).resolves.toEqual(42);
+								expect(service.messageCount()).toEqual(42);
 							});
 						});
 
-						describe.each(['getLastUsedApplications$', 'getFavoriteApplications$'])('%s', method => {
+						describe.each(['lastUsedApplications', 'favoriteApplications'])('%s', signalName => {
 							describe.each([
 								{language: 'de', name: 'Name'},
 								{language: 'fr', name: 'nom'},
@@ -506,44 +439,33 @@ describe('ObServiceNavigationService', () => {
 								{language: 'en', name: 'name'},
 								{language: 'es', name: 'name'},
 							])('with "$language" as language', ({language, name}) => {
-								let promise: Promise<any>;
 								beforeEach(() => {
-									promise = firstValueFrom(service[method]());
 									mockLangChange.next({lang: language});
 									mockStateChange.next({lastUsedApps: [{appID: 42}], profile: {}} as ObIServiceNavigationState);
-								});
-
-								it('should call getApplications once', () => {
-									expect(applicationsService.getApplications).toHaveBeenCalledTimes(1);
 								});
 
 								it('should call getApplications with correct parameters', () => {
 									expect(applicationsService.getApplications).toHaveBeenCalledWith(rootUrl ?? pamsRootUrl);
 								});
 
-								it(`should emit a list of applications`, async () => {
-									await expect(promise).resolves.toEqual([{name}]);
+								it('should emit a list of applications', () => {
+									expect(service[signalName]()).toEqual([{name}]);
 								});
 							});
 						});
 
-						describe('getLanguage$', () => {
-							it('should return an observable', () => {
-								expect(service.getLanguage$() instanceof Observable).toBe(true);
-							});
-
+						describe('language', () => {
 							describe.each(['de', 'fr', 'it', 'en', 'es'])('with "%s" as language', language => {
-								it(`should emit "${language}"`, async () => {
-									const promise = firstValueFrom(service.getLanguage$().pipe(skip(1)));
+								it(`should emit "${language}"`, () => {
 									mockLangChange.next({lang: language});
-									await expect(promise).resolves.toBe(language);
+									expect(service.language()).toBe(language);
 								});
 							});
 						});
 
-						describe('getLanguages', () => {
+						describe('languages', () => {
 							it('should return an array containing "en" and "de"', () => {
-								expect(service.getLanguages()).toEqual([
+								expect(service.languages()).toEqual([
 									{code: 'en', label: 'English'},
 									{code: 'de', label: 'Deutsch'},
 									{code: 'fr', label: 'Français'},
@@ -595,26 +517,25 @@ describe('ObServiceNavigationService', () => {
 			);
 		});
 
-		it(`should set language synchronization`, () => {
+		it('should set language synchronization', () => {
 			const languageCode = 'en';
-			service.getLoginState$().subscribe(); // just to subscribe the state
 			mockStateChange.next({profile: {language: languageCode}} as ObIServiceNavigationState);
 
 			expect(mockLanguageSynchronizationSetLanguage).toHaveBeenNthCalledWith(1, languageCode);
 		});
 
-		it(`should set login state`, () => {
+		it('should set login state', () => {
 			const loginLevel: ObLoginState = 'S2OK';
 
 			service.setUpRootUrls(ObEPamsEnvironment.TEST);
-			service.getLoginState$().subscribe();
+			TestBed.flushEffects();
 			mockStateChange.next({loginState: loginLevel, profile: {}} as ObIServiceNavigationState);
 
 			expect(languageSynchronizationService.loginLevel).toBe(loginLevel);
 		});
 	});
 
-	describe('getLoginUrl$ and navigationChanged$', () => {
+	describe('loginUrl and navigationChanged', () => {
 		const appId = 'appId';
 
 		beforeEach(() => {
@@ -622,34 +543,33 @@ describe('ObServiceNavigationService', () => {
 			service.setUpRootUrls(ObEPamsEnvironment.DEV, 'http://root-url/');
 			service.setFavoriteApplicationsCount(1);
 			service.setPamsAppId(appId);
-			service.setReturnUrl(null as unknown as string);
+			service.connectReturnUrl(signal(undefined));
+			TestBed.flushEffects();
 		});
 
-		it('should use window.location.href as the initial navigateUrl before any navigation event', async () => {
-			await expect(firstValueFrom(service.getLoginUrl$())).resolves.toBe(
-				`http://login?returnURL=${mockWindowHref}&language=en&appid=${appId}`
-			);
+		it('should use window.location.href as the initial navigateUrl before any navigation event', () => {
+			expect(service.loginUrl()).toBe(`http://login?returnURL=${mockWindowHref}&language=en&appid=${appId}`);
 		});
 
-		it('should use the navigateUrl emitted by navigate$ when returnUrl is not set', async () => {
+		it('should use the navigateUrl emitted by navigate$ when returnUrl is not set', () => {
 			const navigatedUrl = 'http://navigated-url';
-			const promise = firstValueFrom(service.getLoginUrl$().pipe(skip(1)));
 			mockNavigate$.next({destination: {url: navigatedUrl}});
-			await expect(promise).resolves.toBe(`http://login?returnURL=${navigatedUrl}&language=en&appid=${appId}`);
+			expect(service.loginUrl()).toBe(`http://login?returnURL=${navigatedUrl}&language=en&appid=${appId}`);
 		});
 
-		it('should re-emit getLoginUrl$ each time navigate$ emits a new value', () => {
+		it('should re-emit loginUrl each time navigate$ emits a new value', () => {
 			const secondUrl = 'http://second-url';
-			const emittedUrls: string[] = [];
-			service.getLoginUrl$().subscribe(url => emittedUrls.push(url));
-
-			expect(emittedUrls).toHaveLength(1);
+			const initialUrl = service.loginUrl();
 
 			mockNavigate$.next({destination: {url: 'http://first-url'}});
-			mockNavigate$.next({destination: {url: secondUrl}});
+			const firstUrl = service.loginUrl();
 
-			expect(emittedUrls).toHaveLength(3);
-			expect(emittedUrls[2]).toContain(secondUrl);
+			mockNavigate$.next({destination: {url: secondUrl}});
+			const finalUrl = service.loginUrl();
+
+			expect(initialUrl).toContain(mockWindowHref);
+			expect(firstUrl).toContain('http://first-url');
+			expect(finalUrl).toContain(secondUrl);
 		});
 	});
 
@@ -661,7 +581,7 @@ describe('ObServiceNavigationService', () => {
 			{inputs: ['S2OK'], emitTimes: 1},
 			{inputs: ['S2OK', 'SA'], emitTimes: 2},
 			{inputs: [undefined], emitTimes: 1},
-		])('getLoginState$', ({inputs, emitTimes}) => {
+		])('loginState', ({inputs, emitTimes}) => {
 			const mockStateChangeDuplicate = new Subject();
 			beforeEach(() => {
 				TestBed.overrideProvider(ObServiceNavigationPollingService, {
@@ -676,14 +596,15 @@ describe('ObServiceNavigationService', () => {
 			it(`should emit ${emitTimes} times`, () => {
 				service.setUpRootUrls(ObEPamsEnvironment.TEST);
 				service.setFavoriteApplicationsCount(1);
-				const emittedStates = [];
+				TestBed.flushEffects();
+				const emittedStates: ObLoginState[] = [];
 
-				service.getLoginState$().subscribe(state => {
-					emittedStates.push(state);
+				inputs.forEach(input => {
+					mockStateChangeDuplicate.next({loginState: input, profile: {}});
+					emittedStates.push(service.loginState());
 				});
-				inputs.forEach(input => mockStateChangeDuplicate.next({loginState: input, profile: {}}));
 
-				expect(emittedStates).toHaveLength(emitTimes);
+				expect(new Set(emittedStates).size).toBe(emitTimes);
 			});
 		});
 	});

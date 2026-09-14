@@ -36,12 +36,13 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 	});
 
 	it('should have an empty "loginUrl" property', () => {
-		expect(component.loginUrl).toBe('');
+		expect(component.loginUrl()).toBe('');
 	});
 
 	describe('with "loginUrl" as "loginUrl" and "logoutUrl" as "logoutUrl"', () => {
 		beforeEach(() => {
-			component.loginUrl = 'loginUrl';
+			fixture.componentRef.setInput('loginUrl', 'loginUrl');
+			fixture.componentRef.changeDetectorRef.detectChanges();
 		});
 
 		describe('isLoggedIn', () => {

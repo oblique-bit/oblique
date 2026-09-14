@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation, input} from '@angular/core';
+import {Component, ViewEncapsulation, input} from '@angular/core';
 import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-navigation.model';
 
 @Component({
@@ -6,14 +6,13 @@ import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-
 	standalone: false,
 	templateUrl: './service-navigation-info.component.html',
 	styleUrls: ['./service-navigation-info.component.scss'],
-	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-info'},
 })
 export class ObServiceNavigationInfoComponent {
-	readonly helpText = input<string>(undefined);
-	@Input() description: string;
-	@Input() links: ObIServiceNavigationLink[] = [];
-	readonly contactText = input<string>(undefined);
-	@Input() contact: ObIServiceNavigationContact;
+	readonly helpText = input<string>();
+	readonly description = input<string>();
+	readonly links = input<ObIServiceNavigationLink[]>([]);
+	readonly contactText = input<string>();
+	readonly contact = input<ObIServiceNavigationContact>();
 }

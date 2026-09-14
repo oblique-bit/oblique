@@ -83,7 +83,7 @@ describe('obDisableLinkDirective', () => {
 		});
 	});
 
-	describe('ngOnChanges', () => {
+	describe('when the condition changes', () => {
 		describe('condition goes from true to false', () => {
 			it('should not have role=link', () => {
 				component.disableLink = true;

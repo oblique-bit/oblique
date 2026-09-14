@@ -20,7 +20,7 @@
 		[eportalLanguageSynchronization]="eportalLanguageSynchronization()"
 		[rootUrl]="rootUrl()"
 		[returnUrl]="returnUrl()"
-		(loginState)="loginState.emit($event)"
+		(loginStateChange)="loginState.emit($event)"
 		(logoutTriggered)="logoutTriggered.emit($event)"
 	>
 		@for (button of customButtonsParsed; track button.obliqueIconName) {

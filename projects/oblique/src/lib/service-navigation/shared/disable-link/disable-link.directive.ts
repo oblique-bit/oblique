@@ -1,39 +1,18 @@
-import {Directive, Input, OnChanges, input} from '@angular/core';
+import {Directive, booleanAttribute, computed, input} from '@angular/core';
 
 @Directive({
 	selector: '[obDisableLink]',
 	host: {
-		'[attr.aria-disabled]': 'disabled',
-		'[attr.role]': 'role',
-		'[attr.href]': 'attributeHref',
+		'[attr.aria-disabled]': 'disabled()',
+		'[attr.role]': 'role()',
+		'[attr.href]': 'attributeHref()',
 	},
 })
-export class ObDisableLinkDirective implements OnChanges {
-	@Input() set obDisableLink(condition: boolean) {
-		if (typeof condition === 'boolean') {
-			this.condition = condition;
-		}
-	}
-	readonly href = input<string>(undefined);
+export class ObDisableLinkDirective {
+	readonly obDisableLink = input(true, {transform: booleanAttribute});
+	readonly href = input<string>();
 
-	protected disabled: string;
-	protected role: string;
-	protected attributeHref: string;
-
-	private originalHref: string;
-	private condition = true;
-
-	ngOnChanges(): void {
-		this.originalHref ??= this.href();
-
-		if (this.condition) {
-			this.disabled = 'true';
-			this.role = 'link';
-			this.attributeHref = undefined;
-		} else {
-			this.disabled = undefined;
-			this.role = undefined;
-			this.attributeHref = this.originalHref;
-		}
-	}
+	protected readonly disabled = computed(() => (this.obDisableLink() ? 'true' : undefined));
+	protected readonly role = computed(() => (this.obDisableLink() ? 'link' : undefined));
+	protected readonly attributeHref = computed(() => (this.obDisableLink() ? undefined : this.href()));
 }
