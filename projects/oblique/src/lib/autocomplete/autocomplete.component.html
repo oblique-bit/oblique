@@ -49,7 +49,10 @@
 
 <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]="displayWith()" class="ob-autocomplete-panel">
 	<ng-container
-		*ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }"
+		*ngTemplateOutlet="
+			hasGroupOptions() ? optionGroups : onlyOptions;
+			context: { $implicit: (filteredOptions$ | async) }
+		"
 	/>
 
 	<ng-template #optionGroups let-options>
@@ -57,7 +60,7 @@
 			<mat-optgroup [disabled]="group['disabled']" [label]="group['groupLabel']">
 				<ng-container
 					*ngTemplateOutlet="
-						group['groupOptions']?.length > 0 && hasGroupOptions ? onlyOptions : optionGroups;
+						group['groupOptions']?.length > 0 && hasGroupOptions() ? onlyOptions : optionGroups;
 						context: { $implicit: group['groupOptions'] }
 					"
 				/>

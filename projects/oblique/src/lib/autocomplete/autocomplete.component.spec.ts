@@ -145,7 +145,7 @@ describe(ObAutocompleteComponent.name, () => {
 			});
 
 			it('should have hasGroupOptions with value false', () => {
-				expect(component.hasGroupOptions).toBe(false);
+				expect(component.hasGroupOptions()).toBe(false);
 			});
 		});
 	});

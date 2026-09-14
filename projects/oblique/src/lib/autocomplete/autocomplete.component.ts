@@ -92,7 +92,13 @@ export class ObAutocompleteComponent<T = string>
 	readonly selectedOptionChange = output<ObIAutocompleteInputOption<T>>();
 	autocompleteInputControl = new FormControl<T | string>('', {updateOn: 'change'});
 	filteredOptions$: Observable<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>;
-	hasGroupOptions = false;
+	hasGroupOptions = computed(() => {
+		if (!this.autocompleteOptions().length) {
+			return false;
+		}
+		return this.isGroupOption(this.autocompleteOptions()[0]);
+	});
+
 	readonly searchText = toSignal(
 		this.autocompleteInputControl.valueChanges.pipe(
 			debounceTime(200),
@@ -229,12 +235,11 @@ export class ObAutocompleteComponent<T = string>
 		filterValue: string,
 		optionsToFilter: (ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]
 	): (ObIAutocompleteInputOptionGroup<T> | ObIAutocompleteInputOption<T>)[] {
-		this.hasGroupOptions = this.isGroupOption(optionsToFilter[0]);
 		const searchText = filterValue.toLowerCase();
 		if (this.autocompleteInputControl.value === '') {
 			return this.autocompleteOptions();
 		}
-		return this.hasGroupOptions
+		return this.hasGroupOptions()
 			? this.filterGroups(optionsToFilter as ObIAutocompleteInputOptionGroup<T>[], searchText)
 			: this.filterOptions(optionsToFilter as ObIAutocompleteInputOption<T>[], searchText);
 	}
