@@ -38,6 +38,20 @@ works. Every token that needs to reach CSS keeps `ob.s.*` or `ob.h.*`. Trim
 that prefix for Figma-panel readability only through a script here, never by
 shortening the JSON path below the tier letter.
 
+**Known issue — `figma-ds-cli eval` can silently return nothing for a file
+with a large leading JSDoc header.** Confirmed 2026-09-14 on
+`rewire-cover-colors.js`: both `eval -f` and inline `eval "$(cat ...)"`
+returned empty output (exit 0, no error) with the file's ~55-line header
+comment in place — even wrapping the whole body in try/catch caught nothing,
+so it is not an uncaught JS exception. Stripping the leading `/** ... */`
+block before running fixed it immediately; the code itself was never at
+fault. Not the same bug as the backtick-in-comment issue noted elsewhere (this
+file had none) and not fully diagnosed — root cause presumed to be somewhere
+in the CLI's own script-embedding/escaping, unrelated to what the script
+does. Workaround, and a one-liner to apply it, is documented in
+`rewire-cover-colors.js`'s own header. Pasting into the Desktop Bridge plugin
+console directly (skipping the CLI) does not hit this.
+
 ## run-cosmetics.js — the one script to run after every export
 
 **The problem.** Trim, scoping, and text/effect-style rename+relink used to
@@ -248,3 +262,27 @@ restriction" and lists the variable in every applicable picker for its type.
 - `setHiddenFromPublishing: true` removes the variable from the Libraries
   tab in consuming files, but only after the source library is re-published.
   Existing bindings on consuming files keep their last resolved value.
+
+## rewire-cover-colors.js — rebind a detached cover's colors to local variables
+
+For cover/thumbnail artwork pulled from an older library file into an
+isolated buffer, fully detached (instances + variable bindings), then pasted
+into the current library. After detach the colors are plain literals with no
+usable variable name to fall back on (the old names, e.g. "Background/white",
+don't correspond to current Oblique naming) — the only way back to live
+variables is matching each literal's resolved color value against this
+library's own local variables. This script does that matching + binding, one
+cover frame at a time.
+
+Run scan first, always. Review `plan` (what would bind) and `unmatched`
+(colors with no entry in `colorMap`/`nodeOverrides` — left as-is, on purpose)
+before switching to `rewire`. See the script's own header for the full
+CONFIG shape, what it deliberately leaves literal (flag red/white, a
+Presentation-mode chrome replica, a "safe area" guide, a WIP badge helper —
+see the "Known issue" block above this section for the header itself needing
+to be stripped when running through the CLI), and a worked example from the
+first two covers rewired this way (2026-09-14, "Oblique Design System R16
+Prep": internal-library cover at `364:13`, Figma Community cover at `372:2`,
+both bound to `03_semantic/color/compiled`'s
+`color/neutral/{bg,fg,border}/...` variables, zero remote bindings left on
+either).

@@ -101,7 +101,12 @@ available to files that consume this library.
 - **`figma-ds-cli eval -f <file>` sometimes returns no output at all**, with
   exit code 0, while the identical code passed inline (`eval "<code>"`)
   works. Not diagnosed. If a script produces nothing, retry as inline code
-  before assuming the script itself is broken.
+  before assuming the script itself is broken. One confirmed trigger
+  (2026-09-14, `figma-utils/rewire-cover-colors.js`): a large leading JSDoc
+  header comment — both `-f` and inline failed the same way with it in
+  place, and stripping it (see that script's own header for the one-liner)
+  fixed both immediately. Not a backtick issue and not an uncaught
+  exception (a full try/catch around the body caught nothing either).
 - **`figma-ds-cli eval -f` needs to run from the `figma-cli` install
   directory** (`~/figma-cli` by default), not from this repo — otherwise it
   fails to resolve its own `src/figma-client.js` import, because the CLI
