@@ -16,7 +16,7 @@ describe(SlugToIdService.name, () => {
 
 	describe(SlugToIdService.prototype.setupDataSet.name, () => {
 		it('should emit readyToMap once', () => {
-			jest.spyOn(service.readyToMap, 'next');
+			vi.spyOn(service.readyToMap, 'next');
 
 			service.setupDataSet(new Map<string, number>());
 

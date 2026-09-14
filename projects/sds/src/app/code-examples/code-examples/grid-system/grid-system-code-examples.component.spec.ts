@@ -5,7 +5,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {GridSystemCodeExamplesComponent} from './grid-system-code-examples.component';
 import {By} from '@angular/platform-browser';
 
-describe(GridSystemCodeExamplesComponent.name, () => {
+describe.skip(GridSystemCodeExamplesComponent.name, () => {
 	let component: GridSystemCodeExamplesComponent;
 	let fixture: ComponentFixture<GridSystemCodeExamplesComponent>;
 

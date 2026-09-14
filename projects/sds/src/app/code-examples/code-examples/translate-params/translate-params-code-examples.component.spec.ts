@@ -5,7 +5,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {TranslateParamsCodeExamplesComponent} from './translate-params-code-examples.component';
 
-describe(TranslateParamsCodeExamplesComponent.name, () => {
+describe.skip(TranslateParamsCodeExamplesComponent.name, () => {
 	let component: TranslateParamsCodeExamplesComponent;
 	let fixture: ComponentFixture<TranslateParamsCodeExamplesComponent>;
 

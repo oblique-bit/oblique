@@ -323,18 +323,23 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "config": "jest.config.js",
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/sds/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts"],
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageInclude": ["projects/sds/src/app/**/*.ts"],
+            "coverageExclude": ["**/*.spec.ts", "projects/oblique/**", "projects/sds/src/polyfills.ts"]
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": true
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/sds/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"

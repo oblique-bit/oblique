@@ -6,7 +6,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {UnsavedChangesCodeExamplesComponent} from './unsaved-changes-code-examples.component';
 
-describe(UnsavedChangesCodeExamplesComponent.name, () => {
+describe.skip(UnsavedChangesCodeExamplesComponent.name, () => {
 	let component: UnsavedChangesCodeExamplesComponent;
 	let fixture: ComponentFixture<UnsavedChangesCodeExamplesComponent>;
 

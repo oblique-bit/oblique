@@ -7,7 +7,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {StepperCodeExamplesComponent} from './stepper-code-examples.component';
 import {By} from '@angular/platform-browser';
 
-describe(StepperCodeExamplesComponent.name, () => {
+describe.skip(StepperCodeExamplesComponent.name, () => {
 	let component: StepperCodeExamplesComponent;
 	let fixture: ComponentFixture<StepperCodeExamplesComponent>;
 

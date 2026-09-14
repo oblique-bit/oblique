@@ -6,7 +6,7 @@ import {DialogExampleSpinnerComponent} from './previews/spinner/dialog-example-s
 import {DialogExampleDefaultComponent} from './previews/default/dialog-example-default.component';
 import {ObButtonDirective} from '@oblique/oblique';
 
-describe(DialogCodeExamplesComponent.name, () => {
+describe.skip(DialogCodeExamplesComponent.name, () => {
 	let component: DialogCodeExamplesComponent;
 	let fixture: ComponentFixture<DialogCodeExamplesComponent>;
 

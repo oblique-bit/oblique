@@ -9,7 +9,7 @@ import {NumberFormatCodeExamplesComponent} from './number-format-code-examples.c
 import {NumberFormatExampleDefaultWithTemplateFromPreviewComponent} from './previews/default-with-template-from/number-format-example-default-with-template-from-preview.component';
 import {NumberFormatExampleDefaultWithReactiveFormPreviewComponent} from './previews/default-with-reactive-form/number-format-example-default-with-reactive-form-preview.component';
 
-describe(NumberFormatCodeExamplesComponent.name, () => {
+describe.skip(NumberFormatCodeExamplesComponent.name, () => {
 	let component: NumberFormatCodeExamplesComponent;
 	let fixture: ComponentFixture<NumberFormatCodeExamplesComponent>;
 

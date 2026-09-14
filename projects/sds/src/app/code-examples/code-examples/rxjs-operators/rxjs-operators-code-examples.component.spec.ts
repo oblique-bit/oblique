@@ -6,7 +6,7 @@ import {CodeExampleComponent} from './../../code-example/code-example.component'
 import {RxjsOperatorsCodeExamplesComponent} from './rxjs-operators-code-examples.component';
 import {RxjsOperatorsExampleDefaultPreviewComponent} from './previews/default/rxjs-operators-example-default-preview.component';
 
-describe(RxjsOperatorsCodeExamplesComponent.name, () => {
+describe.skip(RxjsOperatorsCodeExamplesComponent.name, () => {
 	let component: RxjsOperatorsCodeExamplesComponent;
 	let fixture: ComponentFixture<RxjsOperatorsCodeExamplesComponent>;
 

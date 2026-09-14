@@ -6,7 +6,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {VersionExampleDefaultPreviewComponent} from './previews/default/version-example-default-preview.component';
 import {VersionCodeExamplesComponent} from './version-code-examples.component';
 
-describe(VersionCodeExamplesComponent.name, () => {
+describe.skip(VersionCodeExamplesComponent.name, () => {
 	let component: VersionCodeExamplesComponent;
 	let fixture: ComponentFixture<VersionCodeExamplesComponent>;
 

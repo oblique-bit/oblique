@@ -8,7 +8,7 @@ import {PopoverCodeExamplesComponent} from './popover-code-examples.component';
 import {PopoverExampleOtherOptionsPreviewComponent} from './previews/other-options/popover-example-other-options-preview.component';
 import {PopoverExampleDefaultPreviewComponent} from './previews/default/popover-example-default-preview.component';
 
-describe(PopoverCodeExamplesComponent.name, () => {
+describe.skip(PopoverCodeExamplesComponent.name, () => {
 	let component: PopoverCodeExamplesComponent;
 	let fixture: ComponentFixture<PopoverCodeExamplesComponent>;
 

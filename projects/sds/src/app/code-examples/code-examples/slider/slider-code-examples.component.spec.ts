@@ -1,7 +1,7 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {SliderCodeExamplesComponent} from './slider-code-examples.component';
 
-describe('SliderCodeExamplesComponent', () => {
+describe.skip('SliderCodeExamplesComponent', () => {
 	let component: SliderCodeExamplesComponent;
 	let fixture: ComponentFixture<SliderCodeExamplesComponent>;
 

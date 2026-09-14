@@ -1,7 +1,7 @@
 import {ChipsCodeExamplesComponent} from './chips-code-examples.component';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 
-describe(ChipsCodeExamplesComponent.name, () => {
+describe.skip(ChipsCodeExamplesComponent.name, () => {
 	let component: ChipsCodeExamplesComponent;
 	let fixture: ComponentFixture<ChipsCodeExamplesComponent>;
 

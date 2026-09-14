@@ -6,8 +6,8 @@
     "start": "ng serve",
     "lint": "tsx scripts/lint.ts",
     "format": "tsx scripts/lint.ts --fix",
-    "test": "cd ../.. && ng test sds",
-    "test-ci": "cd ../.. && ng run sds:test:ci",
+    "test": "ng test sds",
+    "test-ci": "ng run sds:test:ci",
     "build": "ng build && tsx scripts/post-build.ts",
     "add-code-example": "npm run schematics-build && cd ../../ && schematics ./projects/sds/schematics/collection:add-code-example --dry-run=false",
     "add-preview": "npm run schematics-build  && cd ../../ && schematics ./projects/sds/schematics/collection:add-preview --dry-run=false",
@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@schematics/angular": "^22.0.4",
-    "jest-raw-loader": "^1.0.1"
+    "@vitest/coverage-v8": "^4.1.11",
+    "jest-raw-loader": "^1.0.1",
+    "vitest": "4.1.11"
   }
 }

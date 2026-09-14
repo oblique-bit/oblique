@@ -21,9 +21,10 @@ describe(SideNavigationComponent.name, () => {
 	let router: Router;
 
 	const idPipe = new IdPipe();
-	const versionServiceMock = {setCurrentVersion: jest.fn(), setCmsData: jest.fn(), getBaseUrl: jest.fn(() => '')};
+	const versionServiceMock = {setCurrentVersion: vi.fn(), setCmsData: vi.fn(), getBaseUrl: vi.fn(() => '')};
 	const cmsDataServiceMock = {
-		getCategories: jest.fn(() =>
+		getVersions: vi.fn(() => of({data: [{id: 1, version_number: 12, base_url: ''}]})),
+		getCategories: vi.fn(() =>
 			of({
 				data: [
 					{id: 1, name: 'Guidelines', min_version: 9, max_version: 13},
@@ -32,7 +33,7 @@ describe(SideNavigationComponent.name, () => {
 				],
 			})
 		),
-		getTabbedPagesShort: jest.fn(() =>
+		getTabbedPagesShort: vi.fn(() =>
 			of({
 				data: [
 					{
@@ -54,7 +55,7 @@ describe(SideNavigationComponent.name, () => {
 				],
 			})
 		),
-		getTextPagesShort: jest.fn(() =>
+		getTextPagesShort: vi.fn(() =>
 			of({
 				data: [{id: 22, name: 'Component Page', slug: 'component-sub-item-1', category: 2, min_version: 1}],
 			})

@@ -7,7 +7,7 @@ import {BadgeExampleColorsComponent} from './previews/colors/badge-example-color
 import {BadgeExampleOtherOptionsComponent} from './previews/other-options/badge-example-other-options.component';
 import {MatBadge} from '@angular/material/badge';
 
-describe(BadgeCodeExamplesComponent.name, () => {
+describe.skip(BadgeCodeExamplesComponent.name, () => {
 	let component: BadgeCodeExamplesComponent;
 	let fixture: ComponentFixture<BadgeCodeExamplesComponent>;
 

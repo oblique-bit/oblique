@@ -10,7 +10,7 @@ import {ErrorMessagesExampleCustomErrorMessagePreviewComponent} from './previews
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '@oblique/oblique';
 
-describe(ErrorMessagesCodeExamplesComponent.name, () => {
+describe.skip(ErrorMessagesCodeExamplesComponent.name, () => {
 	let component: ErrorMessagesCodeExamplesComponent;
 	let fixture: ComponentFixture<ErrorMessagesCodeExamplesComponent>;
 

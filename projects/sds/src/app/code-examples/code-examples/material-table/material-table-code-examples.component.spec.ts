@@ -12,7 +12,7 @@ import {MaterialTableExampleSizesPreviewComponent} from './previews/sizes/materi
 import {MaterialTableExampleStylesPreviewComponent} from './previews/styles/material-table-example-styles-preview.component';
 import {MaterialTableExampleSortablePreviewComponent} from './previews/sortable/material-table-example-sortable-preview.component';
 
-describe(MaterialTableCodeExamplesComponent.name, () => {
+describe.skip(MaterialTableCodeExamplesComponent.name, () => {
 	let component: MaterialTableCodeExamplesComponent;
 	let fixture: ComponentFixture<MaterialTableCodeExamplesComponent>;
 

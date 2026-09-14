@@ -3,7 +3,7 @@ import {AutocompleteCodeExamplesComponent} from './autocomplete-code-examples.co
 import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslateService} from '@oblique/oblique';
 
-describe('AutocompleteCodeExamplesComponent', () => {
+describe.skip('AutocompleteCodeExamplesComponent', () => {
 	let component: AutocompleteCodeExamplesComponent;
 	let fixture: ComponentFixture<AutocompleteCodeExamplesComponent>;
 

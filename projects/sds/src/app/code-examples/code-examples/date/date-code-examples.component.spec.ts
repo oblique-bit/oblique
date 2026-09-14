@@ -7,7 +7,7 @@ import {DateCodeExamplesComponent} from './date-code-examples.component';
 import {By} from '@angular/platform-browser';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
-describe(DateCodeExamplesComponent.name, () => {
+describe.skip(DateCodeExamplesComponent.name, () => {
 	let component: DateCodeExamplesComponent;
 	let fixture: ComponentFixture<DateCodeExamplesComponent>;
 

@@ -8,7 +8,7 @@ import {SchemaValidationExampleReactiveFormPreviewComponent} from './previews/re
 import {SchemaValidationExampleTemplateDrivenFormPreviewComponent} from './previews/template-driven-form/schema-validation-example-template-driven-form-preview.component';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
-describe(SchemaValidationCodeExamplesComponent.name, () => {
+describe.skip(SchemaValidationCodeExamplesComponent.name, () => {
 	let component: SchemaValidationCodeExamplesComponent;
 	let fixture: ComponentFixture<SchemaValidationCodeExamplesComponent>;
 

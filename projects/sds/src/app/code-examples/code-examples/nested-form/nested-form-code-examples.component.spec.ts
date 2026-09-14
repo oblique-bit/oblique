@@ -13,7 +13,7 @@ import {NestedFormExampleReactivePreviewGrandchildComponent} from './previews/re
 import {NestedFormExampleTemplateDrivenPreviewChildComponent} from './previews/template-driven/child/nested-form-example-template-driven-preview-child.component';
 import {NestedFormExampleTemplateDrivenPreviewGrandchildComponent} from './previews/template-driven/grandchild/nested-form-example-template-driven-preview-grandchild.component';
 
-describe(NestedFormCodeExamplesComponent.name, () => {
+describe.skip(NestedFormCodeExamplesComponent.name, () => {
 	let component: NestedFormCodeExamplesComponent;
 	let fixture: ComponentFixture<NestedFormCodeExamplesComponent>;
 

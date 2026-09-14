@@ -18,7 +18,7 @@ describe(CmsRouteRedirector.name, () => {
 	let service: CmsRouteRedirector;
 	let router: Router;
 	let harness: RouterTestingHarness;
-	const mockWindow = {open: jest.fn(), location: {origin: 'http://localhost'}};
+	const mockWindow = {open: vi.fn(), location: {origin: 'http://localhost'}};
 	const version$ = new Subject<number>();
 	const pages$: Observable<CMSPages> = of({
 		tabbedPages: {
@@ -137,12 +137,12 @@ describe(CmsRouteRedirector.name, () => {
 
 		service = TestBed.inject(CmsRouteRedirector);
 		router = TestBed.inject(Router);
-		jest.spyOn(router, 'navigate');
+		vi.spyOn(router, 'navigate');
 		harness = await RouterTestingHarness.create();
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 	});
 
 	describe(CmsRouteRedirector.prototype.redirectOnVersionChange.name, () => {
@@ -167,7 +167,7 @@ describe(CmsRouteRedirector.name, () => {
 				{version: 1, result: '/category/collision/tab', error: false},
 				{version: 2, result: '/category/collision/tab', error: true},
 			])('with version $version', async ({version, result, error}) => {
-				jest.spyOn(console, 'error');
+				vi.spyOn(console, 'error');
 				await harness.navigateByUrl(`category/${route}/tab`);
 				version$.next(version);
 				await harness.fixture.whenStable();

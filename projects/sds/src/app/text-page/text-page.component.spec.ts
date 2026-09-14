@@ -25,8 +25,8 @@ describe(TextPageComponent.name, () => {
 		fixture = TestBed.createComponent(TextPageComponent);
 		component = fixture.componentInstance;
 		service = TestBed.inject(CmsRouteRedirector);
-		jest.spyOn(service, 'redirectOnVersionChange').mockImplementation(() => {});
-		jest.spyOn(service, 'navigate');
+		vi.spyOn(service, 'redirectOnVersionChange').mockImplementation(() => {});
+		vi.spyOn(service, 'navigate');
 		fixture.detectChanges();
 	});
 
@@ -40,7 +40,7 @@ describe(TextPageComponent.name, () => {
 			{name: 'window', node: window},
 			{name: 'div', node: document.createElement('div')},
 		])('target is not an anchor ($name)', ({node}) => {
-			const event = {target: node, preventDefault: jest.fn()} as unknown as PointerEvent;
+			const event = {target: node, preventDefault: vi.fn()} as unknown as PointerEvent;
 			beforeEach(() => {
 				component.onClick(event);
 			});
@@ -68,7 +68,7 @@ describe(TextPageComponent.name, () => {
 					anchor.appendChild(span);
 					anchor.appendChild(svg);
 					anchor.href = 'http://localhost/about';
-					event = {target: element, preventDefault: jest.fn()} as unknown as PointerEvent;
+					event = {target: element, preventDefault: vi.fn()} as unknown as PointerEvent;
 					component.onClick(event);
 				});
 

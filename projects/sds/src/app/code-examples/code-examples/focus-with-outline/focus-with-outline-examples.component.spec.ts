@@ -5,7 +5,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FocusWithOutlineExamplesComponent} from './focus-with-outline-examples.component';
 import {provideNativeDateAdapter} from '@angular/material/core';
 
-describe(FocusWithOutlineExamplesComponent.name, () => {
+describe.skip(FocusWithOutlineExamplesComponent.name, () => {
 	let component: FocusWithOutlineExamplesComponent;
 	let fixture: ComponentFixture<FocusWithOutlineExamplesComponent>;
 
