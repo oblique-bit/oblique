@@ -1,11 +1,10 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
 	AfterViewInit,
 	Component,
 	DoCheck,
 	ElementRef,
 	Injector,
-	OnChanges,
 	OnDestroy,
 	Signal,
 	ViewEncapsulation,
@@ -26,14 +25,14 @@ import {
 	ReactiveFormsModule,
 } from '@angular/forms';
 import {MatAutocompleteModule, MatAutocompleteTrigger} from '@angular/material/autocomplete';
-import {MatOptionModule} from '@angular/material/core';
+import {MatOptionModule, MatOptionSelectionChange} from '@angular/material/core';
 import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TranslatePipe} from '@ngx-translate/core';
-import {Observable, Subject, debounceTime} from 'rxjs';
-import {map, startWith, takeUntil} from 'rxjs/operators';
+import {Subject, debounceTime} from 'rxjs';
+import {map, takeUntil} from 'rxjs/operators';
 import {
 	ObIAutocompleteInputOption,
 	ObIAutocompleteInputOptionGroup,
@@ -59,7 +58,6 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 		NgTemplateOutlet,
 		MatOptionModule,
 		ObOptionLabelIconDirective,
-		AsyncPipe,
 		ObHighlightTextPipe,
 		TranslatePipe,
 		ObErrorMessagesDirective,
@@ -77,9 +75,7 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-autocomplete'},
 })
-export class ObAutocompleteComponent<T = string>
-	implements OnChanges, ControlValueAccessor, OnDestroy, AfterViewInit, DoCheck
-{
+export class ObAutocompleteComponent<T = string> implements ControlValueAccessor, OnDestroy, AfterViewInit, DoCheck {
 	readonly withErrorMessages = input(false, {transform: booleanAttribute});
 	readonly inputLabelKey = input('i18n.oblique.search.title');
 	readonly noResultKey = input('i18n.oblique.search.no-results');
@@ -91,7 +87,13 @@ export class ObAutocompleteComponent<T = string>
 
 	readonly selectedOptionChange = output<ObIAutocompleteInputOption<T>>();
 	autocompleteInputControl = new FormControl<T | string>('', {updateOn: 'change'});
-	filteredOptions$: Observable<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>;
+	filteredOptions = computed(() => {
+		if (this.autocompleteOptions().length > 0) {
+			const toFilter = JSON.parse(JSON.stringify(this.autocompleteOptions()));
+			return this.filterAutocomplete(this.searchText(), toFilter);
+		}
+		return [];
+	});
 	hasGroupOptions = computed(() => {
 		if (!this.autocompleteOptions().length) {
 			return false;
@@ -112,7 +114,6 @@ export class ObAutocompleteComponent<T = string>
 	private readonly matHints = contentChildren(MatHint);
 	private readonly matHintsElementRefs = contentChildren(MatHint, {read: ElementRef<HTMLElement>});
 	private readonly unsubscribe = new Subject<void>();
-	private readonly unsubscribeOptions = new Subject<void>();
 	private readonly obAutocompleteTextToFindService = inject(ObAutocompleteTextToFindService);
 	private readonly injector = inject(Injector);
 	private readonly elementRef = inject(ElementRef<HTMLElement>);
@@ -129,10 +130,6 @@ export class ObAutocompleteComponent<T = string>
 				template: template.nativeElement.innerHTML,
 			}))
 		);
-	}
-
-	ngOnChanges(): void {
-		this.setupOptionsFilter();
 	}
 
 	ngDoCheck(): void {
@@ -163,8 +160,6 @@ export class ObAutocompleteComponent<T = string>
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
-		this.unsubscribeOptions.next();
-		this.unsubscribeOptions.complete();
 	}
 
 	setDisabledState(isDisabled: boolean): void {
@@ -180,11 +175,6 @@ export class ObAutocompleteComponent<T = string>
 	 */
 	writeValue(value: T): void {
 		this.autocompleteInputControl.setValue(value);
-		// when the value is reset, the options should also be reset
-		if (value === null || value === undefined) {
-			this.unsubscribeOptions.next(); // kill the current stream before creating a new one
-			this.setupOptionsFilter();
-		}
 	}
 
 	/**
@@ -208,27 +198,17 @@ export class ObAutocompleteComponent<T = string>
 		});
 	}
 
+	protected selectionChange(option: ObIAutocompleteInputOption<T>, event: MatOptionSelectionChange): void {
+		if (event.source.selected) {
+			this.selectedOptionChange.emit(option);
+		}
+	}
+
 	private getStringValue(value: T | string | null): string {
 		if (value === null) {
 			return '';
 		}
 		return typeof value === 'string' ? value : this.displayWith()(value);
-	}
-
-	private setupOptionsFilter(): void {
-		this.filteredOptions$ = this.autocompleteInputControl.valueChanges.pipe(
-			takeUntil(this.unsubscribeOptions),
-			startWith(''),
-			debounceTime(200),
-			map(searchValue => this.getStringValue(searchValue)),
-			map((searchValue: string) => {
-				if (this.autocompleteOptions().length > 0) {
-					const toFilter = JSON.parse(JSON.stringify(this.autocompleteOptions()));
-					return this.filterAutocomplete(searchValue || '', toFilter);
-				}
-				return [];
-			})
-		);
 	}
 
 	private filterAutocomplete(
