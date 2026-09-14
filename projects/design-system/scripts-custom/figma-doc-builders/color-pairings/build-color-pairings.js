@@ -352,9 +352,15 @@ function findPillVariant(level, passed) {
   return pillSetComp.children.find(c => c.name === 'contrast=' + want) || null;
 }
 
-// Canvas (page background) color for newly-created builder output pages.
-// Hex F0F4F7 = light cool-grey.
-const _PAGE_BG = { type: 'SOLID', color: { r: 0xF0/255, g: 0xF4/255, b: 0xF7/255 } };
+// Canvas (page background) color for builder output pages, per mode. This
+// used to be a manual step (set once by hand on the canonical Dark page,
+// lost on every rebuild since a fresh scratch page never inherits it) —
+// automated 2026-09-14 so it never needs redoing.
+// Hex F0F4F7 = light cool-grey. Hex 263645 = dark navy, matching the value
+// set by hand on the pre-2026-09-14 canonical Dark page.
+const _PAGE_BG_LIGHT = { type: 'SOLID', color: { r: 0xF0 / 255, g: 0xF4 / 255, b: 0xF7 / 255 } };
+const _PAGE_BG_DARK = { type: 'SOLID', color: { r: 0x26 / 255, g: 0x36 / 255, b: 0x45 / 255 } };
+function _cpPageBg(modeName) { return modeName === 'dark' ? _PAGE_BG_DARK : _PAGE_BG_LIGHT; }
 
 // Light and dark results live on separate pages (each locked to its own
 // lightness mode start to finish), not two sections on one page — a page's
@@ -377,8 +383,10 @@ async function _cpEnsureTargetPage(modeName) {
   if (!p) {
     p = figma.createPage();
     p.name = want;
-    try { p.backgrounds = [_PAGE_BG]; } catch (e) { L('canvas bg set failed: ' + e.message); }
   }
+  // Always (re)apply, not just on first creation — self-heals a page whose
+  // background drifted (e.g. built once under the wrong mode's colour).
+  try { p.backgrounds = [_cpPageBg(modeName)]; } catch (e) { L('canvas bg set failed: ' + e.message); }
   return p;
 }
 
