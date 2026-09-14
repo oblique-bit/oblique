@@ -529,17 +529,30 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/sandbox-ssr/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts"],
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageInclude": ["projects/sandbox-ssr/src/app/**/*.ts"],
+            "coverageExclude": [
+              "**/*.spec.ts",
+              "projects/oblique/**",
+              "**/multi-translate-loader*",
+              "**/app.config.server.ts",
+              "**/app.config.ts",
+              "**/*.routes.ts"
+            ]
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": true
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/sandbox-ssr/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"

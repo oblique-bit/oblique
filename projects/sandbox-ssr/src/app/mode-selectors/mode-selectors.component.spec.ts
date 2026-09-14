@@ -86,7 +86,7 @@ describe(ModeSelectorComponent.name, () => {
 		});
 
 		test('should set lightness class ob-lightness-dark automatically', () => {
-			jest.spyOn(window, 'matchMedia').mockReturnValue({matches: true} as MediaQueryList);
+			vi.spyOn(window, 'matchMedia').mockReturnValue({matches: true} as MediaQueryList);
 			modeSelectorComponent.ngOnInit();
 			expect(modeSelectorComponent.form.controls.lightnessDark.value).toBe('ob-lightness-dark');
 			expect(body.classList.contains('ob-lightness-dark')).toBeTruthy();
@@ -105,7 +105,7 @@ describe(ModeSelectorComponent.name, () => {
 		});
 
 		test('should not set lightness class ob-lightness-dark', () => {
-			jest.spyOn(document, 'defaultView', 'get').mockReturnValue(undefined);
+			vi.spyOn(document, 'defaultView', 'get').mockReturnValue(undefined);
 			modeSelectorComponent.ngOnInit();
 			expect(modeSelectorComponent.form.controls.lightnessDark.value).toBe('');
 			expect(body.classList.contains('ob-lightness-dark')).toBeFalsy();

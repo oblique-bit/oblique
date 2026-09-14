@@ -49,7 +49,7 @@ Use Node.js lts/krypton (v24.*) and install from the repository root.
 
 ## Tests
 
-Jest: `oblique`, `sandbox-ssr`, `sds`. Vitest: `cli`, `design-system`, `sandbox`, `toolchain`, `service-navigation-web-component`, and the package's Angular tooling for Angular packages. Add behavior regression tests, including tests and fixtures for new helpers.
+Jest: `oblique`, `sds`. Vitest: `cli`, `design-system`, `sandbox`, `sandbox-ssr`, `toolchain`, `service-navigation-web-component`, and the package's Angular tooling for Angular packages. Add behavior regression tests, including tests and fixtures for new helpers.
 
 ## Commits And PRs
 
