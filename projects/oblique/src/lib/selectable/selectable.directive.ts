@@ -28,7 +28,7 @@ export class ObSelectableDirective<T = any> implements OnInit {
 	role = 'checkbox';
 	private readonly destroyRef = inject(DestroyRef);
 	private disabled = false;
-	private initialTabindex: number;
+	private readonly initialTabindex: number;
 	private readonly element = inject(ElementRef);
 	private readonly group = inject<ObSelectableGroupDirective<T>>(ObSelectableGroupDirective, {optional: true});
 
