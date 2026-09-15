@@ -89,8 +89,7 @@ export class ObAutocompleteComponent<T = string> implements ControlValueAccessor
 	autocompleteInputControl = new FormControl<T | string>('', {updateOn: 'change'});
 	filteredOptions = computed(() => {
 		if (this.autocompleteOptions().length > 0) {
-			const toFilter = JSON.parse(JSON.stringify(this.autocompleteOptions()));
-			return this.filterAutocomplete(this.searchText(), toFilter);
+			return this.filterAutocomplete(this.searchText(), this.autocompleteOptions());
 		}
 		return [];
 	});
