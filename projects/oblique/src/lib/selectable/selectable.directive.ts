@@ -12,7 +12,7 @@ import {ObSelectableGroupDirective} from './selectable-group.directive';
 		'[attr.aria-checked]': 'selected()',
 		'[attr.role]': 'role()',
 		'[attr.tabindex]': 'tabindex()',
-		'[class.ob-selectable]': 'selectable',
+		'[class.ob-selectable]': 'true',
 		'[class.ob-selected]': 'selected()',
 		class: 'ob-selectable',
 	},
@@ -21,7 +21,6 @@ import {ObSelectableGroupDirective} from './selectable-group.directive';
 export class ObSelectableDirective<T = any> {
 	readonly value = input<T>();
 	readonly selected = model(false);
-	readonly selectable = true;
 	readonly tabindex = model(0);
 
 	readonly role = computed(() => {

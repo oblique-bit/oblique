@@ -35,14 +35,13 @@ import {ObSelectableDirective} from './selectable.directive';
 		'(keydown.control.arrowRight)': 'onCtrlArrowDown($event)',
 		'(keydown.control.arrowUp)': 'onCtrlArrowUp($event)',
 		'(keydown.control.arrowLeft)': 'onCtrlArrowUp($event)',
-		'[class.ob-selectable-group]': 'selectable',
+		'[class.ob-selectable-group]': 'true',
 		class: 'ob-selectable-group',
 	},
 	exportAs: 'obSelectableGroup',
 })
 export class ObSelectableGroupDirective<T = any> implements AfterContentInit, ControlValueAccessor {
 	readonly role = computed(() => (this.mode() === 'radio' ? 'radiogroup' : 'group'));
-	readonly selectable = true;
 	readonly selected = model<ObSelectableDirective<T>[]>([]);
 	readonly mode = model<'checkbox' | 'radio' | 'windows'>('checkbox');
 	readonly effectiveMode = computed(() => this.mode() ?? 'checkbox');
