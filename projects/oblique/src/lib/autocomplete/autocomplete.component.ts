@@ -216,7 +216,7 @@ export class ObAutocompleteComponent<T = string> implements ControlValueAccessor
 		optionsToFilter: (ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]
 	): (ObIAutocompleteInputOptionGroup<T> | ObIAutocompleteInputOption<T>)[] {
 		const searchText = filterValue.toLowerCase();
-		if (this.autocompleteInputControl.value === '') {
+		if (!searchText) {
 			return this.autocompleteOptions();
 		}
 		return this.hasGroupOptions()
