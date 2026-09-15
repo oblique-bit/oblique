@@ -725,7 +725,7 @@ async function aliasIdToName(id, varMap) {
   return name;
 }
 
-async function refTokenForVariable(variable, collectionAlias, modeName, collectionsByAlias, varMap) {
+async function refTokenForVariable(variable, collectionAlias, modeName, collectionsByAlias, varMap, dotPath) {
   if (!variable) return '';
   const col = collectionsByAlias[collectionAlias];
   if (!col) return '';
@@ -741,6 +741,13 @@ async function refTokenForVariable(variable, collectionAlias, modeName, collecti
   if (val && val.type === 'VARIABLE_ALIAS') {
     const name = await aliasIdToName(val.id, varMap);
     if (name) return '{' + name.replace(/\\//g, '.') + '}';
+  }
+  // Reference + modify: Token Studio bakes this into a literal color, so
+  // there's no alias to walk here. Fall back to the JSON source's modify
+  // record (see PAYLOAD.s1ModifyMap, loaded Node-side).
+  if (dotPath && typeof PAYLOAD !== 'undefined' && PAYLOAD.s1ModifyMap) {
+    const entry = PAYLOAD.s1ModifyMap[modeName] && PAYLOAD.s1ModifyMap[modeName][dotPath];
+    if (entry) return entry.ref + ' · alpha ' + entry.alpha;
   }
   return '';
 }
@@ -978,8 +985,8 @@ async function buildTable(spec, ctx) {
     if (spec.rowComponent === '2-mode') {
       await Promise.all(tokens.map(async t => {
         const [light, dark] = await Promise.all([
-          refTokenForVariable(t.variable, spec.modeCollection, 'light', ctx.collections.aliases, ctx.varMap),
-          refTokenForVariable(t.variable, spec.modeCollection, 'dark',  ctx.collections.aliases, ctx.varMap)
+          refTokenForVariable(t.variable, spec.modeCollection, 'light', ctx.collections.aliases, ctx.varMap, t.dotPath),
+          refTokenForVariable(t.variable, spec.modeCollection, 'dark',  ctx.collections.aliases, ctx.varMap, t.dotPath)
         ]);
         t.referenceLight = light;
         t.referenceDark  = dark;
@@ -1445,7 +1452,35 @@ async function main() {
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch {}
 
-  const payload = { registry, tableFilter, pageOverride, validateOnly, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-variables.js' } };
+  // s1 lightness modify-map: a "reference + modify" token (e.g. cobalt.900 +
+  // alpha 0.4) gets baked by Token Studio into a literal Figma color on push —
+  // the modify metadata does not survive, so refTokenForVariable has no alias
+  // to walk and the reference column renders blank. Same narrow JSON-source
+  // exception as foundationDescription above, read once here.
+  const s1ModifyMap = { light: {}, dark: {} };
+  try {
+    const repoRoot = path.resolve(__dirname, '..', '..', '..');
+    for (const mode of ['light', 'dark']) {
+      const modeJsonPath = path.join(repoRoot, 'src', 'lib', 'themes', '03_semantic', 'color', 's1_lightness', `${mode}.json`);
+      const tree = JSON.parse(fs.readFileSync(modeJsonPath, 'utf8'));
+      const map = {};
+      (function walk(node, segs) {
+        if (!node || typeof node !== 'object') return;
+        if (typeof node.$value === 'string') {
+          const modify = node.$extensions && node.$extensions['studio.tokens'] && node.$extensions['studio.tokens'].modify;
+          if (modify && modify.type === 'alpha') map[segs.join('.')] = { ref: node.$value, alpha: modify.value };
+          return;
+        }
+        for (const k of Object.keys(node)) {
+          if (k.startsWith('$') || k === '_docs') continue;
+          walk(node[k], segs.concat(k));
+        }
+      })(tree, []);
+      s1ModifyMap[mode] = map;
+    }
+  } catch {}
+
+  const payload = { registry, tableFilter, pageOverride, validateOnly, foundationDescription, s1ModifyMap, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-variables.js' } };
   if (pageOverride) console.log(`  Page override: ${pageOverride}`);
   const script = `(async () => {
 const PAYLOAD = ${JSON.stringify(payload)};
