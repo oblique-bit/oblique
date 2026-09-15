@@ -151,16 +151,11 @@
 									obButton="tertiary"
 									class="ob-sub-menu-back-button"
 									[class.hide-md-up]="currentParent.id === link.id"
-									[class.ob-just-sub-menu-back-button-home-icon]="!grandparent?.label"
 									[id]="'ob-sub-menu-back-button-' + link.id"
 									(click)="backUpOrCloseSubMenu(link, obMasterLayoutNavigationItem)"
 								>
 									<mat-icon svgIcon="arrow_left" />
-									@if (!!grandparent?.label) {
-										{{ grandparent?.label | translate }}
-									} @else {
-										<mat-icon class="ob-sub-menu-back-button-home-icon" svgIcon="home" />
-									}
+									{{ "i18n.oblique.accessibility-statement.back" | translate }}
 								</button>
 								<button
 									type="button"
