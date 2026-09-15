@@ -191,6 +191,33 @@ async function discoverCollections() {
   return { all: map, aliases };
 }
 
+// Legacy collections that are 100%-duplicate-by-name copies of a current
+// collection — verified live: every single variable in each of these
+// collides by exact name with a variable in a current collection (290/290
+// for s1_lightness/light, 18/18 for s2_emphasis/high). Excluding them
+// removes only genuine duplicates, which is what caused duplicate table
+// rows and swatches resolving to a stale legacy color (byName was
+// last-write-wins with zero collection filtering, so whichever variable
+// Figma enumerated last silently won).
+//
+// Deliberately NOT included: 03_semantic/color/compiled. It looks legacy
+// by name but 0 of its 259 variables collide by name with anything in a
+// current collection — it holds the OLD trimmed naming ("color/status/…",
+// no "ob/s/" prefix) that the S3-tier table regexes in registry.json
+// ("^color/…") actually match, while the current "semantic" collection's
+// variables still carry the untrimmed "ob/s/…" prefix and match nothing.
+// Excluding "compiled" here silently empties every S3 table (confirmed:
+// 257 new [TOKEN]-not-found warnings, all on ob.s.* tables, the moment
+// this collection was excluded in an earlier draft of this fix). It is not
+// a duplicate — it is the S3 tier's only working data source right now.
+// A denylist of proven-100%-duplicate collections, not an allowlist of
+// "looks current", on purpose: this only ever removes what is provably
+// redundant, never something merely differently-named.
+const LEGACY_DUPLICATE_COLLECTION_NAMES = new Set([
+  '03_semantic/color/s1_lightness/light',
+  '03_semantic/color/s2_emphasis/high',
+]);
+
 // Discover both COLOR and STRING vars. Build:
 //   varMap.byName / byId / list — color vars only (used for swatch binding)
 //   docMap.byPath               — family-doc string vars: stripped path → text
@@ -198,12 +225,33 @@ async function discoverVariables(collections) {
   const colorVars  = await figma.variables.getLocalVariablesAsync('COLOR');
   const stringVars = await figma.variables.getLocalVariablesAsync('STRING');
 
+  // id -> collection name, from the same collections this run already
+  // discovered via discoverCollections(). collections.all holds every local
+  // collection (current AND legacy) unfiltered — LEGACY_DUPLICATE_COLLECTION_NAMES
+  // above, not this map, is what actually filters.
+  const colIdToName = {};
+  for (const [name, c] of Object.entries(collections.all || {})) colIdToName[c.id] = name;
+
   const byName = {}, byId = {};
   const list = [];
+  const seenNames = new Set(); // every non-docs COLOR var name, any collection
+  let legacySkipped = 0;
   for (const v of colorVars) {
     // Skip metadata namespace
     if (v.name.includes('/_docs/')) continue;
+    seenNames.add(v.name);
+    if (LEGACY_DUPLICATE_COLLECTION_NAMES.has(colIdToName[v.variableCollectionId])) { legacySkipped++; continue; }
     byName[v.name] = v; byId[v.id] = v; list.push(v);
+  }
+  // A name that exists ONLY inside an excluded collection (never migrated /
+  // duplicated into a current one) would otherwise vanish from every
+  // generated table with zero warning. Surface it instead of failing silent.
+  // Expected to stay empty given the 100%-duplicate verification above —
+  // kept as a safety net, not a normal-case signal.
+  const orphanedNames = [...seenNames].filter(n => !Object.prototype.hasOwnProperty.call(byName, n));
+  if (orphanedNames.length) {
+    L('discoverVariables: ' + orphanedNames.length + ' color var name(s) exist only in an excluded legacy-duplicate collection and were dropped: ' +
+      orphanedNames.slice(0, 20).join(', ') + (orphanedNames.length > 20 ? ', …' : ''));
   }
 
   // Build family-doc map. Var name pattern: <family-path>/_docs/token_family_info.
@@ -211,6 +259,7 @@ async function discoverVariables(collections) {
   const docMap = {};
   for (const v of stringVars) {
     if (!v.name.endsWith('/_docs/token_family_info')) continue;
+    if (LEGACY_DUPLICATE_COLLECTION_NAMES.has(colIdToName[v.variableCollectionId])) continue;
     const familyPath = v.name.slice(0, -('/_docs/token_family_info'.length));
     const dotPath = familyPath.replace(/\\//g, '.');
     let modeId;
@@ -221,7 +270,7 @@ async function discoverVariables(collections) {
     if (typeof val === 'string') docMap[dotPath] = val;
   }
 
-  return { byName, byId, list, docMap, colorCount: colorVars.length, stringCount: stringVars.length };
+  return { byName, byId, list, docMap, colorCount: colorVars.length, stringCount: stringVars.length, legacySkipped };
 }
 
 function descAt(p, varMap) { return (varMap.docMap && varMap.docMap[p]) || ''; }
@@ -1389,6 +1438,7 @@ async function main() {
     variableCount: varMap.list.length,
     docCount: Object.keys(varMap.docMap || {}).length,
     stringVarCount: varMap.stringCount || 0,
+    legacyColorVarsSkipped: varMap.legacySkipped || 0,
     cacheStats: { aliasName: aliasNameCache.size, aliasVar: aliasVarCache.size, coll: collCache.size },
     phases,
     results,

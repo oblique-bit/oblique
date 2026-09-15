@@ -312,6 +312,7 @@ const COLUMN_GAP  = 64;
 // Vertical gap inside the outer frame between [foundation_bar, tables, applied].
 const OUTER_GAP   = 64;
 const BG_VAR_NAME = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
+const BG_VAR_COLLECTION_NAMES = ['lightness', 's1_lightness', 's1-lightness', 'Lightness'];
 
 // Builder-managed instance names — the two page-chrome instances the outer
 // frame owns alongside the "Viewport Tables" wrapper.
@@ -322,8 +323,10 @@ let _bgVar = undefined;
 async function getBgVar() {
   if (_bgVar !== undefined) return _bgVar;
   try {
+    const cols = await figma.variables.getLocalVariableCollectionsAsync();
+    const col = BG_VAR_COLLECTION_NAMES.map(n => cols.find(c => c.name === n)).find(Boolean) || null;
     const all = await figma.variables.getLocalVariablesAsync();
-    _bgVar = all.find(v => v.name === BG_VAR_NAME) || null;
+    _bgVar = all.find(v => v.name === BG_VAR_NAME && (!col || v.variableCollectionId === col.id)) || null;
   } catch (e) { L('bg var lookup failed: ' + e.message); _bgVar = null; }
   if (!_bgVar) L('warn: bg variable not found: ' + BG_VAR_NAME);
   return _bgVar;

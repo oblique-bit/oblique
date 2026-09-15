@@ -59,8 +59,11 @@ const PLUGIN_CODE = `
   ]);
 
   const allVars = await figma.variables.getLocalVariablesAsync();
+  const _cols = await figma.variables.getLocalVariableCollectionsAsync();
+  const _lightnessCol = ['lightness', 's1_lightness', 's1-lightness', 'Lightness']
+    .map(n => _cols.find(c => c.name === n)).find(Boolean) || null;
   function findVar(name) {
-    const v = allVars.find(x => x.name === name);
+    const v = allVars.find(x => x.name === name && (!_lightnessCol || x.variableCollectionId === _lightnessCol.id));
     if (!v) throw new Error('variable not found: ' + name);
     return v;
   }
