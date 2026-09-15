@@ -2,10 +2,10 @@ import {NgTemplateOutlet} from '@angular/common';
 import {
 	AfterViewInit,
 	Component,
+	DestroyRef,
 	DoCheck,
 	ElementRef,
 	Injector,
-	OnDestroy,
 	Signal,
 	ViewEncapsulation,
 	booleanAttribute,
@@ -29,10 +29,10 @@ import {MatOptionModule, MatOptionSelectionChange} from '@angular/material/core'
 import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TranslatePipe} from '@ngx-translate/core';
-import {Subject, debounceTime} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {debounceTime} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {
 	ObIAutocompleteInputOption,
 	ObIAutocompleteInputOptionGroup,
@@ -75,7 +75,7 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-autocomplete'},
 })
-export class ObAutocompleteComponent<T = string> implements ControlValueAccessor, OnDestroy, AfterViewInit, DoCheck {
+export class ObAutocompleteComponent<T = string> implements ControlValueAccessor, AfterViewInit, DoCheck {
 	readonly withErrorMessages = input(false, {transform: booleanAttribute});
 	readonly inputLabelKey = input('i18n.oblique.search.title');
 	readonly noResultKey = input('i18n.oblique.search.no-results');
@@ -113,7 +113,7 @@ export class ObAutocompleteComponent<T = string> implements ControlValueAccessor
 	private readonly autocompleteTrigger = viewChild(MatAutocompleteTrigger);
 	private readonly matHints = contentChildren(MatHint);
 	private readonly matHintsElementRefs = contentChildren(MatHint, {read: ElementRef<HTMLElement>});
-	private readonly unsubscribe = new Subject<void>();
+	private readonly destroyRef = inject(DestroyRef);
 	private readonly obAutocompleteTextToFindService = inject(ObAutocompleteTextToFindService);
 	private readonly injector = inject(Injector);
 	private readonly elementRef = inject(ElementRef<HTMLElement>);
@@ -159,11 +159,6 @@ export class ObAutocompleteComponent<T = string> implements ControlValueAccessor
 		}
 	}
 
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
-	}
-
 	setDisabledState(isDisabled: boolean): void {
 		if (isDisabled) {
 			this.autocompleteInputControl.disable();
@@ -184,7 +179,7 @@ export class ObAutocompleteComponent<T = string> implements ControlValueAccessor
 	 * when the control receives a change event.
 	 */
 	registerOnChange(fn: (v: unknown) => void): void {
-		this.autocompleteInputControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(value => {
+		this.autocompleteInputControl.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
 			fn(value);
 		});
 	}
@@ -195,7 +190,7 @@ export class ObAutocompleteComponent<T = string> implements ControlValueAccessor
 	 */
 	registerOnTouched(fn: () => void): void {
 		this.onModelTouched = fn;
-		this.autocompleteInputControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
+		this.autocompleteInputControl.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
 			this.autocompleteInputControl.markAllAsTouched();
 		});
 	}
