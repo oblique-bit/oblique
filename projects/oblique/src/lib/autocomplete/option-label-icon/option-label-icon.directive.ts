@@ -12,18 +12,12 @@ import {ObEIcon} from '../../icon/icon.model';
 export class ObOptionLabelIconDirective implements OnChanges {
 	readonly iconName = input<ObEIcon>();
 	readonly iconPosition = input<OptionLabelIconPosition>('end');
-	readonly ariaLabel = input<string | undefined>();
+	readonly ariaLabel = input<string>();
 
-	private readonly host: HTMLElement;
+	private readonly host = inject(ElementRef<HTMLElement>).nativeElement;
 	private iconSpan: HTMLSpanElement | undefined = undefined;
 	private readonly renderer = inject(Renderer2);
 	private readonly iconRegistry = inject(MatIconRegistry);
-
-	constructor() {
-		const elementRef = inject(ElementRef);
-
-		this.host = elementRef.nativeElement;
-	}
 
 	ngOnChanges(): void {
 		if (this.iconSpan) {
@@ -33,7 +27,7 @@ export class ObOptionLabelIconDirective implements OnChanges {
 	}
 
 	private registerIcon(iconName: string | undefined, host: HTMLElement, iconPosition: OptionLabelIconPosition): void {
-		if (typeof iconName === 'string' && iconName.length > 0 && host) {
+		if (typeof iconName === 'string' && iconName.length > 0) {
 			this.iconRegistry
 				.getNamedSvgIcon(iconName)
 				.pipe(first())
