@@ -51,9 +51,9 @@ export class ObSelectableGroupDirective<T = any> implements AfterContentInit, Co
 	readonly effectiveDisabled = linkedSignal(() => this.disabled());
 
 	private readonly selectables: ObSelectableDirective<T>[] = [];
-	private focused: number;
-	private prevFocused: number;
-	private startFocused: number;
+	private focused = -1;
+	private prevFocused = -1;
+	private startFocused: number | undefined = undefined;
 	private initialSelection: T[] = [];
 	private readonly modeToggle = {
 		checkbox: this.checkboxSelect.bind(this),

@@ -6,13 +6,6 @@ import {ObSelectableGroupDirective} from './selectable-group.directive';
 
 @Component({
 	standalone: false,
-	template: ` <div obSelectable value="test"></div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
-})
-class FaultyTestComponent {}
-
-@Component({
-	standalone: false,
 	template: ` <div obSelectableGroup>
 		<div obSelectable value="test"></div>
 	</div>`,
@@ -55,21 +48,6 @@ describe(ObSelectableDirective.name, () => {
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
-
-	describe('without obSelectableGroup', () => {
-		beforeEach(async () => {
-			await TestBed.configureTestingModule({
-				imports: [ObSelectableDirective],
-				declarations: [FaultyTestComponent],
-			}).compileComponents();
-		});
-
-		it('should throw an error', () => {
-			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrow(
-				'ObSelectableDirective need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more information'
-			);
-		});
-	});
 
 	describe('with obSelectableGroup', () => {
 		beforeEach(async () => {

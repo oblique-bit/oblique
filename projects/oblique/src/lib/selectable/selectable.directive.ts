@@ -32,15 +32,9 @@ export class ObSelectableDirective<T = any> {
 	private disabled = false;
 	private readonly initialTabindex: number;
 	private readonly element = inject(ElementRef);
-	private readonly group = inject<ObSelectableGroupDirective<T>>(ObSelectableGroupDirective, {optional: true});
+	private readonly group = inject<ObSelectableGroupDirective<T>>(ObSelectableGroupDirective);
 
 	constructor() {
-		if (!this.group) {
-			throw new Error(
-				'ObSelectableDirective need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more information'
-			);
-		}
-
 		this.initialTabindex = this.tabindex();
 		this.group.register(this);
 
