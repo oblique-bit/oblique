@@ -1,7 +1,7 @@
 # Token Usage Guide
 
 **Purpose**: Practical guide for choosing the right token when building or styling a component  
-**Audience**: System consumers (designers, developers) and system contributors  
+**Audience**: System consumers (designers, developers) and system maintainers  
 **Related**: [Architecture](./02-architecture.md) | [Token Naming](./03-naming.md) | [Token Types](./04-token-types.md) | [Color Tokens](./01-types/08-color-tokens/00-colors-overview.md)
 
 ---
@@ -22,7 +22,7 @@ Only when all component possibilities are exhausted — when no existing compone
 
 > **For system consumers**: Treat manual color selection as the exception, not the rule. Build your UI with components first.
 >
-> **For system contributors and maintainers**: You will regularly need to assign the right color token to a component you're building or maintaining. The decision steps below are essential knowledge for your work.
+> **For system maintainers**: You will regularly need to assign the right color token to a component you're building or maintaining. The decision steps below are essential knowledge for your work.
 
 > **Note on the current tokens preview**: Because we don't yet have a large component library available, manual color picking is more common right now than it will be in the future. As more components are released, the need to select individual color tokens will decrease significantly.
 
@@ -219,7 +219,7 @@ The system provides **both px and rem** at the primitive and semantic layers. Ev
 
 **Use `.px` only for micro-level adjustments** where sub-rem precision matters and scaling would cause visual artifacts: border widths, focus indicator thickness, and optical baseline offsets.
 
-#### Decision table for component contributors
+#### Decision table for component maintainers
 
 | Property | Unit | Why |
 |---|---|---|
@@ -329,7 +329,7 @@ This mode is selected at **build time** by loading the appropriate token set (`i
 
 ## WCAG 2.2 and the Token System
 
-The token architecture is designed to help components meet [Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/) requirements. Not all WCAG criteria are token-related — many concern behavior, semantics, or content structure. This section maps the criteria that tokens **directly** support, so contributors understand why certain token choices matter.
+The token architecture is designed to help components meet [Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/) requirements. Not all WCAG criteria are token-related — many concern behavior, semantics, or content structure. This section maps the criteria that tokens **directly** support, so maintainers understand why certain token choices matter.
 
 ### Token-Supported Success Criteria
 
@@ -339,7 +339,7 @@ The token architecture is designed to help components meet [Web Content Accessib
 | **1.4.4** | AA | Resize Text | Using `.rem` variants for all spatial properties (padding, gaps, component sizes) ensures components scale proportionally when users increase browser font size up to 200%. See the [px vs rem section](#px-vs-rem--which-unit-when-building-a-component) above. | `ob.s.dimension.*.rem` variants |
 | **1.4.6** | AAA | Contrast (Enhanced) | The `contrast_highest` level targets the stricter 7:1 ratio for text. Using this level for body text and primary headings supports Enhanced contrast compliance. | `ob.s.color.neutral.fg.contrast_highest.*` |
 | **1.4.10** | AA | Reflow | `rem`-based dimension tokens help components reflow naturally at 320 CSS pixel width (equivalent to 400% zoom at 1280px). When spatial values scale with the user's font-size, layout adapts without requiring horizontal scrolling. | All `.rem` dimension tokens |
-| **1.4.11** | AA | Non-text Contrast | Border tokens and foreground tokens provide the 3:1 contrast needed for UI component boundaries (input borders, button outlines) and graphical objects (icons). The border contrast scale (`subtle`, `medium`, `strong`) lets contributors pick the right visual weight. | `ob.s.color.neutral.border.{contrast}.*`, `ob.s.color.{family}.fg.*` |
+| **1.4.11** | AA | Non-text Contrast | Border tokens and foreground tokens provide the 3:1 contrast needed for UI component boundaries (input borders, button outlines) and graphical objects (icons). The border contrast scale (`subtle`, `medium`, `strong`) lets maintainers pick the right visual weight. | `ob.s.color.neutral.border.{contrast}.*`, `ob.s.color.{family}.fg.*` |
 | **1.4.12** | AA | Text Spacing | The base line-height primitive is `1.5` (unitless), meeting the minimum 1.5× font-size requirement. Typography tokens built on this value allow user-overridden spacing without content clipping or overlap. | `ob.p.line_height.base` (1.5), `ob.s.dynamic.line_height.*` |
 | **2.4.7** | AA | Focus Visible | Dedicated focus ring tokens bundle color, width (3px), and style into a ready-to-use CSS outline value. Using these tokens ensures every interactive component has a visible keyboard focus indicator. | `ob.s.border.focus_ring.inversity_normal`, `ob.s.border.focus_ring.inversity_flipped` |
 | **2.4.13** | AAA | Focus Appearance | The focus ring tokens use a 3px solid border (≥ 2 CSS pixel perimeter required) with a distinct purple color that provides ≥ 3:1 contrast between focused and unfocused states. The outline offset tokens (`ob.s.outline_offset.*`) control the gap between the focus indicator and the component edge. | `ob.s.border.focus_ring.*`, `ob.s.outline_offset.{xs…lg}`, `ob.s.border_width.md` (3px) |
@@ -355,7 +355,7 @@ To enforce this, documented **contrast pairing tables** are maintained in Figma:
 
 These tables show which fg/bg token combinations meet the AA threshold and which do not. They are the source of truth for valid pairings.
 
-**For contributors**: Before wiring a foreground token to a background token in a component, check the pairing tables. If the combination is not listed as AA-passing, it must not be used.
+**For maintainers**: Before wiring a foreground token to a background token in a component, check the pairing tables. If the combination is not listed as AA-passing, it must not be used.
 
 These tables currently serve as a manual reference. They will be converted into **automated validators** that flag below-AA pairings at build time. Until then, the pairing tables are the enforcement mechanism — treat them as binding.
 
