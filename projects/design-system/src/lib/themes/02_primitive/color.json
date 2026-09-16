@@ -13,61 +13,61 @@
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#ffedee",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#fae1e2",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#ffccce",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#fa9da1",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#fc656b",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#e53940",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#d8232a",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#bf1f25",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#99191e",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#801519",
-            "$description": "Role: Shared. Used for critical and fatal status and for navigation backgrounds and borders."
+            "$description": "Role: Shared. Used for critical and fatal status and for navigation borders."
           }
         },
         "cobalt": {
