@@ -40,7 +40,7 @@
 
 ### **Token Types**
 
-The token docs are sorted along two axes. **Tiers** say where a token sits in the reference chain. **Categories** say what kind of value it holds, and cut across every tier.
+The token docs are sorted along two axes. **Tiers** say where a token sits in the reference chain. **Categories** say what kind of value it holds, and cut across every tier. For what the `$type` field itself means and how it maps to Figma/CSS, see the [**Types Overview**](./01-types/00-types-overview.md).
 
 #### **Tiers**
 - [**Global Tokens**](./01-types/01-tiers/01-global-tokens.md) - System-wide foundation tokens

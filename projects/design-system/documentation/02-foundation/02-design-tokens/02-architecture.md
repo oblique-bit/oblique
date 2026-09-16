@@ -214,7 +214,7 @@ The single-mode base groups `static` and `semantic` do **not** have files under 
 
 One per token family, holding the family's `$description`. Documentation, not a styling value. See *Documentation Nodes* below for the format and rules.
 
-`$type: "other"` is the correct type for all three — there is no styling type for a CSS-class selector, a fixed-mode setting, or a family description. See [Token Types](./04-token-types.md).
+`$type: "other"` is the correct type for all three — there is no styling type for a CSS-class selector, a fixed-mode setting, or a family description. See [Token Types](./01-types/00-types-overview.md).
 
 ---
 

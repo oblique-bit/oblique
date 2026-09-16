@@ -2,7 +2,7 @@
 
 **Purpose**: Practical guide for choosing the right token when building or styling a component  
 **Audience**: System consumers (designers, developers) and system maintainers  
-**Related**: [Architecture](./02-architecture.md) | [Token Naming](./03-naming.md) | [Token Types](./04-token-types.md) | [Color Tokens](./01-types/02-categories/01-color-tokens/00-colors-overview.md)
+**Related**: [Architecture](./02-architecture.md) | [Token Naming](./03-naming.md) | [Token Types](./01-types/00-types-overview.md) | [Color Tokens](./01-types/02-categories/01-color-tokens/00-colors-overview.md)
 
 ---
 

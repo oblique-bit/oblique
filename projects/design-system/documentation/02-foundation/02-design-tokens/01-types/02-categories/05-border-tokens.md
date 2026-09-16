@@ -12,7 +12,7 @@
 | **Semantic** | `ob.s.border_radius.*`, `ob.s.border_width.*`, `ob.s.outline_offset.*`, `ob.s.border.focus_ring.*` | [`03_semantic/border.json`](../../../../../src/lib/themes/03_semantic/border.json) | 4 groups, 20 tokens: 18 scalars + 2 composites. |
 | **Component** | (per component) | various | Consumes the semantic border tokens. |
 
-The 18 scalar tokens land in Figma as Number variables. The 2 composite `border` tokens do not — Figma has no composite border variable and Tokens Studio creates no Style for them, so they exist in CSS only. See [`../../04-token-types.md`](../../04-token-types.md).
+The 18 scalar tokens land in Figma as Number variables. The 2 composite `border` tokens do not — Figma has no composite border variable and Tokens Studio creates no Style for them, so they exist in CSS only. See [`../00-types-overview.md`](../00-types-overview.md).
 
 ---
 
@@ -211,5 +211,5 @@ The category spans four sibling top-level keys rather than one `border` tree: th
 - [`../01-tiers/04-component-tokens.md`](../01-tiers/04-component-tokens.md) — Inversity, and the `ob.c.*` / `ob.h.*` patterns
 - [`./02-dimension-tokens.md`](./02-dimension-tokens.md) — the `ob.p.dimension.px.*` scale every border length resolves to
 - [`./01-color-tokens/06-colors-semantic-interaction.md`](./01-color-tokens/06-colors-semantic-interaction.md) — the focus-ring colour tokens and their use in interactive components
-- [`../../04-token-types.md`](../../04-token-types.md) — `borderRadius`, `borderWidth` and the `border` composite's Figma export behaviour
+- [`../00-types-overview.md`](../00-types-overview.md) — `borderRadius`, `borderWidth` and the `border` composite's Figma export behaviour
 - [`../../05-token-usage-guide.md`](../../05-token-usage-guide.md) — which token to reach for, and the px vs rem rule

@@ -92,7 +92,7 @@ The neutral colour family ships two separate shadow **colour** tokens, `ob.s.col
 
 > **The `$type` must stay exactly `boxShadow`** (camelCase). Tokens Studio matches that exact string to identify Effect Style candidates. Renaming it — for example to `box_shadow` to match Oblique's snake_case rule — makes Tokens Studio fall back to `other` and silently drops the token from the export.
 
-The path segment is `shadow` (correct snake_case); only the `$type` value is the exception. See [`../../03-naming.md`](../../03-naming.md) and [`../../04-token-types.md`](../../04-token-types.md).
+The path segment is `shadow` (correct snake_case); only the `$type` value is the exception. See [`../../03-naming.md`](../../03-naming.md) and [`../00-types-overview.md`](../00-types-overview.md).
 
 ---
 
@@ -114,4 +114,4 @@ The flattest path in the token system. There is no inversity split, no mode spli
 - [`./01-color-tokens/01-colors-primitive.md`](./01-color-tokens/01-colors-primitive.md) — the `cobalt_alpha` primitive scale
 - [`./05-border-tokens.md`](./05-border-tokens.md) — the other semantic-only, dimension-derived category
 - [`../../03-naming.md`](../../03-naming.md) — the Tokens Studio `$type` exceptions
-- [`../../04-token-types.md`](../../04-token-types.md) — `boxShadow` and composite Figma export behaviour
+- [`../00-types-overview.md`](../00-types-overview.md) — `boxShadow` and composite Figma export behaviour

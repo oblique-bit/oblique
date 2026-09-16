@@ -13,7 +13,7 @@
 | **Semantic — mode** | `ob.s.motion.duration.*` | [`03_semantic/motion/mode/enabled.json`](../../../../../src/lib/themes/03_semantic/motion/mode/enabled.json), [`disabled.json`](../../../../../src/lib/themes/03_semantic/motion/mode/disabled.json) | 5 named durations. Re-resolve when the motion mode switches. |
 | **HTML** | `ob.h.{element}.motion.*` | [`05_html/link/link.json`](../../../../../src/lib/themes/05_html/link/link.json) | Consumes the semantic motion tokens. |
 
-Motion is the one token category with **no Figma binding at all**. Figma has no variable type for `duration` or `cubicBezier`, and neither is exportable as a Figma Style, so motion tokens ship in CSS only — see [`../../04-token-types.md`](../../04-token-types.md).
+Motion is the one token category with **no Figma binding at all**. Figma has no variable type for `duration` or `cubicBezier`, and neither is exportable as a Figma Style, so motion tokens ship in CSS only — see [`../00-types-overview.md`](../00-types-overview.md).
 
 Motion is also one of the system's seven **mode collections**. The token-side effect is covered in [The `motion` mode](#the-motion-mode) below; see [`../../02-modes/07-motion.md`](../../02-modes/07-motion.md) for the mode mechanics.
 
@@ -173,7 +173,7 @@ ob.h.<element>.motion.<sub_family>    HTML element
 - Primitive `<step>` ∈ `instant, fast, medium, slow, slower` (duration) / `linear, ease_out, ease_in, ease_in_out` (easing)
 - Semantic `<name>` ∈ `instant, micro, smooth, comfortable, relaxed` (duration) / `standard, entrance, exit, emphasis` (easing)
 
-The `{type}` path segment is `motion` at every tier. Per [`../../04-token-types.md`](../../04-token-types.md) the segment maps to two `$type` values: `duration` and `cubicBezier`.
+The `{type}` path segment is `motion` at every tier. Per [`../00-types-overview.md`](../00-types-overview.md) the segment maps to two `$type` values: `duration` and `cubicBezier`.
 
 ---
 
@@ -184,4 +184,4 @@ The `{type}` path segment is `motion` at every tier. Per [`../../04-token-types.
 - [`../../02-modes/00-modes-overview.md`](../../02-modes/00-modes-overview.md) — How modes work and the last-wins resolution rule
 - [`../../02-modes/07-motion.md`](../../02-modes/07-motion.md) — Motion mode mechanics: the two modes, the class, and what the mode does not change
 - [`../../02-architecture.md`](../../02-architecture.md) — The mode collection files and the `selector` pattern
-- [`../../04-token-types.md`](../../04-token-types.md) — `duration` and `cubicBezier` types, and why neither binds to a Figma variable
+- [`../00-types-overview.md`](../00-types-overview.md) — `duration` and `cubicBezier` types, and why neither binds to a Figma variable

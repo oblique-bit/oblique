@@ -2,7 +2,7 @@
 
 **Purpose**: Naming standards and patterns for design tokens  
 **Audience**: Design system maintainers, developers, designers  
-**Related**: [Architecture](./02-architecture.md) | [Token Types](./04-token-types.md)
+**Related**: [Architecture](./02-architecture.md) | [Token Types](./01-types/00-types-overview.md)
 
 ---
 
@@ -25,7 +25,7 @@ ob.{component_level}.{component}.{type}.{property}.{variant}.{state}
 ob.g.{type}.{property}.{variant}
 ```
 
-The `{type}` segment identifies the token's data type (`color`, `dimension`, `typography`, etc.) and must be present in every token path. For the full list of valid types, their mapping to `$type` in JSON, and tooling compatibility, see [Token Types](./04-token-types.md).
+The `{type}` segment identifies the token's data type (`color`, `dimension`, `typography`, etc.) and must be present in every token path. For the full list of valid types, their mapping to `$type` in JSON, and tooling compatibility, see [Token Types](./01-types/00-types-overview.md).
 
 ### **Standard Token Hierarchy**
 ```

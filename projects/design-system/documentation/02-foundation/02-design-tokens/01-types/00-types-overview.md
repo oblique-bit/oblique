@@ -2,7 +2,7 @@
 
 **Purpose**: Reference for all token types used in Oblique, including tooling compatibility and standard alignment  
 **Audience**: Design system maintainers, designers, engineers  
-**Related**: [Architecture](./02-architecture.md) | [Token Naming](./03-naming.md)
+**Related**: [Architecture](../02-architecture.md) | [Token Naming](../03-naming.md)
 
 ---
 
@@ -101,9 +101,9 @@ Defined mappings:
 | `border` | `border` | W3C composite |
 | `multiplier` | `number` | Unitless ratio or scale factor |
 
-> **`$type` values are immutable — do not rename them.** These identifiers are Tokens Studio's internal conventions. Renaming any `$type` value (e.g. `boxShadow` → `box_shadow`) causes Tokens Studio to fall back to `other`, silently dropping the token from all Figma export pipelines. The path segment (left column) follows Oblique's snake\_case rule; the `$type` value (right column) follows Tokens Studio's camelCase convention. Both are intentional and coexist by design. See [Tokens Studio `$type` Exceptions](./03-naming.md#tokens-studio-type-exceptions) in the naming reference.
+> **`$type` values are immutable — do not rename them.** These identifiers are Tokens Studio's internal conventions. Renaming any `$type` value (e.g. `boxShadow` → `box_shadow`) causes Tokens Studio to fall back to `other`, silently dropping the token from all Figma export pipelines. The path segment (left column) follows Oblique's snake\_case rule; the `$type` value (right column) follows Tokens Studio's camelCase convention. Both are intentional and coexist by design. See [Tokens Studio `$type` Exceptions](../03-naming.md#tokens-studio-type-exceptions) in the naming reference.
 
-> **Note on `other`**: `other` is the correct type for a token or node that carries no styling value — the mode selectors, the component settings, and the `token_family_docs` descriptions (the *Configuration & documentation tokens* category — see [Architecture](./02-architecture.md)). These are intentionally `other` and need no `{type}` path segment: rule R1 exists so consumers can read a *styling* type from the path, which does not apply here. `other` is a problem only when used as a lazy catch-all on a token that does hold a styling value — audit for that case, not for `other` as a whole.
+> **Note on `other`**: `other` is the correct type for a token or node that carries no styling value — the mode selectors, the component settings, and the `token_family_docs` descriptions (the *Configuration & documentation tokens* category — see [Architecture](../02-architecture.md)). These are intentionally `other` and need no `{type}` path segment: rule R1 exists so consumers can read a *styling* type from the path, which does not apply here. `other` is a problem only when used as a lazy catch-all on a token that does hold a styling value — audit for that case, not for `other` as a whole.
 
 Per the W3C DTCG spec, type must not be inferred from the file or folder an object is stored in. The `$type` annotation is authoritative. The `{type}` path segment and `$type` must independently convey the type — neither replaces the other.
 
@@ -256,7 +256,7 @@ The spec explicitly states that tools **must not** use groups to infer type — 
 | Typography composite `$type` cannot bind to Figma variables as a whole | `typography` | Uses Figma Text Styles instead; no variable-level composite |
 | `textAlign` has no Figma variable binding | `textAlign` | Code-only; 3 tokens affected |
 | `ob.s` self-reference: `ob.s.color.neutral.no_color` referenced by another `ob.s` token instead of S1 | `color` | 1 token found; queued for fix |
-| `boxShadow` `$type` must remain exactly `boxShadow` (camelCase) | `boxShadow` | Naming exception — do not rename; triggers Figma Effect Style export. See [Tokens Studio `$type` Exceptions](./03-naming.md#tokens-studio-type-exceptions). |
+| `boxShadow` `$type` must remain exactly `boxShadow` (camelCase) | `boxShadow` | Naming exception — do not rename; triggers Figma Effect Style export. See [Tokens Studio `$type` Exceptions](../03-naming.md#tokens-studio-type-exceptions). |
 
 ---
 

@@ -167,4 +167,4 @@ Headings need Figma typography styles so the design application stays consistent
 - [`./02-dimension-tokens.md`](./02-dimension-tokens.md) — vertical spacing around typography (`typography_context` group)
 - [`../../02-modes/03-ui-scale.md`](../../02-modes/03-ui-scale.md) — UI Scale mode
 - [`../../02-modes/04-typography-context.md`](../../02-modes/04-typography-context.md) — Typography context mode
-- [`../../04-token-types.md`](../../04-token-types.md) — `$type` values, including the Tokens Studio typography type
+- [`../00-types-overview.md`](../00-types-overview.md) — `$type` values, including the Tokens Studio typography type

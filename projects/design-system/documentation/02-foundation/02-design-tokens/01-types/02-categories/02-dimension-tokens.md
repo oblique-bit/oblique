@@ -202,4 +202,4 @@ Building blocks (the row / section_bar / preview_bar masters consumed by the scr
 - [`../02-modes/04-typography-context.md`](../../02-modes/04-typography-context.md) — Typography context mode
 - [`../02-modes/05-density.md`](../../02-modes/05-density.md) — Density mode
 - [`../02-modes/06-viewport.md`](../../02-modes/06-viewport.md) — Viewport mode
-- [`../04-token-types.md`](../../04-token-types.md) — `dimension`, `spacing`, `sizing` types and the `size`/`sizing` path-segment decision
+- [`../00-types-overview.md`](../00-types-overview.md) — `dimension`, `spacing`, `sizing` types and the `size`/`sizing` path-segment decision

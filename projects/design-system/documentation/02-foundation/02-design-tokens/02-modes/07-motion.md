@@ -121,7 +121,7 @@ Figma has no variable type for `duration` or `cubicBezier`, so there is
 nothing to bind and no Figma mode to switch — the motion mode exists in CSS
 only. Every other mode collection surfaces as a Figma variable collection
 with one Figma mode per Oblique mode. See
-[Token Types](../04-token-types.md) for the type-by-type Figma support
+[Token Types](../01-types/00-types-overview.md) for the type-by-type Figma support
 table.
 
 ## **Relation to the other mode collections**
