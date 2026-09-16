@@ -15,8 +15,7 @@ import {
 	isPropertyAccessExpression,
 } from 'typescript';
 import type {ObGroupLogger} from '../../../logger';
-import type {Edit} from '../../shared/ast/types';
-import {applyEdits, transformSourceFile, transformSourceFileWithTypeCheck} from '../../shared/ast/ts';
+import {type Edit, applyEdits, transformSourceFile, transformSourceFileWithTypeCheck} from '../../shared/ast/ts';
 import {closeLogger} from '../../shared/logger-close';
 import {rewriteFiles} from '../../shared/rewrite-files';
 
