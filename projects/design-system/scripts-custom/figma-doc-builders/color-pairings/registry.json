@@ -79,7 +79,7 @@
       "section": {
         "tier": "S",
         "title": "Interaction",
-        "purpose": "Contrast-level pairings for interactive elements (buttons, controls).",
+        "purpose": "Contrast-level pairings for interaction tokens.",
         "guideline": "Every contrast level (high/medium/low) must remain at least AA-compliant against its bg."
       },
       "blocks": [
@@ -95,7 +95,7 @@
       "section": {
         "tier": "S",
         "title": "Status",
-        "purpose": "Pairings for status messages (info, success, warning, error, fatal).",
+        "purpose": "Pairings for status messages (info, resolved, attention, critical, fatal).",
         "guideline": "Status saturated bg requires emphasis_low text for compliant readability."
       },
       "groups": ["info", "critical", "resolved", "attention", "fatal"],
@@ -141,7 +141,7 @@
       "section": {
         "tier": "S",
         "title": "Free hues",
-        "purpose": "Decorative / accent pairings outside the semantic palette (cobalt, teal, indigo, pink, yellow).",
+        "purpose": "Pairings for free colors with no predefined role (cobalt, teal, indigo, pink, yellow).",
         "guideline": "Use sparingly; verify pairing meets WCAG for any text overlaid on accent bg."
       },
       "groups": ["cobalt", "teal", "indigo", "pink", "yellow"],
