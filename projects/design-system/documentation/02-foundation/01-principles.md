@@ -19,8 +19,8 @@ The Oblique Design System provides two primary deliverables for federal applicat
 **Target Users:** UX/UI designers, product designers, design teams  
 **Output:** Design specifications and prototypes for development implementation  
 
-### **100% Token Consistency Commitment**
-**Design Tokens (Variables in Figma):** We maintain **100% consistency** between code and design environments.
+### **Seamless Token Consistency**
+**Design Tokens (Variables in Figma):** We maintain **seamless consistency** between code and design environments.
 
 **Implementation:**
 - **Same Token Names:** `ob.p.color.steelblue.600` exists identically in both code and Figma
@@ -37,6 +37,12 @@ The Oblique Design System provides two primary deliverables for federal applicat
 
 This token consistency ensures that what end users experience matches exactly what designers intended, creating consistent federal application experiences.
 
+### **Exceptions**
+Besides consistency, each environment and target audience has its own needs. We allow minimal deviations: in exceptional cases, for a specific environment (CSS or Figma), the context of use (compatibility, user expectations) takes a slight priority over consistency.
+
+- **Compiled Color Variables (Figma):** `ob.s.*` variable names trim the `ob/s/` prefix (e.g. `color/neutral/fg/contrast_medium/inversity_normal`) for usability in the Figma variables panel. Figma only — the JSON token keeps the full `ob.s.color` path.
+- **Code Transforms:** Developers retain the right to adapt token values to code's needs through the Style Dictionary build, transforming what is defined in the JSON for the final CSS output.
+
 ---
 
 ## **Core Philosophy**
@@ -52,11 +58,10 @@ The Oblique Design System is built on the principle of **Code-Figma Alignment** 
 
 **Implementation:**
 - Design tokens shared between Figma and code
-- Component behavior mirrored across platforms
 - Visual consistency maintained through synchronized updates
 - Single source of truth for design decisions
 
-**Goal:** Eliminate the traditional design-to-development handoff friction by maintaining parallel component systems.
+**Goal:** Eliminate the traditional design-to-development handoff friction through shared design tokens.
 
 ---
 
@@ -93,89 +98,7 @@ The Oblique Design System is built on the principle of **Code-Figma Alignment** 
 
 ---
 
-### **Principle 3: Figma Limitation Acknowledgment**
-**"Figma does not provide all HTML and CSS properties and options"**
-
-**Current Figma Limitations:**
-- **Missing CSS Properties:** `container-queries`, advanced `grid` behaviors, `scroll-snap`
-- **Interaction Constraints:** Limited state management, no complex animations
-- **Responsive Limitations:** Basic viewport simulation vs. real responsive behavior
-- **Accessibility Gaps:** No screen reader simulation, limited keyboard navigation
-- **Performance Aspects:** No loading states, no actual performance metrics
-
-**Our Response:** We mimic code logic in Figma where possible to enable similar behavior and appearance for design system consumers.
-
----
-
-### **Principle 4: Figma Code-Mimicking Strategy**
-**"We mimic certain logic from code in Figma to enable similar behavior for designers"**
-
-#### **Mimicking Strategies:**
-
-**Responsive Behavior:**
-```
-Code: Container queries + CSS Grid
-Figma: Component variants with viewport properties
-```
-
-**Component States:**
-```
-Code: CSS pseudo-classes + JavaScript states
-Figma: Component variants with state properties
-```
-
-**Typography Scale:**
-```
-Code: CSS custom properties with responsive values
-Figma: Text styles with viewport-specific variants
-```
-
-**Color Systems:**
-```
-Code: CSS custom properties with mode-based values
-Figma: Color variables with mode switching
-```
-
-**Spacing System:**
-```
-Code: CSS logical properties and container-relative units
-Figma: Auto-layout with spacing tokens
-```
-
----
-
-### **Principle 5: Designer-Developer Collaboration**
-**"Enable UX/UI/Product designers to work effectively within system constraints"**
-
-**For Designers:**
-- Figma components mirror code behavior as closely as possible
-- Component variants represent actual implementation states
-- Design tokens provide consistent values across platforms
-- Documentation bridges gaps where Figma cannot fully represent code behavior
-
-**For Developers:**
-- Code implementation guides Figma component creation
-- Token architecture supports both platforms equally
-- Component API design considers both design and development workflows
-- Performance and accessibility requirements inform design constraints
-
----
-
 ## **Implementation Guidelines**
-
-### **When Code Leads Design:**
-
-**Component Behavior:**
-- Complex interactions (hover, focus, active states)
-- Responsive layout algorithms (container queries, grid behaviors)
-- Accessibility implementations (ARIA attributes, keyboard navigation)
-- Performance optimizations (lazy loading, animation performance)
-
-**Process:**
-1. Implement component behavior in code
-2. Document technical capabilities and constraints  
-3. Create Figma variant system that represents available states
-4. Bridge gaps with documentation and design guidelines
 
 ### **When Design Informs Code:**
 
@@ -195,10 +118,8 @@ Figma: Auto-layout with spacing tokens
 
 **Daily:**
 - Token value updates propagated to both platforms
-- Component state alignment validation
 
 **Weekly:**
-- Design-code component behavior review
 - Gap identification and bridging strategy updates
 
 **Monthly:**
@@ -211,13 +132,11 @@ Figma: Auto-layout with spacing tokens
 
 ### **Code-Figma Alignment Intent:**
 - Static-state visuals should match pixel-for-pixel between code and Figma
-- Interaction patterns should behave the same way in both environments
 - All shared values should route through the same design tokens
 - Any gap between platforms should be documented rather than left implicit
 
 ### **Success Indicators:**
 - Reduced design-development iteration cycles
-- Faster component implementation from design
 - Improved user experience consistency across products
 - Higher designer confidence in implementation fidelity
 
@@ -240,7 +159,7 @@ Figma: Auto-layout with spacing tokens
 ## **Key Takeaways**
 
 - **Code Priority:** Code implementation takes precedence for user-facing behavior  
-- **Design Alignment:** Figma components mirror code behavior as closely as possible  
+- **Design Alignment:** Figma and code stay visually aligned through shared design tokens  
 - **Gap Bridging:** Documentation explains areas where platforms diverge  
 - **Continuous Sync:** Regular alignment validation and improvement processes  
 - **Team Collaboration:** Clear roles and responsibilities for each platform  

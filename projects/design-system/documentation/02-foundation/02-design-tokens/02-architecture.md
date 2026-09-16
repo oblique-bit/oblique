@@ -9,19 +9,7 @@
 ## **Foundation Principles**
 
 ### **Code-Figma Token Alignment**
-**"100% consistency between design and code environments"**
-
-**Implementation:**
-- **Same Token Names**: `ob.p.color.steelblue.600` exists identically in both code and Figma
-- **Same Token Values**: `#2379A4` appears exactly the same in both environments  
-- **Same Token Structure**: Hierarchical organization mirrors across platforms
-- **Synchronized Updates**: Token changes propagate simultaneously to both environments
-
-**Benefits:**
-- Eliminates design-development handoff friction
-- Ensures visual and behavioral consistency  
-- Provides shared vocabulary between teams
-- Single source of truth for design decisions
+Code and Figma tokens stay in seamless consistency, with narrow, documented exceptions — see [Principles: Seamless Token Consistency](../01-principles.md#exceptions).
 
 ### **Figma-First Token Creation**
 Following the Tokenization Process:
