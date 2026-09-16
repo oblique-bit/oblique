@@ -882,7 +882,8 @@ async function build2ModeRow(table, token, components, varMap, collectionsByAlia
         }
         if (hexNode) setText(hexNode, token.value || '');
       }
-      setAlphaVariant(swInst, token.dotPath);
+      const refForMode = mode === 'light' ? token.referenceLight : token.referenceDark;
+      setAlphaVariant(swInst, refForMode || token.dotPath);
     }
   } };
 }
@@ -930,7 +931,7 @@ async function build4ModeRows(table, token, components, varMap, collectionsByAli
         } else {
           setSolidFill(swRect, token.value);
         }
-        setAlphaVariant(swInst, token.dotPath);
+        setAlphaVariant(swInst, refForRow || token.dotPath);
         const hexNode = findAllByType(cell, 'TEXT').find(t => /hex/i.test(t.name));
         if (hexNode && token.kind === 'figma-var') {
           const v = varMap.byName[token.varName];

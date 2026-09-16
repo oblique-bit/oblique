@@ -56,6 +56,9 @@ The token docs are sorted along two axes. **Tiers** say where a token sits in th
   - [Brand](./01-types/02-categories/01-color-tokens/05-colors-semantic-brand.md) | [Neutral](./01-types/02-categories/01-color-tokens/04-colors-semantic-neutral.md) | [Interaction](./01-types/02-categories/01-color-tokens/06-colors-semantic-interaction.md) | [Status](./01-types/02-categories/01-color-tokens/07-colors-semantic-status.md) | [Free](./01-types/02-categories/01-color-tokens/08-colors-semantic-free.md)
 - [**Dimension Tokens**](./01-types/02-categories/02-dimension-tokens.md) - Sizing and spacing, and how they resolve per mode
 - [**Typography Tokens**](./01-types/02-categories/03-typography-tokens.md) - The rem base, the semantic scale, and the HTML text styles
+- [**Motion Tokens**](./01-types/02-categories/04-motion-tokens.md) - Durations and easing curves, and the enabled/disabled motion mode
+- [**Border Tokens**](./01-types/02-categories/05-border-tokens.md) - Radius, width, outline offset, and the focus-ring composites
+- [**Shadow Tokens**](./01-types/02-categories/06-shadow-tokens.md) - The four elevation steps and how they export as Figma Effect Styles
 
 ### **Modes**
 - [**Modes Overview**](./02-modes/00-modes-overview.md) - Complete mode system documentation
@@ -65,6 +68,7 @@ The token docs are sorted along two axes. **Tiers** say where a token sits in th
 - [**Typography-Context Mode**](./02-modes/04-typography-context.md) - Typography scaling for different contexts
 - [**Density Mode**](./02-modes/05-density.md) - Interface density modes (compact/standard/spacious)
 - [**Responsiveness**](./02-modes/06-viewport.md) - Viewport modes and responsive implementation
+- [**Motion Mode**](./02-modes/07-motion.md) - Animation preference (enabled/disabled) and the reduced-motion class
 
 ### **Standards & Guidelines**
 - [**Architecture**](./02-architecture.md) - Complete architectural patterns and layer system

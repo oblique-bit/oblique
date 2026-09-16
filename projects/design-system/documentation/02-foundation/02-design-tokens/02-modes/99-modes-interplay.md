@@ -28,12 +28,17 @@ Different modes control different aspects of component behavior:
 - **Scope**: Text-heavy content areas
 - **Purpose**: Optimal text presentation for different content types (interface vs prose)
 
+**Motion Mode** controls animation preference:
+- **Scope**: Every animated or transitioning element uniformly — no component-type scoping, unlike UI Scale or Density
+- **Behavior**: Fully orthogonal; combines with any state of every other mode (Lightness, Emphasis, UI Scale, Density, Typography-Context, Viewport) with no conflicts. Disabling it shortens transitions to zero rather than removing them, so it never changes which mode a component reacts to elsewhere — see [07-motion.md](./07-motion.md).
+
 ### **Key Patterns**
 1. **Individual interactive controls** → UI Scale mode only
 2. **Layout containers** (elements arranging multiple children, e.g. tabular or list structures) → Density mode only
 3. **Text-heavy content** → Typography-Context mode only
 4. **Elements that combine structure and substantial text content** → Multiple modes (Density + Typography-Context)
 5. **Fixed-size elements** (no size or spacing variation) → No mode reactivity
+6. **Any element with a transition** → Motion mode, independent of and combinable with every pattern above
 
 ---
 

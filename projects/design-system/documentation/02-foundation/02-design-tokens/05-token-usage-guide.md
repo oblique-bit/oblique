@@ -44,7 +44,7 @@ These two tokens give you the most basic readable layout: dark text on a light s
 From here, you can layer in more tokens as needed:
 - A **high-contrast background** (`ob.s.color.neutral.bg.contrast_high.inversity_normal`) for cards or surfaces that need to stand out from the page
 - A **high-contrast foreground** (`ob.s.color.neutral.fg.contrast_high.inversity_normal`) for body text and primary labels (one step below the absolute maximum)
-- **Border** and **shadow** tokens for structural separation
+- [**Border**](./01-types/02-categories/05-border-tokens.md) and [**shadow**](./01-types/02-categories/06-shadow-tokens.md) tokens for structural separation
 
 Once you have the basics, use the decision steps below to find the right token for more specific needs.
 
@@ -199,7 +199,9 @@ Use the design system's border radius tokens (`ob.s.border_radius.*`) rather tha
 
 ### Border Width
 
-Use the design system's border width tokens rather than hardcoding pixel values.
+Use the design system's border width tokens (`ob.s.border_width.*`) rather than hardcoding pixel values.
+
+Radius, width, outline offset and the focus-ring composites are all documented in [Border Tokens](./01-types/02-categories/05-border-tokens.md).
 
 ### px vs rem — Which Unit When Building a Component?
 

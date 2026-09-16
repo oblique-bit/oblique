@@ -35,7 +35,6 @@ build lives on its own branch off `master`, following the team convention
 (`feature/OUI-<ticket>-<slug>`):
 
 - Branch: `feature/OUI-4507-fix-resolver-for-per-axis-mode-collection`
-- Jira ticket: OUI-4507 — Resolver should work with token paths
 - Path on that branch: `projects/design-system/scripts/tokens/themes.mjs`
 - Open the PR: https://github.com/oblique-bit/oblique/pull/new/feature/OUI-4507-fix-resolver-for-per-axis-mode-collection
 

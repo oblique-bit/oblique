@@ -139,4 +139,4 @@ All inside `_docs/color-variables/*` (under the Building Blocks frame on the cli
 ## See also
 
 - [`../color-pairings/_readme.md`](../color-pairings/_readme.md) — sibling builder for the contrast-pairings page.
-- [`../../../documentation/02-foundation/03-design-tokens/01-types/02-categories/01-color-tokens/03-colors-semantic.md`](../../../documentation/02-foundation/03-design-tokens/01-types/02-categories/01-color-tokens/03-colors-semantic.md) — design-token consumer docs.
+- [`../../../documentation/02-foundation/02-design-tokens/01-types/02-categories/01-color-tokens/03-colors-semantic.md`](../../../documentation/02-foundation/02-design-tokens/01-types/02-categories/01-color-tokens/03-colors-semantic.md) — design-token consumer docs.

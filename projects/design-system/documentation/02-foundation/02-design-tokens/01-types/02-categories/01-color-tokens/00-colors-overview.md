@@ -135,7 +135,7 @@ When combining categories, maintain:
   - `s1_lightness/` - Light and dark mode definitions
   - `s2_emphasis/` - High and low emphasis variations
   - `compiled.json` - Complete semantic color compilation
-- `documentation/02-foundation/03-design-tokens/01-types/02-categories/01-color-tokens/` - Color system documentation
+- `documentation/02-foundation/02-design-tokens/01-types/02-categories/01-color-tokens/` - Color system documentation
   - Specialized files for each color category and architectural topics
 
 ### Token Resolution Flow

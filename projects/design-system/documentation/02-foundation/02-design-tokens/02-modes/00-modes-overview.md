@@ -12,6 +12,7 @@ Navigation hub for all token mode documentation.
 | **Typography-Context** | Typography contexts | `interface.json` / `prose.json` | [04-typography-context.md](./04-typography-context.md) |
 | **Density** | Interface density control | Compact/Standard/Spacious | [05-density.md](./05-density.md) |
 | **Viewport** | Responsive width ranges | `xs` / `sm` / `md` / `lg` / `xl` / `2xl` | [06-viewport.md](./06-viewport.md) |
+| **Motion** | Animation preference | `enabled.json` / `disabled.json` | [07-motion.md](./07-motion.md) |
 
 
 ## **How Modes Work**

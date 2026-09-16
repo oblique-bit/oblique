@@ -86,7 +86,7 @@ The naming pattern used across the Oblique Design System:
 ob.{tier}.{category}.{...path}
 ```
 
-The `{tier}` segment identifies the token's layer; the rest of the path varies by token kind. See `../02-foundation/03-design-tokens/03-naming.md` for the full conventions.
+The `{tier}` segment identifies the token's layer; the rest of the path varies by token kind. See `../02-foundation/02-design-tokens/03-naming.md` for the full conventions.
 
 **Examples:**
 - `ob.h.link.color.hover`
@@ -128,4 +128,4 @@ The practice of having one variable reference another variable, enabling hierarc
 
 ## Related Documentation
 
-- **Token Architecture:** `../03-design-tokens/` - Detailed token structure and naming
+- **Token Architecture:** `../02-design-tokens/` - Detailed token structure and naming
