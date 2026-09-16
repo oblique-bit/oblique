@@ -5,6 +5,7 @@ import {SchematicsException} from '@angular-devkit/schematics';
  *
  * Subclasses extend this class to create specific schematics-related errors:
  * - {@link ObFileNotFoundError}
+ * - {@link ObInvalidJsonError}
  *
  * @abstract
  * @extends {@link SchematicsException}

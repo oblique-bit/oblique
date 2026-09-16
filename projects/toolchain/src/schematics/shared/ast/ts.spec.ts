@@ -5,8 +5,10 @@ import {
 	applyChanges,
 	applyEdits,
 	createSrcFile,
+	findCallExpression,
 	findClassDeclaration,
 	insertClassProperty,
+	insertIntoObjectLiteralArray,
 	removeClassProperty,
 	removeStatement,
 	transformSourceFile,
@@ -172,6 +174,88 @@ describe('ast-ts', () => {
 		test('returns undefined when class is not found', () => {
 			const sourceFile = createSourceFile('app.ts', appComponent, ScriptTarget.Latest, true);
 			expect(findClassDeclaration(sourceFile, 'Missing')).toBeUndefined();
+		});
+	});
+
+	describe(findCallExpression.name, () => {
+		const specWithTestBed = `import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: [],\n\t\t}).compileComponents();\n\t});\n});`;
+
+		test('finds a call expression by its text', () => {
+			const sourceFile = createSourceFile('app.spec.ts', specWithTestBed, ScriptTarget.Latest, true);
+			const callExpression = findCallExpression(sourceFile, 'TestBed.configureTestingModule');
+			expect(callExpression?.expression.getText(sourceFile)).toBe('TestBed.configureTestingModule');
+		});
+
+		test('finds the call expression nested inside blocks', () => {
+			const sourceFile = createSourceFile('app.spec.ts', specWithTestBed, ScriptTarget.Latest, true);
+			const callExpression = findCallExpression(sourceFile, 'TestBed.configureTestingModule');
+			// The call is nested inside the describe and beforeEach blocks (its parent
+			// is the awaited member-access chain, not a top-level statement).
+			expect(callExpression?.parent.kind).toBe(SyntaxKind.PropertyAccessExpression);
+		});
+
+		test('returns undefined when the call expression is not found', () => {
+			const sourceFile = createSourceFile('app.spec.ts', specWithTestBed, ScriptTarget.Latest, true);
+			expect(findCallExpression(sourceFile, 'TestBed.createComponent')).toBeUndefined();
+		});
+	});
+
+	describe(insertIntoObjectLiteralArray.name, () => {
+		const specWithTestBed = `import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: [RouterModule],\n\t\t\tdeclarations: [App],\n\t\t}).compileComponents();\n\t});\n});`;
+		const specWithEmptyImports = `import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: [],\n\t\t}).compileComponents();\n\t});\n});`;
+		const specWithoutImports = `import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({}).compileComponents();\n\t});\n});`;
+		const specWithNonArrayImports = `import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: RouterModule,\n\t\t}).compileComponents();\n\t});\n});`;
+
+		function getConfigObject(sourceFile: SourceFile): ObjectLiteralExpression {
+			const callExpression = findCallExpression(sourceFile, 'TestBed.configureTestingModule');
+			return callExpression?.arguments[0] as ObjectLiteralExpression;
+		}
+
+		test('inserts into an existing non-empty array', () => {
+			const sourceFile = createSourceFile('app.spec.ts', specWithTestBed, ScriptTarget.Latest, true);
+			const configObject = getConfigObject(sourceFile);
+			const tree = createTree(specWithTestBed, 'src/app/app.spec.ts');
+			applyChanges(tree, 'src/app/app.spec.ts', [
+				insertIntoObjectLiteralArray(sourceFile, configObject, {
+					propertyName: 'imports',
+					value: 'ObMasterLayoutModule',
+				}),
+			]);
+			expect(tree.readText('src/app/app.spec.ts')).toContain('imports: [RouterModule, ObMasterLayoutModule]');
+		});
+
+		test('inserts into an empty array', () => {
+			const sourceFile = createSourceFile('app.spec.ts', specWithEmptyImports, ScriptTarget.Latest, true);
+			const configObject = getConfigObject(sourceFile);
+			const tree = createTree(specWithEmptyImports, 'src/app/app.spec.ts');
+			applyChanges(tree, 'src/app/app.spec.ts', [
+				insertIntoObjectLiteralArray(sourceFile, configObject, {
+					propertyName: 'imports',
+					value: 'ObMasterLayoutModule',
+				}),
+			]);
+			expect(tree.readText('src/app/app.spec.ts')).toContain('imports: [ObMasterLayoutModule]');
+		});
+
+		test('creates the property when it is missing', () => {
+			const sourceFile = createSourceFile('app.spec.ts', specWithoutImports, ScriptTarget.Latest, true);
+			const configObject = getConfigObject(sourceFile);
+			const tree = createTree(specWithoutImports, 'src/app/app.spec.ts');
+			applyChanges(tree, 'src/app/app.spec.ts', [
+				insertIntoObjectLiteralArray(sourceFile, configObject, {
+					propertyName: 'imports',
+					value: 'ObMasterLayoutModule',
+				}),
+			]);
+			expect(tree.readText('src/app/app.spec.ts')).toContain('imports: [ObMasterLayoutModule]');
+		});
+
+		test('returns a noop change when the property is not an array', () => {
+			const sourceFile = createSourceFile('app.spec.ts', specWithNonArrayImports, ScriptTarget.Latest, true);
+			const configObject = getConfigObject(sourceFile);
+			expect(
+				insertIntoObjectLiteralArray(sourceFile, configObject, {propertyName: 'imports', value: 'ObMasterLayoutModule'})
+			).toBeInstanceOf(NoopChange);
 		});
 	});
 
