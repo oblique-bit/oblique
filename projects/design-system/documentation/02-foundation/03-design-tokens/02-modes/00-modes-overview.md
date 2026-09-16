@@ -6,11 +6,12 @@ Navigation hub for all token mode documentation.
 
 | Mode | Purpose | Files | Documentation |
 |---|---|---|---|
-| **Lightness** | User theme preference | `light.json` / `dark.json` | [01-lightness.md](./01-lightness.md) |
+| **Lightness** | User mode preference | `light.json` / `dark.json` | [01-lightness.md](./01-lightness.md) |
 | **Emphasis** | Design emphasis levels | `high.json` / `low.json` | [02-emphasis.md](./02-emphasis.md) |
 | **UI Scale** | Component size variations | `sm.json` / `md.json` / `lg.json` | [03-ui-scale.md](./03-ui-scale.md) |
 | **Typography-Context** | Typography contexts | `interface.json` / `prose.json` | [04-typography-context.md](./04-typography-context.md) |
-| **Density** | Interface density control | Compact/Comfortable/Spacious | [05-density.md](./05-density.md) |
+| **Density** | Interface density control | Compact/Standard/Spacious | [05-density.md](./05-density.md) |
+| **Viewport** | Responsive width ranges | `xs` / `sm` / `md` / `lg` / `xl` / `2xl` | [06-viewport.md](./06-viewport.md) |
 
 
 ## **How Modes Work**

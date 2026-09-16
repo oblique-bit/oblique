@@ -1,7 +1,5 @@
 # Oblique Design System Principles
-**Version:** 1.0  
-**Date:** September 2, 2025  
-**Status:** Approved by Product Owner
+Principles governing the relationship between the Oblique Design System's code and Figma design assets.
 
 ---
 
@@ -25,7 +23,7 @@ The Oblique Design System provides two primary deliverables for federal applicat
 **Design Tokens (Variables in Figma):** We maintain **100% consistency** between code and design environments.
 
 **Implementation:**
-- **Same Token Names:** `ob.p.color.red.50` exists identically in both code and Figma
+- **Same Token Names:** `ob.p.color.steelblue.600` exists identically in both code and Figma
 - **Same Token Values:** `#2379A4` appears exactly the same in both environments  
 - **Same Token Structure:** Hierarchical organization (`primitive → semantic → component`) mirrors across platforms
 - **Synchronized Updates:** Token changes propagate simultaneously to both code and Figma
@@ -134,7 +132,7 @@ Figma: Text styles with viewport-specific variants
 
 **Color Systems:**
 ```
-Code: CSS custom properties with theme modes
+Code: CSS custom properties with mode-based values
 Figma: Color variables with mode switching
 ```
 
@@ -211,11 +209,11 @@ Figma: Auto-layout with spacing tokens
 
 ## **Quality Metrics**
 
-### **Code-Figma Alignment Score:**
-- **Visual Consistency:** 95% pixel-perfect match in static states
-- **Behavioral Similarity:** 85% interaction pattern match
-- **Token Usage:** 100% shared token utilization
-- **Documentation Coverage:** 90% gap explanation coverage
+### **Code-Figma Alignment Intent:**
+- Static-state visuals should match pixel-for-pixel between code and Figma
+- Interaction patterns should behave the same way in both environments
+- All shared values should route through the same design tokens
+- Any gap between platforms should be documented rather than left implicit
 
 ### **Success Indicators:**
 - Reduced design-development iteration cycles
@@ -239,25 +237,6 @@ Figma: Auto-layout with spacing tokens
 
 ---
 
-## **Evolution Strategy**
-
-### **Short-term (3-6 months):**
-- Establish token synchronization workflows
-- Create component behavior documentation standards
-- Implement design-code review processes
-
-### **Medium-term (6-12 months):**
-- Develop automated design-code consistency checking
-- Expand Figma component variant coverage
-- Create performance-design integration workflows
-
-### **Long-term (12+ months):**
-- Investigate design-to-code generation possibilities
-- Explore emerging design tool capabilities
-- Establish design system maturity measurement framework
-
----
-
 ## **Key Takeaways**
 
 - **Code Priority:** Code implementation takes precedence for user-facing behavior  
@@ -267,9 +246,3 @@ Figma: Auto-layout with spacing tokens
 - **Team Collaboration:** Clear roles and responsibilities for each platform  
 
 This principle framework ensures that our design system serves both designers and developers effectively while maintaining the highest fidelity to actual user experience.
-
----
-
-**Document Maintainers:** Design System Team  
-**Review Schedule:** Quarterly  
-**Next Review:** December 2025

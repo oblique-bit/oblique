@@ -2,7 +2,7 @@
 
 **Purpose**: Practical guide for choosing the right token when building or styling a component  
 **Audience**: System consumers (designers, developers) and system maintainers  
-**Related**: [Architecture](./02-architecture.md) | [Token Naming](./03-naming.md) | [Token Types](./04-token-types.md) | [Color Tokens](./01-types/08-color-tokens/00-colors-overview.md)
+**Related**: [Architecture](./02-architecture.md) | [Token Naming](./03-naming.md) | [Token Types](./04-token-types.md) | [Color Tokens](./01-types/02-categories/01-color-tokens/00-colors-overview.md)
 
 ---
 
@@ -24,7 +24,7 @@ Only when all component possibilities are exhausted — when no existing compone
 >
 > **For system maintainers**: You will regularly need to assign the right color token to a component you're building or maintaining. The decision steps below are essential knowledge for your work.
 
-> **Note on the current tokens preview**: Because we don't yet have a large component library available, manual color picking is more common right now than it will be in the future. As more components are released, the need to select individual color tokens will decrease significantly.
+> **Note on the current tokens preview**: Because a large component library isn't available yet, manual color picking is more common right now than it will be in the future. As more components are released, the need to select individual color tokens will decrease.
 
 ---
 
@@ -42,7 +42,7 @@ Before diving into the full system, here are the two most fundamental color toke
 These two tokens give you the most basic readable layout: dark text on a light surface (or light text on a dark surface — the tokens adapt automatically via lightness mode).
 
 From here, you can layer in more tokens as needed:
-- A **high-contrast background** (`ob.s.color.neutral.bg.contrast_high.inversity_normal`) for cards or elevated surfaces that need to stand out from the page
+- A **high-contrast background** (`ob.s.color.neutral.bg.contrast_high.inversity_normal`) for cards or surfaces that need to stand out from the page
 - A **high-contrast foreground** (`ob.s.color.neutral.fg.contrast_high.inversity_normal`) for body text and primary labels (one step below the absolute maximum)
 - **Border** and **shadow** tokens for structural separation
 
@@ -55,10 +55,10 @@ Once you have the basics, use the decision steps below to find the right token f
 
 ### Step 2: Does a Component Token Already Exist?
 
-Before reaching for a semantic token, check if an `ob.c.*` (component-level) token already covers your use case. Component tokens are the highest abstraction and already encode the correct semantic + emphasis + inversity decisions.
+Before reaching for a semantic token, check if an `ob.c.*` (component-level) token already covers your use case. Component tokens are the highest abstraction and would encode the correct semantic + emphasis + inversity decisions. No custom Oblique components (`ob.c.*`) ship token definitions in this release yet, so this step currently always falls through to Step 3 — it applies once a component tier ships.
 
 - If a component token exists → **use it**.
-- If you're building a new component or the component token doesn't cover your case → continue to Step 3.
+- If you're building a new component, or no component token covers your case yet → continue to Step 3.
 
 ### Step 3: Which Color Family?
 
@@ -67,15 +67,15 @@ Before reaching for a semantic token, check if an `ob.c.*` (component-level) tok
 | Layout structure, text, backgrounds, borders | **Neutral** | Page background, body text, card surfaces, dividers |
 | User-interactive elements | **Interaction** | Buttons, links, form controls, hover/focus/active states |
 | System feedback | **Status** | Alerts, validation messages, badges (success, warning, error, info) |
-| Federal identity | **Brand** | Logo area, brand bar — very limited use |
+| Federal identity | **Brand** | Logo area, brand bar — limited use |
 | Decorative / project-specific | **Free** | Tags, categories, data visualization — no built-in semantic meaning |
 
 **Detailed documentation per family:**
-- [Neutral](./01-types/08-color-tokens/04-colors-semantic-neutral.md)
-- [Interaction](./01-types/08-color-tokens/06-colors-semantic-interaction.md)
-- [Status](./01-types/08-color-tokens/07-colors-semantic-status.md)
-- [Brand](./01-types/08-color-tokens/05-colors-semantic-brand.md)
-- [Free](./01-types/08-color-tokens/08-colors-semantic-free.md)
+- [Neutral](./01-types/02-categories/01-color-tokens/04-colors-semantic-neutral.md)
+- [Interaction](./01-types/02-categories/01-color-tokens/06-colors-semantic-interaction.md)
+- [Status](./01-types/02-categories/01-color-tokens/07-colors-semantic-status.md)
+- [Brand](./01-types/02-categories/01-color-tokens/05-colors-semantic-brand.md)
+- [Free](./01-types/02-categories/01-color-tokens/08-colors-semantic-free.md)
 
 ### Step 4: Which Property?
 
@@ -86,7 +86,7 @@ Once you know the family, pick the property that matches what you're styling:
 | `bg` / `bg_base` | Background fill | Card surface, button background |
 | `fg` / `fg_base` | Foreground (text, icons) | Body text, icon color |
 | `border` | Border / stroke | Input border, divider line |
-| `shadow` | Drop shadow | Elevated card, dropdown |
+| `shadow` | Drop shadow | Card, dropdown |
 
 ### Step 5: Inversity — Normal vs. Flipped
 
@@ -111,7 +111,7 @@ Use `inversity_flipped` only in these cases:
 
 | Level | Role | Who consumes it |
 |---|---|---|
-| **S1** (Lightness) | Light/dark theme switching. Referenced by S2 and ob.s. | **Internal only** — never consumed directly by components. |
+| **S1** (Lightness) | Light/dark mode switching. Referenced by S2 and ob.s. | **Internal only** — never consumed directly by components. |
 | **S2** (Emphasis) | High/low emphasis variations for interaction elements. References S1. | Consumed by ob.s compilation. Can be used as fallback when ob.s does not yet cover a specific token. |
 | **ob.s** (Compiled semantic) | Complete, clean collection of all semantic colors. Compiles from S1, S2, and static sources. | **Mandatory consumption point** — all component tokens and developers must reference this layer. |
 
@@ -136,7 +136,7 @@ Choose the contrast level that matches the visual importance of the element in i
 ```
 Need to style something with color?
 │
-├─ Component token exists? → Use ob.c.* token ✓
+├─ Component token exists? → Use ob.c.* token
 │
 ├─ No component token → Pick color family:
 │   ├─ Layout/structure → Neutral
@@ -161,7 +161,7 @@ Need to style something with color?
 
 | Mistake | Why it's wrong | What to do instead |
 |---|---|---|
-| Using a primitive token (`ob.p.*`) directly in a component | Violates the architecture rule: primitives exist only as the foundation for the reference chain. They don't adapt to theme modes (lightness, emphasis). | Use semantic tokens (`ob.s.*`) or component tokens (`ob.c.*`) |
+| Using a primitive token (`ob.p.*`) directly in a component | Violates the architecture rule: primitives exist only as the foundation for the reference chain. They don't adapt to modes (lightness, emphasis). | Use semantic tokens (`ob.s.*`) or component tokens (`ob.c.*`) |
 | Hardcoding a hex value | Breaks theming entirely | Always use a token |
 | Using `inversity_flipped` "just because it looks better" | Flipped has specific use cases; inconsistent inversity breaks the system | Default to `inversity_normal`; only flip for prominence or convention |
 | Skipping S2 for interactive components in emphasis contexts | Your component won't respond to emphasis mode changes | ob.s compiles from S2 for interaction tokens. If ob.s covers your case, use that. If not, S2 is the fallback for emphasis-aware interaction tokens. |
@@ -181,7 +181,7 @@ Spacing tokens control the gaps and distances between and within elements.
 | Context | Token pattern | Controlled by |
 |---|---|---|
 | **Inside a component** (padding, inset) | Component-specific or `ui_scale` dimension tokens | UI Scale mode (sm/md/lg) |
-| **Outside a component** (margin, gap between siblings) | Layout dimension tokens | Density mode (compact/comfortable/spacious) |
+| **Outside a component** (margin, gap between siblings) | Layout dimension tokens | Density mode (compact/standard/spacious) |
 
 **Key distinction**: Inset spacing (inside) is driven by **UI Scale**. Outer spacing (between components) is driven by **Density**. Don't mix them up.
 
@@ -189,8 +189,8 @@ Spacing tokens control the gaps and distances between and within elements.
 
 | What you're sizing | Where to look |
 |---|---|
-| Component overall dimensions (button height, input height) | `ob.c.{component}.dimension.*` or `ob.h.{element}.dimension.*` tokens (these reference UI Scale semantic tokens internally) |
-| Icon size | `ob.c.icon.dimension.*` component tokens |
+| Component overall dimensions (button height, input height) | `ob.c.{component}.dimension.*` or `ob.h.{element}.dimension.*` tokens (once a component ships one; these reference UI Scale semantic tokens internally) |
+| Icon size | `ob.c.{component}.dimension.*` component tokens (once a component ships one) |
 | Layout containers (page width, column widths) | Global tokens (`ob.g.*`) |
 
 ### Border Radius
@@ -203,13 +203,13 @@ Use the design system's border width tokens rather than hardcoding pixel values.
 
 ### px vs rem — Which Unit When Building a Component?
 
-The system provides **both px and rem** at the primitive and semantic layers. Every semantic dimension token has a `.px` and a `.rem` variant side by side. The unit choice is made when you wire a component token to a semantic token — you pick one.
+The system provides **both px and rem** at the semantic layer. Every semantic dimension token has a `.px` and a `.rem` variant side by side, the `.rem` variant computed from the `.px` value (`{...px} / 16 * 1rem`). The unit choice is made when you wire a component token to a semantic token — you pick one.
 
 #### Where the choice happens
 
 | Layer | What's available |
 |---|---|
-| **Primitive** (`ob.p.dimension.*`) | Both scales exist in parallel: `ob.p.dimension.px.*` and `ob.p.dimension.rem.*` |
+| **Primitive** (`ob.p.dimension.*`) | Only `.px.*` — there is no primitive `.rem` scale |
 | **Semantic** (`ob.s.dimension.*`) | Every token exposes both: `…element.md.px` and `…element.md.rem` |
 | **Component** (`ob.c.*`, `ob.h.*`) | **You pick one.** The component token references either the `.px` or the `.rem` semantic variant. |
 
@@ -231,20 +231,16 @@ The system provides **both px and rem** at the primitive and semantic layers. Ev
 | Focus indicator thickness | `.px` | Fixed visual weight required for consistent accessibility indicator (e.g., 3px) |
 | Optical baseline offset (inline icon next to text) | `.px` | Sub-pixel adjustment; the description notes devs should convert to `em` in CSS for runtime |
 
-#### Real example from the icon component
-
-The icon component demonstrates both patterns:
+#### Real example
 
 ```
-Icon size (rem):
-  ob.c.icon.component.size.md
-    → {ob.s.dimension.dynamic.ui_scale.spacing.md.rem}
-        → {ob.p.dimension.rem.1100} * {ob.g.multiplier.dimension.ui_scale.md}
+Element size (rem):
+  ob.s.dimension.static.ui_scale.element.md.rem
+    → {ob.s.dimension.static.ui_scale.element.md.px} / 16 * 1rem
 
-Inline icon vertical offset (px):
-  ob.c.icon.inline_text.spacing.vertical.offset
-    → {ob.s.dimension.static.ui_scale.micro.sm.px}
-        → {ob.p.dimension.px.2}
+Micro-level offset (px):
+  ob.s.dimension.dynamic.ui_scale.micro.sm.px
+    → {ob.p.dimension.px.2} * 1px
 ```
 
 The size uses `.rem` because icons should scale with the user's font-size setting. The vertical offset uses `.px` because it's a 2px optical correction that would blur at non-integer rem values.
@@ -298,8 +294,8 @@ The system provides two approaches for typography tokens:
 
 | Approach | When to use | Example patterns |
 |---|---|---|
-| **Semantic typography styles** (composition tokens) | Headings and display text — combines font family, size, weight, line height into one token | `ob.s.typography.style.display.xl` |
-| **Component typography tokens** (individual properties) | Component elements (buttons, labels, form controls) — separate tokens for each property | `ob.h.button.typography.font_size`, `ob.h.button.typography.line_height` |
+| **Semantic typography styles** (composition tokens) | Headings and body text — combines font family, size, weight, line height into one token | `ob.h.heading.H1` |
+| **Component typography tokens** (individual properties) | Component elements (buttons, labels, form controls) — separate tokens for each property, once a component ships one | `ob.h.button.typography.font_size`, `ob.h.button.typography.line_height` |
 
 Semantic typography tokens come in two variants:
 - **Grouped** (`/grouped/`): Pre-composed tokens combining all typography properties — used in Figma styles and for direct application.
@@ -323,7 +319,7 @@ This mode is selected at **build time** by loading the appropriate token set (`i
 | Mistake | Why it's wrong | What to do instead |
 |---|---|---|
 | Manually setting font-size and line-height | Breaks typography context mode switching and multiplier scaling | Use typography tokens that bundle all properties (grouped tokens) or the individual component typography tokens |
-| Overriding line-height below 1.5x font-size | Fails WCAG 2.2 SC 1.4.12 (Text Spacing) — users who inject custom spacing will lose content or functionality | Use line-height tokens built on `ob.p.line_height.base` (1.5) or higher |
+| Overriding line-height below 1.5x font-size | Fails WCAG 2.2 SC 1.4.12 (Text Spacing) — users who inject custom spacing will lose content or functionality | Use the design system's line-height tokens (`ob.s.typography.scale.dynamic.line_height.*`) rather than a hardcoded value |
 
 ---
 
@@ -340,20 +336,16 @@ The token architecture is designed to help components meet [Web Content Accessib
 | **1.4.6** | AAA | Contrast (Enhanced) | The `contrast_highest` level targets the stricter 7:1 ratio for text. Using this level for body text and primary headings supports Enhanced contrast compliance. | `ob.s.color.neutral.fg.contrast_highest.*` |
 | **1.4.10** | AA | Reflow | `rem`-based dimension tokens help components reflow naturally at 320 CSS pixel width (equivalent to 400% zoom at 1280px). When spatial values scale with the user's font-size, layout adapts without requiring horizontal scrolling. | All `.rem` dimension tokens |
 | **1.4.11** | AA | Non-text Contrast | Border tokens and foreground tokens provide the 3:1 contrast needed for UI component boundaries (input borders, button outlines) and graphical objects (icons). The border contrast scale (`subtle`, `medium`, `strong`) lets maintainers pick the right visual weight. | `ob.s.color.neutral.border.{contrast}.*`, `ob.s.color.{family}.fg.*` |
-| **1.4.12** | AA | Text Spacing | The base line-height primitive is `1.5` (unitless), meeting the minimum 1.5× font-size requirement. Typography tokens built on this value allow user-overridden spacing without content clipping or overlap. | `ob.p.line_height.base` (1.5), `ob.s.dynamic.line_height.*` |
+| **1.4.12** | AA | Text Spacing | Typography tokens bundle line-height with font-size so components don't hardcode a ratio that could fall under the 1.5× minimum. Typography tokens built on these values allow user-overridden spacing without content clipping or overlap. | `ob.s.typography.scale.dynamic.line_height.*` |
 | **2.4.7** | AA | Focus Visible | Dedicated focus ring tokens bundle color, width (3px), and style into a ready-to-use CSS outline value. Using these tokens ensures every interactive component has a visible keyboard focus indicator. | `ob.s.border.focus_ring.inversity_normal`, `ob.s.border.focus_ring.inversity_flipped` |
 | **2.4.13** | AAA | Focus Appearance | The focus ring tokens use a 3px solid border (≥ 2 CSS pixel perimeter required) with a distinct purple color that provides ≥ 3:1 contrast between focused and unfocused states. The outline offset tokens (`ob.s.outline_offset.*`) control the gap between the focus indicator and the component edge. | `ob.s.border.focus_ring.*`, `ob.s.outline_offset.{xs…lg}`, `ob.s.border_width.md` (3px) |
-| **2.5.8** | AA | Target Size (Minimum) | The mobile button touch target token enforces a 48px minimum, exceeding the 24px WCAG minimum. Desktop components deliberately have no minimum constraint (mouse precision). | `ob.h.button.touch_target.min_size` (48px on mobile) |
+| **2.5.8** | AA | Target Size (Minimum) | Interactive components are expected to enforce a mobile touch target minimum exceeding the 24px WCAG minimum, once they ship a dedicated touch-target token. Desktop components deliberately have no minimum constraint (mouse precision). | `ob.h.button.touch_target.min_size` (planned, not shipped in this release) |
 
 ### Contrast Pairing Tables — The AA Minimum Rule
 
 The design system is required to be **WCAG 2.1 AA compliant**. This means **no foreground/background color pairing that falls below the AA contrast ratio (4.5:1 for normal text, 3:1 for large text and UI components) is allowed in any component**.
 
-To enforce this, documented **contrast pairing tables** are maintained in Figma:
-
-> [Tokens Preview — Contrast Pairing Tables](https://www.figma.com/design/51tJjbxBSBmjAmKjQmhsz3/Tokens-Preview?node-id=9559-21413)
-
-These tables show which fg/bg token combinations meet the AA threshold and which do not. They are the source of truth for valid pairings.
+To enforce this, documented **contrast pairing tables** are maintained internally in Figma, listing which fg/bg token combinations meet the AA threshold and which do not. They are the source of truth for valid pairings.
 
 **For maintainers**: Before wiring a foreground token to a background token in a component, check the pairing tables. If the combination is not listed as AA-passing, it must not be used.
 

@@ -1,6 +1,6 @@
 # Token Naming Conventions
 
-**Purpose**: Comprehensive naming standards and patterns for design tokens  
+**Purpose**: Naming standards and patterns for design tokens  
 **Audience**: Design system maintainers, developers, designers  
 **Related**: [Architecture](./02-architecture.md) | [Token Types](./04-token-types.md)
 
@@ -63,19 +63,19 @@ Tokens Studio uses camelCase for all unofficial (non-W3C) type identifiers:
 
 | `$type` value | Figma output | Rename? |
 |---|---|---|
-| `boxShadow` | **Effect Style** — must be exactly `boxShadow` | ❌ never |
-| `fontFamilies` | String variable | ❌ never |
-| `fontSizes` | Number variable | ❌ never |
-| `fontWeights` | Number variable | ❌ never |
-| `lineHeights` | Number variable | ❌ never |
-| `letterSpacing` | Number variable | ❌ never |
-| `paragraphSpacing` | Number variable | ❌ never |
-| `textCase` | String variable | ❌ never |
-| `textDecoration` | String variable | ❌ never |
-| `borderRadius` | Number variable | ❌ never |
-| `borderWidth` | Number variable | ❌ never |
-| `cubicBezier` | Not exported | ❌ never |
-| `composition` | Not exported (plugin-only) | ❌ never |
+| `boxShadow` | **Effect Style** — must be exactly `boxShadow` | never |
+| `fontFamilies` | String variable | never |
+| `fontSizes` | Number variable | never |
+| `fontWeights` | Number variable | never |
+| `lineHeights` | Number variable | never |
+| `letterSpacing` | Number variable | never |
+| `paragraphSpacing` | Number variable | never |
+| `textCase` | String variable | never |
+| `textDecoration` | String variable | never |
+| `borderRadius` | Number variable | never |
+| `borderWidth` | Number variable | never |
+| `cubicBezier` | Not exported | never |
+| `composition` | Not exported (plugin-only) | never |
 
 **`boxShadow` is particularly critical**: Tokens Studio exports `boxShadow` tokens as Figma **Effect Styles**, not Variables. If the `$type` is changed (e.g. to `box_shadow`), Tokens Studio does not recognise it and the Effect Style is not created. The path segment for shadow tokens uses `shadow` (snake_case) while the `$type` remains `boxShadow` — this is the documented mapping, not an error.
 
@@ -86,7 +86,7 @@ The token **path segment** for these types follows Oblique's snake_case rule as 
   "ob": {
     "s": {
       "shadow": {
-        "elevation_low": {
+        "md": {
           "$type": "boxShadow",
           "$value": { ... }
         }
@@ -102,35 +102,32 @@ Here `shadow` (path segment) is snake_case per Oblique convention; `boxShadow` (
 
 #### **Primitive Tokens** - Describe appearance
 - **Pattern**: `ob.p.{type}.{name}.{variation}`
-- **Examples**: `ob.p.color.red.50`, `ob.p.dimension.base`
+- **Examples**: `ob.p.color.red.50`, `ob.p.dimension.px.16`
 - **Rule**: Describe *what it looks like*
 
 #### **Semantic Tokens** - Describe intent  
 - **Pattern**: `ob.s{level}.{type}.{purpose}.{property}`
-- **Examples**: `ob.s.color.primary.bg`, `ob.s1.color.critical.fg`
+- **Examples**: `ob.s.color.neutral.fg.contrast_high`, `ob.s1.color.status.critical.fg`
 - **Rule**: Describe *why it's used*
 
 #### **Component Tokens** - Describe usage
-- **Pattern**: `ob.c.{component}.{element}.{property}.{variant}.{state}`
-- **Examples**: `ob.c.button.bg.primary.hover`, `ob.c.input.border.focus`
+- **Pattern**: `ob.c.{component}.{element}.{property}.{variant}.{state}` (custom components) or `ob.h.{element}.{property}.{variant}` (HTML elements)
+- **Examples**: `ob.h.link.color.hover`, `ob.c.{component}.border.focus`
 - **Rule**: Describe *component-specific styling*
 
 #### **Consumer Usage Names (Token-Safe)**
 For usage-facing naming that is read by system consumers, prefer concise underscore identifiers.
 
 - **Pattern**: `{usage_name}` using lowercase + underscore
-- **Approved icon usage names**:
-  - `static`
-  - `component`
-  - `inline_text`
+- **Example usage names** (for a component with multiple presentation contexts): `static`, `component`, `inline_text`
 - **Rule**: Keep technical variable modes and implementation details out of the primary usage label.
 
 For backward compatibility, existing technical token paths may still use legacy segment names.
 When this happens, document the mapping explicitly:
 
-- `static` -> `ob.c.icon.static.*`
-- `component` -> `ob.c.icon.component.*`
-- `inline_text` -> `ob.c.icon.inline_text.*`
+- `static` -> `ob.c.{component}.static.*`
+- `component` -> `ob.c.{component}.component.*`
+- `inline_text` -> `ob.c.{component}.inline_text.*`
 
 > **`inline_text` spacing note**: The horizontal gap between the icon and adjacent text is provided by a literal space character inserted by the consumer (`<ob-icon/> label`). This spacing is font-metric-driven (space glyph width) and cannot be tokenized. Token-driven gap control would require a flex container, which changes the layout contract from inline to block—not appropriate for inline text flow.
 
@@ -145,9 +142,9 @@ This separation ensures clean abstraction levels and future-proof naming:
 
 ### **Correct Pattern**
 ```
-ob.p.color.transparent     → rgba(0, 0, 0, 0) (visual appearance)
-ob.s.color.no_color      → references transparent (semantic intent)
-ob.c.button.bg.secondary  → references no_color (component usage)
+ob.p.color.basic.transparent  → transparent (visual appearance)
+ob.s.color.neutral.no_color   → references basic.transparent (semantic intent)
+ob.c.{component}.bg.secondary → references neutral.no_color (component usage)
 ```
 
 ### **Benefits**
@@ -158,9 +155,9 @@ ob.c.button.bg.secondary  → references no_color (component usage)
 - **Timeless naming**: Remains valid regardless of visual changes
 
 ### **Example Application**
-- **Primitive**: `transparent` → rgba(0, 0, 0, 0) *(what it looks like)*
+- **Primitive**: `transparent` → transparent *(what it looks like)*
 - **Semantic**: `no_color` → references transparent *(why it's transparent)*
-- **Component**: `button.bg.secondary` → references no_color *(semantic usage)*
+- **Component**: `{component}.bg.secondary` → references no_color *(semantic usage)*
 
 ---
 
@@ -206,26 +203,24 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 
 ### **Valid Reference Hierarchy**
 ```
-✔️ ob.h.button.bg.primary → {ob.s.color.primary}
-✔️ ob.s.color.primary → {ob.p.color.blue.500}
-✔️ ob.s2.dimension.lg → {ob.p.dimension.base} * {ob.g.multiplier.dimension.lg}
-✔️ ob.c.tooltip.spacing → {ob.s.spacing.xs}
-✔️ ob.s1.color.primary → {ob.p.color.blue.500} (lightness layer)
+ob.h.link.color.hover → {ob.s.color.interaction.contrast_levels.fg.low.inversity_normal}
+ob.s.color.interaction.contrast_levels.fg.low.inversity_normal → {ob.s2.color.interaction.contrast_levels.fg.low.inversity_normal}
+ob.s2.color.interaction.contrast_levels.fg.low.inversity_normal → {ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}
+ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal → {ob.p.color.cobalt.600}
 ```
 
 ### **Invalid Reference Patterns**
 ```
-❌ ob.h.button.bg.primary → {ob.p.color.blue.500}  (skipping semantic layer)
-❌ ob.p.color.blue.500 → {ob.s.color.primary}      (primitive referencing semantic)
-❌ ob.s2.color.text → {ob.s.color.primary}         (S2 referencing ob.s)
+ob.h.link.color.hover → {ob.p.color.cobalt.600}                                          (skipping semantic layer)
+ob.p.color.cobalt.600 → {ob.s.color.interaction.contrast_levels.fg.low.inversity_normal} (primitive referencing semantic)
+ob.s2.color.interaction.contrast_levels.fg.low.inversity_normal → {ob.s.color.interaction.contrast_levels.fg.low.inversity_normal} (S2 referencing ob.s)
 ```
 
 ### **Global Token Exception**
 ```
-✔️ ob.s.dimension.lg → {ob.g.multiplier.dimension.lg}
-✔️ ob.c.button.padding → {ob.g.spacing.unit} * 2
+ob.s.dimension.dynamic.ui_scale.element.md.px → roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.ui_scale.multiplier.dimension.md}, 2) * 1px
 ```
-Global tokens (`ob.g.*`) can be referenced from any layer as they provide system-wide foundation values.
+A semantic token may reference a global token (`ob.g.*`) directly alongside a primitive, in the same formula — global tokens are the one exception to the reference hierarchy, referenceable from any layer.
 
 ---
 
@@ -236,17 +231,16 @@ Style Dictionary preserves the underscore format in CSS variables, eliminating t
 ### **CSS Variable Output**
 ```scss
 /* Correct: Underscore format preserved */
-.button {
-  background-color: var(--ob-s-color-primary-bg-contrast_high-inversity_normal);
-  border-radius: var(--ob-c-button-border_radius-primary);
-  font-weight: var(--ob-s-typography-font_weight-emphasis_high);
+a {
+  color: var(--ob-h-link-color-default);
+  outline-color: var(--ob-s-color-interaction-focus_ring-inversity_normal);
 }
 ```
 
 ### **Token Studio → CSS Consistency**
-- **Token Studio**: `ob.s.color.primary.bg.contrast_high.inversity_normal`
-- **Figma Variable**: `ob.s.color.primary.bg.contrast_high.inversity_normal`  
-- **CSS Variable**: `--ob-s-color-primary-bg-contrast_high-inversity_normal`
+- **Token Studio**: `ob.s.color.neutral.fg.contrast_high.inversity_normal`
+- **Figma Variable**: `ob.s.color.neutral.fg.contrast_high.inversity_normal`  
+- **CSS Variable**: `--ob-s-color-neutral-fg-contrast_high-inversity_normal`
 
 Only the path separators change (`.` to `-`), while compound identifiers remain unchanged.
 
@@ -256,17 +250,17 @@ Only the path separators change (`.` to `-`), while compound identifiers remain 
 
 ### **Color Tokens**
 - **Structure**: `ob.{layer}.color.{color_name}.{shade}`
-- **Examples**: `ob.p.color.red.50`, `ob.s.color.primary.bg`
+- **Examples**: `ob.p.color.red.500`, `ob.s.color.neutral.fg.contrast_high.inversity_normal`
 - **Modes**: Handled through S1 lightness layer (light/dark)
 
 ### **Dimension Tokens**  
 - **Structure**: `ob.{layer}.dimension.{size_name}`
-- **Examples**: `ob.p.dimension.xs`, `ob.s.dimension.button_height`
+- **Examples**: `ob.p.dimension.px.16`, `ob.s.dimension.dynamic.ui_scale.element.md.px`
 - **Modes**: Handled through ui_scale modes (sm/md/lg)
 
 ### **Typography Tokens**
 - **Structure**: `ob.{layer}.typography.{property}.{variant}`
-- **Examples**: `ob.p.typography.font_size.lg`, `ob.s.typography.heading.h1`
+- **Examples**: `ob.p.font_size_unitless.400`, `ob.h.typography.context.h1.font_size`
 - **Modes**: Handled through typography-context (interface/prose)
 
 ---

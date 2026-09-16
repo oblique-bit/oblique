@@ -1,7 +1,8 @@
 # UI Scale Mode
-**Date:** September 17, 2025  
-**Version:** v1.0 - Extracted from combined density-size concept  
-**Status:** Done in https://github.com/oblique-bit/oblique/tree/tokens-develop-02.05
+
+**Component scaling through unified size modes for consistent component relationships**
+
+---
 
 ## Overview
 
@@ -38,7 +39,7 @@ This document outlines the **UI Scale** mode system for component scaling throug
 
 ---
 
-## Size system (done)
+## Size system
 
 ### **Definition**
 - **Triggers inset spacing** (inside components, mostly atoms and molecules)
@@ -90,17 +91,15 @@ Size functions as an overarching contextual layer that flows through the interfa
 Some components require **width = height** to maintain visual proportion:
 
 **Square components:**
-- **icon_holder**: Must maintain 1:1 aspect ratio for visual harmony
+- A component that wraps a single icon must maintain a 1:1 aspect ratio for visual harmony (no such component ships in this release)
 
-**Token structure:**
+**Token structure (once one ships), using the real `element` dimension category:**
 ```json
-"ob.c.icon_holder.size.standard": {
-  "value": "{ob.s.dimension.dynamic.surface.md.rem}",
-  "description": "Standard icon holder size, equivalent to 24px."
+"ob.c.{component}.size.standard": {
+  "$value": "{ob.s.dimension.dynamic.ui_scale.element.md.px} / 16 * 1rem"
 },
-"ob.c.icon_holder.size.mini": {
-  "value": "{ob.s.dimension.dynamic.surface.xs.rem}",
-  "description": "Mini icon holder size for compact contexts, equivalent to 16px."
+"ob.c.{component}.size.mini": {
+  "$value": "{ob.s.dimension.dynamic.ui_scale.element.xs.px} / 16 * 1rem"
 }
 ```
 

@@ -1,21 +1,21 @@
 # Lightness Mode (Light/Dark)
 
-**User preference mode switching between light and dark themes**
+**User preference mode switching between light and dark modes**
 
 ---
 
 ## **Overview**
 
-Lightness mode enables users to switch between light and dark interface themes based on their personal preferences, environmental conditions, or accessibility needs.
+Lightness mode enables users to switch between light and dark interface modes based on their personal preferences, environmental conditions, or accessibility needs.
 
 ## **Implementation**
 
 ### **Mode Files**
-- **`light.json`** - Standard light theme with bright backgrounds and dark text
-- **`dark.json`** - Dark theme with dark backgrounds and light text  
+- **`light.json`** - Standard light mode with bright backgrounds and dark text
+- **`dark.json`** - Dark mode with dark backgrounds and light text  
 
 ### **Token Architecture**
-Located in: `03_semantic/color/s1-lightness/`
+Located in: `03_semantic/color/s1_lightness/`
 
 **Structure Pattern:**
 ```json
@@ -88,12 +88,8 @@ Components → ob.s Semantic → S1 Lightness → Primitives
 The S1 lightness layer provides the foundation for all color mode switching. All other semantic layers (S2, ob.s) reference S1 tokens, ensuring consistent mode switching throughout the system.
 
 ### **Build Configuration**
-Mode files are selected during build process based on:
-1. User system preference detection
-2. Manual user selection (toggle)
-3. Application default setting
-4. Context-specific overrides
+The build produces both `light.json` and `dark.json` as separate, coexisting outputs — it does not pick one. Which mode applies is decided at runtime, by the `prefers-color-scheme` media query described above (or a manual toggle that overrides it).
 
 ---
 
-*Lightness mode forms the foundation of the color mode system, enabling accessible and user-preference-driven theme switching.*
+*Lightness mode forms the foundation of the color mode system, enabling accessible and user-preference-driven mode switching.*

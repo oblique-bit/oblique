@@ -13,123 +13,91 @@
 
 ---
 
-## **📚 Foundation (Theory & Architecture)**
+## **Foundation (Theory & Architecture)**
 
 ### **Core Concepts**
-- [**Tokenization Process**](./99-workflows/tokenization-process.md) - **START HERE** - Creating and assigning tokens in the design system
+- [**Tokenization Process**](./99-workflows/README.md) - **START HERE** - Creating and assigning tokens in the design system
 - [**Token Usage Guide**](./05-token-usage-guide.md) - **Which token do I use?** - Practical decision guide for color, dimension, and typography
 - [**Architecture**](./02-architecture.md) - Token structure, layer system, and architectural patterns
-- [**Token Naming**](./03-naming.md) - Comprehensive naming conventions, patterns, and guidelines  
+- [**Token Naming**](./03-naming.md) - Naming conventions, patterns, and guidelines
 - [**System Requirements**](./01-system-requirements.md) - Tooling compatibility priorities and cross-platform analysis
-- **Modes System** - S1/S2/S3 semantic levels and mode switching
+- **Modes System** - S1/S2/ob.s semantic levels and mode switching
 
 ---
 
-## **⚡ Workflows (Practice by Role)**
+## **Workflows (Practice by Role)**
 
-### **🔄 Core Process**
-- **Complete Workflows** - All token workflows organized by role and process
-
-### **🎨 For Designers**
-- **Designer Workflow** - Complete Figma + Tokens Studio process
-  - Token application checklist
-  - Layer naming standards  
-  - Validation requirements
-  - Common violation patterns
-
-### **👩‍💻 For Developers**  
-- **Token Assignment Guidelines** - How to implement tokens in code
-  - S1/S2/S3 consumption rules
-  - Interactive vs. non-interactive components
-  - Code generation patterns
-
-### **🔧 For Maintainers**
+### **For Maintainers**
+- [**Maintainer Workflows**](./99-workflows/README.md) - Workflows and processes for design system maintainers
+- [**Token Description Guidelines**](./99-workflows/token-description-guidelines.md) - How to write a token's `$description` field
 - [**System Requirements**](./01-system-requirements.md) - Tooling compatibility and priorities
 - [**Architecture**](./02-architecture.md) - Token structure and hierarchy rules
 - [**Token Naming**](./03-naming.md) - Naming patterns and conventions
 
 ---
 
-## **📖 References (Documentation & Standards)**
+## **References (Documentation & Standards)**
 
-### **🎯 Token Types**
-- [**Global Tokens**](./01-types/01-global-tokens.md) - System-wide foundation tokens
-- [**Primitive Tokens**](./01-types/02-primitive-tokens.md) - Foundation values and architecture
-- [**Semantic Tokens**](./01-types/03-semantic-tokens.md) - S1/S2/S3 semantic layer system
-- [**Semantic Typography**](./01-types/04-semantic-typography-tokens.md) - Text styling and hierarchy
-- [**Semantic Elevation**](./01-types/05-semantic-elevation-tokens.md) - Surface stacking and shadow tokens
-- [**Typography Foundation**](./01-types/06-typography-foundation.md) - Typography system foundation
-- [**Component Tokens**](./01-types/07-component-tokens.md) - Component-specific token patterns
-- [**Colors**](./01-types/08-color-tokens/) - Complete color system documentation
-  - [Colors Overview](./01-types/08-color-tokens/00-colors-overview.md)
-  - [Primitive Colors](./01-types/08-color-tokens/01-colors-primitive.md) 
-  - [Semantic Colors](./01-types/08-color-tokens/03-colors-semantic.md)
-  - [Brand](./01-types/08-color-tokens/05-colors-semantic-brand.md) | [Neutral](./01-types/08-color-tokens/04-colors-semantic-neutral.md) | [Interaction](./01-types/08-color-tokens/06-colors-semantic-interaction.md) | [Status](./01-types/08-color-tokens/07-colors-semantic-status.md)
+### **Token Types**
 
-### **🌓 Modes**
-- **Modes Overview** - Complete mode system documentation
-- **Lightness Mode** - Light/dark theme switching
-- **Emphasis Mode** - High/low emphasis design patterns
-- **UI Scale Mode** - Component sizing variations (sm/md/lg)
-- **Typography-Context Mode** - Typography scaling for different contexts
-- **Density Mode** - Interface density modes (compact/comfortable/spacious)
-- **Responsiveness** - Viewport modes and responsive implementation
+The token docs are sorted along two axes. **Tiers** say where a token sits in the reference chain. **Categories** say what kind of value it holds, and cut across every tier.
 
-### **🔧 Standards & Guidelines**
+#### **Tiers**
+- [**Global Tokens**](./01-types/01-tiers/01-global-tokens.md) - System-wide foundation tokens
+- [**Primitive Tokens**](./01-types/01-tiers/02-primitive-tokens.md) - Foundation values and architecture
+- [**Semantic Tokens**](./01-types/01-tiers/03-semantic-tokens.md) - S1/S2/ob.s semantic layer system
+- [**Component Tokens**](./01-types/01-tiers/04-component-tokens.md) - The top tier, in two peer branches: `ob.c.*` custom Oblique components and `ob.h.*` native HTML elements
+
+#### **Categories**
+- [**Colors**](./01-types/02-categories/01-color-tokens/) - Complete color system documentation
+  - [Colors Overview](./01-types/02-categories/01-color-tokens/00-colors-overview.md)
+  - [Primitive Colors](./01-types/02-categories/01-color-tokens/01-colors-primitive.md) | [Primitive Consumption](./01-types/02-categories/01-color-tokens/02-colors-primitive-consumption.md)
+  - [Semantic Colors](./01-types/02-categories/01-color-tokens/03-colors-semantic.md)
+  - [Brand](./01-types/02-categories/01-color-tokens/05-colors-semantic-brand.md) | [Neutral](./01-types/02-categories/01-color-tokens/04-colors-semantic-neutral.md) | [Interaction](./01-types/02-categories/01-color-tokens/06-colors-semantic-interaction.md) | [Status](./01-types/02-categories/01-color-tokens/07-colors-semantic-status.md) | [Free](./01-types/02-categories/01-color-tokens/08-colors-semantic-free.md)
+- [**Dimension Tokens**](./01-types/02-categories/02-dimension-tokens.md) - Sizing and spacing, and how they resolve per mode
+- [**Typography Tokens**](./01-types/02-categories/03-typography-tokens.md) - The rem base, the semantic scale, and the HTML text styles
+
+### **Modes**
+- [**Modes Overview**](./02-modes/00-modes-overview.md) - Complete mode system documentation
+- [**Lightness Mode**](./02-modes/01-lightness.md) - Light/dark mode switching
+- [**Emphasis Mode**](./02-modes/02-emphasis.md) - High/low emphasis design patterns
+- [**UI Scale Mode**](./02-modes/03-ui-scale.md) - Component sizing variations (sm/md/lg)
+- [**Typography-Context Mode**](./02-modes/04-typography-context.md) - Typography scaling for different contexts
+- [**Density Mode**](./02-modes/05-density.md) - Interface density modes (compact/standard/spacious)
+- [**Responsiveness**](./02-modes/06-viewport.md) - Viewport modes and responsive implementation
+
+### **Standards & Guidelines**
 - [**Architecture**](./02-architecture.md) - Complete architectural patterns and layer system
 - [**Token Naming**](./03-naming.md) - Complete naming conventions and compound units
-- **Token Description Guidelines** - Documentation standards for maintainers
+- [**Token Description Guidelines**](./99-workflows/token-description-guidelines.md) - Documentation standards for maintainers
 
 ---
 
 ---
 
-## **⚡ Most Common Tasks**
+## **Most Common Tasks**
 
 | **Task** | **Documentation** | **Quick Action** |
 |---|---|---|
 | **Which token do I use?** | [Token Usage Guide](./05-token-usage-guide.md) | Decision trees for color, dimension, typography |
 | **Apply tokens in Figma** | Designer Workflow | Use Tokens Studio plugin, never Figma right panel |
-| **Implement tokens in code** | Token Assignment Guidelines | Use S3 semantic tokens for components |
-| **Understand color hierarchy** | [Colors Overview](./01-types/08-color-tokens/00-colors-overview.md) | Check S1→S2→S3 semantic chain |
-| **Fix broken token references** | [Architecture](./02-architecture.md) | Verify S1/S2/S3 layer structure |
+| **Implement tokens in code** | Token Assignment Guidelines | Use ob.s semantic tokens for components |
+| **Understand color hierarchy** | [Colors Overview](./01-types/02-categories/01-color-tokens/00-colors-overview.md) | Check S1→S2→ob.s semantic chain |
+| **Fix broken token references** | [Architecture](./02-architecture.md) | Verify S1/S2/ob.s layer structure |
 | **Understand naming patterns** | [Token Naming](./03-naming.md) | Review compound units and conventions |
-| **Create new tokens** | [Tokenization Process](./99-workflows/tokenization-process.md) | Ensure Figma compatibility first |
+| **Create new tokens** | [Tokenization Process](./99-workflows/README.md) | Ensure Figma compatibility first |
 | **Mode customization** | Modes System | Modify S1 semantic level files |
 
 ---
 
-## **🔍 Validation & Quality**
+## **Validation & Quality**
 
 Use these validation scripts to ensure token integrity:
 
 ```bash
-# Complete validation (recommended)
-node scripts-custom/validate-all.js
-
-# Component token validation  
-node scripts-custom/validate-all-components.js
-
-# Semantic layer structure validation
-node scripts-custom/validate-semantic-mirroring.js
-
-# Token reference tracing
-npm run trace-token "ob.c.button.primary.bg"
-npm run search-tokens "button disabled"
+# Cross-page health check (recommended)
+node scripts-custom/figma-doc-builders/validate-all.js
 ```
-
----
-
-## **📋 Current Status**
-
-**Token Structure**: Post-OUI-4001 S1/S2/S3 hierarchy implemented  
-**Documentation**: Reorganized by user role and workflow  
-**Tooling Priority**: Figma > Code > Tokens Studio > W3C standards  
-**Validation**: Automated scripts ensure reference integrity  
-
-**Last Updated**: October 30, 2025  
-**Architecture Version**: Post-OUI-4001  
-**Status**: Production Ready  
 
 ---
 

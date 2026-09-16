@@ -2,7 +2,7 @@
 
 **Purpose**: Core architectural principles and token structure for the Oblique Design System  
 **Audience**: Design system maintainers, token architects, technical leads  
-**Related**: [Token Naming](./03-naming.md) | [System Requirements](./01-system-requirements.md) | [Tokenization Process](./99-workflows/tokenization-process.md)
+**Related**: [Token Naming](./03-naming.md) | [System Requirements](./01-system-requirements.md) | [Tokenization Process](./99-workflows/README.md)
 
 ---
 
@@ -12,7 +12,7 @@
 **"100% consistency between design and code environments"**
 
 **Implementation:**
-- **Same Token Names**: `ob.p.color.red.50` exists identically in both code and Figma
+- **Same Token Names**: `ob.p.color.steelblue.600` exists identically in both code and Figma
 - **Same Token Values**: `#2379A4` appears exactly the same in both environments  
 - **Same Token Structure**: Hierarchical organization mirrors across platforms
 - **Synchronized Updates**: Token changes propagate simultaneously to both environments
@@ -42,7 +42,7 @@ Foundation Layers:
   p  → Primitive (raw foundation values)
 
 Semantic Layers:
-  s1 → Lightness (light/dark theme switching)
+  s1 → Lightness (light/dark mode switching)
   s2 → Emphasis (high/low emphasis variations)  
   s  → Compilation (complete semantic colors)
 
@@ -55,7 +55,7 @@ Application Layers:
 1. **Components consume ob.s** - Primary consumption layer for component tokens
 2. **Never consume primitives directly** - Components must never reference `ob.p.*` tokens
 3. **S2/ob.s reference S1 directly** - Simplified reference chain: S2→S1→Primitive, ob.s→S1→Primitive  
-4. **S1 handles theme switching** - Light/dark themes resolved at S1 level
+4. **S1 handles lightness mode switching** - Light/dark values resolved at S1 level
 5. **Global tokens exception** - `ob.g.*` tokens can be referenced from any level
 
 ### **Token Naming**
@@ -66,7 +66,7 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 ## **Semantic Layer System (S1/S2/ob.s)**
 
 ### **S1: Lightness Layer**
-- **Purpose**: Light/dark theme switching
+- **Purpose**: Light/dark mode switching
 - **Files**: `light.json`, `dark.json`  
 - **References**: Direct primitive consumption
 - **Usage**: Referenced by S2 and ob.s, never consumed directly by components
@@ -91,22 +91,22 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 
 ### **Color Tokens**
 - **Structure**: `ob.{layer}.color.{color_name}.{shade}`
-- **Examples**: `ob.p.color.red.50`, `ob.s.color.primary.bg`
+- **Examples**: `ob.p.color.red.50`, `ob.s.color.neutral.fg.contrast_high.inversity_normal`
 - **Modes**: Handled through S1 lightness layer (light/dark)
 
 ### **Spacing Tokens**  
 - **Structure**: `ob.{layer}.spacing.{size}`
-- **Examples**: `ob.s2.spacing.md`, `ob.c.button.spacing.padding`
+- **Examples**: `ob.s.dimension.dynamic.ui_scale.spacing.md.px`, `ob.c.{component}.spacing.padding`
 - **Scaling**: Mathematical multipliers prevent token explosion
 
 ### **Typography Tokens**
 - **Structure**: `ob.{layer}.typography.{category}.{size}`
-- **Examples**: `ob.s2.typography.heading.lg`, `ob.h.button.typography.label`
+- **Examples**: `ob.s.typography.scale.dynamic.font_size.lg`, `ob.h.button.typography.font_size` (planned, not shipped in this release)
 - **Foundation**: REM-based with 16px base font size
 
 ### **Dimension/Sizing Tokens**
 - **Structure**: `ob.{layer}.dimension.{category}.{size}`  
-- **Examples**: `ob.s2.dimension.component.md`, `ob.c.button.dimension.height`
+- **Examples**: `ob.s.dimension.dynamic.ui_scale.element.md.rem`, `ob.c.{component}.dimension.height`
 - **Modes**: Support density and ui_scale scaling
 
 ---
@@ -118,14 +118,14 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 
 **Structure Pattern**:
 ```
-ob.g.multiplier.{category}.{size}
+ob.g.mode_collection.{mode_collection}.multiplier.{category}.{size}
 ```
 
 **Examples**:
 ```
-ob.g.multiplier.dimension.sm    → 0.8  (80% scaling)
-ob.g.multiplier.dimension.md    → 1.0  (100% baseline)  
-ob.g.multiplier.dimension.lg    → 1.2  (120% scaling)
+ob.g.mode_collection.ui_scale.multiplier.dimension.sm    → 0.8   (80% scaling)
+ob.g.mode_collection.ui_scale.multiplier.dimension.md    → 1     (100% baseline)  
+ob.g.mode_collection.ui_scale.multiplier.dimension.lg    → 1.25  (125% scaling)
 ```
 
 **Usage**: Mathematical scaling maintains relationships while enabling modes
@@ -133,7 +133,7 @@ ob.g.multiplier.dimension.lg    → 1.2  (120% scaling)
 ### **System Configuration**
 - **Viewport settings**: Breakpoints and responsive behavior
 - **Base values**: System-wide foundations (font size, spacing base)
-- **Theme configuration**: Mode switching and theme management
+- **Mode configuration**: Mode switching and management
 
 ---
 
@@ -144,8 +144,8 @@ ob.g.multiplier.dimension.lg    → 1.2  (120% scaling)
 
 **Example**:
 ```
-File: src/lib/themes/01_global/multipliers/dimension/md.json
-Token Name: ob.g.multiplier.dimension.md
+File: src/lib/themes/01_global/mode_collection/ui_scale.json
+Token Name: ob.g.mode_collection.ui_scale.multiplier.dimension.md
 ```
 
 **Rule**: You cannot create tokens by knowing only file paths. You must understand the documented architecture patterns and naming conventions.
@@ -172,35 +172,37 @@ Token names are for:
 1. **Three Core Layers**: The architecture consists of three primary layers:
    - **Primitives (`ob.p`)**: The single source of truth for raw, context-free values
    - **Semantics (`ob.s`)**: The contextual layer that maps primitives to specific use cases  
-   - **Component Themes (`ob.h`, `ob.c`)**: The consumption layer that applies semantic tokens to UI components
+   - **Component Layer (`ob.h`, `ob.c`)**: The consumption layer that applies semantic tokens to UI components
 
 2. **Unidirectional Flow**: The token flow is strictly unidirectional: `Primitives` -> `Semantics` -> `Components`. A layer can only reference the layer directly above it.
 
-3. **No Calculations in Consumer Layers**: All calculations, particularly those involving 01_global multipliers (`ob.g.*`), **must** occur exclusively within the semantic layer (`ob.s`). Component theme layers (`ob.h`, `ob.c`) are forbidden from performing calculations and must consume pre-defined `static` or `dynamic` semantic tokens.
+3. **No Calculations in Consumer Layers**: All calculations, particularly those involving global-tier (01_global) multipliers (`ob.g.*`), **must** occur exclusively within the semantic layer (`ob.s`). Component layers (`ob.h`, `ob.c`) are forbidden from performing calculations and must consume pre-defined `static` or `dynamic` semantic tokens.
 
 ### **Architecture Examples**
 
-#### ✔️ Do: Consume pre-defined semantic tokens in components
+#### Do: Consume pre-defined semantic tokens in components
 Component-level tokens should directly reference a token from the semantic layer (`ob.s`). This keeps the component layer clean and free of logic.
 
 ```json
-// In: ob.h.button.json (Component Theme Layer)
+// In: 05_html/link/link.json (Component Layer)
 {
-  "min_height": {
-    "$value": "{ob.s.dimension.dynamic.container.xs.rem}"
+  "color": {
+    "hover": {
+      "$value": "{ob.s.color.interaction.contrast_levels.fg.low.inversity_normal}"
+    }
   }
 }
 ```
 
-#### ❌ Don't: Perform calculations in the component layer
-Calculations using 01_global multipliers (`ob.g.*`) are strictly forbidden at the component (`ob.h`, `ob.c`) level. All calculations must be done in the semantic layer.
+#### Don't: Perform calculations in the component layer
+Calculations using global-tier (01_global) multipliers (`ob.g.*`) are strictly forbidden at the component (`ob.h`, `ob.c`) level. All calculations must be done in the semantic layer.
 
 ```json
-// In: ob.h.button.json (Component Theme Layer)
+// In: 05_html/link/link.json (Component Layer)
 // THIS IS FORBIDDEN!
 {
   "font_size": {
-    "$value": "{ob.p.fontSizeUnitless.400} * {ob.g.multiplier.typography}"
+    "$value": "{ob.p.font_size_unitless.400} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
   }
 }
 ```
@@ -225,11 +227,7 @@ Most tokens resolve to a CSS custom property — the styling output the componen
 
 Defines the seven mode axes: lightness, emphasis, ui_scale, density, typography_context, motion, viewport. Per mode it holds the `selector` — the CSS class the application adds to activate the mode (`.ob-lightness-dark`). The `ui_scale` and `density` collections also carry the multipliers; the `viewport` collection carries the breakpoints and per-range bounds. The build reads these to discover the modes and to name the CSS mode blocks; in Figma each collection becomes a variable collection. The tokens are not themselves emitted as custom properties.
 
-The single-mode base groups `static` and `semantic` do **not** have files under `mode_collection/`. Token Studio's single-mode-group semantics already encode them as always-on, and the build pipeline identifies them via set-difference: `$themes.json` groups with no matching `mode_collection/<axis>.json` file are always-on base themes.
-
-### **Component settings — `ob.g.component.*`**
-
-Per-component, per-mode overrides applied at the global tier. Each entry pins a component to a fixed mode regardless of the active one — for example `ob.g.component.footer.lightness` holds `"dark"`, keeping the footer dark whatever the active lightness mode.
+The single-mode base groups `static` and `semantic` do **not** have files under `mode_collection/`. Token Studio's single-mode-group semantics already encode them as always-on, and the build pipeline identifies them via set-difference: `$themes.json` groups with no matching `mode_collection/<axis>.json` file are always-on base groups.
 
 ### **Documentation nodes — `token_family_docs`**
 
@@ -281,7 +279,7 @@ Each token family carries one `token_family_docs` node holding the family's huma
 
 ### **Purpose and location**
 
-- The node lives **inside the token file that owns the family**, at the family's namespace root. For `ob.s.color.neutral` the node is `ob.s.color.neutral.token_family_docs` inside `03_semantic/color/compiled.json`; for `ob.p.color` it is inside `02_primitive/color.json`. It is **not** a separate file or folder.
+- The node lives **inside the token file that owns the family**, at the family's namespace root. For `ob.g.mode_collection.lightness` the node is `ob.g.mode_collection.lightness.token_family_docs` inside `01_global/mode_collection/lightness.json`. It is **not** a separate file or folder. (A handful of files — `03_semantic/color/compiled.json` among them — use a `_docs.token_family_info` node instead; check the file before assuming which one applies.)
 - It is identified by its **key name**, `token_family_docs`.
 - It holds only a `$description`. It has **no `$value`** — so it is not a token, and the build, resolver and exporters skip it automatically. It carries **no `$extensions`**.
 

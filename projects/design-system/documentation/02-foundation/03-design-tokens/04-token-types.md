@@ -16,7 +16,7 @@ A token type appears in two places:
 
 **1. In the JSON source — as `$type`**
 
-Every token object in Oblique's theme files carries a `$type` field:
+Every token object in Oblique's token files carries a `$type` field:
 
 ```json
 {
@@ -34,9 +34,9 @@ This annotation is the authoritative declaration. It controls how Tokens Studio 
 The same type must also appear as a segment in the token key itself (the `ob.{layer}.{type}.{...path}` structure). This ensures the type is readable without opening the JSON:
 
 ```
-ob.c.button.color.background.primary
-             ↑
-             type = color
+ob.h.link.color.default
+        ↑
+        type = color
 ```
 
 See [Requirement R1](#r1--type-must-appear-in-the-token-path) for the full rule.
@@ -74,11 +74,11 @@ The `$type` field in JSON is only visible inside the source file. Design system 
 **Requirement**: Every token path must contain the type as a path segment (the `{type}` position: `ob.{layer}.{type}.{...path}`).
 
 ```
-ob.c.button.color.background.primary       ✅  type is "color"
-ob.c.button.dimension.min_height           ✅  type is "dimension"
-ob.c.button.spacing.padding_inline         ✅  type is "spacing"
-ob.c.button.bg.primary                     ❌  type "color" is not readable from the path
-ob.c.button.min_height                     ❌  type cannot be inferred
+ob.h.link.color.default                    OK     type is "color"
+ob.h.link.spacing.gap                      OK     type is "spacing"
+ob.h.link.motion.duration                  OK     type is "motion"
+ob.h.link.default                          wrong  type "color" is not readable from the path
+ob.h.link.gap                              wrong  type cannot be inferred
 ```
 
 This makes the token path self-describing and reduces reliance on tooling to understand token intent.
@@ -92,7 +92,8 @@ Defined mappings:
 | Path segment | `$type` value(s) | Notes |
 |--------------|------------------|-------|
 | `color` | `color` | Direct match |
-| `dimension` | `dimension`, `sizing`, `spacing`, `borderRadius`, `borderWidth` | All TS unofficial types that convert to `dimension` |
+| `dimension` | `dimension`, `sizing`, `borderRadius`, `borderWidth` | All TS unofficial types that convert to `dimension` |
+| `spacing` | `spacing` | Direct match. Standalone path segment — see [Dimension & Spacing](#dimension--spacing-the-size-vs-sizing-issue) below; Tokens Studio still converts it to `dimension` on export. |
 | `typography` | `typography`, `fontSizes`, `fontWeights`, `fontFamilies`, `lineHeights`, `letterSpacing`, `paragraphSpacing`, `textCase`, `textDecoration`, `textAlign` | Typography composite or its sub-properties |
 | `duration` | `duration` | Motion timing |
 | `easing` | `cubicBezier` | Motion curves |
@@ -143,7 +144,7 @@ The table below lists all types currently used in Oblique token files (via `$typ
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | Notes |
 |-----------------|----------|---------------|-----------------|-------|
 | `color` | `color` (§8.1) | Native | **Color** | Full round-trip support. Handles light/dark via mode aliasing. |
-| `boxShadow` | `shadow` (§9.5) | Unofficial composite | **Effect Style** ⚠️ | Exported as Figma Effect Style, not a Variable. The `$type` identifier must be exactly `boxShadow` (camelCase) — Tokens Studio uses this string to route the token into the Effect Style pipeline. Renaming it breaks export silently. |
+| `boxShadow` | `shadow` (§9.5) | Unofficial composite | **Effect Style** | Exported as Figma Effect Style, not a Variable. The `$type` identifier must be exactly `boxShadow` (camelCase) — Tokens Studio uses this string to route the token into the Effect Style pipeline. Renaming it breaks export silently. |
 | `border` | `border` (§9.3) | Supported composite | Not supported as composite | Border width and color can each bind to Number/Color variables. Style property cannot. |
 
 ---
@@ -154,24 +155,23 @@ The table below lists all types currently used in Oblique token files (via `$typ
 
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | In Oblique | Notes |
 |-----------------|----------|---------------|-----------------|------------|-------|
-| `dimension` | `dimension` (§8.2) | Native | **Number** | 414 tokens | Official. Value must include `px` or `rem` unit. |
-| `spacing` | Not specified | Unofficial → `dimension` | **Number** | 154 tokens | Tokens Studio–specific. Auto-converted to `dimension` by sd-transforms. Figma binds as Number. |
-| `sizing` | Not specified | Unofficial → `dimension` | **Number** | 16 tokens | Tokens Studio–specific. Auto-converted to `dimension`. Path-level segment `sizing` in Oblique is a naming inconsistency — see note below. |
-| `borderRadius` | Not specified | Unofficial → `dimension` | **Number** | 20 tokens | Unofficial. Converted to `dimension` on export. |
-| `borderWidth` | Not specified | Unofficial → `dimension` | **Number** | 13 tokens | Unofficial. Converted to `dimension` on export. |
-| `number` | (§ JSON number) | Native | **Number** | 34 tokens | Unitless. Used for multipliers, ratios, opacity. W3C treats this as a basic JSON type, not a named type. |
+| `dimension` | `dimension` (§8.2) | Native | **Number** | 281 tokens | Official. Value must include `px` or `rem` unit. |
+| `spacing` | Not specified | Unofficial → `dimension` | **Number** | 76 tokens | Tokens Studio–specific. Auto-converted to `dimension` by sd-transforms. Figma binds as Number. |
+| `sizing` | Not specified | Unofficial → `dimension` | **Number** | 2 tokens | Tokens Studio–specific. Auto-converted to `dimension`. Path-level segment `sizing` in Oblique is a naming inconsistency — see note below. |
+| `borderRadius` | Not specified | Unofficial → `dimension` | **Number** | 5 tokens | Unofficial. Converted to `dimension` on export. |
+| `borderWidth` | Not specified | Unofficial → `dimension` | **Number** | 8 tokens | Unofficial. Converted to `dimension` on export. |
+| `number` | (§ JSON number) | Native | **Number** | 44 tokens | Unitless. Used for multipliers, ratios, opacity. W3C treats this as a basic JSON type, not a named type. |
 
 #### `sizing` vs `size` decision
 
 Two distinct uses of `size`/`sizing` exist in Oblique token paths today:
 
-- **`$type: sizing`** — the JSON token type set on 16 tokens. This is a Tokens Studio unofficial type, equivalent to `dimension`.
-- **`.sizing.` path segment** — used in badge, infobox, popover, and hr tokens as the `{type}` segment to mean "the size of an element as a whole".
-- **`.size.` path segment** — used in icon tokens as the `{type}` segment meaning the same thing.
+- **`$type: sizing`** — a Tokens Studio unofficial type, equivalent to `dimension`.
+- **`.sizing.` / `.size.` path segment** — both have been used as the `{type}` segment to mean "the size of an element as a whole", inconsistently, on components that no longer ship in this release.
 
 Path segments and `$type` values are separate concerns. The inconsistency to fix is in the **path segments** (`.size.` vs `.sizing.`), not in the `$type` value.
 
-**Recommendation**: Standardize path segment to `dimension` to align with both W3C and Tokens Studio (e.g. `ob.c.icon.component.dimension.lg`). This mirrors `.spacing.` and `.border_radius.` already used elsewhere. The `sizing` and `spacing` unofficial types can remain as `$type` values if needed for Tokens Studio compatibility during transition, but should be migrated to `dimension` over time.
+**Recommendation**: Standardize path segment to `dimension` to align with both W3C and Tokens Studio (e.g. `ob.c.{component}.dimension.lg`) for any future component that needs one. This mirrors `.spacing.` and `.border_radius.` already used elsewhere. The `sizing` and `spacing` unofficial types can remain as `$type` values if needed for Tokens Studio compatibility during transition, but should be migrated to `dimension` over time.
 
 ---
 
@@ -179,15 +179,15 @@ Path segments and `$type` values are separate concerns. The inconsistency to fix
 
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | In Oblique | Notes |
 |-----------------|----------|---------------|-----------------|------------|-------|
-| `typography` | `typography` (§9.7) | Supported composite | **Text Style** | 142 tokens | Figma cannot bind a full typography composite to a Variable. Tokens Studio exports it as a Figma Text Style. Individual sub-properties (fontSize, fontWeight, etc.) can each also bind to Number or String variables when exported separately. |
-| `fontSizes` | `dimension` (fontSize sub-value) | Unofficial → `dimension` | **Number** | 86 tokens | Tokens Studio name. Official W3C sub-value. Figma binds as Number. |
-| `fontWeights` | `fontWeight` (§8.4) | Unofficial → `fontWeight` | **Number** (numeric only) | 48 tokens | Figma supports font weight as Number variable. String weights (e.g. "bold") are not bindable as variables. |
-| `fontFamilies` | `fontFamily` (§8.3) | Unofficial → `fontFamily` | **String** | 28 tokens | Figma binds as String. Must match exact installed font name. |
-| `lineHeights` | Not specified | Unofficial → `number` | **Number** | 91 tokens | Not in W3C spec. Figma binds as Number (interpreted as `%`). |
-| `letterSpacing` | `dimension` (sub-value) | Unofficial → `dimension` | **Number** | 67 tokens | Figma interprets letter spacing in `px`, not `%`. |
+| `typography` | `typography` (§9.7) | Supported composite | **Text Style** | 78 tokens | Figma cannot bind a full typography composite to a Variable. Tokens Studio exports it as a Figma Text Style. Individual sub-properties (fontSize, fontWeight, etc.) can each also bind to Number or String variables when exported separately. |
+| `fontSizes` | `dimension` (fontSize sub-value) | Unofficial → `dimension` | **Number** | 88 tokens | Tokens Studio name. Official W3C sub-value. Figma binds as Number. |
+| `fontWeights` | `fontWeight` (§8.4) | Unofficial → `fontWeight` | **Number** (numeric only) | 45 tokens | Figma supports font weight as Number variable. String weights (e.g. "bold") are not bindable as variables. |
+| `fontFamilies` | `fontFamily` (§8.3) | Unofficial → `fontFamily` | **String** | 25 tokens | Figma binds as String. Must match exact installed font name. |
+| `lineHeights` | Not specified | Unofficial → `number` | **Number** | 89 tokens | Not in W3C spec. Figma binds as Number (interpreted as `%`). |
+| `letterSpacing` | `dimension` (sub-value) | Unofficial → `dimension` | **Number** | 65 tokens | Figma interprets letter spacing in `px`, not `%`. |
 | `paragraphSpacing` | Not specified | Unofficial → `dimension` | **Number** | 79 tokens | Figma-specific text property. Not in W3C spec. |
-| `textCase` | Not specified | Unofficial → `string` | **String** | 14 tokens | Not in W3C spec. |
-| `textDecoration` | Not specified | Unofficial → `string` | **String** | 13 tokens | Not in W3C spec. |
+| `textCase` | Not specified | Unofficial → `string` | **String** | 12 tokens | Not in W3C spec. |
+| `textDecoration` | Not specified | Unofficial → `string` | **String** | 10 tokens | Not in W3C spec. |
 | `textAlign` | Not specified | Unofficial → `string` | Not supported | 3 tokens | No Figma variable binding. Applied via Style or code only. |
 
 ---
@@ -196,8 +196,8 @@ Path segments and `$type` values are separate concerns. The inconsistency to fix
 
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | In Oblique | Notes |
 |-----------------|----------|---------------|-----------------|------------|-------|
-| `duration` | `duration` (§8.5) | Native | Not supported | 20 tokens | Official W3C type. Value must include `ms` unit. Figma has no variable type for duration — applied via code only. |
-| `cubicBezier` | `cubicBezier` (§8.6) | Native | Not supported | 10 tokens | Official W3C type. Array of 4 numbers defining a timing curve. No Figma variable binding. |
+| `duration` | `duration` (§8.5) | Native | Not supported | 16 tokens | Official W3C type. Value must include `ms` unit. Figma has no variable type for duration — applied via code only. |
+| `cubicBezier` | `cubicBezier` (§8.6) | Native | Not supported | 9 tokens | Official W3C type. Array of 4 numbers defining a timing curve. No Figma variable binding. |
 
 ---
 
@@ -205,10 +205,9 @@ Path segments and `$type` values are separate concerns. The inconsistency to fix
 
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | In Oblique | Notes |
 |-----------------|----------|---------------|-----------------|------------|-------|
-| `composition` | Not specified | Unofficial (composite) | Not exported | 78 tokens | Tokens Studio–specific composite type that bundles multiple layer properties (fill, border, shadow) into one token. No Figma Variable or Style is created. The plugin applies the bundled values directly to a selected Figma layer when used interactively. Deprecated in Tokens Studio v2+ — migration to individual typed tokens is queued. |
-| `other` | Not specified | Unofficial | Not supported | 172 tokens | Tokens Studio's type for values with no styling meaning. Correct for the *Configuration & documentation tokens* — mode selectors, component settings, `token_family_docs`. A problem only when used as a lazy catch-all on a token that has a real styling value. |
-| `text` | (§ JSON string) | Unofficial → `string` | **String** | 7 tokens | Tokens Studio label for string/text tokens. |
-| `asset` | Not specified | Unofficial | Not supported | 13 tokens | URL-based asset references. Not in W3C spec. No Figma variable binding. |
+| `other` | Not specified | Unofficial | Not supported | 93 tokens | Tokens Studio's type for values with no styling meaning. Correct for the *Configuration & documentation tokens* — mode selectors, component settings, `token_family_docs`. A problem only when used as a lazy catch-all on a token that has a real styling value. |
+| `text` | (§ JSON string) | Unofficial → `string` | **String** | 31 tokens | Tokens Studio label for string/text tokens. |
+| `asset` | Not specified | Unofficial | Not supported | 5 tokens | URL-based asset references. Not in W3C spec. No Figma variable binding. |
 | `boolean` | (§ JSON boolean) | Native | **Boolean** | 0 tokens | Used for Figma layer visibility and variant props. W3C treats as basic JSON type. |
 
 ---
@@ -222,7 +221,6 @@ Composite tokens cannot map to Figma Variables (Figma only accepts single-value 
 | `typography` | **Text Style** | Tokens Studio creates a named Figma Text Style. Each sub-property of the composite (fontFamily, fontWeight, fontSize, …) is mapped to the Style. Sub-properties can additionally be exported as individual Number/String variables when exported separately. |
 | `boxShadow` | **Effect Style** | Tokens Studio creates a named Figma Effect Style. The composite value (offsetX, offsetY, blur, spread, color) is applied as a drop shadow or inner shadow effect. **The `$type` identifier must be exactly `boxShadow`** — Tokens Studio uses this exact string to identify Effect Style candidates. |
 | `border` | No Style | Border composites are not exportable as a named Figma Style. Individual sub-values (border-width, border-color) can be exported as Number/Color variables. |
-| `composition` | None (plugin-only) | Not exported as a Variable or Style. The plugin applies the bundled property values directly to a Figma layer when the user applies the token interactively. No named artefact is created in Figma. |
 
 ### Path segment vs `$type` for composite types
 
@@ -254,11 +252,10 @@ The spec explicitly states that tools **must not** use groups to infer type — 
 |-------|---------------|--------|
 | `.size.` vs `.sizing.` path segment inconsistency | `dimension`, `sizing` | Queued for fix — standardize to `dimension` |
 | `other` used as a lazy catch-all on a styling token | `other` | Spot-audit only — most `other` is legitimate (config / documentation) |
-| `composition` is deprecated in Tokens Studio | `composition` | Migration needed to individual types |
 | Figma has no variable type for `duration`, `cubicBezier`, `gradient`, `transition` | motion tokens | Applied code-only; no Figma binding possible |
 | Typography composite `$type` cannot bind to Figma variables as a whole | `typography` | Uses Figma Text Styles instead; no variable-level composite |
 | `textAlign` has no Figma variable binding | `textAlign` | Code-only; 3 tokens affected |
-| S2→S3 hierarchy violations using `ob.s.color.neutral.no_color` in S2 | `color` | 4 tokens queued for fix |
+| `ob.s` self-reference: `ob.s.color.neutral.no_color` referenced by another `ob.s` token instead of S1 | `color` | 1 token found; queued for fix |
 | `boxShadow` `$type` must remain exactly `boxShadow` (camelCase) | `boxShadow` | Naming exception — do not rename; triggers Figma Effect Style export. See [Tokens Studio `$type` Exceptions](./03-naming.md#tokens-studio-type-exceptions). |
 
 ---

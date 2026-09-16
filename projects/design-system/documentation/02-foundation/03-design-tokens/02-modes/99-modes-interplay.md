@@ -17,65 +17,23 @@ Token modes are designed to be **deliberately independent** - product designers 
 Different modes control different aspects of component behavior:
 
 **UI Scale Mode** controls individual component dimensions:
-- **Scope**: Primarily affects **Molecules** (following Atomic Design principles)
-- **Components**: Button, Pills, Tags, Inputs - individual component sizing (sm/md/lg)
-- **Control**: System consumer can override default component size based on contextual importance
+- **Scope**: Primarily affects individual interactive controls - small, self-contained elements such as buttons, inputs, tags, or pills
+- **Control**: System consumer can override default component size based on contextual importance (sm/md/lg)
 
 **Density Mode** controls spacing and layout density:
-- **Scope**: Primarily affects **Data components and Organisms**
-- **Components**: Tables, Lists, Forms - container spacing and layout density
+- **Scope**: Primarily affects layout containers and data-dense structures - elements that arrange multiple children, such as tables, lists, or forms
 - **Purpose**: Information efficiency and screen real estate optimization
 
 **Typography-Context Mode** controls text rendering:
-- **Scope**: Text-heavy components and content areas
-- **Components**: All text elements - optimized for interface vs prose contexts
-- **Purpose**: Optimal text presentation for different content types
-
----
-
-## **Component Reactivity to Mode Switches**
-
-**Status**: Architectural direction - subject to refinement as components are redesigned and tested in component interplay scenarios.
-
-| Component | Density | UI Scale | Typography-Context | Notes |
-|-----------|:-------:|:--------------:|:-----------------:|-------|
-| **Button** | 0 | ✅ | 0 | Individual sizing |
-| **Input/TextField** | 0 | ✅ | 0 | Form hierarchy sizing |
-| **Avatar** | 0 | 0 | 0 | Fixed  |
-| **Tag** | 0 | ✅ | 0 | Monochromatic navigation/input |
-| **Pill** | 0 | ✅ | 0 | Colored status communication |
-| **Badge** | 0 | 0 | 0 | Does not react |
-| **Icon** | 0 | ✅ | 0 | LOCKED - inherits from parent |
-| **Text components** | 0 | 0 | ✅ | Typography context (interface/prose) |
-| **Table** | ✅ | 0 | 0 | Row/cell spacing controlled by density |
-| **List** | ✅ | 0 | 0 | Item spacing from density |
-| **Navigation Menu** | 0 | 0 | 0 | Fixed |
-| **Form Container** | ✅ | 0 | 0 | Spacing between fields from density |
-| **Button Container** | ✅ | 0 | 0 | Button group spacing from density |
-| **Card** | ✅ | 0 | 0 | Container with density-controlled spacing |
-| **Modal** | ✅ | 0 | ✅ | Density spacing + text context |
-| **Tabs** | ✅ | 0 | 0 | Tab spacing from density |
-| **Expansion Panel** | ✅ | 0 | 0 | Panel spacing from density |
-| **Infobox** | 0 | 0 | 0 | Fixed |
-| **Notification** | 0 | ✅ | 0 | UI scale affects notification dimensions |
-| **Tooltip** | 0 | 0 | 0 | Fixed |
-| **Spinner** | 0 | 0 | 0 | Fixed |
-| **Slide Toggle** | 0 | 0 | 0 | Fixed |
-| **Pagination** | 0 | 0 | 0 | Fixed  |
-
-### **Legend**
-- **✅** = Component reacts to mode switch
-- **0** = Component does not react to mode switch
-- **Density** = `compact/standard/spacious` affects spacing and layout
-- **UI Scale** = `sm/md/lg` affects individual component dimensions
-- **Typography-Context** = `interface/prose` affects text rendering and spacing
+- **Scope**: Text-heavy content areas
+- **Purpose**: Optimal text presentation for different content types (interface vs prose)
 
 ### **Key Patterns**
-1. **Molecules** (Button, Input, Tag, Pill) → UI Scale mode only  
-2. **Organisms** (Table, List, Form Container) → Density mode only
-3. **Text Components** → Typography-Context mode only
-4. **Complex Components** (Modal) → Multiple modes (Density + Typography-Context)
-5. **Fixed Components** (Avatar, Badge, Tooltip) → No mode reactivity
+1. **Individual interactive controls** → UI Scale mode only
+2. **Layout containers** (elements arranging multiple children, e.g. tabular or list structures) → Density mode only
+3. **Text-heavy content** → Typography-Context mode only
+4. **Elements that combine structure and substantial text content** → Multiple modes (Density + Typography-Context)
+5. **Fixed-size elements** (no size or spacing variation) → No mode reactivity
 
 ---
 
@@ -109,17 +67,17 @@ Different modes control different aspects of component behavior:
 
 Different screen sizes impose constraints on mode combinations:
 
-**📱 Mobile (≤768px)**:
+**Mobile (≤768px)**:
 - **Density**: Compact recommended (space limitations)
 - **UI Scale**: Small to medium (touch targets vs space)
 - **Typography**: Interface context (scanning efficiency)
 
-**📟 Tablet (769px-1024px)**:
-- **Density**: Compact + comfortable available
+**Tablet (769px-1024px)**:
+- **Density**: Compact + standard available
 - **UI Scale**: Medium preferred (hybrid interaction)
 - **Typography**: Context-dependent (interface for apps, prose for content)
 
-**🖥️ Desktop (≥1025px)**:
+**Desktop (≥1025px)**:
 - **Density**: All densities available
 - **UI Scale**: All sizes available
 - **Typography**: Full context flexibility
@@ -172,8 +130,8 @@ Different screen sizes impose constraints on mode combinations:
 
 ### **Design System Governance**
 
-- **Mode Matrix**: This matrix may be refined as components are redesigned
-- **Core Principles**: Molecule → ui_scale, Organism → density patterns remain stable
+- **Mode Responsibility Patterns**: These patterns may be refined as components are designed and tested in mode interplay scenarios
+- **Core Principles**: Individual interactive controls → ui_scale, layout containers → density remain the stable core patterns
 - **Documentation**: Keep mode interplay documentation updated as system evolves
 
 ---

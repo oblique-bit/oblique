@@ -25,8 +25,8 @@ States are organized into categories that can be combined. Focus exists on a sep
 
 - default
 - hover
-- active (formerly "pressed"; renaming based on research, requires approval)
-- active + focus (combined state, relevant for components like text input: field is focused, cursor is inside, component is in active state while typing)
+- pressed
+- pressed + focus (combined state, relevant for components like text input: field is focused, cursor is inside, component is in pressed state while typing)
 - drag
 
 ---
@@ -34,7 +34,7 @@ States are organized into categories that can be combined. Focus exists on a sep
 ## 3. Focus State
 
 - unfocused
-- focused (in Figma: boolean property, naming TBD: "Focus" or "Focused")
+- focused (in Figma: boolean property named "Focus")
 
 **Text inputs** have two focus indicators:
 - **default** — for keyboard navigation (including typing after keyboard focus, ensures accessibility)
@@ -60,7 +60,7 @@ States are organized into categories that can be combined. Focus exists on a sep
 - Fatal (used only for Infobox)
 - None (useful for describing flows and UI behavior)
 
-### b. Business-specific statuses
+### b. Free tier statuses
 e.g., used in Pill component
 
 ### c. Input-specific info states
@@ -86,9 +86,7 @@ e.g., used in Pill component
 
 ---
 
-## Decisions
+## Open Scope Questions
 
-- [ ] Naming: "active" vs "pressed"
-- [ ] Naming: "Focus" vs "Focused" (Figma boolean property)
-- [ ] Include visited state in this concept or keep link-specific
-- [ ] Include system process states
+- Whether to bring the visited state into this concept or keep it link-specific
+- Whether to bring system process states into this concept's next iteration

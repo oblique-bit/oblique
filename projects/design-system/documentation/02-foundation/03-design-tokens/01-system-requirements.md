@@ -1,8 +1,5 @@
 # Design Token System Requirements
 
-**Version:** 1.0  
-**Date:** October 29, 2025  
-**Status:** Active Requirements  
 **Purpose:** Define high-level requirements and compatibility priorities for the Oblique Design System token architecture
 
 ---
@@ -40,7 +37,7 @@ Implementation methods can vary (design approximations acceptable). Focus on end
 
 ---
 
-### **Priority 2: HIGHEST - Code Compatibility** 
+### **Priority 2: HIGH - Code Compatibility** 
 **Status:** Critical - Directly Impacts End User UX  
 **Rationale:** Code output directly affects end user experience
 
@@ -77,7 +74,7 @@ When Figma's technical limitations prevent optimal UX implementation:
 **Requirements:**
 - Tokens Studio plugin must read/write token files correctly
 - Token organization must work within Tokens Studio UI
-- Mode and theme switching must function properly
+- Mode switching must function properly
 - Sync between Tokens Studio and Figma Variables must work
 - Token validation and error reporting should function
 
@@ -101,39 +98,33 @@ When Figma's technical limitations prevent optimal UX implementation:
 
 ## **Cross-Platform Token Type Compliance Analysis**
 
-*Integrated from cross-platform analysis - September 12, 2025*
-
-This section provides comprehensive analysis of design token type compatibility across W3C DTCG standards, Figma native support, and Tokens Studio plugin capabilities, following our Figma-first priority hierarchy.
+This section analyzes design token type compatibility across W3C DTCG standards, Figma native support, and Tokens Studio plugin capabilities, following our Figma-first priority hierarchy.
 
 ### **Compliance Matrix**
 
 | Token Type | W3C DTCG Standard | Figma Native Support | Tokens Studio Plugin | Recommendation (Figma Priority) |
 |------------|------------------|---------------------|---------------------|--------------------------------|
-| **`color`** | ✅ **Valid** | ✅ **Native Variables** | ✅ **Full Support** | ✅ **Use `"color"`** - Universal compatibility |
-| **`dimension`** | ✅ **Valid** | ✅ **Native Variables** | ✅ **Full Support** | ✅ **Use `"dimension"`** - W3C compliant, works everywhere |
-| **`fontFamily`** | ✅ **Valid** | ✅ **Text Properties** | ✅ **`fontFamilies` type** | ✅ **Use `"fontFamily"`** - W3C compliant |
-| **`fontWeight`** | ✅ **Valid** | ✅ **Text Properties** | ✅ **`fontWeights` type** | ✅ **Use `"fontWeight"`** - W3C compliant |
-| **`duration`** | ✅ **Valid** | ❌ **Not supported** | ❌ **Not supported** | ⚠️ **Limited use** - No Figma support |
-| **`cubicBezier`** | ✅ **Valid** | ❌ **Not supported** | ❌ **Not supported** | ⚠️ **Limited use** - No Figma support |
-| **`spacing`** | ❌ **Invalid** | ✅ **Auto Layout** | ✅ **Native Support** | ✅ **Keep `"spacing"`** - Figma priority, essential |
-| **`borderRadius`** | ❌ **Invalid** | ✅ **Corner Radius** | ✅ **Native Support** | ✅ **Keep `"borderRadius"`** - Figma priority, essential |
-| **`sizing`** | ❌ **Invalid** | ✅ **Width/Height** | ✅ **Native Support** | ⚠️ **Use `"dimension"`** - W3C compliant alternative available |
-| **`borderWidth`** | ❌ **Invalid** | ✅ **Stroke Properties** | ✅ **Native Support** | ✅ **Keep `"borderWidth"`** - No W3C alternative, essential |
-| **`opacity`** | ❌ **Invalid** | ✅ **Opacity Property** | ✅ **Native Support** | ✅ **Keep `"opacity"`** - No W3C alternative, widely used |
-| **`boxShadow`** | ❌ **Invalid** | ✅ **Effects** | ✅ **Native Support** | ✅ **Keep `"boxShadow"`** - No W3C alternative, essential |
-| **`typography`** | ❌ **Invalid** | ✅ **Text Styles** | ✅ **Native Support** | ✅ **Keep `"typography"`** - Composite token, widely used |
+| **`color`** | **Valid** | **Native Variables** | **Full Support** | **Use `"color"`** - Universal compatibility |
+| **`dimension`** | **Valid** | **Native Variables** | **Full Support** | **Use `"dimension"`** - W3C compliant, works everywhere |
+| **`fontFamily`** | **Valid** | **Text Properties** | **`fontFamilies` type** | **Use `"fontFamily"`** - W3C compliant |
+| **`fontWeight`** | **Valid** | **Text Properties** | **`fontWeights` type** | **Use `"fontWeight"`** - W3C compliant |
+| **`duration`** | **Valid** | **Not supported** | **Not supported** | **Limited use** - No Figma support |
+| **`cubicBezier`** | **Valid** | **Not supported** | **Not supported** | **Limited use** - No Figma support |
+| **`spacing`** | **Invalid** | **Auto Layout** | **Native Support** | **Keep `"spacing"`** - Figma priority, essential |
+| **`borderRadius`** | **Invalid** | **Corner Radius** | **Native Support** | **Keep `"borderRadius"`** - Figma priority, essential |
+| **`sizing`** | **Invalid** | **Width/Height** | **Native Support** | **Use `"dimension"`** - W3C compliant alternative available |
+| **`borderWidth`** | **Invalid** | **Stroke Properties** | **Native Support** | **Keep `"borderWidth"`** - No W3C alternative, essential |
+| **`opacity`** | **Invalid** | **Opacity Property** | **Native Support** | **Keep `"opacity"`** - No W3C alternative, widely used |
+| **`boxShadow`** | **Invalid** | **Effects** | **Native Support** | **Keep `"boxShadow"`** - No W3C alternative, essential |
+| **`typography`** | **Invalid** | **Text Styles** | **Native Support** | **Keep `"typography"`** - Composite token, widely used |
 
 ### **Implementation Strategy**
 
 Following our priority hierarchy, the recommended balanced approach:
 
-1. **✅ Use W3C Types When Practical**: `color`, `dimension`, `fontFamily`, `fontWeight` (universal compatibility)
-2. **✅ Keep Figma-Essential Types**: `spacing`, `borderRadius`, `borderWidth`, `opacity`, `boxShadow`, `typography` (non-W3C but essential)
-3. **⚠️ Avoid Poor-Support Types**: `duration`, `cubicBezier` (W3C compliant but no Figma support)
+1. **Use W3C Types When Practical**: `color`, `dimension`, `fontFamily`, `fontWeight` (universal compatibility)
+2. **Keep Figma-Essential Types**: `spacing`, `borderRadius`, `borderWidth`, `opacity`, `boxShadow`, `typography` (non-W3C but essential)
+3. **Avoid Poor-Support Types**: `duration`, `cubicBezier` (W3C compliant but no Figma support)
 
 This strategy provides maximum Figma/tooling compatibility while adopting W3C compliance where practical, aligning with our tooling priority hierarchy.
-
----
-
-*Last updated: October 30, 2025 - Merged cross-platform compliance analysis with system requirements*
 

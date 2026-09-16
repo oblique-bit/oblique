@@ -1,20 +1,17 @@
 # Design System Personas
-**Version:** 1.0  
-**Date:** September 2, 2025  
-**Status:** Work in Progress - Not Yet Approved by Product Owner  
-**Purpose:** Define stakeholder personas for design system development and decision-making
+Stakeholder personas for design system development and decision-making.
 
 ---
 
 ## **Overview**
 
-This document establishes primary personas for the Oblique Design System, categorized by their relationship to the system: maintainers, consumers, and end users. These personas guide design decisions, feature prioritization, and communication strategies.
+Primary personas for the Oblique Design System, grouped by their relationship to the system: maintainers, consumers, and end users. These personas guide design decisions, feature prioritization, and communication.
 
 **Document Structure:**
-- Maintainer personas focus on internal team responsibilities
-- Consumer personas represent external teams using the system
-- End user personas represent federal application users
-- Future expansion planned for accessibility, anti-personas, and user stories
+- Maintainer personas: internal team responsibilities
+- Consumer personas: external teams using the system
+- End user personas: federal application users
+- Future expansion: accessibility, anti-personas, user stories
 
 ---
 
@@ -27,22 +24,22 @@ This document establishes primary personas for the Oblique Design System, catego
 **Team Context:** Internal Oblique Design System team  
 
 **Key Characteristics:**
-- Expert-level Figma proficiency with component systems and variables
-- Deep understanding of federal design requirements and accessibility standards
-- Strong collaboration with development team for design-code alignment
-- Responsible for design token naming, structure, and cross-platform consistency
+- Expert Figma proficiency with component systems and variables
+- Deep knowledge of federal design and accessibility requirements
+- Close collaboration with developers for design-code alignment
+- Owns design token naming, structure, and cross-platform consistency
 
 **Daily Activities:**
 - Create and maintain Figma component variants and design tokens
-- Review design-code alignment and identify inconsistencies  
-- Validate new component proposals against design system principles
-- Document design decisions and component usage guidelines
+- Review design-code alignment, flag inconsistencies
+- Validate new component proposals against system principles
+- Document design decisions and usage guidelines
 
 **Pain Points:**
-- Figma limitations for complex responsive behaviors and animations
-- Keeping design tokens synchronized between Figma and code environments
-- Communicating design intent when Figma cannot represent full code behavior
-- Balancing design flexibility with system consistency requirements
+- Figma limits for complex responsive behavior and animation
+- Keeping tokens synced between Figma and code
+- Communicating design intent Figma can't fully represent
+- Balancing flexibility against system consistency
 
 **Success Metrics:**
 - Design-code visual consistency score (target: 95%)
@@ -59,10 +56,10 @@ This document establishes primary personas for the Oblique Design System, catego
 **Team Context:** Internal Oblique Design System team  
 
 **Key Characteristics:**
-- Expert-level frontend development with component library architecture
-- Strong understanding of accessibility implementation (WCAG 2.1 AA compliance)
+- Expert frontend development with component library architecture
+- Strong grasp of accessibility implementation (WCAG 2.1 AA)
 - Experience with design token systems and CSS architecture
-- Collaborative approach with design team for implementation feasibility
+- Works closely with design for implementation feasibility
 
 **Daily Activities:**
 - Implement and maintain production-ready components and utilities
@@ -74,7 +71,7 @@ This document establishes primary personas for the Oblique Design System, catego
 - Translating complex design intent into performant, accessible code
 - Managing breaking changes and backward compatibility for consumer teams
 - Balancing feature requests with system stability and performance
-- Documentation maintenance for technical implementation details
+- Maintaining technical implementation docs
 
 **Success Metrics:**
 - Component performance benchmarks (loading time, bundle size)
@@ -94,24 +91,24 @@ This document establishes primary personas for the Oblique Design System, catego
 
 **Key Characteristics:**
 - Professional design experience with federal application requirements
-- Figma proficiency with component library usage (not creation)
-- Understanding of user experience principles and accessibility guidelines
-- Collaborative work with product developers and business stakeholders
-- **Majority use Figma in browser** rather than desktop application
+- Figma proficiency using (not creating) component libraries
+- Understands UX principles and accessibility guidelines
+- Collaborates with product developers and business stakeholders
+- **Mostly uses browser Figma** rather than desktop
 
 **Daily Activities:**
-- Design user interfaces using Oblique Figma component library
+- Design user interfaces using Oblique's Figma component library
 - Create prototypes and user flows with design system components
 - Validate designs against federal requirements and user needs
 - Communicate design specifications to development teams
-- **Work primarily in browser-based Figma** for design creation and collaboration
+- **Works primarily in browser-based Figma**
 
 **Pain Points:**
-- Component limitations when business requirements exceed system capabilities
-- Learning curve for design system token structure and usage patterns
-- Uncertainty about when to request new components vs. customize existing ones
-- Keeping pace with design system updates and new component releases
-- **Browser Figma performance degradation** with large component variant sets affecting design workflow
+- Component limits when requirements exceed system capabilities
+- Learning curve for token structure and usage patterns
+- Uncertainty about requesting a new component vs. customizing an existing one
+- Keeping pace with system updates and new releases
+- **Browser Figma performance drops** with large variant sets, slowing design work
 
 **Success Metrics:**
 - Design delivery speed with design system components
@@ -128,25 +125,25 @@ This document establishes primary personas for the Oblique Design System, catego
 **Team Context:** Product teams with federal application business needs  
 
 **Key Characteristics:**
-- Deep understanding of federal processes and regulatory requirements
-- Experience translating business needs into technical specifications
-- Stakeholder management across government departments and citizen groups
-- Focus on compliance, efficiency, and user satisfaction
-- **Uses Figma in browser** for design review and requirements validation
+- Deep knowledge of federal processes and regulatory requirements
+- Translates business needs into technical specifications
+- Manages stakeholders across government departments and citizen groups
+- Focused on compliance, efficiency, and user satisfaction
+- **Uses browser Figma** for design review and requirements validation
 
 **Daily Activities:**
 - Define functional requirements for federal application features
 - Validate component behavior against business process requirements
 - Coordinate with legal and compliance teams for regulatory adherence
 - Prioritize feature development based on citizen and department needs
-- **Review designs in browser-based Figma** during requirements definition
+- **Reviews designs in browser-based Figma** during requirements definition
 
 **Pain Points:**
-- Limited understanding of design system capabilities and constraints
-- Balancing unique business requirements with standardized component behavior
-- Ensuring compliance requirements are met within system limitations
-- Managing stakeholder expectations when system customization is required
-- **Browser Figma performance issues** with large component variant sets affecting design review workflow
+- Limited insight into design system capabilities and constraints
+- Balancing unique business requirements against standardized component behavior
+- Meeting compliance requirements within system limitations
+- Managing stakeholder expectations when customization is required
+- **Browser Figma performance issues** with large variant sets slow design review
 
 **Success Metrics:**
 - Requirements fulfillment using standard design system components
@@ -163,10 +160,10 @@ This document establishes primary personas for the Oblique Design System, catego
 **Team Context:** External development teams consuming the design system  
 
 **Key Characteristics:**
-- Professional development experience with component libraries and frameworks
-- Understanding of federal accessibility and security requirements
-- Collaborative work with designers and business stakeholders
-- Focus on implementation efficiency and code quality
+- Professional experience with component libraries and frameworks
+- Understands federal accessibility and security requirements
+- Collaborates with designers and business stakeholders
+- Focused on implementation efficiency and code quality
 
 **Daily Activities:**
 - Implement user interfaces using Oblique component library and tokens
@@ -177,7 +174,7 @@ This document establishes primary personas for the Oblique Design System, catego
 **Pain Points:**
 - Component API learning curve and implementation patterns
 - Customization needs that exceed component flexibility
-- Keeping current with design system updates and migration requirements
+- Keeping up with system updates and migrations
 - Debugging component issues vs. application-specific problems
 
 **Success Metrics:**
@@ -202,9 +199,9 @@ This document establishes primary personas for the Oblique Design System, catego
 - **Context:** Professional environment, time-constrained, process-oriented
 
 **Key Characteristics:**
-- Expert knowledge of specific federal processes and requirements
-- High efficiency expectations with familiar interface patterns
-- Strong need for keyboard shortcuts and rapid data entry capabilities
+- Expert knowledge of their specific federal processes
+- Expects high efficiency from familiar interface patterns
+- Needs keyboard shortcuts and rapid data entry
 - Low tolerance for interface changes that disrupt established workflows
 
 **Interface Requirements:**
@@ -214,7 +211,7 @@ This document establishes primary personas for the Oblique Design System, catego
 - Minimal cognitive load for routine task completion
 
 **Pain Points:**
-- Interface inconsistencies between different federal applications
+- Interface inconsistencies across federal applications
 - Slow loading or unresponsive components during peak usage
 - Complex navigation that interrupts established task workflows
 - Accessibility barriers that prevent efficient task completion
@@ -235,9 +232,9 @@ This document establishes primary personas for the Oblique Design System, catego
 - **Context:** Infrequent use requiring clear guidance and error prevention
 
 **Key Characteristics:**
-- Limited familiarity with interface patterns and federal system conventions
-- High need for clear instructions and contextual help
-- Anxiety about making errors in important federal processes
+- Limited familiarity with interface patterns and system conventions
+- Needs clear instructions and contextual help
+- Anxious about errors in important federal processes
 - Diverse accessibility needs and technology capabilities
 
 **Interface Requirements:**
@@ -268,9 +265,9 @@ This document establishes primary personas for the Oblique Design System, catego
 
 **Key Characteristics:**
 - Diverse backgrounds, technical skills, and accessibility needs
-- High expectations for modern, intuitive user experiences
+- Expects modern, intuitive experiences
 - Limited patience for complex or confusing government interfaces
-- Strong need for mobile-responsive design and cross-device consistency
+- Needs mobile-responsive design and cross-device consistency
 
 **Interface Requirements:**
 - Intuitive component behavior following modern web conventions
@@ -307,9 +304,3 @@ This document establishes primary personas for the Oblique Design System, catego
 - Accessibility needs assessment across federal application contexts
 - Cross-departmental consistency requirements and pain points
 
----
-
-**Document Maintainers:** Design System Team, UX Research  
-**Review Schedule:** Quarterly with annual complete update  
-**Next Review:** December 2025  
-**Research Contact:** [To be assigned - UX Research Team]

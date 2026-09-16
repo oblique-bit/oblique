@@ -80,16 +80,16 @@ the Figma pipeline.
 
 | Character | Status | Notes |
 |---|---|---|
-| ASCII printable U+0020–U+007E | ✓ Allowed | Full printable ASCII set |
-| Em dash `—` U+2014 | ✓ Allowed | Used in existing descriptions |
-| En dash `–` U+2013 | ✓ Allowed | Used in existing dimension descriptions |
-| Single quote `'` | ✓ Allowed | No JSON escaping required |
-| Double quote `"` | ✓ Allowed | Must be JSON-escaped as `\"`; use a JSON serializer, never manual string concatenation |
+| ASCII printable U+0020–U+007E | Allowed | Full printable ASCII set |
+| Em dash `—` U+2014 | Allowed | Used in existing descriptions |
+| En dash `–` U+2013 | Allowed | Used in existing dimension descriptions |
+| Single quote `'` | Allowed | No JSON escaping required |
+| Double quote `"` | Allowed | Must be JSON-escaped as `\"`; use a JSON serializer, never manual string concatenation |
 | Newline `\n` | Avoid | Valid JSON, but renders poorly in Figma — avoid in any description that appears in Figma |
-| Curly quotes `“ ” ‘ ’` | ✗ Forbidden | Visually similar to ASCII quotes; use straight quotes instead |
-| Ellipsis `…` U+2026 | ✗ Forbidden | Write `...` (three full stops) instead |
-| Non-breaking space U+00A0 | ✗ Forbidden | Use a regular space U+0020 |
-| Any other non-ASCII besides `—` and `–` | ✗ Forbidden | No accented characters, symbols, or typographic ligatures |
+| Curly quotes `“ ” ‘ ’` | Forbidden | Visually similar to ASCII quotes; use straight quotes instead |
+| Ellipsis `…` U+2026 | Forbidden | Write `...` (three full stops) instead |
+| Non-breaking space U+00A0 | Forbidden | Use a regular space U+0020 |
+| Any other non-ASCII besides `—` and `–` | Forbidden | No accented characters, symbols, or typographic ligatures |
 
 ### Forbidden patterns
 

@@ -13,8 +13,8 @@ Located in: `05_html/typography/context/`
 
 | Element | Interface | Prose | Use Case |
 |---|---|---|---|
-| H1 | `2xl` | `5xl` | UI headers vs. article titles |
-| H2 | `xl` | `4xl` | Sections vs. major headings |
+| H1 | `3xl` | `6xl` | UI headers vs. article titles |
+| H2 | `2xl` | `5xl` | Sections vs. major headings |
 | Weight | `bold` | `semiBold` | Contrast vs. readability |
 
 ## **Usage Guidelines**
@@ -42,6 +42,6 @@ Content Sites      → Load prose.json
 ```scss
 .page-title {
   font-size: var(--ob-h-typography-context-h1-font_size);
-  /* 2xl in interface context, 5xl in prose context */
+  /* 3xl in interface context, 6xl in prose context */
 }
 ```

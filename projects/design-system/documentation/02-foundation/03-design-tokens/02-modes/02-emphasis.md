@@ -15,7 +15,7 @@ Emphasis mode provides high and low emphasis variations for interface elements, 
 - **`low.json`** - Low emphasis for secondary actions, supporting information, and background elements
 
 ### **Token Architecture**
-Located in: `03_semantic/color/s2-emphasis/`
+Located in: `03_semantic/color/s2_emphasis/`
 
 **Structure Pattern:**
 ```json
@@ -23,10 +23,16 @@ Located in: `03_semantic/color/s2-emphasis/`
   "ob": {
     "s2": {
       "color": {
-        "interactive": {
-          "primary": {
-            "$value": "{ob.s1.color.primary}",      // high.json - full intensity
-            "$value": "{ob.s1.color.primary_muted}" // low.json - reduced intensity  
+        "interaction": {
+          "contrast_levels": {
+            "fg": {
+              "low": {
+                "inversity_normal": {
+                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}"  // high.json
+                  // "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}" -- low.json
+                }
+              }
+            }
           }
         }
       }
@@ -91,29 +97,29 @@ Low Emphasis: Secondary Actions → Supporting Information → Inactive States
 
 ### **Button Hierarchy**
 ```scss
-/* High emphasis - Primary button */
+/* High-contrast interaction color - primary button */
 .button-primary {
-  background-color: var(--ob-s2-color-interactive-primary-bg-high);
-  color: var(--ob-s2-color-interactive-primary-fg-high);
+  background-color: var(--ob-s2-color-interaction-contrast_levels-bg-high-inversity_normal);
+  color: var(--ob-s2-color-interaction-contrast_levels-fg-high-inversity_normal);
 }
 
-/* Low emphasis - Secondary button */
+/* Low-contrast interaction color - secondary button */
 .button-secondary {
-  background-color: var(--ob-s2-color-interactive-primary-bg-low);
-  color: var(--ob-s2-color-interactive-primary-fg-low);
+  background-color: var(--ob-s2-color-interaction-contrast_levels-bg-low-inversity_normal);
+  color: var(--ob-s2-color-interaction-contrast_levels-fg-low-inversity_normal);
 }
 ```
 
 ### **Text Hierarchy**
 ```scss
-/* High emphasis - Primary headings */
-.heading-primary {
-  color: var(--ob-s2-color-text-heading-high);
+/* High-contrast interaction color - emphasized text */
+.text-emphasized {
+  color: var(--ob-s2-color-interaction-contrast_levels-fg-high-inversity_normal);
 }
 
-/* Low emphasis - Supporting text */
+/* Low-contrast interaction color - supporting text */
 .text-supporting {
-  color: var(--ob-s2-color-text-body-low);
+  color: var(--ob-s2-color-interaction-contrast_levels-fg-low-inversity_normal);
 }
 ```
 
