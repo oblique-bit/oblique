@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectionStrategy, Component, DebugElement, signal} from '@angular/core';
+import {Component, DebugElement, signal} from '@angular/core';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
 import {By} from '@angular/platform-browser';
 
@@ -17,7 +17,6 @@ interface ObOptionLabelIconDirectivePrivate {
 @Component({
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class OptionLabelTestComponent {
 	iconName = signal<ObEIcon | ''>('');
