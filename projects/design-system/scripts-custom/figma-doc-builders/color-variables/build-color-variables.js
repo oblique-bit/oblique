@@ -648,6 +648,13 @@ function alphaVariantFor(tokenName) {
 function setAlphaVariant(swatchInst, tokenName) {
   if (!swatchInst || swatchInst.type !== 'INSTANCE') return;
   try { swatchInst.setProperties({ Alpha: alphaVariantFor(tokenName) }); } catch {}
+  // Figma preserves per-instance fill overrides across variant swaps. A swatch that
+  // once had its own container painted solid keeps masking the checkerboard/alpha
+  // backdrop even after switching variants — reset it to the new variant's default.
+  try {
+    const main = swatchInst.mainComponent;
+    if (main && Array.isArray(main.fills)) swatchInst.fills = main.fills;
+  } catch {}
 }
 
 function getRoleSegment(tokenName) {

@@ -6,7 +6,7 @@
 
 ## What is the Oblique Design System?
 
-The Oblique Design System is the design token system for Oblique 16: tokens and modes, defined once as JSON and generated into Figma variables and CSS. It defines the shared visual language (color, typography, dimension, motion), consumed from both Figma and code.
+Oblique 16 introduces the Oblique Design System for the first time, alongside the existing Oblique library. Today, "Oblique Design System" means design tokens and modes, defined once as JSON and generated into Figma variables and CSS.
 
 It is currently maintained separately from the rest of Oblique, and will integrate with it over time. This first version is for exploring the tokens and modes.
 
@@ -21,7 +21,7 @@ It is currently maintained separately from the rest of Oblique, and will integra
 
 ## How this relates to Oblique
 
-"Oblique" without qualification usually means the existing Oblique component library, maintained separately from this Design System project and continuing unchanged in this release. The Oblique Design System is a new, parallel effort: it builds the token foundation that future components, Oblique's own or otherwise, can be built on.
+"Oblique" without qualification usually means the existing Oblique component library, maintained separately from this Design System project and continuing unchanged in this release. The Oblique Design System builds the token foundation that future components, Oblique's own or otherwise, can be built on.
 
 ---
 
