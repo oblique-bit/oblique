@@ -155,16 +155,9 @@ Token names are for:
 
 ## **Technical Architecture Requirements**
 
-### **Core Architectural Layers**
+### **No Calculations in Consumer Layers**
 
-1. **Three Core Layers**: The architecture consists of three primary layers:
-   - **Primitives (`ob.p`)**: The single source of truth for raw, context-free values
-   - **Semantics (`ob.s`)**: The contextual layer that maps primitives to specific use cases  
-   - **Component Layer (`ob.h`, `ob.c`)**: The consumption layer that applies semantic tokens to UI components
-
-2. **Unidirectional Flow**: The token flow is strictly unidirectional: `Primitives` -> `Semantics` -> `Components`. A layer can only reference the layer directly above it.
-
-3. **No Calculations in Consumer Layers**: All calculations, particularly those involving global-tier (01_global) multipliers (`ob.g.*`), **must** occur exclusively within the semantic layer (`ob.s`). Component layers (`ob.h`, `ob.c`) are forbidden from performing calculations and must consume pre-defined `static` or `dynamic` semantic tokens.
+All calculations, particularly those involving global-tier (01_global) multipliers (`ob.g.*`), **must** occur exclusively within the semantic layer (`ob.s`). Component layers (`ob.h`, `ob.c`) are forbidden from performing calculations and must consume pre-defined `static` or `dynamic` semantic tokens. See the Reference Hierarchy Rules above for the full consumption chain.
 
 ### **Architecture Examples**
 
