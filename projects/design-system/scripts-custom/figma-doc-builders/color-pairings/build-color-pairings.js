@@ -319,6 +319,13 @@ async function buildSwatchRecord(pair, varMap, lightnessModeId) {
       rec.wcag = wcagFlags(r);
       rec.usage = pickUsage(rec.wcag);
       rec.emph = pickEmph(rec.fg, rec.bg);
+      // bg itself can carry alpha (e.g. cobalt_alpha.*) — contrastRatio only
+      // composites the foreground's alpha over bg, so a translucent bg is
+      // still treated as an opaque flat color here. The real on-screen result
+      // is bg-over-whatever-surface-it-sits-on, which this build has no way
+      // to know per pairing — flag it as a caveat instead of a silent wrong
+      // number (Olena, comment on ob.s.color.navigation.fg/bg.disabled).
+      if (bgC.a < 1) rec.bgTransparent = true;
     }
   }
   return rec;
@@ -515,9 +522,17 @@ async function buildSwatchVisual(rec, varMap) {
     // line — it's a usage caveat, not a WCAG result.
     let notContent = usage.notContent || '';
     if (rec.emph) notContent += ' | ⚠ emphasis_low required';
+    if (rec.bgTransparent) notContent += ' | ⚠ bg is transparent: ratio is approximate, not the real composited surface';
     const cv = findOneByName(notFrame, 'content-value'); if (cv) await setText(cv, notContent);
     const mv = findOneByName(notFrame, 'component-value'); if (mv) await setText(mv, usage.notComponent || '');
   }
+  // "single" (fg-only, no bg) pairings never compute rec.wcag — nothing to
+  // test contrast against. Without this, the fresh instance keeps the master
+  // component's placeholder ratio/badge content, which reads as a real (but
+  // wrong) result (Olena: "WCAG badges inconsistent with ratio" on
+  // ob.s.color.brand.1, a single pairing with bg "n/a").
+  const wcagFrame = findOneByName(inst, 'WCAG');
+  if (wcagFrame) wcagFrame.visible = !!rec.wcag;
   if (rec.wcag) {
     const normalRow = findOneByName(inst, 'badges-normal-text');
     const largeRow  = findOneByName(inst, 'badges-large-text');
@@ -948,7 +963,13 @@ try {
     }
 
     for (const { block, groupKey } of blockSpecs) {
-      if (WRITE && groupKey) {
+      // "{group} (text-link)" is a second block for the SAME group (its
+      // text-link row variant), not a new group — its header text strips
+      // back to the identical group name, so rendering a header for it too
+      // produced a visible duplicate title block right above the text-link
+      // row (Olena, category-status: "Info" header, then "Info" again).
+      const isTextLinkBlock = / \\(text-link\\)$/.test(groupKey || '');
+      if (WRITE && groupKey && !isTextLinkBlock) {
         const headerKey = groupKey.replace(/ \\(text-link\\)$/, '');
         const hdrCfg = (catCfg.groupHeaders && catCfg.groupHeaders[headerKey]) || null;
         const gh = await buildGroupHeader(
