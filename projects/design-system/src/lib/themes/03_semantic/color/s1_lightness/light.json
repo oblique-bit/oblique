@@ -1895,7 +1895,7 @@
           "_docs": {
             "token_family_info": {
               "$type": "text",
-              "$value": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect — navigation items use a single color scale based on the brand red palette."
+              "$value": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect. Backgrounds use the cobalt scale; red is reserved for borders and brand indicators only."
             }
           },
           "fg_base": {
@@ -1925,12 +1925,12 @@
             },
             "contrast_medium": {
               "$type": "color",
-              "$value": "{ob.p.color.red.100}",
+              "$value": "{ob.p.color.cobalt.100}",
               "$description": "Navigation background — medium contrast. Applies in hover and focus states for a visible but non-dominant surface."
             },
             "contrast_low": {
               "$type": "color",
-              "$value": "{ob.p.color.red.200}",
+              "$value": "{ob.p.color.cobalt.200}",
               "$description": "Navigation background — low contrast. Applies in enabled state for a subtle surface that does not dominate the layout."
             }
           },
