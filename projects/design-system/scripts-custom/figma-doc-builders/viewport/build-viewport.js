@@ -115,6 +115,9 @@ function materializeTable(spec) {
 }
 
 // Single token per tier — e.g. breakpoint.<tier>, css_selector.<tier>.
+// Optional src.extraTokens appends flat, non-tiered siblings (full dotted
+// path, resolved against the whole file rather than rootPath) as trailing
+// rows — e.g. min_supported_width sitting next to the breakpoint.<tier> tree.
 function materializeJsonTree(src) {
   const tree = loadJson(src.file);
   const root = getByPath(tree, src.rootPath);
@@ -126,6 +129,15 @@ function materializeJsonTree(src) {
     if (!node || node.$value === undefined) continue;
     rows.push({
       tokenName:   src.tokenNameTemplate.replace('<tier>', tier),
+      description: node.$description || '',
+      value:       resolveValue(node.$value, lookup) ?? node.$value
+    });
+  }
+  for (const extra of (src.extraTokens || [])) {
+    const node = getByPath(tree, extra.path);
+    if (!node || node.$value === undefined) continue;
+    rows.push({
+      tokenName:   extra.path,
       description: node.$description || '',
       value:       resolveValue(node.$value, lookup) ?? node.$value
     });
@@ -157,7 +169,11 @@ function materializeJsonTreeLeaves(src) {
 }
 
 // One row per leaf, value resolved per mode (xs/sm/md/lg/xl/2xl) from per-tier
-// JSON files. Multi-value table.
+// JSON files. Multi-value table — one shared Description cell per leaf, so it
+// cannot show any single mode's own $description (that text names its own
+// viewport, e.g. "...in the xs viewport", which reads as if the other 5
+// mode columns in the same row don't exist). src.leafDescriptions supplies a
+// mode-neutral description per leaf for this shared cell instead.
 function materializeJsonPerMode(src) {
   const modeValues = {}; // { modeName: { leafName: { $value, $description } } }
   for (const [mode, file] of Object.entries(src.modeFiles)) {
@@ -170,17 +186,15 @@ function materializeJsonPerMode(src) {
   const rows = [];
   for (const leaf of src.leafKeys) {
     const valuesByMode = {};
-    let description = '';
     for (const mode of src.modeOrder) {
       const node = modeValues[mode] && modeValues[mode][leaf];
       if (!node) { valuesByMode[mode] = ''; continue; }
       const resolved = resolveValue(node.$value, lookup);
       valuesByMode[mode] = resolved ?? node.$value ?? '';
-      if (!description && node.$description) description = node.$description;
     }
     rows.push({
       tokenName:   src.tokenNameTemplate.replace('<leaf>', leaf),
-      description,
+      description: (src.leafDescriptions && src.leafDescriptions[leaf]) || '',
       valuesByMode,
       modeOrder:   src.modeOrder.slice()
     });
