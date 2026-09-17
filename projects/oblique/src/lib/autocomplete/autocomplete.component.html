@@ -1,8 +1,8 @@
 @if (withErrorMessages()) {
 	<mat-form-field obErrorMessages>
 		<mat-icon svgIcon="search" matPrefix />
-		@if (inputLabelKey?.length > 0) {
-			<mat-label>{{ inputLabelKey | translate }}</mat-label>
+		@if (inputLabelKey().length > 0) {
+			<mat-label>{{ inputLabelKey() | translate }}</mat-label>
 		}
 		<input
 			(blur)="onModelTouched()"
@@ -25,8 +25,8 @@
 } @else {
 	<mat-form-field>
 		<mat-icon svgIcon="search" matPrefix />
-		@if (inputLabelKey?.length > 0) {
-			<mat-label>{{ inputLabelKey | translate }}</mat-label>
+		@if (inputLabelKey().length > 0) {
+			<mat-label>{{ inputLabelKey() | translate }}</mat-label>
 		}
 		<input
 			(blur)="onModelTouched()"
@@ -49,7 +49,7 @@
 
 <mat-autocomplete #autocomplete="matAutocomplete" [displayWith]="displayWith()" class="ob-autocomplete-panel">
 	<ng-container
-		*ngTemplateOutlet="hasGroupOptions ? optionGroups : onlyOptions; context: { $implicit: (filteredOptions$ | async) }"
+		*ngTemplateOutlet="hasGroupOptions() ? optionGroups : onlyOptions; context: { $implicit: filteredOptions() }"
 	/>
 
 	<ng-template #optionGroups let-options>
@@ -57,7 +57,7 @@
 			<mat-optgroup [disabled]="group['disabled']" [label]="group['groupLabel']">
 				<ng-container
 					*ngTemplateOutlet="
-						group['groupOptions']?.length > 0 && hasGroupOptions ? onlyOptions : optionGroups;
+						group['groupOptions']?.length > 0 && hasGroupOptions() ? onlyOptions : optionGroups;
 						context: { $implicit: group['groupOptions'] }
 					"
 				/>
@@ -68,7 +68,7 @@
 	<ng-template #onlyOptions let-options>
 		@for (option of options; track option) {
 			<mat-option
-				(onSelectionChange)="selectedOptionChange.emit(option)"
+				(onSelectionChange)="selectionChange(option, $event)"
 				[value]="option.label"
 				[disabled]="option.disabled"
 			>
@@ -80,17 +80,16 @@
 				>
 					<span
 						[innerHTML]="
-							displayWith()(option.label)
-								| obHighlightTextPipe: (searchText$ | async) : highlightCssClass() : filterRegexFlag()
+							displayWith()(option.label) | obHighlightTextPipe: searchText() : highlightCssClass() : filterRegexFlag()
 						"
 					></span>
 				</span>
 			</mat-option>
 		}
 	</ng-template>
-	@if (noResultKey?.length > 0) {
-		@if ((filteredOptions$ | async)?.length === 0) {
-			<mat-option>{{ noResultKey | translate }}</mat-option>
+	@if (noResultKey().length > 0) {
+		@if (filteredOptions().length === 0) {
+			<mat-option>{{ noResultKey() | translate }}</mat-option>
 		}
 	}
 </mat-autocomplete>
