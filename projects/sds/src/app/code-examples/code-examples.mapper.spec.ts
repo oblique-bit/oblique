@@ -1,7 +1,7 @@
 import {getCodeExampleComponent} from './code-examples.mapper';
 
 describe('getCodeExampleComponent', () => {
-	it.skipIf(true).each([
+	it.each([
 		{slug: 'alert', name: 'AlertCodeExamplesComponent'},
 		{slug: 'master-layout', name: 'MasterLayoutCodeExamplesComponent'},
 		{slug: 'master-layout-12', name: 'MasterLayoutCodeExamplesComponent'},
@@ -10,7 +10,8 @@ describe('getCodeExampleComponent', () => {
 		{slug: 'popover-12', name: 'Popover12CodeExamplesComponent'},
 		{slug: 'version', name: 'VersionCodeExamplesComponent'},
 	])('should return "$name" with "$slug" slug', ({name, slug}) => {
-		expect(getCodeExampleComponent(slug).name).toBe(name);
+		// Vitest compiles TS with Angular's which prefixes component class names with `_`
+		expect(getCodeExampleComponent(slug).name.replace(/^_/u, '')).toBe(name);
 	});
 
 	it('should return "undefined" with "inexistent" slug', () => {

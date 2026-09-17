@@ -46,8 +46,9 @@ describe(FeedbackTriggerDirective.name, () => {
 			expect(service.initializeCollector).toHaveBeenCalledWith('6dfd32b3');
 		});
 
-		test.skip('fallbackDialog is FeedbackFormComponent', () => {
-			expect(service.fallbackDialog.name).toBe('FeedbackFormComponent');
+		test('fallbackDialog is FeedbackFormComponent', () => {
+			// Vitest compiles TS with Angular's which prefixes component class names with `_`
+			expect(service.fallbackDialog.name.replace(/^_/u, '')).toBe('FeedbackFormComponent');
 		});
 
 		test('default values of the service', () => {
