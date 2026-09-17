@@ -2,7 +2,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FeedbackFormComponent} from './feedback-form.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {FormGroup} from '@angular/forms';
-import {Observable, firstValueFrom} from 'rxjs';
+import {Observable, firstValueFrom, skip} from 'rxjs';
 import type {Mock} from 'vitest';
 import type {Fields} from './feedback-form.model';
 
@@ -92,8 +92,14 @@ describe(FeedbackFormComponent.name, () => {
 
 	describe('validation', () => {
 		describe.each(['summary', 'description', 'url', 'name', 'email'])('required', control => {
-			test.skipIf(control === 'url')(`that ${control} emits an error when empty`, async () => {
-				const errorPromise = firstValueFrom(component.errors[`${control}$` as Fields]);
+			test(`that ${control} emits an error when empty`, async () => {
+				// `url` has a non-empty `defaultValue`, so its first emission carries no error; skip it so the
+				// error emitted once the field is emptied is awaited
+				const errorPromise = firstValueFrom(
+					control === 'url'
+						? component.errors[`${control}$` as Fields].pipe(skip(1))
+						: component.errors[`${control}$` as Fields]
+				);
 				component.formGroup.patchValue({[control]: 'a'});
 				component.formGroup.patchValue({[control]: ''});
 				expect(await errorPromise).toBe(`Please enter a ${control}`);
