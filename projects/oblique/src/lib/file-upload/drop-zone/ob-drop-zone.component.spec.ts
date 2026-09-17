@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, OutputEmitterRef, Pipe, PipeTransform} from '@angular/core';
 import {outputToObservable} from '@angular/core/rxjs-interop';
-import {first, skip} from 'rxjs';
+import {firstValueFrom, skip} from 'rxjs';
 import {ObIUploadEvent} from '../file-upload.model';
 import {ObDropZoneComponent} from './ob-drop-zone.component';
 import {ObValidationService} from './validation.service';
@@ -126,15 +126,11 @@ describe('DropZoneComponent', () => {
 
 			describe('chosen event', () => {
 				let event: ObIUploadEvent;
-				beforeEach(done => {
-					outputToObservable(component.uploadEvent)
-						.pipe(first())
-						.subscribe(evt => {
-							event = evt;
-							done();
-						});
-					component.addFiles(files);
-				});
+				beforeEach(async () => {
+					const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
+				component.addFiles(files);
+				event = await eventPromise;
+			});
 
 				it('should emit', () => {
 					expect(event).toBeDefined();
@@ -156,14 +152,11 @@ describe('DropZoneComponent', () => {
 			describe('errored event', () => {
 				let event: ObIUploadEvent;
 
-				beforeEach(done => {
-					outputToObservable(component.uploadEvent)
-						.pipe(skip(1))
-						.subscribe(evt => {
-							event = evt;
-							done();
-						});
+				beforeEach(async () => {
+					jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([files[0]]);
+					const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent).pipe(skip(1)));
 					component.addFiles(files);
+					event = await eventPromise;
 				});
 
 				it('should emit', () => {

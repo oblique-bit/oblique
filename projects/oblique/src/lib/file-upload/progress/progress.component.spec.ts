@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {HttpEvent, HttpEventType, HttpResponse} from '@angular/common/http';
 import {of} from 'rxjs';
-import {first} from 'rxjs/operators';
+import {firstValueFrom} from 'rxjs';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObMockFileUploadService} from '../_mocks/mock-file-upload.sevice';
@@ -99,15 +99,13 @@ describe('ObProgressComponent', () => {
 						describe('when confirmed', () => {
 							let file: ObIFile;
 							let event: ObIUploadEvent;
-							beforeEach(done => {
+							beforeEach(async () => {
 								file = component.uploadedFiles.files[0];
 								jest.spyOn(window, 'confirm').mockReturnValue(true);
 								jest.spyOn(file.subscription, 'unsubscribe');
-								component.uploadEvent.subscribe(evt => {
-									event = evt;
-									done();
-								});
+								const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 								component.cancelUpload(file);
+								event = await eventPromise;
 							});
 
 							it('should unsubscribe', () => {
@@ -186,15 +184,13 @@ describe('ObProgressComponent', () => {
 						describe('when confirmed', () => {
 							let file: ObIFile;
 							let event: ObIUploadEvent;
-							beforeEach(done => {
+							beforeEach(async () => {
 								file = component.uploadedFiles.files[0];
 								jest.spyOn(window, 'confirm').mockReturnValue(true);
 								jest.spyOn(file.subscription, 'unsubscribe');
-								component.uploadEvent.subscribe(evt => {
-									event = evt;
-									done();
-								});
+								const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 								component.cancelUpload(file);
+								event = await eventPromise;
 							});
 
 							it('should unsubscribe', () => {
@@ -273,15 +269,13 @@ describe('ObProgressComponent', () => {
 						describe('when cancelled', () => {
 							let file: ObIFile;
 							let event: ObIUploadEvent;
-							beforeEach(done => {
+							beforeEach(async () => {
 								file = component.uploadedFiles.files[0];
 								jest.spyOn(file.subscription, 'unsubscribe');
 								jest.spyOn(window, 'confirm').mockReturnValue(true);
-								component.uploadEvent.subscribe(evt => {
-									event = evt;
-									done();
-								});
+								const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 								component.cancelUpload(file);
+								event = await eventPromise;
 							});
 
 							it('should unsubscribe', () => {
@@ -505,16 +499,12 @@ describe('ObProgressComponent', () => {
 				describe('uncompleted file', () => {
 					let file: ObIFile;
 					let event: ObIUploadEvent;
-					beforeEach(done => {
+					beforeEach(async () => {
 						file = component.uploadedFiles.files[0];
 						jest.spyOn(file.subscription, 'unsubscribe');
-						outputToObservable(component.uploadEvent)
-							.pipe(first())
-							.subscribe(evt => {
-								event = evt;
-								done();
-							});
+						const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 						component.cancelUpload(file);
+						event = await eventPromise;
 					});
 
 					it('should unsubscribe', () => {
