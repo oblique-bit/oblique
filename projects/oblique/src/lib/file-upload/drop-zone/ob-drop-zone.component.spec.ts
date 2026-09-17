@@ -104,7 +104,7 @@ describe('DropZoneComponent', () => {
 				expect(event).toBeDefined();
 			});
 
-			it('should emit an ObIUploadEvent of type chosen', () => {
+			it('should emit an ObIUploadEvent of type errored', () => {
 				expect(event.type).toBe('errored');
 			});
 

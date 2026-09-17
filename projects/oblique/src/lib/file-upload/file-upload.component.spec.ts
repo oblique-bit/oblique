@@ -41,7 +41,7 @@ describe('ObFileUploadComponent', () => {
 		expect(component.showLoadingBox).toBe(false);
 	});
 
-	it('should have a uploadEvent EventEmitter', () => {
+	it('should have a uploadEvent OutputEmitterRef', () => {
 		expect(component.uploadEvent instanceof OutputEmitterRef).toBe(true);
 	});
 
