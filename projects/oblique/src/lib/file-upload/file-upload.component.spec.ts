@@ -1,6 +1,7 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, OutputEmitterRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {outputToObservable} from '@angular/core/rxjs-interop';
+import {firstValueFrom} from 'rxjs';
 import {ObFileUploadComponent} from './file-upload.component';
 import {ObEUploadEventType, ObIUploadEvent} from './file-upload.model';
 import {provideObliqueTestingConfiguration} from '../utilities';
@@ -52,13 +53,10 @@ describe('ObFileUploadComponent', () => {
 
 			describe('with no uploadUrl', () => {
 				let event: ObIUploadEvent;
-				beforeEach(done => {
-					fixture.componentRef.setInput('uploadUrl', undefined);
-					outputToObservable(component.uploadEvent).subscribe(evt => {
-						event = evt;
-						done();
-					});
+				beforeEach(async () => {
+					const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 					component.processEvent(chosenEvent);
+					event = await eventPromise;
 				});
 
 				it('should be forwarded', () => {
@@ -76,13 +74,11 @@ describe('ObFileUploadComponent', () => {
 
 			describe('with an uploadUrl', () => {
 				let event: ObIUploadEvent;
-				beforeEach(done => {
+				beforeEach(async () => {
 					fixture.componentRef.setInput('uploadUrl', 'some/path');
-					outputToObservable(component.uploadEvent).subscribe(evt => {
-						event = evt;
-						done();
-					});
+					const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 					component.processEvent(chosenEvent);
+					event = await eventPromise;
 				});
 
 				it('should be forwarded', () => {
@@ -102,12 +98,10 @@ describe('ObFileUploadComponent', () => {
 		describe('uploaded event', () => {
 			const uploadedEvent = {type: ObEUploadEventType.UPLOADED, files};
 			let event: ObIUploadEvent;
-			beforeEach(done => {
-				outputToObservable(component.uploadEvent).subscribe(evt => {
-					event = evt;
-					done();
-				});
+			beforeEach(async () => {
+				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 				component.processEvent(uploadedEvent);
+				event = await eventPromise;
 			});
 
 			it('should be forwarded', () => {
@@ -126,12 +120,10 @@ describe('ObFileUploadComponent', () => {
 		describe('canceled event', () => {
 			const canceledEvent = {type: ObEUploadEventType.CANCELED, files};
 			let event: ObIUploadEvent;
-			beforeEach(done => {
-				outputToObservable(component.uploadEvent).subscribe(evt => {
-					event = evt;
-					done();
-				});
+			beforeEach(async () => {
+				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 				component.processEvent(canceledEvent);
+				event = await eventPromise;
 			});
 
 			it('should be forwarded', () => {
@@ -150,12 +142,10 @@ describe('ObFileUploadComponent', () => {
 		describe('other event', () => {
 			const uploadedEvent = {type: ObEUploadEventType.DELETED, files};
 			let event: ObIUploadEvent;
-			beforeEach(done => {
-				outputToObservable(component.uploadEvent).subscribe(evt => {
-					event = evt;
-					done();
-				});
+			beforeEach(async () => {
+				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 				component.processEvent(uploadedEvent);
+				event = await eventPromise;
 			});
 
 			it('should be forwarded', () => {

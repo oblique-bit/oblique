@@ -165,16 +165,15 @@ describe('ObFileInfoComponent', () => {
 			});
 
 			describe('with erroneous back-end call', () => {
-				let event: ObIUploadEvent;
 				const errorMessage = new Error('Back-end error');
 
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(uploadService, 'getUploadedFiles').mockReturnValue(throwError(() => errorMessage));
-					component.uploadEvent.subscribe(evt => {
-						event = evt;
-						done();
+					const eventPromise = new Promise<ObIUploadEvent>(resolve => {
+						component.uploadEvent.subscribe(event => resolve(event));
 					});
 					uploadComplete.next();
+					event = await eventPromise;
 				});
 
 				it('should emit an ERRORED event', () => {
@@ -268,14 +267,13 @@ describe('ObFileInfoComponent', () => {
 			});
 
 			describe('should emit', () => {
-				let event;
-				beforeEach(done => {
+				beforeEach(async () => {
 					component.selection.clear();
-					component.uploadEvent.subscribe(evt => {
-						event = evt;
-						done();
+					const eventPromise = new Promise<ObIUploadEvent>(resolve => {
+						component.uploadEvent.subscribe(event => resolve(event));
 					});
 					component.selectOrUnselectAllItems();
+					event = await eventPromise;
 				});
 
 				it('a "selected" event', () => {
