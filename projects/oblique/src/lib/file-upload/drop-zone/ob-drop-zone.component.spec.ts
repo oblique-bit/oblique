@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, OutputEmitterRef, Pipe, PipeTransform} from '@angular/core';
 import {outputToObservable} from '@angular/core/rxjs-interop';
-import {firstValueFrom, skip} from 'rxjs';
+import {firstValueFrom, take, toArray} from 'rxjs';
 import {ObIUploadEvent} from '../file-upload.model';
 import {ObDropZoneComponent} from './ob-drop-zone.component';
 import {ObValidationService} from './validation.service';
@@ -120,27 +120,34 @@ describe('DropZoneComponent', () => {
 		});
 
 		describe('uploadEvent with both valid and invalid files', () => {
-			beforeEach(() => {
+			const chosenEvent = {files: [files[0]], type: 'chosen'};
+			const erroredEvent = {files: [files[1]], type: 'errored'};
+			let events: ObIUploadEvent[];
+
+			beforeEach(async () => {
 				jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([files[0]]);
+				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent).pipe(take(2), toArray()));
+				component.addFiles(files);
+				events = await eventPromise;
 			});
 
 			describe('chosen event', () => {
 				let event: ObIUploadEvent;
-				beforeEach(async () => {
-					const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
-				component.addFiles(files);
-				event = await eventPromise;
-			});
+
+				beforeEach(() => {
+					event = events[0];
+				});
 
 				it('should emit', () => {
 					expect(event).toBeDefined();
 				});
 
 				it('should emit an ObIUploadEvent of type chosen', () => {
-					expect(event.type).toBe('chosen');
+					expect(event.type).toEqual(chosenEvent.type);
 				});
+
 				it('should emit an ObIUploadEvent with valid files', () => {
-					expect(event.files).toEqual([files[0]]);
+					expect(event.files).toEqual(chosenEvent.files);
 				});
 
 				it('should reset fileinput', () => {
@@ -152,11 +159,8 @@ describe('DropZoneComponent', () => {
 			describe('errored event', () => {
 				let event: ObIUploadEvent;
 
-				beforeEach(async () => {
-					jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([files[0]]);
-					const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent).pipe(skip(1)));
-					component.addFiles(files);
-					event = await eventPromise;
+				beforeEach(() => {
+					event = events[1];
 				});
 
 				it('should emit', () => {
@@ -164,11 +168,11 @@ describe('DropZoneComponent', () => {
 				});
 
 				it('should emit an ObIUploadEvent of type errored', () => {
-					expect(event.type).toEqual('errored');
+					expect(event.type).toEqual(erroredEvent.type);
 				});
 
 				it('should emit an ObIUploadEvent with valid files', () => {
-					expect(event.files).toEqual([files[1]]);
+					expect(event.files).toEqual(erroredEvent.files);
 				});
 
 				it('should reset fileinput', () => {
