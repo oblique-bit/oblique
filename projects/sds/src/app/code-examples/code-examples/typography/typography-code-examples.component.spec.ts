@@ -9,7 +9,7 @@ import {TypographyExampleHeadingsPreviewComponent} from './previews/headings/typ
 import {TypographyExampleMixinsPreviewComponent} from './previews/mixins/typography-example-mixins-preview.component';
 import {TypographyExampleListsPreviewComponent} from './previews/lists/typography-example-lists-preview.component';
 
-describe.skip(TypographyCodeExamplesComponent.name, () => {
+describe(TypographyCodeExamplesComponent.name, () => {
 	let component: TypographyCodeExamplesComponent;
 	let fixture: ComponentFixture<TypographyCodeExamplesComponent>;
 

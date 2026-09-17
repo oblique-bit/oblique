@@ -6,7 +6,7 @@ import {SpacingCodeExamplesComponent} from './spacing-code-examples.component';
 import {SpacingExampleSpacingPreviewComponent} from './previews/spacing/spacing-example-spacing-preview.component';
 import {By} from '@angular/platform-browser';
 
-describe.skip(SpacingCodeExamplesComponent.name, () => {
+describe(SpacingCodeExamplesComponent.name, () => {
 	let component: SpacingCodeExamplesComponent;
 	let fixture: ComponentFixture<SpacingCodeExamplesComponent>;
 

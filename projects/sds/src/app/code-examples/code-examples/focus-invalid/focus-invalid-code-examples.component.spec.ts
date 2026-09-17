@@ -5,7 +5,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FocusInvalidCodeExamplesComponent} from './focus-invalid-code-examples.component';
 import {provideNativeDateAdapter} from '@angular/material/core';
 
-describe.skip(FocusInvalidCodeExamplesComponent.name, () => {
+describe(FocusInvalidCodeExamplesComponent.name, () => {
 	let component: FocusInvalidCodeExamplesComponent;
 	let fixture: ComponentFixture<FocusInvalidCodeExamplesComponent>;
 

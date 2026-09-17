@@ -5,7 +5,7 @@ import {SelectableCodeExamplesComponent} from './selectable-code-examples.compon
 import {By} from '@angular/platform-browser';
 import {ObSelectableGroupDirective, WINDOW} from '@oblique/oblique';
 
-describe.skip(SelectableCodeExamplesComponent.name, () => {
+describe(SelectableCodeExamplesComponent.name, () => {
 	let component: SelectableCodeExamplesComponent;
 	let fixture: ComponentFixture<SelectableCodeExamplesComponent>;
 

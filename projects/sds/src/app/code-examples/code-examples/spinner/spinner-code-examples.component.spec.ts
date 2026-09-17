@@ -2,7 +2,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {SpinnerCodeExamplesComponent} from './spinner-code-examples.component';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
-describe.skip('SpinnerCodeExamplesComponent', () => {
+describe('SpinnerCodeExamplesComponent', () => {
 	let component: SpinnerCodeExamplesComponent;
 	let fixture: ComponentFixture<SpinnerCodeExamplesComponent>;
 

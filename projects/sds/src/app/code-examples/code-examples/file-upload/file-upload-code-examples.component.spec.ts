@@ -13,7 +13,7 @@ import {
 import {By} from '@angular/platform-browser';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe.skip(FileUploadCodeExamplesComponent.name, () => {
+describe(FileUploadCodeExamplesComponent.name, () => {
 	let component: FileUploadCodeExamplesComponent;
 	let fixture: ComponentFixture<FileUploadCodeExamplesComponent>;
 

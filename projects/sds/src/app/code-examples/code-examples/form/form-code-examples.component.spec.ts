@@ -17,7 +17,7 @@ import {FormExampleInputPrefixesAndSuffixesPreviewComponent} from './previews/in
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
-describe.skip(FormCodeExamplesComponent.name, () => {
+describe(FormCodeExamplesComponent.name, () => {
 	let component: FormCodeExamplesComponent;
 	let fixture: ComponentFixture<FormCodeExamplesComponent>;
 

@@ -6,7 +6,7 @@ import {CollapseCodeExamplesComponent} from './collapse-code-examples.component'
 import {ObCollapseComponent, ObGlobalEventsService, WINDOW} from '@oblique/oblique';
 import {By} from '@angular/platform-browser';
 
-describe.skip(CollapseCodeExamplesComponent.name, () => {
+describe(CollapseCodeExamplesComponent.name, () => {
 	let component: CollapseCodeExamplesComponent;
 	let fixture: ComponentFixture<CollapseCodeExamplesComponent>;
 

@@ -12,7 +12,7 @@ import {TabsComponent} from '../shared/tabs/tabs.component';
 import {IdPipe} from '../shared/id/id.pipe';
 import {CmsRouteRedirector} from '../shared/cms-route-redirector/cms-route-redirector';
 
-describe.skip(TabbedPageComponent.name, () => {
+describe(TabbedPageComponent.name, () => {
 	let component: TabbedPageComponent;
 	let fixture: ComponentFixture<TabbedPageComponent>;
 	let service: CmsRouteRedirector;

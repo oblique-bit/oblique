@@ -6,7 +6,7 @@ import {SlideToggleCodeExamplesComponent} from './slide-toggle-code-examples.com
 import {By} from '@angular/platform-browser';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 
-describe.skip(SlideToggleCodeExamplesComponent.name, () => {
+describe(SlideToggleCodeExamplesComponent.name, () => {
 	let component: SlideToggleCodeExamplesComponent;
 	let fixture: ComponentFixture<SlideToggleCodeExamplesComponent>;
 

@@ -6,7 +6,7 @@ import {GlobalEventsCodeExamplesComponent} from './global-events-code-examples.c
 import {WINDOW} from '@oblique/oblique';
 import {By} from '@angular/platform-browser';
 
-describe.skip(GlobalEventsCodeExamplesComponent.name, () => {
+describe(GlobalEventsCodeExamplesComponent.name, () => {
 	let component: GlobalEventsCodeExamplesComponent;
 	let fixture: ComponentFixture<GlobalEventsCodeExamplesComponent>;
 

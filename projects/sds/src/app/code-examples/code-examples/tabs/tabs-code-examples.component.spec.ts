@@ -3,7 +3,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {TabsCodeExamplesComponent} from './tabs-code-examples.component';
 import {By} from '@angular/platform-browser';
 
-describe.skip(TabsCodeExamplesComponent.name, () => {
+describe(TabsCodeExamplesComponent.name, () => {
 	let component: TabsCodeExamplesComponent;
 	let fixture: ComponentFixture<TabsCodeExamplesComponent>;
 

@@ -8,7 +8,7 @@ import {IconsExampleFontSizePreviewComponent} from './previews/font-size/icons-e
 import {IconsExampleDefaultPreviewComponent} from './previews/default/icons-example-default-preview.component';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
-describe.skip(IconsCodeExamplesComponent.name, () => {
+describe(IconsCodeExamplesComponent.name, () => {
 	let component: IconsCodeExamplesComponent;
 	let fixture: ComponentFixture<IconsCodeExamplesComponent>;
 

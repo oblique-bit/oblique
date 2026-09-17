@@ -1,7 +1,7 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ListGroupCodeExamplesComponent} from './list-group-code-examples.component';
 
-describe.skip(ListGroupCodeExamplesComponent.name, () => {
+describe(ListGroupCodeExamplesComponent.name, () => {
 	let component: ListGroupCodeExamplesComponent;
 	let fixture: ComponentFixture<ListGroupCodeExamplesComponent>;
 

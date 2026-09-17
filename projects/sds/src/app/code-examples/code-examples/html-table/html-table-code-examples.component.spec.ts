@@ -4,7 +4,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {HtmlTableCodeExamplesComponent} from './html-table-code-examples.component';
 
-describe.skip(HtmlTableCodeExamplesComponent.name, () => {
+describe(HtmlTableCodeExamplesComponent.name, () => {
 	let component: HtmlTableCodeExamplesComponent;
 	let fixture: ComponentFixture<HtmlTableCodeExamplesComponent>;
 

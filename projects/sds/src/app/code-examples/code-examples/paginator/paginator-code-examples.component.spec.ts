@@ -6,7 +6,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {ObMockTranslateService} from '@oblique/oblique';
 import {TranslateService} from '@ngx-translate/core';
 
-describe.skip(PaginatorCodeExamplesComponent.name, () => {
+describe(PaginatorCodeExamplesComponent.name, () => {
 	let fixture: ComponentFixture<PaginatorCodeExamplesComponent>;
 	let component: PaginatorCodeExamplesComponent;
 

@@ -8,7 +8,7 @@ import {NotificationExampleDefaultPreviewComponent} from './previews/default/not
 import {NotificationExampleOtherOptionsPreviewComponent} from './previews/other-options/notification-example-other-options-preview.component';
 import {WINDOW} from '@oblique/oblique';
 
-describe.skip(NotificationCodeExamplesComponent.name, () => {
+describe(NotificationCodeExamplesComponent.name, () => {
 	let component: NotificationCodeExamplesComponent;
 	let fixture: ComponentFixture<NotificationCodeExamplesComponent>;
 

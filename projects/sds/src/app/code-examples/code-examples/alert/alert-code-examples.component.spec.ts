@@ -5,7 +5,7 @@ import {ObAlertComponent, ObMockTranslateService} from '@oblique/oblique';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {By} from '@angular/platform-browser';
 
-describe.skip(AlertCodeExamplesComponent.name, () => {
+describe(AlertCodeExamplesComponent.name, () => {
 	let component: AlertCodeExamplesComponent;
 	let fixture: ComponentFixture<AlertCodeExamplesComponent>;
 

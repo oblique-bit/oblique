@@ -9,7 +9,7 @@ import {Popover12ExampleEventsPreviewComponent} from './previews/events/popover1
 import {Popover12ExampleOtherOptionsPreviewComponent} from './previews/other-options/popover12-example-other-options-preview.component';
 import {Popover12ExampleDefaultPreviewComponent} from './previews/default/popover12-example-default-preview.component';
 
-describe.skip(Popover12CodeExamplesComponent.name, () => {
+describe(Popover12CodeExamplesComponent.name, () => {
 	let component: Popover12CodeExamplesComponent;
 	let fixture: ComponentFixture<Popover12CodeExamplesComponent>;
 

@@ -4,7 +4,7 @@ import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {ProgressBarCodeExamplesComponent} from './progress-bar-code-examples.component';
 
-describe.skip(ProgressBarCodeExamplesComponent.name, () => {
+describe(ProgressBarCodeExamplesComponent.name, () => {
 	let component: ProgressBarCodeExamplesComponent;
 	let fixture: ComponentFixture<ProgressBarCodeExamplesComponent>;
 

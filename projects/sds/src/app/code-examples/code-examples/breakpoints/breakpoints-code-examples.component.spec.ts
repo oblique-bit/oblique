@@ -7,7 +7,7 @@ import {BreakpointsExampleUpPreviewComponent} from './previews/breakpoints/up/br
 import {BreakpointsExampleDownPreviewComponent} from './previews/breakpoints/down/breakpoints-example-down-preview.component';
 import {By} from '@angular/platform-browser';
 
-describe.skip(BreakpointsCodeExamplesComponent.name, () => {
+describe(BreakpointsCodeExamplesComponent.name, () => {
 	let component: BreakpointsCodeExamplesComponent;
 	let fixture: ComponentFixture<BreakpointsCodeExamplesComponent>;
 

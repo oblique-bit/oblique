@@ -6,7 +6,7 @@ import {LanguageCodeExamplesComponent} from './language-code-examples.component'
 import {By} from '@angular/platform-browser';
 import {LanguageExampleDefaultPreviewComponent} from './previews/default/language-example-default-preview.component';
 
-describe.skip(LanguageCodeExamplesComponent.name, () => {
+describe(LanguageCodeExamplesComponent.name, () => {
 	let component: LanguageCodeExamplesComponent;
 	let fixture: ComponentFixture<LanguageCodeExamplesComponent>;
 

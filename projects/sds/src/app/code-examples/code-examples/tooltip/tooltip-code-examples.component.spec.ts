@@ -8,7 +8,7 @@ import {By} from '@angular/platform-browser';
 import {TooltipExamplePositionPreviewComponent} from './previews/position/tooltip-example-position-preview.component';
 import {TooltipExampleBasicPreviewComponent} from './previews/basic/tooltip-example-basic-preview.component';
 
-describe.skip(TooltipCodeExamplesComponent.name, () => {
+describe(TooltipCodeExamplesComponent.name, () => {
 	let component: TooltipCodeExamplesComponent;
 	let fixture: ComponentFixture<TooltipCodeExamplesComponent>;
 

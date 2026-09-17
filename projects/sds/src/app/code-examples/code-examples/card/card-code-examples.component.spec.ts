@@ -3,7 +3,7 @@ import {CardCodeExamplesComponent} from './card-code-examples.component';
 import {RouterModule} from '@angular/router';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
-describe.skip('CardCodeExamplesComponent', () => {
+describe('CardCodeExamplesComponent', () => {
 	let component: CardCodeExamplesComponent;
 	let fixture: ComponentFixture<CardCodeExamplesComponent>;
 
