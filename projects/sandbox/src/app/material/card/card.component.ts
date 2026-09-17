@@ -52,7 +52,7 @@ export class CardComponent {
 
 	toggleCheckboxMode(): void {
 		this.checkboxMode = !this.checkboxMode;
-		this.selectableGroup().mode = this.getSelectMode();
+		this.selectableGroup()?.mode.set(this.getSelectMode());
 	}
 
 	toggleAlertVisibility(): void {
