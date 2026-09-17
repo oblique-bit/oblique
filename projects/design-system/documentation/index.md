@@ -4,32 +4,43 @@
 
 ## What is the Oblique Design System?
 
-Oblique 16 introduces the Oblique Design System for the first time, alongside
-the existing Oblique library. Today, "Oblique Design System" means design
-tokens and modes, defined once as JSON and generated into Figma variables
-and CSS.
+Oblique 16 introduces the Oblique Design System for the first time, alongside the existing Oblique library. Today, "Oblique Design System" means design tokens and modes, as the source of truth, generated into Figma variables and CSS.
 
-It is currently maintained separately from the rest of Oblique, and will
-integrate with it over time. This first version is for exploring the tokens
-and modes.
+It is currently maintained separately from the rest of Oblique, and will integrate with it over time. This first version is for exploring the tokens and modes.
+
+**Background**
+
+Oblique's CSS variables have grown over time, expanding to meet each project's needs. Design tokens are the natural next step: a systematic, single source of truth that makes it easier to keep an overview as the system keeps growing, and to build further on top of it.
+
+Design tokens are also an answer to demands from several sides at once:
+
+- **End users:** expectations such as dark and light mode
+- **Design workflow:** designers expect a more robust and comprehensive library of pre-made design decisions
+- **Developers:** a predictable structure and clear rationale behind values, to build without guesswork
+- **Management:** faster delivery, less time tied up in support, and consistent quality
+- **Design tooling:** Figma itself has moved toward variables and modes
+
+**Benefits of Design Tokens**
+- A scalable design structure, enriched with context, forming a shared language and bridge between designers, developers, design tools, and AI tools alike
+- DTCG-compliant tokens, compatible with Tokens Studio (the industry-standard token management platform) and exportable to Figma and CSS
+- Shortens the design-to-code path, and speeds up further development
+- Entirely replaces hardcoded values with semantically named tokens, lowering the risk of human error
+- Accumulates development cost savings across all federal applications in the long run
+- Lowers the barrier for product designers to contribute directly to the design system
+- Modes enable context-driven design, adapting to different environments and easing accessibility challenges
 
 **What this release contains**
-- Design tokens for color, typography, dimension, and more (W3C DTCG compliant)
-- Modes: lightness (light/dark), emphasis, UI scale, density, typography
-  context, motion, viewport
+- Design tokens as JSON files for color, typography, dimension, and more
+- Modes: lightness (light/dark), emphasis, UI scale, density, typography context, motion, viewport
+- Figma Library with token-based variables, styles and variable modes
+- Token-based CSS
 
 **What this release does not contain yet**
-- No components, in the token JSON or in the Figma library. The Figma
-  library currently holds variables and text/effect styles only; components
-  are planned for 2027.
+- No components, in the token JSON or in the Figma library; planned for 2027.
 
 **How this relates to Oblique**
 
-"Oblique" without qualification usually means the existing Oblique component
-library, maintained separately from this Design System project and
-continuing unchanged in this release. The Oblique Design System builds the
-token foundation that future components, Oblique's own or otherwise, can be
-built on.
+"Oblique" without qualification usually means the existing Oblique component library, maintained separately from this Design System project and continuing unchanged in this release. The Oblique Design System builds the token foundation that future components, Oblique's own or otherwise, can be built on.
 
 ---
 
@@ -41,10 +52,7 @@ built on.
 
 ## Token types
 
-Sorted along two axes. **Tiers** say where a token sits in the reference
-chain. **Categories** say what kind of value it holds, and cut across every
-tier. For what the `$type` field means and how it maps to Figma/CSS, see the
-[Types Overview](02-token-tiers/00-overview.md).
+Sorted along two axes. **Tiers** say where a token sits in the reference chain. **Categories** say what kind of value it holds, and cut across every tier. For what the `$type` field means and how it maps to Figma/CSS, see the [Types Overview](02-token-tiers/00-overview.md).
 
 **Tiers**
 - [Global Tokens](02-token-tiers/01-global.md)
