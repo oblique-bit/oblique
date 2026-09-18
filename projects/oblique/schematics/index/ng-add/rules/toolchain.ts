@@ -20,10 +20,10 @@ import {
 	replaceInFile,
 	setAngularConfig,
 	setAngularProjectsConfig,
+	setOrCreateAngularProjectsConfig,
 	setRootAngularConfig,
 	writeFile,
 } from '../../utils';
-import {addJest} from './tests';
 
 export function toolchain(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, context: SchematicContext) =>
@@ -34,12 +34,12 @@ export function toolchain(options: ObIOptionsSchema): Rule {
 			removeUnusedScripts(),
 			addPrefix(options.prefix),
 			updateExistingPrefixes(options.prefix),
-			addJest(options.jest),
 			updateEditorConfig(options.eslint),
 			addPrettier(options.eslint),
 			addHusky(options.husky),
 			addEnvironmentFiles(options.environments, options.banner),
 			excludeEnvironmentFiles(),
+			excludeEnvironmentFilesFromTests(),
 			setEnvironments(options.environments),
 		])(tree, context);
 }
@@ -221,6 +221,21 @@ function excludeEnvironmentFiles() {
 		writeFile(tree, tsConfigPath, tsConfig);
 		return tree;
 	};
+}
+
+function excludeEnvironmentFilesFromTests(): Rule {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Toolchain: Exclude environment files from unit tests');
+		setOrCreateAngularProjectsConfig(
+			tree,
+			['architect', 'test', 'options', 'exclude'],
+			(existing: string[] | undefined) => [
+				...(existing ?? []).filter(current => current !== 'src/environments/**'),
+				'src/environments/**',
+			]
+		);
+		return tree;
+	});
 }
 
 function getEnvironmentFileContent(environment: string, hasBanner: boolean): string {

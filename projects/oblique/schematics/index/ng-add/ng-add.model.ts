@@ -8,7 +8,6 @@ export interface ObIOptionsSchema {
 	externalLink: boolean;
 	httpInterceptors: boolean;
 	husky: boolean;
-	jest: boolean;
 	mandatory: boolean;
 	prefix: string;
 	title: string;

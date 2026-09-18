@@ -49,7 +49,6 @@ describe('Ob new command', () => {
 			'--http-interceptors',
 			'--no-banner',
 			'--external-link',
-			'--jest',
 			'--eslint',
 			'--husky',
 			...options,
@@ -218,11 +217,6 @@ describe('Ob new command', () => {
 						description: 'Option to add the external link module',
 						expected:
 							"--externalLink [boolean] External link: If true, it imports the ObExternalLinkModule. This feature automatically enhances external links. See more information at Oblique's External link API at https://oblique.bit.admin.ch/components/external-link/api (default: true)",
-					},
-					{
-						description: 'Option to use Jest for unit tests',
-						expected:
-							"--jest [boolean] Jest for unit tests: If true, Karma/Jasmine will be replaced with Jest as your application's testing framework. See more information at Jest at npm https://www.npmjs.com/package/jest and Jest's documentation: https://jestjs.io/docs/getting-started (default: true)",
 					},
 					{
 						description: 'Option to create an .npmrc file',

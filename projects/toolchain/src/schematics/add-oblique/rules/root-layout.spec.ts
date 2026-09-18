@@ -7,7 +7,12 @@ import rootLayout from './root-layout';
 
 describe('rootLayout', () => {
 	const runner = new SchematicTestRunner('schematics', join(__dirname, '../../collection.json'));
-	const {logger, loggerGroups} = obMockLogger();
+	const {logger, loggerGroups, clearGroups} = obMockLogger();
+
+	afterEach(() => {
+		vi.clearAllMocks();
+		clearGroups();
+	});
 
 	function createInputTree(): UnitTestTree {
 		const tree = new UnitTestTree(Tree.empty());
@@ -75,6 +80,113 @@ describe('rootLayout', () => {
 		expect(spec).toContain("describe('App'");
 		expect(spec).toContain('should create the app');
 		expect(spec).toContain('TestBed.configureTestingModule');
+	});
+
+	test('adds master layout to the spec test bed', async () => {
+		const inputTree = createInputTree();
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		expect(spec).toContain('ObMasterLayoutModule');
+		expect(spec).toContain('provideObliqueTestingConfiguration');
+		expect(spec).toContain("from '@oblique/oblique'");
+		// The TestBed configuration must stay valid: the import lands after the App import,
+		// the provider before the imports array.
+		expect(spec.indexOf("from '@oblique/oblique'")).toBeGreaterThan(spec.indexOf('import {App}'));
+		expect(spec).toContain('providers: [provideObliqueTestingConfiguration()]');
+	});
+
+	test('adds a single oblique import statement to the spec', async () => {
+		const inputTree = createInputTree();
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		expect(spec.match(/from '@oblique\/oblique'/gu)).toHaveLength(1);
+	});
+
+	test('skips the spec test bed change when the spec already imports from oblique', async () => {
+		const inputTree = createInputTree();
+		inputTree.overwrite(
+			'src/app/app.spec.ts',
+			`import {TestBed} from '@angular/core/testing';\nimport {ObMasterLayoutModule} from '@oblique/oblique';\nimport {App} from './app';\ndescribe('App', () => {\n\tit('should create the app', () => {});\n});`
+		);
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		expect(spec).not.toContain('provideObliqueTestingConfiguration');
+		expect(spec.match(/ObMasterLayoutModule/gu)).toHaveLength(1);
+	});
+
+	test('warns and skips the spec test bed change when the spec does not match the expected shapes', async () => {
+		const inputTree = createInputTree();
+		inputTree.overwrite('src/app/app.spec.ts', 'export const nothingHere = true;\n');
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		expect(spec).toBe('export const nothingHere = true;\n');
+		expect(loggerGroups[0].warn).toHaveBeenCalledWith(expect.stringContaining('app.spec.ts'));
+	});
+
+	test('adds the provider when the spec has an empty imports array', async () => {
+		const inputTree = createInputTree();
+		inputTree.overwrite(
+			'src/app/app.spec.ts',
+			`import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: [],\n\t\t\tdeclarations: [App],\n\t\t}).compileComponents();\n\t});\n});`
+		);
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		expect(spec).toContain('ObMasterLayoutModule');
+		expect(spec).toContain('provideObliqueTestingConfiguration()');
+	});
+
+	test('warns and skips the spec test bed change when the imports property is not an array', async () => {
+		const inputTree = createInputTree();
+		const specContent = `import {TestBed} from '@angular/core/testing';\nimport {RouterModule} from '@angular/router';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: RouterModule,\n\t\t\tdeclarations: [App],\n\t\t}).compileComponents();\n\t});\n});`;
+		inputTree.overwrite('src/app/app.spec.ts', specContent);
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		expect(spec).toBe(specContent);
+		expect(loggerGroups[0].warn).toHaveBeenCalledWith(expect.stringContaining('imports'));
+	});
+
+	test('warns and skips the spec test bed change when the spec has no TestBed.configureTestingModule call', async () => {
+		const inputTree = createInputTree();
+		const specContent = `import {App} from './app';\ndescribe('App', () => {\n\tit('should create the app', () => {});\n});`;
+		inputTree.overwrite('src/app/app.spec.ts', specContent);
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		expect(spec).toBe(specContent);
+		expect(loggerGroups[0].warn).toHaveBeenCalledWith(expect.stringContaining('TestBed.configureTestingModule'));
+	});
+
+	test('warns and skips the spec test bed change when the TestBed argument is not an object literal', async () => {
+		const inputTree = createInputTree();
+		const specContent = `import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule(App);\n\t});\n});`;
+		inputTree.overwrite('src/app/app.spec.ts', specContent);
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		expect(spec).toBe(specContent);
+		expect(loggerGroups[0].warn).toHaveBeenCalledWith(expect.stringContaining('object literal'));
+	});
+
+	test('adds the provider to an empty TestBed configuration', async () => {
+		const inputTree = createInputTree();
+		inputTree.overwrite(
+			'src/app/app.spec.ts',
+			`import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({});\n\t});\n});`
+		);
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		// Both properties are new and must be emitted together with a comma between them,
+		// otherwise the generated spec is malformed.
+		expect(spec).toBe(
+			`import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\nimport { ObMasterLayoutModule, provideObliqueTestingConfiguration } from '@oblique/oblique';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\timports: [ObMasterLayoutModule],\n\t\tproviders: [provideObliqueTestingConfiguration()]});\n\t});\n});`
+		);
 	});
 
 	test('logs step', async () => {
