@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, Input, ViewChild, ViewEncapsulation,
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import {ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
+import {ObIFileDescription, ObIUploadEvent, ObTSelectionStatus} from '../file-upload.model';
 
 /**
  *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
@@ -18,22 +18,20 @@ import {ObIFileDescription, ObIUploadEvent} from '../file-upload.model';
 })
 export class ObMockFileInfoComponent {
 	readonly uploadEvent = output<ObIUploadEvent>();
-	@Input() allowTableInfo = true;
-	@Input() getUploadedFilesUrl: string;
 	@Input() deleteUrl: string;
+	@Input() getUploadedFilesUrl: string;
 	@ViewChild(MatSort, {static: true}) sort: MatSort;
 	dataSource = new MatTableDataSource<ObIFileDescription, MatPaginator>([]);
 	displayedColumns: string[];
 	fields: string[];
+	selectionStatus: ObTSelectionStatus = 'none';
 	readonly selection = new SelectionModel<ObIFileDescription>(true, []);
 	readonly COLUMN_SELECT = 'select';
 	readonly COLUMN_ACTION = 'action';
 
 	@Input() mapFunction = (files: ObIFileDescription[]): ObIFileDescription[] => files;
-
-	isAllSelected(): boolean {
-		return true;
-	}
+	@Input() mapFilesToDeleteUrlFunction: (files: ObIFileDescription[]) => string = files =>
+		btoa(JSON.stringify(files.map(file => file.name)));
 
 	selectOrUnselectAllItems(): void {}
 
