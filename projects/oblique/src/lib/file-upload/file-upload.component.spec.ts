@@ -123,18 +123,18 @@ describe('ObFileUploadComponent', () => {
 		});
 
 		describe('canceled event', () => {
-			const uploadedEvent = {type: ObEUploadEventType.CANCELED, files};
+			const canceledEvent = {type: ObEUploadEventType.CANCELED, files};
 			let event: ObIUploadEvent;
 			beforeEach(done => {
 				component.uploadEvent.subscribe(evt => {
 					event = evt;
 					done();
 				});
-				component.processEvent(uploadedEvent);
+				component.processEvent(canceledEvent);
 			});
 
 			it('should be forwarded', () => {
-				expect(event).toEqual(uploadedEvent);
+				expect(event).toEqual(canceledEvent);
 			});
 
 			it('should not toggle showLoadingBox', () => {
