@@ -13,6 +13,12 @@ nodejsPipelineTemplate {
 			'test': 'npm run test-ci --workspaces',
 			'build': 'npm run build --workspaces'
 		],
+		'feature/OUI-4553-refactor-file-upload-with-signals': [
+			'gitPush': [
+				'credentialId': 'githubObliqueCredentials',
+				'repository': 'https://github.com/oblique-bit/oblique.git',
+			]
+		],
 		master: [
 			'gitPush': [
 				'credentialId': 'githubObliqueCredentials',

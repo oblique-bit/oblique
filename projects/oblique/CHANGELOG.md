@@ -1,3 +1,42 @@
+# [16.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/16.0.0-rc.1...16.0.0-rc.2) (2026-09-21)
+
+## Bug Fixes
+
+- **file-upload:** match mocks to their actual implementation ([6d696a79](https://github.com/oblique-bit/oblique/commit/6d696a79eb8fd921deb7ede5b2d3b74f1467f901), OUI-4553)
+
+## Features
+
+- **file-upload:** migrate to signals and `OnPush` change detection ([1c607f4b](https://github.com/oblique-bit/oblique/commit/1c607f4ba321c1222a209f743df797f5e9072370), OUI-4553)
+
+## BREAKING CHANGES
+
+- **file-upload:**
+- **file-upload:** ObDragDropDirective:
+
+  - `isDragging` is now a signal
+
+- **file-upload:** ObDropZoneComponent:
+
+  - `uploadEvent` is now a signal output
+
+  - `accept` is now a signal input
+
+- **file-upload:** ObFileInfoComponent:
+
+  - `deleteUrl` is now a signal input
+
+  - `getUploadedFilesUrl` is now a signal input
+
+  - `mapFunction` is now a signal input
+
+  - `mapFilesToDeleteUrlFunction` is now a signal input
+
+- **file-upload:** ObProgressComponent:
+
+  - `uploadEvent` is now a signal output
+
+  - `files` is now a signal input
+
 # [15.4.4](https://github.com/oblique-bit/oblique/compare/15.4.3...15.4.4) (2026-08-18)
 
 ## Dependencies
