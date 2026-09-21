@@ -1,3 +1,19 @@
+# [16.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/16.0.0-rc.1...16.0.0-rc.2) (2026-09-21)
+
+## Features
+
+- **service-navigation:** migrate service and component to signal-based API ([b7721c6e](https://github.com/oblique-bit/oblique/commit/b7721c6e48c9f58f2a5a241e7cca3800c885a428), OUI-4559)
+- **service-navigation:** migrate main component to signals and `OnPush` ([593205b4](https://github.com/oblique-bit/oblique/commit/593205b409d7c1dcca271638e9e1d042e919a008), OUI-4559)
+
+## BREAKING CHANGES
+
+- **service-navigation:** navigation service getters are replaced by readonly signal properties read as functions
+- **service-navigation:** `setReturnUrl()` is replaced by `connectReturnUrl()` with a signal source
+- **service-navigation:** component `$`-suffixed Observable properties are replaced by signal properties
+- **service-navigation:** output `loginState` is renamed to `loginStateChange`
+- **service-navigation:** the @Input properties of ObServiceNavigationComponent are now signals and
+  must be read as functions (e.g. component.profileLinks()) instead of plain properties
+
 # [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
 
 ## Features

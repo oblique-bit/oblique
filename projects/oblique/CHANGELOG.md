@@ -1,3 +1,67 @@
+# [16.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/16.0.0-rc.1...16.0.0-rc.2) (2026-09-21)
+
+## Bug Fixes
+
+- **autocomplete:** handle `null` input values ([15cca62b](https://github.com/oblique-bit/oblique/commit/15cca62bb83e29c93969e6dce2f6dcd30a23af50), OUI-4547)
+- **file-upload:** match mocks to their actual implementation ([cda1edb7](https://github.com/oblique-bit/oblique/commit/cda1edb753839df1ca161d76d8ee44f9a7e0d268), OUI-4553)
+- **master-layout:** replace home icon with accessible back label in mobile submenu ([abaa5bc9](https://github.com/oblique-bit/oblique/commit/abaa5bc9cbdb87e184ac510237cc48c48d3a0202), OUI-4613)
+- **material:** show focus outline on expansion panels ([015d324c](https://github.com/oblique-bit/oblique/commit/015d324c86345441b8fc0c8c7e6ec5dd77a296d6), OUI-4630)
+- **off-canvas:** align close button size with oblique buttons ([d91f84a8](https://github.com/oblique-bit/oblique/commit/d91f84a8ef1bd8d80114ce11796331cb7c3b32b0), OUI-4624)
+- **off-canvas:** center icon in the close button ([58732793](https://github.com/oblique-bit/oblique/commit/58732793a672025ead1daf9b96f1122265b9632a), OUI-4624)
+- **schematics:** make generated tests pass with Vitest ([d749e883](https://github.com/oblique-bit/oblique/commit/d749e8837daa4ea42be3f5e4c9d192f65b3516f6), OUI-4694)
+
+## Features
+
+- **alert:** migrate to signals and `OnPush` change detection strategy ([3f596f28](https://github.com/oblique-bit/oblique/commit/3f596f286d7202b5f9b36a5d83b6901522a312bc), OUI-4546)
+- **autocomplete:** debounce text highlighting to prevent highlighting before removal ([ced8ac10](https://github.com/oblique-bit/oblique/commit/ced8ac10751100cd2e00b1219a9d4e02928eede9), OUI-4547)
+- **autocomplete:** migrate to signals ([c80bfbe0](https://github.com/oblique-bit/oblique/commit/c80bfbe0021cb471ffe7a5e00de8c535889ff2f8), OUI-4547)
+- **file-upload:** migrate to signals and `OnPush` change detection ([5998e70d](https://github.com/oblique-bit/oblique/commit/5998e70d114e60a30355517212f8eeb57249f3e1), OUI-4553)
+- **schematics:** `ng add` no longer offer Jest as a testing framework ([23249624](https://github.com/oblique-bit/oblique/commit/23249624f4adec7bfa63a398f52e7cf4a7085ba6))
+- **schematics:** remove master layout from ng-add schematic ([e3e7bdcf](https://github.com/oblique-bit/oblique/commit/e3e7bdcf8e26e6965018923f19f6668b5064f8cf), OUI-4562)
+- **selectable:** migrate to signals ([46ca8741](https://github.com/oblique-bit/oblique/commit/46ca87419ef53e5c7b5fdb92bb88770fe3c6e8f1), OUI-4558)
+- **service-navigation:** migrate service and component to signal-based API ([b7721c6e](https://github.com/oblique-bit/oblique/commit/b7721c6e48c9f58f2a5a241e7cca3800c885a428), OUI-4559)
+- **service-navigation:** migrate main component to signals and `OnPush` ([593205b4](https://github.com/oblique-bit/oblique/commit/593205b409d7c1dcca271638e9e1d042e919a008), OUI-4559)
+
+## BREAKING CHANGES
+
+- **alert:** `type` has been turned into a `readonly` signal
+- **alert:** `hasRoleAlert` been turned into a `readonly` signal
+- **autocomplete:** `inputLabelKey` has been turned into a `readonly` signal
+- **autocomplete:** `noResultKey` has been turned into a `readonly` signal
+- **autocomplete:** `iconName` has been turned into a `readonly` signal
+- **autocomplete:** `iconPosition` has been turned into a `readonly` signal
+- **file-upload:** `ObFileUploadComponent.showLoadingBox` property has been replaced with a readonly signal
+- **file-upload:** `ObFileUploadComponent.files` property has been replaced with a readonly signal
+- **file-upload:** `ObProgressComponent.uploadEvent` property has been replaced with an `OutputEmitterRef`
+- **file-upload:** `ObProgressComponent.files` setter has been replaced with a readonly signal
+- **file-upload:** `ObFileInfoComponent.deleteUrl` property has been replaced with a readonly signal
+- **file-upload:** `ObFileInfoComponent.getUploadedFilesUrl` property has been replaced with a readonly signal
+- **file-upload:** `ObFileInfoComponent.mapFunction` property has been replaced with a readonly signal
+- **file-upload:** `ObFileInfoComponent.mapFilesToDeleteUrlFunction` property has been replaced with a readonly signal
+- **file-upload:** `ObFileInfoComponent.displayedColumns` property has been replaced with a readonly signal
+- **file-upload:** `ObFileInfoComponent.sorting` setter has been replaced with a readonly signal
+- **file-upload:** `ObDropZoneComponent.uploadEvent` property has been replaced with an `OutputEmitterRef`
+- **file-upload:** `ObDropZoneComponent.accept` property has been replaced with a readonly signal
+- **file-upload:** `ObDragDropDirective.isDragging` property has been replaced with a readonly signal
+- **selectable:** `ObSelectableGroupDirective`:
+  - `selected$` has been removed in favor of `selected`
+  - `selected` property has been replaced with a readonly signal
+  - `mode$` has been removed in favor of `mode`
+  - `mode` property has been replaced with a readonly model
+  - `disabled$` has been removed without replacement
+  - `role` property has been replaced with a readonly signal
+- **selectable:** `ObSelectableDirective`:
+  - `value` property has been replaced with a readonly signal
+  - `selected` property has been replaced with a readonly model
+  - `tabindex` property has been replaced with a readonly model
+  - `role` property has been replaced with a readonly signal
+- **service-navigation:** navigation service getters are replaced by readonly signal properties read as functions
+- **service-navigation:** `setReturnUrl()` is replaced by `connectReturnUrl()` with a signal source
+- **service-navigation:** component `$`-suffixed Observable properties are replaced by signal properties
+- **service-navigation:** output `loginState` is renamed to `loginStateChange`
+- **service-navigation:** the @Input properties of ObServiceNavigationComponent are now signals and
+  must be read as functions (e.g. component.profileLinks()) instead of plain properties
+
 # [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
 
 ## Bug Fixes

@@ -1,3 +1,14 @@
+# [16.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/16.0.0-rc.1...16.0.0-rc.2) (2026-09-21)
+
+## Bug Fixes
+
+- **notification:** add missing sample title translation key ([b2f54d4c](https://github.com/oblique-bit/oblique/commit/b2f54d4c88926f1ff76af0cfec70300b73248d8b))
+- **service-navigation:** make the info links toggle work ([9a43fa57](https://github.com/oblique-bit/oblique/commit/9a43fa5704e21360564955196d577e90e5eb13db), OUI-4559)
+
+## Features
+
+- **selectable:** adapt to signals ([736a93b6](https://github.com/oblique-bit/oblique/commit/736a93b611ee166b1b7bf79d05a83bb64d95a118), OUI-4558)
+
 # [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
 
 ## Bug Fixes

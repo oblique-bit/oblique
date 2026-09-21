@@ -1,3 +1,16 @@
+# [16.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/16.0.0-rc.1...16.0.0-rc.2) (2026-09-21)
+
+## Bug Fixes
+
+- **new:** add missing quotes around arguments for windows ([6454c8cf](https://github.com/oblique-bit/oblique/commit/6454c8cfb3d42a1f670c3f843155518dd5e467cc), OUI-4687)
+- **new:** bridge `applicationOperator` and `title` to add-oblique schematic ([3dac9208](https://github.com/oblique-bit/oblique/commit/3dac920876b3ec7b2990a0ee28cc656b9e3c1bca))
+- **utils:** dasherize option names for Angular CLI commands ([873a857c](https://github.com/oblique-bit/oblique/commit/873a857ce7f0c5f05f4cafcd62aa2b20761114fd))
+
+## Features
+
+- **cli:** drop the `jest` option from `ob new` ([beccce9b](https://github.com/oblique-bit/oblique/commit/beccce9b8c3443a6959f4028b15efe35035c0134))
+- **cli:** pass `title` and `applicationOperator` to add-oblique schematic ([0e715a4e](https://github.com/oblique-bit/oblique/commit/0e715a4e5cd411f6d401707a5e2ac84c8a457f65), OUI-4562)
+
 # [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
 
 ## Features

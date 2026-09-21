@@ -1,3 +1,13 @@
+# [16.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/16.0.0-rc.1...16.0.0-rc.2) (2026-09-21)
+
+## Bug Fixes
+
+- **schematics:** make generated tests pass with Vitest ([bd4f3f93](https://github.com/oblique-bit/oblique/commit/bd4f3f930a7d5efdf86e00277acbcbd63058c49f))
+
+## Features
+
+- **schematics:** embed master layout in add-oblique schematic ([ee62d050](https://github.com/oblique-bit/oblique/commit/ee62d050b7cb77d851739072c9df5eac264de2bf), OUI-4562)
+
 # [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
 
 ## Features

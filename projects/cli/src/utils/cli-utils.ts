@@ -4,7 +4,7 @@ import {gte, major} from 'semver';
 import {dasherize} from './strings.js';
 
 /* Generated content, do not edit */
-export const version = '16.0.0-rc.1';
+export const version = '16.0.0-rc.2';
 /* End of generated content */
 
 export const currentVersions = {

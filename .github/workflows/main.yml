@@ -2,14 +2,14 @@ name: Build and publish to npm
 
 on:
   push:
-    branches: [master]
+    branches: [master, release/major_16.0.0]
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -35,3 +35,8 @@ jobs:
             npm run build --workspace=projects/$project
             npm publish ./dist/$project --provenance --access public --tag "$tag"
           done
+      - name: Delete release branch
+        run: |
+          if [[ "${{ github.ref_name }}" == "release/major_16.0.0" ]]; then
+            git push origin --delete "${{ github.ref_name }}"
+          fi
