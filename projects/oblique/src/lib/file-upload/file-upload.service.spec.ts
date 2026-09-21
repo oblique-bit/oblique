@@ -1,7 +1,7 @@
 import {HttpClient, HttpEvent, HttpEventType} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
-import {Observable, of, throwError} from 'rxjs';
+import {Observable, firstValueFrom, of, throwError} from 'rxjs';
 import {ObFileUploadService} from './file-upload.service';
 import {ObMockNotificationService} from '../notification/_mocks/mock-notification.service';
 import {ObNotificationService} from '../notification/notification.service';
@@ -74,33 +74,28 @@ describe('ObFilesUploadService', () => {
 			expect(emitted).toBe(false);
 		});
 
-		it('should forward UploadProgress event type', done => {
+		it('should forward UploadProgress event type', async () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.UploadProgress}));
 
-			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(evt => {
-				expect(evt).toBeDefined();
-				done();
-			});
+			const event = await firstValueFrom(service.multiUpload(baseServerUrl, [sampleFile]));
+			expect(event).toBeDefined();
 		});
 
-		it('should forward Response event type', done => {
+		it('should forward Response event type', async () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.Response}));
 
-			service.multiUpload(baseServerUrl, [sampleFile]).subscribe(evt => {
-				expect(evt).toBeDefined();
-				done();
-			});
+			const event = await firstValueFrom(service.multiUpload(baseServerUrl, [sampleFile]));
+			expect(event).toBeDefined();
 		});
 
 		describe('error', () => {
 			let event: HttpEvent<any>;
-			beforeEach(done => {
+
+			beforeEach(async () => {
 				jest.spyOn(httpMock, 'request').mockReturnValue(throwError(new Error('test')));
 				jest.spyOn(notification, 'error');
-				service.multiUpload(baseServerUrl, [sampleFile]).subscribe(evt => {
-					event = evt;
-					done();
-				});
+
+				event = await firstValueFrom(service.multiUpload(baseServerUrl, [sampleFile]));
 			});
 
 			it('should emit an event', () => {
@@ -164,33 +159,28 @@ describe('ObFilesUploadService', () => {
 			expect(emitted).toBe(false);
 		});
 
-		it('should forward UploadProgress event type', done => {
+		it('should forward UploadProgress event type', async () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.UploadProgress}));
 
-			service.upload(baseServerUrl, sampleFile).subscribe(evt => {
-				expect(evt).toBeDefined();
-				done();
-			});
+			const event = await firstValueFrom(service.upload(baseServerUrl, sampleFile));
+			expect(event).toBeDefined();
 		});
 
-		it('should forward Response event type', done => {
+		it('should forward Response event type', async () => {
 			jest.spyOn(httpMock, 'request').mockReturnValue(of({type: HttpEventType.Response}));
 
-			service.upload(baseServerUrl, sampleFile).subscribe(evt => {
-				expect(evt).toBeDefined();
-				done();
-			});
+			const event = await firstValueFrom(service.upload(baseServerUrl, sampleFile));
+			expect(event).toBeDefined();
 		});
 
 		describe('error', () => {
 			let event: HttpEvent<any>;
-			beforeEach(done => {
+
+			beforeEach(async () => {
 				jest.spyOn(httpMock, 'request').mockReturnValue(throwError(new Error('test')));
 				jest.spyOn(notification, 'error');
-				service.multiUpload(baseServerUrl, [sampleFile]).subscribe(evt => {
-					event = evt;
-					done();
-				});
+
+				event = await firstValueFrom(service.multiUpload(baseServerUrl, [sampleFile]));
 			});
 
 			it('should emit an event', () => {
@@ -228,13 +218,11 @@ describe('ObFilesUploadService', () => {
 			expect(httpMock.get).toHaveBeenCalledWith(baseServerUrl);
 		});
 
-		it('should emit', done => {
+		it('should emit', async () => {
 			jest.spyOn(httpMock, 'get').mockReturnValue(of([]));
 
-			service.getUploadedFiles(baseServerUrl).subscribe(evt => {
-				expect(evt).toBeDefined();
-				done();
-			});
+			const event = await firstValueFrom(service.getUploadedFiles(baseServerUrl));
+			expect(event).toBeDefined();
 		});
 	});
 
@@ -246,13 +234,11 @@ describe('ObFilesUploadService', () => {
 				expect(httpMock.delete).toHaveBeenCalledWith(`${baseServerUrl}/${btoa(JSON.stringify(['test.txt']))}`);
 			});
 
-			it('should emit', done => {
+			it('should emit', async () => {
 				jest.spyOn(httpMock, 'delete').mockReturnValue(of([]));
 
-				service.delete(baseServerUrl, ['test.txt']).subscribe(evt => {
-					expect(evt).toBeDefined();
-					done();
-				});
+				const event = await firstValueFrom(service.delete(baseServerUrl, ['test.txt']));
+				expect(event).toBeDefined();
 			});
 		});
 
@@ -263,13 +249,11 @@ describe('ObFilesUploadService', () => {
 				expect(httpMock.delete).toHaveBeenCalledWith(`${baseServerUrl}/1-2-3`);
 			});
 
-			it('should emit', done => {
+			it('should emit', async () => {
 				jest.spyOn(httpMock, 'delete').mockReturnValue(of([]));
 
-				service.delete(baseServerUrl, '1-2-3').subscribe(evt => {
-					expect(evt).toBeDefined();
-					done();
-				});
+				const event = await firstValueFrom(service.delete(baseServerUrl, '1-2-3'));
+				expect(event).toBeDefined();
 			});
 		});
 	});

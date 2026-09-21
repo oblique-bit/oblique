@@ -1,5 +1,7 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, OutputEmitterRef} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {outputToObservable} from '@angular/core/rxjs-interop';
+import {firstValueFrom} from 'rxjs';
 import {ObFileUploadComponent} from './file-upload.component';
 import {ObEUploadEventType, ObIUploadEvent} from './file-upload.model';
 import {provideObliqueTestingConfiguration} from '../utilities';
@@ -38,10 +40,10 @@ describe('ObFileUploadComponent', () => {
 	});
 
 	it('should have a showLoadingBox property', () => {
-		expect(component.showLoadingBox).toBe(false);
+		expect(component.showLoadingBox()).toBe(false);
 	});
 
-	it('should have a uploadEvent EventEmitter', () => {
+	it('should have a uploadEvent OutputEmitterRef', () => {
 		expect(component.uploadEvent instanceof OutputEmitterRef).toBe(true);
 	});
 
@@ -51,13 +53,10 @@ describe('ObFileUploadComponent', () => {
 
 			describe('with no uploadUrl', () => {
 				let event: ObIUploadEvent;
-				beforeEach(done => {
-					fixture.componentRef.setInput('uploadUrl', undefined);
-					component.uploadEvent.subscribe(evt => {
-						event = evt;
-						done();
-					});
+				beforeEach(async () => {
+					const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 					component.processEvent(chosenEvent);
+					event = await eventPromise;
 				});
 
 				it('should be forwarded', () => {
@@ -65,23 +64,21 @@ describe('ObFileUploadComponent', () => {
 				});
 
 				it('should not toggle showLoadingBox', () => {
-					expect(component.showLoadingBox).toBe(false);
+					expect(component.showLoadingBox()).toBe(false);
 				});
 
 				it('should not populate files property', () => {
-					expect(component.files).toBeUndefined();
+					expect(component.files()).toBeUndefined();
 				});
 			});
 
 			describe('with an uploadUrl', () => {
 				let event: ObIUploadEvent;
-				beforeEach(done => {
+				beforeEach(async () => {
 					fixture.componentRef.setInput('uploadUrl', 'some/path');
-					component.uploadEvent.subscribe(evt => {
-						event = evt;
-						done();
-					});
+					const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 					component.processEvent(chosenEvent);
+					event = await eventPromise;
 				});
 
 				it('should be forwarded', () => {
@@ -89,11 +86,11 @@ describe('ObFileUploadComponent', () => {
 				});
 
 				it('should toggle showLoadingBox', () => {
-					expect(component.showLoadingBox).toBe(true);
+					expect(component.showLoadingBox()).toBe(true);
 				});
 
 				it('should populate files property', () => {
-					expect(component.files).toBe(files);
+					expect(component.files()).toBe(files);
 				});
 			});
 		});
@@ -101,12 +98,10 @@ describe('ObFileUploadComponent', () => {
 		describe('uploaded event', () => {
 			const uploadedEvent = {type: ObEUploadEventType.UPLOADED, files};
 			let event: ObIUploadEvent;
-			beforeEach(done => {
-				component.uploadEvent.subscribe(evt => {
-					event = evt;
-					done();
-				});
+			beforeEach(async () => {
+				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 				component.processEvent(uploadedEvent);
+				event = await eventPromise;
 			});
 
 			it('should be forwarded', () => {
@@ -114,47 +109,43 @@ describe('ObFileUploadComponent', () => {
 			});
 
 			it('should not toggle showLoadingBox', () => {
-				expect(component.showLoadingBox).toBe(false);
+				expect(component.showLoadingBox()).toBe(false);
 			});
 
 			it('should not populate files property', () => {
-				expect(component.files).toBeUndefined();
+				expect(component.files()).toBeUndefined();
 			});
 		});
 
 		describe('canceled event', () => {
-			const uploadedEvent = {type: ObEUploadEventType.CANCELED, files};
+			const canceledEvent = {type: ObEUploadEventType.CANCELED, files};
 			let event: ObIUploadEvent;
-			beforeEach(done => {
-				component.uploadEvent.subscribe(evt => {
-					event = evt;
-					done();
-				});
-				component.processEvent(uploadedEvent);
+			beforeEach(async () => {
+				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
+				component.processEvent(canceledEvent);
+				event = await eventPromise;
 			});
 
 			it('should be forwarded', () => {
-				expect(event).toEqual(uploadedEvent);
+				expect(event).toEqual(canceledEvent);
 			});
 
 			it('should not toggle showLoadingBox', () => {
-				expect(component.showLoadingBox).toBe(false);
+				expect(component.showLoadingBox()).toBe(false);
 			});
 
 			it('should not populate files property', () => {
-				expect(component.files).toBeUndefined();
+				expect(component.files()).toBeUndefined();
 			});
 		});
 
 		describe('other event', () => {
 			const uploadedEvent = {type: ObEUploadEventType.DELETED, files};
 			let event: ObIUploadEvent;
-			beforeEach(done => {
-				component.uploadEvent.subscribe(evt => {
-					event = evt;
-					done();
-				});
+			beforeEach(async () => {
+				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 				component.processEvent(uploadedEvent);
+				event = await eventPromise;
 			});
 
 			it('should be forwarded', () => {

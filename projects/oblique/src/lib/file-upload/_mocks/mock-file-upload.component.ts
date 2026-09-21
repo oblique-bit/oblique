@@ -7,21 +7,20 @@ import {ObIUploadEvent} from '../file-upload.model';
 @Component({
 	selector: 'ob-file-upload',
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'ob-file-upload'},
 	exportAs: 'obFileUpload',
 })
 export class ObMockFileUploadComponent {
 	readonly uploadEvent = output<ObIUploadEvent>();
-	readonly accept = input<string[]>(undefined);
-	readonly multiple = input(true);
+	readonly accept = input(['*']);
 	readonly singleRequest = input(true);
-	readonly uploadUrl = input<string>(undefined);
 	readonly maxFileSize = input(5);
+	readonly maxFileAmount = input(0);
+	readonly multiple = input(true);
+	readonly uploadUrl = input<string>(undefined);
+	readonly cancelConfirmation = input(true);
 	showLoadingBox = false;
 	files: File[];
 
-	addFiles(event: ObIUploadEvent): void {}
-
-	uploadComplete(): void {}
+	processEvent(event: ObIUploadEvent): void {}
 }
