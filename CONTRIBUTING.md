@@ -148,6 +148,7 @@ The package is required and must be one of the following:
 | **oblique**            | Changes in the Oblique library, including the changes to the service-navigation component |
 | **sandbox**            | Changes in the Sandbox project                                                            |
 | **sandbox-ssr**        | Changes in the Sandbox-SSR project                                                        |
+| **sandbox-e2e**        | Changes in the Sandbox E2E project                                                        |
 | **sds**                | Changes in the Swiss Design System project                                                |
 | **service-navigation** | Changes in the Service Navigation Web Component project                                   |
 | **toolchain**          | Changes in the Toolchain project                                                          |

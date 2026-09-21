@@ -69,6 +69,7 @@
   "i18n.service-navigation.profile.link.kappa.label": "Cape",
   "i18n.service-navigation.profile.link.kappa.url": "https://fr.wikipedia.org/wiki/Y%C5%8Dkai",
   "i18n.notification.sampleMessage": "Ceci est un {{message}} avec {{parameters}}",
+  "i18n.notification.sampleTitle": "Ceci est un {{title}} avec {{parameters}}",
   "message": "exemple de message",
   "parameters": "exemple de paramètre"
 }
