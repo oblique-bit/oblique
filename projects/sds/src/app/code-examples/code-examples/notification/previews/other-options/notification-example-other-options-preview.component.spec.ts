@@ -23,7 +23,7 @@ describe(NotificationExampleOtherOptionsPreviewComponent.name, () => {
 	});
 
 	test('should send a notification with the selected placement', () => {
-		const sendSpy = jest.spyOn(notificationService, 'send');
+		const sendSpy = vi.spyOn(notificationService, 'send');
 
 		component.sendPlacement(ObENotificationPlacement.TOP_RIGHT);
 
@@ -36,10 +36,10 @@ describe(NotificationExampleOtherOptionsPreviewComponent.name, () => {
 	});
 
 	test('should send each notification type', () => {
-		const infoSpy = jest.spyOn(notificationService, 'info');
-		const successSpy = jest.spyOn(notificationService, 'success');
-		const warningSpy = jest.spyOn(notificationService, 'warning');
-		const errorSpy = jest.spyOn(notificationService, 'error');
+		const infoSpy = vi.spyOn(notificationService, 'info');
+		const successSpy = vi.spyOn(notificationService, 'success');
+		const warningSpy = vi.spyOn(notificationService, 'warning');
+		const errorSpy = vi.spyOn(notificationService, 'error');
 
 		component.sendInfo();
 		component.sendSuccess();
@@ -69,8 +69,8 @@ describe(NotificationExampleOtherOptionsPreviewComponent.name, () => {
 	});
 
 	test('should send notifications with the configured options', () => {
-		const sendSpy = jest.spyOn(notificationService, 'send');
-		const infoSpy = jest.spyOn(notificationService, 'info');
+		const sendSpy = vi.spyOn(notificationService, 'send');
+		const infoSpy = vi.spyOn(notificationService, 'info');
 		const messageParams = {message: 'foo', parameters: 'bar'};
 
 		component.sendMessageParams(messageParams);
@@ -121,8 +121,8 @@ describe(NotificationExampleOtherOptionsPreviewComponent.name, () => {
 	});
 
 	test('should clear the notification channel or all channels', () => {
-		const clearSpy = jest.spyOn(notificationService, 'clear');
-		const clearAllSpy = jest.spyOn(notificationService, 'clearAll');
+		const clearSpy = vi.spyOn(notificationService, 'clear');
+		const clearAllSpy = vi.spyOn(notificationService, 'clearAll');
 
 		component.clear();
 		component.clearAllChannels();

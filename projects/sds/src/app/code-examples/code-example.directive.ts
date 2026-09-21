@@ -13,7 +13,7 @@ export class CodeExampleDirective implements OnChanges {
 
 		const codeExampleComponent = this.codeExampleComponent();
 		if (codeExampleComponent) {
-			this.viewContainerRef.createComponent(codeExampleComponent);
+			this.viewContainerRef.createComponent(codeExampleComponent as Type<CodeExamples>);
 		}
 	}
 }

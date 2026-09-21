@@ -4,6 +4,6 @@
     "ignoreDeprecations": "6.0",
     "types": ["vitest/globals", "node"]
   },
-  "include": ["src/**/*.spec.ts"],
+  "include": ["src/**/*.spec.ts", "src/logger/mock/mock-logger.ts"],
   "exclude": []
 }

@@ -52,7 +52,7 @@ describe(AppComponent.name, () => {
 
 		test('language change', async () => {
 			const translateService = TestBed.inject(TranslateService);
-			jest.spyOn(translateService, 'use');
+			vi.spyOn(translateService, 'use');
 			await (await harness.getToggles())[1].check();
 			expect(translateService.use).toHaveBeenCalledWith('fr');
 		});

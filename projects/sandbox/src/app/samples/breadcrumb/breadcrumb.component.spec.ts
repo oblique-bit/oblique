@@ -18,7 +18,7 @@ describe(BreadcrumbSampleComponent.name, () => {
 			],
 			declarations: [BreadcrumbSampleComponent],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
-			providers: [provideObliqueTestingConfiguration({hasLanguageInUrl: true})],
+			providers: [provideObliqueTestingConfiguration({language: {hasLanguageInUrl: true}})],
 		}).compileComponents();
 	});
 

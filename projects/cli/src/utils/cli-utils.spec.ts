@@ -1,4 +1,5 @@
 import process from 'node:process';
+import * as nodeChildProcess from 'node:child_process';
 import {
 	buildOption,
 	checkNodeVersion,
@@ -21,6 +22,10 @@ import {
 } from './cli-utils.js';
 import {lt} from 'semver';
 
+vi.mock('node:child_process', async () => ({
+	...((await vi.importActual<typeof import('node:child_process')>('node:child_process')) as object),
+}));
+
 function getMinimumRecommendedVersion(): string {
 	let value = `${recommendedVersion}.0.0`;
 	if (lt(value, minimumSupportedVersion)) {
@@ -30,15 +35,14 @@ function getMinimumRecommendedVersion(): string {
 }
 
 describe('CLI Utils', () => {
-	const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
 	const osNpxCommand = isWindows() ? 'npx.cmd' : 'npx';
 	const osNpmCommand = isWindows() ? 'npm.cmd' : 'npm';
 
 	beforeAll(() => {
-		jest.spyOn(console, 'info').mockImplementation(() => {});
-		jest.spyOn(console, 'time').mockImplementation(() => {});
-		jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
-		jest.spyOn(console, 'warn').mockImplementation(() => {});
+		vi.spyOn(console, 'info').mockImplementation(() => {});
+		vi.spyOn(console, 'time').mockImplementation(() => {});
+		vi.spyOn(console, 'timeEnd').mockImplementation(() => {});
+		vi.spyOn(console, 'warn').mockImplementation(() => {});
 	});
 
 	describe('optionDescriptions', () => {
@@ -108,7 +112,7 @@ describe('CLI Utils', () => {
 
 	describe('startObCommand', () => {
 		test('startObCommand should start the timer', () => {
-			const mockCallback = jest.fn() as (options: {test: string}) => void;
+			const mockCallback = vi.fn() as (options: {test: string}) => void;
 			Object.defineProperty(process.versions, 'node', {
 				value: getMinimumRecommendedVersion(),
 				configurable: true,
@@ -122,7 +126,7 @@ describe('CLI Utils', () => {
 		});
 
 		test('startObCommand should execute the callback', () => {
-			const mockCallback = jest.fn() as (options: {test: string}) => void;
+			const mockCallback = vi.fn() as (options: {test: string}) => void;
 			const label = 'test label';
 			const options = {test: 'test'};
 
@@ -132,7 +136,7 @@ describe('CLI Utils', () => {
 		});
 
 		test('startObCommand should end the timer', () => {
-			const mockCallback = jest.fn() as (options: {test: string}) => void;
+			const mockCallback = vi.fn() as (options: {test: string}) => void;
 			const label = 'test label';
 			const options = {test: 'test'};
 
@@ -294,7 +298,7 @@ Examples of use:
 
 	describe('execute', () => {
 		beforeEach(() => {
-			jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+			vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 				return {
 					pid: 1,
 					output: [''],
@@ -307,7 +311,7 @@ Examples of use:
 		});
 
 		afterEach(() => {
-			jest.resetAllMocks();
+			vi.resetAllMocks();
 		});
 
 		describe('ngNew', () => {
@@ -685,10 +689,10 @@ Examples of use:
 		const originalNodeVersion = process.versions.node;
 
 		beforeEach(() => {
-			jest.spyOn(console, 'info').mockImplementation(() => {});
-			jest.spyOn(console, 'warn').mockImplementation(() => {});
-			jest.spyOn(console, 'error').mockImplementation(() => {});
-			jest.spyOn(process, 'exit').mockImplementation(() => {
+			vi.spyOn(console, 'info').mockImplementation(() => {});
+			vi.spyOn(console, 'warn').mockImplementation(() => {});
+			vi.spyOn(console, 'error').mockImplementation(() => {});
+			vi.spyOn(process, 'exit').mockImplementation(() => {
 				throw new Error('process.exit called');
 			});
 		});
@@ -698,7 +702,7 @@ Examples of use:
 				value: originalNodeVersion,
 				configurable: true,
 			});
-			jest.restoreAllMocks();
+			vi.restoreAllMocks();
 		});
 
 		describe('with lower Node version', () => {

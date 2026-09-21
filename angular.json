@@ -186,17 +186,40 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/sandbox/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts"],
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageInclude": [
+              "projects/sandbox/src/app/app.component.ts",
+              "projects/sandbox/src/app/home/home.page.ts",
+              "projects/sandbox/src/app/samples/breadcrumb/breadcrumb.component.ts",
+              "projects/sandbox/src/app/samples/collapse/collapse-sample.component.ts",
+              "projects/sandbox/src/app/samples/error-messages-sample/error-messages-sample.component.ts",
+              "projects/sandbox/src/app/samples/master-layout/dynamic-navigation.service.ts",
+              "projects/sandbox/src/app/samples/nav-tree/nav-tree-sample.component.ts",
+              "projects/sandbox/src/app/samples/number-format/number-format-sample.component.ts",
+              "projects/sandbox/src/app/samples/schema-validation/schema-validation-sample.component.ts"
+            ],
+            "coverageExclude": ["**/*.spec.ts", "projects/oblique/**"],
+            "coverageThresholds": {
+              "perFile": true,
+              "lines": 100,
+              "functions": 100,
+              "branches": 90,
+              "statements": 100
+            }
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": true
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/sandbox/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"
@@ -300,18 +323,23 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "config": "jest.config.js",
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/sds/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts", "projects/sds/mock-raw-loader.ts"],
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageInclude": ["projects/sds/src/app/**/*.ts"],
+            "coverageExclude": ["**/*.spec.ts", "projects/oblique/**", "projects/sds/src/polyfills.ts"]
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": true
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/sds/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"
@@ -392,18 +420,30 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "config": "jest.config.js",
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/service-navigation-web-component/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts"],
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageThresholds": {
+              "perFile": true,
+              "lines": 100,
+              "functions": 100,
+              "branches": 100,
+              "statements": 98
+            },
+            "coverageInclude": ["projects/service-navigation-web-component/src/app/**/*.ts"],
+            "coverageExclude": ["**/*.spec.ts", "projects/service-navigation-web-component/src/app/**/*.model.ts"]
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": false
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/service-navigation-web-component/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"
@@ -494,17 +534,30 @@
           "defaultConfiguration": "development"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/sandbox-ssr/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts"],
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageInclude": ["projects/sandbox-ssr/src/app/**/*.ts"],
+            "coverageExclude": [
+              "**/*.spec.ts",
+              "projects/oblique/**",
+              "**/multi-translate-loader*",
+              "**/app.config.server.ts",
+              "**/app.config.ts",
+              "**/*.routes.ts"
+            ]
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": true
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/sandbox-ssr/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"

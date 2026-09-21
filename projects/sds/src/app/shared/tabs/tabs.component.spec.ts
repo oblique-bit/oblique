@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, NO_ERRORS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, NO_ERRORS_SCHEMA} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TabComponent} from './tab/tab.component';
 import {TabsComponent} from './tabs.component';
@@ -31,6 +31,7 @@ import {
 		>
 	</app-tabs>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 class TabsWrapperComponent {
 	readonly componentId = 'tabs-wrapper';

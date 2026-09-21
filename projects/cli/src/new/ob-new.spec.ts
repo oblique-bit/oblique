@@ -2,12 +2,15 @@ import type {Command, OptionValues} from '@commander-js/extra-typings';
 import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {spawnSync} from 'child_process';
+import * as nodeChildProcess from 'node:child_process';
 import fs from 'node:fs';
 import {obNewConfig} from './ob-new.model';
 import {buildOption, currentVersions, isWindows, version} from '../utils/cli-utils';
 import {createObNewCommand} from './ob-new';
 
-const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
+vi.mock('node:child_process', async () => ({
+	...((await vi.importActual<typeof import('node:child_process')>('node:child_process')) as object),
+}));
 
 describe('Ob new command', () => {
 	const projectName = 'SuperduperProject';
@@ -56,10 +59,10 @@ describe('Ob new command', () => {
 	}
 
 	beforeAll(() => {
-		jest.spyOn(console, 'info').mockImplementation(() => {});
-		jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
-		jest.spyOn(console, 'error').mockImplementation(() => {});
-		jest.spyOn(console, 'warn').mockImplementation(() => {});
+		vi.spyOn(console, 'info').mockImplementation(() => {});
+		vi.spyOn(console, 'timeEnd').mockImplementation(() => {});
+		vi.spyOn(console, 'error').mockImplementation(() => {});
+		vi.spyOn(console, 'warn').mockImplementation(() => {});
 	});
 
 	describe('after createObNewCommand', () => {
@@ -67,7 +70,7 @@ describe('Ob new command', () => {
 			beforeAll(() => {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -326,7 +329,7 @@ describe('Ob new command', () => {
 
 		describe('interactive', () => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -344,13 +347,13 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
 		describe('no-interactive', () => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -368,7 +371,7 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
@@ -389,7 +392,7 @@ describe('Ob new command', () => {
 			{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'},
 		])('calls console ', ({index, message, type}) => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -407,7 +410,7 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
@@ -415,7 +418,7 @@ describe('Ob new command', () => {
 			let options: string[] = useCase === 'interactive mode' ? [projectName, '--interactive'] : [projectName];
 
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -449,7 +452,7 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
@@ -474,7 +477,7 @@ describe('Ob new command', () => {
 			},
 		])('npmrc handling $description', ({args, expectedValue, expectedToolchainOptions}) => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -513,7 +516,7 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
@@ -532,7 +535,7 @@ describe('Ob new command', () => {
 			},
 		])('proxy handling $description', ({args, expectedValue, expectedToolchainOptions}) => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {pid: 1, output: [''], stderr: null, signal: null, stdout: 'ok', status: 0};
 				});
 				const obNewCommand = createObNewCommand();
@@ -564,7 +567,7 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
@@ -589,7 +592,7 @@ describe('Ob new command', () => {
 			},
 		])('locales handling $description', ({args, expectedValue, expectedAddObliqueOptions}) => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -641,7 +644,7 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
@@ -671,7 +674,7 @@ describe('Ob new command', () => {
 			},
 		])('title and applicationOperator handling $description', ({args, expectedAddObliqueOptions}) => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -701,7 +704,7 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
@@ -717,10 +720,10 @@ export class AppModule {
 		contact: []
 	}, hasLanguageInUrl: false})]
 }`;
-			let readFileSyncSpy: jest.SpyInstance;
+			let readFileSyncSpy: vi.SpyInstance;
 
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -730,7 +733,7 @@ export class AppModule {
 						status: 0,
 					};
 				});
-				readFileSyncSpy = jest.spyOn(fs, 'readFileSync');
+				readFileSyncSpy = vi.spyOn(fs, 'readFileSync');
 			});
 
 			test('forwards applicationOperator and title read from the app module to the add-oblique schematic', () => {
@@ -826,16 +829,15 @@ export class AppModule {
 
 			afterEach(() => {
 				readFileSyncSpy.mockRestore();
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
 		describe('with error in ', () => {
 			const errorMessage = 'bad bad error';
 			beforeAll(() => {
-				jest.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
-				jest
-					.spyOn(nodeChildProcess, 'spawnSync')
+				vi.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
+				vi.spyOn(nodeChildProcess, 'spawnSync')
 					.mockImplementationOnce(() => {
 						return {
 							pid: 1,

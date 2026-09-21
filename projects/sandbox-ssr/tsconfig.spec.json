@@ -1,8 +1,8 @@
 {
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "esModuleInterop": true,
-    "types": ["jest", "node"]
+    "strict": false,
+    "types": ["vitest/globals", "node"]
   },
-  "include": ["src/**/*.spec.ts"]
+  "include": ["**/*.spec.ts", "../../tests/setupVitest.ts"]
 }

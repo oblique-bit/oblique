@@ -7,8 +7,8 @@
     "start-ssr": "node ../../dist/sandbox-ssr/server/server.mjs",
     "lint": "tsx scripts/lint.ts",
     "format": "tsx scripts/lint.ts --fix",
-    "test": "npm run prebuild && cd ../.. && ng test sandbox-ssr",
-    "test-ci": "npm run prebuild && cd ../.. && ng run sandbox-ssr:test:ci",
+    "test": "npm run prebuild && ng test sandbox-ssr",
+    "test-ci": "npm run prebuild && ng run sandbox-ssr:test:ci",
     "prebuild": "npm run build -w @oblique/design-system",
     "build": "ng build sandbox-ssr",
     "release": "tsx scripts/release.ts"
@@ -18,6 +18,8 @@
     "@angular/ssr": "^22.0.4"
   },
   "devDependencies": {
-    "express": "^5.2.1"
+    "@vitest/coverage-v8": "^4.1.11",
+    "express": "^5.2.1",
+    "vitest": "4.1.11"
   }
 }

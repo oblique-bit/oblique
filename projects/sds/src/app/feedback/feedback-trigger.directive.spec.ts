@@ -14,7 +14,7 @@ export class TestComponentComponent {}
 describe(FeedbackTriggerDirective.name, () => {
 	let directive: FeedbackTriggerDirective;
 	let fixture: ComponentFixture<TestComponentComponent>;
-	const service = {initializeCollector: jest.fn(), defaultValues: {}, collect: jest.fn(), fallbackDialog: undefined};
+	const service = {initializeCollector: vi.fn(), defaultValues: {}, collect: vi.fn(), fallbackDialog: undefined};
 
 	beforeEach(async () => {
 		TestBed.overrideProvider(CollectorService, {useValue: service});
@@ -30,7 +30,7 @@ describe(FeedbackTriggerDirective.name, () => {
 	});
 
 	afterEach(() => {
-		jest.resetAllMocks();
+		vi.resetAllMocks();
 	});
 
 	test('creation', () => {
@@ -47,7 +47,8 @@ describe(FeedbackTriggerDirective.name, () => {
 		});
 
 		test('fallbackDialog is FeedbackFormComponent', () => {
-			expect(service.fallbackDialog.name).toBe('FeedbackFormComponent');
+			// Vitest compiles TS with Angular's which prefixes component class names with `_`
+			expect(service.fallbackDialog.name.replace(/^_/u, '')).toBe('FeedbackFormComponent');
 		});
 
 		test('default values of the service', () => {

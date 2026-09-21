@@ -15,7 +15,7 @@ describe(TranslationsService.name, () => {
 			providers: [
 				TranslationsService,
 				provideObliqueTranslations(),
-				{provide: HttpClient, useValue: {get: jest.fn(() => of({}))}},
+				{provide: HttpClient, useValue: {get: vi.fn(() => of({}))}},
 			],
 		}).compileComponents();
 
@@ -39,7 +39,7 @@ describe(TranslationsService.name, () => {
 
 	describe('setLang', () => {
 		it('should call use', () => {
-			jest.spyOn(translate, 'use');
+			vi.spyOn(translate, 'use');
 			service.initializeTranslations('en,fr', 'fr', 'fr');
 			service.setLang('en');
 			expect(translate.use).toHaveBeenCalledWith('en');
@@ -74,7 +74,7 @@ describe(TranslationsService.name, () => {
 			});
 
 			it('should display a message when using an unknown languages format', () => {
-				const infoSpy = jest.spyOn(console, `info`).mockImplementation(() => {});
+				const infoSpy = vi.spyOn(console, `info`).mockImplementation(() => {});
 				service.initializeTranslations(languageList, undefined, 'zz');
 
 				expect(infoSpy).toHaveBeenCalledWith(`No or invalid default language is provided, falling back to en`);
@@ -120,7 +120,7 @@ describe(TranslationsService.name, () => {
 			});
 
 			it('should ignore missing labels and urls for a language', () => {
-				const setTranslationSpy = jest.spyOn(translate, 'setTranslation');
+				const setTranslationSpy = vi.spyOn(translate, 'setTranslation');
 				setTranslationSpy.mockClear();
 
 				service.handleTranslations(
@@ -137,7 +137,7 @@ describe(TranslationsService.name, () => {
 			});
 
 			it('should set a label without setting a url when the language-specific url is missing', () => {
-				const setTranslationSpy = jest.spyOn(translate, 'setTranslation');
+				const setTranslationSpy = vi.spyOn(translate, 'setTranslation');
 				setTranslationSpy.mockClear();
 
 				service.handleTranslations(

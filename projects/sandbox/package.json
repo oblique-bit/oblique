@@ -7,12 +7,14 @@
     "start-pams": "ng serve --configuration pams",
     "lint": "tsx scripts/lint.ts",
     "format": "tsx scripts/lint.ts --fix",
-    "test": "cd ../.. && ng test sandbox",
-    "test-ci": "cd ../.. && ng run sandbox:test:ci",
+    "test": "ng test sandbox",
+    "test-ci": "ng run sandbox:test:ci",
     "build": "ng build && tsx scripts/post-build.ts",
     "release": "tsx scripts/release.ts"
   },
   "dependencies": {
-    "raw-loader": "^4.0.2"
+    "@vitest/coverage-v8": "^4.1.11",
+    "raw-loader": "^4.0.2",
+    "vitest": "4.1.11"
   }
 }

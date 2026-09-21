@@ -28,7 +28,7 @@ describe('HttpApiInterceptor', () => {
 	});
 
 	it('should activate the spinner when a request is made', () => {
-		const activateSpy = jest.spyOn(spinnerService, 'activate');
+		const activateSpy = vi.spyOn(spinnerService, 'activate');
 		const testUrl = '/test';
 
 		httpClient.get(testUrl).subscribe();
@@ -38,7 +38,7 @@ describe('HttpApiInterceptor', () => {
 	});
 
 	it('should deactivate the spinner when a request is completed', () => {
-		const deactivateSpy = jest.spyOn(spinnerService, 'forceDeactivate');
+		const deactivateSpy = vi.spyOn(spinnerService, 'forceDeactivate');
 		const testUrl = '/test';
 
 		httpClient.get(testUrl).subscribe();
