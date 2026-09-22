@@ -3,17 +3,17 @@
 :root {
 	--ob-h-body-lead-font: var(--ob-h-typography-context-body-lead-font_weight) var(--ob-h-typography-context-body-lead-font_size)/var(--ob-h-typography-context-body-lead-line_height) var(--ob-s-typography-scale-static-font_family-body);
 	--ob-h-body-lead-letter_spacing: var(--ob-h-typography-context-body-lead-letter_spacing);
-	--ob-h-body-lead-paragraph_spacing: var(--ob-s-typography-scale-static-paragraph_spacing-md);
+	--ob-h-body-lead-paragraph_spacing: var(--ob-h-typography-context-body-paragraph_spacing);
 	--ob-h-body-link-font: var(--ob-h-typography-context-body-link-font_weight) var(--ob-h-typography-context-body-link-font_size)/var(--ob-h-typography-context-body-link-line_height) var(--ob-s-typography-scale-static-font_family-body);
 	--ob-h-body-link-letter_spacing: var(--ob-h-typography-context-body-link-letter_spacing);
-	--ob-h-body-link-paragraph_spacing: var(--ob-s-typography-scale-static-paragraph_spacing-md);
+	--ob-h-body-link-paragraph_spacing: var(--ob-h-typography-context-body-paragraph_spacing);
 	--ob-h-body-link-text_decoration: var(--ob-s-typography-scale-static-text_decoration-link-emphasis_high);
 	--ob-h-body-normal-font: var(--ob-h-typography-context-body-normal-font_weight) var(--ob-h-typography-context-body-normal-font_size)/var(--ob-h-typography-context-body-normal-line_height) var(--ob-s-typography-scale-static-font_family-body);
 	--ob-h-body-normal-letter_spacing: var(--ob-h-typography-context-body-normal-letter_spacing);
-	--ob-h-body-normal-paragraph_spacing: var(--ob-s-typography-scale-static-paragraph_spacing-md);
+	--ob-h-body-normal-paragraph_spacing: var(--ob-h-typography-context-body-paragraph_spacing);
 	--ob-h-body-strong-font: var(--ob-h-typography-context-body-strong-font_weight) var(--ob-h-typography-context-body-strong-font_size)/var(--ob-h-typography-context-body-strong-line_height) var(--ob-s-typography-scale-static-font_family-body);
 	--ob-h-body-strong-letter_spacing: var(--ob-h-typography-context-body-strong-letter_spacing);
-	--ob-h-body-strong-paragraph_spacing: var(--ob-s-typography-scale-static-paragraph_spacing-md);
+	--ob-h-body-strong-paragraph_spacing: var(--ob-h-typography-context-body-paragraph_spacing);
 	--ob-h-heading-h1-font: var(--ob-h-typography-context-h1-font_weight) var(--ob-h-typography-context-h1-font_size)/var(--ob-h-typography-context-h1-line_height) var(--ob-h-typography-context-h1-font_family);
 	--ob-h-heading-h1-letter_spacing: var(--ob-h-typography-context-h1-letter_spacing);
 	--ob-h-heading-h1-paragraph_spacing: var(--ob-h-typography-context-h1-paragraph_spacing);
