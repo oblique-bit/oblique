@@ -71,6 +71,18 @@ old-named style, the relink step needs `prefixPairs` filled in for that
 specific transition first — check via the script's own scan report, which
 lists blocked renames.
 
+### 4b. Prune orphaned variables
+
+`node figma-utils/prune-orphan-variables.js` — run from a terminal, not
+`eval -f`, since it reads the token JSON off disk. Every Figma variable is
+supposed to have a matching JSON token; a path rename or (not allowed, but
+it happens) a manual Figma edit can leave one behind with none. Scan mode
+reports fully-orphaned collections (safe to delete) and stray orphans inside
+otherwise-healthy collections (need a human look — see the script's own
+`_readme.md` section for the known TIMING/EASING false-positive gap before
+trusting a stray as real). Scan every time; apply only when it actually
+finds something.
+
 ### 5. Rebuild documentation pages (only if one needs it)
 
 `node scripts-custom/figma-doc-builders/<doc>/build-<doc>.js`.

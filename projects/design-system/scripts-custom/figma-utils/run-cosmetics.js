@@ -24,6 +24,12 @@
  *                 compiled-tier "ob/s/color/" trim)
  *   5. scope variables — bulk scopes/hiddenFromPublishing pass
  *
+ * NOT included here, run separately: prune-orphan-variables.js. Same "after
+ * every export" cadence, but it needs Node's filesystem access to read the
+ * token JSON (this script only has the Figma plugin sandbox), so it cannot
+ * be folded into this CONFIG block. See that script's header and
+ * figma-utils/_readme.md.
+ *
  * Each step is independently toggleable (set its CONFIG section's `enabled`
  * to false to skip it) and uses the same scan-then-apply safety pattern as
  * the standalone scripts it replaces — nothing changes until `mode: 'apply'`.

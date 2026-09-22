@@ -4,6 +4,10 @@ Standalone Figma-context maintenance scripts. They run against the `figma`
 plugin global — not Node. Run them either via the figma-console MCP
 (`figma_execute`) or by pasting into the Desktop Bridge plugin console.
 
+**Exception: `prune-orphan-variables.js` runs from Node**, not the plugin
+sandbox — it has to read the token JSON off disk, which nothing running
+inside Figma can do. See its own section below.
+
 **Start with `run-cosmetics.js`.** It runs the relink/rename/delete/scope
 scripts below together, in the right order, from one CONFIG block — the
 single step to run after every Token Studio export. The scripts below still
@@ -77,6 +81,72 @@ return, same scan-then-apply discipline as the standalone scripts it wraps.
 See `../FIGMA-WORKFLOW.md` for the full pipeline this step fits into, and the
 gotchas that motivated each step's defaults (composite tokens recreating
 regardless of set status, re-export orphaning a cosmetic rename, …).
+
+## prune-orphan-variables.js — find (and delete) Figma variables with no JSON token
+
+**The problem.** Every Figma variable in this library is supposed to have a
+matching token in `src/lib/themes/`, no exceptions — variables come into
+existence only through a Token Studio push, never by hand directly in Figma.
+In practice they drift apart: a token path rename pushes a new variable
+under the new name without
+removing the old one (same cause as the text-style rename gotcha above), or —
+not allowed, but it happens — someone creates a variable by hand directly in
+Figma. Either way the variable has no JSON backing and should not be there.
+The first audit of this file (2026-09-22) found 869 such variables out of
+1882, 859 of them sitting in 19 collections literally named after old JSON
+file paths from a prior naming migration.
+
+**The fix.** Run `prune-orphan-variables.js` **from a terminal, not Figma**:
+
+1. `node prune-orphan-variables.js` — scan mode (the only mode without
+   flags). Reads every token JSON file fresh off disk, reads every local
+   Figma variable via `figma-ds-cli`, and reports two things: collections
+   that are 100% orphaned (every variable inside failed both the key and
+   name check — safe delete candidates) and stray orphans inside otherwise-
+   healthy collections (need a human to look at each one, never auto-
+   deleted by this script).
+2. Read the report. A fully-orphaned collection with a name that still looks
+   like a real live token family (not an obvious old file path) deserves a
+   second look before deleting — check whether its variables really have no
+   current JSON equivalent under a new name.
+3. `node prune-orphan-variables.js --apply --confirm <ids.json>` — the scan
+   run writes this file for you and prints the exact command; `ids.json` is
+   just the array of `VariableCollectionId`s from `fullyOrphanedCollections`
+   you're confirming. Deletes only those collections, only if their variable
+   count still matches what the scan saw.
+
+### Two matching methods, because one alone has a gap
+
+A variable counts as backed by JSON if either is true:
+- its Figma `key` (the REST API stable id) appears in `$themes.json` ->
+  `$figmaVariableReferences`, unioned across every theme entry, or
+- its Figma `name` (slashes) matches some token's own JSON path (dots ->
+  slashes, no prefix stripped).
+
+The first method alone produces false positives: `TIMING` and `EASING`
+variables (`ob/s/motion/duration/*`, `ob/s/motion/easing/*`) never appear in
+`$figmaVariableReferences` even though the tokens exist and the variables are
+live — confirmed during the first audit, where 5 such variables were
+initially flagged and then ruled out by hand. The name fallback catches
+those. Trust the report's `strayOrphans` less than `fullyOrphanedCollections`
+for exactly this reason — a stray is far more likely to be a fresh gap in
+the matching logic than an actual defect.
+
+### Safety model
+
+Stricter than every other script here on purpose, because this one deletes
+collections, not just renames things:
+- scan never writes, ever.
+- apply only deletes a collection that is 100% orphaned AND explicitly
+  listed in `--confirm`'s file. It never touches a stray orphan automatically.
+- re-checks each collection's variable count right before deleting it.
+- same as any destructive Figma write in this repo: if the apply run gets
+  denied by the auto-mode classifier even after you've confirmed it, run the
+  printed command yourself in your own terminal.
+
+Run this alongside `run-cosmetics.js` after every Token Studio push — see
+`../FIGMA-WORKFLOW.md` step 4. Scan every time; apply only when it actually
+finds something.
 
 ## unbind-variables.js — kill "ghost" variable-mode pickers
 
