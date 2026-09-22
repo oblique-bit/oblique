@@ -1075,18 +1075,28 @@ async function buildTable(spec, ctx) {
     tokenCount: tokens.length
   });
 
-  // Group tokens by the segment after the prefix. spec.matches counts segments
-  // in the Figma VARIABLE name (e.g. "color/neutral/" = 2); S3 tokens' dotPath
-  // carries the full "ob.s." token prefix that trimmed variable name doesn't,
-  // so it needs 2 extra segments to line up (S1/S2 dotPaths were never
-  // shortened, so no offset there).
-  let prefixSegments;
-  if (spec.matches) {
-    prefixSegments = spec.matches.replace(/^\\^/, '').split('/').length - 1;
-    if (spec.tier === 's3') prefixSegments += 2;
-  } else {
-    prefixSegments = 3;
-  }
+  // Group tokens by the segment after the prefix. dotPath always normalizes to
+  // the full "ob.<tier>.color.<family>...." form (see the dotPath branch above
+  // this function, ~line 1033) regardless of whether the live Figma variable
+  // name itself carries that prefix or was trimmed — so the group segment's
+  // index in dotPath is exactly spec.matches's own segment count, for every
+  // tier, as long as matches is written against the real (untrimmed) variable
+  // name. No per-tier offset needed.
+  //
+  // CAUTION: this used to carry a "+2 for s3" fudge factor, because the S3
+  // registry entries' matches were written against an old, already-trimmed
+  // form of the variable name (e.g. "^color/neutral/", 2 segments) while S1's
+  // were always written against the untrimmed form. Once the S3 matches
+  // values were corrected to the real untrimmed names (e.g.
+  // "^ob/s/color/neutral/", 4 segments — see ../FIGMA-WORKFLOW.md and the
+  // token-only variable-origin rule this fixed for), the old fudge factor
+  // started double-counting the "ob/s/" it now already included, and every
+  // S3 table's group header showed the wrong title (e.g. "Contrast Low"
+  // instead of "Pink" on the free/pink group) — caught 2026-09-22, right
+  // after that matches fix.
+  const prefixSegments = spec.matches
+    ? spec.matches.replace(/^\\^/, '').split('/').length - 1
+    : 3;
   const groups = deriveGroups(tokens, prefixSegments);
 
   // Wipe existing children of the table frame
@@ -1348,10 +1358,16 @@ async function validatePage(targetPage, varMap, components) {
       // name cell empty — they inherit from the row above. Skip them.
       if (!nameText) continue;
       // Look up variable by dotted token name. Compiled-tier (S3) rows display
-      // the full ob.s.color path but the live Figma variable has that prefix
-      // trimmed (see shorten-color.js) — strip it back off before lookup.
-      const varName = nameText.startsWith('ob.s.') ? nameText.slice(5).replace(/\\./g, '/') : nameText.replace(/\\./g, '/');
-      const v = (varMap.byName && varMap.byName[varName]) || varMap.list.find(x => x.name === varName);
+      // the full ob.s.color path; the live Figma variable name may or may not
+      // have that prefix trimmed (see shorten-color.js) depending on whether
+      // the cosmetic trim has actually run - as of 2026-09-22 it has not (see
+      // run-cosmetics.js's variables step, "no rule needed yet"), so live
+      // names carry the full prefix. Try the untrimmed name first (today's
+      // real state), then the trimmed form, so this keeps working either way.
+      const fullVarName = nameText.replace(/\\./g, '/');
+      const trimmedVarName = nameText.startsWith('ob.s.') ? nameText.slice(5).replace(/\\./g, '/') : fullVarName;
+      const v = (varMap.byName && (varMap.byName[fullVarName] || varMap.byName[trimmedVarName]))
+        || varMap.list.find(x => x.name === fullVarName || x.name === trimmedVarName);
       if (!v) {
         warnings.push({ code: 'TOKEN', set: wrapperName, msg: 'token "' + nameText + '" not found in varMap' });
         continue;
