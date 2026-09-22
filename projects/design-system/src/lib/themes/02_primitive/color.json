@@ -75,61 +75,61 @@
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#f0f4f7",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           },
           "100": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#dfe4e9",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           },
           "200": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#acb4bd",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           },
           "300": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#828e9a",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           },
           "400": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#596978",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           },
           "500": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#46596b",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           },
           "600": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#2f4356",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           },
           "700": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#263645",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           },
           "800": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#1c2834",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           },
           "900": {
             "parent": "Colors/Mode 1",
             "$type": "color",
             "$value": "#131b22",
-            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, status, and free tokens."
+            "$description": "Role: Shared. Core neutral scale. Used across neutral, interaction, navigation, and free tokens."
           }
         },
         "basic": {
