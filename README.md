@@ -42,6 +42,10 @@ This monorepo contains the following packages and applications:
 | [Styles Builder](projects/stylesBuilder/README.md)                                      | Internal tool to transpile SCSS files                 |
 | [Toolchain](projects/toolchain/README.md)                                               | Shared build and development tooling                  |
 
+| Tool                                         | Description                                           |
+| -------------------------------------------- | ----------------------------------------------------- |
+| [CLI Registry](tools/cli-registry/README.md) | Local npm registry for developing and testing the CLI |
+
 ## Contributing
 
 Contributions from federal teams and the open-source community are welcome.

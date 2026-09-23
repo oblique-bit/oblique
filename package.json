@@ -26,7 +26,8 @@
     "projects/sandbox-e2e",
     "projects/sandbox-ssr",
     "projects/service-navigation-web-component",
-    "projects/toolchain"
+    "projects/toolchain",
+    "tools/cli-registry"
   ],
   "scripts": {
     "lint": "tsx scripts/lint.ts && npm run lint --workspaces",
