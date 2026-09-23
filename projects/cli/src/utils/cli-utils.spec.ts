@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import process from 'node:process';
 import * as nodeChildProcess from 'node:child_process';
 import {
@@ -17,9 +20,11 @@ import {
 	parseCommandArguments,
 	recommendedVersion,
 	runObCommand,
+	spawnCommand,
 	startObCommand,
 	titleText,
 } from './cli-utils.js';
+import resolveCommand from './command-resolver.js';
 import {lt} from 'semver';
 
 vi.mock('node:child_process', async () => ({
@@ -35,8 +40,8 @@ function getMinimumRecommendedVersion(): string {
 }
 
 describe('CLI Utils', () => {
-	const osNpxCommand = isWindows() ? 'npx.cmd' : 'npx';
-	const osNpmCommand = isWindows() ? 'npm.cmd' : 'npm';
+	const osNpxCommand = resolveCommand('npx');
+	const osNpmCommand = resolveCommand('npm');
 
 	beforeAll(() => {
 		vi.spyOn(console, 'info').mockImplementation(() => {});
@@ -152,7 +157,7 @@ describe('CLI Utils', () => {
 			{subCommand: `new` as 'new' | 'update' | '<command>', option: 'options', expected: `<project-name> options`},
 			{subCommand: `update` as 'new' | 'update' | '<command>', option: 'options', expected: `options`},
 			{subCommand: `<command>` as 'new' | 'update' | '<command>', expected: `<command> [...options]`},
-			{subCommand: undefined as 'new' | 'update' | '<command>', expected: `<command> [...options]`},
+			{subCommand: undefined, expected: `<command> [...options]`},
 		])('commandUsageText("$property") should return correct usage text', ({subCommand, option, expected}) => {
 			expect(commandUsageText(subCommand, option)).toBe(expected);
 		});
@@ -279,12 +284,20 @@ Examples of use:
 	});
 
 	describe('buildOption', () => {
-		test('should return key="value" with a string value', () => {
-			if (isWindows()) {
-				expect(buildOption('key', 'value')).toEqual('key="value"');
-			} else {
-				expect(buildOption('key', 'value')).toEqual('key=value');
-			}
+		const originalPlatform = process.platform;
+
+		afterEach(() => {
+			Object.defineProperty(process, 'platform', {value: originalPlatform, configurable: true});
+		});
+
+		test('should return key="value" with a string value on Windows', () => {
+			Object.defineProperty(process, 'platform', {value: 'win32', configurable: true});
+			expect(buildOption('key', 'value')).toEqual('key="value"');
+		});
+
+		test('should return key=value with a string value on other platforms', () => {
+			Object.defineProperty(process, 'platform', {value: 'linux', configurable: true});
+			expect(buildOption('key', 'value')).toEqual('key=value');
 		});
 
 		test('should return key with true as value', () => {
@@ -302,7 +315,7 @@ Examples of use:
 				return {
 					pid: 1,
 					output: [''],
-					stderr: null,
+					stderr: '',
 					signal: null,
 					stdout: 'ok',
 					status: 0,
@@ -685,6 +698,98 @@ Examples of use:
 		});
 	});
 
+	describe('spawnCommand', () => {
+		let fixtureDir: string;
+		const originalPlatform = process.platform;
+
+		beforeEach(() => {
+			vi.restoreAllMocks();
+			fixtureDir = fs.mkdtempSync(path.join(os.tmpdir(), 'spawn-command-'));
+			fs.writeFileSync(
+				path.join(fixtureDir, 'fixture.js'),
+				`if (process.argv[2] === 'fail') { process.exit(3); }\nprocess.stdout.write('hello');\n`
+			);
+		});
+
+		afterEach(() => {
+			vi.restoreAllMocks();
+			fs.rmSync(fixtureDir, {recursive: true, force: true});
+			Object.defineProperty(process, 'platform', {value: originalPlatform, configurable: true});
+		});
+
+		test('returns the stdout of a successful command', () => {
+			expect(spawnCommand(process.execPath, ['fixture.js'], {cwd: fixtureDir})).toBe('hello');
+		});
+
+		test('throws when the command cannot be spawned', () => {
+			expect(() => spawnCommand(process.execPath, [], {cwd: path.join(fixtureDir, 'missing')})).toThrow(
+				`Failed to execute '${process.execPath}':`
+			);
+		});
+
+		test('throws when the command exits with a non-zero status', () => {
+			expect(() => spawnCommand(process.execPath, ['fixture.js', 'fail'], {cwd: fixtureDir})).toThrow(
+				'Command failed with exit code 3'
+			);
+		});
+
+		test('throws when the process is terminated by a signal', () => {
+			vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				return {
+					pid: 1,
+					output: [''],
+					stderr: '',
+					signal: 'SIGTERM',
+					stdout: '',
+					status: null,
+				};
+			});
+			expect(() => spawnCommand('node', [], {})).toThrow('Process was terminated by signal SIGTERM');
+		});
+
+		test('quotes an absolute command path when it contains a space', () => {
+			Object.defineProperty(process, 'platform', {value: 'win32', configurable: true});
+			vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				return {
+					pid: 1,
+					output: [''],
+					stderr: '',
+					signal: null,
+					stdout: 'ok',
+					status: 0,
+				};
+			});
+			const commandWithSpace = path.join(fixtureDir, 'tool with space.cmd');
+			fs.writeFileSync(commandWithSpace, '');
+			spawnCommand(commandWithSpace, [], {});
+			expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(`"${commandWithSpace}"`, [], {
+				encoding: 'utf8',
+				shell: isWindows(),
+			});
+		});
+
+		test('does not quote a space-free absolute command path', () => {
+			Object.defineProperty(process, 'platform', {value: 'win32', configurable: true});
+			vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				return {
+					pid: 1,
+					output: [''],
+					stderr: '',
+					signal: null,
+					stdout: 'ok',
+					status: 0,
+				};
+			});
+			const commandWithoutSpace = path.join(fixtureDir, 'tool.cmd');
+			fs.writeFileSync(commandWithoutSpace, '');
+			spawnCommand(commandWithoutSpace, [], {});
+			expect(nodeChildProcess.spawnSync).toHaveBeenCalledWith(commandWithoutSpace, [], {
+				encoding: 'utf8',
+				shell: isWindows(),
+			});
+		});
+	});
+
 	describe('checkNodeVersion', () => {
 		const originalNodeVersion = process.versions.node;
 
@@ -829,7 +934,7 @@ Examples of use:
 				{arg: 'commandName', value: 'new'},
 				{arg: 'arguments', value: ['my-app']},
 			])('extract the $arg', ({arg, value}) => {
-				expect(parseResult[arg])[typeof value === 'string' ? 'toBe' : 'toEqual'](value);
+				expect(parseResult[arg as keyof typeof parseResult])[typeof value === 'string' ? 'toBe' : 'toEqual'](value);
 			});
 		});
 	});

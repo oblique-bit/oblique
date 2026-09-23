@@ -2,6 +2,7 @@ import type {ObCommandConfig, ObOptions} from './ob-cli.model.js';
 import {type SpawnSyncOptions, spawnSync} from 'child_process';
 import {gte, major} from 'semver';
 import {dasherize} from './strings.js';
+import resolveCommand from './command-resolver.js';
 
 /* Generated content, do not edit */
 export const version = '16.0.2';
@@ -247,23 +248,18 @@ function printCliVersion(): string {
 	return `v${version}`;
 }
 
-function buildOSSafeCommand(command: string): string {
-	return isWindows() ? `${command}.cmd` : command;
-}
-
 /**
  * This method wraps the spawnSync command with meaningful error management.
  *
  * @param command The name of the command to execute, for example `npm`
- * @param args The arguments of the command, for example ["install"]
- * @param options AN object
- * @returns Teh stdout of the command if everything went well, throws an exception that
+ * @param args The arguments of the command, for example `["install"]`
+ * @param options The `spawnSync` options, for example `{cwd: process.cwd()}`; they override the
+ * defaults `encoding: 'utf8'` and `shell: isWindows()`
+ * @returns The stdout of the command if everything went well, throws an exception that
  * can be caught otherwise.
  */
-function spawnCommand(command: string, args: string[], options: SpawnSyncOptions): string {
-	const osSafeCommand = buildOSSafeCommand(command);
-
-	const result = spawnSync(osSafeCommand, args, {
+export function spawnCommand(command: string, args: string[], options: SpawnSyncOptions): string {
+	const result = spawnSync(resolveCommand(command), args, {
 		encoding: 'utf8',
 		shell: isWindows(),
 		...options,
