@@ -4,53 +4,57 @@
 
 ## What is the Oblique Design System?
 
-Oblique 16 introduces the Oblique Design System for the first time, alongside the existing Oblique library. Today, "Oblique Design System" means design tokens and modes, as the source of truth, generated into Figma variables and CSS.
+Oblique 16 introduces the Oblique Design System for the first time, alongside the existing Oblique library. Today, "Oblique Design System" means design tokens and modes as the source of truth, generated into Figma variables and CSS.
 
-It is currently maintained separately from the rest of Oblique, and will integrate with it over time. This first version is for exploring the tokens and modes.
+It is currently maintained separately from the rest of Oblique and will integrate with it over time. This first version is for exploring the tokens and modes.
 
-**Background**
+### Background
 
-Oblique's CSS variables have grown over time, expanding to meet each project's needs. Design tokens are the natural next step: a systematic, single source of truth that makes it easier to keep an overview as the system keeps growing, and to build further on top of it.
+Oblique's CSS variables have grown over time, expanding to meet each project's needs. This makes it harder to keep an overview as the system keeps growing, and to build further on top of it.
 
-Design tokens are also an answer to demands from several sides at once:
+There are also growing demands from several sides:
 
-- **End users:** expectations such as dark and light mode
-- **Design workflow:** designers expect a more robust and comprehensive library of pre-made design decisions
-- **Developers:** a predictable structure and clear rationale behind values, to build without guesswork
-- **Management:** faster delivery, less time tied up in support, and consistent quality
-- **Design tooling:** Figma itself has moved toward variables and modes
+- **End users:** expect an adaptable, accessible UI, with modes such as light/dark, high contrast, and reduced motion, conforming to WCAG 2.1 AA
+- **Product designers:** expect a more reliable, consistent, and well-documented library of pre-made design decisions
+- **System designers:** expect a clear source of truth and a standardized design-to-code workflow
+- **Developers:** expect a predictable structure and clear rationale behind values, to build without guesswork
+- **Management:** expects faster delivery, less time tied up in support, and consistent quality
+- **Design tooling:** expects support for variables and modes, following Figma's own shift toward them
 
-**Benefits of Design Tokens**
-- A scalable design tokens structure, enriched with context, forming a shared language and bridge between designers, developers, design tools (Figma), and AI tools alike
+### Benefits of Design Tokens
+
+Design tokens are the natural next step, answering these demands directly.
+
+- A scalable design tokens structure, enriched with context, forming a shared language and bridge between designers, developers, design tools (Figma), and AI tools
 - DTCG-compliant tokens, compatible with Tokens Studio (the industry-standard token management platform) and exportable to Figma and CSS
-- Shortens the design-to-code path, and speeds up contribution and further development
-- Entirely replaces hardcoded values with semantically named tokens, lowering the risk of human error
-- Accumulates development cost savings across all federal applications in the long run
-- Lowers the barrier for product designers to contribute directly to the design system
+- Shortens the design-to-code path and speeds up contribution and further development
+- Replaces hardcoded values with semantically named tokens, lowering the risk of human error
+- Accumulates development cost savings across all federal applications over time
+- Lowers the barrier for product designers to contribute directly to the Design System
 - Modes enable context-driven design, adapting to different environments and easing accessibility challenges
 
-**What this Design System release contains**
+### What this Design System release contains
 - Design tokens as JSON files for color, typography, dimension, and more
-- Modes: lightness (light/dark), emphasis, UI scale, density, typography context, motion, viewport
-- Figma Library with token-based variables, styles and variable modes
+- Modes: lightness (light/dark), emphasis, UI scale, typography context, density, viewport, motion
+- Figma library with token-based variables, styles and variable modes
 - Token-based CSS
 
-**What this Design System release does not contain yet**
-- No components, in the token JSON or in the Figma library. The Figma library currently holds variables and text/effect styles only; components will be added in 2027.
+### What this Design System release does not contain yet
+- No components, in the token JSON or in the Figma library. It currently holds variables and text/effect styles only; components will be added in 2027.
 
-**Where to find it**
-- **Markdown documentation** — the full token documentation, in git: link pending
+### Release artifacts
+- **Markdown documentation** — the token documentation, in git: link pending
 - **Token JSON** — the token source files, in git: link pending
 - **CSS** — built by the system developer from the released tokens: link pending
 - **Figma library** — the new token-based library (variables and styles, no components): link pending
 
-**How this relates to Oblique**
+### How this relates to Oblique
 
-"Oblique" without qualification usually means the existing Oblique component library, maintained separately from this Design System project and continuing unchanged in this release. The Oblique Design System builds the token foundation that future components, Oblique's own or otherwise, can be built on.
+"Oblique" without qualification usually means the existing Oblique component library, maintained separately from this Design System project and continuing unchanged in this release. The Oblique Design System provides the token foundation that future components, Oblique's own or otherwise, can build on.
 
 ---
 
-## Introduction
+## Core Concepts
 
 - [Principles](01-introduction/00-principles.md) — relationship between the Design System's code and Figma design assets
 - [Architecture](01-introduction/01-architecture.md) — token structure and layer system
@@ -58,15 +62,15 @@ Design tokens are also an answer to demands from several sides at once:
 
 ## Token types
 
-Sorted along two axes. **Tiers** say where a token sits in the reference chain. **Categories** say what kind of value it holds, and cut across every tier. For what the `$type` field means and how it maps to Figma/CSS, see the [Types Overview](02-token-tiers/00-overview.md).
+Sorted along two axes. **Tiers** define where a token sits in the reference chain. **Categories** define what kind of value it holds and cut across every tier. For what the `$type` field means and how it maps to Figma/CSS, see the [Types Overview](02-token-tiers/00-overview.md).
 
-**Tiers**
-- [Global Tokens](02-token-tiers/01-global.md)
-- [Primitive Tokens](02-token-tiers/02-primitive.md)
-- [Semantic Tokens](02-token-tiers/03-semantic.md) — S1/S2/ob.s
+### Tiers
+- [Global Tokens](02-token-tiers/01-global.md) — `ob.g.*`
+- [Primitive Tokens](02-token-tiers/02-primitive.md) — `ob.p.*`
+- [Semantic Tokens](02-token-tiers/03-semantic.md) — S1/S2/`ob.s.*`
 - [Component Tokens](02-token-tiers/04-component.md) — `ob.c.*` and `ob.h.*`
 
-**Categories**
+### Categories
 - [Colors](03-token-categories/colors/00-overview.md)
 - [Dimension](03-token-categories/00-dimension.md)
 - [Typography](03-token-categories/01-typography.md)
