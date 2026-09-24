@@ -1,9 +1,19 @@
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconModule, MatIconRegistry} from '@angular/material/icon';
-import {Component, HostAttributeToken, InjectionToken, Input, OnInit, ViewEncapsulation, inject} from '@angular/core';
+import {
+	Component,
+	HostAttributeToken,
+	InjectionToken,
+	OnInit,
+	Signal,
+	ViewEncapsulation,
+	computed,
+	inject,
+	input,
+} from '@angular/core';
 import {ObIAlertType} from './alert.model';
 import {alertIcons} from './alert-icons';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 	'Flag to globally add role="alert" per default on all ob-alert components'
@@ -11,64 +21,42 @@ export const OBLIQUE_HAS_ROLE_ALERT = new InjectionToken<boolean>(
 
 @Component({
 	selector: 'ob-alert',
-	imports: [MatIconModule, TranslateModule],
+	imports: [MatIconModule, TranslatePipe],
 	templateUrl: './alert.component.html',
 	styleUrls: ['./alert.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 	host: {
-		'[attr.role]': `role`,
-		'[class.ob-alert-error]': `error`,
-		'[class.ob-alert-info]': `info`,
-		'[class.ob-alert-success]': `success`,
-		'[class.ob-alert-warning]': `warning`,
+		'[attr.role]': 'role()',
+		'[class.ob-alert-error]': 'error()',
+		'[class.ob-alert-info]': 'info()',
+		'[class.ob-alert-success]': 'success()',
+		'[class.ob-alert-warning]': 'warning()',
 		class: 'ob-alert ob-angular',
 	},
 })
 export class ObAlertComponent implements OnInit {
-	info = true;
-	success = false;
-	warning = false;
-	error = false;
-	role: string;
-	icon = 'alert:info';
-
-	private currentType: ObIAlertType = 'info';
-	private hasAlertRole: boolean | undefined;
+	readonly info = computed(() => this.type() === 'info');
+	readonly success = computed(() => this.type() === 'success');
+	readonly warning = computed(() => this.type() === 'warning');
+	readonly error = computed(() => this.type() === 'error');
+	readonly role: Signal<'alert' | undefined>;
+	readonly icon = computed(() => `alert:${this.type()}`);
+	readonly type = input<ObIAlertType>('info');
+	readonly hasRoleAlert = input<boolean | undefined>();
 
 	private readonly hasGlobalAlertRole = inject(OBLIQUE_HAS_ROLE_ALERT, {optional: true});
 	private readonly initialRole = inject(new HostAttributeToken('role'), {optional: true});
 	private readonly matIconRegistry = inject(MatIconRegistry);
 	private readonly domSanitizer = inject(DomSanitizer);
+
 	constructor() {
-		this.role = this.initialRole;
-	}
-
-	get hasRoleAlert(): boolean | undefined {
-		return this.hasAlertRole;
-	}
-
-	@Input()
-	set hasRoleAlert(hasRoleAlert: boolean | undefined) {
-		this.hasAlertRole = hasRoleAlert;
-		this.role = this.getAlertRole();
-	}
-
-	get type(): ObIAlertType {
-		return this.currentType;
-	}
-
-	@Input() set type(type: ObIAlertType) {
-		this.currentType = type;
-		this.info = type === 'info';
-		this.success = type === 'success';
-		this.warning = type === 'warning';
-		this.error = type === 'error';
-		this.icon = `alert:${type}`;
+		this.role = computed(() =>
+			(this.hasRoleAlert() ?? this.hasGlobalAlertRole ?? this.initialRole === 'alert') ? 'alert' : undefined
+		);
 	}
 
 	ngOnInit(): void {
-		this.role = this.getAlertRole();
-		['info', 'success', 'warning', 'error'].forEach(type => {
+		(['info', 'success', 'warning', 'error'] as const).forEach(type => {
 			// Sanitation is bypassed because it doesn't allow SVG at all. And since they come from Oblique and not from any user
 			this.matIconRegistry.addSvgIconLiteralInNamespace(
 				'alert',
@@ -76,11 +64,5 @@ export class ObAlertComponent implements OnInit {
 				this.domSanitizer.bypassSecurityTrustHtml(alertIcons[type])
 			);
 		});
-	}
-
-	private getAlertRole(): string {
-		return (this.hasRoleAlert ?? this.hasGlobalAlertRole ?? (this.initialRole !== null && this.role === 'alert'))
-			? 'alert'
-			: undefined;
 	}
 }

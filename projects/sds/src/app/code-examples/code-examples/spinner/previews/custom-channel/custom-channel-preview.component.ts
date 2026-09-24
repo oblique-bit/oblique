@@ -1,4 +1,4 @@
-import {Component, type OnDestroy, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnDestroy, inject} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {type MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/oblique';
@@ -8,6 +8,7 @@ import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/obliqu
 	imports: [ObSpinnerModule, MatButtonModule, ObButtonModule, MatSlideToggleModule],
 	templateUrl: './custom-channel-preview.component.html',
 	styleUrl: './custom-channel-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class CustomChannelPreviewComponent implements OnDestroy {
 	readonly channel = 'demoChannel';

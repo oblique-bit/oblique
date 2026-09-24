@@ -4,7 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {filter} from 'rxjs';
 import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
-import {OB_HAS_LANGUAGE_IN_URL} from '../utilities';
+import {OB_HAS_LANGUAGE_IN_URL} from '../language/language.provider';
 
 @Injectable({
 	providedIn: 'root',

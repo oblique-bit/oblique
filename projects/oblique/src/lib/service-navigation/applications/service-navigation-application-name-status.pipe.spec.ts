@@ -1,15 +1,15 @@
 import {TestBed} from '@angular/core/testing';
 import {ObIServiceNavigationApplication, ObServiceNavigationApplicationStatus} from '../service-navigation.model';
 import {ObServiceNavigationApplicationNameStatusPipe} from './service-navigation-application-name-status.pipe';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe, provideTranslateService} from '@ngx-translate/core';
 
 describe('ObServiceNavigationApplicationNameStatusPipe', () => {
 	let pipe: ObServiceNavigationApplicationNameStatusPipe;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [TranslateModule.forRoot()],
-			providers: [ObServiceNavigationApplicationNameStatusPipe],
+			imports: [TranslatePipe],
+			providers: [provideTranslateService(), ObServiceNavigationApplicationNameStatusPipe],
 		});
 
 		pipe = TestBed.inject(ObServiceNavigationApplicationNameStatusPipe);

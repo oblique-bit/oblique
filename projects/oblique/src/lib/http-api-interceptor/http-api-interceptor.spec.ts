@@ -2,7 +2,7 @@ import {HttpErrorResponse, HttpEvent, HttpRequest, HttpResponse} from '@angular/
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject, of, throwError} from 'rxjs';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObENotificationType} from '../notification/notification.model';
 import {ObNotificationService} from '../notification/notification.module';
 import {ObSpinnerService} from '../spinner/spinner.module';

@@ -1,14 +1,15 @@
 import {AsyncPipe} from '@angular/common';
 import {
+	ChangeDetectionStrategy,
 	Component,
 	DOCUMENT,
 	DestroyRef,
 	ElementRef,
-	Input,
 	OnInit,
 	Renderer2,
 	ViewEncapsulation,
 	inject,
+	input,
 } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
@@ -23,13 +24,14 @@ import {ObSpinnerRegistry} from './spinner.registry';
 	imports: [AsyncPipe, MatIconModule],
 	templateUrl: './spinner.component.html',
 	styleUrls: ['./spinner.component.scss', './spinner-animations.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-spinner', '[attr.aria-hidden]': 'true'},
 	exportAs: 'obSpinner',
 })
 export class ObSpinnerComponent implements OnInit {
-	@Input() channel: string = ObSpinnerService.CHANNEL;
-	@Input() fixed = false;
+	readonly channel = input<string>(ObSpinnerService.CHANNEL);
+	readonly fixed = input(false);
 	isActive$: Observable<boolean>;
 	storedFocusedElement: HTMLElement;
 	elementOutsideInertArea: HTMLElement;
@@ -52,7 +54,7 @@ export class ObSpinnerComponent implements OnInit {
 			this.spinnerRegistry.unregister(this);
 		});
 		this.isActive$ = this.spinnerService.events$.pipe(
-			filter(event => event.channel === this.channel),
+			filter(event => event.channel === this.channel()),
 			map(event => event.active),
 			delay(0), // avoid ExpressionChangedAfterItHasBeenCheckedError when the spinner is activated during a component's initialisation process
 			tap((isActive: boolean) => {
@@ -85,7 +87,7 @@ export class ObSpinnerComponent implements OnInit {
 		if (!isActive) {
 			return 'i18n.oblique.spinner.deactivate';
 		}
-		return this.fixed ? 'i18n.oblique.spinner.is-fixed.activate' : 'i18n.oblique.spinner.activate';
+		return this.fixed() ? 'i18n.oblique.spinner.is-fixed.activate' : 'i18n.oblique.spinner.activate';
 	}
 
 	private handleFocus(isActive: boolean): void {

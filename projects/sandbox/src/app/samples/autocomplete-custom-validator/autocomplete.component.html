@@ -1,0 +1,17 @@
+<p>
+	At the moment, the autocomplete triggers validation from custom validators twice. To reproduce this issue later this
+	example was added.
+</p>
+<ob-column-layout left="NONE" right="OPENED">
+	<ng-container column-main-content>
+		<form [formGroup]="formGroup">
+			<ob-autocomplete formControlName="controlTest" withErrorMessages="true" [autocompleteOptions]="optionList">
+				<mat-hint>This field is required</mat-hint>
+				<mat-hint align="end">The error is shown after the field loses focus while remaining empty</mat-hint>
+			</ob-autocomplete>
+		</form>
+	</ng-container>
+	<ng-container column-right-content>
+		<p>validated times: {{ validatedTimes() }}</p>
+	</ng-container>
+</ob-column-layout>

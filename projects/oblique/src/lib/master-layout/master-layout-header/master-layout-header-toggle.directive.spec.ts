@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';
 import {ObMasterLayoutHeaderToggleDirective} from './master-layout-header-toggle.directive';
@@ -7,6 +7,7 @@ import {ObMasterLayoutHeaderToggleDirective} from './master-layout-header-toggle
 @Component({
 	standalone: false,
 	template: '<a obMasterLayoutHeaderToggle> test </a>',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 

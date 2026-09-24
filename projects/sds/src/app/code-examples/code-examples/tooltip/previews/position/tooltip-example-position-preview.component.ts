@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
@@ -8,5 +8,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 	imports: [MatTooltipModule, MatButtonModule, ObButtonModule, ObExternalLinkModule],
 	templateUrl: './tooltip-example-position-preview.component.html',
 	styleUrl: './tooltip-example-position-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TooltipExamplePositionPreviewComponent {}

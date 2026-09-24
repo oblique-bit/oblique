@@ -1,4 +1,4 @@
-import {Component, type OnDestroy, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnDestroy, inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
@@ -12,6 +12,7 @@ import {
 } from '@oblique/oblique';
 import {type Observable, Subject} from 'rxjs';
 import {delay, filter, map, startWith, takeUntil} from 'rxjs/operators';
+import {AppStateService} from './app-state.service';
 import {DynamicNavigationService} from './samples/master-layout/dynamic-navigation.service';
 import {appNavigation} from './app-navigation';
 
@@ -20,6 +21,7 @@ import {appNavigation} from './app-navigation';
 	standalone: false,
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AppComponent implements OnDestroy {
 	version = appVersion;
@@ -41,6 +43,7 @@ export class AppComponent implements OnDestroy {
 	];
 	autocompleteItems$: Observable<ObIAutocompleteInputOption[]>;
 	readonly nav = inject(DynamicNavigationService);
+	readonly appState = inject(AppStateService);
 	private readonly unsubscribe = new Subject<void>();
 	private readonly router = inject(Router);
 	private readonly translate = inject(TranslateService);
@@ -55,7 +58,7 @@ export class AppComponent implements OnDestroy {
 			this.navigation = links;
 		});
 		this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-			header.serviceNavigationConfiguration.returnUrl = window.location.href;
+			header.updateServiceNavigationConfiguration({returnUrl: window.location.href});
 		});
 	}
 

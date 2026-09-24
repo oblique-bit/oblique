@@ -9,18 +9,13 @@ import {
 } from '@schematics/angular/utility/dependencies';
 import {Change, InsertChange} from '@schematics/angular/utility/change';
 import {error, getJson, infoMigration, packageJsonConfigPath, readFile} from '../utils';
-import {
-	ScriptTarget,
-	createSourceFile,
-} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {ScriptTarget, createSourceFile} from 'typescript';
 import {ObIVersion} from './ng-add.model';
 
 export const angularAppFilesNames = {
-	appTemplate: 'app.html',
 	appModule: 'app-module.ts',
 	appRoutingModule: 'app-routing-module.ts',
 	appComponent: 'app.ts',
-	appComponentSpec: 'app.spec.ts',
 };
 export const appModulePath = `src/app/${angularAppFilesNames.appModule}`;
 export const routingModulePath = `src/app/${angularAppFilesNames.appRoutingModule}`;
@@ -30,31 +25,27 @@ export const obliqueCssPath = 'node_modules/@oblique/oblique/styles/css/oblique-
 type versionFunc = (version: number) => string;
 
 const versions: Record<string, string | versionFunc> = {
-	'@angular-builders/jest': version => `^${version}.0.0`,
 	'@angular/cdk': version => `^${version}.0.0`,
 	'@angular/core': version => `^${version}.0.0`,
 	'@angular/material': version => `^${version}.0.0`,
 	'@angular/router': version => `^${version}.0.0`,
 	'@angular-devkit/build-angular': version => `^${version}.0.0`,
-	'@angular-eslint/eslint-plugin': '^21.0.0',
-	'@angular-eslint/eslint-plugin-template': '^21.0.0',
-	'@angular-eslint/template-parser': '^21.0.0',
-	'@angular-eslint/utils': '^21.0.0',
-	'@ngx-translate/core': '^17.0.0',
+	'@angular-eslint/eslint-plugin': '^22.0.0',
+	'@angular-eslint/eslint-plugin-template': '^22.0.0',
+	'@angular-eslint/template-parser': '^22.0.0',
+	'@angular-eslint/utils': '^22.0.0',
+	'@ngx-translate/core': '^18.0.0',
 	'@popperjs/core': '^2.0.0',
-	'@typescript-eslint/eslint-plugin': '^8.30.1',
-	'@typescript-eslint/parser': '^8.30.1',
-	'@types/jest': '^30.0.0',
+	'@typescript-eslint/eslint-plugin': '^8.58.2',
+	'@typescript-eslint/parser': '^8.58.2',
 	ajv: '^8.0.0',
 	'ajv-formats': '^3.0.0',
-	'angular-eslint': '^21.0.0',
-	'angular-oauth2-oidc': '^20.0.0',
+	'angular-eslint': '^22.0.0',
+	'angular-oauth2-oidc': '^22.0.0',
 	eslint: '^9.0.0',
 	'eslint-config-prettier': '^9.0.0',
 	'eslint-plugin-prettier': '^5.0.0',
 	husky: '^9.0.0',
-	jest: '^30.0.0',
-	'jest-environment-jsdom': '^30.0.0',
 	prettier: '^3.0.0',
 };
 

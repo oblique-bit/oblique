@@ -51,6 +51,8 @@
 		<h2>{{ "i18n.routes.samples.column-layout.title" | translate }}</h2>
 		<p>
 			In Full Height mode, the column layout uses all the available space and each column can be independently scrolled.
+			This feature requires the master-layout to be in fixed-layout mode. It is triggered in this sample by setting both
+			footer.isSticky and header.isSticky to true.
 		</p>
 		<ob-autocomplete [autocompleteOptions]="[{ label: 'test' }]" />
 	</ng-container>

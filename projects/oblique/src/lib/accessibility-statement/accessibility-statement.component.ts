@@ -1,15 +1,16 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {DatePipe, Location} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
 import {MatButton} from '@angular/material/button';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
-import {ObConformity, ObContactData, ObWindow} from '../utilities.model';
-import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, OB_HISTORY_STATE, WINDOW} from '../utilities';
+import {ObWindow} from '../window/window.provider.model';
+import {WINDOW} from '../window/window.provider';
 import {ObDatePipe} from '../language/date.pipe';
 import {ObEIcon} from '../icon/icon.model';
-import {ObIAccessibilityStatementContactInfo} from './accessibility-statement.model';
+import {ObConformity, ObContactData, ObIAccessibilityStatementContactInfo} from './accessibility-statement.model';
+import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, OB_HISTORY_STATE} from './accessibility-statement.provider';
 import {ObButtonDirective} from '../button/button.directive';
 import {Router} from '@angular/router';
 import {ObMasterLayoutService} from '../master-layout/master-layout.service';
@@ -18,7 +19,7 @@ import {ObMasterLayoutService} from '../master-layout/master-layout.service';
 	selector: 'ob-accessibility-statement',
 	imports: [
 		ObExternalLinkModule,
-		TranslateModule,
+		TranslatePipe,
 		ObTranslateParamsPipe,
 		ObDatePipe,
 		DatePipe,
@@ -28,6 +29,7 @@ import {ObMasterLayoutService} from '../master-layout/master-layout.service';
 	],
 	templateUrl: './accessibility-statement.component.html',
 	styleUrl: './accessibility-statement.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AccessibilityStatementComponent {
 	readonly parameters = inject(OB_ACCESSIBILITY_STATEMENT_CONFIGURATION);

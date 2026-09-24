@@ -1,12 +1,13 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ObINotification} from '../notification.model';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Component({
 	selector: 'ob-notification',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'obNotification',
 })
 export class ObMockNotificationComponent {

@@ -2,19 +2,25 @@ import type {Command, OptionValues} from '@commander-js/extra-typings';
 import * as cliPackage from '../../package.json';
 import * as obNewSchema from './schema.json';
 import {spawnSync} from 'child_process';
+import * as nodeChildProcess from 'node:child_process';
+import fs from 'node:fs';
 import {obNewConfig} from './ob-new.model';
-import {currentVersions, isWindows, version} from '../utils/cli-utils';
+import {buildOption, currentVersions, isWindows, version} from '../utils/cli-utils';
 import {createObNewCommand} from './ob-new';
 
-const nodeChildProcess: typeof import('node:child_process') = jest.requireActual('node:child_process');
+vi.mock('node:child_process', async () => ({
+	...((await vi.importActual<typeof import('node:child_process')>('node:child_process')) as object),
+}));
 
 describe('Ob new command', () => {
 	const projectName = 'SuperduperProject';
+	const osNpxCommand = isWindows() ? 'npx.cmd' : 'npx';
+	const osNpmCommand = isWindows() ? 'npm.cmd' : 'npm';
 	let parsedObNewCommand: Command<[string], OptionValues>;
 
 	function buildNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return {
-			command: 'npx',
+			command: osNpxCommand,
 			args: [
 				`@angular/cli@${currentVersions['@angular/cli']}`,
 				'add',
@@ -24,19 +30,28 @@ describe('Ob new command', () => {
 		};
 	}
 
+	function buildToolchainNgAddCommand(options: string[] = []): {command: string; args: string[]} {
+		return {
+			command: osNpxCommand,
+			args: [
+				`@angular/cli@${currentVersions['@angular/cli']}`,
+				'add',
+				`@oblique/toolchain@${currentVersions['@oblique/toolchain']}`,
+				...options,
+			],
+		};
+	}
+
 	function buildDefaultNgAddCommand(options: string[] = []): {command: string; args: string[]} {
 		return buildNgAddCommand([
-			`--title=${projectName}`,
-			'--locales=de-CH fr-CH it-CH',
-			'--environments=local dev ref test abn prod',
-			'--prefix=app',
-			'--proxy= ',
+			buildOption('--title', projectName),
+			buildOption('--environments', 'local dev ref test abn prod'),
+			buildOption('--prefix', 'app'),
 			'--ajv',
-			'--unknownRoute',
-			'--httpInterceptors',
+			'--unknown-route',
+			'--http-interceptors',
 			'--no-banner',
-			'--externalLink',
-			'--jest',
+			'--external-link',
 			'--eslint',
 			'--husky',
 			...options,
@@ -44,10 +59,10 @@ describe('Ob new command', () => {
 	}
 
 	beforeAll(() => {
-		jest.spyOn(console, 'info').mockImplementation(() => {});
-		jest.spyOn(console, 'timeEnd').mockImplementation(() => {});
-		jest.spyOn(console, 'error').mockImplementation(() => {});
-		jest.spyOn(console, 'warn').mockImplementation(() => {});
+		vi.spyOn(console, 'info').mockImplementation(() => {});
+		vi.spyOn(console, 'timeEnd').mockImplementation(() => {});
+		vi.spyOn(console, 'error').mockImplementation(() => {});
+		vi.spyOn(console, 'warn').mockImplementation(() => {});
 	});
 
 	describe('after createObNewCommand', () => {
@@ -55,7 +70,7 @@ describe('Ob new command', () => {
 			beforeAll(() => {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -157,6 +172,11 @@ describe('Ob new command', () => {
 							"--title <project-name> Add the specified application's title: The title will be visible in the header of your application. (default: project name.)",
 					},
 					{
+						description: "Option to specify the application's operator",
+						expected:
+							'--applicationOperator <application-operator> Add the specified application operator: The operator will be visible in the footer of your application.',
+					},
+					{
 						description: 'Option to specify supported locales',
 						expected:
 							'--locales <locales> Supported locales: Use a whitespace separated list. (default: "de-CH fr-CH it-CH")',
@@ -174,7 +194,7 @@ describe('Ob new command', () => {
 					{
 						description: 'Option to configure a proxy server',
 						expected:
-							'--proxy <port> Proxy configuration: Defines the port for the proxy configuration for server connection. (default: " ")',
+							'--proxy <port> Proxy configuration: Defines the port for the proxy configuration for server connection.',
 					},
 					{
 						description: 'Option to add Ajv dependency for form validation',
@@ -200,11 +220,6 @@ describe('Ob new command', () => {
 						description: 'Option to add the external link module',
 						expected:
 							"--externalLink [boolean] External link: If true, it imports the ObExternalLinkModule. This feature automatically enhances external links. See more information at Oblique's External link API at https://oblique.bit.admin.ch/components/external-link/api (default: true)",
-					},
-					{
-						description: 'Option to use Jest for unit tests',
-						expected:
-							"--jest [boolean] Jest for unit tests: If true, Karma/Jasmine will be replaced with Jest as your application's testing framework. See more information at Jest at npm https://www.npmjs.com/package/jest and Jest's documentation: https://jestjs.io/docs/getting-started (default: true)",
 					},
 					{
 						description: 'Option to create an .npmrc file',
@@ -235,7 +250,7 @@ describe('Ob new command', () => {
 				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} new ${projectName} --no-standalone --no-ssr --no-zoneless --ai-config="none" --style="scss" --prefix="app"`, () => {
 					expect(spawnSync).toHaveBeenNthCalledWith(
 						1,
-						'npx',
+						osNpxCommand,
 						[
 							`@angular/cli@${currentVersions['@angular/cli']}`,
 							'new',
@@ -243,9 +258,9 @@ describe('Ob new command', () => {
 							'--no-standalone',
 							'--no-ssr',
 							'--no-zoneless',
-							'--ai-config=none',
-							'--style=scss',
-							'--prefix=app',
+							buildOption('--ai-config', 'none'),
+							buildOption('--style', 'scss'),
+							buildOption('--prefix', 'app'),
 						],
 						{stdio: 'inherit', encoding: 'utf8', shell: isWindows()}
 					);
@@ -254,7 +269,7 @@ describe('Ob new command', () => {
 				test(`should call npm install @angular/material@${currentVersions['@angular/material']} @angular/cdk@${currentVersions['@angular/cdk']}`, () => {
 					expect(spawnSync).toHaveBeenNthCalledWith(
 						2,
-						'npm',
+						osNpmCommand,
 						[
 							'install',
 							`@angular/material@${currentVersions['@angular/material']}`,
@@ -271,9 +286,38 @@ describe('Ob new command', () => {
 					);
 				});
 
-				test(`should call npx ${projectName} with default parameter`, () => {
+				test(`should call npx @angular/cli@${currentVersions['@angular/cli']} generate @oblique/toolchain:linting`, () => {
+					expect(spawnSync).toHaveBeenNthCalledWith(
+						4,
+						osNpxCommand,
+						[
+							`@angular/cli@${currentVersions['@angular/cli']}`,
+							'generate',
+							'@oblique/toolchain:linting',
+							buildOption('--prefix', 'app'),
+						],
+						{
+							cwd: `${process.cwd()}/${projectName}`,
+							encoding: 'utf8',
+							shell: isWindows(),
+							stdio: 'inherit',
+						}
+					);
+				});
+
+				test(`should call npx add @oblique/toolchain`, () => {
+					const expected = buildToolchainNgAddCommand();
+					expect(spawnSync).toHaveBeenNthCalledWith(3, expected.command, expected.args, {
+						cwd: `${process.cwd()}/${projectName}`,
+						stdio: 'inherit',
+						encoding: 'utf8',
+						shell: isWindows(),
+					});
+				});
+
+				test(`should call npx add @oblique/oblique with default parameters`, () => {
 					const expected = buildDefaultNgAddCommand();
-					expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
+					expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
 						cwd: `${process.cwd()}/${projectName}`,
 						stdio: 'inherit',
 						encoding: 'utf8',
@@ -285,7 +329,7 @@ describe('Ob new command', () => {
 
 		describe('interactive', () => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -303,13 +347,13 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
 		describe('no-interactive', () => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -327,7 +371,7 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
@@ -348,7 +392,7 @@ describe('Ob new command', () => {
 			{index: 1, message: 'Oblique CLI ob new completed in', type: 'timeEnd'},
 		])('calls console ', ({index, message, type}) => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -366,7 +410,7 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
@@ -374,7 +418,7 @@ describe('Ob new command', () => {
 			let options: string[] = useCase === 'interactive mode' ? [projectName, '--interactive'] : [projectName];
 
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -396,7 +440,10 @@ describe('Ob new command', () => {
 
 			test(`should call npx ${options.join(', ')}`, () => {
 				const expected = options.includes('--interactive') ? buildNgAddCommand() : buildDefaultNgAddCommand();
-				expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
+				// eslint-disable-next-line no-warning-comments
+				// FIXME: Use one call index once interactive prefix handling is fixed. For now, --interactive skips the eslinting and husky calls, so the index is different.
+				const obliqueAddCall = options.includes('--interactive') ? 4 : 5;
+				expect(spawnSync).toHaveBeenNthCalledWith(obliqueAddCall, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -405,22 +452,32 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 		});
 
 		describe.each([
-			{description: 'without npmrc flag', args: [projectName], expectedValue: undefined, expectedOption: []},
-			{description: 'with --npmrc', args: [projectName, '--npmrc'], expectedValue: true, expectedOption: ['--npmrc']},
+			{
+				description: 'without npmrc flag',
+				args: [projectName],
+				expectedValue: undefined,
+				expectedToolchainOptions: [],
+			},
+			{
+				description: 'with --npmrc',
+				args: [projectName, '--npmrc'],
+				expectedValue: true,
+				expectedToolchainOptions: ['--npmrc'],
+			},
 			{
 				description: 'with --no-npmrc',
 				args: [projectName, '--no-npmrc'],
 				expectedValue: false,
-				expectedOption: ['--no-npmrc'],
+				expectedToolchainOptions: ['--no-npmrc'],
 			},
-		])('npmrc handling $description', ({args, expectedValue, expectedOption}) => {
+		])('npmrc handling $description', ({args, expectedValue, expectedToolchainOptions}) => {
 			beforeEach(() => {
-				jest.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
 					return {
 						pid: 1,
 						output: [''],
@@ -439,8 +496,18 @@ describe('Ob new command', () => {
 			});
 
 			test('should pass the npmrc option to ng add', () => {
-				const expected = buildDefaultNgAddCommand(expectedOption);
-				expect(spawnSync).toHaveBeenNthCalledWith(4, expected.command, expected.args, {
+				const expected = buildToolchainNgAddCommand(expectedToolchainOptions);
+				expect(spawnSync).toHaveBeenNthCalledWith(3, expected.command, expected.args, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('should not pass the npmrc option to Oblique ng add', () => {
+				const expected = buildDefaultNgAddCommand();
+				expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
 					cwd: `${process.cwd()}/${projectName}`,
 					stdio: 'inherit',
 					encoding: 'utf8',
@@ -449,16 +516,328 @@ describe('Ob new command', () => {
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
+			});
+		});
+
+		describe.each([
+			{
+				description: 'with custom proxy port',
+				args: [projectName, '--proxy', '1234'],
+				expectedValue: '1234',
+				expectedToolchainOptions: [buildOption('--proxy', '1234')],
+			},
+			{
+				description: 'with blank proxy port',
+				args: [projectName, '--proxy', ' '],
+				expectedValue: ' ',
+				expectedToolchainOptions: [],
+			},
+		])('proxy handling $description', ({args, expectedValue, expectedToolchainOptions}) => {
+			beforeEach(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {pid: 1, output: [''], stderr: null, signal: null, stdout: 'ok', status: 0};
+				});
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse(args, {from: 'user'});
+			});
+
+			test('should parse the proxy option', () => {
+				expect(parsedObNewCommand.opts().proxy).toBe(expectedValue);
+			});
+
+			test('should pass the proxy option to ng add @oblique/toolchain', () => {
+				const expected = buildToolchainNgAddCommand(expectedToolchainOptions);
+				expect(spawnSync).toHaveBeenNthCalledWith(3, expected.command, expected.args, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('should not pass the proxy option to Oblique ng add', () => {
+				const expected = buildDefaultNgAddCommand();
+				expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			afterEach(() => {
+				vi.resetAllMocks();
+			});
+		});
+
+		describe.each([
+			{
+				description: 'with default locales',
+				args: [projectName],
+				expectedValue: 'de-CH fr-CH it-CH',
+				expectedAddObliqueOptions: buildOption('--locale', 'de-CH fr-CH it-CH'),
+			},
+			{
+				description: 'with custom locales',
+				args: [projectName, '--locales', 'en-US fr-FR'],
+				expectedValue: 'en-US fr-FR',
+				expectedAddObliqueOptions: buildOption('--locale', 'en-US fr-FR'),
+			},
+			{
+				description: 'with blank locales',
+				args: [projectName, '--locales', ' '],
+				expectedValue: ' ',
+				expectedAddObliqueOptions: '',
+			},
+		])('locales handling $description', ({args, expectedValue, expectedAddObliqueOptions}) => {
+			beforeEach(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse(args, {from: 'user'});
+			});
+
+			test('should parse the locales option', () => {
+				expect(parsedObNewCommand.opts().locales).toBe(expectedValue);
+			});
+
+			test('should pass the locales option to ng generate @oblique/toolchain:add-oblique', () => {
+				const expectedArgs = expectedAddObliqueOptions
+					? [
+							`@angular/cli@${currentVersions['@angular/cli']}`,
+							'generate',
+							'@oblique/toolchain:add-oblique',
+							expectedAddObliqueOptions,
+							buildOption(`--title`, projectName),
+						]
+					: [
+							`@angular/cli@${currentVersions['@angular/cli']}`,
+							'generate',
+							'@oblique/toolchain:add-oblique',
+							buildOption(`--title`, projectName),
+						];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('should not pass the locales option to Oblique ng add', () => {
+				const expected = buildDefaultNgAddCommand();
+				expect(spawnSync).toHaveBeenNthCalledWith(5, expected.command, expected.args, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			afterEach(() => {
+				vi.resetAllMocks();
+			});
+		});
+
+		describe.each([
+			{
+				description: 'with default title and applicationOperator',
+				args: [projectName],
+				expectedAddObliqueOptions: [buildOption('--locale', 'de-CH fr-CH it-CH'), buildOption('--title', projectName)],
+			},
+			{
+				description: 'with custom title and applicationOperator',
+				args: [projectName, '--title', 'My App', '--applicationOperator', 'My Operator'],
+				expectedAddObliqueOptions: [
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', 'My App'),
+					buildOption('--application-operator', 'My Operator'),
+				],
+			},
+			{
+				description: 'with custom applicationOperator only',
+				args: [projectName, '--applicationOperator', 'My Operator'],
+				expectedAddObliqueOptions: [
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
+					buildOption('--application-operator', 'My Operator'),
+				],
+			},
+		])('title and applicationOperator handling $description', ({args, expectedAddObliqueOptions}) => {
+			beforeEach(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
+				const obNewCommand = createObNewCommand();
+				parsedObNewCommand = obNewCommand.parse(args, {from: 'user'});
+			});
+
+			test('should pass title and applicationOperator to ng generate @oblique/toolchain:add-oblique', () => {
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					...expectedAddObliqueOptions,
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			afterEach(() => {
+				vi.resetAllMocks();
+			});
+		});
+
+		describe('bridging applicationOperator and title from the oblique ng-add app module', () => {
+			const appModuleContent = `import {provideObliqueConfiguration} from '@oblique/oblique';
+@NgModule({})
+export class AppModule {
+	providers: [provideObliqueConfiguration({accessibilityStatement: {
+		applicationName: 'Bridged App',
+		conformity: 'none',
+		createdOn: new Date('2026-08-31'),
+		applicationOperator: 'Bridged Operator',
+		contact: []
+	}, hasLanguageInUrl: false})]
+}`;
+			let readFileSyncSpy: vi.SpyInstance;
+
+			beforeEach(() => {
+				vi.spyOn(nodeChildProcess, 'spawnSync').mockImplementation(() => {
+					return {
+						pid: 1,
+						output: [''],
+						stderr: null,
+						signal: null,
+						stdout: 'ok',
+						status: 0,
+					};
+				});
+				readFileSyncSpy = vi.spyOn(fs, 'readFileSync');
+			});
+
+			test('forwards applicationOperator and title read from the app module to the add-oblique schematic', () => {
+				readFileSyncSpy.mockReturnValue(appModuleContent);
+				const obNewCommand = createObNewCommand();
+				obNewCommand.parse([projectName], {from: 'user'});
+
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
+					buildOption('--application-operator', 'Bridged Operator'),
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('recovers the full applicationOperator when it contains an apostrophe', () => {
+				// The oblique ng-add writes the operator without escaping, so an apostrophe
+				// produces an unterminated string literal. The reader must still recover the
+				// full value instead of truncating at the apostrophe.
+				readFileSyncSpy.mockReturnValue(
+					`provideObliqueConfiguration({accessibilityStatement: {applicationName: 'Bridged App', applicationOperator: 'Office fédéral de l'Informatique, 1234', contact: []}})`
+				);
+				const obNewCommand = createObNewCommand();
+				obNewCommand.parse([projectName], {from: 'user'});
+
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
+					buildOption('--application-operator', "Office fédéral de l'Informatique, 1234"),
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('does not forward applicationOperator when the app module is missing', () => {
+				readFileSyncSpy.mockImplementation(() => {
+					throw new Error('ENOENT');
+				});
+				const obNewCommand = createObNewCommand();
+				obNewCommand.parse([projectName], {from: 'user'});
+
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			test('does not forward applicationOperator when the app module does not contain it', () => {
+				readFileSyncSpy.mockReturnValue(
+					`provideObliqueConfiguration({accessibilityStatement: {applicationName: 'Bridged App'}})`
+				);
+				const obNewCommand = createObNewCommand();
+				obNewCommand.parse([projectName], {from: 'user'});
+
+				const expectedArgs = [
+					`@angular/cli@${currentVersions['@angular/cli']}`,
+					'generate',
+					'@oblique/toolchain:add-oblique',
+					buildOption('--locale', 'de-CH fr-CH it-CH'),
+					buildOption('--title', projectName),
+				];
+				expect(spawnSync).toHaveBeenNthCalledWith(6, osNpxCommand, expectedArgs, {
+					cwd: `${process.cwd()}/${projectName}`,
+					stdio: 'inherit',
+					encoding: 'utf8',
+					shell: isWindows(),
+				});
+			});
+
+			afterEach(() => {
+				readFileSyncSpy.mockRestore();
+				vi.resetAllMocks();
 			});
 		});
 
 		describe('with error in ', () => {
 			const errorMessage = 'bad bad error';
 			beforeAll(() => {
-				jest.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
-				jest
-					.spyOn(nodeChildProcess, 'spawnSync')
+				vi.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
+				vi.spyOn(nodeChildProcess, 'spawnSync')
 					.mockImplementationOnce(() => {
 						return {
 							pid: 1,

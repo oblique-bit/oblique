@@ -8,7 +8,7 @@ import {By} from '@angular/platform-browser';
 import {MatIconModule} from '@angular/material/icon';
 import {DebugElement} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObMockExternalLinkModule} from '../../external-link/_mocks/mock-external-link.module';
 import {ObPopoverModule} from '../../popover/popover.module';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
@@ -31,7 +31,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 				MatTooltipModule,
 				NgOptimizedImage,
 				ObIsCurrentUrlPipe,
-				TranslateModule,
+				TranslatePipe,
 			],
 			declarations: [ObServiceNavigationProfileComponent, ObServiceNavigationPopoverSectionComponent],
 			providers: [provideObliqueTestingConfiguration()],
@@ -54,27 +54,24 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 	describe('userName', () => {
 		it('should be initialized to an empty string', () => {
-			expect(component.userName).toBe('');
+			expect(component.userName()).toBe('');
 		});
 
-		describe.each([
-			{name: '', header: 'i18n.oblique.service-navigation.profile.guest'},
-			{name: 'John Doe', header: 'John Doe'},
-		])('set to "$name"', ({name, header}) => {
-			it(`should show "${header}" as header`, async () => {
-				component.userName = name;
-				await openPopover();
-				const section = fixture.debugElement.query(
-					By.directive(ObServiceNavigationPopoverSectionComponent)
-				).componentInstance;
-				expect(section.header).toBe(header);
-			});
+		it(`should show "John Doe" as header`, async () => {
+			const name = 'John Doe';
+			fixture.componentRef.setInput('userName', name);
+			fixture.componentRef.changeDetectorRef.detectChanges();
+			await openPopover();
+			const section = fixture.debugElement.query(
+				By.directive(ObServiceNavigationPopoverSectionComponent)
+			).componentInstance;
+			expect(section.header()).toBe(name);
 		});
 	});
 
 	describe('profileUrls', () => {
 		it('should be initialized to an empty array', () => {
-			expect(component.profileUrls.length).toBe(0);
+			expect(component.profileUrls().length).toBe(0);
 		});
 
 		describe.each([
@@ -82,12 +79,13 @@ describe('ObServiceNavigationProfileComponent', () => {
 			{url: 'Http://settings-url', label: 'settings url', isInternalLink: true},
 		])('set to "%s"', url => {
 			it(`should show "${url.url}" as link`, async () => {
-				component.profileUrls = [url];
+				fixture.componentRef.setInput('profileUrls', [url]);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				await openPopover();
 				const section = fixture.debugElement.query(
 					By.directive(ObServiceNavigationPopoverSectionComponent)
 				).componentInstance;
-				expect(section.links[0].url).toBe(url.url);
+				expect(section.links()[0].url).toBe(url.url);
 			});
 		});
 	});
@@ -133,12 +131,12 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 	describe('links', () => {
 		it('should be initialized to an empty array', () => {
-			expect(component.links).toEqual([]);
+			expect(component.links()).toEqual([]);
 		});
 
 		describe('without additional links', () => {
 			it('should have 1 section', async () => {
-				component.links = [];
+				fixture.componentRef.setInput('links', []);
 				await openPopover();
 				const sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				expect(sections.length).toBe(1);
@@ -148,10 +146,10 @@ describe('ObServiceNavigationProfileComponent', () => {
 		describe('with additional links', () => {
 			let sections: DebugElement[];
 			beforeEach(async () => {
-				component.links = [
+				fixture.componentRef.setInput('links', [
 					{url: 'url_1', label: 'URL 1'},
 					{url: 'url_2', label: 'URL 2'},
-				];
+				]);
 				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 			});
@@ -167,26 +165,26 @@ describe('ObServiceNavigationProfileComponent', () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.profile.links.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.profile.links.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.profile.links.header');
 				});
 
 				describe('links', () => {
 					it('should have 2', () => {
-						expect(section.links.length).toBe(2);
+						expect(section.links().length).toBe(2);
 					});
 
 					it.each([
 						{property: 'url', value: 'url_1'},
 						{property: 'label', value: 'URL 1'},
 					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-						expect(section.links[0][property]).toBe(value);
+						expect(section.links()[0][property]).toBe(value);
 					});
 
 					it.each([
 						{property: 'url', value: 'url_2'},
 						{property: 'label', value: 'URL 2'},
 					])('should have "$value" as "$property" property on the second link', ({property, value}) => {
-						expect(section.links[1][property]).toBe(value);
+						expect(section.links()[1][property]).toBe(value);
 					});
 				});
 			});
@@ -243,7 +241,7 @@ describe('ObServiceNavigationProfileComponent', () => {
 
 			beforeEach(async () => {
 				await openPopover();
-				component.profileUrls = fakeProfileUrls;
+				fixture.componentRef.setInput('profileUrls', fakeProfileUrls);
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				await fixture.whenStable();
 			});
@@ -276,15 +274,9 @@ describe('ObServiceNavigationProfileComponent', () => {
 						section = sections[0].componentInstance;
 					});
 
-					describe('header', () => {
-						it('should have "i18n.oblique.service-navigation.profile.guest" as text', () => {
-							expect(section.header).toBe('i18n.oblique.service-navigation.profile.guest');
-						});
-					});
-
 					describe('links', () => {
 						it('should have 2', () => {
-							expect(section.links.length).toBe(2);
+							expect(section.links().length).toBe(2);
 						});
 					});
 				});

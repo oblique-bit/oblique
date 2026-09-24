@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {ObIUploadEvent} from '../file-upload.model';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Component({
 	selector: 'ob-drop-zone',
@@ -11,10 +11,11 @@ import {ObIUploadEvent} from '../file-upload.model';
 	exportAs: 'obDropZone',
 })
 export class ObMockDropZoneComponent {
-	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
-	@Input() accept = ['*'];
-	@Input() maxFileSize = 5;
-	@Input() multiple = true;
+	readonly uploadEvent = output<ObIUploadEvent>();
+	readonly accept = input(['*']);
+	readonly maxFileSize = input(5);
+	readonly maxFileAmount = input(0);
+	readonly multiple = input(true);
 
 	addFiles(fileList: FileList): void {}
 }

@@ -1,5 +1,5 @@
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {Component, viewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {FormsModule, NgForm, type NgModel} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {ObErrorMessagesModule, ObNestedFormModule} from '@oblique/oblique';
@@ -16,6 +16,7 @@ import {NestedFormExampleTemplateDrivenPreviewGrandchildComponent} from '../gran
 		ObNestedFormModule,
 	],
 	templateUrl: './nested-form-example-template-driven-preview-child.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'child',
 })
 export class NestedFormExampleTemplateDrivenPreviewChildComponent {

@@ -35,7 +35,7 @@ const scripts = Object.entries(config).reduce(
 	{}
 );
 
-scripts['generate-scripts'] = 'ts-node ../scripts/generate-projects-scripts';
+scripts['generate-scripts'] = 'tsx ../scripts/generate-projects-scripts';
 Files.writeJson(filePath, {scripts});
 
 Log.success();

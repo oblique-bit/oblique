@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {CodeExampleComponent} from './code-example.component';
@@ -14,6 +14,7 @@ import type {PreviewComponent} from '../code-examples.model';
 @Component({
 	selector: 'app-preview',
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class MockPreviewComponent {}
 

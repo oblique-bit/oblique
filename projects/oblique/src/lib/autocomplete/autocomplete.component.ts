@@ -1,14 +1,11 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
 	AfterViewInit,
 	Component,
+	DestroyRef,
+	DoCheck,
 	ElementRef,
-	EventEmitter,
 	Injector,
-	Input,
-	OnChanges,
-	OnDestroy,
-	Output,
 	Signal,
 	ViewEncapsulation,
 	booleanAttribute,
@@ -16,6 +13,8 @@ import {
 	contentChildren,
 	inject,
 	input,
+	output,
+	viewChild,
 } from '@angular/core';
 import {
 	ControlValueAccessor,
@@ -25,14 +24,15 @@ import {
 	NgControl,
 	ReactiveFormsModule,
 } from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatOptionModule} from '@angular/material/core';
+import {MatAutocompleteModule, MatAutocompleteTrigger} from '@angular/material/autocomplete';
+import {MatOptionModule, MatOptionSelectionChange} from '@angular/material/core';
 import {MatFormFieldModule, MatHint} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {TranslateModule} from '@ngx-translate/core';
-import {Observable, Subject, debounceTime, shareReplay} from 'rxjs';
-import {map, startWith, takeUntil} from 'rxjs/operators';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {TranslatePipe} from '@ngx-translate/core';
+import {debounceTime} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {
 	ObIAutocompleteInputOption,
 	ObIAutocompleteInputOptionGroup,
@@ -58,9 +58,8 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 		NgTemplateOutlet,
 		MatOptionModule,
 		ObOptionLabelIconDirective,
-		AsyncPipe,
 		ObHighlightTextPipe,
-		TranslateModule,
+		TranslatePipe,
 		ObErrorMessagesDirective,
 		ObMatErrorDirective,
 	],
@@ -76,34 +75,48 @@ import {ObOptionLabelIconDirective} from './option-label-icon/option-label-icon.
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-autocomplete'},
 })
-export class ObAutocompleteComponent<T = string> implements OnChanges, ControlValueAccessor, OnDestroy, AfterViewInit {
-	withErrorMessages = input(false, {transform: booleanAttribute});
-	@Input() inputLabelKey = 'i18n.oblique.search.title';
-	@Input() noResultKey = 'i18n.oblique.search.no-results';
-	@Input() autocompleteOptions: (ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[] = [];
-	@Input() filterRegexFlag = 'gi';
-	@Input() highlightCssClass = 'ob-highlight-text';
-	@Input() optionIconPosition: OptionLabelIconPosition = 'end';
-	displayWith = input<(value: any) => string>(value => value);
+export class ObAutocompleteComponent<T = string> implements ControlValueAccessor, AfterViewInit, DoCheck {
+	readonly withErrorMessages = input(false, {transform: booleanAttribute});
+	readonly inputLabelKey = input('i18n.oblique.search.title');
+	readonly noResultKey = input('i18n.oblique.search.no-results');
+	readonly autocompleteOptions = input<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>([]);
+	readonly filterRegexFlag = input('gi');
+	readonly highlightCssClass = input('ob-highlight-text');
+	readonly optionIconPosition = input<OptionLabelIconPosition>('end');
+	readonly displayWith = input<(value: any) => string>(value => value);
 
-	@Output() readonly selectedOptionChange: EventEmitter<ObIAutocompleteInputOption<T>> = new EventEmitter<
-		ObIAutocompleteInputOption<T>
-	>();
+	readonly selectedOptionChange = output<ObIAutocompleteInputOption<T>>();
 	autocompleteInputControl = new FormControl<T | string>('', {updateOn: 'change'});
-	filteredOptions$: Observable<(ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]>;
-	hasGroupOptions = false;
-	readonly searchText$ = this.autocompleteInputControl.valueChanges.pipe(
-		map(value => this.getStringValue(value)),
-		shareReplay()
+	filteredOptions = computed(() => {
+		if (this.autocompleteOptions().length > 0) {
+			return this.filterAutocomplete(this.searchText(), this.autocompleteOptions());
+		}
+		return [];
+	});
+	hasGroupOptions = computed(() => {
+		if (!this.autocompleteOptions().length) {
+			return false;
+		}
+		return this.isGroupOption(this.autocompleteOptions()[0]);
+	});
+
+	readonly searchText = toSignal(
+		this.autocompleteInputControl.valueChanges.pipe(
+			debounceTime(200),
+			map(value => this.getStringValue(value))
+		),
+		{initialValue: ''}
 	);
-	onModelTouched: () => void;
+
 	readonly hints: Signal<{align: 'start' | 'end'; template: string}[]>;
+	private readonly autocompleteTrigger = viewChild(MatAutocompleteTrigger);
 	private readonly matHints = contentChildren(MatHint);
 	private readonly matHintsElementRefs = contentChildren(MatHint, {read: ElementRef<HTMLElement>});
-	private readonly unsubscribe = new Subject<void>();
-	private readonly unsubscribeOptions = new Subject<void>();
+	private readonly destroyRef = inject(DestroyRef);
 	private readonly obAutocompleteTextToFindService = inject(ObAutocompleteTextToFindService);
 	private readonly injector = inject(Injector);
+	private readonly elementRef = inject(ElementRef<HTMLElement>);
+	private lastRect?: DOMRect;
 
 	constructor() {
 		// MatHint cannot be projected into MatFormField because MatFormField’s content
@@ -118,27 +131,31 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 		);
 	}
 
-	ngOnChanges(): void {
-		this.setupOptionsFilter();
+	ngDoCheck(): void {
+		const trigger = this.autocompleteTrigger();
+		if (!trigger?.panelOpen) {
+			this.lastRect = undefined;
+			return;
+		}
+		const rect = this.elementRef.nativeElement.getBoundingClientRect();
+		if (this.lastRect && (rect.top !== this.lastRect.top || rect.left !== this.lastRect.left)) {
+			trigger.updatePosition();
+		}
+		this.lastRect = rect;
 	}
 
 	ngAfterViewInit(): void {
 		if (this.withErrorMessages()) {
 			const ngControl = this.injector.get(NgControl, null, {self: true, optional: true});
-			this.autocompleteInputControl.setValidators(ngControl.control.validator);
-			// tell Angular that this control now has new validators
-			this.autocompleteInputControl.updateValueAndValidity();
-			// cancel dirty and touched states set by updateValueAndValidity
-			this.autocompleteInputControl.markAsPristine();
-			this.autocompleteInputControl.markAsUntouched();
+			if (ngControl?.control) {
+				this.autocompleteInputControl.setValidators(ngControl.control.validator);
+				// tell Angular that this control now has new validators
+				this.autocompleteInputControl.updateValueAndValidity();
+				// cancel dirty and touched states set by updateValueAndValidity
+				this.autocompleteInputControl.markAsPristine();
+				this.autocompleteInputControl.markAsUntouched();
+			}
 		}
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
-		this.unsubscribeOptions.next();
-		this.unsubscribeOptions.complete();
 	}
 
 	setDisabledState(isDisabled: boolean): void {
@@ -154,11 +171,6 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 	 */
 	writeValue(value: T): void {
 		this.autocompleteInputControl.setValue(value);
-		// when the value is reset, the options should also be reset
-		if (value === null || value === undefined) {
-			this.unsubscribeOptions.next(); // kill the current stream before creating a new one
-			this.setupOptionsFilter();
-		}
 	}
 
 	/**
@@ -166,7 +178,7 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 	 * when the control receives a change event.
 	 */
 	registerOnChange(fn: (v: unknown) => void): void {
-		this.autocompleteInputControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(value => {
+		this.autocompleteInputControl.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
 			fn(value);
 		});
 	}
@@ -177,41 +189,37 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 	 */
 	registerOnTouched(fn: () => void): void {
 		this.onModelTouched = fn;
-		this.autocompleteInputControl.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
+		this.autocompleteInputControl.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
 			this.autocompleteInputControl.markAllAsTouched();
 		});
 	}
 
-	private getStringValue(value: T | string): string {
-		return typeof value === 'string' ? value : this.displayWith()(value);
+	onModelTouched: () => void = () => {
+		// actual implementation is provided by registerOnTouched
+	};
+
+	protected selectionChange(option: ObIAutocompleteInputOption<T>, event: MatOptionSelectionChange): void {
+		if (event.source.selected) {
+			this.selectedOptionChange.emit(option);
+		}
 	}
 
-	private setupOptionsFilter(): void {
-		this.filteredOptions$ = this.autocompleteInputControl.valueChanges.pipe(
-			takeUntil(this.unsubscribeOptions),
-			startWith(''),
-			debounceTime(200),
-			map(searchValue => this.getStringValue(searchValue)),
-			map((searchValue: string) => {
-				if (this.autocompleteOptions.length > 0) {
-					const toFilter = JSON.parse(JSON.stringify(this.autocompleteOptions));
-					return this.filterAutocomplete(searchValue || '', toFilter);
-				}
-				return [];
-			})
-		);
+	private getStringValue(value: T | string | null): string {
+		if (value === null) {
+			return '';
+		}
+		return typeof value === 'string' ? value : this.displayWith()(value);
 	}
 
 	private filterAutocomplete(
 		filterValue: string,
 		optionsToFilter: (ObIAutocompleteInputOption<T> | ObIAutocompleteInputOptionGroup<T>)[]
 	): (ObIAutocompleteInputOptionGroup<T> | ObIAutocompleteInputOption<T>)[] {
-		this.hasGroupOptions = this.isGroupOption(optionsToFilter[0]);
 		const searchText = filterValue.toLowerCase();
-		if (this.autocompleteInputControl.value === '') {
-			return this.autocompleteOptions;
+		if (!searchText) {
+			return this.autocompleteOptions();
 		}
-		return this.hasGroupOptions
+		return this.hasGroupOptions()
 			? this.filterGroups(optionsToFilter as ObIAutocompleteInputOptionGroup<T>[], searchText)
 			: this.filterOptions(optionsToFilter as ObIAutocompleteInputOption<T>[], searchText);
 	}
@@ -228,7 +236,7 @@ export class ObAutocompleteComponent<T = string> implements OnChanges, ControlVa
 	private filterOptions(options: ObIAutocompleteInputOption<T>[], searchText: string): ObIAutocompleteInputOption<T>[] {
 		const escapedSearchText = this.obAutocompleteTextToFindService.escapeRegexCharacter(searchText);
 		return options.filter((option: ObIAutocompleteInputOption<T>) =>
-			new RegExp(escapedSearchText, this.filterRegexFlag).test(this.getStringValue(option.label))
+			new RegExp(escapedSearchText, this.filterRegexFlag()).test(this.getStringValue(option.label))
 		);
 	}
 

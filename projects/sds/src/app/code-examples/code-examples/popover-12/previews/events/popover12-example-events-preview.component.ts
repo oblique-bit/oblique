@@ -1,6 +1,6 @@
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObPopoverModule} from '@oblique/oblique';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {DatePipe} from '@angular/common';
 
 @Component({
@@ -8,6 +8,7 @@ import {DatePipe} from '@angular/common';
 	imports: [ObPopoverModule, ObButtonModule, MatButtonModule, DatePipe],
 	templateUrl: './popover12-example-events-preview.component.html',
 	styleUrl: './popover12-example-events-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class Popover12ExampleEventsPreviewComponent {
 	popoverVisible = false;

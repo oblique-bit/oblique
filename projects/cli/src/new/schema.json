@@ -16,6 +16,11 @@
       "mandatory": true,
       "flagValuePlaceholder": "<project-name>"
     },
+    "applicationOperator": {
+      "type": "string",
+      "description": "Add the specified application operator: The operator will be visible in the footer of your application.",
+      "flagValuePlaceholder": "<application-operator>"
+    },
     "locales": {
       "type": "string",
       "flagValuePlaceholder": "<locales>",
@@ -70,15 +75,6 @@
       "defaultValue": true,
       "description": "External link: If true, it imports the ObExternalLinkModule. This feature automatically enhances external links.",
       "resources": ["Oblique's External link API at https://oblique.bit.admin.ch/components/external-link/api"]
-    },
-    "jest": {
-      "type": "boolean",
-      "defaultValue": true,
-      "description": "Jest for unit tests: If true, Karma/Jasmine will be replaced with Jest as your application's testing framework.",
-      "resources": [
-        "Jest at npm https://www.npmjs.com/package/jest",
-        "Jest's documentation: https://jestjs.io/docs/getting-started"
-      ]
     },
     "npmrc": {
       "type": "boolean",

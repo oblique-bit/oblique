@@ -5,7 +5,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSelectModule} from '@angular/material/select';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObButtonModule} from '../button/button.module';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObPopoverModule} from '../popover/popover.module';
@@ -43,7 +43,7 @@ import {ObServiceNavigationApplicationNameStatusPipe} from './applications/servi
 		ObPopoverModule,
 		ObTranslateParamsModule,
 		ObIsCurrentUrlPipe,
-		TranslateModule,
+		TranslatePipe,
 	],
 	declarations: [
 		ObContactToLinksPipe,

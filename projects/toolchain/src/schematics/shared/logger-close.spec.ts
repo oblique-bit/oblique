@@ -1,14 +1,15 @@
+import type {Mocked} from 'vitest';
 import type {Rule} from '@angular-devkit/schematics';
 import type {ObGroupLogger} from '../../logger';
 import {closeLogger} from './logger-close';
 
 describe('closeLogger', () => {
-	let mockLogger: jest.Mocked<ObGroupLogger>;
+	let mockLogger: Mocked<ObGroupLogger>;
 
 	beforeEach(() => {
 		mockLogger = {
-			end: jest.fn(),
-		} as unknown as jest.Mocked<ObGroupLogger>;
+			end: vi.fn(),
+		} as unknown as Mocked<ObGroupLogger>;
 	});
 
 	it('should call end on the logger', async () => {

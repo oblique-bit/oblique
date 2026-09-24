@@ -1,13 +1,14 @@
 import {By} from '@angular/platform-browser';
-import {Observable} from 'rxjs';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, DebugElement, Directive, EventEmitter, Output, inject} from '@angular/core';
-import {skip} from 'rxjs/operators';
+import {Component, DebugElement, isSignal, signal} from '@angular/core';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObColumnLayoutComponent} from './column-layout.component';
-import {ObColumnToggleDirective as ObRealColumnToggleDirective} from './column-toggle.directive';
-import {ObColumnPanelDirective as ObRealColumnPanelDirective} from './column-panel.directive';
-import {TranslateModule} from '@ngx-translate/core';
+import {
+	ObColumnToggleDirective,
+	ObColumnToggleDirective as ObRealColumnToggleDirective,
+} from './column-toggle.directive';
+import {ObColumnPanelDirective, ObColumnPanelDirective as ObRealColumnPanelDirective} from './column-panel.directive';
+import {TranslatePipe} from '@ngx-translate/core';
 
 let resizerCallback: (entries: {contentRect: {height: number}}[]) => void;
 class ResizeObserver {
@@ -20,36 +21,14 @@ class ResizeObserver {
 }
 window.ResizeObserver = ResizeObserver;
 
-@Directive({
-	selector: '[obColumnPanel]',
-	exportAs: 'obColumnPanel',
-})
-class ObColumnPanelDirective {
-	collapsed = false;
-	@Output() readonly toggled = new EventEmitter<boolean>();
-
-	toggle(): void {
-		this.collapsed = !this.collapsed;
-		this.toggled.emit(this.collapsed);
-	}
-}
-
-@Directive({
-	selector: '[obColumnToggle]',
-})
-class ObColumnToggleDirective {
-	private readonly parent = inject(ObColumnPanelDirective);
-
-	onclick(): void {
-		this.parent.toggle();
-	}
-}
-
 @Component({
 	standalone: false,
-	template: `<ob-column-layout left="NONE" right="NONE" />`,
+	template: `<ob-column-layout [left]="left()" [right]="right()" />`,
 })
-class TestComponent {}
+class TestComponent {
+	left = signal('NONE');
+	right = signal('NONE');
+}
 
 describe(ObColumnLayoutComponent.name, () => {
 	let component: ObColumnLayoutComponent;
@@ -63,12 +42,8 @@ describe(ObColumnLayoutComponent.name, () => {
 		let panels: ObColumnPanelDirective[];
 
 		beforeEach(async () => {
-			TestBed.overrideComponent(ObColumnLayoutComponent, {
-				remove: {imports: [ObRealColumnPanelDirective, ObRealColumnToggleDirective]},
-				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
-			});
 			await TestBed.configureTestingModule({
-				imports: [ObColumnLayoutComponent, TranslateModule],
+				imports: [ObColumnLayoutComponent, TranslatePipe],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -103,7 +78,7 @@ describe(ObColumnLayoutComponent.name, () => {
 			{property: 'noLayout', className: 'ob-no-layout'},
 		])('property $property', ({property, className}) => {
 			test('that it initializes to false', () => {
-				expect(component[property]).toBe(false);
+				expect(component[property]()).toBe(false);
 			});
 
 			test(`that "${className}" class is added when true`, () => {
@@ -120,26 +95,22 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		describe.each([
-			{property: 'toggleLeftIcon$', initialValue: 'left', toggledValue: 'right', index: 0},
-			{property: 'toggleRightIcon$', initialValue: 'right', toggledValue: 'left', index: 1},
+			{property: 'leftCollapsed', initialValue: false, toggledValue: true, index: 0},
+			{property: 'rightCollapsed', initialValue: false, toggledValue: true, index: 1},
 		])('property $property', ({property, initialValue, toggledValue, index}) => {
-			test('that it is an observable', () => {
-				expect(component[property] instanceof Observable).toBe(true);
+			test('that it is an signal', () => {
+				expect(isSignal(component[property])).toBe(true);
 			});
 
 			test(`that it initially emits "${initialValue}"`, () => {
-				const values: string[] = [];
-				component[property].subscribe(value => values.push(value));
 				jest.runOnlyPendingTimers();
-				expect(values).toEqual([initialValue]);
+				expect(component[property]()).toEqual(initialValue);
 			});
 
 			test(`that it emits "${toggledValue}" after toggle has been toggled`, () => {
-				const values: string[] = [];
-				component[property].pipe(skip(1)).subscribe(value => values.push(value));
 				panels[index].toggle();
 				jest.runOnlyPendingTimers();
-				expect(values).toEqual([toggledValue]);
+				expect(component[property]()).toEqual(toggledValue);
 			});
 		});
 
@@ -147,10 +118,11 @@ describe(ObColumnLayoutComponent.name, () => {
 			{method: 'toggleLeft', index: 0, panel: 'left'},
 			{method: 'toggleRight', index: 1, panel: 'right'},
 		])('method $method', ({method, index, panel}) => {
-			test('that it toggles the panel', () => {
+			test('that it updates panel collapsed', () => {
 				jest.spyOn(panels[index], 'toggle');
 				component[method]();
-				expect(panels[index].toggle).toHaveBeenCalled();
+				fixture.changeDetectorRef.detectChanges();
+				expect(panels[index].collapsed()).toEqual(true);
 			});
 
 			test('that it does not toggle the panel when panel is removed', () => {
@@ -221,7 +193,7 @@ describe(ObColumnLayoutComponent.name, () => {
 				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
 			});
 			await TestBed.configureTestingModule({
-				imports: [ObColumnLayoutComponent, TranslateModule],
+				imports: [ObColumnLayoutComponent, TranslatePipe],
 				declarations: [TestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
@@ -253,15 +225,14 @@ describe(ObColumnLayoutComponent.name, () => {
 		});
 
 		describe.each([
-			{property: 'toggleLeftIcon$', initialValue: 'left', toggledValue: 'right', index: 0},
-			{property: 'toggleRightIcon$', initialValue: 'right', toggledValue: 'left', index: 1},
+			{property: 'leftCollapsed', initialValue: false, toggledValue: true, index: 0},
+			{property: 'rightCollapsed', initialValue: false, toggledValue: true, index: 1},
 		])('property $property changed back', ({property, initialValue, toggledValue, index}) => {
 			let panels: ObColumnPanelDirective[];
 
 			beforeEach(() => {
-				component.left = 'OPENED';
-				component.right = 'OPENED';
-				component.ngOnChanges();
+				testComponent.left.set('OPENED');
+				testComponent.right.set('OPENED');
 				fixture.detectChanges();
 				jest.runOnlyPendingTimers();
 
@@ -270,23 +241,19 @@ describe(ObColumnLayoutComponent.name, () => {
 					.map(element => element.injector.get(ObColumnPanelDirective));
 			});
 
-			test('that it is an observable', () => {
-				expect(component[property] instanceof Observable).toBe(true);
+			test('that it is a signal', () => {
+				expect(isSignal(component[property])).toBe(true);
 			});
 
 			test(`that it initially emits "${initialValue}"`, () => {
-				const values: string[] = [];
-				component[property].subscribe(value => values.push(value));
 				jest.runOnlyPendingTimers();
-				expect(values).toEqual([initialValue]);
+				expect(component[property]()).toEqual(initialValue);
 			});
 
 			test(`that it emits "${toggledValue}" after toggle has been toggled`, () => {
-				const values: string[] = [];
-				component[property].pipe(skip(1)).subscribe(value => values.push(value));
 				panels[index].toggle();
 				jest.runOnlyPendingTimers();
-				expect(values).toEqual([toggledValue]);
+				expect(component[property]()).toEqual(toggledValue);
 			});
 		});
 	});
@@ -301,7 +268,7 @@ describe(ObColumnLayoutComponent.name, () => {
 				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
 			});
 			await TestBed.configureTestingModule({
-				imports: [ObColumnLayoutComponent, TranslateModule],
+				imports: [ObColumnLayoutComponent, TranslatePipe],
 				declarations: [TestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();

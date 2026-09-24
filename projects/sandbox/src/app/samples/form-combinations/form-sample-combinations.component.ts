@@ -1,4 +1,4 @@
-import {Component, computed, effect, inject, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, effect, inject, signal} from '@angular/core';
 import {
 	ObAutocompleteComponent,
 	ObButtonModule,
@@ -44,6 +44,7 @@ import {formatDate} from '@angular/common';
 	],
 	templateUrl: './form-sample-combinations.component.html',
 	styleUrl: './form-sample-combinations.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FormSampleCombinationsComponent {
 	readonly autocompleteOptions = signal([

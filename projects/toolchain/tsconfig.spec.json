@@ -1,4 +1,9 @@
 {
   "extends": "./tsconfig.lib.json",
-  "include": ["src/**/*.spec.ts"]
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "types": ["vitest/globals", "node"]
+  },
+  "include": ["src/**/*.spec.ts", "src/logger/mock/mock-logger.ts"],
+  "exclude": []
 }

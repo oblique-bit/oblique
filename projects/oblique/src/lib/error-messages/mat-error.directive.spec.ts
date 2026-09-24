@@ -1,11 +1,11 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {AbstractControl, FormBuilder, ReactiveFormsModule, ValidatorFn, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {provideObliqueTestingConfiguration} from '../../public_api';
-import {OB_MAT_ERROR_PREFIX} from '../utilities';
+import {OB_MAT_ERROR_PREFIX} from '../material/material.providers';
 import {ObMatErrorDirective} from './mat-error.directive';
 import {ObErrorMessagesDirective} from './error-messages.directive';
 
@@ -18,6 +18,7 @@ import {ObErrorMessagesDirective} from './error-messages.directive';
 			<mat-error />
 		</mat-form-field>
 	</form>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class HostComponent {
 	readonly form = inject(FormBuilder).group({control: ['', [Validators.required, this.customValidator()]]});

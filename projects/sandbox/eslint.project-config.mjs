@@ -33,6 +33,11 @@ export default [
 				// rules that are not respected
 				{selector: 'property', format: ['camelCase', 'snake_case']},
 				{selector: 'classProperty', format: ['camelCase', 'UPPER_CASE']},
+				{
+					selector: 'objectLiteralProperty',
+					format: ['UPPER_CASE'],
+					filter: '^OB_',
+				},
 			],
 			'@typescript-eslint/no-deprecated': 'off',
 			'@typescript-eslint/no-magic-numbers': 'off',
@@ -44,6 +49,7 @@ export default [
 			'@typescript-eslint/no-unsafe-member-access': 'off',
 			'@typescript-eslint/no-unsafe-return': 'off',
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
+			'@typescript-eslint/no-useless-default-assignment': 'off', // needs strictNullChecks
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
 		},

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {MatTooltip, TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
@@ -6,6 +6,7 @@ import type {MatTooltip, TooltipPosition} from '@angular/material/tooltip';
 	standalone: false,
 	templateUrl: './tooltip.component.html',
 	styleUrl: './tooltip.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TooltipComponent {
 	message = 'Tooltip information text';

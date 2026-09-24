@@ -5,7 +5,7 @@ import {filter, takeUntil, tap} from 'rxjs/operators';
 import {ObTranslateParamsPipe} from '../translate-params/translate-params.module';
 import {ObErrorMessagesDirective} from './error-messages.directive';
 import {Subject} from 'rxjs';
-import {OB_MAT_ERROR_PREFIX} from '../utilities';
+import {OB_MAT_ERROR_PREFIX} from '../material/material.providers';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
@@ -60,7 +60,7 @@ export class ObMatErrorDirective implements OnInit, OnDestroy {
 	private getErrorTranslation(key: string, errors: ValidationErrors): string {
 		const obliqueKey = `i18n.validation.${key}`;
 		const obliqueTranslation = this.pipe.transform(obliqueKey, errors[key]);
-		const customPrefix = this.control.prefix ?? this.obMatErrorPrefix ?? null;
+		const customPrefix = this.control.prefix() ?? this.obMatErrorPrefix ?? null;
 		return customPrefix === null || obliqueTranslation !== obliqueKey
 			? obliqueTranslation
 			: this.pipe.transform(`${customPrefix}${key}`, errors[key]);

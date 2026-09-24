@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, computed, input} from '@angular/core';
 
 @Component({
 	selector: 'ob-service-navigation-message',
@@ -8,14 +8,8 @@ import {Component, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@an
 	encapsulation: ViewEncapsulation.None,
 	host: {class: 'ob-service-navigation-message'},
 })
-export class ObServiceNavigationMessageComponent implements OnChanges {
-	@Input() linkHref = '';
-	@Input() count = 0;
-	tooManyCount = false;
-
-	ngOnChanges(changes: SimpleChanges): void {
-		if (changes.count) {
-			this.tooManyCount = this.count > 99;
-		}
-	}
+export class ObServiceNavigationMessageComponent {
+	readonly linkHref = input('');
+	readonly count = input(0);
+	readonly tooManyCount = computed(() => this.count() > 99);
 }

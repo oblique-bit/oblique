@@ -8,6 +8,11 @@ export default [
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
 			'default-case': 'off', // covered by noImplicitReturns
+			'@typescript-eslint/no-unsafe-argument': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-unsafe-member-access': 'off',
+			'@typescript-eslint/no-unsafe-call': 'off',
+			'@typescript-eslint/no-unsafe-return': 'off',
 		},
 	},
 	{

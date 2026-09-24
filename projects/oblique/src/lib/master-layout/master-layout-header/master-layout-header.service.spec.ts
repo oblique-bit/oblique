@@ -75,64 +75,45 @@ describe('ObMasterLayoutHeaderService', () => {
 	testSetter('isSticky', 'HEADER_IS_STICKY');
 
 	describe('serviceNavigationConfiguration', () => {
-		it('should return en empty object', () => {
-			expect(service.serviceNavigationConfiguration).toEqual({});
+		it('should expose an empty signal', () => {
+			expect(service.serviceNavigationConfiguration()).toEqual({});
 		});
 
-		describe('when given a value', () => {
-			let event: ObIMasterLayoutEvent;
-			beforeEach(done => {
-				service.configEvents$.pipe(first()).subscribe(evt => {
-					event = evt;
-					done();
-				});
-				service.serviceNavigationConfiguration = {displayInfo: true};
-			});
-
-			it(`should emit a SERVICE_NAVIGATION_CONFIGURATION event`, () => {
-				expect(event.name).toBe(ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION);
-			});
-
-			it('should emit a value', () => {
-				expect(event.config).toEqual({displayInfo: true});
-			});
+		it('should update top-level properties', () => {
+			service.updateServiceNavigationConfiguration({displayInfo: true});
+			expect(service.serviceNavigationConfiguration()).toEqual({displayInfo: true});
 		});
 
-		describe('when given as value an object', () => {
-			let event: ObIMasterLayoutEvent;
-			beforeEach(done => {
-				service.configEvents$.pipe(first()).subscribe(evt => {
-					event = evt;
-					done();
-				});
-				service.serviceNavigationConfiguration = {displayInfo: true};
+		it('should update configuration properties', () => {
+			service.updateServiceNavigationConfiguration({infoDescription: 'blabla'});
+			expect(service.serviceNavigationConfiguration()).toEqual({infoDescription: 'blabla'});
+		});
+
+		it('should update nested contact properties without replacing the configuration', () => {
+			service.updateServiceNavigationConfiguration({
+				infoDescription: 'description',
+				infoContact: {email: 'info@example.com', phone: '+41123456789'},
 			});
 
-			it(`should emit a SERVICE_NAVIGATION_CONFIGURATION event`, () => {
-				expect(event.name).toBe(ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION);
-			});
+			service.updateServiceNavigationConfiguration({infoContact: {email: undefined}});
 
-			it('should emit a value', () => {
-				expect(event.config).toEqual({displayInfo: true});
+			expect(service.serviceNavigationConfiguration()).toEqual({
+				infoDescription: 'description',
+				infoContact: {email: undefined, phone: '+41123456789'},
 			});
 		});
 
-		describe('when given as value an object', () => {
-			let event: ObIMasterLayoutEvent;
-			beforeEach(done => {
-				service.configEvents$.pipe(first()).subscribe(evt => {
-					event = evt;
-					done();
-				});
-				service.serviceNavigationConfiguration = {infoDescription: 'blabla'};
+		it('should update top-level properties and merge nested contact properties', () => {
+			service.updateServiceNavigationConfiguration({infoContact: {email: 'info@example.com'}});
+
+			service.updateServiceNavigationConfiguration({
+				displayInfo: true,
+				infoContact: {phone: '+41123456789'},
 			});
 
-			it(`should emit a SERVICE_NAVIGATION_CONFIGURATION event`, () => {
-				expect(event.name).toBe(ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION);
-			});
-
-			it('should emit a value', () => {
-				expect(event.config).toEqual({infoDescription: 'blabla'});
+			expect(service.serviceNavigationConfiguration()).toEqual({
+				displayInfo: true,
+				infoContact: {email: 'info@example.com', phone: '+41123456789'},
 			});
 		});
 	});

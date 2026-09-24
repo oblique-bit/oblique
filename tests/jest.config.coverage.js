@@ -1,5 +1,5 @@
 //@ts-check
-module.exports = {
+export default {
 	collectCoverage: true,
 	coverageThreshold: {
 		/*

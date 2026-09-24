@@ -11,6 +11,7 @@
 | -------- | ------------------------------------- |
 | **app**  | For changes to the application itself |
 | **text** | For changes to the text page          |
+| **demo** | For changes to the demo component     |
 
 ## <a name="scripts"></a> Scripts
 

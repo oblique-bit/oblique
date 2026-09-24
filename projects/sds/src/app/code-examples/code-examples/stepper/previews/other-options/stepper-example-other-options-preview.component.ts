@@ -1,12 +1,12 @@
 import {ObButtonModule} from '@oblique/oblique';
 import {MatInputModule} from '@angular/material/input';
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatStepperModule} from '@angular/material/stepper';
 import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-stepper-example-other-options-preview',
@@ -18,10 +18,11 @@ import {TranslateModule} from '@ngx-translate/core';
 		MatStepperModule,
 		ObButtonModule,
 		ReactiveFormsModule,
-		TranslateModule,
+		TranslatePipe,
 	],
 	templateUrl: './stepper-example-other-options-preview.component.html',
 	styleUrl: './stepper-example-other-options-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class StepperExampleOtherOptionsPreviewComponent {
 	firstFormGroup: UntypedFormGroup;

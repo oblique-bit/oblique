@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, input} from '@angular/core';
 import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-navigation.model';
 
 @Component({
@@ -10,9 +10,9 @@ import {ObIServiceNavigationContact, ObIServiceNavigationLink} from '../service-
 	host: {class: 'ob-service-navigation-info'},
 })
 export class ObServiceNavigationInfoComponent {
-	@Input() helpText: string;
-	@Input() description: string;
-	@Input() links: ObIServiceNavigationLink[] = [];
-	@Input() contactText: string;
-	@Input() contact: ObIServiceNavigationContact;
+	readonly helpText = input<string>();
+	readonly description = input<string>();
+	readonly links = input<ObIServiceNavigationLink[]>([]);
+	readonly contactText = input<string>();
+	readonly contact = input<ObIServiceNavigationContact>();
 }

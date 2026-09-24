@@ -1,6 +1,51 @@
-import {createObjectPropertyRegex, createPropertyAssignmentRegex} from './utils';
+import {Tree} from '@angular-devkit/schematics';
+import {addImport, createObjectPropertyRegex, createPropertyAssignmentRegex, removeImport} from './utils';
 
 describe('utils', () => {
+	describe('addImport and removeImport', () => {
+		const filePath = '/test.ts';
+
+		it('moves aliased type imports without losing the original specifier', () => {
+			const tree = Tree.empty();
+			tree.create(filePath, `import type {ObSchemaValidatorInstance as Validator} from '@oblique/oblique';\n`);
+
+			const removedImports = removeImport(tree, filePath, 'ObSchemaValidatorInstance', '@oblique/oblique');
+			removedImports.forEach(specifier => addImport(tree, filePath, specifier, '@oblique/oblique/schema-validation'));
+
+			expect(removedImports).toEqual(['type ObSchemaValidatorInstance as Validator']);
+			expect(tree.readText(filePath)).toBe(
+				`import {type ObSchemaValidatorInstance as Validator} from '@oblique/oblique/schema-validation';\n`
+			);
+		});
+
+		it('removes multiple named imports without leaving trailing commas', () => {
+			const tree = Tree.empty();
+			tree.create(
+				filePath,
+				`import {ObSchemaValidationModule, ObButtonModule, ObSchemaValidateDirective} from '@oblique/oblique';\n`
+			);
+
+			removeImport(tree, filePath, 'ObSchemaValidationModule', '@oblique/oblique');
+			removeImport(tree, filePath, 'ObSchemaValidateDirective', '@oblique/oblique');
+
+			expect(tree.readText(filePath)).toBe(`import {ObButtonModule} from '@oblique/oblique';\n`);
+		});
+
+		it('merges added imports into an existing declaration', () => {
+			const tree = Tree.empty();
+			tree.create(
+				filePath,
+				`import {ObSchemaValidationModule} from '@oblique/oblique/schema-validation';\nimport {ObButtonModule} from '@oblique/oblique';\n`
+			);
+
+			addImport(tree, filePath, 'ObSchemaValidateDirective', '@oblique/oblique/schema-validation');
+
+			expect(tree.readText(filePath)).toBe(
+				`import {ObSchemaValidationModule, ObSchemaValidateDirective} from '@oblique/oblique/schema-validation';\nimport {ObButtonModule} from '@oblique/oblique';\n`
+			);
+		});
+	});
+
 	describe('createPropertyAssignmentRegex', () => {
 		it.each([
 			'locale.maxLastUsedApplications = 8;',

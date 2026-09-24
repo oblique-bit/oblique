@@ -1,5 +1,5 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {CollectorService} from '../shared/collector/collector.service';
 import {FeedbackTriggerDirective} from './feedback-trigger.directive';
@@ -7,13 +7,14 @@ import {FeedbackTriggerDirective} from './feedback-trigger.directive';
 @Component({
 	imports: [FeedbackTriggerDirective],
 	template: `<button type="button" appFeedbackTrigger>btn</button>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TestComponentComponent {}
 
 describe(FeedbackTriggerDirective.name, () => {
 	let directive: FeedbackTriggerDirective;
 	let fixture: ComponentFixture<TestComponentComponent>;
-	const service = {initializeCollector: jest.fn(), defaultValues: {}, collect: jest.fn(), fallbackDialog: undefined};
+	const service = {initializeCollector: vi.fn(), defaultValues: {}, collect: vi.fn(), fallbackDialog: undefined};
 
 	beforeEach(async () => {
 		TestBed.overrideProvider(CollectorService, {useValue: service});
@@ -29,7 +30,7 @@ describe(FeedbackTriggerDirective.name, () => {
 	});
 
 	afterEach(() => {
-		jest.resetAllMocks();
+		vi.resetAllMocks();
 	});
 
 	test('creation', () => {
@@ -46,7 +47,8 @@ describe(FeedbackTriggerDirective.name, () => {
 		});
 
 		test('fallbackDialog is FeedbackFormComponent', () => {
-			expect(service.fallbackDialog.name).toBe('FeedbackFormComponent');
+			// Vitest compiles TS with Angular's which prefixes component class names with `_`
+			expect(service.fallbackDialog.name.replace(/^_/u, '')).toBe('FeedbackFormComponent');
 		});
 
 		test('default values of the service', () => {

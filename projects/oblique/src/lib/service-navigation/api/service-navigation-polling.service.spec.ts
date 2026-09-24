@@ -10,19 +10,23 @@ describe('ObServiceNavigationPollingService', () => {
 	let countApiService: ObServiceNavigationCountApiService;
 	let stateApiService: ObServiceNavigationStateApiService;
 	let notification: ObNotificationService;
-	const mockData = {
-		test: true,
-	};
+
+	const mockStateResponse = {data: {test: true}};
+	const mockCountResponse = {data: 42};
 
 	beforeEach(() => {
 		jest.useFakeTimers();
 		TestBed.configureTestingModule({
 			providers: [
-				{provide: ObServiceNavigationStateApiService, useValue: {get: jest.fn().mockReturnValue(of(mockData))}},
+				{
+					provide: ObServiceNavigationStateApiService,
+					useValue: {get: jest.fn().mockReturnValue(of(mockStateResponse))},
+				},
 				{
 					provide: ObServiceNavigationCountApiService,
-					useValue: {get: jest.fn().mockReturnValue(of({messageCount: 42}))},
+					useValue: {get: jest.fn().mockReturnValue(of(mockCountResponse))},
 				},
+				{provide: ObNotificationService, useValue: {error: jest.fn(), success: jest.fn()}},
 				ObServiceNavigationPollingService,
 			],
 		});
@@ -133,6 +137,92 @@ describe('ObServiceNavigationPollingService', () => {
 			}
 			expect(notification.error).toHaveBeenCalledWith({
 				message: 'i18n.oblique.service-navigation.state.error.message',
+				title: 'i18n.oblique.service-navigation.state.error.title',
+			});
+		});
+	});
+
+	describe.each([{status: 500}, {status: 0}])('when a request returns status $status', ({status}) => {
+		it('should retry after the state interval', () => {
+			jest
+				.spyOn(stateApiService, 'get')
+				.mockImplementationOnce(() => throwError(() => ({status})))
+				.mockReturnValue(of(mockStateResponse));
+
+			service.initializeStateUpdate(2, 60, 'http://rootUrl/', 1);
+			jest.advanceTimersByTime(0);
+
+			const callsAfterFirstFailure = jest.mocked(stateApiService.get).mock.calls.length;
+
+			jest.advanceTimersByTime(1999);
+			expect(stateApiService.get).toHaveBeenCalledTimes(callsAfterFirstFailure);
+
+			jest.advanceTimersByTime(2);
+			expect(jest.mocked(stateApiService.get).mock.calls.length).toBeGreaterThan(callsAfterFirstFailure);
+		});
+
+		it('should display a retry notification', () => {
+			jest.spyOn(stateApiService, 'get').mockReturnValue(throwError(() => ({status})));
+
+			service.initializeStateUpdate(1, 60, 'http://rootUrl/', 1);
+			jest.advanceTimersByTime(1000);
+
+			expect(notification.error).toHaveBeenCalledWith({
+				message: 'i18n.oblique.service-navigation.state.error.retry',
+				title: 'i18n.oblique.service-navigation.state.error.title',
+			});
+		});
+
+		it(`should trigger the retry notification only once after two consecutive ${status} errors`, () => {
+			jest
+				.spyOn(stateApiService, 'get')
+				.mockImplementationOnce(() => throwError(() => ({status})))
+				.mockImplementationOnce(() => throwError(() => ({status})))
+				.mockReturnValue(of(mockStateResponse));
+
+			service.initializeStateUpdate(1, 60, 'http://rootUrl/', 1);
+			jest.advanceTimersByTime(1001);
+
+			expect(notification.error).toHaveBeenCalledTimes(1);
+		});
+
+		it(`should display an "is back" success notification when a ${status} error is followed by a successful response`, () => {
+			jest
+				.spyOn(stateApiService, 'get')
+				.mockImplementationOnce(() => throwError(() => ({status})))
+				.mockReturnValue(of(mockStateResponse));
+
+			service.initializeStateUpdate(1, 60, 'http://rootUrl/', 1);
+			jest.advanceTimersByTime(1001);
+
+			expect(notification.success).toHaveBeenCalledWith({
+				message: 'i18n.oblique.service-navigation.state.is-back.message',
+				title: 'i18n.oblique.service-navigation.state.is-back.title',
+			});
+		});
+	});
+
+	describe.each([{status: 500}, {status: 0}])('when an endpoint fails with status $status', ({status}) => {
+		it('should trigger the retry notification when the state endpoint returns the error', () => {
+			jest.spyOn(stateApiService, 'get').mockReturnValue(throwError(() => ({status})));
+
+			service.initializeStateUpdate(1, 60, 'http://rootUrl/', 1);
+			jest.advanceTimersByTime(1);
+
+			expect(notification.error).toHaveBeenCalledWith({
+				message: 'i18n.oblique.service-navigation.state.error.retry',
+				title: 'i18n.oblique.service-navigation.state.error.title',
+			});
+		});
+
+		it('should trigger the retry notification when the count endpoint returns the error', () => {
+			jest.spyOn(countApiService, 'get').mockReturnValue(throwError(() => ({status})));
+
+			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
+			jest.advanceTimersByTime(1);
+
+			expect(notification.error).toHaveBeenCalledWith({
+				message: 'i18n.oblique.service-navigation.state.error.retry',
 				title: 'i18n.oblique.service-navigation.state.error.title',
 			});
 		});

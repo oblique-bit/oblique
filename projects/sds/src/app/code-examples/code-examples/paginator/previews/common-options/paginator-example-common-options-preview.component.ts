@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
@@ -6,6 +6,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 	imports: [MatPaginatorModule],
 	templateUrl: './paginator-example-common-options-preview.component.html',
 	styleUrls: ['../paginator-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'layout-column'},
 })
 export class PaginatorExampleCommonOptionsPreviewComponent {}

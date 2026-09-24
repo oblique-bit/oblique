@@ -2,7 +2,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {ModeSelectorComponent} from './mode-selectors.component';
 import {DOCUMENT} from '@angular/core';
 import {MatButtonToggle} from '@angular/material/button-toggle';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe, provideTranslateService} from '@ngx-translate/core';
 
 describe(ModeSelectorComponent.name, () => {
 	let fixture: ComponentFixture<ModeSelectorComponent>;
@@ -10,7 +10,8 @@ describe(ModeSelectorComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ModeSelectorComponent, TranslateModule.forRoot(), MatButtonToggle],
+			imports: [ModeSelectorComponent, TranslatePipe, MatButtonToggle],
+			providers: [provideTranslateService()],
 		}).compileComponents();
 		fixture = TestBed.createComponent(ModeSelectorComponent);
 		fixture.detectChanges();
@@ -85,7 +86,7 @@ describe(ModeSelectorComponent.name, () => {
 		});
 
 		test('should set lightness class ob-lightness-dark automatically', () => {
-			jest.spyOn(window, 'matchMedia').mockReturnValue({matches: true} as MediaQueryList);
+			vi.spyOn(window, 'matchMedia').mockReturnValue({matches: true} as MediaQueryList);
 			modeSelectorComponent.ngOnInit();
 			expect(modeSelectorComponent.form.controls.lightnessDark.value).toBe('ob-lightness-dark');
 			expect(body.classList.contains('ob-lightness-dark')).toBeTruthy();
@@ -104,7 +105,7 @@ describe(ModeSelectorComponent.name, () => {
 		});
 
 		test('should not set lightness class ob-lightness-dark', () => {
-			jest.spyOn(document, 'defaultView', 'get').mockReturnValue(undefined);
+			vi.spyOn(document, 'defaultView', 'get').mockReturnValue(undefined);
 			modeSelectorComponent.ngOnInit();
 			expect(modeSelectorComponent.form.controls.lightnessDark.value).toBe('');
 			expect(body.classList.contains('ob-lightness-dark')).toBeFalsy();

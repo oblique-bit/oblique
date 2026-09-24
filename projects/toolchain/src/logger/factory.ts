@@ -1,6 +1,6 @@
 import type {SchematicContext} from '@angular-devkit/schematics';
-import type {ObLogger} from './logger.types';
-import {Logger} from './logger';
+import type {ObLogger} from './logger.types.js';
+import {Logger} from './logger.js';
 
 const noop = (): void => {
 	/*noop*/

@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation, input} from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ObExternalLinkModule} from '@oblique/oblique';
 
@@ -7,6 +7,7 @@ import {ObExternalLinkModule} from '@oblique/oblique';
 	imports: [MatTooltipModule, ObExternalLinkModule],
 	templateUrl: './banner.component.html',
 	styleUrl: './banner.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	encapsulation: ViewEncapsulation.None,
 })
 export class BannerComponent {

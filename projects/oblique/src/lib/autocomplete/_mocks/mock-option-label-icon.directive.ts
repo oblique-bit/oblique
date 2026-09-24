@@ -1,13 +1,14 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
+import {ObEIcon} from '../../icon/icon.model';
 import {OptionLabelIconPosition} from '../autocomplete.model';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Directive({
 	selector: '[obOptionLabelIcon]',
 })
 export class ObMockOptionLabelIconDirective {
-	@Input() optionLabelIconName?: string;
-	@Input() iconPosition: OptionLabelIconPosition = 'end';
+	readonly iconName = input<ObEIcon>();
+	readonly iconPosition = input<OptionLabelIconPosition>('end');
 }

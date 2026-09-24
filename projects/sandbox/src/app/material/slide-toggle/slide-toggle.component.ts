@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
 	selector: 'sb-slide-toggle',
 	standalone: false,
 	templateUrl: './slide-toggle.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SlideToggleComponent {
 	isHintChecked = false;

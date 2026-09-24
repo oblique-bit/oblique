@@ -1,3 +1,16 @@
+# [16.0.0](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0) (2026-09-24)
+
+## Features
+
+- **service-navigation:** remove guest login concepts ([c1a8050d](https://github.com/oblique-bit/oblique/commit/c1a8050d57f0edbff4fd621719378a54d59373b9), TPEFD-11072)
+- **service-navigation:** add `parentApplicationId` ([9cd2d854](https://github.com/oblique-bit/oblique/commit/9cd2d854370cc07eaf8e6cfd2adc3fe9020f7d9d), TPEFD-11021)
+- **service-navigation:** use current URL if no `returnUrl` is provided ([879c40b3](https://github.com/oblique-bit/oblique/commit/879c40b3fab4d7466d1ba77db7cb053a856c546d), TPEFD-10735)
+
+## BREAKING CHANGES
+
+- **service-navigation:** if `returnUrl` is not provided, the current URL is now used by default. Projects that previously
+  relied on the implicit redirection to ePortal must now explicitly set the ePortal URL as `returnUrl`.
+
 # [15.4.4](https://github.com/oblique-bit/oblique/compare/15.4.3...15.4.4) (2026-08-18)
 
 ## Dependencies
@@ -9,6 +22,24 @@
 ## Bug Fixes
 
 - **service-navigation:** add explicit parameter for all services url ([b3b9ce9c](https://github.com/oblique-bit/oblique/commit/b3b9ce9cab16c5027df52c188acb5d5b454dd35d), TPEFD-11017)
+
+# [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
+
+## Features
+
+- **sample:** add navigation button ([fb158553](https://github.com/oblique-bit/oblique/commit/fb158553fa83bcb6d57f02ed3838847951a9a956), TPEFD-10735)
+- **service-navigation:** migrate to signals ([f6b70b34](https://github.com/oblique-bit/oblique/commit/f6b70b34c464cfada9b27922ff67e0e2a1d7efa7), OUI-4357)
+- **service-navigation:** use current URL if no `returnUrl` is provided ([dc780802](https://github.com/oblique-bit/oblique/commit/dc78080257fa2fad2a4ec276e5fab46fb77b875a), TPEFD-10735)
+
+## BREAKING CHANGES
+
+- **service-navigation:** some `input`, `output`, `viewChild`, `viewChildren`, `contentChild`, and `contentChildren`
+  have been migrated to signals
+  - they must be accessed by calling them (`property()` instead of `property`)
+  - they are readonly and can no longer be assigned to
+- **service-navigation:** If `returnUrl` is not provided, the current URL is now used by default. Projects that previously
+  relied on the implicit redirection to ePortal must now explicitly set the
+  ePortal URL as `returnUrl`.
 
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 

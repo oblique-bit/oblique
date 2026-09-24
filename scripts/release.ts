@@ -10,9 +10,13 @@ class Release extends StaticScript {
 		Log.start('Release');
 		Release.validateInputs(version, issue);
 		executeCommandWithLog(`npm version ${version}`, 'Bump version');
-		Release.updateJenkinsFile(version);
 		Release.updateCopyrightDate();
-		Release.updatePubliccode(version);
+		if (Release.isPreVersion(version)) {
+			Release.updateJenkinsFile();
+			Release.updateGitHubActions();
+		} else {
+			Release.updatePubliccode(version);
+		}
 		executeCommandWithLog(`npm run release --workspaces`, 'Perform release');
 		Git.commit(`build(release): release version ${version}`, `OUI-${issue}`);
 		Log.success('Push the changes and continue the release process according to the release checklist');
@@ -38,30 +42,37 @@ class Release extends StaticScript {
 		);
 	}
 
-	private static updateJenkinsFile(version: string): void {
-		if (version.includes('-')) {
-			Log.info('Adding publish instruction to JenkinsFile');
-			const branchName = Git.getCurrentBranchName();
-			Files.overwrite(getAbsolutePath('Jenkinsfile'), content =>
-				content.replace(
-					/^\s*master\s*:\s*\[(?:[^[\]]|\[(?:[^[\]]|\[[^[\]]*\])*\])*\]/mu,
-					match => `${match.replace('master', `'${branchName}'`)},\n${match}`
-				)
-			);
-		}
+	private static updateJenkinsFile(): void {
+		Log.info('Adding publish instruction to JenkinsFile');
+		const branchName = Git.getCurrentBranchName();
+		Files.overwrite(getAbsolutePath('Jenkinsfile'), content =>
+			content.replace(
+				/^\s*master\s*:\s*\[(?:[^[\]]|\[(?:[^[\]]|\[[^[\]]*\])*\])*\]/mu,
+				match => `${match.replace('master', `'${branchName}'`)},\n${match}`
+			)
+		);
+	}
+
+	private static updateGitHubActions(): void {
+		Log.info('Adding publish instruction to GitHub actions');
+		const branchName = Git.getCurrentBranchName();
+		Files.overwrite(getAbsolutePath('.github/workflows/main.yml'), content =>
+			content.replace(/(?<=branches: \[master)/u, `, ${branchName}`)
+		);
 	}
 
 	private static updatePubliccode(version: string): void {
-		// ignores preversions
-		if (/^\d+\.\d+\.\d+$/u.test(version)) {
-			Log.info('Update publiccode release version and date');
-			const today = new Date().toISOString().split('T')[0];
-			Files.overwrite(getAbsolutePath('publiccode.yml'), content =>
-				content
-					.replace(/(?<=softwareVersion:\s)\d+\.\d+\.\d+/u, version)
-					.replace(/(?<=releaseDate:\s)\d{4}-\d{2}-\d{2}/, today)
-			);
-		}
+		Log.info('Update publiccode release version and date');
+		const today = new Date().toISOString().split('T')[0];
+		Files.overwrite(getAbsolutePath('publiccode.yml'), content =>
+			content
+				.replace(/(?<=softwareVersion:\s)\d+\.\d+\.\d+/u, version)
+				.replace(/(?<=releaseDate:\s)\d{4}-\d{2}-\d{2}/, today)
+		);
+	}
+
+	private static isPreVersion(version: string): boolean {
+		return !/^\d+\.\d+\.\d+$/u.test(version);
 	}
 }
 

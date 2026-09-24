@@ -1,4 +1,4 @@
-import {Component, viewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -6,6 +6,7 @@ import {NgForm} from '@angular/forms';
 	standalone: false,
 	templateUrl: './nested-form-grandchild-td-sample.component.html',
 	styleUrl: './mandatory.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'grandChildTD',
 })
 export class NestedFormGrandChildTDSampleComponent {

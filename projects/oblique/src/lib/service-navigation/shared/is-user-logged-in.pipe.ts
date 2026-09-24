@@ -6,10 +6,7 @@ import {ObLoginState} from '../service-navigation.model';
 	standalone: false,
 })
 export class ObIsUserLoggedInPipe implements PipeTransform {
-	transform(loginState: ObLoginState, isGuestAllowed: boolean): boolean {
-		if (loginState === 'S1') {
-			return isGuestAllowed;
-		}
+	transform(loginState: ObLoginState): boolean {
 		return !!loginState?.includes('OK');
 	}
 }

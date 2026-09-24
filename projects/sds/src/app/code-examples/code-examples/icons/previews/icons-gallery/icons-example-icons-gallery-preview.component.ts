@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
 	ObAlertModule,
 	ObButtonModule,
@@ -15,7 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {AsyncPipe, KeyValuePipe} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -42,7 +42,7 @@ import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 		MatExpansionModule,
 		MatSelectModule,
 		ObPopoverModule,
-		TranslateModule,
+		TranslatePipe,
 		MatTooltipModule,
 		MatChipsModule,
 		ObNotificationModule,
@@ -57,6 +57,7 @@ import {MarkifyPipe} from '../../../../../shared/markify/markify.pipe';
 	],
 	templateUrl: './icons-example-icons-gallery-preview.component.html',
 	styleUrl: './icons-example-icons-gallery-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class IconsExampleIconsGalleryPreviewComponent {
 	iconsFilter = new FormControl('');

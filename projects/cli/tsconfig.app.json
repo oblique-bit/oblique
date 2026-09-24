@@ -1,10 +1,12 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "outDir": "../../dist/cli"
+    "outDir": "../../dist/cli",
+    "types": ["node"]
   },
   "files": ["src/index.ts"]
 }

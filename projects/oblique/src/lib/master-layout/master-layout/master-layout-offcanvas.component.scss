@@ -66,9 +66,10 @@
 
 		.ob-close.ob-button {
 			@include button.ob-link-btn();
-			font-size: variables.$ob-font-size-biggest;
 			padding: 0;
 			color: variables.$ob-default;
+			height: variables.$ob-button-height;
+			width: variables.$ob-button-height;
 
 			&.mat-mdc-button-base.ob-button {
 				&:focus {
@@ -90,7 +91,7 @@
 	.ob-off-canvas-backdrop {
 		display: none;
 
-		@at-root #{selector.append(".ob-off-canvas-in.ob-layout-collapse", &)} {
+		@at-root #{selector.append(".ob-off-canvas-in.ob-layout-collapsed", &)} {
 			display: block;
 			position: fixed;
 			top: 0;

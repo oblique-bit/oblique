@@ -24,27 +24,22 @@ import {
 	setRootAngularConfig,
 	writeFile,
 } from '../../utils';
-import {addJest} from './tests';
 
 export function toolchain(options: ObIOptionsSchema): Rule {
 	return (tree: Tree, context: SchematicContext) =>
 		chain([
 			setBuilder(),
 			moveStyles(),
-			addNpmrc(options.npmrc),
 			removeFavicon(),
 			removeUnusedScripts(),
 			addPrefix(options.prefix),
 			updateExistingPrefixes(options.prefix),
-			addProxy(options.proxy),
-			addJest(options.jest),
 			updateEditorConfig(options.eslint),
-			addEslint(options.eslint),
 			addPrettier(options.eslint),
-			overwriteEslintRC(options.eslint, options.prefix),
 			addHusky(options.husky),
 			addEnvironmentFiles(options.environments, options.banner),
 			excludeEnvironmentFiles(),
+			excludeEnvironmentFilesFromTests(),
 			setEnvironments(options.environments),
 		])(tree, context);
 }
@@ -115,16 +110,6 @@ function moveStyles(): Rule {
 	});
 }
 
-function addNpmrc(add: boolean): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (add) {
-			infoMigration(context, 'Toolchain: Adding .npmrc');
-			addFile(tree, '.npmrc', getTemplate(tree, 'default-npmrc.config'));
-		}
-		return tree;
-	});
-}
-
 function removeFavicon(): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		infoMigration(context, "Toolchain: Removing Angular's favicon");
@@ -171,45 +156,11 @@ function updateExistingPrefixes(prefix: string): Rule {
 	});
 }
 
-function addProxy(port: string): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (/^\d+$/.test(port) && !tree.exists('proxy.conf.json')) {
-			infoMigration(context, 'Toolchain: Adding proxy configuration');
-			addFile(tree, 'proxy.conf.json', getTemplate(tree, 'default-proxy.conf.json.config').replace('PORT', port));
-			setOrCreateAngularProjectsConfig(tree, ['architect', 'serve', 'options', 'proxyConfig'], 'proxy.conf.json');
-		}
-		return tree;
-	});
-}
-
 function updateEditorConfig(eslint: boolean): Rule {
 	return createSafeRule((tree: Tree, context: SchematicContext) => {
 		if (eslint) {
 			infoMigration(context, 'Toolchain: update ".editorconfig"');
 			writeFile(tree, '.editorconfig', getTemplate(tree, 'default-editorconfig.config'));
-		}
-		return tree;
-	});
-}
-
-function addEslint(eslint: boolean): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (eslint) {
-			infoMigration(context, 'Toolchain: Adding "eslint"');
-			[
-				'@angular-eslint/eslint-plugin',
-				'@angular-eslint/eslint-plugin-template',
-				'@angular-eslint/template-parser',
-				'@angular-eslint/utils',
-				'@typescript-eslint/eslint-plugin',
-				'@typescript-eslint/parser',
-				'angular-eslint',
-				'eslint',
-			].forEach(dependency => {
-				addDevDependency(tree, dependency);
-			});
-			addScript(tree, 'lint', 'ng lint');
-			addLinting(tree);
 		}
 		return tree;
 	});
@@ -228,34 +179,6 @@ function addPrettier(eslint: boolean): Rule {
 		}
 		return tree;
 	});
-}
-
-function addLinting(tree: Tree): void {
-	setOrCreateAngularProjectsConfig(tree, ['architect', 'lint', 'builder'], '@angular-eslint/builder:lint');
-	setOrCreateAngularProjectsConfig(
-		tree,
-		['architect', 'lint', 'options', 'lintFilePatterns'],
-		['src/**/*.ts', 'src/**/*.html']
-	);
-	addFile(tree, 'tsconfig.lint.json', getTemplate(tree, 'default-tsconfig.lint.json'));
-}
-
-function overwriteEslintRC(eslint: boolean, prefix: string): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		if (eslint) {
-			infoMigration(context, 'Toolchain: overwrite "eslint.config.mjs"');
-			deleteFile(tree, 'eslint.config.js');
-			writeFile(tree, 'eslint.config.mjs', formatEsLintRC(tree, prefix));
-		}
-		return tree;
-	});
-}
-
-function formatEsLintRC(tree: Tree, prefix: string): string {
-	const eslintFile = getTemplate(tree, 'default-eslint.config.mjs.config');
-	return prefix
-		? eslintFile.replace(/APP_PREFIX/g, prefix)
-		: eslintFile.replace(/\s*"@angular-eslint\/(?:component|directive)-selector": \[.*?],/gs, '');
 }
 
 function addHusky(husky: boolean): Rule {
@@ -298,6 +221,21 @@ function excludeEnvironmentFiles() {
 		writeFile(tree, tsConfigPath, tsConfig);
 		return tree;
 	};
+}
+
+function excludeEnvironmentFilesFromTests(): Rule {
+	return createSafeRule((tree: Tree, context: SchematicContext) => {
+		infoMigration(context, 'Toolchain: Exclude environment files from unit tests');
+		setOrCreateAngularProjectsConfig(
+			tree,
+			['architect', 'test', 'options', 'exclude'],
+			(existing: string[] | undefined) => [
+				...(existing ?? []).filter(current => current !== 'src/environments/**'),
+				'src/environments/**',
+			]
+		);
+		return tree;
+	});
 }
 
 function getEnvironmentFileContent(environment: string, hasBanner: boolean): string {

@@ -10,7 +10,8 @@ describe('getCodeExampleComponent', () => {
 		{slug: 'popover-12', name: 'Popover12CodeExamplesComponent'},
 		{slug: 'version', name: 'VersionCodeExamplesComponent'},
 	])('should return "$name" with "$slug" slug', ({name, slug}) => {
-		expect(getCodeExampleComponent(slug).name).toBe(name);
+		// Vitest compiles TS with Angular's which prefixes component class names with `_`
+		expect(getCodeExampleComponent(slug).name.replace(/^_/u, '')).toBe(name);
 	});
 
 	it('should return "undefined" with "inexistent" slug', () => {

@@ -1,5 +1,5 @@
 import type {Command, OptionValues} from '@commander-js/extra-typings';
-import type {ObSchemaOption} from '../utils/ob-cli.model';
+import type {ObSchemaOption} from '../utils/ob-cli.model.js';
 
 export const updateDescriptions = {
 	summaryText: 'Updates Oblique and runs the migration.',

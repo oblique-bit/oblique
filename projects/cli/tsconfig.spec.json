@@ -1,4 +1,12 @@
 {
   "extends": "./tsconfig.app.json",
-  "include": ["src/**/*.spec.ts"]
+  "compilerOptions": {
+    "rootDir": ".",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
+    "types": ["vitest/globals", "node"]
+  },
+  "include": ["src/**/*.spec.ts"],
+  "exclude": []
 }

@@ -1,6 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe, provideTranslateService} from '@ngx-translate/core';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FocusWithOutlineExamplesComponent} from './focus-with-outline-examples.component';
 import {provideNativeDateAdapter} from '@angular/material/core';
@@ -11,8 +11,8 @@ describe(FocusWithOutlineExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [FocusWithOutlineExamplesComponent, TranslateModule.forRoot()],
-			providers: [provideNativeDateAdapter()],
+			imports: [FocusWithOutlineExamplesComponent, TranslatePipe],
+			providers: [provideTranslateService(), provideNativeDateAdapter()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(FocusWithOutlineExamplesComponent);

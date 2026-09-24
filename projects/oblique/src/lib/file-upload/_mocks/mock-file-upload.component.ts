@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {ObIUploadEvent} from '../file-upload.model';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Component({
 	selector: 'ob-file-upload',
@@ -11,16 +11,16 @@ import {ObIUploadEvent} from '../file-upload.model';
 	exportAs: 'obFileUpload',
 })
 export class ObMockFileUploadComponent {
-	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
-	@Input() accept: string[];
-	@Input() multiple = true;
-	@Input() singleRequest = true;
-	@Input() uploadUrl: string;
-	@Input() maxFileSize = 5;
+	readonly uploadEvent = output<ObIUploadEvent>();
+	readonly accept = input(['*']);
+	readonly singleRequest = input(true);
+	readonly maxFileSize = input(5);
+	readonly maxFileAmount = input(0);
+	readonly multiple = input(true);
+	readonly uploadUrl = input<string>(undefined);
+	readonly cancelConfirmation = input(true);
 	showLoadingBox = false;
 	files: File[];
 
-	addFiles(event: ObIUploadEvent): void {}
-
-	uploadComplete(): void {}
+	processEvent(event: ObIUploadEvent): void {}
 }

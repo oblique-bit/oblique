@@ -56,7 +56,7 @@ describe(DynamicNavigationService.name, () => {
 	});
 	describe(DynamicNavigationService.prototype.setNavigation.name, () => {
 		test('should not emit on navigationLinks$', () => {
-			const spy = jest.fn();
+			const spy = vi.fn();
 			service.navigationLinks$.subscribe(spy);
 			service.setNavigation([{label: 'test'}]);
 			expect(spy).not.toHaveBeenCalled();

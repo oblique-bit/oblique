@@ -2,7 +2,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormBuilder, type FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms'; // UntypedFormBuilder, UntypedFormGroup,
 import {ObNumberFormatModule} from '@oblique/oblique';
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 
@@ -11,6 +11,7 @@ import {AsyncPipe} from '@angular/common';
 	imports: [FormsModule, MatFormFieldModule, MatInputModule, ObNumberFormatModule, ReactiveFormsModule, AsyncPipe],
 	templateUrl: './number-format-example-default-with-reactive-form-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NumberFormatExampleDefaultWithReactiveFormPreviewComponent {
 	exampleReactive$: Observable<string>;

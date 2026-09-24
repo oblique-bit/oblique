@@ -1,7 +1,15 @@
 {
   "name": "@oblique/cli",
-  "version": "15.4.4",
+  "version": "16.0.0",
+  "type": "module",
   "description": "Command Line Interface to manage Oblique projects",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oblique-bit/oblique.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [
     "ob",
     "oblique",
@@ -12,15 +20,15 @@
     "ob": "./src/index.js"
   },
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "tsx src/index.ts",
     "link": "npm uninstall @oblique/cli -g && npm run build && cd ../../dist/cli && npm link",
-    "lint": "ts-node scripts/lint.ts",
+    "lint": "tsx scripts/lint.ts",
     "format": "npm run lint -- --fix",
-    "test": "jest",
-    "test-ci": "jest --config=jest.config.ci.js",
-    "build": "ts-node scripts/pre-build.ts && tsc -p tsconfig.app.json && ts-node scripts/post-build.ts",
-    "release": "ts-node scripts/pre-build.ts && ts-node scripts/release.ts",
-    "npm-publish": "ts-node scripts/publish.ts"
+    "test": "vitest",
+    "test-ci": "vitest run --config vitest.config.ci.ts",
+    "build": "tsx scripts/pre-build.ts && tsc -p tsconfig.app.json && tsx scripts/post-build.ts",
+    "release": "tsx scripts/pre-build.ts && tsx scripts/release.ts",
+    "npm-publish": "tsx scripts/publish.ts"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",
@@ -28,6 +36,8 @@
     "semver": "^7.7.1"
   },
   "devDependencies": {
-    "@types/semver": "^7.8.0"
+    "@types/semver": "^7.8.0",
+    "@vitest/coverage-v8": "^4.1.11",
+    "vitest": "^4.1.11"
   }
 }

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {
 	ObEScrollMode,
-	ObILocale,
 	ObIMasterLayoutFooter,
 	ObIMasterLayoutHeader,
 	ObIMasterLayoutNavigation,
@@ -26,22 +25,6 @@ export class ObMasterLayoutConfig {
 	scrollToTopDuration = 200;
 
 	showAccessibilityTitle = true;
-
-	/**
-	 * Locales of the application
-	 * @deprecated since version 15.1.0 Configure locales through `provideObliqueConfiguration({translate: {locales}})` instead.
-	 */
-	locale: ObILocale = {
-		locales: ['de-CH', 'fr-CH', 'it-CH'],
-		defaultLanguage: 'de',
-		disabled: false,
-		languages: {
-			de: 'Deutsch',
-			fr: 'Français',
-			it: 'Italiano',
-			en: 'English',
-		},
-	};
 
 	/**
 	 *  Controls the application's layout

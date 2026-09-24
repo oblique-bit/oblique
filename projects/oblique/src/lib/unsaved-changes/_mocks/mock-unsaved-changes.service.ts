@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import {ControlContainer} from '@angular/forms';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Injectable()
 export class ObMockUnsavedChangesService {
-	public isActive = true;
+	public readonly isActive = signal(true);
 
 	watch(formId: string, form: ControlContainer): void {}
 
@@ -16,7 +16,7 @@ export class ObMockUnsavedChangesService {
 		return true;
 	}
 
-	ignoreChanges(formIds: string[]): boolean {
+	ignoreChanges(formIds?: string[]): boolean {
 		return true;
 	}
 }

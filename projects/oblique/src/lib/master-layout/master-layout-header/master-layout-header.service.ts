@@ -1,14 +1,22 @@
-import {Injectable, inject} from '@angular/core';
+import {Injectable, Signal, WritableSignal, inject, signal} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {ObLoginState} from '../../service-navigation/service-navigation.model';
+import {ObIServiceNavigationContactBase, ObLoginState} from '../../service-navigation/service-navigation.model';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObIServiceNavigationConfigLive} from '../master-layout.model';
+import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent, ObIServiceNavigationConfig} from '../master-layout.model';
+import {mergeDeep} from '../../utilities';
+import {DeepPartial} from '../../utilities.model';
+
+type ObIServiceNavigationConfigurationUpdate = Omit<Partial<ObIServiceNavigationConfig>, 'infoContact'> & {
+	infoContact?: ObIServiceNavigationContactBase;
+};
 
 @Injectable({providedIn: 'root'})
 export class ObMasterLayoutHeaderService {
 	readonly configEvents$: Observable<ObIMasterLayoutEvent>;
 	readonly loginState$: Observable<ObLoginState>;
 	readonly logoutUrl$: Observable<string>;
+	readonly serviceNavigationConfiguration: Signal<ObIServiceNavigationConfig>;
+	private readonly serviceNavigationConfigurationInternal: WritableSignal<ObIServiceNavigationConfig>;
 	private readonly events = new Subject<ObIMasterLayoutEvent>();
 	private readonly loginState = new Subject<ObLoginState>();
 	private readonly logoutUrl = new Subject<string>();
@@ -16,9 +24,10 @@ export class ObMasterLayoutHeaderService {
 	private isCustomInternal = this.config.header.isCustom;
 	private isSmallInternal = this.config.header.isSmall;
 	private isStickyInternal = this.config.header.isSticky;
-	private serviceNavigationConfigurationInternal = this.config.header.serviceNavigation;
 
 	constructor() {
+		this.serviceNavigationConfigurationInternal = signal(this.config.header.serviceNavigation);
+		this.serviceNavigationConfiguration = this.serviceNavigationConfigurationInternal.asReadonly();
 		this.configEvents$ = this.events.asObservable();
 		this.loginState$ = this.loginState.asObservable();
 		this.logoutUrl$ = this.logoutUrl.asObservable();
@@ -60,16 +69,14 @@ export class ObMasterLayoutHeaderService {
 		});
 	}
 
-	get serviceNavigationConfiguration(): ObIServiceNavigationConfigLive {
-		return this.serviceNavigationConfigurationInternal;
-	}
-
-	set serviceNavigationConfiguration(value: ObIServiceNavigationConfigLive) {
-		this.serviceNavigationConfigurationInternal = value;
-		this.events.next({
-			name: ObEMasterLayoutEventValues.SERVICE_NAVIGATION_CONFIGURATION,
-			config: value,
-		});
+	/**
+	 * Updates the service navigation configuration by merging top-level and nested contact properties.
+	 * An `undefined` value explicitly clears the corresponding property.
+	 */
+	updateServiceNavigationConfiguration(configuration: ObIServiceNavigationConfigurationUpdate): void {
+		this.serviceNavigationConfigurationInternal.update(current =>
+			mergeDeep(current, configuration as DeepPartial<ObIServiceNavigationConfig>, {ignoreUndefined: false})
+		);
 	}
 
 	emitLoginState(loginState: ObLoginState): void {

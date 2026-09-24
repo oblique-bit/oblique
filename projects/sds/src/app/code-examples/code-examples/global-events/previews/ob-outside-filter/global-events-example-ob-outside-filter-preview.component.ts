@@ -1,5 +1,14 @@
 import {AsyncPipe} from '@angular/common';
-import {type AfterViewInit, Component, ElementRef, type OnDestroy, type Signal, inject, viewChild} from '@angular/core';
+import {
+	type AfterViewInit,
+	ChangeDetectionStrategy,
+	Component,
+	ElementRef,
+	type OnDestroy,
+	type Signal,
+	inject,
+	viewChild,
+} from '@angular/core';
 import {ObGlobalEventsService, obOutsideFilter} from '@oblique/oblique';
 import {BehaviorSubject, type Observable, Subject, map, takeUntil, withLatestFrom} from 'rxjs';
 
@@ -8,6 +17,7 @@ import {BehaviorSubject, type Observable, Subject, map, takeUntil, withLatestFro
 	imports: [AsyncPipe],
 	templateUrl: './global-events-example-ob-outside-filter-preview.component.html',
 	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'layout-column'},
 })
 export class GlobalEventsExampleObOutsideFilterPreviewComponent implements AfterViewInit, OnDestroy {

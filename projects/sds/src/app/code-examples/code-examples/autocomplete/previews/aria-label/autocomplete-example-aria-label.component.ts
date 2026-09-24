@@ -1,5 +1,5 @@
 import {ObAutocompleteModule, ObEIcon, type ObIAutocompleteInputOption} from '@oblique/oblique';
-import {type AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
 
@@ -7,6 +7,7 @@ import {JsonPipe} from '@angular/common';
 	selector: 'app-autocomplete-example-aria-label',
 	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
 	templateUrl: './autocomplete-example-aria-label.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AutocompleteExampleAriaLabelComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;

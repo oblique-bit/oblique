@@ -78,7 +78,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 		});
 
 		it('should change language if language input is a string', () => {
-			const setLangSpy = jest.spyOn(translationService, 'setLang');
+			const setLangSpy = vi.spyOn(translationService, 'setLang');
 
 			component.ngOnChanges({
 				...defaultChangesValues(),
@@ -89,7 +89,7 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 		});
 
 		it('should not change language if language input is nullish', () => {
-			const setLangSpy = jest.spyOn(translationService, 'setLang');
+			const setLangSpy = vi.spyOn(translationService, 'setLang');
 
 			component.ngOnChanges({
 				...defaultChangesValues(),
@@ -337,11 +337,11 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 
 		beforeEach(() => {
 			hostElement = document.createElement('ob-service-navigation-web-component');
-			jest.spyOn(TestBed.inject(DOCUMENT), 'querySelector').mockReturnValue(hostElement);
+			vi.spyOn(TestBed.inject(DOCUMENT), 'querySelector').mockReturnValue(hostElement);
 		});
 
 		afterEach(() => {
-			jest.restoreAllMocks();
+			vi.restoreAllMocks();
 		});
 
 		it('should have no outline initially', () => {
@@ -360,6 +360,18 @@ describe(ObServiceNavigationWebComponentComponent.name, () => {
 			component.removeOutline();
 
 			expect(hostElement.classList).not.toContain('ob-outline');
+		});
+
+		it('should remove outline when a generic key is pressed', () => {
+			window.dispatchEvent(new KeyboardEvent('keydown'));
+
+			expect(hostElement.classList).not.toContain('ob-outline');
+		});
+
+		it('should add outline when an arrow key is pressed', () => {
+			window.dispatchEvent(new KeyboardEvent('keydown', {key: 'ArrowDown'}));
+
+			expect(hostElement.classList).toContain('ob-outline');
 		});
 	});
 });

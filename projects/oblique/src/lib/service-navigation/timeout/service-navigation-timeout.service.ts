@@ -3,8 +3,8 @@ import Cookies from 'js-cookie';
 import {ObIsUserLoggedInPipe} from '../shared/is-user-logged-in.pipe';
 import {ObEPamsEnvironment, ObLoginState} from '../service-navigation.model';
 import {ObServiceNavigationTimeoutApiService} from '../api/service-navigation-timeout-api.service';
-import {WINDOW} from '../../utilities';
-import {ObWindow} from '../../utilities.model';
+import {WINDOW} from '../../window/window.provider';
+import {ObWindow} from '../../window/window.provider.model';
 import {ObServiceNavigationTimeoutCookieService} from './service-navigation-timeout-cookie.service';
 import {ObServiceNavigationTimeoutCookieActivityService} from './service-navigation-timeout-cookie-activity.service';
 import {ObServiceNavigationTimeoutRedirectorService} from './service-navigation-timeout-redirector.service';
@@ -67,7 +67,7 @@ export class ObServiceNavigationTimeoutService {
 			this.window.setInterval(() => {
 				const logoutCheck = Cookies.get(this.redirectorService.logoutCookieName) !== undefined;
 				const logoutCookieAppears = !doesLogoutCookieExist && logoutCheck;
-				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
+				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState);
 				if (logoutCookieAppears && isUserLoggedIn && this.redirectorService.shouldRedirect()) {
 					this.redirectorService.redirectOrEmit(this.returnUrlService.getRedirectUrl('logout', this.eportalUrl));
 				}
@@ -94,7 +94,7 @@ export class ObServiceNavigationTimeoutService {
 
 		this.ngZone.runOutsideAngular(() => {
 			this.window.setInterval(() => {
-				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState, true);
+				const isUserLoggedIn = this.isUserLoggedInPipe.transform(this.loginState);
 				if (!isUserLoggedIn) {
 					return;
 				}

@@ -1,6 +1,7 @@
 {
   "name": "@oblique/sds-schematics",
   "version": "",
+  "type": "commonjs",
   "description": "Oblique SDS schematics",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",

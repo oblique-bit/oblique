@@ -1,5 +1,5 @@
 import {ObNotificationService} from '@oblique/oblique';
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {FormBuilder, type FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -7,6 +7,7 @@ import {FormBuilder, type FormGroup, Validators} from '@angular/forms';
 	standalone: false,
 	templateUrl: './focus-invalid-sample.component.html',
 	styleUrl: './focus-invalid-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FocusInvalidSampleComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;

@@ -1,5 +1,5 @@
 import {MatButtonModule} from '@angular/material/button';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
 @Component({
@@ -7,5 +7,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
 	templateUrl: './master-layout-example-stackblitz-link-preview.component.html',
 	styleUrl: '../../../../stackblitz-link.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MasterLayoutExampleStackblitzLinkPreviewComponent {}

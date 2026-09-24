@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, viewChild} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -10,6 +10,7 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 	selector: 'app-table',
 	imports: [MatTableModule, MatSortModule, MatCheckboxModule, MatIconModule, MatButtonModule, ObButtonModule],
 	templateUrl: './material-table-example-sortable-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MaterialTableExampleSortablePreviewComponent implements AfterViewInit {
 	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

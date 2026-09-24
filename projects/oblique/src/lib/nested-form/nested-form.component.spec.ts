@@ -21,7 +21,7 @@ describe('NestedFormComponent', () => {
 			email: new UntypedFormControl('', Validators.required),
 			name: new UntypedFormControl('', Validators.required),
 		});
-		component.nestedForm = nestedForm;
+		fixture.componentRef.setInput('nestedForm', nestedForm);
 		fixture.detectChanges();
 	});
 

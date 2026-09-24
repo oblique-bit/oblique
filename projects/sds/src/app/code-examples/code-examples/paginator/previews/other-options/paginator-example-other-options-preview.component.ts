@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, viewChild} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {type MatPaginator, MatPaginatorModule, type PageEvent} from '@angular/material/paginator';
 import {JsonPipe} from '@angular/common';
 
@@ -7,6 +7,7 @@ import {JsonPipe} from '@angular/common';
 	imports: [JsonPipe, MatPaginatorModule],
 	templateUrl: './paginator-example-other-options-preview.component.html',
 	styleUrls: ['../paginator-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'layout-column'},
 })
 export class PaginatorExampleOtherOptionsPreviewComponent implements AfterViewInit {

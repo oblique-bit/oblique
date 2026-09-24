@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {ListGroupExampleDefaultComponent} from './previews/default/list-group-example-default.component';
 import {ListGroupExampleCheckBoxComponent} from './previews/checkbox/list-group-example-checkbox.component';
@@ -13,6 +13,7 @@ import {ListGroupExampleImagePreviewComponent} from './previews/image/list-group
 	selector: 'app-list-group-code-examples',
 	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ListGroupCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'list-group-examples';

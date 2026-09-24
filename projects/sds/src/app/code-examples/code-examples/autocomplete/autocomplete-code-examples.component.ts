@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {AutocompleteExampleDefaultComponent} from './previews/default/autocomplete-example-default.component';
 import {AutocompleteExampleIconPositionStartComponent} from './previews/icon-position-start/autocomplete-example-icon-position-start.component';
@@ -13,6 +13,7 @@ import {AutocompleteExampleAriaLabelComponent} from './previews/aria-label/autoc
 	selector: 'app-autocomplete-code-examples',
 	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AutocompleteCodeExamplesComponent extends CodeExamples {
 	readonly previews: CodeExample[] = [

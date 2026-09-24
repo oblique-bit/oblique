@@ -25,8 +25,8 @@ export class ObServiceNavigationLanguageSynchronizationService {
 	}
 
 	public setLanguage(language: string | undefined): void {
-		const currentLanguageIsDifferent = this.translateService.currentLang !== language;
-		const isLanguageSupported = this.translateService.langs.includes(language);
+		const currentLanguageIsDifferent = this.translateService.currentLang() !== language;
+		const isLanguageSupported = this.translateService.getLangs().includes(language);
 		if (this.shouldSynchronize && currentLanguageIsDifferent && isLanguageSupported) {
 			// as language is provided by the backend, there is no need to send it back
 			this.enableOnLangChange = false;

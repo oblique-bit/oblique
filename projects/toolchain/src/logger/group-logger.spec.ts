@@ -1,3 +1,4 @@
+import type {Mocked} from 'vitest';
 import type {Writer} from './types';
 import {GroupLogger} from './group-logger';
 import {Logger} from './logger';
@@ -8,11 +9,11 @@ import {ObLoggerInactiveGroupError} from './errors/ob-logger-error-inactive-grou
 
 class FakeClock {
 	private time: number;
-	private readonly spy: jest.SpyInstance<number, []>;
+	private readonly spy: ReturnType<typeof vi.spyOn>;
 
 	constructor(startMillis: number) {
 		this.time = startMillis;
-		this.spy = jest.spyOn(globalThis.performance, 'now').mockImplementation(() => this.time);
+		this.spy = vi.spyOn(globalThis.performance, 'now').mockImplementation(() => this.time);
 	}
 
 	tick(millis: number): void {
@@ -24,17 +25,17 @@ class FakeClock {
 }
 
 describe(GroupLogger.name, () => {
-	let writer: jest.Mocked<Writer>;
+	let writer: Mocked<Writer>;
 	let logger: GroupLogger;
 	let fakeClock: FakeClock; // used to simulate execution time
 
 	beforeEach(() => {
 		writer = {
-			info: jest.fn(),
-			success: jest.fn(),
-			warn: jest.fn(),
-			error: jest.fn(),
-			raw: jest.fn(),
+			info: vi.fn(),
+			success: vi.fn(),
+			warn: vi.fn(),
+			error: vi.fn(),
+			raw: vi.fn(),
 		};
 
 		fakeClock = new FakeClock(0);

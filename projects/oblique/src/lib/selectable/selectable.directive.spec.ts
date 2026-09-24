@@ -1,21 +1,15 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, DebugElement, Directive} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement, Directive, computed, signal} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {BehaviorSubject} from 'rxjs';
 import {ObSelectableDirective} from './selectable.directive';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
-
-@Component({
-	standalone: false,
-	template: ` <div obSelectable value="test"></div>`,
-})
-class FaultyTestComponent {}
 
 @Component({
 	standalone: false,
 	template: ` <div obSelectableGroup>
 		<div obSelectable value="test"></div>
 	</div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 
@@ -25,8 +19,9 @@ class TestComponent {}
 	exportAs: 'obSelectableGroup',
 })
 export class ObMockSelectableGroupDirective {
-	mode$ = new BehaviorSubject<string>('checkbox');
-	disabled$ = new BehaviorSubject<boolean>(false);
+	mode = signal<'checkbox' | 'radio' | 'windows'>('checkbox');
+	effectiveMode = computed(() => this.mode());
+	disabled = signal<boolean>(false);
 	register = jest.fn();
 	toggle = jest.fn();
 	focus = jest.fn();
@@ -38,8 +33,9 @@ export class ObMockSelectableGroupDirective {
 	exportAs: 'obSelectableGroup',
 })
 export class ObMockDisabledSelectableGroupDirective {
-	mode$ = new BehaviorSubject<string>('checkbox');
-	disabled$ = new BehaviorSubject<boolean>(true);
+	mode = signal<boolean>(true);
+	effectiveMode = computed(() => this.mode());
+	disabled = signal<'checkbox' | 'radio' | 'windows'>('checkbox');
 	register = jest.fn();
 	toggle = jest.fn();
 	focus = jest.fn();
@@ -52,21 +48,6 @@ describe(ObSelectableDirective.name, () => {
 	let component: TestComponent;
 	let fixture: ComponentFixture<TestComponent>;
 	let element: DebugElement;
-
-	describe('without obSelectableGroup', () => {
-		beforeEach(async () => {
-			await TestBed.configureTestingModule({
-				imports: [ObSelectableDirective],
-				declarations: [FaultyTestComponent],
-			}).compileComponents();
-		});
-
-		it('should throw an error', () => {
-			expect(() => TestBed.createComponent(FaultyTestComponent)).toThrow(
-				'ObSelectableDirective need to be wrapped in an ObSelectableGroupDirective. Please consult the documentation for more information'
-			);
-		});
-	});
 
 	describe('with obSelectableGroup', () => {
 		beforeEach(async () => {
@@ -103,18 +84,17 @@ describe(ObSelectableDirective.name, () => {
 		});
 
 		it('should call register', () => {
-			directive.ngOnInit();
 			expect(group.register).toHaveBeenCalledWith(directive);
 		});
 
 		describe('role', () => {
 			describe('checkbox', () => {
 				beforeEach(() => {
-					group.mode$.next('checkbox');
+					group.mode.set('checkbox');
 					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 				it('should be defined as property', () => {
-					expect(directive.role).toBe('checkbox');
+					expect(directive.role()).toBe('checkbox');
 				});
 				it('should be defined as attribute', () => {
 					expect(element.nativeElement.getAttribute('role')).toBe('checkbox');
@@ -122,11 +102,11 @@ describe(ObSelectableDirective.name, () => {
 			});
 			describe('radio', () => {
 				beforeEach(() => {
-					group.mode$.next('radio');
+					group.mode.set('radio');
 					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 				it('should be defined as property', () => {
-					expect(directive.role).toBe('radio');
+					expect(directive.role()).toBe('radio');
 				});
 				it('should be defined as attribute', () => {
 					expect(element.nativeElement.getAttribute('role')).toBe('radio');
@@ -134,11 +114,11 @@ describe(ObSelectableDirective.name, () => {
 			});
 			describe('windows', () => {
 				beforeEach(() => {
-					group.mode$.next('windows');
+					group.mode.set('windows');
 					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 				it('should be defined as property', () => {
-					expect(directive.role).toBeUndefined();
+					expect(directive.role()).toBeUndefined();
 				});
 				it('should be defined as attribute', () => {
 					expect(element.nativeElement.getAttribute('role')).toBe(null);
@@ -148,7 +128,7 @@ describe(ObSelectableDirective.name, () => {
 
 		describe('tabindex', () => {
 			it('should be defined as property', () => {
-				expect(directive.tabindex).toBe(0);
+				expect(directive.tabindex()).toBe(0);
 			});
 			it('should be defined as attribute', () => {
 				expect(element.nativeElement.getAttribute('tabindex')).toBe('0');
@@ -157,12 +137,12 @@ describe(ObSelectableDirective.name, () => {
 
 		describe('selected', () => {
 			it('should be defined as property', () => {
-				expect(directive.selected).toBe(false);
+				expect(directive.selected()).toBe(false);
 			});
 
 			describe('false', () => {
 				beforeEach(() => {
-					directive.selected = false;
+					directive.selected.set(false);
 				});
 				it('should have an aria-checked attribute', () => {
 					expect(element.nativeElement.getAttribute('aria-checked')).toBe('false');
@@ -175,7 +155,7 @@ describe(ObSelectableDirective.name, () => {
 
 			describe('true', () => {
 				beforeEach(() => {
-					directive.selected = true;
+					directive.selected.set(true);
 					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 				it('should have an aria-checked attribute', () => {

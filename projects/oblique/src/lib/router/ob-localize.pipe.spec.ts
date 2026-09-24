@@ -1,15 +1,17 @@
 import {TestBed} from '@angular/core/testing';
 import {RouterOutlet, Routes, provideRouter} from '@angular/router';
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterTestingHarness} from '@angular/router/testing';
-import {OB_HAS_LANGUAGE_IN_URL, provideObliqueTestingConfiguration} from '../utilities';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObLocalizePipe} from './ob-localize.pipe';
 import {TranslateLoader, TranslateService, provideTranslateService} from '@ngx-translate/core';
 import {of} from 'rxjs';
+import {OB_HAS_LANGUAGE_IN_URL} from '../language/language.provider';
 
 @Component({
 	template: ``,
 	providers: [ObLocalizePipe],
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyComponent {
 	readonly pipe = inject(ObLocalizePipe);
@@ -21,6 +23,7 @@ class DummyComponent {
 @Component({
 	imports: [RouterOutlet],
 	template: `<router-outlet />`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class HostComponent {}
 

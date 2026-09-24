@@ -1,4 +1,4 @@
-import type {ObLogger} from './logger.types';
+import type {ObLogger} from './logger.types.js';
 
 export type LogLevel = 'info' | 'success' | 'warn' | 'error';
 

@@ -6,6 +6,7 @@ import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
 import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {
 	TranslateCompiler,
@@ -14,13 +15,8 @@ import {
 	TranslateNoOpLoader,
 	TranslateService,
 } from '@ngx-translate/core';
-import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
+import {ObMultiTranslateLoader} from './translation/multi-translate-loader';
 import {
-	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
-	OB_HAS_LANGUAGE_IN_URL,
-	OB_HISTORY_STATE,
-	OB_TRANSLATION_CONFIGURATION,
-	WINDOW,
 	getLocalesConfiguration,
 	getRootRoute,
 	isNotKeyboardEventOnButton,
@@ -28,22 +24,23 @@ import {
 	obFocusWithOutline,
 	provideObliqueConfiguration,
 	provideObliqueTestingConfiguration,
-	provideObliqueTranslations,
-	windowProvider,
 } from './utilities';
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
-import {ObPaginatorService} from './paginator/ob-paginator.service';
+import {ObPaginatorService} from './material/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
 import {Observable, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
-import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
+import {ObIObliqueConfiguration, ObIObliqueConfigurationWithDefaults} from './utilities.model';
+import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
 import {
-	ObIAccessibilityStatementConfiguration,
-	ObIObliqueConfiguration,
-	ObIObliqueConfigurationWithDefaults,
-} from './utilities.model';
-
-import {ObWindow} from './utilities.model';
+	OB_ACCESSIBILITY_STATEMENT_CONFIGURATION,
+	OB_HISTORY_STATE,
+} from './accessibility-statement/accessibility-statement.provider';
+import {WINDOW} from './window/window.provider';
+import {OB_TRANSLATION_CONFIGURATION, provideObliqueTranslations} from './translation/translation.providers';
+import {ObDateAdapter} from './language/date-adapter/date-adapter';
+import {OB_CONSOLE_CONFIGURATION} from './console/ob-console.provider';
+import {OB_HAS_LANGUAGE_IN_URL} from './language/language.provider';
 
 const translations: any = {};
 const accessibilityStatement: ObIAccessibilityStatementConfiguration = {
@@ -73,78 +70,8 @@ describe('utilities', () => {
 		},
 		icon: {registerObliqueIcons: true},
 		translate: {flatten: true},
-		hasLanguageInUrl: false,
-	});
-
-	describe('windowProvider', () => {
-		it('should return Window if provided with document', () => {
-			const actualWindowProvider = windowProvider(document);
-			expect(actualWindowProvider).toEqual(window);
-		});
-
-		describe('without window', () => {
-			let win: ObWindow;
-
-			beforeEach(() => {
-				win = windowProvider({} as Document) as ObWindow;
-			});
-
-			it('should have a confirm function that returns a boolean', () => {
-				expect(typeof win.confirm('')).toBe('boolean');
-			});
-
-			it('should have a history.length property', () => {
-				expect(typeof win.history.length).toBe('number');
-			});
-
-			it('should have an innerHeight property', () => {
-				expect(typeof win.innerHeight).toBe('number');
-			});
-
-			it('should have an innerWidth property', () => {
-				expect(typeof win.innerWidth).toBe('number');
-			});
-
-			it('should have a localStorage.getItem function that returns a string', () => {
-				expect(typeof win.localStorage.getItem('key')).toBe('string');
-			});
-
-			it('should have a localStorage.setItem function', () => {
-				expect(() => win.localStorage.setItem('key', '')).not.toThrow();
-			});
-
-			it('should have a localStorage.removeItem function', () => {
-				expect(() => win.localStorage.removeItem('key')).not.toThrow();
-			});
-
-			it('should have a location.href property', () => {
-				expect(typeof win.location.href).toBe('string');
-			});
-
-			it('should have a location.host property', () => {
-				expect(typeof win.location.host).toBe('string');
-			});
-
-			it('should have a matchMedia function that returns an object with a matches property', () => {
-				expect(typeof win.matchMedia('(min-width: 600px)').matches).toBe('boolean');
-			});
-
-			it('should have an open function', () => {
-				expect(() => win.open('https://example.com', '_blank')).not.toThrow();
-			});
-
-			it('should have a pageYOffset property', () => {
-				expect(typeof win.pageYOffset).toBe('number');
-			});
-
-			it('should have a setTimeout function that returns a number', () => {
-				expect(typeof win.setTimeout(() => {})).toBe('number');
-			});
-
-			it('should have a setInterval function that returns a number', () => {
-				expect(typeof win.setInterval(() => {})).toBe('number');
-			});
-		});
+		language: {hasLanguageInUrl: false},
+		consoleConfiguration: {},
 	});
 
 	describe('mergeDeep', () => {
@@ -179,6 +106,19 @@ describe('utilities', () => {
 					keep: 'value',
 					override: true,
 				},
+			});
+		});
+
+		it('should ignore undefined values by default', () => {
+			expect(mergeDeep({value: 'base'}, {value: undefined})).toEqual({value: 'base'});
+		});
+
+		it('should apply undefined values when configured', () => {
+			const baseConfig = {outer: {value: 'base', keep: true}};
+			const configOverride = {outer: {value: undefined}};
+
+			expect(mergeDeep(baseConfig, configOverride, {ignoreUndefined: false})).toEqual({
+				outer: {value: undefined, keep: true},
 			});
 		});
 	});
@@ -310,11 +250,42 @@ describe('utilities', () => {
 				});
 			});
 
+			describe('console configuration', () => {
+				it('should provide OB_CONSOLE_CONFIGURATION', () => {
+					const consoleConfiguration = TestBed.inject(OB_CONSOLE_CONFIGURATION);
+
+					expect(consoleConfiguration).toEqual({silencedLabels: new Set()});
+				});
+			});
+
 			describe('history state', () => {
 				it('should capture the initial browser history length', () => {
 					const historyState = TestBed.inject(OB_HISTORY_STATE);
 
 					expect(historyState).toEqual({initialLength: window.history.length});
+				});
+			});
+
+			describe('Date adapter', () => {
+				it('should be an instance of DateAdapter', () => {
+					expect(TestBed.inject(DateAdapter) instanceof ObDateAdapter).toBe(true);
+				});
+			});
+
+			describe('MAT_DATE_FORMATS', () => {
+				it('should create MAT_DATE_FORMATS', () => {
+					expect(TestBed.inject(MAT_DATE_FORMATS)).toEqual({
+						parse: {timeInput: 'shortTime'},
+						display: {
+							dateInput: 'shortDate',
+							monthLabel: 'longMonth',
+							monthYearLabel: 'mediumMonthYear',
+							dateA11yLabel: 'longDate',
+							monthYearA11yLabel: 'longMonthYear',
+							timeInput: 'shortTime',
+							timeOptionLabel: 'shortTime',
+						},
+					});
 				});
 			});
 		});
@@ -350,7 +321,8 @@ describe('utilities', () => {
 								config: {compiler: TranslateNoOpCompiler},
 								additionalFiles: [{prefix: 'prefix', suffix: 'suffix'}],
 							},
-							hasLanguageInUrl: true,
+							language: {hasLanguageInUrl: true},
+							consoleConfiguration: {silencedLabels: new Set(['foo', 'bar'])},
 						}),
 					],
 				});
@@ -421,6 +393,14 @@ describe('utilities', () => {
 				});
 			});
 
+			describe('console configuration', () => {
+				it('should provide OB_CONSOLE_CONFIGURATION as true', () => {
+					const hasLanguageInUrl = TestBed.inject(OB_CONSOLE_CONFIGURATION);
+
+					expect(hasLanguageInUrl).toEqual({silencedLabels: new Set(['foo', 'bar'])});
+				});
+			});
+
 			describe('history state', () => {
 				it('should capture the initial browser history length', () => {
 					const historyState = TestBed.inject(OB_HISTORY_STATE);
@@ -435,7 +415,6 @@ describe('utilities', () => {
 				locales: ['de-CH', 'fr-CH', 'it-CH'],
 				defaultLanguage: 'de',
 				disabled: false,
-				languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 			};
 
 			beforeEach(() => {
@@ -646,66 +625,38 @@ describe('utilities', () => {
 				expect(translationConfiguration).toEqual({flatten: true});
 				expect(TestBed.inject(TranslateService).currentLoader).toBeInstanceOf(TranslateNoOpLoader);
 			});
-		});
 
-		describe('with missing locales in both configuration and ObMasterLayoutConfig', () => {
-			beforeEach(() => {
-				TestBed.configureTestingModule({
-					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObMasterLayoutConfig, useValue: {}},
-						provideHttpClient(),
-						provideObliqueConfiguration({
-							accessibilityStatement: {
-								applicationName: 'appName',
-								createdOn: new Date('2025-01-31'),
-								conformity: 'none',
-								applicationOperator: 'Operator',
-								contact: [{email: 'e@mail.com'}],
-							},
-						}),
-					],
+			describe('Date adapter', () => {
+				it('should be an instance of DateAdapter', () => {
+					expect(TestBed.inject(DateAdapter) instanceof ObDateAdapter).toBe(true);
 				});
 			});
 
-			it('should throw', () => {
-				expect(() => TestBed.inject(WINDOW)).toThrow();
-			});
-		});
-
-		describe('with missing locales and null ObMasterLayoutConfig', () => {
-			beforeEach(() => {
-				TestBed.configureTestingModule({
-					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObMasterLayoutConfig, useValue: null},
-						provideHttpClient(),
-						provideObliqueConfiguration({
-							accessibilityStatement: {
-								applicationName: 'appName',
-								createdOn: new Date('2025-01-31'),
-								conformity: 'none',
-								applicationOperator: 'Operator',
-								contact: [{email: 'e@mail.com'}],
-							},
-						}),
-					],
+			describe('MAT_DATE_FORMATS', () => {
+				it('should create MAT_DATE_FORMATS', () => {
+					expect(TestBed.inject(MAT_DATE_FORMATS)).toEqual({
+						parse: {timeInput: 'shortTime'},
+						display: {
+							dateInput: 'shortDate',
+							monthLabel: 'longMonth',
+							monthYearLabel: 'mediumMonthYear',
+							dateA11yLabel: 'longDate',
+							monthYearA11yLabel: 'longMonthYear',
+							timeInput: 'shortTime',
+							timeOptionLabel: 'shortTime',
+						},
+					});
 				});
-			});
-
-			it('should throw', () => {
-				expect(() => TestBed.inject(WINDOW)).toThrow();
 			});
 		});
 	});
 
 	describe('provideObliqueTranslations', () => {
-		describe('with locale fallback from ObMasterLayoutConfig through provideObliqueConfiguration', () => {
-			const locale = {
+		describe('with default locale fallback through provideObliqueConfiguration', () => {
+			const defaultLocale = {
 				locales: ['de-CH', 'fr-CH', 'it-CH'],
 				defaultLanguage: 'de',
 				disabled: false,
-				languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 			};
 
 			beforeEach(() => {
@@ -713,7 +664,6 @@ describe('utilities', () => {
 					providers: [
 						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
 						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
-						{provide: ObMasterLayoutConfig, useValue: {locale}},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement: {
@@ -728,9 +678,8 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should initialize language with locale from ObMasterLayoutConfig when translate.locales is not provided', () => {
-				const obLanguageService = TestBed.inject(ObLanguageService);
-				expect(obLanguageService.initialize).toHaveBeenCalledWith(locale);
+			it('should initialize language with default locale when translate.locales is not provided', () => {
+				expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(defaultLocale);
 			});
 		});
 
@@ -913,13 +862,11 @@ describe('utilities', () => {
 			locales: ['de-CH', 'fr-CH', 'it-CH'],
 			defaultLanguage: 'de',
 			disabled: false,
-			languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 		};
-		const localeFromMasterLayout = {
-			locales: ['en-CH', 'de-CH'],
-			defaultLanguage: 'en',
+		const defaultLocale = {
+			locales: ['de-CH', 'fr-CH', 'it-CH'],
+			defaultLanguage: 'de',
 			disabled: false,
-			languages: {en: 'English', de: 'Deutsch'},
 		};
 
 		it('should initialize language with locales from translate configuration when provided', () => {
@@ -927,7 +874,6 @@ describe('utilities', () => {
 				providers: [
 					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
 					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
-					{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}},
 					provideHttpClient(),
 					provideObliqueTestingConfiguration({
 						translate: {locales: localeFromTranslate},
@@ -939,26 +885,24 @@ describe('utilities', () => {
 			expect(obLanguageService.initialize).toHaveBeenCalledWith(localeFromTranslate);
 		});
 
-		it('should initialize language with locale from ObMasterLayoutConfig when translate locales are not provided', () => {
+		it('should initialize language with default locale when translate locales are not provided', () => {
 			TestBed.configureTestingModule({
 				providers: [
 					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
 					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
-					{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}},
 					provideHttpClient(),
 					provideObliqueTestingConfiguration(),
 				],
 			});
 
-			expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(localeFromMasterLayout);
+			expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(defaultLocale);
 		});
 
-		it('should initialize language with locale from ObMasterLayoutConfig when translate is provided without locales', () => {
+		it('should initialize language with default locale when translate is provided without locales', () => {
 			TestBed.configureTestingModule({
 				providers: [
 					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
 					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
-					{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}},
 					provideHttpClient(),
 					provideObliqueTestingConfiguration({
 						translate: {flatten: true},
@@ -966,7 +910,7 @@ describe('utilities', () => {
 				],
 			});
 
-			expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(localeFromMasterLayout);
+			expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(defaultLocale);
 		});
 
 		it('should provide a translate loader returning empty translations', done => {
@@ -974,7 +918,6 @@ describe('utilities', () => {
 				providers: [
 					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
 					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
-					{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}},
 					provideHttpClient(),
 					provideObliqueTestingConfiguration(),
 				],
@@ -990,25 +933,17 @@ describe('utilities', () => {
 	});
 
 	describe('getLocalesConfiguration', () => {
-		const localeFromMasterLayout = {
-			locales: ['en-CH', 'de-CH'],
-			defaultLanguage: 'en',
+		const defaultLocale = {
+			locales: ['de-CH', 'fr-CH', 'it-CH'],
+			defaultLanguage: 'de',
 			disabled: false,
-			languages: {en: 'English', de: 'Deutsch'},
 		};
-
-		beforeEach(() => {
-			TestBed.configureTestingModule({
-				providers: [{provide: ObMasterLayoutConfig, useValue: {locale: localeFromMasterLayout}}],
-			});
-		});
 
 		it('should return translate locales when they are provided', () => {
 			const localeFromTranslate = {
 				locales: ['de-CH', 'fr-CH', 'it-CH'],
 				defaultLanguage: 'de',
 				disabled: false,
-				languages: {de: 'Deutsch', fr: 'Francais', it: 'Italiano'},
 			};
 
 			const locales = TestBed.runInInjectionContext(() =>
@@ -1021,7 +956,7 @@ describe('utilities', () => {
 			expect(locales).toEqual(localeFromTranslate);
 		});
 
-		it('should fall back to ObMasterLayoutConfig locale when translate is undefined', () => {
+		it('should fall back to default locale when translate is undefined', () => {
 			const locales = TestBed.runInInjectionContext(() =>
 				getLocalesConfiguration({
 					...getDefaultObliqueConfiguration(),
@@ -1029,7 +964,7 @@ describe('utilities', () => {
 				})
 			);
 
-			expect(locales).toEqual(localeFromMasterLayout);
+			expect(locales).toEqual(defaultLocale);
 		});
 	});
 

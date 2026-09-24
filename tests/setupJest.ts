@@ -35,3 +35,26 @@ Object.defineProperty(window, 'getComputedStyle', {
 });
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 (window as any).HTMLElement.prototype.scrollIntoView = function () {};
+
+class MockCSSStyleSheet {
+	cssText = '';
+
+	replaceSync(cssText: string): void {
+		this.cssText = cssText;
+	}
+
+	replace(cssText: string): this {
+		this.cssText = cssText;
+		return this;
+	}
+}
+
+Object.defineProperty(globalThis, 'CSSStyleSheet', {
+	writable: true,
+	value: MockCSSStyleSheet,
+});
+
+Object.defineProperty(document, 'adoptedStyleSheets', {
+	writable: true,
+	value: [],
+});

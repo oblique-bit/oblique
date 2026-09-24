@@ -11,7 +11,7 @@ import {ObMockDocumentMetaModule} from './document-meta/_mocks/mock-document-met
 import {ObMockErrorMessagesModule} from './error-messages/_mocks/mock-error-messages.module';
 import {ObMockExternalLinkModule} from './external-link/_mocks/mock-external-link.module';
 import {ObMockFileUploadModule} from './file-upload/_mocks/mock-file-upload.module';
-import {ObMockIconModule} from './icon/_mocks/mock-icon.module';
+import {ObMockIconService} from './icon/_mocks/mock-icon.service';
 import {ObMockMasterLayoutModule} from './master-layout/_mocks/mock-master-layout.module';
 import {ObMockNavTreeModule} from './nav-tree/_mocks/mock-nav-tree.module';
 import {ObMockNestedFormModule} from './nested-form/_mocks/mock-nested-form.module';
@@ -20,7 +20,6 @@ import {ObMockNumberFormatModule} from './number-format/_mocks/mock-number-forma
 import {ObMockHttpApiInterceptorModule} from './http-api-interceptor/_mocks/mock-http-api-interceptor.module';
 import {ObMockOffCanvasModule} from './off-canvas/_mocks/mock-off-canvas.module';
 import {ObMockPopoverModule} from './popover/_mocks/mock-popover.module';
-import {ObMockSchemaValidationModule} from './schema-validation/_mocks/mock-schema-validation.module';
 import {ObMockObSelectableModule} from './selectable/_mocks/mock-selectable.module';
 import {ObMockScrollingModule} from './scrolling/_mocks/mock-scrolling.module';
 import {ObMockSpinnerModule} from './spinner/_mocks/mock-spinner.module';
@@ -28,7 +27,7 @@ import {ObMockInputClearModule} from './input-clear/_mocks/mock-input-clear.modu
 import {ObMockTranslateParamsModule} from './translate-params/_mocks/mock-translate-params.module';
 import {ObMockUnknownRouteModule} from './unknown-route/_mocks/mock-unknown-route.module';
 import {ObMockUnsavedChangesModule} from './unsaved-changes/_mocks/mock-unsaved-changes.module';
-import {WINDOW} from './utilities';
+import {WINDOW} from './window/window.provider';
 import {ObMockButtonModule} from './button/_mocks/mock-button.module';
 import {ObMockAlertModule} from './alert/_mocks/mock-alert.module';
 import {ObMockBreadcrumbModule} from './breadcrumb/_mocks/mock-breadcrumb.module';
@@ -46,7 +45,6 @@ export {ObMockDocumentMetaModule, ObDocumentMetaService} from './document-meta/_
 export {
 	ObMockErrorMessagesModule,
 	ObMockErrorMessagesService,
-	ObMockErrorMessagesComponent,
 	ObMockErrorMessagesDirective,
 	ObMockMatErrorDirective,
 } from './error-messages/_mocks/mock-error-messages.module';
@@ -59,7 +57,7 @@ export {
 	ObMockDropZoneComponent,
 } from './file-upload/_mocks/mock-file-upload.module';
 export {ObMockDatePipe, ObMockLanguageModule} from './language/_mocks/mock-language.module';
-export {ObMockIconModule, ObMockIconService, ObMockIconComponent} from './icon/_mocks/mock-icon.module';
+export {ObMockIconService} from './icon/_mocks/mock-icon.service';
 export {ObMockInputClearModule, ObMockInputClearDirective} from './input-clear/_mocks/mock-input-clear.module';
 export {
 	ObMockMasterLayoutModule,
@@ -107,13 +105,6 @@ export {
 	ObMockOffCanvasToggleDirective,
 } from './off-canvas/_mocks/mock-off-canvas.module';
 export {
-	ObMockSchemaValidationModule,
-	ObMockSchemaRequiredDirective,
-	ObMockSchemaValidateDirective,
-	ObMockSchemaValidationDirective,
-	ObMockSchemaValidationService,
-} from './schema-validation/_mocks/mock-schema-validation.module';
-export {
 	ObMockSelectableDirective,
 	ObMockSelectableGroupDirective,
 	ObMockObSelectableModule,
@@ -148,7 +139,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockExternalLinkModule,
 	ObMockFileUploadModule,
 	ObMockHttpApiInterceptorModule,
-	ObMockIconModule,
 	ObMockMasterLayoutModule,
 	ObMockNavTreeModule,
 	ObMockNestedFormModule,
@@ -156,7 +146,6 @@ const MOCK_OBLIQUE_MODULES = [
 	ObMockNumberFormatModule,
 	ObMockOffCanvasModule,
 	ObMockPopoverModule,
-	ObMockSchemaValidationModule,
 	ObMockScrollingModule,
 	ObMockObSelectableModule,
 	ObMockSpinnerModule,
@@ -167,12 +156,13 @@ const MOCK_OBLIQUE_MODULES = [
 ];
 
 /**
- * @deprecated since version 9.0.0. It will be removed with Oblique 12. Real implementation of Oblique Modules should be used instead.
+ * @deprecated since version 9.0.0. No removal version is planned. Real implementation of Oblique Modules should be used instead.
  */
 @NgModule({
 	imports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],
 	providers: [
 		{provide: TranslateService, useClass: ObMockTranslateService},
+		{provide: ObMockIconService, useClass: ObMockIconService},
 		{provide: WINDOW, useValue: window},
 	],
 	exports: [...MOCK_OBLIQUE_MODULES, ObMockTranslatePipe],

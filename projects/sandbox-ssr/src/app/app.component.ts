@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
@@ -18,6 +18,7 @@ import {ModeSelectorComponent} from './mode-selectors/mode-selectors.component';
 	],
 	templateUrl: './app.component.html',
 	styleUrl: 'app.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AppComponent {
 	readonly language = new FormControl('en');

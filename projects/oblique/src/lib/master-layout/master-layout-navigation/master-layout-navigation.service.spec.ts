@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 
-import {WINDOW} from '../../utilities';
+import {WINDOW} from '../../window/window.provider';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 import {ObMasterLayoutComponentService} from '../master-layout/master-layout.component.service';

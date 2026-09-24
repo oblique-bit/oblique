@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ObDisableLinkDirective} from './disable-link.directive';
 import {CommonModule} from '@angular/common';
@@ -9,6 +9,7 @@ import {CommonModule} from '@angular/common';
 		<a [id]="standardId" [obDisableLink]="disableLink" [href]="randomurl">randomlink</a>
 		<a [id]="defaultId" obDisableLink [href]="randomurl">randomlink</a>
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ObTestingComponent {
 	disableLink = true;
@@ -82,7 +83,7 @@ describe('obDisableLinkDirective', () => {
 		});
 	});
 
-	describe('ngOnChanges', () => {
+	describe('when the condition changes', () => {
 		describe('condition goes from true to false', () => {
 			it('should not have role=link', () => {
 				component.disableLink = true;

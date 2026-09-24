@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 
 @Component({
@@ -6,6 +6,7 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 	standalone: false,
 	templateUrl: './nested-form-child-sample.component.html',
 	styleUrl: './mandatory.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'child',
 })
 export class NestedFormChildSampleComponent {

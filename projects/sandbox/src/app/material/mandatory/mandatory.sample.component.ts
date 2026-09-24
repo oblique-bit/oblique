@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {FormControl, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -6,6 +6,7 @@ import {FormControl, UntypedFormBuilder, type UntypedFormGroup, Validators} from
 	standalone: false,
 	templateUrl: './mandatory.sample.component.html',
 	styleUrl: './mandatory.sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MandatorySampleComponent implements OnInit {
 	/**

@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, input} from '@angular/core';
 import {ObIServiceNavigationApplication} from '../service-navigation.model';
 
 @Component({
@@ -10,8 +10,8 @@ import {ObIServiceNavigationApplication} from '../service-navigation.model';
 	host: {class: 'ob-service-navigation-applications'},
 })
 export class ObServiceNavigationApplicationsComponent {
-	@Input() applicationsUrl = '';
-	@Input() isLoggedIn = false;
-	@Input() lastUsedApplications: ObIServiceNavigationApplication[] = [];
-	@Input() favoriteApplications: ObIServiceNavigationApplication[] = [];
+	readonly applicationsUrl = input('');
+	readonly isLoggedIn = input(false);
+	readonly lastUsedApplications = input<ObIServiceNavigationApplication[]>([]);
+	readonly favoriteApplications = input<ObIServiceNavigationApplication[]>([]);
 }

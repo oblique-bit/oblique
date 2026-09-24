@@ -1,6 +1,6 @@
 import {ObButtonModule, ObErrorMessagesDirective, ObFocusInvalidDirective, ObMatErrorDirective} from '@oblique/oblique';
 import {MatSelectModule} from '@angular/material/select';
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {FormBuilder, type FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -27,6 +27,7 @@ import {MatButtonModule} from '@angular/material/button';
 	],
 	templateUrl: './focus-invalid-example-default-preview.component.html',
 	styleUrl: './focus-invalid-example-default-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FocusInvalidExampleDefaultPreviewComponent implements OnInit {
 	focusInvalidFormGroup: FormGroup;

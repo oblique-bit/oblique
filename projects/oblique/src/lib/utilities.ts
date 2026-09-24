@@ -1,107 +1,42 @@
-import {HttpClient} from '@angular/common/http';
-import {
-	ClassProvider,
-	DOCUMENT,
-	EnvironmentProviders,
-	InjectionToken,
-	Provider,
-	inject,
-	makeEnvironmentProviders,
-	provideAppInitializer,
-} from '@angular/core';
+import {EnvironmentProviders, Provider, inject, makeEnvironmentProviders, provideAppInitializer} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {
-	MissingTranslationHandler,
-	TranslateCompiler,
-	TranslateLoader,
-	TranslateModuleConfig,
-	TranslateParser,
-	provideTranslateService,
-} from '@ngx-translate/core';
-import {ObMultiTranslateLoader} from './multi-translate-loader/multi-translate-loader';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import {MAT_CHECKBOX_DEFAULT_OPTIONS} from '@angular/material/checkbox';
-import {MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
-import {MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/slide-toggle';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import {TranslateLoader, provideTranslateService} from '@ngx-translate/core';
+
 import {
 	DeepPartial,
-	ObIAccessibilityStatementConfiguration,
-	ObIBanner,
-	ObIHistoryState,
-	ObIMaterialProviders,
 	ObIObliqueConfiguration,
 	ObIObliqueConfigurationWithDefaults,
 	ObIObliqueTestingConfiguration,
-	ObIPamsConfiguration,
-	ObITranslateConfig,
-	ObITranslateConfigInternal,
-	ObMaterialProvider,
-	ObTBanner,
-	ObWindow,
 } from './utilities.model';
-import {MAT_TABS_CONFIG} from '@angular/material/tabs';
-import {MatPaginatorIntl} from '@angular/material/paginator';
-import {ObPaginatorService} from './paginator/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
-import {MatStepperIntl} from '@angular/material/stepper';
-import {ObStepperIntlService} from './stepper/ob-stepper.service';
-import {MatDatepickerIntl} from '@angular/material/datepicker';
-import {ObDatepickerIntlService} from './datepicker/ob-datepicker.service';
 import {ObRouterService} from '../lib/router/ob-router.service';
 import {ObLanguageService} from './language/language.service';
 import {of} from 'rxjs';
-import {ObMasterLayoutConfig} from './master-layout/master-layout.config';
-import {ObILocale} from './master-layout/master-layout.model';
+import {ObILocale} from './language/language.model';
+import {
+	obDefaultAccessibilityStatement,
+	obDefaultHistoryState,
+	obProvideAccessibilityStatement,
+} from './accessibility-statement/accessibility-statement.provider';
+import {ObWindow} from './window/window.provider.model';
+import {WINDOW, obProvideWindow} from './window/window.provider';
+import {obDefaultMaterialProviders, obProvideMaterial} from './material/material.providers';
+import {
+	OB_TRANSLATION_CONFIGURATION,
+	defaultTranslationConfig,
+	provideObliqueTranslations,
+} from './translation/translation.providers';
+import {obProvideDate} from './language/date.provider';
+import {obDefaultConsoleConfiguration, obProvideConsole} from './console/ob-console.provider';
+import {OB_HISTORY_STATE} from './accessibility-statement/accessibility-statement.provider';
+import {obDefaultLanguageConfiguration, obProvideLanguageConfiguration} from './language/language.provider';
+import {obDefaultBannerConfiguration, obProvideBanner} from './banner';
+import {obProvideServiceNavigation} from './service-navigation/service-navigation.provider';
 
-export const WINDOW = new InjectionToken<Window>('Window');
-export const OB_BANNER = new InjectionToken<ObIBanner & ObTBanner>('Banner');
-export const OB_TRANSLATION_CONFIGURATION = new InjectionToken<ObITranslateConfigInternal>('Translation configuration');
-export const OB_PAMS_CONFIGURATION = new InjectionToken<ObIPamsConfiguration>(
-	'Provides the mandatory PAMS environment as well as an optional root url.'
-);
-export const OB_ACCESSIBILITY_STATEMENT_CONFIGURATION = new InjectionToken<ObIAccessibilityStatementConfiguration>(
-	'AccessibilityStatementConfiguration'
-);
-export const OB_HAS_LANGUAGE_IN_URL = new InjectionToken<boolean>('Add current language in URL');
-export const OB_MAT_ERROR_PREFIX = new InjectionToken<string>(
-	'Prefix for the translation keys of custom error messages.'
-);
-export const OB_HISTORY_STATE = new InjectionToken<ObIHistoryState>('History state');
-
-function noop(): void {
-	/* noop */
-}
-
-const mockWindow: ObWindow = {
-	confirm: () => false,
-	history: {length: 0},
-	innerHeight: 700,
-	innerWidth: 700,
-	localStorage: {
-		getItem: () => '',
-		setItem: noop,
-		removeItem: noop,
-	},
-	location: {href: '', host: ''},
-	matchMedia: () => ({matches: false}),
-	open: () => null,
-	pageYOffset: 42,
-	setInterval: () => 1,
-	setTimeout: () => 1,
-} as const;
-
-export function windowProvider(doc: Document): Window | ObWindow {
-	return doc.defaultView ?? mockWindow;
-}
-
-const materialProviders: ObIMaterialProviders = {
-	MAT_FORM_FIELD_DEFAULT_OPTIONS: {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-	STEPPER_GLOBAL_OPTIONS: {provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}},
-	MAT_CHECKBOX_OPTIONS: {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-	MAT_RADIO_OPTIONS: {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-	MAT_SLIDE_TOGGLE_OPTIONS: {provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, useValue: {color: 'primary'}},
-	MAT_TABS_CONFIG: {provide: MAT_TABS_CONFIG, useValue: {stretchTabs: false}},
+const defaultLocalesConfiguration: ObILocale = {
+	locales: ['de-CH', 'fr-CH', 'it-CH'],
+	defaultLanguage: 'de',
+	disabled: false,
 };
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
@@ -112,7 +47,31 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
 	return prototype === Object.prototype || prototype === null;
 }
 
-export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
+/**
+ * Options controlling how {@link mergeDeep} applies override values.
+ */
+export interface ObMergeDeepOptions {
+	/**
+	 * Whether undefined override values should be ignored. Defaults to true.
+	 * Set to false to explicitly clear existing properties.
+	 */
+	ignoreUndefined?: boolean;
+}
+
+/**
+ * Recursively merges plain object properties from an override into a base object.
+ *
+ * Existing properties are preserved when the override does not provide a value.
+ * By default, undefined override values are ignored; pass `{ignoreUndefined: false}`
+ * when undefined should replace an existing property.
+ *
+ * Arrays and non-plain objects are replaced by the override value.
+ */
+export function mergeDeep<Type>(
+	base: Type,
+	override: DeepPartial<Type>,
+	{ignoreUndefined = true}: ObMergeDeepOptions = {}
+): Type {
 	if (!isPlainObject(base) || !isPlainObject(override)) {
 		return override as Type;
 	}
@@ -120,37 +79,29 @@ export function mergeDeep<Type>(base: Type, override: DeepPartial<Type>): Type {
 	const merged = {...base} as Record<string, unknown>;
 	Object.keys(override).forEach(key => {
 		const overrideValue = override[key];
-		if (overrideValue === undefined) {
+		if (overrideValue === undefined && ignoreUndefined) {
 			return;
 		}
 
 		const baseValue = merged[key];
 		merged[key] =
-			isPlainObject(baseValue) && isPlainObject(overrideValue) ? mergeDeep(baseValue, overrideValue) : overrideValue;
+			isPlainObject(baseValue) && isPlainObject(overrideValue)
+				? mergeDeep(baseValue, overrideValue, {ignoreUndefined})
+				: overrideValue;
 	});
 
 	return merged as Type;
 }
 
 const defaultObliqueConfiguration: ObIObliqueConfigurationWithDefaults = {
-	accessibilityStatement: {
-		applicationName: 'Test application',
-		createdOn: new Date('2025-01-01'),
-		conformity: 'none',
-		applicationOperator: 'Test operator',
-		contact: [{email: 'test@example.com'}],
-	},
-	material: {
-		MAT_FORM_FIELD_DEFAULT_OPTIONS: materialProviders.MAT_FORM_FIELD_DEFAULT_OPTIONS.useValue,
-		STEPPER_GLOBAL_OPTIONS: materialProviders.STEPPER_GLOBAL_OPTIONS.useValue,
-		MAT_CHECKBOX_OPTIONS: materialProviders.MAT_CHECKBOX_OPTIONS.useValue,
-		MAT_RADIO_OPTIONS: materialProviders.MAT_RADIO_OPTIONS.useValue,
-		MAT_SLIDE_TOGGLE_OPTIONS: materialProviders.MAT_SLIDE_TOGGLE_OPTIONS.useValue,
-		MAT_TABS_CONFIG: materialProviders.MAT_TABS_CONFIG.useValue,
-	},
+	accessibilityStatement: obDefaultAccessibilityStatement,
+	historyState: obDefaultHistoryState,
+	banner: obDefaultBannerConfiguration,
+	material: obDefaultMaterialProviders,
 	icon: {registerObliqueIcons: true},
-	translate: {flatten: true},
-	hasLanguageInUrl: false,
+	translate: defaultTranslationConfig,
+	language: obDefaultLanguageConfiguration,
+	consoleConfiguration: obDefaultConsoleConfiguration,
 } as const;
 
 function mergeWithDefaultObliqueConfiguration(
@@ -173,19 +124,14 @@ function getDefaultObliqueProviders(
 	mergedConfig: ObIObliqueConfigurationWithDefaults
 ): (Provider | EnvironmentProviders)[] {
 	return [
-		{provide: WINDOW, useFactory: windowProvider, deps: [DOCUMENT]},
-		{provide: OB_HISTORY_STATE, useValue: {initialLength: 0}},
-		{provide: MatPaginatorIntl, useClass: ObPaginatorService},
-		{provide: MatStepperIntl, useClass: ObStepperIntlService},
-		{provide: MatDatepickerIntl, useClass: ObDatepickerIntlService},
-		{provide: OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, useValue: mergedConfig.accessibilityStatement},
-		{provide: OB_HAS_LANGUAGE_IN_URL, useValue: mergedConfig.hasLanguageInUrl},
-		(Object.entries(materialProviders) as [ObMaterialProvider, ObIMaterialProviders[ObMaterialProvider]][]).map(
-			([provider, token]) => ({
-				provide: token.provide,
-				useValue: mergedConfig.material[provider],
-			})
-		),
+		obProvideWindow(),
+		obProvideAccessibilityStatement(mergedConfig.accessibilityStatement, mergedConfig.historyState),
+		obProvideLanguageConfiguration(mergedConfig.language),
+		obProvideBanner(mergedConfig.banner),
+		obProvideDate(),
+		obProvideConsole(mergedConfig.consoleConfiguration),
+		obProvideMaterial(mergedConfig.material),
+		obProvideServiceNavigation(mergedConfig.pams),
 	];
 }
 
@@ -219,59 +165,12 @@ export function provideObliqueTestingConfiguration(config: ObIObliqueTestingConf
 			},
 		},
 		...getDefaultObliqueProviders(mergedConfig),
+		obProvideDate(),
 	]);
 }
 
 export function getLocalesConfiguration(config: ObIObliqueConfigurationWithDefaults): ObILocale {
-	const masterLayoutConfig = inject(ObMasterLayoutConfig);
-	return config.translate?.locales ?? masterLayoutConfig.locale;
-}
-
-export function provideObliqueTranslations(configuration: ObITranslateConfig = {}): EnvironmentProviders {
-	const {config, flatten, additionalFiles} = configuration;
-	return makeEnvironmentProviders([
-		provideTranslateService({
-			loader: {
-				provide: TranslateLoader,
-				useFactory: getTranslateLoader,
-				deps: [HttpClient, OB_TRANSLATION_CONFIGURATION],
-			},
-			...addProviders(config),
-		}),
-		{provide: OB_TRANSLATION_CONFIGURATION, useValue: {additionalFiles, flatten: flatten ?? true}},
-	]);
-}
-
-function getTranslateLoader(http: HttpClient, config: ObITranslateConfigInternal): ObMultiTranslateLoader {
-	const {additionalFiles, flatten} = config;
-	return new ObMultiTranslateLoader(
-		http,
-		[
-			{
-				prefix: './assets/i18n/oblique-',
-				suffix: '.json',
-			},
-			...(additionalFiles || [{prefix: './assets/i18n/', suffix: '.json'}]),
-		],
-		flatten
-	);
-}
-
-function addProviders(config: TranslateModuleConfig = {}): TranslateModuleConfig {
-	const providers = {
-		compiler: TranslateCompiler,
-		loader: TranslateLoader,
-		parser: TranslateParser,
-		missingTranslationHandler: MissingTranslationHandler,
-	} as const;
-	const configWithProviders = {};
-	Object.keys(config).forEach(option => {
-		configWithProviders[option] =
-			providers[option] && config[option] instanceof Function
-				? ({provide: providers[option], useClass: config[option]} as ClassProvider)
-				: config[option];
-	});
-	return configWithProviders;
+	return {...defaultLocalesConfiguration, ...config.translate?.locales};
 }
 
 // as the Enter key on a button triggers both the click an keyup events, lets ensure the function is called only once

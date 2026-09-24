@@ -17,6 +17,9 @@
 		<dd>{{ (globalEvents.wheel$ | async)?.target || "-" }}</dd>
 		<dt>Resize</dt>
 		<dd>{{ (globalEvents.resize$ | async)?.target || "-" }}</dd>
+		<dt>Navigate</dt>
+		<dd>{{ (globalEvents.navigate$ | async) || "-" }}</dd>
+		<button type="button" mat-button obButton="primary" (click)="navigate()">Simulate Navigate</button>
 	</dl>
 
 	<h3>ObOutsideFilter</h3>

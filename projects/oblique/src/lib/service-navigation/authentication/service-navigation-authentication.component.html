@@ -1,7 +1,7 @@
-@if (loginUrl) {
-	@if (!isLoggedIn) {
+@if (loginUrl()) {
+	@if (!isLoggedIn()) {
 		<a
-			[href]="loginUrl"
+			[href]="loginUrl()"
 			id="ob-service-navigation-authentication-link-to-login"
 			[isExternalLink]="false"
 			mat-button
@@ -14,7 +14,7 @@
 		</a>
 	}
 
-	@if (isLoggedIn) {
+	@if (isLoggedIn()) {
 		<button
 			type="button"
 			role="link"

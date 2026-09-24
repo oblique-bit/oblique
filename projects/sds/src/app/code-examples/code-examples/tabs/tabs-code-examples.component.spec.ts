@@ -1,11 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
-import {IdPipe} from '../../../shared/id/id.pipe';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {TabsCodeExamplesComponent} from './tabs-code-examples.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatIconModule} from '@angular/material/icon';
-import {ObIconModule} from '@oblique/oblique';
 import {By} from '@angular/platform-browser';
 
 describe(TabsCodeExamplesComponent.name, () => {
@@ -14,15 +9,7 @@ describe(TabsCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [
-				TabsCodeExamplesComponent,
-				CommonModule,
-				IdPipe,
-				CodeExampleComponent,
-				MatTabsModule,
-				MatIconModule,
-				ObIconModule,
-			],
+			imports: [TabsCodeExamplesComponent],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(TabsCodeExamplesComponent);

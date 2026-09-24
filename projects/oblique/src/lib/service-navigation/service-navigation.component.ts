@@ -1,21 +1,18 @@
 import {
 	Component,
-	ContentChildren,
-	Input,
 	OnInit,
-	Output,
-	QueryList,
 	TemplateRef,
 	ViewEncapsulation,
+	computed,
+	contentChildren,
 	inject,
+	input,
 } from '@angular/core';
-import {Observable} from 'rxjs';
+import {outputFromObservable, takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {ObServiceNavigationService} from './service-navigation.service';
+import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
 import {
 	ObEPamsEnvironment,
-	ObILanguage,
-	ObISectionLink,
-	ObIServiceNavigationApplication,
 	ObIServiceNavigationContact,
 	ObIServiceNavigationLink,
 	ObLoginState,
@@ -27,7 +24,6 @@ import {ObServiceNavigationTimeoutCookieActivityService} from './timeout/service
 import {ObServiceNavigationTimeoutRedirectorService} from './timeout/service-navigation-timeout-redirector.service';
 import {ObServiceNavigationTimeoutReturnUrlService} from './timeout/service-navigation-timeout-return-url.service';
 import {ObServiceNavigationLanguageSynchronizationService} from './language-synchronization/service-navigation-language-synchronization.service';
-import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
 
 @Component({
 	selector: 'ob-service-navigation',
@@ -48,74 +44,77 @@ import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.mode
 	host: {class: 'ob-service-navigation'},
 })
 export class ObServiceNavigationComponent implements OnInit {
-	@Input() profileLinks: ObIServiceNavigationLink[] = [];
-	@Input() infoDescription: string;
-	@Input() infoHelpText: string;
-	@Input() infoLinks: ObIServiceNavigationLink[] = [];
-	@Input() infoContactText: string;
-	@Input() infoContact: ObIServiceNavigationContact;
-	@Input() maxFavoriteApplications = 8;
-	@Input() environment: ObEPamsEnvironment;
-	@Input() rootUrl: string;
-	@Input()
-	set returnUrl(newReturnUrl) {
-		this.headerControlsService.setReturnUrl(newReturnUrl);
-	}
-	@Input() pamsAppId: string | undefined = undefined;
-	@Input() displayMessage = false;
-	@Input() useInfoBackend = false;
-	@Input() displayInfo = false;
-	@Input() displayApplications = false;
-	@Input() displayProfile = false;
-	@Input() displayAuthentication = false;
-	@Input() displayLanguages = true;
-	@Input()
-	set handleLogout(newHandleLogout: boolean) {
-		this.headerControlsService.setHandleLogout(newHandleLogout);
-	}
-	@Input()
-	set eportalLanguageSynchronization(synchronization: boolean) {
-		this.headerControlsService.setEportalLanguageSynchronization(synchronization);
-	}
-	@Output()
-	readonly loginState: Observable<ObLoginState>;
-	@Output() readonly logoutTriggered;
-	@ContentChildren('customWidgetTemplate') customWidgetTemplate: QueryList<TemplateRef<unknown>>;
-	readonly loginUrl$: Observable<string>;
-	readonly loginState$: Observable<ObLoginState>;
-	readonly userName$: Observable<string>;
-	readonly profileUrls$: Observable<ObISectionLink[]>;
-	readonly inboxMailUrl$: Observable<string>;
-	readonly messageCount$: Observable<number>;
-	readonly applicationsUrl$: Observable<string>;
-	readonly lastUsedApplications$: Observable<ObIServiceNavigationApplication[]>;
-	readonly favoriteApplications$: Observable<ObIServiceNavigationApplication[]>;
-	readonly language$: Observable<string>;
-	readonly languages: ObILanguage[];
-	readonly infoBackend$: Observable<ObIServiceNavigationBackendInfo>;
+	readonly profileLinks = input<ObIServiceNavigationLink[]>([]);
+	readonly infoDescription = input<string>();
+	readonly infoHelpText = input<string>();
+	readonly infoLinks = input<ObIServiceNavigationLink[]>([]);
+	readonly infoContactText = input<string>();
+	readonly infoContact = input<ObIServiceNavigationContact>();
+	readonly maxFavoriteApplications = input(8);
+	readonly environment = input<ObEPamsEnvironment>();
+	readonly rootUrl = input<string>();
+	readonly returnUrl = input<string>();
+	readonly pamsAppId = input<string>();
+	readonly displayMessage = input(false);
+	readonly useInfoBackend = input(false);
+	readonly displayInfo = input(false);
+	readonly displayApplications = input(false);
+	readonly displayProfile = input(false);
+	readonly displayAuthentication = input(false);
+	readonly displayLanguages = input(true);
+	readonly handleLogout = input(false);
+	readonly eportalLanguageSynchronization = input(false);
+	readonly loginStateChange = outputFromObservable<ObLoginState | undefined>(
+		toObservable(inject(ObServiceNavigationService).loginState)
+	);
+	readonly logoutTriggered = outputFromObservable<string>(inject(ObServiceNavigationService).getLogoutTrigger$());
+	readonly customWidgetTemplate = contentChildren<TemplateRef<unknown>>('customWidgetTemplate');
+	readonly loginUrl = inject(ObServiceNavigationService).loginUrl;
+	readonly loginState = inject(ObServiceNavigationService).loginState;
+	readonly userName = inject(ObServiceNavigationService).userName;
+	readonly profileUrls = inject(ObServiceNavigationService).profileUrls;
+	readonly inboxMailUrl = inject(ObServiceNavigationService).inboxMailUrl;
+	readonly messageCount = inject(ObServiceNavigationService).messageCount;
+	readonly applicationsUrl = inject(ObServiceNavigationService).applicationsUrl;
+	readonly lastUsedApplications = inject(ObServiceNavigationService).lastUsedApplications;
+	readonly favoriteApplications = inject(ObServiceNavigationService).favoriteApplications;
+	readonly language = inject(ObServiceNavigationService).language;
+	readonly languages = inject(ObServiceNavigationService).languages;
+	readonly infoBackend = inject(ObServiceNavigationService).infoBackend;
+	/** The effective info content, from the backend if `useInfoBackend` is set `true` or from the configured inputs. */
+	readonly effectiveInfo = computed<ObIServiceNavigationBackendInfo>(() => ({
+		...this.info(),
+		...(this.useInfoBackend() ? this.infoBackend() : {}),
+	}));
 	private readonly headerControlsService = inject(ObServiceNavigationService);
+	private readonly info = computed<ObIServiceNavigationBackendInfo>(() => ({
+		links: this.infoLinks(),
+		contact: this.infoContact(),
+		helpText: this.infoHelpText(),
+		contactText: this.infoContactText(),
+		description: this.infoDescription(),
+	}));
 
 	constructor() {
-		this.loginState = this.headerControlsService.getLoginState$();
-		this.logoutTriggered = this.headerControlsService.getLogoutTrigger$();
-		this.loginUrl$ = this.headerControlsService.getLoginUrl$();
-		this.loginState$ = this.headerControlsService.getLoginState$();
-		this.userName$ = this.headerControlsService.getUserName$();
-		this.profileUrls$ = this.headerControlsService.getProfileUrls$();
-		this.inboxMailUrl$ = this.headerControlsService.getInboxMailUrl$();
-		this.messageCount$ = this.headerControlsService.getMessageCount$();
-		this.applicationsUrl$ = this.headerControlsService.getApplicationsUrl$();
-		this.lastUsedApplications$ = this.headerControlsService.getLastUsedApplications$();
-		this.favoriteApplications$ = this.headerControlsService.getFavoriteApplications$();
-		this.language$ = this.headerControlsService.getLanguage$();
-		this.languages = this.headerControlsService.getLanguages();
-		this.infoBackend$ = this.headerControlsService.getInfoBackend$();
+		this.headerControlsService.connectReturnUrl(this.returnUrl);
+		// These inputs are synced to the service via toObservable().subscribe() because the service
+		// exposes imperative setters (setHandleLogout / setEportalLanguageSynchronization) that write to
+		// plain properties on downstream services (redirectorService.handleLogout and
+		// languageSynchronizationService.shouldSynchronize), which are not signals yet. Once those
+		// downstream services expose writable signals, these subscriptions can be replaced by passing
+		// the signal references directly to the service, as done for returnUrl via connectReturnUrl().
+		toObservable(this.handleLogout)
+			.pipe(takeUntilDestroyed())
+			.subscribe(handleLogout => this.headerControlsService.setHandleLogout(handleLogout));
+		toObservable(this.eportalLanguageSynchronization)
+			.pipe(takeUntilDestroyed())
+			.subscribe(synchronization => this.headerControlsService.setEportalLanguageSynchronization(synchronization));
 	}
 
 	ngOnInit(): void {
-		this.headerControlsService.setUpRootUrls(this.environment, this.rootUrl);
-		this.headerControlsService.setPamsAppId(this.pamsAppId);
-		this.headerControlsService.setFavoriteApplicationsCount(this.maxFavoriteApplications);
+		this.headerControlsService.setUpRootUrls(this.environment(), this.rootUrl());
+		this.headerControlsService.setPamsAppId(this.pamsAppId());
+		this.headerControlsService.setFavoriteApplicationsCount(this.maxFavoriteApplications());
 	}
 
 	changeLanguage(language: string): void {

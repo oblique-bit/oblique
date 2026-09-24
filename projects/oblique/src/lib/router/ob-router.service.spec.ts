@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {Router, Routes, provideRouter} from '@angular/router';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ObRouterService} from './ob-router.service';
 import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
@@ -13,6 +13,7 @@ import {firstValueFrom} from 'rxjs';
 @Component({
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MockComponent {}
 
@@ -29,12 +30,6 @@ describe(ObRouterService.name, () => {
 			defaultLanguage: 'de',
 			disabled: false,
 			display: true,
-			languages: {
-				de: 'Deutsch',
-				fr: 'Français',
-				it: 'Italiano',
-				en: 'English',
-			},
 		},
 		layout: {
 			hasCover: false,
@@ -83,7 +78,7 @@ describe(ObRouterService.name, () => {
 				providers: [
 					provideRouter(routes),
 					provideObliqueTestingConfiguration({
-						hasLanguageInUrl: false,
+						language: {hasLanguageInUrl: false},
 					}),
 					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig},
 				],
@@ -136,7 +131,7 @@ describe(ObRouterService.name, () => {
 				providers: [
 					provideRouter(routes),
 					provideObliqueTestingConfiguration({
-						hasLanguageInUrl: true,
+						language: {hasLanguageInUrl: true},
 					}),
 					{provide: ObMasterLayoutConfig, useValue: mockMasterLayoutConfig},
 				],

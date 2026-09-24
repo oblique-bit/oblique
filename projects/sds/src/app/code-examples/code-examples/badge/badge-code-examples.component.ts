@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {BadgeExampleColorsComponent} from './previews/colors/badge-example-colors.component';
@@ -10,6 +10,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 	selector: 'app-badge-code-examples',
 	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BadgeCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'badge-examples';

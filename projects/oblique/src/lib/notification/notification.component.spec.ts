@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {ChangeDetectorRef, DebugElement} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {Subject} from 'rxjs';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObMockTranslateService} from '../_mocks/mock-translate.service';
 import {ObAlertComponent} from '../alert/alert.component';
@@ -15,9 +15,8 @@ import {ObENotificationPlacement, ObENotificationType, ObINotification} from './
 import {ObMockNotificationConfig} from './_mocks/mock-notification.config';
 import {ObMockNotificationService} from './_mocks/mock-notification.service';
 import {ObMockAlertComponent} from '../alert/_mocks/mock-alert.component';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObTranslateParamsModule} from '../translate-params/translate-params.module';
-import {TranslateModule} from '@ngx-translate/core';
 
 describe('NotificationComponent', () => {
 	let component: ObNotificationComponent;
@@ -31,7 +30,7 @@ describe('NotificationComponent', () => {
 
 	beforeEach(async () => {
 		TestBed.overrideComponent(ObNotificationComponent, {
-			remove: {imports: [ObAlertComponent, TranslateModule]},
+			remove: {imports: [ObAlertComponent, TranslatePipe]},
 			add: {imports: [ObMockAlertComponent, ObMockTranslatePipe]},
 		});
 		await TestBed.configureTestingModule({
@@ -93,11 +92,11 @@ describe('NotificationComponent', () => {
 			});
 
 			it('1st alert should be success', () => {
-				expect(alerts[0].componentInstance.type).toEqual('success');
+				expect(alerts[0].componentInstance.type()).toEqual('success');
 			});
 
 			it('2nd alert should be undefined', () => {
-				expect(alerts[1].componentInstance.type).toEqual('info');
+				expect(alerts[1].componentInstance.type()).toEqual('info');
 			});
 		});
 	});
@@ -128,7 +127,7 @@ describe('NotificationComponent', () => {
 			await advanceTimersAndDetectChanges(ObNotificationComponent.REMOVE_DELAY);
 
 			expect(component.close).toHaveBeenCalled();
-			expect(component.notifications.length).toBe(0);
+			expect(component.notifications().length).toBe(0);
 		});
 	});
 
@@ -140,14 +139,14 @@ describe('NotificationComponent', () => {
 		component.open({message: 'message 3'});
 		detectChanges();
 
-		expect(component.notifications.length).toBe(3);
+		expect(component.notifications().length).toBe(3);
 		let htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(3);
 
 		component.clear();
 		await advanceTimersAndDetectChanges(ObNotificationComponent.REMOVE_DELAY);
 
-		expect(component.notifications.length).toBe(0);
+		expect(component.notifications().length).toBe(0);
 
 		htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(0);
@@ -158,7 +157,7 @@ describe('NotificationComponent', () => {
 
 		(notificationService.events as Subject<ObINotification>).next({channel: 'oblique'});
 
-		expect(component.close).toHaveBeenCalledWith(component.notifications[0]);
+		expect(component.close).toHaveBeenCalledWith(component.notifications()[0]);
 	});
 
 	it('should clear notifications when a clear-all event is emitted', () => {
@@ -166,7 +165,7 @@ describe('NotificationComponent', () => {
 
 		(notificationService.events as Subject<ObINotification>).next(null);
 
-		expect(component.close).toHaveBeenCalledWith(component.notifications[0]);
+		expect(component.close).toHaveBeenCalledWith(component.notifications()[0]);
 	});
 
 	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', async () => {
@@ -177,7 +176,7 @@ describe('NotificationComponent', () => {
 		component.open({message, groupSimilar: true});
 		detectChanges();
 
-		expect(component.notifications.length).toBe(1);
+		expect(component.notifications().length).toBe(1);
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(1);
 		// Ensure that the timers responsible for closing notifications are executed before ending the test,
@@ -193,25 +192,25 @@ describe('NotificationComponent', () => {
 		component.open({message, groupSimilar: false});
 		await render();
 
-		expect(component.notifications.length).toBe(3);
+		expect(component.notifications().length).toBe(3);
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(3);
 	});
 
 	it('should open notifications on the left side when placement is left', () => {
 		notificationService.placement = ObENotificationPlacement.BOTTOM_LEFT;
-		component.notifications = [];
+		component.notifications.set([]);
 
 		component.open({message: 'message 1'});
 		component.open({message: 'message 2'});
 
-		expect(component.notifications[1].$state).toBe('in-left');
-		expect(component.notifications[0].$state).toBe('in-left');
+		expect(component.notifications()[1].$state()).toBe('in-first-left');
+		expect(component.notifications()[0].$state()).toBe('in-left');
 	});
 
 	it('should create first notification state for an empty left-side list', () => {
 		notificationService.placement = ObENotificationPlacement.BOTTOM_LEFT;
-		component.notifications = [];
+		component.notifications.set([]);
 
 		expect((component as unknown as {getOpenState: () => string}).getOpenState()).toBe('in-first-left');
 	});
@@ -227,8 +226,8 @@ describe('NotificationComponent', () => {
 		await advanceTimersAndDetectChanges(2 * notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
 
 		expect(component.close).toHaveBeenCalled();
-		expect(component.close).toHaveBeenCalledWith(notification);
-		expect(component.notifications.length).toBe(0);
+		expect(component.close).toHaveBeenCalledWith(expect.objectContaining({message, title, sticky: false}));
+		expect(component.notifications().length).toBe(0);
 
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(0);
@@ -244,14 +243,14 @@ describe('NotificationComponent', () => {
 		await advanceTimersAndDetectChanges(notificationConfig.timeout + ObNotificationComponent.REMOVE_DELAY);
 
 		expect(component.close).not.toHaveBeenCalled();
-		expect(component.notifications.length).toBe(1);
+		expect(component.notifications().length).toBe(1);
 
 		const htmlNotifications = fixture.debugElement.queryAll(By.css('.ob-notification'));
 		expect(htmlNotifications.length).toBe(1);
 	});
 
 	it('should display notifications from a custom channel', async () => {
-		component.channel = 'myChannel';
+		fixture.componentRef.setInput('channel', 'myChannel');
 
 		// Send multiple notifications to different channels:
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 1', channel: 'testChannel'});
@@ -261,7 +260,7 @@ describe('NotificationComponent', () => {
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 5', channel: 'appChannel'});
 		await render();
 
-		expect(component.notifications.length).toBe(2);
+		expect(component.notifications().length).toBe(2);
 	});
 
 	it('should *not* display a notification from a different channel', async () => {
@@ -273,7 +272,7 @@ describe('NotificationComponent', () => {
 		(notificationService.events as Subject<ObINotification>).next({message: 'message 5', channel: 'appChannel'});
 		await render();
 
-		expect(component.notifications.length).toBe(1);
+		expect(component.notifications().length).toBe(1);
 	});
 
 	async function render(): Promise<void> {

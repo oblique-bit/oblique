@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -17,6 +17,7 @@ import {NestedFormExampleReactivePreviewGrandchildComponent} from '../grandchild
 	],
 	templateUrl: './nested-form-example-reactive-preview-child.component.html',
 	styleUrl: '../../nested-form-example-preview.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	exportAs: 'child',
 })
 export class NestedFormExampleReactivePreviewChildComponent {

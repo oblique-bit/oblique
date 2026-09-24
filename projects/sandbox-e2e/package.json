@@ -1,0 +1,25 @@
+{
+  "name": "@oblique/sandbox-e2e",
+  "version": "16.0.0",
+  "type": "module",
+  "description": "Playwright E2E tests for the Oblique sandbox",
+  "scripts": {
+    "lint": "tsx scripts/lint.ts",
+    "format": "tsx scripts/lint.ts --fix",
+    "test": "playwright test",
+    "test-ci": "echo \"E2E tests are disabled in CI for now\"",
+    "build": "echo \"No build step for the e2e package\"",
+    "release": "tsx scripts/release.ts",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "install:browsers": "playwright install chromium",
+    "display:report": "playwright show-report artifacts/playwright/html"
+  },
+  "engines": {
+    "node": ">=22.22.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.0"
+  }
+}

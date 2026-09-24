@@ -2,8 +2,7 @@
 {
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "types": ["jest", "node"],
-    "isolatedModules": true
+    "types": ["vitest/globals", "node"]
   },
-  "include": ["**/*.spec.ts"]
+  "include": ["**/*.spec.ts", "../../tests/setupVitest.ts"]
 }

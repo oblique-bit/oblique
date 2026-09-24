@@ -1,15 +1,16 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Location} from '@angular/common';
+import {Location, registerLocaleData} from '@angular/common';
 import {provideHttpClient} from '@angular/common/http';
-import {TranslateModule} from '@ngx-translate/core';
-import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION, WINDOW, provideObliqueTestingConfiguration} from '../utilities';
+import {TranslatePipe} from '@ngx-translate/core';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {AccessibilityStatementComponent} from './accessibility-statement.component';
-import {registerLocaleData} from '@angular/common';
 import localeDE from '@angular/common/locales/de-CH';
 import {By} from '@angular/platform-browser';
 import {Router, provideRouter} from '@angular/router';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 import {ObMasterLayoutService} from '../master-layout/master-layout.service';
+import {WINDOW} from '../window/window.provider';
+import {OB_ACCESSIBILITY_STATEMENT_CONFIGURATION} from './accessibility-statement.provider';
 
 registerLocaleData(localeDE);
 
@@ -19,7 +20,7 @@ describe(AccessibilityStatementComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [AccessibilityStatementComponent, TranslateModule],
+			imports: [AccessibilityStatementComponent, TranslatePipe],
 			providers: [
 				provideHttpClient(),
 				provideRouter([]),
@@ -308,7 +309,7 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('contact array contains only an empty phone', () => {
 			beforeEach(async () => {
 				await TestBed.configureTestingModule({
-					imports: [AccessibilityStatementComponent, TranslateModule],
+					imports: [AccessibilityStatementComponent, TranslatePipe],
 					providers: [
 						provideHttpClient(),
 						provideObliqueTestingConfiguration({
@@ -337,7 +338,7 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('contact array contains only an empty email', () => {
 			beforeEach(async () => {
 				await TestBed.configureTestingModule({
-					imports: [AccessibilityStatementComponent, TranslateModule],
+					imports: [AccessibilityStatementComponent, TranslatePipe],
 					providers: [
 						provideHttpClient(),
 						provideObliqueTestingConfiguration({
@@ -366,7 +367,7 @@ describe(AccessibilityStatementComponent.name, () => {
 		describe('contact array contains only an empty url', () => {
 			beforeEach(async () => {
 				await TestBed.configureTestingModule({
-					imports: [AccessibilityStatementComponent, TranslateModule],
+					imports: [AccessibilityStatementComponent, TranslatePipe],
 					providers: [
 						provideHttpClient(),
 						provideObliqueTestingConfiguration({

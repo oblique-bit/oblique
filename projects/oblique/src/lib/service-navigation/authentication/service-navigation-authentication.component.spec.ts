@@ -36,22 +36,23 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 	});
 
 	it('should have an empty "loginUrl" property', () => {
-		expect(component.loginUrl).toBe('');
+		expect(component.loginUrl()).toBe('');
 	});
 
 	describe('with "loginUrl" as "loginUrl" and "logoutUrl" as "logoutUrl"', () => {
 		beforeEach(() => {
-			component.loginUrl = 'loginUrl';
+			fixture.componentRef.setInput('loginUrl', 'loginUrl');
+			fixture.componentRef.changeDetectorRef.detectChanges();
 		});
 
 		describe('isLoggedIn', () => {
 			it('should be initialized to "false"', () => {
-				expect(component.isLoggedIn).toBe(false);
+				expect(component.isLoggedIn()).toBe(false);
 			});
 
 			describe('set to "true"', () => {
 				beforeEach(() => {
-					component.isLoggedIn = true;
+					fixture.componentRef.setInput('isLoggedIn', true);
 					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 
@@ -119,7 +120,7 @@ describe('ObServiceNavigationAuthenticationComponent', () => {
 
 			describe('set to "false"', () => {
 				beforeEach(() => {
-					component.isLoggedIn = false;
+					fixture.componentRef.setInput('isLoggedIn', false);
 					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 

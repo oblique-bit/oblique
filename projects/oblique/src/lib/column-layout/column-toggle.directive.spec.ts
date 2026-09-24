@@ -19,12 +19,9 @@ describe('ObColumnToggleDirective', () => {
 	});
 
 	describe('Method onclick', () => {
-		it('should call parent method toggle', () => {
-			jest.spyOn(parentDirective, 'toggle');
-
+		it('should update parent collapsed signal', () => {
 			directive.onclick();
-
-			expect(parentDirective.toggle).toHaveBeenCalledTimes(1);
+			expect(parentDirective.collapsed()).toEqual(false);
 		});
 	});
 });

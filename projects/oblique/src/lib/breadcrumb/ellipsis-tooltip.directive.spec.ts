@@ -1,4 +1,4 @@
-import {Component, DebugElement, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement, input} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {HarnessLoader} from '@angular/cdk/testing';
@@ -7,7 +7,7 @@ import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {DOCUMENT} from '@angular/common';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {By} from '@angular/platform-browser';
 
 function setElementWidths(element: HTMLElement, offset: number, scroll: number): void {
@@ -18,6 +18,7 @@ function setElementWidths(element: HTMLElement, offset: number, scroll: number):
 @Component({
 	imports: [ObEllipsisTooltipDirective, MatTooltipModule],
 	template: ` <span [matTooltip]="text()" [obEllipsisTooltip]="text()">{{ text() }}</span> `,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestHostComponent {
 	text = input('');

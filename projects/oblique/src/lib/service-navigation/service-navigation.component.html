@@ -1,59 +1,55 @@
 <ul class="ob-service-navigation-list">
-	@for (customControl of customWidgetTemplate; track customControl) {
+	@for (customControl of customWidgetTemplate(); track customControl) {
 		<li class="ob-service-navigation-custom-control">
 			<ng-container *ngTemplateOutlet="customControl" />
 		</li>
 	}
-	@if ((loginState$ | async | obIsUserLoggedIn: false) && displayMessage) {
+	@if ((loginState() | obIsUserLoggedIn) && displayMessage()) {
 		<li>
-			<ob-service-navigation-message [linkHref]="inboxMailUrl$ | async" [count]="messageCount$ | async" />
+			<ob-service-navigation-message [linkHref]="inboxMailUrl()" [count]="messageCount()" />
 		</li>
 	}
-	@if (displayInfo) {
+	@if (displayInfo()) {
 		<li>
-			@let infoBackend = useInfoBackend ? (infoBackend$ | async) : {};
+			@let info = effectiveInfo();
 			<ob-service-navigation-info
-				[links]="infoBackend.links ? infoBackend.links : infoLinks"
-				[contact]="infoBackend.contact ? infoBackend.contact : infoContact"
-				[helpText]="infoBackend.helpText ? infoBackend.helpText : infoHelpText"
-				[contactText]="infoBackend.contactText ? infoBackend.contactText : infoContactText"
-				[description]="infoBackend.description ? infoBackend.description : infoDescription"
+				[links]="info.links"
+				[contact]="info.contact"
+				[helpText]="info.helpText"
+				[contactText]="info.contactText"
+				[description]="info.description"
 			/>
 		</li>
 	}
-	@if (displayApplications) {
+	@if (displayApplications()) {
 		<li>
 			<ob-service-navigation-applications
-				[applicationsUrl]="applicationsUrl$ | async"
-				[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: false"
-				[lastUsedApplications]="lastUsedApplications$ | async"
-				[favoriteApplications]="favoriteApplications$ | async"
+				[applicationsUrl]="applicationsUrl()"
+				[isLoggedIn]="loginState() | obIsUserLoggedIn"
+				[lastUsedApplications]="lastUsedApplications()"
+				[favoriteApplications]="favoriteApplications()"
 			/>
 		</li>
 	}
-	@if ((loginState$ | async | obIsUserLoggedIn: true) && displayProfile) {
+	@if ((loginState() | obIsUserLoggedIn) && displayProfile()) {
 		<li>
-			<ob-service-navigation-profile
-				[userName]="userName$ | async"
-				[profileUrls]="profileUrls$ | async"
-				[links]="profileLinks"
-			/>
+			<ob-service-navigation-profile [userName]="userName()" [profileUrls]="profileUrls()" [links]="profileLinks()" />
 		</li>
 	}
-	@if (displayAuthentication) {
+	@if (displayAuthentication()) {
 		<li>
 			<ob-service-navigation-authentication
-				[loginUrl]="loginUrl$ | async"
-				[isLoggedIn]="loginState$ | async | obIsUserLoggedIn: true"
+				[loginUrl]="loginUrl()"
+				[isLoggedIn]="loginState() | obIsUserLoggedIn"
 				(logoutClicked)="logoutClick()"
 			/>
 		</li>
 	}
-	@if (languages.length > 1 && displayLanguages) {
+	@if (languages().length > 1 && displayLanguages()) {
 		<li>
 			<ob-service-navigation-languages
-				[languages]="languages"
-				[language]="language$ | async"
+				[languages]="languages()"
+				[language]="language()"
 				(languageChange)="changeLanguage($event)"
 			/>
 		</li>

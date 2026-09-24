@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -9,6 +9,7 @@ import {MatSelectModule} from '@angular/material/select';
 	selector: 'app-expansion-panel-example-basic-preview',
 	imports: [MatExpansionModule, MatFormFieldModule, MatInputModule, FormsModule, MatSelectModule],
 	templateUrl: './expansion-panel-example-basic-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExpansionPanelExampleBasicPreviewComponent {
 	heroName = 'Super*';

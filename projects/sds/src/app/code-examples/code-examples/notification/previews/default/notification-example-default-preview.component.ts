@@ -1,11 +1,12 @@
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 
 @Component({
 	selector: 'app-notification-example-default-preview',
 	imports: [ObNotificationModule, ObButtonModule, MatButtonModule],
 	templateUrl: './notification-example-default-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class NotificationExampleDefaultPreviewComponent {
 	private readonly obNotificationService = inject(ObNotificationService);

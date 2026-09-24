@@ -1,25 +1,26 @@
-import type {ObCommandConfig, ObOptions} from './ob-cli.model';
+import type {ObCommandConfig, ObOptions} from './ob-cli.model.js';
 import {type SpawnSyncOptions, spawnSync} from 'child_process';
 import {gte, major} from 'semver';
+import {dasherize} from './strings.js';
 
 /* Generated content, do not edit */
-export const version = '15.4.4';
+export const version = '16.0.0';
 /* End of generated content */
 
 export const currentVersions = {
 	'@oblique/oblique': version,
-	'@angular/cli': '^21',
-	'@angular/material': '21',
+	'@angular/cli': '^22',
+	'@angular/material': '22',
 	'@oblique/toolchain': version,
-	'@angular/core': '21',
-	'@angular/cdk': '21',
-	'@angular-devkit/build-angular': '21',
-	'@angular-eslint/schematics': '21',
-	'angular-eslint': '21',
+	'@angular/core': '22',
+	'@angular/cdk': '22',
+	'@angular-devkit/build-angular': '22',
+	'@angular-eslint/schematics': '22',
+	'angular-eslint': '22',
 	'@types/jest': '30',
-	'@angular-builders/jest': '21',
-	'@schematics/angular': '21',
-	'angular-oauth2-oidc': '20',
+	'@angular-builders/jest': '22',
+	'@schematics/angular': '22',
+	'angular-oauth2-oidc': '22',
 	jest: '30',
 } as const;
 
@@ -63,8 +64,8 @@ export const runObCommand = (): void => {
 
 export const obTitle = `Oblique Cli`;
 
-export const recommendedVersion = 22;
-export const minimumSupportedVersion = '22.12.0';
+export const recommendedVersion = 24;
+export const minimumSupportedVersion = '22.22.3';
 
 export function getHelpText(command: 'ob' | 'ob new' | 'ob update'): string {
 	return `Shows a help message for the "${command}" command in the console`;
@@ -135,9 +136,10 @@ export function buildOption(key: string, value: string | boolean): string {
 	if (value === false || value === 'false') {
 		return `no-${key}`;
 	}
-	return `${key}=${value}`;
+	return isWindows() ? `${key}="${value}"` : `${key}=${value}`;
 }
 
+// eslint-disable-next-line max-lines-per-function
 export function execute(config: ObCommandConfig): void {
 	switch (config.name) {
 		case 'ngNew':
@@ -148,6 +150,8 @@ export function execute(config: ObCommandConfig): void {
 				config.options,
 				config.spawnSyncOptions
 			);
+		case 'ngGenerate':
+			return executeNgCommand(['generate', config.schematic], config.options, config.spawnSyncOptions);
 		case 'ngUpdate':
 			return executeNgCommand(
 				['update', ...buildNgUpdateDependencyArgs(config.dependencies, config.angularDependencies)],
@@ -222,7 +226,9 @@ function isNodeVersionSupported(minimumSupportedNodeVersion: string): boolean {
 }
 
 function executeNgCommand(args: string[], options: ObOptions = {}, spawnSyncOptions: SpawnSyncOptions = {}): void {
-	const parsedOptions = Object.entries<string | boolean>(options).map(([key, value]) => `--${buildOption(key, value)}`);
+	const parsedOptions = Object.entries<string | boolean>(options).map(
+		([key, value]) => `--${buildOption(dasherize(key), value)}`
+	);
 	executeCommand('npx', [getVersionedDependency('@angular/cli'), ...args, ...parsedOptions], spawnSyncOptions);
 }
 

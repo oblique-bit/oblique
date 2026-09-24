@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
 import {CmsDataService} from './cms/cms-data.service';
 import {provideHttpClientTesting} from '@angular/common/http/testing';
-import {delay, of} from 'rxjs';
+import {delay, firstValueFrom, of} from 'rxjs';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
 describe('AppComponent', () => {
@@ -24,7 +24,7 @@ describe('AppComponent', () => {
 	describe('With no banner data', () => {
 		beforeEach(() => {
 			cmsDataService = TestBed.inject(CmsDataService);
-			jest.spyOn(cmsDataService, 'getBanner').mockReturnValue(of({data: {content: null}}));
+			vi.spyOn(cmsDataService, 'getBanner').mockReturnValue(of({data: {content: null}}));
 			fixture = TestBed.createComponent(AppComponent);
 			component = fixture.componentInstance;
 			fixture.detectChanges();
@@ -64,16 +64,13 @@ describe('AppComponent', () => {
 	describe('With banner data', () => {
 		describe('Banner', () => {
 			let bannerContent;
-			beforeEach(done => {
+			beforeEach(async () => {
 				cmsDataService = TestBed.inject(CmsDataService);
-				jest.spyOn(cmsDataService, 'getBanner').mockReturnValue(of({data: {content: 'anything'}}).pipe(delay(0)));
+				vi.spyOn(cmsDataService, 'getBanner').mockReturnValue(of({data: {content: 'anything'}}).pipe(delay(0)));
 				fixture = TestBed.createComponent(AppComponent);
 				component = fixture.componentInstance;
 				fixture.detectChanges();
-				component.bannerData$.subscribe(content => {
-					bannerContent = content;
-					done();
-				});
+				bannerContent = await firstValueFrom(component.bannerData$);
 			});
 
 			it('should call getBanner() once', () => {

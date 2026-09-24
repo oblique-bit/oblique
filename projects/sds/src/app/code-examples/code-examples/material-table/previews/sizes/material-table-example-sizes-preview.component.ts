@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 
 @Component({
@@ -6,6 +6,7 @@ import {MatTableModule} from '@angular/material/table';
 	imports: [MatTableModule],
 	templateUrl: './material-table-example-sizes-preview.component.html',
 	styleUrl: './material-table-example-sizes-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MaterialTableExampleSizesPreviewComponent {
 	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

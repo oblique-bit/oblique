@@ -14,7 +14,7 @@ import {ObServiceNavigationInfoComponent} from './service-navigation-info.compon
 import {ObContactToLinksPipe} from './contact-to-links.pipe';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 describe(ObServiceNavigationInfoComponent.name, () => {
 	let component: ObServiceNavigationInfoComponent;
@@ -23,7 +23,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe, TranslateModule],
+			imports: [MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe, TranslatePipe],
 			declarations: [
 				ObServiceNavigationInfoComponent,
 				ObServiceNavigationPopoverSectionComponent,
@@ -49,12 +49,12 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 	describe('links', () => {
 		it('should be initialized to an empty array', () => {
-			expect(component.links).toEqual([]);
+			expect(component.links()).toEqual([]);
 		});
 
 		describe('without additional links', () => {
 			it('should have 0 section', async () => {
-				component.links = [];
+				fixture.componentRef.setInput('links', []);
 				await openPopover();
 				const sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				expect(sections.length).toBe(0);
@@ -64,10 +64,10 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 		describe('with additional links', () => {
 			let sections: DebugElement[];
 			beforeEach(async () => {
-				component.links = [
+				fixture.componentRef.setInput('links', [
 					{url: 'url_1', label: 'URL 1'},
 					{url: 'url_2', label: 'URL 2'},
-				];
+				]);
 				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 			});
@@ -83,26 +83,26 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.header');
 				});
 
 				describe('links', () => {
 					it('should have 2', () => {
-						expect(section.links.length).toBe(2);
+						expect(section.links().length).toBe(2);
 					});
 
 					it.each([
 						{property: 'url', value: 'url_1'},
 						{property: 'label', value: 'URL 1'},
 					])('should have "$value" as "$property" property on the first link', ({property, value}) => {
-						expect(section.links[0][property]).toBe(value);
+						expect(section.links()[0][property]).toBe(value);
 					});
 
 					it.each([
 						{property: 'url', value: 'url_2'},
 						{property: 'label', value: 'URL 2'},
 					])('should have "$value" as "$property" property on the second link', ({property, value}) => {
-						expect(section.links[1][property]).toBe(value);
+						expect(section.links()[1][property]).toBe(value);
 					});
 				});
 			});
@@ -111,12 +111,12 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 	describe('contact', () => {
 		it('should be initialized to undefined', () => {
-			expect(component.contact).toBeUndefined();
+			expect(component.contact()).toBeUndefined();
 		});
 
 		describe('without contact', () => {
 			it('should have 0 section', async () => {
-				component.links = [];
+				fixture.componentRef.setInput('links', []);
 				await openPopover();
 				const sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 				expect(sections.length).toBe(0);
@@ -126,7 +126,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 		describe('with contact property only', () => {
 			let sections: DebugElement[];
 			beforeEach(async () => {
-				component.contact = {formUrl: 'https://example.com/'};
+				fixture.componentRef.setInput('contact', {formUrl: 'https://example.com/'});
 				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 			});
@@ -142,7 +142,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.contact.header');
 				});
 
 				describe('links', () => {
@@ -176,7 +176,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 		describe('with phone property only', () => {
 			let sections: DebugElement[];
 			beforeEach(async () => {
-				component.contact = {phone: '123'};
+				fixture.componentRef.setInput('contact', {phone: '123'});
 				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 			});
@@ -192,7 +192,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.contact.header');
 				});
 
 				describe('links', () => {
@@ -226,7 +226,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 		describe('with email property only', () => {
 			let sections: DebugElement[];
 			beforeEach(async () => {
-				component.contact = {email: 'text@test.com'};
+				fixture.componentRef.setInput('contact', {email: 'text@test.com'});
 				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 			});
@@ -242,7 +242,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.contact.header');
 				});
 
 				describe('links', () => {
@@ -276,14 +276,14 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 		describe('with email, phone and contact properties', () => {
 			let sections: DebugElement[];
 			beforeEach(async () => {
-				component.contact = {
+				fixture.componentRef.setInput('contact', {
 					email: 'text@test.com',
 					emailText: 'email text',
 					phone: '123',
 					phoneText: 'tel text',
 					formUrl: 'https://example.com/',
 					formUrlText: 'form url text',
-				};
+				});
 				await openPopover();
 				sections = fixture.debugElement.queryAll(By.directive(ObServiceNavigationPopoverSectionComponent));
 			});
@@ -299,7 +299,7 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 				});
 
 				it('should have "i18n.oblique.service-navigation.info.contact.header" as header', () => {
-					expect(section.header).toBe('i18n.oblique.service-navigation.info.contact.header');
+					expect(section.header()).toBe('i18n.oblique.service-navigation.info.contact.header');
 				});
 
 				describe('links', () => {

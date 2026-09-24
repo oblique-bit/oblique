@@ -1,6 +1,6 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation, inject} from '@angular/core';
+import {Component, ElementRef, ViewEncapsulation, inject, input, output, viewChild} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObEUploadEventType, ObIUploadEvent} from '../file-upload.model';
 import {ObAcceptAllPipe} from './accept-all.pipe';
 import {ObDragDropDirective} from './drag-and-drop.directive';
@@ -8,7 +8,7 @@ import {ObValidationService} from './validation.service';
 
 @Component({
 	selector: 'ob-drop-zone',
-	imports: [ObDragDropDirective, MatIconModule, TranslateModule, ObAcceptAllPipe],
+	imports: [ObDragDropDirective, MatIconModule, TranslatePipe, ObAcceptAllPipe],
 	templateUrl: './ob-drop-zone.component.html',
 	styleUrls: ['./ob-drop-zone.component.scss'],
 	providers: [ObValidationService],
@@ -17,12 +17,12 @@ import {ObValidationService} from './validation.service';
 	exportAs: 'obDropZone',
 })
 export class ObDropZoneComponent {
-	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
-	@Input() accept = ['*'];
-	@Input() maxFileSize = 5;
-	@Input() maxFileAmount = 0;
-	@Input() multiple = true;
-	@ViewChild('fileInput') private readonly fileInput: ElementRef<HTMLInputElement>;
+	readonly uploadEvent = output<ObIUploadEvent>();
+	readonly accept = input(['*']);
+	readonly maxFileSize = input(5);
+	readonly maxFileAmount = input(0);
+	readonly multiple = input(true);
+	private readonly fileInput = viewChild<ElementRef<HTMLInputElement>>('fileInput');
 
 	private readonly validationService = inject(ObValidationService);
 
@@ -30,10 +30,10 @@ export class ObDropZoneComponent {
 		const fileArray = Array.from(fileList);
 		const files: File[] = this.validationService.filterInvalidFiles({
 			files: fileArray,
-			accept: this.accept,
-			maxSize: this.maxFileSize,
-			maxAmount: this.maxFileAmount,
-			multiple: this.multiple,
+			accept: this.accept(),
+			maxSize: this.maxFileSize(),
+			maxAmount: this.maxFileAmount(),
+			multiple: this.multiple(),
 		});
 		if (files.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.CHOSEN, files});
@@ -41,6 +41,6 @@ export class ObDropZoneComponent {
 		if (files.length !== fileArray.length) {
 			this.uploadEvent.emit({type: ObEUploadEventType.ERRORED, files: fileArray.filter(file => !files.includes(file))});
 		}
-		this.fileInput.nativeElement.value = null;
+		this.fileInput().nativeElement.value = null;
 	}
 }

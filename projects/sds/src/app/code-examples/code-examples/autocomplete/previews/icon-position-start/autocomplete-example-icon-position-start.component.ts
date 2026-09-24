@@ -1,5 +1,5 @@
 import {ObAutocompleteModule, ObEIcon, type ObIAutocompleteInputOption} from '@oblique/oblique';
-import {type AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
 
@@ -7,6 +7,7 @@ import {JsonPipe} from '@angular/common';
 	selector: 'app-autocomplete-example-icon-position-start',
 	imports: [ObAutocompleteModule, ReactiveFormsModule, JsonPipe],
 	templateUrl: './autocomplete-example-icon-position-start.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AutocompleteExampleIconPositionStartComponent implements AfterViewInit {
 	selectedOption: ObIAutocompleteInputOption;

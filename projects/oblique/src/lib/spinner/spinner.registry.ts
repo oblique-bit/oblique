@@ -17,6 +17,6 @@ export class ObSpinnerRegistry {
 	}
 
 	hasChannel(channelName: string): boolean {
-		return this.spinners.some(spinners => spinners.channel === channelName);
+		return this.spinners.some(spinners => spinners.channel() === channelName);
 	}
 }

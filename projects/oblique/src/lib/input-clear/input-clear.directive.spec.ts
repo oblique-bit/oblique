@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
 	AbstractControl,
 	FormBuilder,
@@ -15,7 +15,8 @@ import {By} from '@angular/platform-browser';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObInputClearDirective} from './input-clear.directive';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
+import {ObConsoleService} from '../console/ob-console.service';
 
 interface ObInputClearDirectivePrivate {
 	setFocus: () => void;
@@ -34,6 +35,7 @@ interface ObInputClearDirectivePrivate {
 			</button>
 		</mat-form-field>
 	</div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class UntypedReactiveFormTestComponent {
 	testForm: FormGroup;
@@ -57,6 +59,7 @@ class UntypedReactiveFormTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class StronglyTypedReactiveFormTestComponent {
 	testForm: FormGroup<{field1: FormControl<string>}>;
@@ -80,6 +83,7 @@ class StronglyTypedReactiveFormTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TemplateDrivenFormTestComponent {
 	testModel: string;
@@ -91,13 +95,16 @@ class TemplateDrivenFormTestComponent {
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required #control />
-			<button type="button" [obInputClear]="control">
+			<button type="button" [obInputClear]="control" [focusOnClear]="focusOnClear">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
 	</div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
-class HtmlInputTestComponent {}
+class HtmlInputTestComponent {
+	focusOnClear: boolean;
+}
 
 @Component({
 	standalone: false,
@@ -126,6 +133,7 @@ class HtmlInputWithDatePickerTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class WrongConfigurationTestComponent {
 	testModel: string;
@@ -142,7 +150,7 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [UntypedReactiveFormTestComponent],
-				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
+				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -186,7 +194,6 @@ describe('InputClear', () => {
 				input.dispatchEvent(new Event('input'));
 				fixture.detectChanges();
 				parentElement = fixture.nativeElement.querySelector('.ob-text-control-clear-has-value');
-				console.error(parentElement);
 				expect(parentElement).toBeTruthy();
 			});
 
@@ -210,7 +217,7 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [StronglyTypedReactiveFormTestComponent],
-				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
+				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -277,7 +284,7 @@ describe('InputClear', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				declarations: [TemplateDrivenFormTestComponent],
-				imports: [ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, TranslateModule],
+				imports: [ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -350,7 +357,7 @@ describe('InputClear', () => {
 					FormsModule,
 					MatFormFieldModule,
 					MatInputModule,
-					TranslateModule,
+					TranslatePipe,
 				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
@@ -411,7 +418,7 @@ describe('InputClear', () => {
 
 			test('that it does not focus the input after clearing when focusOnClear is false', () => {
 				input = fixture.nativeElement.querySelector('input');
-				directive.focusOnClear = false;
+				fixture.componentRef.instance.focusOnClear = false;
 				jest.spyOn(input, 'focus');
 				const directivePrivate = directive as unknown as ObInputClearDirectivePrivate;
 
@@ -445,7 +452,7 @@ describe('InputClear', () => {
 					FormsModule,
 					MatFormFieldModule,
 					MatInputModule,
-					TranslateModule,
+					TranslatePipe,
 				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
@@ -467,6 +474,7 @@ describe('InputClear', () => {
 	describe('with wrong configuration', () => {
 		let fixture: ComponentFixture<WrongConfigurationTestComponent>;
 		let input: HTMLInputElement;
+		let obConsoleService: ObConsoleService;
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
@@ -477,14 +485,15 @@ describe('InputClear', () => {
 					FormsModule,
 					MatFormFieldModule,
 					MatInputModule,
-					TranslateModule,
+					TranslatePipe,
 				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 
 		beforeEach(() => {
-			jest.spyOn(console, 'warn');
+			obConsoleService = TestBed.inject(ObConsoleService);
+			jest.spyOn(obConsoleService, 'warn');
 			fixture = TestBed.createComponent(WrongConfigurationTestComponent);
 			fixture.detectChanges();
 		});
@@ -502,7 +511,8 @@ describe('InputClear', () => {
 			});
 
 			test('that it writes a warning message in the console', () => {
-				expect(console.warn).toHaveBeenCalledWith(
+				expect(obConsoleService.warn).toHaveBeenCalledWith(
+					'ObInputClearDirective checkControlType()',
 					`${ObInputClearDirective.name}: illegal value for obInputClear Input, please use one of the following: [${AbstractControl.name}, ${HTMLInputElement.name}, ${NgModel.name}].`
 				);
 			});

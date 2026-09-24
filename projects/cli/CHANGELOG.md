@@ -1,3 +1,28 @@
+# [16.0.0](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0) (2026-09-24)
+
+## Bug Fixes
+
+- **new:** add missing quotes around arguments for windows ([6454c8cf](https://github.com/oblique-bit/oblique/commit/6454c8cfb3d42a1f670c3f843155518dd5e467cc), OUI-4687)
+- **new:** bridge `applicationOperator` and `title` to add-oblique schematic ([3dac9208](https://github.com/oblique-bit/oblique/commit/3dac920876b3ec7b2990a0ee28cc656b9e3c1bca))
+- **utils:** dasherize option names for Angular CLI commands ([873a857c](https://github.com/oblique-bit/oblique/commit/873a857ce7f0c5f05f4cafcd62aa2b20761114fd))
+
+## Features
+
+- **cli:** distribute as ESM ([2d500163](https://github.com/oblique-bit/oblique/commit/2d50016344b220fd28c50a19f3d28053fdb817b9), OUI-4500)
+- **cli:** drop the `jest` option from `ob new` ([beccce9b](https://github.com/oblique-bit/oblique/commit/beccce9b8c3443a6959f4028b15efe35035c0134))
+- **cli:** pass `title` and `applicationOperator` to add-oblique schematic ([0e715a4e](https://github.com/oblique-bit/oblique/commit/0e715a4e5cd411f6d401707a5e2ac84c8a457f65), OUI-4562)
+- **cli:** pass locales to toolchain's add-oblique schematic instead of oblique ng-add ([4ba1955a](https://github.com/oblique-bit/oblique/commit/4ba1955a96bba71095991eb865d18596a8dd238a))
+- **cli:** distribute as ESM ([579e37d2](https://github.com/oblique-bit/oblique/commit/579e37d20ea8dbe05706baf0fa302eabe2ed6e5d), OUI-4500)
+- **new:** use toolchain to add npmrc and proxy.conf.json ([d8396b3d](https://github.com/oblique-bit/oblique/commit/d8396b3dcabfc92724c077beaf1d43830f69d9f7), OUI-4525)
+- **new:** call `linting` schematics from `@oblique/toolchain` ([6ebd80d0](https://github.com/oblique-bit/oblique/commit/6ebd80d04bd726dad808244fbbf381d0b04dc9b8), OUI-4058)
+- **new:** run add-oblique schematic during project setup ([7d03e651](https://github.com/oblique-bit/oblique/commit/7d03e6517dd3233335743496ba66b32520279155), OUI-4488)
+- **utils:** change recommended node version to 24 ([67cc9b0e](https://github.com/oblique-bit/oblique/commit/67cc9b0e39ab3a14cfaf6b234f1f396d95644a16), OUI-4646)
+- **utils:** support ng generate execution ([b2c5a372](https://github.com/oblique-bit/oblique/commit/b2c5a3723e26c8a23d8ddbf0abb528291bc73ff2), OUI-4488)
+
+## BREAKING CHANGES
+
+- **cli:** `@oblique/cli` no longer supports CommonJs, use `import` instead of `require()`
+
 # [15.4.4](https://github.com/oblique-bit/oblique/compare/15.4.3...15.4.4) (2026-08-18)
 
 ## Dependencies
@@ -8,7 +33,7 @@
 
 ## Bug Fixes
 
-- **utils:** switch to spawnSync in order to avoid command execution vulnerability ([460c9baf](https://github.com/oblique-bit/oblique/commit/460c9baf2c32e03da521fac42a42605c7f26f210), OUI-4537, CVE-2026-16022)
+- **utils:** prevent code injection in command execution ([460c9baf](https://github.com/oblique-bit/oblique/commit/460c9baf2c32e03da521fac42a42605c7f26f210), OUI-4537, [CVE-2026-16022](https://www.cve.org/CVERecord?id=CVE-2026-16022))
 
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 

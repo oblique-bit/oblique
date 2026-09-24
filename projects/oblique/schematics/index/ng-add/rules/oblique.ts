@@ -1,6 +1,5 @@
 import {Rule, SchematicContext, Tree, chain} from '@angular-devkit/schematics';
-import {angularAppFilesNames, appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
-import {ObIOptionsSchema} from '../ng-add.model';
+import {appModulePath, getTemplate, importModuleInRoot, obliqueCssPath} from '../ng-add-utils';
 import {
 	ObliquePackage,
 	createSafeRule,
@@ -11,47 +10,18 @@ import {
 	readFile,
 	setAngularProjectsConfig,
 } from '../../utils';
-import {addLocales} from './locales';
 
-export function oblique(options: ObIOptionsSchema): Rule {
+export function oblique(): Rule {
 	return (tree: Tree, context: SchematicContext) =>
 		chain([
-			addFavIcon(),
-			embedMasterLayout(options.title, options.applicationOperator),
 			addAdditionalModules(),
 			addFeatureDetection(),
 			addMainCSS(),
 			addLocalAssets(),
 			addObliqueAssets(),
 			addFontFiles(),
-			addLocales(options.locales.split(' ')),
 			raiseBuildBudget(),
 		])(tree, context);
-}
-
-function addFavIcon(): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Oblique: Embedding favicon');
-		getIndexPaths(tree).forEach((indexPath: string) =>
-			overwriteIndexFile(
-				indexPath,
-				tree,
-				'<link rel="icon" type="image/x-icon" href="favicon.ico">',
-				'<link href="assets/images/favicon.png" rel="shortcut icon"/>'
-			)
-		);
-		return tree;
-	});
-}
-
-function embedMasterLayout(title: string, applicationOperator: string): Rule {
-	return createSafeRule((tree: Tree, context: SchematicContext) => {
-		infoMigration(context, 'Oblique: Embedding Master Layout');
-		importModuleInRoot(tree, 'ObMasterLayoutModule', ObliquePackage);
-		addMasterLayout(tree, title, applicationOperator);
-		infoMigration(context, 'MasterLayout integrated.');
-		return tree;
-	});
 }
 
 function addAdditionalModules(): Rule {
@@ -136,27 +106,6 @@ function addFontFiles(): Rule {
 		});
 		return tree;
 	});
-}
-
-function addMasterLayout(tree: Tree, title: string, applicationOperator: string): void {
-	const path = `src/app/${angularAppFilesNames.appTemplate}`;
-	if (tree.exists(path)) {
-		tree.overwrite(
-			path,
-			getTemplate(tree, 'default-master-layout.html')
-				.replace(/_APP_TITLE_PLACEHOLDER_/, title)
-				.replace(/_APPLICATION_OPERATOR_/, applicationOperator)
-		);
-	}
-
-	const appComponentPath = `src/app/${angularAppFilesNames.appComponent}`;
-	if (tree.exists(appComponentPath)) {
-		const appComponentContent = readFile(tree, appComponentPath);
-		const titleRegex = /protected\sreadonly\stitle.*/u;
-		const appRegex = /App\s\{/u;
-		const yearString = 'App {\nreadonly year = signal(new Date().getFullYear());';
-		tree.overwrite(appComponentPath, appComponentContent.replace(titleRegex, '').replace(appRegex, yearString));
-	}
 }
 
 function addComment(tree: Tree): void {

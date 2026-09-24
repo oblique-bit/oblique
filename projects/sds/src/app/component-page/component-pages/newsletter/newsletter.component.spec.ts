@@ -83,7 +83,7 @@ describe(NewsletterComponent.name, () => {
 			},
 		])('with unsubscribe: $unsubscribe', ({unsubscribe, email, successMessage}) => {
 			beforeEach(() => {
-				jest.spyOn(component, 'sendRequest');
+				vi.spyOn(component, 'sendRequest');
 				component.formGroup.controls.email.patchValue('max.muster@bit.admin.ch');
 			});
 

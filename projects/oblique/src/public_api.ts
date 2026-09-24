@@ -2,6 +2,7 @@
  * Public API Surface of oblique
  */
 
+export {ObIAccessibilityStatementConfiguration} from './lib/accessibility-statement/accessibility-statement.model';
 export {
 	ObAuthenticationModule,
 	ObAuthenticationService,
@@ -34,7 +35,6 @@ export {
 	ObMatErrorDirective,
 	ObErrorMessagesDirective,
 	ObErrorMessagesModule,
-	ObErrorMessagesService,
 } from './lib/error-messages/error-messages.module';
 export {
 	ObExternalLinkModule,
@@ -43,7 +43,6 @@ export {
 	ObIExternalLink,
 	ObEExternalLinkIcon,
 } from './lib/external-link/external-link.module';
-export {ObDatepickerModule} from './lib/datepicker/ob-datepicker.module';
 export {
 	ObDropZoneComponent,
 	ObEUploadEventType,
@@ -62,8 +61,8 @@ export {
 	ObIServiceNavigationLink,
 	ObIServiceNavigationContact,
 	ObLoginState,
+	OB_PAMS_CONFIGURATION,
 } from './lib/service-navigation';
-export {ObStepperIntlService} from './lib/stepper/ob-stepper.service';
 export {
 	ObHttpApiInterceptor,
 	ObHttpApiInterceptorConfig,
@@ -72,8 +71,16 @@ export {
 	ObIHttpApiRequestNotification,
 	ObIObliqueHttpErrorResponse,
 } from './lib/http-api-interceptor/index';
-export {ObIconModule, ObIconService, ObIconConfig, ObEIcon} from './lib/icon/icon.module';
-export {ObLanguageModule, ObDatePipe, ObDateComponent, ObDateFormat} from './lib/language/language.module';
+export {ObIconService} from './lib/icon/icon.service';
+export {ObIconConfig, ObEIcon} from './lib/icon/icon.model';
+export {
+	ObLanguageModule,
+	ObDatePipe,
+	ObDateComponent,
+	ObDateFormat,
+	ObTimeFormat,
+} from './lib/language/language.module';
+export {ObLanguageConfig} from './lib/language/language.model';
 export {
 	ObMasterLayoutComponent,
 	ObMasterLayoutComponentService,
@@ -95,6 +102,7 @@ export {
 	ObOutlineDirective,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
 } from './lib/master-layout/master-layout.module';
+export {ObIMaterialConfig, ObPaginatorService, ObDatepickerModule, ObStepperIntlService} from './lib/material';
 export {ObNavTreeComponent, ObNavTreeModule, ObNavTreeItemModel} from './lib/nav-tree/nav-tree.module';
 export {ObNestedFormModule, ObNestedFormComponent, ObParentFormDirective} from './lib/nested-form/nested-form.module';
 export {
@@ -126,15 +134,6 @@ export {
 	ObEToggleType,
 } from './lib/popover/popover.module';
 export {obPauseWhenPageHidden} from './lib/rxjs-operators';
-export {
-	draft07Convert,
-	ObSchemaRequiredDirective,
-	ObSchemaValidateDirective,
-	ObSchemaValidationDirective,
-	ObSchemaValidationModule,
-	ObSchemaValidationService,
-	ObSchemaValidatorInstance,
-} from './lib/schema-validation/schema-validation.module';
 export {ObScrollingModule, ObTopControlComponent} from './lib/scrolling/scrolling.module';
 export {
 	ObSelectableDirective,
@@ -142,6 +141,7 @@ export {
 	ObSelectableGroupDirective,
 } from './lib/selectable/selectable.module';
 export {ObISpinnerEvent, ObSpinnerComponent, ObSpinnerModule, ObSpinnerService} from './lib/spinner/spinner.module';
+export {provideObliqueTranslations, ObITranslationFile} from './lib/translation';
 export {ObInputClearDirective, ObInputClearModule} from './lib/input-clear/input-clear.module';
 export {ObTranslateParamsModule, ObTranslateParamsPipe} from './lib/translate-params/translate-params.module';
 export {ObUnknownRouteModule, ObUnknownRouteComponent} from './lib/unknown-route/unknown-route.module';
@@ -151,24 +151,11 @@ export {
 	ObUnsavedChangesModule,
 	ObUnsavedChangesService,
 } from './lib/unsaved-changes/unsaved-changes.module';
-export {
-	OB_BANNER,
-	OB_PAMS_CONFIGURATION,
-	provideObliqueConfiguration,
-	provideObliqueTestingConfiguration,
-	provideObliqueTranslations,
-	obFocusWithOutline,
-	WINDOW,
-} from './lib/utilities';
-export {
-	ObIBanner,
-	ObTBanner,
-	ObIMaterialConfig,
-	ObIObliqueConfiguration,
-	ObIAccessibilityStatementConfiguration,
-} from './lib/utilities.model';
+export {provideObliqueConfiguration, provideObliqueTestingConfiguration, obFocusWithOutline} from './lib/utilities';
+export {OB_BANNER, ObIBanner, ObTBanner} from './lib/banner';
+export {ObIObliqueConfiguration} from './lib/utilities.model';
+export {WINDOW} from './lib/window/window.provider';
 export {ObEColor} from './lib/style/colors.model';
-export {ObITranslationFile} from './lib/multi-translate-loader/multi-translate-loader.model';
 export {ObGlobalEventsService} from './lib/global-events/global-events.service';
 export {obOutsideFilter} from './lib/global-events/outside-filter';
 export {ObliqueModule} from './lib/oblique.module';
@@ -181,5 +168,5 @@ export {
 	ObIAutocompleteInputOptionGroup,
 	OptionLabelIconPosition,
 } from './lib/autocomplete/autocomplete.module';
-export {ObPaginatorService} from './lib/paginator/ob-paginator.service';
+export {ObLocalizePipe} from './lib/router/ob-localize.pipe';
 export {appVersion} from './lib/version';

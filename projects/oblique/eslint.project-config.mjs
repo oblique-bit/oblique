@@ -23,6 +23,7 @@ export default [
 					style: 'kebab-case',
 				},
 			],
+			'no-console': 'error',
 
 			'@angular-eslint/use-component-view-encapsulation': 'off',
 			'@angular-eslint/use-injectable-provided-in': 'off',
@@ -34,6 +35,7 @@ export default [
 			'@angular-eslint/prefer-output-emitter-ref': 'off',
 			'@angular-eslint/prefer-signals': 'off',
 			'@angular-eslint/prefer-standalone': 'off',
+			'@angular-eslint/no-implicit-take-until-destroyed': 'off',
 			'@typescript-eslint/consistent-type-exports': 'off',
 			'@typescript-eslint/consistent-type-imports': 'off',
 			'@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -50,11 +52,11 @@ export default [
 				{
 					selector: 'objectLiteralProperty',
 					format: ['UPPER_CASE'],
-					filter: '^(?:MAT|STEPPER)|^(?:ABN|TEST|DEV|REF|LOCAL)$',
+					filter: '^(?:MAT|STEPPER|OB)_|^(?:ABN|TEST|DEV|REF|LOCAL)$',
 				},
 				{selector: 'objectLiteralProperty', format: ['UPPER_CASE'], filter: '^(?:LABEL_FORMATTER|HIGHLIGHT|VARIANT)'},
 				{selector: 'objectLiteralMethod', format: null, modifiers: ['requiresQuotes']},
-				{selector: 'typeProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER)'},
+				{selector: 'typeProperty', format: ['UPPER_CASE'], filter: '^(?:MAT|STEPPER|OB)_'},
 				{selector: 'typeAlias', format: ['camelCase'], filter: '^versionFunc$'},
 				{selector: 'parameter', format: ['PascalCase'], filter: '^CookiesMock$'},
 				{selector: 'classProperty', format: ['camelCase', 'UPPER_CASE']},
@@ -79,6 +81,10 @@ export default [
 			'@typescript-eslint/prefer-nullish-coalescing': 'off', // needs strictNullChecks
 			'@typescript-eslint/promise-function-async': 'off',
 			'@typescript-eslint/strict-boolean-expressions': 'off', // needs strictNullChecks
+			'@typescript-eslint/no-non-null-assertion': 'off',
+			'@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+			'@typescript-eslint/no-unnecessary-type-assertion': 'off',
+			'@typescript-eslint/no-useless-default-assignment': 'off', // needs strictNullChecks
 			'accessor-pairs': 'off',
 			'func-names': 'off',
 			'no-duplicate-imports': 'off',
@@ -99,6 +105,12 @@ export default [
 			'@typescript-eslint/no-unused-vars': 'off',
 			'@typescript-eslint/no-empty-function': 'off',
 			'@typescript-eslint/no-unused-private-class-members': 'off',
+		},
+	},
+	{
+		files: ['projects/oblique/src/lib/console/ob-console.*.ts'],
+		rules: {
+			'no-console': ['error', {allow: ['info', 'warn', 'error']}],
 		},
 	},
 	{

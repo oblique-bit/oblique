@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObAlertModule} from '@oblique/oblique';
 
 @Component({
@@ -6,5 +6,6 @@ import {ObAlertModule} from '@oblique/oblique';
 	imports: [ObAlertModule],
 	templateUrl: './alert-example-has-role-alert-preview.component.html',
 	styleUrl: '../../../../code-example-flex-layout.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AlertExampleHasRoleAlertPreviewComponent {}

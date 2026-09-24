@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {
 	type AbstractControl,
 	type NgForm,
@@ -7,7 +7,8 @@ import {
 	type ValidationErrors,
 	type ValidatorFn,
 } from '@angular/forms';
-import {ObNotificationService, ObSchemaValidationService} from '@oblique/oblique';
+import {ObNotificationService} from '@oblique/oblique';
+import {ObSchemaValidationService} from '@oblique/oblique/schema-validation';
 import {of} from 'rxjs';
 
 @Component({
@@ -15,6 +16,7 @@ import {of} from 'rxjs';
 	standalone: false,
 	templateUrl: './schema-validation-sample.component.html',
 	styleUrl: './schema-validation-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class SchemaValidationSampleComponent implements OnInit {
 	text: string;

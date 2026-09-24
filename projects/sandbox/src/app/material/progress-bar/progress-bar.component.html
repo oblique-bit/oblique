@@ -46,13 +46,13 @@
 			<fieldset>
 				<legend>Value</legend>
 				<mat-list-item>
-					<mat-slider [(ngModel)]="value"><input matSliderThumb /></mat-slider>
+					<mat-slider><input matSliderThumb [value]="value" /></mat-slider>
 				</mat-list-item>
 			</fieldset>
 			<fieldset>
 				<legend>Buffer-Value</legend>
 				<mat-list-item>
-					<mat-slider [(ngModel)]="bufferValue"><input matSliderThumb /></mat-slider>
+					<mat-slider><input matSliderThumb [value]="bufferValue" /></mat-slider>
 				</mat-list-item>
 			</fieldset>
 		</mat-list>

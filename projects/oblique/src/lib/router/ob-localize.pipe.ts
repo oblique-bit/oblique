@@ -3,8 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TranslateService} from '@ngx-translate/core';
 import {map, startWith} from 'rxjs/operators';
-import {OB_HAS_LANGUAGE_IN_URL} from '../utilities';
 import type {ObLanguageSegmentRegex} from './router.model';
+import {OB_HAS_LANGUAGE_IN_URL} from '../language/language.provider';
 
 @Pipe({
 	name: 'obLocalize',

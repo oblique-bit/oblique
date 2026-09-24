@@ -1,34 +1,41 @@
-// execSync needs to be mocked before it imported. since any other import statement may also import execSync, the mock
+// spawnSync needs to be mocked before it imported. since any other import statement may also import spawnSync, the mock
 // need to be the first thing in this file
 
-jest.mock('child_process', () => ({
-	execSync: jest.fn(),
+vi.mock('child_process', () => ({
+	spawnSync: vi.fn(),
 }));
 
-import {execSync} from 'child_process';
+import {spawnSync} from 'child_process';
 import {type ObGroupLogger, type ObLogger, obCreateLogger} from '../logger';
 import {obExecWithLogging, obExecWithLoggingOrExit} from './exec-with-logging';
 
 describe('exec-with-logging', () => {
 	let logger: ObLogger;
 	let loggerGroup: ObGroupLogger;
-	let result: string;
+	let result: string | undefined;
 	const command = 'my-command';
 
 	beforeEach(() => {
 		logger = obCreateLogger(true);
 		loggerGroup = logger.group('command');
-		jest.spyOn(loggerGroup, 'step').mockImplementation(() => {});
-		jest.spyOn(loggerGroup, 'logRawOutput').mockImplementation(() => {});
-		jest.spyOn(loggerGroup, 'stepError').mockImplementation(() => {});
-		jest.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
+		vi.spyOn(loggerGroup, 'step').mockImplementation(() => {});
+		vi.spyOn(loggerGroup, 'logRawOutput').mockImplementation(() => {});
+		vi.spyOn(loggerGroup, 'stepError').mockImplementation(() => {});
+		vi.spyOn(process, 'exit').mockImplementation((() => {}) as unknown as (code?: number) => never);
 	});
 
 	describe.each([{cmd: obExecWithLogging}, {cmd: obExecWithLoggingOrExit}])('$cmd.name success', ({cmd}) => {
 		beforeEach(() => {
-			(execSync as jest.Mock).mockReturnValueOnce('hello');
+			(spawnSync as vi.Mock).mockReturnValueOnce({
+				pid: 1,
+				output: [''],
+				stderr: null,
+				signal: null,
+				stdout: 'ok',
+				status: 0,
+			});
 
-			result = cmd(loggerGroup, command);
+			result = cmd({logger: loggerGroup, command});
 		});
 
 		test('logs the step', () => {
@@ -36,11 +43,11 @@ describe('exec-with-logging', () => {
 		});
 
 		test('logs the command output', () => {
-			expect(loggerGroup.logRawOutput).toHaveBeenCalledWith('hello');
+			expect(loggerGroup.logRawOutput).toHaveBeenCalledWith('ok');
 		});
 
 		test('returns the command output', () => {
-			expect(result).toBe('hello');
+			expect(result).toBe('ok');
 		});
 	});
 
@@ -168,14 +175,14 @@ describe('exec-with-logging', () => {
 			},
 		])('with $desc', ({throws, error, exitCode}) => {
 			beforeEach(() => {
-				(execSync as jest.Mock).mockImplementationOnce(() => {
+				(spawnSync as vi.Mock).mockImplementationOnce(() => {
 					throw throws;
 				});
-				result = cmd(loggerGroup, command);
+				result = cmd({logger: loggerGroup, command});
 			});
 
 			afterEach(() => {
-				jest.resetAllMocks();
+				vi.resetAllMocks();
 			});
 
 			test('logs the step', () => {

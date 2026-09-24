@@ -12,6 +12,7 @@ export class ObliqueVersion extends StaticScript {
 	private static getLatestNonPreReleaseVersion(): string {
 		return /^\d+\.\d+.\d+$/u.test(currentVersion)
 			? currentVersion
-			: (/# \[(?<latest>\d+\.\d+.\d+)\]/u.exec(Files.read('../oblique/CHANGELOG.md'))?.groups?.latest ?? '');
+			: (/# \[(?<latest>\d+\.\d+.\d+)\]/u.exec(Files.read(getAbsolutePath('projects/oblique/CHANGELOG.md')))?.groups
+					?.latest ?? '');
 	}
 }

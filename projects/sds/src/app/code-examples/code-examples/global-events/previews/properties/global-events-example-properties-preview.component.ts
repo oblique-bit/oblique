@@ -1,13 +1,15 @@
 import {AsyncPipe} from '@angular/common';
-import {Component, type OnDestroy, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnDestroy, type OnInit, inject} from '@angular/core';
 import {ObGlobalEventsService, WINDOW} from '@oblique/oblique';
 import {type Observable, Subject, map, startWith, takeUntil, tap} from 'rxjs';
+import {NavigationHistory} from './navigation-history';
 
 @Component({
 	selector: 'app-global-events-example-properties-preview',
 	imports: [AsyncPipe],
 	templateUrl: './global-events-example-properties-preview.component.html',
 	styleUrls: ['../global-events-example-preview.component.scss', '../../../../code-example-flex-layout.scss'],
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, OnDestroy {
 	click$: Observable<number>;
@@ -18,6 +20,7 @@ export class GlobalEventsExamplePropertiesPreviewComponent implements OnInit, On
 	scroll$: Observable<number>;
 	resize$: Observable<{height: number; width: number}>;
 	beforeUnload$: Observable<number>;
+	readonly navigationHistory = inject(NavigationHistory);
 	private readonly events = inject(ObGlobalEventsService);
 	private readonly window = inject<Window>(WINDOW);
 	private readonly unsubscribe = new Subject<void>();

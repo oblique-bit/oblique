@@ -1,4 +1,4 @@
-import {Component, type OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, inject} from '@angular/core';
 import {UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
@@ -13,6 +13,7 @@ interface Data {
 	selector: 'sb-table-edit',
 	standalone: false,
 	templateUrl: './table-edit.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TableEditComponent implements OnInit {
 	editForm: UntypedFormGroup;

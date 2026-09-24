@@ -34,7 +34,7 @@
 		'i18n.oblique.accessibility-statement.data.created'
 			| translate
 				: {
-						createdOn: (parameters.createdOn | obDate: 'shortDate'),
+						createdOn: (parameters.createdOn | obDate: 'longDate'),
 						createdOnISO: (parameters.createdOn | date: 'yyyy-MM-dd'),
 				  }
 	"
@@ -45,7 +45,7 @@
 			'i18n.oblique.accessibility-statement.data.reviewed'
 				| translate
 					: {
-							reviewedOn: (parameters.reviewedOn | obDate: 'shortDate'),
+							reviewedOn: (parameters.reviewedOn | obDate: 'longDate'),
 							reviewedOnISO: (parameters.reviewedOn | date: 'yyyy-MM-dd'),
 					  }
 		"

@@ -4,11 +4,12 @@ import obliqueEslintConfig from './projects/oblique/eslint.project-config.mjs';
 import cliEslintConfig from './projects/cli/eslint.project-config.mjs';
 import designSystemEslintConfig from './projects/design-system/eslint.project-config.mjs';
 import sandboxEslintConfig from './projects/sandbox/eslint.project-config.mjs';
+import sandboxE2eEslintConfig from './projects/sandbox-e2e/eslint.project-config.mjs';
 import sandboxSsrEslintConfig from './projects/sandbox-ssr/eslint.project-config.mjs';
 import sdsEslintConfig from './projects/sds/eslint.project-config.mjs';
 import serviceNavigationWebComponentEslintConfig from './projects/service-navigation-web-component/eslint.project-config.mjs';
 import toolchainEslintConfig from './projects/toolchain/eslint.project-config.mjs';
-import eslintConfigOblique from './projects/toolchain/src/linting/eslint-config-oblique.mjs';
+import {eslintConfigOblique} from './projects/toolchain/src/linting/eslint-config-oblique.mjs';
 
 export default defineConfig(
 	{
@@ -39,6 +40,7 @@ export default defineConfig(
 			'@typescript-eslint/no-unnecessary-condition': 'off',
 			'@typescript-eslint/no-unsafe-type-assertion': 'off',
 			'@typescript-eslint/strict-boolean-expressions': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
 			'no-implicit-coercion': 'off',
 			'require-unicode-regexp': 'off',
 		},
@@ -56,6 +58,9 @@ export default defineConfig(
 			'@typescript-eslint/no-dynamic-delete': 'off',
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-unsafe-member-access': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off', //TODO ask René about new rules
+			'@typescript-eslint/no-unsafe-call': 'off', //TODO ask René about new rules
+			'@typescript-eslint/no-useless-default-assignment': 'off', // because setupVitest.ts is imported by a project that disabled strictNullChecks
 			'func-names': 'off',
 		},
 	},
@@ -64,6 +69,7 @@ export default defineConfig(
 	...cliEslintConfig,
 	...designSystemEslintConfig,
 	...sandboxEslintConfig,
+	...sandboxE2eEslintConfig,
 	...sandboxSsrEslintConfig,
 	...sdsEslintConfig,
 	...serviceNavigationWebComponentEslintConfig,

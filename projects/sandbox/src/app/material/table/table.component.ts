@@ -1,4 +1,12 @@
-import {type AfterViewInit, Component, type OnDestroy, type OnInit, inject, viewChild} from '@angular/core';
+import {
+	type AfterViewInit,
+	ChangeDetectionStrategy,
+	Component,
+	type OnDestroy,
+	type OnInit,
+	inject,
+	viewChild,
+} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {type AbstractControl, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
@@ -13,6 +21,7 @@ import {EditMode, Mode, TableManager} from './table-manager';
 	standalone: false,
 	templateUrl: './table.component.html',
 	styleUrl: './table.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 	readonly sort = viewChild(MatSort);

@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {HttpClient, type HttpErrorResponse} from '@angular/common/http';
 import {
 	ObENotificationType,
@@ -18,6 +18,7 @@ let requestId = 0;
 	standalone: false,
 	templateUrl: './http-interceptor-sample.component.html',
 	styleUrl: './http-interceptor-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class HttpInterceptorSampleComponent {
 	static readonly API_URL = 'https://jsonplaceholder.typicode.com';

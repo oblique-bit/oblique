@@ -34,6 +34,9 @@
 		.mat-expansion-panel-header:not([aria-disabled="true"]).cdk-keyboard-focused,
 		.mat-expansion-panel .mat-expansion-panel-header:not([aria-disabled="true"]).cdk-program-focused {
 			background-color: variables.$ob-gray-extra-light;
+			outline: 3px solid variables.$ob-purple-500; // using outline because box-shadow focus is cut off
+			outline-offset: -3px;
+			box-shadow: none;
 		}
 	}
 }

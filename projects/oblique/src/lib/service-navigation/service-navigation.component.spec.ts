@@ -1,9 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
-import {Component} from '@angular/core';
-import {By} from '@angular/platform-browser';
-import {BehaviorSubject, Observable, firstValueFrom, of} from 'rxjs';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationProfileHarness} from './profile/service-navigation-profile.harness';
 import {ObServiceNavigationAuthenticationHarness} from './authentication/service-navigation-authentication.harness';
@@ -20,7 +18,14 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 @Component({
 	standalone: false,
-	template: `<ob-service-navigation>
+	template: `<ob-service-navigation
+		[displayApplications]="displayApplications"
+		[displayInfo]="displayInfo"
+		[displayProfile]="displayProfile"
+		[displayMessage]="displayMessage"
+		[displayAuthentication]="displayAuthentication"
+		[displayLanguages]="displayLanguages"
+	>
 		<ng-template #customWidgetTemplate>
 			<button type="button">first button</button>
 		</ng-template>
@@ -28,38 +33,43 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 			<button type="button">second button</button>
 		</ng-template>
 	</ob-service-navigation>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
-class CustomControlsTestComponent {}
+class CustomControlsTestComponent {
+	displayApplications = true;
+	displayInfo = true;
+	displayProfile = true;
+	displayMessage = true;
+	displayAuthentication = true;
+	displayLanguages = true;
+}
 
 describe('ObServiceNavigationComponent', () => {
 	let component: ObServiceNavigationComponent;
 	let fixture: ComponentFixture<ObServiceNavigationComponent>;
 	let service: ObServiceNavigationService;
 	let harness: ObServiceNavigationHarness;
-	const mockLoginState = new BehaviorSubject<ObLoginState>('SA');
 	const mockServiceNavigationService = {
 		setUpRootUrls: jest.fn(),
-		setReturnUrl: jest.fn(),
-		getLoginUrl$: jest.fn().mockReturnValue(of('loginUrl')),
-		getProfileUrls$: jest.fn().mockReturnValue(of([{url: 'profileUrl', label: 'profile', isInternalLink: true}])),
-		getInboxMailUrl$: jest.fn().mockReturnValue(of('inboxMailUrl')),
-		getUserName$: jest.fn().mockReturnValue(of('John Doe')),
-		getLoginState$: jest.fn().mockReturnValue(mockLoginState.asObservable()),
-		getMessageCount$: jest.fn().mockReturnValue(of(42)),
-		getApplicationsUrl$: jest.fn().mockReturnValue(of('applicationsUrl')),
-		getLastUsedApplications$: jest.fn().mockReturnValue(of([{test: true}])),
-		getFavoriteApplications$: jest.fn().mockReturnValue(of([{test: true}])),
-		getLanguage$: jest.fn().mockReturnValue(of('en')),
-		getInfoBackend$: jest.fn().mockReturnValue(
-			of({
-				description: 'backend description text',
-				helpText: 'backend help text',
-				links: [{url: 'backend url link1', label: 'backend label link1'}],
-				contactText: 'backend contact text',
-				contact: {tel: 'backend phone', email: 'backend email', contactUrl: 'backend contactUrl'},
-			})
-		),
-		getLanguages: jest.fn().mockReturnValue([{code: 'en', label: 'English'}]),
+		connectReturnUrl: jest.fn(),
+		loginUrl: signal('loginUrl'),
+		profileUrls: signal([{url: 'profileUrl', label: 'profile', isInternalLink: true}]),
+		inboxMailUrl: signal('inboxMailUrl'),
+		userName: signal('John Doe'),
+		loginState: signal<ObLoginState>('SA'),
+		messageCount: signal(42),
+		applicationsUrl: signal('applicationsUrl'),
+		lastUsedApplications: signal([{test: true}]),
+		favoriteApplications: signal([{test: true}]),
+		language: signal('en'),
+		infoBackend: signal({
+			description: 'backend description text',
+			helpText: 'backend help text',
+			links: [{url: 'backend url link1', label: 'backend label link1'}],
+			contactText: 'backend contact text',
+			contact: {tel: 'backend phone', email: 'backend email', contactUrl: 'backend contactUrl'},
+		}),
+		languages: signal([{code: 'en', label: 'English'}]),
 		setLanguage: jest.fn(),
 		setPamsAppId: jest.fn(),
 		setFavoriteApplicationsCount: jest.fn(),
@@ -118,12 +128,13 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('rootUrl', () => {
 			it('should be initialized to undefined', () => {
-				expect(component.rootUrl).toBeUndefined();
+				expect(component.rootUrl()).toBeUndefined();
 			});
 
 			describe('with "http://root-url/"', () => {
 				beforeEach(() => {
-					component.rootUrl = 'http://root-url/';
+					fixture.componentRef.setInput('rootUrl', 'http://root-url/');
+					fixture.componentRef.changeDetectorRef.detectChanges();
 					component.ngOnInit();
 				});
 
@@ -139,12 +150,13 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('environment', () => {
 			it('should be initialized to undefined', () => {
-				expect(component.environment).toBeUndefined();
+				expect(component.environment()).toBeUndefined();
 			});
 
 			describe('with "ObEPamsEnvironment.TEST"', () => {
 				beforeEach(() => {
-					component.environment = ObEPamsEnvironment.TEST;
+					fixture.componentRef.setInput('environment', ObEPamsEnvironment.TEST);
+					fixture.componentRef.changeDetectorRef.detectChanges();
 					component.ngOnInit();
 				});
 
@@ -160,52 +172,50 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('returnUrl', () => {
 			it('should be initialized to undefined', () => {
-				expect(component.returnUrl).toBeUndefined();
+				expect(component.returnUrl()).toBeUndefined();
 			});
 
 			describe('with "http://localhost/"', () => {
 				beforeEach(() => {
-					component.returnUrl = 'http://localhost/';
+					fixture.componentRef.setInput('returnUrl', 'http://localhost/');
+					fixture.componentRef.changeDetectorRef.detectChanges();
 				});
 
-				it('should call "setReturnUrl" once', () => {
-					expect(service.setReturnUrl).toHaveBeenCalledTimes(1);
-				});
-
-				it('should call "setReturnUrl" with "http://localhost"', () => {
-					expect(service.setReturnUrl).toHaveBeenCalledWith('http://localhost/');
+				it('should call "connectReturnUrl" with the returnUrl signal', () => {
+					expect(service.connectReturnUrl).toHaveBeenCalledWith(component.returnUrl);
 				});
 			});
 		});
 
 		describe('profileLinks', () => {
 			it('should be initialized to an empty array', () => {
-				expect(component.profileLinks).toEqual([]);
+				expect(component.profileLinks()).toEqual([]);
 			});
 		});
 
 		describe('infoLinks', () => {
 			it('should be initialized to an empty array', () => {
-				expect(component.infoLinks).toEqual([]);
+				expect(component.infoLinks()).toEqual([]);
 			});
 		});
 
 		describe('useInfoBackend', () => {
 			it('should be initialized to false', () => {
-				expect(component.useInfoBackend).toEqual(false);
+				expect(component.useInfoBackend()).toEqual(false);
 			});
 		});
 
 		describe('infoContact', () => {
 			it('should be initialized to undefined', () => {
-				expect(component.infoContact).toBeUndefined();
+				expect(component.infoContact()).toBeUndefined();
 			});
 		});
 
 		describe('eportalLanguageSynchronization setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = true;
-				component.eportalLanguageSynchronization = expectedResult;
+				fixture.componentRef.setInput('eportalLanguageSynchronization', expectedResult);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				expect(mockServiceNavigationService.setEportalLanguageSynchronization).toHaveBeenCalledWith(expectedResult);
 			});
 		});
@@ -213,7 +223,8 @@ describe('ObServiceNavigationComponent', () => {
 		describe('handleLogout setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = false;
-				component.handleLogout = expectedResult;
+				fixture.componentRef.setInput('handleLogout', expectedResult);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				expect(mockServiceNavigationService.setHandleLogout).toHaveBeenCalledWith(expectedResult);
 			});
 		});
@@ -221,7 +232,8 @@ describe('ObServiceNavigationComponent', () => {
 		describe('setPamsAppId setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = 'randomAppId';
-				component.pamsAppId = expectedResult;
+				fixture.componentRef.setInput('pamsAppId', expectedResult);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				component.ngOnInit();
 				expect(mockServiceNavigationService.setPamsAppId).toHaveBeenCalledWith(expectedResult);
 			});
@@ -230,7 +242,8 @@ describe('ObServiceNavigationComponent', () => {
 		describe('setFavoriteApplicationsCount setter', () => {
 			it('should set the value correctly ', () => {
 				const expectedResult = 7;
-				component.maxFavoriteApplications = expectedResult;
+				fixture.componentRef.setInput('maxFavoriteApplications', expectedResult);
+				fixture.componentRef.changeDetectorRef.detectChanges();
 				component.ngOnInit();
 				expect(mockServiceNavigationService.setFavoriteApplicationsCount).toHaveBeenCalledWith(expectedResult);
 			});
@@ -238,80 +251,82 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('maxFavoriteApplications', () => {
 			it('should be initialized to 8', () => {
-				expect(component.maxFavoriteApplications).toBe(8);
+				expect(component.maxFavoriteApplications()).toBe(8);
 			});
 		});
 
-		describe.each(['loginState', 'loginState$'])('%s', property => {
-			it('should be an Observable', () => {
-				expect(component[property] instanceof Observable).toBe(true);
+		describe('loginState', () => {
+			it('should be a signal', () => {
+				// eslint-disable-next-line @angular-eslint/no-uncalled-signals -- checking the signal reference type
+				expect(typeof component.loginState).toBe('function');
 			});
 
-			it('should call "ObServiceNavigationUrlsService.getLoginState$" twice', () => {
-				expect(service.getLoginState$).toHaveBeenCalledTimes(2);
+			it(`should receive "SA"`, () => {
+				expect(component.loginState()).toEqual('SA');
+			});
+		});
+
+		describe('loginStateChange', () => {
+			it('should be an output', () => {
+				expect(typeof component.loginStateChange.subscribe).toBe('function');
 			});
 
-			it('should call "ObServiceNavigationUrlsService.getLoginState$" without parameters', () => {
-				expect(service.getLoginState$).toHaveBeenCalledWith();
+			it(`should emit "SA"`, () => {
+				const emitted: ObLoginState[] = [];
+				component.loginStateChange.subscribe(value => emitted.push(value));
+				expect(emitted).toEqual(['SA']);
 			});
 
-			it(`should receive "SA"`, async () => {
-				await expect(firstValueFrom(component[property])).resolves.toEqual('SA');
+			it('should emit undefined when loginState is undefined', () => {
+				const emitted: (ObLoginState | undefined)[] = [];
+				component.loginStateChange.subscribe(value => emitted.push(value));
+				mockServiceNavigationService.loginState.set(undefined as unknown as ObLoginState);
+				TestBed.flushEffects();
+				expect(emitted).toEqual(['SA', undefined]);
 			});
 		});
 
 		describe.each([
-			{property: 'loginUrl$', method: 'getLoginUrl$', emit: 'loginUrl'},
+			{property: 'loginUrl', emit: 'loginUrl'},
 			{
-				property: 'profileUrls$',
-				method: 'getProfileUrls$',
+				property: 'profileUrls',
 				emit: [{url: 'profileUrl', label: 'profile', isInternalLink: true}],
 			},
-			{property: 'userName$', method: 'getUserName$', emit: 'John Doe'},
-			{property: 'inboxMailUrl$', method: 'getInboxMailUrl$', emit: 'inboxMailUrl'},
-			{property: 'messageCount$', method: 'getMessageCount$', emit: 42},
-			{property: 'applicationsUrl$', method: 'getApplicationsUrl$', emit: 'applicationsUrl'},
-			{property: 'lastUsedApplications$', method: 'getLastUsedApplications$', emit: [{test: true}]},
-			{property: 'favoriteApplications$', method: 'getFavoriteApplications$', emit: [{test: true}]},
-		])('$method', ({property, method, emit}) => {
-			it('should be an observable', () => {
-				expect(component[property] instanceof Observable).toBe(true);
+			{property: 'userName', emit: 'John Doe'},
+			{property: 'inboxMailUrl', emit: 'inboxMailUrl'},
+			{property: 'messageCount', emit: 42},
+			{property: 'applicationsUrl', emit: 'applicationsUrl'},
+			{property: 'lastUsedApplications', emit: [{test: true}]},
+			{property: 'favoriteApplications', emit: [{test: true}]},
+		])('$property', ({property, emit}) => {
+			it('should be a signal', () => {
+				expect(typeof component[property]).toBe('function');
 			});
 
-			it(`should call "ObServiceNavigationUrlsService.${method}" once`, () => {
-				expect(service[method]).toHaveBeenCalledTimes(1);
-			});
-
-			it(`should call "ObServiceNavigationUrlsService.${method}" without parameters`, () => {
-				expect(service[method]).toHaveBeenCalledWith();
-			});
-
-			it(`should receive "${JSON.stringify(emit)}"`, async () => {
-				await expect(firstValueFrom(component[property])).resolves.toEqual(emit);
+			it(`should receive "${JSON.stringify(emit)}"`, () => {
+				expect(component[property]()).toEqual(emit);
 			});
 		});
 
-		describe('language$', () => {
-			it('should be an observable', () => {
-				expect(component.language$ instanceof Observable).toBe(true);
+		describe('language', () => {
+			it('should be a signal', () => {
+				// eslint-disable-next-line @angular-eslint/no-uncalled-signals -- checking the signal reference type
+				expect(typeof component.language).toBe('function');
 			});
 
-			it('should call "ObServiceNavigationStateService.getLanguage$"', () => {
-				expect(service.getLanguage$).toHaveBeenCalled();
-			});
-
-			it(`should receive "en"`, async () => {
-				await expect(firstValueFrom(component.language$)).resolves.toBe('en');
+			it(`should receive "en"`, () => {
+				expect(component.language()).toBe('en');
 			});
 		});
 
 		describe('languages', () => {
-			it('should call "ObServiceNavigationStateService.getLanguages" once', () => {
-				expect(service.getLanguages).toHaveBeenCalledTimes(1);
+			it('should be a signal', () => {
+				// eslint-disable-next-line @angular-eslint/no-uncalled-signals -- checking the signal reference type
+				expect(typeof component.languages).toBe('function');
 			});
 
 			it('should receive formatted languages', () => {
-				expect(component.languages).toEqual([{code: 'en', label: 'English'}]);
+				expect(component.languages()).toEqual([{code: 'en', label: 'English'}]);
 			});
 		});
 
@@ -351,13 +366,13 @@ describe('ObServiceNavigationComponent', () => {
 				{property: 'displayLanguages', value: true},
 			])('$property', ({property, value}) => {
 				it(`should be initialized to "${value}"`, () => {
-					expect(component[property]).toEqual(value);
+					expect(component[property]()).toEqual(value);
 				});
 			});
 
 			describe.each([
 				{loginState: 'SA', widgets: [selectors.info, selectors.applications, selectors.auth]},
-				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.profile, selectors.auth]},
+				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.auth]},
 				{loginState: 'S2OK', widgets: allWidgets},
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},
@@ -365,13 +380,13 @@ describe('ObServiceNavigationComponent', () => {
 			])('loginState "$loginState" and all widgets', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
-					component.displayMessage = true;
-					component.displayProfile = true;
-					component.displayInfo = true;
-					component.displayApplications = true;
-					component.displayAuthentication = true;
-					component.displayLanguages = true;
-					mockLoginState.next(loginState as ObLoginState);
+					fixture.componentRef.setInput('displayMessage', true);
+					fixture.componentRef.setInput('displayProfile', true);
+					fixture.componentRef.setInput('displayInfo', true);
+					fixture.componentRef.setInput('displayApplications', true);
+					fixture.componentRef.setInput('displayAuthentication', true);
+					fixture.componentRef.setInput('displayLanguages', true);
+					mockServiceNavigationService.loginState.set(loginState as ObLoginState);
 					fixture.detectChanges();
 					children = await harness.getListItemElements();
 				});
@@ -407,10 +422,7 @@ describe('ObServiceNavigationComponent', () => {
 
 			describe.each([
 				{loginState: 'SA', widgets: ['button', 'button', selectors.info, selectors.applications, selectors.auth]},
-				{
-					loginState: 'S1',
-					widgets: ['button', 'button', selectors.info, selectors.applications, selectors.profile, selectors.auth],
-				},
+				{loginState: 'S1', widgets: ['button', 'button', selectors.info, selectors.applications, selectors.auth]},
 				{loginState: 'S2OK', widgets: allWidgets},
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},
@@ -418,16 +430,7 @@ describe('ObServiceNavigationComponent', () => {
 			])('loginState "$loginState" and all widgets', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
-					const customComponent = customControlFixture.debugElement.query(
-						By.directive(ObServiceNavigationComponent)
-					).componentInstance;
-					customComponent.displayApplications = true;
-					customComponent.displayInfo = true;
-					customComponent.displayProfile = true;
-					customComponent.displayMessage = true;
-					customComponent.displayAuthentication = true;
-					customComponent.displayLanguages = true;
-					mockLoginState.next(loginState as ObLoginState);
+					mockServiceNavigationService.loginState.set(loginState as ObLoginState);
 					fixture.detectChanges();
 					children = await harness.getListItemElements();
 				});
@@ -487,8 +490,8 @@ describe('ObServiceNavigationComponent', () => {
 				let infoElement: TestElement;
 
 				beforeEach(async () => {
-					component.useInfoBackend = true;
-					component.displayInfo = true;
+					fixture.componentRef.setInput('useInfoBackend', true);
+					fixture.componentRef.setInput('displayInfo', true);
 					fixture.componentRef.changeDetectorRef.detectChanges();
 					infoElement = await harness.getInfoElement();
 				});
@@ -506,7 +509,7 @@ describe('ObServiceNavigationComponent', () => {
 						input: 'contact',
 					},
 				])(
-					'should add infoBackend$.$input to ob-service-navigation-info $input input',
+					'should add infoBackend.$input to ob-service-navigation-info $input input',
 					async ({input, inputExpectedResult}) => {
 						const expectedResult = inputExpectedResult;
 						const property = await infoElement.getProperty(input);
@@ -520,13 +523,17 @@ describe('ObServiceNavigationComponent', () => {
 				let infoElement: TestElement;
 
 				beforeEach(async () => {
-					component.useInfoBackend = false;
-					component.displayInfo = true;
-					component.infoDescription = 'input description text';
-					component.infoContactText = 'input contact text';
-					component.infoHelpText = 'input help text';
-					component.infoLinks = [{url: 'input url link1', label: 'input label link1'}];
-					component.infoContact = {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'};
+					fixture.componentRef.setInput('useInfoBackend', false);
+					fixture.componentRef.setInput('displayInfo', true);
+					fixture.componentRef.setInput('infoDescription', 'input description text');
+					fixture.componentRef.setInput('infoContactText', 'input contact text');
+					fixture.componentRef.setInput('infoHelpText', 'input help text');
+					fixture.componentRef.setInput('infoLinks', [{url: 'input url link1', label: 'input label link1'}]);
+					fixture.componentRef.setInput('infoContact', {
+						formUrl: 'input contactUrl',
+						email: 'input email',
+						phone: 'input phone',
+					});
 					fixture.componentRef.changeDetectorRef.detectChanges();
 					infoElement = await harness.getInfoElement();
 				});
@@ -544,7 +551,7 @@ describe('ObServiceNavigationComponent', () => {
 						input: 'contact',
 					},
 				])(
-					'should add infoBackend$.$input to ob-service-navigation-info $input input',
+					'should add infoBackend.$input to ob-service-navigation-info $input input',
 					async ({input, inputExpectedResult}) => {
 						const expectedResult = inputExpectedResult;
 						const property = await infoElement.getProperty(input);
@@ -553,12 +560,66 @@ describe('ObServiceNavigationComponent', () => {
 					}
 				);
 			});
+
+			describe('when the backend has not loaded yet', () => {
+				beforeEach(() => {
+					mockServiceNavigationService.infoBackend.set({});
+					fixture.componentRef.setInput('useInfoBackend', true);
+					fixture.componentRef.setInput('infoDescription', 'input description text');
+					fixture.componentRef.setInput('infoContactText', 'input contact text');
+					fixture.componentRef.setInput('infoHelpText', 'input help text');
+					fixture.componentRef.setInput('infoLinks', [{url: 'input url link1', label: 'input label link1'}]);
+					fixture.componentRef.setInput('infoContact', {
+						formUrl: 'input contactUrl',
+						email: 'input email',
+						phone: 'input phone',
+					});
+					fixture.componentRef.changeDetectorRef.detectChanges();
+				});
+
+				it('should fall back to the configured inputs for every field', () => {
+					expect(component.effectiveInfo()).toEqual({
+						description: 'input description text',
+						contactText: 'input contact text',
+						helpText: 'input help text',
+						links: [{url: 'input url link1', label: 'input label link1'}],
+						contact: {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'},
+					});
+				});
+			});
+
+			describe('when the backend is partially loaded', () => {
+				beforeEach(() => {
+					mockServiceNavigationService.infoBackend.set({description: 'backend description text'});
+					fixture.componentRef.setInput('useInfoBackend', true);
+					fixture.componentRef.setInput('infoDescription', 'input description text');
+					fixture.componentRef.setInput('infoContactText', 'input contact text');
+					fixture.componentRef.setInput('infoHelpText', 'input help text');
+					fixture.componentRef.setInput('infoLinks', [{url: 'input url link1', label: 'input label link1'}]);
+					fixture.componentRef.setInput('infoContact', {
+						formUrl: 'input contactUrl',
+						email: 'input email',
+						phone: 'input phone',
+					});
+					fixture.componentRef.changeDetectorRef.detectChanges();
+				});
+
+				it('should use the backend field where defined and fall back to the input otherwise', () => {
+					expect(component.effectiveInfo()).toEqual({
+						description: 'backend description text',
+						contactText: 'input contact text',
+						helpText: 'input help text',
+						links: [{url: 'input url link1', label: 'input label link1'}],
+						contact: {formUrl: 'input contactUrl', email: 'input email', phone: 'input phone'},
+					});
+				});
+			});
 		});
 	});
 
 	describe('with two languages', () => {
 		beforeEach(() => {
-			mockServiceNavigationService.getLanguages = jest.fn().mockReturnValue([
+			mockServiceNavigationService.languages.set([
 				{code: 'en', label: ''},
 				{code: 'fr', label: ''},
 			]);
@@ -601,10 +662,7 @@ describe('ObServiceNavigationComponent', () => {
 
 			describe.each([
 				{loginState: 'SA', widgets: [selectors.info, selectors.applications, selectors.auth, selectors.languages]},
-				{
-					loginState: 'S1',
-					widgets: [selectors.info, selectors.applications, selectors.profile, selectors.auth, selectors.languages],
-				},
+				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.auth, selectors.languages]},
 				{loginState: 'S2OK', widgets: allWidgets},
 				{loginState: 'S2+OK', widgets: allWidgets},
 				{loginState: 'S3OK', widgets: allWidgets},
@@ -612,13 +670,13 @@ describe('ObServiceNavigationComponent', () => {
 			])('loginState "$loginState"', ({loginState, widgets}) => {
 				let children: TestElement[];
 				beforeEach(async () => {
-					component.displayApplications = true;
-					component.displayInfo = true;
-					component.displayProfile = true;
-					component.displayMessage = true;
-					component.displayAuthentication = true;
-					component.displayLanguages = true;
-					mockLoginState.next(loginState as ObLoginState);
+					fixture.componentRef.setInput('displayApplications', true);
+					fixture.componentRef.setInput('displayInfo', true);
+					fixture.componentRef.setInput('displayProfile', true);
+					fixture.componentRef.setInput('displayMessage', true);
+					fixture.componentRef.setInput('displayAuthentication', true);
+					fixture.componentRef.setInput('displayLanguages', true);
+					mockServiceNavigationService.loginState.set(loginState as ObLoginState);
 					fixture.detectChanges();
 					children = await harness.getListItemElements();
 				});

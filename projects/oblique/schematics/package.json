@@ -1,6 +1,7 @@
 {
   "name": "@oblique/schematics",
   "version": "",
+  "type": "commonjs",
   "description": "Oblique schematics",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",

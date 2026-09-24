@@ -11,8 +11,8 @@
 		<br />
 		Selected values:
 		<ul>
-			@for (item of group.selected$ | async; track item.value) {
-				<li>{{ item.value }}</li>
+			@for (item of group.selected(); track item.value) {
+				<li>{{ item.value() }}</li>
 			}
 		</ul>
 	</section>

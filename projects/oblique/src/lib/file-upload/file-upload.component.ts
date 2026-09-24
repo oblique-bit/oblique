@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, input, output, signal} from '@angular/core';
 import {ObEUploadEventType, ObIUploadEvent} from './file-upload.model';
 import {ObProgressComponent} from './progress/progress.component';
 import {ObDropZoneComponent} from './drop-zone/ob-drop-zone.component';
@@ -11,25 +11,25 @@ import {ObDropZoneComponent} from './drop-zone/ob-drop-zone.component';
 	exportAs: 'obFileUpload',
 })
 export class ObFileUploadComponent {
-	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
-	@Input() accept = ['*'];
-	@Input() singleRequest = true;
-	@Input() maxFileSize = 5;
-	@Input() maxFileAmount = 0;
-	@Input() multiple = true;
-	@Input() uploadUrl: string;
-	@Input() cancelConfirmation = true;
-	showLoadingBox = false;
-	files: File[];
+	readonly uploadEvent = output<ObIUploadEvent>();
+	readonly accept = input(['*']);
+	readonly singleRequest = input(true);
+	readonly maxFileSize = input(5);
+	readonly maxFileAmount = input(0);
+	readonly multiple = input(true);
+	readonly uploadUrl = input<string>(undefined);
+	readonly cancelConfirmation = input(true);
+	readonly showLoadingBox = signal(false);
+	readonly files = signal<File[] | undefined>(undefined);
 
 	processEvent(event: ObIUploadEvent): void {
 		this.uploadEvent.emit(event);
 		if (event.type === ObEUploadEventType.UPLOADED || event.type === ObEUploadEventType.CANCELED) {
-			this.showLoadingBox = false;
-			this.files = undefined;
-		} else if (event.type === ObEUploadEventType.CHOSEN && this.uploadUrl) {
-			this.showLoadingBox = true;
-			this.files = event.files as File[];
+			this.showLoadingBox.set(false);
+			this.files.set(undefined);
+		} else if (event.type === ObEUploadEventType.CHOSEN && this.uploadUrl()) {
+			this.showLoadingBox.set(true);
+			this.files.set(event.files as File[]);
 		}
 	}
 }

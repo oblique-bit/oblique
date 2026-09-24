@@ -5,7 +5,7 @@ import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 import {ObExternalLinkModule} from '../external-link/external-link.module';
 import {ObNotificationModule} from '../notification/notification.module';
 import {ObSpinnerModule} from '../spinner/spinner.module';
@@ -20,7 +20,6 @@ import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation/
 import {ObMasterLayoutNavigationToggleDirective} from './master-layout-navigation/master-layout-navigation-toggle.directive';
 import {ObOutlineDirective} from './outline.directive';
 import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
-import {ObIconModule} from '../icon/icon.module';
 import {ObButtonModule} from '../button/button.module';
 import {ObServiceNavigationModule} from '../service-navigation/service-navigation.module';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation/master-layout-navigation-menu.directive';
@@ -58,7 +57,6 @@ export {ObOutlineDirective} from './outline.directive';
 		NgOptimizedImage,
 		ObButtonModule,
 		ObExternalLinkModule,
-		ObIconModule,
 		ObMasterLayoutNavigationGoToChildrenComponent,
 		ObNotificationModule,
 		ObOffCanvasModule,
@@ -67,7 +65,7 @@ export {ObOutlineDirective} from './outline.directive';
 		ObSpinnerModule,
 		RouterModule,
 		ScrollingModule,
-		TranslateModule,
+		TranslatePipe,
 		ObLocalizePipe,
 	],
 	declarations: [

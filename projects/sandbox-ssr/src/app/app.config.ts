@@ -2,9 +2,9 @@ import type {ApplicationConfig} from '@angular/core';
 import {provideRouter} from '@angular/router';
 
 import {routes} from './app.routes';
-import {provideClientHydration} from '@angular/platform-browser';
+import {provideClientHydration, withNoIncrementalHydration} from '@angular/platform-browser';
 import {provideTranslateService} from '@ngx-translate/core';
-import {provideHttpClient, withFetch} from '@angular/common/http';
+import {provideHttpClient} from '@angular/common/http';
 /**
  * Since Sandbox-SSR enforces stricter TypeScript rules than the Oblique library, it cannot import anything directly
  * from Oblique without causing numerous transpilation errors. Sandbox-SSR would apply its strict type checking to
@@ -16,8 +16,8 @@ import {multiTranslateLoader} from './shared/multi-translate-loader/multi-transl
 export const appConfig: ApplicationConfig = {
 	providers: [
 		provideRouter(routes),
-		provideHttpClient(withFetch()),
+		provideHttpClient(),
 		provideTranslateService(multiTranslateLoader()),
-		provideClientHydration(),
+		provideClientHydration(withNoIncrementalHydration()),
 	],
 };

@@ -54,11 +54,11 @@ $triangle-pointing-border-width: 6px;
 	-webkit-box-pack: justify;
 	justify-content: space-between;
 	padding: 0 20px;
-	margin-bottom: 4px;
+	margin-top: 8px;
 	font-weight: 900;
 	font-size: 0.9rem;
 	min-height: 20px;
-	letter-spacing: 0.35em;
+	letter-spacing: 0.04em;
 	text-transform: uppercase;
 
 	&:not(:first-child) {
@@ -67,6 +67,7 @@ $triangle-pointing-border-width: 6px;
 }
 
 button {
+	column-gap: 4px;
 	background: transparent;
 	border: none;
 	box-sizing: content-box;
@@ -74,7 +75,7 @@ button {
 	position: relative;
 	text-align: left;
 	font: inherit;
-	font-weight: 1000;
+	font-weight: 700;
 	color: inherit;
 	letter-spacing: inherit;
 	text-transform: inherit;

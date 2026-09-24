@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {
 	MatAccordion,
 	MatExpansionPanel,
@@ -17,5 +17,6 @@ import {
 		MatExpansionPanelTitle,
 	],
 	templateUrl: './expansion-panel-example-toggle-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExpansionPanelExampleTogglePreviewComponent {}

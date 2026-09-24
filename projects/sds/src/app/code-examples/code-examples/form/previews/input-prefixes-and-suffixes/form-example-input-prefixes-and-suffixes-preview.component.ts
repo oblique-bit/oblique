@@ -1,5 +1,5 @@
 import {FormsModule} from '@angular/forms';
-import {type AfterViewInit, ChangeDetectorRef, Component, inject} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject} from '@angular/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
@@ -10,6 +10,7 @@ import {ObErrorMessagesModule} from '@oblique/oblique';
 	imports: [FormsModule, MatFormFieldModule, MatIconModule, MatInputModule, ObErrorMessagesModule],
 	templateUrl: './form-example-input-prefixes-and-suffixes-preview.component.html',
 	styleUrl: './form-example-input-prefixes-and-suffixes-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FormExampleInputPrefixesAndSuffixesPreviewComponent implements AfterViewInit {
 	/* The whole content of this class is simply a workaround for https://github.com/angular/components/issues/26428. This is an Angular bug

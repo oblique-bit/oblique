@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {Subject} from 'rxjs';
@@ -8,6 +8,7 @@ import {ObAriaMenuButtonDirective} from './aria-menu-button.directive';
 @Component({
 	standalone: false,
 	template: `<div obAriaMenuButton="test"></div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 
@@ -66,7 +67,7 @@ describe(ObAriaMenuButtonDirective.name, () => {
 		});
 
 		it('should have a target property', () => {
-			expect(directive.target).toBe('test');
+			expect(directive.target()).toBe('test');
 		});
 
 		it('should have an active property', () => {

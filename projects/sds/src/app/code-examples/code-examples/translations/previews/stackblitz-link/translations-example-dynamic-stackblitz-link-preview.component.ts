@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 import {MatButtonModule} from '@angular/material/button';
 
@@ -7,5 +7,6 @@ import {MatButtonModule} from '@angular/material/button';
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
 	templateUrl: './translations-example-dynamic-stackblitz-link-preview.component.html',
 	styleUrl: '../../../../stackblitz-link.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TranslationsExampleDynamicStackblitzLinkPreviewComponent {}

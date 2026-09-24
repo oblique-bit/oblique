@@ -1,5 +1,5 @@
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {ReactiveFormsModule, UntypedFormBuilder, type UntypedFormGroup, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -7,7 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatStepperModule} from '@angular/material/stepper';
 import {ObButtonModule} from '@oblique/oblique';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-stepper-example-error-preview',
@@ -19,7 +19,7 @@ import {TranslateModule} from '@ngx-translate/core';
 		MatStepperModule,
 		ObButtonModule,
 		ReactiveFormsModule,
-		TranslateModule,
+		TranslatePipe,
 	],
 	templateUrl: './stepper-example-error-preview.component.html',
 	providers: [
@@ -28,6 +28,7 @@ import {TranslateModule} from '@ngx-translate/core';
 			useValue: {showError: true},
 		},
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class StepperExampleErrorPreviewComponent {
 	firstFormGroup: UntypedFormGroup;

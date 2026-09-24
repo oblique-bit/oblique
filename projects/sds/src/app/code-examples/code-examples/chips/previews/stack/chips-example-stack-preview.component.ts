@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatChipsModule} from '@angular/material/chips';
 
 export interface ChipColor {
@@ -11,6 +11,7 @@ export interface ChipColor {
 	imports: [MatChipsModule],
 	templateUrl: './chips-example-stack-preview.component.html',
 	styleUrl: './chips-example-stack-preview.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ChipsExampleStackPreviewComponent {
 	availableColors: ChipColor[] = [

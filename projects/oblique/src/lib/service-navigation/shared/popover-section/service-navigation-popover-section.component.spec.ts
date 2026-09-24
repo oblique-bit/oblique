@@ -3,17 +3,18 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconModule} from '@angular/material/icon';
 import {MatIconHarness} from '@angular/material/icon/testing';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
 import {ObMockTranslatePipe} from './../../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationPopOverSectionHarness} from './service-navigation-popover-section.harness';
 import {ObServiceNavigationPopoverSectionComponent} from './service-navigation-popover-section.component';
-import {WINDOW} from '../../../utilities';
+import {WINDOW} from '../../../window/window.provider';
 import {ObIsCurrentUrlPipe} from './is-current-url.pipe';
 
 @Component({
 	standalone: false,
 	template: '',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 
@@ -59,7 +60,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 			});
 
 			it('should contain the header attribute', async () => {
-				component.header = 'Section title';
+				fixture.componentRef.setInput('header', 'Section title');
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				expect(await header.text()).toBe('Section title');
 			});
@@ -82,7 +83,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 
 		describe('text', () => {
 			it('should be initialized to an empty string', () => {
-				expect(component.text).toBe('');
+				expect(component.text()).toBe('');
 			});
 
 			describe('without value', () => {
@@ -94,7 +95,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 			describe('with a value', () => {
 				let paragraph: TestElement;
 				beforeEach(async () => {
-					component.text = 'Section text';
+					fixture.componentRef.setInput('text', 'Section text');
 					fixture.componentRef.changeDetectorRef.detectChanges();
 					paragraph = await harness.getParagraph();
 				});
@@ -130,7 +131,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 				];
 				let links: TestElement[];
 				beforeEach(async () => {
-					component.links = sampleLinks;
+					fixture.componentRef.setInput('links', sampleLinks);
 					fixture.componentRef.changeDetectorRef.detectChanges();
 					list = await harness.getLinkList();
 					links = await harness.getLinks();
@@ -154,11 +155,11 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 						link = links[index];
 					});
 
-					it(`should have "${sampleLinks[index].label as string}" as content`, async () => {
+					it(`should have "${sampleLinks[index].label}" as content`, async () => {
 						expect(await link.text()).toBe(sampleLinks[index].label);
 					});
 
-					it(`should have "${sampleLinks[index].url as string}" as href attribute`, async () => {
+					it(`should have "${sampleLinks[index].url}" as href attribute`, async () => {
 						expect(await link.getAttribute('href')).toBe(sampleLinks[index].url);
 					});
 
@@ -166,7 +167,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 						expect(await link.getProperty('isExternalLink')).toBe(!sampleLinks[index].isInternalLink);
 					});
 
-					it(`should have "${(sampleLinks[index].ariaLabel?.text as string) ?? null}" as aria-label attribute`, async () => {
+					it(`should have "${sampleLinks[index].ariaLabel?.text! ?? null}" as aria-label attribute`, async () => {
 						expect(await link.getAttribute('aria-label')).toBe(sampleLinks[index].ariaLabel?.text ?? null);
 					});
 

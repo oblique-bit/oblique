@@ -2,5 +2,6 @@ import {ComponentPageComponent} from './component-page.component';
 
 export default [
 	{path: 'newsletter', component: ComponentPageComponent},
+	{path: 'ob-accessibility-statement', component: ComponentPageComponent},
 	{path: '**', redirectTo: '../invalid'},
 ];

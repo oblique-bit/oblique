@@ -2,6 +2,7 @@
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "node",
     "rootDir": "src/",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,

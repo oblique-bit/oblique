@@ -1,6 +1,7 @@
 import path from 'path';
 import {Files} from './files';
 import {fatal} from './utils';
+import {fileURLToPath} from 'node:url';
 
 function isRootFileSystem(dir: string): boolean {
 	return path.resolve(dir, '..') === dir;
@@ -18,7 +19,8 @@ function isRootFileSystem(dir: string): boolean {
  * @returns The absolute path of the Oblique's project root.
  */
 export function findObliqueRootPath(dirname?: string): string {
-	const workingDir = dirname ?? __dirname;
+	const filename = fileURLToPath(import.meta.url);
+	const workingDir = dirname ?? path.dirname(filename);
 
 	// This should never happen...
 	if (isRootFileSystem(workingDir)) {

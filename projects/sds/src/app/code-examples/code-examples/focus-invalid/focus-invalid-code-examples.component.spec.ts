@@ -1,6 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe, provideTranslateService} from '@ngx-translate/core';
 import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {FocusInvalidCodeExamplesComponent} from './focus-invalid-code-examples.component';
 import {provideNativeDateAdapter} from '@angular/material/core';
@@ -11,8 +11,8 @@ describe(FocusInvalidCodeExamplesComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [FocusInvalidCodeExamplesComponent, TranslateModule.forRoot()],
-			providers: [provideNativeDateAdapter()],
+			imports: [FocusInvalidCodeExamplesComponent, TranslatePipe],
+			providers: [provideNativeDateAdapter(), provideTranslateService()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(FocusInvalidCodeExamplesComponent);

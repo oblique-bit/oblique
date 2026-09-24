@@ -1,20 +1,17 @@
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, Pipe, PipeTransform} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatTooltip} from '@angular/material/tooltip';
+import {MatTooltip, MatTooltipModule} from '@angular/material/tooltip';
 import {By} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router, RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
-import {Pipe, PipeTransform} from '@angular/core';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {Observable, Subject, isObservable, of} from 'rxjs';
-import {ObMockIconModule} from '../icon/_mocks/mock-icon.module';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
 import {ObEllipsisTooltipDirective} from './ellipsis-tooltip.directive';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 import {ObLocalizePipe} from '../router/ob-localize.pipe';
 
 @Pipe({
@@ -75,7 +72,7 @@ describe('ObBreadcrumbComponent', () => {
 
 		beforeEach(async () => {
 			TestBed.overrideComponent(ObBreadcrumbComponent, {
-				remove: {imports: [ObLocalizePipe, TranslateModule]},
+				remove: {imports: [ObLocalizePipe, TranslatePipe]},
 				add: {imports: [ObMockLocalizePipe, ObMockTranslatePipe]},
 			});
 			await TestBed.configureTestingModule({
@@ -84,7 +81,6 @@ describe('ObBreadcrumbComponent', () => {
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
 					RouterTestingModule,
-					ObMockIconModule,
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObMockLocalizePipe,
@@ -156,9 +152,10 @@ describe('ObBreadcrumbComponent', () => {
 		});
 
 		it('should prefer explicit inputs over config values', () => {
-			component.maxWidthInput = '8ch';
-			component.separatorInput = ' / ';
-			component.beautifyUrlsInput = false;
+			fixture.componentRef.setInput('maxWidth', '8ch');
+			fixture.componentRef.setInput('parameterSeparator', ' / ');
+			fixture.componentRef.setInput('beautifyUrls', false);
+			fixture.componentRef.changeDetectorRef.detectChanges();
 
 			expect(component.maxWidth).toBe('8ch');
 			expect((component as unknown as {separator: string}).separator).toBe(' / ');
@@ -278,7 +275,7 @@ describe('ObBreadcrumbComponent', () => {
 
 		beforeEach(async () => {
 			TestBed.overrideComponent(ObBreadcrumbComponent, {
-				remove: {imports: [ObLocalizePipe, TranslateModule]},
+				remove: {imports: [ObLocalizePipe, TranslatePipe]},
 				add: {imports: [ObMockLocalizePipe, ObMockTranslatePipe]},
 			});
 			await TestBed.configureTestingModule({
@@ -286,7 +283,6 @@ describe('ObBreadcrumbComponent', () => {
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
 					RouterTestingModule,
-					ObMockIconModule,
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObMockLocalizePipe,
@@ -373,7 +369,7 @@ describe('ObBreadcrumbComponent', () => {
 
 		beforeEach(async () => {
 			TestBed.overrideComponent(ObBreadcrumbComponent, {
-				remove: {imports: [ObLocalizePipe, TranslateModule]},
+				remove: {imports: [ObLocalizePipe, TranslatePipe]},
 				add: {imports: [ObMockLocalizePipe, ObMockTranslatePipe]},
 			});
 			await TestBed.configureTestingModule({
@@ -381,7 +377,6 @@ describe('ObBreadcrumbComponent', () => {
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
 					RouterModule.forRoot([{path: '**', component: ObBreadcrumbComponent}]),
-					ObMockIconModule,
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObEllipsisTooltipDirective,
@@ -445,7 +440,7 @@ describe('ObBreadcrumbComponent', () => {
 
 		beforeEach(async () => {
 			TestBed.overrideComponent(ObBreadcrumbComponent, {
-				remove: {imports: [ObLocalizePipe, TranslateModule]},
+				remove: {imports: [ObLocalizePipe, TranslatePipe]},
 				add: {imports: [ObMockLocalizePipe, ObMockTranslatePipe]},
 			});
 			await TestBed.configureTestingModule({
@@ -453,7 +448,6 @@ describe('ObBreadcrumbComponent', () => {
 					ObBreadcrumbComponent,
 					ObMockTranslatePipe,
 					RouterModule,
-					ObMockIconModule,
 					MatIconTestingModule,
 					MatTooltipModule,
 					ObEllipsisTooltipDirective,
@@ -580,7 +574,7 @@ describe('ObBreadcrumbComponent', () => {
 		beforeEach(async () => {
 			routerEvents = new Subject<unknown>();
 			TestBed.overrideComponent(ObBreadcrumbComponent, {
-				remove: {imports: [ObLocalizePipe, TranslateModule]},
+				remove: {imports: [ObLocalizePipe, TranslatePipe]},
 				add: {imports: [ObMockLocalizePipe, ObMockTranslatePipe]},
 			});
 			await TestBed.configureTestingModule({

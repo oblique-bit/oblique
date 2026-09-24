@@ -71,19 +71,6 @@ export interface ObIMasterLayoutNavigation {
 	links: ObINavigationLink[];
 }
 
-export interface ObILocale {
-	locales: (string | ObILocaleObject)[];
-	defaultLanguage: string;
-	disabled: boolean;
-	languages: Record<string, string>;
-}
-
-export interface ObILocaleObject {
-	locale: string;
-	id?: string;
-	label?: string;
-}
-
 export interface ObILanguage {
 	code: string;
 	id?: string;
@@ -138,14 +125,6 @@ export enum ObEMasterLayoutEventValues {
 	NAVIGATION_IS_FULL_WIDTH,
 	NAVIGATION_SCROLL_MODE,
 	SERVICE_NAVIGATION_CONFIGURATION,
-}
-
-export enum ObEEnvironment {
-	LOCAL = 'LOCAL',
-	DEV = 'DEV',
-	REF = 'REF',
-	TEST = 'TEST',
-	ABN = 'ABN',
 }
 
 export const OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION = new InjectionToken<boolean>(

@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectorRef, Component, DebugElement} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {Observable, Subject} from 'rxjs';
@@ -15,11 +15,14 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 		<button type="button" id="outside">outside</button>
 		<div>
 			<button type="button" id="inside">inside</button>
-			<ob-spinner />
+			<ob-spinner [fixed]="fixed" />
 		</div>
 	`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
-class MockComponent {}
+class MockComponent {
+	fixed = false;
+}
 
 describe('ObSpinnerComponent', () => {
 	let component: ObSpinnerComponent;
@@ -79,13 +82,14 @@ describe('ObSpinnerComponent', () => {
 
 	describe('property "channel"', () => {
 		it('should not be initialized to "default"', () => {
-			expect(component.channel).toBe('default');
+			expect(component.channel()).toBe('default');
 		});
 	});
 
 	describe('property "fixed"', () => {
 		it('should be initialized to "false"', () => {
-			expect(component.fixed).toBe(false);
+			fixture.changeDetectorRef.detectChanges();
+			expect(component.fixed()).toBe(false);
 		});
 
 		it.each([
@@ -93,7 +97,8 @@ describe('ObSpinnerComponent', () => {
 			{description: 'should remove "ob-overlay-fixed" class when set to false', state: false, result: undefined},
 			{description: 'should remove "ob-overlay-fixed" class when not provided', state: undefined, result: undefined},
 		])('$description', ({state, result}) => {
-			component.fixed = state;
+			fixture.componentInstance.fixed = state;
+			fixture.changeDetectorRef.detectChanges();
 			spinnerChangeDetector.detectChanges();
 			expect(spinnerElement.query(By.css('.ob-overlay')).classes['ob-overlay-fixed']).toBe(result);
 		});
@@ -159,7 +164,8 @@ describe('ObSpinnerComponent', () => {
 			beforeEach(done => {
 				announcer = TestBed.inject(LiveAnnouncer);
 				jest.spyOn(announcer, 'announce');
-				component.fixed = fixed;
+				fixture.componentInstance.fixed = fixed;
+				fixture.changeDetectorRef.detectChanges();
 
 				component.isActive$.subscribe(value => {
 					stateValue = value;
@@ -220,7 +226,8 @@ describe('ObSpinnerComponent', () => {
 				outsideButton = fixture.debugElement.query(By.css('#outside')).nativeElement;
 				insideButton = fixture.debugElement.query(By.css('#inside')).nativeElement;
 				insideButton.focus();
-				component.fixed = fixed;
+				fixture.componentInstance.fixed = fixed;
+				fixture.changeDetectorRef.detectChanges();
 
 				component.isActive$.subscribe(() => {
 					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');

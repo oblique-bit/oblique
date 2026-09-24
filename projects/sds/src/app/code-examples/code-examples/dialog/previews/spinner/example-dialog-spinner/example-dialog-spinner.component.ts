@@ -1,4 +1,4 @@
-import {type AfterViewInit, Component, type OnDestroy, inject} from '@angular/core';
+import {type AfterViewInit, ChangeDetectionStrategy, Component, type OnDestroy, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ObButtonModule, ObSpinnerModule, ObSpinnerService} from '@oblique/oblique';
@@ -18,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 		ObSpinnerModule,
 	],
 	templateUrl: './example-dialog-spinner.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ExampleDialogSpinnerComponent implements AfterViewInit, OnDestroy {
 	readonly sampleChannel = 'demo';

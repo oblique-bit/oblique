@@ -14,10 +14,21 @@
     "useUnknownInCatchVariables": true,
     "paths": {
       "@oblique/oblique": ["projects/oblique/src/public_api"],
+      "@oblique/oblique/schema-validation": ["projects/oblique/src/lib/schema-validation/public_api"],
       "@oblique/*": ["projects/oblique/src/lib/*"],
       "@oblique/design-system": ["projects/design-system/src/public-api"]
     },
     "resolveJsonModule": true,
     "useDefineForClassFields": false
-  }
+  },
+  "references": [
+    { "path": "./projects/cli/tsconfig.spec.json" },
+    { "path": "./projects/design-system/tsconfig.spec.json" },
+    { "path": "./projects/oblique/tsconfig.spec.json" },
+    { "path": "./projects/sandbox/tsconfig.spec.json" },
+    { "path": "./projects/sandbox-ssr/tsconfig.spec.json" },
+    { "path": "./projects/sds/tsconfig.spec.json" },
+    { "path": "./projects/service-navigation-web-component/tsconfig.spec.json" },
+    { "path": "./projects/toolchain/tsconfig.spec.json" }
+  ]
 }

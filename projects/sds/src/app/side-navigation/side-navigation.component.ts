@@ -1,4 +1,12 @@
-import {Component, type ElementRef, type OnInit, inject, output, viewChild} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	type ElementRef,
+	type OnInit,
+	inject,
+	output,
+	viewChild,
+} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {MatFormField, MatLabel, MatPrefix} from '@angular/material/form-field';
@@ -57,6 +65,7 @@ import type {CMSPages} from '../cms/models/cms-page.model';
 	],
 	templateUrl: './side-navigation.component.html',
 	styleUrl: './side-navigation.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {
 		'(window:keydown)': 'moveFocusToSearch($event)',
 	},

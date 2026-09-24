@@ -1,13 +1,14 @@
 import {ControlValueAccessor} from '@angular/forms';
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
 	selector: 'mat-select, mat-slide-toggle, mat-slider',
 	template: ``,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ObMockMatElement implements ControlValueAccessor {
 	registerOnChange(fn: any): void {}

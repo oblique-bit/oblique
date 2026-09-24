@@ -11,7 +11,6 @@ export const appNavigation: ObINavigationLink[] = [
 	},
 	{url: 'http://www.google.ch', label: 'Google', icon: ObEIcon.SEARCH},
 	{url: 'http://www.google.ch', label: 'Google sameTarget', sameTarget: true},
-	{url: 'design-system', label: 'Design System', children: [{url: '', label: 'Demo'}]},
 	{
 		url: 'samples',
 		label: 'i18n.routes.samples.title',
@@ -51,6 +50,7 @@ export const appNavigation: ObINavigationLink[] = [
 				],
 			},
 			{url: 'autocomplete', label: 'Autocomplete'},
+			{url: 'autocomplete-validator', label: 'Autocomplete with custom validator'},
 			{url: 'breadcrumb', label: 'Breadcrumb'},
 			{url: 'button', label: 'Buttons'},
 			{

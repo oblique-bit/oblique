@@ -9,23 +9,24 @@ import {
 	WINDOW,
 	provideObliqueTestingConfiguration,
 } from '@oblique/oblique';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {Subject, firstValueFrom} from 'rxjs';
+import type {Mock} from 'vitest';
 
 describe('AppComponent', () => {
 	let routerEvents: Subject<NavigationEnd>;
-	let router: {config: unknown[]; events: Subject<NavigationEnd>; navigateByUrl: jest.Mock};
+	let router: {config: unknown[]; events: Subject<NavigationEnd>; navigateByUrl: Mock};
 
 	beforeEach(async () => {
 		routerEvents = new Subject<NavigationEnd>();
 		router = {
 			config: [],
 			events: routerEvents,
-			navigateByUrl: jest.fn().mockResolvedValue(true),
+			navigateByUrl: vi.fn().mockResolvedValue(true),
 		};
 		await TestBed.configureTestingModule({
 			declarations: [AppComponent],
-			imports: [TranslateModule],
+			imports: [TranslatePipe],
 			providers: [
 				provideNativeDateAdapter(),
 				provideObliqueTestingConfiguration(),
@@ -56,7 +57,7 @@ describe('AppComponent', () => {
 		const fixture = TestBed.createComponent(AppComponent);
 		const app = fixture.debugElement.componentInstance as AppComponent;
 		const navigation: ObINavigationLink[] = [{label: 'Updated link'}];
-		jest.spyOn(app.nav, 'setNavigation');
+		vi.spyOn(app.nav, 'setNavigation');
 
 		app.updateNavigation(navigation);
 
@@ -69,43 +70,41 @@ describe('AppComponent', () => {
 
 		routerEvents.next(new NavigationEnd(1, '/current', '/current'));
 
-		expect(header.serviceNavigationConfiguration.returnUrl).toBe(window.location.href);
+		expect(header.serviceNavigationConfiguration().returnUrl).toBe(window.location.href);
 	});
 
-	it('should expose translated autocomplete items', done => {
+	it('should expose translated autocomplete items', async () => {
 		const fixture = TestBed.createComponent(AppComponent);
 		const app = fixture.debugElement.componentInstance as AppComponent;
 
-		app.autocompleteItems$.subscribe(items => {
-			expect(items).toContainEqual({label: 'Autocomplete', disabled: false});
-			done();
-		});
+		const items = await firstValueFrom(app.autocompleteItems$);
+		expect(items).toContainEqual({label: 'Autocomplete', disabled: false});
 	});
 
 	it('should navigate to the selected autocomplete item', () => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		const translate = TestBed.inject(TranslateService);
-		jest.spyOn(translate, 'getCurrentLang').mockReturnValue('en');
+		vi.spyOn(translate, 'getCurrentLang').mockReturnValue('en');
 		const fixture = TestBed.createComponent(AppComponent);
 		const app = fixture.debugElement.componentInstance as AppComponent;
 
 		app.search.setValue('Autocomplete');
-		jest.advanceTimersByTime(1);
+		vi.advanceTimersByTime(1);
 
 		expect(router.navigateByUrl).toHaveBeenCalledWith('/en/samples/autocomplete');
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	it('should stop reacting to search changes after destruction', () => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		const fixture = TestBed.createComponent(AppComponent);
 		const app = fixture.debugElement.componentInstance as AppComponent;
 
 		app.ngOnDestroy();
 		app.search.setValue('Autocomplete');
-		jest.advanceTimersByTime(1);
+		vi.advanceTimersByTime(1);
 
 		expect(router.navigateByUrl).not.toHaveBeenCalled();
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 });

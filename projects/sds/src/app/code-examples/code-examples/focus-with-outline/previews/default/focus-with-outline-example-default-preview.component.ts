@@ -1,4 +1,13 @@
-import {Component, DOCUMENT, ElementRef, type Signal, computed, inject, viewChild} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	DOCUMENT,
+	ElementRef,
+	type Signal,
+	computed,
+	inject,
+	viewChild,
+} from '@angular/core';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatButton} from '@angular/material/button';
@@ -9,6 +18,7 @@ import {ObButtonDirective, obFocusWithOutline} from '@oblique/oblique';
 	selector: 'app-focus-with-outline-example-default-preview',
 	imports: [MatFormField, MatSelect, MatOption, MatLabel, MatButton, ObButtonDirective, MatInput],
 	templateUrl: './focus-with-outline-example-default-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class FocusWithOutlineExampleDefaultPreviewComponent {
 	private readonly input: Signal<ElementRef<HTMLElement>> = viewChild.required(MatInput, {read: ElementRef});

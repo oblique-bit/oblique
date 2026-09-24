@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, input, model, signal} from '@angular/core';
 import {ObILanguage} from '../service-navigation.model';
 
 @Component({
@@ -10,17 +10,16 @@ import {ObILanguage} from '../service-navigation.model';
 	host: {class: 'ob-service-navigation-languages'},
 })
 export class ObServiceNavigationLanguagesComponent {
-	@Input() language: string;
-	@Input() languages: ObILanguage[] = [];
-	@Output() readonly languageChange = new EventEmitter<string>();
+	readonly language = model<string>();
+	readonly languages = input<ObILanguage[]>([]);
 
-	chevron: 'chevron_down' | 'chevron_up' = 'chevron_down';
+	readonly chevron = signal<'chevron_down' | 'chevron_up'>('chevron_down');
 
 	changeChevron(): void {
-		this.chevron = this.chevron === 'chevron_down' ? 'chevron_up' : 'chevron_down';
+		this.chevron.update(chevron => (chevron === 'chevron_down' ? 'chevron_up' : 'chevron_down'));
 	}
 
 	changeLanguage(language: string): void {
-		this.languageChange.emit(language);
+		this.language.set(language);
 	}
 }

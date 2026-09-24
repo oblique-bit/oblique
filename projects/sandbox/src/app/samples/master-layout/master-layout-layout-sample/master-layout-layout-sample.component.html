@@ -1,12 +1,20 @@
 <mat-card>
 	<mat-card-title>Layout</mat-card-title>
 	<mat-card-content>
-		<mat-slide-toggle [(ngModel)]="hasCover">has cover</mat-slide-toggle>
-		<mat-slide-toggle [(ngModel)]="hasLayout">has default layout</mat-slide-toggle>
-		<mat-slide-toggle [(ngModel)]="hasMaxWidth">has max width</mat-slide-toggle>
-		<mat-slide-toggle [(ngModel)]="hasMainNavigation">has main navigation</mat-slide-toggle>
-		<mat-slide-toggle [(ngModel)]="hasOffCanvas">has off-canvas</mat-slide-toggle>
-		<mat-form-field>
+		<mat-slide-toggle data-test="layout-has-cover" [(ngModel)]="hasCover">has cover</mat-slide-toggle>
+		<mat-slide-toggle data-test="layout-has-layout" [(ngModel)]="hasLayout">has default layout</mat-slide-toggle>
+		<mat-slide-toggle data-test="layout-has-max-width" [(ngModel)]="hasMaxWidth">has max width</mat-slide-toggle>
+		<mat-slide-toggle data-test="layout-has-navigation" [(ngModel)]="hasMainNavigation"
+			>has main navigation</mat-slide-toggle
+		>
+		<mat-slide-toggle data-test="layout-has-off-canvas" [(ngModel)]="hasOffCanvas">has off-canvas</mat-slide-toggle>
+		<mat-slide-toggle
+			data-test="sample-has-scroll-fixture"
+			[(ngModel)]="showScrollFixture"
+			(ngModelChange)="scrollFixture.emit($event)"
+			>has scroll fixture</mat-slide-toggle
+		>
+		<mat-form-field data-test="layout-breakpoint">
 			<mat-label>Collapse breakpoint</mat-label>
 			<mat-select [(ngModel)]="breakpoint">
 				@for (option of breakpointOptions; track $index) {
@@ -14,7 +22,7 @@
 				}
 			</mat-select>
 		</mat-form-field>
-		<mat-form-field>
+		<mat-form-field data-test="layout-home-route">
 			<mat-label>home page route</mat-label>
 			<input matInput type="text" [(ngModel)]="homePageRoute" />
 		</mat-form-field>

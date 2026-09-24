@@ -12,5 +12,5 @@
     "schematics/index/**/*.json",
     "schematics/index/ng-add/templates/*"
   ],
-  "allowedNonPeerDependencies": ["@schematics/angular", "ansi-colors"]
+  "allowedNonPeerDependencies": ["@schematics/angular", "ansi-colors", "glob"]
 }

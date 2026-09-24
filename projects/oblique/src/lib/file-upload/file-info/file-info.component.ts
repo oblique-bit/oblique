@@ -2,14 +2,15 @@ import {SelectionModel} from '@angular/cdk/collections';
 
 import {
 	Component,
-	EventEmitter,
-	Input,
 	OnDestroy,
 	OnInit,
-	Output,
-	ViewChild,
 	ViewEncapsulation,
+	effect,
 	inject,
+	input,
+	output,
+	signal,
+	viewChild,
 } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -18,11 +19,11 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {Subject, merge} from 'rxjs';
 import {map, takeUntil, tap} from 'rxjs/operators';
-import {WINDOW} from '../../utilities';
-import {ObWindow} from '../../utilities.model';
+import {WINDOW} from '../../window/window.provider';
+import {ObWindow} from '../../window/window.provider.model';
 import {ObAlertComponent} from '../../alert/alert.component';
 import {ObButtonDirective} from '../../button/button.directive';
 import {ObEUploadEventType, ObIFileDescription, ObIUploadEvent, ObTSelectionStatus} from '../file-upload.model';
@@ -39,7 +40,7 @@ import {ObFileUploadService} from '../file-upload.service';
 		MatTooltipModule,
 		MatIconModule,
 		ObAlertComponent,
-		TranslateModule,
+		TranslatePipe,
 	],
 	templateUrl: './file-info.component.html',
 	styleUrls: ['./file-info.component.scss'],
@@ -48,14 +49,16 @@ import {ObFileUploadService} from '../file-upload.service';
 	exportAs: 'obFileInfo',
 })
 export class ObFileInfoComponent implements OnInit, OnDestroy {
-	@Output() readonly uploadEvent = new EventEmitter<ObIUploadEvent>();
-	@Input() deleteUrl: string;
-	@Input() getUploadedFilesUrl: string;
-	@ViewChild(MatSort) set sorting(sort: MatSort) {
-		this.dataSource.sort = sort;
-	}
+	readonly uploadEvent = output<ObIUploadEvent>();
+	readonly deleteUrl = input<string>();
+	readonly getUploadedFilesUrl = input<string>();
+	readonly sorting = viewChild(MatSort);
+	readonly mapFunction = input<(files: ObIFileDescription[]) => ObIFileDescription[]>(files => files);
+	readonly mapFilesToDeleteUrlFunction = input<(files: ObIFileDescription[]) => string>(files =>
+		btoa(JSON.stringify(files.map(file => file.name)))
+	);
 	dataSource = new MatTableDataSource<ObIFileDescription, MatPaginator>([]);
-	displayedColumns: string[];
+	readonly displayedColumns = signal<string[]>([]);
 	fields = ['name'];
 	selectionStatus: ObTSelectionStatus = 'none';
 	readonly selection = new SelectionModel<ObIFileDescription>(true, []);
@@ -65,12 +68,16 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	private readonly translate = inject(TranslateService);
 	private readonly unsubscribe = new Subject<void>();
 	private readonly dataChange = new Subject<void>();
-
 	private readonly window = inject<ObWindow>(WINDOW);
 
-	@Input() mapFunction = (files: ObIFileDescription[]): ObIFileDescription[] => files;
-	@Input() mapFilesToDeleteUrlFunction: (files: ObIFileDescription[]) => string = files =>
-		btoa(JSON.stringify(files.map(file => file.name)));
+	constructor() {
+		effect(() => {
+			const sort = this.sorting();
+			if (sort) {
+				this.dataSource.sort = sort;
+			}
+		});
+	}
 
 	ngOnInit(): void {
 		this.setTableHeaders(this.fields);
@@ -109,9 +116,10 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 
 	delete(files: ObIFileDescription[]): void {
 		const fileNames = files.map(file => file.name);
-		if (this.deleteUrl && this.window.confirm(this.translate.instant('i18n.oblique.file-upload.selected.remove'))) {
+		const deleteUrl = this.deleteUrl();
+		if (deleteUrl && this.window.confirm(this.translate.instant('i18n.oblique.file-upload.selected.remove'))) {
 			this.fileUploadService
-				.delete(this.deleteUrl, this.mapFilesToDeleteUrlFunction(files))
+				.delete(deleteUrl, this.mapFilesToDeleteUrlFunction()(files))
 				.pipe(
 					tap(() => {
 						this.dataSource.data = this.dataSource.data.filter(file => !fileNames.includes(file.name));
@@ -131,11 +139,12 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 	}
 
 	private loadData(): void {
-		if (this.getUploadedFilesUrl) {
+		const getUploadedFilesUrl = this.getUploadedFilesUrl();
+		if (getUploadedFilesUrl) {
 			this.fileUploadService
-				.getUploadedFiles(this.getUploadedFilesUrl)
+				.getUploadedFiles(getUploadedFilesUrl)
 				.pipe(
-					map(this.mapFunction),
+					map(this.mapFunction()),
 					tap(files => {
 						this.dataSource.data = files;
 					}),
@@ -166,9 +175,9 @@ export class ObFileInfoComponent implements OnInit, OnDestroy {
 
 	private setTableHeaders(headers: string[]): void {
 		this.fields = headers;
-		this.displayedColumns = this.deleteUrl
-			? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION]
-			: [this.COLUMN_SELECT, ...this.fields];
+		this.displayedColumns.set(
+			this.deleteUrl() ? [this.COLUMN_SELECT, ...this.fields, this.COLUMN_ACTION] : [this.COLUMN_SELECT, ...this.fields]
+		);
 	}
 
 	private computeSelectionStatus(): ObTSelectionStatus {

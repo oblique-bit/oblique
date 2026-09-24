@@ -3,5 +3,17 @@
   "$id": "ng-add-schematic",
   "title": "ng add Schema",
   "type": "object",
-  "properties": {}
+  "properties": {
+    "npmrc": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to create a bit-specific .npmrc file in the project root.",
+      "x-prompt": "Is the project located within a confederation / federal network? It will add an .npmrc file."
+    },
+    "proxy": {
+      "type": "string",
+      "description": "Pass a port number to create a proxy.conf.json file in the project root.",
+      "x-prompt": "Choose a port for the proxy configuration for server connection. Leave empty for no proxy configuration."
+    }
+  }
 }

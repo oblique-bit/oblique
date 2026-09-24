@@ -1,11 +1,12 @@
 import {Injectable, inject} from '@angular/core';
 import {Observable, ReplaySubject, combineLatest, switchMap, throwError, timer} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {map, retry} from 'rxjs/operators';
 import {obPauseWhenPageHidden} from '../../rxjs-operators';
 import {ObNotificationService} from '../../notification/notification.service';
 import {ObServiceNavigationStateApiService} from './service-navigation-state-api.service';
 import {ObServiceNavigationCountApiService} from './service-navigation-message-count-api.service';
 import {ObIServiceNavigationState} from './service-navigation.api.model';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable({
 	providedIn: 'root',
@@ -16,6 +17,7 @@ export class ObServiceNavigationPollingService {
 	private readonly stateApiService = inject(ObServiceNavigationStateApiService);
 	private readonly countApiService = inject(ObServiceNavigationCountApiService);
 	private readonly notification = inject(ObNotificationService);
+	private hasError = false;
 
 	constructor() {
 		this.state$ = this.pollingDataState.asObservable();
@@ -37,14 +39,48 @@ export class ObServiceNavigationPollingService {
 			.pipe(
 				map(results => ({...results[0], messageCount: results[1]})),
 				obPauseWhenPageHidden(),
-				catchError(() => {
-					this.notification.error({
-						message: 'i18n.oblique.service-navigation.state.error.message',
-						title: 'i18n.oblique.service-navigation.state.error.title',
-					});
-					return throwError(() => new Error('Cannot load service navigation state'));
+				retry({
+					delay: (error: HttpErrorResponse) =>
+						this.displayErrorAndReturnDelay(error, stateInterval * secondsMultiplier),
 				})
 			)
-			.subscribe(result => this.pollingDataState.next(result));
+			.subscribe(result => {
+				this.showIsBackNotification();
+				this.pollingDataState.next(result);
+			});
+	}
+
+	private displayErrorAndReturnDelay(error: HttpErrorResponse, delay: number): Observable<number> {
+		if ([500, 0].includes(error.status)) {
+			this.showErrorNotification();
+			return timer(delay);
+		}
+
+		this.notification.error({
+			message: 'i18n.oblique.service-navigation.state.error.message',
+			title: 'i18n.oblique.service-navigation.state.error.title',
+		});
+
+		return throwError(() => new Error('Cannot load service navigation state'));
+	}
+
+	private showErrorNotification(): void {
+		if (this.hasError === false) {
+			this.hasError = true;
+			this.notification.error({
+				message: 'i18n.oblique.service-navigation.state.error.retry',
+				title: 'i18n.oblique.service-navigation.state.error.title',
+			});
+		}
+	}
+
+	private showIsBackNotification(): void {
+		if (this.hasError === true) {
+			this.hasError = false;
+			this.notification.success({
+				message: 'i18n.oblique.service-navigation.state.is-back.message',
+				title: 'i18n.oblique.service-navigation.state.is-back.title',
+			});
+		}
 	}
 }

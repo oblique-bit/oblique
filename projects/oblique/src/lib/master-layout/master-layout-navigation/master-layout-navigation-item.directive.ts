@@ -1,4 +1,4 @@
-import {Directive, ElementRef, OnDestroy, OnInit, inject} from '@angular/core';
+import {ChangeDetectorRef, Directive, ElementRef, OnDestroy, OnInit, inject} from '@angular/core';
 import {filter, takeUntil} from 'rxjs/operators';
 
 import {Subject, merge} from 'rxjs';
@@ -24,6 +24,7 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 	private readonly globalEventsService = inject(ObGlobalEventsService);
 	private readonly mainMenu = inject(ObMasterLayoutNavigationMenuDirective);
 	private readonly unsubscribe = new Subject<void>();
+	private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
 	ngOnInit(): void {
 		this.monitorForClickOutside();
@@ -52,6 +53,7 @@ export class ObMasterLayoutNavigationItemDirective implements OnInit, OnDestroy 
 		this.mainMenu.menuClosed();
 		if (closeMainMenu) {
 			this.masterLayout.isMenuOpened = false;
+			this.changeDetectorRef.markForCheck();
 		}
 	}
 

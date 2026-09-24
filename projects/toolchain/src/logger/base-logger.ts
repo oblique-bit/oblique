@@ -1,5 +1,5 @@
-import type {LogLevel, Writer} from './types';
-import type {ObGroupLogger, ObLogger} from './logger.types';
+import type {LogLevel, Writer} from './types.js';
+import type {ObGroupLogger, ObLogger} from './logger.types.js';
 import chalk, {type Chalk} from 'chalk';
 
 export abstract class BaseLogger implements ObLogger {

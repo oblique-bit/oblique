@@ -9,7 +9,7 @@ import {of} from 'rxjs';
 import {NavTreeSampleComponent} from './nav-tree-sample.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {provideObliqueTestingConfiguration} from '@oblique/oblique';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 describe(NavTreeSampleComponent.name, () => {
 	let component: NavTreeSampleComponent;
@@ -25,7 +25,7 @@ describe(NavTreeSampleComponent.name, () => {
 				MatRadioModule,
 				MatCheckboxModule,
 				MatSlideToggleModule,
-				TranslateModule,
+				TranslatePipe,
 			],
 			providers: [provideObliqueTestingConfiguration()],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],

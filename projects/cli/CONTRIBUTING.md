@@ -29,7 +29,7 @@ must use the **service-navigation** package and one of the following scopes:
 
 ## <a name="test"></a> How to test locally
 
-Tests must be run with the `test` script and not through the IDE because the IDE can't properly execute `ts-node`.
+Tests must be run with the `test` script and not through the IDE because the IDE can't properly execute `tsx`.
 
 To test that the CLI is globally executable, you need to execute the following commands from the monorepo root:
 

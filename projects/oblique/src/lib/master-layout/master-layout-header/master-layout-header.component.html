@@ -1,8 +1,7 @@
 <header class="ob-header">
-	@if (isCustom) {
+	@if (isCustom()) {
 		<ng-content select="[obHeader]" />
-	}
-	@if (!isCustom) {
+	} @else {
 		<div class="ob-master-layout-header-action">
 			<ng-content select="[obHeaderAction]" />
 		</div>
@@ -14,7 +13,7 @@
 					</aside>
 				}
 				<a class="ob-master-layout-logo" [routerLink]="home$ | async | obLocalize" tabindex="-1">
-					<ng-container [ngTemplateOutlet]="obLogo" />
+					<ng-container [ngTemplateOutlet]="obLogo()" />
 				</a>
 				<span class="ob-master-layout-brand-app-title">
 					<a [routerLink]="home$ | async | obLocalize" class="ob-master-layout-brand-link"
@@ -23,7 +22,7 @@
 				</span>
 			</div>
 			<ul class="ob-collapsed-layout">
-				@for (template of mobileTemplates; track template) {
+				@for (template of mobileTemplates(); track template) {
 					<li #headerMobileControl>
 						<ng-container [ngTemplateOutlet]="template" />
 					</li>
@@ -47,38 +46,43 @@
 			</ul>
 		</div>
 		<h2 class="ob-screen-reader-only">{{ "i18n.oblique.header.service-navigation.title" | translate }}</h2>
-		<ob-service-navigation
-			[infoContact]="serviceNavigationConfig?.infoContact"
-			[infoLinks]="serviceNavigationConfig?.infoLinks"
-			[infoContactText]="serviceNavigationConfig?.infoContactText"
-			[infoHelpText]="serviceNavigationConfig?.infoHelpText"
-			[infoDescription]="serviceNavigationConfig?.infoDescription"
-			[useInfoBackend]="serviceNavigationConfig?.useInfoBackend"
-			[maxFavoriteApplications]="serviceNavigationConfig?.maxFavoriteApplications"
-			[profileLinks]="serviceNavigationConfig?.profileLinks"
-			[returnUrl]="serviceNavigationConfig?.returnUrl"
-			[pamsAppId]="serviceNavigationConfig?.pamsAppId"
-			[displayApplications]="serviceNavigationConfig?.displayApplications"
-			[displayAuthentication]="serviceNavigationConfig?.displayAuthentication"
-			[displayInfo]="serviceNavigationConfig?.displayInfo"
-			[displayLanguages]="serviceNavigationConfig?.displayLanguages"
-			[displayMessage]="serviceNavigationConfig?.displayMessage"
-			[displayProfile]="serviceNavigationConfig?.displayProfile"
-			[eportalLanguageSynchronization]="serviceNavigationConfig?.eportalLanguageSynchronization"
-			[handleLogout]="serviceNavigationConfig?.handleLogout"
-			[environment]="pamsConfiguration?.environment"
-			[rootUrl]="pamsConfiguration?.rootUrl"
-			(loginState)="emitLoginState($event)"
-			(logoutTriggered)="emitLogoutUrl($event)"
-		>
-			@for (template of templates; track template) {
-				<ng-template #customWidgetTemplate>
-					<ng-container [ngTemplateOutlet]="template" />
-				</ng-template>
-			}
-		</ob-service-navigation>
+		@let config = serviceNavigationConfig();
+		@if (config) {
+			<ob-service-navigation
+				[infoContact]="config.infoContact"
+				[infoLinks]="config.infoLinks"
+				[infoContactText]="config.infoContactText"
+				[infoHelpText]="config.infoHelpText"
+				[infoDescription]="config.infoDescription"
+				[useInfoBackend]="config.useInfoBackend"
+				[maxFavoriteApplications]="config.maxFavoriteApplications"
+				[profileLinks]="config.profileLinks"
+				[returnUrl]="config.returnUrl"
+				[pamsAppId]="config.pamsAppId"
+				[displayApplications]="config.displayApplications"
+				[displayAuthentication]="config.displayAuthentication"
+				[displayInfo]="config.displayInfo"
+				[displayLanguages]="config.displayLanguages"
+				[displayMessage]="config.displayMessage"
+				[displayProfile]="config.displayProfile"
+				[eportalLanguageSynchronization]="config.eportalLanguageSynchronization"
+				[handleLogout]="config.handleLogout"
+				[environment]="pamsConfiguration?.environment"
+				[rootUrl]="pamsConfiguration?.rootUrl"
+				(loginStateChange)="emitLoginState($event)"
+				(logoutTriggered)="emitLogoutUrl($event)"
+			>
+				@for (template of templates(); track template) {
+					<ng-template #customWidgetTemplate>
+						<ng-container [ngTemplateOutlet]="template" />
+					</ng-template>
+				}
+			</ob-service-navigation>
+		}
 	}
 </header>
-<ob-master-layout-navigation [links]="navigation" (linksChanged)="emitNavigation($event)">
-	<ng-content select="[obNavigation]" />
-</ob-master-layout-navigation>
+@if (hasMainNavigation()) {
+	<ob-master-layout-navigation [(links)]="navigation" (linksChange)="emitNavigation($event)">
+		<ng-content select="[obNavigation]" />
+	</ob-master-layout-navigation>
+}

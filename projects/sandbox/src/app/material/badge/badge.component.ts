@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ThemePalette} from '@angular/material/core';
 import type {MatBadgePosition} from '@angular/material/badge';
 
@@ -6,6 +6,7 @@ import type {MatBadgePosition} from '@angular/material/badge';
 	selector: 'sb-badge',
 	standalone: false,
 	templateUrl: './badge.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BadgeComponent {
 	colors: ThemePalette[] = [];

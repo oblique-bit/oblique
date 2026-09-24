@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type CodeExample, CodeExamples} from '../../code-examples.model';
 import {AlertExampleTypePreviewComponent} from './previews/type/alert-example-type-preview.component';
 import {AlertExampleHasRoleAlertPreviewComponent} from './previews/has-role-alert/alert-example-has-role-alert-preview.component';
@@ -9,6 +9,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 	selector: 'app-code-example-alert',
 	imports: [CodeExampleComponent, IdPipe],
 	templateUrl: '../../code-examples.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AlertCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'alert-examples';

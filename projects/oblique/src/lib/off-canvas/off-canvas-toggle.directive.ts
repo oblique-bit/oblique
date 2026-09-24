@@ -1,7 +1,8 @@
 import {ChangeDetectorRef, Directive, inject} from '@angular/core';
 import {ObOffCanvasService} from './off-canvas.service';
-import {WINDOW, isNotKeyboardEventOnButton} from '../utilities';
-import {ObWindow} from '../utilities.model';
+import {isNotKeyboardEventOnButton} from '../utilities';
+import {WINDOW} from '../window/window.provider';
+import {ObWindow} from '../window/window.provider.model';
 
 @Directive({
 	selector: '[obOffCanvasToggle]',

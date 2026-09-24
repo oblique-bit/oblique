@@ -13,6 +13,7 @@ class PostBuild extends StaticScript {
 	private static readonly rootPath = findObliqueRootPath();
 	private static readonly projectName = 'design-system';
 	private static readonly cssFolder = `${PostBuild.rootPath}/projects/${PostBuild.projectName}/src/lib/css`;
+	private static readonly assetsFolder = `${PostBuild.rootPath}/projects/${PostBuild.projectName}/src/assets`;
 
 	static async perform(): Promise<void> {
 		Log.start('Finalize build');
@@ -22,6 +23,7 @@ class PostBuild extends StaticScript {
 			`${PostBuild.cssFolder}/oblique.css`,
 			`${PostBuild.rootPath}/dist/${PostBuild.projectName}/css/oblique.min.css`
 		);
+		PostBuild.prepareCoreStylesInstaller();
 		Banner.addToFilesInProject(PostBuild.projectName);
 		adaptReadmeLinks(PostBuild.projectName);
 		Log.success();
@@ -31,8 +33,12 @@ class PostBuild extends StaticScript {
 		const src = getAbsolutePath(`projects/${PostBuild.projectName}/src/lib`);
 		CopyFiles.initialize(PostBuild.projectName)
 			.copyRootFiles('LICENSE')
-			.copyProjectRootFiles('README.md', 'CHANGELOG.md')
+			.copyProjectRootFiles('README.md', 'CHANGELOG.md', 'package.json')
 			.copyProjectFiles(src, ...Files.list(PostBuild.cssFolder).map(file => path.relative(src, file)))
+			.copyProjectFiles(
+				PostBuild.assetsFolder,
+				...Files.list(PostBuild.assetsFolder).map(file => path.relative(PostBuild.assetsFolder, file))
+			)
 			.finalize();
 	}
 
@@ -49,8 +55,23 @@ class PostBuild extends StaticScript {
 				'license',
 				'bugs'
 			)
+			.removeScripts()
+			.addMain('index.js')
 			.write()
 			.finalize();
+	}
+
+	private static prepareCoreStylesInstaller(): void {
+		const fileName = 'install-core-styles.js';
+		const obliqueCoreStyles = Files.read(`${PostBuild.rootPath}/dist/${this.projectName}/css/oblique.min.css`);
+
+		Files.overwrite(`${PostBuild.rootPath}/dist/${this.projectName}/${fileName}`, (content: string) => {
+			const obliqueCoreStylesPlaceholder = /^.*?`(?<placeholderName>[^`]*)`.*/u.exec(content)?.groups?.placeholderName;
+			if (!obliqueCoreStylesPlaceholder) {
+				throw new Error(`No placeholder found in ${fileName}, styles couldn't be embedded`);
+			}
+			return content.replace(obliqueCoreStylesPlaceholder, obliqueCoreStyles);
+		});
 	}
 }
 

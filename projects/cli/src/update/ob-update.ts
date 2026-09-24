@@ -9,18 +9,18 @@ import {
 	ngAddOblique,
 	nonUpdatableDependencies,
 	startObCommand,
-} from '../utils/cli-utils';
+} from '../utils/cli-utils.js';
 import {
 	type HandleObUpdateActionOptions,
 	type ObUpdateOptions,
 	type PackageDependencies,
 	schema,
 	updateDescriptions,
-} from './ob-update.model';
+} from './ob-update.model.js';
 import chalk from 'chalk';
 import {execSync} from 'child_process';
-import {addObUpdateCommandOptions} from '../utils/ob-configure-command';
-import type {ObOptions} from '../utils/ob-cli.model';
+import {addObUpdateCommandOptions} from '../utils/ob-configure-command.js';
+import type {ObOptions} from '../utils/ob-cli.model.js';
 
 export function createObUpdateCommand(): Command<[string], OptionValues> {
 	const command = new Command<[string], OptionValues>();
@@ -100,12 +100,6 @@ export function runUpdateDependencies(cmdOptions: ObUpdateOptions<string | boole
 			dependency => !skipDependencyUpdate(dependency)
 		);
 		const validatedOptions = returnTruthyOptions(cmdOptions);
-
-		// commanderjs changes the key any kebab case option which turns it invalid as an angular param
-		if (validatedOptions['allowDirty']) {
-			validatedOptions['allow-dirty'] = validatedOptions['allowDirty'];
-			delete validatedOptions['allowDirty'];
-		}
 
 		execute({
 			name: 'ngUpdate',

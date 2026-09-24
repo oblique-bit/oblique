@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, DebugElement, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DebugElement, inject} from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {MatInput} from '@angular/material/input';
@@ -23,6 +23,7 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 			<input matInput obSchemaValidate type="text" formControlName="text" />
 		</mat-form-field>
 	</form>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestReactiveComponent {
 	form = inject(FormBuilder).group({text: ''});

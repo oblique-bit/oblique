@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-menu.directive';
@@ -6,6 +6,7 @@ import {ObMasterLayoutNavigationMenuDirective} from './master-layout-navigation-
 @Component({
 	standalone: false,
 	template: '<div class="ob-master-layout-header"><span obMasterLayoutNavigationMenu> test </span></div>',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {}
 

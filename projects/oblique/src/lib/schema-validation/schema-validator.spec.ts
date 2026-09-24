@@ -1,8 +1,8 @@
-import {Component, OnInit, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, inject} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AbstractControl, FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '@oblique/oblique';
 import {ObSchemaValidationService} from './schema-validation.service';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {ObSchemaValidateDirective} from './schema-validator';
@@ -38,6 +38,7 @@ describe(ObSchemaValidateDirective.name, () => {
 				</div>
 			</form>
 		`,
+		changeDetection: ChangeDetectionStrategy.Eager,
 	})
 	class TemplateFormTestComponent {
 		schema = schema;
@@ -54,6 +55,7 @@ describe(ObSchemaValidateDirective.name, () => {
 			</form>
 		`,
 		providers: [ObSchemaValidationService],
+		changeDetection: ChangeDetectionStrategy.Eager,
 	})
 	class ModelFormTestComponent implements OnInit {
 		sampleForm: FormGroup;

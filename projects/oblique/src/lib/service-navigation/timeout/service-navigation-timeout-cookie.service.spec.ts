@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {ObServiceNavigationTimeoutCookieService} from './service-navigation-timeout-cookie.service';
-import {WINDOW} from '../../utilities';
+import {WINDOW} from '../../window/window.provider';
 import Cookies from 'js-cookie';
 import {CookiesMock} from './mocks/js-cookie.mock';
 

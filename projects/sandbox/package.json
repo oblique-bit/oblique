@@ -1,17 +1,20 @@
 {
   "name": "@oblique/sandbox",
-  "version": "15.4.4",
+  "version": "16.0.0",
+  "type": "module",
   "scripts": {
     "start": "ng serve",
     "start-pams": "ng serve --configuration pams",
-    "lint": "ts-node scripts/lint.ts",
-    "format": "ts-node scripts/lint.ts --fix",
-    "test": "cd ../.. && ng test sandbox",
-    "test-ci": "cd ../.. && ng run sandbox:test:ci",
-    "build": "ng build && ts-node scripts/post-build.ts",
-    "release": "ts-node scripts/release.ts"
+    "lint": "tsx scripts/lint.ts",
+    "format": "tsx scripts/lint.ts --fix",
+    "test": "ng test sandbox",
+    "test-ci": "ng run sandbox:test:ci",
+    "build": "ng build && tsx scripts/post-build.ts",
+    "release": "tsx scripts/release.ts"
   },
   "dependencies": {
-    "raw-loader": "^4.0.2"
+    "@vitest/coverage-v8": "^4.1.11",
+    "raw-loader": "^4.0.2",
+    "vitest": "4.1.11"
   }
 }

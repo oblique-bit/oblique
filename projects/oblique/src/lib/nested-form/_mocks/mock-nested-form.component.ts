@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {
 	AbstractControl,
 	ControlValueAccessor,
@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 
 /**
- *  @deprecated since Oblique 11. It will be removed with Oblique 12. Use the real instances instead
+ *  @deprecated since Oblique 11. No removal version is planned. Use the real instances instead
  */
 @Component({
 	selector: 'ob-nested-form',
@@ -19,11 +19,12 @@ import {
 		{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: ObMockNestedFormComponent},
 		{provide: NG_VALIDATORS, multi: true, useExisting: ObMockNestedFormComponent},
 	],
+	changeDetection: ChangeDetectionStrategy.Eager,
 	host: {class: 'ob-nested-form'},
 	exportAs: 'obNestedForm',
 })
 export class ObMockNestedFormComponent implements ControlValueAccessor, Validator {
-	@Input() nestedForm: UntypedFormGroup;
+	readonly nestedForm = input<UntypedFormGroup>(undefined);
 
 	registerOnChange(fn: any): void {}
 

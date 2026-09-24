@@ -3,7 +3,7 @@ import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {ObOffCanvasService} from './off-canvas.service';
 import {Subject} from 'rxjs';
 import {TestBed} from '@angular/core/testing';
-import {WINDOW} from '../utilities';
+import {WINDOW} from '../window/window.provider';
 
 describe('ObOffCanvasBackdropDirective', () => {
 	const offCanvasService = {open: false} as ObOffCanvasService;

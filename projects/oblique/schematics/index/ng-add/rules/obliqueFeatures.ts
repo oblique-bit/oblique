@@ -10,7 +10,6 @@ import {
 import {
 	adaptInsertChange,
 	addDevDependency,
-	angularAppFilesNames,
 	appModulePath,
 	applyChanges,
 	createSrcFile,
@@ -24,7 +23,6 @@ import {
 	createSafeRule,
 	infoMigration,
 	readFile,
-	replaceInFile,
 	setOrCreateAngularProjectsConfig,
 	writeFile,
 } from '../../utils';
@@ -116,7 +114,7 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 					addProviderToModule(
 						sourceFile,
 						appModulePath,
-						'provideHttpClient(withInterceptorsFromDi())',
+						'provideHttpClient(withXhr(), withInterceptorsFromDi())',
 						'@angular/common/http'
 					)
 				)
@@ -128,16 +126,23 @@ function addInterceptors(httpInterceptors: boolean): Rule {
 					adaptInsertChange(
 						tree,
 						change,
-						'provideHttpClient(withInterceptorsFromDi())',
-						'provideHttpClient, HTTP_INTERCEPTORS, withInterceptorsFromDi'
+						'provideHttpClient(withXhr(), withInterceptorsFromDi())',
+						'provideHttpClient, HTTP_INTERCEPTORS, withInterceptorsFromDi, withXhr'
 					)
 				);
 			tree = applyChanges(tree, appModulePath, changes);
 		} else {
 			const sourceFile = createSrcFile(tree, appModulePath);
-			const changes = addProviderToModule(sourceFile, appModulePath, 'provideHttpClient()', '@angular/common/http')
+			const changes = addProviderToModule(
+				sourceFile,
+				appModulePath,
+				'provideHttpClient(withXhr())',
+				'@angular/common/http'
+			)
 				.filter((change: Change) => change instanceof InsertChange)
-				.map((change: InsertChange) => adaptInsertChange(tree, change, 'provideHttpClient()', 'provideHttpClient'));
+				.map((change: InsertChange) =>
+					adaptInsertChange(tree, change, 'provideHttpClient(withXhr())', 'provideHttpClient, withXhr')
+				);
 			tree = applyChanges(tree, appModulePath, changes);
 		}
 		return tree;
@@ -166,7 +171,6 @@ function addDefaultHomeComponent(prefix: string): Rule {
 		addDefaultComponent(tree, prefix);
 		addDefaultComponentToAppModule(tree);
 		addDefaultComponentRouteToAppRoutingModule(tree);
-		removeTitleTest(tree);
 
 		return tree;
 	});
@@ -213,11 +217,6 @@ function addDefaultComponentRouteToAppRoutingModule(tree: Tree): void {
 		}
 		applyChanges(tree, routingModule, changes);
 	}
-}
-
-function removeTitleTest(tree: Tree): void {
-	const appSpecFile = `src/app/${angularAppFilesNames.appComponentSpec}`;
-	replaceInFile(tree, appSpecFile, /\s*it\('should render title', .*?}\);/s, '');
 }
 
 function addExternalLink(externalLink: boolean): Rule {
@@ -305,5 +304,5 @@ function buildAccessibilityConfig(
 }
 
 function buildHasLanguageInUrlConfig(hasLanguageInUrl: boolean): string {
-	return `hasLanguageInUrl: ${hasLanguageInUrl}`;
+	return `language: {hasLanguageInUrl: ${hasLanguageInUrl}}`;
 }

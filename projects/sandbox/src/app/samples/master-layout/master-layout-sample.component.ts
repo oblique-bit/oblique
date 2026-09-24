@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {ObEScrollMode} from '@oblique/oblique';
 
 @Component({
@@ -6,11 +6,13 @@ import {ObEScrollMode} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './master-layout-sample.component.html',
 	styleUrl: './master-layout-sample.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MasterLayoutSampleComponent {
 	scrollMode = ObEScrollMode;
-
+	readonly showScrollFixture = signal(false);
 	coverLayout = false;
+
 	setLayout($event: boolean): void {
 		this.coverLayout = $event;
 	}

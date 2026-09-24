@@ -2,8 +2,8 @@ import {Injectable, inject} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
-import {WINDOW} from '../../utilities';
-import {ObWindow} from '../../utilities.model';
+import {WINDOW} from '../../window/window.provider';
+import {ObWindow} from '../../window/window.provider.model';
 import {ObServiceNavigationApplicationsApiService} from '../api/service-navigation-applications-api.service';
 import {
 	ObIServiceNavigationApplicationIdentifier,

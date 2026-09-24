@@ -41,10 +41,32 @@ testem.log
 .eslintcache
 .stylelintcache
 .prettiercache
+.vitecache
+.vitest-attachments
+__screenshots__
 
 # e2e
 /e2e/*.js
 /e2e/*.map
+
+# sandbox-e2e
+artifacts/
+playwright-report/
+test-results/
+
+# environment files
+.env
+.env.local
+.env.*.local
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript cache
+*.tsbuildinfo
 
 #System Files
 .DS_Store

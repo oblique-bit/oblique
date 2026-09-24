@@ -16,7 +16,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {TranslateModule} from '@ngx-translate/core';
+import {MatTimepickerModule} from '@angular/material/timepicker';
+import {TranslatePipe} from '@ngx-translate/core';
 
 import {SampleDataResolver} from '../resolvers/sample-data.resolver';
 import {SamplesRoutingModule} from './samples-routing.module';
@@ -56,18 +57,19 @@ import {
 	ObFocusInvalidModule,
 	ObInputClearModule,
 	ObLanguageModule,
+	ObLocalizePipe,
 	ObNavTreeModule,
 	ObNestedFormModule,
 	ObNotificationModule,
 	ObNumberFormatModule,
 	ObPopoverModule,
-	ObSchemaValidationModule,
 	ObSelectableModule,
 	ObServiceNavigationModule,
 	ObSpinnerModule,
 	ObUnknownRouteModule,
 	ObUnsavedChangesModule,
 } from '@oblique/oblique';
+import {ObSchemaValidationModule} from '@oblique/oblique/schema-validation';
 import {NestedFormChildTDSampleComponent} from './nested-form/nested-form-child-td-sample.component';
 import {NestedFormGrandChildTDSampleComponent} from './nested-form/nested-form-grandchild-td-sample.component';
 import {SelectableSampleComponent} from './selectable/selectable-sample.component';
@@ -89,7 +91,7 @@ import {MasterLayoutFooterSampleComponent} from './master-layout/master-layout-f
 import {MasterLayoutLayoutSampleComponent} from './master-layout/master-layout-layout-sample/master-layout-layout-sample.component';
 import {MasterLayoutNavigationSampleComponent} from './master-layout/master-layout-navigation-sample/master-layout-navigation-sample.component';
 import {FormSampleCombinationsComponent} from './form-combinations/form-sample-combinations.component';
-import {ObLocalizePipe} from './../../../../oblique/src/lib/router/ob-localize.pipe';
+import {AutocompleteCustomValidatorSampleComponent} from './autocomplete-custom-validator/autocomplete.component';
 
 @NgModule({
 	imports: [
@@ -109,6 +111,7 @@ import {ObLocalizePipe} from './../../../../oblique/src/lib/router/ob-localize.p
 		MatRadioModule,
 		MatSelectModule,
 		MatSlideToggleModule,
+		MatTimepickerModule,
 		MatTooltipModule,
 		ObAlertModule,
 		ObBreadcrumbModule.forRoot({}),
@@ -136,7 +139,7 @@ import {ObLocalizePipe} from './../../../../oblique/src/lib/router/ob-localize.p
 		ReactiveFormsModule,
 		RouterModule,
 		SamplesRoutingModule,
-		TranslateModule,
+		TranslatePipe,
 		MasterLayoutHeaderSampleComponent,
 		MasterLayoutFooterSampleComponent,
 		MasterLayoutLayoutSampleComponent,
@@ -147,6 +150,7 @@ import {ObLocalizePipe} from './../../../../oblique/src/lib/router/ob-localize.p
 	declarations: [
 		AlertSampleComponent,
 		AutocompleteSampleComponent,
+		AutocompleteCustomValidatorSampleComponent,
 		BreadcrumbSampleComponent,
 		ButtonSampleComponent,
 		CollapseSampleComponent,

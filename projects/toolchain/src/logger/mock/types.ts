@@ -1,4 +1,5 @@
-import type {ObGroupLogger, ObLogger} from '../logger.types';
+import type {Mocked} from 'vitest';
+import type {ObGroupLogger, ObLogger} from '../logger.types.js';
 
 /**
  * Represents a fully mocked logger environment for testing.
@@ -13,11 +14,11 @@ export interface ObMockLogger {
 	/**
 	 * A fully mocked {@link ObLogger} instance.
 	 *
-	 * All methods are Jest mocks and do not produce real output.
+	 * All methods are Vitest mocks and do not produce real output.
 	 * The {@link ObLogger#group|ObLogger.group()} method returns a mocked {@link ObGroupLogger}
 	 * that is stored in {@link ObMockLogger#loggerGroups|loggerGroups}.
 	 */
-	logger: jest.Mocked<ObLogger>;
+	logger: Mocked<ObLogger>;
 
 	/**
 	 * An array of fully mocked {@link ObGroupLogger} instances.
@@ -26,18 +27,18 @@ export interface ObMockLogger {
 	 * or {@link ObGroupLogger#group|ObGroupLogger.group()} on the logger or any of its descendant groups.
 	 * Instances are stored in order of creation: `loggerGroups[0]` is the first group created.
 	 */
-	loggerGroups: jest.Mocked<ObGroupLogger>[];
+	loggerGroups: Mocked<ObGroupLogger>[];
 
 	/**
 	 * Typically called after each test to clear the existing groups and avoid interference from previous tests.
 	 *
-	 * Note: Neither `jest.resetAllMocks()` nor `jest.clearAllMocks()` will reset the {@link ObMockLogger#loggerGroups|loggerGroups} array.
+	 * Note: Neither `vi.resetAllMocks()` nor `vi.clearAllMocks()` will reset the {@link ObMockLogger#loggerGroups|loggerGroups} array.
 	 * This function was created to handle that specific case.
 	 *
 	 * @example
 	 * afterEach(() => {
 	 *   clearGroups();        // resets the {@link ObMockLogger#loggerGroups|loggerGroups} array
-	 *   jest.clearAllMocks(); // resets all Jest mocks
+	 *   vi.clearAllMocks(); // resets all Jest mocks
 	 * });
 	 */
 	clearGroups: () => void;

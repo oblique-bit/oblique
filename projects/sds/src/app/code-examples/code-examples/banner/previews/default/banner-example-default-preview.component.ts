@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 
@@ -6,5 +6,6 @@ import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
 	selector: 'app-banner-example-default-preview',
 	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
 	templateUrl: './banner-example-default-preview.component.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class BannerExampleDefaultPreviewComponent {}

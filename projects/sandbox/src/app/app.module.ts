@@ -1,20 +1,17 @@
 import {NgModule, inject} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withXhr} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 import {
-	OB_BANNER,
 	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
-	OB_PAMS_CONFIGURATION,
 	ObAlertModule,
 	ObAutocompleteModule,
 	ObButtonModule,
@@ -30,7 +27,6 @@ import {
 	ObNotificationModule,
 	ObOffCanvasModule,
 	ObPopoverModule,
-	ObSchemaValidationModule,
 	ObScrollingModule,
 	ObSelectableModule,
 	ObSpinnerModule,
@@ -49,7 +45,6 @@ import localeFR from '@angular/common/locales/fr-CH';
 import localeDE from '@angular/common/locales/de-CH';
 import {HttpInterceptorSampleComponent} from './samples/http-interceptor/http-interceptor-sample.component';
 import {infoContact, infoLinks, profileLinks} from './service-navigation.config';
-import {OB_MAT_ERROR_PREFIX} from '@oblique/utilities';
 
 registerLocaleData(localeFR);
 registerLocaleData(localeDE);
@@ -76,24 +71,19 @@ registerLocaleData(localeDE);
 		ObNotificationModule,
 		ObOffCanvasModule,
 		ObPopoverModule,
-		ObSchemaValidationModule,
 		ObScrollingModule,
 		ObSelectableModule,
 		ObSpinnerModule,
 		ObUnsavedChangesModule,
 		ReactiveFormsModule,
-		TranslateModule,
+		TranslatePipe,
 	],
 	declarations: [AppComponent, HomePageComponent],
 	providers: [
-		{provide: OB_BANNER, useValue: environment.banner},
-		{provide: OB_PAMS_CONFIGURATION, useValue: environment.pams},
 		{provide: HTTP_INTERCEPTORS, useClass: ObHttpApiInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: HttpMockErrorInterceptor, multi: true},
 		{provide: OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, useValue: false},
-		{provide: OB_MAT_ERROR_PREFIX, useValue: 'i18n.custom-token-prefix.'},
-		provideMomentDateAdapter(),
-		provideHttpClient(withInterceptorsFromDi()),
+		provideHttpClient(withXhr(), withInterceptorsFromDi()),
 		provideObliqueConfiguration({
 			accessibilityStatement: {
 				applicationName: 'Sandbox',
@@ -119,15 +109,15 @@ registerLocaleData(localeDE);
 			translate: {
 				locales: {
 					locales: ['en-us', 'fr-CH'],
-					defaultLanguage: 'en',
-					disabled: false,
-					languages: {
-						en: 'English',
-						fr: 'Français',
-					},
 				},
 			},
-			hasLanguageInUrl: true,
+			language: {hasLanguageInUrl: true},
+			consoleConfiguration: {silencedLabels: new Set()},
+			banner: environment.banner,
+			pams: environment.pams,
+			material: {
+				OB_MAT_ERROR_PREFIX: 'i18n.custom-token-prefix.',
+			},
 		}),
 	],
 	bootstrap: [AppComponent],

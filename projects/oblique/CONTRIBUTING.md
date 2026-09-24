@@ -13,11 +13,13 @@ must use the **service-navigation** package and one of the following scopes:
 | **accessibility-statement** | For changes to the accessibility-statement feature                        |
 | **authentication**          | For changes to the authentication feature                                 |
 | **autocomplete**            | For changes to the autocomplete feature                                   |
+| **banner**                  | For changes to the banner feature                                         |
 | **button**                  | For changes to the button feature                                         |
 | **breadcrumb**              | For changes to the breadcrumb feature                                     |
 | **breakpoints**             | For changes to the breakpoints feature                                    |
 | **collapse**                | For changes to the collapse feature                                       |
 | **column-layout**           | For changes to the column-layout feature                                  |
+| **console**                 | For changes to the console feature                                        |
 | **document-meta**           | For changes to the document-meta feature                                  |
 | **error-messages**          | For changes to the error-messages feature                                 |
 | **external-link**           | For changes to the external-link feature                                  |
@@ -35,9 +37,9 @@ must use the **service-navigation** package and one of the following scopes:
 | **notification**            | For changes to the notification feature                                   |
 | **number-format**           | For changes to the number-format feature                                  |
 | **off-canvas**              | For changes to the off-canvas feature                                     |
-| **paginator**               | For changes to the paginator feature                                      |
 | **popover**                 | For changes to the popover feature                                        |
-| **router**                  | For changes to the router feature                                         |
+| **popover**                 | For changes to the popover feature                                        |
+| **provider**                | For changes to the provider feature                                       |
 | **rxjs-operators**          | For changes to the rxjs-operators feature                                 |
 | **schema-validation**       | For changes to the schema-validation feature                              |
 | **scrolling**               | For changes to the scrolling feature                                      |
@@ -52,6 +54,7 @@ must use the **service-navigation** package and one of the following scopes:
 | **schematics**              | for changes to the schematics that are not directly linked to a feature   |
 | **translation**             | for changes to the translations that are not directly linked to a feature |
 | **utilities**               | for changes to `utilities.ts`                                             |
+| **window**                  | for changes to the window providers                                       |
 
 ## <a name="scripts"></a> Scripts
 

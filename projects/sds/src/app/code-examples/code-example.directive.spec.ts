@@ -1,16 +1,18 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, provideZonelessChangeDetection} from '@angular/core';
+import {ChangeDetectionStrategy, Component, provideZonelessChangeDetection} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {CodeExampleDirective} from './code-example.directive';
 
 @Component({
 	template: 'Hello World',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyComponent {}
 
 @Component({
 	imports: [CodeExampleDirective],
 	template: '<div appCodeExample [codeExampleComponent]="component"></div>',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class CodeExampleDirectiveTestComponent {
 	component = DummyComponent;

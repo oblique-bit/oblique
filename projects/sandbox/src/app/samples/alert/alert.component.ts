@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {ObIAlertType} from '@oblique/oblique';
 
 @Component({
@@ -6,6 +6,7 @@ import type {ObIAlertType} from '@oblique/oblique';
 	standalone: false,
 	templateUrl: './alert.component.html',
 	styleUrl: './alert.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AlertSampleComponent {
 	type: ObIAlertType = 'info';

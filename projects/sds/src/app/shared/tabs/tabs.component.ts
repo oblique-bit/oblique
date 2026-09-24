@@ -1,4 +1,4 @@
-import {Component, type OnChanges, contentChildren, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnChanges, contentChildren, input, output} from '@angular/core';
 import {TabComponent} from './tab/tab.component';
 import {IdPipe} from '../id/id.pipe';
 
@@ -7,6 +7,7 @@ import {IdPipe} from '../id/id.pipe';
 	imports: [IdPipe],
 	templateUrl: './tabs.component.html',
 	styleUrl: './tabs.component.scss',
+	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class TabsComponent implements OnChanges {
 	readonly idPrefix = input('');

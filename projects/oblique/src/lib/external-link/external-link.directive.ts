@@ -1,39 +1,44 @@
-import {Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, Renderer2, inject, input} from '@angular/core';
+import {DestroyRef, Directive, ElementRef, OnChanges, OnInit, Renderer2, inject, input, signal} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, switchMap} from 'rxjs';
-import {first, startWith, takeUntil, tap} from 'rxjs/operators';
-import {WINDOW} from './../utilities';
-import {ObWindow} from './../utilities.model';
+import {first, startWith, tap} from 'rxjs/operators';
+import {WINDOW} from './../window/window.provider';
+import {ObWindow} from './../window/window.provider.model';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Directive({
 	// eslint-disable-next-line @angular-eslint/directive-selector
 	selector: 'a',
 	host: {
-		'[attr.rel]': 'rel',
-		'[attr.target]': 'target',
+		'[attr.rel]': 'internalRel()',
+		'[attr.target]': 'internalTarget()',
 		'[class.ob-external-link]': 'isLinkExternal',
 	},
 })
-export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
+export class ObExternalLinkDirective implements OnInit, OnChanges {
 	readonly href = input<string>();
-	@Input() rel: string;
-	@Input() target: string;
-	@Input() isExternalLink: boolean | 'auto' = 'auto';
+	readonly rel = input<string>();
+	readonly target = input<string>();
+	readonly config = inject(EXTERNAL_LINK, {optional: true});
+	readonly isExternalLink = input<boolean | 'auto'>(this.config?.isExternalLink ?? 'auto');
 	isLinkExternal = false;
-	@Input() icon: ObEExternalLinkIcon;
+	readonly icon = input<ObEExternalLinkIcon>(this.config?.icon ?? 'left');
 
-	private readonly unsubscribe = new Subject<void>();
+	readonly internalRel = signal<string | undefined>(undefined);
+	readonly internalTarget = signal<string | undefined>(undefined);
+
+	private readonly destroyRef = inject(DestroyRef);
 	private iconElement: HTMLSpanElement;
 	private readonly host: HTMLAnchorElement;
 	private hasIcon = false;
 	private readonly screenReaderOnlyTextElement: HTMLSpanElement;
 	private readonly isLinkExternal$ = new Subject<boolean>();
-	private defaultRel: string;
-	private defaultTarget: string;
+	private defaultRel: string | undefined;
+	private defaultTarget: string | undefined;
 	private readonly window = inject<ObWindow>(WINDOW);
-	private readonly config = inject(EXTERNAL_LINK, {optional: true});
+
 	private readonly renderer = inject(Renderer2);
 	private readonly translate = inject(TranslateService);
 	private readonly iconRegistry = inject(MatIconRegistry);
@@ -41,14 +46,12 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	constructor() {
 		const elRef = inject(ElementRef);
 		this.host = elRef.nativeElement;
-		this.icon = this.config?.icon || 'left';
-		this.isExternalLink = this.config?.isExternalLink || 'auto';
 		this.screenReaderOnlyTextElement = this.createScreenReaderOnlyTextElement();
 	}
 
 	ngOnInit(): void {
-		this.defaultRel = this.rel;
-		this.defaultTarget = this.target;
+		this.defaultRel = this.rel();
+		this.defaultTarget = this.target();
 		this.translateScreenReaderOnlyText();
 		this.iconRegistry
 			.getNamedSvgIcon('link_external')
@@ -57,7 +60,7 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 				tap(svg => {
 					this.iconElement = this.createIconElement(svg);
 				}),
-				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isUrlExternal(this.href())))),
+				switchMap(() => this.isLinkExternal$.pipe(startWith(this.isLinkOriginExternal()))),
 				tap(isLinkExternal => {
 					this.isLinkExternal = isLinkExternal;
 				})
@@ -68,37 +71,37 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	}
 
 	ngOnChanges(): void {
-		this.isLinkExternal$.next(this.isUrlExternal(this.href()));
+		this.isLinkExternal$.next(this.isLinkOriginExternal());
 		this.host.href = this.href();
 	}
 
-	ngOnDestroy(): void {
-		this.unsubscribe.next();
-		this.unsubscribe.complete();
-	}
-
-	private isUrlExternal(url: string | undefined): boolean {
-		if (this.isExternalLink === 'auto') {
-			return url ? !url.includes(this.window.location.host) : false;
+	private isLinkOriginExternal(): boolean {
+		const isExternalLink = this.isExternalLink();
+		if (isExternalLink === 'auto') {
+			return this.host.origin ? this.host.origin !== this.window.location.origin : false;
 		}
-		return this.isExternalLink;
+		return isExternalLink;
 	}
 
 	private manageLink(isLinkExternal: boolean): void {
 		this.removeIcon();
 		if (isLinkExternal) {
-			this.rel = ObExternalLinkDirective.initializeAttribute(this.rel, this.config?.rel || 'noopener noreferrer');
-			this.target = ObExternalLinkDirective.initializeAttribute(this.target, this.config?.target || '_blank');
+			this.internalRel.set(
+				ObExternalLinkDirective.initializeAttribute(this.rel(), this.config?.rel || 'noopener noreferrer')
+			);
+			this.internalTarget.set(
+				ObExternalLinkDirective.initializeAttribute(this.target(), this.config?.target || '_blank')
+			);
 			this.addScreenReaderOnlyTextElement();
 			this.addIcon();
 		} else {
-			this.rel = this.defaultRel;
-			this.target = this.defaultTarget;
+			this.internalRel.set(this.defaultRel);
+			this.internalTarget.set(this.defaultTarget);
 			this.removeScreenReaderOnlyTextElement();
 		}
 	}
 
-	private static initializeAttribute(currentValue: string, defaultValue: string): string {
+	private static initializeAttribute(currentValue: string | undefined, defaultValue: string): string {
 		return currentValue === '' ? undefined : (currentValue ?? defaultValue);
 	}
 
@@ -112,15 +115,16 @@ export class ObExternalLinkDirective implements OnInit, OnChanges, OnDestroy {
 	private translateScreenReaderOnlyText(): void {
 		this.translate
 			.stream('i18n.oblique.external')
-			.pipe(takeUntil(this.unsubscribe))
+			.pipe(takeUntilDestroyed(this.destroyRef))
 			.subscribe((text: string) => {
 				this.renderer.setProperty(this.screenReaderOnlyTextElement, 'textContent', ` - ${text}`);
 			});
 	}
 
 	private addIcon(): void {
-		if (this.icon !== 'none' && this.iconElement) {
-			if (this.icon === 'left') {
+		const icon = this.icon();
+		if (icon !== 'none' && this.iconElement) {
+			if (icon === 'left') {
 				this.renderer.insertBefore(this.host, this.iconElement, this.host.firstChild);
 			} else {
 				this.renderer.appendChild(this.host, this.iconElement);

@@ -1,7 +1,8 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable, inject} from '@angular/core';
-import {Observable, map} from 'rxjs';
+import {Observable} from 'rxjs';
 import {ObIServiceNavigationResponse, ObIServiceNavigationState} from './service-navigation.api.model';
+import {obGetDataOrThrowStatus500} from './service-navigation.api.utils';
 
 @Injectable({providedIn: 'root'})
 export class ObServiceNavigationStateApiService {
@@ -14,6 +15,6 @@ export class ObServiceNavigationStateApiService {
 				withCredentials: true,
 				params: {lastUsedLimit: 4, favoriteLimit},
 			})
-			.pipe(map(res => res.data));
+			.pipe(obGetDataOrThrowStatus500());
 	}
 }
