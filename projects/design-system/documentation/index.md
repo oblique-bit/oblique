@@ -21,22 +21,28 @@ Design tokens are also an answer to demands from several sides at once:
 - **Design tooling:** Figma itself has moved toward variables and modes
 
 **Benefits of Design Tokens**
-- A scalable design structure, enriched with context, forming a shared language and bridge between designers, developers, design tools, and AI tools alike
+- A scalable design tokens structure, enriched with context, forming a shared language and bridge between designers, developers, design tools (Figma), and AI tools alike
 - DTCG-compliant tokens, compatible with Tokens Studio (the industry-standard token management platform) and exportable to Figma and CSS
-- Shortens the design-to-code path, and speeds up further development
+- Shortens the design-to-code path, and speeds up contribution and further development
 - Entirely replaces hardcoded values with semantically named tokens, lowering the risk of human error
 - Accumulates development cost savings across all federal applications in the long run
 - Lowers the barrier for product designers to contribute directly to the design system
 - Modes enable context-driven design, adapting to different environments and easing accessibility challenges
 
-**What this release contains**
+**What this Design System release contains**
 - Design tokens as JSON files for color, typography, dimension, and more
 - Modes: lightness (light/dark), emphasis, UI scale, density, typography context, motion, viewport
 - Figma Library with token-based variables, styles and variable modes
 - Token-based CSS
 
-**What this release does not contain yet**
-- No components, in the token JSON or in the Figma library; planned for 2027.
+**What this Design System release does not contain yet**
+- No components, in the token JSON or in the Figma library. The Figma library currently holds variables and text/effect styles only; components will be added in 2027.
+
+**Where to find it**
+- **Markdown documentation** — the full token documentation, in git: link pending
+- **Token JSON** — the token source files, in git: link pending
+- **CSS** — built by the system developer from the released tokens: link pending
+- **Figma library** — the new token-based library (variables and styles, no components): link pending
 
 **How this relates to Oblique**
 
@@ -91,8 +97,3 @@ Sorted along two axes. **Tiers** say where a token sits in the reference chain. 
 
 ---
 
-## Validation
-
-```bash
-node scripts-custom/figma-doc-builders/validate-all.js
-```
