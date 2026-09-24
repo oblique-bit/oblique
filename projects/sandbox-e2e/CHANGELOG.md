@@ -1,4 +1,4 @@
-# [16.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/16.0.0-rc.1...16.0.0-rc.2) (2026-09-21)
+# [16.0.0](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0) (2026-09-24)
 
 ## Features
 

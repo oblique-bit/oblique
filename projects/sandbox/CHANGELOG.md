@@ -1,22 +1,13 @@
-# [16.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/16.0.0-rc.1...16.0.0-rc.2) (2026-09-21)
-
-## Bug Fixes
-
-- **notification:** add missing sample title translation key ([b2f54d4c](https://github.com/oblique-bit/oblique/commit/b2f54d4c88926f1ff76af0cfec70300b73248d8b))
-- **service-navigation:** make the info links toggle work ([9a43fa57](https://github.com/oblique-bit/oblique/commit/9a43fa5704e21360564955196d577e90e5eb13db), OUI-4559)
-
-## Features
-
-- **selectable:** adapt to signals ([736a93b6](https://github.com/oblique-bit/oblique/commit/736a93b611ee166b1b7bf79d05a83bb64d95a118), OUI-4558)
-
-# [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
+# [16.0.0](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0) (2026-09-24)
 
 ## Bug Fixes
 
 - **autocomplete:** template-driven from show model snippet ([82939299](https://github.com/oblique-bit/oblique/commit/82939299dfe92610476922d1e3084fdd16ed1099), OUI-4519)
 - **material:** fix no value accessor error for progress-bar ([cee4a4ca](https://github.com/oblique-bit/oblique/commit/cee4a4cab06cade50486c95f61b1535cb0e6eaa2), OUI-4487)
+- **notification:** add missing sample title translation key ([b2f54d4c](https://github.com/oblique-bit/oblique/commit/b2f54d4c88926f1ff76af0cfec70300b73248d8b))
 - **sandbox:** replace `hasLanguageInUrl` property with `language` ([ebb20c65](https://github.com/oblique-bit/oblique/commit/ebb20c65541c70d6b0f1434a133c463de8b0bc55), OUI-4671)
 - **sandbox:** remove `languages` from `provideObliqueConfiguration` ([006e6ce4](https://github.com/oblique-bit/oblique/commit/006e6ce4b2449b4607b7fbd663fa4028401527c8), OUI-4673)
+- **service-navigation:** make the info links toggle work ([9a43fa57](https://github.com/oblique-bit/oblique/commit/9a43fa5704e21360564955196d577e90e5eb13db), OUI-4559)
 
 ## Features
 
@@ -34,39 +25,7 @@
 - **sandbox:** configure the service-navigation through `provideObliqueConfiguration` ([6ddec34b](https://github.com/oblique-bit/oblique/commit/6ddec34b8aa86b21c70a96de2eb5a796825eb5ec), OUI-4575)
 - **sandbox:** make sandbox zoneless ([df75ffa4](https://github.com/oblique-bit/oblique/commit/df75ffa44d34afb9d88cf167ccfccd888e0449f7), OUI-4487)
 - **sandbox:** remove design-system module ([bd0bb1a5](https://github.com/oblique-bit/oblique/commit/bd0bb1a54d0e2f9c3ccea9456a20eec2150b8ed6), OUI-4439)
-
-# [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
-
-## Bug Fixes
-
-- **autocomplete:** template-driven from show model snippet ([5fbfd5f3](https://github.com/oblique-bit/oblique/commit/5fbfd5f3e0c7f9eba14c5749e1464864a51b47e3), OUI-4519)
-- **material:** fix no value accessor error for progress-bar ([39e5009e](https://github.com/oblique-bit/oblique/commit/39e5009e7890982a3385a97aafef7b4c6c0248b8), OUI-4487)
-
-## Features
-
-- **app:** add empty config for ObConsoleService ([04f92d19](https://github.com/oblique-bit/oblique/commit/04f92d192d9fef2bbf89b284fc98fe002bc10cdf), OUI-4422)
-- **autocomplete:** add sample with custom validator ([6511647a](https://github.com/oblique-bit/oblique/commit/6511647aacfd781f3e452356129164c3699975b8), OUI-4536)
-- **autocomplete:** add content shift controls in autocomplete example ([1ba3c03b](https://github.com/oblique-bit/oblique/commit/1ba3c03b33842fbc9608c19ea08da7350bc0b83e), OUI-4519)
-- **column-layout:** ensure toggling of layout setting on destroy ([0496ff55](https://github.com/oblique-bit/oblique/commit/0496ff55c0ec5ed30c67eb224658d2ec99eb2ebe), OUI-4502)
-- **column-layout:** add requirements for full-height mode ([88523cc5](https://github.com/oblique-bit/oblique/commit/88523cc52f23844a66e491355d09fdb75a8ae6e0), OUI-4502)
-- **global-events:** add navigate to global-events sample ([4306dc34](https://github.com/oblique-bit/oblique/commit/4306dc34fd67873c77c83f9d12c3ccaf426ed47e), TPEFD-10735)
-- **language:** demonstrate `ObLocalizePipe` ([c85f9648](https://github.com/oblique-bit/oblique/commit/c85f9648d1fd4a67fba98354390652036046ff50), OUI-4498)
-- **language:** add time picker sample ([8310ee09](https://github.com/oblique-bit/oblique/commit/8310ee09a7aeb49f365c2fe5d9c5261af1ad2e26), OUI-4472)
-- **sandbox:** make sandbox zoneless ([acb24d7c](https://github.com/oblique-bit/oblique/commit/acb24d7c55b2db8370c45482e24fb9aa669ad58b), OUI-4487)
-- **sandbox:** remove design-system module ([9fe315f5](https://github.com/oblique-bit/oblique/commit/9fe315f53072553ea97d96d5a5eb64c085bb159f), OUI-4439)
-
-# [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
-
-## Bug Fixes
-
-- **material:** fix no value accessor error for progress-bar ([1bb1c731](https://github.com/oblique-bit/oblique/commit/1bb1c731c83ee67deb45868bb8a345043e6295f0), OUI-4487)
-
-## Features
-
-- **column-layout:** ensure toggling of layout setting on destroy ([4649020a](https://github.com/oblique-bit/oblique/commit/4649020a56acf66dcdf642c31176db3fa6fb64c5), OUI-4502)
-- **column-layout:** add requirements for full-height mode ([9092645e](https://github.com/oblique-bit/oblique/commit/9092645eca1a3cdc5edcbc56823dbb47e9101b8a), OUI-4502)
-- **language:** add time picker sample ([9eb5e818](https://github.com/oblique-bit/oblique/commit/9eb5e8185c085f6f8f53929129a4001f8de1879c), OUI-4472)
-- **sandbox:** make sandbox zoneless ([9159e938](https://github.com/oblique-bit/oblique/commit/9159e938baccb54a1e55d3c2a3c69e0be79e3a34), OUI-4487)
+- **selectable:** adapt to signals ([736a93b6](https://github.com/oblique-bit/oblique/commit/736a93b611ee166b1b7bf79d05a83bb64d95a118), OUI-4558)
 
 # [15.4.0](https://github.com/oblique-bit/oblique/compare/15.3.1...15.4.0) (2026-06-04)
 

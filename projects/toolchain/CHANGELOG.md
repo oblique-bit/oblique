@@ -1,14 +1,8 @@
-# [16.0.0-rc.2](https://github.com/oblique-bit/oblique/compare/16.0.0-rc.1...16.0.0-rc.2) (2026-09-21)
+# [16.0.0](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0) (2026-09-24)
 
 ## Bug Fixes
 
 - **schematics:** make generated tests pass with Vitest ([bd4f3f93](https://github.com/oblique-bit/oblique/commit/bd4f3f930a7d5efdf86e00277acbcbd63058c49f))
-
-## Features
-
-- **schematics:** embed master layout in add-oblique schematic ([ee62d050](https://github.com/oblique-bit/oblique/commit/ee62d050b7cb77d851739072c9df5eac264de2bf), OUI-4562)
-
-# [16.0.0-rc.1](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0-rc.1) (2026-09-08)
 
 ## Features
 
@@ -25,6 +19,7 @@
 - **schematics:** add `.npmrc` creation to `ng-add` schematic ([5efead04](https://github.com/oblique-bit/oblique/commit/5efead045fc235ecaa3d513fedd4d5ae4c3ed5d2), OUI-4525)
 - **schematics:** `add-oblique` only write files that have changed ([a0cc9f6a](https://github.com/oblique-bit/oblique/commit/a0cc9f6a16006938f7a795c100fbb78211dfc776), OUI-4159)
 - **schematics:** `add-oblique` use modern favicon definition ([e8888010](https://github.com/oblique-bit/oblique/commit/e8888010efcbbc01357fe55f371b084c8fb917c9), OUI-4159)
+- **schematics:** `add-oblique` embeds master layout ([ee62d050](https://github.com/oblique-bit/oblique/commit/ee62d050b7cb77d851739072c9df5eac264de2bf), OUI-4562)
 - **schematics:** create `linting` schematics ([cfd721f5](https://github.com/oblique-bit/oblique/commit/cfd721f572d8d46b79891ce0b474e2fa14445a2e), OUI-4058)
 - **schematics:** add `add-oblique` schematic ([32055e28](https://github.com/oblique-bit/oblique/commit/32055e28d98fd417c9a766bb16418b745aa783dd), OUI-4488)
 - **toolchain:** distribute as ESM ([934d28b9](https://github.com/oblique-bit/oblique/commit/934d28b92e2f4f1ed8fd6c775c6acfdfe68a3f35), OUI-4500)
@@ -32,47 +27,11 @@
 ## BREAKING CHANGES
 
 - **exec:** Changes signatures of the `obExecWithLogging` and `obExecWithLogging` methods
-- **linting:** rule `@angular-eslint/computed-must-return` is now active
-- **linting:** rule `@angular-eslint/no-implicit-take-until-destroyed` is now active
+- **linting:** `@angular-eslint/computed-must-return` has been activated
+- **linting:** `@angular-eslint/no-implicit-take-until-destroyed` has been activated
 - **linting:** The EsLint configuration is now a named export, meaning it must now be imported with
   `import {eslintConfigOblique} from "@oblique/toolchain/eslint-config"` instead of
   `import eslintConfigOblique from "@oblique/toolchain/eslint-config"`
-- **toolchain:** `@oblique/toolchain` no longer supports CommonJs, use `import` instead of `require()`
-
-# [16.0.0-alpha.4](https://github.com/oblique-bit/oblique/compare/15.4.2...16.0.0-alpha.4) (2026-07-15)
-
-## Bug Fixes
-
-- **toolchain:** define Angular ESLint rules ([62ee6372](https://github.com/oblique-bit/oblique/commit/62ee6372861c11013d2199c28a0c8e79bc680f1b), OUI-4516)
-
-## Features
-
-- **linting:** activate new eslint rules ([c052896b](https://github.com/oblique-bit/oblique/commit/c052896b3fab8e9d0d95b5f2642704d229278de6), OUI-4516)
-- **linting:** export plugin configuration as well as EsLint config ([c53307fa](https://github.com/oblique-bit/oblique/commit/c53307fa1ed3f10567415ff4a4b79c00af046ec3), OUI-4058)
-- **schematics:** `add-oblique` only write files that have changed ([8c0859ab](https://github.com/oblique-bit/oblique/commit/8c0859ab7c477125daf53cb5edbe81afdbf2e8b4), OUI-4159)
-- **schematics:** `add-oblique` use modern favicon definition ([c010b92b](https://github.com/oblique-bit/oblique/commit/c010b92ba8f21004ef9e40611055cee0b2e326ed), OUI-4159)
-- **schematics:** create `linting` schematics ([5af1ce0d](https://github.com/oblique-bit/oblique/commit/5af1ce0d87aad96e1abcbc0676df449973506b03), OUI-4058)
-- **schematics:** add add-oblique schematic ([1e081363](https://github.com/oblique-bit/oblique/commit/1e081363268c69fda4a03a4fefdec05f7ed91247), OUI-4488)
-- **toolchain:** distribute as ESM ([d7d881a3](https://github.com/oblique-bit/oblique/commit/d7d881a3761d6ef13a088a3e18efa151af8ab4c1), OUI-4500)
-
-## BREAKING CHANGES
-
-- **linting:** rule `@angular-eslint/computed-must-return` is now active
-- **linting:** rule `@angular-eslint/no-implicit-take-until-destroyed` is now active
-- **linting:** The EsLint configuration is now a named export, meaning it must now be imported with
-  `import {eslintConfigOblique} from "@oblique/toolchain/eslint-config"` instead of
-  import eslintConfigOblique from "@oblique/toolchain/eslint-config"
-- **toolchain:** `@oblique/toolchain` no longer supports CommonJs, use `import` instead of `require()`
-
-# [16.0.0-alpha.3](https://github.com/oblique-bit/oblique/compare/16.0.0-alpha.2...16.0.0-alpha.3) (2026-06-22)
-
-## Features
-
-- **schematics:** add add-oblique schematic ([3c88dd8a](https://github.com/oblique-bit/oblique/commit/3c88dd8a0e4c7e039eb7b95ac9536a82467789fb), OUI-4488)
-- **toolchain:** distribute as ESM ([8e1ad4de](https://github.com/oblique-bit/oblique/commit/8e1ad4de61e4df380b7a584d18457b0ff0d6bcef), OUI-4500)
-
-## BREAKING CHANGES
-
 - **toolchain:** `@oblique/toolchain` no longer supports CommonJs, use `import` instead of `require()`
 
 # [15.4.4](https://github.com/oblique-bit/oblique/compare/15.4.3...15.4.4) (2026-08-18)
