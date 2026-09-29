@@ -1,6 +1,7 @@
+import path from 'node:path';
 import {Git} from '../shared/git';
 import {Log} from '../shared/log';
-import {fatal} from '../shared/utils';
+import {fatal, getResultFromCommand} from '../shared/utils';
 import {getAbsolutePath} from '../shared/root';
 import {Files} from '../shared/files';
 
@@ -18,7 +19,8 @@ class HookCommitRules {
 		Log.start('Validate commit message');
 		Log.info('Read commit message');
 
-		const message: string[] = Files.read(getAbsolutePath('.git/COMMIT_EDITMSG'))
+		const commitMessagePath = path.resolve(getResultFromCommand('git rev-parse --git-path COMMIT_EDITMSG'));
+		const message: string[] = Files.read(commitMessagePath)
 			.split('\n')
 			.filter(line => !line.startsWith('#'));
 		HookCommitRules.checkLineLength(message, HookCommitRules.maxLineLength);
