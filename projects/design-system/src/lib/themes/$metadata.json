@@ -63,12 +63,6 @@
     "05_html/typography/style",
     "05_html/link/link",
     "05_html/link/interface",
-    "05_html/link/prose",
-    "05_html/button/01_color",
-    "05_html/button/02_typography",
-    "05_html/button/03_shadows",
-    "05_html/button/04_layout",
-    "05_html/button/06_motion",
-    "05_html/button/07_reference_only"
+    "05_html/link/prose"
   ]
 }
