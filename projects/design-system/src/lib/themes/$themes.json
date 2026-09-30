@@ -50,7 +50,6 @@
       "02_primitive/dimension": "source",
       "04_component/atom/icon/02_layout": "enabled",
       "04_component/atom/icon/01_color": "enabled",
-      "05_html/link/link": "enabled",
       "01_global/mode_collection/emphasis": "source",
       "01_global/mode_collection/lightness": "source",
       "01_global/component/footer/lightness/static": "source",
@@ -58,7 +57,8 @@
       "01_global/mode_collection/ui_scale": "source",
       "01_global/mode_collection/density": "source",
       "01_global/mode_collection/typography_context": "source",
-      "01_global/mode_collection/motion": "source"
+      "01_global/mode_collection/motion": "source",
+      "03_semantic/dimension/rem": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1:2",
     "$figmaModeId": "1:0",
