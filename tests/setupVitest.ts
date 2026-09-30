@@ -78,3 +78,13 @@ Object.defineProperty(document, 'adoptedStyleSheets', {
 	writable: true,
 	value: [],
 });
+
+// eslint-disable-next-line @typescript-eslint/unbound-method
+const originalDefine = window.customElements.define;
+
+// Overwrite the define method to bypass duplicate errors
+window.customElements.define = function (name, constructor, options) {
+	if (!window.customElements.get(name)) {
+		originalDefine.call(window.customElements, name, constructor, options);
+	}
+};
