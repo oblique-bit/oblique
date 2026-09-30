@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const chartBarHorizontalIcon: ObRegistrableIcon = {
+	key: 'chartBarHorizontal',
+	svg: '<path d="M10.83301,7.44434h-6.58252v-1.5h6.58252v1.5ZM14.81689,8.59766H4.25049v1.5h10.56641v-1.5ZM18.77637,11.25H4.25049v1.5h14.52588v-1.5ZM13.30811,13.9209H4.25049v1.5h9.05762v-1.5ZM17.41504,16.59278H4.25049v1.5h13.16455v-1.5ZM2.75049,19.25V4h-1.5v16.75h20.74902v-1.5H2.75049Z"/>',
+};

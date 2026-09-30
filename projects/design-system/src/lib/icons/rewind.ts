@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const rewindIcon: ObRegistrableIcon = {
+	key: 'rewind',
+	svg: '<path d="M21.31317,17.29918l-9.17871-5.29907,9.17871-5.29907v10.59814ZM15.13446,12.00011l4.67871,2.70093v-5.40186l-4.67871,2.70093ZM11.11492,17.29918L1.93719,12.00011l9.17773-5.29907v10.59814ZM4.93719,12.00011l4.67773,2.70093v-5.40186l-4.67773,2.70093Z"/>',
+};

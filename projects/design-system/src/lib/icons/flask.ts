@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const flaskIcon: ObRegistrableIcon = {
+	key: 'flask',
+	svg: '<path d="M2.73996,22.75033h18.51953l-6.10742-11.26465v-6.12402h2.20215V1.25033H6.64523v4.11133h2.20312v6.12402l-6.1084,11.26465ZM8.14523,2.75033h7.70898v1.11133h-7.70898v-1.11133ZM13.65207,5.36165v6.50488l5.08789,9.38379H5.25949l5.08887-9.38379v-6.50488h3.30371Z"/>',
+};

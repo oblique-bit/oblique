@@ -10,7 +10,8 @@
     "test-ci": "vitest run --config vitest.config.ci.ts",
     "build": "vite build && tsx scripts/post-build.ts",
     "release": "tsx scripts/release.ts",
-    "extract-tokens": "node scripts/extract-tokens.mjs"
+    "extract-tokens": "node scripts/extract-tokens.mjs",
+    "generate-icon-components": "tsx scripts/generate-icon-components.ts"
   },
   "peerDependencies": {
     "lit": "^3.3.3"

@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const fullscreenExitIcon: ObRegistrableIcon = {
+	key: 'fullscreenExit',
+	svg: '<path d="M9.75,9.75H2.25v-1.5h6V2.25h1.5v7.5ZM21.75,8.25h-6V2.25h-1.5v7.5h7.5v-1.5ZM15.75,15.75h6v-1.5h-7.5v7.5h1.5v-6ZM9.75,14.25H2.25v1.5h6v6h1.5v-7.5Z"/>',
+};

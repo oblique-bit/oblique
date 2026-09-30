@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const arrowDownRightIcon: ObRegistrableIcon = {
+	key: 'arrowDownRight',
+	svg: '<path d="M20.99249,8.21533l-2.70001,10.07715-10.07764,2.7002-.38812-1.44922,8.40454-2.25098L3.00751,4.06885l1.06067-1.06152,13.22369,13.22363,2.25183-8.4043,1.44879.38867Z"/>',
+};

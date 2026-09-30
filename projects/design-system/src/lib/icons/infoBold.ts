@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const infoBoldIcon: ObRegistrableIcon = {
+	key: 'infoBold',
+	svg: '<path d="M12,3c.82843,0,1.5.67157,1.5,1.5s-.67157,1.5-1.5,1.5-1.5-.67157-1.5-1.5.67157-1.5,1.5-1.5ZM10.5,9.16502v11.83997h3v-11.83997h-3Z"/>',
+};

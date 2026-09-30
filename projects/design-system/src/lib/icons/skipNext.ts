@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const skipNextIcon: ObRegistrableIcon = {
+	key: 'skipNext',
+	svg: '<path d="M5.90754,17.29918l9.17871-5.29883L5.90754,6.70055v10.59863ZM7.40754,9.29918l4.67871,2.70117-4.67871,2.7002v-5.40137ZM18.04719,7.00133v10h-1.5V7.00133h1.5Z"/>',
+};

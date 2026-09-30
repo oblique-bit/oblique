@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const exclamationTriangleIcon: ObRegistrableIcon = {
+	key: 'exclamationTriangle',
+	svg: '<path d="M11.99977.82276L1.28639,22.24952h21.42676L11.99977.82276ZM11.99977,4.17726l8.28662,16.57227H3.71315L11.99977,4.17726ZM12.74977,9.24596h-1.5v6.14208h1.5v-6.14208ZM12.00002,17.19583c-.55225,0-1,.44727-1,1,0,.55176.44775,1,1,1s1-.44824,1-1c0-.55273-.44775-1-1-1Z"/>',
+};

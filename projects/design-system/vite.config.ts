@@ -22,7 +22,8 @@ export default defineConfig({
 
 		rollupOptions: {
 			input: getLibInputs(),
-			external: ['lit'],
+			external: [/^lit(?:\/.*)?$/u, /^lit-html(?:\/.*)?$/u, /^lit-element(?:\/.*)?$/u],
+
 			preserveEntrySignatures: 'strict',
 			output: {
 				format: 'es',

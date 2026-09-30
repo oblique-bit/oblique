@@ -12,6 +12,7 @@
 | **app**  | For changes to the application itself |
 | **text** | For changes to the text page          |
 | **demo** | For changes to the demo component     |
+| **icon** | For changes to the icon component     |
 
 ## <a name="scripts"></a> Scripts
 

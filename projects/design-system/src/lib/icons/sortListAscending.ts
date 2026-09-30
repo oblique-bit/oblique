@@ -1,0 +1,6 @@
+import type {ObRegistrableIcon} from '../icon/ob-icon-model';
+
+export const sortListAscendingIcon: ObRegistrableIcon = {
+	key: 'sortListAscending',
+	svg: '<path d="M5.38163,3.70966H1.9998v-1.5h3.38184v1.5ZM9.77372,11.2497H1.9998v1.5h7.77393v-1.5ZM7.39482,6.73017H1.9998v1.5h5.39502v-1.5ZM11.94951,15.70966H1.9998v1.5h9.94971v-1.5ZM1.9998,21.70966h12.44531v-1.5H1.9998v1.5ZM16.57792,2.09345l-6.00635,3.46777.75,1.29883,4.50635-2.60156v17.45117h1.5V4.25849l4.50635,2.60156.75-1.29883-6.00635-3.46777Z"/>',
+};
