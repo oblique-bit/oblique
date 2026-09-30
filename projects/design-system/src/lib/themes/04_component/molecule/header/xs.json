@@ -3,7 +3,7 @@
     "c": {
       "header": {
         "token_family_docs": {
-          "$description": {
+          "description": {
             "$type": "other",
             "$value": "[FIGMA-ONLY] Temporary tokens used only for Figma documentation of the viewport / responsive system. They drive the _pseudo_header component variant so the header swaps with viewport modes. Delete when the real header component ships."
           }

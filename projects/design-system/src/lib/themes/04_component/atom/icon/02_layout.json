@@ -3,7 +3,7 @@
     "c": {
       "icon": {
         "token_family_docs": {
-          "$description": {
+          "description": {
             "$type": "other",
             "$value": "Layout and size tokens for the Icon atom — static, component, and inline-text size variants."
           }
