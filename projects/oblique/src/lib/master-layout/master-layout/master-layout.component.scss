@@ -67,6 +67,7 @@
 	}
 
 	.ob-viewport.ob-fixed-layout .ob-fixed-scroll-wrapper {
+		height: 100%;
 		overflow-y: auto; // shows scrollbars as necessary in fixed layout
 	}
 
@@ -77,8 +78,14 @@
 				display: none;
 			}
 
-			.ob-viewport.ob-fixed-layout .ob-master-layout-wrapper {
-				overflow: visible;
+			.ob-viewport.ob-fixed-layout {
+				.ob-fixed-scroll-wrapper {
+					height: unset;
+				}
+
+				.ob-master-layout-wrapper {
+					overflow: visible;
+				}
 			}
 		}
 
