@@ -5,6 +5,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {LanguageCodeExamplesComponent} from './language-code-examples.component';
 import {By} from '@angular/platform-browser';
 import {LanguageExampleDefaultPreviewComponent} from './previews/default/language-example-default-preview.component';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
 describe(LanguageCodeExamplesComponent.name, () => {
 	let component: LanguageCodeExamplesComponent;
@@ -13,6 +14,7 @@ describe(LanguageCodeExamplesComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [LanguageCodeExamplesComponent, CommonModule, IdPipe, CodeExampleComponent],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(LanguageCodeExamplesComponent);
