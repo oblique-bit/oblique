@@ -13,7 +13,7 @@
             "none": {
               "px": {
                 "$type": "dimension",
-                "$value": "{ob.p.dimension.px.0} * 1px",
+                "$value": "{ob.p.dimension.px.0}",
                 "$description": "Zero dimension for collapse and reset. Absolute (px) — does not change on mode switch."
               }
             },
@@ -21,21 +21,21 @@
               "xs": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "{ob.p.dimension.px.1} * 1px",
+                  "$value": "{ob.p.dimension.px.1}",
                   "$description": "Finest hairline dimension. Absolute (px) — does not change on mode switch. Use for 1px borders and sub-pixel rules."
                 }
               },
               "sm": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "{ob.p.dimension.px.2} * 1px",
+                  "$value": "{ob.p.dimension.px.2}",
                   "$description": "Thin border dimension. Absolute (px) — does not change on mode switch. Use for subtle dividers, thin outlines, nudge adjustments."
                 }
               },
               "md": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "{ob.p.dimension.px.3} * 1px",
+                  "$value": "{ob.p.dimension.px.3}",
                   "$description": "Visible border dimension. Absolute (px) — does not change on mode switch. Use for prominent outlines and focus indicators."
                 }
               }
