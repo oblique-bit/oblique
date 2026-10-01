@@ -19,48 +19,48 @@
               },
               "xs": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.100} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.100} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "sm": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.200} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.200} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "md": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.300} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.300} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "lg": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.400} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.400} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "xl": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.500} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}",
+                "$value": "roundTo({ob.p.font_size_unitless.500} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)",
                 "$description": "Inserted step — aligns H3 (interface context) with the current production font-size. Sits between lg and the renumbered 2xl."
               },
               "2xl": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.600} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.600} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "3xl": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.700} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.700} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "4xl": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.800} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.800} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "5xl": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.900} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.900} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "6xl": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.1000} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.1000} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "base": {
                 "$type": "fontSizes",
-                "$value": "{ob.p.font_size_rem.300} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.font_size_unitless.300} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               }
             },
             "line_height": {
@@ -72,35 +72,35 @@
               },
               "xs": {
                 "$type": "lineHeights",
-                "$value": "{ob.p.line_height_rem.300} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.line_height.300} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "sm": {
                 "$type": "lineHeights",
-                "$value": "{ob.p.line_height_rem.400} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.line_height.400} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "md": {
                 "$type": "lineHeights",
-                "$value": "{ob.p.line_height_rem.500} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.line_height.500} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "lg": {
                 "$type": "lineHeights",
-                "$value": "{ob.p.line_height_rem.600} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.line_height.600} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "2xl": {
                 "$type": "lineHeights",
-                "$value": "{ob.p.line_height_rem.800} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.line_height.800} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "3xl": {
                 "$type": "lineHeights",
-                "$value": "{ob.p.line_height_rem.1100} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.line_height.1100} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "4xl": {
                 "$type": "lineHeights",
-                "$value": "{ob.p.line_height_rem.1300} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.line_height.1300} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               },
               "5xl": {
                 "$type": "lineHeights",
-                "$value": "{ob.p.line_height_rem.1400} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+                "$value": "roundTo({ob.p.line_height.1400} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}, 0)"
               }
             },
             "paragraph_spacing": {
@@ -112,35 +112,35 @@
               },
               "xs": {
                 "$type": "paragraphSpacing",
-                "$value": "({ob.s.typography.scale.dynamic.line_height.xs} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2"
+                "$value": "roundTo(({ob.s.typography.scale.dynamic.line_height.xs} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2, 0)"
               },
               "sm": {
                 "$type": "paragraphSpacing",
-                "$value": "({ob.s.typography.scale.dynamic.line_height.sm} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2"
+                "$value": "roundTo(({ob.s.typography.scale.dynamic.line_height.sm} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2, 0)"
               },
               "md": {
                 "$type": "paragraphSpacing",
-                "$value": "({ob.s.typography.scale.dynamic.line_height.md} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2"
+                "$value": "roundTo(({ob.s.typography.scale.dynamic.line_height.md} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2, 0)"
               },
               "lg": {
                 "$type": "paragraphSpacing",
-                "$value": "({ob.s.typography.scale.dynamic.line_height.lg} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2"
+                "$value": "roundTo(({ob.s.typography.scale.dynamic.line_height.lg} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2, 0)"
               },
               "2xl": {
                 "$type": "paragraphSpacing",
-                "$value": "({ob.s.typography.scale.dynamic.line_height.2xl} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2"
+                "$value": "roundTo(({ob.s.typography.scale.dynamic.line_height.2xl} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2, 0)"
               },
               "3xl": {
                 "$type": "paragraphSpacing",
-                "$value": "({ob.s.typography.scale.dynamic.line_height.3xl} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2"
+                "$value": "roundTo(({ob.s.typography.scale.dynamic.line_height.3xl} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2, 0)"
               },
               "4xl": {
                 "$type": "paragraphSpacing",
-                "$value": "({ob.s.typography.scale.dynamic.line_height.4xl} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2"
+                "$value": "roundTo(({ob.s.typography.scale.dynamic.line_height.4xl} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2, 0)"
               },
               "5xl": {
                 "$type": "paragraphSpacing",
-                "$value": "({ob.s.typography.scale.dynamic.line_height.5xl} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2"
+                "$value": "roundTo(({ob.s.typography.scale.dynamic.line_height.5xl} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}) / 2, 0)"
               }
             },
             "spacing": {
