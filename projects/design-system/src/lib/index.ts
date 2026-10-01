@@ -1,2 +1,3 @@
 export {ObDemo} from './demo';
-export {ObIcon} from './icon';
+export {ObIcon, iconsRegistry} from './icon';
+export * from './icons';

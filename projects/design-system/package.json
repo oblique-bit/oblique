@@ -2,6 +2,7 @@
   "name": "@oblique/design-system",
   "version": "16.0.2",
   "type": "module",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "lint": "tsx scripts/lint.ts",
     "format": "tsx scripts/lint.ts --fix",
