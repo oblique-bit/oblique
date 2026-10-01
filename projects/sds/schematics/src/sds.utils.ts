@@ -119,7 +119,7 @@ export function showAlreadyExistsMessage(
 ): void {
 	context.logger.info(
 		`${colors.symbols.info}\tThe ${exist.elementDescription} ${exist.symbol} already exists${
-			exist?.existsIn?.length > 0 ? ` ${exist.existsIn}.` : '.'
+			exist?.existsIn?.length ? ` ${exist.existsIn}.` : '.'
 		} It will not be added again.`
 	);
 }
