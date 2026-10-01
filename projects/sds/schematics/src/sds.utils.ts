@@ -1,10 +1,5 @@
 import {type Rule, type SchematicContext, SchematicsException, type Tree, noop} from '@angular-devkit/schematics';
-import {
-	ScriptKind,
-	ScriptTarget,
-	type SourceFile,
-	createSourceFile,
-} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {ScriptKind, ScriptTarget, type SourceFile, createSourceFile} from 'typescript';
 import {isImported} from '@schematics/angular/utility/ast-utils';
 import type {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
 import {createHost} from './host.utils';

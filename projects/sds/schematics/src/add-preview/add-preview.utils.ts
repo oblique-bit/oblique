@@ -24,10 +24,7 @@ import {
 } from '../sds.utils';
 import {isImported} from '@schematics/angular/utility/ast-utils';
 import {addNodeToSyntaxList} from '../nodes.utils';
-import {
-	type SourceFile,
-	SyntaxKind,
-} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {type SourceFile, SyntaxKind} from 'typescript';
 import * as colors from 'ansi-colors';
 
 export function createPreviewFiles(variables: Record<string, string>, pathToFeature: string): Rule {
