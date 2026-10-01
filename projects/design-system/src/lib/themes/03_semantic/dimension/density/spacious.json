@@ -13,105 +13,105 @@
             "xs": {
               "px": {
                 "$type": "dimension",
-                "$value": "(({ob.p.dimension.px.4} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 2) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.4} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 2, 0)",
                 "$description": "Minimal density spacing. Absolute (px) — does not change on mode switch. Use for tight fixed-size gaps between dense elements."
               }
             },
             "sm": {
               "px": {
                 "$type": "dimension",
-                "$value": "(({ob.p.dimension.px.6} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) - 1) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.6} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) - 1, 0)",
                 "$description": "Small density spacing. Absolute (px) — does not change on mode switch. Use for compact fixed gaps and fine element separation."
               }
             },
             "md": {
               "px": {
                 "$type": "dimension",
-                "$value": "({ob.p.dimension.px.8} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) * 1px",
+                "$value": "roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.density.multiplier.dimension.spacious}, 0)",
                 "$description": "Medium density spacing. Absolute (px) — does not change on mode switch. Use for standard fixed component padding."
               }
             },
             "lg": {
               "px": {
                 "$type": "dimension",
-                "$value": "(({ob.p.dimension.px.10} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 1) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.10} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 1, 0)",
                 "$description": "Large density spacing. Absolute (px) — does not change on mode switch. Use for comfortable fixed spacing with improved legibility."
               }
             },
             "xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "({ob.p.dimension.px.12} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) * 1px",
+                "$value": "roundTo({ob.p.dimension.px.12} * {ob.g.mode_collection.density.multiplier.dimension.spacious}, 0)",
                 "$description": "Extra-large density spacing. Absolute (px) — does not change on mode switch. Use for generous fixed component padding."
               }
             },
             "2xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "({ob.p.dimension.px.16} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) * 1px",
+                "$value": "roundTo({ob.p.dimension.px.16} * {ob.g.mode_collection.density.multiplier.dimension.spacious}, 0)",
                 "$description": "2XL density spacing. Absolute (px) — does not change on mode switch. Use for spacious fixed content separation."
               }
             },
             "3xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "(({ob.p.dimension.px.20} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 2) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.20} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 2, 0)",
                 "$description": "3XL density spacing. Absolute (px) — does not change on mode switch. Use for prominent fixed visual breaks."
               }
             },
             "4xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "(({ob.p.dimension.px.24} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 4) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.24} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 4, 0)",
                 "$description": "4XL density spacing. Absolute (px) — does not change on mode switch. Use for significant fixed section separation."
               }
             },
             "5xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "(({ob.p.dimension.px.28} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 2) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.28} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 2, 0)",
                 "$description": "5XL density spacing. Absolute (px) — does not change on mode switch. Use for generous fixed separation in spacious areas."
               }
             },
             "6xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "({ob.p.dimension.px.32} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) * 1px",
+                "$value": "roundTo({ob.p.dimension.px.32} * {ob.g.mode_collection.density.multiplier.dimension.spacious}, 0)",
                 "$description": "6XL density spacing. Absolute (px) — does not change on mode switch. Use for large fixed visual breaks between content groups."
               }
             },
             "7xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "(({ob.p.dimension.px.36} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 2) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.36} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 2, 0)",
                 "$description": "7XL density spacing. Absolute (px) — does not change on mode switch. Use for major fixed section spacing."
               }
             },
             "8xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "(({ob.p.dimension.px.40} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 4) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.40} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 4, 0)",
                 "$description": "8XL density spacing. Absolute (px) — does not change on mode switch. Use for substantial fixed layout separation."
               }
             },
             "9xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "({ob.p.dimension.px.48} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.48} * {ob.g.mode_collection.density.multiplier.dimension.spacious}), 0)",
                 "$description": "9XL density spacing. Absolute (px) — does not change on mode switch. Use for wide fixed spacing between major layout elements."
               }
             },
             "10xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "(({ob.p.dimension.px.56} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 4) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.56} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) + 4, 0)",
                 "$description": "10XL density spacing. Absolute (px) — does not change on mode switch. Use for expansive fixed page-level separation."
               }
             },
             "11xl": {
               "px": {
                 "$type": "dimension",
-                "$value": "({ob.p.dimension.px.64} * {ob.g.mode_collection.density.multiplier.dimension.spacious}) * 1px",
+                "$value": "roundTo(({ob.p.dimension.px.64} * {ob.g.mode_collection.density.multiplier.dimension.spacious}), 0)",
                 "$description": "11XL density spacing. Absolute (px) — does not change on mode switch. Use for maximum fixed density spacing and prominent page-level gaps."
               }
             }
