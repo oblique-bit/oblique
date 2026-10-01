@@ -6,7 +6,7 @@ import {By} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router, RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {Observable, Subject, isObservable, of} from 'rxjs';
+import {Observable, Subject, firstValueFrom, isObservable, of} from 'rxjs';
 import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObBreadcrumbComponent} from './breadcrumb.component';
 import {ObBreadcrumbConfig, ObIBreadcrumb, ObTBreadcrumbConfig} from './breadcrumb.model';
@@ -198,43 +198,39 @@ describe('ObBreadcrumbComponent', () => {
 			).toEqual({path: 'path', breadCrumbLabel: undefined});
 		});
 
-		it('should skip breadcrumbs without a label', done => {
-			(
-				component as unknown as {
-					createNextBreadcrumb: (
-						route: ActivatedRoute,
-						next: (parameters: ObIBreadcrumb) => Observable<ObIBreadcrumb[]>,
-						url: string,
-						label: string,
-						pathSplitter: string[]
-					) => Observable<ObIBreadcrumb[]>;
-				}
-			)
-				.createNextBreadcrumb(
+		it('should skip breadcrumbs without a label', async () => {
+			const crumbs = firstValueFrom(
+				(
+					component as unknown as {
+						createNextBreadcrumb: (
+							route: ActivatedRoute,
+							next: (parameters: ObIBreadcrumb) => Observable<ObIBreadcrumb[]>,
+							url: string,
+							label: string,
+							pathSplitter: string[]
+						) => Observable<ObIBreadcrumb[]>;
+					}
+				).createNextBreadcrumb(
 					{firstChild: null} as ActivatedRoute,
 					({label}) => of(label ? [{label, url: ''}] : []),
 					'',
 					'',
 					['']
 				)
-				.subscribe(crumbs => {
-					expect(crumbs).toEqual([]);
-					done();
-				});
+			);
+			expect(await crumbs).toEqual([]);
 		});
 
-		it('should keep existing crumbs when a parameter has no label value', done => {
-			component
-				.getCrumbs(
+		it('should keep existing crumbs when a parameter has no label value', async () => {
+			const crumbs = firstValueFrom(
+				component.getCrumbs(
 					createRoute({
 						path: ':empty',
 						params: {empty: ''},
 					})
 				)
-				.subscribe(crumbs => {
-					expect(crumbs).toEqual([]);
-					done();
-				});
+			);
+			expect(await crumbs).toEqual([]);
 		});
 
 		it.each([[[]], [[{label: 'label', url: 'url'} as ObIBreadcrumb]]])(

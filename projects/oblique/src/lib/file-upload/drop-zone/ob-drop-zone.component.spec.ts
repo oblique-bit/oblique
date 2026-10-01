@@ -90,13 +90,11 @@ describe('DropZoneComponent', () => {
 
 		describe('uploadEvent with only valid files', () => {
 			let event: ObIUploadEvent;
-			beforeEach(done => {
+			beforeEach(async () => {
 				jest.spyOn(service, 'filterInvalidFiles').mockReturnValue(Array.from(files));
-				outputToObservable(component.uploadEvent).subscribe(evt => {
-					event = evt;
-					done();
-				});
+				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 				component.addFiles(files);
+				event = await eventPromise;
 			});
 
 			it('should emit once', () => {
@@ -118,13 +116,11 @@ describe('DropZoneComponent', () => {
 
 		describe('uploadEvent with no valid files', () => {
 			let event: ObIUploadEvent;
-			beforeEach(done => {
+			beforeEach(async () => {
+				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 				jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([]);
-				outputToObservable(component.uploadEvent).subscribe(evt => {
-					event = evt;
-					done();
-				});
 				component.addFiles(files);
+				event = await eventPromise;
 			});
 
 			it('should emit once', () => {

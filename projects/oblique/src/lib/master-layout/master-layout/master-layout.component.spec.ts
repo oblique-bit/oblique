@@ -2,8 +2,9 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component, Pipe, PipeTransform} from '@angular/core';
 import {Router, provideRouter} from '@angular/router';
 import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
+import {outputToObservable} from '@angular/core/rxjs-interop';
 import {TranslatePipe} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
+import {Subject, firstValueFrom} from 'rxjs';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockGlobalEventsService} from '../../global-events/_mocks/mock-global-events.service';
 import {ObMasterLayoutComponent} from './master-layout.component';
@@ -723,12 +724,10 @@ describe('ObMasterLayoutComponent', () => {
 
 	describe('emitNavigation (legacy)', () => {
 		let emittedValue: ObINavigationLink[];
-		beforeEach(done => {
-			component.navigationChanged.subscribe(list => {
-				emittedValue = list;
-				done();
-			});
+		beforeEach(async () => {
+			const emit = firstValueFrom(outputToObservable(component.navigationChanged));
 			component.emitNavigation([{id: 'id', url: 'url', label: 'label'}]);
+			emittedValue = await emit;
 		});
 
 		test('navigationChanged emits the given parameter', () => {
@@ -738,12 +737,10 @@ describe('ObMasterLayoutComponent', () => {
 
 	describe('emitNavigation', () => {
 		let emittedValue: ObINavigationLink[];
-		beforeEach(done => {
-			component.navigation.subscribe(list => {
-				emittedValue = list;
-				done();
-			});
+		beforeEach(async () => {
+			const emit = firstValueFrom(outputToObservable(component.navigation));
 			component.navigation.set([{id: 'id', url: 'url', label: 'label'}]);
+			emittedValue = await emit;
 		});
 
 		test('navigationChange emits the given parameter', () => {

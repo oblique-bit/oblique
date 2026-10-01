@@ -1,6 +1,6 @@
 import {TestBed, inject} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
-import {Subject} from 'rxjs';
+import {Subject, firstValueFrom} from 'rxjs';
 import {ObGlobalEventsService} from '../global-events/global-events.service';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
@@ -32,12 +32,10 @@ describe('UnsavedChangesService', () => {
 
 	describe('onUnload', () => {
 		describe('with no watched form', () => {
-			it("shouldn't alter the beforeUnloadEvent", done => {
-				globalEventsService.beforeUnload$.subscribe(event => {
-					expect(event).toEqual({});
-					done();
-				});
+			it("shouldn't alter the beforeUnloadEvent", async () => {
+				const event = firstValueFrom(globalEventsService.beforeUnload$);
 				unload.next({});
+				expect(await event).toEqual({});
 			});
 		});
 		describe('with no dirty form', () => {
@@ -45,12 +43,10 @@ describe('UnsavedChangesService', () => {
 				const form: ControlContainer = {dirty: false} as ControlContainer;
 				unsavedChangesService.watch('tab_1', form);
 			});
-			it("shouldn't alter the beforeUnloadEvent", done => {
-				globalEventsService.beforeUnload$.subscribe(event => {
-					expect(event).toEqual({});
-					done();
-				});
+			it("shouldn't alter the beforeUnloadEvent", async () => {
+				const event = firstValueFrom(globalEventsService.beforeUnload$);
 				unload.next({});
+				expect(await event).toEqual({});
 			});
 		});
 		describe('with dirty form (watch)', () => {
@@ -58,12 +54,10 @@ describe('UnsavedChangesService', () => {
 				const form: ControlContainer = {dirty: true} as ControlContainer;
 				unsavedChangesService.watch('tab_1', form);
 			});
-			it('should alter the beforeUnloadEvent', done => {
-				globalEventsService.beforeUnload$.subscribe(event => {
-					expect(event).toEqual({returnValue: 'i18n.validation.unsavedChanges'});
-					done();
-				});
+			it('should alter the beforeUnloadEvent', async () => {
+				const event = firstValueFrom(globalEventsService.beforeUnload$);
 				unload.next({});
+				expect(await event).toEqual({returnValue: 'i18n.validation.unsavedChanges'});
 			});
 		});
 	});

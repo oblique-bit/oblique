@@ -1,4 +1,4 @@
-import {fromEvent} from 'rxjs';
+import {firstValueFrom, fromEvent} from 'rxjs';
 import {obOutsideFilter} from './outside-filter';
 
 describe('obOutsideFilter', () => {
@@ -16,12 +16,10 @@ describe('obOutsideFilter', () => {
 		document.querySelector('body').appendChild(div2);
 	});
 
-	it('should emit a MouseEvent on document click', done => {
-		clickEvent.pipe(obOutsideFilter(div1, div2)).subscribe(event => {
-			expect(event instanceof MouseEvent).toBe(true);
-			done();
-		});
+	it('should emit a MouseEvent on document click', async () => {
+		const event = firstValueFrom(clickEvent.pipe(obOutsideFilter(div1, div2)));
 		document.querySelector('body').click();
+		expect((await event) instanceof MouseEvent).toBe(true);
 	});
 
 	it('should not emit on excluded element click', () => {

@@ -392,13 +392,13 @@ describe('ObFileInfoComponent', () => {
 				const errorMessage = new Error('Back-end error');
 				const deletedFile = files[0];
 
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(uploadService, 'delete').mockReturnValue(throwError(() => errorMessage));
-					component.uploadEvent.subscribe(evt => {
-						event = evt;
-						done();
+					const eventPromise = new Promise<ObIUploadEvent>(resolve => {
+						component.uploadEvent.subscribe(evt => resolve(evt));
 					});
 					component.delete([deletedFile]);
+					event = await eventPromise;
 				});
 
 				it('should emit an ERRORED event', () => {

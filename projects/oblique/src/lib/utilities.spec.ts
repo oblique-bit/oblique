@@ -28,7 +28,7 @@ import {
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './material/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
-import {Observable, of} from 'rxjs';
+import {Observable, firstValueFrom, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
 import {ObIObliqueConfiguration, ObIObliqueConfigurationWithDefaults} from './utilities.model';
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
@@ -910,7 +910,7 @@ describe('utilities', () => {
 			expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(defaultLocale);
 		});
 
-		it('should provide a translate loader returning empty translations', done => {
+		it('should provide a translate loader returning empty translations', async () => {
 			TestBed.configureTestingModule({
 				providers: [
 					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
@@ -920,12 +920,7 @@ describe('utilities', () => {
 				],
 			});
 
-			TestBed.inject(TranslateLoader)
-				.getTranslation('de')
-				.subscribe(value => {
-					expect(value).toEqual({});
-					done();
-				});
+			expect(await firstValueFrom(TestBed.inject(TranslateLoader).getTranslation('de'))).toEqual({});
 		});
 	});
 

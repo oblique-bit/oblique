@@ -22,6 +22,7 @@ import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatInputModule} from '@angular/material/input';
 import {MatInputHarness} from '@angular/material/input/testing';
 import {By} from '@angular/platform-browser';
+import {firstValueFrom} from 'rxjs';
 
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '../autocomplete/autocomplete.model';
 import {ObOptionLabelIconModule} from '../autocomplete/option-label-icon/option-label-icon.module';
@@ -260,12 +261,10 @@ describe(ObAutocompleteComponent.name, () => {
 			parentFixture.detectChanges();
 		});
 
-		it('should get the value as changed in autocompleteComponent ', done => {
-			parentComponent.parentFormControl.get('model').valueChanges.subscribe(value => {
-				expect(value).toBe('fat unicorn');
-				done();
-			});
+		it('should get the value as changed in autocompleteComponent ', async () => {
+			const result = firstValueFrom(parentComponent.parentFormControl.get('model').valueChanges);
 			component.autocompleteInputControl.setValue('fat unicorn');
+			expect(await result).toBe('fat unicorn');
 		});
 	});
 	describe.each([

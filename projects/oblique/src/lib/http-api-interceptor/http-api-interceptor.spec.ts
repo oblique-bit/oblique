@@ -1,7 +1,7 @@
 import {HttpErrorResponse, HttpEvent, HttpRequest, HttpResponse} from '@angular/common/http';
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, Subject, of, throwError} from 'rxjs';
+import {Observable, Subject, firstValueFrom, of, throwError} from 'rxjs';
 import {WINDOW} from '../window/window.provider';
 import {ObENotificationType} from '../notification/notification.model';
 import {ObNotificationService} from '../notification/notification.module';
@@ -188,44 +188,42 @@ describe(ObHttpApiInterceptor.name, () => {
 		expect(clearTimeoutSpy).toHaveBeenCalledWith(42);
 	});
 
-	it('reports unknown errors with the generic notification and rethrows the original error', done => {
+	it('reports unknown errors with the generic notification and rethrows the original error', async () => {
 		const unknownError = new Error('boom');
 
-		intercept('/api/users', () => throwError(() => unknownError)).subscribe({
-			next: () => done.fail('Expected the request to fail.'),
-			error: error => {
-				expect(error).toBe(unknownError);
-				expect(notificationService.error).toHaveBeenCalledWith('i18n.oblique.http.error.general');
-				expect(notificationService.send).not.toHaveBeenCalled();
-				done();
-			},
-		});
+		let thrownError: unknown;
+		await firstValueFrom(intercept('/api/users', () => throwError(() => unknownError))).catch(
+			(error: unknown) => (thrownError = error)
+		);
+
+		expect(thrownError).toBe(unknownError);
+		expect(notificationService.error).toHaveBeenCalledWith('i18n.oblique.http.error.general');
+		expect(notificationService.send).not.toHaveBeenCalled();
 	});
 
-	it('emits the session expired event for 401 responses and skips the notification', done => {
+	it('emits the session expired event for 401 responses and skips the notification', async () => {
 		const sessionExpireSpy = jest.spyOn(events, 'sessionExpire');
 
-		intercept('/api/users', () =>
-			throwError(
-				() =>
-					new HttpErrorResponse({
-						status: 401,
-						statusText: 'Unauthorized',
-						url: '/api/users',
-					})
+		let thrownError: unknown;
+		await firstValueFrom(
+			intercept('/api/users', () =>
+				throwError(
+					() =>
+						new HttpErrorResponse({
+							status: 401,
+							statusText: 'Unauthorized',
+							url: '/api/users',
+						})
+				)
 			)
-		).subscribe({
-			next: () => done.fail('Expected the request to fail.'),
-			error: error => {
-				expect(error).toBeInstanceOf(HttpErrorResponse);
-				expect(sessionExpireSpy).toHaveBeenCalledTimes(1);
-				expect(notificationService.send).not.toHaveBeenCalled();
-				done();
-			},
-		});
+		).catch((error: unknown) => (thrownError = error));
+
+		expect(thrownError).toBeInstanceOf(HttpErrorResponse);
+		expect(sessionExpireSpy).toHaveBeenCalledTimes(1);
+		expect(notificationService.send).not.toHaveBeenCalled();
 	});
 
-	it('sends a translated HTTP error notification', done => {
+	it('sends a translated HTTP error notification', async () => {
 		translate.get.mockReturnValue(
 			of({
 				'i18n.oblique.http.error.status.500': 'Translated text',
@@ -233,35 +231,34 @@ describe(ObHttpApiInterceptor.name, () => {
 			})
 		);
 
-		intercept('/api/users', () =>
-			throwError(
-				() =>
-					new HttpErrorResponse({
-						status: 500,
-						statusText: 'Server Error',
-						url: '/api/users',
-					})
+		let thrownError: unknown;
+		await firstValueFrom(
+			intercept('/api/users', () =>
+				throwError(
+					() =>
+						new HttpErrorResponse({
+							status: 500,
+							statusText: 'Server Error',
+							url: '/api/users',
+						})
+				)
 			)
-		).subscribe({
-			next: () => done.fail('Expected the request to fail.'),
-			error: error => {
-				expect(error).toBeInstanceOf(HttpErrorResponse);
-				expect(translate.get).toHaveBeenCalledWith([
-					'i18n.oblique.http.error.status.500',
-					'i18n.oblique.http.error.status.500.title',
-				]);
-				expect(notificationService.send).toHaveBeenCalledWith({
-					message: 'i18n.oblique.http.error.status.500',
-					title: 'i18n.oblique.http.error.status.500.title',
-					type: ObENotificationType.ERROR,
-					sticky: undefined,
-				});
-				done();
-			},
+		).catch((error: unknown) => (thrownError = error));
+
+		expect(thrownError).toBeInstanceOf(HttpErrorResponse);
+		expect(translate.get).toHaveBeenCalledWith([
+			'i18n.oblique.http.error.status.500',
+			'i18n.oblique.http.error.status.500.title',
+		]);
+		expect(notificationService.send).toHaveBeenCalledWith({
+			message: 'i18n.oblique.http.error.status.500',
+			title: 'i18n.oblique.http.error.status.500.title',
+			type: ObENotificationType.ERROR,
+			sticky: undefined,
 		});
 	});
 
-	it('falls back to the generic message and status text when translations are missing', done => {
+	it('falls back to the generic message and status text when translations are missing', async () => {
 		translate.get.mockReturnValue(
 			of({
 				'i18n.oblique.http.error.status.418': 'i18n.oblique.http.error.status.418',
@@ -269,31 +266,30 @@ describe(ObHttpApiInterceptor.name, () => {
 			})
 		);
 
-		intercept('/api/users', () =>
-			throwError(
-				() =>
-					new HttpErrorResponse({
-						status: 418,
-						statusText: 'Teapot',
-						url: '/api/users',
-					})
+		let thrownError: unknown;
+		await firstValueFrom(
+			intercept('/api/users', () =>
+				throwError(
+					() =>
+						new HttpErrorResponse({
+							status: 418,
+							statusText: 'Teapot',
+							url: '/api/users',
+						})
+				)
 			)
-		).subscribe({
-			next: () => done.fail('Expected the request to fail.'),
-			error: error => {
-				expect(error).toBeInstanceOf(HttpErrorResponse);
-				expect(notificationService.send).toHaveBeenCalledWith({
-					message: 'i18n.oblique.http.error.general',
-					title: 'Teapot',
-					type: ObENotificationType.ERROR,
-					sticky: undefined,
-				});
-				done();
-			},
+		).catch((error: unknown) => (thrownError = error));
+
+		expect(thrownError).toBeInstanceOf(HttpErrorResponse);
+		expect(notificationService.send).toHaveBeenCalledWith({
+			message: 'i18n.oblique.http.error.general',
+			title: 'Teapot',
+			type: ObENotificationType.ERROR,
+			sticky: undefined,
 		});
 	});
 
-	it('uses the request notification overrides emitted by the interceptor events', done => {
+	it('uses the request notification overrides emitted by the interceptor events', async () => {
 		config.api.notification = {
 			active: true,
 			severity: ObENotificationType.WARNING,
@@ -308,90 +304,87 @@ describe(ObHttpApiInterceptor.name, () => {
 			request.notification.sticky = true;
 		});
 
-		intercept('/api/users', () =>
-			throwError(
-				() =>
-					new HttpErrorResponse({
-						status: 400,
-						statusText: 'Bad Request',
-						url: '/api/users',
-					})
+		let thrownError: unknown;
+		await firstValueFrom(
+			intercept('/api/users', () =>
+				throwError(
+					() =>
+						new HttpErrorResponse({
+							status: 400,
+							statusText: 'Bad Request',
+							url: '/api/users',
+						})
+				)
 			)
-		).subscribe({
-			next: () => done.fail('Expected the request to fail.'),
-			error: error => {
-				expect(error).toBeInstanceOf(HttpErrorResponse);
-				expect(notificationService.send).toHaveBeenCalledWith({
-					message: 'custom-text',
-					title: 'custom-title',
-					type: ObENotificationType.SUCCESS,
-					sticky: true,
-				});
-				done();
-			},
+		).catch((error: unknown) => (thrownError = error));
+
+		expect(thrownError).toBeInstanceOf(HttpErrorResponse);
+		expect(notificationService.send).toHaveBeenCalledWith({
+			message: 'custom-text',
+			title: 'custom-title',
+			type: ObENotificationType.SUCCESS,
+			sticky: true,
 		});
 	});
 
-	it('skips the HTTP error notification when the next API call disables it through the interceptor events', done => {
+	it('skips the HTTP error notification when the next API call disables it through the interceptor events', async () => {
 		events.deactivateNotificationOnNextAPICalls();
 
-		intercept('/api/users', () =>
-			throwError(
-				() =>
-					new HttpErrorResponse({
-						status: 400,
-						statusText: 'Bad Request',
-						url: '/api/users',
-					})
+		let thrownError: unknown;
+		await firstValueFrom(
+			intercept('/api/users', () =>
+				throwError(
+					() =>
+						new HttpErrorResponse({
+							status: 400,
+							statusText: 'Bad Request',
+							url: '/api/users',
+						})
+				)
 			)
-		).subscribe({
-			next: () => done.fail('Expected the request to fail.'),
-			error: error => {
-				expect(error).toBeInstanceOf(HttpErrorResponse);
-				expect(notificationService.send).not.toHaveBeenCalled();
-				expect(notificationService.error).not.toHaveBeenCalled();
-				done();
-			},
-		});
+		).catch((error: unknown) => (thrownError = error));
+
+		expect(thrownError).toBeInstanceOf(HttpErrorResponse);
+		expect(notificationService.send).not.toHaveBeenCalled();
+		expect(notificationService.error).not.toHaveBeenCalled();
 	});
 
-	it('applies notification overrides only to the next API call', done => {
+	it('applies notification overrides only to the next API call', async () => {
 		events.deactivateNotificationOnNextAPICalls();
 
-		intercept('/api/users', () =>
-			throwError(
-				() =>
-					new HttpErrorResponse({
-						status: 400,
-						statusText: 'Bad Request',
-						url: '/api/users',
-					})
+		let firstError: unknown;
+		await firstValueFrom(
+			intercept('/api/users', () =>
+				throwError(
+					() =>
+						new HttpErrorResponse({
+							status: 400,
+							statusText: 'Bad Request',
+							url: '/api/users',
+						})
+				)
 			)
-		).subscribe({
-			next: () => done.fail('Expected the first request to fail.'),
-			error: firstError => {
-				expect(firstError).toBeInstanceOf(HttpErrorResponse);
-				expect(notificationService.send).not.toHaveBeenCalled();
+		).catch((error: unknown) => (firstError = error));
 
-				intercept('/api/users', () =>
-					throwError(
-						() =>
-							new HttpErrorResponse({
-								status: 400,
-								statusText: 'Bad Request',
-								url: '/api/users',
-							})
-					)
-				).subscribe({
-					next: () => done.fail('Expected the second request to fail.'),
-					error: secondError => {
-						expect(secondError).toBeInstanceOf(HttpErrorResponse);
-						expect(notificationService.send).toHaveBeenCalledTimes(1);
-						done();
-					},
-				});
-			},
-		});
+		expect(firstError).toBeInstanceOf(HttpErrorResponse);
+		expect(notificationService.send).not.toHaveBeenCalled();
+
+		let secondError: unknown;
+		await firstValueFrom(
+			intercept('/api/users', () =>
+				throwError(
+					() =>
+						new HttpErrorResponse({
+							status: 400,
+							statusText: 'Bad Request',
+							url: '/api/users',
+						})
+				)
+			)
+		).catch((error: unknown) => (secondError = error));
+
+		expect(secondError).toBeInstanceOf(HttpErrorResponse);
+		expect(notificationService.send).toHaveBeenCalledTimes(1);
 	});
 
 	function intercept(

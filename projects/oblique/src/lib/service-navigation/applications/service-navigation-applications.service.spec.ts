@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {count, from, of} from 'rxjs';
+import {count, firstValueFrom, from, lastValueFrom, of} from 'rxjs';
 import {ObServiceNavigationApplicationsStoreService} from './service-navigation-applications-store.service';
 import {ObServiceNavigationApplicationsService} from './service-navigation-applications.service';
 
@@ -69,18 +69,15 @@ describe('ObServiceNavigationApplicationsService', () => {
 
 		describe('with 4 applications as input', () => {
 			let result;
-			beforeEach(done => {
-				of([
-					{appID: 1, childAppID: 0, accessOK: true, online: true},
-					{appID: 2, childAppID: 0, accessOK: true, online: false},
-					{appID: 3, childAppID: 0, accessOK: false, online: false},
-					{appID: 4, childAppID: 0, accessOK: false, online: true},
-				])
-					.pipe(service.getApplications('http:/rootUrl/'))
-					.subscribe(received => {
-						result = received;
-						done();
-					});
+			beforeEach(async () => {
+				result = await firstValueFrom(
+					of([
+						{appID: 1, childAppID: 0, accessOK: true, online: true},
+						{appID: 2, childAppID: 0, accessOK: true, online: false},
+						{appID: 3, childAppID: 0, accessOK: false, online: false},
+						{appID: 4, childAppID: 0, accessOK: false, online: true},
+					]).pipe(service.getApplications('http:/rootUrl/'))
+				);
 			});
 
 			it('should call fetchApplicationsInfo with correct parameters', () => {
@@ -108,22 +105,20 @@ describe('ObServiceNavigationApplicationsService', () => {
 		});
 
 		describe('with multiple emissions', () => {
-			it('should emit 4 times', done => {
-				from([
-					[{appID: 1, childAppID: 0, online: true}],
-					[{appID: 1, childAppID: 0, online: true}],
-					[{appID: 2, childAppID: 0, online: true}],
-					[
-						{appID: 1, childAppID: 0, online: true},
-						{appID: 2, childAppID: 0, online: true},
-					],
-					[{appID: 2, childAppID: 0, online: true}],
-				])
-					.pipe(service.getApplications('http:/rootUrl/'), count())
-					.subscribe(number => {
-						expect(number).toBe(4);
-						done();
-					});
+			it('should emit 4 times', async () => {
+				const number = await lastValueFrom(
+					from([
+						[{appID: 1, childAppID: 0, online: true}],
+						[{appID: 1, childAppID: 0, online: true}],
+						[{appID: 2, childAppID: 0, online: true}],
+						[
+							{appID: 1, childAppID: 0, online: true},
+							{appID: 2, childAppID: 0, online: true},
+						],
+						[{appID: 2, childAppID: 0, online: true}],
+					]).pipe(service.getApplications('http:/rootUrl/'), count())
+				);
+				expect(number).toBe(4);
 			});
 		});
 	});

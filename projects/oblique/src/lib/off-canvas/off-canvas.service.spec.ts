@@ -1,4 +1,5 @@
 import {TestBed} from '@angular/core/testing';
+import {firstValueFrom} from 'rxjs';
 import {ObOffCanvasService} from './off-canvas.service';
 
 describe(ObOffCanvasService.name, () => {
@@ -17,13 +18,11 @@ describe(ObOffCanvasService.name, () => {
 		expect(service.open).toBe(false);
 	});
 
-	it('should emit open state changes', done => {
-		service.opened$.subscribe(open => {
-			expect(open).toBe(true);
-			expect(service.open).toBe(true);
-			done();
-		});
-
+	it('should emit open state changes', async () => {
+		const result = firstValueFrom(service.opened$);
 		service.open = true;
+		const open = await result;
+		expect(open).toBe(true);
+		expect(service.open).toBe(true);
 	});
 });

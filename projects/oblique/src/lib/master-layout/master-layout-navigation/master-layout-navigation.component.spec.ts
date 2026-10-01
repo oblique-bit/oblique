@@ -3,7 +3,7 @@ import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Router, RouterModule} from '@angular/router';
 import {TranslatePipe} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
+import {Subject, firstValueFrom} from 'rxjs';
 import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {provideObliqueTestingConfiguration} from '../../utilities';
@@ -26,6 +26,7 @@ import {ObMasterLayoutNavigationService} from './master-layout-navigation.servic
 import * as scrollDelta from './scroll-delta';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
+import {outputToObservable} from '@angular/core/rxjs-interop';
 
 @Component({
 	standalone: false,
@@ -253,13 +254,11 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		describe('removeItem (legacy)', () => {
 			const mockMouseEvent = new MouseEvent('click');
 			let emittedValue: ObINavigationLink[];
-			beforeEach(done => {
+			beforeEach(async () => {
 				jest.spyOn(mockMouseEvent, 'preventDefault');
-				component.linksChanged.subscribe(list => {
-					emittedValue = list;
-					done();
-				});
+				const emit = firstValueFrom(outputToObservable(component.linksChanged));
 				component.removeMenuItem(component.navigationLinks()[0], mockMouseEvent);
+				emittedValue = await emit;
 			});
 
 			test('first item is removed from initialized links', () => {
@@ -291,13 +290,11 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		describe('removeItem', () => {
 			const mockMouseEvent = new MouseEvent('click');
 			let emittedValue: ObINavigationLink[];
-			beforeEach(done => {
+			beforeEach(async () => {
 				jest.spyOn(mockMouseEvent, 'preventDefault');
-				component.links.subscribe(list => {
-					emittedValue = list;
-					done();
-				});
+				const emit = firstValueFrom(outputToObservable(component.links));
 				component.removeMenuItem(component.navigationLinks()[0], mockMouseEvent);
+				emittedValue = await emit;
 			});
 
 			test('first item is removed from initialized links', () => {

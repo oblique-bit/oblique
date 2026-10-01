@@ -1,4 +1,5 @@
 import {ObParentFormDirective} from './parent-form.directive';
+import {firstValueFrom} from 'rxjs';
 
 describe('ParentFormDirective', () => {
 	it('should create an instance', () => {
@@ -6,24 +7,20 @@ describe('ParentFormDirective', () => {
 		expect(directive).toBeTruthy();
 	});
 
-	it('should emit submit events', done => {
+	it('should emit submit events', async () => {
 		const directive = new ObParentFormDirective();
-		directive.submit$.subscribe(() => {
-			expect(true).toBe(true);
-			done();
-		});
-
+		const result = firstValueFrom(directive.submit$);
 		directive.submit();
+		await result;
+		expect(true).toBe(true);
 	});
 
-	it('should emit reset events', done => {
+	it('should emit reset events', async () => {
 		const directive = new ObParentFormDirective();
-		directive.reset$.subscribe(() => {
-			expect(true).toBe(true);
-			done();
-		});
-
+		const result = firstValueFrom(directive.reset$);
 		directive.reset();
+		await result;
+		expect(true).toBe(true);
 	});
 
 	it('should complete streams on destroy', () => {
