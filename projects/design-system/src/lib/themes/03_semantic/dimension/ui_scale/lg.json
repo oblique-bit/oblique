@@ -44,35 +44,35 @@
               "xs": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.4} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.4} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Minimal component-internal dimension. Absolute (px) — does not change on mode switch. Use for tight fixed-size padding and small icon gaps."
                 }
               },
               "sm": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.6} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.6} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Small component-internal dimension. Absolute (px) — does not change on mode switch. Use for compact component gaps and fine internal adjustments."
                 }
               },
               "md": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.8} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Standard component-internal dimension. Absolute (px) — does not change on mode switch. Use for typical component padding and grid alignment."
                 }
               },
               "lg": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.10} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.10} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Enhanced component-internal dimension. Absolute (px) — does not change on mode switch. Use for comfortable internal spacing and improved legibility."
                 }
               },
               "xl": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.12} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.12} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Large component-internal dimension. Absolute (px) — does not change on mode switch. Use for spacious component padding and prominent internal gaps."
                 }
               }
@@ -81,35 +81,35 @@
               "xs": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.16} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.16} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Small content spacing dimension. Absolute (px) — does not change on mode switch. Use for fixed gaps between sibling elements and standard content separation."
                 }
               },
               "sm": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.20} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.20} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Medium content spacing dimension. Absolute (px) — does not change on mode switch. Use for standard fixed section gaps."
                 }
               },
               "md": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.24} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.24} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Large content spacing dimension. Absolute (px) — does not change on mode switch. Use for clear fixed separation between content areas."
                 }
               },
               "lg": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.28} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.28} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Enhanced content spacing dimension. Absolute (px) — does not change on mode switch. Use for prominent fixed visual separation."
                 }
               },
               "xl": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.32} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.32} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Extra-large content spacing dimension. Absolute (px) — does not change on mode switch. Use for significant fixed visual breaks between sections."
                 }
               }
@@ -118,35 +118,35 @@
               "xs": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.36} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.36} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Small container padding dimension. Absolute (px) — does not change on mode switch. Use for tight fixed container internals."
                 }
               },
               "sm": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.40} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.40} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Medium container padding dimension. Absolute (px) — does not change on mode switch. Use for standard fixed card and panel padding."
                 }
               },
               "md": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.48} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.48} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Large container padding dimension. Absolute (px) — does not change on mode switch. Use for generous fixed container padding."
                 }
               },
               "lg": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.56} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.56} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Enhanced container padding dimension. Absolute (px) — does not change on mode switch. Use for spacious fixed containers and prominent visual areas."
                 }
               },
               "xl": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.64} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.64} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Extra-large container padding dimension. Absolute (px) — does not change on mode switch. Use for maximum fixed container breathing room."
                 }
               }
@@ -155,35 +155,35 @@
               "xs": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.80} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.80} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Small layout gap dimension. Absolute (px) — does not change on mode switch. Use for fixed spacing between major page sections."
                 }
               },
               "sm": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.96} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.96} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Medium layout gap dimension. Absolute (px) — does not change on mode switch. Use for clear fixed separation between independent page areas."
                 }
               },
               "md": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.128} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.128} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Large layout gap dimension. Absolute (px) — does not change on mode switch. Use for significant fixed gaps between major layout elements."
                 }
               },
               "lg": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.160} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.160} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Enhanced layout gap dimension. Absolute (px) — does not change on mode switch. Use for generous fixed page-level spacing."
                 }
               },
               "xl": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.192} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.192} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Extra-large layout gap dimension. Absolute (px) — does not change on mode switch. Use for maximum fixed page-level separation."
                 }
               }
@@ -192,14 +192,14 @@
               "xs": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.256} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.256} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Small page-level dimension. Absolute (px) — does not change on mode switch. Use for hero sections and feature-area spacing."
                 }
               },
               "sm": {
                 "px": {
                   "$type": "dimension",
-                  "$value": "({ob.p.dimension.px.320} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}) * 1px",
+                  "$value": "roundTo({ob.p.dimension.px.320} * {ob.g.mode_collection.ui_scale.multiplier.dimension.lg}, 0)",
                   "$description": "Large page-level dimension. Absolute (px) — does not change on mode switch. Use for maximum page-level spacing and full-width features."
                 }
               }
