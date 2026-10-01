@@ -6,6 +6,7 @@ import {CodeExampleComponent} from '../../code-example/code-example.component';
 import {IdPipe} from '../../../shared/id/id.pipe';
 import {TranslationsExampleStaticStackblitzLinkPreviewComponent} from './previews/stackblitz-link/translations-example-static-stackblitz-link-preview.component';
 import {TranslationsExampleDynamicStackblitzLinkPreviewComponent} from './previews/stackblitz-link/translations-example-dynamic-stackblitz-link-preview.component';
+import {TranslationsExampleHtmlInTranslationsPreviewComponent} from './previews/html-in-translations/translations-example-html-in-translations-preview.component';
 
 @Component({
 	selector: 'app-code-example-translations',
@@ -16,6 +17,24 @@ import {TranslationsExampleDynamicStackblitzLinkPreviewComponent} from './previe
 export class TranslationsCodeExamplesComponent extends CodeExamples {
 	readonly componentId = 'translations-examples';
 	readonly previews: CodeExample[] = [
+		{
+			component: TranslationsExampleHtmlInTranslationsPreviewComponent,
+			idParts: ['html', 'in', 'translations'],
+			title: 'HTML in translations',
+			snippets: [
+				this.getSnippet(
+					'translations',
+					'html-in-translations/translations-example-html-in-translations-preview.component.html',
+					'HTML'
+				),
+				this.getSnippet(
+					'translations',
+					'html-in-translations/translations-example-html-in-translations-preview.component.ts',
+					'TS'
+				),
+				this.getSnippet('translations', 'html-in-translations/en.json', 'JSON'),
+			],
+		},
 		{
 			component: TranslationsExampleStaticStackblitzLinkPreviewComponent,
 			idParts: ['stackblitz', 'link', 'static'],

@@ -26,8 +26,8 @@ describe(TranslationsCodeExamplesComponent.name, () => {
 		expect(component).toBeTruthy();
 	});
 
-	test(`that there are 3 ${CodeExampleComponent.name}s`, () => {
-		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(3);
+	test(`that there are 4 ${CodeExampleComponent.name}s`, () => {
+		expect(fixture.debugElement.queryAll(By.directive(CodeExampleComponent)).length).toBe(4);
 	});
 
 	test(`that there are 2 ${ObButtonDirective.name}s`, () => {
@@ -36,5 +36,15 @@ describe(TranslationsCodeExamplesComponent.name, () => {
 
 	test(`that there are 2 links to stackblitz`, () => {
 		expect(fixture.debugElement.queryAll(By.css('a[href*="stackblitz"]')).length).toBe(2);
+	});
+
+	test('that the preview demo translations match the runtime i18n file', () => {
+		// eslint-disable-next-line @typescript-eslint/no-require-imports
+		const previewTranslations = require('./previews/html-in-translations/en.json');
+		// eslint-disable-next-line @typescript-eslint/no-require-imports
+		const runtimeTranslations = require('../../../../assets/i18n/en.json');
+		for (const [key, value] of Object.entries(previewTranslations)) {
+			expect(runtimeTranslations[key]).toBe(value);
+		}
 	});
 });

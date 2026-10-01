@@ -1,0 +1,9 @@
+<h3>Code example with embedded HTML</h3>
+<div [innerHTML]="'i18n.code-example.translations.embedded-paragraph' | translate"></div>
+
+<h3>Code example with custom parameter</h3>
+<div [innerHTML]="'i18n.code-example.translations.custom-list' | translate: customListParameter"></div>
+
+<h3>Code example with sanitized HTML</h3>
+<div [innerHTML]="'i18n.code-example.translations.stripped.script' | translate"></div>
+<div [innerHTML]="'i18n.code-example.translations.stripped.onclick' | translate"></div>

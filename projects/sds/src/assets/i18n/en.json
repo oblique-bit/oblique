@@ -10,5 +10,9 @@
   "i18n.icons.screen-reader-title-description": "Details about the \"{{selectedIconName}}\" icon",
   "i18n.notification.sampleMessage": "This is a sample message {{message}} and {{parameters}}",
   "i18n.translate-params.key": "Example text with a translated {{ param }}.",
-  "i18n.translate-params.param": "parameter"
+  "i18n.translate-params.param": "parameter",
+  "i18n.code-example.translations.custom-list": "<ul><li>first</li><li>second</li><li>{{withParameter}}</li></ul>",
+  "i18n.code-example.translations.embedded-paragraph": "<p>I'm a text with <strong>embedded HTML</strong>.</p>",
+  "i18n.code-example.translations.stripped.script": "<p>This text is kept. <strong>And the <code>&lt;script&gt;</code> tag is removed.</strong><script>alert('script alert')</script></p>",
+  "i18n.code-example.translations.stripped.onclick": "<p>Also this text is kept. <strong onclick=\"alert('onclick alert')\">And the <code>onclick</code> handler is removed.</strong></p>"
 }
