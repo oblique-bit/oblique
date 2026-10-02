@@ -79,8 +79,8 @@ At ob.s, color tokens are named not only by state but also by the **element type
 
 The canonical example is a navigation or segmented-button indicator, where the interaction color family separates by element type at the same contrast level:
 
-- `ob.s.color.interaction.border.high.*` — the indicator element (underline, active border)
-- `ob.s.color.interaction.fg.high.*` — the label text color
+- `ob.s.color.interaction.border.contrast_high.*` — the indicator element (underline, active border)
+- `ob.s.color.interaction.fg.contrast_high.*` — the label text color
 
 These cannot share one token because:
 1. **Semantic correctness** — `fg` means text and icon. Applying it to a border element is a naming lie.

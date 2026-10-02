@@ -97,14 +97,14 @@ Low Emphasis: Secondary Actions → Supporting Information → Inactive States
 ```scss
 /* High-contrast interaction color - primary button */
 .button-primary {
-  background-color: var(--ob-s2-color-interaction-bg-high-inversity_normal);
-  color: var(--ob-s2-color-interaction-fg-high-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-contrast_high-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
 }
 
 /* Low-contrast interaction color - secondary button */
 .button-secondary {
-  background-color: var(--ob-s2-color-interaction-bg-low-inversity_normal);
-  color: var(--ob-s2-color-interaction-fg-low-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-contrast_low-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-contrast_low-inversity_normal);
 }
 ```
 
@@ -112,12 +112,12 @@ Low Emphasis: Secondary Actions → Supporting Information → Inactive States
 ```scss
 /* High-contrast interaction color - emphasized text */
 .text-emphasized {
-  color: var(--ob-s2-color-interaction-fg-high-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
 }
 
 /* Low-contrast interaction color - supporting text */
 .text-supporting {
-  color: var(--ob-s2-color-interaction-fg-low-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-contrast_low-inversity_normal);
 }
 ```
 

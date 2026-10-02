@@ -37,7 +37,7 @@ src/lib/themes/03_semantic/color/
 - **Contains**: `interaction` category only (buttons, links, form controls)
 - **Files**: `high.json`, `low.json`
 - **Reference**: All S2 tokens reference S1 tokens directly
-- **Example token**: `ob.s2.color.interaction.fg.low.inversity_normal`
+- **Example token**: `ob.s2.color.interaction.fg.contrast_low.inversity_normal`
 
 #### **ob.s - Semantic Compilation** (`compiled.json`)
 - **Purpose**: Complete, clean collection of all semantic colors
@@ -96,14 +96,14 @@ Static colors are **non-mode-dependent** values that remain constant across all 
 Interaction colors are not named after a state (`selected`, `enabled`, ...) — they use a visual-weight scale instead, consumed by whichever mode/state the component is in:
 ```json
 {
-  "ob.s.color.interaction.fg.low.inversity_normal": {
+  "ob.s.color.interaction.fg.contrast_low.inversity_normal": {
     "$type": "color",
-    "$value": "{ob.s2.color.interaction.fg.low.inversity_normal}",
+    "$value": "{ob.s2.color.interaction.fg.contrast_low.inversity_normal}",
     "$description": "Low contrast foreground for interaction. Use for text and icons in subtle or secondary interactive states."
   },
-  "ob.s.color.interaction.fg.high.inversity_normal": {
+  "ob.s.color.interaction.fg.contrast_high.inversity_normal": {
     "$type": "color",
-    "$value": "{ob.s2.color.interaction.fg.high.inversity_normal}",
+    "$value": "{ob.s2.color.interaction.fg.contrast_high.inversity_normal}",
     "$description": "High contrast foreground for interaction. Use for text and icons where maximum contrast is required."
   }
 }
