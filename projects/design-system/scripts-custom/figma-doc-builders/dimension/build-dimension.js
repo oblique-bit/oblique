@@ -741,6 +741,13 @@ async function applySectionBarContent(inst, spec) {
   }
   if (Object.keys(updates).length) { try { inst.setProperties(updates); } catch (e) { L('section bar setProperties failed: ' + e.message); } }
 
+  // The shared section_bar master does not bind __sectionTitle to its "title"
+  // property in the tier variants: setting the property succeeds but the text
+  // keeps the variant's baked "Semantic tier — Compiled", so every table on the
+  // page showed the same title. Write the text node directly as well.
+  const titleNode = inst.findOne(n => n.type === 'TEXT' && n.name === '__sectionTitle');
+  if (titleNode && want.title && titleNode.characters !== String(want.title)) await setText(titleNode, String(want.title));
+
   // Fallback text writes for fields without a property binding. The subtitle
   // node (__sectionSubTitle) was added to the master manually and isn't yet
   // wired to a TEXT prop, so it always falls through here.
@@ -1073,6 +1080,9 @@ async function validatePage(page) {
         const txt = node ? String(node.characters || '').trim() : '';
         if (!txt) errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' empty' });
         else if (DEFAULTS.indexOf(txt) >= 0) errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' is default placeholder' });
+        else if (tn === '__sectionTitle' && spec.section && spec.section.title && txt !== String(spec.section.title).trim()) {
+          errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' shows "' + txt + '" but the registry title is "' + spec.section.title + '"' });
+        }
       }
     }
     const expected = varsForTable(spec).length;
