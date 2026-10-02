@@ -285,10 +285,8 @@ import {
 	youtubeIcon,
 	zoomInIcon,
 	zoomOutIcon,
-	// @ts-expect-error Fix when `npm i` will work again
 } from '@oblique/design-system';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
 iconsRegistry.registerIcons([
 	accessibilityIcon,
 	accommodationIcon,
