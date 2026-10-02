@@ -13,9 +13,9 @@ ob.s1.color.interaction.{emphasis_level}.{element_type}.{contrast_level}.{invers
 - `emphasis_low` - Low emphasis interactions (secondary actions, supporting elements)
 
 ### Element Types
-- `bg_base` - Background colors for interactive elements
-- `fg_base` - Foreground colors for interactive text/icons
-- `border_base` - Border colors for interactive elements
+- `bg` - Background colors for interactive elements
+- `fg` - Foreground colors for interactive text/icons
+- `border` - Border colors for interactive elements
 - `fg_visited` - Colors for visited links
 - `fg_disabled` - Colors for disabled interactive foregrounds
 - `bg_disabled` - Colors for disabled interactive backgrounds
@@ -36,21 +36,21 @@ Component code more commonly consumes the emphasis-resolved tier: `ob.s2.color.i
 
 High emphasis interactions are used for primary actions, main call-to-action buttons, and the most important interactive elements that should draw user attention.
 
-### Background Colors (`bg_base`)
+### Background Colors (`bg`)
 | Contrast Level | Light Mode | Dark Mode | Usage |
 |----------------|-------------|------------|-------|
 | `contrast_high` | `#AACAE6` | `#255069` | Primary button backgrounds |
 | `contrast_medium` | `#D3DEE9` | `#236487` | Secondary button backgrounds |
 | `contrast_low` | `#F3F4F5` | `#2379A4` | Subtle interactive backgrounds |
 
-### Foreground Colors (`fg_base`)
+### Foreground Colors (`fg`)
 | Contrast Level | Light Mode | Dark Mode | Usage |
 |----------------|-------------|------------|-------|
 | `contrast_high` | `#255069` | `#FFFFFF` | Primary link text, main CTAs |
 | `contrast_medium` | `#236487` | `#F3F4F5` | Secondary link text |
 | `contrast_low` | `#2379A4` | `#D3DEE9` | Subtle interactive text |
 
-### Border Colors (`border_base`)
+### Border Colors (`border`)
 | Contrast Level | Light Mode | Dark Mode | Usage |
 |----------------|-------------|------------|-------|
 | `contrast_high` | `#236487` | `#FFFFFF` | Primary interactive borders |
@@ -68,21 +68,21 @@ High emphasis interactions are used for primary actions, main call-to-action but
 
 Low emphasis interactions are used for secondary actions, supporting links, and interactive elements that should be present but not compete with primary actions.
 
-### Background Colors (`bg_base`)
+### Background Colors (`bg`)
 | Contrast Level | Light Mode | Dark Mode | Usage |
 |----------------|-------------|------------|-------|
 | `contrast_high` | `#ACB4BD` | `#263645` | Secondary button backgrounds |
 | `contrast_medium` | `#DFE4E9` | `#2F4356` | Tertiary button backgrounds |
 | `contrast_low` | `#F0F4F7` | `#46596B` | Subtle interactive surfaces |
 
-### Foreground Colors (`fg_base`)
+### Foreground Colors (`fg`)
 | Contrast Level | Light Mode | Dark Mode | Usage |
 |----------------|-------------|------------|-------|
 | `contrast_high` | `#1C2834` | `#F0F4F7` | Secondary text links |
 | `contrast_medium` | `#263645` | `#DFE4E9` | Supporting interactive text |
 | `contrast_low` | `#2F4356` | `#ACB4BD` | Subtle interactive elements |
 
-### Border Colors (`border_base`)
+### Border Colors (`border`)
 | Contrast Level | Light Mode | Dark Mode | Usage |
 |----------------|-------------|------------|-------|
 | `contrast_high` | `#131B22` | `#F0F4F7` | Secondary interactive borders |

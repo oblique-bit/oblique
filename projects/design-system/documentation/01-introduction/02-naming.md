@@ -188,8 +188,8 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 - `contrast_highest` / `contrast_high` / `contrast_medium` / `contrast_low`
 
 #### **State Compounds**
-- `bg_base` / `bg_hover` / `bg_focus` / `bg_active`
-- `fg_base` / `fg_hover` / `fg_focus` / `fg_disabled`
+- `bg_hover` / `bg_focus` / `bg_active`
+- `fg_hover` / `fg_focus` / `fg_disabled`
 
 #### **Property Compounds** (token path segments — snake_case)
 - `border_radius` / `font_family` / `font_size` / `font_weight`
@@ -205,8 +205,8 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 ```
 ob.h.link.color.hover → {ob.s.color.interaction.fg.contrast_low.inversity_normal}
 ob.s.color.interaction.fg.contrast_low.inversity_normal → {ob.s2.color.interaction.fg.contrast_low.inversity_normal}
-ob.s2.color.interaction.fg.contrast_low.inversity_normal → {ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}
-ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal → {ob.p.color.cobalt.600}
+ob.s2.color.interaction.fg.contrast_low.inversity_normal → {ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_normal}
+ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_normal → {ob.p.color.cobalt.600}
 ```
 
 ### **Invalid Reference Patterns**

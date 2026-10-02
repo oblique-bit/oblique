@@ -27,8 +27,8 @@ Located in: `03_semantic/color/s2_emphasis/`
           "fg": {
             "low": {
               "inversity_normal": {
-                "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}"  // high.json
-                // "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}" -- low.json
+                "$value": "{ob.s1.color.interaction.emphasis_high.fg.contrast_low.inversity_normal}"  // high.json
+                // "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_normal}" -- low.json
               }
             }
           }

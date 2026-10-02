@@ -83,8 +83,8 @@ Once you know the family, pick the property that matches what you're styling:
 
 | Property | Meaning | Example |
 |---|---|---|
-| `bg` / `bg_base` | Background fill | Card surface, button background |
-| `fg` / `fg_base` | Foreground (text, icons) | Body text, icon color |
+| `bg` | Background fill | Card surface, button background |
+| `fg` | Foreground (text, icons) | Body text, icon color |
 | `border` | Border / stroke | Input border, divider line |
 | `shadow` | Drop shadow | Card, dropdown |
 
