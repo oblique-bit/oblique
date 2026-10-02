@@ -374,7 +374,9 @@ const WRAPPER_BG_FALLBACK_HEX = '#FFFFFF';
 
 function applyWrapperBg(node, varMap) {
   try {
-    const v = varMap && varMap.byName && varMap.byName[WRAPPER_BG_VAR_NAME];
+    // Live name is the full path or the cosmetic-trimmed one, without
+    // "ob/s/color/" (run-cosmetics.js) or, in the older form, "ob/s/".
+    const v = varMap && varMap.byName && (varMap.byName[WRAPPER_BG_VAR_NAME] || varMap.byName[WRAPPER_BG_VAR_NAME.slice(11)] || varMap.byName[WRAPPER_BG_VAR_NAME.slice(5)]);
     const paint = figma.util.solidPaint(WRAPPER_BG_FALLBACK_HEX);
     if (v) {
       node.fills = [figma.variables.setBoundVariableForPaint(paint, 'color', v)];
@@ -1026,11 +1028,16 @@ async function buildTable(spec, ctx) {
   } else if (spec.source === 'figma-vars') {
     const filterRe = new RegExp(spec.matches);
     for (const v of ctx.varMap.list) {
-      if (!filterRe.test(v.name)) continue;
-      // Compiled-tier (S3) variables are stored in Figma with the "ob/s/"
-      // prefix trimmed for panel usability (see shorten-color.js). The
-      // doc must still show the real JSON token path, so reconstruct it.
-      const dotPath = v.name.startsWith('ob/') ? v.name.replace(/\\//g, '.') : 'ob.s.' + v.name.replace(/\\//g, '.');
+      // Compiled-tier (S3) variables may be stored in Figma with the
+      // "ob/s/color/" prefix trimmed for panel usability (run-cosmetics.js,
+      // variables step), or in the older form with only "ob/s/" trimmed.
+      // spec.matches is written against the real name, and the doc must show
+      // the real JSON token path, so reconstruct the full name first.
+      const fullName = v.name.startsWith('ob/') ? v.name
+        : v.name.startsWith('color/') ? 'ob/s/' + v.name
+        : 'ob/s/color/' + v.name;
+      if (!filterRe.test(fullName)) continue;
+      const dotPath = fullName.replace(/\\//g, '.');
       tokens.push({
         kind: 'figma-var',
         varName: v.name,
@@ -1359,15 +1366,14 @@ async function validatePage(targetPage, varMap, components) {
       if (!nameText) continue;
       // Look up variable by dotted token name. Compiled-tier (S3) rows display
       // the full ob.s.color path; the live Figma variable name may or may not
-      // have that prefix trimmed (see shorten-color.js) depending on whether
-      // the cosmetic trim has actually run - as of 2026-09-22 it has not (see
-      // run-cosmetics.js's variables step, "no rule needed yet"), so live
-      // names carry the full prefix. Try the untrimmed name first (today's
-      // real state), then the trimmed form, so this keeps working either way.
+      // have that prefix trimmed, depending on whether run-cosmetics.js's
+      // variables step has run. Try the untrimmed name first, then the
+      // trimmed form, so this keeps working either way.
       const fullVarName = nameText.replace(/\\./g, '/');
       const trimmedVarName = nameText.startsWith('ob.s.') ? nameText.slice(5).replace(/\\./g, '/') : fullVarName;
-      const v = (varMap.byName && (varMap.byName[fullVarName] || varMap.byName[trimmedVarName]))
-        || varMap.list.find(x => x.name === fullVarName || x.name === trimmedVarName);
+      const bareVarName = nameText.startsWith('ob.s.color.') ? nameText.slice(11).replace(/\\./g, '/') : fullVarName;
+      const v = (varMap.byName && (varMap.byName[fullVarName] || varMap.byName[bareVarName] || varMap.byName[trimmedVarName]))
+        || varMap.list.find(x => x.name === fullVarName || x.name === bareVarName || x.name === trimmedVarName);
       if (!v) {
         warnings.push({ code: 'TOKEN', set: wrapperName, msg: 'token "' + nameText + '" not found in varMap' });
         continue;

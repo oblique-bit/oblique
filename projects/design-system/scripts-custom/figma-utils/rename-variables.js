@@ -79,7 +79,7 @@
     // Verify the "from" prefix against the real variable name in the Figma
     // variables panel before running 'rename' — this is a literal string
     // match, not a token-path guess. Example for the known S3 color trim:
-    // { from: 'ob/s/color/', to: 'color/' }
+    // { from: 'ob/s/color/', to: '' }
     renames: [],
   };
   // ==========================================================================

@@ -132,7 +132,7 @@ const _startTime = Date.now();
 // This file only ever addresses compiled-tier (S3) variables, whose Figma
 // name has the "ob/s/" prefix trimmed for panel usability. Display the real
 // JSON token path, not the trimmed variable name.
-function pathToToken(p) { return (/^ob\\//.test(p) ? p : 'ob/s/' + p).replace(/\\//g, '.'); }
+function pathToToken(p) { return (/^ob\\//.test(p) ? p : /^color\\//.test(p) ? 'ob/s/' + p : 'ob/s/color/' + p).replace(/\\//g, '.'); }
 function fillPattern(template, vars) {
   let out = template;
   for (const [k, val] of Object.entries(vars)) {
@@ -149,7 +149,11 @@ async function buildVarMap() {
   const all = await figma.variables.getLocalVariablesAsync('COLOR');
   const map = new Map();
   for (const v of all) {
-    if (v.variableCollectionId === semantic.id) map.set(v.name, v);
+    if (v.variableCollectionId === semantic.id) {
+      map.set(v.name, v);
+      // run-cosmetics.js may trim "ob/s/color/" off these names; keep the full-path key too.
+      if (!v.name.startsWith('ob/')) map.set((v.name.startsWith('color/') ? 'ob/s/' : 'ob/s/color/') + v.name, v);
+    }
     if (/^ob\\/h\\//.test(v.name)) map.set(v.name, v); // helper vars (text-link)
   }
   L('var-map size: ' + map.size);
@@ -488,10 +492,9 @@ async function buildSwatchVisual(rec, varMap) {
   if (!swatchComp || rec.missing) return null;
   const inst = swatchComp.createInstance();
   // rec.fg/rec.bg carry the full ob.s.color token path (pathToToken); the
-  // live Figma variable name uses the same full path with '/' instead of
-  // '.' (confirmed 2026-09-14 — the 2026-09-08 manual "ob/s/" trim never
-  // survived a re-export, see figma-utils/rename-variables.js's CAUTION
-  // note), so no stripping is needed, just the separator swap.
+  // live Figma variable name is the same full path with '/' instead of
+  // '.', or the same path without "ob/s/" once run-cosmetics.js has trimmed
+  // it. buildVarMap registers both keys, so just the separator swap is needed.
   const tokenToVarName = t => t.replace(/\\./g, '/');
   const fgVar = varMap.get(tokenToVarName(rec.fg));
   const bgVar = rec.bg ? varMap.get(tokenToVarName(rec.bg)) : null;

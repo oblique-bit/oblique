@@ -70,8 +70,10 @@ library drifts out of its cosmetic state between exports.
    `effectStyles`, `variables`, `scopeVariables`), each independently
    toggleable via its own `enabled` flag. Defaults are today's known-good
    rules (heading/body/authoring text style trim, "h/link/\*" deletion,
-   shadow effect style trim); fill in `variables`/`scopeVariables` only when
-   needed.
+   shadow effect style trim, and the `ob/s/color/` trim on the `semantic`
+   variable collection, so names start with `neutral/`, `interaction/` etc.); fill in `scopeVariables` only when
+   needed. The color doc builders accept both the trimmed and the untrimmed
+   variable names.
 2. Run with `mode: 'scan'` first — every step reports its plan, changes
    nothing.
 3. Re-run with `mode: 'apply'` to run every enabled step for real, in order.

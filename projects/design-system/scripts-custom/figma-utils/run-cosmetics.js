@@ -21,7 +21,8 @@
  *                 Disabled status, so deleting them is the only fix)
  *   3. rename effect styles — same cosmetic prefix trim, for shadows/blurs
  *   4. rename variables — same cosmetic prefix trim, for variables (e.g. the
- *                 compiled-tier "ob/s/color/" trim)
+ *                 compiled-tier "ob/s/color/" trim,
+ *                 leaving "neutral/...", "interaction/..." as the names)
  *   5. scope variables — bulk scopes/hiddenFromPublishing pass
  *
  * NOT included here, run separately: prune-orphan-variables.js. Same "after
@@ -102,9 +103,14 @@
     },
 
     variables: {
-      enabled: false, // no rule needed yet — see rename-variables.js
-      collectionName: null,
-      renames: [],
+      enabled: true,
+      // Compiled S3 color variables only, so no other collection is trimmed
+      // by an accidental prefix match. Names end up as "neutral/...",
+      // "interaction/..." etc. Doc builders accept the full and trimmed forms.
+      collectionName: 'semantic',
+      renames: [
+        { from: 'ob/s/color/', to: '' },
+      ],
     },
 
     // scope-variables.js's own CONFIG shape — see that script's header for
