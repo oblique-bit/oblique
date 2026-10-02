@@ -457,6 +457,24 @@ async function ensureAppliedViewportModes(outer) {
     inst.name = APPLIED_MODES_NAME;
   }
   try { outer.appendChild(inst); } catch {} // append → last child
+
+  // The master (on the Utilities page) still carries a nested
+  // _docs/shared/section_bar_deprecated. Swap it for the live section_bar on
+  // this instance only, keeping its title / description / subtitle text. The
+  // sweep in validate-all.js flags any bar bound to the deprecated component.
+  const oldBar = inst.findOne((n) => n.type === 'INSTANCE' && n.mainComponent && /section_bar_deprecated$/.test(n.mainComponent.name));
+  if (oldBar && components.sectionBar) {
+    const txt = (name) => { const t = oldBar.findOne((x) => x.type === 'TEXT' && x.name === name); return t ? t.characters : ''; };
+    const barSpec = { section: { tier: 'G', title: txt('__sectionTitle'), purpose: txt('description'), subtitle: txt('__sectionSubTitle') } };
+    let live = components.sectionBar;
+    if (live.type === 'COMPONENT_SET') {
+      live = (live.children || []).find((c) => c.type === 'COMPONENT' && c.name === 'tier=s') || live.defaultVariant;
+    }
+    try {
+      oldBar.swapComponent(live);
+      await applySectionBarContent(oldBar, barSpec, { suppressTier: true });
+    } catch (e) { L('applied modes: section bar swap failed: ' + e.message); }
+  }
   return inst;
 }
 
@@ -483,6 +501,10 @@ async function applySectionBarContent(inst, spec, opts) {
   // has ever been part of this page (same reasoning as the dimension fix).
   const colorBar = inst.findOne((n) => n.name === 'Color Bar');
   if (colorBar) { try { colorBar.visible = false; } catch {} }
+  // The breadcrumb baked into the section_bar variants (Primitives > Semantic S1
+  // > Semantic S2 > Compiled) describes the color tiers and says nothing about
+  // viewport tokens, so hide it (same as the dimension and typography builders).
+  for (const crumb of inst.findAll((n) => /section_breadcrumb/.test(n.name))) { try { crumb.visible = false; } catch {} }
   const badgeProps = inst.componentProperties || {};
   const badgeUpdates = {};
   for (const bare of ['showBadgeMaintainer', 'showBadgeConsumer', 'showBadgeBundeskanzlei']) {
@@ -788,6 +810,7 @@ function validatePage(page, wrapper) {
     if (sb) {
       const title = sb.findOne(n => n.type === 'TEXT' && n.name === '__sectionTitle');
       if (!title || !String(title.characters || '').trim()) errors.push({ code: 'SECTBAR', id: spec.id, msg: '__sectionTitle empty' });
+      if (sb.findAll((n) => /section_breadcrumb/.test(n.name) && n.visible !== false).length) errors.push({ code: 'SECTBAR', id: spec.id, msg: 'breadcrumb is visible' });
     }
 
     // Row count
