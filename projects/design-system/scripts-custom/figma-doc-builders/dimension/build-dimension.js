@@ -43,6 +43,15 @@ function getArg(name, def) {
 const TABLE_FILTER = getArg('--table', null);
 const PAGE_OVER    = getArg('--page', null);
 const VALIDATE_ONLY = args.includes('--validate');
+// Row refresh. Two names for the same row, here both point at a Figma variable because every
+// dimension row is built from one:
+//   --token <path>     as shown in the Token Name column (dots, ob.s.dimension.dynamic.density.xs.px)
+//   --variable <name>  the Figma variable name (slashes or dots accepted)
+// The row is deleted and rebuilt in place from the live variable (value, description, preview bar),
+// the other rows stay untouched. A name that matches no variable of the tables stops the run.
+const TOKEN_ARG    = getArg('--token', null);
+const VARIABLE_ARG = getArg('--variable', null);
+function normalizeTokenName(s) { return String(s).trim().replace(/^\{|\}$/g, '').replace(/\//g, '.'); }
 
 function runEval(scriptText) {
   const tmp = path.join(os.tmpdir(), `dim-${process.pid}-${Date.now()}.js`);
@@ -71,7 +80,8 @@ function extractResult(stdout) {
 }
 
 const PLUGIN_CODE = `
-const { registry, tableFilter, pageOverride, validateOnly, provenance } = PAYLOAD;
+const { registry, pageOverride, validateOnly, provenance, rowFilter } = PAYLOAD;
+let tableFilter = PAYLOAD.tableFilter;
 const log = [];
 function L(msg) { log.push(String(msg)); }
 const _startTime = Date.now();
@@ -918,7 +928,7 @@ async function buildGroupHeader(key) {
 // the section bar/header, and only build rows for tokens not yet present
 // (matched by token-name TEXT content). Makes rebuilds safe to interrupt —
 // partial state is preserved between runs.
-async function buildTable(page, spec) {
+async function buildTable(page, spec, onlyTokenPath) {
   const table = await ensureTableFrame(page, spec.tableName);
   const tokens = varsForTable(spec);
   const result = { id: spec.id, ok: true, info: { tokenCount: tokens.length, rowsBuilt: 0, rowsKept: 0 } };
@@ -965,6 +975,12 @@ async function buildTable(page, spec) {
     if (existing.has(txt)) { try { c.remove(); } catch {} continue; } // dedupe by token name
     existing.set(txt, c);
   }
+  // Single-row refresh: drop the existing row of that token so the loop below rebuilds it.
+  if (onlyTokenPath && existing.has(onlyTokenPath)) {
+    try { existing.get(onlyTokenPath).remove(); } catch {}
+    existing.delete(onlyTokenPath);
+    result.info.rowReplaced = onlyTokenPath;
+  }
   result.info.rowsKept = existing.size;
 
   // Only build rows for tokens we don't already have. Track the resulting
@@ -975,6 +991,7 @@ async function buildTable(page, spec) {
   for (const v of tokens) {
     const tokenPath = v.name.replace(/\\//g, '.');
     if (existing.has(tokenPath)) continue;
+    if (onlyTokenPath && tokenPath !== onlyTokenPath) continue; // row refresh builds only the asked row
     const r = spec.kind === 'static' ? await buildStaticRow(v) : await buildModeRow(v, spec);
     if (r && r.instance) {
       table.appendChild(r.instance);
@@ -1132,6 +1149,11 @@ async function main() {
   }
   await discoverComponents();
   await discoverVariables();
+  if (rowFilter) {
+    const owner = registry.tables.find(sp => varsForTable(sp).some(v => v.name.replace(/\\//g, '.') === rowFilter.tokenName));
+    if (!owner) return { error: 'no Figma variable named ' + rowFilter.tokenName.replace(/\\./g, '/') + ' in the dimension tables of this file' };
+    tableFilter = owner.id;
+  }
   const page = await ensurePage();
 
   if (validateOnly) {
@@ -1154,7 +1176,7 @@ async function main() {
   for (const spec of registry.tables) {
     if (tableFilter && tableFilter !== spec.id) continue;
     try {
-      const res = await buildTable(page, spec);
+      const res = await buildTable(page, spec, rowFilter ? rowFilter.tokenName : null);
       results.push(res);
     } catch (e) { results.push({ id: spec.id, ok: false, error: e.message }); }
   }
@@ -1208,6 +1230,10 @@ function main() {
   console.log(`  ${registry.tables.length} tables on page '${PAGE_OVER || registry.page}'.`);
   if (TABLE_FILTER) console.log(`  Filtering to: ${TABLE_FILTER}`);
   if (VALIDATE_ONLY) console.log('  Mode: validate (no writes)');
+  if (TOKEN_ARG && VARIABLE_ARG) { console.error('Use either --token or --variable, not both.'); process.exit(2); }
+  const ROW_FILTER = (TOKEN_ARG || VARIABLE_ARG) ? { tokenName: normalizeTokenName(TOKEN_ARG || VARIABLE_ARG), mustBeVariable: !!VARIABLE_ARG } : null;
+  if (ROW_FILTER) console.log('  Row refresh: ' + ROW_FILTER.tokenName + (VARIABLE_ARG ? ' (Figma variable)' : ' (token)'));
+  if (ROW_FILTER && !PAGE_OVER) console.log('  Row refresh edits the canonical page in place: ' + registry.page + ' (no timestamped scratch page)');
 
   // Provenance for the page header — git SHA, ISO-ish timestamp w/ TZ, script
   // relative to repo root. Soft failures: header still renders without git
@@ -1241,7 +1267,7 @@ function main() {
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch (e) { /* leave null — bar keeps master default */ }
 
-  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'build-dimension.js' } };
+  const payload = { registry, rowFilter: ROW_FILTER, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER || (ROW_FILTER ? registry.page : null), validateOnly: VALIDATE_ONLY, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'build-dimension.js' } };
   const script = `(async () => {\nconst PAYLOAD = ${JSON.stringify(payload)};\n${PLUGIN_CODE}\n})()`;
 
   const t0 = Date.now();

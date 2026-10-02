@@ -140,3 +140,17 @@ All inside `_docs/color-variables/*` (under the Building Blocks frame on the cli
 
 - [`../color-pairings/_readme.md`](../color-pairings/_readme.md) — sibling builder for the contrast-pairings page.
 - [`../../../documentation/03-token-categories/colors/03-semantic.md`](../../../documentation/03-token-categories/colors/03-semantic.md) — design-token consumer docs.
+
+## Refresh a single row (`--token` / `--variable`)
+
+Rebuilds the row (or the high and low rows of a 4-mode token) of one token in place, from the live Figma variable. Group headers, separators and every other row stay untouched. Works on the canonical page (`registry.page`), no timestamped scratch page. A `--page` option still wins.
+
+```bash
+# token as shown in the Name column (dots, S3 paths always with ob.s.)
+node build-color-variables.js --token ob.s.color.neutral.bg.contrast_highest.inversity_normal
+
+# Figma variable name (slashes or dots accepted; the trimmed form without ob/s/ also works)
+node build-color-variables.js --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal
+```
+
+Every row of these tables is built from a Figma variable (primitives included), so both flags point to the same row. A name with no variable stops the run; a row that is not on the page yet is not created (use `--table <id>`). The whole page is validated afterwards, so problems in other rows are reported too: use them as the list of rows to refresh.
