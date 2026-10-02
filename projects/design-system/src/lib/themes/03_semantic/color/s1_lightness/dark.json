@@ -1256,7 +1256,7 @@
             }
           },
           "emphasis_high": {
-            "bg_base": {
+            "bg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
@@ -1294,7 +1294,7 @@
                 }
               }
             },
-            "fg_base": {
+            "fg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
@@ -1332,7 +1332,7 @@
                 }
               }
             },
-            "border_base": {
+            "border": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
@@ -1459,7 +1459,7 @@
             }
           },
           "emphasis_low": {
-            "bg_base": {
+            "bg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
@@ -1497,7 +1497,7 @@
                 }
               }
             },
-            "fg_base": {
+            "fg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
@@ -1535,7 +1535,7 @@
                 }
               }
             },
-            "border_base": {
+            "border": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
@@ -1668,7 +1668,7 @@
                 "$value": "Interaction colours that do not carry an emphasis level. Peer of emphasis_high and emphasis_low, resolved straight into the compiled tier with no entry in s2, so the emphasis mode never reaches it. For elements that need hover and active feedback but no emphasis: cards, table rows, menu items, tags. Values start as a copy of emphasis_low and are independent of it from here on. Use: interactive surfaces that must stay neutral whatever the emphasis mode. Avoid: anything that should follow the emphasis mode."
               }
             },
-            "bg_base": {
+            "bg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
@@ -1706,7 +1706,7 @@
                 }
               }
             },
-            "fg_base": {
+            "fg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
@@ -1744,7 +1744,7 @@
                 }
               }
             },
-            "border_base": {
+            "border": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",

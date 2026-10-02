@@ -19,36 +19,36 @@
             "contrast_high": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_high.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_high.inversity_normal}",
                 "$description": "High contrast foreground for emphasis-low interaction. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_high.inversity_flipped}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_high.inversity_flipped}",
                 "$description": "High contrast foreground for emphasis-low interaction. Inverse surface."
               }
             },
             "contrast_medium": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_medium.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_medium.inversity_normal}",
                 "$description": "Medium contrast foreground for emphasis-low interaction. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_medium.inversity_flipped}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_medium.inversity_flipped}",
                 "$description": "Medium contrast foreground for emphasis-low interaction. Inverse surface."
               }
             },
             "contrast_low": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_normal}",
                 "$description": "Low contrast foreground for emphasis-low interaction. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_flipped}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_flipped}",
                 "$description": "Low contrast foreground for emphasis-low interaction. Inverse surface."
               }
             }
@@ -57,36 +57,36 @@
             "contrast_high": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_high.inversity_normal}",
                 "$description": "High contrast background for emphasis-low interaction. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_high.inversity_flipped}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_high.inversity_flipped}",
                 "$description": "High contrast background for emphasis-low interaction. Inverse surface."
               }
             },
             "contrast_medium": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_medium.inversity_normal}",
                 "$description": "Medium contrast background for emphasis-low interaction. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_medium.inversity_flipped}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_medium.inversity_flipped}",
                 "$description": "Medium contrast background for emphasis-low interaction. Inverse surface."
               }
             },
             "contrast_low": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_low.inversity_normal}",
                 "$description": "Low contrast background for emphasis-low interaction. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg_base.contrast_low.inversity_flipped}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_low.inversity_flipped}",
                 "$description": "Low contrast background for emphasis-low interaction. Inverse surface."
               }
             }
@@ -95,36 +95,36 @@
             "contrast_high": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border_base.contrast_high.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.border.contrast_high.inversity_normal}",
                 "$description": "High contrast border for emphasis-low interaction. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border_base.contrast_high.inversity_flipped}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.border.contrast_high.inversity_flipped}",
                 "$description": "High contrast border for emphasis-low interaction. Inverse surface."
               }
             },
             "contrast_medium": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border_base.contrast_medium.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.border.contrast_medium.inversity_normal}",
                 "$description": "Medium contrast border for emphasis-low interaction. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border_base.contrast_medium.inversity_flipped}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.border.contrast_medium.inversity_flipped}",
                 "$description": "Medium contrast border for emphasis-low interaction. Inverse surface."
               }
             },
             "contrast_low": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border_base.contrast_low.inversity_normal}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.border.contrast_low.inversity_normal}",
                 "$description": "Low contrast border for emphasis-low interaction. Standard surface."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border_base.contrast_low.inversity_flipped}",
+                "$value": "{ob.s1.color.interaction.emphasis_low.border.contrast_low.inversity_flipped}",
                 "$description": "Low contrast border for emphasis-low interaction. Inverse surface."
               }
             }

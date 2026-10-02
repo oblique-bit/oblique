@@ -347,99 +347,99 @@
                 "$value": "Interaction colours that do not carry an emphasis level. Peer of emphasis_high and emphasis_low, resolved straight into the compiled tier with no entry in s2, so the emphasis mode never reaches it. For elements that need hover and active feedback but no emphasis: cards, table rows, menu items, tags. Values start as a copy of emphasis_low and are independent of it from here on. Use: interactive surfaces that must stay neutral whatever the emphasis mode. Avoid: anything that should follow the emphasis mode."
               }
             },
-            "bg_base": {
+            "bg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_high.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_high.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_high.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_high.inversity_flipped}"
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_medium.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_medium.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_medium.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_medium.inversity_flipped}"
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_low.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_low.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_low.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_low.inversity_flipped}"
                 }
               }
             },
-            "fg_base": {
+            "fg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_high.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_high.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_high.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_high.inversity_flipped}"
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_medium.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_medium.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_medium.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_medium.inversity_flipped}"
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_low.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_low.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_low.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_low.inversity_flipped}"
                 }
               }
             },
-            "border_base": {
+            "border": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_high.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_high.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_high.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_high.inversity_flipped}"
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_medium.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_medium.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_medium.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_medium.inversity_flipped}"
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_low.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_low.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_low.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_low.inversity_flipped}"
                 }
               }
             },
