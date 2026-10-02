@@ -119,6 +119,14 @@ available to files that consume this library.
   place, and stripping it (see that script's own header for the one-liner)
   fixed both immediately. Not a backtick issue and not an uncaught
   exception (a full try/catch around the body caught nothing either).
+  **A second, diagnosed cause (2026-10-02): top-level `const` / `function`
+  declarations.** The sweep in `validate-all.js` declared its helpers at the
+  top of the script, outside any function. It ran once, then every later run
+  hung until the 60s `figma-ds-cli` limit (`spawnSync /bin/sh ETIMEDOUT`),
+  with no output, even for one small page. The same code wrapped in one
+  `(async () => { ... })()` ran in 15s every time. The Figma plugin context
+  persists between runs, and a repeated top-level declaration is most likely
+  what blocks it. Keep every declaration inside the function.
 - **A specific "compute a summary object, then return/console.log it" shape
   can also produce silent empty output**, independent of the header-comment
   bug above — confirmed 2026-09-14 building `validate-all.js`'s sweep.
