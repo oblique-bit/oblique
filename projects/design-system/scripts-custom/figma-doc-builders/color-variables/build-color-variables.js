@@ -1414,10 +1414,15 @@ async function main() {
     const want = resolvedPageName();
     let targetPage = figma.root.children.find(p => p.name === want);
     if (!targetPage && !pageOverride) {
-      // Fallback: most-recent page that starts with the base name (e.g. when
-      // validating a build from earlier today / yesterday).
-      const candidates = figma.root.children.filter(p => p.type === 'PAGE' && (p.name === registry.page || p.name.startsWith(registry.page + ' ')));
-      if (candidates.length) targetPage = candidates.sort((a, b) => a.name.localeCompare(b.name)).pop();
+      // Fallback: the canonical page, else the most-recent timestamped page that
+      // starts with the base name (e.g. when validating a build from earlier
+      // today / yesterday). Never a "_deprecated" page: it sorts last by name and
+      // would otherwise be validated instead of the live page.
+      targetPage = figma.root.children.find(p => p.type === 'PAGE' && p.name === registry.page) || null;
+      if (!targetPage) {
+        const candidates = figma.root.children.filter(p => p.type === 'PAGE' && !p.name.endsWith('_deprecated') && p.name.startsWith(registry.page + ' '));
+        if (candidates.length) targetPage = candidates.sort((a, b) => a.name.localeCompare(b.name)).pop();
+      }
     }
     if (!targetPage) return { error: 'target page not found: ' + want };
     const validate = await validatePage(targetPage, varMap, components);
