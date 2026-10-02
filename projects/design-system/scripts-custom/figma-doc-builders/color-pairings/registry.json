@@ -86,8 +86,8 @@
         {
           "type": "states-row",
           "states": ["high", "medium", "low"],
-          "fgPath": "interaction/contrast_levels/fg/{state}/inversity_normal",
-          "bgPath": "interaction/contrast_levels/bg/{state}/inversity_normal"
+          "fgPath": "interaction/fg/{state}/inversity_normal",
+          "bgPath": "interaction/bg/{state}/inversity_normal"
         }
       ]
     },

@@ -691,8 +691,8 @@
     ],
     "interaction": [
       {
-        "fg": "ob.s.color.interaction.contrast_levels.fg.high.inversity_normal",
-        "bg": "ob.s.color.interaction.contrast_levels.bg.high.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.high.inversity_normal",
+        "bg": "ob.s.color.interaction.bg.high.inversity_normal",
         "rowKey": "states",
         "colKey": "high",
         "isTextLink": false,
@@ -717,8 +717,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.contrast_levels.fg.medium.inversity_normal",
-        "bg": "ob.s.color.interaction.contrast_levels.bg.medium.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.medium.inversity_normal",
+        "bg": "ob.s.color.interaction.bg.medium.inversity_normal",
         "rowKey": "states",
         "colKey": "medium",
         "isTextLink": false,
@@ -743,8 +743,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.contrast_levels.fg.low.inversity_normal",
-        "bg": "ob.s.color.interaction.contrast_levels.bg.low.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.low.inversity_normal",
+        "bg": "ob.s.color.interaction.bg.low.inversity_normal",
         "rowKey": "states",
         "colKey": "low",
         "isTextLink": false,

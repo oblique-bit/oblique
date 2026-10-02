@@ -43,9 +43,9 @@
 
 | Foreground | Background | Ratio | AA‑N | AA‑L | AAA | Recommended for | Emph |
 |---|---|---:|:-:|:-:|:-:|---|---|
-| `ob.s.color.interaction.contrast_levels.fg.high.inversity_normal` | `ob.s.color.interaction.contrast_levels.bg.high.inversity_normal` | 5.1 : 1 | ✓ | ✓ | ✗ | H1–H6, body, lead, strong |  |
-| `ob.s.color.interaction.contrast_levels.fg.medium.inversity_normal` | `ob.s.color.interaction.contrast_levels.bg.medium.inversity_normal` | 4.8 : 1 | ✓ | ✓ | ✗ | H1–H6, body, lead, strong |  |
-| `ob.s.color.interaction.contrast_levels.fg.low.inversity_normal` | `ob.s.color.interaction.contrast_levels.bg.low.inversity_normal` | 4.4 : 1 | ✗ | ✓ | ✗ | H1–H4, bold body, lead |  |
+| `ob.s.color.interaction.fg.high.inversity_normal` | `ob.s.color.interaction.bg.high.inversity_normal` | 5.1 : 1 | ✓ | ✓ | ✗ | H1–H6, body, lead, strong |  |
+| `ob.s.color.interaction.fg.medium.inversity_normal` | `ob.s.color.interaction.bg.medium.inversity_normal` | 4.8 : 1 | ✓ | ✓ | ✗ | H1–H6, body, lead, strong |  |
+| `ob.s.color.interaction.fg.low.inversity_normal` | `ob.s.color.interaction.bg.low.inversity_normal` | 4.4 : 1 | ✗ | ✓ | ✗ | H1–H4, bold body, lead |  |
 
 ## Status (100 pairings)
 
