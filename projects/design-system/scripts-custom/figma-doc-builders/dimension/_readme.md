@@ -105,3 +105,17 @@ Exit policy: any error → exit 1. Warnings print but don't block.
   build log you don't recognize, they were probably a phantom from this.
 - **`_docs/shared/section_bar`'s wrong variant** — see "Components used"
   above; same bug, same fix commit (`6307d71d7`) as the `--validate` one.
+
+## Refresh a single row (`--token` / `--variable`)
+
+Deletes and rebuilds one row in place from the live Figma variable (value, description, preview bar), the other rows stay untouched. Works on the canonical page (`registry.page`) and does not create a timestamped scratch page. A `--page` option still wins.
+
+```bash
+# token as shown in the Token Name column (dots)
+node build-dimension.js --token ob.s.dimension.dynamic.density.xs.px
+
+# Figma variable name (slashes or dots accepted)
+node build-dimension.js --variable ob/s/dimension/dynamic/density/xs/px
+```
+
+Every dimension row is built from a Figma variable, so both flags point to the same row here. A name with no variable in the file stops the run. Only the table that owns the row is built and validated.

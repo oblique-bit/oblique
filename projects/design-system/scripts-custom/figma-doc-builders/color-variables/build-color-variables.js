@@ -92,7 +92,7 @@ function extractJson(stdout) {
 // Everything else (docs, primitives, descriptions) is read from Figma variables.
 
 const PLUGIN_CODE = `
-const { registry, tableFilter, pageOverride, validateOnly, provenance } = PAYLOAD;
+const { registry, tableFilter, rowFilter, pageOverride, validateOnly, provenance } = PAYLOAD;
 const log = [];
 const results = [];
 const _startTime = Date.now();
@@ -980,7 +980,7 @@ async function buildPrimitiveRow(table, token, components, varMap) {
 }
 
 // ─── Build a single table ──────────────────────────────────────────────────
-async function buildTable(spec, ctx) {
+async function buildTable(spec, ctx, onlyDotPath) {
   const t0 = Date.now();
   const out = { id: spec.id, ok: false, info: {}, issues: [] };
 
@@ -1060,6 +1060,50 @@ async function buildTable(spec, ctx) {
     }
   }
   out.info.tokenCount = tokens.length;
+
+  // Single-row refresh (--token / --variable): rebuild just that token's rows in place and
+  // return. Group headers, separators, the heading and every other row stay untouched.
+  if (onlyDotPath) {
+    const tok = tokens.find(t => t.dotPath === onlyDotPath);
+    if (!tok) { out.ok = true; out.info.rowNotInTable = true; return out; }
+    const nameOf = (n) => {
+      const c = findChild(n, 'Cell: Name') || findChild(n, 'Cell: Token Name');
+      const t = c ? findFirstText(c) : null;
+      return t ? String(t.characters || '').trim() : '';
+    };
+    const oldRows = tableFrame.children.filter(c => c.type === 'INSTANCE' && nameOf(c) === onlyDotPath);
+    if (!oldRows.length) {
+      out.issues.push('row for ' + onlyDotPath + ' is not on the page yet; rebuild the table with --table ' + spec.id);
+      return out;
+    }
+    const idx = tableFrame.children.indexOf(oldRows[0]);
+    let fresh = [];
+    try {
+      if (spec.rowComponent === '2-mode') {
+        const r = await build2ModeRow(spec, tok, ctx.components, ctx.varMap, ctx.collections.aliases);
+        if (r.error) throw new Error(r.error);
+        tableFrame.appendChild(r.row); await r.populate(); fresh = [r.row];
+      } else if (spec.rowComponent === '4-mode') {
+        const r = await build4ModeRows(spec, tok, ctx.components, ctx.varMap, ctx.collections.aliases);
+        if (r.error) throw new Error(r.error);
+        for (const row of r.rows) tableFrame.appendChild(row);
+        await r.populate(); fresh = r.rows;
+      } else if (spec.rowComponent === 'primitive') {
+        const r = await buildPrimitiveRow(spec, tok, ctx.components, ctx.varMap);
+        if (r.error) throw new Error(r.error);
+        tableFrame.appendChild(r.row); await r.populate(); fresh = [r.row];
+      }
+    } catch (e) { out.issues.push('row error for ' + onlyDotPath + ': ' + e.message); for (const f of fresh) { try { f.remove(); } catch {} } return out; }
+    await flushTextWrites();
+    for (let i = 0; i < fresh.length; i++) { try { tableFrame.insertChild(idx + i, fresh[i]); } catch (e) { out.issues.push('reorder: ' + e.message); } }
+    for (const o of oldRows) { try { o.remove(); } catch {} }
+    out.info.rowReplaced = onlyDotPath;
+    out.info.rowsRebuilt = fresh.length;
+    const v = validateTableFrame(tableFrame, tierWidth);
+    out.validation = v;
+    out.ok = out.issues.length === 0 && v.errors.length === 0;
+    return out;
+  }
 
   // Heading
   const wrapperPath = spec.wrapperName.replace(/^Token Set: /, '');
@@ -1415,10 +1459,26 @@ async function main() {
   ctx.structure = await ensurePageStructure(targetPage, components, varMap);
   phases.ensureStructure = Date.now() - t; t = Date.now();
 
-  const tablesToBuild = registry.tables.filter(t => !tableFilter || tableFilter.includes(t.id) || tableFilter.includes(t.tier));
+  let tablesToBuild = registry.tables.filter(t => !tableFilter || tableFilter.includes(t.id) || tableFilter.includes(t.tier));
+  if (rowFilter) {
+    // Every row of these tables is built from a Figma variable, so a token name and a variable
+    // name are the same thing here. Find the one table that can contain it.
+    const asVar  = rowFilter.dotPath.replace(/\\./g, '/');
+    const trimmed = rowFilter.dotPath.replace(/^ob\\.s\\./, '').replace(/\\./g, '/');
+    if (!varMap.list.some(v => v.name === asVar || v.name === trimmed)) {
+      return { error: 'no Figma variable named ' + asVar + ' in this file' };
+    }
+    tablesToBuild = registry.tables.filter(t => {
+      if (t.source === 'primitive-json' || t.spec === 'primitive' || t.rowComponent === 'primitive') {
+        return (t.primitiveFamilies || []).some(f => asVar.startsWith('ob/p/color/' + f + '/'));
+      }
+      try { const re = new RegExp(t.matches); return re.test(asVar) || re.test(trimmed); } catch (e) { return false; }
+    });
+    if (!tablesToBuild.length) return { error: 'no color table can contain ' + rowFilter.dotPath };
+  }
   for (const spec of tablesToBuild) {
     try {
-      const res = await buildTable(spec, ctx);
+      const res = await buildTable(spec, ctx, rowFilter ? rowFilter.dotPath : null);
       results.push(res);
     } catch (e) {
       results.push({ id: spec.id, ok: false, error: e.message, stack: e.stack });
@@ -1482,6 +1542,7 @@ async function main() {
   let pageOverride = null;
   let useCache = true;
   let validateOnly = false;
+  let tokenArg = null, variableArg = null;
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     if (a === '--table' || a === '-t') tableFilter = [args[++i]];
@@ -1489,7 +1550,15 @@ async function main() {
     else if (a === '--page' || a === '-p') pageOverride = args[++i];
     else if (a === '--no-cache') useCache = false;
     else if (a === '--validate') validateOnly = true;
+    // Row refresh. Both flags name a row, here always a Figma variable (every color table row is built
+    // from one): --token ob.s.color.neutral.bg.contrast_highest.inversity_normal (as shown in the table)
+    // or --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal (slashes or dots accepted).
+    else if (a === '--token') tokenArg = args[++i];
+    else if (a === '--variable') variableArg = args[++i];
   }
+  if (tokenArg && variableArg) { console.error('Use either --token or --variable, not both.'); process.exit(2); }
+  const normalizeTokenName = (x) => String(x).trim().replace(/^\{|\}$/g, '').replace(/\//g, '.');
+  const rowFilter = (tokenArg || variableArg) ? { dotPath: normalizeTokenName(tokenArg || variableArg), mustBeVariable: !!variableArg } : null;
 
   console.log(`\n  Loading registry...`);
   const registry = JSON.parse(fs.readFileSync(REGISTRY, 'utf8'));
@@ -1554,7 +1623,9 @@ async function main() {
     }
   } catch {}
 
-  const payload = { registry, tableFilter, pageOverride, validateOnly, foundationDescription, s1ModifyMap, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-variables.js' } };
+  if (rowFilter && !pageOverride) { pageOverride = registry.page; console.log(`  Row refresh edits the canonical page in place: ${pageOverride} (no timestamped scratch page)`); }
+  if (rowFilter) console.log(`  Row refresh: ${rowFilter.dotPath}`);
+  const payload = { registry, tableFilter, rowFilter, pageOverride, validateOnly, foundationDescription, s1ModifyMap, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-variables.js' } };
   if (pageOverride) console.log(`  Page override: ${pageOverride}`);
   const script = `(async () => {
 const PAYLOAD = ${JSON.stringify(payload)};
