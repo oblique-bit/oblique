@@ -5,11 +5,13 @@ import {
 	NavigationEnd,
 	NavigationError,
 	NavigationSkipped,
+	PRIMARY_OUTLET,
 	Route,
 	Router,
 	Routes,
 	UrlMatchResult,
 	UrlSegment,
+	UrlSegmentGroup,
 } from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {filter, first, switchMap} from 'rxjs';
@@ -68,9 +70,11 @@ export class ObRouterService {
 				switchMap(() => this.translate.onLangChange)
 			)
 			.subscribe(({lang}) => {
-				const newUrl = this.router.url.split('/').filter(segment => segment);
-				newUrl.splice(0, 1, lang);
-				void this.router.navigate(newUrl);
+				const tree = this.router.parseUrl(this.router.url);
+				const primary = tree.root.children[PRIMARY_OUTLET] ?? new UrlSegmentGroup([], {});
+				primary.segments.splice(0, 1, new UrlSegment(lang, {}));
+				tree.root.children[PRIMARY_OUTLET] = primary;
+				void this.router.navigateByUrl(this.router.serializeUrl(tree));
 			});
 	}
 
