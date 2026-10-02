@@ -277,10 +277,18 @@ async function ensurePage() {
     await figma.setCurrentPageAsync(p);
     return p;
   }
-  const ts = (provenance && provenance.pageTs) ? provenance.pageTs : '';
+  // validateOnly must target the real canonical page and never write — the
+  // timestamp suffix below is only for a genuine scratch build. Appending it
+  // unconditionally (fixed 2026-09-14) meant --validate always looked for a
+  // page named "<canonical> <right-now's timestamp>", which never exists,
+  // so it silently created a fresh EMPTY page every single run and then
+  // correctly reported every table missing from it — a phantom page, and a
+  // write despite --validate's own documented "no writes" contract.
+  const ts = (!validateOnly && provenance && provenance.pageTs) ? provenance.pageTs : '';
   const name = ts ? (registry.page + ' ' + ts) : registry.page;
   let p = figma.root.children.find(x => x.name === name);
   if (!p) {
+    if (validateOnly) throw new Error('target page not found: ' + name + ' (validate-only mode never creates one)');
     p = figma.createPage();
     p.name = name;
     try { p.backgrounds = [_PAGE_BG]; } catch (e) { L('canvas bg set failed: ' + e.message); }
@@ -289,16 +297,44 @@ async function ensurePage() {
   return p;
 }
 
+// After a successful scratch build (no --page override), mark older
+// timestamped pages for this doc as deprecated so they don't pile up.
+// Never touches the canonical (un-timestamped) page or the page just built.
+// Also moves each newly-deprecated page below the "______..." separator
+// page, if one exists, so deprecated pages stay grouped at the bottom of
+// the page list instead of scattered wherever they happened to be created.
+async function deprecateOldScratchPages(basePageName, currentPageId) {
+  const SEPARATOR_NAME = '_________________________________';
+  const prefix = basePageName + ' ';
+  const pages = [...figma.root.children]; // snapshot — we reorder children below
+  for (const p of pages) {
+    if (p.type !== 'PAGE') continue;
+    if (p.id === currentPageId) continue;
+    if (p.name === basePageName) continue;
+    if (!p.name.startsWith(prefix)) continue;
+    if (p.name.endsWith('_deprecated')) continue;
+    p.name = p.name + '_deprecated';
+    const sep = figma.root.children.find((x) => x.name === SEPARATOR_NAME);
+    if (sep) {
+      try { figma.root.insertChild(figma.root.children.indexOf(sep) + 1, p); }
+      catch (e) { L('move below separator failed: ' + e.message); }
+    }
+  }
+}
+
 const TABLE_WIDTH = 2280;
 const WRAPPER_NAME = 'Typography Tables';
-const WRAPPER_GAP  = 96;
+const WRAPPER_GAP  = 192;
 const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
+const BG_VAR_COLLECTION_NAMES = ['lightness', 's1_lightness', 's1-lightness', 'Lightness'];
 
 let _bgVar = undefined;
 async function getBgVar() {
   if (_bgVar !== undefined) return _bgVar;
+  const cols = await figma.variables.getLocalVariableCollectionsAsync();
+  const col = BG_VAR_COLLECTION_NAMES.map(n => cols.find(c => c.name === n)).find(Boolean) || null;
   const all = await figma.variables.getLocalVariablesAsync();
-  _bgVar = all.find(v => v.name === BG_VAR_NAME) || null;
+  _bgVar = all.find(v => v.name === BG_VAR_NAME && (!col || v.variableCollectionId === col.id)) || null;
   if (!_bgVar) L('warn: bg variable not found: ' + BG_VAR_NAME);
   return _bgVar;
 }
@@ -522,11 +558,33 @@ async function buildHeader() {
   return components.headerRow.createInstance();
 }
 
+// The Figma style name is a display name, not the token path — since the
+// authoring/heading/body cosmetic renames, they diverge on purpose (see
+// figma-utils/rename-text-styles.js). Reconstruct the real JSON path from
+// the table's registry spec.stylePrefix (what the style name starts with)
+// and spec.subtitle (the real path prefix that replaces it), same fix
+// already applied to the color docs builders (build-color-variables.js,
+// build-color-pairings.js) for the same reason.
+function realTokenPath(style, spec) {
+  const prefix = (spec && spec.stylePrefix) || '';
+  const rest = style.name.startsWith(prefix) ? style.name.slice(prefix.length) : style.name;
+  return ((spec && spec.subtitle) || '') + '.' + rest.replace(/\\//g, '.');
+}
+
+// Inverse of realTokenPath — given the token path text a row displays,
+// reconstruct the figma style name it should match. Used by validation,
+// which only has the row's displayed text, not the original style object.
+function figmaNameFromTokenPath(tokenPath, spec) {
+  const subtitlePrefix = ((spec && spec.subtitle) || '') + '.';
+  const rest = tokenPath.startsWith(subtitlePrefix) ? tokenPath.slice(subtitlePrefix.length) : tokenPath;
+  return ((spec && spec.stylePrefix) || '') + rest.replace(/\\./g, '/');
+}
+
 // ── row building ───────────────────────────────────────────────────────────
-async function buildRow(style) {
+async function buildRow(style, spec) {
   if (!components.row) return null;
   const inst = components.row.createInstance();
-  const tokenPath = style.name.replace(/\\//g, '.');
+  const tokenPath = realTokenPath(style, spec);
   const nameNode = findFirstText(findChild(inst, 'Cell: Token Name'));
   const familyNode = findFirstText(findChild(inst, 'Cell: Family'));
   const weightNode = findFirstText(findChild(inst, 'Cell: Weight'));
@@ -544,7 +602,11 @@ async function buildRow(style) {
   if (lsNode)     await setText(lsNode, fmtLetterSpacing(style.letterSpacing));
   if (descNode)  await setText(descNode, style.description || '');
 
-  // Specimen: load font, then apply the text style + set sample text = style name
+  // Specimen: load font, then apply the text style + set sample text = the
+  // figma style name (not the token path — this cell previews the Figma
+  // Text Style itself, so it shows the name a figma user actually picks
+  // from the panel; "Cell: Token Name" above is the one showing the real
+  // token path).
   if (specimenNode && style.fontName && style.fontName !== figma.mixed) {
     try {
       await figma.loadFontAsync(style.fontName);
@@ -564,6 +626,56 @@ async function buildRow(style) {
     }
   }
   return { instance: inst, style, tokenPath };
+}
+
+// ── per-mode label re-resolution (columned html subgroup only) ─────────────
+// style.fontSize / style.lineHeight (used above in buildRow) resolve a bare
+// Style object's bound variable via that variable's collection DEFAULT mode
+// only — a Style has no ancestor frame for setExplicitVariableModeForCollection
+// (used later, per column) to apply to. That is fine for the first column
+// (interface, the collection default), but every later column is a plain
+// .clone() of that already-labelled first column, made before its own mode is
+// set — so without this, every column shows identical, interface-only
+// numbers. This walks each row's underlying style's bound font_size /
+// line_height variable explicitly for the target mode (following alias
+// chains, same approach as resolveByModeName in figma-utils/relink-variable-aliases.js)
+// and rewrites just those two label cells.
+async function resolveBoundVariableForMode(boundVar, modeName) {
+  if (!boundVar || !boundVar.id) return null;
+  let v = await figma.variables.getVariableByIdAsync(boundVar.id);
+  let guard = 0;
+  while (v && guard++ < 15) {
+    const col = await figma.variables.getVariableCollectionByIdAsync(v.variableCollectionId);
+    if (!col) return null;
+    const mode = col.modes.find(m => m.name === modeName)
+              || col.modes.find(m => m.modeId === col.defaultModeId)
+              || col.modes[0];
+    if (!mode) return null;
+    const val = v.valuesByMode[mode.modeId];
+    if (val && val.type === 'VARIABLE_ALIAS') { v = await figma.variables.getVariableByIdAsync(val.id); continue; }
+    return val;
+  }
+  return null;
+}
+async function relabelColumnForMode(tableNode, modeName, spec) {
+  const rows = tableNode.children.filter(c => /\\/row$/.test(c.name));
+  for (const row of rows) {
+    const nameNode = findFirstText(findChild(row, 'Cell: Token Name'));
+    const tokenPath = nameNode ? String(nameNode.characters || '').trim() : '';
+    if (!tokenPath) continue;
+    const style = allStyles.find(s => s.name === figmaNameFromTokenPath(tokenPath, spec));
+    if (!style || !style.boundVariables) continue;
+    const sizeNode = findFirstText(findChild(row, 'Cell: Size'));
+    if (sizeNode && style.boundVariables.fontSize) {
+      const px = await resolveBoundVariableForMode(style.boundVariables.fontSize, modeName);
+      if (typeof px === 'number') await setText(sizeNode, fmtFontSize(px));
+    }
+    const lhNode = findFirstText(findChild(row, 'Cell: Line Height'));
+    if (lhNode && style.boundVariables.lineHeight) {
+      const px = await resolveBoundVariableForMode(style.boundVariables.lineHeight, modeName);
+      if (typeof px === 'number') await setText(lhNode, fmtLineHeight({ unit: 'PIXELS', value: px }));
+    }
+  }
 }
 
 // ── group header ───────────────────────────────────────────────────────────
@@ -645,9 +757,9 @@ async function buildTable(page, spec) {
   const rowByPath = new Map(existing);
   let rowsBuilt = 0;
   for (const s of styles) {
-    const tokenPath = s.name.replace(/\\//g, '.');
+    const tokenPath = realTokenPath(s, spec);
     if (existing.has(tokenPath)) continue;
-    const r = await buildRow(s);
+    const r = await buildRow(s, spec);
     if (r && r.instance) {
       table.appendChild(r.instance);
       stretch(r.instance);
@@ -663,7 +775,7 @@ async function buildTable(page, spec) {
   const groupRows = new Map();
   for (const s of styles) {
     const key = groupKey(s.name, spec);
-    const tokenPath = s.name.replace(/\\//g, '.');
+    const tokenPath = realTokenPath(s, spec);
     const row = rowByPath.get(tokenPath);
     if (!row) continue;
     const bucket = key == null ? '__nogroup__' : key;
@@ -720,7 +832,7 @@ async function buildTable(page, spec) {
   groupOrder.length = 0;
   for (const s of styles) {
     const key = groupKey(s.name, spec);
-    const tokenPath = s.name.replace(/\\//g, '.');
+    const tokenPath = realTokenPath(s, spec);
     const row = rowByPath.get(tokenPath);
     if (!row) continue;
     const bucket = key == null ? '__nogroup__' : key;
@@ -802,7 +914,7 @@ async function validatePage(page) {
         const nameText = nameNode ? String(nameNode.characters || '').trim() : '';
         const descText = descNode ? String(descNode.characters || '').trim() : '';
         if (!nameText) { errors.push({ code: 'EMPTY', id: tag, msg: 'row token name empty' }); continue; }
-        const styleName = nameText.replace(/\\./g, '/');
+        const styleName = figmaNameFromTokenPath(nameText, spec);
         const s = allStyles.find(x => x.name === styleName);
         if (!s) { warnings.push({ code: 'STYLE', id: tag, token: nameText, msg: 'no matching text style' }); continue; }
         if (descCell && descText !== (s.description || '')) {
@@ -968,7 +1080,7 @@ async function main() {
     const sg = spec.subgroup;
     if (sg && subgroups[sg]) {
       if (!tablesBySubgroup.has(sg)) { tablesBySubgroup.set(sg, []); subgroupOrder.push(sg); }
-      tablesBySubgroup.get(sg).push(t);
+      tablesBySubgroup.get(sg).push({ frame: t, spec });
     } else {
       standaloneTables.push(t);
     }
@@ -1054,12 +1166,17 @@ async function main() {
         const colFrame = ensureNamedFrame(colName);
         layoutFrame(colFrame, 'VERTICAL', SUBGROUP_TABLE_GAP);
         try { colsFrame.appendChild(colFrame); } catch {}
-        for (const t of tables) {
-          const tableNode = ci === 0 ? t : t.clone();
+        for (const { frame: tf, spec: tSpec } of tables) {
+          const tableNode = ci === 0 ? tf : tf.clone();
           try { colFrame.appendChild(tableNode); } catch {}
           try { tableNode.layoutAlign = 'INHERIT'; } catch {}
           // Label this table's mode badge with the column's mode.
           await applyTableModeBadge(tableNode, modeName);
+          // Columns beyond the first are a clone of the already-baked first
+          // column, made before its own mode exists — re-resolve its
+          // Size/Line-Height labels for THIS column's mode. See the
+          // "per-mode label re-resolution" comment above relabelColumnForMode.
+          if (ci > 0) await relabelColumnForMode(tableNode, modeName, tSpec);
         }
         setColumnMode(colFrame, modeName);
       }
@@ -1070,7 +1187,7 @@ async function main() {
       const row = ensureNamedFrame(rowName);
       layoutFrame(row, 'HORIZONTAL', SUBGROUP_TABLE_GAP);
       try { container.appendChild(row); } catch {}
-      for (const t of tables) {
+      for (const { frame: t } of tables) {
         try { row.appendChild(t); } catch {}
         // Tables keep their fixed counter-axis width; do not stretch.
         try { t.layoutAlign = 'INHERIT'; } catch {}
@@ -1095,10 +1212,16 @@ async function main() {
   for (const cont of orderedContainers) { try { wrapper.appendChild(cont); } catch {} }
   for (const t of standaloneTables)     { try { wrapper.appendChild(t); } catch {} }
 
+  // Flush relabelColumnForMode's writes before validation reads the labels back.
+  await flushTextWrites();
+
   const validate = await validatePage(page);
 
   const totalRows = (validate && validate.stats && typeof validate.stats.totalRows === 'number') ? validate.stats.totalRows : 0;
   const errCount  = (validate && validate.errors) ? validate.errors.length : 0;
+  if (!pageOverride && errCount === 0) {
+    await deprecateOldScratchPages(registry.page, page.id);
+  }
   const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
   const prov      = provenance || {};
   const scriptTag = prov.scriptName + (prov.gitSha ? '@' + prov.gitSha : '');
@@ -1146,8 +1269,8 @@ function main() {
     const tokens = JSON.parse(fs.readFileSync(tokJson, 'utf8'));
     const desc = tokens && tokens.ob && tokens.ob.s && tokens.ob.s.typography
       && tokens.ob.s.typography.token_family_docs
-      && tokens.ob.s.typography.token_family_docs.$description
-      && tokens.ob.s.typography.token_family_docs.$description.$value;
+      && tokens.ob.s.typography.token_family_docs.description
+      && tokens.ob.s.typography.token_family_docs.description.$value;
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch (e) { /* leave null */ }
 

@@ -1,6 +1,6 @@
 # Color Pairings Builder
 
-Generates the **🎨 Colors – Contrast Pairings cli** Figma docs page **and** two consumer-facing artifacts (`contrast-pairings.json`, `accessible-pairings.md`) from the semantic color variables in the live Figma file.
+Generates the **🎨  Colors – Contrast Pairing Light** and **Dark** Figma docs pages **and** two consumer-facing artifacts (`contrast-pairings.json`, `accessible-pairings.md`) from the semantic color variables in the live Figma file.
 
 Mirrors the architecture of `../color-variables/build-color-variables.js`: a single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string + a tiny `registry.json` for layout rules. No JSON dumps to maintain — colors and pairings come from Figma variables, the per-swatch `usage` recommendation (real design-system use cases, from `registry.usage`) and `emph` annotations are computed at build time.
 
@@ -17,7 +17,7 @@ color-pairings/
 
 | Output | Path | Purpose |
 |---|---|---|
-| Figma docs page | `🎨  Colors – Contrast Pairings cli` (page id `12056:43407`) | Visual reference inside the active Figma file |
+| Figma docs page | `🎨  Colors – Contrast Pairing Light / Dark` (page id `12056:43407`) | Visual reference inside the active Figma file |
 | JSON | `src/lib/contrast-pairings.json` | Machine-readable, for code consumers and validators |
 | Markdown | `src/lib/accessible-pairings.md` | Human/AI-readable, table per category |
 
@@ -71,7 +71,7 @@ node scripts-custom/figma-doc-builders/color-pairings/build-color-pairings.js
 
 1. Figma Desktop running, with the file you want to build into open and active — typically **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`), but the builder runs against whatever file is active.
 2. `figma-ds-cli` connected — `figma-ds-cli connect` (Yolo) or `figma-ds-cli connect --safe`.
-3. The target page **🎨  Colors – Contrast Pairings cli** must exist (the build refuses to run otherwise).
+3. The target page **🎨  Colors – Contrast Pairing Light / Dark** must exist (the build refuses to run otherwise).
 
 ## How it works
 
@@ -96,8 +96,8 @@ node scripts-custom/figma-doc-builders/color-pairings/build-color-pairings.js
 
 ```jsonc
 {
-  "varPathPrefix": "ob/s/color",
-  "targetPageName": "🎨  Colors – Contrast Pairings cli",
+  "varPathPrefix": "ob/s/color",  // matches live variable names exactly — see "Fixed bugs" below
+  "targetPageName": "🎨  Colors – Contrast Pairing",  // base name; code appends " Light" / " Dark"
   "rootFrameName": "color-pairing-build",
   "componentNames": { … },
   "wcag": { "AA_normal": 4.5, "AA_large": 3.0, "AAA": 7.0 },
@@ -148,4 +148,31 @@ For humans / AI reasoning about contrast, read `accessible-pairings.md` — toke
 - **`No result block in CLI stdout`** — the IIFE returned undefined or threw before reaching the return. Re-run with `--category <one>` to narrow the trace; check Figma is connected (`figma-ds-cli eval 'figma.root.name'`).
 - **`target page not found`** — the page name in `registry.targetPageName` must match exactly (incl. emoji + double space).
 - **`source collection not found: semantic`** — the live Figma file must have a `semantic` variable collection.
-- **Missing swatches** — the build logs `X missing` per category. Run with `--mode export` and inspect `src/lib/contrast-pairings.json`: entries with `missing: true` carry the `fgName`/`bgName` we tried to look up. Usually means a path pattern in `registry.json` doesn't match the live variable name.
+- **Missing swatches** — the build logs `X missing` per category. Run with `--mode export` and inspect `src/lib/contrast-pairings.json`: entries with `missing: true` carry the `fgName`/`bgName` we tried to look up. Usually means a path pattern in `registry.json` doesn't match the live variable name — see `varPathPrefix` in "Fixed bugs" below for the exact failure mode this has hit before. As of 2026-09-14 all pairs using the `textlink-row` block's fixed path `ob/h/link/color/default` still report missing — that variable does not currently exist under any name; unrelated to `varPathPrefix`, not yet investigated.
+
+## Fixed bugs worth knowing about
+
+- **Every category built zero swatches** (fixed 2026-09-14). `registry.json`'s
+  `varPathPrefix` was `"color"` (no tier prefix), from a 2026-09-08 change
+  that matched a since-reverted manual Figma rename (the "ob/s/" trim never
+  survived a later Token Studio re-export — live variables are back to
+  `ob/s/color/...`). Every `fg`/`bg` lookup against the variable map failed
+  silently, so every pair came back `missing`. Two helper functions
+  (`pathToToken`, and two inline dot-conversions inside `validateSwatch`)
+  made the same assumption in the other direction and needed the matching
+  fix, or a variable name round-tripped through them ended up literally
+  doubled: `ob.s.ob.s.color...`.
+- **`_docs/shared/section_bar`'s wrong variant, unhidden Color Bar/badges,
+  and a property update that didn't refresh the bound text node** — same
+  root cause and fix as `../dimension/_readme.md`'s note, plus one thing
+  specific to this component: `setProperties()` correctly updated
+  `inst.componentProperties`, confirmed by reading it back, but the bound
+  `__sectionTitle`/`$description` text nodes kept showing the variant's
+  baked default anyway. Fixed by also writing the text node directly,
+  unconditionally, in addition to `setProperties()` — not gated on "only if
+  no property binding exists" the way the fallback originally was.
+- **Dark page always got the light page's background** (fixed 2026-09-14).
+  `_cpEnsureTargetPage()` applied the same light cool-grey to both Light and
+  Dark pages, only on first page creation — the dark canvas colour (263645)
+  had been set by hand on the canonical page and got lost on every rebuild.
+  Now picks the background by mode and reapplies it every run.

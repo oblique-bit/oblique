@@ -383,10 +383,19 @@ async function ensurePage() {
   // provenance, so it matches the header). Reuse if a page with the exact
   // name exists (idempotent within a minute); create new otherwise. New
   // pages get the canvas color set.
-  const ts = (provenance && provenance.pageTs) ? provenance.pageTs : '';
+  //
+  // validateOnly must target the real canonical page and never write — the
+  // timestamp suffix is only for a genuine scratch build. Appending it
+  // unconditionally (fixed 2026-09-14) meant --validate always looked for a
+  // page named "<canonical> <right-now's timestamp>", which never exists,
+  // so it silently created a fresh EMPTY page every single run and then
+  // correctly reported every table missing from it — a phantom page, and a
+  // write despite --validate's own documented "no writes" contract.
+  const ts = (!validateOnly && provenance && provenance.pageTs) ? provenance.pageTs : '';
   const name = ts ? (registry.page + ' ' + ts) : registry.page;
   let p = figma.root.children.find(x => x.name === name);
   if (!p) {
+    if (validateOnly) throw new Error('target page not found: ' + name + ' (validate-only mode never creates one)');
     p = figma.createPage();
     p.name = name;
     try { p.backgrounds = [_PAGE_BG]; } catch (e) { L('canvas bg set failed: ' + e.message); }
@@ -395,15 +404,49 @@ async function ensurePage() {
   return p;
 }
 
+// After a successful scratch build (no --page override), mark older
+// timestamped pages for this doc as deprecated so they don't pile up.
+// Never touches the canonical (un-timestamped) page or the page just built.
+// Also moves each newly-deprecated page below the "______..." separator
+// page, if one exists, so deprecated pages stay grouped at the bottom of
+// the page list instead of scattered wherever they happened to be created.
+async function deprecateOldScratchPages(basePageName, currentPageId) {
+  const SEPARATOR_NAME = '_________________________________';
+  const prefix = basePageName + ' ';
+  const pages = [...figma.root.children]; // snapshot — we reorder children below
+  for (const p of pages) {
+    if (p.type !== 'PAGE') continue;
+    if (p.id === currentPageId) continue;
+    if (p.name === basePageName) continue;
+    if (!p.name.startsWith(prefix)) continue;
+    if (p.name.endsWith('_deprecated')) continue;
+    p.name = p.name + '_deprecated';
+    const sep = figma.root.children.find((x) => x.name === SEPARATOR_NAME);
+    if (sep) {
+      try { figma.root.insertChild(figma.root.children.indexOf(sep) + 1, p); }
+      catch (e) { L('move below separator failed: ' + e.message); }
+    }
+  }
+}
+
 const TABLE_WIDTH = 1580; // matches the section bar / row natural width
 const WRAPPER_NAME = 'Dimension Tables';
 const WRAPPER_GAP  = 96;
 const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
+// s1-tier color vars live in the "lightness" collection. A legacy numbered
+// collection (e.g. 03_semantic/color/s1_lightness/light) can carry a
+// variable with this exact same name, and an unscoped find() over allVars
+// is not guaranteed to pick the current one. Scope to the live collection
+// by name; fall back to unscoped only if that collection can't be found.
+const BG_VAR_COLLECTION_NAMES = ['lightness', 's1_lightness', 's1-lightness', 'Lightness'];
 
 let _bgVar = undefined; // undefined = not searched yet, null = searched + missing
 function getBgVar() {
   if (_bgVar !== undefined) return _bgVar;
-  _bgVar = allVars.find(v => v.name === BG_VAR_NAME) || null;
+  const col = BG_VAR_COLLECTION_NAMES
+    .map(n => Object.values(collMap || {}).find(c => c.name === n))
+    .find(Boolean) || null;
+  _bgVar = allVars.find(v => v.name === BG_VAR_NAME && (!col || v.variableCollectionId === col.id)) || null;
   if (!_bgVar) L('warn: bg variable not found: ' + BG_VAR_NAME);
   return _bgVar;
 }
@@ -614,7 +657,26 @@ function stretch(node) {
 
 async function buildSectionBar(spec) {
   if (!components.sectionBar) return null;
-  const inst = components.sectionBar.createInstance();
+  // _docs/shared/section_bar is a COMPONENT_SET with a "tier" variant property
+  // (p / s1 / s2 / s) — each variant carries its own baked title/tierLetter
+  // visuals alongside the shared TEXT component properties, so overriding the
+  // properties on the wrong variant (comp.defaultVariant is "tier=p") leaves
+  // stale "Primitive tier" content visible even though the properties
+  // themselves read correctly. Pick the variant matching spec.section.tier.
+  const comp = components.sectionBar;
+  let inst;
+  try {
+    if (comp.type === 'COMPONENT_SET') {
+      const wantTier = String((spec.section && spec.section.tier) || 'S').toLowerCase();
+      const variant = (comp.children || []).find((c) => c.type === 'COMPONENT' && c.name === 'tier=' + wantTier)
+                    || comp.defaultVariant
+                    || (comp.children || []).find((c) => c.type === 'COMPONENT');
+      if (!variant) { L('sectionBar: COMPONENT_SET has no variants'); return null; }
+      inst = variant.createInstance();
+    } else {
+      inst = comp.createInstance();
+    }
+  } catch (e) { L('sectionBar createInstance failed: ' + e.message); return null; }
   inst.name = '_docs/dimension/section_bar';
   await applySectionBarContent(inst, spec);
   return inst;
@@ -630,6 +692,24 @@ async function applySectionBarContent(inst, spec) {
   // exists in the master but isn't wired to visibility, so override the node.
   const tier = inst.findOne(n => n.type === 'TEXT' && n.name === 'tierLetter');
   if (tier) { try { tier.visible = false; } catch {} }
+
+  // Same reasoning for the Color Bar strip and the three maintainer/
+  // contributor/consumer badges: both default on (Color Bar is just a plain
+  // node with no visibility toggle; the three showBadge* booleans default
+  // true in the master). Neither has ever been part of the Dimension page —
+  // it predates this shared section_bar's badge system — so hide all four
+  // unconditionally rather than exposing them as a per-table choice.
+  const colorBar = inst.findOne((n) => n.name === 'Color Bar');
+  if (colorBar) { try { colorBar.visible = false; } catch {} }
+  const badgeProps = inst.componentProperties || {};
+  const badgeUpdates = {};
+  for (const bare of ['showBadgeMaintainer', 'showBadgeConsumer', 'showBadgeBundeskanzlei']) {
+    const key = Object.keys(badgeProps).find((k) => k === bare || k.split('#')[0] === bare);
+    if (key) badgeUpdates[key] = false;
+  }
+  if (Object.keys(badgeUpdates).length) {
+    try { inst.setProperties(badgeUpdates); } catch (e) { L('hide badges failed: ' + e.message); }
+  }
 
   // Force the inner layout chain to FILL so the section bar's content fills
   // the full table width. The master's 'Layout' frame is FIXED at 794px;
@@ -988,7 +1068,7 @@ async function validatePage(page) {
     if (sectionBars.length !== 1) errors.push({ code: 'DUP', id: spec.id, msg: 'expected 1 section bar, got ' + sectionBars.length });
     if (sectionBars[0]) {
       const sb = sectionBars[0];
-      for (const tn of ['__sectionTitle', 'description']) {
+      for (const tn of ['__sectionTitle', '$description']) {
         const node = sb.findOne(n => n.type === 'TEXT' && n.name === tn);
         const txt = node ? String(node.characters || '').trim() : '';
         if (!txt) errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' empty' });
@@ -1013,7 +1093,8 @@ async function validatePage(page) {
       const descText = descNode ? String(descNode.characters || '').trim() : '';
       if (!nameText) { errors.push({ code: 'EMPTY', id: spec.id, msg: 'row token name empty' }); continue; }
       const varName = nameText.replace(/\\./g, '/');
-      const v = allVars.find(x => x.name === varName);
+      const rowCol = Object.values(collMap || {}).find(c => c.name === spec.collection);
+      const v = allVars.find(x => x.name === varName && (!rowCol || x.variableCollectionId === rowCol.id));
       if (!v) { warnings.push({ code: 'TOKEN', id: spec.id, token: nameText, msg: 'no matching variable' }); continue; }
       if (descCell && descText !== (v.description || '')) {
         errors.push({ code: 'DESC', id: spec.id, token: nameText, msg: 'description mismatch (page: "' + descText.slice(0, 40) + '" vs var: "' + (v.description || '').slice(0, 40) + '")' });
@@ -1079,6 +1160,9 @@ async function main() {
   // VERTICAL frame. Records date, script@sha, source file, totals, duration.
   const totalRows = (validate && validate.stats && typeof validate.stats.totalRows === 'number') ? validate.stats.totalRows : 0;
   const errCount  = (validate && validate.errors) ? validate.errors.length : 0;
+  if (!pageOverride && errCount === 0) {
+    await deprecateOldScratchPages(registry.page, page.id);
+  }
   const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
   const prov      = provenance || {};
   const scriptTag = prov.scriptName + (prov.gitSha ? '@' + prov.gitSha : '');
@@ -1135,8 +1219,8 @@ function main() {
     const tokens = JSON.parse(fs.readFileSync(tokJson, 'utf8'));
     const desc = tokens && tokens.ob && tokens.ob.s && tokens.ob.s.dimension
       && tokens.ob.s.dimension.token_family_docs
-      && tokens.ob.s.dimension.token_family_docs.$description
-      && tokens.ob.s.dimension.token_family_docs.$description.$value;
+      && tokens.ob.s.dimension.token_family_docs.description
+      && tokens.ob.s.dimension.token_family_docs.description.$value;
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch (e) { /* leave null — bar keeps master default */ }
 

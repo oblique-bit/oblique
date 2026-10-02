@@ -50,6 +50,7 @@ function getArg(name, def) {
 }
 const MODE          = getArg('--mode', 'all');     // all | figma | export
 const ONLY_CATEGORY = getArg('--category', null);
+const PAGE_OVERRIDE = getArg('--page', null);
 
 if (!['all', 'figma', 'export', 'validate'].includes(MODE)) {
   console.error(`bad --mode: ${MODE} (must be all | figma | export | validate)`);
@@ -120,7 +121,7 @@ function renderMd(out) {
 
 // ── PLUGIN_CODE: runs inside Figma ─────────────────────────────────────────
 const PLUGIN_CODE = `
-const { registry, mode, onlyCategory, provenance } = PAYLOAD;
+const { registry, mode, onlyCategory, pageOverride, provenance } = PAYLOAD;
 const log = [];
 function L(msg) { log.push(String(msg)); }
 const PREFIX = registry.varPathPrefix;
@@ -128,7 +129,10 @@ const WRITE = mode !== 'export';
 const _startTime = Date.now();
 
 // ── helpers ────────────────────────────────────────────────────────────────
-function pathToToken(p) { return p.replace(/\\//g, '.'); }
+// This file only ever addresses compiled-tier (S3) variables, whose Figma
+// name has the "ob/s/" prefix trimmed for panel usability. Display the real
+// JSON token path, not the trimmed variable name.
+function pathToToken(p) { return (/^ob\\//.test(p) ? p : 'ob/s/' + p).replace(/\\//g, '.'); }
 function fillPattern(template, vars) {
   let out = template;
   for (const [k, val] of Object.entries(vars)) {
@@ -157,6 +161,29 @@ async function resolveColor(v) {
   for (let depth = 0; depth < 8; depth++) {
     const collection = await figma.variables.getVariableCollectionByIdAsync(cur.variableCollectionId);
     const modeId = collection.modes[0].modeId;
+    const val = cur.valuesByMode[modeId];
+    if (!val) return null;
+    if (val.type === 'VARIABLE_ALIAS') {
+      cur = await figma.variables.getVariableByIdAsync(val.id);
+      if (!cur) return null;
+      continue;
+    }
+    if (typeof val === 'object' && 'r' in val) {
+      return { r: val.r, g: val.g, b: val.b, a: val.a == null ? 1 : val.a };
+    }
+    return null;
+  }
+  return null;
+}
+
+// Like resolveColor, but pins the "lightness" collection to a specific mode
+// while walking the alias chain (compiled/S3 tokens route through S1, which
+// is multi-mode) instead of always taking modes[0] (= light).
+async function resolveColorForMode(v, lightnessModeId) {
+  let cur = v;
+  for (let depth = 0; depth < 8; depth++) {
+    const collection = await figma.variables.getVariableCollectionByIdAsync(cur.variableCollectionId);
+    const modeId = (lightnessModeId && collection.name === 'lightness') ? lightnessModeId : collection.modes[0].modeId;
     const val = cur.valuesByMode[modeId];
     if (!val) return null;
     if (val.type === 'VARIABLE_ALIAS') {
@@ -267,7 +294,7 @@ function expandBlock(block) {
   return pairs;
 }
 
-async function buildSwatchRecord(pair, varMap) {
+async function buildSwatchRecord(pair, varMap, lightnessModeId) {
   const fgVar = varMap.get(pair.fgName);
   const bgVar = pair.bgName ? varMap.get(pair.bgName) : null;
   if (!fgVar || (pair.bgName && !bgVar)) {
@@ -284,14 +311,21 @@ async function buildSwatchRecord(pair, varMap) {
     bgVarId: bgVar ? bgVar.id : null
   };
   if (bgVar) {
-    const fgC = await resolveColor(fgVar);
-    const bgC = await resolveColor(bgVar);
+    const fgC = await resolveColorForMode(fgVar, lightnessModeId);
+    const bgC = await resolveColorForMode(bgVar, lightnessModeId);
     if (fgC && bgC) {
       const r = contrastRatio(fgC, bgC);
       rec.ratio = Math.round(r * 100) / 100;
       rec.wcag = wcagFlags(r);
       rec.usage = pickUsage(rec.wcag);
       rec.emph = pickEmph(rec.fg, rec.bg);
+      // bg itself can carry alpha (e.g. cobalt_alpha.*) — contrastRatio only
+      // composites the foreground's alpha over bg, so a translucent bg is
+      // still treated as an opaque flat color here. The real on-screen result
+      // is bg-over-whatever-surface-it-sits-on, which this build has no way
+      // to know per pairing — flag it as a caveat instead of a silent wrong
+      // number (Olena, comment on ob.s.color.navigation.fg/bg.disabled).
+      if (bgC.a < 1) rec.bgTransparent = true;
     }
   }
   return rec;
@@ -325,45 +359,79 @@ function findPillVariant(level, passed) {
   return pillSetComp.children.find(c => c.name === 'contrast=' + want) || null;
 }
 
-// Canvas (page background) color for newly-created builder output pages.
-// Hex F0F4F7 = light cool-grey.
-const _PAGE_BG = { type: 'SOLID', color: { r: 0xF0/255, g: 0xF4/255, b: 0xF7/255 } };
+// Canvas (page background) color for builder output pages, per mode. This
+// used to be a manual step (set once by hand on the canonical Dark page,
+// lost on every rebuild since a fresh scratch page never inherits it) —
+// automated 2026-09-14 so it never needs redoing.
+// Hex F0F4F7 = light cool-grey. Hex 263645 = dark navy, matching the value
+// set by hand on the pre-2026-09-14 canonical Dark page.
+const _PAGE_BG_LIGHT = { type: 'SOLID', color: { r: 0xF0 / 255, g: 0xF4 / 255, b: 0xF7 / 255 } };
+const _PAGE_BG_DARK = { type: 'SOLID', color: { r: 0x26 / 255, g: 0x36 / 255, b: 0x45 / 255 } };
+function _cpPageBg(modeName) { return modeName === 'dark' ? _PAGE_BG_DARK : _PAGE_BG_LIGHT; }
 
-// Resolved page name: '<base> YYYY-MM-DD HH:MM'. Computed once per run
-// (provenance.pageTs is fixed at Node-side launch) so every call site lands
-// on the same page even across minute boundaries.
-function _cpResolvedPageName() {
+// Light and dark results live on separate pages (each locked to its own
+// lightness mode start to finish), not two sections on one page — a page's
+// own mode is unambiguous, so there is nothing to accidentally switch.
+// Base page name: '<base> Light' / '<base> Dark', then ' YYYY-MM-DD HH:MM'
+// for scratch runs (provenance.pageTs is fixed at Node-side launch, so
+// every call site lands on the same page even across minute boundaries).
+function _cpModeSuffix(modeName) { return modeName === 'dark' ? ' Dark' : ' Light'; }
+function _cpBasePageName(modeName) { return (pageOverride || registry.targetPageName) + _cpModeSuffix(modeName); }
+function _cpResolvedPageName(modeName) {
+  const base = _cpBasePageName(modeName);
+  if (pageOverride) return base;
   const ts = (provenance && provenance.pageTs) ? provenance.pageTs : '';
-  return ts ? (registry.targetPageName + ' ' + ts) : registry.targetPageName;
+  return ts ? (base + ' ' + ts) : base;
 }
 
-async function _cpEnsureTargetPage() {
-  const want = _cpResolvedPageName();
+async function _cpEnsureTargetPage(modeName) {
+  const want = _cpResolvedPageName(modeName);
   let p = figma.root.children.find(x => x.name === want);
   if (!p) {
     p = figma.createPage();
     p.name = want;
-    try { p.backgrounds = [_PAGE_BG]; } catch (e) { L('canvas bg set failed: ' + e.message); }
   }
+  // Always (re)apply, not just on first creation — self-heals a page whose
+  // background drifted (e.g. built once under the wrong mode's colour).
+  try { p.backgrounds = [_cpPageBg(modeName)]; } catch (e) { L('canvas bg set failed: ' + e.message); }
   return p;
 }
 
-async function ensureRootFrame() {
-  const targetPage = await _cpEnsureTargetPage();
-  await figma.setCurrentPageAsync(targetPage);
-  let root = targetPage.findOne(n => n.name === registry.rootFrameName && n.type === 'FRAME');
-  if (root) root.remove();
-  root = figma.createFrame();
-  root.name = registry.rootFrameName;
-  root.layoutMode = 'HORIZONTAL';
-  root.itemSpacing = 64;
-  root.paddingTop = root.paddingBottom = 48;
-  root.paddingLeft = root.paddingRight = 0;
-  root.primaryAxisSizingMode = 'AUTO';
-  root.counterAxisSizingMode = 'AUTO';
-  root.fills = [];
-  targetPage.appendChild(root);
-  return root;
+// Resolves the page validatePage should read for a mode when no fresh build
+// just ran: the exact scratch/override name, falling back to the most
+// recent timestamped page for that mode's base name.
+function _cpFindPageForMode(modeName) {
+  const want = _cpResolvedPageName(modeName);
+  let p = figma.root.children.find(x => x.name === want);
+  if (p) return p;
+  const base = _cpBasePageName(modeName);
+  const candidates = figma.root.children.filter(x => x.type === 'PAGE' && (x.name === base || x.name.startsWith(base + ' ')));
+  return candidates.length ? candidates.sort((a, b) => a.name.localeCompare(b.name)).pop() : null;
+}
+
+// After a successful scratch build (no --page override), mark older
+// timestamped pages for this doc as deprecated so they don't pile up.
+// Never touches the canonical (un-timestamped) page or the page just built.
+// Also moves each newly-deprecated page below the "______..." separator
+// page, if one exists, so deprecated pages stay grouped at the bottom of
+// the page list instead of scattered wherever they happened to be created.
+async function deprecateOldScratchPages(basePageName, currentPageId) {
+  const SEPARATOR_NAME = '_________________________________';
+  const prefix = basePageName + ' ';
+  const pages = [...figma.root.children]; // snapshot — we reorder children below
+  for (const p of pages) {
+    if (p.type !== 'PAGE') continue;
+    if (p.id === currentPageId) continue;
+    if (p.name === basePageName) continue;
+    if (!p.name.startsWith(prefix)) continue;
+    if (p.name.endsWith('_deprecated')) continue;
+    p.name = p.name + '_deprecated';
+    const sep = figma.root.children.find((x) => x.name === SEPARATOR_NAME);
+    if (sep) {
+      try { figma.root.insertChild(figma.root.children.indexOf(sep) + 1, p); }
+      catch (e) { L('move below separator failed: ' + e.message); }
+    }
+  }
 }
 
 async function setText(node, txt) {
@@ -419,8 +487,14 @@ function setBadgeStatus(badgeInst, level, passed) {
 async function buildSwatchVisual(rec, varMap) {
   if (!swatchComp || rec.missing) return null;
   const inst = swatchComp.createInstance();
-  const fgVar = varMap.get(rec.fg.replace(/\\./g, '/'));
-  const bgVar = rec.bg ? varMap.get(rec.bg.replace(/\\./g, '/')) : null;
+  // rec.fg/rec.bg carry the full ob.s.color token path (pathToToken); the
+  // live Figma variable name uses the same full path with '/' instead of
+  // '.' (confirmed 2026-09-14 — the 2026-09-08 manual "ob/s/" trim never
+  // survived a re-export, see figma-utils/rename-variables.js's CAUTION
+  // note), so no stripping is needed, just the separator swap.
+  const tokenToVarName = t => t.replace(/\\./g, '/');
+  const fgVar = varMap.get(tokenToVarName(rec.fg));
+  const bgVar = rec.bg ? varMap.get(tokenToVarName(rec.bg)) : null;
   if (bgVar) {
     const previewArea = findOneByName(inst, 'previewArea');
     if (previewArea) await bindFill(previewArea, bgVar);
@@ -448,9 +522,17 @@ async function buildSwatchVisual(rec, varMap) {
     // line — it's a usage caveat, not a WCAG result.
     let notContent = usage.notContent || '';
     if (rec.emph) notContent += ' | ⚠ emphasis_low required';
+    if (rec.bgTransparent) notContent += ' | ⚠ bg is transparent: ratio is approximate, not the real composited surface';
     const cv = findOneByName(notFrame, 'content-value'); if (cv) await setText(cv, notContent);
     const mv = findOneByName(notFrame, 'component-value'); if (mv) await setText(mv, usage.notComponent || '');
   }
+  // "single" (fg-only, no bg) pairings never compute rec.wcag — nothing to
+  // test contrast against. Without this, the fresh instance keeps the master
+  // component's placeholder ratio/badge content, which reads as a real (but
+  // wrong) result (Olena: "WCAG badges inconsistent with ratio" on
+  // ob.s.color.brand.1, a single pairing with bg "n/a").
+  const wcagFrame = findOneByName(inst, 'WCAG');
+  if (wcagFrame) wcagFrame.visible = !!rec.wcag;
   if (rec.wcag) {
     const normalRow = findOneByName(inst, 'badges-normal-text');
     const largeRow  = findOneByName(inst, 'badges-large-text');
@@ -477,9 +559,36 @@ async function buildSwatchVisual(rec, varMap) {
 
 async function buildSectionBar(catName, catCfg) {
   if (!sectionBarComp) return null;
+  // _docs/shared/section_bar is a COMPONENT_SET with a "tier" variant (p / s1
+  // / s2 / s) — each variant bakes its own accent-color theme, so picking
+  // defaultVariant ("tier=p") regardless of catCfg.section.tier leaves the
+  // wrong tier's colour strip visible even though the text properties
+  // (tierLetter, title, ...) read correctly. Same bug class fixed in
+  // dimension/build-dimension.js — see that commit's message.
   let comp = sectionBarComp;
-  if (comp.type === 'COMPONENT_SET') comp = comp.defaultVariant || comp.children[0];
+  if (comp.type === 'COMPONENT_SET') {
+    const wantTier = String((catCfg.section && catCfg.section.tier) || 'S').toLowerCase();
+    comp = (comp.children || []).find((c) => c.type === 'COMPONENT' && c.name === 'tier=' + wantTier)
+        || comp.defaultVariant
+        || comp.children[0];
+  }
   const inst = comp.createInstance();
+
+  // Hide the Color Bar strip and the three maintainer/contributor/consumer
+  // badges unconditionally. Both default on in the shared component; neither
+  // has ever been part of this page (same reasoning as the dimension fix).
+  const colorBar = inst.findOne((n) => n.name === 'Color Bar');
+  if (colorBar) { try { colorBar.visible = false; } catch {} }
+  const badgeProps = inst.componentProperties || {};
+  const badgeUpdates = {};
+  for (const bare of ['showBadgeMaintainer', 'showBadgeConsumer', 'showBadgeBundeskanzlei']) {
+    const key = Object.keys(badgeProps).find((k) => k === bare || k.split('#')[0] === bare);
+    if (key) badgeUpdates[key] = false;
+  }
+  if (Object.keys(badgeUpdates).length) {
+    try { inst.setProperties(badgeUpdates); } catch (e) { L('hide badges failed: ' + e.message); }
+  }
+
   const want = {
     tierLetter: catCfg.section.tier || 'S',
     title: catCfg.section.title || catName,
@@ -500,11 +609,17 @@ async function buildSectionBar(catName, catCfg) {
   const fallback = {
     tierLetter: ['tierLetter'],
     title:      ['__sectionTitle', 'sectionTitle', 'title'],
-    purpose:    ['description', 'purpose'],
+    purpose:    ['$description', 'description', 'purpose'],
     guideline:  ['guideline']
   };
+  // Always also write the node directly, even when a component property
+  // exists and was just set above: on this component, setProperties()
+  // updates the property's stored value (confirmed via
+  // inst.componentProperties) but does not reliably refresh the bound TEXT
+  // node's rendered characters — observed 2026-09-14, "tier=s" section bars
+  // kept showing the variant's baked default title/purpose text after a
+  // correct setProperties() call. Direct writes are cheap and idempotent.
   for (const [bare, value] of Object.entries(want)) {
-    if (findInstancePropertyKey(inst, bare)) continue;
     if (!value) continue;
     for (const nodeName of fallback[bare]) {
       const node = findOneByName(inst, nodeName);
@@ -549,7 +664,7 @@ function expectedCountForCategory(catCfg) {
 
 const DEFAULT_PLACEHOLDERS = ['Tier title', 'Group Title', 'Group description', 'Purpose: Description text'];
 
-async function validateSwatch(inst) {
+async function validateSwatch(inst, lightnessModeId) {
   const issues = [];
   const previewArea = inst.children && inst.children.find(c => c.name === 'previewArea');
   const metaArea    = inst.children && inst.children.find(c => c.name === 'metaArea');
@@ -579,7 +694,10 @@ async function validateSwatch(inst) {
       issues.push({ severity: 'error', code: 'BIND', msg: 'previewArea fill not bound to variable' });
     } else {
       const v = await figma.variables.getVariableByIdAsync(paBoundId);
-      const vdot = v ? v.name.replace(/\\//g, '.') : '';
+      // The bound variable's name already carries the full ob/s/color path
+      // (see pathToToken's 2026-09-14 note) — reuse the same conversion so
+      // this never drifts from how rec.fg/rec.bg were produced.
+      const vdot = v ? pathToToken(v.name) : '';
       if (bgText && vdot !== bgText) issues.push({ severity: 'error', code: 'BIND', msg: 'previewArea bound to ' + vdot + ' but bg text says ' + bgText });
     }
   }
@@ -594,7 +712,10 @@ async function validateSwatch(inst) {
     if (i === 0) firstSlBoundId = id;
     if (i === 0 && fgText) {
       const v = await figma.variables.getVariableByIdAsync(id);
-      const vdot = v ? v.name.replace(/\\//g, '.') : '';
+      // The bound variable's name already carries the full ob/s/color path
+      // (see pathToToken's 2026-09-14 note) — reuse the same conversion so
+      // this never drifts from how rec.fg/rec.bg were produced.
+      const vdot = v ? pathToToken(v.name) : '';
       if (vdot !== fgText) issues.push({ severity: 'error', code: 'BIND', msg: 'sample-link bound to ' + vdot + ' but fg text says ' + fgText });
     }
   }
@@ -617,8 +738,8 @@ async function validateSwatch(inst) {
   if (!isSingle && firstSlBoundId && paBoundId && ratioText) {
     const fgV = await figma.variables.getVariableByIdAsync(firstSlBoundId);
     const bgV = await figma.variables.getVariableByIdAsync(paBoundId);
-    const fgC = fgV ? await resolveColor(fgV) : null;
-    const bgC = bgV ? await resolveColor(bgV) : null;
+    const fgC = fgV ? await resolveColorForMode(fgV, lightnessModeId) : null;
+    const bgC = bgV ? await resolveColorForMode(bgV, lightnessModeId) : null;
     if (fgC && bgC) {
       const r = contrastRatio(fgC, bgC);
       const displayed = parseFloat((ratioText.split(':')[0] || '').trim());
@@ -662,7 +783,7 @@ async function validateSectionBar(sb, catName, catCfg) {
   const issues = [];
   if (!sb) return [{ severity: 'error', code: 'SECTBAR', msg: 'no section bar in category ' + catName }];
   const title = sb.findOne(n => n.type === 'TEXT' && n.name === '__sectionTitle');
-  const desc  = sb.findOne(n => n.type === 'TEXT' && n.name === 'description');
+  const desc  = sb.findOne(n => n.type === 'TEXT' && n.name === '$description');
   const titleText = title ? String(title.characters || '').trim() : '';
   const descText  = desc  ? String(desc.characters  || '').trim() : '';
   if (!titleText || DEFAULT_PLACEHOLDERS.indexOf(titleText) >= 0) issues.push({ severity: 'error', code: 'SECTBAR', msg: 'section bar title is empty/default in ' + catName + ' (got: ' + titleText + ')' });
@@ -744,24 +865,26 @@ async function ensureCpHeaderAndOuter(page, root, metaText) {
   return outer;
 }
 
-async function validatePage() {
+// Validates one mode's page. targetPage/modeId are passed in when called
+// right after a build (no extra lookup needed); omit to resolve the most
+// recent page for that mode (used by --mode validate).
+async function validatePage(modeName, targetPage, modeId) {
   const errors = [];
   const warnings = [];
   const stats = { totalSwatches: 0, byCategory: {} };
-  // Resolve to the timestamped page for this run. If not present, fall back
-  // to the most-recent build page that matches the base name (useful when
-  // running --mode validate against a build from earlier).
-  const want = _cpResolvedPageName();
-  let targetPage = figma.root.children.find(p => p.name === want);
-  if (!targetPage) {
-    const candidates = figma.root.children.filter(p => p.type === 'PAGE' && (p.name === registry.targetPageName || p.name.startsWith(registry.targetPageName + ' ')));
-    if (candidates.length) targetPage = candidates.sort((a, b) => a.name.localeCompare(b.name)).pop();
-  }
-  if (!targetPage) { errors.push({ severity: 'error', code: 'PAGE', msg: 'target page not found: ' + want }); return { errors, warnings, stats }; }
+  if (!targetPage) targetPage = _cpFindPageForMode(modeName);
+  if (!targetPage) { errors.push({ severity: 'error', code: 'PAGE', msg: 'target page not found for mode: ' + modeName }); return { errors, warnings, stats }; }
   const root = targetPage.findOne(n => n.name === registry.rootFrameName && n.type === 'FRAME');
   if (!root) { errors.push({ severity: 'error', code: 'ROOT', msg: 'root frame not found: ' + registry.rootFrameName }); return { errors, warnings, stats }; }
 
-  const catFrames = root.children.filter(c => /^category-/.test(c.name));
+  if (modeId == null) {
+    const lightnessCollection = (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'lightness');
+    modeId = lightnessCollection ? (lightnessCollection.modes.find(m => m.name === modeName) || {}).modeId : null;
+  }
+  const wrapName = modeName === 'dark' ? 'Dark mode' : 'Light mode';
+  const wrapFrame = root.findOne(n => n.type === 'FRAME' && n.name === wrapName) || root;
+
+  const catFrames = wrapFrame.children.filter(c => /^category-/.test(c.name));
   for (const catFrame of catFrames) {
     const catName = catFrame.name.replace(/^category-/, '');
     const catCfg = registry.categories[catName];
@@ -777,7 +900,7 @@ async function validatePage() {
     if (swatches.length !== expected) errors.push({ category: catName, severity: 'error', code: 'COUNT', msg: 'swatch count: got ' + swatches.length + ', expected ' + expected });
 
     for (const s of swatches) {
-      for (const i of await validateSwatch(s)) (i.severity === 'warning' ? warnings : errors).push({ category: catName, swatchId: s.id, ...i });
+      for (const i of await validateSwatch(s, modeId)) (i.severity === 'warning' ? warnings : errors).push({ category: catName, swatchId: s.id, ...i });
     }
   }
   return { errors, warnings, stats };
@@ -786,20 +909,20 @@ async function validatePage() {
 // ── main flow ──────────────────────────────────────────────────────────────
 try {
   if (mode === 'validate') {
-    const validate = await validatePage();
-    return { validate, log };
+    const validateLight = await validatePage('light');
+    const validateDark = await validatePage('dark');
+    return { validate: { light: validateLight, dark: validateDark }, log };
   }
   const { map } = await buildVarMap();
   if (WRITE) await loadComponents();
 
-  const out = { schema: 'ob.contrast-pairings.v1', generatedAt: new Date().toISOString(), categories: {} };
-  let root = null;
-  if (WRITE) root = await ensureRootFrame();
-
-  const catNames = onlyCategory ? [onlyCategory] : Object.keys(registry.categories);
-  for (const catName of catNames) {
-    const catCfg = registry.categories[catName];
-    if (!catCfg) { L('skip unknown category: ' + catName); continue; }
+  // Builds one category's section (bar + groups + rows of swatches) into
+  // container. lightnessModeId, if set, both pins the container's
+  // "lightness" collection resolution (so bound swatch/text fills render
+  // that mode) and feeds the WCAG ratio math, so the displayed numbers
+  // always match what's visually shown regardless of any ambient mode
+  // switch elsewhere in the file.
+  async function buildCategoryFrame(catName, catCfg, container, map, lightnessModeId) {
     const swatches = [];
     let catFrame = null;
     if (WRITE) {
@@ -810,7 +933,7 @@ try {
       catFrame.primaryAxisSizingMode = 'AUTO';
       catFrame.counterAxisSizingMode = 'AUTO';
       catFrame.fills = [];
-      root.appendChild(catFrame);
+      container.appendChild(catFrame);
       const bar = await buildSectionBar(catName, catCfg);
       if (bar) {
         catFrame.appendChild(bar);
@@ -840,7 +963,13 @@ try {
     }
 
     for (const { block, groupKey } of blockSpecs) {
-      if (WRITE && groupKey) {
+      // "{group} (text-link)" is a second block for the SAME group (its
+      // text-link row variant), not a new group — its header text strips
+      // back to the identical group name, so rendering a header for it too
+      // produced a visible duplicate title block right above the text-link
+      // row (Olena, category-status: "Info" header, then "Info" again).
+      const isTextLinkBlock = / \\(text-link\\)$/.test(groupKey || '');
+      if (WRITE && groupKey && !isTextLinkBlock) {
         const headerKey = groupKey.replace(/ \\(text-link\\)$/, '');
         const hdrCfg = (catCfg.groupHeaders && catCfg.groupHeaders[headerKey]) || null;
         const gh = await buildGroupHeader(
@@ -872,7 +1001,7 @@ try {
           catFrame.appendChild(rowFrame);
         }
         for (const p of rowPairs) {
-          const rec = await buildSwatchRecord(p, map);
+          const rec = await buildSwatchRecord(p, map, lightnessModeId);
           if (groupKey) rec.group = groupKey;
           swatches.push(rec);
           if (WRITE && !rec.missing) {
@@ -883,21 +1012,68 @@ try {
       }
     }
 
-    out.categories[catName] = swatches;
     L('category ' + catName + ': ' + swatches.length + ' swatches (' + swatches.filter(s => s.missing).length + ' missing)');
+    return swatches;
   }
 
-  // Validate the page we just built (no extra round-trip; we still hold figma context).
-  // Skip in export mode — no Figma writes happened, so there's nothing fresh to validate.
-  const validate = WRITE ? await validatePage() : null;
+  const out = { schema: 'ob.contrast-pairings.v1', generatedAt: new Date().toISOString(), categories: {} };
+  const catNames = onlyCategory ? [onlyCategory] : Object.keys(registry.categories);
 
-  // Provenance header + outer VERTICAL wrap. Header records: date, script@SHA,
-  // source Figma file, total swatch rows, error count, duration.
-  if (WRITE && root) {
-    const targetPage = figma.root.children.find(p => p.name === _cpResolvedPageName());
-    if (targetPage) {
+  // Light and dark results are built on separate pages, each pinned start to
+  // finish to its own lightness mode (setExplicitVariableModeForCollection),
+  // so bound swatch/text/background fills render correctly regardless of
+  // any ambient mode switch elsewhere in the file.
+  const lightnessCollection = WRITE ? (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'lightness') : null;
+
+  async function buildModePage(modeName) {
+    const modeId = lightnessCollection ? (lightnessCollection.modes.find(m => m.name === modeName) || {}).modeId : null;
+    let targetPage = null, root = null, wrap = null;
+    if (WRITE) {
+      targetPage = await _cpEnsureTargetPage(modeName);
+      await figma.setCurrentPageAsync(targetPage);
+      // Pin the whole PAGE, not just the swatch wrap below — the foundation
+      // bar and section bars sit outside the wrap frame and need the same
+      // mode to render their bound neutral fills correctly.
+      if (lightnessCollection && modeId) targetPage.setExplicitVariableModeForCollection(lightnessCollection, modeId);
+      root = targetPage.findOne(n => n.name === registry.rootFrameName && n.type === 'FRAME');
+      if (root) root.remove();
+      root = figma.createFrame();
+      root.name = registry.rootFrameName;
+      root.layoutMode = 'VERTICAL';
+      root.primaryAxisSizingMode = 'AUTO';
+      root.counterAxisSizingMode = 'AUTO';
+      root.fills = [];
+      targetPage.appendChild(root);
+
+      wrap = figma.createFrame();
+      wrap.name = modeName === 'dark' ? 'Dark mode' : 'Light mode';
+      wrap.layoutMode = 'HORIZONTAL';
+      wrap.itemSpacing = 64;
+      wrap.primaryAxisSizingMode = 'AUTO';
+      wrap.counterAxisSizingMode = 'AUTO';
+      wrap.fills = [];
+      root.appendChild(wrap);
+    }
+
+    const catSwatches = {};
+    for (const catName of catNames) {
+      const catCfg = registry.categories[catName];
+      if (!catCfg) { L('skip unknown category: ' + catName); continue; }
+      catSwatches[catName] = await buildCategoryFrame(catName, catCfg, wrap || root, map, modeId);
+    }
+
+    // Validate the page we just built (no extra round-trip; still holding
+    // figma context). Skip in export mode — no Figma writes happened.
+    const validate = WRITE ? await validatePage(modeName, targetPage, modeId) : null;
+
+    // Provenance header + outer VERTICAL wrap. Header records: date,
+    // script@SHA, source Figma file, total swatch rows, error count, duration.
+    if (WRITE && root) {
       const totalRows = (validate && validate.stats && typeof validate.stats.totalRows === 'number') ? validate.stats.totalRows : null;
       const errCount  = (validate && validate.errors) ? validate.errors.filter(e => e.severity !== 'warning').length : 0;
+      if (!pageOverride && errCount === 0) {
+        await deprecateOldScratchPages(_cpBasePageName(modeName), targetPage.id);
+      }
       const durSec    = ((Date.now() - _startTime) / 1000).toFixed(1);
       const prov      = provenance || {};
       const scriptTag = prov.scriptName + (prov.gitSha ? '@' + prov.gitSha : '');
@@ -912,7 +1088,15 @@ try {
       const outer = await ensureCpHeaderAndOuter(targetPage, root, headerText);
       try { outer.x = 0; outer.y = 0; } catch {}
     }
+
+    return { catSwatches, validate };
   }
+
+  const lightResult = await buildModePage('light');
+  out.categories = lightResult.catSwatches;
+  const darkResult = WRITE ? await buildModePage('dark') : null;
+
+  const validate = { light: lightResult.validate, dark: darkResult ? darkResult.validate : null };
 
   return { result: out, validate, log };
 } catch (e) {
@@ -934,7 +1118,8 @@ const tzPart = new Intl.DateTimeFormat('en', { timeZoneName: 'short' }).formatTo
 const generatedAt = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}${tzPart ? ' ' + tzPart.value : ''}`;
 const pageTs = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
-const payload = { registry, mode: MODE, onlyCategory: ONLY_CATEGORY, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-pairings.js' } };
+const payload = { registry, mode: MODE, onlyCategory: ONLY_CATEGORY, pageOverride: PAGE_OVERRIDE, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-pairings.js' } };
+if (PAGE_OVERRIDE) console.log('  Page override: ' + PAGE_OVERRIDE);
 const script = `(async () => {
   const PAYLOAD = ${JSON.stringify(payload)};
   ${PLUGIN_CODE}
@@ -970,39 +1155,45 @@ if (parsed.result) {
   }
 }
 
-// Validation summary + non-zero exit on errors
+// Validation summary + non-zero exit on errors. parsed.validate is
+// { light: {errors, warnings, stats}, dark: {...} } — one page per mode.
 if (parsed.validate) {
-  const v = parsed.validate;
-  const errCount  = v.errors  ? v.errors.length  : 0;
-  const warnCount = v.warnings ? v.warnings.length : 0;
-  console.log('');
-  console.log('Validation:');
-  if (v.stats && v.stats.byCategory) {
-    for (const [cat, s] of Object.entries(v.stats.byCategory)) {
-      const flag = s.count === s.expected ? 'ok' : 'MISMATCH';
-      console.log('  ' + cat.padEnd(14) + s.count + '/' + s.expected + '  ' + flag);
-    }
-  }
-  console.log('  Errors:   ' + errCount);
-  console.log('  Warnings: ' + warnCount);
+  let totalErrCount = 0;
   const cap = 25;
-  if (errCount) {
+  for (const modeName of ['light', 'dark']) {
+    const v = parsed.validate[modeName];
+    if (!v) continue;
+    const errCount  = v.errors  ? v.errors.length  : 0;
+    const warnCount = v.warnings ? v.warnings.length : 0;
+    totalErrCount += errCount;
     console.log('');
-    console.log('  -- errors (first ' + Math.min(errCount, cap) + ') --');
-    for (const e of v.errors.slice(0, cap)) {
-      console.log('  [' + (e.code || '?') + '] ' + (e.category || '?') + (e.swatchId ? ' / ' + e.swatchId : '') + ': ' + e.msg);
+    console.log('Validation (' + modeName + '):');
+    if (v.stats && v.stats.byCategory) {
+      for (const [cat, s] of Object.entries(v.stats.byCategory)) {
+        const flag = s.count === s.expected ? 'ok' : 'MISMATCH';
+        console.log('  ' + cat.padEnd(14) + s.count + '/' + s.expected + '  ' + flag);
+      }
+    }
+    console.log('  Errors:   ' + errCount);
+    console.log('  Warnings: ' + warnCount);
+    if (errCount) {
+      console.log('');
+      console.log('  -- errors (first ' + Math.min(errCount, cap) + ') --');
+      for (const e of v.errors.slice(0, cap)) {
+        console.log('  [' + (e.code || '?') + '] ' + (e.category || '?') + (e.swatchId ? ' / ' + e.swatchId : '') + ': ' + e.msg);
+      }
+    }
+    if (warnCount) {
+      console.log('');
+      console.log('  -- warnings (first ' + Math.min(warnCount, cap) + ') --');
+      for (const w of v.warnings.slice(0, cap)) {
+        console.log('  [' + (w.code || '?') + '] ' + (w.category || '?') + (w.swatchId ? ' / ' + w.swatchId : '') + ': ' + w.msg);
+      }
     }
   }
-  if (warnCount) {
-    console.log('');
-    console.log('  -- warnings (first ' + Math.min(warnCount, cap) + ') --');
-    for (const w of v.warnings.slice(0, cap)) {
-      console.log('  [' + (w.code || '?') + '] ' + (w.category || '?') + (w.swatchId ? ' / ' + w.swatchId : '') + ': ' + w.msg);
-    }
-  }
-  if (errCount) {
+  if (totalErrCount) {
     console.error('');
-    console.error('FAIL: ' + errCount + ' validation error(s)');
+    console.error('FAIL: ' + totalErrCount + ' validation error(s)');
     process.exit(1);
   }
   console.log('');

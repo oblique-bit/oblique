@@ -24,7 +24,10 @@
         "file": "src/lib/themes/01_global/mode_collection/viewport.json",
         "rootPath": "ob.g.mode_collection.viewport.breakpoint",
         "tierKeys": ["xs", "sm", "md", "lg", "xl", "2xl"],
-        "tokenNameTemplate": "ob.g.mode_collection.viewport.breakpoint.<tier>"
+        "tokenNameTemplate": "ob.g.mode_collection.viewport.breakpoint.<tier>",
+        "extraTokens": [
+          { "path": "ob.g.mode_collection.viewport.min_supported_width" }
+        ]
       },
       "section": {
         "tier": "G",
@@ -84,7 +87,11 @@
         "leafKeys": ["min_width", "max_width"],
         "modeFiles": { "xl": "xl.json", "xs": "xs.json", "sm": "sm.json", "md": "md.json", "lg": "lg.json", "2xl": "2xl.json" },
         "modeOrder": ["xs", "sm", "md", "lg", "xl", "2xl"],
-        "tokenNameTemplate": "ob.s.dimension.viewport.<leaf>"
+        "tokenNameTemplate": "ob.s.dimension.viewport.<leaf>",
+        "leafDescriptions": {
+          "min_width": "Minimum width of the page container. Resolves per viewport: xs uses the system's minimum supported width as its floor; sm-2xl resolve to their own range's lower bound.",
+          "max_width": "Maximum width of the page container. Resolves to each viewport's range upper bound; 2xl is open-ended (99999px sentinel)."
+        }
       },
       "section": {
         "tier": "S",
@@ -92,27 +99,6 @@
         "subtitle": "ob.s.dimension.viewport.{min_width, max_width}",
         "purpose": "Mode-scoped page-container min / max widths — the Figma-bindable layer consumed by frames.",
         "guideline": "Bind to the page container frame. Resolves per active viewport mode."
-      }
-    },
-    {
-      "id": "header_variant",
-      "tableName": "Table: header_variant",
-      "kind": "multi",
-      "source": {
-        "type": "json-per-mode",
-        "dir": "src/lib/themes/04_component/molecule/header",
-        "rootPath": "ob.c.header",
-        "leafKeys": ["variant"],
-        "modeFiles": { "xl": "xl.json", "xs": "xs.json", "sm": "sm.json", "md": "md.json", "lg": "lg.json", "2xl": "2xl.json" },
-        "modeOrder": ["xs", "sm", "md", "lg", "xl", "2xl"],
-        "tokenNameTemplate": "ob.c.header.<leaf>"
-      },
-      "section": {
-        "tier": "C",
-        "title": "Viewport – Header Variant",
-        "subtitle": "ob.c.header.variant",
-        "purpose": "[FIGMA-ONLY] Temporary token used only for Figma documentation. Selects the _pseudo_header component variant per viewport mode — mobile below lg, desktop from lg up.",
-        "guideline": "Delete this token (and the _pseudo_header) when the real header component ships."
       }
     }
   ]

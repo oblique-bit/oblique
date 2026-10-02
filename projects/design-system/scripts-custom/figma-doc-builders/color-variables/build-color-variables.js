@@ -184,12 +184,39 @@ async function discoverCollections() {
   }
   const aliases = {
     'static':       map['static']       || null,
-    's1-lightness': map['s1-lightness'] || map['s1_lightness'] || map['Lightness'] || null,
-    's2-emphasis':  map['s2-emphasis']  || map['s2_emphasis']  || map['Emphasis']  || null,
+    's1-lightness': map['s1-lightness'] || map['s1_lightness'] || map['Lightness'] || map['lightness'] || null,
+    's2-emphasis':  map['s2-emphasis']  || map['s2_emphasis']  || map['Emphasis']  || map['emphasis']  || null,
     'semantic':     map['semantic']     || map['Semantic']     || null
   };
   return { all: map, aliases };
 }
+
+// Legacy collections that are 100%-duplicate-by-name copies of a current
+// collection — verified live: every single variable in each of these
+// collides by exact name with a variable in a current collection (290/290
+// for s1_lightness/light, 18/18 for s2_emphasis/high). Excluding them
+// removes only genuine duplicates, which is what caused duplicate table
+// rows and swatches resolving to a stale legacy color (byName was
+// last-write-wins with zero collection filtering, so whichever variable
+// Figma enumerated last silently won).
+//
+// Deliberately NOT included: 03_semantic/color/compiled. It looks legacy
+// by name but 0 of its 259 variables collide by name with anything in a
+// current collection — it holds the OLD trimmed naming ("color/status/…",
+// no "ob/s/" prefix) that the S3-tier table regexes in registry.json
+// ("^color/…") actually match, while the current "semantic" collection's
+// variables still carry the untrimmed "ob/s/…" prefix and match nothing.
+// Excluding "compiled" here silently empties every S3 table (confirmed:
+// 257 new [TOKEN]-not-found warnings, all on ob.s.* tables, the moment
+// this collection was excluded in an earlier draft of this fix). It is not
+// a duplicate — it is the S3 tier's only working data source right now.
+// A denylist of proven-100%-duplicate collections, not an allowlist of
+// "looks current", on purpose: this only ever removes what is provably
+// redundant, never something merely differently-named.
+const LEGACY_DUPLICATE_COLLECTION_NAMES = new Set([
+  '03_semantic/color/s1_lightness/light',
+  '03_semantic/color/s2_emphasis/high',
+]);
 
 // Discover both COLOR and STRING vars. Build:
 //   varMap.byName / byId / list — color vars only (used for swatch binding)
@@ -198,12 +225,33 @@ async function discoverVariables(collections) {
   const colorVars  = await figma.variables.getLocalVariablesAsync('COLOR');
   const stringVars = await figma.variables.getLocalVariablesAsync('STRING');
 
+  // id -> collection name, from the same collections this run already
+  // discovered via discoverCollections(). collections.all holds every local
+  // collection (current AND legacy) unfiltered — LEGACY_DUPLICATE_COLLECTION_NAMES
+  // above, not this map, is what actually filters.
+  const colIdToName = {};
+  for (const [name, c] of Object.entries(collections.all || {})) colIdToName[c.id] = name;
+
   const byName = {}, byId = {};
   const list = [];
+  const seenNames = new Set(); // every non-docs COLOR var name, any collection
+  let legacySkipped = 0;
   for (const v of colorVars) {
     // Skip metadata namespace
     if (v.name.includes('/_docs/')) continue;
+    seenNames.add(v.name);
+    if (LEGACY_DUPLICATE_COLLECTION_NAMES.has(colIdToName[v.variableCollectionId])) { legacySkipped++; continue; }
     byName[v.name] = v; byId[v.id] = v; list.push(v);
+  }
+  // A name that exists ONLY inside an excluded collection (never migrated /
+  // duplicated into a current one) would otherwise vanish from every
+  // generated table with zero warning. Surface it instead of failing silent.
+  // Expected to stay empty given the 100%-duplicate verification above —
+  // kept as a safety net, not a normal-case signal.
+  const orphanedNames = [...seenNames].filter(n => !Object.prototype.hasOwnProperty.call(byName, n));
+  if (orphanedNames.length) {
+    L('discoverVariables: ' + orphanedNames.length + ' color var name(s) exist only in an excluded legacy-duplicate collection and were dropped: ' +
+      orphanedNames.slice(0, 20).join(', ') + (orphanedNames.length > 20 ? ', …' : ''));
   }
 
   // Build family-doc map. Var name pattern: <family-path>/_docs/token_family_info.
@@ -211,6 +259,7 @@ async function discoverVariables(collections) {
   const docMap = {};
   for (const v of stringVars) {
     if (!v.name.endsWith('/_docs/token_family_info')) continue;
+    if (LEGACY_DUPLICATE_COLLECTION_NAMES.has(colIdToName[v.variableCollectionId])) continue;
     const familyPath = v.name.slice(0, -('/_docs/token_family_info'.length));
     const dotPath = familyPath.replace(/\\//g, '.');
     let modeId;
@@ -221,7 +270,7 @@ async function discoverVariables(collections) {
     if (typeof val === 'string') docMap[dotPath] = val;
   }
 
-  return { byName, byId, list, docMap, colorCount: colorVars.length, stringCount: stringVars.length };
+  return { byName, byId, list, docMap, colorCount: colorVars.length, stringCount: stringVars.length, legacySkipped };
 }
 
 function descAt(p, varMap) { return (varMap.docMap && varMap.docMap[p]) || ''; }
@@ -248,6 +297,31 @@ async function ensurePage(name) {
   page.name = name;
   try { page.backgrounds = [_PAGE_BG]; } catch (e) { log.push('canvas bg set failed: ' + e.message); }
   return page;
+}
+
+// After a successful scratch build (no --page override), mark older
+// timestamped pages for this doc as deprecated so they don't pile up.
+// Never touches the canonical (un-timestamped) page or the page just built.
+// Also moves each newly-deprecated page below the "______..." separator
+// page, if one exists, so deprecated pages stay grouped at the bottom of
+// the page list instead of scattered wherever they happened to be created.
+async function deprecateOldScratchPages(basePageName, currentPageId) {
+  const SEPARATOR_NAME = '_________________________________';
+  const prefix = basePageName + ' ';
+  const pages = [...figma.root.children]; // snapshot — we reorder children below
+  for (const p of pages) {
+    if (p.type !== 'PAGE') continue;
+    if (p.id === currentPageId) continue;
+    if (p.name === basePageName) continue;
+    if (!p.name.startsWith(prefix)) continue;
+    if (p.name.endsWith('_deprecated')) continue;
+    p.name = p.name + '_deprecated';
+    const sep = figma.root.children.find((x) => x.name === SEPARATOR_NAME);
+    if (sep) {
+      try { figma.root.insertChild(figma.root.children.indexOf(sep) + 1, p); }
+      catch (e) { L('move below separator failed: ' + e.message); }
+    }
+  }
 }
 
 function findFrameByName(parent, name) {
@@ -574,6 +648,13 @@ function alphaVariantFor(tokenName) {
 function setAlphaVariant(swatchInst, tokenName) {
   if (!swatchInst || swatchInst.type !== 'INSTANCE') return;
   try { swatchInst.setProperties({ Alpha: alphaVariantFor(tokenName) }); } catch {}
+  // Figma preserves per-instance fill overrides across variant swaps. A swatch that
+  // once had its own container painted solid keeps masking the checkerboard/alpha
+  // backdrop even after switching variants — reset it to the new variant's default.
+  try {
+    const main = swatchInst.mainComponent;
+    if (main && Array.isArray(main.fills)) swatchInst.fills = main.fills;
+  } catch {}
 }
 
 function getRoleSegment(tokenName) {
@@ -700,7 +781,7 @@ async function aliasIdToName(id, varMap) {
   return name;
 }
 
-async function refTokenForVariable(variable, collectionAlias, modeName, collectionsByAlias, varMap) {
+async function refTokenForVariable(variable, collectionAlias, modeName, collectionsByAlias, varMap, dotPath) {
   if (!variable) return '';
   const col = collectionsByAlias[collectionAlias];
   if (!col) return '';
@@ -716,6 +797,13 @@ async function refTokenForVariable(variable, collectionAlias, modeName, collecti
   if (val && val.type === 'VARIABLE_ALIAS') {
     const name = await aliasIdToName(val.id, varMap);
     if (name) return '{' + name.replace(/\\//g, '.') + '}';
+  }
+  // Reference + modify: Token Studio bakes this into a literal color, so
+  // there's no alias to walk here. Fall back to the JSON source's modify
+  // record (see PAYLOAD.s1ModifyMap, loaded Node-side).
+  if (dotPath && typeof PAYLOAD !== 'undefined' && PAYLOAD.s1ModifyMap) {
+    const entry = PAYLOAD.s1ModifyMap[modeName] && PAYLOAD.s1ModifyMap[modeName][dotPath];
+    if (entry) return entry.ref + ' · alpha ' + entry.alpha;
   }
   return '';
 }
@@ -801,7 +889,8 @@ async function build2ModeRow(table, token, components, varMap, collectionsByAlia
         }
         if (hexNode) setText(hexNode, token.value || '');
       }
-      setAlphaVariant(swInst, token.dotPath);
+      const refForMode = mode === 'light' ? token.referenceLight : token.referenceDark;
+      setAlphaVariant(swInst, refForMode || token.dotPath);
     }
   } };
 }
@@ -849,7 +938,7 @@ async function build4ModeRows(table, token, components, varMap, collectionsByAli
         } else {
           setSolidFill(swRect, token.value);
         }
-        setAlphaVariant(swInst, token.dotPath);
+        setAlphaVariant(swInst, refForRow || token.dotPath);
         const hexNode = findAllByType(cell, 'TEXT').find(t => /hex/i.test(t.name));
         if (hexNode && token.kind === 'figma-var') {
           const v = varMap.byName[token.varName];
@@ -938,7 +1027,10 @@ async function buildTable(spec, ctx) {
     const filterRe = new RegExp(spec.matches);
     for (const v of ctx.varMap.list) {
       if (!filterRe.test(v.name)) continue;
-      const dotPath = v.name.replace(/\\//g, '.');
+      // Compiled-tier (S3) variables are stored in Figma with the "ob/s/"
+      // prefix trimmed for panel usability (see shorten-color.js). The
+      // doc must still show the real JSON token path, so reconstruct it.
+      const dotPath = v.name.startsWith('ob/') ? v.name.replace(/\\//g, '.') : 'ob.s.' + v.name.replace(/\\//g, '.');
       tokens.push({
         kind: 'figma-var',
         varName: v.name,
@@ -950,8 +1042,8 @@ async function buildTable(spec, ctx) {
     if (spec.rowComponent === '2-mode') {
       await Promise.all(tokens.map(async t => {
         const [light, dark] = await Promise.all([
-          refTokenForVariable(t.variable, spec.modeCollection, 'light', ctx.collections.aliases, ctx.varMap),
-          refTokenForVariable(t.variable, spec.modeCollection, 'dark',  ctx.collections.aliases, ctx.varMap)
+          refTokenForVariable(t.variable, spec.modeCollection, 'light', ctx.collections.aliases, ctx.varMap, t.dotPath),
+          refTokenForVariable(t.variable, spec.modeCollection, 'dark',  ctx.collections.aliases, ctx.varMap, t.dotPath)
         ]);
         t.referenceLight = light;
         t.referenceDark  = dark;
@@ -983,13 +1075,28 @@ async function buildTable(spec, ctx) {
     tokenCount: tokens.length
   });
 
-  // Group tokens by the segment after the prefix.
-  let prefixSegments;
-  if (spec.matches) {
-    prefixSegments = spec.matches.replace(/^\\^/, '').split('/').length - 1;
-  } else {
-    prefixSegments = 3;
-  }
+  // Group tokens by the segment after the prefix. dotPath always normalizes to
+  // the full "ob.<tier>.color.<family>...." form (see the dotPath branch above
+  // this function, ~line 1033) regardless of whether the live Figma variable
+  // name itself carries that prefix or was trimmed — so the group segment's
+  // index in dotPath is exactly spec.matches's own segment count, for every
+  // tier, as long as matches is written against the real (untrimmed) variable
+  // name. No per-tier offset needed.
+  //
+  // CAUTION: this used to carry a "+2 for s3" fudge factor, because the S3
+  // registry entries' matches were written against an old, already-trimmed
+  // form of the variable name (e.g. "^color/neutral/", 2 segments) while S1's
+  // were always written against the untrimmed form. Once the S3 matches
+  // values were corrected to the real untrimmed names (e.g.
+  // "^ob/s/color/neutral/", 4 segments — see ../FIGMA-WORKFLOW.md and the
+  // token-only variable-origin rule this fixed for), the old fudge factor
+  // started double-counting the "ob/s/" it now already included, and every
+  // S3 table's group header showed the wrong title (e.g. "Contrast Low"
+  // instead of "Pink" on the free/pink group) — caught 2026-09-22, right
+  // after that matches fix.
+  const prefixSegments = spec.matches
+    ? spec.matches.replace(/^\\^/, '').split('/').length - 1
+    : 3;
   const groups = deriveGroups(tokens, prefixSegments);
 
   // Wipe existing children of the table frame
@@ -1250,9 +1357,17 @@ async function validatePage(targetPage, varMap, components) {
       // Continuation rows (e.g. 4-Mode-Low emphasis-low) intentionally leave the
       // name cell empty — they inherit from the row above. Skip them.
       if (!nameText) continue;
-      // Look up variable by dotted token name
-      const varName = nameText.replace(/\\./g, '/');
-      const v = (varMap.byName && varMap.byName[varName]) || varMap.list.find(x => x.name === varName);
+      // Look up variable by dotted token name. Compiled-tier (S3) rows display
+      // the full ob.s.color path; the live Figma variable name may or may not
+      // have that prefix trimmed (see shorten-color.js) depending on whether
+      // the cosmetic trim has actually run - as of 2026-09-22 it has not (see
+      // run-cosmetics.js's variables step, "no rule needed yet"), so live
+      // names carry the full prefix. Try the untrimmed name first (today's
+      // real state), then the trimmed form, so this keeps working either way.
+      const fullVarName = nameText.replace(/\\./g, '/');
+      const trimmedVarName = nameText.startsWith('ob.s.') ? nameText.slice(5).replace(/\\./g, '/') : fullVarName;
+      const v = (varMap.byName && (varMap.byName[fullVarName] || varMap.byName[trimmedVarName]))
+        || varMap.list.find(x => x.name === fullVarName || x.name === trimmedVarName);
       if (!v) {
         warnings.push({ code: 'TOKEN', set: wrapperName, msg: 'token "' + nameText + '" not found in varMap' });
         continue;
@@ -1316,6 +1431,10 @@ async function main() {
 
   const validate = await validatePage(targetPage, varMap, components);
 
+  if (!pageOverride && validate && validate.errors && validate.errors.length === 0) {
+    await deprecateOldScratchPages(registry.page, targetPage.id);
+  }
+
   // Provenance header + outer VERTICAL wrap. Header records: date, script@SHA,
   // source Figma file, total token rows, error count, duration.
   const outputContainer = targetPage.findOne(c => c.type === 'FRAME' && c.name === 'Color Tokens');
@@ -1343,6 +1462,7 @@ async function main() {
     variableCount: varMap.list.length,
     docCount: Object.keys(varMap.docMap || {}).length,
     stringVarCount: varMap.stringCount || 0,
+    legacyColorVarsSkipped: varMap.legacySkipped || 0,
     cacheStats: { aliasName: aliasNameCache.size, aliasVar: aliasVarCache.size, coll: collCache.size },
     phases,
     results,
@@ -1401,12 +1521,40 @@ async function main() {
     const tokens = JSON.parse(fs.readFileSync(tokJson, 'utf8'));
     const desc = tokens && tokens.ob && tokens.ob.s && tokens.ob.s.color
       && tokens.ob.s.color.token_family_docs
-      && tokens.ob.s.color.token_family_docs.$description
-      && tokens.ob.s.color.token_family_docs.$description.$value;
+      && tokens.ob.s.color.token_family_docs.description
+      && tokens.ob.s.color.token_family_docs.description.$value;
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch {}
 
-  const payload = { registry, tableFilter, pageOverride, validateOnly, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-variables.js' } };
+  // s1 lightness modify-map: a "reference + modify" token (e.g. cobalt.900 +
+  // alpha 0.4) gets baked by Token Studio into a literal Figma color on push —
+  // the modify metadata does not survive, so refTokenForVariable has no alias
+  // to walk and the reference column renders blank. Same narrow JSON-source
+  // exception as foundationDescription above, read once here.
+  const s1ModifyMap = { light: {}, dark: {} };
+  try {
+    const repoRoot = path.resolve(__dirname, '..', '..', '..');
+    for (const mode of ['light', 'dark']) {
+      const modeJsonPath = path.join(repoRoot, 'src', 'lib', 'themes', '03_semantic', 'color', 's1_lightness', `${mode}.json`);
+      const tree = JSON.parse(fs.readFileSync(modeJsonPath, 'utf8'));
+      const map = {};
+      (function walk(node, segs) {
+        if (!node || typeof node !== 'object') return;
+        if (typeof node.$value === 'string') {
+          const modify = node.$extensions && node.$extensions['studio.tokens'] && node.$extensions['studio.tokens'].modify;
+          if (modify && modify.type === 'alpha') map[segs.join('.')] = { ref: node.$value, alpha: modify.value };
+          return;
+        }
+        for (const k of Object.keys(node)) {
+          if (k.startsWith('$') || k === '_docs') continue;
+          walk(node[k], segs.concat(k));
+        }
+      })(tree, []);
+      s1ModifyMap[mode] = map;
+    }
+  } catch {}
+
+  const payload = { registry, tableFilter, pageOverride, validateOnly, foundationDescription, s1ModifyMap, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-variables.js' } };
   if (pageOverride) console.log(`  Page override: ${pageOverride}`);
   const script = `(async () => {
 const PAYLOAD = ${JSON.stringify(payload)};
