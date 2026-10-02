@@ -1577,27 +1577,27 @@
           "fg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Enabled state: Use for text and icons in the default, ready-to-interact state."
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Hover state: Use for text and icons when a pointer enters the navigation item."
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Focus state: Use for text and icons when a navigation item receives keyboard focus."
             },
             "pressed": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Pressed state: Use for text and icons during an active click or tap on a navigation item."
             },
             "selected": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Selected state: Use for text and icons on the currently active navigation item."
             },
             "disabled": {
@@ -1609,27 +1609,27 @@
           "bg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_high}",
               "$description": "Background for Navigation. Enabled state: Use for the surface of a navigation item in its default state."
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_medium}",
               "$description": "Background for Navigation. Hover state: Use for the surface of a navigation item when a pointer enters it."
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_medium}",
               "$description": "Background for Navigation. Focus state: Use for the surface of a navigation item that receives keyboard focus."
             },
             "pressed": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_high}",
               "$description": "Background for Navigation. Pressed state: Use for the surface of a navigation item during an active click or tap."
             },
             "selected": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_low}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_low}",
               "$description": "Background for Navigation. Selected state: Use for the surface of the currently active navigation item."
             },
             "disabled": {
@@ -1646,27 +1646,27 @@
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.subtle}",
+              "$value": "{ob.s1.color.navigation.border.subtle}",
               "$description": "Border for Navigation. Hover state: Subtle indicator line on navigation items when a pointer enters."
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.subtle}",
+              "$value": "{ob.s1.color.navigation.border.subtle}",
               "$description": "Border for Navigation. Focus state: Subtle indicator line on navigation items that receive keyboard focus."
             },
             "pressed": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.brand}",
+              "$value": "{ob.s1.color.navigation.border.brand}",
               "$description": "Border for Navigation. Pressed state: Brand-red indicator line during an active click or tap."
             },
             "selected": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.brand}",
+              "$value": "{ob.s1.color.navigation.border.brand}",
               "$description": "Border for Navigation. Selected state: Brand-red indicator line marking the currently active navigation item. Uses ob.p.color.basic.federal_red."
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.disabled}",
+              "$value": "{ob.s1.color.navigation.border.disabled}",
               "$description": "Border for Navigation. Disabled state: Muted indicator line on navigation items not available for interaction."
             }
           }

@@ -1898,7 +1898,7 @@
               "$value": "Navigation color tokens. Used for top navigation bar, left navigation panel, and tab components. Emphasis mode (high/low) has no effect. Backgrounds use the cobalt scale; red is reserved for borders and brand indicators only."
             }
           },
-          "fg_base": {
+          "fg": {
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
             "$description": "Navigation foreground — text. Highest contrast against the dark navigation surface."
@@ -1908,7 +1908,7 @@
             "$value": "{ob.p.color.cobalt.50}",
             "$description": "Navigation foreground — disabled. Muted text/icon color using the universal cobalt disabled scale."
           },
-          "bg_base": {
+          "bg": {
             "contrast_high": {
               "$type": "color",
               "$value": "{ob.p.color.cobalt.900}",
@@ -1937,7 +1937,7 @@
               "$description": "Navigation background — disabled opacity. Semi-transparent muted surface for disabled navigation items."
             }
           },
-          "border_base": {
+          "border": {
             "brand": {
               "$type": "color",
               "$value": "{ob.p.color.basic.federal_red}",

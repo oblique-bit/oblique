@@ -102,7 +102,6 @@ function titleCase(s) { return s.replace(/(^|_)([a-z])/g, (_, p, c) => (p ? ' ' 
 const ROLE_LABELS = {
   bg: 'Background', fg: 'Foreground', border: 'Border', shadow: 'Shadow',
   focus_ring: 'Focus Ring', no_color: 'No Color',
-  bg_base: 'Background Base', fg_base: 'Foreground Base',
   bg_disabled: 'Background Disabled', fg_disabled: 'Foreground Disabled'
 };
 function prettifyGroup(key) { return ROLE_LABELS[key] || titleCase(key); }
@@ -661,7 +660,7 @@ function setAlphaVariant(swatchInst, tokenName) {
 
 function getRoleSegment(tokenName) {
   const parts = tokenName.split(/[./]/);
-  const ROLE_PARTS = ['bg','fg','border','shadow','focus_ring','no_color','bg_base','fg_base','bg_disabled','fg_disabled'];
+  const ROLE_PARTS = ['bg','fg','border','shadow','focus_ring','no_color','bg_disabled','fg_disabled'];
   return parts.find(p => ROLE_PARTS.includes(p)) || '';
 }
 
