@@ -701,6 +701,11 @@ async function applySectionBarContent(inst, spec) {
   // unconditionally rather than exposing them as a per-table choice.
   const colorBar = inst.findOne((n) => n.name === 'Color Bar');
   if (colorBar) { try { colorBar.visible = false; } catch {} }
+  // The breadcrumb baked into the tier=s variant (Primitives > Semantic S1 >
+  // Semantic S2 > Compiled) describes the color tiers. Dimension tokens have no
+  // S1 / S2 equivalent, so it says nothing here: hide it, as the typography
+  // builder does.
+  for (const crumb of inst.findAll((n) => /section_breadcrumb/.test(n.name))) { try { crumb.visible = false; } catch {} }
   const badgeProps = inst.componentProperties || {};
   const badgeUpdates = {};
   for (const bare of ['showBadgeMaintainer', 'showBadgeConsumer', 'showBadgeBundeskanzlei']) {
@@ -1075,6 +1080,8 @@ async function validatePage(page) {
     if (sectionBars.length !== 1) errors.push({ code: 'DUP', id: spec.id, msg: 'expected 1 section bar, got ' + sectionBars.length });
     if (sectionBars[0]) {
       const sb = sectionBars[0];
+      const crumbShown = sb.findAll((n) => /section_breadcrumb/.test(n.name) && n.visible !== false).length;
+      if (crumbShown) errors.push({ code: 'SECTBAR', id: spec.id, msg: 'breadcrumb is visible' });
       for (const tn of ['__sectionTitle', '$description']) {
         const node = sb.findOne(n => n.type === 'TEXT' && n.name === tn);
         const txt = node ? String(node.characters || '').trim() : '';
