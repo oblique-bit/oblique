@@ -69,7 +69,7 @@
         },
         {
           "type": "textlink-row",
-          "fgPath": "ob/h/link/color/default",
+          "fgPath": "interaction/fg/contrast_medium/inversity_normal",
           "bgPath": "neutral/bg/contrast_{bg}/inversity_normal",
           "bgLevels": ["highest", "high", "medium", "low", "lowest"]
         }
@@ -116,7 +116,7 @@
       },
       "textLink": {
         "type": "textlink-row",
-        "fgPath": "ob/h/link/color/default",
+        "fgPath": "interaction/fg/contrast_medium/inversity_normal",
         "bgPath": "status/{group}/bg/contrast_{bg}/inversity_normal",
         "bgLevels": ["highest", "high", "medium", "low"]
       }

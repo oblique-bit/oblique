@@ -245,10 +245,13 @@ function pickUsage(f) {
     notComponent: u.notComponent || ''
   };
 }
-function pickEmph(fgPath, bgPath) {
+function pickEmph(fgPath, bgPath, isTextLink) {
   if (!bgPath) return null;
+  // The text-link row reads its color from the S3 interaction token that
+  // ob.h.link.color.default points at (the ob.h.link set is not exported as
+  // Figma variables), so the flag, not the fg path, marks a link pairing.
   if (/^ob\\.s\\.color\\.status\\.[^.]+\\.bg\\.(contrast_highest|contrast_high)\\b/.test(bgPath)
-      && /^ob\\.h\\.link/.test(fgPath)) {
+      && (isTextLink || /^ob\\.h\\.link/.test(fgPath))) {
     return 'emphasis_low required on saturated status bg';
   }
   return null;
@@ -322,7 +325,7 @@ async function buildSwatchRecord(pair, varMap, lightnessModeId) {
       rec.ratio = Math.round(r * 100) / 100;
       rec.wcag = wcagFlags(r);
       rec.usage = pickUsage(rec.wcag);
-      rec.emph = pickEmph(rec.fg, rec.bg);
+      rec.emph = pickEmph(rec.fg, rec.bg, rec.isTextLink);
       // bg itself can carry alpha (e.g. cobalt_alpha.*) — contrastRatio only
       // composites the foreground's alpha over bg, so a translucent bg is
       // still treated as an opaque flat color here. The real on-screen result
