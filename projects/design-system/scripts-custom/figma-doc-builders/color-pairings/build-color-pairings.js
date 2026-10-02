@@ -412,7 +412,12 @@ function _cpFindPageForMode(modeName) {
   let p = figma.root.children.find(x => x.name === want);
   if (p) return p;
   const base = _cpBasePageName(modeName);
-  const candidates = figma.root.children.filter(x => x.type === 'PAGE' && (x.name === base || x.name.startsWith(base + ' ')));
+  // The canonical page wins. Otherwise take the most recent timestamped page,
+  // never a "_deprecated" one: it sorts last by name and would be validated
+  // instead of the live page.
+  const canonical = figma.root.children.find(x => x.type === 'PAGE' && x.name === base);
+  if (canonical) return canonical;
+  const candidates = figma.root.children.filter(x => x.type === 'PAGE' && !x.name.endsWith('_deprecated') && x.name.startsWith(base + ' '));
   return candidates.length ? candidates.sort((a, b) => a.name.localeCompare(b.name)).pop() : null;
 }
 
