@@ -24,13 +24,11 @@ Located in: `03_semantic/color/s2_emphasis/`
     "s2": {
       "color": {
         "interaction": {
-          "contrast_levels": {
-            "fg": {
-              "low": {
-                "inversity_normal": {
-                  "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}"  // high.json
-                  // "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}" -- low.json
-                }
+          "fg": {
+            "low": {
+              "inversity_normal": {
+                "$value": "{ob.s1.color.interaction.emphasis_high.fg_base.contrast_low.inversity_normal}"  // high.json
+                // "$value": "{ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}" -- low.json
               }
             }
           }
@@ -99,14 +97,14 @@ Low Emphasis: Secondary Actions → Supporting Information → Inactive States
 ```scss
 /* High-contrast interaction color - primary button */
 .button-primary {
-  background-color: var(--ob-s2-color-interaction-contrast_levels-bg-high-inversity_normal);
-  color: var(--ob-s2-color-interaction-contrast_levels-fg-high-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-high-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-high-inversity_normal);
 }
 
 /* Low-contrast interaction color - secondary button */
 .button-secondary {
-  background-color: var(--ob-s2-color-interaction-contrast_levels-bg-low-inversity_normal);
-  color: var(--ob-s2-color-interaction-contrast_levels-fg-low-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-low-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-low-inversity_normal);
 }
 ```
 
@@ -114,12 +112,12 @@ Low Emphasis: Secondary Actions → Supporting Information → Inactive States
 ```scss
 /* High-contrast interaction color - emphasized text */
 .text-emphasized {
-  color: var(--ob-s2-color-interaction-contrast_levels-fg-high-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-high-inversity_normal);
 }
 
 /* Low-contrast interaction color - supporting text */
 .text-supporting {
-  color: var(--ob-s2-color-interaction-contrast_levels-fg-low-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-low-inversity_normal);
 }
 ```
 

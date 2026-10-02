@@ -203,17 +203,17 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 
 ### **Valid Reference Hierarchy**
 ```
-ob.h.link.color.hover → {ob.s.color.interaction.contrast_levels.fg.low.inversity_normal}
-ob.s.color.interaction.contrast_levels.fg.low.inversity_normal → {ob.s2.color.interaction.contrast_levels.fg.low.inversity_normal}
-ob.s2.color.interaction.contrast_levels.fg.low.inversity_normal → {ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}
+ob.h.link.color.hover → {ob.s.color.interaction.fg.low.inversity_normal}
+ob.s.color.interaction.fg.low.inversity_normal → {ob.s2.color.interaction.fg.low.inversity_normal}
+ob.s2.color.interaction.fg.low.inversity_normal → {ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal}
 ob.s1.color.interaction.emphasis_low.fg_base.contrast_low.inversity_normal → {ob.p.color.cobalt.600}
 ```
 
 ### **Invalid Reference Patterns**
 ```
 ob.h.link.color.hover → {ob.p.color.cobalt.600}                                          (skipping semantic layer)
-ob.p.color.cobalt.600 → {ob.s.color.interaction.contrast_levels.fg.low.inversity_normal} (primitive referencing semantic)
-ob.s2.color.interaction.contrast_levels.fg.low.inversity_normal → {ob.s.color.interaction.contrast_levels.fg.low.inversity_normal} (S2 referencing ob.s)
+ob.p.color.cobalt.600 → {ob.s.color.interaction.fg.low.inversity_normal} (primitive referencing semantic)
+ob.s2.color.interaction.fg.low.inversity_normal → {ob.s.color.interaction.fg.low.inversity_normal} (S2 referencing ob.s)
 ```
 
 ### **Global Token Exception**

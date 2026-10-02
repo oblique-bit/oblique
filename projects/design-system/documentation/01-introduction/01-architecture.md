@@ -169,7 +169,7 @@ Component-level tokens should directly reference a token from the semantic layer
 {
   "color": {
     "hover": {
-      "$value": "{ob.s.color.interaction.contrast_levels.fg.low.inversity_normal}"
+      "$value": "{ob.s.color.interaction.fg.low.inversity_normal}"
     }
   }
 }

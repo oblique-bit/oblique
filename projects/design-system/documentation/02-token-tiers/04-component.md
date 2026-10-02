@@ -56,9 +56,9 @@ ob.h.{element}.{category}.{property}.{variant}
 **Real example** (from `05_html/link/link.json`):
 ```json
 {
-  "ob.h.link.color.default": { "$value": "{ob.s.color.interaction.contrast_levels.fg.medium.inversity_normal}" },
-  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.contrast_levels.fg.low.inversity_normal}" },
-  "ob.h.link.color.active": { "$value": "{ob.s.color.interaction.contrast_levels.fg.high.inversity_normal}" }
+  "ob.h.link.color.default": { "$value": "{ob.s.color.interaction.fg.medium.inversity_normal}" },
+  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.fg.low.inversity_normal}" },
+  "ob.h.link.color.active": { "$value": "{ob.s.color.interaction.fg.high.inversity_normal}" }
 }
 ```
 
@@ -87,12 +87,12 @@ Component tokens consume the compiled semantic layer (`ob.s.*`) only — never S
 ```json
 // DO: reference ob.s.* (compiled semantic tokens)
 {
-  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.contrast_levels.fg.low.inversity_normal}" }
+  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.fg.low.inversity_normal}" }
 }
 
 // DON'T: reference S1 or S2 directly
 {
-  "ob.h.link.color.hover": { "$value": "{ob.s2.color.interaction.contrast_levels.fg.low.inversity_normal}" }
+  "ob.h.link.color.hover": { "$value": "{ob.s2.color.interaction.fg.low.inversity_normal}" }
 }
 
 // DON'T: reference primitives directly
@@ -108,14 +108,14 @@ Component tokens consume the compiled semantic layer (`ob.s.*`) only — never S
 - [ ] Works with emphasis and inversity theming (see below)
 - [ ] `$description` documents the token's purpose and default status
 
-## Interaction Colors: `contrast_levels`, `emphasis_none`, `visited`, `focus_ring`
+## Interaction Colors: `fg` / `bg` / `border`, `emphasis_none`, `visited`, `focus_ring`
 
-When a component token needs an interaction color, it consumes one of four real segments in the semantic interaction color family — not a raw state name:
+When a component token needs an interaction color, it consumes one of four groups in the semantic interaction color family — not a raw state name:
 
-- **`contrast_levels`** — a visual-weight scale (`low` / `medium` / `high`) for `fg`, `bg`, and `border`, e.g. `ob.s.color.interaction.contrast_levels.fg.medium.inversity_normal`. This is what most interactive elements reference for their default/hover/active colors, as in the link example above.
+- **`fg`, `bg`, `border`** — a visual-weight scale (`low` / `medium` / `high`) directly under `interaction`, e.g. `ob.s.color.interaction.fg.medium.inversity_normal`. These follow the emphasis mode. This is what most interactive elements reference for their default/hover/active colors, as in the link example above.
 - **`emphasis_none`** — a separate S1-tier interaction category (a peer of `emphasis_high` / `emphasis_low`) for elements that need hover/active feedback but must not follow the emphasis mode — cards, table rows, menu items, tags.
-- **`visited`** — the visited-link color, kept as its own segment rather than a `contrast_levels` step.
-- **`focus_ring`** — the focus-indicator color, kept as its own segment rather than a `contrast_levels` step.
+- **`visited`** — the visited-link color, kept as its own segment rather than a `low` / `medium` / `high` step.
+- **`focus_ring`** — the focus-indicator color, kept as its own segment rather than a `low` / `medium` / `high` step.
 
 None of the four is a synonym for another, and none is named after an interaction state (`enabled`/`hover`/`focus`/`active`/`disabled`) the way older drafts of this page did — check the real token files under `03_semantic/color/` before writing a new reference rather than assuming a state name maps directly to a path segment.
 
@@ -180,4 +180,4 @@ When migrating a component onto this token tier:
 
 - [Architecture](../01-introduction/01-architecture.md) — overall token hierarchy and patterns
 - [Token Usage Guide](../05-reference/01-token-usage-guide.md) — which token to use, and how to consume it
-- [Colors](../03-token-categories/colors/00-overview.md) — semantic color architecture, including `contrast_levels` and `emphasis_none`
+- [Colors](../03-token-categories/colors/00-overview.md) — semantic color architecture, including the interaction `fg` / `bg` / `border` set and `emphasis_none`
