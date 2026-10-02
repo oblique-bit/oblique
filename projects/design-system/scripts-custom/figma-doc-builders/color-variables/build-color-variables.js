@@ -254,12 +254,20 @@ async function discoverVariables(collections) {
   }
 
   // Build family-doc map. Var name pattern: <family-path>/_docs/token_family_info.
+  // Compiled-tier (S3) names may be cosmetic-trimmed (run-cosmetics.js): "ob/s/color/" is
+  // dropped, so the tier root doc is just "_docs/token_family_info" and a family doc is
+  // "interaction/_docs/token_family_info". Rebuild the full "ob/s/color/..." path for those.
   // Read the value from the variable's own collection's default mode (text is identical across modes).
+  const DOC_SUFFIX = '_docs/token_family_info';
   const docMap = {};
   for (const v of stringVars) {
-    if (!v.name.endsWith('/_docs/token_family_info')) continue;
+    if (v.name !== DOC_SUFFIX && !v.name.endsWith('/' + DOC_SUFFIX)) continue;
     if (LEGACY_DUPLICATE_COLLECTION_NAMES.has(colIdToName[v.variableCollectionId])) continue;
-    const familyPath = v.name.slice(0, -('/_docs/token_family_info'.length));
+    let familyPath = v.name === DOC_SUFFIX ? '' : v.name.slice(0, -(DOC_SUFFIX.length + 1));
+    if (!familyPath.startsWith('ob/')) {
+      familyPath = (familyPath === 'color' || familyPath.startsWith('color/')) ? 'ob/s/' + familyPath
+        : 'ob/s/color' + (familyPath ? '/' + familyPath : '');
+    }
     const dotPath = familyPath.replace(/\\//g, '.');
     let modeId;
     const ownCol = collections.all && Object.values(collections.all).find(c => c.id === v.variableCollectionId);
