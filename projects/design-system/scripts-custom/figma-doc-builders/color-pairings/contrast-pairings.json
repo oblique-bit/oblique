@@ -1,6 +1,6 @@
 {
   "schema": "ob.contrast-pairings.v1",
-  "generatedAt": "2026-09-14T11:49:38.438Z",
+  "generatedAt": "2026-10-02T14:18:39.744Z",
   "categories": {
     "neutral": [
       {
@@ -3127,7 +3127,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:21:11",
         "bgVarId": "VariableID:8:722",
-        "ratio": 14.02,
+        "ratio": 13.59,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -3153,7 +3153,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:21:12",
         "bgVarId": "VariableID:8:723",
-        "ratio": 14.02,
+        "ratio": 13.59,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -3205,7 +3205,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:21:14",
         "bgVarId": "VariableID:8:725",
-        "ratio": 12.24,
+        "ratio": 8.3,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -3246,7 +3246,8 @@
           "notContent": "all semantic text",
           "notComponent": "all sizes"
         },
-        "emph": null
+        "emph": null,
+        "bgTransparent": true
       }
     ],
     "free": [
@@ -4582,7 +4583,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:708",
         "bgVarId": "VariableID:8:698",
-        "ratio": 8.36,
+        "ratio": 7.88,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4609,7 +4610,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:710",
         "bgVarId": "VariableID:8:698",
-        "ratio": 6.11,
+        "ratio": 6.04,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4636,7 +4637,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:712",
         "bgVarId": "VariableID:8:698",
-        "ratio": 5.01,
+        "ratio": 4.6,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4663,7 +4664,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:706",
         "bgVarId": "VariableID:8:700",
-        "ratio": 15.4,
+        "ratio": 15.93,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4690,7 +4691,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:708",
         "bgVarId": "VariableID:8:700",
-        "ratio": 7.4,
+        "ratio": 7.22,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4717,7 +4718,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:710",
         "bgVarId": "VariableID:8:700",
-        "ratio": 5.41,
+        "ratio": 5.53,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4744,7 +4745,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:712",
         "bgVarId": "VariableID:8:700",
-        "ratio": 4.44,
+        "ratio": 4.21,
         "wcag": {
           "aaLarge": true,
           "aaNormal": false,
@@ -4771,7 +4772,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:706",
         "bgVarId": "VariableID:8:702",
-        "ratio": 14.02,
+        "ratio": 14.79,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4798,7 +4799,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:708",
         "bgVarId": "VariableID:8:702",
-        "ratio": 6.74,
+        "ratio": 6.71,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4825,7 +4826,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:710",
         "bgVarId": "VariableID:8:702",
-        "ratio": 4.93,
+        "ratio": 5.14,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4852,7 +4853,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:712",
         "bgVarId": "VariableID:8:702",
-        "ratio": 4.04,
+        "ratio": 3.91,
         "wcag": {
           "aaLarge": true,
           "aaNormal": false,
@@ -4879,7 +4880,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:706",
         "bgVarId": "VariableID:8:704",
-        "ratio": 12.24,
+        "ratio": 12.58,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4906,7 +4907,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:708",
         "bgVarId": "VariableID:8:704",
-        "ratio": 5.88,
+        "ratio": 5.7,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4933,7 +4934,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:710",
         "bgVarId": "VariableID:8:704",
-        "ratio": 4.3,
+        "ratio": 4.37,
         "wcag": {
           "aaLarge": true,
           "aaNormal": false,
@@ -4960,7 +4961,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:712",
         "bgVarId": "VariableID:8:704",
-        "ratio": 3.52,
+        "ratio": 3.33,
         "wcag": {
           "aaLarge": true,
           "aaNormal": false,
