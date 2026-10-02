@@ -70,6 +70,15 @@ describe(ObRouterService.name, () => {
 			path: 'home',
 			data: {masterLayout: {homePageRoute: 'test'}},
 		},
+		{
+			component: MockComponent,
+			path: 'failing',
+			resolve: {
+				data: (): never => {
+					throw new Error('resolver failed');
+				},
+			},
+		},
 	];
 
 	describe('without hasLanguageInUrl', () => {
@@ -227,17 +236,53 @@ describe(ObRouterService.name, () => {
 			});
 
 			describe('change language', () => {
-				test('update language in URL', async () => {
+				beforeEach(async () => {
 					jest.spyOn(router, 'navigate');
+					await router.navigate(['de']);
+					jest.mocked(router.navigate).mockClear();
+				});
+
+				test('update language in URL', async () => {
 					await firstValueFrom(translate.use('en'));
 					expect(router.navigate).toHaveBeenCalledWith(['en']);
 				});
 
 				test('update language in URL but stay on same page', async () => {
-					jest.spyOn(router, 'navigate');
 					await router.navigate(['it/home']);
+					jest.mocked(router.navigate).mockClear();
 					await firstValueFrom(translate.use('en'));
 					expect(router.navigate).toHaveBeenCalledWith(['en', 'home']);
+				});
+			});
+
+			describe('language change before the initial navigation', () => {
+				beforeEach(() => {
+					jest.spyOn(router, 'navigate');
+				});
+
+				test('does not navigate before the initial navigation', async () => {
+					await firstValueFrom(translate.use('fr'));
+					expect(router.navigate).not.toHaveBeenCalled();
+					expect(router.url).toBe('/');
+				});
+
+				test('stored language does not override the language in the URL on bootstrap', async () => {
+					await firstValueFrom(translate.use('fr'));
+					await router.navigateByUrl('/it/home');
+
+					expect(translate.getCurrentLang()).toBe('it');
+					expect(router.url).toBe('/it/home');
+					expect(router.navigate).not.toHaveBeenCalledWith(['fr', 'home']);
+				});
+
+				test('still rewrites the URL after the initial navigation failed', async () => {
+					await expect(router.navigateByUrl('/de/failing')).rejects.toThrow('resolver failed');
+					await router.navigate(['de', 'home']);
+					jest.mocked(router.navigate).mockClear();
+
+					await firstValueFrom(translate.use('fr'));
+
+					expect(router.navigate).toHaveBeenCalledWith(['fr', 'home']);
 				});
 			});
 		});

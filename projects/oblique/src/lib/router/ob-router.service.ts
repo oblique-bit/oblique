@@ -1,7 +1,18 @@
 import {Injectable, inject} from '@angular/core';
-import {NavigationEnd, Route, Router, Routes, UrlMatchResult, UrlSegment} from '@angular/router';
+import {
+	type Event,
+	NavigationCancel,
+	NavigationEnd,
+	NavigationError,
+	NavigationSkipped,
+	Route,
+	Router,
+	Routes,
+	UrlMatchResult,
+	UrlSegment,
+} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {filter} from 'rxjs';
+import {filter, first, switchMap} from 'rxjs';
 import {AccessibilityStatementComponent} from '../accessibility-statement/accessibility-statement.component';
 import {ObMasterLayoutConfig} from '../master-layout/master-layout.config';
 import {OB_HAS_LANGUAGE_IN_URL} from '../language/language.provider';
@@ -50,11 +61,28 @@ export class ObRouterService {
 	}
 
 	private updateRouteOnLanguageChange(): void {
-		this.translate.onLangChange.subscribe(({lang}) => {
-			const newUrl = this.router.url.split('/').filter(segment => segment);
-			newUrl.splice(0, 1, lang);
-			void this.router.navigate(newUrl);
-		});
+		this.router.events
+			.pipe(
+				filter(event => this.isTerminalNavigationEvent(event)),
+				first(),
+				switchMap(() => this.translate.onLangChange)
+			)
+			.subscribe(({lang}) => {
+				const newUrl = this.router.url.split('/').filter(segment => segment);
+				newUrl.splice(0, 1, lang);
+				void this.router.navigate(newUrl);
+			});
+	}
+
+	private isTerminalNavigationEvent(
+		event: Event
+	): event is NavigationEnd | NavigationCancel | NavigationError | NavigationSkipped {
+		return (
+			event instanceof NavigationEnd ||
+			event instanceof NavigationCancel ||
+			event instanceof NavigationError ||
+			event instanceof NavigationSkipped
+		);
 	}
 
 	private updateLanguageOnRouteChange(): void {
