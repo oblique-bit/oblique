@@ -1,15 +1,8 @@
 import {type SpawnSyncOptions, type SpawnSyncOptionsWithStringEncoding, spawnSync} from 'child_process';
+import resolveCommand from './command-resolver.js';
 import {ObSpawnSignalError} from './errors/ob-spawn-signal-error.js';
 import {ObSpawnError} from './errors/ob-spawn-error.js';
 import {ObSpawnExitError} from './errors/ob-spawn-exit-error.js';
-
-function isWindows(): boolean {
-	return process.platform === 'win32';
-}
-
-export function buildOSSafeCommand(command: string): string {
-	return isWindows() ? `${command}.cmd` : command;
-}
 
 /**
  * This method wraps the {@link spawnSync} command with meaningful error management.
@@ -27,11 +20,11 @@ export function obSpawnCommand(
 	args: string[],
 	options: Omit<SpawnSyncOptions, 'encoding' | 'shell'> = {}
 ): string {
-	const osSafeCommand = buildOSSafeCommand(command);
+	const osSafeCommand = resolveCommand(command);
 	const opts: SpawnSyncOptionsWithStringEncoding = {
 		...options,
 		encoding: 'utf8',
-		shell: isWindows(),
+		shell: process.platform === 'win32',
 	};
 	const result = spawnSync(osSafeCommand, args, opts);
 

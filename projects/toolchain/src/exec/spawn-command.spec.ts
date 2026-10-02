@@ -1,12 +1,16 @@
 // spawnSync needs to be mocked before it is imported. since any other import statement may also import spawnSync, the mock
 // need to be the first thing in this file
 
-vi.mock('child_process', () => ({
-	spawnSync: vi.fn(),
+vi.mock('child_process', async () => ({
+	...((await vi.importActual<typeof import('child_process')>('child_process')) as object),
 }));
 
-import {spawnSync} from 'child_process';
-import {buildOSSafeCommand, obSpawnCommand} from './spawn-command';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import process from 'node:process';
+import * as nodeChildProcess from 'child_process';
+import {obSpawnCommand} from './spawn-command';
 import {ObSpawnError} from './errors/ob-spawn-error';
 import {ObSpawnSignalError} from './errors/ob-spawn-signal-error';
 import {ObSpawnExitError} from './errors/ob-spawn-exit-error';
@@ -17,31 +21,42 @@ describe(obSpawnCommand.name, () => {
 	});
 
 	describe('success', () => {
-		test('without options', () => {
-			(spawnSync as vi.Mock).mockReturnValueOnce(mockSpawnResult({stdout: 'hello'}));
+		let fixtureDir: string;
 
-			const result = obSpawnCommand('my-command', ['arg']);
+		beforeEach(() => {
+			fixtureDir = fs.mkdtempSync(path.join(os.tmpdir(), 'spawn-command-'));
+			fs.writeFileSync(
+				path.join(fixtureDir, 'fixture.js'),
+				`if (process.argv[2] === 'fail') { process.exit(3); }\nprocess.stdout.write('hello');\n`
+			);
+		});
+
+		afterEach(() => {
+			fs.rmSync(fixtureDir, {recursive: true, force: true});
+		});
+
+		test('without options', () => {
+			const result = obSpawnCommand(process.execPath, ['fixture.js'], {cwd: fixtureDir});
 
 			expect(result).toBe('hello');
 		});
 
 		test('with options', () => {
-			(spawnSync as vi.Mock).mockReturnValueOnce(mockSpawnResult({stdout: 'some-dir'}));
+			const result = obSpawnCommand(process.execPath, ['fixture.js'], {cwd: fixtureDir});
 
-			const result = obSpawnCommand('my-command', ['arg'], {cwd: 'some-dir'});
-
-			expect(spawnSync).toHaveBeenCalledWith(
-				buildOSSafeCommand('my-command'),
-				['arg'],
-				expect.objectContaining({cwd: 'some-dir', encoding: 'utf8'})
-			);
-			expect(result).toBe('some-dir');
+			expect(result).toBe('hello');
 		});
 	});
 
+	// Windows and Linux report spawn failures differently: on Linux a terminated process sets `signal`, while on
+	// Windows `signal` stays null and termination surfaces as a non-zero exit code. With `shell: true` (set on
+	// Windows), an unknown command also reports a non-zero exit code instead of an `error`. Since these branches
+	// cannot be triggered deterministically with real commands on every OS, the failure tests stub `spawnSync`.
 	describe('failure', () => {
 		test(ObSpawnError.name, () => {
-			(spawnSync as vi.Mock).mockReturnValueOnce(mockSpawnResult({error: new Error('spawnSync my-command ENOENT')}));
+			vi.spyOn(nodeChildProcess, 'spawnSync').mockReturnValueOnce(
+				mockSpawnResult({error: new Error('spawnSync my-command ENOENT')}) as never
+			);
 
 			expect(() => {
 				obSpawnCommand('my-command', []);
@@ -49,7 +64,7 @@ describe(obSpawnCommand.name, () => {
 		});
 
 		test(ObSpawnSignalError.name, () => {
-			(spawnSync as vi.Mock).mockReturnValueOnce(mockSpawnResult({signal: 'SIGKILL'}));
+			vi.spyOn(nodeChildProcess, 'spawnSync').mockReturnValueOnce(mockSpawnResult({signal: 'SIGKILL'}) as never);
 
 			expect(() => {
 				obSpawnCommand('my-command', []);
@@ -57,28 +72,11 @@ describe(obSpawnCommand.name, () => {
 		});
 
 		test(ObSpawnExitError.name, () => {
-			(spawnSync as vi.Mock).mockReturnValueOnce(mockSpawnResult({status: 1}));
+			vi.spyOn(nodeChildProcess, 'spawnSync').mockReturnValueOnce(mockSpawnResult({status: 1}) as never);
 
 			expect(() => {
 				obSpawnCommand('my-command', []);
 			}).toThrow('ObExecError - Command failed with exit code "1"');
-		});
-	});
-
-	describe.each([
-		{platform: 'win32', expected: 'my-command.cmd'},
-		{platform: 'linux', expected: 'my-command'},
-	] as const)('on $platform', ({platform, expected}) => {
-		test('buildOSSafeCommand', async () => {
-			const originalProcess = global.process;
-
-			global.process = {...originalProcess, platform};
-			try {
-				vi.resetModules();
-				expect((await import('./spawn-command')).buildOSSafeCommand('my-command')).toBe(expected);
-			} finally {
-				global.process = originalProcess;
-			}
 		});
 	});
 });

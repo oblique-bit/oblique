@@ -6,6 +6,7 @@ import * as nodeChildProcess from 'node:child_process';
 import fs from 'node:fs';
 import {obNewConfig} from './ob-new.model';
 import {buildOption, currentVersions, isWindows, version} from '../utils/cli-utils';
+import resolveCommand from '../utils/command-resolver';
 import {createObNewCommand} from './ob-new';
 
 vi.mock('node:child_process', async () => ({
@@ -14,8 +15,8 @@ vi.mock('node:child_process', async () => ({
 
 describe('Ob new command', () => {
 	const projectName = 'SuperduperProject';
-	const osNpxCommand = isWindows() ? 'npx.cmd' : 'npx';
-	const osNpmCommand = isWindows() ? 'npm.cmd' : 'npm';
+	const osNpxCommand = resolveCommand('npx');
+	const osNpmCommand = resolveCommand('npm');
 	let parsedObNewCommand: Command<[string], OptionValues>;
 
 	function buildNgAddCommand(options: string[] = []): {command: string; args: string[]} {
