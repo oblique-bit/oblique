@@ -375,6 +375,7 @@
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
+      "04_component/molecule/infobox/01_color": "enabled",
       "01_global/component/footer/lightness/dynamic/light": "enabled",
       "03_semantic/color/s1_lightness/light": "enabled"
     },
@@ -868,6 +869,7 @@
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
+      "04_component/molecule/infobox/01_color": "enabled",
       "01_global/component/footer/lightness/dynamic/dark": "enabled",
       "03_semantic/color/s1_lightness/dark": "enabled"
     },
