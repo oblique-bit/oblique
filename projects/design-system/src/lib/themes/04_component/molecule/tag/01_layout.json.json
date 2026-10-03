@@ -12,7 +12,7 @@
           "spacing": {
             "gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.element.xl.rem}",
+              "$value": "{ob.s.dimension.dynamic.ui_scale.element.xl.px}",
               "$description": "Spacing between single tags "
             }
           }
@@ -21,7 +21,7 @@
           "padding": {
             "vertical": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.element.xs.rem}",
+              "$value": "{ob.s.dimension.dynamic.ui_scale.element.xs.px}",
               "$description": "Top and bottom padding  – for medium size tags."
             },
             "horizontal": {
