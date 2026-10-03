@@ -273,12 +273,12 @@
         "fg_label": {
           "$type": "typography",
           "$value": {
-            "fontFamily": "{ob.s.static.font_family.body}",
-            "fontWeight": "{ob.s.dynamic.font_weight.medium}",
-            "lineHeight": "{ob.s.dynamic.line_height.xs}",
-            "letterSpacing": "{ob.s.dynamic.letter_spacing_px.wide}",
-            "paragraphSpacing": "{ob.s.dynamic.paragraph_spacing.xs}",
-            "fontSize": "{ob.s.dynamic.font_size.md}"
+            "fontFamily": "{ob.s.typography.scale.static.font_family.body}",
+            "fontWeight": "{ob.s.typography.scale.dynamic.font_weight.medium}",
+            "lineHeight": "{ob.s.typography.scale.dynamic.line_height.xs}",
+            "letterSpacing": "{ob.s.typography.scale.dynamic.letter_spacing_px.wide}",
+            "paragraphSpacing": "{ob.s.typography.scale.dynamic.paragraph_spacing.xs}",
+            "fontSize": "{ob.s.typography.scale.dynamic.font_size.md}"
           },
           "$description": "Typography only. Simplifies maintenance with Figma and Token Studio. Basically the same references as in 02_typography.json of this component."
         },
