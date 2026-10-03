@@ -21,9 +21,12 @@
       "02_primitive/typography": "source",
       "02_primitive/motion": "source",
       "02_primitive/dimension": "source",
+      "04_component/atom/icon/02_layout": "enabled",
+      "04_component/atom/icon/01_color": "enabled",
       "03_semantic/dimension/rem": "source",
       "01_global/mode_collection/emphasis": "source",
       "01_global/mode_collection/lightness": "source",
+      "01_global/component/footer/lightness/static": "source",
       "01_global/mode_collection/viewport": "source",
       "01_global/mode_collection/ui_scale": "source",
       "01_global/mode_collection/density": "source",
@@ -362,6 +365,7 @@
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
+      "01_global/component/footer/lightness/dynamic/light": "enabled",
       "03_semantic/color/s1_lightness/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:8:3",
@@ -854,6 +858,7 @@
     },
     "selectedTokenSets": {
       "02_primitive/color": "source",
+      "01_global/component/footer/lightness/dynamic/dark": "enabled",
       "03_semantic/color/s1_lightness/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:8:3",
