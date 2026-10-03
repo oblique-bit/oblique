@@ -27,6 +27,7 @@
       "04_component/molecule/infobox/02_layout": "enabled",
       "04_component/molecule/pill/01_layout.json": "enabled",
       "04_component/molecule/pill/02_typography.json": "source",
+      "04_component/molecule/tag/01_layout.json": "enabled",
       "03_semantic/dimension/rem": "source",
       "01_global/mode_collection/emphasis": "source",
       "01_global/mode_collection/lightness": "source",
