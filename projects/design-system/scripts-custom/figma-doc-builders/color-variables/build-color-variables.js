@@ -1481,11 +1481,23 @@ async function main() {
   if (rowFilter) {
     // Every row of these tables is built from a Figma variable, so a token name and a variable
     // name are the same thing here. Find the one table that can contain it.
-    const asVar  = rowFilter.dotPath.replace(/\\./g, '/');
-    const trimmed = rowFilter.dotPath.replace(/^ob\\.s\\./, '').replace(/\\./g, '/');
-    if (!varMap.list.some(v => v.name === asVar || v.name === trimmed)) {
-      return { error: 'no Figma variable named ' + asVar + ' in this file' };
+    // An S3 variable can be stored in Figma under three names: the real one (ob/s/color/...), with
+    // only "ob/s/" trimmed (color/...), or with "ob/s/color/" trimmed (run-cosmetics.js, variables
+    // step). Take any of them, typed with dots or slashes, reduce it to the bare name and look for
+    // all three forms. Then go on with the real name: the rows and the table match are keyed by it.
+    const typed = rowFilter.dotPath.replace(/\\./g, '/');
+    const core = typed.replace(/^ob\\/s\\//, '').replace(/^color\\//, '');
+    const forms = [typed, core, 'color/' + core, 'ob/s/color/' + core];
+    let found = null;
+    for (const f of forms) { found = varMap.list.find(v => v.name === f); if (found) break; }
+    if (!found) {
+      return { error: 'no Figma variable named ' + typed + ' in this file' };
     }
+    const asVar = found.name.startsWith('ob/') ? found.name
+      : found.name.startsWith('color/') ? 'ob/s/' + found.name
+      : 'ob/s/color/' + found.name;
+    rowFilter.dotPath = asVar.replace(/\\//g, '.');
+    const trimmed = asVar.replace(/^ob\\/s\\//, '');
     tablesToBuild = registry.tables.filter(t => {
       if (t.source === 'primitive-json' || t.spec === 'primitive' || t.rowComponent === 'primitive') {
         return (t.primitiveFamilies || []).some(f => asVar.startsWith('ob/p/color/' + f + '/'));
@@ -1570,7 +1582,8 @@ async function main() {
     else if (a === '--validate') validateOnly = true;
     // Row refresh. Both flags name a row, here always a Figma variable (every color table row is built
     // from one): --token ob.s.color.neutral.bg.contrast_highest.inversity_normal (as shown in the table)
-    // or --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal (slashes or dots accepted).
+    // or --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal (slashes or dots accepted; the
+    // trimmed forms color/neutral/... and neutral/... that run-cosmetics.js leaves in Figma work too).
     else if (a === '--token') tokenArg = args[++i];
     else if (a === '--variable') variableArg = args[++i];
   }
