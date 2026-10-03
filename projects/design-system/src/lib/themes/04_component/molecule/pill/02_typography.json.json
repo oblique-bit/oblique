@@ -12,27 +12,27 @@
           "text_label": {
             "font_size": {
               "$type": "fontSizes",
-              "$value": "{ob.s.dynamic.font_size.md}",
+              "$value": "{ob.s.typography.scale.dynamic.font_size.md}",
               "$description": "Font size that scales with typography multiplier"
             },
             "line_height": {
               "$type": "lineHeights",
-              "$value": "{ob.s.dynamic.line_height.xs}",
+              "$value": "{ob.s.typography.scale.dynamic.line_height.xs}",
               "$description": "Line height that scales with typography multiplier"
             },
             "letter_spacing": {
               "$type": "letterSpacing",
-              "$value": "{ob.s.dynamic.letter_spacing_px.wide}",
+              "$value": "{ob.s.typography.scale.dynamic.letter_spacing_px.wide}",
               "$description": "Letter spacing for pill text labels"
             },
             "font_family": {
               "$type": "fontFamilies",
-              "$value": "{ob.s.static.font_family.body}",
+              "$value": "{ob.s.typography.scale.static.font_family.body}",
               "$description": "Font family for pill text labels - consistent across all sizes"
             },
             "font_weight": {
               "$type": "fontWeights",
-              "$value": "{ob.s.dynamic.font_weight.medium}",
+              "$value": "{ob.s.typography.scale.dynamic.font_weight.medium}",
               "$description": "Font weight for pill text labels - consistent across all sizes"
             },
             "text_decoration": {
