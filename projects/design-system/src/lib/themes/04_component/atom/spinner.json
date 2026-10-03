@@ -21,7 +21,7 @@
           },
           "inactive": {
             "$type": "color",
-            "$value": "{ob.s.color.free.indigo.bg.contrast_high_alpha.inversity_normal}",
+            "$value": "{ob.s.color.free.indigo.bg.contrast_low.inversity_normal}",
             "$description": "Color indicating the inactive part of the loading."
           }
         },
@@ -45,13 +45,6 @@
             "$type": "duration",
             "$value": "{ob.s.motion.duration.instant}",
             "$description": "No pause between spinner rotations"
-          }
-        },
-        "fx": {
-          "blur": {
-            "$type": "number",
-            "$value": "{ob.s.fx.blur.sm}",
-            "$description": "Background blur on the parent element behind the spinner. Has to be validated."
           }
         }
       }
