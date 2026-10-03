@@ -92,7 +92,7 @@ function extractJson(stdout) {
 // Everything else (docs, primitives, descriptions) is read from Figma variables.
 
 const PLUGIN_CODE = `
-const { registry, tableFilter, rowFilter, pageOverride, validateOnly, provenance } = PAYLOAD;
+const { registry, tableFilter, pageOverride, validateOnly, provenance } = PAYLOAD;
 const log = [];
 const results = [];
 const _startTime = Date.now();
@@ -102,7 +102,6 @@ function titleCase(s) { return s.replace(/(^|_)([a-z])/g, (_, p, c) => (p ? ' ' 
 const ROLE_LABELS = {
   bg: 'Background', fg: 'Foreground', border: 'Border', shadow: 'Shadow',
   focus_ring: 'Focus Ring', no_color: 'No Color',
-  bg_base: 'Background Base', fg_base: 'Foreground Base',
   bg_disabled: 'Background Disabled', fg_disabled: 'Foreground Disabled'
 };
 function prettifyGroup(key) { return ROLE_LABELS[key] || titleCase(key); }
@@ -255,12 +254,20 @@ async function discoverVariables(collections) {
   }
 
   // Build family-doc map. Var name pattern: <family-path>/_docs/token_family_info.
+  // Compiled-tier (S3) names may be cosmetic-trimmed (run-cosmetics.js): "ob/s/color/" is
+  // dropped, so the tier root doc is just "_docs/token_family_info" and a family doc is
+  // "interaction/_docs/token_family_info". Rebuild the full "ob/s/color/..." path for those.
   // Read the value from the variable's own collection's default mode (text is identical across modes).
+  const DOC_SUFFIX = '_docs/token_family_info';
   const docMap = {};
   for (const v of stringVars) {
-    if (!v.name.endsWith('/_docs/token_family_info')) continue;
+    if (v.name !== DOC_SUFFIX && !v.name.endsWith('/' + DOC_SUFFIX)) continue;
     if (LEGACY_DUPLICATE_COLLECTION_NAMES.has(colIdToName[v.variableCollectionId])) continue;
-    const familyPath = v.name.slice(0, -('/_docs/token_family_info'.length));
+    let familyPath = v.name === DOC_SUFFIX ? '' : v.name.slice(0, -(DOC_SUFFIX.length + 1));
+    if (!familyPath.startsWith('ob/')) {
+      familyPath = (familyPath === 'color' || familyPath.startsWith('color/')) ? 'ob/s/' + familyPath
+        : 'ob/s/color' + (familyPath ? '/' + familyPath : '');
+    }
     const dotPath = familyPath.replace(/\\//g, '.');
     let modeId;
     const ownCol = collections.all && Object.values(collections.all).find(c => c.id === v.variableCollectionId);
@@ -374,7 +381,9 @@ const WRAPPER_BG_FALLBACK_HEX = '#FFFFFF';
 
 function applyWrapperBg(node, varMap) {
   try {
-    const v = varMap && varMap.byName && varMap.byName[WRAPPER_BG_VAR_NAME];
+    // Live name is the full path or the cosmetic-trimmed one, without
+    // "ob/s/color/" (run-cosmetics.js) or, in the older form, "ob/s/".
+    const v = varMap && varMap.byName && (varMap.byName[WRAPPER_BG_VAR_NAME] || varMap.byName[WRAPPER_BG_VAR_NAME.slice(11)] || varMap.byName[WRAPPER_BG_VAR_NAME.slice(5)]);
     const paint = figma.util.solidPaint(WRAPPER_BG_FALLBACK_HEX);
     if (v) {
       node.fills = [figma.variables.setBoundVariableForPaint(paint, 'color', v)];
@@ -659,7 +668,7 @@ function setAlphaVariant(swatchInst, tokenName) {
 
 function getRoleSegment(tokenName) {
   const parts = tokenName.split(/[./]/);
-  const ROLE_PARTS = ['bg','fg','border','shadow','focus_ring','no_color','bg_base','fg_base','bg_disabled','fg_disabled'];
+  const ROLE_PARTS = ['bg','fg','border','shadow','focus_ring','no_color','bg_disabled','fg_disabled'];
   return parts.find(p => ROLE_PARTS.includes(p)) || '';
 }
 
@@ -980,7 +989,7 @@ async function buildPrimitiveRow(table, token, components, varMap) {
 }
 
 // ─── Build a single table ──────────────────────────────────────────────────
-async function buildTable(spec, ctx, onlyDotPath) {
+async function buildTable(spec, ctx) {
   const t0 = Date.now();
   const out = { id: spec.id, ok: false, info: {}, issues: [] };
 
@@ -1026,11 +1035,16 @@ async function buildTable(spec, ctx, onlyDotPath) {
   } else if (spec.source === 'figma-vars') {
     const filterRe = new RegExp(spec.matches);
     for (const v of ctx.varMap.list) {
-      if (!filterRe.test(v.name)) continue;
-      // Compiled-tier (S3) variables are stored in Figma with the "ob/s/"
-      // prefix trimmed for panel usability (see shorten-color.js). The
-      // doc must still show the real JSON token path, so reconstruct it.
-      const dotPath = v.name.startsWith('ob/') ? v.name.replace(/\\//g, '.') : 'ob.s.' + v.name.replace(/\\//g, '.');
+      // Compiled-tier (S3) variables may be stored in Figma with the
+      // "ob/s/color/" prefix trimmed for panel usability (run-cosmetics.js,
+      // variables step), or in the older form with only "ob/s/" trimmed.
+      // spec.matches is written against the real name, and the doc must show
+      // the real JSON token path, so reconstruct the full name first.
+      const fullName = v.name.startsWith('ob/') ? v.name
+        : v.name.startsWith('color/') ? 'ob/s/' + v.name
+        : 'ob/s/color/' + v.name;
+      if (!filterRe.test(fullName)) continue;
+      const dotPath = fullName.replace(/\\//g, '.');
       tokens.push({
         kind: 'figma-var',
         varName: v.name,
@@ -1060,50 +1074,6 @@ async function buildTable(spec, ctx, onlyDotPath) {
     }
   }
   out.info.tokenCount = tokens.length;
-
-  // Single-row refresh (--token / --variable): rebuild just that token's rows in place and
-  // return. Group headers, separators, the heading and every other row stay untouched.
-  if (onlyDotPath) {
-    const tok = tokens.find(t => t.dotPath === onlyDotPath);
-    if (!tok) { out.ok = true; out.info.rowNotInTable = true; return out; }
-    const nameOf = (n) => {
-      const c = findChild(n, 'Cell: Name') || findChild(n, 'Cell: Token Name');
-      const t = c ? findFirstText(c) : null;
-      return t ? String(t.characters || '').trim() : '';
-    };
-    const oldRows = tableFrame.children.filter(c => c.type === 'INSTANCE' && nameOf(c) === onlyDotPath);
-    if (!oldRows.length) {
-      out.issues.push('row for ' + onlyDotPath + ' is not on the page yet; rebuild the table with --table ' + spec.id);
-      return out;
-    }
-    const idx = tableFrame.children.indexOf(oldRows[0]);
-    let fresh = [];
-    try {
-      if (spec.rowComponent === '2-mode') {
-        const r = await build2ModeRow(spec, tok, ctx.components, ctx.varMap, ctx.collections.aliases);
-        if (r.error) throw new Error(r.error);
-        tableFrame.appendChild(r.row); await r.populate(); fresh = [r.row];
-      } else if (spec.rowComponent === '4-mode') {
-        const r = await build4ModeRows(spec, tok, ctx.components, ctx.varMap, ctx.collections.aliases);
-        if (r.error) throw new Error(r.error);
-        for (const row of r.rows) tableFrame.appendChild(row);
-        await r.populate(); fresh = r.rows;
-      } else if (spec.rowComponent === 'primitive') {
-        const r = await buildPrimitiveRow(spec, tok, ctx.components, ctx.varMap);
-        if (r.error) throw new Error(r.error);
-        tableFrame.appendChild(r.row); await r.populate(); fresh = [r.row];
-      }
-    } catch (e) { out.issues.push('row error for ' + onlyDotPath + ': ' + e.message); for (const f of fresh) { try { f.remove(); } catch {} } return out; }
-    await flushTextWrites();
-    for (let i = 0; i < fresh.length; i++) { try { tableFrame.insertChild(idx + i, fresh[i]); } catch (e) { out.issues.push('reorder: ' + e.message); } }
-    for (const o of oldRows) { try { o.remove(); } catch {} }
-    out.info.rowReplaced = onlyDotPath;
-    out.info.rowsRebuilt = fresh.length;
-    const v = validateTableFrame(tableFrame, tierWidth);
-    out.validation = v;
-    out.ok = out.issues.length === 0 && v.errors.length === 0;
-    return out;
-  }
 
   // Heading
   const wrapperPath = spec.wrapperName.replace(/^Token Set: /, '');
@@ -1403,15 +1373,14 @@ async function validatePage(targetPage, varMap, components) {
       if (!nameText) continue;
       // Look up variable by dotted token name. Compiled-tier (S3) rows display
       // the full ob.s.color path; the live Figma variable name may or may not
-      // have that prefix trimmed (see shorten-color.js) depending on whether
-      // the cosmetic trim has actually run - as of 2026-09-22 it has not (see
-      // run-cosmetics.js's variables step, "no rule needed yet"), so live
-      // names carry the full prefix. Try the untrimmed name first (today's
-      // real state), then the trimmed form, so this keeps working either way.
+      // have that prefix trimmed, depending on whether run-cosmetics.js's
+      // variables step has run. Try the untrimmed name first, then the
+      // trimmed form, so this keeps working either way.
       const fullVarName = nameText.replace(/\\./g, '/');
       const trimmedVarName = nameText.startsWith('ob.s.') ? nameText.slice(5).replace(/\\./g, '/') : fullVarName;
-      const v = (varMap.byName && (varMap.byName[fullVarName] || varMap.byName[trimmedVarName]))
-        || varMap.list.find(x => x.name === fullVarName || x.name === trimmedVarName);
+      const bareVarName = nameText.startsWith('ob.s.color.') ? nameText.slice(11).replace(/\\./g, '/') : fullVarName;
+      const v = (varMap.byName && (varMap.byName[fullVarName] || varMap.byName[bareVarName] || varMap.byName[trimmedVarName]))
+        || varMap.list.find(x => x.name === fullVarName || x.name === bareVarName || x.name === trimmedVarName);
       if (!v) {
         warnings.push({ code: 'TOKEN', set: wrapperName, msg: 'token "' + nameText + '" not found in varMap' });
         continue;
@@ -1445,10 +1414,15 @@ async function main() {
     const want = resolvedPageName();
     let targetPage = figma.root.children.find(p => p.name === want);
     if (!targetPage && !pageOverride) {
-      // Fallback: most-recent page that starts with the base name (e.g. when
-      // validating a build from earlier today / yesterday).
-      const candidates = figma.root.children.filter(p => p.type === 'PAGE' && (p.name === registry.page || p.name.startsWith(registry.page + ' ')));
-      if (candidates.length) targetPage = candidates.sort((a, b) => a.name.localeCompare(b.name)).pop();
+      // Fallback: the canonical page, else the most-recent timestamped page that
+      // starts with the base name (e.g. when validating a build from earlier
+      // today / yesterday). Never a "_deprecated" page: it sorts last by name and
+      // would otherwise be validated instead of the live page.
+      targetPage = figma.root.children.find(p => p.type === 'PAGE' && p.name === registry.page) || null;
+      if (!targetPage) {
+        const candidates = figma.root.children.filter(p => p.type === 'PAGE' && !p.name.endsWith('_deprecated') && p.name.startsWith(registry.page + ' '));
+        if (candidates.length) targetPage = candidates.sort((a, b) => a.name.localeCompare(b.name)).pop();
+      }
     }
     if (!targetPage) return { error: 'target page not found: ' + want };
     const validate = await validatePage(targetPage, varMap, components);
@@ -1459,26 +1433,10 @@ async function main() {
   ctx.structure = await ensurePageStructure(targetPage, components, varMap);
   phases.ensureStructure = Date.now() - t; t = Date.now();
 
-  let tablesToBuild = registry.tables.filter(t => !tableFilter || tableFilter.includes(t.id) || tableFilter.includes(t.tier));
-  if (rowFilter) {
-    // Every row of these tables is built from a Figma variable, so a token name and a variable
-    // name are the same thing here. Find the one table that can contain it.
-    const asVar  = rowFilter.dotPath.replace(/\\./g, '/');
-    const trimmed = rowFilter.dotPath.replace(/^ob\\.s\\./, '').replace(/\\./g, '/');
-    if (!varMap.list.some(v => v.name === asVar || v.name === trimmed)) {
-      return { error: 'no Figma variable named ' + asVar + ' in this file' };
-    }
-    tablesToBuild = registry.tables.filter(t => {
-      if (t.source === 'primitive-json' || t.spec === 'primitive' || t.rowComponent === 'primitive') {
-        return (t.primitiveFamilies || []).some(f => asVar.startsWith('ob/p/color/' + f + '/'));
-      }
-      try { const re = new RegExp(t.matches); return re.test(asVar) || re.test(trimmed); } catch (e) { return false; }
-    });
-    if (!tablesToBuild.length) return { error: 'no color table can contain ' + rowFilter.dotPath };
-  }
+  const tablesToBuild = registry.tables.filter(t => !tableFilter || tableFilter.includes(t.id) || tableFilter.includes(t.tier));
   for (const spec of tablesToBuild) {
     try {
-      const res = await buildTable(spec, ctx, rowFilter ? rowFilter.dotPath : null);
+      const res = await buildTable(spec, ctx);
       results.push(res);
     } catch (e) {
       results.push({ id: spec.id, ok: false, error: e.message, stack: e.stack });
@@ -1542,7 +1500,6 @@ async function main() {
   let pageOverride = null;
   let useCache = true;
   let validateOnly = false;
-  let tokenArg = null, variableArg = null;
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     if (a === '--table' || a === '-t') tableFilter = [args[++i]];
@@ -1550,15 +1507,7 @@ async function main() {
     else if (a === '--page' || a === '-p') pageOverride = args[++i];
     else if (a === '--no-cache') useCache = false;
     else if (a === '--validate') validateOnly = true;
-    // Row refresh. Both flags name a row, here always a Figma variable (every color table row is built
-    // from one): --token ob.s.color.neutral.bg.contrast_highest.inversity_normal (as shown in the table)
-    // or --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal (slashes or dots accepted).
-    else if (a === '--token') tokenArg = args[++i];
-    else if (a === '--variable') variableArg = args[++i];
   }
-  if (tokenArg && variableArg) { console.error('Use either --token or --variable, not both.'); process.exit(2); }
-  const normalizeTokenName = (x) => String(x).trim().replace(/^\{|\}$/g, '').replace(/\//g, '.');
-  const rowFilter = (tokenArg || variableArg) ? { dotPath: normalizeTokenName(tokenArg || variableArg), mustBeVariable: !!variableArg } : null;
 
   console.log(`\n  Loading registry...`);
   const registry = JSON.parse(fs.readFileSync(REGISTRY, 'utf8'));
@@ -1623,9 +1572,7 @@ async function main() {
     }
   } catch {}
 
-  if (rowFilter && !pageOverride) { pageOverride = registry.page; console.log(`  Row refresh edits the canonical page in place: ${pageOverride} (no timestamped scratch page)`); }
-  if (rowFilter) console.log(`  Row refresh: ${rowFilter.dotPath}`);
-  const payload = { registry, tableFilter, rowFilter, pageOverride, validateOnly, foundationDescription, s1ModifyMap, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-variables.js' } };
+  const payload = { registry, tableFilter, pageOverride, validateOnly, foundationDescription, s1ModifyMap, provenance: { gitSha, generatedAt, pageTs, scriptName: 'build-color-variables.js' } };
   if (pageOverride) console.log(`  Page override: ${pageOverride}`);
   const script = `(async () => {
 const PAYLOAD = ${JSON.stringify(payload)};

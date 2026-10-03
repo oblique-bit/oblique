@@ -226,125 +226,117 @@
               "$value": "Interactive state colors for components. Light/Dark and High/Low emphasis modes apply — all 4 mode combinations resolve to distinct values. No border token — fg covers text, border, and icon color as a single unified value per state. Use: Interactive component states — buttons, links, form controls, and focusable elements. Avoid: Static decorative elements. Status communication — use the status scale instead."
             }
           },
-          "contrast_levels": {
-            "_docs": {
-              "token_family_info": {
-                "$type": "text",
-                "$value": "Primitive building blocks for custom interaction color compositions. Exposes fg, bg, and border at high, medium, and low contrast steps without tying them to named interaction states. Lightness and Emphasis modes are pre-resolved. Use: Composing custom interactive elements requiring direct contrast control not covered by the predefined standard-states. Avoid: Components that have a corresponding standard-states token — those already encode the correct contrast level."
+          "fg": {
+            "contrast_high": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.contrast_high.inversity_normal}",
+                "$description": "High contrast foreground for interaction. Use for text and icons where maximum contrast is required."
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.contrast_high.inversity_flipped}",
+                "$description": "High contrast foreground for interaction. Use for text and icons where maximum contrast is required."
               }
             },
-            "fg": {
-              "high": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.high.inversity_normal}",
-                  "$description": "High contrast foreground for interaction. Use for text and icons where maximum contrast is required."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.high.inversity_flipped}",
-                  "$description": "High contrast foreground for interaction. Use for text and icons where maximum contrast is required."
-                }
+            "contrast_medium": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.contrast_medium.inversity_normal}",
+                "$description": "Medium contrast foreground for interaction. Use for text and icons in standard interactive states."
               },
-              "medium": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.medium.inversity_normal}",
-                  "$description": "Medium contrast foreground for interaction. Use for text and icons in standard interactive states."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.medium.inversity_flipped}",
-                  "$description": "Medium contrast foreground for interaction. Use for text and icons in standard interactive states."
-                }
-              },
-              "low": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.low.inversity_normal}",
-                  "$description": "Low contrast foreground for interaction. Use for text and icons in subtle or secondary interactive states."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.fg.low.inversity_flipped}",
-                  "$description": "Low contrast foreground for interaction. Use for text and icons in subtle or secondary interactive states."
-                }
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.contrast_medium.inversity_flipped}",
+                "$description": "Medium contrast foreground for interaction. Use for text and icons in standard interactive states."
               }
             },
-            "bg": {
-              "high": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.high.inversity_normal}",
-                  "$description": "High contrast background for interaction. Use for surfaces where maximum contrast is required."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.high.inversity_flipped}",
-                  "$description": "High contrast background for interaction. Use for surfaces where maximum contrast is required."
-                }
+            "contrast_low": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.contrast_low.inversity_normal}",
+                "$description": "Low contrast foreground for interaction. Use for text and icons in subtle or secondary interactive states."
               },
-              "medium": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.medium.inversity_normal}",
-                  "$description": "Medium contrast background for interaction. Use for surfaces in standard interactive states."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.medium.inversity_flipped}",
-                  "$description": "Medium contrast background for interaction. Use for surfaces in standard interactive states."
-                }
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.fg.contrast_low.inversity_flipped}",
+                "$description": "Low contrast foreground for interaction. Use for text and icons in subtle or secondary interactive states."
+              }
+            }
+          },
+          "bg": {
+            "contrast_high": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.contrast_high.inversity_normal}",
+                "$description": "High contrast background for interaction. Use for surfaces where maximum contrast is required."
               },
-              "low": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.low.inversity_normal}",
-                  "$description": "Low contrast background for interaction. Use for surfaces in subtle or secondary interactive states."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.bg.low.inversity_flipped}",
-                  "$description": "Low contrast background for interaction. Use for surfaces in subtle or secondary interactive states."
-                }
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.contrast_high.inversity_flipped}",
+                "$description": "High contrast background for interaction. Use for surfaces where maximum contrast is required."
               }
             },
-            "border": {
-              "high": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.border.high.inversity_normal}",
-                  "$description": "High contrast border for interaction. Use for borders and outlines where maximum contrast is required."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.border.high.inversity_flipped}",
-                  "$description": "High contrast border for interaction. Use for borders and outlines where maximum contrast is required."
-                }
+            "contrast_medium": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.contrast_medium.inversity_normal}",
+                "$description": "Medium contrast background for interaction. Use for surfaces in standard interactive states."
               },
-              "medium": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.border.medium.inversity_normal}",
-                  "$description": "Medium contrast border for interaction. Use for borders and outlines in standard interactive states."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.border.medium.inversity_flipped}",
-                  "$description": "Medium contrast border for interaction. Use for borders and outlines in standard interactive states."
-                }
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.contrast_medium.inversity_flipped}",
+                "$description": "Medium contrast background for interaction. Use for surfaces in standard interactive states."
+              }
+            },
+            "contrast_low": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.contrast_low.inversity_normal}",
+                "$description": "Low contrast background for interaction. Use for surfaces in subtle or secondary interactive states."
               },
-              "low": {
-                "inversity_normal": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.border.low.inversity_normal}",
-                  "$description": "Low contrast border for interaction. Use for borders and outlines in subtle or secondary interactive states."
-                },
-                "inversity_flipped": {
-                  "$type": "color",
-                  "$value": "{ob.s2.color.interaction.contrast_levels.border.low.inversity_flipped}",
-                  "$description": "Low contrast border for interaction. Use for borders and outlines in subtle or secondary interactive states."
-                }
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.bg.contrast_low.inversity_flipped}",
+                "$description": "Low contrast background for interaction. Use for surfaces in subtle or secondary interactive states."
+              }
+            }
+          },
+          "border": {
+            "contrast_high": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.border.contrast_high.inversity_normal}",
+                "$description": "High contrast border for interaction. Use for borders and outlines where maximum contrast is required."
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.border.contrast_high.inversity_flipped}",
+                "$description": "High contrast border for interaction. Use for borders and outlines where maximum contrast is required."
+              }
+            },
+            "contrast_medium": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.border.contrast_medium.inversity_normal}",
+                "$description": "Medium contrast border for interaction. Use for borders and outlines in standard interactive states."
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.border.contrast_medium.inversity_flipped}",
+                "$description": "Medium contrast border for interaction. Use for borders and outlines in standard interactive states."
+              }
+            },
+            "contrast_low": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.border.contrast_low.inversity_normal}",
+                "$description": "Low contrast border for interaction. Use for borders and outlines in subtle or secondary interactive states."
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s2.color.interaction.border.contrast_low.inversity_flipped}",
+                "$description": "Low contrast border for interaction. Use for borders and outlines in subtle or secondary interactive states."
               }
             }
           },
@@ -355,99 +347,99 @@
                 "$value": "Interaction colours that do not carry an emphasis level. Peer of emphasis_high and emphasis_low, resolved straight into the compiled tier with no entry in s2, so the emphasis mode never reaches it. For elements that need hover and active feedback but no emphasis: cards, table rows, menu items, tags. Values start as a copy of emphasis_low and are independent of it from here on. Use: interactive surfaces that must stay neutral whatever the emphasis mode. Avoid: anything that should follow the emphasis mode."
               }
             },
-            "bg_base": {
+            "bg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_high.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_high.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_high.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_high.inversity_flipped}"
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_medium.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_medium.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_medium.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_medium.inversity_flipped}"
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_low.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_low.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.bg_base.contrast_low.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.bg.contrast_low.inversity_flipped}"
                 }
               }
             },
-            "fg_base": {
+            "fg": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_high.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_high.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_high.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_high.inversity_flipped}"
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_medium.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_medium.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_medium.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_medium.inversity_flipped}"
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_low.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_low.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.fg_base.contrast_low.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.fg.contrast_low.inversity_flipped}"
                 }
               }
             },
-            "border_base": {
+            "border": {
               "contrast_high": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_high.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_high.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_high.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_high.inversity_flipped}"
                 }
               },
               "contrast_medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_medium.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_medium.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_medium.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_medium.inversity_flipped}"
                 }
               },
               "contrast_low": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_low.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_low.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border_base.contrast_low.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_low.inversity_flipped}"
                 }
               }
             },
@@ -1585,27 +1577,27 @@
           "fg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Enabled state: Use for text and icons in the default, ready-to-interact state."
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Hover state: Use for text and icons when a pointer enters the navigation item."
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Focus state: Use for text and icons when a navigation item receives keyboard focus."
             },
             "pressed": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Pressed state: Use for text and icons during an active click or tap on a navigation item."
             },
             "selected": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.fg_base}",
+              "$value": "{ob.s1.color.navigation.fg}",
               "$description": "Foreground for Navigation. Selected state: Use for text and icons on the currently active navigation item."
             },
             "disabled": {
@@ -1617,27 +1609,27 @@
           "bg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_high}",
               "$description": "Background for Navigation. Enabled state: Use for the surface of a navigation item in its default state."
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_medium}",
               "$description": "Background for Navigation. Hover state: Use for the surface of a navigation item when a pointer enters it."
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_medium}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_medium}",
               "$description": "Background for Navigation. Focus state: Use for the surface of a navigation item that receives keyboard focus."
             },
             "pressed": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_high}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_high}",
               "$description": "Background for Navigation. Pressed state: Use for the surface of a navigation item during an active click or tap."
             },
             "selected": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_base.contrast_low}",
+              "$value": "{ob.s1.color.navigation.bg.contrast_low}",
               "$description": "Background for Navigation. Selected state: Use for the surface of the currently active navigation item."
             },
             "disabled": {
@@ -1654,27 +1646,27 @@
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.subtle}",
+              "$value": "{ob.s1.color.navigation.border.subtle}",
               "$description": "Border for Navigation. Hover state: Subtle indicator line on navigation items when a pointer enters."
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.subtle}",
+              "$value": "{ob.s1.color.navigation.border.subtle}",
               "$description": "Border for Navigation. Focus state: Subtle indicator line on navigation items that receive keyboard focus."
             },
             "pressed": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.brand}",
+              "$value": "{ob.s1.color.navigation.border.brand}",
               "$description": "Border for Navigation. Pressed state: Brand-red indicator line during an active click or tap."
             },
             "selected": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.brand}",
+              "$value": "{ob.s1.color.navigation.border.brand}",
               "$description": "Border for Navigation. Selected state: Brand-red indicator line marking the currently active navigation item. Uses ob.p.color.basic.federal_red."
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border_base.disabled}",
+              "$value": "{ob.s1.color.navigation.border.disabled}",
               "$description": "Border for Navigation. Disabled state: Muted indicator line on navigation items not available for interaction."
             }
           }

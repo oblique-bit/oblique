@@ -175,20 +175,3 @@ The builder picks the row component variant from `kind`: `single` or `multi`.
   baked default was. Now prefers `setProperties()` (matching the pattern in
   `../dimension/build-dimension.js`) with a direct node-write fallback
   using the real node name.
-
-## Refresh a single row (`--token` / `--variable`)
-
-Replaces one row in place, everything else on the page stays as it is. The row keeps its position.
-
-```bash
-# the token as shown in the Token Name column (dots). Works for every row, also for JSON-only tokens
-node build-viewport.js --token ob.s.dimension.viewport.min_width
-
-# a Figma variable (slashes or dots). Stops with an error if the open file has no such variable
-node build-viewport.js --variable ob/s/dimension/viewport/min_width
-```
-
-- `--token` and `--variable` name the same row but are not the same thing. Tokens such as `ob.g.mode_collection.viewport.range.*` have no Figma variable, so only `--token` finds them.
-- A name that matches no row (or more than one) stops the run before Figma is touched.
-- A row that is missing on the page is inserted where the source order puts it.
-- The table is validated afterwards like in every run.

@@ -49,14 +49,6 @@ function getArg(name, def) {
 const TABLE_FILTER   = getArg('--table', null);
 const PAGE_OVER      = getArg('--page', null);
 const VALIDATE_ONLY  = args.includes('--validate');
-// Row refresh. Two names for the same row, the difference matters:
-//   --token <path>     the token as shown in the Token Name column (dots, ob.s.dimension.viewport.min_width).
-//                      Works for every row, also for tokens that only live in JSON and have no Figma variable.
-//   --variable <name>  a Figma variable (slashes or dots accepted). The row is refreshed only if that
-//                      variable exists in the open file, otherwise the run stops with an error.
-const TOKEN_ARG      = getArg('--token', null);
-const VARIABLE_ARG   = getArg('--variable', null);
-function normalizeTokenName(s) { return String(s).trim().replace(/^\{|\}$/g, '').replace(/\//g, '.'); }
 
 const registry = JSON.parse(fs.readFileSync(REGISTRY, 'utf8'));
 
@@ -240,7 +232,7 @@ function extractResult(stdout) {
 // ── plugin code (runs inside Figma) ───────────────────────────────────────────
 
 const PLUGIN_CODE = `
-const { registry, tables, tableFilter, rowFilter, pageOverride, validateOnly, foundationDescription, provenance } = PAYLOAD;
+const { registry, tables, tableFilter, pageOverride, validateOnly, foundationDescription, provenance } = PAYLOAD;
 const _startTime = Date.now();
 const log = [];
 function L(m) { log.push(String(m)); }
@@ -465,6 +457,24 @@ async function ensureAppliedViewportModes(outer) {
     inst.name = APPLIED_MODES_NAME;
   }
   try { outer.appendChild(inst); } catch {} // append → last child
+
+  // The master (on the Utilities page) still carries a nested
+  // _docs/shared/section_bar_deprecated. Swap it for the live section_bar on
+  // this instance only, keeping its title / description / subtitle text. The
+  // sweep in validate-all.js flags any bar bound to the deprecated component.
+  const oldBar = inst.findOne((n) => n.type === 'INSTANCE' && n.mainComponent && /section_bar_deprecated$/.test(n.mainComponent.name));
+  if (oldBar && components.sectionBar) {
+    const txt = (name) => { const t = oldBar.findOne((x) => x.type === 'TEXT' && x.name === name); return t ? t.characters : ''; };
+    const barSpec = { section: { tier: 'G', title: txt('__sectionTitle'), purpose: txt('description'), subtitle: txt('__sectionSubTitle') } };
+    let live = components.sectionBar;
+    if (live.type === 'COMPONENT_SET') {
+      live = (live.children || []).find((c) => c.type === 'COMPONENT' && c.name === 'tier=s') || live.defaultVariant;
+    }
+    try {
+      oldBar.swapComponent(live);
+      await applySectionBarContent(oldBar, barSpec, { suppressTier: true });
+    } catch (e) { L('applied modes: section bar swap failed: ' + e.message); }
+  }
   return inst;
 }
 
@@ -491,6 +501,10 @@ async function applySectionBarContent(inst, spec, opts) {
   // has ever been part of this page (same reasoning as the dimension fix).
   const colorBar = inst.findOne((n) => n.name === 'Color Bar');
   if (colorBar) { try { colorBar.visible = false; } catch {} }
+  // The breadcrumb baked into the section_bar variants (Primitives > Semantic S1
+  // > Semantic S2 > Compiled) describes the color tiers and says nothing about
+  // viewport tokens, so hide it (same as the dimension and typography builders).
+  for (const crumb of inst.findAll((n) => /section_breadcrumb/.test(n.name))) { try { crumb.visible = false; } catch {} }
   const badgeProps = inst.componentProperties || {};
   const badgeUpdates = {};
   for (const bare of ['showBadgeMaintainer', 'showBadgeConsumer', 'showBadgeBundeskanzlei']) {
@@ -777,41 +791,6 @@ async function replaceOneTable(wrapper, spec) {
   return fresh;
 }
 
-// Single-row refresh (--token / --variable): rebuild just that row inside the
-// existing table and put it back at the same position. If the row is missing it is
-// inserted where the source order says it belongs. Nothing else on the page changes.
-async function replaceOneRow(wrapper, spec, row, mustBeVariable) {
-  if (mustBeVariable) {
-    const vs = await figma.variables.getLocalVariablesAsync();
-    if (!vs.some(v => v.name.replace(/\\//g, '.') === row.tokenName)) {
-      throw new Error('no Figma variable named ' + row.tokenName.replace(/\\./g, '/') + ' in this file (use --token for a token that only exists in JSON)');
-    }
-  }
-  const box = wrapper.findOne(c => c.name === spec.tableName);
-  if (!box) throw new Error('table box not found: ' + spec.tableName + ' (build the table first with --table ' + spec.id + ')');
-  const table = (box.children || []).find(c => c.type === 'FRAME' && c.name === 'Table');
-  if (!table) throw new Error('inner Table frame missing in ' + spec.tableName);
-  const isDataRow = c => c.type === 'INSTANCE' && /\\/row(_\\w+)?$/.test(c.name);
-  const rowName = c => { const t = findFirstText(findChild(c, 'Cell: Token Name')); return t ? String(t.characters || '').trim() : ''; };
-  const matches = (table.children || []).filter(c => isDataRow(c) && rowName(c) === row.tokenName);
-  const fresh = spec._materialized.kind === 'multi' ? await buildMultiRow(row) : await buildSingleRow(row);
-  if (!fresh) throw new Error('row component missing for ' + row.tokenName);
-  table.appendChild(fresh);
-  let idx;
-  if (matches.length) {
-    idx = table.children.indexOf(matches[0]);
-  } else {
-    const order = spec._materialized.rows.map(r => r.tokenName);
-    const pos = order.indexOf(row.tokenName);
-    const before = (table.children || []).filter(c => isDataRow(c) && c !== fresh && order.indexOf(rowName(c)) >= 0 && order.indexOf(rowName(c)) < pos).length;
-    idx = 1 + before; // header row is child 0
-  }
-  for (const m of matches) { try { m.remove(); } catch {} }
-  try { table.insertChild(Math.min(idx, table.children.length - 1), fresh); } catch (e) { L('reorder fail: ' + e.message); }
-  await flushTextWrites();
-  return { replaced: matches.length };
-}
-
 // ── validation ───────────────────────────────────────────────────────────────
 function validatePage(page, wrapper) {
   const errors = [];
@@ -831,6 +810,7 @@ function validatePage(page, wrapper) {
     if (sb) {
       const title = sb.findOne(n => n.type === 'TEXT' && n.name === '__sectionTitle');
       if (!title || !String(title.characters || '').trim()) errors.push({ code: 'SECTBAR', id: spec.id, msg: '__sectionTitle empty' });
+      if (sb.findAll((n) => /section_breadcrumb/.test(n.name) && n.visible !== false).length) errors.push({ code: 'SECTBAR', id: spec.id, msg: 'breadcrumb is visible' });
     }
 
     // Row count
@@ -917,24 +897,6 @@ if (validateOnly) {
   const errors = v.errors.concat(s.errors);
   const warns  = v.warns.concat(s.warns);
   result = { ok: errors.length === 0, errors, warns, log };
-} else if (rowFilter) {
-  // Single-row refresh (--token / --variable) — replace just that row, leave everything else.
-  let built;
-  const spec = tables.find(s => s.id === rowFilter.tableId);
-  const row = spec && spec._materialized.rows.find(r => r.tokenName === rowFilter.tokenName);
-  if (!spec || !row) {
-    built = [{ id: rowFilter.tableId, ok: false, err: 'row not found in the source: ' + rowFilter.tokenName }];
-  } else {
-    try {
-      const r = await replaceOneRow(wrapper, spec, row, rowFilter.mustBeVariable);
-      built = [{ id: spec.id, ok: true, rows: 1, row: rowFilter.tokenName, replaced: r.replaced }];
-    } catch (e) {
-      built = [{ id: spec.id, ok: false, err: e.message }];
-    }
-  }
-  await flushTextWrites();
-  const v = validatePage(page, wrapper);
-  result = { ok: built.every(b => b.ok) && v.errors.length === 0, built, errors: v.errors, warns: v.warns, log };
 } else if (tableFilter) {
   // Single-table refresh — replace just that box, leave page chrome intact.
   let built;
@@ -984,24 +946,6 @@ function main() {
     });
   });
 
-  // --token / --variable: find which table the row belongs to before anything touches Figma.
-  let ROW_FILTER = null;
-  if (TOKEN_ARG && VARIABLE_ARG) { console.error('Use either --token or --variable, not both.'); process.exit(2); }
-  if (TOKEN_ARG || VARIABLE_ARG) {
-    const wanted = normalizeTokenName(TOKEN_ARG || VARIABLE_ARG);
-    const hits = [];
-    for (const t of tables) for (const r of t._materialized.rows) if (r.tokenName === wanted) hits.push({ tableId: t.id, tokenName: r.tokenName });
-    if (hits.length !== 1) {
-      const all = []; for (const t of tables) for (const r of t._materialized.rows) all.push(r.tokenName);
-      const near = all.filter(n => n.includes(wanted.split('.').slice(-2).join('.'))).slice(0, 8);
-      console.error(hits.length ? ('Ambiguous: ' + hits.length + ' rows named ' + wanted) : ('No row named ' + wanted + ' in the viewport tables.'));
-      if (near.length) console.error('Closest rows:\n  ' + near.join('\n  '));
-      process.exit(2);
-    }
-    ROW_FILTER = Object.assign({ mustBeVariable: !!VARIABLE_ARG }, hits[0]);
-    console.log('Row refresh: ' + ROW_FILTER.tokenName + ' in table ' + ROW_FILTER.tableId + (VARIABLE_ARG ? ' (checked as a Figma variable)' : ''));
-  }
-
   if (!VALIDATE_ONLY) {
     console.log('Source rows per table:');
     for (const t of tables) {
@@ -1037,8 +981,7 @@ function main() {
   const payload = {
     registry,
     tables,
-    tableFilter: ROW_FILTER ? ROW_FILTER.tableId : TABLE_FILTER,
-    rowFilter: ROW_FILTER,
+    tableFilter: TABLE_FILTER,
     pageOverride: PAGE_OVER,
     validateOnly: VALIDATE_ONLY,
     foundationDescription,

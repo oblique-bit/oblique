@@ -43,15 +43,6 @@ function getArg(name, def) {
 const TABLE_FILTER = getArg('--table', null);
 const PAGE_OVER    = getArg('--page', null);
 const VALIDATE_ONLY = args.includes('--validate');
-// Row refresh. Two names for the same row, here both point at a Figma variable because every
-// dimension row is built from one:
-//   --token <path>     as shown in the Token Name column (dots, ob.s.dimension.dynamic.density.xs.px)
-//   --variable <name>  the Figma variable name (slashes or dots accepted)
-// The row is deleted and rebuilt in place from the live variable (value, description, preview bar),
-// the other rows stay untouched. A name that matches no variable of the tables stops the run.
-const TOKEN_ARG    = getArg('--token', null);
-const VARIABLE_ARG = getArg('--variable', null);
-function normalizeTokenName(s) { return String(s).trim().replace(/^\{|\}$/g, '').replace(/\//g, '.'); }
 
 function runEval(scriptText) {
   const tmp = path.join(os.tmpdir(), `dim-${process.pid}-${Date.now()}.js`);
@@ -80,8 +71,7 @@ function extractResult(stdout) {
 }
 
 const PLUGIN_CODE = `
-const { registry, pageOverride, validateOnly, provenance, rowFilter } = PAYLOAD;
-let tableFilter = PAYLOAD.tableFilter;
+const { registry, tableFilter, pageOverride, validateOnly, provenance } = PAYLOAD;
 const log = [];
 function L(msg) { log.push(String(msg)); }
 const _startTime = Date.now();
@@ -711,6 +701,11 @@ async function applySectionBarContent(inst, spec) {
   // unconditionally rather than exposing them as a per-table choice.
   const colorBar = inst.findOne((n) => n.name === 'Color Bar');
   if (colorBar) { try { colorBar.visible = false; } catch {} }
+  // The breadcrumb baked into the tier=s variant (Primitives > Semantic S1 >
+  // Semantic S2 > Compiled) describes the color tiers. Dimension tokens have no
+  // S1 / S2 equivalent, so it says nothing here: hide it, as the typography
+  // builder does.
+  for (const crumb of inst.findAll((n) => /section_breadcrumb/.test(n.name))) { try { crumb.visible = false; } catch {} }
   const badgeProps = inst.componentProperties || {};
   const badgeUpdates = {};
   for (const bare of ['showBadgeMaintainer', 'showBadgeConsumer', 'showBadgeBundeskanzlei']) {
@@ -750,6 +745,13 @@ async function applySectionBarContent(inst, spec) {
     if (key) updates[key] = String(val);
   }
   if (Object.keys(updates).length) { try { inst.setProperties(updates); } catch (e) { L('section bar setProperties failed: ' + e.message); } }
+
+  // The shared section_bar master does not bind __sectionTitle to its "title"
+  // property in the tier variants: setting the property succeeds but the text
+  // keeps the variant's baked "Semantic tier — Compiled", so every table on the
+  // page showed the same title. Write the text node directly as well.
+  const titleNode = inst.findOne(n => n.type === 'TEXT' && n.name === '__sectionTitle');
+  if (titleNode && want.title && titleNode.characters !== String(want.title)) await setText(titleNode, String(want.title));
 
   // Fallback text writes for fields without a property binding. The subtitle
   // node (__sectionSubTitle) was added to the master manually and isn't yet
@@ -916,7 +918,7 @@ async function buildGroupHeader(key) {
 // the section bar/header, and only build rows for tokens not yet present
 // (matched by token-name TEXT content). Makes rebuilds safe to interrupt —
 // partial state is preserved between runs.
-async function buildTable(page, spec, onlyTokenPath) {
+async function buildTable(page, spec) {
   const table = await ensureTableFrame(page, spec.tableName);
   const tokens = varsForTable(spec);
   const result = { id: spec.id, ok: true, info: { tokenCount: tokens.length, rowsBuilt: 0, rowsKept: 0 } };
@@ -963,12 +965,6 @@ async function buildTable(page, spec, onlyTokenPath) {
     if (existing.has(txt)) { try { c.remove(); } catch {} continue; } // dedupe by token name
     existing.set(txt, c);
   }
-  // Single-row refresh: drop the existing row of that token so the loop below rebuilds it.
-  if (onlyTokenPath && existing.has(onlyTokenPath)) {
-    try { existing.get(onlyTokenPath).remove(); } catch {}
-    existing.delete(onlyTokenPath);
-    result.info.rowReplaced = onlyTokenPath;
-  }
   result.info.rowsKept = existing.size;
 
   // Only build rows for tokens we don't already have. Track the resulting
@@ -979,7 +975,6 @@ async function buildTable(page, spec, onlyTokenPath) {
   for (const v of tokens) {
     const tokenPath = v.name.replace(/\\//g, '.');
     if (existing.has(tokenPath)) continue;
-    if (onlyTokenPath && tokenPath !== onlyTokenPath) continue; // row refresh builds only the asked row
     const r = spec.kind === 'static' ? await buildStaticRow(v) : await buildModeRow(v, spec);
     if (r && r.instance) {
       table.appendChild(r.instance);
@@ -1085,11 +1080,16 @@ async function validatePage(page) {
     if (sectionBars.length !== 1) errors.push({ code: 'DUP', id: spec.id, msg: 'expected 1 section bar, got ' + sectionBars.length });
     if (sectionBars[0]) {
       const sb = sectionBars[0];
+      const crumbShown = sb.findAll((n) => /section_breadcrumb/.test(n.name) && n.visible !== false).length;
+      if (crumbShown) errors.push({ code: 'SECTBAR', id: spec.id, msg: 'breadcrumb is visible' });
       for (const tn of ['__sectionTitle', '$description']) {
         const node = sb.findOne(n => n.type === 'TEXT' && n.name === tn);
         const txt = node ? String(node.characters || '').trim() : '';
         if (!txt) errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' empty' });
         else if (DEFAULTS.indexOf(txt) >= 0) errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' is default placeholder' });
+        else if (tn === '__sectionTitle' && spec.section && spec.section.title && txt !== String(spec.section.title).trim()) {
+          errors.push({ code: 'SECTBAR', id: spec.id, msg: tn + ' shows "' + txt + '" but the registry title is "' + spec.section.title + '"' });
+        }
       }
     }
     const expected = varsForTable(spec).length;
@@ -1132,11 +1132,6 @@ async function main() {
   }
   await discoverComponents();
   await discoverVariables();
-  if (rowFilter) {
-    const owner = registry.tables.find(sp => varsForTable(sp).some(v => v.name.replace(/\\//g, '.') === rowFilter.tokenName));
-    if (!owner) return { error: 'no Figma variable named ' + rowFilter.tokenName.replace(/\\./g, '/') + ' in the dimension tables of this file' };
-    tableFilter = owner.id;
-  }
   const page = await ensurePage();
 
   if (validateOnly) {
@@ -1159,7 +1154,7 @@ async function main() {
   for (const spec of registry.tables) {
     if (tableFilter && tableFilter !== spec.id) continue;
     try {
-      const res = await buildTable(page, spec, rowFilter ? rowFilter.tokenName : null);
+      const res = await buildTable(page, spec);
       results.push(res);
     } catch (e) { results.push({ id: spec.id, ok: false, error: e.message }); }
   }
@@ -1213,10 +1208,6 @@ function main() {
   console.log(`  ${registry.tables.length} tables on page '${PAGE_OVER || registry.page}'.`);
   if (TABLE_FILTER) console.log(`  Filtering to: ${TABLE_FILTER}`);
   if (VALIDATE_ONLY) console.log('  Mode: validate (no writes)');
-  if (TOKEN_ARG && VARIABLE_ARG) { console.error('Use either --token or --variable, not both.'); process.exit(2); }
-  const ROW_FILTER = (TOKEN_ARG || VARIABLE_ARG) ? { tokenName: normalizeTokenName(TOKEN_ARG || VARIABLE_ARG), mustBeVariable: !!VARIABLE_ARG } : null;
-  if (ROW_FILTER) console.log('  Row refresh: ' + ROW_FILTER.tokenName + (VARIABLE_ARG ? ' (Figma variable)' : ' (token)'));
-  if (ROW_FILTER && !PAGE_OVER) console.log('  Row refresh edits the canonical page in place: ' + registry.page + ' (no timestamped scratch page)');
 
   // Provenance for the page header — git SHA, ISO-ish timestamp w/ TZ, script
   // relative to repo root. Soft failures: header still renders without git
@@ -1250,7 +1241,7 @@ function main() {
     if (typeof desc === 'string' && desc.trim()) foundationDescription = desc.trim();
   } catch (e) { /* leave null — bar keeps master default */ }
 
-  const payload = { registry, rowFilter: ROW_FILTER, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER || (ROW_FILTER ? registry.page : null), validateOnly: VALIDATE_ONLY, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'build-dimension.js' } };
+  const payload = { registry, tableFilter: TABLE_FILTER, pageOverride: PAGE_OVER, validateOnly: VALIDATE_ONLY, foundationDescription, provenance: { gitSha, generatedAt, pageTs, scriptRel, scriptName: 'build-dimension.js' } };
   const script = `(async () => {\nconst PAYLOAD = ${JSON.stringify(payload)};\n${PLUGIN_CODE}\n})()`;
 
   const t0 = Date.now();

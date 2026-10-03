@@ -1,6 +1,6 @@
 {
   "schema": "ob.contrast-pairings.v1",
-  "generatedAt": "2026-09-14T11:49:38.438Z",
+  "generatedAt": "2026-10-02T17:46:40.777Z",
   "categories": {
     "neutral": [
       {
@@ -654,45 +654,140 @@
         "emph": null
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/neutral/bg/contrast_highest/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
         "rowKey": "text-link",
-        "colKey": "highest"
+        "colKey": "highest",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:483",
+        "ratio": 6.47,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/neutral/bg/contrast_high/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
         "rowKey": "text-link",
-        "colKey": "high"
+        "colKey": "high",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:485",
+        "ratio": 5.85,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/neutral/bg/contrast_medium/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
         "rowKey": "text-link",
-        "colKey": "medium"
+        "colKey": "medium",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:487",
+        "ratio": 5.06,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/neutral/bg/contrast_low/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
         "rowKey": "text-link",
-        "colKey": "low"
+        "colKey": "low",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:489",
+        "ratio": 3.09,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": false,
+          "aaaLarge": false,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaLarge",
+          "recContent": "H1–H4, bold body, lead",
+          "recComponent": "lg, xl, 2xl, 3xl, 4xl (bold below xl)",
+          "notContent": "body, strong",
+          "notComponent": "xs, sm, md"
+        },
+        "emph": null
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/neutral/bg/contrast_lowest/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
         "rowKey": "text-link",
-        "colKey": "lowest"
+        "colKey": "lowest",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:481",
+        "ratio": 1.94,
+        "wcag": {
+          "aaLarge": false,
+          "aaNormal": false,
+          "aaaLarge": false,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "fail",
+          "recContent": "decorative only",
+          "recComponent": "n/A",
+          "notContent": "all semantic text",
+          "notComponent": "all sizes"
+        },
+        "emph": null
       }
     ],
     "interaction": [
       {
-        "fg": "ob.s.color.interaction.contrast_levels.fg.high.inversity_normal",
-        "bg": "ob.s.color.interaction.contrast_levels.bg.high.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_high.inversity_normal",
+        "bg": "ob.s.color.interaction.bg.contrast_high.inversity_normal",
         "rowKey": "states",
         "colKey": "high",
         "isTextLink": false,
@@ -717,8 +812,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.contrast_levels.fg.medium.inversity_normal",
-        "bg": "ob.s.color.interaction.contrast_levels.bg.medium.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.interaction.bg.contrast_medium.inversity_normal",
         "rowKey": "states",
         "colKey": "medium",
         "isTextLink": false,
@@ -743,8 +838,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.contrast_levels.fg.low.inversity_normal",
-        "bg": "ob.s.color.interaction.contrast_levels.bg.low.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_low.inversity_normal",
+        "bg": "ob.s.color.interaction.bg.contrast_low.inversity_normal",
         "rowKey": "states",
         "colKey": "low",
         "isTextLink": false,
@@ -1203,35 +1298,111 @@
         "group": "info"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/info/bg/contrast_highest/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:553",
+        "ratio": 6.47,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "info (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/info/bg/contrast_high/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:555",
+        "ratio": 5.95,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "info (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/info/bg/contrast_medium/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:557",
+        "ratio": 5.31,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "info (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/info/bg/contrast_low/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:559",
+        "ratio": 4.56,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "info (text-link)"
       },
       {
@@ -1667,35 +1838,111 @@
         "group": "critical"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/critical/bg/contrast_highest/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:569",
+        "ratio": 6.47,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "critical (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/critical/bg/contrast_high/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:571",
+        "ratio": 5.73,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "critical (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/critical/bg/contrast_medium/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:573",
+        "ratio": 5.22,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "critical (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/critical/bg/contrast_low/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:575",
+        "ratio": 4.56,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "critical (text-link)"
       },
       {
@@ -2131,35 +2378,111 @@
         "group": "resolved"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/resolved/bg/contrast_highest/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:585",
+        "ratio": 6.47,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "resolved (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/resolved/bg/contrast_high/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:587",
+        "ratio": 6.14,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "resolved (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/resolved/bg/contrast_medium/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:589",
+        "ratio": 5.71,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "resolved (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/resolved/bg/contrast_low/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:591",
+        "ratio": 5.05,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "resolved (text-link)"
       },
       {
@@ -2595,35 +2918,111 @@
         "group": "attention"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/attention/bg/contrast_highest/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:601",
+        "ratio": 6.47,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "attention (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/attention/bg/contrast_high/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:603",
+        "ratio": 6.1,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "attention (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/attention/bg/contrast_medium/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:605",
+        "ratio": 5.65,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "attention (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/attention/bg/contrast_low/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:607",
+        "ratio": 4.78,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "attention (text-link)"
       },
       {
@@ -3059,35 +3458,111 @@
         "group": "fatal"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/fatal/bg/contrast_highest/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
         "rowKey": "text-link",
         "colKey": "highest",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:617",
+        "ratio": 6.47,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "fatal (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/fatal/bg/contrast_high/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
         "rowKey": "text-link",
         "colKey": "high",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:619",
+        "ratio": 5.73,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": "emphasis_low required on saturated status bg",
         "group": "fatal (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/fatal/bg/contrast_medium/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
         "rowKey": "text-link",
         "colKey": "medium",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:621",
+        "ratio": 5.22,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "fatal (text-link)"
       },
       {
-        "missing": true,
-        "fgName": "ob/h/link/color/default",
-        "bgName": "ob/s/color/status/fatal/bg/contrast_low/inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
         "rowKey": "text-link",
         "colKey": "low",
+        "isTextLink": true,
+        "isSingle": false,
+        "fgVarId": "VariableID:8:534",
+        "bgVarId": "VariableID:8:623",
+        "ratio": 4.56,
+        "wcag": {
+          "aaLarge": true,
+          "aaNormal": true,
+          "aaaLarge": true,
+          "aaaNormal": false,
+          "aaa": false
+        },
+        "usage": {
+          "tier": "aaNormal",
+          "recContent": "H1–H6, body, lead, strong",
+          "recComponent": "md, lg, xl, 2xl, 3xl, 4xl, all weights",
+          "notContent": "n/A",
+          "notComponent": "xs, sm"
+        },
+        "emph": null,
         "group": "fatal (text-link)"
       }
     ],
@@ -3127,7 +3602,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:21:11",
         "bgVarId": "VariableID:8:722",
-        "ratio": 14.02,
+        "ratio": 13.59,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -3153,7 +3628,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:21:12",
         "bgVarId": "VariableID:8:723",
-        "ratio": 14.02,
+        "ratio": 13.59,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -3205,7 +3680,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:21:14",
         "bgVarId": "VariableID:8:725",
-        "ratio": 12.24,
+        "ratio": 8.3,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -3246,7 +3721,8 @@
           "notContent": "all semantic text",
           "notComponent": "all sizes"
         },
-        "emph": null
+        "emph": null,
+        "bgTransparent": true
       }
     ],
     "free": [
@@ -4582,7 +5058,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:708",
         "bgVarId": "VariableID:8:698",
-        "ratio": 8.36,
+        "ratio": 7.88,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4609,7 +5085,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:710",
         "bgVarId": "VariableID:8:698",
-        "ratio": 6.11,
+        "ratio": 6.04,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4636,7 +5112,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:712",
         "bgVarId": "VariableID:8:698",
-        "ratio": 5.01,
+        "ratio": 4.6,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4663,7 +5139,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:706",
         "bgVarId": "VariableID:8:700",
-        "ratio": 15.4,
+        "ratio": 15.93,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4690,7 +5166,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:708",
         "bgVarId": "VariableID:8:700",
-        "ratio": 7.4,
+        "ratio": 7.22,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4717,7 +5193,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:710",
         "bgVarId": "VariableID:8:700",
-        "ratio": 5.41,
+        "ratio": 5.53,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4744,7 +5220,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:712",
         "bgVarId": "VariableID:8:700",
-        "ratio": 4.44,
+        "ratio": 4.21,
         "wcag": {
           "aaLarge": true,
           "aaNormal": false,
@@ -4771,7 +5247,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:706",
         "bgVarId": "VariableID:8:702",
-        "ratio": 14.02,
+        "ratio": 14.79,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4798,7 +5274,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:708",
         "bgVarId": "VariableID:8:702",
-        "ratio": 6.74,
+        "ratio": 6.71,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4825,7 +5301,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:710",
         "bgVarId": "VariableID:8:702",
-        "ratio": 4.93,
+        "ratio": 5.14,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4852,7 +5328,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:712",
         "bgVarId": "VariableID:8:702",
-        "ratio": 4.04,
+        "ratio": 3.91,
         "wcag": {
           "aaLarge": true,
           "aaNormal": false,
@@ -4879,7 +5355,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:706",
         "bgVarId": "VariableID:8:704",
-        "ratio": 12.24,
+        "ratio": 12.58,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4906,7 +5382,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:708",
         "bgVarId": "VariableID:8:704",
-        "ratio": 5.88,
+        "ratio": 5.7,
         "wcag": {
           "aaLarge": true,
           "aaNormal": true,
@@ -4933,7 +5409,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:710",
         "bgVarId": "VariableID:8:704",
-        "ratio": 4.3,
+        "ratio": 4.37,
         "wcag": {
           "aaLarge": true,
           "aaNormal": false,
@@ -4960,7 +5436,7 @@
         "isSingle": false,
         "fgVarId": "VariableID:8:712",
         "bgVarId": "VariableID:8:704",
-        "ratio": 3.52,
+        "ratio": 3.33,
         "wcag": {
           "aaLarge": true,
           "aaNormal": false,

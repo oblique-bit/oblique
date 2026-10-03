@@ -96,6 +96,10 @@ function runStructural() {
 }
 
 const SWEEP_PLUGIN_CODE = `
+// Everything lives inside one function: top-level const / function declarations
+// persist in the Figma plugin context, so a second run of this script failed to
+// declare them again and hung until the figma-ds-cli 60s limit (found 2026-10-02).
+(async () => {
 const PAGE_ALLOWLIST = ${JSON.stringify(CANONICAL_PAGES)};
 const DEFAULT_PLACEHOLDERS = ['Tier title', 'Purpose: Description text', 'Guideline: Description text'];
 
@@ -106,19 +110,17 @@ function pathOf(n) {
   return parts.join(' / ');
 }
 
-(async () => {
-  await figma.loadAllPagesAsync();
+return await (async () => {
   const findings = [];
   let barsChecked = 0;
 
   for (const page of figma.root.children) {
     if (!PAGE_ALLOWLIST.includes(page.name)) continue;
-
-    const bars = [];
-    (function walk(n) {
-      if (n.type === 'INSTANCE' && /section_bar/i.test(n.name)) bars.push(n);
-      if (n.children) n.children.forEach(walk);
-    })(page);
+    // Load only the canonical pages (not every deprecated page in the file) and
+    // use the native criteria search instead of a JS walk over every node: the
+    // old version of this loop took longer than the figma-ds-cli 60s limit.
+    await page.loadAsync();
+    const bars = page.findAllWithCriteria({ types: ['INSTANCE'] }).filter((n) => /section_bar/i.test(n.name));
 
     for (const sb of bars) {
       barsChecked++;
@@ -175,6 +177,7 @@ function pathOf(n) {
   // or script length. Keep the return shape here flat; do heavier shaping
   // to the result outside this string.
   return JSON.stringify({ pagesChecked: PAGE_ALLOWLIST.length, barsChecked, findings }, null, 2);
+})()
 })()
 `;
 

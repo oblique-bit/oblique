@@ -69,7 +69,7 @@
         },
         {
           "type": "textlink-row",
-          "fgPath": "ob/h/link/color/default",
+          "fgPath": "interaction/fg/contrast_medium/inversity_normal",
           "bgPath": "neutral/bg/contrast_{bg}/inversity_normal",
           "bgLevels": ["highest", "high", "medium", "low", "lowest"]
         }
@@ -86,8 +86,8 @@
         {
           "type": "states-row",
           "states": ["high", "medium", "low"],
-          "fgPath": "interaction/contrast_levels/fg/{state}/inversity_normal",
-          "bgPath": "interaction/contrast_levels/bg/{state}/inversity_normal"
+          "fgPath": "interaction/fg/contrast_{state}/inversity_normal",
+          "bgPath": "interaction/bg/contrast_{state}/inversity_normal"
         }
       ]
     },
@@ -116,7 +116,7 @@
       },
       "textLink": {
         "type": "textlink-row",
-        "fgPath": "ob/h/link/color/default",
+        "fgPath": "interaction/fg/contrast_medium/inversity_normal",
         "bgPath": "status/{group}/bg/contrast_{bg}/inversity_normal",
         "bgLevels": ["highest", "high", "medium", "low"]
       }
