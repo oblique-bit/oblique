@@ -103,6 +103,20 @@ The builder's own `deprecateOldScratchPages` only renames *other stray
 timestamped* pages, never the canonical one — it will not do step 3/4 for
 you.
 
+**One row only: `--token` / `--variable`.** When a single token changed (a
+value, a description), refresh just its row instead of rebuilding the page,
+for example
+`node scripts-custom/figma-doc-builders/color-variables/build-color-variables.js --token ob.s.color.neutral.bg.contrast_highest.inversity_normal`.
+The color, dimension and viewport builders take the same two flags. The row
+is replaced in place on the canonical page, so there is no scratch page to
+rename; every other row, the group headers and the separators stay
+untouched, and the table is validated afterwards. This is the only allowed
+way to change the canonical page in place: it swaps one row, not a whole
+table. After `run-cosmetics.js` has trimmed `ob/s/color/`, the color builder
+also takes the variable name as the Figma panel shows it (`neutral/bg/...`).
+What happens with a row that is not on the page yet differs per builder: see
+its `_readme.md`.
+
 ### 6. Publish Library
 
 Figma UI: Assets panel → Publish. Makes the updated variables/styles
