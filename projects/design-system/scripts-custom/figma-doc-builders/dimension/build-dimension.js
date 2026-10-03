@@ -47,10 +47,22 @@ const VALIDATE_ONLY = args.includes('--validate');
 // dimension row is built from one:
 //   --token <path>     as shown in the Token Name column (dots, ob.s.dimension.dynamic.density.xs.px)
 //   --variable <name>  the Figma variable name (slashes or dots accepted)
-// The row is deleted and rebuilt in place from the live variable (value, description, preview bar),
-// the other rows stay untouched. A name that matches no variable of the tables stops the run.
+// The table that owns the row is rebuilt in place from the live variables (value, description, preview
+// bar); other tables stay untouched and on a clean page the other rows come out unchanged. A name that
+// matches no variable of the tables stops the run, and so does a flag without a value (exit 2).
 const TOKEN_ARG    = getArg('--token', null);
 const VARIABLE_ARG = getArg('--variable', null);
+// A row flag without a value must not fall back to a full build (the viewport build wipes the page first).
+for (const flag of ['--token', '--variable']) {
+  const at = args.indexOf(flag);
+  if (at >= 0) {
+    const val = args[at + 1];
+    if (val === undefined || String(val).trim() === '' || String(val).startsWith('--')) {
+      console.error('Missing value for ' + flag + '. Usage: ' + flag + ' <name>');
+      process.exit(2);
+    }
+  }
+}
 function normalizeTokenName(s) { return String(s).trim().replace(/^\{|\}$/g, '').replace(/\//g, '.'); }
 
 function runEval(scriptText) {

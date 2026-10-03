@@ -107,15 +107,18 @@ you.
 value, a description), refresh just its row instead of rebuilding the page,
 for example
 `node scripts-custom/figma-doc-builders/color-variables/build-color-variables.js --token ob.s.color.neutral.bg.contrast_highest.inversity_normal`.
-The color, dimension and viewport builders take the same two flags. The row
-is replaced in place on the canonical page, so there is no scratch page to
-rename; every other row, the group headers and the separators stay
-untouched, and the table is validated afterwards. This is the only allowed
-way to change the canonical page in place: it swaps one row, not a whole
-table. After `run-cosmetics.js` has trimmed `ob/s/color/`, the color builder
+The color, dimension and viewport builders take the same two flags. The page
+is edited in place under its canonical name, so there is no scratch page to
+rename. Viewport replaces only that row. Color replaces only that row too, but
+still re-runs the page structure check, the table validation and the page
+header. Dimension rebuilds the whole table that owns the row. On a clean page
+the other rows come out unchanged. This is the only allowed way to change the
+canonical page in place. A flag without a value stops with exit 2, it never
+falls back to a full build. A row that is not on the page yet: color does not
+create it, it says so and exits 1 (rebuild the table with `--table <id>`);
+dimension builds it and sorts it into place; viewport inserts it at its source
+position. After `run-cosmetics.js` has trimmed `ob/s/color/`, the color builder
 also takes the variable name as the Figma panel shows it (`neutral/bg/...`).
-What happens with a row that is not on the page yet differs per builder: see
-its `_readme.md`.
 
 ### 6. Publish Library
 

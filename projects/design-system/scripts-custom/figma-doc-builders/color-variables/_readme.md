@@ -143,7 +143,7 @@ All inside `_docs/color-variables/*` (under the Building Blocks frame on the cli
 
 ## Refresh a single row (`--token` / `--variable`)
 
-Rebuilds the row (or the high and low rows of a 4-mode token) of one token in place, from the live Figma variable. Group headers, separators and every other row stay untouched. Works on the canonical page (`registry.page`), no timestamped scratch page. A `--page` option still wins.
+Rebuilds the row (or the high and low rows of a 4-mode token) of one token in place, from the live Figma variable. Only that row is rebuilt; the page structure check, the table validation and the page header run as in every run. Works on the canonical page (`registry.page`), no timestamped scratch page. A `--page` option still wins.
 
 ```bash
 # token as shown in the Name column (dots, S3 paths always with ob.s.)
@@ -154,4 +154,4 @@ node build-color-variables.js --token ob.s.color.neutral.bg.contrast_highest.inv
 node build-color-variables.js --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal
 ```
 
-Every row of these tables is built from a Figma variable (primitives included), so both flags point to the same row. A name with no variable stops the run; a row that is not on the page yet is not created (use `--table <id>`). The whole page is validated afterwards, so problems in other rows are reported too: use them as the list of rows to refresh.
+Every row of these tables is built from a Figma variable (primitives included), so both flags point to the same row. A name with no variable stops the run, and so does a flag without a value (exit 2). A row that is not on the page yet is not created: the run prints the reason and exits 1 (use `--table <id>`). The whole page is validated afterwards, so problems in other rows are reported too: use them as the list of rows to refresh.

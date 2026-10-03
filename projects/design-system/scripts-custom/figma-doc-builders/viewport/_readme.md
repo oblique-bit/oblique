@@ -189,6 +189,6 @@ node build-viewport.js --variable ob/s/dimension/viewport/min_width
 ```
 
 - `--token` and `--variable` name the same row but are not the same thing. Tokens such as `ob.g.mode_collection.viewport.range.*` have no Figma variable, so only `--token` finds them.
-- A name that matches no row (or more than one) stops the run before Figma is touched.
+- A name that matches no row (or more than one) stops the run before Figma is touched. So does a flag without a value (exit 2).
 - A row that is missing on the page is inserted where the source order puts it.
 - The table is validated afterwards like in every run.

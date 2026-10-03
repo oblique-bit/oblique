@@ -56,6 +56,17 @@ const VALIDATE_ONLY  = args.includes('--validate');
 //                      variable exists in the open file, otherwise the run stops with an error.
 const TOKEN_ARG      = getArg('--token', null);
 const VARIABLE_ARG   = getArg('--variable', null);
+// A row flag without a value must not fall back to a full build (the viewport build wipes the page first).
+for (const flag of ['--token', '--variable']) {
+  const at = args.indexOf(flag);
+  if (at >= 0) {
+    const val = args[at + 1];
+    if (val === undefined || String(val).trim() === '' || String(val).startsWith('--')) {
+      console.error('Missing value for ' + flag + '. Usage: ' + flag + ' <name>');
+      process.exit(2);
+    }
+  }
+}
 function normalizeTokenName(s) { return String(s).trim().replace(/^\{|\}$/g, '').replace(/\//g, '.'); }
 
 const registry = JSON.parse(fs.readFileSync(REGISTRY, 'utf8'));

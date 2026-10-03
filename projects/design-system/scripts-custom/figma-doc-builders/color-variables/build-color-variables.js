@@ -1584,8 +1584,12 @@ async function main() {
     // from one): --token ob.s.color.neutral.bg.contrast_highest.inversity_normal (as shown in the table)
     // or --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal (slashes or dots accepted; the
     // trimmed forms color/neutral/... and neutral/... that run-cosmetics.js leaves in Figma work too).
-    else if (a === '--token') tokenArg = args[++i];
-    else if (a === '--variable') variableArg = args[++i];
+    else if (a === '--token' || a === '--variable') {
+      // A row flag without a value must not fall back to a full build.
+      const val = args[i + 1];
+      if (val === undefined || String(val).trim() === '' || String(val).startsWith('--')) { console.error('Missing value for ' + a + '. Usage: ' + a + ' <name>'); process.exit(2); }
+      if (a === '--token') tokenArg = args[++i]; else variableArg = args[++i];
+    }
   }
   if (tokenArg && variableArg) { console.error('Use either --token or --variable, not both.'); process.exit(2); }
   const normalizeTokenName = (x) => String(x).trim().replace(/^\{|\}$/g, '').replace(/\//g, '.');
@@ -1712,10 +1716,15 @@ ${PLUGIN_CODE}
       for (const x of r.validation.repaired) console.log(`      fixed: ${x}`);
     }
     if (r.error) console.log(`      ERROR: ${r.error}`);
+    if (r.issues?.length) for (const m of r.issues) console.log(`      ISSUE: ${m}`);
     if (r.ok) okCount++;
-    else if (r.error || r.validation?.errors?.length) failCount++;
+    else if (r.error || r.validation?.errors?.length || (rowFilter && r.issues?.length)) failCount++;
     else warnCount++;
   }
+
+  // Row refresh: no table replaced a row (the row is not on the page, or no table holds it).
+  const rowNotRefreshed = !!rowFilter && data.mode !== 'validate' && !(data.results || []).some(r => r.info && r.info.rowReplaced);
+  if (rowNotRefreshed) console.log(`\n  No row was refreshed for ${rowFilter.dotPath} (see the lines above).`);
 
   if (data.mode !== 'validate') {
     console.log('\n' + '─'.repeat(60));
@@ -1755,7 +1764,7 @@ ${PLUGIN_CODE}
     else { console.error('\nFAIL: ' + errCount + ' validation error(s)\n'); validateFailed = true; }
   }
 
-  if (failCount > 0 || validateFailed) process.exit(1);
+  if (failCount > 0 || validateFailed || rowNotRefreshed) process.exit(1);
 }
 
 main().catch(err => { console.error('Fatal:', err); process.exit(1); });
