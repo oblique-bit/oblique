@@ -3,21 +3,9 @@
     "c": {
       "tag": {
         "token_family_docs": {
-          "$description": {
+          "description": {
             "$type": "other",
             "$value": "Layout tokens for the Tag molecule — container, spacing, border-radius, and color."
-          },
-          "$extensions": {
-            "oblique": {
-              "kind": {
-                "$type": "other",
-                "$value": "token_family_docs"
-              },
-              "export": {
-                "$type": "other",
-                "$value": "false"
-              }
-            }
           }
         },
         "container": {

@@ -4,21 +4,9 @@
       "infobox": {
         "color": {
           "token_family_docs": {
-            "$description": {
+            "description": {
               "$type": "other",
               "$value": "Color tokens for the Infobox molecule — icon, border, surface, and foreground colors."
-            },
-            "$extensions": {
-              "oblique": {
-                "kind": {
-                  "$type": "other",
-                  "$value": "token_family_docs"
-                },
-                "export": {
-                  "$type": "other",
-                  "$value": "false"
-                }
-              }
             }
           },
           "icon": {
