@@ -185,8 +185,51 @@ describe('rootLayout', () => {
 		// Both properties are new and must be emitted together with a comma between them,
 		// otherwise the generated spec is malformed.
 		expect(spec).toBe(
-			`import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\nimport { ObMasterLayoutModule, provideObliqueTestingConfiguration } from '@oblique/oblique';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\timports: [ObMasterLayoutModule],\n\t\tproviders: [provideObliqueTestingConfiguration()]});\n\t});\n});`
+			`import {TestBed} from '@angular/core/testing';\nimport {App} from './app';\nimport { AppModule } from './app-module';\nimport { ObMasterLayoutModule, provideObliqueTestingConfiguration } from '@oblique/oblique';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\timports: [AppModule, ObMasterLayoutModule],\n\t\tproviders: [provideObliqueTestingConfiguration()]});\n\t});\n});`
 		);
+	});
+
+	test('removes app from declarations in the TestBed configuration', async () => {
+		const inputTree = createInputTree();
+		inputTree.overwrite(
+			'src/app/app.spec.ts',
+			`import {TestBed} from '@angular/core/testing';\nimport {RouterModule} from '@angular/router';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: [RouterModule.forRoot([])],\n\t\t\tdeclarations: [App],\n\t\t}).compileComponents();\n\t});\n});`
+		);
+		const resultTree = await runRootLayout(inputTree);
+
+		const spec = resultTree.readText('src/app/app.spec.ts');
+		expect(spec).toBe(
+			`import {TestBed} from '@angular/core/testing';\nimport {RouterModule} from '@angular/router';\nimport {App} from './app';\nimport { AppModule } from './app-module';\nimport { ObMasterLayoutModule, provideObliqueTestingConfiguration } from '@oblique/oblique';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: [RouterModule.forRoot([]), AppModule, ObMasterLayoutModule],\n\t\t\tdeclarations: [],\n\t\tproviders: [provideObliqueTestingConfiguration()],\n\t\t}).compileComponents();\n\t});\n});`
+		);
+	});
+
+	test('throws error if declarations is not in the TestBed configuration', async () => {
+		const inputTree = createInputTree();
+		inputTree.overwrite(
+			'src/app/app.spec.ts',
+			`import {TestBed} from '@angular/core/testing';\nimport {RouterModule} from '@angular/router';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: [RouterModule.forRoot([])],\n\t\t}).compileComponents();\n\t});\n});`
+		);
+		await expect(runRootLayout(inputTree)).rejects.toThrow(
+			'Expected a "declarations" property in the TestBed configuration.'
+		);
+	});
+
+	test('throws error if declarations is not an array in the TestBed configuration', async () => {
+		const inputTree = createInputTree();
+		inputTree.overwrite(
+			'src/app/app.spec.ts',
+			`import {TestBed} from '@angular/core/testing';\nimport {RouterModule} from '@angular/router';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: [RouterModule.forRoot([])],\n\t\t\tdeclarations: App,\n\t\t}).compileComponents();\n\t});\n});`
+		);
+		await expect(runRootLayout(inputTree)).rejects.toThrow('Expected "declarations" to be an array.');
+	});
+
+	test('throws error if app is not in declarations in the TestBed configuration', async () => {
+		const inputTree = createInputTree();
+		inputTree.overwrite(
+			'src/app/app.spec.ts',
+			`import {TestBed} from '@angular/core/testing';\nimport {RouterModule} from '@angular/router';\nimport {App} from './app';\ndescribe('App', () => {\n\tbeforeEach(async () => {\n\t\tawait TestBed.configureTestingModule({\n\t\t\timports: [RouterModule.forRoot([])],\n\t\t\tdeclarations: [],\n\t\t}).compileComponents();\n\t});\n});`
+		);
+		await expect(runRootLayout(inputTree)).rejects.toThrow('Expected "declarations" to be exactly [App].');
 	});
 
 	test('logs step', async () => {

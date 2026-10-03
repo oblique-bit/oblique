@@ -1,7 +1,15 @@
 import {type Rule, type Tree, chain, move, template} from '@angular-devkit/schematics';
 import {addImportToModule, insertImport} from '@schematics/angular/utility/ast-utils';
-import {type Change, InsertChange, NoopChange} from '@schematics/angular/utility/change';
-import {type ObjectLiteralExpression, type SourceFile, type Statement, isObjectLiteralExpression} from 'typescript';
+import {type Change, InsertChange, NoopChange, RemoveChange} from '@schematics/angular/utility/change';
+import {
+	type ObjectLiteralExpression,
+	type PropertyAssignment,
+	type SourceFile,
+	type Statement,
+	isArrayLiteralExpression,
+	isObjectLiteralExpression,
+	isPropertyAssignment,
+} from 'typescript';
 import type {ObGroupLogger} from '../../../logger';
 import {createFromTemplate} from '../../shared/template/template';
 import {
@@ -15,6 +23,8 @@ import {
 } from '../../shared/ast/ts';
 const obliquePackage = '@oblique/oblique';
 const masterLayoutModule = 'ObMasterLayoutModule';
+const appModule = 'AppModule';
+const appModuleTestImportPath = './app-module';
 const testingConfiguration = 'provideObliqueTestingConfiguration';
 const appModulePath = 'src/app/app-module.ts';
 const appComponentPath = 'src/app/app.ts';
@@ -134,6 +144,7 @@ function buildSpecTestBedChanges(sourceFile: SourceFile, logger: ObGroupLogger):
 		return undefined;
 	}
 	return [
+		insertImport(sourceFile, appSpecPath, appModule, appModuleTestImportPath),
 		insertImport(sourceFile, appSpecPath, `${masterLayoutModule}, ${testingConfiguration}`, obliquePackage),
 		...configChanges,
 	];
@@ -161,10 +172,14 @@ function buildConfigChanges(
 			new InsertChange(
 				sourceFile.fileName,
 				configObject.getStart(sourceFile) + 1,
-				`\n\t\timports: [${masterLayoutModule}],\n\t\tproviders: [${testingConfiguration}()]`
+				`\n\t\timports: [${appModule}, ${masterLayoutModule}],\n\t\tproviders: [${testingConfiguration}()]`
 			),
 		];
 	}
+	const appImportsChange = insertIntoObjectLiteralArray(sourceFile, configObject, {
+		propertyName: 'imports',
+		value: appModule,
+	});
 	const importsChange = insertIntoObjectLiteralArray(sourceFile, configObject, {
 		propertyName: 'imports',
 		value: masterLayoutModule,
@@ -173,11 +188,40 @@ function buildConfigChanges(
 		propertyName: 'providers',
 		value: `${testingConfiguration}()`,
 	});
+	const declarationChange = removeAppFromDeclarations(sourceFile, configObject);
 	if (isNoopChange(importsChange) || isNoopChange(providersChange)) {
 		logger.warn(`Could not add the master layout to ${appSpecPath}: the TestBed imports and providers must be arrays.`);
 		return undefined;
 	}
-	return [importsChange, providersChange];
+	return [appImportsChange, importsChange, providersChange, declarationChange];
+}
+
+/**
+ * Removes `App` from the `declarations` array of an object literal.
+ *
+ * Strict: throws when the `declarations` property is missing, is not an array, or does not
+ * contain exactly `App`, so a changed generator fails loudly instead of producing a broken spec.
+ *
+ * @param sourceFile - The source file containing the object literal.
+ * @param objectLiteral - The object literal to modify.
+ * @returns A {@link RemoveChange} that removes the `App` element.
+ * @throws {Error} when the `declarations` property does not match the expected shape.
+ */
+export function removeAppFromDeclarations(sourceFile: SourceFile, objectLiteral: ObjectLiteralExpression): Change {
+	const property = objectLiteral.properties.find(
+		(prop): prop is PropertyAssignment => isPropertyAssignment(prop) && prop.name.getText(sourceFile) === 'declarations'
+	);
+	if (!property) {
+		throw new Error('Expected a "declarations" property in the TestBed configuration.');
+	}
+	if (!isArrayLiteralExpression(property.initializer)) {
+		throw new Error('Expected "declarations" to be an array.');
+	}
+	const elements = property.initializer.elements;
+	if (elements.length !== 1 || elements[0].getText(sourceFile) !== 'App') {
+		throw new Error('Expected "declarations" to be exactly [App].');
+	}
+	return new RemoveChange(sourceFile.fileName, elements[0].getStart(sourceFile), elements[0].getText(sourceFile));
 }
 
 function isNoopChange(change: Change): boolean {
