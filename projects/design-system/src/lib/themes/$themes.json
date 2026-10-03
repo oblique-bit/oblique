@@ -22,6 +22,7 @@
       "02_primitive/motion": "source",
       "02_primitive/dimension": "source",
       "04_component/atom/badge": "enabled",
+      "04_component/molecule/popover": "enabled",
       "05_html/list": "enabled",
       "04_component/atom/icon/02_layout": "enabled",
       "04_component/atom/icon/01_color": "enabled",
