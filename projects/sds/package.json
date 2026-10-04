@@ -22,7 +22,6 @@
   "devDependencies": {
     "@schematics/angular": "^22.0.4",
     "@vitest/coverage-v8": "^4.1.11",
-    "jest-raw-loader": "^1.0.1",
     "vitest": "4.1.11"
   }
 }

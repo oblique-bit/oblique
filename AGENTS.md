@@ -27,7 +27,7 @@ Before reporting code edits complete, verify every AI-authored or AI-modified sn
 
 ## Layout
 
-npm-workspaces monorepo. Packages in `projects/`: `oblique` Angular library, `design-system` Vite, `toolchain` schematics, and `sandbox*` examples. Tooling in `tools/`: `cli-registry` local npm registry (workspace, private). Root config: `eslint.config.mjs`, `.prettierrc.yml`, and Angular workspace files. Change the owning package; put tests beside code as `*.spec.ts` for Angular/Jest packages. For Vitest-based packages, check existing test files in the package directory to determine the naming convention before adding new tests.
+npm-workspaces monorepo. Packages in `projects/`: `oblique` Angular library, `design-system` Vite, `toolchain` schematics, and `sandbox*` examples. Tooling in `tools/`: `cli-registry` local npm registry (workspace, private). Root config: `eslint.config.mjs`, `.prettierrc.yml`, and Angular workspace files. Change the owning package; put tests beside code as `*.spec.ts` for Angular packages. For Vitest-based packages, check existing test files in the package directory to determine the naming convention before adding new tests.
 
 Use Node.js lts/krypton (v24.*) and install from the repository root.
 
