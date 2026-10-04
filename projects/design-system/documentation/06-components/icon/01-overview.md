@@ -1,8 +1,10 @@
 # Icon Component Overview
 
+> Working version on the development line (git branch `tokens-dev`). The icon tokens are not part of Oblique 16. The Figma behavior described on this page (the `base-size` property, the `ui_scale` mode on a parent frame) is the intended design of the component.
+
 ## Component Introduction
 
-The icon component family provides standardized icon sizing and positioning across the Oblique design system. It is the foundational layer for icon management, ensuring consistent sizing inheritance through variable mode tokens.
+The icon component family provides standardized icon sizing and positioning across Oblique DS. It is the foundational layer for icon management, ensuring consistent sizing inheritance through variable mode tokens.
 
 Three specialized variants handle distinct use cases: interactive components that scale with the design context, structurally stable components that require fixed sizes, and inline text contexts where the icon must match adjacent body text.
 
@@ -13,7 +15,7 @@ Scales with the `ui_scale` variable mode set on an ancestor frame.
 
 Use for icons inside interactive components — buttons, list items, inputs, navigation items. The icon inherits size automatically when a product designer sets the `ui_scale` mode on a parent frame.
 
-**Token**: `ob.c.icon.component.size.*` (reacts to `ui_scale` mode)
+**Token**: `ob.c.icon.ui_scale.size.*` (reacts to `ui_scale` mode)
 
 ### icon-static
 Fixed size, does not react to any variable mode.
@@ -27,7 +29,7 @@ Matches the surrounding body text size. Scales with the `typography_context` var
 
 Use exclusively for icons placed inline within body text — for example a small chevron at the end of a paragraph link. Do not use for icons inside interactive components; use `icon-component` for those.
 
-**Token**: `ob.c.icon.inline_text.size.body` (reacts to `typography_context` mode)
+**Token**: `ob.c.icon.typography_context.size.body` (reacts to `typography_context` mode)
 
 ## Two-Phase Sizing
 
@@ -62,25 +64,15 @@ This separation means: system maintainers control tier proportion; product desig
 
 ## Accessibility
 
-Icons must always carry a text alternative:
+Decide for every icon whether it is decorative or meaningful:
 - Decorative icons: `aria-hidden="true"` (the surrounding label provides context)
 - Standalone icons with meaning: `aria-label` describing the action or state
 
-## Token Integration
+## Tokens
 
-This component uses design tokens for:
-- {TOKEN_USAGE_1}
-- {TOKEN_USAGE_2}
-- {TOKEN_USAGE_3}
-
-## Related Components
-
-- **{RELATED_COMPONENT_1}** - {RELATIONSHIP_DESCRIPTION_1}
-- **{RELATED_COMPONENT_2}** - {RELATIONSHIP_DESCRIPTION_2}
+The icon tokens are `ob.c.icon.*`. They live in `04_component/atom/icon/`: `01_color.json` holds the color and `02_layout.json` holds the sizes. The variant names above differ from the token path segments: `icon-component` uses `ui_scale`, `icon-static` uses `static`, and `inline-text` uses `typography_context`.
 
 ---
 
 **Next Steps:**
 - [Component Architecture](02-architecture.md) - Design decisions and structure
-- [Implementation Guide](03-implementation.md) - Developer implementation details
-- [Usage Guidelines](04-guidelines.md) - standard practices and patterns

@@ -1,8 +1,10 @@
 # Icon Component Architecture
 
+> Working version on the development line (git branch `tokens-dev`). The icon tokens are not part of Oblique 16.
+
 ## Component Overview
 
-The icon component family is the foundational sizing layer for all icons in the Oblique design system. It consists of three specialized variants covering the full range of icon placement contexts: inside interactive components, inside static structural components, and inline within body text.
+The icon component family is the foundational sizing layer for all icons in Oblique DS. It consists of three specialized variants covering the full range of icon placement contexts: inside interactive components, inside static structural components, and inline within body text.
 
 ## Component Structure
 
@@ -10,10 +12,10 @@ The icon component family is the foundational sizing layer for all icons in the 
 04_component/atom/icon/
 ├── 01_color.json     — color token (ob.c.icon.color.fg)
 └── 02_layout.json    — sizing tokens
-    ├── ob.c.icon.static.size.*         — fixed sizes, no mode
-    ├── ob.c.icon.component.size.*      — reacts to ui_scale mode
-    └── ob.c.icon.inline_text.size.*    — reacts to typography_context mode
-        └── ob.c.icon.inline_text.body.spacing.vertical.offset
+    ├── ob.c.icon.static.size.*                — fixed sizes, no mode
+    ├── ob.c.icon.ui_scale.size.*              — reacts to ui_scale mode
+    ├── ob.c.icon.typography_context.size.*    — reacts to typography_context mode
+    └── ob.c.icon.inline_text.body.spacing.vertical.offset
 ```
 
 ## Variant Specifications
@@ -22,12 +24,12 @@ The icon component family is the foundational sizing layer for all icons in the 
 
 | Token | Mode | Default px |
 |-------|------|-----------|
-| `ob.c.icon.component.size.xs` | `ui_scale` | 16 |
-| `ob.c.icon.component.size.sm` | `ui_scale` | 20 |
-| `ob.c.icon.component.size.md` | `ui_scale` | 24 |
-| `ob.c.icon.component.size.lg` | `ui_scale` | 32 |
+| `ob.c.icon.ui_scale.size.xs` | `ui_scale` | 16 |
+| `ob.c.icon.ui_scale.size.sm` | `ui_scale` | 20 |
+| `ob.c.icon.ui_scale.size.md` | `ui_scale` | 24 |
+| `ob.c.icon.ui_scale.size.lg` | `ui_scale` | 32 |
 
-Tokens reference `ob.s.dimension.dynamic.ui_scale.spacing.*` — they resolve to different values depending on which `ui_scale` mode is active on an ancestor frame.
+Tokens reference `ob.s.dimension.dynamic.ui_scale.spacing.*` — they resolve to different values depending on which `ui_scale` mode is active on an ancestor frame. The multipliers are 0.8 (sm), 1 (md, default) and 1.25 (lg), rounded to whole pixels: the `md` icon is 19 px in mode sm, 24 px in md and 30 px in lg.
 
 ### icon-static
 
@@ -44,7 +46,7 @@ Tokens reference `ob.s.dimension.static.ui_scale.spacing.*` — static dimension
 
 | Token | Mode | Value |
 |-------|------|-------|
-| `ob.c.icon.inline_text.size.body` | `typography_context` | matches body text |
+| `ob.c.icon.typography_context.size.body` | `typography_context` | 16 px in `interface`, 20 px in `prose` |
 | `ob.c.icon.inline_text.body.spacing.vertical.offset` | none | 2px / 0.125em |
 
 The vertical offset corrects optical baseline misalignment between icons and adjacent capital letters. Figma uses 2px (px token); CSS implementation should use `0.125em` so the offset scales proportionally with the text size.
@@ -54,15 +56,17 @@ The vertical offset corrects optical baseline misalignment between icons and adj
 Icon tokens sit in the `ob.c.*` component layer. They reference semantic dimension tokens from `ob.s.dimension.*`:
 
 ```
-ob.c.icon.component.size.md
-  → ob.s.dimension.dynamic.ui_scale.spacing.md.rem  (dynamic = mode-reactive)
-      → ob.p.dimension.spacing.xl ...or... ob.p.dimension.spacing.md
-        (resolved by active ui_scale mode: default=md, mini=xs, etc.)
+ob.c.icon.ui_scale.size.md
+  → ob.s.dimension.dynamic.ui_scale.spacing.md.px  (dynamic = mode-reactive)
+      → roundTo(ob.p.dimension.px.24 × ui_scale multiplier, 0)
+        (the multiplier comes from the active ui_scale mode: sm 0.8, md 1 (default), lg 1.25)
 
 ob.c.icon.static.size.md
-  → ob.s.dimension.static.ui_scale.spacing.md.rem  (static = no mode)
-      → ob.p.dimension.spacing.xl (always)
+  → ob.s.dimension.static.ui_scale.spacing.md.px  (static = no mode)
+      → ob.p.dimension.px.24 (always)
 ```
+
+The icon size tokens use the `.px` variants: icons are pixel-perfect, and Figma number variables have no unit, so a `.rem` value would show as pixels. The inline text size uses a `typography_context` token, which has no `.px` or `.rem` pair. See [Dimension Tokens](../../03-token-categories/00-dimension.md).
 
 ## Design Decisions
 
@@ -80,6 +84,4 @@ Inline text icons are sized relative to typography, not to ui_scale. They requir
 
 ---
 
-**Component Overview**: See [Icon Overview](01-overview.md)  
-**Implementation Details**: See [Icon Implementation Guide](03-implementation.md)  
-**Usage Guidelines**: See [Icon Usage Guidelines](04-guidelines.md)
+**Component Overview**: See [Icon Overview](01-overview.md)
