@@ -218,7 +218,7 @@ ob.s2.color.interaction.fg.contrast_low.inversity_normal → {ob.s.color.interac
 
 ### **Global Token Exception**
 ```
-ob.s.dimension.dynamic.ui_scale.element.md.px → roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.ui_scale.multiplier.dimension.md}, 2) * 1px
+ob.s.dimension.dynamic.ui_scale.element.md.px → roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.ui_scale.multiplier.dimension.md}, 0)
 ```
 A semantic token may reference a global token (`ob.g.*`) directly alongside a primitive, in the same formula — global tokens are the one exception to the reference hierarchy, referenceable from any layer.
 

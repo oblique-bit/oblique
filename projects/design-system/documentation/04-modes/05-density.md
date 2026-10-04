@@ -31,9 +31,9 @@ Located in: `03_semantic/dimension/density/`
           "density": {
             "md": {
               "px": {
-                "$value": "roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.density.multiplier.dimension.compact}, 2) * 1px"    // compact.json  → 6px
-                // "$value": "roundTo({ob.p.dimension.px.8} * {...standard}, 2) * 1px"                                                // standard.json → 8px
-                // "$value": "roundTo({ob.p.dimension.px.8} * {...spacious}, 2) * 1px"                                                // spacious.json → 12px
+                "$value": "roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.density.multiplier.dimension.compact}, 0)"    // compact.json  → 6px
+                // "$value": "roundTo({ob.p.dimension.px.8} * {...standard}, 0)"                                                // standard.json → 8px
+                // "$value": "roundTo({ob.p.dimension.px.8} * {...spacious}, 0)"                                                // spacious.json → 12px
               }
             }
           }

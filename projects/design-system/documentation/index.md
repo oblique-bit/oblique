@@ -103,7 +103,7 @@ Sorted along two axes. **Tiers** define where a token sits in the reference chai
 - [Glossary](05-reference/00-glossary.md) — key terms: token, variable, mode, mode collection
 - [Token Usage Guide](05-reference/01-token-usage-guide.md) — which token do I use
 - [System Requirements](05-reference/02-system-requirements.md) — tooling priorities
-- [Tokenization Process](05-reference/03-workflows-readme.md) — creating and assigning tokens
+- [Maintainer Workflows](05-reference/03-workflows-readme.md) — creating and assigning tokens
 - [Token Description Guidelines](05-reference/04-token-description-guidelines.md)
 - [Figma Variables — Limitations & Restrictions](05-reference/05-figma-variables-limitations.md)
 

@@ -86,7 +86,7 @@ The naming pattern used across the Oblique Design System:
 ob.{tier}.{category}.{...path}
 ```
 
-The `{tier}` segment identifies the token's layer; the rest of the path varies by token kind. See `51-naming.md` for the full conventions.
+The `{tier}` segment identifies the token's layer; the rest of the path varies by token kind. See [Naming](../01-introduction/02-naming.md) for the full conventions.
 
 **Examples:**
 - `ob.h.link.color.hover`
