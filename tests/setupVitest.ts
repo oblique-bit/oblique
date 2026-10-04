@@ -52,6 +52,7 @@ Object.defineProperty(window, 'getComputedStyle', {
 	value: () => ['-webkit-appearance'],
 });
 Object.defineProperty(window, 'open', {value: vi.fn(), writable: true});
+Object.defineProperty(window, 'confirm', {value: vi.fn()});
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 (window as any).HTMLElement.prototype.scrollIntoView = function () {};
