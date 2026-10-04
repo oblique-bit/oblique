@@ -119,7 +119,7 @@ node scripts-custom/figma-doc-builders/typography/build-typography.js
 
 ## Prerequisites
 
-1. Figma Desktop running, with the file you want to build into open and active — typically **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`), but the builder runs against whatever file is active.
+1. Figma Desktop running, with the file you want to build into open and active — typically **DesignSystem@Tokens V9.9** (file key `7A7MvoktM02XVA7smntGvD`), but the builder runs against whatever file is active.
 2. `figma-ds-cli` connected — `figma-ds-cli connect` (Yolo) or `--safe`.
 3. Text styles authored in Figma (typically via Tokens Studio push of the
    `s/typography/grouped/...`, `h/typography/...`, `c/.../typography/...`

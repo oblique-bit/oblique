@@ -7,7 +7,7 @@
  * every remote component/variable binding (see the detach step this script
  * does not cover — instances via node.detachInstance(), variable bindings via
  * the same technique as unbind-variables.js), then pasted into the current
- * library (e.g. "Oblique Design System R16 Prep"). After detach the node's
+ * library (e.g. "DesignSystem@Tokens V9.9"). After detach the node's
  * colors are plain literals — the old variable names ("Background/white",
  * "Text/High Emphasis") don't correspond to current Oblique naming, so there
  * is nothing to rename; the only way back to live variables is to match each
@@ -76,7 +76,7 @@
 
     // Fallback safety when figma.fileKey is unavailable in this eval context
     // (observed via figma-ds-cli — see rename-text-styles.js). null = any name.
-    fileNameGuard: 'Oblique Design System R16 Prep',
+    fileNameGuard: 'DesignSystem@Tokens V9.9',
 
     // The frame/group holding this one cover's pasted content, e.g. the id
     // from the Figma URL's node-id after pasting into the library file.

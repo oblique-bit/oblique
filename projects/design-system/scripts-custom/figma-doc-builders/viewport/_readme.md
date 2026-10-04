@@ -70,7 +70,7 @@ node scripts-custom/figma-doc-builders/viewport/build-viewport.js
 
 ## Prerequisites
 
-1. Figma Desktop running, with **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`) open and active.
+1. Figma Desktop running, with **DesignSystem@Tokens V9.9** (file key `7A7MvoktM02XVA7smntGvD`) open and active.
 2. `figma-ds-cli` daemon healthy — `figma-ds-cli daemon diagnose`.
 3. Target page **📱 Responsiveness** exists. (Builder creates it if missing.)
 

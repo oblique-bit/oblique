@@ -58,7 +58,7 @@ node scripts-custom/figma-doc-builders/dimension/build-dimension.js
 
 ## Prerequisites
 
-1. Figma Desktop running, with the file you want to build into open and active — typically **DesignSystem@Tokens V9.7** (file key `QpPWJjCglSlj9oNS5zGHkd`), but the builder runs against whatever file is active.
+1. Figma Desktop running, with the file you want to build into open and active — typically **DesignSystem@Tokens V9.9** (file key `7A7MvoktM02XVA7smntGvD`), but the builder runs against whatever file is active.
 2. `figma-ds-cli` connected — `figma-ds-cli connect` (Yolo) or `figma-ds-cli connect --safe`.
 3. The target page **📐 Dimension: Spacing & Sizing** must exist.
 
