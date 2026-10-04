@@ -1,9 +1,10 @@
 # Figma workflow — from Token Studio export to a published library
 
-How a token change on `tokens-release-16` ends up as clean, publishable Figma
+How a token change on `tokens-dev` ends up as clean, publishable Figma
 variables and styles. Covers the steps between a Token Studio export and
-hitting Publish — the token JSON edit itself is a separate workflow, see the
-`token-change-workflow` skill.
+hitting Publish — the token JSON edit itself is a separate workflow: edit the
+JSON, run the resolver (see [`style-dictionary/WORKFLOW.md`](style-dictionary/WORKFLOW.md)),
+commit and push.
 
 ## The pipeline
 
@@ -23,15 +24,16 @@ Order matters, in both directions:
 
 ## Steps
 
-### 1. Edit tokens, push to `tokens-release-16`
+### 1. Edit tokens, push to `tokens-dev`
 
-Normal token-change-workflow: edit JSON → run the resolver → commit → push.
+Normal token change: edit JSON → run the resolver → commit → push.
 Not covered here.
 
 ### 2. Pull in Token Studio
 
-GitHub sync → Pull. Brings the latest JSON from `tokens-release-16` into the
-Token Studio plugin.
+GitHub sync → Pull. Brings the latest JSON from `tokens-dev` into the
+Token Studio plugin. Pull and export only in the working Figma file
+(`DesignSystem@Tokens V9.9`), never in a file that was delivered to developers.
 
 ### 3. Push from Token Studio to Figma
 
@@ -96,7 +98,7 @@ tables (interface/prose). The reliable pattern instead:
    scratch page.
 2. Validate it (`0 errors, 0 warnings` in the builder's own output).
 3. Rename the old canonical page to append `_deprecated` (never delete a
-   Figma page outright — see the `feedback-figma-rename-not-delete` memory).
+   Figma page outright, rename it instead).
 4. Rename the new scratch page to the canonical name.
 
 The builder's own `deprecateOldScratchPages` only renames *other stray
@@ -179,8 +181,7 @@ available to files that consume this library.
   now always resolves the bare canonical name and throws instead of
   creating one if it's missing. If you have old `<canonical> <timestamp>`
   pages with zero content, they're likely a leftover from this — safe to
-  rename `_deprecated` (never delete, see the memory note this repo
-  follows on that).
+  rename `_deprecated` (never delete).
 - **Every token that needs to reach CSS keeps a tier letter** ("ob.s.\*" /
   "ob.h.\*") in its path. The dev build's CSS format
   (`style-dictionary-formats-token-store.mjs:24`) only emits root variables
