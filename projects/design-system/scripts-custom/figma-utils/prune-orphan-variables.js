@@ -25,6 +25,10 @@
  *      variable is live (confirmed 2026-09-22 for "ob/s/motion/duration/*"
  *      and "ob/s/motion/easing/*" during the first orphan audit of this
  *      file).
+ *      Only tokens of sets that at least one theme enables count (status
+ *      "enabled"). A set that is inactive or only "source" in every theme
+ *      creates no variable, so a variable named like one of its tokens is a
+ *      ghost, not a match.
  *
  * A variable failing BOTH checks is an orphan: either drift from a token
  * path rename (the old variable survives under its old name, see the
@@ -111,9 +115,24 @@ function walkJsonFiles(dir, out = []) {
   return out;
 }
 
-function collectReferencedNames(dir) {
+// Token Studio set names that at least one theme enables. Only those create variables.
+function collectEnabledSetNames(themesJsonPath) {
+  const themes = JSON.parse(fs.readFileSync(themesJsonPath, 'utf8'));
+  const sets = new Set();
+  for (const theme of themes) {
+    for (const [setName, status] of Object.entries(theme.selectedTokenSets || {})) {
+      if (status === 'enabled') sets.add(setName);
+    }
+  }
+  return sets;
+}
+
+function collectReferencedNames(dir, enabledSets) {
   const names = new Set();
   for (const file of walkJsonFiles(dir)) {
+    // set name = file path under the themes folder without the last ".json"
+    const setName = path.relative(dir, file).split(path.sep).join('/').replace(/\.json$/, '');
+    if (!enabledSets.has(setName)) continue;
     let data;
     try { data = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { continue; }
     (function walk(node, pathParts) {
@@ -135,7 +154,7 @@ function collectReferencedKeys(themesJsonPath) {
   return keys;
 }
 
-const referencedNames = Array.from(collectReferencedNames(THEMES_DIR));
+const referencedNames = Array.from(collectReferencedNames(THEMES_DIR, collectEnabledSetNames(THEMES_JSON)));
 const referencedKeys = Array.from(collectReferencedKeys(THEMES_JSON));
 
 // ─── figma-ds-cli wrapper (same pattern as build-color-variables.js) ────
