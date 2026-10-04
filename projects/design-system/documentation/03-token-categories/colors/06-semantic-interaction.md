@@ -358,9 +358,9 @@ All interactive elements must provide clear state feedback:
 
 ## Focus Ring Implementation
 
-### CSS vs Figma Brother Tokens
+### Focus Ring Tokens
 
-Focus rings are implemented using dedicated sibling tokens that provide the same visual result but use appropriate technology for each platform:
+Focus rings use a border token for CSS and separate width, offset and color variables in Figma:
 
 **CSS Implementation:**
 ```scss
@@ -372,8 +372,7 @@ Focus rings are implemented using dedicated sibling tokens that provide the same
 
 **Token Reference:**
 - `ob.s.border.focus_ring` - CSS implementation using border token type
-- `ob.s.shadow.focus` - Figma implementation using boxShadow token type (planned)  
-- `ob.s1.color.interaction.focus_ring` - Shared color for both implementations
+- `ob.s.color.interaction.focus_ring.inversity_normal` (and `.inversity_flipped`) - Focus ring color
 
 ### Implementation Guidelines
 
@@ -384,10 +383,9 @@ Focus rings are implemented using dedicated sibling tokens that provide the same
 - Never use `outline: none` without alternative focus indication
 
 **For Designers:**
-- Use `ob.s.shadow.focus` as drop shadow effect in Figma (planned)
+- Figma has no composite border variable: the focus ring width, offset and color are separate variables, see [Border Tokens](../03-border.md)
 - Apply to focus state variants of interactive components
 - Maintains visual consistency with CSS implementation
-- Both tokens reference the same underlying color values
 
 ### Accessibility Compliance
 
