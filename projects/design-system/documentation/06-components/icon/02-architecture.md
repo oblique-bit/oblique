@@ -66,7 +66,7 @@ ob.c.icon.static.size.md
       → ob.p.dimension.px.24 (always)
 ```
 
-The icon size tokens use the `.px` variants: icons are pixel-perfect, and Figma number variables have no unit, so a `.rem` value would show as pixels. The inline text size uses a `typography_context` token, which has no `.px` or `.rem` pair. See [Dimension Tokens](../../03-token-categories/00-dimension.md).
+The icon size tokens use the `.px` variants: icons are pixel-perfect, and Figma number variables have no unit, so a `.rem` sibling would arrive in Figma as the same number as its `.px` sibling. The inline text size uses a `typography_context` token, which has no `.px` or `.rem` pair. See [Dimension Tokens](../../03-token-categories/00-dimension.md).
 
 ## Design Decisions
 

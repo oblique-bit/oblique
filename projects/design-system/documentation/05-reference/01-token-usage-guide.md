@@ -221,7 +221,7 @@ The system provides **both px and rem** at the semantic layer. Every semantic di
 
 **Use `.px` only for micro-level adjustments** where sub-rem precision matters and scaling would cause visual artifacts: border widths, focus indicator thickness, and optical baseline offsets.
 
-**Figma exception:** a component token that is used as a Figma variable references the `.px` sibling. Figma number variables have no unit, so a `.rem` value would show as pixels on the canvas. The working component tokens on the development line follow this rule.
+**Figma exception:** a component token that is used as a Figma variable references the `.px` sibling. Figma number variables have no unit. Token Studio converts a `rem` value to pixels with its base font size setting (1rem = 16px by default, a per-user plugin setting), so a `.rem` sibling arrives in Figma as the same number as its `.px` sibling and cannot be told apart from it. The working component tokens on the development line follow this rule.
 
 #### Decision table for component maintainers
 

@@ -68,7 +68,7 @@ These are non-binding examples. Each project assigns its own meaning.
 | **teal** | Confirmed, Active, Open, Approved, Started, Published, Resolved | Spectrum (informative: active, published; positive: approved), Atlassian (success: resolved) |
 | **indigo** | Progress, In review, Audit, To do, Processing, Modified | Atlassian (inprogress: open, modified; default: to do), Spectrum (notice: processing) |
 | **pink** | Scheduled, Planned, Upcoming, Recurring | Spectrum (notice: scheduled) |
-| **purple** | On hold, Blocked, Queued, Deferred | Atlassian (moved: blocked) |
+| **cobalt** | On hold, Blocked, Queued, Deferred | Atlassian (moved: blocked) |
 
 
 ---
