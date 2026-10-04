@@ -107,7 +107,7 @@ Density tokens use a flat T-shirt scale (`xs` through `11xl`) rather than hierar
 
 ### **Example Token Paths**
 - `ob.s.dimension.dynamic.density.md.px` → `6px` (compact) / `8px` (standard) / `12px` (spacious)
-- `ob.s.dimension.static.density.md.px` → `8px` always, regardless of the active density mode — use this family when spacing must stay fixed (e.g. a hairline gap that shouldn't compress or expand)
+- `ob.s.dimension.static.density.md.px` → `8px` always, regardless of the active density mode — use this family when spacing must stay fixed (e.g. a gap that shouldn't compress or expand). In CSS density spacing is rem (see px vs rem in the [Token Usage Guide](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component)); `static` means the value does not change with the density mode, not that it is px.
 
 ---
 

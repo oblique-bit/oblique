@@ -53,7 +53,7 @@ This file is the source of truth for all **unitless** or abstract numeric values
 
 -   **Dynamic Scaling**: Dynamic semantic tokens (e.g., `ob.s.dimension.dynamic.ui_scale.spacing.sm`) achieve different sizes for modes (e.g., `sm`, `md`, `lg`) by applying a multiplier (`ob.g.mode_collection.ui_scale.multiplier.dimension.*`) to a base primitive value.
 -   **Static Tokens**: Static semantic tokens (e.g., `ob.s.border_width.md`) reference primitives directly without a multiplier. They remain constant across all modes.
--   **Unit Choice**: The choice between the `px` primitive and a computed `rem` value is made at the **semantic token level**. This allows the system to define, for example, that all paddings should be fluid (`rem`) while all border widths should be absolute (`px`).
+-   **Unit Choice**: The primitive layer has px only. The semantic layer holds each `ui_scale` and `density` step as a `.px` token and, for now, a `.rem` sibling computed from it. Which unit a value gets in CSS follows the rule in the [Token Usage Guide](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component): tokens are px, and the CSS build, which the developers maintain, is meant to convert to rem where rem is better for CSS (not implemented yet).
 
 ## Primitive Token Requirements
 
@@ -69,9 +69,9 @@ Primitive tokens are the foundational, context-agnostic values of the design sys
 ## Example Workflow
 
 1.  **Need**: A component needs a `16px` padding.
-2.  **Semantic Definition**: A semantic token `ob.s.dimension.static.ui_scale.spacing.xs.rem` is created.
-3.  **Primitive Reference**: This semantic token references the `px` primitive for `16px` and computes the `rem` value from it: `{ob.s.dimension.static.ui_scale.spacing.xs.px} / 16 * 1rem`, where the `.px` value itself references `{ob.p.dimension.px.16}`.
-4.  **Component Usage**: The component uses the semantic token: `padding: var(--ob-s-dimension-static-ui_scale-spacing-xs-rem);`.
+2.  **Semantic Definition**: A semantic token `ob.s.dimension.static.ui_scale.spacing.xs.px` is created. It references the `px` primitive for `16px`: `{ob.p.dimension.px.16}`. For now a `.rem` sibling, `ob.s.dimension.static.ui_scale.spacing.xs.rem`, computes the rem value from it: `{ob.s.dimension.static.ui_scale.spacing.xs.px} / 16 * 1rem`.
+3.  **Component Reference**: The component token references the `.px` token. Padding is rem in CSS (see the [Token Usage Guide](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component)); until the build converts px to rem, the CSS takes the value from the `.rem` sibling.
+4.  **Component Usage**: The component uses the CSS custom property: `padding: var(--ob-s-dimension-static-ui_scale-spacing-xs-rem);`.
 
 This architecture ensures that the system is well-structured, easy to understand, and flexible enough to handle the diverse requirements of a modern, multi-platform design system.
 

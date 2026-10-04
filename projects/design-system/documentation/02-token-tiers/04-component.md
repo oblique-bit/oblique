@@ -107,6 +107,7 @@ Component tokens consume the compiled semantic layer (`ob.s.*`) only — never S
 - [ ] Consistent naming, following the conventions above
 - [ ] Works with emphasis and inversity theming (see below)
 - [ ] `$description` documents the token's purpose and default status
+- [ ] Dimension tokens reference the `.px` sibling (see px vs rem in the [Token Usage Guide](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component))
 
 ## Interaction Colors: `fg` / `bg` / `border`, `emphasis_none`, `visited`, `focus_ring`
 

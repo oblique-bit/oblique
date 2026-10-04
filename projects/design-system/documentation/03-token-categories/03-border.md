@@ -55,7 +55,7 @@ There is deliberately no parallel `ob.p.border.*` scale to keep in sync. The onl
 
 `rounded` is the full-rounding step (pill shapes and circles). Note the primitive it points at is keyed `9999` but carries the `$value` `999`, so the emitted custom property is `--ob-s-border_radius-rounded: 999px`. The primitive's own `$description` reads "Maximum value for full rounding".
 
-None of the radius tokens carry an individual `$description`; the file relies on the family description quoted at the top of this page.
+None of the radius tokens carry an individual `$description`; the file relies on the family description quoted at the top of this page. The unit of border radius in CSS is not decided yet; the CSS column shows what is emitted today.
 
 ---
 
@@ -76,7 +76,7 @@ The scale runs from a hairline to a heavy block edge. `md` (3px) is the width th
 
 The JSON orders `none` last, after `3xl`; the table above is sorted by magnitude for reading.
 
-Border widths are a documented `.px` case — they must stay crisp and are not scaled to `.rem`. See the [px vs rem rule](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component) in the token usage guide.
+Border widths, outline offsets and the focus ring are px in CSS: they must stay crisp. See the [px vs rem rule](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component) in the token usage guide. Border tokens have no `.rem` sibling.
 
 ---
 

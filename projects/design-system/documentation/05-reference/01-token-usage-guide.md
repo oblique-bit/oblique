@@ -205,55 +205,63 @@ Radius, width, outline offset and the focus-ring composites are all documented i
 
 ### px vs rem — Which Unit When Building a Component?
 
-The system provides **both px and rem** at the semantic layer. Every semantic dimension token has a `.px` and a `.rem` variant side by side, the `.rem` variant computed from the `.px` value (`{...px} / 16 * 1rem`). The unit choice is made when you wire a component token to a semantic token — you pick one.
+Dimension tokens are authored in **px**, because Figma works in px. Where rem is better for CSS, the unit in CSS is **rem** (1rem = 16px). The rule below says where. Direction of the design system team: the CSS build, which the developers maintain, converts these px values to rem. This is not implemented yet. Until it is, rem in CSS comes from the `.rem` sibling that sits next to every `ui_scale` and `density` `.px` token (`{...px} / 16 * 1rem`), and a token that references the `.px` sibling is px. How the build tells the cases apart (by token path or by a list) will be agreed with the developers. Until then reference the `.px` sibling and say the use in the token `$description`. What happens to the `.rem` siblings and their CSS names after the conversion is not decided; do not depend on the `-rem` names long term.
 
-#### Where the choice happens
+#### Where the unit comes from
 
 | Layer | What's available |
 |---|---|
 | **Primitive** (`ob.p.dimension.*`) | Only `.px.*` — there is no primitive `.rem` scale |
-| **Semantic** (`ob.s.dimension.*`) | Every token exposes both: `…element.md.px` and `…element.md.rem` |
-| **Component** (`ob.c.*`, `ob.h.*`) | **You pick one.** The component token references either the `.px` or the `.rem` semantic variant. |
+| **Semantic** (`ob.s.dimension.*`) | Every `ui_scale` and `density` token exposes both: `…element.md.px` and `…element.md.rem`. The `typography_context` tokens have one px value. |
+| **Component** (`ob.c.*`, `ob.h.*`) | Reference the `.px` sibling. The unit in CSS follows the rule below. |
 
 #### The rule
 
-**Default to `.rem`** for all dimension properties that should scale with the user's browser font-size setting. This covers padding, margins, gaps, component heights — essentially everything that contributes to the spatial layout of a component.
+**rem in CSS** for the dimension groups that should scale with the user's browser font size: `ui_scale.spacing`, `ui_scale.element`, `ui_scale.container`, `ui_scale.layout`, `ui_scale.macro`, `density`, and `typography_context`. This covers padding, margins, gaps, component heights and widths — essentially everything that contributes to the spatial layout of a component.
 
-**Use `.px` only for micro-level adjustments** where sub-rem precision matters and scaling would cause visual artifacts: border widths, focus indicator thickness, and optical baseline offsets.
+**px in CSS** where sub-rem precision matters and scaling would cause visual artifacts: `ui_scale.micro` and `ui_scale.none`, border widths, outline offsets, the focus ring and icon sizes. The rule is decided per use, not per step: an icon size aliases a spacing step and still stays px.
 
-**Figma exception:** a component token that is used as a Figma variable references the `.px` sibling. Figma number variables have no unit. Token Studio converts a `rem` value to pixels with its base font size setting (1rem = 16px by default, a per-user plugin setting), so a `.rem` sibling arrives in Figma as the same number as its `.px` sibling and cannot be told apart from it. The working component tokens on the development line follow this rule.
+**em in CSS:** the inline icon baseline offset (`ob.c.icon.inline_text.body.spacing.vertical.offset`). The token is px; its description tells developers to implement it as `0.125em`.
+
+**Not decided yet:** border radius, the viewport widths (breakpoints), the inline text icon size (`ob.c.icon.typography_context.size.body`, a `typography_context` token used for an icon), and the component tokens that use a `ui_scale.micro` step for padding or gap (infobox, popover and link spacing).
+
+**Typography:** the static typography scale (font sizes, line heights, paragraph spacing) stays in rem: Token Studio converts rem font sizes to px for Figma correctly.
+
+**Why the tokens are px:** Figma number variables have no unit. Token Studio converts a `rem` value to pixels with its base font size setting (1rem = 16px, a per-user plugin setting, see [Typography Tokens](../03-token-categories/01-typography.md)), so a `.rem` sibling would arrive in Figma as the same number as its `.px` sibling and could not be told apart from it (the `.rem` siblings are source-only in Token Studio today, so no `.rem` variable exists in Figma). A component token that is used as a Figma variable therefore references the `.px` sibling. The working component tokens on the development line follow this rule.
 
 #### Decision table for component maintainers
 
-| Property | Unit | Why |
+| Property | Unit in CSS | Why |
 |---|---|---|
-| Padding / inset | `.rem` | Scales with user font-size preference (accessibility) |
-| Gap / spacing between child elements | `.rem` | Scales with user font-size preference |
-| Component height / width | `.rem` | Component grows proportionally with content |
-| Icon size | `.px` | Pixel-perfect; the size scales through the `ui_scale` mode (see [Dimension Tokens](../03-token-categories/00-dimension.md)) |
-| Border width | `.px` | 1px and 2px borders must stay crisp; scaling a 1px border to 1.5px causes rendering artifacts |
-| Focus indicator thickness | `.px` | Fixed visual weight required for consistent accessibility indicator (e.g., 3px) |
-| Optical baseline offset (inline icon next to text) | `.px` | Sub-pixel adjustment; the description notes devs should convert to `em` in CSS for runtime |
+| Padding / inset | rem | Scales with user font-size preference (accessibility) |
+| Gap / spacing between child elements | rem | Scales with user font-size preference |
+| Component height / width | rem | Component grows proportionally with content |
+| Icon size | px | Pixel-perfect (the `ui_scale` icon sizes scale through the mode, see [Dimension Tokens](../03-token-categories/00-dimension.md)) |
+| Border width | px | 1px and 2px borders must stay crisp; scaling a 1px border to 1.5px causes rendering artifacts |
+| Focus indicator thickness | px | Fixed visual weight required for consistent accessibility indicator (e.g., 3px) |
+| Optical baseline offset (inline icon next to text) | em | Sub-pixel adjustment; the token is px and its description tells developers to implement it as `em` in CSS so it scales with the text |
 
 #### Real example
 
 ```
-Element size (rem):
-  ob.s.dimension.static.ui_scale.element.md.rem
+Element size (rem in CSS):
+  ob.s.dimension.static.ui_scale.element.md.px
+    → {ob.p.dimension.px.8}
+  ob.s.dimension.static.ui_scale.element.md.rem   (carries the rem value for now)
     → {ob.s.dimension.static.ui_scale.element.md.px} / 16 * 1rem
 
-Micro-level offset (px):
+Micro-level value (px in CSS):
   ob.s.dimension.dynamic.ui_scale.micro.sm.px
     → {ob.p.dimension.px.2}
 ```
 
-The element size uses `.rem` so that it scales with the user's font-size setting. The vertical offset uses `.px` because it's a 2px optical correction that would blur at non-integer rem values.
+The element size is rem in CSS so that it scales with the user's font-size setting. The micro value is px because a 2px optical correction would blur at non-integer rem values.
 
 #### Why this matters for accessibility
 
 When a user increases their browser's default font size (e.g., from 16px to 20px), all `rem`-based dimensions scale proportionally. A button with `rem` padding grows to accommodate larger text. A button with hardcoded `px` padding stays the same size, potentially clipping the larger text.
 
-WCAG 2.2 SC 1.4.4 (Resize Text) requires that text can be resized up to 200% without loss of content or functionality. Using `rem` for spatial properties ensures your components pass this criterion automatically.
+WCAG 2.2 SC 1.4.4 (Resize Text) requires that text can be resized up to 200% without loss of content or functionality. Using rem in CSS for spatial properties helps your components meet this criterion.
 
 ### Dimension Decision Flowchart (Summary)
 
@@ -283,8 +291,8 @@ Need a spacing/sizing value?
 | Hardcoding `8px` or `16px` | Doesn't adapt to density or scale modes | Use spacing tokens |
 | Using a density token for component padding | Density controls outer spacing, not inset | Use UI Scale tokens for inset |
 | Using UI Scale tokens for layout gaps | UI Scale controls component internals | Use Density tokens for layout gaps |
-| Using `.px` for component padding or sizing | Doesn't scale with user's browser font-size setting — fails WCAG 1.4.4 | Use the `.rem` variant of the same semantic token |
-| Using `.rem` for border width or focus ring | Sub-rem values (1px, 2px, 3px) render inconsistently when scaled | Use the `.px` variant — these are the documented micro-level exceptions |
+| Hardcoding px in CSS for component padding or sizing | Doesn't scale with the user's browser font-size setting — can fail WCAG 1.4.4 | Use the token; the groups marked rem above are rem in CSS |
+| Using rem in CSS for border width or focus ring | Sub-rem values (1px, 2px, 3px) render inconsistently when scaled | Keep px — these are the documented micro-level exceptions |
 
 ---
 
@@ -336,9 +344,9 @@ The token architecture is designed to help components meet [Web Content Accessib
 | SC | Level | Criterion | How tokens help | Key tokens |
 |---|---|---|---|---|
 | **1.4.3** | AA | Contrast (Minimum) | The contrast level scale (`contrast_lowest` → `contrast_highest`) on semantic color tokens is designed to meet the 4.5:1 ratio for normal text and 3:1 for large text. Choosing `contrast_high` or `contrast_highest` for text-on-background pairings helps satisfy this criterion. | `ob.s.color.{family}.fg.contrast_high.*`, `ob.s.color.{family}.bg.contrast_highest.*` |
-| **1.4.4** | AA | Resize Text | Using `.rem` variants for all spatial properties (padding, gaps, component sizes) ensures components scale proportionally when users increase browser font size up to 200%. See the [px vs rem section](#px-vs-rem--which-unit-when-building-a-component) above. | `ob.s.dimension.*.rem` variants |
+| **1.4.4** | AA | Resize Text | Using rem in CSS for the spatial groups (padding, gaps, component sizes) helps components scale proportionally when users increase browser font size up to 200%. See the [px vs rem section](#px-vs-rem--which-unit-when-building-a-component) above. | `ob.s.dimension.*.ui_scale.{spacing,element,container,layout,macro}.*`, `ob.s.dimension.*.density.*`, `ob.s.dimension.*.typography_context.*` |
 | **1.4.6** | AAA | Contrast (Enhanced) | The `contrast_highest` level targets the stricter 7:1 ratio for text. Using this level for body text and primary headings supports Enhanced contrast compliance. | `ob.s.color.neutral.fg.contrast_highest.*` |
-| **1.4.10** | AA | Reflow | `rem`-based dimension tokens help components reflow naturally at 320 CSS pixel width (equivalent to 400% zoom at 1280px). When spatial values scale with the user's font-size, layout adapts without requiring horizontal scrolling. | All `.rem` dimension tokens |
+| **1.4.10** | AA | Reflow | Using rem in CSS for the spatial groups helps components reflow naturally at 320 CSS pixel width (equivalent to 400% zoom at 1280px). When spatial values scale with the user's font-size, layout adapts without requiring horizontal scrolling. | The same groups |
 | **1.4.11** | AA | Non-text Contrast | Border tokens and foreground tokens provide the 3:1 contrast needed for UI component boundaries (input borders, button outlines) and graphical objects (icons). The border contrast scale (`subtle`, `medium`, `strong`) lets maintainers pick the right visual weight. | `ob.s.color.neutral.border.{contrast}.*`, `ob.s.color.{family}.fg.*` |
 | **1.4.12** | AA | Text Spacing | Typography tokens bundle line-height with font-size so components don't hardcode a ratio that could fall under the 1.5× minimum. Typography tokens built on these values allow user-overridden spacing without content clipping or overlap. | `ob.s.typography.scale.dynamic.line_height.*` |
 | **2.4.7** | AA | Focus Visible | Dedicated focus ring tokens bundle color, width (3px), and style into a ready-to-use CSS outline value. Using these tokens ensures every interactive component has a visible keyboard focus indicator. | `ob.s.border.focus_ring.inversity_normal`, `ob.s.border.focus_ring.inversity_flipped` |

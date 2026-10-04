@@ -94,7 +94,7 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 
 ### **Dimension/Sizing Tokens**
 - **Structure**: `ob.{layer}.dimension.{category}.{size}`  
-- **Examples**: `ob.s.dimension.dynamic.ui_scale.element.md.rem`, `ob.c.{component}.dimension.height`
+- **Examples**: `ob.s.dimension.dynamic.ui_scale.element.md.px`, `ob.c.{component}.dimension.height`
 - **Modes**: Support density and ui_scale scaling
 
 ---

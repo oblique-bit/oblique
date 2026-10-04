@@ -27,7 +27,7 @@ There is no parallel `rem` primitive scale. The `rem` variant is computed at the
 - **`px`** — absolute, does not scale with the user's browser font-size setting. Use for elements that must render pixel-perfect: borders, fine lines, icons.
 - **`rem`** — fluid, relative to the root `<html>` font size. Required for accessibility — scales with user preferences.
 
-**The choice between px and rem happens at the semantic layer**, not in the primitive layer itself.
+The primitive layer has px only. The semantic layer holds each `ui_scale` and `density` step as a `.px` token and, for now, a `.rem` sibling computed from it. Which unit a value gets in CSS follows the rule in the [Token Usage Guide](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component): tokens are px, and the CSS build, which the developers maintain, is meant to convert to rem where rem is better for CSS (not implemented yet).
 
 > Primitives are atomic and context-agnostic. They must not be consumed directly by components.
 
@@ -142,21 +142,21 @@ See [`../04-modes/06-viewport.md`](../04-modes/06-viewport.md) for mode mechanic
 
 ---
 
-## Picking px vs rem at the semantic layer
+## px and rem at the semantic layer
 
-The choice is encoded in the token reference itself:
+Each `ui_scale` and `density` step exists as two tokens:
 
 - `ob.s.dimension.static.density.md.px` → `{ob.p.dimension.px.8}` (always 8 px)
 - `ob.s.dimension.static.density.md.rem` → `{ob.s.dimension.static.density.md.px} / 16 * 1rem` (computed from the `.px` sibling, always 0.5 rem ≡ 8 px at root font-size 16)
 
-Pick the variant that matches the surface:
+The unit in CSS follows the use (details in the [Token Usage Guide](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component)):
 
-| Use | Pick |
+| Use | Unit in CSS |
 |---|---|
-| Body text, content padding, scalable layouts, anything that should respect user font-size preferences | **`.rem`** |
-| Borders, dividers, icons, anything pixel-perfect | **`.px`** |
+| Body text, content padding, scalable layouts, anything that should respect user font-size preferences | **rem** |
+| Borders, dividers, icons, anything pixel-perfect | **px** |
 
-`typography_context` is the exception — it ships only one variant (single `$value` per size, no `.px`/`.rem` suffix).
+`typography_context` has no `.px`/`.rem` pair: each token is one px value (it aliases `ob.p.dimension.px.*`). In CSS it is a rem group once the build converts; until then it is px.
 
 ---
 
