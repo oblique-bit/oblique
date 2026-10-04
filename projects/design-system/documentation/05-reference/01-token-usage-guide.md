@@ -55,7 +55,7 @@ Once you have the basics, use the decision steps below to find the right token f
 
 ### Step 2: Does a Component Token Already Exist?
 
-Before reaching for a semantic token, check if an `ob.c.*` (component-level) token already covers your use case. Component tokens are the highest abstraction and would encode the correct semantic + emphasis + inversity decisions. No custom Oblique components (`ob.c.*`) ship token definitions in this release yet, so this step currently always falls through to Step 3 — it applies once a component tier ships.
+Before reaching for a semantic token, check if an `ob.c.*` (component-level) token already covers your use case. Component tokens are the highest abstraction and would encode the correct semantic + emphasis + inversity decisions. No custom Oblique components (`ob.c.*`) ship token definitions in this release yet, so this step currently always falls through to Step 3 — it applies once a component tier ships. The development line (git branch `tokens-dev`) already has working versions of some component tokens, for example the icon tokens; they can change.
 
 - If a component token exists → **use it**.
 - If you're building a new component, or no component token covers your case yet → continue to Step 3.
@@ -190,7 +190,7 @@ Spacing tokens control the gaps and distances between and within elements.
 | What you're sizing | Where to look |
 |---|---|
 | Component overall dimensions (button height, input height) | `ob.c.{component}.dimension.*` or `ob.h.{element}.dimension.*` tokens (once a component ships one; these reference UI Scale semantic tokens internally) |
-| Icon size | `ob.c.{component}.dimension.*` component tokens (once a component ships one) |
+| Icon size | The icon tokens `ob.c.icon.*.size.*` (working version on the development line, see [Icon](../06-components/icon/01-overview.md)) |
 | Layout containers (page width, column widths) | Global tokens (`ob.g.*`) |
 
 ### Border Radius

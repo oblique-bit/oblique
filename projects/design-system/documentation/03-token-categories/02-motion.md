@@ -157,7 +157,7 @@ The token source does not wire `.ob-motion-disabled` to any media query. Per the
 
 ## Consumption
 
-`ob.h.link.motion.duration` → `{ob.s.motion.duration.micro}` and `ob.h.link.motion.easing` → `{ob.s.motion.easing.standard}` in [`05_html/link/link.json`](../../src/lib/themes/05_html/link/link.json) are the only consumers of motion tokens in the token source today.
+`ob.h.link.motion.duration` → `{ob.s.motion.duration.micro}` and `ob.h.link.motion.easing` → `{ob.s.motion.easing.standard}` in [`05_html/link/link.json`](../../src/lib/themes/05_html/link/link.json) are the only consumers of motion tokens in Oblique 16. On the development line the spinner (`ob.c.spinner.animation.speed` and `ob.c.spinner.animation.pause` → `{ob.s.motion.duration.instant}`) and the tooltip (`ob.c.tooltip.animation.speed` → `{ob.s.motion.duration.smooth}`) also consume them.
 
 ---
 

@@ -167,7 +167,7 @@ The table below lists all types currently used in Oblique token files (via `$typ
 Two distinct uses of `size`/`sizing` exist in Oblique token paths today:
 
 - **`$type: sizing`** — a Tokens Studio unofficial type, equivalent to `dimension`.
-- **`.sizing.` / `.size.` path segment** — both have been used as the `{type}` segment to mean "the size of an element as a whole", inconsistently, on components that no longer ship in this release.
+- **`.sizing.` / `.size.` path segment** — both have been used as the `{type}` segment to mean "the size of an element as a whole", inconsistently, on components that no longer ship in this release. On the development line the working tokens of badge, icon, infobox, popover and spinner (and `ob.h.link.icon.size`) still use a `.size.` segment.
 
 Path segments and `$type` values are separate concerns. The inconsistency to fix is in the **path segments** (`.size.` vs `.sizing.`), not in the `$type` value.
 

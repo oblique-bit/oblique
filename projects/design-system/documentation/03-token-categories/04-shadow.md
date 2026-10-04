@@ -10,7 +10,7 @@
 |---|---|---|---|
 | **Primitive** | *(none)* | — | There is no `ob.p.shadow.*` file. Geometry is written as literal px in the semantic file; only the colour is an alias. |
 | **Semantic** | `ob.s.shadow.{none\|sm\|md\|lg}` | [`03_semantic/shadow.json`](../../src/lib/themes/03_semantic/shadow.json) | 4 composite `boxShadow` tokens — the complete category. |
-| **Component** | (per component) | none yet | No token file references `ob.s.shadow.*` in this release. |
+| **Component** | (per component) | none yet; the development line has [`04_component/atom/tooltip.json`](../../src/lib/themes/04_component/atom/tooltip.json) | No token file references `ob.s.shadow.*` in this release. On the development line `ob.c.tooltip.shadow` references `ob.s.shadow.md`. |
 
 Shadows reach Figma as **Effect Styles**, not variables — Figma has no composite shadow variable. `$themes.json` records the four style ids for the `static` and `semantic` themes.
 

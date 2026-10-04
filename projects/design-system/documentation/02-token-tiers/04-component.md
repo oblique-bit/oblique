@@ -17,7 +17,7 @@ Component tokens are the top level of the token hierarchy, providing component-s
 - Enable component-specific theming and customization
 - Act as a shield to protect developers from changes when refactoring happens only on config, primitive, or `03_semantic` token level
 
-**Current state:** No custom Oblique components (`ob.c.*`) ship token definitions in this release yet — components were pulled while they weren't ready. The tier and its conventions below are still the intended model; entries will be added here as components are built.
+**Current state:** No custom Oblique components (`ob.c.*`) ship token definitions in this release yet — components were pulled while they weren't ready. The tier and its conventions below are still the intended model; entries will be added here as components are built. The development line (git branch `tokens-dev`) holds working versions of some component token sets; they can change and are not part of Oblique 16. The [icon tokens](../06-components/icon/01-overview.md) are the first ones that are documented. `ob.c.header.*` is a temporary Figma-only pseudo header that shows how the viewport tokens behave; it is not a component.
 
 ## Component Token Levels
 
@@ -25,7 +25,7 @@ The Oblique Design System uses **two distinct component token levels**:
 
 ### **`ob.c.*` — Custom Oblique Components**
 
-Custom components built specifically for the Oblique Design System with unique styling patterns and behaviors. No component currently ships tokens at this level (see above).
+Custom components built specifically for the Oblique Design System with unique styling patterns and behaviors. In Oblique 16 no component ships tokens at this level; the development line has working sets (see above).
 
 ```
 ob.c.{component}.{category}.{property}.{variant}
@@ -40,7 +40,7 @@ ob.c.{component}.{category}.{property}.{variant}
 
 ### **`ob.h.*` — HTML Components and Elements**
 
-Native HTML elements and components that require consistent styling across the design system. Currently shipping: `link`, `typography` (heading/body styles).
+Native HTML elements and components that require consistent styling across the design system. Currently shipping: `link`, `typography` (heading/body styles). The development line also has `list`.
 
 ```
 ob.h.{element}.{category}.{property}.{variant}

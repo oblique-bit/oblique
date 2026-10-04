@@ -93,15 +93,16 @@ Some components require **width = height** to maintain visual proportion:
 **Square components:**
 - A component that wraps a single icon must maintain a 1:1 aspect ratio for visual harmony (no such component ships in this release)
 
-**Token structure (once one ships), using the real `element` dimension category:**
+**Token structure, using the icon tokens of the development line:**
 ```json
-"ob.c.{component}.size.standard": {
-  "$value": "{ob.s.dimension.dynamic.ui_scale.element.md.px} / 16 * 1rem"
+"ob.c.icon.ui_scale.size.md": {
+  "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.md.px}"
 },
-"ob.c.{component}.size.mini": {
-  "$value": "{ob.s.dimension.dynamic.ui_scale.element.xs.px} / 16 * 1rem"
+"ob.c.icon.ui_scale.size.xs": {
+  "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xs.px}"
 }
 ```
+See [Icon](../06-components/icon/01-overview.md).
 
 ---
 
@@ -128,7 +129,7 @@ Some components require **width = height** to maintain visual proportion:
 - **`tag`** - Inherits from input fields
 - **`button`** - Inherits in form/dialog contexts
 - **`badge`** - Inherits from nearby components
-- **`icon`** - Always inherits from parent
+- **`icon`** - `icon-component` inherits `ui_scale` from the parent; `icon-static` and `inline-text` do not (see [Icon](../06-components/icon/01-overview.md))
 
 ### **Size coordination principle**
 - **Input text field LG ≠ badge LG** (different visual sizes)
@@ -149,7 +150,7 @@ Some components require **width = height** to maintain visual proportion:
 - **Dialog + All Contents**: Size inheritance
 - **Infobox + Button**: Action buttons in notifications
 - **Any Component + Tooltip**: Context-aware help text
-- **Any Component + Icon**: Always inherits from parent component
+- **Any Component + Icon**: `icon-component` inherits from the parent component
 
 ### **Scaling Direction**
 - **Primarily vertical scaling** (up and down)

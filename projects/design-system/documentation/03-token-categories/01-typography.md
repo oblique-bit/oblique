@@ -151,7 +151,7 @@ The system uses two different token shapes for typography. The choice is deliber
 - **Shape** — one token per typography property.
 - **Purpose** — give a component granular control in CSS without adding a component-specific typography style to Figma.
 - **Example shape** — `ob.h.button.typography.font_size`, `ob.h.button.typography.line_height`.
-- **Current state** — button does not ship in this release, so no `ob.h.button.typography.*` tokens exist yet. When it returns it belongs under `ob.h.*` (an HTML element), not `ob.c.*`, the same as `link`.
+- **Current state** — button does not ship in this release, so no `ob.h.button.typography.*` tokens exist yet. When it returns it belongs under `ob.h.*` (an HTML element), not `ob.c.*`, the same as `link`. On the development line pill and tag follow this shape; badge, tooltip and popover reference composite `ob.s.typography.authoring.*` styles instead.
 
 ### Why both
 

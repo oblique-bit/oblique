@@ -21,6 +21,10 @@ This cross-level referencing is intentional and reflects the foundational role o
 
 Global tokens (`ob.g.*`) can be consumed by any level (Primitive, Semantic, or Component) and are exempt from strict level-to-level reference rules. They act as system-level constants and may appear in token references wherever broader configuration is needed.
 
+## Component Settings
+
+`ob.g.component.*` holds per-component overrides at the global tier. An entry pins one component to a fixed value, whatever mode is active. For example `ob.g.component.footer.lightness` is `dark`, so the footer stays dark in every lightness mode. These tokens have the type `other` because they carry no styling value. They exist on the development line (git branch `tokens-dev`); Oblique 16 does not contain them.
+
 ## Hierarchy Diagram
 
 ```

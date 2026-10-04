@@ -164,7 +164,7 @@ ob.s.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation
 - `contrast_medium` - Standard contrast for normal usage
 - `contrast_low` - Subtle contrast for secondary contexts
 
-> **Recommended contrast level for `bg` and `border`:** Use `contrast_low` for all status `bg` and `border` tokens in components. Despite the lower luminance contrast, `contrast_low` shades retain full color saturation, making the status hue immediately recognisable. This applies to all status categories (info, critical, resolved, attention, pending, confirmed, progress, scheduled, waiting, closed, fatal). Use cases include small status surfaces such as Badge backgrounds and Infobox borders, where a saturated but visually unobtrusive fill or stroke is preferable to the heavier visual weight of `contrast_medium` or `contrast_high`.
+> **Recommended contrast level for `bg` and `border`:** Use `contrast_low` for all status `bg` and `border` tokens in components. Despite the lower luminance contrast, `contrast_low` shades retain full color saturation, making the status hue immediately recognisable. This applies to all status categories (info, critical, resolved, attention, pending, confirmed, progress, scheduled, waiting, closed, fatal). Use cases include small status surfaces such as Badge backgrounds and Infobox borders, where a saturated but visually unobtrusive fill or stroke is preferable to the heavier visual weight of `contrast_medium` or `contrast_high`. The working infobox on the development line differs: it uses `fg.contrast_medium` for its icon and border and `bg.contrast_high` for its surface.
 
 ### The `contrast_highest` Tier — Intentional Hue Alien
 
@@ -265,7 +265,7 @@ Communicates informational content without urgency.
 |----------------|-------------|------------|-------------------------|------------------------|-------|
 | `contrast_highest` | `#131B22` | `#FFFFFF` | `ob.p.color.cobalt.900` | `ob.p.color.basic.white` | Maximum contrast (hue-neutral), small text on colored bg |
 | `contrast_high` | `#1E3A8A` | `#EFF6FF` | `ob.p.color.blue.900` | `ob.p.color.blue.50` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#1E40AF` | `#93c5fd` | `ob.p.color.blue.800` | `ob.p.color.blue.300` | *Not used in current components* |
+| `contrast_medium` | `#1E40AF` | `#93c5fd` | `ob.p.color.blue.800` | `ob.p.color.blue.300` | Infobox icon and border (development line) |
 | `contrast_low` | `#2563EB` | `#DBEAFE` | `ob.p.color.blue.600` | `ob.p.color.blue.100` | *Not used in current components* |
 
 #### Background Colors
@@ -284,7 +284,7 @@ Indicates successful completion, approval, or positive outcomes.
 |----------------|-------------|------------|-------------------------|------------------------|-------|
 | `contrast_highest` | `#131B22` | `#FFFFFF` | `ob.p.color.cobalt.900` | `ob.p.color.basic.white` | Maximum contrast (hue-neutral), small text on colored bg |
 | `contrast_high` | `#065f46` | `#ecfdf5` | `ob.p.color.green.800` | `ob.p.color.green.50` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#047857` | `#a7f3d0` | `ob.p.color.green.700` | `ob.p.color.green.200` | *Not used in current components* |
+| `contrast_medium` | `#047857` | `#a7f3d0` | `ob.p.color.green.700` | `ob.p.color.green.200` | Infobox icon and border (development line) |
 | `contrast_low` | `#059669` | `#d1fae5` | `ob.p.color.green.600` | `ob.p.color.green.100` | *Not used in current components* |
 
 #### Background Colors
@@ -303,7 +303,7 @@ Communicates urgent alerts, system failures, or critical errors requiring immedi
 |----------------|-------------|------------|-------------------------|------------------------|-------|
 | `contrast_highest` | `#131B22` | `#FFFFFF` | `ob.p.color.cobalt.900` | `ob.p.color.basic.white` | Maximum contrast (hue-neutral), small text on colored bg |
 | `contrast_high` | `#99191e` | `#ffedee` | `ob.p.color.red.800` | `ob.p.color.red.50` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#bf1f25` | `#fa9da1` | `ob.p.color.red.700` | `ob.p.color.red.300` | *Not used in current components* |
+| `contrast_medium` | `#bf1f25` | `#fa9da1` | `ob.p.color.red.700` | `ob.p.color.red.300` | Infobox icon and border (development line) |
 | `contrast_low` | `#d8232a` | `#ffccce` | `ob.p.color.red.600` | `ob.p.color.red.200` | *Not used in current components* |
 
 #### Background Colors
@@ -321,7 +321,7 @@ Indicates caution, warnings, or items that need review but aren't critical.
 | Contrast Level | Light Mode | Dark Mode | Usage |
 |----------------|-------------|------------|-------|
 | `contrast_high` | `#9a3412` | `#fff7ed` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#c2410c` | `#fdba74` | *Not used in current components* |
+| `contrast_medium` | `#c2410c` | `#fdba74` | Infobox icon and border (development line) |
 | `contrast_low` | `#ea580c` | `#ffedd5` | *Not used in current components* |
 
 #### Foreground Colors
@@ -329,7 +329,7 @@ Indicates caution, warnings, or items that need review but aren't critical.
 |----------------|-------------|------------|-------------------------|------------------------|-------|
 | `contrast_highest` | `#131B22` | `#FFFFFF` | `ob.p.color.cobalt.900` | `ob.p.color.basic.white` | Maximum contrast (hue-neutral), small text on colored bg |
 | `contrast_high` | `#9a3412` | `#fff7ed` | `ob.p.color.orange.800` | `ob.p.color.orange.50` | All pill states (enabled/hover/focus/pressed) |
-| `contrast_medium` | `#c2410c` | `#fdba74` | `ob.p.color.orange.700` | `ob.p.color.orange.300` | *Not used in current components* |
+| `contrast_medium` | `#c2410c` | `#fdba74` | `ob.p.color.orange.700` | `ob.p.color.orange.300` | Infobox icon and border (development line) |
 | `contrast_low` | `#ea580c` | `#ffedd5` | `ob.p.color.orange.600` | `ob.p.color.orange.100` | *Not used in current components* |
 
 #### Background Colors

@@ -42,6 +42,9 @@ Design tokens are the natural next step, answering these demands directly.
 ### What this Design System release does not contain yet
 - No components, in the token JSON or in the Figma library. It currently holds variables and text/effect styles only; components will be added in 2027.
 
+### Development line
+The Design System of Oblique 16 is on the git branch `tokens-release-16`. Work after Oblique 16 happens on the git branch `tokens-dev`. It holds working versions of some component token sets (badge, icon, infobox, pill, popover, spinner, tag, tooltip), the `ob.h.list.*` tokens and the footer setting `ob.g.component.footer.*`. They can change and are not part of this release. The icon tokens are documented in [Icon](06-components/icon/01-overview.md).
+
 ### Release artifacts
 - **Markdown documentation** — the token documentation, in git: link pending
 - **Token JSON** — the token source files, in git: link pending
@@ -89,6 +92,11 @@ Sorted along two axes. **Tiers** define where a token sits in the reference chai
 - [Viewport](04-modes/06-viewport.md)
 - [Motion](04-modes/07-motion.md)
 - [Interplay between modes](04-modes/08-interplay.md)
+
+## Components
+
+- [Icon](06-components/icon/01-overview.md) — working version on the development line
+- [Icon architecture](06-components/icon/02-architecture.md) — tokens, sizes and design decisions
 
 ## Reference
 

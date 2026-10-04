@@ -210,6 +210,10 @@ Defines the seven mode axes: lightness, emphasis, ui_scale, density, typography_
 
 The single-mode base groups `static` and `semantic` do **not** have files under `mode_collection/`. Token Studio's single-mode-group semantics already encode them as always-on, and the build pipeline identifies them via set-difference: `$themes.json` groups with no matching `mode_collection/<axis>.json` file are always-on base groups.
 
+### **Component settings — `ob.g.component.*`**
+
+Per-component overrides at the global tier. An entry pins one component to a fixed value, whatever mode is active: for example `ob.g.component.footer.lightness` holds `"dark"`, keeping the footer dark whatever the active lightness mode. This group exists on the development line only; Oblique 16 does not contain it.
+
 ### **Documentation nodes — `token_family_docs`**
 
 One per token family, holding the family's `$description`. Documentation, not a styling value. See *Documentation Nodes* below for the format and rules.
