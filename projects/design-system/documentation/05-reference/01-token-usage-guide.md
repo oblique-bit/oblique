@@ -217,9 +217,11 @@ The system provides **both px and rem** at the semantic layer. Every semantic di
 
 #### The rule
 
-**Default to `.rem`** for all dimension properties that should scale with the user's browser font-size setting. This covers padding, margins, gaps, component heights, icon sizes — essentially everything that contributes to the spatial layout of a component.
+**Default to `.rem`** for all dimension properties that should scale with the user's browser font-size setting. This covers padding, margins, gaps, component heights — essentially everything that contributes to the spatial layout of a component.
 
 **Use `.px` only for micro-level adjustments** where sub-rem precision matters and scaling would cause visual artifacts: border widths, focus indicator thickness, and optical baseline offsets.
+
+**Figma exception:** a component token that is used as a Figma variable references the `.px` sibling. Figma number variables have no unit, so a `.rem` value would show as pixels on the canvas. The working component tokens on the development line follow this rule.
 
 #### Decision table for component maintainers
 
@@ -228,7 +230,7 @@ The system provides **both px and rem** at the semantic layer. Every semantic di
 | Padding / inset | `.rem` | Scales with user font-size preference (accessibility) |
 | Gap / spacing between child elements | `.rem` | Scales with user font-size preference |
 | Component height / width | `.rem` | Component grows proportionally with content |
-| Icon size | `.rem` | Icons stay proportional to surrounding text |
+| Icon size | `.px` | Pixel-perfect; the size scales through the `ui_scale` mode (see [Dimension Tokens](../03-token-categories/00-dimension.md)) |
 | Border width | `.px` | 1px and 2px borders must stay crisp; scaling a 1px border to 1.5px causes rendering artifacts |
 | Focus indicator thickness | `.px` | Fixed visual weight required for consistent accessibility indicator (e.g., 3px) |
 | Optical baseline offset (inline icon next to text) | `.px` | Sub-pixel adjustment; the description notes devs should convert to `em` in CSS for runtime |
@@ -242,10 +244,10 @@ Element size (rem):
 
 Micro-level offset (px):
   ob.s.dimension.dynamic.ui_scale.micro.sm.px
-    → {ob.p.dimension.px.2} * 1px
+    → {ob.p.dimension.px.2}
 ```
 
-The size uses `.rem` because icons should scale with the user's font-size setting. The vertical offset uses `.px` because it's a 2px optical correction that would blur at non-integer rem values.
+The element size uses `.rem` so that it scales with the user's font-size setting. The vertical offset uses `.px` because it's a 2px optical correction that would blur at non-integer rem values.
 
 #### Why this matters for accessibility
 

@@ -126,8 +126,8 @@ For backward compatibility, existing technical token paths may still use legacy 
 When this happens, document the mapping explicitly:
 
 - `static` -> `ob.c.{component}.static.*`
-- `component` -> `ob.c.{component}.component.*`
-- `inline_text` -> `ob.c.{component}.inline_text.*`
+- `component` -> `ob.c.{component}.ui_scale.*`
+- `inline_text` -> `ob.c.{component}.typography_context.*` (the vertical offset keeps the segment `inline_text`: `ob.c.icon.inline_text.body.spacing.vertical.offset`)
 
 > **`inline_text` spacing note**: The horizontal gap between the icon and adjacent text is provided by a literal space character inserted by the consumer (`<ob-icon/> label`). This spacing is font-metric-driven (space glyph width) and cannot be tokenized. Token-driven gap control would require a flex container, which changes the layout contract from inline to block—not appropriate for inline text flow.
 

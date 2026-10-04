@@ -3,8 +3,8 @@
 **Stale as of 2026-09-14 — verify against `registry.json` before trusting counts.**
 This file still describes 5 tables including "Header Variant"
 (`ob.c.header.variant`); `registry.json` only has 4 (`breakpoints`,
-`ranges`, `css_selectors`, `page_container`) — its source directory
-(`04_component/molecule/header`) doesn't exist in release 16. Not fixed as
+`ranges`, `css_selectors`, `page_container`); the header variant tokens
+(`04_component/molecule/header`, a temporary Figma-only pseudo header) have no table in it. Not fixed as
 part of the 2026-09-14 work below; flagging so this doesn't mislead anyone
 in the meantime.
 

@@ -238,7 +238,7 @@ const ok = pairings.categories.status.find(p =>
 );
 ```
 
-Regenerate both files plus the corresponding Figma docs page (**Colors – Contrast Pairings cli**, in Tokens V9.7):
+Regenerate both files plus the corresponding Figma docs page (**Colors – Contrast Pairing Light** and **Dark**, in Tokens V9.9):
 
 ```bash
 node scripts-custom/figma-doc-builders/color-pairings/build-color-pairings.js
