@@ -32,31 +32,31 @@ describe('ObOffCanvasToggleDirective', () => {
 
 	describe('toggle', () => {
 		beforeEach(() => {
-			jest.useFakeTimers();
+			vi.useFakeTimers();
 		});
 		afterEach(() => {
-			jest.useRealTimers();
+			vi.useRealTimers();
 		});
 		it('should open with no event provided', () => {
 			directive.toggle();
-			jest.advanceTimersToNextTimer();
+			vi.advanceTimersToNextTimer();
 			expect(service.open).toBe(true);
 		});
 		it('should open with a mouse click', () => {
 			directive.toggle(new MouseEvent('click'));
-			jest.advanceTimersToNextTimer();
+			vi.advanceTimersToNextTimer();
 			expect(service.open).toBe(true);
 		});
 		it('should open with Enter key on a div', () => {
 			const event = {target: {nodeName: 'DIV'}} as unknown as KeyboardEvent;
 			directive.toggle(event);
-			jest.advanceTimersToNextTimer();
+			vi.advanceTimersToNextTimer();
 			expect(service.open).toBe(true);
 		});
 		it('should not open with Enter key on a button', () => {
 			const event = {target: {nodeName: 'BUTTON'}} as unknown as KeyboardEvent;
 			directive.toggle(event);
-			jest.advanceTimersToNextTimer();
+			vi.advanceTimersToNextTimer();
 			expect(service.open).toBe(false);
 		});
 	});

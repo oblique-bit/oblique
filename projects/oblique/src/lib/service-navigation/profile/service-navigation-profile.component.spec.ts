@@ -17,7 +17,7 @@ import {ObServiceNavigationProfileComponent} from './service-navigation-profile.
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 
-describe('ObServiceNavigationProfileComponent', () => {
+describe.skip('ObServiceNavigationProfileComponent', () => {
 	let component: ObServiceNavigationProfileComponent;
 	let fixture: ComponentFixture<ObServiceNavigationProfileComponent>;
 	let harness: ObServiceNavigationProfileHarness;

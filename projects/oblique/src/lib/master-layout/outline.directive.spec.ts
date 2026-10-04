@@ -23,14 +23,14 @@ describe(ObOutlineDirective.name, () => {
 		directive = fixture.debugElement.query(By.directive(ObOutlineDirective)).injector.get(ObOutlineDirective);
 		fixture.detectChanges();
 
-		jest.spyOn(document.body.classList, 'add');
-		jest.spyOn(document.body.classList, 'remove');
-		jest.spyOn(directive, 'addOutline');
-		jest.spyOn(directive, 'removeOutline');
+		vi.spyOn(document.body.classList, 'add');
+		vi.spyOn(document.body.classList, 'remove');
+		vi.spyOn(directive, 'addOutline');
+		vi.spyOn(directive, 'removeOutline');
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 	});
 
 	test('that creation works', () => {

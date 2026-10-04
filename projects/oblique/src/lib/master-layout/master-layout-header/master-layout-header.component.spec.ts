@@ -37,8 +37,8 @@ describe('ObMasterLayoutHeaderComponent', () => {
 			updateServiceNavigationConfiguration(configuration: Partial<ObIServiceNavigationConfig>): void {
 				this.serviceNavigationConfiguration.update(current => ({...current, ...configuration}));
 			},
-			emitLoginState: jest.fn(),
-			emitLogoutUrl: jest.fn(),
+			emitLoginState: vi.fn(),
+			emitLogoutUrl: vi.fn(),
 		},
 		layout: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isMenuOpened: false},
 	};
@@ -182,7 +182,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 		describe('emitLoginState', () => {
 			beforeEach(() => {
-				jest.spyOn(mockMasterLayoutService.header, 'emitLoginState');
+				vi.spyOn(mockMasterLayoutService.header, 'emitLoginState');
 				component.emitLoginState('S2OK');
 			});
 
@@ -197,7 +197,7 @@ describe('ObMasterLayoutHeaderComponent', () => {
 
 		describe('emitLogoutUrl', () => {
 			beforeEach(() => {
-				jest.spyOn(mockMasterLayoutService.header, 'emitLogoutUrl');
+				vi.spyOn(mockMasterLayoutService.header, 'emitLogoutUrl');
 				component.emitLogoutUrl('http://logout');
 			});
 

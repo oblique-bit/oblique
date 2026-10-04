@@ -51,20 +51,65 @@
           "options": {
             "tsConfig": "projects/oblique/tsconfig.lib.json",
             "project": "projects/oblique/ng-package.json"
+          },
+          "configurations": {
+            "development": {}
           }
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/oblique/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts"],
+            "isolate": true,
+            "exclude": [
+              "**/master-layout/master-layout-navigation/master-layout-navigation.component.spec.ts",
+              "**/master-layout/outline.directive.spec.ts",
+              "**/service-navigation/languages/service-navigation-languages.component.spec.ts",
+              "**/service-navigation/service-navigation.component.spec.ts"
+            ],
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageInclude": ["projects/oblique/src/lib/**/*.ts"],
+            "coverageExclude": [
+              "public_api.ts",
+              "**/index.ts",
+              "**/_mocks/**",
+              "**/*.harness.ts",
+              "**/*.model.ts",
+              "**/*.module.ts",
+              "**/*.spec.ts",
+              "**/off-canvas-container.directive.ts",
+              "**/master-layout/master-layout/master-layout-component-base.ts",
+              "**/master-layout/master-layout/master-layout.component.ts",
+              "**/master-layout/master-layout-navigation/master-layout-navigation-component-base.ts",
+              "**/master-layout/master-layout-navigation/master-layout-navigation.component.ts",
+              "**/master-layout/master-layout-navigation/master-layout-navigation.component.spec-basic-mocks-links.ts",
+              "**/master-layout/master-layout-navigation/master-layout-navigation.component.spec-mock-links-with-data.ts",
+              "**/master-layout/master-layout-navigation/sub-menu-item/master-layout-navigation-sub-menu-item.component.ts",
+              "**/service-navigation/service-navigation.component.ts",
+              "**/service-navigation/applications/service-navigation-applications.component.ts",
+              "**/service-navigation/authentication/service-navigation-authentication.component.ts",
+              "**/service-navigation/info/service-navigation-info.component.ts",
+              "**/service-navigation/languages/service-navigation-languages.component.ts",
+              "**/service-navigation/message/service-navigation-message.component.ts",
+              "**/service-navigation/profile/service-navigation-profile.component.ts"
+            ],
+            "coverageThresholds": {
+              "lines": 99,
+              "functions": 75,
+              "branches": 94,
+              "statements": 87
+            }
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": true
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/oblique/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"

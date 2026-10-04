@@ -20,7 +20,7 @@ export class ObMockAreAllTypesAllowedPipe implements PipeTransform {
 describe('DropZoneComponent', () => {
 	let component: ObDropZoneComponent;
 	let fixture: ComponentFixture<ObDropZoneComponent>;
-	const service = {filterInvalidFiles: jest.fn()} as unknown as ObValidationService;
+	const service = {filterInvalidFiles: vi.fn()} as unknown as ObValidationService;
 	const files = [
 		new File(['text'], 'sample.txt', {type: 'text/plain'}),
 		new File(['image'], 'sample.jpg', {type: 'text/plain'}),
@@ -83,7 +83,7 @@ describe('DropZoneComponent', () => {
 
 	describe('addFiles', () => {
 		it('should filter out invalid files', () => {
-			jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([]);
+			vi.spyOn(service, 'filterInvalidFiles').mockReturnValue([]);
 			component.addFiles(files);
 			expect(service.filterInvalidFiles).toHaveBeenCalled();
 		});
@@ -91,7 +91,7 @@ describe('DropZoneComponent', () => {
 		describe('uploadEvent with only valid files', () => {
 			let event: ObIUploadEvent;
 			beforeEach(async () => {
-				jest.spyOn(service, 'filterInvalidFiles').mockReturnValue(Array.from(files));
+				vi.spyOn(service, 'filterInvalidFiles').mockReturnValue(Array.from(files));
 				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
 				component.addFiles(files);
 				event = await eventPromise;
@@ -118,7 +118,7 @@ describe('DropZoneComponent', () => {
 			let event: ObIUploadEvent;
 			beforeEach(async () => {
 				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent));
-				jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([]);
+				vi.spyOn(service, 'filterInvalidFiles').mockReturnValue([]);
 				component.addFiles(files);
 				event = await eventPromise;
 			});
@@ -147,7 +147,7 @@ describe('DropZoneComponent', () => {
 			let events: ObIUploadEvent[];
 
 			beforeEach(async () => {
-				jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([files[0]]);
+				vi.spyOn(service, 'filterInvalidFiles').mockReturnValue([files[0]]);
 				const eventPromise = firstValueFrom(outputToObservable(component.uploadEvent).pipe(take(2), toArray()));
 				component.addFiles(files);
 				events = await eventPromise;

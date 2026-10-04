@@ -25,8 +25,8 @@ describe('ParentFormDirective', () => {
 
 	it('should complete streams on destroy', () => {
 		const directive = new ObParentFormDirective();
-		const submitComplete = jest.fn();
-		const resetComplete = jest.fn();
+		const submitComplete = vi.fn();
+		const resetComplete = vi.fn();
 		directive.submit$.subscribe({complete: submitComplete});
 		directive.reset$.subscribe({complete: resetComplete});
 

@@ -236,9 +236,9 @@ describe(ObRouterService.name, () => {
 
 			describe('change language', () => {
 				beforeEach(async () => {
-					jest.spyOn(router, 'navigateByUrl');
+					vi.spyOn(router, 'navigateByUrl');
 					await router.navigate(['de']);
-					jest.mocked(router.navigateByUrl).mockClear();
+					vi.mocked(router.navigateByUrl).mockClear();
 				});
 
 				test('update language in URL', async () => {
@@ -248,7 +248,7 @@ describe(ObRouterService.name, () => {
 
 				test('update language in URL but stay on same page', async () => {
 					await router.navigate(['it/home']);
-					jest.mocked(router.navigateByUrl).mockClear();
+					vi.mocked(router.navigateByUrl).mockClear();
 					await firstValueFrom(translate.use('en')); // Original (Kommentar 5)
 
 					expect(router.navigateByUrl).toHaveBeenCalledWith('/en/home');
@@ -256,7 +256,7 @@ describe(ObRouterService.name, () => {
 
 				test('keeps query params', async () => {
 					await router.navigateByUrl('/de/home?tab=1');
-					jest.mocked(router.navigateByUrl).mockClear();
+					vi.mocked(router.navigateByUrl).mockClear();
 					await firstValueFrom(translate.use('fr'));
 
 					expect(router.navigateByUrl).toHaveBeenCalledWith('/fr/home?tab=1');
@@ -264,7 +264,7 @@ describe(ObRouterService.name, () => {
 
 				test('keeps fragment', async () => {
 					await router.navigateByUrl('/de/home#top');
-					jest.mocked(router.navigateByUrl).mockClear();
+					vi.mocked(router.navigateByUrl).mockClear();
 					await firstValueFrom(translate.use('fr'));
 
 					expect(router.navigateByUrl).toHaveBeenCalledWith('/fr/home#top');
@@ -272,7 +272,7 @@ describe(ObRouterService.name, () => {
 
 				test('keeps matrix params', async () => {
 					await router.navigateByUrl('/de/home;view=list');
-					jest.mocked(router.navigateByUrl).mockClear();
+					vi.mocked(router.navigateByUrl).mockClear();
 					await firstValueFrom(translate.use('fr'));
 
 					expect(router.navigateByUrl).toHaveBeenCalledWith('/fr/home;view=list');
@@ -281,7 +281,7 @@ describe(ObRouterService.name, () => {
 
 			describe('language change before the initial navigation', () => {
 				beforeEach(() => {
-					jest.spyOn(router, 'navigateByUrl');
+					vi.spyOn(router, 'navigateByUrl');
 				});
 
 				test('does not navigate before the initial navigation', async () => {
@@ -303,7 +303,7 @@ describe(ObRouterService.name, () => {
 				test('still rewrites the URL after the initial navigation failed', async () => {
 					await expect(router.navigateByUrl('/de/failing')).rejects.toThrow('resolver failed');
 					await router.navigate(['de', 'home']);
-					jest.mocked(router.navigateByUrl).mockClear();
+					vi.mocked(router.navigateByUrl).mockClear();
 
 					await firstValueFrom(translate.use('fr'));
 
@@ -313,7 +313,7 @@ describe(ObRouterService.name, () => {
 				test('navigates to the bare language when the URL is still empty after a failed initial navigation', async () => {
 					await expect(router.navigateByUrl('/de/failing')).rejects.toThrow('resolver failed');
 					expect(router.url).toBe('/');
-					jest.mocked(router.navigateByUrl).mockClear();
+					vi.mocked(router.navigateByUrl).mockClear();
 
 					await firstValueFrom(translate.use('fr'));
 

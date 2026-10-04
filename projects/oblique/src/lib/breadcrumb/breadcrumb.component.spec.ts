@@ -45,7 +45,7 @@ describe('ObBreadcrumbComponent', () => {
 	};
 
 	const translateServiceMock = {
-		get: jest.fn((key: string) => of(translations[key] ?? key)),
+		get: vi.fn((key: string) => of(translations[key] ?? key)),
 		onLangChange: of({}),
 	};
 
@@ -588,7 +588,7 @@ describe('ObBreadcrumbComponent', () => {
 		});
 
 		it('should ignore router events that are not NavigationEnd events', () => {
-			const observer = jest.fn();
+			const observer = vi.fn();
 			component.ngOnInit();
 			component.breadcrumbs$.subscribe(observer);
 
@@ -604,7 +604,7 @@ describe('ObBreadcrumbComponent', () => {
 		});
 
 		it('should react to NavigationEnd events', () => {
-			const observer = jest.fn();
+			const observer = vi.fn();
 			component.ngOnInit();
 			component.breadcrumbs$.subscribe(observer);
 

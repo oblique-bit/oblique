@@ -47,16 +47,16 @@ describe('LanguageService', () => {
 		beforeEach(() => {
 			onLangChange = new Subject<{lang: string; translations: unknown}>();
 			const mock = {
-				addLangs: jest.fn(),
-				setFallbackLang: jest.fn(),
-				use: jest.fn(),
+				addLangs: vi.fn(),
+				setFallbackLang: vi.fn(),
+				use: vi.fn(),
 				onLangChange,
-				getBrowserLang: jest.fn(),
-				getFallbackLang: jest.fn(),
-				getCurrentLang: jest.fn(),
+				getBrowserLang: vi.fn(),
+				getFallbackLang: vi.fn(),
+				getCurrentLang: vi.fn(),
 			};
 
-			jest.spyOn(console, 'warn');
+			vi.spyOn(console, 'warn');
 
 			TestBed.configureTestingModule({
 				providers: [
@@ -103,13 +103,13 @@ describe('LanguageService', () => {
 
 		it('should return early and not initialize translation', () => {
 			const mock = {
-				addLangs: jest.fn(),
-				setFallbackLang: jest.fn(),
-				use: jest.fn(),
+				addLangs: vi.fn(),
+				setFallbackLang: vi.fn(),
+				use: vi.fn(),
 				onLangChange: new Subject<{lang: string; translations: unknown}>(),
-				getBrowserLang: jest.fn(),
-				getFallbackLang: jest.fn(),
-				getCurrentLang: jest.fn(),
+				getBrowserLang: vi.fn(),
+				getFallbackLang: vi.fn(),
+				getCurrentLang: vi.fn(),
 			};
 
 			TestBed.configureTestingModule({
@@ -138,18 +138,18 @@ describe('LanguageService', () => {
 
 		beforeEach(() => {
 			const mock = {
-				addLangs: jest.fn(),
-				setFallbackLang: jest.fn(),
-				use: jest.fn(),
+				addLangs: vi.fn(),
+				setFallbackLang: vi.fn(),
+				use: vi.fn(),
 				onLangChange: new Subject<{lang: string; translations: unknown}>(),
-				getBrowserLang: jest.fn(),
-				getFallbackLang: jest.fn(),
-				getCurrentLang: jest.fn().mockReturnValue('de'),
+				getBrowserLang: vi.fn(),
+				getFallbackLang: vi.fn(),
+				getCurrentLang: vi.fn().mockReturnValue('de'),
 			};
 
-			const dateAdapterMock = {setLocale: jest.fn()};
+			const dateAdapterMock = {setLocale: vi.fn()};
 
-			jest.spyOn(console, 'warn');
+			vi.spyOn(console, 'warn');
 
 			TestBed.configureTestingModule({
 				providers: [
@@ -183,13 +183,13 @@ describe('LanguageService', () => {
 
 		beforeEach(() => {
 			const mock = {
-				addLangs: jest.fn(),
-				setFallbackLang: jest.fn(),
-				use: jest.fn(),
+				addLangs: vi.fn(),
+				setFallbackLang: vi.fn(),
+				use: vi.fn(),
 				onLangChange: new Subject<{lang: string; translations: unknown}>(),
-				getBrowserLang: jest.fn(),
-				getFallbackLang: jest.fn(),
-				getCurrentLang: jest.fn(),
+				getBrowserLang: vi.fn(),
+				getFallbackLang: vi.fn(),
+				getCurrentLang: vi.fn(),
 			};
 
 			TestBed.configureTestingModule({
@@ -219,13 +219,13 @@ describe('LanguageService', () => {
 		beforeEach(() => {
 			localStorage.removeItem('oblique_lang');
 			const mock = {
-				addLangs: jest.fn(),
-				setFallbackLang: jest.fn(),
-				use: jest.fn(),
+				addLangs: vi.fn(),
+				setFallbackLang: vi.fn(),
+				use: vi.fn(),
 				onLangChange: new Subject<{lang: string; translations: unknown}>(),
-				getBrowserLang: jest.fn().mockReturnValue('es'),
-				getFallbackLang: jest.fn().mockReturnValue('pt'),
-				getCurrentLang: jest.fn(),
+				getBrowserLang: vi.fn().mockReturnValue('es'),
+				getFallbackLang: vi.fn().mockReturnValue('pt'),
+				getCurrentLang: vi.fn(),
 			};
 
 			TestBed.configureTestingModule({

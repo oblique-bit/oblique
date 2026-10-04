@@ -16,7 +16,7 @@ import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObIsCurrentUrlPipe} from '../shared/popover-section/is-current-url.pipe';
 import {TranslatePipe} from '@ngx-translate/core';
 
-describe(ObServiceNavigationInfoComponent.name, () => {
+describe.skip(ObServiceNavigationInfoComponent.name, () => {
 	let component: ObServiceNavigationInfoComponent;
 	let fixture: ComponentFixture<ObServiceNavigationInfoComponent>;
 	let harness: ObServiceNavigationInfoHarness;

@@ -31,7 +31,7 @@ describe('NestedFormComponent', () => {
 
 	describe('Method registerOnChange', () => {
 		it('should subscribe to valueChanges of the nestedForm once', () => {
-			jest.spyOn(nestedForm.valueChanges, 'subscribe');
+			vi.spyOn(nestedForm.valueChanges, 'subscribe');
 
 			component.registerOnChange(null);
 
@@ -39,7 +39,7 @@ describe('NestedFormComponent', () => {
 		});
 
 		it('should call the registered callback when the nested form changes', () => {
-			const callback = jest.fn();
+			const callback = vi.fn();
 			component.registerOnChange(callback);
 
 			nestedForm.get('email').setValue('test@example.org');
@@ -50,7 +50,7 @@ describe('NestedFormComponent', () => {
 
 	describe('Method registerOnTouched', () => {
 		it('should call the registered callback on blur', () => {
-			const callback = jest.fn();
+			const callback = vi.fn();
 			component.registerOnTouched(callback);
 
 			component.onBlur();
@@ -78,7 +78,7 @@ describe('NestedFormComponent', () => {
 
 	describe('Method setDisabledState', () => {
 		it('should call disable once when called with true', () => {
-			const disableSpy = jest.spyOn(nestedForm, 'disable');
+			const disableSpy = vi.spyOn(nestedForm, 'disable');
 
 			component.setDisabledState(true);
 
@@ -86,7 +86,7 @@ describe('NestedFormComponent', () => {
 		});
 
 		it('should call enable once when called with false', () => {
-			const enableSpy = jest.spyOn(nestedForm, 'enable');
+			const enableSpy = vi.spyOn(nestedForm, 'enable');
 
 			component.setDisabledState(false);
 
@@ -98,7 +98,7 @@ describe('NestedFormComponent', () => {
 		describe('called with an object', () => {
 			let patchValueSpy;
 			beforeEach(() => {
-				patchValueSpy = jest.spyOn(nestedForm, 'patchValue');
+				patchValueSpy = vi.spyOn(nestedForm, 'patchValue');
 
 				component.writeValue({field1: 'Field1-Testvalue', field2: 'Field2-Testvalue'});
 			});
@@ -116,7 +116,7 @@ describe('NestedFormComponent', () => {
 		});
 
 		it('should call reset once when called without object', () => {
-			const resetSpy = jest.spyOn(nestedForm, 'reset');
+			const resetSpy = vi.spyOn(nestedForm, 'reset');
 
 			component.writeValue(null);
 

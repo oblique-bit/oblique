@@ -3,6 +3,7 @@ import {ChangeDetectionStrategy, Component, Signal, signal} from '@angular/core'
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+import {Mock} from 'vitest';
 import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
 
@@ -33,10 +34,10 @@ describe(ObUnsavedChangesDirective.name, () => {
 	let directive: ObUnsavedChangesDirective;
 	let unsavedChangesServiceMock: {
 		isActive: Signal<boolean>;
-		watch: jest.Mock;
-		unWatch: jest.Mock;
-		canDeactivate: jest.Mock;
-		ignoreChanges: jest.Mock;
+		watch: Mock;
+		unWatch: Mock;
+		canDeactivate: Mock;
+		ignoreChanges: Mock;
 	};
 	const initFixture = (): void => {
 		fixture = TestBed.createComponent(TestComponent);
@@ -49,10 +50,10 @@ describe(ObUnsavedChangesDirective.name, () => {
 	beforeEach(async () => {
 		unsavedChangesServiceMock = {
 			isActive: signal(true),
-			watch: jest.fn(),
-			unWatch: jest.fn(),
-			canDeactivate: jest.fn(),
-			ignoreChanges: jest.fn(),
+			watch: vi.fn(),
+			unWatch: vi.fn(),
+			canDeactivate: vi.fn(),
+			ignoreChanges: vi.fn(),
 		};
 
 		await TestBed.configureTestingModule({

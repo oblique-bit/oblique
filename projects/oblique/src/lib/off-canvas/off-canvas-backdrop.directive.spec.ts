@@ -26,7 +26,7 @@ describe('ObOffCanvasBackdropDirective', () => {
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 		directive.ngOnDestroy();
 	});
 

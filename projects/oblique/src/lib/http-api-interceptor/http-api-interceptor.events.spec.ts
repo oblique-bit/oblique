@@ -11,7 +11,7 @@ describe(ObHttpApiInterceptorEvents.name, () => {
 
 	it('emits request interception events through the public observable', () => {
 		const request = createRequest();
-		const next = jest.fn();
+		const next = vi.fn();
 
 		events.requestIntercepted.subscribe(next);
 
@@ -21,7 +21,7 @@ describe(ObHttpApiInterceptorEvents.name, () => {
 	});
 
 	it('emits session expiration events through the public observable', () => {
-		const next = jest.fn();
+		const next = vi.fn();
 
 		events.sessionExpired.subscribe(next);
 

@@ -5,15 +5,16 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject, of} from 'rxjs';
 import {ObDocumentMetaService} from './document-meta.service';
+import type {Mock} from 'vitest';
 
 describe(ObDocumentMetaService.name, () => {
 	let service: ObDocumentMetaService;
 	let routerEvents: Subject<NavigationEnd>;
 	let routeData: Subject<{title?: string; description?: string}>;
-	let title: {setTitle: jest.Mock};
+	let title: {setTitle: Mock};
 	let translate: {
-		get: jest.Mock;
-		instant: jest.Mock;
+		get: Mock;
+		instant: Mock;
 		onLangChange: Subject<void>;
 	};
 
@@ -21,9 +22,9 @@ describe(ObDocumentMetaService.name, () => {
 		document.head.querySelector('meta[name=description]')?.remove();
 		routerEvents = new Subject<NavigationEnd>();
 		routeData = new Subject<{title?: string; description?: string}>();
-		title = {setTitle: jest.fn()};
+		title = {setTitle: vi.fn()};
 		translate = {
-			get: jest.fn((key: string | string[]) => {
+			get: vi.fn((key: string | string[]) => {
 				if (Array.isArray(key)) {
 					return of(
 						key.reduce<Record<string, string>>((translations, translationKey) => {
@@ -34,7 +35,7 @@ describe(ObDocumentMetaService.name, () => {
 				}
 				return of(`${key}-translated`);
 			}),
-			instant: jest.fn(key => `${key}-instant`),
+			instant: vi.fn(key => `${key}-instant`),
 			onLangChange: new Subject<void>(),
 		};
 
@@ -65,7 +66,7 @@ describe(ObDocumentMetaService.name, () => {
 		const meta = document.createElement('meta');
 		meta.setAttribute('name', 'description');
 		document.head.appendChild(meta);
-		jest.spyOn(document.head, 'appendChild');
+		vi.spyOn(document.head, 'appendChild');
 
 		TestBed.configureTestingModule({
 			providers: [

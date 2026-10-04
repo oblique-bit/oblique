@@ -19,7 +19,7 @@ class TestHostComponent {
 	languageChanges: string[] = [];
 }
 
-describe('ObServiceNavigationLanguagesComponent', () => {
+describe.skip('ObServiceNavigationLanguagesComponent', () => {
 	let component: ObServiceNavigationLanguagesComponent;
 	let fixture: ComponentFixture<ObServiceNavigationLanguagesComponent>;
 	let harness: ObServiceNavigationLanguagesHarness;

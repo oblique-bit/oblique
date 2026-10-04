@@ -12,9 +12,9 @@ export class ObMockSelectableGroupDirective {
 	mode = signal<'checkbox' | 'radio' | 'windows'>('checkbox');
 	effectiveMode = computed(() => this.mode());
 	disabled = signal<boolean>(false);
-	register = jest.fn();
-	toggle = jest.fn();
-	focus = jest.fn();
+	register = vi.fn();
+	toggle = vi.fn();
+	focus = vi.fn();
 }
 
 @Directive({
@@ -25,9 +25,9 @@ export class ObMockDisabledSelectableGroupDirective {
 	mode = signal<boolean>(true);
 	effectiveMode = computed(() => this.mode());
 	disabled = signal<'checkbox' | 'radio' | 'windows'>('checkbox');
-	register = jest.fn();
-	toggle = jest.fn();
-	focus = jest.fn();
+	register = vi.fn();
+	toggle = vi.fn();
+	focus = vi.fn();
 	isDisabled = true;
 }
 
@@ -67,7 +67,7 @@ describe(ObSelectableDirective.name, () => {
 		});
 
 		afterEach(() => {
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 
 		it('should create an instance', () => {
@@ -184,17 +184,17 @@ describe(ObSelectableDirective.name, () => {
 		});
 
 		it('should call preventDefault on passed event', () => {
-			const event = {preventDefault: jest.fn()} as unknown as MouseEvent;
+			const event = {preventDefault: vi.fn()} as unknown as MouseEvent;
 			directive.onClick(event);
 			expect(event.preventDefault).toHaveBeenCalled();
 		});
 		it('should call toggle on group', () => {
-			const event = {preventDefault: jest.fn()} as unknown as MouseEvent;
+			const event = {preventDefault: vi.fn()} as unknown as MouseEvent;
 			directive.onClick(event);
 			expect(group.toggle).toHaveBeenCalledWith(directive, undefined, undefined);
 		});
 		afterEach(() => {
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 	});
 
@@ -223,14 +223,14 @@ describe(ObSelectableDirective.name, () => {
 
 		describe('onclick', () => {
 			it('should not call toggle on group', () => {
-				const event = {preventDefault: jest.fn()} as unknown as MouseEvent;
+				const event = {preventDefault: vi.fn()} as unknown as MouseEvent;
 				directive.onClick(event);
 				expect(group.toggle).toHaveBeenCalledTimes(0);
 			});
 		});
 
 		afterEach(() => {
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 	});
 
@@ -253,7 +253,7 @@ describe(ObSelectableDirective.name, () => {
 
 		it('should set the focus', () => {
 			// @ts-expect-error
-			jest.spyOn(directive.element.nativeElement, 'focus');
+			vi.spyOn(directive.element.nativeElement, 'focus');
 			directive.focus();
 			// @ts-expect-error
 			expect(directive.element.nativeElement.focus).toHaveBeenCalled();

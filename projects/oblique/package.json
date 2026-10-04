@@ -12,9 +12,9 @@
   "scripts": {
     "lint": "tsx scripts/lint.ts",
     "format": "tsx scripts/lint.ts --fix",
-    "test": "cd ../.. && ng test oblique",
-    "test-ci": "cd ../.. && ng run oblique:test:ci",
-    "test-debugging": "cd ../.. && node --expose-gc ../../node_modules/@angular/cli/bin/ng test oblique --log-heap-usage",
+    "test": "ng test oblique",
+    "test-ci": "ng run oblique:test:ci",
+    "test-debugging": "node --expose-gc ../../node_modules/@angular/cli/bin/ng test oblique --log-heap-usage",
     "prebuild": "tsx scripts/pre-build.ts && ng build oblique-styles",
     "build": "ng build oblique && npm run schematics",
     "postbuild": "tsx scripts/post-build.ts",
@@ -55,8 +55,10 @@
     "glob": "^10.5.0"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.11",
     "ng-packagr": "^22.0.0",
-    "uglify-js": "^3.19.3"
+    "uglify-js": "^3.19.3",
+    "vitest": "^4.1.11"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {

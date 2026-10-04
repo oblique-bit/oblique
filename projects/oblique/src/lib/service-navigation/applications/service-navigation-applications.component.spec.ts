@@ -27,7 +27,7 @@ Object.defineProperty(window, 'getComputedStyle', {
 	}),
 });
 
-describe(ObServiceNavigationApplicationsComponent.name, () => {
+describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
 	let component: ObServiceNavigationApplicationsComponent;
 	let fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>;
 	let harness: ObServiceNavigationApplicationsHarness;

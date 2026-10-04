@@ -45,12 +45,12 @@ describe('ObServiceNavigationService', () => {
 	const mockLangChange = new Subject<{lang: string}>();
 	const mockStateChange = new Subject<ObIServiceNavigationState>();
 	const mockApplications = [{name: {en: 'name', fr: 'nom', de: 'Name', it: 'nome'}}];
-	const mockGetLogoutTrigger$ = jest.fn();
-	const mockRedirectorLogout = jest.fn();
+	const mockGetLogoutTrigger$ = vi.fn();
+	const mockRedirectorLogout = vi.fn();
 	const fakeInfoBackend = {fakeInfoBackend: true};
-	const mockGetInfoBackend$ = jest.fn(() => of(fakeInfoBackend));
-	const mockLanguageSynchronizationInitialize = jest.fn();
-	const mockLanguageSynchronizationSetLanguage = jest.fn();
+	const mockGetInfoBackend$ = vi.fn(() => of(fakeInfoBackend));
+	const mockLanguageSynchronizationInitialize = vi.fn();
+	const mockLanguageSynchronizationSetLanguage = vi.fn();
 
 	beforeEach(() => {
 		mockNavigate$ = new Subject<NavigateEvent>();
@@ -58,14 +58,14 @@ describe('ObServiceNavigationService', () => {
 			providers: [
 				provideHttpClient(),
 				ObServiceNavigationService,
-				{provide: ObServiceNavigationTimeoutService, useValue: {initialize: jest.fn(), logout: jest.fn()}},
+				{provide: ObServiceNavigationTimeoutService, useValue: {initialize: vi.fn(), logout: vi.fn()}},
 				{
 					provide: ObServiceNavigationConfigApiService,
-					useValue: {fetchUrls: jest.fn().mockReturnValue(of(mockUrls))},
+					useValue: {fetchUrls: vi.fn().mockReturnValue(of(mockUrls))},
 				},
 				{
 					provide: ObServiceNavigationPollingService,
-					useValue: {initializeStateUpdate: jest.fn(), state$: mockStateChange.asObservable()},
+					useValue: {initializeStateUpdate: vi.fn(), state$: mockStateChange.asObservable()},
 				},
 				{
 					provide: ObServiceNavigationTimeoutRedirectorService,
@@ -73,7 +73,7 @@ describe('ObServiceNavigationService', () => {
 				},
 				{
 					provide: ObServiceNavigationApplicationsService,
-					useValue: {getApplications: jest.fn().mockReturnValue(source$ => source$.pipe(map(() => mockApplications)))},
+					useValue: {getApplications: vi.fn().mockReturnValue(source$ => source$.pipe(map(() => mockApplications)))},
 				},
 				{
 					provide: ObServiceNavigationInfoApiService,
@@ -94,8 +94,8 @@ describe('ObServiceNavigationService', () => {
 					useValue: {
 						onLangChange: mockLangChange.asObservable(),
 						currentLang: signal('en'),
-						getLangs: jest.fn().mockReturnValue(['en', 'de', 'fr', 'it']),
-						use: jest.fn(),
+						getLangs: vi.fn().mockReturnValue(['en', 'de', 'fr', 'it']),
+						use: vi.fn(),
 					},
 				},
 			],
@@ -115,7 +115,7 @@ describe('ObServiceNavigationService', () => {
 		});
 
 		afterEach(() => {
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 
 		describe('infoBackend', () => {
@@ -162,8 +162,8 @@ describe('ObServiceNavigationService', () => {
 			beforeEach(() => {
 				service.setUpRootUrls(ObEPamsEnvironment.TEST);
 				notification = TestBed.inject(ObNotificationService);
-				jest.spyOn(configService, 'fetchUrls').mockReturnValue(throwError(() => new Error('test')));
-				jest.spyOn(notification, 'error');
+				vi.spyOn(configService, 'fetchUrls').mockReturnValue(throwError(() => new Error('test')));
+				vi.spyOn(notification, 'error');
 				TestBed.flushEffects();
 			});
 
@@ -586,7 +586,7 @@ describe('ObServiceNavigationService', () => {
 			beforeEach(() => {
 				TestBed.overrideProvider(ObServiceNavigationPollingService, {
 					useValue: {
-						initializeStateUpdate: jest.fn(),
+						initializeStateUpdate: vi.fn(),
 						state$: mockStateChangeDuplicate.asObservable(),
 					},
 				});

@@ -83,7 +83,7 @@ describe('IconService', () => {
 		describe('registerIconSetsAsync', () => {
 			it('should register icon sets', () => {
 				// TODO, the http request should be mocked to properly test this case
-				jest.spyOn(registry, 'addSvgIconSet');
+				vi.spyOn(registry, 'addSvgIconSet');
 				iconService.registerIconSetsAsync('url');
 				expect(registry.addSvgIconSet).toHaveBeenCalled();
 			});
@@ -92,7 +92,7 @@ describe('IconService', () => {
 		describe('registerIconsAsync', () => {
 			it('should register icon sets', () => {
 				// TODO, the http request should be mocked to properly test this case
-				jest.spyOn(registry, 'addSvgIcon');
+				vi.spyOn(registry, 'addSvgIcon');
 				iconService.registerIconsAsync({name: 'test', url: 'url'});
 				expect(registry.addSvgIcon).toHaveBeenCalled();
 			});
@@ -100,7 +100,7 @@ describe('IconService', () => {
 
 		describe('registerOnAppInit', () => {
 			it('should register the Oblique icon set with the default config', () => {
-				jest.spyOn(registry, 'addSvgIconSetLiteral');
+				vi.spyOn(registry, 'addSvgIconSetLiteral');
 
 				iconService.registerOnAppInit();
 
@@ -108,7 +108,7 @@ describe('IconService', () => {
 			});
 
 			it('should register Oblique and additional icon sets', () => {
-				jest.spyOn(registry, 'addSvgIconSetLiteral');
+				vi.spyOn(registry, 'addSvgIconSetLiteral');
 
 				iconService.registerOnAppInit({registerObliqueIcons: true, additionalIcons: [iconSet1]});
 
@@ -116,7 +116,7 @@ describe('IconService', () => {
 			});
 
 			it('should skip icon set registration when Oblique and additional icons are disabled', () => {
-				jest.spyOn(registry, 'addSvgIconSetLiteral');
+				vi.spyOn(registry, 'addSvgIconSetLiteral');
 
 				iconService.registerOnAppInit({registerObliqueIcons: false});
 
@@ -124,7 +124,7 @@ describe('IconService', () => {
 			});
 
 			it('should register a custom font class', () => {
-				jest.spyOn(registry, 'setDefaultFontSetClass');
+				vi.spyOn(registry, 'setDefaultFontSetClass');
 
 				iconService.registerOnAppInit({registerObliqueIcons: false, fontClass: 'custom-icons'});
 
@@ -135,7 +135,7 @@ describe('IconService', () => {
 				const iconServicePrivate = iconService as unknown as ObIconServicePrivate;
 				const getIconSets = iconServicePrivate.getIconSets;
 				Object.defineProperty(iconService, 'getIconSets', {configurable: true, value: () => []});
-				jest.spyOn(registry, 'setDefaultFontSetClass');
+				vi.spyOn(registry, 'setDefaultFontSetClass');
 
 				Reflect.apply(iconService.registerOnAppInit, iconService, [null]);
 
@@ -151,7 +151,7 @@ describe('IconService', () => {
 
 	describe('with default config without Oblique', () => {
 		beforeEach(() => {
-			jest.resetModules();
+			vi.resetModules();
 			TestBed.configureTestingModule({
 				imports: [MatIconTestingModule],
 				providers: [
@@ -177,7 +177,7 @@ describe('IconService', () => {
 
 	describe('with default config without Oblique and with a font class', () => {
 		beforeEach(() => {
-			jest.resetModules();
+			vi.resetModules();
 			TestBed.configureTestingModule({
 				imports: [MatIconTestingModule],
 				providers: [
@@ -203,7 +203,7 @@ describe('IconService', () => {
 
 	describe('with default config without Oblique and with additional icon set', () => {
 		beforeEach(() => {
-			jest.resetModules();
+			vi.resetModules();
 			TestBed.configureTestingModule({
 				imports: [MatIconTestingModule],
 				providers: [

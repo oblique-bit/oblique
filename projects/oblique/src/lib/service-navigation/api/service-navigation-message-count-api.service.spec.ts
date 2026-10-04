@@ -14,7 +14,7 @@ describe('ObServiceNavigationCountApiService', () => {
 			providers: [ObServiceNavigationCountApiService],
 		});
 		httpClient = TestBed.inject(HttpClient);
-		jest.spyOn(httpClient, 'get').mockReturnValue(of({data: 42}));
+		vi.spyOn(httpClient, 'get').mockReturnValue(of({data: 42}));
 		service = TestBed.inject(ObServiceNavigationCountApiService);
 	});
 
@@ -47,7 +47,7 @@ describe('ObServiceNavigationCountApiService', () => {
 		});
 
 		it('should throw a 500 error when the response contains an errorCode', async () => {
-			jest.spyOn(httpClient, 'get').mockReturnValue(of({errorCode: 500}));
+			vi.spyOn(httpClient, 'get').mockReturnValue(of({errorCode: 500}));
 
 			const responsePromise = firstValueFrom(service.get('http://rootUrl/'));
 

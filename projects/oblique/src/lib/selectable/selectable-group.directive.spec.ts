@@ -135,7 +135,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				directive.toggle(items[4]);
 				directive.focus(items[2]);
 				directive.toggle(items[2]);
-				event = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
+				event = {preventDefault: vi.fn()} as unknown as KeyboardEvent;
 			});
 
 			describe('mode property', () => {
@@ -229,7 +229,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				directive.toggle(items[4]);
 				directive.focus(items[2]);
 				directive.toggle(items[2]);
-				event = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
+				event = {preventDefault: vi.fn()} as unknown as KeyboardEvent;
 			});
 
 			describe('mode property', () => {
@@ -353,7 +353,7 @@ describe(ObSelectableGroupDirective.name, () => {
 				directive.focus(items[2]);
 				directive.toggle(items[2]);
 
-				event = {preventDefault: jest.fn()} as unknown as KeyboardEvent;
+				event = {preventDefault: vi.fn()} as unknown as KeyboardEvent;
 			});
 
 			describe('mode property', () => {
@@ -469,7 +469,7 @@ describe(ObSelectableGroupDirective.name, () => {
 
 				it('onShiftArrowUp should not change the selection before the first item', () => {
 					directive.focus(items[0]);
-					jest.spyOn(items[0], 'focus');
+					vi.spyOn(items[0], 'focus');
 
 					const selection = directive.selected();
 
@@ -500,7 +500,7 @@ describe(ObSelectableGroupDirective.name, () => {
 
 				it('onShiftArrowDown should not change the selection after the last item', () => {
 					directive.focus(items[4]);
-					jest.spyOn(items[4], 'focus');
+					vi.spyOn(items[4], 'focus');
 
 					const selection = directive.selected();
 
@@ -518,7 +518,7 @@ describe(ObSelectableGroupDirective.name, () => {
 
 				it('onCtrlArrowUp should not focus before the first item', () => {
 					directive.focus(items[0]);
-					jest.spyOn(items[0], 'focus');
+					vi.spyOn(items[0], 'focus');
 
 					directive.onCtrlArrowUp(event);
 
@@ -532,7 +532,7 @@ describe(ObSelectableGroupDirective.name, () => {
 
 				it('onCtrlArrowDown should not focus after the last item', () => {
 					directive.focus(items[4]);
-					jest.spyOn(items[4], 'focus');
+					vi.spyOn(items[4], 'focus');
 
 					directive.onCtrlArrowDown(event);
 

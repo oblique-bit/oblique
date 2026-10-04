@@ -26,7 +26,7 @@ describe('ObServiceNavigationApplicationsApiService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({imports: [HttpClientTestingModule]});
 		httpClient = TestBed.inject(HttpClient);
-		jest.spyOn(httpClient, 'post').mockReturnValue(of(mockUrls));
+		vi.spyOn(httpClient, 'post').mockReturnValue(of(mockUrls));
 		service = TestBed.inject(ObServiceNavigationApplicationsApiService);
 	});
 

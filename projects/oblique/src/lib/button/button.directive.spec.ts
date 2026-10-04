@@ -249,7 +249,7 @@ describe(ObButtonDirective.name, () => {
 				},
 			}).createComponent(ButtonDirectiveTestComponent);
 			obConsoleService = TestBed.inject(ObConsoleService);
-			jest.spyOn(obConsoleService, 'error');
+			vi.spyOn(obConsoleService, 'error');
 			component = fixture.componentInstance;
 			TestBed.tick();
 			const element = fixture.debugElement.query(By.directive(ObButtonDirective));
@@ -257,7 +257,7 @@ describe(ObButtonDirective.name, () => {
 		});
 
 		afterEach(() => {
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 
 		it('should be button', () => {

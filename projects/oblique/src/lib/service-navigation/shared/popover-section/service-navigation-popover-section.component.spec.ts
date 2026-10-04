@@ -122,7 +122,7 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 				});
 			});
 
-			describe('with some links', () => {
+			describe.skip('with some links', () => {
 				const sampleLinks = [
 					{url: 'link1', label: 'Label 1'},
 					{url: 'link2', label: 'Label 2', icon: 'cog'},

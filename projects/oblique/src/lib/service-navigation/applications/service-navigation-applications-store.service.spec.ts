@@ -14,14 +14,14 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [
-				{provide: ObServiceNavigationApplicationsApiService, useValue: {fetchApplicationsInfo: jest.fn()}},
+				{provide: ObServiceNavigationApplicationsApiService, useValue: {fetchApplicationsInfo: vi.fn()}},
 				{provide: ObGlobalEventsService, useValue: {beforeUnload$: mockedBeforeUnload}},
 			],
 		});
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 	});
 
 	describe.each([
@@ -45,7 +45,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				let result: ObIServiceNavigationApplicationInfo[];
 				const mockData = buildMockData(1);
 				beforeEach(async () => {
-					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
+					vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
 					result = await firstValueFrom(
 						service.fetchApplicationsInfo('rootUrl', [
 							{
@@ -78,7 +78,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				const results: ObIServiceNavigationApplicationInfo[][] = [];
 				const mockData = buildMockData(1);
 				beforeEach(async () => {
-					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
+					vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
 					results.push(
 						await firstValueFrom(
 							service.fetchApplicationsInfo('rootUrl', [
@@ -91,7 +91,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					);
 				});
 				beforeEach(async () => {
-					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
+					vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
 					results.push(
 						await firstValueFrom(
 							service.fetchApplicationsInfo('rootUrl', [
@@ -126,7 +126,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				const mockData = buildMockData(1, 2);
 				const results: ObIServiceNavigationApplicationInfo[][] = [];
 				beforeEach(async () => {
-					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
+					vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
 					results.push(
 						await firstValueFrom(
 							service.fetchApplicationsInfo('rootUrl', [
@@ -140,7 +140,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				});
 
 				beforeEach(async () => {
-					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[1]]));
+					vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[1]]));
 					results.push(
 						await firstValueFrom(
 							service.fetchApplicationsInfo('rootUrl', [
@@ -181,7 +181,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				const mockData = buildMockData(1, 2);
 				const results: ObIServiceNavigationApplicationInfo[][] = [];
 				beforeEach(async () => {
-					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
+					vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
 					results.push(
 						await firstValueFrom(
 							service.fetchApplicationsInfo('rootUrl', [
@@ -195,7 +195,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				});
 
 				beforeEach(async () => {
-					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
+					vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
 					results.push(
 						await firstValueFrom(
 							service.fetchApplicationsInfo('rootUrl', [
@@ -245,8 +245,8 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 	describe('with window', () => {
 		beforeEach(() => {
 			TestBed.overrideProvider(WINDOW, {useValue: window});
-			jest.spyOn(window.localStorage, 'setItem');
-			jest.spyOn(window.localStorage, 'removeItem');
+			vi.spyOn(window.localStorage, 'setItem');
+			vi.spyOn(window.localStorage, 'removeItem');
 		});
 
 		describe('on unload', () => {
@@ -267,7 +267,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 
 		describe('with empty localStorage', () => {
 			beforeEach(() => {
-				jest.spyOn(window.localStorage, 'getItem').mockReturnValue(null);
+				vi.spyOn(window.localStorage, 'getItem').mockReturnValue(null);
 				service = TestBed.inject(ObServiceNavigationApplicationsStoreService);
 				applicationService = TestBed.inject(ObServiceNavigationApplicationsApiService);
 			});
@@ -285,7 +285,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					let result: ObIServiceNavigationApplicationInfo[];
 					const mockData = buildMockData(1);
 					beforeEach(async () => {
-						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
+						vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
 						result = await firstValueFrom(
 							service.fetchApplicationsInfo('rootUrl', [
 								{
@@ -329,7 +329,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					const results: ObIServiceNavigationApplicationInfo[][] = [];
 					const mockData = buildMockData(1);
 					beforeEach(async () => {
-						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
+						vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
 						results.push(
 							await firstValueFrom(
 								service.fetchApplicationsInfo('rootUrl', [
@@ -342,7 +342,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 						);
 					});
 					beforeEach(async () => {
-						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
+						vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
 						results.push(
 							await firstValueFrom(
 								service.fetchApplicationsInfo('rootUrl', [
@@ -388,7 +388,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					const mockData = buildMockData(1, 2);
 					const results: ObIServiceNavigationApplicationInfo[][] = [];
 					beforeEach(async () => {
-						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
+						vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
 						results.push(
 							await firstValueFrom(
 								service.fetchApplicationsInfo('rootUrl', [
@@ -402,7 +402,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					});
 
 					beforeEach(async () => {
-						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[1]]));
+						vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[1]]));
 						results.push(
 							await firstValueFrom(
 								service.fetchApplicationsInfo('rootUrl', [
@@ -463,7 +463,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					const mockData = buildMockData(1, 2);
 					const results: ObIServiceNavigationApplicationInfo[][] = [];
 					beforeEach(async () => {
-						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
+						vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
 						results.push(
 							await firstValueFrom(
 								service.fetchApplicationsInfo('rootUrl', [
@@ -477,7 +477,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					});
 
 					beforeEach(async () => {
-						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
+						vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
 						results.push(
 							await firstValueFrom(
 								service.fetchApplicationsInfo('rootUrl', [
@@ -547,7 +547,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 		describe('with non empty localStorage', () => {
 			beforeEach(() => {
 				TestBed.overrideProvider(WINDOW, {useValue: window});
-				jest.spyOn(window.localStorage, 'getItem').mockReturnValue(
+				vi.spyOn(window.localStorage, 'getItem').mockReturnValue(
 					JSON.stringify({
 						'1_0': {
 							applicationID: 1,
@@ -576,7 +576,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 					let result: ObIServiceNavigationApplicationInfo[];
 					const mockData = buildMockData(1);
 					beforeEach(async () => {
-						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
+						vi.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
 						result = await firstValueFrom(
 							service.fetchApplicationsInfo('rootUrl', [
 								{

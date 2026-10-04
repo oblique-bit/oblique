@@ -50,7 +50,7 @@ Use Node.js lts/krypton (v24.*) and install from the repository root.
 
 ## Tests
 
-Jest: `oblique`. Vitest: `cli`, `design-system`, `sandbox`, `sandbox-ssr`, `sds`, `toolchain`, `service-navigation-web-component`, `cli-registry`, and the package's Angular tooling for Angular packages. Add behavior regression tests, including tests and fixtures for new helpers.
+Vitest: `cli`, `design-system`, `oblique`, `sandbox`, `sandbox-ssr`, `sds`, `toolchain`, `service-navigation-web-component`, `cli-registry`, and the package's Angular tooling for Angular packages. Add behavior regression tests, including tests and fixtures for new helpers.
 
 Playwright e2e: `sandbox-e2e` runs the sandbox in a browser and catches what unit tests cannot: broken wiring, missing elements, and interactions that only fail at runtime. When a change touches functionality demonstrated by a sandbox sample, run the e2e suite to check the work. Adding or adjusting e2e tests is a deliberate choice: suggest it as a separate follow-up change. Read `projects/sandbox-e2e/docs/e2e-testing.md` before writing or changing e2e tests; it covers ownership, conventions, and how to run a single spec file.
 

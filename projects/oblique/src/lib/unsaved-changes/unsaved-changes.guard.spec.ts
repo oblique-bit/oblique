@@ -6,7 +6,7 @@ describe('ObUnsavedChangesGuard', () => {
 	let guard: ObUnsavedChangesGuard;
 
 	const mockUnsavedChangesService = {
-		canDeactivate: jest.fn(),
+		canDeactivate: vi.fn(),
 	};
 
 	beforeEach(() => {
@@ -28,7 +28,7 @@ describe('ObUnsavedChangesGuard', () => {
 		});
 
 		it.each([false, true])('should return %s when the ObUnsavedChangesService returns %s', $expected => {
-			jest.spyOn(mockUnsavedChangesService, 'canDeactivate').mockReturnValue($expected);
+			vi.spyOn(mockUnsavedChangesService, 'canDeactivate').mockReturnValue($expected);
 
 			expect(guard.canDeactivate()).toBe($expected);
 		});
