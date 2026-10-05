@@ -21,7 +21,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 	});
 
 	afterEach(() => {
-		jest.resetAllMocks();
+		jest.clearAllMocks();
 	});
 
 	describe.each([

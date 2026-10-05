@@ -133,7 +133,7 @@ describe(ObMultiTranslateLoader.name, () => {
 			});
 
 			afterEach(() => {
-				jest.restoreAllMocks();
+				jest.clearAllMocks();
 			});
 
 			test('should return an empty object', () => {

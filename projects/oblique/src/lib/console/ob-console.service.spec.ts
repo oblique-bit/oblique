@@ -10,7 +10,7 @@ describe(ObConsoleService.name, () => {
 	});
 
 	afterEach(() => {
-		jest.resetAllMocks();
+		jest.clearAllMocks();
 	});
 
 	describe('with default config', () => {

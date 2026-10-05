@@ -258,7 +258,7 @@ describe(ObButtonDirective.name, () => {
 		});
 
 		afterEach(() => {
-			jest.resetAllMocks();
+			jest.clearAllMocks();
 		});
 
 		it('should be button', () => {

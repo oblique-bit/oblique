@@ -30,7 +30,7 @@ describe(ObSpinnerService.name, () => {
 	});
 
 	afterEach(() => {
-		jest.resetAllMocks();
+		jest.clearAllMocks();
 	});
 
 	it('should emit a SpinnerEvent if activated', done => {
