@@ -6,7 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Subject, of} from 'rxjs';
 import {WINDOW} from '../window/window.provider';
 import {ObExternalLinkDirective} from './external-link.directive';
-import {EXTERNAL_LINK} from './external-link.model';
+import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 
 @Component({
 	standalone: false,
@@ -15,6 +15,7 @@ import {EXTERNAL_LINK} from './external-link.model';
 })
 class TestComponent {
 	href = signal('');
+	icon = signal<ObEExternalLinkIcon>('none');
 }
 
 @Component({
@@ -24,7 +25,7 @@ class TestComponent {
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class BoundAttributeTestComponent {
-	icon = signal<string | null | undefined>(undefined);
+	icon = signal<ObEExternalLinkIcon>(undefined);
 	rel = signal<string | null | undefined>(undefined);
 	target = signal<string | null | undefined>(undefined);
 	isExternalLink = signal<boolean | 'auto'>(false);
@@ -223,7 +224,7 @@ describe(ObExternalLinkDirective.name, () => {
 
 		describe('markup with no icon', () => {
 			beforeEach(() => {
-				directive.icon = 'none';
+				fixture.componentInstance.icon.set('none');
 				directive.ngOnChanges();
 				fixture.detectChanges();
 			});
@@ -359,7 +360,7 @@ describe(ObExternalLinkDirective.name, () => {
 
 	describe('with dynamic link', () => {
 		beforeEach(() => {
-			TestBed.overrideComponent(TestComponent, {set: {template: `<a [href]="href">Dynamic Link</a>`}});
+			TestBed.overrideComponent(TestComponent, {set: {template: `<a [href]="href()">Dynamic Link</a>`}});
 			fixture = TestBed.createComponent(TestComponent);
 		});
 
@@ -372,7 +373,7 @@ describe(ObExternalLinkDirective.name, () => {
 			{case: 'internal link without href', href: '', isExternal: false},
 			{case: 'internal link with href /internal', href: '/internal', isExternal: false},
 		])('$case', ({href, isExternal}) => {
-			(fixture.componentInstance as TestComponent).href = href;
+			(fixture.componentInstance as TestComponent).href.set(href);
 			const debugElement = fixture.debugElement.query(By.css('a'));
 			element = debugElement.nativeElement;
 			fixture.detectChanges();
