@@ -26,7 +26,7 @@ window.ResizeObserver = ResizeObserver;
 
 @Component({
 	selector: 'ob-test',
-	standalone: false,
+	imports: [ObColumnLayoutComponent],
 	template: `<ob-column-layout [left]="left()" [right]="right()" />`,
 })
 class TestComponent {
@@ -233,8 +233,7 @@ describe(ObColumnLayoutComponent.name, () => {
 				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
 			});
 			await TestBed.configureTestingModule({
-				imports: [ObColumnLayoutComponent, TranslatePipe],
-				declarations: [TestComponent],
+				imports: [ObColumnLayoutComponent, TranslatePipe, TestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});

@@ -9,7 +9,7 @@ import {ObExternalLinkDirective} from './external-link.directive';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 
 @Component({
-	standalone: false,
+	imports: [ObExternalLinkDirective],
 	template: `<a href="http://www.google.ch" [icon]="icon()">External Link</a>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
@@ -41,8 +41,7 @@ describe(ObExternalLinkDirective.name, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [ObExternalLinkDirective],
-			declarations: [TestComponent],
+			imports: [ObExternalLinkDirective, TestComponent],
 			providers: [
 				{provide: WINDOW, useValue: window},
 				{

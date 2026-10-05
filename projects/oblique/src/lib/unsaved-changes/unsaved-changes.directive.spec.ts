@@ -8,7 +8,7 @@ import {ObUnsavedChangesService} from './unsaved-changes.service';
 
 @Component({
 	selector: 'ob-test',
-	standalone: false,
+	imports: [ObUnsavedChangesDirective, CommonModule],
 	template: `<form [isActive]="isActive()" [id]="formId()" obUnsavedChanges></form>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
@@ -19,7 +19,7 @@ class TestComponent {
 
 @Component({
 	selector: 'ob-test-empty-id',
-	standalone: false,
+	imports: [ObUnsavedChangesDirective, CommonModule],
 	template: `<form [isActive]="isActive()" [id]="emptyId()" obUnsavedChanges></form>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
@@ -56,9 +56,8 @@ describe(ObUnsavedChangesDirective.name, () => {
 		};
 
 		await TestBed.configureTestingModule({
-			declarations: [TestComponent, TestComponentWithEmptyId],
 			providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
-			imports: [ObUnsavedChangesDirective, CommonModule],
+			imports: [ObUnsavedChangesDirective, CommonModule, TestComponent, TestComponentWithEmptyId],
 		}).compileComponents();
 	});
 

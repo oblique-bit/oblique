@@ -10,7 +10,6 @@ import {provideObliqueTestingConfiguration} from '../../utilities';
 
 @Pipe({
 	name: 'obAcceptAll',
-	standalone: false,
 })
 export class ObMockAreAllTypesAllowedPipe implements PipeTransform {
 	transform(): boolean {
@@ -30,8 +29,7 @@ describe('DropZoneComponent', () => {
 	beforeEach(async () => {
 		TestBed.overrideProvider(ObValidationService, {useValue: service});
 		await TestBed.configureTestingModule({
-			imports: [ObDropZoneComponent],
-			declarations: [ObMockAreAllTypesAllowedPipe],
+			imports: [ObDropZoneComponent, ObMockAreAllTypesAllowedPipe],
 			schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();

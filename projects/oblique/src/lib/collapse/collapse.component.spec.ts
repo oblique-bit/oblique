@@ -12,7 +12,7 @@ import {
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 
 @Component({
-	standalone: false,
+	imports: [ObCollapseComponent, MatIconTestingModule],
 	template: `
 		<ob-collapse />
 		<ob-collapse id="my-custom-id-for-test" />
@@ -23,7 +23,7 @@ import {MatIconTestingModule} from '@angular/material/icon/testing';
 class TestCollapseComponent {}
 
 @Component({
-	standalone: false,
+	imports: [ObCollapseComponent, MatIconTestingModule],
 	template: '<ob-collapse [(active)]="active" (activeChange)="activeChanges.push($event)" />',
 })
 class TestCollapseBindingComponent {
@@ -144,8 +144,7 @@ describe(ObCollapseComponent.name, () => {
 	describe('without token', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObCollapseComponent, MatIconTestingModule],
-				declarations: [TestCollapseBindingComponent],
+				imports: [ObCollapseComponent, MatIconTestingModule, TestCollapseBindingComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 			}).compileComponents();
@@ -301,8 +300,7 @@ describe(ObCollapseComponent.name, () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [TestCollapseComponent],
-				imports: [ObCollapseComponent, MatIconTestingModule],
+				imports: [ObCollapseComponent, MatIconTestingModule, TestCollapseComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 			}).compileComponents();
@@ -348,8 +346,7 @@ describe(ObCollapseComponent.name, () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [TestCollapseComponent],
-				imports: [ObCollapseComponent, MatIconTestingModule],
+				imports: [ObCollapseComponent, MatIconTestingModule, TestCollapseComponent],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				providers: [{provide: WINDOW, useValue: window}, ObGlobalEventsService],
 			})

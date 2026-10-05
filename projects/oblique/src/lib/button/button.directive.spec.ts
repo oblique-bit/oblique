@@ -6,8 +6,8 @@ import {ObButtonDirective} from './button.directive';
 import {ObConsoleService} from '../console/ob-console.service';
 
 @Component({
-	standalone: false,
-	template: '',
+	imports: [MatButtonModule, ObButtonDirective],
+	template: '<button type="button" mat-button obButton="primary">Primary</button>',
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class ButtonDirectiveTestComponent {
@@ -32,8 +32,7 @@ describe(ObButtonDirective.name, () => {
 	beforeEach(async () => {
 		TestBed.resetTestingModule();
 		await TestBed.configureTestingModule({
-			declarations: [ButtonDirectiveTestComponent],
-			imports: [MatButtonModule, ObButtonDirective],
+			imports: [MatButtonModule, ObButtonDirective, ButtonDirectiveTestComponent],
 		}).compileComponents();
 	});
 

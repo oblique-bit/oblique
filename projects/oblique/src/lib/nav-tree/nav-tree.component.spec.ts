@@ -9,7 +9,7 @@ import {ObNavTreeComponent, defaultPatternMatcherFactory} from './nav-tree.compo
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
-	standalone: false,
+	imports: [ObNavTreeComponent],
 	template: ` <ob-nav-tree
 		[items]="items"
 		[prefix]="prefix"
@@ -60,7 +60,7 @@ class TestComponent {
 }
 
 @Component({
-	standalone: false,
+	imports: [ObNavTreeComponent],
 	template: ` <ob-nav-tree [items]="items" />`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
@@ -107,8 +107,7 @@ describe(ObNavTreeComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObNavTreeComponent, RouterModule.forRoot([])],
-			declarations: [TestComponent, TestComponentDefault],
+			imports: [ObNavTreeComponent, RouterModule.forRoot([]), TestComponent, TestComponentDefault],
 			providers: [provideObliqueTestingConfiguration()],
 			schemas: [NO_ERRORS_SCHEMA],
 		}).compileComponents();
@@ -319,8 +318,7 @@ describe(ObNavTreeComponent.name, () => {
 		beforeEach(async () => {
 			fragment$ = new BehaviorSubject<string | null>(null);
 			await TestBed.configureTestingModule({
-				imports: [ObNavTreeComponent, RouterModule.forRoot([])],
-				declarations: [TestComponentDefault],
+				imports: [ObNavTreeComponent, RouterModule.forRoot([]), TestComponentDefault],
 				providers: [provideObliqueTestingConfiguration(), {provide: ActivatedRoute, useValue: {fragment: fragment$}}],
 				schemas: [NO_ERRORS_SCHEMA],
 			}).compileComponents();

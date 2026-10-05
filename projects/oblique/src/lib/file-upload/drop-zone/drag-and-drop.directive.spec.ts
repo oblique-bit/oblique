@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {ObDragDropDirective} from './drag-and-drop.directive';
 
 @Component({
-	standalone: false,
+	imports: [ObDragDropDirective],
 	template: `<input obDragDrop (fileDropped)="saveFiles($event)" />`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
@@ -20,8 +20,7 @@ describe(ObDragDropDirective.name, () => {
 	let input: DebugElement;
 	beforeEach(() => {
 		fixture = TestBed.configureTestingModule({
-			imports: [ObDragDropDirective],
-			declarations: [TestDropDirectiveComponent],
+			imports: [ObDragDropDirective, TestDropDirectiveComponent],
 		}).createComponent(TestDropDirectiveComponent);
 		input = fixture.debugElement.query(By.directive(ObDragDropDirective));
 		fixture.detectChanges();

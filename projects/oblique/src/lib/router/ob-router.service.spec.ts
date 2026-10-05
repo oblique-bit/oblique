@@ -11,7 +11,6 @@ import {ObLanguageService} from '../language/language.service';
 import {firstValueFrom} from 'rxjs';
 
 @Component({
-	standalone: false,
 	template: '',
 	changeDetection: ChangeDetectionStrategy.Eager,
 })

@@ -14,7 +14,7 @@ interface ObSelectableGroupDirectivePrivate<T> {
 }
 
 @Component({
-	standalone: false,
+	imports: [ObSelectableGroupDirective, ObMockSelectableDirective, ReactiveFormsModule],
 	template: `<div obSelectableGroup [mode]="outerMode()" [disabled]="outerDisabled()">
 		<div obSelectable [value]="1"></div>
 		<div obSelectable [value]="2"></div>
@@ -29,7 +29,7 @@ class TestComponent {
 }
 
 @Component({
-	standalone: false,
+	imports: [ObMockSelectableDirective],
 	template: `
 		<div obSelectable [value]="0"></div>
 		<div obSelectable [value]="1"></div>
@@ -49,9 +49,14 @@ describe(ObSelectableGroupDirective.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObSelectableGroupDirective, ObMockSelectableDirective, ReactiveFormsModule],
+			imports: [
+				ObSelectableGroupDirective,
+				ObMockSelectableDirective,
+				ReactiveFormsModule,
+				TestComponent,
+				ItemsTestComponent,
+			],
 			providers: [{provide: WINDOW, useValue: window}],
-			declarations: [TestComponent, ItemsTestComponent],
 		}).compileComponents();
 	});
 

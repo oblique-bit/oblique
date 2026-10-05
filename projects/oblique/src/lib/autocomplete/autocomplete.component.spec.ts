@@ -34,7 +34,7 @@ import {ObAutocompleteComponent} from './autocomplete.component';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
-	standalone: false,
+	imports: [ObAutocompleteComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule],
 	template: `<ob-autocomplete />`,
 })
 class TestParentComponent {
@@ -84,8 +84,8 @@ describe(ObAutocompleteComponent.name, () => {
 				ObOptionLabelIconModule,
 				CommonModule,
 				MatIconTestingModule,
+				TestParentComponent,
 			],
-			declarations: [TestParentComponent],
 			providers: [provideObliqueTestingConfiguration(), {provide: ObAutocompleteTextToFindService}],
 		}).compileComponents();
 	});

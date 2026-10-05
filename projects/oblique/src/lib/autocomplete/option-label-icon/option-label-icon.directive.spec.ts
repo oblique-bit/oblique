@@ -15,8 +15,8 @@ interface ObOptionLabelIconDirectivePrivate {
 }
 
 @Component({
-	standalone: false,
-	template: '',
+	imports: [ObOptionLabelIconDirective, MatIconModule, CommonModule],
+	template: '<div obOptionLabelIcon>Text</div>',
 })
 class OptionLabelTestComponent {
 	iconName = signal<ObEIcon | ''>('');
@@ -32,8 +32,7 @@ describe(ObOptionLabelIconDirective.name, () => {
 	beforeEach(async () => {
 		TestBed.resetTestingModule();
 		await TestBed.configureTestingModule({
-			declarations: [OptionLabelTestComponent],
-			imports: [ObOptionLabelIconDirective, MatIconModule, CommonModule],
+			imports: [ObOptionLabelIconDirective, MatIconModule, CommonModule, OptionLabelTestComponent],
 			providers: [
 				provideObliqueTestingConfiguration(),
 				{provide: ObIconService, useClass: ObIconService},
