@@ -11,7 +11,7 @@
         "variant": {
           "$type": "text",
           "$value": "mobile",
-          "$description": "[FIGMA-ONLY] Pseudo / temporary. Selects the _pseudo_header component variant for the md viewport. Mobile header below lg, desktop from lg up. Bind to the header component's variant property; delete when the real header ships."
+          "$description": "[FIGMA-ONLY] Pseudo / temporary. Selects the _pseudo_header component variant for the current viewport. Mobile header below lg, desktop from lg up. Bind to the header component's variant property; delete when the real header ships."
         }
       }
     }

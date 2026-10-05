@@ -12,12 +12,12 @@
           "min_width": {
             "$type": "dimension",
             "$value": "{ob.g.mode_collection.viewport.range.lg.from}",
-            "$description": "Minimum width of a page container in the lg viewport."
+            "$description": "Minimum width of a page container in the current viewport mode. In xs it is the minimum page width the system supports and does not reference the range start (0px)."
           },
           "max_width": {
             "$type": "dimension",
             "$value": "{ob.g.mode_collection.viewport.range.lg.to}",
-            "$description": "Maximum width of a page container in the lg viewport."
+            "$description": "Maximum width of a page container in the current viewport mode. The 2xl range is open-ended; its value 99999px is a sentinel, not a real breakpoint."
           }
         }
       }

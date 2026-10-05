@@ -17,22 +17,22 @@
           "micro": {
             "$type": "duration",
             "$value": "{ob.p.motion.duration.instant}",
-            "$description": "Reduced motion: instant transition"
+            "$description": "For hover states, focus rings, and micro-interactions. Reduced motion: instant transition."
           },
           "smooth": {
             "$type": "duration",
             "$value": "{ob.p.motion.duration.instant}",
-            "$description": "Reduced motion: instant transition"
+            "$description": "For tooltips, dropdowns, and smooth transitions. Reduced motion: instant transition."
           },
           "comfortable": {
             "$type": "duration",
             "$value": "{ob.p.motion.duration.instant}",
-            "$description": "Reduced motion: instant transition"
+            "$description": "For modals, sidebars, and prominent UI changes. Reduced motion: instant transition."
           },
           "relaxed": {
             "$type": "duration",
             "$value": "{ob.p.motion.duration.instant}",
-            "$description": "Reduced motion: instant transition"
+            "$description": "For page transitions and major layout shifts. Reduced motion: instant transition."
           }
         }
       }
