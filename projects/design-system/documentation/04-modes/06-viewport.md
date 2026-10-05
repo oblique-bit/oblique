@@ -58,7 +58,8 @@ semantic tokens in `03_semantic/dimension/viewport/`.
   maximum width of the page-container component, per viewport. One file
   per viewport (`xs.json` … `2xl.json`). `min_width` resolves to the
   range's `from`, `max_width` to its `to`. `2xl` is open-ended, so its
-  `max_width` is a `99999px` sentinel.
+  `max_width` is a `99999px` sentinel. In CSS the viewport widths are rem (see the
+  [Token Usage Guide](../05-reference/01-token-usage-guide.md)).
 
 ## Activating a viewport
 

@@ -55,7 +55,7 @@ There is deliberately no parallel `ob.p.border.*` scale to keep in sync. The onl
 
 `rounded` is the full-rounding step (pill shapes and circles). Note the primitive it points at is keyed `9999` but carries the `$value` `999`, so the emitted custom property is `--ob-s-border_radius-rounded: 999px`. The primitive's own `$description` reads "Maximum value for full rounding".
 
-None of the radius tokens carry an individual `$description`; the file relies on the family description quoted at the top of this page. The unit of border radius in CSS is not decided yet; the CSS column shows what is emitted today.
+None of the radius tokens carry an individual `$description`; the file relies on the family description quoted at the top of this page. The unit of border radius in CSS is px (see the [Token Usage Guide](../05-reference/01-token-usage-guide.md)); the CSS column shows what is emitted today.
 
 ---
 

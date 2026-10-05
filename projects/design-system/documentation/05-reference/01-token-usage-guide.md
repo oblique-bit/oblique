@@ -217,13 +217,11 @@ Dimension tokens are authored in **px**, because Figma works in px. Where rem is
 
 #### The rule
 
-**rem in CSS** for the dimension groups that should scale with the user's browser font size: `ui_scale.spacing`, `ui_scale.element`, `ui_scale.container`, `ui_scale.layout`, `ui_scale.macro`, `density`, and `typography_context`. This covers padding, margins, gaps, component heights and widths — essentially everything that contributes to the spatial layout of a component.
+**rem in CSS** for the dimension groups that should scale with the user's browser font size: `ui_scale.spacing`, `ui_scale.element`, `ui_scale.container`, `ui_scale.layout`, `ui_scale.macro`, `density`, and `typography_context`. This covers padding, margins, gaps, component heights and widths — essentially everything that contributes to the spatial layout of a component. The viewport widths (`ob.s.dimension.viewport.min_width` and `max_width`, the breakpoints) are rem in CSS too.
 
-**px in CSS** where sub-rem precision matters and scaling would cause visual artifacts: `ui_scale.micro` and `ui_scale.none`, border widths, outline offsets, the focus ring and icon sizes. The rule is decided per use, not per step: an icon size aliases a spacing step and still stays px.
+**px in CSS** where sub-rem precision matters and scaling would cause visual artifacts: `ui_scale.micro` and `ui_scale.none`, border widths, border radius, outline offsets, the focus ring and icon sizes, including the inline text icon size (`ob.c.icon.typography_context.size.body`, a `typography_context` token that sizes an icon). A component token that uses a `ui_scale.micro` step for padding or gap (infobox, popover and link spacing) is px too. The rule is decided per use, not per step: an icon size aliases a spacing step and still stays px.
 
 **em in CSS:** the inline icon baseline offset (`ob.c.icon.inline_text.body.spacing.vertical.offset`). The token is px; its description tells developers to implement it as `0.125em`.
-
-**Not decided yet:** border radius, the viewport widths (breakpoints), the inline text icon size (`ob.c.icon.typography_context.size.body`, a `typography_context` token used for an icon), and the component tokens that use a `ui_scale.micro` step for padding or gap (infobox, popover and link spacing).
 
 **Typography:** the static typography scale (font sizes, line heights, paragraph spacing) stays in rem: Token Studio converts rem font sizes to px for Figma correctly.
 
