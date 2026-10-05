@@ -42,15 +42,21 @@ token path (dots → "/", leading "ob." stripped) — this is the raw,
 tier-prefixed form ("s/typography/authoring/static/xs/normal",
 "h/heading/H1"), not the friendly one a designer picks from.
 
-**Known gotcha — composite tokens recreate regardless of set status.** A
-`$type: "typography"` (or other composite) token pushes as a Figma *Style*,
-not a Variable. Style creation for these does not respect a token set's
-Enabled/Source/Disabled status the way variable creation does — confirmed
-2026-09-14 for "05_html/link/link": neither Treat as Source nor Disabled, set
-on every theme including the always-on "static" one, stopped Token Studio
-from recreating "h/link/enabled/hover/focus/active" on export. The only
-working fix is deleting it after each export — `run-cosmetics.js`'s
+**Known gotcha — composite tokens recreate while their set is listed in a
+theme.** A `$type: "typography"` (or other composite) token pushes as a Figma
+*Style*, not a Variable. Style creation for these does not respect a token
+set's Enabled/Source/Disabled status the way variable creation does —
+confirmed 2026-09-14 for "05_html/link/link": neither Treat as Source nor
+Disabled, set on every theme including the always-on "static" one, stopped
+Token Studio from recreating "h/link/enabled/hover/focus/active" on export.
+The working fix is deleting it after each export — `run-cosmetics.js`'s
 `textStyles.deletePrefixes` does this.
+
+A set that is not listed in any theme at all (absent from `selectedTokenSets`
+of every theme) does not create styles. The first export into the V9.9 file
+showed it: the link set and the pill reference set are in no theme, and
+neither made a style. To keep the composite tokens of a set out of Figma,
+leave the set out of every theme instead of setting it to Source or Disabled.
 
 **Known gotcha — a re-export after a token path change orphans the cosmetic
 rename.** Token Studio matches styles/variables by name derived from the
