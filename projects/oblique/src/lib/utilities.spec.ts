@@ -60,7 +60,10 @@ class FakeLoader implements TranslateLoader {
 describe('utilities', () => {
 	const getDefaultObliqueConfiguration = (): ObIObliqueConfigurationWithDefaults => ({
 		accessibilityStatement,
+		historyState: {initialLength: 0},
+		banner: undefined,
 		material: {
+			OB_MAT_ERROR_PREFIX: null,
 			MAT_FORM_FIELD_DEFAULT_OPTIONS: {appearance: 'outline'},
 			STEPPER_GLOBAL_OPTIONS: {displayDefaultIndicatorType: false},
 			MAT_CHECKBOX_OPTIONS: {color: 'primary'},

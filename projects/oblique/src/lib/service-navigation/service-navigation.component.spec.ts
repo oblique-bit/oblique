@@ -12,6 +12,7 @@ import {ObServiceNavigationLanguagesHarness} from './languages/service-navigatio
 import {ObServiceNavigationComponent} from './service-navigation.component';
 import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
+import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
 import {ObEPamsEnvironment, ObLoginState} from './service-navigation.model';
 import {RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
@@ -62,12 +63,12 @@ describe('ObServiceNavigationComponent', () => {
 		lastUsedApplications: signal([{test: true}]),
 		favoriteApplications: signal([{test: true}]),
 		language: signal('en'),
-		infoBackend: signal({
+		infoBackend: signal<ObIServiceNavigationBackendInfo>({
 			description: 'backend description text',
 			helpText: 'backend help text',
 			links: [{url: 'backend url link1', label: 'backend label link1'}],
 			contactText: 'backend contact text',
-			contact: {tel: 'backend phone', email: 'backend email', contactUrl: 'backend contactUrl'},
+			contact: {phone: 'backend phone', email: 'backend email', formUrl: 'backend contactUrl'},
 		}),
 		languages: signal([{code: 'en', label: 'English'}]),
 		setLanguage: jest.fn(),
@@ -505,7 +506,7 @@ describe('ObServiceNavigationComponent', () => {
 						input: 'links',
 					},
 					{
-						inputExpectedResult: {contactUrl: 'backend contactUrl', email: 'backend email', tel: 'backend phone'},
+						inputExpectedResult: {formUrl: 'backend contactUrl', email: 'backend email', phone: 'backend phone'},
 						input: 'contact',
 					},
 				])(

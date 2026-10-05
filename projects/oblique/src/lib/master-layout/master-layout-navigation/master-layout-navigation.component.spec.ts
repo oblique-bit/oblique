@@ -279,7 +279,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				fixture.componentRef.setInput('links', null);
 				const mouseEvent = new MouseEvent('click');
 
-				component.removeMenuItem(new ObNavigationLink({id: 'missing'}), mouseEvent);
+				component.removeMenuItem(new ObNavigationLink({id: 'missing', label: ''}), mouseEvent);
 
 				expect(component.links()).toEqual([]);
 			});
@@ -317,7 +317,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				fixture.componentRef.setInput('links', null);
 				const mouseEvent = new MouseEvent('click');
 
-				component.removeMenuItem(new ObNavigationLink({id: 'missing'}), mouseEvent);
+				component.removeMenuItem(new ObNavigationLink({id: 'missing', label: ''}), mouseEvent);
 
 				expect(component.links()).toEqual([]);
 			});
