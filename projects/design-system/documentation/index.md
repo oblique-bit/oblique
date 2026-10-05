@@ -43,7 +43,7 @@ Design tokens are the natural next step, answering these demands directly.
 - No components, in the token JSON or in the Figma library. It currently holds variables and text/effect styles only; components will be added in 2027.
 
 ### Development line
-The Design System of Oblique 16 is on the git branch `tokens-release-16`. Work after Oblique 16 happens on the git branch `tokens-dev`. It holds working versions of some component token sets (badge, icon, infobox, pill, popover, spinner, tag, tooltip), the `ob.h.list.*` tokens and the footer setting `ob.g.component.footer.*`. They can change and are not part of this release. The icon tokens are documented in [Icon](06-components/icon/01-overview.md).
+The Design System of Oblique 16 is on the git branch `tokens-release-16`. Work after Oblique 16 happens on the git branch `tokens-dev`. It holds working versions of some component token sets (badge, icon, infobox, pill, popover, spinner, tag, tooltip), the `ob.h.list.*` tokens and the footer setting `ob.g.component.footer.*`. They can change and are not part of this release. Each of them has a page in the [Components](#components) section below.
 
 ### Release artifacts
 - **Markdown documentation** — the token documentation, in git: link pending
@@ -95,8 +95,19 @@ Sorted along two axes. **Tiers** define where a token sits in the reference chai
 
 ## Components
 
-- [Icon](06-components/icon/01-overview.md) — working version on the development line
-- [Icon architecture](06-components/icon/02-architecture.md) — tokens, sizes and design decisions
+All component pages are working versions on the development line (git branch `tokens-dev`). Each component has an overview and an architecture page with all its tokens.
+
+- [Badge](06-components/badge/01-overview.md) — overview; [architecture](06-components/badge/02-architecture.md) — tokens and design decisions
+- [Icon](06-components/icon/01-overview.md) — overview; [architecture](06-components/icon/02-architecture.md) — tokens and design decisions
+- [Infobox](06-components/infobox/01-overview.md) — overview; [architecture](06-components/infobox/02-architecture.md) — tokens and design decisions
+- [Link](06-components/link/01-overview.md) — overview; [architecture](06-components/link/02-architecture.md) — tokens and design decisions
+- [List](06-components/list/01-overview.md) — overview; [architecture](06-components/list/02-architecture.md) — tokens and design decisions
+- [Pill](06-components/pill/01-overview.md) — overview; [architecture](06-components/pill/02-architecture.md) — tokens and design decisions
+- [Popover](06-components/popover/01-overview.md) — overview; [architecture](06-components/popover/02-architecture.md) — tokens and design decisions
+- [Spinner](06-components/spinner/01-overview.md) — overview; [architecture](06-components/spinner/02-architecture.md) — tokens and design decisions
+- [Tag](06-components/tag/01-overview.md) — overview; [architecture](06-components/tag/02-architecture.md) — tokens and design decisions
+- [Text components](06-components/text-components/01-overview.md) — overview; [architecture](06-components/text-components/02-architecture.md) — tokens and design decisions
+- [Tooltip](06-components/tooltip/01-overview.md) — overview; [architecture](06-components/tooltip/02-architecture.md) — tokens and design decisions
 
 ## Reference
 
