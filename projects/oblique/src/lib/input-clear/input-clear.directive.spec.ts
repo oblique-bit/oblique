@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
 	AbstractControl,
 	FormBuilder,
@@ -37,7 +37,6 @@ interface ObInputClearDirectivePrivate {
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class UntypedReactiveFormTestComponent {
 	testForm: FormGroup;
@@ -62,7 +61,6 @@ class UntypedReactiveFormTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class StronglyTypedReactiveFormTestComponent {
 	testForm: FormGroup<{field1: FormControl<string>}>;
@@ -87,7 +85,6 @@ class StronglyTypedReactiveFormTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TemplateDrivenFormTestComponent {
 	testModel: string;
@@ -105,7 +102,6 @@ class TemplateDrivenFormTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class HtmlInputTestComponent {
 	focusOnClear: boolean;
@@ -140,7 +136,6 @@ class HtmlInputWithDatePickerTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class WrongConfigurationTestComponent {}
 

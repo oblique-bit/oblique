@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ChangeDetectorRef, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ActivatedRoute, RouterLinkActive, RouterModule} from '@angular/router';
@@ -18,7 +18,6 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 		[labelFormatter]="labelFormatter"
 		[patternMatcher]="patternMatcher"
 	/>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {
 	items = [
@@ -62,7 +61,6 @@ class TestComponent {
 @Component({
 	imports: [ObNavTreeComponent],
 	template: ` <ob-nav-tree [items]="items" />`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponentDefault {
 	items = [

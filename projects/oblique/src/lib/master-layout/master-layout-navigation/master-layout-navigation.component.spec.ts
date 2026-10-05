@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectionStrategy, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Router, RouterModule} from '@angular/router';
 import {TranslatePipe} from '@ngx-translate/core';
@@ -30,21 +30,18 @@ import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
 @Component({
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyFullPathComponent {}
 
 @Component({
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyPrefixPathComponent {}
 
 @Component({
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyDefaultPathComponent {}
 
@@ -58,7 +55,6 @@ class DummyDefaultPathComponent {}
 			</ul>
 		</ob-master-layout-navigation>
 	`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class CustomNavigationHostComponent {}
 

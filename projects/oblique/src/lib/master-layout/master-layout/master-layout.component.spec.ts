@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, Pipe, PipeTransform} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, Component, Pipe, PipeTransform} from '@angular/core';
 import {Router, provideRouter} from '@angular/router';
 import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 import {TranslatePipe} from '@ngx-translate/core';
@@ -19,7 +19,6 @@ import {ObConsoleService} from '../../console/ob-console.service';
 @Component({
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MockComponent {}
 
