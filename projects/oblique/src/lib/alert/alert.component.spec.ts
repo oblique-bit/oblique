@@ -8,7 +8,7 @@ import {
 	input,
 } from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ObIAlertType} from '@oblique/oblique';
+import {ObIAlertType} from '../alert/alert.model';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {OBLIQUE_HAS_ROLE_ALERT, ObAlertComponent} from './alert.component';
 
