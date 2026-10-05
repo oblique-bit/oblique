@@ -10,7 +10,11 @@
       "ob.c.popover.typography.text": "S:37236cea96a332273f0892176b3eb934e678b454,",
       "ob.c.popover.typography.title": "S:97fde4b6d296fd5dd809e270b0a7e22ab87d8c66,",
       "ob.c.infobox.typography.title": "S:6714beb65f04eb144055b3b975cc2d586e756314,",
-      "ob.c.infobox.typography.body": "S:46d6f6b78be397a80b34436a368867ac35d01e40,"
+      "ob.c.infobox.typography.body": "S:46d6f6b78be397a80b34436a368867ac35d01e40,",
+      "ob.h.link.enabled": "S:000ed89cd75189b43afa8ccc76433df13f1d4d24,",
+      "ob.h.link.hover": "S:8cb0ab72d77b6c3ec596d1e9268b3682abdf38cf,",
+      "ob.h.link.focus": "S:5d979c31dc069a202b62d631d78b85ec08671066,",
+      "ob.h.link.active": "S:1e68a80bdaf6426fec5c9a863ace3b803d2973cc,"
     },
     "selectedTokenSets": {
       "02_primitive/color": "enabled",
@@ -367,7 +371,14 @@
       "ob.c.infobox.color.fg.critical": "cc97873327a9551dd6f447de5e5a120ef0b4101f",
       "ob.c.infobox.color.fg.attention": "631a805d9005eb86f90a74f0bf31df3b1115cca9",
       "ob.c.infobox.color.fg.resolved": "31783029976c270fb4963132fec470f4d01048ae",
-      "ob.c.infobox.color.fg.fatal": "911737290c8a831dd58cd041ad484cbd441fa9a6"
+      "ob.c.infobox.color.fg.fatal": "911737290c8a831dd58cd041ad484cbd441fa9a6",
+      "ob.h.link.spacing.gap": "81ca753846bdf6b7d06085950bef50234965dd2a",
+      "ob.h.link.motion.duration": "ed64dcfd3101097c6d101f1751cbfd059f3d4104",
+      "ob.h.link.motion.easing": "8dd6828f213b543a2853c67ae509ad297c358bc6",
+      "ob.h.link.color.default": "636698688a8bf79d2cdce96f55df703eaaff3ba4",
+      "ob.h.link.color.visited": "c142b723b36e616e2b6608f1d664600d43528ca3",
+      "ob.h.link.color.hover": "428875d83e008ab1287ac3163a6ad971ad194e5e",
+      "ob.h.link.color.active": "e65a6030134294865d61432ddfa4671feed867a6"
     },
     "group": "static"
   },
