@@ -649,6 +649,7 @@ describe(ObAutocompleteComponent.name, () => {
 	});
 
 	describe('displayWith', () => {
+		let componentWithObject: ObAutocompleteComponent<{name: string}>;
 		beforeEach(async () => {
 			jest.useFakeTimers();
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
@@ -659,7 +660,7 @@ describe(ObAutocompleteComponent.name, () => {
 				},
 			}).createComponent(TestParentComponent);
 			parentComponent = parentFixture.componentInstance;
-			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+			componentWithObject = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
 			parentFixture.detectChanges();
 			loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
 			obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
@@ -680,11 +681,11 @@ describe(ObAutocompleteComponent.name, () => {
 		});
 
 		it('handles non-string values through displayWith', async () => {
-			component.autocompleteInputControl.setValue({name: 'hello'});
+			componentWithObject.autocompleteInputControl.setValue({name: 'hello'});
 			jest.advanceTimersByTime(250);
 			await Promise.resolve();
 			parentFixture.detectChanges();
-			expect(component.searchText()).toBe('hello');
+			expect(componentWithObject.searchText()).toBe('hello');
 		});
 	});
 

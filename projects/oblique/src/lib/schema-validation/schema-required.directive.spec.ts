@@ -157,7 +157,9 @@ class TestNumericFormArrayComponent {
 }
 
 describe(ObSchemaRequiredDirective.name, () => {
-	let fixture: ComponentFixture<TestReactiveComponent | TestTemplateComponent | TestNumericFormArrayComponent>;
+	let fixture: ComponentFixture<
+		TestReactiveComponent | TestTemplateComponent | TestNumericFormArrayComponent | TestNestedTemplateComponent
+	>;
 	let directive: ObSchemaRequiredDirective;
 
 	describe('Reactive form', () => {

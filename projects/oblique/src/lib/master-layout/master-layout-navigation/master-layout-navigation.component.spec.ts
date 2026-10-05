@@ -8,6 +8,7 @@ import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/mas
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockMasterLayoutNavigationItemDirective} from '../_mocks/mock-master-layout-navigation-item.directive';
+import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './sub-menu-item/master-layout-navigation-sub-menu-item.component';
 import {mockLinksWithChildren} from './master-layout-navigation.component.spec-mock-links-with-data';
 import {basicMockLinks} from './master-layout-navigation.component.spec-basic-mocks-links';
@@ -324,7 +325,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		});
 
 		describe('sub menu state', () => {
-			let itemDirective: ObMockMasterLayoutNavigationItemDirective;
+			let itemDirective: ObMasterLayoutNavigationItemDirective;
 			let parent: ObNavigationLink;
 			let child: ObNavigationLink;
 
@@ -333,7 +334,10 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				parent = component.navigationLinks()[2];
 				child = parent.children![0];
-				itemDirective = new ObMockMasterLayoutNavigationItemDirective();
+				itemDirective = {
+					closeSubMenu: () => {},
+					toggleSubMenu: () => {},
+				} as unknown as ObMasterLayoutNavigationItemDirective;
 			});
 
 			it('should close the current parent menu', () => {
@@ -473,7 +477,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			});
 
 			test('focus handling tolerates a missing navigation container', () => {
-				jest.spyOn(component as never, 'getNav').mockReturnValue(null);
+				jest.spyOn(component, 'getNav').mockReturnValue(null);
 
 				expect(() => component.focusIn('ob-main-nav-item-', 'full')).not.toThrow();
 			});

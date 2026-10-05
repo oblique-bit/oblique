@@ -629,11 +629,7 @@ function createRoute({
 	label?: string;
 	firstChild?: any;
 	params?: Record<string, string>;
-}): {
-	routeConfig: {path: string; data: {breadcrumb: string}};
-	snapshot: {params: Record<string, string>};
-	firstChild: any;
-} {
+}): ActivatedRoute {
 	return {
 		routeConfig: {
 			path,
@@ -643,5 +639,5 @@ function createRoute({
 			params,
 		},
 		firstChild,
-	};
+	} as unknown as ActivatedRoute;
 }

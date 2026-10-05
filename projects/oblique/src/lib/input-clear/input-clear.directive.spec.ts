@@ -17,6 +17,7 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObInputClearDirective} from './input-clear.directive';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObConsoleService} from '../console/ob-console.service';
+import {MatDatepicker} from '@angular/material/datepicker';
 
 interface ObInputClearDirectivePrivate {
 	setFocus: () => void;
@@ -124,7 +125,7 @@ class HtmlInputTestComponent {
 	</div>`,
 })
 class HtmlInputWithDatePickerTestComponent {
-	datePicker = {select: jest.fn()};
+	datePicker = {select: jest.fn()} as unknown as MatDatepicker<unknown>;
 }
 
 @Component({
@@ -134,7 +135,7 @@ class HtmlInputWithDatePickerTestComponent {
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required />
-			<button type="button" [obInputClear]="testModel">
+			<button type="button" [obInputClear]="undefined">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>

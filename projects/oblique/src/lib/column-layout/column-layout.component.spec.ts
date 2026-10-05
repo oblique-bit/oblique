@@ -9,6 +9,7 @@ import {
 } from './column-toggle.directive';
 import {ObColumnPanelDirective, ObColumnPanelDirective as ObRealColumnPanelDirective} from './column-panel.directive';
 import {TranslatePipe} from '@ngx-translate/core';
+import {ObTColumnState} from './column-layout.model';
 
 let resizerCallback: (entries: {contentRect: {height: number}}[]) => void;
 class ResizeObserver {
@@ -26,8 +27,8 @@ window.ResizeObserver = ResizeObserver;
 	template: `<ob-column-layout [left]="left()" [right]="right()" />`,
 })
 class TestComponent {
-	left = signal('NONE');
-	right = signal('NONE');
+	left = signal<ObTColumnState>('NONE');
+	right = signal<ObTColumnState>('NONE');
 }
 
 describe(ObColumnLayoutComponent.name, () => {

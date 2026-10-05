@@ -4,6 +4,7 @@ import {ObNotificationService} from '../../notification/notification.service';
 import {ObServiceNavigationStateApiService} from './service-navigation-state-api.service';
 import {ObServiceNavigationCountApiService} from './service-navigation-message-count-api.service';
 import {ObServiceNavigationPollingService} from './service-navigation-polling.service';
+import {ObIServiceNavigationState} from './service-navigation.api.model';
 
 describe('ObServiceNavigationPollingService', () => {
 	let service: ObServiceNavigationPollingService;
@@ -11,7 +12,7 @@ describe('ObServiceNavigationPollingService', () => {
 	let stateApiService: ObServiceNavigationStateApiService;
 	let notification: ObNotificationService;
 
-	const mockStateResponse = {data: {test: true}};
+	const mockStateResponse = {data: {test: true}} as unknown as ObIServiceNavigationState;
 	const mockCountResponse = {data: 42};
 
 	beforeEach(() => {
