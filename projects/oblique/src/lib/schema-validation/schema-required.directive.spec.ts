@@ -8,6 +8,7 @@ import {ObSchemaRequiredDirective} from './schema-required.directive';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Component({
+	selector: 'ob-reactive',
 	imports: [
 		FormsModule,
 		ObSchemaValidationDirective,
@@ -36,6 +37,7 @@ class TestReactiveComponent {
 }
 
 @Component({
+	selector: 'ob-template',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel],
 	template: `<form [obSchemaValidation]="schema">
 		<mat-form-field appearance="outline">
@@ -55,6 +57,7 @@ class TestTemplateComponent {
 }
 
 @Component({
+	selector: 'ob-without-form-field',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatInput],
 	template: `<form [obSchemaValidation]="schema">
 		<input matInput obSchemaValidate type="text" name="text" [(ngModel)]="text" />
@@ -71,6 +74,7 @@ class TestWithoutFormFieldComponent {
 }
 
 @Component({
+	selector: 'ob-without-label',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput],
 	template: `<form [obSchemaValidation]="schema">
 		<mat-form-field appearance="outline">
@@ -89,6 +93,7 @@ class TestWithoutLabelComponent {
 }
 
 @Component({
+	selector: 'ob-optional-template',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel],
 	template: `<form [obSchemaValidation]="schema">
 		<mat-form-field appearance="outline">
@@ -108,6 +113,7 @@ class TestOptionalTemplateComponent {
 }
 
 @Component({
+	selector: 'ob-nested-template',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel],
 	template: `<form [obSchemaValidation]="schema">
 		<div ngModelGroup="nested">

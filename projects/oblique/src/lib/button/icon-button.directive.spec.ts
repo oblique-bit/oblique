@@ -13,6 +13,7 @@ import {ObConsoleService} from '../console/ob-console.service';
 })
 export class ButtonTestDirective {}
 @Component({
+	selector: 'ob-test-icon-button',
 	imports: [MatButtonModule, ButtonTestDirective, MatIcon, MatTooltip],
 	template: '<button type="button" obButton mat-icon-button matTooltip="tooltip"><mat-icon svgIcon="help" /></button>',
 	changeDetection: ChangeDetectionStrategy.Eager,
@@ -20,6 +21,7 @@ export class ButtonTestDirective {}
 class ButtonTestComponent {}
 
 @Component({
+	selector: 'ob-test-icon-button-disabled-tooltip',
 	imports: [MatButtonModule, ButtonTestDirective, MatIcon, MatTooltip],
 	template:
 		'<button type="button" obButton mat-icon-button matTooltip="tooltip" [matTooltipDisabled]="true"><mat-icon svgIcon="help" /></button>',

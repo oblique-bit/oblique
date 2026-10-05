@@ -25,6 +25,7 @@ interface ObInputClearDirectivePrivate {
 }
 
 @Component({
+	selector: 'ob-untyped-reactive',
 	standalone: false,
 	template: ` <div [formGroup]="testForm">
 		<mat-form-field>
@@ -49,6 +50,7 @@ class UntypedReactiveFormTestComponent {
 }
 
 @Component({
+	selector: 'ob-typed-reactive',
 	standalone: false,
 	template: ` <div [formGroup]="testForm">
 		<mat-form-field>
@@ -73,6 +75,7 @@ class StronglyTypedReactiveFormTestComponent {
 }
 
 @Component({
+	selector: 'ob-template',
 	standalone: false,
 	template: ` <div>
 		<mat-form-field>
@@ -90,6 +93,7 @@ class TemplateDrivenFormTestComponent {
 }
 
 @Component({
+	selector: 'ob-html-input',
 	standalone: false,
 	template: ` <div>
 		<mat-form-field>
@@ -107,6 +111,7 @@ class HtmlInputTestComponent {
 }
 
 @Component({
+	selector: 'ob-html-input-with-datepicker',
 	standalone: false,
 	template: ` <div>
 		<mat-form-field>
@@ -123,6 +128,7 @@ class HtmlInputWithDatePickerTestComponent {
 }
 
 @Component({
+	selector: 'ob-wrong-configuration',
 	standalone: false,
 	template: ` <div>
 		<mat-form-field>
