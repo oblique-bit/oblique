@@ -2,8 +2,20 @@
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
     "ignoreDeprecations": "6.0",
+    "rootDir": "./",
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": false,
     "types": ["vitest/globals", "node"]
   },
-  "include": ["src/**/*.spec.ts", "src/logger/mock/mock-logger.ts"],
+  "include": [
+    "src/**/*.spec.ts",
+    "src/logger/mock/mock-logger.ts",
+    "src/linting/eslint-config-oblique.mjs",
+    "scripts/**/*.spec.ts",
+    "scripts/actions/check-lint-rules.ts",
+    "scripts/actions/check-lint-rules.types.ts",
+    "scripts/actions/check-lint-rules.guards.ts"
+  ],
   "exclude": []
 }

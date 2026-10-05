@@ -2,6 +2,7 @@ import fs from 'fs';
 import {Log} from '../../../../scripts/shared/log';
 import {checkRules} from '../actions/check-lint-rules';
 import {getAbsolutePath} from '../../../../scripts/shared/root';
+import {obCreateLogger} from '../../src/logger';
 
 const cliDistDir: string = getAbsolutePath('dist/toolchain');
 
@@ -16,6 +17,6 @@ try {
 		Log.error(err);
 	}
 }
-Log.info('Checking linting rules');
-checkRules();
-Log.success();
+const logger = obCreateLogger().group('Checking linting rules');
+checkRules(logger);
+logger.end();
