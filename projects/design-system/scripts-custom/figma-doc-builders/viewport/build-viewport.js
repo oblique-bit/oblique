@@ -681,7 +681,10 @@ async function applySectionBarContent(inst, spec, opts) {
   for (const [bare, value] of Object.entries(nodeWrites)) {
     const nodeName = nodeFallback[bare];
     const node = inst.findOne((n) => n.type === 'TEXT' && n.name === nodeName);
-    if (!node) continue;
+    if (!node) {
+      if (nodeName === '__sectionSubTitle' && value) L('warn: section bar has no __sectionSubTitle layer, so "' + value + '" is not shown');
+      continue;
+    }
     if (nodeName === 'tierLetter' && opts.suppressTier) {
       try { node.visible = false; } catch {}
       continue;
@@ -831,7 +834,6 @@ async function buildTableBox(wrapper, spec, materialized, opts) {
 // own section bar carries the tier letter. Reproduces the hand-built
 // "reference for build" layout (G column of 3 tables, S and C standalone).
 const TIER_SEQUENCE = ['G', 'S', 'C'];
-const TIER_SUBTITLE = { G: 'Global Tokens', S: 'Semantic Tokens', C: 'Component Tokens' };
 
 async function buildTierColumn(wrapper, tier, specs) {
   const col = figma.createFrame();
@@ -852,7 +854,7 @@ async function buildTierColumn(wrapper, tier, specs) {
     section: {
       tier,
       title:    registry.foundationName || '',
-      subtitle: TIER_SUBTITLE[tier] || '',
+      subtitle: (registry.tierSubtitles || {})[tier] || '',
       purpose:  ''
     }
   });
