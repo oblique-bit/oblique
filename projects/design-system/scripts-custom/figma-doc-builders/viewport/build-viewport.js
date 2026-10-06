@@ -344,6 +344,7 @@ const FOUNDATION_BAR_NAME = '__foundation_bar';
 const APPLIED_MODES_NAME  = '__applied_viewport_modes';
 const APPLIED_FRAME_NAME  = 'template/app1';
 const MIN_WIDTH_VAR_NAME  = 'ob/s/dimension/viewport/min_width';
+const APPLIED_FILL_VAR_NAME = 'ob/s/color/neutral/bg/contrast_highest/inversity_normal';
 
 let _bgVar = undefined;
 async function getBgVar() {
@@ -512,6 +513,63 @@ function collectAppliedKeepers(root) {
   return keep;
 }
 
+// The flattened mode frames are normalised here, in code, so the output does
+// not depend on hand edits in the master: the frame fill is the
+// contrast_highest background variable, and a frame holds the header directly
+// (an extra template/app1 wrapper layer around it is removed).
+async function normalizeAppliedFrames(frames) {
+  let fillVar = null;
+  try { fillVar = (await figma.variables.getLocalVariablesAsync('COLOR')).find(v => v.name === APPLIED_FILL_VAR_NAME) || null; }
+  catch (e) { L('fill variable lookup failed: ' + e.message); }
+  if (!fillVar) L('warn: variable not found: ' + APPLIED_FILL_VAR_NAME);
+  for (const f of frames) {
+    while (f.children.length === 1 && f.children[0].type === 'FRAME' && f.children[0].name === APPLIED_FRAME_NAME && f.children[0].children.length === 1) {
+      const wrap = f.children[0];
+      const inner = wrap.children[0];
+      f.insertChild(0, inner);
+      try { inner.layoutSizingHorizontal = 'FILL'; } catch {}
+      wrap.remove();
+    }
+    if (fillVar) {
+      try { f.fills = [figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }, 'color', fillVar)]; }
+      catch (e) { L('applied fill failed on ' + f.id + ': ' + e.message); }
+    }
+  }
+}
+
+// The section_bar variants need a text layer __sectionSubTitle (hidden by
+// default) so the tier header can show "Global Tokens". Layers cannot be added
+// inside an instance, so the layer is added to the variants of the component
+// itself, once. Other builders do not use it and see no change.
+async function ensureSectionBarSubtitleLayer() {
+  const set = components.sectionBar;
+  if (!set) return;
+  const variants = set.type === 'COMPONENT_SET' ? set.children.filter(c => c.type === 'COMPONENT') : [set];
+  const missing = variants.filter(v => !v.findOne(x => x.type === 'TEXT' && x.name === '__sectionSubTitle'));
+  if (!missing.length) return;
+  try { await figma.loadFontAsync({ family: 'Noto Sans', style: 'Light' }); }
+  catch (e) { L('warn: Noto Sans Light not available, section bar subtitle layer not added'); return; }
+  for (const v of missing) {
+    const hdr = v.findOne(x => x.type === 'FRAME' && x.name === 'Section Header');
+    const title = hdr && hdr.children.find(c => c.type === 'TEXT' && c.name === '__sectionTitle');
+    if (!hdr || !title) { L('warn: section_bar variant ' + v.name + ' has no Section Header / __sectionTitle'); continue; }
+    const t = figma.createText();
+    t.name = '__sectionSubTitle';
+    t.fontName = { family: 'Noto Sans', style: 'Light' };
+    t.characters = 'Subtitle';
+    t.fontSize = 48;
+    if (typeof title.lineHeight !== 'symbol') t.lineHeight = title.lineHeight;
+    if (typeof title.letterSpacing !== 'symbol') t.letterSpacing = title.letterSpacing;
+    t.fills = title.fills;
+    t.textAlignHorizontal = title.textAlignHorizontal;
+    hdr.insertChild(hdr.children.indexOf(title) + 1, t);
+    t.textAutoResize = 'HEIGHT';
+    t.layoutSizingHorizontal = 'FILL';
+    t.visible = false;
+    L('section_bar ' + v.name + ': added the hidden __sectionSubTitle layer');
+  }
+}
+
 // Applied Viewport Modes — the hand-built responsiveness illustration, kept as
 // the _docs/viewport/applied_viewport_modes component on the Utilities page.
 // The builder places an instance, detaches it and keeps only the layers a user
@@ -576,6 +634,7 @@ async function ensureAppliedViewportModes(page, outer) {
   root.remove();
   L('applied modes: kept ' + keep.length + ' layers, removed the wrapper frames');
 
+  await normalizeAppliedFrames(page.children.filter(c => c.type === 'FRAME' && c.name === APPLIED_FRAME_NAME));
   frames = appliedModeFrames(page, mw);
   bindAppliedModeWidths(frames, mw);
   return frames;
@@ -1006,6 +1065,7 @@ if (registry.figmaFile && figma.root.name !== registry.figmaFile) {
   return JSON.stringify({ ok: false, built: [], errors: [{ code: 'FILE', id: 'file', msg: 'the open file is "' + figma.root.name + '", the registry expects "' + registry.figmaFile + '". Nothing was written.' }], warns: [], log });
 }
 await discoverComponents();
+if (!validateOnly) await ensureSectionBarSubtitleLayer();
 try { await figma.loadFontAsync({ family: 'Noto Sans', style: 'ExtraBold' }); } catch (e) {}
 try { await figma.loadFontAsync({ family: 'Noto Sans', style: 'Medium' }); } catch (e) {}
 try { await figma.loadFontAsync({ family: 'Noto Sans', style: 'Regular' }); } catch (e) {}
