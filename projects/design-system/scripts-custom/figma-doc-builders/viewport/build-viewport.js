@@ -8,7 +8,11 @@
  *
  *   [0] __foundation_bar         — instance of _building_blocks/shared/foundation_bar
  *   [1] Viewport Tables          — the 5 tables below
- *   [2] __applied_viewport_modes — instance of _docs/viewport/applied_viewport_modes
+ *
+ * Below that frame, as plain page layers: the applied-modes illustration, made
+ * from _docs/viewport/applied_viewport_modes (instance, detached, wrapper
+ * frames removed). One template/app1 frame per viewport mode, each with its
+ * width bound to ob/s/dimension/viewport/min_width.
  *
  * The 5 tables:
  *
@@ -330,10 +334,13 @@ const OUTER_GAP   = 64;
 const BG_VAR_NAME = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
 const BG_VAR_COLLECTION_NAMES = ['lightness', 's1_lightness', 's1-lightness', 'Lightness'];
 
-// Builder-managed instance names — the two page-chrome instances the outer
-// frame owns alongside the "Viewport Tables" wrapper.
+// Builder-managed instance names — the page-chrome instance the outer frame
+// owns alongside the "Viewport Tables" wrapper. The applied-modes instance is
+// only a temporary name: it is detached and flattened (see below).
 const FOUNDATION_BAR_NAME = '__foundation_bar';
 const APPLIED_MODES_NAME  = '__applied_viewport_modes';
+const APPLIED_FRAME_NAME  = 'template/app1';
+const MIN_WIDTH_VAR_NAME  = 'ob/s/dimension/viewport/min_width';
 
 let _bgVar = undefined;
 async function getBgVar() {
@@ -358,13 +365,13 @@ async function whiteBgFill() {
 }
 
 // The builder owns the whole page through one outer "Viewport Output" frame
-// (a direct page child). It is a VERTICAL stack of three builder-managed
+// (a direct page child). It is a VERTICAL stack of two builder-managed
 // children, in order:
 //   [0] __foundation_bar          — instance of _building_blocks/shared/foundation_bar
 //   [1] Viewport Tables           — the HORIZONTAL wrapper of tier columns
-//   [2] __applied_viewport_modes  — instance of _docs/viewport/applied_viewport_modes
-// Nothing on the page lives outside this frame, so the page is fully
-// reproducible from a single 'node build-viewport.js' run.
+// The applied-modes illustration sits below this frame as plain page layers
+// (see ensureAppliedViewportModes), so the page is still reproducible from a
+// single 'node build-viewport.js' run.
 async function ensureOuter(page) {
   const outerName = registry.outerName || 'Viewport Output';
   let outer = page.children.find(c => c.type === 'FRAME' && c.name === outerName);
@@ -446,11 +453,76 @@ async function ensureFoundationBar(outer, metaText) {
   return bar;
 }
 
-// Applied Viewport Modes — instance of the _docs/viewport/applied_viewport_modes
-// component (the hand-built responsiveness illustration, componentised onto the
-// Utilities page). The builder only places the instance; the artwork itself
-// lives in the master.
-async function ensureAppliedViewportModes(outer) {
+// The page-container min_width variable. The width of every applied-mode
+// frame is bound to it, so switching the viewport mode of a frame also
+// switches its width (min / max alone only clamp a fixed width).
+let _minWidthVar;
+async function getMinWidthVar() {
+  if (_minWidthVar !== undefined) return _minWidthVar;
+  try {
+    const vars = await figma.variables.getLocalVariablesAsync('FLOAT');
+    const v = vars.find(x => x.name === MIN_WIDTH_VAR_NAME) || null;
+    _minWidthVar = v ? { v, col: await figma.variables.getVariableCollectionByIdAsync(v.variableCollectionId) } : null;
+  } catch (e) { L('min_width variable lookup failed: ' + e.message); _minWidthVar = null; }
+  if (!_minWidthVar) L('warn: variable not found: ' + MIN_WIDTH_VAR_NAME);
+  return _minWidthVar;
+}
+
+// The applied-mode frames: page-level template/app1 frames that carry an
+// explicit viewport mode. The alternative 2xl frame has no mode and is not one.
+function appliedModeFrames(page, mw) {
+  if (!mw) return [];
+  return page.children.filter(c => c.type === 'FRAME' && c.name === APPLIED_FRAME_NAME
+    && c.explicitVariableModes && c.explicitVariableModes[mw.col.id] !== undefined);
+}
+
+function bindAppliedModeWidths(frames, mw) {
+  if (!mw) return;
+  for (const f of frames) {
+    try { if (f.layoutSizingHorizontal !== 'FIXED') f.layoutSizingHorizontal = 'FIXED'; } catch {}
+    try { f.setBoundVariable('width', mw.v); } catch (e) { L('bind width failed on ' + f.id + ': ' + e.message); }
+  }
+}
+
+function sectionBarName(n) {
+  if (n.type !== 'INSTANCE') return null;
+  const mc = n.mainComponent;
+  if (!mc) return null;
+  const nm = (mc.parent && mc.parent.type === 'COMPONENT_SET') ? mc.parent.name : mc.name;
+  return /section_bar$/.test(nm) ? nm : null;
+}
+
+// Layers to keep when the illustration is flattened: the outermost
+// template/app1 frames, every text layer (the labels and the note) and the
+// section bar. The first two are not searched further, so their own contents
+// stay where they are.
+function collectAppliedKeepers(root) {
+  const keep = [];
+  (function walk(n) {
+    for (const c of n.children || []) {
+      if (c.type === 'FRAME' && c.name === APPLIED_FRAME_NAME) { keep.push(c); continue; }
+      if (c.type === 'TEXT') { keep.push(c); continue; }
+      if (sectionBarName(c)) { keep.push(c); continue; }
+      if (c.children) walk(c);
+    }
+  })(root);
+  return keep;
+}
+
+// Applied Viewport Modes — the hand-built responsiveness illustration, kept as
+// the _docs/viewport/applied_viewport_modes component on the Utilities page.
+// The builder places an instance, detaches it and keeps only the layers a user
+// needs to reach: the template/app1 frames with their viewport mode, their
+// labels and the section bar, as plain page layers (canvas and layers panel).
+// All wrapper frames are removed. The page layers are left alone on later
+// runs; a run only repairs the width binding.
+async function ensureAppliedViewportModes(page, outer) {
+  const mw = await getMinWidthVar();
+  let frames = appliedModeFrames(page, mw);
+  if (frames.length) { bindAppliedModeWidths(frames, mw); return frames; }
+
+  // A leftover instance from the earlier build (inside the outer frame) is
+  // flattened the same way.
   let inst = outer.children.find(c => c.type === 'INSTANCE' && c.name === APPLIED_MODES_NAME);
   if (!inst) {
     if (!components.appliedViewportModes) { L('appliedViewportModes component missing — skipping'); return null; }
@@ -458,7 +530,10 @@ async function ensureAppliedViewportModes(outer) {
     catch (e) { L('appliedViewportModes createInstance failed: ' + e.message); return null; }
     inst.name = APPLIED_MODES_NAME;
   }
-  try { outer.appendChild(inst); } catch {} // append → last child
+  // Below the outer frame, outside its auto layout.
+  page.appendChild(inst);
+  inst.x = outer.x;
+  inst.y = outer.y + outer.height + OUTER_GAP;
 
   // The master (on the Utilities page) still carries a nested
   // _docs/shared/section_bar_deprecated. Swap it for the live section_bar on
@@ -477,18 +552,39 @@ async function ensureAppliedViewportModes(outer) {
       await applySectionBarContent(oldBar, barSpec, { suppressTier: true });
     } catch (e) { L('applied modes: section bar swap failed: ' + e.message); }
   }
-  return inst;
+
+  // The section bar texts are written through the queue. Write them now: the
+  // layer ids they point at change when the instance is detached.
+  await flushTextWrites();
+
+  // Detach, move the layers to keep onto the page at their current position,
+  // then remove the emptied wrapper frames.
+  const root = inst.detachInstance();
+  const keep = collectAppliedKeepers(root);
+  // Read every position first. Moving a layer out of its auto layout parent
+  // reflows the layers that stay behind.
+  const spots = keep.map(n => ({ n, x: n.absoluteTransform[0][2], y: n.absoluteTransform[1][2], barName: sectionBarName(n) }));
+  for (const sp of spots) {
+    page.appendChild(sp.n);
+    sp.n.x = sp.x; // set after the move: the old coordinates are relative to the old parent
+    sp.n.y = sp.y;
+    if (sp.barName) sp.n.name = sp.barName;
+  }
+  root.remove();
+  L('applied modes: kept ' + keep.length + ' layers, removed the wrapper frames');
+
+  frames = appliedModeFrames(page, mw);
+  bindAppliedModeWidths(frames, mw);
+  return frames;
 }
 
-// Enforce the [foundation_bar, tables, applied] child order in the outer frame.
+// Enforce the [foundation_bar, tables] child order in the outer frame.
 function enforceOuterOrder(outer) {
   const bar     = outer.children.find(c => c.type === 'INSTANCE' && c.name === FOUNDATION_BAR_NAME);
   const wrapper = outer.children.find(c => c.type === 'FRAME'    && c.name === registry.wrapperName);
-  const applied = outer.children.find(c => c.type === 'INSTANCE' && c.name === APPLIED_MODES_NAME);
   let i = 0;
   if (bar)     { try { outer.insertChild(i++, bar); } catch {} }
   if (wrapper) { try { outer.insertChild(i++, wrapper); } catch {} }
-  if (applied) { try { outer.insertChild(i++, applied); } catch {} }
 }
 
 // ── section bar ──────────────────────────────────────────────────────────────
@@ -840,7 +936,7 @@ function validatePage(page, wrapper) {
 // Page-chrome checks: the outer frame must own exactly one foundation bar, one
 // tables wrapper and one applied-modes instance. Kept out of validatePage() so
 // it does not feed the provenance row-count meta.
-function validateStructure(outer) {
+async function validateStructure(page, outer) {
   const errors = [];
   const warns  = [];
   const bars = (outer.children || []).filter(c => c.type === 'INSTANCE' && c.name === FOUNDATION_BAR_NAME);
@@ -852,9 +948,26 @@ function validateStructure(outer) {
       warns.push({ code: 'FBAR', id: 'page', msg: '$build_generation_meta empty' });
     }
   }
-  const applied = (outer.children || []).filter(c => c.type === 'INSTANCE' && c.name === APPLIED_MODES_NAME);
-  if (applied.length !== 1) {
-    errors.push({ code: 'APPLIED', id: 'page', msg: 'expected 1 ' + APPLIED_MODES_NAME + ', found ' + applied.length });
+  // Applied modes: one template/app1 frame per viewport mode on the page, its
+  // width bound to min_width and equal to that mode's min_width value.
+  const mw = await getMinWidthVar();
+  if (!mw) {
+    errors.push({ code: 'APPLIED', id: 'page', msg: 'variable ' + MIN_WIDTH_VAR_NAME + ' not found' });
+  } else {
+    const frames = appliedModeFrames(page, mw);
+    for (const mode of mw.col.modes) {
+      const f = frames.filter(x => x.explicitVariableModes[mw.col.id] === mode.modeId);
+      if (f.length !== 1) {
+        errors.push({ code: 'APPLIED', id: mode.name, msg: 'expected 1 ' + APPLIED_FRAME_NAME + ' in mode ' + mode.name + ', found ' + f.length });
+        continue;
+      }
+      const want = mw.v.valuesByMode[mode.modeId];
+      if (!(f[0].boundVariables && f[0].boundVariables.width)) {
+        errors.push({ code: 'APPLIED', id: mode.name, msg: APPLIED_FRAME_NAME + ' (' + mode.name + ') width is not bound to min_width' });
+      } else if (Math.round(f[0].width) !== Math.round(want)) {
+        errors.push({ code: 'APPLIED', id: mode.name, msg: APPLIED_FRAME_NAME + ' (' + mode.name + ') width ' + f[0].width + ' is not ' + want });
+      }
+    }
   }
   const wraps = (outer.children || []).filter(c => c.type === 'FRAME' && c.name === registry.wrapperName);
   if (wraps.length !== 1) {
@@ -895,7 +1008,7 @@ const wrapper = await ensureWrapper(outer);
 let result;
 if (validateOnly) {
   const v = validatePage(page, wrapper);
-  const s = validateStructure(outer);
+  const s = await validateStructure(page, outer);
   const errors = v.errors.concat(s.errors);
   const warns  = v.warns.concat(s.warns);
   result = { ok: errors.length === 0, errors, warns, log };
@@ -925,10 +1038,10 @@ if (validateOnly) {
   const v = validatePage(page, wrapper);
   const metaText = buildMetaText(built, v);
   await ensureFoundationBar(outer, metaText);
-  await ensureAppliedViewportModes(outer);
+  await ensureAppliedViewportModes(page, outer);
   enforceOuterOrder(outer);
   await flushTextWrites();
-  const s = validateStructure(outer);
+  const s = await validateStructure(page, outer);
   const errors = v.errors.concat(s.errors);
   const warns  = v.warns.concat(s.warns);
   result = { ok: built.every(b => b.ok) && errors.length === 0, built, errors, warns, log };

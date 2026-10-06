@@ -8,7 +8,18 @@ This file still describes 5 tables including "Header Variant"
 part of the 2026-09-14 work below; flagging so this doesn't mislead anyone
 in the meantime.
 
-Generates the **entire 📱 Responsiveness** Figma docs page from `src/lib/themes/` JSON files. One full build owns the whole page inside a single **Viewport Output** frame — the foundation bar, 5 token tables, and the Applied Viewport Modes illustration. No hand-built content is left on the page; `node build-viewport.js` reproduces it end to end.
+Generates the **entire 📱 Responsiveness** Figma docs page from `src/lib/themes/` JSON files. One full build owns the whole page: a single **Viewport Output** frame (the foundation bar and the token tables) and, below it, the Applied Viewport Modes illustration as plain page layers. No hand-built content is left on the page; `node build-viewport.js` reproduces it end to end.
+
+## Applied Viewport Modes
+
+The illustration comes from the component `_docs/viewport/applied_viewport_modes` (Authoring Utilities). The builder places an instance below the Viewport Output frame, **detaches it, keeps only the layers users need and removes all wrapper frames**:
+
+- kept: the `template/app1` frames (one per viewport mode, each with its mode set), the text layers (labels and the note) and the section bar, at their position;
+- so the frames are easy to reach on the canvas and in the layers panel, with the mode chip next to the name;
+- the width of each mode frame is bound to `ob/s/dimension/viewport/min_width`, so changing the viewport mode of a frame also changes its width (min and max alone only limit a fixed width);
+- the same binding is set on the wrapper frames inside the main component.
+
+If mode frames already exist on the page, a run leaves them and only repairs the width binding. To rebuild the illustration, remove the mode frames, their labels and the section bar first. The validation expects one mode frame per viewport mode, bound to `min_width` and as wide as that mode's `min_width`.
 
 The 5 tables:
 
