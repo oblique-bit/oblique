@@ -42,6 +42,7 @@
 
 @mixin ob-h4 {
 	@include ob-h3();
+	font-size: 17px;
 }
 
 @mixin ob-h4-prose {
@@ -52,7 +53,7 @@
 }
 
 @mixin ob-h5 {
-	@include ob-h3();
+	@include ob-h4();
 }
 
 @mixin ob-h5-prose {
@@ -63,7 +64,7 @@
 }
 
 @mixin ob-h6 {
-	@include ob-h3();
+	@include ob-h4();
 }
 
 @mixin ob-h6-prose {
