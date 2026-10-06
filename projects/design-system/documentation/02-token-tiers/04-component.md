@@ -112,7 +112,7 @@ Component tokens consume the compiled semantic layer (`ob.s.*`) only — never S
 
 When a component token needs an interaction color, it consumes one of four groups in the semantic interaction color family — not a raw state name:
 
-- **`fg`, `bg`, `border`** — a visual-weight scale (`contrast_low` / `contrast_medium` / `contrast_high`) directly under `interaction`, e.g. `ob.s.color.interaction.fg.contrast_medium.inversity_normal`. These follow the emphasis mode. This is what most interactive elements reference for their default/hover/active colors, as in the link example above.
+- **`fg`, `bg`, `border`** — a visual-weight scale directly under `interaction`: `contrast_low` / `contrast_medium` / `contrast_high` for `fg` and `bg`, and `subtle` / `medium` / `strong` for `border`, e.g. `ob.s.color.interaction.fg.contrast_medium.inversity_normal`. These follow the emphasis mode. This is what most interactive elements reference for their default/hover/active colors, as in the link example above.
 - **`emphasis_none`** — a separate S1-tier interaction category (a peer of `emphasis_high` / `emphasis_low`) for elements that need hover/active feedback but must not follow the emphasis mode — cards, table rows, menu items, tags.
 - **`visited`** — the visited-link color, kept as its own segment rather than a `contrast_low` / `contrast_medium` / `contrast_high` step.
 - **`focus_ring`** — the focus-indicator color, kept as its own segment rather than a `contrast_low` / `contrast_medium` / `contrast_high` step.
