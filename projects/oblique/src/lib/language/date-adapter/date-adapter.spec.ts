@@ -2,11 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {LOCALE_ID} from '@angular/core';
 import {ObDateAdapter} from './date-adapter';
 import {NativeDateAdapter} from '@angular/material/core';
-import * as formatters from './date-formatters';
-import * as parsers from './date-parsers';
-import {obFormatDatetime} from './date-formatters';
-import {obParseDateTime} from './date-parsers';
-import {ObDateTimeFormat, ObFormat} from './date.model';
+import {ObDateTimeFormat} from './date.model';
 
 describe(ObDateAdapter.name, () => {
 	let adapter: ObDateAdapter;
@@ -17,40 +13,27 @@ describe(ObDateAdapter.name, () => {
 		});
 
 		adapter = TestBed.inject(ObDateAdapter);
-		vi.clearAllMocks();
 	});
 
 	test('instance of NativeDateAdapter', () => {
 		expect(adapter instanceof NativeDateAdapter).toBe(true);
 	});
 
-	describe.skip(ObDateAdapter.prototype.format.name, () => {
+	describe(ObDateAdapter.prototype.format.name, () => {
 		test.each([
-			{format: 'longDate', expectedFormat: {date: 'longDate'}, expectedDate: '1 January 2020'},
-			{format: 'shortTime', expectedFormat: {time: 'shortTime'}, expectedDate: '13:35'},
-		] as {
-			format: ObDateTimeFormat;
-			expectedFormat: ObFormat;
-			expectedDate: string;
-		}[])('$format', ({format, expectedFormat, expectedDate}) => {
-			vi.spyOn(formatters, 'obFormatDatetime');
+			{format: 'longDate', expectedDate: '1 January 2020'},
+			{format: 'shortTime', expectedDate: '13:35'},
+		] as {format: ObDateTimeFormat; expectedDate: string}[])('$format', ({format, expectedDate}) => {
 			const date = new Date('2020-01-01T12:35:06.728Z');
 
-			const result = adapter.format(date, format);
-
-			expect(obFormatDatetime).toHaveBeenCalledWith(date, 'en-US', expectedFormat);
-			expect(result).toBe(expectedDate);
+			expect(adapter.format(date, format)).toBe(expectedDate);
 		});
 	});
 
 	describe(ObDateAdapter.prototype.parse.name, () => {
-		test.skip('valid format with string date', () => {
-			vi.spyOn(parsers, 'obParseDateTime');
-			const date = '2020-01-01';
+		test('valid format with string date', () => {
+			const result = adapter.parse('2020-01-01');
 
-			const result = adapter.parse(date);
-
-			expect(obParseDateTime).toHaveBeenCalledWith(date);
 			expect(result.getUTCFullYear()).toBe(2019);
 			expect(result.getUTCMonth()).toBe(11);
 			expect(result.getUTCDate()).toBe(31);
@@ -62,14 +45,9 @@ describe(ObDateAdapter.name, () => {
 	});
 
 	describe(ObDateAdapter.prototype.parseTime.name, () => {
-		test.skip('valid format with string time', () => {
-			vi.spyOn(parsers, 'obParseDateTime');
-			const date = new Date();
-			date.setHours(12, 34, 0, 0);
-
+		test('valid format with string time', () => {
 			const result = adapter.parseTime('12:34');
 
-			expect(obParseDateTime).toHaveBeenCalledWith('12:34');
 			expect(result.getUTCFullYear()).toBe(1970);
 			expect(result.getUTCMonth()).toBe(0);
 			expect(result.getUTCDate()).toBe(1);

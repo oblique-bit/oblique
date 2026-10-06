@@ -74,10 +74,7 @@
               "**/*.model.ts",
               "**/*.module.ts",
               "**/*.spec.ts",
-              "**/off-canvas-container.directive.ts",
-              "**/master-layout/master-layout-navigation/master-layout-navigation-component-base.ts",
-              "**/master-layout/master-layout-navigation/master-layout-navigation.component.ts",
-              "**/master-layout/master-layout-navigation/sub-menu-item/master-layout-navigation-sub-menu-item.component.ts"
+              "**/off-canvas-container.directive.ts"
             ],
             "coverageThresholds": {
               "lines": 99,

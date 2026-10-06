@@ -23,7 +23,6 @@ import {
 } from '../master-layout.model';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
-import * as scrollDelta from './scroll-delta';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
 import {outputToObservable} from '@angular/core/rxjs-interop';
@@ -425,11 +424,12 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				vi.useRealTimers();
 			});
 
-			test.skip('click on left scroll button', () => {
+			test('click on left scroll button', () => {
 				vi.useFakeTimers();
 				makeNavigationScrollable();
 				TestBed.inject(ObMasterLayoutNavigationService).scrollRight(15);
 				vi.advanceTimersToNextFrame();
+				fixture.detectChanges();
 				const leftControl = getHTMLSelectElementByQueryCSS('#ob-navigation-scrollable-control-left');
 				leftControl.click();
 				vi.runAllTimers();
@@ -438,12 +438,20 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				vi.useRealTimers();
 			});
 
-			test.skip('focusing an element scrolls it into view', () => {
+			test('focusing an element scrolls it into view', () => {
 				vi.useFakeTimers();
 				makeNavigationScrollable();
-				vi.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
+				const nav = getHTMLSelectElementByQueryCSS('#navigation');
+				const navItem = getHTMLSelectElementByQueryCSS('#ob-main-nav-item-full');
+				vi.spyOn(nav, 'getBoundingClientRect').mockReturnValue({left: 100, right: 300} as DOMRect);
+				vi.spyOn(navItem, 'getBoundingClientRect').mockReturnValue({left: 320, right: 350} as DOMRect);
+				vi.spyOn(window, 'getComputedStyle').mockReturnValue({
+					paddingLeft: '10px',
+					paddingRight: '10px',
+				} as CSSStyleDeclaration);
 				component.focusIn('ob-main-nav-item-', 'full');
-				expect(getFirstNavigationItemMarginLeft()).toBe('-42px');
+				expect(getFirstNavigationItemMarginLeft()).toBe('-60px');
+				vi.restoreAllMocks();
 				vi.useRealTimers();
 			});
 
@@ -465,12 +473,12 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				);
 			});
 
-			test.skip("focusing out of an element doesn't scroll it", () => {
+			test("focusing out of an element doesn't scroll it", () => {
 				vi.useFakeTimers();
 				makeNavigationScrollable();
-				vi.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
+				const marginBefore = getFirstNavigationItemMarginLeft();
 				component.focusOut('ob-main-nav-item-', 'full');
-				expect(getFirstNavigationItemMarginLeft()).toBe('0px');
+				expect(getFirstNavigationItemMarginLeft()).toBe(marginBefore);
 				vi.useRealTimers();
 			});
 
@@ -661,7 +669,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			vi.useRealTimers();
 		});
 
-		test.skip('refresh computes scrollability for projected navigation when links are empty', () => {
+		test('refresh computes scrollability for projected navigation when links are empty', () => {
 			vi.useFakeTimers();
 			const hostFixture = TestBed.createComponent(CustomNavigationHostComponent);
 			hostFixture.detectChanges();
@@ -676,6 +684,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 
 			navigationService.refresh();
 			vi.runOnlyPendingTimers();
+			hostFixture.detectChanges();
 
 			// #ob-navigation-scrollable-control-right is disabled if isScrollable it true
 			expect(hostFixture.nativeElement.querySelector('#ob-navigation-scrollable-control-right').disabled).toBe(false);
