@@ -1333,40 +1333,40 @@
               }
             },
             "border": {
-              "contrast_high": {
+              "strong": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.basic.white}",
-                  "$description": "High contrast border for emphasis-high interactive elements. Standard surface."
+                  "$description": "Strong border for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.700}",
-                  "$description": "High contrast border for emphasis-high interactive elements. Inverse surface."
+                  "$description": "Strong border for emphasis-high interactive elements. Inverse surface."
                 }
               },
-              "contrast_medium": {
+              "medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.100}",
-                  "$description": "Medium contrast border for emphasis-high interactive elements. Standard surface."
+                  "$description": "Medium border for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.600}",
-                  "$description": "Medium contrast border for emphasis-high interactive elements. Inverse surface."
+                  "$description": "Medium border for emphasis-high interactive elements. Inverse surface."
                 }
               },
-              "contrast_low": {
+              "subtle": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.200}",
-                  "$description": "Low contrast border for emphasis-high interactive elements. Standard surface."
+                  "$description": "Subtle border for emphasis-high interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.steelblue.500}",
-                  "$description": "Low contrast border for emphasis-high interactive elements. Inverse surface."
+                  "$description": "Subtle border for emphasis-high interactive elements. Inverse surface."
                 }
               }
             },
@@ -1536,40 +1536,40 @@
               }
             },
             "border": {
-              "contrast_high": {
+              "strong": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.50}",
-                  "$description": "High contrast border for emphasis-low interactive elements. Standard surface."
+                  "$description": "Strong border for emphasis-low interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "High contrast border for emphasis-low interactive elements. Inverse surface."
+                  "$description": "Strong border for emphasis-low interactive elements. Inverse surface."
                 }
               },
-              "contrast_medium": {
+              "medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.100}",
-                  "$description": "Medium contrast border for emphasis-low interactive elements. Standard surface."
+                  "$description": "Medium border for emphasis-low interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.800}",
-                  "$description": "Medium contrast border for emphasis-low interactive elements. Inverse surface."
+                  "$description": "Medium border for emphasis-low interactive elements. Inverse surface."
                 }
               },
-              "contrast_low": {
+              "subtle": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}",
-                  "$description": "Low contrast border for emphasis-low interactive elements. Standard surface."
+                  "$description": "Subtle border for emphasis-low interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}",
-                  "$description": "Low contrast border for emphasis-low interactive elements. Inverse surface."
+                  "$description": "Subtle border for emphasis-low interactive elements. Inverse surface."
                 }
               }
             },
@@ -1745,40 +1745,40 @@
               }
             },
             "border": {
-              "contrast_high": {
+              "strong": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.50}",
-                  "$description": "High contrast border for emphasis-low interactive elements. Standard surface."
+                  "$description": "Strong border for emphasis-low interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.900}",
-                  "$description": "High contrast border for emphasis-low interactive elements. Inverse surface."
+                  "$description": "Strong border for emphasis-low interactive elements. Inverse surface."
                 }
               },
-              "contrast_medium": {
+              "medium": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.100}",
-                  "$description": "Medium contrast border for emphasis-low interactive elements. Standard surface."
+                  "$description": "Medium border for emphasis-low interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.800}",
-                  "$description": "Medium contrast border for emphasis-low interactive elements. Inverse surface."
+                  "$description": "Medium border for emphasis-low interactive elements. Inverse surface."
                 }
               },
-              "contrast_low": {
+              "subtle": {
                 "inversity_normal": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.200}",
-                  "$description": "Low contrast border for emphasis-low interactive elements. Standard surface."
+                  "$description": "Subtle border for emphasis-low interactive elements. Standard surface."
                 },
                 "inversity_flipped": {
                   "$type": "color",
                   "$value": "{ob.p.color.cobalt.700}",
-                  "$description": "Low contrast border for emphasis-low interactive elements. Inverse surface."
+                  "$description": "Subtle border for emphasis-low interactive elements. Inverse surface."
                 }
               }
             },

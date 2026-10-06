@@ -30,7 +30,7 @@ ob.s1.color.interaction.{emphasis_level}.{element_type}.{contrast_level}.{invers
 - `inversity_flipped` - Dark mode / inverted contexts
 
 ### The S2 (Emphasis-Resolved) Tier
-Component code more commonly consumes the emphasis-resolved tier: `ob.s2.color.interaction.{fg|bg|border}.{contrast_high|contrast_medium|contrast_low}.{inversity_variation}`. Unlike S1, emphasis is not a path segment at S2 — the same token name resolves to a different value depending on which emphasis mode (high or low) is active for that part of the UI, the same way a lightness-mode token resolves differently under light vs. dark without "light" or "dark" appearing in its name. S2 does not define `fg_visited`, `fg_disabled`, or `bg_disabled` — component code references those S1 tokens directly for visited-link and disabled styling.
+Component code more commonly consumes the emphasis-resolved tier: `ob.s2.color.interaction.{fg|bg}.{contrast_high|contrast_medium|contrast_low}.{inversity_variation}` and `ob.s2.color.interaction.border.{strong|medium|subtle}.{inversity_variation}`. Unlike S1, emphasis is not a path segment at S2 — the same token name resolves to a different value depending on which emphasis mode (high or low) is active for that part of the UI, the same way a lightness-mode token resolves differently under light vs. dark without "light" or "dark" appearing in its name. S2 does not define `fg_visited`, `fg_disabled`, or `bg_disabled` — component code references those S1 tokens directly for visited-link and disabled styling.
 
 ## High Emphasis Interactions
 
@@ -51,11 +51,11 @@ High emphasis interactions are used for primary actions, main call-to-action but
 | `contrast_low` | `#2379A4` | `#D3DEE9` | Subtle interactive text |
 
 ### Border Colors (`border`)
-| Contrast Level | Light Mode | Dark Mode | Usage |
+| Strength | Light Mode | Dark Mode | Usage |
 |----------------|-------------|------------|-------|
-| `contrast_high` | `#236487` | `#FFFFFF` | Primary interactive borders |
-| `contrast_medium` | `#2379A4` | `#D3DEE9` | Secondary interactive borders |
-| `contrast_low` | `#2E8FBF` | `#AACAE6` | Subtle interactive borders |
+| `strong` | `#236487` | `#FFFFFF` | Primary interactive borders |
+| `medium` | `#2379A4` | `#D3DEE9` | Secondary interactive borders |
+| `subtle` | `#2E8FBF` | `#AACAE6` | Subtle interactive borders |
 
 ### Other States
 | State | Token | Light Mode | Dark Mode | Usage |
@@ -83,11 +83,11 @@ Low emphasis interactions are used for secondary actions, supporting links, and 
 | `contrast_low` | `#2F4356` | `#ACB4BD` | Subtle interactive elements |
 
 ### Border Colors (`border`)
-| Contrast Level | Light Mode | Dark Mode | Usage |
+| Strength | Light Mode | Dark Mode | Usage |
 |----------------|-------------|------------|-------|
-| `contrast_high` | `#131B22` | `#F0F4F7` | Secondary interactive borders |
-| `contrast_medium` | `#1C2834` | `#DFE4E9` | Tertiary interactive borders |
-| `contrast_low` | `#263645` | `#ACB4BD` | Subtle interactive borders |
+| `strong` | `#131B22` | `#F0F4F7` | Secondary interactive borders |
+| `medium` | `#1C2834` | `#DFE4E9` | Tertiary interactive borders |
+| `subtle` | `#263645` | `#ACB4BD` | Subtle interactive borders |
 
 ### Other States
 | State | Token | Light Mode | Dark Mode | Usage |
@@ -138,7 +138,7 @@ These examples reference the S2 contrast-level tokens for base, hover, and activ
   // Default state
   background-color: var(--ob-s2-color-interaction-bg-contrast_high-inversity_normal);
   color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
-  border: 1px solid var(--ob-s2-color-interaction-border-contrast_medium-inversity_normal);
+  border: 1px solid var(--ob-s2-color-interaction-border-medium-inversity_normal);
 
   // Hover state
   &:hover {
@@ -235,11 +235,11 @@ These examples reference the S2 contrast-level tokens for base, hover, and activ
   // Default state
   background-color: var(--ob-s2-color-interaction-bg-contrast_high-inversity_normal);
   color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
-  border: 1px solid var(--ob-s2-color-interaction-border-contrast_medium-inversity_normal);
+  border: 1px solid var(--ob-s2-color-interaction-border-medium-inversity_normal);
 
   // Focus state
   &:focus {
-    border-color: var(--ob-s2-color-interaction-border-contrast_high-inversity_normal);
+    border-color: var(--ob-s2-color-interaction-border-strong-inversity_normal);
     outline: var(--ob-s-border-focus_ring-inversity_normal-width) var(--ob-s-border-focus_ring-inversity_normal-style) var(--ob-s-border-focus_ring-inversity_normal-color);
     outline-offset: 1px;
   }
