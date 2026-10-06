@@ -344,7 +344,9 @@ const FOUNDATION_BAR_NAME = '__foundation_bar';
 const APPLIED_MODES_NAME  = '__applied_viewport_modes';
 const APPLIED_FRAME_NAME  = 'template/app1';
 const MIN_WIDTH_VAR_NAME  = 'ob/s/dimension/viewport/min_width';
-const APPLIED_FILL_VAR_NAME = 'ob/s/color/neutral/bg/contrast_highest/inversity_normal';
+// The compiled colour variables carry the full name until run-cosmetics.js
+// trims the "ob/s/color/" prefix. Both names are accepted.
+const APPLIED_FILL_VAR_NAMES = ['ob/s/color/neutral/bg/contrast_highest/inversity_normal', 'neutral/bg/contrast_highest/inversity_normal'];
 
 let _bgVar = undefined;
 async function getBgVar() {
@@ -519,9 +521,12 @@ function collectAppliedKeepers(root) {
 // (an extra template/app1 wrapper layer around it is removed).
 async function normalizeAppliedFrames(frames) {
   let fillVar = null;
-  try { fillVar = (await figma.variables.getLocalVariablesAsync('COLOR')).find(v => v.name === APPLIED_FILL_VAR_NAME) || null; }
-  catch (e) { L('fill variable lookup failed: ' + e.message); }
-  if (!fillVar) L('warn: variable not found: ' + APPLIED_FILL_VAR_NAME);
+  try {
+    const semantic = (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'semantic');
+    fillVar = (await figma.variables.getLocalVariablesAsync('COLOR'))
+      .find(v => APPLIED_FILL_VAR_NAMES.includes(v.name) && (!semantic || v.variableCollectionId === semantic.id)) || null;
+  } catch (e) { L('fill variable lookup failed: ' + e.message); }
+  if (!fillVar) L('warn: variable not found: ' + APPLIED_FILL_VAR_NAMES[0]);
   for (const f of frames) {
     while (f.children.length === 1 && f.children[0].type === 'FRAME' && f.children[0].name === APPLIED_FRAME_NAME && f.children[0].children.length === 1) {
       const wrap = f.children[0];
