@@ -21,7 +21,10 @@ The illustration comes from the component `_docs/viewport/applied_viewport_modes
 - kept: the `template/app1` frames (one per viewport mode, each with its mode set), the text layers (labels and the note) and the section bar, at their position;
 - so the frames are easy to reach on the canvas and in the layers panel, with the mode chip next to the name;
 - the width of each mode frame is bound to `ob/s/dimension/viewport/min_width`, so changing the viewport mode of a frame also changes its width (min and max alone only limit a fixed width);
-- the same binding is set on the wrapper frames inside the main component.
+- the frame fill is set to `ob/s/color/neutral/bg/contrast_highest/inversity_normal`, and an extra `template/app1` wrapper layer around the header (2xl frame and the 2xl alternative frame) is removed. The builder does this itself, so the output does not depend on hand edits of the master;
+- the master only has to provide the artwork: the `template/app1` frames with their viewport mode (one per mode, plus the alternative 2xl frame), the labels, the note and the header instances.
+
+No manual step is needed after a build. The builder also adds the hidden `__sectionSubTitle` text layer to the `_docs/shared/section_bar` variants if they do not have it (needed for "Global Tokens").
 
 If mode frames already exist on the page, a run leaves them and only repairs the width binding. To rebuild the illustration, remove the mode frames, their labels and the section bar first. The validation expects one mode frame per viewport mode, bound to `min_width` and as wide as that mode's `min_width`.
 
@@ -60,7 +63,7 @@ viewport/
 
 Section title / purpose / guideline / subtitle / tier letter all come from `registry.json` → `tables[].section`. Single source of truth for human-readable copy; no Figma-side defaults.
 
-The tier subtitles ("Global Tokens", "Semantic Tokens", "Component Tokens") of the tier header bars come from `registry.json` → `tierSubtitles`. They are only shown if the `section_bar` variant has a text layer named `__sectionSubTitle`; if it has none, the build logs a warning.
+The tier subtitles ("Global Tokens", "Semantic Tokens", "Component Tokens") of the tier header bars come from `registry.json` → `tierSubtitles`. They are shown in the text layer `__sectionSubTitle` of the `section_bar` variants; the builder adds that layer (hidden by default) when a variant has none.
 
 The **foundation bar** description is the umbrella family-doc text at `01_global/mode_collection/viewport.json` → `ob.g.mode_collection.viewport.token_family_docs.$description`. Token Studio does not push family-docs to Figma variables (`export: false` on `kind: family_docs`), so the builder reads it Node-side. The foundation name (`Responsiveness`) comes from `registry.json` → `foundationName`.
 
