@@ -56,6 +56,8 @@ viewport/
 
 Section title / purpose / guideline / subtitle / tier letter all come from `registry.json` → `tables[].section`. Single source of truth for human-readable copy; no Figma-side defaults.
 
+The tier subtitles ("Global Tokens", "Semantic Tokens", "Component Tokens") of the tier header bars come from `registry.json` → `tierSubtitles`. They are only shown if the `section_bar` variant has a text layer named `__sectionSubTitle`; if it has none, the build logs a warning.
+
 The **foundation bar** description is the umbrella family-doc text at `01_global/mode_collection/viewport.json` → `ob.g.mode_collection.viewport.token_family_docs.$description`. Token Studio does not push family-docs to Figma variables (`export: false` on `kind: family_docs`), so the builder reads it Node-side. The foundation name (`Responsiveness`) comes from `registry.json` → `foundationName`.
 
 ## Usage

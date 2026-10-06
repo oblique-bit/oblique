@@ -14,6 +14,7 @@
   },
   "foundationName": "Responsiveness",
   "tierOrder": ["xs", "sm", "md", "lg", "xl", "2xl"],
+  "tierSubtitles": { "G": "Global Tokens", "S": "Semantic Tokens", "C": "Component Tokens" },
   "tables": [
     {
       "id": "breakpoints",
