@@ -84,7 +84,7 @@
               },
               "to": {
                 "$type": "dimension",
-                "$value": "{ob.g.mode_collection.viewport.breakpoint.sm} - 1",
+                "$value": "{ob.g.mode_collection.viewport.breakpoint.sm} - 1px",
                 "$description": "xs range end, inclusive — one pixel below the sm breakpoint, so adjacent ranges do not overlap."
               }
             },
@@ -96,7 +96,7 @@
               },
               "to": {
                 "$type": "dimension",
-                "$value": "{ob.g.mode_collection.viewport.breakpoint.md} - 1",
+                "$value": "{ob.g.mode_collection.viewport.breakpoint.md} - 1px",
                 "$description": "sm range end, inclusive — one pixel below the md breakpoint, so adjacent ranges do not overlap."
               }
             },
@@ -108,7 +108,7 @@
               },
               "to": {
                 "$type": "dimension",
-                "$value": "{ob.g.mode_collection.viewport.breakpoint.lg} - 1",
+                "$value": "{ob.g.mode_collection.viewport.breakpoint.lg} - 1px",
                 "$description": "md range end, inclusive — one pixel below the lg breakpoint, so adjacent ranges do not overlap."
               }
             },
@@ -120,7 +120,7 @@
               },
               "to": {
                 "$type": "dimension",
-                "$value": "{ob.g.mode_collection.viewport.breakpoint.xl} - 1",
+                "$value": "{ob.g.mode_collection.viewport.breakpoint.xl} - 1px",
                 "$description": "lg range end, inclusive — one pixel below the xl breakpoint, so adjacent ranges do not overlap."
               }
             },
@@ -132,7 +132,7 @@
               },
               "to": {
                 "$type": "dimension",
-                "$value": "{ob.g.mode_collection.viewport.breakpoint.2xl} - 1",
+                "$value": "{ob.g.mode_collection.viewport.breakpoint.2xl} - 1px",
                 "$description": "xl range end, inclusive — one pixel below the 2xl breakpoint, so adjacent ranges do not overlap."
               }
             },
