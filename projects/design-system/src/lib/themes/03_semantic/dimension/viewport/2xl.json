@@ -12,12 +12,12 @@
           "min_width": {
             "$type": "dimension",
             "$value": "{ob.g.mode_collection.viewport.range.2xl.from}",
-            "$description": "Minimum width of a page container in the 2xl viewport."
+            "$description": "Role: minimum width of the page container. Changes with the viewport mode."
           },
           "max_width": {
             "$type": "dimension",
             "$value": "99999px",
-            "$description": "Maximum width of a page container in the 2xl viewport. The 2xl range is open-ended; 99999px is an open-ended sentinel, not a real breakpoint."
+            "$description": "Role: maximum width of the page container. Changes with the viewport mode."
           }
         }
       }

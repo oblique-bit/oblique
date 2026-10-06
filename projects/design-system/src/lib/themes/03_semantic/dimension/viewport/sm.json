@@ -12,12 +12,12 @@
           "min_width": {
             "$type": "dimension",
             "$value": "{ob.g.mode_collection.viewport.range.sm.from}",
-            "$description": "Minimum width of a page container in the sm viewport."
+            "$description": "Role: minimum width of the page container. Changes with the viewport mode."
           },
           "max_width": {
             "$type": "dimension",
             "$value": "{ob.g.mode_collection.viewport.range.sm.to}",
-            "$description": "Maximum width of a page container in the sm viewport."
+            "$description": "Role: maximum width of the page container. Changes with the viewport mode."
           }
         }
       }

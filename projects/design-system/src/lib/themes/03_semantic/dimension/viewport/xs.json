@@ -12,12 +12,12 @@
           "min_width": {
             "$type": "dimension",
             "$value": "{ob.g.mode_collection.viewport.min_supported_width}",
-            "$description": "Minimum width of a page container in the xs viewport — the minimum page width the system supports. Does not reference the xs range start, which is 0px."
+            "$description": "Role: minimum width of the page container. Changes with the viewport mode."
           },
           "max_width": {
             "$type": "dimension",
             "$value": "{ob.g.mode_collection.viewport.range.xs.to}",
-            "$description": "Maximum width of a page container in the xs viewport."
+            "$description": "Role: maximum width of the page container. Changes with the viewport mode."
           }
         }
       }
