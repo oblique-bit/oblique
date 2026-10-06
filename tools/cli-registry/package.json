@@ -1,0 +1,33 @@
+{
+  "name": "@oblique/cli-registry",
+  "version": "1.0.0",
+  "description": "Local npm proxy registry for Oblique development and CI",
+  "private": true,
+  "type": "module",
+  "main": "dist/cli-registry.js",
+  "bin": {
+    "obreg": "dist/cli-registry.js"
+  },
+  "scripts": {
+    "build": "npm run typecheck && esbuild src/cli-registry.ts --bundle --platform=node --format=esm --sourcemap --outfile=dist/cli-registry.js --banner:js=\"#!/usr/bin/env node\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test-ci": "vitest run --config vitest.config.ci.ts",
+    "lint": "tsx scripts/lint.ts",
+    "format": "npm run lint -- --fix",
+    "setup": "npm run build && npm link",
+    "start": "npm run build && node dist/cli-registry.js start"
+  },
+  "dependencies": {
+    "verdaccio": "~6.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "esbuild": "^0.28.2",
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.11"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

@@ -74,5 +74,8 @@ Thumbs.db
 /nvm.env
 /before.env
 
+# local npm registry runtime files
+/tools/cli-registry/runtime/
+
 #nx
 .nx/cache/*

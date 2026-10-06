@@ -1,0 +1,34 @@
+storage: ./runtime/storage
+
+auth:
+  htpasswd:
+    file: ./runtime/htpasswd
+    max_users: 1
+
+uplinks:
+  # Also serves RHOS pipelines, which cannot reach npmjs directly.
+  nexus:
+    url: https://nexus.bit.admin.ch/repository/npm-registry-proxy/
+  npmjs:
+    url: https://registry.npmjs.org/
+  bitadmin:
+    url: https://repo.bit.admin.ch/nexus/repository/npm-group/
+
+packages:
+  "@oblique/toolchain":
+    access: $all
+    publish: $all
+    unpublish: $all
+  "@oblique/oblique":
+    access: $all
+    publish: $all
+    unpublish: $all
+  "@*/*":
+    access: $all
+    proxy: npmjs
+  "**":
+    access: $all
+    proxy: nexus npmjs bitadmin
+
+log:
+  - { type: file, path: ./runtime/verdaccio.log, format: pretty, level: warn }
