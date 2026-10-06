@@ -10,6 +10,10 @@ in the meantime.
 
 Generates the **entire 📱 Responsiveness** Figma docs page from `src/lib/themes/` JSON files. One full build owns the whole page: a single **Viewport Output** frame (the foundation bar and the token tables) and, below it, the Applied Viewport Modes illustration as plain page layers. No hand-built content is left on the page; `node build-viewport.js` reproduces it end to end.
 
+## Which file the builder writes to
+
+The target file is `registry.json` → `figmaFile` ("Oblique Design System R16 Prep"). The builder passes it to `figma-ds-cli` as `FIGMA_TAB`, and the plugin code stops before writing anything if the open file has a different name (error `FILE`). Note: `figma-ds-cli` keeps one long-running daemon that remembers its tab. If you get the `FILE` error, restart it for the right file: `FIGMA_TAB="Oblique Design System R16 Prep" figma-ds-cli daemon restart`. `--validate` never creates a page; it stops with "page not found".
+
 ## Applied Viewport Modes
 
 The illustration comes from the component `_docs/viewport/applied_viewport_modes` (Authoring Utilities). The builder places an instance below the Viewport Output frame, **detaches it, keeps only the layers users need and removes all wrapper frames**:

@@ -218,7 +218,9 @@ function runEval(scriptText) {
       encoding: 'utf8',
       maxBuffer: 64 * 1024 * 1024,
       cwd: FIG_CLI_DIR,
-      env: { ...process.env, FIG_EVAL_TIMEOUT_MS: process.env.FIG_EVAL_TIMEOUT_MS }
+      // FIGMA_TAB makes figma-ds-cli pick the tab whose title contains this text.
+      // Without it the CLI takes the first open design file, which can be another file.
+      env: { ...process.env, FIG_EVAL_TIMEOUT_MS: process.env.FIG_EVAL_TIMEOUT_MS, FIGMA_TAB: process.env.FIGMA_TAB || registry.figmaFile || '' }
     });
     if (res.error) throw res.error;
     return { status: res.status, stdout: res.stdout || '', stderr: res.stderr || '' };
@@ -314,6 +316,7 @@ const PAGE_BG = { type: 'SOLID', color: { r: 0xF0/255, g: 0xF4/255, b: 0xF7/255 
 async function ensurePage() {
   const name = pageOverride || registry.page;
   let p = figma.root.children.find(x => x.name === name);
+  if (!p && validateOnly) throw new Error('page not found: ' + name + ' (--validate does not create pages)');
   if (!p) {
     p = figma.createPage();
     p.name = name;
@@ -998,6 +1001,10 @@ function buildMetaText(built, v) {
 }
 
 // ── orchestrate ──────────────────────────────────────────────────────────────
+// Never write into another file than the one named in the registry.
+if (registry.figmaFile && figma.root.name !== registry.figmaFile) {
+  return JSON.stringify({ ok: false, built: [], errors: [{ code: 'FILE', id: 'file', msg: 'the open file is "' + figma.root.name + '", the registry expects "' + registry.figmaFile + '". Nothing was written.' }], warns: [], log });
+}
 await discoverComponents();
 try { await figma.loadFontAsync({ family: 'Noto Sans', style: 'ExtraBold' }); } catch (e) {}
 try { await figma.loadFontAsync({ family: 'Noto Sans', style: 'Medium' }); } catch (e) {}
