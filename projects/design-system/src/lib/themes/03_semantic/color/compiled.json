@@ -303,40 +303,40 @@
             }
           },
           "border": {
-            "contrast_high": {
+            "strong": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s2.color.interaction.border.contrast_high.inversity_normal}",
-                "$description": "High contrast border for interaction. Use for borders and outlines where maximum contrast is required."
+                "$value": "{ob.s2.color.interaction.border.strong.inversity_normal}",
+                "$description": "Strong border for interaction. Use for borders and outlines where maximum contrast is required."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s2.color.interaction.border.contrast_high.inversity_flipped}",
-                "$description": "High contrast border for interaction. Use for borders and outlines where maximum contrast is required."
+                "$value": "{ob.s2.color.interaction.border.strong.inversity_flipped}",
+                "$description": "Strong border for interaction. Use for borders and outlines where maximum contrast is required."
               }
             },
-            "contrast_medium": {
+            "medium": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s2.color.interaction.border.contrast_medium.inversity_normal}",
-                "$description": "Medium contrast border for interaction. Use for borders and outlines in standard interactive states."
+                "$value": "{ob.s2.color.interaction.border.medium.inversity_normal}",
+                "$description": "Medium border for interaction. Use for borders and outlines in standard interactive states."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s2.color.interaction.border.contrast_medium.inversity_flipped}",
-                "$description": "Medium contrast border for interaction. Use for borders and outlines in standard interactive states."
+                "$value": "{ob.s2.color.interaction.border.medium.inversity_flipped}",
+                "$description": "Medium border for interaction. Use for borders and outlines in standard interactive states."
               }
             },
-            "contrast_low": {
+            "subtle": {
               "inversity_normal": {
                 "$type": "color",
-                "$value": "{ob.s2.color.interaction.border.contrast_low.inversity_normal}",
-                "$description": "Low contrast border for interaction. Use for borders and outlines in subtle or secondary interactive states."
+                "$value": "{ob.s2.color.interaction.border.subtle.inversity_normal}",
+                "$description": "Subtle border for interaction. Use for borders and outlines in subtle or secondary interactive states."
               },
               "inversity_flipped": {
                 "$type": "color",
-                "$value": "{ob.s2.color.interaction.border.contrast_low.inversity_flipped}",
-                "$description": "Low contrast border for interaction. Use for borders and outlines in subtle or secondary interactive states."
+                "$value": "{ob.s2.color.interaction.border.subtle.inversity_flipped}",
+                "$description": "Subtle border for interaction. Use for borders and outlines in subtle or secondary interactive states."
               }
             }
           },
@@ -412,34 +412,34 @@
               }
             },
             "border": {
-              "contrast_high": {
+              "strong": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_high.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.strong.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_high.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.strong.inversity_flipped}"
                 }
               },
-              "contrast_medium": {
+              "medium": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_medium.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.medium.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_medium.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.medium.inversity_flipped}"
                 }
               },
-              "contrast_low": {
+              "subtle": {
                 "inversity_normal": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_low.inversity_normal}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.subtle.inversity_normal}"
                 },
                 "inversity_flipped": {
                   "$type": "color",
-                  "$value": "{ob.s1.color.interaction.emphasis_none.border.contrast_low.inversity_flipped}"
+                  "$value": "{ob.s1.color.interaction.emphasis_none.border.subtle.inversity_flipped}"
                 }
               }
             },

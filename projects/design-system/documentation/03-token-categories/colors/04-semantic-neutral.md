@@ -64,8 +64,8 @@ ob.s.color.neutral.{property}.{contrast_level}.{inversity_variation}
 - **Disabled text**: `fg.contrast_lowest.inversity_normal`
 
 #### Structural Elements
-- **Visible borders**: `border.contrast_medium.inversity_normal`
-- **Subtle dividers**: `border.contrast_low.inversity_normal`
+- **Visible borders**: `border.medium.inversity_normal`
+- **Subtle dividers**: `border.subtle.inversity_normal`
 - **Depth shadows**: `shadow.contrast_low.inversity_normal`
 
 ## Neutral Color Architecture

@@ -77,9 +77,9 @@ This pattern is the **exception**, not the rule. All other ob.s color tokens mus
 
 At ob.s, color tokens are named not only by state but also by the **element type** they color (`fg`, `bg`, `border`, etc.). When a single interaction state affects multiple element types that may resolve to different colors, each element type **must have its own token** — even if the values happen to be identical today.
 
-The canonical example is a navigation or segmented-button indicator, where the interaction color family separates by element type at the same contrast level:
+The canonical example is a navigation or segmented-button indicator, where the interaction color family separates by element type at the top level of each scale:
 
-- `ob.s.color.interaction.border.contrast_high.*` — the indicator element (underline, active border)
+- `ob.s.color.interaction.border.strong.*` — the indicator element (underline, active border)
 - `ob.s.color.interaction.fg.contrast_high.*` — the label text color
 
 These cannot share one token because:
