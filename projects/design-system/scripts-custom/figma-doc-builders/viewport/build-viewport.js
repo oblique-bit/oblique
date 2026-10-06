@@ -97,11 +97,13 @@ function parsePxNumber(v) {
   return m ? Number(m[1]) : null;
 }
 // Resolve a token leaf's $value into a final string. Handles literals, `{ref}`,
-// `{ref} - 1`, `{ref} + N`. Recurses through aliases up to 8 levels deep.
+// `{ref} - 1px`, `{ref} + Npx` (the px is optional here). Recurses through
+// aliases up to 8 levels deep. Tokens use `- 1px`: Token Studio does not
+// calculate px minus a bare number and exports the unchanged first value.
 function resolveValue(raw, lookup, depth = 0) {
   if (depth > 8 || raw == null) return null;
   if (typeof raw !== 'string') return raw;
-  const mathRx = /^\s*\{([^}]+)\}\s*([+\-])\s*(\d+(?:\.\d+)?)\s*$/;
+  const mathRx = /^\s*\{([^}]+)\}\s*([+\-])\s*(\d+(?:\.\d+)?)(?:px)?\s*$/;
   const mm = mathRx.exec(raw);
   if (mm) {
     const [, ref, op, num] = mm;
