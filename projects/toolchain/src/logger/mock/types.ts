@@ -38,7 +38,7 @@ export interface ObMockLogger {
 	 * @example
 	 * afterEach(() => {
 	 *   clearGroups();        // resets the {@link ObMockLogger#loggerGroups|loggerGroups} array
-	 *   vi.clearAllMocks(); // resets all Jest mocks
+	 *   vi.clearAllMocks(); // resets all Vitest mocks
 	 * });
 	 */
 	clearGroups: () => void;
