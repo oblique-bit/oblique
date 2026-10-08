@@ -80,14 +80,15 @@ Colors with no built-in semantic meaning, available for project-specific purpose
 
 ### Semantic Naming Convention
 ```
-ob.s.{category}.{property}.{contrast_level}.{inversity_variation}
+ob.s.color.{group}.{role}.{contrast_level}
+ob.s.color.{group}.{role}.{contrast_level}_inverse
 ```
 
 #### Structure Components
-- **`category`**: Color's semantic purpose (neutral, status, interaction, brand)
-- **`property`**: Visual property (bg, fg, border, shadow)
+- **`group`**: Color's semantic purpose (neutral, status, action, brand)
+- **`role`**: Visual role (background, foreground, border, shadow)
 - **`contrast_level`**: Relationship to surrounding elements (contrast_highest to contrast_lowest)
-- **`inversity_variation`**: Component-level theming (inversity_normal, inversity_flipped)
+- **`_inverse` suffix**: Variant for components on an inverse surface, added to the last name segment. The plain name is the normal variant
 
 ### Layer Architecture
 
@@ -98,7 +99,7 @@ The color system operates through multiple semantic layers. For detailed archite
 - **Emphasis Semantic Level (S2)**: Interaction emphasis modes (high/low emphasis variations for interactive components)
 - **Semantic Compilation (ob.s)**: Complete semantic color compilation including static colors
 
-**Note**: Inversity (normal/flipped) is a **flat property** available on most tokens, not a separate layer or mode. Components simply choose between `inversity_normal` and `inversity_flipped` variants as needed. For complete documentation, refer to [Semantic Color Architecture](03-semantic.md).
+**Note**: The inverse variant is a **flat property** available on most tokens, not a separate layer or mode. The plain token name is the normal variant and the `_inverse` suffix marks the flipped variant. Components simply choose between the two as needed. The `_inverse` variables are hidden from consumers of the published library. For complete documentation, refer to [Semantic Color Architecture](03-semantic.md).
 
 ## Cross-Category Consumption
 
@@ -162,7 +163,7 @@ Each layer adds semantic meaning while maintaining flexibility for mode adaptati
 1. **Select semantic category** based on the color's communicative purpose
 2. **Choose appropriate property** (bg, fg, border, shadow) for the semantic role
 3. **Apply contrast level** that creates proper information hierarchy
-4. **Specify inversity variation** for component-level theming control
+4. **Choose the plain name or the `_inverse` variant** for component-level theming control
 
 For detailed token selection examples and technical implementation, see [Semantic Color Architecture](03-semantic.md).
 

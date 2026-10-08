@@ -56,9 +56,9 @@ ob.h.{element}.{category}.{property}.{variant}
 **Real example** (from `05_html/link/link.json`):
 ```json
 {
-  "ob.h.link.color.default": { "$value": "{ob.s.color.interaction.fg.contrast_medium.inversity_normal}" },
-  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.fg.contrast_low.inversity_normal}" },
-  "ob.h.link.color.active": { "$value": "{ob.s.color.interaction.fg.contrast_high.inversity_normal}" }
+  "ob.h.link.color.default": { "$value": "{ob.s.color.action.foreground.contrast_medium}" },
+  "ob.h.link.color.hover": { "$value": "{ob.s.color.action.foreground.contrast_low}" },
+  "ob.h.link.color.active": { "$value": "{ob.s.color.action.foreground.contrast_high}" }
 }
 ```
 
@@ -87,12 +87,12 @@ Component tokens consume the compiled semantic layer (`ob.s.*`) only — never S
 ```json
 // DO: reference ob.s.* (compiled semantic tokens)
 {
-  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.fg.contrast_low.inversity_normal}" }
+  "ob.h.link.color.hover": { "$value": "{ob.s.color.action.foreground.contrast_low}" }
 }
 
 // DON'T: reference S1 or S2 directly
 {
-  "ob.h.link.color.hover": { "$value": "{ob.s2.color.interaction.fg.contrast_low.inversity_normal}" }
+  "ob.h.link.color.hover": { "$value": "{ob.s2.color.action.foreground.contrast_low}" }
 }
 
 // DON'T: reference primitives directly
@@ -113,7 +113,7 @@ Component tokens consume the compiled semantic layer (`ob.s.*`) only — never S
 
 When a component token needs an interaction color, it consumes one of four groups in the semantic interaction color family — not a raw state name:
 
-- **`fg`, `bg`, `border`** — a visual-weight scale directly under `interaction`: `contrast_low` / `contrast_medium` / `contrast_high` for `fg` and `bg`, and `subtle` / `medium` / `strong` for `border`, e.g. `ob.s.color.interaction.fg.contrast_medium.inversity_normal`. These follow the emphasis mode. This is what most interactive elements reference for their default/hover/active colors, as in the link example above.
+- **`fg`, `bg`, `border`** — a visual-weight scale directly under `interaction`: `contrast_low` / `contrast_medium` / `contrast_high` for `fg` and `bg`, and `subtle` / `medium` / `strong` for `border`, e.g. `ob.s.color.action.foreground.contrast_medium`. These follow the emphasis mode. This is what most interactive elements reference for their default/hover/active colors, as in the link example above.
 - **`emphasis_none`** — a separate S1-tier interaction category (a peer of `emphasis_high` / `emphasis_low`) for elements that need hover/active feedback but must not follow the emphasis mode — cards, table rows, menu items, tags.
 - **`visited`** — the visited-link color, kept as its own segment rather than a `contrast_low` / `contrast_medium` / `contrast_high` step.
 - **`focus_ring`** — the focus-indicator color, kept as its own segment rather than a `contrast_low` / `contrast_medium` / `contrast_high` step.
@@ -143,8 +143,8 @@ Component tokens support theming through `03_semantic` token selection, without 
 
 ```json
 {
-  "ob.c.{component}.color.bg.surface.inversity_normal": { "$value": "{ob.s.color.neutral.bg.contrast_lowest.inversity_normal}" },
-  "ob.c.{component}.color.bg.surface.inversity_flipped": { "$value": "{ob.s.color.neutral.bg.contrast_lowest.inversity_flipped}" }
+  "ob.c.{component}.color.bg.surface.inversity_normal": { "$value": "{ob.s.color.neutral.background.contrast_lowest}" },
+  "ob.c.{component}.color.bg.surface.inversity_flipped": { "$value": "{ob.s.color.neutral.background.contrast_lowest_inverse}" }
 }
 ```
 

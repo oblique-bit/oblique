@@ -67,7 +67,7 @@ These tokens exist in `interface.json` and in `prose.json` with the same names.
 | `ob.h.typography.context.h<n>.font_weight` | `ob.s.typography.scale.static.font_weight.<weight>` | Font weight of the heading. |
 | `ob.h.typography.context.h<n>.line_height` | `ob.s.typography.scale.static.line_height.<step>` | Line height of the heading. |
 | `ob.h.typography.context.h<n>.letter_spacing` | `ob.s.typography.scale.static.letter_spacing_px.<step>` | Letter spacing of the heading. |
-| `ob.h.typography.context.h<n>.color.fg` | `ob.s.color.neutral.fg.<contrast>.inversity_normal` | Foreground color of the heading. The contrast level differs between the interface and prose typography contexts. |
+| `ob.h.typography.context.h<n>.color.fg` | `ob.s.color.neutral.foreground.<contrast>.inversity_normal` | Foreground color of the heading. The contrast level differs between the interface and prose typography contexts. |
 | `ob.h.typography.context.h<n>.paragraph_spacing` | `ob.s.typography.scale.static.paragraph_spacing.<step>` | Figma only. Spacing after manual line breaks. |
 | `ob.h.typography.context.h<n>.spacing.top` | `ob.s.dimension.static.typography_context.<step>` | Space above the heading. |
 | `ob.h.typography.context.h<n>.spacing.bottom` | `ob.s.dimension.static.typography_context.<step>` | Space below the heading. |
@@ -109,7 +109,7 @@ These tokens exist in `interface.json` and in `prose.json` with the same names. 
 | `ob.h.typography.context.body.<style>.font_weight` | `ob.s.typography.scale.static.font_weight.<weight>` | Font weight of the body style. |
 | `ob.h.typography.context.body.<style>.line_height` | `ob.s.typography.scale.static.line_height.<step>` | Line height of the body style. |
 | `ob.h.typography.context.body.<style>.letter_spacing` | `ob.s.typography.scale.static.letter_spacing_px.<step>` | Letter spacing of the body style. |
-| `ob.h.typography.context.body.color.fg` | `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | Foreground color of body in all typography context modes. Highest contrast for optimal readability. |
+| `ob.h.typography.context.body.color.fg` | `ob.s.color.neutral.foreground.contrast_highest` | Foreground color of body in all typography context modes. Highest contrast for optimal readability. |
 | `ob.h.typography.context.body.paragraph_spacing` | `ob.s.typography.scale.static.paragraph_spacing.3xl` (24 px) | Paragraph spacing of the body text styles. Same value in both contexts. |
 | `ob.h.typography.context.p.top` | `ob.s.dimension.static.typography_context.none` (0 px) | Space above a paragraph. |
 | `ob.h.typography.context.p.bottom` | `ob.s.dimension.static.typography_context.sm` (12 px) | Space below a paragraph. |
@@ -149,8 +149,8 @@ ob.h.heading.H1                                    (text style)
           → ob.p.font_size_rem.1000                  (3rem = 48 px)
 
 ob.h.typography.context.h1.color.fg
-  → ob.s.color.neutral.fg.contrast_low.inversity_normal   (both contexts)
-      → ob.s1.color.neutral.fg.contrast_low.inversity_normal   (resolved with the lightness mode)
+  → ob.s.color.neutral.foreground.contrast_low   (both contexts)
+      → ob.s1.color.neutral.foreground.contrast_low   (resolved with the lightness mode)
 
 ob.h.typography.context.h1.spacing.bottom
   → ob.s.dimension.static.typography_context.xs   (interface, 8 px)
@@ -202,10 +202,10 @@ The link text style `body/link` adds an underline. The text decoration of the li
 | `ob.s.typography.scale.static.paragraph_spacing.*` | `paragraph_spacing` tokens | `none` 0 px, `3xl` 24 px |
 | `ob.s.typography.scale.static.text_decoration.link.emphasis_high` | `ob.h.body.link` | underline |
 | `ob.s.dimension.static.typography_context.*` | `spacing.top`, `spacing.bottom`, `p`, `p_lead` | `none` 0 px, `xs` 8 px, `sm` 12 px, `md` 16 px, `2xl` 28 px |
-| `ob.s.color.neutral.fg.contrast_low.inversity_normal` | heading color (H1, and H2 to H4 in prose) | follows `lightness` |
-| `ob.s.color.neutral.fg.contrast_medium.inversity_normal` | heading color (H2 in interface, H5 in prose) | follows `lightness` |
-| `ob.s.color.neutral.fg.contrast_high.inversity_normal` | heading color (H3 to H6 in interface, H6 in prose) | follows `lightness` |
-| `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | body color | follows `lightness` |
+| `ob.s.color.neutral.foreground.contrast_low` | heading color (H1, and H2 to H4 in prose) | follows `lightness` |
+| `ob.s.color.neutral.foreground.contrast_medium` | heading color (H2 in interface, H5 in prose) | follows `lightness` |
+| `ob.s.color.neutral.foreground.contrast_high` | heading color (H3 to H6 in interface, H6 in prose) | follows `lightness` |
+| `ob.s.color.neutral.foreground.contrast_highest` | body color | follows `lightness` |
 
 ---
 

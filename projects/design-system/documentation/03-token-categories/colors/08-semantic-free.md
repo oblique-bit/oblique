@@ -16,8 +16,8 @@ Example: a "Documents" category badge that uses yellow purely to distinguish it 
 
 ```css
 /* Direct consumption — no semantic meaning attached */
-background: var(--ob-s-color-free-yellow-bg-contrast-medium-inversity-normal);
-color: var(--ob-s-color-free-yellow-fg-contrast-high-inversity-normal);
+background: var(--ob-s-color-free-yellow-background-contrast-medium);
+color: var(--ob-s-color-free-yellow-foreground-contrast-high);
 ```
 
 This is valid. The token path makes no claim about what the yellow means in this context.
@@ -37,7 +37,7 @@ Example: a project adds a "Pending" status and decides yellow is the right color
         "pending": {
           "fg": {
             "contrast_high": {
-              "$value": "{ob.s.color.free.yellow.fg.contrast_high.inversity_normal}"
+              "$value": "{ob.s.color.free.yellow.foreground.contrast_high}"
             }
           }
         }

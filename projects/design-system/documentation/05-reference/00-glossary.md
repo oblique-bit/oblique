@@ -39,11 +39,11 @@ A reusable value in Figma that can be applied to design properties — Figma's i
 ## Design System Architecture
 
 ### **Inversity**
-Oblique's approach to color contrast management. Instead of traditional light/dark modes, inversity provides normal and flipped variants for every color token to ensure proper contrast relationships.
+Oblique's approach to color contrast on inverse surfaces. Most color tokens come as a normal variant and a flipped variant, so a component on an inverse surface keeps proper contrast relationships.
 
 **Implementation:** 
-- `inversity_normal` - Standard contrast relationships
-- `inversity_flipped` - Inverted contrast relationships
+- The plain token name, for example `contrast_high` - Standard contrast relationships
+- The `_inverse` suffix, for example `contrast_high_inverse` - Inverted contrast relationships
 - Stored flat in color tokens, not as variable modes
 
 ### **Mode**
@@ -90,7 +90,7 @@ The `{tier}` segment identifies the token's layer; the rest of the path varies b
 
 **Examples:**
 - `ob.h.link.color.hover`
-- `ob.s.color.neutral.fg.contrast_high.inversity_normal`
+- `ob.s.color.neutral.foreground.contrast_high`
 - `ob.g.mode_collection.viewport.css_selector.xs`
 
 ### **Token Tiers**

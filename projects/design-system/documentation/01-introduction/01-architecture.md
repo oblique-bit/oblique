@@ -79,7 +79,7 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 
 ### **Color Tokens**
 - **Structure**: `ob.{layer}.color.{color_name}.{shade}`
-- **Examples**: `ob.p.color.red.50`, `ob.s.color.neutral.fg.contrast_high.inversity_normal`
+- **Examples**: `ob.p.color.red.50`, `ob.s.color.neutral.foreground.contrast_high`
 - **Modes**: Handled through S1 lightness layer (light/dark)
 
 ### **Spacing Tokens**  
@@ -169,7 +169,7 @@ Component-level tokens should directly reference a token from the semantic layer
 {
   "color": {
     "hover": {
-      "$value": "{ob.s.color.interaction.fg.contrast_low.inversity_normal}"
+      "$value": "{ob.s.color.action.foreground.contrast_low}"
     }
   }
 }

@@ -67,7 +67,7 @@ Primitive colors serve as the foundation for all semantic color compilation, fee
 - **blue.100-200, blue.600-700**: Reserved for informational status (different shades per lightness mode) - do not use for decoration or other semantics
 - **steelblue.100-900**: Reserved for interaction colors (links, hover/focus states) - entire scale semantically consumed
 - **cobalt.100-900**: Consumed for low-emphasis neutral and interaction colors - desaturated alternative that maintains semantic meaning while reducing visual prominence
-- **indigo.900/800/700 (light), indigo.50/100/200 (dark)**: Consumed by the `ob.s.color.interaction.visited.fg.*` semantic path for visited-link foreground color - a second claim on indigo alongside the `free` tier below
+- **indigo.900/800/700 (light), indigo.50/100/200 (dark)**: Consumed by the `ob.s.color.action.visited.foreground.*` semantic path for visited-link foreground color - a second claim on indigo alongside the `free` tier below
 - **yellow, teal, indigo, pink, cobalt (entire scales)**: Consumed by the `ob.s.color.free.*` semantic tier — see [Semantic Free Colors](08-semantic-free.md). Need an application-specific accent color? Use `ob.s.color.free.*`, not these primitives directly — see [Primitive Color Consumption](02-primitive-consumption.md).
 
 **Color Usage Classification (3 Stages):**

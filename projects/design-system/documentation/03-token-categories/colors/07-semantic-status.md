@@ -149,7 +149,7 @@ These naming choices provide:
 ## Token Structure
 
 ```
-ob.s.color.status.{status_name}.{property}.{contrast_level}.{inversity_variation}
+ob.s.color.status.{status_name}.{role}.{contrast_level}[_inverse]
 ```
 
 **Primitive Token Reference:** Each color value in the tables below corresponds to a primitive token from the base color palette (`ob.p.color.{color_family}.{shade}`). These primitive tokens are organized by color family (red, blue, green, orange, purple, indigo, etc.) with numbered scales from 50 (lightest) to 900 (darkest).
@@ -194,13 +194,13 @@ This applies uniformly across all 12 statuses (info, critical, resolved, attenti
 
 A badge at size `xs` displaying status `info` on a medium-contrast info background might use:
 ```
-color: var(--ob-s-color-status-info-fg-contrast_highest-inversity_normal);
+color: var(--ob-s-color-status-info-foreground-contrast_highest);
 ```
 This produces near-black text (`cobalt.900`) instead of dark blue (`contrast_high`), gaining the extra contrast needed at that small size — while still referencing a token that semantically belongs to the info status group.
 
 ### Prohibited Pairing: Neutral Foreground on Status Background
 
-**Rule: Never pair neutral foreground tokens (`ob.s.color.neutral.fg.contrast_high`, `contrast_medium`, or `contrast_low`) with status background colors.**
+**Rule: Never pair neutral foreground tokens (`ob.s.color.neutral.foreground.contrast_high`, `contrast_medium`, or `contrast_low`) with status background colors.**
 
 `contrast_highest` already provides the only neutral shade that safely pairs with any status background — `cobalt.900` (#131B22) in light mode, `basic.white` (#FFFFFF) in dark mode. These are the absolute extremes of the lightness scale, which guarantees sufficient contrast against any colored background.
 
@@ -228,7 +228,7 @@ The only exception is `bg.contrast_highest`, which resolves to a neutral white/d
 
 **Why high emphasis fails on saturated backgrounds:**
 
-High-emphasis interaction tokens (e.g. `ob.s.color.interaction.*.emphasis_high`) carry strong chromatic saturation — typically deep blues for links, vivid accent colors for buttons. When placed on a saturated status background (a red `critical`, blue `info`, or green `resolved` surface), two competing saturated hues clash:
+High-emphasis interaction tokens (e.g. `ob.s.color.action.*.emphasis_high`) carry strong chromatic saturation — typically deep blues for links, vivid accent colors for buttons. When placed on a saturated status background (a red `critical`, blue `info`, or green `resolved` surface), two competing saturated hues clash:
 
 - **Visual strain.** Saturated foreground on saturated background creates high chromatic tension that is hard on the eye, especially at small sizes or extended reading.
 - **Semantic collision.** The status background communicates a specific meaning (error, success, info). A vividly colored link or button introduces a second semantic signal that competes with and dilutes the status message.
@@ -251,9 +251,9 @@ Emphasis low desaturates interaction tokens to monochromatic (near-neutral) tone
 | `bg.contrast_medium` (saturated) | **Low only** | Saturated bg — avoid chromatic collision |
 | `bg.contrast_low` (saturated) | **Low only** | Saturated bg — avoid chromatic collision |
 
-### Inversity Variations
-- `inversity_normal` - Standard light mode
-- `inversity_flipped` - Dark mode / inverted contexts
+### Inverse Variants
+- The plain name, for example `contrast_high` - Standard surface
+- The `_inverse` suffix, for example `contrast_high_inverse` - Inverse surface
 
 ## Reserved Status Colors
 
@@ -459,15 +459,15 @@ These examples show recommended token usage patterns. Developers may adapt these
 ```scss
 .infobox {
   &.info {
-    background-color: var(--ob-s2-color-status-info-bg-contrast_low-inversity_normal);
-    border-left: 4px solid var(--ob-s2-color-status-info-fg-contrast_high-inversity_normal);
-    color: var(--ob-s2-color-status-info-fg-contrast_high-inversity_normal);
+    background-color: var(--ob-s2-color-status-info-background-contrast_low);
+    border-left: 4px solid var(--ob-s2-color-status-info-foreground-contrast_high);
+    color: var(--ob-s2-color-status-info-foreground-contrast_high);
   }
   
   &.critical {
-    background-color: var(--ob-s2-color-status-critical-bg-contrast_low-inversity_normal);
-    border-left: 4px solid var(--ob-s2-color-status-critical-fg-contrast_high-inversity_normal);
-    color: var(--ob-s2-color-status-critical-fg-contrast_high-inversity_normal);
+    background-color: var(--ob-s2-color-status-critical-background-contrast_low);
+    border-left: 4px solid var(--ob-s2-color-status-critical-foreground-contrast_high);
+    color: var(--ob-s2-color-status-critical-foreground-contrast_high);
   }
 }
 ```
@@ -476,13 +476,13 @@ These examples show recommended token usage patterns. Developers may adapt these
 ```scss
 .badge {
   &.resolved {
-    background-color: var(--ob-s2-color-status-resolved-bg-contrast_medium-inversity_normal);
-    color: var(--ob-s2-color-status-resolved-fg-contrast_high-inversity_normal);
+    background-color: var(--ob-s2-color-status-resolved-background-contrast_medium);
+    color: var(--ob-s2-color-status-resolved-foreground-contrast_high);
   }
   
   &.pending {
-    background-color: var(--ob-s2-color-status-pending-bg-contrast_medium-inversity_normal);
-    color: var(--ob-s2-color-status-pending-fg-contrast_high-inversity_normal);
+    background-color: var(--ob-s2-color-status-pending-background-contrast_medium);
+    color: var(--ob-s2-color-status-pending-foreground-contrast_high);
   }
 }
 ```
@@ -491,9 +491,9 @@ These examples show recommended token usage patterns. Developers may adapt these
 ```scss
 .pill {
   &.progress {
-    background-color: var(--ob-s2-color-status-progress-bg-contrast_low-inversity_normal);
-    color: var(--ob-s2-color-status-progress-fg-contrast_high-inversity_normal);
-    border: 1px solid var(--ob-s2-color-status-progress-fg-contrast_medium-inversity_normal);
+    background-color: var(--ob-s2-color-status-progress-background-contrast_low);
+    color: var(--ob-s2-color-status-progress-foreground-contrast_high);
+    border: 1px solid var(--ob-s2-color-status-progress-foreground-contrast_medium);
   }
 }
 ```
@@ -521,19 +521,19 @@ All status colors have been validated and meet WCAG 2.1 AA conformity standards 
 ## Mode Integration
 
 ### Automatic Adaptation
-Status colors automatically adapt to lightness mode changes through inversity variations:
+Status colors adapt to lightness mode changes, and the `_inverse` variants serve components on an inverse surface:
 
 ```scss
 /* Light mode context */
 .mode-light .badge.critical {
-  background-color: var(--ob-s2-color-status-critical-bg-contrast_medium-inversity_normal);
-  color: var(--ob-s2-color-status-critical-fg-contrast_high-inversity_normal);
+  background-color: var(--ob-s2-color-status-critical-background-contrast_medium);
+  color: var(--ob-s2-color-status-critical-foreground-contrast_high);
 }
 
 /* Dark mode context */
 .mode-dark .badge.critical {
-  background-color: var(--ob-s2-color-status-critical-bg-contrast_medium-inversity_flipped);
-  color: var(--ob-s2-color-status-critical-fg-contrast_high-inversity_flipped);
+  background-color: var(--ob-s2-color-status-critical-background-contrast_medium_inverse);
+  color: var(--ob-s2-color-status-critical-foreground-contrast_high_inverse);
 }
 ```
 
@@ -541,16 +541,16 @@ Status colors automatically adapt to lightness mode changes through inversity va
 ```scss
 .status-indicator {
   /* Base styles that work in any context */
-  --status-bg: var(--ob-s2-color-status-info-bg-contrast_low-inversity_normal);
-  --status-fg: var(--ob-s2-color-status-info-fg-contrast_high-inversity_normal);
+  --status-bg: var(--ob-s2-color-status-info-background-contrast_low);
+  --status-fg: var(--ob-s2-color-status-info-foreground-contrast_high);
   
   background-color: var(--status-bg);
   color: var(--status-fg);
   
   /* Automatically adapts when inversity context changes */
   .inversity_flipped & {
-    --status-bg: var(--ob-s2-color-status-info-bg-contrast_low-inversity_flipped);
-    --status-fg: var(--ob-s2-color-status-info-fg-contrast_high-inversity_flipped);
+    --status-bg: var(--ob-s2-color-status-info-background-contrast_low_inverse);
+    --status-fg: var(--ob-s2-color-status-info-foreground-contrast_high_inverse);
   }
 }
 ```

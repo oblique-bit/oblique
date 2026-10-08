@@ -107,7 +107,7 @@ Here `shadow` (path segment) is snake_case per Oblique convention; `boxShadow` (
 
 #### **Semantic Tokens** - Describe intent  
 - **Pattern**: `ob.s{level}.{type}.{purpose}.{property}`
-- **Examples**: `ob.s.color.neutral.fg.contrast_high`, `ob.s1.color.status.critical.fg`
+- **Examples**: `ob.s.color.neutral.foreground.contrast_high`, `ob.s1.color.status.critical.foreground`
 - **Rule**: Describe *why it's used*
 
 #### **Component Tokens** - Describe usage
@@ -171,8 +171,7 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 | `contrast_high` | `contrast_high` |
 | `contrast_medium` | `contrast_medium` |
 | `contrast_low` | `contrast_low` |
-| `inversity_normal` | `inversity_normal` |
-| `inversity_flipped` | `inversity_flipped` |
+| `contrast_high_inverse` | `contrast_high_inverse` |
 
 ### **Benefits**
 - **Consistent naming** across Token Studio, Figma, and CSS
@@ -183,7 +182,7 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 ### **Key Compound Categories**
 
 #### **Semantic Compounds**
-- `inversity_normal` / `inversity_flipped`
+- `contrast_high` / `contrast_high_inverse` (plain name and `_inverse` suffix)
 - `emphasis_high` / `emphasis_low`
 - `contrast_highest` / `contrast_high` / `contrast_medium` / `contrast_low`
 
@@ -203,17 +202,17 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 
 ### **Valid Reference Hierarchy**
 ```
-ob.h.link.color.hover → {ob.s.color.interaction.fg.contrast_low.inversity_normal}
-ob.s.color.interaction.fg.contrast_low.inversity_normal → {ob.s2.color.interaction.fg.contrast_low.inversity_normal}
-ob.s2.color.interaction.fg.contrast_low.inversity_normal → {ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_normal}
-ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_normal → {ob.p.color.cobalt.600}
+ob.h.link.color.hover → {ob.s.color.action.foreground.contrast_low}
+ob.s.color.action.foreground.contrast_low → {ob.s2.color.action.foreground.contrast_low}
+ob.s2.color.action.foreground.contrast_low → {ob.s1.color.action.emphasis_low.foreground.contrast_low}
+ob.s1.color.action.emphasis_low.foreground.contrast_low → {ob.p.color.cobalt.600}
 ```
 
 ### **Invalid Reference Patterns**
 ```
 ob.h.link.color.hover → {ob.p.color.cobalt.600}                                          (skipping semantic layer)
-ob.p.color.cobalt.600 → {ob.s.color.interaction.fg.contrast_low.inversity_normal} (primitive referencing semantic)
-ob.s2.color.interaction.fg.contrast_low.inversity_normal → {ob.s.color.interaction.fg.contrast_low.inversity_normal} (S2 referencing ob.s)
+ob.p.color.cobalt.600 → {ob.s.color.action.foreground.contrast_low} (primitive referencing semantic)
+ob.s2.color.action.foreground.contrast_low → {ob.s.color.action.foreground.contrast_low} (S2 referencing ob.s)
 ```
 
 ### **Global Token Exception**
@@ -233,14 +232,14 @@ Style Dictionary preserves the underscore format in CSS variables, eliminating t
 /* Correct: Underscore format preserved */
 a {
   color: var(--ob-h-link-color-default);
-  outline-color: var(--ob-s-color-interaction-focus_ring-inversity_normal);
+  outline-color: var(--ob-s-color-action-focus_ring);
 }
 ```
 
 ### **Token Studio → CSS Consistency**
-- **Token Studio**: `ob.s.color.neutral.fg.contrast_high.inversity_normal`
-- **Figma Variable**: `ob.s.color.neutral.fg.contrast_high.inversity_normal`  
-- **CSS Variable**: `--ob-s-color-neutral-fg-contrast_high-inversity_normal`
+- **Token Studio**: `ob.s.color.neutral.foreground.contrast_high`
+- **Figma Variable**: `ob.s.color.neutral.foreground.contrast_high`  
+- **CSS Variable**: `--ob-s-color-neutral-foreground-contrast_high`
 
 Only the path separators change (`.` to `-`), while compound identifiers remain unchanged.
 
@@ -250,7 +249,7 @@ Only the path separators change (`.` to `-`), while compound identifiers remain 
 
 ### **Color Tokens**
 - **Structure**: `ob.{layer}.color.{color_name}.{shade}`
-- **Examples**: `ob.p.color.red.500`, `ob.s.color.neutral.fg.contrast_high.inversity_normal`
+- **Examples**: `ob.p.color.red.500`, `ob.s.color.neutral.foreground.contrast_high`
 - **Modes**: Handled through S1 lightness layer (light/dark)
 
 ### **Dimension Tokens**  

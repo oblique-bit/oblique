@@ -40,7 +40,7 @@ This token consistency ensures that what end users experience matches exactly wh
 ### **Exceptions**
 Besides consistency, each environment and target audience has its own needs. We allow minimal deviations: in exceptional cases, for a specific environment (CSS or Figma), the context of use (compatibility, user expectations) takes a slight priority over consistency.
 
-- **Compiled Color Variables (Figma):** `ob.s.*` variable names trim the `ob/s/` prefix (e.g. `color/neutral/fg/contrast_medium/inversity_normal`) for usability in the Figma variables panel. Figma only — the JSON token keeps the full `ob.s.color` path.
+- **Compiled Color Variables (Figma):** `ob.s.*` variable names trim the `ob/s/` prefix (e.g. `color/neutral/foreground/contrast_medium`) for usability in the Figma variables panel. Figma only — the JSON token keeps the full `ob.s.color` path.
 - **Code Transforms:** Developers retain the right to adapt token values to code's needs through the Style Dictionary build, transforming what is defined in the JSON for the final CSS output.
 
 ---

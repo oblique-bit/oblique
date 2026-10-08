@@ -39,9 +39,9 @@ ob.s.color.brand` references `{ob.p.color.basic.federal_red}` (Swiss federal red
 ### Selection Indicators
 ```json
 {
-  "ob.s.color.interaction.bg.contrast_high.inversity_normal": {
+  "ob.s.color.action.background.contrast_high": {
     "$type": "color",
-    "$value": "{ob.s2.color.interaction.bg.contrast_high.inversity_normal}"
+    "$value": "{ob.s2.color.action.background.contrast_high}"
   }
 }
 ```

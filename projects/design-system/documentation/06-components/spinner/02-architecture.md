@@ -30,8 +30,8 @@ Both tokens reference the `free.indigo` family with the `inversity_normal` varia
 
 | Token | References | Description |
 |-------|-----------|-------------|
-| `ob.c.spinner.color.active` | `ob.s.color.free.indigo.fg.contrast_medium.inversity_normal` | Color of the active part of the loading. |
-| `ob.c.spinner.color.inactive` | `ob.s.color.free.indigo.bg.contrast_low.inversity_normal` | Color of the inactive part of the loading. |
+| `ob.c.spinner.color.active` | `ob.s.color.free.indigo.foreground.contrast_medium` | Color of the active part of the loading. |
+| `ob.c.spinner.color.inactive` | `ob.s.color.free.indigo.background.contrast_low` | Color of the inactive part of the loading. |
 
 ## Border Radius
 
@@ -60,7 +60,7 @@ ob.c.spinner.size
       → roundTo(ob.p.dimension.px.64 × ui_scale multiplier, 0)
 
 ob.c.spinner.color.active
-  → ob.s.color.free.indigo.fg.contrast_medium.inversity_normal
+  → ob.s.color.free.indigo.foreground.contrast_medium
       → S1 lightness level (light file or dark file)  (mode-reactive: lightness)
 
 ob.c.spinner.animation.speed
@@ -89,8 +89,8 @@ The spinner references semantic tokens only. It does not reference primitives di
 | Semantic token | Used for | Resolves to |
 |----------------|----------|-------------|
 | `ob.s.dimension.dynamic.ui_scale.container.xl.px` | Size | `ob.p.dimension.px.64` multiplied by the `ui_scale` multiplier |
-| `ob.s.color.free.indigo.fg.contrast_medium.inversity_normal` | Active color | S1 lightness level |
-| `ob.s.color.free.indigo.bg.contrast_low.inversity_normal` | Inactive color | S1 lightness level |
+| `ob.s.color.free.indigo.foreground.contrast_medium` | Active color | S1 lightness level |
+| `ob.s.color.free.indigo.background.contrast_low` | Inactive color | S1 lightness level |
 | `ob.s.border_radius.lg` | Border radius | `ob.p.dimension.px.4` |
 | `ob.s.border_width.3xl` | Border width | `ob.p.dimension.px.16` |
 | `ob.s.motion.duration.instant` | Speed and pause | `ob.p.motion.duration.instant` |

@@ -25,22 +25,22 @@ Every color token references an `inversity_normal` semantic color. The `neutral`
 
 | Token | References | Description |
 |-------|-----------|-------------|
-| `ob.c.badge.color.bg.attention.enabled` | `ob.s.color.status.attention.bg.contrast_low.inversity_normal` | Attention status background in the enabled state. |
-| `ob.c.badge.color.bg.attention.disabled` | `ob.s.color.neutral.bg.contrast_low.inversity_normal` | Disabled attention badge background, using neutral tokens. |
-| `ob.c.badge.color.bg.info.enabled` | `ob.s.color.status.info.bg.contrast_low.inversity_normal` | Info status background in the enabled state. |
-| `ob.c.badge.color.bg.info.disabled` | `ob.s.color.neutral.bg.contrast_low.inversity_normal` | Disabled info badge background, using neutral tokens. |
-| `ob.c.badge.color.bg.critical.enabled` | `ob.s.color.status.critical.bg.contrast_low.inversity_normal` | Critical status background in the enabled state. |
-| `ob.c.badge.color.bg.critical.disabled` | `ob.s.color.neutral.bg.contrast_low.inversity_normal` | Disabled critical badge background, using neutral tokens. |
-| `ob.c.badge.color.bg.resolved.enabled` | `ob.s.color.status.resolved.bg.contrast_low.inversity_normal` | Resolved status background in the enabled state. |
-| `ob.c.badge.color.bg.resolved.disabled` | `ob.s.color.neutral.bg.contrast_low.inversity_normal` | Disabled resolved badge background, using neutral tokens. |
-| `ob.c.badge.color.fg.info.enabled` | `ob.s.color.status.info.fg.contrast_highest.inversity_normal` | Maximum contrast text color of the info badge in the enabled state. |
-| `ob.c.badge.color.fg.info.disabled` | `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | Maximum contrast text color of the disabled info badge, for consistency with the badge design pattern. |
-| `ob.c.badge.color.fg.attention.enabled` | `ob.s.color.status.attention.fg.contrast_highest.inversity_normal` | Maximum contrast text color of the attention badge in the enabled state. |
-| `ob.c.badge.color.fg.attention.disabled` | `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | Maximum contrast text color of the disabled attention badge, for consistency with the badge design pattern. |
-| `ob.c.badge.color.fg.critical.enabled` | `ob.s.color.status.critical.fg.contrast_highest.inversity_normal` | Maximum contrast text color of the critical badge in the enabled state. |
-| `ob.c.badge.color.fg.critical.disabled` | `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | Maximum contrast text color of the disabled critical badge, for consistency with the badge design pattern. |
-| `ob.c.badge.color.fg.resolved.enabled` | `ob.s.color.status.resolved.fg.contrast_highest.inversity_normal` | Maximum contrast text color of the resolved badge in the enabled state. |
-| `ob.c.badge.color.fg.resolved.disabled` | `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | Maximum contrast text color of the disabled resolved badge, for consistency with the badge design pattern. |
+| `ob.c.badge.color.bg.attention.enabled` | `ob.s.color.status.attention.background.contrast_low` | Attention status background in the enabled state. |
+| `ob.c.badge.color.bg.attention.disabled` | `ob.s.color.neutral.background.contrast_low` | Disabled attention badge background, using neutral tokens. |
+| `ob.c.badge.color.bg.info.enabled` | `ob.s.color.status.info.background.contrast_low` | Info status background in the enabled state. |
+| `ob.c.badge.color.bg.info.disabled` | `ob.s.color.neutral.background.contrast_low` | Disabled info badge background, using neutral tokens. |
+| `ob.c.badge.color.bg.critical.enabled` | `ob.s.color.status.critical.background.contrast_low` | Critical status background in the enabled state. |
+| `ob.c.badge.color.bg.critical.disabled` | `ob.s.color.neutral.background.contrast_low` | Disabled critical badge background, using neutral tokens. |
+| `ob.c.badge.color.bg.resolved.enabled` | `ob.s.color.status.resolved.background.contrast_low` | Resolved status background in the enabled state. |
+| `ob.c.badge.color.bg.resolved.disabled` | `ob.s.color.neutral.background.contrast_low` | Disabled resolved badge background, using neutral tokens. |
+| `ob.c.badge.color.fg.info.enabled` | `ob.s.color.status.info.foreground.contrast_highest` | Maximum contrast text color of the info badge in the enabled state. |
+| `ob.c.badge.color.fg.info.disabled` | `ob.s.color.neutral.foreground.contrast_highest` | Maximum contrast text color of the disabled info badge, for consistency with the badge design pattern. |
+| `ob.c.badge.color.fg.attention.enabled` | `ob.s.color.status.attention.foreground.contrast_highest` | Maximum contrast text color of the attention badge in the enabled state. |
+| `ob.c.badge.color.fg.attention.disabled` | `ob.s.color.neutral.foreground.contrast_highest` | Maximum contrast text color of the disabled attention badge, for consistency with the badge design pattern. |
+| `ob.c.badge.color.fg.critical.enabled` | `ob.s.color.status.critical.foreground.contrast_highest` | Maximum contrast text color of the critical badge in the enabled state. |
+| `ob.c.badge.color.fg.critical.disabled` | `ob.s.color.neutral.foreground.contrast_highest` | Maximum contrast text color of the disabled critical badge, for consistency with the badge design pattern. |
+| `ob.c.badge.color.fg.resolved.enabled` | `ob.s.color.status.resolved.foreground.contrast_highest` | Maximum contrast text color of the resolved badge in the enabled state. |
+| `ob.c.badge.color.fg.resolved.disabled` | `ob.s.color.neutral.foreground.contrast_highest` | Maximum contrast text color of the disabled resolved badge, for consistency with the badge design pattern. |
 
 ## Spacing
 
@@ -84,7 +84,7 @@ This is the only token of the family that follows the `ui_scale` mode. It refere
 
 ```
 ob.c.badge.color.bg.info.enabled
-  → ob.s.color.status.info.bg.contrast_low.inversity_normal
+  → ob.s.color.status.info.background.contrast_low
       → S1 lightness level (light file or dark file)  (mode-reactive: lightness)
 
 ob.c.badge.size.height.lg
@@ -119,8 +119,8 @@ The badge references semantic tokens only. It does not reference primitives dire
 |----------------|----------|-------------|
 | `ob.s.color.status.{attention,info,critical,resolved}.bg.contrast_low.inversity_normal` | Enabled backgrounds | S1 lightness level |
 | `ob.s.color.status.{attention,info,critical,resolved}.fg.contrast_highest.inversity_normal` | Enabled text | S1 lightness level |
-| `ob.s.color.neutral.bg.contrast_low.inversity_normal` | Disabled backgrounds | S1 lightness level |
-| `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | Disabled text | S1 lightness level |
+| `ob.s.color.neutral.background.contrast_low` | Disabled backgrounds | S1 lightness level |
+| `ob.s.color.neutral.foreground.contrast_highest` | Disabled text | S1 lightness level |
 | `ob.s.dimension.static.ui_scale.element.xs.px` | Padding | `ob.p.dimension.px.4` |
 | `ob.s.dimension.static.ui_scale.spacing.sm.px` | Small size: min width, max width, height | `ob.p.dimension.px.20` |
 | `ob.s.dimension.static.ui_scale.spacing.md.px` | Large size: min width, height | `ob.p.dimension.px.24` |

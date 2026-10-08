@@ -102,7 +102,7 @@ The only composite tokens in the file. Each bundles colour, width and style into
 "ob.s.border.focus_ring.inversity_normal": {
   "$type": "border",
   "$value": {
-    "color": "{ob.s.color.interaction.focus_ring.inversity_normal}",
+    "color": "{ob.s.color.action.focus_ring}",
     "width": "{ob.s.border_width.md}",
     "style": "solid"
   },
@@ -112,8 +112,8 @@ The only composite tokens in the file. Each bundles colour, width and style into
 
 | Token | Colour reference | Width | Style |
 |---|---|---|---|
-| `inversity_normal` | `ob.s.color.interaction.focus_ring.inversity_normal` | `ob.s.border_width.md` (3px) | `solid` |
-| `inversity_flipped` | `ob.s.color.interaction.focus_ring.inversity_flipped` | `ob.s.border_width.md` (3px) | `solid` |
+| `inversity_normal` | `ob.s.color.action.focus_ring` | `ob.s.border_width.md` (3px) | `solid` |
+| `inversity_flipped` | `ob.s.color.action.focus_ring_inverse` | `ob.s.border_width.md` (3px) | `solid` |
 
 Both carry the same `$description`.
 
@@ -143,8 +143,8 @@ The width stays inside the border category; the colour leaves it and walks the f
 ob.s.border.focus_ring.inversity_normal
   ├── width → ob.s.border_width.md → ob.p.dimension.px.3
   ├── style → "solid" (literal, no token)
-  └── color → ob.s.color.interaction.focus_ring.inversity_normal
-                → ob.s1.color.interaction.focus_ring.inversity_normal
+  └── color → ob.s.color.action.focus_ring
+                → ob.s1.color.action.focus_ring
                   → ob.p.color.purple.*
 ```
 

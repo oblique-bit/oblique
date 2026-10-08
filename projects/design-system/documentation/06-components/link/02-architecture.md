@@ -45,10 +45,10 @@ All four tokens use the `inversity_normal` value.
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.h.link.color.default` | `ob.s.color.interaction.fg.contrast_medium.inversity_normal` | Default color of unvisited links. |
-| `ob.h.link.color.visited` | `ob.s.color.interaction.visited.fg.contrast_low.inversity_normal` | Color of links the user has already visited. |
-| `ob.h.link.color.hover` | `ob.s.color.interaction.fg.contrast_low.inversity_normal` | Color of link when hovered with the mouse. |
-| `ob.h.link.color.active` | `ob.s.color.interaction.fg.contrast_high.inversity_normal` | Color of link during click interaction. |
+| `ob.h.link.color.default` | `ob.s.color.action.foreground.contrast_medium` | Default color of unvisited links. |
+| `ob.h.link.color.visited` | `ob.s.color.action.visited.foreground.contrast_low` | Color of links the user has already visited. |
+| `ob.h.link.color.hover` | `ob.s.color.action.foreground.contrast_low` | Color of link when hovered with the mouse. |
+| `ob.h.link.color.active` | `ob.s.color.action.foreground.contrast_high` | Color of link during click interaction. |
 
 > **Open point:** the default link color is dark and has little saturation on thin letters; it may be swapped with the hover color in a later round.
 
@@ -78,14 +78,14 @@ The link tokens sit in the `ob.h.*` layer for HTML elements. They reference sema
 
 ```
 ob.h.link.color.default
-  → ob.s.color.interaction.fg.contrast_medium.inversity_normal
-      → ob.s2.color.interaction.fg.contrast_medium.inversity_normal   (follows the emphasis mode)
-          → ob.s1.color.interaction.emphasis_high.fg.contrast_medium.inversity_normal
-            or ob.s1.color.interaction.emphasis_low.fg.contrast_medium.inversity_normal
+  → ob.s.color.action.foreground.contrast_medium
+      → ob.s2.color.action.foreground.contrast_medium   (follows the emphasis mode)
+          → ob.s1.color.action.emphasis_high.foreground.contrast_medium
+            or ob.s1.color.action.emphasis_low.foreground.contrast_medium
 
 ob.h.link.color.visited
-  → ob.s.color.interaction.visited.fg.contrast_low.inversity_normal
-      → ob.s1.color.interaction.visited.fg.contrast_low.inversity_normal   (no emphasis variant)
+  → ob.s.color.action.visited.foreground.contrast_low
+      → ob.s1.color.action.visited.foreground.contrast_low   (no emphasis variant)
 ```
 
 The hover and active colors follow the same path as the default color, with the contrast levels `contrast_low` and `contrast_high`. The S1 tokens resolve with the `lightness` mode. See [Interaction Colors](../../03-token-categories/colors/06-semantic-interaction.md).
@@ -117,10 +117,10 @@ The default link color is dark and has little saturation on thin letters. It may
 | `ob.s.dimension.static.ui_scale.micro.sm.px` | `ob.h.link.spacing.gap` | 2 px |
 | `ob.s.motion.duration.micro` | `ob.h.link.motion.duration` | 100 ms (`enabled`), 0 ms (`disabled`) |
 | `ob.s.motion.easing.standard` | `ob.h.link.motion.easing` | `cubic-bezier(0, 0, 0.2, 1)` |
-| `ob.s.color.interaction.fg.contrast_medium.inversity_normal` | `ob.h.link.color.default` | follows `lightness` and `emphasis` |
-| `ob.s.color.interaction.visited.fg.contrast_low.inversity_normal` | `ob.h.link.color.visited` | follows `lightness` |
-| `ob.s.color.interaction.fg.contrast_low.inversity_normal` | `ob.h.link.color.hover` | follows `lightness` and `emphasis` |
-| `ob.s.color.interaction.fg.contrast_high.inversity_normal` | `ob.h.link.color.active` | follows `lightness` and `emphasis` |
+| `ob.s.color.action.foreground.contrast_medium` | `ob.h.link.color.default` | follows `lightness` and `emphasis` |
+| `ob.s.color.action.visited.foreground.contrast_low` | `ob.h.link.color.visited` | follows `lightness` |
+| `ob.s.color.action.foreground.contrast_low` | `ob.h.link.color.hover` | follows `lightness` and `emphasis` |
+| `ob.s.color.action.foreground.contrast_high` | `ob.h.link.color.active` | follows `lightness` and `emphasis` |
 | `ob.s.typography.scale.static.text_decoration.link.emphasis_high` | `ob.h.link.enabled`, `ob.h.link.hover`, `ob.h.link.active` | underline |
 | `ob.s.typography.scale.static.text_decoration.link.emphasis_low` | `ob.h.link.focus` | none |
 | `ob.s.typography.scale.static.font_size.md` | `ob.h.link.icon.size` (interface) | 1rem (16 px) |

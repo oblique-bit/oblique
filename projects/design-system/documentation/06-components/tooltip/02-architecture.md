@@ -36,8 +36,8 @@ Both tokens reference the `inversity_flipped` variant.
 
 | Token | References | Description |
 |-------|-----------|-------------|
-| `ob.c.tooltip.color.bg` | `ob.s.color.neutral.bg.contrast_high.inversity_flipped` | Inverted background color to stand out in a busy layout. |
-| `ob.c.tooltip.color.fg` | `ob.s.color.neutral.fg.contrast_highest.inversity_flipped` | Text color for the inverted background color. |
+| `ob.c.tooltip.color.bg` | `ob.s.color.neutral.background.contrast_high_inverse` | Inverted background color to stand out in a busy layout. |
+| `ob.c.tooltip.color.fg` | `ob.s.color.neutral.foreground.contrast_highest_inverse` | Text color for the inverted background color. |
 
 ## Typography
 
@@ -67,7 +67,7 @@ Both tokens reference the `inversity_flipped` variant.
 
 ```
 ob.c.tooltip.color.bg
-  → ob.s.color.neutral.bg.contrast_high.inversity_flipped
+  → ob.s.color.neutral.background.contrast_high_inverse
       → S1 lightness level (light file or dark file)  (mode-reactive: lightness)
 
 ob.c.tooltip.spacing.padding_top
@@ -102,8 +102,8 @@ The tooltip references semantic tokens only. It does not reference primitives di
 | Semantic token | Used for | Resolves to |
 |----------------|----------|-------------|
 | `ob.s.dimension.static.ui_scale.element.xl.px` | The four paddings | `ob.p.dimension.px.12` |
-| `ob.s.color.neutral.bg.contrast_high.inversity_flipped` | Background | S1 lightness level |
-| `ob.s.color.neutral.fg.contrast_highest.inversity_flipped` | Text color | S1 lightness level |
+| `ob.s.color.neutral.background.contrast_high_inverse` | Background | S1 lightness level |
+| `ob.s.color.neutral.foreground.contrast_highest_inverse` | Text color | S1 lightness level |
 | `ob.s.typography.authoring.static.sm.strong` | Label text style | `ob.s.typography.scale.static.*` tokens |
 | `ob.s.border_radius.sm` | Border radius | `ob.p.dimension.px.1` |
 | `ob.s.shadow.md` | Shadow | Composite shadow value (`ob.p.color.cobalt_alpha.50` as color) |

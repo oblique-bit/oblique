@@ -64,9 +64,9 @@ Color tokens reference semantic neutral colors with the `inversity_normal` suffi
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.c.popover.color.bg` | `ob.s.color.neutral.bg.contrast_highest.inversity_normal` | Default background color for popovers. |
-| `ob.c.popover.color.border` | `ob.s.color.neutral.border.strong.inversity_normal` | Default border color for popovers. |
-| `ob.c.popover.color.fg` | `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | Default foreground color for popovers. |
+| `ob.c.popover.color.bg` | `ob.s.color.neutral.background.contrast_highest` | Default background color for popovers. |
+| `ob.c.popover.color.border` | `ob.s.color.neutral.border.strong` | Default border color for popovers. |
+| `ob.c.popover.color.fg` | `ob.s.color.neutral.foreground.contrast_highest` | Default foreground color for popovers. |
 
 ## Typography
 
@@ -116,9 +116,9 @@ The popover tokens reference these semantic tokens. Dynamic tokens show the valu
 | `ob.s.dimension.dynamic.ui_scale.spacing.md.px` | 19 / 24 / 30 px | `size.text_variant_container.min_height` |
 | `ob.s.dimension.dynamic.ui_scale.container.xl.px` | 51 / 64 / 80 px | `size.custom_buttons.min_width` |
 | `ob.s.dimension.dynamic.ui_scale.macro.sm.px` | 256 / 320 / 400 px | `size.custom_buttons_container.width`, `size.padded_container.width` |
-| `ob.s.color.neutral.bg.contrast_highest.inversity_normal` | Light: `ob.p.color.basic.white`. Dark: `ob.p.color.cobalt.800`. | `color.bg` |
-| `ob.s.color.neutral.border.strong.inversity_normal` | `ob.p.color.cobalt.300` in light and dark | `color.border` |
-| `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | Light: `ob.p.color.cobalt.900`. Dark: `ob.p.color.basic.white`. | `color.fg` |
+| `ob.s.color.neutral.background.contrast_highest` | Light: `ob.p.color.basic.white`. Dark: `ob.p.color.cobalt.800`. | `color.bg` |
+| `ob.s.color.neutral.border.strong` | `ob.p.color.cobalt.300` in light and dark | `color.border` |
+| `ob.s.color.neutral.foreground.contrast_highest` | Light: `ob.p.color.cobalt.900`. Dark: `ob.p.color.basic.white`. | `color.fg` |
 | `ob.s.typography.authoring.static.xs.normal` | Composite typography style | `typography.custom_buttons_label` |
 | `ob.s.typography.authoring.static.sm.normal` | Composite typography style | `typography.text` |
 | `ob.s.typography.authoring.static.sm.strong` | Composite typography style | `typography.title` |

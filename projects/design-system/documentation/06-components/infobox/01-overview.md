@@ -53,11 +53,11 @@ The status names in the token paths are `info`, `critical`, `attention`, `resolv
 
 | Variant | Icon and border color | Surface color | Foreground color | Button inversity |
 |---|---|---|---|---|
-| `info` | `ob.s.color.status.info.fg.contrast_medium.inversity_normal` | `ob.s.color.status.info.bg.contrast_high.inversity_normal` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | `normal` |
-| `critical` | `ob.s.color.status.critical.fg.contrast_medium.inversity_normal` | `ob.s.color.status.critical.bg.contrast_high.inversity_normal` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | `normal` |
-| `attention` | `ob.s.color.status.attention.fg.contrast_medium.inversity_normal` | `ob.s.color.status.attention.bg.contrast_high.inversity_normal` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | `normal` |
-| `resolved` | `ob.s.color.status.resolved.fg.contrast_medium.inversity_normal` | `ob.s.color.status.resolved.bg.contrast_high.inversity_normal` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | `normal` |
-| `fatal` | `ob.s.color.status.fatal.fg.contrast_medium.inversity_flipped` | `ob.s.color.status.fatal.bg.contrast_high.inversity_flipped` | `ob.s.color.neutral.fg.contrast_medium.inversity_flipped` | `flipped` |
+| `info` | `ob.s.color.status.info.foreground.contrast_medium` | `ob.s.color.status.info.background.contrast_high` | `ob.s.color.neutral.foreground.contrast_high` | `normal` |
+| `critical` | `ob.s.color.status.critical.foreground.contrast_medium` | `ob.s.color.status.critical.background.contrast_high` | `ob.s.color.neutral.foreground.contrast_high` | `normal` |
+| `attention` | `ob.s.color.status.attention.foreground.contrast_medium` | `ob.s.color.status.attention.background.contrast_high` | `ob.s.color.neutral.foreground.contrast_high` | `normal` |
+| `resolved` | `ob.s.color.status.resolved.foreground.contrast_medium` | `ob.s.color.status.resolved.background.contrast_high` | `ob.s.color.neutral.foreground.contrast_high` | `normal` |
+| `fatal` | `ob.s.color.status.fatal.foreground.contrast_medium_inverse` | `ob.s.color.status.fatal.background.contrast_high_inverse` | `ob.s.color.neutral.foreground.contrast_medium_inverse` | `flipped` |
 
 Each variant has four color tokens: `icon`, `border`, `surface` and `fg`. The `icon` and `border` tokens of a variant reference the same token. See [Status Colors](../../03-token-categories/colors/07-semantic-status.md) for the status color families.
 

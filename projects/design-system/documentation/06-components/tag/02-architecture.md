@@ -43,16 +43,16 @@ The color group has 10 tokens: two parts (`fg` and `bg`) and five states. All to
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.c.tag.color.fg.enabled` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | - |
-| `ob.c.tag.color.fg.hover` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | - |
-| `ob.c.tag.color.fg.focus` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | - |
-| `ob.c.tag.color.fg.selected` | `ob.s.color.neutral.fg.contrast_medium.inversity_flipped` | - |
-| `ob.c.tag.color.fg.disabled` | `ob.s.color.neutral.fg.contrast_lowest.inversity_normal` | - |
-| `ob.c.tag.color.bg.enabled` | `ob.s.color.neutral.bg.contrast_medium.inversity_normal` | - |
-| `ob.c.tag.color.bg.hover` | `ob.s.color.neutral.bg.contrast_high.inversity_normal` | - |
-| `ob.c.tag.color.bg.focus` | `ob.s.color.neutral.bg.contrast_medium.inversity_normal` | - |
-| `ob.c.tag.color.bg.selected` | `ob.s.color.neutral.bg.contrast_high.inversity_flipped` | - |
-| `ob.c.tag.color.bg.disabled` | `ob.s.color.neutral.bg.contrast_medium.inversity_normal` | - |
+| `ob.c.tag.color.fg.enabled` | `ob.s.color.neutral.foreground.contrast_high` | - |
+| `ob.c.tag.color.fg.hover` | `ob.s.color.neutral.foreground.contrast_high` | - |
+| `ob.c.tag.color.fg.focus` | `ob.s.color.neutral.foreground.contrast_high` | - |
+| `ob.c.tag.color.fg.selected` | `ob.s.color.neutral.foreground.contrast_medium_inverse` | - |
+| `ob.c.tag.color.fg.disabled` | `ob.s.color.neutral.foreground.contrast_lowest` | - |
+| `ob.c.tag.color.bg.enabled` | `ob.s.color.neutral.background.contrast_medium` | - |
+| `ob.c.tag.color.bg.hover` | `ob.s.color.neutral.background.contrast_high` | - |
+| `ob.c.tag.color.bg.focus` | `ob.s.color.neutral.background.contrast_medium` | - |
+| `ob.c.tag.color.bg.selected` | `ob.s.color.neutral.background.contrast_high_inverse` | - |
+| `ob.c.tag.color.bg.disabled` | `ob.s.color.neutral.background.contrast_medium` | - |
 
 ## Typography
 
@@ -95,7 +95,7 @@ The tag tokens reference semantic tokens (`ob.s.*`). No tag token references a p
 | Border radius | `ob.s.border_radius.rounded` |
 | Typography, dynamic | `ob.s.typography.scale.dynamic.font_size.sm`, `ob.s.typography.scale.dynamic.text_decoration.link.emphasis_low` |
 | Typography, static | `ob.s.typography.scale.static.font_family.code`, `ob.s.typography.scale.static.font_weight.medium` |
-| Color, neutral | `ob.s.color.neutral.fg.contrast_high.inversity_normal`, `ob.s.color.neutral.fg.contrast_medium.inversity_flipped`, `ob.s.color.neutral.fg.contrast_lowest.inversity_normal`, `ob.s.color.neutral.bg.contrast_medium.inversity_normal`, `ob.s.color.neutral.bg.contrast_high.inversity_normal`, `ob.s.color.neutral.bg.contrast_high.inversity_flipped` |
+| Color, neutral | `ob.s.color.neutral.foreground.contrast_high`, `ob.s.color.neutral.foreground.contrast_medium_inverse`, `ob.s.color.neutral.foreground.contrast_lowest`, `ob.s.color.neutral.background.contrast_medium`, `ob.s.color.neutral.background.contrast_high`, `ob.s.color.neutral.background.contrast_high_inverse` |
 
 The `.px` dimension variants are used. See the [Token Usage Guide](../../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component) and [Dimension Tokens](../../03-token-categories/00-dimension.md).
 

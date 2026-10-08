@@ -16,11 +16,11 @@ Every primitive color family is claimed by the semantic layer. There is currentl
 | **Orange** | Status Attention | `ob.s.color.status.attention.*` |
 | **Green** | Status Resolved | `ob.s.color.status.resolved.*` |
 | **Blue** | Status Info | `ob.s.color.status.info.*` |
-| **Steelblue** | Interaction | `ob.s.color.interaction.*` |
-| **Purple** | Interaction Focus Ring | `ob.s.color.interaction.focus_ring.*` |
+| **Steelblue** | Interaction | `ob.s.color.action.*` |
+| **Purple** | Interaction Focus Ring | `ob.s.color.action.focus_ring.*` |
 | **Yellow** | Free | `ob.s.color.free.yellow.*` |
 | **Teal** | Free | `ob.s.color.free.teal.*` |
-| **Indigo** | Free, Interaction (visited) | `ob.s.color.free.indigo.*`, `ob.s.color.interaction.visited.fg.*` |
+| **Indigo** | Free, Interaction (visited) | `ob.s.color.free.indigo.*`, `ob.s.color.action.visited.foreground.*` |
 | **Pink** | Free | `ob.s.color.free.pink.*` |
 | **Cobalt Alpha / White Alpha** | Transparency primitives | consumed directly where genuine transparency is needed |
 
@@ -42,7 +42,7 @@ ob.s.color.free.{cobalt|yellow|teal|indigo|pink}.{bg|fg}.{contrast_low|contrast_
 ```json
 {
   "ob.c.{component}.color.bg.default": {
-    "$value": "{ob.s.color.free.indigo.bg.contrast_medium.inversity_normal}",
+    "$value": "{ob.s.color.free.indigo.background.contrast_medium}",
     "$description": "Application-defined accent color — indigo has no fixed system meaning."
   }
 }

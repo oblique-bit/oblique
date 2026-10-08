@@ -36,14 +36,14 @@ Before diving into the full system, here are the two most fundamental color toke
 
 | What | Token | Description |
 |---|---|---|
-| **Background** | `ob.s.color.neutral.bg.contrast_highest.inversity_normal` | The standard page/canvas background. Highest contrast — the primary surface everything else sits on. |
-| **Foreground (text)** | `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | The standard body text / heading color. Highest contrast — maximum legibility against the background. |
+| **Background** | `ob.s.color.neutral.background.contrast_highest` | The standard page/canvas background. Highest contrast — the primary surface everything else sits on. |
+| **Foreground (text)** | `ob.s.color.neutral.foreground.contrast_highest` | The standard body text / heading color. Highest contrast — maximum legibility against the background. |
 
 These two tokens give you the most basic readable layout: dark text on a light surface (or light text on a dark surface — the tokens adapt automatically via lightness mode).
 
 From here, you can layer in more tokens as needed:
-- A **high-contrast background** (`ob.s.color.neutral.bg.contrast_high.inversity_normal`) for cards or surfaces that need to stand out from the page
-- A **high-contrast foreground** (`ob.s.color.neutral.fg.contrast_high.inversity_normal`) for body text and primary labels (one step below the absolute maximum)
+- A **high-contrast background** (`ob.s.color.neutral.background.contrast_high`) for cards or surfaces that need to stand out from the page
+- A **high-contrast foreground** (`ob.s.color.neutral.foreground.contrast_high`) for body text and primary labels (one step below the absolute maximum)
 - [**Border**](../03-token-categories/03-border.md) and [**shadow**](../03-token-categories/04-shadow.md) tokens for structural separation
 
 Once you have the basics, use the decision steps below to find the right token for more specific needs.
@@ -343,7 +343,7 @@ The token architecture is designed to help components meet [Web Content Accessib
 |---|---|---|---|---|
 | **1.4.3** | AA | Contrast (Minimum) | The contrast level scale (`contrast_lowest` → `contrast_highest`) on semantic color tokens is designed to meet the 4.5:1 ratio for normal text and 3:1 for large text. Choosing `contrast_high` or `contrast_highest` for text-on-background pairings helps satisfy this criterion. | `ob.s.color.{family}.fg.contrast_high.*`, `ob.s.color.{family}.bg.contrast_highest.*` |
 | **1.4.4** | AA | Resize Text | Using rem in CSS for the spatial groups (padding, gaps, component sizes) helps components scale proportionally when users increase browser font size up to 200%. See the [px vs rem section](#px-vs-rem--which-unit-when-building-a-component) above. | `ob.s.dimension.*.ui_scale.{spacing,element,container,layout,macro}.*`, `ob.s.dimension.*.density.*`, `ob.s.dimension.*.typography_context.*` |
-| **1.4.6** | AAA | Contrast (Enhanced) | The `contrast_highest` level targets the stricter 7:1 ratio for text. Using this level for body text and primary headings supports Enhanced contrast compliance. | `ob.s.color.neutral.fg.contrast_highest.*` |
+| **1.4.6** | AAA | Contrast (Enhanced) | The `contrast_highest` level targets the stricter 7:1 ratio for text. Using this level for body text and primary headings supports Enhanced contrast compliance. | `ob.s.color.neutral.foreground.contrast_highest.*` |
 | **1.4.10** | AA | Reflow | Using rem in CSS for the spatial groups helps components reflow naturally at 320 CSS pixel width (equivalent to 400% zoom at 1280px). When spatial values scale with the user's font-size, layout adapts without requiring horizontal scrolling. | The same groups |
 | **1.4.11** | AA | Non-text Contrast | Border tokens and foreground tokens provide the 3:1 contrast needed for UI component boundaries (input borders, button outlines) and graphical objects (icons). The border contrast scale (`subtle`, `medium`, `strong`) lets maintainers pick the right visual weight. | `ob.s.color.neutral.border.{contrast}.*`, `ob.s.color.{family}.fg.*` |
 | **1.4.12** | AA | Text Spacing | Typography tokens bundle line-height with font-size so components don't hardcode a ratio that could fall under the 1.5× minimum. Typography tokens built on these values allow user-overridden spacing without content clipping or overlap. | `ob.s.typography.scale.dynamic.line_height.*` |
