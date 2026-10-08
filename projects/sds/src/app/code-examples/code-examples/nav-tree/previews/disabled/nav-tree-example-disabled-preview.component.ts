@@ -1,10 +1,11 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule, ObExternalLinkModule} from '@oblique/oblique';
+import {StackblitzLinkComponent} from '../../../../../shared/stackblitz-link/stackblitz-link.component';
 
 @Component({
 	selector: 'app-nav-tree-example-disabled-preview',
-	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule],
+	imports: [ObExternalLinkModule, MatButtonModule, ObButtonModule, StackblitzLinkComponent],
 	templateUrl: './nav-tree-example-disabled-preview.component.html',
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
