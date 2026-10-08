@@ -12,12 +12,19 @@ export class Banner extends StaticScript {
 		'10.0.0': '2024-06-30',
 	};
 
-	static addToFilesInProject(projectName: string): void {
+	/**
+	 * Adds a version banner to all `css`, `js` and `mjs` files of the given project's distribution folder.
+	 * Files already containing the banner are left untouched.
+	 * @param projectName the name of the project whose distribution files get the banner, e.g. `oblique`
+	 * @param skip an optional regular expression; files whose path matches it are skipped
+	 */
+	static addToFilesInProject(projectName: string, skip?: RegExp): void {
 		Log.info('Add a banner in all css, js and mjs files of the distribution');
 		const banner = Banner.prepareBanner(currentVersion);
 
 		Files.list(getAbsolutePath(`dist/${projectName}`))
 			.filter(filePath => /\.(?:m?js|css)$/.test(filePath))
+			.filter(filePath => (skip ? !skip.test(filePath) : true))
 			.map(filePath => ({filePath, content: Files.read(filePath)}))
 			.filter(({content}) => !content.includes(banner))
 			.map(file => ({...file, content: Banner.addBannerToFileContent(file.content, banner)}))
