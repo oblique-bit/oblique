@@ -33,7 +33,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_low.inversity_normal}",
+                "$value": "{ob.s.color.neutral.foreground.contrast_low}",
                 "$description": "Foreground color of H1 headings. The contrast level differs between the interface and prose typography contexts."
               }
             },
@@ -77,7 +77,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_medium.inversity_normal}",
+                "$value": "{ob.s.color.neutral.foreground.contrast_medium}",
                 "$description": "Foreground color of H2 headings. The contrast level differs between the interface and prose typography contexts."
               }
             },
@@ -122,7 +122,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}",
+                "$value": "{ob.s.color.neutral.foreground.contrast_high}",
                 "$description": "Foreground color of H3 headings. The contrast level differs between the interface and prose typography contexts."
               }
             },
@@ -166,7 +166,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}",
+                "$value": "{ob.s.color.neutral.foreground.contrast_high}",
                 "$description": "Foreground color of H4 headings. The contrast level differs between the interface and prose typography contexts."
               }
             },
@@ -210,7 +210,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}",
+                "$value": "{ob.s.color.neutral.foreground.contrast_high}",
                 "$description": "Foreground color of H5 headings. The contrast level differs between the interface and prose typography contexts."
               }
             },
@@ -254,7 +254,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}",
+                "$value": "{ob.s.color.neutral.foreground.contrast_high}",
                 "$description": "Foreground color of H6 headings. The contrast level differs between the interface and prose typography contexts."
               }
             },
@@ -366,7 +366,7 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_highest.inversity_normal}",
+                "$value": "{ob.s.color.neutral.foreground.contrast_highest}",
                 "$description": "Foreground-color of body in all typography context modes. Value: Highest contrast for optimal readability."
               }
             },

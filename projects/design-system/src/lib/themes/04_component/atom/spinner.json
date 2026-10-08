@@ -16,12 +16,12 @@
         "color": {
           "active": {
             "$type": "color",
-            "$value": "{ob.s.color.free.indigo.fg.contrast_medium.inversity_normal}",
+            "$value": "{ob.s.color.free.indigo.foreground.contrast_medium}",
             "$description": "Color indicating the active part of the loading."
           },
           "inactive": {
             "$type": "color",
-            "$value": "{ob.s.color.free.indigo.bg.contrast_low.inversity_normal}",
+            "$value": "{ob.s.color.free.indigo.background.contrast_low}",
             "$description": "Color indicating the inactive part of the loading."
           }
         },

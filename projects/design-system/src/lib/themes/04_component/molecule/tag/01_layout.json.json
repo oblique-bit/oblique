@@ -47,45 +47,45 @@
           "fg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}"
+              "$value": "{ob.s.color.neutral.foreground.contrast_high}"
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}"
+              "$value": "{ob.s.color.neutral.foreground.contrast_high}"
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast_high.inversity_normal}"
+              "$value": "{ob.s.color.neutral.foreground.contrast_high}"
             },
             "selected": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast_medium.inversity_flipped}"
+              "$value": "{ob.s.color.neutral.foreground.contrast_medium_inverse}"
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.fg.contrast_lowest.inversity_normal}"
+              "$value": "{ob.s.color.neutral.foreground.contrast_lowest}"
             }
           },
           "bg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s.color.neutral.background.contrast_medium}"
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast_high.inversity_normal}"
+              "$value": "{ob.s.color.neutral.background.contrast_high}"
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s.color.neutral.background.contrast_medium}"
             },
             "selected": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast_high.inversity_flipped}"
+              "$value": "{ob.s.color.neutral.background.contrast_high_inverse}"
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.contrast_medium.inversity_normal}"
+              "$value": "{ob.s.color.neutral.background.contrast_medium}"
             }
           }
         }

@@ -95,7 +95,7 @@
           "inversity_normal": {
             "$type": "border",
             "$value": {
-              "color": "{ob.s.color.interaction.focus_ring.inversity_normal}",
+              "color": "{ob.s.color.action.focus_ring}",
               "width": "{ob.s.border_width.md}",
               "style": "solid"
             },
@@ -104,7 +104,7 @@
           "inversity_flipped": {
             "$type": "border",
             "$value": {
-              "color": "{ob.s.color.interaction.focus_ring.inversity_flipped}",
+              "color": "{ob.s.color.action.focus_ring_inverse}",
               "width": "{ob.s.border_width.md}",
               "style": "solid"
             },

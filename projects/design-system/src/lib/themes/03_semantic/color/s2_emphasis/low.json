@@ -8,125 +8,107 @@
             "$value": "State-based color mapping for interaction elements. Interactive state colors for components. Both Lightness (Light/Dark) and Emphasis (High/Low) modes affect resolved values across all 4 columns. Do: Reference when authoring compiled interaction tokens that require emphasis resolution. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
           }
         },
-        "interaction": {
+        "action": {
           "_docs": {
             "token_family_info": {
               "$type": "text",
               "$value": "Reduced-saturation emphasis for interactive elements in passive layout zones — headers, footers, and sidebars where actions should not draw attention away from primary content. Colors appear near-neutral while remaining interactive. Exposes fg, bg, and border at high, medium, and low contrast. Do: Use for navigation links, header and footer actions, and any interactive element in a zone where monochromatic appearance is preferred over a visible call-to-action color. Avoid: Do not use as the default for primary form actions or submission buttons — those require High emphasis to communicate their role clearly."
             }
           },
-          "fg": {
+          "foreground": {
             "contrast_high": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_high.inversity_normal}",
-                "$description": "High contrast foreground for interaction. Standard surface. Follows the emphasis mode."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_high.inversity_flipped}",
-                "$description": "High contrast foreground for interaction. Inverse surface. Follows the emphasis mode."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.foreground.contrast_high}",
+              "$description": "High contrast foreground for interaction. Standard surface. Follows the emphasis mode."
+            },
+            "contrast_high_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.foreground.contrast_high_inverse}",
+              "$description": "High contrast foreground for interaction. Inverse surface. Follows the emphasis mode."
             },
             "contrast_medium": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_medium.inversity_normal}",
-                "$description": "Medium contrast foreground for interaction. Standard surface. Follows the emphasis mode."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_medium.inversity_flipped}",
-                "$description": "Medium contrast foreground for interaction. Inverse surface. Follows the emphasis mode."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.foreground.contrast_medium}",
+              "$description": "Medium contrast foreground for interaction. Standard surface. Follows the emphasis mode."
+            },
+            "contrast_medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.foreground.contrast_medium_inverse}",
+              "$description": "Medium contrast foreground for interaction. Inverse surface. Follows the emphasis mode."
             },
             "contrast_low": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_normal}",
-                "$description": "Low contrast foreground for interaction. Standard surface. Follows the emphasis mode."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_flipped}",
-                "$description": "Low contrast foreground for interaction. Inverse surface. Follows the emphasis mode."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.foreground.contrast_low}",
+              "$description": "Low contrast foreground for interaction. Standard surface. Follows the emphasis mode."
+            },
+            "contrast_low_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.foreground.contrast_low_inverse}",
+              "$description": "Low contrast foreground for interaction. Inverse surface. Follows the emphasis mode."
             }
           },
-          "bg": {
+          "background": {
             "contrast_high": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_high.inversity_normal}",
-                "$description": "High contrast background for interaction. Standard surface. Follows the emphasis mode."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_high.inversity_flipped}",
-                "$description": "High contrast background for interaction. Inverse surface. Follows the emphasis mode."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.background.contrast_high}",
+              "$description": "High contrast background for interaction. Standard surface. Follows the emphasis mode."
+            },
+            "contrast_high_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.background.contrast_high_inverse}",
+              "$description": "High contrast background for interaction. Inverse surface. Follows the emphasis mode."
             },
             "contrast_medium": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_medium.inversity_normal}",
-                "$description": "Medium contrast background for interaction. Standard surface. Follows the emphasis mode."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_medium.inversity_flipped}",
-                "$description": "Medium contrast background for interaction. Inverse surface. Follows the emphasis mode."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.background.contrast_medium}",
+              "$description": "Medium contrast background for interaction. Standard surface. Follows the emphasis mode."
+            },
+            "contrast_medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.background.contrast_medium_inverse}",
+              "$description": "Medium contrast background for interaction. Inverse surface. Follows the emphasis mode."
             },
             "contrast_low": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_low.inversity_normal}",
-                "$description": "Low contrast background for interaction. Standard surface. Follows the emphasis mode."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.bg.contrast_low.inversity_flipped}",
-                "$description": "Low contrast background for interaction. Inverse surface. Follows the emphasis mode."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.background.contrast_low}",
+              "$description": "Low contrast background for interaction. Standard surface. Follows the emphasis mode."
+            },
+            "contrast_low_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.background.contrast_low_inverse}",
+              "$description": "Low contrast background for interaction. Inverse surface. Follows the emphasis mode."
             }
           },
           "border": {
             "strong": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border.strong.inversity_normal}",
-                "$description": "Strong border for interaction. Standard surface. Follows the emphasis mode."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border.strong.inversity_flipped}",
-                "$description": "Strong border for interaction. Inverse surface. Follows the emphasis mode."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.border.strong}",
+              "$description": "Strong border for interaction. Standard surface. Follows the emphasis mode."
+            },
+            "strong_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.border.strong_inverse}",
+              "$description": "Strong border for interaction. Inverse surface. Follows the emphasis mode."
             },
             "medium": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border.medium.inversity_normal}",
-                "$description": "Medium border for interaction. Standard surface. Follows the emphasis mode."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border.medium.inversity_flipped}",
-                "$description": "Medium border for interaction. Inverse surface. Follows the emphasis mode."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.border.medium}",
+              "$description": "Medium border for interaction. Standard surface. Follows the emphasis mode."
+            },
+            "medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.border.medium_inverse}",
+              "$description": "Medium border for interaction. Inverse surface. Follows the emphasis mode."
             },
             "subtle": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border.subtle.inversity_normal}",
-                "$description": "Subtle border for interaction. Standard surface. Follows the emphasis mode."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s1.color.interaction.emphasis_low.border.subtle.inversity_flipped}",
-                "$description": "Subtle border for interaction. Inverse surface. Follows the emphasis mode."
-              }
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.border.subtle}",
+              "$description": "Subtle border for interaction. Standard surface. Follows the emphasis mode."
+            },
+            "subtle_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.action.emphasis_low.border.subtle_inverse}",
+              "$description": "Subtle border for interaction. Inverse surface. Follows the emphasis mode."
             }
           }
         }
