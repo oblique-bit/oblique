@@ -1,17 +1,17 @@
 {
   "schema": "ob.contrast-pairings.v1",
-  "generatedAt": "2026-10-02T17:46:40.777Z",
+  "generatedAt": "2026-10-08T14:24:34.486Z",
   "categories": {
     "neutral": [
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_highest",
+        "bg": "ob.s.color.neutral.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:479",
-        "bgVarId": "VariableID:8:483",
+        "fgVarId": "VariableID:4007:530",
+        "bgVarId": "VariableID:4007:534",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -30,14 +30,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_highest",
+        "bg": "ob.s.color.neutral.background.contrast_high",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:479",
-        "bgVarId": "VariableID:8:485",
+        "fgVarId": "VariableID:4007:530",
+        "bgVarId": "VariableID:4007:536",
         "ratio": 15.72,
         "wcag": {
           "aaLarge": true,
@@ -56,14 +56,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_highest",
+        "bg": "ob.s.color.neutral.background.contrast_medium",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:479",
-        "bgVarId": "VariableID:8:487",
+        "fgVarId": "VariableID:4007:530",
+        "bgVarId": "VariableID:4007:538",
         "ratio": 13.59,
         "wcag": {
           "aaLarge": true,
@@ -82,14 +82,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_highest",
+        "bg": "ob.s.color.neutral.background.contrast_low",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:479",
-        "bgVarId": "VariableID:8:489",
+        "fgVarId": "VariableID:4007:530",
+        "bgVarId": "VariableID:4007:540",
         "ratio": 8.3,
         "wcag": {
           "aaLarge": true,
@@ -108,14 +108,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_highest",
+        "bg": "ob.s.color.neutral.background.contrast_lowest",
         "rowKey": "highest",
         "colKey": "lowest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:479",
-        "bgVarId": "VariableID:8:481",
+        "fgVarId": "VariableID:4007:530",
+        "bgVarId": "VariableID:4007:532",
         "ratio": 5.2,
         "wcag": {
           "aaLarge": true,
@@ -134,14 +134,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_high",
+        "bg": "ob.s.color.neutral.background.contrast_highest",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:477",
-        "bgVarId": "VariableID:8:483",
+        "fgVarId": "VariableID:4007:528",
+        "bgVarId": "VariableID:4007:534",
         "ratio": 14.97,
         "wcag": {
           "aaLarge": true,
@@ -160,14 +160,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_high",
+        "bg": "ob.s.color.neutral.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:477",
-        "bgVarId": "VariableID:8:485",
+        "fgVarId": "VariableID:4007:528",
+        "bgVarId": "VariableID:4007:536",
         "ratio": 13.54,
         "wcag": {
           "aaLarge": true,
@@ -186,14 +186,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_high",
+        "bg": "ob.s.color.neutral.background.contrast_medium",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:477",
-        "bgVarId": "VariableID:8:487",
+        "fgVarId": "VariableID:4007:528",
+        "bgVarId": "VariableID:4007:538",
         "ratio": 11.7,
         "wcag": {
           "aaLarge": true,
@@ -212,14 +212,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_high",
+        "bg": "ob.s.color.neutral.background.contrast_low",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:477",
-        "bgVarId": "VariableID:8:489",
+        "fgVarId": "VariableID:4007:528",
+        "bgVarId": "VariableID:4007:540",
         "ratio": 7.14,
         "wcag": {
           "aaLarge": true,
@@ -238,14 +238,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_high",
+        "bg": "ob.s.color.neutral.background.contrast_lowest",
         "rowKey": "high",
         "colKey": "lowest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:477",
-        "bgVarId": "VariableID:8:481",
+        "fgVarId": "VariableID:4007:528",
+        "bgVarId": "VariableID:4007:532",
         "ratio": 4.48,
         "wcag": {
           "aaLarge": true,
@@ -264,14 +264,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_highest",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:473",
-        "bgVarId": "VariableID:8:483",
+        "fgVarId": "VariableID:4007:524",
+        "bgVarId": "VariableID:4007:534",
         "ratio": 12.38,
         "wcag": {
           "aaLarge": true,
@@ -290,14 +290,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_high",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:473",
-        "bgVarId": "VariableID:8:485",
+        "fgVarId": "VariableID:4007:524",
+        "bgVarId": "VariableID:4007:536",
         "ratio": 11.2,
         "wcag": {
           "aaLarge": true,
@@ -316,14 +316,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:473",
-        "bgVarId": "VariableID:8:487",
+        "fgVarId": "VariableID:4007:524",
+        "bgVarId": "VariableID:4007:538",
         "ratio": 9.68,
         "wcag": {
           "aaLarge": true,
@@ -342,14 +342,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_low",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:473",
-        "bgVarId": "VariableID:8:489",
+        "fgVarId": "VariableID:4007:524",
+        "bgVarId": "VariableID:4007:540",
         "ratio": 5.91,
         "wcag": {
           "aaLarge": true,
@@ -368,14 +368,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_lowest",
         "rowKey": "medium",
         "colKey": "lowest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:473",
-        "bgVarId": "VariableID:8:481",
+        "fgVarId": "VariableID:4007:524",
+        "bgVarId": "VariableID:4007:532",
         "ratio": 3.71,
         "wcag": {
           "aaLarge": true,
@@ -394,14 +394,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_low",
+        "bg": "ob.s.color.neutral.background.contrast_highest",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:475",
-        "bgVarId": "VariableID:8:483",
+        "fgVarId": "VariableID:4007:526",
+        "bgVarId": "VariableID:4007:534",
         "ratio": 10.2,
         "wcag": {
           "aaLarge": true,
@@ -420,14 +420,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_low",
+        "bg": "ob.s.color.neutral.background.contrast_high",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:475",
-        "bgVarId": "VariableID:8:485",
+        "fgVarId": "VariableID:4007:526",
+        "bgVarId": "VariableID:4007:536",
         "ratio": 9.23,
         "wcag": {
           "aaLarge": true,
@@ -446,14 +446,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_low",
+        "bg": "ob.s.color.neutral.background.contrast_medium",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:475",
-        "bgVarId": "VariableID:8:487",
+        "fgVarId": "VariableID:4007:526",
+        "bgVarId": "VariableID:4007:538",
         "ratio": 7.97,
         "wcag": {
           "aaLarge": true,
@@ -472,14 +472,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_low",
+        "bg": "ob.s.color.neutral.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:475",
-        "bgVarId": "VariableID:8:489",
+        "fgVarId": "VariableID:4007:526",
+        "bgVarId": "VariableID:4007:540",
         "ratio": 4.87,
         "wcag": {
           "aaLarge": true,
@@ -498,14 +498,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_low",
+        "bg": "ob.s.color.neutral.background.contrast_lowest",
         "rowKey": "low",
         "colKey": "lowest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:475",
-        "bgVarId": "VariableID:8:481",
+        "fgVarId": "VariableID:4007:526",
+        "bgVarId": "VariableID:4007:532",
         "ratio": 3.05,
         "wcag": {
           "aaLarge": true,
@@ -524,14 +524,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_lowest",
+        "bg": "ob.s.color.neutral.background.contrast_highest",
         "rowKey": "lowest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:6",
-        "bgVarId": "VariableID:8:483",
+        "fgVarId": "VariableID:4007:522",
+        "bgVarId": "VariableID:4007:534",
         "ratio": 2.51,
         "wcag": {
           "aaLarge": false,
@@ -550,14 +550,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_lowest",
+        "bg": "ob.s.color.neutral.background.contrast_high",
         "rowKey": "lowest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:6",
-        "bgVarId": "VariableID:8:485",
+        "fgVarId": "VariableID:4007:522",
+        "bgVarId": "VariableID:4007:536",
         "ratio": 2.47,
         "wcag": {
           "aaLarge": false,
@@ -576,14 +576,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_lowest",
+        "bg": "ob.s.color.neutral.background.contrast_medium",
         "rowKey": "lowest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:6",
-        "bgVarId": "VariableID:8:487",
+        "fgVarId": "VariableID:4007:522",
+        "bgVarId": "VariableID:4007:538",
         "ratio": 2.41,
         "wcag": {
           "aaLarge": false,
@@ -602,14 +602,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_lowest",
+        "bg": "ob.s.color.neutral.background.contrast_low",
         "rowKey": "lowest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:6",
-        "bgVarId": "VariableID:8:489",
+        "fgVarId": "VariableID:4007:522",
+        "bgVarId": "VariableID:4007:540",
         "ratio": 2.17,
         "wcag": {
           "aaLarge": false,
@@ -628,14 +628,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.foreground.contrast_lowest",
+        "bg": "ob.s.color.neutral.background.contrast_lowest",
         "rowKey": "lowest",
         "colKey": "lowest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:6",
-        "bgVarId": "VariableID:8:481",
+        "fgVarId": "VariableID:4007:522",
+        "bgVarId": "VariableID:4007:532",
         "ratio": 1.92,
         "wcag": {
           "aaLarge": false,
@@ -654,14 +654,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:483",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:534",
         "ratio": 6.47,
         "wcag": {
           "aaLarge": true,
@@ -680,14 +680,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:485",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:536",
         "ratio": 5.85,
         "wcag": {
           "aaLarge": true,
@@ -706,14 +706,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:487",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:538",
         "ratio": 5.06,
         "wcag": {
           "aaLarge": true,
@@ -732,14 +732,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:489",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:540",
         "ratio": 3.09,
         "wcag": {
           "aaLarge": true,
@@ -758,14 +758,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.neutral.background.contrast_lowest",
         "rowKey": "text-link",
         "colKey": "lowest",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:481",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:532",
         "ratio": 1.94,
         "wcag": {
           "aaLarge": false,
@@ -784,16 +784,16 @@
         "emph": null
       }
     ],
-    "interaction": [
+    "action": [
       {
-        "fg": "ob.s.color.interaction.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.interaction.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_high",
+        "bg": "ob.s.color.action.background.contrast_high",
         "rowKey": "states",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:532",
-        "bgVarId": "VariableID:8:538",
+        "fgVarId": "VariableID:4007:551",
+        "bgVarId": "VariableID:4007:557",
         "ratio": 5.06,
         "wcag": {
           "aaLarge": true,
@@ -812,14 +812,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.interaction.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.action.background.contrast_medium",
         "rowKey": "states",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:540",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:559",
         "ratio": 4.75,
         "wcag": {
           "aaLarge": true,
@@ -838,14 +838,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.interaction.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_low",
+        "bg": "ob.s.color.action.background.contrast_low",
         "rowKey": "states",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:536",
-        "bgVarId": "VariableID:8:542",
+        "fgVarId": "VariableID:4007:555",
+        "bgVarId": "VariableID:4007:561",
         "ratio": 4.39,
         "wcag": {
           "aaLarge": true,
@@ -866,14 +866,14 @@
     ],
     "status": [
       {
-        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_highest",
+        "bg": "ob.s.color.status.info.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:561",
-        "bgVarId": "VariableID:8:553",
+        "fgVarId": "VariableID:4007:612",
+        "bgVarId": "VariableID:4007:604",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -893,14 +893,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_high",
+        "bg": "ob.s.color.status.info.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:563",
-        "bgVarId": "VariableID:8:553",
+        "fgVarId": "VariableID:4007:614",
+        "bgVarId": "VariableID:4007:604",
         "ratio": 10.36,
         "wcag": {
           "aaLarge": true,
@@ -920,14 +920,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_medium",
+        "bg": "ob.s.color.status.info.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:565",
-        "bgVarId": "VariableID:8:553",
+        "fgVarId": "VariableID:4007:616",
+        "bgVarId": "VariableID:4007:604",
         "ratio": 8.72,
         "wcag": {
           "aaLarge": true,
@@ -947,14 +947,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_low",
+        "bg": "ob.s.color.status.info.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:567",
-        "bgVarId": "VariableID:8:553",
+        "fgVarId": "VariableID:4007:618",
+        "bgVarId": "VariableID:4007:604",
         "ratio": 6.7,
         "wcag": {
           "aaLarge": true,
@@ -974,14 +974,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_highest",
+        "bg": "ob.s.color.status.info.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:561",
-        "bgVarId": "VariableID:8:555",
+        "fgVarId": "VariableID:4007:612",
+        "bgVarId": "VariableID:4007:606",
         "ratio": 15.98,
         "wcag": {
           "aaLarge": true,
@@ -1001,14 +1001,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_high",
+        "bg": "ob.s.color.status.info.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:563",
-        "bgVarId": "VariableID:8:555",
+        "fgVarId": "VariableID:4007:614",
+        "bgVarId": "VariableID:4007:606",
         "ratio": 9.52,
         "wcag": {
           "aaLarge": true,
@@ -1028,14 +1028,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_medium",
+        "bg": "ob.s.color.status.info.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:565",
-        "bgVarId": "VariableID:8:555",
+        "fgVarId": "VariableID:4007:616",
+        "bgVarId": "VariableID:4007:606",
         "ratio": 8.01,
         "wcag": {
           "aaLarge": true,
@@ -1055,14 +1055,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_low",
+        "bg": "ob.s.color.status.info.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:567",
-        "bgVarId": "VariableID:8:555",
+        "fgVarId": "VariableID:4007:618",
+        "bgVarId": "VariableID:4007:606",
         "ratio": 6.16,
         "wcag": {
           "aaLarge": true,
@@ -1082,14 +1082,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_highest",
+        "bg": "ob.s.color.status.info.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:561",
-        "bgVarId": "VariableID:8:557",
+        "fgVarId": "VariableID:4007:612",
+        "bgVarId": "VariableID:4007:608",
         "ratio": 14.25,
         "wcag": {
           "aaLarge": true,
@@ -1109,14 +1109,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_high",
+        "bg": "ob.s.color.status.info.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:563",
-        "bgVarId": "VariableID:8:557",
+        "fgVarId": "VariableID:4007:614",
+        "bgVarId": "VariableID:4007:608",
         "ratio": 8.49,
         "wcag": {
           "aaLarge": true,
@@ -1136,14 +1136,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_medium",
+        "bg": "ob.s.color.status.info.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:565",
-        "bgVarId": "VariableID:8:557",
+        "fgVarId": "VariableID:4007:616",
+        "bgVarId": "VariableID:4007:608",
         "ratio": 7.15,
         "wcag": {
           "aaLarge": true,
@@ -1163,14 +1163,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_low",
+        "bg": "ob.s.color.status.info.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:567",
-        "bgVarId": "VariableID:8:557",
+        "fgVarId": "VariableID:4007:618",
+        "bgVarId": "VariableID:4007:608",
         "ratio": 5.49,
         "wcag": {
           "aaLarge": true,
@@ -1190,14 +1190,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_highest",
+        "bg": "ob.s.color.status.info.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:561",
-        "bgVarId": "VariableID:8:559",
+        "fgVarId": "VariableID:4007:612",
+        "bgVarId": "VariableID:4007:610",
         "ratio": 12.24,
         "wcag": {
           "aaLarge": true,
@@ -1217,14 +1217,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_high",
+        "bg": "ob.s.color.status.info.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:563",
-        "bgVarId": "VariableID:8:559",
+        "fgVarId": "VariableID:4007:614",
+        "bgVarId": "VariableID:4007:610",
         "ratio": 7.29,
         "wcag": {
           "aaLarge": true,
@@ -1244,14 +1244,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_medium",
+        "bg": "ob.s.color.status.info.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:565",
-        "bgVarId": "VariableID:8:559",
+        "fgVarId": "VariableID:4007:616",
+        "bgVarId": "VariableID:4007:610",
         "ratio": 6.14,
         "wcag": {
           "aaLarge": true,
@@ -1271,14 +1271,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.foreground.contrast_low",
+        "bg": "ob.s.color.status.info.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:567",
-        "bgVarId": "VariableID:8:559",
+        "fgVarId": "VariableID:4007:618",
+        "bgVarId": "VariableID:4007:610",
         "ratio": 4.72,
         "wcag": {
           "aaLarge": true,
@@ -1298,14 +1298,14 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.info.background.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:553",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:604",
         "ratio": 6.47,
         "wcag": {
           "aaLarge": true,
@@ -1325,14 +1325,14 @@
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.info.background.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:555",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:606",
         "ratio": 5.95,
         "wcag": {
           "aaLarge": true,
@@ -1352,14 +1352,14 @@
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.info.background.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:557",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:608",
         "ratio": 5.31,
         "wcag": {
           "aaLarge": true,
@@ -1379,14 +1379,14 @@
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.info.background.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:559",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:610",
         "ratio": 4.56,
         "wcag": {
           "aaLarge": true,
@@ -1406,14 +1406,14 @@
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_highest",
+        "bg": "ob.s.color.status.critical.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:577",
-        "bgVarId": "VariableID:8:569",
+        "fgVarId": "VariableID:4007:628",
+        "bgVarId": "VariableID:4007:620",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -1433,14 +1433,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_high",
+        "bg": "ob.s.color.status.critical.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:579",
-        "bgVarId": "VariableID:8:569",
+        "fgVarId": "VariableID:4007:630",
+        "bgVarId": "VariableID:4007:620",
         "ratio": 8.36,
         "wcag": {
           "aaLarge": true,
@@ -1460,14 +1460,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_medium",
+        "bg": "ob.s.color.status.critical.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:581",
-        "bgVarId": "VariableID:8:569",
+        "fgVarId": "VariableID:4007:632",
+        "bgVarId": "VariableID:4007:620",
         "ratio": 6.11,
         "wcag": {
           "aaLarge": true,
@@ -1487,14 +1487,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_low",
+        "bg": "ob.s.color.status.critical.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:583",
-        "bgVarId": "VariableID:8:569",
+        "fgVarId": "VariableID:4007:634",
+        "bgVarId": "VariableID:4007:620",
         "ratio": 5.01,
         "wcag": {
           "aaLarge": true,
@@ -1514,14 +1514,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_highest",
+        "bg": "ob.s.color.status.critical.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:577",
-        "bgVarId": "VariableID:8:571",
+        "fgVarId": "VariableID:4007:628",
+        "bgVarId": "VariableID:4007:622",
         "ratio": 15.4,
         "wcag": {
           "aaLarge": true,
@@ -1541,14 +1541,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_high",
+        "bg": "ob.s.color.status.critical.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:579",
-        "bgVarId": "VariableID:8:571",
+        "fgVarId": "VariableID:4007:630",
+        "bgVarId": "VariableID:4007:622",
         "ratio": 7.4,
         "wcag": {
           "aaLarge": true,
@@ -1568,14 +1568,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_medium",
+        "bg": "ob.s.color.status.critical.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:581",
-        "bgVarId": "VariableID:8:571",
+        "fgVarId": "VariableID:4007:632",
+        "bgVarId": "VariableID:4007:622",
         "ratio": 5.41,
         "wcag": {
           "aaLarge": true,
@@ -1595,14 +1595,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_low",
+        "bg": "ob.s.color.status.critical.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:583",
-        "bgVarId": "VariableID:8:571",
+        "fgVarId": "VariableID:4007:634",
+        "bgVarId": "VariableID:4007:622",
         "ratio": 4.44,
         "wcag": {
           "aaLarge": true,
@@ -1622,14 +1622,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_highest",
+        "bg": "ob.s.color.status.critical.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:577",
-        "bgVarId": "VariableID:8:573",
+        "fgVarId": "VariableID:4007:628",
+        "bgVarId": "VariableID:4007:624",
         "ratio": 14.02,
         "wcag": {
           "aaLarge": true,
@@ -1649,14 +1649,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_high",
+        "bg": "ob.s.color.status.critical.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:579",
-        "bgVarId": "VariableID:8:573",
+        "fgVarId": "VariableID:4007:630",
+        "bgVarId": "VariableID:4007:624",
         "ratio": 6.74,
         "wcag": {
           "aaLarge": true,
@@ -1676,14 +1676,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_medium",
+        "bg": "ob.s.color.status.critical.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:581",
-        "bgVarId": "VariableID:8:573",
+        "fgVarId": "VariableID:4007:632",
+        "bgVarId": "VariableID:4007:624",
         "ratio": 4.93,
         "wcag": {
           "aaLarge": true,
@@ -1703,14 +1703,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_low",
+        "bg": "ob.s.color.status.critical.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:583",
-        "bgVarId": "VariableID:8:573",
+        "fgVarId": "VariableID:4007:634",
+        "bgVarId": "VariableID:4007:624",
         "ratio": 4.04,
         "wcag": {
           "aaLarge": true,
@@ -1730,14 +1730,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_highest",
+        "bg": "ob.s.color.status.critical.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:577",
-        "bgVarId": "VariableID:8:575",
+        "fgVarId": "VariableID:4007:628",
+        "bgVarId": "VariableID:4007:626",
         "ratio": 12.24,
         "wcag": {
           "aaLarge": true,
@@ -1757,14 +1757,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_high",
+        "bg": "ob.s.color.status.critical.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:579",
-        "bgVarId": "VariableID:8:575",
+        "fgVarId": "VariableID:4007:630",
+        "bgVarId": "VariableID:4007:626",
         "ratio": 5.88,
         "wcag": {
           "aaLarge": true,
@@ -1784,14 +1784,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_medium",
+        "bg": "ob.s.color.status.critical.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:581",
-        "bgVarId": "VariableID:8:575",
+        "fgVarId": "VariableID:4007:632",
+        "bgVarId": "VariableID:4007:626",
         "ratio": 4.3,
         "wcag": {
           "aaLarge": true,
@@ -1811,14 +1811,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.foreground.contrast_low",
+        "bg": "ob.s.color.status.critical.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:583",
-        "bgVarId": "VariableID:8:575",
+        "fgVarId": "VariableID:4007:634",
+        "bgVarId": "VariableID:4007:626",
         "ratio": 3.52,
         "wcag": {
           "aaLarge": true,
@@ -1838,14 +1838,14 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.critical.background.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:569",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:620",
         "ratio": 6.47,
         "wcag": {
           "aaLarge": true,
@@ -1865,14 +1865,14 @@
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.critical.background.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:571",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:622",
         "ratio": 5.73,
         "wcag": {
           "aaLarge": true,
@@ -1892,14 +1892,14 @@
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.critical.background.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:573",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:624",
         "ratio": 5.22,
         "wcag": {
           "aaLarge": true,
@@ -1919,14 +1919,14 @@
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.critical.background.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:575",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:626",
         "ratio": 4.56,
         "wcag": {
           "aaLarge": true,
@@ -1946,14 +1946,14 @@
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_highest",
+        "bg": "ob.s.color.status.resolved.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:593",
-        "bgVarId": "VariableID:8:585",
+        "fgVarId": "VariableID:4007:644",
+        "bgVarId": "VariableID:4007:636",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -1973,14 +1973,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_high",
+        "bg": "ob.s.color.status.resolved.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:595",
-        "bgVarId": "VariableID:8:585",
+        "fgVarId": "VariableID:4007:646",
+        "bgVarId": "VariableID:4007:636",
         "ratio": 7.68,
         "wcag": {
           "aaLarge": true,
@@ -2000,14 +2000,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_medium",
+        "bg": "ob.s.color.status.resolved.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:597",
-        "bgVarId": "VariableID:8:585",
+        "fgVarId": "VariableID:4007:648",
+        "bgVarId": "VariableID:4007:636",
         "ratio": 5.48,
         "wcag": {
           "aaLarge": true,
@@ -2027,14 +2027,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_low",
+        "bg": "ob.s.color.status.resolved.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:599",
-        "bgVarId": "VariableID:8:585",
+        "fgVarId": "VariableID:4007:650",
+        "bgVarId": "VariableID:4007:636",
         "ratio": 3.77,
         "wcag": {
           "aaLarge": true,
@@ -2054,14 +2054,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_highest",
+        "bg": "ob.s.color.status.resolved.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:593",
-        "bgVarId": "VariableID:8:587",
+        "fgVarId": "VariableID:4007:644",
+        "bgVarId": "VariableID:4007:638",
         "ratio": 16.51,
         "wcag": {
           "aaLarge": true,
@@ -2081,14 +2081,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_high",
+        "bg": "ob.s.color.status.resolved.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:595",
-        "bgVarId": "VariableID:8:587",
+        "fgVarId": "VariableID:4007:646",
+        "bgVarId": "VariableID:4007:638",
         "ratio": 7.29,
         "wcag": {
           "aaLarge": true,
@@ -2108,14 +2108,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_medium",
+        "bg": "ob.s.color.status.resolved.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:597",
-        "bgVarId": "VariableID:8:587",
+        "fgVarId": "VariableID:4007:648",
+        "bgVarId": "VariableID:4007:638",
         "ratio": 5.21,
         "wcag": {
           "aaLarge": true,
@@ -2135,14 +2135,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_low",
+        "bg": "ob.s.color.status.resolved.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:599",
-        "bgVarId": "VariableID:8:587",
+        "fgVarId": "VariableID:4007:650",
+        "bgVarId": "VariableID:4007:638",
         "ratio": 3.58,
         "wcag": {
           "aaLarge": true,
@@ -2162,14 +2162,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_highest",
+        "bg": "ob.s.color.status.resolved.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:593",
-        "bgVarId": "VariableID:8:589",
+        "fgVarId": "VariableID:4007:644",
+        "bgVarId": "VariableID:4007:640",
         "ratio": 15.33,
         "wcag": {
           "aaLarge": true,
@@ -2189,14 +2189,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_high",
+        "bg": "ob.s.color.status.resolved.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:595",
-        "bgVarId": "VariableID:8:589",
+        "fgVarId": "VariableID:4007:646",
+        "bgVarId": "VariableID:4007:640",
         "ratio": 6.78,
         "wcag": {
           "aaLarge": true,
@@ -2216,14 +2216,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_medium",
+        "bg": "ob.s.color.status.resolved.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:597",
-        "bgVarId": "VariableID:8:589",
+        "fgVarId": "VariableID:4007:648",
+        "bgVarId": "VariableID:4007:640",
         "ratio": 4.84,
         "wcag": {
           "aaLarge": true,
@@ -2243,14 +2243,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_low",
+        "bg": "ob.s.color.status.resolved.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:599",
-        "bgVarId": "VariableID:8:589",
+        "fgVarId": "VariableID:4007:650",
+        "bgVarId": "VariableID:4007:640",
         "ratio": 3.32,
         "wcag": {
           "aaLarge": true,
@@ -2270,14 +2270,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_highest",
+        "bg": "ob.s.color.status.resolved.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:593",
-        "bgVarId": "VariableID:8:591",
+        "fgVarId": "VariableID:4007:644",
+        "bgVarId": "VariableID:4007:642",
         "ratio": 13.56,
         "wcag": {
           "aaLarge": true,
@@ -2297,14 +2297,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_high",
+        "bg": "ob.s.color.status.resolved.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:595",
-        "bgVarId": "VariableID:8:591",
+        "fgVarId": "VariableID:4007:646",
+        "bgVarId": "VariableID:4007:642",
         "ratio": 5.99,
         "wcag": {
           "aaLarge": true,
@@ -2324,14 +2324,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_medium",
+        "bg": "ob.s.color.status.resolved.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:597",
-        "bgVarId": "VariableID:8:591",
+        "fgVarId": "VariableID:4007:648",
+        "bgVarId": "VariableID:4007:642",
         "ratio": 4.28,
         "wcag": {
           "aaLarge": true,
@@ -2351,14 +2351,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.foreground.contrast_low",
+        "bg": "ob.s.color.status.resolved.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:599",
-        "bgVarId": "VariableID:8:591",
+        "fgVarId": "VariableID:4007:650",
+        "bgVarId": "VariableID:4007:642",
         "ratio": 2.94,
         "wcag": {
           "aaLarge": false,
@@ -2378,14 +2378,14 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.resolved.background.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:585",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:636",
         "ratio": 6.47,
         "wcag": {
           "aaLarge": true,
@@ -2405,14 +2405,14 @@
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.resolved.background.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:587",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:638",
         "ratio": 6.14,
         "wcag": {
           "aaLarge": true,
@@ -2432,14 +2432,14 @@
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.resolved.background.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:589",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:640",
         "ratio": 5.71,
         "wcag": {
           "aaLarge": true,
@@ -2459,14 +2459,14 @@
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.resolved.background.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:591",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:642",
         "ratio": 5.05,
         "wcag": {
           "aaLarge": true,
@@ -2486,14 +2486,14 @@
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_highest",
+        "bg": "ob.s.color.status.attention.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:609",
-        "bgVarId": "VariableID:8:601",
+        "fgVarId": "VariableID:4007:660",
+        "bgVarId": "VariableID:4007:652",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -2513,14 +2513,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_high",
+        "bg": "ob.s.color.status.attention.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:611",
-        "bgVarId": "VariableID:8:601",
+        "fgVarId": "VariableID:4007:662",
+        "bgVarId": "VariableID:4007:652",
         "ratio": 7.31,
         "wcag": {
           "aaLarge": true,
@@ -2540,14 +2540,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_medium",
+        "bg": "ob.s.color.status.attention.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:613",
-        "bgVarId": "VariableID:8:601",
+        "fgVarId": "VariableID:4007:664",
+        "bgVarId": "VariableID:4007:652",
         "ratio": 5.18,
         "wcag": {
           "aaLarge": true,
@@ -2567,14 +2567,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_low",
+        "bg": "ob.s.color.status.attention.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:615",
-        "bgVarId": "VariableID:8:601",
+        "fgVarId": "VariableID:4007:666",
+        "bgVarId": "VariableID:4007:652",
         "ratio": 3.56,
         "wcag": {
           "aaLarge": true,
@@ -2594,14 +2594,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_highest",
+        "bg": "ob.s.color.status.attention.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:609",
-        "bgVarId": "VariableID:8:603",
+        "fgVarId": "VariableID:4007:660",
+        "bgVarId": "VariableID:4007:654",
         "ratio": 16.38,
         "wcag": {
           "aaLarge": true,
@@ -2621,14 +2621,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_high",
+        "bg": "ob.s.color.status.attention.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:611",
-        "bgVarId": "VariableID:8:603",
+        "fgVarId": "VariableID:4007:662",
+        "bgVarId": "VariableID:4007:654",
         "ratio": 6.88,
         "wcag": {
           "aaLarge": true,
@@ -2648,14 +2648,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_medium",
+        "bg": "ob.s.color.status.attention.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:613",
-        "bgVarId": "VariableID:8:603",
+        "fgVarId": "VariableID:4007:664",
+        "bgVarId": "VariableID:4007:654",
         "ratio": 4.88,
         "wcag": {
           "aaLarge": true,
@@ -2675,14 +2675,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_low",
+        "bg": "ob.s.color.status.attention.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:615",
-        "bgVarId": "VariableID:8:603",
+        "fgVarId": "VariableID:4007:666",
+        "bgVarId": "VariableID:4007:654",
         "ratio": 3.35,
         "wcag": {
           "aaLarge": true,
@@ -2702,14 +2702,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_highest",
+        "bg": "ob.s.color.status.attention.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:609",
-        "bgVarId": "VariableID:8:605",
+        "fgVarId": "VariableID:4007:660",
+        "bgVarId": "VariableID:4007:656",
         "ratio": 15.18,
         "wcag": {
           "aaLarge": true,
@@ -2729,14 +2729,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_high",
+        "bg": "ob.s.color.status.attention.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:611",
-        "bgVarId": "VariableID:8:605",
+        "fgVarId": "VariableID:4007:662",
+        "bgVarId": "VariableID:4007:656",
         "ratio": 6.38,
         "wcag": {
           "aaLarge": true,
@@ -2756,14 +2756,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_medium",
+        "bg": "ob.s.color.status.attention.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:613",
-        "bgVarId": "VariableID:8:605",
+        "fgVarId": "VariableID:4007:664",
+        "bgVarId": "VariableID:4007:656",
         "ratio": 4.52,
         "wcag": {
           "aaLarge": true,
@@ -2783,14 +2783,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_low",
+        "bg": "ob.s.color.status.attention.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:615",
-        "bgVarId": "VariableID:8:605",
+        "fgVarId": "VariableID:4007:666",
+        "bgVarId": "VariableID:4007:656",
         "ratio": 3.11,
         "wcag": {
           "aaLarge": true,
@@ -2810,14 +2810,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_highest",
+        "bg": "ob.s.color.status.attention.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:609",
-        "bgVarId": "VariableID:8:607",
+        "fgVarId": "VariableID:4007:660",
+        "bgVarId": "VariableID:4007:658",
         "ratio": 12.85,
         "wcag": {
           "aaLarge": true,
@@ -2837,14 +2837,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_high",
+        "bg": "ob.s.color.status.attention.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:611",
-        "bgVarId": "VariableID:8:607",
+        "fgVarId": "VariableID:4007:662",
+        "bgVarId": "VariableID:4007:658",
         "ratio": 5.4,
         "wcag": {
           "aaLarge": true,
@@ -2864,14 +2864,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_medium",
+        "bg": "ob.s.color.status.attention.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:613",
-        "bgVarId": "VariableID:8:607",
+        "fgVarId": "VariableID:4007:664",
+        "bgVarId": "VariableID:4007:658",
         "ratio": 3.83,
         "wcag": {
           "aaLarge": true,
@@ -2891,14 +2891,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.foreground.contrast_low",
+        "bg": "ob.s.color.status.attention.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:615",
-        "bgVarId": "VariableID:8:607",
+        "fgVarId": "VariableID:4007:666",
+        "bgVarId": "VariableID:4007:658",
         "ratio": 2.63,
         "wcag": {
           "aaLarge": false,
@@ -2918,14 +2918,14 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.attention.background.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:601",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:652",
         "ratio": 6.47,
         "wcag": {
           "aaLarge": true,
@@ -2945,14 +2945,14 @@
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.attention.background.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:603",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:654",
         "ratio": 6.1,
         "wcag": {
           "aaLarge": true,
@@ -2972,14 +2972,14 @@
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.attention.background.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:605",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:656",
         "ratio": 5.65,
         "wcag": {
           "aaLarge": true,
@@ -2999,14 +2999,14 @@
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.attention.background.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:607",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:658",
         "ratio": 4.78,
         "wcag": {
           "aaLarge": true,
@@ -3026,14 +3026,14 @@
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_highest",
+        "bg": "ob.s.color.status.fatal.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:625",
-        "bgVarId": "VariableID:8:617",
+        "fgVarId": "VariableID:4007:676",
+        "bgVarId": "VariableID:4007:668",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -3053,14 +3053,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_high",
+        "bg": "ob.s.color.status.fatal.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:627",
-        "bgVarId": "VariableID:8:617",
+        "fgVarId": "VariableID:4007:678",
+        "bgVarId": "VariableID:4007:668",
         "ratio": 8.36,
         "wcag": {
           "aaLarge": true,
@@ -3080,14 +3080,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_medium",
+        "bg": "ob.s.color.status.fatal.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:629",
-        "bgVarId": "VariableID:8:617",
+        "fgVarId": "VariableID:4007:680",
+        "bgVarId": "VariableID:4007:668",
         "ratio": 6.11,
         "wcag": {
           "aaLarge": true,
@@ -3107,14 +3107,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_low",
+        "bg": "ob.s.color.status.fatal.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:631",
-        "bgVarId": "VariableID:8:617",
+        "fgVarId": "VariableID:4007:682",
+        "bgVarId": "VariableID:4007:668",
         "ratio": 5.01,
         "wcag": {
           "aaLarge": true,
@@ -3134,14 +3134,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_highest",
+        "bg": "ob.s.color.status.fatal.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:625",
-        "bgVarId": "VariableID:8:619",
+        "fgVarId": "VariableID:4007:676",
+        "bgVarId": "VariableID:4007:670",
         "ratio": 15.4,
         "wcag": {
           "aaLarge": true,
@@ -3161,14 +3161,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_high",
+        "bg": "ob.s.color.status.fatal.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:627",
-        "bgVarId": "VariableID:8:619",
+        "fgVarId": "VariableID:4007:678",
+        "bgVarId": "VariableID:4007:670",
         "ratio": 7.4,
         "wcag": {
           "aaLarge": true,
@@ -3188,14 +3188,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_medium",
+        "bg": "ob.s.color.status.fatal.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:629",
-        "bgVarId": "VariableID:8:619",
+        "fgVarId": "VariableID:4007:680",
+        "bgVarId": "VariableID:4007:670",
         "ratio": 5.41,
         "wcag": {
           "aaLarge": true,
@@ -3215,14 +3215,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_low",
+        "bg": "ob.s.color.status.fatal.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:631",
-        "bgVarId": "VariableID:8:619",
+        "fgVarId": "VariableID:4007:682",
+        "bgVarId": "VariableID:4007:670",
         "ratio": 4.44,
         "wcag": {
           "aaLarge": true,
@@ -3242,14 +3242,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_highest",
+        "bg": "ob.s.color.status.fatal.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:625",
-        "bgVarId": "VariableID:8:621",
+        "fgVarId": "VariableID:4007:676",
+        "bgVarId": "VariableID:4007:672",
         "ratio": 14.02,
         "wcag": {
           "aaLarge": true,
@@ -3269,14 +3269,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_high",
+        "bg": "ob.s.color.status.fatal.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:627",
-        "bgVarId": "VariableID:8:621",
+        "fgVarId": "VariableID:4007:678",
+        "bgVarId": "VariableID:4007:672",
         "ratio": 6.74,
         "wcag": {
           "aaLarge": true,
@@ -3296,14 +3296,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_medium",
+        "bg": "ob.s.color.status.fatal.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:629",
-        "bgVarId": "VariableID:8:621",
+        "fgVarId": "VariableID:4007:680",
+        "bgVarId": "VariableID:4007:672",
         "ratio": 4.93,
         "wcag": {
           "aaLarge": true,
@@ -3323,14 +3323,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_low",
+        "bg": "ob.s.color.status.fatal.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:631",
-        "bgVarId": "VariableID:8:621",
+        "fgVarId": "VariableID:4007:682",
+        "bgVarId": "VariableID:4007:672",
         "ratio": 4.04,
         "wcag": {
           "aaLarge": true,
@@ -3350,14 +3350,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_highest",
+        "bg": "ob.s.color.status.fatal.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:625",
-        "bgVarId": "VariableID:8:623",
+        "fgVarId": "VariableID:4007:676",
+        "bgVarId": "VariableID:4007:674",
         "ratio": 12.24,
         "wcag": {
           "aaLarge": true,
@@ -3377,14 +3377,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_high",
+        "bg": "ob.s.color.status.fatal.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:627",
-        "bgVarId": "VariableID:8:623",
+        "fgVarId": "VariableID:4007:678",
+        "bgVarId": "VariableID:4007:674",
         "ratio": 5.88,
         "wcag": {
           "aaLarge": true,
@@ -3404,14 +3404,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_medium",
+        "bg": "ob.s.color.status.fatal.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:629",
-        "bgVarId": "VariableID:8:623",
+        "fgVarId": "VariableID:4007:680",
+        "bgVarId": "VariableID:4007:674",
         "ratio": 4.3,
         "wcag": {
           "aaLarge": true,
@@ -3431,14 +3431,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.foreground.contrast_low",
+        "bg": "ob.s.color.status.fatal.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:631",
-        "bgVarId": "VariableID:8:623",
+        "fgVarId": "VariableID:4007:682",
+        "bgVarId": "VariableID:4007:674",
         "ratio": 3.52,
         "wcag": {
           "aaLarge": true,
@@ -3458,14 +3458,14 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.fatal.background.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:617",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:668",
         "ratio": 6.47,
         "wcag": {
           "aaLarge": true,
@@ -3485,14 +3485,14 @@
         "group": "fatal (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.fatal.background.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:619",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:670",
         "ratio": 5.73,
         "wcag": {
           "aaLarge": true,
@@ -3512,14 +3512,14 @@
         "group": "fatal (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.fatal.background.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:621",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:672",
         "ratio": 5.22,
         "wcag": {
           "aaLarge": true,
@@ -3539,14 +3539,14 @@
         "group": "fatal (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.action.foreground.contrast_medium",
+        "bg": "ob.s.color.status.fatal.background.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
         "isSingle": false,
-        "fgVarId": "VariableID:8:534",
-        "bgVarId": "VariableID:8:623",
+        "fgVarId": "VariableID:4007:553",
+        "bgVarId": "VariableID:4007:674",
         "ratio": 4.56,
         "wcag": {
           "aaLarge": true,
@@ -3568,14 +3568,14 @@
     ],
     "navigation": [
       {
-        "fg": "ob.s.color.navigation.fg.enabled",
-        "bg": "ob.s.color.navigation.bg.enabled",
+        "fg": "ob.s.color.navigation.foreground.enabled",
+        "bg": "ob.s.color.navigation.background.enabled",
         "rowKey": "states",
         "colKey": "enabled",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:10",
-        "bgVarId": "VariableID:8:721",
+        "fgVarId": "VariableID:4007:766",
+        "bgVarId": "VariableID:4007:772",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -3594,14 +3594,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.navigation.fg.hover",
-        "bg": "ob.s.color.navigation.bg.hover",
+        "fg": "ob.s.color.navigation.foreground.hover",
+        "bg": "ob.s.color.navigation.background.hover",
         "rowKey": "states",
         "colKey": "hover",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:11",
-        "bgVarId": "VariableID:8:722",
+        "fgVarId": "VariableID:4007:767",
+        "bgVarId": "VariableID:4007:773",
         "ratio": 13.59,
         "wcag": {
           "aaLarge": true,
@@ -3620,14 +3620,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.navigation.fg.focus",
-        "bg": "ob.s.color.navigation.bg.focus",
+        "fg": "ob.s.color.navigation.foreground.focus",
+        "bg": "ob.s.color.navigation.background.focus",
         "rowKey": "states",
         "colKey": "focus",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:12",
-        "bgVarId": "VariableID:8:723",
+        "fgVarId": "VariableID:4007:768",
+        "bgVarId": "VariableID:4007:774",
         "ratio": 13.59,
         "wcag": {
           "aaLarge": true,
@@ -3646,14 +3646,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.navigation.fg.pressed",
-        "bg": "ob.s.color.navigation.bg.pressed",
+        "fg": "ob.s.color.navigation.foreground.pressed",
+        "bg": "ob.s.color.navigation.background.pressed",
         "rowKey": "states",
         "colKey": "pressed",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:13",
-        "bgVarId": "VariableID:8:724",
+        "fgVarId": "VariableID:4007:769",
+        "bgVarId": "VariableID:4007:775",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -3672,14 +3672,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.navigation.fg.selected",
-        "bg": "ob.s.color.navigation.bg.selected",
+        "fg": "ob.s.color.navigation.foreground.selected",
+        "bg": "ob.s.color.navigation.background.selected",
         "rowKey": "states",
         "colKey": "selected",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:14",
-        "bgVarId": "VariableID:8:725",
+        "fgVarId": "VariableID:4007:770",
+        "bgVarId": "VariableID:4007:776",
         "ratio": 8.3,
         "wcag": {
           "aaLarge": true,
@@ -3698,14 +3698,14 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.navigation.fg.disabled",
-        "bg": "ob.s.color.navigation.bg.disabled",
+        "fg": "ob.s.color.navigation.foreground.disabled",
+        "bg": "ob.s.color.navigation.background.disabled",
         "rowKey": "states",
         "colKey": "disabled",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:21:15",
-        "bgVarId": "VariableID:8:726",
+        "fgVarId": "VariableID:4007:771",
+        "bgVarId": "VariableID:4007:777",
         "ratio": 1,
         "wcag": {
           "aaLarge": false,
@@ -3727,14 +3727,14 @@
     ],
     "free": [
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_highest",
+        "bg": "ob.s.color.free.cobalt.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:642",
-        "bgVarId": "VariableID:8:634",
+        "fgVarId": "VariableID:4007:693",
+        "bgVarId": "VariableID:4007:685",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -3754,14 +3754,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_high",
+        "bg": "ob.s.color.free.cobalt.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:644",
-        "bgVarId": "VariableID:8:634",
+        "fgVarId": "VariableID:4007:695",
+        "bgVarId": "VariableID:4007:685",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -3781,14 +3781,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_medium",
+        "bg": "ob.s.color.free.cobalt.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:646",
-        "bgVarId": "VariableID:8:634",
+        "fgVarId": "VariableID:4007:697",
+        "bgVarId": "VariableID:4007:685",
         "ratio": 14.97,
         "wcag": {
           "aaLarge": true,
@@ -3808,14 +3808,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_low",
+        "bg": "ob.s.color.free.cobalt.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:648",
-        "bgVarId": "VariableID:8:634",
+        "fgVarId": "VariableID:4007:699",
+        "bgVarId": "VariableID:4007:685",
         "ratio": 12.38,
         "wcag": {
           "aaLarge": true,
@@ -3835,14 +3835,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_highest",
+        "bg": "ob.s.color.free.cobalt.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:642",
-        "bgVarId": "VariableID:8:636",
+        "fgVarId": "VariableID:4007:693",
+        "bgVarId": "VariableID:4007:687",
         "ratio": 15.72,
         "wcag": {
           "aaLarge": true,
@@ -3862,14 +3862,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_high",
+        "bg": "ob.s.color.free.cobalt.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:644",
-        "bgVarId": "VariableID:8:636",
+        "fgVarId": "VariableID:4007:695",
+        "bgVarId": "VariableID:4007:687",
         "ratio": 15.72,
         "wcag": {
           "aaLarge": true,
@@ -3889,14 +3889,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_medium",
+        "bg": "ob.s.color.free.cobalt.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:646",
-        "bgVarId": "VariableID:8:636",
+        "fgVarId": "VariableID:4007:697",
+        "bgVarId": "VariableID:4007:687",
         "ratio": 13.54,
         "wcag": {
           "aaLarge": true,
@@ -3916,14 +3916,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_low",
+        "bg": "ob.s.color.free.cobalt.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:648",
-        "bgVarId": "VariableID:8:636",
+        "fgVarId": "VariableID:4007:699",
+        "bgVarId": "VariableID:4007:687",
         "ratio": 11.2,
         "wcag": {
           "aaLarge": true,
@@ -3943,14 +3943,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_highest",
+        "bg": "ob.s.color.free.cobalt.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:642",
-        "bgVarId": "VariableID:8:638",
+        "fgVarId": "VariableID:4007:693",
+        "bgVarId": "VariableID:4007:689",
         "ratio": 13.59,
         "wcag": {
           "aaLarge": true,
@@ -3970,14 +3970,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_high",
+        "bg": "ob.s.color.free.cobalt.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:644",
-        "bgVarId": "VariableID:8:638",
+        "fgVarId": "VariableID:4007:695",
+        "bgVarId": "VariableID:4007:689",
         "ratio": 13.59,
         "wcag": {
           "aaLarge": true,
@@ -3997,14 +3997,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_medium",
+        "bg": "ob.s.color.free.cobalt.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:646",
-        "bgVarId": "VariableID:8:638",
+        "fgVarId": "VariableID:4007:697",
+        "bgVarId": "VariableID:4007:689",
         "ratio": 11.7,
         "wcag": {
           "aaLarge": true,
@@ -4024,14 +4024,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_low",
+        "bg": "ob.s.color.free.cobalt.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:648",
-        "bgVarId": "VariableID:8:638",
+        "fgVarId": "VariableID:4007:699",
+        "bgVarId": "VariableID:4007:689",
         "ratio": 9.68,
         "wcag": {
           "aaLarge": true,
@@ -4051,14 +4051,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_highest",
+        "bg": "ob.s.color.free.cobalt.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:642",
-        "bgVarId": "VariableID:8:640",
+        "fgVarId": "VariableID:4007:693",
+        "bgVarId": "VariableID:4007:691",
         "ratio": 8.3,
         "wcag": {
           "aaLarge": true,
@@ -4078,14 +4078,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_high",
+        "bg": "ob.s.color.free.cobalt.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:644",
-        "bgVarId": "VariableID:8:640",
+        "fgVarId": "VariableID:4007:695",
+        "bgVarId": "VariableID:4007:691",
         "ratio": 8.3,
         "wcag": {
           "aaLarge": true,
@@ -4105,14 +4105,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_medium",
+        "bg": "ob.s.color.free.cobalt.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:646",
-        "bgVarId": "VariableID:8:640",
+        "fgVarId": "VariableID:4007:697",
+        "bgVarId": "VariableID:4007:691",
         "ratio": 7.14,
         "wcag": {
           "aaLarge": true,
@@ -4132,14 +4132,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.foreground.contrast_low",
+        "bg": "ob.s.color.free.cobalt.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:648",
-        "bgVarId": "VariableID:8:640",
+        "fgVarId": "VariableID:4007:699",
+        "bgVarId": "VariableID:4007:691",
         "ratio": 5.91,
         "wcag": {
           "aaLarge": true,
@@ -4159,14 +4159,14 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_highest",
+        "bg": "ob.s.color.free.teal.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:674",
-        "bgVarId": "VariableID:8:666",
+        "fgVarId": "VariableID:4007:725",
+        "bgVarId": "VariableID:4007:717",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -4186,14 +4186,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_high",
+        "bg": "ob.s.color.free.teal.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:676",
-        "bgVarId": "VariableID:8:666",
+        "fgVarId": "VariableID:4007:727",
+        "bgVarId": "VariableID:4007:717",
         "ratio": 8.23,
         "wcag": {
           "aaLarge": true,
@@ -4213,14 +4213,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_medium",
+        "bg": "ob.s.color.free.teal.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:678",
-        "bgVarId": "VariableID:8:666",
+        "fgVarId": "VariableID:4007:729",
+        "bgVarId": "VariableID:4007:717",
         "ratio": 6.21,
         "wcag": {
           "aaLarge": true,
@@ -4240,14 +4240,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_low",
+        "bg": "ob.s.color.free.teal.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:680",
-        "bgVarId": "VariableID:8:666",
+        "fgVarId": "VariableID:4007:731",
+        "bgVarId": "VariableID:4007:717",
         "ratio": 4.08,
         "wcag": {
           "aaLarge": true,
@@ -4267,14 +4267,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_highest",
+        "bg": "ob.s.color.free.teal.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:674",
-        "bgVarId": "VariableID:8:668",
+        "fgVarId": "VariableID:4007:725",
+        "bgVarId": "VariableID:4007:719",
         "ratio": 16.75,
         "wcag": {
           "aaLarge": true,
@@ -4294,14 +4294,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_high",
+        "bg": "ob.s.color.free.teal.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:676",
-        "bgVarId": "VariableID:8:668",
+        "fgVarId": "VariableID:4007:727",
+        "bgVarId": "VariableID:4007:719",
         "ratio": 7.93,
         "wcag": {
           "aaLarge": true,
@@ -4321,14 +4321,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_medium",
+        "bg": "ob.s.color.free.teal.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:678",
-        "bgVarId": "VariableID:8:668",
+        "fgVarId": "VariableID:4007:729",
+        "bgVarId": "VariableID:4007:719",
         "ratio": 5.99,
         "wcag": {
           "aaLarge": true,
@@ -4348,14 +4348,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_low",
+        "bg": "ob.s.color.free.teal.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:680",
-        "bgVarId": "VariableID:8:668",
+        "fgVarId": "VariableID:4007:731",
+        "bgVarId": "VariableID:4007:719",
         "ratio": 3.93,
         "wcag": {
           "aaLarge": true,
@@ -4375,14 +4375,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_highest",
+        "bg": "ob.s.color.free.teal.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:674",
-        "bgVarId": "VariableID:8:670",
+        "fgVarId": "VariableID:4007:725",
+        "bgVarId": "VariableID:4007:721",
         "ratio": 15.48,
         "wcag": {
           "aaLarge": true,
@@ -4402,14 +4402,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_high",
+        "bg": "ob.s.color.free.teal.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:676",
-        "bgVarId": "VariableID:8:670",
+        "fgVarId": "VariableID:4007:727",
+        "bgVarId": "VariableID:4007:721",
         "ratio": 7.32,
         "wcag": {
           "aaLarge": true,
@@ -4429,14 +4429,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_medium",
+        "bg": "ob.s.color.free.teal.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:678",
-        "bgVarId": "VariableID:8:670",
+        "fgVarId": "VariableID:4007:729",
+        "bgVarId": "VariableID:4007:721",
         "ratio": 5.53,
         "wcag": {
           "aaLarge": true,
@@ -4456,14 +4456,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_low",
+        "bg": "ob.s.color.free.teal.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:680",
-        "bgVarId": "VariableID:8:670",
+        "fgVarId": "VariableID:4007:731",
+        "bgVarId": "VariableID:4007:721",
         "ratio": 3.63,
         "wcag": {
           "aaLarge": true,
@@ -4483,14 +4483,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_highest",
+        "bg": "ob.s.color.free.teal.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:674",
-        "bgVarId": "VariableID:8:672",
+        "fgVarId": "VariableID:4007:725",
+        "bgVarId": "VariableID:4007:723",
         "ratio": 13.92,
         "wcag": {
           "aaLarge": true,
@@ -4510,14 +4510,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_high",
+        "bg": "ob.s.color.free.teal.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:676",
-        "bgVarId": "VariableID:8:672",
+        "fgVarId": "VariableID:4007:727",
+        "bgVarId": "VariableID:4007:723",
         "ratio": 6.59,
         "wcag": {
           "aaLarge": true,
@@ -4537,14 +4537,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_medium",
+        "bg": "ob.s.color.free.teal.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:678",
-        "bgVarId": "VariableID:8:672",
+        "fgVarId": "VariableID:4007:729",
+        "bgVarId": "VariableID:4007:723",
         "ratio": 4.97,
         "wcag": {
           "aaLarge": true,
@@ -4564,14 +4564,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.foreground.contrast_low",
+        "bg": "ob.s.color.free.teal.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:680",
-        "bgVarId": "VariableID:8:672",
+        "fgVarId": "VariableID:4007:731",
+        "bgVarId": "VariableID:4007:723",
         "ratio": 3.26,
         "wcag": {
           "aaLarge": true,
@@ -4591,14 +4591,14 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_highest",
+        "bg": "ob.s.color.free.indigo.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:690",
-        "bgVarId": "VariableID:8:682",
+        "fgVarId": "VariableID:4007:741",
+        "bgVarId": "VariableID:4007:733",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -4618,14 +4618,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_high",
+        "bg": "ob.s.color.free.indigo.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:692",
-        "bgVarId": "VariableID:8:682",
+        "fgVarId": "VariableID:4007:743",
+        "bgVarId": "VariableID:4007:733",
         "ratio": 9.93,
         "wcag": {
           "aaLarge": true,
@@ -4645,14 +4645,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_medium",
+        "bg": "ob.s.color.free.indigo.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:694",
-        "bgVarId": "VariableID:8:682",
+        "fgVarId": "VariableID:4007:745",
+        "bgVarId": "VariableID:4007:733",
         "ratio": 7.9,
         "wcag": {
           "aaLarge": true,
@@ -4672,14 +4672,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_low",
+        "bg": "ob.s.color.free.indigo.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:696",
-        "bgVarId": "VariableID:8:682",
+        "fgVarId": "VariableID:4007:747",
+        "bgVarId": "VariableID:4007:733",
         "ratio": 6.29,
         "wcag": {
           "aaLarge": true,
@@ -4699,14 +4699,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_highest",
+        "bg": "ob.s.color.free.indigo.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:690",
-        "bgVarId": "VariableID:8:684",
+        "fgVarId": "VariableID:4007:741",
+        "bgVarId": "VariableID:4007:735",
         "ratio": 15.55,
         "wcag": {
           "aaLarge": true,
@@ -4726,14 +4726,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_high",
+        "bg": "ob.s.color.free.indigo.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:692",
-        "bgVarId": "VariableID:8:684",
+        "fgVarId": "VariableID:4007:743",
+        "bgVarId": "VariableID:4007:735",
         "ratio": 8.88,
         "wcag": {
           "aaLarge": true,
@@ -4753,14 +4753,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_medium",
+        "bg": "ob.s.color.free.indigo.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:694",
-        "bgVarId": "VariableID:8:684",
+        "fgVarId": "VariableID:4007:745",
+        "bgVarId": "VariableID:4007:735",
         "ratio": 7.07,
         "wcag": {
           "aaLarge": true,
@@ -4780,14 +4780,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_low",
+        "bg": "ob.s.color.free.indigo.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:696",
-        "bgVarId": "VariableID:8:684",
+        "fgVarId": "VariableID:4007:747",
+        "bgVarId": "VariableID:4007:735",
         "ratio": 5.62,
         "wcag": {
           "aaLarge": true,
@@ -4807,14 +4807,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_highest",
+        "bg": "ob.s.color.free.indigo.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:690",
-        "bgVarId": "VariableID:8:686",
+        "fgVarId": "VariableID:4007:741",
+        "bgVarId": "VariableID:4007:737",
         "ratio": 14.11,
         "wcag": {
           "aaLarge": true,
@@ -4834,14 +4834,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_high",
+        "bg": "ob.s.color.free.indigo.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:692",
-        "bgVarId": "VariableID:8:686",
+        "fgVarId": "VariableID:4007:743",
+        "bgVarId": "VariableID:4007:737",
         "ratio": 8.06,
         "wcag": {
           "aaLarge": true,
@@ -4861,14 +4861,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_medium",
+        "bg": "ob.s.color.free.indigo.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:694",
-        "bgVarId": "VariableID:8:686",
+        "fgVarId": "VariableID:4007:745",
+        "bgVarId": "VariableID:4007:737",
         "ratio": 6.41,
         "wcag": {
           "aaLarge": true,
@@ -4888,14 +4888,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_low",
+        "bg": "ob.s.color.free.indigo.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:696",
-        "bgVarId": "VariableID:8:686",
+        "fgVarId": "VariableID:4007:747",
+        "bgVarId": "VariableID:4007:737",
         "ratio": 5.1,
         "wcag": {
           "aaLarge": true,
@@ -4915,14 +4915,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_highest",
+        "bg": "ob.s.color.free.indigo.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:690",
-        "bgVarId": "VariableID:8:688",
+        "fgVarId": "VariableID:4007:741",
+        "bgVarId": "VariableID:4007:739",
         "ratio": 11.66,
         "wcag": {
           "aaLarge": true,
@@ -4942,14 +4942,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_high",
+        "bg": "ob.s.color.free.indigo.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:692",
-        "bgVarId": "VariableID:8:688",
+        "fgVarId": "VariableID:4007:743",
+        "bgVarId": "VariableID:4007:739",
         "ratio": 6.66,
         "wcag": {
           "aaLarge": true,
@@ -4969,14 +4969,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_medium",
+        "bg": "ob.s.color.free.indigo.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:694",
-        "bgVarId": "VariableID:8:688",
+        "fgVarId": "VariableID:4007:745",
+        "bgVarId": "VariableID:4007:739",
         "ratio": 5.3,
         "wcag": {
           "aaLarge": true,
@@ -4996,14 +4996,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.foreground.contrast_low",
+        "bg": "ob.s.color.free.indigo.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:696",
-        "bgVarId": "VariableID:8:688",
+        "fgVarId": "VariableID:4007:747",
+        "bgVarId": "VariableID:4007:739",
         "ratio": 4.22,
         "wcag": {
           "aaLarge": true,
@@ -5023,14 +5023,14 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_highest",
+        "bg": "ob.s.color.free.pink.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:706",
-        "bgVarId": "VariableID:8:698",
+        "fgVarId": "VariableID:4007:757",
+        "bgVarId": "VariableID:4007:749",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -5050,14 +5050,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_high",
+        "bg": "ob.s.color.free.pink.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:708",
-        "bgVarId": "VariableID:8:698",
+        "fgVarId": "VariableID:4007:759",
+        "bgVarId": "VariableID:4007:749",
         "ratio": 7.88,
         "wcag": {
           "aaLarge": true,
@@ -5077,14 +5077,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_medium",
+        "bg": "ob.s.color.free.pink.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:710",
-        "bgVarId": "VariableID:8:698",
+        "fgVarId": "VariableID:4007:761",
+        "bgVarId": "VariableID:4007:749",
         "ratio": 6.04,
         "wcag": {
           "aaLarge": true,
@@ -5104,14 +5104,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_low",
+        "bg": "ob.s.color.free.pink.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:712",
-        "bgVarId": "VariableID:8:698",
+        "fgVarId": "VariableID:4007:763",
+        "bgVarId": "VariableID:4007:749",
         "ratio": 4.6,
         "wcag": {
           "aaLarge": true,
@@ -5131,14 +5131,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_highest",
+        "bg": "ob.s.color.free.pink.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:706",
-        "bgVarId": "VariableID:8:700",
+        "fgVarId": "VariableID:4007:757",
+        "bgVarId": "VariableID:4007:751",
         "ratio": 15.93,
         "wcag": {
           "aaLarge": true,
@@ -5158,14 +5158,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_high",
+        "bg": "ob.s.color.free.pink.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:708",
-        "bgVarId": "VariableID:8:700",
+        "fgVarId": "VariableID:4007:759",
+        "bgVarId": "VariableID:4007:751",
         "ratio": 7.22,
         "wcag": {
           "aaLarge": true,
@@ -5185,14 +5185,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_medium",
+        "bg": "ob.s.color.free.pink.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:710",
-        "bgVarId": "VariableID:8:700",
+        "fgVarId": "VariableID:4007:761",
+        "bgVarId": "VariableID:4007:751",
         "ratio": 5.53,
         "wcag": {
           "aaLarge": true,
@@ -5212,14 +5212,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_low",
+        "bg": "ob.s.color.free.pink.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:712",
-        "bgVarId": "VariableID:8:700",
+        "fgVarId": "VariableID:4007:763",
+        "bgVarId": "VariableID:4007:751",
         "ratio": 4.21,
         "wcag": {
           "aaLarge": true,
@@ -5239,14 +5239,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_highest",
+        "bg": "ob.s.color.free.pink.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:706",
-        "bgVarId": "VariableID:8:702",
+        "fgVarId": "VariableID:4007:757",
+        "bgVarId": "VariableID:4007:753",
         "ratio": 14.79,
         "wcag": {
           "aaLarge": true,
@@ -5266,14 +5266,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_high",
+        "bg": "ob.s.color.free.pink.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:708",
-        "bgVarId": "VariableID:8:702",
+        "fgVarId": "VariableID:4007:759",
+        "bgVarId": "VariableID:4007:753",
         "ratio": 6.71,
         "wcag": {
           "aaLarge": true,
@@ -5293,14 +5293,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_medium",
+        "bg": "ob.s.color.free.pink.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:710",
-        "bgVarId": "VariableID:8:702",
+        "fgVarId": "VariableID:4007:761",
+        "bgVarId": "VariableID:4007:753",
         "ratio": 5.14,
         "wcag": {
           "aaLarge": true,
@@ -5320,14 +5320,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_low",
+        "bg": "ob.s.color.free.pink.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:712",
-        "bgVarId": "VariableID:8:702",
+        "fgVarId": "VariableID:4007:763",
+        "bgVarId": "VariableID:4007:753",
         "ratio": 3.91,
         "wcag": {
           "aaLarge": true,
@@ -5347,14 +5347,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_highest",
+        "bg": "ob.s.color.free.pink.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:706",
-        "bgVarId": "VariableID:8:704",
+        "fgVarId": "VariableID:4007:757",
+        "bgVarId": "VariableID:4007:755",
         "ratio": 12.58,
         "wcag": {
           "aaLarge": true,
@@ -5374,14 +5374,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_high",
+        "bg": "ob.s.color.free.pink.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:708",
-        "bgVarId": "VariableID:8:704",
+        "fgVarId": "VariableID:4007:759",
+        "bgVarId": "VariableID:4007:755",
         "ratio": 5.7,
         "wcag": {
           "aaLarge": true,
@@ -5401,14 +5401,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_medium",
+        "bg": "ob.s.color.free.pink.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:710",
-        "bgVarId": "VariableID:8:704",
+        "fgVarId": "VariableID:4007:761",
+        "bgVarId": "VariableID:4007:755",
         "ratio": 4.37,
         "wcag": {
           "aaLarge": true,
@@ -5428,14 +5428,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.foreground.contrast_low",
+        "bg": "ob.s.color.free.pink.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:712",
-        "bgVarId": "VariableID:8:704",
+        "fgVarId": "VariableID:4007:763",
+        "bgVarId": "VariableID:4007:755",
         "ratio": 3.33,
         "wcag": {
           "aaLarge": true,
@@ -5455,14 +5455,14 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_highest",
+        "bg": "ob.s.color.free.yellow.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:658",
-        "bgVarId": "VariableID:8:650",
+        "fgVarId": "VariableID:4007:709",
+        "bgVarId": "VariableID:4007:701",
         "ratio": 17.39,
         "wcag": {
           "aaLarge": true,
@@ -5482,14 +5482,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_high",
+        "bg": "ob.s.color.free.yellow.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:660",
-        "bgVarId": "VariableID:8:650",
+        "fgVarId": "VariableID:4007:711",
+        "bgVarId": "VariableID:4007:701",
         "ratio": 7.09,
         "wcag": {
           "aaLarge": true,
@@ -5509,14 +5509,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_medium",
+        "bg": "ob.s.color.free.yellow.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:662",
-        "bgVarId": "VariableID:8:650",
+        "fgVarId": "VariableID:4007:713",
+        "bgVarId": "VariableID:4007:701",
         "ratio": 5.02,
         "wcag": {
           "aaLarge": true,
@@ -5536,14 +5536,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_low",
+        "bg": "ob.s.color.free.yellow.background.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:664",
-        "bgVarId": "VariableID:8:650",
+        "fgVarId": "VariableID:4007:715",
+        "bgVarId": "VariableID:4007:701",
         "ratio": 3.19,
         "wcag": {
           "aaLarge": true,
@@ -5563,14 +5563,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_highest",
+        "bg": "ob.s.color.free.yellow.background.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:658",
-        "bgVarId": "VariableID:8:652",
+        "fgVarId": "VariableID:4007:709",
+        "bgVarId": "VariableID:4007:703",
         "ratio": 16.77,
         "wcag": {
           "aaLarge": true,
@@ -5590,14 +5590,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_high",
+        "bg": "ob.s.color.free.yellow.background.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:660",
-        "bgVarId": "VariableID:8:652",
+        "fgVarId": "VariableID:4007:711",
+        "bgVarId": "VariableID:4007:703",
         "ratio": 6.84,
         "wcag": {
           "aaLarge": true,
@@ -5617,14 +5617,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_medium",
+        "bg": "ob.s.color.free.yellow.background.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:662",
-        "bgVarId": "VariableID:8:652",
+        "fgVarId": "VariableID:4007:713",
+        "bgVarId": "VariableID:4007:703",
         "ratio": 4.84,
         "wcag": {
           "aaLarge": true,
@@ -5644,14 +5644,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_low",
+        "bg": "ob.s.color.free.yellow.background.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:664",
-        "bgVarId": "VariableID:8:652",
+        "fgVarId": "VariableID:4007:715",
+        "bgVarId": "VariableID:4007:703",
         "ratio": 3.07,
         "wcag": {
           "aaLarge": true,
@@ -5671,14 +5671,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_highest",
+        "bg": "ob.s.color.free.yellow.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:658",
-        "bgVarId": "VariableID:8:654",
+        "fgVarId": "VariableID:4007:709",
+        "bgVarId": "VariableID:4007:705",
         "ratio": 15.62,
         "wcag": {
           "aaLarge": true,
@@ -5698,14 +5698,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_high",
+        "bg": "ob.s.color.free.yellow.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:660",
-        "bgVarId": "VariableID:8:654",
+        "fgVarId": "VariableID:4007:711",
+        "bgVarId": "VariableID:4007:705",
         "ratio": 6.37,
         "wcag": {
           "aaLarge": true,
@@ -5725,14 +5725,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_medium",
+        "bg": "ob.s.color.free.yellow.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:662",
-        "bgVarId": "VariableID:8:654",
+        "fgVarId": "VariableID:4007:713",
+        "bgVarId": "VariableID:4007:705",
         "ratio": 4.51,
         "wcag": {
           "aaLarge": true,
@@ -5752,14 +5752,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_low",
+        "bg": "ob.s.color.free.yellow.background.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:664",
-        "bgVarId": "VariableID:8:654",
+        "fgVarId": "VariableID:4007:715",
+        "bgVarId": "VariableID:4007:705",
         "ratio": 2.86,
         "wcag": {
           "aaLarge": false,
@@ -5779,14 +5779,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_highest",
+        "bg": "ob.s.color.free.yellow.background.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:658",
-        "bgVarId": "VariableID:8:656",
+        "fgVarId": "VariableID:4007:709",
+        "bgVarId": "VariableID:4007:707",
         "ratio": 13.96,
         "wcag": {
           "aaLarge": true,
@@ -5806,14 +5806,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_high",
+        "bg": "ob.s.color.free.yellow.background.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:660",
-        "bgVarId": "VariableID:8:656",
+        "fgVarId": "VariableID:4007:711",
+        "bgVarId": "VariableID:4007:707",
         "ratio": 5.69,
         "wcag": {
           "aaLarge": true,
@@ -5833,14 +5833,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_medium",
+        "bg": "ob.s.color.free.yellow.background.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:662",
-        "bgVarId": "VariableID:8:656",
+        "fgVarId": "VariableID:4007:713",
+        "bgVarId": "VariableID:4007:707",
         "ratio": 4.03,
         "wcag": {
           "aaLarge": true,
@@ -5860,14 +5860,14 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.foreground.contrast_low",
+        "bg": "ob.s.color.free.yellow.background.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
         "isSingle": false,
-        "fgVarId": "VariableID:8:664",
-        "bgVarId": "VariableID:8:656",
+        "fgVarId": "VariableID:4007:715",
+        "bgVarId": "VariableID:4007:707",
         "ratio": 2.56,
         "wcag": {
           "aaLarge": false,
@@ -5895,7 +5895,7 @@
         "colKey": "single",
         "isTextLink": false,
         "isSingle": true,
-        "fgVarId": "VariableID:21:3",
+        "fgVarId": "VariableID:4007:517",
         "bgVarId": null
       }
     ]
