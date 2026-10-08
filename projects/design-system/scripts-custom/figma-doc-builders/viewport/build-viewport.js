@@ -353,7 +353,7 @@ const WRAPPER_GAP = 64;
 const COLUMN_GAP  = 64;
 // Vertical gap inside the outer frame between [foundation_bar, tables, applied].
 const OUTER_GAP   = 64;
-const BG_VAR_NAME = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
+const BG_VAR_NAME = 'ob/s1/color/neutral/background/contrast_highest';
 const BG_VAR_COLLECTION_NAMES = ['lightness', 's1_lightness', 's1-lightness', 'Lightness'];
 
 // Builder-managed instance names — the page-chrome instance the outer frame
@@ -365,7 +365,7 @@ const APPLIED_FRAME_NAME  = 'template/app1';
 const MIN_WIDTH_VAR_NAME  = 'ob/s/dimension/viewport/min_width';
 // The compiled colour variables carry the full name until run-cosmetics.js
 // trims the "ob/s/color/" prefix. Both names are accepted.
-const APPLIED_FILL_VAR_NAMES = ['ob/s/color/neutral/bg/contrast_highest/inversity_normal', 'neutral/bg/contrast_highest/inversity_normal'];
+const APPLIED_FILL_VAR_NAMES = ['ob/s/color/neutral/background/contrast_highest', 'neutral/background/contrast_highest'];
 
 let _bgVar = undefined;
 async function getBgVar() {

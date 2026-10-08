@@ -256,7 +256,7 @@ async function discoverVariables(collections) {
   // Build family-doc map. Var name pattern: <family-path>/_docs/token_family_info.
   // Compiled-tier (S3) names may be cosmetic-trimmed (run-cosmetics.js): "ob/s/color/" is
   // dropped, so the tier root doc is just "_docs/token_family_info" and a family doc is
-  // "interaction/_docs/token_family_info". Rebuild the full "ob/s/color/..." path for those.
+  // "action/_docs/token_family_info". Rebuild the full "ob/s/color/..." path for those.
   // Read the value from the variable's own collection's default mode (text is identical across modes).
   const DOC_SUFFIX = '_docs/token_family_info';
   const docMap = {};
@@ -376,7 +376,7 @@ async function customizeSectionBar(instance, tier, varMap) {
   }
 }
 
-const WRAPPER_BG_VAR_NAME = 'ob/s/color/neutral/bg/contrast_highest/inversity_normal';
+const WRAPPER_BG_VAR_NAME = 'ob/s/color/neutral/background/contrast_highest';
 const WRAPPER_BG_FALLBACK_HEX = '#FFFFFF';
 
 function applyWrapperBg(node, varMap) {
@@ -668,8 +668,8 @@ function setAlphaVariant(swatchInst, tokenName) {
 
 function getRoleSegment(tokenName) {
   const parts = tokenName.split(/[./]/);
-  const ROLE_PARTS = ['bg','fg','border','shadow','focus_ring','no_color','bg_disabled','fg_disabled'];
-  return parts.find(p => ROLE_PARTS.includes(p)) || '';
+  const ROLE_PARTS = ['background','foreground','border','shadow','focus_ring','no_color','background_disabled','foreground_disabled'];
+  return parts.map(p => p.replace(/_inverse$/, '')).find(p => ROLE_PARTS.includes(p)) || '';
 }
 
 function deriveGroups(tokens, prefixSegmentCount) {
@@ -1581,8 +1581,8 @@ async function main() {
     else if (a === '--no-cache') useCache = false;
     else if (a === '--validate') validateOnly = true;
     // Row refresh. Both flags name a row, here always a Figma variable (every color table row is built
-    // from one): --token ob.s.color.neutral.bg.contrast_highest.inversity_normal (as shown in the table)
-    // or --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal (slashes or dots accepted; the
+    // from one): --token ob.s.color.neutral.background.contrast_highest (as shown in the table)
+    // or --variable ob/s/color/neutral/background/contrast_highest (slashes or dots accepted; the
     // trimmed forms color/neutral/... and neutral/... that run-cosmetics.js leaves in Figma work too).
     else if (a === '--token' || a === '--variable') {
       // A row flag without a value must not fall back to a full build.

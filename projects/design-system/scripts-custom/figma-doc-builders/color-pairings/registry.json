@@ -62,32 +62,32 @@
         {
           "type": "grid",
           "rowAxis": "fg",
-          "fgPath": "neutral/fg/contrast_{fg}/inversity_normal",
-          "bgPath": "neutral/bg/contrast_{bg}/inversity_normal",
+          "fgPath": "neutral/foreground/contrast_{fg}",
+          "bgPath": "neutral/background/contrast_{bg}",
           "fgLevels": ["highest", "high", "medium", "low", "lowest"],
           "bgLevels": ["highest", "high", "medium", "low", "lowest"]
         },
         {
           "type": "textlink-row",
-          "fgPath": "interaction/fg/contrast_medium/inversity_normal",
-          "bgPath": "neutral/bg/contrast_{bg}/inversity_normal",
+          "fgPath": "action/foreground/contrast_medium",
+          "bgPath": "neutral/background/contrast_{bg}",
           "bgLevels": ["highest", "high", "medium", "low", "lowest"]
         }
       ]
     },
-    "interaction": {
+    "action": {
       "section": {
         "tier": "S",
-        "title": "Interaction",
-        "purpose": "Contrast-level pairings for interaction tokens.",
+        "title": "Action",
+        "purpose": "Contrast-level pairings for action tokens.",
         "guideline": "Every contrast level (high/medium/low) must remain at least AA-compliant against its bg."
       },
       "blocks": [
         {
           "type": "states-row",
           "states": ["high", "medium", "low"],
-          "fgPath": "interaction/fg/contrast_{state}/inversity_normal",
-          "bgPath": "interaction/bg/contrast_{state}/inversity_normal"
+          "fgPath": "action/foreground/contrast_{state}",
+          "bgPath": "action/background/contrast_{state}"
         }
       ]
     },
@@ -109,15 +109,15 @@
       "perGroup": {
         "type": "grid",
         "rowAxis": "bg",
-        "fgPath": "status/{group}/fg/contrast_{fg}/inversity_normal",
-        "bgPath": "status/{group}/bg/contrast_{bg}/inversity_normal",
+        "fgPath": "status/{group}/foreground/contrast_{fg}",
+        "bgPath": "status/{group}/background/contrast_{bg}",
         "fgLevels": ["highest", "high", "medium", "low"],
         "bgLevels": ["highest", "high", "medium", "low"]
       },
       "textLink": {
         "type": "textlink-row",
-        "fgPath": "interaction/fg/contrast_medium/inversity_normal",
-        "bgPath": "status/{group}/bg/contrast_{bg}/inversity_normal",
+        "fgPath": "action/foreground/contrast_medium",
+        "bgPath": "status/{group}/background/contrast_{bg}",
         "bgLevels": ["highest", "high", "medium", "low"]
       }
     },
@@ -132,8 +132,8 @@
         {
           "type": "states-row",
           "states": ["enabled", "hover", "focus", "pressed", "selected", "disabled"],
-          "fgPath": "navigation/fg/{state}",
-          "bgPath": "navigation/bg/{state}"
+          "fgPath": "navigation/foreground/{state}",
+          "bgPath": "navigation/background/{state}"
         }
       ]
     },
@@ -155,8 +155,8 @@
       "perGroup": {
         "type": "grid",
         "rowAxis": "bg",
-        "fgPath": "free/{group}/fg/contrast_{fg}/inversity_normal",
-        "bgPath": "free/{group}/bg/contrast_{bg}/inversity_normal",
+        "fgPath": "free/{group}/foreground/contrast_{fg}",
+        "bgPath": "free/{group}/background/contrast_{bg}",
         "fgLevels": ["highest", "high", "medium", "low"],
         "bgLevels": ["highest", "high", "medium", "low"]
       }

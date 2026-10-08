@@ -22,8 +22,8 @@
  *   3. rename effect styles — same cosmetic prefix trim, for shadows/blurs
  *   4. rename variables — same cosmetic prefix trim, for variables (e.g. the
  *                 compiled-tier "ob/s/color/" trim,
- *                 leaving "neutral/...", "interaction/..." as the names)
- *   5. scope variables — bulk scopes/hiddenFromPublishing pass
+ *                 leaving "neutral/...", "action/..." as the names)
+ *   5. scope variables — bulk scopes/hiddenFromPublishing pass, rule list in CONFIG
  *
  * NOT included here, run separately: prune-orphan-variables.js. Same "after
  * every export" cadence, but it needs Node's filesystem access to read the
@@ -106,25 +106,38 @@
       enabled: true,
       // Compiled S3 color variables only, so no other collection is trimmed
       // by an accidental prefix match. Names end up as "neutral/...",
-      // "interaction/..." etc. Doc builders accept the full and trimmed forms.
+      // "action/..." etc. Doc builders accept the full and trimmed forms.
       collectionName: 'semantic',
       renames: [
         { from: 'ob/s/color/', to: '' },
       ],
     },
 
-    // scope-variables.js's own CONFIG shape — see that script's header for
-    // field meanings. Disabled by default; this pass does not use the
-    // scan/apply collision machinery the others do, it just writes what is
-    // configured here directly in apply mode.
+    // Hide variables that only authors need from the published library. Every rule
+    // lists filters (all given filters must match) and what to set on the match.
+    // Scopes alone do not hide a variable, hiddenFromPublishing does. A Token Studio
+    // export resets the flag on renamed variables, so this runs after every export.
+    // namePrefixes / nameSuffixes match the variable name at this point of the run,
+    // so for the semantic collection the trimmed name is meant.
     scopeVariables: {
-      enabled: false,
-      namePrefixes: [],
-      collectionNames: [],
-      resolvedTypes: [],
-      currentScopes: null,
-      setScopes: null,
-      setHiddenFromPublishing: null,
+      enabled: true,
+      rules: [
+        {
+          label: 'component colors',
+          namePrefixes: ['ob/c/', 'ob/h/'], nameSuffixes: [], collectionNames: [], resolvedTypes: ['COLOR'],
+          currentScopes: null, setScopes: null, setHiddenFromPublishing: true,
+        },
+        {
+          label: 'S1 and S2 color tiers',
+          namePrefixes: [], nameSuffixes: [], collectionNames: ['lightness', 'emphasis'], resolvedTypes: ['COLOR'],
+          currentScopes: null, setScopes: null, setHiddenFromPublishing: true,
+        },
+        {
+          label: 'inverse colors',
+          namePrefixes: [], nameSuffixes: ['_inverse'], collectionNames: ['semantic'], resolvedTypes: ['COLOR'],
+          currentScopes: null, setScopes: null, setHiddenFromPublishing: true,
+        },
+      ],
     },
   };
   // ==========================================================================
@@ -306,31 +319,35 @@
 
   // ── 5. scope variables ─────────────────────────────────────────────────
   if (CONFIG.scopeVariables.enabled) {
-    const sv = CONFIG.scopeVariables;
     const allVars = await figma.variables.getLocalVariablesAsync();
     const cols = await figma.variables.getLocalVariableCollectionsAsync();
     const collById = new Map(cols.map((c) => [c.id, c]));
-    const matched = allVars.filter((v) => {
-      if (sv.namePrefixes.length && !sv.namePrefixes.some((p) => v.name.startsWith(p))) return false;
-      if (sv.collectionNames.length) {
-        const c = collById.get(v.variableCollectionId);
-        if (!c || !sv.collectionNames.includes(c.name)) return false;
+    const stepReport = { rules: [], failed: [] };
+    for (const sv of CONFIG.scopeVariables.rules) {
+      const matched = allVars.filter((v) => {
+        if (sv.namePrefixes.length && !sv.namePrefixes.some((p) => v.name.startsWith(p))) return false;
+        if (sv.nameSuffixes.length && !sv.nameSuffixes.some((x) => v.name.endsWith(x))) return false;
+        if (sv.collectionNames.length) {
+          const c = collById.get(v.variableCollectionId);
+          if (!c || !sv.collectionNames.includes(c.name)) return false;
+        }
+        if (sv.resolvedTypes.length && !sv.resolvedTypes.includes(v.resolvedType)) return false;
+        if (sv.currentScopes && !sv.currentScopes.some((set) => JSON.stringify([...v.scopes].sort()) === JSON.stringify([...set].sort()))) return false;
+        return true;
+      });
+      const ruleReport = { label: sv.label, matched: matched.length, updated: 0 };
+      if (APPLY) {
+        for (const v of matched) {
+          try {
+            if (sv.setScopes !== null) v.scopes = sv.setScopes;
+            if (sv.setHiddenFromPublishing !== null) v.hiddenFromPublishing = sv.setHiddenFromPublishing;
+            ruleReport.updated++;
+          } catch (e) { stepReport.failed.push({ name: v.name, err: String(e) }); }
+        }
       }
-      if (sv.resolvedTypes.length && !sv.resolvedTypes.includes(v.resolvedType)) return false;
-      if (sv.currentScopes && !sv.currentScopes.some((set) => JSON.stringify([...v.scopes].sort()) === JSON.stringify([...set].sort()))) return false;
-      return true;
-    });
-    const stepReport = { matched: matched.length, updated: 0, failed: [] };
-    if (APPLY) {
-      for (const v of matched) {
-        try {
-          if (sv.setScopes !== null) v.scopes = sv.setScopes;
-          if (sv.setHiddenFromPublishing !== null) v.hiddenFromPublishing = sv.setHiddenFromPublishing;
-          stepReport.updated++;
-        } catch (e) { stepReport.failed.push({ name: v.name, err: String(e) }); }
-      }
-      await flush();
+      stepReport.rules.push(ruleReport);
     }
+    if (APPLY) await flush();
     report.steps.scopeVariables = stepReport;
   }
 

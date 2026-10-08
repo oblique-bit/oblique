@@ -250,7 +250,7 @@ function pickEmph(fgPath, bgPath, isTextLink) {
   // The text-link row reads its color from the S3 interaction token that
   // ob.h.link.color.default points at (the ob.h.link set is not exported as
   // Figma variables), so the flag, not the fg path, marks a link pairing.
-  if (/^ob\\.s\\.color\\.status\\.[^.]+\\.bg\\.(contrast_highest|contrast_high)\\b/.test(bgPath)
+  if (/^ob\\.s\\.color\\.status\\.[^.]+\\.background\\.(contrast_highest|contrast_high)\\b/.test(bgPath)
       && (isTextLink || /^ob\\.h\\.link/.test(fgPath))) {
     return 'emphasis_low required on saturated status bg';
   }

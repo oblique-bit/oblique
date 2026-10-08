@@ -59,14 +59,14 @@
     },
     {
       "id": "s1-interaction",
-      "title": "S1 Color: Interaction",
+      "title": "S1 Color: Action",
       "tier": "s1",
       "rowComponent": "2-mode",
       "showRoleColumn": true,
       "source": "figma-vars",
-      "matches": "^ob/s1/color/interaction/",
+      "matches": "^ob/s1/color/action/",
       "modeCollection": "s1-lightness",
-      "wrapperName": "Token Set: ob.s1.color.interaction",
+      "wrapperName": "Token Set: ob.s1.color.action",
       "tableFrameName": "Token Table"
     },
     {
@@ -107,14 +107,14 @@
     },
     {
       "id": "s2-interaction",
-      "title": "S2 Color: Interaction",
+      "title": "S2 Color: Action",
       "tier": "s2",
       "rowComponent": "4-mode",
       "showRoleColumn": false,
       "source": "figma-vars",
-      "matches": "^ob/s2/color/interaction/",
+      "matches": "^ob/s2/color/action/",
       "modeCollections": ["s1-lightness", "s2-emphasis"],
-      "wrapperName": "Token Set: ob.s2.color.interaction.state",
+      "wrapperName": "Token Set: ob.s2.color.action.state",
       "tableFrameName": "Token Table"
     },
     {
@@ -131,14 +131,14 @@
     },
     {
       "id": "s3-interaction",
-      "title": "S3 Color: Interaction",
+      "title": "S3 Color: Action",
       "tier": "s3",
       "rowComponent": "4-mode",
       "showRoleColumn": true,
       "source": "figma-vars",
-      "matches": "^ob/s/color/interaction/",
+      "matches": "^ob/s/color/action/",
       "modeCollections": ["s1-lightness", "s2-emphasis"],
-      "wrapperName": "Token Set: ob.s.color.interaction",
+      "wrapperName": "Token Set: ob.s.color.action",
       "tableFrameName": "Token Table"
     },
     {

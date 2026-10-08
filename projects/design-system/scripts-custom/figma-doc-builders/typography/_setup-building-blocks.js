@@ -67,10 +67,10 @@ const PLUGIN_CODE = `
     if (!v) throw new Error('variable not found: ' + name);
     return v;
   }
-  const fgHighest = findVar('ob/s1/color/neutral/fg/contrast_highest/inversity_normal');
-  const fgHigh    = findVar('ob/s1/color/neutral/fg/contrast_high/inversity_normal');
-  const fgMedium  = findVar('ob/s1/color/neutral/fg/contrast_medium/inversity_normal');
-  const fgLow     = findVar('ob/s1/color/neutral/fg/contrast_low/inversity_normal');
+  const fgHighest = findVar('ob/s1/color/neutral/foreground/contrast_highest');
+  const fgHigh    = findVar('ob/s1/color/neutral/foreground/contrast_high');
+  const fgMedium  = findVar('ob/s1/color/neutral/foreground/contrast_medium');
+  const fgLow     = findVar('ob/s1/color/neutral/foreground/contrast_low');
 
   function bindFill(textNode, variable) {
     if (!textNode || textNode.type !== 'TEXT') return;
