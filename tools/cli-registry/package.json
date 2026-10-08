@@ -16,7 +16,8 @@
     "lint": "tsx scripts/lint.ts",
     "format": "npm run lint -- --fix",
     "setup": "npm run build && npm link",
-    "start": "npm run build && node dist/cli-registry.js start"
+    "start": "npm run build && node dist/cli-registry.js start",
+    "release": "echo \"No release step for the cli-registry package\""
   },
   "dependencies": {
     "verdaccio": "~6.10.1"
