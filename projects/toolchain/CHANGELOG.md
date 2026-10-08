@@ -1,3 +1,9 @@
+# [16.0.1](https://github.com/oblique-bit/oblique/compare/16.0.0...16.0.1) (2026-10-08)
+
+## Bug Fixes
+
+- **schematics:** correct testbed in generated app component test ([8183e0ff](https://github.com/oblique-bit/oblique/commit/8183e0ffe826bc0dc6898e7b9f7835035ea79612), OUI-4729)
+
 # [16.0.0](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0) (2026-09-24)
 
 ## Bug Fixes

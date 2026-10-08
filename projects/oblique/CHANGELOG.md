@@ -1,3 +1,12 @@
+# [16.0.1](https://github.com/oblique-bit/oblique/compare/16.0.0...16.0.1) (2026-10-08)
+
+## Bug Fixes
+
+- **language:** avoid encoding query params and fragment on language switch ([fc6a29c6](https://github.com/oblique-bit/oblique/commit/fc6a29c6819008bef804f447e9ab59ead035331f), OUI-4638)
+- **language:** prevent language init from cancelling pending initial navigation ([30fcc583](https://github.com/oblique-bit/oblique/commit/30fcc5839312849547c6ab8168b1d6f5886ea0d8), OUI-4638)
+- **master-layout:** make fixed layout cover full available height ([3118ce4b](https://github.com/oblique-bit/oblique/commit/3118ce4b1304dc9c575ad3be1d6da976905764d2), OUI-4682)
+- **styles:** reset font-size of default H4 to H6 to 17px ([df974afc](https://github.com/oblique-bit/oblique/commit/df974afcf9707911126d1939e883c877a1bee507), OUI-4753)
+
 # [16.0.0](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0) (2026-09-24)
 
 ## Bug Fixes
