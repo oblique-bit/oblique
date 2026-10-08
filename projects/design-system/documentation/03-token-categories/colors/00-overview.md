@@ -17,40 +17,6 @@
   - [**Interaction Colors**](06-semantic-interaction.md) - Hover, active, visited, disabled states  
   - [**Status Colors**](07-semantic-status.md) - Success, warning, error, info states
   - [**Free Colors**](08-semantic-free.md) - Unassigned semantic colors for project-specific use
-- [**Getting Started**](#getting-started) - Background, foreground, and border with five tokens
-
----
-
-## Getting Started
-
-The three simplest color needs are a background, a foreground, and a border. Use the neutral tokens below for them. All of them follow the lightness mode on their own, so a dark mode needs no extra token.
-
-In Figma the variable name starts at `neutral/`. For example, the background is `neutral/bg/contrast_highest/inversity_normal`.
-
-### Background and foreground
-
-| Need | Token | Light | Dark |
-|---|---|---|---|
-| **Background** (page and main surface) | `ob.s.color.neutral.bg.contrast_highest.inversity_normal` | white | cobalt.800 (#1c2834) |
-| **Foreground** (text and icons) | `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | cobalt.900 (#131b22) | white |
-
-Use the two tokens together. The contrast between them is 17.39:1 in light mode and 14.97:1 in dark mode, which is above the 7:1 that WCAG AAA asks for normal text.
-
-### Border
-
-| Strength | Token | Use | Contrast on the background, light | Contrast on the background, dark |
-|---|---|---|---|---|
-| **Subtle** | `ob.s.color.neutral.border.subtle.inversity_normal` | Divider between sections | 1.28:1 | 1.37:1 |
-| **Medium** | `ob.s.color.neutral.border.medium.inversity_normal` | Outline of a contained area | 2.1:1 | 1.91:1 |
-| **Strong** | `ob.s.color.neutral.border.strong.inversity_normal` | Edge of an input or any control | 3.34:1 | 4.48:1 |
-
-A border that only separates content can be subtle or medium. A border that is the only sign that shows where a control is, such as the edge of a text input, needs at least 3:1 against the color next to it (WCAG 2.1, 1.4.11 Non-text Contrast, level AA). Use strong for those borders. Strong is the only border strength that reaches 3:1 in both modes.
-
-### Next steps
-
-- More background and foreground levels: [Neutral Colors](04-semantic-neutral.md)
-- Colors for status and interaction: [Status Colors](07-semantic-status.md) and [Interaction Colors](06-semantic-interaction.md)
-- The full path to a token, from the first question to the final choice: [Token Usage Guide](../../05-reference/01-token-usage-guide.md)
 
 ---
 
@@ -267,4 +233,4 @@ Always prioritize semantic and interactive color usage, which communicates meani
 
 ---
 
-*Last updated: October 6, 2026 - Added Getting Started chapter with background, foreground, and border*
+*Last updated: August 21, 2025 - Restructured as introduction and navigation hub with specialized file references*
