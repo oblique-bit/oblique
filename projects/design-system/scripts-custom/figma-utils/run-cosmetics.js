@@ -115,7 +115,10 @@
 
     // Hide variables that only authors need from the published library. Every rule
     // lists filters (all given filters must match) and what to set on the match.
-    // Scopes alone do not hide a variable, hiddenFromPublishing does. A Token Studio
+    // hiddenFromPublishing hides a variable from consumers of the published library only,
+    // the library file itself still lists it. Scopes decide which pickers list a variable,
+    // and Figma has no empty scope, so setScopes: ['EFFECT_COLOR'] keeps a color variable
+    // out of the fill and stroke pickers and leaves it only in the effect color picker. A Token Studio
     // export resets the flag on renamed variables, so this runs after every export.
     // namePrefixes / nameSuffixes match the variable name at this point of the run,
     // so for the semantic collection the trimmed name is meant.
@@ -130,12 +133,12 @@
         {
           label: 'S1 and S2 color tiers',
           namePrefixes: [], nameSuffixes: [], collectionNames: ['lightness', 'emphasis'], resolvedTypes: ['COLOR'],
-          currentScopes: null, setScopes: null, setHiddenFromPublishing: true,
+          currentScopes: null, setScopes: ['EFFECT_COLOR'], setHiddenFromPublishing: true,
         },
         {
           label: 'inverse colors',
           namePrefixes: [], nameSuffixes: ['_inverse'], collectionNames: ['semantic'], resolvedTypes: ['COLOR'],
-          currentScopes: null, setScopes: null, setHiddenFromPublishing: true,
+          currentScopes: null, setScopes: ['EFFECT_COLOR'], setHiddenFromPublishing: true,
         },
       ],
     },
