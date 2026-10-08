@@ -108,7 +108,7 @@ registerLocaleData(localeDE);
 			},
 			translate: {
 				locales: {
-					locales: ['en-us', 'fr-CH'],
+					locales: ['en-us', 'fr-CH', 'de-CH', 'it-CH'],
 				},
 			},
 			language: {hasLanguageInUrl: true},
