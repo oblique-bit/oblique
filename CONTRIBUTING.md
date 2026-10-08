@@ -136,6 +136,7 @@ The type is required and must be one of the following:
 | **fix**      | Changes that fixes a bug                                             |
 | **refactor** | Changes to a feature that neither adds, removes nor fixes a behavior |
 | **test**     | Changes that affect tests or their configuration only                |
+| **tools**    | Changes to the tooling that do not affect the library                |
 
 ##### <a name="package"></a> Package
 
@@ -186,6 +187,15 @@ The `ci` type, which stands for Continuous Integration, has a mandatory scope th
 | **rhos**    | Changes to the Red Hat Open Shift configuration files |
 | **jenkins** | Changes to the Jenkins configuration files            |
 | **github**  | for changes to the GitHub configuration files         |
+
+###### <a name="tools"></a> tools
+
+The `tools` type is used for changes to tooling in the `tools/` folder that do not affect the library. The scope must
+be one of the following:
+
+| Scope            | Description                               |
+| ---------------- | ----------------------------------------- |
+| **cli-registry** | Changes in the local npm registry tooling |
 
 ###### <a name="others"></a> others
 

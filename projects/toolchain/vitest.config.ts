@@ -5,7 +5,7 @@ export default defineConfig({
 	cacheDir: '.vitecache',
 	test: {
 		watch: false,
-		include: ['src/**/*.spec.ts'],
+		include: ['src/**/*.spec.ts', 'scripts/**/*.spec.ts'],
 		globals: true,
 		coverage: {
 			enabled: true,

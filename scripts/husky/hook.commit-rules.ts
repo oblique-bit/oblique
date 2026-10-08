@@ -1,6 +1,7 @@
+import path from 'node:path';
 import {Git} from '../shared/git';
 import {Log} from '../shared/log';
-import {fatal} from '../shared/utils';
+import {fatal, getResultFromCommand} from '../shared/utils';
 import {getAbsolutePath} from '../shared/root';
 import {Files} from '../shared/files';
 
@@ -18,7 +19,8 @@ class HookCommitRules {
 		Log.start('Validate commit message');
 		Log.info('Read commit message');
 
-		const message: string[] = Files.read(getAbsolutePath('.git/COMMIT_EDITMSG'))
+		const commitMessagePath = path.resolve(getResultFromCommand('git rev-parse --git-path COMMIT_EDITMSG'));
+		const message: string[] = Files.read(commitMessagePath)
 			.split('\n')
 			.filter(line => !line.startsWith('#'));
 		HookCommitRules.checkLineLength(message, HookCommitRules.maxLineLength);
@@ -52,7 +54,7 @@ class HookCommitRules {
 		const contributing: string = Files.read(getAbsolutePath('CONTRIBUTING.md'));
 		const {type, pkg, scope, subject} = HookCommitRules.extractHeaderParts(header, contributing);
 		HookCommitRules.checkType(type, HookCommitRules.extractList(contributing, 'Type'));
-		HookCommitRules.checkPackage(pkg, HookCommitRules.extractList(contributing, 'Package'));
+		HookCommitRules.checkPackage(pkg, HookCommitRules.extractList(contributing, 'Package'), type);
 		HookCommitRules.checkScope(scope, pkg, type, contributing);
 		HookCommitRules.checkSubject(subject);
 	}
@@ -112,7 +114,7 @@ class HookCommitRules {
 		}
 	}
 
-	private static checkPackage(pkg: string, packages: string[]): void {
+	private static checkPackage(pkg: string, packages: string[], type: string): void {
 		Log.info('Check header package');
 		if (pkg) {
 			if (!packages.includes(pkg)) {
@@ -135,7 +137,7 @@ class HookCommitRules {
 							'projects/stylesBuilder/oblique-components.scss',
 						].includes(filePath)
 				)
-				.filter(filePath => !new RegExp(`projects/${HookCommitRules.getFolderName(pkg)}/.*`).test(filePath));
+				.filter(filePath => !new RegExp(`${HookCommitRules.getFolderName(pkg, type)}/.*`).test(filePath));
 			if (filePaths.length) {
 				HookCommitRules.fatal(
 					`1st line has an invalid package '${pkg}' that some commited files aren't compatible with: ${HookCommitRules.join(filePaths)}.`
@@ -162,7 +164,7 @@ class HookCommitRules {
 			return HookCommitRules.extractList(contributing, type);
 		}
 		const packageContributing = Files.read(
-			getAbsolutePath(`projects/${HookCommitRules.getFolderName(pkg)}/CONTRIBUTING.md`)
+			getAbsolutePath(`${HookCommitRules.getFolderName(pkg, type)}/CONTRIBUTING.md`)
 		);
 		return HookCommitRules.extractList(packageContributing, 'Scope');
 	}
@@ -198,12 +200,13 @@ class HookCommitRules {
 		}
 	}
 
-	private static getFolderName(pkg: string): string {
-		switch (pkg) {
-			case 'service-navigation':
-				return 'service-navigation-web-component';
+	private static getFolderName(pkg: string, type: string): string {
+		const folder = pkg === 'service-navigation' ? 'service-navigation-web-component' : pkg;
+		switch (type) {
+			case 'tools':
+				return `tools/${folder}`;
 			default:
-				return pkg;
+				return `projects/${folder}`;
 		}
 	}
 

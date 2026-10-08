@@ -1,3 +1,14 @@
+# [16.0.1](https://github.com/oblique-bit/oblique/compare/16.0.0...16.0.1) (2026-10-08)
+
+## Bug Fixes
+
+- **nav-tree:** localize link to tree root in nav-tree detail sample ([4da5cea5](https://github.com/oblique-bit/oblique/commit/4da5cea5521f39c43d4271f088495a25966bacc9), OUI-4650)
+
+## Features
+
+- **language:** german and italian translations extended ([2ba75e9d](https://github.com/oblique-bit/oblique/commit/2ba75e9d2f7c8ea950171ece383ee209d874285e), OUI-4568)
+- **language:** enable german and italian languages ([d55be343](https://github.com/oblique-bit/oblique/commit/d55be343466a8f2fd1f1738975d5fccee6f0caf2), OUI-4568)
+
 # [16.0.0](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0) (2026-09-24)
 
 ## Bug Fixes

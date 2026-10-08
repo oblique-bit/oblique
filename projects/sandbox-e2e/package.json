@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sandbox-e2e",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "type": "module",
   "description": "Playwright E2E tests for the Oblique sandbox",
   "scripts": {

@@ -27,7 +27,7 @@ Before reporting code edits complete, verify every AI-authored or AI-modified sn
 
 ## Layout
 
-npm-workspaces monorepo. Packages in `projects/`: `oblique` Angular library, `design-system` Vite, `toolchain` schematics, and `sandbox*` examples. Root config: `eslint.config.mjs`, `.prettierrc.yml`, and Angular workspace files. Change the owning package; put tests beside code as `*.spec.ts` for Angular/Jest packages. For Vitest-based packages, check existing test files in the package directory to determine the naming convention before adding new tests.
+npm-workspaces monorepo. Packages in `projects/`: `oblique` Angular library, `design-system` Vite, `toolchain` schematics, and `sandbox*` examples. Tooling in `tools/`: `cli-registry` local npm registry (workspace, private). Root config: `eslint.config.mjs`, `.prettierrc.yml`, and Angular workspace files. Change the owning package; put tests beside code as `*.spec.ts` for Angular/Jest packages. For Vitest-based packages, check existing test files in the package directory to determine the naming convention before adding new tests.
 
 Use Node.js lts/krypton (v24.*) and install from the repository root.
 
@@ -50,7 +50,7 @@ Use Node.js lts/krypton (v24.*) and install from the repository root.
 
 ## Tests
 
-Jest: `oblique`. Vitest: `cli`, `design-system`, `sandbox`, `sandbox-ssr`, `sds`, `toolchain`, `service-navigation-web-component`, and the package's Angular tooling for Angular packages. Add behavior regression tests, including tests and fixtures for new helpers.
+Jest: `oblique`. Vitest: `cli`, `design-system`, `sandbox`, `sandbox-ssr`, `sds`, `toolchain`, `service-navigation-web-component`, `cli-registry`, and the package's Angular tooling for Angular packages. Add behavior regression tests, including tests and fixtures for new helpers.
 
 Playwright e2e: `sandbox-e2e` runs the sandbox in a browser and catches what unit tests cannot: broken wiring, missing elements, and interactions that only fail at runtime. When a change touches functionality demonstrated by a sandbox sample, run the e2e suite to check the work. Adding or adjusting e2e tests is a deliberate choice: suggest it as a separate follow-up change. Read `projects/sandbox-e2e/docs/e2e-testing.md` before writing or changing e2e tests; it covers ownership, conventions, and how to run a single spec file.
 
