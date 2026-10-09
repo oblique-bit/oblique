@@ -15,7 +15,7 @@ export class PostBuild extends StaticScript {
 		Log.start('Finalize build');
 		PostBuild.copyProjectFiles();
 		PostBuild.adaptPackageJson();
-		Banner.addToFilesInProject(PostBuild.projectName);
+		Banner.addToFilesInProject(PostBuild.projectName, /eslint\.config\.mjs$/u);
 		adaptReadmeLinks(PostBuild.projectName);
 		Log.success();
 	}
