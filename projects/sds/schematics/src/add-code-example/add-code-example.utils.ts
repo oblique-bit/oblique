@@ -14,10 +14,7 @@ import {
 } from '@angular-devkit/schematics';
 import {getSdsSourceRootPath} from '../workspace.utils';
 import {addNodeToSyntaxList, checkPropertyLiteralExists} from '../nodes.utils';
-import {
-	type SourceFile,
-	SyntaxKind,
-} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {type SourceFile, SyntaxKind} from 'typescript';
 import * as colors from 'ansi-colors';
 import type {AddCodeExampleOptions} from './add-code-example.model';
 import {

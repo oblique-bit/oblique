@@ -7,8 +7,8 @@ import type {ProjectDefinition} from '@angular-devkit/core/src/workspace/definit
 
 export async function getSdsSourceRootPath(tree: Tree): Promise<string> {
 	const workspaceDefinition: WorkspaceDefinition = await getWorkspaceDefinition(tree);
-	const projectDefinition: ProjectDefinition = workspaceDefinition.projects.get('sds');
-	return projectDefinition.sourceRoot;
+	const projectDefinition: ProjectDefinition | undefined = workspaceDefinition.projects.get('sds');
+	return projectDefinition?.sourceRoot ?? '';
 }
 
 async function getWorkspaceDefinition(tree: Tree): Promise<WorkspaceDefinition> {

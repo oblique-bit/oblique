@@ -1,10 +1,5 @@
 import {type Rule, type SchematicContext, SchematicsException, type Tree, noop} from '@angular-devkit/schematics';
-import {
-	ScriptKind,
-	ScriptTarget,
-	type SourceFile,
-	createSourceFile,
-} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {ScriptKind, ScriptTarget, type SourceFile, createSourceFile} from 'typescript';
 import {isImported} from '@schematics/angular/utility/ast-utils';
 import type {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
 import {createHost} from './host.utils';
@@ -124,7 +119,7 @@ export function showAlreadyExistsMessage(
 ): void {
 	context.logger.info(
 		`${colors.symbols.info}\tThe ${exist.elementDescription} ${exist.symbol} already exists${
-			exist?.existsIn?.length > 0 ? ` ${exist.existsIn}.` : '.'
+			exist?.existsIn?.length ? ` ${exist.existsIn}.` : '.'
 		} It will not be added again.`
 	);
 }

@@ -1,9 +1,9 @@
 {
-  "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "nodenext",
     "rootDir": "src/",
+    "noImplicitAny": false,
+    "declaration": false,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": false,

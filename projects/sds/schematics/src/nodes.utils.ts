@@ -1,10 +1,6 @@
 import {type Rule, type SchematicContext, SchematicsException, chain, noop} from '@angular-devkit/schematics';
 import {findNodes, getSourceNodes} from '@schematics/angular/utility/ast-utils';
-import {
-	type Node,
-	type SourceFile,
-	SyntaxKind,
-} from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import {type Node, type SourceFile, SyntaxKind} from 'typescript';
 import {changeInsertLeft, changeInsertRight, replaceUpdate, showAlreadyExistsMessage} from './sds.utils';
 import {InsertChange, ReplaceChange} from '@schematics/angular/utility/change';
 
@@ -53,7 +49,7 @@ export function addNodeToSyntaxList(
 			});
 			return chain([]);
 		}
-		const syntaxList = findSyntaxList(nodes, identifierName, toAdd.kind);
+		const syntaxList: Node = findSyntaxList(nodes, identifierName, toAdd.kind);
 		const indexToAdd = syntaxList.getEnd();
 		switch (toAdd.insert) {
 			case 'left': {
@@ -86,7 +82,7 @@ export function addNodeToSyntaxList(
 						),
 					],
 					sourceFile.fileName,
-					syntaxList.getFirstToken().getStart()
+					syntaxList.getFirstToken()?.getStart() ?? syntaxList.getStart()
 				);
 			}
 			default: {
@@ -122,9 +118,9 @@ function findSyntaxList(
 	identifierName: string,
 	kind: SyntaxKind.ArrayLiteralExpression | SyntaxKind.ObjectLiteralExpression
 ): Node {
-	const identifier: Node = findByTextAndKind(nodes, {kind: SyntaxKind.Identifier, text: identifierName});
-	const siblings = identifier.parent.getChildren().filter(node => node.getText() !== identifier.getText());
-	const toAddNode = siblings.find(node => node.kind === kind);
+	const identifier: Node | undefined = findByTextAndKind(nodes, {kind: SyntaxKind.Identifier, text: identifierName});
+	const siblings = identifier?.parent.getChildren().filter(node => node.getText() !== identifier?.getText());
+	const toAddNode: Node | undefined = siblings?.find(node => node.kind === kind);
 	return findNodeBySyntaxKind(toAddNode, SyntaxKind.SyntaxList);
 }
 
@@ -134,7 +130,11 @@ function getTextToAddWithComma(syntaxList: Node, textToAdd: string): string {
 	return hasComma || lastSign === undefined ? `\n\t\t${textToAdd},\n` : `,\n\t\t${textToAdd},\n`;
 }
 
-function findByTextAndKind(nodes: readonly Node[], toFind: {kind: SyntaxKind; text: string}, childIndex = 0): Node {
+function findByTextAndKind(
+	nodes: readonly Node[],
+	toFind: {kind: SyntaxKind; text: string},
+	childIndex = 0
+): Node | undefined {
 	return nodes.find(node => {
 		if (node.kind === toFind.kind && node.getText().includes(toFind.text)) {
 			return node;
@@ -146,14 +146,14 @@ function findByTextAndKind(nodes: readonly Node[], toFind: {kind: SyntaxKind; te
 	});
 }
 
-function findNodeBySyntaxKind(nodes: Node, kind: SyntaxKind, errorMessage?: string): Node {
-	const foundNode: Node = nodes.getChildren().find(node => node.kind === kind);
+function findNodeBySyntaxKind(nodes: Node | undefined, kind: SyntaxKind, errorMessage?: string): Node {
+	const foundNode: Node | undefined = nodes?.getChildren().find(node => node.kind === kind);
 	if (!foundNode) {
 		if (errorMessage) {
 			throw new SchematicsException(errorMessage);
 		} else {
 			throw new SchematicsException(
-				`Error: The node ${nodes.getChildAt(0).parent.getText()} doesn't contain an element of type ${SyntaxKind[kind]}`
+				`Error: The node ${nodes?.getChildAt(0).parent.getText()} doesn't contain an element of type ${SyntaxKind[kind]}`
 			);
 		}
 	}
