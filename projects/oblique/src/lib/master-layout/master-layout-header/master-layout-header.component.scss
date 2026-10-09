@@ -70,7 +70,6 @@
 	.ob-master-layout-header-title {
 		position: relative;
 		display: flex;
-		flex: 1;
 		flex-flow: row nowrap;
 		margin-right: auto; // Ensure controls get pushed to the right
 		min-width: 0; // Important, for text ellipsis of app title (cf. https://css-tricks.com/flexbox-truncated-text/)!
@@ -95,6 +94,7 @@
 
 	.ob-master-layout-logo {
 		overflow: hidden; // hides part of the logo in collapsed mode
+		flex: 0 0 auto;
 		width: variables.$ob-logo-width-collapsed;
 		height: variables.$ob-logo-height-collapsed;
 		margin-right: variables.$ob-spacing-sm;
@@ -120,16 +120,23 @@
 		font-size: variables.$ob-font-size-xl;
 		line-height: variables.$ob-logo-height-collapsed;
 		font-weight: 300;
-		padding-left: variables.$ob-spacing-sm;
-		border-left: 1px solid variables.$ob-gray-lighter;
-		overflow: hidden; // works together with text-overflow
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		width: 100%;
 	}
 
 	.ob-master-layout-brand-link {
+		display: inline-flex;
+		align-items: center;
 		color: variables.$ob-default;
 		text-decoration: none;
+		width: 100%;
+	}
+
+	.ob-master-layout-title {
+		border-left: 1px solid variables.$ob-gray-lighter;
+		padding-left: variables.$ob-spacing-sm;
+		overflow: hidden; // works together with text-overflow
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
 	.ob-collapsed-layout {

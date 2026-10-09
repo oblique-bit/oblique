@@ -12,14 +12,15 @@
 						{{ banner.text }}
 					</aside>
 				}
-				<a class="ob-master-layout-logo" [routerLink]="home$ | async | obLocalize" tabindex="-1">
-					<ng-container [ngTemplateOutlet]="obLogo()" />
-				</a>
-				<span class="ob-master-layout-brand-app-title">
-					<a [routerLink]="home$ | async | obLocalize" class="ob-master-layout-brand-link"
-						><ng-content select="[obHeaderTitle]"
-					/></a>
-				</span>
+
+				<div class="ob-master-layout-brand-app-title">
+					<a [routerLink]="home$ | async | obLocalize" class="ob-master-layout-brand-link">
+						<div class="ob-master-layout-logo">
+							<ng-container [ngTemplateOutlet]="obLogo()" />
+						</div>
+						<span class="ob-master-layout-title"> <ng-content select="[obHeaderTitle]" /></span
+					></a>
+				</div>
 			</div>
 			<ul class="ob-collapsed-layout">
 				@for (template of mobileTemplates(); track template) {
