@@ -49,6 +49,7 @@ This document outlines the **UI Scale** mode system for component scaling throug
 - **Figma**: Variable collection with modes `sm`, `md`, `lg`
 - **Tokens Studio**: Theme group with themes `sm`, `md`, `lg`
 - **Current naming**: Uses `ui_scale` theme group in `$themes.json` (located at `/src/lib/themes/`)
+- **Token files**: `.px` tokens in `03_semantic/dimension/ui_scale/`, `.rem` tokens in `03_semantic/dimension/rem/ui_scale/` (same file names)
 
 ### **Shared component sizes philosophy**
 Shared sizes are beneficial for:

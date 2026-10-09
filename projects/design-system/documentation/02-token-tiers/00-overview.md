@@ -126,7 +126,7 @@ Figma has **no native type for duration, gradients, or composite tokens** (typog
 
 ## Token Types Reference Table
 
-The table below lists all types currently used in Oblique token files (via `$type`), mapped to their tooling and standard equivalents.
+The table below lists all types currently used in Oblique token files (via `$type`), mapped to their tooling and standard equivalents. A token name that exists in several mode files is counted once for each file.
 
 ### Legend for support levels
 
@@ -155,7 +155,7 @@ The table below lists all types currently used in Oblique token files (via `$typ
 
 | Oblique `$type` | W3C DTCG | Tokens Studio | Figma Variables | In Oblique | Notes |
 |-----------------|----------|---------------|-----------------|------------|-------|
-| `dimension` | `dimension` (§8.2) | Native | **Number** | 281 tokens | Official. Value must include `px` or `rem` unit. |
+| `dimension` | `dimension` (§8.2) | Native | **Number** | 363 tokens | Official. Value must include `px` or `rem` unit. |
 | `spacing` | Not specified | Unofficial → `dimension` | **Number** | 76 tokens | Tokens Studio–specific. Auto-converted to `dimension` by sd-transforms. Figma binds as Number. |
 | `sizing` | Not specified | Unofficial → `dimension` | **Number** | 2 tokens | Tokens Studio–specific. Auto-converted to `dimension`. Path-level segment `sizing` in Oblique is a naming inconsistency — see note below. |
 | `borderRadius` | Not specified | Unofficial → `dimension` | **Number** | 5 tokens | Unofficial. Converted to `dimension` on export. |

@@ -1,0 +1,117 @@
+{
+  "ob": {
+    "s": {
+      "dimension": {
+        "static": {
+          "density": {
+            "xs": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.xs.px} / 16 * 1rem",
+                "$description": "Minimal density spacing. Fluid (rem) — scales with root font size for accessibility. Use for tight scalable gaps that respect user font preferences."
+              }
+            },
+            "sm": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.sm.px} / 16 * 1rem",
+                "$description": "Small density spacing. Fluid (rem) — scales with root font size for accessibility. Use for compact scalable gaps and fine accessible separation."
+              }
+            },
+            "md": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.md.px} / 16 * 1rem",
+                "$description": "Medium density spacing. Fluid (rem) — scales with root font size for accessibility. Use for standard scalable component padding."
+              }
+            },
+            "lg": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.lg.px} / 16 * 1rem",
+                "$description": "Large density spacing. Fluid (rem) — scales with root font size for accessibility. Use for comfortable scalable spacing."
+              }
+            },
+            "xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.xl.px} / 16 * 1rem",
+                "$description": "Extra-large density spacing. Fluid (rem) — scales with root font size for accessibility. Use for generous scalable component padding."
+              }
+            },
+            "2xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.2xl.px} / 16 * 1rem",
+                "$description": "2XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for spacious scalable content separation."
+              }
+            },
+            "3xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.3xl.px} / 16 * 1rem",
+                "$description": "3XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for prominent scalable visual breaks."
+              }
+            },
+            "4xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.4xl.px} / 16 * 1rem",
+                "$description": "4XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for significant scalable section separation."
+              }
+            },
+            "5xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.5xl.px} / 16 * 1rem",
+                "$description": "5XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for generous scalable separation in spacious areas."
+              }
+            },
+            "6xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.6xl.px} / 16 * 1rem",
+                "$description": "6XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for large scalable visual breaks between content groups."
+              }
+            },
+            "7xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.7xl.px} / 16 * 1rem",
+                "$description": "7XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for major scalable section spacing."
+              }
+            },
+            "8xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.8xl.px} / 16 * 1rem",
+                "$description": "8XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for substantial scalable layout separation."
+              }
+            },
+            "9xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.9xl.px} / 16 * 1rem",
+                "$description": "9XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for wide scalable spacing between major layout elements."
+              }
+            },
+            "10xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.10xl.px} / 16 * 1rem",
+                "$description": "10XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for expansive scalable page-level separation."
+              }
+            },
+            "11xl": {
+              "rem": {
+                "$type": "dimension",
+                "$value": "{ob.s.dimension.static.density.11xl.px} / 16 * 1rem",
+                "$description": "11XL density spacing. Fluid (rem) — scales with root font size for accessibility. Use for maximum scalable density spacing."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
