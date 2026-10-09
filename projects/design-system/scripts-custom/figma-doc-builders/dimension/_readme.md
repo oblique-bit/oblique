@@ -34,6 +34,8 @@ No local file artifacts — the Figma page is the only output.
 
 Per-leaf description comes from `variable.description`. Family-doc variables (paths containing `/_docs/`) are filtered out.
 
+The page has no `.rem` rows, by design. The `.rem` tokens are in `src/lib/themes/03_semantic/dimension/rem/` and every file there has the Tokens Studio status `source`, so no Figma variable exists for them, and this builder lists Figma variables only. A `.rem` row on the page means that a rem token set was set to `enabled` in a theme, that a `.rem` variable was made by hand, or that an older export left a `.rem` variable in the file. Fix that cause. Do not filter the row out.
+
 ## Usage
 
 ```bash

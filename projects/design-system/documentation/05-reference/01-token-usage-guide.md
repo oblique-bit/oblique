@@ -225,7 +225,7 @@ Dimension tokens are authored in **px**, because Figma works in px. Where rem is
 
 **Typography:** the static typography scale (font sizes, line heights, paragraph spacing) stays in rem: Token Studio converts rem font sizes to px for Figma correctly.
 
-**Why the tokens are px:** Figma number variables have no unit. Token Studio converts a `rem` value to pixels with its base font size setting (1rem = 16px, a per-user plugin setting, see [Typography Tokens](../03-token-categories/01-typography.md)), so a `.rem` sibling would arrive in Figma as the same number as its `.px` sibling and could not be told apart from it (the `.rem` siblings are source-only in Token Studio today, so no `.rem` variable exists in Figma). A component token that is used as a Figma variable therefore references the `.px` sibling. The working component tokens on the development line follow this rule.
+**Why the tokens are px:** Figma number variables have no unit. Token Studio converts a `rem` value to pixels with its base font size setting (1rem = 16px, a per-user plugin setting, see [Typography Tokens](../03-token-categories/01-typography.md)), so a `.rem` sibling would arrive in Figma as the same number as its `.px` sibling and could not be told apart from it (the `.rem` siblings are in the folder `03_semantic/dimension/rem/`; every file there is source-only in Token Studio today, so no `.rem` variable exists in Figma). A component token that is used as a Figma variable therefore references the `.px` sibling. The working component tokens on the development line follow this rule.
 
 #### Decision table for component maintainers
 

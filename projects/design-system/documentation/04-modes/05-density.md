@@ -21,6 +21,8 @@ Unlike lightness, density is not typically offered as an end-user toggle — a p
 ### **Token Architecture**
 Located in: `03_semantic/dimension/density/`
 
+The `.rem` tokens of the same steps are in `03_semantic/dimension/rem/density/`, with the same file names.
+
 **Structure Pattern:**
 ```json
 {
