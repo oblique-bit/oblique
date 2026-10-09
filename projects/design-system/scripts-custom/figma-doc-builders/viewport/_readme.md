@@ -8,7 +8,25 @@ This file still describes 5 tables including "Header Variant"
 part of the 2026-09-14 work below; flagging so this doesn't mislead anyone
 in the meantime.
 
-Generates the **entire 📱 Responsiveness** Figma docs page from `src/lib/themes/` JSON files. One full build owns the whole page inside a single **Viewport Output** frame — the foundation bar, 5 token tables, and the Applied Viewport Modes illustration. No hand-built content is left on the page; `node build-viewport.js` reproduces it end to end.
+Generates the **entire 📱 Responsiveness** Figma docs page from `src/lib/themes/` JSON files. One full build owns the whole page: a single **Viewport Output** frame (the foundation bar and the token tables) and, below it, the Applied Viewport Modes illustration as plain page layers. No hand-built content is left on the page; `node build-viewport.js` reproduces it end to end.
+
+## Which file the builder writes to
+
+The target file is `registry.json` → `figmaFile` ("Oblique Design System R16 Prep"). The builder passes it to `figma-ds-cli` as `FIGMA_TAB`, and the plugin code stops before writing anything if the open file has a different name (error `FILE`). Note: `figma-ds-cli` keeps one long-running daemon that remembers its tab. If you get the `FILE` error, restart it for the right file: `FIGMA_TAB="Oblique Design System R16 Prep" figma-ds-cli daemon restart`. `--validate` never creates a page; it stops with "page not found".
+
+## Applied Viewport Modes
+
+The illustration comes from the component `_docs/viewport/applied_viewport_modes` (Authoring Utilities). The builder places an instance below the Viewport Output frame, **detaches it, keeps only the layers users need and removes all wrapper frames**:
+
+- kept: the `template/app1` frames (one per viewport mode, each with its mode set), the text layers (labels and the note) and the section bar, at their position;
+- so the frames are easy to reach on the canvas and in the layers panel, with the mode chip next to the name;
+- the width of each mode frame is bound to `ob/s/dimension/viewport/min_width`, so changing the viewport mode of a frame also changes its width (min and max alone only limit a fixed width);
+- the frame fill is set to `ob/s/color/neutral/bg/contrast_highest/inversity_normal`, and an extra `template/app1` wrapper layer around the header (2xl frame and the 2xl alternative frame) is removed. The builder does this itself, so the output does not depend on hand edits of the master;
+- the master only has to provide the artwork: the `template/app1` frames with their viewport mode (one per mode, plus the alternative 2xl frame), the labels, the note and the header instances.
+
+No manual step is needed after a build. The builder also adds the hidden `__sectionSubTitle` text layer to the `_docs/shared/section_bar` variants if they do not have it (needed for "Global Tokens").
+
+If mode frames already exist on the page, a run leaves them and only repairs the width binding. To rebuild the illustration, remove the mode frames, their labels and the section bar first. The validation expects one mode frame per viewport mode, bound to `min_width` and as wide as that mode's `min_width`.
 
 The 5 tables:
 
@@ -44,6 +62,8 @@ viewport/
 | Header Variant | `04_component/molecule/header/<mode>.json` → `variant.$value` | literal string |
 
 Section title / purpose / guideline / subtitle / tier letter all come from `registry.json` → `tables[].section`. Single source of truth for human-readable copy; no Figma-side defaults.
+
+The tier subtitles ("Global Tokens", "Semantic Tokens", "Component Tokens") of the tier header bars come from `registry.json` → `tierSubtitles`. They are shown in the text layer `__sectionSubTitle` of the `section_bar` variants; the builder adds that layer (hidden by default) when a variant has none.
 
 The **foundation bar** description is the umbrella family-doc text at `01_global/mode_collection/viewport.json` → `ob.g.mode_collection.viewport.token_family_docs.$description`. Token Studio does not push family-docs to Figma variables (`export: false` on `kind: family_docs`), so the builder reads it Node-side. The foundation name (`Responsiveness`) comes from `registry.json` → `foundationName`.
 
