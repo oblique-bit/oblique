@@ -3,6 +3,7 @@ export {ObSchemaValidationService} from './schema-validation.service';
 export {ObSchemaValidateDirective} from './schema-validator';
 export {ObSchemaValidationDirective} from './schema-validation.directive';
 export {ObSchemaRequiredDirective} from './schema-required.directive';
+export {ObSchemaValidatorInstance} from './schema-validator.instance';
 export {draft07Convert} from './draft07-converter.decorator';
 export {ObMockSchemaRequiredDirective} from './_mocks/mock-schema-required.directive';
 export {ObMockSchemaValidateDirective} from './_mocks/mock-schema-validator';
