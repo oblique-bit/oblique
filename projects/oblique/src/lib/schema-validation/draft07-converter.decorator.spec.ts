@@ -59,5 +59,47 @@ describe('draft07Convert', () => {
 				required: [],
 			});
 		});
+
+		test('property with an empty required array is not marked as required', () => {
+			descriptor.value({
+				title: 'SampleSchemaValidation',
+				id: 'id',
+				type: 'object',
+				properties: {
+					alpha: {type: 'string', required: []},
+				},
+			});
+
+			expect(resultSchema).toEqual({
+				title: 'SampleSchemaValidation',
+				$id: 'id',
+				type: 'object',
+				required: [],
+				properties: {
+					alpha: {type: 'string', required: []},
+				},
+			});
+		});
+
+		test('property with a non-empty required array keeps its own required list', () => {
+			descriptor.value({
+				title: 'SampleSchemaValidation',
+				id: 'id',
+				type: 'object',
+				properties: {
+					alpha: {type: 'string', required: ['b']},
+				},
+			});
+
+			expect(resultSchema).toEqual({
+				title: 'SampleSchemaValidation',
+				$id: 'id',
+				type: 'object',
+				required: [],
+				properties: {
+					alpha: {type: 'string', required: ['b']},
+				},
+			});
+		});
 	});
 });
