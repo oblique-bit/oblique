@@ -133,8 +133,25 @@ class TestNestedTemplateComponent {
 	};
 }
 
+@Component({
+	imports: [FormsModule, ReactiveFormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatInput],
+	template: `<form [obSchemaValidation]="schema" [formGroup]="form">
+		<div formArrayName="items">
+			<input matInput obSchemaValidate type="text" [formControlName]="0" />
+		</div>
+	</form>`,
+})
+class TestNumericFormArrayComponent {
+	form = inject(FormBuilder).group({items: inject(FormBuilder).array([''])});
+	schema = {
+		title: 'SampleSchemaValidation',
+		type: 'object',
+		properties: {items: {type: 'array'}},
+	};
+}
+
 describe(ObSchemaRequiredDirective.name, () => {
-	let fixture: ComponentFixture<TestReactiveComponent | TestTemplateComponent>;
+	let fixture: ComponentFixture<TestReactiveComponent | TestTemplateComponent | TestNumericFormArrayComponent>;
 	let directive: ObSchemaRequiredDirective;
 
 	describe('Reactive form', () => {
@@ -237,6 +254,27 @@ describe(ObSchemaRequiredDirective.name, () => {
 
 		test('uses the model group path for required checks', () => {
 			expect(directive.required).toBe(true);
+		});
+	});
+
+	describe('Numeric form control name', () => {
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				imports: [ObSchemaRequiredDirective, TestNumericFormArrayComponent],
+			}).compileComponents();
+
+			fixture = TestBed.createComponent(TestNumericFormArrayComponent);
+			const debugElement = fixture.debugElement.query(By.directive(ObSchemaRequiredDirective));
+			directive = debugElement.injector.get(ObSchemaRequiredDirective);
+			fixture.detectChanges();
+		});
+
+		test('is required "false"', () => {
+			expect(directive.required).toBe(false);
+		});
+
+		test('span is not inserted', () => {
+			expect(fixture.debugElement.query(By.css('label > span'))).toBeNull();
 		});
 	});
 

@@ -20,7 +20,10 @@ export class ObSchemaRequiredDirective implements AfterViewInit, OnInit {
 	private readonly schemaValidation = inject(ObSchemaValidationDirective);
 
 	ngOnInit(): void {
-		this.required = this.schemaValidation.isRequired(this.control.name as string, this.modelGroup?.path ?? []);
+		this.required =
+			typeof this.control.name === 'string'
+				? this.schemaValidation.isRequired(this.control.name, this.modelGroup?.path ?? [])
+				: false;
 	}
 
 	ngAfterViewInit(): void {
