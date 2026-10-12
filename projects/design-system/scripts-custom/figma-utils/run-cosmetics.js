@@ -128,7 +128,7 @@
         {
           label: 'component colors',
           namePrefixes: ['ob/c/', 'ob/h/'], nameSuffixes: [], collectionNames: [], resolvedTypes: ['COLOR'],
-          currentScopes: null, setScopes: null, setHiddenFromPublishing: true,
+          currentScopes: null, setScopes: ['EFFECT_COLOR'], setHiddenFromPublishing: true,
         },
         {
           label: 'S1 and S2 color tiers',
