@@ -80,8 +80,10 @@
 		flex-wrap: wrap;
 		padding: variables.$ob-spacing-md variables.$ob-spacing-default;
 
-		.ob-service-navigation-list {
-			flex-wrap: wrap;
+		@include layout.ob-media-breakpoint-down(sm) {
+			.ob-service-navigation-list {
+				flex-wrap: wrap;
+			}
 		}
 
 		.ob-autocomplete .mat-mdc-form-field-subscript-wrapper {
