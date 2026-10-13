@@ -55,6 +55,22 @@ describe('DropZoneComponent', () => {
 		expect(component.uploadEvent instanceof OutputEmitterRef).toBe(true);
 	});
 
+	describe('accept', () => {
+		it('should not contain a type hint if all types are accepted', () => {
+			fixture.componentRef.setInput('accept', ['*']);
+			fixture.detectChanges();
+			const hintContainer = fixture.debugElement.query(By.css('.ob-drop-zone-hints'));
+			expect(hintContainer.nativeElement.textContent).not.toContain('i18n.oblique.file-upload.hint.type');
+		});
+
+		it('should contain a type hint with accepted types', () => {
+			fixture.componentRef.setInput('accept', ['.txt']);
+			fixture.detectChanges();
+			const hintContainer = fixture.debugElement.query(By.css('.ob-drop-zone-hints'));
+			expect(hintContainer.nativeElement.textContent).toContain('i18n.oblique.file-upload.hint.type .txt');
+		});
+	});
+
 	describe('addFiles', () => {
 		it('should filter out invalid files', () => {
 			jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([]);
