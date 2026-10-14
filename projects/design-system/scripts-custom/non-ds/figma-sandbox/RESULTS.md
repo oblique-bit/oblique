@@ -55,3 +55,18 @@ Left over from round 2:
 - `fixture/badge/resize` grows 12 px instead of 24 px (the component limits its width). It still differs from its main. Not changed.
 - 548 of 1,228 fixtures carry a width or height override on the root (all 405 resize fixtures and 143 others). A library change to the size of such a main is not visible in the fixture's own size, only in the layers inside.
 - Blind spots of the compare tool that remain: position and layer order beyond the sequence, layout settings other than root sizing (padding, spacing, mode, alignment, clipping), paints after the third and details of gradients and images, effect colour, offset and spread, per-side strokes, text alignment and range styles, vector shapes (only the image shows them), anything outside the fixtures (labels, frames, Known breaks), lazily loaded nested content in the end-of-life table (layer counts can vary).
+
+## First real library update (2026-10-14)
+
+A new library release (F1.3, published the same day) was waiting in the sandbox. "Update all" was clicked twice in the dialog (all pages switched on); after the second click the update button disappeared, so nothing is left to update. Before and after snapshots (`before-f13`, `after-f13-full`, warm and stable reads) with `lib/analyze-update.py`. The first click had already applied everything that the fixtures use: `after-f13` and `after-f13-full` are identical in data.
+
+Fixtures (1,244):
+- 1,237 kept the override of their own type: boolean 39 of 39, fill 404, hidden-layer 118, resize 405, instance-swap 16 (checked by the swapped nested component, not by the property value, which is a file-local id), component-swap 16, text 93 of 94, nested-variant 52 of 57, variant-after-override 94 of 95.
+- 7 lost: nested-variant in the end-of-life table (2), nav-tree, tabs and datepicker; text in the end-of-life table (1); variant-after-override in nav-tree (layers 49 to 39).
+- No main component key changed. 24 component families show some data difference (162 fixtures), 17 fixtures changed their layer count.
+
+Starter Kit pages in the same file (2,167 real instances, compared with the stored baseline of those pages): 622 instances were touched, 585 of them only because the values of swap properties are file-local node ids that change on an update (no loss). Real changes: 17 size changes, 12 instances whose main component changed, 12 property value changes and 8 property set changes, all in nav-tree and nav-tree rows. The other 1,500 instances are unchanged.
+
+Details: `snapshots/analysis-f13-full.json`, `snapshots/compare-f13-full.json`, `snapshots/starterkit-after-f13-summary.json`.
+
+Caveats: the end-of-life table fixtures vary in layer count between reads (lazy nested content), so a loss reported there needs a second look. One real update is one data point. The 7 lost overrides are gone in the sandbox, re-apply them before the next test or rebuild those fixtures.

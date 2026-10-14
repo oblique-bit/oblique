@@ -7,12 +7,23 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 const here = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SB = 'EEb38qX1Gxzq8XUCAvivge';
+const SB = process.env.SANDBOX_KEY || 'EEb38qX1Gxzq8XUCAvivge'; // set SANDBOX_KEY to snapshot another file with the same structure
 const [tag, ...flags] = process.argv.slice(2);
 const dir = path.join(here, 'snapshots', tag); fs.mkdirSync(path.join(dir, 'png'), { recursive: true });
-const ev = (script, args, out) => execFileSync('node', [path.join(here, 'lib/cdp-eval.mjs'), SB, path.join(here, 'scripts', script), ...(args ? ['--args', JSON.stringify(args)] : []), ...(out ? ['--out', out] : [])], { cwd: here, encoding: 'utf8', maxBuffer: 1 << 29 });
+const ev = (script, args, out, write) => execFileSync('node', [path.join(here, 'lib/cdp-eval.mjs'), SB, path.join(here, 'scripts', script), ...(write ? ['--write'] : []), ...(args ? ['--args', JSON.stringify(args)] : []), ...(out ? ['--out', out] : [])], { cwd: here, encoding: 'utf8', maxBuffer: 1 << 29 });
 const t0 = Date.now();
-ev('snapshot.js', null, path.join(dir, 'snapshot.json'));
+// Warm the file first and take the data snapshot until two reads in a row are identical: right after a Figma restart
+// nested library content loads lazily and a single read can be incomplete (false differences in a compare).
+const sleepSync = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+ev('warm.js', null, null, true);
+let stable = false, prev = null;
+for (let i = 0; i < 6 && !stable; i++) {
+  ev('snapshot.js', null, path.join(dir, 'snapshot.json'));
+  const cur = fs.readFileSync(path.join(dir, 'snapshot.json'), 'utf8');
+  stable = prev !== null && cur === prev; prev = cur;
+  if (!stable) { console.log(tag, 'read', i + 1, 'not yet stable, waiting'); sleepSync(8000); }
+}
+if (!stable) { console.error(tag, 'WARNING: data reads never became identical, the snapshot may be incomplete'); }
 const rows = JSON.parse(fs.readFileSync(path.join(dir, 'snapshot.json'), 'utf8'));
 console.log(tag, 'instances', rows.length, 'data in', Math.round((Date.now() - t0) / 1000), 's');
 let ids = rows.map((r) => r.id);

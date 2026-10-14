@@ -37,6 +37,10 @@ Figma Desktop started with the CDP debug port 9222 (`figma-ds-cli connect` patch
 
 ## What we learned (pitfalls)
 
+- Instance sizes set by script (fixed size on the instance root) are not kept after the file is saved and reopened: the instances come back as hug. Take the `before` snapshot from the saved state, that is after the file was reopened, and take `before` and `after` in the same session.
+
+- Right after Figma was restarted, nested library content of instances loads lazily: a read made too early is incomplete (hundreds of nodes missing, sizes off). `lib/snapshot.mjs` therefore visits every page first (`scripts/warm.js`) and repeats the read until two reads in a row are identical. Do the same in any new script that reads the whole file. Viewing an old version in the version history (preview) also gives the plugin API partial data: never measure in the preview, duplicate the version instead.
+
 - `importComponentByKeyAsync` and `importComponentSetByKeyAsync` hang when called over CDP (no plugin context). Instances of library components come from copy and paste: one component at a time, copied from the library, pasted into the sandbox, it arrives as an instance linked to the library. Never paste a whole component set (it becomes a LOCAL component set) and do not copy several at once (partly local components, icons not pasted at all). For a set, copy its default variant.
 - `getPluginData` fails without a plugin id: use `setSharedPluginData('sandbox', ...)`.
 - Only the active Figma tab has the `figma` global. `/json/activate` alone does not switch the tab reliably, `open -a Figma "<url>"` does.
