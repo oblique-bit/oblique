@@ -32,7 +32,11 @@ def kept(t, a, b):
     if t == 'nested-variant': return (nested_keys(a) == nested_keys(b), 'nested instances')
     # the value of an INSTANCE_SWAP property is a file-local node id that changes when the library update imports new component nodes, so compare the nested main component keys instead
     if t == 'instance-swap': return (nested_keys(a) == nested_keys(b), 'swapped nested component')
-    if t == 'variant-after-override': return (a['main'][0] == b['main'][0] and props_of(a, 'VARIANT') == props_of(b, 'VARIANT'), 'variant')
+    if t == 'variant-after-override':
+        # a renamed variant property keeps its value (search=true became filter=true), so compare the VALUES, and the pre-override too
+        same_variant = sorted(props_of(a, 'VARIANT').values()) == sorted(props_of(b, 'VARIANT').values())
+        pre_ok = (has_marker(b) if has_marker(a) else True) and len(hidden(b)) >= len(hidden(a))
+        return (same_variant and pre_ok, 'variant values and pre-override')
     if t == 'component-swap': return (a['main'][0] == b['main'][0], 'main component')
     return (None, 'unknown type')
 tab = defaultdict(Counter); lost = defaultdict(list); main_changed = []; struct = 0

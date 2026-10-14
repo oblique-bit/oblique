@@ -98,8 +98,10 @@ async function plan(inst, type, defs) {
       if (!set) continue;
       const d = set.componentPropertyDefinitions;
       for (const [k, v] of keys) {
-        const alt = ((d[k] && d[k].variantOptions) || []).find((o) => o !== v.value);
-        if (alt) return async () => { ni.setProperties({ [k]: alt }); return { ok: ni.componentProperties[k].value === alt, note: ni.name + ' ' + k }; };
+        // target = first option that is not the DEFAULT of the nested component, so applying it again changes nothing (idempotent)
+        const def = d[k] && d[k].defaultValue;
+        const alt = ((d[k] && d[k].variantOptions) || []).find((o) => o !== def);
+        if (alt) return async () => { if (ni.componentProperties[k].value !== alt) ni.setProperties({ [k]: alt }); return { ok: ni.componentProperties[k].value === alt, note: ni.name + ' ' + k + '=' + alt }; };
       }
     }
     return null;
@@ -129,6 +131,26 @@ async function plan(inst, type, defs) {
     return async () => { n.fills = [{ type: 'SOLID', color: { r: 1, g: 0, b: 1 } }]; return { ok: true, note: n.name }; };
   }
   return null;
+}
+// Re-apply mode: ARGS.reapply = [{ id, type, defs }]. Puts the override of a fixture back after a library update reset it.
+// Does not build frames or clones. For variant-after-override it re-applies the pre-override (text or hidden layer) only.
+if (ARGS.reapply) {
+  const out = [];
+  const withTimeout = (p, ms, label) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout ' + label)), ms))]);
+  for (const r of ARGS.reapply) {
+    try {
+      const inst = await withTimeout(figma.getNodeByIdAsync(r.id), 20000, 'get node');
+      if (!inst) { out.push({ id: r.id, error: 'missing' }); continue; }
+      await withTimeout(loadTextFonts(inst), 30000, 'fonts').catch(() => {});
+      let ap = null;
+      if (r.type === 'variant-after-override') ap = (await withTimeout(plan(inst, 'text', r.defs), 30000, 'plan text')) || (await withTimeout(plan(inst, 'hidden-layer', r.defs), 30000, 'plan hidden'));
+      else ap = await withTimeout(plan(inst, r.type, r.defs), 30000, 'plan ' + r.type);
+      if (!ap) { out.push({ id: r.id, name: inst.name, type: r.type, error: 'no way to apply' }); continue; }
+      const res = await withTimeout(ap(), 30000, 'apply');
+      out.push({ id: r.id, name: inst.name, type: r.type, ok: res.ok, note: res.note });
+    } catch (e) { out.push({ id: r.id, type: r.type, error: String(e.message || e).slice(0, 120) }); }
+  }
+  return JSON.stringify(out);
 }
 const ORDER = ['text', 'boolean', 'instance-swap', 'nested-variant', 'hidden-layer', 'variant-after-override', 'resize', 'fill'];
 const ICON_ORDER = ['resize', 'fill'];
