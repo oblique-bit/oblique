@@ -71,6 +71,18 @@ describe('DropZoneComponent', () => {
 		});
 	});
 
+	describe('multiple', () => {
+		it.each([
+			{case: '', multiple: true, attribute: ''},
+			{case: 'not', multiple: false, attribute: undefined},
+		])('should $case have the multiple attribute', ({multiple, attribute}) => {
+			fixture.componentRef.setInput('multiple', multiple);
+			fixture.detectChanges();
+			const inputElement = fixture.debugElement.query(By.css('.ob-drop-zone-text > input'));
+			expect(inputElement.attributes['multiple']).toBe(attribute);
+		});
+	});
+
 	describe('addFiles', () => {
 		it('should filter out invalid files', () => {
 			jest.spyOn(service, 'filterInvalidFiles').mockReturnValue([]);
