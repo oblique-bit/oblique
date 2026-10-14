@@ -364,8 +364,8 @@ describe(ObExternalLinkDirective.name, () => {
 		});
 
 		test.each([
-			{case: 'internal link', href: 'http://localhost:3001', isExternal: true},
-			{case: 'internal link', href: 'http://localhost', isExternal: false},
+			{case: 'internal link', href: `${window.location.host}:3001`, isExternal: true},
+			{case: 'internal link', href: window.location.origin, isExternal: false},
 			{case: 'external link', href: 'http://www.google.ch/', isExternal: true},
 			{case: 'internal link with href internal', href: 'internal', isExternal: false},
 			{case: 'internal link with href /', href: '/', isExternal: false},
