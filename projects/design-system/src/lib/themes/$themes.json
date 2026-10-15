@@ -1705,7 +1705,7 @@
     "selectedTokenSets": {
       "03_semantic/color/s2_emphasis/low": "enabled",
       "05_html/button/01_color_lean/light_low_cntx-none": "enabled",
-      "05_html/button/01_color_lean/light_low_cntx-selected": "enabled"
+      "05_html/button/01_color_lean/light_low_cntx-sunken": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color._docs.token_family_info": "38879f1c8cfa33a45c3f2e8f1d9662bf14e9d351",
@@ -3607,7 +3607,7 @@
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/light_low_cntx-selected": "enabled"
+      "05_html/button/01_color_lean/light_low_cntx-sunken": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:16074:59",
     "$figmaModeId": "16074:2",
