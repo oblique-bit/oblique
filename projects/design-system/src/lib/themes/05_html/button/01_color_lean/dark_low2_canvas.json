@@ -7,15 +7,15 @@
             "fg": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt_alpha.700}"
+                "$value": "{ob.p.color.cobalt.700}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt_alpha.700}"
+                "$value": "{ob.p.color.cobalt.700}"
               },
               "active": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt_alpha.700}"
+                "$value": "{ob.p.color.cobalt.700}"
               }
             },
             "bg": {
