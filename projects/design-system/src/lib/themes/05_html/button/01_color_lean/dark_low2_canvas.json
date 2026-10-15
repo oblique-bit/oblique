@@ -21,7 +21,7 @@
             "bg": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.100}"
+                "$value": "{ob.p.color.cobalt.50}"
               },
               "hover": {
                 "$extensions": {
@@ -110,15 +110,15 @@
             "border": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.50}"
+                "$value": "{ob.p.color.cobalt.100}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.50}"
+                "$value": "{ob.p.color.cobalt.100}"
               },
               "active": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.50}"
+                "$value": "{ob.p.color.cobalt.100}"
               }
             }
           },
