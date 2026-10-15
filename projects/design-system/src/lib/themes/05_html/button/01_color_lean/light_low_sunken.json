@@ -116,6 +116,20 @@
                 "$type": "color",
                 "$value": "{ob.p.color.basic.white}"
               }
+            },
+            "border": {
+              "rest": {
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.700}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.700}"
+              },
+              "active": {
+                "$type": "color",
+                "$value": "{ob.p.color.cobalt.700}"
+              }
             }
           },
           "tertiary": {
