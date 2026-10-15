@@ -4,7 +4,8 @@
     "types": ["jest", "node"],
     "target": "ES2016",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "composite": true
   },
   "include": ["**/*.spec.ts"],
   "exclude": []
