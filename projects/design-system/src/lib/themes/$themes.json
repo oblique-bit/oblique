@@ -3764,5 +3764,17 @@
     "group": "btn-standard",
     "$figmaCollectionId": "VariableCollectionId:16772:21131",
     "$figmaModeId": "16786:1"
+  },
+  {
+    "id": "9059e0c532454c8e177338d5f298c6fb07661043",
+    "name": "dark_high_sunken",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/modifier": "source",
+      "03_semantic/state-layer": "source",
+      "05_html/button/01_color_lean/dark_high_sunken": "enabled"
+    },
+    "$figmaVariableReferences": {},
+    "group": "btn-standard"
   }
 ]
