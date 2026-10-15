@@ -2,7 +2,7 @@
 
 Tool to test what a Figma library update does to instance overrides in consumer files.
 
-The Figma file "OB Legacy Sandbox" (key `EEb38qX1Gxzq8XUCAvivge`) is a copy of the Starter Kit (its 4 pages stay as they are) plus three pages built by these scripts:
+The Figma file "OB Legacy Sandbox" (its key is the `sandbox` setting) is a copy of the Starter Kit (its 4 pages stay as they are) plus three pages built by these scripts:
 - "Components": every library component as an instance. Per component one instance per override type it supports (`fixture/<component>/<type>`; types: text, boolean, instance-swap, nested-variant, hidden-layer, variant-after-override, resize, fill). Every instance carries at least one override.
 - "Swaps": component swaps (legacy to new, end of life to current). Overrides are set first, then the instance is swapped (`swap/<from>/<to>`). `snapshots/swap-results.json` records what survived.
 - "Known breaks": a table per fixture group with the expected result and the last result.
@@ -22,7 +22,17 @@ Test the tools: `node lib/selftest.mjs before` changes 5 fixtures on purpose (te
 
 ## Needs
 
-Figma Desktop started with the CDP debug port 9222 (`figma-ds-cli connect` patches and restarts it), the sandbox file open, Node 22 or newer (global WebSocket), python3. The library file (key `pyx5j9MVIIc3tTPitkc0Hv`) must be open only for inventory and paste runs. Scripts switch the Figma tab by themselves, so do not use Figma while they run. The Mac must not sleep (`caffeinate -i -s`).
+Figma Desktop started with the CDP debug port 9222 (`figma-ds-cli connect` patches and restarts it), the sandbox file open, Node 22 or newer (global WebSocket), python3. The library file (the `library` setting) must be open only for inventory and paste runs. Scripts switch the Figma tab by themselves, so do not use Figma while they run. The Mac must not sleep (`caffeinate -i -s`).
+
+## Settings
+
+The Figma file keys are not written in the code. Copy `config.example.json` to `config.json` (it is not committed) and fill in:
+- `library`: the file the components are copied from
+- `sandbox`: the file the instances are built in
+- `allowedWrite`: the only keys scripts may change (the sandbox, and a test library while changes are replayed on it)
+- `neverWrite`: keys that are refused for every write, for example the real library and the original starter kit
+
+`SANDBOX_CONFIG=<path>` points to another settings file, and `SANDBOX_KEY=<key>` lets `lib/snapshot.mjs` read another file with the same structure. `lib/cdp-eval.mjs --write` and `lib/cdp-key.mjs paste` refuse a key outside `allowedWrite` before anything is sent to Figma.
 
 ## Files
 

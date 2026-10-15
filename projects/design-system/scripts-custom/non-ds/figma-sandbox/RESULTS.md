@@ -1,6 +1,6 @@
 # Results of the build run, 2026-10-13
 
-File "OB Legacy Sandbox" (`EEb38qX1Gxzq8XUCAvivge`). Built and checked on 2026-10-13. Definitions of the checks: `checks.md`. How to use: `README.md`.
+File "OB Legacy Sandbox". Built and checked on 2026-10-13. Definitions of the checks: `checks.md`. How to use: `README.md`.
 
 ## Summary
 

@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
+import { loadConfig, mayWrite } from './config.mjs';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -17,6 +18,10 @@ const argIdx = rest.indexOf('--args');
 const ARGS = argIdx >= 0 ? rest[argIdx + 1] : 'null';
 const base = 'http://localhost:9222';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+if (write) {
+  const cfg = loadConfig();
+  if (!mayWrite(cfg, key)) { console.error('refused: --write is only allowed for the keys in allowedWrite of the settings, and never for neverWrite (' + key + ')'); process.exit(4); }
+}
 if (!key || !script) { console.error('usage: cdp-eval.mjs <fileKey> <script.js> [--write] [--out file]'); process.exit(2); }
 
 fs.appendFileSync(path.join(here, '..', 'run.log'),

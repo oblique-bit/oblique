@@ -1,0 +1,6 @@
+{
+  "library": "<file key of the library the components are copied from>",
+  "sandbox": "<file key of the file the instances are built in>",
+  "allowedWrite": ["<file key of the sandbox>", "<file key of a test library, only while changes are replayed on it>"],
+  "neverWrite": ["<file key of the real library>", "<file key of the original Starter Kit>"]
+}

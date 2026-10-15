@@ -3,9 +3,9 @@
 Written before the build (phase 1), definitions sharpened during the run. Results are in `RESULTS.md`, not here.
 
 Keys
-- sandbox: `EEb38qX1Gxzq8XUCAvivge` ("OB Legacy Sandbox", a copy of the Starter Kit; its 4 original pages must stay unchanged)
-- library: `pyx5j9MVIIc3tTPitkc0Hv` ("OB Library 16.0.0 – F1.2", read only)
-- original Starter Kit: `EYujtBkyWir9Skacd2hRg0` (never touched)
+- sandbox: the `sandbox` setting ("OB Legacy Sandbox", a copy of the Starter Kit; its 4 original pages must stay unchanged)
+- library: the `library` setting ("OB Library 16.0.0 – F1.2", read only)
+- original Starter Kit: listed in `neverWrite` (never touched)
 
 New pages in the sandbox: "Components", "Swaps", "Known breaks". Fixtures are instances with plugin data namespace "sandbox", key "sbType" (shared plugin data); names are `fixture/<component>/<override type>` and `swap/<from>/<to>`.
 

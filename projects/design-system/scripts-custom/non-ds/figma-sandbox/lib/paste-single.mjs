@@ -6,8 +6,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { loadConfig, mayWrite } from './config.mjs';
 const here = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const LIB = 'pyx5j9MVIIc3tTPitkc0Hv', SB = 'EEb38qX1Gxzq8XUCAvivge';
+const cfg = loadConfig();
+const LIB = cfg.library, SB = cfg.sandbox;
+if (!mayWrite(cfg, SB)) { console.error('refused: the sandbox is not in allowedWrite'); process.exit(4); }
 const LIMIT = Number(process.env.LIMIT || 100000);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 fs.appendFileSync(path.join(here, 'run.log'), `${new Date().toISOString()}\t${SB}\tpaste-single.mjs\tWRITE\n`);

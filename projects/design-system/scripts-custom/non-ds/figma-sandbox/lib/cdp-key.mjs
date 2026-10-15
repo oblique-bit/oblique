@@ -5,11 +5,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadConfig, mayWrite } from './config.mjs';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const [cmd, key] = process.argv.slice(2);
-const LIB = 'pyx5j9MVIIc3tTPitkc0Hv', SANDBOX = 'EEb38qX1Gxzq8XUCAvivge';
+const cfg = loadConfig();
+const LIB = cfg.library, SANDBOX = cfg.sandbox;
 if (cmd === 'copy' && key !== LIB) { console.error('refusing: copy only from the library'); process.exit(2); }
-if (cmd === 'paste' && key !== SANDBOX) { console.error('refusing: paste only into the sandbox'); process.exit(2); }
+if (cmd === 'paste' && (key !== SANDBOX || !mayWrite(cfg, key))) { console.error('refusing: paste only into the sandbox, and only if it is in allowedWrite'); process.exit(2); }
 fs.appendFileSync(path.join(here, '..', 'run.log'), `${new Date().toISOString()}\t${key}\tkey-${cmd}\t${cmd === 'paste' ? 'WRITE' : 'read'}\n`);
 let match = [];
 for (let w = 0; w < 8 && match.length !== 1; w++) {

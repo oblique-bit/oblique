@@ -6,8 +6,9 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { loadConfig, mayWrite } from './config.mjs';
 const here = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SB = process.env.SANDBOX_KEY || 'EEb38qX1Gxzq8XUCAvivge'; // set SANDBOX_KEY to snapshot another file with the same structure
+const SB = process.env.SANDBOX_KEY || loadConfig().sandbox; // SANDBOX_KEY snapshots another file with the same structure
 const [tag, ...flags] = process.argv.slice(2);
 const dir = path.join(here, 'snapshots', tag); fs.mkdirSync(path.join(dir, 'png'), { recursive: true });
 const ev = (script, args, out, write) => execFileSync('node', [path.join(here, 'lib/cdp-eval.mjs'), SB, path.join(here, 'scripts', script), ...(write ? ['--write'] : []), ...(args ? ['--args', JSON.stringify(args)] : []), ...(out ? ['--out', out] : [])], { cwd: here, encoding: 'utf8', maxBuffer: 1 << 29 });

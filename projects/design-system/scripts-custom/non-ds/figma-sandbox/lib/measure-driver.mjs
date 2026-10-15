@@ -3,8 +3,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { loadConfig, mayWrite } from './config.mjs';
 const here = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SB = 'EEb38qX1Gxzq8XUCAvivge';
+const SB = loadConfig().sandbox;
 const out = [];
 for (const page of ['Components', 'Swaps']) {
   let total = Infinity;
