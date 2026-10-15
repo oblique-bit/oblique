@@ -1,3 +1,10 @@
+# [16.0.2](https://github.com/oblique-bit/oblique/compare/16.0.1...16.0.2) (2026-10-15)
+
+## Bug Fixes
+
+- **file-upload:** show accepted file types in the drop zone ([e25b31bd](https://github.com/oblique-bit/oblique/commit/e25b31bd6fe412932e167a0c8d10d6e797e55ab3), OUI-4778)
+- **master-layout:** combine federal logo and application title into one link ([53f9efb5](https://github.com/oblique-bit/oblique/commit/53f9efb56fc69163625663d487cec80775d4d773), OUI-4744)
+
 # [16.0.1](https://github.com/oblique-bit/oblique/compare/16.0.0...16.0.1) (2026-10-08)
 
 ## Bug Fixes

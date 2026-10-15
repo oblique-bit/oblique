@@ -1,3 +1,9 @@
+# [16.0.2](https://github.com/oblique-bit/oblique/compare/16.0.1...16.0.2) (2026-10-15)
+
+## Bug Fixes
+
+- **schematics:** `ng-add` skip banner addition for the `eslint.config.mjs` file ([cf30e03e](https://github.com/oblique-bit/oblique/commit/cf30e03e77c8f59d1248ebda24afdb943f5f9133), OUI-4726)
+
 # [16.0.1](https://github.com/oblique-bit/oblique/compare/16.0.0...16.0.1) (2026-10-08)
 
 ## Bug Fixes
