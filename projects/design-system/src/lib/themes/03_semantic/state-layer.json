@@ -41,6 +41,16 @@
             "$type": "number",
             "$value": "{ob.p.modifier.750}"
           }
+        },
+        "primary-dark": {
+          "hover": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.800}"
+          },
+          "active": {
+            "$type": "number",
+            "$value": "{ob.p.modifier.750}"
+          }
         }
       }
     }

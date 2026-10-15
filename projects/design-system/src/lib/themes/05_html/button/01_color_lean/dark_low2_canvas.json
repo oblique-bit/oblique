@@ -27,8 +27,8 @@
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.state-layer.subtle.hover}",
+                      "type": "alpha",
+                      "value": "{ob.s.state-layer.primary-dark.hover}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }
@@ -41,8 +41,8 @@
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.state-layer.subtle.hover}",
+                      "type": "alpha",
+                      "value": "{ob.s.state-layer.primary-dark.active}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }

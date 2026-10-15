@@ -21,14 +21,14 @@
             "bg": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.cobalt.100}"
+                "$value": "{ob.p.color.cobalt.50}"
               },
               "hover": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.state-layer.soft.hover}",
+                      "type": "alpha",
+                      "value": "{ob.s.state-layer.primary-dark.hover}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }
@@ -41,8 +41,8 @@
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
-                      "type": "mix",
-                      "value": "{ob.s.state-layer.soft.active}",
+                      "type": "alpha",
+                      "value": "{ob.s.state-layer.primary-dark.active}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }
