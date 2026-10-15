@@ -206,9 +206,7 @@ describe('utilities', () => {
 				});
 
 				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
-					const translateService = TestBed.inject(TranslateService);
-
-					expect(translateService.currentLoader).toBeInstanceOf(ObMultiTranslateLoader);
+					expect(TestBed.inject(TranslateLoader)).toBeInstanceOf(ObMultiTranslateLoader);
 				});
 
 				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
@@ -358,8 +356,7 @@ describe('utilities', () => {
 				});
 
 				it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-					const translateService = TestBed.inject(TranslateService);
-					expect(translateService.compiler).toBeInstanceOf(TranslateNoOpCompiler);
+					expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 				});
 			});
 
@@ -595,7 +592,7 @@ describe('utilities', () => {
 				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
 
 				expect(translationConfiguration).toEqual({flatten: true});
-				expect(TestBed.inject(TranslateService).compiler).toBeInstanceOf(TranslateNoOpCompiler);
+				expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 		});
 
@@ -626,7 +623,7 @@ describe('utilities', () => {
 				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
 
 				expect(translationConfiguration).toEqual({flatten: true});
-				expect(TestBed.inject(TranslateService).currentLoader).toBeInstanceOf(TranslateNoOpLoader);
+				expect(TestBed.inject(TranslateLoader)).toBeInstanceOf(TranslateNoOpLoader);
 			});
 
 			describe('Date adapter', () => {
@@ -699,8 +696,7 @@ describe('utilities', () => {
 			});
 
 			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
-				const translateService = TestBed.inject(TranslateService);
-				expect(translateService.currentLoader).toBeInstanceOf(ObMultiTranslateLoader);
+				expect(TestBed.inject(TranslateLoader)).toBeInstanceOf(ObMultiTranslateLoader);
 			});
 
 			it('should provide "TRANSLATION_FILES"', () => {
@@ -770,8 +766,7 @@ describe('utilities', () => {
 			});
 
 			it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-				const translateService = TestBed.inject(TranslateService);
-				expect(translateService.compiler).toBeInstanceOf(TranslateNoOpCompiler);
+				expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 
 			describe('loader', () => {
@@ -830,8 +825,7 @@ describe('utilities', () => {
 			});
 
 			it('should use "TranslateNoOpCompiler " as "TranslateLoader"', () => {
-				const translateService = TestBed.inject(TranslateService);
-				expect(translateService.compiler instanceof TranslateNoOpCompiler).toBe(true);
+				expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 
 			describe('loader', () => {
@@ -926,8 +920,8 @@ describe('utilities', () => {
 				],
 			});
 
-			TestBed.inject(TranslateService)
-				.currentLoader.getTranslation('de')
+			TestBed.inject(TranslateLoader)
+				.getTranslation('de')
 				.subscribe(value => {
 					expect(value).toEqual({});
 					done();

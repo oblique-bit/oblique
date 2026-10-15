@@ -12,7 +12,7 @@ import {
 	ReactiveFormsModule,
 	Validators,
 } from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatAutocompleteModule, MatAutocompleteTrigger} from '@angular/material/autocomplete';
 import {MatAutocompleteHarness} from '@angular/material/autocomplete/testing';
 import {MatOptionHarness} from '@angular/material/core/testing';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -622,10 +622,17 @@ describe(ObAutocompleteComponent.name, () => {
 		});
 
 		describe('ngDoCheck', () => {
+			function getMatAutocompleteTrigger(): MatAutocompleteTrigger {
+				return parentFixture.debugElement
+					.query(By.directive(ObAutocompleteComponent))
+					.query(By.directive(MatAutocompleteTrigger))
+					.injector.get(MatAutocompleteTrigger);
+			}
+
 			it('should not call updatePosition on the first check after opening', async () => {
 				await obAutocompleteHarness.openAutocompletePanel();
 				parentFixture.detectChanges();
-				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger(), 'updatePosition');
+				const updatePositionSpy = jest.spyOn(getMatAutocompleteTrigger(), 'updatePosition');
 
 				component.ngDoCheck();
 
@@ -635,8 +642,11 @@ describe(ObAutocompleteComponent.name, () => {
 			it('should call updatePosition when the position changes while the panel stays open', async () => {
 				await obAutocompleteHarness.openAutocompletePanel();
 				parentFixture.detectChanges();
-				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger(), 'updatePosition');
-				const rectSpy = jest.spyOn(component.elementRef.nativeElement, 'getBoundingClientRect');
+				const updatePositionSpy = jest.spyOn(getMatAutocompleteTrigger(), 'updatePosition');
+				const hostElement: HTMLElement = parentFixture.debugElement.query(
+					By.directive(ObAutocompleteComponent)
+				).nativeElement;
+				const rectSpy = jest.spyOn(hostElement, 'getBoundingClientRect');
 
 				rectSpy.mockReturnValueOnce({top: 0, left: 0} as DOMRect);
 				component.ngDoCheck();
