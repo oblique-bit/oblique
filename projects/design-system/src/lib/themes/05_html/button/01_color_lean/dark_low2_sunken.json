@@ -28,7 +28,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "mix",
-                      "value": "{ob.s.state-layer.subtle.hover}",
+                      "value": "{ob.s.state-layer.soft.hover}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }
@@ -42,7 +42,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "mix",
-                      "value": "{ob.s.state-layer.subtle.hover}",
+                      "value": "{ob.s.state-layer.soft.active}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }
