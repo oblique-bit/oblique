@@ -45,7 +45,7 @@
         "primary-dark": {
           "hover": {
             "$type": "number",
-            "$value": "{ob.p.modifier.800}"
+            "$value": "{ob.p.modifier.850}"
           },
           "active": {
             "$type": "number",

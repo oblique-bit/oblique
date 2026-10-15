@@ -34,7 +34,7 @@
         },
         "650": {
           "$type": "number",
-          "$value": 0.65,
+          "$value": "0.65",
           "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
         },
         "750": {
@@ -42,9 +42,9 @@
           "$value": "0.75",
           "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
         },
-        "800": {
+        "850": {
           "$type": "number",
-          "$value": "0.8",
+          "$value": "0.85",
           "$description": "Modifier amount (0–1). Shared pool for mix ratio and alpha opacity."
         }
       }

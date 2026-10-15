@@ -113,7 +113,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "{ob.p.modifier.800}",
+                      "value": "{ob.p.modifier.750}",
                       "space": "srgb"
                     }
                   }
@@ -126,7 +126,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "{ob.p.modifier.800}",
+                      "value": "{ob.p.modifier.750}",
                       "space": "srgb"
                     }
                   }
@@ -139,7 +139,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "{ob.p.modifier.800}",
+                      "value": "{ob.p.modifier.750}",
                       "space": "srgb"
                     }
                   }
