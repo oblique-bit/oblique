@@ -21,9 +21,9 @@
 			<span id="ob-file-upload-caption">{{ "i18n.oblique.file-upload.caption" | translate }}</span>
 		</p>
 		<p class="ob-drop-zone-hints">
-			@if (!(accept | obAcceptAll)) {
+			@if (!(accept() | obAcceptAll)) {
 				{{ "i18n.oblique.file-upload.hint.type" | translate }}
-				@for (extension of accept; track extension) {
+				@for (extension of accept(); track extension) {
 					<code>{{ extension }}</code>
 					@if (!$last) {
 						,

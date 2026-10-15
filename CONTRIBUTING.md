@@ -91,7 +91,7 @@ A good commit message:
 - Concerns 1 and only one change, a change includes its tests, documentation and schematics
 - Keep all lines below 101 characters
 
-With the help of Huksy, all commits will be validated against these guidelines.
+With the help of Husky, all commits will be validated against these guidelines.
 
 ### <a name="format"></a> Format
 

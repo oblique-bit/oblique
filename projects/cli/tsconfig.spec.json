@@ -5,7 +5,8 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "ignoreDeprecations": "6.0",
-    "types": ["vitest/globals", "node"]
+    "types": ["vitest/globals", "node"],
+    "composite": true
   },
   "include": ["src/**/*.spec.ts"],
   "exclude": []
