@@ -1,0 +1,64 @@
+{
+	"ob": {
+		"p": {
+			"modifier": {
+				"token_family_docs": {
+					"description": {
+						"$type": "other",
+						"$value": "Amounts from 0 to 1 for the Tokens Studio color modifiers mix and alpha. The key is the amount in per mille, so 80 is 0.08 and 900 is 0.9. Referenced by state colors."
+					}
+				},
+				"80": {
+					"$type": "number",
+					"$value": "0.08",
+					"$description": "Role: Shared. Modifier amount 0.08 for a mix ratio or an alpha. Read by color modifiers."
+				},
+				"150": {
+					"$type": "number",
+					"$value": "0.15",
+					"$description": "Role: Shared. Modifier amount 0.15 for a mix ratio or an alpha. Read by color modifiers."
+				},
+				"180": {
+					"$type": "number",
+					"$value": "0.18",
+					"$description": "Role: Shared. Modifier amount 0.18 for a mix ratio or an alpha. Read by color modifiers."
+				},
+				"280": {
+					"$type": "number",
+					"$value": "0.28",
+					"$description": "Role: Shared. Modifier amount 0.28 for a mix ratio or an alpha. Read by color modifiers."
+				},
+				"350": {
+					"$type": "number",
+					"$value": "0.35",
+					"$description": "Role: Shared. Modifier amount 0.35 for a mix ratio or an alpha. Read by color modifiers."
+				},
+				"500": {
+					"$type": "number",
+					"$value": "0.5",
+					"$description": "Role: Shared. Modifier amount 0.5 for a mix ratio or an alpha. Read by color modifiers."
+				},
+				"650": {
+					"$type": "number",
+					"$value": "0.65",
+					"$description": "Role: Shared. Modifier amount 0.65 for a mix ratio or an alpha. Read by color modifiers."
+				},
+				"750": {
+					"$type": "number",
+					"$value": "0.75",
+					"$description": "Role: Shared. Modifier amount 0.75 for a mix ratio or an alpha. Read by color modifiers."
+				},
+				"800": {
+					"$type": "number",
+					"$value": "0.8",
+					"$description": "Role: Shared. Modifier amount 0.8 for a mix ratio or an alpha. Read by color modifiers."
+				},
+				"900": {
+					"$type": "number",
+					"$value": "0.9",
+					"$description": "Role: Shared. Modifier amount 0.9 for a mix ratio or an alpha. Read by color modifiers."
+				}
+			}
+		}
+	}
+}
