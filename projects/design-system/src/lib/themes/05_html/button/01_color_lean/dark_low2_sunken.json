@@ -109,37 +109,19 @@
             },
             "border": {
               "rest": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "alpha",
-                      "value": "{ob.p.modifier.750}",
-                      "space": "srgb"
-                    }
-                  }
-                },
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.white_alpha.700}"
               },
               "hover": {
-                "$extensions": {
-                  "studio.tokens": {
-                    "modify": {
-                      "type": "alpha",
-                      "value": "{ob.p.modifier.650}",
-                      "space": "srgb"
-                    }
-                  }
-                },
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.white_alpha.700}"
               },
               "active": {
                 "$extensions": {
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "{ob.p.modifier.650}",
+                      "value": "{ob.p.color.white_alpha.700}",
                       "space": "srgb"
                     }
                   }
