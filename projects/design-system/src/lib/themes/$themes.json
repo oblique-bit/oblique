@@ -1709,7 +1709,7 @@
     "selectedTokenSets": {
       "03_semantic/color/s2_emphasis/low": "enabled",
       "05_html/button/01_color_lean/light_low_level0": "enabled",
-      "05_html/button/01_color_lean/light_low_level1": "enabled"
+      "05_html/button/01_color_lean/light_low_level2": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color._docs.token_family_info": "38879f1c8cfa33a45c3f2e8f1d9662bf14e9d351",
@@ -1762,27 +1762,27 @@
       "ob.s2.color.interaction.contrast_levels.border.medium.inversity_flipped": "ad13c5f7c1bb722f4a49d38cec27614a20328572",
       "ob.s2.color.interaction.contrast_levels.border.low.inversity_normal": "d6e220778a651750286389b67291688c2702984d",
       "ob.s2.color.interaction.contrast_levels.border.low.inversity_flipped": "cf1d3fbb207a669ccbeb99797629eafb6d319209",
-      "ob.h.button.color.primary.fg.rest": "7cec1508c87104aa5be1f4ebd144c27d284cd361",
-      "ob.h.button.color.primary.fg.hover": "f9c657bbeedd3469d7b01893027a7d3d69cee52a",
-      "ob.h.button.color.primary.fg.active": "d8ad33ef6b7b3c66f0b4e50962660a2346c2a6f0",
-      "ob.h.button.color.primary.bg.rest": "d67dbd1f190179ae476673af591afa508f0ddfdc",
-      "ob.h.button.color.primary.bg.hover": "fb9a0f687eb7e6c8d65bc3213ce379ce3ed65e09",
-      "ob.h.button.color.primary.bg.active": "6b756b659548b8c7500a91c7caf33494619a891d",
-      "ob.h.button.color.secondary.fg.rest": "9dd90ba7470c15ccd4c2df8a1961b7975a3f45a9",
-      "ob.h.button.color.secondary.fg.hover": "5798d596e6de56be4c66ee6f2669f99350ee9911",
-      "ob.h.button.color.secondary.fg.active": "5c827e35934c883ef9aa7716cfc6f1d2394cb837",
-      "ob.h.button.color.secondary.bg.rest": "306b159ad4a3112eddc2d648b61d99b9906b4989",
-      "ob.h.button.color.secondary.bg.hover": "6325c3859b275b83269cd4b41fb40fa5f777aa71",
-      "ob.h.button.color.secondary.bg.active": "06a6edd046153c48292c2bad71dafc9d95f2fa90",
-      "ob.h.button.color.tertiary.fg.rest": "0a41761b90a5f33d941d62abff921c0aa4662288",
-      "ob.h.button.color.tertiary.fg.hover": "67a7d8e82da0cfdc24b2d9c6ed9638662d0b2636",
-      "ob.h.button.color.tertiary.fg.active": "ae4e8df71ee879e93b374adbfd7f6fcd8ba7cdc4",
-      "ob.h.button.color.tertiary.bg.rest": "fcdc64e6f1972773541066f4fee24b644ede6f29",
-      "ob.h.button.color.tertiary.bg.hover": "320ef7f44697582ef1a798d459b24900d4a3f3e0",
-      "ob.h.button.color.tertiary.bg.active": "21aeb208230af086e9afd1aca6c71fcf240c9d68",
-      "ob.h.button.color.secondary.border.rest": "f02c9d8ac49670d0408ad28b815a7d7f3a56f6bf",
-      "ob.h.button.color.secondary.border.hover": "40ae40cdcacea5a0055c4455ceae6fa35f149735",
-      "ob.h.button.color.secondary.border.active": "02224dfe02abb50285fc73c5a1c72543b33cd41f"
+      "ob.h.button.color.primary.fg.rest": "4e23e6c58759f4ec0b702c1d38877f8d14b8027e",
+      "ob.h.button.color.primary.fg.hover": "ef69676716a464bb685bae75407016a0199b0cf6",
+      "ob.h.button.color.primary.fg.active": "0b2bd0058025140b3330dea62af4981c5fc2ffb4",
+      "ob.h.button.color.primary.bg.rest": "ceabc9f21e75cdd366e704c986ffa2ede86c121a",
+      "ob.h.button.color.primary.bg.hover": "e4a14a4be5a679069aab6a805a50ba7ec2eb35cf",
+      "ob.h.button.color.primary.bg.active": "d27f31624274b9f27b08065a59fefd378db08f8d",
+      "ob.h.button.color.secondary.fg.rest": "137f72e6daba7fafbfc41349c141763ee845c2a9",
+      "ob.h.button.color.secondary.fg.hover": "5c126f32a3fec270fda5e94b858b313bf00c9b65",
+      "ob.h.button.color.secondary.fg.active": "c95a674015dde6f92cf3dc0da7ccc55663b12eed",
+      "ob.h.button.color.secondary.bg.rest": "adc81d2bfeeadc71461c81ca83691a6b5c173746",
+      "ob.h.button.color.secondary.bg.hover": "56cfa0e4f7f7973430c0de8cb699f3a6ce56dc43",
+      "ob.h.button.color.secondary.bg.active": "15f88960a597650aa2d431079d56c7bdebaa4b3b",
+      "ob.h.button.color.tertiary.fg.rest": "b35debd93a922520de36c96036dce05690c7f822",
+      "ob.h.button.color.tertiary.fg.hover": "a756b4859ae8409da78c90e84a9fa13cbe3e5937",
+      "ob.h.button.color.tertiary.fg.active": "de3be36d5ac2f85a720f386d64647f3e747b771a",
+      "ob.h.button.color.tertiary.bg.rest": "c51177975cb9c08d4469b86df0dd7c47740816cf",
+      "ob.h.button.color.tertiary.bg.hover": "1f1b8aef628169eb3c7dc5c37af225ac49d84ac0",
+      "ob.h.button.color.tertiary.bg.active": "8bd95f0e7e9eee87978c4ba8603c070d8b8a60eb",
+      "ob.h.button.color.secondary.border.rest": "e918cba0b423f1e6a30412a8c4062382fa8bbac1",
+      "ob.h.button.color.secondary.border.hover": "d5b097e031ef1840e69c8daf3e07614477c25c68",
+      "ob.h.button.color.secondary.border.active": "207827553ee89cd2a1556b14e073ca5abc4f5594"
     },
     "$figmaCollectionId": "VariableCollectionId:1:5",
     "$figmaModeId": "1:6",
@@ -3617,7 +3617,7 @@
   },
   {
     "id": "53eacf3d9109877c301f39546944647e09942219",
-    "name": "light_low_level1",
+    "name": "light_low_level2",
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3645,7 +3645,7 @@
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/light_low_level1": "enabled"
+      "05_html/button/01_color_lean/light_low_level2": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:16772:21131",
     "$figmaModeId": "16772:51",
@@ -3653,12 +3653,12 @@
   },
   {
     "id": "836ddde549c387c3d2f7213b9bda60c6a998a50c",
-    "name": "light_high_level1",
+    "name": "light_high_level2",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/light_high_level1": "enabled"
+      "05_html/button/01_color_lean/light_high_level2": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3689,12 +3689,12 @@
   },
   {
     "id": "8026e5159c9c45464099cd8916741e110f4d6515",
-    "name": "dark_low_level1",
+    "name": "dark_low_level2",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_low_level1": "enabled"
+      "05_html/button/01_color_lean/dark_low_level2": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3725,12 +3725,12 @@
   },
   {
     "id": "9059e0c532454c8e177338d5f298c6fb07661043",
-    "name": "dark_high_level1",
+    "name": "dark_high_level2",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_high_level1": "enabled"
+      "05_html/button/01_color_lean/dark_high_level2": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3797,12 +3797,12 @@
   },
   {
     "id": "91ef2aae026ce3b1035e6a5ec5442d636e916c00",
-    "name": "dark_low-depr_level1",
+    "name": "dark_low-depr_level2",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_low-depr_level1": "enabled"
+      "05_html/button/01_color_lean/dark_low-depr_level2": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
