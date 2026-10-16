@@ -42,7 +42,9 @@
       "01_global/mode_collection/ui_scale": "source",
       "01_global/mode_collection/density": "source",
       "01_global/mode_collection/typography_context": "source",
-      "01_global/mode_collection/motion": "source"
+      "01_global/mode_collection/motion": "source",
+      "02_primitive/modifier": "enabled",
+      "05_html/button/00_state_layer": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:8:2",
     "$figmaModeId": "8:0",
@@ -388,7 +390,10 @@
     "selectedTokenSets": {
       "02_primitive/color": "source",
       "01_global/component/footer/lightness/dynamic/light": "enabled",
-      "03_semantic/color/s1_lightness/light": "enabled"
+      "03_semantic/color/s1_lightness/light": "enabled",
+      "02_primitive/modifier": "source",
+      "05_html/button/00_state_layer": "source",
+      "05_html/button/01_color/lightness/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:8:3",
     "$figmaModeId": "8:1",
@@ -700,7 +705,10 @@
     "selectedTokenSets": {
       "02_primitive/color": "source",
       "01_global/component/footer/lightness/dynamic/dark": "enabled",
-      "03_semantic/color/s1_lightness/dark": "enabled"
+      "03_semantic/color/s1_lightness/dark": "enabled",
+      "02_primitive/modifier": "source",
+      "05_html/button/00_state_layer": "source",
+      "05_html/button/01_color/lightness/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:8:3",
     "$figmaModeId": "8:2",
@@ -1010,7 +1018,8 @@
     "name": "high",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/color/s2_emphasis/high": "enabled"
+      "03_semantic/color/s2_emphasis/high": "enabled",
+      "05_html/button/01_color/emphasis/high": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color._docs.token_family_info": "e35544518616685e7d2f7cd6a3775af9d5ca0c79",
@@ -1043,7 +1052,8 @@
     "name": "low",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/color/s2_emphasis/low": "enabled"
+      "03_semantic/color/s2_emphasis/low": "enabled",
+      "05_html/button/01_color/emphasis/low": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color._docs.token_family_info": "e35544518616685e7d2f7cd6a3775af9d5ca0c79",

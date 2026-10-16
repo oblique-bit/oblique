@@ -1,0 +1,120 @@
+{
+	"ob": {
+		"h": {
+			"button": {
+				"color": {
+					"token_family_docs": {
+						"description": {
+							"$type": "other",
+							"$value": "Button state colors for the high emphasis mode: primary, secondary and tertiary, each rest, hover and active. Aliases of the high branch of the lightness sets."
+						}
+					},
+					"primary": {
+						"bg": {
+							"rest": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest}"
+							},
+							"hover": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover}"
+							},
+							"active": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.bg.active}"
+							}
+						},
+						"fg": {
+							"rest": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.fg.rest}"
+							},
+							"hover": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.fg.hover}"
+							},
+							"active": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.fg.active}"
+							}
+						}
+					},
+					"secondary": {
+						"bg": {
+							"rest": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest}"
+							},
+							"hover": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover}"
+							},
+							"active": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active}"
+							}
+						},
+						"fg": {
+							"rest": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest}"
+							},
+							"hover": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover}"
+							},
+							"active": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active}"
+							}
+						},
+						"border": {
+							"rest": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.border.rest}"
+							},
+							"hover": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.border.hover}"
+							},
+							"active": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.border.active}"
+							}
+						}
+					},
+					"tertiary": {
+						"bg": {
+							"rest": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest}"
+							},
+							"hover": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover}"
+							},
+							"active": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active}"
+							}
+						},
+						"fg": {
+							"rest": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest}"
+							},
+							"hover": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover}"
+							},
+							"active": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active}"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

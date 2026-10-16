@@ -1,0 +1,56 @@
+{
+	"ob": {
+		"h": {
+			"button": {
+				"state_layer": {
+					"token_family_docs": {
+						"description": {
+							"$type": "other",
+							"$value": "Amounts for the Button state colors: how much of the overlay or mix color is applied on hover and active. Values come from the shared amount pool."
+						}
+					},
+					"subtle": {
+						"hover": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.80}"
+						},
+						"active": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.180}"
+						}
+					},
+					"soft": {
+						"hover": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.150}"
+						},
+						"active": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.280}"
+						}
+					},
+					"strong": {
+						"hover": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.350}"
+						},
+						"active": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.500}"
+						}
+					},
+					"fill_alpha": {
+						"hover": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.900}"
+						},
+						"active": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.750}"
+						}
+					}
+				}
+			}
+		}
+	}
+}
