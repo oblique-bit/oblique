@@ -1738,60 +1738,117 @@
             }
           }
         },
-        "backgound": {
-          "canvas": {
-            "$type": "color",
-            "$value": "{ob.p.color.cobalt.800}"
-          },
-          "sunken": {
-            "$type": "color",
-            "$value": "{ob.p.color.cobalt.700}"
-          },
-          "selected-neutral": {
-            "$type": "color",
-            "$value": "{ob.p.color.cobalt.600}"
-          },
-          "selected-emphasis": {
-            "$extensions": {
-              "studio.tokens": {
-                "modify": {
-                  "type": "mix",
-                  "value": "0.5",
-                  "space": "srgb",
-                  "color": "{ob.p.color.cobalt.900}"
-                }
-              }
+        "local": {
+          "neutral": {
+            "bg_level0": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.800}"
             },
-            "$type": "color",
-            "$value": "{ob.p.color.blue.500}"
+            "bg_level1": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.700}"
+            },
+            "bg_level2": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.600}"
+            },
+            "text": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.50}"
+            },
+            "text_secondary": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.100}"
+            }
+          },
+          "emphasis_high": {
+            "bg_level1": {
+              "$type": "color",
+              "$value": "{ob.p.color.steelblue.800}"
+            }
           },
           "info": {
-            "$extensions": {
-              "studio.tokens": {
-                "modify": {
-                  "type": "mix",
-                  "value": "0.3",
-                  "space": "srgb",
-                  "color": "{ob.s1.color.backgound.canvas} "
+            "bg_level1": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.3",
+                    "space": "srgb",
+                    "color": "{ob.s1.color.local.neutral.bg_level0}"
+                  }
                 }
-              }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.blue.900}"
             },
-            "$type": "color",
-            "$value": "{ob.p.color.blue.900}"
+            "bg_level2": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.1",
+                    "space": "srgb",
+                    "color": "{ob.s1.color.local.neutral.bg_level0}"
+                  }
+                }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.blue.900}"
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.100}"
+            }
           },
           "error": {
-            "$extensions": {
-              "studio.tokens": {
-                "modify": {
-                  "type": "mix",
-                  "value": "0.3",
-                  "space": "srgb",
-                  "color": "{ob.s1.color.backgound.canvas}"
+            "bg_level1": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "{ob.s1.color.local.neutral.bg_level0}",
+                    "space": "srgb"
+                  }
                 }
-              }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.red.900}"
             },
-            "$type": "color",
-            "$value": "{ob.p.color.red.900}"
+            "bg_level2": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.1",
+                    "space": "srgb",
+                    "color": "{ob.s1.color.local.neutral.bg_level0}"
+                  }
+                }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.red.900}"
+            }
+          },
+          "fatal": {
+            "bg_level10": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.100}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "obob": {
+    "s1": {
+      "color": {
+        "local": {
+          "neutral": {
+            "bg_level1_inverted": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.700}"
+            }
           }
         }
       }

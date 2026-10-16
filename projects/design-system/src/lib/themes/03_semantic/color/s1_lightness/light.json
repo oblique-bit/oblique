@@ -1747,30 +1747,78 @@
             }
           }
         },
-        "backgound": {
-          "canvas": {
-            "$type": "color",
-            "$value": "{ob.p.color.basic.white}"
+        "local": {
+          "neutral": {
+            "bg_level0": {
+              "$type": "color",
+              "$value": "{ob.p.color.basic.white}"
+            },
+            "bg_level1": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.50}"
+            },
+            "bg_level2": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.100}"
+            },
+            "text": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.900}"
+            },
+            "text_secondary": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.600}"
+            }
           },
-          "sunken": {
-            "$type": "color",
-            "$value": "{ob.p.color.cobalt.50}"
-          },
-          "selected-neutral": {
-            "$type": "color",
-            "$value": "{ob.p.color.cobalt.100}"
-          },
-          "selected-emphasis": {
-            "$type": "color",
-            "$value": "{ob.p.color.blue.100}"
+          "emphasis_high": {
+            "bg_level1": {
+              "$type": "color",
+              "$value": "{ob.p.color.steelblue.100}"
+            }
           },
           "info": {
-            "$type": "color",
-            "$value": "{ob.p.color.blue.100}"
+            "bg_level1": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.50}"
+            },
+            "bg_level2": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.100}"
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.800}"
+            }
           },
           "error": {
-            "$type": "color",
-            "$value": "{ob.p.color.red.100}"
+            "bg_level1": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.50}"
+            },
+            "bg_level2": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.100}"
+            }
+          },
+          "fatal": {
+            "bg_level10": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.900}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "obob": {
+    "s1": {
+      "color": {
+        "local": {
+          "neutral": {
+            "bg_level1_inverted": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.700}"
+            }
           }
         }
       }
