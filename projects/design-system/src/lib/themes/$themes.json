@@ -3509,7 +3509,7 @@
   },
   {
     "id": "18fea72ae6aa3b64bc2c1311832db56e4138d6f7",
-    "name": "dark_low_canvas",
+    "name": "dark_low-depr_canvas",
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3539,7 +3539,7 @@
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_low_canvas": "enabled"
+      "05_html/button/01_color_lean/dark_low-depr_canvas": "enabled"
     },
     "group": "btn-standard"
   },
@@ -3689,12 +3689,12 @@
   },
   {
     "id": "91ef2aae026ce3b1035e6a5ec5442d636e916c00",
-    "name": "dark_low_sunken",
+    "name": "dark_low-depr_sunken",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_low_sunken": "enabled"
+      "05_html/button/01_color_lean/dark_low-depr_sunken": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
