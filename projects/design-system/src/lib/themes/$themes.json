@@ -1708,8 +1708,8 @@
     },
     "selectedTokenSets": {
       "03_semantic/color/s2_emphasis/low": "enabled",
-      "05_html/button/01_color_lean/light_low_canvas": "enabled",
-      "05_html/button/01_color_lean/light_low_sunken": "enabled"
+      "05_html/button/01_color_lean/light_low_level0": "enabled",
+      "05_html/button/01_color_lean/light_low_level1": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.s2.color._docs.token_family_info": "38879f1c8cfa33a45c3f2e8f1d9662bf14e9d351",
@@ -3473,7 +3473,7 @@
   },
   {
     "id": "7c524794c69b2f754b323fa17a1a88f825d93a59",
-    "name": "light_low_canvas",
+    "name": "light_low_level0",
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3501,7 +3501,7 @@
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/light_low_canvas": "enabled"
+      "05_html/button/01_color_lean/light_low_level0": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:16772:21131",
     "$figmaModeId": "16772:46",
@@ -3509,7 +3509,7 @@
   },
   {
     "id": "18fea72ae6aa3b64bc2c1311832db56e4138d6f7",
-    "name": "dark_low-depr_canvas",
+    "name": "dark_low-depr_level0",
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3539,18 +3539,18 @@
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_low-depr_canvas": "enabled"
+      "05_html/button/01_color_lean/dark_low-depr_level0": "enabled"
     },
     "group": "btn-standard"
   },
   {
     "id": "628f4d7b7d411f8ab08245e9a1bb7499d17f32f5",
-    "name": "dark_low2_canvas",
+    "name": "dark_low_level0",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_low2_canvas": "enabled"
+      "05_html/button/01_color_lean/dark_low_level0": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:16772:21131",
     "$figmaModeId": "16772:48",
@@ -3581,7 +3581,7 @@
   },
   {
     "id": "8c738ab2d0d663058ea62bacc5c8a3ecc09c6239",
-    "name": "light_high_canvas",
+    "name": "light_high_level0",
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3609,7 +3609,7 @@
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/light_high_canvas": "enabled"
+      "05_html/button/01_color_lean/light_high_level0": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:16772:21131",
     "$figmaModeId": "16772:49",
@@ -3617,7 +3617,7 @@
   },
   {
     "id": "55b8666f84a07d1ffa57b7563ecadb1496522271",
-    "name": "dark_high_canvas",
+    "name": "dark_high_level0",
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3645,7 +3645,7 @@
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_high_canvas": "enabled"
+      "05_html/button/01_color_lean/dark_high_level0": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:16772:21131",
     "$figmaModeId": "16772:50",
@@ -3653,7 +3653,7 @@
   },
   {
     "id": "53eacf3d9109877c301f39546944647e09942219",
-    "name": "light_low_sunken",
+    "name": "light_low_level1",
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3681,7 +3681,7 @@
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/light_low_sunken": "enabled"
+      "05_html/button/01_color_lean/light_low_level1": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:16772:21131",
     "$figmaModeId": "16772:51",
@@ -3689,12 +3689,12 @@
   },
   {
     "id": "91ef2aae026ce3b1035e6a5ec5442d636e916c00",
-    "name": "dark_low-depr_sunken",
+    "name": "dark_low-depr_level1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_low-depr_sunken": "enabled"
+      "05_html/button/01_color_lean/dark_low-depr_level1": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3725,12 +3725,12 @@
   },
   {
     "id": "8026e5159c9c45464099cd8916741e110f4d6515",
-    "name": "dark_low2_sunken",
+    "name": "dark_low_level1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_low2_sunken": "enabled"
+      "05_html/button/01_color_lean/dark_low_level1": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3761,12 +3761,12 @@
   },
   {
     "id": "836ddde549c387c3d2f7213b9bda60c6a998a50c",
-    "name": "light_high_sunken",
+    "name": "light_high_level1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/light_high_sunken": "enabled"
+      "05_html/button/01_color_lean/light_high_level1": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3791,18 +3791,18 @@
       "ob.h.button.color.secondary.border.hover": "cfa5dcee55c7f42e202d7f8adae8dac1334bc3bd",
       "ob.h.button.color.secondary.border.active": "5dbe1bedf5486a1ca82d537447a74dd7a7dff99b"
     },
-    "group": "btn-standard",
     "$figmaCollectionId": "VariableCollectionId:16772:21131",
-    "$figmaModeId": "16786:1"
+    "$figmaModeId": "16786:1",
+    "group": "btn-standard"
   },
   {
     "id": "9059e0c532454c8e177338d5f298c6fb07661043",
-    "name": "dark_high_sunken",
+    "name": "dark_high_level1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
       "03_semantic/state-layer": "source",
-      "05_html/button/01_color_lean/dark_high_sunken": "enabled"
+      "05_html/button/01_color_lean/dark_high_level1": "enabled"
     },
     "$figmaVariableReferences": {
       "ob.h.button.color.primary.fg.rest": "bcba0326de7ca65974bb4ea7977c7e49068a1376",
@@ -3827,8 +3827,8 @@
       "ob.h.button.color.tertiary.bg.hover": "d1e366f594e1b922c632ca04530a1b3743098996",
       "ob.h.button.color.tertiary.bg.active": "3c30e646981d6100cd15b4aac4d83726d93527b5"
     },
-    "group": "btn-standard",
     "$figmaCollectionId": "VariableCollectionId:16772:21131",
-    "$figmaModeId": "16791:2"
+    "$figmaModeId": "16791:2",
+    "group": "btn-standard"
   }
 ]
