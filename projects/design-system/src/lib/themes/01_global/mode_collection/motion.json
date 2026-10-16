@@ -4,13 +4,16 @@
       "mode_collection": {
         "motion": {
           "token_family_docs": {
-            "$description": "Motion mode collection \u2014 animation preference. Modes: enabled (the base \u2014 no class is applied), disabled (.ob-motion-disabled). Each mode carries the CSS class string the application adds to <body> to activate it."
+            "$description": {
+              "$type": "other",
+              "$value": "Motion mode collection — animation preference. Modes: enabled (the base — no class is applied), disabled (.ob-motion-disabled). Each mode carries the CSS class string the application adds to <body> to activate it."
+            }
           },
           "enabled": {
             "selector": {
               "$type": "other",
               "$value": "default",
-              "$description": "enabled is the base motion mode \u2014 no class is applied. It is the first-paint default."
+              "$description": "enabled is the base motion mode — no class is applied. It is the first-paint default."
             }
           },
           "disabled": {
