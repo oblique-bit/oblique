@@ -46,27 +46,27 @@
               "padding": {
                 "vertical": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px}"
                 },
                 "horizontal": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.rem}"
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.sm.px}"
                 }
               }
             }
           },
-          "remove": {
+          "mini": {
             "spacing": {
               "padding": {
                 "vertical": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
-                  "$description": "Remove button requires zero padding."
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.xs.px}",
+                  "$description": "Mini button require compacted paddings"
                 },
                 "horizontal": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.none.rem}",
-                  "$description": "Remove button requires zero padding."
+                  "$value": "{ob.s.dimension.dynamic.ui_scale.element.xs.px}",
+                  "$description": "Mini button requires compacter paddings"
                 }
               }
             }
