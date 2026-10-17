@@ -32,7 +32,7 @@
         },
         "status-icon": {
           "variant": {
-            "$type": "other",
+            "$type": "text",
             "$value": "warning"
           }
         },
