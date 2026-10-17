@@ -57,15 +57,15 @@
             "fg": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.white_alpha.700}"
+                "$value": "{ob.p.color.cobalt.100}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.p.color.white_alpha.700}"
+                "$value": "{ob.p.color.cobalt.100}"
               },
               "active": {
                 "$type": "color",
-                "$value": "{ob.p.color.white_alpha.700}"
+                "$value": "{ob.p.color.cobalt.100}"
               }
             },
             "bg": {
@@ -104,7 +104,7 @@
                   }
                 },
                 "$type": "color",
-                "$value": "{ob.p.color.blue.500}"
+                "$value": "{ob.p.color.sublte.500}"
               }
             },
             "border": {
@@ -135,15 +135,15 @@
             "fg": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.cobalt.100}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.cobalt.100}"
               },
               "active": {
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.cobalt.100}"
               }
             },
             "bg": {
