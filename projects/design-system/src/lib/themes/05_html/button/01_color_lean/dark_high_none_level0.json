@@ -120,15 +120,15 @@
             "border": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.100}"
+                "$value": "{ob.p.color.white_alpha.700}"
               },
               "hover": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.100}"
+                "$value": "{ob.p.color.white_alpha.700}"
               },
               "active": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.100}"
+                "$value": "{ob.p.color.white_alpha.700}"
               }
             }
           },
