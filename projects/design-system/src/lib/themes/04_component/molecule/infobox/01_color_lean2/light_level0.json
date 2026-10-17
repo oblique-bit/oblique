@@ -1,0 +1,82 @@
+{
+  "ob": {
+    "c": {
+      "infobox": {
+        "color": {
+          "info": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.50}"
+            },
+            "text": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.700}"
+            },
+            "status-icon": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.800}"
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.p.color.blue.800}"
+            }
+          },
+          "error": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.50}"
+            },
+            "text": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.700}"
+            },
+            "status-icon": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.800}"
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.800}"
+            }
+          },
+          "warning": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.p.color.orange.50}"
+            },
+            "text": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.700}"
+            },
+            "status-icon": {
+              "$type": "color",
+              "$value": "{ob.p.color.orange.800}"
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.p.color.orange.800}"
+            }
+          },
+          "success": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.p.color.green.50}"
+            },
+            "text": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.700}"
+            },
+            "status-icon": {
+              "$type": "color",
+              "$value": "{ob.p.color.green.700}"
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.p.color.green.700}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
