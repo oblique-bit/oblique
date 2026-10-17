@@ -19,6 +19,18 @@
             "$type": "color",
             "$value": "{ob.p.color.red.800}"
           }
+        },
+        "status-icon": {
+          "variant": {
+            "$type": "other",
+            "$value": "error"
+          }
+        },
+        "title": {
+          "default-text": {
+            "$type": "text",
+            "$value": "Error"
+          }
         }
       }
     }

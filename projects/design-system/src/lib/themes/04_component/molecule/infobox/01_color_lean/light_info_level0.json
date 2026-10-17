@@ -19,6 +19,18 @@
             "$type": "color",
             "$value": "{ob.p.color.blue.800}"
           }
+        },
+        "title": {
+          "default-text": {
+            "$type": "text",
+            "$value": "Information"
+          }
+        },
+        "status-icon": {
+          "variant": {
+            "$type": "other",
+            "$value": "info"
+          }
         }
       }
     }
