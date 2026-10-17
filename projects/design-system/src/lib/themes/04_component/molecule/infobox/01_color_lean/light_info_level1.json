@@ -1,0 +1,26 @@
+{
+  "ob": {
+    "c": {
+      "infobox": {
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "{ob.p.color.blue.100}"
+          },
+          "text": {
+            "$type": "color",
+            "$value": "{ob.p.color.cobalt.700}"
+          },
+          "status-icon": {
+            "$type": "color",
+            "$value": "{ob.p.color.blue.800}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{ob.p.color.blue.800}"
+          }
+        }
+      }
+    }
+  }
+}

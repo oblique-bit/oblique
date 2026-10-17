@@ -54,6 +54,15 @@
     "03_semantic/state-layer",
     "04_component/atom/icon/01_color",
     "04_component/atom/icon/02_layout",
+    "04_component/molecule/infobox/01_color_lean/light_info_level0",
+    "04_component/molecule/infobox/01_color_lean/light_info_level1",
+    "04_component/molecule/infobox/01_color_lean/light_error_level0",
+    "04_component/molecule/infobox/01_color_lean/light_warning_level0",
+    "04_component/molecule/infobox/01_color_lean/light_success_level0",
+    "04_component/molecule/infobox/01_color_lean/dark_info_level0",
+    "04_component/molecule/infobox/01_color_lean/dark_error_level0",
+    "04_component/molecule/infobox/01_color_lean/dark_warning_level0",
+    "04_component/molecule/infobox/01_color_lean/dark_success_level0",
     "04_component/molecule/header/xl",
     "04_component/molecule/header/xs",
     "04_component/molecule/header/sm",
@@ -83,7 +92,6 @@
     "05_html/button/02_typography",
     "05_html/button/04_layout",
     "05_html/button/06_motion",
-    "05_html/button/07_reference_only",
-    "05_html/infobox/01_color_lean/light_info"
+    "05_html/button/07_reference_only"
   ]
 }

@@ -57,7 +57,7 @@
             "fg": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.basic.white}"
+                "$value": "{ob.p.color.cobalt.100}"
               },
               "hover": {
                 "$type": "color",

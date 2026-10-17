@@ -1,0 +1,36 @@
+{
+  "ob": {
+    "c": {
+      "infobox": {
+        "color": {
+          "bg": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "mix",
+                  "value": "0.3",
+                  "space": "srgb",
+                  "color": "{ob.p.color.cobalt.800} "
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{ob.p.color.red.900}"
+          },
+          "text": {
+            "$type": "color",
+            "$value": "{ob.p.color.cobalt.100}"
+          },
+          "status-icon": {
+            "$type": "color",
+            "$value": "{ob.p.color.red.200}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{ob.p.color.red.200}"
+          }
+        }
+      }
+    }
+  }
+}
