@@ -4117,5 +4117,15 @@
     },
     "group": "infobox_v2",
     "$figmaVariableReferences": {}
+  },
+  {
+    "id": "8eaa8565f6399be60e3e374459120b147ef86134",
+    "name": "dark_level1",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "04_component/molecule/infobox/01_color_lean2/dark_level1": "enabled"
+    },
+    "group": "infobox_v2",
+    "$figmaVariableReferences": {}
   }
 ]

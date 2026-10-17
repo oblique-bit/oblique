@@ -5,74 +5,114 @@
         "color": {
           "info": {
             "bg": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.4",
+                    "space": "srgb",
+                    "color": "{ob.p.color.cobalt.800}"
+                  }
+                }
+              },
               "$type": "color",
-              "$value": "{ob.p.color.blue.50}"
+              "$value": "{ob.p.color.blue.900}"
             },
             "text": {
               "$type": "color",
-              "$value": "{ob.p.color.cobalt.700}"
+              "$value": "{ob.p.color.cobalt.100}"
             },
             "status-icon": {
               "$type": "color",
-              "$value": "{ob.p.color.blue.800}"
+              "$value": "{ob.p.color.blue.200}"
             },
             "border": {
               "$type": "color",
-              "$value": "{ob.p.color.blue.800}"
+              "$value": "{ob.p.color.blue.200}"
             }
           },
           "error": {
             "bg": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.4",
+                    "space": "srgb",
+                    "color": "{ob.p.color.cobalt.800}"
+                  }
+                }
+              },
               "$type": "color",
-              "$value": "{ob.p.color.red.50}"
+              "$value": "{ob.p.color.red.900}"
             },
             "text": {
               "$type": "color",
-              "$value": "{ob.p.color.cobalt.700}"
+              "$value": "{ob.p.color.cobalt.100}"
             },
             "status-icon": {
               "$type": "color",
-              "$value": "{ob.p.color.red.800}"
+              "$value": "{ob.p.color.red.100}"
             },
             "border": {
               "$type": "color",
-              "$value": "{ob.p.color.red.800}"
+              "$value": "{ob.p.color.red.100}"
             }
           },
           "warning": {
             "bg": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.4",
+                    "space": "srgb",
+                    "color": "{ob.p.color.cobalt.800}"
+                  }
+                }
+              },
               "$type": "color",
-              "$value": "{ob.p.color.orange.50}"
+              "$value": "{ob.p.color.orange.900}"
             },
             "text": {
               "$type": "color",
-              "$value": "{ob.p.color.cobalt.700}"
+              "$value": "{ob.p.color.cobalt.100}"
             },
             "status-icon": {
               "$type": "color",
-              "$value": "{ob.p.color.orange.800}"
+              "$value": "{ob.p.color.orange.200}"
             },
             "border": {
               "$type": "color",
-              "$value": "{ob.p.color.orange.800}"
+              "$value": "{ob.p.color.orange.200}"
             }
           },
           "success": {
             "bg": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.4",
+                    "space": "srgb",
+                    "color": "{ob.p.color.cobalt.800}"
+                  }
+                }
+              },
               "$type": "color",
-              "$value": "{ob.p.color.green.50}"
+              "$value": "{ob.p.color.green.900}"
             },
             "text": {
               "$type": "color",
-              "$value": "{ob.p.color.cobalt.700}"
+              "$value": "{ob.p.color.cobalt.100}"
             },
             "status-icon": {
               "$type": "color",
-              "$value": "{ob.p.color.green.700}"
+              "$value": "{ob.p.color.green.100}"
             },
             "border": {
               "$type": "color",
-              "$value": "{ob.p.color.green.700}"
+              "$value": "{ob.p.color.green.100}"
             }
           }
         }
