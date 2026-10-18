@@ -114,6 +114,24 @@
               "$type": "color",
               "$value": "{ob.p.color.green.100}"
             }
+          },
+          "fatal": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.100}"
+            },
+            "text": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.800}"
+            },
+            "status-icon": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.800}"
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.800}"
+            }
           }
         }
       }

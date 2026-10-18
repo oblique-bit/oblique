@@ -74,6 +74,24 @@
               "$type": "color",
               "$value": "{ob.p.color.green.700}"
             }
+          },
+          "fatal": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.900}"
+            },
+            "text": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.100}"
+            },
+            "status-icon": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.100}"
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.p.color.red.100}"
+            }
           }
         }
       }
