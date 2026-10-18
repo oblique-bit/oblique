@@ -23,11 +23,11 @@
           },
           "status-icon": {
             "$type": "color",
-            "$value": "{ob.p.color.orange.100}"
+            "$value": "{ob.p.color.orange.300}"
           },
           "border": {
             "$type": "color",
-            "$value": "{ob.p.color.orange.100}"
+            "$value": "{ob.p.color.orange.300}"
           }
         },
         "status-icon": {

@@ -24,11 +24,11 @@
             },
             "status-icon": {
               "$type": "color",
-              "$value": "{ob.p.color.blue.100}"
+              "$value": "{ob.p.color.blue.200}"
             },
             "border": {
               "$type": "color",
-              "$value": "{ob.p.color.blue.100}"
+              "$value": "{ob.p.color.blue.200}"
             }
           },
           "error": {
@@ -52,11 +52,11 @@
             },
             "status-icon": {
               "$type": "color",
-              "$value": "{ob.p.color.red.100}"
+              "$value": "{ob.p.color.red.300}"
             },
             "border": {
               "$type": "color",
-              "$value": "{ob.p.color.red.100}"
+              "$value": "{ob.p.color.red.300}"
             }
           },
           "warning": {
@@ -80,11 +80,11 @@
             },
             "status-icon": {
               "$type": "color",
-              "$value": "{ob.p.color.orange.100}"
+              "$value": "{ob.p.color.orange.300}"
             },
             "border": {
               "$type": "color",
-              "$value": "{ob.p.color.orange.100}"
+              "$value": "{ob.p.color.orange.300}"
             }
           },
           "success": {
@@ -108,11 +108,11 @@
             },
             "status-icon": {
               "$type": "color",
-              "$value": "{ob.p.color.green.100}"
+              "$value": "{ob.p.color.green.300}"
             },
             "border": {
               "$type": "color",
-              "$value": "{ob.p.color.green.100}"
+              "$value": "{ob.p.color.green.300}"
             }
           },
           "fatal": {
