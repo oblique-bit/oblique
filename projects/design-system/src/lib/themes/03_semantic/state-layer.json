@@ -2,24 +2,24 @@
   "ob": {
     "s": {
       "state-layer": {
-        "subtle": {
+        "minimal": {
           "hover": {
             "$type": "number",
             "$value": "{ob.p.modifier.80}"
           },
           "active": {
             "$type": "number",
-            "$value": "{ob.p.modifier.180}"
+            "$value": "{ob.p.modifier.150}"
           }
         },
-        "soft": {
+        "subtle": {
           "hover": {
             "$type": "number",
             "$value": "{ob.p.modifier.150}"
           },
           "active": {
             "$type": "number",
-            "$value": "{ob.p.modifier.280}"
+            "$value": "{ob.p.modifier.250}"
           }
         },
         "strong": {
@@ -32,7 +32,7 @@
             "$value": "{ob.p.modifier.500}"
           }
         },
-        "inverted": {
+        "intence": {
           "hover": {
             "$type": "number",
             "$value": "{ob.p.modifier.500}"
@@ -42,7 +42,7 @@
             "$value": "{ob.p.modifier.750}"
           }
         },
-        "primary-dark": {
+        "fade": {
           "hover": {
             "$type": "number",
             "$value": "{ob.p.modifier.800}"

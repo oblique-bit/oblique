@@ -88,7 +88,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "{ob.s.state-layer.inverted.hover}",
+                      "value": "{ob.s.state-layer.intence.hover}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }
@@ -107,7 +107,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "{ob.s.state-layer.inverted.active}",
+                      "value": "{ob.s.state-layer.intence.active}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }
@@ -157,7 +157,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "{ob.s.state-layer.inverted.hover}",
+                      "value": "{ob.s.state-layer.intence.hover}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }
@@ -171,7 +171,7 @@
                   "studio.tokens": {
                     "modify": {
                       "type": "alpha",
-                      "value": "{ob.s.state-layer.inverted.active}",
+                      "value": "{ob.s.state-layer.intence.active}",
                       "space": "srgb",
                       "color": "{ob.p.color.cobalt.900}"
                     }
