@@ -14,7 +14,7 @@ describe('translation', () => {
 			expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({flatten: true});
 		});
 
-		it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
+		it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
 			expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 		});
 	});
@@ -32,7 +32,7 @@ describe('translation', () => {
 			});
 		});
 
-		it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
+		it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
 			expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 		});
 	});

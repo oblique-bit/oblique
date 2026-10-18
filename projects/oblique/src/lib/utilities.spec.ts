@@ -355,7 +355,7 @@ describe('utilities', () => {
 					});
 				});
 
-				it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
+				it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
 					expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 				});
 			});
@@ -765,7 +765,7 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
+			it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
 				expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 
@@ -824,7 +824,7 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should use "TranslateNoOpCompiler " as "TranslateLoader"', () => {
+			it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
 				expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 
