@@ -7,7 +7,7 @@ import {obFormatDatetime} from '../date-adapter/date-formatters';
 @Component({
 	selector: 'ob-date',
 	templateUrl: './date.component.html',
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObDateComponent {
 	readonly date = input.required<string | Date | number>();
