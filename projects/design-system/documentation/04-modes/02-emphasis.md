@@ -51,8 +51,7 @@ Components → S2 Emphasis → S1 Lightness → Primitives
 ### **High Emphasis (high.json)**
 **Use for:**
 - Primary buttons and call-to-action elements
-- Critical alerts and error messages
-- Active navigation states
+- Active navigation states (not in header and footer, see "Contexts with a Fixed Emphasis")
 - Primary headings and important content
 - Focus states and selected items
 
@@ -76,6 +75,19 @@ Components → S2 Emphasis → S1 Lightness → Primitives
 - Supports primary content without competing
 - Maintains accessibility while being unobtrusive
 
+## **Contexts with a Fixed Emphasis**
+
+Some components always use **low** emphasis for the interaction colors of the buttons and text links inside them. High emphasis (the saturated brand color) is never used there.
+
+| Context | Why low emphasis |
+|---|---|
+| **Header, footer** | Users expect links and buttons in these places. This is an established standard, so marking them with color is not needed. It would add too much color where users expect monochrome menu items. |
+| **Infobox** | It has strong status background colors. A colored button on top of them causes a color clash and more cognitive load. Monochrome buttons work better. |
+
+So high emphasis on a status surface (for example the fatal surface with a blue primary button) is never possible and never recommended.
+
+**How to apply it:** the component sets the mode `emphasis = low` on its root, in Figma on the root frame of the main component and in HTML on the root element. Everything inside inherits the mode, so the Button and Link tokens stay unchanged.
+
 ## **Design Patterns**
 
 ### **Visual Hierarchy**
@@ -86,10 +98,10 @@ Low Emphasis: Secondary Actions → Supporting Information → Inactive States
 ```
 
 ### **Context Usage**
-- **Navigation**: High emphasis for active page, low emphasis for inactive links
+- **Navigation**: High emphasis for active page, low emphasis for inactive links (header and footer are always low)
 - **Forms**: High emphasis for submit button, low emphasis for cancel/back
 - **Cards**: High emphasis for primary content, low emphasis for metadata
-- **Alerts**: High emphasis for warnings/errors, low emphasis for informational
+- **Alerts (Infobox)**: always low emphasis, the status colors already carry the message
 
 ## **Implementation Examples**
 
@@ -139,7 +151,6 @@ Low Emphasis: Secondary Actions → Supporting Information → Inactive States
 - User needs immediate attention or action
 - Critical information that affects user decisions
 - Primary pathway through the interface
-- Error states requiring user intervention
 
 ### **When to Use Low Emphasis**
 - Supporting information that aids but doesn't drive decisions
