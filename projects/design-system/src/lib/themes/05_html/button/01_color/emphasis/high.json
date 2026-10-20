@@ -6,110 +6,236 @@
 					"token_family_docs": {
 						"description": {
 							"$type": "other",
-							"$value": "Button state colors for the high emphasis mode: primary, secondary and tertiary, each rest, hover and active. Aliases of the high branch of the lightness sets."
+							"$value": "Button state colors for the high emphasis mode: primary, secondary and tertiary, each rest, hover and active. Aliases of the high branch of the lightness sets, each with the inversity pair."
 						}
 					},
 					"primary": {
 						"bg": {
 							"rest": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest.inversity_flipped}"
+								}
 							},
 							"hover": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover.inversity_flipped}"
+								}
 							},
 							"active": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.bg.active}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.bg.active.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.bg.active.inversity_flipped}"
+								}
 							}
 						},
 						"fg": {
 							"rest": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.fg.rest}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.fg.rest.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.fg.rest.inversity_flipped}"
+								}
 							},
 							"hover": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.fg.hover}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.fg.hover.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.fg.hover.inversity_flipped}"
+								}
 							},
 							"active": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.fg.active}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.fg.active.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.primary.fg.active.inversity_flipped}"
+								}
 							}
 						}
 					},
 					"secondary": {
 						"bg": {
 							"rest": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest.inversity_flipped}"
+								}
 							},
 							"hover": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.inversity_flipped}"
+								}
 							},
 							"active": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.inversity_flipped}"
+								}
 							}
 						},
 						"fg": {
 							"rest": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest.inversity_flipped}"
+								}
 							},
 							"hover": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover.inversity_flipped}"
+								}
 							},
 							"active": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active.inversity_flipped}"
+								}
 							}
 						},
 						"border": {
 							"rest": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.border.rest}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.border.rest.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.border.rest.inversity_flipped}"
+								}
 							},
 							"hover": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.border.hover}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.border.hover.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.border.hover.inversity_flipped}"
+								}
 							},
 							"active": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.border.active}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.border.active.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.border.active.inversity_flipped}"
+								}
 							}
 						}
 					},
 					"tertiary": {
 						"bg": {
 							"rest": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest.inversity_flipped}"
+								}
 							},
 							"hover": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.inversity_flipped}"
+								}
 							},
 							"active": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.inversity_flipped}"
+								}
 							}
 						},
 						"fg": {
 							"rest": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest.inversity_flipped}"
+								}
 							},
 							"hover": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover.inversity_flipped}"
+								}
 							},
 							"active": {
-								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active}"
+								"inversity_normal": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active.inversity_normal}"
+								},
+								"inversity_flipped": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active.inversity_flipped}"
+								}
 							}
 						}
 					}
