@@ -33,7 +33,7 @@ export function draft07Convert(target, propertyKey: string, descriptor: Property
 	}
 
 	function arrayifyRequired(property, propertyName, schema): void {
-		if (property.required && !property.required.length) {
+		if (property.required && !Array.isArray(property.required)) {
 			schema.required.push(propertyName);
 			delete property.required;
 		}
