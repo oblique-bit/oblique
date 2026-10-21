@@ -11,12 +11,14 @@ import {ObColumnPanelDirective, ObColumnPanelDirective as ObRealColumnPanelDirec
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObTColumnState} from './column-layout.model';
 
-let resizerCallback: (entries: {contentRect: {height: number}}[]) => void;
+type ResizeCallback = (entries: {contentRect: {height: number}}[]) => void;
+const resizeCallbacks = new Map<Element | null, ResizeCallback>();
+
 class ResizeObserver {
-	constructor(public callback) {
-		resizerCallback = callback;
+	constructor(public callback) {}
+	observe(target: Element | null): void {
+		resizeCallbacks.set(target, this.callback);
 	}
-	observe(): void {}
 	unobserve(): void {}
 	disconnect(): void {}
 }
@@ -181,6 +183,24 @@ describe(ObColumnLayoutComponent.name, () => {
 					expect(element.nativeElement.style.top).toBe(top);
 				});
 			});
+
+			describe('with a resize of the layout', () => {
+				test('that it is centered on the new height without a change detection', () => {
+					jest
+						.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect')
+						.mockReturnValue({top: 0, height: 100});
+					resizeCallbacks.get(fixture.debugElement.nativeElement)([{contentRect: {height: 100}}]);
+					expect(element.nativeElement.style.top).toBe('50px');
+				});
+
+				test('that it is centered on the new top of the layout', () => {
+					jest
+						.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect')
+						.mockReturnValue({top: 10, height: 759});
+					resizeCallbacks.get(fixture.debugElement.nativeElement)([{contentRect: {height: 759}}]);
+					expect(element.nativeElement.style.top).toBe('379px');
+				});
+			});
 		});
 	});
 
@@ -305,7 +325,9 @@ describe(ObColumnLayoutComponent.name, () => {
 				{description: 'empty with the header height equal to the element height', height: 50, top: ''},
 				{description: 'empty with the header height greater than the element height', height: 51, top: ''},
 			])('that it is $description', ({height, top}) => {
-				resizerCallback([{contentRect: {height}}]);
+				resizeCallbacks.get(fixture.debugElement.query(By.css('.ob-master-layout-header')).nativeElement)([
+					{contentRect: {height}},
+				]);
 				jest
 					.spyOn(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement, 'getBoundingClientRect')
 					.mockReturnValue({
