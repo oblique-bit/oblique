@@ -142,9 +142,7 @@ class HtmlInputWithDatePickerTestComponent {
 	</div>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
-class WrongConfigurationTestComponent {
-	testModel: string;
-}
+class WrongConfigurationTestComponent {}
 
 describe('InputClear', () => {
 	describe('with reactive forms', () => {
