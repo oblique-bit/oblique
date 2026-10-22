@@ -149,6 +149,13 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   else on the cover has to be touched. (The badge nested in the cover is hard to reach: a double click
   enters its text; after that Esc and Shift+Enter select the whole badge.) If the badge changes its width
   with the new status, move it back to the right edge by hand.
+- **FigJam kit for people without the tools.** In OB Library Utilities, on the page "Utility Components", the
+  section "Covers / FigJam kit" sits next to the cover template. It holds the frame "cover_for_figjam" (the
+  cover template as a linked instance with placeholder texts, and a separate status badge), every status as a
+  badge of its own, and a short text that explains what the kit is for and why the badge is separate. A person
+  copies the frame, pastes it into a FigJam board, edits the texts by double click, changes the status in the
+  panel "Variants" and sets the frame as the thumbnail (right-click menu: "Set as thumbnail"). Pasting the
+  frame into a FigJam board was tested: it arrives as a frame with the linked cover instance and the badge.
 - Figma refreshes the thumbnail in the file browser after some time, and it is more reliable when the file is
   closed. If the old picture stays, use "Restore default thumbnail" and then "Set as thumbnail" once more.
 - Status of these tools: the original scripts changed the covers of about 20 Oblique files and boards. The
