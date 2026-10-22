@@ -142,9 +142,12 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
 - The library step drives the Figma menus by their text. When Figma changes the menus, take a screenshot
   (`node cdp.mjs <key> shot out.png`) and adjust the labels in `ct_enable_library`.
 - In FigJam a paste can land inside a section that is under the middle of the screen. `fill-figjam.js` finds
-  the page by walking up from the pasted node, so this is handled. FigJam cannot enable a library; the
-  pasted cover is a linked instance and its fields can be changed, but it is not verified that it receives
-  later changes of the template. Check this after the next publish of the template.
+  the page by walking up from the pasted node, so this is handled.
+- **Library updates in FigJam work** (official guide "Use stickers and libraries in FigJam", and tested): click
+  the plus button in the toolbar, open the tab "Stickers", and a blue banner "N component updates" with the
+  button "Update" appears. After "Update" the board saw the new status variant. A FigJam board
+  can also add a library itself: tab "Stickers", "Libraries", "Add your own". A published change of the
+  template reaches a board only after someone clicks "Update" in that board.
 - **Changing the status in FigJam.** The badge is a separate instance in the section. Click it once, click the
   small toolbar above it (diamond icon with an arrow) and pick the status in the panel "Variants". Nothing
   else on the cover has to be touched. (The badge nested in the cover is hard to reach: a double click
