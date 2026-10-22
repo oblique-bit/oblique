@@ -1,12 +1,12 @@
 // Remove the old cover frames, move the new frame to the freed place and set it as the file thumbnail.
 // Run only after backup-old-covers.js has been saved. Component and instance nodes are never removed:
-// only plain FRAME nodes whose name matches namePattern.
+// only plain FRAME nodes whose name matches namePattern. The new cover is a frame (design file) or a section (FigJam).
 // ARGS: { key, namePattern, keepName: "file_thumbnail", move: { x, y } }
 (async () => {
   const A = __ARGS__;
   if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
   const pg = figma.root.children.find(p => /cover/i.test(p.name)); await pg.loadAsync(); await figma.setCurrentPageAsync(pg);
-  const keep = pg.children.find(c => c.type === 'FRAME' && c.name === A.keepName);
+  const keep = pg.children.find(c => (c.type === 'FRAME' || c.type === 'SECTION') && c.name === A.keepName);
   if (!keep) return JSON.stringify({ stop: 'new frame "' + A.keepName + '" is missing, nothing removed' });
   const re = new RegExp(A.namePattern);
   const log = [];

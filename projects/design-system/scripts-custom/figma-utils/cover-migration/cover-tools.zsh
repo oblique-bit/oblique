@@ -33,6 +33,8 @@ ct_open() {
   ct_ensure_port || return 1
   open -a Figma "$1"
   local i; for i in {1..15}; do sleep 2; curl -s -m 3 localhost:9222/json | grep -q "$2" && break; done
+  # a file that is already open is not always brought to the front by `open -a`: do it over the debug port
+  node $CT_DIR/cdp.mjs $2 eval "1" >/dev/null 2>&1; sleep 1
   ct_cli connect >/dev/null 2>&1; sleep 6
 }
 

@@ -106,14 +106,14 @@ console.log((res.log || []).join('\n'));
 console.log('file thumbnail is now:', res.thumbnail, res.thumbErr ? '(error: ' + res.thumbErr + ')' : '');
 savePreview(res, KEY);
 
-if (!isFigjam && (res.children || []).some(c => /_depr @/.test(c))) {
+if ((res.children || []).some(c => /_depr @/.test(c))) {
   step('6. Old cover frames');
   console.log('Kept, renamed "..._depr", and moved below the new cover.');
   if (!YES && (await readLine('Back up (PNG and text) and remove them now? [y/N] ')).trim().toLowerCase() === 'y') {
     const bk = run(KEY, 'backup-old-covers.js', { namePattern: '_depr$' });
     if (bk && bk.stage === 'backup' && bk.count > 0) {
       savePreview(bk, 'old-' + KEY);
-      const keep = (res.children.find(c => /FRAME file_thumbnail @/.test(c)) || '').match(/@(-?\d+),(-?\d+)/) || [0, 0, 0];
+      const keep = (res.children.find(c => /(FRAME|SECTION) file_thumbnail @/.test(c)) || '').match(/@(-?\d+),(-?\d+)/) || [0, 0, 0];
       console.log(JSON.stringify(run(KEY, 'remove-old-covers.js', { namePattern: '_depr$', keepName: 'file_thumbnail', move: { x: +keep[1], y: +keep[2] } })));
     } else console.log('No backup made, nothing removed.');
   }

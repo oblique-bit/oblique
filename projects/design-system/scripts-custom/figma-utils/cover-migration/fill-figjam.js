@@ -1,7 +1,9 @@
 // FigJam variant of fill-cover.js: the pasted template instance goes into a Section "file_thumbnail"
 // (1920x1080, white), which is set as the board thumbnail. FigJam cannot hold frames, and a paste can land
 // inside another section, so the page is found by walking up from the instance.
-// An existing section "file_thumbnail" is replaced and keeps its place.
+// An existing section "file_thumbnail" is replaced and keeps its place. Old cover frames on the page
+// ("_helper / thumbnail...") are kept, renamed "<name>_depr" and moved below the new section; the new
+// section takes the place of the current thumbnail frame.
 // ARGS: { key, instanceId, values: { product, doc, purpose, version, modified, owner, docs, status } }
 (async () => {
   const A = __ARGS__;
@@ -29,12 +31,17 @@
   if (!v.version && !v.modified) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
   const row = inst.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
   const old = pg.children.find(c => c.type === 'SECTION' && c.name === 'file_thumbnail');
+  const curThumb = await figma.getFileThumbnailNodeAsync();
+  const olds = pg.children.filter(c => c !== old && c !== inst && (c.type === 'FRAME' || c.type === 'SECTION') && !/_depr$/.test(c.name) && (/^_helper \/ thumbnail/.test(c.name) || (curThumb && c.id === curThumb.id && c.name !== 'file_thumbnail')));
+  const mainOld = olds.find(o => curThumb && o.id === curThumb.id) || olds[0];
   let x = inst.x, y = inst.y;
   if (old) { x = old.x; y = old.y; old.remove(); log.push('replaced the earlier file_thumbnail section'); }
+  else if (mainOld) { x = mainOld.x; y = mainOld.y; }
   else { const others = pg.children.filter(c => c !== inst); if (others.length) { x = Math.min(...others.map(c => c.x)) - 2200; y = Math.min(...others.map(c => c.y)); } }
   const sec = figma.createSection(); sec.name = 'file_thumbnail'; sec.resizeWithoutConstraints(1920, 1080); sec.x = x; sec.y = y;
   sec.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }];
   sec.appendChild(inst); inst.x = 0; inst.y = 0;
+  for (const o of olds) { o.name = o.name.replace(/^_helper \/ /, '') + '_depr'; o.x = x + (o === mainOld ? 0 : 1920 + 120); o.y = y + 1080 + 400; }
   let thumbErr = null, thumb = null;
   try {
     await figma.setFileThumbnailNodeAsync(null); await new Promise(r => setTimeout(r, 800));
@@ -43,5 +50,5 @@
   } catch (e) { thumbErr = String(e.message || e); }
   let img = null;
   try { img = figma.base64Encode(await sec.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: 0.3 } })); } catch (e) { log.push('export failed: ' + (e.message || e)); }
-  return JSON.stringify({ log, page: pg.name, thumbnail: thumb, thumbErr, img });
+  return JSON.stringify({ log, page: pg.name, thumbnail: thumb, thumbErr, children: pg.children.filter(c => c.type === 'SECTION' || c.type === 'FRAME').map(c => c.type + ' ' + c.name + ' @' + Math.round(c.x) + ',' + Math.round(c.y)), img });
 })()
