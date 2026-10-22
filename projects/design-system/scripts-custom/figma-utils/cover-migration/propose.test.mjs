@@ -34,6 +34,10 @@ test('deprecated is a status of its own', () => {
   const p = propose(frame('f', ['t=Oblique|Library V9', 'v=V9.0.0 – F1.0  |  May 2023', 'b=DEPRECATED']), { now: NOW });
   assert.equal(p.status, 'deprecated');
 });
+test('done is a status of its own', () => {
+  const p = propose(frame('f', ['t=Oblique|Workshop', 'b=DONE']), { now: NOW });
+  assert.equal(p.status, 'done_figma_only');
+});
 test('helpers', () => {
   assert.equal(normalizeVersion('V16.0.2 – F1.3'), '16.0.2-F1.3');
   assert.equal(normalizeDate('March, 2026'), 'March 2026');
